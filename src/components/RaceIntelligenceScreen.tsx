@@ -12,6 +12,7 @@ import { buildProductShellMeetings } from "../services/productShellMeetingServic
 import { buildRaceIntelligenceSummary } from "../services/raceIntelligenceSummaryService";
 import { betGrade, betScore, edgePct, fairPrice, getV72PriceSource, getV72wareDisplayFairPrice, getV72wareFairPrice, getV72wareProbability, isV72FeatureOn, livePrice, v8Conf, v8Fair, winPct } from "../services/marketPricingService";
 import { compactKey, findCampaignSidecar, findCommandEnrichmentSidecar, findConnectionSidecar, findDnaSidecar, findFormEnrichmentSidecar, findHiddenGemForRunner, findNexusContextualSidecar, findSidecar, findSidecarByRaceHorse, sameRunner } from "../services/sidecarLookupService";
+import { buildHistoryIndexes } from "../services/historyIndexService";
 ﻿import React, { useEffect, useMemo, useState } from "react";
 import { getMeetingDisplayState } from "../utils/meetingDisplayState";
 
@@ -1329,175 +1330,30 @@ export default function RaceIntelligenceScreen(props: Props): React.ReactElement
   setIntelMode("COMMND");
  };
 
- const historyMasterByHorse = useMemo(() => {
- const historyMap = new Map<string, Row[]>();
-
- historyMasterRows.forEach((historyRow) => {
- const historyKey = historyRunnerLookupKey(historyRow);
- if (!historyKey) return;
-
- const existing = historyMap.get(historyKey);
- if (existing) {
- existing.push(historyRow);
- } else {
- historyMap.set(historyKey, [historyRow]);
- }
- });
-
- historyMap.forEach((rows) => {
- rows.sort((a, b) => historyDateValue(b) - historyDateValue(a));
- });
-
- return historyMap;
- }, [historyMasterRows]);
-
- const historyMasterByTrackRaceHorse = useMemo(() => {
- const historyMap = new Map<string, Row[]>();
-
- historyMasterRows.forEach((historyRow) => {
- const historyKey = historyRunnerLookupKey(historyRow);
- const trackKey = cleanTrack(track(historyRow));
- const raceKey = raceNo(historyRow);
- const compositeKey = historyKey && trackKey && raceKey ? [historyKey, trackKey, raceKey].join("|") : "";
- if (!compositeKey) return;
-
- const existing = historyMap.get(compositeKey);
- if (existing) {
- existing.push(historyRow);
- } else {
- historyMap.set(compositeKey, [historyRow]);
- }
- });
-
- historyMap.forEach((rows) => {
- rows.sort((a, b) => historyDateValue(b) - historyDateValue(a));
- });
-
- return historyMap;
- }, [historyMasterRows]);
-
- const historyDetailByHorse = useMemo(() => {
- const historyMap = new Map<string, Row[]>();
-
- historyDetailRows.forEach((historyRow) => {
- const historyKey = historyRunnerLookupKey(historyRow);
- if (!historyKey) return;
-
- const existing = historyMap.get(historyKey);
- if (existing) {
- existing.push(historyRow);
- } else {
- historyMap.set(historyKey, [historyRow]);
- }
- });
-
- historyMap.forEach((rows) => {
- rows.sort((a, b) => historyDateValue(b) - historyDateValue(a));
- });
-
- return historyMap;
- }, [historyDetailRows]);
-
- const historyDetailByMergeKey = useMemo(() => {
- const detailMap = new Map<string, Row>();
- historyDetailRows.forEach((historyRow) => {
- const mergeKey = historyDetailMergeKey(historyRow);
- if (mergeKey && !detailMap.has(mergeKey)) detailMap.set(mergeKey, historyRow);
- });
- return detailMap;
- }, [historyDetailRows]);
-
- const historyDetailByLooseMergeKey = useMemo(() => {
- const detailMap = new Map<string, Row>();
- historyDetailRows.forEach((historyRow) => {
- const mergeKey = historyDetailMergeKeyLoose(historyRow);
- if (mergeKey && !detailMap.has(mergeKey)) detailMap.set(mergeKey, historyRow);
- });
- return detailMap;
- }, [historyDetailRows]);
-
- const runnerFormHistoryByHorse = useMemo(() => {
- const historyMap = new Map<string, Row[]>();
-
- runnerFormHistoryRows.forEach((historyRow) => {
- const historyKey = historyRunnerLookupKey(historyRow);
- if (!historyKey) return;
-
- const existing = historyMap.get(historyKey);
- if (existing) {
- existing.push(historyRow);
- } else {
- historyMap.set(historyKey, [historyRow]);
- }
- });
-
- historyMap.forEach((rows) => {
- rows.sort((a, b) => historyDateValue(b) - historyDateValue(a));
- });
-
- return historyMap;
- }, [runnerFormHistoryRows]);
-
- const horseCareerByHorse = useMemo(() => {
- const careerMap = new Map<string, Row>();
-
- horseCareerRows.forEach((careerRow) => {
- const horseKey =
- cleanHorseLoose(firstText(careerRow, ["horse_key"], "")) ||
- cleanHorseLoose(firstText(careerRow, ["horse"], ""));
-
- if (!horseKey || careerMap.has(horseKey)) return;
- careerMap.set(horseKey, careerRow);
- });
-
- return careerMap;
- }, [horseCareerRows]);
-
- const horserchetypeByHorse = useMemo(() => {
- const archetypeMap = new Map<string, Row>();
-
- horserchetypeRows.forEach((archetypeRow) => {
- const horseKey =
- cleanHorseLoose(firstText(archetypeRow, ["horse_key"], "")) ||
- cleanHorseLoose(firstText(archetypeRow, ["horse"], ""));
-
- if (!horseKey || archetypeMap.has(horseKey)) return;
- archetypeMap.set(horseKey, archetypeRow);
- });
-
- return archetypeMap;
- }, [horserchetypeRows]);
-
- const horseTrajectoryByHorse = useMemo(() => {
- const trajectoryMap = new Map<string, Row>();
-
- horseTrajectoryRows.forEach((trajectoryRow) => {
- const horseKey =
- cleanHorseLoose(firstText(trajectoryRow, ["horse_key"], "")) ||
- cleanHorseLoose(firstText(trajectoryRow, ["horse"], ""));
-
- if (!horseKey || trajectoryMap.has(horseKey)) return;
- trajectoryMap.set(horseKey, trajectoryRow);
- });
-
- return trajectoryMap;
- }, [horseTrajectoryRows]);
-
- const horseProjectionByHorse = useMemo(() => {
- const projectionMap = new Map<string, Row>();
-
- horseProjectionRows.forEach((projectionRow) => {
- const horseKey =
- cleanHorseLoose(firstText(projectionRow, ["horse_key"], "")) ||
- cleanHorseLoose(firstText(projectionRow, ["horse"], ""));
-
- if (!horseKey || projectionMap.has(horseKey)) return;
- projectionMap.set(horseKey, projectionRow);
- });
-
- return projectionMap;
- }, [horseProjectionRows]);
-
+ const {
+  historyMasterByHorse,
+  historyMasterByTrackRaceHorse,
+  historyDetailByHorse,
+  historyDetailByMergeKey,
+  historyDetailByLooseMergeKey,
+  runnerFormHistoryByHorse,
+  horseCareerByHorse,
+  horserchetypeByHorse,
+  horseTrajectoryByHorse,
+  horseProjectionByHorse,
+ } = useMemo(() => buildHistoryIndexes({
+  historyMasterRows,
+  historyDetailRows,
+  runnerFormHistoryRows,
+  horseCareerRows,
+  horserchetypeRows,
+  horseTrajectoryRows,
+  horseProjectionRows,
+  historyRunnerLookupKey,
+  historyDateValue,
+  historyDetailMergeKey,
+  historyDetailMergeKeyLoose,
+ }), [historyMasterRows, historyDetailRows, runnerFormHistoryRows, horseCareerRows, horserchetypeRows, horseTrajectoryRows, horseProjectionRows]);
  const formEnrichmentByRunnerKey = useMemo(() => {
  const map = new Map<string, Row>();
  formEnrichmentRows.forEach((formRow) => {
