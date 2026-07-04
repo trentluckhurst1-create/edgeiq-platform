@@ -1,4 +1,5 @@
 import React from "react";
+import { getTrackMapSlug } from "../utils/trackMaps";
 
 type MeetingsScreenProps = {
   productShellMeetings: any[];
@@ -74,7 +75,7 @@ export function MeetingsScreen({
   return aliases[clean] || clean.toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "");
  };
  const renderMeetingMap = (meeting: typeof productShellMeetings[number] | null) => {
-  const slug = getMeetingSlug(meeting?.trackName || "");
+  const slug = getTrackMapSlug(meeting?.trackName || "");
   const source = meeting?.mapAvailable && meeting.mapFile ? meeting.mapFile : `/assets/tracks/thumbs/${slug}.png`;
   return <div className="edgeiq-meetings-pro-map-thumb"><img src={source} alt={`${meeting?.trackName || "Track"} track map`} loading="lazy" onError={(event) => { event.currentTarget.style.display = "none"; }} /></div>;
  };

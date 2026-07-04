@@ -1,4 +1,5 @@
 import React from "react";
+import { getTrackMapSlug } from "../utils/trackMaps";
 
 type HomeScreenProps = {
   productShellMeetings: any[];
@@ -45,25 +46,6 @@ const homeModules = [
  { title: "RESULTS", copy: "Results, EDGEiQ Standard and race analysis." },
  { title: "CONDITIONS", copy: "Official rating, EDGEiQ rating, rail, weather and bias." },
 ];
-const getHomeTrackMapSlug = (trackName: string) => {
- const clean = String(trackName || "").toUpperCase().trim();
- const aliases: Record<string, string> = {
-  "BALLARAT SYNTHETIC": "ballarat_synthetic",
-  "PAKENHAM SYNTHETIC": "pakenham_synthetic",
-  "PAKENHAM / TYNONG": "pakenham_tynong",
-  "PAKENHAM TYNONG": "pakenham_tynong",
-  "GEELONG SYNTHETIC": "geelong_synthetic",
-  "GEELONG TURF": "geelong_turf",
-  "MOONEE VALLEY": "moonee_valley",
-  "YARRA VALLEY": "yarra_valley",
-  "STONY CREEK": "stony_creek",
-  "SWAN HILL": "swan_hill",
-  "GREAT WESTERN": "great_western",
-  "MT WYCHEPROOF": "mt_wycheproof",
-  "ST ARNAUD": "st_arnaud",
- };
- return aliases[clean] || clean.toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "");
-};
 const openHomeModule = (title: string) => {
  if (title === "RACE") { updateProductView("MEETINGS"); return; }
  if (title === "FIELD") { setIntelMode("RUNNERS"); updateProductView(shellTrack && shellRaceNo ? "RCE" : "MEETINGS"); return; }
@@ -112,7 +94,7 @@ return (
 <section className="edgeiq-home-final-grid">
 <div className="edgeiq-home-final-panel edgeiq-home-final-meetings">
 <div className="edgeiq-home-final-head edgeiq-home-final-meetings-head"><div><span>MEETINGS</span><em>VICTORIA</em></div><button type="button" onClick={() => updateProductView("MEETINGS")}>VIEW ALL â†’</button></div>
-{homeMeetingsByState.length ? homeMeetingsByState.map(([state, meetings]) => <div className="edgeiq-home-final-state" key={`home-state-${state}`}><h3>{state}</h3><div>{meetings.slice(0, 4).map((meeting) => <button type="button" key={`home-final-meeting-${meeting.meetingKey}`} onClick={() => openShellMeeting(meeting.meetingKey)}><div className="edgeiq-home-final-track-thumb"><img src={`/assets/tracks/thumbs/${getHomeTrackMapSlug(meeting.trackName)}.png`} alt={`${meeting.trackName} track map`} onError={(event) => { event.currentTarget.style.display = "none"; }} /></div><div className="edgeiq-home-final-meeting-copy"><strong>{meeting.trackName}</strong><span>{meeting.raceCount ? `${meeting.raceCount} races` : "Race list pending"}</span><em>First {meeting.firstRaceTime || "â€”"} Â· Last {meeting.lastRaceTime || "â€”"}</em></div></button>)}</div></div>) : <div className="edgeiq-home-final-empty">No meetings loaded for today.</div>}
+{homeMeetingsByState.length ? homeMeetingsByState.map(([state, meetings]) => <div className="edgeiq-home-final-state" key={`home-state-${state}`}><h3>{state}</h3><div>{meetings.slice(0, 4).map((meeting) => <button type="button" key={`home-final-meeting-${meeting.meetingKey}`} onClick={() => openShellMeeting(meeting.meetingKey)}><div className="edgeiq-home-final-track-thumb"><img src={`/assets/tracks/thumbs/${getTrackMapSlug(meeting.trackName)}.png`} alt={`${meeting.trackName} track map`} onError={(event) => { event.currentTarget.style.display = "none"; }} /></div><div className="edgeiq-home-final-meeting-copy"><strong>{meeting.trackName}</strong><span>{meeting.raceCount ? `${meeting.raceCount} races` : "Race list pending"}</span><em>First {meeting.firstRaceTime || "â€”"} Â· Last {meeting.lastRaceTime || "â€”"}</em></div></button>)}</div></div>) : <div className="edgeiq-home-final-empty">No meetings loaded for today.</div>}
 </div>
 <div className="edgeiq-home-final-panel edgeiq-home-final-modules">
 <div className="edgeiq-home-final-head"><span>WHAT EDGEiQ DOES</span></div>
