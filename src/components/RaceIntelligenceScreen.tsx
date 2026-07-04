@@ -1,5 +1,6 @@
 import { HomeScreen } from "../screens/HomeScreen";
 import { MeetingsScreen } from "../screens/MeetingsScreen";
+import { cleanHorse, cleanHorseLoose, cleanTrack, marketMoney, money, num, pct, signed, text } from "../utils/edgeiqFormat";
 ﻿import React, { useEffect, useMemo, useState } from "react";
 import { getMeetingDisplayState } from "../utils/meetingDisplayState";
 
@@ -120,35 +121,6 @@ type RatingHoverCard = {
  y: number;
 };
 
-function text(v: unknown): string {
- if (v === null || v === undefined) return "";
- return String(v).trim();
-}
-
-function num(v: unknown): number | null {
- const s = text(v).replace(/[$,%]/g, "");
- if (!s) return null;
- const n = Number(s);
- return Number.isFinite(n) ? n : null;
-}
-
-function cleanTrack(v: unknown): string {
- return text(v)
- .toUpperCase()
- .replace(/^(SPORTSBET|LADBROKES|TAB|THE)\s+/, "")
- .replace(/[^A-Z0-9]/g, "");
-}
-
-function cleanHorse(v: unknown): string {
- return text(v)
- .toUpperCase()
- .replace(/\([^)]*\)/g, "")
- .replace(/[^A-Z0-9]/g, "");
-}
-
-function cleanHorseLoose(v: unknown): string {
- return cleanHorse(v).replace(/(NZ|GB|IRE|FR|US|JPN|US)$/g, "");
-}
 
 function raceDate(row: Row): string {
  return text(row.current_race_date || row.race_date || row.meeting_date || row.date || row.raceDate);
@@ -183,31 +155,12 @@ function railPosition(row: Row): string {
  return text(row.rail_position || row.rail || row.track_rail || row.railPosition) || "-";
 }
 
-function money(v: number | null): string {
- if (v === null || !Number.isFinite(v) || v <= 0) return "-";
- return `$${v.toFixed(2)}`;
-}
-
-function marketMoney(v: number | null): string {
- const value = money(v);
- return value === "-" ? "Pending Market" : value;
-}
-
-function pct(v: number | null): string {
- if (v === null || !Number.isFinite(v)) return "-";
- return `${v.toFixed(1)}%`;
-}
 
 function integer(v: string): number | null {
  const match = text(v).match(/-?\d+/);
  return match ? Number(match[0]) : null;
 }
 
-function signed(v: number | null, digits = 1): string {
- if (v === null || !Number.isFinite(v)) return "-";
- const prefix = v > 0 ? "+" : "";
- return `${prefix}${v.toFixed(digits)}`;
-}
 
 function csvLine(line: string): string[] {
  const out: string[] = [];
