@@ -1,3 +1,4 @@
+import { RaceRunnersWorkspace } from "./workspaces/RaceRunnersWorkspace";
 ﻿import { buildCommandWorkspaceSummary } from "../services/commandWorkspaceSummaryService";
 import { buildSelectedRunnerProfile } from "../services/selectedRunnerProfileService";
 import { HomeScreen } from "../screens/HomeScreen";
@@ -4163,33 +4164,24 @@ if (productView === "MEETINGS") {
  const splitPairs = splitLabels.map((label, index) => ({ label, value: splitLengths[index] ?? null })).filter((entry) => entry.label);
  return <section className="edgeiq-form-showcase edgeiq-product-section edgeiq-product-v4-panel edgeiq-form-showcase-v2 edgeiq-form-clean-v3 edgeiq-form-study-v2 edgeiq-form-profile-v4 edgeiq-form-dossier-match">{formSelector}<div className="edgeiq-form-study-header edgeiq-form-profile-header"><span className="edgeiq-field-silk edgeiq-form-profile-silk" aria-label={`${horse(selected.row)} silk`}><i /></span><div><span>FORM</span><strong>{saddle(selected.row) === 999 ? "-" : saddle(selected.row)} {horse(selected.row)}</strong><em>{firstText(selected.row, ["jockey", "jockey_name", "rider"], "-")} / {firstText(selected.row, ["trainer", "trainer_name"], "-")}</em></div><div className="edgeiq-form-study-inline-metrics">{[["Current EPI", projected], ["Peak", selectedBestRatingLast5Value], ["Average", selectedAVGRatingLast5Value]].map(([label, value]) => <span key={`form-study-inline-${label}`}><b>{label}</b><strong>{typeof value === "number" ? renderMetricValue(value, 1) : "ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â"}</strong></span>)}</div></div><div className="edgeiq-form-gear-bar"><span><b>Current Gear</b><strong>{currentGear === "-" ? "No gear listed" : currentGear}</strong></span><span><b>Gear Change</b><strong>{currentGearChange === "-" ? "No recorded change" : currentGearChange}</strong></span></div><section className="edgeiq-form-sectional-strip-panel"><div className="edgeiq-form-sectional-strip-head"><div><span>EDGEiQ Standardised Sectionals</span><strong>{formBenchmarkMode === "CLASS_BENCHMARK" ? "Class benchmark" : "All-classes benchmark"}</strong></div><div className="edgeiq-form-benchmark-toggle">{(["CLASS_BENCHMARK", "ALL_CLASSES_BENCHMARK"] as BenchmarkMode[]).map((mode) => <button type="button" key={`form-benchmark-${mode}`} className={formBenchmarkMode === mode ? "is-active" : ""} onClick={() => setFormBenchmarkMode(mode)}>{mode === "CLASS_BENCHMARK" ? "Class" : "All-classes"}</button>)}</div></div>{splitPairs.length ? <div className="edgeiq-form-sectional-strip">{splitPairs.map((entry) => <span key={`form-split-${entry.label}`} className={entry.value === null ? "is-missing" : entry.value < 0 ? "is-fast" : "is-neutral"}><b>{entry.label}</b><strong>{entry.value === null ? "ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â" : `${signed(entry.value, 1)}L`}</strong></span>)}</div> : <div className="edgeiq-form-sectional-empty">No benchmark-backed sectional splits available for this runner.</div>}</section><section className="edgeiq-form-last-five edgeiq-form-last-five-wide"><div className="edgeiq-form-table-title">Last Five Starts</div><div className="edgeiq-form-table edgeiq-product-v4-table"><div className="edgeiq-form-table-row head">{['Date','Track','Dist','Class','Going','Bar','Jockey','Gear','Pos','Margin','SP','Rating'].map((label) => <span key={`form-main-head-${label}`}>{label}</span>)}</div>{!formRows.length ? <div className="edgeiq-form-table-empty">No detailed performance-history lines available.</div> : formRows.map((run) => { const pos = cleanPosition(run.finishingPosition); const runGear = gearForRun(run); const gearText = cleanRunText(firstText(runGear || undefined, ["gear_changes", "gear_current", "gear_added", "gear_removed"], "")); return <div key={`form-main-row-${run.key}`} className="edgeiq-form-table-row edgeiq-form-profile-row edgeiq-form-table-row-gear"><span>{cleanRunText(run.date)}</span><span>{cleanRunText(run.track)}</span><span>{cleanRunText(run.distance)}</span><span>{cleanRunText(run.raceClass)}</span><span>{cleanRunText(run.going)}</span><span>{cleanRunText(run.barrier)}</span><span>{cleanRunText(run.jockey)}</span><span>{gearText}</span><span className={posClass(pos)}>{pos}</span><span>{cleanRunText(run.beatenMargin)}</span><span>{cleanRunText(run.sp)}</span><span>{run.rating !== null ? renderMetricValue(run.rating, 1) : "-"}</span></div>; })}</div></section><div className="edgeiq-form-trajectory-strip" aria-label="Rating progression">{trajectoryValues.map((entry) => <span key={`form-trajectory-${entry.label}`} className={formHeatClass(entry.value)}><b>{entry.label}</b><strong>{entry.value === null ? "ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â" : renderMetricValue(entry.value, 1)}</strong></span>)}</div><div className="edgeiq-form-profile-grid">{profileGroups.map((group) => <section key={`form-profile-${group.title}`} className="edgeiq-form-profile-panel"><strong>{group.title} Profile</strong><div className="edgeiq-form-profile-table edgeiq-product-v4-table"><div className="edgeiq-form-profile-table-row head"><span>{group.title}</span><span>Starts</span><span>Wins</span><span>Places</span><span>Rating</span></div>{group.rows.length ? group.rows.map(([label, bucket]) => <div className="edgeiq-form-profile-table-row" key={`profile-${group.title}-${label}`}><span>{label}</span><span>{bucket.starts}</span><span>{bucket.wins}</span><span>{bucket.places}</span><span>{bucket.ratingCount ? renderMetricValue(bucket.ratingTotal / bucket.ratingCount, 1) : "ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â"}</span></div>) : <div className="edgeiq-form-profile-empty">Profile not loaded</div>}</div></section>)}</div><section className="edgeiq-form-career-summary"><strong>Career Summary</strong><div>{[["Starts", careerStarts], ["Wins", careerWins], ["Places", careerPlaces], ["Win %", careerWinPct], ["Place %", careerPlacePct]].map(([label, value]) => <article key={`form-career-${label}`}><span>{label}</span><b>{typeof value === "number" ? (String(label).includes("%") ? `${value.toFixed(1)}%` : String(Math.trunc(value))) : "ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â"}</b></article>)}<button type="button" className="edgeiq-field-history-link" onClick={() => setFullHistoryRunner(selected)}>Full history</button></div></section>{formNarrative ? <p className="edgeiq-form-short-read">{formNarrative}</p> : null}</section>;
  })() : null}
- {intelMode === "RUNNERS" ? (() => {
- const fieldRows = [...activeRaceRows].sort((a, b) => saddle(a.row) - saddle(b.row));
- const cleanMarket = (item: EnrichedRunner) => {
- return marketMoney(livePrice(item.row, item.bet));
- };
- const cleanWeight = (row: Row) => firstText(row, ["weight", "allocated_weight", "handicap_weight", "weight_carried", "runner_weight", "weight_kg", "wgt"], "ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â");
- const runnerEpiValue = (item: EnrichedRunner) => firstNum(item.ratingsHeatmap, ["runner_rating", "epi", "performance_index"]) ?? projectionRatingValue(item);
- const openRunnerForm = (item: EnrichedRunner) => {
- setSelectedKey(runnerRowKey(item.row));
- setIntelMode("FORM");
- };
- return (
- <section className="edgeiq-field-tab edgeiq-product-section edgeiq-product-v4-panel edgeiq-field-lock-v1">
- <div className="edgeiq-field-guide-table edgeiq-product-v4-table" role="table" aria-label="EDGEiQ Race Field">
- <div className="edgeiq-field-guide-row head" role="row">{['NO','SILK','RUNNER','BAR','WGT','JOCKEY','TRAINER','EDGEiQ','MARKET','STATUS'].map((label) => <span key={`field-head-${label}`}>{label}</span>)}</div>
- {fieldRows.map((item) => {
- const row = item.row;
- const rowKey = runnerRowKey(row);
- const epi = runnerEpiValue(item);
- const status = isScratched(item) ? "SCRATCHED" : "ACTIVE";
- return <button key={`field-row-wrap-${rowKey}`} type="button" className={`edgeiq-field-guide-row ${isScratched(item) ? "is-scratched" : ""}`} onClick={() => openRunnerForm(item)} role="row" aria-label={`Open ${horse(row)} form profile`}><span>{saddle(row) === 999 ? "-" : saddle(row)}</span><span className="edgeiq-field-silk" aria-label={`${horse(row)} silk`}><i /></span><strong>{horse(row)}</strong><span>{barrier(row)}</span><span>{cleanWeight(row)}</span><span>{firstText(row, ["jockey", "jockey_name", "rider"], "-")}</span><span>{firstText(row, ["trainer", "trainer_name"], "-")}</span><span>{epi === null ? "ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â" : renderMetricValue(epi, 1)}</span><span>{cleanMarket(item)}</span><span className="edgeiq-field-status-text">{status}</span></button>;
- })}
- </div>
- </section>
- );
- })() : null}
- {intelMode === "PERFORMANCE" ? (() => {
+ {intelMode === "RUNNERS" ? (
+<RaceRunnersWorkspace
+  activeRaceRows={activeRaceRows}
+  setSelectedKey={setSelectedKey}
+  setIntelMode={setIntelMode}
+  runnerRowKey={runnerRowKey}
+  saddle={saddle}
+  horse={horse}
+  barrier={barrier}
+  firstText={firstText}
+  marketMoney={marketMoney}
+  livePrice={livePrice}
+  projectionRatingValue={projectionRatingValue}
+  renderMetricValue={renderMetricValue}
+  isScratched={isScratched}
+/>
+) : null}
+{intelMode === "PERFORMANCE" ? (() => {
  const heatRows = activeRaceRows.map((item) => ({ item, heat: item.ratingsHeatmap || {} }));
  const heatRowsWithRatings = heatRows.filter((entry) => (firstNum(entry.heat, ["runner_rating", "epi", "performance_index"]) ?? projectionRatingValue(entry.item)) !== null);
  const expectedRaceRating = heatRows.map((entry) => firstNum(entry.heat, ["expected_rating"])).find((value) => value !== null) ?? null;
