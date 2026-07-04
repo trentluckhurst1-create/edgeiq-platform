@@ -1,0 +1,19 @@
+
+.book-fluc-step-firm {
+  color: #34d399;
+  font-weight: 800;
+}
+
+.book-fluc-step-drift {
+  color: #fb7185;
+  font-weight: 800;
+}
+
+.book-fluc-step-neutral {
+  color: #cbd5e1;
+  font-weight: 700;
+}
+
+.book-fluc-arrow {
+  color: #64748b;
+}

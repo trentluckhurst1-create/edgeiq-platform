@@ -1,0 +1,421 @@
+﻿/* EDGEiQ Final Product Home V1 */
+
+:root {
+  --edge-bg: #020814;
+  --edge-panel: rgba(7, 18, 32, 0.86);
+  --edge-panel-2: rgba(10, 28, 48, 0.72);
+  --edge-border: rgba(69, 121, 164, 0.28);
+  --edge-border-hot: rgba(42, 231, 209, 0.56);
+  --edge-text: #f8fbff;
+  --edge-muted: #a9b8ca;
+  --edge-cyan: #2af5dc;
+  --edge-blue: #3191ff;
+  --edge-purple: #c276ff;
+  --edge-gold: #ffca4b;
+  --edge-orange: #ff8a25;
+  --edge-green: #64f589;
+}
+
+body {
+  background:
+    radial-gradient(circle at 22% 4%, rgba(27, 138, 255, 0.16), transparent 30rem),
+    radial-gradient(circle at 80% 20%, rgba(42, 245, 220, 0.08), transparent 34rem),
+    #020814 !important;
+  overflow-x: hidden !important;
+}
+
+[class*="home"] {
+  width: min(1480px, calc(100vw - 44px)) !important;
+  max-width: none !important;
+  margin: 0 auto !important;
+  padding: 82px 0 24px !important;
+  transform: none !important;
+}
+
+[class*="home"]::before {
+  content: "♞ EDGEiQ";
+  position: fixed;
+  top: 22px;
+  left: 28px;
+  z-index: 50;
+  color: #f8fbff;
+  font-size: 30px;
+  line-height: 1;
+  font-weight: 1000;
+  letter-spacing: 0.01em;
+  text-shadow: 0 0 24px rgba(42, 245, 220, 0.16);
+}
+
+[class*="home"]::after {
+  content: "RACING INTELLIGENCE PLATFORM";
+  position: fixed;
+  top: 58px;
+  left: 106px;
+  z-index: 50;
+  color: #9fb2c7;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.24em;
+}
+
+/* Primary homepage grid */
+[class*="home"] {
+  display: grid !important;
+  grid-template-columns: 1.12fr 0.88fr 1.18fr !important;
+  grid-template-areas:
+    "hero status reads"
+    "today upcoming upcoming"
+    "footer footer footer" !important;
+  gap: 18px !important;
+}
+
+[class*="home"] > section {
+  margin: 0 !important;
+  min-width: 0 !important;
+}
+
+[class*="home"] > section:nth-of-type(1) {
+  grid-area: hero !important;
+}
+
+[class*="home"] > section:nth-of-type(2) {
+  grid-area: reads !important;
+}
+
+[class*="home"] > section:nth-of-type(3) {
+  grid-area: today !important;
+}
+
+[class*="home"] > section:nth-of-type(4) {
+  grid-area: upcoming !important;
+}
+
+/* Hero and status live in first section */
+[class*="home"] > section:nth-of-type(1) {
+  display: grid !important;
+  grid-template-columns: 1fr 0.95fr !important;
+  gap: 18px !important;
+  align-items: stretch !important;
+  grid-column: 1 / span 2 !important;
+}
+
+[class*="hero"] {
+  padding: 28px 30px !important;
+  margin: 0 !important;
+  min-height: 400px !important;
+  text-align: left !important;
+  background: linear-gradient(180deg, rgba(10, 29, 49, 0.74), rgba(5, 13, 24, 0.76)) !important;
+  border: 1px solid var(--edge-border) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 18px 48px rgba(0,0,0,.25) !important;
+}
+
+[class*="hero"] h1 {
+  font-size: 78px !important;
+  line-height: .9 !important;
+  margin: 6px 0 10px !important;
+  letter-spacing: -0.06em !important;
+  color: #ffffff !important;
+}
+
+[class*="hero"] h1::before {
+  content: "";
+  display: block;
+  width: 74px;
+  height: 54px;
+  margin: 0 0 12px;
+  background:
+    linear-gradient(135deg, transparent 0 18%, #2af5dc 18% 32%, transparent 32% 44%, #3191ff 44% 68%, transparent 68%),
+    linear-gradient(135deg, #2af5dc, #3191ff);
+  clip-path: polygon(0 20%, 82% 0, 100% 18%, 38% 44%, 92% 44%, 76% 66%, 30% 66%, 20% 80%, 70% 80%, 54% 100%, 0 100%);
+  filter: drop-shadow(0 0 22px rgba(42,245,220,.34));
+}
+
+[class*="hero"] h2,
+[class*="hero"] h3 {
+  font-size: 28px !important;
+  line-height: 1.16 !important;
+  margin: 0 0 16px !important;
+  color: #ffffff !important;
+  letter-spacing: -0.02em !important;
+  text-transform: none !important;
+}
+
+[class*="hero"] p {
+  max-width: 520px !important;
+  margin: 0 0 18px !important;
+  color: #d8e4f1 !important;
+  font-size: 16px !important;
+  line-height: 1.48 !important;
+}
+
+[class*="hero"] p:nth-of-type(n+3) {
+  display: none !important;
+}
+
+button,
+[class*="button"] {
+  min-height: 48px !important;
+  padding: 0 24px !important;
+  border-radius: 8px !important;
+  font-size: 12px !important;
+  letter-spacing: .1em !important;
+  text-transform: uppercase !important;
+  font-weight: 900 !important;
+}
+
+[class*="hero"] button:first-of-type {
+  background: rgba(42, 245, 220, 0.12) !important;
+  border: 1px solid var(--edge-border-hot) !important;
+  color: var(--edge-cyan) !important;
+}
+
+/* Operational status */
+[class*="operational"] {
+  padding: 26px !important;
+  margin: 0 !important;
+  min-height: 400px !important;
+  background: linear-gradient(180deg, rgba(8, 22, 38, .86), rgba(5, 12, 22, .82)) !important;
+  border: 1px solid var(--edge-border) !important;
+  border-radius: 12px !important;
+}
+
+[class*="operational"] h2,
+[class*="operational"] h3,
+[class*="operational"] h4 {
+  font-size: 16px !important;
+  color: #ffffff !important;
+  letter-spacing: .13em !important;
+  text-transform: uppercase !important;
+  padding-bottom: 14px !important;
+  border-bottom: 1px solid rgba(42,245,220,.28) !important;
+  margin: 0 0 16px !important;
+}
+
+[class*="operational"] > div,
+[class*="status-grid"] {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 16px !important;
+}
+
+[class*="operational"] [class*="card"],
+[class*="status-card"] {
+  min-height: 112px !important;
+  padding: 18px !important;
+  text-align: left !important;
+  border-radius: 10px !important;
+}
+
+[class*="operational"] [class*="card"]::before {
+  display: inline-block;
+  width: 46px;
+  margin-right: 12px;
+  vertical-align: middle;
+  font-size: 38px;
+  line-height: 1;
+}
+
+[class*="operational"] [class*="card"]:nth-of-type(1)::before { content: "◎"; color: var(--edge-green); }
+[class*="operational"] [class*="card"]:nth-of-type(2)::before { content: "▣"; color: var(--edge-blue); }
+[class*="operational"] [class*="card"]:nth-of-type(3)::before { content: "↗"; color: var(--edge-gold); }
+[class*="operational"] [class*="card"]:nth-of-type(4)::before { content: "♞"; color: var(--edge-orange); }
+
+[class*="operational"] [class*="card"] h4,
+[class*="status-card"] h4 {
+  display: inline-block !important;
+  vertical-align: middle !important;
+  font-size: 16px !important;
+  margin: 0 !important;
+  color: #ffffff !important;
+  text-transform: uppercase !important;
+}
+
+[class*="operational"] [class*="card"] p,
+[class*="status-card"] p {
+  display: block !important;
+  margin: 10px 0 0 58px !important;
+  font-size: 14px !important;
+  color: var(--edge-cyan) !important;
+}
+
+/* How EDGEiQ reads a race */
+[class*="home"] > section:nth-of-type(2) {
+  padding: 22px !important;
+  background: linear-gradient(180deg, rgba(8, 22, 38, .86), rgba(5, 12, 22, .82)) !important;
+  border: 1px solid var(--edge-border) !important;
+  border-radius: 12px !important;
+}
+
+[class*="home"] > section:nth-of-type(2) > div:first-child,
+[class*="home"] > section:nth-of-type(2) h2,
+[class*="home"] > section:nth-of-type(2) h3 {
+  font-size: 16px !important;
+  letter-spacing: .12em !important;
+  text-transform: uppercase !important;
+  color: #ffffff !important;
+  margin-bottom: 16px !important;
+}
+
+[class*="home"] > section:nth-of-type(2) [class*="card"] {
+  min-height: 66px !important;
+  padding: 12px 16px 12px 72px !important;
+  margin-bottom: 10px !important;
+  position: relative !important;
+  border-radius: 10px !important;
+}
+
+[class*="home"] > section:nth-of-type(2) [class*="card"]::before {
+  position: absolute;
+  left: 18px;
+  top: 15px;
+  font-size: 34px;
+  line-height: 1;
+}
+
+[class*="home"] > section:nth-of-type(2) [class*="card"]:nth-of-type(1)::before { content: "◎"; color: var(--edge-blue); }
+[class*="home"] > section:nth-of-type(2) [class*="card"]:nth-of-type(2)::before { content: "◜"; color: var(--edge-purple); }
+[class*="home"] > section:nth-of-type(2) [class*="card"]:nth-of-type(3)::before { content: "⚖"; color: var(--edge-cyan); }
+[class*="home"] > section:nth-of-type(2) [class*="card"]:nth-of-type(4)::before { content: "♟"; color: var(--edge-gold); }
+[class*="home"] > section:nth-of-type(2) [class*="card"]:nth-of-type(5)::before { content: "♞"; color: var(--edge-orange); }
+
+[class*="home"] > section:nth-of-type(2) [class*="card"] h3 {
+  font-size: 15px !important;
+  margin: 0 0 4px !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+
+[class*="home"] > section:nth-of-type(2) [class*="card"] p {
+  font-size: 13px !important;
+  margin: 0 !important;
+  line-height: 1.35 !important;
+}
+
+/* Meetings */
+[class*="home"] > section:nth-of-type(3),
+[class*="home"] > section:nth-of-type(4) {
+  padding: 16px !important;
+  background: linear-gradient(180deg, rgba(8, 22, 38, .82), rgba(5, 12, 22, .78)) !important;
+  border: 1px solid var(--edge-border) !important;
+  border-radius: 12px !important;
+}
+
+[class*="home"] > section:nth-of-type(3) > div:first-child,
+[class*="home"] > section:nth-of-type(4) > div:first-child {
+  font-size: 16px !important;
+  letter-spacing: .12em !important;
+  text-transform: uppercase !important;
+  color: #ffffff !important;
+  margin-bottom: 12px !important;
+}
+
+[class*="home"] > section:nth-of-type(4) {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 16px !important;
+}
+
+[class*="home"] > section:nth-of-type(4) > div:first-child {
+  grid-column: 1 / -1 !important;
+}
+
+[class*="meeting"] [class*="card"],
+[class*="home"] > section:nth-of-type(3) [class*="card"],
+[class*="home"] > section:nth-of-type(4) [class*="card"] {
+  min-height: 226px !important;
+  padding: 28px !important;
+  border-radius: 10px !important;
+}
+
+[class*="meeting"] h2,
+[class*="meeting"] h3,
+[class*="home"] > section:nth-of-type(3) h2,
+[class*="home"] > section:nth-of-type(3) h3,
+[class*="home"] > section:nth-of-type(4) h2,
+[class*="home"] > section:nth-of-type(4) h3 {
+  font-size: 28px !important;
+  line-height: 1.1 !important;
+  text-align: left !important;
+  margin: 0 0 4px !important;
+}
+
+[class*="meeting"] h2::before,
+[class*="meeting"] h3::before,
+[class*="home"] > section:nth-of-type(3) h2::before,
+[class*="home"] > section:nth-of-type(3) h3::before,
+[class*="home"] > section:nth-of-type(4) h2::before,
+[class*="home"] > section:nth-of-type(4) h3::before {
+  content: "♞";
+  display: inline-block;
+  margin-right: 16px;
+  color: var(--edge-blue);
+  font-size: 48px;
+  vertical-align: middle;
+  text-shadow: 0 0 24px rgba(49,145,255,.42);
+}
+
+[class*="home"] > section:nth-of-type(4) [class*="card"]:nth-of-type(3) h2::before,
+[class*="home"] > section:nth-of-type(4) [class*="card"]:nth-of-type(3) h3::before {
+  color: var(--edge-cyan);
+}
+
+[class*="home"] > section:nth-of-type(4) [class*="card"]:nth-of-type(2) h2::before,
+[class*="home"] > section:nth-of-type(4) [class*="card"]:nth-of-type(2) h3::before {
+  color: var(--edge-purple);
+}
+
+[class*="meeting"] [class*="card"] > div,
+[class*="home"] > section:nth-of-type(3) [class*="card"] > div,
+[class*="home"] > section:nth-of-type(4) [class*="card"] > div {
+  background: transparent !important;
+}
+
+[class*="meeting"] button,
+[class*="home"] > section:nth-of-type(3) button,
+[class*="home"] > section:nth-of-type(4) button {
+  width: 100% !important;
+  margin-top: 14px !important;
+  border-color: rgba(42,245,220,.46) !important;
+  color: var(--edge-cyan) !important;
+}
+
+/* Footer trust strip */
+[class*="home"] {
+  position: relative !important;
+}
+
+[class*="home"]::selection {
+  background: rgba(42,245,220,.3);
+}
+
+[class*="home"] em {
+  display: none !important;
+}
+
+/* Main cards */
+[class*="card"] {
+  background: linear-gradient(180deg, rgba(10, 30, 51, .82), rgba(4, 11, 21, .78)) !important;
+  border: 1px solid var(--edge-border) !important;
+  box-shadow: 0 14px 34px rgba(0,0,0,.18) !important;
+}
+
+[class*="card"]:hover {
+  border-color: var(--edge-border-hot) !important;
+}
+
+@media (max-width: 1200px) {
+  [class*="home"] {
+    display: block !important;
+    padding-top: 88px !important;
+  }
+
+  [class*="home"] > section {
+    margin-bottom: 16px !important;
+  }
+
+  [class*="home"] > section:nth-of-type(1),
+  [class*="home"] > section:nth-of-type(4) {
+    display: block !important;
+  }
+}

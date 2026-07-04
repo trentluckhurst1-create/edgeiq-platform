@@ -1,0 +1,983 @@
+from __future__ import annotations
+
+import argparse
+import csv
+import json
+import os
+import re
+import subprocess
+from datetime import date
+from pathlib import Path
+from typing import Any
+
+
+ROOT = Path(__file__).resolve().parents[1]
+DATA = ROOT / "public" / "data"
+TMP = ROOT / "outputs" / "tmp"
+
+DOWNLOAD_DIR = DATA / "racingcom_sectional_history_downloads_v1"
+MANIFEST = DATA / "racingcom_sectional_history_harvest_v1_manifest.csv"
+AUDIT = DATA / "racingcom_sectional_history_harvest_v1_audit.csv"
+SEED = DATA / "racingcom_sectional_harvest_seed_v1.csv"
+
+SOURCE_FILES = [
+    DATA / "results_history.csv",
+    DATA / "edgeiq_results_history.csv",
+    DATA / "race_results.csv",
+    DATA / "edgeiq_vic_three_day_meeting_universe.csv",
+    DATA / "edgeiq_vic_live_terminal_feed_v1.csv",
+    DATA / "racingcom_form_speed_data_url_audit_v1.csv",
+    SEED,
+]
+
+PRIORITY_TEST_URL = "https://www.racing.com/form/2026-05-31/sportsbet-sandown-lakeside/race/3/speed-data"
+
+TRACK_SLUG_ALIASES = {
+    "SANDOWN LAKESIDE": "sandown-lakeside",
+    "SPORTSBET SANDOWN LAKESIDE": "sportsbet-sandown-lakeside",
+    "SANDOWN": "sandown",
+    "CAULFIELD": "caulfield",
+    "FLEMINGTON": "flemington",
+    "MOONEE VALLEY": "moonee-valley",
+    "PAKENHAM": "pakenham",
+    "SOUTHSIDE PAKENHAM": "southside-pakenham",
+    "CRANBOURNE": "cranbourne",
+    "BALLARAT": "ballarat",
+    "SPORTSBET BALLARAT": "sportsbet-ballarat",
+    "BENDIGO": "bendigo",
+    "WARRNAMBOOL": "warrnambool",
+    "SALE": "sale",
+    "MORNINGTON": "mornington",
+    "SEYMOUR": "seymour",
+    "WANGARATTA": "wangaratta",
+    "WODONGA": "wodonga",
+    "KILMORE": "kilmore",
+    "BET365 PARK KILMORE": "bet365-park-kilmore",
+    "KYNETON": "kyneton",
+    "CASTERTON": "casterton",
+    "COLAC": "colac",
+    "HAMILTON": "hamilton",
+    "ARARAT": "ararat",
+    "TERANG": "terang",
+    "SWAN HILL": "swan-hill",
+    "ECHUCA": "echuca",
+    "BET365 ECHUCA": "bet365-echuca",
+    "BENALLA": "benalla",
+    "MILDURA": "mildura",
+    "MOE": "moe",
+    "STAWELL": "stawell",
+    "HORSHAM": "horsham",
+    "GEELONG": "geelong",
+    "LADBROKES GEELONG": "ladbrokes-geelong",
+    "BET365 YARRA VALLEY": "bet365-yarra-valley",
+    "YARRA VALLEY": "yarra-valley",
+    "WERRIBEE": "werribee",
+    "PICKLEBET PARK WERRIBEE": "picklebet-park-werribee",
+}
+
+VIC_TRACK_TOKENS = {
+    "SANDOWN",
+    "CAULFIELD",
+    "FLEMINGTON",
+    "MOONEE",
+    "PAKENHAM",
+    "CRANBOURNE",
+    "BALLARAT",
+    "BENDIGO",
+    "WARRNAMBOOL",
+    "SALE",
+    "MORNINGTON",
+    "SEYMOUR",
+    "WANGARATTA",
+    "WODONGA",
+    "KILMORE",
+    "KYNETON",
+    "CASTERTON",
+    "COLAC",
+    "HAMILTON",
+    "ARARAT",
+    "TERANG",
+    "SWAN",
+    "ECHUCA",
+    "BENALLA",
+    "MILDURA",
+    "MOE",
+    "STAWELL",
+    "HORSHAM",
+    "GEELONG",
+    "YARRA",
+    "WERRIBEE",
+}
+
+EXCLUDE_TRIAL_PATTERNS = ("trial", "trials", "jumpout", "jumpouts", "jump out", "jump outs")
+EXCLUDE_PICNIC_PATTERNS = ("picnic", "picnics")
+
+SEED_COLUMNS = ["meeting_date", "track", "race_no", "track_slug", "meeting_type", "include_flag", "notes"]
+MANIFEST_COLUMNS = [
+    "meeting_date",
+    "track",
+    "track_slug",
+    "race_no",
+    "speed_data_url",
+    "page_loaded",
+    "download_text_visible",
+    "csv_clickable_found",
+    "csv_download_success",
+    "downloaded_filename",
+    "local_path",
+    "file_size_bytes",
+    "skipped_existing",
+    "excluded_flag",
+    "excluded_reason",
+    "status",
+    "error",
+]
+AUDIT_COLUMNS = [
+    "candidate_rows_loaded",
+    "unique_race_contexts",
+    "excluded_trials_jumpouts",
+    "excluded_picnics",
+    "excluded_non_vic",
+    "attempted_races",
+    "pages_loaded",
+    "download_text_visible_count",
+    "csv_clickable_found_count",
+    "csv_download_success_count",
+    "skipped_existing_count",
+    "download_failed_count",
+    "download_folder",
+    "graphql_endpoint_called_by_script",
+    "api_key_extracted",
+    "private_endpoint_used",
+    "final_status",
+]
+
+NODE_HELPER = r"""
+const fs = require("fs");
+const path = require("path");
+
+const inputPath = process.argv[2];
+const outputPath = process.argv[3];
+const downloadDir = process.argv[4];
+const force = process.argv[5] === "1";
+const rows = JSON.parse(fs.readFileSync(inputPath, "utf8"));
+
+fs.mkdirSync(downloadDir, { recursive: true });
+
+const PUBLIC_SPEED_RE = /^https:\/\/www\.racing\.com\/form\/\d{4}-\d{2}-\d{2}\/[^/]+\/race\/\d+\/speed-data(?:[?#].*)?$/i;
+
+function clean(value) {
+  return String(value || "").replace(/\s+/g, " ").trim();
+}
+
+function safeFilePart(value) {
+  return clean(value).replace(/[^A-Za-z0-9._-]+/g, "_").replace(/^_+|_+$/g, "").slice(0, 150) || "racingcom";
+}
+
+function prefix(row) {
+  return safeFilePart(`${row.meeting_date}_${row.track_slug}_R${row.race_no}`);
+}
+
+function existingDownload(row) {
+  const pfx = prefix(row);
+  const files = fs.readdirSync(downloadDir)
+    .filter((name) => name.toLowerCase().endsWith(".csv") && name.startsWith(pfx))
+    .map((name) => {
+      const fullPath = path.join(downloadDir, name);
+      const stat = fs.statSync(fullPath);
+      return { name, fullPath, size: stat.size, mtimeMs: stat.mtimeMs };
+    })
+    .filter((item) => item.size > 0)
+    .sort((a, b) => b.mtimeMs - a.mtimeMs);
+  return files[0] || null;
+}
+
+function uniquePath(name) {
+  const parsed = path.parse(name);
+  let candidate = path.join(downloadDir, name);
+  let counter = 2;
+  while (fs.existsSync(candidate)) {
+    candidate = path.join(downloadDir, `${parsed.name}_${counter}${parsed.ext || ".csv"}`);
+    counter += 1;
+  }
+  return candidate;
+}
+
+function publicCsvHref(value) {
+  const href = clean(value);
+  if (!href || !/^https:\/\//i.test(href) || !/\.csv(?:[?#].*)?$/i.test(href)) return "";
+  let parsed;
+  try {
+    parsed = new URL(href);
+  } catch (_err) {
+    return "";
+  }
+  const host = parsed.hostname.toLowerCase();
+  if (host === "www.racing.com" || host.endsWith(".racing.com") || host.endsWith(".cloudfront.net")) {
+    return href;
+  }
+  return "";
+}
+
+async function savePublicCsvHref(href, row) {
+  const safeHref = publicCsvHref(href);
+  if (!safeHref) {
+    return { success: false, filename: "", localPath: "", size: 0, error: "CSV href failed public safety validation." };
+  }
+  const response = await fetch(safeHref, {
+    headers: {
+      "User-Agent": "EDGEiQ-Racing/1.0 historical-sectional-harvest (public visible CSV asset)",
+    },
+  });
+  if (!response.ok) {
+    return { success: false, filename: "", localPath: "", size: 0, error: `Public CSV href returned HTTP ${response.status}.` };
+  }
+  const buffer = Buffer.from(await response.arrayBuffer());
+  if (!buffer.length) {
+    return { success: false, filename: "", localPath: "", size: 0, error: "Public CSV href returned an empty body." };
+  }
+  const urlName = path.basename(new URL(safeHref).pathname) || "racingcom_sectionals.csv";
+  const filename = safeFilePart(`${prefix(row)}_${urlName.endsWith(".csv") ? urlName : `${urlName}.csv`}`);
+  const target = uniquePath(filename);
+  fs.writeFileSync(target, buffer);
+  const stat = fs.statSync(target);
+  return { success: true, filename: path.basename(target), localPath: target, size: stat.size, error: "" };
+}
+
+async function createBrowser(playwright) {
+  const errors = [];
+  try {
+    const browser = await playwright.chromium.launch({
+      headless: true,
+      args: ["--disable-dev-shm-usage", "--no-sandbox"],
+    });
+    const context = await browser.newContext({
+      acceptDownloads: true,
+      viewport: { width: 1440, height: 1000 },
+      userAgent: "EDGEiQ-Racing/1.0 historical-sectional-harvest (public Racing.com page only)",
+    });
+    return { browser, context, closeBrowser: true };
+  } catch (err) {
+    errors.push(`launch:${err && err.message ? err.message : String(err)}`);
+  }
+
+  try {
+    const browser = await playwright.chromium.connectOverCDP("http://127.0.0.1:9222");
+    const context = browser.contexts()[0] || await browser.newContext({
+      acceptDownloads: true,
+      viewport: { width: 1440, height: 1000 },
+      userAgent: "EDGEiQ-Racing/1.0 historical-sectional-harvest (public Racing.com page only)",
+    });
+    return { browser, context, closeBrowser: false };
+  } catch (err) {
+    errors.push(`cdp:${err && err.message ? err.message : String(err)}`);
+  }
+
+  throw new Error(errors.join(" | "));
+}
+
+async function acceptCookies(page) {
+  for (const label of ["Accept All Cookies", "Accept All", "I Accept", "Accept"]) {
+    try {
+      const loc = page.getByText(label, { exact: false }).first();
+      if (await loc.count()) {
+        await loc.click({ timeout: 2200, force: true });
+        await page.waitForTimeout(600);
+        return;
+      }
+    } catch (_err) {}
+  }
+}
+
+async function settleAndScroll(page) {
+  try {
+    await page.waitForLoadState("networkidle", { timeout: 16000 });
+  } catch (_err) {}
+  await page.waitForTimeout(2600);
+  await acceptCookies(page);
+  for (let i = 0; i < 10; i += 1) {
+    await page.mouse.wheel(0, 2200);
+    await page.waitForTimeout(420);
+  }
+  await page.waitForTimeout(900);
+}
+
+async function renderedState(page) {
+  const states = [];
+  for (const frame of page.frames()) {
+    try {
+      states.push(await frame.evaluate(() => {
+        function clean(value) {
+          return String(value || "").replace(/\s+/g, " ").trim();
+        }
+        function visible(el) {
+          const style = window.getComputedStyle(el);
+          const rect = el.getBoundingClientRect();
+          return style && style.display !== "none" && style.visibility !== "hidden" && rect.width > 0 && rect.height > 0;
+        }
+        const bodyText = clean(document.body ? document.body.innerText : "");
+        const candidates = [];
+        for (const el of Array.from(document.querySelectorAll("a, button, [role='button'], span, div, p, li, td, th"))) {
+          const text = clean(el.innerText || el.textContent || "");
+          if (!text || !/(Download Race Sectional Data|CSV|PDF)/i.test(text) || !visible(el)) continue;
+        const clickable = el.closest("a,button,[role='button'],[onclick]") || el;
+        candidates.push({
+          text,
+          tag: el.tagName,
+          href: clickable.href || clickable.getAttribute("href") || "",
+        });
+        }
+        return {
+          bodyHasDownloadText: /Download Race Sectional Data/i.test(bodyText),
+          bodyHasCsvText: /\bCSV\b/i.test(bodyText),
+          bodyHasPdfText: /\bPDF\b/i.test(bodyText),
+          candidates,
+        };
+      }));
+    } catch (_err) {}
+  }
+  return states;
+}
+
+async function clickCsv(page, frame) {
+  const locatorClick = async (pattern, mode) => {
+    const locator = frame.getByText(pattern, { exact: mode === "exact" }).last();
+    try {
+      const count = await locator.count();
+      if (!count) return null;
+      await locator.scrollIntoViewIfNeeded({ timeout: 4000 }).catch(() => {});
+      const downloadPromise = page.waitForEvent("download", { timeout: 15000 }).catch((err) => ({ __downloadError: err.message || String(err) }));
+      await locator.click({ timeout: 6000 }).catch(async () => {
+        await locator.click({ timeout: 6000, force: true });
+      });
+      const download = await downloadPromise;
+      if (download && !download.__downloadError) return download;
+    } catch (_err) {}
+    return null;
+  };
+
+  for (const [pattern, mode] of [["CSV", "exact"], [/CSV/i, "contains"]]) {
+    const download = await locatorClick(pattern, mode);
+    if (download) return download;
+  }
+
+  const clickWithMode = async (mode) => {
+    return await frame.evaluate((clickMode) => {
+      function clean(value) {
+        return String(value || "").replace(/\s+/g, " ").trim();
+      }
+      function visible(el) {
+        const style = window.getComputedStyle(el);
+        const rect = el.getBoundingClientRect();
+        return style && style.display !== "none" && style.visibility !== "hidden" && rect.width > 0 && rect.height > 0;
+      }
+      function targetFor(el) {
+        let current = el;
+        for (let depth = 0; current && depth < 7; depth += 1) {
+          if (/^(A|BUTTON)$/i.test(current.tagName || "") || current.getAttribute("role") === "button" || current.getAttribute("onclick")) {
+            return current;
+          }
+          current = current.parentElement;
+        }
+        return el;
+      }
+      const matches = Array.from(document.querySelectorAll("a, button, [role='button'], span, div, p, li, td, th"))
+        .filter((el) => {
+          const text = clean(el.innerText || el.textContent || "");
+          return visible(el) && (clickMode === "exact" ? text.toUpperCase() === "CSV" : /\bCSV\b/i.test(text));
+        });
+      const el = matches[matches.length - 1];
+      if (!el) return { clicked: false, reason: "CSV_NOT_FOUND" };
+      const target = targetFor(el);
+      target.scrollIntoView({ block: "center", inline: "center" });
+      const rect = target.getBoundingClientRect();
+      const opts = {
+        bubbles: true,
+        cancelable: true,
+        view: window,
+        clientX: rect.left + rect.width / 2,
+        clientY: rect.top + rect.height / 2,
+      };
+      target.dispatchEvent(new MouseEvent("mouseover", opts));
+      target.dispatchEvent(new MouseEvent("mousedown", opts));
+      target.dispatchEvent(new MouseEvent("mouseup", opts));
+      target.dispatchEvent(new MouseEvent("click", opts));
+      return { clicked: true, text: clean(el.innerText || el.textContent || "") };
+    }, mode);
+  };
+
+  for (const mode of ["exact", "contains"]) {
+    const downloadPromise = page.waitForEvent("download", { timeout: 12000 }).catch((err) => ({ __downloadError: err.message || String(err) }));
+    const clickResult = await clickWithMode(mode).catch((err) => ({ clicked: false, reason: err.message || String(err) }));
+    if (!clickResult.clicked) continue;
+    const download = await downloadPromise;
+    if (download && !download.__downloadError) return download;
+  }
+  return null;
+}
+
+async function capture(page, row) {
+  const state = await renderedState(page);
+  const textVisible = state.some((item) => item.bodyHasDownloadText || item.bodyHasCsvText || item.bodyHasPdfText || (item.candidates || []).length > 0);
+  const clickable = state.some((item) => (item.candidates || []).some((candidate) => /\bCSV\b/i.test(candidate.text || "")));
+  if (!clickable) {
+    return {
+      textVisible,
+      clickable,
+      success: false,
+      filename: "",
+      localPath: "",
+      size: 0,
+      status: textVisible ? "DOWNLOAD_TEXT_VISIBLE_NO_CSV_CLICKABLE" : "NO_VISIBLE_CSV_FOUND",
+      error: "",
+    };
+  }
+  for (const frame of page.frames()) {
+    const download = await clickCsv(page, frame);
+    if (!download) continue;
+    const suggested = download.suggestedFilename() || "racingcom_sectionals.csv";
+    const filename = safeFilePart(`${prefix(row)}_${suggested.endsWith(".csv") ? suggested : `${suggested}.csv`}`);
+    const target = uniquePath(filename);
+    await download.saveAs(target);
+    const stat = fs.statSync(target);
+    return {
+      textVisible,
+      clickable,
+      success: true,
+      filename: path.basename(target),
+      localPath: target,
+      size: stat.size,
+      status: "CSV_DOWNLOAD_SUCCESS",
+      error: "",
+    };
+  }
+  const hrefCandidate = state
+    .flatMap((item) => item.candidates || [])
+    .filter((candidate) => /\bCSV\b/i.test(candidate.text || ""))
+    .map((candidate) => publicCsvHref(candidate.href || ""))
+    .find((href) => href);
+  if (hrefCandidate) {
+    const saved = await savePublicCsvHref(hrefCandidate, row);
+    if (saved.success) {
+      return {
+        textVisible,
+        clickable,
+        success: true,
+        filename: saved.filename,
+        localPath: saved.localPath,
+        size: saved.size,
+        status: "CSV_DOWNLOAD_SUCCESS_PUBLIC_VISIBLE_HREF",
+        error: "",
+      };
+    }
+    return {
+      textVisible,
+      clickable,
+      success: false,
+      filename: "",
+      localPath: "",
+      size: 0,
+      status: "VISIBLE_CSV_HREF_DOWNLOAD_FAILED",
+      error: saved.error,
+    };
+  }
+  return {
+    textVisible,
+    clickable,
+    success: false,
+    filename: "",
+    localPath: "",
+    size: 0,
+    status: "VISIBLE_CSV_BUT_DOWNLOAD_FAILED",
+    error: "CSV was visible but no browser download event was captured.",
+  };
+}
+
+(async () => {
+  const results = [];
+  function writeProgress() {
+    fs.writeFileSync(outputPath, JSON.stringify({ results, runtime_error: "" }, null, 2));
+  }
+
+  let playwright;
+  try {
+    playwright = require("playwright");
+  } catch (err) {
+    fs.writeFileSync(outputPath, JSON.stringify({ results, runtime_error: `playwright_require_failed:${err.message || String(err)}` }, null, 2));
+    return;
+  }
+
+  let bundle;
+  try {
+    bundle = await createBrowser(playwright);
+  } catch (err) {
+    fs.writeFileSync(outputPath, JSON.stringify({ results, runtime_error: `browser_start_failed:${err.message || String(err)}` }, null, 2));
+    return;
+  }
+
+  const { browser, context, closeBrowser } = bundle;
+  const page = await context.newPage();
+
+  for (const row of rows) {
+    const existing = force ? null : existingDownload(row);
+    if (existing) {
+      results.push({
+        meeting_date: row.meeting_date,
+        track: row.track,
+        track_slug: row.track_slug,
+        race_no: row.race_no,
+        speed_data_url: row.speed_data_url,
+        page_loaded: "TRUE",
+        download_text_visible: "TRUE",
+        csv_clickable_found: "TRUE",
+        csv_download_success: "TRUE",
+        downloaded_filename: existing.name,
+        local_path: existing.fullPath,
+        file_size_bytes: existing.size,
+        skipped_existing: "TRUE",
+        excluded_flag: "FALSE",
+        excluded_reason: "",
+        status: "SKIPPED_EXISTING",
+        error: "",
+      });
+      writeProgress();
+      continue;
+    }
+
+    if (!PUBLIC_SPEED_RE.test(row.speed_data_url || "")) {
+      results.push({
+        meeting_date: row.meeting_date,
+        track: row.track,
+        track_slug: row.track_slug,
+        race_no: row.race_no,
+        speed_data_url: row.speed_data_url,
+        page_loaded: "FALSE",
+        download_text_visible: "FALSE",
+        csv_clickable_found: "FALSE",
+        csv_download_success: "FALSE",
+        downloaded_filename: "",
+        local_path: "",
+        file_size_bytes: 0,
+        skipped_existing: "FALSE",
+        excluded_flag: "TRUE",
+        excluded_reason: "NON_PUBLIC_SPEED_DATA_URL",
+        status: "SAFETY_BLOCKED",
+        error: "Rejected non-public speed-data URL.",
+      });
+      writeProgress();
+      continue;
+    }
+
+    try {
+      await page.goto(row.speed_data_url, { waitUntil: "domcontentloaded", timeout: 90000 });
+      await settleAndScroll(page);
+      const captured = await capture(page, row);
+      results.push({
+        meeting_date: row.meeting_date,
+        track: row.track,
+        track_slug: row.track_slug,
+        race_no: row.race_no,
+        speed_data_url: row.speed_data_url,
+        page_loaded: "TRUE",
+        download_text_visible: captured.textVisible ? "TRUE" : "FALSE",
+        csv_clickable_found: captured.clickable ? "TRUE" : "FALSE",
+        csv_download_success: captured.success ? "TRUE" : "FALSE",
+        downloaded_filename: captured.filename,
+        local_path: captured.localPath,
+        file_size_bytes: captured.size,
+        skipped_existing: "FALSE",
+        excluded_flag: "FALSE",
+        excluded_reason: "",
+        status: captured.status,
+        error: captured.error,
+      });
+      writeProgress();
+    } catch (err) {
+      results.push({
+        meeting_date: row.meeting_date,
+        track: row.track,
+        track_slug: row.track_slug,
+        race_no: row.race_no,
+        speed_data_url: row.speed_data_url,
+        page_loaded: "FALSE",
+        download_text_visible: "FALSE",
+        csv_clickable_found: "FALSE",
+        csv_download_success: "FALSE",
+        downloaded_filename: "",
+        local_path: "",
+        file_size_bytes: 0,
+        skipped_existing: "FALSE",
+        excluded_flag: "FALSE",
+        excluded_reason: "",
+        status: "NO_RENDERED_PAGE_ACCESS",
+        error: err && err.message ? err.message : String(err),
+      });
+      writeProgress();
+    }
+  }
+
+  await page.close().catch(() => {});
+  if (closeBrowser) await browser.close().catch(() => {});
+  writeProgress();
+})();
+"""
+
+
+def clean(value: Any) -> str:
+    text = "" if value is None else str(value).strip()
+    return "" if text.upper() in {"NAN", "NONE", "NULL", "N/A", "NA", "-"} else text
+
+
+def write_csv(path: Path, rows: list[dict[str, Any]], columns: list[str]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_suffix(".tmp")
+    with tmp.open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=columns, extrasaction="ignore")
+        writer.writeheader()
+        for row in rows:
+            writer.writerow({column: row.get(column, "") for column in columns})
+    tmp.replace(path)
+
+
+def read_csv(path: Path) -> list[dict[str, str]]:
+    if not path.exists():
+        return []
+    try:
+        with path.open("r", encoding="utf-8-sig", newline="") as handle:
+            return list(csv.DictReader(handle))
+    except UnicodeDecodeError:
+        with path.open("r", encoding="latin-1", newline="") as handle:
+            return list(csv.DictReader(handle))
+
+
+def stream_csv(path: Path):
+    if not path.exists():
+        return
+    try:
+        handle = path.open("r", encoding="utf-8-sig", newline="")
+    except UnicodeDecodeError:
+        handle = path.open("r", encoding="latin-1", newline="")
+    with handle:
+        yield from csv.DictReader(handle)
+
+
+def first(row: dict[str, str], columns: tuple[str, ...]) -> str:
+    for column in columns:
+        value = clean(row.get(column))
+        if value:
+            return value
+    return ""
+
+
+def normalise_track(value: Any) -> str:
+    raw = clean(value).upper()
+    raw = re.sub(r"[^A-Z0-9]+", " ", raw)
+    return re.sub(r"\s+", " ", raw).strip()
+
+
+def track_slug(track: str) -> str:
+    key = normalise_track(track)
+    if key in TRACK_SLUG_ALIASES:
+        return TRACK_SLUG_ALIASES[key]
+    slug = clean(track).lower().replace("&", "and")
+    slug = re.sub(r"[’']", "", slug)
+    slug = re.sub(r"[^a-z0-9]+", "-", slug)
+    return re.sub(r"-+", "-", slug).strip("-")
+
+
+def race_no(value: Any) -> str:
+    match = re.search(r"\d+", clean(value))
+    return str(int(match.group(0))) if match else ""
+
+
+def race_date(value: Any) -> str:
+    match = re.search(r"\d{4}-\d{2}-\d{2}", clean(value))
+    return match.group(0) if match else ""
+
+
+def is_excluded_text(value: str, patterns: tuple[str, ...]) -> bool:
+    lower = clean(value).lower()
+    return any(pattern in lower for pattern in patterns)
+
+
+def is_vic_context(row: dict[str, str], track: str) -> bool:
+    state = clean(row.get("state") or row.get("venue_state"))
+    if state:
+        return state.upper() == "VIC"
+    track_key = normalise_track(track)
+    return any(token in track_key for token in VIC_TRACK_TOKENS)
+
+
+def speed_data_url(meeting_date: str, slug: str, rn: str) -> str:
+    return f"https://www.racing.com/form/{meeting_date}/{slug}/race/{rn}/speed-data"
+
+
+def create_seed_if_missing() -> None:
+    if SEED.exists():
+        return
+    seed_rows: list[dict[str, Any]] = []
+    for row in read_csv(DATA / "racingcom_form_speed_data_url_audit_v1.csv"):
+        meeting_date = race_date(row.get("race_date"))
+        track = clean(row.get("track"))
+        rn = race_no(row.get("race_no"))
+        if not meeting_date or not track or not rn:
+            continue
+        seed_rows.append(
+            {
+                "meeting_date": meeting_date,
+                "track": track,
+                "race_no": rn,
+                "track_slug": clean(row.get("track_slug")) or track_slug(track),
+                "meeting_type": "STANDARD_RACE_MEETING",
+                "include_flag": "TRUE",
+                "notes": "Seeded from racingcom_form_speed_data_url_audit_v1.csv",
+            }
+        )
+    write_csv(SEED, seed_rows, SEED_COLUMNS)
+
+
+def load_candidates(start_date: str, end_date: str) -> tuple[list[dict[str, Any]], dict[str, int]]:
+    create_seed_if_missing()
+    seen: set[tuple[str, str, str]] = set()
+    candidates: list[dict[str, Any]] = []
+    metrics = {
+        "candidate_rows_loaded": 0,
+        "excluded_trials_jumpouts": 0,
+        "excluded_picnics": 0,
+        "excluded_non_vic": 0,
+    }
+
+    for path in SOURCE_FILES:
+        if not path.exists():
+            continue
+        for row in stream_csv(path) or []:
+            metrics["candidate_rows_loaded"] += 1
+            meeting_date = race_date(first(row, ("race_date", "date", "meeting_date")))
+            track = first(row, ("track", "venue", "track_name"))
+            rn = race_no(first(row, ("race_no", "race_number", "race")))
+            if not meeting_date or not track or not rn:
+                continue
+            if start_date and meeting_date < start_date:
+                continue
+            if end_date and meeting_date > end_date:
+                continue
+
+            meeting_type = first(row, ("meeting_type", "meeting_kind", "race_type"))
+            context_text = " ".join(
+                [
+                    meeting_type,
+                    first(row, ("race_name", "event_name")),
+                    first(row, ("race_class", "class")),
+                    track,
+                ]
+            )
+            if is_excluded_text(context_text, EXCLUDE_TRIAL_PATTERNS):
+                metrics["excluded_trials_jumpouts"] += 1
+                continue
+            if is_excluded_text(context_text, EXCLUDE_PICNIC_PATTERNS):
+                metrics["excluded_picnics"] += 1
+                continue
+            if clean(row.get("include_flag")).upper() in {"FALSE", "NO", "0", "N"}:
+                continue
+            if not is_vic_context(row, track):
+                metrics["excluded_non_vic"] += 1
+                continue
+
+            slug = first(row, ("track_slug",)) or track_slug(track)
+            key = (meeting_date, slug, rn)
+            if key in seen:
+                continue
+            seen.add(key)
+            candidates.append(
+                {
+                    "meeting_date": meeting_date,
+                    "track": track,
+                    "track_slug": slug,
+                    "race_no": rn,
+                    "meeting_type": meeting_type or "STANDARD_RACE_MEETING",
+                    "speed_data_url": speed_data_url(meeting_date, slug, rn),
+                }
+            )
+
+    candidates.sort(
+        key=lambda item: (
+            0 if item["speed_data_url"].lower() == PRIORITY_TEST_URL.lower() else 1,
+            item["meeting_date"],
+            item["track_slug"],
+            int(item["race_no"]),
+        ),
+        reverse=False,
+    )
+    return candidates, metrics
+
+
+def run_node_harvest(candidates: list[dict[str, Any]], force: bool) -> tuple[list[dict[str, Any]], str]:
+    TMP.mkdir(parents=True, exist_ok=True)
+    DOWNLOAD_DIR.mkdir(parents=True, exist_ok=True)
+    helper = TMP / "build_racingcom_sectional_history_harvest_v1_helper.cjs"
+    input_path = TMP / "build_racingcom_sectional_history_harvest_v1_input.json"
+    output_path = TMP / "build_racingcom_sectional_history_harvest_v1_output.json"
+
+    helper.write_text(NODE_HELPER, encoding="utf-8")
+    input_path.write_text(json.dumps(candidates, indent=2), encoding="utf-8")
+
+    def read_partial() -> list[dict[str, Any]]:
+        if not output_path.exists():
+            return []
+        try:
+            return list(json.loads(output_path.read_text(encoding="utf-8")).get("results") or [])
+        except Exception:
+            return []
+
+    try:
+        completed = subprocess.run(
+            ["node", str(helper), str(input_path), str(output_path), str(DOWNLOAD_DIR), "1" if force else "0"],
+            cwd=str(ROOT),
+            capture_output=True,
+            text=True,
+            timeout=max(900, len(candidates) * 55),
+            check=False,
+        )
+    except subprocess.TimeoutExpired as exc:
+        return read_partial(), f"node_timeout_after_{exc.timeout}_seconds"
+    except Exception as exc:  # noqa: BLE001
+        return read_partial(), f"node_failed:{exc.__class__.__name__}:{exc}"
+
+    if completed.returncode != 0:
+        message = clean(completed.stderr) or clean(completed.stdout) or f"return_code_{completed.returncode}"
+        return read_partial(), f"node_returned_error:{message[:500]}"
+    if not output_path.exists():
+        return [], "node_no_output"
+    return read_partial(), ""
+
+
+def fill_missing_results(candidates: list[dict[str, Any]], rows: list[dict[str, Any]], error: str) -> list[dict[str, Any]]:
+    done = {clean(row.get("speed_data_url")) for row in rows}
+    for item in candidates:
+        if item["speed_data_url"] in done:
+            continue
+        rows.append(
+            {
+                "meeting_date": item["meeting_date"],
+                "track": item["track"],
+                "track_slug": item["track_slug"],
+                "race_no": item["race_no"],
+                "speed_data_url": item["speed_data_url"],
+                "page_loaded": "FALSE",
+                "download_text_visible": "FALSE",
+                "csv_clickable_found": "FALSE",
+                "csv_download_success": "FALSE",
+                "downloaded_filename": "",
+                "local_path": "",
+                "file_size_bytes": 0,
+                "skipped_existing": "FALSE",
+                "excluded_flag": "FALSE",
+                "excluded_reason": "",
+                "status": "NO_RENDERED_PAGE_ACCESS",
+                "error": error or "No browser result returned.",
+            }
+        )
+    return rows
+
+
+def final_status(rows: list[dict[str, Any]], candidates: int) -> str:
+    if candidates == 0:
+        return "NO_CANDIDATE_RACES"
+    if any(clean(row.get("status")) == "SAFETY_BLOCKED" for row in rows):
+        return "SAFETY_BLOCKED"
+    successes = sum(1 for row in rows if clean(row.get("csv_download_success")) == "TRUE")
+    skipped = sum(1 for row in rows if clean(row.get("skipped_existing")) == "TRUE")
+    if successes + skipped == len(rows) and rows:
+        return "SECTIONAL_HISTORY_HARVEST_SUCCESS"
+    if successes or skipped:
+        return "SECTIONAL_HISTORY_HARVEST_PARTIAL"
+    return "NO_CSV_DOWNLOADS_FOUND"
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Harvest public Racing.com Speed Data CSV downloads.")
+    parser.add_argument("--max-races", type=int, default=100)
+    parser.add_argument("--start-date", default="")
+    parser.add_argument("--end-date", default="")
+    parser.add_argument("--force", action="store_true")
+    return parser.parse_args()
+
+
+def main() -> None:
+    args = parse_args()
+    start = race_date(args.start_date)
+    end = race_date(args.end_date)
+    candidates, metrics = load_candidates(start, end)
+    selected = candidates[: max(0, args.max_races)]
+
+    print(f"[racingcom_history_harvest_v1] candidate_rows_loaded={metrics['candidate_rows_loaded']} unique_contexts={len(candidates)} selected={len(selected)}")
+    if selected:
+        print(f"[racingcom_history_harvest_v1] first_url={selected[0]['speed_data_url']}")
+
+    if not selected:
+        write_csv(MANIFEST, [], MANIFEST_COLUMNS)
+        write_csv(
+            AUDIT,
+            [
+                {
+                    **metrics,
+                    "unique_race_contexts": 0,
+                    "attempted_races": 0,
+                    "pages_loaded": 0,
+                    "download_text_visible_count": 0,
+                    "csv_clickable_found_count": 0,
+                    "csv_download_success_count": 0,
+                    "skipped_existing_count": 0,
+                    "download_failed_count": 0,
+                    "download_folder": str(DOWNLOAD_DIR),
+                    "graphql_endpoint_called_by_script": "FALSE",
+                    "api_key_extracted": "FALSE",
+                    "private_endpoint_used": "FALSE",
+                    "final_status": "NO_CANDIDATE_RACES",
+                }
+            ],
+            AUDIT_COLUMNS,
+        )
+        return
+
+    rows, browser_error = run_node_harvest(selected, args.force)
+    if browser_error:
+        print(f"[racingcom_history_harvest_v1] browser warning: {browser_error}")
+    rows = fill_missing_results(selected, rows, browser_error)
+
+    status = final_status(rows, len(selected))
+    pages_loaded = sum(1 for row in rows if clean(row.get("page_loaded")) == "TRUE")
+    text_visible = sum(1 for row in rows if clean(row.get("download_text_visible")) == "TRUE")
+    clickable = sum(1 for row in rows if clean(row.get("csv_clickable_found")) == "TRUE")
+    success = sum(1 for row in rows if clean(row.get("csv_download_success")) == "TRUE")
+    skipped = sum(1 for row in rows if clean(row.get("skipped_existing")) == "TRUE")
+    failed = len(rows) - success - skipped
+
+    audit_row = {
+        **metrics,
+        "unique_race_contexts": len(candidates),
+        "attempted_races": len(selected),
+        "pages_loaded": pages_loaded,
+        "download_text_visible_count": text_visible,
+        "csv_clickable_found_count": clickable,
+        "csv_download_success_count": success,
+        "skipped_existing_count": skipped,
+        "download_failed_count": failed,
+        "download_folder": str(DOWNLOAD_DIR),
+        "graphql_endpoint_called_by_script": "FALSE",
+        "api_key_extracted": "FALSE",
+        "private_endpoint_used": "FALSE",
+        "final_status": status,
+    }
+
+    write_csv(MANIFEST, rows, MANIFEST_COLUMNS)
+    write_csv(AUDIT, [audit_row], AUDIT_COLUMNS)
+
+    print(f"[racingcom_history_harvest_v1] pages_loaded={pages_loaded} success={success} skipped_existing={skipped} failed={failed}")
+    print(f"[racingcom_history_harvest_v1] final_status={status}")
+    print(f"[racingcom_history_harvest_v1] wrote {MANIFEST.relative_to(ROOT)}")
+    print(f"[racingcom_history_harvest_v1] wrote {AUDIT.relative_to(ROOT)}")
+
+
+if __name__ == "__main__":
+    main()

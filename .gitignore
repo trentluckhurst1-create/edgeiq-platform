@@ -1,0 +1,60 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+dist-ssr/
+coverage/
+*.tsbuildinfo
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Local-only files
+*.local
+
+# IDEs
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Vercel
+.vercel/
+
+# Python
+__pycache__/
+*.pyc
+
+# EDGEiQ local archives / old checkpoints
+_archive_pre_git_commit/
+_archive/
+CHECKPOINTS/
+*_CHECKPOINT*
+*_BACKUP*
+*_WORKING*
+src_backup*/
+src_BROKEN_BACKUP/
+*.zip
+*.png
+
+# Large local data warehouses - not stored in GitHub
+public/data/
+*.parquet
+*.db
+*.sqlite
+*.xlsx

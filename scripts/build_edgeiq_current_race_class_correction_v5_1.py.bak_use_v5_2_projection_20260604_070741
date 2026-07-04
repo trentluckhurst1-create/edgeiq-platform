@@ -1,0 +1,422 @@
+from __future__ import annotations
+
+import re
+from datetime import datetime, timezone
+from pathlib import Path
+
+import pandas as pd
+
+
+ROOT = Path(__file__).resolve().parents[1]
+DATA = ROOT / "public" / "data"
+
+CURRENT_PROJECTION = DATA / "edgeiq_current_field_projection_v5_1.csv"
+LIVE_FEED = DATA / "edgeiq_vic_live_terminal_feed_v1.csv"
+
+OUT = DATA / "edgeiq_current_race_class_correction_v5_1.csv"
+AUDIT = DATA / "edgeiq_current_race_class_correction_v5_1_audit.csv"
+
+TARGETABLE_CLASSES_FOR_AFTER_ESTIMATE = {
+    "BM120",
+    "BM70",
+    "BM66",
+    "LISTED",
+}
+
+
+def norm(value: object) -> str:
+    if pd.isna(value):
+        return ""
+    return " ".join(str(value).upper().strip().split())
+
+
+def clean_race_no(value: object) -> str:
+    text = str(value).strip()
+    return re.sub(r"\.0$", "", text)
+
+
+def clean_class(value: object) -> str:
+    text = norm(value)
+    if not text:
+        return "UNKNOWN"
+
+    text = text.replace("-", " ")
+    text = re.sub(r"\s+", " ", text).strip()
+
+    bm = re.search(r"\bBM\s*(\d{2,3})\b", text)
+    if bm:
+        return f"BM{bm.group(1)}"
+
+    rating_band = re.search(r"\b0\s*(?:TO|-)\s*(\d{2,3})\b", text)
+    if rating_band:
+        return f"BM{rating_band.group(1)}"
+
+    if "MAIDEN" in text or text == "MDN":
+        return "MAIDEN"
+
+    class_match = re.search(r"\b(?:CLASS|CL|C)\s*([1-6])\b", text)
+    if class_match:
+        return f"CLASS {class_match.group(1)}"
+
+    group_match = re.search(r"\bGROUP\s*([123])\b|\bG([123])\b", text)
+    if group_match:
+        group_no = group_match.group(1) or group_match.group(2)
+        return f"GROUP {group_no}"
+
+    if "LISTED" in text:
+        return "LISTED"
+    if "HANDICAP" in text:
+        return "HANDICAP"
+    if text == "UNKNOWN":
+        return "UNKNOWN"
+    return text
+
+
+def class_family(clean: str) -> str:
+    if clean in {"GROUP 1", "GROUP 2", "GROUP 3", "LISTED"}:
+        return "BLACKTYPE"
+    if clean.startswith("BM"):
+        return "JUMPS_OR_HIGHWEIGHT" if clean == "BM120" else "BENCHMARK"
+    if clean.startswith("CLASS "):
+        return "CLASS"
+    if clean == "MAIDEN":
+        return "MAIDEN"
+    if clean in {"HIGHWAY", "MIDWAY", "COUNTRY", "PROVINCIAL", "WESTSPEED"}:
+        return "REGIONAL_RESTRICTED"
+    if clean in {"HANDICAP", "UNKNOWN"}:
+        return "UNRESOLVED"
+    return "OTHER"
+
+
+def as_number(value: object) -> float | None:
+    parsed = pd.to_numeric(value, errors="coerce")
+    if pd.isna(parsed):
+        return None
+    return float(parsed)
+
+
+def bool_text(value: bool) -> str:
+    return "TRUE" if value else "FALSE"
+
+
+def correction_for_race(row: pd.Series) -> dict[str, object]:
+    race_no = clean_race_no(row.get("race_no", ""))
+    distance = as_number(row.get("distance"))
+    original = clean_class(row.get("race_class_clean_v5_1_current") or row.get("race_class", ""))
+
+    correction = {
+        "corrected_race_class_v5_1": original,
+        "corrected_class_family_v5_1": class_family(original),
+        "class_correction_applied_v5_1": "FALSE",
+        "class_correction_confidence_v5_1": "UNCHANGED",
+        "class_correction_source_v5_1": "CURRENT_FEED_UNCHANGED",
+        "class_correction_reason_v5_1": "current race class already target-facing or no supported correction rule",
+    }
+
+    if original == "HANDICAP" and race_no in {"2", "4"} and distance == 3900:
+        correction.update(
+            {
+                "corrected_race_class_v5_1": "BM120",
+                "corrected_class_family_v5_1": "JUMPS_OR_HIGHWEIGHT",
+                "class_correction_applied_v5_1": "TRUE",
+                "class_correction_confidence_v5_1": "MEDIUM",
+                "class_correction_source_v5_1": "CURRENT_RACE_NO_DISTANCE_USER_SUPPLIED_RULE",
+                "class_correction_reason_v5_1": "Sandown R2/R4 3900m HANDICAP treated as jumps/highweight; mapped to BM120 targetable class",
+            }
+        )
+    elif original == "HANDICAP" and race_no == "3" and distance == 1600:
+        correction.update(
+            {
+                "corrected_race_class_v5_1": "BM66",
+                "corrected_class_family_v5_1": "BENCHMARK",
+                "class_correction_applied_v5_1": "TRUE",
+                "class_correction_confidence_v5_1": "MEDIUM",
+                "class_correction_source_v5_1": "CURRENT_RACE_NO_DISTANCE_USER_SUPPLIED_RULE",
+                "class_correction_reason_v5_1": "Sandown R3 1600m HANDICAP treated as likely 0-66 flat handicap; mapped to BM66 targetable class",
+            }
+        )
+    elif original == "UNKNOWN" and race_no == "6" and distance == 3200:
+        correction.update(
+            {
+                "corrected_race_class_v5_1": "LISTED",
+                "corrected_class_family_v5_1": "BLACKTYPE",
+                "class_correction_applied_v5_1": "TRUE",
+                "class_correction_confidence_v5_1": "HIGH",
+                "class_correction_source_v5_1": "CURRENT_RACE_NO_DISTANCE_USER_SUPPLIED_RULE",
+                "class_correction_reason_v5_1": "Sandown R6 3200m UNKNOWN identified as Listed Sandown Cup; mapped to LISTED targetable class",
+            }
+        )
+
+    return correction
+
+
+def audit_row(
+    section: str,
+    metric: str,
+    value: object = "",
+    count: object = "",
+    race_date: str = "",
+    track: str = "",
+    race_no: str = "",
+    race_time: str = "",
+    distance: object = "",
+    original_class: str = "",
+    corrected_class: str = "",
+    notes: str = "",
+) -> dict[str, object]:
+    return {
+        "section": section,
+        "metric": metric,
+        "value": value,
+        "count": count,
+        "race_date": race_date,
+        "track": track,
+        "race_no": race_no,
+        "race_time": race_time,
+        "distance": distance,
+        "original_race_class": original_class,
+        "corrected_race_class_v5_1": corrected_class,
+        "notes": notes,
+    }
+
+
+def race_sort_value(value: object) -> int:
+    parsed = pd.to_numeric(value, errors="coerce")
+    if pd.isna(parsed):
+        return 999
+    return int(parsed)
+
+
+def main() -> None:
+    print("=" * 90)
+    print("EDGEIQ CURRENT RACE CLASS CORRECTION V5.1")
+    print("=" * 90)
+
+    for path in [CURRENT_PROJECTION, LIVE_FEED]:
+        if not path.exists():
+            raise FileNotFoundError(f"Missing input: {path}")
+
+    projection = pd.read_csv(CURRENT_PROJECTION, dtype=str, keep_default_na=False, low_memory=False)
+    live = pd.read_csv(LIVE_FEED, dtype=str, keep_default_na=False, low_memory=False)
+
+    projection_required = {
+        "race_date",
+        "track",
+        "race_no",
+        "race_time",
+        "distance",
+        "horse",
+        "race_class",
+        "race_class_clean_v5_1_current",
+        "target_status_v5_1",
+    }
+    live_required = {
+        "race_date",
+        "track",
+        "race_no",
+        "race_time",
+        "distance",
+        "horse",
+        "race_class",
+    }
+
+    missing_projection = sorted(projection_required.difference(projection.columns))
+    missing_live = sorted(live_required.difference(live.columns))
+    if missing_projection:
+        raise ValueError(f"Missing current projection columns: {missing_projection}")
+    if missing_live:
+        raise ValueError(f"Missing live feed columns: {missing_live}")
+
+    live_current = live[live["day_bucket"].eq("TODAY")].copy() if "day_bucket" in live.columns else live.copy()
+    projection["race_no"] = projection["race_no"].map(clean_race_no)
+    live_current["race_no"] = live_current["race_no"].map(clean_race_no)
+
+    projection["original_race_class_clean_v5_1"] = projection["race_class_clean_v5_1_current"].map(clean_class)
+    projection["no_target_before_v5_1"] = projection["target_status_v5_1"].eq("NO_TARGET")
+
+    live_race_summary = (
+        live_current.groupby(["race_date", "track", "race_no"], dropna=False)
+        .agg(
+            live_runner_count=("horse", "size"),
+            live_race_class=("race_class", "first"),
+            live_sample_horses=("horse", lambda values: "; ".join(list(values)[:6])),
+        )
+        .reset_index()
+    )
+
+    projection = projection.merge(
+        live_race_summary,
+        on=["race_date", "track", "race_no"],
+        how="left",
+    )
+
+    correction_rows = projection.apply(correction_for_race, axis=1, result_type="expand")
+    out = pd.concat([projection, correction_rows], axis=1)
+
+    out["no_target_after_correction_estimate_v5_1"] = (
+        out["no_target_before_v5_1"]
+        & ~out["corrected_race_class_v5_1"].isin(TARGETABLE_CLASSES_FOR_AFTER_ESTIMATE)
+    )
+    out["target_after_correction_estimate_v5_1"] = out["no_target_after_correction_estimate_v5_1"].map(
+        lambda value: "NO_TARGET_ESTIMATE" if value else "TARGET_POSSIBLE_AFTER_CLASS_CORRECTION"
+    )
+
+    out["no_target_before_v5_1"] = out["no_target_before_v5_1"].map(bool_text)
+    out["no_target_after_correction_estimate_v5_1"] = out["no_target_after_correction_estimate_v5_1"].map(bool_text)
+    out["built_at_class_correction_v5_1"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
+
+    output_cols = [
+        "race_date",
+        "day_bucket",
+        "track",
+        "race_no",
+        "race_time",
+        "distance",
+        "current_field_size_v5_1",
+        "horse_no",
+        "saddlecloth",
+        "horse",
+        "horse_key",
+        "race_class",
+        "original_race_class_clean_v5_1",
+        "target_status_v5_1",
+        "no_target_before_v5_1",
+        "corrected_race_class_v5_1",
+        "corrected_class_family_v5_1",
+        "class_correction_applied_v5_1",
+        "class_correction_confidence_v5_1",
+        "class_correction_source_v5_1",
+        "class_correction_reason_v5_1",
+        "target_after_correction_estimate_v5_1",
+        "no_target_after_correction_estimate_v5_1",
+        "live_runner_count",
+        "live_race_class",
+        "live_sample_horses",
+        "built_at_class_correction_v5_1",
+    ]
+    output_cols = [column for column in output_cols if column in out.columns]
+    out.to_csv(OUT, index=False, columns=output_cols)
+
+    audit_rows: list[dict[str, object]] = [
+        audit_row("overall", "projection_rows_loaded", len(projection)),
+        audit_row("overall", "live_current_rows_loaded", len(live_current)),
+        audit_row("overall", "current_races", projection[["race_date", "track", "race_no"]].drop_duplicates().shape[0]),
+        audit_row("overall", "current_runners", len(out)),
+        audit_row("overall", "no_target_runners_before", int(out["no_target_before_v5_1"].eq("TRUE").sum())),
+        audit_row(
+            "overall",
+            "no_target_runners_after_estimate",
+            int(out["no_target_after_correction_estimate_v5_1"].eq("TRUE").sum()),
+        ),
+        audit_row("overall", "corrected_runners", int(out["class_correction_applied_v5_1"].eq("TRUE").sum())),
+    ]
+
+    race_before = out.groupby(["race_date", "track", "race_no"], dropna=False)["no_target_before_v5_1"].apply(lambda s: bool((s == "TRUE").any()))
+    race_after = out.groupby(["race_date", "track", "race_no"], dropna=False)["no_target_after_correction_estimate_v5_1"].apply(lambda s: bool((s == "TRUE").any()))
+    audit_rows.extend(
+        [
+            audit_row("no_target_estimate", "no_target_races_before", int(race_before.sum())),
+            audit_row("no_target_estimate", "no_target_races_after_estimate", int(race_after.sum())),
+            audit_row("no_target_estimate", "resolved_no_target_races_estimate", int(race_before.sum() - race_after.sum())),
+            audit_row(
+                "no_target_estimate",
+                "resolved_no_target_runners_estimate",
+                int(out["no_target_before_v5_1"].eq("TRUE").sum() - out["no_target_after_correction_estimate_v5_1"].eq("TRUE").sum()),
+            ),
+        ]
+    )
+
+    original_dist = (
+        out.groupby("original_race_class_clean_v5_1", dropna=False)
+        .agg(
+            runner_count=("horse", "size"),
+            race_count=("race_no", "nunique"),
+            no_target_runners=("no_target_before_v5_1", lambda s: int((s == "TRUE").sum())),
+        )
+        .reset_index()
+    )
+    for _, row in original_dist.sort_values("original_race_class_clean_v5_1").iterrows():
+        audit_rows.append(
+            audit_row(
+                "original_current_class_distribution",
+                "class_distribution",
+                count=row["runner_count"],
+                original_class=row["original_race_class_clean_v5_1"],
+                notes=f"races={row['race_count']}; no_target_runners={row['no_target_runners']}",
+            )
+        )
+
+    corrected_dist = (
+        out.groupby("corrected_race_class_v5_1", dropna=False)
+        .agg(
+            runner_count=("horse", "size"),
+            race_count=("race_no", "nunique"),
+            no_target_after=("no_target_after_correction_estimate_v5_1", lambda s: int((s == "TRUE").sum())),
+        )
+        .reset_index()
+    )
+    for _, row in corrected_dist.sort_values("corrected_race_class_v5_1").iterrows():
+        audit_rows.append(
+            audit_row(
+                "corrected_current_class_distribution",
+                "class_distribution",
+                count=row["runner_count"],
+                corrected_class=row["corrected_race_class_v5_1"],
+                notes=f"races={row['race_count']}; no_target_after_estimate={row['no_target_after']}",
+            )
+        )
+
+    race_table = (
+        out.groupby(["race_date", "track", "race_no"], dropna=False)
+        .agg(
+            race_time=("race_time", "first"),
+            distance=("distance", "first"),
+            original_class=("original_race_class_clean_v5_1", "first"),
+            corrected_class=("corrected_race_class_v5_1", "first"),
+            corrected_family=("corrected_class_family_v5_1", "first"),
+            confidence=("class_correction_confidence_v5_1", "first"),
+            reason=("class_correction_reason_v5_1", "first"),
+            runners=("horse", "size"),
+            no_target_before=("no_target_before_v5_1", lambda s: int((s == "TRUE").sum())),
+            no_target_after=("no_target_after_correction_estimate_v5_1", lambda s: int((s == "TRUE").sum())),
+            sample_horses=("live_sample_horses", "first"),
+        )
+        .reset_index()
+    )
+    race_table["race_sort"] = race_table["race_no"].map(race_sort_value)
+    for _, row in race_table.sort_values(["race_date", "track", "race_sort"]).iterrows():
+        audit_rows.append(
+            audit_row(
+                "per_race_corrected_class_table",
+                "race_class_correction",
+                value=row["runners"],
+                race_date=row["race_date"],
+                track=row["track"],
+                race_no=row["race_no"],
+                race_time=row["race_time"],
+                distance=row["distance"],
+                original_class=row["original_class"],
+                corrected_class=row["corrected_class"],
+                notes=(
+                    f"family={row['corrected_family']}; confidence={row['confidence']}; "
+                    f"no_target_before={row['no_target_before']}; no_target_after_estimate={row['no_target_after']}; "
+                    f"reason={row['reason']}; sample_horses={row['sample_horses']}"
+                ),
+            )
+        )
+
+    audit = pd.DataFrame(audit_rows)
+    audit["built_at"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    audit.to_csv(AUDIT, index=False)
+
+    print(f"wrote: {OUT}")
+    print(f"wrote: {AUDIT}")
+    print()
+    print(audit[audit["section"].isin(["overall", "no_target_estimate"])].to_string(index=False))
+    print()
+    print(audit[audit["section"].eq("per_race_corrected_class_table")].to_string(index=False))
+    print("=" * 90)
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,148 @@
+﻿/* EDGEiQ Icons + Brand Polish V1 */
+
+:root {
+  --edge-accent: #2bd3ff;
+  --edge-blue: #2e86ff;
+  --edge-green: #61f08b;
+  --edge-gold: #ffcd4d;
+  --edge-orange: #ff8b2b;
+  --edge-purple: #9b5cff;
+}
+
+/* Brand mark top-left */
+[class*="home"]::before {
+  content: "▰ EDGEiQ";
+  position: fixed;
+  top: 24px;
+  left: 34px;
+  z-index: 40;
+  color: #f8fbff;
+  font-size: 25px;
+  font-weight: 1000;
+  letter-spacing: .02em;
+}
+
+[class*="home"]::after {
+  content: "RACING INTELLIGENCE PLATFORM";
+  position: fixed;
+  top: 57px;
+  left: 69px;
+  z-index: 40;
+  color: #9ca9bb;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .24em;
+}
+
+/* Add premium logo mark above main EDGEiQ hero */
+[class*="hero"] h1::before {
+  content: "▰";
+  display: block;
+  width: 82px;
+  height: 52px;
+  margin: 0 auto 12px;
+  color: var(--edge-accent);
+  font-size: 58px;
+  line-height: 52px;
+  transform: skewX(-16deg);
+  text-shadow: 0 0 28px rgba(43,211,255,.35);
+}
+
+/* System icons */
+[class*="operational"] [class*="card"]:nth-of-type(1)::before {
+  content: "▱";
+  color: var(--edge-green);
+}
+
+[class*="operational"] [class*="card"]:nth-of-type(2)::before {
+  content: "⌁";
+  color: var(--edge-blue);
+}
+
+[class*="operational"] [class*="card"]:nth-of-type(3)::before {
+  content: "⌁";
+  color: var(--edge-gold);
+}
+
+[class*="operational"] [class*="card"]:nth-of-type(4)::before {
+  content: "♘";
+  color: var(--edge-orange);
+}
+
+[class*="operational"] [class*="card"]::before {
+  display: block;
+  font-size: 26px;
+  line-height: 1;
+  margin-bottom: 7px;
+  font-weight: 900;
+}
+
+/* Feature symbols */
+[class*="reads"] [class*="card"]:nth-of-type(1)::before {
+  content: "◎";
+  color: var(--edge-blue);
+}
+
+[class*="reads"] [class*="card"]:nth-of-type(2)::before {
+  content: "〽";
+  color: var(--edge-purple);
+}
+
+[class*="reads"] [class*="card"]:nth-of-type(3)::before {
+  content: "▥";
+  color: var(--edge-accent);
+}
+
+[class*="reads"] [class*="card"]:nth-of-type(4)::before {
+  content: "♟";
+  color: #44f1df;
+}
+
+[class*="reads"] [class*="card"]:nth-of-type(5)::before {
+  content: "Ω";
+  color: var(--edge-gold);
+}
+
+[class*="reads"] [class*="card"]::before {
+  display: block;
+  font-size: 32px;
+  line-height: 1;
+  margin-bottom: 13px;
+  font-weight: 900;
+}
+
+/* Meeting horse icon */
+[class*="meeting"] [class*="card"] h2::before,
+[class*="meeting"] [class*="card"] h3::before {
+  content: "♞";
+  display: inline-block;
+  margin-right: 12px;
+  color: var(--edge-blue);
+  font-size: 24px;
+  text-shadow: 0 0 18px rgba(46,134,255,.38);
+}
+
+/* Date badge feel */
+[class*="meeting"] [class*="card"] h2 + span,
+[class*="meeting"] [class*="card"] h3 + span {
+  display: inline-block !important;
+  margin-top: 4px !important;
+  color: #7dd3fc !important;
+  letter-spacing: .10em !important;
+  text-transform: uppercase !important;
+}
+
+/* Sharper cards */
+[class*="card"] {
+  background: linear-gradient(180deg, rgba(9,22,37,.86), rgba(4,10,18,.78)) !important;
+  border-color: rgba(80,140,190,.25) !important;
+}
+
+[class*="card"]:hover {
+  border-color: rgba(43,211,255,.48) !important;
+}
+
+/* Hide developer helper text */
+[class*="home"] em {
+  display: none !important;
+}

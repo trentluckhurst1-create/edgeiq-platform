@@ -1,0 +1,379 @@
+﻿from __future__ import annotations
+
+from datetime import datetime, timedelta, timezone
+from pathlib import Path
+
+from edgeiq_csv_utils import clean, file_age_seconds, first, num, read_csv, runner_key, write_csv
+
+
+ROOT = Path(__file__).resolve().parents[1]
+DATA = ROOT / "public" / "data"
+
+SELECTOR = DATA / "edgeiq_active_race_selector.csv"
+UNIVERSE = DATA / "edgeiq_vic_three_day_meeting_universe.csv"
+LIVE_BOARD = DATA / "edgeiq_live_runner_board_v1.csv"
+SPORTSBET = DATA / "sportsbet_live_market_v1.csv"
+
+OUT = DATA / "edgeiq_vic_live_terminal_feed_v1.csv"
+DIAG = DATA / "edgeiq_live_terminal_feed_v1_diagnostics.csv"
+
+LOCAL_TZ = timezone(timedelta(hours=10), name="Australia/Sydney")
+MARKET_FRESHNESS_MINUTES = 240
+
+PRIMARY_FIELDS = [
+    "built_at",
+    "meeting_key",
+    "race_key",
+    "runner_key",
+    "source",
+    "race_date",
+    "day_bucket",
+    "track",
+    "race_no",
+    "race_time",
+    "minutes_to_jump",
+    "race_state",
+    "distance",
+    "race_class",
+    "track_condition",
+    "horse_no",
+    "saddlecloth",
+    "horse",
+    "horse_key",
+    "barrier",
+    "jockey",
+    "trainer",
+    "silkUrl",
+    "silk_url",
+    "local_silk_path",
+    "mobile_silk_image",
+    "is_scratched",
+    "scratch_status",
+    "runner_status",
+    "ui_price",
+    "sportsbet_price",
+    "live_price",
+    "market_price",
+    "fixed_win",
+    "rated_price",
+    "ui_fair_price",
+    "edge_pct",
+    "ui_edge_pct",
+    "execution_action",
+    "market_state",
+    "market_mover",
+    "movement_velocity",
+    "bookmaker",
+    "sportsbet_event_id",
+    "sportsbet_market_id",
+    "sportsbet_timestamp",
+    "truth_grade",
+    "market_confidence",
+    "liquidity_grade",
+    "fake_overlay_flag",
+    "late_drift_risk",
+    "execution_trust_score",
+    "suppression_action",
+    "suppression_reason",
+    "clv_expectation",
+    "open_price",
+    "mid_price",
+    "close_price",
+    "flucs",
+    "last10",
+    "last_10",
+    "speed_map_bucket",
+    "map_position",
+    "run_style",
+    "pace_profile",
+    "settling_band",
+    "map_x_pct",
+    "map_y_px",
+    "ui_status",
+    "market_source_status",
+    "market_source_ready",
+    "market_source_rows",
+    "market_source_age_seconds",
+    "market_source_file",
+    "market_capture_timestamp",
+    "terminal_scope",
+]
+
+DIAG_FIELDS = [
+    "built_at",
+    "status",
+    "market_source_status",
+    "market_source_rows",
+    "market_source_age_seconds",
+    "selector_rows",
+    "selected_races",
+    "output_rows",
+    "rows_with_live_price",
+    "rows_without_live_price",
+    "first_race_key",
+]
+
+
+def now_local() -> datetime:
+    return datetime.now(LOCAL_TZ)
+
+
+def parse_date(value: object):
+    text = clean(value)
+    if not text:
+        return None
+    try:
+        return datetime.fromisoformat(text[:10]).date()
+    except ValueError:
+        return None
+
+
+def race_key_value(row: dict[str, str]) -> str:
+    return first(row, ["race_key"]) or "|".join(runner_key(row).split("|")[:2])
+
+
+def build_lookup(rows: list[dict[str, str]]) -> dict[str, dict[str, str]]:
+    lookup: dict[str, dict[str, str]] = {}
+    for row in rows:
+        keys = []
+        explicit = first(row, ["runner_key"])
+        derived = runner_key(row)
+        if explicit:
+            keys.append(explicit)
+        if derived and derived not in keys:
+            keys.append(derived)
+        for key in keys:
+            if key and key not in lookup:
+                lookup[key] = row
+    return lookup
+
+
+def build_market_source_status() -> tuple[str, int, float | None]:
+    rows = read_csv(SPORTSBET)
+    age_seconds = file_age_seconds(SPORTSBET)
+    if not rows:
+        return "BLOCKED_MISSING_OR_EMPTY_SOURCE", 0, age_seconds
+
+    today = now_local().date()
+    max_date = today + timedelta(days=2)
+    active_rows = 0
+    for row in rows:
+        race_date = parse_date(row.get("race_date"))
+        if race_date is not None and today <= race_date <= max_date:
+            active_rows += 1
+
+    if age_seconds is not None and age_seconds <= MARKET_FRESHNESS_MINUTES * 60 and active_rows > 0:
+        return "FRESH_SOURCE", len(rows), age_seconds
+    if active_rows > 0:
+        return "STALE_ACTIVE_SOURCE", len(rows), age_seconds
+    return "STALE_OUT_OF_WINDOW_SOURCE", len(rows), age_seconds
+
+
+def active_race_keys(selector_rows: list[dict[str, str]], universe_rows: list[dict[str, str]]) -> set[str]:
+    keys = {first(row, ["race_key"]) for row in selector_rows if clean(first(row, ["race_key"]))}
+    if keys:
+        return keys
+
+    today = now_local().date()
+    max_date = today + timedelta(days=2)
+    fallback = set()
+    for row in universe_rows:
+        race_date = parse_date(row.get("race_date"))
+        if race_date is None or not (today <= race_date <= max_date):
+            continue
+        key = race_key_value(row)
+        if key:
+            fallback.add(key)
+    return fallback
+
+
+def first_price(row: dict[str, str]) -> str:
+    for name in ["ui_price", "live_price", "sportsbet_price", "market_price", "fixed_win"]:
+        value = first(row, [name])
+        if value:
+            return value
+    return ""
+
+
+def price_text(value: str) -> str:
+    parsed = num(value)
+    return "" if parsed != parsed else f"{parsed:.2f}"
+
+
+def edge_text(row: dict[str, str], live_price: str, fair_price: str) -> str:
+    explicit = first(row, ["ui_edge_pct", "edge_pct", "overlay_pct", "v3_edge_pct"])
+    if explicit:
+        parsed = num(explicit)
+        if parsed == parsed:
+            return f"{parsed:.4f}".rstrip("0").rstrip(".")
+    live = num(live_price)
+    fair = num(fair_price)
+    if live == live and fair == fair and live > 0 and fair > 0:
+        return f"{(((live / fair) - 1.0) * 100.0):.4f}".rstrip("0").rstrip(".")
+    return ""
+
+
+def ordered_fields(rows: list[dict[str, object]]) -> list[str]:
+    ordered: list[str] = []
+    seen = set()
+    for name in PRIMARY_FIELDS:
+        if name not in seen:
+            ordered.append(name)
+            seen.add(name)
+    for row in rows:
+        for name in row.keys():
+            if name not in seen:
+                ordered.append(name)
+                seen.add(name)
+    return ordered
+
+
+def main() -> None:
+    selector_rows = read_csv(SELECTOR)
+    universe_rows = read_csv(UNIVERSE)
+    live_rows = read_csv(LIVE_BOARD)
+
+    market_source_status, market_source_rows, market_source_age = build_market_source_status()
+    market_source_ready = market_source_status == "FRESH_SOURCE"
+
+    active_keys = active_race_keys(selector_rows, universe_rows)
+    selected = [row for row in universe_rows if race_key_value(row) in active_keys]
+    live_lookup = build_lookup(live_rows)
+
+    built_at = now_local().isoformat(timespec="seconds")
+    output_rows: list[dict[str, object]] = []
+
+    for base in selected:
+        explicit_key = first(base, ["runner_key"])
+        derived_key = runner_key(base)
+        key = explicit_key or derived_key
+        live = live_lookup.get(explicit_key or "") or live_lookup.get(derived_key) or {}
+        row = dict(base)
+
+        for col in [
+            "market_state",
+            "market_mover",
+            "movement_velocity",
+            "bookmaker",
+            "mobile_silk_image",
+            "intelligence_note",
+            "live_rank",
+            "fair_rank",
+            "edge_rank",
+            "execution_action",
+        ]:
+            if clean(live.get(col)):
+                row[col] = clean(live.get(col))
+
+        raw_live_price = first(live, ["live_price", "sportsbet_price", "market_price", "fixed_win"])
+        raw_market_price = first(live, ["sportsbet_price", "market_price", "live_price", "fixed_win"])
+        raw_fixed_win = first(live, ["sportsbet_price", "fixed_win", "market_price", "live_price"])
+
+        if market_source_ready:
+            ui_price = price_text(raw_live_price or first(row, ["ui_price", "live_price", "sportsbet_price", "market_price", "fixed_win"]))
+            live_price = price_text(raw_live_price or ui_price)
+            sportsbet_price = price_text(first(live, ["sportsbet_price"]) or first(row, ["sportsbet_price"]) or ui_price)
+            market_price = price_text(raw_market_price or ui_price)
+            fixed_win = price_text(raw_fixed_win or ui_price)
+        else:
+            ui_price = ""
+            live_price = ""
+            sportsbet_price = ""
+            market_price = ""
+            fixed_win = ""
+
+        ui_fair_price = price_text(first(row, ["ui_fair_price", "rated_price", "fair_price"]))
+        row["built_at"] = built_at
+        canonical_horse_key = runner_key({"track": "", "race_no": "", "horse": row.get("horse", "")}).split("|")[-1]
+        row["horse_key"] = canonical_horse_key
+        row["runner_key"] = f"{row.get('race_key', '')}_{canonical_horse_key}" if row.get("race_key") else key
+        row["ui_price"] = ui_price
+        row["live_price"] = live_price
+        row["sportsbet_price"] = sportsbet_price
+        row["market_price"] = market_price
+        row["fixed_win"] = fixed_win
+        row["rated_price"] = price_text(first(row, ["rated_price", "ui_fair_price", "fair_price"]))
+        row["ui_fair_price"] = ui_fair_price
+        row["ui_edge_pct"] = edge_text(row, ui_price, ui_fair_price)
+        row["ui_status"] = "LIVE_PRICE" if ui_price else "NO_LIVE_PRICE"
+        row["market_source_status"] = market_source_status
+        row["market_source_ready"] = "YES" if market_source_ready else "NO"
+        row["market_source_rows"] = market_source_rows
+        row["market_source_age_seconds"] = "" if market_source_age is None else f"{market_source_age:.1f}"
+        row["market_source_file"] = SPORTSBET.name
+        row["sportsbet_event_id"] = first(live, ["sportsbet_event_id", "event_id"]) or first(row, ["sportsbet_event_id"])
+        row["sportsbet_market_id"] = first(live, ["sportsbet_market_id", "market_id"]) or first(row, ["sportsbet_market_id"])
+        row["sportsbet_timestamp"] = first(live, ["sportsbet_timestamp", "timestamp", "capture_timestamp_utc"]) or first(row, ["sportsbet_timestamp"])
+        row["market_capture_timestamp"] = first(live, ["sportsbet_timestamp", "timestamp", "captured_at"])
+
+        row["flucs"] = first(
+            live,
+            ["flucs","recent_odds_fluctuations","movement_velocity"]
+        ) or first(
+            row,
+            ["flucs","recent_odds_fluctuations","movement_velocity"]
+        )
+
+        row["last10"] = row["flucs"]
+
+        row["terminal_scope"] = "ACTIVE_SELECTOR"
+        output_rows.append(row)
+
+    # Hard dedupe terminal rows: one row per runner per race.
+    deduped = {}
+    for row in output_rows:
+        k = (
+            clean(row.get("track")).upper(),
+            clean(row.get("race_no")),
+            clean(row.get("horse")).upper(),
+        )
+        has_price = bool(clean(row.get("ui_price")) or clean(row.get("live_price")) or clean(row.get("sportsbet_price")))
+        if k not in deduped:
+            deduped[k] = row
+        else:
+            existing = deduped[k]
+            existing_has_price = bool(clean(existing.get("ui_price")) or clean(existing.get("live_price")) or clean(existing.get("sportsbet_price")))
+            if has_price and not existing_has_price:
+                deduped[k] = row
+    output_rows = list(deduped.values())
+
+    status = "OK" if market_source_ready else "PARTIAL_OK"
+    if not output_rows:
+        status = "BLOCKED_NO_ACTIVE_RACES"
+
+    fields = ordered_fields(output_rows)
+    write_csv(OUT, output_rows, fields)
+
+    rows_with_live_price = sum(1 for row in output_rows if clean(row.get("ui_price")))
+    diag_rows = [{
+        "built_at": built_at,
+        "status": status,
+        "market_source_status": market_source_status,
+        "market_source_rows": market_source_rows,
+        "market_source_age_seconds": "" if market_source_age is None else f"{market_source_age:.1f}",
+        "selector_rows": len(selector_rows),
+        "selected_races": len(active_keys),
+        "output_rows": len(output_rows),
+        "rows_with_live_price": rows_with_live_price,
+        "rows_without_live_price": max(0, len(output_rows) - rows_with_live_price),
+        "first_race_key": output_rows[0].get("race_key", "") if output_rows else "",
+    }]
+    write_csv(DIAG, diag_rows, DIAG_FIELDS)
+
+    print("=" * 90)
+    print("EDGEIQ LIVE TERMINAL FEED V1")
+    print("=" * 90)
+    print("STATUS:", status)
+    print("MARKET SOURCE:", market_source_status)
+    print("SELECTED RACES:", len(active_keys))
+    print("ROWS:", len(output_rows))
+    print("WITH LIVE PRICE:", rows_with_live_price)
+    print("OUT:", OUT)
+    print("DIAG:", DIAG)
+
+
+if __name__ == "__main__":
+    main()
+
+
+

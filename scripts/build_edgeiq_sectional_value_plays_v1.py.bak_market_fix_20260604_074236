@@ -1,0 +1,218 @@
+﻿import csv
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+DATA = ROOT / "public" / "data"
+
+LIVE = DATA / "edgeiq_live_runner_board_v1.csv"
+ABILITY = DATA / "edgeiq_sectional_ability_engine_v3.csv"
+RANKINGS = DATA / "edgeiq_race_sectional_rankings_v2.csv"
+PACE = DATA / "edgeiq_pace_advantage_engine_v1.csv"
+
+OUT = DATA / "edgeiq_sectional_value_plays_v1.csv"
+AUDIT = DATA / "edgeiq_sectional_value_plays_v1_audit.csv"
+
+def clean(v):
+    return "" if v is None else str(v).strip()
+
+def key(v):
+    return clean(v).upper().replace("'", "").replace(".", "").replace("-", " ").replace("(", "").replace(")", "")
+
+def to_float(v, default=0.0):
+    try:
+        if v is None or str(v).strip() == "":
+            return default
+        return float(str(v).replace("$", "").replace("%", "").replace(",", ""))
+    except Exception:
+        return default
+
+def race_no(row):
+    raw = clean(row.get("race_no") or row.get("race") or row.get("race_number"))
+    digits = "".join(ch for ch in raw if ch.isdigit())
+    return str(int(digits)) if digits else ""
+
+def track(row):
+    return clean(row.get("track") or row.get("venue") or row.get("track_name")).replace("SPORTSBET ", "")
+
+def horse(row):
+    return clean(row.get("horse_name") or row.get("runner_name") or row.get("horse") or row.get("selection_name"))
+
+def race_key(row):
+    return f"{key(track(row))}|{race_no(row)}"
+
+def horse_key(row):
+    return key(horse(row))
+
+def read_csv(path):
+    if not path.exists():
+        return []
+    with path.open("r", encoding="utf-8-sig", newline="") as f:
+        return list(csv.DictReader(f))
+
+def edgeiq_price(row):
+    return to_float(row.get("edgeiq_price") or row.get("fair_price") or row.get("rated_price") or row.get("model_price"))
+
+def market_price(row):
+    return to_float(row.get("market_price") or row.get("price") or row.get("current_price") or row.get("best_price"))
+
+def overlay_score(edgeiq, market):
+    if edgeiq <= 0 or market <= 0:
+        return 0.0
+    overlay = ((market / edgeiq) - 1.0) * 100.0
+    return max(0.0, min(100.0, overlay / 2.0))
+
+def reliability_bonus(rank):
+    r = clean(rank).upper()
+    if r == "A": return 10
+    if r == "B": return 7
+    if r == "C": return 4
+    if r == "D": return 1
+    return 0
+
+def pace_score(rank_row, pace_row):
+    score = 50.0
+
+    flags = clean(rank_row.get("race_sectional_flags")).upper()
+    if "BEST_PACE_FIT" in flags:
+        score += 22
+
+    status = clean(pace_row.get("pace_advantage_status") or pace_row.get("advantage_status") or pace_row.get("status")).upper()
+    if status == "VERY_POSITIVE":
+        score += 18
+    elif status == "POSITIVE":
+        score += 10
+    elif status == "NEGATIVE":
+        score -= 18
+
+    return max(0.0, min(100.0, score))
+
+def value_flag(score, overlay, ability, confidence, pace):
+    if score >= 85 and overlay >= 20:
+        return "ELITE_SECTIONAL_VALUE"
+    if score >= 78 and overlay >= 12:
+        return "STRONG_SECTIONAL_VALUE"
+    if score >= 70 and ability >= 65 and pace >= 60:
+        return "PACE_SECTIONAL_VALUE"
+    if score >= 64 and confidence >= 70:
+        return "HIGH_CONFIDENCE_VALUE"
+    if score >= 58:
+        return "WATCH"
+    return "PASS"
+
+def note(flag, ability, confidence, pace, overlay):
+    if flag == "ELITE_SECTIONAL_VALUE":
+        return "Elite value setup: overlay supported by sectional ability, confidence and pace fit."
+    if flag == "STRONG_SECTIONAL_VALUE":
+        return "Strong sectional value: market overlay is supported by the sectional profile."
+    if flag == "PACE_SECTIONAL_VALUE":
+        return "Pace and sectional profile combine positively."
+    if flag == "HIGH_CONFIDENCE_VALUE":
+        return "Reliable sectional evidence supports the value case."
+    if flag == "WATCH":
+        return "Some positive ingredients, but not enough for a strong sectional value call."
+    return "No strong sectional value signal."
+
+live_rows = read_csv(LIVE)
+ability_rows = read_csv(ABILITY)
+ranking_rows = read_csv(RANKINGS)
+pace_rows = read_csv(PACE)
+
+ability_by_horse = {horse_key(r): r for r in ability_rows}
+ranking_by_race_horse = {(race_key(r), horse_key(r)): r for r in ranking_rows}
+pace_by_race_horse = {(race_key(r), horse_key(r)): r for r in pace_rows}
+
+out_rows = []
+
+for live in live_rows:
+    rk = race_key(live)
+    hk = horse_key(live)
+
+    ability = ability_by_horse.get(hk, {})
+    ranking = ranking_by_race_horse.get((rk, hk), {})
+    pace = pace_by_race_horse.get((rk, hk), {})
+
+    ep = edgeiq_price(live)
+    mp = market_price(live)
+    overlay = overlay_score(ep, mp)
+
+    ability_score = to_float(ability.get("sectional_ability_score_v3"))
+    confidence = to_float(ability.get("sectional_confidence_score_v3"))
+    reliability = clean(ability.get("sectional_reliability_rank_v3"))
+    rel_bonus = reliability_bonus(reliability)
+
+    sectionals = max(0.0, min(100.0, (ability_score * 0.70) + (confidence * 0.20) + rel_bonus))
+    pace_fit = pace_score(ranking, pace)
+
+    combined = round(
+        (overlay * 0.40) +
+        (sectionals * 0.30) +
+        (pace_fit * 0.20) +
+        (confidence * 0.10),
+        2
+    )
+
+    flag = value_flag(combined, overlay, ability_score, confidence, pace_fit)
+
+    out_rows.append({
+        "track": track(live),
+        "race_no": race_no(live),
+        "race_key": rk,
+        "horse_name": horse(live),
+        "edgeiq_price": round(ep, 2),
+        "market_price": round(mp, 2),
+        "overlay_score": round(overlay, 2),
+        "sectional_ability_score": round(ability_score, 2),
+        "sectional_confidence_score": round(confidence, 2),
+        "sectional_reliability_rank": reliability,
+        "sectional_value_component": round(sectionals, 2),
+        "pace_fit_score": round(pace_fit, 2),
+        "combined_sectional_value_score": combined,
+        "sectional_value_flag": flag,
+        "sectional_value_note": note(flag, ability_score, confidence, pace_fit, overlay),
+        "race_sectional_flags": clean(ranking.get("race_sectional_flags")),
+        "pace_advantage_status": clean(pace.get("pace_advantage_status") or pace.get("advantage_status") or pace.get("status")),
+    })
+
+fields = [
+    "track","race_no","race_key","horse_name",
+    "edgeiq_price","market_price","overlay_score",
+    "sectional_ability_score","sectional_confidence_score","sectional_reliability_rank",
+    "sectional_value_component","pace_fit_score","combined_sectional_value_score",
+    "sectional_value_flag","sectional_value_note",
+    "race_sectional_flags","pace_advantage_status",
+]
+
+with OUT.open("w", encoding="utf-8", newline="") as f:
+    writer = csv.DictWriter(f, fieldnames=fields)
+    writer.writeheader()
+    writer.writerows(out_rows)
+
+counts = {}
+for r in out_rows:
+    counts[r["sectional_value_flag"]] = counts.get(r["sectional_value_flag"], 0) + 1
+
+audit = {
+    "live_rows_loaded": len(live_rows),
+    "ability_rows_loaded": len(ability_rows),
+    "ranking_rows_loaded": len(ranking_rows),
+    "pace_rows_loaded": len(pace_rows),
+    "output_rows": len(out_rows),
+    "elite_sectional_value": counts.get("ELITE_SECTIONAL_VALUE", 0),
+    "strong_sectional_value": counts.get("STRONG_SECTIONAL_VALUE", 0),
+    "pace_sectional_value": counts.get("PACE_SECTIONAL_VALUE", 0),
+    "high_confidence_value": counts.get("HIGH_CONFIDENCE_VALUE", 0),
+    "watch": counts.get("WATCH", 0),
+    "pass": counts.get("PASS", 0),
+    "final_status": "SECTIONAL_VALUE_PLAYS_BUILT",
+}
+
+with AUDIT.open("w", encoding="utf-8", newline="") as f:
+    writer = csv.DictWriter(f, fieldnames=list(audit.keys()))
+    writer.writeheader()
+    writer.writerow(audit)
+
+print("EDGEiQ Sectional Value Plays V1 built")
+print(f"rows={len(out_rows)}")
+print(f"saved={OUT}")
+print(f"audit={AUDIT}")
+print("final_status=SECTIONAL_VALUE_PLAYS_BUILT")

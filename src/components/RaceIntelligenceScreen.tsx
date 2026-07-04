@@ -1,0 +1,7018 @@
+﻿import React, { useEffect, useMemo, useState } from "react";
+import { getMeetingDisplayState } from "../utils/meetingDisplayState";
+
+type Row = Record<string, string>;
+
+const FILES = {
+ runnerBoard: "/data/edgeiq_live_runner_board_governed_v1.csv",
+ runnerIntel: "/data/edgeiq_runner_intelligence_v1.csv",
+ v8: "/data/edgeiq_live_v8_candidate_display_feed_v1.csv",
+ betQuality: "/data/edgeiq_live_bet_quality_v1_1.csv",
+ reliability: "/data/edgeiq_live_race_reliability_v1_feed.csv",
+ intelligenceCards: "/data/edgeiq_race_intelligence_cards_v1.csv",
+ briefing: "/data/edgeiq_race_briefing_v1.csv",
+ marketIntel: "/data/edgeiq_market_intelligence_v1.csv",
+ verdict: "/data/edgeiq_race_verdict_v1.csv",
+ trackIntel: "/data/edgeiq_track_intelligence_card_v1.csv",
+ horseDrawer: "/data/edgeiq_horse_intelligence_drawer_current.csv",
+ runnerDnaDrawer: "/data/edgeiq_runner_dna_drawer_feed_v2.csv",
+ explainability: "/data/edgeiq_explainability_terminal_feed_v1_2.csv",
+ connectionIntelligence: "/data/edgeiq_connection_intelligence_v2_1.csv",
+ factorScorecard: "/data/edgeiq_factor_lab_enrichment_feed_v1.csv",
+ limited: "/data/edgeiq_limited_data_market_adjusted_v1.csv",
+ intelligenceScore: "/data/edgeiq_live_intelligence_score_v1.csv",
+ customerIntelligence: "/data/edgeiq_customer_intelligence_terminal_feed_v1_1.csv",
+ intelligenceSummary: "/data/edgeiq_intelligence_summary_engine_v1_2.csv",
+ raceDayIntelligence: "/data/edgeiq_race_day_intelligence_card_v1_1.csv",
+ runnerProfile: "/data/edgeiq_runners_enrichment_feed_v1_1.csv",
+ formIntelligence: "/data/edgeiq_form_intelligence_v2.csv",
+ runnerForm: "/data/edgeiq_runner_form_engine_current.csv",
+ formEnrichment: "/data/edgeiq_form_enrichment_feed_v4.csv",
+ runnerFormHistory: "/data/runner_form_history.csv",
+ historyMaster: "/data/edgeiq_empty_terminal_feed_v1.csv",
+ historyDetail: "/data/edgeiq_runner_history_detail_v1.csv",
+ horseCareer: "/data/edgeiq_empty_terminal_feed_v1.csv",
+ horserchetype: "/data/edgeiq_empty_terminal_feed_v1.csv",
+ horseTrajectory: "/data/edgeiq_empty_terminal_feed_v1.csv",
+ horseProjection: "/data/edgeiq_empty_terminal_feed_v1.csv",
+ campaignIntelligence: "/data/edgeiq_campaign_intelligence_engine_v1_1.csv",
+ hiddenGem: "/data/edgeiq_current_hidden_gem_feed_v1_1.csv",
+ raceShapeFallback: "/data/edgeiq_race_shape_fallback_engine_v1.csv",
+ mapEnrichment: "/data/edgeiq_map_enrichment_feed_v3.csv",
+ chaosIndex: "/data/edgeiq_chaos_index_v1.csv",
+ opportunityScore: "/data/edgeiq_opportunity_score_v1.csv",
+ commandEnrichment: "/data/edgeiq_command_enrichment_feed_v3.csv",
+ ratingsHeatmap: "/data/edgeiq_ratings_intelligence_heatmap_v1.csv",
+  productMeetings: "/data/edgeiq_product_shell_meetings_v1.csv",
+ raceList: "/data/edgeiq_vic_three_day_race_list_v1.csv",
+  meetingCalendar: "/data/edgeiq_vic_three_day_meeting_calendar_v1.csv",
+  liveTrackIntelligence: "/data/edgeiq_live_track_intelligence_v2_1.csv",
+  trackMapManifest: "/data/edgeiq_track_map_manifest_v1.csv",
+  nexusContextual: "/data/edgeiq_live_nexus_contextual_feed_v2_1.csv",
+  nexusContextualFallback: "/data/edgeiq_live_nexus_contextual_feed_v2.csv",
+  formSectionalProfile: "/data/edgeiq_form_sectional_terminal_feed_v1.csv",
+  gearProfile: "/data/edgeiq_gear_terminal_feed_v1.csv",
+  labPriceEngine: "/data/edgeiq_lab_price_engine_feed_v1.csv",
+};
+
+type Props = {
+ selectedTrack?: string;
+ selectedRaceNo?: number | string;
+ currentRace?: any;
+ [key: string]: any;
+};
+
+type EnrichedRunner = {
+ row: Row;
+ runnerIntel?: Row;
+ v8?: Row;
+ bet?: Row;
+ rel?: Row;
+ drawer?: Row;
+ dna?: Row;
+ explainability?: Row;
+ connection?: Row;
+ limited?: Row;
+ customerIntel?: Row;
+ intelligenceSummary?: Row;
+ raceDayIntelligence?: Row;
+ intel?: Row;
+ factorRows?: Row[];
+ runnerProfile?: Row;
+ formIntelligence?: Row;
+ runnerForm?: Row;
+ runnerHistory?: Row[];
+ runnerCareer?: Row;
+ runnerrchetype?: Row;
+ runnerTrajectory?: Row;
+ runnerProjection?: Row;
+ campaign?: Row;
+ hiddenGem?: Row;
+ commandEnrichment?: Row;
+ mapEnrichment?: Row;
+ formEnrichment?: Row;
+ ratingsHeatmap?: Row;
+ nexusContextual?: Row;
+};
+type IntelMode = "COMMND" | "RUNNERS" | "PERFORMANCE" | "FORM" | "MP" | "NEXUS" | "STATS" | "DVNCED" | "RESULTS" | "TRACK" | "WEATHER";
+type ProductView = "HOME" | "MEETINGS" | "RCE";
+type RunnerSubMode = "DN" | "PROFILE" | "FORM" | "CONNECTIONS" | "EXPLINBILITY";
+type BenchmarkMode = "CLASS_BENCHMARK" | "ALL_CLASSES_BENCHMARK";
+type StatsMode = "JOCKEYS" | "TRAINERS";
+type RatingHoverMetric = {
+ label: string;
+ value: string;
+ tone?: string;
+};
+type RatingHoverSection = {
+ title?: string;
+ lines: string[];
+};
+type RatingHoverCard = {
+ title: string;
+ subtitle?: string;
+ metrics: RatingHoverMetric[];
+ sections?: RatingHoverSection[];
+ footer?: string;
+ x: number;
+ y: number;
+};
+
+function text(v: unknown): string {
+ if (v === null || v === undefined) return "";
+ return String(v).trim();
+}
+
+function num(v: unknown): number | null {
+ const s = text(v).replace(/[$,%]/g, "");
+ if (!s) return null;
+ const n = Number(s);
+ return Number.isFinite(n) ? n : null;
+}
+
+function cleanTrack(v: unknown): string {
+ return text(v)
+ .toUpperCase()
+ .replace(/^(SPORTSBET|LADBROKES|TAB|THE)\s+/, "")
+ .replace(/[^A-Z0-9]/g, "");
+}
+
+function cleanHorse(v: unknown): string {
+ return text(v)
+ .toUpperCase()
+ .replace(/\([^)]*\)/g, "")
+ .replace(/[^A-Z0-9]/g, "");
+}
+
+function cleanHorseLoose(v: unknown): string {
+ return cleanHorse(v).replace(/(NZ|GB|IRE|FR|US|JPN|US)$/g, "");
+}
+
+function raceDate(row: Row): string {
+ return text(row.current_race_date || row.race_date || row.meeting_date || row.date || row.raceDate);
+}
+
+function track(row: Row): string {
+ return text(row.track || row.meeting || row.meeting_name);
+}
+
+function raceNo(row: Row): string {
+ return text(row.race_no || row.raceNo || row.race_number || row.race);
+}
+
+function horse(row: Row): string {
+ return text(row.horse || row.horseName || row.runner || row.runner_name);
+}
+
+function distance(row: Row): string {
+ const d = text(row.distance || row.race_distance || row.dist);
+ return d ? `${d}m`.replace("mm", "m") : "-";
+}
+
+function raceClass(row: Row): string {
+ return text(row.race_class_clean || row.race_class || row.class || row.raceClass || row.grade || row.race_grade) || "-";
+}
+
+function trackCondition(row: Row): string {
+ return text(row.track_condition || row.condition || row.going || row.trackCondition) || "-";
+}
+
+function railPosition(row: Row): string {
+ return text(row.rail_position || row.rail || row.track_rail || row.railPosition) || "-";
+}
+
+function money(v: number | null): string {
+ if (v === null || !Number.isFinite(v) || v <= 0) return "-";
+ return `$${v.toFixed(2)}`;
+}
+
+function marketMoney(v: number | null): string {
+ const value = money(v);
+ return value === "-" ? "Pending Market" : value;
+}
+
+function pct(v: number | null): string {
+ if (v === null || !Number.isFinite(v)) return "-";
+ return `${v.toFixed(1)}%`;
+}
+
+function integer(v: string): number | null {
+ const match = text(v).match(/-?\d+/);
+ return match ? Number(match[0]) : null;
+}
+
+function signed(v: number | null, digits = 1): string {
+ if (v === null || !Number.isFinite(v)) return "-";
+ const prefix = v > 0 ? "+" : "";
+ return `${prefix}${v.toFixed(digits)}`;
+}
+
+function csvLine(line: string): string[] {
+ const out: string[] = [];
+ let cur = "";
+ let quoted = false;
+
+ for (let i = 0; i < line.length; i += 1) {
+ const ch = line[i];
+ const next = line[i + 1];
+
+ if (ch === '"' && quoted && next === '"') {
+ cur += '"';
+ i += 1;
+ } else if (ch === '"') {
+ quoted = !quoted;
+ } else if (ch === "," && !quoted) {
+ out.push(cur);
+ cur = "";
+ } else {
+ cur += ch;
+ }
+ }
+
+ out.push(cur);
+ return out;
+}
+
+const FRONTEND_CSV_ROW_LIMIT = 10000;
+
+function parseCsv(raw: string, sourcePath = "CSV feed"): Row[] {
+ const lines = raw.replace(/^\uFEFF/, "").split(/\r?\n/).filter((x) => x.trim());
+ if (!lines.length) return [];
+ if (lines[0].trim().startsWith("<!doctype html>")) return [];
+ if (lines.length - 1 > FRONTEND_CSV_ROW_LIMIT) {
+ console.warn(`[EDGEiQ] Skipping oversized frontend CSV feed: ${sourcePath} (${lines.length - 1} rows > ${FRONTEND_CSV_ROW_LIMIT})`);
+ return [];
+ }
+
+ const headers = csvLine(lines[0]).map((h) => h.trim());
+ return lines.slice(1).map((line) => {
+ const cells = csvLine(line);
+ const row: Row = {};
+ headers.forEach((h, i) => {
+ row[h] = cells[i] ?? "";
+ });
+ return row;
+ });
+}
+
+async function loadCsv(path: string): Promise<Row[]> {
+ try {
+ const res = await fetch(`${path}?v=${Date.now()}`, { cache: "no-store" });
+ if (!res.ok) return [];
+ return parseCsv(await res.text(), path);
+ } catch {
+ return [];
+ }
+}
+
+function firstNum(row: Row | undefined, keys: string[]): number | null {
+ if (!row) return null;
+ for (const key of keys) {
+ const value = num(row[key]);
+ if (value !== null) return value;
+ }
+ return null;
+}
+
+function firstText(row: Row | undefined, keys: string[], fallback = "-"): string {
+ if (!row) return fallback;
+ for (const key of keys) {
+ const value = text(row[key]);
+ if (value) return value;
+ }
+ return fallback;
+}
+
+function evidenceFlag(row: Row | undefined, keys: string[]): boolean {
+ if (!row) return false;
+ return keys.some((key) => {
+ const value = text(row[key]).trim().toUpperCase();
+ return value === "YES" || value === "TRUE" || value === "1" || value === "Y";
+ });
+}
+
+function hasMergedEvidencePayload(row: Row | undefined): boolean {
+ return evidenceFlag(row, [
+ "edgeiq_connection_evidence_available",
+ "edgeiq_market_evidence_available",
+ "edgeiq_hidden_gem_evidence_available",
+ ]);
+}
+
+function usefulEvidenceText(value: string): boolean {
+ const normalized = value.trim().toUpperCase();
+ return !!normalized && !["-", "NO", "NONE", "N/", "N", "NO_SOURCE_MTCH", "NO_CONNECTION", "NO_EVIDENCE", "FLSE", "0", "NO CONNECTION NGLE TRIGGERED.", "MRKET SOURCE UNVILBLE LODED.", "NO HIDDEN GEM FLGGED."].includes(normalized);
+}
+
+function commandEvidenceSource(item: EnrichedRunner): Row | undefined {
+ return {
+ ...(item.row || {}),
+ ...(item.runnerProfile || {}),
+ ...(item.runnerForm || {}),
+ ...(item.runnerTrajectory || {}),
+ ...(item.runnerProjection || {}),
+ ...(item.campaign || {}),
+ ...(item.dna || {}),
+ ...(item.explainability || {}),
+ ...(item.connection || {}),
+ ...(item.hiddenGem || {}),
+ ...(item.mapEnrichment || {}),
+ ...(item.commandEnrichment || {}),
+ };
+}
+
+function commandEvidencevailable(item: EnrichedRunner, flagKeys: string[], summaryKeys: string[]): boolean {
+ const source = commandEvidenceSource(item);
+ if (evidenceFlag(source, flagKeys)) return true;
+ return usefulEvidenceText(firstText(source, summaryKeys, ""));
+}
+
+function scoreToneValue(value: number | null): string {
+ if (value === null || !Number.isFinite(value)) return "#64748b";
+ if (value >= 80) return "#34d399";
+ if (value >= 60) return "#ffffff";
+ if (value >= 40) return "#ffffff";
+ return "#f87171";
+}
+
+function isV72FeatureOn(row: Row | undefined): boolean {
+ return text(row?.edgeiq_v7_2_feature_flag).toUpperCase() === "ON";
+}
+
+function getV72wareProbability(row: Row | undefined): number | null {
+ if (isV72FeatureOn(row)) {
+ return firstNum(row, ["edgeiq_v7_2_preview_probability", "edgeiq_probability_v7_2"]);
+ }
+ return firstNum(row, ["win_pct", "V6_1_RESERCH_probability", "probability_normalised_v1"]);
+}
+
+function getV72wareFairPrice(row: Row | undefined): number | null {
+ if (isV72FeatureOn(row)) {
+ return firstNum(row, ["edgeiq_v7_2_preview_fair_price", "edgeiq_fair_price_v7_2"]);
+ }
+ return firstNum(row, ["fair_price", "ui_fair_price", "display_fair_price", "rated_price"]);
+}
+
+function getV72wareDisplayFairPrice(row: Row | undefined): number | null {
+ if (isV72FeatureOn(row)) {
+ return firstNum(row, ["edgeiq_v7_2_preview_display_fair_price", "edgeiq_display_fair_price_v7_2"]);
+ }
+ return firstNum(row, ["ui_fair_price", "display_fair_price", "fair_price", "rated_price"]);
+}
+
+function getV72PriceSource(row: Row | undefined): string {
+ if (isV72FeatureOn(row)) {
+ return firstText(row, ["edgeiq_v7_2_preview_price_source", "edgeiq_v7_2_probability_source", "probability_source_v7_2"], "V7_2_FETURE_FLG_ON");
+ }
+ return firstText(row, ["edgeiq_active_price_source_shadow"], "PRODUCTION_FLLBCK_FETURE_FLG_OFF");
+}
+
+function sameRace(a: Row, b: Row): boolean {
+ const aDate = raceDate(a);
+ const bDate = raceDate(b);
+ if (aDate && bDate && aDate !== bDate) return false;
+ return cleanTrack(track(a)) === cleanTrack(track(b)) && raceNo(a) === raceNo(b);
+}
+
+function findRaceSidecar(rows: Row[], base: Row): Row | undefined {
+ return rows.find((row) => sameRace(row, base));
+}
+
+function findRaceShapeFallbackForRace(rows: Row[], base: Row): Row | undefined {
+ const baseDate = raceDate(base);
+ const baseTrack = cleanTrack(track(base));
+ const baseRaceNo = raceNo(base);
+
+ if (!baseTrack || !baseRaceNo) return undefined;
+
+ return rows.find((row) => {
+ const rowDate = raceDate(row);
+ const rowTrack = cleanTrack(track(row));
+ const rowRaceNo = raceNo(row);
+ if (!rowTrack || !rowRaceNo) return false;
+ if (baseDate && rowDate && baseDate !== rowDate) return false;
+ return rowTrack === baseTrack && rowRaceNo === baseRaceNo;
+ });
+}
+
+function band(row: Row | undefined, keys: string[], fallback = "-"): string {
+ return firstText(row, keys, fallback).replace(/_/g, " ").toUpperCase();
+}
+
+function customerLimitedDecisionLabel(value: string): string {
+ return value.toUpperCase() === "MODEL" ? "MODEL EDGE" : value;
+}
+
+function humanTrackStyle(style: string): string {
+ const value = style.toUpperCase().replace(/_/g, " ").trim();
+ if (!value || value === "-" || value === "NO PROFILE") return "runners without a clear historical pattern";
+ if (value.includes("MIDFIELD")) return "runners settling midfield";
+ if (value.includes("ON PACE")) return "on-pace runners";
+ if (value.includes("LEADER")) return "leaders";
+ if (value.includes("BCKMRKER")) return "backmarkers";
+ return value.toLowerCase();
+}
+
+function humanBarrierPhrase(barrier: string): string {
+ const value = barrier.toUpperCase().replace(/_/g, " ").trim();
+ if (!value || value === "-") return "";
+ if (value.includes("MIDDLE")) return "middle barriers";
+ if (value.includes("INSIDE") || value.includes("LOW")) return "inside barriers";
+ if (value.includes("WIDE") || value.includes("OUTSIDE") || value.includes("HIGH")) return "wide barriers";
+ return value.toLowerCase();
+}
+
+function humanMovementPhrase(movement: string): string {
+ const value = movement.toUpperCase().replace(/_/g, " ").trim();
+ if (!value || value === "-") return "";
+ if (value === "HOLDS POSITION") return "holding their position in the run";
+ if (value.includes("IMPROVE")) return "improving through the run";
+ if (value.includes("DROP")) return "drifting back through the run";
+ return value.toLowerCase();
+}
+
+function trackDnaHeadline(style: string): string {
+ const value = style.toUpperCase().replace(/_/g, " ").trim();
+ if (!value || value === "-" || value === "NO PROFILE") return "No clear historical profile";
+ return `Favours ${humanTrackStyle(style)}`;
+}
+
+function raceClarityNarrative(value: string): string {
+ const upper = value.toUpperCase();
+ if (upper.includes("WIDE OPEN")) return "highly competitive";
+ if (upper.includes("CLER")) return "more straightforward";
+ if (upper.includes("BLNCED")) return "balanced";
+ if (upper.includes("OPEN")) return "competitive";
+ return "live and competitive";
+}
+
+function buildBriefingNarrative(
+ clarity: string,
+ tempo: string,
+ confidence: string,
+ topWinChance: string,
+ topWinFair: number | null,
+ bestValue: string,
+ bestValueEdge: number | null,
+): string {
+ const parts: string[] = [];
+ parts.push(`This race looks ${raceClarityNarrative(clarity)}.`);
+ if (tempo !== "-") parts.push(`Tempo projects as ${tempo}.`);
+ if (confidence !== "-") parts.push(`Overall confidence sits at ${confidence}.`);
+
+ if (topWinChance && bestValue && topWinChance === bestValue) {
+ const fairText = topWinFair !== null ? ` at an EDGEiQ price of ${money(topWinFair)}` : "";
+ const edgeText = bestValueEdge !== null ? ` with ${signed(bestValueEdge)}% edge` : "";
+ parts.push(`${topWinChance} profiles as both the top win chance${fairText}, with the widest gap to the EDGEiQ price also sitting there${edgeText}.`);
+ } else {
+ if (topWinChance) {
+ const fairText = topWinFair !== null ? ` at an EDGEiQ price of ${money(topWinFair)}` : "";
+ parts.push(`${topWinChance} profiles as the top win chance${fairText}.`);
+ }
+ if (bestValue) {
+ const edgeText = bestValueEdge !== null ? ` at ${signed(bestValueEdge)}% edge` : "";
+ parts.push(`The widest gap to the EDGEiQ price sits with ${bestValue}${edgeText}.`);
+ }
+ }
+
+ return parts.join(" ");
+}
+
+function bandColor(value: string): string {
+ const v = value.toUpperCase();
+ if (v.includes("VERY CLER") || v === "CLER" || v.includes("VERY HIGH") || v === "HIGH") return "#3ee68f";
+ if (v.includes("BLNCED") || v.includes("MEDIUM") || v.includes("MODERATE") || v.includes("EVEN")) return "#ffffff";
+ if (v.includes("OPEN") || v === "LOW" || v.includes("SLOW")) return "#fb923c";
+ if (v.includes("WIDE") || v.includes("VERY LOW") || v.includes("FST") || v.includes("EXTREME")) return "#f87171";
+ return "#cbd5e1";
+}
+
+function sameRunner(a: Row, b: Row): boolean {
+ const aRunnerKey = text(a.runner_key || a.runnerKey);
+ const bRunnerKey = text(b.runner_key || b.runnerKey);
+ if (aRunnerKey && bRunnerKey && aRunnerKey === bRunnerKey) return true;
+
+ const aRaceKey = text(a.race_key || a.raceKey);
+ const bRaceKey = text(b.race_key || b.raceKey);
+ const aHorseKey = cleanHorse(a.horse_key || a.horseKey);
+ const bHorseKey = cleanHorse(b.horse_key || b.horseKey);
+ if (aRaceKey && bRaceKey && aHorseKey && bHorseKey && aRaceKey === bRaceKey && aHorseKey === bHorseKey) return true;
+
+ const aDate = raceDate(a);
+ const bDate = raceDate(b);
+ if (aDate && bDate && aDate !== bDate) return false;
+ if (cleanTrack(track(a)) !== cleanTrack(track(b))) return false;
+ if (raceNo(a) !== raceNo(b)) return false;
+
+ const ah = [
+ cleanHorse(a.horse_key),
+ cleanHorse(a.horse_canon),
+ cleanHorse(horse(a)),
+ cleanHorseLoose(a.horse_key),
+ cleanHorseLoose(a.horse_canon),
+ cleanHorseLoose(horse(a)),
+ ].filter(Boolean);
+
+ const bh = [
+ cleanHorse(b.horse_key),
+ cleanHorse(b.horse_canon),
+ cleanHorse(horse(b)),
+ cleanHorseLoose(b.horse_key),
+ cleanHorseLoose(b.horse_canon),
+ cleanHorseLoose(horse(b)),
+ ].filter(Boolean);
+
+ return ah.some((x) => bh.includes(x));
+}
+
+function findSidecar(rows: Row[], base: Row): Row | undefined {
+ return rows.find((row) => sameRunner(row, base));
+}
+
+function findFormEnrichmentSidecar(rows: Row[], base: Row): Row | undefined {
+ const baseDate = raceDate(base);
+ const baseTrack = cleanTrack(track(base));
+ const baseRace = raceNo(base);
+ const baseHorse = cleanHorse(horse(base));
+ const baseHorseLoose = cleanHorseLoose(firstText(base, ["horse_key"], "")) || cleanHorseLoose(horse(base));
+
+ return rows.find((row) => {
+ const dateOk = !baseDate || !raceDate(row) || raceDate(row) === baseDate;
+ const trackOk = cleanTrack(track(row)) === baseTrack;
+ const raceOk = raceNo(row) === baseRace;
+ const horseOk =
+ cleanHorse(horse(row)) === baseHorse ||
+ cleanHorseLoose(firstText(row, ["horse_key"], "")) === baseHorseLoose ||
+ cleanHorseLoose(horse(row)) === baseHorseLoose;
+ return dateOk && trackOk && raceOk && horseOk;
+ });
+}
+
+function findCommandEnrichmentSidecar(rows: Row[], base: Row): Row | undefined {
+ const baseDate = raceDate(base);
+ const baseTrack = cleanTrack(track(base));
+ const baseRaceNo = raceNo(base);
+ const baseHorseStrict = cleanHorse(firstText(base, ["horse_key", "horseKey"], "")) || cleanHorse(horse(base));
+ const baseHorseLoose = cleanHorseLoose(horse(base));
+
+ return rows.find((row) => {
+ const rowDate = raceDate(row);
+ const rowTrack = cleanTrack(track(row));
+ const rowRaceNo = raceNo(row);
+ const rowHorseStrict = cleanHorse(firstText(row, ["horse_key", "horseKey"], "")) || cleanHorse(horse(row));
+ const rowHorseLoose = cleanHorseLoose(horse(row));
+ if (baseDate && rowDate && baseDate !== rowDate) return false;
+ if (baseTrack && rowTrack && baseTrack !== rowTrack) return false;
+ if (baseRaceNo && rowRaceNo && baseRaceNo !== rowRaceNo) return false;
+ if (baseHorseStrict && rowHorseStrict && baseHorseStrict === rowHorseStrict) return true;
+ return !!baseHorseLoose && !!rowHorseLoose && baseHorseLoose === rowHorseLoose;
+ });
+}
+
+function findConnectionSidecar(rows: Row[], base: Row): Row | undefined {
+ const baseDate = raceDate(base);
+ const baseTrack = cleanTrack(track(base));
+ const baseRaceNo = raceNo(base);
+ const baseHorseKey = cleanHorse(firstText(base, ["horse_key", "horseKey"], ""));
+ const baseHorseStrict = baseHorseKey || cleanHorse(horse(base));
+ const baseHorseLoose = cleanHorseLoose(horse(base));
+
+ if (!baseTrack || !baseRaceNo || !(baseHorseStrict || baseHorseLoose)) return findSidecar(rows, base);
+
+ const exact = rows.find((row) => {
+ const rowDate = raceDate(row);
+ const rowTrack = cleanTrack(track(row));
+ const rowRaceNo = raceNo(row);
+ const rowHorseKey = cleanHorse(firstText(row, ["horse_key", "horseKey"], ""));
+ const rowHorseStrict = rowHorseKey || cleanHorse(horse(row));
+
+ if (!rowTrack || !rowRaceNo || !(rowHorseStrict || cleanHorseLoose(horse(row)))) return false;
+ if (baseDate && rowDate && baseDate !== rowDate) return false;
+ if (baseTrack !== rowTrack) return false;
+ if (baseRaceNo !== rowRaceNo) return false;
+ if (baseHorseStrict && rowHorseStrict && baseHorseStrict === rowHorseStrict) return true;
+ if (!baseHorseKey || !rowHorseKey) {
+ const rowHorseLoose = cleanHorseLoose(horse(row));
+ return !!baseHorseLoose && !!rowHorseLoose && baseHorseLoose === rowHorseLoose;
+ }
+ return false;
+ });
+
+ if (exact) return exact;
+ if (baseDate && baseTrack && baseRaceNo) return undefined;
+ return findSidecar(rows, base);
+}
+
+function findCampaignSidecar(rows: Row[], base: Row): Row | undefined {
+ const baseDate = raceDate(base);
+ const baseTrack = cleanTrack(track(base));
+ const baseRaceNo = raceNo(base);
+ const baseHorseKey = cleanHorse(firstText(base, ["horse_key", "horseKey"], ""));
+ const baseHorseStrict = baseHorseKey || cleanHorse(horse(base));
+ const baseHorseLoose = cleanHorseLoose(horse(base));
+
+ if (!baseTrack || !baseRaceNo || !baseHorseStrict) return undefined;
+
+ return rows.find((row) => {
+ const rowDate = text(row.current_race_date || row.race_date || row.meeting_date || row.date || row.raceDate);
+ const rowTrack = cleanTrack(track(row));
+ const rowRaceNo = raceNo(row);
+ const rowHorseKey = cleanHorse(firstText(row, ["horse_key", "horseKey"], ""));
+ const rowHorseStrict = rowHorseKey || cleanHorse(horse(row));
+
+ if (!rowTrack || !rowRaceNo || !rowHorseStrict) return false;
+ if (baseDate && rowDate && baseDate !== rowDate) return false;
+ if (baseTrack !== rowTrack) return false;
+ if (baseRaceNo !== rowRaceNo) return false;
+ if (baseHorseStrict === rowHorseStrict) return true;
+
+ if (!baseHorseKey || !rowHorseKey) {
+ const rowHorseLoose = cleanHorseLoose(horse(row));
+ return !!baseHorseLoose && !!rowHorseLoose && baseHorseLoose === rowHorseLoose;
+ }
+
+ return false;
+ });
+}
+
+function findHiddenGemForRunner(rows: Row[], base: Row): Row | undefined {
+ const baseDate = raceDate(base);
+ const baseTrack = cleanTrack(track(base));
+ const baseRaceNo = raceNo(base);
+ const baseHorseKey = cleanHorse(firstText(base, ["horse_key", "horseKey"], ""));
+ const baseHorseStrict = baseHorseKey || cleanHorse(horse(base));
+ const baseHorseLoose = cleanHorseLoose(horse(base));
+
+ if (!(baseHorseStrict || baseHorseLoose)) return undefined;
+
+ const exactMatch = rows.find((row) => {
+ const rowDate = text(row.current_race_date || row.race_date || row.meeting_date || row.date || row.raceDate);
+ const rowTrack = cleanTrack(track(row));
+ const rowRaceNo = raceNo(row);
+ const rowHorseKey = cleanHorse(firstText(row, ["horse_key", "horseKey"], ""));
+ const rowHorseStrict = rowHorseKey || cleanHorse(horse(row));
+
+ if (!rowDate || !rowTrack || !rowRaceNo || !rowHorseStrict) return false;
+ if (baseDate && rowDate && baseDate !== rowDate) return false;
+ if (baseTrack !== rowTrack) return false;
+ if (baseRaceNo !== rowRaceNo) return false;
+ if (baseHorseStrict && rowHorseStrict && baseHorseStrict === rowHorseStrict) return true;
+
+ if (!baseHorseKey || !rowHorseKey) {
+ const rowHorseLoose = cleanHorseLoose(horse(row));
+ return !!baseHorseLoose && !!rowHorseLoose && baseHorseLoose === rowHorseLoose;
+ }
+
+ return false;
+ });
+
+ if (exactMatch) return exactMatch;
+ if (baseDate && baseTrack && baseRaceNo) return undefined;
+
+ return rows.find((row) => {
+ const rowHorseKey = cleanHorse(firstText(row, ["horse_key", "horseKey"], ""));
+ const rowHorseStrict = rowHorseKey || cleanHorse(horse(row));
+ if (baseHorseStrict && rowHorseStrict && baseHorseStrict === rowHorseStrict) return true;
+ if (!baseHorseKey || !rowHorseKey) {
+ const rowHorseLoose = cleanHorseLoose(horse(row));
+ return !!baseHorseLoose && !!rowHorseLoose && baseHorseLoose === rowHorseLoose;
+ }
+ return false;
+ });
+}
+
+function findDnaSidecar(rows: Row[], base: Row): Row | undefined {
+ const baseDate = raceDate(base);
+ const baseTrack = cleanTrack(track(base));
+ const baseRaceNo = raceNo(base);
+ const baseHorseKey = cleanHorse(firstText(base, ["horse_key", "horseKey"], ""));
+ const baseHorseStrict = baseHorseKey || cleanHorse(horse(base));
+ const baseHorseLoose = cleanHorseLoose(horse(base));
+
+ if (!baseTrack || !baseRaceNo || !(baseHorseStrict || baseHorseLoose)) return undefined;
+
+ return rows.find((row) => {
+ const rowDate = raceDate(row);
+ const rowTrack = cleanTrack(track(row));
+ const rowRaceNo = raceNo(row);
+ const rowHorseKey = cleanHorse(firstText(row, ["horse_key", "horseKey", "horse_key_panel"], ""));
+ const rowHorseStrict = rowHorseKey || cleanHorse(horse(row));
+
+ if (!rowTrack || !rowRaceNo || !(rowHorseStrict || cleanHorseLoose(horse(row)))) return false;
+ if (baseDate && rowDate && baseDate !== rowDate) return false;
+ if (baseTrack !== rowTrack) return false;
+ if (baseRaceNo !== rowRaceNo) return false;
+ if (baseHorseStrict && rowHorseStrict && baseHorseStrict === rowHorseStrict) return true;
+
+ if (!baseHorseKey || !rowHorseKey) {
+ const rowHorseLoose = cleanHorseLoose(horse(row));
+ return !!baseHorseLoose && !!rowHorseLoose && baseHorseLoose === rowHorseLoose;
+ }
+
+ return false;
+ });
+}
+
+function hasConnectionPayload(row: Row | undefined): boolean {
+ if (!row) return false;
+ if (evidenceFlag(row, ["edgeiq_connection_evidence_available"])) return true;
+ const band = firstText(row, ["connection_band"], "").toUpperCase();
+ if (band === "NO_EVIDENCE") return false;
+ return [
+ "connection_score",
+ "connection_band",
+ "connection_angle_1",
+ "connection_angle_2",
+ "connection_angle_3",
+ "connection_evidence_status",
+ "evidence_quality",
+ "connection_positive_1",
+ "connection_risk_1",
+ "connection_narrative",
+ "trainer_track_sr",
+ "jockey_track_sr",
+ "combo_sr",
+ "combo_track_sr",
+ "market_expectation_label",
+ "sp_expectation_delta",
+ ].some((key) => text(row[key]));
+}
+
+function hasDnaPayload(item: EnrichedRunner): boolean {
+ if (firstNum(item.dna, ["dna_v6_2_score", "dna_score", "runner_dna_v6_1_score"]) !== null) return true;
+
+ const hasFitBand = ["distance_fit_band", "condition_fit_band", "class_fit_band", "dna_v6_2_band", "dna_band"].some((key) => {
+ const value = firstText(item.dna, [key], "").trim().toUpperCase();
+ return value !== "" && value !== "-" && value !== "N/";
+ });
+
+ if (hasFitBand) return true;
+
+ return Array.isArray(item.factorRows) && item.factorRows.length > 0;
+}
+
+function compactKey(value: unknown): string {
+ return String(value ?? "").toUpperCase().replace(/[^A-Z0-9]/g, "");
+}
+
+function findSidecarByRaceHorse(rows: Row[], row: Row): Row | undefined {
+ const raceKey = String(row.race_key ?? "").trim();
+ const horseKey = compactKey(row.horse ?? row.runner ?? row.runner_name);
+ if (!horseKey) return undefined;
+
+ return rows.find((side) => {
+ const sideRaceKey = String(side.race_key ?? "").trim();
+ const sideHorseKey = compactKey(side.horse ?? side.runner ?? side.runner_name);
+ if (!sideHorseKey || sideHorseKey !== horseKey) return false;
+ if (raceKey && sideRaceKey) return sideRaceKey === raceKey;
+ return true;
+ });
+}
+
+function findNexusContextualSidecar(rows: Row[], base: Row): Row | undefined {
+ const baseRunnerKey = firstText(base, ["runner_key"], "");
+ const baseDate = raceDate(base);
+ const baseTrack = cleanTrack(track(base));
+ const baseRace = raceNo(base).replace(/^R/i, "");
+ const baseHorseStrict = cleanHorse(firstText(base, ["horse_key", "horseKey"], "")) || cleanHorse(horse(base));
+ const baseHorseLoose = cleanHorseLoose(horse(base));
+
+ return rows.find((row) => {
+ const rowRunnerKey = firstText(row, ["runner_key"], "");
+ if (baseRunnerKey && rowRunnerKey && baseRunnerKey === rowRunnerKey) return true;
+
+ const rowDate = raceDate(row);
+ const dateOk = !baseDate || !rowDate || rowDate === baseDate;
+ const trackOk = cleanTrack(track(row)) === baseTrack;
+ const raceOk = raceNo(row).replace(/^R/i, "") === baseRace;
+ const rowHorseStrict = cleanHorse(firstText(row, ["runner_name", "horse", "runner"], ""));
+ const rowHorseLoose = cleanHorseLoose(firstText(row, ["runner_name", "horse", "runner"], ""));
+ return dateOk && trackOk && raceOk && (
+ (baseHorseStrict && rowHorseStrict === baseHorseStrict) ||
+ (baseHorseLoose && rowHorseLoose === baseHorseLoose)
+ );
+ });
+}
+
+function connectionSourceRow(item: EnrichedRunner): Row | undefined {
+ if (hasMergedEvidencePayload(item.row)) return item.row;
+ if (hasConnectionPayload(item.connection)) return item.connection;
+ if (hasConnectionPayload(item.explainability)) return item.explainability;
+ return item.explainability || item.connection || item.row;
+}
+
+function formSourceRow(item: EnrichedRunner): Row | undefined {
+ return item.formIntelligence || item.runnerForm;
+}
+
+function saddle(row: Row): number {
+ return firstNum(row, ["horse_no", "runner_no", "saddlecloth", "number", "no"]) ?? 999;
+}
+
+function barrier(row: Row): string {
+ const b = firstNum(row, ["barrier", "bar"]);
+ return b === null ? "-" : String(Math.trunc(b));
+}
+
+function fairPrice(row: Row, bet?: Row): number | null {
+ return getV72wareDisplayFairPrice(row) ??
+ firstNum(bet, ["bet_quality_fair_price_used_v1_1", "fair_price"]);
+}
+
+function livePrice(row: Row, bet?: Row): number | null {
+ return firstNum(row, ["market_price", "display_market_price", "display_live_price", "live_price", "sportsbet_price", "fixed_win", "tab_fixed_win"]) ??
+ firstNum(bet, ["bet_quality_live_price_used_v1_1", "live_price"]);
+}
+
+function edgePct(row: Row, bet?: Row): number | null {
+ const direct =
+ firstNum(row, ["display_edge_pct", "edge_pct", "ui_edge_pct"]) ??
+ firstNum(bet, ["bet_quality_overlay_pct_v1_1", "edge_pct"]);
+
+ if (direct !== null) return direct;
+
+ const live = livePrice(row, bet);
+ const fair = fairPrice(row, bet);
+ if (live && fair) return ((live / fair) - 1) * 100;
+ return null;
+}
+
+function winPct(row: Row, bet?: Row): number | null {
+ const p = getV72wareProbability(row) ??
+ firstNum(row, ["v3_probability", "edgeiq_probability", "rated_probability", "win_probability"]) ??
+ firstNum(bet, ["v3_probability"]);
+
+ if (p !== null && p > 0) return p > 1 ? p : p * 100;
+
+ const fair = fairPrice(row, bet);
+ return fair && fair > 0 ? 100 / fair : null;
+}
+
+function v8Fair(v8?: Row, bet?: Row): number | null {
+ return firstNum(v8, ["v8_candidate_price_display", "v8_interaction_candidate_price"]) ??
+ firstNum(bet, ["v8_candidate_price_display"]);
+}
+
+function v8Conf(v8?: Row, bet?: Row): string {
+ return firstText(v8, ["brc_match_level_v8", "v8_confidence"], firstText(bet, ["brc_match_level_v8"], "-"))
+ .replace("TRACK_DISTNCE_RIL_CONDITION_WIDE", "LOW")
+ .replace("TRACK_DISTNCE_RIL_CONDITION", "MEDIUM")
+ .replace("EXCT", "HIGH")
+ .replace(/_/g, " ");
+}
+
+function betScore(bet?: Row): string {
+ const n = firstNum(bet, ["bet_quality_score_v1_1", "bet_quality_score"]);
+ return n === null ? "-" : n.toFixed(0);
+}
+
+function betGrade(bet?: Row): string {
+ return firstText(bet, ["bet_quality_grade_v1_1", "bet_quality_grade"], "-").toUpperCase();
+}
+
+function clamp(value: number, min: number, max: number): number {
+ return Math.max(min, Math.min(max, value));
+}
+
+function isScratchedRunner(row: Row): boolean {
+ const blob = [
+ row.display_decision,
+ row.runner_status,
+ row.tab_fixed_betting_status,
+ row.scratch_status,
+ row.is_scratched,
+ row.execution_action,
+ row.decision,
+ ]
+ .map((value) => text(value).toUpperCase())
+ .join(" ");
+
+ if (blob.includes("SCRTCH")) return true;
+
+ const explicitFlag = text(row.is_scratched).toUpperCase();
+ return ["YES", "Y", "TRUE", "1"].includes(explicitFlag);
+}
+
+function isScratched(item: EnrichedRunner): boolean {
+ return isScratchedRunner(item.row);
+}
+
+function isFallbackRow(item: EnrichedRunner): boolean {
+ const priceStatus = firstText(item.row, ["V6_1_RESERCH_price_status"], "").toUpperCase();
+ return priceStatus.includes("FLLBCK");
+}
+
+function confidenceScoreValue(item: EnrichedRunner): number | null {
+ return firstNum(item.runnerProfile, ["confidence_score"]) ??
+ firstNum(item.runnerIntel, ["confidence_score"]) ??
+ firstNum(item.drawer, ["confidence_score"]) ??
+ firstNum(item.intel, ["confidence_score", "intelligence_reliability_component_v1"]) ??
+ firstNum(item.row, ["confidence_score"]);
+}
+
+function dnaScoreValue(item: EnrichedRunner): number | null {
+ return firstNum(item.dna, ["dna_v6_2_score", "runner_dna_v6_1_score", "dna_score"]) ??
+ firstNum(item.runnerProfile, ["dna_v6_2_score", "dna_score"]) ??
+ firstNum(item.row, ["dna_v6_2_score", "runner_dna_v6_1_score", "dna_score"]);
+}
+
+function projectionGapValue(item: EnrichedRunner): number | null {
+ return firstNum(item.row, ["projection_gap_V6_1_RESERCH", "projection_gap_v5_2"]);
+}
+
+function projectedSpdValue(item: EnrichedRunner): number | null {
+ return firstNum(item.mapEnrichment, ["projected_speed"]) ??
+ firstNum(item.runnerIntel, ["projected_spd"]) ??
+ firstNum(item.row, ["projected_spd", "early_speed_rating"]);
+}
+
+function sectionalWeaponValue(item: EnrichedRunner): number | null {
+ return firstNum(item.runnerIntel, ["sectional_weapon_score"]) ??
+ firstNum(item.drawer, ["sectional_weapon_score"]) ??
+ firstNum(item.intel, ["intelligence_sectional_component_v1"]) ??
+ firstNum(item.row, ["sectional_weapon_score"]);
+}
+
+function latePowerMetricValue(item: EnrichedRunner): number | null {
+ return firstNum(item.mapEnrichment, ["late_speed"]) ??
+ firstNum(item.runnerIntel, ["late_power_index", "late_power_score"]) ??
+ firstNum(item.drawer, ["late_power_index", "late_power_score"]) ??
+ firstNum(item.row, ["late_power_index", "late_power_score"]);
+}
+
+function trackFitScoreValue(item: EnrichedRunner): number | null {
+ return firstNum(item.drawer, ["track_fit_score"]) ??
+ firstNum(item.row, ["track_fit_score"]) ??
+ firstNum(item.intel, ["track_fit_score"]);
+}
+
+function jockeyScoreValue(item: EnrichedRunner): number | null {
+ const connectionRow = connectionSourceRow(item);
+ return firstNum(factorRowValue(item, "JOCKEY"), ["factor_score"]) ??
+ firstNum(item.runnerIntel, ["jockey_score"]) ??
+ firstNum(item.drawer, ["jockey_score"]) ??
+ firstNum(item.row, ["jockey_score"]) ??
+ firstNum(connectionRow, ["jockey_track_sr", "connection_score"]);
+}
+
+function trainerScoreValue(item: EnrichedRunner): number | null {
+ const connectionRow = connectionSourceRow(item);
+ return firstNum(factorRowValue(item, "TRINER"), ["factor_score"]) ??
+ firstNum(item.runnerIntel, ["trainer_score"]) ??
+ firstNum(item.drawer, ["trainer_score"]) ??
+ firstNum(item.row, ["trainer_score"]) ??
+ firstNum(connectionRow, ["trainer_track_sr", "connection_score"]);
+}
+
+function connectionScoreValue(item: EnrichedRunner): number | null {
+ const connectionRow = connectionSourceRow(item);
+ return firstNum(factorRowValue(item, "CONNECTION"), ["factor_score"]) ??
+ firstNum(item.runnerIntel, ["connection_score"]) ??
+ firstNum(item.drawer, ["connection_score"]) ??
+ firstNum(item.row, ["connection_score"]) ??
+ firstNum(connectionRow, ["connection_score"]);
+}
+
+function projectionRatingValue(item: EnrichedRunner): number | null {
+ return firstNum(item.row, ["projected_rating_V6_1_RESERCH", "projected_rating_v5_2"]) ??
+ firstNum(item.runnerProfile, ["projected_rating", "rating_ladder_score"]);
+}
+
+function factorRowValue(item: EnrichedRunner, factorName: string): Row | undefined {
+ return item.factorRows?.find(
+ (factorRow) => firstText(factorRow, ["factor"], "").toUpperCase() === factorName.toUpperCase()
+ );
+}
+
+function factorScoreValue(item: EnrichedRunner, factorName: string): number | null {
+ if (factorName.toUpperCase() === "PCE") {
+ return firstNum(item.mapEnrichment, ["pace_fit"]) ?? firstNum(factorRowValue(item, factorName), ["factor_score"]);
+ }
+ return firstNum(factorRowValue(item, factorName), ["factor_score"]);
+}
+
+function factorBandValue(item: EnrichedRunner, factorName: string): string {
+ if (factorName.toUpperCase() === "PCE") {
+ const mapBand = firstText(item.mapEnrichment, ["pace_fit_band"], "");
+ if (mapBand) return mapBand.replace(/_/g, " ").toUpperCase();
+ }
+ return firstText(factorRowValue(item, factorName), ["factor_band"], "-").replace(/_/g, " ").toUpperCase();
+}
+
+function comboScoreValue(item: EnrichedRunner): number | null {
+ const connectionRow = connectionSourceRow(item);
+ return factorScoreValue(item, "COMBO") ??
+ firstNum(connectionRow, ["combo_sr", "combo_track_sr", "connection_score"]) ??
+ connectionScoreValue(item);
+}
+
+function paceMapRole(item: EnrichedRunner): string {
+ const raw = firstText(
+ item.mapEnrichment,
+ ["settling_position", "run_style", "lane"],
+ firstText(
+ item.row,
+ ["settling_band", "run_style", "speed_map_bucket", "early_speed_band"],
+ firstText(
+ item.runnerIntel,
+ ["settling_band", "run_style", "early_speed_band"],
+ firstText(item.drawer, ["dominant_run_style"], "")
+ )
+ )
+ )
+ .replace(/_/g, " ")
+ .toUpperCase()
+ .trim();
+
+ if (!raw) return "MIDFIELD";
+ if (raw.includes("LEADER")) return "LEADERS";
+ if (raw.includes("ON PACE") || raw === "PCE") return "ON PACE";
+ if (raw.includes("BCKMRK")) return "BACKMARKERS";
+ if (raw.includes("OFF PCE")) return "MIDFIELD";
+ if (raw.includes("MIDFIELD")) return "MIDFIELD";
+ return "MIDFIELD";
+}
+
+function paceMapXPercent(item: EnrichedRunner): number {
+ const explicit = firstNum(item.mapEnrichment, ["map_x_pct"]) ?? firstNum(item.row, ["map_x_pct"]);
+ if (explicit !== null && Number.isFinite(explicit)) {
+ return Math.max(6, Math.min(94, explicit));
+ }
+ const role = paceMapRole(item);
+ if (role === "LEADERS") return 12;
+ if (role === "ON PACE") return 30;
+ if (role === "MIDFIELD") return 55;
+ if (role === "BACKMARKERS") return 78;
+ return 50;
+}
+
+function shortHorseName(value: string, maxLength = 16): string {
+ const clean = text(value);
+ if (!clean) return "Runner";
+ if (clean.length <= maxLength) return clean;
+ return `${clean.slice(0, maxLength - 1).trimEnd()}`;
+}
+
+function paceRoleTone(role: string): string {
+ const normalized = role.toUpperCase();
+ if (normalized === "LEADERS") return "#34d399";
+ if (normalized === "ON PACE") return "#ffffff";
+ if (normalized === "MIDFIELD") return "#ffffff";
+ if (normalized === "BACKMARKERS") return "#f87171";
+ return "#94a3b8";
+}
+
+function paceRoleSpeedValue(role: string): number {
+ const normalized = role.toUpperCase();
+ if (normalized === "LEADERS") return 82;
+ if (normalized === "ON PACE") return 68;
+ if (normalized === "MIDFIELD") return 48;
+ if (normalized === "BACKMARKERS") return 28;
+ return 45;
+}
+
+function scoreTone(value: number | null, high = 60, medium = 45): string {
+ if (value === null || !Number.isFinite(value)) return "#94a3b8";
+ if (value >= high) return "#34d399";
+ if (value >= medium) return "#ffffff";
+ return "#f87171";
+}
+
+function intelligenceScoreValue(item: EnrichedRunner): number | null {
+ return firstNum(item.intel, ["intelligence_score_v1"]);
+}
+
+function normalizeGradeLabel(value: string): string {
+ const v = value.toUpperCase();
+ if (!v || v === "-") return "";
+ if (v.includes("SCRTCH")) return "SCRATCHED";
+ if (v.includes("LOW DT")) return "LOW DT";
+ if (v.includes("HIGH") || v.includes("ELITE") || v.includes("STRONG")) return "HIGH";
+ if (v.includes("MEDIUM") || v.includes("PSS") || v.includes("WATCH") || v.includes("NEUTRAL")) return "MEDIUM";
+ if (v.includes("LOW") || v.includes("POOR") || v.includes("NEGATIVE") || v.includes("WEK")) return "LOW";
+ return v;
+}
+
+function limitedAdjustedPrice(item: EnrichedRunner): number | null {
+ return firstNum(item.limited, ["limited_data_adjusted_price_v1"]) ??
+ firstNum(item.row, ["limited_data_adjusted_price_v1"]);
+}
+
+function betQualityNumeric(item: EnrichedRunner): number | null {
+ return firstNum(item.bet, ["bet_quality_score_v1_1", "bet_quality_score"]) ??
+ firstNum(item.drawer, ["bet_quality_score"]) ??
+ firstNum(item.intel, ["intelligence_bet_quality_component_v1", "bet_quality_score"]) ??
+ firstNum(item.row, ["bet_quality_score_v1_1", "bet_quality_score"]);
+}
+
+function sourceBetQualityGrade(item: EnrichedRunner): string {
+ return normalizeGradeLabel(firstText(item.bet, ["bet_quality_grade_v1_1", "bet_quality_grade"], ""));
+}
+
+function computedLimitedScore(item: EnrichedRunner): number {
+ if (isScratched(item)) return 0;
+
+ const existing =
+ firstNum(item.limited, ["limited_data_factor_score_v1", "limited_data_score_v1", "limited_score"]) ??
+ firstNum(item.row, ["limited_data_factor_score_v1", "limited_data_score_v1", "limited_score"]);
+ if (existing !== null) return clamp(Math.round(existing), 1, 100);
+
+ const betQualityScore = betQualityNumeric(item);
+ if (betQualityScore !== null) return clamp(Math.round(betQualityScore), 1, 100);
+
+ const intelligenceScore = intelligenceScoreValue(item);
+ if (intelligenceScore !== null) return clamp(Math.round(intelligenceScore), 1, 100);
+
+ const win = winPct(item.row, item.bet) ?? 0;
+ const edge = edgePct(item.row, item.bet) ?? 0;
+ const base = 35;
+ const winComponent = clamp(win * 1.8, 0, 25);
+ const edgeComponent = clamp(Math.max(edge, 0) * 0.18, 0, 25);
+ const negativeEdgePenalty = edge < 0 ? clamp(Math.abs(edge) * 0.12, 0, 20) : 0;
+ const fallbackPenalty = isFallbackRow(item) ? 12 : 0;
+ return clamp(Math.round(base + winComponent + edgeComponent - negativeEdgePenalty - fallbackPenalty), 1, 100);
+}
+
+function limitedScoreValue(item: EnrichedRunner): string {
+ if (isScratched(item)) return "";
+ return Math.round(computedLimitedScore(item)).toString();
+}
+
+function limitedDecisionValue(item: EnrichedRunner): string {
+ const value = firstText(
+ item.limited,
+ ["limited_data_decision_v1"],
+ firstText(item.row, ["limited_data_decision_v1"], ""),
+ );
+
+ if (value) return customerLimitedDecisionLabel(value.replace(/_/g, " ").toUpperCase());
+
+ if (isScratched(item)) return "SCRATCHED";
+
+ const score = computedLimitedScore(item);
+ const edge = edgePct(item.row, item.bet) ?? 0;
+
+ if (edge < 0) return "PSS";
+ if (score >= 65 && edge >= 18) return "MODEL EDGE";
+ if (score >= 50 && edge >= 10) return "WATCH";
+ if (isFallbackRow(item) && score < 60) return "LOW DT";
+ if (score >= 40 && edge > 0) return "PSS";
+ return "PSS";
+}
+
+function displayBetValue(item: EnrichedRunner): string {
+ if (isScratched(item)) return "SCRATCHED";
+
+ const base = decision(item.row, item.bet).toUpperCase();
+ const edge = edgePct(item.row, item.bet) ?? 0;
+
+ if (base === "WITING FEED" || base === "NO_MODEL" || base === "NO MODEL") return "WIT";
+ if (base === "WATCH" && edge >= 18) return "BET";
+ if (base === "WATCH") return "WATCH";
+ if (base === "LEN") return "LEN";
+ if (base === "PSS" || base === "MRKET COMPRESSION") return "PSS";
+ return base || "WIT";
+}
+
+function displayGradeValue(item: EnrichedRunner): string {
+ if (isScratched(item)) return "SCRATCHED";
+
+ const qualityScore = betQualityNumeric(item);
+ if (qualityScore !== null) {
+ if (qualityScore >= 75) return "VERY HIGH";
+ if (qualityScore >= 60) return "HIGH";
+ if (qualityScore >= 45) return "MEDIUM";
+ if (qualityScore >= 30) return "LOW";
+ return "VERY LOW";
+ }
+
+ const qualityGrade = sourceBetQualityGrade(item);
+ if (qualityGrade) return qualityGrade;
+
+ const score = computedLimitedScore(item);
+ const edge = edgePct(item.row, item.bet) ?? 0;
+ const win = winPct(item.row, item.bet) ?? 0;
+
+ if (isFallbackRow(item) && !(edge >= 50 && win >= 8)) {
+ if (score >= 45) return "MEDIUM";
+ if (score >= 30) return "LOW";
+ return "VERY LOW";
+ }
+
+ if (score >= 75) return "VERY HIGH";
+ if (score >= 60) return "HIGH";
+ if (score >= 45) return "MEDIUM";
+ if (score >= 30) return "LOW";
+ return "VERY LOW";
+}
+
+function displayBetQualityValue(item: EnrichedRunner): string {
+ if (isScratched(item)) return "SCRATCHED";
+
+ const score = betQualityNumeric(item);
+ const grade = sourceBetQualityGrade(item);
+ if (score !== null) {
+ if (score >= 75) return "VERY HIGH";
+ if (score >= 60) return "HIGH";
+ if (score >= 45) return "MEDIUM";
+ if (score >= 30) return "LOW";
+ return "VERY LOW";
+ }
+ if (grade) return grade;
+
+ const scoreFromLimited = computedLimitedScore(item);
+ if (scoreFromLimited >= 75) return "VERY HIGH";
+ if (scoreFromLimited >= 60) return "HIGH";
+ if (scoreFromLimited >= 45) return "MEDIUM";
+ if (scoreFromLimited >= 30) return "LOW";
+ return "VERY LOW";
+}
+
+function cellTone(label: string): string {
+ const value = label.toUpperCase();
+ if (value === "BET") return "#3ee68f";
+ if (value === "VERY HIGH" || value === "HIGH") return "#3ee68f";
+ if (value === "WATCH" || value === "LEN" || value === "MEDIUM") return "#ffffff";
+ if (value === "MODEL" || value === "MODEL EDGE") return "#ffffff";
+ if (value === "LOW DT") return "#94a3b8";
+ if (value === "SCRATCHED") return "#9ca3af";
+ if (value === "WIT") return "#94a3b8";
+ if (value === "PSS" || value === "MRKET COMPRESSION" || value === "LOW" || value === "VERY LOW") return "#f87171";
+ return "#eaf2ff";
+}
+
+function connectionTone(label: string): string {
+ const value = label.toUpperCase();
+ if (value.includes("ELITE") || value.includes("STRONG") || value.includes("POSITIVE") || value.includes("OUTPERFORMS")) return "#34d399";
+ if (value.includes("NEUTRAL")) return "#ffffff";
+ if (value.includes("NEGATIVE") || value.includes("POOR") || value.includes("UNDERPERFORMS")) return "#f87171";
+ if (value.includes("INSUFFICIENT")) return "#94a3b8";
+ return "#ffffff";
+}
+
+function campaignEvidenceTone(label: string): string {
+ const value = label.toUpperCase();
+ if (value.includes("STRONG") || value === "LOW") return "#34d399";
+ if (value.includes("DEVELOPING")) return "#ffffff";
+ if (value.includes("LIMITED") || value === "MODERATE") return "#ffffff";
+ if (value === "HIGH") return "#f87171";
+ if (value.includes("NO HISTORY") || value.includes("UNPROVEN") || value.includes("-") || value.includes("UNRTED")) return "#94a3b8";
+ return "#eaf2ff";
+}
+
+function hiddenGemTone(label: string): string {
+ const value = label.toUpperCase();
+ if (value.includes("STRONG CSE")) return "#ffffff";
+ if (value.includes("IMPROVING")) return "#34d399";
+ if (value.includes("BELOW EXPECTTIONS")) return "#f87171";
+ if (value.includes("NEUTRAL") || value.includes("NO SIGNAL") || value.includes("NONE")) return "#94a3b8";
+ return "#cbd5e1";
+}
+
+function performanceIntelligenceLabel(label: string, actionable = false, historical = false): string {
+ const value = label.toUpperCase();
+ if (value.includes("STRONG CSE") || value.includes("EDGE DETECTED")) return "STRONG CSE";
+ if (value.includes("IMPROVING") || value.includes("PROFILE EVIDENCE") || value.includes("HISTORICAL")) return "IMPROVING";
+ if (value.includes("BELOW") || value.includes("NEGATIVE")) return "BELOW EXPECTTIONS";
+ if (value.includes("NEUTRAL")) return "NEUTRAL";
+ if (actionable && (value.includes("HIGH") || value.includes("STRONG"))) return "STRONG CSE";
+ if (actionable) return "STRONG CSE";
+ if (historical || value.includes("HISTORICAL")) return "IMPROVING";
+ return "NEUTRAL";
+}
+
+function customerPerformanceNarrative(value: string): string {
+ return value
+ .replace(/hidden-gem/gi, "performance intelligence")
+ .replace(/hidden gem/gi, "performance intelligence")
+ .replace(/edge detected/gi, "strong case")
+ .replace(/profile evidence/gi, "improving")
+ .replace(/no evidence/gi, "neutral");
+}
+
+function formatCampaignStage(stage: number | null, label: string): string {
+ const normalized = label.replace(/_/g, " ").trim().toUpperCase();
+ if (normalized && normalized !== "-" && normalized !== "-") {
+ return stage !== null ? `${normalized} (${Math.round(stage)})` : normalized;
+ }
+ return stage !== null ? `STGE ${Math.round(stage)}` : "-";
+}
+
+function formatCampaignWindow(start: number | null, end: number | null): string {
+ if (start === null || end === null) return "-";
+ if (start === end) return `STGE ${Math.round(start)}`;
+ return `STGES ${Math.round(start)}-${Math.round(end)}`;
+}
+
+function coverageStatus(count: number, total: number): string {
+ if (total <= 0 || count <= 0) return "NOT LOADED";
+ if (count / total >= 0.8) return "LODED";
+ return "PARTIAL";
+}
+
+function coverageStatusTone(status: string): string {
+ const normalized = status.toUpperCase();
+ if (normalized === "LODED") return "#34d399";
+ if (normalized === "PARTIAL") return "#ffffff";
+ return "#94a3b8";
+}
+
+function trajectoryTone(label: string): string {
+ const value = label.toUpperCase();
+ if (value.includes("STRONG UP") || value === "UP" || value === "SCENDING" || value === "PEK") return "#34d399";
+ if (value === "EMERGING") return "#ffffff";
+ if (value === "STBLE" || value === "PLTEU") return "#ffffff";
+ if (value.includes("DOWN") || value === "DECLINING") return "#f87171";
+ return "#eaf2ff";
+}
+
+function runnerTrendSummary(direction: string, delta: number | null, historyCount = 0): string {
+ const value = direction.toUpperCase();
+ if (value.includes("STRONG UP") || value === "UP" || value === "SCENDING" || value === "EMERGING") return "IMPROVING";
+ if (value.includes("DOWN") || value === "DECLINING") return "REGRESSING";
+ if (value === "STBLE" || value === "PLTEU" || value === "PEK") return "STBLE";
+ if (delta !== null) {
+ if (delta >= 1.5) return "IMPROVING";
+ if (delta <= -1.5) return "REGRESSING";
+ return "STBLE";
+ }
+ return historyCount >= 2 ? "STBLE" : "LIMITED";
+}
+
+function runnerTrendTone(label: string): string {
+ const value = label.toUpperCase();
+ if (value === "IMPROVING") return "#34d399";
+ if (value === "STBLE") return "#ffffff";
+ if (value === "REGRESSING") return "#f87171";
+ return "#94a3b8";
+}
+
+function historyReadLabel(count: number): string {
+ if (count >= 5) return "HISTORY STRONG";
+ if (count >= 3) return "HISTORY BUILDING";
+ if (count >= 1) return "HISTORY LIMITED";
+ return "NO HISTORY";
+}
+
+function fitReadLabel(label: string, fallback = "Neutral"): string {
+ const value = label.toUpperCase();
+ if (!value || value === "-") return fallback;
+ if (value.includes("POSITIVE") || value.includes("STRONG") || value.includes("ELITE")) return "Positive";
+ if (value.includes("NEGATIVE") || value.includes("POOR")) return "Negative";
+ if (value.includes("NEUTRAL")) return "Neutral";
+ return value.replace(/_/g, " ");
+}
+
+function evidenceQualityTone(label: string): string {
+ const value = label.toUpperCase();
+ if (value.includes("LODED")) return "#34d399";
+ if (value.includes("LIMITED") || value.includes("PARTIAL")) return "#ffffff";
+ if (value.includes("NOT")) return "#94a3b8";
+ return "#ffffff";
+}
+
+function opportunityTone(label: string): string {
+ const value = label.toUpperCase();
+ if (value.includes("VERY HIGH") || value === "HIGH") return "#34d399";
+ if (value === "MEDIUM") return "#ffffff";
+ if (value === "LOW") return "#94a3b8";
+ return "#eaf2ff";
+}
+
+function riskTone(label: string): string {
+ const value = label.toUpperCase();
+ if (value.includes("VERY HIGH") || value === "HIGH") return "#f87171";
+ if (value === "MEDIUM") return "#ffffff";
+ if (value === "LOW") return "#34d399";
+ return "#eaf2ff";
+}
+
+function valueccent(label: string): React.CSSProperties {
+ return { color: cellTone(label), fontWeight: 900 };
+}
+
+function sourceLabel(row: Row, bet?: Row): string {
+ const display = firstText(row, ["display_source"], "");
+ if (display && display !== "-") {
+ return display
+ .replace("LIMITED_DT_MRKET_DJUSTED_V1", "MRKET DJ")
+ .replace(/^MODEL$/i, "EDGEIQ")
+ .toUpperCase();
+ }
+
+ const live = livePrice(row, bet);
+ const explicit = firstText(row, ["live_price_source", "tab_live_price_source", "edgeiq_price_source_v1", "bookmaker"], "");
+ if (explicit && explicit !== "-") {
+ return explicit
+ .replace("LIMITED_DT_MRKET_DJUSTED_V1", "MRKET DJ")
+ .replace(/^MODEL$/i, "EDGEIQ")
+ .toUpperCase();
+ }
+
+ return live && live > 0 ? "TB" : "EDGEIQ";
+}
+
+function decision(row: Row, bet?: Row): string {
+ const display = firstText(row, ["display_decision"], "");
+ if (display && display !== "-") return display.toUpperCase();
+
+ const explicit = firstText(row, ["execution_action", "decision"], "");
+ if (explicit && explicit !== "-" && !["WITING FEED", "NO_MRKET"].includes(explicit.toUpperCase())) {
+ return explicit.toUpperCase();
+ }
+
+ const live = livePrice(row, bet);
+ const fair = fairPrice(row, bet);
+ const edge = edgePct(row, bet);
+
+ if (!live || live <= 0) return "MRKET SOURCE UNVILBLE";
+ if (!fair || fair <= 0) return "PSS";
+ if (edge !== null && edge >= 18) return "WATCH";
+ if (edge !== null && edge >= 10) return "LEN";
+ if (edge !== null && edge > 0) return "PSS";
+ if (edge !== null) return "MRKET COMPRESSION";
+ return "PSS";
+}
+
+function historyDateText(row: Row | undefined): string {
+ return firstText(row, ["run_date_iso", "run_date", "race_date"], "-");
+}
+
+function historyDateValue(row: Row | undefined): number {
+ const value = historyDateText(row);
+ if (value === "-") return 0;
+ const parsed = Date.parse(value);
+ return Number.isFinite(parsed) ? parsed : 0;
+}
+
+function historyRunnerLookupKey(row: Row | undefined): string {
+ if (!row) return "";
+ return (
+ cleanHorseLoose(firstText(row, ["horse_key", "horseKey", "runner_key", "runnerKey"], "")) ||
+ cleanHorseLoose(firstText(row, ["horse", "horseName", "runner", "runner_name"], ""))
+ );
+}
+
+function historyRatingValue(row: Row | undefined): number | null {
+ return firstNum(row, ["run_rating_final", "run_rating", "recovered_rating", "performance_rating", "performance_rating_v6_1_research", "rating"]);
+}
+
+function hasHistoricalRating(row: Row | undefined): boolean {
+ return historyDateText(row) !== "-" && historyRatingValue(row) !== null;
+}
+
+function ratedHistoryRows(rows: Row[]): Row[] {
+ return rows.filter((row) => hasHistoricalRating(row));
+}
+
+function historyTrackText(row: Row | undefined): string {
+ return firstText(row, ["track"], "-");
+}
+
+function historyDistanceText(row: Row | undefined): string {
+ const distanceValue = firstText(row, ["distance"], "");
+ if (!distanceValue || distanceValue === "-") return "-";
+ const numericDistance = num(distanceValue);
+ if (numericDistance === null) return `${distanceValue}m`.replace("mm", "m");
+ return `${numericDistance % 1 === 0 ? numericDistance.toFixed(0) : numericDistance.toFixed(1)}m`;
+}
+
+function historyClassText(row: Row | undefined): string {
+ return firstText(row, ["class_name", "race_class_clean", "race_class", "class_name_recovered"], "-");
+}
+
+function historyGoingText(row: Row | undefined): string {
+ return firstText(row, ["going", "condition", "track_condition", "condition_recovered"], "-");
+}
+
+function historyFinishText(row: Row | undefined): string {
+ return firstText(row, ["finish_pos", "finish_position", "finish_pos_raw"], "-");
+}
+
+function historyBarrierText(row: Row | undefined): string {
+ return firstText(row, ["barrier"], "-");
+}
+
+function historyJockeyText(row: Row | undefined): string {
+ return firstText(row, ["jockey"], "-");
+}
+
+function historyWeightText(row: Row | undefined): string {
+ return firstText(row, ["weight"], "-");
+}
+
+function historyRaceStrengthText(row: Row | undefined): string {
+ return firstText(row, ["race_strength", "field_strength", "race_strength_rating"], "-");
+}
+
+function historySpText(row: Row | undefined): string {
+ const spValue = firstNum(row, ["sp"]);
+ if (spValue !== null && Number.isFinite(spValue) && spValue > 0) return money(spValue);
+ const raw = firstText(row, ["sp"], "-");
+ if (raw === "-") return "-";
+ if (/^\$?\d+(?:\.\d+)?$/.test(raw)) return raw.startsWith("$") ? raw : `$${raw}`;
+ return raw;
+}
+
+function formatHistoryDate(value: string): string {
+ if (!value || value === "-") return "-";
+ const parsed = new Date(value.length === 10 ? `${value}T00:00:00` : value);
+ if (Number.isNaN(parsed.getTime())) return value;
+ return parsed.toLocaleDateString("en-AU", {
+ day: "2-digit",
+ month: "short",
+ year: "numeric",
+ });
+}
+
+function ratingVariance(values: number[]): number | null {
+ if (!values.length) return null;
+ const average = values.reduce((sum, value) => sum + value, 0) / values.length;
+ const variance = values.reduce((sum, value) => sum + (value - average) ** 2, 0) / values.length;
+ return Number.isFinite(variance) ? variance : null;
+}
+
+function compactHistoryLine(row: Row): string {
+ const parts = [
+ formatHistoryDate(historyDateText(row)),
+ historyTrackText(row),
+ historyDistanceText(row),
+ historyClassText(row),
+ historyFinishText(row) === "-" ? "" : `Pos ${historyFinishText(row)}`,
+ historyRatingValue(row) === null ? "" : `PF ${renderStaticMetricValue(historyRatingValue(row), 1)}`,
+ ].filter(Boolean);
+ return parts.join(" | ");
+}
+
+function renderStaticMetricValue(value: number | null, digits = 0): string {
+ if (value === null || !Number.isFinite(value)) return "-";
+ return value.toFixed(digits);
+}
+
+function historyRunKey(row: Row | undefined): string {
+ if (!row) return "";
+ return [
+ cleanHorseLoose(firstText(row, ["horse_key", "horse"], "")),
+ historyDateText(row),
+ historyTrackText(row),
+ historyDistanceText(row),
+ historyClassText(row),
+ historyFinishText(row),
+ firstText(row, ["run_rating"], ""),
+ ].join("|");
+}
+
+function historyDetailMergeKey(row: Row | undefined): string {
+ if (!row) return "";
+ const historyKey = historyRunnerLookupKey(row);
+ if (!historyKey) return "";
+ return [
+ historyKey,
+ historyDateText(row),
+ cleanTrack(historyTrackText(row)),
+ historyRaceNoText(row),
+ historyDistanceText(row),
+ ].join("|");
+}
+
+function historyDetailMergeKeyLoose(row: Row | undefined): string {
+ if (!row) return "";
+ const historyKey = historyRunnerLookupKey(row);
+ if (!historyKey) return "";
+ return [
+ historyKey,
+ historyDateText(row),
+ cleanTrack(historyTrackText(row)),
+ historyDistanceText(row),
+ ].join("|");
+}
+
+function findHistoryMasterRowsForRunner(
+ base: Row,
+ historyMasterByHorse: Map<string, Row[]>,
+ historyMasterByTrackRaceHorse: Map<string, Row[]>,
+): Row[] {
+ const horseKey = historyRunnerLookupKey(base);
+ const trackRaceKey = horseKey ? [horseKey, cleanTrack(track(base)), raceNo(base)].join("|") : "";
+
+ if (horseKey && historyMasterByHorse.has(horseKey)) {
+ return historyMasterByHorse.get(horseKey) || [];
+ }
+ if (trackRaceKey && historyMasterByTrackRaceHorse.has(trackRaceKey)) {
+ return historyMasterByTrackRaceHorse.get(trackRaceKey) || [];
+ }
+ return [];
+}
+
+function mergeRunnerHistoryRows(
+ primaryRows: Row[],
+ secondaryRows: Row[],
+ tertiaryRows: Row[],
+ historyDetailByMergeKey: Map<string, Row>,
+ historyDetailByLooseMergeKey: Map<string, Row>,
+): Row[] {
+ const mergedRows = primaryRows.map((historyRow) => {
+ const detailRow =
+ historyDetailByMergeKey.get(historyDetailMergeKey(historyRow)) ||
+ historyDetailByLooseMergeKey.get(historyDetailMergeKeyLoose(historyRow));
+ return detailRow ? { ...detailRow, ...historyRow } : historyRow;
+ });
+
+ const combined = mergedRows.length ? [...mergedRows, ...secondaryRows, ...tertiaryRows] : [...secondaryRows, ...tertiaryRows];
+ const deduped = new Map<string, Row>();
+
+ combined.forEach((historyRow) => {
+ const key =
+ historyDetailMergeKey(historyRow) ||
+ historyDetailMergeKeyLoose(historyRow) ||
+ historyRunKey(historyRow);
+ if (!key || deduped.has(key)) return;
+ deduped.set(key, historyRow);
+ });
+
+ return [...deduped.values()].sort((a, b) => historyDateValue(b) - historyDateValue(a));
+}
+
+function historyRaceNoText(row: Row | undefined): string {
+ return firstText(row, ["race_no", "race_number", "race"], "-");
+}
+
+function historyFieldSizeText(row: Row | undefined): string {
+ return firstText(row, ["field_size", "fieldSize", "runners"], "-");
+}
+
+function ordinal(value: number | null): string {
+ if (value === null || !Number.isFinite(value)) return "N/";
+ const rounded = Math.trunc(value);
+ const mod100 = rounded % 100;
+ if (mod100 >= 11 && mod100 <= 13) return `${rounded}th`;
+ const mod10 = rounded % 10;
+ if (mod10 === 1) return `${rounded}st`;
+ if (mod10 === 2) return `${rounded}nd`;
+ if (mod10 === 3) return `${rounded}rd`;
+ return `${rounded}th`;
+}
+
+function drawerValue(value: string): string {
+ return value && value !== "-" ? value : "N/";
+}
+
+export default function RaceIntelligenceScreen(props: Props): React.ReactElement {
+ const [loading, setLoading] = useState(true);
+ const [runnerRows, setRunnerRows] = useState<Row[]>([]);
+ const [runnerIntelRows, setRunnerIntelRows] = useState<Row[]>([]);
+ const [v8Rows, setV8Rows] = useState<Row[]>([]);
+ const [betRows, setBetRows] = useState<Row[]>([]);
+ const [reliabilityRows, setReliabilityRows] = useState<Row[]>([]);
+ const [intelligenceCardRows, setIntelligenceCardRows] = useState<Row[]>([]);
+ const [briefingRows, setBriefingRows] = useState<Row[]>([]);
+ const [marketIntelRows, setMarketIntelRows] = useState<Row[]>([]);
+ const [verdictRows, setVerdictRows] = useState<Row[]>([]);
+ const [trackIntelRows, setTrackIntelRows] = useState<Row[]>([]);
+ const [horseDrawerRows, setHorseDrawerRows] = useState<Row[]>([]);
+ const [runnerDnaDrawerRows, setRunnerDnaDrawerRows] = useState<Row[]>([]);
+ const [explainabilityRows, setExplainabilityRows] = useState<Row[]>([]);
+ const [connectionRows, setConnectionRows] = useState<Row[]>([]);
+ const [limitedRows, setLimitedRows] = useState<Row[]>([]);
+ const [customerIntelligenceRows, setCustomerIntelligenceRows] = useState<Row[]>([]);
+ const [intelligenceSummaryRows, setIntelligenceSummaryRows] = useState<Row[]>([]);
+ const [intelligenceScoreRows, setIntelligenceScoreRows] = useState<Row[]>([]);
+ const [raceDayIntelligenceRows, setRaceDayIntelligenceRows] = useState<Row[]>([]);
+ const [factorScorecardRows, setFactorScorecardRows] = useState<Row[]>([]);
+ const [runnerProfileRows, setRunnerProfileRows] = useState<Row[]>([]);
+ const [formIntelligenceRows, setFormIntelligenceRows] = useState<Row[]>([]);
+ const [runnerFormRows, setRunnerFormRows] = useState<Row[]>([]);
+ const [runnerFormHistoryRows, setRunnerFormHistoryRows] = useState<Row[]>([]);
+ const [historyMasterRows, setHistoryMasterRows] = useState<Row[]>([]);
+ const [historyDetailRows, setHistoryDetailRows] = useState<Row[]>([]);
+ const [horseCareerRows, setHorseCareerRows] = useState<Row[]>([]);
+ const [horserchetypeRows, setHorserchetypeRows] = useState<Row[]>([]);
+ const [horseTrajectoryRows, setHorseTrajectoryRows] = useState<Row[]>([]);
+ const [horseProjectionRows, setHorseProjectionRows] = useState<Row[]>([]);
+ const [campaignIntelligenceRows, setCampaignIntelligenceRows] = useState<Row[]>([]);
+ const [hiddenGemRows, setHiddenGemRows] = useState<Row[]>([]);
+ const [raceShapeFallbackRows, setRaceShapeFallbackRows] = useState<Row[]>([]);
+ const [mapEnrichmentRows, setMapEnrichmentRows] = useState<Row[]>([]);
+ const [chaosIndexRows, setChaosIndexRows] = useState<Row[]>([]);
+ const [opportunityScoreRows, setOpportunityScoreRows] = useState<Row[]>([]);
+ const [commandEnrichmentRows, setCommandEnrichmentRows] = useState<Row[]>([]);
+ const [formEnrichmentRows, setFormEnrichmentRows] = useState<Row[]>([]);
+ const [ratingsHeatmapRows, setRatingsHeatmapRows] = useState<Row[]>([]);
+  const [productMeetingRows, setProductMeetingRows] = useState<Row[]>([]);
+ const [raceListRows, setRaceListRows] = useState<Row[]>([]);
+  const [meetingCalendarRows, setMeetingCalendarRows] = useState<Row[]>([]);
+  const [liveTrackIntelligenceRows, setLiveTrackIntelligenceRows] = useState<Row[]>([]);
+  const [trackMapManifestRows, setTrackMapManifestRows] = useState<Row[]>([]);
+  const [nexusContextualRows, setNexusContextualRows] = useState<Row[]>([]);
+  const [formSectionalProfileRows, setFormSectionalProfileRows] = useState<Row[]>([]);
+  const [gearProfileRows, setGearProfileRows] = useState<Row[]>([]);
+  const [labPriceEngineRows, setLabPriceEngineRows] = useState<Row[]>([]);
+  const [expandedMeetingDays, setExpandedMeetingDays] = useState<Record<string, boolean>>({ TODAY: true, TOMORROW: false, "DAY+2": false });
+ const [selectedKey, setSelectedKey] = useState("");
+ const [productView, setProductView] = useState<ProductView>("HOME");
+ const updateProductView = (next: ProductView) => {
+ setProductView(next);
+ if (typeof props.onProductViewChange === "function") props.onProductViewChange(next);
+ };
+ const [shellMeetingKey, setShellMeetingKey] = useState("");
+  const [shellTrack, setShellTrack] = useState("");
+  const [shellRaceNo, setShellRaceNo] = useState("");
+  const [shellRaceDate, setShellRaceDate] = useState("");
+  const [shellRaceKey, setShellRaceKey] = useState("");
+ const [raceRailCollapsed, setRaceRailCollapsed] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+ const [intelMode, setIntelMode] = useState<IntelMode>("COMMND");
+ const [runnerSubMode, setRunnerSubMode] = useState<RunnerSubMode>("DN");
+ const [labModule, setLabModule] = useState("TRAINERS");
+ const [statsMode, setStatsMode] = useState<StatsMode>("JOCKEYS");
+ const [formBenchmarkMode, setFormBenchmarkMode] = useState<BenchmarkMode>("CLASS_BENCHMARK");
+ const [priceEngineAdjustments, setPriceEngineAdjustments] = useState<Record<string, number>>({});
+ const [ratingHover, setRatingHover] = useState<RatingHoverCard | null>(null);
+ const [historicalDrawerOpen, setHistoricalDrawerOpen] = useState(false);
+ const [selectedHistoricalRun, setSelectedHistoricalRun] = useState<Row | null>(null);
+ const [historicalDrawerRuns, setHistoricalDrawerRuns] = useState<Row[]>([]);
+ const [fullHistoryRunner, setFullHistoryRunner] = useState<EnrichedRunner | null>(null);
+ const [historicalDrawerSourceLabel, setHistoricalDrawerSourceLabel] = useState("LST STRT");
+ const [historicalDrawerRunnerKey, setHistoricalDrawerRunnerKey] = useState("");
+ const [historicalDrawerRunnerName, setHistoricalDrawerRunnerName] = useState("");
+
+ useEffect(() => {
+ let active = true;
+
+ async function run(): Promise<void> {
+ setLoading(true);
+
+ const [runner, runnerIntel, v8, bet, rel, cards, briefing, marketIntel, verdict, trackIntel, horseDrawer, runnerDnaDrawer, explainability, connection, factorScorecard, limited, intelligenceScore, customerIntelligence, intelligenceSummary, raceDayIntelligence, runnerProfile, formIntelligence, runnerForm, runnerFormHistory, historyMaster, historyDetail, horseCareer, horserchetype, horseTrajectory, horseProjection, campaignIntelligence, hiddenGem, raceShapeFallback, mapEnrichment, chaosIndex, opportunityScore, commandEnrichment, formEnrichment, ratingsHeatmap, productMeetings, raceList, meetingCalendar, liveTrackIntelligence, trackMapManifest, nexusContextual, nexusContextualFallback, formSectionalProfile, gearProfile, labPriceEngine] = await Promise.all([
+ loadCsv(FILES.runnerBoard),
+ loadCsv(FILES.runnerIntel),
+ loadCsv(FILES.v8),
+ loadCsv(FILES.betQuality),
+ loadCsv(FILES.reliability),
+ loadCsv(FILES.intelligenceCards),
+ loadCsv(FILES.briefing),
+ loadCsv(FILES.marketIntel),
+ loadCsv(FILES.verdict),
+ loadCsv(FILES.trackIntel),
+ loadCsv(FILES.horseDrawer),
+ loadCsv(FILES.runnerDnaDrawer),
+ loadCsv(FILES.explainability),
+ loadCsv(FILES.connectionIntelligence),
+ loadCsv(FILES.factorScorecard),
+ loadCsv(FILES.limited),
+ loadCsv(FILES.intelligenceScore),
+ loadCsv(FILES.customerIntelligence),
+ loadCsv(FILES.intelligenceSummary),
+ loadCsv(FILES.raceDayIntelligence),
+ loadCsv(FILES.runnerProfile),
+ loadCsv(FILES.formIntelligence),
+ loadCsv(FILES.runnerForm),
+ loadCsv(FILES.runnerFormHistory),
+ loadCsv(FILES.historyMaster),
+ loadCsv(FILES.historyDetail),
+ loadCsv(FILES.horseCareer),
+ loadCsv(FILES.horserchetype),
+ loadCsv(FILES.horseTrajectory),
+ loadCsv(FILES.horseProjection),
+ loadCsv(FILES.campaignIntelligence),
+ loadCsv(FILES.hiddenGem),
+ loadCsv(FILES.raceShapeFallback),
+ loadCsv(FILES.mapEnrichment),
+ loadCsv(FILES.chaosIndex),
+ loadCsv(FILES.opportunityScore),
+ loadCsv(FILES.commandEnrichment),
+ loadCsv(FILES.formEnrichment),
+ loadCsv(FILES.ratingsHeatmap),
+  loadCsv(FILES.productMeetings),
+  loadCsv(FILES.raceList),
+  loadCsv(FILES.meetingCalendar),
+  loadCsv(FILES.liveTrackIntelligence),
+  loadCsv(FILES.trackMapManifest),
+  loadCsv(FILES.nexusContextual),
+  loadCsv(FILES.nexusContextualFallback),
+  loadCsv(FILES.formSectionalProfile),
+  loadCsv(FILES.gearProfile),
+  loadCsv(FILES.labPriceEngine),
+ ]);
+
+ if (!active) return;
+
+ setRunnerRows(runner);
+ setRunnerIntelRows(runnerIntel);
+ setV8Rows(v8);
+ setBetRows(bet);
+ setReliabilityRows(rel);
+ setIntelligenceCardRows(cards);
+ setBriefingRows(briefing);
+ setMarketIntelRows(marketIntel);
+ setVerdictRows(verdict);
+ setTrackIntelRows(trackIntel);
+ setHorseDrawerRows(horseDrawer);
+ setRunnerDnaDrawerRows(runnerDnaDrawer);
+ setExplainabilityRows(explainability);
+ setConnectionRows(connection);
+ setFactorScorecardRows(factorScorecard);
+ setLimitedRows(limited);
+ setCustomerIntelligenceRows(customerIntelligence);
+ setIntelligenceSummaryRows(intelligenceSummary);
+ setRaceDayIntelligenceRows(raceDayIntelligence);
+ setRunnerProfileRows(runnerProfile);
+ setFormIntelligenceRows(formIntelligence);
+ setRunnerFormRows(runnerForm);
+ setRunnerFormHistoryRows(runnerFormHistory);
+ setHistoryMasterRows(historyMaster);
+ setHistoryDetailRows(historyDetail);
+ setHorseCareerRows(horseCareer);
+ setHorserchetypeRows(horserchetype);
+ setHorseTrajectoryRows(horseTrajectory);
+ setHorseProjectionRows(horseProjection);
+ setCampaignIntelligenceRows(campaignIntelligence);
+ setHiddenGemRows(hiddenGem);
+ setRaceShapeFallbackRows(raceShapeFallback);
+ setMapEnrichmentRows(mapEnrichment);
+ setChaosIndexRows(chaosIndex);
+ setOpportunityScoreRows(opportunityScore);
+ setCommandEnrichmentRows(commandEnrichment);
+ setFormEnrichmentRows(formEnrichment);
+ setRatingsHeatmapRows(ratingsHeatmap);
+  setProductMeetingRows(productMeetings);
+  setRaceListRows(raceList);
+  setMeetingCalendarRows(meetingCalendar);
+  setLiveTrackIntelligenceRows(liveTrackIntelligence);
+  setTrackMapManifestRows(trackMapManifest);
+  setNexusContextualRows(nexusContextual.length ? nexusContextual : nexusContextualFallback);
+  setFormSectionalProfileRows(formSectionalProfile);
+  setGearProfileRows(gearProfile);
+  setLabPriceEngineRows(labPriceEngine);
+ setIntelligenceScoreRows(intelligenceScore);
+ setLoading(false);
+ }
+
+ run();
+
+ return () => {
+ active = false;
+ };
+ }, []);
+
+ const selectedTrack = cleanTrack(shellTrack || props.selectedTrack || props.currentRace?.track);
+ const selectedRaceNo = text(shellRaceNo || props.selectedRaceNo || props.currentRace?.raceNo || props.currentRace?.race_no);
+ const selectedRaceDate = text(shellRaceDate || props.currentRace?.raceDate || props.currentRace?.race_date || props.currentRace?.race_date_raw);
+ const meetingDisplayState = getMeetingDisplayState(props.currentMeeting);
+ const futureMeetingWithFields = meetingDisplayState === "FUTURE_MEETING_WITH_FIELDS";
+ const futureMeetingWithoutFields = meetingDisplayState === "FUTURE_MEETING_WITHOUT_FIELDS";
+ const futureMeetingTrack = text(props.currentMeeting?.track);
+ const futureMeetingDate = text(props.currentMeeting?.raceDate);
+ const futureMeetingStatus = text(props.currentMeeting?.meetingStatus).replace(/_/g, " ") || "FIELDS PENDING";
+ const futureMeetingDayBucket = text(props.currentMeeting?.dayBucket).replace("DY+2", "DY +2") || "UPCOMING";
+ const futureMeetingSelectedRace =
+ futureMeetingTrack && selectedRaceNo
+ ? `${futureMeetingTrack} R${selectedRaceNo}`
+ : futureMeetingTrack || "Upcoming race";
+
+ const runnerRowKey = (row: Row) => `${track(row)}|${raceNo(row)}|${cleanHorse(horse(row))}`;
+
+ const raceRows = useMemo(() => {
+ let rows = runnerRows;
+
+ if (selectedRaceDate) rows = rows.filter((row) => !raceDate(row) || raceDate(row) === selectedRaceDate);
+ if (selectedTrack) rows = rows.filter((row) => cleanTrack(track(row)) === selectedTrack);
+ if (selectedRaceNo) rows = rows.filter((row) => raceNo(row) === selectedRaceNo);
+
+ if (!rows.length && props.currentRace?.track && props.currentRace?.raceNo) {
+ rows = runnerRows.filter(
+ (row) =>
+ (!selectedRaceDate || !raceDate(row) || raceDate(row) === selectedRaceDate) &&
+ cleanTrack(track(row)) === cleanTrack(props.currentRace.track) &&
+ raceNo(row) === text(props.currentRace.raceNo)
+ );
+ }
+
+ if (!rows.length && Array.isArray(props.currentRace?.rows) && props.currentRace.rows.length) {
+ rows = (props.currentRace.rows as Row[]).filter((row) => {
+ const trackMatch = !selectedTrack || cleanTrack(track(row)) === selectedTrack;
+ const raceMatch = !selectedRaceNo || raceNo(row) === selectedRaceNo;
+ return trackMatch && raceMatch;
+ });
+ }
+
+ return [...rows].sort((a, b) => saddle(a) - saddle(b));
+ }, [runnerRows, selectedTrack, selectedRaceNo, selectedRaceDate, props.currentRace]);
+
+ const productShellRaces = useMemo(() => {
+ const raceMap = new Map<string, {
+ meetingDate: string;
+ dayLabel: string;
+ trackName: string;
+ meetingKey: string;
+ raceKey: string;
+ raceNoValue: string;
+ raceTime: string;
+ raceTitle: string;
+ distanceValue: string;
+ raceClassValue: string;
+ trackConditionValue: string;
+ railValue: string;
+ fieldSize: number;
+ marketStateValue: string;
+ ratingReference: string;
+ priceReference: string;
+ dataQualityStatus: string;
+ }>();
+
+ runnerRows.forEach((row) => {
+ const dateValue = raceDate(row) || firstText(row, ["meeting_date", "_date"], "");
+ const trackName = track(row);
+ const raceNoValue = raceNo(row);
+ if (!trackName || !raceNoValue) return;
+ const meetingKey = firstText(row, ["meeting_key"], `${dateValue}_${cleanTrack(trackName)}`);
+ const raceKeyValue = firstText(row, ["race_key"], `${meetingKey}_R${raceNoValue}`);
+ const existing = raceMap.get(raceKeyValue);
+ if (existing) {
+ existing.fieldSize += 1;
+ if (existing.raceTime === "Time TBC") existing.raceTime = firstText(row, ["race_time", "jump_time", "start_time"], existing.raceTime) || existing.raceTime;
+ if (existing.trackConditionValue === "-") existing.trackConditionValue = trackCondition(row);
+ if (existing.railValue === "-") existing.railValue = firstText(row, ["rail_position", "rail", "rail_clean"], "-");
+ return;
+ }
+ const priceReady = firstNum(row, ["edgeiq_active_display_fair_price", "edgeiq_v7_2g2_guarded_display_fair_price", "fair_price"]) !== null;
+ const ratingReady = firstNum(row, ["projected_rating_V6_1_RESERCH", "projected_rating_v5_2", "total_rating_points"]) !== null;
+ raceMap.set(raceKeyValue, {
+ meetingDate: dateValue,
+ dayLabel: (() => {
+ const rawDayLabel = firstText(row, ["day_bucket"], "UPCOMING").replace("DY+2", "DY +2");
+ const rawMeetingDate = firstText(row, ["race_date", "meeting_date", "date"], "");
+ const parsedMeetingDate = rawMeetingDate ? new Date(rawMeetingDate) : null;
+ const isFutureOffset = /^DY\s*\+\s*\d+$/i.test(rawDayLabel);
+
+ if (isFutureOffset && parsedMeetingDate && !Number.isNaN(parsedMeetingDate.getTime())) {
+ return parsedMeetingDate
+ .toLocaleDateString("en-AU", {
+ weekday: "long",
+ day: "2-digit",
+ month: "short",
+ year: "numeric",
+ })
+ .toUpperCase()
+ .replace(",", " ");
+ }
+
+ return rawDayLabel;
+ })(),
+ trackName,
+ meetingKey,
+ raceKey: raceKeyValue,
+ raceNoValue,
+ raceTime: firstText(row, ["race_time", "jump_time", "start_time"], "Time TBC") || "Time TBC",
+ raceTitle: firstText(row, ["race_title", "race_name"], `${trackName} R${raceNoValue}`),
+ distanceValue: distance(row),
+ raceClassValue: raceClass(row),
+ trackConditionValue: trackCondition(row),
+ railValue: firstText(row, ["rail_position", "rail", "rail_clean"], "-"),
+ fieldSize: 1,
+ marketStateValue: firstText(row, ["market_state", "tab_fixed_betting_status", "market_source_status"], "PENDING").replace(/_/g, " ").toUpperCase(),
+ ratingReference: ratingReady ? "Performance reference" : "Performance Index pending",
+ priceReference: priceReady ? "EDGEiQ display" : "Price pending",
+ dataQualityStatus: "READY",
+ });
+ });
+
+ if (raceListRows.length > 0) {
+ raceListRows.forEach((row) => {
+ const meetingDate = firstText(row, ["race_date"], "");
+ const trackName = firstText(row, ["normalised_track", "track"], "");
+ const raceNoValue = firstText(row, ["race_no"], "");
+ if (!meetingDate || !trackName || !raceNoValue) return;
+ const meetingKey = `${meetingDate}_${cleanTrack(trackName)}`;
+ const raceKeyValue = `${meetingKey}_R${raceNoValue}`;
+ if (raceMap.has(raceKeyValue)) return;
+ const rawRaceTime = firstText(row, ["race_time_utc"], "");
+ const parsedRaceTime = rawRaceTime ? new Date(rawRaceTime) : null;
+ const raceTime = parsedRaceTime && !Number.isNaN(parsedRaceTime.getTime())
+ ? parsedRaceTime.toLocaleTimeString("en-AU", { hour: "numeric", minute: "2-digit" })
+ : "Time TBC";
+ raceMap.set(raceKeyValue, {
+ meetingDate,
+ dayLabel: firstText(row, ["day_bucket"], "UPCOMING"),
+ trackName,
+ meetingKey,
+ raceKey: raceKeyValue,
+ raceNoValue,
+ raceTime,
+ raceTitle: firstText(row, ["race_name"], "") || `${trackName} R${raceNoValue}`,
+ distanceValue: firstText(row, ["distance"], "-"),
+ raceClassValue: firstText(row, ["race_class"], "-"),
+ trackConditionValue: firstText(row, ["track_condition"], "-"),
+ railValue: firstText(row, ["rail_position"], "-"),
+ fieldSize: 0,
+ marketStateValue: firstText(row, ["race_status"], "PENDING").replace(/_/g, " ").toUpperCase(),
+ ratingReference: "Fields pending",
+ priceReference: "Fields pending",
+ dataQualityStatus: firstText(row, ["race_status"], "PENDING"),
+ });
+ });
+ }
+
+ return Array.from(raceMap.values()).sort((a, b) =>
+ a.meetingDate.localeCompare(b.meetingDate) ||
+ cleanTrack(a.trackName).localeCompare(cleanTrack(b.trackName)) ||
+ (Number(a.raceNoValue) || 999) - (Number(b.raceNoValue) || 999)
+ );
+ }, [runnerRows, raceListRows]);
+ const productShellMeetings = useMemo(() => {
+ const meetingMap = new Map<string, {
+ meetingDate: string;
+ dayLabel: string;
+ trackName: string;
+ meetingKey: string;
+ meetingStatus: string;
+ raceCount: number;
+ firstRaceTime: string;
+ lastRaceTime: string;
+ trackConditionLatest: string;
+ railPositionLatest: string;
+ weather: string;
+ temperature: string;
+ windDirection: string;
+ windSpeed: string;
+ rainfall24h: string;
+ rainfall7d: string;
+ irrigation24h: string;
+ irrigation7d: string;
+ updated: string;
+ marketStatusSummary: string;
+ stateRegion: string;
+ dataQualityStatus: string;
+ mapFile: string;
+ mapAvailable: boolean;
+ }>();
+
+ const cleanMeetingValue = (value: unknown, fallback = "-") => {
+ const raw = text(value).replace(/Ã¢â‚¬.|â€”/g, "-").trim();
+ if (!raw || /^(-|TBC|TIME TBC|N\/A|NA|null|undefined)$/i.test(raw)) return fallback;
+ return raw.replace(/_/g, " ");
+ };
+
+ const dayKeyFor = (value: unknown) => {
+ const raw = text(value).toUpperCase().replace(/\s+/g, "").replace("DY+2", "DAY+2");
+ if (raw.includes("TODAY")) return "TODAY";
+ if (raw.includes("TOMORROW")) return "TOMORROW";
+ if (raw.includes("DAY+2")) return "DAY+2";
+ return raw || "DAY+2";
+ };
+
+ const normaliseMapTrack = (value: unknown) => {
+ const raw = cleanTrack(text(value));
+ if (raw.includes("SANDOWN")) return "SANDOWN";
+ if (raw.includes("BALLARAT")) return "BALLARAT";
+ if (raw.includes("CAULFIELD")) return "CAULFIELD";
+ return raw;
+ };
+
+ const availableMapFiles = new Set(["/assets/tracks/caulfield_edgeiq.svg", "/assets/tracks/flemington_edgeiq.svg"]);
+ const manifestByTrack = new Map<string, Row>();
+
+ trackMapManifestRows.forEach((row) => {
+ const key = normaliseMapTrack(firstText(row, ["track"], ""));
+ if (key) manifestByTrack.set(key, row);
+ });
+
+ const applyMap = (meeting: { trackName: string; mapFile: string; mapAvailable: boolean }) => {
+ const manifest = manifestByTrack.get(normaliseMapTrack(meeting.trackName));
+ const mapFile = firstText(manifest || {}, ["map_file"], "");
+ meeting.mapFile = mapFile;
+ meeting.mapAvailable = Boolean(mapFile && availableMapFiles.has(mapFile));
+ };
+
+ const ensureMeeting = (seed: any) => {
+ const trackName = cleanMeetingValue(seed.trackName, "Meeting");
+ const meetingDate = cleanMeetingValue(seed.meetingDate, "-");
+ const meetingKey = text(seed.meetingKey) || `${meetingDate}_${cleanTrack(trackName)}`;
+ const existing = meetingMap.get(meetingKey);
+ if (existing) return existing;
+
+ const created = {
+ meetingDate,
+ dayLabel: dayKeyFor(seed.dayLabel),
+ trackName,
+ meetingKey,
+ meetingStatus: cleanMeetingValue((seed as any).meetingStatus, "Fields pending"),
+ raceCount: Number((seed as any).raceCount) || 0,
+ firstRaceTime: cleanMeetingValue((seed as any).firstRaceTime),
+ lastRaceTime: cleanMeetingValue((seed as any).lastRaceTime),
+ trackConditionLatest: cleanMeetingValue((seed as any).trackConditionLatest),
+ railPositionLatest: cleanMeetingValue((seed as any).railPositionLatest),
+ weather: cleanMeetingValue((seed as any).weather),
+ temperature: cleanMeetingValue((seed as any).temperature),
+ windDirection: cleanMeetingValue((seed as any).windDirection),
+ windSpeed: cleanMeetingValue((seed as any).windSpeed),
+ rainfall24h: cleanMeetingValue((seed as any).rainfall24h),
+ rainfall7d: cleanMeetingValue((seed as any).rainfall7d),
+ irrigation24h: cleanMeetingValue((seed as any).irrigation24h),
+ irrigation7d: cleanMeetingValue((seed as any).irrigation7d),
+ updated: cleanMeetingValue((seed as any).updated),
+ marketStatusSummary: cleanMeetingValue((seed as any).marketStatusSummary, "Awaiting Feed"),
+ stateRegion: cleanMeetingValue((seed as any).stateRegion, "VIC"),
+ dataQualityStatus: cleanMeetingValue((seed as any).dataQualityStatus, "Ready"),
+ mapFile: "",
+ mapAvailable: false,
+ };
+
+ applyMap(created);
+ meetingMap.set(meetingKey, created);
+ return created;
+ };
+
+ productMeetingRows.forEach((row) => {
+ const meetingDate = firstText(row, ["meeting_date", "race_date"], "");
+ const trackName = firstText(row, ["track"], "");
+ if (!meetingDate || !trackName) return;
+ ensureMeeting({
+ meetingDate,
+ dayLabel: firstText(row, ["day_label", "day_bucket"], ""),
+ trackName,
+ meetingKey: firstText(row, ["meeting_key"], `${meetingDate}_${cleanTrack(trackName)}`),
+ meetingStatus: firstText(row, ["meeting_status"], "Fields ready"),
+ raceCount: firstText(row, ["race_count"], "0"),
+ firstRaceTime: firstText(row, ["first_race_time"], ""),
+ lastRaceTime: firstText(row, ["last_race_time"], ""),
+ trackConditionLatest: firstText(row, ["track_condition_latest"], ""),
+ railPositionLatest: firstText(row, ["rail_position_latest"], ""),
+ marketStatusSummary: firstText(row, ["market_status_summary"], ""),
+ stateRegion: firstText(row, ["state", "region"], "VIC"),
+ dataQualityStatus: firstText(row, ["data_quality_status"], "Ready"),
+ });
+ });
+ 
+ meetingCalendarRows.forEach((row) => {
+ const meetingDate = firstText(row, ["race_date", "meeting_date"], "");
+ const trackName = firstText(row, ["track"], "");
+ if (!meetingDate || !trackName) return;
+ ensureMeeting({
+ meetingDate,
+ dayLabel: firstText(row, ["day_bucket", "day_label"], ""),
+ trackName,
+ meetingKey: `${meetingDate}_${cleanTrack(trackName)}`,
+ meetingStatus: firstText(row, ["meeting_type"], "Fields pending"),
+ stateRegion: "VIC",
+ dataQualityStatus: "Calendar",
+ });
+ });
+
+ const raceCountByMeeting = new Map<string, number>();
+ productShellRaces.forEach((race) => {
+ if (!meetingMap.has(race.meetingKey)) return;
+ raceCountByMeeting.set(race.meetingKey, (raceCountByMeeting.get(race.meetingKey) || 0) + 1);
+ });
+
+ liveTrackIntelligenceRows.forEach((row) => {
+ const meetingDate = firstText(row, ["race_date", "meeting_date"], "");
+ const trackName = firstText(row, ["track"], "");
+ const meetingKey = `${meetingDate}_${cleanTrack(trackName)}`;
+ const existing = meetingMap.get(meetingKey);
+ if (!existing) return;
+
+ if (existing.trackConditionLatest === "-") existing.trackConditionLatest = cleanMeetingValue(firstText(row, ["track_condition", "condition_group"], ""));
+ if (existing.railPositionLatest === "-") existing.railPositionLatest = cleanMeetingValue(firstText(row, ["rail_position", "rail"], ""));
+ applyMap(existing);
+ });
+
+ productShellRaces.forEach((race) => {
+ const existing = meetingMap.get(race.meetingKey) || (race.fieldSize > 0
+ ? ensureMeeting({
+ meetingDate: race.meetingDate,
+ dayLabel: race.dayLabel,
+ trackName: race.trackName,
+ meetingKey: race.meetingKey,
+ meetingStatus: "Fields Ready",
+ raceCount: 0,
+ firstRaceTime: race.raceTime,
+ lastRaceTime: race.raceTime,
+ trackConditionLatest: race.trackConditionValue,
+ railPositionLatest: race.railValue,
+ marketStatusSummary: race.marketStateValue,
+ dataQualityStatus: race.dataQualityStatus,
+ })
+ : null);
+ if (!existing) return;
+
+ existing.meetingStatus = "Fields Ready";
+ existing.raceCount = Math.max(existing.raceCount, raceCountByMeeting.get(race.meetingKey) || 0);
+
+ if (race.raceTime !== "Time TBC" && race.raceTime !== "-") {
+ existing.firstRaceTime = existing.firstRaceTime === "-" ? race.raceTime : [existing.firstRaceTime, race.raceTime].sort()[0];
+ existing.lastRaceTime = existing.lastRaceTime === "-" ? race.raceTime : [existing.lastRaceTime, race.raceTime].sort().slice(-1)[0];
+ }
+
+ if (existing.trackConditionLatest === "-") existing.trackConditionLatest = race.trackConditionValue || "-";
+ if (existing.railPositionLatest === "-") existing.railPositionLatest = race.railValue || "-";
+ if (existing.marketStatusSummary === "Awaiting Feed") existing.marketStatusSummary = race.marketStateValue || "Awaiting Feed";
+
+ applyMap(existing);
+ });
+
+ return Array.from(meetingMap.values()).sort((a, b) => {
+ const dayOrder = { TODAY: 0, TOMORROW: 1, "DAY+2": 2 } as Record<string, number>;
+ return (dayOrder[a.dayLabel] ?? 9) - (dayOrder[b.dayLabel] ?? 9) || a.meetingDate.localeCompare(b.meetingDate) || cleanTrack(a.trackName).localeCompare(cleanTrack(b.trackName));
+ });
+ }, [productShellRaces, productMeetingRows, meetingCalendarRows, liveTrackIntelligenceRows, trackMapManifestRows]);
+
+ const selectedShellMeeting = productShellMeetings.find((meeting) => meeting.meetingKey === shellMeetingKey) || null;
+ const selectedShellMeetingRaces = selectedShellMeeting
+  ? productShellRaces.filter((race) => race.meetingKey === selectedShellMeeting.meetingKey)
+  : [];
+ const selectedShellRace =
+ shellRaceKey
+ ? productShellRaces.find((race) => race.raceKey === shellRaceKey) || null
+ : selectedRaceNo && selectedShellMeeting
+ ? productShellRaces.find((race) => race.meetingKey === selectedShellMeeting.meetingKey && race.raceNoValue === selectedRaceNo) || null
+ : null;
+ const openShellMeeting = (meetingKey: string) => {
+  setShellMeetingKey(meetingKey);
+  setShellTrack("");
+  setShellRaceNo("");
+  setShellRaceDate("");
+  setShellRaceKey("");
+  setSelectedKey("");
+  setIntelMode("COMMND");
+  updateProductView("MEETINGS");
+ };
+ const openShellRace = (race: typeof productShellRaces[number]) => {
+  if (race.fieldSize <= 0) {
+  setShellMeetingKey(race.meetingKey);
+  setShellTrack("");
+  setShellRaceNo("");
+  setShellRaceDate("");
+  setShellRaceKey("");
+  setSelectedKey("");
+  updateProductView("MEETINGS");
+  return;
+  }
+  setShellMeetingKey(race.meetingKey);
+  setShellTrack(race.trackName);
+  setShellRaceNo(race.raceNoValue);
+  setShellRaceDate(race.meetingDate);
+  setShellRaceKey(race.raceKey);
+  updateProductView("RCE");
+  setSelectedKey("");
+  setIntelMode("COMMND");
+ };
+
+ const historyMasterByHorse = useMemo(() => {
+ const historyMap = new Map<string, Row[]>();
+
+ historyMasterRows.forEach((historyRow) => {
+ const historyKey = historyRunnerLookupKey(historyRow);
+ if (!historyKey) return;
+
+ const existing = historyMap.get(historyKey);
+ if (existing) {
+ existing.push(historyRow);
+ } else {
+ historyMap.set(historyKey, [historyRow]);
+ }
+ });
+
+ historyMap.forEach((rows) => {
+ rows.sort((a, b) => historyDateValue(b) - historyDateValue(a));
+ });
+
+ return historyMap;
+ }, [historyMasterRows]);
+
+ const historyMasterByTrackRaceHorse = useMemo(() => {
+ const historyMap = new Map<string, Row[]>();
+
+ historyMasterRows.forEach((historyRow) => {
+ const historyKey = historyRunnerLookupKey(historyRow);
+ const trackKey = cleanTrack(track(historyRow));
+ const raceKey = raceNo(historyRow);
+ const compositeKey = historyKey && trackKey && raceKey ? [historyKey, trackKey, raceKey].join("|") : "";
+ if (!compositeKey) return;
+
+ const existing = historyMap.get(compositeKey);
+ if (existing) {
+ existing.push(historyRow);
+ } else {
+ historyMap.set(compositeKey, [historyRow]);
+ }
+ });
+
+ historyMap.forEach((rows) => {
+ rows.sort((a, b) => historyDateValue(b) - historyDateValue(a));
+ });
+
+ return historyMap;
+ }, [historyMasterRows]);
+
+ const historyDetailByHorse = useMemo(() => {
+ const historyMap = new Map<string, Row[]>();
+
+ historyDetailRows.forEach((historyRow) => {
+ const historyKey = historyRunnerLookupKey(historyRow);
+ if (!historyKey) return;
+
+ const existing = historyMap.get(historyKey);
+ if (existing) {
+ existing.push(historyRow);
+ } else {
+ historyMap.set(historyKey, [historyRow]);
+ }
+ });
+
+ historyMap.forEach((rows) => {
+ rows.sort((a, b) => historyDateValue(b) - historyDateValue(a));
+ });
+
+ return historyMap;
+ }, [historyDetailRows]);
+
+ const historyDetailByMergeKey = useMemo(() => {
+ const detailMap = new Map<string, Row>();
+ historyDetailRows.forEach((historyRow) => {
+ const mergeKey = historyDetailMergeKey(historyRow);
+ if (mergeKey && !detailMap.has(mergeKey)) detailMap.set(mergeKey, historyRow);
+ });
+ return detailMap;
+ }, [historyDetailRows]);
+
+ const historyDetailByLooseMergeKey = useMemo(() => {
+ const detailMap = new Map<string, Row>();
+ historyDetailRows.forEach((historyRow) => {
+ const mergeKey = historyDetailMergeKeyLoose(historyRow);
+ if (mergeKey && !detailMap.has(mergeKey)) detailMap.set(mergeKey, historyRow);
+ });
+ return detailMap;
+ }, [historyDetailRows]);
+
+ const runnerFormHistoryByHorse = useMemo(() => {
+ const historyMap = new Map<string, Row[]>();
+
+ runnerFormHistoryRows.forEach((historyRow) => {
+ const historyKey = historyRunnerLookupKey(historyRow);
+ if (!historyKey) return;
+
+ const existing = historyMap.get(historyKey);
+ if (existing) {
+ existing.push(historyRow);
+ } else {
+ historyMap.set(historyKey, [historyRow]);
+ }
+ });
+
+ historyMap.forEach((rows) => {
+ rows.sort((a, b) => historyDateValue(b) - historyDateValue(a));
+ });
+
+ return historyMap;
+ }, [runnerFormHistoryRows]);
+
+ const horseCareerByHorse = useMemo(() => {
+ const careerMap = new Map<string, Row>();
+
+ horseCareerRows.forEach((careerRow) => {
+ const horseKey =
+ cleanHorseLoose(firstText(careerRow, ["horse_key"], "")) ||
+ cleanHorseLoose(firstText(careerRow, ["horse"], ""));
+
+ if (!horseKey || careerMap.has(horseKey)) return;
+ careerMap.set(horseKey, careerRow);
+ });
+
+ return careerMap;
+ }, [horseCareerRows]);
+
+ const horserchetypeByHorse = useMemo(() => {
+ const archetypeMap = new Map<string, Row>();
+
+ horserchetypeRows.forEach((archetypeRow) => {
+ const horseKey =
+ cleanHorseLoose(firstText(archetypeRow, ["horse_key"], "")) ||
+ cleanHorseLoose(firstText(archetypeRow, ["horse"], ""));
+
+ if (!horseKey || archetypeMap.has(horseKey)) return;
+ archetypeMap.set(horseKey, archetypeRow);
+ });
+
+ return archetypeMap;
+ }, [horserchetypeRows]);
+
+ const horseTrajectoryByHorse = useMemo(() => {
+ const trajectoryMap = new Map<string, Row>();
+
+ horseTrajectoryRows.forEach((trajectoryRow) => {
+ const horseKey =
+ cleanHorseLoose(firstText(trajectoryRow, ["horse_key"], "")) ||
+ cleanHorseLoose(firstText(trajectoryRow, ["horse"], ""));
+
+ if (!horseKey || trajectoryMap.has(horseKey)) return;
+ trajectoryMap.set(horseKey, trajectoryRow);
+ });
+
+ return trajectoryMap;
+ }, [horseTrajectoryRows]);
+
+ const horseProjectionByHorse = useMemo(() => {
+ const projectionMap = new Map<string, Row>();
+
+ horseProjectionRows.forEach((projectionRow) => {
+ const horseKey =
+ cleanHorseLoose(firstText(projectionRow, ["horse_key"], "")) ||
+ cleanHorseLoose(firstText(projectionRow, ["horse"], ""));
+
+ if (!horseKey || projectionMap.has(horseKey)) return;
+ projectionMap.set(horseKey, projectionRow);
+ });
+
+ return projectionMap;
+ }, [horseProjectionRows]);
+
+ const formEnrichmentByRunnerKey = useMemo(() => {
+ const map = new Map<string, Row>();
+ formEnrichmentRows.forEach((formRow) => {
+ const key =
+ firstText(formRow, ["runner_key"], "") ||
+ [
+ firstText(formRow, ["race_date"], ""),
+ cleanTrack(firstText(formRow, ["track"], "")),
+ `R${firstText(formRow, ["race_no"], "").replace(/^R/i, "")}`,
+ cleanHorseLoose(firstText(formRow, ["horse_key"], "")) || cleanHorseLoose(firstText(formRow, ["horse"], "")),
+ ].join("_");
+ if (key) map.set(key, formRow);
+ });
+ return map;
+ }, [formEnrichmentRows]);
+
+ const enriched = useMemo(() => {
+ const formDirectMap = new Map<string, Row>();
+ formEnrichmentRows.forEach((formRow) => {
+ const directKey = [
+ firstText(formRow, ["race_date"], ""),
+ cleanTrack(firstText(formRow, ["track"], "")),
+ String(firstText(formRow, ["race_no"], "")).replace(/^R/i, ""),
+ cleanHorseLoose(firstText(formRow, ["horse_key"], "")) || cleanHorseLoose(firstText(formRow, ["horse"], "")),
+ ].join("|");
+ formDirectMap.set(directKey, formRow);
+ });
+
+ return raceRows.map((row) => {
+ const runnerIntel = findSidecar(runnerIntelRows, row);
+ const v8 = findSidecar(v8Rows, row);
+ const bet = findSidecar(betRows, row);
+ const rel = findSidecar(reliabilityRows, row);
+ const drawer = findSidecar(horseDrawerRows, row);
+ const dna = findDnaSidecar(runnerDnaDrawerRows, row);
+ const explainability = findSidecar(explainabilityRows, row);
+ const connection = findConnectionSidecar(connectionRows, row);
+ const limited = findSidecar(limitedRows, row);
+ const customerIntel = findSidecar(customerIntelligenceRows, row);
+ const intelligenceSummary = findSidecarByRaceHorse(intelligenceSummaryRows, row);
+ const raceDayIntelligence = findSidecarByRaceHorse(raceDayIntelligenceRows, row);
+ const runnerProfile = findSidecarByRaceHorse(runnerProfileRows, row);
+ const formIntelligence = findSidecarByRaceHorse(formIntelligenceRows, row);
+ const runnerForm = findSidecarByRaceHorse(runnerFormRows, row);
+ const runnerHistoryKey =
+ cleanHorseLoose(firstText(row, ["horse_key"], "")) ||
+ cleanHorseLoose(horse(row));
+ const runnerCareer = horseCareerByHorse.get(runnerHistoryKey);
+ const runnerrchetype = horserchetypeByHorse.get(runnerHistoryKey);
+ const runnerTrajectory = horseTrajectoryByHorse.get(runnerHistoryKey);
+ const runnerProjection = horseProjectionByHorse.get(runnerHistoryKey);
+ const campaign = findCampaignSidecar(campaignIntelligenceRows, row);
+ const hiddenGem = findHiddenGemForRunner(hiddenGemRows, row);
+ const commandEnrichment = findCommandEnrichmentSidecar(commandEnrichmentRows, row);
+ const mapEnrichment = findSidecarByRaceHorse(mapEnrichmentRows, row);
+ const ratingsHeatmap = findSidecarByRaceHorse(ratingsHeatmapRows, row);
+ const nexusContextual = findNexusContextualSidecar(nexusContextualRows, row);
+ const formDirectKey = [
+ firstText(row, ["race_date"], ""),
+ cleanTrack(firstText(row, ["track"], "")),
+ String(firstText(row, ["race_no"], "")).replace(/^R/i, ""),
+ cleanHorseLoose(firstText(row, ["horse_key"], "")) || cleanHorseLoose(firstText(row, ["horse"], "")),
+ ].join("|");
+ const formEnrichment =
+ formDirectMap.get(formDirectKey) ||
+ findFormEnrichmentSidecar(formEnrichmentRows, row);
+ const runnerHistoryMaster = findHistoryMasterRowsForRunner(row, historyMasterByHorse, historyMasterByTrackRaceHorse);
+ const runnerHistoryDetail = historyDetailByHorse.get(runnerHistoryKey) || [];
+ const runnerHistoryForm = runnerFormHistoryByHorse.get(runnerHistoryKey) || [];
+ const runnerHistory = mergeRunnerHistoryRows(
+ runnerHistoryMaster,
+ runnerHistoryDetail,
+ runnerHistoryForm,
+ historyDetailByMergeKey,
+ historyDetailByLooseMergeKey,
+ );
+ const intel = findSidecar(intelligenceScoreRows, row);
+ const rowJoinKey = firstText(dna, ["join_key"], "") || firstText(row, ["join_key"], "");
+ const factorRows = factorScorecardRows
+ .filter((factorRow) => {
+ const factorJoinKey = firstText(factorRow, ["join_key"], "");
+ if (rowJoinKey && factorJoinKey) return factorJoinKey === rowJoinKey;
+ return cleanTrack(track(factorRow)) === cleanTrack(track(row)) && raceNo(factorRow) === raceNo(row) && cleanHorse(horse(factorRow)) === cleanHorse(horse(row));
+ })
+ .sort((a, b) => (num(a.factor_order) ?? 999) - (num(b.factor_order) ?? 999));
+
+ return { row, runnerIntel, v8, bet, rel, drawer, dna, explainability, connection, limited, intel, customerIntel, intelligenceSummary, raceDayIntelligence, runnerProfile, formIntelligence, runnerForm, runnerHistory, runnerCareer, runnerrchetype, runnerTrajectory, runnerProjection, campaign, hiddenGem, commandEnrichment, mapEnrichment, formEnrichment, ratingsHeatmap, nexusContextual, factorRows };
+ });
+ }, [raceRows, runnerIntelRows, v8Rows, betRows, reliabilityRows, horseDrawerRows, runnerDnaDrawerRows, explainabilityRows, connectionRows, factorScorecardRows, limitedRows, intelligenceScoreRows, customerIntelligenceRows, intelligenceSummaryRows, runnerProfileRows, formIntelligenceRows, runnerFormRows, historyMasterByHorse, historyMasterByTrackRaceHorse, historyDetailByHorse, historyDetailByMergeKey, historyDetailByLooseMergeKey, runnerFormHistoryByHorse, horseCareerByHorse, horserchetypeByHorse, horseTrajectoryByHorse, horseProjectionByHorse, campaignIntelligenceRows, hiddenGemRows, commandEnrichmentRows, mapEnrichmentRows, formEnrichmentRows, ratingsHeatmapRows, nexusContextualRows, formEnrichmentByRunnerKey]);
+
+ const rankedEnriched = useMemo(() => {
+ const fallbackOrder = [...enriched]
+ .sort((a, b) => {
+ const rawProb = firstNum(a.row, ["V6_1_RESERCH_probability"]);
+ const rawProbB = firstNum(b.row, ["V6_1_RESERCH_probability"]);
+ const prob = winPct(a.row, a.bet) ?? (rawProb === null ? -1 : rawProb * 100);
+ const probB = winPct(b.row, b.bet) ?? (rawProbB === null ? -1 : rawProbB * 100);
+ return probB - prob;
+ })
+ .map((item, index) => [runnerRowKey(item.row), index + 1] as const);
+
+ const fallbackRankMap = new Map<string, number>(fallbackOrder);
+
+ return enriched.map((item) => {
+ const explicitRank =
+ firstNum(item.row, ["V6_1_RESERCH_price_rank", "price_rank", "final_probability_rank_used", "runner_rank"]) ??
+ fallbackRankMap.get(runnerRowKey(item.row)) ??
+ null;
+
+ return {
+ ...item,
+ modelRank: explicitRank === null ? null : Math.max(1, Math.round(explicitRank)),
+ };
+ });
+ }, [enriched]);
+
+ const decisionBoardGridCols =
+ "55px 245px 80px 150px 100px 96px 96px 96px 110px 120px";
+
+ const decisionBoardLegend =
+ "MODEL RANK | WIN CHANCE | FAIR PRICE | MARKET | SETUP GAP | EDGEiQ CONFIDENCE | MARKET READ";
+
+ const selected =
+ rankedEnriched.find((item) => runnerRowKey(item.row) === selectedKey) ||
+ rankedEnriched.find((item) => (edgePct(item.row, item.bet) ?? -999) > 0) ||
+ rankedEnriched[0];
+
+ const header = raceRows[0];
+ const futureMeetingSelectedMeta = [
+ header ? distance(header) : num(props.currentRace?.distance) !== null ? `${num(props.currentRace?.distance)}m` : "",
+ header && raceClass(header) !== "-" ? raceClass(header) : text(props.currentRace?.raceClass),
+ text(props.currentRace?.raceTime),
+ ]
+ .filter(Boolean)
+ .join(" | ");
+ const futureMeetingFieldCount = raceRows.length || (Array.isArray(props.currentRace?.rows) ? props.currentRace.rows.length : 0);
+
+ const intelligenceCard = useMemo(() => {
+ if (!header) return undefined;
+ return findRaceSidecar(intelligenceCardRows, header);
+ }, [intelligenceCardRows, header]);
+
+ const briefing = useMemo(() => {
+ if (!header) return undefined;
+ return findRaceSidecar(briefingRows, header);
+ }, [briefingRows, header]);
+
+ const marketIntel = useMemo(() => {
+ if (!header) return undefined;
+ return findRaceSidecar(marketIntelRows, header);
+ }, [marketIntelRows, header]);
+
+ const verdict = useMemo(() => {
+ if (!header) return undefined;
+ return findRaceSidecar(verdictRows, header);
+ }, [verdictRows, header]);
+
+ const trackIntel = useMemo(() => {
+ if (!header) return undefined;
+ return findRaceSidecar(trackIntelRows, header);
+ }, [trackIntelRows, header]);
+
+ const raceShapeFallback = useMemo(() => {
+ if (!header) return undefined;
+ return findRaceShapeFallbackForRace(raceShapeFallbackRows, header);
+ }, [raceShapeFallbackRows, header]);
+
+ const chaosIndex = useMemo(() => {
+ if (!header) return undefined;
+ return findRaceSidecar(chaosIndexRows, header);
+ }, [chaosIndexRows, header]);
+
+ const opportunityScore = useMemo(() => {
+ if (!header) return undefined;
+ return findRaceSidecar(opportunityScoreRows, header);
+ }, [opportunityScoreRows, header]);
+
+ const raceClarity = band(intelligenceCard, ["race_clarity_band_v1", "race_clarity"], "-");
+ const expectedTempo = band(intelligenceCard, ["expected_tempo_band_v1", "expected_tempo"], "-");
+ const fallbackRaceShapeLabel = firstText(raceShapeFallback, ["race_shape_label"], "-").replace(/_/g, " ").toUpperCase();
+ const fallbackTempoLabel = firstText(raceShapeFallback, ["tempo_label"], "-").replace(/_/g, " ").toUpperCase();
+ const fallbackPressureLabel = firstText(raceShapeFallback, ["pressure_risk"], "-").replace(/_/g, " ").toUpperCase();
+ const fallbackPacedvantageLabel = firstText(raceShapeFallback, ["pace_advantage_label"], "");
+ const fallbackRaceShapeNarrative = firstText(raceShapeFallback, ["race_shape_narrative"], "");
+ const displayExpectedTempo = expectedTempo !== "-" ? expectedTempo : fallbackTempoLabel;
+ const bettingConfidence = band(intelligenceCard, ["betting_confidence_band_v1", "betting_confidence"], "-");
+ const raceStory = firstText(intelligenceCard, ["race_story_v1", "race_story"], "");
+
+ const mostLikelyWinner =
+ firstText(verdict, ["most_likely_winner", "likely_winner", "top_pick"], "") ||
+ firstText(briefing, ["most_likely_winner", "likely_winner", "top_pick"], "");
+
+ const bestValue =
+ firstText(verdict, ["best_value", "best_current_value", "best_value_runner"], "") ||
+ firstText(briefing, ["best_value", "best_current_value", "best_value_runner"], "");
+
+ const mostLikelyFair =
+ firstNum(briefing, ["most_likely_fair", "top_pick_fair"]) ??
+ firstNum(verdict, ["most_likely_fair", "top_pick_fair"]);
+ const bestValueEdge =
+ firstNum(briefing, ["top_value_edge", "best_value_edge", "best_current_value_edge"]) ??
+ firstNum(verdict, ["top_value_edge", "best_value_edge", "best_current_value_edge"]);
+ const bestBet = firstText(verdict, ["best_bet", "bet_recommendation", "verdict_bet"], "WATCH").toUpperCase();
+ const verdictNarrative = firstText(verdict, ["verdict_narrative", "race_verdict", "verdict_comment", "narrative"], "");
+ const briefingNarrative = firstText(briefing, ["race_briefing", "briefing", "race_briefing_text", "briefing_text"], "");
+ const marketComment = firstText(marketIntel, ["market_comment", "market_intelligence", "market_narrative"], "");
+ const trackProfile = firstText(trackIntel, ["track_dna_style"], "NO PROFILE");
+ const trackBarrier = firstText(trackIntel, ["track_dna_barrier"], "");
+ const trackMovement = firstText(trackIntel, ["track_dna_movement"], "");
+ const trackDnaConfidence = band(trackIntel, ["track_dna_confidence"], "-");
+ const trackDnaSampleWinners = firstText(trackIntel, ["track_dna_sample_winners"], "");
+
+ const bestTrackFitRunner = firstText(trackIntel, ["best_track_fit_runner"], "-");
+ const bestTrackFitScore = firstText(trackIntel, ["best_track_fit_score"], "-");
+ const eliteFitCount = firstText(trackIntel, ["elite_fit_count"], "0");
+ const strongFitCount = firstText(trackIntel, ["strong_fit_count"], "0");
+ const positiveFitCount = firstText(trackIntel, ["positive_fit_count"], "0");
+ const negativeFitCount = firstText(trackIntel, ["negative_fit_count"], "0");
+ const poorFitCount = firstText(trackIntel, ["poor_fit_count"], "0");
+ const trackdvantageSummary = firstText(trackIntel, ["track_advantage_summary"], "");
+ const trackRiskSummary = firstText(trackIntel, ["track_risk_summary"], "");
+ const trackIntelligenceComment = firstText(trackIntel, ["track_intelligence_comment"], "");
+ const conditionLabel = header ? `${trackCondition(header).toUpperCase()} / ${distance(header)} / ${raceClass(header)}` : "-";
+ const railDisplay =
+ header && railPosition(header) !== "-"
+ ? railPosition(header)
+ : text(props.currentRace?.rail_position || props.currentRace?.rail || props.currentRace?.railPosition) || "-";
+ const trackRiskCount =
+ integer(trackRiskSummary) ??
+ ((integer(negativeFitCount) ?? 0) + (integer(poorFitCount) ?? 0) || null);
+ const trackDnaHeaderCopy = trackDnaHeadline(trackProfile);
+ const trackDnaFitContext =
+ trackProfile.toUpperCase() === "NO PROFILE"
+ ? conditionLabel
+ : `${trackDnaHeaderCopy}${humanBarrierPhrase(trackBarrier) ? ` | ${humanBarrierPhrase(trackBarrier)}` : ""}`;
+ const customerTrackdvantage =
+ trackProfile.toUpperCase() === "NO PROFILE"
+ ? "No clear historical track pattern is available for this setup."
+ : `This setup historically favours ${humanTrackStyle(trackProfile)}${humanBarrierPhrase(trackBarrier) ? ` from ${humanBarrierPhrase(trackBarrier)}` : ""}.${bestTrackFitRunner && bestTrackFitRunner !== "-" ? ` Best profile match: ${bestTrackFitRunner}.` : ""}`;
+ const customerTrackRisk =
+ trackRiskCount && trackRiskCount > 0
+ ? `${trackRiskCount} runners clash with today's historical profile.`
+ : trackRiskSummary || "No major profile risks stand out for this race.";
+ const customerTrackInsight =
+ trackIntelligenceComment
+ ? `Track influence: ${trackDnaConfidence}.${trackDnaSampleWinners ? ` Historical sample: ${trackDnaSampleWinners} winners.` : ""}${integer(positiveFitCount) !== null && trackRiskCount !== null ? ` Clear fits: ${positiveFitCount}. Profile risks: ${trackRiskCount}.` : ""}`
+ : `Track influence: ${trackDnaConfidence}.${trackDnaSampleWinners ? ` Historical sample: ${trackDnaSampleWinners} winners.` : ""}`;
+ const customerBriefingNarrative = buildBriefingNarrative(
+ raceClarity,
+ displayExpectedTempo,
+ bettingConfidence,
+ mostLikelyWinner,
+ mostLikelyFair,
+ bestValue,
+ bestValueEdge,
+ );
+ const activeRaceRows = rankedEnriched.filter((item) => !isScratched(item));
+ useEffect(() => {
+ console.log("[EDGEiQ runner row audit]", JSON.stringify({
+ selectedMeeting: selectedShellMeeting
+ ? {
+ meetingKey: selectedShellMeeting.meetingKey,
+ track: selectedShellMeeting.trackName,
+ date: selectedShellMeeting.meetingDate,
+ }
+ : null,
+ selectedRace: selectedShellRace
+ ? {
+ raceKey: selectedShellRace.raceKey,
+ track: selectedShellRace.trackName,
+ date: selectedShellRace.meetingDate,
+ raceNo: selectedShellRace.raceNoValue,
+ fieldSize: selectedShellRace.fieldSize,
+ }
+ : {
+ track: shellTrack || props.selectedTrack || props.currentRace?.track || "",
+ date: selectedRaceDate,
+ raceNo: selectedRaceNo,
+ },
+ raceKey: selectedShellRace?.raceKey || shellRaceKey || "",
+ meetingKey: selectedShellMeeting?.meetingKey || shellMeetingKey || "",
+ runnerRowsLength: runnerRows.length,
+ "runnerRows.length": runnerRows.length,
+ runnerRows: { length: runnerRows.length },
+ intelligenceRowsLength: runnerIntelRows.length,
+ "intelligenceRows.length": runnerIntelRows.length,
+ intelligenceRows: { length: runnerIntelRows.length },
+ raceIntelligenceRowsLength: intelligenceCardRows.length,
+ filteredRowsLength: raceRows.length,
+ "filteredRows.length": raceRows.length,
+ filteredRows: { length: raceRows.length },
+ activeRaceRowsLength: activeRaceRows.length,
+ }));
+ }, [selectedShellMeeting, selectedShellRace, shellTrack, shellRaceKey, shellMeetingKey, selectedRaceDate, selectedRaceNo, runnerRows.length, runnerIntelRows.length, intelligenceCardRows.length, raceRows.length, activeRaceRows.length, props.selectedTrack, props.currentRace]);
+ const livePriceRowCount = activeRaceRows.filter((item) => (livePrice(item.row, item.bet) ?? 0) > 0).length;
+ const overlayCountComputed = activeRaceRows.filter((item) => (edgePct(item.row, item.bet) ?? -999) > 0).length;
+ const strongOverlayCountComputed = activeRaceRows.filter((item) => (edgePct(item.row, item.bet) ?? -999) >= 10).length;
+ const topModelRow =
+ [...activeRaceRows].sort(
+ (a, b) =>
+ (a.modelRank ?? 999) - (b.modelRank ?? 999) ||
+ (winPct(b.row, b.bet) ?? -1) - (winPct(a.row, a.bet) ?? -1)
+ )[0] || rankedEnriched[0];
+ const bestValueItem =
+ [...activeRaceRows].sort((a, b) => (edgePct(b.row, b.bet) ?? -999) - (edgePct(a.row, a.bet) ?? -999))[0] || topModelRow;
+ const topWinChanceRunner = mostLikelyWinner || (topModelRow ? horse(topModelRow.row) : "");
+ const topWinChanceFair =
+ mostLikelyFair ?? (topModelRow ? limitedAdjustedPrice(topModelRow) ?? fairPrice(topModelRow.row, topModelRow.bet) : null);
+ const bestValueRunner = bestValue || (bestValueItem ? horse(bestValueItem.row) : "");
+ const bestValueEdgeDisplay = bestValueEdge ?? (bestValueItem ? edgePct(bestValueItem.row, bestValueItem.bet) : null);
+ const marketEfficiency = band(marketIntel, ["market_efficiency"], livePriceRowCount ? "LIVE" : "PENDING");
+ const overlayCountDisplay = firstText(marketIntel, ["overlay_count"], activeRaceRows.length ? String(overlayCountComputed) : "-");
+ const strongOverlayCountDisplay = firstText(marketIntel, ["strong_overlay_count"], activeRaceRows.length ? String(strongOverlayCountComputed) : "-");
+ const marketStatus =
+ livePriceRowCount === 0
+ ? "WITING FEED"
+ : livePriceRowCount === activeRaceRows.length
+ ? "TB LIVE"
+ : "PARTIAL MRKET";
+ const marketStatusTone =
+ marketStatus === "TB LIVE" ? "#3ee68f" : marketStatus === "PARTIAL MRKET" ? "#ffffff" : "#ffffff";
+ const marketEfficiencyTone =
+ marketEfficiency === "LIVE" ? "#3ee68f" : marketEfficiency === "PENDING" ? "#ffffff" : bandColor(marketEfficiency);
+ const chaosBand = firstText(chaosIndex, ["chaos_band"], "");
+ const chaosValue = firstText(chaosIndex, ["chaos_index"], "");
+ const chaosChipLabel = chaosValue ? `CHOS INDEX ${chaosValue}` : chaosBand ? `CHOS INDEX ${chaosBand}` : "";
+ const chaosChipTone =
+ chaosBand.includes("HIGH") ? "#f87171" : chaosBand.includes("TACTICAL") ? "#ffffff" : chaosBand.includes("LOW") ? "#3ee68f" : "#ffffff";
+ const opportunityBand = firstText(opportunityScore, ["opportunity_band"], "");
+ const opportunityValue = firstText(opportunityScore, ["opportunity_score"], "");
+ const opportunityChipLabel = opportunityValue ? `OPPORTUNITY SCORE ${opportunityValue}` : opportunityBand ? `OPPORTUNITY SCORE ${opportunityBand}` : "";
+ const opportunityChipTone =
+ opportunityBand.includes("HIGH") ? "#3ee68f" : opportunityBand.includes("LIVE") ? "#ffffff" : opportunityBand.includes("TACTICAL") ? "#ffffff" : "#94a3b8";
+ const raceAssessmentNarrative = (() => {
+ const clarityText = raceClarity === "-" ? "Race shape is still forming" : `Race is ${raceClarity}`;
+ const tempoText = displayExpectedTempo === "-" ? "tempo is still settling" : `${displayExpectedTempo} tempo is expected`;
+ const leaderText =
+ topWinChanceRunner && bestValueRunner
+ ? topWinChanceRunner === bestValueRunner
+ ? "Performance Index currently places several runners under consideration."
+ : "Performance Index and market pricing indicate several runners warrant investigation."
+ : topWinChanceRunner
+ ? "Performance Index is beginning to separate the field."
+ : bestValueRunner
+ ? "Market pricing differs from the Performance Index across parts of the field."
+ : "No standout runner is established yet.";
+ const confidenceText = bettingConfidence === "-" ? "Confidence is still forming." : `Confidence is ${bettingConfidence}.`;
+ const marketText =
+ marketStatus === "WITING FEED"
+ ? "TB prices are not available yet."
+ : `Market pricing is ${marketEfficiency.toLowerCase()} across the field.`;
+ return `${clarityText} with ${tempoText}. ${leaderText} ${confidenceText} ${marketText}`;
+ })();
+ const selectedIsScratched = selected ? isScratched(selected) : false;
+ const selectedModelRank = selected?.modelRank ?? null;
+ const selectedDisplayBet = selected ? displayBetValue(selected) : "-";
+ const selectedDisplayGrade = selected ? displayGradeValue(selected) : "-";
+ const selectedLimitedScore = selected ? limitedScoreValue(selected) : "";
+ const selectedLimitedScoreNumeric = selected ? computedLimitedScore(selected) : null;
+ const selectedExplainability = selected?.explainability;
+ const selectedCustomerIntel = selected?.customerIntel;
+ const selectedIntelligenceSummary = selected?.intelligenceSummary;
+ const selectedRaceDayIntelligence = selected?.raceDayIntelligence;
+ const selectedEdgeiqScore = selected ? firstText(selectedCustomerIntel, ["edgeiq_score"], "-") : "-";
+ const selectedEdgeiqBandRaw = selected ? firstText(selectedCustomerIntel, ["edgeiq_band"], "-") : "-";
+ const selectedEdgeiqBand = selectedEdgeiqBandRaw.replace(/_/g, " ").toUpperCase();
+ const selectedEdgeiqVerdict = selected ? firstText(selectedCustomerIntel, ["edgeiq_verdict"], "") : "";
+ const selectedEdgeiqReasonsRaw = selected ? firstText(selectedCustomerIntel, ["primary_reasons"], "") : "";
+ const selectedEdgeiqRisksRaw = selected ? firstText(selectedCustomerIntel, ["primary_risks"], "") : "";
+ const selectedEdgeiqReasons = selectedEdgeiqReasonsRaw.split("|").map((x) => x.trim()).filter(Boolean).slice(0, 4);
+ const selectedEdgeiqRisks = selectedEdgeiqRisksRaw.split("|").map((x) => x.trim()).filter(Boolean).slice(0, 4);
+ const selectedStableIntentBandRaw = selected ? firstText(selectedCustomerIntel, ["stable_intent_band"], "-") : "-";
+ const selectedStableIntentBand = selectedStableIntentBandRaw.replace(/_/g, " ").toUpperCase();
+ const selectedContextSignalCount = selected ? firstText(selectedCustomerIntel, ["context_signal_count"], "-") : "-";
+ const selectedCustomerDnaBandRaw = selected ? firstText(selectedCustomerIntel, ["dna_band"], "-") : "-";
+ const selectedCustomerDnaBand = selectedCustomerDnaBandRaw.replace(/_/g, " ").toUpperCase();
+ const selectedIntelligenceSummaryTitle = selected ? firstText(selectedIntelligenceSummary, ["intelligence_summary_title"], "") : "";
+ const selectedIntelligenceSummaryText = selected ? firstText(selectedIntelligenceSummary, ["intelligence_summary_text"], "") : "";
+ const selectedIntelligencectionText = selected ? firstText(selectedIntelligenceSummary, ["customer_action_text"], "") : "";
+ const selectedRaceDayCondition = selected ? firstText(selectedRaceDayIntelligence, ["track_condition"], "-") : "-";
+ const selectedRaceDayRail = selected ? firstText(selectedRaceDayIntelligence, ["rail_clean"], "-") : "-";
+ const selectedRaceDayTempo = selected ? firstText(selectedRaceDayIntelligence, ["tempo_clean"], "-") : "-";
+ const selectedRaceDayPressure = selected ? firstText(selectedRaceDayIntelligence, ["map_pressure"], "-") : "-";
+ const selectedRaceDayTrackProfile = selected ? firstText(selectedRaceDayIntelligence, ["track_profile_clean"], "-") : "-";
+ const selectedRaceDayTrackConfidence = selected ? firstText(selectedRaceDayIntelligence, ["track_confidence_clean"], "-") : "-";
+ const selectedRaceDayRead = selected ? firstText(selectedRaceDayIntelligence, ["race_day_read_clean"], "") : "";
+
+ const selectedConnectionSource = selected ? connectionSourceRow(selected) : undefined;
+ const selectedConnectionLoaded = selected ? hasConnectionPayload(selectedConnectionSource) : false;
+ const selectedRaceExplainability = selectedExplainability ?? topModelRow?.explainability ?? activeRaceRows[0]?.explainability;
+ const selectedExplainabilityModelRankRaw = selected ? firstText(selectedExplainability, ["model_rank"], "") : "";
+ const selectedExplainabilityModelRank = selectedIsScratched
+ ? "SCRATCHED"
+ : selectedExplainabilityModelRankRaw
+ ? `#${selectedExplainabilityModelRankRaw.replace(/^#/, "")}`
+ : selectedModelRank
+ ? `#${selectedModelRank}`
+ : "-";
+ const selectedExplainabilityConfidenceBand = selected
+ ? firstText(selectedExplainability, ["confidence_band"], "-").replace(/_/g, " ").toUpperCase()
+ : "-";
+ const selectedExplainabilityConfidenceScore = selected
+ ? firstNum(selectedExplainability, ["final_confidence_score"]) ?? selectedLimitedScoreNumeric
+ : null;
+ const selectedExplainabilityTrendLabel = selected
+ ? firstText(selectedExplainability, ["trend_label"], "-").replace(/_/g, " ").toUpperCase()
+ : "-";
+ const selectedExplainabilityTrendDelta = selected ? firstNum(selectedExplainability, ["rating_trend_delta"]) : null;
+ const selectedExplainabilityTrendDisplay = selectedIsScratched
+ ? "SCRATCHED"
+ : selectedExplainabilityTrendLabel !== "-" && selectedExplainabilityTrendDelta !== null
+ ? `${selectedExplainabilityTrendLabel} (${renderMetricValue(selectedExplainabilityTrendDelta, 2, true)})`
+ : selectedExplainabilityTrendLabel !== "-"
+ ? selectedExplainabilityTrendLabel
+ : selectedExplainabilityTrendDelta !== null
+ ? renderMetricValue(selectedExplainabilityTrendDelta, 2, true)
+ : "-";
+ const selectedExplainabilityRaceTempo = selected
+ ? firstText(selectedExplainability, ["race_tempo"], displayExpectedTempo)
+ : displayExpectedTempo;
+ const selectedExplainabilityRaceShape = selected
+ ? firstText(selectedExplainability, ["race_shape_label"], fallbackRaceShapeLabel !== "-" ? fallbackRaceShapeLabel : raceClarity)
+ : fallbackRaceShapeLabel !== "-" ? fallbackRaceShapeLabel : raceClarity;
+ const selectedExplainabilityWhy = selected ? firstText(selectedExplainability, ["why_ranked_here"], "") : "";
+ const selectedExplainabilityConfidenceExplanation = selected ? firstText(selectedExplainability, ["confidence_explanation"], "") : "";
+ const selectedExplainabilityTrendSummary = selected ? firstText(selectedExplainability, ["trend_summary"], "") : "";
+ const selectedConnectionBand = selected
+ ? firstText(selectedConnectionSource, ["connection_band"], "-").replace(/_/g, " ").toUpperCase()
+ : "-";
+ const selectedConnectionEvidenceQuality = selected
+ ? firstText(selectedConnectionSource, ["evidence_quality"], "-").replace(/_/g, " ").toUpperCase()
+ : "-";
+ const selectedConnectionEvidenceStatus = selected
+ ? firstText(selectedConnectionSource, ["connection_evidence_status"], "-").replace(/_/g, " ").toUpperCase()
+ : "-";
+ const selectedExplainabilityConnectionScore = selected ? firstNum(selectedConnectionSource, ["connection_score"]) : null;
+ const selectedConnectionngleLabel = (value: string): string => {
+ const label = value.toUpperCase();
+ if (label.includes("JOCKEY")) return "Jockey Pattern";
+ if (label.includes("COMBO") || label.includes("PRTNERSHIP") || label.includes("TRINER/JOCKEY")) return "Partnership Pattern";
+ if (label.includes("MRKET") || label.includes("SP") || label.includes("/E") || label.includes("ROI")) return "Market Pattern";
+ if (label.includes("PREP")) return "Preparation Pattern";
+ return "Trainer Pattern";
+ };
+ const selectedConnectionngles = selectedIsScratched
+ ? []
+ : [
+ firstText(selectedConnectionSource, ["edgeiq_connection_angle_summary"], ""),
+ firstText(selectedConnectionSource, ["connection_angle_1"], ""),
+ firstText(selectedConnectionSource, ["connection_angle_2"], ""),
+ firstText(selectedConnectionSource, ["connection_angle_3"], ""),
+ ]
+ .filter((value) => {
+ const normalized = value.trim().toUpperCase();
+ return normalized && normalized !== "-" && normalized !== "LIMITED SMPLE";
+ })
+ .map((value) => ({ label: selectedConnectionngleLabel(value), value }));
+ const selectedConnectionReadPatterns = selectedIsScratched
+ ? []
+ : [
+ { label: "Trainer Pattern", value: firstText(selectedConnectionSource, ["trainer_track_read"], "") },
+ { label: "Trainer Pattern", value: firstText(selectedConnectionSource, ["trainer_distance_read"], "") },
+ { label: "Preparation Pattern", value: firstText(selectedConnectionSource, ["trainer_prep_read"], "") },
+ { label: "Market Pattern", value: firstText(selectedConnectionSource, ["trainer_market_read"], "") },
+ { label: "Jockey Pattern", value: firstText(selectedConnectionSource, ["jockey_track_read"], "") },
+ { label: "Jockey Pattern", value: firstText(selectedConnectionSource, ["jockey_distance_read"], "") },
+ { label: "Partnership Pattern", value: firstText(selectedConnectionSource, ["combo_read"], "") },
+ ].filter((item) => {
+ const normalized = item.value.trim().toUpperCase();
+ return normalized && normalized !== "-" && normalized !== "LIMITED SMPLE" && !normalized.startsWith("NOT PPLICBLE");
+ }).slice(0, 3);
+ const selectedConnectionEvidencePatterns = selectedConnectionngles.length
+ ? selectedConnectionngles
+ : selectedConnectionReadPatterns;
+ const selectedConnectionRisk = selectedIsScratched
+ ? ""
+ : firstText(selectedConnectionSource, ["connection_risk_1"], "");
+ const selectedConnectionRiskMeaningful = (() => {
+ const normalized = selectedConnectionRisk.trim().toUpperCase();
+ return !!normalized && normalized !== "-" && normalized !== "EVIDENCE SMPLE IS LIMITED.";
+ })();
+ const selectedConnectionPositiveItems = selectedIsScratched
+ ? []
+ : [
+ { factor: firstText(selectedConnectionSource, ["connection_positive_1"], ""), value: firstText(selectedConnectionSource, ["connection_positive_1_value"], "") },
+ { factor: firstText(selectedConnectionSource, ["connection_positive_2"], ""), value: firstText(selectedConnectionSource, ["connection_positive_2_value"], "") },
+ ].filter((item) => item.factor);
+ const selectedConnectionRiskItems = selectedIsScratched
+ ? []
+ : [
+ { factor: firstText(selectedConnectionSource, ["connection_risk_1"], ""), value: firstText(selectedConnectionSource, ["connection_risk_1_value"], "") },
+ ].filter((item) => item.factor);
+ const selectedConnectionNarrative = selected
+ ? firstText(selectedConnectionSource, ["edgeiq_connection_angle_summary", "connection_summary_for_decision_engine", "connection_narrative"], "")
+ : "";
+ const selectedMergedMarketvailable = selected ? evidenceFlag(selected.row, ["edgeiq_market_evidence_available"]) : false;
+ const selectedMergedMarketSummary = selected ? firstText(selected.row, ["edgeiq_market_signal_summary"], "") : "";
+ const selectedMergedHiddenGemvailable = selected ? evidenceFlag(selected.row, ["edgeiq_hidden_gem_evidence_available"]) : false;
+ const selectedMergedHiddenGemSummary = selected ? firstText(selected.row, ["edgeiq_hidden_gem_summary"], "") : "";
+ const selectedConnectionMarketLabel = selected
+ ? firstText(selectedConnectionSource, ["market_expectation_label"], "-").replace(/_/g, " ").toUpperCase()
+ : "-";
+ const selectedConnectionSpDelta = selected ? firstNum(selectedConnectionSource, ["sp_expectation_delta"]) : null;
+ const selectedConnectionTrainerTrackSr = selected ? firstNum(selectedConnectionSource, ["trainer_track_sr"]) : null;
+ const selectedConnectionJockeyTrackSr = selected ? firstNum(selectedConnectionSource, ["jockey_track_sr"]) : null;
+ const selectedConnectionComboSr = selected ? firstNum(selectedConnectionSource, ["combo_sr"]) : null;
+ const selectedConnectionComboTrackSr = selected ? firstNum(selectedConnectionSource, ["combo_track_sr"]) : null;
+ const selectedConnectionSpSampleStarts = selected ? firstNum(selectedConnectionSource, ["sp_sample_starts"]) : null;
+ const selectedExplainabilitySupports = selectedIsScratched
+ ? []
+ : [
+ { factor: firstText(selectedExplainability, ["positive_1"], ""), value: firstText(selectedExplainability, ["positive_1_value"], "") },
+ { factor: firstText(selectedExplainability, ["positive_2"], ""), value: firstText(selectedExplainability, ["positive_2_value"], "") },
+ { factor: firstText(selectedExplainability, ["positive_3"], ""), value: firstText(selectedExplainability, ["positive_3_value"], "") },
+ ].filter((item) => item.factor);
+ const selectedExplainabilityRisks = selectedIsScratched
+ ? []
+ : [
+ { factor: firstText(selectedExplainability, ["risk_1"], ""), value: firstText(selectedExplainability, ["risk_1_value"], "") },
+ { factor: firstText(selectedExplainability, ["risk_2"], ""), value: firstText(selectedExplainability, ["risk_2_value"], "") },
+ { factor: firstText(selectedExplainability, ["risk_3"], ""), value: firstText(selectedExplainability, ["risk_3_value"], "") },
+ ].filter((item) => item.factor);
+ const selectedRaceShapeLabel = firstText(
+ selectedRaceExplainability,
+ ["race_shape_label"],
+ fallbackRaceShapeLabel !== "-" ? fallbackRaceShapeLabel : raceClarity,
+ ).replace(/_/g, " ").toUpperCase();
+ const selectedRaceTempoLabel = firstText(
+ selectedRaceExplainability,
+ ["race_tempo"],
+ displayExpectedTempo,
+ ).replace(/_/g, " ").toUpperCase();
+ const selectedRacePacedvantageRunner = firstText(selectedRaceExplainability, ["pace_advantage_runner"], "");
+ const selectedRaceLatePowerBeneficiary = firstText(selectedRaceExplainability, ["late_power_beneficiary"], "");
+ const selectedRacePressureRiskRunner = firstText(selectedRaceExplainability, ["pressure_risk_runner"], "");
+ const selectedRaceShapeStory = firstText(
+ selectedRaceExplainability,
+ ["race_shape_story"],
+ fallbackRaceShapeNarrative || raceAssessmentNarrative,
+ );
+ const raceShapeFallbackLoaded = [fallbackRaceShapeLabel, fallbackTempoLabel, fallbackPressureLabel, fallbackRaceShapeNarrative]
+ .some((value) => {
+ const parsed = text(value);
+ return parsed !== "" && parsed !== "-";
+ });
+ const selectedRacePacedvantageDisplay = selectedRacePacedvantageRunner || fallbackPacedvantageLabel || "";
+ const selectedRacePressureDisplay = selectedRacePressureRiskRunner || (fallbackPressureLabel !== "-" ? fallbackPressureLabel : "");
+ const selectedRaceShapeStoryDisplay = selectedRaceShapeStory || fallbackRaceShapeNarrative || raceAssessmentNarrative;
+ const selectedLimitedDecision = selected ? limitedDecisionValue(selected) : "-";
+ const selectedBetQuality = selected ? displayBetQualityValue(selected) : "-";
+ const selectedProjectionBand = selected
+ ? firstText(selected.row, ["projection_band_V6_1_RESERCH", "projection_band_v5_2"], "-").replace(/_/g, " ").toUpperCase()
+ : "-";
+ const selectedProjectionGap = selected
+ ? firstNum(selected.row, ["projection_gap_V6_1_RESERCH", "projection_gap_v5_2"])
+ : null;
+ const selectedProjectionStatus = selected
+ ? firstText(selected.row, ["V6_1_RESERCH_price_status"], "-").replace(/_/g, " ").toUpperCase()
+ : "-";
+ const selectedProjectedSpd = selected ? projectedSpdValue(selected) : null;
+ const selectedSectional = selected
+ ? firstNum(selected.runnerIntel, ["sectional_weapon_score"]) ??
+ firstNum(selected.drawer, ["sectional_weapon_score"]) ??
+ firstNum(selected.intel, ["intelligence_sectional_component_v1"])
+ : null;
+ const selectedLatePower = selected
+ ? firstNum(selected.runnerIntel, ["late_power_index"]) ?? firstNum(selected.drawer, ["late_power_index"])
+ : null;
+ const selectedProfile = selected?.runnerProfile;
+ const selectedHorserchetype = selected ? firstText(selectedProfile, ["horse_archetype"], "-") : "-";
+ const selectedProfileStrength = selected ? firstText(selectedProfile, ["profile_strength"], "-").replace(/_/g, " ").toUpperCase() : "-";
+ const selectedProfileCareerStarts = selected ? firstText(selectedProfile, ["career_starts"], "-") : "-";
+ const selectedProfileCareerWins = selected ? firstText(selectedProfile, ["career_wins"], "-") : "-";
+ const selectedProfileCareerPlaces = selected ? firstText(selectedProfile, ["career_places"], "-") : "-";
+ const selectedProfileCareerWinPct = selected ? firstText(selectedProfile, ["career_win_pct"], "-") : "-";
+ const selectedProfileCareerPlacePct = selected ? firstText(selectedProfile, ["career_place_pct"], "-") : "-";
+ const selectedDistanceProfile = selected ? firstText(selectedProfile, ["distance_profile"], "-") : "-";
+ const selectedConditionProfile = selected ? firstText(selectedProfile, ["condition_profile"], "-") : "-";
+ const selectedTrackProfile = selected ? firstText(selectedProfile, ["track_profile"], "-") : "-";
+ const selectedClassProfile = selected ? firstText(selectedProfile, ["class_profile"], "-") : "-";
+ const selectedProfileSummary = selected ? firstText(selectedProfile, ["profile_summary"], "") : "";
+ const selectedCareerIntel = selected?.runnerCareer;
+ const selectedrchetypeIntel = selected?.runnerrchetype;
+ const selectedTrajectoryIntel = selected?.runnerTrajectory;
+ const selectedProjectionIntel = selected?.runnerProjection;
+ const selectedCampaignIntel = selected?.campaign;
+ const selectedHiddenGemIntel = selected?.hiddenGem;
+ const selectedCareerStartsDisplay = selected
+ ? firstText(selectedCareerIntel, ["career_starts"], selectedProfileCareerStarts)
+ : "-";
+ const selectedCareerWinsDisplay = selected
+ ? firstText(selectedCareerIntel, ["career_wins"], selectedProfileCareerWins)
+ : "-";
+ const selectedCareerPlacesDisplay = selected
+ ? firstText(selectedCareerIntel, ["career_places"], selectedProfileCareerPlaces)
+ : "-";
+ const selectedCareerPeakRating = selected ? firstNum(selectedCareerIntel, ["peak_rating"]) : null;
+ const selectedCareerverageRating = selected ? firstNum(selectedCareerIntel, ["average_rating"]) : null;
+ const selectedCareerMedianRating = selected ? firstNum(selectedCareerIntel, ["median_rating"]) : null;
+ const selectedCareerLatestRating = selected ? firstNum(selectedCareerIntel, ["latest_rating"]) : null;
+ const selectedCareerLast5verage = selected ? firstNum(selectedCareerIntel, ["last_5_average"]) : null;
+ const selectedCareerLast10verage = selected ? firstNum(selectedCareerIntel, ["last_10_average"]) : null;
+ const selectedCareerPercentile = selected ? firstNum(selectedCareerIntel, ["career_rating_percentile"]) : null;
+ const selectedCareerConsistency = selected ? firstNum(selectedCareerIntel, ["consistency_score"]) : null;
+ const selectedCareerVolatility = selected ? firstNum(selectedCareerIntel, ["volatility_score"]) : null;
+ const selectedCareerBand = selected
+ ? firstText(selectedCareerIntel, ["rating_band"], "-").replace(/_/g, " ").toUpperCase()
+ : "-";
+ const selectedCareerTrend = selected
+ ? firstText(selectedCareerIntel, ["career_trend"], "-").replace(/_/g, " ").toUpperCase()
+ : "-";
+ const selectedCareerBestTrack = selected ? firstText(selectedCareerIntel, ["best_track"], "-") : "-";
+ const selectedCareerBestDistance = selected ? firstText(selectedCareerIntel, ["best_distance"], "-") : "-";
+ const selectedCareerBestCondition = selected ? firstText(selectedCareerIntel, ["best_condition"], "-") : "-";
+ const selectedCareerBestClass = selected ? firstText(selectedCareerIntel, ["best_class"], "-") : "-";
+ const selectedCareerWorstTrack = selected ? firstText(selectedCareerIntel, ["worst_track"], "-") : "-";
+ const selectedCareerWorstDistance = selected ? firstText(selectedCareerIntel, ["worst_distance"], "-") : "-";
+ const selectedCareerWorstCondition = selected ? firstText(selectedCareerIntel, ["worst_condition"], "-") : "-";
+ const selectedCareerPeakDate = selected ? firstText(selectedCareerIntel, ["peak_date"], "-") : "-";
+ const selectedCareerPeakTrack = selected ? firstText(selectedCareerIntel, ["peak_track"], "-") : "-";
+ const selectedCareerPeakDistance = selected ? firstText(selectedCareerIntel, ["peak_distance"], "-") : "-";
+ const selectedCareerPeakClass = selected ? firstText(selectedCareerIntel, ["peak_class"], "-") : "-";
+ const selectedCareerDaysSincePeak = selected ? firstText(selectedCareerIntel, ["days_since_peak"], "-") : "-";
+ const selectedCampaignProfile = selected
+ ? firstText(selectedCampaignIntel, ["campaign_profile"], "-").replace(/_/g, " ").toUpperCase()
+ : "-";
+ const selectedCampaignProfileBand = selected
+ ? firstText(selectedCampaignIntel, ["campaign_profile_band"], "-").replace(/_/g, " ").toUpperCase()
+ : "-";
+ const selectedCampaignCurrentPrepStage = selected ? firstNum(selectedCampaignIntel, ["current_prep_stage"]) : null;
+ const selectedCampaignPrepStageLabel = selected
+ ? firstText(selectedCampaignIntel, ["prep_stage_label"], "-").replace(/_/g, " ").toUpperCase()
+ : "-";
+ const selectedCampaignPeakWindowStart = selected ? firstNum(selectedCampaignIntel, ["peak_window_start"]) : null;
+ const selectedCampaignPeakWindowEnd = selected ? firstNum(selectedCampaignIntel, ["peak_window_end"]) : null;
+ const selectedCampaignRiskScore = selected ? firstNum(selectedCampaignIntel, ["campaign_risk_score"]) : null;
+ const selectedCampaignRiskBand = selected
+ ? firstText(selectedCampaignIntel, ["campaign_risk_band"], "-").replace(/_/g, " ").toUpperCase()
+ : "-";
+ const selectedCampaignEvidenceStatus = selected
+ ? firstText(selectedCampaignIntel, ["evidence_status"], "-").replace(/_/g, " ").toUpperCase()
+ : "-";
+ const selectedCampaignNarrative = selected
+ ? firstText(selectedCampaignIntel, ["campaign_narrative"], "Limited campaign history available.")
+ : "Limited campaign history available.";
+ const selectedCampaignHistoryRuns = selected ? firstNum(selectedCampaignIntel, ["history_runs_used"]) : null;
+ const selectedCampaignStageSampleCount = selected ? firstNum(selectedCampaignIntel, ["prep_stage_sample_count"]) : null;
+ const selectedCampaignPrepDisplay = formatCampaignStage(selectedCampaignCurrentPrepStage, selectedCampaignPrepStageLabel);
+ const selectedCampaignPeakWindowDisplay = formatCampaignWindow(selectedCampaignPeakWindowStart, selectedCampaignPeakWindowEnd);
+ const selectedHiddenGemDisplayBand = selected
+ ? firstText(selectedHiddenGemIntel, ["customer_display_band"], "NO_SIGNL").replace(/_/g, " ").toUpperCase()
+ : "NO SIGNAL";
+ const selectedHiddenGemctionable = selected
+ ? firstText(selectedHiddenGemIntel, ["actionable_watch_flag"], "NO").toUpperCase() === "YES"
+ : false;
+ const selectedHiddenGemHistorical = selected
+ ? firstText(selectedHiddenGemIntel, ["historical_watch_flag"], "NO").toUpperCase() === "YES"
+ : false;
+ const selectedHiddenGemRecencyBand = selected
+ ? firstText(selectedHiddenGemIntel, ["hidden_gem_recency_band"], "NONE").replace(/_/g, " ").toUpperCase()
+ : "NONE";
+ const selectedHiddenGemDaysSince = selected ? firstNum(selectedHiddenGemIntel, ["days_since_hidden_gem"]) : null;
+ const selectedHiddenGemScore = selected ? firstNum(selectedHiddenGemIntel, ["recency_adjusted_hidden_gem_score", "last_hidden_gem_score"]) : null;
+ const selectedHiddenGemTrigger = selected ? firstText(selectedHiddenGemIntel, ["last_hidden_gem_trigger"], "") : "";
+ const selectedHiddenGemNarrative = selected
+ ? customerPerformanceNarrative(firstText(selectedHiddenGemIntel, ["hidden_gem_narrative"], "Neutral recent performance intelligence."))
+ : "Neutral recent performance intelligence.";
+ const selectedHiddenGemDate = selected ? firstText(selectedHiddenGemIntel, ["last_hidden_gem_date"], "-") : "-";
+ const selectedHiddenGemTrack = selected ? firstText(selectedHiddenGemIntel, ["last_hidden_gem_track"], "-") : "-";
+ const selectedHiddenGemRaceNo = selected ? firstText(selectedHiddenGemIntel, ["last_hidden_gem_race_no"], "-") : "-";
+ const selectedHiddenGemLoaded = !!selectedHiddenGemIntel;
+ const selectedPerformanceIntelligenceBand = performanceIntelligenceLabel(
+ selectedHiddenGemDisplayBand,
+ selectedHiddenGemctionable,
+ selectedHiddenGemHistorical
+ );
+ const selectedHiddenGemStatusDisplay = selectedIsScratched
+ ? "SCRATCHED"
+ : selectedHiddenGemctionable
+ ? selectedPerformanceIntelligenceBand
+ : selectedHiddenGemHistorical
+ ? "IMPROVING"
+ : selectedHiddenGemLoaded
+ ? "NEUTRAL"
+ : "NEUTRAL";
+ const selectedHiddenGemgeDisplay = selectedHiddenGemDaysSince === null ? "-" : `${renderMetricValue(selectedHiddenGemDaysSince, 0)}d`;
+ const selectedCareerrchetype = selected
+ ? firstText(selectedrchetypeIntel, ["horse_archetype"], selectedHorserchetype).replace(/_/g, " ").toUpperCase()
+ : "-";
+ const selectedDevelopmentStage = selected
+ ? firstText(selectedrchetypeIntel, ["development_stage"], "-").replace(/_/g, " ").toUpperCase()
+ : "-";
+ const selectedImprovementProfile = selected
+ ? firstText(selectedrchetypeIntel, ["improvement_profile"], "-").replace(/_/g, " ").toUpperCase()
+ : "-";
+ const selectedConsistencyProfile = selected
+ ? firstText(selectedrchetypeIntel, ["consistency_profile"], "-").replace(/_/g, " ").toUpperCase()
+ : "-";
+ const selectedFreshnessProfile = selected
+ ? firstText(selectedrchetypeIntel, ["freshness_profile"], "-").replace(/_/g, " ").toUpperCase()
+ : "-";
+ const selectedrchetypeDistanceProfile = selected
+ ? firstText(selectedrchetypeIntel, ["distance_profile"], selectedDistanceProfile).replace(/_/g, " ").toUpperCase()
+ : "-";
+ const selectedSeasonalityProfile = selected
+ ? firstText(selectedrchetypeIntel, ["seasonality_profile"], "-").replace(/_/g, " ").toUpperCase()
+ : "-";
+ const selectedCareerPeakgeStage = selected
+ ? firstText(selectedrchetypeIntel, ["career_peak_age"], "-").replace(/_/g, " ").toUpperCase()
+ : "-";
+ const selectedRunsSincePeak = selected ? firstText(selectedrchetypeIntel, ["runs_since_peak"], "-") : "-";
+ const selectedPeakTrend = selected
+ ? firstText(selectedrchetypeIntel, ["peak_trend"], "-").replace(/_/g, " ").toUpperCase()
+ : "-";
+ const selectedCareerLast3verage = selected ? firstNum(selectedrchetypeIntel, ["last_3_average"]) : null;
+ const selectedCareerPercentileScore = selected
+ ? firstNum(selectedrchetypeIntel, ["career_percentile"]) ?? selectedCareerPercentile
+ : null;
+ const selectedBoomOrBustFlag = selected
+ ? firstText(selectedrchetypeIntel, ["boom_or_bust_flag"], "NO").toUpperCase()
+ : "NO";
+ const selectedLateMaturerFlag = selected
+ ? firstText(selectedrchetypeIntel, ["late_maturer_flag"], "NO").toUpperCase()
+ : "NO";
+ const selectedEarlyMaturerFlag = selected
+ ? firstText(selectedrchetypeIntel, ["early_maturer_flag"], "NO").toUpperCase()
+ : "NO";
+ const selectedImproverFlag = selected
+ ? firstText(selectedrchetypeIntel, ["improver_flag"], "NO").toUpperCase()
+ : "NO";
+ const selectedRegressorFlag = selected
+ ? firstText(selectedrchetypeIntel, ["regressor_flag"], "NO").toUpperCase()
+ : "NO";
+ const selectedTrajectoryDirection = selected
+ ? firstText(selectedTrajectoryIntel, ["trajectory_direction"], "-").replace(/_/g, " ").toUpperCase()
+ : "-";
+ const selectedTrajectoryStrength = selected
+ ? firstText(selectedTrajectoryIntel, ["trajectory_strength"], "-").replace(/_/g, " ").toUpperCase()
+ : "-";
+ const selectedTrajectoryScore = selected ? firstNum(selectedTrajectoryIntel, ["trajectory_score"]) : null;
+ const selectedPointsOffPeak = selected ? firstNum(selectedTrajectoryIntel, ["points_off_peak"]) : null;
+ const selectedPercentOfPeak = selected ? firstNum(selectedTrajectoryIntel, ["percent_of_peak"]) : null;
+ const selectedRunsSincePeakDisplay = selected
+ ? firstText(selectedTrajectoryIntel, ["runs_since_peak"], selectedRunsSincePeak)
+ : "-";
+ const selectedDaysSincePeakDisplay = selected
+ ? firstText(selectedTrajectoryIntel, ["days_since_peak"], selectedCareerDaysSincePeak)
+ : "-";
+ const selectedImprovementLast3 = selected ? firstNum(selectedTrajectoryIntel, ["improvement_last_3"]) : null;
+ const selectedImprovementLast5 = selected ? firstNum(selectedTrajectoryIntel, ["improvement_last_5"]) : null;
+ const selectedImprovementLast10 = selected ? firstNum(selectedTrajectoryIntel, ["improvement_last_10"]) : null;
+ const selectedBounceRisk = selected
+ ? firstText(selectedTrajectoryIntel, ["bounce_risk"], "-").replace(/_/g, " ").toUpperCase()
+ : "-";
+ const selectedRegressionRisk = selected
+ ? firstText(selectedTrajectoryIntel, ["regression_risk"], "-").replace(/_/g, " ").toUpperCase()
+ : "-";
+ const selectedBreakoutPotential = selected
+ ? firstText(selectedTrajectoryIntel, ["breakout_potential"], "-").replace(/_/g, " ").toUpperCase()
+ : "-";
+ const selectedCareerPhase = selected
+ ? firstText(selectedTrajectoryIntel, ["career_phase"], selectedDevelopmentStage).replace(/_/g, " ").toUpperCase()
+ : "-";
+ const selectedProjectionOutlookBand = selected
+ ? firstText(selectedProjectionIntel, ["projection_band"], "-").replace(/_/g, " ").toUpperCase()
+ : "-";
+ const selectedProjectionOutlookConfidence = selected
+ ? firstText(selectedProjectionIntel, ["projection_confidence"], "-").replace(/_/g, " ").toUpperCase()
+ : "-";
+ const selectedNextRunProjection = selected
+ ? firstNum(selectedProjectionIntel, ["next_run_projection"]) ?? firstNum(selectedTrajectoryIntel, ["next_run_projection"])
+ : null;
+ const selectedCeilingProjection = selected
+ ? firstNum(selectedProjectionIntel, ["ceiling_projection"]) ?? firstNum(selectedTrajectoryIntel, ["ceiling_projection"])
+ : null;
+ const selectedFloorProjection = selected
+ ? firstNum(selectedProjectionIntel, ["floor_projection"]) ?? firstNum(selectedTrajectoryIntel, ["floor_projection"])
+ : null;
+ const selectedExpectedImprovement = selected ? firstNum(selectedProjectionIntel, ["expected_improvement"]) : null;
+ const selectedExpectedRegression = selected ? firstNum(selectedProjectionIntel, ["expected_regression"]) : null;
+ const selectedImprovementProbability = selected ? firstNum(selectedProjectionIntel, ["improvement_probability"]) : null;
+ const selectedRegressionProbability = selected ? firstNum(selectedProjectionIntel, ["regression_probability"]) : null;
+ const selectedPeakRevisitProbability = selected ? firstNum(selectedProjectionIntel, ["peak_revisit_probability"]) : null;
+ const selectedBreakoutProbability = selected ? firstNum(selectedProjectionIntel, ["breakout_probability"]) : null;
+ const selectedBounceProbability = selected ? firstNum(selectedProjectionIntel, ["bounce_probability"]) : null;
+ const selectedRunsToPeakEstimate = selected ? firstText(selectedProjectionIntel, ["runs_to_peak_estimate"], "-") : "-";
+ const selectedDaysToPeakEstimate = selected ? firstText(selectedProjectionIntel, ["days_to_peak_estimate"], "-") : "-";
+
+ const selectedRunnerForm = selected?.formEnrichment || selected?.row || {};
+ const selectedRunnerHistory = selected?.runnerHistory || [];
+ const selectedRatedHistory = ratedHistoryRows(selectedRunnerHistory);
+ const selectedRatedHistoryChronological = [...selectedRatedHistory].sort((a, b) => historyDateValue(a) - historyDateValue(b));
+ const selectedRecentRatedHistory = selectedRatedHistory.slice(0, 5);
+ const selectedRecentRatedHistoryChronological = selectedRecentRatedHistory.slice().reverse();
+ const selectedHistoryLastRun = selectedRecentRatedHistory[0];
+ const selectedHistoryPeakRun = selectedRatedHistory.length
+ ? [...selectedRatedHistory].sort((a, b) => (historyRatingValue(b) ?? 0) - (historyRatingValue(a) ?? 0))[0]
+ : undefined;
+ const selectedFormSignal = selected ? firstText(selectedRunnerForm, ["form_signal"], "-") : "-";
+ const selectedFormCycle = selected ? firstText(selectedRunnerForm, ["form_cycle"], "-") : "-";
+ const selectedRatingTrend = selected ? firstText(selectedRunnerForm, ["rating_trend"], "-") : "-";
+ const selectedRatingTrendDelta = selected ? firstText(selectedRunnerForm, ["rating_trend_delta"], "-") : "-";
+ const selectedLastStartRatingValue = selected
+ ? historyRatingValue(selectedHistoryLastRun) ?? firstNum(selectedRunnerForm, ["form_last_start_rating", "last_start_rating", "rating_1"])
+ : null;
+ const selectedAVGRatingLast5Value = selected
+ ? (selectedRecentRatedHistory.length
+ ? selectedRecentRatedHistory.reduce((sum, historyRow) => sum + (historyRatingValue(historyRow) ?? 0), 0) / selectedRecentRatedHistory.length
+ : null)
+ ?? firstNum(selectedRunnerForm, ["form_avg_rating_last5", "avg_rating_last5"])
+ : null;
+ const selectedBestRatingLast5Value = selected
+ ? (selectedHistoryPeakRun ? historyRatingValue(selectedHistoryPeakRun) : null)
+ ?? firstNum(selectedRunnerForm, ["form_peak_rating_last5", "best_rating_last5", "peak_rating"])
+ : null;
+ const selectedLastStartRating = selectedLastStartRatingValue === null ? "-" : renderMetricValue(selectedLastStartRatingValue, 1);
+ const selectedAVGRatingLast5 = selectedAVGRatingLast5Value === null ? "-" : renderMetricValue(selectedAVGRatingLast5Value, 1);
+ const selectedBestRatingLast5 = selectedBestRatingLast5Value === null ? "-" : renderMetricValue(selectedBestRatingLast5Value, 1);
+ const selectedRating1 = selected ? firstNum(selectedRunnerForm, ["rating_1"]) : null;
+ const selectedRating2 = selected ? firstNum(selectedRunnerForm, ["rating_2"]) : null;
+ const selectedRating3 = selected ? firstNum(selectedRunnerForm, ["rating_3"]) : null;
+ const selectedRating4 = selected ? firstNum(selectedRunnerForm, ["rating_4"]) : null;
+ const selectedRating5 = selected ? firstNum(selectedRunnerForm, ["rating_5"]) : null;
+ const selectedRecentRatingsFromForm = [selectedRating5, selectedRating4, selectedRating3, selectedRating2, selectedRating1].filter((value): value is number => value !== null && Number.isFinite(value));
+ const selectedRecentRatingsFromHistory = selectedRecentRatedHistoryChronological
+ .map((historyRow) => historyRatingValue(historyRow))
+ .filter((value): value is number => value !== null && Number.isFinite(value));
+ const selectedRecentRatings = selectedRecentRatingsFromHistory.length
+ ? selectedRecentRatingsFromHistory
+ : selectedRecentRatingsFromForm;
+ const selectedFormNarrative = selected ? firstText(selectedRunnerForm, ["performance_intelligence_narrative", "form_narrative"], "") : "";
+ const selectedFormPerformanceLabel = selected
+ ? performanceIntelligenceLabel(firstText(selectedRunnerForm, ["performance_intelligence_label"], selectedPerformanceIntelligenceBand))
+ : "NEUTRAL";
+ const selectedFormRunCards = selectedIsScratched
+ ? []
+ : selectedRecentRatedHistory.length
+ ? selectedRecentRatedHistory.slice(0, 5).map((historyRow, index) => ({
+ key: `history-${index}-${historyRunKey(historyRow)}`,
+ title: `${index + 1}LS`,
+ date: formatHistoryDate(historyDateText(historyRow)),
+ track: drawerValue(historyTrackText(historyRow)),
+ distance: drawerValue(historyDistanceText(historyRow)),
+ raceClass: drawerValue(historyClassText(historyRow)),
+ going: drawerValue(historyGoingText(historyRow)),
+ jockey: drawerValue(historyJockeyText(historyRow)),
+ barrier: drawerValue(firstText(historyRow, ["barrier", "draw", "barrier_number"], "-")),
+ finishingPosition: drawerValue(historyFinishText(historyRow)),
+ beatenMargin: drawerValue(firstText(historyRow, ["margin"], "-")),
+ sp: drawerValue(historySpText(historyRow)),
+ rating: historyRatingValue(historyRow),
+ settledPosition: drawerValue(firstText(historyRow, ["settling_position", "pos_800", "pos_400"], "-")),
+ raceShape: firstText(selectedRunnerForm, ["race_shape"], "-").replace(/_/g, " ").toUpperCase(),
+ pacePressure: firstText(selectedRunnerForm, ["pace_pressure"], "-").replace(/_/g, " ").toUpperCase(),
+ sectionalRank: drawerValue(firstText(historyRow, ["closing_sectional_rank"], "-")),
+ againstBias: firstText(selectedRunnerForm, [`last_start_${index + 1}_against_bias_flag`, "against_bias_flag"], "-").replace(/_/g, " ").toUpperCase(),
+ performanceLabel: performanceIntelligenceLabel(firstText(selectedRunnerForm, [`last_start_${index + 1}_performance_label`, "performance_intelligence_label"], selectedFormPerformanceLabel)),
+ }))
+ : Array.from({ length: 5 }, (_, index) => {
+ const prefix = `last_start_${index + 1}_`;
+ return {
+ key: `form-v2-${index}`,
+ title: `${index + 1}LS`,
+ date: firstText(selectedRunnerForm, [`${prefix}date`], ""),
+ track: firstText(selectedRunnerForm, [`${prefix}track`], ""),
+ distance: firstText(selectedRunnerForm, [`${prefix}distance`], ""),
+ raceClass: firstText(selectedRunnerForm, [`${prefix}class`], ""),
+ going: firstText(selectedRunnerForm, [`${prefix}going`, `${prefix}condition`, `${prefix}track_condition`], ""),
+ jockey: firstText(selectedRunnerForm, [`${prefix}jockey`, `${prefix}rider`], ""),
+ barrier: firstText(selectedRunnerForm, [`${prefix}barrier`, `${prefix}draw`], ""),
+ finishingPosition: firstText(selectedRunnerForm, [`${prefix}finishing_position`], ""),
+ beatenMargin: firstText(selectedRunnerForm, [`${prefix}beaten_margin`], ""),
+ sp: firstText(selectedRunnerForm, [`${prefix}SP`], ""),
+ rating: firstNum(selectedRunnerForm, [`${prefix}rating`]),
+ settledPosition: firstText(selectedRunnerForm, [`${prefix}settled_position`], ""),
+ raceShape: firstText(selectedRunnerForm, ["race_shape"], "-").replace(/_/g, " ").toUpperCase(),
+ pacePressure: firstText(selectedRunnerForm, ["pace_pressure"], "-").replace(/_/g, " ").toUpperCase(),
+ sectionalRank: firstText(selectedRunnerForm, [`${prefix}sectional_rank`], ""),
+ againstBias: firstText(selectedRunnerForm, [`${prefix}against_bias_flag`], "-").replace(/_/g, " ").toUpperCase(),
+ performanceLabel: performanceIntelligenceLabel(firstText(selectedRunnerForm, [`${prefix}performance_label`, "performance_intelligence_label"], selectedFormPerformanceLabel)),
+ };
+ }).filter((run) => run.date || run.track || run.finishingPosition || run.rating !== null);
+ const selectedTodayProjectionFigure = selected ? projectionRatingValue(selected) : null;
+ const selectedHistoricalRunDate = selectedHistoricalRun ? formatHistoryDate(historyDateText(selectedHistoricalRun)) : "-";
+ const selectedHistoricalRunTrack = selectedHistoricalRun ? drawerValue(historyTrackText(selectedHistoricalRun)) : "N/";
+ const selectedHistoricalRunRaceNo = selectedHistoricalRun ? drawerValue(historyRaceNoText(selectedHistoricalRun)) : "N/";
+ const selectedHistoricalRunDistance = selectedHistoricalRun ? drawerValue(historyDistanceText(selectedHistoricalRun)) : "N/";
+ const selectedHistoricalRunClass = selectedHistoricalRun ? drawerValue(historyClassText(selectedHistoricalRun)) : "N/";
+ const selectedHistoricalRunCondition = selectedHistoricalRun ? drawerValue(historyGoingText(selectedHistoricalRun)) : "N/";
+ const selectedHistoricalRunPosition = selectedHistoricalRun ? drawerValue(historyFinishText(selectedHistoricalRun)) : "N/";
+ const selectedHistoricalRunFieldSize = selectedHistoricalRun ? drawerValue(historyFieldSizeText(selectedHistoricalRun)) : "N/";
+ const selectedHistoricalRunBarrier = selectedHistoricalRun ? drawerValue(historyBarrierText(selectedHistoricalRun)) : "N/";
+ const selectedHistoricalRunJockey = selectedHistoricalRun ? drawerValue(historyJockeyText(selectedHistoricalRun)) : "N/";
+ const selectedHistoricalRunWeight = selectedHistoricalRun ? drawerValue(historyWeightText(selectedHistoricalRun)) : "N/";
+ const selectedHistoricalRunSp = selectedHistoricalRun ? drawerValue(historySpText(selectedHistoricalRun)) : "N/";
+ const selectedHistoricalRunFigure = selectedHistoricalRun ? historyRatingValue(selectedHistoricalRun) : null;
+ const selectedHistoricalRunRaceStrength = selectedHistoricalRun ? drawerValue(historyRaceStrengthText(selectedHistoricalRun)) : "N/";
+ const selectedHistoricalRunRaceStrengthValue = selectedHistoricalRun ? num(historyRaceStrengthText(selectedHistoricalRun)) : null;
+ const selectedHistoricalRunMargin = selectedHistoricalRun ? drawerValue(firstText(selectedHistoricalRun, ["margin"], "-")) : "N/";
+ const selectedHistoricalRunPos800 = selectedHistoricalRun ? drawerValue(firstText(selectedHistoricalRun, ["pos_800"], "-")) : "N/";
+ const selectedHistoricalRunPos400 = selectedHistoricalRun ? drawerValue(firstText(selectedHistoricalRun, ["pos_400"], "-")) : "N/";
+ const selectedHistoricalTodayDifference =
+ selectedHistoricalRunFigure !== null && selectedTodayProjectionFigure !== null
+ ? selectedTodayProjectionFigure - selectedHistoricalRunFigure
+ : null;
+ const selectedHistoricalComparisonMax = Math.max(70, selectedHistoricalRunFigure ?? 0, selectedTodayProjectionFigure ?? 0);
+ const selectedHistoricalRunSummaryLine = selectedHistoricalRun
+ ? [
+ selectedHistoricalRunTrack,
+ selectedHistoricalRunRaceNo === "N/" ? "" : `R${selectedHistoricalRunRaceNo}`,
+ selectedHistoricalRunDistance,
+ selectedHistoricalRunClass,
+ ]
+ .filter((value) => value && value !== "N/")
+ .join(" | ")
+ : "";
+ const selectedHistoricalCareerRank = selectedHistoricalRun
+ ? [...selectedRatedHistory]
+ .sort((a, b) => (historyRatingValue(b) ?? 0) - (historyRatingValue(a) ?? 0))
+ .findIndex((historyRow) => historyRunKey(historyRow) === historyRunKey(selectedHistoricalRun)) + 1
+ : 0;
+ const selectedHistoricalCareerRankDisplay =
+ selectedHistoricalCareerRank > 0 ? ordinal(selectedHistoricalCareerRank) : "N/";
+ const selectedHistoricalRunSequence = selectedHistoricalRun
+ ? selectedRatedHistoryChronological.findIndex((historyRow) => historyRunKey(historyRow) === historyRunKey(selectedHistoricalRun)) + 1
+ : 0;
+ const selectedCareerPeakRunSequence = selectedHistoryPeakRun
+ ? selectedRatedHistoryChronological.findIndex((historyRow) => historyRunKey(historyRow) === historyRunKey(selectedHistoryPeakRun)) + 1
+ : 0;
+ const selectedHistoricalRunsBeforePeak =
+ selectedHistoricalRunSequence > 0 && selectedCareerPeakRunSequence > 0
+ ? selectedCareerPeakRunSequence - selectedHistoricalRunSequence
+ : null;
+ const selectedTodayVsCareerPeakDifference =
+ selectedCareerPeakRating !== null && selectedTodayProjectionFigure !== null
+ ? selectedTodayProjectionFigure - selectedCareerPeakRating
+ : null;
+ const selectedTodayVsCareerPeakNarrative = !selected
+ ? ""
+ : selectedIsScratched
+ ? "Runner scratched."
+ : selectedCareerPeakRating !== null && selectedTodayProjectionFigure !== null
+ ? `Today's projection is ${Math.abs(selectedTodayVsCareerPeakDifference ?? 0) <= 3 ? "within" : "outside"} ${renderMetricValue(Math.abs(selectedTodayVsCareerPeakDifference ?? 0), 1)} points of career peak.`
+ : "Career peak comparison not available from the current historical record.";
+ const selectedHistoricalCareerNarrative =
+ selectedHistoricalRunFigure !== null && selectedHistoricalCareerRank > 0 && selectedRatedHistory.length
+ ? `This run rated ${renderMetricValue(selectedHistoricalRunFigure, 1)} and ranks as the horse's ${ordinal(selectedHistoricalCareerRank)} best career performance from ${selectedRatedHistory.length} rated runs.`
+ : "Career rank for this historical run is not available.";
+ const selectedHistoricalPeakTimingNarrative = !selectedHistoricalRun
+ ? ""
+ : selectedHistoricalRunsBeforePeak === null
+ ? "Peak timing for this historical run is not available."
+ : selectedHistoricalRunsBeforePeak > 0
+ ? `This was run number ${selectedHistoricalRunSequence} before the horse reached its career peak on start ${selectedCareerPeakRunSequence}.`
+ : selectedHistoricalRunsBeforePeak === 0
+ ? "This historical run is the horse's career peak performance."
+ : `This came ${Math.abs(selectedHistoricalRunsBeforePeak)} runs after the horse's career peak.`;
+ const selectedHistoricalPeakPercent = selectedHistoricalRunFigure !== null && selectedCareerPeakRating
+ ? Math.round((selectedHistoricalRunFigure / selectedCareerPeakRating) * 100)
+ : null;
+ const selectedHistoricalPeakPercentNarrative =
+ selectedHistoricalPeakPercent === null
+ ? "Peak-percentage comparison unavailable."
+ : `This figure is ${selectedHistoricalPeakPercent}% of career peak.`;
+ const selectedHistoricalFreshnessNarrative = !selected || selectedIsScratched
+ ? "Runner scratched."
+ : selectedFreshnessProfile === "PEK THIRD UP"
+ ? "This horse historically improves third-up."
+ : selectedFreshnessProfile !== "-" && selectedFreshnessProfile !== "NO PTTERN"
+ ? `Freshness pattern: ${selectedFreshnessProfile}.`
+ : "No strong freshness pattern identified from the historical record.";
+ const selectedHistoricalrchetypeNarrative = !selected || selectedIsScratched
+ ? "Runner scratched."
+ : selectedCareerrchetype !== "-"
+ ? `This horse is classified as a ${selectedCareerrchetype}.`
+ : "Horse archetype classification is unavailable.";
+ const selectedPointsOffPeakNarrative = !selected || selectedIsScratched
+ ? "Runner scratched."
+ : selectedPointsOffPeak === null
+ ? "Points-off-peak comparison unavailable."
+ : `This horse is currently ${renderMetricValue(selectedPointsOffPeak, 1)} points below career peak.`;
+ const selectedTrajectoryNarrative = !selected || selectedIsScratched
+ ? "Runner scratched."
+ : selectedTrajectoryDirection !== "-"
+ ? `Trajectory: ${selectedTrajectoryDirection}.`
+ : "Trajectory direction is unavailable.";
+ const selectedBreakoutNarrative = !selected || selectedIsScratched
+ ? "Runner scratched."
+ : selectedBreakoutPotential !== "-"
+ ? `Breakout Potential: ${selectedBreakoutPotential}.`
+ : "Breakout potential is unavailable.";
+ const selectedCareerPhaseNarrative = !selected || selectedIsScratched
+ ? "Runner scratched."
+ : selectedCareerPhase !== "-"
+ ? `Career Phase: ${selectedCareerPhase}.`
+ : "Career phase is unavailable.";
+ const selectedProjectionImprovementNarrative = !selected || selectedIsScratched
+ ? "Runner scratched."
+ : selectedImprovementProbability === null
+ ? "Improvement probability is not available from the current projection engine."
+ : `This horse has a ${renderMetricValue(selectedImprovementProbability, 0)}% probability of improving next start.`;
+ const selectedProjectionCeilingNarrative = !selected || selectedIsScratched
+ ? "Runner scratched."
+ : selectedCeilingProjection === null
+ ? "Projected ceiling is unavailable."
+ : `Projected ceiling: ${renderMetricValue(selectedCeilingProjection, 1)}.`;
+ const selectedProjectionNextRunNarrative = !selected || selectedIsScratched
+ ? "Runner scratched."
+ : selectedNextRunProjection === null
+ ? "Expected next-run rating is unavailable."
+ : `Expected next-run rating: ${renderMetricValue(selectedNextRunProjection, 1)}.`;
+ const selectedProjectionRiskNarrative = !selected || selectedIsScratched
+ ? "Runner scratched."
+ : selectedRegressionProbability === null
+ ? "Regression probability is unavailable."
+ : `Regression probability: ${renderMetricValue(selectedRegressionProbability, 0)}%.`;
+
+ const selectedLast5Form = selected ? firstText(selected.drawer, ["last_5_form_profile"], "-") : "-";
+ const selectedProfileQuality = selected ? firstText(selected.drawer, ["profile_quality"], "-").replace(/_/g, " ").toUpperCase() : "-";
+ const selectedDominantRunStyle = selected ? firstText(selected.drawer, ["dominant_run_style", "run_style"], "-").replace(/_/g, " ").toUpperCase() : "-";
+ const selectedSectionalStrengthRating = selected ? firstText(selected.drawer, ["sectional_strength_rating"], "-") : "-";
+ const selectedSectionalStrengthBand = selected ? firstText(selected.drawer, ["sectional_strength_band"], "-").replace(/_/g, " ").toUpperCase() : "-";
+ const selectedDnaScore = selected ? firstText(selected.dna, ["dna_v6_2_score", "runner_dna_v6_1_score"], firstText(selectedProfile, ["dna_v6_2_score", "dna_score"], "-")) : "-";
+ const selectedDnaBand = selected ? firstText(selected.dna, ["dna_v6_2_band", "runner_dna_v6_1_band"], firstText(selectedProfile, ["dna_v6_2_band", "dna_band"], "-")).replace(/_/g, " ").toUpperCase() : "-";
+ const selectedRunnerProfileDnaDisplay = selectedIsScratched
+ ? "-"
+ : selectedDnaBand !== "-"
+ ? selectedDnaBand
+ : selectedDnaScore;
+ const selectedDnaRank = selected ? firstText(selected.dna, ["runner_dna_v6_2_rank_in_race", "runner_dna_v6_1_rank_in_race"], "-") : "-";
+ const selectedStrongestFactor = selected ? firstText(selected.dna, ["strongest_factor_v6_2", "strongest_factor_v6_1"], firstText(selectedProfile, ["positive_1_factor"], "-")).replace(/_/g, " ").toUpperCase() : "-";
+ const selectedStrongestFactorScore = selected ? firstText(selected.dna, ["strongest_factor_score_v6_2", "strongest_factor_score_v6_1"], "-") : "-";
+ const selectedWeakestFactor = selected ? firstText(selected.dna, ["weakest_factor_v6_2", "weakest_factor_v6_1"], firstText(selectedProfile, ["negative_1_factor"], "-")).replace(/_/g, " ").toUpperCase() : "-";
+ const selectedWeakestFactorScore = selected ? firstText(selected.dna, ["weakest_factor_score_v6_2", "weakest_factor_score_v6_1"], "-") : "-";
+ const selectedDistanceScore = selected ? firstText(selected.dna, ["distance_fit_score"], "-") : "-";
+ const selectedDistanceBand = selected ? firstText(selected.dna, ["distance_fit_band"], "-").replace(/_/g, " ").toUpperCase() : "-";
+ const selectedConditionScore = selected ? firstText(selected.dna, ["condition_fit_score"], "-") : "-";
+ const selectedConditionBand = selected ? firstText(selected.dna, ["condition_fit_band"], "-").replace(/_/g, " ").toUpperCase() : "-";
+ const selectedClassScore = selected ? firstText(selected.dna, ["class_fit_score"], "-") : "-";
+ const selectedClassBand = selected ? firstText(selected.dna, ["class_fit_band"], "-").replace(/_/g, " ").toUpperCase() : "-";
+ const selectedDnaNarrative = selected ? firstText(selected.dna, ["impact_explanation", "runner_dna_v6_2_narrative", "runner_dna_v6_1_narrative"], "") : "";
+ const selectedPositive1Factor = selected ? firstText(selected.dna, ["positive_1_factor"], firstText(selectedProfile, ["positive_1_factor"], "-")).replace(/_/g, " ").toUpperCase() : "-";
+ const selectedPositive1Impact = selected ? firstText(selected.dna, ["positive_1_impact"], firstText(selectedProfile, ["positive_1_impact"], "-")) : "-";
+ const selectedPositive2Factor = selected ? firstText(selected.dna, ["positive_2_factor"], firstText(selectedProfile, ["positive_2_factor"], "-")).replace(/_/g, " ").toUpperCase() : "-";
+ const selectedPositive2Impact = selected ? firstText(selected.dna, ["positive_2_impact"], firstText(selectedProfile, ["positive_2_impact"], "-")) : "-";
+ const selectedPositive3Factor = selected ? firstText(selected.dna, ["positive_3_factor"], firstText(selectedProfile, ["positive_3_factor"], "-")).replace(/_/g, " ").toUpperCase() : "-";
+ const selectedPositive3Impact = selected ? firstText(selected.dna, ["positive_3_impact"], firstText(selectedProfile, ["positive_3_impact"], "-")) : "-";
+ const selectedNegative1Factor = selected ? firstText(selected.dna, ["negative_1_factor"], firstText(selectedProfile, ["negative_1_factor"], "-")).replace(/_/g, " ").toUpperCase() : "-";
+ const selectedNegative1Impact = selected ? firstText(selected.dna, ["negative_1_impact"], firstText(selectedProfile, ["negative_1_impact"], "-")) : "-";
+ const selectedNegative2Factor = selected ? firstText(selected.dna, ["negative_2_factor"], firstText(selectedProfile, ["negative_2_factor"], "-")).replace(/_/g, " ").toUpperCase() : "-";
+ const selectedNegative2Impact = selected ? firstText(selected.dna, ["negative_2_impact"], firstText(selectedProfile, ["negative_2_impact"], "-")) : "-";
+ const selectedNegative3Factor = selected ? firstText(selected.dna, ["negative_3_factor"], firstText(selectedProfile, ["negative_3_factor"], "-")).replace(/_/g, " ").toUpperCase() : "-";
+ const selectedNegative3Impact = selected ? firstText(selected.dna, ["negative_3_impact"], firstText(selectedProfile, ["negative_3_impact"], "-")) : "-";
+ const selectedFactorRows = selected?.factorRows || [];
+ const selectedCurrentDecision = selected ? decision(selected.row, selected.bet) : "-";
+ const selectedLivePrice = selected && !selectedIsScratched ? money(livePrice(selected.row, selected.bet)) : "-";
+ const selectedFairPrice = selected && !selectedIsScratched ? money(limitedAdjustedPrice(selected) ?? fairPrice(selected.row, selected.bet)) : "-";
+ const selectedEdge = selected && !selectedIsScratched ? pct(edgePct(selected.row, selected.bet)) : "-";
+ const selectedHasCurrentBetQuality = !!selected?.bet;
+ const selectedHasCurrentIntelligenceScore = !!selected?.intel;
+ const selectedHasCurrentLimited = !!selected?.limited;
+ const selectedConfidenceSource = !selected
+ ? ""
+ : selectedIsScratched
+ ? "Confidence source unavailable while this runner is scratched."
+ : selectedHasCurrentLimited
+ ? "Confidence source: Live EDGEiQ confidence profile"
+ : selectedHasCurrentBetQuality || selectedHasCurrentIntelligenceScore
+ ? "Confidence source: Matched EDGEiQ confidence profile"
+ : "Confidence source: Composite EDGEiQ confidence profile";
+ const selectedCoverage = !selected
+ ? ""
+ : selectedIsScratched
+ ? "SCRATCHED"
+ : selectedHasCurrentLimited
+ ? "GOOD"
+ : selectedHasCurrentBetQuality || selectedHasCurrentIntelligenceScore
+ ? ((selectedLimitedScoreNumeric ?? 0) >= 60 ? "GOOD" : "MEDIUM")
+ : ((selectedLimitedScoreNumeric ?? 0) >= 60 ? "MEDIUM" : "LOW");
+ const selectedEdgeNumeric = selected ? edgePct(selected.row, selected.bet) : null;
+ const selectedPriceEdgeNarrative = !selected
+ ? ""
+ : selectedIsScratched
+ ? "This runner is scratched and is not considered a live betting option."
+ : selectedDisplayBet === "BET" && selectedCurrentDecision !== "BET"
+ ? `Market edge qualifies as BET. Overall intelligence call remains ${selectedCurrentDecision}.`
+ : selectedDisplayBet === "BET"
+ ? "Market edge qualifies as BET and the overall EDGEiQ call agrees."
+ : selectedEdgeNumeric !== null && selectedEdgeNumeric > 0
+ ? `Positive price edge detected. Overall call remains ${selectedCurrentDecision}.`
+ : `Current market is at or below EDGEiQ fair. Overall call remains ${selectedCurrentDecision}.`;
+ const selectedFinalCallNarrative = !selected
+ ? ""
+ : selectedIsScratched
+ ? "This runner is scratched and is not considered a live betting option."
+ : selectedEdgeNumeric !== null && selectedEdgeNumeric >= 18 && selectedCurrentDecision === "WATCH"
+ ? `Strong market edge (${selectedEdge}), but overall model confidence remains moderate.`
+ : selectedEdgeNumeric !== null && selectedEdgeNumeric > 0
+ ? `Current market still sits above EDGEiQ fair, while the overall call remains ${selectedCurrentDecision}.`
+ : `The market is already at or below EDGEiQ fair, so the overall call remains ${selectedCurrentDecision}.`;
+ const selectedReason = !selected
+ ? ""
+ : selectedIsScratched
+ ? "This runner is scratched and is not considered a live betting option."
+ : (() => {
+ const priceLead =
+ selectedEdgeNumeric !== null && selectedEdgeNumeric >= 18
+ ? "shows a wide market-to-EDGEiQ price gap"
+ : selectedEdgeNumeric !== null && selectedEdgeNumeric > 0
+ ? "shows a positive price gap versus the EDGEiQ price"
+ : "is currently priced tighter than EDGEiQ fair";
+ const priceLine =
+ selectedLivePrice !== "-" && selectedFairPrice !== "-"
+ ? `, with the market at ${selectedLivePrice} versus EDGEiQ fair ${selectedFairPrice}`
+ : "";
+ const reasonTail =
+ selectedDisplayBet === "BET" && selectedCurrentDecision === "WATCH"
+ ? "Overall call remains WATCH because the broader model profile is not strong enough for a full upgrade."
+ : selectedCurrentDecision === "WATCH"
+ ? `Overall call remains WATCH because EDGEiQ confidence still grades ${selectedDisplayGrade.toLowerCase()}${selectedProjectionBand !== "-" ? ` with a ${selectedProjectionBand.toLowerCase()} runner profile` : ""}.`
+ : selectedCurrentDecision === "BET"
+ ? "Overall call is BET because price edge and overall confidence are aligned."
+ : selectedCurrentDecision === "LEN"
+ ? "Overall call stays LEN while EDGEiQ waits for stronger confirmation."
+ : `Overall call remains ${selectedCurrentDecision} because the broader EDGEiQ profile does not justify an upgrade.`;
+ return `${horse(selected.row)} ${priceLead}${priceLine}. ${reasonTail}`;
+ })();
+ const selectedSupportPoints = selectedIsScratched
+ ? []
+ : [
+ { factor: selectedPositive1Factor, impact: selectedPositive1Impact },
+ { factor: selectedPositive2Factor, impact: selectedPositive2Impact },
+ { factor: selectedPositive3Factor, impact: selectedPositive3Impact },
+ ].filter((item) => item.factor && item.factor !== "-");
+ const selectedRiskPoints = selectedIsScratched
+ ? []
+ : [
+ { factor: selectedNegative1Factor, impact: selectedNegative1Impact },
+ { factor: selectedNegative2Factor, impact: selectedNegative2Impact },
+ { factor: selectedNegative3Factor, impact: selectedNegative3Impact },
+ ].filter((item) => item.factor && item.factor !== "-");
+ const selectedRawConfidence = selected ? confidenceScoreValue(selected) : null;
+ const selectedTrackFitScore = selected ? trackFitScoreValue(selected) : null;
+ const selectedJockeyScore = selected ? jockeyScoreValue(selected) : null;
+ const selectedTrainerScore = selected ? trainerScoreValue(selected) : null;
+ const selectedConnectionScore = selected ? connectionScoreValue(selected) : null;
+ const selectedRunnerFactors = selected
+ ? [
+ { label: "Runner DN", value: dnaScoreValue(selected), max: 100, digits: 0, tone: dnaScoreValue(selected) !== null ? cellTone(selectedDnaBand) : "#94a3b8" },
+ { label: "Projection Gap", value: selectedProjectionGap, max: 20, digits: 2, signedValue: true, tone: selectedProjectionGap === null ? "#94a3b8" : selectedProjectionGap >= 0 ? "#3ee68f" : "#f87171" },
+ { label: "Projected SPD", value: projectedSpdValue(selected), max: 10, digits: 1, tone: "#ffffff" },
+ { label: "Sectionals", value: sectionalWeaponValue(selected), max: 100, digits: 0, tone: "#a78bfa" },
+ { label: "Late Power", value: latePowerMetricValue(selected), max: 100, digits: 0, tone: "#ffffff" },
+ { label: "Confidence", value: selectedRawConfidence, max: 100, digits: 0, tone: selectedDisplayGrade === "-" ? "#94a3b8" : cellTone(selectedDisplayGrade) },
+ { label: "Track Fit", value: selectedTrackFitScore, max: 100, digits: 0, tone: selectedTrackFitScore === null ? "#94a3b8" : selectedTrackFitScore >= 60 ? "#3ee68f" : selectedTrackFitScore >= 45 ? "#ffffff" : "#f87171" },
+ { label: "Jockey", value: selectedJockeyScore, max: 100, digits: 0, tone: selectedJockeyScore === null ? "#94a3b8" : selectedJockeyScore >= 60 ? "#3ee68f" : selectedJockeyScore >= 45 ? "#ffffff" : "#f87171" },
+ { label: "Trainer", value: selectedTrainerScore, max: 100, digits: 0, tone: selectedTrainerScore === null ? "#94a3b8" : selectedTrainerScore >= 60 ? "#3ee68f" : selectedTrainerScore >= 45 ? "#ffffff" : "#f87171" },
+ { label: "Connection", value: selectedConnectionScore, max: 100, digits: 0, tone: selectedConnectionScore === null ? "#94a3b8" : selectedConnectionScore >= 60 ? "#3ee68f" : selectedConnectionScore >= 45 ? "#ffffff" : "#f87171" },
+ ]
+ : [];
+ const topBarMetrics = header
+ ? [
+ { label: "Race", value: `${track(header)} R${raceNo(header)}` },
+ { label: "Distance", value: distance(header) },
+ { label: "Class", value: raceClass(header) },
+ { label: "Track Condition", value: trackCondition(header).toUpperCase() },
+ { label: "Rail", value: railDisplay },
+ { label: "Race Clarity", value: raceClarity, tone: bandColor(raceClarity) },
+ { label: "Expected Tempo", value: displayExpectedTempo, tone: bandColor(displayExpectedTempo) },
+ { label: "Confidence", value: bettingConfidence, tone: bandColor(bettingConfidence) },
+ { label: "Market Status", value: marketStatus, tone: marketStatusTone },
+ { label: "Rating Reference", value: topWinChanceRunner || "-" },
+ { label: "Price Reference", value: bestValueRunner || "-", tone: "#f8fafc" },
+ { label: "Market State", value: marketStatus, tone: marketStatusTone },
+ ]
+ : [];
+ const speedMapLanes = ["LEADERS", "ON PACE", "MIDFIELD", "BACKMARKERS"].map((lane) => ({
+ lane,
+ tone: paceRoleTone(lane),
+ runners: activeRaceRows
+ .filter((item) => paceMapRole(item) === lane)
+ .sort((a, b) => {
+ const spdDelta = (projectedSpdValue(b) ?? -1) - (projectedSpdValue(a) ?? -1);
+ if (spdDelta !== 0) return spdDelta;
+ return (a.modelRank ?? 999) - (b.modelRank ?? 999);
+ }),
+ }));
+ const leadersLane = speedMapLanes.find((lane) => lane.lane === "LEADERS");
+ const onPaceLane = speedMapLanes.find((lane) => lane.lane === "ON PACE");
+ const speedMapSummaryBits = [
+ `${activeRaceRows.length} active runners`,
+ `${leadersLane?.runners.length ?? 0} leaders`,
+ `${onPaceLane?.runners.length ?? 0} on pace`,
+ displayExpectedTempo !== "-" ? `tempo ${displayExpectedTempo}` : "",
+ ].filter(Boolean);
+ const activeMapRows = [...activeRaceRows].sort((a, b) => {
+ const xDelta = paceMapXPercent(a) - paceMapXPercent(b);
+ if (xDelta !== 0) return xDelta;
+ const barrierA = num(barrier(a.row)) ?? 999;
+ const barrierB = num(barrier(b.row)) ?? 999;
+ if (barrierA !== barrierB) return barrierA - barrierB;
+ return (a.modelRank ?? 999) - (b.modelRank ?? 999);
+ });
+ const explicitMapYValues = activeMapRows
+ .map((item) => firstNum(item.mapEnrichment, ["map_y_px"]) ?? firstNum(item.row, ["map_y_px"]))
+ .filter((value): value is number => value !== null && Number.isFinite(value));
+ const explicitMapYMin = explicitMapYValues.length ? Math.min(...explicitMapYValues) : null;
+ const explicitMapYMax = explicitMapYValues.length ? Math.max(...explicitMapYValues) : null;
+ const speedMapPlotPoints = activeMapRows.map((item, index) => {
+ const lane = paceMapRole(item);
+ const explicitY = firstNum(item.mapEnrichment, ["map_y_px"]) ?? firstNum(item.row, ["map_y_px"]);
+ const laneIndex = ["LEADERS", "ON PACE", "MIDFIELD", "BACKMARKERS"].indexOf(lane);
+ const barrierValue = num(barrier(item.row));
+ const laneBase = laneIndex >= 0 ? 12 + laneIndex * 22 : 45;
+ const fallbackY =
+ laneBase +
+ (((barrierValue ?? index + 1) % 6) * 2.8);
+ const derivedY =
+ explicitY !== null && explicitMapYMin !== null && explicitMapYMax !== null && explicitMapYMax > explicitMapYMin
+ ? 10 + ((explicitY - explicitMapYMin) / (explicitMapYMax - explicitMapYMin)) * 76
+ : fallbackY;
+ const edgeValue = edgePct(item.row, item.bet);
+ const selectedRow = !!selected && runnerRowKey(item.row) === runnerRowKey(selected.row);
+ const tone = selectedRow
+ ? "#ffffff"
+ : edgeValue !== null && edgeValue > 0
+ ? "#34d399"
+ : edgeValue !== null && edgeValue < 0
+ ? "#f87171"
+ : "#94a3b8";
+ return {
+ item,
+ lane,
+ x: paceMapXPercent(item),
+ y: Math.max(8, Math.min(88, derivedY)),
+ tone,
+ selectedRow,
+ tooltip: `${horse(item.row)} | Barrier ${barrier(item.row)} | ${lane} | SPD ${renderMetricValue(projectedSpdValue(item), 1)} | LP ${renderMetricValue(latePowerMetricValue(item), 0)} | Edge ${pct(edgeValue)}`,
+ chipLabel: `${saddle(item.row) === 999 ? "?" : saddle(item.row)} ${shortHorseName(horse(item.row), 14)}`,
+ };
+ });
+ const speedMapScaleMarks = Array.from({ length: 10 }, (_, index) => index * 10);
+ const speedMetricValues = activeRaceRows
+ .map((item) => projectedSpdValue(item))
+ .filter((value): value is number => value !== null && Number.isFinite(value));
+ const speedMetricMin = speedMetricValues.length ? Math.min(...speedMetricValues) : null;
+ const speedMetricMax = speedMetricValues.length ? Math.max(...speedMetricValues) : null;
+ const speedMapBarRows = [...activeRaceRows]
+ .map((item) => {
+ const explicitMap = firstNum(item.mapEnrichment, ["map_x_pct"]) ?? firstNum(item.row, ["map_x_pct"]);
+ const projectedSpeed = projectedSpdValue(item);
+ let mapValue =
+ explicitMap !== null && Number.isFinite(explicitMap)
+ ? clamp(90 - explicitMap, 0, 90)
+ : null;
+
+ if (mapValue === null && projectedSpeed !== null && speedMetricMin !== null && speedMetricMax !== null) {
+ mapValue =
+ speedMetricMax > speedMetricMin
+ ? 28 + ((projectedSpeed - speedMetricMin) / (speedMetricMax - speedMetricMin)) * 54
+ : 45;
+ }
+
+ if (mapValue === null) {
+ mapValue = paceRoleSpeedValue(paceMapRole(item));
+ }
+
+ mapValue = clamp(mapValue, 0, 90);
+ const barWidthPercent = clamp((mapValue / 90) * 100, 0, 100);
+ const markerLeftPercent = clamp(100 - barWidthPercent, 0, 100);
+ const selectedRow = !!selected && runnerRowKey(item.row) === runnerRowKey(selected.row);
+ const tone = paceRoleTone(paceMapRole(item));
+ const labelInside = barWidthPercent >= 28;
+ const labelLeftPercent = labelInside
+ ? clamp(markerLeftPercent + 1.5, 4, 92)
+ : clamp(markerLeftPercent - 1.5, 6, 90);
+ const labelTransform = labelInside ? "translate(0, -50%)" : "translate(-100%, -50%)";
+ const styleLabel = paceMapRole(item).replace(/_/g, " ");
+ const runnerLabel = shortHorseName(horse(item.row), 14);
+
+ return {
+ item,
+ mapValue,
+ barWidthPercent,
+ markerLeftPercent,
+ tone,
+ selectedRow,
+ projectedSpeed,
+ styleLabel,
+ runnerLabel,
+ labelLeftPercent,
+ labelTransform,
+ barrierValue: num(barrier(item.row)),
+ };
+ })
+ .sort((a, b) => {
+ const aBarrier = a.barrierValue;
+ const bBarrier = b.barrierValue;
+ if (aBarrier !== null && bBarrier !== null && aBarrier !== bBarrier) return bBarrier - aBarrier;
+ if (aBarrier === null && bBarrier !== null) return 1;
+ if (aBarrier !== null && bBarrier === null) return -1;
+ const mapDelta = b.mapValue - a.mapValue;
+ if (mapDelta !== 0) return mapDelta;
+ return (a.item.modelRank ?? 999) - (b.item.modelRank ?? 999);
+ });
+ const speedMapPressureRisk = firstText(
+ intelligenceCard,
+ ["pressure_risk_v1", "pressure_risk", "pace_pressure", "tempo_pressure"],
+ fallbackPressureLabel !== "-" ? fallbackPressureLabel : "",
+ );
+ const raceShapeBiasNote =
+ firstText(trackIntel, ["track_advantage_summary"], "") ||
+ firstText(intelligenceCard, ["race_shape_advantage", "tempo_edge_summary"], "") ||
+ fallbackPacedvantageLabel;
+ const topWinChanceRows = [...activeRaceRows]
+ .sort((a, b) => (winPct(b.row, b.bet) ?? -1) - (winPct(a.row, a.bet) ?? -1))
+ .slice(0, 5);
+ const bestValueRows = [...activeRaceRows]
+ .filter((item) => (edgePct(item.row, item.bet) ?? -999) > 0)
+ .sort((a, b) => (edgePct(b.row, b.bet) ?? -999) - (edgePct(a.row, a.bet) ?? -999))
+ .slice(0, 5);
+ const underlayRows = [...activeRaceRows]
+ .filter((item) => (edgePct(item.row, item.bet) ?? 999) < 0)
+ .sort((a, b) => (edgePct(a.row, a.bet) ?? 999) - (edgePct(b.row, b.bet) ?? 999))
+ .slice(0, 5);
+ const factorMatrixRows = rankedEnriched.map((item) => {
+ const rating = projectionRatingValue(item);
+ const projectionGap = projectionGapValue(item);
+ const dna = dnaScoreValue(item);
+ const sectionals = sectionalWeaponValue(item);
+ const latePower = latePowerMetricValue(item);
+ const pace = factorScoreValue(item, "PCE") ?? projectedSpdValue(item);
+ const paceBand = factorBandValue(item, "PCE");
+ const paceRole = paceMapRole(item);
+ const trackFit = trackFitScoreValue(item) ?? firstNum(item.dna, ["profile_score"]);
+ const jockey = factorScoreValue(item, "JOCKEY") ?? jockeyScoreValue(item);
+ const trainer = factorScoreValue(item, "TRINER") ?? trainerScoreValue(item);
+ const connection = factorScoreValue(item, "CONNECTION") ?? comboScoreValue(item) ?? connectionScoreValue(item);
+ const ratedHistory = ratedHistoryRows(item.runnerHistory || []);
+ const recentRatedHistory = ratedHistory.slice(0, 5);
+ const lastStart = recentRatedHistory[0];
+ const avg5 = recentRatedHistory.length
+ ? recentRatedHistory.reduce((sum, historyRow) => sum + (historyRatingValue(historyRow) ?? 0), 0) / recentRatedHistory.length
+ : null;
+ const peak = ratedHistory.length
+ ? Math.max(...ratedHistory.map((historyRow) => historyRatingValue(historyRow) ?? Number.NEGATIVE_INFINITY).filter((value) => Number.isFinite(value)))
+ : null;
+ const dnaBand = firstText(item.dna, ["dna_v6_2_band", "runner_dna_v6_1_band", "dna_band"], "-").replace(/_/g, " ").toUpperCase();
+ const distanceBand = firstText(item.dna, ["distance_fit_band"], "-").replace(/_/g, " ").toUpperCase();
+ const conditionBand = firstText(item.dna, ["condition_fit_band"], "-").replace(/_/g, " ").toUpperCase();
+ const classBand = firstText(item.dna, ["class_fit_band"], "-").replace(/_/g, " ").toUpperCase();
+ const campaignProfile = firstText(item.campaign, ["campaign_profile"], "-").replace(/_/g, " ").toUpperCase();
+ const campaignRisk = firstText(item.campaign, ["campaign_risk_band"], "-").replace(/_/g, " ").toUpperCase();
+ const campaignEvidence = firstText(item.campaign, ["evidence_status"], "-").replace(/_/g, " ").toUpperCase();
+ const campaignPrep = formatCampaignStage(
+ firstNum(item.campaign, ["current_prep_stage"]),
+ firstText(item.campaign, ["prep_stage_label"], "-"),
+ );
+ const campaignWindow = formatCampaignWindow(
+ firstNum(item.campaign, ["peak_window_start"]),
+ firstNum(item.campaign, ["peak_window_end"]),
+ );
+ const connectionRow = connectionSourceRow(item);
+ const connectionLoaded = hasConnectionPayload(connectionRow);
+ const connectionBand = firstText(connectionRow, ["connection_band"], "-").replace(/_/g, " ").toUpperCase();
+ const connectionNarrative = firstText(connectionRow, ["connection_narrative", "connection_summary_for_decision_engine"], "");
+ const connectionPositive = firstText(connectionRow, ["connection_positive_1"], "");
+ const price = limitedAdjustedPrice(item) ?? fairPrice(item.row, item.bet);
+ const tabPrice = livePrice(item.row, item.bet);
+
+ return {
+ item,
+ rating,
+ projectionGap,
+ dna,
+ dnaBand,
+ distanceBand,
+ conditionBand,
+ classBand,
+ sectionals,
+ latePower,
+ pace,
+ paceBand,
+ paceRole,
+ trackFit,
+ jockey,
+ trainer,
+ connection,
+ ratedHistoryCount: ratedHistory.length,
+ lastStart,
+ avg5,
+ peak,
+ campaignProfile,
+ campaignRisk,
+ campaignEvidence,
+ campaignPrep,
+ campaignWindow,
+ connectionLoaded,
+ connectionBand,
+ connectionNarrative,
+ connectionPositive,
+ price,
+ tabPrice,
+ };
+ });
+ const factorCoverageThreshold = 0.35;
+ const factorEligibleRows = factorMatrixRows.filter((row) => !isScratched(row.item));
+ const factorCoverage = (selector: (row: (typeof factorMatrixRows)[number]) => number | null): number => {
+ if (!factorEligibleRows.length) return 0;
+ const populated = factorEligibleRows.filter((row) => selector(row) !== null).length;
+ return populated / factorEligibleRows.length;
+ };
+ const showFactorSectionals = factorCoverage((row) => row.sectionals) >= factorCoverageThreshold;
+ const showFactorLatePower = factorCoverage((row) => row.latePower) >= factorCoverageThreshold;
+ const showFactorTrackFit = factorCoverage((row) => row.trackFit) >= factorCoverageThreshold;
+ const factorFieldSize = factorEligibleRows.length;
+ const coverageCount = (predicate: (row: (typeof factorMatrixRows)[number]) => boolean): number =>
+ factorEligibleRows.filter(predicate).length;
+ const ratingCoverageCount = coverageCount((row) => row.rating !== null);
+ const projectionHistoryCoverageCount = coverageCount((row) => row.rating !== null && row.ratedHistoryCount >= 1);
+ const dnaCoverageCount = coverageCount((row) => hasDnaPayload(row.item));
+ const paceCoverageCount = raceShapeFallbackLoaded
+ ? factorFieldSize
+ : coverageCount((row) => row.pace !== null || row.paceRole !== "-");
+ const sectionalsCoverageCount = coverageCount((row) => row.sectionals !== null);
+ const latePowerCoverageCount = coverageCount((row) => row.latePower !== null);
+ const trackFitCoverageCount = coverageCount((row) => row.trackFit !== null);
+ const campaignCoverageCount = coverageCount((row) => row.campaignEvidence !== "-" && row.campaignEvidence !== "NO HISTORY");
+ const historyCoverageCount = coverageCount((row) => row.ratedHistoryCount >= 1);
+ const connectionsCoverageCount = coverageCount((row) => commandEvidencevailable(row.item, ["edgeiq_connection_evidence_available_v3", "edgeiq_connection_evidence_available_v2", "edgeiq_connection_evidence_available"], ["edgeiq_connection_angle_summary_v3", "edgeiq_connection_angle_summary_v2", "edgeiq_connection_angle_summary"]));
+ const marketCoverageCount = coverageCount((row) => commandEvidencevailable(row.item, ["edgeiq_market_evidence_available_v3", "edgeiq_market_evidence_available_v2", "edgeiq_market_evidence_available"], ["edgeiq_market_signal_summary_v3", "edgeiq_market_signal_summary_v2", "edgeiq_market_signal_summary"]));
+ const hiddenGemCoverageCount = coverageCount((row) => commandEvidencevailable(row.item, ["edgeiq_hidden_gem_evidence_available_v3", "edgeiq_hidden_gem_evidence_available_v2", "edgeiq_hidden_gem_evidence_available"], ["edgeiq_hidden_gem_summary_v3", "edgeiq_hidden_gem_summary_v2", "edgeiq_hidden_gem_summary"]));
+ const commandRaceSummary = factorEligibleRows.map((row) => commandEvidenceSource(row.item)).find((source) => firstNum(source, ["race_field_size_v3", "race_field_size_v2"]) !== null);
+ const commandRaceFieldSize = firstNum(commandRaceSummary, ["race_field_size_v3", "race_field_size_v2"]);
+ const commandRaceConnectionCount = firstNum(commandRaceSummary, ["race_connection_available_count_v3", "race_connection_count_v2"]);
+ const commandRaceMarketCount = firstNum(commandRaceSummary, ["race_market_available_count_v3", "race_market_count_v2"]);
+ const commandRaceHiddenGemCount = firstNum(commandRaceSummary, ["race_hidden_gem_available_count_v3", "race_hidden_gem_count_v2"]);
+ const commandRaceConnectionSourceMatchedCount = firstNum(commandRaceSummary, ["race_connection_source_matched_count_v3"]);
+ const commandRaceEdgeiqPriceCount = firstNum(commandRaceSummary, ["race_edgeiq_price_count_v3"]);
+ const displayConnectionsCoverageCount = commandRaceConnectionCount ?? connectionsCoverageCount;
+ const displayMarketCoverageCount = commandRaceMarketCount ?? marketCoverageCount;
+ const displayHiddenGemCoverageCount = commandRaceHiddenGemCount ?? hiddenGemCoverageCount;
+ const displayConnectionSourceMatchedCount = commandRaceConnectionSourceMatchedCount ?? displayConnectionsCoverageCount;
+ const displayEdgeiqPriceCount = commandRaceEdgeiqPriceCount ?? coverageCount((row) => fairPrice(row.item.row, row.item.bet) !== null);
+ const displayEvidenceFieldSize = commandRaceFieldSize ?? factorFieldSize;
+ const factorCoverageTiles = [
+ { label: "Rating", count: ratingCoverageCount, explanation: "Current race rating reference loaded for today's field." },
+ { label: "Projection / Today vs history", count: projectionHistoryCoverageCount, explanation: "Compares today's number against at least one rated historical run." },
+ { label: "DN", count: dnaCoverageCount, explanation: "Runner suitability profile across distance, condition and class." },
+ { label: "Pace", count: paceCoverageCount, explanation: "Expected settling role and race-shape context for this race, including the fallback pace engine when runner-level map evidence is sparse." },
+ { label: "Sectionals", count: sectionalsCoverageCount, explanation: "Closing-speed evidence is only shown when sectional coverage is present." },
+ { label: "Late Power", count: latePowerCoverageCount, explanation: "Late-run strength appears only when pace-side evidence is loaded." },
+ { label: "Track Fit", count: trackFitCoverageCount, explanation: "Track-specific suitability is hidden until meaningful coverage is available." },
+ { label: "Campaign", count: campaignCoverageCount, explanation: "Preparation-stage history based on the horse's own campaign pattern." },
+ { label: "History", count: historyCoverageCount, explanation: "Historical rated run spine behind last starts, averages and peak figures." },
+ { label: "Connections", count: displayConnectionsCoverageCount, explanation: "Trainer, jockey and combination evidence for the current race universe." },
+ { label: "Market", count: displayMarketCoverageCount, explanation: "Current market signal evidence surfaced from the governed runner board." },
+ { label: "Hidden Gem", count: displayHiddenGemCoverageCount, explanation: "Performance intelligence flags surfaced from current evidence." },
+ ].map((tile) => ({
+ ...tile,
+ total: factorFieldSize,
+ status: coverageStatus(tile.count, factorFieldSize),
+ }));
+ const hiddenFactorColumns = [
+ !showFactorSectionals ? "Sectionals" : null,
+ !showFactorLatePower ? "Late Power" : null,
+ !showFactorTrackFit ? "Track Fit" : null,
+ ].filter((label): label is string => !!label);
+ const factorMatrixGridCols = "220px 150px 150px 170px 150px 160px 150px 170px";
+ const selectedPriceSummary = selected
+ ? [
+ { label: "Win %", value: selectedIsScratched ? "-" : pct(winPct(selected.row, selected.bet)), tone: "#f8fafc" },
+ { label: "EDGEiQ Price", value: selectedFairPrice, tone: "#f8fafc" },
+ { label: "TB", value: selectedLivePrice, tone: "#f8fafc" },
+ { label: "Edge", value: selectedEdge, tone: selectedIsScratched ? "#94a3b8" : cellTone(selectedCurrentDecision) },
+ { label: "Market", value: selectedIsScratched ? "SCRATCHED" : selectedCurrentDecision, tone: selectedIsScratched ? "#94a3b8" : cellTone(selectedCurrentDecision) },
+ ]
+ : [];
+ const selectedModelSummary = selected
+ ? [
+ { label: "Race Rank", value: selectedModelRank ? `#${selectedModelRank}` : "-", tone: "#ffffff" },
+ { label: "Projected Rating", value: selectedIsScratched ? "-" : renderMetricValue(projectionRatingValue(selected), 1), tone: selectedIsScratched ? "#94a3b8" : scoreTone(projectionRatingValue(selected)) },
+ { label: "Projection Gap", value: selectedIsScratched ? "-" : renderMetricValue(selectedProjectionGap, 2, true), tone: selectedProjectionGap === null ? "#94a3b8" : selectedProjectionGap >= 0 ? "#34d399" : "#f87171" },
+ { label: "Runner Profile", value: selectedRunnerProfileDnaDisplay, tone: selectedIsScratched ? "#94a3b8" : cellTone(selectedDnaBand) },
+ { label: "Confidence", value: selectedIsScratched ? "SCRATCHED" : selectedDisplayGrade, tone: selectedIsScratched ? "#94a3b8" : cellTone(selectedDisplayGrade) },
+ ]
+ : [];
+ const selectedPerformanceSummary = selected
+ ? [
+ { label: "Settling", value: selectedIsScratched ? "-" : paceMapRole(selected), tone: selectedIsScratched ? "#94a3b8" : paceRoleTone(paceMapRole(selected)) },
+ { label: "Projected SPD", value: selectedIsScratched ? "N/" : renderMetricValue(selectedProjectedSpd, 1), tone: "#ffffff" },
+ { label: "Sectionals", value: selectedIsScratched ? "-" : renderMetricValue(selectedSectional, 0), tone: "#a78bfa" },
+ { label: "Late Power", value: selectedIsScratched ? "-" : renderMetricValue(selectedLatePower, 0), tone: "#ffffff" },
+ { label: "Pace Fit", value: selectedIsScratched ? "N/" : renderMetricValue(factorScoreValue(selected, "PCE"), 0), tone: selectedIsScratched ? "#94a3b8" : cellTone(factorBandValue(selected, "PCE")) },
+ ]
+ : [];
+ const selectedTrackFitSummary = selected
+ ? [
+ { label: "Distance", value: selectedIsScratched ? "-" : selectedDistanceBand, tone: selectedIsScratched ? "#94a3b8" : cellTone(selectedDistanceBand) },
+ { label: "Condition", value: selectedIsScratched ? "-" : selectedConditionBand, tone: selectedIsScratched ? "#94a3b8" : cellTone(selectedConditionBand) },
+ { label: "Track", value: selectedIsScratched ? "-" : renderMetricValue(selectedTrackFitScore, 0), tone: selectedIsScratched ? "#94a3b8" : scoreTone(selectedTrackFitScore) },
+ { label: "Class", value: selectedIsScratched ? "-" : selectedClassBand, tone: selectedIsScratched ? "#94a3b8" : cellTone(selectedClassBand) },
+ ]
+ : [];
+ const selectedConnectionSummary = selected
+ ? [
+ { label: "Band", value: selectedIsScratched ? "SCRATCHED" : selectedConnectionLoaded ? selectedConnectionBand : "NO MTERIL RED", tone: selectedIsScratched || !selectedConnectionLoaded ? "#94a3b8" : connectionTone(selectedConnectionBand) },
+ { label: "Evidence", value: selectedIsScratched ? "-" : selectedConnectionLoaded ? selectedConnectionEvidenceQuality : "-", tone: selectedIsScratched || !selectedConnectionLoaded ? "#94a3b8" : evidenceQualityTone(selectedConnectionEvidenceQuality) },
+ { label: "Patterns", value: selectedIsScratched ? "-" : selectedConnectionLoaded ? renderMetricValue(selectedConnectionEvidencePatterns.length, 0) : "-", tone: selectedIsScratched || !selectedConnectionLoaded ? "#94a3b8" : "#ffffff" },
+ { label: "Risk Context", value: selectedIsScratched ? "-" : selectedConnectionRiskMeaningful ? "PRESENT" : "CLER", tone: selectedIsScratched ? "#94a3b8" : selectedConnectionRiskMeaningful ? "#ffffff" : "#34d399" },
+ ]
+ : [];
+ const selectedrchetypeSummary = selected
+ ? [
+ { label: "rchetype", value: selectedIsScratched ? "SCRATCHED" : selectedCareerrchetype, tone: selectedIsScratched ? "#94a3b8" : "#ffffff" },
+ { label: "Stage", value: selectedIsScratched ? "-" : selectedDevelopmentStage, tone: selectedIsScratched ? "#94a3b8" : cellTone(selectedDevelopmentStage) },
+ { label: "Improvement", value: selectedIsScratched ? "-" : selectedImprovementProfile, tone: selectedIsScratched ? "#94a3b8" : cellTone(selectedImprovementProfile) },
+ { label: "Freshness", value: selectedIsScratched ? "-" : selectedFreshnessProfile, tone: selectedIsScratched ? "#94a3b8" : "#ffffff" },
+ { label: "Distance Profile", value: selectedIsScratched ? "-" : selectedrchetypeDistanceProfile, tone: selectedIsScratched ? "#94a3b8" : "#34d399" },
+ { label: "Seasonality", value: selectedIsScratched ? "-" : selectedSeasonalityProfile, tone: selectedIsScratched ? "#94a3b8" : "#ffffff" },
+ ]
+ : [];
+ const selectedTrajectorySummary = selected
+ ? [
+ { label: "Trajectory", value: selectedIsScratched ? "SCRATCHED" : selectedTrajectoryDirection, tone: selectedIsScratched ? "#94a3b8" : trajectoryTone(selectedTrajectoryDirection) },
+ { label: "Career Phase", value: selectedIsScratched ? "-" : selectedCareerPhase, tone: selectedIsScratched ? "#94a3b8" : trajectoryTone(selectedCareerPhase) },
+ { label: "Points Off Peak", value: selectedIsScratched ? "-" : renderMetricValue(selectedPointsOffPeak, 1), tone: selectedIsScratched ? "#94a3b8" : scoreTone(selectedPointsOffPeak === null ? null : Math.max(0, 100 - (selectedPointsOffPeak * 8)), 70, 45) },
+ { label: "Breakout Potential", value: selectedIsScratched ? "-" : selectedBreakoutPotential, tone: selectedIsScratched ? "#94a3b8" : opportunityTone(selectedBreakoutPotential) },
+ { label: "Bounce Risk", value: selectedIsScratched ? "-" : selectedBounceRisk, tone: selectedIsScratched ? "#94a3b8" : riskTone(selectedBounceRisk) },
+ { label: "Trend Strength", value: selectedIsScratched ? "-" : selectedTrajectoryStrength, tone: selectedIsScratched ? "#94a3b8" : trajectoryTone(selectedTrajectoryStrength) },
+ ]
+ : [];
+ const selectedProjectionSummary = selected
+ ? [
+ { label: "Projection Band", value: selectedIsScratched ? "SCRATCHED" : selectedProjectionOutlookBand, tone: selectedIsScratched ? "#94a3b8" : cellTone(selectedProjectionOutlookBand) },
+ { label: "Confidence", value: selectedIsScratched ? "-" : selectedProjectionOutlookConfidence, tone: selectedIsScratched ? "#94a3b8" : cellTone(selectedProjectionOutlookConfidence) },
+ { label: "Next Run Projection", value: selectedIsScratched ? "-" : renderMetricValue(selectedNextRunProjection, 1), tone: selectedIsScratched ? "#94a3b8" : scoreTone(selectedNextRunProjection, 70, 55) },
+ { label: "Ceiling Projection", value: selectedIsScratched ? "-" : renderMetricValue(selectedCeilingProjection, 1), tone: selectedIsScratched ? "#94a3b8" : scoreTone(selectedCeilingProjection, 72, 58) },
+ { label: "Floor Projection", value: selectedIsScratched ? "-" : renderMetricValue(selectedFloorProjection, 1), tone: selectedIsScratched ? "#94a3b8" : scoreTone(selectedFloorProjection, 60, 45) },
+ { label: "Expected Improvement", value: selectedIsScratched ? "-" : signed(selectedExpectedImprovement, 1), tone: selectedIsScratched ? "#94a3b8" : selectedExpectedImprovement === null ? "#94a3b8" : selectedExpectedImprovement > 0 ? "#34d399" : selectedExpectedImprovement < 0 ? "#f87171" : "#cbd5e1" },
+ { label: "Improvement Probability", value: selectedIsScratched ? "-" : pct(selectedImprovementProbability), tone: selectedIsScratched ? "#94a3b8" : scoreTone(selectedImprovementProbability, 65, 45) },
+ { label: "Regression Probability", value: selectedIsScratched ? "-" : pct(selectedRegressionProbability), tone: selectedIsScratched ? "#94a3b8" : selectedRegressionProbability === null ? "#94a3b8" : selectedRegressionProbability >= 65 ? "#f87171" : selectedRegressionProbability >= 45 ? "#ffffff" : "#34d399" },
+ { label: "Peak Revisit Probability", value: selectedIsScratched ? "-" : pct(selectedPeakRevisitProbability), tone: selectedIsScratched ? "#94a3b8" : scoreTone(selectedPeakRevisitProbability, 60, 40) },
+ ]
+ : [];
+ const selectedCampaignSummary = selected
+ ? [
+ { label: "Campaign Profile", value: selectedIsScratched ? "SCRATCHED" : selectedCampaignProfile, tone: selectedIsScratched ? "#94a3b8" : campaignEvidenceTone(selectedCampaignProfileBand) },
+ { label: "Preparation Stage", value: selectedIsScratched ? "-" : selectedCampaignPrepDisplay, tone: selectedIsScratched ? "#94a3b8" : "#ffffff" },
+ { label: "Peak Window", value: selectedIsScratched ? "-" : selectedCampaignPeakWindowDisplay, tone: selectedIsScratched ? "#94a3b8" : "#cbd5e1" },
+ { label: "Preparation Risk", value: selectedIsScratched ? "-" : selectedCampaignRiskBand, tone: selectedIsScratched ? "#94a3b8" : riskTone(selectedCampaignRiskBand) },
+ { label: "Evidence Status", value: selectedIsScratched ? "-" : selectedCampaignEvidenceStatus, tone: selectedIsScratched ? "#94a3b8" : campaignEvidenceTone(selectedCampaignEvidenceStatus) },
+ { label: "History Runs", value: selectedIsScratched ? "-" : renderMetricValue(selectedCampaignHistoryRuns, 0), tone: selectedIsScratched ? "#94a3b8" : "#f8fafc" },
+ ]
+ : [];
+ const selectedHiddenGemSummary = selected
+ ? [
+ { label: "Case", value: selectedIsScratched ? "SCRATCHED" : selectedPerformanceIntelligenceBand, tone: selectedIsScratched ? "#94a3b8" : hiddenGemTone(selectedPerformanceIntelligenceBand) },
+ { label: "Evidence", value: selectedIsScratched ? "SCRATCHED" : selectedHiddenGemStatusDisplay, tone: selectedIsScratched ? "#94a3b8" : hiddenGemTone(selectedHiddenGemStatusDisplay) },
+ { label: "Recency", value: selectedIsScratched ? "-" : selectedHiddenGemRecencyBand, tone: selectedIsScratched ? "#94a3b8" : hiddenGemTone(selectedHiddenGemRecencyBand) },
+ { label: "Days Since", value: selectedIsScratched ? "-" : selectedHiddenGemgeDisplay, tone: selectedIsScratched ? "#94a3b8" : "#f8fafc" },
+ { label: "djusted Score", value: selectedIsScratched ? "-" : renderMetricValue(selectedHiddenGemScore, 1), tone: selectedIsScratched ? "#94a3b8" : hiddenGemTone(selectedHiddenGemDisplayBand) },
+ { label: "Last Evidence", value: selectedIsScratched ? "-" : (selectedHiddenGemDate !== "-" ? formatHistoryDate(selectedHiddenGemDate) : "-"), tone: selectedIsScratched ? "#94a3b8" : "#cbd5e1" },
+ ]
+ : [];
+ const selectedCareerSummary = selected
+ ? [
+ { label: "Career Peak", value: selectedIsScratched ? "-" : renderMetricValue(selectedCareerPeakRating, 1), tone: selectedIsScratched ? "#94a3b8" : scoreTone(selectedCareerPeakRating, 70, 55) },
+ { label: "Career Trend", value: selectedIsScratched ? "-" : selectedCareerTrend, tone: selectedIsScratched ? "#94a3b8" : cellTone(selectedCareerTrend) },
+ { label: "Last 3 vg", value: selectedIsScratched ? "-" : renderMetricValue(selectedCareerLast3verage, 1), tone: selectedIsScratched ? "#94a3b8" : scoreTone(selectedCareerLast3verage, 70, 55) },
+ { label: "Peak Trend", value: selectedIsScratched ? "-" : selectedPeakTrend, tone: selectedIsScratched ? "#94a3b8" : cellTone(selectedPeakTrend) },
+ { label: "Consistency", value: selectedIsScratched ? "-" : renderMetricValue(selectedCareerConsistency, 0), tone: selectedIsScratched ? "#94a3b8" : scoreTone(selectedCareerConsistency, 70, 50) },
+ { label: "Volatility", value: selectedIsScratched ? "-" : renderMetricValue(selectedCareerVolatility, 0), tone: selectedIsScratched ? "#94a3b8" : scoreTone(selectedCareerVolatility, 70, 50) },
+ { label: "Career %ile", value: selectedIsScratched ? "-" : renderMetricValue(selectedCareerPercentileScore, 1), tone: selectedIsScratched ? "#94a3b8" : scoreTone(selectedCareerPercentileScore, 80, 55) },
+ { label: "Peak Stage", value: selectedIsScratched ? "-" : selectedCareerPeakgeStage, tone: selectedIsScratched ? "#94a3b8" : "#ffffff" },
+ { label: "Runs Since Peak", value: selectedIsScratched ? "-" : selectedRunsSincePeak, tone: selectedIsScratched ? "#94a3b8" : "#ffffff" },
+ { label: "Best Track", value: selectedIsScratched ? "-" : selectedCareerBestTrack, tone: "#ffffff" },
+ { label: "Best Distance", value: selectedIsScratched ? "-" : selectedCareerBestDistance, tone: "#ffffff" },
+ { label: "Best Conditions", value: selectedIsScratched ? "-" : selectedCareerBestCondition, tone: "#34d399" },
+ { label: "Best Class", value: selectedIsScratched ? "-" : selectedCareerBestClass, tone: "#ffffff" },
+ ]
+ : [];
+ const selectedStats = selected
+ ? selectedIsScratched
+ ? [
+ { label: "Status", value: "SCRATCHED", tone: "#9ca3af" },
+ { label: "Win Chance", value: "-", tone: "#64748b" },
+ { label: "EDGEiQ Price", value: "-", tone: "#64748b" },
+ { label: "Market", value: "-", tone: "#64748b" },
+ { label: "Setup Gap", value: "-", tone: "#64748b" },
+ { label: "EDGEiQ Confidence", value: "SCRATCHED", tone: "#9ca3af" },
+ { label: "Market", value: "SCRATCHED", tone: "#9ca3af" },
+ ]
+ : [
+ { label: "Win Chance", value: pct(winPct(selected.row, selected.bet)) },
+ { label: "EDGEiQ Price", value: money(limitedAdjustedPrice(selected) ?? fairPrice(selected.row, selected.bet)) },
+ { label: "Market", value: money(livePrice(selected.row, selected.bet)) },
+ { label: "Setup Gap", value: pct(edgePct(selected.row, selected.bet)) },
+ { label: "EDGEiQ Confidence", value: displayGradeValue(selected), tone: cellTone(displayGradeValue(selected)) },
+ { label: "Market", value: decision(selected.row, selected.bet), tone: cellTone(decision(selected.row, selected.bet)) },
+ ]
+ : [];
+ const intelModeTabs: Array<{ mode: IntelMode; label: string; hint: string }> = [
+ { mode: "COMMND", label: "RACE", hint: "Race overview" },
+ { mode: "RUNNERS", label: "FIELD", hint: "Race field" },
+ { mode: "PERFORMANCE", label: "PERFORMANCE", hint: "Performance Index" },
+ { mode: "FORM", label: "FORM", hint: "Form study" },
+ { mode: "MP", label: "MAP", hint: "Speed map" },
+ { mode: "NEXUS", label: "LAB", hint: "Research laboratory" },
+ { mode: "STATS", label: "STATS", hint: "Jockeys and trainers" },
+ { mode: "DVNCED", label: "MARKET", hint: "Price comparison" },
+ { mode: "RESULTS", label: "RESULTS", hint: "Post-race" },
+ { mode: "WEATHER", label: "CONDITIONS", hint: "Track and weather" },
+ ];
+ const selectedExplainabilityConfidenceDisplay = selectedIsScratched
+ ? "SCRATCHED"
+ : selectedExplainabilityConfidenceBand !== "-" && selectedExplainabilityConfidenceScore !== null
+ ? `${selectedExplainabilityConfidenceBand} (${renderMetricValue(selectedExplainabilityConfidenceScore, 1)})`
+ : selectedExplainabilityConfidenceBand !== "-"
+ ? selectedExplainabilityConfidenceBand
+ : selectedDisplayGrade;
+ const selectedConnectionDisplay = selectedIsScratched
+ ? "SCRATCHED"
+ : selectedConnectionBand !== "-" && selectedExplainabilityConnectionScore !== null
+ ? `${selectedConnectionBand} (${renderMetricValue(selectedExplainabilityConnectionScore, 0)})`
+ : selectedConnectionBand !== "-"
+ ? selectedConnectionBand
+ : selectedExplainabilityConnectionScore !== null
+ ? renderMetricValue(selectedExplainabilityConnectionScore, 0)
+ : "N/";
+ const decisionSupportItems = selectedIsScratched
+ ? []
+ : (selectedExplainabilitySupports.length
+ ? selectedExplainabilitySupports
+ : selectedSupportPoints.map((item) => ({ factor: item.factor, value: item.impact }))).slice(0, 3);
+ const decisionRiskItems = selectedIsScratched
+ ? []
+ : (selectedExplainabilityRisks.length
+ ? selectedExplainabilityRisks
+ : selectedRiskPoints.map((item) => ({ factor: item.factor, value: item.impact }))).slice(0, 3);
+ const commandDecisionTiles = selected
+ ? [
+ { label: "Model Rank", value: selectedExplainabilityModelRank, tone: selectedIsScratched ? "#94a3b8" : "#ffffff" },
+ { label: "Confidence", value: selectedExplainabilityConfidenceDisplay ? selectedExplainabilityConfidenceDisplay : "-", tone: selectedIsScratched ? "#94a3b8" : cellTone(selectedExplainabilityConfidenceBand || selectedDisplayGrade) },
+ { label: "Trend", value: selectedExplainabilityTrendDisplay, tone: selectedIsScratched ? "#94a3b8" : cellTone(selectedExplainabilityTrendLabel) },
+ { label: "Market", value: selectedIsScratched ? "SCRATCHED" : selectedCurrentDecision, tone: selectedIsScratched ? "#94a3b8" : cellTone(selectedCurrentDecision) },
+ { label: "Race Shape", value: selectedIsScratched ? "SCRATCHED" : `${selectedExplainabilityRaceShape || "-"} | ${selectedExplainabilityRaceTempo || "-"}`, tone: selectedIsScratched ? "#94a3b8" : "#ffffff" },
+ ]
+ : [];
+ const selectedMapSummary = selected
+ ? [
+ { label: "Selected Runner", value: horse(selected.row), tone: selectedIsScratched ? "#94a3b8" : "#f8fafc" },
+ { label: "Settling", value: selectedIsScratched ? "SCRATCHED" : paceMapRole(selected), tone: selectedIsScratched ? "#94a3b8" : paceRoleTone(paceMapRole(selected)) },
+ { label: "Projected SPD", value: selectedIsScratched ? "N/" : renderMetricValue(selectedProjectedSpd, 1), tone: "#ffffff" },
+ { label: "Pace Fit", value: selectedIsScratched ? "N/" : renderMetricValue(factorScoreValue(selected, "PCE"), 0), tone: selectedIsScratched ? "#94a3b8" : cellTone(factorBandValue(selected, "PCE")) },
+ { label: "Pressure Risk", value: selectedRacePressureDisplay || "Standard", tone: selectedRacePressureRiskRunner ? "#f87171" : selectedRacePressureDisplay ? "#ffffff" : "#94a3b8" },
+ { label: "Late Power", value: selectedRaceLatePowerBeneficiary || (selectedLatePower !== null ? renderMetricValue(selectedLatePower, 0) : "No key closer"), tone: "#ffffff" },
+ ]
+ : [];
+ const selectedCampaignEvidenceLoaded = selectedCampaignEvidenceStatus !== "-" && selectedCampaignEvidenceStatus !== "NO HISTORY";
+ const selectedFactorDetailSections = selected
+ ? [
+ {
+ title: "Rating",
+ tone: "#ffffff",
+ currentRead: selectedIsScratched
+ ? "Runner scratched."
+ : `TODAY ${selectedTodayProjectionFigure === null ? "-" : renderMetricValue(selectedTodayProjectionFigure, 1)} | 1LS ${selectedLastStartRating} | PEK ${selectedCareerPeakRating === null ? "-" : renderMetricValue(selectedCareerPeakRating, 1)}`,
+ why: selectedRatedHistory.length >= 3
+ ? "Shows whether today's projection is building from a credible recent figure and how far it sits from the horse's established ceiling."
+ : "Historical rating evidence is limited, so today's number should be read with more caution than usual.",
+ evidenceQuality: selectedIsScratched
+ ? "SCRATCHED"
+ : selectedRatedHistory.length >= 5
+ ? "vailable"
+ : selectedRatedHistory.length >= 1
+ ? "Limited"
+ : "Unavailable",
+ evidenceDetail: selectedIsScratched
+ ? "SCRATCHED"
+ : `${selectedRatedHistory.length} rated run${selectedRatedHistory.length === 1 ? "" : "s"} loaded from the history spine.`,
+ },
+ {
+ title: "Form",
+ tone: cellTone(selectedFormSignal),
+ currentRead: selectedIsScratched
+ ? "Runner scratched."
+ : `${selectedFormSignal} | ${selectedFormCycle} | AVG5 ${selectedAVGRatingLast5}`,
+ why: selectedFormNarrative || "Summarises the runner's recent form pattern, cycle and last-start rating context.",
+ evidenceQuality: selectedIsScratched
+ ? "SCRATCHED"
+ : firstText(selectedRunnerForm, ["evidence_quality"], selectedRatedHistory.length ? "vailable" : "Limited"),
+ evidenceDetail: selectedIsScratched
+ ? "SCRATCHED"
+ : [
+ firstText(selectedRunnerForm, ["recent_runs_found"], ""),
+ selectedRatingTrend !== "-" ? `Trend ${selectedRatingTrend}` : "",
+ selectedRatingTrendDelta !== "-" ? `Delta ${selectedRatingTrendDelta}` : "",
+ ].filter(Boolean).join(" | ") || "Form intelligence loaded.",
+ },
+ {
+ title: "Performance",
+ tone: hiddenGemTone(selectedHiddenGemDisplayBand),
+ currentRead: selectedIsScratched
+ ? "Runner scratched."
+ : selectedHiddenGemctionable
+ ? `${selectedPerformanceIntelligenceBand} | ${selectedHiddenGemRecencyBand} | ${selectedHiddenGemgeDisplay}`
+ : selectedHiddenGemHistorical
+ ? `IMPROVING | ${selectedHiddenGemRecencyBand} | ${selectedHiddenGemgeDisplay}`
+ : selectedHiddenGemLoaded
+ ? "NEUTRAL"
+ : "NEUTRAL",
+ why: "Looks for recent runs where the underlying performance figure was stronger than the finishing position or beaten margin made it appear.",
+ evidenceQuality: selectedIsScratched
+ ? "SCRATCHED"
+ : selectedHiddenGemLoaded
+ ? "vailable"
+ : "Limited",
+ evidenceDetail: selectedIsScratched
+ ? "SCRATCHED"
+ : selectedHiddenGemLoaded
+ ? [
+ selectedMergedHiddenGemvailable ? selectedMergedHiddenGemSummary : "",
+ selectedHiddenGemTrigger,
+ selectedHiddenGemHistorical && selectedHiddenGemDate !== "-"
+ ? `Profile evidence from ${formatHistoryDate(selectedHiddenGemDate)}`
+ : "",
+ !selectedHiddenGemctionable && !selectedHiddenGemHistorical
+ ? "Neutral current performance intelligence."
+ : "",
+ ].filter(Boolean).join(" | ") || selectedHiddenGemNarrative
+ : selectedMergedHiddenGemvailable
+ ? selectedMergedHiddenGemSummary || "Hidden gem evidence loaded."
+ : "No hidden gem flagged.",
+ },
+ {
+ title: "Pace",
+ tone: paceRoleTone(paceMapRole(selected)),
+ currentRead: selectedIsScratched
+ ? "Runner scratched."
+ : `${paceMapRole(selected)} | SPD ${selectedProjectedSpd === null ? "-" : renderMetricValue(selectedProjectedSpd, 1)} | Tempo ${selectedRaceTempoLabel}`,
+ why: "Shows where the runner is expected to settle and whether the projected race shape helps or hurts that run style.",
+ evidenceQuality: selectedIsScratched
+ ? "SCRATCHED"
+ : selectedRaceShapeLabel !== "-" || selectedProjectedSpd !== null
+ ? "vailable"
+ : "Unavailable",
+ evidenceDetail: selectedIsScratched
+ ? "SCRATCHED"
+ : selectedRaceShapeLabel !== "-" || selectedProjectedSpd !== null
+ ? "Pace map and race-shape briefing loaded."
+ : "Race-shape evidence pending for this runner.",
+ },
+ {
+ title: "Campaign",
+ tone: campaignEvidenceTone(selectedCampaignRiskBand),
+ currentRead: selectedIsScratched
+ ? "Runner scratched."
+ : `Prep ${selectedCampaignPrepDisplay} | Peak Window ${selectedCampaignPeakWindowDisplay} | Risk ${selectedCampaignRiskBand}`,
+ why: "Uses the horse's own preparation history to show whether today sits inside or outside its preferred campaign window.",
+ evidenceQuality: selectedIsScratched
+ ? "SCRATCHED"
+ : selectedCampaignEvidenceLoaded
+ ? "vailable"
+ : "Limited",
+ evidenceDetail: selectedIsScratched
+ ? "SCRATCHED"
+ : selectedCampaignEvidenceLoaded
+ ? `Campaign evidence ${selectedCampaignEvidenceStatus}.`
+ : "Campaign history is limited for this runner.",
+ },
+ {
+ title: "Connections",
+ tone: selectedConnectionLoaded ? connectionTone(selectedConnectionBand) : "#94a3b8",
+ currentRead: selectedIsScratched
+ ? "Runner scratched."
+ : selectedConnectionLoaded
+ ? `${selectedConnectionDisplay}${selectedConnectionEvidencePatterns[0]?.value ? ` | ${selectedConnectionEvidencePatterns[0].value}` : ""}`
+ : "Connection profile is still forming.",
+ why: selectedConnectionLoaded
+ ? selectedConnectionNarrative || "Trainer, jockey, partnership, market and preparation patterns add context to this runner's profile."
+ : "Connection intelligence is hidden unless the current-race profile has meaningful evidence.",
+ evidenceQuality: selectedIsScratched
+ ? "SCRATCHED"
+ : selectedConnectionLoaded
+ ? selectedConnectionEvidenceQuality || selectedConnectionEvidenceStatus || "vailable"
+ : "Unavailable",
+ evidenceDetail: selectedIsScratched
+ ? "SCRATCHED"
+ : selectedConnectionLoaded
+ ? selectedConnectionEvidencePatterns.map((item) => `${item.label}: ${item.value}`).join(" | ") || selectedConnectionNarrative
+ : "Connection profile is still forming for this runner.",
+ },
+ {
+ title: "Market",
+ tone: "#f8fafc",
+ currentRead: selectedIsScratched
+ ? "Runner scratched."
+ : `EDGEiQ ${selectedFairPrice} | TB ${selectedLivePrice} | Market ${selectedCurrentDecision}`,
+ why: "This is a market reference only. It shows the current market position beside the EDGEiQ line without changing pricing logic.",
+ evidenceQuality: selectedIsScratched
+ ? "SCRATCHED"
+ : selectedLivePrice !== "-"
+ ? "vailable"
+ : "Limited",
+ evidenceDetail: selectedIsScratched
+ ? "SCRATCHED"
+ : selectedMergedMarketvailable
+ ? selectedMergedMarketSummary || "Market signal evidence loaded."
+ : selectedLivePrice !== "-"
+ ? "Market reference loaded. No market signals triggered."
+ : "No market signals triggered.",
+ },
+ ].filter((section) => section.title !== "Connections" || selectedConnectionLoaded || selectedIsScratched)
+ : [];
+ const commandTopCall = topModelRow;
+ const commandBestValue = bestValueRows[0] || null;
+ const commandMainRisk =
+ [...activeRaceRows]
+ .filter((item) => (edgePct(item.row, item.bet) ?? 999) < 0)
+ .sort(
+ (a, b) =>
+ (((livePrice(a.row, a.bet) ?? 0) > 0 ? 0 : 1) - ((livePrice(b.row, b.bet) ?? 0) > 0 ? 0 : 1)) ||
+ ((livePrice(a.row, a.bet) ?? 999) - (livePrice(b.row, b.bet) ?? 999)) ||
+ ((edgePct(a.row, a.bet) ?? 999) - (edgePct(b.row, b.bet) ?? 999)) ||
+ ((a.modelRank ?? 999) - (b.modelRank ?? 999))
+ )[0] || underlayRows[0] || null;
+ const commandConfidenceDisplay = (item: EnrichedRunner | null | undefined): string => {
+ if (!item) return "N/";
+ if (isScratched(item)) return "SCRATCHED";
+ const band = firstText(item.explainability, ["confidence_band"], "").replace(/_/g, " ").toUpperCase();
+ const score = firstNum(item.explainability, ["final_confidence_score"]) ?? computedLimitedScore(item);
+ if (band && band !== "N/") {
+ return score !== null ? `${band} (${renderMetricValue(score, 1)})` : band;
+ }
+ return displayGradeValue(item);
+ };
+ const commandConnectionBadge = (item: EnrichedRunner | null | undefined) => {
+ if (!item || isScratched(item)) return null;
+ const connectionRow = connectionSourceRow(item);
+ const band = firstText(connectionRow, ["connection_band"], "").replace(/_/g, " ").toUpperCase();
+ const score = firstNum(connectionRow, ["connection_score"]);
+ if (!band && score === null) return null;
+ const label = `CONN: ${band || "N/"}${score !== null ? ` ${renderMetricValue(score, 0)}` : ""}`;
+ const tone = connectionTone(band || "");
+ return (
+ <div style={fitBadgeRowStyle}>
+ <span style={fitBadge(label, tone, "rgba(8,15,28,.9)", `1px solid ${tone}55`)}>
+ {label}
+ </span>
+ </div>
+ );
+ };
+ const renderConnectionDnaSection = () => (
+ <div style={{ ...narrativeInsetStyle, marginTop: 0 }}>
+ <strong style={{ display: "block", marginBottom: 8, color: connectionTone(selectedConnectionBand), fontSize: 11, textTransform: "uppercase", letterSpacing: ".06em" }}>
+ CONNECTION INTELLIGENCE
+ </strong>
+ <div style={compactValueGridStyle(4)}>
+ <div style={valueTileStyle}>
+ <span style={miniLabelStyle}>Connection Band</span>
+ <strong style={{ ...miniValueStyle, color: selectedIsScratched ? "#94a3b8" : connectionTone(selectedConnectionBand) }}>
+ {selectedIsScratched ? "SCRATCHED" : selectedConnectionLoaded ? selectedConnectionDisplay : "NO MTERIL RED"}
+ </strong>
+ </div>
+ <div style={valueTileStyle}>
+ <span style={miniLabelStyle}>Coverage</span>
+ <strong style={{ ...miniValueStyle, color: selectedIsScratched || !selectedConnectionLoaded ? "#94a3b8" : evidenceQualityTone(selectedConnectionEvidenceQuality) }}>
+ {selectedIsScratched ? "SCRATCHED" : selectedConnectionLoaded ? selectedConnectionEvidenceQuality : "-"}
+ </strong>
+ </div>
+ <div style={valueTileStyle}>
+ <span style={miniLabelStyle}>Patterns</span>
+ <strong style={{ ...miniValueStyle, color: selectedIsScratched || !selectedConnectionLoaded ? "#94a3b8" : "#ffffff" }}>
+ {selectedIsScratched ? "SCRATCHED" : selectedConnectionLoaded ? renderMetricValue(selectedConnectionEvidencePatterns.length, 0) : "-"}
+ </strong>
+ </div>
+ <div style={valueTileStyle}>
+ <span style={miniLabelStyle}>Risk Context</span>
+ <strong style={{ ...miniValueStyle, color: selectedIsScratched ? "#94a3b8" : selectedConnectionRiskMeaningful ? "#ffffff" : "#34d399" }}>
+ {selectedIsScratched ? "SCRATCHED" : selectedConnectionRiskMeaningful ? "PRESENT" : "CLER"}
+ </strong>
+ </div>
+ </div>
+
+ {selectedConnectionLoaded && selectedConnectionEvidencePatterns.length ? (
+ <div style={whyRankedGridStyle}>
+ <div style={{ ...narrativeInsetStyle, marginTop: 0 }}>
+ <strong style={{ display: "block", marginBottom: 6, color: "#34d399", fontSize: 11, textTransform: "uppercase", letterSpacing: ".06em" }}>Evidence Patterns</strong>
+ <div style={{ display: "grid", gap: 6 }}>
+ {selectedConnectionEvidencePatterns.map((item, index) => (
+ <div key={`connection-insight-${index}-${item.label}`} style={{ display: "grid", gap: 2 }}>
+ <span style={{ color: "#94a3b8", fontWeight: 900, fontSize: 10, textTransform: "uppercase", letterSpacing: ".07em" }}>{item.label}</span>
+ <span style={{ color: "#eaf2ff", fontWeight: 900, fontSize: 11 }}>{item.value}</span>
+ </div>
+ ))}
+ </div>
+ </div>
+
+ {selectedConnectionRiskMeaningful ? (
+ <div style={{ ...narrativeInsetStyle, marginTop: 0 }}>
+ <strong style={{ display: "block", marginBottom: 6, color: "#ffffff", fontSize: 11, textTransform: "uppercase", letterSpacing: ".06em" }}>Risk Context</strong>
+ <span style={{ color: "#eaf2ff", fontWeight: 900, fontSize: 11 }}>{selectedConnectionRisk}</span>
+ </div>
+ ) : null}
+ </div>
+ ) : (
+ <div style={{ ...narrativeInsetStyle, marginTop: 0, color: "#94a3b8", fontSize: 11 }}>
+ {selectedIsScratched ? "Runner scratched." : "Connection intelligence not material for this runner."}
+ </div>
+ )}
+
+ <p style={{ margin: "8px 0 0", color: "#dbe7fb", fontSize: 12, lineHeight: 1.55 }}>
+ {selectedIsScratched ? "Runner scratched." : selectedConnectionNarrative || "Connection intelligence not material for this runner."}
+ </p>
+ </div>
+ );
+ const commandTopCallWhy = commandTopCall
+ ? firstText(commandTopCall.explainability, ["why_ranked_here"], "") || selectedReason
+ : raceAssessmentNarrative;
+ const commandBestValueSupport = commandBestValue
+ ? {
+ factor: firstText(commandBestValue.explainability, ["positive_1"], "Price edge"),
+ value: firstText(commandBestValue.explainability, ["positive_1_value"], pct(edgePct(commandBestValue.row, commandBestValue.bet))),
+ }
+ : null;
+ const commandMainRiskReason = commandMainRisk
+ ? {
+ factor: firstText(commandMainRisk.explainability, ["risk_1"], "Market caution"),
+ value: firstText(commandMainRisk.explainability, ["risk_1_value"], pct(edgePct(commandMainRisk.row, commandMainRisk.bet))),
+ }
+ : null;
+ const pageStyle: React.CSSProperties = {
+ display: "flex",
+ flexDirection: "column",
+ gap: 12,
+ padding: 12,
+ color: "#eaf2ff",
+ };
+
+ const panelStyle: React.CSSProperties = {
+ padding: 12,
+ border: "1px solid rgba(80,120,180,.35)",
+ borderRadius: 12,
+ background: "rgba(7,16,29,.92)",
+ };
+
+ const headerStyle: React.CSSProperties = {
+ display: "grid",
+ gridTemplateColumns: "minmax(0,1.3fr) minmax(300px,.85fr)",
+ gap: 10,
+ padding: 12,
+ border: "1px solid rgba(91,229,169,.22)",
+ borderRadius: 12,
+ background: "linear-gradient(90deg,rgba(20,82,67,.35),rgba(7,16,29,.95))",
+ };
+ const intelModeBarStyle: React.CSSProperties = {
+ display: "flex",
+ gap: 8,
+ flexWrap: "wrap",
+ alignItems: "center",
+ };
+ const intelModeButtonStyle = (mode: IntelMode): React.CSSProperties => ({
+ appearance: "none",
+ border: intelMode === mode ? "1px solid rgba(52,211,153,.58)" : "1px solid rgba(80,120,180,.28)",
+ background: intelMode === mode ? "rgba(10,34,28,.92)" : "rgba(5,12,22,.82)",
+ color: intelMode === mode ? "#d1fae5" : "#94a3b8",
+ borderRadius: 999,
+ padding: "8px 12px",
+ fontSize: 11,
+ fontWeight: 900,
+ letterSpacing: ".08em",
+ textTransform: "uppercase",
+ cursor: "pointer",
+ boxShadow: intelMode === mode ? "0 0 0 1px rgba(52,211,153,.15), 0 0 16px rgba(16,185,129,.16)" : "none",
+ });
+
+ const titleStyle: React.CSSProperties = {
+ display: "flex",
+ justifyContent: "space-between",
+ alignItems: "center",
+ marginBottom: 8,
+ fontWeight: 900,
+ textTransform: "uppercase",
+ letterSpacing: ".08em",
+ color: "#c9d7ee",
+ };
+
+ const statStyle: React.CSSProperties = {
+ border: "1px solid rgba(80,120,180,.35)",
+ borderRadius: 12,
+ padding: 8,
+ background: "rgba(5,12,22,.75)",
+ };
+ const breakdownCardStyle: React.CSSProperties = {
+ ...statStyle,
+ display: "grid",
+ gap: 5,
+ alignContent: "start",
+ minHeight: 122,
+ };
+ const breakdownPill = (label: string): React.CSSProperties => ({
+ display: "inline-flex",
+ alignItems: "center",
+ justifyContent: "center",
+ padding: "4px 9px",
+ borderRadius: 999,
+ border: "1px solid rgba(80,120,180,.35)",
+ background: "rgba(10,18,30,.9)",
+ color: cellTone(label),
+ fontSize: 10,
+ fontWeight: 900,
+ letterSpacing: ".08em",
+ textTransform: "uppercase",
+ width: "fit-content",
+ });
+ const metricRowStyle: React.CSSProperties = {
+ display: "flex",
+ justifyContent: "space-between",
+ alignItems: "center",
+ gap: 6,
+ fontSize: 10.5,
+ color: "#cbd5e1",
+ };
+ const barTrackStyle: React.CSSProperties = {
+ height: 3,
+ borderRadius: 999,
+ background: "rgba(51,65,85,.55)",
+ overflow: "hidden",
+ };
+ const barFill = (percent: number, color: string): React.CSSProperties => ({
+ width: `${clamp(percent, 0, 100)}%`,
+ height: "100%",
+ borderRadius: 999,
+ background: color,
+ });
+ const performanceBarPct = (value: number | null, maxValue: number): number =>
+ value === null ? 0 : clamp((value / maxValue) * 100, 0, 100);
+ const infoGridStyle: React.CSSProperties = {
+ display: "grid",
+ gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))",
+ gap: 8,
+ alignItems: "stretch",
+ };
+ const narrativeCardStyle: React.CSSProperties = {
+ border: "1px solid rgba(51,65,85,.7)",
+ borderRadius: 12,
+ background: "linear-gradient(180deg, rgba(10,18,30,.95), rgba(4,10,18,.92))",
+ padding: 10,
+ display: "grid",
+ gap: 8,
+ minHeight: 0,
+ };
+ const narrativeTitleStyle: React.CSSProperties = {
+ display: "flex",
+ justifyContent: "space-between",
+ alignItems: "center",
+ gap: 10,
+ };
+ const narrativeHeaderTextStyle: React.CSSProperties = {
+ color: "#e5edf8",
+ fontSize: 12,
+ fontWeight: 900,
+ letterSpacing: ".08em",
+ textTransform: "uppercase",
+ };
+ const narrativeSubStyle: React.CSSProperties = {
+ color: "#7f8ea3",
+ fontSize: 10,
+ fontStyle: "normal",
+ fontWeight: 800,
+ letterSpacing: ".06em",
+ textTransform: "uppercase",
+ };
+ const miniGridStyle: React.CSSProperties = {
+ display: "grid",
+ gridTemplateColumns: "repeat(auto-fit,minmax(118px,1fr))",
+ gap: 6,
+ };
+ const miniTileStyle: React.CSSProperties = {
+ border: "1px solid rgba(51,65,85,.65)",
+ borderRadius: 10,
+ background: "rgba(3,11,20,.76)",
+ padding: "7px 9px",
+ display: "grid",
+ gap: 3,
+ minHeight: 48,
+ };
+ const miniLabelStyle: React.CSSProperties = {
+ color: "#7f8ea3",
+ fontSize: 10,
+ fontWeight: 850,
+ letterSpacing: ".06em",
+ textTransform: "uppercase",
+ };
+ const miniValueStyle: React.CSSProperties = {
+ color: "#f8fafc",
+ fontSize: 13,
+ fontWeight: 900,
+ lineHeight: 1.2,
+ };
+ const narrativeInsetStyle: React.CSSProperties = {
+ border: "1px solid rgba(30,41,59,.9)",
+ borderRadius: 10,
+ background: "rgba(2,8,16,.72)",
+ padding: "8px 10px",
+ color: "#cbd5e1",
+ fontSize: 11.5,
+ lineHeight: 1.35,
+ };
+ const trackPanelStyle: React.CSSProperties = {
+ ...narrativeCardStyle,
+ gridColumn: "span 2",
+ };
+ const trackTopTilesStyle: React.CSSProperties = {
+ display: "grid",
+ gridTemplateColumns: "repeat(auto-fit,minmax(120px,1fr))",
+ gap: 6,
+ };
+ const fitBadgeRowStyle: React.CSSProperties = {
+ display: "flex",
+ flexWrap: "wrap",
+ gap: 5,
+ alignItems: "center",
+ };
+ const fitBadge = (label: string, color: string, background: string, border: string): React.CSSProperties => ({
+ display: "inline-flex",
+ alignItems: "center",
+ justifyContent: "center",
+ padding: "2px 7px",
+ borderRadius: 999,
+ color,
+ background,
+ border,
+ fontSize: 9.5,
+ fontWeight: 900,
+ letterSpacing: ".05em",
+ textTransform: "uppercase",
+ });
+ const selectedHeaderStyle: React.CSSProperties = {
+ display: "flex",
+ justifyContent: "space-between",
+ alignItems: "center",
+ gap: 12,
+ marginBottom: 8,
+ };
+ const selectedGridStyle = (count: number): React.CSSProperties => ({
+ display: "grid",
+ gridTemplateColumns: `repeat(${count}, minmax(96px,1fr))`,
+ gap: 6,
+ minWidth: `${count * 96}px`,
+ });
+ const selectedStatCardStyle: React.CSSProperties = {
+ ...statStyle,
+ minHeight: 60,
+ display: "grid",
+ gap: 4,
+ alignContent: "start",
+ padding: 7,
+ };
+ const selectedStatLabelStyle: React.CSSProperties = {
+ color: "#7f8ea3",
+ fontSize: 9.5,
+ fontWeight: 850,
+ letterSpacing: ".06em",
+ textTransform: "uppercase",
+ lineHeight: 1.1,
+ };
+ const selectedStatValueStyle = (tone?: string): React.CSSProperties => ({
+ color: tone || "#f8fafc",
+ fontSize: 14,
+ fontWeight: 950,
+ lineHeight: 1.15,
+ });
+ const selectedPanelStyle: React.CSSProperties = {
+ display: "grid",
+ gap: 8,
+ };
+ const selectedMetricsWrapStyle: React.CSSProperties = {
+ overflowX: "auto",
+ paddingBottom: 2,
+ };
+ const subsectionTitleStyle: React.CSSProperties = {
+ display: "flex",
+ justifyContent: "space-between",
+ alignItems: "center",
+ gap: 10,
+ marginBottom: 6,
+ color: "#c9d7ee",
+ fontWeight: 900,
+ textTransform: "uppercase",
+ letterSpacing: ".08em",
+ };
+ const breakdownGridStyle: React.CSSProperties = {
+ display: "grid",
+ gridTemplateColumns: "repeat(auto-fit,minmax(180px,1fr))",
+ gap: 6,
+ };
+ const assessmentCardStyle: React.CSSProperties = {
+ ...panelStyle,
+ border: "1px solid rgba(91,229,169,.24)",
+ background: "linear-gradient(180deg,rgba(12,25,39,.97),rgba(6,14,24,.94))",
+ display: "grid",
+ gap: 10,
+ };
+ const assessmentTopRowStyle: React.CSSProperties = {
+ display: "flex",
+ justifyContent: "space-between",
+ alignItems: "center",
+ gap: 10,
+ flexWrap: "wrap",
+ };
+ const supportInfoGridStyle: React.CSSProperties = {
+ display: "grid",
+ gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))",
+ gap: 8,
+ alignItems: "stretch",
+ };
+ const supportCardStyle: React.CSSProperties = {
+ ...narrativeCardStyle,
+ padding: 9,
+ gap: 6,
+ };
+ const evidenceMatrixGridCols =
+ "72px 240px 82px 82px 82px 82px 92px 82px 78px 72px 72px 96px 110px";
+ const evidenceMatrixCellStyle: React.CSSProperties = {
+ display: "grid",
+ gap: 4,
+ alignContent: "center",
+ justifyItems: "center",
+ color: "#e5edf8",
+ fontSize: 11,
+ minHeight: 40,
+ };
+ const evidenceMetricTrackStyle: React.CSSProperties = {
+ width: "100%",
+ height: 3,
+ borderRadius: 999,
+ background: "rgba(51,65,85,.55)",
+ overflow: "hidden",
+ };
+ const evidenceSectionStyle: React.CSSProperties = {
+ ...panelStyle,
+ overflowX: "auto",
+ display: "grid",
+ gap: 8,
+ };
+ const evidenceMatrixRowStyle = (scratched: boolean, selectedRow: boolean): React.CSSProperties => ({
+ display: "grid",
+ gridTemplateColumns: evidenceMatrixGridCols,
+ gap: 8,
+ alignItems: "center",
+ padding: "10px 12px",
+ borderRadius: 10,
+ border: scratched ? "1px solid rgba(100,116,139,.28)" : "1px solid rgba(80,120,180,.22)",
+ background: scratched
+ ? "rgba(30,41,59,.18)"
+ : selectedRow
+ ? "rgba(18,80,62,.38)"
+ : "rgba(5,12,22,.82)",
+ opacity: scratched ? 0.45 : 1,
+ filter: scratched ? "grayscale(0.9)" : undefined,
+ cursor: "pointer",
+ });
+ const selectedInsightGridStyle: React.CSSProperties = {
+ display: "grid",
+ gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))",
+ gap: 6,
+ alignItems: "stretch",
+ };
+ const runnerFactorsGridStyle: React.CSSProperties = {
+ display: "grid",
+ gridTemplateColumns: "repeat(auto-fit,minmax(120px,1fr))",
+ gap: 6,
+ alignItems: "stretch",
+ };
+ const runnerFactorCardStyle: React.CSSProperties = {
+ ...miniTileStyle,
+ minHeight: 56,
+ gap: 5,
+ };
+ const factorCoverageGridStyle: React.CSSProperties = {
+ display: "grid",
+ gridTemplateColumns: "repeat(auto-fit,minmax(170px,1fr))",
+ gap: 8,
+ alignItems: "stretch",
+ };
+ const factorCoverageTileStyle: React.CSSProperties = {
+ border: "1px solid rgba(51,65,85,.72)",
+ borderRadius: 12,
+ background: "rgba(3,11,20,.8)",
+ padding: "10px 11px",
+ display: "grid",
+ gap: 6,
+ minHeight: 96,
+ alignContent: "start",
+ };
+ const factorExplanationCellStyle: React.CSSProperties = {
+ border: "1px solid rgba(51,65,85,.68)",
+ borderRadius: 9,
+ background: "rgba(3,11,20,.74)",
+ padding: "8px 9px",
+ display: "grid",
+ gap: 3,
+ minHeight: 60,
+ alignContent: "start",
+ textAlign: "left",
+ };
+ const factorDetailGridStyle: React.CSSProperties = {
+ display: "grid",
+ gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))",
+ gap: 8,
+ alignItems: "stretch",
+ };
+ const factorDetailCardStyle: React.CSSProperties = {
+ border: "1px solid rgba(51,65,85,.72)",
+ borderRadius: 12,
+ background: "rgba(3,11,20,.8)",
+ padding: "11px 12px",
+ display: "grid",
+ gap: 8,
+ alignContent: "start",
+ minHeight: 132,
+ };
+ const advancedPanelStyle: React.CSSProperties = {
+ display: "grid",
+ gap: 8,
+ };
+ const advancedSectionStyle: React.CSSProperties = {
+ ...panelStyle,
+ display: "grid",
+ gap: 8,
+ };
+ const advancedGridStyle: React.CSSProperties = {
+ display: "grid",
+ gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))",
+ gap: 6,
+ };
+ const raceContextGridStyle: React.CSSProperties = {
+ display: "grid",
+ gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))",
+ gap: 8,
+ };
+ const topBarGridStyle: React.CSSProperties = {
+ display: "grid",
+ gridTemplateColumns: "repeat(auto-fit,minmax(132px,1fr))",
+ gap: 6,
+ };
+ const topBarCardStyle: React.CSSProperties = {
+ border: "1px solid rgba(51,65,85,.75)",
+ borderRadius: 10,
+ background: "rgba(3,11,20,.78)",
+ padding: "8px 9px",
+ display: "grid",
+ gap: 3,
+ minHeight: 54,
+ alignContent: "start",
+ };
+ const commandSummaryStyle: React.CSSProperties = {
+ color: "#dce7f7",
+ fontSize: 12.5,
+ lineHeight: 1.45,
+ maxWidth: 900,
+ };
+ const workspaceSectionStyle: React.CSSProperties = {
+ ...panelStyle,
+ display: "grid",
+ gap: 8,
+ overflowX: "auto",
+ };
+ const speedMapGridStyle: React.CSSProperties = {
+ display: "grid",
+ gridTemplateColumns: "repeat(4,minmax(0,1fr))",
+ gap: 8,
+ minWidth: 1080,
+ };
+ const speedMapLaneStyle: React.CSSProperties = {
+ border: "1px solid rgba(51,65,85,.75)",
+ borderRadius: 12,
+ background: "rgba(3,11,20,.78)",
+ padding: 10,
+ display: "grid",
+ gap: 8,
+ alignContent: "start",
+ };
+ const speedMapRunnerGridStyle: React.CSSProperties = {
+ display: "grid",
+ gap: 6,
+ alignContent: "start",
+ };
+ const speedMapVisualShellStyle: React.CSSProperties = {
+ border: "1px solid rgba(80,120,180,.24)",
+ borderRadius: 14,
+ background: "linear-gradient(180deg, rgba(8,16,30,.96), rgba(4,10,20,.9))",
+ padding: 12,
+ display: "grid",
+ gap: 10,
+ minWidth: 1080,
+ };
+ const speedMapVisualStageStyle: React.CSSProperties = {
+ position: "relative",
+ height: 360,
+ borderRadius: 14,
+ overflow: "hidden",
+ border: "1px solid rgba(80,120,180,.22)",
+ background: "linear-gradient(180deg, rgba(4,10,20,.95), rgba(10,19,34,.92))",
+ };
+ const speedMapVisualxisStyle: React.CSSProperties = {
+ display: "flex",
+ justifyContent: "space-between",
+ gap: 12,
+ alignItems: "center",
+ color: "#94a3b8",
+ fontSize: 10.5,
+ fontWeight: 800,
+ letterSpacing: ".08em",
+ textTransform: "uppercase",
+ };
+ const speedMapLegendStyle: React.CSSProperties = {
+ display: "flex",
+ flexWrap: "wrap",
+ gap: 8,
+ alignItems: "center",
+ };
+ const speedMapCardStyle: React.CSSProperties = {
+ border: "1px solid rgba(80,120,180,.22)",
+ borderRadius: 10,
+ background: "rgba(5,12,22,.84)",
+ padding: "8px 9px",
+ display: "grid",
+ gap: 4,
+ };
+ const speedMapCardMetaStyle: React.CSSProperties = {
+ display: "grid",
+ gridTemplateColumns: "44px 1fr 56px 56px",
+ gap: 6,
+ alignItems: "center",
+ fontSize: 10.5,
+ };
+ const speedMapFooterStyle: React.CSSProperties = {
+ display: "flex",
+ justifyContent: "space-between",
+ alignItems: "center",
+ gap: 8,
+ color: "#94a3b8",
+ fontSize: 10,
+ lineHeight: 1.3,
+ };
+ const speedMapBarShellStyle: React.CSSProperties = {
+ border: "1px solid rgba(80,120,180,.24)",
+ borderRadius: 14,
+ background: "linear-gradient(180deg, rgba(8,16,30,.96), rgba(4,10,20,.92))",
+ padding: 10,
+ display: "grid",
+ gap: 8,
+ minWidth: 880,
+ };
+ const speedMapBarLayoutStyle: React.CSSProperties = {
+ display: "grid",
+ gridTemplateColumns: "minmax(0,1fr) minmax(320px,.92fr)",
+ gap: 8,
+ alignItems: "start",
+ };
+ const speedMapBarInfoGridCols =
+ "34px minmax(120px,1fr) 38px 74px 44px";
+ const speedMapBarInfoHeaderStyle: React.CSSProperties = {
+ display: "grid",
+ gridTemplateColumns: speedMapBarInfoGridCols,
+ gap: 6,
+ alignItems: "center",
+ color: "#94a3b8",
+ fontSize: 9.5,
+ fontWeight: 900,
+ textTransform: "uppercase",
+ letterSpacing: ".08em",
+ minHeight: 28,
+ padding: "0 2px",
+ };
+ const speedMapBarMapHeaderStyle: React.CSSProperties = {
+ display: "grid",
+ gap: 4,
+ minHeight: 28,
+ };
+ const speedMapScalexisNotesStyle: React.CSSProperties = {
+ display: "flex",
+ justifyContent: "space-between",
+ gap: 12,
+ color: "#94a3b8",
+ fontSize: 9.5,
+ fontWeight: 800,
+ letterSpacing: ".06em",
+ textTransform: "uppercase",
+ };
+ const speedMapScaleDirectionNoteStyle: React.CSSProperties = {
+ color: "#ffffff",
+ fontSize: 9.5,
+ fontWeight: 800,
+ letterSpacing: ".06em",
+ textTransform: "uppercase",
+ textAlign: "center",
+ };
+ const speedMapScaleGridStyle: React.CSSProperties = {
+ display: "grid",
+ gridTemplateColumns: "repeat(10, minmax(0,1fr))",
+ gap: 0,
+ color: "#94a3b8",
+ fontSize: 9.5,
+ fontWeight: 800,
+ textAlign: "center",
+ };
+ const speedMapBarMapCellStyle: React.CSSProperties = {
+ display: "grid",
+ alignItems: "center",
+ padding: "4px 6px",
+ borderRadius: 8,
+ border: "1px solid rgba(80,120,180,.20)",
+ background: "rgba(5,12,22,.82)",
+ minHeight: 28,
+ };
+ const speedMapBarInfoCellStyle: React.CSSProperties = {
+ display: "grid",
+ gridTemplateColumns: speedMapBarInfoGridCols,
+ gap: 6,
+ alignItems: "center",
+ padding: "4px 6px",
+ borderRadius: 8,
+ border: "1px solid rgba(80,120,180,.20)",
+ background: "rgba(5,12,22,.82)",
+ minHeight: 28,
+ };
+ const speedMapTrackStripStyle: React.CSSProperties = {
+ position: "relative",
+ height: 20,
+ borderRadius: 999,
+ overflow: "hidden",
+ border: "1px solid rgba(80,120,180,.22)",
+ background: "linear-gradient(180deg, rgba(7,16,28,.96), rgba(10,19,34,.94))",
+ };
+ const ratingsLadderGridCols = "46px 210px 58px 58px 58px 58px 58px 68px 68px 98px 72px 98px 84px";
+ const boardGridStyle: React.CSSProperties = {
+ display: "grid",
+ gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))",
+ gap: 8,
+ alignItems: "stretch",
+ };
+ const boardPanelStyle: React.CSSProperties = {
+ border: "1px solid rgba(51,65,85,.75)",
+ borderRadius: 12,
+ background: "rgba(3,11,20,.78)",
+ padding: 10,
+ display: "grid",
+ gap: 8,
+ };
+ const commandHighlightGridStyle: React.CSSProperties = {
+ display: "grid",
+ gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))",
+ gap: 8,
+ alignItems: "stretch",
+ };
+ const commandHighlightCardStyle = (tone: string, background: string): React.CSSProperties => ({
+ ...boardPanelStyle,
+ border: `1px solid ${tone}`,
+ background,
+ gap: 10,
+ });
+ const commandHighlightTopStyle: React.CSSProperties = {
+ display: "flex",
+ justifyContent: "space-between",
+ alignItems: "flex-start",
+ gap: 10,
+ };
+ const commandHighlightTitleStyle: React.CSSProperties = {
+ color: "#cbd5e1",
+ fontSize: 10.5,
+ fontWeight: 900,
+ letterSpacing: ".08em",
+ textTransform: "uppercase",
+ };
+ const commandHighlightNameStyle: React.CSSProperties = {
+ color: "#f8fafc",
+ fontSize: 18,
+ fontWeight: 950,
+ lineHeight: 1.15,
+ };
+ const commandQuickStripStyle: React.CSSProperties = {
+ display: "grid",
+ gridTemplateColumns: "repeat(auto-fit,minmax(180px,1fr))",
+ gap: 8,
+ };
+ const commandQuickItemStyle = (tone: string): React.CSSProperties => ({
+ border: `1px solid ${tone}`,
+ borderRadius: 10,
+ background: "rgba(3,11,20,.78)",
+ padding: "8px 10px",
+ display: "grid",
+ gap: 4,
+ alignContent: "start",
+ });
+ const intelligenceDotStyle = (colour: string): React.CSSProperties => ({
+ width: 8,
+ height: 8,
+ borderRadius: "50%",
+ background: colour,
+ flexShrink: 0,
+ boxShadow: `0 0 0 1px ${colour}55`,
+ });
+
+ const runnerSelectorButtonStyle = (active: boolean): React.CSSProperties => ({
+ border: active ? "1px solid #38bdf8" : "1px solid rgba(148,163,184,.22)",
+ background: active ? "rgba(14,165,233,.16)" : "rgba(2,6,23,.72)",
+ color: active ? "#e0f2fe" : "#cbd5e1",
+ padding: "8px 11px",
+ borderRadius: 8,
+ cursor: "pointer",
+ whiteSpace: "nowrap",
+ fontWeight: 850,
+ fontSize: 11,
+ letterSpacing: ".01em",
+ flexShrink: 0,
+ });
+
+ const boardPanelHeaderStyle: React.CSSProperties = {
+ display: "flex",
+ justifyContent: "space-between",
+ alignItems: "center",
+ gap: 10,
+ color: "#dbe7f3",
+ fontWeight: 900,
+ textTransform: "uppercase",
+ letterSpacing: ".08em",
+ fontSize: 11,
+ };
+ const boardPanelSubStyle: React.CSSProperties = {
+ color: "#94a3b8",
+ fontSize: 10.5,
+ fontWeight: 700,
+ textTransform: "none",
+ letterSpacing: "normal",
+ };
+ const compactBoardTableStyle: React.CSSProperties = {
+ display: "grid",
+ gap: 6,
+ };
+ const compactBoardHeaderStyle = (columns: string): React.CSSProperties => ({
+ display: "grid",
+ gridTemplateColumns: columns,
+ gap: 8,
+ paddingBottom: 6,
+ borderBottom: "1px solid rgba(51,65,85,.6)",
+ color: "#7f8ea3",
+ fontSize: 10,
+ fontWeight: 900,
+ textTransform: "uppercase",
+ letterSpacing: ".08em",
+ });
+ const compactBoardRowStyle = (columns: string): React.CSSProperties => ({
+ display: "grid",
+ gridTemplateColumns: columns,
+ gap: 8,
+ alignItems: "center",
+ padding: "6px 0",
+ borderBottom: "1px solid rgba(15,23,42,.55)",
+ color: "#e5edf8",
+ fontSize: 11,
+ });
+ const selectedWorkspaceGridStyle: React.CSSProperties = {
+ display: "grid",
+ gridTemplateColumns: "minmax(0,1.25fr) minmax(0,1fr)",
+ gap: 8,
+ alignItems: "start",
+ };
+ const selectedWorkspaceRightGridStyle: React.CSSProperties = {
+ display: "grid",
+ gap: 8,
+ };
+ const compactValueGridStyle = (columns = 4): React.CSSProperties => ({
+ display: "grid",
+ gridTemplateColumns: `repeat(${columns}, minmax(0,1fr))`,
+ gap: 6,
+ });
+ const valueTileStyle: React.CSSProperties = {
+ border: "1px solid rgba(51,65,85,.75)",
+ borderRadius: 10,
+ background: "rgba(2,8,16,.74)",
+ padding: "8px 9px",
+ display: "grid",
+ gap: 3,
+ };
+
+ const dossierSectionStyle: React.CSSProperties = {
+ border: "1px solid rgba(51,65,85,.75)",
+ borderRadius: 12,
+ background: "linear-gradient(180deg, rgba(9,15,26,.95), rgba(3,8,18,.92))",
+ padding: 12,
+ display: "grid",
+ gap: 10,
+ };
+
+ const dossierHeaderStyle: React.CSSProperties = {
+ display: "flex",
+ justifyContent: "space-between",
+ alignItems: "center",
+ gap: 12,
+ };
+
+ const dossierTitleStyle: React.CSSProperties = {
+ color: "#eaf2ff",
+ fontWeight: 1000,
+ fontSize: 14,
+ letterSpacing: ".08em",
+ textTransform: "uppercase",
+ };
+
+ const dossierSubTitleStyle: React.CSSProperties = {
+ color: "#94a3b8",
+ fontSize: 11,
+ };
+
+ const dossierMetricGridStyle: React.CSSProperties = {
+ display: "grid",
+ gridTemplateColumns: "repeat(4,minmax(0,1fr))",
+ gap: 8,
+ };
+
+ const dossierNarrativeStyle: React.CSSProperties = {
+ borderTop: "1px solid rgba(51,65,85,.5)",
+ paddingTop: 10,
+ color: "#dbe7fb",
+ fontSize: 12,
+ lineHeight: 1.6,
+ };
+ const advancedDetailsStyle: React.CSSProperties = {
+ ...panelStyle,
+ padding: 0,
+ overflow: "hidden",
+ };
+ const advancedSummaryStyle: React.CSSProperties = {
+ listStyle: "none",
+ cursor: "pointer",
+ padding: "12px 14px",
+ display: "flex",
+ justifyContent: "space-between",
+ alignItems: "center",
+ gap: 10,
+ color: "#c9d7ee",
+ fontWeight: 900,
+ textTransform: "uppercase",
+ letterSpacing: ".08em",
+ background: "rgba(7,16,29,.96)",
+ borderBottom: "1px solid rgba(51,65,85,.7)",
+ };
+ const whyRankedGridStyle: React.CSSProperties = {
+ display: "grid",
+ gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))",
+ gap: 8,
+ };
+ function renderMetricValue(value: number | null, digits = 0, signedMode = false): string {
+ if (value === null || !Number.isFinite(value)) return "-";
+ return signedMode ? signed(value, digits) : value.toFixed(digits);
+ }
+ const ratingDotColor = (value: number | null): string => {
+ if (value === null || !Number.isFinite(value)) return "#64748b";
+ if (value >= 80) return "#34d399";
+ if (value >= 70) return "#ffffff";
+ if (value >= 60) return "#eaf2ff";
+ if (value >= 50) return "#ffffff";
+ return "#f87171";
+ };
+
+ const ratingBandLabel = (value: number | null): string => {
+ if (value === null || !Number.isFinite(value)) return "No rating";
+ if (value >= 80) return "Elite";
+ if (value >= 70) return "Strong";
+ if (value >= 60) return "Competitive";
+ if (value >= 50) return "Moderate";
+ return "Weak";
+ };
+
+ const renderRatingDot = (value: number | null, label: string) => {
+ const dotColor = ratingDotColor(value);
+ return (
+ <span
+ title={`${label}: ${ratingBandLabel(value)}${value !== null && Number.isFinite(value) ? ` (${renderMetricValue(value, 1)})` : ""}`}
+ style={{
+ width: 7,
+ height: 7,
+ borderRadius: 999,
+ background: dotColor,
+ boxShadow: `0 0 8px ${dotColor}88`,
+ display: "inline-block",
+ flexShrink: 0,
+ }}
+ />
+ );
+ };
+
+ const renderRatingCell = (value: number | null, label: string) => (
+ <span style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 6, color: "#edf3fb", fontWeight: 600, fontSize: 11 }}>
+ <span>{renderMetricValue(value, 1)}</span>
+ {renderRatingDot(value, label)}
+ </span>
+ );
+ const ratingHoverCardStyle: React.CSSProperties = {
+ position: "fixed",
+ zIndex: 80,
+ width: 320,
+ maxWidth: "min(92vw, 320px)",
+ padding: 12,
+ borderRadius: 12,
+ border: "1px solid rgba(125,211,252,.28)",
+ background: "rgba(3,10,18,.97)",
+ boxShadow: "0 18px 40px rgba(2,6,23,.48)",
+ backdropFilter: "blur(10px)",
+ pointerEvents: "none",
+ display: "grid",
+ gap: 10,
+ };
+ const ratingHoverGridStyle: React.CSSProperties = {
+ display: "grid",
+ gridTemplateColumns: "repeat(2,minmax(0,1fr))",
+ gap: 8,
+ };
+ const ratingHoverTileStyle: React.CSSProperties = {
+ borderRadius: 10,
+ border: "1px solid rgba(51,65,85,.65)",
+ background: "rgba(8,15,28,.9)",
+ padding: "7px 8px",
+ display: "grid",
+ gap: 3,
+ };
+ const ratingHoverWrapStyle: React.CSSProperties = {
+ display: "inline-flex",
+ alignItems: "center",
+ justifyContent: "center",
+ width: "100%",
+ cursor: "help",
+ };
+
+ const placeRatingHoverCard = (
+ event: React.MouseEvent<HTMLElement>,
+ card: Omit<RatingHoverCard, "x" | "y">,
+ ) => {
+ const width = 320;
+ const estimatedHeight = 300;
+ const viewportWidth = typeof window !== "undefined" ? window.innerWidth : 1440;
+ const viewportHeight = typeof window !== "undefined" ? window.innerHeight : 900;
+ const margin = 18;
+ let x = event.clientX + 18;
+ let y = event.clientY + 18;
+
+ if (x + width > viewportWidth - margin) {
+ x = Math.max(margin, event.clientX - width - 18);
+ }
+ if (y + estimatedHeight > viewportHeight - margin) {
+ y = Math.max(margin, viewportHeight - estimatedHeight - margin);
+ }
+
+ setRatingHover({ ...card, x, y });
+ };
+
+ const clearRatingHover = () => setRatingHover(null);
+
+ const hoverWrap = (
+ content: React.ReactNode,
+ card: Omit<RatingHoverCard, "x" | "y"> | null,
+ onctivate?: () => void,
+ ) => {
+ if (!card && !onctivate) return content;
+ const interactive = !!onctivate;
+ return (
+ <span
+ role={interactive ? "button" : undefined}
+ tabIndex={interactive ? 0 : undefined}
+ style={{
+ ...ratingHoverWrapStyle,
+ cursor: interactive ? "pointer" : "help",
+ }}
+ onMouseEnter={(event) => {
+ if (card) placeRatingHoverCard(event, card);
+ }}
+ onMouseMove={(event) => {
+ if (card) placeRatingHoverCard(event, card);
+ }}
+ onMouseLeave={clearRatingHover}
+ onClick={(event) => {
+ if (!onctivate) return;
+ event.stopPropagation();
+ onctivate();
+ }}
+ onKeyDown={(event) => {
+ if (!onctivate) return;
+ if (event.key === "Enter" || event.key === " ") {
+ event.preventDefault();
+ event.stopPropagation();
+ onctivate();
+ }
+ }}
+ >
+ {content}
+ </span>
+ );
+ };
+
+ const buildRunHoverCard = (
+ runnerName: string,
+ run: Row | undefined,
+ title: string,
+ footer?: string,
+ ): Omit<RatingHoverCard, "x" | "y"> | null => {
+ if (!run) return null;
+
+ const figure = historyRatingValue(run);
+ const metrics: RatingHoverMetric[] = [
+ { label: "Date", value: formatHistoryDate(historyDateText(run)), tone: "#ffffff" },
+ { label: "Track", value: historyTrackText(run) },
+ { label: "Distance", value: historyDistanceText(run) },
+ { label: "Class", value: historyClassText(run) },
+ { label: "Position", value: historyFinishText(run) },
+ { label: "Figure", value: renderStaticMetricValue(figure, 1), tone: ratingDotColor(figure) },
+ { label: "SP", value: historySpText(run) },
+ {
+ label: "In-Run",
+ value: [firstText(run, ["pos_800"], ""), firstText(run, ["pos_400"], "")]
+ .filter(Boolean)
+ .map((value, index) => (index === 0 ? `800m ${value}` : `400m ${value}`))
+ .join(" | ") || "-",
+ },
+ ];
+
+ const extraLines = [
+ historyGoingText(run) !== "-" ? `Going ${historyGoingText(run)}` : "",
+ historyBarrierText(run) !== "-" ? `Barrier ${historyBarrierText(run)}` : "",
+ historyJockeyText(run) !== "-" ? `Jockey ${historyJockeyText(run)}` : "",
+ historyWeightText(run) !== "-" ? `Weight ${historyWeightText(run)}` : "",
+ historyRaceStrengthText(run) !== "-" ? `Race Strength ${historyRaceStrengthText(run)}` : "",
+ firstText(run, ["margin"], "-") !== "-" ? `Margin ${firstText(run, ["margin"], "-")}` : "",
+ ].filter(Boolean);
+
+ return {
+ title,
+ subtitle: runnerName,
+ metrics,
+ sections: extraLines.length ? [{ title: "Run Detail", lines: extraLines }] : [],
+ footer: footer || "Historical run evidence from EDGEiQ rating history.",
+ };
+ };
+
+ const buildAverageHoverCard = (
+ runnerName: string,
+ historyRows: Row[],
+ averageRating: number | null,
+ peakRatingValue: number | null,
+ ): Omit<RatingHoverCard, "x" | "y"> | null => {
+ const ratedRuns = historyRows
+ .map((row) => ({ row, rating: historyRatingValue(row) }))
+ .filter((entry): entry is { row: Row; rating: number } => entry.rating !== null && Number.isFinite(entry.rating))
+ .slice(0, 5);
+
+ if (!averageRating && !ratedRuns.length) return null;
+
+ const ratings = ratedRuns.map((entry) => entry.rating);
+ const best = ratings.length ? Math.max(...ratings) : peakRatingValue;
+ const worst = ratings.length ? Math.min(...ratings) : null;
+ const variance = ratingVariance(ratings);
+
+ return {
+ title: "verage Last 5",
+ subtitle: runnerName,
+ metrics: [
+ { label: "verage", value: renderStaticMetricValue(averageRating, 1), tone: "#f8fafc" },
+ { label: "Best", value: renderStaticMetricValue(best, 1), tone: ratingDotColor(best) },
+ { label: "Worst", value: renderStaticMetricValue(worst, 1), tone: ratingDotColor(worst) },
+ { label: "Variance", value: renderStaticMetricValue(variance, 2), tone: "#94a3b8" },
+ { label: "Runs", value: String(ratedRuns.length || 0) },
+ ],
+ sections: ratedRuns.length
+ ? [{ title: "Last five ratings", lines: ratedRuns.map((entry) => compactHistoryLine(entry.row)) }]
+ : [{ title: "Last five ratings", lines: ["Detailed run history is not available in the current form feed."] }],
+ footer: "LS / AVG5 / PEK use the EDGEiQ runner form engine and current rating history source.",
+ };
+ };
+
+ const buildPeakHoverCard = (
+ runnerName: string,
+ peakRun: Row | undefined,
+ peakRatingValue: number | null,
+ todayRatingValue: number | null,
+ lastRatingValue: number | null,
+ ): Omit<RatingHoverCard, "x" | "y"> | null => {
+ if (!peakRun && peakRatingValue === null) return null;
+ const deltaVsLast =
+ todayRatingValue !== null && lastRatingValue !== null ? todayRatingValue - lastRatingValue : null;
+ const peakProximity =
+ todayRatingValue !== null && peakRatingValue !== null && peakRatingValue > 0
+ ? (todayRatingValue / peakRatingValue) * 100
+ : null;
+
+ return {
+ title: "Peak Rating",
+ subtitle: runnerName,
+ metrics: [
+ { label: "Peak", value: renderStaticMetricValue(peakRatingValue, 1), tone: ratingDotColor(peakRatingValue) },
+ { label: "Today", value: renderStaticMetricValue(todayRatingValue, 1), tone: ratingDotColor(todayRatingValue) },
+ { label: "Delta vs LS", value: deltaVsLast === null ? "-" : signed(deltaVsLast, 1), tone: "#94a3b8" },
+ { label: "Peak %", value: peakProximity === null ? "-" : `${peakProximity.toFixed(0)}%`, tone: "#ffffff" },
+ ],
+ sections: peakRun
+ ? [{ title: "Peak run", lines: [compactHistoryLine(peakRun)] }]
+ : [{ title: "Peak run", lines: ["Peak run detail is not available in the current history feed."] }],
+ footer: "Peak proximity compares today's projected figure with the best rated historical run.",
+ };
+ };
+
+ const buildTodayProjectionHoverCard = (
+ runnerName: string,
+ todayRatingValue: number | null,
+ lastRatingValue: number | null,
+ peakRatingValue: number | null,
+ trendLabel: string,
+ ): Omit<RatingHoverCard, "x" | "y"> | null => {
+ if (todayRatingValue === null && lastRatingValue === null && peakRatingValue === null) return null;
+ const deltaVsLast =
+ todayRatingValue !== null && lastRatingValue !== null ? todayRatingValue - lastRatingValue : null;
+ const peakProximity =
+ todayRatingValue !== null && peakRatingValue !== null && peakRatingValue > 0
+ ? (todayRatingValue / peakRatingValue) * 100
+ : null;
+
+ return {
+ title: "Today Projection",
+ subtitle: runnerName,
+ metrics: [
+ { label: "Today", value: renderStaticMetricValue(todayRatingValue, 1), tone: ratingDotColor(todayRatingValue) },
+ { label: "Last Start", value: renderStaticMetricValue(lastRatingValue, 1), tone: ratingDotColor(lastRatingValue) },
+ { label: "Delta", value: deltaVsLast === null ? "-" : signed(deltaVsLast, 1), tone: "#94a3b8" },
+ { label: "Peak", value: renderStaticMetricValue(peakRatingValue, 1), tone: ratingDotColor(peakRatingValue) },
+ { label: "Peak %", value: peakProximity === null ? "-" : `${peakProximity.toFixed(0)}%`, tone: "#ffffff" },
+ { label: "Trend", value: trendLabel || "-", tone: cellTone(trendLabel || "") },
+ ],
+ sections: [
+ {
+ title: "Projection context",
+ lines: [
+ deltaVsLast === null
+ ? "No last-start comparison available."
+ : `Today's figure is ${signed(deltaVsLast, 1)} versus last start.`,
+ peakProximity === null
+ ? "Peak proximity unavailable."
+ : `Today's figure sits at ${peakProximity.toFixed(0)}% of historical peak.`,
+ ],
+ },
+ ],
+ footer: "Today uses the current EDGEiQ projected performance figure. It is a rating reference, not a wagering instruction.",
+ };
+ };
+ const resetHistoricalDrawer = () => {
+ setHistoricalDrawerOpen(false);
+ setSelectedHistoricalRun(null);
+ setHistoricalDrawerRuns([]);
+ setHistoricalDrawerSourceLabel("LST STRT");
+ setHistoricalDrawerRunnerKey("");
+ setHistoricalDrawerRunnerName("");
+ };
+
+ const openHistoricalRunDrawer = (options: {
+ runnerKey: string;
+ runnerName: string;
+ sourceLabel: string;
+ runs: Row[];
+ selectedRun?: Row;
+ }) => {
+ const seen = new Set<string>();
+ const uniqueRuns = options.runs.filter((run) => {
+ const key = historyRunKey(run);
+ if (!key || seen.has(key)) return false;
+ seen.add(key);
+ return true;
+ });
+ const fallbackRun = options.selectedRun || uniqueRuns[0];
+ if (!fallbackRun) return;
+ clearRatingHover();
+ setSelectedKey(options.runnerKey);
+ setDrawerOpen(true);
+ setRunnerSubMode("FORM");
+ setHistoricalDrawerOpen(true);
+ setHistoricalDrawerRuns(uniqueRuns.length ? uniqueRuns : [fallbackRun]);
+ setSelectedHistoricalRun(fallbackRun);
+ setHistoricalDrawerSourceLabel(options.sourceLabel);
+ setHistoricalDrawerRunnerKey(options.runnerKey);
+ setHistoricalDrawerRunnerName(options.runnerName);
+ };
+
+ useEffect(() => {
+ if (!historicalDrawerOpen || !historicalDrawerRunnerKey) return;
+ if (!selectedKey || selectedKey === historicalDrawerRunnerKey) return;
+ resetHistoricalDrawer();
+ }, [historicalDrawerOpen, historicalDrawerRunnerKey, selectedKey]);
+
+ const renderEvidenceBar = (value: number | null, maxValue: number, color: string) => {
+ if (value === null || !Number.isFinite(value)) {
+ return <div style={evidenceMetricTrackStyle}><div style={barFill(0, "#475569")} /></div>;
+ }
+ return (
+ <div style={evidenceMetricTrackStyle}>
+ <div style={barFill(performanceBarPct(value, maxValue), color)} />
+ </div>
+ );
+ };
+
+ if (loading) {
+ return <div style={pageStyle}><section style={panelStyle}>Loading Race Intelligence...</section></div>;
+ }
+
+ if (futureMeetingWithoutFields) {
+ return (
+ <div style={pageStyle}>
+ <section style={panelStyle}>
+ <div style={titleStyle}>
+ <span>Meeting Preview</span>
+ <em>{futureMeetingDayBucket}</em>
+ </div>
+
+ <div style={{ display: "grid", gap: 10 }}>
+ <div className="edgeiq-mini-note">
+ <div className="edgeiq-mini-note-label">Selected Meeting</div>
+ <div className="edgeiq-mini-note-value">{futureMeetingTrack || "Upcoming meeting"}</div>
+ <div className="edgeiq-mini-note-sub">
+ {futureMeetingDate || "Date TBC"} | {futureMeetingStatus}
+ </div>
+ </div>
+
+ <div className="edgeiq-mini-note">
+ <div className="edgeiq-mini-note-label">Intelligence Pending</div>
+ <div style={{ marginTop: 6, color: "#dbe7f3", fontSize: 13, lineHeight: 1.55 }}>
+ Fields are not available yet. EDGEiQ is monitoring this meeting and will populate race intelligence, track profile and market views automatically once runners are released.
+ </div>
+ </div>
+
+ <div style={miniGridStyle}>
+ <div style={miniTileStyle}><span style={miniLabelStyle}>Market</span><strong style={{ ...miniValueStyle, color: "#ffffff" }}>WITING FEED</strong><em style={{ color: "#94a3b8", fontSize: 10, fontStyle: "normal", lineHeight: 1.3 }}>TB prices not available yet</em></div>
+ <div style={miniTileStyle}><span style={miniLabelStyle}>Track Profile</span><strong style={{ ...miniValueStyle, color: "#ffffff" }}>PROFILE PENDING</strong><em style={{ color: "#94a3b8", fontSize: 10, fontStyle: "normal", lineHeight: 1.3 }}>Track intelligence pending</em></div>
+ <div style={miniTileStyle}><span style={miniLabelStyle}>Race Intelligence</span><strong style={{ ...miniValueStyle, color: "#34d399" }}>INTELLIGENCE PENDING</strong><em style={{ color: "#94a3b8", fontSize: 10, fontStyle: "normal", lineHeight: 1.3 }}>Race intelligence will populate automatically</em></div>
+ </div>
+ </div>
+ </section>
+ </div>
+ );
+ }
+
+ if (futureMeetingWithFields && !raceRows.length) {
+ return (
+ <div style={pageStyle}>
+ <section style={panelStyle}>
+ <div style={titleStyle}>
+ <span>Meeting Preview</span>
+ <em>{futureMeetingDayBucket}</em>
+ </div>
+
+ <div style={{ display: "grid", gap: 10 }}>
+ <div style={miniGridStyle}>
+ <div className="edgeiq-mini-note">
+ <div className="edgeiq-mini-note-label">Selected Meeting</div>
+ <div className="edgeiq-mini-note-value">{futureMeetingTrack || "Upcoming meeting"}</div>
+ <div className="edgeiq-mini-note-sub">
+ {futureMeetingDate || "Date TBC"} | {futureMeetingStatus}
+ </div>
+ </div>
+ <div className="edgeiq-mini-note">
+ <div className="edgeiq-mini-note-label">Selected Race</div>
+ <div className="edgeiq-mini-note-value">{futureMeetingSelectedRace}</div>
+ <div className="edgeiq-mini-note-sub">
+ {futureMeetingSelectedMeta || "Fields are loaded and EDGEiQ is monitoring this race."}
+ </div>
+ </div>
+ </div>
+
+ <div className="edgeiq-mini-note">
+ <div className="edgeiq-mini-note-label">Intelligence Pending</div>
+ <div style={{ marginTop: 6, color: "#dbe7f3", fontSize: 13, lineHeight: 1.55 }}>
+ Runner fields are loaded for this future race. Race intelligence, track profile and TB-linked market views will populate automatically closer to race day.
+ </div>
+ </div>
+
+ <div style={miniGridStyle}>
+ <div style={miniTileStyle}><span style={miniLabelStyle}>Market</span><strong style={{ ...miniValueStyle, color: "#ffffff" }}>WITING FEED</strong><em style={{ color: "#94a3b8", fontSize: 10, fontStyle: "normal", lineHeight: 1.3 }}>TB prices not available yet</em></div>
+ <div style={miniTileStyle}><span style={miniLabelStyle}>Track Profile</span><strong style={{ ...miniValueStyle, color: "#ffffff" }}>PROFILE PENDING</strong><em style={{ color: "#94a3b8", fontSize: 10, fontStyle: "normal", lineHeight: 1.3 }}>Track intelligence pending</em></div>
+ <div style={miniTileStyle}><span style={miniLabelStyle}>Race Intelligence</span><strong style={{ ...miniValueStyle, color: "#34d399" }}>INTELLIGENCE PENDING</strong><em style={{ color: "#94a3b8", fontSize: 10, fontStyle: "normal", lineHeight: 1.3 }}>Race intelligence will populate automatically</em></div>
+ <div style={miniTileStyle}><span style={miniLabelStyle}>Declared Field</span><strong style={{ ...miniValueStyle, color: "#e2e8f0" }}>{futureMeetingFieldCount || "FIELDS READY"}</strong><em style={{ color: "#94a3b8", fontSize: 10, fontStyle: "normal", lineHeight: 1.3 }}>{futureMeetingFieldCount ? "runners currently loaded" : "runner fields available"}</em></div>
+ </div>
+ </div>
+ </section>
+
+ {raceRows.length ? (
+ <section style={{ ...panelStyle, overflowX: "auto" }}>
+ <div style={titleStyle}>
+ <span>Declared Field</span>
+ <em>{futureMeetingFieldCount} runners loaded</em>
+ </div>
+
+ <div style={{ display: "grid", gap: 6, minWidth: 760 }}>
+ <div
+ style={{
+ display: "grid",
+ gridTemplateColumns: "55px 1.7fr 80px 160px 140px",
+ gap: 8,
+ padding: "10px 12px",
+ color: "#94a3b8",
+ fontSize: 11,
+ fontWeight: 900,
+ textTransform: "uppercase",
+ letterSpacing: ".08em",
+ borderBottom: "1px solid rgba(80,120,180,.35)",
+ }}
+ >
+ <span style={{ textAlign: "center" }}>#</span>
+ <span style={{ textAlign: "center" }}>Runner</span>
+ <span style={{ textAlign: "center" }}>Barrier</span>
+ <span style={{ textAlign: "center" }}>Jockey</span>
+ <span style={{ textAlign: "center" }}>Status</span>
+ </div>
+
+ {raceRows.map((row) => {
+ const scratched = isScratchedRunner(row);
+ return (
+ <div
+ key={`${track(row)}|${raceNo(row)}|${cleanHorse(horse(row))}`}
+ style={{
+ display: "grid",
+ gridTemplateColumns: "55px 1.7fr 80px 160px 140px",
+ gap: 8,
+ alignItems: "center",
+ padding: "11px 12px",
+ border: scratched
+ ? "1px solid rgba(100,116,139,.28)"
+ : "1px solid rgba(80,120,180,.22)",
+ borderRadius: 10,
+ background: scratched ? "rgba(30,41,59,.18)" : "rgba(5,12,22,.82)",
+ opacity: scratched ? 0.46 : 1,
+ filter: scratched ? "grayscale(0.85)" : undefined,
+ }}
+ >
+ <span style={{ textAlign: "center", color: scratched ? "#94a3b8" : "#dbeafe" }}>{saddle(row) === 999 ? "-" : saddle(row)}</span>
+ <strong style={{ color: scratched ? "#cbd5e1" : "#f4f7fb", textDecoration: scratched ? "line-through" : "none", textAlign: "center" }}>{horse(row)}</strong>
+ <span style={{ textAlign: "center", color: scratched ? "#94a3b8" : "#dbeafe" }}>{barrier(row)}</span>
+ <span style={{ textAlign: "center", color: scratched ? "#94a3b8" : "#dbeafe" }}>{firstText(row, ["jockey", "rider"], "-")}</span>
+ <span style={{ textAlign: "center", color: scratched ? "#94a3b8" : "#bbf7d0", fontWeight: 900 }}>{scratched ? "SCRATCHED" : "FIELDS READY"}</span>
+ </div>
+ );
+ })}
+ </div>
+ </section>
+ ) : null}
+ </div>
+ );
+ }
+
+ if (productView === "HOME") {
+const homeMeetingsByState = (() => {
+ const groups: Record<string, typeof productShellMeetings> = {};
+ productShellMeetings.slice(0, 18).forEach((meeting) => {
+  const rawState = String((meeting as any).state || (meeting as any).region || (meeting as any).stateCode || "VIC").toUpperCase().trim() || "VIC";
+  if (!groups[rawState]) groups[rawState] = [];
+  groups[rawState].push(meeting);
+ });
+ return Object.entries(groups).slice(0, 5);
+})();
+const todayMeetings = productShellMeetings.filter((meeting) => meeting.dayLabel === "TODAY").slice(0, 8);
+const homeDataStats = [
+ { label: "MEETINGS", value: "9,393", note: "historical meetings indexed" },
+ { label: "RACES", value: "77,732", note: "race records available" },
+ { label: "RUNS", value: "931,245", note: "runner results in warehouse" },
+ { label: "SPEED", value: "99.7%", note: "speed coverage recovered" },
+];
+const homeModules = [
+ { title: "RACE", copy: "Race intelligence, shape, standard and key context." },
+ { title: "FIELD", copy: "Runner list, weights, riders, barriers and status." },
+ { title: "PERFORMANCE", copy: "EPI, current figures, peaks, trends and heatmaps." },
+ { title: "FORM", copy: "Gear, previous runs, benchmark sectionals and profile." },
+ { title: "MAP", copy: "Barrier lanes, start matrix and race shape." },
+ { title: "LAB", copy: "Scenario modelling, price engine and research." },
+ { title: "MARKET", copy: "Firming, drifting, overlays and market interpretation." },
+ { title: "RESULTS", copy: "Results, EDGEiQ Standard and race analysis." },
+ { title: "CONDITIONS", copy: "Official rating, EDGEiQ rating, rail, weather and bias." },
+];
+const getHomeTrackMapSlug = (trackName: string) => {
+ const clean = String(trackName || "").toUpperCase().trim();
+ const aliases: Record<string, string> = {
+  "BALLARAT SYNTHETIC": "ballarat_synthetic",
+  "PAKENHAM SYNTHETIC": "pakenham_synthetic",
+  "PAKENHAM / TYNONG": "pakenham_tynong",
+  "PAKENHAM TYNONG": "pakenham_tynong",
+  "GEELONG SYNTHETIC": "geelong_synthetic",
+  "GEELONG TURF": "geelong_turf",
+  "MOONEE VALLEY": "moonee_valley",
+  "YARRA VALLEY": "yarra_valley",
+  "STONY CREEK": "stony_creek",
+  "SWAN HILL": "swan_hill",
+  "GREAT WESTERN": "great_western",
+  "MT WYCHEPROOF": "mt_wycheproof",
+  "ST ARNAUD": "st_arnaud",
+ };
+ return aliases[clean] || clean.toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "");
+};
+const openHomeModule = (title: string) => {
+ if (title === "RACE") { updateProductView("MEETINGS"); return; }
+ if (title === "FIELD") { setIntelMode("RUNNERS"); updateProductView(shellTrack && shellRaceNo ? "RCE" : "MEETINGS"); return; }
+ if (title === "PERFORMANCE") { setIntelMode("PERFORMANCE"); updateProductView(shellTrack && shellRaceNo ? "RCE" : "MEETINGS"); return; }
+ if (title === "FORM") { setIntelMode("FORM"); updateProductView(shellTrack && shellRaceNo ? "RCE" : "MEETINGS"); return; }
+ if (title === "MAP") { setIntelMode("MP"); updateProductView(shellTrack && shellRaceNo ? "RCE" : "MEETINGS"); return; }
+ if (title === "LAB") { setIntelMode("NEXUS"); updateProductView(shellTrack && shellRaceNo ? "RCE" : "MEETINGS"); return; }
+ if (title === "MARKET") { setIntelMode("DVNCED"); updateProductView(shellTrack && shellRaceNo ? "RCE" : "MEETINGS"); return; }
+ if (title === "RESULTS") { setIntelMode("RESULTS"); updateProductView(shellTrack && shellRaceNo ? "RCE" : "MEETINGS"); return; }
+ if (title === "CONDITIONS") { setIntelMode("WEATHER"); updateProductView(shellTrack && shellRaceNo ? "RCE" : "MEETINGS"); return; }
+ updateProductView("MEETINGS");
+};
+return (
+<div className="edgeiq-home-final edgeiq-product-v5">
+<header className="edgeiq-home-final-top">
+<button type="button" className="edgeiq-home-final-brand" onClick={() => updateProductView("HOME")}>
+<span className="edgeiq-home-final-mark">â™ž</span>
+<span><strong>EDGE<span>iQ</span></strong><em>ADAPTIVE RACING INTELLIGENCE</em></span>
+</button>
+<nav className="edgeiq-home-final-nav" aria-label="EDGEiQ product navigation">
+{["HOME", "MEETINGS", "RACE", "FIELD", "PERFORMANCE", "FORM", "MAP", "LAB", "STATS", "MARKET", "RESULTS", "CONDITIONS"].map((item) => (
+<button type="button" key={`home-final-nav-${item}`} className={item === "HOME" ? "is-active" : ""} onClick={() => { if (item === "HOME") updateProductView("HOME"); else if (item === "MEETINGS") updateProductView("MEETINGS"); else openHomeModule(item); }}>{item}</button>
+))}
+</nav>
+<div className="edgeiq-home-final-terminal"><span>TERMINAL</span><i /><strong>{new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}</strong></div>
+</header>
+<main className="edgeiq-home-final-shell">
+<section className="edgeiq-home-final-hero">
+<div className="edgeiq-home-final-copy">
+<span className="edgeiq-home-final-kicker">ADAPTIVE RACING INTELLIGENCE</span>
+<h1>Intelligence isn't more data.<br />It's better interpretation.</h1>
+<p>EDGEiQ exists to bridge the gap between information and intelligence. Every rating, benchmark, profile and model is built to answer one question: <strong>what does the evidence actually mean?</strong></p>
+<div className="edgeiq-home-final-cta"><button type="button" onClick={() => updateProductView("MEETINGS")}>OPEN MEETINGS</button><span>We don't tip. We interpret.</span></div>
+</div>
+<aside className="edgeiq-home-final-mission">
+<strong>MODERN RACING HAS NO SHORTAGE OF INFORMATION.</strong>
+<p>What it lacks is interpretation. EDGEiQ transforms racing data into clear, explainable intelligence for people who think for themselves.</p>
+<ul>
+<li>Evidence-based intelligence.</li><li>No tips. No bias. No agendas.</li><li>Every race. Every runner. Every detail.</li>
+</ul>
+</aside>
+</section>
+<section className="edgeiq-home-final-dataflow">
+{[["DATA", "Results, markets, sectionals, weather, gear, ratings and profiles."], ["INTERPRETATION", "Standard times, true track rating, race shape, market behaviour and context."], ["INTELLIGENCE", "Confidence, risk, probability, pricing research and decision support."]].map(([label, copy], index) => <article key={`home-dataflow-${label}`}><span>{String(index + 1).padStart(2, "0")}</span><strong>{label}</strong><p>{copy}</p></article>)}
+</section>
+<section className="edgeiq-home-final-grid">
+<div className="edgeiq-home-final-panel edgeiq-home-final-meetings">
+<div className="edgeiq-home-final-head edgeiq-home-final-meetings-head"><div><span>MEETINGS</span><em>VICTORIA</em></div><button type="button" onClick={() => updateProductView("MEETINGS")}>VIEW ALL â†’</button></div>
+{homeMeetingsByState.length ? homeMeetingsByState.map(([state, meetings]) => <div className="edgeiq-home-final-state" key={`home-state-${state}`}><h3>{state}</h3><div>{meetings.slice(0, 4).map((meeting) => <button type="button" key={`home-final-meeting-${meeting.meetingKey}`} onClick={() => openShellMeeting(meeting.meetingKey)}><div className="edgeiq-home-final-track-thumb"><img src={`/assets/tracks/thumbs/${getHomeTrackMapSlug(meeting.trackName)}.png`} alt={`${meeting.trackName} track map`} onError={(event) => { event.currentTarget.style.display = "none"; }} /></div><div className="edgeiq-home-final-meeting-copy"><strong>{meeting.trackName}</strong><span>{meeting.raceCount ? `${meeting.raceCount} races` : "Race list pending"}</span><em>First {meeting.firstRaceTime || "â€”"} Â· Last {meeting.lastRaceTime || "â€”"}</em></div></button>)}</div></div>) : <div className="edgeiq-home-final-empty">No meetings loaded for today.</div>}
+</div>
+<div className="edgeiq-home-final-panel edgeiq-home-final-modules">
+<div className="edgeiq-home-final-head"><span>WHAT EDGEiQ DOES</span></div>
+<div className="edgeiq-home-final-module-grid">{homeModules.map((module) => <button type="button" key={`home-module-${module.title}`} onClick={() => openHomeModule(module.title)}><strong>{module.title}</strong><span>{module.copy}</span></button>)}</div>
+</div>
+</section>
+<section className="edgeiq-home-final-stats">
+{homeDataStats.map((stat) => <article key={`home-stat-${stat.label}`}><span>{stat.label}</span><strong>{stat.value}</strong><em>{stat.note}</em></article>)}
+</section>
+<section className="edgeiq-home-final-bottom"><strong>Information tells you what happened.</strong><span>Intelligence explains why it matters.</span></section>
+</main>
+<footer className="edgeiq-home-final-footer">EDGEiQ â€” ADAPTIVE RACING INTELLIGENCE / NOT TIPS. NOT NOISE. JUST CONTEXT.</footer>
+</div>
+);
+}
+
+if (productView === "MEETINGS") {
+ const dayOrder = ["TODAY", "TOMORROW", "DAY+2"];
+ const displayMeetingValue = (value: unknown) => { const raw = String(value ?? "").trim(); return raw && raw !== "-" ? raw : "â€”"; };
+ const meetingRaceCountLabel = (value: unknown) => { const count = Number(value); return Number.isFinite(count) && count > 0 ? `${count} races` : "Race list pending"; };
+ const raceFieldCountLabel = (value: unknown) => { const count = Number(value); return Number.isFinite(count) && count > 0 ? `${count}` : "Fields pending"; };
+ const meetingRowsToday = productShellMeetings.filter((meeting) => meeting.dayLabel === "TODAY");
+ const meetingRowsTomorrow = productShellMeetings.filter((meeting) => meeting.dayLabel === "TOMORROW");
+ const allMeetingRows = productShellMeetings.length ? productShellMeetings : meetingRowsToday;
+ const selectedMeetingTrack = selectedShellMeeting?.trackName || "Meeting";
+ const meetingRaceRows = (meetingKey: string) => productShellRaces.filter((race) => String(race.meetingKey || "") === String(meetingKey || ""));
+ const meetingRunnerCount = (meetingKey: string) => meetingRaceRows(meetingKey).reduce((sum, race) => sum + (Number(race.fieldSize) || 0), 0);
+ const stateFromMeeting = (meeting: any) => String(meeting.state || meeting.region || meeting.stateCode || "VIC").toUpperCase().trim() || "VIC";
+ const currentState = "VIC";
+ const stateSummary = ["VIC", "NSW", "QLD", "WA", "SA", "TAS", "NT"].map((state) => ({ state, count: allMeetingRows.filter((meeting) => stateFromMeeting(meeting) === state).length }));
+ const firstRaceOfDay = productShellRaces.map((race) => String(race.raceTime || "").trim()).filter(Boolean).sort()[0] || allMeetingRows[0]?.firstRaceTime || "Pending";
+ const lastRaceOfDay = productShellRaces.map((race) => String(race.raceTime || "").trim()).filter(Boolean).sort().slice(-1)[0] || allMeetingRows[0]?.lastRaceTime || "Pending";
+ const formatMeetingDateLong = (value: string) => {
+  const parsed = value ? new Date(`${value}T12:00:00`) : null;
+  if (!parsed || Number.isNaN(parsed.getTime())) return displayMeetingValue(value);
+  return parsed.toLocaleDateString("en-AU", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+ };
+ const getMeetingSlug = (trackName: string) => {
+  const clean = String(trackName || "").toUpperCase().trim();
+  const aliases: Record<string, string> = {
+   "BALLARAT SYNTHETIC": "ballarat_synthetic",
+   "PAKENHAM SYNTHETIC": "pakenham_synthetic",
+   "PAKENHAM / TYNONG": "pakenham_tynong",
+   "PAKENHAM TYNONG": "pakenham_tynong",
+   "GEELONG SYNTHETIC": "geelong_synthetic",
+   "GEELONG TURF": "geelong_turf",
+   "MOONEE VALLEY": "moonee_valley",
+   "YARRA VALLEY": "yarra_valley",
+   "STONY CREEK": "stony_creek",
+   "SWAN HILL": "swan_hill",
+   "GREAT WESTERN": "great_western",
+   "MT WYCHEPROOF": "mt_wycheproof",
+   "ST ARNAUD": "st_arnaud",
+  };
+  return aliases[clean] || clean.toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "");
+ };
+ const renderMeetingMap = (meeting: typeof productShellMeetings[number] | null) => {
+  const slug = getMeetingSlug(meeting?.trackName || "");
+  const source = meeting?.mapAvailable && meeting.mapFile ? meeting.mapFile : `/assets/tracks/thumbs/${slug}.png`;
+  return <div className="edgeiq-meetings-pro-map-thumb"><img src={source} alt={`${meeting?.trackName || "Track"} track map`} loading="lazy" onError={(event) => { event.currentTarget.style.display = "none"; }} /></div>;
+ };
+ const meetingsTopbar = (
+  <div className="edgeiq-home-final-top edgeiq-meetings-pro-top">
+   <button type="button" className="edgeiq-home-final-brand" onClick={() => updateProductView("HOME")}>
+    <span className="edgeiq-home-final-mark">â™ž</span>
+    <span><strong>EDGE<span>iQ</span></strong><em>ADAPTIVE RACING INTELLIGENCE</em></span>
+   </button>
+   <nav className="edgeiq-home-final-nav" aria-label="Meetings navigation">
+    {["HOME", "MEETINGS", "RACE", "FIELD", "PERFORMANCE", "FORM", "MAP", "LAB", "STATS", "MARKET", "RESULTS", "CONDITIONS"].map((item) => (
+     <button key={`meetings-pro-nav-${item}`} type="button" className={item === "MEETINGS" ? "is-active" : ""} disabled={item !== "HOME" && item !== "MEETINGS" && (!shellTrack || !shellRaceNo)} onClick={() => { if (item === "HOME") updateProductView("HOME"); else if (item === "MEETINGS") updateProductView("MEETINGS"); else { const tab = intelModeTabs.find((entry) => entry.label === item); if (tab) setIntelMode(tab.mode); updateProductView("RCE"); } }}>{item}</button>
+    ))}
+   </nav>
+   <div className="edgeiq-home-final-terminal"><span>TERMINAL</span><i /><strong>{new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}</strong></div>
+  </div>
+ );
+ const meetingsDateLabel = formatMeetingDateLong(allMeetingRows[0]?.meetingDate || new Date().toISOString().slice(0, 10));
+ const todayStats = [
+  ["Meetings", String(allMeetingRows.length || 0)],
+  ["Races", String(productShellRaces.length || 0)],
+  ["Runners", String(runnerRows.length || 0)],
+  ["First Race", firstRaceOfDay],
+  ["Last Race", lastRaceOfDay],
+ ];
+ if (selectedShellMeeting) {
+  const meetingFacts = [
+   ["Track", displayMeetingValue(selectedShellMeeting.trackConditionLatest)],
+   ["Rail", displayMeetingValue(selectedShellMeeting.railPositionLatest)],
+   ["Weather", displayMeetingValue(selectedShellMeeting.weather)],
+   ["Wind", [displayMeetingValue(selectedShellMeeting.windDirection), displayMeetingValue(selectedShellMeeting.windSpeed)].filter((v) => v !== "â€”").join(" ") || "â€”"],
+   ["Rainfall", `24h ${displayMeetingValue(selectedShellMeeting.rainfall24h)} / 7d ${displayMeetingValue(selectedShellMeeting.rainfall7d)}`],
+   ["Irrigation", `24h ${displayMeetingValue(selectedShellMeeting.irrigation24h)} / 7d ${displayMeetingValue(selectedShellMeeting.irrigation7d)}`],
+  ];
+  const selectedRows = selectedShellMeetingRaces;
+  return (
+   <div className="edgeiq-meetings-pro edgeiq-product-surface" style={pageStyle}>
+    {meetingsTopbar}
+    <div className="edgeiq-meetings-pro-shell">
+     <aside className="edgeiq-meetings-pro-sidebar">
+      <strong>{selectedMeetingTrack}</strong>
+      <span>{formatMeetingDateLong(selectedShellMeeting.meetingDate || "")}</span>
+      <em>{meetingRaceCountLabel(selectedRows.length || selectedShellMeeting.raceCount)}</em>
+      <button type="button" className="is-active" onClick={() => setShellMeetingKey("")}>â† All Meetings</button>
+      <div className="edgeiq-meetings-pro-info">
+       {meetingFacts.slice(0, 4).map(([label, value]) => <div key={`selected-meeting-side-${label}`}><span>{label}</span><b>{value}</b></div>)}
+      </div>
+      <button type="button" className="edgeiq-meetings-pro-pin">Pin Meeting</button>
+     </aside>
+     <main className="edgeiq-meetings-pro-main">
+      <section className="edgeiq-meetings-pro-hero selected">
+       <div>
+        <span>MEETING CONTROL</span>
+        <h1>{selectedMeetingTrack}</h1>
+        <p>{meetingRaceCountLabel(selectedRows.length || selectedShellMeeting.raceCount)} Â· First {displayMeetingValue(selectedShellMeeting.firstRaceTime)} Â· Last {displayMeetingValue(selectedShellMeeting.lastRaceTime)}</p>
+       </div>
+       <div className="edgeiq-meetings-pro-hero-map">{renderMeetingMap(selectedShellMeeting)}</div>
+      </section>
+      <section className="edgeiq-meetings-pro-selected-grid">
+       <div className="edgeiq-meetings-pro-card large">
+        <div className="edgeiq-meetings-pro-section-head"><span>Race List</span><strong>{meetingRaceCountLabel(selectedRows.length || selectedShellMeeting.raceCount)}</strong></div>
+        <div className="edgeiq-meetings-pro-race-table">
+         <div className="head"><span>Race</span><span>Time</span><span>Distance</span><span>Class</span><span>Field</span><span>Condition</span><span>Status</span><span /></div>
+         {selectedRows.length ? selectedRows.map((race) => <div key={`meeting-selected-race-${race.raceKey}`}><strong>R{race.raceNoValue}</strong><span>{displayMeetingValue(race.raceTime)}</span><span>{displayMeetingValue(race.distanceValue)}</span><span>{displayMeetingValue(race.raceClassValue)}</span><span>{raceFieldCountLabel(race.fieldSize)}</span><span>{displayMeetingValue(race.trackConditionValue)}</span><span>{race.fieldSize > 0 ? "Fields Ready" : "Fields Pending"}</span><button type="button" disabled={race.fieldSize <= 0} onClick={() => openShellRace(race)}>{race.fieldSize > 0 ? "Open Race" : "Pending"}</button></div>) : <p>No race rows loaded for this meeting yet.</p>}
+        </div>
+       </div>
+       <div className="edgeiq-meetings-pro-card">
+        <div className="edgeiq-meetings-pro-section-head"><span>Meeting Intelligence</span></div>
+        <div className="edgeiq-meetings-pro-facts">{meetingFacts.map(([label, value]) => <article key={`selected-meeting-fact-${label}`}><span>{label}</span><strong>{value}</strong></article>)}</div>
+       </div>
+      </section>
+     </main>
+    </div>
+    <footer className="edgeiq-home-final-footer">EDGEiQ â€” ADAPTIVE RACING INTELLIGENCE / NOT TIPS. NOT NOISE. JUST CONTEXT.</footer>
+   </div>
+  );
+ }
+ return (
+  <div className="edgeiq-meetings-pro edgeiq-product-surface" style={pageStyle}>
+   {meetingsTopbar}
+   <div className="edgeiq-meetings-pro-shell">
+    <aside className="edgeiq-meetings-pro-sidebar">
+     <strong>MEETINGS</strong>
+     <span>Racing Calendar</span>
+     <p>Select a meeting to explore races, fields, performance and intelligence.</p>
+     {["Today", "Tomorrow", "Day +2", "All Calendar", "Custom Filter"].map((label, index) => <button type="button" className={index === 0 ? "is-active" : ""} key={`meetings-pro-filter-${label}`}>{label}</button>)}
+     <b>Filter by State</b>
+     {stateSummary.map(({ state, count }) => <em key={`meetings-pro-state-${state}`}><span>{state === "VIC" ? "Victoria" : state}</span><i>{count || "â€”"}</i></em>)}
+     <button type="button" className="edgeiq-meetings-pro-data">Data Info</button>
+    </aside>
+    <main className="edgeiq-meetings-pro-main">
+     <section className="edgeiq-meetings-pro-titlebar">
+      <div><span>MEETINGS</span><h1>Today's Meetings</h1><p>{meetingsDateLabel}</p></div>
+      <div className="edgeiq-meetings-pro-actions"><button type="button">View Full Calendar</button><button type="button">â€¹</button><button type="button">â€º</button></div>
+     </section>
+     <section className="edgeiq-meetings-pro-stats">{todayStats.map(([label, value]) => <article key={`meetings-pro-stat-${label}`}><span>{label}</span><strong>{value}</strong></article>)}</section>
+     <section className="edgeiq-meetings-pro-cards">
+      {meetingRowsToday.slice(0, 6).map((meeting) => {
+       const rows = meetingRaceRows(meeting.meetingKey);
+       const runners = meetingRunnerCount(meeting.meetingKey);
+       return <article key={`meetings-pro-card-${meeting.meetingKey}`} className={meeting.trackName.toUpperCase().includes("FLEMINGTON") ? "is-active" : ""}>
+        <div className="edgeiq-meetings-pro-card-head"><span>{stateFromMeeting(meeting)}</span><em>{meetingRaceCountLabel(meeting.raceCount)}</em></div>
+        <div className="edgeiq-meetings-pro-card-body"><div><strong>{meeting.trackName}</strong><p>{formatMeetingDateLong(meeting.meetingDate || "")}</p><small>{displayMeetingValue(meeting.trackConditionLatest)} <i /> Rail {displayMeetingValue(meeting.railPositionLatest)}</small></div>{renderMeetingMap(meeting)}</div>
+        <section><span>First Race <b>{displayMeetingValue(meeting.firstRaceTime)}</b></span><span>Last Race <b>{displayMeetingValue(meeting.lastRaceTime)}</b></span></section>
+        <section><span>Races <b>{rows.length || meeting.raceCount || "â€”"}</b></span><span>Runners <b>{runners || "â€”"}</b></span></section>
+        <div className="edgeiq-meetings-pro-track-rating"><span>EDGEiQ Track Rating</span><strong>{displayMeetingValue(meeting.trackConditionLatest)}</strong></div>
+        <button type="button" onClick={() => openShellMeeting(meeting.meetingKey)}>View Meeting â†’</button>
+       </article>;
+      })}
+     </section>
+     <section className="edgeiq-meetings-pro-lower">
+      <div className="edgeiq-meetings-pro-card large">
+       <div className="edgeiq-meetings-pro-section-head"><span>Race Calendar</span><strong>{currentState}</strong><div><button type="button" className="is-active">By Time</button><button type="button">By Track</button></div></div>
+       <div className="edgeiq-meetings-pro-calendar-table">
+        <div className="head"><span>Time</span><span>Track</span><span>Race</span><span>Distance</span><span>Class</span><span>Condition</span><span>Rail</span></div>
+        {productShellRaces.slice(0, 12).map((race) => <button type="button" key={`meetings-pro-race-${race.raceKey}`} onClick={() => openShellRace(race)}><span>{displayMeetingValue(race.raceTime)}</span><strong>{race.trackName}</strong><em>R{race.raceNoValue}</em><em>{displayMeetingValue(race.distanceValue)}</em><em>{displayMeetingValue(race.raceClassValue)}</em><b>{displayMeetingValue(race.trackConditionValue)}</b><em>{displayMeetingValue(race.railValue)}</em></button>)}
+       </div>
+      </div>
+      <div className="edgeiq-meetings-pro-card track-card">
+       <div className="edgeiq-meetings-pro-section-head"><span>Track Map</span><strong>{meetingRowsToday[0]?.trackName || "Selected Meeting"}</strong></div>
+       {renderMeetingMap(meetingRowsToday[0] || null)}
+       <p>Track information, rail context and race shape intelligence populate from the meeting feed.</p>
+       <button type="button">Track Information â†’</button>
+      </div>
+     </section>
+    </main>
+    <aside className="edgeiq-meetings-pro-right">
+     <section><strong>Meeting Summary</strong>{todayStats.map(([label, value]) => <div key={`meetings-pro-summary-${label}`}><span>{label}</span><em>{value}</em></div>)}</section>
+     <section><strong>Data Coverage</strong>{[["Racing Data", "25 Years"], ["Results Accuracy", "99.8%"], ["Speed Coverage", "99.7%"], ["Updated", "Daily"]].map(([label, value]) => <div key={`meetings-pro-data-${label}`}><span>{label}</span><em>{value}</em></div>)}</section>
+    </aside>
+   </div>
+   <footer className="edgeiq-home-final-footer">EDGEiQ â€” ADAPTIVE RACING INTELLIGENCE / NOT TIPS. NOT NOISE. JUST CONTEXT.</footer>
+  </div>
+ );
+}
+ if (!raceRows.length || !header) {
+ const emptyRaceLabel = selectedShellRace
+ ? `${selectedShellRace.trackName} R${selectedShellRace.raceNoValue}`
+ : [shellTrack || props.selectedTrack || props.currentRace?.track, selectedRaceNo ? `R${selectedRaceNo}` : ""].filter(Boolean).join(" ") || "Selected race";
+ const emptyRaceReason = selectedRaceDate
+ ? `No runner-board rows matched ${emptyRaceLabel} on ${selectedRaceDate}.`
+ : `No runner-board rows matched ${emptyRaceLabel}.`;
+  return (
+  <div style={pageStyle}>
+  <section style={panelStyle}>
+  <div style={titleStyle}>
+  <span>Race Intelligence</span>
+  <em>No runner rows available.</em>
+  </div>
+  <div style={{ color: "#94a3b8" }}>
+  {emptyRaceReason} Open a meeting/race with fields loaded, or refresh the governed runner board feed for this race.
+  </div>
+  </section>
+  </div>
+ );
+ }
+
+ const activeTabShell = (() => {
+ const fallbackRunner = selected ? `${saddle(selected.row) === 999 ? "-" : saddle(selected.row)} ${horse(selected.row)}` : "Select runner";
+ const raceMeta = [track(header) ? `${track(header)} R${raceNo(header)}` : "", distance(header), raceClass(header), `${activeRaceRows.length} runners`].filter((value) => value && value !== "-").join(" | ");
+ const map: Record<IntelMode, { kicker: string; title: string; meta: string }> = {
+ COMMND: { kicker: "RACE", title: "Race Intelligence", meta: raceMeta },
+ RUNNERS: { kicker: "FIELD", title: "Race Field", meta: raceMeta },
+ PERFORMANCE: { kicker: "PERFORMANCE", title: "EDGEiQ Performance Index", meta: raceMeta },
+ FORM: { kicker: "FORM", title: "Runner Profile", meta: `${fallbackRunner} / career and recent form` },
+ MP: { kicker: "MAP", title: "Speed Map & Race Shape", meta: raceMeta },
+ NEXUS: { kicker: "LAB", title: "Racing Research Laboratory", meta: "Research / Profile / Compare / Discover" },
+ STATS: { kicker: "STATS", title: statsMode === "TRAINERS" ? "Trainer Analytics" : "Jockey Analytics", meta: "Deep analytics and performance profiling" },
+ DVNCED: { kicker: "MARKET", title: "EDGEiQ Trading Floor", meta: "Market intelligence / Fluctuations / Value / Context" },
+ RESULTS: { kicker: "RESULTS", title: "Race Review & Intelligence", meta: "official result / sectionals / race review" },
+ TRACK: { kicker: "TRACK", title: "Track Profile", meta: `${track(header)} / ${railDisplay !== "-" ? `Rail ${railDisplay}` : trackCondition(header)}` },
+ WEATHER: { kicker: "CONDITIONS", title: "Conditions Intelligence", meta: `${track(header)} / ${trackCondition(header)} / ${distance(header)}` },
+ };
+ return map[intelMode] || map.COMMND;
+ })();
+ const activeRaceContextLine = [distance(header), raceClass(header), trackCondition(header).toUpperCase(), `${activeRaceRows.length} RUNNERS`].filter((value) => value && value !== "-").join(" | ");
+ const activeRaceStartText = firstText(header, ["race_time", "jump_time", "start_time"], text(props.currentRace?.raceTime));
+ const raceV3DisplayValue = (value: unknown) => { const raw = String(value ?? "").trim(); return raw && raw !== "-" ? raw : "â€”"; };
+ const raceV3RaceCountLabel = (value: unknown) => { const count = Number(value); return Number.isFinite(count) && count > 0 ? `${count} races` : "Race list pending"; };
+ const raceV3FieldCountLabel = (value: unknown) => { const count = Number(value); return Number.isFinite(count) && count > 0 ? `${count} runners` : "Fields pending"; };
+ const formatMeetingDateLong = (value: string) => {
+ const parsed = value ? new Date(`${value}T12:00:00`) : null;
+ if (!parsed || Number.isNaN(parsed.getTime())) return raceV3DisplayValue(value);
+ return parsed.toLocaleDateString("en-AU", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+ };
+ const switchShellRaceInPlace = (race: typeof productShellRaces[number]) => {
+ if (race.fieldSize <= 0) {
+ openShellRace(race);
+ return;
+ }
+ setShellMeetingKey(race.meetingKey);
+ setShellTrack(race.trackName);
+ setShellRaceNo(race.raceNoValue);
+ setShellRaceDate(race.meetingDate);
+ setShellRaceKey(race.raceKey);
+ setSelectedKey("");
+ updateProductView("RCE");
+ };
+ const raceRail = selectedShellMeeting && selectedShellMeetingRaces.length ? (
+ <aside className={`edgeiq-race-v3-rail ${raceRailCollapsed ? "is-collapsed" : ""}`} aria-label="Meeting race navigator">
+ <div className="edgeiq-race-v3-rail-head">
+ <strong>{selectedShellMeeting.trackName}</strong>
+ <span>{formatMeetingDateLong(selectedShellMeeting.meetingDate)}</span>
+ <em>{raceV3RaceCountLabel(selectedShellMeetingRaces.length || selectedShellMeeting.raceCount)}</em>
+ </div>
+ <button type="button" className="edgeiq-race-v3-collapse" onClick={() => setRaceRailCollapsed((value) => !value)}>
+ {raceRailCollapsed ? "Expand" : "Collapse"}
+ </button>
+ <div className="edgeiq-race-v3-race-list">
+ {selectedShellMeetingRaces.map((race) => {
+ const active = shellRaceKey ? race.raceKey === shellRaceKey : race.raceNoValue === selectedRaceNo;
+ return (
+ <button type="button" key={`race-v3-nav-${race.raceKey}`} className={active ? "is-active" : ""} disabled={race.fieldSize <= 0} onClick={() => switchShellRaceInPlace(race)}>
+ <b>{raceRailCollapsed ? race.raceNoValue : `R${race.raceNoValue}`}</b>
+ <span>{race.raceClassValue}</span>
+ <em>{race.distanceValue}</em>
+ <i className="edgeiq-race-v3-hover-card">
+ <strong>R{race.raceNoValue}</strong>
+ <span>{race.raceClassValue}</span>
+ <span>{race.distanceValue}</span>
+ <span>{raceV3FieldCountLabel(race.fieldSize)}</span>
+ <span>{activeRaceStartText ? `${activeRaceStartText} jump` : "Time TBC"}</span>
+ <span>{race.trackConditionValue}</span>
+ <span>Rail {race.railValue && race.railValue !== "-" ? race.railValue : "Pending"}</span>
+ <small>Click to view</small>
+ </i>
+ </button>
+ );
+ })}
+ </div>
+ <section className="edgeiq-race-v3-status">
+ <strong>Race Status</strong>
+ <span><i /> Upcoming</span>
+ <span><i /> In Progress</span>
+ <span><i /> Results</span>
+ <span><i /> Completed</span>
+ </section>
+ <button type="button" className="edgeiq-race-v3-pin">Pin Meeting</button>
+ <p>Updated: {new Date().toLocaleTimeString([], { hour: "numeric", minute: "2-digit", second: "2-digit" })}</p>
+ </aside>
+ ) : null;
+
+ return (
+ <div className="edgeiq-product-app edgeiq-product-race edgeiq-product-surface edgeiq-product-v4-page" style={pageStyle}>
+ <section className="edgeiq-product-v4-shell" aria-label="EDGEiQ race workspace">
+ <div className="edgeiq-home-v4-top edgeiq-product-v4-top">
+ <button type="button" className="edgeiq-home-v4-brand edgeiq-product-v4-brand edgeiq-race-v3-brand" onClick={() => updateProductView("HOME")}>
+ <span className="edgeiq-home-v4-brand-copy edgeiq-product-v4-brand-copy">
+ <strong>EDGE<span>iQ</span></strong>
+ <em>RACE INTELLIGENCE</em>
+ </span>
+ </button>
+ <button type="button" className="edgeiq-race-v3-menu" aria-label="Collapse race navigator" onClick={() => setRaceRailCollapsed((value) => !value)}>â˜°</button>
+
+ <nav className="edgeiq-home-v4-nav edgeiq-product-v4-nav" aria-label="Race navigation">
+ <button
+ type="button"
+ className="edgeiq-product-v4-nav-button"
+ onClick={() => updateProductView("HOME")}
+ >
+ HOME
+ </button>
+ <button
+ type="button"
+ className="edgeiq-product-v4-nav-button"
+ onClick={() => { setShellMeetingKey(""); updateProductView("MEETINGS"); }}
+ >
+ MEETINGS
+ </button>
+ {intelModeTabs.map((tab) => (
+ <button
+ key={`product-race-nav-${tab.mode}`}
+ type="button"
+ className={`edgeiq-product-v4-nav-button ${intelMode === tab.mode ? "is-active" : ""}`}
+ onClick={() => setIntelMode(tab.mode)}
+ >
+ {tab.label}
+ </button>
+ ))}
+ </nav>
+
+ <div className="edgeiq-home-v4-terminal edgeiq-product-v4-terminal" aria-label="Terminal status">
+ <span>TERMINAL</span>
+ <i />
+ <strong>{new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}</strong>
+ <button type="button" aria-label="Search">âŒ•</button>
+ <button type="button" aria-label="Notifications">â™§</button>
+ <button type="button" className="edgeiq-product-v4-account-chip" aria-label="Account">T</button>
+ </div>
+ </div>
+
+ <div className={`edgeiq-race-v3-layout ${raceRail ? "has-rail" : ""}`}>
+ {raceRail}
+ <main className="edgeiq-race-v3-main">
+ {intelMode !== "COMMND" ? <div className="edgeiq-race-lock-context">
+ <div>
+ <span>{activeTabShell.kicker}</span>
+ <h1>{track(header) || shellTrack} <em>â€º</em> R{raceNo(header) || selectedRaceNo}</h1>
+ <p>{raceClass(header)} <i /> {distance(header)} <i /> {activeRaceStartText || "Time TBC"}</p>
+ </div>
+ <section>
+ <span>{trackCondition(header)}</span>
+ <span>Rail {railDisplay !== "-" ? railDisplay : "Pending"}</span>
+ <span>{firstText(header, ["minutes_to_jump", "time_to_jump", "jump_countdown"], "Pending to jump")}</span>
+ </section>
+ </div> : null}
+
+ {intelMode === "COMMND" ? (() => {
+ const raceRowsForTab = activeRaceRows.filter((item) => !isScratched(item));
+ const raceFieldSize = raceRowsForTab.length || activeRaceRows.length;
+ const runnerEpiValue = (item: EnrichedRunner) => firstNum(item.ratingsHeatmap, ["runner_rating", "epi", "performance_index"]) ?? projectionRatingValue(item);
+ const projectedRating = (item: EnrichedRunner) => projectionRatingValue(item);
+ const raceStandardValue = activeRaceRows.map((item) => firstNum(item.ratingsHeatmap, ["expected_rating"])).find((value) => value !== null) ?? null;
+ const runnerRatings = activeRaceRows.map((item) => runnerEpiValue(item)).filter((value): value is number => value !== null);
+ const ratingSpread = runnerRatings.length ? Math.max(...runnerRatings) - Math.min(...runnerRatings) : null;
+ const averageRating = runnerRatings.length ? runnerRatings.reduce((sum, value) => sum + value, 0) / runnerRatings.length : null;
+ const raceShapeText = displayExpectedTempo !== "-" ? displayExpectedTempo : fallbackTempoLabel !== "-" ? fallbackTempoLabel : "Balanced";
+ const raceStrengthText = ratingSpread === null ? "Pending" : ratingSpread >= 12 ? "Deep" : ratingSpread >= 7 ? "Competitive" : "Even";
+ const raceQualityText = averageRating === null ? "Pending" : averageRating >= 82 ? "High" : averageRating >= 68 ? "Solid" : "Building";
+ const cleanWeight = (row: Row) => firstText(row, ["weight", "allocated_weight", "handicap_weight", "weight_carried", "runner_weight", "weight_kg", "wgt"], "â€”");
+ const weightValues = activeRaceRows.map((item) => num(cleanWeight(item.row))).filter((value): value is number => value !== null);
+ const weightRange = weightValues.length ? `${Math.min(...weightValues).toFixed(1)} - ${Math.max(...weightValues).toFixed(1)}kg` : "Pending";
+ const raceMapSource = activeRaceRows.map((item) => item.mapEnrichment).find(Boolean) || {};
+ const racePacePressure = firstText(raceMapSource, ["race_pressure_band_v3", "race_pressure_band_v2", "race_pressure_band_display"], raceShapeText);
+ const raceMapAdvantage = firstText(raceMapSource, ["pace_advantage_display_v3", "pace_advantage_display"], "Balanced");
+ const raceKeyRisk = firstText(raceMapSource, ["race_shape_verdict_v3", "race_shape_verdict_v2"], "");
+ const trackPlaying = firstText(trackIntel, ["track_playing", "track_pattern", "track_advantage_summary"], "Pending");
+ const trueTrackRating = firstText(trackIntel, ["edgeiq_true_track_rating", "true_track_rating", "track_rating_true"], trackCondition(header));
+ const trackLengths = firstText(trackIntel, ["lengths_faster_slower", "track_lengths_delta", "track_speed_delta"], "Pending");
+ const topRated = [...activeRaceRows].sort((a, b) => (runnerEpiValue(b) ?? -999) - (runnerEpiValue(a) ?? -999))[0];
+ const bestValue = [...activeRaceRows].filter((item) => edgePct(item.row, item.bet) !== null).sort((a, b) => (edgePct(b.row, b.bet) ?? -999) - (edgePct(a.row, a.bet) ?? -999))[0];
+ const openPriceFor = (item: EnrichedRunner) => firstNum({ ...(item.row || {}), ...(item.bet || {}) }, ["open_price", "opening_price", "display_open_price", "market_open_price"]);
+ const livePriceRows = [...activeRaceRows].filter((item) => livePrice(item.row, item.bet) !== null).sort((a, b) => (livePrice(a.row, a.bet) ?? 999) - (livePrice(b.row, b.bet) ?? 999));
+ const favourite = livePriceRows[0];
+ const secondFavourite = livePriceRows[1];
+ const priceTimestamp = firstText(header, ["price_timestamp", "market_timestamp", "last_updated", "updated_at"], "");
+ const flucFor = (item: EnrichedRunner) => {
+ const open = openPriceFor(item);
+ const current = livePrice(item.row, item.bet);
+ return open !== null && current !== null && open > 0 ? ((current - open) / open) * 100 : null;
+ };
+ const raceTopThreeRows = [...activeRaceRows].sort((a, b) => (runnerEpiValue(b) ?? -999) - (runnerEpiValue(a) ?? -999)).slice(0, 3);
+ const raceMiniMapRows = [...activeRaceRows].sort((a, b) => {
+ const roleOrder: Record<string, number> = { LEADER: 1, "ON PACE": 2, MIDFIELD: 3, BACKMARKER: 4 };
+ const aRole = roleOrder[paceMapRole(a)] || 9;
+ const bRole = roleOrder[paceMapRole(b)] || 9;
+ if (aRole !== bRole) return aRole - bRole;
+ const aBarrier = Number(barrier(a.row) || 999);
+ const bBarrier = Number(barrier(b.row) || 999);
+ return aBarrier - bBarrier;
+ }).slice(0, 12);
+ const expectedLeader = raceMiniMapRows.find((item) => paceMapRole(item) === "LEADER") || raceMiniMapRows[0];
+ const whatMatters = [
+ racePacePressure !== "-" ? `${racePacePressure} tempo expected.` : "",
+ raceMapAdvantage !== "-" ? `${raceMapAdvantage} map advantage in play.` : "",
+ trackLengths !== "Pending" ? `Track playing ${trackLengths}.` : "",
+ runnerRatings.length >= 3 ? "Two or more high-rating runners shape the race." : "",
+ bettingConfidence !== "-" ? `Market confidence ${bettingConfidence.toLowerCase()}.` : "Market confidence pending.",
+ raceKeyRisk,
+ ].filter((value) => value && value !== "-").slice(0, 5);
+ const headerCondition = trackCondition(header);
+ const headerRail = railDisplay !== "-" ? railDisplay : "Pending";
+ const selectedRaceLabel = `${track(header) || shellTrack} > R${raceNo(header) || selectedRaceNo}`;
+ const overviewCards = [
+ ["Prizemoney", firstText(header, ["prizemoney", "prize_money", "total_prizemoney"], "Pending")],
+ ["Class", raceClass(header)],
+ ["Weight Range", weightRange],
+ ["Acceptances", String(activeRaceRows.length)],
+ ["Scratchings", String(activeRaceRows.filter(isScratched).length)],
+ ];
+ return (
+ <section className="edgeiq-race-v3 edgeiq-product-section" aria-label="EDGEiQ Race Intelligence">
+ <div className="edgeiq-race-v3-header">
+ <div>
+ <h1>{selectedRaceLabel}</h1>
+ <div className="edgeiq-race-v3-meta"><span>{raceClass(header)}</span><span>{distance(header)}</span><span>{activeRaceStartText || "Time TBC"}</span></div>
+ <div className="edgeiq-race-v3-submeta"><span>{headerCondition}</span><span>Rail {headerRail}</span><span>{firstText(header, ["minutes_to_jump", "time_to_jump", "jump_countdown"], "Pending to jump")}</span></div>
+ </div>
+ <section className="edgeiq-race-v3-overview">
+ <strong>Race Overview</strong>
+ {overviewCards.map(([label, value]) => <div key={`race-v3-overview-${label}`}><span>{label}</span><em>{value && value !== "-" ? value : "Pending"}</em></div>)}
+ </section>
+ </div>
+ <div className="edgeiq-race-v3-hero-cards">
+ <article className="edgeiq-race-v3-card top-rated">
+ <span>Top Rated</span>
+ <div className="edgeiq-race-v3-runner-feature"><span className="edgeiq-field-silk" aria-label={`${topRated ? horse(topRated.row) : "Runner"} silk`}><i /></span><b>{topRated ? saddle(topRated.row) === 999 ? "-" : saddle(topRated.row) : "-"}</b><strong>{topRated ? horse(topRated.row) : "Pending"}</strong></div>
+ <div className="edgeiq-race-v3-card-pair"><em>EPI Rating <b>{topRated && runnerEpiValue(topRated) !== null ? renderMetricValue(runnerEpiValue(topRated), 1) : "Pending"}</b></em><em>Projected Rating <b>{topRated && projectedRating(topRated) !== null ? renderMetricValue(projectedRating(topRated), 1) : "Pending"}</b></em></div>
+ </article>
+ <article className="edgeiq-race-v3-card best-value">
+ <span>Best Value</span>
+ <div className="edgeiq-race-v3-runner-feature"><span className="edgeiq-field-silk" aria-label={`${bestValue ? horse(bestValue.row) : "Runner"} silk`}><i /></span><b>{bestValue ? saddle(bestValue.row) === 999 ? "-" : saddle(bestValue.row) : "-"}</b><strong>{bestValue ? horse(bestValue.row) : "Pending"}</strong></div>
+ <div className="edgeiq-race-v3-card-pair"><em>Fair Price <b>{bestValue ? money(fairPrice(bestValue.row, bestValue.bet)) : "Pending Market"}</b></em><em>Edge <b>{bestValue ? pct(edgePct(bestValue.row, bestValue.bet)) : "Pending"}</b></em></div>
+ </article>
+ <article className="edgeiq-race-v3-card">
+ <span>Track Condition</span>
+ <em>Official</em><strong>{headerCondition}</strong>
+ <em>EDGEiQ True Track Rating</em><b>{trueTrackRating}</b>
+ <small>Track playing {trackPlaying !== "Pending" ? trackPlaying : trackLengths}</small>
+ </article>
+ <article className="edgeiq-race-v3-card">
+ <span>Race Shape</span>
+ <em>Pressure</em><strong>{racePacePressure}</strong>
+ <em>Race Shape</em><b>{raceShapeText}</b>
+ <small>On-speed: {raceMapAdvantage} | Backmarkers: {raceKeyRisk || "Pending"}</small>
+ </article>
+ </div>
+ <div className="edgeiq-race-v3-mid-grid">
+ <section className="edgeiq-race-v3-panel edgeiq-race-v3-matters">
+ <strong>What Matters Today</strong>
+ {whatMatters.map((item, index) => <p key={`race-v3-matter-${index}`}><i />{item}</p>)}
+ </section>
+ <section className="edgeiq-race-v3-panel edgeiq-race-v3-speed">
+ <strong>Speed Map Preview</strong>
+ <div className="edgeiq-race-v3-speed-map">
+ <div className="edgeiq-race-v3-lanes">{["Lead","On Speed","Midfield","Back","Widest Back"].map((lane) => <span key={`race-v3-lane-${lane}`}>{lane}</span>)}</div>
+ {raceMiniMapRows.map((item) => {
+ const role = paceMapRole(item);
+ const rolePosition: Record<string, number> = { LEADER: 12, "ON PACE": 31, MIDFIELD: 50, BACKMARKER: 70 };
+ const runnerBarrier = Number(barrier(item.row) || 1);
+ const runnerNo = firstText(item.row, ["runner_number", "saddlecloth", "number", "tab_number", "runner_no", "horse_number"], "-");
+ const laneX = role === "BACKMARKER" && runnerBarrier >= Math.max(8, raceFieldSize - 1) ? 89 : rolePosition[role] || 50;
+ return <button type="button" key={`race-v3-mini-map-${runnerRowKey(item.row)}`} style={{ left: `${laneX}%`, top: `${22 + ((runnerBarrier + Number(runnerNo || 0)) % 4) * 18}%` }} onClick={() => { setSelectedKey(runnerRowKey(item.row)); setIntelMode("FORM"); }}>{runnerNo}</button>;
+ })}
+ </div>
+ <footer><span>Expected Leader: {expectedLeader ? `${saddle(expectedLeader.row) === 999 ? "-" : saddle(expectedLeader.row)}. ${horse(expectedLeader.row)}` : "Pending"}</span><span>Expected Tempo: <b>{racePacePressure}</b></span></footer>
+ </section>
+ <section className="edgeiq-race-v3-panel edgeiq-race-v3-market">
+ <strong>Quick Market Snapshot</strong>
+ <div><span>Favourite</span><em>{favourite ? `${saddle(favourite.row)}. ${horse(favourite.row)}` : "Pending Market"}</em><b>{favourite ? marketMoney(livePrice(favourite.row, favourite.bet)) : "Pending Market"}</b></div>
+ <div><span>2nd Fav</span><em>{secondFavourite ? `${saddle(secondFavourite.row)}. ${horse(secondFavourite.row)}` : "Pending Market"}</em><b>{secondFavourite ? marketMoney(livePrice(secondFavourite.row, secondFavourite.bet)) : "Pending Market"}</b></div>
+ <div><span>Best Value</span><em>{bestValue ? `${saddle(bestValue.row)}. ${horse(bestValue.row)}` : "Pending"}</em><b>{bestValue ? money(fairPrice(bestValue.row, bestValue.bet)) : "Pending Market"}</b></div>
+ <div><span>Market Confidence</span><em>{bettingConfidence !== "-" ? bettingConfidence : "Pending"}</em><b>{priceTimestamp || "Pending Market"}</b></div>
+ </section>
+ <section className="edgeiq-race-v3-panel edgeiq-race-v3-stats">
+ <strong>Key Stats At A Glance</strong>
+ {[["Race Rating", raceStandardValue === null ? "Pending" : renderMetricValue(raceStandardValue, 1)], ["Average Field Rating", averageRating === null ? "Pending" : renderMetricValue(averageRating, 1)], ["Race Quality", raceQualityText], ["Tempo Pressure", racePacePressure], ["Field Depth", raceStrengthText], ["Sectional Quality", sectionalWeaponValue(topRated) === null ? "Pending" : "High"]].map(([label, value]) => <div key={`race-v3-stat-${label}`}><span>{label}</span><em>{value}</em></div>)}
+ </section>
+ </div>
+ <section className="edgeiq-race-v3-panel edgeiq-race-v3-rankings">
+ <strong>Top 3 Rankings</strong>
+ <div className="edgeiq-race-v3-rank-row head" role="row">{["NO","SILK","RUNNER","BARRIER","JOCKEY","TRAINER","EPI","PROJECTED","FAIR PRICE","EDGE","LIVE","FLUC"].map((label) => <span key={`race-v3-rank-head-${label}`}>{label}</span>)}</div>
+ {raceTopThreeRows.map((item) => {
+ const fluc = flucFor(item);
+ return <button type="button" className="edgeiq-race-v3-rank-row" role="row" key={`race-v3-rank-${runnerRowKey(item.row)}`} onClick={() => { setSelectedKey(runnerRowKey(item.row)); setIntelMode("FORM"); }}>
+ <span>{saddle(item.row) === 999 ? "-" : saddle(item.row)}</span>
+ <span className="edgeiq-field-silk" aria-label={`${horse(item.row)} silk`}><i /></span>
+ <strong>{horse(item.row)}</strong>
+ <span>{barrier(item.row)}</span>
+ <span>{firstText(item.row, ["jockey", "jockey_name", "rider"], "-")}</span>
+ <span>{firstText(item.row, ["trainer", "trainer_name"], "-")}</span>
+ <span>{runnerEpiValue(item) === null ? "Pending" : renderMetricValue(runnerEpiValue(item), 1)}</span>
+ <span>{projectedRating(item) === null ? "Pending" : renderMetricValue(projectedRating(item), 1)}</span>
+ <span>{money(fairPrice(item.row, item.bet))}</span>
+ <span className={(edgePct(item.row, item.bet) ?? 0) > 0 ? "positive" : ""}>{edgePct(item.row, item.bet) === null ? "Pending" : pct(edgePct(item.row, item.bet))}</span>
+ <span>{marketMoney(livePrice(item.row, item.bet))}</span>
+ <span>{fluc === null ? "Pending Market" : pct(fluc)}</span>
+ </button>;
+ })}
+ <button type="button" className="edgeiq-race-v3-field-link" onClick={() => setIntelMode("RUNNERS")}>View Full Field</button>
+ </section>
+ <footer className="edgeiq-race-v3-foot">EDGEiQ Race Intelligence <span>|</span> Data is modelled and subject to change</footer>
+ </section>
+ );
+ })() : null}
+ {intelMode === "MP" ? (() => {
+ const mapSourceRow = (item: EnrichedRunner): Row => ({ ...(item.row || {}), ...(item.mapEnrichment || {}) });
+ const mapClean = (value: unknown, fallback = "-") => {
+ const raw = String(value ?? "").trim();
+ if (!raw || /^(UNKNOWN|NOT LOADED|SOURCE_MISSING|SOURCE GAP|NULL|NN|UNDEFINED|0\.0)$/i.test(raw)) return fallback;
+ return raw;
+ };
+ const mapRowsV2 = [...activeRaceRows].map((item) => {
+ const src = mapSourceRow(item);
+ const x = firstNum(src, ["map_x_pct_display_v3", "map_x_pct_display", "map_x_pct"]);
+ const y = firstNum(src, ["map_y_px_display_v3", "map_y_px_display", "map_y_px"]);
+ return {
+ item,
+ key: runnerRowKey(item.row),
+ horseName: horse(item.row),
+ shortName: shortHorseName(horse(item.row), 13),
+ saddle: mapClean(firstText(item.row, ["saddlecloth", "horse_no", "runner_no", "runner_number", "number"], saddle(item.row) === 999 ? "" : String(saddle(item.row)))),
+ barrier: mapClean(firstText(item.row, ["barrier", "draw"], barrier(item.row))),
+ runStyle: mapClean(firstText(src, ["run_style_display_v3", "run_style_display", "run_style", "speed_map_bucket"], "")),
+ earlySpeed: mapClean(firstText(src, ["early_speed_rating_display", "projected_speed_display", "early_speed", "projected_speed"], "")),
+ paceFit: mapClean(firstText(src, ["pace_fit_display", "pace_fit_band", "pace_fit"], "")),
+ settling: mapClean(firstText(src, ["settling_band_display_v3", "settling_band_display", "settling_band", "settling_position"], "")),
+ wideRisk: mapClean(firstText(src, ["wide_risk_display", "wide_risk"], "")),
+ coverRisk: mapClean(firstText(src, ["cover_risk_display", "cover_risk"], "")),
+ pressureRole: mapClean(firstText(src, ["pressure_role_display", "pressure_role"], "")),
+ lateSpeed: mapClean(firstText(src, ["late_speed_display", "late_speed"], "")),
+ confidence: mapClean(firstText(src, ["map_confidence_display_v3", "map_confidence_display", "map_confidence"], "")),
+ speedRank: mapClean(firstText(src, ["speed_rank_v3"], "")),
+ speedGap: mapClean(firstText(src, ["speed_gap_to_leader_v3"], "")),
+ relativeBand: mapClean(firstText(src, ["relative_speed_band_v3"], "")),
+ evidence: mapClean(firstText(src, ["map_evidence_display", "map_evidence"], "")),
+ lane: mapClean(firstText(src, ["map_lane_display", "map_lane"], "")),
+ zone: mapClean(firstText(src, ["map_zone_display", "map_zone"], "")),
+ jockeyName: firstText(item.row, ["jockey", "jockey_name", "rider"], "-"),
+ trainerName: firstText(item.row, ["trainer", "trainer_name"], "-"),
+ weight: firstText(item.row, ["weight", "allocated_weight", "handicap_weight", "weight_carried", "runner_weight", "weight_kg", "wgt"], "-"),
+ epiSpd: renderMetricValue(projectedSpdValue(item), 1),
+ x: x !== null ? clamp(x, 4, 96) : 74,
+ y: y !== null ? clamp(y, 8, 94) : 50,
+ selected: !!selected && runnerRowKey(item.row) === runnerRowKey(selected.row),
+ };
+ }).sort((a, b) => a.x - b.x || Number(a.barrier || 99) - Number(b.barrier || 99));
+ const mapTableRowsV2 = [...mapRowsV2].sort((a, b) => Number(a.saddle || 999) - Number(b.saddle || 999));
+ const mapLaneRowsV1 = [...mapRowsV2].sort((a, b) => {
+ const barrier = Number(a.barrier);
+ const barrierB = Number(b.barrier);
+ const valid = Number.isFinite(barrier) && barrier > 0;
+ const validB = Number.isFinite(barrierB) && barrierB > 0;
+ if (valid && validB) return barrierB - barrier;
+ if (valid) return -1;
+ if (validB) return 1;
+ return a.x - b.x;
+ });
+ const mapBarrierMax = Math.max(...mapLaneRowsV1.map((row) => Number(row.barrier)).filter((value) => Number.isFinite(value) && value > 0), activeRaceRows.length, 1);
+ const mapBarrierLaneRows = Array.from({ length: mapBarrierMax }, (_, index) => {
+ const barrierNo = mapBarrierMax - index;
+ return {
+ barrierNo,
+ runners: mapRowsV2
+ .filter((row) => Number(row.barrier) === barrierNo)
+ .sort((a, b) => a.x - b.x || Number(a.saddle || 99) - Number(b.saddle || 99)),
+ };
+ });
+ return (
+ <section className="edgeiq-map-tab edgeiq-product-section edgeiq-product-v4-panel edgeiq-map-final-lock">
+ <section className="edgeiq-map-final-visual" aria-label="Speed map and barrier stack">
+ <div className="edgeiq-map-final-track">
+ {mapBarrierLaneRows.map((lane) => (
+ <div key={`map-final-lane-${lane.barrierNo}`} className={`edgeiq-map-final-lane ${lane.runners.some((row) => row.selected) ? "is-selected" : ""}`}>
+ {lane.runners.map((row, runnerIndex) => {
+ const xPct = clamp(row.x, 7, 76);
+ const stackOffset = runnerIndex * 16;
+ return (
+ <button
+ key={`map-final-runner-${row.key}`}
+ type="button"
+ className="edgeiq-map-final-runner"
+ onClick={() => { setSelectedKey(row.key); setDrawerOpen(true); }}
+ title={`${row.horseName} | B${lane.barrierNo}`}
+ style={{ ["--map-runner-x" as string]: `${xPct}%`, ["--map-runner-offset" as string]: `${stackOffset}px` }}
+ >
+ <span className="edgeiq-map-final-speed-line" />
+ <span className="edgeiq-map-final-pill">
+ <b>{row.saddle}</b>
+ <strong>{row.shortName}</strong>
+ </span>
+ </button>
+ );
+ })}
+ </div>
+ ))}
+ </div>
+ <div className="edgeiq-map-final-axis" aria-hidden="true">
+ {Array.from({ length: mapBarrierMax }, (_, index) => mapBarrierMax - index).map((barrierNo) => <span key={`map-final-axis-${barrierNo}`}>B{barrierNo}</span>)}
+ </div>
+ <div className="edgeiq-map-final-direction">â† DIRECTION OF RACE</div>
+ </section>
+
+ <section className="edgeiq-map-final-table edgeiq-product-v4-table">
+ <div className="edgeiq-map-runner-table-head">
+ {['NO','SILK','RUNNER','BARRIER','JOCKEY','TRAINER','WEIGHT','EPI SPD'].map((label) => <span key={`map-v3-table-head-${label}`}>{label}</span>)}
+</div>
+{mapTableRowsV2.map((row) => (
+ <button className="edgeiq-map-runner-table-row" key={`map-v3-table-${row.key}`} type="button" onClick={() => { setSelectedKey(row.key); setDrawerOpen(true); }}>
+<strong>{row.saddle}</strong>
+ <span className="edgeiq-field-silk" aria-label={`${row.horseName} silk`}><i /></span>
+<strong>{row.horseName}</strong>
+<span>{row.barrier}</span>
+<span>{row.jockeyName}</span>
+<span>{row.trainerName}</span>
+<span>{row.weight}</span>
+<span>{row.epiSpd}</span>
+</button>
+ ))}
+ </section>
+ </section>
+ );
+ })() : null}
+{intelMode === "FORM" ? (() => {
+ const formSelectorRows = [...activeRaceRows].sort((a, b) => saddle(a.row) - saddle(b.row));
+ const toggleFormDossier = (item: EnrichedRunner) => {
+ const key = runnerRowKey(item.row);
+ setSelectedKey((current) => current === key ? "" : key);
+ };
+ const formSelector = (
+ <div className="edgeiq-form-runner-selector" aria-label="Runner form selector">
+ {formSelectorRows.map((item) => {
+ const key = runnerRowKey(item.row);
+ const active = selectedKey === key;
+ return (
+ <button key={`form-selector-${key}`} type="button" className={active ? "is-active" : ""} onClick={() => toggleFormDossier(item)}>
+ <span>{saddle(item.row) === 999 ? "-" : saddle(item.row)}</span>
+ <span className="edgeiq-field-silk" aria-label={`${horse(item.row)} silk`}><i /></span>
+ <strong>{horse(item.row)}</strong>
+ </button>
+ );
+ })}
+ </div>
+ );
+ if (!selectedKey || !selected) return <section className="edgeiq-form-showcase edgeiq-product-section edgeiq-product-v4-panel edgeiq-form-dossier-match edgeiq-form-selector-only"><div className="edgeiq-form-selector-state"><span>FORM</span><strong>Select Runner</strong><em>Open one runner dossier at a time.</em>{formSelector}</div></section>;
+ const formRows = selectedFormRunCards.slice(0, 5);
+ const projected = selectedTodayProjectionFigure;
+ const formNarrative = selectedFormNarrative ? selectedFormNarrative.split(/(?<=[.!?])\s+/).slice(0, 1).join(" ") : "";
+ const fieldLimit = Math.max(activeRaceRows.length, 1);
+ const cleanRunText = (value: unknown) => {
+ const raw = String(value ?? "").trim();
+ if (!raw || /^(UNKNOWN|NOT LOADED|SOURCE GAP|SOURCE_MISSING|NULL|N\/A|NA|UNDEFINED|0\.0)$/i.test(raw)) return "-";
+ return raw;
+ };
+ const cleanPosition = (value: unknown) => {
+ const raw = cleanRunText(value);
+ const numeric = Number(String(raw).replace(/[^0-9.-]/g, ""));
+ if (Number.isFinite(numeric) && (numeric > fieldLimit || numeric > 30 || numeric <= 0)) return "-";
+ return raw;
+ };
+ const posClass = (value: string) => {
+ const numeric = Number(String(value).replace(/[^0-9.-]/g, ""));
+ if (!Number.isFinite(numeric)) return "";
+ if (numeric === 1) return "pos-good";
+ if (numeric >= 7) return "pos-bad";
+ return "";
+ };
+ const trajectoryValues = Array.from({ length: 5 }, (_, index) => {
+ const run = formRows[4 - index];
+ return { label: `L${5 - index}`, value: run ? run.rating : null };
+ });
+ const formHeatClass = (value: number | null) => {
+ if (value === null) return "epi-heat-cell epi-heat-missing";
+ const scoreBand = value >= 80 ? "epi-heat-elite" : value >= 70 ? "epi-heat-strong" : value >= 60 ? "epi-heat-positive" : value >= 50 ? "epi-heat-neutral" : value >= 40 ? "epi-heat-risk" : "epi-heat-poor";
+ return `epi-heat-cell ${scoreBand}`;
+ };
+ const historyRowsForProfile = selected.runnerHistory || [];
+ const profileRowsFor = (title: string, getter: (row: Row) => string) => {
+ const buckets = new Map<string, { starts: number; wins: number; places: number; ratingTotal: number; ratingCount: number }>();
+ historyRowsForProfile.forEach((run) => {
+ const key = cleanRunText(getter(run));
+ if (key === "-") return;
+ const finish = Number(String(historyFinishText(run)).replace(/[^0-9.-]/g, ""));
+ const rating = historyRatingValue(run);
+ const bucket = buckets.get(key) || { starts: 0, wins: 0, places: 0, ratingTotal: 0, ratingCount: 0 };
+ bucket.starts += 1;
+ if (Number.isFinite(finish) && finish === 1) bucket.wins += 1;
+ if (Number.isFinite(finish) && finish > 0 && finish <= 3) bucket.places += 1;
+ if (rating !== null) {
+ bucket.ratingTotal += rating;
+ bucket.ratingCount += 1;
+ }
+ buckets.set(key, bucket);
+ });
+ return { title, rows: Array.from(buckets.entries()).sort((a, b) => b[1].starts - a[1].starts).slice(0, 4) };
+ };
+ const profileGroups = [
+ profileRowsFor("Distance", historyDistanceText),
+ profileRowsFor("Going", historyGoingText),
+ profileRowsFor("Class", historyClassText),
+ ];
+ const career = selected.runnerCareer || {};
+ const careerStarts = firstNum(career, ["career_starts", "starts"]) ?? historyRowsForProfile.length;
+ const careerWins = firstNum(career, ["career_wins", "wins"]) ?? historyRowsForProfile.filter((run) => Number(String(historyFinishText(run)).replace(/[^0-9.-]/g, "")) === 1).length;
+ const careerPlaces = firstNum(career, ["career_places", "places"]) ?? historyRowsForProfile.filter((run) => { const pos = Number(String(historyFinishText(run)).replace(/[^0-9.-]/g, "")); return Number.isFinite(pos) && pos > 0 && pos <= 3; }).length;
+ const careerWinPct = careerStarts ? (careerWins / careerStarts) * 100 : null;
+ const careerPlacePct = careerStarts ? (careerPlaces / careerStarts) * 100 : null;
+ const selectedRunnerToken = cleanHorse(firstText(selected.row, ["normalized_runner", "runner", "runner_name", "horse"], horse(selected.row)));
+ const dateToken = (value: unknown) => {
+ const raw = cleanRunText(value);
+ const iso = raw.match(/^(\d{4})-(\d{2})-(\d{2})/);
+ if (iso) return `${iso[1]}${iso[2]}${iso[3]}`;
+ const compact = raw.match(/^(\d{1,2})\s+([A-Za-z]{3,})\s+(\d{2,4})$/);
+ if (compact) {
+ const months: Record<string, string> = { JAN: "01", FEB: "02", MAR: "03", APR: "04", MAY: "05", JUN: "06", JUL: "07", AUG: "08", SEP: "09", SEPT: "09", OCT: "10", NOV: "11", DEC: "12" };
+ const year = compact[3].length === 2 ? `20${compact[3]}` : compact[3];
+ return `${year}${months[compact[2].slice(0, 3).toUpperCase()] || "00"}${compact[1].padStart(2, "0")}`;
+ }
+ return raw.replace(/[^0-9A-Z]/gi, "").toUpperCase();
+ };
+ const gearRowsForRunner = gearProfileRows
+ .filter((row) => cleanHorse(firstText(row, ["normalized_runner", "runner"], "")) === selectedRunnerToken)
+ .sort((a, b) => dateToken(b.race_date).localeCompare(dateToken(a.race_date)));
+ const sectionalRowsForRunner = formSectionalProfileRows
+ .filter((row) => cleanHorse(firstText(row, ["normalized_runner", "runner"], "")) === selectedRunnerToken && firstText(row, ["benchmark_mode"], "") === formBenchmarkMode)
+ .sort((a, b) => dateToken(b.race_date).localeCompare(dateToken(a.race_date)));
+ const matchHistoricalFeedRow = (rows: Row[], run: (typeof formRows)[number]) => {
+ const runDate = dateToken(run.date);
+ const runTrack = cleanTrack(run.track);
+ return rows.find((row) => dateToken(row.race_date) === runDate && (!runTrack || cleanTrack(row.track) === runTrack)) || null;
+ };
+ const gearForRun = (run: (typeof formRows)[number]) => matchHistoricalFeedRow(gearRowsForRunner, run);
+ const currentGearRow = gearRowsForRunner[0] || null;
+ const currentGear = cleanRunText(firstText(currentGearRow || undefined, ["gear_current"], ""));
+ const currentGearChange = cleanRunText(firstText(currentGearRow || undefined, ["gear_changes", "gear_added", "gear_removed"], ""));
+ const sectionalForRun = (run: (typeof formRows)[number]) => matchHistoricalFeedRow(sectionalRowsForRunner, run);
+ const leadingSectionalRow = formRows.map((run) => sectionalForRun(run)).find((row): row is Row => !!row) || sectionalRowsForRunner[0] || null;
+ const splitLabels = text(leadingSectionalRow?.split_labels).split(";").filter(Boolean);
+ const splitLengths = text(leadingSectionalRow?.split_lengths).split(";").map((value) => num(value));
+ const splitPairs = splitLabels.map((label, index) => ({ label, value: splitLengths[index] ?? null })).filter((entry) => entry.label);
+ return <section className="edgeiq-form-showcase edgeiq-product-section edgeiq-product-v4-panel edgeiq-form-showcase-v2 edgeiq-form-clean-v3 edgeiq-form-study-v2 edgeiq-form-profile-v4 edgeiq-form-dossier-match">{formSelector}<div className="edgeiq-form-study-header edgeiq-form-profile-header"><span className="edgeiq-field-silk edgeiq-form-profile-silk" aria-label={`${horse(selected.row)} silk`}><i /></span><div><span>FORM</span><strong>{saddle(selected.row) === 999 ? "-" : saddle(selected.row)} {horse(selected.row)}</strong><em>{firstText(selected.row, ["jockey", "jockey_name", "rider"], "-")} / {firstText(selected.row, ["trainer", "trainer_name"], "-")}</em></div><div className="edgeiq-form-study-inline-metrics">{[["Current EPI", projected], ["Peak", selectedBestRatingLast5Value], ["Average", selectedAVGRatingLast5Value]].map(([label, value]) => <span key={`form-study-inline-${label}`}><b>{label}</b><strong>{typeof value === "number" ? renderMetricValue(value, 1) : "â€”"}</strong></span>)}</div></div><div className="edgeiq-form-gear-bar"><span><b>Current Gear</b><strong>{currentGear === "-" ? "No gear listed" : currentGear}</strong></span><span><b>Gear Change</b><strong>{currentGearChange === "-" ? "No recorded change" : currentGearChange}</strong></span></div><section className="edgeiq-form-sectional-strip-panel"><div className="edgeiq-form-sectional-strip-head"><div><span>EDGEiQ Standardised Sectionals</span><strong>{formBenchmarkMode === "CLASS_BENCHMARK" ? "Class benchmark" : "All-classes benchmark"}</strong></div><div className="edgeiq-form-benchmark-toggle">{(["CLASS_BENCHMARK", "ALL_CLASSES_BENCHMARK"] as BenchmarkMode[]).map((mode) => <button type="button" key={`form-benchmark-${mode}`} className={formBenchmarkMode === mode ? "is-active" : ""} onClick={() => setFormBenchmarkMode(mode)}>{mode === "CLASS_BENCHMARK" ? "Class" : "All-classes"}</button>)}</div></div>{splitPairs.length ? <div className="edgeiq-form-sectional-strip">{splitPairs.map((entry) => <span key={`form-split-${entry.label}`} className={entry.value === null ? "is-missing" : entry.value < 0 ? "is-fast" : "is-neutral"}><b>{entry.label}</b><strong>{entry.value === null ? "â€”" : `${signed(entry.value, 1)}L`}</strong></span>)}</div> : <div className="edgeiq-form-sectional-empty">No benchmark-backed sectional splits available for this runner.</div>}</section><section className="edgeiq-form-last-five edgeiq-form-last-five-wide"><div className="edgeiq-form-table-title">Last Five Starts</div><div className="edgeiq-form-table edgeiq-product-v4-table"><div className="edgeiq-form-table-row head">{['Date','Track','Dist','Class','Going','Bar','Jockey','Gear','Pos','Margin','SP','Rating'].map((label) => <span key={`form-main-head-${label}`}>{label}</span>)}</div>{!formRows.length ? <div className="edgeiq-form-table-empty">No detailed performance-history lines available.</div> : formRows.map((run) => { const pos = cleanPosition(run.finishingPosition); const runGear = gearForRun(run); const gearText = cleanRunText(firstText(runGear || undefined, ["gear_changes", "gear_current", "gear_added", "gear_removed"], "")); return <div key={`form-main-row-${run.key}`} className="edgeiq-form-table-row edgeiq-form-profile-row edgeiq-form-table-row-gear"><span>{cleanRunText(run.date)}</span><span>{cleanRunText(run.track)}</span><span>{cleanRunText(run.distance)}</span><span>{cleanRunText(run.raceClass)}</span><span>{cleanRunText(run.going)}</span><span>{cleanRunText(run.barrier)}</span><span>{cleanRunText(run.jockey)}</span><span>{gearText}</span><span className={posClass(pos)}>{pos}</span><span>{cleanRunText(run.beatenMargin)}</span><span>{cleanRunText(run.sp)}</span><span>{run.rating !== null ? renderMetricValue(run.rating, 1) : "-"}</span></div>; })}</div></section><div className="edgeiq-form-trajectory-strip" aria-label="Rating progression">{trajectoryValues.map((entry) => <span key={`form-trajectory-${entry.label}`} className={formHeatClass(entry.value)}><b>{entry.label}</b><strong>{entry.value === null ? "â€”" : renderMetricValue(entry.value, 1)}</strong></span>)}</div><div className="edgeiq-form-profile-grid">{profileGroups.map((group) => <section key={`form-profile-${group.title}`} className="edgeiq-form-profile-panel"><strong>{group.title} Profile</strong><div className="edgeiq-form-profile-table edgeiq-product-v4-table"><div className="edgeiq-form-profile-table-row head"><span>{group.title}</span><span>Starts</span><span>Wins</span><span>Places</span><span>Rating</span></div>{group.rows.length ? group.rows.map(([label, bucket]) => <div className="edgeiq-form-profile-table-row" key={`profile-${group.title}-${label}`}><span>{label}</span><span>{bucket.starts}</span><span>{bucket.wins}</span><span>{bucket.places}</span><span>{bucket.ratingCount ? renderMetricValue(bucket.ratingTotal / bucket.ratingCount, 1) : "â€”"}</span></div>) : <div className="edgeiq-form-profile-empty">Profile not loaded</div>}</div></section>)}</div><section className="edgeiq-form-career-summary"><strong>Career Summary</strong><div>{[["Starts", careerStarts], ["Wins", careerWins], ["Places", careerPlaces], ["Win %", careerWinPct], ["Place %", careerPlacePct]].map(([label, value]) => <article key={`form-career-${label}`}><span>{label}</span><b>{typeof value === "number" ? (String(label).includes("%") ? `${value.toFixed(1)}%` : String(Math.trunc(value))) : "â€”"}</b></article>)}<button type="button" className="edgeiq-field-history-link" onClick={() => setFullHistoryRunner(selected)}>Full history</button></div></section>{formNarrative ? <p className="edgeiq-form-short-read">{formNarrative}</p> : null}</section>;
+ })() : null}
+ {intelMode === "RUNNERS" ? (() => {
+ const fieldRows = [...activeRaceRows].sort((a, b) => saddle(a.row) - saddle(b.row));
+ const cleanMarket = (item: EnrichedRunner) => {
+ return marketMoney(livePrice(item.row, item.bet));
+ };
+ const cleanWeight = (row: Row) => firstText(row, ["weight", "allocated_weight", "handicap_weight", "weight_carried", "runner_weight", "weight_kg", "wgt"], "â€”");
+ const runnerEpiValue = (item: EnrichedRunner) => firstNum(item.ratingsHeatmap, ["runner_rating", "epi", "performance_index"]) ?? projectionRatingValue(item);
+ const openRunnerForm = (item: EnrichedRunner) => {
+ setSelectedKey(runnerRowKey(item.row));
+ setIntelMode("FORM");
+ };
+ return (
+ <section className="edgeiq-field-tab edgeiq-product-section edgeiq-product-v4-panel edgeiq-field-lock-v1">
+ <div className="edgeiq-field-guide-table edgeiq-product-v4-table" role="table" aria-label="EDGEiQ Race Field">
+ <div className="edgeiq-field-guide-row head" role="row">{['NO','SILK','RUNNER','BAR','WGT','JOCKEY','TRAINER','EDGEiQ','MARKET','STATUS'].map((label) => <span key={`field-head-${label}`}>{label}</span>)}</div>
+ {fieldRows.map((item) => {
+ const row = item.row;
+ const rowKey = runnerRowKey(row);
+ const epi = runnerEpiValue(item);
+ const status = isScratched(item) ? "SCRATCHED" : "ACTIVE";
+ return <button key={`field-row-wrap-${rowKey}`} type="button" className={`edgeiq-field-guide-row ${isScratched(item) ? "is-scratched" : ""}`} onClick={() => openRunnerForm(item)} role="row" aria-label={`Open ${horse(row)} form profile`}><span>{saddle(row) === 999 ? "-" : saddle(row)}</span><span className="edgeiq-field-silk" aria-label={`${horse(row)} silk`}><i /></span><strong>{horse(row)}</strong><span>{barrier(row)}</span><span>{cleanWeight(row)}</span><span>{firstText(row, ["jockey", "jockey_name", "rider"], "-")}</span><span>{firstText(row, ["trainer", "trainer_name"], "-")}</span><span>{epi === null ? "â€”" : renderMetricValue(epi, 1)}</span><span>{cleanMarket(item)}</span><span className="edgeiq-field-status-text">{status}</span></button>;
+ })}
+ </div>
+ </section>
+ );
+ })() : null}
+ {intelMode === "PERFORMANCE" ? (() => {
+ const heatRows = activeRaceRows.map((item) => ({ item, heat: item.ratingsHeatmap || {} }));
+ const heatRowsWithRatings = heatRows.filter((entry) => (firstNum(entry.heat, ["runner_rating", "epi", "performance_index"]) ?? projectionRatingValue(entry.item)) !== null);
+ const expectedRaceRating = heatRows.map((entry) => firstNum(entry.heat, ["expected_rating"])).find((value) => value !== null) ?? null;
+ const currentFigureFor = (item: EnrichedRunner, heat: Row) => firstNum(heat, ["runner_rating", "epi", "performance_index"]) ?? projectionRatingValue(item);
+ const runnerPerformance = heatRows.map((entry) => currentFigureFor(entry.item, entry.heat)).filter((value): value is number => value !== null).sort((a, b) => a - b);
+ const averageFigure = runnerPerformance.length ? runnerPerformance.reduce((sum, value) => sum + value, 0) / runnerPerformance.length : null;
+ const performanceSpread = runnerPerformance.length ? Math.max(...runnerPerformance) - Math.min(...runnerPerformance) : null;
+ const topFigureEntry = heatRows.reduce<{ item: EnrichedRunner; value: number } | null>((best, entry) => {
+ const value = currentFigureFor(entry.item, entry.heat);
+ if (value === null) return best;
+ if (!best || value > best.value) return { item: entry.item, value };
+ return best;
+ }, null);
+ const epiHeatClass = (value: number | null) => {
+ if (value === null) return "edgeiq-epi-cell is-missing";
+ if (value >= 105) return "edgeiq-epi-cell is-elite";
+ if (value >= 100) return "edgeiq-epi-cell is-strong";
+ if (value >= 95) return "edgeiq-epi-cell is-positive";
+ if (value >= 90) return "edgeiq-epi-cell is-warning";
+ return "edgeiq-epi-cell is-risk";
+ };
+ const staticFigureText = (value: number | null) => value === null ? "â€”" : renderMetricValue(value, 1);
+ const historyResultAvailable = (run: Row | undefined) => !!run && historyFinishText(run) !== "-";
+ const buildPerformanceRunCard = (runnerName: string, label: string, run: Row | undefined, figure: number | null): Omit<RatingHoverCard, "x" | "y"> | null => {
+ if (!run) return null;
+ return {
+ title: `${runnerName} â€” ${label} Figure: ${staticFigureText(figure)}`,
+ metrics: [
+ { label: "Date", value: formatHistoryDate(historyDateText(run)) },
+ { label: "Track", value: historyTrackText(run) },
+ { label: "Race", value: historyRaceNoText(run) },
+ { label: "Distance", value: historyDistanceText(run) },
+ { label: "Class", value: historyClassText(run) },
+ { label: "Going", value: historyGoingText(run) },
+ { label: "Barrier", value: historyBarrierText(run) },
+ { label: "Jockey", value: historyJockeyText(run) },
+ { label: "Trainer", value: firstText(run, ["trainer", "trainer_name"], firstText(header, ["trainer", "trainer_name"], "-")) },
+ { label: "Position", value: historyFinishText(run) },
+ { label: "Margin", value: firstText(run, ["margin", "beaten_margin"], "-") },
+ { label: "SP", value: historySpText(run) },
+ { label: "EPI Figure", value: staticFigureText(figure), tone: figure !== null && figure >= 100 ? "#43efc6" : "#f4f8f8" },
+ ],
+ footer: historyResultAvailable(run) ? "Click to open this historical result in RESULTS." : "Result detail unavailable for this historical race.",
+ };
+ };
+ const openHistoricalResult = (item: EnrichedRunner, run: Row | undefined) => {
+ if (!historyResultAvailable(run)) return;
+ clearRatingHover();
+ setSelectedKey(runnerRowKey(item.row));
+ setSelectedHistoricalRun(run || null);
+ setIntelMode("RESULTS");
+ };
+ if (!heatRowsWithRatings.length) {
+ return <section className="edgeiq-ratings-tab edgeiq-performance-tab edgeiq-product-section edgeiq-product-v4-panel edgeiq-performance-rebuild-v2"><div className="edgeiq-performance-panel-head"><strong>PERFORMANCE INDEX TABLE</strong></div><div className="edgeiq-product-empty">Performance Index pending for this race.</div></section>;
+ }
+ const performanceCards = [
+ { label: "Race Standard", value: staticFigureText(expectedRaceRating), detail: "Expected Figure", visual: "spark" },
+ { label: "Top Figure", value: staticFigureText(topFigureEntry?.value ?? null), detail: topFigureEntry ? horse(topFigureEntry.item.row) : "Peak EPI in Field", visual: "trophy" },
+ { label: "Average Figure", value: staticFigureText(averageFigure), detail: "Average EPI in Field", visual: "bars" },
+ { label: "Field Spread", value: staticFigureText(performanceSpread), detail: "EPI Points", visual: "range" },
+ ];
+ return (
+ <section className="edgeiq-ratings-tab edgeiq-performance-tab edgeiq-product-section edgeiq-performance-rebuild-v2">
+ <div className="edgeiq-performance-summary-grid">
+ {performanceCards.map((card) => <article key={`performance-card-${card.label}`} className={`edgeiq-performance-summary-card visual-${card.visual}`}><span>{card.label}</span><strong>{card.value}</strong><em>{card.detail}</em><i aria-hidden="true" /></article>)}
+ </div>
+ <div className="edgeiq-performance-index-panel edgeiq-product-v4-panel">
+ <div className="edgeiq-performance-panel-head"><strong>PERFORMANCE INDEX TABLE</strong></div>
+ <div className="edgeiq-performance-index-table edgeiq-product-v4-table" role="table" aria-label="EDGEiQ Performance Index">
+ <div className="edgeiq-performance-index-row head" role="row">{['NO','SILK','HORSE','EPI','CURRENT','PEAK','AVG','LAST','L5','L4','L3','L2','L1'].map((label) => <span key={`performance-v2-head-${label}`}>{label}</span>)}</div>
+ {heatRows.map(({ item, heat }) => {
+ const current = currentFigureFor(item, heat);
+ const rated = ratedHistoryRows(item.runnerHistory || []);
+ const recent = rated.slice(0, 5);
+ const l5ToL1Runs = Array.from({ length: 5 }, (_, index) => recent[4 - index]);
+ const peak = rated.length ? Math.max(...rated.map((run) => historyRatingValue(run) ?? Number.NEGATIVE_INFINITY).filter((value) => Number.isFinite(value))) : null;
+ const avg = recent.length ? recent.reduce((sum, run) => sum + (historyRatingValue(run) ?? 0), 0) / recent.length : null;
+ const last = recent.length ? historyRatingValue(recent[0]) : firstNum(item.runnerForm, ["form_last_start_rating", "last_start_rating", "rating_1"]);
+ return <div className="edgeiq-performance-index-row" role="row" key={`performance-tab-${runnerRowKey(item.row)}`}><span>{saddle(item.row) === 999 ? "â€”" : saddle(item.row)}</span><span className="edgeiq-field-silk" aria-label={`${horse(item.row)} silk`}><i /></span><strong>{horse(item.row)}</strong><span className="edgeiq-performance-epi">{staticFigureText(current)}</span><span>{staticFigureText(current)}</span><span>{staticFigureText(peak)}</span><span>{staticFigureText(avg)}</span><span>{staticFigureText(last)}</span>{l5ToL1Runs.map((run, index) => {
+ const label = `L${5 - index}`;
+ const rating = historyRatingValue(run);
+ const card = buildPerformanceRunCard(horse(item.row), label, run, rating);
+ const canOpen = historyResultAvailable(run);
+ return <button key={`epi-${label.toLowerCase()}-${runnerRowKey(item.row)}`} type="button" className={epiHeatClass(rating)} disabled={!canOpen} onMouseEnter={(event) => { if (card) placeRatingHoverCard(event, card); }} onMouseMove={(event) => { if (card) placeRatingHoverCard(event, card); }} onMouseLeave={clearRatingHover} onClick={() => openHistoricalResult(item, run)}>{staticFigureText(rating)}</button>;
+ })}</div>;
+ })}
+ </div>
+ <div className="edgeiq-performance-table-footer">
+ <div className="edgeiq-performance-scale"><span>EPI SCALE</span><i className="is-risk">&lt; 90</i><i className="is-warning">90 - 94</i><i className="is-positive">95 - 99</i><i className="is-strong">100 - 104</i><i className="is-elite">105+</i></div>
+ <span>Click or hover a rating for race details</span>
+ <button type="button" onClick={() => setIntelMode("PERFORMANCE")}>View full performance report â†’</button>
+ </div>
+ </div>
+ </section>
+ );
+ })() : null}
+ {intelMode === "NEXUS" ? (() => {
+ const source: Row = selected?.nexusContextual || selectedConnectionSource || {};
+ const trainerName = firstText(source, ["trainer"], selected ? firstText(selected.row, ["trainer", "trainer_name"], "-") : "-");
+ const jockeyName = firstText(source, ["jockey"], selected ? firstText(selected.row, ["jockey", "jockey_name", "rider"], "-") : "-");
+ const cleanNexusValue = (value: unknown) => { const raw = text(value).trim(); return raw && raw !== "-" ? raw : "â€”"; };
+ const cleanNexusPct = (value: unknown) => {
+ const raw = text(value);
+ const valueNum = num(raw);
+ if (valueNum === null) return cleanNexusValue(raw);
+ return pct(valueNum);
+ };
+ const cleanNexusScore = (value: unknown, digits = 1) => {
+ const valueNum = num(value);
+ return valueNum === null ? cleanNexusValue(value) : valueNum.toFixed(digits);
+ };
+ const calibratedScore = cleanNexusScore(firstText(source, ["nexus_context_score_calibrated"], ""));
+ const calibratedBand = cleanNexusValue(firstText(source, ["nexus_context_band_calibrated"], ""));
+ const percentile = cleanNexusPct(firstText(source, ["nexus_context_percentile"], ""));
+ const raceRank = cleanNexusValue(firstText(source, ["nexus_context_rank_in_race"], ""));
+ const fieldRank = cleanNexusValue(firstText(source, ["nexus_context_field_rank"], ""));
+ const rawContext = cleanNexusValue(firstText(source, ["raw_nexus_context_score", "nexus_context_score"], ""));
+ const rawBand = cleanNexusValue(firstText(source, ["raw_nexus_context_band", "nexus_context_band"], ""));
+ const nexusPanels = [
+ { title: "Trainer", name: trainerName, metrics: [["25 win", cleanNexusPct(source.trainer_recent_25_win_pct)], ["50 win", cleanNexusPct(source.trainer_recent_50_win_pct)], ["100 win", cleanNexusPct(source.trainer_recent_100_win_pct)], ["Best context", cleanNexusValue(source.trainer_best_context)]] },
+ { title: "Jockey", name: jockeyName, metrics: [["25 win", cleanNexusPct(source.jockey_recent_25_win_pct)], ["50 win", cleanNexusPct(source.jockey_recent_50_win_pct)], ["100 win", cleanNexusPct(source.jockey_recent_100_win_pct)], ["Best context", cleanNexusValue(source.jockey_best_context)]] },
+ { title: "Partnership", name: cleanNexusValue(source.partnership_band), metrics: [["Score", cleanNexusScore(source.partnership_score)], ["Starts", cleanNexusValue(source.partnership_starts)], ["Wins", cleanNexusValue(source.partnership_wins)], ["ROI / A/E", `${cleanNexusValue(source.partnership_roi)} / ${cleanNexusValue(source.partnership_ae)}`]] },
+ { title: "Style Fit", name: cleanNexusValue(source.style_alignment_band), metrics: [["Score", cleanNexusScore(source.style_alignment_score)], ["Horse style", cleanNexusValue(source.horse_run_style)], ["Trainer style", cleanNexusValue(source.trainer_best_style)], ["Jockey style", cleanNexusValue(source.jockey_best_style)]] },
+ ];
+ const positives = ["top_positive_1", "top_positive_2", "top_positive_3"].map((key) => cleanNexusValue(source[key])).filter((value) => value !== "â€”");
+ const risks = ["top_risk_1", "top_risk_2", "top_risk_3"].map((key) => cleanNexusValue(source[key])).filter((value) => value !== "â€”");
+ const narrative = cleanNexusValue(firstText(source, ["nexus_summary", "connection_narrative"], selectedConnectionNarrative || "")).replace(/\bNexus\b/gi, "EDGEiQ Insight");
+ const labModules = ["TRAINERS", "JOCKEYS", "PARTNERSHIPS", "TRACKS", "DISTANCES", "BARRIERS", "RUN STYLES", "FIRST UP", "SECOND UP", "CLASS", "PRICE ENGINE"];
+ const activeLabPanel = nexusPanels.find((panel) => panel.title.toUpperCase() === labModule.replace(/S$/, "")) || nexusPanels[0];
+ const labHeroSubject = labModule === "PRICE ENGINE" ? "Price Engine Research" : labModule === "JOCKEYS" ? jockeyName : labModule === "PARTNERSHIPS" ? cleanNexusValue(source.partnership_band) : labModule === "RUN STYLES" ? cleanNexusValue(source.horse_run_style) : labModule === "TRACKS" ? track(header) : labModule === "DISTANCES" ? distance(header) : labModule === "CLASS" ? raceClass(header) : trainerName;
+ const labRaceNoToken = text(integer(selectedRaceNo) ?? selectedRaceNo);
+ const labSelectedDate = text(selectedRaceDate);
+ const labPriceMatches = labPriceEngineRows.filter((row) => cleanTrack(row.track) === selectedTrack && text(integer(row.race_no) ?? row.race_no) === labRaceNoToken && (!labSelectedDate || text(row.race_date) === labSelectedDate));
+ const fallbackPriceRaceKey = labPriceEngineRows[0] ? `${text(labPriceEngineRows[0].race_date)}|${cleanTrack(labPriceEngineRows[0].track)}|${text(integer(labPriceEngineRows[0].race_no) ?? labPriceEngineRows[0].race_no)}` : "";
+ const fallbackPriceRows = fallbackPriceRaceKey ? labPriceEngineRows.filter((row) => `${text(row.race_date)}|${cleanTrack(row.track)}|${text(integer(row.race_no) ?? row.race_no)}` === fallbackPriceRaceKey) : [];
+ const labPriceRows = (labPriceMatches.length ? labPriceMatches : fallbackPriceRows).slice(0, 16);
+ const labPriceKey = (row: Row) => `${text(row.race_date)}|${cleanTrack(row.track)}|${text(integer(row.race_no) ?? row.race_no)}|${cleanHorse(row.runner)}`;
+ const labPriceRawRows = labPriceRows.map((row) => {
+ const key = labPriceKey(row);
+ const adjustment = priceEngineAdjustments[key] ?? 0;
+ const baseRating = firstNum(row, ["base_rating", "editable_rating"]);
+ const baseProbability = firstNum(row, ["base_probability"]) ?? 0;
+ const pointToLengths = firstNum(row, ["rating_point_to_lengths"]) ?? 0.1382;
+ const rawProbability = Math.max(0.0001, baseProbability * Math.exp((adjustment * pointToLengths) / 2));
+ return { row, key, adjustment, baseRating, adjustedRating: baseRating === null ? null : baseRating + adjustment, baseProbability, rawProbability };
+ });
+ const labPriceTotal = labPriceRawRows.reduce((sum, entry) => sum + entry.rawProbability, 0);
+ const labPriceDisplayRows = labPriceRawRows.map((entry) => {
+ const adjustedProbability = labPriceTotal > 0 ? entry.rawProbability / labPriceTotal : 0;
+ return { ...entry, adjustedProbability, adjustedPrice: adjustedProbability > 0 ? 1 / adjustedProbability : null };
+ });
+ const labPriceAverageConfidence = labPriceDisplayRows.length ? labPriceDisplayRows.reduce((sum, entry) => sum + (firstNum(entry.row, ["data_confidence"]) ?? 0), 0) / labPriceDisplayRows.length : null;
+ return <section className="edgeiq-connections-tab edgeiq-lab-tab edgeiq-product-section edgeiq-product-v4-panel edgeiq-lab-v1-lock"><div className="edgeiq-tab-heading edgeiq-product-v4-section-title"><span>LAB</span><strong>Racing Research Laboratory</strong><em>Research, profile, compare and discover.</em></div><div className="edgeiq-lab-v1-layout"><aside className="edgeiq-lab-v1-modules"><strong>Research Modules</strong>{labModules.map((module) => <button type="button" className={labModule === module ? "is-active" : ""} key={`lab-module-${module}`} onClick={() => setLabModule(module)}>{module}</button>)}</aside><section className="edgeiq-lab-v1-main"><div className="edgeiq-lab-v1-subject edgeiq-lab-v1-hero"><span>{labModule}</span><strong>{labHeroSubject}</strong><em>{track(header)} / {distance(header)} / {raceClass(header)}</em></div>{labModule === "PRICE ENGINE" ? <><div className="edgeiq-lab-price-research-banner"><span>Research only</span><strong>Editable rating points do not alter production prices.</strong><em>{labPriceMatches.length ? "Current race feed" : "Fallback research race feed"} / Confidence {labPriceAverageConfidence === null ? "â€”" : pct(labPriceAverageConfidence * 100)}</em></div><div className="edgeiq-lab-price-table edgeiq-product-v4-table" role="table" aria-label="Price Engine research table"><div className="edgeiq-lab-price-row head" role="row">{['Runner','Base','Adj Pts','Adj Rating','Base Prob','Adj Prob','Base Price','Adj Price','Status'].map((label) => <span key={`lab-price-head-${label}`}>{label}</span>)}</div>{labPriceDisplayRows.length ? labPriceDisplayRows.map((entry) => <div className="edgeiq-lab-price-row" role="row" key={`lab-price-row-${entry.key}`}><strong>{firstText(entry.row, ["runner"], "â€”")}</strong><span>{entry.baseRating === null ? "â€”" : renderMetricValue(entry.baseRating, 2)}</span><input aria-label={`Adjust rating points for ${firstText(entry.row, ["runner"], "runner")}`} type="number" step="0.5" value={entry.adjustment} onChange={(event) => { const next = Number(event.currentTarget.value); setPriceEngineAdjustments((current) => ({ ...current, [entry.key]: Number.isFinite(next) ? next : 0 })); }} /><span>{entry.adjustedRating === null ? "â€”" : renderMetricValue(entry.adjustedRating, 2)}</span><span>{pct(entry.baseProbability * 100)}</span><span>{pct(entry.adjustedProbability * 100)}</span><span>{money(firstNum(entry.row, ["base_price"]))}</span><span>{money(entry.adjustedPrice)}</span><span>{firstText(entry.row, ["pricing_status"], "RESEARCH_ONLY")}</span></div>) : <div className="edgeiq-lab-price-empty">Price Engine research feed is not loaded for this race.</div>}</div></> : <><div className="edgeiq-lab-v1-metrics">{(activeLabPanel ? [activeLabPanel, ...nexusPanels.filter((panel) => panel.title !== activeLabPanel.title)] : nexusPanels).slice(0, 4).map((panel) => <article key={`lab-metric-${panel.title}`}><span>{panel.title}</span><strong>{panel.metrics[0]?.[1] || "â€”"}</strong><em>{cleanNexusValue(panel.name)}</em></article>)}</div><div className="edgeiq-lab-v1-table edgeiq-product-v4-table" role="table" aria-label="Lab research leaderboard"><div className="edgeiq-lab-v1-row head" role="row">{['Research Area','Subject','Metric 1','Metric 2','Metric 3','Context'].map((label) => <span key={`lab-research-head-${label}`}>{label}</span>)}</div>{nexusPanels.map((panel) => <div className="edgeiq-lab-v1-row" role="row" key={`lab-research-${panel.title}`}><strong>{panel.title}</strong><span>{cleanNexusValue(panel.name)}</span>{panel.metrics.slice(0, 3).map(([label, value]) => <span key={`lab-research-${panel.title}-${label}`}>{label}: {cleanNexusValue(value)}</span>)}<span>{panel.metrics[3] ? `${panel.metrics[3][0]}: ${cleanNexusValue(panel.metrics[3][1])}` : "â€”"}</span></div>)}</div></>}</section><aside className="edgeiq-lab-v1-insight"><span>EDGEiQ Insight</span><p>{labModule === "PRICE ENGINE" ? "Price Engine research lets rating-point assumptions be tested against adjusted probability and research price without writing to production pricing feeds." : narrative}</p><strong>{labModule === "PRICE ENGINE" ? "Research Guardrail" : "Saved Studies"}</strong><em>{labModule === "PRICE ENGINE" ? "Local adjustments reset with the browser session and remain research-only." : positives[0] || risks[0] || "Research context pending."}</em></aside></div></section>;
+ })() : null}
+ {intelMode === "STATS" ? (() => {
+ const entityKey = statsMode === "TRAINERS" ? "trainer" : "jockey";
+ const entityLabel = statsMode === "TRAINERS" ? "TRAINERS" : "JOCKEYS";
+ const entityDisplay = statsMode === "TRAINERS" ? "Trainer" : "Jockey";
+ const entityNameFor = (item: EnrichedRunner) => firstText(item.row, statsMode === "TRAINERS" ? ["trainer", "trainer_name"] : ["jockey", "jockey_name", "rider"], "Unknown");
+ const statsGroups = activeRaceRows.reduce<Record<string, EnrichedRunner[]>>((acc, item) => {
+ const name = entityNameFor(item);
+ const key = cleanHorse(name);
+ if (!acc[key]) acc[key] = [];
+ acc[key].push(item);
+ return acc;
+ }, {});
+ const statsGroupEntries = Object.entries(statsGroups).map(([key, rows]) => {
+ const allRuns = rows.flatMap((item) => item.runnerHistory || []);
+ const rated = allRuns.map((run) => historyRatingValue(run)).filter((value): value is number => value !== null);
+ const wins = allRuns.filter((run) => /^1(ST)?$/i.test(historyFinishText(run))).length;
+ const places = allRuns.filter((run) => {
+ const pos = integer(historyFinishText(run));
+ return pos !== null && pos <= 3;
+ }).length;
+ const starts = allRuns.length || rows.length;
+ const winRate = starts ? (wins / starts) * 100 : null;
+ const placeRate = starts ? (places / starts) * 100 : null;
+ const avgRating = rated.length ? rated.reduce((sum, value) => sum + value, 0) / rated.length : null;
+ const edgeAverage = rows.map((row) => edgePct(row.row, row.bet)).filter((value): value is number => value !== null);
+ const roi = edgeAverage.length ? edgeAverage.reduce((sum, value) => sum + value, 0) / edgeAverage.length : null;
+ return { key, name: entityNameFor(rows[0]), rows, starts, wins, places, winRate, placeRate, avgRating, roi };
+ }).sort((a, b) => (b.avgRating ?? -999) - (a.avgRating ?? -999));
+ const activeStatsEntity = statsGroupEntries[0] || null;
+ const runnerForStats = activeStatsEntity?.rows[0] || activeRaceRows[0];
+ const statRaceRows = activeStatsEntity?.rows || activeRaceRows.slice(0, 5);
+ const statsRecentCards = [
+ ["Last 10 Starts", activeStatsEntity?.wins ?? 0, activeStatsEntity?.places ?? 0, activeStatsEntity?.winRate ?? null, activeStatsEntity?.placeRate ?? null, activeStatsEntity?.roi ?? null],
+ ["Last 25 Starts", activeStatsEntity?.wins ?? 0, activeStatsEntity?.places ?? 0, activeStatsEntity?.winRate ?? null, activeStatsEntity?.placeRate ?? null, activeStatsEntity?.roi ?? null],
+ ["Last 50 Starts", activeStatsEntity?.wins ?? 0, activeStatsEntity?.places ?? 0, activeStatsEntity?.winRate ?? null, activeStatsEntity?.placeRate ?? null, activeStatsEntity?.roi ?? null],
+ ["Last 100 Starts", activeStatsEntity?.wins ?? 0, activeStatsEntity?.places ?? 0, activeStatsEntity?.winRate ?? null, activeStatsEntity?.placeRate ?? null, activeStatsEntity?.roi ?? null],
+ ];
+ const statsProfileRows = [
+ ["Flemington", activeStatsEntity?.starts ?? activeRaceRows.length, activeStatsEntity?.wins ?? 0, activeStatsEntity?.winRate ?? null, activeStatsEntity?.roi ?? null],
+ [trackCondition(header), activeStatsEntity?.starts ?? activeRaceRows.length, activeStatsEntity?.places ?? 0, activeStatsEntity?.placeRate ?? null, activeStatsEntity?.roi ?? null],
+ [distance(header), statRaceRows.length, statRaceRows.filter((item) => paceMapRole(item) === "LEADER").length, activeStatsEntity?.winRate ?? null, activeStatsEntity?.roi ?? null],
+ [raceClass(header), statRaceRows.length, statRaceRows.filter((item) => !isScratched(item)).length, activeStatsEntity?.placeRate ?? null, activeStatsEntity?.roi ?? null],
+ ];
+ const statsStyleRows = ["LEADER", "ON PACE", "MIDFIELD", "BACKMARKER"].map((style) => {
+ const count = activeRaceRows.filter((item) => paceMapRole(item) === style).length;
+ return [style, count, activeRaceRows.length ? (count / activeRaceRows.length) * 100 : null];
+ });
+ return (
+ <section className="edgeiq-stats-tab edgeiq-product-section edgeiq-stats-lock">
+ <div className="edgeiq-stats-toolbar">
+ <div><span>STATS</span><strong>{entityLabel}</strong><em>Deep analytics and performance profiling for {entityLabel.toLowerCase()}.</em></div>
+ <div className="edgeiq-stats-switch">{(["JOCKEYS", "TRAINERS"] as StatsMode[]).map((mode) => <button type="button" key={`stats-mode-${mode}`} className={statsMode === mode ? "is-active" : ""} onClick={() => setStatsMode(mode)}>{mode}</button>)}</div>
+ </div>
+ <div className="edgeiq-stats-grid">
+ <section className="edgeiq-stats-main">
+ <header className="edgeiq-stats-profile">
+ <div className="edgeiq-stats-avatar">{statsMode === "TRAINERS" ? "T" : "J"}</div>
+ <div><strong>{activeStatsEntity?.name || (statsMode === "TRAINERS" ? "Trainer Profile" : "Jockey Profile")}</strong><span>Top rated {entityDisplay.toLowerCase()}</span><em>{track(header)} / {distance(header)} / {raceClass(header)}</em></div>
+ <div className="edgeiq-stats-season">{[["Starts", activeStatsEntity?.starts ?? 0], ["Wins", activeStatsEntity?.wins ?? 0], ["Places", activeStatsEntity?.places ?? 0], ["Win %", activeStatsEntity?.winRate ?? null], ["Place %", activeStatsEntity?.placeRate ?? null], ["ROI", activeStatsEntity?.roi ?? null]].map(([label, value]) => <span key={`stats-season-${label}`}><b>{label}</b><strong>{typeof value === "number" ? (String(label).includes("%") || label === "ROI" ? pct(value) : String(value)) : "â€”"}</strong></span>)}</div>
+ </header>
+ <div className="edgeiq-stats-recent">{statsRecentCards.map(([label, wins, places, winRate, placeRate, roi]) => <article key={`stats-card-${label}`}><span>{label}</span><strong>{wins}</strong><em>Wins</em><strong>{places}</strong><em>Places</em><b>{typeof winRate === "number" ? pct(winRate) : "â€”"}</b><small>ROI {typeof roi === "number" ? pct(roi) : "â€”"}</small></article>)}</div>
+ <div className="edgeiq-stats-two">
+ <section className="edgeiq-stats-panel"><strong>Performance by {statsMode === "TRAINERS" ? "Track / Class" : "Barrier / Track"}</strong><div className="edgeiq-stats-table">{statsProfileRows.map(([label, starts, wins, winRate, roi]) => <div key={`stats-profile-${label}`}><span>{label}</span><em>{starts}</em><em>{wins}</em><b>{typeof winRate === "number" ? pct(winRate) : "â€”"}</b><b>{typeof roi === "number" ? pct(roi) : "â€”"}</b></div>)}</div></section>
+ <section className="edgeiq-stats-panel"><strong>Run Style Match-ups</strong><div className="edgeiq-stats-bars">{statsStyleRows.map(([label, count, rate]) => <div key={`stats-style-${label}`}><span>{label}</span><i><b style={{ width: `${Math.max(8, Number(rate) || 0)}%` }} /></i><em>{count}</em></div>)}</div></section>
+ </div>
+ <section className="edgeiq-stats-panel"><strong>{statsMode === "TRAINERS" ? "Upcoming Runners" : "Current Race Rides"}</strong><div className="edgeiq-stats-runners">{statRaceRows.slice(0, 8).map((item) => <div key={`stats-runner-${runnerRowKey(item.row)}`}><span>{saddle(item.row) === 999 ? "-" : saddle(item.row)}</span><strong>{horse(item.row)}</strong><em>{firstText(item.row, ["jockey", "jockey_name", "rider"], "-")}</em><em>{firstText(item.row, ["trainer", "trainer_name"], "-")}</em><b>{renderMetricValue(projectionRatingValue(item), 1)}</b></div>)}</div></section>
+ </section>
+ <aside className="edgeiq-stats-side">
+ <section><strong>{entityDisplay} Profile Summary</strong><div className="edgeiq-stats-radar"><i /></div>{[["Win Rate", activeStatsEntity?.winRate], ["Place Rate", activeStatsEntity?.placeRate], ["Consistency", activeStatsEntity?.avgRating], ["Market Perf.", activeStatsEntity?.roi], ["Overall Score", activeStatsEntity?.avgRating]].map(([label, value]) => <div key={`stats-summary-${label}`}><span>{label}</span><em>{typeof value === "number" ? (String(label).includes("Rate") || String(label).includes("Perf") ? pct(value) : renderMetricValue(value, 1)) : "â€”"}</em></div>)}</section>
+ <section><strong>Top Tracks</strong>{statsGroupEntries.slice(0, 5).map((entry) => <div key={`stats-top-${entry.key}`}><span>{entry.name}</span><i><b style={{ width: `${Math.max(10, Math.min(100, entry.avgRating ?? 0))}%` }} /></i><em>{entry.avgRating === null ? "â€”" : renderMetricValue(entry.avgRating, 1)}</em></div>)}</section>
+ <section><strong>Key Insights</strong><p>{activeStatsEntity ? `${activeStatsEntity.name} profiles strongest around ${track(header)} with ${activeStatsEntity.starts} available starts in the terminal sample.` : "Stats profile will populate when runner context is available."}</p><p>Figures are research context only and do not alter ratings or production prices.</p></section>
+ </aside>
+ </div>
+ </section>
+ );
+ })() : null}
+ {intelMode === "DVNCED" ? (() => {
+ const marketRows = activeRaceRows;
+ const priceFrom = (item: EnrichedRunner, keys: string[]) => firstNum({ ...(item.row || {}), ...(item.bet || {}) }, keys);
+ const enrichedMarketRows = marketRows.map((item) => {
+ const fair = limitedAdjustedPrice(item) ?? fairPrice(item.row, item.bet);
+ const open = priceFrom(item, ["open_price", "opening_price", "market_open", "tab_open_price", "fixed_open_price"]);
+ const current = livePrice(item.row, item.bet);
+ const fluc = open !== null && current !== null && open > 0 ? ((current - open) / open) * 100 : null;
+ const diff = edgePct(item.row, item.bet);
+ return { item, fair, open, current, fluc, diff };
+ });
+ const firmers = enrichedMarketRows.filter((row) => row.fluc !== null && row.fluc < 0);
+ const drifters = enrichedMarketRows.filter((row) => row.fluc !== null && row.fluc > 0);
+ const unchanged = enrichedMarketRows.filter((row) => row.fluc === null || row.fluc === 0);
+ const strongestEdge = [...enrichedMarketRows].filter((row) => row.diff !== null).sort((a, b) => (b.diff ?? -999) - (a.diff ?? -999))[0];
+ const biggestFirm = [...firmers].sort((a, b) => (a.fluc ?? 0) - (b.fluc ?? 0))[0];
+ const biggestDrift = [...drifters].sort((a, b) => (b.fluc ?? 0) - (a.fluc ?? 0))[0];
+ return <section className="edgeiq-market-tab edgeiq-product-section edgeiq-product-v4-panel edgeiq-market-v1-lock edgeiq-market-final-lock"><div className="edgeiq-tab-heading edgeiq-product-v4-section-title"><span>MARKET</span><strong>EDGEiQ Trading Floor</strong><em>Market intelligence, fluctuations, value and context.</em></div><div className="edgeiq-market-final-cards">{[["Largest Overlay", strongestEdge ? horse(strongestEdge.item.row) : "Pending", strongestEdge?.diff === null || !strongestEdge ? "â€”" : pct(strongestEdge.diff)], ["Biggest Firm", biggestFirm ? horse(biggestFirm.item.row) : "Pending", biggestFirm?.fluc === null || !biggestFirm ? "Pending Market" : `â†“ ${Math.abs(biggestFirm.fluc).toFixed(1)}%`], ["Biggest Drift", biggestDrift ? horse(biggestDrift.item.row) : "Pending", biggestDrift?.fluc === null || !biggestDrift ? "Pending Market" : `â†‘ ${Math.abs(biggestDrift.fluc).toFixed(1)}%`], ["Market Confidence", bettingConfidence !== "-" ? bettingConfidence : "Pending", ""]].map(([label, value, detail]) => <article key={`market-card-${label}`}><span>{label}</span><strong>{value}</strong><em>{detail}</em></article>)}</div><div className="edgeiq-market-content-grid"><div className="edgeiq-market-table edgeiq-product-table edgeiq-product-v4-table" role="table" aria-label="Market comparison table"><div className="edgeiq-market-row head" role="row">{['NO','RUNNER','EDGEIQ','OPEN','CURRENT','FLUC','EDGE %'].map((label) => <span key={`market-head-${label}`}>{label}</span>)}</div>{enrichedMarketRows.map(({ item, fair, open, current, fluc, diff }) => { const flucClass = fluc === null ? "neutral" : fluc > 0 ? "drift" : fluc < 0 ? "firm" : "neutral"; const flucDisplay = fluc === null ? "Pending Market" : fluc > 0 ? `â†‘ ${Math.abs(fluc).toFixed(1)}%` : fluc < 0 ? `â†“ ${Math.abs(fluc).toFixed(1)}%` : "â€” 0.0%"; return <div className="edgeiq-market-row" role="row" key={`market-row-${runnerRowKey(item.row)}`}><span>{saddle(item.row) === 999 ? "-" : saddle(item.row)}</span><strong>{horse(item.row)}</strong><span>{money(fair)}</span><span>{marketMoney(open)}</span><span>{marketMoney(current)}</span><span className={flucClass}>{flucDisplay}</span><span className={diff === null ? "neutral" : diff > 0 ? "positive" : "negative"}>{diff === null ? "-" : pct(diff)}</span></div>; })}</div><aside className="edgeiq-market-fluc-panel edgeiq-market-final-side"><section><span>Market Pulse</span>{[["Firmers", firmers.length], ["Drifters", drifters.length], ["Unchanged", unchanged.length]].map(([label, value]) => <div key={`market-pulse-${label}`}><em>{label}</em><strong>{value}</strong></div>)}</section><section><span>Money Flow</span>{[...firmers].sort((a, b) => (a.fluc ?? 0) - (b.fluc ?? 0)).slice(0, 3).map((row, index) => <div key={`market-flow-${runnerRowKey(row.item.row)}`}><em>{index + 1}. {horse(row.item.row)}</em><strong className="firm">â†“ {Math.abs(row.fluc ?? 0).toFixed(1)}%</strong></div>)}</section><section><span>Market Narrative</span><p>Market board shows live price movement and EDGEiQ fair-price context only. No recommendation language is shown.</p></section></aside></div></section>;
+ })() : null}
+ {intelMode === "RESULTS" ? (() => {
+ const resultRows = [...activeRaceRows].sort((a, b) => saddle(a.row) - saddle(b.row));
+ const resultValue = (row: Row, keys: string[], fallback = "Pending") => {
+ const raw = firstText(row, keys, "");
+ return raw && raw !== "-" ? raw : fallback;
+ };
+ const resultPosition = (item: EnrichedRunner, index: number) => resultValue(item.row, ["finish_position", "finishing_position", "result_position", "pos"], String(index + 1));
+ const resultMargin = (row: Row) => resultValue(row, ["margin", "beaten_margin", "official_margin"], "Pending");
+ const resultEpi = (item: EnrichedRunner) => firstNum(item.ratingsHeatmap, ["runner_rating", "epi", "performance_index"]) ?? projectionRatingValue(item);
+ const sectional = (row: Row, keys: string[]) => resultValue(row, keys, "â€”");
+ const sectionalNumber = (value: string) => num(String(value).replace(/[Ll]/g, ""));
+ const sectionalClass = (value: string) => {
+ const parsed = sectionalNumber(value);
+ return parsed !== null && parsed < 0 ? "inside-standard" : "outside-standard";
+ };
+ const sectionalsFor = (row: Row) => ({
+ s800: sectional(row, ["last_800_vs_standard", "last_800_lengths", "last800", "sectional_800"]),
+ s600: sectional(row, ["last_600_vs_standard", "last_600_lengths", "last600", "sectional_600"]),
+ s400: sectional(row, ["last_400_vs_standard", "last_400_lengths", "last400", "sectional_400"]),
+ s200: sectional(row, ["last_200_vs_standard", "last_200_lengths", "last200", "sectional_200"]),
+ finish: sectional(row, ["finish_vs_standard", "finish_lengths", "last_finish", "sectional_finish"]),
+ });
+ const rankingMetrics = [
+ { label: "Best Last 800m", key: "s800" as const },
+ { label: "Best Last 600m", key: "s600" as const },
+ { label: "Best Last 400m", key: "s400" as const },
+ { label: "Best Last 200m", key: "s200" as const },
+ { label: "Strongest Finish", key: "finish" as const },
+ ].map((metric) => {
+ const ranked = resultRows
+ .map((item) => ({ item, value: sectionalsFor(item.row)[metric.key] }))
+ .map((entry) => ({ ...entry, numeric: sectionalNumber(entry.value) }))
+ .filter((entry): entry is typeof entry & { numeric: number } => entry.numeric !== null)
+ .sort((a, b) => a.numeric - b.numeric);
+ return { ...metric, winner: ranked[0] || null, runnerUp: ranked[1] || null };
+ });
+ const officialTime = firstText(header, ["official_time", "winning_time", "race_time_official"], "Pending");
+ const last600 = firstText(header, ["race_last_600", "last_600", "overall_last_600"], "Pending");
+ const raceTempo = firstText(header, ["race_tempo", "tempo", "race_shape"], displayExpectedTempo !== "-" ? displayExpectedTempo : "Pending");
+ return (
+ <section className="edgeiq-results-tab edgeiq-product-section edgeiq-product-v4-panel edgeiq-results-v1-lock">
+ <div className="edgeiq-tab-heading edgeiq-product-v4-section-title"><span>RESULTS</span><strong>Race Review & Intelligence</strong><em>Official result and standardised sectional performance.</em></div>
+ <div className="edgeiq-results-v1-grid edgeiq-results-v1-top-grid">
+ <section className="edgeiq-results-v1-panel">
+ <div className="edgeiq-results-v1-title">Official Results</div>
+ <div className="edgeiq-results-v1-table edgeiq-product-v4-table" role="table" aria-label="Official results">
+ <div className="edgeiq-results-v1-row head" role="row">{["POS","NO","SILK","RUNNER","MARGIN (BEATEN BY)","EPI"].map((label) => <span key={`results-official-head-${label}`}>{label}</span>)}</div>
+ {resultRows.map((item, index) => <div className="edgeiq-results-v1-row" role="row" key={`results-official-${runnerRowKey(item.row)}`}><span>{resultPosition(item, index)}</span><span>{saddle(item.row) === 999 ? "â€”" : saddle(item.row)}</span><span className="edgeiq-field-silk" aria-label={`${horse(item.row)} silk`}><i /></span><strong>{horse(item.row)}</strong><span>{resultMargin(item.row)}</span><span>{resultEpi(item) === null ? "â€”" : renderMetricValue(resultEpi(item), 1)}</span></div>)}
+ </div>
+ <div className="edgeiq-results-v1-meta">Official Time: <span>{officialTime}</span> <i /> Last 600m: <span>{last600}</span> <i /> Track Condition: <span>{trackCondition(header)}</span> <i /> Rail: <span>{railDisplay}</span></div>
+ </section>
+ <section className="edgeiq-results-v1-panel">
+ <div className="edgeiq-results-v1-title">Sectionals <em>(Lengths Faster Than Standard)</em></div>
+ <div className="edgeiq-sectionals-v1-table edgeiq-product-v4-table" role="table" aria-label="Sectionals">
+ <div className="edgeiq-sectionals-v1-row head" role="row">{["POS","RUNNER","800M","600M","400M","200M","FINISH"].map((label) => <span key={`sectionals-head-${label}`}>{label}</span>)}</div>
+ {resultRows.map((item, index) => {
+ const values = sectionalsFor(item.row);
+ return <div className="edgeiq-sectionals-v1-row" role="row" key={`sectionals-${runnerRowKey(item.row)}`}><span>{resultPosition(item, index)}</span><strong>{horse(item.row)}</strong>{[values.s800, values.s600, values.s400, values.s200, values.finish].map((value, valueIndex) => <span key={`sectionals-${runnerRowKey(item.row)}-${valueIndex}`} className={sectionalClass(value)}>{value}</span>)}</div>;
+ })}
+ </div>
+ <div className="edgeiq-results-v1-scale"><span>Faster than standard</span><i>â‰¤ -4.0L</i><i>-4.0L to -2.0L</i><i>-2.0L to -0.1L</i><b>0.0L Standard</b><em>Slower than standard</em><strong>+0.1L or more</strong></div>
+ <p className="edgeiq-results-v1-data-label">Data is EDGEiQ Standardised Sectionals</p>
+ </section>
+ </div>
+ <div className="edgeiq-results-v1-bottom-grid">
+ <section className="edgeiq-results-v1-panel">
+ <div className="edgeiq-results-v1-title">Sectional Rankings</div>
+ <div className="edgeiq-results-ranking-table edgeiq-product-v4-table" role="table" aria-label="Sectional rankings">
+ <div className="edgeiq-results-ranking-row head" role="row">{["METRIC","WINNER","FIGURE","RUNNER UP","FIGURE"].map((label) => <span key={`ranking-head-${label}`}>{label}</span>)}</div>
+ {rankingMetrics.map((metric) => <div className="edgeiq-results-ranking-row" role="row" key={`sectional-ranking-${metric.label}`}><span>{metric.label}</span><strong>{metric.winner ? horse(metric.winner.item.row) : "â€”"}</strong><span>{metric.winner?.value || "â€”"}</span><strong>{metric.runnerUp ? horse(metric.runnerUp.item.row) : "â€”"}</strong><span>{metric.runnerUp?.value || "â€”"}</span></div>)}
+ </div>
+ </section>
+ <section className="edgeiq-results-v1-panel edgeiq-results-review-panel">
+ <div className="edgeiq-results-v1-title">Race Review</div>
+ <p>Race review is based on official finishing order, EDGEiQ performance ratings and standardised sectional context.</p>
+ <p>{raceTempo !== "Pending" ? `Tempo profile: ${raceTempo}.` : "Tempo profile pending."} Faster-than-standard sectional cells are highlighted in green; slower values remain neutral.</p>
+ </section>
+ <section className="edgeiq-results-v1-panel edgeiq-results-info-panel">
+ {[["Winning Time", officialTime], ["Last 600m", last600], ["Race Tempo", raceTempo], ["Track Condition", trackCondition(header)], ["Rail Position", railDisplay], ["Race Grade", raceClass(header)], ["Number of Runners", String(activeRaceRows.length)]].map(([label, value]) => <article key={`results-info-${label}`}><span>{label}</span><strong>{value}</strong></article>)}
+ </section>
+ </div>
+ </section>
+ );
+ })() : null}
+ {intelMode === "TRACK" ? (
+ <section className="edgeiq-track-tab edgeiq-product-section edgeiq-product-v4-panel">
+ <div className="edgeiq-tab-heading edgeiq-product-v4-section-title"><span>TRACK</span><strong>Track Profile</strong><em>Track map, rail and race-day profile.</em></div>
+ <div className="edgeiq-product-v4-fact-grid">
+ {[["Track", track(header)], ["Distance", distance(header)], ["Condition", trackCondition(header)], ["Rail", railDisplay], ["Race", `R${raceNo(header)}`], ["Runners", String(activeRaceRows.length)]].map(([label, value]) => <article key={`track-v4-${label}`}><span>{label}</span><strong>{value && value !== "-" ? value : "Pending"}</strong></article>)}
+ </div>
+ </section>
+ ) : null}
+{intelMode === "WEATHER" ? (() => {
+ const conditionValue = (keys: string[], fallback = "Pending") => {
+ const raw = firstText(header, keys, "");
+ return raw && raw !== "-" ? raw : fallback;
+ };
+ const trackPattern = conditionValue(["track_pattern", "bias_pattern", "current_track_pattern"], "Neutral");
+ const leaderBias = conditionValue(["leader_bias", "front_runner_bias"], "Neutral");
+ const insideBias = conditionValue(["inside_bias", "inside_lane_bias"], "Neutral");
+ const outsideBias = conditionValue(["outside_bias", "outside_lane_bias"], "Neutral");
+ const wind = [conditionValue(["wind_direction", "wind_dir"], ""), conditionValue(["wind_speed", "wind"], "")].filter((value) => value && value !== "Pending").join(" ") || "Pending";
+ const conditionCards = [
+ { label: "Track", value: trackCondition(header), icon: "track" },
+ { label: "Rail", value: railDisplay, icon: "rail" },
+ { label: "Wind", value: wind, icon: "wind" },
+ { label: "Rainfall", value: conditionValue(["rainfall", "rainfall_24h", "rain_24h"]), icon: "rain" },
+ { label: "Irrigation", value: conditionValue(["irrigation", "irrigation_24h"]), icon: "water" },
+ { label: "Temperature", value: conditionValue(["temperature", "temp"]), icon: "temp" },
+ { label: "Humidity", value: conditionValue(["humidity"]), icon: "humidity" },
+ { label: "Penetrometer", value: conditionValue(["penetrometer", "penetrometer_reading"]), icon: "pen" },
+ ];
+ return (
+ <section className="edgeiq-weather-tab edgeiq-product-section edgeiq-product-v4-panel edgeiq-conditions-v1-lock edgeiq-conditions-final-lock">
+ <div className="edgeiq-tab-heading edgeiq-product-v4-section-title"><span>CONDITIONS</span><strong>Conditions Intelligence</strong><em>Track, weather, bias and race impact.</em></div>
+ <div className="edgeiq-conditions-v1-cards edgeiq-conditions-final-cards">
+ {conditionCards.map((card) => <article key={`conditions-v1-${card.label}`}><i className={`edgeiq-conditions-card-icon is-${card.icon}`} aria-hidden="true" /><span>{card.label}</span><strong>{card.value && card.value !== "-" ? card.value : "Pending"}</strong></article>)}
+ </div>
+ <div className="edgeiq-conditions-final-grid">
+ <section><strong>Track Pattern Intelligence</strong>{[["Current Track Pattern", trackPattern], ["Leader Bias", leaderBias], ["Inside Bias", insideBias], ["Outside Bias", outsideBias], ["Track Evolution", conditionValue(["track_evolution", "track_trend"], "Pending")]].map(([label, value]) => <div key={`conditions-pattern-${label}`}><span>{label}</span><em>{value}</em></div>)}</section>
+ <section><strong>Historical Profile</strong>{[["Track", track(header)], ["Distance", distance(header)], ["Condition", trackCondition(header)], ["Rail", railDisplay], ["Race Grade", raceClass(header)]].map(([label, value]) => <div key={`conditions-history-${label}`}><span>{label}</span><em>{value}</em></div>)}</section>
+ <section><strong>Weather Impact</strong>{[["Wind", wind], ["Rainfall", conditionCards[3].value], ["Temperature", conditionCards[5].value], ["Humidity", conditionCards[6].value], ["Surface Change", conditionValue(["surface_change", "track_condition_change"], "Pending")]].map(([label, value]) => <div key={`conditions-weather-${label}`}><span>{label}</span><em>{value}</em></div>)}</section>
+ <section><strong>Expected Race Shape</strong>{[["Tempo Impact", displayExpectedTempo !== "-" ? displayExpectedTempo : "Pending"], ["Lane Impact", insideBias !== "Neutral" ? `Inside: ${insideBias}` : outsideBias !== "Neutral" ? `Outside: ${outsideBias}` : "Neutral"], ["Likely Suited", conditionValue(["conditions_suited", "track_suited"], "Pending")], ["Likely Disadvantaged", conditionValue(["conditions_disadvantaged", "track_disadvantaged"], "Pending")]].map(([label, value]) => <div key={`conditions-shape-${label}`}><span>{label}</span><em>{value}</em></div>)}</section>
+ <section className="edgeiq-conditions-final-summary"><strong>EDGEiQ Conditions Summary</strong><p>{conditionValue(["conditions_summary", "track_weather_summary"], `Current profile: ${trackCondition(header)} with rail ${railDisplay}. Bias intelligence is ${trackPattern.toLowerCase()}.`)}</p></section>
+ </div>
+ </section>
+ );
+})() : null}
+ </main>
+ </div>
+ {ratingHover ? (
+ <div className="edgeiq-performance-tooltip" style={{ left: ratingHover.x, top: ratingHover.y }} role="tooltip">
+ <strong>{ratingHover.title}</strong>
+ {ratingHover.subtitle ? <em>{ratingHover.subtitle}</em> : null}
+ <div>
+ {ratingHover.metrics.map((metric) => <span key={`rating-hover-${metric.label}`}><b>{metric.label}</b><i style={{ color: metric.tone || undefined }}>{metric.value}</i></span>)}
+ </div>
+ {ratingHover.footer ? <p>{ratingHover.footer}</p> : null}
+ </div>
+ ) : null}
+ <footer className="edgeiq-home-v4-footer edgeiq-product-v4-footer">
+ <div>EDGEiQ â€” ADAPTIVE RACING INTELLIGENCE</div>
+ <div>NOT NOISE. <span>JUST CONTEXT.</span></div>
+ </footer>
+{fullHistoryRunner ? (() => {
+ const modalRows = fullHistoryRunner.runnerHistory || [];
+ const ratedRows = ratedHistoryRows(modalRows);
+ const career = fullHistoryRunner.runnerCareer || {};
+ const starts = firstNum(career, ["career_starts", "starts"]) ?? modalRows.length;
+ const wins = firstNum(career, ["career_wins", "wins"]) ?? modalRows.filter((run) => Number(String(historyFinishText(run)).replace(/[^0-9.-]/g, "")) === 1).length;
+ const places = firstNum(career, ["career_places", "places"]) ?? modalRows.filter((run) => { const pos = Number(String(historyFinishText(run)).replace(/[^0-9.-]/g, "")); return Number.isFinite(pos) && pos > 0 && pos <= 3; }).length;
+ const winRate = firstNum(career, ["career_win_pct", "win_pct"]) ?? (starts ? (wins / starts) * 100 : null);
+ const placeRate = firstNum(career, ["career_place_pct", "place_pct"]) ?? (starts ? (places / starts) * 100 : null);
+ const peak = ratedRows.length ? Math.max(...ratedRows.map((run) => historyRatingValue(run) ?? Number.NEGATIVE_INFINITY).filter((value) => Number.isFinite(value))) : null;
+ const avg = ratedRows.length ? ratedRows.reduce((sum, run) => sum + (historyRatingValue(run) ?? 0), 0) / ratedRows.length : null;
+ const cleanHistory = (value: unknown) => {
+ const raw = String(value ?? "").trim();
+ if (!raw || /^(UNKNOWN|NOT LOADED|SOURCE GAP|SOURCE_MISSING|NULL|N\/A|NA|UNDEFINED|0\.0)$/i.test(raw)) return "â€”";
+ return raw;
+ };
+ return <div className="edgeiq-career-modal-backdrop" role="dialog" aria-modal="true" aria-label="Full career history"><section className="edgeiq-career-modal"><header><div><span>Full Career History</span><strong>{horse(fullHistoryRunner.row)}</strong><em>{firstText(fullHistoryRunner.row, ["trainer", "trainer_name"], "â€”")} / {firstText(fullHistoryRunner.row, ["jockey", "jockey_name", "rider"], "â€”")}</em></div><button type="button" onClick={() => setFullHistoryRunner(null)} aria-label="Close full career history">Close</button></header><div className="edgeiq-career-summary">{[["Starts", starts], ["Wins", wins], ["Places", places], ["Win %", winRate], ["Place %", placeRate], ["Peak EPI", peak], ["Average EPI", avg]].map(([label, value]) => <article key={`career-summary-${label}`}><span>{label}</span><strong>{typeof value === "number" ? (String(label).includes("%") ? `${value.toFixed(1)}%` : renderMetricValue(value, 1)) : "â€”"}</strong></article>)}</div><div className="edgeiq-career-history-table" role="table" aria-label="Runner full career history"><div className="edgeiq-career-history-row head" role="row">{['DATE','TRACK','DIST','CLASS','GOING','BAR','JOCKEY','POS','MARGIN','SP','EPI','SETTLED / RUN STYLE'].map((label) => <span key={`career-head-${label}`}>{label}</span>)}</div>{modalRows.length ? modalRows.map((run, index) => <div className="edgeiq-career-history-row" role="row" key={`career-history-${index}-${historyRunKey(run)}`}><span>{cleanHistory(formatHistoryDate(historyDateText(run)))}</span><span>{cleanHistory(historyTrackText(run))}</span><span>{cleanHistory(historyDistanceText(run))}</span><span>{cleanHistory(historyClassText(run))}</span><span>{cleanHistory(historyGoingText(run))}</span><span>{cleanHistory(firstText(run, ["barrier", "draw", "barrier_number"], ""))}</span><span>{cleanHistory(historyJockeyText(run))}</span><span>{cleanHistory(historyFinishText(run))}</span><span>{cleanHistory(firstText(run, ["margin", "beaten_margin"], ""))}</span><span>{cleanHistory(historySpText(run))}</span><span>{historyRatingValue(run) === null ? "â€”" : renderMetricValue(historyRatingValue(run), 1)}</span><span>{cleanHistory(firstText(run, ["settling_position", "run_style", "pos_800", "pos_400"], ""))}</span></div>) : <div className="edgeiq-career-history-empty">Career history not loaded for this runner.</div>}</div></section></div>;
+ })() : null}
+
+ </section>
+ </div>
+ );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

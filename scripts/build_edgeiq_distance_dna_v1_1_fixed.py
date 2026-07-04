@@ -1,0 +1,199 @@
+﻿from __future__ import annotations
+
+import csv
+import re
+from pathlib import Path
+from datetime import datetime, timezone
+
+ROOT = Path(__file__).resolve().parents[1]
+DATA = ROOT / "public" / "data"
+
+SRC = DATA / "edgeiq_graphql_master_v2.csv"
+TRACK_DICT = DATA / "edgeiq_track_canonical_dictionary_v2.csv"
+
+OUT = DATA / "edgeiq_distance_dna_v1_1_fixed.csv"
+SUMMARY = DATA / "edgeiq_distance_dna_v1_1_fixed_summary.csv"
+
+def clean(v):
+    return "" if v is None else str(v).strip()
+
+def norm(v):
+    return clean(v).upper()
+
+def is_win(v):
+    return clean(v).upper() in {"1", "1ST"}
+
+def is_place(v):
+    return clean(v).upper() in {"1", "2", "3", "1ST", "2ND", "3RD"}
+
+def extract_distance(v):
+    m = re.search(r"(\d{3,4})", clean(v))
+    return int(m.group(1)) if m else 0
+
+def distance_bucket(n):
+    if n <= 0:
+        return "UNKNOWN"
+    if n <= 1200:
+        return "SPRINT_1000_1200"
+    if n <= 1400:
+        return "SPRINT_1201_1400"
+    if n <= 1600:
+        return "MILE_1401_1600"
+    if n <= 2000:
+        return "MIDDLE_1601_2000"
+    return "STAYING_2000_PLUS"
+
+def clamp(v, lo, hi):
+    return max(lo, min(hi, v))
+
+def band(score, starts):
+    if starts < 10:
+        return "LOW_SAMPLE"
+    if score >= 85:
+        return "ELITE"
+    if score >= 72:
+        return "STRONG"
+    if score >= 60:
+        return "POSITIVE"
+    if score >= 45:
+        return "NEUTRAL"
+    if score >= 32:
+        return "NEGATIVE"
+    return "POOR"
+
+profiles = {}
+source_rows_with_distance = 0
+
+def add(entity_type, entity_name, bucket, distance_m, row):
+    if not entity_name or bucket == "UNKNOWN":
+        return
+
+    key = (entity_type, norm(entity_name), bucket)
+
+    p = profiles.setdefault(key, {
+        "entity_type": entity_type,
+        "entity_name": entity_name,
+        "distance_bucket": bucket,
+        "starts": 0,
+        "wins": 0,
+        "places": 0,
+        "years": set(),
+        "tracks": set(),
+        "min_distance": distance_m,
+        "max_distance": distance_m,
+    })
+
+    p["starts"] += 1
+
+    if is_win(row.get("finish")):
+        p["wins"] += 1
+
+    if is_place(row.get("finish")):
+        p["places"] += 1
+
+    d = clean(row.get("race_date"))
+    if len(d) >= 4:
+        p["years"].add(d[:4])
+
+    track = clean(row.get("track"))
+    if track:
+        p["tracks"].add(track.upper())
+
+    if distance_m:
+        p["min_distance"] = min(p["min_distance"] or distance_m, distance_m)
+        p["max_distance"] = max(p["max_distance"] or distance_m, distance_m)
+
+if not SRC.exists():
+    raise FileNotFoundError(f"Missing source: {SRC}")
+
+with SRC.open("r", encoding="utf-8-sig", newline="") as f:
+    for row in csv.DictReader(f):
+        distance_m = extract_distance(row.get("distance"))
+        bucket = distance_bucket(distance_m)
+
+        if bucket != "UNKNOWN":
+            source_rows_with_distance += 1
+
+        horse = clean(row.get("horse"))
+        trainer = clean(row.get("trainer"))
+        jockey = clean(row.get("jockey"))
+
+        add("HORSE", horse, bucket, distance_m, row)
+        add("TRAINER", trainer, bucket, distance_m, row)
+        add("JOCKEY", jockey, bucket, distance_m, row)
+
+        if trainer and jockey:
+            add("CONNECTION", f"{trainer} | {jockey}", bucket, distance_m, row)
+
+built_at = datetime.now(timezone.utc).isoformat()
+rows = []
+
+for p in profiles.values():
+    starts = p["starts"]
+    wins = p["wins"]
+    places = p["places"]
+
+    win_pct = wins / starts * 100 if starts else 0
+    place_pct = places / starts * 100 if starts else 0
+
+    score = round(clamp(
+        35
+        + clamp(starts / 3, 0, 18)
+        + clamp(win_pct * 1.05, 0, 35)
+        + clamp(place_pct * 0.35, 0, 22),
+        0,
+        100
+    ), 1)
+
+    rows.append({
+        "built_at": built_at,
+        "entity_type": p["entity_type"],
+        "entity_name": p["entity_name"],
+        "distance_bucket": p["distance_bucket"],
+        "starts": starts,
+        "wins": wins,
+        "places": places,
+        "win_pct": round(win_pct, 2),
+        "place_pct": round(place_pct, 2),
+        "years_seen": len(p["years"]),
+        "tracks_seen": len(p["tracks"]),
+        "min_distance": p["min_distance"],
+        "max_distance": p["max_distance"],
+        "distance_dna_score": score,
+        "distance_dna_band": band(score, starts),
+    })
+
+rows.sort(key=lambda r: (r["entity_type"], -float(r["distance_dna_score"]), -int(r["starts"])))
+
+with OUT.open("w", encoding="utf-8-sig", newline="") as f:
+    fields = list(rows[0].keys()) if rows else ["built_at"]
+    w = csv.DictWriter(f, fieldnames=fields)
+    w.writeheader()
+    w.writerows(rows)
+
+summary = [
+    {"metric": "status", "value": "EDGEIQ_DISTANCE_DNA_V1_1_FIXED_BUILT"},
+    {"metric": "source", "value": str(SRC)},
+    {"metric": "source_rows_with_distance", "value": source_rows_with_distance},
+    {"metric": "rows", "value": len(rows)},
+    {"metric": "horse_rows", "value": sum(1 for r in rows if r["entity_type"] == "HORSE")},
+    {"metric": "trainer_rows", "value": sum(1 for r in rows if r["entity_type"] == "TRAINER")},
+    {"metric": "jockey_rows", "value": sum(1 for r in rows if r["entity_type"] == "JOCKEY")},
+    {"metric": "connection_rows", "value": sum(1 for r in rows if r["entity_type"] == "CONNECTION")},
+    {"metric": "elite_rows", "value": sum(1 for r in rows if r["distance_dna_band"] == "ELITE")},
+    {"metric": "strong_rows", "value": sum(1 for r in rows if r["distance_dna_band"] == "STRONG")},
+    {"metric": "positive_rows", "value": sum(1 for r in rows if r["distance_dna_band"] == "POSITIVE")},
+    {"metric": "low_sample_rows", "value": sum(1 for r in rows if r["distance_dna_band"] == "LOW_SAMPLE")},
+    {"metric": "output", "value": str(OUT)},
+    {"metric": "built_at", "value": built_at},
+]
+
+with SUMMARY.open("w", encoding="utf-8-sig", newline="") as f:
+    w = csv.DictWriter(f, fieldnames=["metric","value"])
+    w.writeheader()
+    w.writerows(summary)
+
+print("[DISTANCE_DNA_V1_1_FIXED] COMPLETE")
+print(f"source_rows_with_distance={source_rows_with_distance}")
+print(f"rows={len(rows)}")
+print(f"output={OUT}")

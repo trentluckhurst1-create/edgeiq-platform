@@ -1,0 +1,1180 @@
+﻿@import "tailwindcss";
+
+/* =========================
+   EDGEiQ GLOBAL RESTORE
+   ========================= */
+
+html,
+body,
+#root {
+  min-height: 100%;
+  height: auto !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  margin: 0;
+  background: #020617;
+  color: #e5e7eb;
+}
+
+body {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button,
+select,
+input {
+  font-family: inherit;
+}
+
+/* =========================
+   EDGEiQ APP SHELL RESTORE
+   ========================= */
+
+.app-shell,
+.edgeiq-shell,
+.dashboard-shell {
+  min-height: 100vh;
+  background: #020617;
+  color: #e5e7eb;
+  padding: 14px;
+}
+
+.edgeiq-page,
+.main-shell,
+main {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* =========================
+   TOP CONTROL CARD RESTORE
+   ========================= */
+
+.edgeiq-control,
+.edgeiq-race-control,
+.race-control,
+.live-race-control {
+  border: 1px solid rgba(51,65,85,.85);
+  background: linear-gradient(180deg,rgba(15,23,42,.95),rgba(2,6,23,.97));
+  border-radius: 18px;
+  padding: 14px;
+  margin: 12px 0;
+}
+
+select {
+  background: #0f172a;
+  color: #e5e7eb;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+button {
+  background: #0f172a;
+  color: #cbd5e1;
+  border: 1px solid #334155;
+  border-radius: 999px;
+  padding: 7px 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+button:hover {
+  border-color: #34d399;
+  color: #ecfdf5;
+}
+
+button.active,
+.selected,
+.is-selected {
+  border-color: #34d399 !important;
+}
+
+/* =========================
+   TAB BAR RESTORE
+   ========================= */
+
+.tab-bar,
+.edgeiq-tabs,
+.tabs {
+  display: flex;
+  gap: 8px;
+  border: 1px solid rgba(51,65,85,.85);
+  background: rgba(2,6,23,.65);
+  border-radius: 999px;
+  padding: 7px;
+  margin: 12px 0;
+}
+
+/* =========================
+   EDGEiQ WORKSHEET RESTORE
+   ========================= */
+
+.edgeiq-ws {
+  width: 100%;
+  padding: 0;
+  color: #e5e7eb;
+}
+
+.edgeiq-ws-card {
+  border: 1px solid rgba(51, 65, 85, 0.85);
+  background: linear-gradient(180deg, rgba(15,23,42,0.92), rgba(2,6,23,0.96));
+  border-radius: 18px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.edgeiq-ws-head {
+  padding: 10px 14px;
+  border-bottom: 1px solid rgba(51, 65, 85, 0.7);
+}
+
+.edgeiq-ws-kicker {
+  color: #6ee7b7;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.edgeiq-ws-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.edgeiq-ws-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 12px;
+}
+
+.edgeiq-ws-table th {
+  height: 28px;
+  padding: 0 10px;
+  color: #94a3b8;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: left;
+  border-bottom: 1px solid rgba(51, 65, 85, 0.8);
+  background: rgba(2,6,23,0.45);
+}
+
+.edgeiq-ws-table td {
+  height: 36px;
+  padding: 4px 8px;
+  border-bottom: 1px solid rgba(30, 41, 59, 0.85);
+  color: #cbd5e1;
+  vertical-align: middle;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.edgeiq-ws-table tbody tr {
+  cursor: pointer;
+  transition: background 120ms ease, box-shadow 120ms ease;
+}
+
+.edgeiq-ws-table tbody tr:hover {
+  background: rgba(30, 41, 59, 0.7);
+}
+
+.edgeiq-ws-table tbody tr.is-selected,
+.edgeiq-ws-table tbody tr.selected {
+  background: rgba(16, 185, 129, 0.18);
+  box-shadow:
+    inset 4px 0 0 #34d399,
+    inset 0 0 18px rgba(16,185,129,0.15);
+}
+
+.edgeiq-ws-table tbody tr.is-scratched,
+.edgeiq-ws-table tbody tr.scratched {
+  opacity: 0.45;
+}
+
+.edgeiq-runner {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
+}
+
+.edgeiq-runner img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.edgeiq-runner-meta {
+  min-width: 0;
+  display: grid;
+  gap: 2px;
+}
+
+.edgeiq-runner-meta strong {
+  color: #f8fafc;
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.edgeiq-runner-meta span {
+  color: #94a3b8;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.strong {
+  font-weight: 900;
+}
+
+.edgeiq-green,
+.edgeiq-lime {
+  color: #34d399 !important;
+}
+
+.edgeiq-red {
+  color: #fb7185 !important;
+}
+
+.edgeiq-muted {
+  color: #64748b !important;
+}
+
+.col-saddle { width: 74px; }
+.col-runner { width: 230px; }
+.col-jockey { width: 190px; }
+.col-trainer { width: 230px; }
+.col-bar { width: 70px; }
+.col-rated { width: 90px; }
+.col-market { width: 90px; }
+.col-edge { width: 90px; }
+
+.edgeiq-snapshot-card {
+  margin-top: 12px;
+}
+
+.edgeiq-snap-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(51,65,85,0.75);
+}
+
+.edgeiq-snap-metrics {
+  display: flex;
+  gap: 8px;
+}
+
+.edgeiq-snap-metrics div {
+  min-width: 86px;
+  border: 1px solid rgba(51,65,85,0.85);
+  background: rgba(15,23,42,0.75);
+  border-radius: 12px;
+  padding: 6px 8px;
+}
+
+.edgeiq-snap-metrics span {
+  display: block;
+  color: #94a3b8;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.edgeiq-snap-metrics strong {
+  display: block;
+  margin-top: 3px;
+  color: #f8fafc;
+  font-size: 13px;
+  font-weight: 900;
+  text-align: right;
+}
+
+.edgeiq-form-title {
+  padding: 10px 14px 0;
+  color: #6ee7b7;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.condition-pill {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 3px 7px;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.cond-fast { background: rgba(56,189,248,0.15); color: #7dd3fc; }
+.cond-good { background: rgba(34,197,94,0.18); color: #86efac; }
+.cond-soft { background: rgba(234,179,8,0.18); color: #fde047; }
+.cond-heavy { background: rgba(239,68,68,0.18); color: #fca5a5; }
+.cond-unknown { background: rgba(100,116,139,0.18); color: #cbd5e1; }
+
+/* =========================
+   SCROLLBAR
+   ========================= */
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #020617;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+.edgeiq-ticker,
+.top-race-ticker,
+.race-ticker,
+.countdown-strip,
+.edgeiq-countdown {
+  display: none !important;
+}
+
+/* =========================
+   EDGEiQ TOP TICKER
+   ========================= */
+
+.edgeiq-ticker-shell {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 7px 14px;
+  background: linear-gradient(180deg, rgba(2,6,23,0.98), rgba(2,6,23,0.94));
+  border-bottom: 1px solid rgba(51,65,85,0.85);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+.edgeiq-ticker-brand {
+  flex: 0 0 auto;
+  color: #6ee7b7;
+  font-size: 10px;
+  font-weight: 950;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.edgeiq-ticker-track {
+  min-width: 0;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 2px;
+}
+
+.edgeiq-ticker-track::-webkit-scrollbar {
+  height: 4px;
+}
+
+.edgeiq-ticker-chip {
+  flex: 0 0 auto;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(71,85,105,0.95);
+  background: rgba(15,23,42,0.92);
+  color: #cbd5e1;
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: border 120ms ease, background 120ms ease, transform 120ms ease;
+}
+
+.edgeiq-ticker-chip:hover {
+  border-color: rgba(52,211,153,0.8);
+  background: rgba(6,78,59,0.28);
+  transform: translateY(-1px);
+}
+
+.edgeiq-ticker-chip.is-live {
+  border-color: rgba(248,113,113,0.85);
+  background: rgba(127,29,29,0.28);
+}
+
+.edgeiq-ticker-chip .ticker-main {
+  color: #f8fafc;
+  font-weight: 950;
+}
+
+.edgeiq-ticker-chip .ticker-date,
+.edgeiq-ticker-chip .ticker-time {
+  color: #94a3b8;
+}
+
+.edgeiq-ticker-chip strong {
+  color: #6ee7b7;
+  font-size: 11px;
+  font-weight: 950;
+}
+
+.edgeiq-ticker-chip.is-live strong {
+  color: #fca5a5;
+}
+
+/* =========================
+   EDGEiQ LIVE TICKER WIRED
+   ========================= */
+
+.edgeiq-ticker-shell {
+  position: sticky;
+  top: 0;
+  z-index: 80;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 7px 14px;
+  background: linear-gradient(180deg, rgba(2,6,23,0.99), rgba(2,6,23,0.95));
+  border-bottom: 1px solid rgba(51,65,85,0.9);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.42);
+}
+
+.edgeiq-ticker-brand {
+  flex: 0 0 auto;
+  color: #6ee7b7;
+  font-size: 10px;
+  font-weight: 950;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.edgeiq-ticker-track {
+  min-width: 0;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 2px 0 4px;
+}
+
+.edgeiq-ticker-track::-webkit-scrollbar {
+  height: 4px;
+}
+
+.edgeiq-ticker-chip {
+  flex: 0 0 auto;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(71,85,105,0.95);
+  background: rgba(15,23,42,0.92);
+  color: #cbd5e1;
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: border 120ms ease, background 120ms ease, transform 120ms ease;
+}
+
+.edgeiq-ticker-chip:hover {
+  border-color: rgba(52,211,153,0.8);
+  background: rgba(6,78,59,0.28);
+  transform: translateY(-1px);
+}
+
+.edgeiq-ticker-chip.is-active {
+  border-color: rgba(52,211,153,0.95);
+  background: rgba(6,78,59,0.42);
+  box-shadow: 0 0 18px rgba(52,211,153,0.16);
+}
+
+.edgeiq-ticker-chip.is-live {
+  border-color: rgba(248,113,113,0.9);
+  background: rgba(127,29,29,0.32);
+}
+
+.edgeiq-ticker-chip.is-soon {
+  border-color: rgba(251,191,36,0.8);
+  background: rgba(113,63,18,0.28);
+}
+
+.edgeiq-ticker-chip.is-closed {
+  opacity: 0.45;
+}
+
+.edgeiq-ticker-chip .ticker-main {
+  color: #f8fafc;
+  font-weight: 950;
+}
+
+.edgeiq-ticker-chip .ticker-time,
+.edgeiq-ticker-chip .ticker-meta {
+  color: #94a3b8;
+}
+
+.edgeiq-ticker-chip .ticker-cond {
+  color: #a7f3d0;
+  font-size: 9px;
+  font-weight: 950;
+}
+
+.edgeiq-ticker-chip strong {
+  color: #6ee7b7;
+  font-size: 11px;
+  font-weight: 950;
+}
+
+.edgeiq-ticker-chip.is-live strong {
+  color: #fca5a5;
+}
+
+.edgeiq-ticker-chip.is-soon strong {
+  color: #fde68a;
+}
+
+/* =========================
+   EDGEiQ CONDITION COLOURS
+   ========================= */
+
+.condition-pill,
+.cond-fast,
+.cond-good,
+.cond-soft,
+.cond-heavy,
+.cond-unknown {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 4px 9px;
+  min-height: 21px;
+  font-size: 9px;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1;
+  color: #ffffff !important;
+  border: 1px solid rgba(255,255,255,0.16);
+}
+
+.cond-fast {
+  background: #2563eb !important;
+}
+
+.cond-good {
+  background: #16a34a !important;
+}
+
+.cond-soft {
+  background: #dc2626 !important;
+}
+
+.cond-heavy {
+  background: #020617 !important;
+  border-color: rgba(255,255,255,0.28) !important;
+}
+
+.cond-unknown {
+  background: #475569 !important;
+}
+
+/* =========================
+   EDGEiQ RACE DETAIL CHIPS
+   ========================= */
+
+.edgeiq-current-race-detail {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding-top: 2px;
+}
+
+.edgeiq-current-race-detail span:not(.condition-pill) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 24px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(51,65,85,0.95);
+  background: rgba(15,23,42,0.85);
+  color: #dbeafe;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.edgeiq-current-race-detail span:nth-child(1)::before {
+  content: "DATE ";
+  color: #64748b;
+  margin-right: 5px;
+}
+
+.edgeiq-current-race-detail span:nth-child(2)::before {
+  content: "TIME ";
+  color: #64748b;
+  margin-right: 5px;
+}
+
+.edgeiq-current-race-detail span:nth-child(3)::before {
+  content: "TRACK ";
+  color: #64748b;
+  margin-right: 5px;
+}
+
+.edgeiq-current-race-detail span:nth-child(4)::before {
+  content: "RACE ";
+  color: #64748b;
+  margin-right: 5px;
+}
+
+.edgeiq-current-race-detail span:nth-child(5)::before {
+  content: "DIST ";
+  color: #64748b;
+  margin-right: 5px;
+}
+
+.edgeiq-current-race-detail span:nth-child(6)::before {
+  content: "CLASS ";
+  color: #64748b;
+  margin-right: 5px;
+}
+
+/* =========================
+   EDGEiQ RATINGS TAB
+   ========================= */
+
+.edgeiq-ratings {
+  display: grid;
+  gap: 12px;
+}
+
+.edgeiq-ratings-hero {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: stretch;
+  border: 1px solid rgba(51,65,85,0.85);
+  background: linear-gradient(180deg, rgba(15,23,42,0.92), rgba(2,6,23,0.96));
+  border-radius: 18px;
+  padding: 14px;
+}
+
+.edgeiq-ratings-hero h2 {
+  margin: 6px 0 3px;
+  color: #f8fafc;
+  font-size: 20px;
+  font-weight: 950;
+  letter-spacing: -0.03em;
+}
+
+.edgeiq-ratings-hero p {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.edgeiq-rating-metrics {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+}
+
+.edgeiq-rating-metrics div {
+  min-width: 130px;
+  border: 1px solid rgba(51,65,85,0.85);
+  background: rgba(15,23,42,0.78);
+  border-radius: 14px;
+  padding: 9px 10px;
+}
+
+.edgeiq-rating-metrics span,
+.edgeiq-rating-price-grid span,
+.edgeiq-ls-strip span,
+.edgeiq-career-grid span {
+  display: block;
+  color: #94a3b8;
+  font-size: 9px;
+  font-weight: 950;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.edgeiq-rating-metrics strong {
+  display: block;
+  margin-top: 5px;
+  color: #f8fafc;
+  font-size: 12px;
+  font-weight: 950;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.edgeiq-rating-metrics em {
+  display: block;
+  margin-top: 3px;
+  color: #6ee7b7;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 950;
+  text-align: right;
+}
+
+.edgeiq-ratings-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 12px;
+  align-items: start;
+}
+
+.edgeiq-ratings-table th,
+.edgeiq-ratings-table td {
+  font-size: 11px;
+}
+
+.edgeiq-rating-panel {
+  border: 1px solid rgba(51,65,85,0.85);
+  background: linear-gradient(180deg, rgba(15,23,42,0.94), rgba(2,6,23,0.98));
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.edgeiq-rating-profile {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 14px;
+  border-bottom: 1px solid rgba(51,65,85,0.75);
+}
+
+.edgeiq-rating-profile img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
+.edgeiq-rating-profile h3 {
+  margin: 4px 0 2px;
+  color: #f8fafc;
+  font-size: 16px;
+  font-weight: 950;
+}
+
+.edgeiq-rating-profile p {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.edgeiq-rating-price-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  padding: 12px;
+  border-bottom: 1px solid rgba(51,65,85,0.75);
+}
+
+.edgeiq-rating-price-grid div,
+.edgeiq-ls-strip div,
+.edgeiq-career-grid div {
+  border: 1px solid rgba(51,65,85,0.8);
+  background: rgba(15,23,42,0.76);
+  border-radius: 12px;
+  padding: 8px;
+}
+
+.edgeiq-rating-price-grid strong,
+.edgeiq-ls-strip strong,
+.edgeiq-career-grid strong {
+  display: block;
+  margin-top: 4px;
+  color: #f8fafc;
+  font-size: 14px;
+  font-weight: 950;
+  text-align: right;
+}
+
+.edgeiq-rating-section {
+  padding: 12px;
+  border-bottom: 1px solid rgba(51,65,85,0.65);
+}
+
+.edgeiq-ls-strip {
+  margin-top: 9px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 7px;
+}
+
+.edgeiq-career-grid {
+  margin-top: 9px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 7px;
+}
+
+@media (max-width: 1100px) {
+  .edgeiq-ratings-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .edgeiq-rating-metrics {
+    flex-wrap: wrap;
+  }
+}
+
+/* ================================
+   EDGEiQ RATINGS — ELITE VISUALS
+   ================================ */
+
+.edgeiq-ratings-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 0 12px;
+}
+
+.edgeiq-ratings-toolbar button {
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.98), rgba(2, 6, 23, 0.96));
+  color: #dbeafe;
+  font-weight: 900;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  padding: 8px 13px;
+  border-radius: 999px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.edgeiq-ratings-toolbar button:hover,
+.edgeiq-ratings-toolbar button.is-active {
+  color: #ecfeff;
+  border-color: rgba(52, 211, 153, 0.75);
+  background: radial-gradient(circle at 30% 0%, rgba(52,211,153,0.28), rgba(15,23,42,0.96));
+  box-shadow: 0 0 0 1px rgba(52,211,153,0.12), 0 0 22px rgba(52,211,153,0.16);
+}
+
+.edgeiq-ratings-table tbody tr {
+  transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
+}
+
+.edgeiq-ratings-table tbody tr:hover {
+  transform: translateY(-1px);
+  background: rgba(15, 23, 42, 0.95);
+  box-shadow: inset 3px 0 0 rgba(52,211,153,0.5), 0 12px 28px rgba(0,0,0,0.26);
+}
+
+.edgeiq-ratings-table tbody tr.is-selected {
+  background: linear-gradient(90deg, rgba(52,211,153,0.20), rgba(15,23,42,0.72));
+  box-shadow: inset 4px 0 0 #34d399;
+}
+
+.edgeiq-edge-pill {
+  display: inline-flex;
+  justify-content: center;
+  min-width: 74px;
+  padding: 5px 8px;
+  border-radius: 999px;
+  font-weight: 950;
+  letter-spacing: 0.02em;
+}
+
+.edgeiq-edge-pill.edge-hot {
+  color: #001b10;
+  background: linear-gradient(90deg, #6ee7b7, #34d399);
+  box-shadow: 0 0 18px rgba(52,211,153,0.55);
+}
+
+.edgeiq-edge-pill.edge-good {
+  color: #bbf7d0;
+  background: rgba(22,163,74,0.22);
+  border: 1px solid rgba(74,222,128,0.36);
+}
+
+.edgeiq-edge-pill.edge-small {
+  color: #86efac;
+  background: rgba(34,197,94,0.12);
+  border: 1px solid rgba(34,197,94,0.22);
+}
+
+.edgeiq-edge-pill.edge-bad {
+  color: #fecdd3;
+  background: rgba(244,63,94,0.16);
+  border: 1px solid rgba(251,113,133,0.24);
+}
+
+.edgeiq-form-bar {
+  position: relative;
+  width: 92px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(71,85,105,0.36);
+  overflow: hidden;
+  margin-left: auto;
+  margin-bottom: 4px;
+}
+
+.edgeiq-form-bar .peak {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  background: rgba(148,163,184,0.20);
+}
+
+.edgeiq-form-bar .today {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #10b981, #6ee7b7);
+  box-shadow: 0 0 12px rgba(52,211,153,0.45);
+}
+
+.edgeiq-gap-good {
+  color: #6ee7b7 !important;
+}
+
+.edgeiq-gap-watch {
+  color: #fbbf24 !important;
+}
+
+.edgeiq-gap-bad {
+  color: #fb7185 !important;
+}
+
+.edgeiq-rating-panel {
+  box-shadow: inset 1px 0 0 rgba(148,163,184,0.12), 0 20px 50px rgba(0,0,0,0.22);
+}
+
+.edgeiq-rating-price-grid > div,
+.edgeiq-career-grid > div,
+.edgeiq-ls-strip > div {
+  background: linear-gradient(180deg, rgba(15,23,42,0.98), rgba(2,6,23,0.9));
+  border: 1px solid rgba(148,163,184,0.18);
+}
+
+.edgeiq-rating-price-grid strong,
+.edgeiq-career-grid strong,
+.edgeiq-ls-strip strong {
+  letter-spacing: 0.01em;
+}
+
+/* ================================
+   EDGEiQ RATINGS — TABLE ALIGNMENT FIX
+   ================================ */
+
+.edgeiq-ratings-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.edgeiq-ratings-table th,
+.edgeiq-ratings-table td {
+  vertical-align: middle;
+}
+
+.edgeiq-ratings-table th {
+  height: 34px;
+  padding: 0 10px;
+  font-size: 10px;
+  line-height: 1;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #9fb0c7;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.16);
+}
+
+.edgeiq-ratings-table td {
+  height: 42px;
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+.edgeiq-ratings-table th button {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  text-align: inherit;
+  cursor: pointer;
+}
+
+.edgeiq-ratings-table th button:hover {
+  color: #6ee7b7;
+}
+
+.edgeiq-ratings-table th.num,
+.edgeiq-ratings-table td.num {
+  text-align: right;
+}
+
+.edgeiq-ratings-table th.num button {
+  text-align: right;
+}
+
+.edgeiq-ratings-table .col-rank {
+  width: 72px;
+}
+
+.edgeiq-ratings-table .col-runner {
+  width: 230px;
+}
+
+.edgeiq-ratings-table th:nth-child(3),
+.edgeiq-ratings-table td:nth-child(3) {
+  width: 115px;
+}
+
+.edgeiq-ratings-table th:nth-child(4),
+.edgeiq-ratings-table td:nth-child(4),
+.edgeiq-ratings-table th:nth-child(5),
+.edgeiq-ratings-table td:nth-child(5),
+.edgeiq-ratings-table th:nth-child(6),
+.edgeiq-ratings-table td:nth-child(6),
+.edgeiq-ratings-table th:nth-child(7),
+.edgeiq-ratings-table td:nth-child(7),
+.edgeiq-ratings-table th:nth-child(8),
+.edgeiq-ratings-table td:nth-child(8),
+.edgeiq-ratings-table th:nth-child(9),
+.edgeiq-ratings-table td:nth-child(9),
+.edgeiq-ratings-table th:nth-child(10),
+.edgeiq-ratings-table td:nth-child(10) {
+  width: 92px;
+}
+
+.edgeiq-form-bar {
+  width: 82px;
+  height: 7px;
+  margin-left: auto;
+  margin-bottom: 3px;
+}
+
+.edgeiq-edge-pill {
+  min-width: 76px;
+  justify-content: center;
+}
+
+.edgeiq-runner {
+  min-width: 0;
+}
+
+.edgeiq-runner-meta strong,
+.edgeiq-runner-meta span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.edgeiq-ratings-table tbody tr.is-selected {
+  background: linear-gradient(90deg, rgba(52,211,153,0.20), rgba(15,23,42,0.78));
+}
+
+/* ================================
+   EDGEiQ RATINGS — TODAY CELL POLISH
+   ================================ */
+
+.edgeiq-ratings-table td:nth-child(3) {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.edgeiq-ratings-table td:nth-child(4),
+.edgeiq-ratings-table td:nth-child(5),
+.edgeiq-ratings-table td:nth-child(7),
+.edgeiq-ratings-table td:nth-child(8),
+.edgeiq-ratings-table td:nth-child(9),
+.edgeiq-ratings-table td:nth-child(10) {
+  font-variant-numeric: tabular-nums;
+}
+
+.edgeiq-form-bar {
+  display: block;
+  width: 70px;
+  height: 6px;
+  margin: 0 0 4px auto;
+  opacity: 0.95;
+}
+
+.edgeiq-ratings-table td {
+  line-height: 1.1;
+}
+
+.edgeiq-ratings-table tbody td:nth-child(1) {
+  color: #dbeafe;
+  font-weight: 950;
+}
+
+.edgeiq-ratings-table tbody td:nth-child(2) {
+  padding-left: 6px;
+}
+
+.edgeiq-ratings-table .edgeiq-runner img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.edgeiq-ratings-table tbody tr {
+  border-bottom: 1px solid rgba(148, 163, 184, 0.10);
+}
+
+.edgeiq-ratings-table tbody tr:last-child {
+  border-bottom: 0;
+}
+
+.edgeiq-edge-pill {
+  min-width: 72px;
+  padding: 4px 8px;
+}
+
+.edgeiq-ratings-table th {
+  background: rgba(15, 23, 42, 0.42);
+}

@@ -1,0 +1,365 @@
+/* =============================================================================
+EDGEIQ RACING - COMPACT RACE-SHAPE BOARD
+Readable lane map. Right-to-left direction. Barrier rail stays secondary.
+============================================================================= */
+
+.edgeiq-racecourse-map {
+  width: 100%;
+  color: #dbeafe;
+  font-family: "Geist Variable", Geist, Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 11px;
+}
+
+.racecourse-stage {
+  display: grid;
+  grid-template-columns: minmax(640px, 1fr) 188px;
+  gap: 6px;
+  min-height: 318px;
+  max-height: 340px;
+  overflow: hidden;
+  border: 1px solid rgba(45, 212, 191, 0.14);
+  border-radius: 7px;
+  background: linear-gradient(180deg, rgba(5, 16, 24, 0.99), rgba(2, 8, 14, 0.99));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.025);
+  padding: 6px;
+}
+
+.racecourse-track {
+  position: relative;
+  min-height: 306px;
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.10);
+  border-radius: 6px;
+  background:
+    linear-gradient(90deg, rgba(34, 197, 94, 0.055) 0 33.33%, rgba(234, 179, 8, 0.040) 33.33% 66.66%, rgba(45, 212, 191, 0.035) 66.66% 100%),
+    linear-gradient(180deg, rgba(4, 18, 18, 0.98), rgba(3, 10, 16, 0.98));
+}
+
+.racecourse-zone {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: flex-start;
+  padding: 8px 9px;
+  border-right: 1px solid rgba(148, 163, 184, 0.065);
+  pointer-events: none;
+}
+
+.racecourse-zone span {
+  color: rgba(148, 163, 184, 0.42);
+  font-size: 10px;
+  font-weight: 950;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.racecourse-zone-front {
+  left: 0;
+  width: 33.33%;
+}
+
+.racecourse-zone-mid {
+  left: 33.33%;
+  width: 33.33%;
+}
+
+.racecourse-zone-start {
+  left: 66.66%;
+  width: 33.34%;
+  border-right: 0;
+  justify-content: flex-end;
+}
+
+.racecourse-lane {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  height: 1px;
+  background: rgba(148, 163, 184, 0.075);
+  pointer-events: none;
+}
+
+.racecourse-direction-line {
+  position: absolute;
+  right: 18px;
+  bottom: 12px;
+  left: 18px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(45, 212, 191, 0.30), rgba(148, 163, 184, 0.04));
+  pointer-events: none;
+}
+
+.racecourse-direction-line::after {
+  position: absolute;
+  top: 50%;
+  left: -1px;
+  width: 7px;
+  height: 7px;
+  border-top: 1px solid rgba(45, 212, 191, 0.55);
+  border-left: 1px solid rgba(45, 212, 191, 0.55);
+  content: "";
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+.racecourse-runner {
+  position: absolute;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: 7px 20px 22px minmax(76px, 118px);
+  align-items: center;
+  gap: 4px;
+  width: 176px;
+  height: 26px;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  border-radius: 5px;
+  background: rgba(3, 10, 18, 0.97);
+  color: #f8fafc;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 2px 6px 2px 4px;
+  text-align: left;
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.racecourse-runner:hover,
+.racecourse-runner.selected {
+  z-index: 12;
+  border-color: rgba(45, 212, 191, 0.82);
+  box-shadow: 0 0 14px rgba(45, 212, 191, 0.20);
+}
+
+.racecourse-runner.on-pace {
+  border-color: rgba(34, 197, 94, 0.46);
+}
+
+.racecourse-runner.midfield {
+  border-color: rgba(234, 179, 8, 0.44);
+}
+
+.racecourse-runner.backmarker {
+  border-color: rgba(239, 68, 68, 0.44);
+}
+
+.racecourse-runner.unknown {
+  border-color: rgba(100, 116, 139, 0.42);
+}
+
+.racecourse-runner-pulse {
+  width: 6px;
+  height: 18px;
+  border-radius: 999px;
+  background: #94a3b8;
+}
+
+.racecourse-runner.on-pace .racecourse-runner-pulse {
+  background: #22c55e;
+}
+
+.racecourse-runner.midfield .racecourse-runner-pulse {
+  background: #eab308;
+}
+
+.racecourse-runner.backmarker .racecourse-runner-pulse {
+  background: #ef4444;
+}
+
+.racecourse-runner-no {
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border: 1px solid rgba(45, 212, 191, 0.20);
+  border-radius: 4px;
+  background: rgba(2, 8, 16, 0.96);
+  color: #ecfeff;
+  font-size: 11px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.racecourse-silk,
+.racecourse-barrier-silk {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 4px;
+  background: rgba(15, 23, 42, 0.92);
+}
+
+.racecourse-silk,
+.racecourse-silk img {
+  width: 20px;
+  height: 20px;
+}
+
+.racecourse-silk img,
+.racecourse-barrier-silk img {
+  display: block;
+  object-fit: cover;
+}
+
+.racecourse-runner strong {
+  min-width: 0;
+  overflow: hidden;
+  color: #f8fafc;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.racecourse-barriers {
+  display: grid;
+  align-content: stretch;
+  gap: 2px;
+  overflow: auto;
+  border: 1px solid rgba(148, 163, 184, 0.10);
+  border-radius: 6px;
+  background: rgba(2, 8, 16, 0.62);
+  padding: 4px;
+}
+
+.racecourse-barrier-runner {
+  display: grid;
+  grid-template-columns: 26px 22px minmax(0, 1fr);
+  gap: 4px;
+  align-items: center;
+  min-height: 0;
+  border: 1px solid rgba(148, 163, 184, 0.09);
+  border-radius: 4px;
+  background: rgba(6, 16, 24, 0.74);
+  color: #dbeafe;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 2px 4px;
+  text-align: left;
+}
+
+.racecourse-barrier-runner:hover,
+.racecourse-barrier-runner.selected {
+  border-color: rgba(45, 212, 191, 0.55);
+  background: rgba(10, 30, 30, 0.78);
+}
+
+.racecourse-barrier-runner.on-pace {
+  box-shadow: inset 2px 0 0 rgba(34, 197, 94, 0.90);
+}
+
+.racecourse-barrier-runner.midfield {
+  box-shadow: inset 2px 0 0 rgba(234, 179, 8, 0.90);
+}
+
+.racecourse-barrier-runner.backmarker {
+  box-shadow: inset 2px 0 0 rgba(239, 68, 68, 0.88);
+}
+
+.racecourse-barrier-runner.unknown {
+  box-shadow: inset 2px 0 0 rgba(100, 116, 139, 0.80);
+}
+
+.racecourse-barrier-number {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 20px;
+  border: 1px solid rgba(45, 212, 191, 0.18);
+  border-radius: 4px;
+  background: rgba(2, 8, 16, 0.96);
+  color: #ecfeff;
+  font-size: 11px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.racecourse-barrier-silk,
+.racecourse-barrier-silk img {
+  width: 20px;
+  height: 20px;
+}
+
+.racecourse-barrier-runner strong {
+  min-width: 0;
+  overflow: hidden;
+  color: #dbeafe;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.racecourse-barrier-runner em {
+  display: none;
+}
+
+@media (max-width: 1180px) {
+  .racecourse-stage {
+    grid-template-columns: 1fr;
+    max-height: none;
+  }
+
+  .racecourse-barriers {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .racecourse-stage {
+    min-height: auto;
+  }
+
+  .racecourse-track {
+    min-height: 340px;
+  }
+
+  .racecourse-runner {
+    width: 146px;
+    grid-template-columns: 6px 18px 20px minmax(58px, 1fr);
+  }
+
+  .racecourse-runner strong {
+    font-size: 12px;
+  }
+
+  .racecourse-barriers {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =============================================================================
+EDGEIQ SPEED MAP - TYPOGRAPHY NORMALISATION
+Keeps barrier-lane positioning intact; text scale only.
+============================================================================= */
+
+.edgeiq-racecourse-map,
+.edgeiq-racecourse-map * {
+  font-family: "Geist Variable", Geist, Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+}
+
+.racecourse-zone span {
+  font-size: 10px !important;
+  font-weight: 850 !important;
+  letter-spacing: .12em !important;
+  line-height: 1.05 !important;
+}
+
+.racecourse-runner strong,
+.racecourse-barrier-runner strong {
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0 !important;
+  line-height: 1.05 !important;
+}
+
+.racecourse-runner-no,
+.racecourse-barrier-number {
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0 !important;
+  line-height: 1 !important;
+}

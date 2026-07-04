@@ -1,0 +1,662 @@
+[
+  {
+    "track": "ALEXANDRA",
+    "slug": "alexandra",
+    "source_page": 1,
+    "width_px": 361,
+    "height_px": 447,
+    "raw": "raw_exact_crops/alexandra.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/alexandra.png"
+  },
+  {
+    "track": "ARARAT",
+    "slug": "ararat",
+    "source_page": 1,
+    "width_px": 162,
+    "height_px": 49,
+    "raw": "raw_exact_crops/ararat.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/ararat.png"
+  },
+  {
+    "track": "AVOCA",
+    "slug": "avoca",
+    "source_page": 1,
+    "width_px": 343,
+    "height_px": 357,
+    "raw": "raw_exact_crops/avoca.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/avoca.png"
+  },
+  {
+    "track": "BAIRNSDALE",
+    "slug": "bairnsdale",
+    "source_page": 1,
+    "width_px": 247,
+    "height_px": 346,
+    "raw": "raw_exact_crops/bairnsdale.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/bairnsdale.png"
+  },
+  {
+    "track": "BALLARAT",
+    "slug": "ballarat",
+    "source_page": 1,
+    "width_px": 387,
+    "height_px": 110,
+    "raw": "raw_exact_crops/ballarat.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/ballarat.png"
+  },
+  {
+    "track": "BALNARRING",
+    "slug": "balnarring",
+    "source_page": 1,
+    "width_px": 114,
+    "height_px": 52,
+    "raw": "raw_exact_crops/balnarring.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/balnarring.png"
+  },
+  {
+    "track": "BENALLA",
+    "slug": "benalla",
+    "source_page": 1,
+    "width_px": 291,
+    "height_px": 70,
+    "raw": "raw_exact_crops/benalla.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/benalla.png"
+  },
+  {
+    "track": "BENDIGO",
+    "slug": "bendigo",
+    "source_page": 1,
+    "width_px": 443,
+    "height_px": 116,
+    "raw": "raw_exact_crops/bendigo.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/bendigo.png"
+  },
+  {
+    "track": "BUCHAN",
+    "slug": "buchan",
+    "source_page": 1,
+    "width_px": 368,
+    "height_px": 235,
+    "raw": "raw_exact_crops/buchan.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/buchan.png"
+  },
+  {
+    "track": "BURRUMBEET",
+    "slug": "burrumbeet",
+    "source_page": 1,
+    "width_px": 56,
+    "height_px": 48,
+    "raw": "raw_exact_crops/burrumbeet.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/burrumbeet.png"
+  },
+  {
+    "track": "CAMPERDOWN",
+    "slug": "camperdown",
+    "source_page": 1,
+    "width_px": 110,
+    "height_px": 68,
+    "raw": "raw_exact_crops/camperdown.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/camperdown.png"
+  },
+  {
+    "track": "CASTERTON",
+    "slug": "casterton",
+    "source_page": 1,
+    "width_px": 200,
+    "height_px": 57,
+    "raw": "raw_exact_crops/casterton.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/casterton.png"
+  },
+  {
+    "track": "COLAC",
+    "slug": "colac",
+    "source_page": 1,
+    "width_px": 150,
+    "height_px": 60,
+    "raw": "raw_exact_crops/colac.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/colac.png"
+  },
+  {
+    "track": "COLERAINE",
+    "slug": "coleraine",
+    "source_page": 1,
+    "width_px": 54,
+    "height_px": 47,
+    "raw": "raw_exact_crops/coleraine.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/coleraine.png"
+  },
+  {
+    "track": "CRANBOURNE",
+    "slug": "cranbourne",
+    "source_page": 1,
+    "width_px": 451,
+    "height_px": 289,
+    "raw": "raw_exact_crops/cranbourne.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/cranbourne.png"
+  },
+  {
+    "track": "DEDERANG",
+    "slug": "dederang",
+    "source_page": 1,
+    "width_px": 330,
+    "height_px": 423,
+    "raw": "raw_exact_crops/dederang.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/dederang.png"
+  },
+  {
+    "track": "DONALD",
+    "slug": "donald",
+    "source_page": 2,
+    "width_px": 408,
+    "height_px": 308,
+    "raw": "raw_exact_crops/donald.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/donald.png"
+  },
+  {
+    "track": "DROUIN",
+    "slug": "drouin",
+    "source_page": 2,
+    "width_px": 417,
+    "height_px": 254,
+    "raw": "raw_exact_crops/drouin.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/drouin.png"
+  },
+  {
+    "track": "DUNKELD",
+    "slug": "dunkeld",
+    "source_page": 2,
+    "width_px": 441,
+    "height_px": 254,
+    "raw": "raw_exact_crops/dunkeld.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/dunkeld.png"
+  },
+  {
+    "track": "ECHUCA",
+    "slug": "echuca",
+    "source_page": 2,
+    "width_px": 405,
+    "height_px": 376,
+    "raw": "raw_exact_crops/echuca.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/echuca.png"
+  },
+  {
+    "track": "EDENHOPE",
+    "slug": "edenhope",
+    "source_page": 2,
+    "width_px": 438,
+    "height_px": 258,
+    "raw": "raw_exact_crops/edenhope.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/edenhope.png"
+  },
+  {
+    "track": "GEELONG_TURF",
+    "slug": "geelong_turf",
+    "source_page": 2,
+    "width_px": 424,
+    "height_px": 200,
+    "raw": "raw_exact_crops/geelong_turf.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/geelong_turf.png"
+  },
+  {
+    "track": "GEELONG_SYNTHETIC",
+    "slug": "geelong_synthetic",
+    "source_page": 2,
+    "width_px": 441,
+    "height_px": 200,
+    "raw": "raw_exact_crops/geelong_synthetic.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/geelong_synthetic.png"
+  },
+  {
+    "track": "GREAT_WESTERN",
+    "slug": "great_western",
+    "source_page": 2,
+    "width_px": 440,
+    "height_px": 228,
+    "raw": "raw_exact_crops/great_western.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/great_western.png"
+  },
+  {
+    "track": "GUNBOWER",
+    "slug": "gunbower",
+    "source_page": 2,
+    "width_px": 571,
+    "height_px": 330,
+    "raw": "raw_exact_crops/gunbower.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/gunbower.png"
+  },
+  {
+    "track": "HAMILTON",
+    "slug": "hamilton",
+    "source_page": 2,
+    "width_px": 571,
+    "height_px": 334,
+    "raw": "raw_exact_crops/hamilton.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/hamilton.png"
+  },
+  {
+    "track": "HANGING_ROCK",
+    "slug": "hanging_rock",
+    "source_page": 2,
+    "width_px": 571,
+    "height_px": 334,
+    "raw": "raw_exact_crops/hanging_rock.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/hanging_rock.png"
+  },
+  {
+    "track": "HEALESVILLE",
+    "slug": "healesville",
+    "source_page": 2,
+    "width_px": 356,
+    "height_px": 328,
+    "raw": "raw_exact_crops/healesville.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/healesville.png"
+  },
+  {
+    "track": "HORSHAM",
+    "slug": "horsham",
+    "source_page": 2,
+    "width_px": 465,
+    "height_px": 191,
+    "raw": "raw_exact_crops/horsham.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/horsham.png"
+  },
+  {
+    "track": "KERANG",
+    "slug": "kerang",
+    "source_page": 2,
+    "width_px": 368,
+    "height_px": 196,
+    "raw": "raw_exact_crops/kerang.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/kerang.png"
+  },
+  {
+    "track": "KILMORE",
+    "slug": "kilmore",
+    "source_page": 2,
+    "width_px": 460,
+    "height_px": 225,
+    "raw": "raw_exact_crops/kilmore.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/kilmore.png"
+  },
+  {
+    "track": "KYNETON",
+    "slug": "kyneton",
+    "source_page": 2,
+    "width_px": 402,
+    "height_px": 206,
+    "raw": "raw_exact_crops/kyneton.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/kyneton.png"
+  },
+  {
+    "track": "MANANGATANG",
+    "slug": "manangatang",
+    "source_page": 3,
+    "width_px": 437,
+    "height_px": 401,
+    "raw": "raw_exact_crops/manangatang.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/manangatang.png"
+  },
+  {
+    "track": "MANSFIELD",
+    "slug": "mansfield",
+    "source_page": 3,
+    "width_px": 385,
+    "height_px": 356,
+    "raw": "raw_exact_crops/mansfield.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/mansfield.png"
+  },
+  {
+    "track": "MERTON",
+    "slug": "merton",
+    "source_page": 3,
+    "width_px": 565,
+    "height_px": 347,
+    "raw": "raw_exact_crops/merton.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/merton.png"
+  },
+  {
+    "track": "MILDURA",
+    "slug": "mildura",
+    "source_page": 3,
+    "width_px": 369,
+    "height_px": 255,
+    "raw": "raw_exact_crops/mildura.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/mildura.png"
+  },
+  {
+    "track": "MOE",
+    "slug": "moe",
+    "source_page": 3,
+    "width_px": 354,
+    "height_px": 299,
+    "raw": "raw_exact_crops/moe.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/moe.png"
+  },
+  {
+    "track": "MORNINGTON",
+    "slug": "mornington",
+    "source_page": 3,
+    "width_px": 381,
+    "height_px": 326,
+    "raw": "raw_exact_crops/mornington.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/mornington.png"
+  },
+  {
+    "track": "MORTLAKE",
+    "slug": "mortlake",
+    "source_page": 3,
+    "width_px": 428,
+    "height_px": 193,
+    "raw": "raw_exact_crops/mortlake.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/mortlake.png"
+  },
+  {
+    "track": "MT_WYCHEPROOF",
+    "slug": "mt_wycheproof",
+    "source_page": 3,
+    "width_px": 273,
+    "height_px": 359,
+    "raw": "raw_exact_crops/mt_wycheproof.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/mt_wycheproof.png"
+  },
+  {
+    "track": "MURTOA",
+    "slug": "murtoa",
+    "source_page": 3,
+    "width_px": 401,
+    "height_px": 326,
+    "raw": "raw_exact_crops/murtoa.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/murtoa.png"
+  },
+  {
+    "track": "NHILL",
+    "slug": "nhill",
+    "source_page": 3,
+    "width_px": 353,
+    "height_px": 306,
+    "raw": "raw_exact_crops/nhill.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/nhill.png"
+  },
+  {
+    "track": "OMEO",
+    "slug": "omeo",
+    "source_page": 3,
+    "width_px": 571,
+    "height_px": 339,
+    "raw": "raw_exact_crops/omeo.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/omeo.png"
+  },
+  {
+    "track": "PAKENHAM_TYNONG",
+    "slug": "pakenham_tynong",
+    "source_page": 3,
+    "width_px": 517,
+    "height_px": 332,
+    "raw": "raw_exact_crops/pakenham_tynong.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/pakenham_tynong.png"
+  },
+  {
+    "track": "PENSHURST",
+    "slug": "penshurst",
+    "source_page": 3,
+    "width_px": 421,
+    "height_px": 371,
+    "raw": "raw_exact_crops/penshurst.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/penshurst.png"
+  },
+  {
+    "track": "SALE",
+    "slug": "sale",
+    "source_page": 3,
+    "width_px": 322,
+    "height_px": 395,
+    "raw": "raw_exact_crops/sale.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/sale.png"
+  },
+  {
+    "track": "SEYMOUR",
+    "slug": "seymour",
+    "source_page": 3,
+    "width_px": 372,
+    "height_px": 336,
+    "raw": "raw_exact_crops/seymour.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/seymour.png"
+  },
+  {
+    "track": "ST_ARNAUD",
+    "slug": "st_arnaud",
+    "source_page": 3,
+    "width_px": 393,
+    "height_px": 275,
+    "raw": "raw_exact_crops/st_arnaud.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/st_arnaud.png"
+  },
+  {
+    "track": "STAWELL",
+    "slug": "stawell",
+    "source_page": 4,
+    "width_px": 420,
+    "height_px": 309,
+    "raw": "raw_exact_crops/stawell.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/stawell.png"
+  },
+  {
+    "track": "STONY_CREEK",
+    "slug": "stony_creek",
+    "source_page": 4,
+    "width_px": 325,
+    "height_px": 313,
+    "raw": "raw_exact_crops/stony_creek.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/stony_creek.png"
+  },
+  {
+    "track": "SWAN_HILL",
+    "slug": "swan_hill",
+    "source_page": 4,
+    "width_px": 417,
+    "height_px": 244,
+    "raw": "raw_exact_crops/swan_hill.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/swan_hill.png"
+  },
+  {
+    "track": "SWIFTS_CREEK",
+    "slug": "swifts_creek",
+    "source_page": 4,
+    "width_px": 455,
+    "height_px": 250,
+    "raw": "raw_exact_crops/swifts_creek.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/swifts_creek.png"
+  },
+  {
+    "track": "TATURA",
+    "slug": "tatura",
+    "source_page": 4,
+    "width_px": 386,
+    "height_px": 305,
+    "raw": "raw_exact_crops/tatura.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/tatura.png"
+  },
+  {
+    "track": "TERANG",
+    "slug": "terang",
+    "source_page": 4,
+    "width_px": 458,
+    "height_px": 276,
+    "raw": "raw_exact_crops/terang.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/terang.png"
+  },
+  {
+    "track": "TOWONG",
+    "slug": "towong",
+    "source_page": 4,
+    "width_px": 395,
+    "height_px": 267,
+    "raw": "raw_exact_crops/towong.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/towong.png"
+  },
+  {
+    "track": "TRARALGON",
+    "slug": "traralgon",
+    "source_page": 4,
+    "width_px": 392,
+    "height_px": 317,
+    "raw": "raw_exact_crops/traralgon.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/traralgon.png"
+  },
+  {
+    "track": "WANGARATTA",
+    "slug": "wangaratta",
+    "source_page": 4,
+    "width_px": 404,
+    "height_px": 243,
+    "raw": "raw_exact_crops/wangaratta.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/wangaratta.png"
+  },
+  {
+    "track": "WARRACKNABEAL",
+    "slug": "warracknabeal",
+    "source_page": 4,
+    "width_px": 359,
+    "height_px": 207,
+    "raw": "raw_exact_crops/warracknabeal.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/warracknabeal.png"
+  },
+  {
+    "track": "WARRNAMBOOL",
+    "slug": "warrnambool",
+    "source_page": 4,
+    "width_px": 368,
+    "height_px": 193,
+    "raw": "raw_exact_crops/warrnambool.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/warrnambool.png"
+  },
+  {
+    "track": "WERRIBEE",
+    "slug": "werribee",
+    "source_page": 4,
+    "width_px": 350,
+    "height_px": 241,
+    "raw": "raw_exact_crops/werribee.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/werribee.png"
+  },
+  {
+    "track": "WODONGA",
+    "slug": "wodonga",
+    "source_page": 4,
+    "width_px": 437,
+    "height_px": 219,
+    "raw": "raw_exact_crops/wodonga.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/wodonga.png"
+  },
+  {
+    "track": "WOOLAMAI",
+    "slug": "woolamai",
+    "source_page": 4,
+    "width_px": 417,
+    "height_px": 291,
+    "raw": "raw_exact_crops/woolamai.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/woolamai.png"
+  },
+  {
+    "track": "YARRA_VALLEY",
+    "slug": "yarra_valley",
+    "source_page": 4,
+    "width_px": 360,
+    "height_px": 253,
+    "raw": "raw_exact_crops/yarra_valley.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/yarra_valley.png"
+  },
+  {
+    "track": "YEA",
+    "slug": "yea",
+    "source_page": 4,
+    "width_px": 449,
+    "height_px": 202,
+    "raw": "raw_exact_crops/yea.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/yea.png"
+  },
+  {
+    "track": "CAULFIELD",
+    "slug": "caulfield",
+    "source_page": 5,
+    "width_px": 464,
+    "height_px": 453,
+    "raw": "raw_exact_crops/caulfield.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/caulfield.png"
+  },
+  {
+    "track": "FLEMINGTON",
+    "slug": "flemington",
+    "source_page": 5,
+    "width_px": 702,
+    "height_px": 409,
+    "raw": "raw_exact_crops/flemington.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/flemington.png"
+  },
+  {
+    "track": "MOONEE_VALLEY",
+    "slug": "moonee_valley",
+    "source_page": 5,
+    "width_px": 628,
+    "height_px": 607,
+    "raw": "raw_exact_crops/moonee_valley.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/moonee_valley.png"
+  },
+  {
+    "track": "SANDOWN",
+    "slug": "sandown",
+    "source_page": 5,
+    "width_px": 825,
+    "height_px": 484,
+    "raw": "raw_exact_crops/sandown.png",
+    "edgeiq": "edgeiq_style_exact_dimensions/sandown.png"
+  },
+  {
+    "track": "GEELONG",
+    "slug": "geelong",
+    "source_alias_of": "geelong_turf",
+    "width_px": 424,
+    "height_px": 200,
+    "edgeiq": "edgeiq_style_exact_dimensions/geelong.png"
+  },
+  {
+    "track": "PAKENHAM",
+    "slug": "pakenham",
+    "source_alias_of": "pakenham_tynong",
+    "width_px": 517,
+    "height_px": 332,
+    "edgeiq": "edgeiq_style_exact_dimensions/pakenham.png"
+  },
+  {
+    "track": "PAKENHAM_SYNTHETIC",
+    "slug": "pakenham_synthetic",
+    "source_alias_of": "pakenham_tynong",
+    "width_px": 517,
+    "height_px": 332,
+    "edgeiq": "edgeiq_style_exact_dimensions/pakenham_synthetic.png"
+  },
+  {
+    "track": "BALLARAT_SYNTHETIC",
+    "slug": "ballarat_synthetic",
+    "source_alias_of": "ballarat",
+    "width_px": 387,
+    "height_px": 110,
+    "edgeiq": "edgeiq_style_exact_dimensions/ballarat_synthetic.png"
+  },
+  {
+    "track": "SANDOWN_HILLSIDE",
+    "slug": "sandown_hillside",
+    "source_alias_of": "sandown",
+    "width_px": 825,
+    "height_px": 484,
+    "edgeiq": "edgeiq_style_exact_dimensions/sandown_hillside.png"
+  },
+  {
+    "track": "SANDOWN_LAKESIDE",
+    "slug": "sandown_lakeside",
+    "source_alias_of": "sandown",
+    "width_px": 825,
+    "height_px": 484,
+    "edgeiq": "edgeiq_style_exact_dimensions/sandown_lakeside.png"
+  }
+]

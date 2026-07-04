@@ -1,0 +1,549 @@
+﻿from __future__ import annotations
+
+import argparse
+import csv
+import json
+import re
+import subprocess
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any
+
+
+ROOT = Path(__file__).resolve().parents[1]
+DATA = ROOT / "public" / "data"
+TMP = ROOT / "outputs" / "tmp"
+
+SOURCE = DATA / "edgeiq_racingcom_historical_calendar_backfill_v1.csv"
+
+OUT = DATA / "edgeiq_racingcom_results_warehouse_v1.csv"
+AUDIT = DATA / "edgeiq_racingcom_results_warehouse_v1_audit.csv"
+
+BATCH_DIR = DATA / "edgeiq_racingcom_results_batches_v1"
+
+OUT_COLUMNS = [
+    "built_at",
+    "meeting_date",
+    "track",
+    "race_no",
+    "race_key",
+    "source_url",
+    "page_loaded",
+    "visible_results",
+    "race_name",
+    "distance",
+    "race_class",
+    "track_condition",
+    "race_time",
+    "prize_money",
+    "field_size",
+    "finish_position",
+    "horse_no",
+    "horse_name",
+    "horse_key",
+    "barrier",
+    "trainer",
+    "jockey",
+    "weight",
+    "prizemoney_earned",
+    "in_run",
+    "margin",
+    "sp",
+    "status",
+    "error",
+]
+
+AUDIT_COLUMNS = [
+    "built_at",
+    "candidate_races_available",
+    "batch_size",
+    "offset",
+    "attempted_pages",
+    "pages_loaded",
+    "visible_result_pages",
+    "runner_rows_output",
+    "unique_races",
+    "unique_horses",
+    "graphql_endpoint_called_by_script",
+    "api_key_extracted",
+    "private_endpoint_used",
+    "final_status",
+]
+
+
+NODE_HELPER = r"""
+const fs = require("fs");
+
+const inputPath = process.argv[2];
+const outputPath = process.argv[3];
+
+const rows = JSON.parse(fs.readFileSync(inputPath, "utf8"));
+
+const PUBLIC_RACE_RE = /^https:\/\/www\.racing\.com\/form\/\d{4}-\d{2}-\d{2}\/[^/]+\/race\/\d+(?:[?#].*)?$/i;
+
+function clean(value) {
+  return String(value || "").replace(/\s+/g, " ").trim();
+}
+
+function horseKey(value) {
+  return clean(value).toUpperCase().replace(/\([^)]*\)/g, "").replace(/[^A-Z0-9]+/g, "");
+}
+
+function ordinalPos(value) {
+  const m = clean(value).match(/\d+/);
+  return m ? String(parseInt(m[0], 10)) : "";
+}
+
+function money(value) {
+  return clean(value).replace(/,/g, "");
+}
+
+function parseHorseCell(text) {
+  const raw = clean(text);
+  let horseNo = "";
+  let barrier = "";
+  let horseName = "";
+  let trainer = "";
+  let jockey = "";
+
+  const top = raw.split(/\bT:/)[0].split(/\bJ:/)[0].trim();
+
+  let m = top.match(/^(\d+)\.?\s+(.+?)\s*\((\d+)\)\s*$/);
+  if (m) {
+    horseNo = m[1];
+    horseName = clean(m[2]);
+    barrier = m[3];
+  } else {
+    m = top.match(/^(\d+)\.?\s+(.+)$/);
+    if (m) {
+      horseNo = m[1];
+      horseName = clean(m[2]).replace(/\s*\(\d+\)\s*$/, "");
+      const b = top.match(/\((\d+)\)\s*$/);
+      barrier = b ? b[1] : "";
+    } else {
+      horseName = top;
+    }
+  }
+
+  const t = raw.match(/\bT:\s*(.*?)(?:\s+\bJ:|$)/);
+  if (t) trainer = clean(t[1]);
+
+  const j = raw.match(/\bJ:\s*(.*?)$/);
+  if (j) jockey = clean(j[1]);
+
+  return { horseNo, horseName, barrier, trainer, jockey };
+}
+
+function pageMeta() {
+  const body = clean(document.body ? document.body.innerText : "");
+  const raceName = clean((document.querySelector(".race-title, h1, h2, h3") || {}).innerText || "");
+
+  function find(pattern) {
+    const m = body.match(pattern);
+    return m ? clean(m[1]) : "";
+  }
+
+  return {
+    raceName: raceName || find(/\n\s*([A-Za-z0-9'’&().,\-\s]+)\s*\n\s*(?:Results|Stewards)/i),
+    distance: find(/\b(\d{3,4}m)\b/i),
+    raceClass: find(/\b(BM\d+|MAIDEN|MDN|GROUP\s*\d|LISTED|OPEN|HANDICAP|CLASS\s*\d)\b/i),
+    trackCondition: find(/\b(?:Track condition|Track)\s*[:\-]?\s*(Good\s*\d|Soft\s*\d|Heavy\s*\d|Synthetic|Firm\s*\d)\b/i),
+    raceTime: find(/\bRace Time:\s*([0-9:.]+)/i),
+    prizeMoney: find(/\bPrize Money:\s*\$?([0-9,]+)/i),
+  };
+}
+
+function extractResults(row) {
+  if (!PUBLIC_RACE_RE.test(row.source_url || "")) {
+    return {
+      pageLoaded: false,
+      visibleResults: false,
+      rows: [],
+      status: "SAFETY_BLOCKED",
+      error: "Rejected non-public Racing.com race URL.",
+    };
+  }
+
+  const meta = pageMeta();
+  const output = [];
+
+  const tables = Array.from(document.querySelectorAll("table"));
+  for (const table of tables) {
+    const trs = Array.from(table.querySelectorAll("tr"));
+    if (trs.length < 2) continue;
+
+    const headers = Array.from(trs[0].querySelectorAll("th,td")).map((c) => clean(c.innerText || c.textContent || ""));
+    const headerText = headers.join(" ").toUpperCase();
+
+    if (!/POS/.test(headerText) || !/HORSE/.test(headerText)) continue;
+
+    for (const tr of trs.slice(1)) {
+      const cells = Array.from(tr.querySelectorAll("td,th")).map((c) => clean(c.innerText || c.textContent || ""));
+      if (cells.length < 2) continue;
+
+      const pos = ordinalPos(cells[0]);
+      if (!pos) continue;
+
+      const horseCell = cells[1] || "";
+      const hp = parseHorseCell(horseCell);
+      if (!hp.horseName) continue;
+
+      const joined = cells.join(" | ");
+
+      output.push({
+        raceName: meta.raceName,
+        distance: meta.distance,
+        raceClass: meta.raceClass,
+        trackCondition: meta.trackCondition,
+        raceTime: meta.raceTime,
+        prizeMoney: meta.prizeMoney,
+
+        finishPosition: pos,
+        horseNo: hp.horseNo,
+        horseName: hp.horseName,
+        horseKey: horseKey(hp.horseName),
+        barrier: hp.barrier,
+        trainer: hp.trainer,
+        jockey: hp.jockey,
+
+        weight: cells.find((x) => /\b\d{2,3}kg\b/i.test(x)) || "",
+        prizemoneyEarned: money(cells.find((x) => /^\$[0-9,]+$/.test(x)) || ""),
+        inRun: cells.find((x) => /^\d+(?:st|nd|rd|th)?\/\d+(?:st|nd|rd|th)?$/i.test(x)) || "",
+        margin: cells.find((x) => /^\d+(?:\.\d+)?L$/i.test(x)) || "",
+        sp: cells.slice().reverse().find((x) => /^\$?\d+(?:\.\d{1,2})?$/.test(x) && !/kg/i.test(x)) || "",
+        rawText: joined,
+      });
+    }
+  }
+
+  return {
+    pageLoaded: true,
+    visibleResults: output.length > 0,
+    rows: output,
+    status: output.length ? "RENDERED_RESULTS_EXTRACTED" : "NO_RENDERED_RESULTS_FOUND",
+    error: "",
+  };
+}
+
+async function createBrowser(playwright) {
+  const browser = await playwright.chromium.launch({
+    headless: true,
+    args: ["--disable-dev-shm-usage", "--no-sandbox"],
+  });
+  const context = await browser.newContext({
+    viewport: { width: 1440, height: 1000 },
+    userAgent: "EDGEiQ-Racing/1.0 rendered-results-harvest (public Racing.com page only)",
+  });
+  return { browser, context };
+}
+
+async function settle(page) {
+  try { await page.waitForLoadState("networkidle", { timeout: 6000 }); } catch (_err) {}
+  await page.waitForTimeout(900);
+  for (let i = 0; i < 5; i += 1) {
+    await page.mouse.wheel(0, 1800);
+    await page.waitForTimeout(120);
+  }
+  await page.waitForTimeout(350);
+}
+
+(async () => {
+  const payload = { pages: [], rows: [], runtime_error: "" };
+
+  function writeProgress() {
+    fs.writeFileSync(outputPath, JSON.stringify(payload, null, 2));
+  }
+
+  let playwright;
+  try {
+    playwright = require("playwright");
+  } catch (err) {
+    payload.runtime_error = `playwright_require_failed:${err.message || String(err)}`;
+    writeProgress();
+    return;
+  }
+
+  let browser, context;
+  try {
+    const bundle = await createBrowser(playwright);
+    browser = bundle.browser;
+    context = bundle.context;
+  } catch (err) {
+    payload.runtime_error = `browser_launch_failed:${err.message || String(err)}`;
+    writeProgress();
+    return;
+  }
+
+  const concurrency = Math.max(1, Math.min(4, Number(process.env.EDGEIQ_RESULTS_CONCURRENCY || 4), rows.length));
+  let cursor = 0;
+
+  async function worker() {
+    const page = await context.newPage();
+    try {
+      while (true) {
+        const index = cursor;
+        cursor += 1;
+        if (index >= rows.length) break;
+
+        const row = rows[index];
+        let result;
+        try {
+          await page.goto(row.source_url, { waitUntil: "domcontentloaded", timeout: 90000 });
+          await settle(page);
+          result = await page.evaluate(extractResults, row);
+        } catch (err) {
+          result = {
+            pageLoaded: false,
+            visibleResults: false,
+            rows: [],
+            status: "NO_RENDERED_PAGE_ACCESS",
+            error: err && err.message ? err.message : String(err),
+          };
+        }
+
+        payload.pages.push({
+          source_url: row.source_url || "",
+          meeting_date: row.meeting_date || "",
+          track: row.track || "",
+          race_no: row.race_no || "",
+          page_loaded: result.pageLoaded ? "TRUE" : "FALSE",
+          visible_results: result.visibleResults ? "TRUE" : "FALSE",
+          runner_rows: result.rows.length,
+          status: result.status,
+          error: result.error || "",
+        });
+
+        for (const item of result.rows) {
+          payload.rows.push({
+            meeting_date: row.meeting_date || "",
+            track: row.track || "",
+            race_no: row.race_no || "",
+            race_key: `${row.meeting_date || ""}|${row.track || ""}|${row.race_no || ""}`,
+            source_url: row.source_url || "",
+            page_loaded: result.pageLoaded ? "TRUE" : "FALSE",
+            visible_results: result.visibleResults ? "TRUE" : "FALSE",
+            ...item,
+            status: result.status,
+            error: result.error || "",
+          });
+        }
+
+        writeProgress();
+      }
+    } finally {
+      await page.close().catch(() => {});
+    }
+  }
+
+  await Promise.all(Array.from({ length: concurrency }, () => worker()));
+  await browser.close().catch(() => {});
+  writeProgress();
+})();
+"""
+
+
+def clean(value: Any) -> str:
+    return "" if value is None else str(value).strip()
+
+
+def read_csv(path: Path) -> list[dict[str, str]]:
+    if not path.exists():
+        return []
+    with path.open("r", encoding="utf-8-sig", newline="") as f:
+        return list(csv.DictReader(f))
+
+
+def write_csv(path: Path, rows: list[dict[str, Any]], columns: list[str]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_suffix(".tmp")
+    with tmp.open("w", encoding="utf-8", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=columns, extrasaction="ignore")
+        writer.writeheader()
+        for row in rows:
+            writer.writerow({c: row.get(c, "") for c in columns})
+    tmp.replace(path)
+
+
+def horse_key(value: str) -> str:
+    return re.sub(r"[^A-Z0-9]+", "", re.sub(r"\([^)]*\)", "", clean(value).upper()))
+
+
+def load_candidates(start_date: str, end_date: str) -> list[dict[str, str]]:
+    rows = []
+    seen = set()
+
+    for row in read_csv(SOURCE):
+        meeting_date = clean(row.get("meeting_date"))
+        track = clean(row.get("track"))
+        race_no = clean(row.get("race_no"))
+        race_url = clean(row.get("race_url")) or clean(row.get("speed_data_url")).replace("/speed-data", "")
+
+        if not meeting_date or not track or not race_no or not race_url:
+            continue
+        if start_date and meeting_date < start_date:
+            continue
+        if end_date and meeting_date > end_date:
+            continue
+
+        key = (meeting_date, track, race_no, race_url)
+        if key in seen:
+            continue
+        seen.add(key)
+
+        rows.append({
+            "meeting_date": meeting_date,
+            "track": track,
+            "race_no": race_no,
+            "source_url": race_url,
+        })
+
+    rows.sort(key=lambda r: (r["meeting_date"], r["track"], int(r["race_no"])))
+    return rows
+
+
+def run_node(selected: list[dict[str, str]]) -> dict[str, Any]:
+    TMP.mkdir(parents=True, exist_ok=True)
+    helper = TMP / "build_edgeiq_racingcom_rendered_results_harvester_v1_helper.cjs"
+    input_path = TMP / "build_edgeiq_racingcom_rendered_results_harvester_v1_input.json"
+    output_path = TMP / "build_edgeiq_racingcom_rendered_results_harvester_v1_output.json"
+
+    helper.write_text(NODE_HELPER, encoding="utf-8")
+    input_path.write_text(json.dumps(selected, ensure_ascii=False), encoding="utf-8")
+    output_path.write_text(json.dumps({"pages": [], "rows": [], "runtime_error": ""}), encoding="utf-8")
+
+    completed = subprocess.run(
+        ["node", str(helper), str(input_path), str(output_path)],
+        cwd=str(ROOT),
+        capture_output=True,
+        text=True,
+        timeout=max(600, len(selected) * 45),
+    )
+
+    try:
+        payload = json.loads(output_path.read_text(encoding="utf-8"))
+    except Exception:
+        payload = {"pages": [], "rows": [], "runtime_error": "output_parse_failed"}
+
+    if completed.returncode != 0 and not payload.get("runtime_error"):
+        payload["runtime_error"] = completed.stderr or completed.stdout or f"node_exit_{completed.returncode}"
+
+    return payload
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Harvest rendered Racing.com race results from public result pages.")
+    parser.add_argument("--batch-size", type=int, default=250)
+    parser.add_argument("--offset", type=int, default=0)
+    parser.add_argument("--start-date", default="")
+    parser.add_argument("--end-date", default="")
+    parser.add_argument("--force", action="store_true")
+    return parser.parse_args()
+
+
+def main() -> None:
+    args = parse_args()
+    built_at = datetime.now(timezone.utc).isoformat()
+
+    candidates = load_candidates(args.start_date, args.end_date)
+    batch_size = max(0, args.batch_size)
+    offset = max(0, args.offset)
+    selected = candidates[offset : offset + batch_size]
+
+    print(f"[edgeiq_results_v1] candidate_races_available={len(candidates)} batch_size={batch_size} offset={offset} selected={len(selected)}")
+    if selected:
+        print(f"[edgeiq_results_v1] first_url={selected[0]['source_url']}")
+
+    payload = run_node(selected) if selected else {"pages": [], "rows": [], "runtime_error": ""}
+
+    pages = list(payload.get("pages") or [])
+    rows = []
+
+    for row in list(payload.get("rows") or []):
+        race_key = clean(row.get("race_key"))
+        rows.append({
+            "built_at": built_at,
+            "meeting_date": clean(row.get("meeting_date")),
+            "track": clean(row.get("track")),
+            "race_no": clean(row.get("race_no")),
+            "race_key": race_key,
+            "source_url": clean(row.get("source_url")),
+            "page_loaded": clean(row.get("page_loaded")),
+            "visible_results": clean(row.get("visible_results")),
+            "race_name": clean(row.get("raceName")),
+            "distance": clean(row.get("distance")),
+            "race_class": clean(row.get("raceClass")),
+            "track_condition": clean(row.get("trackCondition")),
+            "race_time": clean(row.get("raceTime")),
+            "prize_money": clean(row.get("prizeMoney")),
+            "field_size": "",
+            "finish_position": clean(row.get("finishPosition")),
+            "horse_no": clean(row.get("horseNo")),
+            "horse_name": clean(row.get("horseName")),
+            "horse_key": clean(row.get("horseKey")) or horse_key(row.get("horseName")),
+            "barrier": clean(row.get("barrier")),
+            "trainer": clean(row.get("trainer")),
+            "jockey": clean(row.get("jockey")),
+            "weight": clean(row.get("weight")),
+            "prizemoney_earned": clean(row.get("prizemoneyEarned")),
+            "in_run": clean(row.get("inRun")),
+            "margin": clean(row.get("margin")),
+            "sp": clean(row.get("sp")),
+            "status": clean(row.get("status")),
+            "error": clean(row.get("error")),
+        })
+
+    field_sizes = {}
+    for row in rows:
+        key = row["race_key"]
+        field_sizes[key] = field_sizes.get(key, 0) + 1
+    for row in rows:
+        row["field_size"] = field_sizes.get(row["race_key"], "")
+
+    batch_prefix = f"batch_{offset:04d}"
+    batch_out = BATCH_DIR / f"{batch_prefix}_results.csv"
+    batch_audit = BATCH_DIR / f"{batch_prefix}_audit.csv"
+
+    pages_loaded = sum(1 for p in pages if clean(p.get("page_loaded")) == "TRUE")
+    visible_pages = sum(1 for p in pages if clean(p.get("visible_results")) == "TRUE")
+    unique_races = len({r["race_key"] for r in rows if r["race_key"]})
+    unique_horses = len({r["horse_key"] for r in rows if r["horse_key"]})
+
+    final_status = "NO_CANDIDATE_RACES"
+    if selected and rows:
+        final_status = "RENDERED_RESULTS_HARVEST_BUILT"
+    elif selected:
+        final_status = "NO_RENDERED_RESULTS_FOUND"
+
+    audit_row = {
+        "built_at": built_at,
+        "candidate_races_available": len(candidates),
+        "batch_size": batch_size,
+        "offset": offset,
+        "attempted_pages": len(selected),
+        "pages_loaded": pages_loaded,
+        "visible_result_pages": visible_pages,
+        "runner_rows_output": len(rows),
+        "unique_races": unique_races,
+        "unique_horses": unique_horses,
+        "graphql_endpoint_called_by_script": "FALSE",
+        "api_key_extracted": "FALSE",
+        "private_endpoint_used": "FALSE",
+        "final_status": final_status,
+    }
+
+    write_csv(OUT, rows, OUT_COLUMNS)
+    write_csv(AUDIT, [audit_row], AUDIT_COLUMNS)
+    write_csv(batch_out, rows, OUT_COLUMNS)
+    write_csv(batch_audit, [audit_row], AUDIT_COLUMNS)
+
+    if payload.get("runtime_error"):
+        print(f"[edgeiq_results_v1] browser warning: {payload.get('runtime_error')}")
+
+    print(f"[edgeiq_results_v1] pages_loaded={pages_loaded} visible_pages={visible_pages} rows={len(rows)} unique_races={unique_races}")
+    print(f"[edgeiq_results_v1] final_status={final_status}")
+    print(f"[edgeiq_results_v1] wrote {OUT.relative_to(ROOT)}")
+    print(f"[edgeiq_results_v1] archived batch {offset} to {BATCH_DIR.relative_to(ROOT)}")
+
+
+if __name__ == "__main__":
+    main()

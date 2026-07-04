@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">EDGEiQ Flemington Track Map</title>
+  <desc id="desc">Minimal EDGEiQ dark-theme Flemington schematic based on the clean VRC wind tracker map style.</desc>
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="48%" r="78%">
+      <stop offset="0%" stop-color="#07111f"/>
+      <stop offset="100%" stop-color="#05080f"/>
+    </radialGradient>
+    <filter id="trackGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#5eead4" flood-opacity=".12"/>
+    </filter>
+    <style><![CDATA[
+      svg { background:#05080f; }
+      .bg { fill:url(#bg); }
+      .eyebrow { font:800 15px Inter, Arial, sans-serif; letter-spacing:4px; fill:#5eead4; }
+      .title { font:900 54px Inter, Arial, sans-serif; letter-spacing:2px; fill:#f4f7fb; }
+      .subtitle { font:800 15px Inter, Arial, sans-serif; letter-spacing:3px; fill:#a8b3c9; }
+      .course {
+        fill:none;
+        stroke:#4f9366;
+        stroke-width:24;
+        stroke-linecap:butt;
+        stroke-linejoin:round;
+        shape-rendering:geometricPrecision;
+        filter:url(#trackGlow);
+      }
+      .course-round {
+        fill:none;
+        stroke:#4f9366;
+        stroke-width:24;
+        stroke-linecap:round;
+        stroke-linejoin:round;
+        shape-rendering:geometricPrecision;
+        filter:url(#trackGlow);
+      }
+      .straight-bar { fill:#4f9366; shape-rendering:geometricPrecision; filter:url(#trackGlow); }
+      .marker-line { stroke:#a8b3c9; stroke-width:1.5; stroke-linecap:round; opacity:.75; }
+      .label { font:700 17px Inter, Arial, sans-serif; fill:#dce5ef; paint-order:stroke; stroke:#05080f; stroke-width:4; stroke-linejoin:round; }
+      .small-label { font:700 13px Inter, Arial, sans-serif; fill:#dce5ef; paint-order:stroke; stroke:#05080f; stroke-width:3; stroke-linejoin:round; }
+      .post-label { font:800 13px Inter, Arial, sans-serif; fill:#f4f7fb; paint-order:stroke; stroke:#05080f; stroke-width:4; stroke-linejoin:round; }
+      .wind-dot { fill:#4f9fd5; stroke:#dce5ef; stroke-width:2; }
+      .wind-arrow { fill:none; stroke:#f4f7fb; stroke-width:3; stroke-linecap:round; stroke-linejoin:round; }
+      .north { fill:none; stroke:#a8b3c9; stroke-width:1.6; }
+      .legend { fill:none; stroke:rgba(168,179,201,.22); stroke-width:1; }
+      .legend-fill { fill:rgba(168,179,201,.08); }
+      .legend-text { font:700 14px Inter, Arial, sans-serif; fill:#dce5ef; }
+    ]]></style>
+  </defs>
+
+  <rect width="1200" height="760" class="bg"/>
+
+  <g id="header">
+    <text x="58" y="58" class="eyebrow">EDGEIQ TRACK MAP</text>
+    <text x="58" y="116" class="title">FLEMINGTON</text>
+    <text x="60" y="148" class="subtitle">VRC-STYLE CLEAN SCHEMATIC</text>
+  </g>
+
+  <g id="legend" transform="translate(944 54)">
+    <rect x="0" y="0" width="190" height="56" rx="6" class="legend"/>
+    <rect x="1" y="1" width="95" height="54" class="legend-fill"/>
+    <text x="28" y="35" class="legend-text">COURSE</text>
+    <line x1="112" y1="28" x2="158" y2="28" class="course-round" style="stroke-width:9"/>
+  </g>
+
+  <g id="north" transform="translate(1075 140)">
+    <circle cx="0" cy="0" r="16" class="north"/>
+    <path d="M-5 0 L0 7 L5 0 M0 7 L0 -8" class="wind-arrow" style="stroke:#a8b3c9;stroke-width:2"/>
+    <text x="-24" y="38" class="small-label">NORTH</text>
+  </g>
+
+  <g id="flemington-track">
+    <!-- Main circuit. Geometry intentionally stays schematic and simple. -->
+    <path id="main-circuit" class="course-round" d="M552 616 C410 604 298 532 252 420 C206 307 260 205 382 150 C492 101 606 116 708 173 L966 318 C1042 361 1080 425 1064 494 C1048 568 1018 616 976 616"/>
+
+    <!-- 1400m and 1600m chutes/extensions, kept clean and VRC-like. -->
+    <path id="chute-1400" class="course" d="M553 142 L666 84"/>
+    <path id="chute-1600" class="course" d="M722 181 L846 216"/>
+
+    <!-- Bottom straight, drawn on top like the VRC wind-tracker reference. -->
+    <rect id="straight-course" x="148" y="604" width="828" height="24" class="straight-bar"/>
+
+    <g id="straight-distance-labels">
+      <text x="140" y="646" class="label">1200m</text>
+      <text x="275" y="646" class="label">1000m</text>
+      <text x="412" y="646" class="label">800m</text>
+      <text x="548" y="646" class="label">600m</text>
+      <text x="684" y="646" class="label">400m</text>
+      <text x="820" y="646" class="label">200m</text>
+    </g>
+
+    <g id="circuit-distance-labels">
+      <text x="438" y="540" class="label">600m</text>
+      <text x="330" y="455" class="label">800m</text>
+      <text x="350" y="340" class="label">1000m</text>
+      <text x="442" y="250" class="label">1200m</text>
+      <text x="675" y="111" class="label">1400m</text>
+      <text x="858" y="228" class="label">1600m</text>
+      <text x="908" y="397" class="label">1800m</text>
+      <text x="1000" y="500" class="label">2000m</text>
+    </g>
+
+    <g id="winning-post">
+      <line x1="984" y1="576" x2="984" y2="622" class="marker-line" style="stroke:#dce5ef;stroke-width:2"/>
+      <text x="928" y="586" class="post-label">Winning</text>
+      <text x="944" y="604" class="post-label">Post</text>
+    </g>
+
+    <g id="wind-markers">
+      <circle cx="374" cy="265" r="16" class="wind-dot"/>
+      <path d="M374 272 V258 M374 258 L366 266 M374 258 L382 266" class="wind-arrow"/>
+
+      <circle cx="870" cy="336" r="16" class="wind-dot"/>
+      <path d="M870 343 V329 M870 329 L862 337 M870 329 L878 337" class="wind-arrow"/>
+
+      <circle cx="292" cy="590" r="16" class="wind-dot"/>
+      <path d="M292 597 V583 M292 583 L284 591 M292 583 L300 591" class="wind-arrow"/>
+
+      <circle cx="760" cy="662" r="16" class="wind-dot"/>
+      <path d="M760 669 V655 M760 655 L752 663 M760 655 L768 663" class="wind-arrow"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,130 @@
+﻿:root {
+
+  /* ===============================
+     EDGEIQ DESIGN SYSTEM V1
+     =============================== */
+
+  --edge-bg: #121518;
+  --edge-bg-elevated: #171b20;
+  --edge-panel: #1b2026;
+  --edge-panel-light: #222830;
+
+  --edge-border: #2b333d;
+  --edge-border-hover: #3d4956;
+
+  --edge-accent: #27b7b3;
+  --edge-accent-soft: rgba(39,183,179,.12);
+
+  --edge-text: #eef2f5;
+  --edge-text-secondary: #b6c1cb;
+  --edge-text-muted: #7f8c97;
+
+  --edge-success: #43c17b;
+  --edge-warning: #d9aa45;
+  --edge-danger: #d95353;
+
+  --edge-radius: 14px;
+
+  --edge-shadow:
+    0 8px 24px rgba(0,0,0,.30);
+
+  --edge-gap-xs: 8px;
+  --edge-gap-sm: 12px;
+  --edge-gap-md: 20px;
+  --edge-gap-lg: 32px;
+  --edge-gap-xl: 48px;
+
+  --edge-transition: 180ms ease;
+}
+
+/* GLOBAL APP */
+
+body{
+    background:var(--edge-bg);
+    color:var(--edge-text);
+}
+
+#root{
+    background:var(--edge-bg);
+}
+
+/* STANDARD CARD */
+
+.edge-card{
+    background:var(--edge-panel);
+    border:1px solid var(--edge-border);
+    border-radius:var(--edge-radius);
+    box-shadow:var(--edge-shadow);
+    transition:all var(--edge-transition);
+}
+
+.edge-card:hover{
+    border-color:var(--edge-border-hover);
+    transform:translateY(-2px);
+}
+
+/* HEADINGS */
+
+.edge-title{
+
+    color:var(--edge-text);
+
+    font-weight:700;
+
+    letter-spacing:.02em;
+
+}
+
+.edge-subtitle{
+
+    color:var(--edge-text-secondary);
+
+}
+
+.edge-muted{
+
+    color:var(--edge-text-muted);
+
+}
+
+/* BUTTONS */
+
+.edge-button-primary{
+
+    background:var(--edge-accent-soft);
+
+    border:1px solid var(--edge-accent);
+
+    color:var(--edge-text);
+
+}
+
+.edge-button-primary:hover{
+
+    background:rgba(39,183,179,.18);
+
+}
+
+/* TABLES */
+
+.edge-table{
+
+    background:var(--edge-panel);
+
+    border:1px solid var(--edge-border);
+
+    border-radius:var(--edge-radius);
+
+}
+
+.edge-table thead{
+
+    background:rgba(255,255,255,.03);
+
+}
+
+.edge-table tbody tr:hover{
+
+    background:rgba(255,255,255,.03);
+
+}

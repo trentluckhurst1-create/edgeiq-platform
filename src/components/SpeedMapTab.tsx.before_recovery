@@ -1,0 +1,346 @@
+﻿import { useMemo, useState } from "react";
+import { getSilksUrl, silkFallback } from "../utils/silks";
+
+type RawRow = Record<string, any>;
+
+type Runner = {
+  horse: string;
+  saddlecloth: string;
+  barrier: number;
+  mapPosition: string;
+  silkUrl: string;
+  isScratched: boolean;
+
+  runStyleCluster?: string;
+  tempoFit?: string;
+  sectionalWeaponScore?: number;
+  latePowerIndex?: number;
+  fatigueRiskIndex?: number;
+  projectedTempoShape?: string;
+  paceCollapseRisk?: string;
+
+  paceAdj: number;
+  paceLabel: string;
+  beneficiary: boolean;
+  disadvantaged: boolean;
+};
+
+type SpeedMapTabProps = {
+  data?: RawRow[];
+  selectedMeeting?: string;
+  selectedHorse?: string;
+  onSelectHorse?: (horse: string) => void;
+  biasProfile?: RawRow[];
+  paceRows?: RawRow[];
+  raceShape?: RawRow | null;
+  raceDistance?: string | number | null;
+  trackCondition?: string;
+};
+
+const RIGHT_HANDED = ["NSW", "ACT", "QLD"];
+const TRACK_STATE: Record<string, string> = {
+  WARRNAMBOOL: "VIC", FLEMINGTON: "VIC", CAULFIELD: "VIC", SANDOWN: "VIC", PAKENHAM: "VIC", BENDIGO: "VIC", BALLARAT: "VIC", GEELONG: "VIC", MORNINGTON: "VIC",
+  RANDWICK: "NSW", ROSEHILL: "NSW", NEWCASTLE: "NSW", KEMBLA: "NSW", DOOMBEN: "QLD", EAGLE: "QLD", IPSWICH: "QLD", ROCKHAMPTON: "QLD",
+  MORPHETTVILLE: "SA", ASCOT: "WA", BELMONT: "WA", HOBART: "TAS", LAUNCESTON: "TAS", DARWIN: "NT",
+};
+const LANE_X: Record<string, number> = { LEADER: 13, "ON PACE": 31, MIDFIELD: 50, BACKMARKER: 70 };
+const LABELS = ["LEADER", "ON PACE", "MIDFIELD", "BACKMARKER"];
+
+function val(row: RawRow, keys: string[]) {
+  for (const k of keys) {
+    if (row[k] !== undefined && row[k] !== null && String(row[k]).trim() !== "") return String(row[k]).trim();
+  }
+  return "";
+}
+
+function clean(x: any) {
+  return String(x ?? "").toUpperCase().replace(/\([^)]*\)/g, "").replace(/[^\w\s]/g, " ").replace(/\s+/g, " ").trim();
+}
+
+function num(x: any) {
+  const n = Number(String(x ?? "").replace(/[^\d.-]/g, ""));
+  return Number.isFinite(n) ? n : 0;
+}
+
+function maybeNum(x: any) {
+  const n = Number(String(x ?? "").replace(/[^\d.-]/g, ""));
+  return Number.isFinite(n) ? n : null;
+}
+
+function boolish(x: any): boolean {
+  const s = String(x ?? "").trim().toLowerCase();
+  return s === "1" || s === "true" || s === "yes" || s === "y";
+}
+
+function pos(x: any) {
+  const v = clean(x);
+  if (v.includes("LEAD")) return "LEADER";
+  if (v.includes("PACE")) return "ON PACE";
+  if (v.includes("BACK")) return "BACKMARKER";
+  return "MIDFIELD";
+}
+
+function stateFrom(rows: RawRow[], selectedMeeting?: string) {
+  const text = clean([selectedMeeting, ...rows.map((r) => `${val(r, ["track", "Track"])} ${val(r, ["meeting", "Meeting"])}`)].join(" "));
+  for (const k of Object.keys(TRACK_STATE)) if (text.includes(k)) return TRACK_STATE[k];
+  return "VIC";
+}
+
+function mapRunner(row: RawRow): Runner {
+  const horse = val(row, ["horse", "Horse", "runner", "Runner", "horse_name", "runner_name", "name"]);
+  return {
+    horse,
+    saddlecloth: val(row, ["saddlecloth", "number", "runner_number", "tab_no", "horse_no", "No", "no"]),
+    barrier: num(val(row, ["barrier", "Barrier", "bar", "gate"])),
+    mapPosition: pos(val(row, ["map_position", "map_style", "speed_map_bucket", "run_style", "speed_map", "map_bucket", "bucket", "position"])),
+    silkUrl: val(row, ["silk_url", "silkUrl", "silks", "silk", "image"]),
+    isScratched: boolish(val(row, ["is_scratched", "isScratched", "scratched"])),
+
+    runStyleCluster: val(row, ["run_style_cluster", "sectional_profile"]),
+    tempoFit: val(row, ["tempo_fit"]),
+    sectionalWeaponScore: maybeNum(val(row, ["sectional_weapon_score", "sectional_strength_score"])) ?? 0,
+    latePowerIndex: maybeNum(val(row, ["late_power_index"])) ?? 0,
+    fatigueRiskIndex: maybeNum(val(row, ["fatigue_risk_index"])) ?? 0,
+    projectedTempoShape: val(row, ["projected_tempo_shape"]),
+    paceCollapseRisk: val(row, ["pace_collapse_risk"]),
+
+    paceAdj: 0,
+    paceLabel: "",
+    beneficiary: false,
+    disadvantaged: false,
+  };
+}
+
+function distanceBand(v: unknown) {
+  const d = num(v);
+  if (!d) return "UNKNOWN";
+  if (d <= 1100) return "SPRINT_1000_1100";
+  if (d <= 1300) return "SPRINT_1200_1300";
+  if (d <= 1600) return "MILE_1400_1600";
+  if (d <= 2000) return "MIDDLE_1700_2000";
+  return "STAYING_2000_PLUS";
+}
+
+function conditionBand(v: unknown) {
+  const s = clean(v);
+  if (s.includes("HEAVY")) return "HEAVY";
+  if (s.includes("SOFT")) return "SOFT";
+  if (s.includes("GOOD") || s.includes("FAST")) return "GOOD";
+  return "UNKNOWN";
+}
+
+function pct(v: unknown) {
+  const n = Number(v);
+  return Number.isFinite(n) ? `${(n * 100).toFixed(1)}%` : "-";
+}
+
+function styleClass(p: string) {
+  if (p === "LEADER") return "leader";
+  if (p === "ON PACE") return "onpace";
+  if (p === "BACKMARKER") return "backmarker";
+  return "midfield";
+}
+
+export default function SpeedMapTab({ data = [], selectedMeeting, selectedHorse, onSelectHorse, biasProfile = [], paceRows = [], raceShape = null, raceDistance, trackCondition }: SpeedMapTabProps) {
+  const [showScratched, setShowScratched] = useState(false);
+  const paceByHorse = useMemo(() => {
+    const map = new Map<string, RawRow>();
+    paceRows.forEach((row) => {
+      const key = clean(val(row, ["horse_key", "horse"])).replace(/[^A-Z0-9]/g, "");
+      if (key) map.set(key, row);
+      const horseKey = clean(val(row, ["horse"])).replace(/[^A-Z0-9]/g, "");
+      if (horseKey) map.set(horseKey, row);
+    });
+    return map;
+  }, [paceRows]);
+  const allRunners = useMemo(() => data.map(mapRunner).filter((r) => r.horse && r.barrier > 0).map((runner) => {
+    const pace = paceByHorse.get(clean(runner.horse).replace(/[^A-Z0-9]/g, ""));
+    const adj = maybeNum(pace?.pace_adj_points) ?? 0;
+    return {
+      ...runner,
+      mapPosition: val(pace ?? {}, ["run_style"]) ? pos(val(pace ?? {}, ["run_style"])) : runner.mapPosition,
+      paceAdj: adj,
+      paceLabel: val(pace ?? {}, ["pace_setup_label"]),
+      beneficiary: val(pace ?? {}, ["likely_beneficiary"]).toUpperCase() === "YES" || adj >= 0.75,
+      disadvantaged: val(pace ?? {}, ["likely_disadvantaged"]).toUpperCase() === "YES" || adj <= -0.75,
+    };
+  }), [data, paceByHorse]);
+  const scratchedCount = allRunners.filter((r) => r.isScratched).length;
+  const runners = useMemo(() => allRunners.filter((r) => showScratched || !r.isScratched), [allRunners, showScratched]);
+  const state = stateFrom(data, selectedMeeting);
+  const rightHanded = RIGHT_HANDED.includes(state);
+  const maxBarrier = Math.max(...runners.map((r) => r.barrier), 1);
+  const compact = runners.length > 14;
+  const plotted = runners
+    .slice()
+    .sort((a, b) => {
+      const order = { LEADER: 0, "ON PACE": 1, MIDFIELD: 2, BACKMARKER: 3 };
+      const pa = order[a.mapPosition as keyof typeof order] ?? 9;
+      const pb = order[b.mapPosition as keyof typeof order] ?? 9;
+      if (pa !== pb) return pa - pb;
+      return Number(a.saddlecloth || 999) - Number(b.saddlecloth || 999);
+    })
+    .map((r) => {
+      const group = runners
+        .filter((x) => x.mapPosition === r.mapPosition)
+        .sort((a, b) => Number(a.saddlecloth || 999) - Number(b.saddlecloth || 999));
+
+      const index = Math.max(0, group.findIndex((x) => x.horse === r.horse));
+      const groupSize = Math.max(group.length, 1);
+
+      const baseY = {
+        LEADER: 14,
+        "ON PACE": 31,
+        MIDFIELD: 55,
+        BACKMARKER: 78,
+      }[r.mapPosition] ?? 55;
+
+      const laneOffsets = [-18, -9, 0, 9, 18];
+      const lane = index % laneOffsets.length;
+      const row = Math.floor(index / laneOffsets.length);
+
+      const railToWide = laneOffsets[lane];
+      const depth = row * 6;
+
+      const barrierWide =
+        ((r.barrier - 1) / Math.max(maxBarrier - 1, 1)) * 10 - 5;
+
+      const xBase = rightHanded ? 100 - 50 : 50;
+
+      return {
+        ...r,
+        x: Math.max(9, Math.min(91, xBase + railToWide + barrierWide)),
+        y: Math.max(8, Math.min(92, baseY + depth)),
+      };
+    });
+
+  const labelOrder = rightHanded ? [...LABELS].reverse() : LABELS;
+  const distBand = distanceBand(raceDistance);
+  const condBand = conditionBand(trackCondition);
+  const bias = biasProfile.find((row) => clean(row.track) === clean(selectedMeeting) && String(row.distance_band || "") === distBand && String(row.track_condition_band || "") === condBand)
+    ?? biasProfile.find((row) => clean(row.track) === clean(selectedMeeting) && String(row.distance_band || "") === distBand)
+    ?? null;
+  const biasLabel = String(bias?.bias_label ?? "NEUTRAL");
+  const sampleSize = Number(bias?.sample_size ?? 0);
+  const lowSample = sampleSize > 0 && sampleSize < 20;
+  const leaderCount = runners.filter((r) => r.mapPosition === "LEADER" || r.mapPosition === "ON PACE").length;
+  const pureLeaderCount = runners.filter((r) => r.mapPosition === "LEADER").length;
+  const pacePressureLabel = leaderCount >= 6 || pureLeaderCount >= 3 ? "HOT" : leaderCount >= 3 ? "MODERATE" : "LOW";
+  const paceRace = paceRows[0] ?? {};
+  const expectedTempo = val(paceRace, ["expected_tempo"]) || pacePressureLabel;
+  const pressureScore = maybeNum(paceRace.pace_pressure_score);
+  const uncontestedLead = val(paceRace, ["uncontested_lead_possible"]) || "NO";
+  const collapseRisk = val(paceRace, ["pace_collapse_risk"]) || (pacePressureLabel === "HOT" ? "HIGH" : "LOW");
+  const swooperAdvantage = val(paceRace, ["swooper_advantage"]) || "LOW";
+  const beneficiaries = runners.filter((r) => r.beneficiary).length;
+  const disadvantaged = runners.filter((r) => r.disadvantaged).length;
+
+
+  const sectionallyMapped = plotted.filter(
+    (r: any) =>
+      Number(r.sectionalWeaponScore ?? 0) > 0
+  );
+
+  const topSectional: any = [...sectionallyMapped].sort(
+    (a: any, b: any) =>
+      Number(b.sectionalWeaponScore ?? 0) -
+      Number(a.sectionalWeaponScore ?? 0)
+  )[0];
+
+  const sectionalBias =
+    String(raceShape?.preferred_archetype || "").trim() ||
+    (topSectional
+      ? `${topSectional.runStyleCluster || "SECTIONAL"} EDGE`
+      : "NO SECTIONAL MATCH");
+
+  const preferredArchetype =
+    String(raceShape?.preferred_archetype || "").trim() ||
+    topSectional?.runStyleCluster ||
+    "UNKNOWN";
+
+  const realTempoShape =
+    String(raceShape?.projected_tempo_shape || "").trim() ||
+    topSectional?.projectedTempoShape ||
+    expectedTempo;
+
+  const realCollapseRisk =
+    String(raceShape?.pace_collapse_risk || "").trim() ||
+    topSectional?.paceCollapseRisk ||
+    collapseRisk;
+
+  const pressureIndex =
+    Number(raceShape?.pressure_index ?? 0);
+
+  const shapeConfidence =
+    String(raceShape?.shape_confidence || "LOW");
+
+  const topSectionalHorse =
+    String(raceShape?.top_sectional_horse || "").trim();
+
+  const topSectionalScore =
+    Number(raceShape?.top_sectional_score ?? 0);
+
+  return (
+    <section className="edgeiq-speed terminal-panel-stack">
+      <div className="edgeiq-speed-head terminal-card">
+        <div><div className="edgeiq-ws-kicker">EDGEiQ TRUE SPEED MAP</div><div className="speed-sub">Barrier order top to bottom | {state} | {rightHanded ? "RIGHT HANDED" : "LEFT HANDED"} | compact field map</div></div>
+        <div className="speed-pills"><span>RUNNERS {runners.length}</span><span>MAX B{maxBarrier}</span><span>{rightHanded ? "RIGHT HANDED" : "LEFT HANDED"}</span>{scratchedCount ? <button type="button" className="edgeiq-scr-toggle" onClick={() => setShowScratched((v) => !v)}>{showScratched ? "Hide SCR" : `Show SCR (${scratchedCount})`}</button> : null}</div>
+      </div>
+      <div className="speed-bias-card terminal-card">
+        <div><div className="edgeiq-ws-kicker">TRACK / MAP BIAS</div><strong>{biasLabel}</strong><span>{sampleSize ? `${sampleSize} historical samples` : "No matched bias sample"}{lowSample ? " | LOW CONFIDENCE" : ""}</span></div>
+        <div><span>Leaders / On Pace Mapped</span><strong>{leaderCount}</strong></div>
+        <div><span>Pace Pressure</span><strong className={`pace-pressure ${pacePressureLabel.toLowerCase()}`}>{pacePressureLabel}</strong></div>
+        <div><span>Leader Win Rate</span><strong>{pct(bias?.leader_win_rate)}</strong></div>
+        <div><span>Backmarker Win Rate</span><strong>{pct(bias?.backmarker_win_rate)}</strong></div>
+      </div>
+      <div className="speed-bias-card speed-intel-card terminal-card">
+        <div><div className="edgeiq-ws-kicker">PACE INTELLIGENCE</div><strong>{expectedTempo}</strong><span>{pressureScore !== null ? `Pressure ${pressureScore.toFixed(0)} / 100` : "Awaiting pace sample"}</span></div>
+        <div><span>Uncontested Lead</span><strong className={uncontestedLead === "YES" ? "standard-above" : ""}>{uncontestedLead}</strong></div>
+        <div><span>Collapse Risk</span><strong className={`tempo-risk-${collapseRisk.toLowerCase()}`}>{collapseRisk}</strong></div>
+        <div><span>Swooper Advantage</span><strong>{swooperAdvantage}</strong></div>
+        <div><span>Setup Flags</span><strong>{beneficiaries} favoured | {disadvantaged} against</strong></div>
+
+        <div>
+          <span>Sectional Bias</span>
+          <strong className="standard-above">
+            {sectionalBias}
+          </strong>
+        </div>
+
+        <div>
+          <span>Race Shape</span>
+          <strong>
+            {realCollapseRisk === "HIGH" ? "PACE MELTDOWN" : realTempoShape}
+          </strong>
+        </div>
+
+        <div>
+          <span>Preferred Archetype</span>
+          <strong>
+            {preferredArchetype}
+          </strong>
+        </div>
+      </div>
+      <div className={`edgeiq-speed-shell terminal-card ${compact ? "speed-compact-field" : ""}`}>
+        <div className="speed-label-grid">{labelOrder.map((label) => <span key={label} className={`speed-label ${styleClass(label)}`}>{label}</span>)}</div>
+        <div className="speed-track speed-track-compact">
+          <div className="speed-rail" style={{ left: rightHanded ? "auto" : 14, right: rightHanded ? 14 : "auto" }} />
+          {plotted.map((r) => <div key={`grid-${r.horse}-${r.barrier}`} className="speed-grid-line" style={{ top: `${r.y}%` }}><span className="speed-tick" style={{ left: rightHanded ? 22 : "auto", right: rightHanded ? "auto" : 22 }}>B{r.barrier}</span></div>)}
+          <div className="speed-arrow">{rightHanded ? "RACE DIRECTION >" : "< RACE DIRECTION"}</div>
+          {plotted.map((r) => {
+            const selected = clean(selectedHorse) === clean(r.horse);
+            return (
+              <button key={`${r.horse}-${r.barrier}-${r.saddlecloth}`} type="button" disabled={r.isScratched} onClick={() => onSelectHorse?.(r.horse)} className={`speed-runner-node speed-row-banner ${styleClass(r.mapPosition)} ${selected ? "selected" : ""} ${r.isScratched ? "scratched" : ""} ${r.beneficiary ? "pace-benefit" : ""} ${r.disadvantaged ? "pace-disadvantaged" : ""}`} title={r.paceLabel || undefined} style={rightHanded ? { left: 18, right: `${100 - r.x}%`, top: `${r.y}%`, flexDirection: "row" } : { left: `${r.x}%`, right: 18, top: `${r.y}%`, flexDirection: "row" }}>
+                <span className="speed-runner-line" />
+                <img src={getSilksUrl(r.horse, r.silkUrl)} alt="" onError={silkFallback} />
+                <span className="speed-runner-copy"><strong>{r.saddlecloth ? `${r.saddlecloth}. ` : ""}{r.horse}{r.isScratched ? " SCR" : ""}</strong><em>BAR {r.barrier} | {r.mapPosition}{r.paceAdj ? ` | ${r.paceAdj > 0 ? "+" : ""}${r.paceAdj.toFixed(1)}` : ""}</em></span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+
