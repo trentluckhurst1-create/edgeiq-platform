@@ -1,6 +1,7 @@
 import { RaceRunnersWorkspace } from "./workspaces/RaceRunnersWorkspace";
 import { RaceMapWorkspace } from "./workspaces/RaceMapWorkspace";
 import { RaceFormWorkspace } from "./workspaces/RaceFormWorkspace";
+import { RaceResultsWorkspace } from "./workspaces/RaceResultsWorkspace";
 ﻿import { buildCommandWorkspaceSummary } from "../services/commandWorkspaceSummaryService";
 import { buildSelectedRunnerProfile } from "../services/selectedRunnerProfileService";
 import { HomeScreen } from "../screens/HomeScreen";
@@ -4353,91 +4354,25 @@ if (productView === "MEETINGS") {
  const biggestDrift = [...drifters].sort((a, b) => (b.fluc ?? 0) - (a.fluc ?? 0))[0];
  return <section className="edgeiq-market-tab edgeiq-product-section edgeiq-product-v4-panel edgeiq-market-v1-lock edgeiq-market-final-lock"><div className="edgeiq-tab-heading edgeiq-product-v4-section-title"><span>MARKET</span><strong>EDGEiQ Trading Floor</strong><em>Market intelligence, fluctuations, value and context.</em></div><div className="edgeiq-market-final-cards">{[["Largest Overlay", strongestEdge ? horse(strongestEdge.item.row) : "Pending", strongestEdge?.diff === null || !strongestEdge ? "ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â" : pct(strongestEdge.diff)], ["Biggest Firm", biggestFirm ? horse(biggestFirm.item.row) : "Pending", biggestFirm?.fluc === null || !biggestFirm ? "Pending Market" : `ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œ ${Math.abs(biggestFirm.fluc).toFixed(1)}%`], ["Biggest Drift", biggestDrift ? horse(biggestDrift.item.row) : "Pending", biggestDrift?.fluc === null || !biggestDrift ? "Pending Market" : `ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã‹Å“ ${Math.abs(biggestDrift.fluc).toFixed(1)}%`], ["Market Confidence", bettingConfidence !== "-" ? bettingConfidence : "Pending", ""]].map(([label, value, detail]) => <article key={`market-card-${label}`}><span>{label}</span><strong>{value}</strong><em>{detail}</em></article>)}</div><div className="edgeiq-market-content-grid"><div className="edgeiq-market-table edgeiq-product-table edgeiq-product-v4-table" role="table" aria-label="Market comparison table"><div className="edgeiq-market-row head" role="row">{['NO','RUNNER','EDGEIQ','OPEN','CURRENT','FLUC','EDGE %'].map((label) => <span key={`market-head-${label}`}>{label}</span>)}</div>{enrichedMarketRows.map(({ item, fair, open, current, fluc, diff }) => { const flucClass = fluc === null ? "neutral" : fluc > 0 ? "drift" : fluc < 0 ? "firm" : "neutral"; const flucDisplay = fluc === null ? "Pending Market" : fluc > 0 ? `ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã‹Å“ ${Math.abs(fluc).toFixed(1)}%` : fluc < 0 ? `ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œ ${Math.abs(fluc).toFixed(1)}%` : "ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â 0.0%"; return <div className="edgeiq-market-row" role="row" key={`market-row-${runnerRowKey(item.row)}`}><span>{saddle(item.row) === 999 ? "-" : saddle(item.row)}</span><strong>{horse(item.row)}</strong><span>{money(fair)}</span><span>{marketMoney(open)}</span><span>{marketMoney(current)}</span><span className={flucClass}>{flucDisplay}</span><span className={diff === null ? "neutral" : diff > 0 ? "positive" : "negative"}>{diff === null ? "-" : pct(diff)}</span></div>; })}</div><aside className="edgeiq-market-fluc-panel edgeiq-market-final-side"><section><span>Market Pulse</span>{[["Firmers", firmers.length], ["Drifters", drifters.length], ["Unchanged", unchanged.length]].map(([label, value]) => <div key={`market-pulse-${label}`}><em>{label}</em><strong>{value}</strong></div>)}</section><section><span>Money Flow</span>{[...firmers].sort((a, b) => (a.fluc ?? 0) - (b.fluc ?? 0)).slice(0, 3).map((row, index) => <div key={`market-flow-${runnerRowKey(row.item.row)}`}><em>{index + 1}. {horse(row.item.row)}</em><strong className="firm">ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œ {Math.abs(row.fluc ?? 0).toFixed(1)}%</strong></div>)}</section><section><span>Market Narrative</span><p>Market board shows live price movement and EDGEiQ fair-price context only. No recommendation language is shown.</p></section></aside></div></section>;
  })() : null}
- {intelMode === "RESULTS" ? (() => {
- const resultRows = [...activeRaceRows].sort((a, b) => saddle(a.row) - saddle(b.row));
- const resultValue = (row: Row, keys: string[], fallback = "Pending") => {
- const raw = firstText(row, keys, "");
- return raw && raw !== "-" ? raw : fallback;
- };
- const resultPosition = (item: EnrichedRunner, index: number) => resultValue(item.row, ["finish_position", "finishing_position", "result_position", "pos"], String(index + 1));
- const resultMargin = (row: Row) => resultValue(row, ["margin", "beaten_margin", "official_margin"], "Pending");
- const resultEpi = (item: EnrichedRunner) => firstNum(item.ratingsHeatmap, ["runner_rating", "epi", "performance_index"]) ?? projectionRatingValue(item);
- const sectional = (row: Row, keys: string[]) => resultValue(row, keys, "ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â");
- const sectionalNumber = (value: string) => num(String(value).replace(/[Ll]/g, ""));
- const sectionalClass = (value: string) => {
- const parsed = sectionalNumber(value);
- return parsed !== null && parsed < 0 ? "inside-standard" : "outside-standard";
- };
- const sectionalsFor = (row: Row) => ({
- s800: sectional(row, ["last_800_vs_standard", "last_800_lengths", "last800", "sectional_800"]),
- s600: sectional(row, ["last_600_vs_standard", "last_600_lengths", "last600", "sectional_600"]),
- s400: sectional(row, ["last_400_vs_standard", "last_400_lengths", "last400", "sectional_400"]),
- s200: sectional(row, ["last_200_vs_standard", "last_200_lengths", "last200", "sectional_200"]),
- finish: sectional(row, ["finish_vs_standard", "finish_lengths", "last_finish", "sectional_finish"]),
- });
- const rankingMetrics = [
- { label: "Best Last 800m", key: "s800" as const },
- { label: "Best Last 600m", key: "s600" as const },
- { label: "Best Last 400m", key: "s400" as const },
- { label: "Best Last 200m", key: "s200" as const },
- { label: "Strongest Finish", key: "finish" as const },
- ].map((metric) => {
- const ranked = resultRows
- .map((item) => ({ item, value: sectionalsFor(item.row)[metric.key] }))
- .map((entry) => ({ ...entry, numeric: sectionalNumber(entry.value) }))
- .filter((entry): entry is typeof entry & { numeric: number } => entry.numeric !== null)
- .sort((a, b) => a.numeric - b.numeric);
- return { ...metric, winner: ranked[0] || null, runnerUp: ranked[1] || null };
- });
- const officialTime = firstText(header, ["official_time", "winning_time", "race_time_official"], "Pending");
- const last600 = firstText(header, ["race_last_600", "last_600", "overall_last_600"], "Pending");
- const raceTempo = firstText(header, ["race_tempo", "tempo", "race_shape"], displayExpectedTempo !== "-" ? displayExpectedTempo : "Pending");
- return (
- <section className="edgeiq-results-tab edgeiq-product-section edgeiq-product-v4-panel edgeiq-results-v1-lock">
- <div className="edgeiq-tab-heading edgeiq-product-v4-section-title"><span>RESULTS</span><strong>Race Review & Intelligence</strong><em>Official result and standardised sectional performance.</em></div>
- <div className="edgeiq-results-v1-grid edgeiq-results-v1-top-grid">
- <section className="edgeiq-results-v1-panel">
- <div className="edgeiq-results-v1-title">Official Results</div>
- <div className="edgeiq-results-v1-table edgeiq-product-v4-table" role="table" aria-label="Official results">
- <div className="edgeiq-results-v1-row head" role="row">{["POS","NO","SILK","RUNNER","MARGIN (BEATEN BY)","EPI"].map((label) => <span key={`results-official-head-${label}`}>{label}</span>)}</div>
- {resultRows.map((item, index) => <div className="edgeiq-results-v1-row" role="row" key={`results-official-${runnerRowKey(item.row)}`}><span>{resultPosition(item, index)}</span><span>{saddle(item.row) === 999 ? "ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â" : saddle(item.row)}</span><span className="edgeiq-field-silk" aria-label={`${horse(item.row)} silk`}><i /></span><strong>{horse(item.row)}</strong><span>{resultMargin(item.row)}</span><span>{resultEpi(item) === null ? "ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â" : renderMetricValue(resultEpi(item), 1)}</span></div>)}
- </div>
- <div className="edgeiq-results-v1-meta">Official Time: <span>{officialTime}</span> <i /> Last 600m: <span>{last600}</span> <i /> Track Condition: <span>{trackCondition(header)}</span> <i /> Rail: <span>{railDisplay}</span></div>
- </section>
- <section className="edgeiq-results-v1-panel">
- <div className="edgeiq-results-v1-title">Sectionals <em>(Lengths Faster Than Standard)</em></div>
- <div className="edgeiq-sectionals-v1-table edgeiq-product-v4-table" role="table" aria-label="Sectionals">
- <div className="edgeiq-sectionals-v1-row head" role="row">{["POS","RUNNER","800M","600M","400M","200M","FINISH"].map((label) => <span key={`sectionals-head-${label}`}>{label}</span>)}</div>
- {resultRows.map((item, index) => {
- const values = sectionalsFor(item.row);
- return <div className="edgeiq-sectionals-v1-row" role="row" key={`sectionals-${runnerRowKey(item.row)}`}><span>{resultPosition(item, index)}</span><strong>{horse(item.row)}</strong>{[values.s800, values.s600, values.s400, values.s200, values.finish].map((value, valueIndex) => <span key={`sectionals-${runnerRowKey(item.row)}-${valueIndex}`} className={sectionalClass(value)}>{value}</span>)}</div>;
- })}
- </div>
- <div className="edgeiq-results-v1-scale"><span>Faster than standard</span><i>ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â°Ãƒâ€šÃ‚Â¤ -4.0L</i><i>-4.0L to -2.0L</i><i>-2.0L to -0.1L</i><b>0.0L Standard</b><em>Slower than standard</em><strong>+0.1L or more</strong></div>
- <p className="edgeiq-results-v1-data-label">Data is EDGEiQ Standardised Sectionals</p>
- </section>
- </div>
- <div className="edgeiq-results-v1-bottom-grid">
- <section className="edgeiq-results-v1-panel">
- <div className="edgeiq-results-v1-title">Sectional Rankings</div>
- <div className="edgeiq-results-ranking-table edgeiq-product-v4-table" role="table" aria-label="Sectional rankings">
- <div className="edgeiq-results-ranking-row head" role="row">{["METRIC","WINNER","FIGURE","RUNNER UP","FIGURE"].map((label) => <span key={`ranking-head-${label}`}>{label}</span>)}</div>
- {rankingMetrics.map((metric) => <div className="edgeiq-results-ranking-row" role="row" key={`sectional-ranking-${metric.label}`}><span>{metric.label}</span><strong>{metric.winner ? horse(metric.winner.item.row) : "ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â"}</strong><span>{metric.winner?.value || "ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â"}</span><strong>{metric.runnerUp ? horse(metric.runnerUp.item.row) : "ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â"}</strong><span>{metric.runnerUp?.value || "ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â"}</span></div>)}
- </div>
- </section>
- <section className="edgeiq-results-v1-panel edgeiq-results-review-panel">
- <div className="edgeiq-results-v1-title">Race Review</div>
- <p>Race review is based on official finishing order, EDGEiQ performance ratings and standardised sectional context.</p>
- <p>{raceTempo !== "Pending" ? `Tempo profile: ${raceTempo}.` : "Tempo profile pending."} Faster-than-standard sectional cells are highlighted in green; slower values remain neutral.</p>
- </section>
- <section className="edgeiq-results-v1-panel edgeiq-results-info-panel">
- {[["Winning Time", officialTime], ["Last 600m", last600], ["Race Tempo", raceTempo], ["Track Condition", trackCondition(header)], ["Rail Position", railDisplay], ["Race Grade", raceClass(header)], ["Number of Runners", String(activeRaceRows.length)]].map(([label, value]) => <article key={`results-info-${label}`}><span>{label}</span><strong>{value}</strong></article>)}
- </section>
- </div>
- </section>
- );
- })() : null}
- {intelMode === "TRACK" ? (
+ {intelMode === "RESULTS" ? (
+<RaceResultsWorkspace
+  activeRaceRows={activeRaceRows}
+  header={header}
+  railDisplay={railDisplay}
+  displayExpectedTempo={displayExpectedTempo}
+  saddle={saddle}
+  horse={horse}
+  runnerRowKey={runnerRowKey}
+  firstText={firstText}
+  firstNum={firstNum}
+  num={num}
+  projectionRatingValue={projectionRatingValue}
+  renderMetricValue={renderMetricValue}
+  trackCondition={trackCondition}
+  raceClass={raceClass}
+/>
+) : null}
+{intelMode === "TRACK" ? (
  <section className="edgeiq-track-tab edgeiq-product-section edgeiq-product-v4-panel">
  <div className="edgeiq-tab-heading edgeiq-product-v4-section-title"><span>TRACK</span><strong>Track Profile</strong><em>Track map, rail and race-day profile.</em></div>
  <div className="edgeiq-product-v4-fact-grid">
