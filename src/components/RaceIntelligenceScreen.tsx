@@ -1,10 +1,11 @@
 import { HomeScreen } from "../screens/HomeScreen";
 import { MeetingsScreen } from "../screens/MeetingsScreen";
 import { cleanHorse, cleanHorseLoose, cleanTrack, marketMoney, money, num, pct, signed, text } from "../utils/edgeiqFormat";
+import { loadCsv, parseCsv, type CsvRow } from "../utils/edgeiqCsv";
 ﻿import React, { useEffect, useMemo, useState } from "react";
 import { getMeetingDisplayState } from "../utils/meetingDisplayState";
 
-type Row = Record<string, string>;
+type Row = CsvRow;
 
 const FILES = {
  runnerBoard: "/data/edgeiq_live_runner_board_governed_v1.csv",
@@ -162,63 +163,6 @@ function integer(v: string): number | null {
 }
 
 
-function csvLine(line: string): string[] {
- const out: string[] = [];
- let cur = "";
- let quoted = false;
-
- for (let i = 0; i < line.length; i += 1) {
- const ch = line[i];
- const next = line[i + 1];
-
- if (ch === '"' && quoted && next === '"') {
- cur += '"';
- i += 1;
- } else if (ch === '"') {
- quoted = !quoted;
- } else if (ch === "," && !quoted) {
- out.push(cur);
- cur = "";
- } else {
- cur += ch;
- }
- }
-
- out.push(cur);
- return out;
-}
-
-const FRONTEND_CSV_ROW_LIMIT = 10000;
-
-function parseCsv(raw: string, sourcePath = "CSV feed"): Row[] {
- const lines = raw.replace(/^\uFEFF/, "").split(/\r?\n/).filter((x) => x.trim());
- if (!lines.length) return [];
- if (lines[0].trim().startsWith("<!doctype html>")) return [];
- if (lines.length - 1 > FRONTEND_CSV_ROW_LIMIT) {
- console.warn(`[EDGEiQ] Skipping oversized frontend CSV feed: ${sourcePath} (${lines.length - 1} rows > ${FRONTEND_CSV_ROW_LIMIT})`);
- return [];
- }
-
- const headers = csvLine(lines[0]).map((h) => h.trim());
- return lines.slice(1).map((line) => {
- const cells = csvLine(line);
- const row: Row = {};
- headers.forEach((h, i) => {
- row[h] = cells[i] ?? "";
- });
- return row;
- });
-}
-
-async function loadCsv(path: string): Promise<Row[]> {
- try {
- const res = await fetch(`${path}?v=${Date.now()}`, { cache: "no-store" });
- if (!res.ok) return [];
- return parseCsv(await res.text(), path);
- } catch {
- return [];
- }
-}
 
 function firstNum(row: Row | undefined, keys: string[]): number | null {
  if (!row) return null;
