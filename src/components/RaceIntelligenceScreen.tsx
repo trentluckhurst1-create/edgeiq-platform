@@ -1,4 +1,4 @@
-import { HomeScreen } from "../screens/HomeScreen";
+﻿import { HomeScreen } from "../screens/HomeScreen";
 import { MeetingsScreen } from "../screens/MeetingsScreen";
 import { cleanHorse, cleanHorseLoose, cleanTrack, marketMoney, money, num, pct, signed, text } from "../utils/edgeiqFormat";
 import { parseCsv, type CsvRow } from "../utils/edgeiqCsv";
@@ -17,7 +17,8 @@ import { compactHistoryLine, findHistoryMasterRowsForRunner, formatHistoryDate, 
 import { betQualityNumeric, comboScoreValue, confidenceScoreValue, connectionScoreValue, dnaScoreValue, factorBandValue, factorRowValue, factorScoreValue, intelligenceScoreValue, jockeyScoreValue, latePowerMetricValue, limitedAdjustedPrice, normalizeGradeLabel, paceMapRole, paceMapXPercent, paceRoleSpeedValue, paceRoleTone, projectedSpdValue, projectionGapValue, projectionRatingValue, scoreTone, sectionalWeaponValue, shortHorseName, sourceBetQualityGrade, trackFitScoreValue, trainerScoreValue } from "../services/runnerMetricsService";
 import { campaignEvidenceTone, cellTone, connectionTone, coverageStatus, coverageStatusTone, customerPerformanceNarrative, decision, drawerValue, evidenceQualityTone, fitReadLabel, formatCampaignStage, formatCampaignWindow, hiddenGemTone, historyReadLabel, opportunityTone, ordinal, performanceIntelligenceLabel, riskTone, runnerTrendSummary, runnerTrendTone, sourceLabel, trajectoryTone, valueccent } from "../services/displayFormattingService";
 import { buildRaceDashboardSummary } from "../services/raceDashboardSummaryService";
-﻿import React, { useEffect, useMemo, useState } from "react";
+import { buildSelectedRunnerCore } from "../services/selectedRunnerCoreService";
+import React, { useEffect, useMemo, useState } from "react";
 import { getMeetingDisplayState } from "../utils/meetingDisplayState";
 
 type Row = CsvRow;
@@ -957,203 +958,120 @@ export default function RaceIntelligenceScreen(props: Props): React.ReactElement
   band,
   bandColor,
  }), [activeRaceRows, rankedEnriched, marketIntel, mostLikelyWinner, mostLikelyFair, bestValue, bestValueEdge, raceClarity, displayExpectedTempo, bettingConfidence]);
- const selectedIsScratched = selected ? isScratched(selected) : false;
- const selectedModelRank = selected?.modelRank ?? null;
- const selectedDisplayBet = selected ? displayBetValue(selected) : "-";
- const selectedDisplayGrade = selected ? displayGradeValue(selected) : "-";
- const selectedLimitedScore = selected ? limitedScoreValue(selected) : "";
- const selectedLimitedScoreNumeric = selected ? computedLimitedScore(selected) : null;
- const selectedExplainability = selected?.explainability;
- const selectedCustomerIntel = selected?.customerIntel;
- const selectedIntelligenceSummary = selected?.intelligenceSummary;
- const selectedRaceDayIntelligence = selected?.raceDayIntelligence;
- const selectedEdgeiqScore = selected ? firstText(selectedCustomerIntel, ["edgeiq_score"], "-") : "-";
- const selectedEdgeiqBandRaw = selected ? firstText(selectedCustomerIntel, ["edgeiq_band"], "-") : "-";
- const selectedEdgeiqBand = selectedEdgeiqBandRaw.replace(/_/g, " ").toUpperCase();
- const selectedEdgeiqVerdict = selected ? firstText(selectedCustomerIntel, ["edgeiq_verdict"], "") : "";
- const selectedEdgeiqReasonsRaw = selected ? firstText(selectedCustomerIntel, ["primary_reasons"], "") : "";
- const selectedEdgeiqRisksRaw = selected ? firstText(selectedCustomerIntel, ["primary_risks"], "") : "";
- const selectedEdgeiqReasons = selectedEdgeiqReasonsRaw.split("|").map((x) => x.trim()).filter(Boolean).slice(0, 4);
- const selectedEdgeiqRisks = selectedEdgeiqRisksRaw.split("|").map((x) => x.trim()).filter(Boolean).slice(0, 4);
- const selectedStableIntentBandRaw = selected ? firstText(selectedCustomerIntel, ["stable_intent_band"], "-") : "-";
- const selectedStableIntentBand = selectedStableIntentBandRaw.replace(/_/g, " ").toUpperCase();
- const selectedContextSignalCount = selected ? firstText(selectedCustomerIntel, ["context_signal_count"], "-") : "-";
- const selectedCustomerDnaBandRaw = selected ? firstText(selectedCustomerIntel, ["dna_band"], "-") : "-";
- const selectedCustomerDnaBand = selectedCustomerDnaBandRaw.replace(/_/g, " ").toUpperCase();
- const selectedIntelligenceSummaryTitle = selected ? firstText(selectedIntelligenceSummary, ["intelligence_summary_title"], "") : "";
- const selectedIntelligenceSummaryText = selected ? firstText(selectedIntelligenceSummary, ["intelligence_summary_text"], "") : "";
- const selectedIntelligencectionText = selected ? firstText(selectedIntelligenceSummary, ["customer_action_text"], "") : "";
- const selectedRaceDayCondition = selected ? firstText(selectedRaceDayIntelligence, ["track_condition"], "-") : "-";
- const selectedRaceDayRail = selected ? firstText(selectedRaceDayIntelligence, ["rail_clean"], "-") : "-";
- const selectedRaceDayTempo = selected ? firstText(selectedRaceDayIntelligence, ["tempo_clean"], "-") : "-";
- const selectedRaceDayPressure = selected ? firstText(selectedRaceDayIntelligence, ["map_pressure"], "-") : "-";
- const selectedRaceDayTrackProfile = selected ? firstText(selectedRaceDayIntelligence, ["track_profile_clean"], "-") : "-";
- const selectedRaceDayTrackConfidence = selected ? firstText(selectedRaceDayIntelligence, ["track_confidence_clean"], "-") : "-";
- const selectedRaceDayRead = selected ? firstText(selectedRaceDayIntelligence, ["race_day_read_clean"], "") : "";
+ const {
+  selectedIsScratched,
+  selectedModelRank,
+  selectedDisplayBet,
+  selectedDisplayGrade,
+  selectedLimitedScore,
+  selectedLimitedScoreNumeric,
+  selectedExplainability,
+  selectedCustomerIntel,
+  selectedIntelligenceSummary,
+  selectedRaceDayIntelligence,
+  selectedEdgeiqScore,
+  selectedEdgeiqBandRaw,
+  selectedEdgeiqBand,
+  selectedEdgeiqVerdict,
+  selectedEdgeiqReasonsRaw,
+  selectedEdgeiqRisksRaw,
+  selectedEdgeiqReasons,
+  selectedEdgeiqRisks,
+  selectedStableIntentBandRaw,
+  selectedStableIntentBand,
+  selectedContextSignalCount,
+  selectedCustomerDnaBandRaw,
+  selectedCustomerDnaBand,
+  selectedIntelligenceSummaryTitle,
+  selectedIntelligenceSummaryText,
+  selectedIntelligencectionText,
+  selectedRaceDayCondition,
+  selectedRaceDayRail,
+  selectedRaceDayTempo,
+  selectedRaceDayPressure,
+  selectedRaceDayTrackProfile,
+  selectedRaceDayTrackConfidence,
+  selectedRaceDayRead,
+  selectedConnectionSource,
+  selectedConnectionLoaded,
+  selectedRaceExplainability,
+  selectedExplainabilityModelRankRaw,
+  selectedExplainabilityModelRank,
+  selectedExplainabilityConfidenceBand,
+  selectedExplainabilityConfidenceScore,
+  selectedExplainabilityTrendLabel,
+  selectedExplainabilityTrendDelta,
+  selectedExplainabilityTrendDisplay,
+  selectedExplainabilityRaceTempo,
+  selectedExplainabilityRaceShape,
+  selectedExplainabilityWhy,
+  selectedExplainabilityConfidenceExplanation,
+  selectedExplainabilityTrendSummary,
+  selectedConnectionBand,
+  selectedConnectionEvidenceQuality,
+  selectedConnectionEvidenceStatus,
+  selectedExplainabilityConnectionScore,
+  selectedConnectionngles,
+  selectedConnectionReadPatterns,
+  selectedConnectionEvidencePatterns,
+  selectedConnectionRisk,
+  selectedConnectionRiskMeaningful,
+  selectedConnectionPositiveItems,
+  selectedConnectionRiskItems,
+  selectedConnectionNarrative,
+  selectedMergedMarketvailable,
+  selectedMergedMarketSummary,
+  selectedMergedHiddenGemvailable,
+  selectedMergedHiddenGemSummary,
+  selectedConnectionMarketLabel,
+  selectedConnectionSpDelta,
+  selectedConnectionTrainerTrackSr,
+  selectedConnectionJockeyTrackSr,
+  selectedConnectionComboSr,
+  selectedConnectionComboTrackSr,
+  selectedConnectionSpSampleStarts,
+  selectedExplainabilitySupports,
+  selectedExplainabilityRisks,
+  selectedRaceShapeLabel,
+  selectedRaceTempoLabel,
+  selectedRacePacedvantageRunner,
+  selectedRaceLatePowerBeneficiary,
+  selectedRacePressureRiskRunner,
+  selectedRaceShapeStory,
+  selectedRacePacedvantageDisplay,
+  selectedRacePressureDisplay,
+  selectedRaceShapeStoryDisplay,
+  selectedLimitedDecision,
+  selectedBetQuality,
+  raceShapeFallbackLoaded,
+ } = useMemo(() => buildSelectedRunnerCore({
+  selected,
+  topModelRow,
+  activeRaceRows,
+  displayExpectedTempo,
+  fallbackRaceShapeLabel,
+  fallbackTempoLabel,
+  fallbackPressureLabel,
+  fallbackPacedvantageLabel,
+  fallbackRaceShapeNarrative,
+  raceAssessmentNarrative,
+  raceClarity,
+  isScratched,
+  displayBetValue,
+  displayGradeValue,
+  limitedScoreValue,
+  computedLimitedScore,
+  connectionSourceRow,
+  hasConnectionPayload,
+  evidenceFlag,
+  limitedDecisionValue,
+  displayBetQualityValue,
+  firstText,
+  firstNum,
+  renderMetricValue,
+  text,
+ }), [selected, topModelRow, activeRaceRows, displayExpectedTempo, fallbackRaceShapeLabel, fallbackTempoLabel, fallbackPressureLabel, fallbackPacedvantageLabel, fallbackRaceShapeNarrative, raceAssessmentNarrative, raceClarity]);
 
- const selectedConnectionSource = selected ? connectionSourceRow(selected) : undefined;
- const selectedConnectionLoaded = selected ? hasConnectionPayload(selectedConnectionSource) : false;
- const selectedRaceExplainability = selectedExplainability ?? topModelRow?.explainability ?? activeRaceRows[0]?.explainability;
- const selectedExplainabilityModelRankRaw = selected ? firstText(selectedExplainability, ["model_rank"], "") : "";
- const selectedExplainabilityModelRank = selectedIsScratched
- ? "SCRATCHED"
- : selectedExplainabilityModelRankRaw
- ? `#${selectedExplainabilityModelRankRaw.replace(/^#/, "")}`
- : selectedModelRank
- ? `#${selectedModelRank}`
- : "-";
- const selectedExplainabilityConfidenceBand = selected
- ? firstText(selectedExplainability, ["confidence_band"], "-").replace(/_/g, " ").toUpperCase()
- : "-";
- const selectedExplainabilityConfidenceScore = selected
- ? firstNum(selectedExplainability, ["final_confidence_score"]) ?? selectedLimitedScoreNumeric
- : null;
- const selectedExplainabilityTrendLabel = selected
- ? firstText(selectedExplainability, ["trend_label"], "-").replace(/_/g, " ").toUpperCase()
- : "-";
- const selectedExplainabilityTrendDelta = selected ? firstNum(selectedExplainability, ["rating_trend_delta"]) : null;
- const selectedExplainabilityTrendDisplay = selectedIsScratched
- ? "SCRATCHED"
- : selectedExplainabilityTrendLabel !== "-" && selectedExplainabilityTrendDelta !== null
- ? `${selectedExplainabilityTrendLabel} (${renderMetricValue(selectedExplainabilityTrendDelta, 2, true)})`
- : selectedExplainabilityTrendLabel !== "-"
- ? selectedExplainabilityTrendLabel
- : selectedExplainabilityTrendDelta !== null
- ? renderMetricValue(selectedExplainabilityTrendDelta, 2, true)
- : "-";
- const selectedExplainabilityRaceTempo = selected
- ? firstText(selectedExplainability, ["race_tempo"], displayExpectedTempo)
- : displayExpectedTempo;
- const selectedExplainabilityRaceShape = selected
- ? firstText(selectedExplainability, ["race_shape_label"], fallbackRaceShapeLabel !== "-" ? fallbackRaceShapeLabel : raceClarity)
- : fallbackRaceShapeLabel !== "-" ? fallbackRaceShapeLabel : raceClarity;
- const selectedExplainabilityWhy = selected ? firstText(selectedExplainability, ["why_ranked_here"], "") : "";
- const selectedExplainabilityConfidenceExplanation = selected ? firstText(selectedExplainability, ["confidence_explanation"], "") : "";
- const selectedExplainabilityTrendSummary = selected ? firstText(selectedExplainability, ["trend_summary"], "") : "";
- const selectedConnectionBand = selected
- ? firstText(selectedConnectionSource, ["connection_band"], "-").replace(/_/g, " ").toUpperCase()
- : "-";
- const selectedConnectionEvidenceQuality = selected
- ? firstText(selectedConnectionSource, ["evidence_quality"], "-").replace(/_/g, " ").toUpperCase()
- : "-";
- const selectedConnectionEvidenceStatus = selected
- ? firstText(selectedConnectionSource, ["connection_evidence_status"], "-").replace(/_/g, " ").toUpperCase()
- : "-";
- const selectedExplainabilityConnectionScore = selected ? firstNum(selectedConnectionSource, ["connection_score"]) : null;
- const selectedConnectionngleLabel = (value: string): string => {
- const label = value.toUpperCase();
- if (label.includes("JOCKEY")) return "Jockey Pattern";
- if (label.includes("COMBO") || label.includes("PRTNERSHIP") || label.includes("TRINER/JOCKEY")) return "Partnership Pattern";
- if (label.includes("MRKET") || label.includes("SP") || label.includes("/E") || label.includes("ROI")) return "Market Pattern";
- if (label.includes("PREP")) return "Preparation Pattern";
- return "Trainer Pattern";
- };
- const selectedConnectionngles = selectedIsScratched
- ? []
- : [
- firstText(selectedConnectionSource, ["edgeiq_connection_angle_summary"], ""),
- firstText(selectedConnectionSource, ["connection_angle_1"], ""),
- firstText(selectedConnectionSource, ["connection_angle_2"], ""),
- firstText(selectedConnectionSource, ["connection_angle_3"], ""),
- ]
- .filter((value) => {
- const normalized = value.trim().toUpperCase();
- return normalized && normalized !== "-" && normalized !== "LIMITED SMPLE";
- })
- .map((value) => ({ label: selectedConnectionngleLabel(value), value }));
- const selectedConnectionReadPatterns = selectedIsScratched
- ? []
- : [
- { label: "Trainer Pattern", value: firstText(selectedConnectionSource, ["trainer_track_read"], "") },
- { label: "Trainer Pattern", value: firstText(selectedConnectionSource, ["trainer_distance_read"], "") },
- { label: "Preparation Pattern", value: firstText(selectedConnectionSource, ["trainer_prep_read"], "") },
- { label: "Market Pattern", value: firstText(selectedConnectionSource, ["trainer_market_read"], "") },
- { label: "Jockey Pattern", value: firstText(selectedConnectionSource, ["jockey_track_read"], "") },
- { label: "Jockey Pattern", value: firstText(selectedConnectionSource, ["jockey_distance_read"], "") },
- { label: "Partnership Pattern", value: firstText(selectedConnectionSource, ["combo_read"], "") },
- ].filter((item) => {
- const normalized = item.value.trim().toUpperCase();
- return normalized && normalized !== "-" && normalized !== "LIMITED SMPLE" && !normalized.startsWith("NOT PPLICBLE");
- }).slice(0, 3);
- const selectedConnectionEvidencePatterns = selectedConnectionngles.length
- ? selectedConnectionngles
- : selectedConnectionReadPatterns;
- const selectedConnectionRisk = selectedIsScratched
- ? ""
- : firstText(selectedConnectionSource, ["connection_risk_1"], "");
- const selectedConnectionRiskMeaningful = (() => {
- const normalized = selectedConnectionRisk.trim().toUpperCase();
- return !!normalized && normalized !== "-" && normalized !== "EVIDENCE SMPLE IS LIMITED.";
- })();
- const selectedConnectionPositiveItems = selectedIsScratched
- ? []
- : [
- { factor: firstText(selectedConnectionSource, ["connection_positive_1"], ""), value: firstText(selectedConnectionSource, ["connection_positive_1_value"], "") },
- { factor: firstText(selectedConnectionSource, ["connection_positive_2"], ""), value: firstText(selectedConnectionSource, ["connection_positive_2_value"], "") },
- ].filter((item) => item.factor);
- const selectedConnectionRiskItems = selectedIsScratched
- ? []
- : [
- { factor: firstText(selectedConnectionSource, ["connection_risk_1"], ""), value: firstText(selectedConnectionSource, ["connection_risk_1_value"], "") },
- ].filter((item) => item.factor);
- const selectedConnectionNarrative = selected
- ? firstText(selectedConnectionSource, ["edgeiq_connection_angle_summary", "connection_summary_for_decision_engine", "connection_narrative"], "")
- : "";
- const selectedMergedMarketvailable = selected ? evidenceFlag(selected.row, ["edgeiq_market_evidence_available"]) : false;
- const selectedMergedMarketSummary = selected ? firstText(selected.row, ["edgeiq_market_signal_summary"], "") : "";
- const selectedMergedHiddenGemvailable = selected ? evidenceFlag(selected.row, ["edgeiq_hidden_gem_evidence_available"]) : false;
- const selectedMergedHiddenGemSummary = selected ? firstText(selected.row, ["edgeiq_hidden_gem_summary"], "") : "";
- const selectedConnectionMarketLabel = selected
- ? firstText(selectedConnectionSource, ["market_expectation_label"], "-").replace(/_/g, " ").toUpperCase()
- : "-";
- const selectedConnectionSpDelta = selected ? firstNum(selectedConnectionSource, ["sp_expectation_delta"]) : null;
- const selectedConnectionTrainerTrackSr = selected ? firstNum(selectedConnectionSource, ["trainer_track_sr"]) : null;
- const selectedConnectionJockeyTrackSr = selected ? firstNum(selectedConnectionSource, ["jockey_track_sr"]) : null;
- const selectedConnectionComboSr = selected ? firstNum(selectedConnectionSource, ["combo_sr"]) : null;
- const selectedConnectionComboTrackSr = selected ? firstNum(selectedConnectionSource, ["combo_track_sr"]) : null;
- const selectedConnectionSpSampleStarts = selected ? firstNum(selectedConnectionSource, ["sp_sample_starts"]) : null;
- const selectedExplainabilitySupports = selectedIsScratched
- ? []
- : [
- { factor: firstText(selectedExplainability, ["positive_1"], ""), value: firstText(selectedExplainability, ["positive_1_value"], "") },
- { factor: firstText(selectedExplainability, ["positive_2"], ""), value: firstText(selectedExplainability, ["positive_2_value"], "") },
- { factor: firstText(selectedExplainability, ["positive_3"], ""), value: firstText(selectedExplainability, ["positive_3_value"], "") },
- ].filter((item) => item.factor);
- const selectedExplainabilityRisks = selectedIsScratched
- ? []
- : [
- { factor: firstText(selectedExplainability, ["risk_1"], ""), value: firstText(selectedExplainability, ["risk_1_value"], "") },
- { factor: firstText(selectedExplainability, ["risk_2"], ""), value: firstText(selectedExplainability, ["risk_2_value"], "") },
- { factor: firstText(selectedExplainability, ["risk_3"], ""), value: firstText(selectedExplainability, ["risk_3_value"], "") },
- ].filter((item) => item.factor);
- const selectedRaceShapeLabel = firstText(
- selectedRaceExplainability,
- ["race_shape_label"],
- fallbackRaceShapeLabel !== "-" ? fallbackRaceShapeLabel : raceClarity,
- ).replace(/_/g, " ").toUpperCase();
- const selectedRaceTempoLabel = firstText(
- selectedRaceExplainability,
- ["race_tempo"],
- displayExpectedTempo,
- ).replace(/_/g, " ").toUpperCase();
- const selectedRacePacedvantageRunner = firstText(selectedRaceExplainability, ["pace_advantage_runner"], "");
- const selectedRaceLatePowerBeneficiary = firstText(selectedRaceExplainability, ["late_power_beneficiary"], "");
- const selectedRacePressureRiskRunner = firstText(selectedRaceExplainability, ["pressure_risk_runner"], "");
- const selectedRaceShapeStory = firstText(
- selectedRaceExplainability,
- ["race_shape_story"],
- fallbackRaceShapeNarrative || raceAssessmentNarrative,
- );
- const raceShapeFallbackLoaded = [fallbackRaceShapeLabel, fallbackTempoLabel, fallbackPressureLabel, fallbackRaceShapeNarrative]
- .some((value) => {
- const parsed = text(value);
- return parsed !== "" && parsed !== "-";
- });
- const selectedRacePacedvantageDisplay = selectedRacePacedvantageRunner || fallbackPacedvantageLabel || "";
- const selectedRacePressureDisplay = selectedRacePressureRiskRunner || (fallbackPressureLabel !== "-" ? fallbackPressureLabel : "");
- const selectedRaceShapeStoryDisplay = selectedRaceShapeStory || fallbackRaceShapeNarrative || raceAssessmentNarrative;
- const selectedLimitedDecision = selected ? limitedDecisionValue(selected) : "-";
- const selectedBetQuality = selected ? displayBetQualityValue(selected) : "-";
  const selectedProjectionBand = selected
  ? firstText(selected.row, ["projection_band_V6_1_RESERCH", "projection_band_v5_2"], "-").replace(/_/g, " ").toUpperCase()
  : "-";
@@ -3936,7 +3854,7 @@ if (productView === "MEETINGS") {
  })();
  const activeRaceContextLine = [distance(header), raceClass(header), trackCondition(header).toUpperCase(), `${activeRaceRows.length} RUNNERS`].filter((value) => value && value !== "-").join(" | ");
  const activeRaceStartText = firstText(header, ["race_time", "jump_time", "start_time"], text(props.currentRace?.raceTime));
- const raceV3DisplayValue = (value: unknown) => { const raw = String(value ?? "").trim(); return raw && raw !== "-" ? raw : "â€”"; };
+ const raceV3DisplayValue = (value: unknown) => { const raw = String(value ?? "").trim(); return raw && raw !== "-" ? raw : "Ã¢â‚¬â€"; };
  const raceV3RaceCountLabel = (value: unknown) => { const count = Number(value); return Number.isFinite(count) && count > 0 ? `${count} races` : "Race list pending"; };
  const raceV3FieldCountLabel = (value: unknown) => { const count = Number(value); return Number.isFinite(count) && count > 0 ? `${count} runners` : "Fields pending"; };
  const formatMeetingDateLong = (value: string) => {
@@ -4011,7 +3929,7 @@ if (productView === "MEETINGS") {
  <em>RACE INTELLIGENCE</em>
  </span>
  </button>
- <button type="button" className="edgeiq-race-v3-menu" aria-label="Collapse race navigator" onClick={() => setRaceRailCollapsed((value) => !value)}>â˜°</button>
+ <button type="button" className="edgeiq-race-v3-menu" aria-label="Collapse race navigator" onClick={() => setRaceRailCollapsed((value) => !value)}>Ã¢ËœÂ°</button>
 
  <nav className="edgeiq-home-v4-nav edgeiq-product-v4-nav" aria-label="Race navigation">
  <button
@@ -4044,8 +3962,8 @@ if (productView === "MEETINGS") {
  <span>TERMINAL</span>
  <i />
  <strong>{new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}</strong>
- <button type="button" aria-label="Search">âŒ•</button>
- <button type="button" aria-label="Notifications">â™§</button>
+ <button type="button" aria-label="Search">Ã¢Å’â€¢</button>
+ <button type="button" aria-label="Notifications">Ã¢â„¢Â§</button>
  <button type="button" className="edgeiq-product-v4-account-chip" aria-label="Account">T</button>
  </div>
  </div>
@@ -4056,7 +3974,7 @@ if (productView === "MEETINGS") {
  {intelMode !== "COMMND" ? <div className="edgeiq-race-lock-context">
  <div>
  <span>{activeTabShell.kicker}</span>
- <h1>{track(header) || shellTrack} <em>â€º</em> R{raceNo(header) || selectedRaceNo}</h1>
+ <h1>{track(header) || shellTrack} <em>Ã¢â‚¬Âº</em> R{raceNo(header) || selectedRaceNo}</h1>
  <p>{raceClass(header)} <i /> {distance(header)} <i /> {activeRaceStartText || "Time TBC"}</p>
  </div>
  <section>
@@ -4078,7 +3996,7 @@ if (productView === "MEETINGS") {
  const raceShapeText = displayExpectedTempo !== "-" ? displayExpectedTempo : fallbackTempoLabel !== "-" ? fallbackTempoLabel : "Balanced";
  const raceStrengthText = ratingSpread === null ? "Pending" : ratingSpread >= 12 ? "Deep" : ratingSpread >= 7 ? "Competitive" : "Even";
  const raceQualityText = averageRating === null ? "Pending" : averageRating >= 82 ? "High" : averageRating >= 68 ? "Solid" : "Building";
- const cleanWeight = (row: Row) => firstText(row, ["weight", "allocated_weight", "handicap_weight", "weight_carried", "runner_weight", "weight_kg", "wgt"], "â€”");
+ const cleanWeight = (row: Row) => firstText(row, ["weight", "allocated_weight", "handicap_weight", "weight_carried", "runner_weight", "weight_kg", "wgt"], "Ã¢â‚¬â€");
  const weightValues = activeRaceRows.map((item) => num(cleanWeight(item.row))).filter((value): value is number => value !== null);
  const weightRange = weightValues.length ? `${Math.min(...weightValues).toFixed(1)} - ${Math.max(...weightValues).toFixed(1)}kg` : "Pending";
  const raceMapSource = activeRaceRows.map((item) => item.mapEnrichment).find(Boolean) || {};
@@ -4319,7 +4237,7 @@ if (productView === "MEETINGS") {
  <div className="edgeiq-map-final-axis" aria-hidden="true">
  {Array.from({ length: mapBarrierMax }, (_, index) => mapBarrierMax - index).map((barrierNo) => <span key={`map-final-axis-${barrierNo}`}>B{barrierNo}</span>)}
  </div>
- <div className="edgeiq-map-final-direction">â† DIRECTION OF RACE</div>
+ <div className="edgeiq-map-final-direction">Ã¢â€ Â DIRECTION OF RACE</div>
  </section>
 
  <section className="edgeiq-map-final-table edgeiq-product-v4-table">
@@ -4459,14 +4377,14 @@ if (productView === "MEETINGS") {
  const splitLabels = text(leadingSectionalRow?.split_labels).split(";").filter(Boolean);
  const splitLengths = text(leadingSectionalRow?.split_lengths).split(";").map((value) => num(value));
  const splitPairs = splitLabels.map((label, index) => ({ label, value: splitLengths[index] ?? null })).filter((entry) => entry.label);
- return <section className="edgeiq-form-showcase edgeiq-product-section edgeiq-product-v4-panel edgeiq-form-showcase-v2 edgeiq-form-clean-v3 edgeiq-form-study-v2 edgeiq-form-profile-v4 edgeiq-form-dossier-match">{formSelector}<div className="edgeiq-form-study-header edgeiq-form-profile-header"><span className="edgeiq-field-silk edgeiq-form-profile-silk" aria-label={`${horse(selected.row)} silk`}><i /></span><div><span>FORM</span><strong>{saddle(selected.row) === 999 ? "-" : saddle(selected.row)} {horse(selected.row)}</strong><em>{firstText(selected.row, ["jockey", "jockey_name", "rider"], "-")} / {firstText(selected.row, ["trainer", "trainer_name"], "-")}</em></div><div className="edgeiq-form-study-inline-metrics">{[["Current EPI", projected], ["Peak", selectedBestRatingLast5Value], ["Average", selectedAVGRatingLast5Value]].map(([label, value]) => <span key={`form-study-inline-${label}`}><b>{label}</b><strong>{typeof value === "number" ? renderMetricValue(value, 1) : "â€”"}</strong></span>)}</div></div><div className="edgeiq-form-gear-bar"><span><b>Current Gear</b><strong>{currentGear === "-" ? "No gear listed" : currentGear}</strong></span><span><b>Gear Change</b><strong>{currentGearChange === "-" ? "No recorded change" : currentGearChange}</strong></span></div><section className="edgeiq-form-sectional-strip-panel"><div className="edgeiq-form-sectional-strip-head"><div><span>EDGEiQ Standardised Sectionals</span><strong>{formBenchmarkMode === "CLASS_BENCHMARK" ? "Class benchmark" : "All-classes benchmark"}</strong></div><div className="edgeiq-form-benchmark-toggle">{(["CLASS_BENCHMARK", "ALL_CLASSES_BENCHMARK"] as BenchmarkMode[]).map((mode) => <button type="button" key={`form-benchmark-${mode}`} className={formBenchmarkMode === mode ? "is-active" : ""} onClick={() => setFormBenchmarkMode(mode)}>{mode === "CLASS_BENCHMARK" ? "Class" : "All-classes"}</button>)}</div></div>{splitPairs.length ? <div className="edgeiq-form-sectional-strip">{splitPairs.map((entry) => <span key={`form-split-${entry.label}`} className={entry.value === null ? "is-missing" : entry.value < 0 ? "is-fast" : "is-neutral"}><b>{entry.label}</b><strong>{entry.value === null ? "â€”" : `${signed(entry.value, 1)}L`}</strong></span>)}</div> : <div className="edgeiq-form-sectional-empty">No benchmark-backed sectional splits available for this runner.</div>}</section><section className="edgeiq-form-last-five edgeiq-form-last-five-wide"><div className="edgeiq-form-table-title">Last Five Starts</div><div className="edgeiq-form-table edgeiq-product-v4-table"><div className="edgeiq-form-table-row head">{['Date','Track','Dist','Class','Going','Bar','Jockey','Gear','Pos','Margin','SP','Rating'].map((label) => <span key={`form-main-head-${label}`}>{label}</span>)}</div>{!formRows.length ? <div className="edgeiq-form-table-empty">No detailed performance-history lines available.</div> : formRows.map((run) => { const pos = cleanPosition(run.finishingPosition); const runGear = gearForRun(run); const gearText = cleanRunText(firstText(runGear || undefined, ["gear_changes", "gear_current", "gear_added", "gear_removed"], "")); return <div key={`form-main-row-${run.key}`} className="edgeiq-form-table-row edgeiq-form-profile-row edgeiq-form-table-row-gear"><span>{cleanRunText(run.date)}</span><span>{cleanRunText(run.track)}</span><span>{cleanRunText(run.distance)}</span><span>{cleanRunText(run.raceClass)}</span><span>{cleanRunText(run.going)}</span><span>{cleanRunText(run.barrier)}</span><span>{cleanRunText(run.jockey)}</span><span>{gearText}</span><span className={posClass(pos)}>{pos}</span><span>{cleanRunText(run.beatenMargin)}</span><span>{cleanRunText(run.sp)}</span><span>{run.rating !== null ? renderMetricValue(run.rating, 1) : "-"}</span></div>; })}</div></section><div className="edgeiq-form-trajectory-strip" aria-label="Rating progression">{trajectoryValues.map((entry) => <span key={`form-trajectory-${entry.label}`} className={formHeatClass(entry.value)}><b>{entry.label}</b><strong>{entry.value === null ? "â€”" : renderMetricValue(entry.value, 1)}</strong></span>)}</div><div className="edgeiq-form-profile-grid">{profileGroups.map((group) => <section key={`form-profile-${group.title}`} className="edgeiq-form-profile-panel"><strong>{group.title} Profile</strong><div className="edgeiq-form-profile-table edgeiq-product-v4-table"><div className="edgeiq-form-profile-table-row head"><span>{group.title}</span><span>Starts</span><span>Wins</span><span>Places</span><span>Rating</span></div>{group.rows.length ? group.rows.map(([label, bucket]) => <div className="edgeiq-form-profile-table-row" key={`profile-${group.title}-${label}`}><span>{label}</span><span>{bucket.starts}</span><span>{bucket.wins}</span><span>{bucket.places}</span><span>{bucket.ratingCount ? renderMetricValue(bucket.ratingTotal / bucket.ratingCount, 1) : "â€”"}</span></div>) : <div className="edgeiq-form-profile-empty">Profile not loaded</div>}</div></section>)}</div><section className="edgeiq-form-career-summary"><strong>Career Summary</strong><div>{[["Starts", careerStarts], ["Wins", careerWins], ["Places", careerPlaces], ["Win %", careerWinPct], ["Place %", careerPlacePct]].map(([label, value]) => <article key={`form-career-${label}`}><span>{label}</span><b>{typeof value === "number" ? (String(label).includes("%") ? `${value.toFixed(1)}%` : String(Math.trunc(value))) : "â€”"}</b></article>)}<button type="button" className="edgeiq-field-history-link" onClick={() => setFullHistoryRunner(selected)}>Full history</button></div></section>{formNarrative ? <p className="edgeiq-form-short-read">{formNarrative}</p> : null}</section>;
+ return <section className="edgeiq-form-showcase edgeiq-product-section edgeiq-product-v4-panel edgeiq-form-showcase-v2 edgeiq-form-clean-v3 edgeiq-form-study-v2 edgeiq-form-profile-v4 edgeiq-form-dossier-match">{formSelector}<div className="edgeiq-form-study-header edgeiq-form-profile-header"><span className="edgeiq-field-silk edgeiq-form-profile-silk" aria-label={`${horse(selected.row)} silk`}><i /></span><div><span>FORM</span><strong>{saddle(selected.row) === 999 ? "-" : saddle(selected.row)} {horse(selected.row)}</strong><em>{firstText(selected.row, ["jockey", "jockey_name", "rider"], "-")} / {firstText(selected.row, ["trainer", "trainer_name"], "-")}</em></div><div className="edgeiq-form-study-inline-metrics">{[["Current EPI", projected], ["Peak", selectedBestRatingLast5Value], ["Average", selectedAVGRatingLast5Value]].map(([label, value]) => <span key={`form-study-inline-${label}`}><b>{label}</b><strong>{typeof value === "number" ? renderMetricValue(value, 1) : "Ã¢â‚¬â€"}</strong></span>)}</div></div><div className="edgeiq-form-gear-bar"><span><b>Current Gear</b><strong>{currentGear === "-" ? "No gear listed" : currentGear}</strong></span><span><b>Gear Change</b><strong>{currentGearChange === "-" ? "No recorded change" : currentGearChange}</strong></span></div><section className="edgeiq-form-sectional-strip-panel"><div className="edgeiq-form-sectional-strip-head"><div><span>EDGEiQ Standardised Sectionals</span><strong>{formBenchmarkMode === "CLASS_BENCHMARK" ? "Class benchmark" : "All-classes benchmark"}</strong></div><div className="edgeiq-form-benchmark-toggle">{(["CLASS_BENCHMARK", "ALL_CLASSES_BENCHMARK"] as BenchmarkMode[]).map((mode) => <button type="button" key={`form-benchmark-${mode}`} className={formBenchmarkMode === mode ? "is-active" : ""} onClick={() => setFormBenchmarkMode(mode)}>{mode === "CLASS_BENCHMARK" ? "Class" : "All-classes"}</button>)}</div></div>{splitPairs.length ? <div className="edgeiq-form-sectional-strip">{splitPairs.map((entry) => <span key={`form-split-${entry.label}`} className={entry.value === null ? "is-missing" : entry.value < 0 ? "is-fast" : "is-neutral"}><b>{entry.label}</b><strong>{entry.value === null ? "Ã¢â‚¬â€" : `${signed(entry.value, 1)}L`}</strong></span>)}</div> : <div className="edgeiq-form-sectional-empty">No benchmark-backed sectional splits available for this runner.</div>}</section><section className="edgeiq-form-last-five edgeiq-form-last-five-wide"><div className="edgeiq-form-table-title">Last Five Starts</div><div className="edgeiq-form-table edgeiq-product-v4-table"><div className="edgeiq-form-table-row head">{['Date','Track','Dist','Class','Going','Bar','Jockey','Gear','Pos','Margin','SP','Rating'].map((label) => <span key={`form-main-head-${label}`}>{label}</span>)}</div>{!formRows.length ? <div className="edgeiq-form-table-empty">No detailed performance-history lines available.</div> : formRows.map((run) => { const pos = cleanPosition(run.finishingPosition); const runGear = gearForRun(run); const gearText = cleanRunText(firstText(runGear || undefined, ["gear_changes", "gear_current", "gear_added", "gear_removed"], "")); return <div key={`form-main-row-${run.key}`} className="edgeiq-form-table-row edgeiq-form-profile-row edgeiq-form-table-row-gear"><span>{cleanRunText(run.date)}</span><span>{cleanRunText(run.track)}</span><span>{cleanRunText(run.distance)}</span><span>{cleanRunText(run.raceClass)}</span><span>{cleanRunText(run.going)}</span><span>{cleanRunText(run.barrier)}</span><span>{cleanRunText(run.jockey)}</span><span>{gearText}</span><span className={posClass(pos)}>{pos}</span><span>{cleanRunText(run.beatenMargin)}</span><span>{cleanRunText(run.sp)}</span><span>{run.rating !== null ? renderMetricValue(run.rating, 1) : "-"}</span></div>; })}</div></section><div className="edgeiq-form-trajectory-strip" aria-label="Rating progression">{trajectoryValues.map((entry) => <span key={`form-trajectory-${entry.label}`} className={formHeatClass(entry.value)}><b>{entry.label}</b><strong>{entry.value === null ? "Ã¢â‚¬â€" : renderMetricValue(entry.value, 1)}</strong></span>)}</div><div className="edgeiq-form-profile-grid">{profileGroups.map((group) => <section key={`form-profile-${group.title}`} className="edgeiq-form-profile-panel"><strong>{group.title} Profile</strong><div className="edgeiq-form-profile-table edgeiq-product-v4-table"><div className="edgeiq-form-profile-table-row head"><span>{group.title}</span><span>Starts</span><span>Wins</span><span>Places</span><span>Rating</span></div>{group.rows.length ? group.rows.map(([label, bucket]) => <div className="edgeiq-form-profile-table-row" key={`profile-${group.title}-${label}`}><span>{label}</span><span>{bucket.starts}</span><span>{bucket.wins}</span><span>{bucket.places}</span><span>{bucket.ratingCount ? renderMetricValue(bucket.ratingTotal / bucket.ratingCount, 1) : "Ã¢â‚¬â€"}</span></div>) : <div className="edgeiq-form-profile-empty">Profile not loaded</div>}</div></section>)}</div><section className="edgeiq-form-career-summary"><strong>Career Summary</strong><div>{[["Starts", careerStarts], ["Wins", careerWins], ["Places", careerPlaces], ["Win %", careerWinPct], ["Place %", careerPlacePct]].map(([label, value]) => <article key={`form-career-${label}`}><span>{label}</span><b>{typeof value === "number" ? (String(label).includes("%") ? `${value.toFixed(1)}%` : String(Math.trunc(value))) : "Ã¢â‚¬â€"}</b></article>)}<button type="button" className="edgeiq-field-history-link" onClick={() => setFullHistoryRunner(selected)}>Full history</button></div></section>{formNarrative ? <p className="edgeiq-form-short-read">{formNarrative}</p> : null}</section>;
  })() : null}
  {intelMode === "RUNNERS" ? (() => {
  const fieldRows = [...activeRaceRows].sort((a, b) => saddle(a.row) - saddle(b.row));
  const cleanMarket = (item: EnrichedRunner) => {
  return marketMoney(livePrice(item.row, item.bet));
  };
- const cleanWeight = (row: Row) => firstText(row, ["weight", "allocated_weight", "handicap_weight", "weight_carried", "runner_weight", "weight_kg", "wgt"], "â€”");
+ const cleanWeight = (row: Row) => firstText(row, ["weight", "allocated_weight", "handicap_weight", "weight_carried", "runner_weight", "weight_kg", "wgt"], "Ã¢â‚¬â€");
  const runnerEpiValue = (item: EnrichedRunner) => firstNum(item.ratingsHeatmap, ["runner_rating", "epi", "performance_index"]) ?? projectionRatingValue(item);
  const openRunnerForm = (item: EnrichedRunner) => {
  setSelectedKey(runnerRowKey(item.row));
@@ -4481,7 +4399,7 @@ if (productView === "MEETINGS") {
  const rowKey = runnerRowKey(row);
  const epi = runnerEpiValue(item);
  const status = isScratched(item) ? "SCRATCHED" : "ACTIVE";
- return <button key={`field-row-wrap-${rowKey}`} type="button" className={`edgeiq-field-guide-row ${isScratched(item) ? "is-scratched" : ""}`} onClick={() => openRunnerForm(item)} role="row" aria-label={`Open ${horse(row)} form profile`}><span>{saddle(row) === 999 ? "-" : saddle(row)}</span><span className="edgeiq-field-silk" aria-label={`${horse(row)} silk`}><i /></span><strong>{horse(row)}</strong><span>{barrier(row)}</span><span>{cleanWeight(row)}</span><span>{firstText(row, ["jockey", "jockey_name", "rider"], "-")}</span><span>{firstText(row, ["trainer", "trainer_name"], "-")}</span><span>{epi === null ? "â€”" : renderMetricValue(epi, 1)}</span><span>{cleanMarket(item)}</span><span className="edgeiq-field-status-text">{status}</span></button>;
+ return <button key={`field-row-wrap-${rowKey}`} type="button" className={`edgeiq-field-guide-row ${isScratched(item) ? "is-scratched" : ""}`} onClick={() => openRunnerForm(item)} role="row" aria-label={`Open ${horse(row)} form profile`}><span>{saddle(row) === 999 ? "-" : saddle(row)}</span><span className="edgeiq-field-silk" aria-label={`${horse(row)} silk`}><i /></span><strong>{horse(row)}</strong><span>{barrier(row)}</span><span>{cleanWeight(row)}</span><span>{firstText(row, ["jockey", "jockey_name", "rider"], "-")}</span><span>{firstText(row, ["trainer", "trainer_name"], "-")}</span><span>{epi === null ? "Ã¢â‚¬â€" : renderMetricValue(epi, 1)}</span><span>{cleanMarket(item)}</span><span className="edgeiq-field-status-text">{status}</span></button>;
  })}
  </div>
  </section>
@@ -4509,12 +4427,12 @@ if (productView === "MEETINGS") {
  if (value >= 90) return "edgeiq-epi-cell is-warning";
  return "edgeiq-epi-cell is-risk";
  };
- const staticFigureText = (value: number | null) => value === null ? "â€”" : renderMetricValue(value, 1);
+ const staticFigureText = (value: number | null) => value === null ? "Ã¢â‚¬â€" : renderMetricValue(value, 1);
  const historyResultAvailable = (run: Row | undefined) => !!run && historyFinishText(run) !== "-";
  const buildPerformanceRunCard = (runnerName: string, label: string, run: Row | undefined, figure: number | null): Omit<RatingHoverCard, "x" | "y"> | null => {
  if (!run) return null;
  return {
- title: `${runnerName} â€” ${label} Figure: ${staticFigureText(figure)}`,
+ title: `${runnerName} Ã¢â‚¬â€ ${label} Figure: ${staticFigureText(figure)}`,
  metrics: [
  { label: "Date", value: formatHistoryDate(historyDateText(run)) },
  { label: "Track", value: historyTrackText(run) },
@@ -4566,7 +4484,7 @@ if (productView === "MEETINGS") {
  const peak = rated.length ? Math.max(...rated.map((run) => historyRatingValue(run) ?? Number.NEGATIVE_INFINITY).filter((value) => Number.isFinite(value))) : null;
  const avg = recent.length ? recent.reduce((sum, run) => sum + (historyRatingValue(run) ?? 0), 0) / recent.length : null;
  const last = recent.length ? historyRatingValue(recent[0]) : firstNum(item.runnerForm, ["form_last_start_rating", "last_start_rating", "rating_1"]);
- return <div className="edgeiq-performance-index-row" role="row" key={`performance-tab-${runnerRowKey(item.row)}`}><span>{saddle(item.row) === 999 ? "â€”" : saddle(item.row)}</span><span className="edgeiq-field-silk" aria-label={`${horse(item.row)} silk`}><i /></span><strong>{horse(item.row)}</strong><span className="edgeiq-performance-epi">{staticFigureText(current)}</span><span>{staticFigureText(current)}</span><span>{staticFigureText(peak)}</span><span>{staticFigureText(avg)}</span><span>{staticFigureText(last)}</span>{l5ToL1Runs.map((run, index) => {
+ return <div className="edgeiq-performance-index-row" role="row" key={`performance-tab-${runnerRowKey(item.row)}`}><span>{saddle(item.row) === 999 ? "Ã¢â‚¬â€" : saddle(item.row)}</span><span className="edgeiq-field-silk" aria-label={`${horse(item.row)} silk`}><i /></span><strong>{horse(item.row)}</strong><span className="edgeiq-performance-epi">{staticFigureText(current)}</span><span>{staticFigureText(current)}</span><span>{staticFigureText(peak)}</span><span>{staticFigureText(avg)}</span><span>{staticFigureText(last)}</span>{l5ToL1Runs.map((run, index) => {
  const label = `L${5 - index}`;
  const rating = historyRatingValue(run);
  const card = buildPerformanceRunCard(horse(item.row), label, run, rating);
@@ -4578,7 +4496,7 @@ if (productView === "MEETINGS") {
  <div className="edgeiq-performance-table-footer">
  <div className="edgeiq-performance-scale"><span>EPI SCALE</span><i className="is-risk">&lt; 90</i><i className="is-warning">90 - 94</i><i className="is-positive">95 - 99</i><i className="is-strong">100 - 104</i><i className="is-elite">105+</i></div>
  <span>Click or hover a rating for race details</span>
- <button type="button" onClick={() => setIntelMode("PERFORMANCE")}>View full performance report â†’</button>
+ <button type="button" onClick={() => setIntelMode("PERFORMANCE")}>View full performance report Ã¢â€ â€™</button>
  </div>
  </div>
  </section>
@@ -4588,7 +4506,7 @@ if (productView === "MEETINGS") {
  const source: Row = selected?.nexusContextual || selectedConnectionSource || {};
  const trainerName = firstText(source, ["trainer"], selected ? firstText(selected.row, ["trainer", "trainer_name"], "-") : "-");
  const jockeyName = firstText(source, ["jockey"], selected ? firstText(selected.row, ["jockey", "jockey_name", "rider"], "-") : "-");
- const cleanNexusValue = (value: unknown) => { const raw = text(value).trim(); return raw && raw !== "-" ? raw : "â€”"; };
+ const cleanNexusValue = (value: unknown) => { const raw = text(value).trim(); return raw && raw !== "-" ? raw : "Ã¢â‚¬â€"; };
  const cleanNexusPct = (value: unknown) => {
  const raw = text(value);
  const valueNum = num(raw);
@@ -4612,8 +4530,8 @@ if (productView === "MEETINGS") {
  { title: "Partnership", name: cleanNexusValue(source.partnership_band), metrics: [["Score", cleanNexusScore(source.partnership_score)], ["Starts", cleanNexusValue(source.partnership_starts)], ["Wins", cleanNexusValue(source.partnership_wins)], ["ROI / A/E", `${cleanNexusValue(source.partnership_roi)} / ${cleanNexusValue(source.partnership_ae)}`]] },
  { title: "Style Fit", name: cleanNexusValue(source.style_alignment_band), metrics: [["Score", cleanNexusScore(source.style_alignment_score)], ["Horse style", cleanNexusValue(source.horse_run_style)], ["Trainer style", cleanNexusValue(source.trainer_best_style)], ["Jockey style", cleanNexusValue(source.jockey_best_style)]] },
  ];
- const positives = ["top_positive_1", "top_positive_2", "top_positive_3"].map((key) => cleanNexusValue(source[key])).filter((value) => value !== "â€”");
- const risks = ["top_risk_1", "top_risk_2", "top_risk_3"].map((key) => cleanNexusValue(source[key])).filter((value) => value !== "â€”");
+ const positives = ["top_positive_1", "top_positive_2", "top_positive_3"].map((key) => cleanNexusValue(source[key])).filter((value) => value !== "Ã¢â‚¬â€");
+ const risks = ["top_risk_1", "top_risk_2", "top_risk_3"].map((key) => cleanNexusValue(source[key])).filter((value) => value !== "Ã¢â‚¬â€");
  const narrative = cleanNexusValue(firstText(source, ["nexus_summary", "connection_narrative"], selectedConnectionNarrative || "")).replace(/\bNexus\b/gi, "EDGEiQ Insight");
  const labModules = ["TRAINERS", "JOCKEYS", "PARTNERSHIPS", "TRACKS", "DISTANCES", "BARRIERS", "RUN STYLES", "FIRST UP", "SECOND UP", "CLASS", "PRICE ENGINE"];
  const activeLabPanel = nexusPanels.find((panel) => panel.title.toUpperCase() === labModule.replace(/S$/, "")) || nexusPanels[0];
@@ -4640,7 +4558,7 @@ if (productView === "MEETINGS") {
  return { ...entry, adjustedProbability, adjustedPrice: adjustedProbability > 0 ? 1 / adjustedProbability : null };
  });
  const labPriceAverageConfidence = labPriceDisplayRows.length ? labPriceDisplayRows.reduce((sum, entry) => sum + (firstNum(entry.row, ["data_confidence"]) ?? 0), 0) / labPriceDisplayRows.length : null;
- return <section className="edgeiq-connections-tab edgeiq-lab-tab edgeiq-product-section edgeiq-product-v4-panel edgeiq-lab-v1-lock"><div className="edgeiq-tab-heading edgeiq-product-v4-section-title"><span>LAB</span><strong>Racing Research Laboratory</strong><em>Research, profile, compare and discover.</em></div><div className="edgeiq-lab-v1-layout"><aside className="edgeiq-lab-v1-modules"><strong>Research Modules</strong>{labModules.map((module) => <button type="button" className={labModule === module ? "is-active" : ""} key={`lab-module-${module}`} onClick={() => setLabModule(module)}>{module}</button>)}</aside><section className="edgeiq-lab-v1-main"><div className="edgeiq-lab-v1-subject edgeiq-lab-v1-hero"><span>{labModule}</span><strong>{labHeroSubject}</strong><em>{track(header)} / {distance(header)} / {raceClass(header)}</em></div>{labModule === "PRICE ENGINE" ? <><div className="edgeiq-lab-price-research-banner"><span>Research only</span><strong>Editable rating points do not alter production prices.</strong><em>{labPriceMatches.length ? "Current race feed" : "Fallback research race feed"} / Confidence {labPriceAverageConfidence === null ? "â€”" : pct(labPriceAverageConfidence * 100)}</em></div><div className="edgeiq-lab-price-table edgeiq-product-v4-table" role="table" aria-label="Price Engine research table"><div className="edgeiq-lab-price-row head" role="row">{['Runner','Base','Adj Pts','Adj Rating','Base Prob','Adj Prob','Base Price','Adj Price','Status'].map((label) => <span key={`lab-price-head-${label}`}>{label}</span>)}</div>{labPriceDisplayRows.length ? labPriceDisplayRows.map((entry) => <div className="edgeiq-lab-price-row" role="row" key={`lab-price-row-${entry.key}`}><strong>{firstText(entry.row, ["runner"], "â€”")}</strong><span>{entry.baseRating === null ? "â€”" : renderMetricValue(entry.baseRating, 2)}</span><input aria-label={`Adjust rating points for ${firstText(entry.row, ["runner"], "runner")}`} type="number" step="0.5" value={entry.adjustment} onChange={(event) => { const next = Number(event.currentTarget.value); setPriceEngineAdjustments((current) => ({ ...current, [entry.key]: Number.isFinite(next) ? next : 0 })); }} /><span>{entry.adjustedRating === null ? "â€”" : renderMetricValue(entry.adjustedRating, 2)}</span><span>{pct(entry.baseProbability * 100)}</span><span>{pct(entry.adjustedProbability * 100)}</span><span>{money(firstNum(entry.row, ["base_price"]))}</span><span>{money(entry.adjustedPrice)}</span><span>{firstText(entry.row, ["pricing_status"], "RESEARCH_ONLY")}</span></div>) : <div className="edgeiq-lab-price-empty">Price Engine research feed is not loaded for this race.</div>}</div></> : <><div className="edgeiq-lab-v1-metrics">{(activeLabPanel ? [activeLabPanel, ...nexusPanels.filter((panel) => panel.title !== activeLabPanel.title)] : nexusPanels).slice(0, 4).map((panel) => <article key={`lab-metric-${panel.title}`}><span>{panel.title}</span><strong>{panel.metrics[0]?.[1] || "â€”"}</strong><em>{cleanNexusValue(panel.name)}</em></article>)}</div><div className="edgeiq-lab-v1-table edgeiq-product-v4-table" role="table" aria-label="Lab research leaderboard"><div className="edgeiq-lab-v1-row head" role="row">{['Research Area','Subject','Metric 1','Metric 2','Metric 3','Context'].map((label) => <span key={`lab-research-head-${label}`}>{label}</span>)}</div>{nexusPanels.map((panel) => <div className="edgeiq-lab-v1-row" role="row" key={`lab-research-${panel.title}`}><strong>{panel.title}</strong><span>{cleanNexusValue(panel.name)}</span>{panel.metrics.slice(0, 3).map(([label, value]) => <span key={`lab-research-${panel.title}-${label}`}>{label}: {cleanNexusValue(value)}</span>)}<span>{panel.metrics[3] ? `${panel.metrics[3][0]}: ${cleanNexusValue(panel.metrics[3][1])}` : "â€”"}</span></div>)}</div></>}</section><aside className="edgeiq-lab-v1-insight"><span>EDGEiQ Insight</span><p>{labModule === "PRICE ENGINE" ? "Price Engine research lets rating-point assumptions be tested against adjusted probability and research price without writing to production pricing feeds." : narrative}</p><strong>{labModule === "PRICE ENGINE" ? "Research Guardrail" : "Saved Studies"}</strong><em>{labModule === "PRICE ENGINE" ? "Local adjustments reset with the browser session and remain research-only." : positives[0] || risks[0] || "Research context pending."}</em></aside></div></section>;
+ return <section className="edgeiq-connections-tab edgeiq-lab-tab edgeiq-product-section edgeiq-product-v4-panel edgeiq-lab-v1-lock"><div className="edgeiq-tab-heading edgeiq-product-v4-section-title"><span>LAB</span><strong>Racing Research Laboratory</strong><em>Research, profile, compare and discover.</em></div><div className="edgeiq-lab-v1-layout"><aside className="edgeiq-lab-v1-modules"><strong>Research Modules</strong>{labModules.map((module) => <button type="button" className={labModule === module ? "is-active" : ""} key={`lab-module-${module}`} onClick={() => setLabModule(module)}>{module}</button>)}</aside><section className="edgeiq-lab-v1-main"><div className="edgeiq-lab-v1-subject edgeiq-lab-v1-hero"><span>{labModule}</span><strong>{labHeroSubject}</strong><em>{track(header)} / {distance(header)} / {raceClass(header)}</em></div>{labModule === "PRICE ENGINE" ? <><div className="edgeiq-lab-price-research-banner"><span>Research only</span><strong>Editable rating points do not alter production prices.</strong><em>{labPriceMatches.length ? "Current race feed" : "Fallback research race feed"} / Confidence {labPriceAverageConfidence === null ? "Ã¢â‚¬â€" : pct(labPriceAverageConfidence * 100)}</em></div><div className="edgeiq-lab-price-table edgeiq-product-v4-table" role="table" aria-label="Price Engine research table"><div className="edgeiq-lab-price-row head" role="row">{['Runner','Base','Adj Pts','Adj Rating','Base Prob','Adj Prob','Base Price','Adj Price','Status'].map((label) => <span key={`lab-price-head-${label}`}>{label}</span>)}</div>{labPriceDisplayRows.length ? labPriceDisplayRows.map((entry) => <div className="edgeiq-lab-price-row" role="row" key={`lab-price-row-${entry.key}`}><strong>{firstText(entry.row, ["runner"], "Ã¢â‚¬â€")}</strong><span>{entry.baseRating === null ? "Ã¢â‚¬â€" : renderMetricValue(entry.baseRating, 2)}</span><input aria-label={`Adjust rating points for ${firstText(entry.row, ["runner"], "runner")}`} type="number" step="0.5" value={entry.adjustment} onChange={(event) => { const next = Number(event.currentTarget.value); setPriceEngineAdjustments((current) => ({ ...current, [entry.key]: Number.isFinite(next) ? next : 0 })); }} /><span>{entry.adjustedRating === null ? "Ã¢â‚¬â€" : renderMetricValue(entry.adjustedRating, 2)}</span><span>{pct(entry.baseProbability * 100)}</span><span>{pct(entry.adjustedProbability * 100)}</span><span>{money(firstNum(entry.row, ["base_price"]))}</span><span>{money(entry.adjustedPrice)}</span><span>{firstText(entry.row, ["pricing_status"], "RESEARCH_ONLY")}</span></div>) : <div className="edgeiq-lab-price-empty">Price Engine research feed is not loaded for this race.</div>}</div></> : <><div className="edgeiq-lab-v1-metrics">{(activeLabPanel ? [activeLabPanel, ...nexusPanels.filter((panel) => panel.title !== activeLabPanel.title)] : nexusPanels).slice(0, 4).map((panel) => <article key={`lab-metric-${panel.title}`}><span>{panel.title}</span><strong>{panel.metrics[0]?.[1] || "Ã¢â‚¬â€"}</strong><em>{cleanNexusValue(panel.name)}</em></article>)}</div><div className="edgeiq-lab-v1-table edgeiq-product-v4-table" role="table" aria-label="Lab research leaderboard"><div className="edgeiq-lab-v1-row head" role="row">{['Research Area','Subject','Metric 1','Metric 2','Metric 3','Context'].map((label) => <span key={`lab-research-head-${label}`}>{label}</span>)}</div>{nexusPanels.map((panel) => <div className="edgeiq-lab-v1-row" role="row" key={`lab-research-${panel.title}`}><strong>{panel.title}</strong><span>{cleanNexusValue(panel.name)}</span>{panel.metrics.slice(0, 3).map(([label, value]) => <span key={`lab-research-${panel.title}-${label}`}>{label}: {cleanNexusValue(value)}</span>)}<span>{panel.metrics[3] ? `${panel.metrics[3][0]}: ${cleanNexusValue(panel.metrics[3][1])}` : "Ã¢â‚¬â€"}</span></div>)}</div></>}</section><aside className="edgeiq-lab-v1-insight"><span>EDGEiQ Insight</span><p>{labModule === "PRICE ENGINE" ? "Price Engine research lets rating-point assumptions be tested against adjusted probability and research price without writing to production pricing feeds." : narrative}</p><strong>{labModule === "PRICE ENGINE" ? "Research Guardrail" : "Saved Studies"}</strong><em>{labModule === "PRICE ENGINE" ? "Local adjustments reset with the browser session and remain research-only." : positives[0] || risks[0] || "Research context pending."}</em></aside></div></section>;
  })() : null}
  {intelMode === "STATS" ? (() => {
  const entityKey = statsMode === "TRAINERS" ? "trainer" : "jockey";
@@ -4700,18 +4618,18 @@ if (productView === "MEETINGS") {
  <header className="edgeiq-stats-profile">
  <div className="edgeiq-stats-avatar">{statsMode === "TRAINERS" ? "T" : "J"}</div>
  <div><strong>{activeStatsEntity?.name || (statsMode === "TRAINERS" ? "Trainer Profile" : "Jockey Profile")}</strong><span>Top rated {entityDisplay.toLowerCase()}</span><em>{track(header)} / {distance(header)} / {raceClass(header)}</em></div>
- <div className="edgeiq-stats-season">{[["Starts", activeStatsEntity?.starts ?? 0], ["Wins", activeStatsEntity?.wins ?? 0], ["Places", activeStatsEntity?.places ?? 0], ["Win %", activeStatsEntity?.winRate ?? null], ["Place %", activeStatsEntity?.placeRate ?? null], ["ROI", activeStatsEntity?.roi ?? null]].map(([label, value]) => <span key={`stats-season-${label}`}><b>{label}</b><strong>{typeof value === "number" ? (String(label).includes("%") || label === "ROI" ? pct(value) : String(value)) : "â€”"}</strong></span>)}</div>
+ <div className="edgeiq-stats-season">{[["Starts", activeStatsEntity?.starts ?? 0], ["Wins", activeStatsEntity?.wins ?? 0], ["Places", activeStatsEntity?.places ?? 0], ["Win %", activeStatsEntity?.winRate ?? null], ["Place %", activeStatsEntity?.placeRate ?? null], ["ROI", activeStatsEntity?.roi ?? null]].map(([label, value]) => <span key={`stats-season-${label}`}><b>{label}</b><strong>{typeof value === "number" ? (String(label).includes("%") || label === "ROI" ? pct(value) : String(value)) : "Ã¢â‚¬â€"}</strong></span>)}</div>
  </header>
- <div className="edgeiq-stats-recent">{statsRecentCards.map(([label, wins, places, winRate, placeRate, roi]) => <article key={`stats-card-${label}`}><span>{label}</span><strong>{wins}</strong><em>Wins</em><strong>{places}</strong><em>Places</em><b>{typeof winRate === "number" ? pct(winRate) : "â€”"}</b><small>ROI {typeof roi === "number" ? pct(roi) : "â€”"}</small></article>)}</div>
+ <div className="edgeiq-stats-recent">{statsRecentCards.map(([label, wins, places, winRate, placeRate, roi]) => <article key={`stats-card-${label}`}><span>{label}</span><strong>{wins}</strong><em>Wins</em><strong>{places}</strong><em>Places</em><b>{typeof winRate === "number" ? pct(winRate) : "Ã¢â‚¬â€"}</b><small>ROI {typeof roi === "number" ? pct(roi) : "Ã¢â‚¬â€"}</small></article>)}</div>
  <div className="edgeiq-stats-two">
- <section className="edgeiq-stats-panel"><strong>Performance by {statsMode === "TRAINERS" ? "Track / Class" : "Barrier / Track"}</strong><div className="edgeiq-stats-table">{statsProfileRows.map(([label, starts, wins, winRate, roi]) => <div key={`stats-profile-${label}`}><span>{label}</span><em>{starts}</em><em>{wins}</em><b>{typeof winRate === "number" ? pct(winRate) : "â€”"}</b><b>{typeof roi === "number" ? pct(roi) : "â€”"}</b></div>)}</div></section>
+ <section className="edgeiq-stats-panel"><strong>Performance by {statsMode === "TRAINERS" ? "Track / Class" : "Barrier / Track"}</strong><div className="edgeiq-stats-table">{statsProfileRows.map(([label, starts, wins, winRate, roi]) => <div key={`stats-profile-${label}`}><span>{label}</span><em>{starts}</em><em>{wins}</em><b>{typeof winRate === "number" ? pct(winRate) : "Ã¢â‚¬â€"}</b><b>{typeof roi === "number" ? pct(roi) : "Ã¢â‚¬â€"}</b></div>)}</div></section>
  <section className="edgeiq-stats-panel"><strong>Run Style Match-ups</strong><div className="edgeiq-stats-bars">{statsStyleRows.map(([label, count, rate]) => <div key={`stats-style-${label}`}><span>{label}</span><i><b style={{ width: `${Math.max(8, Number(rate) || 0)}%` }} /></i><em>{count}</em></div>)}</div></section>
  </div>
  <section className="edgeiq-stats-panel"><strong>{statsMode === "TRAINERS" ? "Upcoming Runners" : "Current Race Rides"}</strong><div className="edgeiq-stats-runners">{statRaceRows.slice(0, 8).map((item) => <div key={`stats-runner-${runnerRowKey(item.row)}`}><span>{saddle(item.row) === 999 ? "-" : saddle(item.row)}</span><strong>{horse(item.row)}</strong><em>{firstText(item.row, ["jockey", "jockey_name", "rider"], "-")}</em><em>{firstText(item.row, ["trainer", "trainer_name"], "-")}</em><b>{renderMetricValue(projectionRatingValue(item), 1)}</b></div>)}</div></section>
  </section>
  <aside className="edgeiq-stats-side">
- <section><strong>{entityDisplay} Profile Summary</strong><div className="edgeiq-stats-radar"><i /></div>{[["Win Rate", activeStatsEntity?.winRate], ["Place Rate", activeStatsEntity?.placeRate], ["Consistency", activeStatsEntity?.avgRating], ["Market Perf.", activeStatsEntity?.roi], ["Overall Score", activeStatsEntity?.avgRating]].map(([label, value]) => <div key={`stats-summary-${label}`}><span>{label}</span><em>{typeof value === "number" ? (String(label).includes("Rate") || String(label).includes("Perf") ? pct(value) : renderMetricValue(value, 1)) : "â€”"}</em></div>)}</section>
- <section><strong>Top Tracks</strong>{statsGroupEntries.slice(0, 5).map((entry) => <div key={`stats-top-${entry.key}`}><span>{entry.name}</span><i><b style={{ width: `${Math.max(10, Math.min(100, entry.avgRating ?? 0))}%` }} /></i><em>{entry.avgRating === null ? "â€”" : renderMetricValue(entry.avgRating, 1)}</em></div>)}</section>
+ <section><strong>{entityDisplay} Profile Summary</strong><div className="edgeiq-stats-radar"><i /></div>{[["Win Rate", activeStatsEntity?.winRate], ["Place Rate", activeStatsEntity?.placeRate], ["Consistency", activeStatsEntity?.avgRating], ["Market Perf.", activeStatsEntity?.roi], ["Overall Score", activeStatsEntity?.avgRating]].map(([label, value]) => <div key={`stats-summary-${label}`}><span>{label}</span><em>{typeof value === "number" ? (String(label).includes("Rate") || String(label).includes("Perf") ? pct(value) : renderMetricValue(value, 1)) : "Ã¢â‚¬â€"}</em></div>)}</section>
+ <section><strong>Top Tracks</strong>{statsGroupEntries.slice(0, 5).map((entry) => <div key={`stats-top-${entry.key}`}><span>{entry.name}</span><i><b style={{ width: `${Math.max(10, Math.min(100, entry.avgRating ?? 0))}%` }} /></i><em>{entry.avgRating === null ? "Ã¢â‚¬â€" : renderMetricValue(entry.avgRating, 1)}</em></div>)}</section>
  <section><strong>Key Insights</strong><p>{activeStatsEntity ? `${activeStatsEntity.name} profiles strongest around ${track(header)} with ${activeStatsEntity.starts} available starts in the terminal sample.` : "Stats profile will populate when runner context is available."}</p><p>Figures are research context only and do not alter ratings or production prices.</p></section>
  </aside>
  </div>
@@ -4735,7 +4653,7 @@ if (productView === "MEETINGS") {
  const strongestEdge = [...enrichedMarketRows].filter((row) => row.diff !== null).sort((a, b) => (b.diff ?? -999) - (a.diff ?? -999))[0];
  const biggestFirm = [...firmers].sort((a, b) => (a.fluc ?? 0) - (b.fluc ?? 0))[0];
  const biggestDrift = [...drifters].sort((a, b) => (b.fluc ?? 0) - (a.fluc ?? 0))[0];
- return <section className="edgeiq-market-tab edgeiq-product-section edgeiq-product-v4-panel edgeiq-market-v1-lock edgeiq-market-final-lock"><div className="edgeiq-tab-heading edgeiq-product-v4-section-title"><span>MARKET</span><strong>EDGEiQ Trading Floor</strong><em>Market intelligence, fluctuations, value and context.</em></div><div className="edgeiq-market-final-cards">{[["Largest Overlay", strongestEdge ? horse(strongestEdge.item.row) : "Pending", strongestEdge?.diff === null || !strongestEdge ? "â€”" : pct(strongestEdge.diff)], ["Biggest Firm", biggestFirm ? horse(biggestFirm.item.row) : "Pending", biggestFirm?.fluc === null || !biggestFirm ? "Pending Market" : `â†“ ${Math.abs(biggestFirm.fluc).toFixed(1)}%`], ["Biggest Drift", biggestDrift ? horse(biggestDrift.item.row) : "Pending", biggestDrift?.fluc === null || !biggestDrift ? "Pending Market" : `â†‘ ${Math.abs(biggestDrift.fluc).toFixed(1)}%`], ["Market Confidence", bettingConfidence !== "-" ? bettingConfidence : "Pending", ""]].map(([label, value, detail]) => <article key={`market-card-${label}`}><span>{label}</span><strong>{value}</strong><em>{detail}</em></article>)}</div><div className="edgeiq-market-content-grid"><div className="edgeiq-market-table edgeiq-product-table edgeiq-product-v4-table" role="table" aria-label="Market comparison table"><div className="edgeiq-market-row head" role="row">{['NO','RUNNER','EDGEIQ','OPEN','CURRENT','FLUC','EDGE %'].map((label) => <span key={`market-head-${label}`}>{label}</span>)}</div>{enrichedMarketRows.map(({ item, fair, open, current, fluc, diff }) => { const flucClass = fluc === null ? "neutral" : fluc > 0 ? "drift" : fluc < 0 ? "firm" : "neutral"; const flucDisplay = fluc === null ? "Pending Market" : fluc > 0 ? `â†‘ ${Math.abs(fluc).toFixed(1)}%` : fluc < 0 ? `â†“ ${Math.abs(fluc).toFixed(1)}%` : "â€” 0.0%"; return <div className="edgeiq-market-row" role="row" key={`market-row-${runnerRowKey(item.row)}`}><span>{saddle(item.row) === 999 ? "-" : saddle(item.row)}</span><strong>{horse(item.row)}</strong><span>{money(fair)}</span><span>{marketMoney(open)}</span><span>{marketMoney(current)}</span><span className={flucClass}>{flucDisplay}</span><span className={diff === null ? "neutral" : diff > 0 ? "positive" : "negative"}>{diff === null ? "-" : pct(diff)}</span></div>; })}</div><aside className="edgeiq-market-fluc-panel edgeiq-market-final-side"><section><span>Market Pulse</span>{[["Firmers", firmers.length], ["Drifters", drifters.length], ["Unchanged", unchanged.length]].map(([label, value]) => <div key={`market-pulse-${label}`}><em>{label}</em><strong>{value}</strong></div>)}</section><section><span>Money Flow</span>{[...firmers].sort((a, b) => (a.fluc ?? 0) - (b.fluc ?? 0)).slice(0, 3).map((row, index) => <div key={`market-flow-${runnerRowKey(row.item.row)}`}><em>{index + 1}. {horse(row.item.row)}</em><strong className="firm">â†“ {Math.abs(row.fluc ?? 0).toFixed(1)}%</strong></div>)}</section><section><span>Market Narrative</span><p>Market board shows live price movement and EDGEiQ fair-price context only. No recommendation language is shown.</p></section></aside></div></section>;
+ return <section className="edgeiq-market-tab edgeiq-product-section edgeiq-product-v4-panel edgeiq-market-v1-lock edgeiq-market-final-lock"><div className="edgeiq-tab-heading edgeiq-product-v4-section-title"><span>MARKET</span><strong>EDGEiQ Trading Floor</strong><em>Market intelligence, fluctuations, value and context.</em></div><div className="edgeiq-market-final-cards">{[["Largest Overlay", strongestEdge ? horse(strongestEdge.item.row) : "Pending", strongestEdge?.diff === null || !strongestEdge ? "Ã¢â‚¬â€" : pct(strongestEdge.diff)], ["Biggest Firm", biggestFirm ? horse(biggestFirm.item.row) : "Pending", biggestFirm?.fluc === null || !biggestFirm ? "Pending Market" : `Ã¢â€ â€œ ${Math.abs(biggestFirm.fluc).toFixed(1)}%`], ["Biggest Drift", biggestDrift ? horse(biggestDrift.item.row) : "Pending", biggestDrift?.fluc === null || !biggestDrift ? "Pending Market" : `Ã¢â€ â€˜ ${Math.abs(biggestDrift.fluc).toFixed(1)}%`], ["Market Confidence", bettingConfidence !== "-" ? bettingConfidence : "Pending", ""]].map(([label, value, detail]) => <article key={`market-card-${label}`}><span>{label}</span><strong>{value}</strong><em>{detail}</em></article>)}</div><div className="edgeiq-market-content-grid"><div className="edgeiq-market-table edgeiq-product-table edgeiq-product-v4-table" role="table" aria-label="Market comparison table"><div className="edgeiq-market-row head" role="row">{['NO','RUNNER','EDGEIQ','OPEN','CURRENT','FLUC','EDGE %'].map((label) => <span key={`market-head-${label}`}>{label}</span>)}</div>{enrichedMarketRows.map(({ item, fair, open, current, fluc, diff }) => { const flucClass = fluc === null ? "neutral" : fluc > 0 ? "drift" : fluc < 0 ? "firm" : "neutral"; const flucDisplay = fluc === null ? "Pending Market" : fluc > 0 ? `Ã¢â€ â€˜ ${Math.abs(fluc).toFixed(1)}%` : fluc < 0 ? `Ã¢â€ â€œ ${Math.abs(fluc).toFixed(1)}%` : "Ã¢â‚¬â€ 0.0%"; return <div className="edgeiq-market-row" role="row" key={`market-row-${runnerRowKey(item.row)}`}><span>{saddle(item.row) === 999 ? "-" : saddle(item.row)}</span><strong>{horse(item.row)}</strong><span>{money(fair)}</span><span>{marketMoney(open)}</span><span>{marketMoney(current)}</span><span className={flucClass}>{flucDisplay}</span><span className={diff === null ? "neutral" : diff > 0 ? "positive" : "negative"}>{diff === null ? "-" : pct(diff)}</span></div>; })}</div><aside className="edgeiq-market-fluc-panel edgeiq-market-final-side"><section><span>Market Pulse</span>{[["Firmers", firmers.length], ["Drifters", drifters.length], ["Unchanged", unchanged.length]].map(([label, value]) => <div key={`market-pulse-${label}`}><em>{label}</em><strong>{value}</strong></div>)}</section><section><span>Money Flow</span>{[...firmers].sort((a, b) => (a.fluc ?? 0) - (b.fluc ?? 0)).slice(0, 3).map((row, index) => <div key={`market-flow-${runnerRowKey(row.item.row)}`}><em>{index + 1}. {horse(row.item.row)}</em><strong className="firm">Ã¢â€ â€œ {Math.abs(row.fluc ?? 0).toFixed(1)}%</strong></div>)}</section><section><span>Market Narrative</span><p>Market board shows live price movement and EDGEiQ fair-price context only. No recommendation language is shown.</p></section></aside></div></section>;
  })() : null}
  {intelMode === "RESULTS" ? (() => {
  const resultRows = [...activeRaceRows].sort((a, b) => saddle(a.row) - saddle(b.row));
@@ -4746,7 +4664,7 @@ if (productView === "MEETINGS") {
  const resultPosition = (item: EnrichedRunner, index: number) => resultValue(item.row, ["finish_position", "finishing_position", "result_position", "pos"], String(index + 1));
  const resultMargin = (row: Row) => resultValue(row, ["margin", "beaten_margin", "official_margin"], "Pending");
  const resultEpi = (item: EnrichedRunner) => firstNum(item.ratingsHeatmap, ["runner_rating", "epi", "performance_index"]) ?? projectionRatingValue(item);
- const sectional = (row: Row, keys: string[]) => resultValue(row, keys, "â€”");
+ const sectional = (row: Row, keys: string[]) => resultValue(row, keys, "Ã¢â‚¬â€");
  const sectionalNumber = (value: string) => num(String(value).replace(/[Ll]/g, ""));
  const sectionalClass = (value: string) => {
  const parsed = sectionalNumber(value);
@@ -4784,7 +4702,7 @@ if (productView === "MEETINGS") {
  <div className="edgeiq-results-v1-title">Official Results</div>
  <div className="edgeiq-results-v1-table edgeiq-product-v4-table" role="table" aria-label="Official results">
  <div className="edgeiq-results-v1-row head" role="row">{["POS","NO","SILK","RUNNER","MARGIN (BEATEN BY)","EPI"].map((label) => <span key={`results-official-head-${label}`}>{label}</span>)}</div>
- {resultRows.map((item, index) => <div className="edgeiq-results-v1-row" role="row" key={`results-official-${runnerRowKey(item.row)}`}><span>{resultPosition(item, index)}</span><span>{saddle(item.row) === 999 ? "â€”" : saddle(item.row)}</span><span className="edgeiq-field-silk" aria-label={`${horse(item.row)} silk`}><i /></span><strong>{horse(item.row)}</strong><span>{resultMargin(item.row)}</span><span>{resultEpi(item) === null ? "â€”" : renderMetricValue(resultEpi(item), 1)}</span></div>)}
+ {resultRows.map((item, index) => <div className="edgeiq-results-v1-row" role="row" key={`results-official-${runnerRowKey(item.row)}`}><span>{resultPosition(item, index)}</span><span>{saddle(item.row) === 999 ? "Ã¢â‚¬â€" : saddle(item.row)}</span><span className="edgeiq-field-silk" aria-label={`${horse(item.row)} silk`}><i /></span><strong>{horse(item.row)}</strong><span>{resultMargin(item.row)}</span><span>{resultEpi(item) === null ? "Ã¢â‚¬â€" : renderMetricValue(resultEpi(item), 1)}</span></div>)}
  </div>
  <div className="edgeiq-results-v1-meta">Official Time: <span>{officialTime}</span> <i /> Last 600m: <span>{last600}</span> <i /> Track Condition: <span>{trackCondition(header)}</span> <i /> Rail: <span>{railDisplay}</span></div>
  </section>
@@ -4797,7 +4715,7 @@ if (productView === "MEETINGS") {
  return <div className="edgeiq-sectionals-v1-row" role="row" key={`sectionals-${runnerRowKey(item.row)}`}><span>{resultPosition(item, index)}</span><strong>{horse(item.row)}</strong>{[values.s800, values.s600, values.s400, values.s200, values.finish].map((value, valueIndex) => <span key={`sectionals-${runnerRowKey(item.row)}-${valueIndex}`} className={sectionalClass(value)}>{value}</span>)}</div>;
  })}
  </div>
- <div className="edgeiq-results-v1-scale"><span>Faster than standard</span><i>â‰¤ -4.0L</i><i>-4.0L to -2.0L</i><i>-2.0L to -0.1L</i><b>0.0L Standard</b><em>Slower than standard</em><strong>+0.1L or more</strong></div>
+ <div className="edgeiq-results-v1-scale"><span>Faster than standard</span><i>Ã¢â€°Â¤ -4.0L</i><i>-4.0L to -2.0L</i><i>-2.0L to -0.1L</i><b>0.0L Standard</b><em>Slower than standard</em><strong>+0.1L or more</strong></div>
  <p className="edgeiq-results-v1-data-label">Data is EDGEiQ Standardised Sectionals</p>
  </section>
  </div>
@@ -4806,7 +4724,7 @@ if (productView === "MEETINGS") {
  <div className="edgeiq-results-v1-title">Sectional Rankings</div>
  <div className="edgeiq-results-ranking-table edgeiq-product-v4-table" role="table" aria-label="Sectional rankings">
  <div className="edgeiq-results-ranking-row head" role="row">{["METRIC","WINNER","FIGURE","RUNNER UP","FIGURE"].map((label) => <span key={`ranking-head-${label}`}>{label}</span>)}</div>
- {rankingMetrics.map((metric) => <div className="edgeiq-results-ranking-row" role="row" key={`sectional-ranking-${metric.label}`}><span>{metric.label}</span><strong>{metric.winner ? horse(metric.winner.item.row) : "â€”"}</strong><span>{metric.winner?.value || "â€”"}</span><strong>{metric.runnerUp ? horse(metric.runnerUp.item.row) : "â€”"}</strong><span>{metric.runnerUp?.value || "â€”"}</span></div>)}
+ {rankingMetrics.map((metric) => <div className="edgeiq-results-ranking-row" role="row" key={`sectional-ranking-${metric.label}`}><span>{metric.label}</span><strong>{metric.winner ? horse(metric.winner.item.row) : "Ã¢â‚¬â€"}</strong><span>{metric.winner?.value || "Ã¢â‚¬â€"}</span><strong>{metric.runnerUp ? horse(metric.runnerUp.item.row) : "Ã¢â‚¬â€"}</strong><span>{metric.runnerUp?.value || "Ã¢â‚¬â€"}</span></div>)}
  </div>
  </section>
  <section className="edgeiq-results-v1-panel edgeiq-results-review-panel">
@@ -4878,7 +4796,7 @@ if (productView === "MEETINGS") {
  </div>
  ) : null}
  <footer className="edgeiq-home-v4-footer edgeiq-product-v4-footer">
- <div>EDGEiQ â€” ADAPTIVE RACING INTELLIGENCE</div>
+ <div>EDGEiQ Ã¢â‚¬â€ ADAPTIVE RACING INTELLIGENCE</div>
  <div>NOT NOISE. <span>JUST CONTEXT.</span></div>
  </footer>
 {fullHistoryRunner ? (() => {
@@ -4894,16 +4812,18 @@ if (productView === "MEETINGS") {
  const avg = ratedRows.length ? ratedRows.reduce((sum, run) => sum + (historyRatingValue(run) ?? 0), 0) / ratedRows.length : null;
  const cleanHistory = (value: unknown) => {
  const raw = String(value ?? "").trim();
- if (!raw || /^(UNKNOWN|NOT LOADED|SOURCE GAP|SOURCE_MISSING|NULL|N\/A|NA|UNDEFINED|0\.0)$/i.test(raw)) return "â€”";
+ if (!raw || /^(UNKNOWN|NOT LOADED|SOURCE GAP|SOURCE_MISSING|NULL|N\/A|NA|UNDEFINED|0\.0)$/i.test(raw)) return "Ã¢â‚¬â€";
  return raw;
  };
- return <div className="edgeiq-career-modal-backdrop" role="dialog" aria-modal="true" aria-label="Full career history"><section className="edgeiq-career-modal"><header><div><span>Full Career History</span><strong>{horse(fullHistoryRunner.row)}</strong><em>{firstText(fullHistoryRunner.row, ["trainer", "trainer_name"], "â€”")} / {firstText(fullHistoryRunner.row, ["jockey", "jockey_name", "rider"], "â€”")}</em></div><button type="button" onClick={() => setFullHistoryRunner(null)} aria-label="Close full career history">Close</button></header><div className="edgeiq-career-summary">{[["Starts", starts], ["Wins", wins], ["Places", places], ["Win %", winRate], ["Place %", placeRate], ["Peak EPI", peak], ["Average EPI", avg]].map(([label, value]) => <article key={`career-summary-${label}`}><span>{label}</span><strong>{typeof value === "number" ? (String(label).includes("%") ? `${value.toFixed(1)}%` : renderMetricValue(value, 1)) : "â€”"}</strong></article>)}</div><div className="edgeiq-career-history-table" role="table" aria-label="Runner full career history"><div className="edgeiq-career-history-row head" role="row">{['DATE','TRACK','DIST','CLASS','GOING','BAR','JOCKEY','POS','MARGIN','SP','EPI','SETTLED / RUN STYLE'].map((label) => <span key={`career-head-${label}`}>{label}</span>)}</div>{modalRows.length ? modalRows.map((run, index) => <div className="edgeiq-career-history-row" role="row" key={`career-history-${index}-${historyRunKey(run)}`}><span>{cleanHistory(formatHistoryDate(historyDateText(run)))}</span><span>{cleanHistory(historyTrackText(run))}</span><span>{cleanHistory(historyDistanceText(run))}</span><span>{cleanHistory(historyClassText(run))}</span><span>{cleanHistory(historyGoingText(run))}</span><span>{cleanHistory(firstText(run, ["barrier", "draw", "barrier_number"], ""))}</span><span>{cleanHistory(historyJockeyText(run))}</span><span>{cleanHistory(historyFinishText(run))}</span><span>{cleanHistory(firstText(run, ["margin", "beaten_margin"], ""))}</span><span>{cleanHistory(historySpText(run))}</span><span>{historyRatingValue(run) === null ? "â€”" : renderMetricValue(historyRatingValue(run), 1)}</span><span>{cleanHistory(firstText(run, ["settling_position", "run_style", "pos_800", "pos_400"], ""))}</span></div>) : <div className="edgeiq-career-history-empty">Career history not loaded for this runner.</div>}</div></section></div>;
+ return <div className="edgeiq-career-modal-backdrop" role="dialog" aria-modal="true" aria-label="Full career history"><section className="edgeiq-career-modal"><header><div><span>Full Career History</span><strong>{horse(fullHistoryRunner.row)}</strong><em>{firstText(fullHistoryRunner.row, ["trainer", "trainer_name"], "Ã¢â‚¬â€")} / {firstText(fullHistoryRunner.row, ["jockey", "jockey_name", "rider"], "Ã¢â‚¬â€")}</em></div><button type="button" onClick={() => setFullHistoryRunner(null)} aria-label="Close full career history">Close</button></header><div className="edgeiq-career-summary">{[["Starts", starts], ["Wins", wins], ["Places", places], ["Win %", winRate], ["Place %", placeRate], ["Peak EPI", peak], ["Average EPI", avg]].map(([label, value]) => <article key={`career-summary-${label}`}><span>{label}</span><strong>{typeof value === "number" ? (String(label).includes("%") ? `${value.toFixed(1)}%` : renderMetricValue(value, 1)) : "Ã¢â‚¬â€"}</strong></article>)}</div><div className="edgeiq-career-history-table" role="table" aria-label="Runner full career history"><div className="edgeiq-career-history-row head" role="row">{['DATE','TRACK','DIST','CLASS','GOING','BAR','JOCKEY','POS','MARGIN','SP','EPI','SETTLED / RUN STYLE'].map((label) => <span key={`career-head-${label}`}>{label}</span>)}</div>{modalRows.length ? modalRows.map((run, index) => <div className="edgeiq-career-history-row" role="row" key={`career-history-${index}-${historyRunKey(run)}`}><span>{cleanHistory(formatHistoryDate(historyDateText(run)))}</span><span>{cleanHistory(historyTrackText(run))}</span><span>{cleanHistory(historyDistanceText(run))}</span><span>{cleanHistory(historyClassText(run))}</span><span>{cleanHistory(historyGoingText(run))}</span><span>{cleanHistory(firstText(run, ["barrier", "draw", "barrier_number"], ""))}</span><span>{cleanHistory(historyJockeyText(run))}</span><span>{cleanHistory(historyFinishText(run))}</span><span>{cleanHistory(firstText(run, ["margin", "beaten_margin"], ""))}</span><span>{cleanHistory(historySpText(run))}</span><span>{historyRatingValue(run) === null ? "Ã¢â‚¬â€" : renderMetricValue(historyRatingValue(run), 1)}</span><span>{cleanHistory(firstText(run, ["settling_position", "run_style", "pos_800", "pos_400"], ""))}</span></div>) : <div className="edgeiq-career-history-empty">Career history not loaded for this runner.</div>}</div></section></div>;
  })() : null}
 
  </section>
  </div>
  );
 }
+
+
 
 
 
