@@ -6,6 +6,7 @@ import { loadEdgeIQData } from "../services/edgeiqDataLoader";
 import { distance, firstNum, firstText, horse, integer, raceClass, raceDate, raceNo, railPosition, track, trackCondition } from "../utils/raceRowHelpers";
 import { buildRaceRows, runnerRowKey } from "../services/raceSelectionService";
 import { buildEnrichedRunners } from "../services/runnerEnrichmentService";
+import { buildRankedEnriched } from "../services/rankingService";
 ﻿import React, { useEffect, useMemo, useState } from "react";
 import { getMeetingDisplayState } from "../utils/meetingDisplayState";
 
@@ -2215,31 +2216,11 @@ export default function RaceIntelligenceScreen(props: Props): React.ReactElement
   mergeRunnerHistoryRows,
  }), [raceRows, runnerIntelRows, v8Rows, betRows, reliabilityRows, horseDrawerRows, runnerDnaDrawerRows, explainabilityRows, connectionRows, factorScorecardRows, limitedRows, intelligenceScoreRows, customerIntelligenceRows, intelligenceSummaryRows, runnerProfileRows, formIntelligenceRows, runnerFormRows, historyMasterByHorse, historyMasterByTrackRaceHorse, historyDetailByHorse, historyDetailByMergeKey, historyDetailByLooseMergeKey, runnerFormHistoryByHorse, horseCareerByHorse, horserchetypeByHorse, horseTrajectoryByHorse, horseProjectionByHorse, campaignIntelligenceRows, hiddenGemRows, commandEnrichmentRows, mapEnrichmentRows, formEnrichmentRows, ratingsHeatmapRows, nexusContextualRows]);
 
- const rankedEnriched = useMemo(() => {
- const fallbackOrder = [...enriched]
- .sort((a, b) => {
- const rawProb = firstNum(a.row, ["V6_1_RESERCH_probability"]);
- const rawProbB = firstNum(b.row, ["V6_1_RESERCH_probability"]);
- const prob = winPct(a.row, a.bet) ?? (rawProb === null ? -1 : rawProb * 100);
- const probB = winPct(b.row, b.bet) ?? (rawProbB === null ? -1 : rawProbB * 100);
- return probB - prob;
- })
- .map((item, index) => [runnerRowKey(item.row), index + 1] as const);
-
- const fallbackRankMap = new Map<string, number>(fallbackOrder);
-
- return enriched.map((item) => {
- const explicitRank =
- firstNum(item.row, ["V6_1_RESERCH_price_rank", "price_rank", "final_probability_rank_used", "runner_rank"]) ??
- fallbackRankMap.get(runnerRowKey(item.row)) ??
- null;
-
- return {
- ...item,
- modelRank: explicitRank === null ? null : Math.max(1, Math.round(explicitRank)),
- };
- });
- }, [enriched]);
+ const rankedEnriched = useMemo(() => buildRankedEnriched({
+  enriched,
+  runnerRowKey,
+  winPct,
+ }), [enriched]);
 
  const decisionBoardGridCols =
  "55px 245px 80px 150px 100px 96px 96px 96px 110px 120px";
