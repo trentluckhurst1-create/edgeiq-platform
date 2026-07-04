@@ -4,6 +4,7 @@ import { cleanHorse, cleanHorseLoose, cleanTrack, marketMoney, money, num, pct, 
 import { parseCsv, type CsvRow } from "../utils/edgeiqCsv";
 import { loadEdgeIQData } from "../services/edgeiqDataLoader";
 import { distance, firstNum, firstText, horse, integer, raceClass, raceDate, raceNo, railPosition, track, trackCondition } from "../utils/raceRowHelpers";
+import { buildRaceRows, runnerRowKey } from "../services/raceSelectionService";
 ﻿import React, { useEffect, useMemo, useState } from "react";
 import { getMeetingDisplayState } from "../utils/meetingDisplayState";
 
@@ -1611,34 +1612,14 @@ export default function RaceIntelligenceScreen(props: Props): React.ReactElement
  ? `${futureMeetingTrack} R${selectedRaceNo}`
  : futureMeetingTrack || "Upcoming race";
 
- const runnerRowKey = (row: Row) => `${track(row)}|${raceNo(row)}|${cleanHorse(horse(row))}`;
-
- const raceRows = useMemo(() => {
- let rows = runnerRows;
-
- if (selectedRaceDate) rows = rows.filter((row) => !raceDate(row) || raceDate(row) === selectedRaceDate);
- if (selectedTrack) rows = rows.filter((row) => cleanTrack(track(row)) === selectedTrack);
- if (selectedRaceNo) rows = rows.filter((row) => raceNo(row) === selectedRaceNo);
-
- if (!rows.length && props.currentRace?.track && props.currentRace?.raceNo) {
- rows = runnerRows.filter(
- (row) =>
- (!selectedRaceDate || !raceDate(row) || raceDate(row) === selectedRaceDate) &&
- cleanTrack(track(row)) === cleanTrack(props.currentRace.track) &&
- raceNo(row) === text(props.currentRace.raceNo)
- );
- }
-
- if (!rows.length && Array.isArray(props.currentRace?.rows) && props.currentRace.rows.length) {
- rows = (props.currentRace.rows as Row[]).filter((row) => {
- const trackMatch = !selectedTrack || cleanTrack(track(row)) === selectedTrack;
- const raceMatch = !selectedRaceNo || raceNo(row) === selectedRaceNo;
- return trackMatch && raceMatch;
- });
- }
-
- return [...rows].sort((a, b) => saddle(a) - saddle(b));
- }, [runnerRows, selectedTrack, selectedRaceNo, selectedRaceDate, props.currentRace]);
+ const raceRows = useMemo(() => buildRaceRows({
+  runnerRows,
+  selectedTrack,
+  selectedRaceNo,
+  selectedRaceDate,
+  currentRace: props.currentRace,
+  saddle,
+ }), [runnerRows, selectedTrack, selectedRaceNo, selectedRaceDate, props.currentRace]);
 
  const productShellRaces = useMemo(() => {
  const raceMap = new Map<string, {
