@@ -3,6 +3,7 @@ import { MeetingsScreen } from "../screens/MeetingsScreen";
 import { cleanHorse, cleanHorseLoose, cleanTrack, marketMoney, money, num, pct, signed, text } from "../utils/edgeiqFormat";
 import { parseCsv, type CsvRow } from "../utils/edgeiqCsv";
 import { loadEdgeIQData } from "../services/edgeiqDataLoader";
+import { distance, firstNum, firstText, horse, integer, raceClass, raceDate, raceNo, railPosition, track, trackCondition } from "../utils/raceRowHelpers";
 ﻿import React, { useEffect, useMemo, useState } from "react";
 import { getMeetingDisplayState } from "../utils/meetingDisplayState";
 
@@ -73,64 +74,6 @@ type RatingHoverCard = {
 };
 
 
-function raceDate(row: Row): string {
- return text(row.current_race_date || row.race_date || row.meeting_date || row.date || row.raceDate);
-}
-
-function track(row: Row): string {
- return text(row.track || row.meeting || row.meeting_name);
-}
-
-function raceNo(row: Row): string {
- return text(row.race_no || row.raceNo || row.race_number || row.race);
-}
-
-function horse(row: Row): string {
- return text(row.horse || row.horseName || row.runner || row.runner_name);
-}
-
-function distance(row: Row): string {
- const d = text(row.distance || row.race_distance || row.dist);
- return d ? `${d}m`.replace("mm", "m") : "-";
-}
-
-function raceClass(row: Row): string {
- return text(row.race_class_clean || row.race_class || row.class || row.raceClass || row.grade || row.race_grade) || "-";
-}
-
-function trackCondition(row: Row): string {
- return text(row.track_condition || row.condition || row.going || row.trackCondition) || "-";
-}
-
-function railPosition(row: Row): string {
- return text(row.rail_position || row.rail || row.track_rail || row.railPosition) || "-";
-}
-
-
-function integer(v: string): number | null {
- const match = text(v).match(/-?\d+/);
- return match ? Number(match[0]) : null;
-}
-
-
-
-function firstNum(row: Row | undefined, keys: string[]): number | null {
- if (!row) return null;
- for (const key of keys) {
- const value = num(row[key]);
- if (value !== null) return value;
- }
- return null;
-}
-
-function firstText(row: Row | undefined, keys: string[], fallback = "-"): string {
- if (!row) return fallback;
- for (const key of keys) {
- const value = text(row[key]);
- if (value) return value;
- }
- return fallback;
-}
 
 function evidenceFlag(row: Row | undefined, keys: string[]): boolean {
  if (!row) return false;
