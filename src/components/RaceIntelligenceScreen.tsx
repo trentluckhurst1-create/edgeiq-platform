@@ -1,4 +1,5 @@
-﻿import { RaceMarketWorkspace } from "./workspaces/RaceMarketWorkspace";
+﻿import { RaceStatsWorkspace } from "./workspaces/RaceStatsWorkspace";
+import { RaceMarketWorkspace } from "./workspaces/RaceMarketWorkspace";
 import { RaceWeatherWorkspace } from "./workspaces/RaceWeatherWorkspace";
 import { RaceTrackWorkspace } from "./workspaces/RaceTrackWorkspace";
 import { RaceRunnersWorkspace } from "./workspaces/RaceRunnersWorkspace";
@@ -4197,83 +4198,33 @@ if (productView === "MEETINGS") {
  const labPriceAverageConfidence = labPriceDisplayRows.length ? labPriceDisplayRows.reduce((sum, entry) => sum + (firstNum(entry.row, ["data_confidence"]) ?? 0), 0) / labPriceDisplayRows.length : null;
  return <section className="edgeiq-connections-tab edgeiq-lab-tab edgeiq-product-section edgeiq-product-v4-panel edgeiq-lab-v1-lock"><div className="edgeiq-tab-heading edgeiq-product-v4-section-title"><span>LAB</span><strong>Racing Research Laboratory</strong><em>Research, profile, compare and discover.</em></div><div className="edgeiq-lab-v1-layout"><aside className="edgeiq-lab-v1-modules"><strong>Research Modules</strong>{labModules.map((module) => <button type="button" className={labModule === module ? "is-active" : ""} key={`lab-module-${module}`} onClick={() => setLabModule(module)}>{module}</button>)}</aside><section className="edgeiq-lab-v1-main"><div className="edgeiq-lab-v1-subject edgeiq-lab-v1-hero"><span>{labModule}</span><strong>{labHeroSubject}</strong><em>{track(header)} / {distance(header)} / {raceClass(header)}</em></div>{labModule === "PRICE ENGINE" ? <><div className="edgeiq-lab-price-research-banner"><span>Research only</span><strong>Editable rating points do not alter production prices.</strong><em>{labPriceMatches.length ? "Current race feed" : "Fallback research race feed"} / Confidence {labPriceAverageConfidence === null ? "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â" : pct(labPriceAverageConfidence * 100)}</em></div><div className="edgeiq-lab-price-table edgeiq-product-v4-table" role="table" aria-label="Price Engine research table"><div className="edgeiq-lab-price-row head" role="row">{['Runner','Base','Adj Pts','Adj Rating','Base Prob','Adj Prob','Base Price','Adj Price','Status'].map((label) => <span key={`lab-price-head-${label}`}>{label}</span>)}</div>{labPriceDisplayRows.length ? labPriceDisplayRows.map((entry) => <div className="edgeiq-lab-price-row" role="row" key={`lab-price-row-${entry.key}`}><strong>{firstText(entry.row, ["runner"], "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â")}</strong><span>{entry.baseRating === null ? "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â" : renderMetricValue(entry.baseRating, 2)}</span><input aria-label={`Adjust rating points for ${firstText(entry.row, ["runner"], "runner")}`} type="number" step="0.5" value={entry.adjustment} onChange={(event) => { const next = Number(event.currentTarget.value); setPriceEngineAdjustments((current) => ({ ...current, [entry.key]: Number.isFinite(next) ? next : 0 })); }} /><span>{entry.adjustedRating === null ? "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â" : renderMetricValue(entry.adjustedRating, 2)}</span><span>{pct(entry.baseProbability * 100)}</span><span>{pct(entry.adjustedProbability * 100)}</span><span>{money(firstNum(entry.row, ["base_price"]))}</span><span>{money(entry.adjustedPrice)}</span><span>{firstText(entry.row, ["pricing_status"], "RESEARCH_ONLY")}</span></div>) : <div className="edgeiq-lab-price-empty">Price Engine research feed is not loaded for this race.</div>}</div></> : <><div className="edgeiq-lab-v1-metrics">{(activeLabPanel ? [activeLabPanel, ...nexusPanels.filter((panel) => panel.title !== activeLabPanel.title)] : nexusPanels).slice(0, 4).map((panel) => <article key={`lab-metric-${panel.title}`}><span>{panel.title}</span><strong>{panel.metrics[0]?.[1] || "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â"}</strong><em>{cleanNexusValue(panel.name)}</em></article>)}</div><div className="edgeiq-lab-v1-table edgeiq-product-v4-table" role="table" aria-label="Lab research leaderboard"><div className="edgeiq-lab-v1-row head" role="row">{['Research Area','Subject','Metric 1','Metric 2','Metric 3','Context'].map((label) => <span key={`lab-research-head-${label}`}>{label}</span>)}</div>{nexusPanels.map((panel) => <div className="edgeiq-lab-v1-row" role="row" key={`lab-research-${panel.title}`}><strong>{panel.title}</strong><span>{cleanNexusValue(panel.name)}</span>{panel.metrics.slice(0, 3).map(([label, value]) => <span key={`lab-research-${panel.title}-${label}`}>{label}: {cleanNexusValue(value)}</span>)}<span>{panel.metrics[3] ? `${panel.metrics[3][0]}: ${cleanNexusValue(panel.metrics[3][1])}` : "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â"}</span></div>)}</div></>}</section><aside className="edgeiq-lab-v1-insight"><span>EDGEiQ Insight</span><p>{labModule === "PRICE ENGINE" ? "Price Engine research lets rating-point assumptions be tested against adjusted probability and research price without writing to production pricing feeds." : narrative}</p><strong>{labModule === "PRICE ENGINE" ? "Research Guardrail" : "Saved Studies"}</strong><em>{labModule === "PRICE ENGINE" ? "Local adjustments reset with the browser session and remain research-only." : positives[0] || risks[0] || "Research context pending."}</em></aside></div></section>;
  })() : null}
- {intelMode === "STATS" ? (() => {
- const entityKey = statsMode === "TRAINERS" ? "trainer" : "jockey";
- const entityLabel = statsMode === "TRAINERS" ? "TRAINERS" : "JOCKEYS";
- const entityDisplay = statsMode === "TRAINERS" ? "Trainer" : "Jockey";
- const entityNameFor = (item: EnrichedRunner) => firstText(item.row, statsMode === "TRAINERS" ? ["trainer", "trainer_name"] : ["jockey", "jockey_name", "rider"], "Unknown");
- const statsGroups = activeRaceRows.reduce<Record<string, EnrichedRunner[]>>((acc, item) => {
- const name = entityNameFor(item);
- const key = cleanHorse(name);
- if (!acc[key]) acc[key] = [];
- acc[key].push(item);
- return acc;
- }, {});
- const statsGroupEntries = Object.entries(statsGroups).map(([key, rows]) => {
- const allRuns = rows.flatMap((item) => item.runnerHistory || []);
- const rated = allRuns.map((run) => historyRatingValue(run)).filter((value): value is number => value !== null);
- const wins = allRuns.filter((run) => /^1(ST)?$/i.test(historyFinishText(run))).length;
- const places = allRuns.filter((run) => {
- const pos = integer(historyFinishText(run));
- return pos !== null && pos <= 3;
- }).length;
- const starts = allRuns.length || rows.length;
- const winRate = starts ? (wins / starts) * 100 : null;
- const placeRate = starts ? (places / starts) * 100 : null;
- const avgRating = rated.length ? rated.reduce((sum, value) => sum + value, 0) / rated.length : null;
- const edgeAverage = rows.map((row) => edgePct(row.row, row.bet)).filter((value): value is number => value !== null);
- const roi = edgeAverage.length ? edgeAverage.reduce((sum, value) => sum + value, 0) / edgeAverage.length : null;
- return { key, name: entityNameFor(rows[0]), rows, starts, wins, places, winRate, placeRate, avgRating, roi };
- }).sort((a, b) => (b.avgRating ?? -999) - (a.avgRating ?? -999));
- const activeStatsEntity = statsGroupEntries[0] || null;
- const runnerForStats = activeStatsEntity?.rows[0] || activeRaceRows[0];
- const statRaceRows = activeStatsEntity?.rows || activeRaceRows.slice(0, 5);
- const statsRecentCards = [
- ["Last 10 Starts", activeStatsEntity?.wins ?? 0, activeStatsEntity?.places ?? 0, activeStatsEntity?.winRate ?? null, activeStatsEntity?.placeRate ?? null, activeStatsEntity?.roi ?? null],
- ["Last 25 Starts", activeStatsEntity?.wins ?? 0, activeStatsEntity?.places ?? 0, activeStatsEntity?.winRate ?? null, activeStatsEntity?.placeRate ?? null, activeStatsEntity?.roi ?? null],
- ["Last 50 Starts", activeStatsEntity?.wins ?? 0, activeStatsEntity?.places ?? 0, activeStatsEntity?.winRate ?? null, activeStatsEntity?.placeRate ?? null, activeStatsEntity?.roi ?? null],
- ["Last 100 Starts", activeStatsEntity?.wins ?? 0, activeStatsEntity?.places ?? 0, activeStatsEntity?.winRate ?? null, activeStatsEntity?.placeRate ?? null, activeStatsEntity?.roi ?? null],
- ];
- const statsProfileRows = [
- ["Flemington", activeStatsEntity?.starts ?? activeRaceRows.length, activeStatsEntity?.wins ?? 0, activeStatsEntity?.winRate ?? null, activeStatsEntity?.roi ?? null],
- [trackCondition(header), activeStatsEntity?.starts ?? activeRaceRows.length, activeStatsEntity?.places ?? 0, activeStatsEntity?.placeRate ?? null, activeStatsEntity?.roi ?? null],
- [distance(header), statRaceRows.length, statRaceRows.filter((item) => paceMapRole(item) === "LEADER").length, activeStatsEntity?.winRate ?? null, activeStatsEntity?.roi ?? null],
- [raceClass(header), statRaceRows.length, statRaceRows.filter((item) => !isScratched(item)).length, activeStatsEntity?.placeRate ?? null, activeStatsEntity?.roi ?? null],
- ];
- const statsStyleRows = ["LEADER", "ON PACE", "MIDFIELD", "BACKMARKER"].map((style) => {
- const count = activeRaceRows.filter((item) => paceMapRole(item) === style).length;
- return [style, count, activeRaceRows.length ? (count / activeRaceRows.length) * 100 : null];
- });
- return (
- <section className="edgeiq-stats-tab edgeiq-product-section edgeiq-stats-lock">
- <div className="edgeiq-stats-toolbar">
- <div><span>STATS</span><strong>{entityLabel}</strong><em>Deep analytics and performance profiling for {entityLabel.toLowerCase()}.</em></div>
- <div className="edgeiq-stats-switch">{(["JOCKEYS", "TRAINERS"] as StatsMode[]).map((mode) => <button type="button" key={`stats-mode-${mode}`} className={statsMode === mode ? "is-active" : ""} onClick={() => setStatsMode(mode)}>{mode}</button>)}</div>
- </div>
- <div className="edgeiq-stats-grid">
- <section className="edgeiq-stats-main">
- <header className="edgeiq-stats-profile">
- <div className="edgeiq-stats-avatar">{statsMode === "TRAINERS" ? "T" : "J"}</div>
- <div><strong>{activeStatsEntity?.name || (statsMode === "TRAINERS" ? "Trainer Profile" : "Jockey Profile")}</strong><span>Top rated {entityDisplay.toLowerCase()}</span><em>{track(header)} / {distance(header)} / {raceClass(header)}</em></div>
- <div className="edgeiq-stats-season">{[["Starts", activeStatsEntity?.starts ?? 0], ["Wins", activeStatsEntity?.wins ?? 0], ["Places", activeStatsEntity?.places ?? 0], ["Win %", activeStatsEntity?.winRate ?? null], ["Place %", activeStatsEntity?.placeRate ?? null], ["ROI", activeStatsEntity?.roi ?? null]].map(([label, value]) => <span key={`stats-season-${label}`}><b>{label}</b><strong>{typeof value === "number" ? (String(label).includes("%") || label === "ROI" ? pct(value) : String(value)) : "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â"}</strong></span>)}</div>
- </header>
- <div className="edgeiq-stats-recent">{statsRecentCards.map(([label, wins, places, winRate, placeRate, roi]) => <article key={`stats-card-${label}`}><span>{label}</span><strong>{wins}</strong><em>Wins</em><strong>{places}</strong><em>Places</em><b>{typeof winRate === "number" ? pct(winRate) : "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â"}</b><small>ROI {typeof roi === "number" ? pct(roi) : "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â"}</small></article>)}</div>
- <div className="edgeiq-stats-two">
- <section className="edgeiq-stats-panel"><strong>Performance by {statsMode === "TRAINERS" ? "Track / Class" : "Barrier / Track"}</strong><div className="edgeiq-stats-table">{statsProfileRows.map(([label, starts, wins, winRate, roi]) => <div key={`stats-profile-${label}`}><span>{label}</span><em>{starts}</em><em>{wins}</em><b>{typeof winRate === "number" ? pct(winRate) : "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â"}</b><b>{typeof roi === "number" ? pct(roi) : "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â"}</b></div>)}</div></section>
- <section className="edgeiq-stats-panel"><strong>Run Style Match-ups</strong><div className="edgeiq-stats-bars">{statsStyleRows.map(([label, count, rate]) => <div key={`stats-style-${label}`}><span>{label}</span><i><b style={{ width: `${Math.max(8, Number(rate) || 0)}%` }} /></i><em>{count}</em></div>)}</div></section>
- </div>
- <section className="edgeiq-stats-panel"><strong>{statsMode === "TRAINERS" ? "Upcoming Runners" : "Current Race Rides"}</strong><div className="edgeiq-stats-runners">{statRaceRows.slice(0, 8).map((item) => <div key={`stats-runner-${runnerRowKey(item.row)}`}><span>{saddle(item.row) === 999 ? "-" : saddle(item.row)}</span><strong>{horse(item.row)}</strong><em>{firstText(item.row, ["jockey", "jockey_name", "rider"], "-")}</em><em>{firstText(item.row, ["trainer", "trainer_name"], "-")}</em><b>{renderMetricValue(projectionRatingValue(item), 1)}</b></div>)}</div></section>
- </section>
- <aside className="edgeiq-stats-side">
- <section><strong>{entityDisplay} Profile Summary</strong><div className="edgeiq-stats-radar"><i /></div>{[["Win Rate", activeStatsEntity?.winRate], ["Place Rate", activeStatsEntity?.placeRate], ["Consistency", activeStatsEntity?.avgRating], ["Market Perf.", activeStatsEntity?.roi], ["Overall Score", activeStatsEntity?.avgRating]].map(([label, value]) => <div key={`stats-summary-${label}`}><span>{label}</span><em>{typeof value === "number" ? (String(label).includes("Rate") || String(label).includes("Perf") ? pct(value) : renderMetricValue(value, 1)) : "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â"}</em></div>)}</section>
- <section><strong>Top Tracks</strong>{statsGroupEntries.slice(0, 5).map((entry) => <div key={`stats-top-${entry.key}`}><span>{entry.name}</span><i><b style={{ width: `${Math.max(10, Math.min(100, entry.avgRating ?? 0))}%` }} /></i><em>{entry.avgRating === null ? "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â" : renderMetricValue(entry.avgRating, 1)}</em></div>)}</section>
- <section><strong>Key Insights</strong><p>{activeStatsEntity ? `${activeStatsEntity.name} profiles strongest around ${track(header)} with ${activeStatsEntity.starts} available starts in the terminal sample.` : "Stats profile will populate when runner context is available."}</p><p>Figures are research context only and do not alter ratings or production prices.</p></section>
- </aside>
- </div>
- </section>
- );
- })() : null}
- {intelMode === "DVNCED" ? (
+ {intelMode === "STATS" ? (
+<RaceStatsWorkspace
+  activeRaceRows={activeRaceRows}
+  statsMode={statsMode}
+  setStatsMode={setStatsMode}
+  header={header}
+  firstText={firstText}
+  cleanHorse={cleanHorse}
+  historyRatingValue={historyRatingValue}
+  historyFinishText={historyFinishText}
+  integer={integer}
+  edgePct={edgePct}
+  trackCondition={trackCondition}
+  distance={distance}
+  raceClass={raceClass}
+  paceMapRole={paceMapRole}
+  isScratched={isScratched}
+  track={track}
+  pct={pct}
+  renderMetricValue={renderMetricValue}
+  runnerRowKey={runnerRowKey}
+  saddle={saddle}
+  horse={horse}
+  projectionRatingValue={projectionRatingValue}
+/>
+) : null}
+{intelMode === "DVNCED" ? (
 <RaceMarketWorkspace
   activeRaceRows={activeRaceRows}
   bettingConfidence={bettingConfidence}
@@ -4370,6 +4321,7 @@ if (productView === "MEETINGS") {
  </div>
  );
 }
+
 
 
 
