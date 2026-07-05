@@ -129,7 +129,7 @@ export function RaceCommandWorkspace({
     raceClass,
   });
 
-  const executiveSummary = `${selectedRaceLabel} is assessed through EDGEiQ's race intelligence framework using current ratings, tactical position, surface evidence, market alignment and confidence signals. The briefing below separates opportunity, risk and context so the user can understand the race before making any decision.`;
+  const executiveSummary = `${selectedRaceLabel} profiles as a ${raceShapeText || "developing"} race with ${racePacePressure || "pending"} pressure expected. ${topRated ? horse(topRated.row) : "The highest-rated runner"} leads the current EDGEiQ assessment, while ${bestValue ? horse(bestValue.row) : "market overlay signals"} remain the primary value reference. Surface conditions are assessed as ${headerCondition || "pending"}, with tactical position, rating strength and market alignment forming the core evidence base.`;
 
   return (
     <section className="edgeiq-px2-command edgeiq-product-section" aria-label="EDGEiQ Race Brief">

@@ -10416,3 +10416,56 @@ button.edgeiq-px2-row:hover {
     text-align: left !important;
   }
 }
+
+/* EDGEiQ PX-3 — Executive assessment typography polish */
+.edgeiq-px2-brief .edgeiq-px2-section-head {
+  margin-bottom: 18px !important;
+}
+
+.edgeiq-px2-brief .edgeiq-px2-section-head strong {
+  font-size: 17px !important;
+  letter-spacing: .10em !important;
+}
+
+.edgeiq-px2-brief .edgeiq-px2-section-head p {
+  font-size: 13px !important;
+  color: rgba(235,241,247,.72) !important;
+}
+
+.edgeiq-px2-copy {
+  max-width: 1080px !important;
+  margin: 2px 0 24px 49px !important;
+  color: rgba(235,241,247,.90) !important;
+  font-size: 16px !important;
+  line-height: 1.72 !important;
+  letter-spacing: .005em !important;
+}
+
+.edgeiq-px2-copy::first-letter {
+  color: var(--edge-accent) !important;
+  font-weight: 850 !important;
+}
+
+.edgeiq-px2-assessment {
+  padding: 18px 18px 17px !important;
+}
+
+.edgeiq-px2-assessment strong {
+  font-size: 19px !important;
+}
+
+.edgeiq-px2-assessment p {
+  margin-top: 4px !important;
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+}
+
+.edgeiq-px2-assessment div {
+  margin: 17px 0 12px !important;
+}
+
+.edgeiq-px2-assessment b {
+  min-width: 38px !important;
+  height: 38px !important;
+  font-size: 14px !important;
+}
