@@ -1,5 +1,6 @@
 ﻿import { RaceStatsWorkspace } from "./workspaces/RaceStatsWorkspace";
 import { RaceLabWorkspace } from "./workspaces/RaceLabWorkspace";
+import { RatingHoverTooltip } from "./overlays/RatingHoverTooltip";
 import { RaceMarketWorkspace } from "./workspaces/RaceMarketWorkspace";
 import { RaceWeatherWorkspace } from "./workspaces/RaceWeatherWorkspace";
 import { RaceTrackWorkspace } from "./workspaces/RaceTrackWorkspace";
@@ -4256,16 +4257,7 @@ if (productView === "MEETINGS") {
 ) : null}
 </main>
  </div>
- {ratingHover ? (
- <div className="edgeiq-performance-tooltip" style={{ left: ratingHover.x, top: ratingHover.y }} role="tooltip">
- <strong>{ratingHover.title}</strong>
- {ratingHover.subtitle ? <em>{ratingHover.subtitle}</em> : null}
- <div>
- {ratingHover.metrics.map((metric) => <span key={`rating-hover-${metric.label}`}><b>{metric.label}</b><i style={{ color: metric.tone || undefined }}>{metric.value}</i></span>)}
- </div>
- {ratingHover.footer ? <p>{ratingHover.footer}</p> : null}
- </div>
- ) : null}
+ <RatingHoverTooltip ratingHover={ratingHover} />
  <footer className="edgeiq-home-v4-footer edgeiq-product-v4-footer">
  <div>EDGEiQ ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ADAPTIVE RACING INTELLIGENCE</div>
  <div>NOT NOISE. <span>JUST CONTEXT.</span></div>
