@@ -9926,3 +9926,44 @@ body { color: var(--edge-text); }
   .edgeiq-meetings-pro-selected-grid,
   .edgeiq-meetings-pro-stats { grid-template-columns: 1fr !important; }
 }
+
+
+/* EDGEiQ PX V1 — Race Brief professional hierarchy */
+.edgeiq-race-brief-executive {
+  padding: 18px !important;
+  border: 1px solid rgba(255, 255, 255, 0.10) !important;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.018)),
+    rgba(7, 11, 18, 0.92) !important;
+}
+
+.edgeiq-race-brief-executive > strong {
+  letter-spacing: 0.16em !important;
+  text-transform: uppercase !important;
+}
+
+.edgeiq-race-brief-copy {
+  margin: 8px 0 12px !important;
+  color: rgba(235, 241, 247, 0.86) !important;
+  font-size: 13px !important;
+  line-height: 1.55 !important;
+  max-width: 760px !important;
+}
+
+.edgeiq-race-v3-card span,
+.edgeiq-race-v3-panel > strong {
+  letter-spacing: 0.13em !important;
+  text-transform: uppercase !important;
+}
+
+.edgeiq-race-v3-card strong,
+.edgeiq-race-v3-card b,
+.edgeiq-race-v3-panel em {
+  font-variant-numeric: tabular-nums !important;
+}
+
+.edgeiq-race-v3-foot {
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  color: rgba(235, 241, 247, 0.62) !important;
+}
