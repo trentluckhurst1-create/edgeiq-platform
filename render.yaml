@@ -2,42 +2,14 @@ services:
   - type: web
     name: edgeiq-production
     runtime: docker
-    plan: standard
+    plan: free
     healthCheckPath: /healthz
-    disk:
-      name: edgeiq-production-data
-      mountPath: /var/data
-      sizeGB: 50
     envVars:
-      - key: NODE_VERSION
-        value: 24.14.0
-      - key: PYTHON_VERSION
-        value: 3.14.3
-      - key: EDGEIQ_DATA_ROOT
-        value: /var/data/public/data
-      - key: EDGEIQ_PERFORMANCE_INTELLIGENCE_ROOT
-        value: /var/data/public/performance-intelligence
-      - key: EDGEIQ_PERFORMANCE_DOCS_ROOT
-        value: /var/data/docs/performance-intelligence
-      - key: EDGEIQ_MARKET_DATA_ROOT
-        value: /var/data/data/market/ladbrokes
-      - key: EDGEIQ_RUNTIME_ROOT
-        value: /var/data
-      - key: EDGEIQ_SEED_DIR
-        value: /var/data/seed
       - key: EDGEIQ_BOOTSTRAP_ENABLED
-        value: "true"
-      - key: EDGEIQ_BOOTSTRAP_REPLACE_EXISTING
         value: "false"
       - key: EDGEIQ_REFRESH_ON_STARTUP
-        value: "true"
+        value: "false"
       - key: EDGEIQ_REFRESH_ENABLED
-        value: "true"
-      - key: EDGEIQ_REFRESH_LOCAL_TIME
-        value: "05:45"
+        value: "false"
       - key: EDGEIQ_REFRESH_TIMEZONE
         value: Australia/Melbourne
-      - key: EDGEIQ_HEALTH_PATH
-        value: /var/data/health/edgeiq_production_health_v1.json
-      - key: EDGEIQ_REFRESH_TOKEN
-        sync: false

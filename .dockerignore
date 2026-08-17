@@ -38,3 +38,4 @@ NORMALISATION_AUTHORITY_REVIEW.zip
 *.sqlite
 *.db
 *.xlsx
+!deployment/edgeiq_free_beta_runtime_v1.zip
