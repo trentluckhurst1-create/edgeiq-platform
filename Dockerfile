@@ -17,7 +17,7 @@ RUN curl -fsSL "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-l
     && npm --version
 
 COPY package.json package-lock.json ./
-RUN npm ci
+RUN npm ci --include=dev
 
 COPY requirements.txt ./
 RUN python -m pip install --no-cache-dir -r requirements.txt \
