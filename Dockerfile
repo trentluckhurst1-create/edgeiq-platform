@@ -25,7 +25,7 @@ RUN python -m pip install --no-cache-dir -r requirements.txt \
 
 COPY . .
 
-RUN unzip -q deployment/edgeiq_free_beta_runtime_v1.zip -d /app \
+RUN unzip -oq deployment/edgeiq_free_beta_runtime_v1.zip -d /app \
     && test -d /app/public/data \
     && test -d /app/public/performance-intelligence \
     && rm deployment/edgeiq_free_beta_runtime_v1.zip
