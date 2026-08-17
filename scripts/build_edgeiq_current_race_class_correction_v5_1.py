@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 import re
 from datetime import datetime, timezone
 from pathlib import Path
@@ -20,7 +21,7 @@ from edgeiq_class_taxonomy_v1 import (
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "public" / "data"
 
-LIVE_FEED = DATA / "edgeiq_vic_live_terminal_feed_v1.csv"
+LIVE_FEED = DATA / "race_fields.csv"
 CLASS_PARS = DATA / "edgeiq_class_pars_v5_2.csv"
 OUT = DATA / "edgeiq_current_race_class_correction_v5_1.csv"
 AUDIT = DATA / "edgeiq_current_race_class_correction_v5_1_audit.csv"
@@ -86,6 +87,32 @@ def main() -> None:
         raise FileNotFoundError(f"Missing input: {LIVE_FEED}")
 
     live = pd.read_csv(LIVE_FEED, dtype=str, keep_default_na=False, low_memory=False)
+
+    pipeline_date = os.environ.get("EDGEIQ_PIPELINE_DATE", "").strip()
+    if not pipeline_date:
+        raise ValueError(
+            "EDGEIQ_PIPELINE_DATE is required for current race class correction"
+        )
+
+    live["race_date"] = live["race_date"].astype(str).str.strip()
+    live = live[live["race_date"].eq(pipeline_date)].copy()
+
+    if live.empty:
+        raise ValueError(
+            f"CURRENT_CLASS_CORRECTION_UNIVERSE_EMPTY: "
+            f"EDGEIQ_PIPELINE_DATE={pipeline_date}; source={LIVE_FEED}"
+        )
+
+    contamination = live.loc[
+        ~live["race_date"].eq(pipeline_date),
+        "race_date"
+    ].drop_duplicates().tolist()
+
+    if contamination:
+        raise ValueError(
+            f"CURRENT_CLASS_CORRECTION_DATE_CONTAMINATION: "
+            f"expected={pipeline_date}; found={contamination}"
+        )
 
     required = {"race_date", "track", "race_no", "horse", "race_class"}
     missing = sorted(required.difference(live.columns))

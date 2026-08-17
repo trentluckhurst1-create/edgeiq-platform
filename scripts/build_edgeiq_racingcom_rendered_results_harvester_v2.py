@@ -1,4 +1,4 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 import argparse
 import csv
@@ -161,6 +161,45 @@ function extractRenderedResults(row) {
   }
 
   const bodyText = safeText(document.body ? document.body.innerText : "");
+  const bodyUpper = bodyText.toUpperCase();
+
+  /*
+   * Canonical completed-results warehouse safety gate.
+   *
+   * Racing.com can render provisional placings before the result is
+   * officially final. Examples include pages containing:
+   *
+   *   "Full Race Results Pending"
+   *   "Abnd"
+   *
+   * A page must contain "Final Result" before runner rows may be
+   * accepted into the completed-results warehouse.
+   */
+  const hasFinalResult = bodyUpper.includes("FINAL RESULT");
+
+  const hasPendingResults =
+    bodyUpper.includes("FULL RACE RESULTS PENDING");
+
+  const hasAbndStatus =
+    /(^|\n)ABND(\n|$)/i.test(bodyText);
+
+  if (
+    !hasFinalResult
+    || hasPendingResults
+    || hasAbndStatus
+  ) {
+    return {
+      pageLoaded: true,
+      visibleResults: false,
+      rows: [],
+      status: hasPendingResults
+        ? "RESULTS_PENDING"
+        : hasAbndStatus
+          ? "RACE_ABANDONED_OR_NON_FINAL"
+          : "RESULT_NOT_FINAL",
+      error: ""
+    };
+  }
 
   const raceName =
     safeText((document.querySelector("h1, h2, h3, .race-title") || {}).innerText || "");
@@ -221,6 +260,299 @@ function extractRenderedResults(row) {
     }
   }
 
+
+  /*
+   * Racing.com currently renders the Results grid with div-based markup,
+   * not semantic <table> rows. The complete official result is still
+   * present in document.body.innerText, so use that as the fallback when
+   * the legacy table parser above produces no runners.
+   */
+  if (!out.length && bodyText) {
+
+    const lines = String(
+      document.body ? document.body.innerText : ""
+    )
+      .split(/\r?\n/)
+      .map(v => safeText(v))
+      .filter(Boolean);
+
+    const posIndex = lines.findIndex(
+      v => v.toUpperCase() === "POS"
+    );
+
+    const horseHeaderIndex = lines.findIndex(
+      (v, idx) =>
+        idx > posIndex &&
+        v.toUpperCase().includes("HORSE") &&
+        v.toUpperCase().includes("BARRIER")
+    );
+
+    const isFinish = v =>
+      /^\d+(?:st|nd|rd|th)$/i.test(v);
+
+    const isScratch = v =>
+      /^SCR$/i.test(v);
+
+    const isRunnerStart = v =>
+      isFinish(v) || isScratch(v);
+
+    const isWeight = v =>
+      /^\d+(?:\.\d+)?kg$/i.test(v);
+
+    const isPrize = v =>
+      /^\$[\d,]+(?:\.\d+)?$/.test(v);
+
+    const isInRun = v =>
+      /^\d+(?:st|nd|rd|th)\/\d+(?:st|nd|rd|th)$/i.test(v);
+
+    const isMargin = v =>
+      /^\d+(?:\.\d+)?L$/i.test(v);
+
+    const isRaceTime = v =>
+      /^\d+:\d{2}(?:\.\d+)?$/.test(v);
+
+    const isPrice = v =>
+      /^\$\d+(?:\.\d+)?$/.test(v);
+
+      const isDash = v =>
+        v === "-" ||
+        v === String.fromCharCode(8211) ||
+        v === String.fromCharCode(8212);
+
+    const stopText = v => {
+      const s = safeText(v).toLowerCase();
+
+      return (
+        s.startsWith("personalise your racing experience") ||
+        s.startsWith("we use cookies") ||
+        s.startsWith("accept all cookies") ||
+        s.startsWith("decline non-essential cookies")
+      );
+    };
+
+    let i = -1;
+
+    if (horseHeaderIndex >= 0) {
+      for (
+        let x = horseHeaderIndex + 1;
+        x < lines.length;
+        x++
+      ) {
+        if (isRunnerStart(lines[x])) {
+          i = x;
+          break;
+        }
+      }
+    }
+
+    while (i >= 0 && i < lines.length) {
+
+      if (stopText(lines[i])) {
+        break;
+      }
+
+      if (!isRunnerStart(lines[i])) {
+        i++;
+        continue;
+      }
+
+      const positionToken = lines[i];
+
+      const scratched = isScratch(
+        positionToken
+      );
+
+      const finishPosition = scratched
+        ? ""
+        : numOnly(positionToken);
+
+      i++;
+
+      if (i >= lines.length) {
+        break;
+      }
+
+      const horseLine = lines[i];
+
+      /*
+       * Examples:
+       *
+       * 5. The Victorious (NZ) (3)
+       * 1. Charlie Messy Hair (5)
+       *
+       * Final numeric parentheses = barrier.
+       * Country suffix such as (NZ) remains in horse name.
+       */
+      const horseMatch = horseLine.match(
+        /^(\d+)\.?\s+(.+?)\s+\((\d+)\)$/
+      );
+
+      if (!horseMatch) {
+        i++;
+        continue;
+      }
+
+      const horseNo = horseMatch[1] || "";
+      const horseName = safeText(
+        horseMatch[2] || ""
+      );
+      const barrier = horseMatch[3] || "";
+
+      i++;
+
+      const block = [];
+
+      while (
+        i < lines.length &&
+        !isRunnerStart(lines[i]) &&
+        !stopText(lines[i])
+      ) {
+        block.push(lines[i]);
+        i++;
+      }
+
+      let trainer = "";
+      let jockey = "";
+      let weight = "";
+      let prizemoneyEarned = "";
+      let inRun = "";
+      let margin = "";
+
+      for (
+        let j = 0;
+        j < block.length;
+        j++
+      ) {
+
+        const value = block[j];
+
+        if (
+          /^T:\s*$/i.test(value) &&
+          j + 1 < block.length
+        ) {
+          trainer = safeText(
+            block[j + 1]
+          );
+          continue;
+        }
+
+        if (
+          /^J:\s*$/i.test(value) &&
+          j + 1 < block.length
+        ) {
+          jockey = safeText(
+            block[j + 1]
+          );
+          continue;
+        }
+
+        const trainerInline = value.match(
+          /^T:\s*(.+)$/i
+        );
+
+        if (trainerInline) {
+          trainer = safeText(
+            trainerInline[1]
+          );
+          continue;
+        }
+
+        const jockeyInline = value.match(
+          /^J:\s*(.+)$/i
+        );
+
+        if (jockeyInline) {
+          jockey = safeText(
+            jockeyInline[1]
+          );
+          continue;
+        }
+
+        if (
+          !weight &&
+          isWeight(value)
+        ) {
+          weight = value;
+          continue;
+        }
+
+        if (
+          !prizemoneyEarned &&
+          isPrize(value)
+        ) {
+          prizemoneyEarned = value;
+          continue;
+        }
+
+        if (
+          !inRun &&
+          isInRun(value)
+        ) {
+          inRun = value;
+          continue;
+        }
+
+        if (
+          !margin &&
+          (
+            isMargin(value) ||
+            isRaceTime(value)
+          )
+        ) {
+          margin = value;
+          continue;
+        }
+      }
+
+      /*
+       * Current visible columns end:
+       *
+       * BB | SP | S-TAB
+       *
+       * Pull the final three price/dash tokens from the runner block
+       * and use the middle one as SP.
+       */
+      const priceTail = block.filter(
+        v => isPrice(v) || isDash(v)
+      );
+
+      let sp = "";
+
+      if (priceTail.length >= 3) {
+        const spToken =
+          priceTail[
+            priceTail.length - 2
+          ];
+
+        if (isPrice(spToken)) {
+          sp = spToken;
+        }
+      }
+
+      out.push({
+        ...meta,
+        finishPosition,
+        horseNo,
+        horseName,
+        horseKey: horseKey(
+          horseName
+        ),
+        barrier,
+        trainer,
+        jockey,
+        weight,
+        prizemoneyEarned,
+        inRun,
+        margin,
+        sp,
+        rawText: block.join(" | "),
+        status: scratched
+          ? "SCRATCHED"
+          : "RESULT"
+      });
+    }
+  }
+
   return {
     pageLoaded: true,
     visibleResults: out.length > 0,
@@ -267,6 +599,27 @@ async function main() {
         try {
           await page.goto(row.source_url, { waitUntil: "domcontentloaded", timeout: 90000 });
           try { await page.waitForLoadState("networkidle", { timeout: 8000 }); } catch (_e) {}
+
+          /*
+           * Racing.com hydrates the result grid after initial DOM load.
+           * A page may already be HTTP 200 / Final Result while the POS
+           * runner content is still arriving. Wait for the rendered result
+           * headers where possible, then retry extraction before declaring
+           * NO_RENDERED_RESULTS_FOUND.
+           */
+          try {
+            await page.waitForFunction(
+              () => {
+                const text = document.body ? document.body.innerText : "";
+                return (
+                  /(^|\n)POS(\n|$)/i.test(text) &&
+                  /HORSE\s*\/\s*BARRIER/i.test(text)
+                );
+              },
+              { timeout: 7000 }
+            );
+          } catch (_e) {}
+
           await page.waitForTimeout(1200);
 
           for (let i = 0; i < 5; i++) {
@@ -275,6 +628,37 @@ async function main() {
           }
 
           result = await page.evaluate(extractRenderedResults, row);
+
+          if (!result.visibleResults || !result.rows.length) {
+            for (let retry = 1; retry <= 2; retry++) {
+              await page.waitForTimeout(2500);
+
+              try {
+                await page.waitForFunction(
+                  () => {
+                    const text = document.body ? document.body.innerText : "";
+                    return (
+                      /(^|\n)POS(\n|$)/i.test(text) &&
+                      /HORSE\s*\/\s*BARRIER/i.test(text)
+                    );
+                  },
+                  { timeout: 4000 }
+                );
+              } catch (_e) {}
+
+              result = await page.evaluate(
+                extractRenderedResults,
+                row
+              );
+
+              if (
+                result.visibleResults &&
+                result.rows.length
+              ) {
+                break;
+              }
+            }
+          }
         } catch (err) {
           result = {
             pageLoaded: false,
@@ -307,7 +691,14 @@ async function main() {
             page_loaded: result.pageLoaded ? "TRUE" : "FALSE",
             visible_results: result.visibleResults ? "TRUE" : "FALSE",
             ...item,
-            status: result.status,
+
+            /*
+             * Preserve runner-level classifications such as SCR.
+             * Previously result.status overwrote item.status, causing
+             * scratched runners to become RENDERED_RESULTS_EXTRACTED.
+             */
+            status: item.status || result.status,
+
             error: result.error || ""
           });
         }
@@ -363,6 +754,70 @@ def load_candidates(start_date: str, end_date: str) -> list[dict[str, str]]:
         race_url = clean(r.get("race_url")) or clean(r.get("speed_data_url")).replace("/speed-data", "")
 
         if not meeting_date or not track or not race_no or not race_url:
+            continue
+
+        # ------------------------------------------------------------
+        # Official-results safety filter
+        #
+        # Upstream calendar flags can be wrong. Racing.com URLs are
+        # authoritative enough to identify trial/jumpout meetings:
+        #
+        #   .../bet365-traralgon-trial/...
+        #   .../some-track-jumpout/...
+        #
+        # These must never enter the official race-results candidate set.
+        # ------------------------------------------------------------
+
+        meeting_url = clean(r.get("meeting_url"))
+        url_check = " ".join([
+            meeting_url,
+            race_url,
+            clean(r.get("speed_data_url")),
+        ]).lower()
+
+        is_trial_flag = clean(
+            r.get("is_trial")
+        ).lower() in {"true", "1", "yes", "y"}
+
+        is_jumpout_flag = clean(
+            r.get("is_jumpout")
+        ).lower() in {"true", "1", "yes", "y"}
+
+        is_abandoned_flag = clean(
+            r.get("is_abandoned")
+        ).lower() in {"true", "1", "yes", "y"}
+
+        meeting_status_text = " ".join([
+            clean(r.get("meet_status")),
+            clean(r.get("status")),
+            clean(r.get("full_status")),
+            clean(r.get("discovery_status")),
+        ]).lower()
+
+        is_abandoned_status = (
+            "abandon" in meeting_status_text
+        )
+
+        is_trial_url = (
+            "/trial" in url_check
+            or "-trial" in url_check
+            or "/trials" in url_check
+        )
+
+        is_jumpout_url = (
+            "/jumpout" in url_check
+            or "-jumpout" in url_check
+            or "/jumpouts" in url_check
+        )
+
+        if (
+            is_trial_flag
+            or is_jumpout_flag
+            or is_abandoned_flag
+            or is_abandoned_status
+            or is_trial_url
+            or is_jumpout_url
+        ):
             continue
         if start_date and meeting_date < start_date:
             continue
@@ -492,10 +947,87 @@ def main() -> None:
     BATCH_DIR.mkdir(parents=True, exist_ok=True)
     batch_prefix = f"batch_{args.offset:04d}"
 
-    write_csv(OUT, rows, OUT_COLUMNS)
+    # ------------------------------------------------------------
+    # Canonical warehouse upsert
+    #
+    # Batch files contain ONLY the current batch.
+    # OUT is cumulative and must never be replaced by one batch.
+    #
+    # For every successfully harvested race in this batch:
+    #   1. remove the previous version of that entire race
+    #   2. insert the newly harvested version
+    #
+    # Empty/failed batches preserve the existing warehouse.
+    # ------------------------------------------------------------
+
+    existing_rows = read_csv(OUT)
+
+    successful_race_keys = {
+        clean(r.get("race_key"))
+        for r in rows
+        if clean(r.get("race_key"))
+    }
+
+    if rows and successful_race_keys:
+        retained_rows = [
+            r for r in existing_rows
+            if clean(r.get("race_key")) not in successful_race_keys
+        ]
+
+        warehouse_rows = retained_rows + rows
+
+        def warehouse_sort_key(r):
+            race_no = clean(r.get("race_no"))
+            finish = clean(r.get("finish_position"))
+            horse_no = clean(r.get("horse_no"))
+
+            try:
+                race_num = int(float(race_no))
+            except Exception:
+                race_num = 999999
+
+            try:
+                finish_num = int(float(finish))
+            except Exception:
+                finish_num = 999999
+
+            try:
+                horse_num = int(float(horse_no))
+            except Exception:
+                horse_num = 999999
+
+            return (
+                clean(r.get("meeting_date")),
+                clean(r.get("track")),
+                race_num,
+                finish_num,
+                horse_num,
+                clean(r.get("horse_name")),
+            )
+
+        warehouse_rows.sort(key=warehouse_sort_key)
+
+        write_csv(OUT, warehouse_rows, OUT_COLUMNS)
+    else:
+        warehouse_rows = existing_rows
+
+        if not OUT.exists():
+            write_csv(OUT, [], OUT_COLUMNS)
+
+    # Audit describes this invocation.
     write_csv(AUDIT, audit, AUDIT_COLUMNS)
-    write_csv(BATCH_DIR / f"{batch_prefix}_results.csv", rows, OUT_COLUMNS)
-    write_csv(BATCH_DIR / f"{batch_prefix}_audit.csv", audit, AUDIT_COLUMNS)
+
+    # Batch archive always contains only this invocation.
+    write_csv(
+        BATCH_DIR / f"{batch_prefix}_results.csv",
+        rows,
+        OUT_COLUMNS
+    )
+    write_csv(
+        BATCH_DIR / f"{batch_prefix}_audit.csv",
+        audit,
+        AUDIT_COLUMNS
+    )
 
     if payload.get("runtime_error"):
         print(f"[edgeiq_results_v2] runtime_error={payload.get('runtime_error')}")

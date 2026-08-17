@@ -1,0 +1,34 @@
+{
+  "base_input": "edgeiq_benchmark_observation_compatibility_v1.csv",
+  "consumption_rule": "Race Time Delta may consume this unified authority only after isolated contract and lineage validation.",
+  "contract_name": "EDGEIQ_BENCHMARK_OBSERVATION_AUTHORITY_V1",
+  "contract_version": "1.0.0",
+  "exception_input": "edgeiq_benchmark_observation_authority_extension_v1_exceptions.csv",
+  "extension_input": "edgeiq_benchmark_observation_authority_extension_v1.csv",
+  "forbidden_methods": [
+    "invented observation fields",
+    "fuzzy race matching",
+    "ambiguous observation promotion",
+    "duplicate promoted race insertion"
+  ],
+  "identity_field": "race_key",
+  "output": "edgeiq_benchmark_observation_authority_v1.csv",
+  "policy_version": "EDGEIQ_UNIFIED_BENCHMARK_OBSERVATION_AUTHORITY_POLICY_V1",
+  "promotion_requirements": [
+    "canonical race identity",
+    "official race time",
+    "winner identity",
+    "runner count",
+    "surface",
+    "track condition",
+    "complete evidence hashes",
+    "no compatibility-base overlap"
+  ],
+  "row_accounting": {
+    "authority_extension_rows": 4,
+    "compatibility_rows": 70323,
+    "unified_authority_rows": 70327,
+    "unified_exception_rows": 1
+  },
+  "schema_rule": "Preserve every compatibility column and append governed authority-lineage fields."
+}

@@ -1,0 +1,44 @@
+{
+  "alternate_unique_key": [
+    "canonical_race_id"
+  ],
+  "consumption_rule": "This extension must be merged with the existing benchmark observation compatibility authority at the identity boundary before race-time-delta calculation.",
+  "contract_name": "EDGEIQ_BENCHMARK_OBSERVATION_AUTHORITY_EXTENSION_V1",
+  "contract_version": "1.0.0",
+  "forbidden_methods": [
+    "invented race identity",
+    "invented official time",
+    "invented runner count",
+    "fuzzy context match",
+    "ambiguous field promotion"
+  ],
+  "policy_version": "EDGEIQ_BENCHMARK_OBSERVATION_AUTHORITY_EXTENSION_POLICY_V1",
+  "primary_key": [
+    "benchmark_observation_id"
+  ],
+  "promotion_requirements": [
+    "governed canonical race ID",
+    "exact official race time",
+    "governed winner identity",
+    "unique highest-priority runner count",
+    "unique governed surface",
+    "unique governed track condition",
+    "complete evidence hashes"
+  ],
+  "required_fields": [
+    "benchmark_observation_id",
+    "canonical_race_id",
+    "race_key",
+    "race_date",
+    "track_name",
+    "official_distance_metres",
+    "runner_count",
+    "winner_canonical_horse_id",
+    "winner_horse_name",
+    "winner_race_time_seconds",
+    "surface",
+    "track_condition",
+    "race_source_row_sha256",
+    "winner_source_row_sha256"
+  ]
+}

@@ -11,9 +11,17 @@ coverage/
 .env
 .env.*
 !.env.example
+*.pem
+*.key
+*credentials*
+*secret*
 
 # Logs
 logs/
+outputs/
+work/
+backups/
+diagnostics/
 *.log
 npm-debug.log*
 yarn-debug.log*
@@ -51,10 +59,27 @@ src_backup*/
 src_BROKEN_BACKUP/
 *.zip
 *.png
+*.jpg
+*.jpeg
+*.webp
+*.har
+EDGEIQ_FILE_INDEX.txt
+repository_inventory.csv
+EDGEIQ_CURRENT_STRUCTURE_AUDIT.txt
+EDGEIQ_IDENTITY_REFERENCES.csv
+EDGEIQ_PUBLICATIONS.csv
 
 # Large local data warehouses - not stored in GitHub
+data/
 public/data/
+public/performance-intelligence/
+docs/performance-intelligence/
+EDGEIQ_DEPLOYMENT_SEED_V1/
 *.parquet
 *.db
 *.sqlite
 *.xlsx
+
+# EDGEIQ governed generated warehouse assets
+docs/performance-intelligence/warehouse-v2/historical-observation-warehouse-v3/eiq_historical_observation_v3_*/historical_observation_warehouse_v3.csv
+docs/performance-intelligence/warehouse-v2/historical-observation-warehouse-v3/eiq_historical_observation_v3_*/historical_observation_warehouse_v3.sqlite

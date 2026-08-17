@@ -4,10 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "predev": "python scripts/ensure_edgeiq_current_data_rollover_v1.py",
     "dev": "vite",
+    "prebuild": "python scripts/ensure_edgeiq_current_data_rollover_v1.py",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "node deployment/edgeiq_render_server.mjs"
   },
   "dependencies": {
     "@clerk/clerk-react": "^5.61.4",

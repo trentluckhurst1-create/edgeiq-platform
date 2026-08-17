@@ -1,0 +1,25 @@
+{
+  "authority_consumption_rule": "Core canonical race authority plus this governed extension form the complete canonical race authority.",
+  "contract_name": "EDGEIQ_CANONICAL_RACE_AUTHORITY_EXTENSION_V1",
+  "contract_version": "1.1.0",
+  "forbidden_methods": [
+    "invented race ID",
+    "invented distance",
+    "fuzzy track match",
+    "nearest distance",
+    "ambiguous context promotion"
+  ],
+  "policy_version": "EDGEIQ_CANONICAL_RACE_AUTHORITY_EXTENSION_POLICY_V1_1",
+  "primary_key": [
+    "canonical_race_id"
+  ],
+  "promotion_requirements": [
+    "exact direct race ID",
+    "one unique race date",
+    "one unique canonical track",
+    "one unique race number",
+    "one unique distance recovered from exact date-track-race-number evidence",
+    "hash-verified source evidence",
+    "no context conflict"
+  ]
+}

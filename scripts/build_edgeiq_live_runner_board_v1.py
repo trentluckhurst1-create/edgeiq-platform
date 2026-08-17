@@ -1,4 +1,4 @@
-﻿from pathlib import Path
+from pathlib import Path
 import pandas as pd
 import numpy as np
 import re
@@ -411,6 +411,7 @@ for _, r in merged.iterrows():
         "horse_no": r.get("horse_no"),
         "horse": horse,
         "horse_canon": r.get("horse_canon"),
+        "projected_rating_v5_2": safe(r.get("projected_rating_v5_2")),
         "distance": r.get("distance"),
         "track_condition": r.get("track_condition"),
         "rail_position": r.get("rail_position"),

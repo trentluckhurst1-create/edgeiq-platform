@@ -63,11 +63,25 @@ def canonicalize_race_class(value: object) -> tuple[str, str]:
     if not text:
         return "UNKNOWN", "EMPTY_CLASS"
 
+    # Rating-limited benchmark forms such as:
+    # BM 0-57 -> normalized text "BM 0 57"
+    # BM 0 TO 57
+    # 0-57 / 0 TO 57
+    bm_rating_band_match = re.search(
+        r"\bBM\s*(?:0|O)\s*(?:TO\s*)?(\d{2,3})\b",
+        text,
+    )
+    if bm_rating_band_match:
+        return f"BM{bm_rating_band_match.group(1)}", "RATING_BAND_SIGNAL"
+
     benchmark_match = re.search(r"\bBM\s*(\d{2,3})\b", text)
     if benchmark_match:
         return f"BM{benchmark_match.group(1)}", "BENCHMARK_SIGNAL"
 
-    rating_band_match = re.search(r"\b(?:0|O)\s*(?:TO|-)\s*(\d{2,3})\b", text)
+    rating_band_match = re.search(
+        r"\b(?:0|O)\s*(?:TO\s*)?(\d{2,3})\b",
+        text,
+    )
     if rating_band_match:
         return f"BM{rating_band_match.group(1)}", "RATING_BAND_SIGNAL"
 

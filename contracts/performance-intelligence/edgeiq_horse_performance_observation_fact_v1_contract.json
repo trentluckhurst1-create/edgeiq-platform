@@ -1,0 +1,59 @@
+{
+  "contract_name": "edgeiq_horse_performance_observation_fact_v1",
+  "contract_version": "1.0.0",
+  "grain": "one_row_per_governed_performance_rating_base_observation_with_one_approved_horse_identity",
+  "identity_method": "EXACT_CANONICAL_HORSE_ID_RATING_BASE",
+  "primary_key": [
+    "horse_performance_observation_id"
+  ],
+  "required_fields": [
+    "horse_performance_observation_id",
+    "canonical_horse_id",
+    "canonical_horse_name",
+    "source_horse_name",
+    "performance_rating_base_id",
+    "performance_normalisation_id",
+    "performance_intelligence_base_id",
+    "benchmark_observation_id",
+    "race_key",
+    "race_date",
+    "track_name",
+    "official_distance_metres",
+    "raw_performance_lengths",
+    "normalised_performance_value",
+    "rating_base_value",
+    "rating_status",
+    "identity_method",
+    "identity_status",
+    "identity_evidence_reference",
+    "source_identity_evidence_sha256",
+    "source_performance_rating_base_evidence_sha256",
+    "horse_performance_observation_evidence_sha256",
+    "builder_version",
+    "contract_version",
+    "built_at_utc"
+  ],
+  "allowed_values": {
+    "identity_method": [
+      "EXACT_CANONICAL_HORSE_ID_RATING_BASE",
+      "EXACT_NORMALISED_NAME_APPROVED_MAP"
+    ],
+    "identity_status": [
+      "IDENTIFIED_GOVERNED"
+    ],
+    "rating_status": [
+      "OBSERVED_NORMALISED_GOVERNED"
+    ]
+  },
+  "forbidden_fields": [
+    "epi",
+    "eri",
+    "horse_rating",
+    "predictive_rating",
+    "performance_rank",
+    "recency_weight",
+    "reliability_weight",
+    "fuzzy_match_score",
+    "identity_confidence"
+  ]
+}

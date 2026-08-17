@@ -1,0 +1,88 @@
+{
+  "contract_name": "edgeiq_race_entry_suitability_aggregate_fact_v1",
+  "contract_version": "1.0.0",
+  "grain": "one_governed_suitability_aggregate_per_eligible_context_adjusted_performance_or_current_bridge_runner",
+  "primary_key": [
+    "race_entry_suitability_aggregate_id"
+  ],
+  "natural_key": [
+    "race_entry_context_adjusted_performance_id"
+  ],
+  "required_fields": [
+    "race_entry_suitability_aggregate_id",
+    "race_entry_context_adjusted_performance_id",
+    "race_entry_context_adjustment_id",
+    "race_entry_context_parameter_selection_id",
+    "race_entry_context_eligibility_id",
+    "race_entry_performance_context_id",
+    "race_entry_id",
+    "race_id",
+    "race_date",
+    "runner_id",
+    "canonical_horse_id",
+    "canonical_horse_name",
+    "historical_rating_value",
+    "context_parameter_id",
+    "total_context_adjustment",
+    "context_adjusted_performance_value",
+    "distance_suitability_value",
+    "class_suitability_value",
+    "track_suitability_value",
+    "track_configuration_suitability_value",
+    "track_condition_suitability_value",
+    "surface_suitability_value",
+    "barrier_suitability_value",
+    "weight_suitability_value",
+    "field_size_suitability_value",
+    "suitability_component_count",
+    "aggregate_suitability_value",
+    "suitability_aggregate_decision",
+    "race_entry_suitability_aggregate_status",
+    "source_adjusted_performance_evidence_sha256",
+    "source_component_evidence_set_sha256",
+    "race_entry_suitability_aggregate_evidence_sha256",
+    "source_adjusted_performance_builder_version",
+    "source_component_builder_version",
+    "builder_version",
+    "contract_version",
+    "built_at_utc"
+  ],
+  "allowed_values": {
+    "suitability_aggregate_decision": [
+      "SUITABILITY_AGGREGATED"
+    ],
+    "race_entry_suitability_aggregate_status": [
+      "GOVERNED_SUITABILITY_AGGREGATE"
+    ]
+  },
+  "required_component_types": [
+    "DISTANCE",
+    "CLASS",
+    "TRACK",
+    "TRACK_CONFIGURATION",
+    "TRACK_CONDITION",
+    "SURFACE",
+    "BARRIER",
+    "WEIGHT",
+    "FIELD_SIZE"
+  ],
+  "current_runner_component_types": [
+    "LIVE_CURRENT_SUITABILITY"
+  ],
+  "forbidden_fields": [
+    "projected_performance",
+    "projected_performance_value",
+    "epi",
+    "eri",
+    "race_strength",
+    "runner_rank",
+    "race_rank",
+    "probability",
+    "fair_price",
+    "market_price",
+    "market_edge",
+    "confidence",
+    "prediction",
+    "forecast"
+  ]
+}

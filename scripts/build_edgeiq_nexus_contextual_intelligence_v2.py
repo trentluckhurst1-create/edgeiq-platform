@@ -22,7 +22,7 @@ JOCKEY_STYLE_V1 = DATA / "edgeiq_jockey_run_style_engine_v1.csv"
 TRAINER_STYLE_V1 = DATA / "edgeiq_trainer_run_style_engine_v1.csv"
 PARTNERSHIP_V1 = DATA / "edgeiq_trainer_jockey_partnership_engine_v1.csv"
 RACE_SHAPE_STORY = DATA / "edgeiq_race_shape_story_v1.csv"
-LIVE_BOARD = DATA / "edgeiq_live_runner_board_v1.csv"
+LIVE_BOARD = DATA / "edgeiq_nexus_current_runner_board_v1.csv"
 COMMAND_ENRICHMENT = DATA / "edgeiq_command_enrichment_feed_v3.csv"
 RUNNERS_ENRICHMENT = DATA / "edgeiq_runners_enrichment_feed_v1_1.csv"
 

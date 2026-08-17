@@ -1,0 +1,24 @@
+{
+  "authority_only_output": "edgeiq_benchmark_observation_authority_only_v1.csv",
+  "authority_only_rule": "Governed extension observations without native Racing.com race, runner, sectional and split coverage must not enter eligibility, accumulation, standard-time or Race Time Delta calculations.",
+  "contract_name": "EDGEIQ_BENCHMARK_NATIVE_COMPATIBILITY_BOUNDARY_V1",
+  "contract_version": "1.0.0",
+  "forbidden_actions": [
+    "manual FULL_RACE assignment",
+    "manual unresolved runner count assignment",
+    "fabricated native course identity",
+    "fabricated native runner membership",
+    "fabricated sectional coverage",
+    "direct admission to Race Time Delta"
+  ],
+  "native_compatible_output": "edgeiq_benchmark_observation_native_compatible_authority_v1.csv",
+  "native_compatible_rule": "Rows originating from the native compatibility authority remain eligible for native downstream builder assessment.",
+  "policy_version": "EDGEIQ_BENCHMARK_NATIVE_COMPATIBILITY_BOUNDARY_POLICY_V1",
+  "row_accounting": {
+    "authority_only_exception_rows": 1,
+    "authority_only_rows": 4,
+    "native_compatible_rows": 70323,
+    "unified_authority_rows": 70327
+  },
+  "unified_authority_input": "edgeiq_benchmark_observation_authority_v1.csv"
+}

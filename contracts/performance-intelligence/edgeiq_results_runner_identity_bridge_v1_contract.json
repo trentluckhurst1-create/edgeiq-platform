@@ -1,0 +1,32 @@
+{
+  "approved_resolution_methods": [
+    "EXACT_SOURCE_RECORD_KEY",
+    "EXACT_SHARED_RUNNER_ID",
+    "EXACT_SHARED_RUNNER_ID_STABLE_IDENTITY",
+    "UNIQUE_EXACT_RUNNER_NAME_AND_FINISH",
+    "UNIQUE_EXACT_NORMALIZED_RUNNER_NAME",
+    "UNIQUE_EXACT_NORMALIZED_RUNNER_NAME_STABLE_IDENTITY"
+  ],
+  "contract_name": "EDGEIQ_RESULTS_RUNNER_IDENTITY_BRIDGE_V1",
+  "contract_version": "1.0.0",
+  "forbidden_resolution_methods": [
+    "FUZZY_NAME_MATCH",
+    "EDIT_DISTANCE",
+    "PHONETIC_MATCH",
+    "NEAREST_RUNNER",
+    "INVENTED_RUNNER_ID"
+  ],
+  "natural_key": [
+    "source_evidence_row_id"
+  ],
+  "normalisation": {
+    "approximate_matching": false,
+    "case_insensitive": true,
+    "country_suffix_removed": true,
+    "punctuation_insensitive": true
+  },
+  "policy_version": "EDGEIQ_RESULTS_RUNNER_IDENTITY_POLICY_V1",
+  "primary_key": [
+    "results_runner_identity_bridge_id"
+  ]
+}

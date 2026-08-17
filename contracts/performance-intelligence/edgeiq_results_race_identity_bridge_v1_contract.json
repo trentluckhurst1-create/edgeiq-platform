@@ -1,0 +1,33 @@
+{
+  "active_source_resolution_priority": [
+    "EXACT_ACTIVE_REFERENCED_PATH",
+    "UNIQUE_ACTIVE_BASENAME_FALLBACK"
+  ],
+  "approved_hydration_methods": [
+    "DIRECT_RACE_ID_ALREADY_AVAILABLE",
+    "EXACT_SOURCE_RECORD_KEY",
+    "EXACT_ACTIVE_SOURCE_RUNNER_AND_RESULT"
+  ],
+  "approved_race_resolution_methods": [
+    "DIRECT_CANONICAL_RACE_ID",
+    "UNIQUE_EXACT_DATE_TRACK_RACE_NUMBER",
+    "UNIQUE_EXACT_DATE_TRACK_DISTANCE"
+  ],
+  "contract_name": "EDGEIQ_RESULTS_RACE_IDENTITY_BRIDGE_V1",
+  "contract_version": "4.1.0",
+  "excluded_source_locations": [
+    "backups",
+    "diagnostics",
+    "checkpoints",
+    "archives",
+    ".git",
+    "node_modules"
+  ],
+  "forbidden_methods": [
+    "FUZZY_TRACK_MATCH",
+    "NEAREST_DISTANCE",
+    "INVENTED_RACE_ID"
+  ],
+  "policy_version": "EDGEIQ_RESULTS_RACE_IDENTITY_POLICY_V4_1",
+  "processing_mode": "STREAMED_ACTIVE_SOURCE_ONLY"
+}
