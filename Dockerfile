@@ -1,35 +1,18 @@
-FROM python:3.14.3-slim
-
-ARG NODE_VERSION=24.14.0
-
-ENV NODE_ENV=production
-ENV PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
+FROM node:22.22.0-bookworm-slim
 
 WORKDIR /app
 
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends ca-certificates curl xz-utils unzip \
+    && apt-get install -y --no-install-recommends unzip \
     && rm -rf /var/lib/apt/lists/*
 
-RUN curl -fsSL "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.xz" \
-    | tar -xJ -C /usr/local --strip-components=1 \
-    && node --version \
-    && npm --version
+COPY deployment/edgeiq_free_beta_runtime_v1.zip /app/deployment/edgeiq_free_beta_runtime_v1.zip
+COPY deployment/edgeiq_render_server.mjs /app/deployment/edgeiq_render_server.mjs
 
-COPY package.json package-lock.json ./
-RUN npm ci --include=dev
-
-COPY requirements.txt ./
-RUN python -m pip install --no-cache-dir -r requirements.txt \
-    && python -m playwright install --with-deps chromium
-
-COPY . .
-
-RUN unzip -oq deployment/edgeiq_free_beta_runtime_v1.zip -d /app \
+RUN unzip -oq /app/deployment/edgeiq_free_beta_runtime_v1.zip -d /app \
+    && test -f /app/dist/index.html \
     && test -d /app/public/data \
     && test -d /app/public/performance-intelligence \
-    && rm deployment/edgeiq_free_beta_runtime_v1.zip
+    && rm /app/deployment/edgeiq_free_beta_runtime_v1.zip
 
-RUN npm_config_ignore_scripts=true npm run build
-
-CMD ["npm", "run", "start"]
+CMD ["node", "deployment/edgeiq_render_server.mjs"]
