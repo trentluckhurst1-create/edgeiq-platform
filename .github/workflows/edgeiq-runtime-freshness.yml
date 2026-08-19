@@ -1,0 +1,61 @@
+name: EDGEiQ Runtime Freshness
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 * * * *'
+
+jobs:
+  freshness:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    env:
+      EDGEIQ_DATA_ORIGIN: ${{ vars.EDGEIQ_DATA_ORIGIN }}
+
+    steps:
+      - name: Validate configured data origin
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "$EDGEIQ_DATA_ORIGIN" || { echo 'Missing EDGEIQ_DATA_ORIGIN repository variable'; exit 1; }
+
+      - name: Verify R2 operating date is current in Melbourne
+        shell: python
+        run: |
+          import json
+          import os
+          import sys
+          import urllib.request
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
+
+          origin = os.environ['EDGEIQ_DATA_ORIGIN'].rstrip('/')
+          url = f'{origin}/data/edgeiq_runtime_freshness_v1.json'
+
+          try:
+              with urllib.request.urlopen(url, timeout=30) as response:
+                  payload = json.load(response)
+          except Exception as exc:
+              print(f'R2_FRESHNESS_FETCH=FAIL|{exc}')
+              raise SystemExit(1)
+
+          expected = datetime.now(ZoneInfo('Australia/Melbourne')).date().isoformat()
+          actual = str(payload.get('operating_date') or '')
+          audit_status = str(payload.get('audit_status') or '')
+
+          print(f'EXPECTED_MELBOURNE_DATE={expected}')
+          print(f'R2_OPERATING_DATE={actual}')
+          print(f'R2_AUDIT_STATUS={audit_status}')
+          print(f'R2_PUBLISHED_AT_UTC={payload.get("published_at_utc", "")}')
+
+          if actual != expected:
+              print('EDGEIQ_RUNTIME_DATE_GATE=FAIL')
+              raise SystemExit(1)
+
+          if audit_status != 'PASS':
+              print('EDGEIQ_RUNTIME_AUDIT_GATE=FAIL')
+              raise SystemExit(1)
+
+          print('EDGEIQ_RUNTIME_FRESHNESS=PASS')
