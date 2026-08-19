@@ -52,13 +52,40 @@ src_BROKEN_BACKUP/
 *.zip
 *.png
 
-# Large local data warehouses - not stored in GitHub
+# EDGEiQ task work, diagnostics and recovery material
+work/
+backups/
+EDGEIQ_PERFORMANCE_REPAIR_PACK/
+repository_inventory.csv
+EDGEIQ_FILE_INDEX.txt
+
+# Large local/generated data warehouses - never add as new Git objects
 public/data/
 *.parquet
 *.db
 *.sqlite
 *.xlsx
+*.csv.gz
+*.json.gz
 
-# EDGEIQ governed generated warehouse assets
-docs/performance-intelligence/warehouse-v2/historical-observation-warehouse-v3/eiq_historical_observation_v3_*/historical_observation_warehouse_v3.csv
-docs/performance-intelligence/warehouse-v2/historical-observation-warehouse-v3/eiq_historical_observation_v3_*/historical_observation_warehouse_v3.sqlite
+# Performance-intelligence generated/research warehouses
+docs/performance-intelligence/warehouse/
+docs/performance-intelligence/warehouse-v2/
+docs/performance-intelligence/prototypes/
+docs/**/archive/
+docs/**/rollback/
+
+# Generated publication/data products that belong to runtime storage, not source history
+public/performance-intelligence/
+
+# Temporary / accidental copies
+*.bak
+*.tmp
+*.temp
+*.pre_*
+*BEFORE_*
+*_OLD*
+*_COPY*
+
+# Keep source/config/docs lightweight and intentional. Existing tracked files remain tracked;
+# these rules prevent future generated bulk from being added accidentally.
