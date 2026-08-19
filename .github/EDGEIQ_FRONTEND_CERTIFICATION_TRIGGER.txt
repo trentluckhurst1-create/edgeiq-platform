@@ -1,0 +1,3 @@
+EDGEiQ frontend remote certification trigger.
+
+This file exists only to trigger the GitHub Actions frontend build on a pull request so TypeScript and Vite run remotely instead of on the local development laptop.
