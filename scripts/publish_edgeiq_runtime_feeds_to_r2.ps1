@@ -25,8 +25,8 @@ $env:CLOUDFLARE_API_TOKEN = $env:CLOUDFLARE_R2_API_TOKEN
 
 try {
     $ConfigFiles = @(
-        Join-Path $Root 'src\config\edgeiqFiles.ts',
-        Join-Path $Root 'src\config\edgeiqLiveFeeds.ts'
+        (Join-Path $Root 'src\config\edgeiqFiles.ts')
+        (Join-Path $Root 'src\config\edgeiqLiveFeeds.ts')
     )
 
     foreach ($Config in $ConfigFiles) {
