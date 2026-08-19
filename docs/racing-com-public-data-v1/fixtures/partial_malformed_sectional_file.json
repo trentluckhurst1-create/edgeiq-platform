@@ -1,0 +1,14 @@
+{
+  "Horses": [
+    {
+      "id": "runner-bad",
+      "FullName": "Malformed",
+      "SplitTimes": [
+        {
+          "Distance": "bad",
+          "Time": "not-a-time"
+        }
+      ]
+    }
+  ]
+}

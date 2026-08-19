@@ -1,0 +1,91 @@
+{
+  "contract_name": "edgeiq_race_epi_publication_snapshot_fact_v1",
+  "contract_version": "1.0.0",
+  "grain": "one_governed_epi_publication_snapshot_row_per_race",
+  "primary_key": [
+    "race_epi_publication_snapshot_id"
+  ],
+  "natural_key": [
+    "race_id",
+    "race_date"
+  ],
+  "required_fields": [
+    "race_epi_publication_snapshot_id",
+    "race_id",
+    "race_date",
+    "ordered_epi_population_count",
+    "distinct_epi_count",
+    "unique_epi_entry_count",
+    "tied_epi_entry_count",
+    "tie_group_count",
+    "largest_tie_group_size",
+    "top_epi",
+    "second_distinct_epi_available",
+    "second_distinct_epi",
+    "top_to_second_epi_gap_available",
+    "top_to_second_epi_gap",
+    "top_epi_tie_group_size",
+    "top_epi_tie_status",
+    "distribution_population_field",
+    "distribution_population_value",
+    "distribution_population_reconciliation_status",
+    "source_distribution_id",
+    "source_distribution_evidence_sha256",
+    "source_distribution_record_json",
+    "source_distribution_record_sha256",
+    "source_ordering_summary_id",
+    "source_ordering_summary_evidence_sha256",
+    "race_epi_snapshot_publication_decision",
+    "race_epi_snapshot_reconciliation_decision",
+    "race_epi_snapshot_status",
+    "race_epi_publication_snapshot_evidence_sha256",
+    "source_lineage",
+    "builder_version",
+    "contract_version",
+    "built_at_utc"
+  ],
+  "allowed_values": {
+    "second_distinct_epi_available": [
+      "YES",
+      "NO"
+    ],
+    "top_to_second_epi_gap_available": [
+      "YES",
+      "NO"
+    ],
+    "top_epi_tie_status": [
+      "TOP_EPI_UNIQUE",
+      "TOP_EPI_TIED"
+    ],
+    "distribution_population_reconciliation_status": [
+      "RECONCILED",
+      "NOT_EXPOSED_BY_SOURCE_CONTRACT"
+    ],
+    "race_epi_snapshot_publication_decision": [
+      "RACE_EPI_SNAPSHOT_PUBLISHED"
+    ],
+    "race_epi_snapshot_reconciliation_decision": [
+      "RACE_EPI_SNAPSHOT_RECONCILED"
+    ],
+    "race_epi_snapshot_status": [
+      "GOVERNED_RACE_EPI_PUBLICATION_SNAPSHOT"
+    ]
+  },
+  "forbidden_fields": [
+    "probability",
+    "implied_probability",
+    "fair_price",
+    "market_price",
+    "market_edge",
+    "expected_value",
+    "confidence",
+    "prediction",
+    "recommendation",
+    "selection",
+    "bet",
+    "tip",
+    "staking",
+    "bookmaker",
+    "value_classification"
+  ]
+}

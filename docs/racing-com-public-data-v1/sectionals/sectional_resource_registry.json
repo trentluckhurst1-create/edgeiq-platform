@@ -1,0 +1,18 @@
+[
+  {
+    "resource_type": "runner_sectional_split_payload",
+    "source": "getRaceForm retained local payload",
+    "field_path": "data.sectionaltimes_callback.Horses[].SplitTimes",
+    "rows_observed": 2682,
+    "access_classification": "LOCAL_GOVERNED_EVIDENCE_DIRECT_PUBLIC_NOT_CONFIRMED",
+    "public_probe_status": "NOT_PROBED_NO_PUBLIC_RESOURCE_URL"
+  },
+  {
+    "resource_type": "speed_data_page",
+    "source": "source_page_url",
+    "field_path": "public/data/edgeiq_racingcom_runner_speed_fact_v1.csv.source_page_url",
+    "rows_observed": 392,
+    "access_classification": "PUBLIC_PAGE_URL_KNOWN",
+    "public_probe_status": "PAGE_FETCHED_BY_FRONTEND_FORENSICS"
+  }
+]

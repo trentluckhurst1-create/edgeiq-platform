@@ -1,0 +1,12 @@
+{
+  "built_utc": "2026-07-22T08:34:09+00:00",
+  "queue_source": "docs\\performance-intelligence\\racingcom-ingestion-v2\\edgeiq_racingcom_acquisition_queue_v2.csv",
+  "queue_type": "PAGE_DISCOVERY",
+  "attempted_race_ids": [
+    "2026-03-15_YARRAVALLEY_R1",
+    "2026-03-15_YARRAVALLEY_R2",
+    "2026-03-15_YARRAVALLEY_R3",
+    "2026-03-15_YARRAVALLEY_R4"
+  ],
+  "complete_for_current_queue": true
+}

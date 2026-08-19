@@ -1,0 +1,513 @@
+    body {
+        font-family:Arial, sans-serif;
+        font-size:11px;
+        line-height:1.5em;
+        font-weight:300;
+        -webkit-font-smoothing:antialiased;
+        line-height:1.75rem;
+    }
+    .page-icon {
+        width:16px;
+    }
+    #main-container {
+        position:relative;
+        max-width:960px;
+        margin:0 auto;
+    }
+    #header {
+        position:relative;
+        max-width:960px;
+        min-height:55px;
+        padding:12px 12px 12px 12px;
+        margin-bottom:8px;
+    }
+    .demonstration-notice {
+        position:relative;
+        max-width:960px;
+        min-height:25px;
+        line-height:22px;
+        font-size:19px;
+        text-align:center;
+    }
+    .going-report-information {
+        position:relative;
+        max-width:960px;
+        height:23px;
+        line-height:23px;
+        font-size:1rem;
+        text-align:center;
+    }
+    .refresh-timer {
+        position:relative;
+        max-width:960px;
+        height:17px;
+        line-height:17px;
+        font-size:9px;
+        text-align:right;
+    }
+    .refresh-status {
+        position:relative;
+        max-width:960px;
+        min-height:17px;
+        line-height:17px;
+        font-size:12px;
+        visibility:hidden;
+    }
+    #logo-image {
+        display:block;
+        margin:0 auto 0;
+        width:60%;
+    }
+    .update-content-report, .update-content-awt, .update-content-weather {
+        display:initial;
+    }
+    .menu-icons {
+        position:absolute;
+        top:3px;
+        right:3px;
+        height:20px;
+    }
+    .menu-icons div {
+        float:right;
+        width:20px;
+        height:20px;
+        margin-left:12px;
+    }
+    .menu-icons img{
+        width:20px;
+        cursor:pointer;
+    }
+    .menu-display {
+        position:absolute;
+        top:30px;
+        right:10px;
+        width:320px;
+        min-height:60px;
+        display:none;
+        z-index:20;
+    }
+    #tool-container {
+        position:relative;
+        min-width:160px;
+        min-height:30px;
+        display:none;
+        z-index:20;
+    }
+    .api-mini-cms-header {
+        position:relative;
+        width:100%;
+        height:19px;
+        line-height:19px;
+        text-align:center;
+        text-decoration:underline;
+        font-size:larger;
+        font-weight:bold;
+    }
+    .api-mini-cms-list {
+        position:relative;
+        width:100%;
+        min-height:17px;
+        display:block;
+    }
+    .api-mini-cms-line {
+        position:relative;
+        width:100%;
+        min-height:17px;
+        line-height:17px;
+        display:block;
+    }
+    .api-mini-cms-prompt, .api-mini-cms-prompt-wide {
+        position:relative;
+        width:110px;
+        min-height:17px;
+        line-height:17px;
+        font-weight:bold;
+        text-align:right;
+        vertical-align:top;
+    }
+    .api-mini-cms-content, .api-mini-cms-content-wide {
+        position:relative;
+        width:205px;
+        min-height:17px;
+        line-height:17px;
+        vertical-align:top;
+    }
+    .api-mini-cms-prompt, .api-mini-cms-content {
+        display:inline-block;
+    }
+    .api-mini-cms-prompt-wide, .api-mini-cms-content-wide {
+        display:block;
+    }
+    .tiny-cms-button {
+        display:inline-block;
+        width:60px;
+        height:18px;
+        cursor:pointer;
+        background-color:inherit;
+        margin-left:20px;
+    }
+    .mini-cms-button {
+        display:inline-block;
+        width:80px;
+        height:20px;
+        cursor:pointer;
+        background-color:inherit;
+        margin:5px 10px 5px 10px;
+    }
+    .small-cms-button {
+        display:inline-block;
+        width:100px;
+        height:20px;
+        cursor:pointer;
+        background-color:inherit;
+        margin:5px 10px 5px 10px;
+    }
+    .manual-override {
+        margin-left:10px;
+    }
+    .view-button {
+        margin:0px;
+    }
+    .popup-close {
+        position:absolute;
+        bottom:0px;
+        right:0px;
+        width:20px;
+        height:20px;
+        cursor:pointer;
+    }
+    .response-error {
+        position:relative;
+        width:90%;
+        min-height:35px;
+        line-height:17px;
+        display:none;
+        font-size:11px;
+        font-style:italic;
+        font-weight:bold;
+        color:red;
+        margin:0 auto;
+    }
+    #view-rg {
+        position:absolute;
+        bottom:3px;
+        left:3px;
+        visibility:hidden;
+    }
+    #going-report-wdv, #awt-report-wdv, #weather-report-wdv {
+        position:relative;
+        width:100%;
+        min-height:0px;
+    }
+    .metric-display {
+        border:1px solid #FDE0E5;
+        position:relative;
+        height:215px;
+    }
+    .metric-display-banner, .metric-display-banner-lite {
+        position:relative;
+        width:100%;
+        min-height:37px;
+        line-height:37px;
+        margin:8px 8px 0px 0px;
+        text-align:center;
+    }
+    .metric-display-map {
+        position:relative;
+        width:100%;
+        min-height:25px;
+    }
+    ._metric-display-weather{
+        position:relative;
+        width:100%;
+        height:0px;
+    }
+    
+    .metric-title, .metric-title-map, .metric-title-weather {
+        position:relative;
+        width:100%;
+        height:37px;
+        line-height:37px;
+        font-size:19px;
+        text-align:center;
+    }
+    .metric-display-subbanner {
+        display:inline-block;
+        font-size:15px;
+    }
+    .metric-title-map, .metric-display-banner, .metric-display-banner-lite {
+        font-size:17px;
+    }
+    .metric-sensor-icon, .metric-sensor-icon-round {
+        position:absolute;
+        left:3px;
+        top:35px;
+        width:97px;
+        height:97px;
+        margin:auto 0px;
+    }
+    metric-sensor-icon-round {
+        position:absolute;
+        left:3px;
+        top:27px;
+        width:97px;
+        height:97px;
+        margin:auto 0px;
+    }
+    .metric-sensor-icon img {
+        position:absolute;
+        top:-2px;
+        width:100px;
+    }
+    .metric-sensor-icon-round {
+        position:absolute;
+        left:3px;
+        width:97px;
+        height:97px;
+        margin:auto 0px;
+        border-radius:50px;
+        width:100px;
+        height:100px;
+    }
+    #going-wind-repeater, #awt-wind-repeater {
+        position:absolute;
+        visibility:hidden;
+        z-index:2;
+    }
+    #going-wind-repeater img, #awt-wind-repeater img{
+        position:absolute;
+        top:0px;
+        left:0px;
+        z-index:2;
+    }
+    .metric-reading, .metric-comment {
+        position:absolute;
+        left:105px;
+        flex:2;
+    }
+    .metric-reading {
+        top:35px;
+    }
+    .metric-comment {
+        height:150px;
+        overflow-y:auto;
+        padding:5px 5px 5px 0px;
+    }
+    .metric-reading-line {
+        position:relative;
+        min-height:1.5rem;
+        width:100%;
+    }
+    .metric-reading-line-tall {
+        position:relative;
+        height:25px;
+        width:100%;
+    }
+    .metric-reading-prompt {
+        width:135px;
+        height:100%;
+        display:inline-block;
+        margin-right:3px;
+    }
+    .metric-reading-content {
+        width:56px;
+        height:100%;
+        display:inline-block;
+        text-align:left;
+        vertical-align:top;
+    }
+    .metric-reading-line-small {
+        min-width:180px;
+    }
+    .metric-reading-prompt-small {
+        width:105px;
+        display:inline-block;
+        margin-right:3px;
+    }
+    .metric-inner {
+        position:relative;
+        height:175px;
+        width:100%;
+        font-size:1.2rem;
+        display:flex;
+    }
+    .metric-source {
+        position:absolute;
+        bottom:0px;
+        right:0px;
+        min-width:202px;
+        min-height:15px;
+        font-size:13px;
+        line-height:15px;
+        text-align:right;
+        padding-right:5px;
+      }
+    .compass-bezel {
+        position:relative;
+        width:200px;
+        height:44px;
+        z-index:10;
+    }
+    #winddirection-current-rose, .compass-rose {
+        position:absolute;
+        top:0px;
+        left:6px;
+        width:188px;
+        background-image:url('../images/compass-rose.png');
+        background-position:left 0px top 2px;
+        margin:auto;
+        height:44px;
+        z-index:-10;
+    }
+    .going-map, .going-zone-map {
+        position:relative;
+        width:100%;
+        /*padding-top:1.5rem;*/
+        background-color:#ffffff;
+        z-index:1;
+    }
+    .going-map>object, .going-zone-map>object {
+        width:100%;
+    }
+    #wdv-explained, #wdv-disclaimer {
+        position:relative;
+        max-width:936px;
+        text-align:justify;
+        margin:10px 0px 0px 0px;
+        font-size:14px;
+        font-weight:600;
+        line-height:1.5rem;
+        padding:0px 8px;
+    }
+    #wdv-explained p, #wdv-disclaimer p {
+        margin-bottom:8px;
+    }
+    .footer {
+        position:relative;
+        width:100%;
+        height:60px;
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:center;
+        align-items:center;
+    }
+    .footer p {
+        margin:0px;
+    }
+    .footer-logo {
+        min-width:50%;
+        flex:1;
+        text-align:center;
+    }
+    .footer-text {
+        min-width:50%;
+        line-height:17px;
+        flex:1
+    }
+    .footer-credentials, .footer-powered-by {
+        text-align:center;
+    }
+    .no-data-error {
+        font-size:1rem;
+        /*color:red;*/
+    }
+    .right-text {
+        text-align:right;
+    }
+    .center-text {
+        text-align:center;
+    }
+    .bigger {
+        font-weight:600;
+        font-size:1.4rem;
+    }
+    .smaller {
+        font-weight:300;
+        font-size:1rem;
+    }
+    .much-smaller {
+        font-size:.75rem;
+        line-height:.75rem;
+    }
+    .advisory {
+        position:relative;
+        width:100%;
+        min-height:30px;
+        line-height:15px;
+    }
+    .advisory dl {
+        color:red;
+        margin:0px 0px 10px 30px;
+    }
+    .advisory dt {
+        font-weight:bold;
+        height:15px;
+    }
+    .advisory dd {
+        margin-left:20px;
+        height:15px;
+    }
+    .run-trace {
+        position:relative;
+        width:0px;
+        height:0px;
+        display:none;
+    }
+    #display-trace {
+        position:relative;
+        width:0px;
+        height:0px;
+        display:none;
+    }
+    @media only screen and (min-width:960px) {
+        #header {
+            margin:8px 8px 0px 0px;
+        }
+        .going-report-information {
+            text-align:left;
+            font-size:1.4rem;
+        }
+        .update-content-report, .update-content-awt, .update-content-weather {
+            position:relative;
+            display:-webkit-box;
+            display:-ms-flexbox;
+            display:flex;
+            -ms-flex-wrap:wrap;
+            flex-wrap:wrap;
+            -ms-flex-pack:distribute;
+            justify-content:space-around;
+        }
+        .metric-display {
+            flex:1;
+            min-width:32%;
+            height:215px;
+            margin:8px 8px 0px 0px;
+        }
+        .metric-display-map {
+            max-width:960px;
+            /*min-height:250px;*/
+            margin:0px 8px 0px 0px;
+        }
+        .metric-title-map, .metric-display-banner, .metric-display-banner-lite {
+            font-size:19px;
+        }
+        .metric-comment {
+            width:200px;
+        }
+        .run-trace {
+            width:100%;
+            display:block;
+            cursor:pointer;
+        }
+        .run-trace h3 {
+            color:red;
+        }
+        #display-trace {
+            width:100%;
+        }
+        #twitter-widget-0 {
+            vertical-align:top;
+            padding-top:17px;
+            padding-left: 10px;
+        }
+    }

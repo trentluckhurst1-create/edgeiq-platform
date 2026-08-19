@@ -1,0 +1,243 @@
+[EDGEIQ_THREE_DAY_WINDOW_V1] PASS
+timezone=Australia/Melbourne
+date_source=AUSTRALIA_MELBOURNE_CLOCK
+today=2026-07-26
+tomorrow=2026-07-27
+day_plus_2=2026-07-28
+generated_at=2026-07-26T13:33:20+10:00
+output=C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_three_day_window_v1.json
+====================================================================================================
+EDGEIQ VIC THREE DAY MEETING UNIVERSE
+====================================================================================================
+calendar_meetings=4
+fields_ready_meetings=1
+fields_pending_meetings=2
+fields_unavailable_meetings=1
+runner_rows=108
+races=8
+missing_prices=0
+calendar=C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_vic_three_day_meeting_calendar_v1.csv
+universe=C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_vic_three_day_meeting_universe.csv
+fields=C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_vic_three_day_race_fields.csv
+diag=C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_vic_three_day_meeting_diagnostics.csv
+==========================================================================================
+EDGEIQ VIC THREE DAY MEETING CALENDAR V1
+==========================================================================================
+meetings=4
+today=2
+tomorrow=1
+day_plus_2=1
+wrote=C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_vic_three_day_meeting_calendar_v1.csv
+[EDGEIQ_VIC_THREE_DAY_RACE_LIST_V1] COMPLETE
+meetings= 4
+races= 7
+meetings_with_races= 1
+out= C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_vic_three_day_race_list_v1.csv
+summary= C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_vic_three_day_race_list_v1_summary.csv
+[EDGEIQ] Three-day catalogue rebuilt
+[EDGEIQ] Meetings: 3
+[EDGEIQ] Races: 18
+[EDGEIQ] Runners: 246
+[EDGEIQ] Raw race nodes: 0
+EDGEIQ CURRENT RACE FIELDS FROM PRODUCT CATALOG V1
+status=CURRENT_RACE_FIELDS_BUILT_FROM_PRODUCT_CATALOG
+rows=246
+meetings=2
+races=17
+active_runners=213
+scratched_runners=33
+production_model_math_changed=NO
+pricing_math_changed=NO
+
+{
+  "status": "SKIPPED_NO_AUTH_PRESERVED_EXISTING_RUNTIME",
+  "runtime_preserved": true
+}
+{
+  "status": "EDGEIQ_CURRENT_MARKET_V1_BUILT",
+  "generated_at": "2026-07-26T03:35:29Z",
+  "canonical_runner_rows": 246,
+  "current_edgeiq_runner_rows": 246,
+  "runtime_provider_rows": 472,
+  "latest_provider_rows": 472,
+  "matched_current_edgeiq_runners": 246,
+  "unmatched_current_edgeiq_runners": 0,
+  "provider_only_unmatched_rows": 226,
+  "fixed_win_rows": 241,
+  "fixed_place_rows": 241,
+  "canonical_history_rows": 1234,
+  "distinct_observation_timestamps": 31,
+  "repeat_observation_runner_count": 617,
+  "movement_rows": 241,
+  "production_pricing_changed": "NO"
+}
+EDGEIQ FORM GUIDE CURRENT BASE V1
+status=CURRENT_FORM_GUIDE_BASE_BUILT
+races=18
+runners=246
+runners_with_history=213
+history_runs=1348
+same_race_leakage=NO
+pricing_math_changed=NO
+epi_math_changed=NO
+
+EARLY_SPEED_V1 rows=246 populated=120 blank=126
+EARLY_SPEED_V1 distribution={'count': 120, 'min': 48.4, 'max': 61.3, 'mean': 56.86, 'median': 56.9, 'stddev': 1.66, 'unique': 49}
+LATE_SPEED_V1 rows=246 populated=122 blank=124
+LATE_SPEED_V1 distribution={'count': 122, 'min': 12.2, 'max': 100.0, 'mean': 48.7, 'median': 48.3, 'stddev': 12.51, 'unique': 98}
+CURRENT_SUITABILITY_V1 rows=246 populated=169 blank=77
+CURRENT_FORM_MOMENTUM_V1 rows=246 populated=172 blank=74
+CURRENT_RACE_SHAPE_V2 rows=246 populated=107 blank=139
+CURRENT_MAP_V1 rows=246
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_form_guide_enriched_v2.json
+EDGEiQ Form Guide V3.4 coverage summary
+Generated: 2026-07-26T03:37:24.075909+00:00
+Runners: 246
+Weather races: 0/40 -> 0/18
+Weather runner rows: 0/246 -> 0/246
+EPI: 0/246 -> 189/246
+Historical EPI: 0/1348 -> 0/1348
+Historical Rating: 0/1348 -> 52/1348
+EDGEiQ Price: 0/246 -> 166/246
+Early Speed: 0/246 -> 120/246
+Historical Early Speed: 0/1348 -> 1001/1348
+Suitability: 0/246 -> 169/246
+Race Shape: 0/246 -> 107/246
+Late Speed: 0/246 -> 122/246
+Form Momentum: 0/246 -> 172/246
+Preparation Profile: 0/246 -> 216/246
+Sectional 800-600: 0/1348 -> 207/1348
+Sectional 600-400: 0/1348 -> 207/1348
+Sectional 400-200: 0/1348 -> 0/1348
+Sectional 200-F: 0/1348 -> 207/1348
+Benchmark Evidence: 0/1348 -> 1004/1348
+Career Profile: 216/246 -> 216/246
+Recent Form: 213/246 -> 213/246
+
+Current-date gaps are not backfilled from prior-date model outputs.
+
+EDGEIQ PERFORMANCE RECOVERY CURRENT LINEAGE V1
+warehouse rows processed=200000
+warehouse rows processed=400000
+warehouse rows processed=600000
+warehouse rows processed=800000
+warehouse {'rows': 879784, 'corrected_seconds_rows': 712856, 'invalid_time_rows': 166928, 'implausible_seconds_before_rows': 0}
+standard_times {'candidate_timed_races': 71025, 'eligible_timed_races': 57231, 'distinct_benchmark_groups': 3534, 'groups_above_threshold': 586, 'groups_below_threshold': 2948, 'standard_time_rows': 586, 'rejected': {'INVALID_TIME': 10658, 'UNKNOWN_CONDITION': 2935, 'INVALID_DISTANCE': 201}}
+lvs/epi rows processed=200000
+lvs/epi rows processed=400000
+lengths_epi_eri {'runner_lengths_v_standard_rows': 533387, 'race_lengths_v_standard_rows': 51769, 'epi_rows': 533387, 'eri_rows': 51769, 'unmatched_benchmark_rows': 232783, 'invalid_calculation_rows': 113614}
+current_epi {'current_runners': 246, 'current_runners_requiring_epi': 186, 'current_epi_rows': 189, 'matched_historical_runs': 525}
+fair_price {'rows': 246, 'races': 17, 'priced_rows': 166, 'unpriced_rows': 80, 'probability_sum_bad_races': 0, 'feature_flag': 'ON', 'live_wired': 'YES', 'production_changed': 'NO', 'market_used_as_feature': 'NO'}
+form_enriched_rebuild PASS
+market_terminal_rebuild PASS
+FINAL_STATUS READY_WITH_GOVERNED_COVERAGE_LIMITATIONS
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_form_guide_enriched_v2.json
+EDGEiQ Form Guide V3.4 coverage summary
+Generated: 2026-07-26T03:40:19.865411+00:00
+Runners: 246
+Weather races: 0/40 -> 0/18
+Weather runner rows: 0/246 -> 0/246
+EPI: 0/246 -> 189/246
+Historical EPI: 0/1348 -> 0/1348
+Historical Rating: 0/1348 -> 52/1348
+EDGEiQ Price: 0/246 -> 166/246
+Early Speed: 0/246 -> 120/246
+Historical Early Speed: 0/1348 -> 1001/1348
+Suitability: 0/246 -> 169/246
+Race Shape: 0/246 -> 107/246
+Late Speed: 0/246 -> 122/246
+Form Momentum: 0/246 -> 172/246
+Preparation Profile: 0/246 -> 216/246
+Sectional 800-600: 0/1348 -> 207/1348
+Sectional 600-400: 0/1348 -> 207/1348
+Sectional 400-200: 0/1348 -> 0/1348
+Sectional 200-F: 0/1348 -> 207/1348
+Benchmark Evidence: 0/1348 -> 1004/1348
+Career Profile: 216/246 -> 216/246
+Recent Form: 213/246 -> 213/246
+
+Current-date gaps are not backfilled from prior-date model outputs.
+
+EDGEIQ_MAP_TERMINAL_FEED_V1 rows=246 races=17 matched_current_map_rows=246
+EDGEIQ_MARKET_TERMINAL_FEED_V1 rows=246 races=17 matched_current_market=246
+EDGEIQ_OVERVIEW_TERMINAL_FEED_V1 rows=108 races=18 matched_intelligence=0
+EDGEIQ_INSIGHTS_TERMINAL_FEED_V1 rows=336 races=18 runner_rows=246 matched_intelligence=0
+Wrote C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_gear_terminal_feed_v1.csv (246 rows)
+Wrote C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_gear_terminal_feed_summary_v1.csv
+Wrote C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_meeting_results_terminal_feed_v1.csv (18 rows)
+Wrote C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_meeting_results_terminal_feed_summary_v1.csv
+EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE4_0_PRODUCT_FEEDS_PASS
+{
+  "race_intelligence_index": 18,
+  "horse_intelligence_index": 246,
+  "historical_performance_intelligence_index": 1406,
+  "benchmark_explanation_index": 674,
+  "current_product_runners": 246
+}
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\performance-intelligence\edgeiq_performance_intelligence_product_feeds_v1.json
+EDGEIQ_ON_TRACK_WEATHER_GOVERNED_V1_2_AUDIT_PASS
+Flemington | AVAILABLE_STALE | STALE | age=17551.7
+Caulfield | AVAILABLE_STALE | STALE | age=17551.7
+Sandown | AVAILABLE_STALE | STALE | age=17551.7
+Mornington | AVAILABLE_STALE | STALE | age=17551.7
+EDGEIQ_VICTORIAN_TRACK_WEATHER_V1 PASS_WITH_GAPS records=3
+EDGEIQ_VICTORIAN_TRACK_WEATHER_AUDIT_V1 PARTIAL
+EDGEIQ DAILY PRODUCT REFRESH V1
+OPERATING_DATE=2026-07-26
+STARTED_UTC=2026-07-26T03:33:19+00:00
+
+--- scripts/build_edgeiq_three_day_window_v1.py ---
+
+--- scripts/build_edgeiq_vic_three_day_meeting_universe.py ---
+
+--- scripts/build_edgeiq_vic_three_day_meeting_calendar_v1.py ---
+
+--- scripts/build_edgeiq_racingcom_three_day_race_list_v1.py ---
+
+--- scripts/build_edgeiq_three_day_product_catalog_v1.py ---
+
+--- scripts/build_edgeiq_current_race_fields_from_product_catalog_v1.py ---
+
+--- scripts/build_edgeiq_ladbrokes_active_market_refresh_v1.py ---
+
+--- scripts/build_edgeiq_current_market_v1.py ---
+
+--- scripts/build_edgeiq_form_guide_current_base_v1.py ---
+
+--- scripts/build_edgeiq_current_early_speed_v1.py ---
+
+--- scripts/build_edgeiq_current_late_speed_v1.py ---
+
+--- scripts/build_edgeiq_current_suitability_v1.py ---
+
+--- scripts/build_edgeiq_current_form_momentum_v1.py ---
+
+--- scripts/build_edgeiq_current_race_shape_v2.py ---
+
+--- scripts/build_edgeiq_current_map_v1.py ---
+
+--- scripts/build_edgeiq_form_guide_enriched_v2.py ---
+
+--- scripts/build_edgeiq_performance_recovery_current_lineage_v1.py ---
+
+--- scripts/build_edgeiq_form_guide_enriched_v2.py ---
+
+--- scripts/build_edgeiq_map_terminal_feed_v1.py ---
+
+--- scripts/build_edgeiq_market_terminal_feed_v1.py ---
+
+--- scripts/build_edgeiq_overview_terminal_feed_v1.py ---
+
+--- scripts/build_edgeiq_insights_terminal_feed_v1.py ---
+
+--- scripts/build_edgeiq_gear_terminal_feed_v1.py ---
+
+--- scripts/build_edgeiq_meeting_results_terminal_feed_v1.py ---
+
+--- scripts/performance-intelligence/product-integration/build_edgeiq_performance_intelligence_product_feeds_v1.py ---
+
+--- scripts/build_edgeiq_on_track_weather_governed_v1_2.py ---
+
+--- scripts/build_edgeiq_victorian_track_weather_v1.py ---
+
+--- scripts/audit_edgeiq_victorian_track_weather_v1.py ---

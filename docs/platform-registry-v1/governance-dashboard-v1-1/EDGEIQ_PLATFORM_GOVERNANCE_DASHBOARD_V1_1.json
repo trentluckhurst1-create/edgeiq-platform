@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.1",
+  "generated_utc": "2026-07-28T06:40:35.900385+00:00",
+  "verdict": "PASS",
+  "platform_governance_status": "PASS_WITH_GOVERNANCE_ACTIONS",
+  "governance_maturity_index": 64.0092,
+  "governance_maturity_note": "Weighted governance coverage indicator only; it is not a product-quality, data-accuracy, model-performance, or launch-readiness score.",
+  "headline": {
+    "canonical_builders": 1280,
+    "confirmed_active_or_truncated_defects": 3,
+    "resolved_dependency_edges": 197,
+    "orphan_builders": 1163,
+    "product_feeds": 7228,
+    "owned_product_feeds": 2951,
+    "unowned_product_feeds": 4277,
+    "multiple_evidenced_owner_feeds": 1001
+  },
+  "coverage": {
+    "estimated_canonical_parse_health_percentage": 99.7763,
+    "canonical_scope_reconciliation_percentage": 100.0,
+    "builder_graph_connection_percentage": 9.1406,
+    "product_feed_ownership_percentage": 40.8273
+  },
+  "governance_exception_count": 6,
+  "high_severity_exception_domain_count": 3,
+  "source_units": {
+    "builder_registry": {
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\platform-registry-v1\\builder-registry-v1-1\\EDGEIQ_CANONICAL_BUILDER_REGISTRY_V1_1_SUMMARY.json",
+      "source_verdict": "FAIL_CANONICAL_PARSE_FAILURES"
+    },
+    "parse_failure_auditor": {
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\platform-registry-v1\\parse-failure-auditor-v1\\EDGEIQ_CANONICAL_PARSE_FAILURE_SUMMARY_V1.json",
+      "source_verdict": "PASS"
+    },
+    "scope_refiner": {
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\platform-registry-v1\\canonical-scope-refiner-v1\\EDGEIQ_CANONICAL_SCOPE_REFINER_SUMMARY_V1.json",
+      "source_verdict": "PASS"
+    },
+    "dependency_graph": {
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\platform-registry-v1\\builder-dependency-graph-v1-1\\EDGEIQ_CANONICAL_BUILDER_DEPENDENCY_GRAPH_SUMMARY_V1_1.json",
+      "source_verdict": "PASS"
+    },
+    "product_feed_registry": {
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\platform-registry-v1\\product-feed-registry-v1-1\\EDGEIQ_PRODUCT_FEED_REGISTRY_SUMMARY_V1_1.json",
+      "source_verdict": "PASS"
+    }
+  }
+}

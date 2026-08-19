@@ -1,0 +1,40 @@
+{
+  "blocked_race_count": 10676,
+  "checks": [
+    {
+      "check": "ONE_OBSERVATION_PER_RACE_CONTEXT",
+      "observed": 71025,
+      "passed": true
+    },
+    {
+      "check": "RACE_OBSERVATION_PRIMARY_KEY",
+      "observed": "unique=71025",
+      "passed": true
+    },
+    {
+      "check": "CONFLICT_RACES_BLOCKED",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "check": "UNAVAILABLE_TIME_RACES_BLOCKED",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "check": "ID_REPRODUCIBILITY",
+      "observed": "100.0%",
+      "passed": true
+    }
+  ],
+  "conflict_race_count": 0,
+  "eligible_race_count": 60349,
+  "generated_timestamp": "2026-07-16T08:32:09Z",
+  "marker": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE1_7_RACE_OBSERVATIONS_FINAL_PASS",
+  "phase": "phase1_7",
+  "race_observation_count": 71025,
+  "snapshot_id": "eiq_race_observations_v0_1_9f2615d02021a4ccea10331d",
+  "snapshot_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\performance-intelligence\\warehouse\\phase1_7\\eiq_race_observations_v0_1_9f2615d02021a4ccea10331d",
+  "status": "PASS",
+  "time_unavailable_race_count": 0
+}

@@ -1,0 +1,12 @@
+{
+  "audit_id": "EDGEIQ_RUNTIME_FEED_POPULATION_V1",
+  "generated_at_utc": "2026-07-27T21:44:49.859975+00:00",
+  "runtime_feeds_profiled": 33,
+  "runtime_feeds_failed": 0,
+  "total_fields_profiled": 1330,
+  "empty_fields": 109,
+  "low_population_fields": 319,
+  "constant_value_suspected_fields": 175,
+  "empty_feeds": 0,
+  "status": "REVIEW_REQUIRED"
+}

@@ -1,0 +1,43 @@
+{
+  "generated_utc": "2026-07-22T07:33:41.093084+00:00",
+  "governance": {
+    "read_only": true,
+    "network_access_performed": false,
+    "production_builder_executed": false,
+    "builder_modified": false,
+    "cache_modified": false,
+    "governed_output_modified": false
+  },
+  "resolved_paths": {
+    "repository_root": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM",
+    "builder_app_root": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM",
+    "builder_project_root": "C:\\Users\\trent\\OneDrive",
+    "builder_raw_cache": "C:\\Users\\trent\\OneDrive\\outputs\\sectionals\\raw\\VIC\\racingcom_csv",
+    "intended_raw_cache": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\outputs\\sectionals\\raw\\VIC\\racingcom_csv"
+  },
+  "path_findings": {
+    "project_root_matches_repository": false,
+    "cache_path_matches_intended": false,
+    "builder_cache_inside_repository": false
+  },
+  "builder_resolved_cache": {
+    "all_files": 0,
+    "csv_files": 0,
+    "unique_csv_contents": 0,
+    "parser_statuses": {},
+    "parsed_csv_files": 0,
+    "parsed_runner_rows": 0,
+    "distinct_races": 0
+  },
+  "intended_repository_cache": {
+    "all_files": 0,
+    "csv_files": 0,
+    "unique_csv_contents": 0,
+    "parser_statuses": {},
+    "parsed_csv_files": 0,
+    "parsed_runner_rows": 0,
+    "distinct_races": 0
+  },
+  "cross_root_duplicate_hashes": 0,
+  "decision": "CACHE_ROOT_ESCAPE_CONFIRMED"
+}

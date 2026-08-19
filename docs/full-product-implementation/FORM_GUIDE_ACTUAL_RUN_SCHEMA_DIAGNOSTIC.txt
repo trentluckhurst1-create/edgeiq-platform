@@ -1,0 +1,1592 @@
+EDGEIQ FORM GUIDE ACTUAL RUN SCHEMA DIAGNOSTIC
+============================================================================
+SOURCE=C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_form_guide_enriched_v2.json
+RACES=40
+RUNNERS=503
+RUNNERS_WITH_FULL_FORM=470
+HISTORICAL_RUNS=5039
+
+TOP RUNNER KEYS
+----------------------------------------------------------------------------
+raceDate: 503
+meeting: 503
+raceNumber: 503
+raceKey: 503
+runnerId: 503
+runnerNumber: 503
+runnerName: 503
+normalisedRunnerName: 503
+lastRunDate: 503
+daysSinceLastRun: 503
+epi: 503
+epiSource: 503
+marketPrice: 503
+marketSource: 503
+marketAsAt: 503
+edgeiqPrice: 503
+edgeiqPriceSource: 503
+trackRecord: 503
+distanceRecord: 503
+conditionRecord: 503
+careerRecord: 503
+trackDistanceRecord: 503
+conditionProfile: 503
+classProfile: 503
+jockeyProfile: 503
+raceDayPattern: 503
+lastStart: 503
+fullForm: 503
+lastFive: 503
+joinMethod: 503
+historySource: 503
+recordSource: 503
+firstStarter: 503
+scratched: 503
+rating: 503
+earlySpeed: 503
+suitability: 503
+raceShape: 503
+lateSpeed: 503
+formMomentum: 503
+preparationProfile: 480
+profileStatsSource: 480
+
+TOP HISTORICAL RUN KEYS
+----------------------------------------------------------------------------
+date: 5039
+track: 5039
+raceNumber: 5039
+distance: 5039
+condition: 5039
+conditionFamily: 5039
+class: 5039
+position: 5039
+fieldSize: 5039
+barrier: 5039
+weight: 5039
+jockey: 5039
+margin: 5039
+startingPrice: 5039
+performanceRating: 5039
+note: 5039
+sectionalIndices: 5039
+historicalEpi: 5039
+benchmarkEvidence: 5039
+raceRating: 5039
+historicalEarlySpeed: 5039
+historicalLateSpeed: 5039
+historicalSpeedRating: 5039
+historicalSuitability: 5039
+historicalFormMomentum: 5039
+
+FIELD NON-BLANK COVERAGE
+----------------------------------------------------------------------------
+performanceRating: 0/5039
+historicalEpi: 5039/5039
+raceRating: 5039/5039
+positionInRunning: 0/5039
+position_in_running: 0/5039
+inRunning: 0/5039
+settlingPosition: 0/5039
+sectionalIndices: 4216/5039
+esi800600: 0/5039
+esi600400: 0/5039
+esi400200: 0/5039
+esi200F: 0/5039
+
+VALUE TYPE COUNTS
+----------------------------------------------------------------------------
+RUNNER_EPI_TYPES={'dict': 503}
+RUNNER_RATING_TYPES={'dict': 503}
+HISTORICAL_EPI_TYPES={'dict': 5039}
+RACE_RATING_TYPES={'dict': 5039}
+POSITION_IN_RUNNING_TYPES={'NoneType': 5039}
+SECTIONAL_INDICES_TYPES={'dict': 4216, 'NoneType': 823}
+
+REAL HISTORICAL RUN SAMPLES
+============================================================================
+{
+  "race_index": 0,
+  "meeting": "Geelong",
+  "race_date": "2026-07-10",
+  "race_number": 1,
+  "runner_index": 0,
+  "runner_id": "5355786",
+  "runner_name": "Caitlin's Punch",
+  "runner_epi": {
+    "value": 54.2,
+    "display": "54.2",
+    "source": "edgeiq_live_runner_board_governed_v1.csv:projected_rating_v5_2",
+    "version": "v5_2",
+    "asAt": "2026-07-12T01:49:25+00:00",
+    "status": "CURRENT",
+    "rankInRace": 7,
+    "activeFieldSize": 8,
+    "fieldHigh": 65.77,
+    "fieldAverage": 59.2,
+    "differenceFromFieldAverage": -4.99,
+    "recentChange": null,
+    "trend": "CURRENT"
+  },
+  "runner_rating": {
+    "value": null,
+    "source": null,
+    "version": null,
+    "asAt": null
+  },
+  "run_index": 0,
+  "run": {
+    "date": "2026-02-10",
+    "track": "BET365 PARK KYNETON",
+    "raceNumber": 1,
+    "distance": 1218,
+    "condition": "Good",
+    "conditionFamily": "GOOD",
+    "class": "Maiden",
+    "position": 10,
+    "fieldSize": 10,
+    "barrier": 7,
+    "weight": "57kg",
+    "jockey": "D.KEANE",
+    "margin": "11.05L",
+    "startingPrice": "$81.00",
+    "performanceRating": null,
+    "note": null,
+    "sectionalIndices": {
+      "index800To600": {
+        "value": null,
+        "source": null,
+        "version": null,
+        "asAt": null
+      },
+      "index600To400": {
+        "value": null,
+        "source": null,
+        "version": null,
+        "asAt": null
+      },
+      "index400To200": {
+        "value": null,
+        "source": null,
+        "version": null,
+        "asAt": null
+      },
+      "index200ToFinish": {
+        "value": null,
+        "source": null,
+        "version": null,
+        "asAt": null
+      },
+      "finishLen": {
+        "value": 5.64,
+        "source": "edgeiq_form_sectional_profile_feed_v1.csv:finish_len",
+        "version": "standardised_sectionals_v1",
+        "asAt": null
+      },
+      "benchmarkMode": "CLASS_BENCHMARK",
+      "signConvention": "As supplied by standardised sectionals feed: lengths versus benchmark."
+    },
+    "historicalEpi": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "benchmarkEvidence": {
+      "value": 5.64,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:finish_len",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "raceRating": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalEarlySpeed": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalLateSpeed": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalSpeedRating": {
+      "value": 4.0,
+      "source": "edgeiq_speed_master_v1.csv:speed_rating/speed_rating_raw",
+      "version": "speed_master_v1",
+      "asAt": null
+    },
+    "historicalSuitability": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalFormMomentum": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    }
+  }
+}
+----------------------------------------------------------------------------
+{
+  "race_index": 0,
+  "meeting": "Geelong",
+  "race_date": "2026-07-10",
+  "race_number": 1,
+  "runner_index": 0,
+  "runner_id": "5355786",
+  "runner_name": "Caitlin's Punch",
+  "runner_epi": {
+    "value": 54.2,
+    "display": "54.2",
+    "source": "edgeiq_live_runner_board_governed_v1.csv:projected_rating_v5_2",
+    "version": "v5_2",
+    "asAt": "2026-07-12T01:49:25+00:00",
+    "status": "CURRENT",
+    "rankInRace": 7,
+    "activeFieldSize": 8,
+    "fieldHigh": 65.77,
+    "fieldAverage": 59.2,
+    "differenceFromFieldAverage": -4.99,
+    "recentChange": null,
+    "trend": "CURRENT"
+  },
+  "runner_rating": {
+    "value": null,
+    "source": null,
+    "version": null,
+    "asAt": null
+  },
+  "run_index": 1,
+  "run": {
+    "date": "2026-01-29",
+    "track": "CAULFIELD HEATH",
+    "raceNumber": 15,
+    "distance": 800,
+    "condition": null,
+    "conditionFamily": null,
+    "class": "Trial",
+    "position": 4,
+    "fieldSize": 6,
+    "barrier": 0,
+    "weight": null,
+    "jockey": "D.KEANE",
+    "margin": "5.95L",
+    "startingPrice": null,
+    "performanceRating": null,
+    "note": null,
+    "sectionalIndices": {
+      "index800To600": {
+        "value": null,
+        "source": null,
+        "version": null,
+        "asAt": null
+      },
+      "index600To400": {
+        "value": null,
+        "source": null,
+        "version": null,
+        "asAt": null
+      },
+      "index400To200": {
+        "value": null,
+        "source": null,
+        "version": null,
+        "asAt": null
+      },
+      "index200ToFinish": {
+        "value": null,
+        "source": null,
+        "version": null,
+        "asAt": null
+      },
+      "finishLen": {
+        "value": 7.92,
+        "source": "edgeiq_form_sectional_profile_feed_v1.csv:finish_len",
+        "version": "standardised_sectionals_v1",
+        "asAt": null
+      },
+      "benchmarkMode": "CLASS_BENCHMARK",
+      "signConvention": "As supplied by standardised sectionals feed: lengths versus benchmark."
+    },
+    "historicalEpi": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "benchmarkEvidence": {
+      "value": 7.92,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:finish_len",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "raceRating": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalEarlySpeed": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalLateSpeed": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalSpeedRating": {
+      "value": 0.0,
+      "source": "edgeiq_speed_master_v1.csv:speed_rating/speed_rating_raw",
+      "version": "speed_master_v1",
+      "asAt": null
+    },
+    "historicalSuitability": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalFormMomentum": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    }
+  }
+}
+----------------------------------------------------------------------------
+{
+  "race_index": 0,
+  "meeting": "Geelong",
+  "race_date": "2026-07-10",
+  "race_number": 1,
+  "runner_index": 1,
+  "runner_id": "5348516",
+  "runner_name": "Ernie",
+  "runner_epi": {
+    "value": null,
+    "display": "",
+    "source": null,
+    "version": null,
+    "asAt": "2026-07-11T20:52:07.340405+00:00",
+    "status": "SCRATCHED",
+    "rankInRace": null,
+    "activeFieldSize": null,
+    "fieldHigh": null,
+    "fieldAverage": null,
+    "differenceFromFieldAverage": null,
+    "recentChange": null,
+    "trend": null
+  },
+  "runner_rating": {
+    "value": null,
+    "source": null,
+    "version": null,
+    "asAt": null
+  },
+  "run_index": 0,
+  "run": {
+    "date": "2026-05-29",
+    "track": "BENDIGO",
+    "raceNumber": 4,
+    "distance": 1100,
+    "condition": "Good",
+    "conditionFamily": "GOOD",
+    "class": "Maiden",
+    "position": 7,
+    "fieldSize": 9,
+    "barrier": 7,
+    "weight": "57kg",
+    "jockey": "E.K.POZMAN",
+    "margin": "4.4L",
+    "startingPrice": "$21.00",
+    "performanceRating": null,
+    "note": null,
+    "sectionalIndices": {
+      "index800To600": {
+        "value": 3.17,
+        "source": "edgeiq_form_sectional_profile_feed_v1.csv:split_lengths",
+        "version": "standardised_sectionals_v1",
+        "asAt": null
+      },
+      "index600To400": {
+        "value": 1.84,
+        "source": "edgeiq_form_sectional_profile_feed_v1.csv:split_lengths",
+        "version": "standardised_sectionals_v1",
+        "asAt": null
+      },
+      "index400To200": {
+        "value": null,
+        "source": null,
+        "version": null,
+        "asAt": null
+      },
+      "index200ToFinish": {
+        "value": 0.28,
+        "source": "edgeiq_form_sectional_profile_feed_v1.csv:split_lengths",
+        "version": "standardised_sectionals_v1",
+        "asAt": null
+      },
+      "finishLen": {
+        "value": 4.87,
+        "source": "edgeiq_form_sectional_profile_feed_v1.csv:finish_len",
+        "version": "standardised_sectionals_v1",
+        "asAt": null
+      },
+      "benchmarkMode": "CLASS_BENCHMARK",
+      "signConvention": "As supplied by standardised sectionals feed: lengths versus benchmark."
+    },
+    "historicalEpi": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "benchmarkEvidence": {
+      "value": 4.87,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:finish_len",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "raceRating": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalEarlySpeed": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalLateSpeed": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalSpeedRating": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalSuitability": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalFormMomentum": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    }
+  }
+}
+----------------------------------------------------------------------------
+{
+  "race_index": 0,
+  "meeting": "Geelong",
+  "race_date": "2026-07-10",
+  "race_number": 1,
+  "runner_index": 1,
+  "runner_id": "5348516",
+  "runner_name": "Ernie",
+  "runner_epi": {
+    "value": null,
+    "display": "",
+    "source": null,
+    "version": null,
+    "asAt": "2026-07-11T20:52:07.340405+00:00",
+    "status": "SCRATCHED",
+    "rankInRace": null,
+    "activeFieldSize": null,
+    "fieldHigh": null,
+    "fieldAverage": null,
+    "differenceFromFieldAverage": null,
+    "recentChange": null,
+    "trend": null
+  },
+  "runner_rating": {
+    "value": null,
+    "source": null,
+    "version": null,
+    "asAt": null
+  },
+  "run_index": 1,
+  "run": {
+    "date": "2025-10-30",
+    "track": "CAULFIELD HEATH",
+    "raceNumber": 18,
+    "distance": 800,
+    "condition": "Good",
+    "conditionFamily": "GOOD",
+    "class": "Trial",
+    "position": 5,
+    "fieldSize": 9,
+    "barrier": 0,
+    "weight": null,
+    "jockey": "C.B.THOMPSON",
+    "margin": "3L",
+    "startingPrice": null,
+    "performanceRating": null,
+    "note": null,
+    "sectionalIndices": {
+      "index800To600": {
+        "value": null,
+        "source": null,
+        "version": null,
+        "asAt": null
+      },
+      "index600To400": {
+        "value": null,
+        "source": null,
+        "version": null,
+        "asAt": null
+      },
+      "index400To200": {
+        "value": null,
+        "source": null,
+        "version": null,
+        "asAt": null
+      },
+      "index200ToFinish": {
+        "value": null,
+        "source": null,
+        "version": null,
+        "asAt": null
+      },
+      "finishLen": {
+        "value": 10.29,
+        "source": "edgeiq_form_sectional_profile_feed_v1.csv:finish_len",
+        "version": "standardised_sectionals_v1",
+        "asAt": null
+      },
+      "benchmarkMode": "CLASS_BENCHMARK",
+      "signConvention": "As supplied by standardised sectionals feed: lengths versus benchmark."
+    },
+    "historicalEpi": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "benchmarkEvidence": {
+      "value": 10.29,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:finish_len",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "raceRating": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalEarlySpeed": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalLateSpeed": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalSpeedRating": {
+      "value": 4.0,
+      "source": "edgeiq_speed_master_v1.csv:speed_rating/speed_rating_raw",
+      "version": "speed_master_v1",
+      "asAt": null
+    },
+    "historicalSuitability": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalFormMomentum": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    }
+  }
+}
+----------------------------------------------------------------------------
+{
+  "race_index": 0,
+  "meeting": "Geelong",
+  "race_date": "2026-07-10",
+  "race_number": 1,
+  "runner_index": 2,
+  "runner_id": "5350673",
+  "runner_name": "Gasoline Rainbow",
+  "runner_epi": {
+    "value": 65.37,
+    "display": "65.4",
+    "source": "edgeiq_live_runner_board_governed_v1.csv:projected_rating_v5_2",
+    "version": "v5_2",
+    "asAt": "2026-07-12T01:49:25+00:00",
+    "status": "CURRENT",
+    "rankInRace": 2,
+    "activeFieldSize": 8,
+    "fieldHigh": 65.77,
+    "fieldAverage": 59.2,
+    "differenceFromFieldAverage": 6.18,
+    "recentChange": null,
+    "trend": "CURRENT"
+  },
+  "runner_rating": {
+    "value": null,
+    "source": null,
+    "version": null,
+    "asAt": null
+  },
+  "run_index": 0,
+  "run": {
+    "date": "2026-06-24",
+    "track": "SPORTSBET-BALLARAT",
+    "raceNumber": 2,
+    "distance": 1200,
+    "condition": "Synthetic",
+    "conditionFamily": "SYNTHETIC",
+    "class": "Maiden",
+    "position": null,
+    "fieldSize": 91,
+    "barrier": null,
+    "weight": "57.5kg",
+    "jockey": null,
+    "margin": "0.0",
+    "startingPrice": null,
+    "performanceRating": null,
+    "note": null,
+    "sectionalIndices": null,
+    "historicalEpi": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "benchmarkEvidence": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "raceRating": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalEarlySpeed": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalLateSpeed": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalSpeedRating": {
+      "value": 10.0,
+      "source": "edgeiq_speed_master_v1.csv:speed_rating/speed_rating_raw",
+      "version": "speed_master_v1",
+      "asAt": null
+    },
+    "historicalSuitability": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalFormMomentum": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    }
+  }
+}
+----------------------------------------------------------------------------
+{
+  "race_index": 0,
+  "meeting": "Geelong",
+  "race_date": "2026-07-10",
+  "race_number": 1,
+  "runner_index": 2,
+  "runner_id": "5350673",
+  "runner_name": "Gasoline Rainbow",
+  "runner_epi": {
+    "value": 65.37,
+    "display": "65.4",
+    "source": "edgeiq_live_runner_board_governed_v1.csv:projected_rating_v5_2",
+    "version": "v5_2",
+    "asAt": "2026-07-12T01:49:25+00:00",
+    "status": "CURRENT",
+    "rankInRace": 2,
+    "activeFieldSize": 8,
+    "fieldHigh": 65.77,
+    "fieldAverage": 59.2,
+    "differenceFromFieldAverage": 6.18,
+    "recentChange": null,
+    "trend": "CURRENT"
+  },
+  "runner_rating": {
+    "value": null,
+    "source": null,
+    "version": null,
+    "asAt": null
+  },
+  "run_index": 1,
+  "run": {
+    "date": "2026-06-20",
+    "track": "DONALD",
+    "raceNumber": 2,
+    "distance": 1350,
+    "condition": "Heavy",
+    "conditionFamily": "HEAVY",
+    "class": "Maiden",
+    "position": 5,
+    "fieldSize": 14,
+    "barrier": 4,
+    "weight": "57.5kg",
+    "jockey": "J.D.HILL",
+    "margin": "5.75L",
+    "startingPrice": "$4.60",
+    "performanceRating": null,
+    "note": null,
+    "sectionalIndices": null,
+    "historicalEpi": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "benchmarkEvidence": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "raceRating": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalEarlySpeed": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalLateSpeed": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalSpeedRating": {
+      "value": 8.0,
+      "source": "edgeiq_speed_master_v1.csv:speed_rating/speed_rating_raw",
+      "version": "speed_master_v1",
+      "asAt": null
+    },
+    "historicalSuitability": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalFormMomentum": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    }
+  }
+}
+----------------------------------------------------------------------------
+{
+  "race_index": 0,
+  "meeting": "Geelong",
+  "race_date": "2026-07-10",
+  "race_number": 1,
+  "runner_index": 2,
+  "runner_id": "5350673",
+  "runner_name": "Gasoline Rainbow",
+  "runner_epi": {
+    "value": 65.37,
+    "display": "65.4",
+    "source": "edgeiq_live_runner_board_governed_v1.csv:projected_rating_v5_2",
+    "version": "v5_2",
+    "asAt": "2026-07-12T01:49:25+00:00",
+    "status": "CURRENT",
+    "rankInRace": 2,
+    "activeFieldSize": 8,
+    "fieldHigh": 65.77,
+    "fieldAverage": 59.2,
+    "differenceFromFieldAverage": 6.18,
+    "recentChange": null,
+    "trend": "CURRENT"
+  },
+  "runner_rating": {
+    "value": null,
+    "source": null,
+    "version": null,
+    "asAt": null
+  },
+  "run_index": 2,
+  "run": {
+    "date": "2026-01-02",
+    "track": "BET365 TERANG",
+    "raceNumber": 1,
+    "distance": 1200,
+    "condition": "Good",
+    "conditionFamily": "GOOD",
+    "class": "Maiden",
+    "position": 5,
+    "fieldSize": 9,
+    "barrier": 5,
+    "weight": "56kg",
+    "jockey": "T.MADDEN",
+    "margin": "4.1L",
+    "startingPrice": "$15.00",
+    "performanceRating": null,
+    "note": null,
+    "sectionalIndices": {
+      "index800To600": {
+        "value": null,
+        "source": null,
+        "version": null,
+        "asAt": null
+      },
+      "index600To400": {
+        "value": null,
+        "source": null,
+        "version": null,
+        "asAt": null
+      },
+      "index400To200": {
+        "value": null,
+        "source": null,
+        "version": null,
+        "asAt": null
+      },
+      "index200ToFinish": {
+        "value": null,
+        "source": null,
+        "version": null,
+        "asAt": null
+      },
+      "finishLen": {
+        "value": -5.61,
+        "source": "edgeiq_form_sectional_profile_feed_v1.csv:finish_len",
+        "version": "standardised_sectionals_v1",
+        "asAt": null
+      },
+      "benchmarkMode": "CLASS_BENCHMARK",
+      "signConvention": "As supplied by standardised sectionals feed: lengths versus benchmark."
+    },
+    "historicalEpi": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "benchmarkEvidence": {
+      "value": -5.61,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:finish_len",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "raceRating": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalEarlySpeed": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalLateSpeed": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalSpeedRating": {
+      "value": 4.0,
+      "source": "edgeiq_speed_master_v1.csv:speed_rating/speed_rating_raw",
+      "version": "speed_master_v1",
+      "asAt": null
+    },
+    "historicalSuitability": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalFormMomentum": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    }
+  }
+}
+----------------------------------------------------------------------------
+{
+  "race_index": 0,
+  "meeting": "Geelong",
+  "race_date": "2026-07-10",
+  "race_number": 1,
+  "runner_index": 2,
+  "runner_id": "5350673",
+  "runner_name": "Gasoline Rainbow",
+  "runner_epi": {
+    "value": 65.37,
+    "display": "65.4",
+    "source": "edgeiq_live_runner_board_governed_v1.csv:projected_rating_v5_2",
+    "version": "v5_2",
+    "asAt": "2026-07-12T01:49:25+00:00",
+    "status": "CURRENT",
+    "rankInRace": 2,
+    "activeFieldSize": 8,
+    "fieldHigh": 65.77,
+    "fieldAverage": 59.2,
+    "differenceFromFieldAverage": 6.18,
+    "recentChange": null,
+    "trend": "CURRENT"
+  },
+  "runner_rating": {
+    "value": null,
+    "source": null,
+    "version": null,
+    "asAt": null
+  },
+  "run_index": 3,
+  "run": {
+    "date": "2025-12-16",
+    "track": "BET365 TERANG",
+    "raceNumber": 3,
+    "distance": 1200,
+    "condition": "Good",
+    "conditionFamily": "GOOD",
+    "class": "Maiden",
+    "position": 3,
+    "fieldSize": 12,
+    "barrier": 1,
+    "weight": "56kg",
+    "jockey": "J.NOONAN",
+    "margin": "2.7L",
+    "startingPrice": "$8.00",
+    "performanceRating": null,
+    "note": null,
+    "sectionalIndices": {
+      "index800To600": {
+        "value": null,
+        "source": null,
+        "version": null,
+        "asAt": null
+      },
+      "index600To400": {
+        "value": null,
+        "source": null,
+        "version": null,
+        "asAt": null
+      },
+      "index400To200": {
+        "value": null,
+        "source": null,
+        "version": null,
+        "asAt": null
+      },
+      "index200ToFinish": {
+        "value": null,
+        "source": null,
+        "version": null,
+        "asAt": null
+      },
+      "finishLen": {
+        "value": -4.77,
+        "source": "edgeiq_form_sectional_profile_feed_v1.csv:finish_len",
+        "version": "standardised_sectionals_v1",
+        "asAt": null
+      },
+      "benchmarkMode": "CLASS_BENCHMARK",
+      "signConvention": "As supplied by standardised sectionals feed: lengths versus benchmark."
+    },
+    "historicalEpi": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "benchmarkEvidence": {
+      "value": -4.77,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:finish_len",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "raceRating": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalEarlySpeed": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalLateSpeed": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalSpeedRating": {
+      "value": 4.0,
+      "source": "edgeiq_speed_master_v1.csv:speed_rating/speed_rating_raw",
+      "version": "speed_master_v1",
+      "asAt": null
+    },
+    "historicalSuitability": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalFormMomentum": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    }
+  }
+}
+----------------------------------------------------------------------------
+{
+  "race_index": 0,
+  "meeting": "Geelong",
+  "race_date": "2026-07-10",
+  "race_number": 1,
+  "runner_index": 3,
+  "runner_id": "5354632",
+  "runner_name": "Ice Quake",
+  "runner_epi": {
+    "value": 50.75,
+    "display": "50.8",
+    "source": "edgeiq_live_runner_board_governed_v1.csv:projected_rating_v5_2",
+    "version": "v5_2",
+    "asAt": "2026-07-12T01:49:25+00:00",
+    "status": "CURRENT",
+    "rankInRace": 8,
+    "activeFieldSize": 8,
+    "fieldHigh": 65.77,
+    "fieldAverage": 59.2,
+    "differenceFromFieldAverage": -8.45,
+    "recentChange": null,
+    "trend": "CURRENT"
+  },
+  "runner_rating": {
+    "value": null,
+    "source": null,
+    "version": null,
+    "asAt": null
+  },
+  "run_index": 0,
+  "run": {
+    "date": "2026-06-18",
+    "track": "MOE",
+    "raceNumber": 2,
+    "distance": 1208,
+    "condition": "Heavy",
+    "conditionFamily": "HEAVY",
+    "class": "Maiden",
+    "position": 2,
+    "fieldSize": 10,
+    "barrier": 6,
+    "weight": "56kg",
+    "jockey": "D.W.STACKHOUSE",
+    "margin": "3.75L",
+    "startingPrice": "$16.00",
+    "performanceRating": null,
+    "note": null,
+    "sectionalIndices": {
+      "index800To600": {
+        "value": null,
+        "source": null,
+        "version": null,
+        "asAt": null
+      },
+      "index600To400": {
+        "value": null,
+        "source": null,
+        "version": null,
+        "asAt": null
+      },
+      "index400To200": {
+        "value": null,
+        "source": null,
+        "version": null,
+        "asAt": null
+      },
+      "index200ToFinish": {
+        "value": null,
+        "source": null,
+        "version": null,
+        "asAt": null
+      },
+      "finishLen": {
+        "value": 1.6,
+        "source": "edgeiq_form_sectional_profile_feed_v1.csv:finish_len",
+        "version": "standardised_sectionals_v1",
+        "asAt": null
+      },
+      "benchmarkMode": "CLASS_BENCHMARK",
+      "signConvention": "As supplied by standardised sectionals feed: lengths versus benchmark."
+    },
+    "historicalEpi": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "benchmarkEvidence": {
+      "value": 1.6,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:finish_len",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "raceRating": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalEarlySpeed": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalLateSpeed": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalSpeedRating": {
+      "value": 9.0,
+      "source": "edgeiq_speed_master_v1.csv:speed_rating/speed_rating_raw",
+      "version": "speed_master_v1",
+      "asAt": null
+    },
+    "historicalSuitability": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalFormMomentum": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    }
+  }
+}
+----------------------------------------------------------------------------
+{
+  "race_index": 0,
+  "meeting": "Geelong",
+  "race_date": "2026-07-10",
+  "race_number": 1,
+  "runner_index": 3,
+  "runner_id": "5354632",
+  "runner_name": "Ice Quake",
+  "runner_epi": {
+    "value": 50.75,
+    "display": "50.8",
+    "source": "edgeiq_live_runner_board_governed_v1.csv:projected_rating_v5_2",
+    "version": "v5_2",
+    "asAt": "2026-07-12T01:49:25+00:00",
+    "status": "CURRENT",
+    "rankInRace": 8,
+    "activeFieldSize": 8,
+    "fieldHigh": 65.77,
+    "fieldAverage": 59.2,
+    "differenceFromFieldAverage": -8.45,
+    "recentChange": null,
+    "trend": "CURRENT"
+  },
+  "runner_rating": {
+    "value": null,
+    "source": null,
+    "version": null,
+    "asAt": null
+  },
+  "run_index": 1,
+  "run": {
+    "date": "2026-06-01",
+    "track": "BET365 PARK KILMORE",
+    "raceNumber": 1,
+    "distance": 1107,
+    "condition": "Heavy",
+    "conditionFamily": "HEAVY",
+    "class": "Maiden",
+    "position": 7,
+    "fieldSize": 10,
+    "barrier": 3,
+    "weight": "56kg",
+    "jockey": "D.THORNTON",
+    "margin": "10.55L",
+    "startingPrice": "$5.00",
+    "performanceRating": null,
+    "note": null,
+    "sectionalIndices": null,
+    "historicalEpi": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "benchmarkEvidence": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "raceRating": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalEarlySpeed": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalLateSpeed": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalSpeedRating": {
+      "value": 8.0,
+      "source": "edgeiq_speed_master_v1.csv:speed_rating/speed_rating_raw",
+      "version": "speed_master_v1",
+      "asAt": null
+    },
+    "historicalSuitability": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalFormMomentum": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    }
+  }
+}
+----------------------------------------------------------------------------
+{
+  "race_index": 0,
+  "meeting": "Geelong",
+  "race_date": "2026-07-10",
+  "race_number": 1,
+  "runner_index": 3,
+  "runner_id": "5354632",
+  "runner_name": "Ice Quake",
+  "runner_epi": {
+    "value": 50.75,
+    "display": "50.8",
+    "source": "edgeiq_live_runner_board_governed_v1.csv:projected_rating_v5_2",
+    "version": "v5_2",
+    "asAt": "2026-07-12T01:49:25+00:00",
+    "status": "CURRENT",
+    "rankInRace": 8,
+    "activeFieldSize": 8,
+    "fieldHigh": 65.77,
+    "fieldAverage": 59.2,
+    "differenceFromFieldAverage": -8.45,
+    "recentChange": null,
+    "trend": "CURRENT"
+  },
+  "runner_rating": {
+    "value": null,
+    "source": null,
+    "version": null,
+    "asAt": null
+  },
+  "run_index": 2,
+  "run": {
+    "date": "2025-09-25",
+    "track": "LADBROKES GEELONG",
+    "raceNumber": 1,
+    "distance": 1140,
+    "condition": "Good",
+    "conditionFamily": "GOOD",
+    "class": "Maiden",
+    "position": 7,
+    "fieldSize": 9,
+    "barrier": 2,
+    "weight": "56kg",
+    "jockey": "D.W.STACKHOUSE",
+    "margin": "4.26L",
+    "startingPrice": "$8.50",
+    "performanceRating": null,
+    "note": null,
+    "sectionalIndices": {
+      "index800To600": {
+        "value": null,
+        "source": null,
+        "version": null,
+        "asAt": null
+      },
+      "index600To400": {
+        "value": null,
+        "source": null,
+        "version": null,
+        "asAt": null
+      },
+      "index400To200": {
+        "value": null,
+        "source": null,
+        "version": null,
+        "asAt": null
+      },
+      "index200ToFinish": {
+        "value": null,
+        "source": null,
+        "version": null,
+        "asAt": null
+      },
+      "finishLen": {
+        "value": 4.26,
+        "source": "edgeiq_form_sectional_profile_feed_v1.csv:finish_len",
+        "version": "standardised_sectionals_v1",
+        "asAt": null
+      },
+      "benchmarkMode": "CLASS_BENCHMARK",
+      "signConvention": "As supplied by standardised sectionals feed: lengths versus benchmark."
+    },
+    "historicalEpi": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "benchmarkEvidence": {
+      "value": 4.26,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:finish_len",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "raceRating": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalEarlySpeed": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalLateSpeed": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalSpeedRating": {
+      "value": 4.0,
+      "source": "edgeiq_speed_master_v1.csv:speed_rating/speed_rating_raw",
+      "version": "speed_master_v1",
+      "asAt": null
+    },
+    "historicalSuitability": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalFormMomentum": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    }
+  }
+}
+----------------------------------------------------------------------------
+{
+  "race_index": 0,
+  "meeting": "Geelong",
+  "race_date": "2026-07-10",
+  "race_number": 1,
+  "runner_index": 3,
+  "runner_id": "5354632",
+  "runner_name": "Ice Quake",
+  "runner_epi": {
+    "value": 50.75,
+    "display": "50.8",
+    "source": "edgeiq_live_runner_board_governed_v1.csv:projected_rating_v5_2",
+    "version": "v5_2",
+    "asAt": "2026-07-12T01:49:25+00:00",
+    "status": "CURRENT",
+    "rankInRace": 8,
+    "activeFieldSize": 8,
+    "fieldHigh": 65.77,
+    "fieldAverage": 59.2,
+    "differenceFromFieldAverage": -8.45,
+    "recentChange": null,
+    "trend": "CURRENT"
+  },
+  "runner_rating": {
+    "value": null,
+    "source": null,
+    "version": null,
+    "asAt": null
+  },
+  "run_index": 3,
+  "run": {
+    "date": "2025-05-15",
+    "track": "CAULFIELD HEATH",
+    "raceNumber": 14,
+    "distance": 800,
+    "condition": "Good",
+    "conditionFamily": "GOOD",
+    "class": "Trial",
+    "position": 7,
+    "fieldSize": 9,
+    "barrier": 0,
+    "weight": null,
+    "jockey": "J.MCNEIL",
+    "margin": "5.15L",
+    "startingPrice": null,
+    "performanceRating": null,
+    "note": null,
+    "sectionalIndices": {
+      "index800To600": {
+        "value": null,
+        "source": null,
+        "version": null,
+        "asAt": null
+      },
+      "index600To400": {
+        "value": null,
+        "source": null,
+        "version": null,
+        "asAt": null
+      },
+      "index400To200": {
+        "value": null,
+        "source": null,
+        "version": null,
+        "asAt": null
+      },
+      "index200ToFinish": {
+        "value": null,
+        "source": null,
+        "version": null,
+        "asAt": null
+      },
+      "finishLen": {
+        "value": 3.5,
+        "source": "edgeiq_form_sectional_profile_feed_v1.csv:finish_len",
+        "version": "standardised_sectionals_v1",
+        "asAt": null
+      },
+      "benchmarkMode": "CLASS_BENCHMARK",
+      "signConvention": "As supplied by standardised sectionals feed: lengths versus benchmark."
+    },
+    "historicalEpi": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "benchmarkEvidence": {
+      "value": 3.5,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:finish_len",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "raceRating": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalEarlySpeed": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalLateSpeed": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalSpeedRating": {
+      "value": 4.0,
+      "source": "edgeiq_speed_master_v1.csv:speed_rating/speed_rating_raw",
+      "version": "speed_master_v1",
+      "asAt": null
+    },
+    "historicalSuitability": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "historicalFormMomentum": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    }
+  }
+}
+----------------------------------------------------------------------------

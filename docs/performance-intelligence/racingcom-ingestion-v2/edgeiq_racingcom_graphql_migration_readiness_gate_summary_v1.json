@@ -1,0 +1,10 @@
+{
+  "built_utc": "2026-07-22T18:28:58+00:00",
+  "status": "READY_FOR_HUMAN_MIGRATION_REVIEW_NO_AUTO_MIGRATION",
+  "gates": 13,
+  "pass": 13,
+  "fail": 0,
+  "migration_authorised": "NO",
+  "production_changed": "NO",
+  "ui_changed": "NO"
+}

@@ -1,0 +1,41 @@
+{
+  "source_priority_version": "0.1",
+  "generated_utc": "2026-07-15T18:11:47.780706+00:00",
+  "field_priorities": [
+    {
+      "field_group": "official_result",
+      "priority_1": "Official jurisdictional result source",
+      "priority_2": "Racing.com official result feed",
+      "priority_3": "TAB result feed",
+      "priority_4": "Legacy EDGEiQ consolidation"
+    },
+    {
+      "field_group": "official_sectionals",
+      "priority_1": "Official timing provider payload",
+      "priority_2": "Racing.com sectional payload",
+      "priority_3": "Validated historical sectional warehouse",
+      "priority_4": "No substitution"
+    },
+    {
+      "field_group": "track_condition",
+      "priority_1": "Official steward or jurisdiction result",
+      "priority_2": "Official track manager source",
+      "priority_3": "Racing.com result record",
+      "priority_4": "No inferred going"
+    },
+    {
+      "field_group": "horse_identity",
+      "priority_1": "Provider registration or runner ID",
+      "priority_2": "Jurisdiction horse code",
+      "priority_3": "Validated entity graph",
+      "priority_4": "Name-only match remains unresolved"
+    },
+    {
+      "field_group": "race_identity",
+      "priority_1": "Provider race ID",
+      "priority_2": "Jurisdiction meeting and race ID",
+      "priority_3": "Date-track-race composite with validation",
+      "priority_4": "Unresolved"
+    }
+  ]
+}

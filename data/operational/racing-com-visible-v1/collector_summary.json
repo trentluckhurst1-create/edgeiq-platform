@@ -1,0 +1,70 @@
+{
+  "status": "PASS",
+  "meetings_discovered": 1,
+  "races_discovered": 8,
+  "races_opened": 8,
+  "races_with_visible_sectionals": 0,
+  "races_without_sectionals": 4,
+  "races_failed": 4,
+  "results": [
+    {
+      "race_url": "https://www.racing.com/form/2026-07-29/sportsbet-sandown-hillside/race/1/speed-data",
+      "queue_state": "NO_SECTIONALS",
+      "row_count": 0,
+      "section_count": 0,
+      "raw_dir": "data\\raw\\racing-com-visible-v1\\2026-07-29\\sportsbet-sandown-hillside\\R1"
+    },
+    {
+      "race_url": "https://www.racing.com/form/2026-07-29/sportsbet-sandown-hillside/race/2/speed-data",
+      "queue_state": "NO_SECTIONALS",
+      "row_count": 0,
+      "section_count": 0,
+      "raw_dir": "data\\raw\\racing-com-visible-v1\\2026-07-29\\sportsbet-sandown-hillside\\R2"
+    },
+    {
+      "race_url": "https://www.racing.com/form/2026-07-29/sportsbet-sandown-hillside/race/3/speed-data",
+      "queue_state": "NO_SECTIONALS",
+      "row_count": 0,
+      "section_count": 0,
+      "raw_dir": "data\\raw\\racing-com-visible-v1\\2026-07-29\\sportsbet-sandown-hillside\\R3"
+    },
+    {
+      "race_url": "https://www.racing.com/form/2026-07-29/sportsbet-sandown-hillside/race/4/speed-data",
+      "queue_state": "NO_SECTIONALS",
+      "row_count": 0,
+      "section_count": 0,
+      "raw_dir": "data\\raw\\racing-com-visible-v1\\2026-07-29\\sportsbet-sandown-hillside\\R4"
+    },
+    {
+      "race_url": "https://www.racing.com/form/2026-07-29/sportsbet-sandown-hillside/race/5/speed-data",
+      "queue_state": "FAILED_TRANSIENT",
+      "row_count": 0,
+      "section_count": 0,
+      "raw_dir": "data\\raw\\racing-com-visible-v1\\2026-07-29\\sportsbet-sandown-hillside\\R5",
+      "error": "TimeoutError: Timeout 45000ms exceeded."
+    },
+    {
+      "race_url": "https://www.racing.com/form/2026-07-29/sportsbet-sandown-hillside/race/6/speed-data",
+      "queue_state": "FAILED_TRANSIENT",
+      "row_count": 0,
+      "section_count": 0,
+      "raw_dir": "data\\raw\\racing-com-visible-v1\\2026-07-29\\sportsbet-sandown-hillside\\R6",
+      "error": "TimeoutError: Timeout 45000ms exceeded."
+    },
+    {
+      "race_url": "https://www.racing.com/form/2026-07-29/sportsbet-sandown-hillside/race/7/speed-data",
+      "queue_state": "PAGE_SCHEMA_CHANGED",
+      "row_count": 0,
+      "section_count": 0,
+      "raw_dir": "data\\raw\\racing-com-visible-v1\\2026-07-29\\sportsbet-sandown-hillside\\R7"
+    },
+    {
+      "race_url": "https://www.racing.com/form/2026-07-29/sportsbet-sandown-hillside/race/8/speed-data",
+      "queue_state": "FAILED_TRANSIENT",
+      "row_count": 0,
+      "section_count": 0,
+      "raw_dir": "data\\raw\\racing-com-visible-v1\\2026-07-29\\sportsbet-sandown-hillside\\R8",
+      "error": "TimeoutError: Timeout 45000ms exceeded."
+    }
+  ]
+}

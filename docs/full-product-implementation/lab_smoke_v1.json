@@ -1,0 +1,25 @@
+{
+  "workspace": "LAB",
+  "url": "http://127.0.0.1:5176/",
+  "hasLabWorkspace": true,
+  "hasHero": true,
+  "hasUniverse": true,
+  "hasTrack": true,
+  "hasScope": true,
+  "hasEntity": true,
+  "hasMetric": true,
+  "hasGroupBy": true,
+  "hasRunQuery": true,
+  "hasHorseResearch": true,
+  "resultRowCount": 25,
+  "disabledEntityOptions": [
+    "Jockey - Governed research data is not available for this module.",
+    "Trainer - Governed research data is not available for this module."
+  ],
+  "rejectedPresent": [],
+  "bodyBackground": "rgb(255, 255, 255)",
+  "screenshotAttempt": {
+    "ok": false,
+    "error": "pageWeather.screenshot is not a function"
+  }
+}

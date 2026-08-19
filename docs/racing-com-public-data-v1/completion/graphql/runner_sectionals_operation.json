@@ -1,0 +1,13 @@
+{
+  "endpoint": "https://graphql.rmdprod.racing.com/",
+  "method": "GET",
+  "operation_name": "sectionaltimes_callback_getRaceForm_alias",
+  "query_parameter": "query",
+  "variables_mode": "inline GraphQL constants",
+  "sample_meetCode": "5191101",
+  "sample_raceNumber": "1",
+  "credential_env_var": "RACINGCOM_CHAMPION_DATA_ENDPOINT_KEY",
+  "required_credential_header_name": "x-api-key",
+  "cookie_requirement": "ABSENT",
+  "retained_browser_response_status": "200"
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "generated_utc": "2026-07-28T05:20:28.761920+00:00",
+  "verdict": "FAIL_NO_GOVERNED_FEEDS",
+  "canonical_builder_count": 1280,
+  "product_feed_count": 7228,
+  "owned_feed_count": 0,
+  "unowned_materialised_feed_count": 7228,
+  "duplicate_ownership_feed_count": 0,
+  "materialised_feed_count": 7228,
+  "claimed_not_materialised_feed_count": 0,
+  "feed_owner_builder_count": 0,
+  "ownership_coverage_percentage": 0.0,
+  "materialisation_coverage_percentage": 100.0,
+  "format_counts": {
+    "csv": 6398,
+    "json": 830
+  },
+  "category_counts": {
+    "FORM": 255,
+    "GOVERNANCE": 1292,
+    "IDENTITY": 142,
+    "MAP": 158,
+    "MARKET": 1316,
+    "MEETINGS": 92,
+    "OTHER": 2019,
+    "PERFORMANCE": 260,
+    "RACE_FIELDS": 543,
+    "RESULTS": 1111,
+    "WEATHER": 40
+  },
+  "lifecycle_counts": {
+    "HISTORICAL": 175,
+    "UNOWNED": 7053
+  }
+}

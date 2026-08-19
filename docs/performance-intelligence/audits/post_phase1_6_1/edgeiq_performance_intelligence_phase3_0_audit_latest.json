@@ -1,0 +1,157 @@
+{
+  "certification_check_count": 28,
+  "checks": [
+    {
+      "check": "RAW_EVIDENCE_PRESERVED",
+      "observed": "PASS",
+      "passed": true
+    },
+    {
+      "check": "SOURCE_HASHES_VERIFIED",
+      "observed": "PASS",
+      "passed": true
+    },
+    {
+      "check": "PERFORMANCE_FACT_ROWS_RECONCILE",
+      "observed": "PASS",
+      "passed": true
+    },
+    {
+      "check": "PERFORMANCE_IDS_UNIQUE",
+      "observed": "PASS",
+      "passed": true
+    },
+    {
+      "check": "PERFORMANCE_IDS_REPRODUCIBLE",
+      "observed": "PASS",
+      "passed": true
+    },
+    {
+      "check": "RACE_OBSERVATIONS_UNIQUE",
+      "observed": "PASS",
+      "passed": true
+    },
+    {
+      "check": "RACE_OBSERVATIONS_REPRODUCIBLE",
+      "observed": "PASS",
+      "passed": true
+    },
+    {
+      "check": "CONFLICT_RACES_QUARANTINED",
+      "observed": "PASS",
+      "passed": true
+    },
+    {
+      "check": "NO_TIME_RACES_BLOCKED",
+      "observed": "PASS",
+      "passed": true
+    },
+    {
+      "check": "BENCHMARK_MEMBERSHIP_RECONCILES",
+      "observed": "PASS",
+      "passed": true
+    },
+    {
+      "check": "BENCHMARKS_REPRODUCIBLE",
+      "observed": "PASS",
+      "passed": true
+    },
+    {
+      "check": "BENCHMARK_FALLBACK_EXPLAINABLE",
+      "observed": "PASS",
+      "passed": true
+    },
+    {
+      "check": "SIGN_CONVENTION_LOCKED",
+      "observed": "PASS",
+      "passed": true
+    },
+    {
+      "check": "LENGTH_CONVERSIONS_VERSIONED",
+      "observed": "PASS",
+      "passed": true
+    },
+    {
+      "check": "RUNNER_DEVIATIONS_REPRODUCIBLE",
+      "observed": "PASS",
+      "passed": true
+    },
+    {
+      "check": "SECTIONAL_TYPES_NOT_MISLABELLED",
+      "observed": "PASS",
+      "passed": true
+    },
+    {
+      "check": "SECTIONAL_DEVIATIONS_REPRODUCIBLE",
+      "observed": "PASS",
+      "passed": true
+    },
+    {
+      "check": "FINGERPRINT_RULES_EXPLAINABLE",
+      "observed": "PASS",
+      "passed": true
+    },
+    {
+      "check": "HORSE_PROFILES_MINIMUM_SAMPLES_ENFORCED",
+      "observed": "PASS",
+      "passed": true
+    },
+    {
+      "check": "QUERY_RESULTS_LINEAGE_TRACEABLE",
+      "observed": "PASS",
+      "passed": true
+    },
+    {
+      "check": "INTEGRATION_CONTRACTS_VERSIONED",
+      "observed": "PASS",
+      "passed": true
+    },
+    {
+      "check": "ALL_OUTPUT_HASHES_VERIFIED",
+      "observed": "PASS",
+      "passed": true
+    },
+    {
+      "check": "ALL_SNAPSHOTS_IMMUTABLE",
+      "observed": "PASS",
+      "passed": true
+    },
+    {
+      "check": "PUBLIC_DATA_UNMODIFIED",
+      "observed": "PASS",
+      "passed": true
+    },
+    {
+      "check": "REACT_APPLICATION_UNMODIFIED",
+      "observed": "PASS",
+      "passed": true
+    },
+    {
+      "check": "NO_FABRICATED_VALUES",
+      "observed": "PASS",
+      "passed": true
+    },
+    {
+      "check": "NO_SILENT_DELETIONS",
+      "observed": "PASS",
+      "passed": true
+    },
+    {
+      "check": "FULL_PIPELINE_RERUN_STABLE",
+      "observed": "PASS",
+      "passed": true
+    }
+  ],
+  "generated_timestamp": "2026-07-16T08:34:32Z",
+  "known_limitation_count": 3,
+  "known_limitations": [
+    "No governed seconds-per-length conversion was available; runner adjusted deviations are blocked.",
+    "No source-specific official sectional time governance was completed; sectional benchmarks are blocked.",
+    "EPI and ERI are integration placeholders only."
+  ],
+  "marker": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PLATFORM_FOUNDATION_FINAL_PASS",
+  "phase": "phase3_0",
+  "snapshot_id": "eiq_platform_foundation_certification_v1_6338734379f2b71aff2cbe7c",
+  "snapshot_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\performance-intelligence\\warehouse\\phase3_0\\eiq_platform_foundation_certification_v1_6338734379f2b71aff2cbe7c",
+  "status": "PASS"
+}

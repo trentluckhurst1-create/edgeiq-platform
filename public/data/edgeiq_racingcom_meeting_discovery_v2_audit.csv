@@ -1,0 +1,12 @@
+check,status,count,detail
+output_rows_gt_zero,PASS,186,Meeting rows emitted.
+no_race_number_column,PASS,0,
+no_race_url_generation_column,PASS,0,race_url absent from V2 meeting contract.
+no_speed_data_url_generation_column,PASS,0,speed_data_url absent from V2 meeting contract.
+no_csv_url_column,PASS,0,csv_url absent from V2 meeting contract.
+no_duplicate_canonical_meetings,PASS,0,Duplicate meeting_id count.
+valid_dates,PASS,0,Rows with invalid race_date.
+valid_meeting_urls,PASS,0,Meeting URLs must be Racing.com form URLs when present.
+provenance_retained,PASS,0,Rows missing source_url/provenance.
+repository_local_payload_paths,PASS,0,Payload paths are relative to repository root.
+deterministic_ordering,PASS,0,Rows sorted by date/track/meeting_id.

@@ -1,0 +1,1088 @@
+{
+  "audit_name": "EDGEiQ Performance Intelligence Phase 0.7 Governed Sectional Performance Linkage Prototype",
+  "generated_utc": "2026-07-15T18:24:39.334234+00:00",
+  "production_data_modified": false,
+  "normalisation_rules": {
+    "race_number": "Numeric race identifiers are normalised from values such as 1.0 and 1 to integer text 1.",
+    "track": "Sponsor prefixes and known synthetic-course aliases are normalised before matching.",
+    "horse": "Punctuation, spaces and trailing country suffixes are normalised."
+  },
+  "strategy_order": [
+    "DATE_TRACK_RACE_HORSE_NORMALISED",
+    "DATE_TRACK_HORSE_NORMALISED",
+    "DATE_RACE_HORSE_NORMALISED",
+    "DATE_HORSE_ONLY_UNIQUE"
+  ],
+  "strategy_summary": [
+    {
+      "strategy_name": "DATE_TRACK_RACE_HORSE_NORMALISED",
+      "strength": "STRONG",
+      "components": "race_date | track | race_number | horse",
+      "result_keys": 879779,
+      "unique_result_keys": 879776,
+      "ambiguous_result_keys": 3,
+      "keys_with_performance_id": 879776
+    },
+    {
+      "strategy_name": "DATE_TRACK_HORSE_NORMALISED",
+      "strength": "CONDITIONAL",
+      "components": "race_date | track | horse",
+      "result_keys": 879196,
+      "unique_result_keys": 878622,
+      "ambiguous_result_keys": 574,
+      "keys_with_performance_id": 878622
+    },
+    {
+      "strategy_name": "DATE_RACE_HORSE_NORMALISED",
+      "strength": "CONDITIONAL",
+      "components": "race_date | race_number | horse",
+      "result_keys": 879704,
+      "unique_result_keys": 879627,
+      "ambiguous_result_keys": 77,
+      "keys_with_performance_id": 879627
+    },
+    {
+      "strategy_name": "DATE_HORSE_ONLY_UNIQUE",
+      "strength": "FALLBACK_UNIQUE_ONLY",
+      "components": "race_date | horse",
+      "result_keys": 878869,
+      "unique_result_keys": 877981,
+      "ambiguous_result_keys": 888,
+      "keys_with_performance_id": 877981
+    }
+  ],
+  "linkage": {
+    "source_rows": 130484,
+    "linked_rows": 126640,
+    "linked_pct": 97.054,
+    "ambiguous_rows": 2,
+    "unlinked_rows": 3842,
+    "status_counts": {
+      "AMBIGUOUS": 2,
+      "LINKED": 126640,
+      "UNLINKED": 3842
+    },
+    "method_counts": {
+      "DATE_HORSE_ONLY_UNIQUE": 1201,
+      "DATE_RACE_HORSE_NORMALISED": 17769,
+      "DATE_TRACK_HORSE_NORMALISED": 3857,
+      "DATE_TRACK_RACE_HORSE_NORMALISED": 103813,
+      "NONE": 3844
+    },
+    "unlinked_reason_counts": {
+      "MULTIPLE_RESULT_PERFORMANCES": 2,
+      "NO_UNIQUE_MATCH": 3842
+    },
+    "unlinked_samples": [
+      {
+        "race_date": "2023-01-13",
+        "raw_track": "CRANBOURNE",
+        "canonical_track": "CRANBOURNE",
+        "race_number": "1",
+        "raw_horse": "Freeflow",
+        "canonical_horse": "FREEFLOW",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-01-20",
+        "raw_track": "FLEMINGTON",
+        "canonical_track": "FLEMINGTON",
+        "race_number": "5",
+        "raw_horse": "Atlantis Tycoon",
+        "canonical_horse": "ATLANTISTYCOON",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-01-22",
+        "raw_track": "MORNINGTON",
+        "canonical_track": "MORNINGTON",
+        "race_number": "2",
+        "raw_horse": "Confetti Of Roses",
+        "canonical_horse": "CONFETTIOFROSES",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-01-26",
+        "raw_track": "HANGING ROCK",
+        "canonical_track": "HANGINGROCK",
+        "race_number": "1",
+        "raw_horse": "Demiurgos (NZ) (NZ)",
+        "canonical_horse": "DEMIURGOS",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-01-26",
+        "raw_track": "HANGING ROCK",
+        "canonical_track": "HANGINGROCK",
+        "race_number": "8",
+        "raw_horse": "Demiurgos (NZ) (NZ)",
+        "canonical_horse": "DEMIURGOS",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-02-05",
+        "raw_track": "SALE",
+        "canonical_track": "SALE",
+        "race_number": "4",
+        "raw_horse": "Confetti Of Roses",
+        "canonical_horse": "CONFETTIOFROSES",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-02-23",
+        "raw_track": "PAKENHAM",
+        "canonical_track": "PAKENHAM",
+        "race_number": "4",
+        "raw_horse": "Atlantis Tycoon",
+        "canonical_horse": "ATLANTISTYCOON",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-03-03",
+        "raw_track": "PAKENHAM",
+        "canonical_track": "PAKENHAM",
+        "race_number": "3",
+        "raw_horse": "Amboone (NZ) (NZ)",
+        "canonical_horse": "AMBOONE",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-03-12",
+        "raw_track": "ECHUCA",
+        "canonical_track": "ECHUCA",
+        "race_number": "8",
+        "raw_horse": "Atlantis Tycoon",
+        "canonical_horse": "ATLANTISTYCOON",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-03-15",
+        "raw_track": "PARK HILLSIDE",
+        "canonical_track": "PARKHILLSIDE",
+        "race_number": "8",
+        "raw_horse": "Narvaez",
+        "canonical_horse": "NARVAEZ",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-03-29",
+        "raw_track": "PARK HILLSIDE",
+        "canonical_track": "PARKHILLSIDE",
+        "race_number": "6",
+        "raw_horse": "Narvaez",
+        "canonical_horse": "NARVAEZ",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-04-11",
+        "raw_track": "APIAM BENDIGO",
+        "canonical_track": "BENDIGO",
+        "race_number": "1",
+        "raw_horse": "Miss Chardonnay",
+        "canonical_horse": "MISSCHARDONNAY",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-04-15",
+        "raw_track": "PARK LAKESIDE",
+        "canonical_track": "PARKLAKESIDE",
+        "race_number": "3",
+        "raw_horse": "El Padrino",
+        "canonical_horse": "ELPADRINO",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-05-11",
+        "raw_track": "PARK KILMORE",
+        "canonical_track": "PARKKILMORE",
+        "race_number": "3",
+        "raw_horse": "Old Maid",
+        "canonical_horse": "OLDMAID",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-05-21",
+        "raw_track": "PARK LAKESIDE",
+        "canonical_track": "PARKLAKESIDE",
+        "race_number": "8",
+        "raw_horse": "Amboone (NZ)",
+        "canonical_horse": "AMBOONE",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-06-01",
+        "raw_track": "ECHUCA",
+        "canonical_track": "ECHUCA",
+        "race_number": "5",
+        "raw_horse": "Second Divison (NZ)",
+        "canonical_horse": "SECONDDIVISON",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-06-04",
+        "raw_track": "GEELONG",
+        "canonical_track": "GEELONG",
+        "race_number": "2",
+        "raw_horse": "Sunfish",
+        "canonical_horse": "SUNFISH",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-06-04",
+        "raw_track": "GEELONG",
+        "canonical_track": "GEELONG",
+        "race_number": "4",
+        "raw_horse": "Exolazzo",
+        "canonical_horse": "EXOLAZZO",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-06-14",
+        "raw_track": "PARK HILLSIDE",
+        "canonical_track": "PARKHILLSIDE",
+        "race_number": "6",
+        "raw_horse": "Amboone (NZ)",
+        "canonical_horse": "AMBOONE",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-06-16",
+        "raw_track": "GEELONG",
+        "canonical_track": "GEELONG",
+        "race_number": "1",
+        "raw_horse": "Sir Zabeerro",
+        "canonical_horse": "SIRZABEERRO",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-06-17",
+        "raw_track": "DONALD",
+        "canonical_track": "DONALD",
+        "race_number": "3",
+        "raw_horse": "Sunfish",
+        "canonical_horse": "SUNFISH",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-06-30",
+        "raw_track": "GEELONG",
+        "canonical_track": "GEELONG",
+        "race_number": "3",
+        "raw_horse": "Freeflow",
+        "canonical_horse": "FREEFLOW",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-07-05",
+        "raw_track": "PARK LAKESIDE",
+        "canonical_track": "PARKLAKESIDE",
+        "race_number": "6",
+        "raw_horse": "Sunfish",
+        "canonical_horse": "SUNFISH",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-07-12",
+        "raw_track": "PARK LAKESIDE",
+        "canonical_track": "PARKLAKESIDE",
+        "race_number": "7",
+        "raw_horse": "Amboone (NZ)",
+        "canonical_horse": "AMBOONE",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-07-25",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "4",
+        "raw_horse": "Bit Of Oz (GB)",
+        "canonical_horse": "BITOFOZ",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-07-25",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "7",
+        "raw_horse": "Amboone (NZ)",
+        "canonical_horse": "AMBOONE",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-08-02",
+        "raw_track": "SALE",
+        "canonical_track": "SALE",
+        "race_number": "4",
+        "raw_horse": "Freeflow",
+        "canonical_horse": "FREEFLOW",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-08-06",
+        "raw_track": "WODONGA",
+        "canonical_track": "WODONGA",
+        "race_number": "6",
+        "raw_horse": "Royal Lane",
+        "canonical_horse": "ROYALLANE",
+        "status": "AMBIGUOUS",
+        "reason": "MULTIPLE_RESULT_PERFORMANCES"
+      },
+      {
+        "race_date": "2023-08-14",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "4",
+        "raw_horse": "Bit Of Oz (GB)",
+        "canonical_horse": "BITOFOZ",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-08-17",
+        "raw_track": "SEYMOUR",
+        "canonical_track": "SEYMOUR",
+        "race_number": "1",
+        "raw_horse": "Petit Manhattan",
+        "canonical_horse": "PETITMANHATTAN",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-08-17",
+        "raw_track": "SEYMOUR",
+        "canonical_track": "SEYMOUR",
+        "race_number": "3",
+        "raw_horse": "Freeflow",
+        "canonical_horse": "FREEFLOW",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-08-28",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "1",
+        "raw_horse": "Bit Of Oz (GB)",
+        "canonical_horse": "BITOFOZ",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-09-07",
+        "raw_track": "CRANBOURNE",
+        "canonical_track": "CRANBOURNE",
+        "race_number": "1",
+        "raw_horse": "Freeflow",
+        "canonical_horse": "FREEFLOW",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-09-22",
+        "raw_track": "BALLARAT",
+        "canonical_track": "BALLARAT",
+        "race_number": "1",
+        "raw_horse": "Alsonfire (NZ)",
+        "canonical_horse": "ALSONFIRE",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-09-23",
+        "raw_track": "TATURA",
+        "canonical_track": "TATURA",
+        "race_number": "3",
+        "raw_horse": "Freeflow",
+        "canonical_horse": "FREEFLOW",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-09-29",
+        "raw_track": "BENALLA",
+        "canonical_track": "BENALLA",
+        "race_number": "2",
+        "raw_horse": "Frottoir",
+        "canonical_horse": "FROTTOIR",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "1",
+        "raw_horse": "Indian Jewel",
+        "canonical_horse": "INDIANJEWEL",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "1",
+        "raw_horse": "Queen Starlight",
+        "canonical_horse": "QUEENSTARLIGHT",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "1",
+        "raw_horse": "Ichiberu",
+        "canonical_horse": "ICHIBERU",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "1",
+        "raw_horse": "Sultry Siren",
+        "canonical_horse": "SULTRYSIREN",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "1",
+        "raw_horse": "Hot Pursuit",
+        "canonical_horse": "HOTPURSUIT",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "1",
+        "raw_horse": "Royal Telephone",
+        "canonical_horse": "ROYALTELEPHONE",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "2",
+        "raw_horse": "Collison",
+        "canonical_horse": "COLLISON",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "2",
+        "raw_horse": "Cable Town",
+        "canonical_horse": "CABLETOWN",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "2",
+        "raw_horse": "Jipushi",
+        "canonical_horse": "JIPUSHI",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "2",
+        "raw_horse": "Smart Dude",
+        "canonical_horse": "SMARTDUDE",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "2",
+        "raw_horse": "Shantino",
+        "canonical_horse": "SHANTINO",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "2",
+        "raw_horse": "She's A Capitalist",
+        "canonical_horse": "SHESACAPITALIST",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "2",
+        "raw_horse": "Navy Girl",
+        "canonical_horse": "NAVYGIRL",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "2",
+        "raw_horse": "Coco Caching",
+        "canonical_horse": "COCOCACHING",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "3",
+        "raw_horse": "Bold Feeling",
+        "canonical_horse": "BOLDFEELING",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "3",
+        "raw_horse": "Governor Phillip",
+        "canonical_horse": "GOVERNORPHILLIP",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "3",
+        "raw_horse": "Paulartes",
+        "canonical_horse": "PAULARTES",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "3",
+        "raw_horse": "Centrefoldstar",
+        "canonical_horse": "CENTREFOLDSTAR",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "3",
+        "raw_horse": "Chilli Jam",
+        "canonical_horse": "CHILLIJAM",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "3",
+        "raw_horse": "Montana State",
+        "canonical_horse": "MONTANASTATE",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "3",
+        "raw_horse": "Amahle",
+        "canonical_horse": "AMAHLE",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "3",
+        "raw_horse": "Highland Beauty",
+        "canonical_horse": "HIGHLANDBEAUTY",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "3",
+        "raw_horse": "Sirgeeo",
+        "canonical_horse": "SIRGEEO",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "3",
+        "raw_horse": "My Girl Lacey",
+        "canonical_horse": "MYGIRLLACEY",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "4",
+        "raw_horse": "Ariana Blue (USA)",
+        "canonical_horse": "ARIANABLUE",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "4",
+        "raw_horse": "Mariner's Dream",
+        "canonical_horse": "MARINERSDREAM",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "4",
+        "raw_horse": "Highland Mirage",
+        "canonical_horse": "HIGHLANDMIRAGE",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "4",
+        "raw_horse": "Madam Mayhem",
+        "canonical_horse": "MADAMMAYHEM",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "4",
+        "raw_horse": "Affairoftheheart",
+        "canonical_horse": "AFFAIROFTHEHEART",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "4",
+        "raw_horse": "Lonestar Charlie",
+        "canonical_horse": "LONESTARCHARLIE",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "4",
+        "raw_horse": "Think D'oro",
+        "canonical_horse": "THINKDORO",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "4",
+        "raw_horse": "Redoubt Road (NZ)",
+        "canonical_horse": "REDOUBTROAD",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "5",
+        "raw_horse": "Northern Tahnee",
+        "canonical_horse": "NORTHERNTAHNEE",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "5",
+        "raw_horse": "Makbeel (NZ)",
+        "canonical_horse": "MAKBEEL",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "5",
+        "raw_horse": "Zancada",
+        "canonical_horse": "ZANCADA",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "5",
+        "raw_horse": "Power Glider",
+        "canonical_horse": "POWERGLIDER",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "5",
+        "raw_horse": "Alienated",
+        "canonical_horse": "ALIENATED",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "5",
+        "raw_horse": "Donatien Alphonse",
+        "canonical_horse": "DONATIENALPHONSE",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "5",
+        "raw_horse": "Let's Get Festive",
+        "canonical_horse": "LETSGETFESTIVE",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "5",
+        "raw_horse": "Jennivaci (NZ)",
+        "canonical_horse": "JENNIVACI",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "5",
+        "raw_horse": "Hezafox",
+        "canonical_horse": "HEZAFOX",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "6",
+        "raw_horse": "Mishika",
+        "canonical_horse": "MISHIKA",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "6",
+        "raw_horse": "Luv A Duck",
+        "canonical_horse": "LUVADUCK",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "6",
+        "raw_horse": "Run Walrus Run",
+        "canonical_horse": "RUNWALRUSRUN",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "6",
+        "raw_horse": "Artie's Dynamite",
+        "canonical_horse": "ARTIESDYNAMITE",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "6",
+        "raw_horse": "Brasada",
+        "canonical_horse": "BRASADA",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "6",
+        "raw_horse": "Ripplebrook",
+        "canonical_horse": "RIPPLEBROOK",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "6",
+        "raw_horse": "Arachidi",
+        "canonical_horse": "ARACHIDI",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "6",
+        "raw_horse": "Waipio",
+        "canonical_horse": "WAIPIO",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "6",
+        "raw_horse": "Mirroring",
+        "canonical_horse": "MIRRORING",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "6",
+        "raw_horse": "Campania Volpe",
+        "canonical_horse": "CAMPANIAVOLPE",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "6",
+        "raw_horse": "One for Rocky",
+        "canonical_horse": "ONEFORROCKY",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "7",
+        "raw_horse": "Holy Racket (NZ)",
+        "canonical_horse": "HOLYRACKET",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "7",
+        "raw_horse": "Beldivian",
+        "canonical_horse": "BELDIVIAN",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "7",
+        "raw_horse": "The Cruiser",
+        "canonical_horse": "THECRUISER",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "7",
+        "raw_horse": "Takin' The Mickey",
+        "canonical_horse": "TAKINTHEMICKEY",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "7",
+        "raw_horse": "Didier",
+        "canonical_horse": "DIDIER",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "7",
+        "raw_horse": "Helpmebrutha",
+        "canonical_horse": "HELPMEBRUTHA",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "7",
+        "raw_horse": "Beautrooper",
+        "canonical_horse": "BEAUTROOPER",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "7",
+        "raw_horse": "Belvago",
+        "canonical_horse": "BELVAGO",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "7",
+        "raw_horse": "Bold Intentions",
+        "canonical_horse": "BOLDINTENTIONS",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "7",
+        "raw_horse": "Smart Charge",
+        "canonical_horse": "SMARTCHARGE",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "7",
+        "raw_horse": "Badge",
+        "canonical_horse": "BADGE",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      },
+      {
+        "race_date": "2023-10-09",
+        "raw_track": "PAKENHAM SYNTHETIC",
+        "canonical_track": "PAKENHAMSYNTHETIC",
+        "race_number": "7",
+        "raw_horse": "Nominator",
+        "canonical_horse": "NOMINATOR",
+        "status": "UNLINKED",
+        "reason": "NO_UNIQUE_MATCH"
+      }
+    ]
+  },
+  "canonical_status": "PROTOTYPE_LINKAGE_NOT_PROMOTED",
+  "promotion_rule": "Only rows linked by a unique deterministic result key may be eligible for canonical migration.",
+  "next_stage": "Phase 0.8 validate linked evidence, diagnose remaining unlinked rows, and design canonical horse aliases",
+  "outputs": {
+    "linkage_prototype": "docs/performance-intelligence/prototypes/phase0_7/edgeiq_governed_sectional_performance_linkage_v0_1_20260716_042332.csv",
+    "track_aliases": "docs/performance-intelligence/architecture/phase0_7/edgeiq_track_alias_normalisation_v0_1.csv",
+    "strategy": "docs/performance-intelligence/architecture/phase0_7/edgeiq_sectional_linkage_strategy_v0_1.csv",
+    "unlinked_samples": "docs/performance-intelligence/audits/phase0_7/edgeiq_phase0_7_unlinked_samples_20260716_042332.csv"
+  }
+}

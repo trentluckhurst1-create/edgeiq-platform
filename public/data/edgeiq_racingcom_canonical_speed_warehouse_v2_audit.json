@@ -1,0 +1,46 @@
+{
+  "audit_name": "EDGEIQ_RACINGCOM_CANONICAL_SPEED_WAREHOUSE_V2",
+  "generated_at_utc": "2026-07-21T19:05:35+00:00",
+  "status": "PASS",
+  "failures": [],
+  "semantic_dependency": {
+    "file": "public/data/edgeiq_racingcom_speed_semantics_v1_audit.json",
+    "required_status": "PASS",
+    "actual_status": "PASS",
+    "semantic_version": "RACINGCOM_SPEED_SEMANTICS_V1"
+  },
+  "source_counts": {
+    "races": 5,
+    "runners": 39,
+    "sectionals": 270,
+    "splits": 270
+  },
+  "canonical_counts": {
+    "races": 5,
+    "runners": 39,
+    "sectionals": 270,
+    "splits": 270
+  },
+  "duplicate_runner_keys": [],
+  "orphan_sectionals": [],
+  "orphan_splits": [],
+  "race_runner_count_mismatches": [],
+  "runner_child_count_mismatches": [],
+  "missing_required_runner_values": [],
+  "semantic_controls": {
+    "confirmed_time_fields_renamed": true,
+    "confirmed_distance_fields_renamed": true,
+    "source_speed_values_preserved": true,
+    "unresolved_units_asserted": false,
+    "ratings_calculated": false,
+    "standard_times_calculated": false,
+    "lengths_vs_standard_calculated": false,
+    "estimated_values_created": false
+  },
+  "outputs": {
+    "runner_fact": "public/data/edgeiq_racingcom_canonical_runner_speed_fact_v2.csv",
+    "sectional_fact": "public/data/edgeiq_racingcom_canonical_runner_sectional_fact_v2.csv",
+    "split_fact": "public/data/edgeiq_racingcom_canonical_runner_split_fact_v2.csv",
+    "race_fact": "public/data/edgeiq_racingcom_canonical_race_speed_fact_v2.csv"
+  }
+}

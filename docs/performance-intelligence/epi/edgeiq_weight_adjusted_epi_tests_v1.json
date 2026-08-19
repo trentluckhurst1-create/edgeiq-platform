@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "tests": [
+    {
+      "name": "required_fields_present",
+      "status": "PASS"
+    },
+    {
+      "name": "no_fabricated_coefficient",
+      "status": "PASS"
+    },
+    {
+      "name": "market_not_used",
+      "status": "PASS"
+    },
+    {
+      "name": "adjustment_null_when_insufficient_evidence",
+      "status": "PASS"
+    },
+    {
+      "name": "row_count_preserved",
+      "status": "PASS",
+      "rows": 545846
+    },
+    {
+      "name": "feeds_patched",
+      "status": "PASS",
+      "feeds": 20
+    }
+  ]
+}

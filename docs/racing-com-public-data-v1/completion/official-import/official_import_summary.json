@@ -1,0 +1,8 @@
+{
+  "status": "PASS_OFFICIAL_IMPORT_READY",
+  "input_file": "docs\\racing-com-public-data-v1\\fixtures\\public_200_meeting_with_sectionals.json",
+  "rows": 1,
+  "valid_rows": 1,
+  "canonical_rows_promoted": 0,
+  "canonical_admission": "NO_PREVIEW_ONLY"
+}

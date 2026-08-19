@@ -1,0 +1,165 @@
+{
+  "header": {
+    "description": "Turftrax Weather Data Visualisation for Flemingtom Racecourse on Mon, 13 Jul 2026 21:43:57 +0100",
+    "signature": "Turftrax ITS WDV API Stream prod-V1.5.3-2021-04-15T12:00",
+    "copyright": "2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Turftrax Ltd. All Rights Reserved."
+  },
+  "content": {
+    "air-temperature-current": 12.67,
+    "air-temperature-max": 13.36,
+    "air-temperature-min": 12.32,
+    "awt-race-date": "N/a",
+    "awtReport": 0,
+    "carousel": {
+      "temperature": {
+        "default": "air",
+        "list": [
+          "air"
+        ]
+      }
+    },
+    "disableMetic": [],
+    "et-24hr": 0.54,
+    "et-7day": 2.43,
+    "et-since": 0.03,
+    "etEnabled": true,
+    "going-race-date": "Saturday, 18th July, 2026",
+    "goingReport": 0,
+    "haveManualRain": false,
+    "humidity-current": 79.74,
+    "humidity-max": 90.58,
+    "humidity-min": 77.66,
+    "isDemo": false,
+    "isLastMeeting": false,
+    "location-date": "Saturday, 18th July, 2026",
+    "location-track-type": "N/a",
+    "location-venue": "Flemington",
+    "mapName": "N/a",
+    "mapping-service": "yes",
+    "rain0-24hr": "",
+    "rain0-7day": "",
+    "rain0-today": "",
+    "rain1-24hr": 0.6,
+    "rain1-7day": 18.6,
+    "rain1-current": 0,
+    "rain1-since": 0,
+    "rain1-today": 0,
+    "rain2-24hr": 0.4,
+    "rain2-7day": 19,
+    "rain2-current": 0,
+    "rain2-since": 0,
+    "rain2-today": 0,
+    "seasonEndMessage": "",
+    "stationActivityStatus": "active",
+    "stationId": "N/a",
+    "stationType": "wtx",
+    "temperature-current": 12.67,
+    "temperature-max": 13.36,
+    "temperature-min": 12.32,
+    "trackType": "Turf",
+    "units": {
+      "linear": "mm",
+      "speed": "km/h",
+      "temperature": "C"
+    },
+    "use-map": "N/a",
+    "useRainGauge": 1,
+    "usingAwtReport": "N/a",
+    "usingReport": "N/a",
+    "venueId": "N/a",
+    "venueName": "Flemingtom Racecourse",
+    "weather-date": "14/07/26",
+    "weather-last-update": "7:43am",
+    "weatherReport": 1,
+    "winddirection-current": 315,
+    "winddirection-current-rose": 1134,
+    "winddirection-text": "Northwesterly",
+    "windgust-current": 2.8,
+    "windgust-event": "4:35 am",
+    "windspeed-average": 1.04,
+    "windspeed-current": 2.4
+  },
+  "tardis": {
+    "timezone-offset": 36000,
+    "offset-adjust": -3600,
+    "local-time": {
+      "calendar": "2026-07-14 06:43:57",
+      "epoch": 1784007837,
+      "cache": 1784007780
+    },
+    "local-date": {
+      "calendar": "2026-07-14",
+      "epoch": 1783983600,
+      "numericDate": "14/07/26"
+    },
+    "server-time": {
+      "calendar": "2026-07-13 20:43:57",
+      "epoch": 1783971837,
+      "cache": 1784007780
+    },
+    "server-date": {
+      "calendar": "2026-07-13",
+      "epoch": 1783897200
+    },
+    "local-create": {
+      "calendar": "N/a",
+      "epoch": "N/a"
+    },
+    "local-update": {
+      "calendar": "N/a",
+      "epoch": "N/a"
+    },
+    "only-published": 1,
+    "display-always": 0,
+    "days-before": {
+      "calendar": 3,
+      "epoch": 259200
+    },
+    "days-after": {
+      "calendar": 3,
+      "epoch": 259200
+    },
+    "turfRacingToday": 0,
+    "previous-race": {
+      "calendar": "2026-07-04",
+      "epoch": 1783119600,
+      "fullDate": "Saturday, 4th July, 2026",
+      "numericDate": "04/07/26"
+    },
+    "latest-previous": {
+      "calendar": "2026-07-07",
+      "epoch": 1783378800
+    },
+    "next-race": {
+      "calendar": "2026-07-18",
+      "epoch": 1784329200,
+      "fullDate": "Saturday, 18th July, 2026",
+      "numericDate": "18/07/26"
+    },
+    "earliest-next": {
+      "calendar": "2026-07-15",
+      "epoch": 1784070000
+    },
+    "awtRacingToday": 0,
+    "previous-race-awt": {
+      "calendar": "N/a",
+      "epoch": "N/a",
+      "fullDate": "N/a",
+      "numericDate": "N/a"
+    },
+    "latest-last-awt": {
+      "calendar": "N/a",
+      "epoch": "N/a"
+    },
+    "next-race-awt": {
+      "calendar": "N/a",
+      "epoch": "N/a",
+      "fullDate": "N/a",
+      "numericDate": "N/a"
+    },
+    "earliest-next-awt": {
+      "calendar": "N/a",
+      "epoch": "N/a"
+    }
+  }
+}

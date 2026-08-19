@@ -1,0 +1,4 @@
+check,status,detail
+Approved race runner board labels present,PASS,RACE workspace labels
+Approved field labels present,PASS,FIELD workspace labels
+Performance and EPI components differ,PASS,PERFORMANCE is not an EPI ranking clone

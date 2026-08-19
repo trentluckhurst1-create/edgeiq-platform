@@ -1,0 +1,698 @@
+{
+  "marker": "EDGEIQ_PHASE1_6_1_PRIMARY_KEY_DIAGNOSTIC_PASS",
+  "source": "docs/performance-intelligence/prototypes/phase1_6/edgeiq_performance_fact_v0_1_20260716_100919.csv",
+  "row_count": 879784,
+  "blank_performance_fact_id_count": 0,
+  "duplicate_performance_fact_id_groups": 89,
+  "duplicate_performance_fact_id_rows": 178,
+  "natural_duplicate_groups": 0,
+  "natural_duplicate_rows": 0,
+  "exact_duplicate_source_rows": 0,
+  "runner_id_missing_rows": 0,
+  "runner_id_reused_across_context_count": 89,
+  "largest_duplicate_performance_fact_id_groups": [
+    {
+      "performance_fact_id": "pf_fd9c10a567de0effc987c35f",
+      "count": 2,
+      "examples": [
+        {
+          "source_row_number": "807618",
+          "legacy_performance_fact_id": "pf_fd9c10a567de0effc987c35f",
+          "race_context_key": "2025-10-22|VIC|LADBROKES GEELONG|8|5433728.0",
+          "race_id": "5433728.0",
+          "runner_id": "15284768",
+          "horse": "VERDAD",
+          "horse_code": "5312035.0",
+          "race_date": "2025-10-22",
+          "state": "VIC",
+          "track": "LADBROKES GEELONG",
+          "race_number": "8.0",
+          "row_fingerprint": "9485ca5fa2dd7f33e9ead3b1b4e368b50f161898f31acd78560d7243e4db1fe5"
+        },
+        {
+          "source_row_number": "807741",
+          "legacy_performance_fact_id": "pf_fd9c10a567de0effc987c35f",
+          "race_context_key": "2025-10-23|VIC|LADBROKES GEELONG|5|5433728.0",
+          "race_id": "5433728.0",
+          "runner_id": "15284768",
+          "horse": "VERDAD",
+          "horse_code": "5312035.0",
+          "race_date": "2025-10-23",
+          "state": "VIC",
+          "track": "LADBROKES GEELONG",
+          "race_number": "5.0",
+          "row_fingerprint": "ae487941d1910edc0cc604b38066f1ad30fe33c941e922b6525c0a8799c69a6b"
+        }
+      ]
+    },
+    {
+      "performance_fact_id": "pf_17e497a428f9ce72da6bb971",
+      "count": 2,
+      "examples": [
+        {
+          "source_row_number": "807619",
+          "legacy_performance_fact_id": "pf_17e497a428f9ce72da6bb971",
+          "race_context_key": "2025-10-22|VIC|LADBROKES GEELONG|8|5433728.0",
+          "race_id": "5433728.0",
+          "runner_id": "15289631",
+          "horse": "INDISPENSABLE",
+          "horse_code": "5042871.0",
+          "race_date": "2025-10-22",
+          "state": "VIC",
+          "track": "LADBROKES GEELONG",
+          "race_number": "8.0",
+          "row_fingerprint": "710ee50d8b7580867f6bc398bd4a78bbd6df4267f24b5de6e6ee092a610bb6f5"
+        },
+        {
+          "source_row_number": "807742",
+          "legacy_performance_fact_id": "pf_17e497a428f9ce72da6bb971",
+          "race_context_key": "2025-10-23|VIC|LADBROKES GEELONG|5|5433728.0",
+          "race_id": "5433728.0",
+          "runner_id": "15289631",
+          "horse": "INDISPENSABLE",
+          "horse_code": "5042871.0",
+          "race_date": "2025-10-23",
+          "state": "VIC",
+          "track": "LADBROKES GEELONG",
+          "race_number": "5.0",
+          "row_fingerprint": "d9649ee241608bac61cc6d6627589bf0838eecd688d51248e0fe1a74b13881d4"
+        }
+      ]
+    },
+    {
+      "performance_fact_id": "pf_48889444aa752c5dfbacf176",
+      "count": 2,
+      "examples": [
+        {
+          "source_row_number": "807620",
+          "legacy_performance_fact_id": "pf_48889444aa752c5dfbacf176",
+          "race_context_key": "2025-10-22|VIC|LADBROKES GEELONG|8|5433728.0",
+          "race_id": "5433728.0",
+          "runner_id": "15280398",
+          "horse": "JACKS ON ICE",
+          "horse_code": "5279695.0",
+          "race_date": "2025-10-22",
+          "state": "VIC",
+          "track": "LADBROKES GEELONG",
+          "race_number": "8.0",
+          "row_fingerprint": "118350f86c7a700df8fa41e7245bc015b3f090fbd9aea87f4d515a3a3532dacc"
+        },
+        {
+          "source_row_number": "807743",
+          "legacy_performance_fact_id": "pf_48889444aa752c5dfbacf176",
+          "race_context_key": "2025-10-23|VIC|LADBROKES GEELONG|5|5433728.0",
+          "race_id": "5433728.0",
+          "runner_id": "15280398",
+          "horse": "JACKS ON ICE",
+          "horse_code": "5279695.0",
+          "race_date": "2025-10-23",
+          "state": "VIC",
+          "track": "LADBROKES GEELONG",
+          "race_number": "5.0",
+          "row_fingerprint": "2c44c9f3f7c003438dbb1cf8a649769fba5c9c04df34f24a40e54ee5e9a3944a"
+        }
+      ]
+    },
+    {
+      "performance_fact_id": "pf_1c80e30451b8e36b147ba0b2",
+      "count": 2,
+      "examples": [
+        {
+          "source_row_number": "807621",
+          "legacy_performance_fact_id": "pf_1c80e30451b8e36b147ba0b2",
+          "race_context_key": "2025-10-22|VIC|LADBROKES GEELONG|8|5433728.0",
+          "race_id": "5433728.0",
+          "runner_id": "15285975",
+          "horse": "TYPHOON HARMONY",
+          "horse_code": "5043243.0",
+          "race_date": "2025-10-22",
+          "state": "VIC",
+          "track": "LADBROKES GEELONG",
+          "race_number": "8.0",
+          "row_fingerprint": "d948101fea06d5605cdafbae70923578170166e3ae336093af476e8843a82cbd"
+        },
+        {
+          "source_row_number": "807744",
+          "legacy_performance_fact_id": "pf_1c80e30451b8e36b147ba0b2",
+          "race_context_key": "2025-10-23|VIC|LADBROKES GEELONG|5|5433728.0",
+          "race_id": "5433728.0",
+          "runner_id": "15285975",
+          "horse": "TYPHOON HARMONY",
+          "horse_code": "5043243.0",
+          "race_date": "2025-10-23",
+          "state": "VIC",
+          "track": "LADBROKES GEELONG",
+          "race_number": "5.0",
+          "row_fingerprint": "bee73929bf11bb6422e60ed0ba1b3bf1e90dc5fd142c44dee017891657410cf0"
+        }
+      ]
+    },
+    {
+      "performance_fact_id": "pf_93112d4a0189bd0f3cf706eb",
+      "count": 2,
+      "examples": [
+        {
+          "source_row_number": "807622",
+          "legacy_performance_fact_id": "pf_93112d4a0189bd0f3cf706eb",
+          "race_context_key": "2025-10-22|VIC|LADBROKES GEELONG|8|5433728.0",
+          "race_id": "5433728.0",
+          "runner_id": "15288653",
+          "horse": "CAPPER THIRTYNINE",
+          "horse_code": "5305724.0",
+          "race_date": "2025-10-22",
+          "state": "VIC",
+          "track": "LADBROKES GEELONG",
+          "race_number": "8.0",
+          "row_fingerprint": "ee7e838e2b0a40d94bf9dbb7e5d81e11a4db568324ef9a681031f0ffd980dd46"
+        },
+        {
+          "source_row_number": "807745",
+          "legacy_performance_fact_id": "pf_93112d4a0189bd0f3cf706eb",
+          "race_context_key": "2025-10-23|VIC|LADBROKES GEELONG|5|5433728.0",
+          "race_id": "5433728.0",
+          "runner_id": "15288653",
+          "horse": "CAPPER THIRTYNINE",
+          "horse_code": "5305724.0",
+          "race_date": "2025-10-23",
+          "state": "VIC",
+          "track": "LADBROKES GEELONG",
+          "race_number": "5.0",
+          "row_fingerprint": "71a99d1247ffdbea65a127504893892bfa81424721278c1094921a68777e4aeb"
+        }
+      ]
+    },
+    {
+      "performance_fact_id": "pf_1171b4601e841bb244687482",
+      "count": 2,
+      "examples": [
+        {
+          "source_row_number": "807623",
+          "legacy_performance_fact_id": "pf_1171b4601e841bb244687482",
+          "race_context_key": "2025-10-22|VIC|LADBROKES GEELONG|8|5433728.0",
+          "race_id": "5433728.0",
+          "runner_id": "15290310",
+          "horse": "PERSIAN SPIRIT",
+          "horse_code": "5306476.0",
+          "race_date": "2025-10-22",
+          "state": "VIC",
+          "track": "LADBROKES GEELONG",
+          "race_number": "8.0",
+          "row_fingerprint": "59ec9576ae20b6ffa8967fc8f762f52555601be021c13c7b1acdedb8efe807db"
+        },
+        {
+          "source_row_number": "807746",
+          "legacy_performance_fact_id": "pf_1171b4601e841bb244687482",
+          "race_context_key": "2025-10-23|VIC|LADBROKES GEELONG|5|5433728.0",
+          "race_id": "5433728.0",
+          "runner_id": "15290310",
+          "horse": "PERSIAN SPIRIT",
+          "horse_code": "5306476.0",
+          "race_date": "2025-10-23",
+          "state": "VIC",
+          "track": "LADBROKES GEELONG",
+          "race_number": "5.0",
+          "row_fingerprint": "3eabe176595000a96c34142b90659d255b7b69cb651bd9588cf3a25fcaef2cf5"
+        }
+      ]
+    },
+    {
+      "performance_fact_id": "pf_03df66eb5f8575556dfc3f38",
+      "count": 2,
+      "examples": [
+        {
+          "source_row_number": "807624",
+          "legacy_performance_fact_id": "pf_03df66eb5f8575556dfc3f38",
+          "race_context_key": "2025-10-22|VIC|LADBROKES GEELONG|8|5433728.0",
+          "race_id": "5433728.0",
+          "runner_id": "15289710",
+          "horse": "PROVED",
+          "horse_code": "5333799.0",
+          "race_date": "2025-10-22",
+          "state": "VIC",
+          "track": "LADBROKES GEELONG",
+          "race_number": "8.0",
+          "row_fingerprint": "7c778bcf776c83a19a59c4c15807b01548f50dd6bb3b4d684189ebad612a6358"
+        },
+        {
+          "source_row_number": "807747",
+          "legacy_performance_fact_id": "pf_03df66eb5f8575556dfc3f38",
+          "race_context_key": "2025-10-23|VIC|LADBROKES GEELONG|5|5433728.0",
+          "race_id": "5433728.0",
+          "runner_id": "15289710",
+          "horse": "PROVED",
+          "horse_code": "5333799.0",
+          "race_date": "2025-10-23",
+          "state": "VIC",
+          "track": "LADBROKES GEELONG",
+          "race_number": "5.0",
+          "row_fingerprint": "d56319813393c078f9c327331bac383ccaafe9250c57b50684ac7e68b7b5ee58"
+        }
+      ]
+    },
+    {
+      "performance_fact_id": "pf_30a5b6cb1c4c28b9022e02ed",
+      "count": 2,
+      "examples": [
+        {
+          "source_row_number": "807625",
+          "legacy_performance_fact_id": "pf_30a5b6cb1c4c28b9022e02ed",
+          "race_context_key": "2025-10-22|VIC|LADBROKES GEELONG|8|5433728.0",
+          "race_id": "5433728.0",
+          "runner_id": "15289691",
+          "horse": "ROADCONE",
+          "horse_code": "5304591.0",
+          "race_date": "2025-10-22",
+          "state": "VIC",
+          "track": "LADBROKES GEELONG",
+          "race_number": "8.0",
+          "row_fingerprint": "709b33529a9a8063f20fd0149abfb8e3f0eb9f42ad463ac79eaff85f1bd34254"
+        },
+        {
+          "source_row_number": "807748",
+          "legacy_performance_fact_id": "pf_30a5b6cb1c4c28b9022e02ed",
+          "race_context_key": "2025-10-23|VIC|LADBROKES GEELONG|5|5433728.0",
+          "race_id": "5433728.0",
+          "runner_id": "15289691",
+          "horse": "ROADCONE",
+          "horse_code": "5304591.0",
+          "race_date": "2025-10-23",
+          "state": "VIC",
+          "track": "LADBROKES GEELONG",
+          "race_number": "5.0",
+          "row_fingerprint": "31d69c8a415f7248737054bca9a7b061a4425b8857d0b0208164caef6b3cedf3"
+        }
+      ]
+    },
+    {
+      "performance_fact_id": "pf_431655efa29b4c40cf4be3b9",
+      "count": 2,
+      "examples": [
+        {
+          "source_row_number": "807626",
+          "legacy_performance_fact_id": "pf_431655efa29b4c40cf4be3b9",
+          "race_context_key": "2025-10-22|VIC|LADBROKES GEELONG|8|5433728.0",
+          "race_id": "5433728.0",
+          "runner_id": "15289692",
+          "horse": "SOUGHT AFTER",
+          "horse_code": "5356715.0",
+          "race_date": "2025-10-22",
+          "state": "VIC",
+          "track": "LADBROKES GEELONG",
+          "race_number": "8.0",
+          "row_fingerprint": "aa3e886095c53f5c474c3c977cf8b029ef7a0c202ce16fc10d813fca98f3c9fb"
+        },
+        {
+          "source_row_number": "807749",
+          "legacy_performance_fact_id": "pf_431655efa29b4c40cf4be3b9",
+          "race_context_key": "2025-10-23|VIC|LADBROKES GEELONG|5|5433728.0",
+          "race_id": "5433728.0",
+          "runner_id": "15289692",
+          "horse": "SOUGHT AFTER",
+          "horse_code": "5356715.0",
+          "race_date": "2025-10-23",
+          "state": "VIC",
+          "track": "LADBROKES GEELONG",
+          "race_number": "5.0",
+          "row_fingerprint": "b2aafd4eded324b096838dbc6d5331b7fd92d463820ff955efcaf6c7c7898ec5"
+        }
+      ]
+    },
+    {
+      "performance_fact_id": "pf_efb2e73a73a547265fee5262",
+      "count": 2,
+      "examples": [
+        {
+          "source_row_number": "807627",
+          "legacy_performance_fact_id": "pf_efb2e73a73a547265fee5262",
+          "race_context_key": "2025-10-22|VIC|LADBROKES GEELONG|8|5433728.0",
+          "race_id": "5433728.0",
+          "runner_id": "15289067",
+          "horse": "KAHHOF",
+          "horse_code": "5306133.0",
+          "race_date": "2025-10-22",
+          "state": "VIC",
+          "track": "LADBROKES GEELONG",
+          "race_number": "8.0",
+          "row_fingerprint": "05a6d631b934757d53ceee5982b58e5d79cd0e7fff9ffa8cce02645daf9c97a2"
+        },
+        {
+          "source_row_number": "807750",
+          "legacy_performance_fact_id": "pf_efb2e73a73a547265fee5262",
+          "race_context_key": "2025-10-23|VIC|LADBROKES GEELONG|5|5433728.0",
+          "race_id": "5433728.0",
+          "runner_id": "15289067",
+          "horse": "KAHHOF",
+          "horse_code": "5306133.0",
+          "race_date": "2025-10-23",
+          "state": "VIC",
+          "track": "LADBROKES GEELONG",
+          "race_number": "5.0",
+          "row_fingerprint": "743dd60eb10c375b9ab04f872794e7486905f20d74e0ded9b04904a2b687548f"
+        }
+      ]
+    },
+    {
+      "performance_fact_id": "pf_e08ac799fab1e8f7fbfd4751",
+      "count": 2,
+      "examples": [
+        {
+          "source_row_number": "807628",
+          "legacy_performance_fact_id": "pf_e08ac799fab1e8f7fbfd4751",
+          "race_context_key": "2025-10-22|VIC|LADBROKES GEELONG|8|5433728.0",
+          "race_id": "5433728.0",
+          "runner_id": "15287440",
+          "horse": "NAVAL ACADEMY",
+          "horse_code": "5310415.0",
+          "race_date": "2025-10-22",
+          "state": "VIC",
+          "track": "LADBROKES GEELONG",
+          "race_number": "8.0",
+          "row_fingerprint": "1d237cf1816bb9968d637cb93ddc98a90c4087d394758fa85644b9cd83eaab11"
+        },
+        {
+          "source_row_number": "807751",
+          "legacy_performance_fact_id": "pf_e08ac799fab1e8f7fbfd4751",
+          "race_context_key": "2025-10-23|VIC|LADBROKES GEELONG|5|5433728.0",
+          "race_id": "5433728.0",
+          "runner_id": "15287440",
+          "horse": "NAVAL ACADEMY",
+          "horse_code": "5310415.0",
+          "race_date": "2025-10-23",
+          "state": "VIC",
+          "track": "LADBROKES GEELONG",
+          "race_number": "5.0",
+          "row_fingerprint": "b1e1d004b77c649f357885cd0de5c2be51e259c777f523e9ed93985d8c6ff526"
+        }
+      ]
+    },
+    {
+      "performance_fact_id": "pf_89bb22a3444b3eca9d46e42f",
+      "count": 2,
+      "examples": [
+        {
+          "source_row_number": "807629",
+          "legacy_performance_fact_id": "pf_89bb22a3444b3eca9d46e42f",
+          "race_context_key": "2025-10-22|VIC|LADBROKES GEELONG|8|5433728.0",
+          "race_id": "5433728.0",
+          "runner_id": "15289926",
+          "horse": "STOLI BOLLI",
+          "horse_code": "5329297.0",
+          "race_date": "2025-10-22",
+          "state": "VIC",
+          "track": "LADBROKES GEELONG",
+          "race_number": "8.0",
+          "row_fingerprint": "9a3c99bfaa5ebe9cce852e875023802e083998c6acaa1a4ade07e69cb247021b"
+        },
+        {
+          "source_row_number": "807752",
+          "legacy_performance_fact_id": "pf_89bb22a3444b3eca9d46e42f",
+          "race_context_key": "2025-10-23|VIC|LADBROKES GEELONG|5|5433728.0",
+          "race_id": "5433728.0",
+          "runner_id": "15289926",
+          "horse": "STOLI BOLLI",
+          "horse_code": "5329297.0",
+          "race_date": "2025-10-23",
+          "state": "VIC",
+          "track": "LADBROKES GEELONG",
+          "race_number": "5.0",
+          "row_fingerprint": "21c2d3393ae57ef0a0aaa042dd83d725d10692a786e516a95ecada3f7b0f1e09"
+        }
+      ]
+    },
+    {
+      "performance_fact_id": "pf_55ea41ed038876fa181e0914",
+      "count": 2,
+      "examples": [
+        {
+          "source_row_number": "807630",
+          "legacy_performance_fact_id": "pf_55ea41ed038876fa181e0914",
+          "race_context_key": "2025-10-22|VIC|LADBROKES GEELONG|8|5433728.0",
+          "race_id": "5433728.0",
+          "runner_id": "15289977",
+          "horse": "SPIONE",
+          "horse_code": "5304391.0",
+          "race_date": "2025-10-22",
+          "state": "VIC",
+          "track": "LADBROKES GEELONG",
+          "race_number": "8.0",
+          "row_fingerprint": "d1fdc382e057b0ac0deabb0efa423bb00181030235262743cfc2e72ec3e0a462"
+        },
+        {
+          "source_row_number": "807753",
+          "legacy_performance_fact_id": "pf_55ea41ed038876fa181e0914",
+          "race_context_key": "2025-10-23|VIC|LADBROKES GEELONG|5|5433728.0",
+          "race_id": "5433728.0",
+          "runner_id": "15289977",
+          "horse": "SPIONE",
+          "horse_code": "5304391.0",
+          "race_date": "2025-10-23",
+          "state": "VIC",
+          "track": "LADBROKES GEELONG",
+          "race_number": "5.0",
+          "row_fingerprint": "869a5852a2417b864e6893b1f9e884222a28d2b05eaf8687fef8955a37e67e6b"
+        }
+      ]
+    },
+    {
+      "performance_fact_id": "pf_369d8b2c81797fe84de5149f",
+      "count": 2,
+      "examples": [
+        {
+          "source_row_number": "807631",
+          "legacy_performance_fact_id": "pf_369d8b2c81797fe84de5149f",
+          "race_context_key": "2025-10-22|VIC|LADBROKES GEELONG|8|5433728.0",
+          "race_id": "5433728.0",
+          "runner_id": "15287421",
+          "horse": "KIKO",
+          "horse_code": "5286445.0",
+          "race_date": "2025-10-22",
+          "state": "VIC",
+          "track": "LADBROKES GEELONG",
+          "race_number": "8.0",
+          "row_fingerprint": "925ae6d72991af3741f4bef9643c0e558dec28e9b6b1a8064dd62172a1556567"
+        },
+        {
+          "source_row_number": "807754",
+          "legacy_performance_fact_id": "pf_369d8b2c81797fe84de5149f",
+          "race_context_key": "2025-10-23|VIC|LADBROKES GEELONG|5|5433728.0",
+          "race_id": "5433728.0",
+          "runner_id": "15287421",
+          "horse": "KIKO",
+          "horse_code": "5286445.0",
+          "race_date": "2025-10-23",
+          "state": "VIC",
+          "track": "LADBROKES GEELONG",
+          "race_number": "5.0",
+          "row_fingerprint": "59a1493db9ad21eb7dfd39215ed478321704285afe8c689a62001962455fa284"
+        }
+      ]
+    },
+    {
+      "performance_fact_id": "pf_12a89a39a30015ea596b37df",
+      "count": 2,
+      "examples": [
+        {
+          "source_row_number": "807632",
+          "legacy_performance_fact_id": "pf_12a89a39a30015ea596b37df",
+          "race_context_key": "2025-10-22|VIC|LADBROKES GEELONG|9|5433729.0",
+          "race_id": "5433729.0",
+          "runner_id": "15288442",
+          "horse": "OUTTA COMPTON",
+          "horse_code": "5289300.0",
+          "race_date": "2025-10-22",
+          "state": "VIC",
+          "track": "LADBROKES GEELONG",
+          "race_number": "9.0",
+          "row_fingerprint": "064b60ec012c05c3327bdf0cd260715d7ddcf4a6b8e20a6189eb0ec62375dff8"
+        },
+        {
+          "source_row_number": "807755",
+          "legacy_performance_fact_id": "pf_12a89a39a30015ea596b37df",
+          "race_context_key": "2025-10-23|VIC|LADBROKES GEELONG|6|5433729.0",
+          "race_id": "5433729.0",
+          "runner_id": "15288442",
+          "horse": "OUTTA COMPTON",
+          "horse_code": "5289300.0",
+          "race_date": "2025-10-23",
+          "state": "VIC",
+          "track": "LADBROKES GEELONG",
+          "race_number": "6.0",
+          "row_fingerprint": "830777b84c3298bec6a9cece7e47127ddf2c239e6687a976a840480363bcb2f7"
+        }
+      ]
+    },
+    {
+      "performance_fact_id": "pf_c7a174f6ae3c9914699f82fb",
+      "count": 2,
+      "examples": [
+        {
+          "source_row_number": "807633",
+          "legacy_performance_fact_id": "pf_c7a174f6ae3c9914699f82fb",
+          "race_context_key": "2025-10-22|VIC|LADBROKES GEELONG|9|5433729.0",
+          "race_id": "5433729.0",
+          "runner_id": "15289633",
+          "horse": "PRINCE OF HELENA",
+          "horse_code": "5046175.0",
+          "race_date": "2025-10-22",
+          "state": "VIC",
+          "track": "LADBROKES GEELONG",
+          "race_number": "9.0",
+          "row_fingerprint": "18c274bb97880644741569f02ad5f5948614cf244a3469648dc607974e4d43e1"
+        },
+        {
+          "source_row_number": "807756",
+          "legacy_performance_fact_id": "pf_c7a174f6ae3c9914699f82fb",
+          "race_context_key": "2025-10-23|VIC|LADBROKES GEELONG|6|5433729.0",
+          "race_id": "5433729.0",
+          "runner_id": "15289633",
+          "horse": "PRINCE OF HELENA",
+          "horse_code": "5046175.0",
+          "race_date": "2025-10-23",
+          "state": "VIC",
+          "track": "LADBROKES GEELONG",
+          "race_number": "6.0",
+          "row_fingerprint": "a99ceb7a0f486435779d932f3d9ccc5e2b6e7e82ff5815630813692b1eb0ae9e"
+        }
+      ]
+    },
+    {
+      "performance_fact_id": "pf_e1b6fbfefc6223165a75986e",
+      "count": 2,
+      "examples": [
+        {
+          "source_row_number": "807634",
+          "legacy_performance_fact_id": "pf_e1b6fbfefc6223165a75986e",
+          "race_context_key": "2025-10-22|VIC|LADBROKES GEELONG|9|5433729.0",
+          "race_id": "5433729.0",
+          "runner_id": "15289720",
+          "horse": "DRAGOON",
+          "horse_code": "5313510.0",
+          "race_date": "2025-10-22",
+          "state": "VIC",
+          "track": "LADBROKES GEELONG",
+          "race_number": "9.0",
+          "row_fingerprint": "76339e0ddc1eb5ada342ed1477acddb694896dacab57db3d856e6f985637e65e"
+        },
+        {
+          "source_row_number": "807757",
+          "legacy_performance_fact_id": "pf_e1b6fbfefc6223165a75986e",
+          "race_context_key": "2025-10-23|VIC|LADBROKES GEELONG|6|5433729.0",
+          "race_id": "5433729.0",
+          "runner_id": "15289720",
+          "horse": "DRAGOON",
+          "horse_code": "5313510.0",
+          "race_date": "2025-10-23",
+          "state": "VIC",
+          "track": "LADBROKES GEELONG",
+          "race_number": "6.0",
+          "row_fingerprint": "9bee99d1c993eca8a4f9f02bae3c763705a095993bd5afd78d61a1eaae0529eb"
+        }
+      ]
+    },
+    {
+      "performance_fact_id": "pf_221d096f999bd1541a43c400",
+      "count": 2,
+      "examples": [
+        {
+          "source_row_number": "807635",
+          "legacy_performance_fact_id": "pf_221d096f999bd1541a43c400",
+          "race_context_key": "2025-10-22|VIC|LADBROKES GEELONG|9|5433729.0",
+          "race_id": "5433729.0",
+          "runner_id": "15287218",
+          "horse": "OCEAN BEYOND",
+          "horse_code": "5282348.0",
+          "race_date": "2025-10-22",
+          "state": "VIC",
+          "track": "LADBROKES GEELONG",
+          "race_number": "9.0",
+          "row_fingerprint": "37fbad4201f35a48027bb5d7fc7eee6355487daf7bd7ad25230eb79a5485c346"
+        },
+        {
+          "source_row_number": "807758",
+          "legacy_performance_fact_id": "pf_221d096f999bd1541a43c400",
+          "race_context_key": "2025-10-23|VIC|LADBROKES GEELONG|6|5433729.0",
+          "race_id": "5433729.0",
+          "runner_id": "15287218",
+          "horse": "OCEAN BEYOND",
+          "horse_code": "5282348.0",
+          "race_date": "2025-10-23",
+          "state": "VIC",
+          "track": "LADBROKES GEELONG",
+          "race_number": "6.0",
+          "row_fingerprint": "2a428e14e8c48c9703ff1ff350e7b97c4bf4313a96650250b75d927f36beb1ec"
+        }
+      ]
+    },
+    {
+      "performance_fact_id": "pf_3ff71fbff7817ef0d6e56ade",
+      "count": 2,
+      "examples": [
+        {
+          "source_row_number": "807636",
+          "legacy_performance_fact_id": "pf_3ff71fbff7817ef0d6e56ade",
+          "race_context_key": "2025-10-22|VIC|LADBROKES GEELONG|9|5433729.0",
+          "race_id": "5433729.0",
+          "runner_id": "15288337",
+          "horse": "FLYING VALLEY",
+          "horse_code": "5346236.0",
+          "race_date": "2025-10-22",
+          "state": "VIC",
+          "track": "LADBROKES GEELONG",
+          "race_number": "9.0",
+          "row_fingerprint": "1a4b439093c0f6f01de56d7beba42685d1d546aba5727e747e9513716445a62e"
+        },
+        {
+          "source_row_number": "807759",
+          "legacy_performance_fact_id": "pf_3ff71fbff7817ef0d6e56ade",
+          "race_context_key": "2025-10-23|VIC|LADBROKES GEELONG|6|5433729.0",
+          "race_id": "5433729.0",
+          "runner_id": "15288337",
+          "horse": "FLYING VALLEY",
+          "horse_code": "5346236.0",
+          "race_date": "2025-10-23",
+          "state": "VIC",
+          "track": "LADBROKES GEELONG",
+          "race_number": "6.0",
+          "row_fingerprint": "d8c2a07349b2606452bd38afe85a61504d19841a88cee638aad4f8d9350e4472"
+        }
+      ]
+    },
+    {
+      "performance_fact_id": "pf_7c26cec5da8c1507602106f6",
+      "count": 2,
+      "examples": [
+        {
+          "source_row_number": "807637",
+          "legacy_performance_fact_id": "pf_7c26cec5da8c1507602106f6",
+          "race_context_key": "2025-10-22|VIC|LADBROKES GEELONG|9|5433729.0",
+          "race_id": "5433729.0",
+          "runner_id": "15288649",
+          "horse": "HAARACAINE",
+          "horse_code": "5324382.0",
+          "race_date": "2025-10-22",
+          "state": "VIC",
+          "track": "LADBROKES GEELONG",
+          "race_number": "9.0",
+          "row_fingerprint": "391334c0576a59b58fe07d4aaae4ef09695f3c402dcecca430f63147ed2f73b7"
+        },
+        {
+          "source_row_number": "807760",
+          "legacy_performance_fact_id": "pf_7c26cec5da8c1507602106f6",
+          "race_context_key": "2025-10-23|VIC|LADBROKES GEELONG|6|5433729.0",
+          "race_id": "5433729.0",
+          "runner_id": "15288649",
+          "horse": "HAARACAINE",
+          "horse_code": "5324382.0",
+          "race_date": "2025-10-23",
+          "state": "VIC",
+          "track": "LADBROKES GEELONG",
+          "race_number": "6.0",
+          "row_fingerprint": "5ccdaa8eaaf31ec718c306f54342fdabb28076b5ffaaa576cd8973e8aa2c703c"
+        }
+      ]
+    }
+  ],
+  "largest_natural_duplicate_groups": [],
+  "diagnostic_csv": "docs/performance-intelligence/audits/phase1_6_1/edgeiq_phase1_6_1_primary_key_diagnostic_20260716_072912.csv",
+  "root_cause": "Legacy Phase 1.6 performance_fact_id is not sufficient as the corrected primary key."
+}

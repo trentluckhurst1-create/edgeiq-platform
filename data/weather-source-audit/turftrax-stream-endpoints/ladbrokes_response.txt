@@ -1,0 +1,95 @@
+{
+    "status": 0,
+    "payload": {
+        "header": {
+            "description": "Turftrax Weather Data Visualisation for Sportsbet Sandown Racecourse on Fri, 10 Jul 2026 02:33:33 +0100",
+            "signature": "Turftrax ITS WDV API Stream prod-V1.5.3-2021-04-15T12:00",
+            "copyright": "2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Turftrax Ltd. All Rights Reserved."
+        },
+        "content": {
+            "additional-comment": "",
+            "air-temperature-current": 13.24,
+            "air-temperature-max": 13.26,
+            "air-temperature-min": 1.49,
+            "awt-race-date": "N/a",
+            "awtReport": 0,
+            "carousel": {
+                "temperature": {
+                    "default": "air",
+                    "list": [
+                        "air"
+                    ]
+                }
+            },
+            "disableMetic": [],
+            "et-24hr": 0.53,
+            "et-7day": 2.32,
+            "et-since": 0.12,
+            "etEnabled": true,
+            "going-race-date": "Wednesday, 15th July, 2026",
+            "going-report": "Soft 7 ",
+            "going-report-date": "Friday, 10th July, 2026 at 7:29 am",
+            "going-waypoint-map": "https://api.turftrax.co.uk/maps/going-reports/338681_waypoints.svg",
+            "going-zone-map": "https://api.turftrax.co.uk/maps/going-reports/338681_zones.svg",
+            "goingReport": 1,
+            "haveManualRain": false,
+            "humidity-current": 63.11,
+            "humidity-max": 98.88,
+            "humidity-min": 62.31,
+            "irrigation-report": "24hrs: 0mm\r\n7 days: 0mm",
+            "isDemo": false,
+            "isLastMeeting": false,
+            "location-date": "Wednesday, 15th July, 2026",
+            "location-title": "Sportsbet Hillside 15/07/2026",
+            "location-track-type": "N/a",
+            "location-venue": "Sportsbet Sandown",
+            "mapName": "Hillside",
+            "mapping-service": "yes",
+            "racingToday": 0,
+            "rail-report": "Hillside 6m",
+            "rain0-24hr": "",
+            "rain0-7day": "",
+            "rain0-today": "",
+            "rain1-24hr": 0.2,
+            "rain1-7day": 3.2,
+            "rain1-current": 0,
+            "rain1-since": 0,
+            "rain1-today": 0,
+            "rain2-24hr": 0,
+            "rain2-7day": 3.4,
+            "rain2-current": 0,
+            "rain2-since": 0,
+            "rain2-today": 0,
+            "reportStatus": {
+                "system": [
+                    "Previous Turf: 08/07/26, Next Turf: 15/07/26, Displaying: Wednesday, 15th July, 2026",
+                    "Turf Report ID: 338681, <span style=\"cursor:pointer;\" onclick=\"ButtonAction('hub-link', this);\">Hub Link</span>",
+                    "Display the most recent DRAFT Report: For 14 days before and 3 days after"
+                ],
+                "report": [],
+                "weather": []
+            },
+            "seasonEndMessage": "",
+            "stalls-report": "",
+            "stationActivityStatus": "active",
+            "stationId": 148000,
+            "stationType": "wtx",
+            "stick-report": "Overall: 8.1\r\nShear: 9",
+            "temperature-current": 13.24,
+            "temperature-max": 13.26,
+            "temperature-min": 1.49,
+            "trackType": "Turf",
+            "units": {
+                "linear": "mm",
+                "speed": "km/h",
+                "temperature": "C"
+            },
+            "use-map": "zone",
+            "useRainGauge": 2,
+            "usingAwtReport": "N/a",
+            "usingReport": "338681",
+            "venueId": 148,
+            "venueName": "Sportsbet Sandown Racecourse",
+            "weather-comment": "Top of 14, Partly cloudy. Slight chance of a shower, most likely during the morning. Winds westerly 15 to 20 km/h becoming light during the morning then becoming west to southwesterly 15 to 20 km/h during the day.",
+            "weather-date": "10/07/26",
+            "weather-l

@@ -1,0 +1,9 @@
+{
+  "historical_rows_assessed": 31602,
+  "minimum_prior_observations": 5,
+  "positive_residual": "BETTER_THAN_PRE_RACE_BASELINE",
+  "rows_rejected_missing_pre_race_baseline": 31407,
+  "rows_with_valid_pre_race_baseline": 195,
+  "target": "rating_base_value",
+  "unit": "HPR-NORM-A normalised rating units"
+}

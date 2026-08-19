@@ -1,0 +1,162 @@
+{
+  "engine_version": "1.0.0-final-bounded-canonical-anchor",
+  "status": "EDGEIQ_IDENTITY_REPOSITORY_PROFILER_V1_AUDIT_PASS",
+  "files_profiled": 14094,
+  "columns_profiled": 221942,
+  "identity_groups": 215,
+  "crosswalk_discovery_mode": "CANONICAL_ANCHOR_LINEAR",
+  "crosswalk_retained_columns": 117251,
+  "crosswalk_identity_columns": 117251,
+  "crosswalk_candidate_key_columns": 15021,
+  "crosswalk_candidates": 117251,
+  "crosswalk_maximum_governed_rows": 117251,
+  "crosswalk_linear_bound_pass": true,
+  "duplicate_edge_count": 3,
+  "self_edge_count": 0,
+  "base_profiling_complete": true,
+  "relationship_engine_complete": true,
+  "crosswalk_discovery_complete": true,
+  "identity_graph_complete": true,
+  "cumulative_wrappers_complete": true,
+  "step100_complete": true,
+  "outputs_complete": true,
+  "audit_complete": true,
+  "shutdown_complete": true,
+  "unit_tests": {
+    "tests": [
+      {
+        "test": "generic_code",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "test": "generic_codes",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "test": "generic_id",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "test": "generic_ids",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "test": "generic_key",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "test": "generic_keys",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "test": "generic_name",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "test": "generic_names",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "test": "generic_no",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "test": "generic_number",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "test": "generic_numbers",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "test": "generic_ref",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "test": "generic_reference",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "test": "generic_type",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "test": "generic_types",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "test": "generic_value",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "test": "generic_values",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "test": "canonical_anchor_selection",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "test": "no_duplicate_edge",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "test": "no_self_edge",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "test": "linear_bound",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "test": "ordering_deterministic",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "test": "parser_classification_preservation",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "test": "completion_placement",
+        "pass": true,
+        "detail": ""
+      }
+    ],
+    "passed": 24,
+    "failed": 0
+  },
+  "elapsed_seconds": 250.056,
+  "parser_classification_counts": {
+    "TEXT_SCANNED": 5718,
+    "VALID_JSON": 1429,
+    "VALID_CSV": 6934,
+    "JSONC_CONFIGURATION": 5,
+    "CSV_PARSE_ERROR": 4,
+    "NON_JSON_ARTIFACT": 2,
+    "EMPTY_JSON": 1,
+    "MALFORMED_JSON": 1
+  }
+}

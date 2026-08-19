@@ -1,0 +1,145 @@
+{
+  "contract_name": "edgeiq_race_entry_context_eligibility_fact_v1",
+  "contract_version": "1.0.0",
+  "grain": "one_deterministic_context_eligibility_decision_per_governed_race_entry_performance_context",
+  "primary_key": [
+    "race_entry_context_eligibility_id"
+  ],
+  "natural_key": [
+    "race_entry_performance_context_id"
+  ],
+  "required_fields": [
+    "race_entry_context_eligibility_id",
+    "race_entry_performance_context_id",
+    "race_entry_horse_performance_snapshot_id",
+    "race_entry_id",
+    "race_id",
+    "race_date",
+    "runner_id",
+    "canonical_horse_id",
+    "canonical_horse_name",
+    "historical_rating_eligibility",
+    "distance_context_eligibility",
+    "class_context_eligibility",
+    "track_context_eligibility",
+    "track_configuration_eligibility",
+    "track_condition_eligibility",
+    "surface_context_eligibility",
+    "rail_context_eligibility",
+    "barrier_context_eligibility",
+    "allocated_weight_eligibility",
+    "field_size_eligibility",
+    "complete_context_eligibility",
+    "primary_context_eligibility_reason_code",
+    "race_entry_context_eligibility_status",
+    "source_context_evidence_sha256",
+    "race_entry_context_eligibility_evidence_sha256",
+    "source_context_builder_version",
+    "builder_version",
+    "contract_version",
+    "built_at_utc"
+  ],
+  "allowed_values": {
+    "historical_rating_eligibility": [
+      "ELIGIBLE",
+      "INELIGIBLE_MISSING_CONTEXT",
+      "INELIGIBLE_INVALID_CONTEXT",
+      "INELIGIBLE_UNSUPPORTED_CONTEXT"
+    ],
+    "distance_context_eligibility": [
+      "ELIGIBLE",
+      "INELIGIBLE_MISSING_CONTEXT",
+      "INELIGIBLE_INVALID_CONTEXT",
+      "INELIGIBLE_UNSUPPORTED_CONTEXT"
+    ],
+    "class_context_eligibility": [
+      "ELIGIBLE",
+      "INELIGIBLE_MISSING_CONTEXT",
+      "INELIGIBLE_INVALID_CONTEXT",
+      "INELIGIBLE_UNSUPPORTED_CONTEXT"
+    ],
+    "track_context_eligibility": [
+      "ELIGIBLE",
+      "INELIGIBLE_MISSING_CONTEXT",
+      "INELIGIBLE_INVALID_CONTEXT",
+      "INELIGIBLE_UNSUPPORTED_CONTEXT"
+    ],
+    "track_configuration_eligibility": [
+      "ELIGIBLE",
+      "INELIGIBLE_MISSING_CONTEXT",
+      "INELIGIBLE_INVALID_CONTEXT",
+      "INELIGIBLE_UNSUPPORTED_CONTEXT"
+    ],
+    "track_condition_eligibility": [
+      "ELIGIBLE",
+      "INELIGIBLE_MISSING_CONTEXT",
+      "INELIGIBLE_INVALID_CONTEXT",
+      "INELIGIBLE_UNSUPPORTED_CONTEXT"
+    ],
+    "surface_context_eligibility": [
+      "ELIGIBLE",
+      "INELIGIBLE_MISSING_CONTEXT",
+      "INELIGIBLE_INVALID_CONTEXT",
+      "INELIGIBLE_UNSUPPORTED_CONTEXT"
+    ],
+    "rail_context_eligibility": [
+      "ELIGIBLE",
+      "INELIGIBLE_MISSING_CONTEXT",
+      "INELIGIBLE_INVALID_CONTEXT",
+      "INELIGIBLE_UNSUPPORTED_CONTEXT"
+    ],
+    "barrier_context_eligibility": [
+      "ELIGIBLE",
+      "INELIGIBLE_MISSING_CONTEXT",
+      "INELIGIBLE_INVALID_CONTEXT",
+      "INELIGIBLE_UNSUPPORTED_CONTEXT"
+    ],
+    "allocated_weight_eligibility": [
+      "ELIGIBLE",
+      "INELIGIBLE_MISSING_CONTEXT",
+      "INELIGIBLE_INVALID_CONTEXT",
+      "INELIGIBLE_UNSUPPORTED_CONTEXT"
+    ],
+    "field_size_eligibility": [
+      "ELIGIBLE",
+      "INELIGIBLE_MISSING_CONTEXT",
+      "INELIGIBLE_INVALID_CONTEXT",
+      "INELIGIBLE_UNSUPPORTED_CONTEXT"
+    ],
+    "complete_context_eligibility": [
+      "ELIGIBLE",
+      "INELIGIBLE"
+    ],
+    "race_entry_context_eligibility_status": [
+      "COMPLETE_CONTEXT_ELIGIBLE",
+      "COMPLETE_CONTEXT_INELIGIBLE"
+    ]
+  },
+  "forbidden_fields": [
+    "epi",
+    "eri",
+    "suitability",
+    "rating_adjustment",
+    "context_adjusted_rating",
+    "today_rating",
+    "predictive_rating",
+    "forecast_rating",
+    "runner_rank",
+    "race_rank",
+    "fair_price",
+    "market_price",
+    "class_adjustment",
+    "distance_adjustment",
+    "track_adjustment",
+    "track_condition_adjustment",
+    "surface_adjustment",
+    "rail_adjustment",
+    "barrier_adjustment",
+    "weight_adjustment",
+    "field_size_adjustment",
+    "jockey_adjustment",
+    "trainer_adjustment",
+    "pace_adjustment",
+    "map_adjustment"
+  ]
+}

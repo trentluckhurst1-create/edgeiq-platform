@@ -1,0 +1,42 @@
+{
+  "contract_name": "edgeiq_length_conversion_parameter_fact_v1",
+  "contract_version": "1.0.0",
+  "grain": "one_row_per_governed_exact_distance_conversion_parameter",
+  "primary_key": [
+    "length_conversion_parameter_id"
+  ],
+  "required_fields": [
+    "length_conversion_parameter_id",
+    "conversion_scope",
+    "official_distance_metres",
+    "seconds_per_length",
+    "conversion_model_version",
+    "parameter_status",
+    "effective_from_date",
+    "effective_to_date",
+    "evidence_reference",
+    "source_evidence_sha256",
+    "parameter_evidence_sha256",
+    "builder_version",
+    "contract_version",
+    "built_at_utc"
+  ],
+  "allowed_values": {
+    "conversion_scope": [
+      "DISTANCE_EXACT"
+    ],
+    "parameter_status": [
+      "AVAILABLE"
+    ]
+  },
+  "forbidden_fields": [
+    "track_variant",
+    "condition_adjustment",
+    "course_adjustment",
+    "surface_adjustment",
+    "lengths_versus_standard",
+    "performance_rating",
+    "speed_rating",
+    "epi"
+  ]
+}

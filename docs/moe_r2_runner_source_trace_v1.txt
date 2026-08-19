@@ -1,0 +1,5718 @@
+EDGEIQ MOE R2 RUNNER SOURCE TRACE V1
+========================================================================================================================
+TARGET=2026-07-21|MOE|R2
+CANDIDATE_FILES_SCANNED=653
+FILES_WITH_MATCHES=32
+
+========================================================================================================================
+FILE=public\data\edgeiq_live_runner_board_governed_v1_CHECKPOINT_BEFORE_CURRENT_INTEL_REBUILD_20260711_154418.csv
+TYPE=csv
+BEST_OFFICIAL_COMPLETENESS=5/7
+HEADER_COUNT=103
+HEADERS=race_date | day_bucket | meeting_type | meeting_status | dashboard_ready | track | race_no | race_key | meeting_key | runner_key | source | terminal_scope | horse | horse_key | horse_no | saddlecloth | barrier | jockey | trainer | race_time | distance | race_class | track_condition | rail_position | live_price | tab_fixed_win | tab_fixed_place | tab_fixed_betting_status | tab_tote_win | tab_tote_place | tab_tote_betting_status | tab_live_price_source | live_price_source | projected_rating_v5_2 | projection_gap_v5_2 | projection_band_v5_2 | projection_confidence_v5_2 | projected_rating_V6_1_RESEARCH | projection_gap_V6_1_RESEARCH | projection_band_V6_1_RESEARCH | V6_1_RESEARCH_probability | V6_1_RESEARCH_fair_price | V6_1_RESEARCH_price_status | V6_1_RESEARCH_price_bucket | V6_1_RESEARCH_price_rank | win_pct | fair_price | rated_price | ui_fair_price | edge_pct | ui_edge_pct | execution_action | display_source | display_decision | display_edge_pct | display_live_price | display_fair_price | is_scratched | scratch_status | runner_status | run_style | speed_map_bucket | settling_band | map_x_pct | map_y_px | ui_status | market_state | market_source_status | market_source_ready | market_source_rows | market_source_age_seconds | market_source_file | market_capture_timestamp | intelligence_note | early_speed_rating | early_speed_band | dfs_form_rating | tech_form_rating | total_rating_points | silk_url | scratched_time | tab_fixed_open_win | execution_action_final | probability_normalised_v1 | probability_raw_sum_before_v1 | probability_sum_after_v1 | probability_normalisation_factor_v1 | probability_normalisation_status_v1 | projected_rating_backfill_v1 | projected_rating_backfill_source_v1 | projected_rating_backfill_guardrail_v1 | display_fair_price_governed | no_history_flag | no_projection_flag | no_history_governance_band | no_history_governance_comment | fair_price_raw | edge_pct_raw | execution_action_raw | fair_price_display | edge_pct_display | execution_action_governed | governance_reason
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=11
+HORSE=MIGHTY MYSTIC
+IDENTITY=2026-07-03|MOE|R2
+OFFICIAL=number=3 | barrier=7 | jockey=BEN ALLEN | trainer=JOHN R ALLEN | weight=<EMPTY> | market=<EMPTY> | silk=https://api.beta.tab.com.au/v1/tab-info-service/racing/silk/ROYAL%20BLUE%20AND%20RED%20HALVES%2C%20WHITE%20BAND
+OFFICIAL_COMPLETENESS=5/7
+NON_EMPTY_VALUES:
+  race_date=2026-07-03
+  day_bucket=TODAY
+  meeting_type=COUNTRY
+  meeting_status=FIELDS_READY
+  dashboard_ready=YES
+  track=MOE
+  race_no=2
+  race_key=2026-07-03_MOE_R2
+  meeting_key=2026-07-03_MOE
+  runner_key=2026-07-03_MOE_R2_MIGHTYMYSTIC
+  source=edgeiq_vic_three_day_meeting_universe.csv+TAB_DIRECT_API
+  terminal_scope=TODAY_ONLY_MOE
+  horse=MIGHTY MYSTIC
+  horse_key=MIGHTYMYSTIC
+  horse_no=3
+  saddlecloth=3
+  barrier=7
+  jockey=BEN ALLEN
+  trainer=JOHN R ALLEN
+  distance=1217
+  race_class=3YO MDN
+  track_condition=HVY9
+  live_price=34
+  tab_fixed_win=34
+  tab_fixed_place=5
+  tab_fixed_betting_status=Open
+  tab_tote_win=15.3
+  tab_tote_place=1.8
+  tab_tote_betting_status=Closed
+  tab_live_price_source=TAB_FIXED_WIN
+  live_price_source=TAB_FIXED_WIN
+  projected_rating_v5_2=64.34
+  projection_band_v5_2=BACKFILLED_DISPLAY
+  projection_confidence_v5_2=LOW_BACKFILL
+  projection_band_V6_1_RESEARCH=NO_PROJECTION
+  V6_1_RESEARCH_price_status=NO_PRICE
+  V6_1_RESEARCH_price_bucket=NO_PRICE
+  execution_action=NO MODEL
+  display_source=TAB_FIXED_WIN
+  display_decision=NO MODEL
+  display_live_price=34
+  is_scratched=False
+  runner_status=ACTIVE
+  ui_status=LIVE
+  market_state=TIME_TBC
+  market_source_status=TAB_DIRECT_API_MISSING
+  market_source_ready=NO
+  market_source_rows=0
+  market_source_file=edgeiq_tab_live_prices_direct_v1.csv
+  intelligence_note=source_inventory=edgeiq_vic_three_day_meeting_universe.csv
+  early_speed_rating=0
+  early_speed_band=BACKMARKER
+  dfs_form_rating=0
+  tech_form_rating=0
+  total_rating_points=0
+  silk_url=https://api.beta.tab.com.au/v1/tab-info-service/racing/silk/ROYAL%20BLUE%20AND%20RED%20HALVES%2C%20WHITE%20BAND
+  tab_fixed_open_win=31
+  execution_action_final=NO MODEL
+  probability_normalised_v1=NO
+  probability_raw_sum_before_v1=0.00
+  probability_normalisation_status_v1=FAIL_NO_RAW_PROB
+  projected_rating_backfill_v1=64.34
+  projected_rating_backfill_source_v1=MARKET_ANCHOR+JOCKEY_PROFILE+CLASS_AVERAGE+RACE_AVERAGE
+  projected_rating_backfill_guardrail_v1=DISPLAY_ONLY_NO_V6_OR_PRICING_CHANGE
+  execution_action_raw=NO MODEL
+  execution_action_governed=NO MODEL
+  governance_reason=Runner has projection/history. Official price retained.
+
+========================================================================================================================
+FILE=public\data\edgeiq_historical_backtest_v1_runner_rows.csv
+TYPE=csv
+BEST_OFFICIAL_COMPLETENESS=4/7
+HEADER_COUNT=39
+HEADERS=meeting_date | track | race_no | race_key | source_url | page_loaded | visible_results | raceName | distance | raceClass | trackCondition | raceTime | prizeMoney | finishPosition | horseNo | horseName | horseKey | barrier | trainer | jockey | weight | prizemoneyEarned | inRun | margin | bb | sp | stab | rawText | status | error | source_batch_file_v1 | sp_num | finish_num | won | placed | profit_1u | market_rank | market_rank_bucket | sp_band
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=30500
+HORSE=Proffer
+IDENTITY=2025-11-02|MORNINGTON|R3
+OFFICIAL=number=<EMPTY> | barrier=8 | jockey=J.Mott | trainer=J.Sandhu | weight=58kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-11-02
+  track=MORNINGTON
+  race_no=3
+  race_key=2025-11-02|MORNINGTON|3
+  source_url=https://www.racing.com/form/2025-11-02/mornington/race/3
+  page_loaded=True
+  visible_results=True
+  raceName=Peninsula Kubota Plate
+  distance=1200m
+  raceClass=Maiden
+  trackCondition=Good 4
+  raceTime=1:10.70
+  prizeMoney=55,000
+  finishPosition=3
+  horseNo=10
+  horseName=Proffer
+  horseKey=PROFFER
+  barrier=8
+  trainer=J.Sandhu
+  jockey=J.Mott
+  weight=58kg
+  prizemoneyEarned=$4950
+  inRun=3rd/4th
+  margin=1.35L
+  bb=$19.00
+  sp=$4.30
+  rawText=3rd 10. Proffer (8) T: J.Sandhu J: J.Mott 58kg $4,950 3rd/4th 1.35L $19.00 – $4.30
+  status=RENDERED_TEXT_RESULTS_EXTRACTED
+  source_batch_file_v1=edgeiq_racingcom_results_batch_offset_12500.csv
+  sp_num=4.3
+  finish_num=3.0
+  won=0
+  placed=1
+  profit_1u=-1.0
+  market_rank=2.0
+  market_rank_bucket=2
+  sp_band=03_3-4.99
+
+========================================================================================================================
+FILE=public\data\edgeiq_historical_runner_scores_v1.csv
+TYPE=csv
+BEST_OFFICIAL_COMPLETENESS=4/7
+HEADER_COUNT=55
+HEADERS=meeting_date | track | race_no | race_key | source_url | page_loaded | visible_results | raceName | distance | raceClass | trackCondition | raceTime | prizeMoney | finishPosition | horseNo | horseName | horseKey | barrier | trainer | jockey | weight | prizemoneyEarned | inRun | margin | bb | sp | stab | rawText | status | error | source_batch_file_v1 | horse | horse_key | finish_position | sp_num | field_size | finish_pct | won | placed | top4 | starts_before | wins_before | places_before | top4_before | avg_finish_pct_before | best_finish_pct_before | recent_avg_finish_pct_before | win_rate_before | place_rate_before | top4_rate_before | governance_band_hist_v1 | historical_ability_score_v1 | ability_multiplier_hist_v1 | runner_score_hist_v1 | runner_rank_hist_v1
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=105098
+HORSE=Proffer
+IDENTITY=2025-11-02|MORNINGTON|R3
+OFFICIAL=number=<EMPTY> | barrier=8 | jockey=J.Mott | trainer=J.Sandhu | weight=58kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-11-02
+  track=MORNINGTON
+  race_no=3
+  race_key=2025-11-02|MORNINGTON|3
+  source_url=https://www.racing.com/form/2025-11-02/mornington/race/3
+  page_loaded=True
+  visible_results=True
+  raceName=Peninsula Kubota Plate
+  distance=1200m
+  raceClass=Maiden
+  trackCondition=Good 4
+  raceTime=1:10.70
+  prizeMoney=55,000
+  finishPosition=3
+  horseNo=10
+  horseName=Proffer
+  horseKey=PROFFER
+  barrier=8
+  trainer=J.Sandhu
+  jockey=J.Mott
+  weight=58kg
+  prizemoneyEarned=$4950
+  inRun=3rd/4th
+  margin=1.35L
+  bb=$19.00
+  sp=$4.30
+  rawText=3rd 10. Proffer (8) T: J.Sandhu J: J.Mott 58kg $4,950 3rd/4th 1.35L $19.00 – $4.30
+  status=RENDERED_TEXT_RESULTS_EXTRACTED
+  source_batch_file_v1=edgeiq_racingcom_results_batch_offset_12500.csv
+  horse=Proffer
+  horse_key=PROFFER
+  finish_position=3.0
+  sp_num=4.3
+  field_size=10
+  finish_pct=0.7777777777777778
+  won=0
+  placed=1
+  top4=1
+  starts_before=0
+  wins_before=0.0
+  places_before=0.0
+  top4_before=0.0
+  win_rate_before=0.0
+  place_rate_before=0.0
+  top4_rate_before=0.0
+  governance_band_hist_v1=FIRST_STARTER_OR_UNKNOWN
+  historical_ability_score_v1=27.72
+  ability_multiplier_hist_v1=1.02
+  runner_score_hist_v1=28.274
+  runner_rank_hist_v1=9
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=106510
+HORSE=Proffer
+IDENTITY=2025-11-13|BET365 SEYMOUR|R3
+OFFICIAL=number=<EMPTY> | barrier=11 | jockey=J.Mott | trainer=J.Sandhu | weight=58kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-11-13
+  track=BET365 SEYMOUR
+  race_no=3
+  race_key=2025-11-13|BET365 SEYMOUR|3
+  source_url=https://www.racing.com/form/2025-11-13/bet365-seymour/race/3
+  page_loaded=True
+  visible_results=True
+  raceName=Height Insurance Agencies Maiden Plate
+  distance=1200m
+  raceClass=Maiden
+  trackCondition=Good 4
+  raceTime=1:11.78
+  prizeMoney=42,500
+  finishPosition=5
+  horseNo=6
+  horseName=Proffer
+  horseKey=PROFFER
+  barrier=11
+  trainer=J.Sandhu
+  jockey=J.Mott
+  weight=58kg
+  prizemoneyEarned=$1275
+  inRun=9th/9th
+  margin=2.71L
+  bb=$8.50
+  rawText=5th 6. Proffer (11) T: J.Sandhu J: J.Mott 58kg $1,275 9th/9th 2.71L $8.50 – –
+  status=RENDERED_TEXT_RESULTS_EXTRACTED
+  source_batch_file_v1=edgeiq_racingcom_results_batch_offset_13000.csv
+  horse=Proffer
+  horse_key=PROFFER
+  finish_position=5.0
+  field_size=11
+  finish_pct=0.6
+  won=0
+  placed=0
+  top4=0
+  starts_before=1
+  wins_before=0.0
+  places_before=1.0
+  top4_before=1.0
+  avg_finish_pct_before=0.7777777777777778
+  best_finish_pct_before=0.7777777777777778
+  recent_avg_finish_pct_before=0.7777777777777778
+  win_rate_before=0.0
+  place_rate_before=1.0
+  top4_rate_before=1.0
+  governance_band_hist_v1=LIMITED_DATA_1_START
+  historical_ability_score_v1=75.33333333333333
+  ability_multiplier_hist_v1=0.98
+  runner_score_hist_v1=73.827
+  runner_rank_hist_v1=1
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=108086
+HORSE=Proffer
+IDENTITY=2025-11-27|MORNINGTON|R3
+OFFICIAL=number=<EMPTY> | barrier=4 | jockey=J.Mott | trainer=J.Sandhu | weight=58kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-11-27
+  track=MORNINGTON
+  race_no=3
+  race_key=2025-11-27|MORNINGTON|3
+  source_url=https://www.racing.com/form/2025-11-27/mornington/race/3
+  page_loaded=True
+  visible_results=True
+  raceName=Jason Sparkes Plate
+  distance=1500m
+  raceClass=Maiden
+  trackCondition=Good 4
+  raceTime=1:32.91
+  prizeMoney=42,500
+  finishPosition=5
+  horseNo=5
+  horseName=Proffer
+  horseKey=PROFFER
+  barrier=4
+  trainer=J.Sandhu
+  jockey=J.Mott
+  weight=58kg
+  prizemoneyEarned=$1275
+  inRun=6th/5th
+  margin=2L
+  bb=$4.40
+  rawText=5th 5. Proffer (4) T: J.Sandhu J: J.Mott 58kg $1,275 6th/5th 2L $4.40 – –
+  status=RENDERED_TEXT_RESULTS_EXTRACTED
+  source_batch_file_v1=edgeiq_racingcom_results_batch_offset_13000.csv
+  horse=Proffer
+  horse_key=PROFFER
+  finish_position=5.0
+  field_size=8
+  finish_pct=0.4285714285714286
+  won=0
+  placed=0
+  top4=0
+  starts_before=2
+  wins_before=0.0
+  places_before=1.0
+  top4_before=1.0
+  avg_finish_pct_before=0.6888888888888889
+  best_finish_pct_before=0.7777777777777778
+  recent_avg_finish_pct_before=0.6888888888888889
+  win_rate_before=0.0
+  place_rate_before=0.5
+  top4_rate_before=0.5
+  governance_band_hist_v1=LIMITED_DATA_2_STARTS
+  historical_ability_score_v1=57.82222222222223
+  ability_multiplier_hist_v1=1.045
+  runner_score_hist_v1=60.424
+  runner_rank_hist_v1=1
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=112388
+HORSE=Proffer
+IDENTITY=2026-01-03|SOUTHSIDE CRANBOURNE|R2
+OFFICIAL=number=<EMPTY> | barrier=7 | jockey=P.Gatt | trainer=J.Sandhu | weight=58kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2026-01-03
+  track=SOUTHSIDE CRANBOURNE
+  race_no=2
+  race_key=2026-01-03|SOUTHSIDE CRANBOURNE|2
+  source_url=https://www.racing.com/form/2026-01-03/southside-cranbourne/race/2
+  page_loaded=True
+  visible_results=True
+  raceName=NZB Karaka 2026 Maiden Plate
+  distance=1200m
+  raceClass=Maiden
+  trackCondition=Good 4
+  raceTime=1:10.35
+  prizeMoney=32,000
+  finishPosition=7
+  horseNo=4
+  horseName=Proffer
+  horseKey=PROFFER
+  barrier=7
+  trainer=J.Sandhu
+  jockey=P.Gatt
+  weight=58kg
+  prizemoneyEarned=$640
+  inRun=8th/7th
+  margin=9.31L
+  bb=$31.00
+  rawText=7th 4. Proffer (7) T: J.Sandhu J: P.Gatt 58kg $640 8th/7th 9.31L $31.00 – –
+  status=RENDERED_TEXT_RESULTS_EXTRACTED
+  source_batch_file_v1=edgeiq_racingcom_results_batch_offset_13500.csv
+  horse=Proffer
+  horse_key=PROFFER
+  finish_position=7.0
+  field_size=8
+  finish_pct=0.1428571428571429
+  won=0
+  placed=0
+  top4=0
+  starts_before=3
+  wins_before=0.0
+  places_before=1.0
+  top4_before=1.0
+  avg_finish_pct_before=0.6021164021164022
+  best_finish_pct_before=0.7777777777777778
+  recent_avg_finish_pct_before=0.6021164021164022
+  win_rate_before=0.0
+  place_rate_before=0.3333333333333333
+  top4_rate_before=0.3333333333333333
+  governance_band_hist_v1=LIMITED_DATA_3_4_STARTS
+  historical_ability_score_v1=48.44232804232805
+  ability_multiplier_hist_v1=0.98
+  runner_score_hist_v1=47.473
+  runner_rank_hist_v1=5
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=113813
+HORSE=Proffer
+IDENTITY=2026-01-17|SOUTHSIDE CRANBOURNE|R3
+OFFICIAL=number=<EMPTY> | barrier=7 | jockey=C.Newitt | trainer=J.Sandhu | weight=58kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2026-01-17
+  track=SOUTHSIDE CRANBOURNE
+  race_no=3
+  race_key=2026-01-17|SOUTHSIDE CRANBOURNE|3
+  source_url=https://www.racing.com/form/2026-01-17/southside-cranbourne/race/3
+  page_loaded=True
+  visible_results=True
+  raceName=BetaVet Maiden Plate
+  distance=1300m
+  raceClass=Maiden
+  trackCondition=Good 4
+  raceTime=1:18.19
+  prizeMoney=32,000
+  finishPosition=5
+  horseNo=6
+  horseName=Proffer
+  horseKey=PROFFER
+  barrier=7
+  trainer=J.Sandhu
+  jockey=C.Newitt
+  weight=58kg
+  prizemoneyEarned=$960
+  inRun=8th/5th
+  margin=7L
+  bb=$12.00
+  rawText=5th 6. Proffer (7) T: J.Sandhu J: C.Newitt 58kg $960 8th/5th 7L $12.00 – –
+  status=RENDERED_TEXT_RESULTS_EXTRACTED
+  source_batch_file_v1=edgeiq_racingcom_results_batch_offset_13500.csv
+  horse=Proffer
+  horse_key=PROFFER
+  finish_position=5.0
+  field_size=9
+  finish_pct=0.5
+  won=0
+  placed=0
+  top4=0
+  starts_before=4
+  wins_before=0.0
+  places_before=1.0
+  top4_before=1.0
+  avg_finish_pct_before=0.48730158730158735
+  best_finish_pct_before=0.7777777777777778
+  recent_avg_finish_pct_before=0.48730158730158735
+  win_rate_before=0.0
+  place_rate_before=0.25
+  top4_rate_before=0.25
+  governance_band_hist_v1=LIMITED_DATA_3_4_STARTS
+  historical_ability_score_v1=39.32380952380953
+  ability_multiplier_hist_v1=0.98
+  runner_score_hist_v1=38.537
+  runner_rank_hist_v1=4
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=113817
+HORSE=Rock About
+IDENTITY=2026-01-17|SOUTHSIDE CRANBOURNE|R3
+OFFICIAL=number=<EMPTY> | barrier=4 | jockey=S.Foley | trainer=W.J.Kelly | weight=58kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2026-01-17
+  track=SOUTHSIDE CRANBOURNE
+  race_no=3
+  race_key=2026-01-17|SOUTHSIDE CRANBOURNE|3
+  source_url=https://www.racing.com/form/2026-01-17/southside-cranbourne/race/3
+  page_loaded=True
+  visible_results=True
+  raceName=BetaVet Maiden Plate
+  distance=1300m
+  raceClass=Maiden
+  trackCondition=Good 4
+  raceTime=1:18.19
+  prizeMoney=32,000
+  finishPosition=7
+  horseNo=7
+  horseName=Rock About
+  horseKey=ROCKABOUT
+  barrier=4
+  trainer=W.J.Kelly
+  jockey=S.Foley
+  weight=58kg
+  prizemoneyEarned=$640
+  inRun=6th/7th
+  margin=8.75L
+  bb=$10.00
+  rawText=7th 7. Rock About (4) T: W.J.Kelly J: S.Foley 58kg $640 6th/7th 8.75L $10.00 – –
+  status=RENDERED_TEXT_RESULTS_EXTRACTED
+  source_batch_file_v1=edgeiq_racingcom_results_batch_offset_13500.csv
+  horse=Rock About
+  horse_key=ROCKABOUT
+  finish_position=7.0
+  field_size=9
+  finish_pct=0.25
+  won=0
+  placed=0
+  top4=0
+  starts_before=0
+  wins_before=0.0
+  places_before=0.0
+  top4_before=0.0
+  win_rate_before=0.0
+  place_rate_before=0.0
+  top4_rate_before=0.0
+  governance_band_hist_v1=FIRST_STARTER_OR_UNKNOWN
+  historical_ability_score_v1=27.72
+  ability_multiplier_hist_v1=1.02
+  runner_score_hist_v1=28.274
+  runner_rank_hist_v1=8
+
+========================================================================================================================
+FILE=public\data\edgeiq_racingcom_results_warehouse_all_v1.csv
+TYPE=csv
+BEST_OFFICIAL_COMPLETENESS=4/7
+HEADER_COUNT=83
+HEADERS=meeting_date | track | race_no | race_key | source_url | page_loaded | visible_results | raceName | distance | raceClass | trackCondition | raceTime | prizeMoney | finishPosition | horseNo | horseName | horseKey | barrier | trainer | jockey | weight | prizemoneyEarned | inRun | margin | bb | sp | stab | rawText | status | error | source_batch_file_v1 | _source_file | metric | value | batch_file | rows | built_at | candidate_races_available | batch_size | offset | attempted_pages | pages_loaded | visible_result_pages | runner_rows_output | unique_races | unique_horses | graphql_endpoint_called_by_script | api_key_extracted | private_endpoint_used | final_status | scraped_at | source | horse | horse_canon | runner_no | finish_position_raw | finish_position | result_status | tab_fixed_win | tab_fixed_place | fixed_win_dividend | fixed_place_dividend | tab_fixed_betting_status | tab_url | extract_method | rows_added | race_date | state | track_key | race_time | race_name | horse_key | finish_pos | finish_pos_num | margin_num | sp_num | result_identity_score | result_identity_confidence | raw_file | winner | second | third | official_time
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=133843
+HORSE=Proffer
+IDENTITY=2025-10-26|SALE|R2
+OFFICIAL=number=<EMPTY> | barrier=12 | jockey=TBC | trainer=J.Sandhu | weight=57kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-10-26
+  track=SALE
+  race_no=2
+  race_key=2025-10-26|SALE|2
+  source_url=https://www.racing.com/form/2025-10-26/sale/race/2
+  page_loaded=True
+  visible_results=True
+  raceName=Powered Solutions Maiden Plate
+  distance=1200m
+  raceClass=Maiden
+  trackCondition=Soft 5
+  raceTime=1:10.53
+  prizeMoney=42,500
+  finishPosition=SCR
+  horseNo=5
+  horseName=Proffer
+  horseKey=PROFFER
+  barrier=12
+  trainer=J.Sandhu
+  jockey=TBC
+  weight=57kg
+  rawText=SCR 5. Proffer (12) T: J.Sandhu J: TBC 57kg – – – – – –
+  status=RENDERED_TEXT_RESULTS_EXTRACTED
+  source_batch_file_v1=edgeiq_racingcom_results_batch_offset_12500.csv
+  _source_file=public\data\edgeiq_racingcom_results_warehouse_full_v1.csv
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=134996
+HORSE=Proffer
+IDENTITY=2025-11-02|MORNINGTON|R3
+OFFICIAL=number=<EMPTY> | barrier=8 | jockey=J.Mott | trainer=J.Sandhu | weight=58kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-11-02
+  track=MORNINGTON
+  race_no=3
+  race_key=2025-11-02|MORNINGTON|3
+  source_url=https://www.racing.com/form/2025-11-02/mornington/race/3
+  page_loaded=True
+  visible_results=True
+  raceName=Peninsula Kubota Plate
+  distance=1200m
+  raceClass=Maiden
+  trackCondition=Good 4
+  raceTime=1:10.70
+  prizeMoney=55,000
+  finishPosition=3
+  horseNo=10
+  horseName=Proffer
+  horseKey=PROFFER
+  barrier=8
+  trainer=J.Sandhu
+  jockey=J.Mott
+  weight=58kg
+  prizemoneyEarned=$4950
+  inRun=3rd/4th
+  margin=1.35L
+  bb=$19.00
+  sp=$4.30
+  rawText=3rd 10. Proffer (8) T: J.Sandhu J: J.Mott 58kg $4,950 3rd/4th 1.35L $19.00 – $4.30
+  status=RENDERED_TEXT_RESULTS_EXTRACTED
+  source_batch_file_v1=edgeiq_racingcom_results_batch_offset_12500.csv
+  _source_file=public\data\edgeiq_racingcom_results_warehouse_full_v1.csv
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=136869
+HORSE=Proffer
+IDENTITY=2025-11-13|BET365 SEYMOUR|R3
+OFFICIAL=number=<EMPTY> | barrier=11 | jockey=J.Mott | trainer=J.Sandhu | weight=58kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-11-13
+  track=BET365 SEYMOUR
+  race_no=3
+  race_key=2025-11-13|BET365 SEYMOUR|3
+  source_url=https://www.racing.com/form/2025-11-13/bet365-seymour/race/3
+  page_loaded=True
+  visible_results=True
+  raceName=Height Insurance Agencies Maiden Plate
+  distance=1200m
+  raceClass=Maiden
+  trackCondition=Good 4
+  raceTime=1:11.78
+  prizeMoney=42,500
+  finishPosition=5
+  horseNo=6
+  horseName=Proffer
+  horseKey=PROFFER
+  barrier=11
+  trainer=J.Sandhu
+  jockey=J.Mott
+  weight=58kg
+  prizemoneyEarned=$1275
+  inRun=9th/9th
+  margin=2.71L
+  bb=$8.50
+  rawText=5th 6. Proffer (11) T: J.Sandhu J: J.Mott 58kg $1,275 9th/9th 2.71L $8.50 – –
+  status=RENDERED_TEXT_RESULTS_EXTRACTED
+  source_batch_file_v1=edgeiq_racingcom_results_batch_offset_13000.csv
+  _source_file=public\data\edgeiq_racingcom_results_warehouse_full_v1.csv
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=138872
+HORSE=Proffer
+IDENTITY=2025-11-27|MORNINGTON|R3
+OFFICIAL=number=<EMPTY> | barrier=4 | jockey=J.Mott | trainer=J.Sandhu | weight=58kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-11-27
+  track=MORNINGTON
+  race_no=3
+  race_key=2025-11-27|MORNINGTON|3
+  source_url=https://www.racing.com/form/2025-11-27/mornington/race/3
+  page_loaded=True
+  visible_results=True
+  raceName=Jason Sparkes Plate
+  distance=1500m
+  raceClass=Maiden
+  trackCondition=Good 4
+  raceTime=1:32.91
+  prizeMoney=42,500
+  finishPosition=5
+  horseNo=5
+  horseName=Proffer
+  horseKey=PROFFER
+  barrier=4
+  trainer=J.Sandhu
+  jockey=J.Mott
+  weight=58kg
+  prizemoneyEarned=$1275
+  inRun=6th/5th
+  margin=2L
+  bb=$4.40
+  rawText=5th 5. Proffer (4) T: J.Sandhu J: J.Mott 58kg $1,275 6th/5th 2L $4.40 – –
+  status=RENDERED_TEXT_RESULTS_EXTRACTED
+  source_batch_file_v1=edgeiq_racingcom_results_batch_offset_13000.csv
+  _source_file=public\data\edgeiq_racingcom_results_warehouse_full_v1.csv
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=141961
+HORSE=Proffer
+IDENTITY=2025-12-18|BET365 SEYMOUR|R5
+OFFICIAL=number=<EMPTY> | barrier=5 | jockey=B.Mertens | trainer=J.Sandhu | weight=58kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-12-18
+  track=BET365 SEYMOUR
+  race_no=5
+  race_key=2025-12-18|BET365 SEYMOUR|5
+  source_url=https://www.racing.com/form/2025-12-18/bet365-seymour/race/5
+  page_loaded=True
+  visible_results=True
+  raceName=Yarran Maiden Plate
+  distance=1300m
+  raceClass=Maiden
+  trackCondition=Good 4
+  raceTime=1:18.53
+  prizeMoney=42,500
+  finishPosition=SCR
+  horseNo=6
+  horseName=Proffer
+  horseKey=PROFFER
+  barrier=5
+  trainer=J.Sandhu
+  jockey=B.Mertens
+  weight=58kg
+  rawText=SCR 6. Proffer (5) T: J.Sandhu J: B.Mertens 58kg – – – – – –
+  status=RENDERED_TEXT_RESULTS_EXTRACTED
+  source_batch_file_v1=edgeiq_racingcom_results_batch_offset_13500.csv
+  _source_file=public\data\edgeiq_racingcom_results_warehouse_full_v1.csv
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=144531
+HORSE=Proffer
+IDENTITY=2026-01-03|SOUTHSIDE CRANBOURNE|R2
+OFFICIAL=number=<EMPTY> | barrier=7 | jockey=P.Gatt | trainer=J.Sandhu | weight=58kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2026-01-03
+  track=SOUTHSIDE CRANBOURNE
+  race_no=2
+  race_key=2026-01-03|SOUTHSIDE CRANBOURNE|2
+  source_url=https://www.racing.com/form/2026-01-03/southside-cranbourne/race/2
+  page_loaded=True
+  visible_results=True
+  raceName=NZB Karaka 2026 Maiden Plate
+  distance=1200m
+  raceClass=Maiden
+  trackCondition=Good 4
+  raceTime=1:10.35
+  prizeMoney=32,000
+  finishPosition=7
+  horseNo=4
+  horseName=Proffer
+  horseKey=PROFFER
+  barrier=7
+  trainer=J.Sandhu
+  jockey=P.Gatt
+  weight=58kg
+  prizemoneyEarned=$640
+  inRun=8th/7th
+  margin=9.31L
+  bb=$31.00
+  rawText=7th 4. Proffer (7) T: J.Sandhu J: P.Gatt 58kg $640 8th/7th 9.31L $31.00 – –
+  status=RENDERED_TEXT_RESULTS_EXTRACTED
+  source_batch_file_v1=edgeiq_racingcom_results_batch_offset_13500.csv
+  _source_file=public\data\edgeiq_racingcom_results_warehouse_full_v1.csv
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=146270
+HORSE=Proffer
+IDENTITY=2026-01-17|SOUTHSIDE CRANBOURNE|R3
+OFFICIAL=number=<EMPTY> | barrier=7 | jockey=C.Newitt | trainer=J.Sandhu | weight=58kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2026-01-17
+  track=SOUTHSIDE CRANBOURNE
+  race_no=3
+  race_key=2026-01-17|SOUTHSIDE CRANBOURNE|3
+  source_url=https://www.racing.com/form/2026-01-17/southside-cranbourne/race/3
+  page_loaded=True
+  visible_results=True
+  raceName=BetaVet Maiden Plate
+  distance=1300m
+  raceClass=Maiden
+  trackCondition=Good 4
+  raceTime=1:18.19
+  prizeMoney=32,000
+  finishPosition=5
+  horseNo=6
+  horseName=Proffer
+  horseKey=PROFFER
+  barrier=7
+  trainer=J.Sandhu
+  jockey=C.Newitt
+  weight=58kg
+  prizemoneyEarned=$960
+  inRun=8th/5th
+  margin=7L
+  bb=$12.00
+  rawText=5th 6. Proffer (7) T: J.Sandhu J: C.Newitt 58kg $960 8th/5th 7L $12.00 – –
+  status=RENDERED_TEXT_RESULTS_EXTRACTED
+  source_batch_file_v1=edgeiq_racingcom_results_batch_offset_13500.csv
+  _source_file=public\data\edgeiq_racingcom_results_warehouse_full_v1.csv
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=146272
+HORSE=Rock About
+IDENTITY=2026-01-17|SOUTHSIDE CRANBOURNE|R3
+OFFICIAL=number=<EMPTY> | barrier=4 | jockey=S.Foley | trainer=W.J.Kelly | weight=58kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2026-01-17
+  track=SOUTHSIDE CRANBOURNE
+  race_no=3
+  race_key=2026-01-17|SOUTHSIDE CRANBOURNE|3
+  source_url=https://www.racing.com/form/2026-01-17/southside-cranbourne/race/3
+  page_loaded=True
+  visible_results=True
+  raceName=BetaVet Maiden Plate
+  distance=1300m
+  raceClass=Maiden
+  trackCondition=Good 4
+  raceTime=1:18.19
+  prizeMoney=32,000
+  finishPosition=7
+  horseNo=7
+  horseName=Rock About
+  horseKey=ROCKABOUT
+  barrier=4
+  trainer=W.J.Kelly
+  jockey=S.Foley
+  weight=58kg
+  prizemoneyEarned=$640
+  inRun=6th/7th
+  margin=8.75L
+  bb=$10.00
+  rawText=7th 7. Rock About (4) T: W.J.Kelly J: S.Foley 58kg $640 6th/7th 8.75L $10.00 – –
+  status=RENDERED_TEXT_RESULTS_EXTRACTED
+  source_batch_file_v1=edgeiq_racingcom_results_batch_offset_13500.csv
+  _source_file=public\data\edgeiq_racingcom_results_warehouse_full_v1.csv
+
+========================================================================================================================
+FILE=public\data\edgeiq_racingcom_results_warehouse_full_v1.csv
+TYPE=csv
+BEST_OFFICIAL_COMPLETENESS=4/7
+HEADER_COUNT=31
+HEADERS=meeting_date | track | race_no | race_key | source_url | page_loaded | visible_results | raceName | distance | raceClass | trackCondition | raceTime | prizeMoney | finishPosition | horseNo | horseName | horseKey | barrier | trainer | jockey | weight | prizemoneyEarned | inRun | margin | bb | sp | stab | rawText | status | error | source_batch_file_v1
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=132779
+HORSE=Proffer
+IDENTITY=2025-10-26|SALE|R2
+OFFICIAL=number=<EMPTY> | barrier=12 | jockey=TBC | trainer=J.Sandhu | weight=57kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-10-26
+  track=SALE
+  race_no=2
+  race_key=2025-10-26|SALE|2
+  source_url=https://www.racing.com/form/2025-10-26/sale/race/2
+  page_loaded=True
+  visible_results=True
+  raceName=Powered Solutions Maiden Plate
+  distance=1200m
+  raceClass=Maiden
+  trackCondition=Soft 5
+  raceTime=1:10.53
+  prizeMoney=42,500
+  finishPosition=SCR
+  horseNo=5
+  horseName=Proffer
+  horseKey=PROFFER
+  barrier=12
+  trainer=J.Sandhu
+  jockey=TBC
+  weight=57kg
+  rawText=SCR 5. Proffer (12) T: J.Sandhu J: TBC 57kg – – – – – –
+  status=RENDERED_TEXT_RESULTS_EXTRACTED
+  source_batch_file_v1=edgeiq_racingcom_results_batch_offset_12500.csv
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=133932
+HORSE=Proffer
+IDENTITY=2025-11-02|MORNINGTON|R3
+OFFICIAL=number=<EMPTY> | barrier=8 | jockey=J.Mott | trainer=J.Sandhu | weight=58kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-11-02
+  track=MORNINGTON
+  race_no=3
+  race_key=2025-11-02|MORNINGTON|3
+  source_url=https://www.racing.com/form/2025-11-02/mornington/race/3
+  page_loaded=True
+  visible_results=True
+  raceName=Peninsula Kubota Plate
+  distance=1200m
+  raceClass=Maiden
+  trackCondition=Good 4
+  raceTime=1:10.70
+  prizeMoney=55,000
+  finishPosition=3
+  horseNo=10
+  horseName=Proffer
+  horseKey=PROFFER
+  barrier=8
+  trainer=J.Sandhu
+  jockey=J.Mott
+  weight=58kg
+  prizemoneyEarned=$4950
+  inRun=3rd/4th
+  margin=1.35L
+  bb=$19.00
+  sp=$4.30
+  rawText=3rd 10. Proffer (8) T: J.Sandhu J: J.Mott 58kg $4,950 3rd/4th 1.35L $19.00 – $4.30
+  status=RENDERED_TEXT_RESULTS_EXTRACTED
+  source_batch_file_v1=edgeiq_racingcom_results_batch_offset_12500.csv
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=135805
+HORSE=Proffer
+IDENTITY=2025-11-13|BET365 SEYMOUR|R3
+OFFICIAL=number=<EMPTY> | barrier=11 | jockey=J.Mott | trainer=J.Sandhu | weight=58kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-11-13
+  track=BET365 SEYMOUR
+  race_no=3
+  race_key=2025-11-13|BET365 SEYMOUR|3
+  source_url=https://www.racing.com/form/2025-11-13/bet365-seymour/race/3
+  page_loaded=True
+  visible_results=True
+  raceName=Height Insurance Agencies Maiden Plate
+  distance=1200m
+  raceClass=Maiden
+  trackCondition=Good 4
+  raceTime=1:11.78
+  prizeMoney=42,500
+  finishPosition=5
+  horseNo=6
+  horseName=Proffer
+  horseKey=PROFFER
+  barrier=11
+  trainer=J.Sandhu
+  jockey=J.Mott
+  weight=58kg
+  prizemoneyEarned=$1275
+  inRun=9th/9th
+  margin=2.71L
+  bb=$8.50
+  rawText=5th 6. Proffer (11) T: J.Sandhu J: J.Mott 58kg $1,275 9th/9th 2.71L $8.50 – –
+  status=RENDERED_TEXT_RESULTS_EXTRACTED
+  source_batch_file_v1=edgeiq_racingcom_results_batch_offset_13000.csv
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=137808
+HORSE=Proffer
+IDENTITY=2025-11-27|MORNINGTON|R3
+OFFICIAL=number=<EMPTY> | barrier=4 | jockey=J.Mott | trainer=J.Sandhu | weight=58kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-11-27
+  track=MORNINGTON
+  race_no=3
+  race_key=2025-11-27|MORNINGTON|3
+  source_url=https://www.racing.com/form/2025-11-27/mornington/race/3
+  page_loaded=True
+  visible_results=True
+  raceName=Jason Sparkes Plate
+  distance=1500m
+  raceClass=Maiden
+  trackCondition=Good 4
+  raceTime=1:32.91
+  prizeMoney=42,500
+  finishPosition=5
+  horseNo=5
+  horseName=Proffer
+  horseKey=PROFFER
+  barrier=4
+  trainer=J.Sandhu
+  jockey=J.Mott
+  weight=58kg
+  prizemoneyEarned=$1275
+  inRun=6th/5th
+  margin=2L
+  bb=$4.40
+  rawText=5th 5. Proffer (4) T: J.Sandhu J: J.Mott 58kg $1,275 6th/5th 2L $4.40 – –
+  status=RENDERED_TEXT_RESULTS_EXTRACTED
+  source_batch_file_v1=edgeiq_racingcom_results_batch_offset_13000.csv
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=140897
+HORSE=Proffer
+IDENTITY=2025-12-18|BET365 SEYMOUR|R5
+OFFICIAL=number=<EMPTY> | barrier=5 | jockey=B.Mertens | trainer=J.Sandhu | weight=58kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-12-18
+  track=BET365 SEYMOUR
+  race_no=5
+  race_key=2025-12-18|BET365 SEYMOUR|5
+  source_url=https://www.racing.com/form/2025-12-18/bet365-seymour/race/5
+  page_loaded=True
+  visible_results=True
+  raceName=Yarran Maiden Plate
+  distance=1300m
+  raceClass=Maiden
+  trackCondition=Good 4
+  raceTime=1:18.53
+  prizeMoney=42,500
+  finishPosition=SCR
+  horseNo=6
+  horseName=Proffer
+  horseKey=PROFFER
+  barrier=5
+  trainer=J.Sandhu
+  jockey=B.Mertens
+  weight=58kg
+  rawText=SCR 6. Proffer (5) T: J.Sandhu J: B.Mertens 58kg – – – – – –
+  status=RENDERED_TEXT_RESULTS_EXTRACTED
+  source_batch_file_v1=edgeiq_racingcom_results_batch_offset_13500.csv
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=143467
+HORSE=Proffer
+IDENTITY=2026-01-03|SOUTHSIDE CRANBOURNE|R2
+OFFICIAL=number=<EMPTY> | barrier=7 | jockey=P.Gatt | trainer=J.Sandhu | weight=58kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2026-01-03
+  track=SOUTHSIDE CRANBOURNE
+  race_no=2
+  race_key=2026-01-03|SOUTHSIDE CRANBOURNE|2
+  source_url=https://www.racing.com/form/2026-01-03/southside-cranbourne/race/2
+  page_loaded=True
+  visible_results=True
+  raceName=NZB Karaka 2026 Maiden Plate
+  distance=1200m
+  raceClass=Maiden
+  trackCondition=Good 4
+  raceTime=1:10.35
+  prizeMoney=32,000
+  finishPosition=7
+  horseNo=4
+  horseName=Proffer
+  horseKey=PROFFER
+  barrier=7
+  trainer=J.Sandhu
+  jockey=P.Gatt
+  weight=58kg
+  prizemoneyEarned=$640
+  inRun=8th/7th
+  margin=9.31L
+  bb=$31.00
+  rawText=7th 4. Proffer (7) T: J.Sandhu J: P.Gatt 58kg $640 8th/7th 9.31L $31.00 – –
+  status=RENDERED_TEXT_RESULTS_EXTRACTED
+  source_batch_file_v1=edgeiq_racingcom_results_batch_offset_13500.csv
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=145206
+HORSE=Proffer
+IDENTITY=2026-01-17|SOUTHSIDE CRANBOURNE|R3
+OFFICIAL=number=<EMPTY> | barrier=7 | jockey=C.Newitt | trainer=J.Sandhu | weight=58kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2026-01-17
+  track=SOUTHSIDE CRANBOURNE
+  race_no=3
+  race_key=2026-01-17|SOUTHSIDE CRANBOURNE|3
+  source_url=https://www.racing.com/form/2026-01-17/southside-cranbourne/race/3
+  page_loaded=True
+  visible_results=True
+  raceName=BetaVet Maiden Plate
+  distance=1300m
+  raceClass=Maiden
+  trackCondition=Good 4
+  raceTime=1:18.19
+  prizeMoney=32,000
+  finishPosition=5
+  horseNo=6
+  horseName=Proffer
+  horseKey=PROFFER
+  barrier=7
+  trainer=J.Sandhu
+  jockey=C.Newitt
+  weight=58kg
+  prizemoneyEarned=$960
+  inRun=8th/5th
+  margin=7L
+  bb=$12.00
+  rawText=5th 6. Proffer (7) T: J.Sandhu J: C.Newitt 58kg $960 8th/5th 7L $12.00 – –
+  status=RENDERED_TEXT_RESULTS_EXTRACTED
+  source_batch_file_v1=edgeiq_racingcom_results_batch_offset_13500.csv
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=145208
+HORSE=Rock About
+IDENTITY=2026-01-17|SOUTHSIDE CRANBOURNE|R3
+OFFICIAL=number=<EMPTY> | barrier=4 | jockey=S.Foley | trainer=W.J.Kelly | weight=58kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2026-01-17
+  track=SOUTHSIDE CRANBOURNE
+  race_no=3
+  race_key=2026-01-17|SOUTHSIDE CRANBOURNE|3
+  source_url=https://www.racing.com/form/2026-01-17/southside-cranbourne/race/3
+  page_loaded=True
+  visible_results=True
+  raceName=BetaVet Maiden Plate
+  distance=1300m
+  raceClass=Maiden
+  trackCondition=Good 4
+  raceTime=1:18.19
+  prizeMoney=32,000
+  finishPosition=7
+  horseNo=7
+  horseName=Rock About
+  horseKey=ROCKABOUT
+  barrier=4
+  trainer=W.J.Kelly
+  jockey=S.Foley
+  weight=58kg
+  prizemoneyEarned=$640
+  inRun=6th/7th
+  margin=8.75L
+  bb=$10.00
+  rawText=7th 7. Rock About (4) T: W.J.Kelly J: S.Foley 58kg $640 6th/7th 8.75L $10.00 – –
+  status=RENDERED_TEXT_RESULTS_EXTRACTED
+  source_batch_file_v1=edgeiq_racingcom_results_batch_offset_13500.csv
+
+========================================================================================================================
+FILE=public\data\edgeiq_racingcom_results_warehouse_v1.csv
+TYPE=csv
+BEST_OFFICIAL_COMPLETENESS=4/7
+HEADER_COUNT=83
+HEADERS=meeting_date | track | race_no | race_key | source_url | page_loaded | visible_results | raceName | distance | raceClass | trackCondition | raceTime | prizeMoney | finishPosition | horseNo | horseName | horseKey | barrier | trainer | jockey | weight | prizemoneyEarned | inRun | margin | bb | sp | stab | rawText | status | error | source_batch_file_v1 | _source_file | metric | value | batch_file | rows | built_at | candidate_races_available | batch_size | offset | attempted_pages | pages_loaded | visible_result_pages | runner_rows_output | unique_races | unique_horses | graphql_endpoint_called_by_script | api_key_extracted | private_endpoint_used | final_status | scraped_at | source | horse | horse_canon | runner_no | finish_position_raw | finish_position | result_status | tab_fixed_win | tab_fixed_place | fixed_win_dividend | fixed_place_dividend | tab_fixed_betting_status | tab_url | extract_method | rows_added | race_date | state | track_key | race_time | race_name | horse_key | finish_pos | finish_pos_num | margin_num | sp_num | result_identity_score | result_identity_confidence | raw_file | winner | second | third | official_time
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=133843
+HORSE=Proffer
+IDENTITY=2025-10-26|SALE|R2
+OFFICIAL=number=<EMPTY> | barrier=12 | jockey=TBC | trainer=J.Sandhu | weight=57kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-10-26
+  track=SALE
+  race_no=2
+  race_key=2025-10-26|SALE|2
+  source_url=https://www.racing.com/form/2025-10-26/sale/race/2
+  page_loaded=True
+  visible_results=True
+  raceName=Powered Solutions Maiden Plate
+  distance=1200m
+  raceClass=Maiden
+  trackCondition=Soft 5
+  raceTime=1:10.53
+  prizeMoney=42,500
+  finishPosition=SCR
+  horseNo=5
+  horseName=Proffer
+  horseKey=PROFFER
+  barrier=12
+  trainer=J.Sandhu
+  jockey=TBC
+  weight=57kg
+  rawText=SCR 5. Proffer (12) T: J.Sandhu J: TBC 57kg – – – – – –
+  status=RENDERED_TEXT_RESULTS_EXTRACTED
+  source_batch_file_v1=edgeiq_racingcom_results_batch_offset_12500.csv
+  _source_file=public\data\edgeiq_racingcom_results_warehouse_full_v1.csv
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=134996
+HORSE=Proffer
+IDENTITY=2025-11-02|MORNINGTON|R3
+OFFICIAL=number=<EMPTY> | barrier=8 | jockey=J.Mott | trainer=J.Sandhu | weight=58kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-11-02
+  track=MORNINGTON
+  race_no=3
+  race_key=2025-11-02|MORNINGTON|3
+  source_url=https://www.racing.com/form/2025-11-02/mornington/race/3
+  page_loaded=True
+  visible_results=True
+  raceName=Peninsula Kubota Plate
+  distance=1200m
+  raceClass=Maiden
+  trackCondition=Good 4
+  raceTime=1:10.70
+  prizeMoney=55,000
+  finishPosition=3
+  horseNo=10
+  horseName=Proffer
+  horseKey=PROFFER
+  barrier=8
+  trainer=J.Sandhu
+  jockey=J.Mott
+  weight=58kg
+  prizemoneyEarned=$4950
+  inRun=3rd/4th
+  margin=1.35L
+  bb=$19.00
+  sp=$4.30
+  rawText=3rd 10. Proffer (8) T: J.Sandhu J: J.Mott 58kg $4,950 3rd/4th 1.35L $19.00 – $4.30
+  status=RENDERED_TEXT_RESULTS_EXTRACTED
+  source_batch_file_v1=edgeiq_racingcom_results_batch_offset_12500.csv
+  _source_file=public\data\edgeiq_racingcom_results_warehouse_full_v1.csv
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=136869
+HORSE=Proffer
+IDENTITY=2025-11-13|BET365 SEYMOUR|R3
+OFFICIAL=number=<EMPTY> | barrier=11 | jockey=J.Mott | trainer=J.Sandhu | weight=58kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-11-13
+  track=BET365 SEYMOUR
+  race_no=3
+  race_key=2025-11-13|BET365 SEYMOUR|3
+  source_url=https://www.racing.com/form/2025-11-13/bet365-seymour/race/3
+  page_loaded=True
+  visible_results=True
+  raceName=Height Insurance Agencies Maiden Plate
+  distance=1200m
+  raceClass=Maiden
+  trackCondition=Good 4
+  raceTime=1:11.78
+  prizeMoney=42,500
+  finishPosition=5
+  horseNo=6
+  horseName=Proffer
+  horseKey=PROFFER
+  barrier=11
+  trainer=J.Sandhu
+  jockey=J.Mott
+  weight=58kg
+  prizemoneyEarned=$1275
+  inRun=9th/9th
+  margin=2.71L
+  bb=$8.50
+  rawText=5th 6. Proffer (11) T: J.Sandhu J: J.Mott 58kg $1,275 9th/9th 2.71L $8.50 – –
+  status=RENDERED_TEXT_RESULTS_EXTRACTED
+  source_batch_file_v1=edgeiq_racingcom_results_batch_offset_13000.csv
+  _source_file=public\data\edgeiq_racingcom_results_warehouse_full_v1.csv
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=138872
+HORSE=Proffer
+IDENTITY=2025-11-27|MORNINGTON|R3
+OFFICIAL=number=<EMPTY> | barrier=4 | jockey=J.Mott | trainer=J.Sandhu | weight=58kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-11-27
+  track=MORNINGTON
+  race_no=3
+  race_key=2025-11-27|MORNINGTON|3
+  source_url=https://www.racing.com/form/2025-11-27/mornington/race/3
+  page_loaded=True
+  visible_results=True
+  raceName=Jason Sparkes Plate
+  distance=1500m
+  raceClass=Maiden
+  trackCondition=Good 4
+  raceTime=1:32.91
+  prizeMoney=42,500
+  finishPosition=5
+  horseNo=5
+  horseName=Proffer
+  horseKey=PROFFER
+  barrier=4
+  trainer=J.Sandhu
+  jockey=J.Mott
+  weight=58kg
+  prizemoneyEarned=$1275
+  inRun=6th/5th
+  margin=2L
+  bb=$4.40
+  rawText=5th 5. Proffer (4) T: J.Sandhu J: J.Mott 58kg $1,275 6th/5th 2L $4.40 – –
+  status=RENDERED_TEXT_RESULTS_EXTRACTED
+  source_batch_file_v1=edgeiq_racingcom_results_batch_offset_13000.csv
+  _source_file=public\data\edgeiq_racingcom_results_warehouse_full_v1.csv
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=141961
+HORSE=Proffer
+IDENTITY=2025-12-18|BET365 SEYMOUR|R5
+OFFICIAL=number=<EMPTY> | barrier=5 | jockey=B.Mertens | trainer=J.Sandhu | weight=58kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-12-18
+  track=BET365 SEYMOUR
+  race_no=5
+  race_key=2025-12-18|BET365 SEYMOUR|5
+  source_url=https://www.racing.com/form/2025-12-18/bet365-seymour/race/5
+  page_loaded=True
+  visible_results=True
+  raceName=Yarran Maiden Plate
+  distance=1300m
+  raceClass=Maiden
+  trackCondition=Good 4
+  raceTime=1:18.53
+  prizeMoney=42,500
+  finishPosition=SCR
+  horseNo=6
+  horseName=Proffer
+  horseKey=PROFFER
+  barrier=5
+  trainer=J.Sandhu
+  jockey=B.Mertens
+  weight=58kg
+  rawText=SCR 6. Proffer (5) T: J.Sandhu J: B.Mertens 58kg – – – – – –
+  status=RENDERED_TEXT_RESULTS_EXTRACTED
+  source_batch_file_v1=edgeiq_racingcom_results_batch_offset_13500.csv
+  _source_file=public\data\edgeiq_racingcom_results_warehouse_full_v1.csv
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=144531
+HORSE=Proffer
+IDENTITY=2026-01-03|SOUTHSIDE CRANBOURNE|R2
+OFFICIAL=number=<EMPTY> | barrier=7 | jockey=P.Gatt | trainer=J.Sandhu | weight=58kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2026-01-03
+  track=SOUTHSIDE CRANBOURNE
+  race_no=2
+  race_key=2026-01-03|SOUTHSIDE CRANBOURNE|2
+  source_url=https://www.racing.com/form/2026-01-03/southside-cranbourne/race/2
+  page_loaded=True
+  visible_results=True
+  raceName=NZB Karaka 2026 Maiden Plate
+  distance=1200m
+  raceClass=Maiden
+  trackCondition=Good 4
+  raceTime=1:10.35
+  prizeMoney=32,000
+  finishPosition=7
+  horseNo=4
+  horseName=Proffer
+  horseKey=PROFFER
+  barrier=7
+  trainer=J.Sandhu
+  jockey=P.Gatt
+  weight=58kg
+  prizemoneyEarned=$640
+  inRun=8th/7th
+  margin=9.31L
+  bb=$31.00
+  rawText=7th 4. Proffer (7) T: J.Sandhu J: P.Gatt 58kg $640 8th/7th 9.31L $31.00 – –
+  status=RENDERED_TEXT_RESULTS_EXTRACTED
+  source_batch_file_v1=edgeiq_racingcom_results_batch_offset_13500.csv
+  _source_file=public\data\edgeiq_racingcom_results_warehouse_full_v1.csv
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=146270
+HORSE=Proffer
+IDENTITY=2026-01-17|SOUTHSIDE CRANBOURNE|R3
+OFFICIAL=number=<EMPTY> | barrier=7 | jockey=C.Newitt | trainer=J.Sandhu | weight=58kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2026-01-17
+  track=SOUTHSIDE CRANBOURNE
+  race_no=3
+  race_key=2026-01-17|SOUTHSIDE CRANBOURNE|3
+  source_url=https://www.racing.com/form/2026-01-17/southside-cranbourne/race/3
+  page_loaded=True
+  visible_results=True
+  raceName=BetaVet Maiden Plate
+  distance=1300m
+  raceClass=Maiden
+  trackCondition=Good 4
+  raceTime=1:18.19
+  prizeMoney=32,000
+  finishPosition=5
+  horseNo=6
+  horseName=Proffer
+  horseKey=PROFFER
+  barrier=7
+  trainer=J.Sandhu
+  jockey=C.Newitt
+  weight=58kg
+  prizemoneyEarned=$960
+  inRun=8th/5th
+  margin=7L
+  bb=$12.00
+  rawText=5th 6. Proffer (7) T: J.Sandhu J: C.Newitt 58kg $960 8th/5th 7L $12.00 – –
+  status=RENDERED_TEXT_RESULTS_EXTRACTED
+  source_batch_file_v1=edgeiq_racingcom_results_batch_offset_13500.csv
+  _source_file=public\data\edgeiq_racingcom_results_warehouse_full_v1.csv
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=146272
+HORSE=Rock About
+IDENTITY=2026-01-17|SOUTHSIDE CRANBOURNE|R3
+OFFICIAL=number=<EMPTY> | barrier=4 | jockey=S.Foley | trainer=W.J.Kelly | weight=58kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2026-01-17
+  track=SOUTHSIDE CRANBOURNE
+  race_no=3
+  race_key=2026-01-17|SOUTHSIDE CRANBOURNE|3
+  source_url=https://www.racing.com/form/2026-01-17/southside-cranbourne/race/3
+  page_loaded=True
+  visible_results=True
+  raceName=BetaVet Maiden Plate
+  distance=1300m
+  raceClass=Maiden
+  trackCondition=Good 4
+  raceTime=1:18.19
+  prizeMoney=32,000
+  finishPosition=7
+  horseNo=7
+  horseName=Rock About
+  horseKey=ROCKABOUT
+  barrier=4
+  trainer=W.J.Kelly
+  jockey=S.Foley
+  weight=58kg
+  prizemoneyEarned=$640
+  inRun=6th/7th
+  margin=8.75L
+  bb=$10.00
+  rawText=7th 7. Rock About (4) T: W.J.Kelly J: S.Foley 58kg $640 6th/7th 8.75L $10.00 – –
+  status=RENDERED_TEXT_RESULTS_EXTRACTED
+  source_batch_file_v1=edgeiq_racingcom_results_batch_offset_13500.csv
+  _source_file=public\data\edgeiq_racingcom_results_warehouse_full_v1.csv
+
+========================================================================================================================
+FILE=public\data\edgeiq_trainer_jockey_edge_runner_dataset_v3.csv
+TYPE=csv
+BEST_OFFICIAL_COMPLETENESS=4/7
+HEADER_COUNT=65
+HEADERS=meeting_date | track | race_no | horse | horse_key | trainer | trainer_key | jockey | jockey_key | finish_position_v1 | won_v1 | placed_v1 | barrier | weight | sp | distance | race_class | track_condition | race_key_v1 | trainer_jockey_key_v1 | trainer_canonical | jockey_canonical | trainer_canonical_key | jockey_canonical_key | trainer_jockey_canonical_key | trainer_jockey_canonical | finish_position_num | hist_join_key | model_join_key | runner_rank | runner_score | score_share_of_race | score_share_band_v1 | dominance_score_v1 | dominance_band_v1 | trust_profile_v1 | trust_band_v1 | field_size | field_size_bucket_v1 | race_reliability_score_v1 | race_reliability_band_v1 | won | placed | finish_position | horse_key_join | race_key_join | trainer_starts | trainer_wins | jockey_starts | jockey_wins | combo_starts | combo_wins | trainer_loo_starts | trainer_loo_wins | trainer_loo_win_pct | jockey_loo_starts | jockey_loo_wins | jockey_loo_win_pct | combo_loo_starts | combo_loo_wins | combo_loo_win_pct | trainer_edge_band_v3 | jockey_edge_band_v3 | combo_edge_band_v3 | rank_bucket_v3
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=105093
+HORSE=PROFFER
+IDENTITY=2025-11-02|MORNINGTON|R3
+OFFICIAL=number=<EMPTY> | barrier=8 | jockey=J.MOTT | trainer=J.SANDHU | weight=58kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-11-02
+  track=MORNINGTON
+  race_no=3
+  horse=PROFFER
+  horse_key=PROFFER
+  trainer=J.SANDHU
+  trainer_key=JSANDHU
+  jockey=J.MOTT
+  jockey_key=JMOTT
+  finish_position_v1=3.0
+  won_v1=0
+  placed_v1=1
+  barrier=8
+  weight=58kg
+  sp=$4.30
+  distance=1200m
+  race_class=Maiden
+  track_condition=Good 4
+  race_key_v1=2025-11-02|MORNINGTON|R3
+  trainer_jockey_key_v1=JSANDHU|JMOTT
+  trainer_canonical=J.SANDHU
+  jockey_canonical=J.MOTT
+  trainer_canonical_key=JSANDHU
+  jockey_canonical_key=JMOTT
+  trainer_jockey_canonical_key=JSANDHU|JMOTT
+  trainer_jockey_canonical=J.SANDHU + J.MOTT
+  finish_position_num=3.0
+  hist_join_key=2025-11-02|MORNINGTON|R3|PROFFER
+  model_join_key=2025-11-02|MORNINGTON|R3|PROFFER
+  runner_rank=9
+  runner_score=31.641
+  score_share_of_race=0.0696967007828985
+  score_share_band_v1=LOW
+  dominance_score_v1=26.274
+  dominance_band_v1=POOR
+  trust_profile_v1=ELITE
+  trust_band_v1=A
+  field_size=10
+  field_size_bucket_v1=8_10
+  race_reliability_score_v1=40
+  race_reliability_band_v1=POSITIVE
+  won=0
+  placed=1
+  finish_position=3.0
+  horse_key_join=PROFFER
+  race_key_join=2025-11-02|MORNINGTON|R3
+  trainer_starts=688
+  trainer_wins=86
+  jockey_starts=2477
+  jockey_wins=361
+  combo_starts=142
+  combo_wins=26
+  trainer_loo_starts=687
+  trainer_loo_wins=86
+  trainer_loo_win_pct=12.518195050946144
+  jockey_loo_starts=2476
+  jockey_loo_wins=361
+  jockey_loo_win_pct=14.579967689822293
+  combo_loo_starts=141
+  combo_loo_wins=26
+  combo_loo_win_pct=18.439716312056735
+  trainer_edge_band_v3=NEUTRAL
+  jockey_edge_band_v3=POSITIVE
+  combo_edge_band_v3=POSITIVE
+  rank_bucket_v3=RANK_6_10
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=106516
+HORSE=PROFFER
+IDENTITY=2025-11-13|BET365 SEYMOUR|R3
+OFFICIAL=number=<EMPTY> | barrier=11 | jockey=J.MOTT | trainer=J.SANDHU | weight=58kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-11-13
+  track=BET365 SEYMOUR
+  race_no=3
+  horse=PROFFER
+  horse_key=PROFFER
+  trainer=J.SANDHU
+  trainer_key=JSANDHU
+  jockey=J.MOTT
+  jockey_key=JMOTT
+  finish_position_v1=5.0
+  won_v1=0
+  placed_v1=0
+  barrier=11
+  weight=58kg
+  distance=1200m
+  race_class=Maiden
+  track_condition=Good 4
+  race_key_v1=2025-11-13|BET365SEYMOUR|R3
+  trainer_jockey_key_v1=JSANDHU|JMOTT
+  trainer_canonical=J.SANDHU
+  jockey_canonical=J.MOTT
+  trainer_canonical_key=JSANDHU
+  jockey_canonical_key=JMOTT
+  trainer_jockey_canonical_key=JSANDHU|JMOTT
+  trainer_jockey_canonical=J.SANDHU + J.MOTT
+  finish_position_num=5.0
+  hist_join_key=2025-11-13|BET365SEYMOUR|R3|PROFFER
+  model_join_key=2025-11-13|BET365SEYMOUR|R3|PROFFER
+  runner_rank=4
+  runner_score=54.758
+  score_share_of_race=0.1386193455353857
+  score_share_band_v1=VERY_HIGH
+  dominance_score_v1=88.566
+  dominance_band_v1=ELITE
+  trust_profile_v1=CHAOTIC
+  trust_band_v1=C
+  field_size=11
+  field_size_bucket_v1=11_13
+  race_reliability_score_v1=-15
+  race_reliability_band_v1=POOR
+  won=0
+  placed=0
+  finish_position=5.0
+  horse_key_join=PROFFER
+  race_key_join=2025-11-13|BET365SEYMOUR|R3
+  trainer_starts=688
+  trainer_wins=86
+  jockey_starts=2477
+  jockey_wins=361
+  combo_starts=142
+  combo_wins=26
+  trainer_loo_starts=687
+  trainer_loo_wins=86
+  trainer_loo_win_pct=12.518195050946144
+  jockey_loo_starts=2476
+  jockey_loo_wins=361
+  jockey_loo_win_pct=14.579967689822293
+  combo_loo_starts=141
+  combo_loo_wins=26
+  combo_loo_win_pct=18.439716312056735
+  trainer_edge_band_v3=NEUTRAL
+  jockey_edge_band_v3=POSITIVE
+  combo_edge_band_v3=POSITIVE
+  rank_bucket_v3=RANK_4_5
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=108090
+HORSE=PROFFER
+IDENTITY=2025-11-27|MORNINGTON|R3
+OFFICIAL=number=<EMPTY> | barrier=4 | jockey=J.MOTT | trainer=J.SANDHU | weight=58kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-11-27
+  track=MORNINGTON
+  race_no=3
+  horse=PROFFER
+  horse_key=PROFFER
+  trainer=J.SANDHU
+  trainer_key=JSANDHU
+  jockey=J.MOTT
+  jockey_key=JMOTT
+  finish_position_v1=5.0
+  won_v1=0
+  placed_v1=0
+  barrier=4
+  weight=58kg
+  distance=1500m
+  race_class=Maiden
+  track_condition=Good 4
+  race_key_v1=2025-11-27|MORNINGTON|R3
+  trainer_jockey_key_v1=JSANDHU|JMOTT
+  trainer_canonical=J.SANDHU
+  jockey_canonical=J.MOTT
+  trainer_canonical_key=JSANDHU
+  jockey_canonical_key=JMOTT
+  trainer_jockey_canonical_key=JSANDHU|JMOTT
+  trainer_jockey_canonical=J.SANDHU + J.MOTT
+  finish_position_num=5.0
+  hist_join_key=2025-11-27|MORNINGTON|R3|PROFFER
+  model_join_key=2025-11-27|MORNINGTON|R3|PROFFER
+  runner_rank=1
+  runner_score=43.348
+  score_share_of_race=0.246421376312162
+  score_share_band_v1=VERY_HIGH
+  dominance_score_v1=96.627
+  dominance_band_v1=ELITE
+  trust_profile_v1=ELITE
+  trust_band_v1=A
+  field_size=8
+  field_size_bucket_v1=8_10
+  race_reliability_score_v1=40
+  race_reliability_band_v1=POSITIVE
+  won=0
+  placed=0
+  finish_position=5.0
+  horse_key_join=PROFFER
+  race_key_join=2025-11-27|MORNINGTON|R3
+  trainer_starts=688
+  trainer_wins=86
+  jockey_starts=2477
+  jockey_wins=361
+  combo_starts=142
+  combo_wins=26
+  trainer_loo_starts=687
+  trainer_loo_wins=86
+  trainer_loo_win_pct=12.518195050946144
+  jockey_loo_starts=2476
+  jockey_loo_wins=361
+  jockey_loo_win_pct=14.579967689822293
+  combo_loo_starts=141
+  combo_loo_wins=26
+  combo_loo_win_pct=18.439716312056735
+  trainer_edge_band_v3=NEUTRAL
+  jockey_edge_band_v3=POSITIVE
+  combo_edge_band_v3=POSITIVE
+  rank_bucket_v3=RANK_1
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=112390
+HORSE=PROFFER
+IDENTITY=2026-01-03|SOUTHSIDE CRANBOURNE|R2
+OFFICIAL=number=<EMPTY> | barrier=7 | jockey=P.GATT | trainer=J.SANDHU | weight=58kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2026-01-03
+  track=SOUTHSIDE CRANBOURNE
+  race_no=2
+  horse=PROFFER
+  horse_key=PROFFER
+  trainer=J.SANDHU
+  trainer_key=JSANDHU
+  jockey=P.GATT
+  jockey_key=PGATT
+  finish_position_v1=7.0
+  won_v1=0
+  placed_v1=0
+  barrier=7
+  weight=58kg
+  distance=1200m
+  race_class=Maiden
+  track_condition=Good 4
+  race_key_v1=2026-01-03|SOUTHSIDECRANBOURNE|R2
+  trainer_jockey_key_v1=JSANDHU|PGATT
+  trainer_canonical=J.SANDHU
+  jockey_canonical=P.GATT
+  trainer_canonical_key=JSANDHU
+  jockey_canonical_key=PGATT
+  trainer_jockey_canonical_key=JSANDHU|PGATT
+  trainer_jockey_canonical=J.SANDHU + P.GATT
+  finish_position_num=7.0
+  hist_join_key=2026-01-03|SOUTHSIDECRANBOURNE|R2|PROFFER
+  model_join_key=2026-01-03|SOUTHSIDECRANBOURNE|R2|PROFFER
+  runner_rank=5
+  runner_score=46.956
+  score_share_of_race=0.1327997806858044
+  score_share_band_v1=VERY_HIGH
+  dominance_score_v1=62.095
+  dominance_band_v1=POSITIVE
+  trust_profile_v1=STANDARD
+  trust_band_v1=A
+  field_size=8
+  field_size_bucket_v1=8_10
+  race_reliability_score_v1=15
+  race_reliability_band_v1=NEUTRAL
+  won=0
+  placed=0
+  finish_position=7.0
+  horse_key_join=PROFFER
+  race_key_join=2026-01-03|SOUTHSIDECRANBOURNE|R2
+  trainer_starts=688
+  trainer_wins=86
+  jockey_starts=1086
+  jockey_wins=54
+  combo_starts=1
+  combo_wins=0
+  trainer_loo_starts=687
+  trainer_loo_wins=86
+  trainer_loo_win_pct=12.518195050946144
+  jockey_loo_starts=1085
+  jockey_loo_wins=54
+  jockey_loo_win_pct=4.976958525345622
+  combo_loo_starts=0
+  combo_loo_wins=0
+  trainer_edge_band_v3=NEUTRAL
+  jockey_edge_band_v3=POOR
+  combo_edge_band_v3=UNKNOWN
+  rank_bucket_v3=RANK_4_5
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=113814
+HORSE=PROFFER
+IDENTITY=2026-01-17|SOUTHSIDE CRANBOURNE|R3
+OFFICIAL=number=<EMPTY> | barrier=7 | jockey=C.NEWITT | trainer=J.SANDHU | weight=58kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2026-01-17
+  track=SOUTHSIDE CRANBOURNE
+  race_no=3
+  horse=PROFFER
+  horse_key=PROFFER
+  trainer=J.SANDHU
+  trainer_key=JSANDHU
+  jockey=C.NEWITT
+  jockey_key=CNEWITT
+  finish_position_v1=5.0
+  won_v1=0
+  placed_v1=0
+  barrier=7
+  weight=58kg
+  distance=1300m
+  race_class=Maiden
+  track_condition=Good 4
+  race_key_v1=2026-01-17|SOUTHSIDECRANBOURNE|R3
+  trainer_jockey_key_v1=JSANDHU|CNEWITT
+  trainer_canonical=J.SANDHU
+  jockey_canonical=C.NEWITT
+  trainer_canonical_key=JSANDHU
+  jockey_canonical_key=CNEWITT
+  trainer_jockey_canonical_key=JSANDHU|CNEWITT
+  trainer_jockey_canonical=J.SANDHU + C.NEWITT
+  finish_position_num=5.0
+  hist_join_key=2026-01-17|SOUTHSIDECRANBOURNE|R3|PROFFER
+  model_join_key=2026-01-17|SOUTHSIDECRANBOURNE|R3|PROFFER
+  runner_rank=4
+  runner_score=39.658
+  score_share_of_race=0.104975987665587
+  score_share_band_v1=HIGH
+  dominance_score_v1=47.388
+  dominance_band_v1=NEUTRAL
+  trust_profile_v1=ELITE
+  trust_band_v1=A
+  field_size=9
+  field_size_bucket_v1=8_10
+  race_reliability_score_v1=40
+  race_reliability_band_v1=POSITIVE
+  won=0
+  placed=0
+  finish_position=5.0
+  horse_key_join=PROFFER
+  race_key_join=2026-01-17|SOUTHSIDECRANBOURNE|R3
+  trainer_starts=688
+  trainer_wins=86
+  jockey_starts=1893
+  jockey_wins=164
+  combo_starts=68
+  combo_wins=9
+  trainer_loo_starts=687
+  trainer_loo_wins=86
+  trainer_loo_win_pct=12.518195050946144
+  jockey_loo_starts=1892
+  jockey_loo_wins=164
+  jockey_loo_win_pct=8.668076109936575
+  combo_loo_starts=67
+  combo_loo_wins=9
+  combo_loo_win_pct=13.432835820895523
+  trainer_edge_band_v3=NEUTRAL
+  jockey_edge_band_v3=NEGATIVE
+  combo_edge_band_v3=NEUTRAL
+  rank_bucket_v3=RANK_4_5
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=113816
+HORSE=ROCK ABOUT
+IDENTITY=2026-01-17|SOUTHSIDE CRANBOURNE|R3
+OFFICIAL=number=<EMPTY> | barrier=4 | jockey=S.FOLEY | trainer=W.J.KELLY | weight=58kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2026-01-17
+  track=SOUTHSIDE CRANBOURNE
+  race_no=3
+  horse=ROCK ABOUT
+  horse_key=ROCKABOUT
+  trainer=W.J.KELLY
+  trainer_key=WJKELLY
+  jockey=S.FOLEY
+  jockey_key=SFOLEY
+  finish_position_v1=7.0
+  won_v1=0
+  placed_v1=0
+  barrier=4
+  weight=58kg
+  distance=1300m
+  race_class=Maiden
+  track_condition=Good 4
+  race_key_v1=2026-01-17|SOUTHSIDECRANBOURNE|R3
+  trainer_jockey_key_v1=WJKELLY|SFOLEY
+  trainer_canonical=W.J.KELLY
+  jockey_canonical=S.FOLEY
+  trainer_canonical_key=WJKELLY
+  jockey_canonical_key=SFOLEY
+  trainer_jockey_canonical_key=WJKELLY|SFOLEY
+  trainer_jockey_canonical=W.J.KELLY + S.FOLEY
+  finish_position_num=7.0
+  hist_join_key=2026-01-17|SOUTHSIDECRANBOURNE|R3|ROCKABOUT
+  model_join_key=2026-01-17|SOUTHSIDECRANBOURNE|R3|ROCKABOUT
+  runner_rank=8
+  runner_score=31.216
+  score_share_of_race=0.0770192561760595
+  score_share_band_v1=MEDIUM
+  dominance_score_v1=25.418
+  dominance_band_v1=POOR
+  trust_profile_v1=ELITE
+  trust_band_v1=A
+  field_size=9
+  field_size_bucket_v1=8_10
+  race_reliability_score_v1=40
+  race_reliability_band_v1=POSITIVE
+  won=0
+  placed=0
+  finish_position=7.0
+  horse_key_join=ROCKABOUT
+  race_key_join=2026-01-17|SOUTHSIDECRANBOURNE|R3
+  trainer_starts=294
+  trainer_wins=28
+  jockey_starts=105
+  jockey_wins=10
+  combo_starts=1
+  combo_wins=0
+  trainer_loo_starts=293
+  trainer_loo_wins=28
+  trainer_loo_win_pct=9.556313993174061
+  jockey_loo_starts=104
+  jockey_loo_wins=10
+  jockey_loo_win_pct=9.615384615384617
+  combo_loo_starts=0
+  combo_loo_wins=0
+  trainer_edge_band_v3=NEGATIVE
+  jockey_edge_band_v3=NEGATIVE
+  combo_edge_band_v3=UNKNOWN
+  rank_bucket_v3=RANK_6_10
+
+========================================================================================================================
+FILE=public\data\edgeiq_trainer_jockey_factor_runner_v1.csv
+TYPE=csv
+BEST_OFFICIAL_COMPLETENESS=4/7
+HEADER_COUNT=85
+HEADERS=meeting_date | track | race_no | horse | horse_key | trainer | trainer_key_x | jockey | jockey_key_x | finish_position_v1 | won_v1 | placed_v1 | barrier | weight | sp | distance | race_class | track_condition | race_key_v1 | trainer_jockey_key_v1 | trainer_canonical | jockey_canonical | trainer_canonical_key | jockey_canonical_key | trainer_jockey_canonical_key | trainer_jockey_canonical | finish_position_num | hist_join_key | model_join_key | runner_rank | runner_score | score_share_of_race | score_share_band_v1 | dominance_score_v1 | dominance_band_v1 | trust_profile_v1 | trust_band_v1 | field_size | field_size_bucket_v1 | race_reliability_score_v1 | race_reliability_band_v1 | won | placed | finish_position | horse_key_join | race_key_join | trainer_starts | trainer_wins | jockey_starts | jockey_wins | combo_starts | combo_wins | trainer_loo_starts | trainer_loo_wins | trainer_loo_win_pct | jockey_loo_starts | jockey_loo_wins | jockey_loo_win_pct | combo_loo_starts | combo_loo_wins | combo_loo_win_pct | trainer_edge_band_v3 | jockey_edge_band_v3 | combo_edge_band_v3 | rank_bucket_v3 | trainer_key_y | trainer_starts_v1 | trainer_win_pct_v1 | trainer_place_pct_v1 | trainer_factor_band_v1 | trainer_factor_score_v1 | jockey_key_y | jockey_starts_v1 | jockey_win_pct_v1 | jockey_place_pct_v1 | jockey_factor_band_v1 | jockey_factor_score_v1 | trainer_jockey_key | combo_starts_v1 | combo_win_pct_v1 | combo_place_pct_v1 | combo_factor_band_v1 | combo_factor_score_v1 | trainer_jockey_blend_score_v1 | trainer_jockey_blend_band_v1
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=105093
+HORSE=PROFFER
+IDENTITY=2025-11-02|MORNINGTON|R3
+OFFICIAL=number=<EMPTY> | barrier=8 | jockey=J.MOTT | trainer=J.SANDHU | weight=58kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-11-02
+  track=MORNINGTON
+  race_no=3
+  horse=PROFFER
+  horse_key=PROFFER
+  trainer=J.SANDHU
+  trainer_key_x=JSANDHU
+  jockey=J.MOTT
+  jockey_key_x=JMOTT
+  finish_position_v1=3.0
+  won_v1=0
+  placed_v1=1
+  barrier=8
+  weight=58kg
+  sp=$4.30
+  distance=1200m
+  race_class=Maiden
+  track_condition=Good 4
+  race_key_v1=2025-11-02|MORNINGTON|R3
+  trainer_jockey_key_v1=JSANDHU|JMOTT
+  trainer_canonical=J.SANDHU
+  jockey_canonical=J.MOTT
+  trainer_canonical_key=JSANDHU
+  jockey_canonical_key=JMOTT
+  trainer_jockey_canonical_key=JSANDHU|JMOTT
+  trainer_jockey_canonical=J.SANDHU + J.MOTT
+  finish_position_num=3.0
+  hist_join_key=2025-11-02|MORNINGTON|R3|PROFFER
+  model_join_key=2025-11-02|MORNINGTON|R3|PROFFER
+  runner_rank=9
+  runner_score=31.641
+  score_share_of_race=0.0696967007828985
+  score_share_band_v1=LOW
+  dominance_score_v1=26.274
+  dominance_band_v1=POOR
+  trust_profile_v1=ELITE
+  trust_band_v1=A
+  field_size=10
+  field_size_bucket_v1=8_10
+  race_reliability_score_v1=40
+  race_reliability_band_v1=POSITIVE
+  won=0
+  placed=1
+  finish_position=3.0
+  horse_key_join=PROFFER
+  race_key_join=2025-11-02|MORNINGTON|R3
+  trainer_starts=688
+  trainer_wins=86
+  jockey_starts=2477
+  jockey_wins=361
+  combo_starts=142
+  combo_wins=26
+  trainer_loo_starts=687
+  trainer_loo_wins=86
+  trainer_loo_win_pct=12.518195050946144
+  jockey_loo_starts=2476
+  jockey_loo_wins=361
+  jockey_loo_win_pct=14.579967689822292
+  combo_loo_starts=141
+  combo_loo_wins=26
+  combo_loo_win_pct=18.43971631205673
+  trainer_edge_band_v3=NEUTRAL
+  jockey_edge_band_v3=POSITIVE
+  combo_edge_band_v3=POSITIVE
+  rank_bucket_v3=RANK_6_10
+  trainer_key_y=JSANDHU
+  trainer_starts_v1=688
+  trainer_win_pct_v1=12.5
+  trainer_place_pct_v1=36.48
+  trainer_factor_band_v1=NEUTRAL
+  trainer_factor_score_v1=0.0
+  jockey_key_y=JMOTT
+  jockey_starts_v1=2477
+  jockey_win_pct_v1=14.57
+  jockey_place_pct_v1=40.45
+  jockey_factor_band_v1=POSITIVE
+  jockey_factor_score_v1=1.0
+  trainer_jockey_key=JSANDHU|JMOTT
+  combo_starts_v1=142
+  combo_win_pct_v1=18.31
+  combo_place_pct_v1=50.7
+  combo_factor_band_v1=POSITIVE
+  combo_factor_score_v1=1.0
+  trainer_jockey_blend_score_v1=0.65
+  trainer_jockey_blend_band_v1=POSITIVE
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=106516
+HORSE=PROFFER
+IDENTITY=2025-11-13|BET365 SEYMOUR|R3
+OFFICIAL=number=<EMPTY> | barrier=11 | jockey=J.MOTT | trainer=J.SANDHU | weight=58kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-11-13
+  track=BET365 SEYMOUR
+  race_no=3
+  horse=PROFFER
+  horse_key=PROFFER
+  trainer=J.SANDHU
+  trainer_key_x=JSANDHU
+  jockey=J.MOTT
+  jockey_key_x=JMOTT
+  finish_position_v1=5.0
+  won_v1=0
+  placed_v1=0
+  barrier=11
+  weight=58kg
+  distance=1200m
+  race_class=Maiden
+  track_condition=Good 4
+  race_key_v1=2025-11-13|BET365SEYMOUR|R3
+  trainer_jockey_key_v1=JSANDHU|JMOTT
+  trainer_canonical=J.SANDHU
+  jockey_canonical=J.MOTT
+  trainer_canonical_key=JSANDHU
+  jockey_canonical_key=JMOTT
+  trainer_jockey_canonical_key=JSANDHU|JMOTT
+  trainer_jockey_canonical=J.SANDHU + J.MOTT
+  finish_position_num=5.0
+  hist_join_key=2025-11-13|BET365SEYMOUR|R3|PROFFER
+  model_join_key=2025-11-13|BET365SEYMOUR|R3|PROFFER
+  runner_rank=4
+  runner_score=54.758
+  score_share_of_race=0.1386193455353857
+  score_share_band_v1=VERY_HIGH
+  dominance_score_v1=88.566
+  dominance_band_v1=ELITE
+  trust_profile_v1=CHAOTIC
+  trust_band_v1=C
+  field_size=11
+  field_size_bucket_v1=11_13
+  race_reliability_score_v1=-15
+  race_reliability_band_v1=POOR
+  won=0
+  placed=0
+  finish_position=5.0
+  horse_key_join=PROFFER
+  race_key_join=2025-11-13|BET365SEYMOUR|R3
+  trainer_starts=688
+  trainer_wins=86
+  jockey_starts=2477
+  jockey_wins=361
+  combo_starts=142
+  combo_wins=26
+  trainer_loo_starts=687
+  trainer_loo_wins=86
+  trainer_loo_win_pct=12.518195050946144
+  jockey_loo_starts=2476
+  jockey_loo_wins=361
+  jockey_loo_win_pct=14.579967689822292
+  combo_loo_starts=141
+  combo_loo_wins=26
+  combo_loo_win_pct=18.43971631205673
+  trainer_edge_band_v3=NEUTRAL
+  jockey_edge_band_v3=POSITIVE
+  combo_edge_band_v3=POSITIVE
+  rank_bucket_v3=RANK_4_5
+  trainer_key_y=JSANDHU
+  trainer_starts_v1=688
+  trainer_win_pct_v1=12.5
+  trainer_place_pct_v1=36.48
+  trainer_factor_band_v1=NEUTRAL
+  trainer_factor_score_v1=0.0
+  jockey_key_y=JMOTT
+  jockey_starts_v1=2477
+  jockey_win_pct_v1=14.57
+  jockey_place_pct_v1=40.45
+  jockey_factor_band_v1=POSITIVE
+  jockey_factor_score_v1=1.0
+  trainer_jockey_key=JSANDHU|JMOTT
+  combo_starts_v1=142
+  combo_win_pct_v1=18.31
+  combo_place_pct_v1=50.7
+  combo_factor_band_v1=POSITIVE
+  combo_factor_score_v1=1.0
+  trainer_jockey_blend_score_v1=0.65
+  trainer_jockey_blend_band_v1=POSITIVE
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=108090
+HORSE=PROFFER
+IDENTITY=2025-11-27|MORNINGTON|R3
+OFFICIAL=number=<EMPTY> | barrier=4 | jockey=J.MOTT | trainer=J.SANDHU | weight=58kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-11-27
+  track=MORNINGTON
+  race_no=3
+  horse=PROFFER
+  horse_key=PROFFER
+  trainer=J.SANDHU
+  trainer_key_x=JSANDHU
+  jockey=J.MOTT
+  jockey_key_x=JMOTT
+  finish_position_v1=5.0
+  won_v1=0
+  placed_v1=0
+  barrier=4
+  weight=58kg
+  distance=1500m
+  race_class=Maiden
+  track_condition=Good 4
+  race_key_v1=2025-11-27|MORNINGTON|R3
+  trainer_jockey_key_v1=JSANDHU|JMOTT
+  trainer_canonical=J.SANDHU
+  jockey_canonical=J.MOTT
+  trainer_canonical_key=JSANDHU
+  jockey_canonical_key=JMOTT
+  trainer_jockey_canonical_key=JSANDHU|JMOTT
+  trainer_jockey_canonical=J.SANDHU + J.MOTT
+  finish_position_num=5.0
+  hist_join_key=2025-11-27|MORNINGTON|R3|PROFFER
+  model_join_key=2025-11-27|MORNINGTON|R3|PROFFER
+  runner_rank=1
+  runner_score=43.348
+  score_share_of_race=0.246421376312162
+  score_share_band_v1=VERY_HIGH
+  dominance_score_v1=96.627
+  dominance_band_v1=ELITE
+  trust_profile_v1=ELITE
+  trust_band_v1=A
+  field_size=8
+  field_size_bucket_v1=8_10
+  race_reliability_score_v1=40
+  race_reliability_band_v1=POSITIVE
+  won=0
+  placed=0
+  finish_position=5.0
+  horse_key_join=PROFFER
+  race_key_join=2025-11-27|MORNINGTON|R3
+  trainer_starts=688
+  trainer_wins=86
+  jockey_starts=2477
+  jockey_wins=361
+  combo_starts=142
+  combo_wins=26
+  trainer_loo_starts=687
+  trainer_loo_wins=86
+  trainer_loo_win_pct=12.518195050946144
+  jockey_loo_starts=2476
+  jockey_loo_wins=361
+  jockey_loo_win_pct=14.579967689822292
+  combo_loo_starts=141
+  combo_loo_wins=26
+  combo_loo_win_pct=18.43971631205673
+  trainer_edge_band_v3=NEUTRAL
+  jockey_edge_band_v3=POSITIVE
+  combo_edge_band_v3=POSITIVE
+  rank_bucket_v3=RANK_1
+  trainer_key_y=JSANDHU
+  trainer_starts_v1=688
+  trainer_win_pct_v1=12.5
+  trainer_place_pct_v1=36.48
+  trainer_factor_band_v1=NEUTRAL
+  trainer_factor_score_v1=0.0
+  jockey_key_y=JMOTT
+  jockey_starts_v1=2477
+  jockey_win_pct_v1=14.57
+  jockey_place_pct_v1=40.45
+  jockey_factor_band_v1=POSITIVE
+  jockey_factor_score_v1=1.0
+  trainer_jockey_key=JSANDHU|JMOTT
+  combo_starts_v1=142
+  combo_win_pct_v1=18.31
+  combo_place_pct_v1=50.7
+  combo_factor_band_v1=POSITIVE
+  combo_factor_score_v1=1.0
+  trainer_jockey_blend_score_v1=0.65
+  trainer_jockey_blend_band_v1=POSITIVE
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=112390
+HORSE=PROFFER
+IDENTITY=2026-01-03|SOUTHSIDE CRANBOURNE|R2
+OFFICIAL=number=<EMPTY> | barrier=7 | jockey=P.GATT | trainer=J.SANDHU | weight=58kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2026-01-03
+  track=SOUTHSIDE CRANBOURNE
+  race_no=2
+  horse=PROFFER
+  horse_key=PROFFER
+  trainer=J.SANDHU
+  trainer_key_x=JSANDHU
+  jockey=P.GATT
+  jockey_key_x=PGATT
+  finish_position_v1=7.0
+  won_v1=0
+  placed_v1=0
+  barrier=7
+  weight=58kg
+  distance=1200m
+  race_class=Maiden
+  track_condition=Good 4
+  race_key_v1=2026-01-03|SOUTHSIDECRANBOURNE|R2
+  trainer_jockey_key_v1=JSANDHU|PGATT
+  trainer_canonical=J.SANDHU
+  jockey_canonical=P.GATT
+  trainer_canonical_key=JSANDHU
+  jockey_canonical_key=PGATT
+  trainer_jockey_canonical_key=JSANDHU|PGATT
+  trainer_jockey_canonical=J.SANDHU + P.GATT
+  finish_position_num=7.0
+  hist_join_key=2026-01-03|SOUTHSIDECRANBOURNE|R2|PROFFER
+  model_join_key=2026-01-03|SOUTHSIDECRANBOURNE|R2|PROFFER
+  runner_rank=5
+  runner_score=46.956
+  score_share_of_race=0.1327997806858044
+  score_share_band_v1=VERY_HIGH
+  dominance_score_v1=62.095
+  dominance_band_v1=POSITIVE
+  trust_profile_v1=STANDARD
+  trust_band_v1=A
+  field_size=8
+  field_size_bucket_v1=8_10
+  race_reliability_score_v1=15
+  race_reliability_band_v1=NEUTRAL
+  won=0
+  placed=0
+  finish_position=7.0
+  horse_key_join=PROFFER
+  race_key_join=2026-01-03|SOUTHSIDECRANBOURNE|R2
+  trainer_starts=688
+  trainer_wins=86
+  jockey_starts=1086
+  jockey_wins=54
+  combo_starts=1
+  combo_wins=0
+  trainer_loo_starts=687
+  trainer_loo_wins=86
+  trainer_loo_win_pct=12.518195050946144
+  jockey_loo_starts=1085
+  jockey_loo_wins=54
+  jockey_loo_win_pct=4.976958525345622
+  combo_loo_starts=0
+  combo_loo_wins=0
+  trainer_edge_band_v3=NEUTRAL
+  jockey_edge_band_v3=POOR
+  combo_edge_band_v3=UNKNOWN
+  rank_bucket_v3=RANK_4_5
+  trainer_key_y=JSANDHU
+  trainer_starts_v1=688
+  trainer_win_pct_v1=12.5
+  trainer_place_pct_v1=36.48
+  trainer_factor_band_v1=NEUTRAL
+  trainer_factor_score_v1=0.0
+  jockey_key_y=PGATT
+  jockey_starts_v1=1086
+  jockey_win_pct_v1=4.97
+  jockey_place_pct_v1=16.85
+  jockey_factor_band_v1=POOR
+  jockey_factor_score_v1=-2.0
+  trainer_jockey_key=JSANDHU|PGATT
+  combo_starts_v1=1
+  combo_win_pct_v1=0.0
+  combo_place_pct_v1=0.0
+  combo_factor_band_v1=LOW_SAMPLE
+  combo_factor_score_v1=0.0
+  trainer_jockey_blend_score_v1=-0.9
+  trainer_jockey_blend_band_v1=NEGATIVE
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=113814
+HORSE=PROFFER
+IDENTITY=2026-01-17|SOUTHSIDE CRANBOURNE|R3
+OFFICIAL=number=<EMPTY> | barrier=7 | jockey=C.NEWITT | trainer=J.SANDHU | weight=58kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2026-01-17
+  track=SOUTHSIDE CRANBOURNE
+  race_no=3
+  horse=PROFFER
+  horse_key=PROFFER
+  trainer=J.SANDHU
+  trainer_key_x=JSANDHU
+  jockey=C.NEWITT
+  jockey_key_x=CNEWITT
+  finish_position_v1=5.0
+  won_v1=0
+  placed_v1=0
+  barrier=7
+  weight=58kg
+  distance=1300m
+  race_class=Maiden
+  track_condition=Good 4
+  race_key_v1=2026-01-17|SOUTHSIDECRANBOURNE|R3
+  trainer_jockey_key_v1=JSANDHU|CNEWITT
+  trainer_canonical=J.SANDHU
+  jockey_canonical=C.NEWITT
+  trainer_canonical_key=JSANDHU
+  jockey_canonical_key=CNEWITT
+  trainer_jockey_canonical_key=JSANDHU|CNEWITT
+  trainer_jockey_canonical=J.SANDHU + C.NEWITT
+  finish_position_num=5.0
+  hist_join_key=2026-01-17|SOUTHSIDECRANBOURNE|R3|PROFFER
+  model_join_key=2026-01-17|SOUTHSIDECRANBOURNE|R3|PROFFER
+  runner_rank=4
+  runner_score=39.658
+  score_share_of_race=0.104975987665587
+  score_share_band_v1=HIGH
+  dominance_score_v1=47.388
+  dominance_band_v1=NEUTRAL
+  trust_profile_v1=ELITE
+  trust_band_v1=A
+  field_size=9
+  field_size_bucket_v1=8_10
+  race_reliability_score_v1=40
+  race_reliability_band_v1=POSITIVE
+  won=0
+  placed=0
+  finish_position=5.0
+  horse_key_join=PROFFER
+  race_key_join=2026-01-17|SOUTHSIDECRANBOURNE|R3
+  trainer_starts=688
+  trainer_wins=86
+  jockey_starts=1893
+  jockey_wins=164
+  combo_starts=68
+  combo_wins=9
+  trainer_loo_starts=687
+  trainer_loo_wins=86
+  trainer_loo_win_pct=12.518195050946144
+  jockey_loo_starts=1892
+  jockey_loo_wins=164
+  jockey_loo_win_pct=8.668076109936575
+  combo_loo_starts=67
+  combo_loo_wins=9
+  combo_loo_win_pct=13.432835820895525
+  trainer_edge_band_v3=NEUTRAL
+  jockey_edge_band_v3=NEGATIVE
+  combo_edge_band_v3=NEUTRAL
+  rank_bucket_v3=RANK_4_5
+  trainer_key_y=JSANDHU
+  trainer_starts_v1=688
+  trainer_win_pct_v1=12.5
+  trainer_place_pct_v1=36.48
+  trainer_factor_band_v1=NEUTRAL
+  trainer_factor_score_v1=0.0
+  jockey_key_y=CNEWITT
+  jockey_starts_v1=1893
+  jockey_win_pct_v1=8.66
+  jockey_place_pct_v1=28.47
+  jockey_factor_band_v1=NEGATIVE
+  jockey_factor_score_v1=-1.0
+  trainer_jockey_key=JSANDHU|CNEWITT
+  combo_starts_v1=68
+  combo_win_pct_v1=13.24
+  combo_place_pct_v1=36.76
+  combo_factor_band_v1=NEUTRAL
+  combo_factor_score_v1=0.0
+  trainer_jockey_blend_score_v1=-0.45
+  trainer_jockey_blend_band_v1=NEUTRAL
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=113816
+HORSE=ROCK ABOUT
+IDENTITY=2026-01-17|SOUTHSIDE CRANBOURNE|R3
+OFFICIAL=number=<EMPTY> | barrier=4 | jockey=S.FOLEY | trainer=W.J.KELLY | weight=58kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2026-01-17
+  track=SOUTHSIDE CRANBOURNE
+  race_no=3
+  horse=ROCK ABOUT
+  horse_key=ROCKABOUT
+  trainer=W.J.KELLY
+  trainer_key_x=WJKELLY
+  jockey=S.FOLEY
+  jockey_key_x=SFOLEY
+  finish_position_v1=7.0
+  won_v1=0
+  placed_v1=0
+  barrier=4
+  weight=58kg
+  distance=1300m
+  race_class=Maiden
+  track_condition=Good 4
+  race_key_v1=2026-01-17|SOUTHSIDECRANBOURNE|R3
+  trainer_jockey_key_v1=WJKELLY|SFOLEY
+  trainer_canonical=W.J.KELLY
+  jockey_canonical=S.FOLEY
+  trainer_canonical_key=WJKELLY
+  jockey_canonical_key=SFOLEY
+  trainer_jockey_canonical_key=WJKELLY|SFOLEY
+  trainer_jockey_canonical=W.J.KELLY + S.FOLEY
+  finish_position_num=7.0
+  hist_join_key=2026-01-17|SOUTHSIDECRANBOURNE|R3|ROCKABOUT
+  model_join_key=2026-01-17|SOUTHSIDECRANBOURNE|R3|ROCKABOUT
+  runner_rank=8
+  runner_score=31.216
+  score_share_of_race=0.0770192561760595
+  score_share_band_v1=MEDIUM
+  dominance_score_v1=25.418
+  dominance_band_v1=POOR
+  trust_profile_v1=ELITE
+  trust_band_v1=A
+  field_size=9
+  field_size_bucket_v1=8_10
+  race_reliability_score_v1=40
+  race_reliability_band_v1=POSITIVE
+  won=0
+  placed=0
+  finish_position=7.0
+  horse_key_join=ROCKABOUT
+  race_key_join=2026-01-17|SOUTHSIDECRANBOURNE|R3
+  trainer_starts=294
+  trainer_wins=28
+  jockey_starts=105
+  jockey_wins=10
+  combo_starts=1
+  combo_wins=0
+  trainer_loo_starts=293
+  trainer_loo_wins=28
+  trainer_loo_win_pct=9.55631399317406
+  jockey_loo_starts=104
+  jockey_loo_wins=10
+  jockey_loo_win_pct=9.615384615384617
+  combo_loo_starts=0
+  combo_loo_wins=0
+  trainer_edge_band_v3=NEGATIVE
+  jockey_edge_band_v3=NEGATIVE
+  combo_edge_band_v3=UNKNOWN
+  rank_bucket_v3=RANK_6_10
+  trainer_key_y=WJKELLY
+  trainer_starts_v1=294
+  trainer_win_pct_v1=9.52
+  trainer_place_pct_v1=29.93
+  trainer_factor_band_v1=NEGATIVE
+  trainer_factor_score_v1=-1.0
+  jockey_key_y=SFOLEY
+  jockey_starts_v1=105
+  jockey_win_pct_v1=9.52
+  jockey_place_pct_v1=35.24
+  jockey_factor_band_v1=NEGATIVE
+  jockey_factor_score_v1=-1.0
+  trainer_jockey_key=WJKELLY|SFOLEY
+  combo_starts_v1=1
+  combo_win_pct_v1=0.0
+  combo_place_pct_v1=0.0
+  combo_factor_band_v1=LOW_SAMPLE
+  combo_factor_score_v1=0.0
+  trainer_jockey_blend_score_v1=-0.8
+  trainer_jockey_blend_band_v1=NEGATIVE
+
+========================================================================================================================
+FILE=public\data\edgeiq_trainer_jockey_runner_history_canonical_v1.csv
+TYPE=csv
+BEST_OFFICIAL_COMPLETENESS=4/7
+HEADER_COUNT=26
+HEADERS=meeting_date | track | race_no | horse | horse_key | trainer | trainer_key | jockey | jockey_key | finish_position_v1 | won_v1 | placed_v1 | barrier | weight | sp | distance | race_class | track_condition | race_key_v1 | trainer_jockey_key_v1 | trainer_canonical | jockey_canonical | trainer_canonical_key | jockey_canonical_key | trainer_jockey_canonical_key | trainer_jockey_canonical
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=132779
+HORSE=PROFFER
+IDENTITY=2025-10-26|SALE|R2
+OFFICIAL=number=<EMPTY> | barrier=12 | jockey=TBC | trainer=J.SANDHU | weight=57kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-10-26
+  track=SALE
+  race_no=2
+  horse=PROFFER
+  horse_key=PROFFER
+  trainer=J.SANDHU
+  trainer_key=JSANDHU
+  jockey=TBC
+  jockey_key=TBC
+  won_v1=0
+  placed_v1=0
+  barrier=12
+  weight=57kg
+  distance=1200m
+  race_class=Maiden
+  track_condition=Soft 5
+  race_key_v1=2025-10-26|SALE|R2
+  trainer_jockey_key_v1=JSANDHU|TBC
+  trainer_canonical=J.SANDHU
+  jockey_canonical=TBC
+  trainer_canonical_key=JSANDHU
+  jockey_canonical_key=TBC
+  trainer_jockey_canonical_key=JSANDHU|TBC
+  trainer_jockey_canonical=J.SANDHU + TBC
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=133932
+HORSE=PROFFER
+IDENTITY=2025-11-02|MORNINGTON|R3
+OFFICIAL=number=<EMPTY> | barrier=8 | jockey=J.MOTT | trainer=J.SANDHU | weight=58kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-11-02
+  track=MORNINGTON
+  race_no=3
+  horse=PROFFER
+  horse_key=PROFFER
+  trainer=J.SANDHU
+  trainer_key=JSANDHU
+  jockey=J.MOTT
+  jockey_key=JMOTT
+  finish_position_v1=3.0
+  won_v1=0
+  placed_v1=1
+  barrier=8
+  weight=58kg
+  sp=$4.30
+  distance=1200m
+  race_class=Maiden
+  track_condition=Good 4
+  race_key_v1=2025-11-02|MORNINGTON|R3
+  trainer_jockey_key_v1=JSANDHU|JMOTT
+  trainer_canonical=J.SANDHU
+  jockey_canonical=J.MOTT
+  trainer_canonical_key=JSANDHU
+  jockey_canonical_key=JMOTT
+  trainer_jockey_canonical_key=JSANDHU|JMOTT
+  trainer_jockey_canonical=J.SANDHU + J.MOTT
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=135805
+HORSE=PROFFER
+IDENTITY=2025-11-13|BET365 SEYMOUR|R3
+OFFICIAL=number=<EMPTY> | barrier=11 | jockey=J.MOTT | trainer=J.SANDHU | weight=58kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-11-13
+  track=BET365 SEYMOUR
+  race_no=3
+  horse=PROFFER
+  horse_key=PROFFER
+  trainer=J.SANDHU
+  trainer_key=JSANDHU
+  jockey=J.MOTT
+  jockey_key=JMOTT
+  finish_position_v1=5.0
+  won_v1=0
+  placed_v1=0
+  barrier=11
+  weight=58kg
+  distance=1200m
+  race_class=Maiden
+  track_condition=Good 4
+  race_key_v1=2025-11-13|BET365SEYMOUR|R3
+  trainer_jockey_key_v1=JSANDHU|JMOTT
+  trainer_canonical=J.SANDHU
+  jockey_canonical=J.MOTT
+  trainer_canonical_key=JSANDHU
+  jockey_canonical_key=JMOTT
+  trainer_jockey_canonical_key=JSANDHU|JMOTT
+  trainer_jockey_canonical=J.SANDHU + J.MOTT
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=137808
+HORSE=PROFFER
+IDENTITY=2025-11-27|MORNINGTON|R3
+OFFICIAL=number=<EMPTY> | barrier=4 | jockey=J.MOTT | trainer=J.SANDHU | weight=58kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-11-27
+  track=MORNINGTON
+  race_no=3
+  horse=PROFFER
+  horse_key=PROFFER
+  trainer=J.SANDHU
+  trainer_key=JSANDHU
+  jockey=J.MOTT
+  jockey_key=JMOTT
+  finish_position_v1=5.0
+  won_v1=0
+  placed_v1=0
+  barrier=4
+  weight=58kg
+  distance=1500m
+  race_class=Maiden
+  track_condition=Good 4
+  race_key_v1=2025-11-27|MORNINGTON|R3
+  trainer_jockey_key_v1=JSANDHU|JMOTT
+  trainer_canonical=J.SANDHU
+  jockey_canonical=J.MOTT
+  trainer_canonical_key=JSANDHU
+  jockey_canonical_key=JMOTT
+  trainer_jockey_canonical_key=JSANDHU|JMOTT
+  trainer_jockey_canonical=J.SANDHU + J.MOTT
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=140897
+HORSE=PROFFER
+IDENTITY=2025-12-18|BET365 SEYMOUR|R5
+OFFICIAL=number=<EMPTY> | barrier=5 | jockey=B.MERTENS | trainer=J.SANDHU | weight=58kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-12-18
+  track=BET365 SEYMOUR
+  race_no=5
+  horse=PROFFER
+  horse_key=PROFFER
+  trainer=J.SANDHU
+  trainer_key=JSANDHU
+  jockey=B.MERTENS
+  jockey_key=BMERTENS
+  won_v1=0
+  placed_v1=0
+  barrier=5
+  weight=58kg
+  distance=1300m
+  race_class=Maiden
+  track_condition=Good 4
+  race_key_v1=2025-12-18|BET365SEYMOUR|R5
+  trainer_jockey_key_v1=JSANDHU|BMERTENS
+  trainer_canonical=J.SANDHU
+  jockey_canonical=B.MERTENS
+  trainer_canonical_key=JSANDHU
+  jockey_canonical_key=BMERTENS
+  trainer_jockey_canonical_key=JSANDHU|BMERTENS
+  trainer_jockey_canonical=J.SANDHU + B.MERTENS
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=143467
+HORSE=PROFFER
+IDENTITY=2026-01-03|SOUTHSIDE CRANBOURNE|R2
+OFFICIAL=number=<EMPTY> | barrier=7 | jockey=P.GATT | trainer=J.SANDHU | weight=58kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2026-01-03
+  track=SOUTHSIDE CRANBOURNE
+  race_no=2
+  horse=PROFFER
+  horse_key=PROFFER
+  trainer=J.SANDHU
+  trainer_key=JSANDHU
+  jockey=P.GATT
+  jockey_key=PGATT
+  finish_position_v1=7.0
+  won_v1=0
+  placed_v1=0
+  barrier=7
+  weight=58kg
+  distance=1200m
+  race_class=Maiden
+  track_condition=Good 4
+  race_key_v1=2026-01-03|SOUTHSIDECRANBOURNE|R2
+  trainer_jockey_key_v1=JSANDHU|PGATT
+  trainer_canonical=J.SANDHU
+  jockey_canonical=P.GATT
+  trainer_canonical_key=JSANDHU
+  jockey_canonical_key=PGATT
+  trainer_jockey_canonical_key=JSANDHU|PGATT
+  trainer_jockey_canonical=J.SANDHU + P.GATT
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=145206
+HORSE=PROFFER
+IDENTITY=2026-01-17|SOUTHSIDE CRANBOURNE|R3
+OFFICIAL=number=<EMPTY> | barrier=7 | jockey=C.NEWITT | trainer=J.SANDHU | weight=58kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2026-01-17
+  track=SOUTHSIDE CRANBOURNE
+  race_no=3
+  horse=PROFFER
+  horse_key=PROFFER
+  trainer=J.SANDHU
+  trainer_key=JSANDHU
+  jockey=C.NEWITT
+  jockey_key=CNEWITT
+  finish_position_v1=5.0
+  won_v1=0
+  placed_v1=0
+  barrier=7
+  weight=58kg
+  distance=1300m
+  race_class=Maiden
+  track_condition=Good 4
+  race_key_v1=2026-01-17|SOUTHSIDECRANBOURNE|R3
+  trainer_jockey_key_v1=JSANDHU|CNEWITT
+  trainer_canonical=J.SANDHU
+  jockey_canonical=C.NEWITT
+  trainer_canonical_key=JSANDHU
+  jockey_canonical_key=CNEWITT
+  trainer_jockey_canonical_key=JSANDHU|CNEWITT
+  trainer_jockey_canonical=J.SANDHU + C.NEWITT
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=145208
+HORSE=ROCK ABOUT
+IDENTITY=2026-01-17|SOUTHSIDE CRANBOURNE|R3
+OFFICIAL=number=<EMPTY> | barrier=4 | jockey=S.FOLEY | trainer=W.J.KELLY | weight=58kg | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=4/7
+NON_EMPTY_VALUES:
+  meeting_date=2026-01-17
+  track=SOUTHSIDE CRANBOURNE
+  race_no=3
+  horse=ROCK ABOUT
+  horse_key=ROCKABOUT
+  trainer=W.J.KELLY
+  trainer_key=WJKELLY
+  jockey=S.FOLEY
+  jockey_key=SFOLEY
+  finish_position_v1=7.0
+  won_v1=0
+  placed_v1=0
+  barrier=4
+  weight=58kg
+  distance=1300m
+  race_class=Maiden
+  track_condition=Good 4
+  race_key_v1=2026-01-17|SOUTHSIDECRANBOURNE|R3
+  trainer_jockey_key_v1=WJKELLY|SFOLEY
+  trainer_canonical=W.J.KELLY
+  jockey_canonical=S.FOLEY
+  trainer_canonical_key=WJKELLY
+  jockey_canonical_key=SFOLEY
+  trainer_jockey_canonical_key=WJKELLY|SFOLEY
+  trainer_jockey_canonical=W.J.KELLY + S.FOLEY
+
+========================================================================================================================
+FILE=public\data\edgeiq_trainer_jockey_edge_runner_dataset_v1.csv
+TYPE=csv
+BEST_OFFICIAL_COMPLETENESS=2/7
+HEADER_COUNT=24
+HEADERS=meeting_date | track | race_no | horse | horse_key | trainer | jockey | finish_position_v1 | won_v1_num | placed_v1_num | race_key_v1 | model_rank_context | rank_bucket_v1 | trust_bucket_v1 | race_reliability_band_context | trainer_loo_starts | trainer_loo_win_pct | trainer_edge_band_v1 | jockey_loo_starts | jockey_loo_win_pct | jockey_edge_band_v1 | combo_loo_starts | combo_loo_win_pct | combo_edge_band_v1
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=107453
+HORSE=PROFFER
+IDENTITY=2025-11-02|MORNINGTON|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=J.MOTT | trainer=J.SANDHU | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=2/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-11-02
+  track=MORNINGTON
+  race_no=3
+  horse=PROFFER
+  horse_key=PROFFER
+  trainer=J.SANDHU
+  jockey=J.MOTT
+  finish_position_v1=3.0
+  won_v1_num=0
+  placed_v1_num=1
+  race_key_v1=2025-11-02|MORNINGTON|R3
+  rank_bucket_v1=UNKNOWN_RANK
+  trust_bucket_v1=ELITE
+  race_reliability_band_context=POSITIVE
+  trainer_loo_starts=687
+  trainer_loo_win_pct=12.518195050946144
+  trainer_edge_band_v1=NEUTRAL
+  jockey_loo_starts=2476
+  jockey_loo_win_pct=14.579967689822293
+  jockey_edge_band_v1=POSITIVE
+  combo_loo_starts=141
+  combo_loo_win_pct=18.439716312056735
+  combo_edge_band_v1=POSITIVE
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=108897
+HORSE=PROFFER
+IDENTITY=2025-11-13|BET365 SEYMOUR|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=J.MOTT | trainer=J.SANDHU | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=2/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-11-13
+  track=BET365 SEYMOUR
+  race_no=3
+  horse=PROFFER
+  horse_key=PROFFER
+  trainer=J.SANDHU
+  jockey=J.MOTT
+  finish_position_v1=5.0
+  won_v1_num=0
+  placed_v1_num=0
+  race_key_v1=2025-11-13|BET365SEYMOUR|R3
+  rank_bucket_v1=UNKNOWN_RANK
+  trust_bucket_v1=CHAOTIC
+  race_reliability_band_context=NEGATIVE
+  trainer_loo_starts=687
+  trainer_loo_win_pct=12.518195050946144
+  trainer_edge_band_v1=NEUTRAL
+  jockey_loo_starts=2476
+  jockey_loo_win_pct=14.579967689822293
+  jockey_edge_band_v1=POSITIVE
+  combo_loo_starts=141
+  combo_loo_win_pct=18.439716312056735
+  combo_edge_band_v1=POSITIVE
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=110488
+HORSE=PROFFER
+IDENTITY=2025-11-27|MORNINGTON|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=J.MOTT | trainer=J.SANDHU | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=2/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-11-27
+  track=MORNINGTON
+  race_no=3
+  horse=PROFFER
+  horse_key=PROFFER
+  trainer=J.SANDHU
+  jockey=J.MOTT
+  finish_position_v1=5.0
+  won_v1_num=0
+  placed_v1_num=0
+  race_key_v1=2025-11-27|MORNINGTON|R3
+  rank_bucket_v1=UNKNOWN_RANK
+  trust_bucket_v1=ELITE
+  race_reliability_band_context=POSITIVE
+  trainer_loo_starts=687
+  trainer_loo_win_pct=12.518195050946144
+  trainer_edge_band_v1=NEUTRAL
+  jockey_loo_starts=2476
+  jockey_loo_win_pct=14.579967689822293
+  jockey_edge_band_v1=POSITIVE
+  combo_loo_starts=141
+  combo_loo_win_pct=18.439716312056735
+  combo_edge_band_v1=POSITIVE
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=114838
+HORSE=PROFFER
+IDENTITY=2026-01-03|SOUTHSIDE CRANBOURNE|R2
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=P.GATT | trainer=J.SANDHU | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=2/7
+NON_EMPTY_VALUES:
+  meeting_date=2026-01-03
+  track=SOUTHSIDE CRANBOURNE
+  race_no=2
+  horse=PROFFER
+  horse_key=PROFFER
+  trainer=J.SANDHU
+  jockey=P.GATT
+  finish_position_v1=7.0
+  won_v1_num=0
+  placed_v1_num=0
+  race_key_v1=2026-01-03|SOUTHSIDECRANBOURNE|R2
+  rank_bucket_v1=UNKNOWN_RANK
+  trust_bucket_v1=STANDARD
+  race_reliability_band_context=NEUTRAL
+  trainer_loo_starts=687
+  trainer_loo_win_pct=12.518195050946144
+  trainer_edge_band_v1=NEUTRAL
+  jockey_loo_starts=1085
+  jockey_loo_win_pct=4.976958525345622
+  jockey_edge_band_v1=POOR
+  combo_loo_starts=0
+  combo_edge_band_v1=UNKNOWN
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=116274
+HORSE=PROFFER
+IDENTITY=2026-01-17|SOUTHSIDE CRANBOURNE|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=C.NEWITT | trainer=J.SANDHU | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=2/7
+NON_EMPTY_VALUES:
+  meeting_date=2026-01-17
+  track=SOUTHSIDE CRANBOURNE
+  race_no=3
+  horse=PROFFER
+  horse_key=PROFFER
+  trainer=J.SANDHU
+  jockey=C.NEWITT
+  finish_position_v1=5.0
+  won_v1_num=0
+  placed_v1_num=0
+  race_key_v1=2026-01-17|SOUTHSIDECRANBOURNE|R3
+  rank_bucket_v1=UNKNOWN_RANK
+  trust_bucket_v1=ELITE
+  race_reliability_band_context=POSITIVE
+  trainer_loo_starts=687
+  trainer_loo_win_pct=12.518195050946144
+  trainer_edge_band_v1=NEUTRAL
+  jockey_loo_starts=1892
+  jockey_loo_win_pct=8.668076109936575
+  jockey_edge_band_v1=NEGATIVE
+  combo_loo_starts=67
+  combo_loo_win_pct=13.432835820895523
+  combo_edge_band_v1=NEUTRAL
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=116276
+HORSE=ROCK ABOUT
+IDENTITY=2026-01-17|SOUTHSIDE CRANBOURNE|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=S.FOLEY | trainer=W.J.KELLY | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=2/7
+NON_EMPTY_VALUES:
+  meeting_date=2026-01-17
+  track=SOUTHSIDE CRANBOURNE
+  race_no=3
+  horse=ROCK ABOUT
+  horse_key=ROCKABOUT
+  trainer=W.J.KELLY
+  jockey=S.FOLEY
+  finish_position_v1=7.0
+  won_v1_num=0
+  placed_v1_num=0
+  race_key_v1=2026-01-17|SOUTHSIDECRANBOURNE|R3
+  rank_bucket_v1=UNKNOWN_RANK
+  trust_bucket_v1=ELITE
+  race_reliability_band_context=POSITIVE
+  trainer_loo_starts=293
+  trainer_loo_win_pct=9.556313993174061
+  trainer_edge_band_v1=NEGATIVE
+  jockey_loo_starts=104
+  jockey_loo_win_pct=9.615384615384617
+  jockey_edge_band_v1=NEGATIVE
+  combo_loo_starts=0
+  combo_edge_band_v1=UNKNOWN
+
+========================================================================================================================
+FILE=public\data\edgeiq_trainer_jockey_edge_runner_dataset_v2.csv
+TYPE=csv
+BEST_OFFICIAL_COMPLETENESS=2/7
+HEADER_COUNT=32
+HEADERS=meeting_date | track | race_no | horse | horse_key | trainer | jockey | runner_rank | rank_bucket_v2 | runner_score | score_share_of_race | score_share_band_v1 | dominance_score_v1 | dominance_band_v1 | trust_profile_v1 | trust_band_v1 | field_size | field_size_bucket_v1 | race_reliability_score_v1 | race_reliability_band_v1 | won | placed | finish_position | trainer_loo_starts | trainer_loo_win_pct | trainer_edge_band_v2 | jockey_loo_starts | jockey_loo_win_pct | jockey_edge_band_v2 | combo_loo_starts | combo_loo_win_pct | combo_edge_band_v2
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=107453
+HORSE=PROFFER
+IDENTITY=2025-11-02|MORNINGTON|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=J.MOTT | trainer=J.SANDHU | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=2/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-11-02
+  track=MORNINGTON
+  race_no=3
+  horse=PROFFER
+  horse_key=PROFFER
+  trainer=J.SANDHU
+  jockey=J.MOTT
+  runner_rank=9
+  rank_bucket_v2=RANK_6_10
+  runner_score=31.641
+  score_share_of_race=0.0696967007828985
+  score_share_band_v1=LOW
+  dominance_score_v1=26.274
+  dominance_band_v1=POOR
+  trust_profile_v1=ELITE
+  trust_band_v1=A
+  field_size=10
+  field_size_bucket_v1=8_10
+  race_reliability_score_v1=40
+  race_reliability_band_v1=POSITIVE
+  won=0
+  placed=1
+  finish_position=3.0
+  trainer_loo_starts=687
+  trainer_loo_win_pct=12.518195050946144
+  trainer_edge_band_v2=NEUTRAL
+  jockey_loo_starts=2476
+  jockey_loo_win_pct=14.579967689822293
+  jockey_edge_band_v2=POSITIVE
+  combo_loo_starts=141
+  combo_loo_win_pct=18.439716312056735
+  combo_edge_band_v2=POSITIVE
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=108897
+HORSE=PROFFER
+IDENTITY=2025-11-13|BET365 SEYMOUR|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=J.MOTT | trainer=J.SANDHU | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=2/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-11-13
+  track=BET365 SEYMOUR
+  race_no=3
+  horse=PROFFER
+  horse_key=PROFFER
+  trainer=J.SANDHU
+  jockey=J.MOTT
+  runner_rank=4
+  rank_bucket_v2=RANK_4_5
+  runner_score=54.758
+  score_share_of_race=0.1386193455353857
+  score_share_band_v1=VERY_HIGH
+  dominance_score_v1=88.566
+  dominance_band_v1=ELITE
+  trust_profile_v1=CHAOTIC
+  trust_band_v1=C
+  field_size=11
+  field_size_bucket_v1=11_13
+  race_reliability_score_v1=-15
+  race_reliability_band_v1=POOR
+  won=0
+  placed=0
+  finish_position=5.0
+  trainer_loo_starts=687
+  trainer_loo_win_pct=12.518195050946144
+  trainer_edge_band_v2=NEUTRAL
+  jockey_loo_starts=2476
+  jockey_loo_win_pct=14.579967689822293
+  jockey_edge_band_v2=POSITIVE
+  combo_loo_starts=141
+  combo_loo_win_pct=18.439716312056735
+  combo_edge_band_v2=POSITIVE
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=110488
+HORSE=PROFFER
+IDENTITY=2025-11-27|MORNINGTON|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=J.MOTT | trainer=J.SANDHU | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=2/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-11-27
+  track=MORNINGTON
+  race_no=3
+  horse=PROFFER
+  horse_key=PROFFER
+  trainer=J.SANDHU
+  jockey=J.MOTT
+  runner_rank=1
+  rank_bucket_v2=RANK_1
+  runner_score=43.348
+  score_share_of_race=0.246421376312162
+  score_share_band_v1=VERY_HIGH
+  dominance_score_v1=96.627
+  dominance_band_v1=ELITE
+  trust_profile_v1=ELITE
+  trust_band_v1=A
+  field_size=8
+  field_size_bucket_v1=8_10
+  race_reliability_score_v1=40
+  race_reliability_band_v1=POSITIVE
+  won=0
+  placed=0
+  finish_position=5.0
+  trainer_loo_starts=687
+  trainer_loo_win_pct=12.518195050946144
+  trainer_edge_band_v2=NEUTRAL
+  jockey_loo_starts=2476
+  jockey_loo_win_pct=14.579967689822293
+  jockey_edge_band_v2=POSITIVE
+  combo_loo_starts=141
+  combo_loo_win_pct=18.439716312056735
+  combo_edge_band_v2=POSITIVE
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=114838
+HORSE=PROFFER
+IDENTITY=2026-01-03|SOUTHSIDE CRANBOURNE|R2
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=P.GATT | trainer=J.SANDHU | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=2/7
+NON_EMPTY_VALUES:
+  meeting_date=2026-01-03
+  track=SOUTHSIDE CRANBOURNE
+  race_no=2
+  horse=PROFFER
+  horse_key=PROFFER
+  trainer=J.SANDHU
+  jockey=P.GATT
+  runner_rank=5
+  rank_bucket_v2=RANK_4_5
+  runner_score=46.956
+  score_share_of_race=0.1327997806858044
+  score_share_band_v1=VERY_HIGH
+  dominance_score_v1=62.095
+  dominance_band_v1=POSITIVE
+  trust_profile_v1=STANDARD
+  trust_band_v1=A
+  field_size=8
+  field_size_bucket_v1=8_10
+  race_reliability_score_v1=15
+  race_reliability_band_v1=NEUTRAL
+  won=0
+  placed=0
+  finish_position=7.0
+  trainer_loo_starts=687
+  trainer_loo_win_pct=12.518195050946144
+  trainer_edge_band_v2=NEUTRAL
+  jockey_loo_starts=1085
+  jockey_loo_win_pct=4.976958525345622
+  jockey_edge_band_v2=POOR
+  combo_loo_starts=0
+  combo_edge_band_v2=UNKNOWN
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=116274
+HORSE=PROFFER
+IDENTITY=2026-01-17|SOUTHSIDE CRANBOURNE|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=C.NEWITT | trainer=J.SANDHU | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=2/7
+NON_EMPTY_VALUES:
+  meeting_date=2026-01-17
+  track=SOUTHSIDE CRANBOURNE
+  race_no=3
+  horse=PROFFER
+  horse_key=PROFFER
+  trainer=J.SANDHU
+  jockey=C.NEWITT
+  runner_rank=4
+  rank_bucket_v2=RANK_4_5
+  runner_score=39.658
+  score_share_of_race=0.104975987665587
+  score_share_band_v1=HIGH
+  dominance_score_v1=47.388
+  dominance_band_v1=NEUTRAL
+  trust_profile_v1=ELITE
+  trust_band_v1=A
+  field_size=9
+  field_size_bucket_v1=8_10
+  race_reliability_score_v1=40
+  race_reliability_band_v1=POSITIVE
+  won=0
+  placed=0
+  finish_position=5.0
+  trainer_loo_starts=687
+  trainer_loo_win_pct=12.518195050946144
+  trainer_edge_band_v2=NEUTRAL
+  jockey_loo_starts=1892
+  jockey_loo_win_pct=8.668076109936575
+  jockey_edge_band_v2=NEGATIVE
+  combo_loo_starts=67
+  combo_loo_win_pct=13.432835820895523
+  combo_edge_band_v2=NEUTRAL
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=116276
+HORSE=ROCK ABOUT
+IDENTITY=2026-01-17|SOUTHSIDE CRANBOURNE|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=S.FOLEY | trainer=W.J.KELLY | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=2/7
+NON_EMPTY_VALUES:
+  meeting_date=2026-01-17
+  track=SOUTHSIDE CRANBOURNE
+  race_no=3
+  horse=ROCK ABOUT
+  horse_key=ROCKABOUT
+  trainer=W.J.KELLY
+  jockey=S.FOLEY
+  runner_rank=8
+  rank_bucket_v2=RANK_6_10
+  runner_score=31.216
+  score_share_of_race=0.0770192561760595
+  score_share_band_v1=MEDIUM
+  dominance_score_v1=25.418
+  dominance_band_v1=POOR
+  trust_profile_v1=ELITE
+  trust_band_v1=A
+  field_size=9
+  field_size_bucket_v1=8_10
+  race_reliability_score_v1=40
+  race_reliability_band_v1=POSITIVE
+  won=0
+  placed=0
+  finish_position=7.0
+  trainer_loo_starts=293
+  trainer_loo_win_pct=9.556313993174061
+  trainer_edge_band_v2=NEGATIVE
+  jockey_loo_starts=104
+  jockey_loo_win_pct=9.615384615384617
+  jockey_edge_band_v2=NEGATIVE
+  combo_loo_starts=0
+  combo_edge_band_v2=UNKNOWN
+
+========================================================================================================================
+FILE=public\data\edgeiq_full_execution_runner_replay_v1.csv
+TYPE=csv
+BEST_OFFICIAL_COMPLETENESS=0/7
+HEADER_COUNT=22
+HEADERS=meeting_date | track | race_no | horse | horse_key | runner_score_hist_v1 | runner_rank_hist_v1 | rank_bucket_v1 | score_band_v1 | finish_position | won | placed | governance_band_hist_v1 | trust_index_v1 | trust_band_v1 | trust_profile_score_v1 | trust_profile_v1 | execution_permission_v1 | execution_reason_v1 | race_execution_class_v1 | join_key_v1 | runner_join_key_v1
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=51442
+HORSE=Proffer
+IDENTITY=2025-11-02|MORNINGTON|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-11-02
+  track=MORNINGTON
+  race_no=3
+  horse=Proffer
+  horse_key=PROFFER
+  runner_score_hist_v1=28.274
+  runner_rank_hist_v1=9
+  rank_bucket_v1=RANK_6_10
+  score_band_v1=<40
+  finish_position=3.0
+  won=0
+  placed=1
+  governance_band_hist_v1=FIRST_STARTER_OR_UNKNOWN
+  trust_index_v1=73.805
+  trust_band_v1=A
+  trust_profile_score_v1=78.436
+  trust_profile_v1=ELITE
+  execution_permission_v1=REDUCED_EXECUTION
+  execution_reason_v1=ELITE_RACE|DEEP_RANK
+  race_execution_class_v1=FULL_EXECUTION
+  join_key_v1=2025-11-02|MORNINGTON|3
+  runner_join_key_v1=2025-11-02|MORNINGTON|3|PROFFER
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=52781
+HORSE=Proffer
+IDENTITY=2025-11-27|MORNINGTON|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-11-27
+  track=MORNINGTON
+  race_no=3
+  horse=Proffer
+  horse_key=PROFFER
+  runner_score_hist_v1=60.424
+  runner_rank_hist_v1=1
+  rank_bucket_v1=RANK_1
+  score_band_v1=60-64
+  finish_position=5.0
+  won=0
+  placed=0
+  governance_band_hist_v1=LIMITED_DATA_2_STARTS
+  trust_index_v1=75.581
+  trust_band_v1=A
+  trust_profile_score_v1=78.436
+  trust_profile_v1=ELITE
+  execution_permission_v1=FULL_EXECUTION
+  execution_reason_v1=ELITE_RACE
+  race_execution_class_v1=FULL_EXECUTION
+  join_key_v1=2025-11-27|MORNINGTON|3
+  runner_join_key_v1=2025-11-27|MORNINGTON|3|PROFFER
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=54718
+HORSE=Proffer
+IDENTITY=2026-01-03|SOUTHSIDE CRANBOURNE|R2
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  meeting_date=2026-01-03
+  track=SOUTHSIDE CRANBOURNE
+  race_no=2
+  horse=Proffer
+  horse_key=PROFFER
+  runner_score_hist_v1=47.473
+  runner_rank_hist_v1=5
+  rank_bucket_v1=RANK_4_5
+  score_band_v1=45-49
+  finish_position=7.0
+  won=0
+  placed=0
+  governance_band_hist_v1=LIMITED_DATA_3_4_STARTS
+  trust_index_v1=70.226
+  trust_band_v1=A
+  trust_profile_score_v1=47.341
+  trust_profile_v1=STRONG
+  execution_permission_v1=FULL_EXECUTION
+  execution_reason_v1=STRONG_RACE
+  race_execution_class_v1=FULL_EXECUTION
+  join_key_v1=2026-01-03|SOUTHSIDECRANBOURNE|2
+  runner_join_key_v1=2026-01-03|SOUTHSIDECRANBOURNE|2|PROFFER
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=55276
+HORSE=Proffer
+IDENTITY=2026-01-17|SOUTHSIDE CRANBOURNE|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  meeting_date=2026-01-17
+  track=SOUTHSIDE CRANBOURNE
+  race_no=3
+  horse=Proffer
+  horse_key=PROFFER
+  runner_score_hist_v1=38.537
+  runner_rank_hist_v1=4
+  rank_bucket_v1=RANK_4_5
+  score_band_v1=<40
+  finish_position=5.0
+  won=0
+  placed=0
+  governance_band_hist_v1=LIMITED_DATA_3_4_STARTS
+  trust_index_v1=73.805
+  trust_band_v1=A
+  trust_profile_score_v1=78.436
+  trust_profile_v1=ELITE
+  execution_permission_v1=FULL_EXECUTION
+  execution_reason_v1=ELITE_RACE
+  race_execution_class_v1=FULL_EXECUTION
+  join_key_v1=2026-01-17|SOUTHSIDECRANBOURNE|3
+  runner_join_key_v1=2026-01-17|SOUTHSIDECRANBOURNE|3|PROFFER
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=55280
+HORSE=Rock About
+IDENTITY=2026-01-17|SOUTHSIDE CRANBOURNE|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  meeting_date=2026-01-17
+  track=SOUTHSIDE CRANBOURNE
+  race_no=3
+  horse=Rock About
+  horse_key=ROCKABOUT
+  runner_score_hist_v1=28.274
+  runner_rank_hist_v1=8
+  rank_bucket_v1=RANK_6_10
+  score_band_v1=<40
+  finish_position=7.0
+  won=0
+  placed=0
+  governance_band_hist_v1=FIRST_STARTER_OR_UNKNOWN
+  trust_index_v1=73.805
+  trust_band_v1=A
+  trust_profile_score_v1=78.436
+  trust_profile_v1=ELITE
+  execution_permission_v1=REDUCED_EXECUTION
+  execution_reason_v1=ELITE_RACE|DEEP_RANK
+  race_execution_class_v1=FULL_EXECUTION
+  join_key_v1=2026-01-17|SOUTHSIDECRANBOURNE|3
+  runner_join_key_v1=2026-01-17|SOUTHSIDECRANBOURNE|3|ROCKABOUT
+
+========================================================================================================================
+FILE=public\data\edgeiq_historical_runner_feed_v1.csv
+TYPE=csv
+BEST_OFFICIAL_COMPLETENESS=0/7
+HEADER_COUNT=16
+HEADERS=normalized_runner | runner | starts | wins | places | win_pct | place_pct | latest_race_date | latest_track | latest_race_no | latest_position | average_epi | peak_epi | speed_rows | sectional_rows | built_at
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=71750
+HORSE=PROFFER
+IDENTITY=||RNone
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  normalized_runner=PROFFER
+  runner=PROFFER
+  starts=7
+  wins=0
+  places=1
+  win_pct=0.0
+  place_pct=14.29
+  latest_race_date=2026-01-17
+  latest_track=SOUTHSIDE CRANBOURNE
+  latest_race_no=3
+  latest_position=5.0
+  average_epi=4.2
+  peak_epi=5.0
+  speed_rows=7
+  sectional_rows=7
+  built_at=2026-07-03T13:45:26
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=76474
+HORSE=ROCK ABOUT
+IDENTITY=||RNone
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  normalized_runner=ROCKABOUT
+  runner=ROCK ABOUT
+  starts=1
+  wins=0
+  places=0
+  win_pct=0.0
+  place_pct=0.0
+  latest_race_date=2026-01-17
+  latest_track=SOUTHSIDE CRANBOURNE
+  latest_race_no=3
+  latest_position=7.0
+  average_epi=4.0
+  peak_epi=4.0
+  speed_rows=1
+  sectional_rows=1
+  built_at=2026-07-03T13:45:29
+
+========================================================================================================================
+FILE=public\data\edgeiq_meeting_results_terminal_feed_v1.csv
+TYPE=csv
+BEST_OFFICIAL_COMPLETENESS=0/7
+HEADER_COUNT=18
+HEADERS=meeting_key | race_key | race_date | track | race_no | time | winner | jockey | trainer | sp_tab | margin | official_time | track_condition | status | open | source | source_timestamp | source_confidence
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=13
+HORSE=
+IDENTITY=2026-07-21|Moe|R2
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  meeting_key=2026-07-21|MOE
+  race_key=2026-07-21|MOE|R2
+  race_date=2026-07-21
+  track=Moe
+  race_no=2
+  time=2026-07-21T03:30:00.000Z
+  track_condition=Heavy
+  status=UPCOMING
+  open=PENDING
+  source=RACING_COM_GETMEETSBYMONTH_PLUS_GETRACENUMBERLIST
+  source_timestamp=2026-07-20T00:52:39+00:00
+  source_confidence=pending
+
+========================================================================================================================
+FILE=public\data\edgeiq_race_context_grouping_runner_review_v5_1.csv
+TYPE=csv
+BEST_OFFICIAL_COMPLETENESS=0/7
+HEADER_COUNT=19
+HEADERS=review_type | grouping_candidate | context_key | runner_count | horse | race_date | track | distance | distance_band_v5_1 | race_class_clean_v5_1 | condition_group_v5_1 | real_field_size | source_file | finish_position | performance_rating_v5_1 | race_target_rating_v5_1 | projection_gap_v5_1 | projection_band_v5_1 | projection_confidence_v5_1
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=2343
+HORSE=Proffer
+IDENTITY=2025-11-27|Mornington|RNone
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  review_type=top_100_largest_contexts
+  grouping_candidate=B_DATE_TRACK_DISTANCE_SOURCE
+  context_key=2025-11-27|Mornington|1500.0|run_context.csv
+  runner_count=31
+  horse=Proffer
+  race_date=2025-11-27
+  track=Mornington
+  distance=1500.0
+  distance_band_v5_1=1400-1599
+  race_class_clean_v5_1=MAIDEN
+  condition_group_v5_1=GOOD
+  real_field_size=8
+  source_file=run_context.csv
+  finish_position=5
+  performance_rating_v5_1=57.95
+  race_target_rating_v5_1=83.57
+  projection_gap_v5_1=-25.61999999999999
+  projection_band_v5_1=POOR
+  projection_confidence_v5_1=HIGH
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=5591
+HORSE=Proffer
+IDENTITY=2025-11-27|Mornington|RNone
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  review_type=top_100_largest_contexts
+  grouping_candidate=C_DATE_TRACK_DISTANCE_ROUND_25_SOURCE
+  context_key=2025-11-27|Mornington|1500.0|run_context.csv
+  runner_count=31
+  horse=Proffer
+  race_date=2025-11-27
+  track=Mornington
+  distance=1500.0
+  distance_band_v5_1=1400-1599
+  race_class_clean_v5_1=MAIDEN
+  condition_group_v5_1=GOOD
+  real_field_size=8
+  source_file=run_context.csv
+  finish_position=5
+  performance_rating_v5_1=57.95
+  race_target_rating_v5_1=83.57
+  projection_gap_v5_1=-25.61999999999999
+  projection_band_v5_1=POOR
+  projection_confidence_v5_1=HIGH
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=8839
+HORSE=Proffer
+IDENTITY=2025-11-27|Mornington|RNone
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  review_type=top_100_largest_contexts
+  grouping_candidate=D_DATE_TRACK_DISTANCE_ROUND_50_SOURCE
+  context_key=2025-11-27|Mornington|1500.0|run_context.csv
+  runner_count=31
+  horse=Proffer
+  race_date=2025-11-27
+  track=Mornington
+  distance=1500.0
+  distance_band_v5_1=1400-1599
+  race_class_clean_v5_1=MAIDEN
+  condition_group_v5_1=GOOD
+  real_field_size=8
+  source_file=run_context.csv
+  finish_position=5
+  performance_rating_v5_1=57.95
+  race_target_rating_v5_1=83.57
+  projection_gap_v5_1=-25.61999999999999
+  projection_band_v5_1=POOR
+  projection_confidence_v5_1=HIGH
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=12087
+HORSE=Proffer
+IDENTITY=2025-11-27|Mornington|RNone
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  review_type=top_100_largest_contexts
+  grouping_candidate=F_DATE_TRACK_DISTANCE_BAND_SOURCE
+  context_key=2025-11-27|Mornington|1400-1599|run_context.csv
+  runner_count=31
+  horse=Proffer
+  race_date=2025-11-27
+  track=Mornington
+  distance=1500.0
+  distance_band_v5_1=1400-1599
+  race_class_clean_v5_1=MAIDEN
+  condition_group_v5_1=GOOD
+  real_field_size=8
+  source_file=run_context.csv
+  finish_position=5
+  performance_rating_v5_1=57.95
+  race_target_rating_v5_1=83.57
+  projection_gap_v5_1=-25.61999999999999
+  projection_band_v5_1=POOR
+  projection_confidence_v5_1=HIGH
+
+========================================================================================================================
+FILE=public\data\edgeiq_racingcom_calendar_discovery_v1.csv
+TYPE=csv
+BEST_OFFICIAL_COMPLETENESS=0/7
+HEADER_COUNT=9
+HEADERS=race_date | track | state | meeting_url | race_no | race_url | speed_data_url | source_url | discovery_status
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=406
+HORSE=
+IDENTITY=2026-07-21|Moe|R2
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  race_date=2026-07-21
+  track=Moe
+  state=VIC
+  meeting_url=https://www.racing.com/form/2026-07-21/moe
+  race_no=2
+  race_url=https://www.racing.com/form/2026-07-21/moe/race/2
+  speed_data_url=https://www.racing.com/form/2026-07-21/moe/race/2/speed-data
+  source_url=https://www.racing.com/services/appv2/GetMeetsByMonth/2026/7
+  discovery_status=MEETS_BY_MONTH_MEETING_EXPANDED
+
+========================================================================================================================
+FILE=public\data\edgeiq_racingcom_historical_calendar_backfill_v1.csv
+TYPE=csv
+BEST_OFFICIAL_COMPLETENESS=0/7
+HEADER_COUNT=16
+HEADERS=built_at | meeting_date | track | state | event_type | meet_status | is_trial | is_jumpout | is_abandoned | has_race_information | meeting_url | race_no | race_url | speed_data_url | source_url | discovery_status
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=16261
+HORSE=
+IDENTITY=2026-07-21|MOE|R2
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  built_at=2026-06-05T02:02:40.823101+00:00
+  meeting_date=2026-07-21
+  track=MOE
+  state=VIC
+  event_type=CountryMeet
+  meet_status=Nominations
+  is_trial=FALSE
+  is_jumpout=FALSE
+  is_abandoned=FALSE
+  has_race_information=TRUE
+  meeting_url=https://www.racing.com/form/2026-07-21/moe
+  race_no=2
+  race_url=https://www.racing.com/form/2026-07-21/moe/race/2
+  speed_data_url=https://www.racing.com/form/2026-07-21/moe/race/2/speed-data
+  source_url=https://www.racing.com/services/appv2/GetMeetsByMonth/2026/7
+  discovery_status=PUBLIC_RACINGCOM_MONTH_BACKFILL_CANDIDATE
+
+========================================================================================================================
+FILE=public\data\edgeiq_runner_dna_predictive_value_v1.csv
+TYPE=csv
+BEST_OFFICIAL_COMPLETENESS=0/7
+HEADER_COUNT=27
+HEADERS=meeting_date | track | race_no | race_key | horse | horse_key | won | placed | finish_position | dna_score_proxy | dna_band_v62 | dna_rank | current_band | v6_3_research_score | v6_3_research_band | projection_gap_V6_1_RESEARCH | projected_rating_V6_1_RESEARCH | projection_band_V6_1_RESEARCH | V6_1_RESEARCH_probability | V6_1_RESEARCH_fair_price | projection_rank_v61 | projection_rank_bucket_v61 | projection_gap_overlap_flag | projection_overlap_flag | source_match_status | source_variant | historical_source_note
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=105098
+HORSE=Proffer
+IDENTITY=2025-11-02|MORNINGTON|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-11-02
+  track=MORNINGTON
+  race_no=3
+  race_key=2025-11-02|MORNINGTON|R3
+  horse=Proffer
+  horse_key=PROFFER
+  won=0
+  placed=1
+  finish_position=3.0
+  dna_score_proxy=31.641
+  dna_band_v62=NEGATIVE
+  dna_rank=9.0
+  current_band=NEGATIVE
+  v6_3_research_score=44.223
+  v6_3_research_band=NEUTRAL
+  projection_rank_bucket_v61=UNKNOWN
+  projection_gap_overlap_flag=NO
+  projection_overlap_flag=NO_V6_1_MATCH
+  source_match_status=NO_V6_1_BACKTEST_MATCH
+  source_variant=CURRENT_SCORE_PROXY_REBANDED_TO_V6_2
+  historical_source_note=Direct settled V6.2 DNA replay not found. Using current_score from edgeiq_runner_dna_v6_3_historical_replay_v1.csv as the closest historical DNA proxy, then remapping to V6.2 band thresholds.
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=106513
+HORSE=Proffer
+IDENTITY=2025-11-13|BET365 SEYMOUR|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-11-13
+  track=BET365 SEYMOUR
+  race_no=3
+  race_key=2025-11-13|SEYMOUR|R3
+  horse=Proffer
+  horse_key=PROFFER
+  won=0
+  placed=0
+  finish_position=5.0
+  dna_score_proxy=54.758
+  dna_band_v62=NEUTRAL
+  dna_rank=4.0
+  current_band=NEUTRAL
+  v6_3_research_score=53.127
+  v6_3_research_band=NEUTRAL
+  projection_rank_bucket_v61=UNKNOWN
+  projection_gap_overlap_flag=NO
+  projection_overlap_flag=NO_V6_1_MATCH
+  source_match_status=NO_V6_1_BACKTEST_MATCH
+  source_variant=CURRENT_SCORE_PROXY_REBANDED_TO_V6_2
+  historical_source_note=Direct settled V6.2 DNA replay not found. Using current_score from edgeiq_runner_dna_v6_3_historical_replay_v1.csv as the closest historical DNA proxy, then remapping to V6.2 band thresholds.
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=108086
+HORSE=Proffer
+IDENTITY=2025-11-27|MORNINGTON|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-11-27
+  track=MORNINGTON
+  race_no=3
+  race_key=2025-11-27|MORNINGTON|R3
+  horse=Proffer
+  horse_key=PROFFER
+  won=0
+  placed=0
+  finish_position=5.0
+  dna_score_proxy=43.348
+  dna_band_v62=NEGATIVE
+  dna_rank=1.0
+  current_band=NEUTRAL
+  v6_3_research_score=49.076
+  v6_3_research_band=NEUTRAL
+  projection_gap_V6_1_RESEARCH=5.055
+  projected_rating_V6_1_RESEARCH=59.0
+  projection_band_V6_1_RESEARCH=POSITIVE
+  V6_1_RESEARCH_probability=0.1868848809328837
+  V6_1_RESEARCH_fair_price=5.350887642746936
+  projection_rank_bucket_v61=UNKNOWN
+  projection_gap_overlap_flag=YES
+  projection_overlap_flag=MATCHED_V6_1
+  source_match_status=MATCHED_V2_DATE_TRACK_RACE_NO_HORSE_KEY
+  source_variant=CURRENT_SCORE_PROXY_REBANDED_TO_V6_2
+  historical_source_note=Direct settled V6.2 DNA replay not found. Using current_score from edgeiq_runner_dna_v6_3_historical_replay_v1.csv as the closest historical DNA proxy, then remapping to V6.2 band thresholds.
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=112388
+HORSE=Proffer
+IDENTITY=2026-01-03|SOUTHSIDE CRANBOURNE|R2
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  meeting_date=2026-01-03
+  track=SOUTHSIDE CRANBOURNE
+  race_no=2
+  race_key=2026-01-03|SOUTHSIDE CRANBOURNE|R2
+  horse=Proffer
+  horse_key=PROFFER
+  won=0
+  placed=0
+  finish_position=7.0
+  dna_score_proxy=46.956
+  dna_band_v62=NEUTRAL
+  dna_rank=5.0
+  current_band=NEUTRAL
+  v6_3_research_score=45.853
+  v6_3_research_band=NEUTRAL
+  projection_gap_V6_1_RESEARCH=0.0
+  projected_rating_V6_1_RESEARCH=59.65
+  projection_band_V6_1_RESEARCH=NEUTRAL
+  V6_1_RESEARCH_probability=0.1934637591949936
+  V6_1_RESEARCH_fair_price=5.1689267496973015
+  projection_rank_bucket_v61=UNKNOWN
+  projection_gap_overlap_flag=YES
+  projection_overlap_flag=MATCHED_V6_1
+  source_match_status=MATCHED_V2_DATE_TRACK_RACE_NO_HORSE_KEY
+  source_variant=CURRENT_SCORE_PROXY_REBANDED_TO_V6_2
+  historical_source_note=Direct settled V6.2 DNA replay not found. Using current_score from edgeiq_runner_dna_v6_3_historical_replay_v1.csv as the closest historical DNA proxy, then remapping to V6.2 band thresholds.
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=113813
+HORSE=Proffer
+IDENTITY=2026-01-17|SOUTHSIDE CRANBOURNE|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  meeting_date=2026-01-17
+  track=SOUTHSIDE CRANBOURNE
+  race_no=3
+  race_key=2026-01-17|SOUTHSIDE CRANBOURNE|R3
+  horse=Proffer
+  horse_key=PROFFER
+  won=0
+  placed=0
+  finish_position=5.0
+  dna_score_proxy=39.658
+  dna_band_v62=NEGATIVE
+  dna_rank=4.0
+  current_band=NEGATIVE
+  v6_3_research_score=40.248
+  v6_3_research_band=NEUTRAL
+  projection_gap_V6_1_RESEARCH=-15.009999999999998
+  projected_rating_V6_1_RESEARCH=45.1
+  projection_band_V6_1_RESEARCH=POOR
+  V6_1_RESEARCH_probability=0.1156841576748489
+  V6_1_RESEARCH_fair_price=8.64422596921766
+  projection_rank_bucket_v61=UNKNOWN
+  projection_gap_overlap_flag=YES
+  projection_overlap_flag=MATCHED_V6_1
+  source_match_status=MATCHED_V2_DATE_TRACK_RACE_NO_HORSE_KEY
+  source_variant=CURRENT_SCORE_PROXY_REBANDED_TO_V6_2
+  historical_source_note=Direct settled V6.2 DNA replay not found. Using current_score from edgeiq_runner_dna_v6_3_historical_replay_v1.csv as the closest historical DNA proxy, then remapping to V6.2 band thresholds.
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=113817
+HORSE=Rock About
+IDENTITY=2026-01-17|SOUTHSIDE CRANBOURNE|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  meeting_date=2026-01-17
+  track=SOUTHSIDE CRANBOURNE
+  race_no=3
+  race_key=2026-01-17|SOUTHSIDE CRANBOURNE|R3
+  horse=Rock About
+  horse_key=ROCKABOUT
+  won=0
+  placed=0
+  finish_position=7.0
+  dna_score_proxy=31.216
+  dna_band_v62=NEGATIVE
+  dna_rank=8.0
+  current_band=NEGATIVE
+  v6_3_research_score=41.932
+  v6_3_research_band=NEUTRAL
+  projection_rank_bucket_v61=UNKNOWN
+  projection_gap_overlap_flag=NO
+  projection_overlap_flag=NO_V6_1_MATCH
+  source_match_status=NO_V6_1_BACKTEST_MATCH
+  source_variant=CURRENT_SCORE_PROXY_REBANDED_TO_V6_2
+  historical_source_note=Direct settled V6.2 DNA replay not found. Using current_score from edgeiq_runner_dna_v6_3_historical_replay_v1.csv as the closest historical DNA proxy, then remapping to V6.2 band thresholds.
+
+========================================================================================================================
+FILE=public\data\edgeiq_runner_dna_v6_3_historical_replay_v1.csv
+TYPE=csv
+BEST_OFFICIAL_COMPLETENESS=0/7
+HEADER_COUNT=19
+HEADERS=meeting_date | track | race_no | race_key | horse | horse_key | current_score | current_band | v6_3_research_score | v6_3_research_band | score_delta | won | placed | finish_position | built_at | current_rank | v6_3_rank | rank_delta | band_changed
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=105098
+HORSE=Proffer
+IDENTITY=2025-11-02|MORNINGTON|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-11-02
+  track=MORNINGTON
+  race_no=3
+  race_key=2025-11-02|MORNINGTON|R3
+  horse=Proffer
+  horse_key=PROFFER
+  current_score=31.641
+  current_band=NEGATIVE
+  v6_3_research_score=44.223
+  v6_3_research_band=NEUTRAL
+  score_delta=12.582
+  won=0
+  placed=1
+  finish_position=3.0
+  built_at=2026-06-18T02:14:08.574500+00:00
+  current_rank=9.0
+  v6_3_rank=6.0
+  rank_delta=-3.0
+  band_changed=YES
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=106513
+HORSE=Proffer
+IDENTITY=2025-11-13|BET365 SEYMOUR|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-11-13
+  track=BET365 SEYMOUR
+  race_no=3
+  race_key=2025-11-13|SEYMOUR|R3
+  horse=Proffer
+  horse_key=PROFFER
+  current_score=54.758
+  current_band=NEUTRAL
+  v6_3_research_score=53.127
+  v6_3_research_band=NEUTRAL
+  score_delta=-1.631
+  won=0
+  placed=0
+  finish_position=5.0
+  built_at=2026-06-18T02:14:08.574500+00:00
+  current_rank=4.0
+  v6_3_rank=2.0
+  rank_delta=-2.0
+  band_changed=NO
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=108086
+HORSE=Proffer
+IDENTITY=2025-11-27|MORNINGTON|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-11-27
+  track=MORNINGTON
+  race_no=3
+  race_key=2025-11-27|MORNINGTON|R3
+  horse=Proffer
+  horse_key=PROFFER
+  current_score=43.348
+  current_band=NEUTRAL
+  v6_3_research_score=49.076
+  v6_3_research_band=NEUTRAL
+  score_delta=5.728
+  won=0
+  placed=0
+  finish_position=5.0
+  built_at=2026-06-18T02:14:08.574500+00:00
+  current_rank=1.0
+  v6_3_rank=1.0
+  rank_delta=0.0
+  band_changed=NO
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=112388
+HORSE=Proffer
+IDENTITY=2026-01-03|SOUTHSIDE CRANBOURNE|R2
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  meeting_date=2026-01-03
+  track=SOUTHSIDE CRANBOURNE
+  race_no=2
+  race_key=2026-01-03|SOUTHSIDE CRANBOURNE|R2
+  horse=Proffer
+  horse_key=PROFFER
+  current_score=46.956
+  current_band=NEUTRAL
+  v6_3_research_score=45.853
+  v6_3_research_band=NEUTRAL
+  score_delta=-1.103
+  won=0
+  placed=0
+  finish_position=7.0
+  built_at=2026-06-18T02:14:08.574500+00:00
+  current_rank=5.0
+  v6_3_rank=5.0
+  rank_delta=0.0
+  band_changed=NO
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=113813
+HORSE=Proffer
+IDENTITY=2026-01-17|SOUTHSIDE CRANBOURNE|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  meeting_date=2026-01-17
+  track=SOUTHSIDE CRANBOURNE
+  race_no=3
+  race_key=2026-01-17|SOUTHSIDE CRANBOURNE|R3
+  horse=Proffer
+  horse_key=PROFFER
+  current_score=39.658
+  current_band=NEGATIVE
+  v6_3_research_score=40.248
+  v6_3_research_band=NEUTRAL
+  score_delta=0.59
+  won=0
+  placed=0
+  finish_position=5.0
+  built_at=2026-06-18T02:14:08.574500+00:00
+  current_rank=4.0
+  v6_3_rank=7.0
+  rank_delta=3.0
+  band_changed=YES
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=113817
+HORSE=Rock About
+IDENTITY=2026-01-17|SOUTHSIDE CRANBOURNE|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  meeting_date=2026-01-17
+  track=SOUTHSIDE CRANBOURNE
+  race_no=3
+  race_key=2026-01-17|SOUTHSIDE CRANBOURNE|R3
+  horse=Rock About
+  horse_key=ROCKABOUT
+  current_score=31.216
+  current_band=NEGATIVE
+  v6_3_research_score=41.932
+  v6_3_research_band=NEUTRAL
+  score_delta=10.716
+  won=0
+  placed=0
+  finish_position=7.0
+  built_at=2026-06-18T02:14:08.574500+00:00
+  current_rank=8.0
+  v6_3_rank=6.0
+  rank_delta=-2.0
+  band_changed=YES
+
+========================================================================================================================
+FILE=public\data\edgeiq_runner_dna_v6_3_probability_calibration_replay_v1.csv
+TYPE=csv
+BEST_OFFICIAL_COMPLETENESS=0/7
+HEADER_COUNT=45
+HEADERS=meeting_date | track | race_no | horse | runner_score | runner_rank | sp | finish_position | won | score_band_v4 | projection_status_v6 | starts_before | projected_rating_v5_2 | governed_projection_rating_v6 | race_target_rating_v5_2 | projection_gap_v5_2 | sectional_strength_rating | horse_results_strength_v3 | live_race_strength_score_v3 | strength_adjusted_rating_v6 | confidence_score_v1 | confidence_adjusted_rating_v6 | connection_score | trainer_score | jockey_score | market_score | results_reliability_v3 | top_score_tied_in_race | tied_top_score_count | all_scores_identical_in_race | race_key | track_norm | horse_key | track_norm_join | race_no_join | horse_join | rank_bucket | score_band | governance | sp_replay_original | sp_settled | sp_num_settled | sp_valid | profit_1u | error
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=105098
+HORSE=Proffer
+IDENTITY=2025-11-02|MORNINGTON|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-11-02
+  track=MORNINGTON
+  race_no=3
+  horse=Proffer
+  runner_score=31.641
+  runner_rank=9
+  sp=$4.30
+  finish_position=3.0
+  won=0
+  score_band_v4=POOR
+  projection_status_v6=FIRST_STARTER_OR_UNKNOWN
+  starts_before=0
+  projected_rating_v5_2=70.0
+  governed_projection_rating_v6=28.0
+  race_target_rating_v5_2=81.112
+  projection_gap_v5_2=-53.112
+  sectional_strength_rating=45.96
+  live_race_strength_score_v3=51.479
+  strength_adjusted_rating_v6=29.437
+  confidence_score_v1=27.826
+  confidence_adjusted_rating_v6=22.129
+  connection_score=56.397
+  trainer_score=47.314
+  jockey_score=49.714
+  market_score=95.0
+  results_reliability_v3=UNKNOWN
+  top_score_tied_in_race=0
+  tied_top_score_count=1
+  all_scores_identical_in_race=0
+  race_key=2025-11-02|MORNINGTON|R3
+  track_norm=MORNINGTON
+  horse_key=PROFFER
+  track_norm_join=MORNINGTON
+  race_no_join=3
+  horse_join=PROFFER
+  rank_bucket=RANK_6_10
+  score_band=LT_40
+  governance=FIRST_STARTER_OR_UNKNOWN
+  sp_replay_original=$4.30
+  sp_settled=$4.30
+  sp_num_settled=4.3
+  sp_valid=True
+  profit_1u=-1.0
+  error=28989.5
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=106513
+HORSE=Proffer
+IDENTITY=2025-11-13|BET365 SEYMOUR|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-11-13
+  track=BET365 SEYMOUR
+  race_no=3
+  horse=Proffer
+  runner_score=54.758
+  runner_rank=4
+  finish_position=5.0
+  won=0
+  score_band_v4=NEUTRAL
+  projection_status_v6=LIMITED_DATA_1_START
+  starts_before=1
+  projected_rating_v5_2=71.099
+  governed_projection_rating_v6=71.099
+  race_target_rating_v5_2=81.105
+  projection_gap_v5_2=-10.006
+  sectional_strength_rating=46.057
+  horse_results_strength_v3=60.498
+  live_race_strength_score_v3=58.188
+  strength_adjusted_rating_v6=52.847
+  confidence_score_v1=49.753
+  confidence_adjusted_rating_v6=44.636
+  connection_score=47.301
+  trainer_score=47.07
+  jockey_score=49.062
+  market_score=50.0
+  results_reliability_v3=LIMITED_1_2
+  top_score_tied_in_race=0
+  tied_top_score_count=1
+  all_scores_identical_in_race=0
+  race_key=2025-11-13|SEYMOUR|R3
+  track_norm=SEYMOUR
+  horse_key=PROFFER
+  track_norm_join=SEYMOUR
+  race_no_join=3
+  horse_join=PROFFER
+  rank_bucket=RANK_4_5
+  score_band=50_54
+  governance=LIMITED_DATA_1_START
+  sp_valid=False
+  error=89692.0
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=108086
+HORSE=Proffer
+IDENTITY=2025-11-27|MORNINGTON|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-11-27
+  track=MORNINGTON
+  race_no=3
+  horse=Proffer
+  runner_score=43.348
+  runner_rank=1
+  finish_position=5.0
+  won=0
+  score_band_v4=WEAK
+  projection_status_v6=LIMITED_DATA_2_STARTS
+  starts_before=2
+  projected_rating_v5_2=65.915
+  governed_projection_rating_v6=65.915
+  race_target_rating_v5_2=80.967
+  projection_gap_v5_2=-15.053
+  sectional_strength_rating=46.523
+  horse_results_strength_v3=46.284
+  live_race_strength_score_v3=38.444
+  strength_adjusted_rating_v6=43.294
+  confidence_score_v1=52.273
+  confidence_adjusted_rating_v6=38.463
+  connection_score=49.694
+  trainer_score=48.366
+  jockey_score=48.835
+  market_score=50.0
+  results_reliability_v3=LIMITED_1_2
+  top_score_tied_in_race=0
+  tied_top_score_count=1
+  all_scores_identical_in_race=0
+  race_key=2025-11-27|MORNINGTON|R3
+  track_norm=MORNINGTON
+  horse_key=PROFFER
+  track_norm_join=MORNINGTON
+  race_no_join=3
+  horse_join=PROFFER
+  rank_bucket=RANK_1
+  score_band=40_44
+  governance=LIMITED_DATA_2_STARTS
+  sp_valid=False
+  error=57195.5
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=112388
+HORSE=Proffer
+IDENTITY=2026-01-03|SOUTHSIDE CRANBOURNE|R2
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  meeting_date=2026-01-03
+  track=SOUTHSIDE CRANBOURNE
+  race_no=2
+  horse=Proffer
+  runner_score=46.956
+  runner_rank=5
+  finish_position=7.0
+  won=0
+  score_band_v4=NEUTRAL
+  projection_status_v6=LIMITED_DATA_3_4_STARTS
+  starts_before=3
+  projected_rating_v5_2=57.084
+  governed_projection_rating_v6=57.084
+  race_target_rating_v5_2=81.129
+  projection_gap_v5_2=-24.046
+  sectional_strength_rating=39.664
+  horse_results_strength_v3=42.514
+  live_race_strength_score_v3=56.082
+  strength_adjusted_rating_v6=46.799
+  confidence_score_v1=61.6
+  confidence_adjusted_rating_v6=44.103
+  connection_score=43.154
+  trainer_score=46.765
+  jockey_score=30.263
+  market_score=50.0
+  results_reliability_v3=LIMITED_3_4
+  top_score_tied_in_race=0
+  tied_top_score_count=1
+  all_scores_identical_in_race=0
+  race_key=2026-01-03|SOUTHSIDE CRANBOURNE|R2
+  track_norm=SOUTHSIDE CRANBOURNE
+  horse_key=PROFFER
+  track_norm_join=SOUTHSIDE CRANBOURNE
+  race_no_join=2
+  horse_join=PROFFER
+  rank_bucket=RANK_4_5
+  score_band=45_49
+  governance=LIMITED_DATA_3_4_STARTS
+  sp_valid=False
+  error=66305.5
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=113813
+HORSE=Proffer
+IDENTITY=2026-01-17|SOUTHSIDE CRANBOURNE|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  meeting_date=2026-01-17
+  track=SOUTHSIDE CRANBOURNE
+  race_no=3
+  horse=Proffer
+  runner_score=39.658
+  runner_rank=4
+  finish_position=5.0
+  won=0
+  score_band_v4=WEAK
+  projection_status_v6=LIMITED_DATA_3_4_STARTS
+  starts_before=4
+  projected_rating_v5_2=44.374
+  governed_projection_rating_v6=44.374
+  race_target_rating_v5_2=81.142
+  projection_gap_v5_2=-36.769
+  sectional_strength_rating=35.516
+  horse_results_strength_v3=34.514
+  live_race_strength_score_v3=51.227
+  strength_adjusted_rating_v6=39.337
+  confidence_score_v1=62.999
+  confidence_adjusted_rating_v6=37.154
+  connection_score=47.412
+  trainer_score=48.962
+  jockey_score=41.278
+  market_score=50.0
+  results_reliability_v3=LIMITED_3_4
+  top_score_tied_in_race=0
+  tied_top_score_count=1
+  all_scores_identical_in_race=0
+  race_key=2026-01-17|SOUTHSIDE CRANBOURNE|R3
+  track_norm=SOUTHSIDE CRANBOURNE
+  horse_key=PROFFER
+  track_norm_join=SOUTHSIDE CRANBOURNE
+  race_no_join=3
+  horse_join=PROFFER
+  rank_bucket=RANK_4_5
+  score_band=LT_40
+  governance=LIMITED_DATA_3_4_STARTS
+  sp_valid=False
+  error=48392.5
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=113817
+HORSE=Rock About
+IDENTITY=2026-01-17|SOUTHSIDE CRANBOURNE|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  meeting_date=2026-01-17
+  track=SOUTHSIDE CRANBOURNE
+  race_no=3
+  horse=Rock About
+  runner_score=31.216
+  runner_rank=8
+  finish_position=7.0
+  won=0
+  score_band_v4=POOR
+  projection_status_v6=FIRST_STARTER_OR_UNKNOWN
+  starts_before=0
+  projected_rating_v5_2=66.199
+  governed_projection_rating_v6=28.0
+  race_target_rating_v5_2=81.142
+  projection_gap_v5_2=-53.142
+  sectional_strength_rating=44.535
+  live_race_strength_score_v3=51.227
+  strength_adjusted_rating_v6=28.992
+  confidence_score_v1=27.401
+  confidence_adjusted_rating_v6=21.776
+  connection_score=46.903
+  trainer_score=42.45
+  jockey_score=46.092
+  market_score=50.0
+  results_reliability_v3=UNKNOWN
+  top_score_tied_in_race=0
+  tied_top_score_count=1
+  all_scores_identical_in_race=0
+  race_key=2026-01-17|SOUTHSIDE CRANBOURNE|R3
+  track_norm=SOUTHSIDE CRANBOURNE
+  horse_key=ROCKABOUT
+  track_norm_join=SOUTHSIDE CRANBOURNE
+  race_no_join=3
+  horse_join=ROCKABOUT
+  rank_bucket=RANK_6_10
+  score_band=LT_40
+  governance=FIRST_STARTER_OR_UNKNOWN
+  sp_valid=False
+  error=27926.5
+
+========================================================================================================================
+FILE=public\data\edgeiq_runner_dna_v6_3_sp_valid_roi_replay_v2.csv
+TYPE=csv
+BEST_OFFICIAL_COMPLETENESS=0/7
+HEADER_COUNT=14
+HEADERS=version | race_key | meeting_date | track | race_no | horse | sp_valid | sp | price_bucket | won | placed | profit_1u | top_changed_vs_base | built_at
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=11342
+HORSE=Proffer
+IDENTITY=2025-11-27|MORNINGTON|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  version=BASE
+  race_key=2025-11-27|MORNINGTON|R3
+  meeting_date=2025-11-27
+  track=MORNINGTON
+  race_no=3
+  horse=Proffer
+  sp_valid=NO
+  price_bucket=NO_SP
+  won=0
+  placed=0
+  top_changed_vs_base=False
+  built_at=2026-06-18T04:47:28.984123+00:00
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=24918
+HORSE=Proffer
+IDENTITY=2025-11-27|MORNINGTON|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  version=LIGHT
+  race_key=2025-11-27|MORNINGTON|R3
+  meeting_date=2025-11-27
+  track=MORNINGTON
+  race_no=3
+  horse=Proffer
+  sp_valid=NO
+  price_bucket=NO_SP
+  won=0
+  placed=0
+  top_changed_vs_base=False
+  built_at=2026-06-18T04:47:28.984123+00:00
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=38494
+HORSE=Proffer
+IDENTITY=2025-11-27|MORNINGTON|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  version=MEDIUM
+  race_key=2025-11-27|MORNINGTON|R3
+  meeting_date=2025-11-27
+  track=MORNINGTON
+  race_no=3
+  horse=Proffer
+  sp_valid=NO
+  price_bucket=NO_SP
+  won=0
+  placed=0
+  top_changed_vs_base=False
+  built_at=2026-06-18T04:47:28.984123+00:00
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=52070
+HORSE=Proffer
+IDENTITY=2025-11-27|MORNINGTON|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  version=AGGRESSIVE
+  race_key=2025-11-27|MORNINGTON|R3
+  meeting_date=2025-11-27
+  track=MORNINGTON
+  race_no=3
+  horse=Proffer
+  sp_valid=NO
+  price_bucket=NO_SP
+  won=0
+  placed=0
+  top_changed_vs_base=False
+  built_at=2026-06-18T04:47:28.984123+00:00
+
+========================================================================================================================
+FILE=public\data\edgeiq_runner_dna_weight_ladder_v1_detail.csv
+TYPE=csv
+BEST_OFFICIAL_COMPLETENESS=0/7
+HEADER_COUNT=20
+HEADERS=version | meeting_date | track | race_no | race_key | horse | horse_key | score | won | placed | finish_position | built_at | band | rank | base_score | base_band | base_rank | score_delta_vs_base | rank_delta_vs_base | band_changed_vs_base
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=105098
+HORSE=Proffer
+IDENTITY=2025-11-02|MORNINGTON|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  version=BASE
+  meeting_date=2025-11-02
+  track=MORNINGTON
+  race_no=3
+  race_key=2025-11-02|MORNINGTON|R3
+  horse=Proffer
+  horse_key=PROFFER
+  score=43.344
+  won=0
+  placed=1
+  finish_position=3.0
+  built_at=2026-06-18T02:23:41.085655+00:00
+  band=NEUTRAL
+  rank=6.0
+  base_score=43.344
+  base_band=NEUTRAL
+  base_rank=6.0
+  score_delta_vs_base=0.0
+  rank_delta_vs_base=0.0
+  band_changed_vs_base=False
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=106513
+HORSE=Proffer
+IDENTITY=2025-11-13|BET365 SEYMOUR|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  version=BASE
+  meeting_date=2025-11-13
+  track=BET365 SEYMOUR
+  race_no=3
+  race_key=2025-11-13|SEYMOUR|R3
+  horse=Proffer
+  horse_key=PROFFER
+  score=52.736
+  won=0
+  placed=0
+  finish_position=5.0
+  built_at=2026-06-18T02:23:41.085655+00:00
+  band=NEUTRAL
+  rank=2.0
+  base_score=52.736
+  base_band=NEUTRAL
+  base_rank=2.0
+  score_delta_vs_base=0.0
+  rank_delta_vs_base=0.0
+  band_changed_vs_base=False
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=108086
+HORSE=Proffer
+IDENTITY=2025-11-27|MORNINGTON|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  version=BASE
+  meeting_date=2025-11-27
+  track=MORNINGTON
+  race_no=3
+  race_key=2025-11-27|MORNINGTON|R3
+  horse=Proffer
+  horse_key=PROFFER
+  score=48.614
+  won=0
+  placed=0
+  finish_position=5.0
+  built_at=2026-06-18T02:23:41.085655+00:00
+  band=NEUTRAL
+  rank=1.0
+  base_score=48.614
+  base_band=NEUTRAL
+  base_rank=1.0
+  score_delta_vs_base=0.0
+  rank_delta_vs_base=0.0
+  band_changed_vs_base=False
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=112388
+HORSE=Proffer
+IDENTITY=2026-01-03|SOUTHSIDE CRANBOURNE|R2
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  version=BASE
+  meeting_date=2026-01-03
+  track=SOUTHSIDE CRANBOURNE
+  race_no=2
+  race_key=2026-01-03|SOUTHSIDE CRANBOURNE|R2
+  horse=Proffer
+  horse_key=PROFFER
+  score=45.831
+  won=0
+  placed=0
+  finish_position=7.0
+  built_at=2026-06-18T02:23:41.085655+00:00
+  band=NEUTRAL
+  rank=5.0
+  base_score=45.831
+  base_band=NEUTRAL
+  base_rank=5.0
+  score_delta_vs_base=0.0
+  rank_delta_vs_base=0.0
+  band_changed_vs_base=False
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=113813
+HORSE=Proffer
+IDENTITY=2026-01-17|SOUTHSIDE CRANBOURNE|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  version=BASE
+  meeting_date=2026-01-17
+  track=SOUTHSIDE CRANBOURNE
+  race_no=3
+  race_key=2026-01-17|SOUTHSIDE CRANBOURNE|R3
+  horse=Proffer
+  horse_key=PROFFER
+  score=40.167
+  won=0
+  placed=0
+  finish_position=5.0
+  built_at=2026-06-18T02:23:41.085655+00:00
+  band=NEUTRAL
+  rank=7.0
+  base_score=40.167
+  base_band=NEUTRAL
+  base_rank=7.0
+  score_delta_vs_base=0.0
+  rank_delta_vs_base=0.0
+  band_changed_vs_base=False
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=113817
+HORSE=Rock About
+IDENTITY=2026-01-17|SOUTHSIDE CRANBOURNE|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  version=BASE
+  meeting_date=2026-01-17
+  track=SOUTHSIDE CRANBOURNE
+  race_no=3
+  race_key=2026-01-17|SOUTHSIDE CRANBOURNE|R3
+  horse=Rock About
+  horse_key=ROCKABOUT
+  score=41.129
+  won=0
+  placed=0
+  finish_position=7.0
+  built_at=2026-06-18T02:23:41.085655+00:00
+  band=NEUTRAL
+  rank=6.0
+  base_score=41.129
+  base_band=NEUTRAL
+  base_rank=6.0
+  score_delta_vs_base=0.0
+  rank_delta_vs_base=0.0
+  band_changed_vs_base=False
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=234100
+HORSE=Proffer
+IDENTITY=2025-11-02|MORNINGTON|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  version=LIGHT
+  meeting_date=2025-11-02
+  track=MORNINGTON
+  race_no=3
+  race_key=2025-11-02|MORNINGTON|R3
+  horse=Proffer
+  horse_key=PROFFER
+  score=44.289
+  won=0
+  placed=1
+  finish_position=3.0
+  built_at=2026-06-18T02:23:41.085655+00:00
+  band=NEUTRAL
+  rank=6.0
+  base_score=43.344
+  base_band=NEUTRAL
+  base_rank=6.0
+  score_delta_vs_base=0.9450000000000003
+  rank_delta_vs_base=0.0
+  band_changed_vs_base=False
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=235515
+HORSE=Proffer
+IDENTITY=2025-11-13|BET365 SEYMOUR|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  version=LIGHT
+  meeting_date=2025-11-13
+  track=BET365 SEYMOUR
+  race_no=3
+  race_key=2025-11-13|SEYMOUR|R3
+  horse=Proffer
+  horse_key=PROFFER
+  score=52.786
+  won=0
+  placed=0
+  finish_position=5.0
+  built_at=2026-06-18T02:23:41.085655+00:00
+  band=NEUTRAL
+  rank=2.0
+  base_score=52.736
+  base_band=NEUTRAL
+  base_rank=2.0
+  score_delta_vs_base=0.05000000000000426
+  rank_delta_vs_base=0.0
+  band_changed_vs_base=False
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=237088
+HORSE=Proffer
+IDENTITY=2025-11-27|MORNINGTON|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  version=LIGHT
+  meeting_date=2025-11-27
+  track=MORNINGTON
+  race_no=3
+  race_key=2025-11-27|MORNINGTON|R3
+  horse=Proffer
+  horse_key=PROFFER
+  score=48.935
+  won=0
+  placed=0
+  finish_position=5.0
+  built_at=2026-06-18T02:23:41.085655+00:00
+  band=NEUTRAL
+  rank=1.0
+  base_score=48.614
+  base_band=NEUTRAL
+  base_rank=1.0
+  score_delta_vs_base=0.32100000000000506
+  rank_delta_vs_base=0.0
+  band_changed_vs_base=False
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=241390
+HORSE=Proffer
+IDENTITY=2026-01-03|SOUTHSIDE CRANBOURNE|R2
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  version=LIGHT
+  meeting_date=2026-01-03
+  track=SOUTHSIDE CRANBOURNE
+  race_no=2
+  race_key=2026-01-03|SOUTHSIDE CRANBOURNE|R2
+  horse=Proffer
+  horse_key=PROFFER
+  score=45.575
+  won=0
+  placed=0
+  finish_position=7.0
+  built_at=2026-06-18T02:23:41.085655+00:00
+  band=NEUTRAL
+  rank=5.0
+  base_score=45.831
+  base_band=NEUTRAL
+  base_rank=5.0
+  score_delta_vs_base=-0.2560000000000002
+  rank_delta_vs_base=0.0
+  band_changed_vs_base=False
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=242815
+HORSE=Proffer
+IDENTITY=2026-01-17|SOUTHSIDE CRANBOURNE|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  version=LIGHT
+  meeting_date=2026-01-17
+  track=SOUTHSIDE CRANBOURNE
+  race_no=3
+  race_key=2026-01-17|SOUTHSIDE CRANBOURNE|R3
+  horse=Proffer
+  horse_key=PROFFER
+  score=40.321
+  won=0
+  placed=0
+  finish_position=5.0
+  built_at=2026-06-18T02:23:41.085655+00:00
+  band=NEUTRAL
+  rank=7.0
+  base_score=40.167
+  base_band=NEUTRAL
+  base_rank=7.0
+  score_delta_vs_base=0.15399999999999636
+  rank_delta_vs_base=0.0
+  band_changed_vs_base=False
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=242819
+HORSE=Rock About
+IDENTITY=2026-01-17|SOUTHSIDE CRANBOURNE|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  version=LIGHT
+  meeting_date=2026-01-17
+  track=SOUTHSIDE CRANBOURNE
+  race_no=3
+  race_key=2026-01-17|SOUTHSIDE CRANBOURNE|R3
+  horse=Rock About
+  horse_key=ROCKABOUT
+  score=41.891
+  won=0
+  placed=0
+  finish_position=7.0
+  built_at=2026-06-18T02:23:41.085655+00:00
+  band=NEUTRAL
+  rank=6.0
+  base_score=41.129
+  base_band=NEUTRAL
+  base_rank=6.0
+  score_delta_vs_base=0.7620000000000005
+  rank_delta_vs_base=0.0
+  band_changed_vs_base=False
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=363102
+HORSE=Proffer
+IDENTITY=2025-11-02|MORNINGTON|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  version=MEDIUM
+  meeting_date=2025-11-02
+  track=MORNINGTON
+  race_no=3
+  race_key=2025-11-02|MORNINGTON|R3
+  horse=Proffer
+  horse_key=PROFFER
+  score=44.362
+  won=0
+  placed=1
+  finish_position=3.0
+  built_at=2026-06-18T02:23:41.085655+00:00
+  band=NEUTRAL
+  rank=5.0
+  base_score=43.344
+  base_band=NEUTRAL
+  base_rank=6.0
+  score_delta_vs_base=1.0180000000000007
+  rank_delta_vs_base=-1.0
+  band_changed_vs_base=False
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=364517
+HORSE=Proffer
+IDENTITY=2025-11-13|BET365 SEYMOUR|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  version=MEDIUM
+  meeting_date=2025-11-13
+  track=BET365 SEYMOUR
+  race_no=3
+  race_key=2025-11-13|SEYMOUR|R3
+  horse=Proffer
+  horse_key=PROFFER
+  score=52.734
+  won=0
+  placed=0
+  finish_position=5.0
+  built_at=2026-06-18T02:23:41.085655+00:00
+  band=NEUTRAL
+  rank=2.0
+  base_score=52.736
+  base_band=NEUTRAL
+  base_rank=2.0
+  score_delta_vs_base=-0.001999999999995339
+  rank_delta_vs_base=0.0
+  band_changed_vs_base=False
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=366090
+HORSE=Proffer
+IDENTITY=2025-11-27|MORNINGTON|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  version=MEDIUM
+  meeting_date=2025-11-27
+  track=MORNINGTON
+  race_no=3
+  race_key=2025-11-27|MORNINGTON|R3
+  horse=Proffer
+  horse_key=PROFFER
+  score=48.927
+  won=0
+  placed=0
+  finish_position=5.0
+  built_at=2026-06-18T02:23:41.085655+00:00
+  band=NEUTRAL
+  rank=1.0
+  base_score=48.614
+  base_band=NEUTRAL
+  base_rank=1.0
+  score_delta_vs_base=0.3130000000000024
+  rank_delta_vs_base=0.0
+  band_changed_vs_base=False
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=370392
+HORSE=Proffer
+IDENTITY=2026-01-03|SOUTHSIDE CRANBOURNE|R2
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  version=MEDIUM
+  meeting_date=2026-01-03
+  track=SOUTHSIDE CRANBOURNE
+  race_no=2
+  race_key=2026-01-03|SOUTHSIDE CRANBOURNE|R2
+  horse=Proffer
+  horse_key=PROFFER
+  score=45.462
+  won=0
+  placed=0
+  finish_position=7.0
+  built_at=2026-06-18T02:23:41.085655+00:00
+  band=NEUTRAL
+  rank=5.0
+  base_score=45.831
+  base_band=NEUTRAL
+  base_rank=5.0
+  score_delta_vs_base=-0.3689999999999998
+  rank_delta_vs_base=0.0
+  band_changed_vs_base=False
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=371817
+HORSE=Proffer
+IDENTITY=2026-01-17|SOUTHSIDE CRANBOURNE|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  version=MEDIUM
+  meeting_date=2026-01-17
+  track=SOUTHSIDE CRANBOURNE
+  race_no=3
+  race_key=2026-01-17|SOUTHSIDE CRANBOURNE|R3
+  horse=Proffer
+  horse_key=PROFFER
+  score=40.35
+  won=0
+  placed=0
+  finish_position=5.0
+  built_at=2026-06-18T02:23:41.085655+00:00
+  band=NEUTRAL
+  rank=7.0
+  base_score=40.167
+  base_band=NEUTRAL
+  base_rank=7.0
+  score_delta_vs_base=0.18299999999999983
+  rank_delta_vs_base=0.0
+  band_changed_vs_base=False
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=371821
+HORSE=Rock About
+IDENTITY=2026-01-17|SOUTHSIDE CRANBOURNE|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  version=MEDIUM
+  meeting_date=2026-01-17
+  track=SOUTHSIDE CRANBOURNE
+  race_no=3
+  race_key=2026-01-17|SOUTHSIDE CRANBOURNE|R3
+  horse=Rock About
+  horse_key=ROCKABOUT
+  score=41.919
+  won=0
+  placed=0
+  finish_position=7.0
+  built_at=2026-06-18T02:23:41.085655+00:00
+  band=NEUTRAL
+  rank=6.0
+  base_score=41.129
+  base_band=NEUTRAL
+  base_rank=6.0
+  score_delta_vs_base=0.7899999999999991
+  rank_delta_vs_base=0.0
+  band_changed_vs_base=False
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=492104
+HORSE=Proffer
+IDENTITY=2025-11-02|MORNINGTON|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  version=AGGRESSIVE
+  meeting_date=2025-11-02
+  track=MORNINGTON
+  race_no=3
+  race_key=2025-11-02|MORNINGTON|R3
+  horse=Proffer
+  horse_key=PROFFER
+  score=44.78
+  won=0
+  placed=1
+  finish_position=3.0
+  built_at=2026-06-18T02:23:41.085655+00:00
+  band=NEUTRAL
+  rank=4.0
+  base_score=43.344
+  base_band=NEUTRAL
+  base_rank=6.0
+  score_delta_vs_base=1.436
+  rank_delta_vs_base=-2.0
+  band_changed_vs_base=False
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=493519
+HORSE=Proffer
+IDENTITY=2025-11-13|BET365 SEYMOUR|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  version=AGGRESSIVE
+  meeting_date=2025-11-13
+  track=BET365 SEYMOUR
+  race_no=3
+  race_key=2025-11-13|SEYMOUR|R3
+  horse=Proffer
+  horse_key=PROFFER
+  score=52.824
+  won=0
+  placed=0
+  finish_position=5.0
+  built_at=2026-06-18T02:23:41.085655+00:00
+  band=NEUTRAL
+  rank=2.0
+  base_score=52.736
+  base_band=NEUTRAL
+  base_rank=2.0
+  score_delta_vs_base=0.08800000000000097
+  rank_delta_vs_base=0.0
+  band_changed_vs_base=False
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=495092
+HORSE=Proffer
+IDENTITY=2025-11-27|MORNINGTON|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  version=AGGRESSIVE
+  meeting_date=2025-11-27
+  track=MORNINGTON
+  race_no=3
+  race_key=2025-11-27|MORNINGTON|R3
+  horse=Proffer
+  horse_key=PROFFER
+  score=49.091
+  won=0
+  placed=0
+  finish_position=5.0
+  built_at=2026-06-18T02:23:41.085655+00:00
+  band=NEUTRAL
+  rank=1.0
+  base_score=48.614
+  base_band=NEUTRAL
+  base_rank=1.0
+  score_delta_vs_base=0.47700000000000387
+  rank_delta_vs_base=0.0
+  band_changed_vs_base=False
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=499394
+HORSE=Proffer
+IDENTITY=2026-01-03|SOUTHSIDE CRANBOURNE|R2
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  version=AGGRESSIVE
+  meeting_date=2026-01-03
+  track=SOUTHSIDE CRANBOURNE
+  race_no=2
+  race_key=2026-01-03|SOUTHSIDE CRANBOURNE|R2
+  horse=Proffer
+  horse_key=PROFFER
+  score=45.361
+  won=0
+  placed=0
+  finish_position=7.0
+  built_at=2026-06-18T02:23:41.085655+00:00
+  band=NEUTRAL
+  rank=5.0
+  base_score=45.831
+  base_band=NEUTRAL
+  base_rank=5.0
+  score_delta_vs_base=-0.47000000000000597
+  rank_delta_vs_base=0.0
+  band_changed_vs_base=False
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=500819
+HORSE=Proffer
+IDENTITY=2026-01-17|SOUTHSIDE CRANBOURNE|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  version=AGGRESSIVE
+  meeting_date=2026-01-17
+  track=SOUTHSIDE CRANBOURNE
+  race_no=3
+  race_key=2026-01-17|SOUTHSIDE CRANBOURNE|R3
+  horse=Proffer
+  horse_key=PROFFER
+  score=40.519
+  won=0
+  placed=0
+  finish_position=5.0
+  built_at=2026-06-18T02:23:41.085655+00:00
+  band=NEUTRAL
+  rank=7.0
+  base_score=40.167
+  base_band=NEUTRAL
+  base_rank=7.0
+  score_delta_vs_base=0.35199999999999676
+  rank_delta_vs_base=0.0
+  band_changed_vs_base=False
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=500823
+HORSE=Rock About
+IDENTITY=2026-01-17|SOUTHSIDE CRANBOURNE|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  version=AGGRESSIVE
+  meeting_date=2026-01-17
+  track=SOUTHSIDE CRANBOURNE
+  race_no=3
+  race_key=2026-01-17|SOUTHSIDE CRANBOURNE|R3
+  horse=Rock About
+  horse_key=ROCKABOUT
+  score=42.208
+  won=0
+  placed=0
+  finish_position=7.0
+  built_at=2026-06-18T02:23:41.085655+00:00
+  band=NEUTRAL
+  rank=6.0
+  base_score=41.129
+  base_band=NEUTRAL
+  base_rank=6.0
+  score_delta_vs_base=1.0790000000000006
+  rank_delta_vs_base=0.0
+  band_changed_vs_base=False
+
+========================================================================================================================
+FILE=public\data\edgeiq_runner_profile_stats_v1.csv
+TYPE=csv
+BEST_OFFICIAL_COMPLETENESS=0/7
+HEADER_COUNT=117
+HEADERS=resolved_runner_key | source_key_method | runner | normalized_runner | latest_runner_name | latest_trainer | latest_jockey | latest_track | latest_race_date | latest_distance | latest_class | latest_condition | career_starts | career_wins | career_seconds | career_thirds | career_places | career_win_pct | career_place_pct | best_track_by_starts | latest_track_starts | latest_track_wins | latest_track_seconds | latest_track_thirds | latest_track_places | latest_track_win_pct | latest_track_place_pct | best_distance_by_starts | latest_distance_starts | latest_distance_wins | latest_distance_seconds | latest_distance_thirds | latest_distance_places | latest_distance_win_pct | latest_distance_place_pct | latest_track_distance_starts | latest_track_distance_wins | latest_track_distance_seconds | latest_track_distance_thirds | latest_track_distance_places | good_starts | good_wins | good_seconds | good_thirds | good_places | soft_starts | soft_wins | soft_seconds | soft_thirds | soft_places | heavy_starts | heavy_wins | heavy_seconds | heavy_thirds | heavy_places | firm_starts | firm_wins | firm_seconds | firm_thirds | firm_places | synthetic_starts | synthetic_wins | synthetic_seconds | synthetic_thirds | synthetic_places | latest_class_starts | latest_class_wins | latest_class_seconds | latest_class_thirds | latest_class_places | latest_class_win_pct | latest_class_place_pct | latest_jockey_starts | latest_jockey_wins | latest_jockey_seconds | latest_jockey_thirds | latest_jockey_places | first_up_starts | first_up_wins | first_up_seconds | first_up_thirds | first_up_places | second_up_starts | second_up_wins | second_up_seconds | second_up_thirds | second_up_places | third_up_starts | third_up_wins | third_up_seconds | third_up_thirds | third_up_places | last_5_starts | last_5_wins | last_5_seconds | last_5_thirds | last_5_places | last_5_avg_finish | last_10_starts | last_10_wins | last_10_seconds | last_10_thirds | last_10_places | last_10_avg_finish | peak_epi | avg_epi | last_start_epi | last_5_avg_epi | best_eri | avg_eri | best_esi | avg_esi | last_start_esi | avg_sp | best_sp | last_start_sp | career_prize_money
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=71750
+HORSE=PROFFER
+IDENTITY=||RNone
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  resolved_runner_key=PROFFER
+  source_key_method=normalized_runner
+  runner=PROFFER
+  normalized_runner=PROFFER
+  latest_runner_name=PROFFER
+  latest_trainer=J.SANDHU
+  latest_jockey=C.NEWITT
+  latest_track=SOUTHSIDE CRANBOURNE
+  latest_race_date=2026-01-17
+  latest_distance=1300
+  latest_class=Maiden
+  latest_condition=Good
+  career_starts=7
+  career_wins=0
+  career_seconds=0
+  career_thirds=1
+  career_places=1
+  career_win_pct=0.0
+  career_place_pct=14.3
+  best_track_by_starts=BET365 SEYMOUR
+  latest_track_starts=2
+  latest_track_wins=0
+  latest_track_seconds=0
+  latest_track_thirds=0
+  latest_track_places=0
+  latest_track_win_pct=0.0
+  latest_track_place_pct=0.0
+  best_distance_by_starts=1200
+  latest_distance_starts=2
+  latest_distance_wins=0
+  latest_distance_seconds=0
+  latest_distance_thirds=0
+  latest_distance_places=0
+  latest_distance_win_pct=0.0
+  latest_distance_place_pct=0.0
+  latest_track_distance_starts=1
+  latest_track_distance_wins=0
+  latest_track_distance_seconds=0
+  latest_track_distance_thirds=0
+  latest_track_distance_places=0
+  good_starts=6
+  good_wins=0
+  good_seconds=0
+  good_thirds=1
+  good_places=1
+  soft_starts=1
+  soft_wins=0
+  soft_seconds=0
+  soft_thirds=0
+  soft_places=0
+  heavy_starts=0
+  heavy_wins=0
+  heavy_seconds=0
+  heavy_thirds=0
+  heavy_places=0
+  firm_starts=0
+  firm_wins=0
+  firm_seconds=0
+  firm_thirds=0
+  firm_places=0
+  synthetic_starts=0
+  synthetic_wins=0
+  synthetic_seconds=0
+  synthetic_thirds=0
+  synthetic_places=0
+  latest_class_starts=7
+  latest_class_wins=0
+  latest_class_seconds=0
+  latest_class_thirds=1
+  latest_class_places=1
+  latest_class_win_pct=0.0
+  latest_class_place_pct=14.3
+  latest_jockey_starts=1
+  latest_jockey_wins=0
+  latest_jockey_seconds=0
+  latest_jockey_thirds=0
+  latest_jockey_places=0
+  first_up_starts=1
+  first_up_wins=0
+  first_up_seconds=0
+  first_up_thirds=0
+  first_up_places=0
+  second_up_starts=1
+  second_up_wins=0
+  second_up_seconds=0
+  second_up_thirds=1
+  second_up_places=1
+  third_up_starts=1
+  third_up_wins=0
+  third_up_seconds=0
+  third_up_thirds=0
+  third_up_places=0
+  last_5_starts=5
+  last_5_wins=0
+  last_5_seconds=0
+  last_5_thirds=0
+  last_5_places=0
+  last_5_avg_finish=26.20
+  last_10_starts=7
+  last_10_wins=0
+  last_10_seconds=0
+  last_10_thirds=1
+  last_10_places=1
+  last_10_avg_finish=34.71
+  best_esi=58.3
+  avg_esi=59.8
+  avg_sp=14.98
+  best_sp=4.40
+  last_start_sp=12.00
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=76474
+HORSE=ROCK ABOUT
+IDENTITY=||RNone
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  resolved_runner_key=ROCKABOUT
+  source_key_method=normalized_runner
+  runner=ROCK ABOUT
+  normalized_runner=ROCKABOUT
+  latest_runner_name=ROCK ABOUT
+  latest_trainer=W.J.KELLY
+  latest_jockey=S.FOLEY
+  latest_track=SOUTHSIDE CRANBOURNE
+  latest_race_date=2026-01-17
+  latest_distance=1300
+  latest_class=Maiden
+  latest_condition=Good
+  career_starts=1
+  career_wins=0
+  career_seconds=0
+  career_thirds=0
+  career_places=0
+  career_win_pct=0.0
+  career_place_pct=0.0
+  best_track_by_starts=SOUTHSIDE CRANBOURNE
+  latest_track_starts=1
+  latest_track_wins=0
+  latest_track_seconds=0
+  latest_track_thirds=0
+  latest_track_places=0
+  latest_track_win_pct=0.0
+  latest_track_place_pct=0.0
+  best_distance_by_starts=1300
+  latest_distance_starts=1
+  latest_distance_wins=0
+  latest_distance_seconds=0
+  latest_distance_thirds=0
+  latest_distance_places=0
+  latest_distance_win_pct=0.0
+  latest_distance_place_pct=0.0
+  latest_track_distance_starts=1
+  latest_track_distance_wins=0
+  latest_track_distance_seconds=0
+  latest_track_distance_thirds=0
+  latest_track_distance_places=0
+  good_starts=1
+  good_wins=0
+  good_seconds=0
+  good_thirds=0
+  good_places=0
+  soft_starts=0
+  soft_wins=0
+  soft_seconds=0
+  soft_thirds=0
+  soft_places=0
+  heavy_starts=0
+  heavy_wins=0
+  heavy_seconds=0
+  heavy_thirds=0
+  heavy_places=0
+  firm_starts=0
+  firm_wins=0
+  firm_seconds=0
+  firm_thirds=0
+  firm_places=0
+  synthetic_starts=0
+  synthetic_wins=0
+  synthetic_seconds=0
+  synthetic_thirds=0
+  synthetic_places=0
+  latest_class_starts=1
+  latest_class_wins=0
+  latest_class_seconds=0
+  latest_class_thirds=0
+  latest_class_places=0
+  latest_class_win_pct=0.0
+  latest_class_place_pct=0.0
+  latest_jockey_starts=1
+  latest_jockey_wins=0
+  latest_jockey_seconds=0
+  latest_jockey_thirds=0
+  latest_jockey_places=0
+  first_up_starts=1
+  first_up_wins=0
+  first_up_seconds=0
+  first_up_thirds=0
+  first_up_places=0
+  second_up_starts=0
+  second_up_wins=0
+  second_up_seconds=0
+  second_up_thirds=0
+  second_up_places=0
+  third_up_starts=0
+  third_up_wins=0
+  third_up_seconds=0
+  third_up_thirds=0
+  third_up_places=0
+  last_5_starts=1
+  last_5_wins=0
+  last_5_seconds=0
+  last_5_thirds=0
+  last_5_places=0
+  last_5_avg_finish=7.00
+  last_10_starts=1
+  last_10_wins=0
+  last_10_seconds=0
+  last_10_thirds=0
+  last_10_places=0
+  last_10_avg_finish=7.00
+  avg_sp=10.00
+  best_sp=10.00
+  last_start_sp=10.00
+
+========================================================================================================================
+FILE=public\data\edgeiq_runner_profile_stats_v1_CHECKPOINT_BEFORE_RACING_RECORD_FORMAT_20260710_082623.csv
+TYPE=csv
+BEST_OFFICIAL_COMPLETENESS=0/7
+HEADER_COUNT=73
+HEADERS=resolved_runner_key | source_key_method | runner | normalized_runner | latest_runner_name | latest_trainer | latest_jockey | latest_track | latest_race_date | latest_distance | latest_class | latest_condition | career_starts | career_wins | career_places | career_win_pct | career_place_pct | best_track_by_starts | latest_track_starts | latest_track_wins | latest_track_places | latest_track_win_pct | latest_track_place_pct | best_distance_by_starts | latest_distance_starts | latest_distance_wins | latest_distance_places | latest_distance_win_pct | latest_distance_place_pct | good_starts | good_wins | good_places | soft_starts | soft_wins | soft_places | heavy_starts | heavy_wins | heavy_places | latest_class_starts | latest_class_wins | latest_class_places | latest_class_win_pct | latest_class_place_pct | first_up_starts | first_up_wins | first_up_places | second_up_starts | second_up_wins | second_up_places | third_up_starts | third_up_wins | third_up_places | last_5_starts | last_5_wins | last_5_places | last_5_avg_finish | last_10_starts | last_10_wins | last_10_places | last_10_avg_finish | peak_epi | avg_epi | last_start_epi | last_5_avg_epi | best_eri | avg_eri | best_esi | avg_esi | last_start_esi | avg_sp | best_sp | last_start_sp | career_prize_money
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=71750
+HORSE=PROFFER
+IDENTITY=||RNone
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  resolved_runner_key=PROFFER
+  source_key_method=normalized_runner
+  runner=PROFFER
+  normalized_runner=PROFFER
+  latest_runner_name=PROFFER
+  latest_trainer=J.SANDHU
+  latest_jockey=C.NEWITT
+  latest_track=SOUTHSIDE CRANBOURNE
+  latest_race_date=2026-01-17
+  latest_distance=1300
+  latest_class=Maiden
+  latest_condition=Good
+  career_starts=7
+  career_wins=0
+  career_places=1
+  career_win_pct=0.0
+  career_place_pct=14.3
+  best_track_by_starts=BET365 SEYMOUR
+  latest_track_starts=2
+  latest_track_wins=0
+  latest_track_places=0
+  latest_track_win_pct=0.0
+  latest_track_place_pct=0.0
+  best_distance_by_starts=1200
+  latest_distance_starts=2
+  latest_distance_wins=0
+  latest_distance_places=0
+  latest_distance_win_pct=0.0
+  latest_distance_place_pct=0.0
+  good_starts=6
+  good_wins=0
+  good_places=1
+  soft_starts=1
+  soft_wins=0
+  soft_places=0
+  heavy_starts=0
+  heavy_wins=0
+  heavy_places=0
+  latest_class_starts=7
+  latest_class_wins=0
+  latest_class_places=1
+  latest_class_win_pct=0.0
+  latest_class_place_pct=14.3
+  first_up_starts=1
+  first_up_wins=0
+  first_up_places=0
+  second_up_starts=1
+  second_up_wins=0
+  second_up_places=1
+  third_up_starts=1
+  third_up_wins=0
+  third_up_places=0
+  last_5_starts=5
+  last_5_wins=0
+  last_5_places=0
+  last_5_avg_finish=26.20
+  last_10_starts=7
+  last_10_wins=0
+  last_10_places=1
+  last_10_avg_finish=34.71
+  best_esi=58.3
+  avg_esi=59.8
+  avg_sp=14.98
+  best_sp=4.40
+  last_start_sp=12.00
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=76474
+HORSE=ROCK ABOUT
+IDENTITY=||RNone
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  resolved_runner_key=ROCKABOUT
+  source_key_method=normalized_runner
+  runner=ROCK ABOUT
+  normalized_runner=ROCKABOUT
+  latest_runner_name=ROCK ABOUT
+  latest_trainer=W.J.KELLY
+  latest_jockey=S.FOLEY
+  latest_track=SOUTHSIDE CRANBOURNE
+  latest_race_date=2026-01-17
+  latest_distance=1300
+  latest_class=Maiden
+  latest_condition=Good
+  career_starts=1
+  career_wins=0
+  career_places=0
+  career_win_pct=0.0
+  career_place_pct=0.0
+  best_track_by_starts=SOUTHSIDE CRANBOURNE
+  latest_track_starts=1
+  latest_track_wins=0
+  latest_track_places=0
+  latest_track_win_pct=0.0
+  latest_track_place_pct=0.0
+  best_distance_by_starts=1300
+  latest_distance_starts=1
+  latest_distance_wins=0
+  latest_distance_places=0
+  latest_distance_win_pct=0.0
+  latest_distance_place_pct=0.0
+  good_starts=1
+  good_wins=0
+  good_places=0
+  soft_starts=0
+  soft_wins=0
+  soft_places=0
+  heavy_starts=0
+  heavy_wins=0
+  heavy_places=0
+  latest_class_starts=1
+  latest_class_wins=0
+  latest_class_places=0
+  latest_class_win_pct=0.0
+  latest_class_place_pct=0.0
+  first_up_starts=1
+  first_up_wins=0
+  first_up_places=0
+  second_up_starts=0
+  second_up_wins=0
+  second_up_places=0
+  third_up_starts=0
+  third_up_wins=0
+  third_up_places=0
+  last_5_starts=1
+  last_5_wins=0
+  last_5_places=0
+  last_5_avg_finish=7.00
+  last_10_starts=1
+  last_10_wins=0
+  last_10_places=0
+  last_10_avg_finish=7.00
+  avg_sp=10.00
+  best_sp=10.00
+  last_start_sp=10.00
+
+========================================================================================================================
+FILE=public\data\edgeiq_three_day_product_catalog_v1.json
+TYPE=json
+BEST_OFFICIAL_COMPLETENESS=0/7
+
+------------------------------------------------------------------------------------------------------------------------
+JSON_PATH=$.meetings[0].races[1].runners[0].official
+HORSE=Mighty Mystic
+IDENTITY=||RNone
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  runner=Mighty Mystic
+  scratched=False
+
+------------------------------------------------------------------------------------------------------------------------
+JSON_PATH=$.meetings[0].races[1].runners[0].source
+HORSE=Mighty Mystic
+IDENTITY=||RNone
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  horseName=Mighty Mystic
+
+------------------------------------------------------------------------------------------------------------------------
+JSON_PATH=$.meetings[0].races[1].runners[1].official
+HORSE=Proffer
+IDENTITY=||RNone
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  runner=Proffer
+  scratched=False
+
+------------------------------------------------------------------------------------------------------------------------
+JSON_PATH=$.meetings[0].races[1].runners[1].source
+HORSE=Proffer
+IDENTITY=||RNone
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  horseName=Proffer
+
+------------------------------------------------------------------------------------------------------------------------
+JSON_PATH=$.meetings[0].races[1].runners[2].official
+HORSE=Rock About
+IDENTITY=||RNone
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  runner=Rock About
+  scratched=False
+
+------------------------------------------------------------------------------------------------------------------------
+JSON_PATH=$.meetings[0].races[1].runners[2].source
+HORSE=Rock About
+IDENTITY=||RNone
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  horseName=Rock About
+  position=109
+
+------------------------------------------------------------------------------------------------------------------------
+JSON_PATH=$.meetings[0].races[1].source
+HORSE=
+IDENTITY=2026-07-21|Moe|R2
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  race_date=2026-07-21
+  day_bucket=TOMORROW
+  track=Moe
+  normalised_track=MOE
+  meeting_key=2026-07-21_MOE
+  meet_code=5190930
+  track_code=264
+  meet_status=Results
+  full_status=Results
+  url_segment=2026-07-21/moe
+  form_url=https://www.racing.com/form/2026-07-21/moe
+  race_id=5461584
+  race_no=2
+  race_name=Lavish by P & CO Maiden Plate
+  race_class=Maiden
+  distance=1217m
+  race_time_utc=2026-07-21T03:30:00.000Z
+  race_status=FinalFields
+  track_condition=Heavy
+  track_rating=9
+  form_entries_json=[{"horseName": "Mighty Mystic", "position": null, "winningTime": null, "standardTimeDifference": null}, {"horseName": "Proffer", "position": null, "winningTime": null, "standardTimeDifference": null}, {"horseName": "Rock About", "position": 109, "winningTime": null, "standardTimeDifference": null}, {"horseName": "Bidu", "position": null, "winningTime": null, "standardTimeDifference": null}, {"horseName": "Galactic Girl", "position": null, "winningTime": null, "standardTimeDifference": null}, ...
+  source=RACING_COM_GETMEETSBYMONTH_PLUS_GETRACENUMBERLIST
+  built_at=2026-07-20T00:52:39+00:00
+
+========================================================================================================================
+FILE=public\data\edgeiq_vic_three_day_race_list_v1.csv
+TYPE=csv
+BEST_OFFICIAL_COMPLETENESS=0/7
+HEADER_COUNT=31
+HEADERS=race_date | day_bucket | track | normalised_track | meeting_key | meet_code | track_code | meet_status | full_status | url_segment | form_url | race_id | race_no | race_name | race_class | distance | race_time_utc | race_status | track_condition | track_rating | rail_position | weather | weather_wind_direction | weather_wind_speed | weather_rain | weather_min | weather_max | rainfall | form_entries_json | source | built_at
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=13
+HORSE=
+IDENTITY=2026-07-21|Moe|R2
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  race_date=2026-07-21
+  day_bucket=TOMORROW
+  track=Moe
+  normalised_track=MOE
+  meeting_key=2026-07-21_MOE
+  meet_code=5190930
+  track_code=264
+  meet_status=Results
+  full_status=Results
+  url_segment=2026-07-21/moe
+  form_url=https://www.racing.com/form/2026-07-21/moe
+  race_id=5461584
+  race_no=2
+  race_name=Lavish by P & CO Maiden Plate
+  race_class=Maiden
+  distance=1217m
+  race_time_utc=2026-07-21T03:30:00.000Z
+  race_status=FinalFields
+  track_condition=Heavy
+  track_rating=9
+  form_entries_json=[{"horseName": "Mighty Mystic", "position": null, "winningTime": null, "standardTimeDifference": null}, {"horseName": "Proffer", "position": null, "winningTime": null, "standardTimeDifference": null}, {"horseName": "Rock About", "position": 109, "winningTime": null, "standardTimeDifference": null}, {"horseName": "Bidu", "position": null, "winningTime": null, "standardTimeDifference": null}, {"horseName": "Galactic Girl", "position": null, "winningTime": null, "standardTimeDifference": null}, ...
+  source=RACING_COM_GETMEETSBYMONTH_PLUS_GETRACENUMBERLIST
+  built_at=2026-07-20T00:52:39+00:00
+
+========================================================================================================================
+FILE=public\data\racingcom_sectional_horse_profiles_v2.csv
+TYPE=csv
+BEST_OFFICIAL_COMPLETENESS=0/7
+HEADER_COUNT=15
+HEADERS=horse_key | horse_name | runs_with_sectionals | avg_early_speed | avg_mid_speed | avg_late_speed | avg_peak_speed | avg_speed | best_early_speed | best_mid_speed | best_late_speed | best_peak_speed | latest_meeting_date | latest_track | latest_race_no
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=12350
+HORSE=Proffer
+IDENTITY=||RNone
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  horse_key=PROFFER
+  horse_name=Proffer
+  runs_with_sectionals=5
+  avg_early_speed=58
+  avg_mid_speed=62.81
+  avg_late_speed=59.33
+  avg_peak_speed=67.27
+  avg_speed=59.8
+  best_early_speed=59.72
+  best_mid_speed=64.73
+  best_late_speed=60.12
+  best_peak_speed=69.52
+  latest_meeting_date=2026-01-17
+  latest_track=CRANBOURNE
+  latest_race_no=3
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=13126
+HORSE=Rock About
+IDENTITY=||RNone
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  horse_key=ROCKABOUT
+  horse_name=Rock About
+  runs_with_sectionals=1
+  avg_early_speed=57.28
+  avg_mid_speed=60.19
+  avg_late_speed=59.51
+  avg_peak_speed=65.16
+  avg_speed=58.82
+  best_early_speed=57.28
+  best_mid_speed=60.19
+  best_late_speed=59.51
+  best_peak_speed=65.16
+  latest_meeting_date=2026-01-17
+  latest_track=CRANBOURNE
+  latest_race_no=3
+
+========================================================================================================================
+FILE=public\data\racingcom_sectional_warehouse_readiness_v1.csv
+TYPE=csv
+BEST_OFFICIAL_COMPLETENESS=0/7
+HEADER_COUNT=5
+HEADERS=horse_key | horse_name | runs_with_sectionals | latest_run_date | earliest_run_date
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=686
+HORSE=Proffer
+IDENTITY=||RNone
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  horse_key=PROFFER
+  horse_name=Proffer
+  runs_with_sectionals=4
+  latest_run_date=2026-01-17
+  earliest_run_date=2025-11-13
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=3849
+HORSE=Rock About
+IDENTITY=||RNone
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  horse_key=ROCKABOUT
+  horse_name=Rock About
+  runs_with_sectionals=1
+  latest_run_date=2026-01-17
+  earliest_run_date=2026-01-17
+
+========================================================================================================================
+FILE=public\data\racingcom_sectional_warehouse_v2.csv
+TYPE=csv
+BEST_OFFICIAL_COMPLETENESS=0/7
+HEADER_COUNT=15
+HEADERS=meeting_date | track | race_no | horse_name | horse_key | position | layout_type | dist_run | early_speed | mid_speed | late_speed | peak_speed | avg_speed | source_file | source_url
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=104716
+HORSE=Proffer
+IDENTITY=2025-11-02|MORNINGTON|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-11-02
+  track=MORNINGTON
+  race_no=3
+  horse_name=Proffer
+  horse_key=PROFFER
+  position=3rd
+  layout_type=LAYOUT_A_SUMMARY_SPEED
+  dist_run=1209(+2) metres
+  early_speed=59.72
+  mid_speed=64.51
+  late_speed=60.12
+  peak_speed=68.33
+  avg_speed=61.34
+  source_file=batch_12250_normalised.csv
+  source_url=https://www.racing.com/form/2025-11-02/mornington/race/3/speed-data
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=105982
+HORSE=Proffer
+IDENTITY=2025-11-13|SEYMOUR|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-11-13
+  track=SEYMOUR
+  race_no=3
+  horse_name=Proffer
+  horse_key=PROFFER
+  position=5th
+  layout_type=LAYOUT_B_SPLIT_TIMING
+  source_file=batch_12250_normalised.csv;batch_12250_splits.csv
+  source_url=https://www.racing.com/form/2025-11-13/bet365-seymour/race/3/speed-data;https://www.racing.com/form/2025-11-13/seymour/race/3/speed-data
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=107401
+HORSE=Proffer
+IDENTITY=2025-11-27|MORNINGTON|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  meeting_date=2025-11-27
+  track=MORNINGTON
+  race_no=3
+  horse_name=Proffer
+  horse_key=PROFFER
+  position=5th
+  layout_type=LAYOUT_A_SUMMARY_SPEED
+  dist_run=1510 metres
+  early_speed=56.74
+  mid_speed=60.48
+  late_speed=58.93
+  peak_speed=65.34
+  avg_speed=58.28
+  source_file=batch_13250_normalised.csv
+  source_url=https://www.racing.com/form/2025-11-27/mornington/race/3/speed-data
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=111501
+HORSE=Proffer
+IDENTITY=2026-01-03|CRANBOURNE|R2
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  meeting_date=2026-01-03
+  track=CRANBOURNE
+  race_no=2
+  horse_name=Proffer
+  horse_key=PROFFER
+  position=7th
+  layout_type=LAYOUT_A_SUMMARY_SPEED
+  dist_run=1205(+3) metres
+  early_speed=58.43
+  mid_speed=64.73
+  late_speed=58.14
+  peak_speed=69.52
+  avg_speed=60.26
+  source_file=batch_13250_normalised.csv
+  source_url=https://www.racing.com/form/2026-01-03/cranbourne/race/2/speed-data
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=112832
+HORSE=Proffer
+IDENTITY=2026-01-17|CRANBOURNE|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  meeting_date=2026-01-17
+  track=CRANBOURNE
+  race_no=3
+  horse_name=Proffer
+  horse_key=PROFFER
+  position=5th
+  layout_type=LAYOUT_A_SUMMARY_SPEED
+  dist_run=1307(+7) metres
+  early_speed=57.1
+  mid_speed=61.52
+  late_speed=60.12
+  peak_speed=65.88
+  avg_speed=59.33
+  source_file=batch_13250_normalised.csv
+  source_url=https://www.racing.com/form/2026-01-17/cranbourne/race/3/speed-data
+
+------------------------------------------------------------------------------------------------------------------------
+ROW=112834
+HORSE=Rock About
+IDENTITY=2026-01-17|CRANBOURNE|R3
+OFFICIAL=number=<EMPTY> | barrier=<EMPTY> | jockey=<EMPTY> | trainer=<EMPTY> | weight=<EMPTY> | market=<EMPTY> | silk=<EMPTY>
+OFFICIAL_COMPLETENESS=0/7
+NON_EMPTY_VALUES:
+  meeting_date=2026-01-17
+  track=CRANBOURNE
+  race_no=3
+  horse_name=Rock About
+  horse_key=ROCKABOUT
+  position=7th
+  layout_type=LAYOUT_A_SUMMARY_SPEED
+  dist_run=1300 metres
+  early_speed=57.28
+  mid_speed=60.19
+  late_speed=59.51
+  peak_speed=65.16
+  avg_speed=58.82
+  source_file=batch_13250_normalised.csv
+  source_url=https://www.racing.com/form/2026-01-17/cranbourne/race/3/speed-data
+
+========================================================================================================================
+FILE=public\data\edgeiq_racingcom_graphql_parser_v1.csv
+TYPE=csv
+BEST_OFFICIAL_COMPLETENESS=0/7
+ERROR=Error('field larger than field limit (131072)')
+========================================================================================================================
+FILE=public\data\tab_meetings_today_full.json
+TYPE=json
+BEST_OFFICIAL_COMPLETENESS=0/7
+ERROR=JSONDecodeError('Expecting value: line 1 column 1 (char 0)')
+========================================================================================================================
+FILE=public\data\tab_vic_meetings_20260701_debug.json
+TYPE=json
+BEST_OFFICIAL_COMPLETENESS=0/7
+ERROR=JSONDecodeError('Expecting value: line 1 column 1 (char 0)')
+========================================================================================================================
+RANKED SOURCE SUMMARY
+========================================================================================================================
+5/7 | public\data\edgeiq_live_runner_board_governed_v1_CHECKPOINT_BEFORE_CURRENT_INTEL_REBUILD_20260711_154418.csv | matches=1
+4/7 | public\data\edgeiq_historical_backtest_v1_runner_rows.csv | matches=1
+4/7 | public\data\edgeiq_historical_runner_scores_v1.csv | matches=6
+4/7 | public\data\edgeiq_racingcom_results_warehouse_all_v1.csv | matches=8
+4/7 | public\data\edgeiq_racingcom_results_warehouse_full_v1.csv | matches=8
+4/7 | public\data\edgeiq_racingcom_results_warehouse_v1.csv | matches=8
+4/7 | public\data\edgeiq_trainer_jockey_edge_runner_dataset_v3.csv | matches=6
+4/7 | public\data\edgeiq_trainer_jockey_factor_runner_v1.csv | matches=6
+4/7 | public\data\edgeiq_trainer_jockey_runner_history_canonical_v1.csv | matches=8
+2/7 | public\data\edgeiq_trainer_jockey_edge_runner_dataset_v1.csv | matches=6
+2/7 | public\data\edgeiq_trainer_jockey_edge_runner_dataset_v2.csv | matches=6
+0/7 | public\data\edgeiq_full_execution_runner_replay_v1.csv | matches=5
+0/7 | public\data\edgeiq_historical_runner_feed_v1.csv | matches=2
+0/7 | public\data\edgeiq_meeting_results_terminal_feed_v1.csv | matches=1
+0/7 | public\data\edgeiq_race_context_grouping_runner_review_v5_1.csv | matches=4
+0/7 | public\data\edgeiq_racingcom_calendar_discovery_v1.csv | matches=1
+0/7 | public\data\edgeiq_racingcom_historical_calendar_backfill_v1.csv | matches=1
+0/7 | public\data\edgeiq_runner_dna_predictive_value_v1.csv | matches=6
+0/7 | public\data\edgeiq_runner_dna_v6_3_historical_replay_v1.csv | matches=6
+0/7 | public\data\edgeiq_runner_dna_v6_3_probability_calibration_replay_v1.csv | matches=6
+0/7 | public\data\edgeiq_runner_dna_v6_3_sp_valid_roi_replay_v2.csv | matches=4
+0/7 | public\data\edgeiq_runner_dna_weight_ladder_v1_detail.csv | matches=24
+0/7 | public\data\edgeiq_runner_profile_stats_v1.csv | matches=2
+0/7 | public\data\edgeiq_runner_profile_stats_v1_CHECKPOINT_BEFORE_RACING_RECORD_FORMAT_20260710_082623.csv | matches=2
+0/7 | public\data\edgeiq_three_day_product_catalog_v1.json | matches=7
+0/7 | public\data\edgeiq_vic_three_day_race_list_v1.csv | matches=1
+0/7 | public\data\racingcom_sectional_horse_profiles_v2.csv | matches=2
+0/7 | public\data\racingcom_sectional_warehouse_readiness_v1.csv | matches=2
+0/7 | public\data\racingcom_sectional_warehouse_v2.csv | matches=6
+0/7 | public\data\edgeiq_racingcom_graphql_parser_v1.csv | matches=0
+0/7 | public\data\tab_meetings_today_full.json | matches=0
+0/7 | public\data\tab_vic_meetings_20260701_debug.json | matches=0
+
+OUTPUT_JSON=C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_moe_r2_runner_source_trace_v1.json
+OUTPUT_TEXT=C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\moe_r2_runner_source_trace_v1.txt
+EDGEIQ_MOE_R2_RUNNER_SOURCE_TRACE_V1_COMPLETE

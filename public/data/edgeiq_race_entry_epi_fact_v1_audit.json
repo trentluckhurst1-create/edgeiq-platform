@@ -1,0 +1,148 @@
+{
+  "audit_name": "edgeiq_race_entry_epi_fact_v1",
+  "audit_version": "1.0.0",
+  "audited_at_utc": "2026-07-30T04:23:54Z",
+  "checks": {
+    "component_lineage_reconciled": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "contract_fields_exact": {
+      "detail": {
+        "actual": [
+          "race_entry_epi_id",
+          "race_entry_id",
+          "race_id",
+          "race_date",
+          "epi_methodology",
+          "epi_base_value",
+          "historical_performance_component_id",
+          "historical_performance_component_evidence_sha256",
+          "historical_performance_normalised_value",
+          "historical_performance_weight",
+          "historical_performance_weighted_value",
+          "suitability_component_id",
+          "suitability_component_evidence_sha256",
+          "suitability_normalised_value",
+          "suitability_weight",
+          "suitability_weighted_value",
+          "race_context_component_id",
+          "race_context_component_evidence_sha256",
+          "race_context_normalised_value",
+          "race_context_weight",
+          "race_context_weighted_value",
+          "total_component_weight",
+          "weighted_component_total",
+          "epi_value",
+          "epi_parameter_id",
+          "epi_publication_decision",
+          "epi_reconciliation_decision",
+          "epi_status",
+          "race_entry_epi_evidence_sha256",
+          "source_lineage",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ],
+        "expected": [
+          "race_entry_epi_id",
+          "race_entry_id",
+          "race_id",
+          "race_date",
+          "epi_methodology",
+          "epi_base_value",
+          "historical_performance_component_id",
+          "historical_performance_component_evidence_sha256",
+          "historical_performance_normalised_value",
+          "historical_performance_weight",
+          "historical_performance_weighted_value",
+          "suitability_component_id",
+          "suitability_component_evidence_sha256",
+          "suitability_normalised_value",
+          "suitability_weight",
+          "suitability_weighted_value",
+          "race_context_component_id",
+          "race_context_component_evidence_sha256",
+          "race_context_normalised_value",
+          "race_context_weight",
+          "race_context_weighted_value",
+          "total_component_weight",
+          "weighted_component_total",
+          "epi_value",
+          "epi_parameter_id",
+          "epi_publication_decision",
+          "epi_reconciliation_decision",
+          "epi_status",
+          "race_entry_epi_evidence_sha256",
+          "source_lineage",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ]
+      },
+      "status": "PASS"
+    },
+    "deterministic_epi_evidence": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "deterministic_epi_identity": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "epi_arithmetic_reconciled": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "epi_governance_exact": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "epi_lineage_complete": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "epi_parameter_reconciled": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "natural_keys_unique": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "no_forbidden_fields": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "one_epi_parameter_row": {
+      "detail": {
+        "row_count": 1
+      },
+      "status": "PASS"
+    },
+    "primary_keys_unique": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "published_population_exact": {
+      "detail": {
+        "actual_count": 0,
+        "expected_count": 0,
+        "missing": [],
+        "unexpected": []
+      },
+      "status": "PASS"
+    },
+    "required_files_exist": {
+      "detail": [],
+      "status": "PASS"
+    }
+  },
+  "counts": {
+    "eligible_race_entry_count": 0,
+    "epi_component_rows": 0,
+    "race_entry_epi_rows": 0
+  },
+  "failed_checks": [],
+  "status": "PASS"
+}

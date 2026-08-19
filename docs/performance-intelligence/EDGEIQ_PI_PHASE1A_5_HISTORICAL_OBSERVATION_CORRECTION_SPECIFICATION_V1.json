@@ -1,0 +1,284 @@
+{
+  "acceptance_criteria": [
+    {
+      "criterion_id": "AUTHORITY_SOURCE_EXCLUSIVE",
+      "expected_value": "Only consolidated GraphQL creates historical observation rows.",
+      "required_status": "PASS"
+    },
+    {
+      "criterion_id": "PHYSICAL_ROW_PRESERVATION",
+      "expected_value": "879784",
+      "required_status": "PASS"
+    },
+    {
+      "criterion_id": "UNIQUE_RAW_IDENTITY_COUNT",
+      "expected_value": "879695",
+      "required_status": "PASS"
+    },
+    {
+      "criterion_id": "DUPLICATE_GROUP_COUNT",
+      "expected_value": "89",
+      "required_status": "PASS"
+    },
+    {
+      "criterion_id": "DUPLICATE_EXCESS_ROW_COUNT",
+      "expected_value": "89",
+      "required_status": "PASS"
+    },
+    {
+      "criterion_id": "MISSING_RAW_IDENTITY",
+      "expected_value": "0",
+      "required_status": "PASS"
+    },
+    {
+      "criterion_id": "LIVE_SOURCE_ROWS_ADMITTED",
+      "expected_value": "0",
+      "required_status": "PASS"
+    },
+    {
+      "criterion_id": "MONTHLY_SOURCE_ROWS_ADMITTED",
+      "expected_value": "0",
+      "required_status": "PASS"
+    },
+    {
+      "criterion_id": "REJECTED_SOURCE_ROWS_ADMITTED",
+      "expected_value": "0",
+      "required_status": "PASS"
+    },
+    {
+      "criterion_id": "UNRESOLVED_ENRICHMENT_CREATES_ROWS",
+      "expected_value": "0",
+      "required_status": "PASS"
+    },
+    {
+      "criterion_id": "DETERMINISTIC_REBUILD_SHA",
+      "expected_value": "Two consecutive builds produce identical output SHA256.",
+      "required_status": "PASS"
+    }
+  ],
+  "audit": {
+    "checks": [
+      {
+        "check_id": "source_row_count",
+        "detail": "actual=879784; expected=879784",
+        "status": "PASS"
+      },
+      {
+        "check_id": "unique_raw_key_count",
+        "detail": "actual=879695; expected=879695",
+        "status": "PASS"
+      },
+      {
+        "check_id": "duplicate_group_count",
+        "detail": "actual=89; expected=89",
+        "status": "PASS"
+      },
+      {
+        "check_id": "duplicate_excess_row_count",
+        "detail": "actual=89; expected=89",
+        "status": "PASS"
+      },
+      {
+        "check_id": "missing_raw_keys",
+        "detail": "actual=0; expected=0",
+        "status": "PASS"
+      },
+      {
+        "check_id": "source_policy_complete",
+        "detail": "policy_classes=7; expected=7",
+        "status": "PASS"
+      },
+      {
+        "check_id": "output_contract_defined",
+        "detail": "contract_fields=17",
+        "status": "PASS"
+      }
+    ],
+    "generated_utc": "2026-07-27T04:01:51+00:00",
+    "overall_status": "PASS",
+    "program_id": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE1A_5_HISTORICAL_OBSERVATION_CORRECTION_SPECIFICATION_V1",
+    "program_version": "1.0.0"
+  },
+  "authority_source": {
+    "duplicate_excess_rows": 89,
+    "duplicate_groups": 89,
+    "maximum_multiplicity": 2,
+    "missing_raw_keys": 0,
+    "path": "public/data/edgeiq_historical_results_warehouse_v2_graphql.csv",
+    "rows": 879784,
+    "sha256": "13f17e2ae21802aef5017a9a09cbb9ec572c9fda4c8fa8f85da27231e8828974",
+    "unique_raw_keys": 879695
+  },
+  "generated_utc": "2026-07-27T04:01:51+00:00",
+  "governed_identity": {
+    "duplicate_handling": "Preserve every physical source row and assign a deterministic collision discriminator within duplicate raw-key groups.",
+    "raw_natural_key": [
+      "race_id",
+      "runner_id"
+    ],
+    "row_identity": "SHA256(authority_version | race_id | runner_id | collision_discriminator)"
+  },
+  "output_contract": [
+    {
+      "field_name": "historical_run_observation_id",
+      "requirement": "REQUIRED",
+      "source_or_method": "Deterministic hash of governed natural identity plus collision discriminator."
+    },
+    {
+      "field_name": "canonical_race_id",
+      "requirement": "REQUIRED",
+      "source_or_method": "Deterministically generated from the authoritative source race identity."
+    },
+    {
+      "field_name": "source_race_id",
+      "requirement": "REQUIRED",
+      "source_or_method": "GraphQL race_id."
+    },
+    {
+      "field_name": "source_runner_id",
+      "requirement": "REQUIRED",
+      "source_or_method": "GraphQL runner_id."
+    },
+    {
+      "field_name": "canonical_horse_id",
+      "requirement": "REQUIRED",
+      "source_or_method": "Governed horse identity resolution."
+    },
+    {
+      "field_name": "source_horse_name",
+      "requirement": "REQUIRED",
+      "source_or_method": "GraphQL horse."
+    },
+    {
+      "field_name": "race_date",
+      "requirement": "REQUIRED",
+      "source_or_method": "GraphQL race_date."
+    },
+    {
+      "field_name": "canonical_track",
+      "requirement": "REQUIRED",
+      "source_or_method": "Governed normalisation of GraphQL track."
+    },
+    {
+      "field_name": "race_number",
+      "requirement": "REQUIRED",
+      "source_or_method": "GraphQL race_no normalised to integer."
+    },
+    {
+      "field_name": "finish_position",
+      "requirement": "REQUIRED",
+      "source_or_method": "GraphQL finish/finish_num."
+    },
+    {
+      "field_name": "field_size",
+      "requirement": "DERIVED_WHEN_GOVERNED",
+      "source_or_method": "Count of authoritative non-scratched runners in the resolved race."
+    },
+    {
+      "field_name": "official_race_time_seconds",
+      "requirement": "AVAILABLE_WHEN_SOURCE_SUPPORTED",
+      "source_or_method": "Governed conversion from GraphQL winning_time centiseconds."
+    },
+    {
+      "field_name": "source_collision_discriminator",
+      "requirement": "REQUIRED_FOR_DUPLICATE_KEYS",
+      "source_or_method": "Deterministic source-row ordinal inside race_id + runner_id duplicate groups."
+    },
+    {
+      "field_name": "source_row_number",
+      "requirement": "REQUIRED",
+      "source_or_method": "Physical row number in consolidated GraphQL warehouse."
+    },
+    {
+      "field_name": "source_file_sha256",
+      "requirement": "REQUIRED",
+      "source_or_method": "SHA256 of authoritative GraphQL file."
+    },
+    {
+      "field_name": "result_authority_state",
+      "requirement": "REQUIRED",
+      "source_or_method": "AUTHORITATIVE_CONSOLIDATED_GRAPHQL."
+    },
+    {
+      "field_name": "enrichment_state",
+      "requirement": "REQUIRED",
+      "source_or_method": "NONE, RESOLVED or UNRESOLVED."
+    }
+  ],
+  "overall_status": "PASS",
+  "program_id": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE1A_5_HISTORICAL_OBSERVATION_CORRECTION_SPECIFICATION_V1",
+  "program_version": "1.0.0",
+  "prohibited_behaviour": [
+    "Recursive discovery of arbitrary CSV files as historical observations.",
+    "Admission of live or upcoming runner feeds into completed-run facts.",
+    "Creation of observations from unresolved speed or sectional records.",
+    "Silent deletion of duplicate source rows.",
+    "Population expansion from checkpoint, backup or rejected files.",
+    "Threshold reduction or fabricated identity resolution."
+  ],
+  "source_policy": [
+    {
+      "decision": "ADMIT_AS_RESULT_AUTHORITY",
+      "enrichment_allowed": true,
+      "examples": "public/data/edgeiq_historical_results_warehouse_v2_graphql.csv",
+      "governed_reason": "Canonical consolidated completed-result authority with deterministic source lineage.",
+      "precedence": 1,
+      "row_creation_allowed": true,
+      "source_class": "CONSOLIDATED_GRAPHQL_RESULTS"
+    },
+    {
+      "decision": "EXCLUDE_DUPLICATE_SOURCE",
+      "enrichment_allowed": false,
+      "examples": "edgeiq_graphql_<month>_<year>_results_v1.csv",
+      "governed_reason": "Population is already represented in the consolidated GraphQL warehouse.",
+      "precedence": "",
+      "row_creation_allowed": false,
+      "source_class": "MONTHLY_GRAPHQL_RESULT_FILES"
+    },
+    {
+      "decision": "EXCLUDE_DUPLICATE_SOURCE",
+      "enrichment_allowed": false,
+      "examples": "edgeiq_graphql_master_v2.csv|edgeiq_graphql_january_2025_master_v1.csv|edgeiq_graphql_results_warehouse_week1_2025_v1.csv",
+      "governed_reason": "No verified novel historical-result population beyond consolidated authority.",
+      "precedence": "",
+      "row_creation_allowed": false,
+      "source_class": "LEGACY_GRAPHQL_MASTER_FILES"
+    },
+    {
+      "decision": "ENRICHMENT_ONLY",
+      "enrichment_allowed": true,
+      "examples": "runner_speed|graphql_speed|sectional_warehouse|rendered_speed_batches",
+      "governed_reason": "May enrich a resolved authoritative runner but cannot independently establish a completed historical observation.",
+      "precedence": "",
+      "row_creation_allowed": false,
+      "source_class": "SPEED_AND_SECTIONAL_FACTS"
+    },
+    {
+      "decision": "EXCLUDE_FROM_HISTORICAL_FACT",
+      "enrichment_allowed": false,
+      "examples": "upcoming_runner_ra_links|live_terminal|live_runner_board|market|nexus|ui",
+      "governed_reason": "Represents live, upcoming or product delivery state rather than completed historical performance.",
+      "precedence": "",
+      "row_creation_allowed": false,
+      "source_class": "LIVE_AND_UPCOMING_PRODUCT_FEEDS"
+    },
+    {
+      "decision": "EXCLUDE_REJECTED",
+      "enrichment_allowed": false,
+      "examples": "edgeiq_race_entry_fact_v1_rejected_v1.csv",
+      "governed_reason": "Explicitly rejected records cannot enter a canonical governed fact.",
+      "precedence": "",
+      "row_creation_allowed": false,
+      "source_class": "REJECTED_RECORDS"
+    },
+    {
+      "decision": "EXCLUDE_NONPRODUCTION_ARTEFACT",
+      "enrichment_allowed": false,
+      "examples": "checkpoints|checkpoint_before|backup|archive",
+      "governed_reason": "Forensic or operational artefacts cannot establish canonical facts.",
+      "precedence": "",
+      "row_creation_allowed": false,
+      "source_class": "CHECKPOINT_AND_BACKUP_FILES"
+    }
+  ]
+}

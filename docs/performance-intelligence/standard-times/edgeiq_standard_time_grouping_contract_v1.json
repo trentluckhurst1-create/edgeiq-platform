@@ -1,0 +1,9 @@
+{
+  "version": "edgeiq_standard_time_grouping_contract_v1",
+  "governed_minimum_observations": 20,
+  "prior_grouping": "track + distance + condition + class",
+  "approved_grouping": "track + distance + condition",
+  "repair_class": "SOURCE_COVERAGE",
+  "threshold_reduction": "NO",
+  "rationale": "Step 3 progressive grouping showed race-class grouping fragmented otherwise comparable timed races."
+}

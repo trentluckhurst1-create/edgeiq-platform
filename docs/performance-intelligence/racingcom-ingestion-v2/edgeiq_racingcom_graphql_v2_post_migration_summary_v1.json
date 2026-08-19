@@ -1,0 +1,10 @@
+{
+  "decision": "RACINGCOM_GRAPHQL_V2_POST_MIGRATION_PASS",
+  "rollback": {
+    "executed": "NO",
+    "backup_path": "",
+    "restored_sha256": ""
+  },
+  "production_sha256": "77803a32e3880598bb5fae3ba7aba49e1fb67931c2d729f567c36eeab873cfb8",
+  "production_rows": 138
+}

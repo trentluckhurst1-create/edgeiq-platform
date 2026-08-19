@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "generated_at": "2026-07-26T01:15:29+00:00",
+  "rows": 481,
+  "expected_identities": 72,
+  "represented_identities": 72,
+  "missing_identities": [],
+  "direct_sources_preserved": true,
+  "blank_vic_record_created": false,
+  "tynong_normalisation_complete": true,
+  "cranbourne_normalisation_complete": true
+}

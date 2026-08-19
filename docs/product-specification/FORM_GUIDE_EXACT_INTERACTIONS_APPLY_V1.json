@@ -1,0 +1,30 @@
+{
+  "status": "FORM_GUIDE_EXACT_INTERACTIONS_APPLIED",
+  "checks": [
+    {
+      "interaction": "runner_expand_toggle",
+      "present": true
+    },
+    {
+      "interaction": "scroll_to_runner",
+      "present": true
+    },
+    {
+      "interaction": "metric_tooltip",
+      "present": true
+    },
+    {
+      "interaction": "ratings_select",
+      "present": true
+    },
+    {
+      "interaction": "customise_columns_button",
+      "present": true
+    },
+    {
+      "interaction": "export_button",
+      "present": true
+    }
+  ],
+  "timestamp": "2026-07-20T13:38:48.905638"
+}

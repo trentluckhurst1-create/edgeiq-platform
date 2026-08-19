@@ -1,0 +1,12 @@
+{
+  "canonical_lvs_contract_version": "1.1.0",
+  "decision": "MIGRATE_CANONICAL_CONVERSION_CONTRACT_TO_SURFACE_CONDITION",
+  "new_parameter_contract": "contracts/performance-intelligence/edgeiq_length_conversion_parameter_fact_v2_contract.json",
+  "no_fabrication_declaration": "No exact-distance coefficients were restored or interpolated. Rows without governed condition evidence are rejected.",
+  "old_contract_preserved": "YES",
+  "old_output_preserved": "YES",
+  "rollback": "Restore the PRE_SURFACE_CONDITION_MIGRATION_20260729 backups and rerun the old exact-distance builders.",
+  "selected_conversion_model": "EDGEIQ_SURFACE_AWARE_LENGTHS_PER_SECOND_V2",
+  "selected_outcome": "B",
+  "temporal_implication": "Track condition is used as historical race-day official condition evidence for retrospective performance facts; it is not a pre-race prediction feature."
+}

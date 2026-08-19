@@ -1,0 +1,6 @@
+{
+  "methodology": "median official race time by canonical track + distance + condition + jurisdiction",
+  "minimum_observations": 20,
+  "threshold_reduction": "NO",
+  "outlier_policy": "none in v1; dispersion reported via MAD"
+}

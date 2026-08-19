@@ -1,0 +1,22 @@
+{
+  "status": "FORM_GUIDE_CAPTURE_COMPLETE",
+  "timestamp": "2026-07-20T15:46:29",
+  "server_log": [
+    "WAIT URLError",
+    "WAIT TimeoutError",
+    "WAIT TimeoutError",
+    "WAIT TimeoutError",
+    "WAIT TimeoutError",
+    "WAIT TimeoutError",
+    "WAIT TimeoutError",
+    "WAIT TimeoutError",
+    "HTTP_WAIT_TIMEOUT"
+  ],
+  "capture_stdout": "",
+  "capture_stderr": "",
+  "capture_returncode": 0,
+  "diff": {
+    "status": "DIFF_BUILT",
+    "mean_diff_pct": 9.0417
+  }
+}

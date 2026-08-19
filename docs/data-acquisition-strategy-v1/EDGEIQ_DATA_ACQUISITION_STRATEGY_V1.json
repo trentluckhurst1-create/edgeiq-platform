@@ -1,0 +1,19 @@
+{
+  "generated_at": "2026-07-30 Australia/Sydney",
+  "verdict": "HYBRID_ARCHITECTURE_RECOMMENDED",
+  "canonical_recommendation": "Official licensed feeds for core racing facts; licensed specialist providers for speed, sectionals and market; BOM registered/paid services for weather; governed user imports as fallback; public browser pages only for diagnostics unless permission exists.",
+  "prohibited_methods": [
+    "hidden credential extraction",
+    "session/cookie reuse",
+    "access-control bypass",
+    "protected API reverse engineering without permission",
+    "terms-contrary commercial scraping"
+  ],
+  "files": {
+    "report": "docs/data-acquisition-strategy-v1/EDGEIQ_DATA_ACQUISITION_STRATEGY_V1.md",
+    "matrix": "docs/data-acquisition-strategy-v1/EDGEIQ_DATA_ACQUISITION_MATRIX_V1.csv",
+    "source_comparison": "docs/data-acquisition-strategy-v1/EDGEIQ_SOURCE_COMPARISON_V1.csv",
+    "licensing_summary": "docs/data-acquisition-strategy-v1/EDGEIQ_LICENSING_SUMMARY_V1.csv",
+    "roadmap": "docs/data-acquisition-strategy-v1/EDGEIQ_IMPLEMENTATION_ROADMAP_V1.md"
+  }
+}

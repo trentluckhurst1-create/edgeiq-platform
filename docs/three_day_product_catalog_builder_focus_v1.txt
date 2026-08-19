@@ -1,0 +1,1081 @@
+
+========================================================================================================================
+IMPORTS, INPUTS, OUTPUTS, FIELD ALIASES
+LINES 1-230
+========================================================================================================================
+0001: from __future__ import annotations
+0002: 
+0003: import csv
+0004: import json
+0005: import re
+0006: import subprocess
+0007: import sys
+0008: from collections import defaultdict
+0009: from datetime import date, datetime, timedelta
+0010: 
+0011: from edgeiq_three_day_window_v1_common import build_three_day_window
+0012: from pathlib import Path
+0013: from typing import Any, Iterable
+0014: 
+0015: csv.field_size_limit(1024 * 1024 * 64)
+0016: 
+0017: ROOT = Path(__file__).resolve().parents[1]
+0018: DATA = ROOT / "public" / "data"
+0019: 
+0020: RAW_JSON = DATA / "edgeiq_racingcom_three_day_raw_meetings_v1.json"
+0021: RACE_LIST = DATA / "edgeiq_vic_three_day_race_list_v1.csv"
+0022: 
+0023: CSV_SOURCES = [
+0024:     DATA / "edgeiq_vic_three_day_meeting_calendar_v1.csv",
+0025:     RACE_LIST,
+0026:     DATA / "race_fields.csv",
+0027:     DATA / "edgeiq_vic_three_day_race_fields.csv",
+0028:     DATA / "edgeiq_vic_three_day_meeting_universe.csv",
+0029:     DATA / "edgeiq_tab_calendar_racecards_vic_v1.csv",
+0030: ]
+0031: 
+0032: OUTPUT = DATA / "edgeiq_three_day_product_catalog_v1.json"
+0033: SUMMARY = DATA / "edgeiq_three_day_product_catalog_v1_summary.txt"
+0034: AUDIT = DATA / "edgeiq_three_day_product_catalog_v1_audit.txt"
+0035: 
+0036: THREE_DAY_WINDOW = build_three_day_window()
+0037: TODAY = date.fromisoformat(THREE_DAY_WINDOW.today)
+0038: TARGET_DATES = [
+0039:     date.fromisoformat(THREE_DAY_WINDOW.today),
+0040:     date.fromisoformat(THREE_DAY_WINDOW.tomorrow),
+0041:     date.fromisoformat(THREE_DAY_WINDOW.dayPlus2),
+0042: ]
+0043: TARGET_DATE_SET = {item.isoformat() for item in TARGET_DATES}
+0044: 
+0045: VICTORIAN_VENUES = {
+0046:     "ARARAT",
+0047:     "BAIRNSDALE",
+0048:     "BALLARAT",
+0049:     "BALNARRING",
+0050:     "BENALLA",
+0051:     "BENDIGO",
+0052:     "CAULFIELD",
+0053:     "CAULFIELD HEATH",
+0054:     "COLAC",
+0055:     "COLERAINE",
+0056:     "CRANBOURNE",
+0057:     "DONALD",
+0058:     "ECHUCA",
+0059:     "FLEMINGTON",
+0060:     "GEELONG",
+0061:     "HAMILTON",
+0062:     "HORSHAM",
+0063:     "KERANG",
+0064:     "KILMORE",
+0065:     "KYNETON",
+0066:     "MANSFIELD",
+0067:     "MOE",
+0068:     "MOONEE VALLEY",
+0069:     "MORNINGTON",
+0070:     "MURTOA",
+0071:     "PAKENHAM",
+0072:     "SALE",
+0073:     "SANDOWN",
+0074:     "SANDOWN HILLSIDE",
+0075:     "SANDOWN LAKESIDE",
+0076:     "SEYMOUR",
+0077:     "ST ARNAUD",
+0078:     "STAWELL",
+0079:     "SWAN HILL",
+0080:     "TERANG",
+0081:     "TOWONG",
+0082:     "WANGARATTA",
+0083:     "WARRACKNABEAL",
+0084:     "WARRNAMBOOL",
+0085:     "WERRIBEE",
+0086:     "YARRA VALLEY",
+0087:     "YEA",
+0088: }
+0089: 
+0090: DATE_KEYS = (
+0091:     "date",
+0092:     "raceDate",
+0093:     "race_date",
+0094:     "meetingDate",
+0095:     "meeting_date",
+0096:     "startDate",
+0097:     "start_date",
+0098:     "meetingDateLocal",
+0099: )
+0100: 
+0101: MEETING_KEYS = (
+0102:     "meeting",
+0103:     "meetingName",
+0104:     "meeting_name",
+0105:     "venue",
+0106:     "venueName",
+0107:     "venue_name",
+0108:     "track",
+0109:     "trackName",
+0110:     "track_name",
+0111:     "racecourse",
+0112:     "courseName",
+0113: )
+0114: 
+0115: RACE_NUMBER_KEYS = (
+0116:     "raceNumber",
+0117:     "race_number",
+0118:     "number",
+0119:     "raceNo",
+0120:     "race_no",
+0121:     "raceNum",
+0122: )
+0123: 
+0124: RACE_NAME_KEYS = (
+0125:     "raceName",
+0126:     "race_name",
+0127:     "name",
+0128:     "title",
+0129:     "eventName",
+0130:     "event_name",
+0131: )
+0132: 
+0133: RACE_TIME_KEYS = (
+0134:     "raceTime",
+0135:     "race_time",
+0136:     "startTime",
+0137:     "start_time",
+0138:     "advertisedStart",
+0139:     "advertised_start",
+0140:     "jumpTime",
+0141:     "jump_time",
+0142: )
+0143: 
+0144: DISTANCE_KEYS = (
+0145:     "distance",
+0146:     "distanceMetres",
+0147:     "distance_metres",
+0148:     "metres",
+0149:     "meters",
+0150: )
+0151: 
+0152: RUNNER_NAME_KEYS = (
+0153:     "runner",
+0154:     "runnerName",
+0155:     "runner_name",
+0156:     "horseName",
+0157:     "horse_name",
+0158:     "horse",
+0159:     "name",
+0160: )
+0161: 
+0162: RUNNER_NUMBER_KEYS = (
+0163:     "raceEntryNumber",
+0164:     "race_entry_number",
+0165:     "runnerNumber",
+0166:     "runner_number",
+0167:     "saddlecloth",
+0168:     "saddleclothNumber",
+0169:     "saddlecloth_number",
+0170:     "tabNumber",
+0171:     "tab_number",
+0172:     "number",
+0173: )
+0174: 
+0175: BARRIER_KEYS = (
+0176:     "barrier",
+0177:     "barrierNumber",
+0178:     "barrier_number",
+0179:     "draw",
+0180: )
+0181: 
+0182: JOCKEY_KEYS = (
+0183:     "jockey",
+0184:     "jockeyName",
+0185:     "jockey_name",
+0186: )
+0187: 
+0188: TRAINER_KEYS = (
+0189:     "trainer",
+0190:     "trainerName",
+0191:     "trainer_name",
+0192: )
+0193: 
+0194: WEIGHT_KEYS = (
+0195:     "weight",
+0196:     "allocatedWeight",
+0197:     "allocated_weight",
+0198: )
+0199: 
+0200: MARKET_KEYS = (
+0201:     "market",
+0202:     "price",
+0203:     "odds",
+0204:     "fixedWin",
+0205:     "fixed_win",
+0206: )
+0207: 
+0208: RUNNER_CONTAINER_KEYS = (
+0209:     "runners",
+0210:     "field",
+0211:     "fields",
+0212:     "entries",
+0213:     "acceptances",
+0214:     "horses",
+0215:     "competitors",
+0216: )
+0217: 
+0218: RACE_CONTAINER_KEYS = (
+0219:     "races",
+0220:     "raceList",
+0221:     "race_list",
+0222:     "events",
+0223:     "raceEvents",
+0224:     "race_events",
+0225: )
+0226: 
+0227: 
+0228: def first(mapping: dict[str, Any], keys: Iterable[str]) -> Any:
+0229:     lowered = {str(key).lower(): key for key in mapping.keys()}
+0230: 
+
+========================================================================================================================
+ROW HELPERS, NESTED FIELD EXTRACTION, SILKS
+LINES 230-430
+========================================================================================================================
+0230: 
+0231:     for key in keys:
+0232:         actual = key if key in mapping else lowered.get(key.lower())
+0233: 
+0234:         if actual is None:
+0235:             continue
+0236: 
+0237:         value = mapping.get(actual)
+0238: 
+0239:         if value is None:
+0240:             continue
+0241: 
+0242:         if isinstance(value, str) and not value.strip():
+0243:             continue
+0244: 
+0245:         return value
+0246: 
+0247:     return None
+0248: 
+0249: 
+0250: def clean_text(value: Any) -> str | None:
+0251:     if value is None:
+0252:         return None
+0253: 
+0254:     if isinstance(value, (dict, list, tuple)):
+0255:         return None
+0256: 
+0257:     text = re.sub(r"\s+", " ", str(value)).strip()
+0258: 
+0259:     if not text or text.lower() in {
+0260:         "none",
+0261:         "null",
+0262:         "n/a",
+0263:         "na",
+0264:         "-",
+0265:     }:
+0266:         return None
+0267: 
+0268:     return text
+0269: 
+0270: 
+0271: def parse_structured(value: Any) -> Any:
+0272:     if isinstance(value, (dict, list)):
+0273:         return value
+0274: 
+0275:     if not isinstance(value, str):
+0276:         return value
+0277: 
+0278:     text = value.strip()
+0279: 
+0280:     if not text or text[0] not in "[{":
+0281:         return value
+0282: 
+0283:     try:
+0284:         return json.loads(text)
+0285:     except json.JSONDecodeError:
+0286:         pass
+0287: 
+0288:     return value
+0289: 
+0290: 
+0291: def structured_first(value: Any, keys: Iterable[str]) -> Any:
+0292:     parsed = parse_structured(value)
+0293: 
+0294:     if not isinstance(parsed, dict):
+0295:         return None
+0296: 
+0297:     return first(parsed, keys)
+0298: 
+0299: 
+0300: def text_from_value(value: Any, keys: Iterable[str] = ()) -> str | None:
+0301:     parsed = parse_structured(value)
+0302: 
+0303:     if isinstance(parsed, dict):
+0304:         nested = structured_first(parsed, keys or RUNNER_NAME_KEYS)
+0305: 
+0306:         if nested is not None and nested is not parsed:
+0307:             return text_from_value(nested, keys)
+0308: 
+0309:         return None
+0310: 
+0311:     if isinstance(parsed, list):
+0312:         return None
+0313: 
+0314:     return clean_text(parsed)
+0315: 
+0316: 
+0317: def runner_name_from(row: dict[str, Any]) -> str | None:
+0318:     for key in (
+0319:         "horseName",
+0320:         "horse_name",
+0321:         "runnerName",
+0322:         "runner_name",
+0323:         "runner",
+0324:         "name",
+0325:     ):
+0326:         value = first(row, (key,))
+0327:         text = text_from_value(value)
+0328: 
+0329:         if text:
+0330:             return text
+0331: 
+0332:     horse = first(row, ("horse",))
+0333:     return text_from_value(
+0334:         horse,
+0335:         (
+0336:             "horseName",
+0337:             "horse_name",
+0338:             "runnerName",
+0339:             "runner_name",
+0340:             "name",
+0341:             "fullName",
+0342:             "full_name",
+0343:         ),
+0344:     )
+0345: 
+0346: 
+0347: def runner_silk_from(row: dict[str, Any]) -> str | None:
+0348:     return text_from_value(
+0349:         first(row, ("silkUrl", "silk_url", "silk")),
+0350:     ) or text_from_value(
+0351:         structured_first(
+0352:             first(row, ("horse",)),
+0353:             ("silkUrl", "silk_url", "silk"),
+0354:         ),
+0355:     )
+0356: 
+0357: 
+0358: def runner_last_five_from(row: dict[str, Any]) -> list[str]:
+0359:     value = first(
+0360:         row,
+0361:         (
+0362:             "lastFive",
+0363:             "last5",
+0364:             "last_five",
+0365:             "recentForm",
+0366:             "recent_form",
+0367:             "form",
+0368:         ),
+0369:     )
+0370: 
+0371:     if value is None:
+0372:         value = structured_first(
+0373:             first(row, ("horse",)),
+0374:             (
+0375:                 "lastFive",
+0376:                 "last5",
+0377:                 "last_five",
+0378:                 "recentForm",
+0379:                 "recent_form",
+0380:                 "form",
+0381:             ),
+0382:         )
+0383: 
+0384:     parsed = parse_structured(value)
+0385: 
+0386:     if isinstance(parsed, str):
+0387:         tokens = re.split(r"[\s,]+", parsed)
+0388:     elif isinstance(parsed, list):
+0389:         tokens = parsed
+0390:     else:
+0391:         tokens = []
+0392: 
+0393:     allowed_codes = {"DNF", "F", "UR", "PU", "L", "BD"}
+0394:     last_five: list[str] = []
+0395: 
+0396:     for token in tokens:
+0397:         text = clean_text(token)
+0398: 
+0399:         if not text:
+0400:             continue
+0401: 
+0402:         text = text.upper()
+0403: 
+0404:         if text in {"-", "X"}:
+0405:             continue
+0406: 
+0407:         if text in allowed_codes or re.fullmatch(r"\d{1,2}", text):
+0408:             last_five.append(text)
+0409: 
+0410:         if len(last_five) >= 5:
+0411:             break
+0412: 
+0413:     return last_five
+0414: 
+0415: 
+0416: def parse_date(value: Any) -> str | None:
+0417:     text = clean_text(value)
+0418: 
+0419:     if not text:
+0420:         return None
+0421: 
+0422:     iso_match = re.search(
+0423:         r"\b(20\d{2})[-/](\d{1,2})[-/](\d{1,2})\b",
+0424:         text,
+0425:     )
+0426: 
+0427:     if iso_match:
+0428:         return (
+0429:             f"{int(iso_match.group(1)):04d}-"
+0430:             f"{int(iso_match.group(2)):02d}-"
+
+========================================================================================================================
+SOURCE DISCOVERY AND RUNNER INPUT ASSEMBLY
+LINES 430-610
+========================================================================================================================
+0430:             f"{int(iso_match.group(2)):02d}-"
+0431:             f"{int(iso_match.group(3)):02d}"
+0432:         )
+0433: 
+0434:     for pattern in (
+0435:         "%d/%m/%Y",
+0436:         "%d/%m/%y",
+0437:         "%d-%m-%Y",
+0438:         "%Y-%m-%dT%H:%M:%S",
+0439:         "%Y-%m-%dT%H:%M:%SZ",
+0440:     ):
+0441:         try:
+0442:             return datetime.strptime(
+0443:                 text[:19],
+0444:                 pattern,
+0445:             ).date().isoformat()
+0446:         except ValueError:
+0447:             pass
+0448: 
+0449:     return None
+0450: 
+0451: 
+0452: def meeting_display_name(value: Any) -> str:
+0453:     text = clean_text(value) or ""
+0454: 
+0455:     text = re.sub(
+0456:         r"^(SPORTSBET|LADBROKES|BET365)[-\s]+",
+0457:         "",
+0458:         text,
+0459:         flags=re.IGNORECASE,
+0460:     )
+0461:     text = re.sub(
+0462:         r"SYNTHETIC(?:THETIC)+",
+0463:         "SYNTHETIC",
+0464:         text,
+0465:         flags=re.IGNORECASE,
+0466:     )
+0467:     text = re.sub(
+0468:         r"^SOUTHSIDE\s+PAKENHAM\s+SYNTHETIC$",
+0469:         "PAKENHAM SYNTHETIC",
+0470:         text,
+0471:         flags=re.IGNORECASE,
+0472:     )
+0473: 
+0474:     return re.sub(r"\s+", " ", text).strip()
+0475: 
+0476: 
+0477: def meeting_key(value: Any) -> str:
+0478:     text = meeting_display_name(value).upper()
+0479: 
+0480:     aliases = {
+0481:         "CAULFIELD HEATH": "CAULFIELD",
+0482:         "CAULFIELD": "CAULFIELD",
+0483:         "SANDOWN HILLSIDE": "SANDOWN",
+0484:         "SANDOWN LAKESIDE": "SANDOWN",
+0485:         "LADBROKES PARK": "SANDOWN",
+0486:         "LADBROKES PARK HILLSIDE": "SANDOWN",
+0487:         "LADBROKES PARK LAKESIDE": "SANDOWN",
+0488:         "BALLARAT SYNTHETIC": "BALLARAT",
+0489:         "GEELONG SYNTHETIC": "GEELONG",
+0490:         "PAKENHAM SYNTHETIC": "PAKENHAM",
+0491:     }
+0492: 
+0493:     return aliases.get(text, text)
+0494: 
+0495: 
+0496: def is_victorian_meeting(value: Any) -> bool:
+0497:     display = meeting_display_name(value).upper()
+0498:     key = meeting_key(value)
+0499: 
+0500:     return display in VICTORIAN_VENUES or key in VICTORIAN_VENUES
+0501: 
+0502: 
+0503: def truthy(value: Any) -> bool:
+0504:     if isinstance(value, bool):
+0505:         return value
+0506: 
+0507:     text = clean_text(value)
+0508: 
+0509:     return text is not None and text.upper() in {
+0510:         "TRUE",
+0511:         "YES",
+0512:         "Y",
+0513:         "1",
+0514:     }
+0515: 
+0516: 
+0517: def excluded_event(row: dict[str, Any]) -> bool:
+0518:     text = " ".join(
+0519:         clean_text(value) or ""
+0520:         for value in (
+0521:             row.get("UrlSegment"),
+0522:             row.get("url_segment"),
+0523:             row.get("EventType"),
+0524:             row.get("event_type"),
+0525:             row.get("FullStatus"),
+0526:             row.get("full_status"),
+0527:             row.get("MeetStatus"),
+0528:             row.get("meet_status"),
+0529:         )
+0530:     ).upper()
+0531: 
+0532:     sub_types = row.get("SubTypes") or row.get("sub_types") or []
+0533: 
+0534:     if isinstance(sub_types, list):
+0535:         text = f"{text} {' '.join(str(item).upper() for item in sub_types)}"
+0536: 
+0537:     return (
+0538:         truthy(row.get("IsTrial"))
+0539:         or truthy(row.get("is_trial"))
+0540:         or truthy(row.get("IsJumpout"))
+0541:         or truthy(row.get("is_jumpout"))
+0542:         or "JUMPOUT" in text
+0543:         or "JUMP OUT" in text
+0544:         or "TRIAL" in text
+0545:     )
+0546: 
+0547: 
+0548: def race_list_has_target_races() -> bool:
+0549:     if not RACE_LIST.exists():
+0550:         return False
+0551: 
+0552:     try:
+0553:         with RACE_LIST.open(
+0554:             "r",
+0555:             encoding="utf-8-sig",
+0556:             newline="",
+0557:         ) as handle:
+0558:             rows = list(csv.DictReader(handle))
+0559:     except Exception:
+0560:         return False
+0561: 
+0562:     return any(
+0563:         parse_date(first(row, DATE_KEYS)) in TARGET_DATE_SET
+0564:         and integer(first(row, RACE_NUMBER_KEYS)) is not None
+0565:         for row in rows
+0566:     )
+0567: 
+0568: 
+0569: def ensure_race_list_source() -> None:
+0570:     if race_list_has_target_races():
+0571:         return
+0572: 
+0573:     builder = ROOT / "scripts" / "build_edgeiq_racingcom_three_day_race_list_v1.py"
+0574: 
+0575:     if not builder.exists():
+0576:         return
+0577: 
+0578:     subprocess.run(
+0579:         [sys.executable, str(builder)],
+0580:         cwd=ROOT,
+0581:         check=False,
+0582:     )
+0583: 
+0584: 
+0585: def integer(value: Any) -> int | None:
+0586:     try:
+0587:         return int(float(str(value)))
+0588:     except (TypeError, ValueError):
+0589:         return None
+0590: 
+0591: 
+0592: def list_from(mapping: dict[str, Any], keys: Iterable[str]) -> list[Any]:
+0593:     value = first(mapping, keys)
+0594:     return value if isinstance(value, list) else []
+0595: 
+0596: 
+0597: def looks_like_race(mapping: dict[str, Any]) -> bool:
+0598:     race_number = integer(first(mapping, RACE_NUMBER_KEYS))
+0599: 
+0600:     if race_number is None or not 1 <= race_number <= 20:
+0601:         return False
+0602: 
+0603:     has_race_detail = any(
+0604:         first(mapping, keys) is not None
+0605:         for keys in (
+0606:             RACE_NAME_KEYS,
+0607:             RACE_TIME_KEYS,
+0608:             DISTANCE_KEYS,
+0609:         )
+0610:     )
+
+========================================================================================================================
+OFFICIAL RUNNER OBJECT CONSTRUCTION
+LINES 610-710
+========================================================================================================================
+0610:     )
+0611: 
+0612:     return has_race_detail
+0613: 
+0614: 
+0615: def looks_like_runner(mapping: dict[str, Any]) -> bool:
+0616:     name = runner_name_from(mapping)
+0617: 
+0618:     if not name:
+0619:         return False
+0620: 
+0621:     return any(
+0622:         first(mapping, keys) is not None
+0623:         for keys in (
+0624:             RUNNER_NUMBER_KEYS,
+0625:             BARRIER_KEYS,
+0626:             JOCKEY_KEYS,
+0627:             TRAINER_KEYS,
+0628:             WEIGHT_KEYS,
+0629:         )
+0630:     )
+0631: 
+0632: 
+0633: def normalise_runner(
+0634:     row: dict[str, Any],
+0635:     index: int,
+0636: ) -> dict[str, Any]:
+0637:     number = first(row, RUNNER_NUMBER_KEYS)
+0638:     odds = first(row, ("odds",))
+0639: 
+0640:     if isinstance(odds, list):
+0641:         for quote in odds:
+0642:             if not isinstance(quote, dict):
+0643:                 continue
+0644: 
+0645:             price = first(
+0646:                 quote,
+0647:                 (
+0648:                     "oddsWin",
+0649:                     "winOdds",
+0650:                     "fixedWin",
+0651:                     "price",
+0652:                 ),
+0653:             )
+0654: 
+0655:             if price is not None:
+0656:                 break
+0657:         else:
+0658:             price = first(row, MARKET_KEYS)
+0659:     else:
+0660:         price = first(row, MARKET_KEYS)
+0661: 
+0662:     return {
+0663:         "official": {
+0664:             "no": number,
+0665:             "number": number,
+0666:             "runner": runner_name_from(row),
+0667:             "barrier": first(row, BARRIER_KEYS),
+0668:             "jockey": clean_text(first(row, JOCKEY_KEYS)),
+0669:             "trainer": clean_text(first(row, TRAINER_KEYS)),
+0670:             "weight": clean_text(first(row, WEIGHT_KEYS)),
+0671:             "market": price,
+0672:             "silkUrl": runner_silk_from(row),
+0673:             "lastFive": runner_last_five_from(row),
+0674:             "scratched": truthy(first(row, ("scratched", "isScratched", "scratchedFlag"))),
+0675:             "horseCountry": clean_text(first(row, ("horseCountry", "horse_country", "country"))),
+0676:             "apprenticeClaim": clean_text(first(row, ("apprenticeAllowedClaim", "claim", "claimKg"))),
+0677:             "currentGear": clean_text(
+0678:                 first(row, ("currentGear", "gear", "gearChanges"))
+0679:             )
+0680:             or clean_text(
+0681:                 structured_first(
+0682:                     first(row, ("horse",)),
+0683:                     ("currentGear", "gear", "gearChanges"),
+0684:                 )
+0685:             ),
+0686:         },
+0687:         "historicalRuns": [],
+0688:         "evidenceRuns": [],
+0689:         "source": row,
+0690:     }
+0691: 
+0692: 
+0693: def find_runner_rows(race: dict[str, Any]) -> list[dict[str, Any]]:
+0694:     direct = list_from(race, RUNNER_CONTAINER_KEYS)
+0695: 
+0696:     if direct:
+0697:         return [
+0698:             row
+0699:             for row in direct
+0700:             if isinstance(row, dict)
+0701:         ]
+0702: 
+0703:     form_entries = clean_text(race.get("form_entries_json"))
+0704: 
+0705:     if form_entries:
+0706:         try:
+0707:             parsed_entries = json.loads(form_entries)
+0708:         except json.JSONDecodeError:
+0709:             parsed_entries = []
+0710: 
+
+========================================================================================================================
+RACE AND MEETING ASSEMBLY
+LINES 710-850
+========================================================================================================================
+0710: 
+0711:         if isinstance(parsed_entries, list):
+0712:             entries = [
+0713:                 row
+0714:                 for row in parsed_entries
+0715:                 if isinstance(row, dict)
+0716:                 and runner_name_from(row)
+0717:             ]
+0718: 
+0719:             if entries:
+0720:                 return entries
+0721: 
+0722:     candidates: list[dict[str, Any]] = []
+0723: 
+0724:     def walk(value: Any, depth: int = 0) -> None:
+0725:         if depth > 5:
+0726:             return
+0727: 
+0728:         if isinstance(value, dict):
+0729:             if looks_like_runner(value):
+0730:                 candidates.append(value)
+0731:                 return
+0732: 
+0733:             for child in value.values():
+0734:                 walk(child, depth + 1)
+0735: 
+0736:         elif isinstance(value, list):
+0737:             for child in value:
+0738:                 walk(child, depth + 1)
+0739: 
+0740:     walk(race)
+0741: 
+0742:     deduped: list[dict[str, Any]] = []
+0743:     seen: set[str] = set()
+0744: 
+0745:     for row in candidates:
+0746:         name = (runner_name_from(row) or "").upper()
+0747: 
+0748:         number = str(first(row, RUNNER_NUMBER_KEYS) or "")
+0749:         identity = f"{number}|{name}"
+0750: 
+0751:         if not name or identity in seen:
+0752:             continue
+0753: 
+0754:         seen.add(identity)
+0755:         deduped.append(row)
+0756: 
+0757:     return deduped
+0758: 
+0759: 
+0760: def normalise_race(
+0761:     row: dict[str, Any],
+0762:     meeting_name: str,
+0763:     meeting_date: str,
+0764: ) -> dict[str, Any]:
+0765:     number = integer(first(row, RACE_NUMBER_KEYS))
+0766: 
+0767:     if number is None:
+0768:         raise ValueError("Race number missing")
+0769: 
+0770:     runners_raw = find_runner_rows(row)
+0771: 
+0772:     return {
+0773:         "raceKey": (
+0774:             f"{meeting_date}|{meeting_key(meeting_name)}|R{number}"
+0775:         ),
+0776:         "raceNumber": number,
+0777:         "raceName": clean_text(
+0778:             first(row, RACE_NAME_KEYS)
+0779:         ) or f"Race {number}",
+0780:         "distance": clean_text(first(row, DISTANCE_KEYS)),
+0781:         "raceClass": clean_text(
+0782:             first(
+0783:                 row,
+0784:                 (
+0785:                     "raceClass",
+0786:                     "race_class",
+0787:                     "class",
+0788:                     "grade",
+0789:                     "conditions",
+0790:                 ),
+0791:             )
+0792:         ),
+0793:         "raceTime": clean_text(first(row, RACE_TIME_KEYS)),
+0794:         "trackCondition": clean_text(
+0795:             first(
+0796:                 row,
+0797:                 (
+0798:                     "trackCondition",
+0799:                     "track_condition",
+0800:                     "condition",
+0801:                 ),
+0802:             )
+0803:         ),
+0804:         "rail": clean_text(
+0805:             first(
+0806:                 row,
+0807:                 (
+0808:                     "rail",
+0809:                     "railPosition",
+0810:                     "rail_position",
+0811:                 ),
+0812:             )
+0813:         ),
+0814:         "runners": [
+0815:             normalise_runner(runner, index)
+0816:             for index, runner in enumerate(runners_raw)
+0817:         ],
+0818:         "source": row,
+0819:     }
+0820: 
+0821: 
+0822: meetings: dict[tuple[str, str], dict[str, Any]] = {}
+0823: race_nodes_seen = 0
+0824: runner_nodes_seen = 0
+0825: 
+0826: 
+0827: def ensure_meeting(
+0828:     name: str,
+0829:     meeting_date: str,
+0830:     source: dict[str, Any],
+0831: ) -> dict[str, Any]:
+0832:     key = meeting_key(name)
+0833:     identity = (meeting_date, key)
+0834: 
+0835:     meeting = meetings.get(identity)
+0836: 
+0837:     if meeting is None:
+0838:         meeting = {
+0839:             "meetingKey": f"{meeting_date}|{key}",
+0840:             "meeting": meeting_display_name(name),
+0841:             "providerMeetingKey": key,
+0842:             "date": meeting_date,
+0843:             "trackCondition": clean_text(
+0844:                 first(
+0845:                     source,
+0846:                     (
+0847:                         "trackCondition",
+0848:                         "track_condition",
+0849:                         "condition",
+0850:                     ),
+
+========================================================================================================================
+FINAL PAYLOAD, AUDIT AND WRITE
+LINES 1080-1210
+========================================================================================================================
+1080:                 first(race_rows[0], MEETING_KEYS)
+1081:             ) or key.title()
+1082: 
+1083:             meeting = ensure_meeting(
+1084:                 display_name,
+1085:                 meeting_date,
+1086:                 race_rows[0],
+1087:             )
+1088: 
+1089:             candidate = normalise_race(
+1090:                 race_rows[0],
+1091:                 display_name,
+1092:                 meeting_date,
+1093:             )
+1094: 
+1095:             candidate["raceNumber"] = race_number
+1096:             candidate["raceKey"] = (
+1097:                 f"{meeting_date}|{key}|R{race_number}"
+1098:             )
+1099: 
+1100:             runner_rows = [
+1101:                 row
+1102:                 for row in race_rows
+1103:                 if looks_like_runner(row)
+1104:             ]
+1105: 
+1106:             if runner_rows:
+1107:                 candidate["runners"] = [
+1108:                     normalise_runner(row, index)
+1109:                     for index, row in enumerate(runner_rows)
+1110:                 ]
+1111: 
+1112:             existing_index = next(
+1113:                 (
+1114:                     index
+1115:                     for index, race in enumerate(meeting["races"])
+1116:                     if race["raceNumber"] == race_number
+1117:                 ),
+1118:                 None,
+1119:             )
+1120: 
+1121:             if existing_index is None:
+1122:                 meeting["races"].append(candidate)
+1123:             elif (
+1124:                 len(candidate["runners"])
+1125:                 > len(meeting["races"][existing_index]["runners"])
+1126:             ):
+1127:                 meeting["races"][existing_index] = candidate
+1128: 
+1129: 
+1130: add_csv_sources()
+1131: 
+1132: valid_csv_identities = current_csv_meeting_identities()
+1133: if valid_csv_identities:
+1134:     meetings = {
+1135:         identity: meeting
+1136:         for identity, meeting in meetings.items()
+1137:         if identity in valid_csv_identities
+1138:     }
+1139: 
+1140: meeting_rows = list(meetings.values())
+1141: 
+1142: for meeting in meeting_rows:
+1143:     meeting["races"].sort(
+1144:         key=lambda race: race["raceNumber"]
+1145:     )
+1146: 
+1147:     meeting["raceCount"] = len(meeting["races"])
+1148: 
+1149: meeting_rows = [
+1150:     meeting
+1151:     for meeting in meeting_rows
+1152:     if meeting["date"] in TARGET_DATE_SET
+1153:     and is_victorian_meeting(meeting["meeting"])
+1154: ]
+1155: 
+1156: meeting_rows.sort(
+1157:     key=lambda meeting: (
+1158:         meeting["date"],
+1159:         meeting["meeting"],
+1160:     )
+1161: )
+1162: 
+1163: day_labels = {
+1164:     TARGET_DATES[0].isoformat(): "TODAY",
+1165:     TARGET_DATES[1].isoformat(): "TOMORROW",
+1166:     TARGET_DATES[2].isoformat(): TARGET_DATES[2].strftime(
+1167:         "%A"
+1168:     ).upper(),
+1169: }
+1170: 
+1171: output = {
+1172:     "schemaVersion": "edgeiq_three_day_product_catalog_v1",
+1173:     "generatedAt": datetime.now().isoformat(),
+1174:     "dates": [
+1175:         item.isoformat()
+1176:         for item in TARGET_DATES
+1177:     ],
+1178:     "dayLabels": day_labels,
+1179:     "meetings": meeting_rows,
+1180: }
+1181: 
+1182: OUTPUT.write_text(
+1183:     json.dumps(
+1184:         output,
+1185:         indent=2,
+1186:         ensure_ascii=False,
+1187:     ),
+1188:     encoding="utf-8",
+1189: )
+1190: 
+1191: total_races = sum(
+1192:     len(meeting["races"])
+1193:     for meeting in meeting_rows
+1194: )
+1195: 
+1196: total_runners = sum(
+1197:     len(race["runners"])
+1198:     for meeting in meeting_rows
+1199:     for race in meeting["races"]
+1200: )
+1201: 
+1202: summary_lines = [
+1203:     "EDGEIQ THREE-DAY PRODUCT CATALOGUE V1",
+1204:     "=" * 45,
+1205:     "",
+1206:     f"Generated: {output['generatedAt']}",
+1207:     f"Dates: {', '.join(output['dates'])}",
+1208:     f"Meetings: {len(meeting_rows)}",
+1209:     f"Races: {total_races}",
+1210:     f"Runners: {total_runners}",
+
+========================================================================================================================
+KEYWORD INDEX
+========================================================================================================================
+0023: CSV_SOURCES = [
+0026:     DATA / "race_fields.csv",
+0027:     DATA / "edgeiq_vic_three_day_race_fields.csv",
+0175: BARRIER_KEYS = (
+0182: JOCKEY_KEYS = (
+0188: TRAINER_KEYS = (
+0194: WEIGHT_KEYS = (
+0209:     "runners",
+0212:     "entries",
+0284:         return json.loads(text)
+0569: def ensure_race_list_source() -> None:
+0625:             BARRIER_KEYS,
+0626:             JOCKEY_KEYS,
+0627:             TRAINER_KEYS,
+0628:             WEIGHT_KEYS,
+0663:         "official": {
+0667:             "barrier": first(row, BARRIER_KEYS),
+0668:             "jockey": clean_text(first(row, JOCKEY_KEYS)),
+0669:             "trainer": clean_text(first(row, TRAINER_KEYS)),
+0670:             "weight": clean_text(first(row, WEIGHT_KEYS)),
+0689:         "source": row,
+0693: def find_runner_rows(race: dict[str, Any]) -> list[dict[str, Any]]:
+0703:     form_entries = clean_text(race.get("form_entries_json"))
+0705:     if form_entries:
+0707:             parsed_entries = json.loads(form_entries)
+0709:             parsed_entries = []
+0711:         if isinstance(parsed_entries, list):
+0712:             entries = [
+0714:                 for row in parsed_entries
+0719:             if entries:
+0720:                 return entries
+0770:     runners_raw = find_runner_rows(row)
+0814:         "runners": [
+0816:             for index, runner in enumerate(runners_raw)
+0818:         "source": row,
+0830:     source: dict[str, Any],
+0845:                     source,
+0855:                     source,
+0865:             "source": source,
+0928:                 runner_nodes_seen += len(race["runners"])
+0945:                         len(existing["runners"])
+0957:                         len(race["runners"])
+0989: ensure_race_list_source()
+0993:     raw = json.loads(
+1005:     for path in CSV_SOURCES:
+1028: def add_csv_sources() -> None:
+1029:     for path in CSV_SOURCES:
+1100:             runner_rows = [
+1106:             if runner_rows:
+1107:                 candidate["runners"] = [
+1109:                     for index, row in enumerate(runner_rows)
+1124:                 len(candidate["runners"])
+1125:                 > len(meeting["races"][existing_index]["runners"])
+1130: add_csv_sources()
+1196: total_runners = sum(
+1197:     len(race["runners"])
+1210:     f"Runners: {total_runners}",
+1219:         f"{sum(len(race['runners']) for race in meeting['races'])} runners"
+1232:     f"Raw nested runners found: {runner_nodes_seen}",
+1235:     f"Final runners: {total_runners}",
+1253:             f"runners={len(race['runners'])}"
+1264: print(f"[EDGEIQ] Runners: {total_runners}")

@@ -1,0 +1,16 @@
+{
+  "status": "RACINGCOM_SPEED_DATA_FIXTURE_CONTRACT_V1_PASS",
+  "built_utc": "2026-07-22T09:12:23+00:00",
+  "fixture_rows": 15,
+  "historical_proven_races": 8,
+  "recent_visible_speed_races": 5,
+  "negative_controls": 2,
+  "candidate_meetings_scanned": 10,
+  "candidate_races_observed": 70,
+  "browser_checked_races": 14,
+  "future_races": 0,
+  "audit_failures": 0,
+  "production_changed": "NO",
+  "ui_changed": "NO",
+  "v2_architecture_modified": "NO"
+}

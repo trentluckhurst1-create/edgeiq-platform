@@ -1,0 +1,6 @@
+{
+  "marker": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE1_6_1_STAGING_CLEANUP_BLOCKED",
+  "staging_dir": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\performance-intelligence\\warehouse\\performance-facts-corrected\\.eiq_performance_facts_v0_2_3af6720f154a214c604292bd.staging",
+  "error": "PermissionError(13, 'The process cannot access the file because it is being used by another process')",
+  "instruction": "Close any process holding files under this failed staging directory and rerun."
+}

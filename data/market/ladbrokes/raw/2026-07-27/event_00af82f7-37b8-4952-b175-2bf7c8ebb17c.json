@@ -1,0 +1,2557 @@
+{
+  "header": {
+    "title": "Event Details: 00af82f7-37b8-4952-b175-2bf7c8ebb17c",
+    "generated_time": "2026-07-26T02:08:28.218601061Z",
+    "url": "/affiliates/v1/racing/events/00af82f7-37b8-4952-b175-2bf7c8ebb17c?enc=json"
+  },
+  "params": {
+    "enc": "json",
+    "id": "00af82f7-37b8-4952-b175-2bf7c8ebb17c",
+    "present_overlay": false,
+    "with_big_bets": false,
+    "with_live_bets": false,
+    "with_money_tracker": false,
+    "with_biggest_bet": false,
+    "will_pays": false,
+    "with_tote_trends_data": false,
+    "bet_type_filter": "",
+    "bets_limit": 10
+  },
+  "data": {
+    "race": {
+      "event_id": "00af82f7-37b8-4952-b175-2bf7c8ebb17c",
+      "meeting_name": "Ballarat Synthetic",
+      "display_meeting_name": "Sportsbet-Ballarat Synthetic",
+      "meeting_id": "69951e06-a4f1-511d-929c-df61edebf950",
+      "status": "Open",
+      "description": "Aac Temp Fencing Mdn Plate",
+      "advertised_start": 1785121200,
+      "actual_start": 1785121200,
+      "advertised_start_string": "2026-07-27 03:00:00 +0000 UTC",
+      "actual_start_string": "2026-07-27 03:00:00 +0000 UTC",
+      "race_number": 3,
+      "type": "T",
+      "start_type": "",
+      "country": "AUS",
+      "state": "VIC",
+      "distance": 1500,
+      "weather": "showers",
+      "form_guide": "",
+      "comment": "FLYING CAPITAL (5) is building towards his maiden success, the latest effort a solid second over 1500m at this track, beaten 0.8 lengths after he worked home well. He should get every hope from the soft gate with Meech on and looks a huge chance. LANCETTA (12) stalked the pace when resuming at this track and trip last start then worked to the line steadily to finish third. Fitter for that and looks a good winning hope. JUST SWIFT (11) finished out of the money two starts back then was beaten narrowly when fourth in a 1620m contest at Donald last start. Off a freshen here but has claims. EGERTON REEF (3) took up the running last time and turned in front but faded to finish fourth, beaten 2 lengths, over this journey at this track. Will give a sight again.",
+      "silk_base_url": "drr38safykj6s.cloudfront.net",
+      "track_condition": "Synthetic",
+      "track_direction": "Left",
+      "silk_url": "https://cdn.prod.pricekinetics.com/silks/sprites/cerberus/betmakers-cmFjZToyMDc2ODUz_SPRITE_64x64.png",
+      "entrant_count": 18,
+      "positions_paid": 3,
+      "video_channels": [
+        "Live1"
+      ],
+      "video_channels_meta": {
+        "Live1": {
+          "RaceNo": 3,
+          "RaceType": "T",
+          "SlotType": "",
+          "SlotTitle": "",
+          "VenueName": "Ballarat",
+          "CrossPoint": 144,
+          "RacePriority": "1",
+          "SlotDuration": "",
+          "SchedulerNote": "Provincial",
+          "CrossPointName": "TBS 04 ",
+          "SlotDescription": "",
+          "UtcRaceStartTime": "2026-07-27T03:00:00Z",
+          "VenueCountryCode": "AU",
+          "VenueProviderName": "RACING.COM",
+          "DisplayRaceStartTime": "2026-07-27T13:00:00",
+          "SchedulerNotePriority": "None"
+        }
+      },
+      "tips": [
+        "c2f24a3c-1b49-47e1-81b7-31b8b422c4ab",
+        "44225c11-433d-42be-8c94-f33929582d11",
+        "944b2e6f-1f47-4222-8a71-e10551a7da5e",
+        "d0bffaed-fd54-4562-8f45-1880b0c3239e"
+      ],
+      "rail_position": "True Entire Circuit.",
+      "group": "",
+      "prize_monies": {
+        "10th": 640,
+        "1st": 17600,
+        "2nd": 5760,
+        "3rd": 2880,
+        "4th": 1600,
+        "5th": 960,
+        "6th": 640,
+        "7th": 640,
+        "8th": 640,
+        "9th": 640,
+        "total_value": 32000
+      },
+      "track_home_straight": 0
+    },
+    "favourite": {
+      "entrant_id": "c2f24a3c-1b49-47e1-81b7-31b8b422c4ab",
+      "market_name": "Final Field",
+      "primary_market": true,
+      "name": "Flying Capital",
+      "is_scratched": false,
+      "gear": "[Blinkers]",
+      "odds": {
+        "fixed_win": 3.2,
+        "fixed_place": 1.5
+      },
+      "scratch_time": 0,
+      "barrier": 2,
+      "runner_number": 5,
+      "prize_money": "24675",
+      "age": 4,
+      "sex": "G",
+      "colour": "CH",
+      "silk_colours": "RED, ROYAL BLUE SPOT, HALVED SLEEVES, WHITE POM POM",
+      "silk_url_64x64": "https://cdn.prod.pricekinetics.com/silks/events/racing/betmakers-cmFjZToyMDc2ODUz/flying-capital_64x64.png",
+      "silk_url_128x128": "https://cdn.prod.pricekinetics.com/silks/events/racing/betmakers-cmFjZToyMDc2ODUz/flying-capital_128x128.png",
+      "form_comment": null,
+      "class_level": "",
+      "jockey": "Linda Meech",
+      "apprentice_indicator": "",
+      "allowance_weight": "",
+      "owners": "Sustainable Thoroughbred Breeding (Mgr: M J Drapac) & M L Flannery",
+      "country": "AUS",
+      "trainer_name": "Tom Dabernig",
+      "last_twenty_starts": "22532",
+      "sire": "CAPITALIST (AUS)",
+      "dam": "FLORIDA FLYER (AUS)",
+      "breeding": "4 g CAPITALIST (AUS)-FLORIDA FLYER (AUS)",
+      "weight": {
+        "allocated": "59.5",
+        "total": "59.5"
+      },
+      "favourite": false,
+      "mover": false,
+      "speedmap": {
+        "settling_lengths": 5,
+        "entrant_id": "c2f24a3c-1b49-47e1-81b7-31b8b422c4ab"
+      },
+      "form_indicators": [
+        {
+          "name": "Trainer / Jockey Combo",
+          "group": "Jockey_Trainer",
+          "negative": false,
+          "priority": 140
+        }
+      ],
+      "past_performances": {
+        "jockey": {
+          "number_of_starts": 3,
+          "number_of_wins": 0,
+          "number_of_placings": 2,
+          "number_of_seconds": 2,
+          "number_of_thirds": 0
+        }
+      },
+      "jockey_past_performances": {
+        "last_50_starts": {
+          "number_of_starts": 50,
+          "number_of_wins": 4,
+          "number_of_placings": 0,
+          "number_of_seconds": 8,
+          "number_of_thirds": 4
+        },
+        "trainer": {
+          "number_of_starts": 220,
+          "number_of_wins": 48,
+          "number_of_placings": 0,
+          "number_of_seconds": 31,
+          "number_of_thirds": 21
+        }
+      },
+      "trainer_location": "Warrnambool"
+    },
+    "runners": [
+      {
+        "entrant_id": "81fbaf58-b575-4058-a5db-e716c2d4f032",
+        "market_name": "Final Field",
+        "primary_market": true,
+        "name": "Boulderoo",
+        "is_scratched": false,
+        "gear": "[Winkers]",
+        "odds": {
+          "fixed_win": 8.5,
+          "fixed_place": 2.6
+        },
+        "scratch_time": 0,
+        "barrier": 11,
+        "runner_number": 1,
+        "prize_money": "19985",
+        "age": 3,
+        "sex": "G",
+        "colour": "B/BR",
+        "silk_colours": "TURQUOISE, PINK BAND, PALE BLUE SLEEVES, WHITE CAP",
+        "silk_url_64x64": "https://cdn.prod.pricekinetics.com/silks/events/racing/betmakers-cmFjZToyMDc2ODUz/boulderoo_64x64.png",
+        "silk_url_128x128": "https://cdn.prod.pricekinetics.com/silks/events/racing/betmakers-cmFjZToyMDc2ODUz/boulderoo_128x128.png",
+        "form_comment": null,
+        "class_level": "",
+        "jockey": "Will Gordon",
+        "apprentice_indicator": "",
+        "allowance_weight": "",
+        "owners": "B L Mathers & Mrs A M Mathers",
+        "country": "AUS",
+        "trainer_name": "Andrew Bobbin",
+        "last_twenty_starts": "96x452032",
+        "sire": "BOULDER CITY (AUS)",
+        "dam": "VAINRITE (AUS)",
+        "breeding": "3 g BOULDER CITY (AUS)-VAINRITE (AUS)",
+        "weight": {
+          "allocated": "59.5",
+          "total": "59.5"
+        },
+        "favourite": false,
+        "mover": false,
+        "speedmap": {
+          "settling_lengths": 5,
+          "entrant_id": "81fbaf58-b575-4058-a5db-e716c2d4f032",
+          "label": "Midfield"
+        },
+        "form_indicators": null,
+        "past_performances": {
+          "jockey": {
+            "number_of_starts": 1,
+            "number_of_wins": 0,
+            "number_of_placings": 0,
+            "number_of_seconds": 0,
+            "number_of_thirds": 0
+          }
+        },
+        "jockey_past_performances": {
+          "last_50_starts": {
+            "number_of_starts": 50,
+            "number_of_wins": 8,
+            "number_of_placings": 0,
+            "number_of_seconds": 6,
+            "number_of_thirds": 5
+          },
+          "trainer": {
+            "number_of_starts": 207,
+            "number_of_wins": 25,
+            "number_of_placings": 0,
+            "number_of_seconds": 32,
+            "number_of_thirds": 27
+          }
+        },
+        "trainer_location": "Stawell",
+        "meta": null,
+        "flucs": [
+          10,
+          11,
+          10,
+          9.5,
+          9,
+          8.5
+        ],
+        "scr_time": null,
+        "competitor_id": "",
+        "ride_guide_exists": false,
+        "ride_guide_thumbnail": "",
+        "ride_guide_file": "",
+        "flucs_with_timestamp": {
+          "last_six": [
+            {
+              "timestamp": "2026-07-25T00:05:17.97245872Z",
+              "fluc": 10
+            },
+            {
+              "timestamp": "2026-07-25T00:16:49.763323003Z",
+              "fluc": 11
+            },
+            {
+              "timestamp": "2026-07-25T00:21:23.468222918Z",
+              "fluc": 10
+            },
+            {
+              "timestamp": "2026-07-25T07:39:35.845296459Z",
+              "fluc": 9
+            },
+            {
+              "timestamp": "2026-07-25T07:39:35.355163793Z",
+              "fluc": 9.5
+            },
+            {
+              "timestamp": "2026-07-25T07:39:36.109896844Z",
+              "fluc": 8.5
+            }
+          ],
+          "open": {
+            "timestamp": "2026-07-24T23:46:28.375155039Z",
+            "fluc": 11
+          },
+          "high": {
+            "timestamp": "2026-07-25T00:16:49.763323003Z",
+            "fluc": 11
+          },
+          "low": {
+            "timestamp": "2026-07-25T07:39:36.109896844Z",
+            "fluc": 8.5
+          },
+          "nine_am": {
+            "timestamp": "2026-07-25T07:39:36.109896844Z",
+            "fluc": 8.5
+          }
+        }
+      },
+      {
+        "entrant_id": "2287c908-0d65-4351-bc3f-521699fa53a2",
+        "market_name": "Final Field",
+        "primary_market": true,
+        "name": "Duperouzel",
+        "is_scratched": false,
+        "gear": "",
+        "odds": {
+          "fixed_win": 9,
+          "fixed_place": 2.7
+        },
+        "scratch_time": 0,
+        "barrier": 4,
+        "runner_number": 2,
+        "prize_money": "8850",
+        "age": 3,
+        "sex": "G",
+        "colour": "CH",
+        "silk_colours": "BABY PINK AND DEEP NAVY HALVES, DEEP NAVY CAP, BABY PINK POM POM",
+        "silk_url_64x64": "https://cdn.prod.pricekinetics.com/silks/events/racing/betmakers-cmFjZToyMDc2ODUz/duperouzel_64x64.png",
+        "silk_url_128x128": "https://cdn.prod.pricekinetics.com/silks/events/racing/betmakers-cmFjZToyMDc2ODUz/duperouzel_128x128.png",
+        "form_comment": null,
+        "class_level": "",
+        "jockey": "Bailey Kinninmont",
+        "apprentice_indicator": "A",
+        "allowance_weight": "2",
+        "owners": "M B Christian & B G Christian",
+        "country": "AUS",
+        "trainer_name": "Nikki Burke",
+        "last_twenty_starts": "02",
+        "sire": "HANSEATIC (AUS)",
+        "dam": "JESSE'S DREAM (AUS)",
+        "breeding": "3 g HANSEATIC (AUS)-JESSE'S DREAM (AUS)",
+        "weight": {
+          "allocated": "59.5",
+          "total": "59.5"
+        },
+        "favourite": false,
+        "mover": false,
+        "speedmap": {
+          "settling_lengths": 6,
+          "entrant_id": "2287c908-0d65-4351-bc3f-521699fa53a2",
+          "label": "Off Pace"
+        },
+        "form_indicators": null,
+        "past_performances": {
+          "jockey": {
+            "number_of_starts": 0,
+            "number_of_wins": 0,
+            "number_of_placings": 0,
+            "number_of_seconds": 0,
+            "number_of_thirds": 0
+          }
+        },
+        "jockey_past_performances": {
+          "last_50_starts": {
+            "number_of_starts": 50,
+            "number_of_wins": 7,
+            "number_of_placings": 0,
+            "number_of_seconds": 7,
+            "number_of_thirds": 5
+          },
+          "trainer": {
+            "number_of_starts": 6,
+            "number_of_wins": 2,
+            "number_of_placings": 0,
+            "number_of_seconds": 1,
+            "number_of_thirds": 0
+          }
+        },
+        "trainer_location": "Cranbourne",
+        "meta": null,
+        "flucs": [
+          7.5,
+          7,
+          7.5,
+          8,
+          8.5,
+          9
+        ],
+        "scr_time": null,
+        "competitor_id": "",
+        "ride_guide_exists": false,
+        "ride_guide_thumbnail": "",
+        "ride_guide_file": "",
+        "flucs_with_timestamp": {
+          "last_six": [
+            {
+              "timestamp": "2026-07-24T23:52:20.422189965Z",
+              "fluc": 7.5
+            },
+            {
+              "timestamp": "2026-07-25T00:05:17.972795616Z",
+              "fluc": 7
+            },
+            {
+              "timestamp": "2026-07-25T00:10:40.173555658Z",
+              "fluc": 7.5
+            },
+            {
+              "timestamp": "2026-07-25T13:58:40.517363828Z",
+              "fluc": 8
+            },
+            {
+              "timestamp": "2026-07-25T23:00:11.7608201Z",
+              "fluc": 8.5
+            },
+            {
+              "timestamp": "2026-07-26T01:22:28.270158794Z",
+              "fluc": 9
+            }
+          ],
+          "open": {
+            "timestamp": "2026-07-24T23:46:28.373741002Z",
+            "fluc": 7
+          },
+          "high": {
+            "timestamp": "2026-07-26T01:22:28.270158794Z",
+            "fluc": 9
+          },
+          "low": {
+            "timestamp": "2026-07-24T23:50:24.316374447Z",
+            "fluc": 6.5
+          },
+          "nine_am": {
+            "timestamp": "2026-07-25T13:58:40.517363828Z",
+            "fluc": 8
+          }
+        }
+      },
+      {
+        "entrant_id": "d0bffaed-fd54-4562-8f45-1880b0c3239e",
+        "market_name": "Final Field",
+        "primary_market": true,
+        "name": "Egerton Reef",
+        "is_scratched": false,
+        "gear": "[Winkers]",
+        "odds": {
+          "fixed_win": 7,
+          "fixed_place": 2.35
+        },
+        "scratch_time": 0,
+        "barrier": 12,
+        "runner_number": 3,
+        "prize_money": "17740",
+        "age": 4,
+        "sex": "G",
+        "colour": "GR",
+        "silk_colours": "GREY, BLUE HOOPS, ORANGE SLEEVES AND CAP",
+        "silk_url_64x64": "https://cdn.prod.pricekinetics.com/silks/events/racing/betmakers-cmFjZToyMDc2ODUz/egerton-reef_64x64.png",
+        "silk_url_128x128": "https://cdn.prod.pricekinetics.com/silks/events/racing/betmakers-cmFjZToyMDc2ODUz/egerton-reef_128x128.png",
+        "form_comment": null,
+        "class_level": "",
+        "jockey": "John Allen",
+        "apprentice_indicator": "",
+        "allowance_weight": "",
+        "owners": "M T Leonard, Mrs H M Leonard, W R Ricciardi, D J Leonard, TLD Racing (Mgr: Mrs P Ricciardi), M K Ashton, J G Leonard, S J Gavin, P W Bagnall, Mrs S Bagnall, Hamelast to First (Mgr: S J Murphy), Keep In Touch (Mgr: J R Shannon), Mrs S Hopwood, Mrs F Dyett, J F McCashney, I Stephan, D J D'astoli & Mil",
+        "country": "AUS",
+        "trainer_name": "William Morrissey",
+        "last_twenty_starts": "430x7724",
+        "sire": "PUISSANCE DE LUNE (IRE)",
+        "dam": "HOTEL SIERRA (AUS)",
+        "breeding": "4 g PUISSANCE DE LUNE (IRE)-HOTEL SIERRA (AUS)",
+        "weight": {
+          "allocated": "59.5",
+          "total": "59.5"
+        },
+        "favourite": false,
+        "mover": false,
+        "speedmap": {
+          "settling_lengths": 7,
+          "entrant_id": "d0bffaed-fd54-4562-8f45-1880b0c3239e",
+          "label": "Pace"
+        },
+        "form_indicators": null,
+        "past_performances": {
+          "jockey": {
+            "number_of_starts": 5,
+            "number_of_wins": 0,
+            "number_of_placings": 1,
+            "number_of_seconds": 1,
+            "number_of_thirds": 0
+          }
+        },
+        "jockey_past_performances": {
+          "last_50_starts": {
+            "number_of_starts": 50,
+            "number_of_wins": 6,
+            "number_of_placings": 0,
+            "number_of_seconds": 4,
+            "number_of_thirds": 11
+          },
+          "trainer": {
+            "number_of_starts": 42,
+            "number_of_wins": 4,
+            "number_of_placings": 0,
+            "number_of_seconds": 4,
+            "number_of_thirds": 9
+          }
+        },
+        "trainer_location": "Ballarat",
+        "meta": null,
+        "flucs": [
+          7.5,
+          6.5,
+          7
+        ],
+        "scr_time": null,
+        "competitor_id": "",
+        "ride_guide_exists": false,
+        "ride_guide_thumbnail": "",
+        "ride_guide_file": "",
+        "flucs_with_timestamp": {
+          "last_six": [
+            {
+              "timestamp": "2026-07-24T23:46:28.374977834Z",
+              "fluc": 7.5
+            },
+            {
+              "timestamp": "2026-07-25T00:05:17.972850251Z",
+              "fluc": 6.5
+            },
+            {
+              "timestamp": "2026-07-25T00:10:40.173795202Z",
+              "fluc": 7
+            }
+          ],
+          "open": {
+            "timestamp": "2026-07-24T23:46:28.374977834Z",
+            "fluc": 7.5
+          },
+          "high": {
+            "timestamp": "2026-07-24T23:46:28.374977834Z",
+            "fluc": 7.5
+          },
+          "low": {
+            "timestamp": "2026-07-25T00:05:17.972850251Z",
+            "fluc": 6.5
+          },
+          "nine_am": {
+            "timestamp": "2026-07-25T00:10:40.173795202Z",
+            "fluc": 7
+          }
+        }
+      },
+      {
+        "entrant_id": "62f98b9f-2c20-480c-b333-f438fba7fdad",
+        "market_name": "Final Field",
+        "primary_market": true,
+        "name": "Etched In Blue",
+        "is_scratched": false,
+        "gear": "[Blinkers]",
+        "odds": {
+          "fixed_win": 26,
+          "fixed_place": 5.5
+        },
+        "scratch_time": 0,
+        "barrier": 10,
+        "runner_number": 4,
+        "prize_money": "17390",
+        "age": 3,
+        "sex": "G",
+        "colour": "B/BR",
+        "silk_colours": "ORANGE, ROYAL BLUE HOOPS, SLEEVES AND CAP WITH POM POM",
+        "silk_url_64x64": "https://cdn.prod.pricekinetics.com/silks/events/racing/betmakers-cmFjZToyMDc2ODUz/etched-in-blue_64x64.png",
+        "silk_url_128x128": "https://cdn.prod.pricekinetics.com/silks/events/racing/betmakers-cmFjZToyMDc2ODUz/etched-in-blue_128x128.png",
+        "form_comment": null,
+        "class_level": "",
+        "jockey": "Craig Newitt",
+        "apprentice_indicator": "",
+        "allowance_weight": "",
+        "owners": "Etched In Blue One (T Lake), N Moreland, Hot n Cold 2.0 (M Heathwood), T Medcalf, M Blum, Mars Bar Specials (P Barnes), G Healing, Ms J Healing, Ms D Buckley, A Tuckwell, C Tuckwell, Ms J Dubock, J Begg, K Hodder, R Ware, J Mustica, S Miller, S McNamara, B Rogers & Thanxladies (S Pigdon)",
+        "country": "AUS",
+        "trainer_name": "Toby Lake",
+        "last_twenty_starts": "6x4287x723",
+        "sire": "BLUE POINT (IRE)",
+        "dam": "ETCHED (IRE)",
+        "breeding": "3 g BLUE POINT (IRE)-ETCHED (IRE)",
+        "weight": {
+          "allocated": "59.5",
+          "total": "59.5"
+        },
+        "favourite": false,
+        "mover": false,
+        "speedmap": {
+          "settling_lengths": 6,
+          "entrant_id": "62f98b9f-2c20-480c-b333-f438fba7fdad",
+          "label": "Off Pace"
+        },
+        "form_indicators": null,
+        "past_performances": {
+          "jockey": {
+            "number_of_starts": 0,
+            "number_of_wins": 0,
+            "number_of_placings": 0,
+            "number_of_seconds": 0,
+            "number_of_thirds": 0
+          }
+        },
+        "jockey_past_performances": {
+          "last_50_starts": {
+            "number_of_starts": 50,
+            "number_of_wins": 3,
+            "number_of_placings": 0,
+            "number_of_seconds": 6,
+            "number_of_thirds": 4
+          },
+          "trainer": {
+            "number_of_starts": 2,
+            "number_of_wins": 0,
+            "number_of_placings": 0,
+            "number_of_seconds": 1,
+            "number_of_thirds": 0
+          }
+        },
+        "trainer_location": "Bendigo",
+        "meta": null,
+        "flucs": [
+          31,
+          26,
+          27,
+          31,
+          27,
+          26
+        ],
+        "scr_time": null,
+        "competitor_id": "",
+        "ride_guide_exists": false,
+        "ride_guide_thumbnail": "",
+        "ride_guide_file": "",
+        "flucs_with_timestamp": {
+          "last_six": [
+            {
+              "timestamp": "2026-07-24T23:46:28.376430154Z",
+              "fluc": 31
+            },
+            {
+              "timestamp": "2026-07-25T00:05:17.973187273Z",
+              "fluc": 26
+            },
+            {
+              "timestamp": "2026-07-25T00:06:22.520078282Z",
+              "fluc": 27
+            },
+            {
+              "timestamp": "2026-07-25T00:17:38.067165557Z",
+              "fluc": 31
+            },
+            {
+              "timestamp": "2026-07-25T00:21:23.468265109Z",
+              "fluc": 27
+            },
+            {
+              "timestamp": "2026-07-25T04:48:04.720176967Z",
+              "fluc": 26
+            }
+          ],
+          "open": {
+            "timestamp": "2026-07-24T23:46:28.376430154Z",
+            "fluc": 31
+          },
+          "high": {
+            "timestamp": "2026-07-25T00:17:38.067165557Z",
+            "fluc": 31
+          },
+          "low": {
+            "timestamp": "2026-07-25T04:48:04.720176967Z",
+            "fluc": 26
+          },
+          "nine_am": {
+            "timestamp": "2026-07-25T04:48:04.720176967Z",
+            "fluc": 26
+          }
+        }
+      },
+      {
+        "entrant_id": "c2f24a3c-1b49-47e1-81b7-31b8b422c4ab",
+        "market_name": "Final Field",
+        "primary_market": true,
+        "name": "Flying Capital",
+        "is_scratched": false,
+        "gear": "[Blinkers]",
+        "odds": {
+          "fixed_win": 3.2,
+          "fixed_place": 1.5
+        },
+        "scratch_time": 0,
+        "barrier": 2,
+        "runner_number": 5,
+        "prize_money": "24675",
+        "age": 4,
+        "sex": "G",
+        "colour": "CH",
+        "silk_colours": "RED, ROYAL BLUE SPOT, HALVED SLEEVES, WHITE POM POM",
+        "silk_url_64x64": "https://cdn.prod.pricekinetics.com/silks/events/racing/betmakers-cmFjZToyMDc2ODUz/flying-capital_64x64.png",
+        "silk_url_128x128": "https://cdn.prod.pricekinetics.com/silks/events/racing/betmakers-cmFjZToyMDc2ODUz/flying-capital_128x128.png",
+        "form_comment": null,
+        "class_level": "",
+        "jockey": "Linda Meech",
+        "apprentice_indicator": "",
+        "allowance_weight": "",
+        "owners": "Sustainable Thoroughbred Breeding (Mgr: M J Drapac) & M L Flannery",
+        "country": "AUS",
+        "trainer_name": "Tom Dabernig",
+        "last_twenty_starts": "22532",
+        "sire": "CAPITALIST (AUS)",
+        "dam": "FLORIDA FLYER (AUS)",
+        "breeding": "4 g CAPITALIST (AUS)-FLORIDA FLYER (AUS)",
+        "weight": {
+          "allocated": "59.5",
+          "total": "59.5"
+        },
+        "favourite": true,
+        "mover": false,
+        "speedmap": {
+          "settling_lengths": 5,
+          "entrant_id": "c2f24a3c-1b49-47e1-81b7-31b8b422c4ab",
+          "label": "Midfield"
+        },
+        "form_indicators": [
+          {
+            "name": "Trainer / Jockey Combo",
+            "group": "Jockey_Trainer",
+            "negative": false,
+            "priority": 140
+          }
+        ],
+        "past_performances": {
+          "jockey": {
+            "number_of_starts": 3,
+            "number_of_wins": 0,
+            "number_of_placings": 2,
+            "number_of_seconds": 2,
+            "number_of_thirds": 0
+          }
+        },
+        "jockey_past_performances": {
+          "last_50_starts": {
+            "number_of_starts": 50,
+            "number_of_wins": 4,
+            "number_of_placings": 0,
+            "number_of_seconds": 8,
+            "number_of_thirds": 4
+          },
+          "trainer": {
+            "number_of_starts": 220,
+            "number_of_wins": 48,
+            "number_of_placings": 0,
+            "number_of_seconds": 31,
+            "number_of_thirds": 21
+          }
+        },
+        "trainer_location": "Warrnambool",
+        "meta": null,
+        "flucs": [
+          3.3,
+          3.2,
+          3.1,
+          3.2,
+          3.1,
+          3.2
+        ],
+        "scr_time": null,
+        "competitor_id": "",
+        "ride_guide_exists": false,
+        "ride_guide_thumbnail": "",
+        "ride_guide_file": "",
+        "flucs_with_timestamp": {
+          "last_six": [
+            {
+              "timestamp": "2026-07-25T13:54:53.772289162Z",
+              "fluc": 3.3
+            },
+            {
+              "timestamp": "2026-07-25T13:58:51.719420681Z",
+              "fluc": 3.2
+            },
+            {
+              "timestamp": "2026-07-25T23:00:50.920829001Z",
+              "fluc": 3.1
+            },
+            {
+              "timestamp": "2026-07-25T23:01:16.123201589Z",
+              "fluc": 3.2
+            },
+            {
+              "timestamp": "2026-07-25T23:57:37.816230546Z",
+              "fluc": 3.1
+            },
+            {
+              "timestamp": "2026-07-26T01:21:03.22094945Z",
+              "fluc": 3.2
+            }
+          ],
+          "open": {
+            "timestamp": "2026-07-24T23:46:28.374247128Z",
+            "fluc": 3.7
+          },
+          "high": {
+            "timestamp": "2026-07-24T23:46:28.374247128Z",
+            "fluc": 3.7
+          },
+          "low": {
+            "timestamp": "2026-07-25T23:57:37.816230546Z",
+            "fluc": 3.1
+          },
+          "nine_am": {
+            "timestamp": "2026-07-25T13:58:51.719420681Z",
+            "fluc": 3.2
+          }
+        }
+      },
+      {
+        "entrant_id": "8356cfa9-3d7b-470b-b249-5cedb8d48334",
+        "market_name": "Final Field",
+        "primary_market": true,
+        "name": "Last Summer",
+        "is_scratched": false,
+        "gear": "",
+        "odds": {
+          "fixed_win": 91,
+          "fixed_place": 13
+        },
+        "scratch_time": 0,
+        "barrier": 13,
+        "runner_number": 6,
+        "prize_money": "13265",
+        "age": 3,
+        "sex": "G",
+        "colour": "B/BR",
+        "silk_colours": "GREEN, WHITE SASH, ROYAL BLUE SLEEVES, ROYAL BLUE AND WHITE QUARTERED CAP",
+        "silk_url_64x64": "https://cdn.prod.pricekinetics.com/silks/events/racing/betmakers-cmFjZToyMDc2ODUz/last-summer_64x64.png",
+        "silk_url_128x128": "https://cdn.prod.pricekinetics.com/silks/events/racing/betmakers-cmFjZToyMDc2ODUz/last-summer_128x128.png",
+        "form_comment": null,
+        "class_level": "",
+        "jockey": "Valentin Le Boeuf",
+        "apprentice_indicator": "",
+        "allowance_weight": "",
+        "owners": "Mrs R N Cosgriff, P Billman, D Cosgriff, R Borg, P G Cosgriff, M Borg, K J Marshall, J Joss, Mic Drop (Mgr: Mrs R N Cosgriff) & G A Bishop",
+        "country": "AUS",
+        "trainer_name": "Anthony Cosgriff",
+        "last_twenty_starts": "000x979034",
+        "sire": "MICROPHONE (AUS)",
+        "dam": "LET'S TWIST (AUS)",
+        "breeding": "3 g MICROPHONE (AUS)-LET'S TWIST (AUS)",
+        "weight": {
+          "allocated": "59.5",
+          "total": "59.5"
+        },
+        "favourite": false,
+        "mover": false,
+        "speedmap": {
+          "settling_lengths": 2,
+          "entrant_id": "8356cfa9-3d7b-470b-b249-5cedb8d48334",
+          "label": "Backmarker"
+        },
+        "form_indicators": null,
+        "past_performances": {
+          "jockey": {
+            "number_of_starts": 2,
+            "number_of_wins": 0,
+            "number_of_placings": 1,
+            "number_of_seconds": 0,
+            "number_of_thirds": 1
+          }
+        },
+        "jockey_past_performances": {
+          "last_50_starts": {
+            "number_of_starts": 50,
+            "number_of_wins": 0,
+            "number_of_placings": 0,
+            "number_of_seconds": 2,
+            "number_of_thirds": 4
+          },
+          "trainer": {
+            "number_of_starts": 9,
+            "number_of_wins": 0,
+            "number_of_placings": 0,
+            "number_of_seconds": 0,
+            "number_of_thirds": 2
+          }
+        },
+        "trainer_location": "Ballarat",
+        "meta": null,
+        "flucs": [
+          81,
+          91,
+          81,
+          91,
+          81,
+          91
+        ],
+        "scr_time": null,
+        "competitor_id": "",
+        "ride_guide_exists": false,
+        "ride_guide_thumbnail": "",
+        "ride_guide_file": "",
+        "flucs_with_timestamp": {
+          "last_six": [
+            {
+              "timestamp": "2026-07-25T06:27:46.266631377Z",
+              "fluc": 81
+            },
+            {
+              "timestamp": "2026-07-25T06:29:06.720277141Z",
+              "fluc": 91
+            },
+            {
+              "timestamp": "2026-07-25T06:30:25.82592166Z",
+              "fluc": 81
+            },
+            {
+              "timestamp": "2026-07-25T06:31:05.778100939Z",
+              "fluc": 91
+            },
+            {
+              "timestamp": "2026-07-25T06:31:44.917818848Z",
+              "fluc": 81
+            },
+            {
+              "timestamp": "2026-07-25T06:33:04.017699906Z",
+              "fluc": 91
+            }
+          ],
+          "open": {
+            "timestamp": "2026-07-24T23:46:28.375343255Z",
+            "fluc": 71
+          },
+          "high": {
+            "timestamp": "2026-07-25T06:29:06.720277141Z",
+            "fluc": 91
+          },
+          "low": {
+            "timestamp": "2026-07-24T23:46:28.375343255Z",
+            "fluc": 71
+          },
+          "nine_am": {
+            "timestamp": "2026-07-25T06:33:04.017699906Z",
+            "fluc": 91
+          }
+        }
+      },
+      {
+        "entrant_id": "0965634a-a072-4004-a8f2-3b8ee5ac8428",
+        "market_name": "Final Field",
+        "primary_market": true,
+        "name": "Star Of Tennyson",
+        "is_scratched": false,
+        "gear": "[Standard Bit]",
+        "odds": {
+          "fixed_win": 31,
+          "fixed_place": 6
+        },
+        "scratch_time": 0,
+        "barrier": 14,
+        "runner_number": 7,
+        "prize_money": "7495",
+        "age": 5,
+        "sex": "G",
+        "colour": "GR/CH",
+        "silk_colours": "GOLD, GREEN VEE AND LOWER THIRD, GREEN SLEEVES AND CAP, GOLD POM POM",
+        "silk_url_64x64": "https://cdn.prod.pricekinetics.com/silks/events/racing/betmakers-cmFjZToyMDc2ODUz/star-of-tennyson_64x64.png",
+        "silk_url_128x128": "https://cdn.prod.pricekinetics.com/silks/events/racing/betmakers-cmFjZToyMDc2ODUz/star-of-tennyson_128x128.png",
+        "form_comment": null,
+        "class_level": "",
+        "jockey": "Alana Kelly",
+        "apprentice_indicator": "",
+        "allowance_weight": "",
+        "owners": "T H McGuigan",
+        "country": "AUS",
+        "trainer_name": "Timothy Mcguigan",
+        "last_twenty_starts": "8x0x47x935",
+        "sire": "PUISSANCE DE LUNE (IRE)",
+        "dam": "TEA LEONI (AUS)",
+        "breeding": "5 g PUISSANCE DE LUNE (IRE)-TEA LEONI (AUS)",
+        "weight": {
+          "allocated": "59.5",
+          "total": "59.5"
+        },
+        "favourite": false,
+        "mover": false,
+        "speedmap": {
+          "settling_lengths": 4,
+          "entrant_id": "0965634a-a072-4004-a8f2-3b8ee5ac8428",
+          "label": "Midfield"
+        },
+        "form_indicators": null,
+        "past_performances": {
+          "jockey": {
+            "number_of_starts": 3,
+            "number_of_wins": 0,
+            "number_of_placings": 1,
+            "number_of_seconds": 0,
+            "number_of_thirds": 1
+          }
+        },
+        "jockey_past_performances": {
+          "last_50_starts": {
+            "number_of_starts": 50,
+            "number_of_wins": 5,
+            "number_of_placings": 0,
+            "number_of_seconds": 4,
+            "number_of_thirds": 3
+          },
+          "trainer": {
+            "number_of_starts": 4,
+            "number_of_wins": 0,
+            "number_of_placings": 0,
+            "number_of_seconds": 0,
+            "number_of_thirds": 1
+          }
+        },
+        "trainer_location": "Gordon",
+        "meta": null,
+        "flucs": [
+          34,
+          31,
+          34,
+          31,
+          34,
+          31
+        ],
+        "scr_time": null,
+        "competitor_id": "",
+        "ride_guide_exists": false,
+        "ride_guide_thumbnail": "",
+        "ride_guide_file": "",
+        "flucs_with_timestamp": {
+          "last_six": [
+            {
+              "timestamp": "2026-07-25T06:29:06.720208157Z",
+              "fluc": 34
+            },
+            {
+              "timestamp": "2026-07-25T06:30:25.825837148Z",
+              "fluc": 31
+            },
+            {
+              "timestamp": "2026-07-25T06:31:05.777999806Z",
+              "fluc": 34
+            },
+            {
+              "timestamp": "2026-07-25T06:31:44.9179333Z",
+              "fluc": 31
+            },
+            {
+              "timestamp": "2026-07-25T06:33:04.0177464Z",
+              "fluc": 34
+            },
+            {
+              "timestamp": "2026-07-25T23:57:37.816056442Z",
+              "fluc": 31
+            }
+          ],
+          "open": {
+            "timestamp": "2026-07-24T23:46:28.375889388Z",
+            "fluc": 34
+          },
+          "high": {
+            "timestamp": "2026-07-25T06:27:06.322470838Z",
+            "fluc": 34
+          },
+          "low": {
+            "timestamp": "2026-07-25T06:31:44.9179333Z",
+            "fluc": 31
+          },
+          "nine_am": {
+            "timestamp": "2026-07-25T06:33:04.0177464Z",
+            "fluc": 34
+          }
+        }
+      },
+      {
+        "entrant_id": "c5785a88-dcbe-4a53-b143-f5a3036b04a5",
+        "market_name": "Final Field",
+        "primary_market": true,
+        "name": "The Toronado Kid",
+        "is_scratched": false,
+        "gear": "[Blinkers, Cross-over Nose Band]",
+        "odds": {
+          "fixed_win": 91,
+          "fixed_place": 13
+        },
+        "scratch_time": 0,
+        "barrier": 5,
+        "runner_number": 8,
+        "prize_money": "8845",
+        "age": 4,
+        "sex": "G",
+        "colour": "BR",
+        "silk_colours": "PURPLE, WHITE MALTESE CROSS AND ARMBANDS",
+        "silk_url_64x64": "https://cdn.prod.pricekinetics.com/silks/events/racing/betmakers-cmFjZToyMDc2ODUz/the-toronado-kid_64x64.png",
+        "silk_url_128x128": "https://cdn.prod.pricekinetics.com/silks/events/racing/betmakers-cmFjZToyMDc2ODUz/the-toronado-kid_128x128.png",
+        "form_comment": null,
+        "class_level": "",
+        "jockey": "Ryan Hurdle",
+        "apprentice_indicator": "",
+        "allowance_weight": "",
+        "owners": "E A Galante, J A Farac & A Farac",
+        "country": "AUS",
+        "trainer_name": "Chris Calthorpe",
+        "last_twenty_starts": "x40680x038",
+        "sire": "TORONADO (IRE)",
+        "dam": "QUEEN OF THE SEA (AUS)",
+        "breeding": "4 g TORONADO (IRE)-QUEEN OF THE SEA (AUS)",
+        "weight": {
+          "allocated": "59.5",
+          "total": "59.5"
+        },
+        "favourite": false,
+        "mover": false,
+        "speedmap": {
+          "settling_lengths": 4,
+          "entrant_id": "c5785a88-dcbe-4a53-b143-f5a3036b04a5",
+          "label": "Midfield"
+        },
+        "form_indicators": null,
+        "past_performances": {
+          "jockey": {
+            "number_of_starts": 2,
+            "number_of_wins": 0,
+            "number_of_placings": 1,
+            "number_of_seconds": 0,
+            "number_of_thirds": 1
+          }
+        },
+        "jockey_past_performances": {
+          "last_50_starts": {
+            "number_of_starts": 50,
+            "number_of_wins": 2,
+            "number_of_placings": 0,
+            "number_of_seconds": 4,
+            "number_of_thirds": 8
+          },
+          "trainer": {
+            "number_of_starts": 96,
+            "number_of_wins": 7,
+            "number_of_placings": 0,
+            "number_of_seconds": 1,
+            "number_of_thirds": 7
+          }
+        },
+        "trainer_location": "Geelong",
+        "meta": null,
+        "flucs": [
+          67,
+          71,
+          81,
+          91,
+          101,
+          91
+        ],
+        "scr_time": null,
+        "competitor_id": "",
+        "ride_guide_exists": false,
+        "ride_guide_thumbnail": "",
+        "ride_guide_file": "",
+        "flucs_with_timestamp": {
+          "last_six": [
+            {
+              "timestamp": "2026-07-25T00:10:40.173587556Z",
+              "fluc": 67
+            },
+            {
+              "timestamp": "2026-07-25T00:16:49.763497225Z",
+              "fluc": 71
+            },
+            {
+              "timestamp": "2026-07-25T00:21:40.219925284Z",
+              "fluc": 81
+            },
+            {
+              "timestamp": "2026-07-25T00:26:30.017904974Z",
+              "fluc": 91
+            },
+            {
+              "timestamp": "2026-07-25T00:33:48.265800977Z",
+              "fluc": 101
+            },
+            {
+              "timestamp": "2026-07-25T03:10:34.184192928Z",
+              "fluc": 91
+            }
+          ],
+          "open": {
+            "timestamp": "2026-07-24T23:46:28.375719145Z",
+            "fluc": 71
+          },
+          "high": {
+            "timestamp": "2026-07-25T00:33:48.265800977Z",
+            "fluc": 101
+          },
+          "low": {
+            "timestamp": "2026-07-25T00:05:17.972708276Z",
+            "fluc": 61
+          },
+          "nine_am": {
+            "timestamp": "2026-07-25T03:10:34.184192928Z",
+            "fluc": 91
+          }
+        }
+      },
+      {
+        "entrant_id": "2083f950-269e-4777-a1b2-ff3cf1223323",
+        "market_name": "Final Field",
+        "primary_market": true,
+        "name": "Vespasian",
+        "is_scratched": false,
+        "gear": "",
+        "odds": {
+          "fixed_win": 9.5,
+          "fixed_place": 2.8
+        },
+        "scratch_time": 0,
+        "barrier": 16,
+        "runner_number": 9,
+        "prize_money": "7025",
+        "age": 3,
+        "sex": "G",
+        "colour": "B/BR",
+        "silk_colours": "NAVY BLUE, WHITE SASH, LIME GREEN STRIPED SLEEVES, QUARTERED CAP",
+        "silk_url_64x64": "https://cdn.prod.pricekinetics.com/silks/events/racing/betmakers-cmFjZToyMDc2ODUz/vespasian_64x64.png",
+        "silk_url_128x128": "https://cdn.prod.pricekinetics.com/silks/events/racing/betmakers-cmFjZToyMDc2ODUz/vespasian_128x128.png",
+        "form_comment": null,
+        "class_level": "",
+        "jockey": "Jye Mcneil",
+        "apprentice_indicator": "",
+        "allowance_weight": "",
+        "owners": "Pinecliff Racing (Mgr: J B Munz) & Seymour Bloodstock (Mgr: D S Thomas)",
+        "country": "AUS",
+        "trainer_name": "Ben, Will & Jd Hayes",
+        "last_twenty_starts": "83x95",
+        "sire": "I AM INVINCIBLE (AUS)",
+        "dam": "PUPPETSHOW (IRE)",
+        "breeding": "3 g I AM INVINCIBLE (AUS)-PUPPETSHOW (IRE)",
+        "weight": {
+          "allocated": "59.5",
+          "total": "59.5"
+        },
+        "favourite": false,
+        "mover": false,
+        "speedmap": {
+          "settling_lengths": 3,
+          "entrant_id": "2083f950-269e-4777-a1b2-ff3cf1223323",
+          "label": "Off Midfield"
+        },
+        "form_indicators": null,
+        "past_performances": {
+          "jockey": {
+            "number_of_starts": 0,
+            "number_of_wins": 0,
+            "number_of_placings": 0,
+            "number_of_seconds": 0,
+            "number_of_thirds": 0
+          }
+        },
+        "jockey_past_performances": {
+          "last_50_starts": {
+            "number_of_starts": 50,
+            "number_of_wins": 8,
+            "number_of_placings": 0,
+            "number_of_seconds": 3,
+            "number_of_thirds": 10
+          },
+          "trainer": {
+            "number_of_starts": 86,
+            "number_of_wins": 8,
+            "number_of_placings": 0,
+            "number_of_seconds": 10,
+            "number_of_thirds": 10
+          }
+        },
+        "trainer_location": "Pakenham 3",
+        "meta": null,
+        "flucs": [
+          9.5,
+          10,
+          8.5,
+          9.5,
+          9,
+          9.5
+        ],
+        "scr_time": null,
+        "competitor_id": "",
+        "ride_guide_exists": false,
+        "ride_guide_thumbnail": "",
+        "ride_guide_file": "",
+        "flucs_with_timestamp": {
+          "last_six": [
+            {
+              "timestamp": "2026-07-24T23:50:31.919047203Z",
+              "fluc": 9.5
+            },
+            {
+              "timestamp": "2026-07-25T00:03:30.364773138Z",
+              "fluc": 10
+            },
+            {
+              "timestamp": "2026-07-25T00:05:17.973569938Z",
+              "fluc": 8.5
+            },
+            {
+              "timestamp": "2026-07-25T00:05:17.580127435Z",
+              "fluc": 9.5
+            },
+            {
+              "timestamp": "2026-07-25T00:07:56.316503508Z",
+              "fluc": 9
+            },
+            {
+              "timestamp": "2026-07-25T00:21:46.520989386Z",
+              "fluc": 9.5
+            }
+          ],
+          "open": {
+            "timestamp": "2026-07-24T23:46:28.374799823Z",
+            "fluc": 10
+          },
+          "high": {
+            "timestamp": "2026-07-24T23:46:28.374799823Z",
+            "fluc": 10
+          },
+          "low": {
+            "timestamp": "2026-07-25T00:05:17.973569938Z",
+            "fluc": 8.5
+          },
+          "nine_am": {
+            "timestamp": "2026-07-25T00:21:46.520989386Z",
+            "fluc": 9.5
+          }
+        }
+      },
+      {
+        "entrant_id": "2d3f90c5-84b2-43d0-be62-290295ac157a",
+        "market_name": "Final Field",
+        "primary_market": true,
+        "name": "Crafty Queen",
+        "is_scratched": true,
+        "gear": "[Blinkers]",
+        "odds": {
+          "fixed_win": 5.5,
+          "fixed_place": 2.05
+        },
+        "scratch_time": 1784937917,
+        "barrier": 2,
+        "runner_number": 10,
+        "prize_money": "13630",
+        "age": 4,
+        "sex": "M",
+        "colour": "B",
+        "silk_colours": "BLACK, WHITE MALTESE CROSS, WHITE CAP",
+        "silk_url_64x64": "https://cdn.prod.pricekinetics.com/silks/events/racing/betmakers-cmFjZToyMDc2ODUz/crafty-queen_64x64.png",
+        "silk_url_128x128": "https://cdn.prod.pricekinetics.com/silks/events/racing/betmakers-cmFjZToyMDc2ODUz/crafty-queen_128x128.png",
+        "form_comment": null,
+        "class_level": "",
+        "jockey": "Jack Hill",
+        "apprentice_indicator": "",
+        "allowance_weight": "",
+        "owners": "Q J Scott, G C Burrows, K A J Peach, N R Adamson, Mrs P Adamson, Three Putt Punters (Mgr: A Bean), G W Cain, G R Delany, Mission Five (Mgr: X T Reicha), S L Diamond, P B Jens, B J Kelly, P R Latham, A Miles, B W A Redpath, Ms S Sproles & Ms N L Kent",
+        "country": "AUS",
+        "trainer_name": "Quinton Scott",
+        "last_twenty_starts": "56x07623",
+        "sire": "RUBICK (AUS)",
+        "dam": "SHEZACRAFTSMAN (NZ)",
+        "breeding": "4 m RUBICK (AUS)-SHEZACRAFTSMAN (NZ)",
+        "weight": {
+          "allocated": "57.5",
+          "total": "57.5"
+        },
+        "favourite": false,
+        "mover": false,
+        "speedmap": {
+          "settling_lengths": 1,
+          "entrant_id": "2d3f90c5-84b2-43d0-be62-290295ac157a",
+          "label": "invalid settling lengths"
+        },
+        "form_indicators": null,
+        "past_performances": {
+          "jockey": {
+            "number_of_starts": 2,
+            "number_of_wins": 0,
+            "number_of_placings": 2,
+            "number_of_seconds": 1,
+            "number_of_thirds": 1
+          }
+        },
+        "jockey_past_performances": {
+          "last_50_starts": {
+            "number_of_starts": 50,
+            "number_of_wins": 5,
+            "number_of_placings": 0,
+            "number_of_seconds": 6,
+            "number_of_thirds": 13
+          },
+          "trainer": {
+            "number_of_starts": 28,
+            "number_of_wins": 2,
+            "number_of_placings": 0,
+            "number_of_seconds": 2,
+            "number_of_thirds": 4
+          }
+        },
+        "trainer_location": "Crossley",
+        "deduction": {
+          "win": 0.06,
+          "place": 0.06
+        },
+        "meta": null,
+        "flucs": [
+          6,
+          5.5
+        ],
+        "scr_time": "2026-07-25T00:05:17Z",
+        "competitor_id": "",
+        "ride_guide_exists": false,
+        "ride_guide_thumbnail": "",
+        "ride_guide_file": "",
+        "flucs_with_timestamp": {
+          "last_six": [
+            {
+              "timestamp": "2026-07-24T23:46:28.374619345Z",
+              "fluc": 6
+            },
+            {
+              "timestamp": "2026-07-25T00:01:32.067920004Z",
+              "fluc": 5.5
+            }
+          ],
+          "open": {
+            "timestamp": "2026-07-24T23:46:28.374619345Z",
+            "fluc": 6
+          },
+          "high": {
+            "timestamp": "2026-07-24T23:46:28.374619345Z",
+            "fluc": 6
+          },
+          "low": {
+            "timestamp": "2026-07-25T00:01:32.067920004Z",
+            "fluc": 5.5
+          },
+          "nine_am": {
+            "timestamp": "2026-07-25T00:01:32.067920004Z",
+            "fluc": 5.5
+          }
+        }
+      },
+      {
+        "entrant_id": "944b2e6f-1f47-4222-8a71-e10551a7da5e",
+        "market_name": "Final Field",
+        "primary_market": true,
+        "name": "Just Swift",
+        "is_scratched": false,
+        "gear": "[Cross-over Nose Band, Tongue Tie]",
+        "odds": {
+          "fixed_win": 9.5,
+          "fixed_place": 2.45
+        },
+        "scratch_time": 0,
+        "barrier": 6,
+        "runner_number": 11,
+        "prize_money": "25295",
+        "age": 4,
+        "sex": "M",
+        "colour": "B",
+        "silk_colours": "ROYAL BLUE AND WHITE HALVES, STRIPED SLEEVES, RED CAP",
+        "silk_url_64x64": "https://cdn.prod.pricekinetics.com/silks/events/racing/betmakers-cmFjZToyMDc2ODUz/just-swift_64x64.png",
+        "silk_url_128x128": "https://cdn.prod.pricekinetics.com/silks/events/racing/betmakers-cmFjZToyMDc2ODUz/just-swift_128x128.png",
+        "form_comment": null,
+        "class_level": "",
+        "jockey": "Jason Maskiell",
+        "apprentice_indicator": "",
+        "allowance_weight": "",
+        "owners": "W K Howard",
+        "country": "AUS",
+        "trainer_name": "Mitchell Freedman",
+        "last_twenty_starts": "3x540x2244",
+        "sire": "JUSTIFY (USA)",
+        "dam": "SWIFT LADY (NZ)",
+        "breeding": "4 m JUSTIFY (USA)-SWIFT LADY (NZ)",
+        "weight": {
+          "allocated": "57.5",
+          "total": "57.5"
+        },
+        "favourite": false,
+        "mover": false,
+        "speedmap": {
+          "settling_lengths": 2,
+          "entrant_id": "944b2e6f-1f47-4222-8a71-e10551a7da5e",
+          "label": "Backmarker"
+        },
+        "form_indicators": null,
+        "past_performances": {
+          "jockey": {
+            "number_of_starts": 1,
+            "number_of_wins": 0,
+            "number_of_placings": 0,
+            "number_of_seconds": 0,
+            "number_of_thirds": 0
+          }
+        },
+        "jockey_past_performances": {
+          "last_50_starts": {
+            "number_of_starts": 50,
+            "number_of_wins": 3,
+            "number_of_placings": 0,
+            "number_of_seconds": 6,
+            "number_of_thirds": 5
+          },
+          "trainer": {
+            "number_of_starts": 6,
+            "number_of_wins": 1,
+            "number_of_placings": 0,
+            "number_of_seconds": 0,
+            "number_of_thirds": 2
+          }
+        },
+        "trainer_location": "Ballarat",
+        "meta": null,
+        "flucs": [
+          11,
+          9.5,
+          9,
+          8.5,
+          9,
+          9.5
+        ],
+        "scr_time": null,
+        "competitor_id": "",
+        "ride_guide_exists": false,
+        "ride_guide_thumbnail": "",
+        "ride_guide_file": "",
+        "flucs_with_timestamp": {
+          "last_six": [
+            {
+              "timestamp": "2026-07-25T00:10:40.173576032Z",
+              "fluc": 11
+            },
+            {
+              "timestamp": "2026-07-25T00:16:49.76349762Z",
+              "fluc": 9.5
+            },
+            {
+              "timestamp": "2026-07-25T00:21:46.520994106Z",
+              "fluc": 9
+            },
+            {
+              "timestamp": "2026-07-25T00:33:48.265964686Z",
+              "fluc": 8.5
+            },
+            {
+              "timestamp": "2026-07-25T03:17:55.169693376Z",
+              "fluc": 9
+            },
+            {
+              "timestamp": "2026-07-25T13:54:53.77236893Z",
+              "fluc": 9.5
+            }
+          ],
+          "open": {
+            "timestamp": "2026-07-24T23:46:28.373495131Z",
+            "fluc": 11
+          },
+          "high": {
+            "timestamp": "2026-07-24T23:55:35.71799154Z",
+            "fluc": 12
+          },
+          "low": {
+            "timestamp": "2026-07-25T00:33:48.265964686Z",
+            "fluc": 8.5
+          },
+          "nine_am": {
+            "timestamp": "2026-07-25T13:54:53.77236893Z",
+            "fluc": 9.5
+          }
+        }
+      },
+      {
+        "entrant_id": "44225c11-433d-42be-8c94-f33929582d11",
+        "market_name": "Final Field",
+        "primary_market": true,
+        "name": "Lancetta",
+        "is_scratched": false,
+        "gear": "[Blinkers, Tongue Tie]",
+        "odds": {
+          "fixed_win": 4,
+          "fixed_place": 1.7
+        },
+        "scratch_time": 0,
+        "barrier": 15,
+        "runner_number": 12,
+        "prize_money": "4380",
+        "age": 4,
+        "sex": "M",
+        "colour": "CH",
+        "silk_colours": "ROYAL BLUE, WHITE DISC, STRIPED SLEEVES, SPOT CAP",
+        "silk_url_64x64": "https://cdn.prod.pricekinetics.com/silks/events/racing/betmakers-cmFjZToyMDc2ODUz/lancetta_64x64.png",
+        "silk_url_128x128": "https://cdn.prod.pricekinetics.com/silks/events/racing/betmakers-cmFjZToyMDc2ODUz/lancetta_128x128.png",
+        "form_comment": null,
+        "class_level": "",
+        "jockey": "Declan Bates",
+        "apprentice_indicator": "",
+        "allowance_weight": "",
+        "owners": "SH Racing, G R Taylor, M F Clemenger, J B Biasin, N S Burrows, B C Showniruk, G J P Van Ameyden, P L Ward, T R Bull, A W Foster, R R Gabb, Ms L Goodsall, A G Popple, P J Sexton, S O'Flynn, M F Parris, K J Weight, Mrs M Weight & C A Stott",
+        "country": "AUS",
+        "trainer_name": "Ciaron Maher",
+        "last_twenty_starts": "5x3",
+        "sire": "JUSTIFY (USA)",
+        "dam": "TULIP (AUS)",
+        "breeding": "4 m JUSTIFY (USA)-TULIP (AUS)",
+        "weight": {
+          "allocated": "57.5",
+          "total": "57.5"
+        },
+        "favourite": false,
+        "mover": false,
+        "speedmap": {
+          "settling_lengths": 5,
+          "entrant_id": "44225c11-433d-42be-8c94-f33929582d11",
+          "label": "Midfield"
+        },
+        "form_indicators": null,
+        "past_performances": {
+          "jockey": {
+            "number_of_starts": 1,
+            "number_of_wins": 0,
+            "number_of_placings": 0,
+            "number_of_seconds": 0,
+            "number_of_thirds": 0
+          }
+        },
+        "jockey_past_performances": {
+          "last_50_starts": {
+            "number_of_starts": 50,
+            "number_of_wins": 7,
+            "number_of_placings": 0,
+            "number_of_seconds": 4,
+            "number_of_thirds": 2
+          },
+          "trainer": {
+            "number_of_starts": 268,
+            "number_of_wins": 33,
+            "number_of_placings": 0,
+            "number_of_seconds": 28,
+            "number_of_thirds": 30
+          }
+        },
+        "trainer_location": "Ballarat",
+        "meta": null,
+        "flucs": [
+          3.9,
+          3.8,
+          3.9,
+          3.8,
+          3.9,
+          4
+        ],
+        "scr_time": null,
+        "competitor_id": "",
+        "ride_guide_exists": false,
+        "ride_guide_thumbnail": "",
+        "ride_guide_file": "",
+        "flucs_with_timestamp": {
+          "last_six": [
+            {
+              "timestamp": "2026-07-25T00:16:09.121587229Z",
+              "fluc": 3.9
+            },
+            {
+              "timestamp": "2026-07-25T00:16:49.76348451Z",
+              "fluc": 3.8
+            },
+            {
+              "timestamp": "2026-07-25T00:17:31.716495832Z",
+              "fluc": 3.9
+            },
+            {
+              "timestamp": "2026-07-25T00:21:23.46829128Z",
+              "fluc": 3.8
+            },
+            {
+              "timestamp": "2026-07-25T05:10:55.376305839Z",
+              "fluc": 3.9
+            },
+            {
+              "timestamp": "2026-07-25T13:54:53.772264007Z",
+              "fluc": 4
+            }
+          ],
+          "open": {
+            "timestamp": "2026-07-24T23:46:28.374436744Z",
+            "fluc": 4.8
+          },
+          "high": {
+            "timestamp": "2026-07-24T23:46:28.374436744Z",
+            "fluc": 4.8
+          },
+          "low": {
+            "timestamp": "2026-07-25T00:16:49.76348451Z",
+            "fluc": 3.8
+          },
+          "nine_am": {
+            "timestamp": "2026-07-25T13:54:53.772264007Z",
+            "fluc": 4
+          }
+        }
+      },
+      {
+        "entrant_id": "427ada67-42a2-4d2f-ad33-b5193099c502",
+        "market_name": "Final Field",
+        "primary_market": true,
+        "name": "Corretto",
+        "is_scratched": false,
+        "gear": "Cross-over Nose Band OFF FIRST TIME, Norton Bit FIRST TIME",
+        "odds": {
+          "fixed_win": 17,
+          "fixed_place": 4.2
+        },
+        "scratch_time": 0,
+        "barrier": 3,
+        "runner_number": 13,
+        "prize_money": "1000",
+        "age": 2,
+        "sex": "C",
+        "colour": "B",
+        "silk_colours": "RED, GREEN AND WHITE ARMBANDS, RED CAP",
+        "silk_url_64x64": "https://cdn.prod.pricekinetics.com/silks/events/racing/betmakers-cmFjZToyMDc2ODUz/corretto_64x64.png",
+        "silk_url_128x128": "https://cdn.prod.pricekinetics.com/silks/events/racing/betmakers-cmFjZToyMDc2ODUz/corretto_128x128.png",
+        "form_comment": null,
+        "class_level": "",
+        "jockey": "Patrick Moloney",
+        "apprentice_indicator": "",
+        "allowance_weight": "",
+        "owners": "R W Alteri, W Alteri & Mrs K Alteri",
+        "country": "AUS",
+        "trainer_name": "Matt Cumani",
+        "last_twenty_starts": "8",
+        "sire": "WOOTTON BASSETT (GB)",
+        "dam": "GRAPPA DI MOSCATO (AUS)",
+        "breeding": "2 c WOOTTON BASSETT (GB)-GRAPPA DI MOSCATO (AUS)",
+        "weight": {
+          "allocated": "57",
+          "total": "57"
+        },
+        "favourite": false,
+        "mover": true,
+        "speedmap": {
+          "settling_lengths": 1,
+          "entrant_id": "427ada67-42a2-4d2f-ad33-b5193099c502",
+          "label": "Backmarker"
+        },
+        "form_indicators": null,
+        "past_performances": {
+          "jockey": {
+            "number_of_starts": 0,
+            "number_of_wins": 0,
+            "number_of_placings": 0,
+            "number_of_seconds": 0,
+            "number_of_thirds": 0
+          }
+        },
+        "jockey_past_performances": {
+          "last_50_starts": {
+            "number_of_starts": 50,
+            "number_of_wins": 5,
+            "number_of_placings": 0,
+            "number_of_seconds": 2,
+            "number_of_thirds": 6
+          },
+          "trainer": {
+            "number_of_starts": 44,
+            "number_of_wins": 6,
+            "number_of_placings": 0,
+            "number_of_seconds": 4,
+            "number_of_thirds": 3
+          }
+        },
+        "trainer_location": "Ballarat",
+        "meta": null,
+        "flucs": [
+          17,
+          15,
+          16,
+          15,
+          16,
+          17
+        ],
+        "scr_time": null,
+        "competitor_id": "",
+        "ride_guide_exists": false,
+        "ride_guide_thumbnail": "",
+        "ride_guide_file": "",
+        "flucs_with_timestamp": {
+          "last_six": [
+            {
+              "timestamp": "2026-07-25T00:03:13.623885239Z",
+              "fluc": 17
+            },
+            {
+              "timestamp": "2026-07-25T00:05:17.972415378Z",
+              "fluc": 15
+            },
+            {
+              "timestamp": "2026-07-25T00:08:34.828801221Z",
+              "fluc": 16
+            },
+            {
+              "timestamp": "2026-07-25T00:09:32.220895838Z",
+              "fluc": 15
+            },
+            {
+              "timestamp": "2026-07-25T00:21:23.468360561Z",
+              "fluc": 16
+            },
+            {
+              "timestamp": "2026-07-25T00:25:48.772738128Z",
+              "fluc": 17
+            }
+          ],
+          "open": {
+            "timestamp": "2026-07-24T23:46:28.37404752Z",
+            "fluc": 61
+          },
+          "high": {
+            "timestamp": "2026-07-24T23:46:28.37404752Z",
+            "fluc": 61
+          },
+          "low": {
+            "timestamp": "2026-07-25T00:09:32.220895838Z",
+            "fluc": 15
+          },
+          "nine_am": {
+            "timestamp": "2026-07-25T00:25:48.772738128Z",
+            "fluc": 17
+          }
+        }
+      },
+      {
+        "entrant_id": "7e61ce7b-dd57-4eff-aa1f-37ebe6a62681",
+        "market_name": "Final Field",
+        "primary_market": true,
+        "name": "Marley Namoi",
+        "is_scratched": false,
+        "gear": "",
+        "odds": {
+          "fixed_win": 126,
+          "fixed_place": 16
+        },
+        "scratch_time": 0,
+        "barrier": 1,
+        "runner_number": 14,
+        "prize_money": "640",
+        "age": 3,
+        "sex": "F",
+        "colour": "BR/BL",
+        "silk_colours": "PURPLE AND WHITE DIAMONDS, BLACK SLEEVES AND CAP",
+        "silk_url_64x64": "https://cdn.prod.pricekinetics.com/silks/events/racing/betmakers-cmFjZToyMDc2ODUz/marley-namoi_64x64.png",
+        "silk_url_128x128": "https://cdn.prod.pricekinetics.com/silks/events/racing/betmakers-cmFjZToyMDc2ODUz/marley-namoi_128x128.png",
+        "form_comment": null,
+        "class_level": "",
+        "jockey": "Unknown",
+        "apprentice_indicator": "",
+        "allowance_weight": "",
+        "owners": "P M Schols",
+        "country": "AUS",
+        "trainer_name": "Alicia MacPherson",
+        "last_twenty_starts": "9x",
+        "sire": "FIORENTE (IRE)",
+        "dam": "NAMOI (AUS)",
+        "breeding": "3 f FIORENTE (IRE)-NAMOI (AUS)",
+        "weight": {
+          "allocated": "57.5",
+          "total": "57.5"
+        },
+        "favourite": false,
+        "mover": false,
+        "speedmap": {
+          "settling_lengths": 3,
+          "entrant_id": "7e61ce7b-dd57-4eff-aa1f-37ebe6a62681",
+          "label": "Off Midfield"
+        },
+        "form_indicators": null,
+        "past_performances": {
+          "jockey": {
+            "number_of_starts": 0,
+            "number_of_wins": 0,
+            "number_of_placings": 0,
+            "number_of_seconds": 0,
+            "number_of_thirds": 0
+          }
+        },
+        "jockey_past_performances": {
+          "last_50_starts": {
+            "number_of_starts": 0,
+            "number_of_wins": 0,
+            "number_of_placings": 0,
+            "number_of_seconds": 0,
+            "number_of_thirds": 0
+          },
+          "trainer": {
+            "number_of_starts": 0,
+            "number_of_wins": 0,
+            "number_of_placings": 0,
+            "number_of_seconds": 0,
+            "number_of_thirds": 0
+          }
+        },
+        "trainer_location": "Kilmore",
+        "meta": null,
+        "flucs": [
+          101,
+          126,
+          101,
+          126,
+          101,
+          126
+        ],
+        "scr_time": null,
+        "competitor_id": "",
+        "ride_guide_exists": false,
+        "ride_guide_thumbnail": "",
+        "ride_guide_file": "",
+        "flucs_with_timestamp": {
+          "last_six": [
+            {
+              "timestamp": "2026-07-25T00:25:48.772884776Z",
+              "fluc": 101
+            },
+            {
+              "timestamp": "2026-07-25T00:27:11.318526301Z",
+              "fluc": 126
+            },
+            {
+              "timestamp": "2026-07-25T00:27:53.417179794Z",
+              "fluc": 101
+            },
+            {
+              "timestamp": "2026-07-25T00:29:15.914939985Z",
+              "fluc": 126
+            },
+            {
+              "timestamp": "2026-07-25T00:29:57.216381568Z",
+              "fluc": 101
+            },
+            {
+              "timestamp": "2026-07-25T00:30:24.52156062Z",
+              "fluc": 126
+            }
+          ],
+          "open": {
+            "timestamp": "2026-07-24T23:46:28.376064989Z",
+            "fluc": 126
+          },
+          "high": {
+            "timestamp": "2026-07-25T00:21:40.219994254Z",
+            "fluc": 126
+          },
+          "low": {
+            "timestamp": "2026-07-25T00:05:17.973384199Z",
+            "fluc": 101
+          },
+          "nine_am": {
+            "timestamp": "2026-07-25T00:30:24.52156062Z",
+            "fluc": 126
+          }
+        }
+      },
+      {
+        "entrant_id": "e4801b1d-b68b-48ac-963e-b5c26e87814c",
+        "market_name": "Final Field",
+        "primary_market": true,
+        "name": "Egyptian Crown",
+        "is_scratched": false,
+        "gear": "Blinkers FIRST TIME [Blinkers]",
+        "odds": {
+          "fixed_win": 26,
+          "fixed_place": 5.5
+        },
+        "scratch_time": 0,
+        "barrier": 9,
+        "runner_number": 15,
+        "prize_money": "0",
+        "age": 3,
+        "sex": "F",
+        "colour": "B",
+        "silk_colours": "EMERALD GREEN, RED STARS, WHITE SLEEVES RED STARS, STARS ON CAP",
+        "silk_url_64x64": "https://cdn.prod.pricekinetics.com/silks/events/racing/betmakers-cmFjZToyMDc2ODUz/egyptian-crown_64x64.png",
+        "silk_url_128x128": "https://cdn.prod.pricekinetics.com/silks/events/racing/betmakers-cmFjZToyMDc2ODUz/egyptian-crown_128x128.png",
+        "form_comment": null,
+        "class_level": "",
+        "jockey": "Jake Noonan",
+        "apprentice_indicator": "",
+        "allowance_weight": "",
+        "owners": "Ciaron Maher Racing, Cressfield, Sneesby Racing, Dr E K Attebo, A K Cree, Chasing Drama, J S Forck, H J Geddes, S J Kyriazis, L G Nixon, G Stuart, L Stuart, P L Ward, Mrs J Glover, Heidelberg F C, J D Stewart & C R Wareing",
+        "country": "AUS",
+        "trainer_name": "Ciaron Maher",
+        "last_twenty_starts": "0",
+        "sire": "DEEP FIELD (AUS)",
+        "dam": "EGYPTIAN SYMBOL (AUS)",
+        "breeding": "3 f DEEP FIELD (AUS)-EGYPTIAN SYMBOL (AUS)",
+        "weight": {
+          "allocated": "57.5",
+          "total": "57.5"
+        },
+        "favourite": false,
+        "mover": false,
+        "speedmap": {
+          "settling_lengths": 1,
+          "entrant_id": "e4801b1d-b68b-48ac-963e-b5c26e87814c",
+          "label": "Backmarker"
+        },
+        "form_indicators": null,
+        "past_performances": {
+          "jockey": {
+            "number_of_starts": 0,
+            "number_of_wins": 0,
+            "number_of_placings": 0,
+            "number_of_seconds": 0,
+            "number_of_thirds": 0
+          }
+        },
+        "jockey_past_performances": {
+          "last_50_starts": {
+            "number_of_starts": 50,
+            "number_of_wins": 3,
+            "number_of_placings": 0,
+            "number_of_seconds": 2,
+            "number_of_thirds": 8
+          },
+          "trainer": {
+            "number_of_starts": 39,
+            "number_of_wins": 2,
+            "number_of_placings": 0,
+            "number_of_seconds": 6,
+            "number_of_thirds": 4
+          }
+        },
+        "trainer_location": "Cranbourne",
+        "meta": null,
+        "flucs": [
+          31,
+          27,
+          23,
+          26,
+          23,
+          26
+        ],
+        "scr_time": null,
+        "competitor_id": "",
+        "ride_guide_exists": false,
+        "ride_guide_thumbnail": "",
+        "ride_guide_file": "",
+        "flucs_with_timestamp": {
+          "last_six": [
+            {
+              "timestamp": "2026-07-24T23:51:41.26868847Z",
+              "fluc": 31
+            },
+            {
+              "timestamp": "2026-07-25T00:02:10.56893159Z",
+              "fluc": 27
+            },
+            {
+              "timestamp": "2026-07-25T00:05:17.972467897Z",
+              "fluc": 23
+            },
+            {
+              "timestamp": "2026-07-25T00:08:34.829372647Z",
+              "fluc": 26
+            },
+            {
+              "timestamp": "2026-07-25T00:09:32.221854845Z",
+              "fluc": 23
+            },
+            {
+              "timestamp": "2026-07-25T00:21:23.468615346Z",
+              "fluc": 26
+            }
+          ],
+          "open": {
+            "timestamp": "2026-07-24T23:46:28.37625716Z",
+            "fluc": 35
+          },
+          "high": {
+            "timestamp": "2026-07-24T23:50:24.316404473Z",
+            "fluc": 41
+          },
+          "low": {
+            "timestamp": "2026-07-25T00:09:32.221854845Z",
+            "fluc": 23
+          },
+          "nine_am": {
+            "timestamp": "2026-07-25T00:21:23.468615346Z",
+            "fluc": 26
+          }
+        }
+      },
+      {
+        "entrant_id": "34029b30-6500-4fb7-befd-c335fdc0208d",
+        "market_name": "Final Field",
+        "primary_market": true,
+        "name": "Mr Vegas",
+        "is_scratched": false,
+        "gear": "[Blinkers, Tongue Tie]",
+        "odds": {
+          "fixed_win": 23,
+          "fixed_place": 5
+        },
+        "scratch_time": 0,
+        "barrier": 7,
+        "runner_number": 16,
+        "prize_money": "3410",
+        "age": 3,
+        "sex": "G",
+        "colour": "B",
+        "silk_colours": "RED, BLACK AND WHITE CHECKS QUARTERS, WHITE SLEEVES, BLACK AND WHITE CHECKS CAP",
+        "silk_url_64x64": "https://cdn.prod.pricekinetics.com/silks/events/racing/betmakers-cmFjZToyMDc2ODUz/mr-vegas_64x64.png",
+        "silk_url_128x128": "https://cdn.prod.pricekinetics.com/silks/events/racing/betmakers-cmFjZToyMDc2ODUz/mr-vegas_128x128.png",
+        "form_comment": null,
+        "class_level": "",
+        "jockey": "Unknown",
+        "apprentice_indicator": "",
+        "allowance_weight": "",
+        "owners": "Mrs J A Brown, Play The Music (Mgr: T Hodge), J S Douglas, Mrs B Douglas & S P Foster",
+        "country": "AUS",
+        "trainer_name": "Cliff Brown",
+        "last_twenty_starts": "6x5507",
+        "sire": "LUCKY VEGA (IRE)",
+        "dam": "MEGA MISS (AUS)",
+        "breeding": "3 g LUCKY VEGA (IRE)-MEGA MISS (AUS)",
+        "weight": {
+          "allocated": "59.5",
+          "total": "59.5"
+        },
+        "favourite": false,
+        "mover": false,
+        "speedmap": {
+          "settling_lengths": 4,
+          "entrant_id": "34029b30-6500-4fb7-befd-c335fdc0208d",
+          "label": "Midfield"
+        },
+        "form_indicators": null,
+        "past_performances": {
+          "jockey": {
+            "number_of_starts": 0,
+            "number_of_wins": 0,
+            "number_of_placings": 0,
+            "number_of_seconds": 0,
+            "number_of_thirds": 0
+          }
+        },
+        "jockey_past_performances": {
+          "last_50_starts": {
+            "number_of_starts": 0,
+            "number_of_wins": 0,
+            "number_of_placings": 0,
+            "number_of_seconds": 0,
+            "number_of_thirds": 0
+          },
+          "trainer": {
+            "number_of_starts": 0,
+            "number_of_wins": 0,
+            "number_of_placings": 0,
+            "number_of_seconds": 0,
+            "number_of_thirds": 0
+          }
+        },
+        "trainer_location": "Mornington",
+        "meta": null,
+        "flucs": [
+          23,
+          20,
+          21,
+          23
+        ],
+        "scr_time": null,
+        "competitor_id": "",
+        "ride_guide_exists": false,
+        "ride_guide_thumbnail": "",
+        "ride_guide_file": "",
+        "flucs_with_timestamp": {
+          "last_six": [
+            {
+              "timestamp": "2026-07-24T23:46:28.376700211Z",
+              "fluc": 23
+            },
+            {
+              "timestamp": "2026-07-25T00:05:17.972826717Z",
+              "fluc": 20
+            },
+            {
+              "timestamp": "2026-07-25T00:21:23.468353291Z",
+              "fluc": 21
+            },
+            {
+              "timestamp": "2026-07-25T00:34:04.364215006Z",
+              "fluc": 23
+            }
+          ],
+          "open": {
+            "timestamp": "2026-07-24T23:46:28.376700211Z",
+            "fluc": 23
+          },
+          "high": {
+            "timestamp": "2026-07-24T23:46:28.376700211Z",
+            "fluc": 23
+          },
+          "low": {
+            "timestamp": "2026-07-25T00:05:17.972826717Z",
+            "fluc": 20
+          },
+          "nine_am": {
+            "timestamp": "2026-07-25T00:34:04.364215006Z",
+            "fluc": 23
+          }
+        }
+      },
+      {
+        "entrant_id": "11ab0f92-4f8c-4e30-b78b-293c6e1577a1",
+        "market_name": "Final Field",
+        "primary_market": true,
+        "name": "Shines Discreetly",
+        "is_scratched": false,
+        "gear": "[Blinkers]",
+        "odds": {
+          "fixed_win": 71,
+          "fixed_place": 11
+        },
+        "scratch_time": 0,
+        "barrier": 8,
+        "runner_number": 17,
+        "prize_money": "3660",
+        "age": 3,
+        "sex": "G",
+        "colour": "CH",
+        "silk_colours": "ROYAL BLUE, HORSE SILHOUETTE, WHITE CHICKEN SILHOUETTE AND CAP",
+        "silk_url_64x64": "https://cdn.prod.pricekinetics.com/silks/events/racing/betmakers-cmFjZToyMDc2ODUz/shines-discreetly_64x64.png",
+        "silk_url_128x128": "https://cdn.prod.pricekinetics.com/silks/events/racing/betmakers-cmFjZToyMDc2ODUz/shines-discreetly_128x128.png",
+        "form_comment": null,
+        "class_level": "",
+        "jockey": "Unknown",
+        "apprentice_indicator": "",
+        "allowance_weight": "",
+        "owners": "S D Brown, Mrs L M Brown, D Thompson, Mrs L J Ten Dam, L G Ten Dam, W J Rilen, R J Mcgill, Mrs V Teakle, T P Mahony, J Mahony, Mrs P Lefebvre, A Lefebvre, C Fasoulis, D Crespin, G W Dartnell, P Boulton, Gems Plus (Mgr: P R Heenan) & J Conway",
+        "country": "AUS",
+        "trainer_name": "Matthew Brown",
+        "last_twenty_starts": "8x988x0",
+        "sire": "HANSEATIC (AUS)",
+        "dam": "HOW DISCREET (AUS)",
+        "breeding": "3 g HANSEATIC (AUS)-HOW DISCREET (AUS)",
+        "weight": {
+          "allocated": "59.5",
+          "total": "59.5"
+        },
+        "favourite": false,
+        "mover": false,
+        "speedmap": {
+          "settling_lengths": 2,
+          "entrant_id": "11ab0f92-4f8c-4e30-b78b-293c6e1577a1",
+          "label": "Backmarker"
+        },
+        "form_indicators": null,
+        "past_performances": {
+          "jockey": {
+            "number_of_starts": 0,
+            "number_of_wins": 0,
+            "number_of_placings": 0,
+            "number_of_seconds": 0,
+            "number_of_thirds": 0
+          }
+        },
+        "jockey_past_performances": {
+          "last_50_starts": {
+            "number_of_starts": 0,
+            "number_of_wins": 0,
+            "number_of_placings": 0,
+            "number_of_seconds": 0,
+            "number_of_thirds": 0
+          },
+          "trainer": {
+            "number_of_starts": 0,
+            "number_of_wins": 0,
+            "number_of_placings": 0,
+            "number_of_seconds": 0,
+            "number_of_thirds": 0
+          }
+        },
+        "trainer_location": "Cranbourne",
+        "meta": null,
+        "flucs": [
+          81,
+          71,
+          81,
+          71,
+          81,
+          71
+        ],
+        "scr_time": null,
+        "competitor_id": "",
+        "ride_guide_exists": false,
+        "ride_guide_thumbnail": "",
+        "ride_guide_file": "",
+        "flucs_with_timestamp": {
+          "last_six": [
+            {
+              "timestamp": "2026-07-25T06:31:05.778202471Z",
+              "fluc": 81
+            },
+            {
+              "timestamp": "2026-07-25T06:31:44.91795142Z",
+              "fluc": 71
+            },
+            {
+              "timestamp": "2026-07-25T06:33:04.017862389Z",
+              "fluc": 81
+            },
+            {
+              "timestamp": "2026-07-25T23:00:50.920992608Z",
+              "fluc": 71
+            },
+            {
+              "timestamp": "2026-07-25T23:01:16.123063576Z",
+              "fluc": 81
+            },
+            {
+              "timestamp": "2026-07-25T23:58:10.115542551Z",
+              "fluc": 71
+            }
+          ],
+          "open": {
+            "timestamp": "2026-07-24T23:46:28.375540649Z",
+            "fluc": 101
+          },
+          "high": {
+            "timestamp": "2026-07-24T23:46:28.375540649Z",
+            "fluc": 101
+          },
+          "low": {
+            "timestamp": "2026-07-25T23:58:10.115542551Z",
+            "fluc": 71
+          },
+          "nine_am": {
+            "timestamp": "2026-07-25T06:33:04.017862389Z",
+            "fluc": 81
+          }
+        }
+      },
+      {
+        "entrant_id": "57edb2b3-d79d-4a89-b1eb-eb1e2f5422e0",
+        "market_name": "Final Field",
+        "primary_market": true,
+        "name": "Key To Victory",
+        "is_scratched": false,
+        "gear": "Cheekers FIRST TIME, Norton Bit OFF FIRST TIME, Tongue Tie OFF FIRST TIME, Visors OFF FIRST TIME, Winkers AGAIN",
+        "odds": {
+          "fixed_win": 126,
+          "fixed_place": 16
+        },
+        "scratch_time": 0,
+        "barrier": 17,
+        "runner_number": 18,
+        "prize_money": "2665",
+        "age": 4,
+        "sex": "G",
+        "colour": "CH",
+        "silk_colours": "DEEP NAVY, WHITE HORSESHOE AND HEAD, CHECKED SLEEVES",
+        "silk_url_64x64": "https://cdn.prod.pricekinetics.com/silks/events/racing/betmakers-cmFjZToyMDc2ODUz/key-to-victory_64x64.png",
+        "silk_url_128x128": "https://cdn.prod.pricekinetics.com/silks/events/racing/betmakers-cmFjZToyMDc2ODUz/key-to-victory_128x128.png",
+        "form_comment": null,
+        "class_level": "",
+        "jockey": "Unknown",
+        "apprentice_indicator": "",
+        "allowance_weight": "",
+        "owners": "Ms R M Thompson, G F Moore, L Tuck, Ms V Day, Mrs K Grego, J Moore, Miss K L Harris, Mrs A Stewart-Moore, Miss K Manning & Ms L J Gillies",
+        "country": "AUS",
+        "trainer_name": "Annalise Maragos",
+        "last_twenty_starts": "9x80x00x",
+        "sire": "READY FOR VICTORY (AUS)",
+        "dam": "UP TO SCALE (AUS)",
+        "breeding": "4 g READY FOR VICTORY (AUS)-UP TO SCALE (AUS)",
+        "weight": {
+          "allocated": "59.5",
+          "total": "59.5"
+        },
+        "favourite": false,
+        "mover": false,
+        "speedmap": {
+          "settling_lengths": 4,
+          "entrant_id": "57edb2b3-d79d-4a89-b1eb-eb1e2f5422e0",
+          "label": "Midfield"
+        },
+        "form_indicators": null,
+        "past_performances": {
+          "jockey": {
+            "number_of_starts": 0,
+            "number_of_wins": 0,
+            "number_of_placings": 0,
+            "number_of_seconds": 0,
+            "number_of_thirds": 0
+          }
+        },
+        "jockey_past_performances": {
+          "last_50_starts": {
+            "number_of_starts": 0,
+            "number_of_wins": 0,
+            "number_of_placings": 0,
+            "number_of_seconds": 0,
+            "number_of_thirds": 0
+          },
+          "trainer": {
+            "number_of_starts": 0,
+            "number_of_wins": 0,
+            "number_of_placings": 0,
+            "number_of_seconds": 0,
+            "number_of_thirds": 0
+          }
+        },
+        "trainer_location": "Bendigo",
+        "meta": null,
+        "flucs": [
+          101,
+          126,
+          101,
+          126,
+          101,
+          126
+        ],
+        "scr_time": null,
+        "competitor_id": "",
+        "ride_guide_exists": false,
+        "ride_guide_thumbnail": "",
+        "ride_guide_file": "",
+        "flucs_with_timestamp": {
+          "last_six": [
+            {
+              "timestamp": "2026-07-25T00:25:48.772608376Z",
+              "fluc": 101
+            },
+            {
+              "timestamp": "2026-07-25T00:27:11.318527589Z",
+              "fluc": 126
+            },
+            {
+              "timestamp": "2026-07-25T00:27:53.4171774Z",
+              "fluc": 101
+            },
+            {
+              "timestamp": "2026-07-25T00:29:15.914936181Z",
+              "fluc": 126
+            },
+            {
+              "timestamp": "2026-07-25T00:29:57.216370336Z",
+              "fluc": 101
+            },
+            {
+              "timestamp": "2026-07-25T00:30:24.521542655Z",
+              "fluc": 126
+            }
+          ],
+          "open": {
+            "timestamp": "2026-07-24T23:46:28.376553564Z",
+            "fluc": 151
+          },
+          "high": {
+            "timestamp": "2026-07-24T23:46:28.376553564Z",
+            "fluc": 151
+          },
+          "low": {
+            "timestamp": "2026-07-25T00:25:48.772608376Z",
+            "fluc": 101
+          },
+          "nine_am": {
+            "timestamp": "2026-07-25T00:30:24.521542655Z",
+            "fluc": 126
+          }
+        }
+      }
+    ],
+    "derivatives": null,
+    "mover": {
+      "entrant_id": "427ada67-42a2-4d2f-ad33-b5193099c502",
+      "market_name": "Final Field",
+      "primary_market": true,
+      "name": "Corretto",
+      "is_scratched": false,
+      "gear": "Cross-over Nose Band OFF FIRST TIME, Norton Bit FIRST TIME",
+      "odds": {
+        "fixed_win": 17,
+        "fixed_place": 4.2
+      },
+      "scratch_time": 0,
+      "barrier": 3,
+      "runner_number": 13,
+      "prize_money": "1000",
+      "age": 2,
+      "sex": "C",
+      "colour": "B",
+      "silk_colours": "RED, GREEN AND WHITE ARMBANDS, RED CAP",
+      "silk_url_64x64": "https://cdn.prod.pricekinetics.com/silks/events/racing/betmakers-cmFjZToyMDc2ODUz/corretto_64x64.png",
+      "silk_url_128x128": "https://cdn.prod.pricekinetics.com/silks/events/racing/betmakers-cmFjZToyMDc2ODUz/corretto_128x128.png",
+      "form_comment": null,
+      "class_level": "",
+      "jockey": "Patrick Moloney",
+      "apprentice_indicator": "",
+      "allowance_weight": "",
+      "owners": "R W Alteri, W Alteri & Mrs K Alteri",
+      "country": "AUS",
+      "trainer_name": "Matt Cumani",
+      "last_twenty_starts": "8",
+      "sire": "WOOTTON BASSETT (GB)",
+      "dam": "GRAPPA DI MOSCATO (AUS)",
+      "breeding": "2 c WOOTTON BASSETT (GB)-GRAPPA DI MOSCATO (AUS)",
+      "weight": {
+        "allocated": "57",
+        "total": "57"
+      },
+      "favourite": false,
+      "mover": true,
+      "speedmap": {
+        "settling_lengths": 1,
+        "entrant_id": "427ada67-42a2-4d2f-ad33-b5193099c502"
+      },
+      "form_indicators": null,
+      "past_performances": {
+        "jockey": {
+          "number_of_starts": 0,
+          "number_of_wins": 0,
+          "number_of_placings": 0,
+          "number_of_seconds": 0,
+          "number_of_thirds": 0
+        }
+      },
+      "jockey_past_performances": {
+        "last_50_starts": {
+          "number_of_starts": 50,
+          "number_of_wins": 5,
+          "number_of_placings": 0,
+          "number_of_seconds": 2,
+          "number_of_thirds": 6
+        },
+        "trainer": {
+          "number_of_starts": 44,
+          "number_of_wins": 6,
+          "number_of_placings": 0,
+          "number_of_seconds": 4,
+          "number_of_thirds": 3
+        }
+      },
+      "trainer_location": "Ballarat"
+    },
+    "big_bets": null,
+    "live_bets": null,
+    "biggest_bet": null,
+    "money_tracker": null,
+    "error": ""
+  }
+}

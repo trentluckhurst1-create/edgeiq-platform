@@ -1,0 +1,25 @@
+{
+  "dependency_headers": [
+    "builder_id",
+    "builder_path",
+    "dependency_type",
+    "dependency_value",
+    "evidence"
+  ],
+  "output_claim_headers": [
+    "builder_id",
+    "builder_path",
+    "output_path",
+    "output_filename",
+    "suffix",
+    "is_public_data_feed",
+    "evidence"
+  ],
+  "dependency_row_count": 5618,
+  "output_claim_row_count": 432,
+  "resolved_output_owner_count": 201,
+  "resolved_output_path_count": 696,
+  "resolved_input_consumer_count": 488,
+  "resolved_input_path_count": 1479,
+  "unresolved_output_claim_rows": 60
+}

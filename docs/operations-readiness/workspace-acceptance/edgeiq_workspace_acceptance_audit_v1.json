@@ -1,0 +1,19 @@
+{
+  "audit_status": "PARTIAL",
+  "workspaces": [
+    "MEETINGS",
+    "RACE",
+    "FIELD",
+    "PERFORMANCE",
+    "FORM",
+    "MAP",
+    "NEXUS",
+    "MARKET",
+    "RESULTS",
+    "TRACK",
+    "WEATHER",
+    "OVERVIEW",
+    "INSIGHTS"
+  ],
+  "reason": "Build/feed acceptance complete; browser click-through not fully proven"
+}

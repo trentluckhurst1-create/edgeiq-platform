@@ -1,0 +1,283 @@
+{
+  "workspace": "18_COMPARE",
+  "source_png": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\product-specification\\EDGEIQ_APPROVED_UI_REBUILD\\approved-pngs\\EDGEiQ_APPROVED_TABS\\18_COMPARE_APPROVED.png",
+  "canvas": {
+    "width": 1536,
+    "height": 1024
+  },
+  "content_bounds": {
+    "left": 1,
+    "top": 11,
+    "right": 1512,
+    "bottom": 1002
+  },
+  "major_vertical_boundaries_x": [
+    20,
+    59,
+    231,
+    257,
+    296,
+    300,
+    311,
+    386,
+    393,
+    566,
+    720,
+    983,
+    987,
+    996,
+    1003,
+    1010
+  ],
+  "major_horizontal_boundaries_y": [
+    25,
+    52,
+    116,
+    140,
+    179,
+    256,
+    279,
+    297,
+    528,
+    571,
+    605,
+    669,
+    693,
+    717,
+    835,
+    843
+  ],
+  "left_navigation_width_estimate": 20,
+  "top_header_height_estimate": 25,
+  "table_measurements": {
+    "horizontal_rule_candidates": [
+      25,
+      52,
+      116,
+      140,
+      179,
+      256,
+      279,
+      297,
+      528,
+      571,
+      605,
+      669,
+      693,
+      717,
+      835,
+      843,
+      849,
+      864,
+      998
+    ],
+    "estimated_row_height": 24
+  },
+  "dominant_colors": [
+    {
+      "hex": "#ffffff",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "share": 0.8345
+    },
+    {
+      "hex": "#f8f8ff",
+      "rgb": [
+        248,
+        248,
+        255
+      ],
+      "share": 0.0493
+    },
+    {
+      "hex": "#f8f8f8",
+      "rgb": [
+        248,
+        248,
+        248
+      ],
+      "share": 0.0225
+    },
+    {
+      "hex": "#f8ffff",
+      "rgb": [
+        248,
+        255,
+        255
+      ],
+      "share": 0.0093
+    },
+    {
+      "hex": "#f0f0f8",
+      "rgb": [
+        240,
+        240,
+        248
+      ],
+      "share": 0.006
+    },
+    {
+      "hex": "#fff8ff",
+      "rgb": [
+        255,
+        248,
+        255
+      ],
+      "share": 0.004
+    },
+    {
+      "hex": "#fff8f8",
+      "rgb": [
+        255,
+        248,
+        248
+      ],
+      "share": 0.0028
+    },
+    {
+      "hex": "#f0f8f8",
+      "rgb": [
+        240,
+        248,
+        248
+      ],
+      "share": 0.002
+    },
+    {
+      "hex": "#d8e8f8",
+      "rgb": [
+        216,
+        232,
+        248
+      ],
+      "share": 0.0011
+    },
+    {
+      "hex": "#e0e0f0",
+      "rgb": [
+        224,
+        224,
+        240
+      ],
+      "share": 0.001
+    },
+    {
+      "hex": "#f0f8ff",
+      "rgb": [
+        240,
+        248,
+        255
+      ],
+      "share": 0.0009
+    },
+    {
+      "hex": "#fffff8",
+      "rgb": [
+        255,
+        255,
+        248
+      ],
+      "share": 0.0008
+    },
+    {
+      "hex": "#f8f0f8",
+      "rgb": [
+        248,
+        240,
+        248
+      ],
+      "share": 0.0007
+    },
+    {
+      "hex": "#080880",
+      "rgb": [
+        8,
+        8,
+        128
+      ],
+      "share": 0.0007
+    },
+    {
+      "hex": "#e8e8f8",
+      "rgb": [
+        232,
+        232,
+        248
+      ],
+      "share": 0.0007
+    },
+    {
+      "hex": "#d0d0e8",
+      "rgb": [
+        208,
+        208,
+        232
+      ],
+      "share": 0.0007
+    }
+  ],
+  "likely_surface_colors": [
+    {
+      "hex": "#ffffff",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "share": 0.8345
+    },
+    {
+      "hex": "#f8f8ff",
+      "rgb": [
+        248,
+        248,
+        255
+      ],
+      "share": 0.0493
+    },
+    {
+      "hex": "#f8f8f8",
+      "rgb": [
+        248,
+        248,
+        248
+      ],
+      "share": 0.0225
+    },
+    {
+      "hex": "#f8ffff",
+      "rgb": [
+        248,
+        255,
+        255
+      ],
+      "share": 0.0093
+    },
+    {
+      "hex": "#f0f0f8",
+      "rgb": [
+        240,
+        240,
+        248
+      ],
+      "share": 0.006
+    },
+    {
+      "hex": "#fff8ff",
+      "rgb": [
+        255,
+        248,
+        255
+      ],
+      "share": 0.004
+    }
+  ],
+  "likely_text_colors": [],
+  "notes": [
+    "Measurements are pixel-derived guides for reconstruction and visual QA.",
+    "Font family cannot be identified reliably from pixels; use local approved app font and tune size/weight/line-height."
+  ]
+}

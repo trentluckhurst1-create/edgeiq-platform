@@ -1,0 +1,14 @@
+{
+  "route_context": "Flemington R5 OVERVIEW",
+  "has_overview": true,
+  "has_summary_cards": true,
+  "has_speed_map_preview": true,
+  "has_epi_snapshot": true,
+  "has_runner_board": true,
+  "forbidden_confidence_label": false,
+  "forbidden_command_centre_label": false,
+  "white_theme_body_background": "rgb(255, 255, 255)",
+  "screenshot_status": "BLOCKED",
+  "screenshot_error": "Codex in-app browser does not support command playwright_element_screenshot",
+  "captured_at": "2026-07-18T13:44:19.003Z"
+}

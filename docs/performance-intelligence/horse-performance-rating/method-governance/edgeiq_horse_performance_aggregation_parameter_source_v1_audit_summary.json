@@ -1,0 +1,10 @@
+{
+  "verdict": "PASS",
+  "candidate_hash": "27cc5486536af26f2d5b2c307b05d1ee56d9cba25689d3889767f4b5fbe7910b",
+  "promoted": "YES",
+  "minimum_observations": 5,
+  "maximum_observations": 20,
+  "lookback_days": 730,
+  "half_life_days": 120,
+  "promoted_hash": "27cc5486536af26f2d5b2c307b05d1ee56d9cba25689d3889767f4b5fbe7910b"
+}

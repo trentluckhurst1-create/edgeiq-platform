@@ -1,0 +1,95 @@
+{
+  "components": [
+    {
+      "approval_mechanism": "public HorseFullForm horsecode retained; exact source id only",
+      "component": "horse identity source facts",
+      "current_rejection_reasons": "",
+      "current_row_count": 114,
+      "exact_match_rules": "No fuzzy automatic promotion; exact source ID or exact unique canonical name only",
+      "identity_key": "RACING_AUSTRALIA horsecode",
+      "input_path": "docs/victoria-live-recovery-v3/raw-evidence/*.html",
+      "latest_date": "2026-07-30",
+      "output_path": "config/performance-intelligence/edgeiq_racing_australia_horse_identity_crosswalk_v1.csv",
+      "primary_key": "source_system+source_horse_id",
+      "script_path": "scripts/build_edgeiq_current_ra_horse_identity_crosswalk_v1.py"
+    },
+    {
+      "approval_mechanism": "APPROVED rows only; exact RA source ID creates deterministic RA_HORSE id",
+      "component": "approved identity map",
+      "current_rejection_reasons": "",
+      "current_row_count": 138,
+      "exact_match_rules": "No fuzzy automatic promotion; exact source ID or exact unique canonical name only",
+      "identity_key": "canonical_horse_id",
+      "input_path": "current RA crosswalk + existing map",
+      "latest_date": "",
+      "output_path": "config/performance-intelligence/edgeiq_horse_performance_identity_map_v1.csv",
+      "primary_key": "source_horse_name",
+      "script_path": "scripts/build_edgeiq_current_ra_horse_identity_crosswalk_v1.py"
+    },
+    {
+      "approval_mechanism": "exact normalised source name in approved map; unresolved rows rejected",
+      "component": "horse observation builder",
+      "current_rejection_reasons": "",
+      "current_row_count": 52318,
+      "exact_match_rules": "No fuzzy automatic promotion; exact source ID or exact unique canonical name only",
+      "identity_key": "canonical_horse_id",
+      "input_path": "edgeiq_performance_rating_base_fact_v1.csv + identity map",
+      "latest_date": "2026-07-30",
+      "output_path": "edgeiq_horse_performance_observation_fact_v1.csv",
+      "primary_key": "performance_rating_base_id",
+      "script_path": "scripts/build_edgeiq_horse_performance_observation_fact_v1.py"
+    },
+    {
+      "approval_mechanism": "minimum observations and effective aggregation parameter unchanged",
+      "component": "horse aggregate builder",
+      "current_rejection_reasons": "",
+      "current_row_count": 1265,
+      "exact_match_rules": "No fuzzy automatic promotion; exact source ID or exact unique canonical name only",
+      "identity_key": "canonical_horse_id",
+      "input_path": "edgeiq_horse_performance_observation_fact_v1.csv",
+      "latest_date": "2026-06-13",
+      "output_path": "edgeiq_horse_performance_aggregate_fact_v1.csv",
+      "primary_key": "canonical_horse_id+as_of_date",
+      "script_path": "scripts/build_edgeiq_horse_performance_aggregate_fact_v1.py"
+    },
+    {
+      "approval_mechanism": "direct historical aggregate value; formula unchanged",
+      "component": "horse rating builder",
+      "current_rejection_reasons": "",
+      "current_row_count": 1265,
+      "exact_match_rules": "No fuzzy automatic promotion; exact source ID or exact unique canonical name only",
+      "identity_key": "canonical_horse_id",
+      "input_path": "edgeiq_horse_performance_aggregate_fact_v1.csv",
+      "latest_date": "2026-06-13",
+      "output_path": "edgeiq_horse_performance_rating_fact_v1.csv",
+      "primary_key": "horse_performance_aggregate_id",
+      "script_path": "scripts/build_edgeiq_horse_performance_rating_fact_v1.py"
+    },
+    {
+      "approval_mechanism": "as-of date filter; no future rating leakage",
+      "component": "snapshot builder",
+      "current_rejection_reasons": "",
+      "current_row_count": 5,
+      "exact_match_rules": "No fuzzy automatic promotion; exact source ID or exact unique canonical name only",
+      "identity_key": "canonical_horse_id",
+      "input_path": "edgeiq_race_entry_fact_v1.csv + horse ratings",
+      "latest_date": "2026-07-25",
+      "output_path": "edgeiq_race_entry_horse_performance_snapshot_fact_v1.csv",
+      "primary_key": "race_entry_id",
+      "script_path": "scripts/build_edgeiq_race_entry_horse_performance_snapshot_fact_v1.py"
+    },
+    {
+      "approval_mechanism": "existing weighted additive EPI; formula unchanged",
+      "component": "EPI builder",
+      "current_rejection_reasons": "",
+      "current_row_count": 0,
+      "exact_match_rules": "No fuzzy automatic promotion; exact source ID or exact unique canonical name only",
+      "identity_key": "race_entry_id",
+      "input_path": "edgeiq_race_entry_epi_component_fact_v1.csv + epi parameter",
+      "latest_date": "",
+      "output_path": "edgeiq_race_entry_epi_fact_v1.csv",
+      "primary_key": "race_entry_id",
+      "script_path": "scripts/build_edgeiq_race_entry_epi_fact_v1.py"
+    }
+  ]
+}

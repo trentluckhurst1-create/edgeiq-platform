@@ -1,0 +1,29 @@
+EDGEIQ RACING AUSTRALIA + BOM SOURCE AUDIT
+==========================================================
+
+Generated: 2026-07-10T03:48:14.512614+00:00
+
+RACING AUSTRALIA VICTORIAN TRACK CONDITIONS
+=======================================================
+
+URL: https://www.racingaustralia.horse/InteractiveForm/TrackCondition.aspx?State=VIC
+HTTP status: 200
+HTML bytes: 44588
+Track table score: 4
+
+HEADERS: Meeting Details | Track Type | Track Condition | Penetrometer | Weather Forecast | Rail | Irrigation | Rainfall | Comment | Additional Information
+1: 2026-07-10 | Ladbrokes Geelong | Heavy 8 | Out 9m 1700m - 800m, Out 10m Remainder | 0.0 | 0.6
+2: 2026-07-11 | Caulfield | Soft 7 | Out 6m Entire Circuit | 0.0 | 11.4
+3: 2026-07-11 | Donald | Heavy 8 | Out 3m Entire Circuit | 0.0 | 11.0
+4: 2026-07-12 | Sportsbet-Ballarat | Heavy 9 | True Entire Circuit | 0.0 | 14.5
+5: 2026-07-12 | bet365 Hamilton | Heavy 10 | True Entire Circuit | 0.0 | 14.0
+6: 2026-07-13 | bet365 Bairnsdale | Heavy 8 | True Entire Circuit | 0.0 | 8.5
+7: 2026-07-14 | Sportsbet-Ballarat Synthetic | Synthetic | True Entire Circuit | 0.0 | 14.5
+8: 2026-07-15 | Sportsbet Sandown Hillside | Soft 7 | Out 6m Entire Circuit | 0.0 | 3.4
+9: 2026-07-16 | Southside Cranbourne | None | None | None | None
+10: 2026-07-17 | bet365 Mildura | None | None | None | None
+
+BOM station: 87184
+HTTP status: 200
+Assets: 23
+Endpoint candidates: 81

@@ -1,0 +1,30 @@
+{
+  "epi_status": "BLOCKED_EPI_COMPONENT_CONTRACT",
+  "missing_reasons": {
+    "MISSING_REQUIRED_EPI_COMPONENT": 5
+  },
+  "sale": {
+    "chigurh": {
+      "aggregate_available": "NO",
+      "blocking_reason": "INSUFFICIENT_OBSERVATIONS",
+      "canonical_horse_id": "RA_HORSE_34054013730",
+      "current_observations": "1",
+      "epi_available": "NO",
+      "historical_observations": "0",
+      "race_number": "3",
+      "rating_available": "NO",
+      "runner_name": "CHIGURH",
+      "snapshot_available": "NO",
+      "total_governed_observations": "1"
+    },
+    "current_sale_runners": 80,
+    "governed_identities": 80,
+    "runners_with_5_plus_observations": 0,
+    "runners_with_aggregates": 0,
+    "runners_with_epi": 0,
+    "runners_with_historical_observations": 0,
+    "runners_with_ratings": 0,
+    "runners_with_snapshots": 0
+  },
+  "status": "PASS_WITH_GOVERNED_INSUFFICIENCY"
+}

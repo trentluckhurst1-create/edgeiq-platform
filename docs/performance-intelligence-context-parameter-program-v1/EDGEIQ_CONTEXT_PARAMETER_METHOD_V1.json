@@ -1,0 +1,8 @@
+{
+  "decision": "Do not estimate or publish coefficients.",
+  "estimation_method_defined": false,
+  "status": "BLOCKED_CONTEXT_PARAMETER_METHODOLOGY_AUTHORITY",
+  "target_unit": "HPR-NORM-A normalised rating units",
+  "target_variable": "context_adjusted_performance_value",
+  "threshold_authority_defined": false
+}

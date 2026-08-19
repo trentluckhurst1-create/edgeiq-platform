@@ -1,0 +1,11 @@
+{
+  "date_from": "2026-07-20",
+  "date_to": "2026-07-30",
+  "dry_run": false,
+  "facts": 114,
+  "mode": "V3_RA_PUBLIC_RESULTS",
+  "operation_run_id": "VICLIVEV3-4AD06ABCBFE7",
+  "raw_rows": 114,
+  "rejections": 0,
+  "status": "PASS"
+}

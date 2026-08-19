@@ -1,0 +1,12 @@
+{
+  "step": 5,
+  "status": "PASS",
+  "generated_utc": "2026-07-25T21:51:45Z",
+  "standard_time_rows": 669,
+  "groups_tested": 3830,
+  "groups_meeting_minimum": 669,
+  "governed_minimum": 20,
+  "invalid_time_units_remaining": 0,
+  "duplicate_benchmark_groups": 22,
+  "elapsed_seconds": 9.55
+}

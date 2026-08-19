@@ -1,0 +1,16 @@
+{
+  "status": "RACINGCOM_PAGE_DISCOVERY_V2_PASS",
+  "built_utc": "2026-07-22T08:34:09+00:00",
+  "total_admission_queue_rows": 12,
+  "page_discovery_queue_rows": 4,
+  "requests_attempted": 4,
+  "csv_link_observed_rows": 0,
+  "structured_payload_observed_rows": 0,
+  "result_counts": {
+    "SPEED_PAGE_PRESENT_NO_CSV": 4
+  },
+  "failure_counts": {
+    "NO_CSV_LINK_IN_PAGE": 4
+  },
+  "production_changed": "NO"
+}

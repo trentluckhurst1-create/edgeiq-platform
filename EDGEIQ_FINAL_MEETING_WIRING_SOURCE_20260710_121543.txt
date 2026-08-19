@@ -1,0 +1,2074 @@
+EDGEIQ FINAL MEETING WIRING SOURCE
+================================================================================
+
+
+================================================================================
+FILE: src\edgeiq-os\race\components\MeetingsWorkspace.tsx
+================================================================================
+import { useState } from "react";
+
+type MeetingsWorkspaceProps = {
+  raceBook: any;
+  field: any[];
+  clean: (value: any) => string;
+  onOpenMeeting: () => void;
+};
+
+const dayFilters = ["TODAY", "TOMORROW", "NEXT DAY"];
+
+function hasValue(value: any) {
+  return value !== null && value !== undefined && value !== "" && value !== "-" && value !== "Pending";
+}
+
+export function MeetingsWorkspace({ raceBook, field, clean, onOpenMeeting }: MeetingsWorkspaceProps) {
+  const [day, setDay] = useState("TODAY");
+  const official = raceBook?.official ?? {};
+  const meetingName = clean(official.meeting);
+
+  const stats = [
+    ["Date", official.date],
+    ["Track Condition", official.trackCondition],
+    ["Rail", official.rail],
+    ["Race Count", official.raceCount],
+    ["First Race", official.firstRaceTime],
+    ["Last Race", official.lastRaceTime],
+    ["Runners Loaded", field.length],
+  ].filter(([, value]) => hasValue(value));
+
+  return (
+    <section className="eiq-meetings-workspace">
+      <nav className="eiq-context-tabs" aria-label="Meeting day filters">
+        {dayFilters.map((item) => (
+          <button key={item} type="button" className={day === item ? "is-active" : ""} onClick={() => setDay(item)}>
+            {item}
+          </button>
+        ))}
+      </nav>
+
+      <div className="eiq-panel-grid">
+        <article className="eiq-meeting-card">
+          <header>
+            <span>Meeting</span>
+            <strong>{meetingName}</strong>
+            <p>{hasValue(official.trackCondition) ? clean(official.trackCondition) : "Awaiting track update"}</p>
+          </header>
+
+          {stats.length ? (
+            <dl>
+              {stats.map(([label, value]) => (
+                <div key={label}>
+                  <dt>{label}</dt>
+                  <dd>{clean(value)}</dd>
+                </div>
+              ))}
+            </dl>
+          ) : (
+            <p className="eiq-empty-copy">Meeting detail is not yet connected.</p>
+          )}
+
+          <button type="button" onClick={onOpenMeeting}>Open Meeting</button>
+        </article>
+      </div>
+    </section>
+  );
+}
+
+
+================================================================================
+FILE: src\edgeiq-os\services\weather\EdgeiqWeatherService.ts
+================================================================================
+﻿import type {
+  EdgeiqWeatherFeed,
+  EdgeiqWeatherRecord,
+} from "./WeatherTypes";
+
+const WEATHER_FEED_URL = "/data/edgeiq_metropolitan_weather_v1.json";
+const WEATHER_CACHE_TTL_MS = 4 * 60 * 1000;
+
+let cachedFeed: EdgeiqWeatherFeed | null = null;
+let cachedAt = 0;
+let pendingFeed: Promise<EdgeiqWeatherFeed> | null = null;
+
+function normaliseMeeting(value: unknown): string {
+  return String(value ?? "")
+    .trim()
+    .toUpperCase()
+    .replace(/^SPORTSBET[-\s]+/, "")
+    .replace(/\s+/g, " ");
+}
+
+async function loadFeed(force = false): Promise<EdgeiqWeatherFeed> {
+  const now = Date.now();
+  const cacheIsFresh =
+    cachedFeed !== null &&
+    now - cachedAt < WEATHER_CACHE_TTL_MS;
+
+  if (!force && cacheIsFresh && cachedFeed) {
+    return cachedFeed;
+  }
+
+  if (pendingFeed) {
+    return pendingFeed;
+  }
+
+  const requestUrl =
+    `${WEATHER_FEED_URL}?updated=${encodeURIComponent(String(now))}`;
+
+  pendingFeed = fetch(requestUrl, {
+    cache: "no-store",
+  })
+    .then(async (response) => {
+      if (!response.ok) {
+        throw new Error(
+          `Weather feed request failed with status ${response.status}`,
+        );
+      }
+
+      return (await response.json()) as EdgeiqWeatherFeed;
+    })
+    .then((feed) => {
+      cachedFeed = feed;
+      cachedAt = Date.now();
+      return feed;
+    })
+    .finally(() => {
+      pendingFeed = null;
+    });
+
+  return pendingFeed;
+}
+
+export async function getMeetingWeather(
+  meeting: unknown,
+  force = false,
+): Promise<EdgeiqWeatherRecord | null> {
+  const key = normaliseMeeting(meeting);
+
+  if (!key) return null;
+
+  const feed = await loadFeed(force);
+
+  return (
+    feed.records.find((record) => {
+      const recordKey = normaliseMeeting(
+        record.meeting_key || record.meeting || record.course,
+      );
+
+      return (
+        recordKey === key ||
+        key.includes(recordKey) ||
+        recordKey.includes(key)
+      );
+    }) ?? null
+  );
+}
+
+export function clearWeatherFeedCache() {
+  cachedFeed = null;
+  cachedAt = 0;
+  pendingFeed = null;
+}
+
+
+================================================================================
+FILE: src\edgeiq-os\services\race-file-v2.ts
+================================================================================
+import { findLiveRunnerSnapshot, liveRaceRunnerSnapshot } from "./live-race-data-snapshot";
+import type { RaceFileModelV1, HistoricalRun } from "./race-file-model";
+import { getOperationalRaceState } from "./intelligence-orchestrator";
+import { buildPressureEngine } from "./pressure-engine";
+import { buildTempoEngine } from "./tempo-engine";
+import { buildPositionEngine } from "./position-engine";
+import { buildSpeedProfile } from "./speed-profile";
+import { buildTrackSignature } from "./track-signature";
+
+function sampleRun(index: number, runner: string): HistoricalRun {
+  return {
+    date: index === 0 ? "2026-06-12" : "2026-05-25",
+    track: index === 0 ? "FLEM" : "CAUL",
+    race: index === 0 ? "BM84 HCP" : "BM78 HCP",
+    distance: index === 0 ? "1400m" : "1300m",
+    raceClass: index === 0 ? "BM84" : "BM78",
+    condition: index === 0 ? "GOOD 4" : "SOFT 5",
+    barrier: index + 3,
+    weight: index === 0 ? "58.0kg" : "57.5kg",
+    jockey: index === 0 ? "J Allen" : "B Melham",
+    sp: index === 0 ? "$5.50" : "$7.00",
+    finish: index === 0 ? "2nd" : "4th",
+    margin: index === 0 ? "0.4L" : "1.8L",
+    officialRaceTime: index === 0 ? "1:22.36" : "1:16.88",
+    edgeiqRaceStrength: index === 0 ? 87.4 : 82.1,
+    edgeiqRunRating: index === 0 ? 89.6 : 84.8,
+    relativePerformance: index === 0 ? "+2.7" : "+0.8",
+    positionInRunning: {
+      jump: "8th",
+      m800: "7th",
+      m600: "5th",
+      m400: "4th",
+      m200: "2nd",
+      finish: index === 0 ? "2nd" : "4th",
+    },
+    speedProfile: [
+      { marker: "800m", position: "7th", lengthsVsStandard: "+2.3L", expected: "+2.8L", variance: "+0.5L" },
+      { marker: "600m", position: "5th", lengthsVsStandard: "+1.6L", expected: "+2.2L", variance: "+0.6L" },
+      { marker: "400m", position: "4th", lengthsVsStandard: "+0.8L", expected: "+1.3L", variance: "+0.5L" },
+      { marker: "200m", position: "2nd", lengthsVsStandard: "+0.2L", expected: "+0.6L", variance: "+0.4L" },
+      { marker: "FINISH", position: index === 0 ? "2nd" : "4th", lengthsVsStandard: index === 0 ? "-0.1L" : "+1.0L", expected: "+0.0L", variance: index === 0 ? "-0.1L" : "+1.0L" },
+    ],
+    pressureRating: index === 0 ? 91 : 84,
+    tempoRating: index === 0 ? 88 : 80,
+    trackSignatureMatch: index === 0 ? "92%" : "81%",
+    raceFlowMatch: index === 0 ? "Positive" : "Reference",
+  };
+}
+
+export function buildRaceFileV2(): RaceFileModelV1 {
+  const state = getOperationalRaceState();
+  const pressure = buildPressureEngine(state);
+  const tempo = buildTempoEngine(state);
+  const position = buildPositionEngine(state);
+  const speed = buildSpeedProfile(state);
+  const track = buildTrackSignature(state);
+
+  const names =
+    liveRaceRunnerSnapshot.length > 0
+      ? liveRaceRunnerSnapshot.map((runner) => runner.runner).filter(Boolean)
+      : ["Runner 1", "Runner 2", "Runner 3", "Runner 4"];
+
+  return {
+    officialRace: {
+      meeting: state.meetingName,
+      raceNumber: state.raceNumber,
+      raceName: state.raceName,
+      distance: state.distance,
+      raceClass: state.raceClass,
+      trackCondition: state.trackCondition,
+      rail: state.rail,
+      officialRaceTime: "Pending result",
+      prizeMoney: "Race file",
+    },
+    raceRead: {
+      raceFlow: position.position,
+      pressure: pressure.band,
+      tempo: tempo.band,
+      trackSignature: track.todayPattern,
+      speedProfile: speed.confidence,
+      confidence: pressure.confidence,
+    },
+    field: names.map((runner, index) => {
+      const liveRunner = findLiveRunnerSnapshot(runner);
+
+      return {
+      official: {
+        no: index + 1,
+        runner,
+        barrier: index + 2,
+        weight: `${58 - index * 0.5}kg`,
+        jockey: liveRunner?.jockey || (runner as any)?.jockey || (runner as any)?.official?.jockey || "Not listed",
+        trainer: liveRunner?.trainer || (runner as any)?.trainer || (runner as any)?.official?.trainer || "Not listed",
+        market: liveRunner?.market || (runner as any)?.market || (runner as any)?.official?.market || "Pending",
+        status: "ACTIVE",
+      },
+      edgeRating: liveRunner?.edgeRating || (index === 0 ? "89.6" : index < 3 ? "84.0" : "Developing"),
+      runnerDNA: liveRunner?.runnerDNA || (runner as any)?.runnerDNA || "Awaiting DNA",
+      speedProfile: index === 0 ? speed.confidence : index < 3 ? "Strong" : "Developing",
+      trackSignature: index === 0 ? track.todayPattern : "Reference",
+      raceFlow: index === 0 ? "Positive" : "Monitoring",
+      marketBehaviour: liveRunner?.market ? "Live market available" : "Market pending",
+      assessment:
+        index === 0
+          ? "Key chance profile. Past form is available and should be tested against today's race."
+          : "Capable profile, but needs the right race shape before taking a firm view.",
+      historicalRuns: [sampleRun(0, runner), sampleRun(1, runner)],
+    };
+    }),
+  };
+}
+
+
+================================================================================
+FILE: src\edgeiq-os\services\operational-state\OperationalRaceStateService.ts
+================================================================================
+
+import { buildSystemAlerts } from "../alerts";
+import { registerProductionAdapterSlots } from "../adapters";
+import { composeOperationalBriefing } from "../briefing";
+import {
+  buildRegisteredIntelligence,
+  clearIntelligenceRegistry,
+} from "../intelligence-registry";
+import { buildCoverageFromModules } from "../intelligence-coverage";
+import { buildOperationalCorrelation } from "../operational-correlation";
+import { buildOperationalDecision } from "../operational-decision";
+import { buildOperationalFindings } from "../operational-reasoning";
+import { buildExecutiveSummary } from "../executive-summary";
+import { buildOperationalEvents } from "../operational-events";
+import { seedTimeline } from "../timeline";
+import type { OperationalRaceState } from "./OperationalRaceStateTypes";
+
+export function buildOperationalRaceState(): OperationalRaceState {
+  clearIntelligenceRegistry();
+  registerProductionAdapterSlots();
+
+  const moduleOutputs = buildRegisteredIntelligence();
+  const evidence = moduleOutputs.flatMap((module) => module.evidence);
+  const briefing = composeOperationalBriefing(evidence);
+  const alerts = buildSystemAlerts();
+  const coverage = buildCoverageFromModules(moduleOutputs);
+  const correlation = buildOperationalCorrelation(moduleOutputs);
+  const findings = buildOperationalFindings(evidence, correlation);
+  const decision = buildOperationalDecision(correlation, findings);
+  const executiveSummary = buildExecutiveSummary(
+    decision,
+    findings,
+    correlation,
+    moduleOutputs.map((module) => module.feedHealth),
+    alerts,
+    coverage,
+  );
+  const events = buildOperationalEvents(moduleOutputs, correlation, decision, findings);
+
+  return {
+    raceId: "current-race",
+    meetingName: "Current Meeting",
+    raceNumber: 1,
+    raceName: "Current Race",
+    distance: "",
+    raceClass: "",
+    trackCondition: "",
+    rail: "",
+    confidence: correlation.operationalConfidence,
+    referenceRunner: "Production runner pending",
+
+    currentSituation: briefing.currentSituation,
+    whyItMatters: briefing.whyItMatters,
+    currentAssessment: briefing.currentAssessment,
+    marketRelationship: briefing.marketRelationship,
+
+    evidence,
+    timeline: seedTimeline(),
+    feedHealth: moduleOutputs.map((module) => module.feedHealth),
+    alerts,
+    coverage,
+    correlation,
+    findings,
+    decision,
+    executiveSummary,
+    events,
+
+    status:
+      moduleOutputs.every((module) => module.status === "READY")
+        ? "READY"
+        : "PARTIAL",
+  };
+}
+
+
+================================================================================
+FILE: src\edgeiq-os\race\RaceFileV3.tsx
+================================================================================
+import { Fragment, type ReactNode, useMemo, useState } from "react";
+import { RaceFileService } from "../services/RaceFileService";
+import { type GlobalSection } from "./components/AppNavigation";
+import { HistoricalRunCard } from "./components/HistoricalRunCard";
+import { GlobalResultsWorkspace } from "./components/GlobalResultsWorkspace";
+import { LabWorkspace } from "./components/LabWorkspace";
+import { MeetingWorkspace } from "./components/MeetingWorkspace";
+import { MeetingsWorkspace } from "./components/MeetingsWorkspace";
+import { RaceWorkspace } from "./components/RaceWorkspace";
+import { RunnerProfileWorkspace } from "./components/RunnerProfileWorkspace";
+import { RunnerTabs, type RunnerWorkspaceMode } from "./components/RunnerTabs";
+import { SettingsWorkspace } from "./components/SettingsWorkspace";
+import { WorkspaceShell } from "./components/WorkspaceShell";
+
+const file = RaceFileService.buildRaceBook();
+const primary = file.field[0];
+
+type WorkbenchMode = RunnerWorkspaceMode;
+type ViewLevel = "meetings" | "meeting" | "race" | "runner";
+type SectionalStandard = "sameClass" | "open" | "trackDistance" | "todayProjection";
+
+function clean(value: any): string {
+  if (value === null || value === undefined || value === "") return "-";
+  return String(value)
+    .replace(/\s+/g, " ")
+    .trim();
+}
+function market(value: any): string {
+  const raw = clean(value);
+  if (!raw || raw === "-" || raw.toUpperCase() === "MISSING") return "Not available";
+  if (raw.toUpperCase() === "SCRATCHED") return "Scratched";
+  const n = Number(raw);
+  return Number.isFinite(n) ? `$${n.toFixed(n < 10 ? 2 : 0)}` : raw;
+}
+
+function weight(value: any): string {
+  const raw = clean(value);
+  return raw && raw !== "-" ? raw : "Not available";
+}
+
+function dna(value: any): string {
+  const raw = clean(value);
+  if (!raw || raw === "-" || raw.toUpperCase().includes("HTTP")) return "Not available";
+  return raw;
+}
+
+function score(run: any): number {
+  return Number(run?.professionalForm?.assignment?.score ?? 0);
+}
+
+function importance(run: any): "PRIMARY" | "SUPPORTING" | "REFERENCE" | "BACKGROUND" {
+  const s = score(run);
+  if (s >= 88) return "PRIMARY";
+  if (s >= 76) return "SUPPORTING";
+  if (s >= 62) return "REFERENCE";
+  return "BACKGROUND";
+}
+
+function chanceTypeLabel(value: string) {
+  if (value === "PRIMARY") return "Key Chance";
+  if (value === "SUPPORTING") return "Genuine Chance";
+  if (value === "REFERENCE") return "Useful Run";
+  if (value === "BACKGROUND") return "Watch";
+  return "Forgive / Ignore";
+}
+
+function runReferenceLabel(value: string) {
+  if (value === "PRIMARY") return "Key Run";
+  if (value === "SUPPORTING") return "Strong Run";
+  if (value === "REFERENCE") return "Useful Run";
+  if (value === "BACKGROUND") return "Watch";
+  return "Query Run";
+}
+
+function suitabilityFromScore(value: number) {
+  if (value >= 75) return "Strong";
+  if (value >= 55) return "Suitable";
+  if (value >= 35) return "Moderate";
+  return "Query";
+}
+
+function punterCopy(value: any) {
+  return clean(value)
+    .replace(/Strong historical\s+evidence for today.?s assignment\./gi, "Strong form read for today's race.")
+    .replace(/Strong in defeat\. The performance rated better than the finishing position suggests\./gi, "Better than the finishing position suggests. Previous run has more merit than it reads on paper.")
+    .replace(/Relevant historical assignment with usable evidence for today\./gi, "Relevant past run with usable clues for today.")
+    .replace(/Form line requires caution due to weaker race strength\./gi, "Form line needs caution because that race was weaker.")
+    .replace(/Background form\. Useful context, but not a primary match for today\./gi, "Watch run. Useful context, but not a key read for today.")
+    .replace(/today's assignment/gi, "today's race")
+    .replace(/assignment/gi, "race setup")
+    .replace(/historical\s+evidence/gi, "past form")
+    .replace(/evidence quality/gi, "setup read")
+    .replace(/evidence/gi, "form")
+    .trim();
+}
+
+function ratingBand(value: any): string {
+  const n = Number(value ?? 0);
+  if (n >= 90) return "Elite";
+  if (n >= 84) return "Strong";
+  if (n >= 76) return "Positive";
+  if (n >= 68) return "Neutral";
+  return "Caution";
+}
+
+function narrative(run: any): string {
+  return punterCopy(run?.professionalForm?.evidence?.narrative ?? "Useful past form. Open the run to test whether it transfers to today's race.");
+}
+
+function verdict(run: any): string {
+  return clean(run?.professionalForm?.assignment?.verdict ?? "Needs context");
+}
+
+function reasons(run: any): string[] {
+  const list = run?.professionalForm?.assignment?.reasons ?? [];
+  if (list.length) return list.map((x: string) => punterCopy(x));
+  return ["Past race provides a useful form clue", "Performance can be tested against today's race", "Race strength and run rating provide context"];
+}
+
+function changes(run: any): string[] {
+  const list = run?.professionalForm?.assignment?.watch ?? [];
+  if (list.length) return list.map((x: string) => punterCopy(x));
+  return ["Track, pressure and class should be checked before relying on this run", "Use as a clue, not as a standalone conclusion"];
+}
+
+function quality(run: any): string {
+  const s = score(run);
+  if (s >= 88) return "Strong";
+  if (s >= 70) return "Useful";
+  if (s >= 50) return "Limited";
+  return "Weak";
+}
+
+function RatingTile({ label, value, sub }: { label: string; value: any; sub?: string }) {
+  const band = ratingBand(value);
+  return (
+    <article className={`eiq-rating-tile is-${band.toLowerCase()}`}>
+      <span>{label}</span>
+      <strong>{clean(value)}</strong>
+      <em>{sub ?? band}</em>
+    </article>
+  );
+}
+
+function EvidenceBadge({ run }: { run: any }) {
+  const label = importance(run);
+  const display =
+    runReferenceLabel(label);
+  return <b className={`eiq-evidence-badge is-${label.toLowerCase()}`}>{display}</b>;
+}
+
+function MatchBar({ value }: { value: number }) {
+  const width = Math.max(4, Math.min(100, value));
+  return (
+    <div className="eiq-match-bar">
+      <i style={{ width: `${width}%` }} />
+      <strong>{value}%</strong>
+    </div>
+  );
+}
+
+
+function VerdictPanel({ run }: { run: any }) {
+  const match = score(run);
+  const level = quality(run);
+  const role = importance(run);
+  const positives = reasons(run).slice(0, 3);
+  const risks = changes(run).slice(0, 3);
+
+  return (
+    <section className="eiq-verdict-panel">
+      <div>
+        <span>EDGEiQ Verdict</span>
+        <strong>{role === "PRIMARY" ? "Key run for today's view." : role === "SUPPORTING" ? "Strong run once today's differences are checked." : "Use as wider context only."}</strong>
+        <p>
+          Race suitability is {suitabilityFromScore(match).toLowerCase()}. This past run helps explain the horse, but should still be tested against today's track, class, pressure, tempo and barrier.
+        </p>
+      </div>
+
+      <aside>
+        <span>ETI</span>
+        <MatchBar value={match} />
+        <b>{chanceTypeLabel(role)}</b>
+      </aside>
+
+      <article>
+        <span>Best Support</span>
+        <ul>{positives.map((x) => <li key={x}>- {x}</li>)}</ul>
+      </article>
+
+      <article>
+        <span>Main Risks</span>
+        <ul>{risks.map((x) => <li key={x}>- {x}</li>)}</ul>
+      </article>
+    </section>
+  );
+}
+
+function FactorScorePanel({ run }: { run: any }) {
+  const evidence = run.professionalForm?.evidence ?? {};
+  const rows = [
+    ["ERI", evidence.raceStrength?.overall ?? run.edgeiqRaceStrength, "+", "Strong past form"],
+    ["EPI", evidence.runRating?.overall ?? run.edgeiqRunRating, "+", "Performance quality"],
+    ["Pressure", evidence.pressure, "+", "Pressure profile"],
+    ["Tempo", evidence.tempo, "+", "Race speed profile"],
+    ["Barrier", run.professionalForm?.official?.barrier, "+/-", "Needs comparison"],
+    ["Track", run.professionalForm?.official?.condition, "+/-", "Condition transfer"],
+  ];
+
+  return (
+    <section className="eiq-factor-score-panel">
+      <span>Form Weighting</span>
+      <table>
+        <thead>
+          <tr><th>Factor</th><th>Value</th><th>Impact</th><th>Reason</th></tr>
+        </thead>
+        <tbody>
+          {rows.map(([factor, value, impact, reason]) => (
+            <tr key={factor}>
+              <td>{factor}</td>
+              <td>{clean(value)}</td>
+              <td><b className={impact === "+" ? "is-plus" : "is-watch"}>{impact}</b></td>
+              <td>{reason}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </section>
+  );
+}
+
+
+function similarityScore(value: any, max = 100): number {
+  const n = Number(value ?? 0);
+  if (!Number.isFinite(n)) return 50;
+  return Math.max(0, Math.min(max, n));
+}
+
+function SimilarityEnginePanel({ run }: { run: any }) {
+  const evidence = run.professionalForm?.evidence ?? {};
+  const official = run.professionalForm?.official ?? {};
+  const match = score(run);
+
+  const factors = [
+    ["Distance", clean(official.distance), clean(file.raceBook.official.distance), clean(official.distance) === clean(file.raceBook.official.distance) ? 100 : 58],
+    ["Track", clean(official.condition), clean(file.raceBook.official.trackCondition), clean(official.condition) === clean(file.raceBook.official.trackCondition) ? 92 : 48],
+    ["Class", clean(official.raceClass), clean(file.raceBook.official.raceClass), clean(official.raceClass) === clean(file.raceBook.official.raceClass) ? 92 : 62],
+    ["Pressure", clean(evidence.pressure), clean(file.raceBook.intelligence.pressure), 86],
+    ["Tempo", clean(evidence.tempo), clean(file.raceBook.intelligence.tempo), 82],
+    ["ERI", clean(evidence.raceStrength?.overall ?? run.edgeiqRaceStrength), "Today benchmark", similarityScore(evidence.raceStrength?.overall ?? run.edgeiqRaceStrength)],
+    ["EPI", clean(evidence.runRating?.overall ?? run.edgeiqRunRating), "Performance benchmark", similarityScore(evidence.runRating?.overall ?? run.edgeiqRunRating)],
+    ["Barrier", clean(official.barrier), clean(primary?.official?.barrier), clean(official.barrier) === clean(primary?.official?.barrier) ? 90 : 55],
+  ];
+
+  return (
+    <section className="eiq-similarity-engine">
+      <header>
+        <div>
+          <span>ETI Similarity Engine</span>
+          <strong>Race Suitability</strong>
+          <p>EDGEIQ compares the past performance against today's race so the analyst can see what lines up and what needs challenging.</p>
+        </div>
+        <aside>
+          <span>ETI</span>
+          <MatchBar value={match} />
+        </aside>
+      </header>
+
+      <div className="eiq-similarity-grid">
+        {factors.map(([factor, historical, today, value]) => (
+          <article key={factor}>
+            <div>
+              <span>{factor}</span>
+              <strong>{value}%</strong>
+            </div>
+            <i><b style={{ width: `${value}%` }} /></i>
+            <footer>
+              <em>{historical}</em>
+              <em>{today}</em>
+            </footer>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function EvidenceStoryPanel({ run }: { run: any }) {
+  const match = score(run);
+  const role = importance(run);
+  const evidence = run.professionalForm?.evidence ?? {};
+  const official = run.professionalForm?.official ?? {};
+
+  return (
+    <section className="eiq-evidence-story">
+        <span>Analyst Verdict</span>
+        <strong>
+          {role === "PRIMARY"
+          ? "Key run. Strong form read for today's assessment."
+          : role === "SUPPORTING"
+            ? "Strong run once today's differences are checked."
+            : "Watch only. Useful context, not a standalone benchmark."}
+      </strong>
+      <p>
+        The selected {clean(official.track)} run returned a {clean(evidence.runRating?.overall ?? run.edgeiqRunRating)} EPI and {clean(evidence.raceStrength?.overall ?? run.edgeiqRaceStrength)} ERI.
+        Race suitability is {suitabilityFromScore(match).toLowerCase()}, so EDGEIQ treats it as a {runReferenceLabel(role).toLowerCase()}. The analyst should use it to understand the horse, then challenge it against today's track, class, pressure, tempo and barrier.
+      </p>
+    </section>
+  );
+}
+
+
+
+function sectionalProfile(run: any, standard: SectionalStandard) {
+  const base = score(run);
+  const modifier = standard === "sameClass" ? 0 : standard === "open" ? 0.7 : standard === "trackDistance" ? 0.35 : -0.25;
+  const early = Number(((72 - base) / 18 + modifier).toFixed(1));
+  const mid = Number(((68 - base) / 14 + modifier).toFixed(1));
+  const late = Number(((74 - base) / 20 + modifier).toFixed(1));
+  const edgeiq = Number(((early + mid + late) / 3).toFixed(1));
+  return { early, mid, late, edgeiq };
+}
+
+function SectionalDelta({ value }: { value: number }) {
+  const label = `${value > 0 ? "+" : ""}${value.toFixed(1)}L`;
+  const cls = value <= -1.5 ? "is-elite" : value < -0.3 ? "is-inside" : value <= 0.5 ? "is-standard" : value <= 1.5 ? "is-outside" : "is-poor";
+  return <b className={`eiq-sectional-delta ${cls}`}>{label}</b>;
+}
+
+function ComparisonTable({ run }: { run: any }) {
+  const official = run.professionalForm?.official ?? {};
+  const evidence = run.professionalForm?.evidence ?? {};
+  const today = file.raceBook.official;
+  const intelligence = file.raceBook.intelligence;
+
+  const rows = [
+    ["Distance", official.distance, today.distance, clean(official.distance) === clean(today.distance) ? "Same" : "Different"],
+    ["Track", official.condition, today.trackCondition, clean(official.condition) === clean(today.trackCondition) ? "Same" : "Different"],
+    ["Class", official.raceClass, today.raceClass, clean(official.raceClass) === clean(today.raceClass) ? "Similar" : "Check"],
+    ["Barrier", official.barrier, primary?.official?.barrier, "Compare"],
+    ["Weight", official.weight, primary?.official?.weight, "Compare"],
+    ["Pressure", evidence.pressure, intelligence.pressure, clean(evidence.pressure) === clean(intelligence.pressure) ? "Aligned" : "Changed"],
+    ["Tempo", evidence.tempo, intelligence.tempo, clean(evidence.tempo) === clean(intelligence.tempo) ? "Aligned" : "Changed"],
+    ["Race Flow", evidence.raceFlow, intelligence.raceFlow, clean(evidence.raceFlow) === clean(intelligence.raceFlow) ? "Aligned" : "Changed"],
+  ];
+
+  return (
+    <section className="eiq-what-changed">
+      <span>Today vs Historical</span>
+      <table>
+        <thead>
+          <tr><th>Factor</th><th>Historical</th><th>Today</th><th>Assessment</th></tr>
+        </thead>
+        <tbody>
+          {rows.map(([factor, historical, current, assessment]) => (
+            <tr key={factor}>
+              <td>{factor}</td>
+              <td>{clean(historical)}</td>
+              <td>{clean(current)}</td>
+              <td>{assessment}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </section>
+  );
+}
+
+function RunInvestigationReport({ run, esiOverall, colSpan }: { run: any; esiOverall?: ReactNode; colSpan?: number }) {
+  return (
+    <HistoricalRunCard
+      run={run}
+      esiOverall={esiOverall}
+      colSpan={colSpan}
+      clean={clean}
+      weight={weight}
+      market={market}
+      ratingBand={ratingBand}
+      verdict={verdict}
+      narrative={narrative}
+      reasons={reasons}
+      renderCompare={(selectedRun) => (
+        <>
+          <SimilarityEnginePanel run={selectedRun} />
+          <ComparisonTable run={selectedRun} />
+          <FactorScorePanel run={selectedRun} />
+          <EvidenceStoryPanel run={selectedRun} />
+          <VerdictPanel run={selectedRun} />
+        </>
+      )}
+    />
+  );
+}
+
+
+function ProfessionalFormTable({ runs }: { runs: any[] }) {
+  const [openKey, setOpenKey] = useState<string | null>(null);
+
+  return (
+    <div className="eiq-professional-form-table eiq-investigation-table-v2">
+      <table>
+        <thead>
+          <tr>
+            <th></th><th>Date</th><th>Track</th><th>Dist</th><th>Class</th><th>Cond</th><th>Bar</th><th>Wt</th><th>Jockey</th><th>SP</th><th>Fin</th><th>Margin</th><th>Run</th><th>Race</th><th>Pressure</th><th>Tempo</th><th>Use</th><th>Why</th>
+          </tr>
+        </thead>
+        <tbody>
+          {runs.map((run: any, index: number) => {
+            const key = `${run.date}-${run.track}-${run.race}-${index}`;
+            const official = run.professionalForm?.official ?? {};
+            const evidence = run.professionalForm?.evidence ?? {};
+            const isOpen = openKey === key;
+
+            return (
+              <Fragment key={key}>
+                <tr className={isOpen ? "is-open" : ""} onClick={() => setOpenKey(isOpen ? null : key)}>
+                  <td>{isOpen ? "-" : "+"}</td>
+                  <td>{clean(official.date)}</td>
+                  <td><strong>{clean(official.track)}</strong></td>
+                  <td>{clean(official.distance)}</td>
+                  <td>{clean(official.raceClass)}</td>
+                  <td>{clean(official.condition)}</td>
+                  <td>{clean(official.barrier)}</td>
+                  <td>{weight(official.weight)}</td>
+                  <td>{clean(official.jockey)}</td>
+                  <td>{market(official.sp)}</td>
+                  <td>{clean(official.finish)}</td>
+                  <td>{clean(official.margin)}</td>
+                  <td><b>{clean(evidence.runRating?.overall ?? run.edgeiqRunRating)}</b><em>{ratingBand(evidence.runRating?.overall ?? run.edgeiqRunRating)}</em></td>
+                  <td><b>{clean(evidence.raceStrength?.overall ?? run.edgeiqRaceStrength)}</b><em>{ratingBand(evidence.raceStrength?.overall ?? run.edgeiqRaceStrength)}</em></td>
+                  <td>{clean(evidence.pressure)}</td>
+                  <td>{clean(evidence.tempo)}</td>
+                  <td>{importance(run) === "PRIMARY" ? "Key" : importance(run) === "BACKGROUND" ? "Watch" : "Review"}</td>
+                  <td>{narrative(run)}</td>
+                </tr>
+                {isOpen ? <RunInvestigationReport run={run} colSpan={18} /> : null}
+              </Fragment>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+export function RaceFileV3() {
+  const [activeSection, setActiveSection] = useState<GlobalSection>("meetings");
+  const [viewLevel, setViewLevel] = useState<ViewLevel>("meetings");
+  const [selectedRunnerIndex, setSelectedRunnerIndex] = useState(0);
+  const [mode, setMode] = useState<WorkbenchMode>("profile");
+  const [sectionalStandard, setSectionalStandard] = useState<SectionalStandard>("sameClass");
+  const selectedRunner = file.field[selectedRunnerIndex] ?? primary;
+
+  const displayedRuns = useMemo(() => {
+    if (!selectedRunner) return [];
+    if (mode === "results") return (selectedRunner as any).evidenceRuns ?? selectedRunner.historicalRuns;
+    return selectedRunner.historicalRuns;
+  }, [mode, selectedRunner]);
+
+  const bestRun = displayedRuns[0];
+
+  function openSection(section: GlobalSection) {
+    setActiveSection(section);
+    if (section === "meetings") setViewLevel("meetings");
+  }
+
+  const shellTitle =
+    activeSection === "results"
+      ? "Global Results"
+      : activeSection === "lab"
+        ? "EDGEIQ LAB"
+        : activeSection === "settings"
+          ? "Settings"
+          : viewLevel === "runner"
+            ? clean(selectedRunner?.official?.runner)
+            : viewLevel === "race"
+              ? `${clean(file.raceBook.official.meeting)} R${clean(file.raceBook.official.raceNumber)}`
+              : viewLevel === "meeting"
+                ? clean(file.raceBook.official.meeting)
+                : "Meetings";
+
+  const shellMeta =
+    activeSection === "meetings"
+      ? `${clean(file.raceBook.official.meeting)} | R${clean(file.raceBook.official.raceNumber)} | ${clean(file.raceBook.official.distance)} | ${clean(file.raceBook.official.trackCondition)}`
+      : undefined;
+
+  return (
+    <WorkspaceShell activeSection={activeSection} onSectionChange={openSection} eyebrow="EDGEIQ OS" title={shellTitle} meta={shellMeta}>
+      {activeSection === "results" ? (
+        <GlobalResultsWorkspace />
+      ) : activeSection === "lab" ? (
+        <LabWorkspace />
+      ) : activeSection === "settings" ? (
+        <SettingsWorkspace />
+      ) : viewLevel === "meetings" ? (
+        <MeetingsWorkspace
+          raceBook={file.raceBook}
+          field={file.field}
+          clean={clean}
+          onOpenMeeting={() => setViewLevel("meeting")}
+        />
+      ) : viewLevel === "meeting" ? (
+        <MeetingWorkspace
+          raceBook={file.raceBook}
+          field={file.field}
+          clean={clean}
+          onBackToMeetings={() => setViewLevel("meetings")}
+          onOpenRace={() => setViewLevel("race")}
+        />
+      ) : viewLevel === "race" ? (
+        <RaceWorkspace
+          raceBook={file.raceBook}
+          field={file.field}
+          selectedRunnerIndex={selectedRunnerIndex}
+          clean={clean}
+          weight={weight}
+          market={market}
+          onBackToMeeting={() => setViewLevel("meeting")}
+          onOpenRunner={(index) => {
+            setSelectedRunnerIndex(index);
+            setMode("profile");
+            setViewLevel("runner");
+          }}
+        />
+      ) : (
+        <RunnerProfileWorkspace
+          runner={selectedRunner}
+          raceBook={file.raceBook}
+          field={file.field}
+          mode={mode}
+          setMode={setMode}
+          displayedRuns={displayedRuns}
+          bestRun={bestRun}
+          sectionalStandard={sectionalStandard}
+          setSectionalStandard={setSectionalStandard}
+          clean={clean}
+          weight={weight}
+          market={market}
+          dna={dna}
+          importance={importance}
+          sectionalProfile={sectionalProfile}
+          renderSectionalDelta={(value) => <SectionalDelta value={value} />}
+          renderHistoricalRunCard={(run, sec) => <RunInvestigationReport run={run} esiOverall={<SectionalDelta value={sec.edgeiq} />} />}
+          onBackToRace={() => setViewLevel("race")}
+        />
+      )}
+    </WorkspaceShell>
+  );
+}
+
+
+================================================================================
+CANDIDATE PUBLIC DATA FILES
+================================================================================
+edgeiq_runner_profile_stats_field_mapping_v1.txt | 2,809 bytes | 1783626443631706500
+edgeiq_ecology_snapshot_manifest_v1.csv | 1,252 bytes | 1783137776555924500
+edgeiq_ecology_snapshot_summary_v1.csv | 394 bytes | 1783137776553919500
+edgeiq_ecology_snapshot_archive_v1.csv | 2,947,541 bytes | 1783137776551916600
+edgeiq_race_probability_integrity_v1_summary.csv | 293 bytes | 1783105280037983900
+edgeiq_race_probability_integrity_v1.csv | 1,712 bytes | 1783105280032262000
+edgeiq_live_runner_board_probability_normalisation_v1_summary.csv | 483 bytes | 1783105279077171900
+edgeiq_live_runner_board_probability_normalisation_v1_detail.csv | 2,505 bytes | 1783105279071034300
+edgeiq_live_runner_board_v1.csv | 180,223 bytes | 1783105279068630800
+edgeiq_live_runner_board_v1_BEFORE_PROB_NORMALISE_V1.csv | 172,980 bytes | 1783105278552115000
+edgeiq_live_runner_board_v1_diagnostics.csv | 346 bytes | 1783105274671984400
+edgeiq_live_runner_board_v1_unmatched.csv | 1,720 bytes | 1783105274666086200
+edgeiq_live_v6_1_research_action_summary_v1_TAB_ONLY_TODAY.csv | 35 bytes | 1783105273672781200
+edgeiq_live_v6_1_research_vs_production_comparison_v1_TAB_ONLY_TODAY.csv | 9,673 bytes | 1783105273672781200
+edgeiq_current_fair_prices_V6_1_RESEARCH_replay_summary.csv | 531 bytes | 1783105273031191300
+edgeiq_current_fair_prices_V6_1_RESEARCH_replay.csv | 192,908 bytes | 1783105273021831600
+edgeiq_current_field_projection_V6_1_RESEARCH_band_migration.csv | 431 bytes | 1783105271366735400
+edgeiq_current_field_projection_V6_1_RESEARCH_replay.csv | 182,714 bytes | 1783105271366735400
+edgeiq_current_field_projection_V6_1_RESEARCH_replay_summary.csv | 878 bytes | 1783105271366735400
+edgeiq_current_fair_prices_review_v5_2_audit.csv | 8,339 bytes | 1783105234499075600
+edgeiq_current_fair_prices_review_v5_2.csv | 33,228 bytes | 1783105234461346600
+edgeiq_current_field_projection_v5_2_audit.csv | 16,871 bytes | 1783105232737067600
+edgeiq_current_field_projection_v5_2.csv | 152,093 bytes | 1783105232688277200
+edgeiq_current_race_class_correction_v5_1_audit.csv | 44,854 bytes | 1783105215639683000
+edgeiq_current_race_class_correction_v5_1.csv | 62,090 bytes | 1783105215631415200
+edgeiq_active_race_selector.csv | 942 bytes | 1783105214853130700
+edgeiq_vic_live_terminal_feed_v1_summary.csv | 378 bytes | 1783105214179028200
+edgeiq_live_terminal_feed_v1.csv | 201,150 bytes | 1783105214168226200
+edgeiq_vic_live_terminal_feed_v1.csv | 201,150 bytes | 1783105214164950100
+edgeiq_live_terminal_feed_v1_TAB_ONLY_TODAY.csv | 97,827 bytes | 1783105213364689400
+edgeiq_current_day_source_inventory_audit_v1.csv | 3,286 bytes | 1783105213094893500
+edgeiq_current_day_source_inventory_summary_v1.csv | 1,142 bytes | 1783105213094893500
+edgeiq_vic_three_day_meeting_diagnostics.csv | 1,768 bytes | 1783105211562497600
+edgeiq_vic_three_day_meeting_universe.csv | 166,918 bytes | 1783105211562497600
+edgeiq_vic_three_day_race_fields.csv | 166,918 bytes | 1783105211562497600
+edgeiq_vic_three_day_meeting_calendar_v1.csv | 234 bytes | 1783105211257238500
+race_card_report.csv | 283,180 bytes | 1783105210913804500
+edgeiq_tab_calendar_racecards_v1.csv | 283,180 bytes | 1783105210908799400
+edgeiq_tab_calendar_racecards_vic_v1.csv | 283,180 bytes | 1783105210899750200
+edgeiq_tab_calendar_racecards_summary_v1.csv | 450 bytes | 1783105210547382500
+edgeiq_tab_calendar_racecards_vic_DAYPLUS2_v1.csv | 580 bytes | 1783105210530689100
+edgeiq_tab_calendar_racecards_vic_TOMORROW_v1.csv | 102,251 bytes | 1783105209756214100
+edgeiq_tab_calendar_racecards_vic_TODAY_v1.csv | 161,290 bytes | 1783105207057183600
+edgeiq_pre_race_health_check_v1.csv | 1,326 bytes | 1783060414831849600
+edgeiq_live_runner_board_governed_v1_summary.csv | 552 bytes | 1783060363244602300
+edgeiq_live_runner_board_governed_v1.csv | 172,763 bytes | 1783060363237778500
+edgeiq_historical_race_feed_v1.csv | 14,536,172 bytes | 1783050225963823400
+edgeiq_historical_meeting_feed_v1.csv | 726,856 bytes | 1783050140730991700
+edgeiq_post_race_data_quality_summary_v1.csv | 486 bytes | 1783040417310802400
+edgeiq_post_race_capture_orchestrator_summary_v1.csv | 3,228 bytes | 1783038321346835600
+edgeiq_sp_join_trace_summary_v1.csv | 193 bytes | 1783038073043431000
+edgeiq_sp_join_trace_v1.csv | 86,249,647 bytes | 1783038072999978900
+edgeiq_results_calendar_races_v1.csv | 14,013,526 bytes | 1783037488097965800
+edgeiq_results_calendar_meetings_v1.csv | 1,026,356 bytes | 1783037487489950000
+edgeiq_live_weather_feed_v1.csv | 14,300 bytes | 1782935190478307300
+edgeiq_live_track_bias_feed_v1.csv | 10,756 bytes | 1782935190215287500
+edgeiq_live_nexus_contextual_feed_v2_1.csv | 144,177 bytes | 1782935187800762000
+edgeiq_market_feed_current_v1.csv | 219,832 bytes | 1782930879279096300
+edgeiq_live_nexus_contextual_feed_v2.csv | 114,257 bytes | 1782930225370929800
+edgeiq_live_nexus_feature_feed_v1.csv | 135,772 bytes | 1782929459633103000
+edgeiq_meetings_zero_races_final_fix.png | 880,717 bytes | 1782892397007794100
+edgeiq_frontend_race_list_key_join_audit_v1.csv | 832 bytes | 1782892178989673500
+edgeiq_meetings_race_list_fallback_audit_v1.csv | 853 bytes | 1782892178866609100
+edgeiq_meetings_zero_races_after_keyfix.png | 877,859 bytes | 1782892110662638900
+edgeiq_vic_three_day_race_list_v1_summary.csv | 284 bytes | 1782891908480518800
+edgeiq_vic_three_day_race_list_v1.csv | 13,148 bytes | 1782891908476172800
+edgeiq_racingcom_three_day_raw_meetings_v1.json | 240,782 bytes | 1782891848569786400
+edgeiq_meetings_zero_races_dom_check.png | 456,325 bytes | 1782891715895505200
+tab_vic_meetings_20260701_debug.json | 3 bytes | 1782887545870421800
+edgeiq_meetings_workspace_v2_report.txt | 1,755 bytes | 1782879136973330900
+edgeiq_meetings_workspace_v2_audit.csv | 1,339 bytes | 1782879136957792400
+edgeiq_meetings_workspace_v2_summary.csv | 307 bytes | 1782879100560856600
+edgeiq_race_tab_product_rebuild_v1_build_status.txt | 290 bytes | 1782794646904760600
+edgeiq_race_tab_product_rebuild_v1_report.txt | 1,065 bytes | 1782794646904760600
+edgeiq_race_tab_product_rebuild_v1_summary.csv | 1,380 bytes | 1782794646896007900
+edgeiq_product_race_page_routing_v1_build_status.txt | 292 bytes | 1782793328392358400
+edgeiq_product_race_page_routing_v1_report.txt | 1,536 bytes | 1782793328392358400
+edgeiq_product_race_page_routing_v1_summary.csv | 1,795 bytes | 1782793328381712600
+EDGEIQ_CURRENT_GEAR_REFRESH_PLAN_V2.txt | 1,576 bytes | 1782761893205677800
+edgeiq_current_source_blocker_register_v1.csv | 3,068 bytes | 1782761893204677600
+edgeiq_current_source_blocker_register_v1_report.txt | 461 bytes | 1782761893204677600
+edgeiq_current_source_blocker_register_v1_summary.csv | 551 bytes | 1782761893204677600
+edgeiq_current_gear_source_discovery_v1_report.txt | 591 bytes | 1782758511045260600
+edgeiq_current_gear_source_discovery_v1_summary.csv | 381 bytes | 1782758511045260600
+edgeiq_current_gear_source_discovery_v1.csv | 108,780 bytes | 1782758511043261400
+EDGEIQ_CURRENT_GEAR_REFRESH_PLAN_V1.txt | 2,379 bytes | 1782758300470464100
+edgeiq_live_runner_board_governed_v1_gear_join_summary.csv | 229 bytes | 1782757130303866600
+edgeiq_live_runner_board_governed_v1_gear_join_audit.csv | 436 bytes | 1782756782963975700
+edgeiq_live_runner_board_governed_v1_gear_join_report.txt | 346 bytes | 1782756782963975700
+edgeiq_current_gear_live_join_v1_report.txt | 332 bytes | 1782756748768171400
+edgeiq_current_gear_live_join_v1_summary.csv | 311 bytes | 1782756748767171400
+edgeiq_current_gear_live_join_v1_unmatched.csv | 22,662 bytes | 1782756748762177900
+edgeiq_current_gear_live_join_v1.csv | 254,802 bytes | 1782756748757667000
+edgeiq_live_runner_board_governed_v1_PRE_GEAR_JOIN_BACKUP_20260629.csv | 233,737 bytes | 1782722714693071500
+edgeiq_current_field_projection_V6_1_RESEARCH_replay_GAP_REPAIR_CANDIDATE_V1.csv | 339,553 bytes | 1782722469889660300
+edgeiq_no_projection_code_trace.csv | 240,267 bytes | 1782721699132934200
+edgeiq_early_market_aware_predictive_model_v1_by_snapshot_age.csv | 907 bytes | 1782715140875912300
+edgeiq_timestamp_safe_market_snapshot_spine_v1_report.txt | 2,432 bytes | 1782713968274894700
+edgeiq_timestamp_safe_market_snapshot_spine_v1_quality.csv | 369 bytes | 1782713968212194500
+edgeiq_timestamp_safe_market_snapshot_spine_v1_summary.csv | 1,091 bytes | 1782713968204193300
+edgeiq_timestamp_safe_market_snapshot_spine_v1.csv | 225,023 bytes | 1782713968203192700
+edgeiq_timestamp_safe_market_snapshot_spine_v1_quarantined.csv | 64,244,278 bytes | 1782713968194232300
+edgeiq_timestamp_safe_market_snapshot_spine_v1_inventory.csv | 250,432 bytes | 1782713966439276100
+edgeiq_comprehensive_predictive_model_research_v1_by_field_size.csv | 6,247 bytes | 1782712866632198100
+edgeiq_predictive_engine_baseline_v1_by_field_size.csv | 1,036 bytes | 1782711562485018900
+edgeiq_demographic_field_nonblank_audit_v1_summary.txt | 12,586 bytes | 1782691952279013600
+edgeiq_demographic_field_nonblank_audit_v1.csv | 23,268 bytes | 1782691952275795800
+edgeiq_product_shell_meetings_v1.csv | 582 bytes | 1782687392753498600
+edgeiq_product_shell_races_v1.csv | 4,701 bytes | 1782687392753498600
+edgeiq_live_runner_board_governed_v1_MAP_V3_BACKUP_20260629.csv | 1,792,639 bytes | 1782681055722809700
+edgeiq_live_runner_board_v1_MAP_V3_BACKUP_20260629.csv | 1,162,955 bytes | 1782681055644698000
+edgeiq_live_runner_board_governed_v1_MAP_V2_BACKUP_20260629.csv | 1,645,575 bytes | 1782680104224195300
+edgeiq_live_runner_board_v1_MAP_V2_BACKUP_20260629.csv | 1,015,891 bytes | 1782680104149452800
+edgeiq_map_full_source_trace_v1_report.txt | 945 bytes | 1782679984913281700
+edgeiq_map_full_source_trace_v1.csv | 1,023,020 bytes | 1782679984909990000
+edgeiq_map_full_source_trace_v1_summary.csv | 926 bytes | 1782679984909990000
+edgeiq_live_runner_board_governed_v1_RATING_OUTLIER_FIX_V1_BACKUP_20260629.csv | 1,618,456 bytes | 1782678713499249100
+edgeiq_live_runner_board_v1_RATING_OUTLIER_FIX_V1_BACKUP_20260629.csv | 988,772 bytes | 1782678713421162800
+edgeiq_live_runner_board_governed_v1_DISPLAY_CLEAN_V2_BACKUP_20260628.csv | 1,470,348 bytes | 1782617897859774000
+edgeiq_live_runner_board_v1_DISPLAY_CLEAN_V2_BACKUP_20260628.csv | 840,664 bytes | 1782617897768326000
+edgeiq_live_runner_board_governed_v1_DISPLAY_CLEAN_BACKUP_20260628.csv | 1,299,195 bytes | 1782617091282457500
+edgeiq_live_runner_board_v1_DISPLAY_CLEAN_BACKUP_20260628.csv | 669,511 bytes | 1782617091204134400
+edgeiq_live_runner_board_governed_v1_RATING_RECOVERY_BACKUP_20260628.csv | 1,252,979 bytes | 1782614413263993700
+edgeiq_live_runner_board_v1_RATING_RECOVERY_BACKUP_20260628.csv | 623,295 bytes | 1782614413202253300
+edgeiq_live_runner_board_governed_v1_FORM_V4_BACKUP_20260628.csv | 1,163,517 bytes | 1782613710087661400
+edgeiq_live_runner_board_v1_FORM_V4_BACKUP_20260628.csv | 533,833 bytes | 1782613710024943400
+edgeiq_form_full_history_trace_all_current_v1_report.txt | 482 bytes | 1782613510976898800
+edgeiq_form_full_history_trace_all_current_v1_summary.csv | 489 bytes | 1782613510976898800
+edgeiq_form_full_history_trace_all_current_v1.csv | 36,822 bytes | 1782613510975522800
+edgeiq_live_runner_board_governed_v1_FORM_V3_BACKUP_20260628.csv | 1,022,745 bytes | 1782612189531692100
+edgeiq_live_runner_board_v1_FORM_V3_BACKUP_20260628.csv | 393,061 bytes | 1782612189478778100
+edgeiq_form_fields_merged_into_runner_boards_v2_report.txt | 949 bytes | 1782608168900653500
+edgeiq_form_fields_merged_into_runner_boards_v2_summary.csv | 494 bytes | 1782608168891516200
+edgeiq_live_runner_board_governed_v1_BACKUP_BEFORE_FORM_FIELDS_MERGE_V2_20260628.csv | 932,625 bytes | 1782608158332054000
+edgeiq_live_runner_board_v1_BACKUP_BEFORE_FORM_FIELDS_MERGE_V2_20260628.csv | 302,941 bytes | 1782608147306633900
+edgeiq_live_runner_board_v1_BACKUP_BEFORE_FORM_FIELDS_MERGE_20260628.csv | 304,500 bytes | 1782608029733920800
+edgeiq_form_no_history_all_sources_trace_v1_report.txt | 3,681 bytes | 1782602397833718200
+edgeiq_form_no_history_all_sources_trace_v1_summary.csv | 110 bytes | 1782602397828903600
+edgeiq_form_no_history_all_sources_trace_v1.csv | 14,401 bytes | 1782602397823762500
+edgeiq_form_no_history_trace_v1_report.txt | 356 bytes | 1782602292233262300
+edgeiq_form_no_history_trace_v1_summary.csv | 131 bytes | 1782602292228877300
+edgeiq_form_no_history_trace_v1.csv | 4,820 bytes | 1782602292224877900
+edgeiq_form_tab_source_trace_v1_report.txt | 5,818 bytes | 1782601877451505300
+edgeiq_form_tab_source_trace_v1.csv | 5,348 bytes | 1782601877450000300
+edgeiq_live_distance_profile_fix_v1.csv | 39,407 bytes | 1782600856767955900
+edgeiq_distance_profile_source_trace_nimbustwothousand_v1_report.txt | 1,661 bytes | 1782600737329936100
+edgeiq_distance_profile_source_trace_nimbustwothousand_v1.csv | 1,111 bytes | 1782600737323935800
+edgeiq_distance_profile_target_rows_edgeiq_live_runner_factor_scorecard_v2_NIMBUSTWOTHOUSAND.csv | 493 bytes | 1782600737311425000
+edgeiq_research_tab_source_trace_v1.csv | 802 bytes | 1782598942745397400
+edgeiq_factor_lab_tab_race_summary_v1.csv | 1,476 bytes | 1782598903303540900
+edgeiq_factor_lab_tab_source_trace_v1.csv | 50,041 bytes | 1782598903278859900
+edgeiq_runners_tab_race_summary_v1.csv | 8,445 bytes | 1782598856308293800
+edgeiq_runners_tab_source_trace_v1.csv | 309,570 bytes | 1782598856278748100
+edgeiq_runners_remaining_source_gap_trace_v1.csv | 72,250 bytes | 1782598832808519300
+edgeiq_map_tab_race_summary_v1.csv | 8,737 bytes | 1782597523525032100
+edgeiq_map_tab_source_trace_v1.csv | 369,209 bytes | 1782597523525032100
+edgeiq_command_final_integrity_race_summary_v1.csv | 8,470 bytes | 1782596839511630700
+edgeiq_command_all_remaining_issues_race_summary_v1.csv | 2,677 bytes | 1782595692913612100
+edgeiq_campaign_source_trace_all_current_v1.csv | 96,314 bytes | 1782595543114339000
+edgeiq_campaign_source_trace_all_current_v1_report.txt | 265 bytes | 1782595543114339000
+edgeiq_campaign_source_trace_all_current_v1_summary.csv | 243 bytes | 1782595543114339000
+edgeiq_command_current_race_consistency_v3_2_report.txt | 2,799 bytes | 1782595257831522600
+edgeiq_command_current_race_consistency_v3_2.csv | 2,390 bytes | 1782595257830019900
+edgeiq_command_current_race_consistency_v3_2_summary.csv | 243 bytes | 1782595257830019900
+edgeiq_command_current_race_consistency_v1.csv | 1,764 bytes | 1782593716468479300
+edgeiq_command_current_race_consistency_v1_report.txt | 3,012 bytes | 1782593716468479300
+edgeiq_command_current_race_consistency_v1_summary.csv | 309 bytes | 1782593716468479300
+edgeiq_live_runner_board_governed_v1_COMMAND_V3_MERGED.csv | 932,625 bytes | 1782593528811415600
+edgeiq_score_source_trace_all_current_v1_report.txt | 461 bytes | 1782593385060819800
+edgeiq_score_source_trace_all_current_v1.csv | 298,505 bytes | 1782593385058402600
+edgeiq_score_source_trace_all_current_v1_summary.csv | 460 bytes | 1782593385058402600
+edgeiq_connection_source_trace_all_current_v1_report.txt | 7,801 bytes | 1782593314078436900
+edgeiq_connection_source_trace_all_current_v1_summary.csv | 293 bytes | 1782593314077407200
+edgeiq_connection_source_trace_all_current_v1.csv | 489,584 bytes | 1782593314076407300
+edgeiq_fresh_current_governed_fix_checkpoint_v1.csv | 913 bytes | 1782556998832079400
+edgeiq_fresh_current_governed_fix_checkpoint_v1_report.txt | 1,020 bytes | 1782556998832079400
+edgeiq_post_fresh_current_visual_data_v1.csv | 1,841 bytes | 1782556960262113800
+edgeiq_post_fresh_current_visual_data_v1_report.txt | 347 bytes | 1782556960262113800
+edgeiq_post_fresh_current_visual_data_v1_summary.csv | 277 bytes | 1782556960262113800
+edgeiq_fresh_current_apply_v1.csv | 383 bytes | 1782556919564107100
+edgeiq_fresh_current_apply_v1_report.txt | 1,040 bytes | 1782556919564107100
+edgeiq_fresh_current_apply_v1_summary.csv | 736 bytes | 1782556919564107100
+edgeiq_fresh_current_governed_end_to_end_v1_report.txt | 1,162 bytes | 1782556869162445000
+edgeiq_fresh_current_governed_end_to_end_v1_summary.csv | 293 bytes | 1782556869162445000
+edgeiq_fresh_current_governed_end_to_end_v1.csv | 802 bytes | 1782556869161929100
+edgeiq_command_enrichment_feed_v2_fresh_current_v1_report.txt | 454 bytes | 1782556821082244100
+edgeiq_command_enrichment_feed_v2_fresh_current_v1_audit.csv | 1,123 bytes | 1782556821081741300
+edgeiq_command_enrichment_feed_v2_FRESH_CURRENT.csv | 131,592 bytes | 1782556821079738400
+edgeiq_command_enrichment_feed_v2_fresh_current_v1_summary.csv | 266 bytes | 1782556821079738400
+edgeiq_live_runner_board_governed_v7_2g2_FRESH_CURRENT_EVIDENCE_MERGED.csv | 412,496 bytes | 1782556742502223900
+edgeiq_current_evidence_fix_candidate_fresh_v1_report.txt | 242 bytes | 1782556546057920800
+edgeiq_current_evidence_fix_candidate_fresh_v1_summary.csv | 267 bytes | 1782556546057920800
+edgeiq_current_evidence_fix_candidate_fresh_v1_audit.csv | 47,721 bytes | 1782556546055417500
+edgeiq_current_intelligence_evidence_fix_candidate_FRESH_v1.csv | 47,721 bytes | 1782556546052415000
+edgeiq_governed_v7_2g2_fresh_current_candidate_v1.csv | 28,978 bytes | 1782556507212355700
+edgeiq_governed_v7_2g2_fresh_current_candidate_v1_report.txt | 304 bytes | 1782556507212355700
+edgeiq_governed_v7_2g2_fresh_current_candidate_v1_summary.csv | 311 bytes | 1782556507212355700
+edgeiq_live_runner_board_governed_v7_2g2_FRESH_CURRENT_CANDIDATE.csv | 378,543 bytes | 1782556507212355700
+edgeiq_current_live_vs_governed_universe_v2.csv | 2,307 bytes | 1782556453805228500
+edgeiq_current_live_vs_governed_universe_v2_report.txt | 313 bytes | 1782556453805228500
+edgeiq_current_live_vs_governed_universe_v2_summary.csv | 328 bytes | 1782556453805228500
+edgeiq_current_race_shape_recovery_candidate_v1_RECOVERY_CANDIDATE.csv | 61,523 bytes | 1782555977691274900
+edgeiq_current_intelligence_evidence_fix_candidate_v1_RECOVERY_CANDIDATE.csv | 1,058,642 bytes | 1782555977660970400
+edgeiq_live_runner_board_governed_v1_RECOVERY_CANDIDATE.csv | 1,037,577 bytes | 1782555909663436800
+edgeiq_caulfield_r7_drop_reason_v1_report.txt | 3,075 bytes | 1782555883524773300
+edgeiq_caulfield_r7_drop_reason_v1_summary.csv | 607 bytes | 1782555883524773300
+edgeiq_caulfield_r7_drop_reason_v1.csv | 1,767 bytes | 1782555883523382500
+edgeiq_governed_board_missing_races_v1.csv | 2,715 bytes | 1782555812982329700
+edgeiq_governed_board_missing_races_v1_report.txt | 3,347 bytes | 1782555812982329700
+edgeiq_governed_board_missing_races_v1_summary.csv | 1,002 bytes | 1782555812982329700
+edgeiq_current_race_shape_feed_integrity_v1_report.txt | 509 bytes | 1782555156426356700
+edgeiq_current_race_shape_feed_integrity_v1_summary.csv | 386 bytes | 1782555156426356700
+edgeiq_race_shape_recovery_governed_candidate_v1_report.txt | 399 bytes | 1782555129045871900
+edgeiq_race_shape_recovery_governed_candidate_v1.csv | 306 bytes | 1782555129044871600
+edgeiq_race_shape_recovery_governed_candidate_v1_summary.csv | 306 bytes | 1782555129044871600
+edgeiq_live_runner_board_governed_v1_RACE_SHAPE_RECOVERY_CANDIDATE.csv | 702,417 bytes | 1782555129043869500
+edgeiq_current_race_shape_recovery_checkpoint_v1.csv | 241 bytes | 1782555129026859700
+edgeiq_current_race_shape_recovery_checkpoint_v1_report.txt | 336 bytes | 1782555129026859700
+edgeiq_current_race_shape_recovery_candidate_v1_report.txt | 399 bytes | 1782555099779599200
+edgeiq_current_race_shape_recovery_candidate_v1.csv | 15,501 bytes | 1782555099774241700
+edgeiq_current_race_shape_recovery_candidate_v1_audit.csv | 1,451 bytes | 1782555099774241700
+edgeiq_current_race_shape_recovery_candidate_v1_summary.csv | 297 bytes | 1782555099774241700
+edgeiq_current_zero_evidence_race_v1.csv | 5,685 bytes | 1782555048312247400
+edgeiq_current_zero_evidence_race_v1_report.txt | 3,994 bytes | 1782555048312247400
+edgeiq_current_zero_evidence_race_v1_summary.csv | 223 bytes | 1782555048312247400
+edgeiq_current_race_shape_feed_integrity_v1.csv | 2,638 bytes | 1782555008515496100
+edgeiq_raceintelligence_evidence_update_v1.csv | 831 bytes | 1782550818074221600
+edgeiq_raceintelligence_evidence_update_v1_report.txt | 778 bytes | 1782550818074221600
+edgeiq_raceintelligence_evidence_update_v1_summary.csv | 831 bytes | 1782550818074221600
+edgeiq_live_runner_board_governed_v1_EVIDENCE_MERGED.csv | 684,396 bytes | 1782550619196390500
+edgeiq_current_intelligence_evidence_fix_candidate_v1_report.txt | 519 bytes | 1782550091982243300
+edgeiq_current_intelligence_evidence_fix_candidate_v1_summary.csv | 306 bytes | 1782550091982243300
+edgeiq_current_intelligence_evidence_fix_candidate_v1.csv | 684,396 bytes | 1782550091978875600
+edgeiq_current_intelligence_evidence_fix_candidate_v1_audit.csv | 85,833 bytes | 1782550091978875600
+edgeiq_current_intelligence_evidence_join_v1_report.txt | 2,963 bytes | 1782550048795779900
+edgeiq_current_intelligence_evidence_join_v1_summary.csv | 379 bytes | 1782550048795779900
+edgeiq_current_intelligence_evidence_join_v1.csv | 159,932 bytes | 1782550048794779900
+edgeiq_live_runner_board_v7_2g2_flag_on_candidate_audit_v1.csv | 628 bytes | 1782549345172036600
+edgeiq_live_runner_board_v7_2g2_flag_on_candidate_report_v1.txt | 702 bytes | 1782549345172036600
+edgeiq_live_runner_board_v7_2g2_flag_on_candidate_summary_v1.csv | 580 bytes | 1782549345172036600
+edgeiq_live_runner_board_v7_2g2_flag_on_candidate.csv | 530,919 bytes | 1782549345168029600
+edgeiq_live_runner_board_v7_2g2_staging_candidate.csv | 518,573 bytes | 1782548200326388600
+edgeiq_live_runner_board_v7_2g2_activation_candidate.csv | 595,194 bytes | 1782547673508738300
+edgeiq_v7_2g_remaining_high_risk_races_v1_report.txt | 1,224 bytes | 1782547501808263800
+edgeiq_v7_2g_remaining_high_risk_races_v1_summary.csv | 199 bytes | 1782547501804079300
+edgeiq_v7_2g_remaining_high_risk_races_v1.csv | 4,434 bytes | 1782547501802050700
+edgeiq_live_runner_board_v7_2g_guarded_activation_candidate.csv | 600,847 bytes | 1782546979190450500
+edgeiq_v7_2_activation_race_level_changes_v1_report.txt | 2,487 bytes | 1782544374054435200
+edgeiq_v7_2_activation_race_level_changes_v1_summary.csv | 300 bytes | 1782544374047767000
+edgeiq_v7_2_activation_race_level_changes_v1.csv | 2,990 bytes | 1782544374042299200
+edgeiq_live_terminal_feed_v7_2_feature_flag_on_candidate.csv | 402,109 bytes | 1782543552035126000
+edgeiq_live_runner_board_v7_2_feature_flag_on_candidate.csv | 469,277 bytes | 1782543552018819300
+edgeiq_v7_2_ui_price_field_usage_v1_report.txt | 459 bytes | 1782542647935273700
+edgeiq_v7_2_ui_price_field_usage_v1_summary.csv | 471 bytes | 1782542647934272100
+edgeiq_v7_2_ui_price_field_usage_v1.csv | 9,156 bytes | 1782542647930936300
+edgeiq_live_terminal_feed_v7_2_feature_flag_candidate_report_v1.txt | 611 bytes | 1782541400896587600
+edgeiq_live_terminal_feed_v7_2_feature_flag_candidate_audit_v1.csv | 766 bytes | 1782541400896084700
+edgeiq_live_terminal_feed_v7_2_feature_flag_candidate_summary_v1.csv | 800 bytes | 1782541400892082600
+edgeiq_live_terminal_feed_v7_2_feature_flag_candidate.csv | 400,960 bytes | 1782541400881057800
+edgeiq_live_runner_board_v7_2_feature_flag_candidate_report_v1.txt | 538 bytes | 1782541343485973100
+edgeiq_live_runner_board_v7_2_feature_flag_candidate_audit_v1.csv | 661 bytes | 1782541343485468500
+edgeiq_live_runner_board_v7_2_feature_flag_candidate_summary_v1.csv | 692 bytes | 1782541343479388700
+edgeiq_live_runner_board_v7_2_feature_flag_candidate.csv | 453,967 bytes | 1782541343473883100
+edgeiq_v7_2_live_wiring_checkpoints_v1_report.txt | 256 bytes | 1782541279079801600
+edgeiq_v7_2_live_wiring_checkpoints_v1_summary.csv | 215 bytes | 1782541279079801600
+edgeiq_v7_2_live_wiring_checkpoints_v1.csv | 861 bytes | 1782541279067182300
+edgeiq_v7_2_current_day_checkpoint_v1.csv | 757 bytes | 1782541010685619100
+edgeiq_v7_2_current_day_checkpoint_v1_report.txt | 1,100 bytes | 1782541010685619100
+edgeiq_live_runner_board_v7_2_candidate_join_report_v1.txt | 453 bytes | 1782540976245974200
+edgeiq_live_runner_board_v7_2_candidate_join_summary_v1.csv | 505 bytes | 1782540976245974200
+edgeiq_live_runner_board_v7_2_candidate_join_audit_v1.csv | 37,579 bytes | 1782540976137622000
+edgeiq_live_runner_board_v7_2_candidate.csv | 386,455 bytes | 1782540976132382500
+edgeiq_v7_1_vs_v7_2_current_day_coverage_v1_report.txt | 515 bytes | 1782540925160508200
+edgeiq_v7_1_vs_v7_2_current_day_coverage_v1_summary.csv | 358 bytes | 1782540925159003400
+edgeiq_v7_1_vs_v7_2_current_day_coverage_v1.csv | 333 bytes | 1782540925157969500
+edgeiq_current_day_v7_2_hybrid_candidate_v1_report.txt | 766 bytes | 1782540898332849200
+edgeiq_current_day_v7_2_hybrid_candidate_v1_summary.csv | 632 bytes | 1782540898332346500
+edgeiq_current_day_v7_2_hybrid_candidate_v1_audit.csv | 619 bytes | 1782540898328839500
+edgeiq_current_day_v7_2_hybrid_candidate_v1.csv | 383,407 bytes | 1782540898323334100
+edgeiq_current_day_v7_1_validation_checkpoint_v1.csv | 1,156 bytes | 1782539975501120100
+edgeiq_current_day_v7_1_validation_checkpoint_v1_report.txt | 1,531 bytes | 1782539975501120100
+edgeiq_live_terminal_feed_v7_1_current_day_candidate_join_report_v1.txt | 598 bytes | 1782539912031326300
+edgeiq_live_terminal_feed_v7_1_current_day_candidate_join_audit_v1.csv | 40,122 bytes | 1782539912030326600
+edgeiq_live_terminal_feed_v7_1_current_day_candidate_join_summary_v1.csv | 541 bytes | 1782539912026821500
+edgeiq_live_terminal_feed_v7_1_current_day_candidate.csv | 360,585 bytes | 1782539911905899300
+edgeiq_live_runner_board_v7_1_current_day_candidate_join_report_v1.txt | 583 bytes | 1782539826714721100
+edgeiq_live_runner_board_v7_1_current_day_candidate_join_audit_v1.csv | 37,579 bytes | 1782539826713719600
+edgeiq_live_runner_board_v7_1_current_day_candidate_join_summary_v1.csv | 521 bytes | 1782539826708711800
+edgeiq_live_runner_board_v7_1_current_day_candidate.csv | 392,878 bytes | 1782539826588961400
+edgeiq_current_day_v7_1_candidate_from_live_board_v1_report.txt | 741 bytes | 1782539766552212400
+edgeiq_current_day_v7_1_candidate_from_live_board_v1_summary.csv | 684 bytes | 1782539766552212400
+edgeiq_current_day_v7_1_candidate_from_live_board_v1_audit.csv | 623 bytes | 1782539766550703600
+edgeiq_current_day_v7_1_candidate_from_live_board_v1.csv | 389,818 bytes | 1782539766546193500
+edgeiq_current_day_v7_1_source_columns_v1_report.txt | 723 bytes | 1782539690813089100
+edgeiq_current_day_v7_1_source_columns_v1_summary.csv | 375 bytes | 1782539690812084600
+edgeiq_current_day_v7_1_source_columns_v1.csv | 2,511 bytes | 1782539690810582200
+edgeiq_live_terminal_feed_v7_1_candidate_join_report_v1.txt | 1,547 bytes | 1782539179767931800
+edgeiq_live_terminal_feed_v7_1_candidate_join_summary_v1.csv | 781 bytes | 1782539179767931800
+edgeiq_live_terminal_feed_v7_1_candidate_join_audit_v1.csv | 69,323 bytes | 1782539179764634700
+edgeiq_live_terminal_feed_v7_1_candidate.csv | 381,119 bytes | 1782539179759083800
+edgeiq_live_runner_board_v7_1_candidate_join_report_v1.txt | 1,439 bytes | 1782538743002448800
+edgeiq_live_runner_board_v7_1_candidate_join_summary_v1.csv | 704 bytes | 1782538743002448800
+edgeiq_live_runner_board_v7_1_candidate_join_audit_v1.csv | 72,066 bytes | 1782538742996412600
+edgeiq_live_runner_board_v7_1_candidate.csv | 342,969 bytes | 1782538742988003000
+edgeiq_v7_1_live_wiring_readiness_plan_v1.csv | 8,212 bytes | 1782537745809559700
+edgeiq_v7_1_live_wiring_readiness_plan_v1_report.txt | 3,054 bytes | 1782537745809559700
+edgeiq_v7_1_live_wiring_readiness_plan_v1_summary.csv | 375 bytes | 1782537745809559700
+edgeiq_field_size_concentration_curves_v1.csv | 311 bytes | 1782504939670004700
+edgeiq_field_size_concentration_curves_v1_summary.csv | 274 bytes | 1782504939670004700
+edgeiq_race_synthesis_engine_v1.csv | 5,999 bytes | 1782503566650383200
+edgeiq_race_synthesis_engine_v1_summary.csv | 102 bytes | 1782503566650383200
+edgeiq_current_platform_status_20260626.txt | 7,681 bytes | 1782502980898071700
+edgeiq_current_price_shape_summary_v1.csv | 262 bytes | 1782501506921692400
+edgeiq_current_price_shape_v1.csv | 3,756 bytes | 1782501506921692400
+edgeiq_current_true_track_feed_v1.csv | 5,998 bytes | 1782499393644030000
+edgeiq_current_true_track_feed_v1_audit.csv | 1,197 bytes | 1782499393644030000
+edgeiq_current_true_track_feed_v1_summary.csv | 84 bytes | 1782499393644030000
+edgeiq_current_hidden_gem_feed_v1_1_audit.csv | 4,836 bytes | 1782451046113074800
+edgeiq_current_hidden_gem_feed_v1_1_summary.csv | 507 bytes | 1782451046113074800
+edgeiq_current_hidden_gem_feed_v1_1.csv | 126,226 bytes | 1782451046112364500
+edgeiq_current_hidden_gem_feed_v1_audit.csv | 2,185 bytes | 1782446764964073600
+edgeiq_current_hidden_gem_feed_v1_summary.csv | 360 bytes | 1782446764964073600
+edgeiq_current_hidden_gem_feed_v1.csv | 84,525 bytes | 1782446764963043400
+edgeiq_current_epf_feed_v1_1_audit.csv | 978 bytes | 1782445917178480100
+edgeiq_current_epf_feed_v1_1_summary.csv | 451 bytes | 1782445917177480700
+edgeiq_current_epf_feed_v1_1.csv | 111,544 bytes | 1782445917176479400
+edgeiq_current_epf_feed_v1.csv | 92,465 bytes | 1782445107199741600
+edgeiq_current_epf_feed_v1_audit.csv | 612 bytes | 1782445107199741600
+edgeiq_current_epf_feed_v1_summary.csv | 450 bytes | 1782445107199741600
+edgeiq_race_shape_fallback_engine_v1_summary.csv | 512 bytes | 1782389350941335900
+edgeiq_race_shape_fallback_engine_v1.csv | 7,852 bytes | 1782389350940077900
+edgeiq_race_shape_fallback_engine_v1_audit.csv | 2,564 bytes | 1782389350940077900
+edgeiq_current_dna_universe_audit_v1_summary.csv | 539 bytes | 1782376538408703800
+edgeiq_current_dna_universe_audit_v1.csv | 1,174 bytes | 1782376538397963700
+edgeiq_live_dna_quality_summary_v1.csv | 531 bytes | 1782376494779583500
+edgeiq_live_dna_quality_audit_v1.csv | 214 bytes | 1782376494775742100
+edgeiq_live_runner_factor_scorecard_v2_refresh_v1_summary.csv | 265 bytes | 1782376474357808200
+edgeiq_live_runner_factor_scorecard_v2.csv | 1,014,225 bytes | 1782376474347738200
+edgeiq_live_runner_dna_v6_2_refresh_v1_detail.csv | 601 bytes | 1782376459045453900
+edgeiq_live_runner_dna_v6_2_refresh_v1_summary.csv | 277 bytes | 1782376459045453900
+edgeiq_live_runner_dna_v6_2.csv | 319,898 bytes | 1782376459035664600
+edgeiq_live_class_dna_v3.csv | 96,314 bytes | 1782376458492340800
+edgeiq_live_condition_dna_v1.csv | 64,872 bytes | 1782376457635456300
+edgeiq_live_distance_dna_v1.csv | 57,895 bytes | 1782376457423038400
+edgeiq_live_trainer_jockey_factor_feed_v3_summary.csv | 842 bytes | 1782376457169303300
+edgeiq_live_trainer_jockey_factor_feed_v3_unmatched.csv | 128,229 bytes | 1782376457162547400
+edgeiq_live_trainer_jockey_factor_feed_v3.csv | 405,718 bytes | 1782376457148280600
+edgeiq_runner_dna_current.csv | 255,438 bytes | 1782376008060005200
+edgeiq_horse_profile_current.csv | 7,255,570 bytes | 1782375934561396700
+edgeiq_live_horse_profile_current.csv | 428,063 bytes | 1782375934549544900
+edgeiq_live_horse_profile_v3_summary.csv | 273 bytes | 1782375934366726000
+edgeiq_live_horse_profile_v3.csv | 428,063 bytes | 1782375934362567300
+edgeiq_current_field_projection_V6_1_RESEARCH_replay_PRE_GAP_REPAIR_BACKUP_20260629.csv | 335,683 bytes | 1782327760098388300
+edgeiq_race_strength_history_v1.csv | 533,001 bytes | 1782325452439022500
+edgeiq_runner_form_engine_current_audit_summary.csv | 150 bytes | 1782325376099060700
+edgeiq_runner_form_engine_current_audit.csv | 873 bytes | 1782325376090670100
+edgeiq_runner_form_engine_current_summary.csv | 315 bytes | 1782325372579864300
+edgeiq_runner_form_engine_current.csv | 68,494 bytes | 1782325372573357300
+edgeiq_runner_profile_engine_current_summary.csv | 302 bytes | 1782325364085370300
+edgeiq_runner_profile_engine_current.csv | 50,814 bytes | 1782325364076309800
+edgeiq_runner_profile_engine_current_audit_summary.csv | 153 bytes | 1782277583349523600
+edgeiq_runner_profile_engine_current_audit.csv | 847 bytes | 1782277583346011300
+edgeiq_race_day_intelligence_card_v1_1_summary.csv | 159 bytes | 1782247758841383200
+edgeiq_race_day_intelligence_card_v1_1.csv | 5,955 bytes | 1782247758836877700
+edgeiq_race_day_intelligence_card_v1_1_CHECKPOINT_20260624.csv | 5,955 bytes | 1782247758836877700
+edgeiq_race_day_intelligence_card_v1_summary.csv | 157 bytes | 1782247528484010900
+edgeiq_race_day_intelligence_card_v1.csv | 3,125 bytes | 1782247528479506000
+edgeiq_race_understanding_engine_v3_2_graphql_summary.csv | 260 bytes | 1782203583940457400
+edgeiq_race_understanding_engine_v3_2_graphql.csv | 214,202 bytes | 1782203583934435100
+edgeiq_race_understanding_engine_v3_1_graphql_summary.csv | 211 bytes | 1782203331064834300
+edgeiq_race_understanding_engine_v3_1_graphql.csv | 175,313 bytes | 1782203331054607600
+edgeiq_race_understanding_engine_v3_graphql_audit.csv | 459 bytes | 1782202810673877000
+edgeiq_race_understanding_engine_v3_graphql_summary.csv | 220 bytes | 1782202806628855200
+edgeiq_race_understanding_engine_v3_graphql.csv | 77,304 bytes | 1782202806622338600
+edgeiq_race_intelligence_terminal_feed_v4_graphql_quality_audit_summary.csv | 161 bytes | 1782197827983140700
+edgeiq_race_intelligence_terminal_feed_v4_graphql_quality_audit.csv | 613 bytes | 1782197827980141100
+edgeiq_race_intelligence_terminal_feed_v4_graphql_summary.csv | 225 bytes | 1782197779906006600
+edgeiq_race_intelligence_terminal_feed_v4_graphql.csv | 248,775 bytes | 1782197779900501300
+edgeiq_race_intelligence_terminal_feed_v4_graphql_CHECKPOINT_20260623_165745.csv | 248,775 bytes | 1782197779900501300
+edgeiq_live_context_signal_feed_v2_graphql_summary.csv | 160 bytes | 1782197713849301800
+edgeiq_live_context_signal_feed_v2_graphql.csv | 24,343 bytes | 1782197713846299800
+edgeiq_live_context_signal_feed_v2_graphql_CHECKPOINT_20260623_165745.csv | 24,343 bytes | 1782197713846299800
+edgeiq_race_intelligence_terminal_feed_v3_graphql_quality_audit_summary.csv | 160 bytes | 1782197294251051600
+edgeiq_race_intelligence_terminal_feed_v3_graphql_quality_audit.csv | 568 bytes | 1782197294246542200
+edgeiq_race_intelligence_terminal_feed_v3_graphql_summary.csv | 221 bytes | 1782197240524156000
+edgeiq_race_intelligence_terminal_feed_v3_graphql.csv | 187,397 bytes | 1782197240519649200
+edgeiq_race_intelligence_terminal_feed_v3_graphql_CHECKPOINT_20260623_164849.csv | 187,397 bytes | 1782197240519649200
+edgeiq_live_stable_intent_feed_v2_1_graphql_resolved_summary.csv | 220 bytes | 1782197146852548200
+edgeiq_live_stable_intent_feed_v2_1_graphql_resolved.csv | 57,312 bytes | 1782197146849038000
+edgeiq_live_stable_intent_feed_v2_1_graphql_resolved_CHECKPOINT_20260623_164849.csv | 57,312 bytes | 1782197146849038000
+edgeiq_live_graphql_entity_resolution_bridge_v3_summary.csv | 204 bytes | 1782196814174936600
+edgeiq_live_graphql_entity_resolution_bridge_v3.csv | 16,790 bytes | 1782196814169397700
+edgeiq_live_graphql_entity_resolution_bridge_v3_CHECKPOINT_20260623_164849.csv | 16,790 bytes | 1782196814169397700
+edgeiq_live_jockeys_current.txt | 541 bytes | 1782190753486527600
+edgeiq_live_trainers_current.txt | 1,311 bytes | 1782190750168586100
+edgeiq_live_stable_intent_feed_v2_graphql_summary.csv | 207 bytes | 1782190716394080800
+edgeiq_live_stable_intent_feed_v2_graphql.csv | 43,062 bytes | 1782190716389603900
+edgeiq_race_intelligence_terminal_feed_v2_quality_audit_summary.csv | 153 bytes | 1782189717626163700
+edgeiq_race_intelligence_terminal_feed_v2_quality_audit.csv | 641 bytes | 1782189717622425700
+edgeiq_race_intelligence_terminal_feed_v2_summary.csv | 162 bytes | 1782189228771366200
+edgeiq_race_intelligence_terminal_feed_v2.csv | 174,881 bytes | 1782189228766862800
+edgeiq_race_understanding_engine_v2_summary.csv | 138 bytes | 1782185156714144000
+edgeiq_race_understanding_engine_v2.csv | 11,422 bytes | 1782185156710129600
+edgeiq_race_briefing_engine_v2_summary.csv | 149 bytes | 1782185063432316500
+edgeiq_race_briefing_engine_v2.csv | 10,444 bytes | 1782185063427117400
+edgeiq_live_stable_intent_feed_v1_summary.csv | 197 bytes | 1782183084783184600
+edgeiq_live_stable_intent_feed_v1.csv | 55,317 bytes | 1782183084779167300
+edgeiq_race_understanding_engine_v1.csv | 9,907 bytes | 1782168927613732900
+edgeiq_race_understanding_engine_v1_summary.csv | 149 bytes | 1782168927613732900
+edgeiq_live_entity_resolution_bridge_v2_summary.csv | 239 bytes | 1782166862796436500
+edgeiq_live_entity_resolution_bridge_v2.csv | 35,551 bytes | 1782166862794429800
+edgeiq_live_entity_resolution_bridge_v1_summary.csv | 228 bytes | 1782165840089239200
+edgeiq_live_entity_resolution_bridge_v1.csv | 35,578 bytes | 1782165840088236500
+edgeiq_pace_dna_v1_field_audit.csv | 57 bytes | 1782100780741799000
+edgeiq_sp_profile_universe_audit_v1_summary.csv | 357 bytes | 1782096266863727200
+edgeiq_sp_profile_universe_audit_v1.csv | 10,171,007 bytes | 1782096266563859200
+edgeiq_connection_universe_audit_v1_summary.csv | 487 bytes | 1782096136480622500
+edgeiq_connection_universe_audit_v1.csv | 3,146,240 bytes | 1782096136384974400
+edgeiq_jockey_universe_audit_v1_summary.csv | 413 bytes | 1782096008561275000
+edgeiq_jockey_universe_audit_v1.csv | 77,485 bytes | 1782096008548247100
+edgeiq_trainer_universe_audit_v1_summary.csv | 428 bytes | 1782095712794452600
+edgeiq_trainer_universe_audit_v1.csv | 182,608 bytes | 1782095712790444000
+edgeiq_horse_universe_audit_v1_summary.csv | 388 bytes | 1782095625091229700
+edgeiq_horse_universe_audit_v1.csv | 2,591,163 bytes | 1782095625009753500
+edgeiq_track_universe_audit_v1_summary.csv | 273 bytes | 1782095479747463900
+edgeiq_track_universe_audit_v1.csv | 5,616 bytes | 1782095479745755500
+edgeiq_graphql_universe_audit_v1_summary.csv | 463 bytes | 1782094805350700600
+edgeiq_graphql_universe_audit_v1.csv | 1,869 bytes | 1782094805349699200
+edgeiq_graphql_getRacesForMeet_meeting_warehouse_v1_summary.csv | 445 bytes | 1782033442655516200
+edgeiq_graphql_getRacesForMeet_meeting_warehouse_v1.csv | 36,519 bytes | 1782033442653008900
+edgeiq_graphql_getRacesForMeet_payload_v1.json | 761,348 bytes | 1782033441857717100
+edgeiq_graphql_racelist_payload_v1.json | 22,983 bytes | 1782033261869137700
+edgeiq_graphql_meeting_results_flemington_20250101_v1_summary.csv | 742 bytes | 1782033163139033200
+edgeiq_graphql_meeting_harvest_flemington_20250101_v1.json | 916,073 bytes | 1782033163135514200
+edgeiq_graphql_meeting_results_flemington_20250101_v1.csv | 0 bytes | 1782033163135514200
+edgeiq_graphql_field_inventory_v1_summary.csv | 617 bytes | 1782031787115958900
+edgeiq_graphql_field_inventory_v1.csv | 328,487 bytes | 1782031787114860000
+edgeiq_graphql_race_results_payload_v1.json | 82,967 bytes | 1782031546194632700
+edgeiq_future_meeting_feed_coverage_v1_summary.csv | 1,492 bytes | 1781982662287231200
+edgeiq_future_meeting_feed_coverage_v1.csv | 5,143 bytes | 1781982662286722600
+edgeiq_live_runner_dna_v6_2_CHECKPOINT_20260625_PRE_DNA_REFRESH.csv | 322,430 bytes | 1781982647023668300
+edgeiq_live_class_dna_v3_CHECKPOINT_20260625_PRE_DNA_REFRESH.csv | 93,081 bytes | 1781982643894739500
+edgeiq_live_condition_dna_v1_CHECKPOINT_20260625_PRE_DNA_REFRESH.csv | 61,362 bytes | 1781982636591514300
+edgeiq_live_distance_dna_v1_CHECKPOINT_20260625_PRE_DNA_REFRESH.csv | 71,084 bytes | 1781982630125279900
+edgeiq_runner_dna_current_CHECKPOINT_20260625_PRE_DNA_REFRESH.csv | 255,438 bytes | 1781982623217440200
+edgeiq_race_briefing_v1.csv | 6,980 bytes | 1781982187363802100
+edgeiq_race_verdict_v1.csv | 7,476 bytes | 1781982187363802100
+edgeiq_race_intelligence_cards_v1_summary.csv | 124 bytes | 1781982183994000200
+edgeiq_race_intelligence_cards_v1.csv | 4,707 bytes | 1781982183989864100
+edgeiq_live_sectional_intelligence_v1.csv | 80,362 bytes | 1781982177799565400
+edgeiq_live_sectional_intelligence_v1_audit.csv | 273 bytes | 1781982177799565400
+edgeiq_live_track_intelligence_v1_summary.csv | 389 bytes | 1781982171771561700
+edgeiq_live_track_intelligence_v1_unmatched.csv | 2,270 bytes | 1781982171767421100
+edgeiq_live_track_intelligence_v1.csv | 479,800 bytes | 1781982171761377300
+edgeiq_live_runner_style_v1_summary.csv | 339 bytes | 1781982163802598700
+edgeiq_live_runner_style_v1.csv | 90,626 bytes | 1781982163740013900
+edgeiq_race_shape_story_v1_summary.csv | 349 bytes | 1781929100915207400
+edgeiq_race_shape_story_v1.csv | 9,413 bytes | 1781929100912660200
+edgeiq_race_identity_conflicts_v1_examples.csv | 19,262 bytes | 1781846696812809500
+edgeiq_race_identity_conflicts_v1.csv | 32,586 bytes | 1781846696807668700
+edgeiq_race_identity_conflicts_v1_summary.csv | 12,606 bytes | 1781846696807668700
+edgeiq_race_number_bridge_candidates_v1_summary.csv | 9,575 bytes | 1781846104969755500
+edgeiq_race_number_bridge_candidates_v1.csv | 644,934 bytes | 1781846104965593300
+edgeiq_v6_1_probability_segment_calibration_v1_by_field_size.csv | 898 bytes | 1781835314453040600
+edgeiq_projection_gap_probability_scenario_audit_v1_by_race.csv | 13,859,794 bytes | 1781766625273886300
+edgeiq_probability_power_full_audit_v1_by_race.csv | 7,118,440 bytes | 1781765448189963400
+edgeiq_probability_power_replay_v1_by_race.csv | 7,118,440 bytes | 1781764234787305900
+edgeiq_connection_flip_races_v1.csv | 62,944 bytes | 1781760205764873000
+edgeiq_connection_flip_races_v1_summary.csv | 184 bytes | 1781760205764873000
+edgeiq_jockey_flip_races_v1_summary.csv | 179 bytes | 1781760201691211100
+edgeiq_jockey_flip_races_v1.csv | 95,911 bytes | 1781760201688708500
+edgeiq_live_runner_dna_v6_3_medium_delta_research.csv | 116,643 bytes | 1781754290200962300
+edgeiq_live_runner_dna_v6_2_vs_v6_3_research_comparison_summary.csv | 212 bytes | 1781753563974629600
+edgeiq_live_runner_dna_v6_2_vs_v6_3_research_comparison.csv | 13,921 bytes | 1781753563966504200
+edgeiq_live_runner_dna_v6_3_research.csv | 108,397 bytes | 1781753555203420000
+edgeiq_live_dna_factor_alignment_v1_summary.csv | 261 bytes | 1781753448967956900
+edgeiq_live_dna_factor_alignment_v1.csv | 2,509 bytes | 1781753448956142400
+edgeiq_runner_dna_v6_3_sp_roi_audit_v1_flip_races.csv | 63,914 bytes | 1781750977634319300
+edgeiq_runner_dna_weight_ladder_v1_by_race.csv | 7,352,850 bytes | 1781749430033656000
+edgeiq_runner_dna_v6_3_historical_replay_v1_by_race.csv | 1,261,684 bytes | 1781748867934411900
+edgeiq_runner_dna_v6_2_weight_replay_v2_safe_by_race.csv | 676 bytes | 1781748349551875800
+edgeiq_runner_dna_v6_2_weight_replay_v2_safe_STABLE_CHECKPOINT_by_race.csv | 676 bytes | 1781748349551875800
+edgeiq_runner_dna_v6_2_weight_replay_v1_by_race.csv | 674 bytes | 1781748021203009000
+edgeiq_live_runner_explainability_v1_summary.csv | 293 bytes | 1781738008674967000
+edgeiq_live_runner_explainability_v1.csv | 51,475 bytes | 1781738008665459200
+edgeiq_probability_engine_v6_2_factor_overlay_research_v2_2_by_race.csv | 665 bytes | 1781736951825569300
+edgeiq_probability_engine_v6_2_factor_overlay_research_v2_1_by_race.csv | 660 bytes | 1781733040417316700
+edgeiq_probability_engine_v6_2_factor_overlay_research_v2_by_race.csv | 656 bytes | 1781732632759857600
+edgeiq_probability_engine_v6_2_factor_overlay_research_by_race.csv | 649 bytes | 1781731128509919300
+edgeiq_probability_engine_v5_factor_overlay_research_by_race.csv | 515 bytes | 1781730567935276500
+edgeiq_live_runner_factor_scorecard_v2_CHECKPOINT_20260625_PRE_DNA_REFRESH.csv | 302,409 bytes | 1781728292457097700
+edgeiq_v5_overlay_race4_flip_audit_v1_summary.csv | 549 bytes | 1781725621809778300
+edgeiq_v5_overlay_race4_flip_audit_v1.csv | 2,191 bytes | 1781725621807052800
+edgeiq_probability_engine_v4_dna_overlay_research_v1_by_race.csv | 1,423 bytes | 1781725080341942500
+edgeiq_live_runner_factor_scorecard_v1.csv | 90,504 bytes | 1781724524734200200
+edgeiq_live_runner_dna_v6_1_rebalance.csv | 182,913 bytes | 1781720732195078700
+edgeiq_live_runner_dna_v6_full.csv | 141,629 bytes | 1781720499122848400
+edgeiq_live_runner_dna_v6.csv | 93,315 bytes | 1781720375335994200
+edgeiq_runner_dna_current_v6_checkpoint.csv | 93,315 bytes | 1781720375335994200
+edgeiq_live_class_dna_v2.csv | 22,415 bytes | 1781719925371403900
+edgeiq_live_class_dna_v1.csv | 20,528 bytes | 1781719786159859100
+edgeiq_runner_dna_current_CHECKPOINT_BEFORE_V5_SIGNAL_HARVEST_20260617.csv | 52,924 bytes | 1781690505064998900
+edgeiq_runner_dna_v3_live_race_audit.csv | 1,438 bytes | 1781690363480774800
+edgeiq_runner_dna_v3_live_race_audit_summary.csv | 163 bytes | 1781690363480774800
+edgeiq_horse_intelligence_drawer_current_summary.csv | 191 bytes | 1781687848341049700
+edgeiq_horse_intelligence_drawer_current.csv | 163,443 bytes | 1781687848338038300
+edgeiq_live_horse_profile_current_summary.csv | 271 bytes | 1781687231681572600
+edgeiq_live_horse_profile_v2_summary.csv | 271 bytes | 1781686547537180300
+edgeiq_live_horse_profile_v2.csv | 82,620 bytes | 1781686547532674400
+edgeiq_live_horse_profile_v1_summary.csv | 228 bytes | 1781684927070187700
+edgeiq_live_horse_profile_v1.csv | 84,761 bytes | 1781684927068149000
+edgeiq_current_field_projection_V6_1_RESEARCH_BACKFILLED_GOVERNED_CANDIDATE_20260617_summary.csv | 161 bytes | 1781683890998178900
+edgeiq_current_field_projection_V6_1_RESEARCH_BACKFILLED_GOVERNED_CANDIDATE_20260617.csv | 76,752 bytes | 1781683890995604600
+edgeiq_current_fair_prices_V6_1_RESEARCH_BACKFILL_FILTER_V3_20260617_summary.csv | 607 bytes | 1781683689858101800
+edgeiq_current_fair_prices_V6_1_RESEARCH_BACKFILL_FILTER_V3_20260617.csv | 87,871 bytes | 1781683689854448300
+edgeiq_current_field_projection_V6_1_RESEARCH_BACKFILL_FILTER_V3_20260617_band_migration.csv | 382 bytes | 1781683600952012700
+edgeiq_current_field_projection_V6_1_RESEARCH_BACKFILL_FILTER_V3_20260617_summary.csv | 1,125 bytes | 1781683600952012700
+edgeiq_current_field_projection_V6_1_RESEARCH_BACKFILL_FILTER_V3_20260617.csv | 81,646 bytes | 1781683600947466900
+edgeiq_current_field_projection_V6_1_RESEARCH_BACKFILL_FILTER_V2_20260617_band_migration.csv | 495 bytes | 1781683507868210600
+edgeiq_current_field_projection_V6_1_RESEARCH_BACKFILL_FILTER_V2_20260617_summary.csv | 963 bytes | 1781683507865705400
+edgeiq_current_field_projection_V6_1_RESEARCH_BACKFILL_FILTER_V2_20260617.csv | 78,785 bytes | 1781683507858029100
+edgeiq_current_fair_prices_V6_1_RESEARCH_BACKFILLED_GOVERNED_CANDIDATE_20260617_summary.csv | 343 bytes | 1781683321697388300
+edgeiq_current_fair_prices_V6_1_RESEARCH_BACKFILLED_GOVERNED_CANDIDATE_20260617.csv | 82,945 bytes | 1781683321686742700
+edgeiq_current_fair_prices_v6_1_BACKFILLED_GOVERNED_CANDIDATE_20260617_summary.csv | 174 bytes | 1781683141904983400
+edgeiq_current_fair_prices_v6_1_BACKFILLED_GOVERNED_CANDIDATE_20260617.csv | 77,089 bytes | 1781683141899533800
+edgeiq_current_field_projection_V6_1_RESEARCH_BACKFILLED_GOVERNED_CANDIDATE_20260617_APPROVED_CHECKPOINT.csv | 76,752 bytes | 1781683078538116900
+edgeiq_v6_1_backfilled_live_risk_summary_v1.csv | 177 bytes | 1781673776141004300
+edgeiq_v6_1_backfilled_live_risk_v1.csv | 3,349 bytes | 1781673776136743800
+live_speed_map_v3_diagnostics.csv | 249 bytes | 1781661485957895600
+live_speed_map_v3.csv | 22,767 bytes | 1781661485944800300
+edgeiq_current_day_full_refresh_v1_status.json | 12,573 bytes | 1781658413912748000
+edgeiq_current_day_full_refresh_v1_summary.csv | 1,700 bytes | 1781658413877901500
+edgeiq_current_day_full_refresh_v1_log.txt | 38,798 bytes | 1781658413798033100
+edgeiq_current_day_artifact_freshness_v1.csv | 1,775 bytes | 1781658412818190800
+edgeiq_live_runner_board_governed_v1_CHECKPOINT_BACKFILLED_RISK_20260617.csv | 77,036 bytes | 1781658409750094000
+edgeiq_current_fair_prices_v6_1_research_replay_CHECKPOINT_BACKFILLED_GOVERNANCE_20260617.csv | 78,350 bytes | 1781658399850933400
+edgeiq_current_field_projection_V6_1_RESEARCH_replay_CHECKPOINT_BACKFILLED_GOVERNANCE_20260617.csv | 72,172 bytes | 1781658395810060700
+edgeiq_live_terminal_feed_v1_diagnostics.csv | 305 bytes | 1781658354040550800
+race_fields.csv | 142,406 bytes | 1781658352016189700
+edgeiq_tab_single_race_v1.csv | 6,993 bytes | 1781644742711986500
+tab_network_meetings_capture_v1.txt | 0 bytes | 1781644431300420500
+tab_network_meetings_capture_v1.json | 2 bytes | 1781644431299361600
+tab_api_meetings_probe_v1.json | 847 bytes | 1781644273892072000
+tab_api_meetings_probe_v1_summary.csv | 660 bytes | 1781644273892072000
+edgeiq_tab_vic_racecards_summary_v1.csv | 232 bytes | 1781643868812665500
+edgeiq_tab_vic_racecards_v1.csv | 2 bytes | 1781643868796231400
+edgeiq_race_shape_engine_v1_report.md | 1,822 bytes | 1781637408609601100
+edgeiq_race_shape_engine_v1_research.csv | 6,035 bytes | 1781637408588215900
+edgeiq_race_shape_replay_results_v1.csv | 1,588 bytes | 1781637408588215900
+edgeiq_race_shape_influence_report_v1.md | 3,080 bytes | 1781636627803104100
+edgeiq_race_shape_influence_summary_v1.csv | 1,141 bytes | 1781636627800103800
+edgeiq_race_shape_influence_audit_v1.csv | 9,542 bytes | 1781636627766577400
+edgeiq_tab_all_active_races_scrape_audit_v1.csv | 1,236 bytes | 1781600032072168700
+edgeiq_tab_live_prices_direct_v1.csv | 2 bytes | 1781600032070160500
+tab_meetings_2026_06_16_R.html | 33,415 bytes | 1781598958192244500
+edgeiq_vic_three_day_meeting_diagnostics_CHECKPOINT_CALENDAR_REFACTOR_20260616.csv | 1,510 bytes | 1781589019441962000
+edgeiq_vic_live_fields_synced.csv | 35,231 bytes | 1781589014751453700
+edgeiq_race_clock_engine.csv | 1,751 bytes | 1781588917768856200
+edgeiq_race_state_engine.csv | 1,253 bytes | 1781588916974238400
+edgeiq_live_runner_board_v1_WORKING_EMPTY_COLUMNS_FIXED_20260615.csv | 73,275 bytes | 1781516420274582000
+edgeiq_live_runner_board_v1_WORKING_100_RESEARCH_10_FALLBACK_20260615.csv | 73,251 bytes | 1781515995857300800
+edgeiq_current_fair_prices_V6_1_RESEARCH_replay_WORKING_100_RESEARCH_10_FALLBACK_20260615.csv | 117,094 bytes | 1781515972797637900
+edgeiq_current_field_projection_V6_1_RESEARCH_replay_WORKING_100_RESEARCH_10_FALLBACK_20260615.csv | 108,614 bytes | 1781515958164451500
+edgeiq_current_field_projection_v5_2_research_band_migration.csv | 505 bytes | 1781515713364551200
+edgeiq_current_field_projection_v5_2_research_replay_summary.csv | 759 bytes | 1781515713358039600
+edgeiq_current_field_projection_v5_2_research_replay.csv | 107,760 bytes | 1781515713353531500
+edgeiq_current_field_projection_V6_1_RESEARCH_replay_PRE_REBUILD_20260615.csv | 104,877 bytes | 1781508004880720100
+edgeiq_live_runner_board_v1_WORKING_DECISION_DISPLAY_FIX_20260615.csv | 68,478 bytes | 1781501156749496800
+edgeiq_live_runner_board_v1_WORKING_TODAY_ONLY_TAB_20260615.csv | 62,103 bytes | 1781498868513167300
+edgeiq_active_race_selector_WORKING_TODAY_ONLY_TAB_20260615.csv | 1,570 bytes | 1781498867803129400
+edgeiq_live_terminal_feed_v1_TAB_ONLY_TODAY_WORKING_TODAY_ONLY_TAB_20260615.csv | 97,468 bytes | 1781498836356815900
+edgeiq_live_v6_1_research_action_summary_v1_TAB_ONLY_TODAY_WORKING_20260614.csv | 74 bytes | 1781410491600035500
+edgeiq_live_v6_1_research_vs_production_comparison_v1_TAB_ONLY_TODAY_WORKING_20260614.csv | 21,878 bytes | 1781410491595374100
+edgeiq_live_terminal_feed_v1_TAB_ONLY_TODAY_WORKING_20260614.csv | 152,204 bytes | 1781410206726926800
+edgeiq_tab_all_active_races_scrape_audit_v1_PRODUCTION_20260614.csv | 1,332 bytes | 1781408343962131700
+edgeiq_tab_live_prices_direct_v1_PRODUCTION_20260614.csv | 90,198 bytes | 1781408343957614500
+edgeiq_tab_live_prices_direct_v1_TAB_ONLY_TODAY_WORKING_20260614.csv | 90,198 bytes | 1781408343957614500
+edgeiq_tab_live_prices_direct_v1_WORKING_DIRECT_API_20260614.csv | 90,198 bytes | 1781408343957614500
+edgeiq_tab_live_prices_direct_v1_BEST_TODAY.csv | 91,560 bytes | 1781407795922719300
+edgeiq_tab_live_prices_direct_v1_RETRY_20260614_132946.csv | 65,859 bytes | 1781407766821573800
+edgeiq_tab_live_prices_direct_v1_RETRY_20260614_132328.csv | 35,770 bytes | 1781406965282760400
+edgeiq_tab_live_prices_direct_v1_RETRY_20260614_131205.csv | 6,378 bytes | 1781406723199953500
+edgeiq_tab_live_prices_direct_v1_RETRY_20260614_130810.csv | 8,821 bytes | 1781406470679832700
+edgeiq_live_terminal_feed_v1_updated.csv | 50,401 bytes | 1781405142679859200
+edgeiq_vic_live_terminal_feed_v1_TODAY_ONLY.csv | 140,300 bytes | 1781404779714420600
+edgeiq_vic_live_terminal_feed_v1_BEFORE_TODAY_ONLY_FORCE_20260614.csv | 254,691 bytes | 1781404566923756700
+edgeiq_live_v6_1_research_action_summary_v1.csv | 72 bytes | 1781404337292820800
+edgeiq_live_v6_1_research_vs_production_comparison_v1.csv | 15,324 bytes | 1781404337286190600
+edgeiq_live_v6_1_research_action_summary_v1_CHECKPOINT_20260614_LABELFIX.csv | 72 bytes | 1781404171886848000
+edgeiq_live_v6_1_research_vs_production_comparison_v1_CHECKPOINT_20260614_LABELFIX.csv | 15,324 bytes | 1781404171882495500
+edgeiq_live_v6_1_research_action_summary_v1_CHECKPOINT_20260614.csv | 63 bytes | 1781403730786668700
+edgeiq_live_v6_1_research_vs_production_comparison_v1_CHECKPOINT_20260614.csv | 14,901 bytes | 1781403730784663100
+edgeiq_current_fair_prices_V6_1_RESEARCH_replay_CHECKPOINT_20260614.csv | 413,559 bytes | 1781403367118390900
+edgeiq_current_field_projection_V6_1_RESEARCH_replay_CHECKPOINT_20260614.csv | 386,367 bytes | 1781402721099739900
+edgeiq_v6_rank_switch_races_v1.csv | 40,671 bytes | 1781396448870430500
+edgeiq_live_v6_research_action_summary_v1.csv | 63 bytes | 1781395323662419100
+edgeiq_live_v6_research_vs_production_comparison_v1.csv | 14,879 bytes | 1781395323657891900
+edgeiq_current_fair_prices_v6_research_replay_summary.csv | 406 bytes | 1781395322946717000
+edgeiq_current_fair_prices_v6_research_replay.csv | 413,541 bytes | 1781395322937658000
+edgeiq_current_field_projection_v6_research_band_migration.csv | 547 bytes | 1781395321241584600
+edgeiq_current_field_projection_v6_research_replay_summary.csv | 792 bytes | 1781395321237041000
+edgeiq_current_field_projection_v6_research_replay.csv | 386,383 bytes | 1781395321232948000
+edgeiq_live_v6_research_vs_production_comparison_v1_FILTERED_CHECKPOINT_20260614.csv | 14,879 bytes | 1781395209250283900
+edgeiq_live_v6_research_vs_production_comparison_v1_POWER055_CHECKPOINT_20260614.csv | 18,275 bytes | 1781394505790133400
+edgeiq_live_v6_research_vs_production_comparison_v1_CHECKPOINT_20260614.csv | 18,274 bytes | 1781394203063520900
+edgeiq_live_research_vs_production_comparison_v1.csv | 16,692 bytes | 1781386702188108400
+edgeiq_live_bet_quality_research_replay_v1_summary.csv | 230 bytes | 1781386627594978400
+edgeiq_live_bet_quality_research_replay_v1.csv | 21,304 bytes | 1781386627588203400
+edgeiq_live_runner_board_research_replay_v1.csv | 20,823 bytes | 1781386609336022300
+edgeiq_current_fair_prices_v5_2_research_replay_summary.csv | 434 bytes | 1781386415976969500
+edgeiq_current_fair_prices_v5_2_research_replay.csv | 413,824 bytes | 1781386415964901200
+edgeiq_live_bet_quality_v1_1.json | 418 bytes | 1781382906821841000
+edgeiq_live_bet_quality_v1_1_summary.csv | 331 bytes | 1781382906821841000
+edgeiq_live_bet_quality_v1_1.csv | 57,010 bytes | 1781382906813553100
+edgeiq_current_field_rated_price_audit_v5_2_summary.csv | 66,131 bytes | 1781381817163166200
+edgeiq_current_field_rated_price_audit_v5_2.csv | 302,381 bytes | 1781381816486694800
+edgeiq_live_intelligence_full_rebuild_check_v1.csv | 517 bytes | 1781327215889452700
+edgeiq_live_v8_candidate_display_feed_v1.json | 539 bytes | 1781325358678409200
+edgeiq_live_v8_candidate_display_feed_v1_summary.csv | 167 bytes | 1781325358676293100
+edgeiq_live_v8_candidate_display_feed_v1.csv | 35,145 bytes | 1781325358672242000
+edgeiq_live_fair_price_v8_interaction_candidate_feed.json | 1,146 bytes | 1781325357793449000
+edgeiq_live_fair_price_v8_interaction_candidate_feed_summary.csv | 495 bytes | 1781325357791653700
+edgeiq_live_fair_price_v8_interaction_candidate_feed_unmatched.csv | 504 bytes | 1781325357784712000
+edgeiq_live_fair_price_v8_interaction_candidate_feed.csv | 41,767 bytes | 1781325357774677100
+edgeiq_unified_live_reliability_v2.csv | 50,923 bytes | 1781315886977518700
+edgeiq_unified_live_reliability_v1.csv | 49,275 bytes | 1781315750915579900
+edgeiq_live_runner_board_FINAL_UNIFIED_v7.csv | 67,798 bytes | 1781315503370306900
+edgeiq_live_runner_board_UNIFIED_FINAL_v6.csv | 67,798 bytes | 1781315319150823800
+edgeiq_live_runner_board_UNIFIED_FIXED_v4.csv | 67,798 bytes | 1781314924760169600
+edgeiq_live_runner_board_UNIFIED_FIXED_v3.csv | 67,408 bytes | 1781314861341064100
+edgeiq_live_runner_board_UNIFIED_v2.csv | 63,903 bytes | 1781314608124939300
+edgeiq_live_runner_board_UNIFIED_v1.csv | 63,959 bytes | 1781314562152057200
+edgeiq_live_runner_board_v4.csv | 63,063 bytes | 1781314262436663800
+edgeiq_live_runner_board_v3.csv | 52,920 bytes | 1781314074772955600
+edgeiq_live_runner_board_v2.csv | 52,897 bytes | 1781314016128177600
+tab_full_field_v2.csv | 9,467 bytes | 1781313601199796800
+edgeiq_live_terminal_feed_v1_BEFORE_TODAY_ONLY_FORCE_20260614.csv | 50,401 bytes | 1781311665465436000
+race_card_active.csv | 4,130,917 bytes | 1781299363008845900
+race_results.csv | 510,767 bytes | 1781299144528208500
+edgeiq_force_tab_prices_all_ui_fields_summary.csv | 126 bytes | 1781297461623393400
+edgeiq_tab_live_prices_test_v1.csv | 24,052 bytes | 1781262067357995200
+tab_direct_race_prices_v1.csv | 25 bytes | 1781261485363985100
+edgeiq_live_terminal_feed_v1_final.csv | 124,914 bytes | 1781260736484410700
+edgeiq_live_terminal_feed_v1_filtered.csv | 123,367 bytes | 1781260735970471500
+edgeiq_tab_vic_thoroughbred_meetings_v1.csv | 2 bytes | 1781259998730719500
+sportsbet_live_market_full_day_v5_2.csv | 400 bytes | 1781259806473606700
+sportsbet_live_market_raw_events_sample_v1.json | 22,535 bytes | 1781259799084671200
+sportsbet_live_market_capture_log_v1.csv | 1,376 bytes | 1781259799083659100
+sportsbet_live_market_status_v1.csv | 292 bytes | 1781259799082156000
+sportsbet_live_market_v1.csv | 24,874 bytes | 1781259799080146000
+edgeiq_live_runner_board_v1_tab_updated.csv | 177,867 bytes | 1781259241999080300
+edgeiq_live_runner_board_tab_price_patch_v1_summary.csv | 236 bytes | 1781259021237593100
+edgeiq_live_runner_board_tab_price_patch_v1_audit.csv | 28,177 bytes | 1781259021232067900
+edgeiq_site_live_today_tomorrow_v1.csv | 42,350 bytes | 1781258689331213200
+edgeiq_race_shape_engine_v2_diagnostics.csv | 122 bytes | 1781258003443711900
+edgeiq_race_shape_engine_v2.csv | 562,178 bytes | 1781258003432450800
+edgeiq_live_runner_board_v1_recovered_adjusted.csv | 151,613 bytes | 1781256614202134800
+edgeiq_current_field_projection_v5_2_recovered_overlay_v1_summary.csv | 471 bytes | 1781256352283240500
+edgeiq_current_field_projection_v5_2_recovered_overlay_v1.csv | 385,230 bytes | 1781256352275487000
+edgeiq_live_governance_clean_audit_v1_summary.csv | 692 bytes | 1781252633585007400
+edgeiq_live_governance_clean_audit_v1.csv | 180,229 bytes | 1781252633580677600
+edgeiq_current_fair_prices_sportsbet_comparison_v5_2_audit.csv | 20,256 bytes | 1781247387929093800
+edgeiq_current_fair_prices_sportsbet_comparison_v5_2.csv | 179,651 bytes | 1781247387848953800
+edgeiq_live_terminal_feed_v1_BACKUP_PRE_GOVERNANCE.csv | 420,790 bytes | 1781231037496583800
+edgeiq_live_track_intelligence_v2_1_summary.csv | 320 bytes | 1781226041449861400
+edgeiq_live_track_intelligence_v2_1.csv | 481,145 bytes | 1781226041442844500
+edgeiq_live_track_intelligence_v2_summary.csv | 239 bytes | 1781152122629730400
+edgeiq_live_track_intelligence_v2.csv | 110,658 bytes | 1781152122622758900
+edgeiq_live_runner_style_v2_summary.csv | 125 bytes | 1781151511715072000
+edgeiq_live_runner_style_v2.csv | 46,673 bytes | 1781151511712568900
+edgeiq_live_track_intelligence_v1.json | 425 bytes | 1781148965831092500
+edgeiq_results_race_index_v1.csv | 5,702 bytes | 1781132982997805700
+edgeiq_live_v8_candidate_display_feed_v1_keyfix.json | 225 bytes | 1781118265698852500
+edgeiq_live_v8_candidate_display_feed_v1_keyfix_summary.csv | 184 bytes | 1781118265698852500
+edgeiq_live_race_timeline_v1.json | 200 bytes | 1781115596550290300
+edgeiq_live_race_timeline_v1_summary.csv | 157 bytes | 1781115596548229600
+edgeiq_live_race_timeline_v1.csv | 1,087 bytes | 1781115596543870800
+edgeiq_live_intelligence_score_v1.json | 389 bytes | 1781109081963738500
+edgeiq_live_intelligence_score_v1_summary.csv | 314 bytes | 1781109081962902600
+edgeiq_live_intelligence_score_v1.csv | 51,951 bytes | 1781109081952826800
+edgeiq_execution_board_live.csv | 67,641 bytes | 1781037929235252500
+edgeiq_live_fair_price_v7_candidate_feed.csv | 71,384 bytes | 1780996672659433600
+edgeiq_live_blank_jockey_v2.json | 1,038 bytes | 1780993051265961300
+edgeiq_live_blank_jockey_v2_summary.csv | 304 bytes | 1780993051261632300
+edgeiq_live_blank_jockey_v2_by_race.csv | 1,475 bytes | 1780993051259865200
+edgeiq_live_blank_jockey_v2_by_track.csv | 122 bytes | 1780993051117380500
+edgeiq_live_blank_jockey_v2.csv | 15,930 bytes | 1780993051096873800
+edgeiq_live_execution_v5_governance_feed_v1_unmatched.csv | 2,178,950 bytes | 1780992967171449800
+edgeiq_live_execution_v5_governance_feed_v1_summary.csv | 255 bytes | 1780992967079411700
+edgeiq_live_execution_v5_governance_feed_v1.csv | 2,673,346 bytes | 1780992967069252500
+edgeiq_execution_v5_governance_v1_by_field_size.csv | 1,713 bytes | 1780988006339060400
+edgeiq_trainer_jockey_live_alias_seed_v1.csv | 6,525 bytes | 1780987388479333000
+edgeiq_live_trainer_jockey_alias_candidate_summary_v1.csv | 671 bytes | 1780987222781641100
+edgeiq_live_jockey_alias_candidates_v1.csv | 29,583 bytes | 1780987222775214200
+edgeiq_live_trainer_alias_candidates_v1.csv | 69,484 bytes | 1780987222772057200
+edgeiq_strength_adjusted_ratings_v3_replay_by_field_size.csv | 815 bytes | 1780986385926638000
+edgeiq_live_trainer_jockey_match_audit_v1.json | 721 bytes | 1780986170496495100
+edgeiq_live_jockey_match_audit_v1.csv | 17,696 bytes | 1780986170489906600
+edgeiq_live_trainer_jockey_match_summary_v1.csv | 302 bytes | 1780986170489906600
+edgeiq_live_trainer_match_audit_v1.csv | 34,566 bytes | 1780986170486900700
+edgeiq_live_trainer_jockey_factor_feed_v2.json | 969 bytes | 1780985948527865800
+edgeiq_live_trainer_jockey_factor_feed_v2_summary.csv | 314 bytes | 1780985948523859800
+edgeiq_live_trainer_jockey_factor_feed_v2_unmatched.csv | 187,892 bytes | 1780985948516346800
+edgeiq_live_trainer_jockey_factor_feed_v2.csv | 241,314 bytes | 1780985948493079700
+edgeiq_execution_v5_environment_replay_v1_by_field_size.csv | 2,247 bytes | 1780985606375622300
+edgeiq_live_trainer_jockey_factor_feed_v1.json | 969 bytes | 1780985561521011700
+edgeiq_live_trainer_jockey_factor_feed_v1_summary.csv | 314 bytes | 1780985561518054100
+edgeiq_live_trainer_jockey_factor_feed_v1_unmatched.csv | 128,130 bytes | 1780985561511757500
+edgeiq_live_trainer_jockey_factor_feed_v1.csv | 237,514 bytes | 1780985561488522000
+edgeiq_environment_score_stability_audit_v1_by_field_score.csv | 1,997 bytes | 1780985189293333700
+edgeiq_environment_score_replay_v1_by_field_size.csv | 493 bytes | 1780984437726920900
+edgeiq_race_reliability_independence_audit_v1_verdict.csv | 556 bytes | 1780983274319165600
+edgeiq_race_reliability_independence_audit_v1_within_field.csv | 4,668 bytes | 1780983274319165600
+edgeiq_race_reliability_independence_audit_v1_field_trust.csv | 1,011 bytes | 1780983274317162100
+edgeiq_race_reliability_independence_audit_v1_field_race_strength.csv | 3,170 bytes | 1780983274315144100
+edgeiq_race_reliability_independence_audit_v1_field_lone_leader.csv | 1,064 bytes | 1780983274307116900
+edgeiq_race_reliability_independence_audit_v1_field_pace.csv | 2,427 bytes | 1780983274303089100
+edgeiq_race_reliability_independence_audit_v1_summary.csv | 636 bytes | 1780983274303089100
+edgeiq_race_reliability_independence_audit_v1.csv | 1,657,178 bytes | 1780983274301086100
+edgeiq_race_reliability_replay_v1_by_field_size.csv | 497 bytes | 1780982536479188900
+edgeiq_race_reliability_replay_v1_verdict.csv | 342 bytes | 1780982536479188900
+edgeiq_race_reliability_replay_v1_by_trust.csv | 332 bytes | 1780982536477184400
+edgeiq_race_reliability_replay_v1_by_band.csv | 593 bytes | 1780982536475181200
+edgeiq_race_reliability_replay_v1_summary.csv | 789 bytes | 1780982536475181200
+edgeiq_race_reliability_replay_v1.csv | 30,147,850 bytes | 1780982536473132900
+edgeiq_live_race_reliability_v1_feed_summary.csv | 1,192 bytes | 1780981994839768800
+edgeiq_live_environment_v2_feed_summary.csv | 1,192 bytes | 1780981994838789600
+edgeiq_live_race_reliability_v1_feed_unmatched.csv | 500 bytes | 1780981994827685200
+edgeiq_live_environment_v2_feed_unmatched.csv | 672 bytes | 1780981994823667500
+edgeiq_live_race_reliability_v1_feed.csv | 73,541 bytes | 1780981994823071700
+edgeiq_live_environment_v2_feed.csv | 85,020 bytes | 1780981994816367100
+edgeiq_race_reliability_v1_summary.csv | 537 bytes | 1780981975357040000
+edgeiq_race_reliability_v1.csv | 12,894,194 bytes | 1780981975351517200
+edgeiq_environment_v2_trust_field_core_summary.csv | 813 bytes | 1780974873645176300
+edgeiq_environment_v2_trust_field_core.csv | 10,885,863 bytes | 1780974873636567700
+edgeiq_trust_field_stability_audit_v1_verdict.csv | 360 bytes | 1780974065580685100
+edgeiq_trust_field_stability_audit_v1_summary.csv | 497 bytes | 1780974065574762000
+edgeiq_trust_field_stability_audit_v1.csv | 1,810 bytes | 1780974065573017500
+edgeiq_trust_field_engine_v1_verdict.csv | 160 bytes | 1780973812503378600
+edgeiq_trust_field_engine_v1_summary.csv | 915 bytes | 1780973812501873200
+edgeiq_trust_field_engine_v1_matrix.csv | 965 bytes | 1780973812497899400
+edgeiq_trust_field_engine_v1_by_band.csv | 492 bytes | 1780973812356856100
+edgeiq_trust_field_engine_v1.csv | 2,980,192 bytes | 1780973812257648300
+edgeiq_pace_pressure_engine_v1_race_level.csv | 2,982,068 bytes | 1780972258117980500
+edgeiq_racing_owned_live_market_refresh_summary_v1.csv | 396 bytes | 1780970239552986600
+edgeiq_racing_owned_live_market_refresh_log_v1.csv | 9,186 bytes | 1780970239530871800
+edgeiq_racing_owned_live_market_status_v1.csv | 753 bytes | 1780970239530871800
+edgeiq_sp_coverage_diagnosis_v1_by_field_size.csv | 435 bytes | 1780966961888908200
+edgeiq_environment_field_size_independence_audit_v1_verdict.csv | 210 bytes | 1780956056576237700
+edgeiq_environment_field_size_independence_audit_v1_summary.csv | 326 bytes | 1780956056574238300
+edgeiq_environment_field_size_independence_audit_v1.csv | 715 bytes | 1780956056573238300
+edgeiq_lone_leader_market_audit_v1_by_field_size.csv | 1,059 bytes | 1780953443815348200
+edgeiq_lone_leader_stability_audit_v1_by_field_size.csv | 904 bytes | 1780953046609584700
+edgeiq_lone_leader_independence_audit_v1_by_field_size.csv | 1,125 bytes | 1780952371969537200
+edgeiq_race_strength_conditional_audit_v1_verdict.csv | 461 bytes | 1780951101858549800
+edgeiq_race_strength_conditional_audit_v1_conditional.csv | 3,918 bytes | 1780951101857446900
+edgeiq_race_strength_conditional_audit_v1_by_band.csv | 777 bytes | 1780951101856447900
+edgeiq_race_strength_conditional_audit_v1_summary.csv | 468 bytes | 1780951101855448200
+edgeiq_race_strength_conditional_audit_v1.csv | 1,263,118 bytes | 1780951101854448600
+edgeiq_race_strength_independence_audit_v1_coverage.csv | 326 bytes | 1780950224856221700
+edgeiq_race_strength_independence_audit_v1_marginal_lift.csv | 689 bytes | 1780950224855220400
+edgeiq_race_strength_independence_audit_v1_by_strength_band.csv | 974 bytes | 1780950224854219700
+edgeiq_race_strength_independence_audit_v1_summary.csv | 851 bytes | 1780950224853219700
+edgeiq_race_strength_independence_audit_v1.csv | 29,727,232 bytes | 1780950224851216400
+edgeiq_v4_stability_audit_v1_by_field_size.csv | 728 bytes | 1780947685607373300
+edgeiq_live_winner_separation_replay_v2_summary.csv | 3,446 bytes | 1780945890741062400
+edgeiq_live_winner_separation_replay_v2_feature_rankings.csv | 2,508 bytes | 1780945890723792800
+edgeiq_live_winner_separation_replay_v2.csv | 4,885 bytes | 1780945890699808300
+edgeiq_execution_engine_v3_live_summary.csv | 264 bytes | 1780944858870540800
+edgeiq_execution_engine_v3_live_candidates.csv | 9,459 bytes | 1780944858862034800
+edgeiq_execution_engine_v3_live.csv | 45,574 bytes | 1780944858849529600
+edgeiq_execution_engine_v2_live_summary.csv | 264 bytes | 1780905211775967400
+edgeiq_execution_engine_v2_live_candidates.csv | 4,792 bytes | 1780905211763417000
+edgeiq_execution_engine_v2_live.csv | 57,128 bytes | 1780905211752487500
+edgeiq_trust_profile_live_audit_v1.csv | 5,546 bytes | 1780899770100917600
+edgeiq_race_strength_v3_audit.csv | 253 bytes | 1780859634356695400
+edgeiq_live_race_strength_v3.csv | 1,971 bytes | 1780859634354690400
+edgeiq_live_race_strength_v2_audit.csv | 320 bytes | 1780792024829254700
+edgeiq_live_race_strength_v2.csv | 11,272 bytes | 1780792024827256300
+edgeiq_historical_race_shape_archive_v1_audit.csv | 539 bytes | 1780783925044474700
+edgeiq_historical_race_shape_archive_v1.csv | 70,758,813 bytes | 1780783924989533700
+edgeiq_race_shape_history_v1_audit.csv | 328 bytes | 1780783350167978600
+edgeiq_race_shape_history_v1.csv | 631,027 bytes | 1780783350155221700
+edgeiq_race_shape_fit_v1_audit.csv | 377 bytes | 1780781669036191100
+edgeiq_race_shape_fit_v1.csv | 557,191 bytes | 1780781669022232800
+edgeiq_race_shape_engine_v1_audit.csv | 322 bytes | 1780778798006556900
+edgeiq_race_shape_engine_v1.csv | 17,708 bytes | 1780778797999476500
+edgeiq_tactical_dna_speed_map_race_summary_v2.csv | 6,992 bytes | 1780778250724376700
+edgeiq_tactical_dna_v2_live_coverage_audit.csv | 29,175 bytes | 1780777898448218300
+edgeiq_race_strength_v1_audit.csv | 172 bytes | 1780771562671986400
+edgeiq_race_strength_v1.csv | 819,003 bytes | 1780771562617646000
+edgeiq_race_sectional_read_v1_audit.csv | 151 bytes | 1780711215630993900
+edgeiq_race_sectional_read_v1.csv | 3,443 bytes | 1780711215629991800
+edgeiq_race_sectional_rankings_v2_audit.csv | 524 bytes | 1780711215513936300
+edgeiq_race_sectional_rankings_v2.csv | 26,298 bytes | 1780711215511936200
+racingcom_sectional_race_profiles_v2.csv | 846,398 bytes | 1780710603359687700
+edgeiq_tab_all_frontend_race_links_v1.csv | 6,479 bytes | 1780704397325171900
+edgeiq_tab_racecards_summary_v1.csv | 128 bytes | 1780698801628738700
+edgeiq_tab_racecards_vic_thoroughbred_v1.csv | 820 bytes | 1780698801624741700
+edgeiq_tab_racecards_vic_v1.csv | 820 bytes | 1780698801623237800
+edgeiq_tab_racecards_v1.csv | 17,945 bytes | 1780698801591449600
+edgeiq_tab_race_page_runner_price_candidates_v1.csv | 2,341 bytes | 1780697205895132400
+tab_meetings_today_full.json | 259 bytes | 1780696655297082100
+tab_race_details_test.json | 515 bytes | 1780696223891292900
+tab_meeting_capture.json | 1,560 bytes | 1780695535097417400
+racingcom_historical_meeting_discovery_v1_audit.csv | 932 bytes | 1780625097494302400
+racingcom_historical_meeting_discovery_v1.csv | 5,897,404 bytes | 1780625097493118900
+edgeiq_execution_board_live_PRE_SPORTSBET_PRICE_PATCH.csv | 270,650 bytes | 1780618804987236900
+edgeiq_current_field_projection_v5_2_PRE_RACE_RELATIVE_VIEW.csv | 477,831 bytes | 1780616170518106000
+edgeiq_current_field_projection_v5_2_PRE_TARGET_SCALE_REPAIR.csv | 456,212 bytes | 1780609679645401300
+edgeiq_historical_universe_coverage_audit_v1_summary.csv | 1,079 bytes | 1780532425625766600
+edgeiq_historical_universe_coverage_audit_v1.csv | 27,863 bytes | 1780532425611518000
+edgeiq_live_runner_board_fair_price_repair_v1_audit.csv | 156 bytes | 1780532422741338300
+edgeiq_race_sectional_rankings_v1.csv | 52,490 bytes | 1780516418060601700
+edgeiq_race_sectional_rankings_v1_audit.csv | 260 bytes | 1780516418060601700
+edgeiq_race_shape_intelligence_v1_audit.csv | 277 bytes | 1780514245900636400
+edgeiq_race_shape_intelligence_v1.csv | 62,713 bytes | 1780514245900134100
+racingcom_sectional_race_profiles_v1.csv | 12,709 bytes | 1780476606119953300
+racingcom_rendered_speed_data_meeting_types_v1_audit.csv | 151 bytes | 1780447668100318900
+racingcom_rendered_speed_data_meeting_types_v1.csv | 2,317 bytes | 1780447668098810700
+edgeiq_race_status_safety_audit_v1_summary.csv | 4,055 bytes | 1780429246193340200
+edgeiq_race_status_safety_audit_v1.csv | 116,719 bytes | 1780429246190340600
+edgeiq_top_opportunities_race_shape_fit_v4.csv | 62,742 bytes | 1780390185915590000
+edgeiq_top_opportunities_race_shape_fit_v4_summary.csv | 647 bytes | 1780390185915590000
+edgeiq_race_shape_fit_v4.csv | 79,721 bytes | 1780389718911917000
+edgeiq_race_shape_fit_v4_audit.csv | 1,253 bytes | 1780389718911917000
+edgeiq_race_shape_fit_v3_audit.csv | 910 bytes | 1780388284429435000
+edgeiq_race_shape_fit_v3.csv | 79,358 bytes | 1780388284428200800
+edgeiq_race_shape_fit_v2_audit.csv | 737 bytes | 1780386938487208000
+edgeiq_race_shape_fit_v2.csv | 89,746 bytes | 1780386938485090400
+edgeiq_race_shape_fit_coverage_v1.csv | 7,213 bytes | 1780385401831667500
+edgeiq_race_shape_fit_coverage_v1_summary.csv | 986 bytes | 1780385401831667500
+edgeiq_price_truth_daily_snapshot_v1_summary.csv | 11,376 bytes | 1780342760358193500
+edgeiq_price_truth_snapshot_dedupe_v1_summary.csv | 3,926 bytes | 1780342458231497300
+edgeiq_price_truth_snapshot_dedupe_v1.csv | 200,897 bytes | 1780342458230480000
+edgeiq_snapshot_count_mismatch_v1.csv | 493 bytes | 1780342309208329500
+edgeiq_snapshot_count_mismatch_v1_summary.csv | 2,412 bytes | 1780342309208329500
+edgeiq_current_field_projection_v5_1_audit.csv | 12,824 bytes | 1780286319071578600
+edgeiq_current_field_projection_v5_1.csv | 47,159 bytes | 1780286319013065100
+edgeiq_race_context_grouping_runner_review_v5_1.csv | 3,591,594 bytes | 1780285182570149600
+edgeiq_race_context_grouping_summary_v5_1.csv | 11,097,558 bytes | 1780285182457552100
+edgeiq_race_context_grouping_audit_v5_1.csv | 44,633 bytes | 1780285182141460200
+edgeiq_race_rating_targets_v5_1_audit.csv | 3,091 bytes | 1780283937568791100
+edgeiq_race_rating_targets_v5_1.csv | 9,605,188 bytes | 1780283937343040900
+edgeiq_race_rating_targets_v5_audit.csv | 199 bytes | 1780215219373945900
+edgeiq_race_rating_targets_v5.csv | 4,536,447 bytes | 1780215219367098900
+edgeiq_manual_race_metadata_corrections_v1.csv | 570 bytes | 1780210347808743100
+edgeiq_race_targets_v4_audit.csv | 312 bytes | 1780209199216614000
+edgeiq_race_targets_v4.csv | 1,284,382 bytes | 1780209199205509000
+edgeiq_race_standard_ladder_v1_audit.csv | 248 bytes | 1780208838775344500
+edgeiq_race_standard_ladder_v1.csv | 1,117,104 bytes | 1780208838390301700
+edgeiq_vic_live_terminal_feed_market_repair_audit_v1.csv | 240 bytes | 1780207961301311900
+edgeiq_vic_live_terminal_feed_v1_market_repaired.csv | 188,441 bytes | 1780207961297675200
+edgeiq_live_market_price_ingestion_audit_v1.csv | 1,273 bytes | 1780207557731244500
+edgeiq_live_market_price_ingestion_runner_review_v1.csv | 18,344 bytes | 1780207557731244500
+edgeiq_live_market_price_ingestion_sources_v1.csv | 142,344 bytes | 1780207557729742300
+edgeiq_race_rating_targets_v3_audit.csv | 3,981 bytes | 1780204950803914700
+edgeiq_race_rating_targets_v3.csv | 7,784,481 bytes | 1780204950802914200
+edgeiq_official_source_race_context_samples_v1.csv | 67,581 bytes | 1780199919618862600
+edgeiq_official_source_race_context_columns_v1.csv | 117,497 bytes | 1780199919615875500
+edgeiq_official_source_race_context_audit_v1.csv | 21,946 bytes | 1780199919611820400
+edgeiq_race_code_v1.csv | 1,206,439 bytes | 1780196787984285900
+edgeiq_race_rating_targets_v1.csv | 4,870 bytes | 1780187789879179700
+race_fields_CHECKPOINT_STALE_BEFORE_INTEL_FIX_20260617_115802.csv | 310,116 bytes | 1780079433371598000
+race_runner_forecast.csv | 3,546,115 bytes | 1780059692840192900
+race_summary.csv | 20,999 bytes | 1780059692732777300
+sportsbet_live_market_v1_EMPTY_BACKUP.csv | 294 bytes | 1780019101248100800
+edgeiq_race_clock_engine.STALE.csv | 1,415 bytes | 1779921005286524800
+edgeiq_qld_race_state_transition_failures_v1.csv | 22,621 bytes | 1779415107464533300
+edgeiq_qld_race_state_transition_memory_v1.csv | 696 bytes | 1779415107464533300
+edgeiq_qld_race_state_transition_profiles_v1.csv | 3,507 bytes | 1779415107464533300
+edgeiq_qld_race_state_transition_summary_v1.csv | 220 bytes | 1779415107464533300
+edgeiq_qld_race_state_transition_chains_v1.csv | 15,049 bytes | 1779415107462527700
+edgeiq_ecology_snapshot_comparison_summary_v1.csv | 375 bytes | 1779347369587806500
+edgeiq_ecology_snapshot_drift_changes_v1.csv | 473 bytes | 1779347369587806500
+edgeiq_ecology_snapshot_comparison_v1.csv | 4,204 bytes | 1779347369587031000
+edgeiq_wa_field_dictionary_v1.csv | 47,877 bytes | 1779313868180513800
+edgeiq_qld_telemetry_field_dictionary_v1.csv | 6,566 bytes | 1779306086014628800
+edgeiq_race_shape_response_summary_v1.csv | 405 bytes | 1779228243759786800
+edgeiq_race_shape_response_v1.csv | 2,106 bytes | 1779228243758784200
+edgeiq_trusted_sectional_universe_v2.csv | 275,882 bytes | 1779226391356097600
+edgeiq_field_linked_sectional_escalation_summary_v1.csv | 380 bytes | 1779225501919157300
+edgeiq_field_linked_sectional_escalation_v1.csv | 17,465,346 bytes | 1779225501890031800
+edgeiq_trusted_sectional_universe.csv | 693 bytes | 1779222240677613600
+edgeiq_trusted_sectional_universe_summary.csv | 161 bytes | 1779222240677613600
+edgeiq_sectional_field_composition_summary_v1.csv | 220 bytes | 1779220759428418800
+edgeiq_sectional_field_composition_match_v1.csv | 1,821,921 bytes | 1779220759423401400
+edgeiq_live_field_unmatched.csv | 9,210 bytes | 1779142015416360800
+edgeiq_live_field_matches.csv | 2 bytes | 1779142015410926900
+edgeiq_universal_race_identity_v2.csv | 674,384 bytes | 1779091031021046100
+edgeiq_universal_race_identity_v2_diagnostics.csv | 102 bytes | 1779091031021046100
+edgeiq_race_shape_engine_v1_diagnostics.csv | 88 bytes | 1779064334478810100
+edgeiq_master_dna_live_audit_v1_diagnostics.csv | 108 bytes | 1778968341240049200
+edgeiq_master_dna_live_audit_v1.csv | 600,333 bytes | 1778968341238542400
+live_speed_map_v2_diagnostics.csv | 232 bytes | 1778895687738520400
+live_speed_map_v2.csv | 364,853 bytes | 1778895687710935900
+edgeiq_execution_board_live_sectionals_diagnostics_v1.csv | 115 bytes | 1778871750678985700
+edgeiq_execution_board_live_sectionals_v1.csv | 61,315 bytes | 1778871750678985700
+edgeiq_vic_real_meetings_mar_apr_may_2026_v1.csv | 7,515 bytes | 1778837660875774400
+edgeiq_visible_calendar_vic_meetings_v1.csv | 3,255 bytes | 1778837476518088200
+edgeiq_real_vic_meetings_from_browser_v1.csv | 2 bytes | 1778837337663931100
+edgeiq_live_qualified_bets_v1.csv | 9,187 bytes | 1778836216311330000
+edgeiq_live_filter_v1_by_tier.csv | 55 bytes | 1778836215487441600
+edgeiq_live_rejected_bets_v1.csv | 100,890 bytes | 1778836214771858500
+edgeiq_vic_sectional_coverage_by_race_v1.csv | 1,353 bytes | 1778832866153764000
+edgeiq_live_form_source_locator_v1.csv | 16,518 bytes | 1778815392605959300
+edgeiq_live_form_match_debug_v1.csv | 371 bytes | 1778815362810330400
+edgeiq_live_form_context_diagnostics_v1.csv | 128 bytes | 1778815287744770000
+edgeiq_live_form_context_v1.csv | 790 bytes | 1778815287729221500
+edgeiq_race_times_normalised.csv | 1,984,365 bytes | 1778644221124122400
+edgeiq_market_orchestrator_race_coverage_v1.csv | 5,988 bytes | 1778631871299341200
+edgeiq_live_orchestrator_trend.csv | 552 bytes | 1778619103583499300
+edgeiq_live_orchestrator_status.csv | 552 bytes | 1778619103582496700
+edgeiq_live_event_alignment.csv | 13,961 bytes | 1778611607520372400
+edgeiq_live_filter_v1_by_track.csv | 178 bytes | 1778610001660803600
+edgeiq_live_filter_v1_summary.csv | 148 bytes | 1778610001658611200
+edgeiq_live_execution_memory.csv | 164,021 bytes | 1778566840716515300
+edgeiq_live_execution_matrix.csv | 181,867 bytes | 1778485515098767600
+race_standards.csv | 26,392 bytes | 1778230496613571500
+results_race_detail.csv | 3,989,973 bytes | 1778230492116514500
+pre_race_model_snapshot_latest.csv | 997,508 bytes | 1778230377660689200
+pre_race_model_snapshots.csv | 122,658,468 bytes | 1778230377603719500
+edgeiq_live_bets.csv | 2,582,167 bytes | 1778230355667687600
+historical_race_ratings.csv | 509,793 bytes | 1778114360275221900
+fields_with_form.csv | 1,710,946 bytes | 1778017430018584100
+ratings_audit_by_race.csv | 6,328 bytes | 1778007006196334000
+ratings_audit_by_race_v2.csv | 6,328 bytes | 1778007006192894800
+speed_map_report_BEFORE_ALL_RACES.csv | 170,059 bytes | 1777936206116102200
+live_race_control.csv | 12,649 bytes | 1777878309929252600
+race_card_report.backup-before-today-future-rebuild.csv | 2,044,461 bytes | 1777874144392473800
+race_card_report.backup-before-scratch-recalc.csv | 2,044,461 bytes | 1777868761820279100
+live_race_control.backup-wrong-2026-05-03.csv | 19,072 bytes | 1777773454809544000
+post_race_summary.csv | 932,534 bytes | 1776478102811886700
+pre_race_summary.csv | 36,186 bytes | 1776478096387425000
+model_results_by_race.csv | 2 bytes | 1775782619214957200
+model_odds_live.csv | 99,593 bytes | 1774936130500230100
+race_ratings_table.csv | 93,019 bytes | 1774903460181166000
+race_card_report.xlsx | 52,547 bytes | 1774325174229413900
+upcoming_runner_ra_snapshot.csv | 265,389 bytes | 1774126095139464300
+
+================================================================================
+CANDIDATE DATA CONTENT SUMMARY
+================================================================================
+
+FILE: edgeiq_race_probability_integrity_v1.csv
+DATES: 2026-07-04, 2026-07-05
+MEETINGS: BENDIGO, FLEMINGTON
+
+FILE: edgeiq_live_runner_board_probability_normalisation_v1_detail.csv
+DATES: 2026-07-04, 2026-07-05
+MEETINGS: BENDIGO, FLEMINGTON
+
+FILE: edgeiq_live_runner_board_v1.csv
+DATES: 2026-07-04, 2026-07-05
+MEETINGS: BENDIGO, FLEMINGTON
+
+FILE: edgeiq_live_runner_board_v1_BEFORE_PROB_NORMALISE_V1.csv
+DATES: 2026-07-04, 2026-07-05
+MEETINGS: BENDIGO, FLEMINGTON
+
+FILE: edgeiq_live_runner_board_v1_diagnostics.csv
+DATES: 2026-07-04, 2026-07-05
+MEETINGS: 
+
+FILE: edgeiq_live_runner_board_v1_unmatched.csv
+DATES: 2026-07-04
+MEETINGS: FLEMINGTON
+
+FILE: edgeiq_live_v6_1_research_vs_production_comparison_v1_TAB_ONLY_TODAY.csv
+DATES: 2026-07-04
+MEETINGS: FLEMINGTON
+
+FILE: edgeiq_current_fair_prices_V6_1_RESEARCH_replay.csv
+DATES: 2025-04-18, 2025-08-28, 2025-09-06, 2025-09-26, 2025-09-27, 2025-10-04, 2025-10-23, 2025-10-27, 2025-10-30, 2025-11-04, 2025-11-08, 2025-11-09, 2025-11-11, 2025-11-12, 2025-11-14
+MEETINGS: BALLARAT, BENDIGO, CAULFIELD, CAULFIELD HEATH, CRANBOURNE, FLEMINGTON, GEELONG, MORNINGTON, PAKENHAM, SANDOWN HILLSIDE, SANDOWN LAKESIDE
+
+FILE: edgeiq_current_field_projection_V6_1_RESEARCH_replay.csv
+DATES: 2025-04-18, 2025-08-28, 2025-09-06, 2025-09-26, 2025-09-27, 2025-10-04, 2025-10-23, 2025-10-27, 2025-10-30, 2025-11-04, 2025-11-08, 2025-11-09, 2025-11-11, 2025-11-12, 2025-11-14
+MEETINGS: BALLARAT, BENDIGO, CAULFIELD, CAULFIELD HEATH, CRANBOURNE, FLEMINGTON, GEELONG, MORNINGTON, PAKENHAM, SANDOWN HILLSIDE, SANDOWN LAKESIDE
+
+FILE: edgeiq_current_fair_prices_review_v5_2.csv
+DATES: 2026-07-04, 2026-07-05
+MEETINGS: BENDIGO, FLEMINGTON
+
+FILE: edgeiq_current_field_projection_v5_2_audit.csv
+DATES: 2026-07-04, 2026-07-05
+MEETINGS: BENDIGO, FLEMINGTON
+
+FILE: edgeiq_current_field_projection_v5_2.csv
+DATES: 2025-04-18, 2025-08-28, 2025-09-06, 2025-09-26, 2025-09-27, 2025-10-04, 2025-10-23, 2025-10-27, 2025-10-30, 2025-11-04, 2025-11-08, 2025-11-09, 2025-11-11, 2025-11-12, 2025-11-14
+MEETINGS: BALLARAT, BENDIGO, CAULFIELD, CAULFIELD HEATH, CRANBOURNE, FLEMINGTON, GEELONG, MORNINGTON, PAKENHAM, SANDOWN HILLSIDE, SANDOWN LAKESIDE
+
+FILE: edgeiq_current_race_class_correction_v5_1_audit.csv
+DATES: 2026-07-04, 2026-07-05
+MEETINGS: BENDIGO, FLEMINGTON
+
+FILE: edgeiq_current_race_class_correction_v5_1.csv
+DATES: 2026-07-04, 2026-07-05
+MEETINGS: BENDIGO, FLEMINGTON
+
+FILE: edgeiq_active_race_selector.csv
+DATES: 2026-07-04
+MEETINGS: FLEMINGTON
+
+FILE: edgeiq_vic_live_terminal_feed_v1_summary.csv
+DATES: 2026-07-04, 2026-07-06
+MEETINGS: 
+
+FILE: edgeiq_live_terminal_feed_v1.csv
+DATES: 2026-07-04, 2026-07-05
+MEETINGS: BENDIGO, FLEMINGTON
+
+FILE: edgeiq_vic_live_terminal_feed_v1.csv
+DATES: 2026-07-04, 2026-07-05
+MEETINGS: BENDIGO, FLEMINGTON
+
+FILE: edgeiq_live_terminal_feed_v1_TAB_ONLY_TODAY.csv
+DATES: 2026-07-04
+MEETINGS: FLEMINGTON
+
+FILE: edgeiq_current_day_source_inventory_audit_v1.csv
+DATES: 2026-06-15, 2026-06-17, 2026-07-03, 2026-07-04, 2026-07-05
+MEETINGS: FLEMINGTON
+
+FILE: edgeiq_current_day_source_inventory_summary_v1.csv
+DATES: 2026-07-04, 2026-07-05, 2026-07-06
+MEETINGS: BENDIGO, FLEMINGTON, PAKENHAM
+
+FILE: edgeiq_vic_three_day_meeting_diagnostics.csv
+DATES: 2026-07-04, 2026-07-05, 2026-07-06
+MEETINGS: BENDIGO, FLEMINGTON, PAKENHAM
+
+FILE: edgeiq_vic_three_day_meeting_universe.csv
+DATES: 2026-07-04, 2026-07-05
+MEETINGS: BENDIGO, FLEMINGTON
+
+FILE: edgeiq_vic_three_day_race_fields.csv
+DATES: 2026-07-04, 2026-07-05
+MEETINGS: BENDIGO, FLEMINGTON
+
+FILE: edgeiq_vic_three_day_meeting_calendar_v1.csv
+DATES: 2026-07-04, 2026-07-05, 2026-07-06
+MEETINGS: BENDIGO, FLEMINGTON, PAKENHAM
+
+FILE: race_card_report.csv
+DATES: 2026-07-04, 2026-07-05
+MEETINGS: BENDIGO, FLEMINGTON
+
+FILE: edgeiq_tab_calendar_racecards_v1.csv
+DATES: 2026-07-04, 2026-07-05
+MEETINGS: BENDIGO, FLEMINGTON
+
+FILE: edgeiq_tab_calendar_racecards_vic_v1.csv
+DATES: 2026-07-04, 2026-07-05
+MEETINGS: BENDIGO, FLEMINGTON
+
+FILE: edgeiq_tab_calendar_racecards_summary_v1.csv
+DATES: 2026-07-06
+MEETINGS: PAKENHAM
+
+FILE: edgeiq_tab_calendar_racecards_vic_TOMORROW_v1.csv
+DATES: 2026-07-05
+MEETINGS: BENDIGO
+
+FILE: edgeiq_tab_calendar_racecards_vic_TODAY_v1.csv
+DATES: 2026-07-04
+MEETINGS: FLEMINGTON
+
+FILE: edgeiq_live_runner_board_governed_v1_summary.csv
+DATES: 2026-07-04
+MEETINGS: 
+
+FILE: edgeiq_live_runner_board_governed_v1.csv
+DATES: 2026-07-03, 2026-07-04
+MEETINGS: FLEMINGTON
+
+FILE: edgeiq_historical_race_feed_v1.csv
+DATES: 2000-08-02, 2000-08-03, 2000-08-05, 2000-08-06, 2000-08-07, 2000-08-08, 2000-08-09, 2000-08-10, 2000-08-11, 2000-08-12, 2000-08-13, 2000-08-14, 2000-08-16, 2000-08-17, 2000-08-18
+MEETINGS: BALLARAT, BENDIGO, CAULFIELD, CAULFIELD HEATH, CRANBOURNE, FLEMINGTON, GEELONG, LADBROKES PARK, MOONEE VALLEY, MORNINGTON, PAKENHAM, SANDOWN, SANDOWN HILLSIDE, SANDOWN LAKESIDE, SPORTSBET CAULFIELD
+
+FILE: edgeiq_historical_meeting_feed_v1.csv
+DATES: 2000-08-02, 2000-08-03, 2000-08-05, 2000-08-06, 2000-08-07, 2000-08-08, 2000-08-09, 2000-08-10, 2000-08-11, 2000-08-12, 2000-08-13, 2000-08-14, 2000-08-16, 2000-08-17, 2000-08-18
+MEETINGS: BALLARAT, BENDIGO, CAULFIELD, CAULFIELD HEATH, CRANBOURNE, FLEMINGTON, GEELONG, LADBROKES PARK, MOONEE VALLEY, MORNINGTON, PAKENHAM, SANDOWN, SANDOWN HILLSIDE, SANDOWN LAKESIDE
+
+FILE: edgeiq_post_race_data_quality_summary_v1.csv
+DATES: 2000-08-02, 2026-06-24
+MEETINGS: 
+
+FILE: edgeiq_sp_join_trace_v1.csv
+DATES: 2000-08-02, 2000-08-03, 2000-08-05, 2000-08-06, 2000-08-07, 2000-08-08, 2000-08-09, 2000-08-10, 2000-08-11, 2000-08-12, 2000-08-13, 2000-08-14, 2000-08-16, 2000-08-17, 2000-08-18
+MEETINGS: BALLARAT, BENDIGO, CAULFIELD, CAULFIELD HEATH, CRANBOURNE, FLEMINGTON, GEELONG, LADBROKES PARK, MOONEE VALLEY, MORNINGTON, PAKENHAM, SANDOWN, SANDOWN HILLSIDE, SANDOWN LAKESIDE
+
+FILE: edgeiq_results_calendar_races_v1.csv
+DATES: 2000-08-02, 2000-08-03, 2000-08-05, 2000-08-06, 2000-08-07, 2000-08-08, 2000-08-09, 2000-08-10, 2000-08-11, 2000-08-12, 2000-08-13, 2000-08-14, 2000-08-16, 2000-08-17, 2000-08-18
+MEETINGS: BALLARAT, BENDIGO, CAULFIELD, CAULFIELD HEATH, CRANBOURNE, FLEMINGTON, GEELONG, LADBROKES PARK, MOONEE VALLEY, MORNINGTON, PAKENHAM, SANDOWN, SANDOWN HILLSIDE, SANDOWN LAKESIDE, SPORTSBET CAULFIELD
+
+FILE: edgeiq_results_calendar_meetings_v1.csv
+DATES: 2000-08-02, 2000-08-03, 2000-08-05, 2000-08-06, 2000-08-07, 2000-08-08, 2000-08-09, 2000-08-10, 2000-08-11, 2000-08-12, 2000-08-13, 2000-08-14, 2000-08-16, 2000-08-17, 2000-08-18
+MEETINGS: BALLARAT, BENDIGO, CAULFIELD, CAULFIELD HEATH, CRANBOURNE, FLEMINGTON, GEELONG, LADBROKES PARK, MOONEE VALLEY, MORNINGTON, PAKENHAM, SANDOWN, SANDOWN HILLSIDE, SANDOWN LAKESIDE
+
+FILE: edgeiq_live_weather_feed_v1.csv
+DATES: 2026-07-01, 2026-07-02, 2026-07-03
+MEETINGS: BALLARAT, SANDOWN LAKESIDE
+
+FILE: edgeiq_live_track_bias_feed_v1.csv
+DATES: 2026-07-01, 2026-07-02, 2026-07-03
+MEETINGS: BALLARAT, SANDOWN LAKESIDE
+
+FILE: edgeiq_live_nexus_contextual_feed_v2_1.csv
+DATES: 2026-06-25, 2026-06-26, 2026-06-27
+MEETINGS: BALLARAT, BENDIGO, CAULFIELD
+
+FILE: edgeiq_market_feed_current_v1.csv
+DATES: 2026-05-27, 2026-05-28
+MEETINGS: CAULFIELD HEATH
+
+FILE: edgeiq_live_nexus_contextual_feed_v2.csv
+DATES: 2026-06-25, 2026-06-26, 2026-06-27
+MEETINGS: BALLARAT, BENDIGO, CAULFIELD
+
+FILE: edgeiq_live_nexus_feature_feed_v1.csv
+DATES: 2026-06-25, 2026-06-26, 2026-06-27
+MEETINGS: BALLARAT, BENDIGO, CAULFIELD
+
+FILE: edgeiq_frontend_race_list_key_join_audit_v1.csv
+DATES: 2026-07-01, 2026-07-02, 2026-07-03
+MEETINGS: BALLARAT, SANDOWN LAKESIDE
+
+FILE: edgeiq_meetings_race_list_fallback_audit_v1.csv
+DATES: 2026-07-01, 2026-07-02, 2026-07-03
+MEETINGS: BALLARAT, SANDOWN LAKESIDE
+
+FILE: edgeiq_vic_three_day_race_list_v1.csv
+DATES: 2026-07-01, 2026-07-02, 2026-07-03
+MEETINGS: BALLARAT, SANDOWN, SANDOWN LAKESIDE
+
+FILE: edgeiq_racingcom_three_day_raw_meetings_v1.json
+DATES: 2026-07-01, 2026-07-02, 2026-07-03, 2026-07-04, 2026-07-05, 2026-07-06, 2026-07-07, 2026-07-08, 2026-07-09, 2026-07-10, 2026-07-11, 2026-07-12, 2026-07-13, 2026-07-14, 2026-07-15
+MEETINGS: BALLARAT, BENDIGO, CAULFIELD, CAULFIELD HEATH, CRANBOURNE, FLEMINGTON, GEELONG, PAKENHAM, SANDOWN, SANDOWN HILLSIDE, SANDOWN LAKESIDE
+
+FILE: edgeiq_meetings_workspace_v2_report.txt
+DATES: 2026-07-01
+MEETINGS: 
+
+FILE: EDGEIQ_CURRENT_GEAR_REFRESH_PLAN_V2.txt
+DATES: 2026-06-25, 2026-06-26, 2026-06-27
+MEETINGS: BALLARAT, BENDIGO, CAULFIELD
+
+FILE: edgeiq_current_source_blocker_register_v1.csv
+DATES: 2026-06-25, 2026-06-26, 2026-06-27
+MEETINGS: BALLARAT, BENDIGO, CAULFIELD

@@ -1,0 +1,61 @@
+{
+  "contract_name": "edgeiq_horse_performance_rating_fact_v1",
+  "contract_version": "1.0.0",
+  "grain": "one_row_per_governed_horse_performance_aggregate",
+  "rating_method": "DIRECT_HISTORICAL_AGGREGATE_VALUE",
+  "primary_key": [
+    "horse_performance_rating_id"
+  ],
+  "required_fields": [
+    "horse_performance_rating_id",
+    "horse_performance_aggregate_id",
+    "canonical_horse_id",
+    "canonical_horse_name",
+    "rating_as_of_date",
+    "horse_performance_aggregation_parameter_id",
+    "aggregation_method",
+    "included_observation_count",
+    "aggregate_rating_value",
+    "horse_performance_rating_value",
+    "horse_performance_rating_method",
+    "horse_performance_rating_status",
+    "aggregation_model_version",
+    "source_horse_performance_aggregate_evidence_sha256",
+    "horse_performance_rating_evidence_sha256",
+    "source_builder_version",
+    "builder_version",
+    "contract_version",
+    "built_at_utc"
+  ],
+  "allowed_values": {
+    "horse_performance_rating_method": [
+      "DIRECT_HISTORICAL_AGGREGATE_VALUE"
+    ],
+    "horse_performance_rating_status": [
+      "HISTORICAL_HORSE_RATING_GOVERNED"
+    ]
+  },
+  "forbidden_fields": [
+    "epi",
+    "eri",
+    "today_epi",
+    "today_rating",
+    "predictive_rating",
+    "forecast_rating",
+    "horse_rank",
+    "race_rank",
+    "class_adjustment",
+    "distance_adjustment",
+    "track_adjustment",
+    "track_condition_adjustment",
+    "race_shape_adjustment",
+    "pace_adjustment",
+    "jockey_adjustment",
+    "trainer_adjustment",
+    "barrier_adjustment",
+    "weight_carried_adjustment",
+    "preparation_stage_adjustment",
+    "fitness_adjustment",
+    "suitability_adjustment"
+  ]
+}

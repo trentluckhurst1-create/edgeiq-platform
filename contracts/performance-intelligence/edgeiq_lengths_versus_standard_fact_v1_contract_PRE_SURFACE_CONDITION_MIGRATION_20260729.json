@@ -1,0 +1,59 @@
+{
+  "contract_name": "edgeiq_lengths_versus_standard_fact_v1",
+  "contract_version": "1.0.0",
+  "grain": "one_row_per_race_time_delta_with_one_governed_conversion_parameter",
+  "calculation_method": "NEGATIVE_TIME_DELTA_DIVIDED_BY_SECONDS_PER_LENGTH",
+  "primary_key": [
+    "lengths_versus_standard_id"
+  ],
+  "required_fields": [
+    "lengths_versus_standard_id",
+    "race_time_delta_id",
+    "benchmark_observation_id",
+    "benchmark_group_id",
+    "standard_time_id",
+    "length_conversion_parameter_id",
+    "race_key",
+    "race_date",
+    "track_name",
+    "official_distance_metres",
+    "winner_horse_name",
+    "winner_race_time_seconds",
+    "standard_time_seconds",
+    "time_delta_seconds",
+    "seconds_per_length",
+    "lengths_versus_standard",
+    "lengths_versus_standard_interpretation",
+    "calculation_method",
+    "conversion_scope",
+    "conversion_model_version",
+    "source_race_time_delta_evidence_sha256",
+    "source_conversion_parameter_evidence_sha256",
+    "lengths_versus_standard_evidence_sha256",
+    "builder_version",
+    "contract_version",
+    "built_at_utc"
+  ],
+  "allowed_values": {
+    "lengths_versus_standard_interpretation": [
+      "FASTER_THAN_STANDARD",
+      "EQUAL_TO_STANDARD",
+      "SLOWER_THAN_STANDARD"
+    ],
+    "calculation_method": [
+      "NEGATIVE_TIME_DELTA_DIVIDED_BY_SECONDS_PER_LENGTH"
+    ],
+    "conversion_scope": [
+      "DISTANCE_EXACT"
+    ]
+  },
+  "forbidden_fields": [
+    "track_variant",
+    "condition_adjustment",
+    "course_adjustment",
+    "surface_adjustment",
+    "performance_rating",
+    "speed_rating",
+    "epi"
+  ]
+}

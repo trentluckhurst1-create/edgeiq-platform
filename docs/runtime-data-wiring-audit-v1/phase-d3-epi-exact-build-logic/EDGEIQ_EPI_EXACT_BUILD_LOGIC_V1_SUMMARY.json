@@ -1,0 +1,13 @@
+{
+  "audit_id": "EDGEIQ_EPI_EXACT_BUILD_LOGIC_V1",
+  "builder": "scripts/build_edgeiq_epi_workspace_terminal_feed_v1.py",
+  "build_start_line": 598,
+  "build_end_line": 717,
+  "historical_rows": 71327,
+  "form_guide_rows": 20,
+  "catalog_rows": 20,
+  "output_rows": 371,
+  "relevant_builder_lines": 181,
+  "key_column_profiles": 27,
+  "status": "EVIDENCE_CAPTURED"
+}

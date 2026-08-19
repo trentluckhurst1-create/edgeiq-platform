@@ -1,0 +1,5 @@
+source_id,severity,alert_type,message,created_at,operator_action_required
+RACINGCOM_GRAPHQL_SPEED_TIMING,ACTION_REQUIRED,CREDENTIAL_REQUIRED,Racing.com GraphQL timing/speed SUPPORTED_CREDENTIAL_REQUIRED,2026-07-29T02:07:56Z,Set approved RACINGCOM_PUBLIC_WIDGET_API_KEY
+RACING_AUSTRALIA_FREEFIELDS_RESULTS,ACTION_REQUIRED,ACCESS_FORBIDDEN,Racing Australia FreeFields results SOURCE_ACCESS_FORBIDDEN,2026-07-29T02:07:56Z,Resolve approved access or use official manual export/commercial feed
+LOCAL_RACINGCOM_SPEED_OUTPUTS,INFO,SOURCE_PUBLICATION_DELAYED,Retained local Racing.com speed outputs SOURCE_DELAYED,2026-07-29T02:07:56Z,Wait for approved speed source or import official export
+GOVERNED_TRACK_CONDITION_EVIDENCE,INFO,SOURCE_PUBLICATION_DELAYED,Governed track condition evidence SOURCE_DELAYED,2026-07-29T02:07:56Z,continue collection

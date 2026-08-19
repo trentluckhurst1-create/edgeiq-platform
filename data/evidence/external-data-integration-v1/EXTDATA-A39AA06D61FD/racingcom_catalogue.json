@@ -1,0 +1,13 @@
+{
+  "HTTP_status": "200",
+  "body_bytes": 187472,
+  "body_path": "data\\evidence\\external-data-integration-v1\\EXTDATA-A39AA06D61FD\\racingcom_catalogue.body",
+  "body_sha256": "d5a4af1dd6b59bd4c21ce699095586c95bc385fec11b34c2f60afe2fe6d6cb6b",
+  "checked_at": "2026-07-29T02:07:56Z",
+  "content_type": "application/json; charset=utf-8",
+  "error": "",
+  "latency_seconds": 0.241,
+  "response_class": "SUCCESS",
+  "source_name": "racingcom_catalogue",
+  "url": "https://www.racing.com/services/appv2/GetMeetsByMonth/2026/7"
+}

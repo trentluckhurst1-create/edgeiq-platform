@@ -1,0 +1,8 @@
+metric,value
+status,OFFICIAL_RACE_CONTEXT_SOURCE_BUILT
+target_races,2
+complete_races,2
+blocked_races,0
+meetings_discovered,1
+meeting_payloads_captured,1
+race_list_payloads_captured,1

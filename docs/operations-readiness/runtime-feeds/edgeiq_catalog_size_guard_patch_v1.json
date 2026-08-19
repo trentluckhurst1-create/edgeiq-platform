@@ -1,0 +1,10 @@
+{
+  "generated_utc": "2026-07-25T22:47:03+00:00",
+  "target": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\src\\edgeiq-os\\race\\services\\threeDayCatalog.ts",
+  "checkpoint": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\src\\edgeiq-os\\race\\services\\threeDayCatalog_CHECKPOINT_PRE_OPERATIONS_CATALOG_SIZE_GUARD_20260726.ts",
+  "old_max_bytes": 3000000,
+  "new_max_bytes": 15000000,
+  "changed": true,
+  "reason": "Current governed three-day product catalog is 10.3MB and was rejected by runtime feed guard. Bound raised only for this governed catalog.",
+  "model_pricing_change": "NO"
+}

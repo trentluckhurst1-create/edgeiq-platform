@@ -1,0 +1,143 @@
+{
+  "built_at_utc": "2026-07-29T22:15:27Z",
+  "results": [
+    {
+      "step": "race_context_authority_build",
+      "returncode": 0,
+      "stdout_tail": "EDGEIQ_RACE_CONTEXT_AUTHORITY_FACT_V1_BUILD_PASS\nrace_context_authority_rows=2\nstatus=BLOCKED_SOURCE_DATA_UNAVAILABLE\noutput=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_race_context_authority_fact_v1.csv\n",
+      "stderr_tail": ""
+    },
+    {
+      "step": "performance_context_build",
+      "returncode": 0,
+      "stdout_tail": "EDGEIQ_RACE_ENTRY_PERFORMANCE_CONTEXT_FACT_V1_BUILD_PASS\nrace_entry_horse_performance_snapshot_rows=5\nrace_entry_rows=204\nrace_entry_schema=CURRENT_ADAPTED\nrace_entry_performance_context_rows=5\noutput=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_race_entry_performance_context_fact_v1.csv\n",
+      "stderr_tail": ""
+    },
+    {
+      "step": "performance_context_audit",
+      "returncode": 0,
+      "stdout_tail": "EDGEIQ_RACE_ENTRY_PERFORMANCE_CONTEXT_FACT_V1_AUDIT_PASS\nrace_entry_horse_performance_snapshot_rows=5\nrace_entry_rows=204\nrace_entry_performance_context_rows=5\naudit_output=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_race_entry_performance_context_fact_v1_audit.json\n",
+      "stderr_tail": ""
+    },
+    {
+      "step": "context_eligibility_build",
+      "returncode": 0,
+      "stdout_tail": "EDGEIQ_RACE_ENTRY_CONTEXT_ELIGIBILITY_FACT_V1_BUILD_PASS\nrace_entry_performance_context_rows=5\ncomplete_context_eligible_rows=0\ncomplete_context_ineligible_rows=5\nrace_entry_context_eligibility_rows=5\noutput=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_race_entry_context_eligibility_fact_v1.csv\n",
+      "stderr_tail": ""
+    },
+    {
+      "step": "context_eligibility_audit",
+      "returncode": 0,
+      "stdout_tail": "EDGEIQ_RACE_ENTRY_CONTEXT_ELIGIBILITY_FACT_V1_AUDIT_PASS\nrace_entry_performance_context_rows=5\ncomplete_context_eligible_rows=0\ncomplete_context_ineligible_rows=5\nrace_entry_context_eligibility_rows=5\naudit_output=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_race_entry_context_eligibility_fact_v1_audit.json\n",
+      "stderr_tail": ""
+    },
+    {
+      "step": "context_parameter_selection_build",
+      "returncode": 0,
+      "stdout_tail": "EDGEIQ_RACE_ENTRY_CONTEXT_PARAMETER_SELECTION_FACT_V1_BUILD_PASS\ncontext_eligibility_rows=5\nperformance_context_rows=5\ncontext_parameter_registry_rows=0\nparameter_selected_rows=0\nparameter_not_available_rows=0\ncontext_ineligible_rows=5\ncontext_parameter_selection_rows=5\noutput=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_race_entry_context_parameter_selection_fact_v1.csv\n",
+      "stderr_tail": ""
+    },
+    {
+      "step": "context_parameter_selection_audit",
+      "returncode": 0,
+      "stdout_tail": "EDGEIQ_RACE_ENTRY_CONTEXT_PARAMETER_SELECTION_FACT_V1_AUDIT_PASS\ncontext_eligibility_rows=5\nperformance_context_rows=5\ncontext_parameter_registry_rows=0\nparameter_selected_rows=0\nparameter_not_available_rows=0\ncontext_ineligible_rows=5\ncontext_parameter_selection_rows=5\naudit_output=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_race_entry_context_parameter_selection_fact_v1_audit.json\n",
+      "stderr_tail": ""
+    },
+    {
+      "step": "context_adjustment_build",
+      "returncode": 0,
+      "stdout_tail": "EDGEIQ_RACE_ENTRY_CONTEXT_ADJUSTMENT_FACT_V1_BUILD_PASS\ncontext_parameter_selection_rows=5\nperformance_context_rows=5\ncontext_parameter_registry_rows=0\nadjustment_applied_rows=0\nparameter_not_available_rows=0\ncontext_ineligible_rows=5\ncontext_adjustment_rows=5\noutput=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_race_entry_context_adjustment_fact_v1.csv\n",
+      "stderr_tail": ""
+    },
+    {
+      "step": "context_adjustment_audit",
+      "returncode": 0,
+      "stdout_tail": "EDGEIQ_RACE_ENTRY_CONTEXT_ADJUSTMENT_FACT_V1_AUDIT_PASS\ncontext_parameter_selection_rows=5\nadjustment_applied_rows=0\nparameter_not_available_rows=0\ncontext_ineligible_rows=5\ncontext_adjustment_rows=5\naudit_output=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_race_entry_context_adjustment_fact_v1_audit.json\n",
+      "stderr_tail": ""
+    },
+    {
+      "step": "context_adjusted_performance_build",
+      "returncode": 0,
+      "stdout_tail": "EDGEIQ_RACE_ENTRY_CONTEXT_ADJUSTED_PERFORMANCE_FACT_V1_BUILD_PASS\ncontext_adjustment_rows=5\nperformance_adjusted_rows=0\nparameter_not_available_rows=0\ncontext_ineligible_rows=5\ncontext_adjusted_performance_rows=5\noutput=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_race_entry_context_adjusted_performance_fact_v1.csv\n",
+      "stderr_tail": ""
+    },
+    {
+      "step": "context_adjusted_performance_audit",
+      "returncode": 0,
+      "stdout_tail": "EDGEIQ_RACE_ENTRY_CONTEXT_ADJUSTED_PERFORMANCE_FACT_V1_AUDIT_PASS\ncontext_adjustment_rows=5\nperformance_adjusted_rows=0\nparameter_not_available_rows=0\ncontext_ineligible_rows=5\ncontext_adjusted_performance_rows=5\naudit_output=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_race_entry_context_adjusted_performance_fact_v1_audit.json\n",
+      "stderr_tail": ""
+    },
+    {
+      "step": "suitability_component_build",
+      "returncode": 0,
+      "stdout_tail": "EDGEIQ_RACE_ENTRY_SUITABILITY_COMPONENT_FACT_V1_BUILD_PASS\ncontext_adjusted_performance_rows=5\ncontext_adjustment_rows=5\neligible_adjusted_performance_rows=0\nparameter_not_available_rows=0\ncontext_ineligible_rows=5\nsuitability_component_rows=0\noutput=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_race_entry_suitability_component_fact_v1.csv\n",
+      "stderr_tail": ""
+    },
+    {
+      "step": "suitability_component_audit",
+      "returncode": 0,
+      "stdout_tail": "EDGEIQ_RACE_ENTRY_SUITABILITY_COMPONENT_FACT_V1_AUDIT_PASS\ncontext_adjusted_performance_rows=5\ncontext_adjustment_rows=5\neligible_adjusted_performance_rows=0\nparameter_not_available_rows=0\ncontext_ineligible_rows=5\nsuitability_component_rows=0\naudit_output=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_race_entry_suitability_component_fact_v1_audit.json\n",
+      "stderr_tail": ""
+    },
+    {
+      "step": "suitability_aggregate_build",
+      "returncode": 0,
+      "stdout_tail": "EDGEIQ_RACE_ENTRY_SUITABILITY_AGGREGATE_FACT_V1_BUILD_PASS\ncontext_adjusted_performance_rows=5\nsuitability_component_rows=0\neligible_adjusted_performance_rows=0\nparameter_not_available_rows=0\ncontext_ineligible_rows=5\nsuitability_aggregate_rows=0\noutput=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_race_entry_suitability_aggregate_fact_v1.csv\n",
+      "stderr_tail": ""
+    },
+    {
+      "step": "suitability_aggregate_audit",
+      "returncode": 0,
+      "stdout_tail": "EDGEIQ_RACE_ENTRY_SUITABILITY_AGGREGATE_FACT_V1_AUDIT_PASS\ncontext_adjusted_performance_rows=5\nsuitability_component_rows=0\neligible_adjusted_performance_rows=0\nparameter_not_available_rows=0\ncontext_ineligible_rows=5\nsuitability_aggregate_rows=0\naudit_output=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_race_entry_suitability_aggregate_fact_v1_audit.json\n",
+      "stderr_tail": ""
+    },
+    {
+      "step": "projected_performance_build",
+      "returncode": 0,
+      "stdout_tail": "EDGEIQ_RACE_ENTRY_PROJECTED_PERFORMANCE_FACT_V1_BUILD_PASS\nsuitability_aggregate_rows=0\ncontext_adjusted_performance_rows=NOT_REQUIRED\nprojected_performance_rows=0\noutput=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_race_entry_projected_performance_fact_v1.csv\n",
+      "stderr_tail": ""
+    },
+    {
+      "step": "projected_performance_audit",
+      "returncode": 0,
+      "stdout_tail": "EDGEIQ_RACE_ENTRY_PROJECTED_PERFORMANCE_FACT_V1_AUDIT_PASS\ncontext_adjusted_performance_rows=5\nsuitability_aggregate_rows=0\nprojected_performance_rows=0\naudit_output=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_race_entry_projected_performance_fact_v1_audit.json\n",
+      "stderr_tail": ""
+    },
+    {
+      "step": "eri_context_build",
+      "returncode": 0,
+      "stdout_tail": "EDGEIQ_RACE_ENTRY_ERI_CONTEXT_FACT_V1_BUILD_PASS\nprojected_performance_rows=0\nrace_eri_rows=0\nrace_entry_eri_context_rows=0\noutput=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_race_entry_eri_context_fact_v1.csv\n",
+      "stderr_tail": ""
+    },
+    {
+      "step": "eri_context_audit",
+      "returncode": 0,
+      "stdout_tail": "EDGEIQ_RACE_ENTRY_ERI_CONTEXT_FACT_V1_AUDIT_PASS\nprojected_performance_rows=0\nrace_eri_rows=0\nrace_entry_eri_context_rows=0\naudit_output=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_race_entry_eri_context_fact_v1_audit.json\n",
+      "stderr_tail": ""
+    },
+    {
+      "step": "epi_component_build",
+      "returncode": 0,
+      "stdout_tail": "EDGEIQ_RACE_ENTRY_EPI_COMPONENT_FACT_V1_BUILD_PASS\nprojected_rows=0\nsuitability_rows=0\neri_context_rows=0\neligible_race_entries=0\nepi_component_rows=0\noutput=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_race_entry_epi_component_fact_v1.csv\n",
+      "stderr_tail": ""
+    },
+    {
+      "step": "epi_component_audit",
+      "returncode": 0,
+      "stdout_tail": "EDGEIQ_RACE_ENTRY_EPI_COMPONENT_FACT_V1_AUDIT_PASS\nrace_entry_count=0\nepi_component_rows=0\nrace_component_population_count=0\naudit_output=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_race_entry_epi_component_fact_v1_audit.json\n",
+      "stderr_tail": ""
+    },
+    {
+      "step": "epi_build",
+      "returncode": 0,
+      "stdout_tail": "EDGEIQ_RACE_ENTRY_EPI_FACT_V1_BUILD_PASS\nepi_component_rows=0\nrace_entry_epi_rows=0\nepi_parameter_id=EPIP1-14578898B157ACE77DF0A29F\noutput=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_race_entry_epi_fact_v1.csv\n",
+      "stderr_tail": ""
+    },
+    {
+      "step": "epi_audit",
+      "returncode": 0,
+      "stdout_tail": "EDGEIQ_RACE_ENTRY_EPI_FACT_V1_AUDIT_PASS\nepi_component_rows=0\neligible_race_entry_count=0\nrace_entry_epi_rows=0\naudit_output=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_race_entry_epi_fact_v1_audit.json\n",
+      "stderr_tail": ""
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "built_utc": "2026-07-22T09:37:42+00:00",
+  "decision": "FRESH_SOURCE_POC_PASS",
+  "fixtures": 15,
+  "validation_decisions_loaded": 8,
+  "normalised_rows": 1023,
+  "fresh_graphql_fixtures_acquired": 5,
+  "historical_csv_fixtures_acquired": 8,
+  "negative_controls_rejected": 2,
+  "fresh_graphql_rows": 449,
+  "historical_csv_rows": 574,
+  "unique_fresh_runners": 58,
+  "unique_historical_runners": 80,
+  "source_formats": [
+    "GRAPHQL_JSON",
+    "HISTORICAL_CSV"
+  ],
+  "failed_acquisitions": 0,
+  "identity_failures": 0,
+  "production_changed": "NO",
+  "ui_changed": "NO"
+}

@@ -1,0 +1,262 @@
+{
+  "contract_name": "EDGEIQ Benchmark Observation Fact V1",
+  "contract_version": "1.0.0",
+  "grain": "one row per race_key",
+  "source_canonical_version": "RACINGCOM_CANONICAL_SPEED_WAREHOUSE_V2_1",
+  "prohibited_derivations": [
+    "standard times",
+    "benchmark averages",
+    "ratings",
+    "lengths versus standard",
+    "pace scores",
+    "performance scores",
+    "EPI",
+    "ERI",
+    "invented metadata"
+  ],
+  "allowed_race_coverage_types": [
+    "FULL_RACE",
+    "PARTIAL_TIMING_WINDOW",
+    "MIXED"
+  ],
+  "allowed_observation_statuses": [
+    "COMPLETE",
+    "INCOMPLETE_WINNER_IDENTITY",
+    "INCOMPLETE_WINNER_TIME",
+    "INCOMPLETE_RACE_IDENTITY",
+    "UNRESOLVED_COVERAGE"
+  ],
+  "fields": [
+    {
+      "name": "benchmark_observation_id",
+      "type": "string",
+      "nullable": false,
+      "source": "derived deterministic identity",
+      "semantic": "SHA-256 based immutable observation identifier"
+    },
+    {
+      "name": "race_key",
+      "type": "string",
+      "nullable": false,
+      "source": "canonical race fact",
+      "semantic": "canonical race identity"
+    },
+    {
+      "name": "race_date",
+      "type": "date-string",
+      "nullable": true,
+      "source": "canonical race fact or parsed race_key",
+      "semantic": "official race date where available"
+    },
+    {
+      "name": "track_name",
+      "type": "string",
+      "nullable": true,
+      "source": "canonical race fact or parsed race_key",
+      "semantic": "canonical track display name"
+    },
+    {
+      "name": "course_name",
+      "type": "string",
+      "nullable": true,
+      "source": "canonical race fact",
+      "semantic": "course or circuit identity where explicitly available"
+    },
+    {
+      "name": "race_number",
+      "type": "integer-string",
+      "nullable": true,
+      "source": "canonical race fact or parsed race_key",
+      "semantic": "meeting race number"
+    },
+    {
+      "name": "official_distance_metres",
+      "type": "decimal-string",
+      "nullable": true,
+      "source": "canonical race fact",
+      "semantic": "official race distance; never inferred"
+    },
+    {
+      "name": "surface",
+      "type": "string",
+      "nullable": true,
+      "source": "canonical race fact",
+      "semantic": "explicit surface only"
+    },
+    {
+      "name": "track_condition",
+      "type": "string",
+      "nullable": true,
+      "source": "canonical race fact",
+      "semantic": "explicit official track condition only"
+    },
+    {
+      "name": "rail_position",
+      "type": "string",
+      "nullable": true,
+      "source": "canonical race fact",
+      "semantic": "explicit rail setting only"
+    },
+    {
+      "name": "race_class",
+      "type": "string",
+      "nullable": true,
+      "source": "canonical race fact",
+      "semantic": "explicit race class only"
+    },
+    {
+      "name": "runner_count",
+      "type": "integer-string",
+      "nullable": false,
+      "source": "canonical runner fact reconciliation",
+      "semantic": "number of canonical runners in race"
+    },
+    {
+      "name": "race_split_coverage_type",
+      "type": "enum-string",
+      "nullable": false,
+      "source": "canonical runner coverage classifications",
+      "semantic": "resolved race-level timing coverage"
+    },
+    {
+      "name": "full_race_coverage_runner_count",
+      "type": "integer-string",
+      "nullable": false,
+      "source": "canonical race fact reconciliation",
+      "semantic": "runners with full-race split coverage"
+    },
+    {
+      "name": "partial_timing_window_runner_count",
+      "type": "integer-string",
+      "nullable": false,
+      "source": "canonical race fact reconciliation",
+      "semantic": "runners with partial timing-window coverage"
+    },
+    {
+      "name": "unresolved_coverage_runner_count",
+      "type": "integer-string",
+      "nullable": false,
+      "source": "canonical race fact reconciliation",
+      "semantic": "must equal zero"
+    },
+    {
+      "name": "winner_runner_key",
+      "type": "string",
+      "nullable": true,
+      "source": "canonical runner fact",
+      "semantic": "explicit winning runner identity"
+    },
+    {
+      "name": "winner_horse_name",
+      "type": "string",
+      "nullable": true,
+      "source": "canonical runner fact",
+      "semantic": "winning horse name"
+    },
+    {
+      "name": "winner_race_time_seconds",
+      "type": "decimal-string",
+      "nullable": true,
+      "source": "canonical runner fact",
+      "semantic": "winner official race time copied without transformation"
+    },
+    {
+      "name": "winner_last_600_seconds",
+      "type": "decimal-string",
+      "nullable": true,
+      "source": "canonical sectional fact",
+      "semantic": "winner cumulative time at exact 600m marker"
+    },
+    {
+      "name": "winner_last_400_seconds",
+      "type": "decimal-string",
+      "nullable": true,
+      "source": "canonical sectional fact",
+      "semantic": "winner cumulative time at exact 400m marker"
+    },
+    {
+      "name": "winner_last_200_seconds",
+      "type": "decimal-string",
+      "nullable": true,
+      "source": "canonical sectional fact",
+      "semantic": "winner cumulative time at exact 200m marker"
+    },
+    {
+      "name": "winner_split_window_start_marker_metres",
+      "type": "decimal-string",
+      "nullable": true,
+      "source": "canonical runner fact",
+      "semantic": "first available timing marker for winner"
+    },
+    {
+      "name": "winner_split_window_distance_metres",
+      "type": "decimal-string",
+      "nullable": true,
+      "source": "canonical runner fact",
+      "semantic": "distance covered by available winner split window"
+    },
+    {
+      "name": "winner_split_window_seconds",
+      "type": "decimal-string",
+      "nullable": true,
+      "source": "canonical runner fact",
+      "semantic": "elapsed time inside available winner split window"
+    },
+    {
+      "name": "winner_opening_untimed_distance_metres",
+      "type": "decimal-string",
+      "nullable": true,
+      "source": "canonical runner fact",
+      "semantic": "explicit canonical untimed opening distance; never inferred here"
+    },
+    {
+      "name": "source_provider",
+      "type": "string",
+      "nullable": false,
+      "source": "builder constant",
+      "semantic": "RACING.COM"
+    },
+    {
+      "name": "source_canonical_version",
+      "type": "string",
+      "nullable": false,
+      "source": "builder constant",
+      "semantic": "canonical source version"
+    },
+    {
+      "name": "source_semantic_version",
+      "type": "string",
+      "nullable": false,
+      "source": "builder constant",
+      "semantic": "timing semantic version"
+    },
+    {
+      "name": "observation_status",
+      "type": "enum-string",
+      "nullable": false,
+      "source": "governance classification",
+      "semantic": "completeness status without subjective scoring"
+    },
+    {
+      "name": "evidence_complete",
+      "type": "boolean-string",
+      "nullable": false,
+      "source": "governance classification",
+      "semantic": "true only when required winner and race timing facts exist"
+    },
+    {
+      "name": "race_source_row_sha256",
+      "type": "sha256-string",
+      "nullable": false,
+      "source": "derived from canonical race row",
+      "semantic": "canonical race row evidence hash"
+    },
+    {
+      "name": "winner_source_row_sha256",
+      "type": "sha256-string",
+      "nullable": true,
+      "source": "derived from canonical winning runner row",
+      "semantic": "canonical winner row evidence hash"
+    }
+  ]
+}

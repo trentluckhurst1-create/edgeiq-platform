@@ -1,0 +1,98 @@
+{
+  "identity_bridge": {
+    "status": "EDGEIQ_CURRENT_HISTORICAL_HORSE_IDENTITY_BRIDGE_V2_AUDIT_PASS",
+    "current_unique_runners": 204,
+    "historical_unique_ids": 24,
+    "historical_name_field": "canonical_horse_name",
+    "identity_status_counts": {
+      "IDENTITY_RESOLVED": 1,
+      "IDENTITY_UNRESOLVED": 203
+    },
+    "resolved_current_runners": 1,
+    "checks": {
+      "one_bridge_row_per_current_runner": true,
+      "current_runner_ids_unique": true,
+      "resolved_rows_have_historical_id": true,
+      "name_fallback_is_unique_only": true,
+      "no_fuzzy_matching": true,
+      "evidence_complete": true,
+      "deterministic_rerun": true
+    },
+    "candidate_sha256": "9e807282b90bb218934a8ac36f006f0b25b7158ef66b31bba3266e9dc33cb18c",
+    "production_sha256": "9e807282b90bb218934a8ac36f006f0b25b7158ef66b31bba3266e9dc33cb18c"
+  },
+  "suitability": {
+    "status": "EDGEIQ_RACE_ENTRY_SUITABILITY_V2_AUDIT_PASS",
+    "historical_source_rows": 168,
+    "invalid_historical_rows": 0,
+    "resolved_identity_count": 1,
+    "suitability_rows": 204,
+    "suitability_status_counts": {
+      "SUITABILITY_NOT_APPLICABLE_ENTRY_INACTIVE": 6,
+      "SUITABILITY_UNAVAILABLE": 198
+    },
+    "available_component_count_distribution": {
+      "0": 204
+    },
+    "checks": {
+      "one_row_per_context": true,
+      "natural_keys_unique": true,
+      "no_fake_composite": true,
+      "strictly_prior_evidence": true,
+      "evidence_complete": true,
+      "deterministic_rerun": true
+    },
+    "candidate_sha256": "496215af6a1968478eb319e662a596a7283b1ffd89fa820e6b6c1ea952961f5f",
+    "production_sha256": "496215af6a1968478eb319e662a596a7283b1ffd89fa820e6b6c1ea952961f5f"
+  },
+  "projected_performance": {
+    "status": "EDGEIQ_PROJECTED_PERFORMANCE_ENGINE_V2_AUDIT_PASS",
+    "rows": 204,
+    "status_counts": {
+      "PROJECTED_PERFORMANCE_NOT_APPLICABLE": 6,
+      "PROJECTED_PERFORMANCE_UNAVAILABLE": 198
+    },
+    "checks": {
+      "one_row_per_context": true,
+      "no_projection_without_rating": true,
+      "no_projection_without_suitability": true,
+      "available_formula_exact": true,
+      "evidence_complete": true,
+      "deterministic_rerun": true
+    },
+    "candidate_sha256": "f8ade4e08b50445f534dc61cf30420719bbe373e4fb4b7c8cff8927661772524",
+    "production_sha256": "f8ade4e08b50445f534dc61cf30420719bbe373e4fb4b7c8cff8927661772524"
+  },
+  "epi": {
+    "status": "EDGEIQ_EPI_ENGINE_V2_READINESS_AUDIT_PASS",
+    "rows": 204,
+    "status_counts": {
+      "EPI_UNAVAILABLE": 204
+    },
+    "checks": {
+      "one_row_per_projected_row": true,
+      "no_fabricated_epi_values": true,
+      "explicit_reason_on_every_row": true,
+      "deterministic_rerun": true
+    },
+    "candidate_sha256": "bdb9a0430765a3d6b11462ad2dc6ab31d56d36d8ad7381c89c7a6c6c1e32b022",
+    "production_sha256": "bdb9a0430765a3d6b11462ad2dc6ab31d56d36d8ad7381c89c7a6c6c1e32b022"
+  },
+  "race_intelligence": {
+    "status": "EDGEIQ_RACE_INTELLIGENCE_ENGINE_V2_AUDIT_PASS",
+    "rows": 204,
+    "status_counts": {
+      "RACE_INTELLIGENCE_ENTRY_INACTIVE": 6,
+      "RACE_INTELLIGENCE_UNAVAILABLE": 198
+    },
+    "checks": {
+      "one_row_per_context": true,
+      "no_epi_value_when_epi_unavailable": true,
+      "status_chain_complete": true,
+      "evidence_complete": true,
+      "deterministic_rerun": true
+    },
+    "candidate_sha256": "c9842fd5fe69ea856143625aae8f7afad2748cebdce4eaf467a53d5bf0743a82",
+    "production_sha256": "c9842fd5fe69ea856143625aae8f7afad2748cebdce4eaf467a53d5bf0743a82"
+  }
+}

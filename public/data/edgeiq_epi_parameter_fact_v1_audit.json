@@ -1,0 +1,101 @@
+{
+  "audit_name": "edgeiq_epi_parameter_fact_v1",
+  "audit_version": "1.0.0",
+  "audited_at_utc": "2026-07-23T03:01:41Z",
+  "checks": {
+    "contract_fields_exact": {
+      "detail": {
+        "actual": [
+          "epi_parameter_id",
+          "epi_parameter_version",
+          "epi_methodology",
+          "epi_base_value",
+          "historical_performance_weight",
+          "suitability_weight",
+          "race_context_weight",
+          "total_component_weight",
+          "historical_performance_required",
+          "suitability_required",
+          "race_context_required",
+          "minimum_required_component_count",
+          "epi_output_decimal_places",
+          "epi_rounding_mode",
+          "effective_from_date",
+          "effective_to_date",
+          "epi_parameter_publication_decision",
+          "epi_parameter_reconciliation_decision",
+          "epi_parameter_status",
+          "epi_parameter_evidence_sha256",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ],
+        "expected": [
+          "epi_parameter_id",
+          "epi_parameter_version",
+          "epi_methodology",
+          "epi_base_value",
+          "historical_performance_weight",
+          "suitability_weight",
+          "race_context_weight",
+          "total_component_weight",
+          "historical_performance_required",
+          "suitability_required",
+          "race_context_required",
+          "minimum_required_component_count",
+          "epi_output_decimal_places",
+          "epi_rounding_mode",
+          "effective_from_date",
+          "effective_to_date",
+          "epi_parameter_publication_decision",
+          "epi_parameter_reconciliation_decision",
+          "epi_parameter_status",
+          "epi_parameter_evidence_sha256",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ]
+      },
+      "status": "PASS"
+    },
+    "deterministic_parameter_evidence": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "deterministic_parameter_identity": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "exactly_one_parameter_row": {
+      "detail": {
+        "row_count": 1
+      },
+      "status": "PASS"
+    },
+    "no_forbidden_fields": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "parameter_arithmetic_exact": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "parameter_governance_exact": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "parameter_lineage_complete": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "required_files_exist": {
+      "detail": [],
+      "status": "PASS"
+    }
+  },
+  "counts": {
+    "epi_parameter_rows": 1
+  },
+  "failed_checks": [],
+  "status": "PASS"
+}

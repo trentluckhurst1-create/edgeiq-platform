@@ -1,0 +1,20 @@
+{
+  "http_method": "GET",
+  "operation_name": "sectionaltimes_callback",
+  "query_document_path": "docs\\racing-com-public-data-v1\\completion\\graphql\\runner_sectionals.graphql",
+  "non_sensitive_headers": [
+    "content-type",
+    "referer",
+    "sec-ch-ua",
+    "sec-ch-ua-mobile",
+    "sec-ch-ua-platform",
+    "user-agent"
+  ],
+  "sensitive_header_names_present": [
+    "x-api-key"
+  ],
+  "cookies_present": false,
+  "status": 200,
+  "response_bytes": 17409,
+  "response_hash": "30da2e85f25333aba1fc24b7b455d44df4b17c2338c97b89ddebc098029a4b65"
+}

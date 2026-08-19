@@ -1,0 +1,6 @@
+state,source_name,source_url,source_type,notes
+QLD,Racing Queensland Thoroughbred Sectionals,https://www.racingqueensland.com.au/industry/thoroughbred/thoroughbred-sectionals,HTML,Monthly thoroughbred sectionals with PDF/CSV/ZIP links
+QLD,Racing Queensland Replays Sectionals,https://www.racingqueensland.com.au/racing/replays,HTML,Replay and sectional landing page
+VIC,Racing.com Today Racing,https://www.racing.com/todays-racing,HTML,Meeting/race pages link to speed-data pages
+VIC,Racing.com Speed Data Example,https://www.racing.com/form/2026-04-04/caulfield/race/5/speed-data,HTML,Speed data page structure example
+WA,Racing WA,https://racingwa.com.au/,HTML,WA racing source landing page

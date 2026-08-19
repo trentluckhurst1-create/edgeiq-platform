@@ -1,0 +1,257 @@
+{
+  "built_at_utc": "2026-07-29T22:33:14Z",
+  "context_eligibility": {
+    "audit_status": "PASS",
+    "complete_context_eligible_rows": 0,
+    "complete_context_ineligible_rows": 5,
+    "reason_counts": {
+      "CLASS_CONTEXT_INELIGIBLE_MISSING_CONTEXT": 5
+    }
+  },
+  "daily_operations": {
+    "daily_operations_audit_status": "PASS_REPORTED_BY_SCRIPT",
+    "full_context_epi_chain_called": true,
+    "race_context_authority_called": true,
+    "refresh_manifest_status": "PASS_WITH_GOVERNED_UNAVAILABLE_STAGES",
+    "refresh_orchestration_repaired": "YES",
+    "v6_historical_normalisation_authority_called": true
+  },
+  "deterministic_identity_bridge_requirement": "A durable shared horse identifier is required: Racing Australia horse ID plus Racing.com horse_code mapping, or an Australian Stud Book identifier available in both sources. Name-only bridges remain rejected.",
+  "epi": {
+    "audit_status": "PASS",
+    "blocker": "MISSING_REQUIRED_EPI_COMPONENT_FROM_INELIGIBLE_RACE_CONTEXT",
+    "components": 0,
+    "rows": 0
+  },
+  "first_failing_stage": "Race Context -> Context Eligibility",
+  "legacy_victoria_live_acceptance": {
+    "blocker": "No Performance Base observations exist on or after HPR-NORM-A-v1 effective date 2026-07-20.",
+    "note": "Legacy audit remains useful for current timing coverage; the repaired refresh preserves V6 historical ratings and separately proves race context source-data blocker for snapshot/EPI.",
+    "performance_base_on_or_after_cutoff": 0,
+    "status": "BLOCKED_EXTERNAL_CURRENT_TIMING_DATA"
+  },
+  "mandatory_epi_components_weakened": "NO",
+  "name_only_identity_bridge_created": "NO",
+  "next_governed_action": "Acquire or ingest official race-level context source carrying race_class_code and rail_position for current race entries, then rerun the repaired Victoria Performance Intelligence refresh.",
+  "overall_status": "BLOCKED_SOURCE_DATA_UNAVAILABLE",
+  "pricing_changed": "NO",
+  "probability_changed": "NO",
+  "race_class_inferred": "NO",
+  "race_context_authority": {
+    "complete_race_context_races": 0,
+    "missing_fields": {
+      "race_class_code": 17,
+      "rail_position": 17
+    },
+    "partial_or_blocked_races": 17,
+    "race_class_source_rows": 0,
+    "rail_position_source_rows": 0,
+    "source_inventory_status_counts": {
+      "FOUND": 2,
+      "NOT_FOUND": 2,
+      "PARTIAL": 5
+    },
+    "status": "BLOCKED_SOURCE_DATA_UNAVAILABLE",
+    "status_counts": {
+      "BLOCKED_MISSING_OFFICIAL_RACE_CONTEXT": 17
+    },
+    "target_races": 17
+  },
+  "rail_defaulted": "NO",
+  "report_name": "EDGEIQ_RACE_CONTEXT_AUTHORITY_FINAL_ACCEPTANCE_V1",
+  "root_cause": "OFFICIAL_RACE_CLASS_AND_RAIL_SOURCE_NOT_AVAILABLE_FOR_CURRENT_SNAPSHOT_RACES",
+  "row_counts": {
+    "context_eligibility": 5,
+    "epi": 0,
+    "epi_components": 0,
+    "horse_aggregates": 1265,
+    "horse_observations": 52309,
+    "horse_ratings": 1265,
+    "lengths_v_standard": 52414,
+    "normalisation": 52309,
+    "performance_base": 52414,
+    "projected_performance": 0,
+    "race_context_authority": 17,
+    "race_entry_context": 5,
+    "race_time_deltas": 54978,
+    "snapshots": 5,
+    "standard_times": 695,
+    "timed_races": 70308
+  },
+  "start_commit": "02e021b",
+  "target_trace_sample": [
+    {
+      "authority": "",
+      "race_class_value": "",
+      "race_key": "2026-07-24|ECHUCA|R1",
+      "rail_position_value": "",
+      "source_file": "NO_MATCHING_OFFICIAL_CONTEXT_SOURCE",
+      "source_role": "",
+      "trace_status": "NOT_FOUND",
+      "track_condition_value": ""
+    },
+    {
+      "authority": "",
+      "race_class_value": "",
+      "race_key": "2026-07-24|ECHUCA|R2",
+      "rail_position_value": "",
+      "source_file": "NO_MATCHING_OFFICIAL_CONTEXT_SOURCE",
+      "source_role": "",
+      "trace_status": "NOT_FOUND",
+      "track_condition_value": ""
+    },
+    {
+      "authority": "",
+      "race_class_value": "",
+      "race_key": "2026-07-24|ECHUCA|R3",
+      "rail_position_value": "",
+      "source_file": "NO_MATCHING_OFFICIAL_CONTEXT_SOURCE",
+      "source_role": "",
+      "trace_status": "NOT_FOUND",
+      "track_condition_value": ""
+    },
+    {
+      "authority": "",
+      "race_class_value": "",
+      "race_key": "2026-07-24|ECHUCA|R4",
+      "rail_position_value": "",
+      "source_file": "NO_MATCHING_OFFICIAL_CONTEXT_SOURCE",
+      "source_role": "",
+      "trace_status": "NOT_FOUND",
+      "track_condition_value": ""
+    },
+    {
+      "authority": "",
+      "race_class_value": "",
+      "race_key": "2026-07-24|ECHUCA|R5",
+      "rail_position_value": "",
+      "source_file": "NO_MATCHING_OFFICIAL_CONTEXT_SOURCE",
+      "source_role": "",
+      "trace_status": "NOT_FOUND",
+      "track_condition_value": ""
+    },
+    {
+      "authority": "",
+      "race_class_value": "",
+      "race_key": "2026-07-24|ECHUCA|R6",
+      "rail_position_value": "",
+      "source_file": "NO_MATCHING_OFFICIAL_CONTEXT_SOURCE",
+      "source_role": "",
+      "trace_status": "NOT_FOUND",
+      "track_condition_value": ""
+    },
+    {
+      "authority": "",
+      "race_class_value": "",
+      "race_key": "2026-07-24|ECHUCA|R7",
+      "rail_position_value": "",
+      "source_file": "NO_MATCHING_OFFICIAL_CONTEXT_SOURCE",
+      "source_role": "",
+      "trace_status": "NOT_FOUND",
+      "track_condition_value": ""
+    },
+    {
+      "authority": "",
+      "race_class_value": "",
+      "race_key": "2026-07-24|ECHUCA|R8",
+      "rail_position_value": "",
+      "source_file": "NO_MATCHING_OFFICIAL_CONTEXT_SOURCE",
+      "source_role": "",
+      "trace_status": "NOT_FOUND",
+      "track_condition_value": ""
+    },
+    {
+      "authority": "",
+      "race_class_value": "",
+      "race_key": "2026-07-25|CAULFIELD|R1",
+      "rail_position_value": "",
+      "source_file": "NO_MATCHING_OFFICIAL_CONTEXT_SOURCE",
+      "source_role": "",
+      "trace_status": "NOT_FOUND",
+      "track_condition_value": ""
+    },
+    {
+      "authority": "",
+      "race_class_value": "",
+      "race_key": "2026-07-25|CAULFIELD|R2",
+      "rail_position_value": "",
+      "source_file": "NO_MATCHING_OFFICIAL_CONTEXT_SOURCE",
+      "source_role": "",
+      "trace_status": "NOT_FOUND",
+      "track_condition_value": ""
+    },
+    {
+      "authority": "",
+      "race_class_value": "",
+      "race_key": "2026-07-25|CAULFIELD|R3",
+      "rail_position_value": "",
+      "source_file": "NO_MATCHING_OFFICIAL_CONTEXT_SOURCE",
+      "source_role": "",
+      "trace_status": "NOT_FOUND",
+      "track_condition_value": ""
+    },
+    {
+      "authority": "",
+      "race_class_value": "",
+      "race_key": "2026-07-25|CAULFIELD|R4",
+      "rail_position_value": "",
+      "source_file": "NO_MATCHING_OFFICIAL_CONTEXT_SOURCE",
+      "source_role": "",
+      "trace_status": "NOT_FOUND",
+      "track_condition_value": ""
+    },
+    {
+      "authority": "",
+      "race_class_value": "",
+      "race_key": "2026-07-25|CAULFIELD|R5",
+      "rail_position_value": "",
+      "source_file": "NO_MATCHING_OFFICIAL_CONTEXT_SOURCE",
+      "source_role": "",
+      "trace_status": "NOT_FOUND",
+      "track_condition_value": ""
+    },
+    {
+      "authority": "",
+      "race_class_value": "",
+      "race_key": "2026-07-25|CAULFIELD|R6",
+      "rail_position_value": "",
+      "source_file": "NO_MATCHING_OFFICIAL_CONTEXT_SOURCE",
+      "source_role": "",
+      "trace_status": "NOT_FOUND",
+      "track_condition_value": ""
+    },
+    {
+      "authority": "",
+      "race_class_value": "",
+      "race_key": "2026-07-25|CAULFIELD|R7",
+      "rail_position_value": "",
+      "source_file": "NO_MATCHING_OFFICIAL_CONTEXT_SOURCE",
+      "source_role": "",
+      "trace_status": "NOT_FOUND",
+      "track_condition_value": ""
+    },
+    {
+      "authority": "",
+      "race_class_value": "",
+      "race_key": "2026-07-25|CAULFIELD|R8",
+      "rail_position_value": "",
+      "source_file": "NO_MATCHING_OFFICIAL_CONTEXT_SOURCE",
+      "source_role": "",
+      "trace_status": "NOT_FOUND",
+      "track_condition_value": ""
+    },
+    {
+      "authority": "",
+      "race_class_value": "",
+      "race_key": "2026-07-25|CAULFIELD|R9",
+      "rail_position_value": "",
+      "source_file": "NO_MATCHING_OFFICIAL_CONTEXT_SOURCE",
+      "source_role": "",
+      "trace_status": "NOT_FOUND",
+      "track_condition_value": ""
+    }
+  ],
+  "ui_changed": "NO",
+  "v6_1_changed": "NO",
+  "v7_2g2_changed": "NO"
+}

@@ -1,0 +1,32 @@
+{
+  "built_at_utc": "2026-07-30T00:10:00Z",
+  "hashes": {
+    "docs/performance-intelligence-context-parameter-program-v1/EDGEIQ_CONTEXT_PARAMETER_ARCHITECTURE_INVESTIGATION_V1.json": "bd913cae9905b6758202fbe8cb9f09c55a7ae48153e0bcf36160a56f8a144d54",
+    "docs/performance-intelligence-context-parameter-program-v1/EDGEIQ_CONTEXT_PARAMETER_ARCHITECTURE_INVESTIGATION_V1.md": "46cb057c48b8d0cec317d8377411c2724df0af5e76dcef5fd191f50a8a01708c",
+    "docs/performance-intelligence-context-parameter-program-v1/EDGEIQ_CONTEXT_PARAMETER_CANDIDATES_V1.csv": "b0ee0a60ddb073fbd6388a31a8ee4610493af0de4e91bcd822e129c0f182854d",
+    "docs/performance-intelligence-context-parameter-program-v1/EDGEIQ_CONTEXT_PARAMETER_FEASIBILITY_V1.json": "47b8d036c3911af11399f9e47234bc88a0620e30ac860826114ec3e03eaf62e0",
+    "docs/performance-intelligence-context-parameter-program-v1/EDGEIQ_CONTEXT_PARAMETER_FEASIBILITY_V1.md": "dc8a0ceeb0c6abaf84160bcae176766fa8ab08ccacfc362bfbbd491230edaa29",
+    "docs/performance-intelligence-context-parameter-program-v1/EDGEIQ_CONTEXT_PARAMETER_FIELD_COVERAGE_V1.csv": "873c5d84d20f441778c0e296ceccd0326c0b37e6579acb9035c0aea92b8a4606",
+    "docs/performance-intelligence-context-parameter-program-v1/EDGEIQ_CONTEXT_PARAMETER_METHOD_V1.json": "c0fdb2cfc81c80a0628257c33b41f2d59df55641c2c50c1452803c30c9168b2c",
+    "docs/performance-intelligence-context-parameter-program-v1/EDGEIQ_CONTEXT_PARAMETER_METHOD_V1.md": "2583caa1d56d8791ffe6b40228352f1adf8e83b1567932c87ed4344ab2bee547",
+    "docs/performance-intelligence-context-parameter-program-v1/EDGEIQ_CONTEXT_PARAMETER_PROGRAM_VALIDATION_V1.md": "a0b473daf17cbc61be9a50ad3ff6c46b0d7e76581473a68ee92bce7f4309a633",
+    "docs/performance-intelligence-context-parameter-program-v1/EDGEIQ_CONTEXT_PARAMETER_REGISTRY_ACCEPTANCE_V1.json": "608c20bccba31221c53ded0d8fd7a03cf9b3f7b656a78ba4e47e2222ff83c26c",
+    "docs/performance-intelligence-context-parameter-program-v1/EDGEIQ_CONTEXT_PARAMETER_REGISTRY_ACCEPTANCE_V1.md": "9a0b3210b550b21a45d64f5f010bbdb171874c528060285dcb7f6d22417411d0",
+    "docs/performance-intelligence-context-parameter-program-v1/EDGEIQ_CONTEXT_PARAMETER_REJECTIONS_V1.csv": "d0dbed1c161b772e46d37cccbe7adc932a31e326edac1437c91a960d3ed8eb1c",
+    "docs/performance-intelligence-context-parameter-program-v1/EDGEIQ_CONTEXT_PARAMETER_TRAINING_FACT_V1.csv": "aca072873d5cec1676cda3752a1fb9fcff656cef59c315559883081e9c37de17",
+    "docs/performance-intelligence-context-parameter-program-v1/EDGEIQ_CONTEXT_PARAMETER_VALIDATION_V1.csv": "2b892f65fd4ce48fcfd9fe3179f0b3c6eb88f434ae8abe0ef0390fabcfd99762",
+    "docs/performance-intelligence-context-parameter-program-v1/EDGEIQ_CONTEXT_PARAMETER_VALIDATION_V1.json": "cb17b7f1931f05475531f4542bca94a5f7e4aa2cf1213fbdd74f42ec5f81b591",
+    "docs/performance-intelligence-context-parameter-program-v1/EDGEIQ_CONTEXT_PARAMETER_VALIDATION_V1.md": "0bbd723275353c22d613d4754365d4c8afd9eeefb7358c7e5a3a9086bfa87bf3",
+    "docs/performance-intelligence-context-parameter-program-v1/EDGEIQ_CONTEXT_SIGNATURE_DEPTH_PROFILE_V1.csv": "1c5e27937109975717c80a9261996a2ddea4e3ab244f1b8fddd9408a89d75970",
+    "docs/performance-intelligence-context-parameter-program-v1/EDGEIQ_CURRENT_CONTEXT_ADJUSTMENT_TRACE_V1.csv": "88e7d91e6c472c0f10b233d60891ae7c025a9f0746ec1524f873a60cad3a6971",
+    "docs/performance-intelligence-context-parameter-program-v1/EDGEIQ_CURRENT_CONTEXT_PARAMETER_SELECTION_TRACE_V1.csv": "fd5b24bb32e4b28d840f0396bd0c4d732dc9776bb253d5b754be0c8a45349f6a",
+    "docs/performance-intelligence-context-parameter-program-v1/EDGEIQ_CURRENT_EPI_TRACE_V2.csv": "5f926df907f21a6a18f55bb1f98983698859d3de7b2a2e334fec6cac8965bb15",
+    "docs/performance-intelligence-context-parameter-program-v1/EDGEIQ_VICTORIA_LIVE_PERFORMANCE_BASE_INVESTIGATION_V1.json": "cf5ff642f1f9c244489e316df3299e31995d7252e78c7fde109ff3a7cf20471f",
+    "docs/performance-intelligence-context-parameter-program-v1/EDGEIQ_VICTORIA_LIVE_PERFORMANCE_BASE_INVESTIGATION_V1.md": "95c90521d4fbd0a0126bd0a61fd8b3cf5763b4ec2e6f81c516ec7192ea764de0",
+    "docs/performance-intelligence-context-parameter-program-v1/EDGEIQ_VICTORIA_LIVE_PERFORMANCE_PIPELINE_TRACE_V1.csv": "da72093ef2546304df5de6c12354fd7140507e211d382ceed4d8d1f093369afc",
+    "docs/performance-intelligence-context-parameter-program-v1/EDGEIQ_VICTORIA_PERFORMANCE_INTELLIGENCE_FINAL_ACCEPTANCE_V2.csv": "eeba13c9f2a2ef02df7cc222abc4d26424302619bb6fc969ed4f0ad4418017a0",
+    "docs/performance-intelligence-context-parameter-program-v1/EDGEIQ_VICTORIA_PERFORMANCE_INTELLIGENCE_FINAL_ACCEPTANCE_V2.json": "4c34f7b3d6912b4ac63adbc46ec201a0aab5cfb8b6d3a076ffa07a47d391dfd1",
+    "docs/performance-intelligence-context-parameter-program-v1/EDGEIQ_VICTORIA_PERFORMANCE_INTELLIGENCE_FINAL_ACCEPTANCE_V2.md": "5473d68112807d36c49ba22c66da58c9bf9f0fa4d320c59103dd013c77dab634"
+  },
+  "status": "PASS_SEMANTIC_HASHES_RECORDED"
+}

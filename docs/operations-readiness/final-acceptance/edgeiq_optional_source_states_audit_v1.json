@@ -1,0 +1,26 @@
+{
+  "generated_utc": "2026-07-25T23:58:45+00:00",
+  "states": [
+    {
+      "source": "weather",
+      "state": "WEATHER_UNAVAILABLE",
+      "evidence": "current governed weather file absent or timestamp limited"
+    },
+    {
+      "source": "live market",
+      "state": "MARKET_SNAPSHOT",
+      "evidence": "edgeiq_market_terminal_feed_v1 carries snapshot disclosure metadata"
+    },
+    {
+      "source": "sectionals",
+      "state": "SECTIONALS_HISTORICAL_ONLY",
+      "evidence": "historical sectional warehouses exist; current official sectionals not guaranteed"
+    },
+    {
+      "source": "stewards",
+      "state": "STEWARDS_UNAVAILABLE",
+      "evidence": "no governed current stewards provider; Results copy states unavailable"
+    }
+  ],
+  "status": "PASS"
+}

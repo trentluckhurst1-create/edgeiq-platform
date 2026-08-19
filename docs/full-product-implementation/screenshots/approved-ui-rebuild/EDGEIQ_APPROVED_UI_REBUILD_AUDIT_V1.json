@@ -1,0 +1,11 @@
+{
+  "built_at": "2026-07-20T15:48:38+10:00",
+  "workspace_count": 19,
+  "missing_artifacts": [],
+  "encoding_audit_status": "EDGEIQ_APPROVED_UI_ENCODING_AUDIT_PASS",
+  "active_source_encoding_hits": [],
+  "capture_workspace_count": 19,
+  "capture_error_count": 0,
+  "failures": [],
+  "status": "EDGEIQ_APPROVED_UI_REBUILD_AUDIT_PASS"
+}

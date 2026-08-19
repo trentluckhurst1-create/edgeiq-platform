@@ -1,0 +1,28 @@
+{
+  "checks": [
+    {
+      "check_id": "dataset_schema_profile",
+      "detail": "profiled_targets=6; expected=6",
+      "status": "PASS"
+    },
+    {
+      "check_id": "identity_candidate_detection",
+      "detail": "candidate_targets=6; expected=6",
+      "status": "PASS"
+    },
+    {
+      "check_id": "builder_assignment_extraction",
+      "detail": "records=1376; errors=0",
+      "status": "PASS"
+    },
+    {
+      "check_id": "builder_availability",
+      "detail": "missing_builders=0",
+      "status": "PASS"
+    }
+  ],
+  "generated_utc": "2026-07-27T03:34:39+00:00",
+  "overall_status": "PASS",
+  "program_id": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE1A_4_1_EXACT_SCHEMA_FIELD_MAPPING_V1",
+  "program_version": "1.0.0"
+}

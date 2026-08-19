@@ -1,0 +1,208 @@
+{
+  "schema_version": "edgeiq_daily_product_refresh_v1",
+  "generated_utc": "2026-07-26T03:40:39+00:00",
+  "operating_date": "2026-07-26",
+  "timezone": "Australia/Melbourne",
+  "stages": [
+    {
+      "stage": "scripts/build_edgeiq_three_day_window_v1.py",
+      "status": "PASS",
+      "returncode": 0
+    },
+    {
+      "stage": "scripts/build_edgeiq_vic_three_day_meeting_universe.py",
+      "status": "PASS",
+      "returncode": 0
+    },
+    {
+      "stage": "scripts/build_edgeiq_vic_three_day_meeting_calendar_v1.py",
+      "status": "PASS",
+      "returncode": 0
+    },
+    {
+      "stage": "scripts/build_edgeiq_racingcom_three_day_race_list_v1.py",
+      "status": "PASS",
+      "returncode": 0
+    },
+    {
+      "stage": "scripts/build_edgeiq_three_day_product_catalog_v1.py",
+      "status": "PASS",
+      "returncode": 0
+    },
+    {
+      "stage": "scripts/build_edgeiq_current_race_fields_from_product_catalog_v1.py",
+      "status": "PASS",
+      "returncode": 0
+    },
+    {
+      "stage": "scripts/build_edgeiq_ladbrokes_active_market_refresh_v1.py",
+      "status": "PASS",
+      "returncode": 0
+    },
+    {
+      "stage": "scripts/build_edgeiq_current_market_v1.py",
+      "status": "PASS",
+      "returncode": 0
+    },
+    {
+      "stage": "scripts/build_edgeiq_form_guide_current_base_v1.py",
+      "status": "PASS",
+      "returncode": 0
+    },
+    {
+      "stage": "scripts/build_edgeiq_current_early_speed_v1.py",
+      "status": "PASS",
+      "returncode": 0
+    },
+    {
+      "stage": "scripts/build_edgeiq_current_late_speed_v1.py",
+      "status": "PASS",
+      "returncode": 0
+    },
+    {
+      "stage": "scripts/build_edgeiq_current_suitability_v1.py",
+      "status": "PASS",
+      "returncode": 0
+    },
+    {
+      "stage": "scripts/build_edgeiq_current_form_momentum_v1.py",
+      "status": "PASS",
+      "returncode": 0
+    },
+    {
+      "stage": "scripts/build_edgeiq_current_race_shape_v2.py",
+      "status": "PASS",
+      "returncode": 0
+    },
+    {
+      "stage": "scripts/build_edgeiq_current_map_v1.py",
+      "status": "PASS",
+      "returncode": 0
+    },
+    {
+      "stage": "scripts/build_edgeiq_form_guide_enriched_v2.py",
+      "status": "PASS",
+      "returncode": 0
+    },
+    {
+      "stage": "scripts/build_edgeiq_performance_recovery_current_lineage_v1.py",
+      "status": "PASS",
+      "returncode": 0
+    },
+    {
+      "stage": "scripts/build_edgeiq_form_guide_enriched_v2.py",
+      "status": "PASS",
+      "returncode": 0
+    },
+    {
+      "stage": "scripts/build_edgeiq_map_terminal_feed_v1.py",
+      "status": "PASS",
+      "returncode": 0
+    },
+    {
+      "stage": "scripts/build_edgeiq_market_terminal_feed_v1.py",
+      "status": "PASS",
+      "returncode": 0
+    },
+    {
+      "stage": "scripts/build_edgeiq_overview_terminal_feed_v1.py",
+      "status": "PASS",
+      "returncode": 0
+    },
+    {
+      "stage": "scripts/build_edgeiq_insights_terminal_feed_v1.py",
+      "status": "PASS",
+      "returncode": 0
+    },
+    {
+      "stage": "scripts/build_edgeiq_gear_terminal_feed_v1.py",
+      "status": "PASS",
+      "returncode": 0
+    },
+    {
+      "stage": "scripts/build_edgeiq_meeting_results_terminal_feed_v1.py",
+      "status": "PASS",
+      "returncode": 0
+    },
+    {
+      "stage": "scripts/performance-intelligence/product-integration/build_edgeiq_performance_intelligence_product_feeds_v1.py",
+      "status": "PASS",
+      "returncode": 0
+    },
+    {
+      "stage": "scripts/build_edgeiq_on_track_weather_governed_v1_2.py",
+      "status": "PASS",
+      "returncode": 0
+    },
+    {
+      "stage": "scripts/build_edgeiq_victorian_track_weather_v1.py",
+      "status": "PASS",
+      "returncode": 0
+    },
+    {
+      "stage": "scripts/audit_edgeiq_victorian_track_weather_v1.py",
+      "status": "PASS",
+      "returncode": 0
+    }
+  ],
+  "feed_checks": [
+    {
+      "file": "edgeiq_three_day_window_v1.json",
+      "status": "PASS",
+      "rows_or_items": 1,
+      "bytes": 564
+    },
+    {
+      "file": "edgeiq_three_day_product_catalog_v1.json",
+      "status": "PASS",
+      "rows_or_items": 1,
+      "bytes": 1085894
+    },
+    {
+      "file": "edgeiq_vic_three_day_race_list_v1.csv",
+      "status": "PASS",
+      "rows_or_items": 7,
+      "bytes": 1048565
+    },
+    {
+      "file": "edgeiq_live_terminal_feed_v1.csv",
+      "status": "PASS",
+      "rows_or_items": 246,
+      "bytes": 179745
+    },
+    {
+      "file": "edgeiq_vic_live_terminal_feed_v1.csv",
+      "status": "PASS",
+      "rows_or_items": 246,
+      "bytes": 179745
+    }
+  ],
+  "meetings_built": 3,
+  "races_built": 18,
+  "runners_built": 246,
+  "declared_runners": 246,
+  "active_runners": 213,
+  "total_current_scratchings": 33,
+  "new_scratchings_this_run": null,
+  "scratching_changes_this_run": null,
+  "reinstated_runners_this_run": null,
+  "scratchings_metric_deprecated": 33,
+  "track_status": "PARTIAL",
+  "weather_status": "PARTIAL",
+  "market_status": "PASS",
+  "results_status": "PASS",
+  "feeds_published": 5,
+  "audit_status": "PASS",
+  "last_known_good_preserved": true,
+  "elapsed_seconds": 439.57,
+  "exit_code": 0,
+  "weather_meetings_required": 3,
+  "weather_direct_source_meetings": 0,
+  "weather_bom_meetings": 3,
+  "weather_current": 0,
+  "weather_regional_proxy": 0,
+  "weather_stale": 0,
+  "weather_unavailable": 3,
+  "weather_licence_blocked": 0,
+  "weather_audit_status": "PASS_WITH_GAPS"
+}

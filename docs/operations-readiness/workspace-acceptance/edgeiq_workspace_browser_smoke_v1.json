@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "url": "http://127.0.0.1:5175",
+  "http_status": 200,
+  "console_errors": [],
+  "page_errors": [],
+  "playwright_returncode": 0,
+  "playwright_output": "{\"consoleErrors\":[\"warning: Clerk disabled: missing VITE_CLERK_PUBLISHABLE_KEY\"],\"pageErrors\":[],\"bodyTextSample\":\"EDGEiQ\\nRACE INTELLIGENCE\\nHOME\\nMEETINGS\\nRACE\\nFIELD\\nFORM GUIDE\\nPERFORMANCE\\nEPI\\nMAP\\nMARKET\\nOVERVIEW\\nINSIGHTS\\nRESULTS\\nLAB\\nCOMPARE\\nREVIEW\\nSETTINGS\\nEDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM\\nInformation is not Intelligence. Evidence leads. Precision decides.\\nSUN, 26 JULY 2026\\n08:59 am\\nAEDT\\nMEETINGS\\n\\nThree day racing outlook. Select a meeting to view races and details.\\n\\nDATE RANGE (BUILDER CONTROLLED)\\nTODAY\\nSun, 26 July\\nTOMORROW\\nMon, 27 July\\nDAY +2\\nTue, 28 July\\nMEETINGS (SUNDAY 26 JULY 2026)\\nFILTERS\\nOPEN MEETING\\nSELECT\\tMEETING\\tSTATE\\tRAIL\\tTRACK\\tWEATHER\\tRACES\\tDECLARED\\tSCRATCHINGS\\nSelected\\tSale\\tVIC\\tNot supplied\\tSoft 7\\tWeather unavailable\\t8\\t108\\t21\\nShowing 1 to 1 of 1 meetings\\nCurrent\\nCompleted\\nAbandoned\\nPostponed\\nRACE START TIMES (ALL MEETINGS)\\n11AM\\n12PM\\n1PM\\n2PM\\n3PM\\n4PM\\n5PM\\n6PM\\nSale (8)\\nR1\\nR2\\nR3\\nR4\\nR5\\nR6\\nR7\\nEDGEiQ Racing Intelligence Operating System\\nBuild: 1.0.0\\nData as at: 08:59 am AEDT\",\"bodyTextLength\":904,\"programLoaded\":true}\n",
+  "consoleErrors": [
+    "warning: Clerk disabled: missing VITE_CLERK_PUBLISHABLE_KEY"
+  ],
+  "pageErrors": [],
+  "bodyTextSample": "EDGEiQ\nRACE INTELLIGENCE\nHOME\nMEETINGS\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nEPI\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nRESULTS\nLAB\nCOMPARE\nREVIEW\nSETTINGS\nEDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM\nInformation is not Intelligence. Evidence leads. Precision decides.\nSUN, 26 JULY 2026\n08:59 am\nAEDT\nMEETINGS\n\nThree day racing outlook. Select a meeting to view races and details.\n\nDATE RANGE (BUILDER CONTROLLED)\nTODAY\nSun, 26 July\nTOMORROW\nMon, 27 July\nDAY +2\nTue, 28 July\nMEETINGS (SUNDAY 26 JULY 2026)\nFILTERS\nOPEN MEETING\nSELECT\tMEETING\tSTATE\tRAIL\tTRACK\tWEATHER\tRACES\tDECLARED\tSCRATCHINGS\nSelected\tSale\tVIC\tNot supplied\tSoft 7\tWeather unavailable\t8\t108\t21\nShowing 1 to 1 of 1 meetings\nCurrent\nCompleted\nAbandoned\nPostponed\nRACE START TIMES (ALL MEETINGS)\n11AM\n12PM\n1PM\n2PM\n3PM\n4PM\n5PM\n6PM\nSale (8)\nR1\nR2\nR3\nR4\nR5\nR6\nR7\nEDGEiQ Racing Intelligence Operating System\nBuild: 1.0.0\nData as at: 08:59 am AEDT",
+  "bodyTextLength": 904,
+  "programLoaded": true
+}

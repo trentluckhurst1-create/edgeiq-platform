@@ -1,0 +1,5 @@
+EDGEIQ_HOME_SETTINGS_AUDIT_TOKEN_REPAIR_V1
+home_changed=True
+ui_only=YES
+pricing_changed=NO
+ratings_changed=NO

@@ -1,0 +1,47 @@
+[
+  {
+    "resource_type": "html",
+    "url": "https://www.racing.com/form/2026-05-30/caulfield/race/1/speed-data",
+    "http_status": 200,
+    "bytes": 30657,
+    "sha256": "ca7638aeee1abb29e7a7e4627d08865532cea0c3205c7b0c2b3ffae7507b02fe",
+    "stored_path": "docs\\racing-com-public-data-v1\\frontend\\public_speed_page_redacted.html",
+    "access_classification": "PUBLIC_ANONYMOUS_CONFIRMED"
+  },
+  {
+    "resource_type": "javascript",
+    "url": "https://www.racing.com/form/config.js?v=4474",
+    "http_status": 200,
+    "bytes": 3725,
+    "sha256": "7f5a302edc995f79047956fa507c5a74f3deac7e73285804df1206fb9cea87c8",
+    "stored_path": "docs\\racing-com-public-data-v1\\frontend\\bundles\\e2c27d6d725a.js",
+    "access_classification": "PUBLIC_ANONYMOUS_CONFIRMED"
+  },
+  {
+    "resource_type": "javascript",
+    "url": "https://www.racing.com/form/js/main.ec0929acf2b7c48b0722.bundle.js",
+    "http_status": 200,
+    "bytes": 249,
+    "sha256": "bc9aa466bf2b8f7304bcc82673c5ba96c71ded5977dd45f0df28df4f836bd56b",
+    "stored_path": "docs\\racing-com-public-data-v1\\frontend\\bundles\\9d10bf1fdaba.js",
+    "access_classification": "PUBLIC_ANONYMOUS_CONFIRMED"
+  },
+  {
+    "resource_type": "javascript",
+    "url": "https://www.racing.com/form/js/runtime.31aff3ff22255b4a10e7.bundle.js",
+    "http_status": 200,
+    "bytes": 16486,
+    "sha256": "b4b2993ab19daa52f9dc8b44603119ef01e9c0949b0c23c8c708a10eee34b9b5",
+    "stored_path": "docs\\racing-com-public-data-v1\\frontend\\bundles\\baa0f4eaf38e.js",
+    "access_classification": "PUBLIC_ANONYMOUS_CONFIRMED"
+  },
+  {
+    "resource_type": "javascript",
+    "url": "https://www.racing.com/form/modules/remoteEntry.js?v=4474",
+    "http_status": 200,
+    "bytes": 22616,
+    "sha256": "f51f3d9560ff52b387b76d11e67ea94a2e955383aed42ff2e4f855c809969aa2",
+    "stored_path": "docs\\racing-com-public-data-v1\\frontend\\bundles\\49a6ee9cbde4.js",
+    "access_classification": "PUBLIC_ANONYMOUS_CONFIRMED"
+  }
+]

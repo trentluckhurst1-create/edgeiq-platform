@@ -1,0 +1,149 @@
+{
+  "audit_status": "PASS",
+  "sample": [
+    {
+      "meeting": "UNKNOWN",
+      "date": "2026-07-26",
+      "race": 1,
+      "distance": "2200m",
+      "class": "Maiden",
+      "runners": 8,
+      "identity_status": "PASS_WITH_AVAILABLE_FIELDS",
+      "historical_linkage_status": "PARTIAL_FIELD_AUDIT",
+      "scratchings_status": "PASS_WITH_STATUS_FIELDS",
+      "audit_status": "PASS"
+    },
+    {
+      "meeting": "UNKNOWN",
+      "date": "2026-07-26",
+      "race": 2,
+      "distance": "1400m",
+      "class": "Maiden",
+      "runners": 19,
+      "identity_status": "PASS_WITH_AVAILABLE_FIELDS",
+      "historical_linkage_status": "PARTIAL_FIELD_AUDIT",
+      "scratchings_status": "PASS_WITH_STATUS_FIELDS",
+      "audit_status": "PASS"
+    },
+    {
+      "meeting": "UNKNOWN",
+      "date": "2026-07-26",
+      "race": 3,
+      "distance": "1000m",
+      "class": "Maiden",
+      "runners": 14,
+      "identity_status": "PASS_WITH_AVAILABLE_FIELDS",
+      "historical_linkage_status": "PARTIAL_FIELD_AUDIT",
+      "scratchings_status": "PASS_WITH_STATUS_FIELDS",
+      "audit_status": "PASS"
+    },
+    {
+      "meeting": "UNKNOWN",
+      "date": "2026-07-26",
+      "race": 4,
+      "distance": "1100m",
+      "class": "Maiden",
+      "runners": 20,
+      "identity_status": "PASS_WITH_AVAILABLE_FIELDS",
+      "historical_linkage_status": "PARTIAL_FIELD_AUDIT",
+      "scratchings_status": "PASS_WITH_STATUS_FIELDS",
+      "audit_status": "PASS"
+    },
+    {
+      "meeting": "UNKNOWN",
+      "date": "2026-07-26",
+      "race": 5,
+      "distance": "1200m",
+      "class": "BM 70",
+      "runners": 9,
+      "identity_status": "PASS_WITH_AVAILABLE_FIELDS",
+      "historical_linkage_status": "PARTIAL_FIELD_AUDIT",
+      "scratchings_status": "PASS_WITH_STATUS_FIELDS",
+      "audit_status": "PASS"
+    },
+    {
+      "meeting": "UNKNOWN",
+      "date": "2026-07-26",
+      "race": 6,
+      "distance": "1000m",
+      "class": "BM 58",
+      "runners": 11,
+      "identity_status": "PASS_WITH_AVAILABLE_FIELDS",
+      "historical_linkage_status": "PARTIAL_FIELD_AUDIT",
+      "scratchings_status": "PASS_WITH_STATUS_FIELDS",
+      "audit_status": "PASS"
+    },
+    {
+      "meeting": "UNKNOWN",
+      "date": "2026-07-26",
+      "race": 7,
+      "distance": "1600m",
+      "class": "BM 64",
+      "runners": 10,
+      "identity_status": "PASS_WITH_AVAILABLE_FIELDS",
+      "historical_linkage_status": "PARTIAL_FIELD_AUDIT",
+      "scratchings_status": "PASS_WITH_STATUS_FIELDS",
+      "audit_status": "PASS"
+    },
+    {
+      "meeting": "UNKNOWN",
+      "date": "2026-07-26",
+      "race": 8,
+      "distance": "1400m",
+      "class": "BM 58",
+      "runners": 17,
+      "identity_status": "PASS_WITH_AVAILABLE_FIELDS",
+      "historical_linkage_status": "PARTIAL_FIELD_AUDIT",
+      "scratchings_status": "PASS_WITH_STATUS_FIELDS",
+      "audit_status": "PASS"
+    },
+    {
+      "meeting": "UNKNOWN",
+      "date": "2026-07-27",
+      "race": 1,
+      "distance": "1000m",
+      "class": "Maiden",
+      "runners": 14,
+      "identity_status": "PASS_WITH_AVAILABLE_FIELDS",
+      "historical_linkage_status": "PARTIAL_FIELD_AUDIT",
+      "scratchings_status": "PASS_WITH_STATUS_FIELDS",
+      "audit_status": "PASS"
+    },
+    {
+      "meeting": "UNKNOWN",
+      "date": "2026-07-27",
+      "race": 2,
+      "distance": "1200m",
+      "class": "Maiden",
+      "runners": 18,
+      "identity_status": "PASS_WITH_AVAILABLE_FIELDS",
+      "historical_linkage_status": "PARTIAL_FIELD_AUDIT",
+      "scratchings_status": "PASS_WITH_STATUS_FIELDS",
+      "audit_status": "PASS"
+    },
+    {
+      "meeting": "UNKNOWN",
+      "date": "2026-07-27",
+      "race": 3,
+      "distance": "1500m",
+      "class": "Maiden",
+      "runners": 18,
+      "identity_status": "PASS_WITH_AVAILABLE_FIELDS",
+      "historical_linkage_status": "PARTIAL_FIELD_AUDIT",
+      "scratchings_status": "PASS_WITH_STATUS_FIELDS",
+      "audit_status": "PASS"
+    },
+    {
+      "meeting": "UNKNOWN",
+      "date": "2026-07-27",
+      "race": 4,
+      "distance": "2200m",
+      "class": "Maiden",
+      "runners": 11,
+      "identity_status": "PASS_WITH_AVAILABLE_FIELDS",
+      "historical_linkage_status": "PARTIAL_FIELD_AUDIT",
+      "scratchings_status": "PASS_WITH_STATUS_FIELDS",
+      "audit_status": "PASS"
+    }
+  ]
+}

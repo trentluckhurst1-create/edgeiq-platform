@@ -1,0 +1,5 @@
+EDGEiQ FORM GUIDE EXACT CONFORMANCE AUDIT V1
+Status: FORM_GUIDE_EXACT_CONFORMANCE_PASS
+Failures: 0
+Warnings: 1
+Scope: UI structure/CSS/capture only. Model maths, pricing, probability, EPI, ERI and V6.1/V7.2G2 logic are not modified.

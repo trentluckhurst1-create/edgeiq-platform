@@ -1,0 +1,19 @@
+{
+  "built_utc": "2026-07-22T18:29:39+00:00",
+  "status": "RACINGCOM_GRAPHQL_INTEGRATION_FINAL_REPORT_V1_PASS",
+  "race_discovery_rows": 59,
+  "graphql_speed_admitted": 5,
+  "negative_controls_rejected": 2,
+  "responses_acquired": 5,
+  "valid_responses": 5,
+  "parser_rows": 898,
+  "canonical_rows": 978,
+  "candidate_rows": 978,
+  "e2e_status": "RACINGCOM_GRAPHQL_INTEGRATION_E2E_V1_PASS",
+  "migration_gate_status": "READY_FOR_HUMAN_MIGRATION_REVIEW_NO_AUTO_MIGRATION",
+  "migration_authorised": "NO",
+  "production_changed": "NO",
+  "ui_changed": "NO",
+  "pricing_changed": "NO",
+  "ratings_changed": "NO"
+}

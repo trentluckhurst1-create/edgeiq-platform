@@ -1,0 +1,1006 @@
+{
+  "bodyText": "EDGEiQ\nRACE INTELLIGENCE\nHOME\nMEETINGS\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nEPI\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nRESULTS\nLAB\nCOMPARE\nREVIEW\nSETTINGS\nEDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM\nInformation is not Intelligence. Evidence leads. Precision decides.\nMON, 20 JULY 2026\n10:43 am\nAEDT\nHOME\nWelcome to EDGEiQ\n\nEDGEiQ is the Professional Racing Intelligence Operating System. We turn governed data and advanced analytics into actionable intelligence for serious form students, analysts, and racing professionals.\n\nEvidence First\n\nOnly governed, verified data. No estimates. No shortcuts.\n\nBuilt For Professionals\n\nAdvanced tools for analysis, comparison, and insight.\n\nComplete Intelligence\n\nEvery race. Every runner. Every angle that matters.\n\nTODAY'S MEETINGS\nMonday 20 July 2026\nVIEW ALL MEETINGS\nMEETING\tSTATE\tRAIL\tTRACK RATING\tWEATHER\tRACES\tDECLARED\tSCRATCHINGS\nColeraine\tNot supplied\tNot supplied\tNot supplied\tWeather unavailable\t0\t0\t0\nPakenham Synthetic\tVIC\tNot supplied\tSynth\tWeather unavailable\t10\t170\t0\nWORKSPACES\nRace intelligence workspace\nOpen the approved race overview and field context\nEPI Leaders Today\nSee the top rated runners across all meetings\nValue Opportunities\nRunners with strong EDGEiQ Price separation\nMarket Movers\nBiggest market shifts in the current feed\nTrack Bias Monitor\nLive bias detection across Victorian tracks\nDATA QUALITY\nPipeline\nReady\nWindow\n2026-07-20\nMeetings\n2\nRaces\n10\nDeclared\n170\nScratchings\n0\nLast Build\n2026-07-20T00:41:58.703418+00:00\nVIEW DATA STATUS CENTRE\nRECENT ANALYSIS\n\nNo recent governed analysis is available.\n\nVIEW ALL RECENT ANALYSIS\nDATA STATUS\nReady\n10 races | 170 declared runners | 0 scratchings\nContinue: Coleraine Race\nEDGEiQ Racing Intelligence Operating System\nBuild: 1.0.0\nData as at: 10:43 am AEDT",
+  "requests": [
+    {
+      "url": "http://127.0.0.1:5173/?dev-preview=1",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/html"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/main.tsx?t=1784508174443",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/@vite/client",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/@react-refresh",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=45a08adf",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/components/shell/edgeiqOsShell.css",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/node_modules/.vite/deps/react.js?v=45a08adf",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/App.tsx?t=1784508174443",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/terminal/layout/racing-terminal-overrides.css",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/styles/edgeiqDesignSystem.css",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/ProtectedApp.tsx?t=1784508174443",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=45a08adf",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/node_modules/.vite/deps/@clerk_clerk-react.js?v=45a08adf",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/design-system/edgeiqDesignSystem.css",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/approved-ui/edgeiqApprovedUiRebuildV1.css",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/node_modules/vite/dist/client/env.mjs",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/node_modules/.vite/deps/chunk-G3PMV62Z.js?v=45a08adf",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/node_modules/.vite/deps/chunk-BPGYRLWZ.js?v=45a08adf",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/EdgeiqOsV2.tsx?t=1784508174443",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/node_modules/.vite/deps/chunk-LOG2ZSQO.js?v=45a08adf",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/shell/EdgeiqOsShell.tsx?t=1784508174443",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/styles/edgeiqOsV2.css",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/daily-pipeline/DailyPipelineStatusService.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/RaceFileV3.tsx?t=1784508174443",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/RaceFileService.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/components/GlobalResultsWorkspace.tsx",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/components/HistoricalRunCard.tsx",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/compare/CompareWorkspace.tsx",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/components/MeetingWorkspace.tsx",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/components/LabWorkspace.tsx",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/index.css?t=1784508174443",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/components/MeetingsWorkspace.tsx",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/components/WorkspaceShell.tsx",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/components/RunnerProfileWorkspace.tsx",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/components/RaceWorkspace.tsx",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/components/SettingsWorkspace.tsx",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/services/threeDayCatalog.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/home/EdgeiqOsHome.tsx?t=1784508174443",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/race-file-v2.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/RaceStrengthService.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/RunRatingService.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/CompareService.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/components/MeetingResultsWorkspace.tsx",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/performance-intelligence/index.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/compare/compareWorkspaceData.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/services/meetingDetailFeed.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/components/MeetingGearChangesWorkspace.tsx",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/components/MeetingScratchingsWorkspace.tsx",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/components/MeetingTrackWorkspace.tsx",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/services/labResearch.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/components/MeetingWeatherWorkspace.tsx",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/services/meetingsFeed.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/components/AppNavigation.tsx",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/components/FormGuideWorkspace.tsx",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/components/MapWorkspace.tsx",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/components/ResultsWorkspace.tsx",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/components/RunnerProfileSummary.tsx",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/components/RunnerSummary.tsx",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/components/RunnerTabs.tsx",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/components/FieldWorkspace.tsx",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/components/RaceIntelligenceWorkspace.tsx",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/components/MarketWorkspace.tsx",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/performance-intelligence/types.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/components/EpiWorkspaceWorkspace.tsx",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/components/PerformanceWorkspace.tsx",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/components/InsightsWorkspace.tsx",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/components/RaceResultsWorkspace.tsx",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/components/ReviewWorkspace.tsx",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/components/OverviewWorkspace.tsx",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/intelligence-orchestrator/index.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/live-race-data-snapshot.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/mission-control.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/feed-loader/ProductFeedCache.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/services/formGuideNormaliser.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/services/formGuideEnrichedFeed.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/components/RaceFormGuideWorkspace.tsx",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/tempo-engine.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/track-signature.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/position-engine.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/performance-intelligence/performanceIntelligenceFeed.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/speed-profile.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/performance-intelligence/PerformanceIntelligenceService.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/services/gearChangesFeed.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/services/resultsFeed.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/services/scratchingsFeed.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/services/trackMapAssets.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/services/trackFeed.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/services/weatherFeed.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/pressure-engine.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/components/EdgeiqMetricTooltip.tsx",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/services/mapFeed.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/services/fieldWorkspaceViewModel.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/services/runnerProfileStats.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/services/raceWorkspaceViewModel.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/services/marketFeed.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/services/currentRaceIntelligenceFeed.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/services/epiWorkspaceFeed.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/services/reviewWorkspaceData.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/services/performanceWorkspaceViewModel.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/services/insightsFeed.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/node_modules/.vite/deps/react-dom.js?v=45a08adf",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/services/overviewFeed.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/intelligence-orchestrator/IntelligenceOrchestrator.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/race/services/formGuideWorkspaceViewModel.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/operational-state/index.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/operational-state/OperationalRaceStateTypes.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/operational-state/OperationalRaceStateService.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/alerts/index.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/intelligence-registry/index.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/intelligence-coverage/index.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/adapters/index.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/operational-correlation/index.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/briefing/index.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/operational-decision/index.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/operational-reasoning/index.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/node_modules/.vite/deps/lucide-react.js?v=45a08adf",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/executive-summary/index.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/operational-events/index.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/timeline/index.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/alerts/AlertTypes.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/intelligence-registry/IntelligenceRegistryTypes.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/alerts/AlertService.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/intelligence-coverage/CoverageTypes.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/intelligence-registry/IntelligenceRegistry.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/operational-correlation/OperationalCorrelationTypes.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/operational-reasoning/OperationalReasoningTypes.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/operational-decision/OperationalDecisionTypes.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/intelligence-registry/defaultModules.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/executive-summary/ExecutiveSummaryTypes.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/intelligence-coverage/CoverageService.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/adapters/RaceShapeAdapter.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/operational-events/OperationalEventTypes.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/adapters/ExplainabilityAdapter.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/adapters/ConnectionAdapter.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/adapters/TrackAdapter.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/adapters/RunnerDNAAdapter.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/adapters/WeatherAdapter.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/adapters/SectionalsAdapter.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/adapters/registerAdapters.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/adapters/MarketAdapter.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/operational-correlation/OperationalCorrelationService.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/briefing/OperationalBriefingService.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/operational-decision/OperationalDecisionService.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/operational-reasoning/OperationalReasoningService.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/executive-summary/ExecutiveSummaryService.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/operational-events/OperationalEventService.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/timeline/TimelineService.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/feed-loader/index.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/intelligence-snapshot/index.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/feed-diagnostics/index.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/feed-loader/FeedTypes.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/feed-loader/FeedParser.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/intelligence-snapshot/IntelligenceSnapshotTypes.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/feed-diagnostics/FeedDiagnosticsService.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/intelligence-snapshot/IntelligenceSnapshotService.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/feed-context/index.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/feed-context/FeedContextTypes.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/feed-context/FeedContextService.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/src/edgeiq-os/services/feed-loader/FeedLoader.ts",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/javascript"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_three_day_window_v1.json?updated=1784508202597",
+      "method": "GET",
+      "status": 200,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_three_day_product_catalog_v1.json?updated=1784508202599",
+      "method": "GET",
+      "status": 200,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_daily_pipeline_status_v1.json?updated=1784508202600",
+      "method": "GET",
+      "status": 200,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_daily_pipeline_status_v1.json?updated=1784508202605",
+      "method": "GET",
+      "status": 200,
+      "contentType": "application/json"
+    }
+  ],
+  "consoleMessages": [
+    {
+      "type": "debug",
+      "text": "[vite] connecting..."
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connected."
+    },
+    {
+      "type": "info",
+      "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+    },
+    {
+      "type": "warning",
+      "text": "Clerk disabled: missing VITE_CLERK_PUBLISHABLE_KEY"
+    },
+    {
+      "type": "info",
+      "text": "EDGEiQ daily pipeline status READY 2026-07-20 [2026-07-20, 2026-07-21, 2026-07-22]"
+    }
+  ],
+  "pageErrors": []
+}

@@ -1,0 +1,65 @@
+{
+  "audit_name": "EDGEiQ Performance Intelligence Phase 1.5B.2 Governed Race-Time Unit Resolution",
+  "generated_utc": "2026-07-15T23:42:53.034518+00:00",
+  "audit_version": "GOVERNED_RACE_TIME_UNIT_RESOLUTION_V0_1",
+  "status": "GOVERNED_RACE_TIME_UNIT_RESOLUTION_PARTIAL",
+  "production_data_modified": false,
+  "performance_facts_modified": false,
+  "source_rows": 879784,
+  "distinct_governed_races": 71025,
+  "timed_races": 70311,
+  "confirmed_centisecond_races": 15819,
+  "centisecond_dominance_pct": 22.498613,
+  "time_unavailable_races": 714,
+  "anomaly_races": 54492,
+  "within_race_source_conflicts": 54492,
+  "classification_counts": {
+    "CENTISECONDS_CONFIRMED": 15819,
+    "TIME_UNAVAILABLE": 714,
+    "WITHIN_RACE_SOURCE_CONFLICT": 54492
+  },
+  "checks": [
+    {
+      "check": "SOURCE_ROWS_PROFILED",
+      "passed": true,
+      "observed": 879784
+    },
+    {
+      "check": "RACE_CONTEXT_COMPLETE",
+      "passed": true,
+      "observed": 0
+    },
+    {
+      "check": "WITHIN_RACE_TIME_CONSISTENCY",
+      "passed": false,
+      "observed": 54492
+    },
+    {
+      "check": "CENTISECOND_SOURCE_UNIT",
+      "passed": false,
+      "observed": "confirmed=15819;timed=70311;pct=22.498613"
+    },
+    {
+      "check": "ANOMALIES_QUARANTINED",
+      "passed": true,
+      "observed": 54492
+    },
+    {
+      "check": "NO_ANOMALY_AUTO_CONVERSION",
+      "passed": true,
+      "observed": "ALL_ANOMALY_CONVERSIONS_DISABLED"
+    }
+  ],
+  "failed_checks": [
+    "WITHIN_RACE_TIME_CONSISTENCY",
+    "CENTISECOND_SOURCE_UNIT"
+  ],
+  "time_unit_decision": "SOURCE_WINNING_TIME_UNIT_REMAINS_BLOCKED",
+  "current_snapshot_status": "BLOCKED",
+  "next_stage": "Resolve genuine within-race source conflicts before materialisation.",
+  "outputs": {
+    "governed_race_time_profile": "docs/performance-intelligence/prototypes/phase1_5b_2/edgeiq_governed_race_time_profile_v0_1_20260716_094251.csv",
+    "anomalies": "docs/performance-intelligence/audits/phase1_5b_2/edgeiq_race_time_anomalies_v0_1_20260716_094251.csv",
+    "within_race_conflicts": "docs/performance-intelligence/audits/phase1_5b_2/edgeiq_within_race_time_conflicts_v0_1_20260716_094251.csv"
+  }
+}

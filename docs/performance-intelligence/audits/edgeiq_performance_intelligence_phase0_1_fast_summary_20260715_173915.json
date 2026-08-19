@@ -1,0 +1,25 @@
+{
+  "audit_name": "EDGEiQ Performance Intelligence Phase 0.1 Fast Live Asset Triage",
+  "generated_utc": "2026-07-15T07:39:15.890823+00:00",
+  "source_inventory": "docs/performance-intelligence/inventories/edgeiq_performance_intelligence_asset_inventory_20260715_144153.csv",
+  "original_inventory_count": 12104,
+  "excluded_count": 1238,
+  "live_scope_count": 10866,
+  "candidate_limit": 300,
+  "candidates_inspected": 300,
+  "references_found": 1443,
+  "resolved_references": 20,
+  "unresolved_or_generated_references": 1423,
+  "formula_evidence_count": 1565,
+  "formula_evidence_counts": {
+    "benchmark": 181,
+    "epi": 93,
+    "eri": 117,
+    "identity": 192,
+    "seconds_per_length": 6,
+    "seconds_to_lengths": 3,
+    "sectional": 973
+  },
+  "canonical_status": "NOT_YET_DETERMINED",
+  "next_stage": "Phase 0.2 domain-specific lineage and schema validation"
+}

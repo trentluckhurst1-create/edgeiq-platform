@@ -1,0 +1,17 @@
+{
+  "race_entry_input_rows": 204,
+  "active_entries": 188,
+  "historical_rating_matches": 1,
+  "temporally_eligible_ratings": 1,
+  "projected_performance_rows": 0,
+  "epi_rows": 0,
+  "active_runners_with_epi": 0,
+  "active_runners_without_epi": 188,
+  "blocking_reasons": {
+    "INSUFFICIENT_GOVERNED_HISTORY": 187,
+    "SUITABILITY_CONTEXT_INPUTS_UNAVAILABLE": 1,
+    "RACE_ENTRY_SNAPSHOT_BUILDER_SCHEMA_MISMATCH": 1
+  },
+  "projected_status": "PROJECTED_PERFORMANCE_UNAVAILABLE",
+  "epi_status": "EPI_UNAVAILABLE"
+}

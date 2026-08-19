@@ -1,0 +1,12 @@
+{
+  "built_utc": "2026-07-22T19:21:35+00:00",
+  "status": "RACINGCOM_GRAPHQL_PARSER_V2_PASS",
+  "parsed_rows": 898,
+  "races": 5,
+  "horses": 58,
+  "sectional_rows": 449,
+  "split_rows": 449,
+  "rejections": 0,
+  "production_changed": "NO",
+  "ui_changed": "NO"
+}

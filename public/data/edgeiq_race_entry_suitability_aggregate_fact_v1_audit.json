@@ -1,0 +1,174 @@
+{
+  "audit_name": "edgeiq_race_entry_suitability_aggregate_fact_v1",
+  "audit_version": "1.1.0_current_ineligible_context_allowed",
+  "audited_at_utc": "2026-07-30T00:04:07Z",
+  "checks": {
+    "adjusted_performance_ids_unique": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "aggregate_arithmetic_exact": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "aggregate_governance_complete": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "aggregate_ids_unique": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "aggregate_natural_keys_unique": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "aggregate_population_exact": {
+      "detail": {
+        "actual_suitability_aggregate_rows": 0,
+        "eligible_adjusted_performance_rows": 0
+      },
+      "status": "PASS"
+    },
+    "aggregate_sources_exact": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "complete_component_sets": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "component_natural_keys_unique": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "contract_fields_exact": {
+      "detail": {
+        "actual": [
+          "race_entry_suitability_aggregate_id",
+          "race_entry_context_adjusted_performance_id",
+          "race_entry_context_adjustment_id",
+          "race_entry_context_parameter_selection_id",
+          "race_entry_context_eligibility_id",
+          "race_entry_performance_context_id",
+          "race_entry_id",
+          "race_id",
+          "race_date",
+          "runner_id",
+          "canonical_horse_id",
+          "canonical_horse_name",
+          "historical_rating_value",
+          "context_parameter_id",
+          "total_context_adjustment",
+          "context_adjusted_performance_value",
+          "distance_suitability_value",
+          "class_suitability_value",
+          "track_suitability_value",
+          "track_configuration_suitability_value",
+          "track_condition_suitability_value",
+          "surface_suitability_value",
+          "barrier_suitability_value",
+          "weight_suitability_value",
+          "field_size_suitability_value",
+          "suitability_component_count",
+          "aggregate_suitability_value",
+          "suitability_aggregate_decision",
+          "race_entry_suitability_aggregate_status",
+          "source_adjusted_performance_evidence_sha256",
+          "source_component_evidence_set_sha256",
+          "race_entry_suitability_aggregate_evidence_sha256",
+          "source_adjusted_performance_builder_version",
+          "source_component_builder_version",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ],
+        "expected": [
+          "race_entry_suitability_aggregate_id",
+          "race_entry_context_adjusted_performance_id",
+          "race_entry_context_adjustment_id",
+          "race_entry_context_parameter_selection_id",
+          "race_entry_context_eligibility_id",
+          "race_entry_performance_context_id",
+          "race_entry_id",
+          "race_id",
+          "race_date",
+          "runner_id",
+          "canonical_horse_id",
+          "canonical_horse_name",
+          "historical_rating_value",
+          "context_parameter_id",
+          "total_context_adjustment",
+          "context_adjusted_performance_value",
+          "distance_suitability_value",
+          "class_suitability_value",
+          "track_suitability_value",
+          "track_configuration_suitability_value",
+          "track_condition_suitability_value",
+          "surface_suitability_value",
+          "barrier_suitability_value",
+          "weight_suitability_value",
+          "field_size_suitability_value",
+          "suitability_component_count",
+          "aggregate_suitability_value",
+          "suitability_aggregate_decision",
+          "race_entry_suitability_aggregate_status",
+          "source_adjusted_performance_evidence_sha256",
+          "source_component_evidence_set_sha256",
+          "race_entry_suitability_aggregate_evidence_sha256",
+          "source_adjusted_performance_builder_version",
+          "source_component_builder_version",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ]
+      },
+      "status": "PASS"
+    },
+    "current_population_expected": {
+      "detail": {
+        "context_adjusted_performance_rows": 5,
+        "context_ineligible_rows": 0,
+        "eligible_adjusted_performance_rows": 0,
+        "expected_suitability_aggregate_rows": 0,
+        "parameter_not_available_rows": 5,
+        "suitability_aggregate_rows": 0,
+        "suitability_component_rows": 0
+      },
+      "status": "PASS"
+    },
+    "deterministic_aggregate_evidence": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "deterministic_aggregate_identity": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "no_forbidden_fields": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "one_aggregate_per_eligible_entry": {
+      "detail": {
+        "missing": [],
+        "unexpected": []
+      },
+      "status": "PASS"
+    },
+    "required_files_exist": {
+      "detail": [],
+      "status": "PASS"
+    }
+  },
+  "counts": {
+    "context_adjusted_performance_rows": 5,
+    "context_ineligible_rows": 0,
+    "eligible_adjusted_performance_rows": 0,
+    "parameter_not_available_rows": 5,
+    "suitability_aggregate_rows": 0,
+    "suitability_component_rows": 0
+  },
+  "failed_checks": [],
+  "status": "PASS"
+}

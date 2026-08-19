@@ -1,0 +1,121 @@
+{
+  "audit_name": "edgeiq_lengths_versus_standard_fact_v1",
+  "audit_version": "1.1.0",
+  "audited_at_utc": "2026-07-30T07:46:17Z",
+  "checks": {
+    "calculation_reproducible": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "canonical_lineage": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "contract_fields_exact": {
+      "detail": {
+        "actual": [
+          "lengths_versus_standard_id",
+          "race_time_delta_id",
+          "benchmark_observation_id",
+          "benchmark_group_id",
+          "standard_time_id",
+          "length_conversion_parameter_id",
+          "race_key",
+          "race_date",
+          "track_name",
+          "official_distance_metres",
+          "winner_horse_name",
+          "winner_race_time_seconds",
+          "standard_time_seconds",
+          "time_delta_seconds",
+          "seconds_per_length",
+          "lengths_versus_standard",
+          "lengths_versus_standard_interpretation",
+          "calculation_method",
+          "conversion_scope",
+          "conversion_model_version",
+          "source_race_time_delta_evidence_sha256",
+          "source_conversion_parameter_evidence_sha256",
+          "lengths_versus_standard_evidence_sha256",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ],
+        "expected": [
+          "lengths_versus_standard_id",
+          "race_time_delta_id",
+          "benchmark_observation_id",
+          "benchmark_group_id",
+          "standard_time_id",
+          "length_conversion_parameter_id",
+          "race_key",
+          "race_date",
+          "track_name",
+          "official_distance_metres",
+          "winner_horse_name",
+          "winner_race_time_seconds",
+          "standard_time_seconds",
+          "time_delta_seconds",
+          "seconds_per_length",
+          "lengths_versus_standard",
+          "lengths_versus_standard_interpretation",
+          "calculation_method",
+          "conversion_scope",
+          "conversion_model_version",
+          "source_race_time_delta_evidence_sha256",
+          "source_conversion_parameter_evidence_sha256",
+          "lengths_versus_standard_evidence_sha256",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ]
+      },
+      "status": "PASS"
+    },
+    "conversion_parameter_governance": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "deterministic_evidence": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "one_output_per_race_time_delta": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "rejections_are_explicit": {
+      "detail": {
+        "NO_GOVERNED_SURFACE_CONDITION_LENGTH_PARAMETER": 2564
+      },
+      "status": "PASS"
+    },
+    "required_files_exist": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "row_funnel_exact": {
+      "detail": {
+        "converted": 52414,
+        "delta_rows": 54978,
+        "rejected": 2564
+      },
+      "status": "PASS"
+    },
+    "unique_lengths_versus_standard_ids": {
+      "detail": [],
+      "status": "PASS"
+    }
+  },
+  "counts": {
+    "conversion_parameter_v2_rows": 5,
+    "lengths_versus_standard_rows": 52414,
+    "race_time_delta_rows": 54978,
+    "rejected_rows": 2564
+  },
+  "failed_checks": [],
+  "rejection_reasons": {
+    "NO_GOVERNED_SURFACE_CONDITION_LENGTH_PARAMETER": 2564
+  },
+  "status": "PASS"
+}

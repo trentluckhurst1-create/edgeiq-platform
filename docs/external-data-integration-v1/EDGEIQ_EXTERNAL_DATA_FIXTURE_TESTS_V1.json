@@ -1,0 +1,110 @@
+{
+  "fixtures": [
+    {
+      "checked_at": "2026-07-29T02:08:26Z",
+      "expected_classification": "FIXTURE_EXPECTED",
+      "fixture": "racingcom_catalogue_200",
+      "live_endpoint_used": "NO",
+      "status": "PASS"
+    },
+    {
+      "checked_at": "2026-07-29T02:08:26Z",
+      "expected_classification": "FIXTURE_EXPECTED",
+      "fixture": "racingcom_graphql_401",
+      "live_endpoint_used": "NO",
+      "status": "PASS"
+    },
+    {
+      "checked_at": "2026-07-29T02:08:26Z",
+      "expected_classification": "FIXTURE_EXPECTED",
+      "fixture": "racingcom_graphql_fake_success",
+      "live_endpoint_used": "NO",
+      "status": "PASS"
+    },
+    {
+      "checked_at": "2026-07-29T02:08:26Z",
+      "expected_classification": "FIXTURE_EXPECTED",
+      "fixture": "racingcom_graphql_schema_error",
+      "live_endpoint_used": "NO",
+      "status": "PASS"
+    },
+    {
+      "checked_at": "2026-07-29T02:08:26Z",
+      "expected_classification": "FIXTURE_EXPECTED",
+      "fixture": "racingcom_no_data",
+      "live_endpoint_used": "NO",
+      "status": "PASS"
+    },
+    {
+      "checked_at": "2026-07-29T02:08:26Z",
+      "expected_classification": "FIXTURE_EXPECTED",
+      "fixture": "racing_australia_403",
+      "live_endpoint_used": "NO",
+      "status": "PASS"
+    },
+    {
+      "checked_at": "2026-07-29T02:08:26Z",
+      "expected_classification": "FIXTURE_EXPECTED",
+      "fixture": "official_file_import",
+      "live_endpoint_used": "NO",
+      "status": "PASS"
+    },
+    {
+      "checked_at": "2026-07-29T02:08:26Z",
+      "expected_classification": "FIXTURE_EXPECTED",
+      "fixture": "duplicate_official_file",
+      "live_endpoint_used": "NO",
+      "status": "PASS"
+    },
+    {
+      "checked_at": "2026-07-29T02:08:26Z",
+      "expected_classification": "FIXTURE_EXPECTED",
+      "fixture": "corrected_official_file",
+      "live_endpoint_used": "NO",
+      "status": "PASS"
+    },
+    {
+      "checked_at": "2026-07-29T02:08:26Z",
+      "expected_classification": "FIXTURE_EXPECTED",
+      "fixture": "redacted_logs",
+      "live_endpoint_used": "NO",
+      "status": "PASS"
+    },
+    {
+      "checked_at": "2026-07-29T02:08:26Z",
+      "expected_classification": "FIXTURE_EXPECTED",
+      "fixture": "missing_credential",
+      "live_endpoint_used": "NO",
+      "status": "PASS"
+    },
+    {
+      "checked_at": "2026-07-29T02:08:26Z",
+      "expected_classification": "FIXTURE_EXPECTED",
+      "fixture": "invalid_credential",
+      "live_endpoint_used": "NO",
+      "status": "PASS"
+    },
+    {
+      "checked_at": "2026-07-29T02:08:26Z",
+      "expected_classification": "FIXTURE_EXPECTED",
+      "fixture": "post_cutoff_timing_accepted",
+      "live_endpoint_used": "NO",
+      "status": "PASS"
+    },
+    {
+      "checked_at": "2026-07-29T02:08:26Z",
+      "expected_classification": "FIXTURE_EXPECTED",
+      "fixture": "performance_base_flow",
+      "live_endpoint_used": "NO",
+      "status": "PASS"
+    },
+    {
+      "checked_at": "2026-07-29T02:08:26Z",
+      "expected_classification": "FIXTURE_EXPECTED",
+      "fixture": "normalisation_cutoff_enforced",
+      "live_endpoint_used": "NO",
+      "status": "PASS"
+    }
+  ],
+  "status": "PASS"
+}

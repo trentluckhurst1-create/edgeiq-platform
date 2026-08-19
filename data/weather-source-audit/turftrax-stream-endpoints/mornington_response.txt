@@ -1,0 +1,98 @@
+{
+    "status": 0,
+    "payload": {
+        "header": {
+            "description": "Turftrax Weather Data Visualisation for Mornington Racecourse on Fri, 10 Jul 2026 02:33:35 +0100",
+            "signature": "Turftrax ITS WDV API Stream prod-V1.5.3-2021-04-15T12:00",
+            "copyright": "2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Turftrax Ltd. All Rights Reserved."
+        },
+        "content": {
+            "additional-comment": "",
+            "air-temperature-current": 10.31,
+            "air-temperature-max": 10.72,
+            "air-temperature-min": -0.55,
+            "awt-race-date": "N/a",
+            "awtReport": 0,
+            "carousel": {
+                "temperature": {
+                    "default": "air",
+                    "list": [
+                        "air"
+                    ]
+                }
+            },
+            "disableMetic": [],
+            "et-24hr": 0.49,
+            "et-7day": 2.49,
+            "et-since": 0.14,
+            "etEnabled": true,
+            "going-race-date": "Monday, 8th June, 2026",
+            "going-report": "Heavy 8",
+            "going-report-date": "Monday, 15th June, 2026 at 12:36 pm",
+            "going-waypoint-map": "https://api.turftrax.co.uk/maps/going-reports/335148_waypoints.svg",
+            "going-zone-map": "https://api.turftrax.co.uk/maps/going-reports/335148_zones.svg",
+            "goingReport": 1,
+            "haveManualRain": false,
+            "humidity-current": 72.83,
+            "humidity-max": 99.99,
+            "humidity-min": 71.41,
+            "irrigation-report": "24Hrs: 0mm, 7 Days: 0mm",
+            "isDemo": false,
+            "isLastMeeting": false,
+            "location-date": "N/a",
+            "location-title": "Mornington Raceday ",
+            "location-track-type": "N/a",
+            "location-venue": "Mornington",
+            "mapName": "Mornington",
+            "mapping-service": "yes",
+            "racingToday": 0,
+            "rail-report": "True",
+            "rain0-24hr": "",
+            "rain0-7day": "",
+            "rain0-today": "",
+            "rain1-24hr": 0.2,
+            "rain1-7day": 2.6,
+            "rain1-current": 0,
+            "rain1-since": 0,
+            "rain1-today": 0.2,
+            "rain2-24hr": 0,
+            "rain2-7day": 0,
+            "rain2-since": 0,
+            "rain2-today": 0,
+            "reportStatus": {
+                "system": [
+                    "Previous Turf: 08/06/26, Next Turf: 10/07/26, Displaying: Monday, 8th June, 2026",
+                    "Turf Report ID: 335148, <span style=\"cursor:pointer;\" onclick=\"ButtonAction('hub-link', this);\">Hub Link</span>",
+                    "Display the most recent DRAFT Report: For 14 days before and 3 days after"
+                ],
+                "report": [
+                    "No Calendar Entry for Next Race Meeting - using Going Report",
+                    "No Calendar Entry for the Next Race"
+                ],
+                "weather": [
+                    "### - No Data (max_soil_temp)",
+                    "### - No Data (min_soil_temp)"
+                ]
+            },
+            "seasonEndMessage": "",
+            "stalls-report": "",
+            "stationActivityStatus": "active",
+            "stationId": 149001,
+            "stationType": "wtx",
+            "stick-report": "Going Index: Shear: Soil Moisture: ",
+            "temperature-current": 10.31,
+            "temperature-max": 10.72,
+            "temperature-min": -0.55,
+            "trackType": "Turf",
+            "units": {
+                "linear": "mm",
+                "speed": "km/h",
+                "temperature": "C"
+            },
+            "use-map": "zone",
+            "useRainGauge": 1,
+            "usingAwtReport": "N/a",
+            "usingReport": "335148",
+            "venueId": 149,
+            "venueName": "Mornington Racecourse",
+            "weather-comment": "Top of 16 degrees, Partly cloudy. Light winds becoming northerly 15 to 20 km/h in th

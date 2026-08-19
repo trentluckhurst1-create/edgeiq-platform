@@ -1,0 +1,35 @@
+{
+  "audit_name": "EDGEIQ_RACINGCOM_RUNNER_SPEED_WAREHOUSE_V1",
+  "generated_at_utc": "2026-07-21T19:27:51+00:00",
+  "status": "PASS",
+  "failures": [],
+  "source_probe_csv": "public/data/edgeiq_racingcom_speed_network_probe_v1.csv",
+  "sectional_probe_rows": 39,
+  "race_rows": 39,
+  "runner_rows": 392,
+  "runner_sectional_rows": 2854,
+  "runner_split_rows": 2682,
+  "unique_race_keys": 39,
+  "unique_runner_keys": 392,
+  "missing_payloads": [],
+  "unreadable_payloads": [],
+  "invalid_payloads": [],
+  "duplicate_race_keys": [],
+  "duplicate_runner_keys": [],
+  "sectionals_without_runner_identity": 0,
+  "splits_without_runner_identity": 0,
+  "outputs": {
+    "runner_fact": "public/data/edgeiq_racingcom_runner_speed_fact_v1.csv",
+    "runner_sectionals": "public/data/edgeiq_racingcom_runner_sectional_fact_v1.csv",
+    "runner_splits": "public/data/edgeiq_racingcom_runner_split_fact_v1.csv",
+    "race_summary": "public/data/edgeiq_racingcom_race_speed_summary_v1.csv"
+  },
+  "semantic_controls": {
+    "source_values_preserved": true,
+    "undocumented_speed_units_asserted": false,
+    "time_strings_normalised_to_seconds": true,
+    "ratings_calculated": false,
+    "benchmarks_calculated": false,
+    "estimated_values_created": false
+  }
+}

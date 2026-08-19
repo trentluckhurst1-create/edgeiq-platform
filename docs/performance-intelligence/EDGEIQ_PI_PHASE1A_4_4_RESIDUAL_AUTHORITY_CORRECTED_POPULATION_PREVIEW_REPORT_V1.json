@@ -1,0 +1,194 @@
+{
+  "audit": {
+    "checks": [
+      {
+        "check_id": "graphql_authority_available",
+        "detail": "rows=879784; unique_runner_keys=879695",
+        "status": "PASS"
+      },
+      {
+        "check_id": "residual_sources_available",
+        "detail": "unavailable=NONE",
+        "status": "PASS"
+      },
+      {
+        "check_id": "week1_result_authority",
+        "detail": "decision=REQUIRES_RESULT_VALIDATION; raw_only=0; new_race_ids=0; completed_evidence_rows=630",
+        "status": "PARTIAL"
+      },
+      {
+        "check_id": "speed_sources_classified_as_enrichment",
+        "detail": "invalid_authority_sources=NONE",
+        "status": "PASS"
+      }
+    ],
+    "generated_utc": "2026-07-27T03:52:31+00:00",
+    "overall_status": "PARTIAL",
+    "program_id": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE1A_4_4_RESIDUAL_AUTHORITY_CORRECTED_POPULATION_PREVIEW_V1",
+    "program_version": "1.0.0"
+  },
+  "authority_decisions": [
+    {
+      "authority_decision": "REQUIRES_RESULT_VALIDATION",
+      "completed_result_evidence_rows": 630,
+      "decision_reason": "GraphQL-labelled result source, but completed-result evidence or identity novelty is incomplete.",
+      "new_race_ids": 0,
+      "path": "public/data/edgeiq_graphql_results_warehouse_week1_2025_v1.csv",
+      "raw_only_vs_graphql": 0,
+      "rows": 813,
+      "source_id": "WEEK1_2025_GRAPHQL"
+    },
+    {
+      "authority_decision": "ENRICHMENT_ONLY",
+      "completed_result_evidence_rows": 392,
+      "decision_reason": "Speed or sectional source. May enrich a governed historical runner fact but must not independently establish result authority.",
+      "new_race_ids": 0,
+      "path": "public/data/edgeiq_racingcom_canonical_runner_speed_fact_v2_1.csv",
+      "raw_only_vs_graphql": 0,
+      "rows": 392,
+      "source_id": "RUNNER_SPEED_V2_1"
+    },
+    {
+      "authority_decision": "ENRICHMENT_ONLY",
+      "completed_result_evidence_rows": 898,
+      "decision_reason": "Speed or sectional source. May enrich a governed historical runner fact but must not independently establish result authority.",
+      "new_race_ids": 5,
+      "path": "public/data/edgeiq_racingcom_graphql_speed_normalised_v1.csv",
+      "raw_only_vs_graphql": 58,
+      "rows": 898,
+      "source_id": "GRAPHQL_SPEED_NORMALISED"
+    },
+    {
+      "authority_decision": "ENRICHMENT_ONLY",
+      "completed_result_evidence_rows": 39,
+      "decision_reason": "Speed or sectional source. May enrich a governed historical runner fact but must not independently establish result authority.",
+      "new_race_ids": 0,
+      "path": "outputs/sectionals/checkpoints/racingcom_speed_5_race_baseline_20260722_051140/edgeiq_racingcom_canonical_runner_speed_fact_v2.csv",
+      "raw_only_vs_graphql": 0,
+      "rows": 39,
+      "source_id": "SPEED_CHECKPOINT"
+    }
+  ],
+  "corrected_population_preview": [
+    {
+      "admitted_additional_keys": 0,
+      "admitted_sources": "HISTORICAL_RESULTS_WAREHOUSE_V2_GRAPHQL",
+      "base_unique_runner_keys": 879695,
+      "enrichment_only_sources": "RUNNER_SPEED_V2_1|GRAPHQL_SPEED_NORMALISED|SPEED_CHECKPOINT|SECTIONAL_AND_SPEED_BATCHES",
+      "excluded_as_duplicate_sources": "MONTHLY_GRAPHQL_RESULT_FILES|GRAPHQL_MASTER_V2|GRAPHQL_JANUARY_2025_MASTER",
+      "excluded_live_sources": "EDGEIQ_LIVE_AND_UPCOMING_FEEDS",
+      "preview_id": "CONSERVATIVE_GRAPHQL_AUTHORITY_ONLY",
+      "preview_unique_runner_keys": 879695
+    },
+    {
+      "admitted_additional_keys": 0,
+      "admitted_sources": "HISTORICAL_RESULTS_WAREHOUSE_V2_GRAPHQL|WEEK1_2025_GRAPHQL_IF_VERIFIED",
+      "base_unique_runner_keys": 879695,
+      "enrichment_only_sources": "RUNNER_SPEED_V2_1|GRAPHQL_SPEED_NORMALISED|SPEED_CHECKPOINT|SECTIONAL_AND_SPEED_BATCHES",
+      "excluded_as_duplicate_sources": "MONTHLY_GRAPHQL_RESULT_FILES|GRAPHQL_MASTER_V2|GRAPHQL_JANUARY_2025_MASTER",
+      "excluded_live_sources": "EDGEIQ_LIVE_AND_UPCOMING_FEEDS",
+      "preview_id": "GRAPHQL_PLUS_VERIFIED_WEEK1_CANDIDATE",
+      "preview_unique_runner_keys": 879695
+    }
+  ],
+  "generated_utc": "2026-07-27T03:52:31+00:00",
+  "graphql": {
+    "rows": 879784,
+    "sha256": "13f17e2ae21802aef5017a9a09cbb9ec572c9fda4c8fa8f85da27231e8828974",
+    "unique_race_ids": 71019,
+    "unique_runner_keys": 879695,
+    "unique_semantic_keys": 879781
+  },
+  "outputs": [
+    "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_4_4_RESIDUAL_SOURCE_SCHEMA_V1.csv",
+    "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_4_4_RESIDUAL_SOURCE_PROFILE_V1.csv",
+    "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_4_4_RESIDUAL_RACE_OVERLAP_V1.csv",
+    "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_4_4_RESIDUAL_RUNNER_OVERLAP_V1.csv",
+    "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_4_4_RESIDUAL_CROSS_SOURCE_OVERLAP_V1.csv",
+    "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_4_4_SOURCE_AUTHORITY_DECISION_V1.csv",
+    "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_4_4_CORRECTED_POPULATION_PREVIEW_V1.csv",
+    "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_4_4_RESIDUAL_IDENTITY_SAMPLE_V1.csv",
+    "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_4_4_RESIDUAL_AUTHORITY_CORRECTED_POPULATION_PREVIEW_REPORT_V1.json",
+    "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_4_4_RESIDUAL_AUTHORITY_CORRECTED_POPULATION_PREVIEW_REPORT_V1.md",
+    "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_4_4_RESIDUAL_AUTHORITY_CORRECTED_POPULATION_PREVIEW_AUDIT_V1.json",
+    "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_4_4_RESIDUAL_AUTHORITY_CORRECTED_POPULATION_PREVIEW_AUDIT_V1.md"
+  ],
+  "overall_status": "PARTIAL",
+  "program_id": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE1A_4_4_RESIDUAL_AUTHORITY_CORRECTED_POPULATION_PREVIEW_V1",
+  "program_version": "1.0.0",
+  "repository_root": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM",
+  "residual_source_profiles": [
+    {
+      "completed_result_evidence_rows": 630,
+      "exists": true,
+      "missing_runner_key_rows": 813,
+      "new_race_ids": 0,
+      "path": "public/data/edgeiq_graphql_results_warehouse_week1_2025_v1.csv",
+      "race_ids_overlapping_graphql": 0,
+      "raw_only_vs_graphql": 0,
+      "raw_overlap_with_graphql": 0,
+      "rows": 813,
+      "semantic_only_vs_graphql": 0,
+      "semantic_overlap_with_graphql": 813,
+      "sha256": "325bc6b6141f4ee0cb333cad2cb30443d35a134677ef16dd70157b40bc04fec4",
+      "source_id": "WEEK1_2025_GRAPHQL",
+      "unique_race_ids": 0,
+      "unique_runner_keys": 0,
+      "unique_semantic_keys": 813
+    },
+    {
+      "completed_result_evidence_rows": 392,
+      "exists": true,
+      "missing_runner_key_rows": 392,
+      "new_race_ids": 0,
+      "path": "public/data/edgeiq_racingcom_canonical_runner_speed_fact_v2_1.csv",
+      "race_ids_overlapping_graphql": 0,
+      "raw_only_vs_graphql": 0,
+      "raw_overlap_with_graphql": 0,
+      "rows": 392,
+      "semantic_only_vs_graphql": 150,
+      "semantic_overlap_with_graphql": 242,
+      "sha256": "1885a533b7518ca9f76a6fff602951c7c34adacd021cd63a3ef554f113ebcd1a",
+      "source_id": "RUNNER_SPEED_V2_1",
+      "unique_race_ids": 0,
+      "unique_runner_keys": 0,
+      "unique_semantic_keys": 392
+    },
+    {
+      "completed_result_evidence_rows": 898,
+      "exists": true,
+      "missing_runner_key_rows": 0,
+      "new_race_ids": 5,
+      "path": "public/data/edgeiq_racingcom_graphql_speed_normalised_v1.csv",
+      "race_ids_overlapping_graphql": 0,
+      "raw_only_vs_graphql": 58,
+      "raw_overlap_with_graphql": 0,
+      "rows": 898,
+      "semantic_only_vs_graphql": 58,
+      "semantic_overlap_with_graphql": 0,
+      "sha256": "e9b6d0da8977d1a36a6e178cf3aa5980264ac619f92fd8f25d9d8d9a03b3e6f1",
+      "source_id": "GRAPHQL_SPEED_NORMALISED",
+      "unique_race_ids": 5,
+      "unique_runner_keys": 58,
+      "unique_semantic_keys": 58
+    },
+    {
+      "completed_result_evidence_rows": 39,
+      "exists": true,
+      "missing_runner_key_rows": 39,
+      "new_race_ids": 0,
+      "path": "outputs/sectionals/checkpoints/racingcom_speed_5_race_baseline_20260722_051140/edgeiq_racingcom_canonical_runner_speed_fact_v2.csv",
+      "race_ids_overlapping_graphql": 0,
+      "raw_only_vs_graphql": 0,
+      "raw_overlap_with_graphql": 0,
+      "rows": 39,
+      "semantic_only_vs_graphql": 4,
+      "semantic_overlap_with_graphql": 35,
+      "sha256": "525fb4deece15480b9044a852739a931a8c2e675e366712ac70c8fc1e6e91298",
+      "source_id": "SPEED_CHECKPOINT",
+      "unique_race_ids": 0,
+      "unique_runner_keys": 0,
+      "unique_semantic_keys": 39
+    }
+  ]
+}

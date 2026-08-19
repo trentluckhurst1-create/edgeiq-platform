@@ -1,0 +1,8 @@
+[
+  {
+    "operation_name": "getRaceForm",
+    "evidence_bundle_url": "local governed retained payloads",
+    "evidence": "outputs/sectionals/raw/VIC/racingcom_full_payloads/getRaceForm_*.json",
+    "access": "LOCAL_GOVERNED_EVIDENCE_DIRECT_PUBLIC_NOT_CONFIRMED"
+  }
+]

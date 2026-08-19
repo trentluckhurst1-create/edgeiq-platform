@@ -1,0 +1,14 @@
+{
+  "raceDistance": 1200,
+  "Horses": [
+    {
+      "id": "runner-mis",
+      "SplitTimes": [
+        {
+          "Distance": "1600m-1400m",
+          "Time": "12.0"
+        }
+      ]
+    }
+  ]
+}

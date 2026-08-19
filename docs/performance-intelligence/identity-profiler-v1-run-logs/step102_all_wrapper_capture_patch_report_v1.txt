@@ -1,0 +1,44 @@
+EDGEIQ IDENTITY REPOSITORY PROFILER
+STEP102 ALL WRAPPER CAPTURE PATCH REPORT
+
+Source: C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\build_edgeiq_identity_repository_profiler_v1_STEP100_CUMULATIVE.py
+Target: C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\build_edgeiq_identity_repository_profiler_v1_STEP102_CUMULATIVE.py
+Captures repaired: 34
+Unique captures after repair: 34
+
+CHANGES
+-------
+line 1526: _old_run -> _old_run__run_step3 | wrapper=_run_step3 | wrapper_line=1528 | invocation_line=1530
+line 1685: _previous_run -> _previous_run__run_step4 | wrapper=_run_step4 | wrapper_line=1687 | invocation_line=1689
+line 1837: _prev_run -> _prev_run__run_step5 | wrapper=_run_step5 | wrapper_line=1839 | invocation_line=1841
+line 1984: _prev -> _prev__run_step6 | wrapper=_run_step6 | wrapper_line=1986 | invocation_line=1988
+line 2161: _previous -> _previous__run_step7 | wrapper=_run_step7 | wrapper_line=2163 | invocation_line=2165
+line 2335: _prev_run -> _prev_run__run_step8 | wrapper=_run_step8 | wrapper_line=2337 | invocation_line=2339
+line 2494: _previous_run -> _previous_run__run_step9 | wrapper=_run_step9 | wrapper_line=2496 | invocation_line=2498
+line 2586: _previous -> _previous__run_step10 | wrapper=_run_step10 | wrapper_line=2588 | invocation_line=2590
+line 2698: _prev -> _prev__run_step11 | wrapper=_run_step11 | wrapper_line=2700 | invocation_line=2702
+line 2832: _previous -> _previous__run_step12 | wrapper=_run_step12 | wrapper_line=2834 | invocation_line=2836
+line 2960: _previous -> _previous__run_step13 | wrapper=_run_step13 | wrapper_line=2962 | invocation_line=2964
+line 3050: _previous -> _previous__run_step14 | wrapper=_run_step14 | wrapper_line=3052 | invocation_line=3054
+line 3143: _previous -> _previous__run_step15 | wrapper=_run_step15 | wrapper_line=3145 | invocation_line=3147
+line 3227: _previous -> _previous__run_step16 | wrapper=_run_step16 | wrapper_line=3229 | invocation_line=3231
+line 3318: _previous -> _previous__run_step17 | wrapper=_run_step17 | wrapper_line=3320 | invocation_line=3322
+line 3400: _previous -> _previous__run_step18 | wrapper=_run_step18 | wrapper_line=3402 | invocation_line=3404
+line 3484: _previous -> _previous__run_step19 | wrapper=_run_step19 | wrapper_line=3486 | invocation_line=3487
+line 3567: _previous -> _previous__run_step20 | wrapper=_run_step20 | wrapper_line=3569 | invocation_line=3570
+line 3657: _previous -> _previous__run_step21 | wrapper=_run_step21 | wrapper_line=3659 | invocation_line=3660
+line 3746: _previous -> _previous__run_step22 | wrapper=_run_step22 | wrapper_line=3748 | invocation_line=3749
+line 3835: _previous -> _previous__run_step23 | wrapper=_run_step23 | wrapper_line=3837 | invocation_line=3838
+line 3925: _previous -> _previous__run_step24 | wrapper=_run_step24 | wrapper_line=3927 | invocation_line=3928
+line 4019: _previous -> _previous__run_step25 | wrapper=_run_step25 | wrapper_line=4021 | invocation_line=4022
+line 4098: _previous -> _previous__run_step26 | wrapper=_run_step26 | wrapper_line=4100 | invocation_line=4101
+line 4189: _previous -> _previous__run_step27 | wrapper=_run_step27 | wrapper_line=4191 | invocation_line=4192
+line 4297: _previous -> _previous__run_step28 | wrapper=_run_step28 | wrapper_line=4299 | invocation_line=4300
+line 4413: _previous -> _previous__run_step29 | wrapper=_run_step29 | wrapper_line=4415 | invocation_line=4416
+line 4554: _previous -> _previous__run_step30 | wrapper=_run_step30 | wrapper_line=4556 | invocation_line=4557
+line 4650: _previous -> _previous__run_step31 | wrapper=_run_step31 | wrapper_line=4652 | invocation_line=4653
+line 4739: _previous -> _previous__run_step32 | wrapper=_run_step32 | wrapper_line=4741 | invocation_line=4742
+line 4781: _prev -> _prev__run_step33 | wrapper=_run_step33 | wrapper_line=4783 | invocation_line=4784
+line 5700: _step33_run -> _step33_run__run_step50 | wrapper=_run_step50 | wrapper_line=5703 | invocation_line=5704
+line 7287: _step50_run -> _step50_run__run_step75 | wrapper=_run_step75 | wrapper_line=7290 | invocation_line=7291
+line 8144: _step75_run -> _step75_run__run_step100 | wrapper=_run_step100 | wrapper_line=8147 | invocation_line=8149

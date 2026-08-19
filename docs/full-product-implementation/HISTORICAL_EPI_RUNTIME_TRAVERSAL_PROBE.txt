@@ -1,0 +1,17 @@
+EDGEIQ HISTORICAL EPI RUNTIME TRAVERSAL PROBE
+==============================================================================================================
+
+CATALOG_RACES=26
+CATALOG_RACES_WITH_FORM_MATCH=0
+CATALOG_RACES_WITHOUT_FORM_MATCH=26
+RUNNERS=0
+RUNNERS_WITH_FULL_FORM=0
+RUNNERS_WITHOUT_FULL_FORM=0
+HISTORICAL_RUNS_TESTED=0
+RUNTIME_LOOKUP_POPULATED=0
+RUNTIME_LOOKUP_BLANK=0
+NON_DICT_RUNS=0
+
+POPULATED RUNTIME SAMPLE
+--------------------------------------------------------------------------------------------------------------
+NO_POPULATED_RUNTIME_SAMPLES

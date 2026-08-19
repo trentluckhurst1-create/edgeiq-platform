@@ -1,0 +1,5 @@
+﻿track_group,source_status,http_status,schema_status,raw_response_file,notes
+Flemington,LIVE_AVAILABLE,200,SCHEMA_OK,data\weather-source-live\flemington\20260713T220906Z\raw_response.json,Raw source preserved; no weather values fabricated.
+Caulfield,LIVE_AVAILABLE,200,SCHEMA_OK,data\weather-source-live\caulfield\20260713T220906Z\raw_response.json,Raw source preserved; no weather values fabricated.
+Sandown,LIVE_AVAILABLE,200,SCHEMA_OK,data\weather-source-live\sandown\20260713T220906Z\raw_response.json,Raw source preserved; no weather values fabricated.
+Mornington,LIVE_AVAILABLE,200,SCHEMA_OK,data\weather-source-live\mornington\20260713T220906Z\raw_response.json,Raw source preserved; no weather values fabricated.

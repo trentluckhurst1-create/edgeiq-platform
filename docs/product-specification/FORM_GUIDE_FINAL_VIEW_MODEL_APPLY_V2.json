@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "timestamp": "2026-07-20T15:03:25",
+  "checks": [
+    {
+      "check": "normaliser_used",
+      "target": "tsx",
+      "passed": true
+    },
+    {
+      "check": "enriched_feed_used",
+      "target": "tsx",
+      "passed": true
+    },
+    {
+      "check": "rich_runner_preferred",
+      "target": "tsx",
+      "passed": true
+    },
+    {
+      "check": "no_model_math",
+      "target": "tsx",
+      "passed": true
+    }
+  ]
+}

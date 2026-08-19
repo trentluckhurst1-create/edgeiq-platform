@@ -1,0 +1,382 @@
+EDGEIQ FORM GUIDE HISTORICAL EPI MISMATCH DETAIL AUDIT
+============================================================================================
+
+CLASSIFICATION
+--------------------------------------------------------------------------------------------
+FULL_MATCH=674
+TRACK_ONLY=867
+DISTANCE_ONLY=103
+DATE_ONLY=101
+NAME_ONLY=3167
+HORSE_NOT_PRESENT=127
+
+TOP TRACK-ONLY MAPPINGS
+--------------------------------------------------------------------------------------------
+  151 | WARRNAMBOOL -> WNBL
+   62 | LADBROKES GEELONG -> GEEL
+   54 | SPORTSBET-BALLARAT -> BRAT
+   41 | FLEMINGTON -> FLEM
+   39 | CASTERTON -> CAST
+   39 | BET365 TERANG -> TER
+   35 | SPORTSBET SANDOWN LAKESIDE -> SANL
+   30 | BET365 HAMILTON -> HTON
+   25 | CAULFIELD -> CAUL
+   23 | MORNINGTON -> MORN
+   22 | BET365 SEYMOUR -> SEYM
+   22 | SPORTSBET SANDOWN HILLSIDE -> SANH
+   22 | APIAM BENDIGO -> BDGO
+   21 | SPORTSBET-PAKENHAM -> PAKM
+   21 | BET365 ECHUCA -> ECHA
+   18 | BET365 PARK KILMORE -> KILM
+   17 | BENDIGO -> BDGO
+   17 | ARARAT -> ARAT
+   15 | BET365 PARK KYNETON -> KYNE
+   14 | SPORTSBET-WANGARATTA -> WANG
+   14 | SOUTHSIDE PAKENHAM -> PAKM
+   13 | BET365 MILDURA -> MILD
+   12 | PICKLEBET PARK WERRIBEE -> WERR
+   11 | BET365 SWAN HILL -> SW H
+   11 | COLERAINE -> COLR
+   10 | CAULFIELD HEATH -> CAUH
+    8 | CRANBOURNE -> CRAN
+    7 | DONALD -> DON
+    7 | HORSHAM -> HSHM
+    6 | WARRACKNABEAL -> WKBL
+    5 | SOUTHSIDE CRANBOURNE -> CRAN
+    5 | BET365 STAWELL -> STAW
+    4 | THE VALLEY -> M V
+    4 | KERANG -> KRNG
+    4 | MURTOA -> MURT
+    4 | HEALESVILLE -> HEAL
+    4 | BET365 BAIRNSDALE -> BDLE
+    3 | TATURA -> TAT
+    3 | SPORTSBET-PAKENHAM SYNTHETIC -> PAKS
+    3 | BET365 GEELONG -> GEEL
+    3 | TAB PARK WERRIBEE -> WERR
+    3 | DUNKELD -> DUNK
+    3 | BET365 BENALLA -> BLLA
+    3 | BALNARRING -> BALN
+    3 | SPORTSBET-BALLARAT SYNTHETIC -> BRTS
+    3 | PICKLEBET PARK WODONGA -> WOD
+    2 | BETDELUXE WARRACKNABEAL -> WKBL
+    2 | BURRUMBEET -> BBT
+    2 | BET365 COLAC -> CLAC
+    2 | ALEXANDRA -> ALEX
+    2 | BET365 YARRA VALLEY -> Y VL
+    1 | DEDERANG -> Dederang Picnic
+    1 | BET365 PARK WODONGA -> WOD
+    1 | SOUTHSIDE PAKENHAM SYNTHETIC -> PAKS
+    1 | HANGING ROCK -> H RK
+    1 | AVOCA -> AVOC
+    1 | ST ARNAUD -> ST A
+    1 | MANANGATANG -> MTNG
+    1 | WYCHEPROOF -> WYCH
+    1 | WOOLAMAI -> WMAI
+    1 | GUNBOWER -> GBWR
+    1 | LADBROKES PARK LAKESIDE -> SANL
+    1 | SWAN HILL -> SW H
+    1 | BET365 CAMPERDOWN -> CAMP
+
+TOP DISTANCE-ONLY DIFFERENCES
+--------------------------------------------------------------------------------------------
+
+DATE-ONLY ABSOLUTE OFFSETS
+--------------------------------------------------------------------------------------------
+    4 | 147 day(s)
+    3 | 35 day(s)
+    3 | 364 day(s)
+    3 | 196 day(s)
+    3 | 266 day(s)
+    2 | 281 day(s)
+    2 | 159 day(s)
+    2 | 175 day(s)
+    2 | 62 day(s)
+    2 | 168 day(s)
+    2 | 395 day(s)
+    2 | 455 day(s)
+    2 | 96 day(s)
+    2 | 56 day(s)
+    2 | 91 day(s)
+    2 | 105 day(s)
+    2 | 216 day(s)
+    2 | 389 day(s)
+    2 | 414 day(s)
+    2 | 28 day(s)
+    1 | 437 day(s)
+    1 | 354 day(s)
+    1 | 208 day(s)
+    1 | 260 day(s)
+    1 | 294 day(s)
+    1 | 592 day(s)
+    1 | 45 day(s)
+    1 | 101 day(s)
+    1 | 434 day(s)
+    1 | 462 day(s)
+    1 | 112 day(s)
+    1 | 203 day(s)
+    1 | 193 day(s)
+    1 | 57 day(s)
+    1 | 67 day(s)
+    1 | 305 day(s)
+    1 | 315 day(s)
+    1 | 347 day(s)
+    1 | 357 day(s)
+    1 | 210 day(s)
+    1 | 161 day(s)
+    1 | 146 day(s)
+    1 | 200 day(s)
+    1 | 154 day(s)
+    1 | 43 day(s)
+    1 | 413 day(s)
+    1 | 469 day(s)
+    1 | 61 day(s)
+    1 | 70 day(s)
+    1 | 83 day(s)
+    1 | 109 day(s)
+    1 | 77 day(s)
+    1 | 280 day(s)
+    1 | 392 day(s)
+    1 | 441 day(s)
+    1 | 539 day(s)
+    1 | 381 day(s)
+    1 | 63 day(s)
+    1 | 427 day(s)
+    1 | 490 day(s)
+    1 | 221 day(s)
+    1 | 248 day(s)
+    1 | 98 day(s)
+    1 | 217 day(s)
+    1 | 348 day(s)
+    1 | 75 day(s)
+    1 | 84 day(s)
+    1 | 324 day(s)
+    1 | 488 day(s)
+    1 | 685 day(s)
+    1 | 116 day(s)
+    1 | 258 day(s)
+    1 | 215 day(s)
+    1 | 21 day(s)
+    1 | 335 day(s)
+    1 | 233 day(s)
+    1 | 249 day(s)
+    1 | 399 day(s)
+    1 | 415 day(s)
+    1 | 150 day(s)
+    1 | 528 day(s)
+    1 | 744 day(s)
+    1 | 185 day(s)
+    1 | 99 day(s)
+    1 | 12 day(s)
+    1 | 110 day(s)
+    1 | 476 day(s)
+    1 | 31 day(s)
+    1 | 76 day(s)
+    1 | 89 day(s)
+    1 | 90 day(s)
+
+NAME-ONLY SAMPLE WITH NEAREST RESEARCH ROWS
+--------------------------------------------------------------------------------------------
+Caitlin's Punch | 2026-01-29 | CAULFIELD HEATH | 800 | candidates=1
+  nearest=2026-02-10 / Bet365 Park Kyneton / 1218.0 / EPI=38.75 / source=run_context.csv
+Ernie | 2025-10-30 | CAULFIELD HEATH | 800 | candidates=1
+  nearest=2026-05-29 / BENDIGO /  / EPI=53.44 / source=edgeiq_horse_results_power_ratings_v1.csv
+Gasoline Rainbow | 2026-06-24 | SPORTSBET-BALLARAT | 1200 | candidates=2
+  nearest=2026-01-02 / Bet365 Terang / 1200.0 / EPI=57.15 / source=run_context.csv | 2025-12-16 / Bet365 Terang / 1200.0 / EPI=64.59 / source=run_context.csv
+Gasoline Rainbow | 2026-06-20 | DONALD | 1350 | candidates=2
+  nearest=2026-01-02 / Bet365 Terang / 1200.0 / EPI=57.15 / source=run_context.csv | 2025-12-16 / Bet365 Terang / 1200.0 / EPI=64.59 / source=run_context.csv
+Ice Quake | 2026-06-18 | MOE | 1208 | candidates=1
+  nearest=2026-06-01 / BET365 PARK KILMORE /  / EPI=47.91 / source=edgeiq_horse_results_power_ratings_v1.csv
+Ice Quake | 2025-09-25 | LADBROKES GEELONG | 1140 | candidates=1
+  nearest=2026-06-01 / BET365 PARK KILMORE /  / EPI=47.91 / source=edgeiq_horse_results_power_ratings_v1.csv
+Ice Quake | 2025-05-15 | CAULFIELD HEATH | 800 | candidates=1
+  nearest=2026-06-01 / BET365 PARK KILMORE /  / EPI=47.91 / source=edgeiq_horse_results_power_ratings_v1.csv
+Lyrebird Lady | 2026-06-16 | SPORTSBET-BALLARAT SYNTHETIC | 1400 | candidates=1
+  nearest=2026-05-26 / BET365 HAMILTON /  / EPI=59.43 / source=edgeiq_horse_results_power_ratings_v1.csv
+Lyrebird Lady | 2026-05-01 | LADBROKES GEELONG | 1243 | candidates=1
+  nearest=2026-05-26 / BET365 HAMILTON /  / EPI=59.43 / source=edgeiq_horse_results_power_ratings_v1.csv
+Mission Of Joy | 2025-11-29 | BET365 YARRA VALLEY | 1209 | candidates=2
+  nearest=2025-12-10 / Sportsbet Sandown Lakeside / 1200.0 / EPI=55.03 / source=run_context.csv | 2025-11-10 / Mornington / 1000.0 / EPI=69.22 / source=run_context.csv
+Needlestick | 2026-06-21 | SPORTSBET-BALLARAT SYNTHETIC | 1100 | candidates=1
+  nearest=2025-11-25 / Ararat / 1100.0 / EPI=40.51 / source=run_context.csv
+Needlestick | 2025-11-01 | BET365 MORTLAKE | 1100 | candidates=1
+  nearest=2025-11-25 / Ararat / 1100.0 / EPI=40.51 / source=run_context.csv
+Needlestick | 2025-05-20 | HORSHAM | 800 | candidates=1
+  nearest=2025-11-25 / Ararat / 1100.0 / EPI=40.51 / source=run_context.csv
+Only Opera | 2026-01-27 | LADBROKES GEELONG | 1000 | candidates=1
+  nearest=2026-02-10 / Bet365 Park Kyneton / 1479.0 / EPI=49.7 / source=run_context.csv
+Talavera | 2025-09-18 | DONALD | 1050 | candidates=1
+  nearest=2025-10-05 / BENDIGO /  / EPI=69.77 / source=edgeiq_horse_results_power_ratings_v1.csv
+Back Of The Boat | 2026-06-11 | BET365 SEYMOUR | 1300 | candidates=19
+  nearest=2026-05-03 / WANG / 1300.0 / EPI=46.7 / source=run_context_FIXED.csv | 2026-04-22 / GEEL / 1325.0 / EPI=69.5 / source=run_context_FIXED.csv | 2026-04-10 / GEEL / 1312.0 / EPI=52.74 / source=run_context_FIXED.csv
+Back Of The Boat | 2026-05-22 | LADBROKES GEELONG | 1300 | candidates=19
+  nearest=2026-05-03 / WANG / 1300.0 / EPI=46.7 / source=run_context_FIXED.csv | 2026-04-22 / GEEL / 1325.0 / EPI=69.5 / source=run_context_FIXED.csv | 2026-04-10 / GEEL / 1312.0 / EPI=52.74 / source=run_context_FIXED.csv
+Back Of The Boat | 2026-01-27 | LADBROKES GEELONG | 1000 | candidates=19
+  nearest=2026-02-17 / Picklebet Park Werribee / 1100.0 / EPI=38.46 / source=run_context.csv | 2026-02-17 / WERR / 1100.0 / EPI=40.16 / source=run_context_FIXED.csv | 2026-03-09 / WNBL / 1300.0 / EPI=69.64 / source=run_context_FIXED.csv
+Donato | 2026-06-15 | SOUTHSIDE PAKENHAM SYNTHETIC | 1200 | candidates=4
+  nearest=2025-11-10 / MORN / 1000.0 / EPI=49.39 / source=run_context_FIXED.csv | 2025-11-10 / Mornington / 1000.0 / EPI=47.26 / source=run_context.csv | 2025-10-31 / KILM / 1112.0 / EPI=52.45 / source=run_context_FIXED.csv
+Donato | 2026-05-28 | MOE | 1200 | candidates=4
+  nearest=2025-11-10 / MORN / 1000.0 / EPI=49.39 / source=run_context_FIXED.csv | 2025-11-10 / Mornington / 1000.0 / EPI=47.26 / source=run_context.csv | 2025-10-31 / KILM / 1112.0 / EPI=52.45 / source=run_context_FIXED.csv
+Donato | 2026-05-08 | SOUTHSIDE PAKENHAM | 1200 | candidates=4
+  nearest=2025-11-10 / MORN / 1000.0 / EPI=49.39 / source=run_context_FIXED.csv | 2025-11-10 / Mornington / 1000.0 / EPI=47.26 / source=run_context.csv | 2025-10-31 / KILM / 1112.0 / EPI=52.45 / source=run_context_FIXED.csv
+Fiorowngood | 2026-06-24 | SPORTSBET-BALLARAT | 1200 | candidates=1
+  nearest=2025-02-28 / BET365 TERANG /  / EPI=46.39 / source=edgeiq_horse_results_power_ratings_v1.csv
+Fiorowngood | 2025-02-14 | BET365 TERANG | 1400 | candidates=1
+  nearest=2025-02-28 / BET365 TERANG /  / EPI=46.39 / source=edgeiq_horse_results_power_ratings_v1.csv
+Grinding Away | 2025-10-23 | MORNINGTON | 2450 | candidates=1
+  nearest=2025-11-14 / Ladbrokes Geelong / 2412.0 / EPI=71.36 / source=run_context.csv
+Grinding Away | 2025-10-06 | SPORTSBET-BALLARAT | 2000 | candidates=1
+  nearest=2025-11-14 / Ladbrokes Geelong / 2412.0 / EPI=71.36 / source=run_context.csv
+Grinding Away | 2025-09-22 | WARRNAMBOOL | 2350 | candidates=1
+  nearest=2025-11-14 / Ladbrokes Geelong / 2412.0 / EPI=71.36 / source=run_context.csv
+Grinding Away | 2025-09-09 | WARRNAMBOOL | 2000 | candidates=1
+  nearest=2025-11-14 / Ladbrokes Geelong / 2412.0 / EPI=71.36 / source=run_context.csv
+Grinding Away | 2025-08-22 | LADBROKES GEELONG | 1512 | candidates=1
+  nearest=2025-11-14 / Ladbrokes Geelong / 2412.0 / EPI=71.36 / source=run_context.csv
+Grinding Away | 2025-08-08 | LADBROKES GEELONG | 1500 | candidates=1
+  nearest=2025-11-14 / Ladbrokes Geelong / 2412.0 / EPI=71.36 / source=run_context.csv
+Grinding Away | 2024-12-06 | MORNINGTON | 2460 | candidates=1
+  nearest=2025-11-14 / Ladbrokes Geelong / 2412.0 / EPI=71.36 / source=run_context.csv
+Grinding Away | 2024-11-27 | LADBROKES GEELONG | 2400 | candidates=1
+  nearest=2025-11-14 / Ladbrokes Geelong / 2412.0 / EPI=71.36 / source=run_context.csv
+Grinding Away | 2024-11-12 | MORNINGTON | 2025 | candidates=1
+  nearest=2025-11-14 / Ladbrokes Geelong / 2412.0 / EPI=71.36 / source=run_context.csv
+Grinding Away | 2024-10-26 | BET365 YARRA VALLEY | 1968 | candidates=1
+  nearest=2025-11-14 / Ladbrokes Geelong / 2412.0 / EPI=71.36 / source=run_context.csv
+Grinding Away | 2024-10-11 | CRANBOURNE | 1600 | candidates=1
+  nearest=2025-11-14 / Ladbrokes Geelong / 2412.0 / EPI=71.36 / source=run_context.csv
+Grinding Away | 2024-09-27 | BET365 BENALLA | 1606 | candidates=1
+  nearest=2025-11-14 / Ladbrokes Geelong / 2412.0 / EPI=71.36 / source=run_context.csv
+Grinding Away | 2024-09-05 | CRANBOURNE | 1400 | candidates=1
+  nearest=2025-11-14 / Ladbrokes Geelong / 2412.0 / EPI=71.36 / source=run_context.csv
+Grinding Away | 2023-01-19 | SPORTSBET-PAKENHAM | 2000 | candidates=1
+  nearest=2025-11-14 / Ladbrokes Geelong / 2412.0 / EPI=71.36 / source=run_context.csv
+Grinding Away | 2023-01-02 | BET365 TERANG | 1600 | candidates=1
+  nearest=2025-11-14 / Ladbrokes Geelong / 2412.0 / EPI=71.36 / source=run_context.csv
+Grinding Away | 2022-04-29 | BET365 GEELONG | 1235 | candidates=1
+  nearest=2025-11-14 / Ladbrokes Geelong / 2412.0 / EPI=71.36 / source=run_context.csv
+Grinding Away | 2003-11-04 | BET365 BAIRNSDALE | 1100 | candidates=1
+  nearest=2025-11-14 / Ladbrokes Geelong / 2412.0 / EPI=71.36 / source=run_context.csv
+Grinding Away | 2003-07-13 | SALE | 1500 | candidates=1
+  nearest=2025-11-14 / Ladbrokes Geelong / 2412.0 / EPI=71.36 / source=run_context.csv
+Grinding Away | 2003-06-29 | BET365 BAIRNSDALE | 1100 | candidates=1
+  nearest=2025-11-14 / Ladbrokes Geelong / 2412.0 / EPI=71.36 / source=run_context.csv
+Testy Nic | 2026-06-15 | SOUTHSIDE PAKENHAM SYNTHETIC | 1400 | candidates=1
+  nearest=2026-05-22 / LADBROKES GEELONG /  / EPI=63.4 / source=edgeiq_horse_results_power_ratings_v1.csv
+Testy Nic | 2025-11-05 | BET365 PARK KYNETON | 1454 | candidates=1
+  nearest=2026-05-22 / LADBROKES GEELONG /  / EPI=63.4 / source=edgeiq_horse_results_power_ratings_v1.csv
+Testy Nic | 2025-10-02 | LADBROKES GEELONG | 1547 | candidates=1
+  nearest=2026-05-22 / LADBROKES GEELONG /  / EPI=63.4 / source=edgeiq_horse_results_power_ratings_v1.csv
+Testy Nic | 2025-09-13 | DONALD | 1350 | candidates=1
+  nearest=2026-05-22 / LADBROKES GEELONG /  / EPI=63.4 / source=edgeiq_horse_results_power_ratings_v1.csv
+Testy Nic | 2025-08-19 | BENDIGO | 1000 | candidates=1
+  nearest=2026-05-22 / LADBROKES GEELONG /  / EPI=63.4 / source=edgeiq_horse_results_power_ratings_v1.csv
+Atella Miss | 2026-06-12 | SPORTSBET-BALLARAT | 1200 | candidates=1
+  nearest=2026-05-28 / MOE /  / EPI=74.05 / source=edgeiq_horse_results_power_ratings_v1.csv
+Atella Miss | 2025-04-09 | SPORTSBET SANDOWN LAKESIDE | 1200 | candidates=1
+  nearest=2026-05-28 / MOE /  / EPI=74.05 / source=edgeiq_horse_results_power_ratings_v1.csv
+Atella Miss | 2024-04-10 | SPORTSBET SANDOWN LAKESIDE | 1200 | candidates=1
+  nearest=2026-05-28 / MOE /  / EPI=74.05 / source=edgeiq_horse_results_power_ratings_v1.csv
+Razanne | 2026-01-09 | SOUTHSIDE PAKENHAM | 1400 | candidates=2
+  nearest=2025-12-21 / Sale / 1415.0 / EPI=71.42 / source=run_context.csv | 2026-02-01 / Picklebet Park Werribee / 1618.0 / EPI=60.16 / source=run_context.csv
+True Lies | 2026-06-19 | LADBROKES GEELONG | 1425 | candidates=1
+  nearest=2026-03-10 / Sportsbet-Ballarat / 1200.0 / EPI=60.67 / source=run_context.csv
+True Lies | 2026-05-22 | LADBROKES GEELONG | 1100 | candidates=1
+  nearest=2026-03-10 / Sportsbet-Ballarat / 1200.0 / EPI=60.67 / source=run_context.csv
+True Lies | 2026-03-20 | SPORTSBET-BALLARAT | 1400 | candidates=1
+  nearest=2026-03-10 / Sportsbet-Ballarat / 1200.0 / EPI=60.67 / source=run_context.csv
+True Lies | 2026-03-02 | BET365 COLAC | 800 | candidates=1
+  nearest=2026-03-10 / Sportsbet-Ballarat / 1200.0 / EPI=60.67 / source=run_context.csv
+True Lies | 2010-06-21 | BET365 MILDURA | 1400 | candidates=1
+  nearest=2026-03-10 / Sportsbet-Ballarat / 1200.0 / EPI=60.67 / source=run_context.csv
+True Lies | 2010-05-28 | BET365 GEELONG | 1300 | candidates=1
+  nearest=2026-03-10 / Sportsbet-Ballarat / 1200.0 / EPI=60.67 / source=run_context.csv
+Duke Of Zhou | 2026-06-16 | SPORTSBET-BALLARAT SYNTHETIC | 1200 | candidates=1
+  nearest=2026-05-14 / PICKLEBET PARK WERRIBEE /  / EPI=53.56 / source=edgeiq_horse_results_power_ratings_v1.csv
+Duke Of Zhou | 2026-04-30 | CAULFIELD HEATH | 950 | candidates=1
+  nearest=2026-05-14 / PICKLEBET PARK WERRIBEE /  / EPI=53.56 / source=edgeiq_horse_results_power_ratings_v1.csv
+Duke Of Zhou | 2026-04-23 | CAULFIELD HEATH | 1000 | candidates=1
+  nearest=2026-05-14 / PICKLEBET PARK WERRIBEE /  / EPI=53.56 / source=edgeiq_horse_results_power_ratings_v1.csv
+Duke Of Zhou | 2025-10-30 | CAULFIELD HEATH | 1000 | candidates=1
+  nearest=2026-05-14 / PICKLEBET PARK WERRIBEE /  / EPI=53.56 / source=edgeiq_horse_results_power_ratings_v1.csv
+Immortal Diva | 2026-06-19 | LADBROKES GEELONG | 1425 | candidates=3
+  nearest=2026-01-03 / Southside Cranbourne / 2520.0 / EPI=46.65 / source=run_context.csv | 2025-12-18 / Bet365 Seymour / 2234.0 / EPI=53.97 / source=run_context.csv | 2025-11-22 / Tatura / 1980.0 / EPI=39.46 / source=run_context.csv
+Immortal Diva | 2026-06-11 | BET365 SEYMOUR | 1300 | candidates=3
+  nearest=2026-01-03 / Southside Cranbourne / 2520.0 / EPI=46.65 / source=run_context.csv | 2025-12-18 / Bet365 Seymour / 2234.0 / EPI=53.97 / source=run_context.csv | 2025-11-22 / Tatura / 1980.0 / EPI=39.46 / source=run_context.csv
+Immortal Diva | 2025-12-06 | SPORTSBET-WANGARATTA | 2000 | candidates=3
+  nearest=2025-12-18 / Bet365 Seymour / 2234.0 / EPI=53.97 / source=run_context.csv | 2025-11-22 / Tatura / 1980.0 / EPI=39.46 / source=run_context.csv | 2026-01-03 / Southside Cranbourne / 2520.0 / EPI=46.65 / source=run_context.csv
+Immortal Diva | 2025-10-05 | BENDIGO | 1500 | candidates=3
+  nearest=2025-11-22 / Tatura / 1980.0 / EPI=39.46 / source=run_context.csv | 2025-12-18 / Bet365 Seymour / 2234.0 / EPI=53.97 / source=run_context.csv | 2026-01-03 / Southside Cranbourne / 2520.0 / EPI=46.65 / source=run_context.csv
+Immortal Diva | 2024-12-29 | BET365 SEYMOUR | 1300 | candidates=3
+  nearest=2025-11-22 / Tatura / 1980.0 / EPI=39.46 / source=run_context.csv | 2025-12-18 / Bet365 Seymour / 2234.0 / EPI=53.97 / source=run_context.csv | 2026-01-03 / Southside Cranbourne / 2520.0 / EPI=46.65 / source=run_context.csv
+The Noble Steed | 2025-06-29 | SPORTSBET-BALLARAT | 1500 | candidates=1
+  nearest=2025-07-13 / APIAM BENDIGO /  / EPI=38.55 / source=edgeiq_horse_results_power_ratings_v1.csv
+The Noble Steed | 2025-06-21 | DONALD | 1356 | candidates=1
+  nearest=2025-07-13 / APIAM BENDIGO /  / EPI=38.55 / source=edgeiq_horse_results_power_ratings_v1.csv
+The Noble Steed | 2025-06-08 | CASTERTON | 1400 | candidates=1
+  nearest=2025-07-13 / APIAM BENDIGO /  / EPI=38.55 / source=edgeiq_horse_results_power_ratings_v1.csv
+The Noble Steed | 2025-05-25 | BET365 MILDURA | 1400 | candidates=1
+  nearest=2025-07-13 / APIAM BENDIGO /  / EPI=38.55 / source=edgeiq_horse_results_power_ratings_v1.csv
+The Noble Steed | 2025-05-08 | BET365 PARK KYNETON | 1854 | candidates=1
+  nearest=2025-07-13 / APIAM BENDIGO /  / EPI=38.55 / source=edgeiq_horse_results_power_ratings_v1.csv
+The Noble Steed | 2025-04-04 | SWAN HILL | 1600 | candidates=1
+  nearest=2025-07-13 / APIAM BENDIGO /  / EPI=38.55 / source=edgeiq_horse_results_power_ratings_v1.csv
+The Noble Steed | 2025-03-16 | SWAN HILL | 1300 | candidates=1
+  nearest=2025-07-13 / APIAM BENDIGO /  / EPI=38.55 / source=edgeiq_horse_results_power_ratings_v1.csv
+The Noble Steed | 2025-03-02 | APIAM BENDIGO | 1400 | candidates=1
+  nearest=2025-07-13 / APIAM BENDIGO /  / EPI=38.55 / source=edgeiq_horse_results_power_ratings_v1.csv
+The Noble Steed | 2025-02-14 | BET365 TERANG | 1400 | candidates=1
+  nearest=2025-07-13 / APIAM BENDIGO /  / EPI=38.55 / source=edgeiq_horse_results_power_ratings_v1.csv
+The Noble Steed | 2024-10-26 | ST ARNAUD | 1100 | candidates=1
+  nearest=2025-07-13 / APIAM BENDIGO /  / EPI=38.55 / source=edgeiq_horse_results_power_ratings_v1.csv
+Crypt | 2025-09-02 | CAULFIELD HEATH | 800 | candidates=1
+  nearest=2025-09-19 / SPORTSBET-BALLARAT /  / EPI=62.96 / source=edgeiq_horse_results_power_ratings_v1.csv
+Crypt | 2025-08-13 | CAULFIELD HEATH | 900 | candidates=1
+  nearest=2025-09-19 / SPORTSBET-BALLARAT /  / EPI=62.96 / source=edgeiq_horse_results_power_ratings_v1.csv
+Crypt | 2025-04-16 | CAULFIELD HEATH | 1000 | candidates=1
+  nearest=2025-09-19 / SPORTSBET-BALLARAT /  / EPI=62.96 / source=edgeiq_horse_results_power_ratings_v1.csv
+Ilustrious Warrior | 2026-06-24 | SPORTSBET-BALLARAT | 1200 | candidates=5
+  nearest=2026-05-30 / MORP / 1050 / EPI=68.81 / source=ra_horse_runs.csv | 2026-05-20 / BKVA / 1050 / EPI=60.83 / source=ra_horse_runs.csv | 2026-05-09 / MORP / 1050 / EPI=55.11 / source=ra_horse_runs.csv
+Kandinsky | 2026-05-13 | BENDIGO | 1300 | candidates=1
+  nearest=2025-12-12 / Ladbrokes Geelong / 1230.0 / EPI=56.59 / source=run_context.csv
+Kandinsky | 2026-04-26 | BET365 SEYMOUR | 1300 | candidates=1
+  nearest=2025-12-12 / Ladbrokes Geelong / 1230.0 / EPI=56.59 / source=run_context.csv
+His Lady Bay | 2025-07-02 | SPORTSBET SANDOWN LAKESIDE | 1300 | candidates=4
+  nearest=2025-11-30 / Warrnambool / 1200.0 / EPI=58.96 / source=run_context.csv | 2025-12-12 / Ladbrokes Geelong / 1530.0 / EPI=50.37 / source=run_context.csv | 2025-12-31 / Warrnambool / 1400.0 / EPI=53.02 / source=run_context.csv
+His Lady Bay | 2025-06-14 | APIAM BENDIGO | 1100 | candidates=4
+  nearest=2025-11-30 / Warrnambool / 1200.0 / EPI=58.96 / source=run_context.csv | 2025-12-12 / Ladbrokes Geelong / 1530.0 / EPI=50.37 / source=run_context.csv | 2025-12-31 / Warrnambool / 1400.0 / EPI=53.02 / source=run_context.csv
+Thinker | 2026-06-24 | SPORTSBET-BALLARAT | 1200 | candidates=3
+  nearest=2026-01-20 / Ladbrokes Geelong / 1525.0 / EPI=66.39 / source=run_context.csv | 2026-01-12 / Picklebet Park Werribee / 1429.0 / EPI=50.15 / source=run_context.csv | 2025-12-29 / Bet365 Yarra Valley / 1209.0 / EPI=48.07 / source=run_context.csv
+Thinker | 2026-06-24 | SPORTSBET-BALLARAT | 1200 | candidates=3
+  nearest=2026-01-20 / Ladbrokes Geelong / 1525.0 / EPI=66.39 / source=run_context.csv | 2026-01-12 / Picklebet Park Werribee / 1429.0 / EPI=50.15 / source=run_context.csv | 2025-12-29 / Bet365 Yarra Valley / 1209.0 / EPI=48.07 / source=run_context.csv
+Lost The Plot | 2026-06-24 | SPORTSBET-BALLARAT | 1200 | candidates=1
+  nearest=2026-04-17 / SOUTHSIDE CRANBOURNE /  / EPI=47.59 / source=edgeiq_horse_results_power_ratings_v1.csv
+Lost The Plot | 2026-03-19 | SOUTHSIDE PAKENHAM | 1000 | candidates=1
+  nearest=2026-04-17 / SOUTHSIDE CRANBOURNE /  / EPI=47.59 / source=edgeiq_horse_results_power_ratings_v1.csv
+Lost The Plot | 2026-02-25 | CAULFIELD HEATH | 800 | candidates=1
+  nearest=2026-04-17 / SOUTHSIDE CRANBOURNE /  / EPI=47.59 / source=edgeiq_horse_results_power_ratings_v1.csv
+Humble Trader | 2026-05-31 | SPORTSBET SANDOWN LAKESIDE | 1200 | candidates=3
+  nearest=2026-04-09 / PAKM / 1200.0 / EPI=82.87 / source=run_context_FIXED.csv | 2025-09-03 / SANH / 1300.0 / EPI=61.3 / source=run_context_FIXED.csv | 2025-08-20 / SANL / 1200.0 / EPI=84.7 / source=run_context_FIXED.csv
+Humble Trader | 2026-05-16 | FLEMINGTON | 1400 | candidates=3
+  nearest=2026-04-09 / PAKM / 1200.0 / EPI=82.87 / source=run_context_FIXED.csv | 2025-09-03 / SANH / 1300.0 / EPI=61.3 / source=run_context_FIXED.csv | 2025-08-20 / SANL / 1200.0 / EPI=84.7 / source=run_context_FIXED.csv
+Humble Trader | 2026-02-25 | CAULFIELD HEATH | 800 | candidates=3
+  nearest=2026-04-09 / PAKM / 1200.0 / EPI=82.87 / source=run_context_FIXED.csv | 2025-09-03 / SANH / 1300.0 / EPI=61.3 / source=run_context_FIXED.csv | 2025-08-20 / SANL / 1200.0 / EPI=84.7 / source=run_context_FIXED.csv
+Sea Trader | 2026-06-24 | SPORTSBET-BALLARAT | 1000 | candidates=3
+  nearest=2026-03-14 / Caulfield / 1200.0 / EPI=43.75 / source=run_context.csv | 2026-02-27 / Southside Cranbourne / 1200.0 / EPI=59.64 / source=run_context.csv | 2026-02-11 / Sale / 1006.0 / EPI=77.75 / source=run_context.csv
+Sea Trader | 2026-06-24 | SPORTSBET-BALLARAT | 1200 | candidates=3
+  nearest=2026-03-14 / Caulfield / 1200.0 / EPI=43.75 / source=run_context.csv | 2026-02-27 / Southside Cranbourne / 1200.0 / EPI=59.64 / source=run_context.csv | 2026-02-11 / Sale / 1006.0 / EPI=77.75 / source=run_context.csv
+Sea Trader | 2026-05-30 | PICKLEBET PARK WERRIBEE | 1012 | candidates=3
+  nearest=2026-03-14 / Caulfield / 1200.0 / EPI=43.75 / source=run_context.csv | 2026-02-27 / Southside Cranbourne / 1200.0 / EPI=59.64 / source=run_context.csv | 2026-02-11 / Sale / 1006.0 / EPI=77.75 / source=run_context.csv
+Sea Trader | 2026-05-14 | CAULFIELD HEATH | 800 | candidates=3
+  nearest=2026-03-14 / Caulfield / 1200.0 / EPI=43.75 / source=run_context.csv | 2026-02-27 / Southside Cranbourne / 1200.0 / EPI=59.64 / source=run_context.csv | 2026-02-11 / Sale / 1006.0 / EPI=77.75 / source=run_context.csv
+Sea Trader | 2025-09-10 | SPORTSBET SANDOWN HILLSIDE | 1300 | candidates=3
+  nearest=2026-02-11 / Sale / 1006.0 / EPI=77.75 / source=run_context.csv | 2026-02-27 / Southside Cranbourne / 1200.0 / EPI=59.64 / source=run_context.csv | 2026-03-14 / Caulfield / 1200.0 / EPI=43.75 / source=run_context.csv
+Sea Trader | 2025-08-19 | BENDIGO | 800 | candidates=3
+  nearest=2026-02-11 / Sale / 1006.0 / EPI=77.75 / source=run_context.csv | 2026-02-27 / Southside Cranbourne / 1200.0 / EPI=59.64 / source=run_context.csv | 2026-03-14 / Caulfield / 1200.0 / EPI=43.75 / source=run_context.csv
+Audio Pop Cam | 2026-06-24 | SPORTSBET-BALLARAT | 1200 | candidates=3
+  nearest=2026-01-10 / Flemington / 1100.0 / EPI=52.62 / source=run_context.csv | 2025-12-22 / Sportsbet-Wangaratta / 1170.0 / EPI=83.93 / source=run_context.csv | 2025-11-14 / Ladbrokes Geelong / 1107.0 / EPI=60.94 / source=run_context.csv
+Audio Pop Cam | 2025-08-23 | THE VALLEY | 1200 | candidates=3
+  nearest=2025-11-14 / Ladbrokes Geelong / 1107.0 / EPI=60.94 / source=run_context.csv | 2025-12-22 / Sportsbet-Wangaratta / 1170.0 / EPI=83.93 / source=run_context.csv | 2026-01-10 / Flemington / 1100.0 / EPI=52.62 / source=run_context.csv
+
+DETAIL_CSV=C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\FORM_GUIDE_HISTORICAL_EPI_MISMATCH_DETAIL_AUDIT.csv
+
+EDGEIQ_FORM_GUIDE_HISTORICAL_EPI_MISMATCH_DETAIL_AUDIT_PASS

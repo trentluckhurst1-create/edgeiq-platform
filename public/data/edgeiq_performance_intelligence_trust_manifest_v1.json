@@ -1,0 +1,114 @@
+{
+  "program_status": "EDGEIQ_PERFORMANCE_INTELLIGENCE_LIVE_PARTIAL_HISTORICAL_COVERAGE",
+  "run_timestamp_utc": "2026-07-23T03:03:52Z",
+  "methodology_approval_reference": "docs/performance-intelligence/horse-performance-rating/method-governance/EDGEIQ_HORSE_RATING_METHODOLOGY_OWNER_APPROVAL_V1.md",
+  "source_versions": {
+    "normalisation": "HPR-NORM-A-v1",
+    "aggregation": "HPR-AGG-B-v1"
+  },
+  "parameter_versions": {
+    "normalisation": "HPR-NORM-A-v1",
+    "aggregation": "HPR-AGG-B-v1"
+  },
+  "parameter_values": {
+    "centre_value_source_precision": "-0.193589285714",
+    "scale_value_source_precision": "1.637341550205",
+    "centre_value_fact": "-0.193589",
+    "scale_value_fact": "1.637342",
+    "minimum_observations": "5",
+    "maximum_observations": "20",
+    "lookback_days": "730",
+    "half_life_days": "120"
+  },
+  "source_hashes": {
+    "normalisation_source": "382eb7ca17eef645ec747d2cc0034c0851bac76e27b43f2e143ab5af2e4f26a9",
+    "normalisation_parameter": "27632213486a86df4675219db8a1d4476c2b69d2052bda4d36100c2c753b35e0",
+    "aggregation_source": "27cc5486536af26f2d5b2c307b05d1ee56d9cba25689d3889767f4b5fbe7910b",
+    "aggregation_parameter": "40f0ee6316aa0689733abb3071a11abe8fcbb4fd0ca442c42309b10b65cbf3d0",
+    "historical_pi": "e12c12e6b9893a80d9d6f886e7a7e04394c622ae5d3848f30921fb5e130932d0",
+    "normalisation": "25d7d2c3ba29d68f893de8658fd20ad6142ac4dfb3655c7eadb9f5b36fdbf349",
+    "rating_base": "f0086d4ddd82a8e8dbf2ce4c18f37cfb23602e3df7b9c26f546e3b139fd3b12d",
+    "identity_map": "78f2d05eec6820c693b62362b643c4c2ddc4a0b59fe096961027d4f23f29e0cf",
+    "observation": "796599c5c0a945bb38323ea60ae87718cffc5a32de0823781a6fbbbbe673d6e4",
+    "aggregate": "5f965f037e05c3749add26cdbf674e29aae04ba76e03d98d8637e7b8c9ada7e9",
+    "horse_rating": "ed4eff644e2ec0fe2ac16da7710653997363bcac93470b1b93a19d780536ed0d",
+    "live_entries": "812478a08e5f6014611109ead277d4c263b4916c2863f0dd2c3b8b88f5d3983b",
+    "live_rating_match": "52eacfffbba397be7182d74f5c8440e53332fd1adcf4767bfbfdf09bf16b1f5f",
+    "projected_performance": "2d7996a050856e252e6639bdb6569f9cff9b49442cf8ee5cbc676c92fc92fc54",
+    "epi": "1ce983a236e648cf7ecbead42c8e9d2024a6fbeb30dc2c059401a567a34cd7e9",
+    "epi_component": "9ffd4fcf3f417b63be3ece04f1c6c7a6a48f3fd7c5a678583831095bbfec7295",
+    "epi_ordering": "8c3bf9ff6de325a85b0facfd47aaf78d2d50df75f06f6214f2b2abcbe09ca81c",
+    "epi_distribution": "10ffd12d2ead10701e87856ed5b9602bacac1c901601008858a7ca7c1ae429b9"
+  },
+  "row_counts_by_stage": {
+    "normalisation_source": 1,
+    "normalisation_parameter": 1,
+    "aggregation_source": 1,
+    "aggregation_parameter": 1,
+    "historical_pi": 168,
+    "normalisation": 168,
+    "rating_base": 168,
+    "identity_map": 24,
+    "observation": 168,
+    "aggregate": 24,
+    "horse_rating": 24,
+    "live_entries": 204,
+    "live_rating_match": 204,
+    "projected_performance": 0,
+    "epi": 0,
+    "epi_component": 0,
+    "epi_ordering": 0,
+    "epi_distribution": 0
+  },
+  "identity_coverage": {
+    "historical_identity_rows": 24,
+    "expected_historical_identities": 24,
+    "result": "PASS"
+  },
+  "live_coverage": {
+    "live_entries": 204,
+    "active_entries": 188,
+    "active_horses_with_ratings": 1,
+    "active_horses_without_ratings": 187,
+    "projected_performance_rows": 0,
+    "epi_rows": 0
+  },
+  "temporal_leakage_result": "PASS_HISTORICAL_CHAIN_AND_LIVE_MATCH_STRICT_PRIOR",
+  "duplicate_key_result": "PASS_HISTORICAL_INTEGRITY_AUDIT",
+  "formula_recomputation_result": "PASS_HISTORICAL_INTEGRITY_AUDIT",
+  "deterministic_rerun_result": "PASS",
+  "candidate_promotion_result": "PASS_FOR_PARAMETER_SOURCES_AND_HORSE_RATING_CANDIDATE",
+  "last_valid_output_preservation_result": "PASS_NO_UPSTREAM_DELETION_AFTER_DOWNSTREAM_UNAVAILABILITY",
+  "consumer_audit_result": "DATA_COVERAGE_PARTIAL_PROJECTED_PERFORMANCE_AND_EPI_UNAVAILABLE",
+  "validation": {
+    "python_compile": "PASS",
+    "typescript": "PASS",
+    "vite": "PASS_3M05S_WITH_CHUNK_SIZE_WARNING",
+    "smoke": "PASS"
+  },
+  "known_limitations": [
+    "Only 1 of 188 active live entries has a governed strictly-prior horse rating under current historical coverage.",
+    "Projected performance remains unavailable because suitability/context inputs are zero and older snapshot builder does not match current race-entry schema.",
+    "EPI remains unavailable because projected-performance inputs are zero."
+  ],
+  "production_files": {
+    "normalisation_source": "C:/Users/trent/OneDrive/Documents/EDGEIQ_PLATFORM/config/performance-intelligence/edgeiq_performance_normalisation_parameter_source_v1.csv",
+    "normalisation_parameter": "C:/Users/trent/OneDrive/Documents/EDGEIQ_PLATFORM/public/data/edgeiq_performance_normalisation_parameter_fact_v1.csv",
+    "aggregation_source": "C:/Users/trent/OneDrive/Documents/EDGEIQ_PLATFORM/config/performance-intelligence/edgeiq_horse_performance_aggregation_parameter_source_v1.csv",
+    "aggregation_parameter": "C:/Users/trent/OneDrive/Documents/EDGEIQ_PLATFORM/public/data/edgeiq_horse_performance_aggregation_parameter_fact_v1.csv",
+    "historical_pi": "C:/Users/trent/OneDrive/Documents/EDGEIQ_PLATFORM/public/data/edgeiq_performance_intelligence_base_fact_v1.csv",
+    "normalisation": "C:/Users/trent/OneDrive/Documents/EDGEIQ_PLATFORM/public/data/edgeiq_performance_normalisation_fact_v1.csv",
+    "rating_base": "C:/Users/trent/OneDrive/Documents/EDGEIQ_PLATFORM/public/data/edgeiq_performance_rating_base_fact_v1.csv",
+    "identity_map": "C:/Users/trent/OneDrive/Documents/EDGEIQ_PLATFORM/config/performance-intelligence/edgeiq_horse_performance_identity_map_v1.csv",
+    "observation": "C:/Users/trent/OneDrive/Documents/EDGEIQ_PLATFORM/public/data/edgeiq_horse_performance_observation_fact_v1.csv",
+    "aggregate": "C:/Users/trent/OneDrive/Documents/EDGEIQ_PLATFORM/public/data/edgeiq_horse_performance_aggregate_fact_v1.csv",
+    "horse_rating": "C:/Users/trent/OneDrive/Documents/EDGEIQ_PLATFORM/public/data/edgeiq_horse_performance_rating_fact_v1.csv",
+    "live_entries": "C:/Users/trent/OneDrive/Documents/EDGEIQ_PLATFORM/public/data/edgeiq_race_entry_fact_v1.csv",
+    "live_rating_match": "C:/Users/trent/OneDrive/Documents/EDGEIQ_PLATFORM/public/data/edgeiq_live_horse_performance_rating_match_v1.csv",
+    "projected_performance": "C:/Users/trent/OneDrive/Documents/EDGEIQ_PLATFORM/public/data/edgeiq_race_entry_projected_performance_fact_v1.csv",
+    "epi": "C:/Users/trent/OneDrive/Documents/EDGEIQ_PLATFORM/public/data/edgeiq_race_entry_epi_fact_v1.csv",
+    "epi_component": "C:/Users/trent/OneDrive/Documents/EDGEIQ_PLATFORM/public/data/edgeiq_race_entry_epi_component_fact_v1.csv",
+    "epi_ordering": "C:/Users/trent/OneDrive/Documents/EDGEIQ_PLATFORM/public/data/edgeiq_race_entry_epi_ordering_fact_v1.csv",
+    "epi_distribution": "C:/Users/trent/OneDrive/Documents/EDGEIQ_PLATFORM/public/data/edgeiq_race_epi_distribution_fact_v1.csv"
+  }
+}

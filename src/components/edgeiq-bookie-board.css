@@ -1,0 +1,303 @@
+.edgeiq-bookie-board {
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  background:
+    radial-gradient(circle at top left, rgba(16, 185, 129, 0.09), transparent 30%),
+    linear-gradient(180deg, #07110d 0%, #050b09 100%);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+}
+
+.edgeiq-bookie-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 7px 9px;
+  border-bottom: 1px solid rgba(16, 185, 129, 0.18);
+  background: rgba(0, 0, 0, 0.24);
+}
+
+.edgeiq-bookie-kicker {
+  color: #5eead4;
+  font-size: 10px;
+  font-weight: 950;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.edgeiq-bookie-sub {
+  margin-top: 4px;
+  color: #7890a6;
+  font-size: 11px;
+}
+
+.edgeiq-bookie-market-meta {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(90px, 1fr));
+  gap: 8px;
+  min-width: 360px;
+}
+
+.edgeiq-bookie-market-meta div {
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  background: rgba(15, 23, 42, 0.55);
+  border-radius: 10px;
+  padding: 7px 9px;
+}
+
+.edgeiq-bookie-market-meta span {
+  display: block;
+  color: #64748b;
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: 0.22em;
+}
+
+.edgeiq-bookie-market-meta strong {
+  display: block;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 950;
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.edgeiq-bookie-table {
+  width: 100%;
+}
+
+.edgeiq-bookie-row {
+  display: grid;
+  grid-template-columns: 54px minmax(210px, 1.45fr) 150px 110px 82px 82px 88px 88px 90px 132px;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.095);
+  background: transparent;
+  color: #dbeafe;
+  text-align: left;
+}
+
+.edgeiq-bookie-header {
+  min-height: 32px;
+  padding: 0 12px;
+  color: #8aa2bb;
+  font-size: 9px;
+  font-weight: 950;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  background: rgba(15, 23, 42, 0.58);
+}
+
+.edgeiq-bookie-runner {
+  min-height: 54px;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: background 120ms ease, transform 120ms ease;
+}
+
+.edgeiq-bookie-runner:nth-child(odd) {
+  background: rgba(255, 255, 255, 0.018);
+}
+
+.edgeiq-bookie-runner:hover,
+.edgeiq-bookie-runner.selected {
+  background: rgba(16, 185, 129, 0.09);
+}
+
+.edgeiq-bookie-rank {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  background: rgba(15, 23, 42, 0.8);
+  color: #cbd5e1;
+  font-size: 13px;
+  font-weight: 950;
+}
+
+.edgeiq-bookie-rank.fav {
+  border-color: rgba(34, 197, 94, 0.5);
+  background: rgba(34, 197, 94, 0.17);
+  color: #86efac;
+}
+
+.edgeiq-bookie-rank.live {
+  border-color: rgba(45, 212, 191, 0.32);
+  background: rgba(45, 212, 191, 0.12);
+  color: #5eead4;
+}
+
+.edgeiq-bookie-horse strong {
+  display: block;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 950;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.edgeiq-bookie-horse span {
+  display: block;
+  margin-top: 2px;
+  color: #6f87a2;
+  font-size: 10px;
+  font-weight: 800;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.edgeiq-bookie-map {
+  color: #9fb2c7;
+  font-size: 10px;
+  font-weight: 850;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.edgeiq-bookie-flucs {
+  display: flex;
+  align-items: center;
+}
+
+.edgeiq-bookie-spark {
+  width: 86px;
+  height: 25px;
+}
+
+.edgeiq-bookie-spark polyline {
+  fill: none;
+  stroke: #34d399;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.edgeiq-bookie-spark.drift polyline {
+  stroke: #fb7185;
+}
+
+.edgeiq-bookie-spark.flat polyline {
+  stroke: #94a3b8;
+}
+
+.edgeiq-bookie-price {
+  text-align: right;
+  font-size: 19px;
+  font-weight: 950;
+  letter-spacing: -0.04em;
+  color: #e5eef9;
+}
+
+.edgeiq-bookie-price.muted {
+  color: #91a4b9;
+  font-size: 17px;
+}
+
+.edgeiq-bookie-price.now {
+  color: #ffffff;
+  font-size: 22px;
+}
+
+.edgeiq-bookie-price.fair {
+  color: #a7f3d0;
+  font-size: 15px;
+}
+
+.edgeiq-bookie-row .edge {
+  text-align: right;
+  font-size: 12px;
+  font-weight: 950;
+}
+
+.edgeiq-bookie-row .edge.hot {
+  color: #34d399;
+}
+
+.edgeiq-bookie-row .edge.positive {
+  color: #a3e635;
+}
+
+.edgeiq-bookie-row .edge.small {
+  color: #cbd5e1;
+}
+
+.edgeiq-bookie-row .edge.negative {
+  color: #fb7185;
+}
+
+.edgeiq-bookie-row .edge.flat {
+  color: #64748b;
+}
+
+.edgeiq-bookie-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 126px;
+  min-width: 62px;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  background: rgba(15, 23, 42, 0.68);
+  border-radius: 9px;
+  padding: 5px 8px;
+  color: #cbd5e1;
+  font-size: 9px;
+  font-weight: 950;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.edgeiq-bookie-action.execute {
+  border-color: rgba(16, 185, 129, 0.42);
+  background: rgba(16, 185, 129, 0.18);
+  color: #6ee7b7;
+}
+
+.edgeiq-bookie-action.watch {
+  border-color: rgba(34, 211, 238, 0.35);
+  background: rgba(34, 211, 238, 0.12);
+  color: #67e8f9;
+}
+
+.edgeiq-bookie-action.cut {
+  border-color: rgba(251, 113, 133, 0.32);
+  background: rgba(251, 113, 133, 0.11);
+  color: #fda4af;
+}
+
+.edgeiq-bookie-action.underlay,
+.edgeiq-bookie-action.pass {
+  color: #94a3b8;
+}
+
+.edgeiq-bookie-empty {
+  padding: 28px 14px;
+  color: #64748b;
+  font-size: 12px;
+}
+
+@media (max-width: 1280px) {
+  .edgeiq-bookie-row {
+    grid-template-columns: 46px minmax(180px, 1.4fr) 110px 92px 70px 70px 78px 78px 78px 104px;
+  }
+
+  .edgeiq-bookie-price.now {
+    font-size: 15px;
+  }
+}
+

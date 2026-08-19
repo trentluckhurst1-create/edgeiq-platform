@@ -1,0 +1,600 @@
+EDGEIQ MEETING UNIVERSE BUILDER TRACE
+========================================================================================================================
+FILE=C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\build_edgeiq_vic_three_day_meeting_universe.py
+
+========================================================================================================================
+KEYWORD=read_csv
+--- Around line 255 ---
+00249:             return ""
+00250:         return f"{value_float:.4f}".rstrip("0").rstrip(".")
+00251:     except ValueError:
+00252:         return text
+00253: 
+00254: 
+00255: def read_csv(path: Path) -> list[dict[str, str]]:
+00256:     if not path.exists():
+00257:         return []
+00258:     try:
+00259:         with path.open("r", newline="", encoding="utf-8-sig") as handle:
+00260:             return list(csv.DictReader(handle))
+00261:     except Exception:
+00262:         return []
+00263: 
+--- Around line 407 ---
+00401:     stale_removed = 0
+00402:     outside_window_removed = 0
+00403:     undated_removed = 0
+00404:     off_calendar_removed = 0
+00405: 
+00406:     for path in FIELD_SOURCES:
+00407:         for row in read_csv(path):
+00408:             if not is_vic(row):
+00409:                 continue
+00410: 
+00411:             date_value = parse_date(
+00412:                 first(row, ["race_date", "date", "meeting_date", "race_date_rated", "date_rated"])
+00413:             )
+00414:             if date_value is None:
+00415:                 undated_removed += 1
+--- Around line 540 ---
+00534:                 target[field] = value
+00535:                 continue
+00536:             if not clean(target.get(field)):
+00537:                 target[field] = value
+00538: 
+00539:     for path in paths:
+00540:         for row in read_csv(path):
+00541:             key = key_for(row)
+00542:             loose_key = loose_key_for(row)
+00543:             if key[0] and key[1] and key[2] and key[3]:
+00544:                 exact.setdefault(key, {})
+00545:                 enrich(exact[key], row)
+00546:             if loose_key[0] and loose_key[1] and loose_key[2]:
+00547:                 loose.setdefault(loose_key, {})
+00548:                 enrich(loose[loose_key], row)
+
+========================================================================================================================
+KEYWORD=DictReader
+--- Around line 260 ---
+00254: 
+00255: def read_csv(path: Path) -> list[dict[str, str]]:
+00256:     if not path.exists():
+00257:         return []
+00258:     try:
+00259:         with path.open("r", newline="", encoding="utf-8-sig") as handle:
+00260:             return list(csv.DictReader(handle))
+00261:     except Exception:
+00262:         return []
+00263: 
+00264: 
+00265: def write_csv(path: Path, rows: list[dict[str, object]], fields: list[str]) -> None:
+00266:     path.parent.mkdir(parents=True, exist_ok=True)
+00267:     tmp = path.with_name(f"{path.stem}.{int(datetime.now().timestamp() * 1000)}.tmp")
+00268:     with tmp.open("w", newline="", encoding="utf-8") as handle:
+
+========================================================================================================================
+KEYWORD=edgeiq_live_runner_board
+--- Around line 34 ---
+00028: DIAG_OUT = DATA / "edgeiq_vic_three_day_meeting_diagnostics.csv"
+00029: 
+00030: FIELD_SOURCES = [
+00031:     DATA / "race_card_report.csv",
+00032:     DATA / "race_fields.csv",
+00033:     DATA / "edgeiq_vic_live_fields_synced.csv",
+00034:     DATA / "edgeiq_live_runner_board_v1.csv",
+00035: ]
+00036: 
+00037: PRICE_SOURCES = [
+00038:     DATA / "edgeiq_vic_live_terminal_feed_v1.csv",
+00039:     DATA / "edgeiq_live_runner_board_v1.csv",
+00040:     DATA / "edgeiq_live_terminal_feed_v1.csv",
+00041: ]
+00042: 
+--- Around line 39 ---
+00033:     DATA / "edgeiq_vic_live_fields_synced.csv",
+00034:     DATA / "edgeiq_live_runner_board_v1.csv",
+00035: ]
+00036: 
+00037: PRICE_SOURCES = [
+00038:     DATA / "edgeiq_vic_live_terminal_feed_v1.csv",
+00039:     DATA / "edgeiq_live_runner_board_v1.csv",
+00040:     DATA / "edgeiq_live_terminal_feed_v1.csv",
+00041: ]
+00042: 
+00043: MERGE_SOURCES = [
+00044:     DATA / "edgeiq_market_truth_engine_v3.csv",
+00045:     DATA / "edgeiq_execution_suppression_v2.csv",
+00046:     DATA / "edgeiq_clv_memory.csv",
+00047:     DATA / "edgeiq_race_state_engine.csv",
+
+========================================================================================================================
+KEYWORD=edgeiq_live_runner_board_governed
+NOT FOUND
+
+========================================================================================================================
+KEYWORD=edgeiq_vic_live_fields_synced
+--- Around line 33 ---
+00027: FIELDS_OUT = DATA / "edgeiq_vic_three_day_race_fields.csv"
+00028: DIAG_OUT = DATA / "edgeiq_vic_three_day_meeting_diagnostics.csv"
+00029: 
+00030: FIELD_SOURCES = [
+00031:     DATA / "race_card_report.csv",
+00032:     DATA / "race_fields.csv",
+00033:     DATA / "edgeiq_vic_live_fields_synced.csv",
+00034:     DATA / "edgeiq_live_runner_board_v1.csv",
+00035: ]
+00036: 
+00037: PRICE_SOURCES = [
+00038:     DATA / "edgeiq_vic_live_terminal_feed_v1.csv",
+00039:     DATA / "edgeiq_live_runner_board_v1.csv",
+00040:     DATA / "edgeiq_live_terminal_feed_v1.csv",
+00041: ]
+--- Around line 370 ---
+00364: 
+00365: def source_priority(path: Path) -> int:
+00366:     if path.name == "race_card_report.csv":
+00367:         return 1
+00368:     if path.name == "race_fields.csv":
+00369:         return 2
+00370:     if path.name == "edgeiq_vic_live_fields_synced.csv":
+00371:         return 3
+00372:     return 4
+00373: 
+00374: 
+00375: def meeting_status(day_bucket: str, field_rows: int) -> str:
+00376:     if field_rows > 0:
+00377:         return "FIELDS_READY"
+00378:     if day_bucket == "TODAY":
+
+========================================================================================================================
+KEYWORD=edgeiq_graphql_getRacesForMeet_meeting_warehouse_v1
+NOT FOUND
+
+========================================================================================================================
+KEYWORD=edgeiq_graphql_master_v2
+NOT FOUND
+
+========================================================================================================================
+KEYWORD=edgeiq_vic_three_day_meeting_universe.csv
+--- Around line 26 ---
+00020:     write_calendar_output,
+00021: )
+00022: 
+00023: 
+00024: ROOT = Path(__file__).resolve().parents[1]
+00025: DATA = ROOT / "public" / "data"
+00026: UNIVERSE_OUT = DATA / "edgeiq_vic_three_day_meeting_universe.csv"
+00027: FIELDS_OUT = DATA / "edgeiq_vic_three_day_race_fields.csv"
+00028: DIAG_OUT = DATA / "edgeiq_vic_three_day_meeting_diagnostics.csv"
+00029: 
+00030: FIELD_SOURCES = [
+00031:     DATA / "race_card_report.csv",
+00032:     DATA / "race_fields.csv",
+00033:     DATA / "edgeiq_vic_live_fields_synced.csv",
+00034:     DATA / "edgeiq_live_runner_board_v1.csv",
+
+========================================================================================================================
+KEYWORD=barrier
+--- Around line 129 ---
+00123:     "track_condition",
+00124:     "rail_position",
+00125:     "horse_no",
+00126:     "saddlecloth",
+00127:     "horse",
+00128:     "horse_key",
+00129:     "barrier",
+00130:     "jockey",
+00131:     "trainer",
+00132:     "silkUrl",
+00133:     "silk_url",
+00134:     "local_silk_path",
+00135:     "is_scratched",
+00136:     "scratch_status",
+00137:     "runner_status",
+--- Around line 638 ---
+00632:         "track_condition": first(merged, ["track_condition", "track_condition_rated"]),
+00633:         "rail_position": first(merged, ["rail_position", "rail_position_rated", "rail", "railPosition"]),
+00634:         "horse_no": first(merged, ["horse_no", "saddlecloth", "number", "runner_number", "tab_no", "horse_no_rated"]),
+00635:         "saddlecloth": first(merged, ["saddlecloth", "horse_no", "number", "runner_number", "tab_no", "horse_no_rated"]),
+00636:         "horse": horse,
+00637:         "horse_key": hk,
+00638:         "barrier": first(merged, ["barrier", "barrier_rated", "gate", "bar"]),
+00639:         "jockey": first(merged, ["jockey", "jockey_rated"]),
+00640:         "trainer": first(merged, ["trainer", "trainer_rated"]),
+00641:         "silkUrl": first(merged, ["silkUrl", "silk_url", "local_silk_path", "mobile_silk_image", "silk", "silks"]),
+00642:         "silk_url": first(merged, ["silk_url", "silkUrl", "local_silk_path", "mobile_silk_image", "silk", "silks"]),
+00643:         "local_silk_path": first(merged, ["local_silk_path", "silk_url", "silkUrl"]),
+00644:         "is_scratched": "1" if scratch else "",
+00645:         "scratch_status": "SCRATCHED" if scratch else first(merged, ["scratch_status"]),
+00646:         "runner_status": "SCRATCHED" if scratch else first(merged, ["runner_status"]),
+
+========================================================================================================================
+KEYWORD=jockey
+--- Around line 130 ---
+00124:     "rail_position",
+00125:     "horse_no",
+00126:     "saddlecloth",
+00127:     "horse",
+00128:     "horse_key",
+00129:     "barrier",
+00130:     "jockey",
+00131:     "trainer",
+00132:     "silkUrl",
+00133:     "silk_url",
+00134:     "local_silk_path",
+00135:     "is_scratched",
+00136:     "scratch_status",
+00137:     "runner_status",
+00138:     "ui_price",
+--- Around line 639 ---
+00633:         "rail_position": first(merged, ["rail_position", "rail_position_rated", "rail", "railPosition"]),
+00634:         "horse_no": first(merged, ["horse_no", "saddlecloth", "number", "runner_number", "tab_no", "horse_no_rated"]),
+00635:         "saddlecloth": first(merged, ["saddlecloth", "horse_no", "number", "runner_number", "tab_no", "horse_no_rated"]),
+00636:         "horse": horse,
+00637:         "horse_key": hk,
+00638:         "barrier": first(merged, ["barrier", "barrier_rated", "gate", "bar"]),
+00639:         "jockey": first(merged, ["jockey", "jockey_rated"]),
+00640:         "trainer": first(merged, ["trainer", "trainer_rated"]),
+00641:         "silkUrl": first(merged, ["silkUrl", "silk_url", "local_silk_path", "mobile_silk_image", "silk", "silks"]),
+00642:         "silk_url": first(merged, ["silk_url", "silkUrl", "local_silk_path", "mobile_silk_image", "silk", "silks"]),
+00643:         "local_silk_path": first(merged, ["local_silk_path", "silk_url", "silkUrl"]),
+00644:         "is_scratched": "1" if scratch else "",
+00645:         "scratch_status": "SCRATCHED" if scratch else first(merged, ["scratch_status"]),
+00646:         "runner_status": "SCRATCHED" if scratch else first(merged, ["runner_status"]),
+00647:         "ui_price": "-" if scratch else live_price,
+
+========================================================================================================================
+KEYWORD=trainer
+--- Around line 131 ---
+00125:     "horse_no",
+00126:     "saddlecloth",
+00127:     "horse",
+00128:     "horse_key",
+00129:     "barrier",
+00130:     "jockey",
+00131:     "trainer",
+00132:     "silkUrl",
+00133:     "silk_url",
+00134:     "local_silk_path",
+00135:     "is_scratched",
+00136:     "scratch_status",
+00137:     "runner_status",
+00138:     "ui_price",
+00139:     "sportsbet_price",
+--- Around line 640 ---
+00634:         "horse_no": first(merged, ["horse_no", "saddlecloth", "number", "runner_number", "tab_no", "horse_no_rated"]),
+00635:         "saddlecloth": first(merged, ["saddlecloth", "horse_no", "number", "runner_number", "tab_no", "horse_no_rated"]),
+00636:         "horse": horse,
+00637:         "horse_key": hk,
+00638:         "barrier": first(merged, ["barrier", "barrier_rated", "gate", "bar"]),
+00639:         "jockey": first(merged, ["jockey", "jockey_rated"]),
+00640:         "trainer": first(merged, ["trainer", "trainer_rated"]),
+00641:         "silkUrl": first(merged, ["silkUrl", "silk_url", "local_silk_path", "mobile_silk_image", "silk", "silks"]),
+00642:         "silk_url": first(merged, ["silk_url", "silkUrl", "local_silk_path", "mobile_silk_image", "silk", "silks"]),
+00643:         "local_silk_path": first(merged, ["local_silk_path", "silk_url", "silkUrl"]),
+00644:         "is_scratched": "1" if scratch else "",
+00645:         "scratch_status": "SCRATCHED" if scratch else first(merged, ["scratch_status"]),
+00646:         "runner_status": "SCRATCHED" if scratch else first(merged, ["runner_status"]),
+00647:         "ui_price": "-" if scratch else live_price,
+00648:         "sportsbet_price": "-" if scratch else number_text(first(merged, ["sportsbet_price"])) or "-",
+
+========================================================================================================================
+KEYWORD=weight
+NOT FOUND
+
+========================================================================================================================
+KEYWORD=silk
+--- Around line 132 ---
+00126:     "saddlecloth",
+00127:     "horse",
+00128:     "horse_key",
+00129:     "barrier",
+00130:     "jockey",
+00131:     "trainer",
+00132:     "silkUrl",
+00133:     "silk_url",
+00134:     "local_silk_path",
+00135:     "is_scratched",
+00136:     "scratch_status",
+00137:     "runner_status",
+00138:     "ui_price",
+00139:     "sportsbet_price",
+00140:     "live_price",
+--- Around line 133 ---
+00127:     "horse",
+00128:     "horse_key",
+00129:     "barrier",
+00130:     "jockey",
+00131:     "trainer",
+00132:     "silkUrl",
+00133:     "silk_url",
+00134:     "local_silk_path",
+00135:     "is_scratched",
+00136:     "scratch_status",
+00137:     "runner_status",
+00138:     "ui_price",
+00139:     "sportsbet_price",
+00140:     "live_price",
+00141:     "market_price",
+--- Around line 134 ---
+00128:     "horse_key",
+00129:     "barrier",
+00130:     "jockey",
+00131:     "trainer",
+00132:     "silkUrl",
+00133:     "silk_url",
+00134:     "local_silk_path",
+00135:     "is_scratched",
+00136:     "scratch_status",
+00137:     "runner_status",
+00138:     "ui_price",
+00139:     "sportsbet_price",
+00140:     "live_price",
+00141:     "market_price",
+00142:     "fixed_win",
+--- Around line 641 ---
+00635:         "saddlecloth": first(merged, ["saddlecloth", "horse_no", "number", "runner_number", "tab_no", "horse_no_rated"]),
+00636:         "horse": horse,
+00637:         "horse_key": hk,
+00638:         "barrier": first(merged, ["barrier", "barrier_rated", "gate", "bar"]),
+00639:         "jockey": first(merged, ["jockey", "jockey_rated"]),
+00640:         "trainer": first(merged, ["trainer", "trainer_rated"]),
+00641:         "silkUrl": first(merged, ["silkUrl", "silk_url", "local_silk_path", "mobile_silk_image", "silk", "silks"]),
+00642:         "silk_url": first(merged, ["silk_url", "silkUrl", "local_silk_path", "mobile_silk_image", "silk", "silks"]),
+00643:         "local_silk_path": first(merged, ["local_silk_path", "silk_url", "silkUrl"]),
+00644:         "is_scratched": "1" if scratch else "",
+00645:         "scratch_status": "SCRATCHED" if scratch else first(merged, ["scratch_status"]),
+00646:         "runner_status": "SCRATCHED" if scratch else first(merged, ["runner_status"]),
+00647:         "ui_price": "-" if scratch else live_price,
+00648:         "sportsbet_price": "-" if scratch else number_text(first(merged, ["sportsbet_price"])) or "-",
+00649:         "live_price": "-" if scratch else number_text(first(merged, ["live_price"])) or live_price,
+--- Around line 642 ---
+00636:         "horse": horse,
+00637:         "horse_key": hk,
+00638:         "barrier": first(merged, ["barrier", "barrier_rated", "gate", "bar"]),
+00639:         "jockey": first(merged, ["jockey", "jockey_rated"]),
+00640:         "trainer": first(merged, ["trainer", "trainer_rated"]),
+00641:         "silkUrl": first(merged, ["silkUrl", "silk_url", "local_silk_path", "mobile_silk_image", "silk", "silks"]),
+00642:         "silk_url": first(merged, ["silk_url", "silkUrl", "local_silk_path", "mobile_silk_image", "silk", "silks"]),
+00643:         "local_silk_path": first(merged, ["local_silk_path", "silk_url", "silkUrl"]),
+00644:         "is_scratched": "1" if scratch else "",
+00645:         "scratch_status": "SCRATCHED" if scratch else first(merged, ["scratch_status"]),
+00646:         "runner_status": "SCRATCHED" if scratch else first(merged, ["runner_status"]),
+00647:         "ui_price": "-" if scratch else live_price,
+00648:         "sportsbet_price": "-" if scratch else number_text(first(merged, ["sportsbet_price"])) or "-",
+00649:         "live_price": "-" if scratch else number_text(first(merged, ["live_price"])) or live_price,
+00650:         "market_price": "-" if scratch else number_text(first(merged, ["market_price"])) or live_price,
+--- Around line 643 ---
+00637:         "horse_key": hk,
+00638:         "barrier": first(merged, ["barrier", "barrier_rated", "gate", "bar"]),
+00639:         "jockey": first(merged, ["jockey", "jockey_rated"]),
+00640:         "trainer": first(merged, ["trainer", "trainer_rated"]),
+00641:         "silkUrl": first(merged, ["silkUrl", "silk_url", "local_silk_path", "mobile_silk_image", "silk", "silks"]),
+00642:         "silk_url": first(merged, ["silk_url", "silkUrl", "local_silk_path", "mobile_silk_image", "silk", "silks"]),
+00643:         "local_silk_path": first(merged, ["local_silk_path", "silk_url", "silkUrl"]),
+00644:         "is_scratched": "1" if scratch else "",
+00645:         "scratch_status": "SCRATCHED" if scratch else first(merged, ["scratch_status"]),
+00646:         "runner_status": "SCRATCHED" if scratch else first(merged, ["runner_status"]),
+00647:         "ui_price": "-" if scratch else live_price,
+00648:         "sportsbet_price": "-" if scratch else number_text(first(merged, ["sportsbet_price"])) or "-",
+00649:         "live_price": "-" if scratch else number_text(first(merged, ["live_price"])) or live_price,
+00650:         "market_price": "-" if scratch else number_text(first(merged, ["market_price"])) or live_price,
+00651:         "fixed_win": "-" if scratch else number_text(first(merged, ["fixed_win"])) or live_price,
+
+========================================================================================================================
+KEYWORD=market
+--- Around line 44 ---
+00038:     DATA / "edgeiq_vic_live_terminal_feed_v1.csv",
+00039:     DATA / "edgeiq_live_runner_board_v1.csv",
+00040:     DATA / "edgeiq_live_terminal_feed_v1.csv",
+00041: ]
+00042: 
+00043: MERGE_SOURCES = [
+00044:     DATA / "edgeiq_market_truth_engine_v3.csv",
+00045:     DATA / "edgeiq_execution_suppression_v2.csv",
+00046:     DATA / "edgeiq_clv_memory.csv",
+00047:     DATA / "edgeiq_race_state_engine.csv",
+00048:     DATA / "edgeiq_real_speed_map_positions.csv",
+00049: ]
+00050: 
+00051: LOCAL_TZ = TIMEZONE
+00052: 
+--- Around line 141 ---
+00135:     "is_scratched",
+00136:     "scratch_status",
+00137:     "runner_status",
+00138:     "ui_price",
+00139:     "sportsbet_price",
+00140:     "live_price",
+00141:     "market_price",
+00142:     "fixed_win",
+00143:     "rated_price",
+00144:     "ui_fair_price",
+00145:     "edge_pct",
+00146:     "ui_edge_pct",
+00147:     "truth_grade",
+00148:     "market_confidence",
+00149:     "liquidity_grade",
+--- Around line 148 ---
+00142:     "fixed_win",
+00143:     "rated_price",
+00144:     "ui_fair_price",
+00145:     "edge_pct",
+00146:     "ui_edge_pct",
+00147:     "truth_grade",
+00148:     "market_confidence",
+00149:     "liquidity_grade",
+00150:     "fake_overlay_flag",
+00151:     "late_drift_risk",
+00152:     "execution_trust_score",
+00153:     "suppression_action",
+00154:     "suppression_reason",
+00155:     "clv_expectation",
+00156:     "open_price",
+--- Around line 505 ---
+00499:             if not clean(value):
+00500:                 continue
+00501:             if field in {
+00502:                 "ui_price",
+00503:                 "sportsbet_price",
+00504:                 "live_price",
+00505:                 "market_price",
+00506:                 "fixed_win",
+00507:                 "rated_price",
+00508:                 "ui_fair_price",
+00509:                 "edge_pct",
+00510:                 "ui_edge_pct",
+00511:                 "truth_grade",
+00512:                 "market_confidence",
+00513:                 "liquidity_grade",
+--- Around line 512 ---
+00506:                 "fixed_win",
+00507:                 "rated_price",
+00508:                 "ui_fair_price",
+00509:                 "edge_pct",
+00510:                 "ui_edge_pct",
+00511:                 "truth_grade",
+00512:                 "market_confidence",
+00513:                 "liquidity_grade",
+00514:                 "fake_overlay_flag",
+00515:                 "late_drift_risk",
+00516:                 "execution_trust_score",
+00517:                 "suppression_action",
+00518:                 "suppression_reason",
+00519:                 "clv_expectation",
+00520:                 "open_price",
+--- Around line 574 ---
+00568:             if clean(value) and not clean(merged.get(key)):
+00569:                 merged[key] = value
+00570:             if key in {
+00571:                 "ui_price",
+00572:                 "sportsbet_price",
+00573:                 "live_price",
+00574:                 "market_price",
+00575:                 "fixed_win",
+00576:                 "rated_price",
+00577:                 "ui_fair_price",
+00578:                 "edge_pct",
+00579:                 "ui_edge_pct",
+00580:                 "truth_grade",
+00581:                 "market_confidence",
+00582:                 "liquidity_grade",
+--- Around line 581 ---
+00575:                 "fixed_win",
+00576:                 "rated_price",
+00577:                 "ui_fair_price",
+00578:                 "edge_pct",
+00579:                 "ui_edge_pct",
+00580:                 "truth_grade",
+00581:                 "market_confidence",
+00582:                 "liquidity_grade",
+00583:                 "fake_overlay_flag",
+00584:                 "late_drift_risk",
+00585:                 "execution_trust_score",
+00586:                 "suppression_action",
+00587:                 "suppression_reason",
+00588:                 "clv_expectation",
+00589:                 "open_price",
+--- Around line 609 ---
+00603:     status = meeting_status(str(calendar_row.get("day_bucket", "")), field_rows_by_meeting.get(meeting_key, 0))
+00604:     dashboard_ready = dashboard_ready_value(status)
+00605: 
+00606:     race_time, minutes = race_datetime(merged, parse_date(race_date) or now_local().date())
+00607:     horse = first(merged, ["horse", "runner", "horse_name", "runner_name", "horse_rated"])
+00608:     scratch = boolish(first(merged, ["is_scratched", "scratched", "scratch_status", "runner_status", "status"]))
+00609:     live_price = number_text(first(merged, ["ui_price", "sportsbet_price", "live_price", "market_price", "fixed_win"])) or "-"
+00610:     fair_price = number_text(first(merged, ["ui_fair_price", "rated_price", "fair_price"])) or "-"
+00611:     edge = number_text(first(merged, ["ui_edge_pct", "edge_pct", "overlay_pct"])) or "-"
+00612:     hk = horse_key(first(merged, ["horse_key", "_horse_key", "horse", "runner", "horse_name", "horse_rated"]))
+00613: 
+00614:     return {
+00615:         "built_at": now_local().isoformat(timespec="seconds"),
+00616:         "meeting_key": meeting_key,
+00617:         "race_key": canonical_race_key(race_date, track, rn),
+--- Around line 650 ---
+00644:         "is_scratched": "1" if scratch else "",
+00645:         "scratch_status": "SCRATCHED" if scratch else first(merged, ["scratch_status"]),
+00646:         "runner_status": "SCRATCHED" if scratch else first(merged, ["runner_status"]),
+00647:         "ui_price": "-" if scratch else live_price,
+00648:         "sportsbet_price": "-" if scratch else number_text(first(merged, ["sportsbet_price"])) or "-",
+00649:         "live_price": "-" if scratch else number_text(first(merged, ["live_price"])) or live_price,
+00650:         "market_price": "-" if scratch else number_text(first(merged, ["market_price"])) or live_price,
+00651:         "fixed_win": "-" if scratch else number_text(first(merged, ["fixed_win"])) or live_price,
+00652:         "rated_price": "-" if scratch else fair_price,
+00653:         "ui_fair_price": "-" if scratch else fair_price,
+00654:         "edge_pct": "-" if scratch else edge,
+00655:         "ui_edge_pct": "-" if scratch else edge,
+00656:         "truth_grade": "-" if scratch else first(merged, ["truth_grade"]) or "-",
+00657:         "market_confidence": "-" if scratch else first(merged, ["market_confidence"]) or "-",
+00658:         "liquidity_grade": "-" if scratch else first(merged, ["liquidity_grade"]) or "-",
+--- Around line 657 ---
+00651:         "fixed_win": "-" if scratch else number_text(first(merged, ["fixed_win"])) or live_price,
+00652:         "rated_price": "-" if scratch else fair_price,
+00653:         "ui_fair_price": "-" if scratch else fair_price,
+00654:         "edge_pct": "-" if scratch else edge,
+00655:         "ui_edge_pct": "-" if scratch else edge,
+00656:         "truth_grade": "-" if scratch else first(merged, ["truth_grade"]) or "-",
+00657:         "market_confidence": "-" if scratch else first(merged, ["market_confidence"]) or "-",
+00658:         "liquidity_grade": "-" if scratch else first(merged, ["liquidity_grade"]) or "-",
+00659:         "fake_overlay_flag": "-" if scratch else first(merged, ["fake_overlay_flag"]) or "-",
+00660:         "late_drift_risk": "-" if scratch else first(merged, ["late_drift_risk"]) or "-",
+00661:         "execution_trust_score": "-" if scratch else first(merged, ["execution_trust_score"]) or "-",
+00662:         "suppression_action": "SCRATCHED" if scratch else first(merged, ["suppression_action", "ui_action", "execution_action"]) or "-",
+00663:         "suppression_reason": "SCRATCHED" if scratch else first(merged, ["suppression_reason"]) or "-",
+00664:         "clv_expectation": "-" if scratch else first(merged, ["clv_expectation", "clv_expected"]) or "-",
+00665:         "open_price": "-" if scratch else first(merged, ["open_price"]) or "-",
+--- Around line 668 ---
+00662:         "suppression_action": "SCRATCHED" if scratch else first(merged, ["suppression_action", "ui_action", "execution_action"]) or "-",
+00663:         "suppression_reason": "SCRATCHED" if scratch else first(merged, ["suppression_reason"]) or "-",
+00664:         "clv_expectation": "-" if scratch else first(merged, ["clv_expectation", "clv_expected"]) or "-",
+00665:         "open_price": "-" if scratch else first(merged, ["open_price"]) or "-",
+00666:         "mid_price": "-" if scratch else first(merged, ["mid_price"]) or "-",
+00667:         "close_price": "-" if scratch else first(merged, ["close_price"]) or "-",
+00668:         "flucs": "-" if scratch else first(merged, ["flucs", "market_fluctuations", "price_fluctuations", "fixed_odds_flucs", "odds_flucs"]) or "-",
+00669:         "last10": first(merged, ["last10", "last_10"]),
+00670:         "last_10": first(merged, ["last_10", "last10"]),
+00671:         "speed_map_bucket": first(merged, ["speed_map_bucket"]),
+00672:         "map_position": first(merged, ["map_position", "settling_position"]),
+00673:         "run_style": first(merged, ["run_style", "run_style_cluster", "proxy_energy_archetype"]),
+00674:         "pace_profile": first(merged, ["pace_profile", "tempo_role"]),
+00675:         "settling_band": first(merged, ["settling_band"]),
+00676:         "map_x_pct": first(merged, ["map_x_pct"]),
+--- Around line 776 ---
+00770:                 "",
+00771:                 "",
+00772:                 "",
+00773:                 "",
+00774:                 "",
+00775:                 sum(1 for row in universe_rows if clean(row.get("ui_price")) not in {"", "-"} and clean(row.get("is_scratched")) != "1"),
+00776:                 "runner_rows_with_market_price",
+00777:             ),
+00778:         ]
+00779:     )
+00780:     return diagnostics
+00781: 
+00782: 
+00783: def main() -> None:
+00784:     DATA.mkdir(parents=True, exist_ok=True)
+
+========================================================================================================================
+KEYWORD=to_csv
+NOT FOUND
+
+========================================================================================================================
+KEYWORD=DictWriter
+--- Around line 269 ---
+00263: 
+00264: 
+00265: def write_csv(path: Path, rows: list[dict[str, object]], fields: list[str]) -> None:
+00266:     path.parent.mkdir(parents=True, exist_ok=True)
+00267:     tmp = path.with_name(f"{path.stem}.{int(datetime.now().timestamp() * 1000)}.tmp")
+00268:     with tmp.open("w", newline="", encoding="utf-8") as handle:
+00269:         writer = csv.DictWriter(handle, fieldnames=fields, extrasaction="ignore")
+00270:         writer.writeheader()
+00271:         writer.writerows(rows)
+00272:     tmp.replace(path)
+00273: 
+00274: 
+00275: def parse_date(value: object) -> date | None:
+00276:     text = clean(value)
+00277:     if not text:

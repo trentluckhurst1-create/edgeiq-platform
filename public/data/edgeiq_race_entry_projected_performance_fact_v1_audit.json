@@ -1,0 +1,209 @@
+{
+  "audit_name": "edgeiq_race_entry_projected_performance_fact_v1",
+  "audit_version": "1.1.0_current_empty_projection_allowed",
+  "audited_at_utc": "2026-07-30T07:47:11Z",
+  "checks": {
+    "adjusted_performance_ids_unique": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "contract_fields_exact": {
+      "detail": {
+        "actual": [
+          "race_entry_projected_performance_id",
+          "race_entry_suitability_aggregate_id",
+          "race_entry_context_adjusted_performance_id",
+          "race_entry_context_adjustment_id",
+          "race_entry_context_parameter_selection_id",
+          "race_entry_context_eligibility_id",
+          "race_entry_performance_context_id",
+          "race_entry_id",
+          "race_id",
+          "race_date",
+          "runner_id",
+          "canonical_horse_id",
+          "canonical_horse_name",
+          "historical_rating_value",
+          "context_parameter_id",
+          "total_context_adjustment",
+          "aggregate_suitability_value",
+          "context_adjusted_performance_value",
+          "projected_performance_value",
+          "projected_performance_delta_from_historical",
+          "projected_performance_publication_decision",
+          "projected_performance_reconciliation_decision",
+          "race_entry_projected_performance_status",
+          "source_adjusted_performance_evidence_sha256",
+          "source_suitability_aggregate_evidence_sha256",
+          "race_entry_projected_performance_evidence_sha256",
+          "source_adjusted_performance_builder_version",
+          "source_suitability_aggregate_builder_version",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ],
+        "expected": [
+          "race_entry_projected_performance_id",
+          "race_entry_suitability_aggregate_id",
+          "race_entry_context_adjusted_performance_id",
+          "race_entry_context_adjustment_id",
+          "race_entry_context_parameter_selection_id",
+          "race_entry_context_eligibility_id",
+          "race_entry_performance_context_id",
+          "race_entry_id",
+          "race_id",
+          "race_date",
+          "runner_id",
+          "canonical_horse_id",
+          "canonical_horse_name",
+          "historical_rating_value",
+          "context_parameter_id",
+          "total_context_adjustment",
+          "aggregate_suitability_value",
+          "context_adjusted_performance_value",
+          "projected_performance_value",
+          "projected_performance_delta_from_historical",
+          "projected_performance_publication_decision",
+          "projected_performance_reconciliation_decision",
+          "race_entry_projected_performance_status",
+          "source_adjusted_performance_evidence_sha256",
+          "source_suitability_aggregate_evidence_sha256",
+          "race_entry_projected_performance_evidence_sha256",
+          "source_adjusted_performance_builder_version",
+          "source_suitability_aggregate_builder_version",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ]
+      },
+      "status": "PASS"
+    },
+    "current_population_expected": {
+      "detail": {
+        "context_adjusted_performance_rows": 0,
+        "projected_performance_rows": 51,
+        "suitability_aggregate_rows": 51
+      },
+      "status": "PASS"
+    },
+    "deterministic_projected_evidence": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "deterministic_projected_identity": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "no_forbidden_fields": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "one_projected_row_per_aggregate": {
+      "detail": {
+        "missing": [],
+        "unexpected": []
+      },
+      "status": "PASS"
+    },
+    "projected_arithmetic_exact": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "projected_governance_complete": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "projected_ids_unique": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "projected_natural_keys_unique": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "projected_population_exact": {
+      "detail": {
+        "projected_performance_rows": 51,
+        "suitability_aggregate_rows": 51
+      },
+      "status": "PASS"
+    },
+    "projected_reconciliation_exact": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "projected_sources_exact": {
+      "detail": [
+        "REPP-CUR-979EE5BB9AD75C3E1E48FAFA",
+        "REPP-CUR-223E493B921478DDF921C2CD",
+        "REPP-CUR-82640A380B1B724692E9AB35",
+        "REPP-CUR-80940E5EE86CE15313F8A0F3",
+        "REPP-CUR-8A4B8ED8D046CCA2F00C77B0",
+        "REPP-CUR-9DFC3CAF3072DFBD16CB5804",
+        "REPP-CUR-5A3BA3817F23A2014F61843B",
+        "REPP-CUR-0BBAE4246B474ADE9FBBB564",
+        "REPP-CUR-5CA55073B3348905E988B176",
+        "REPP-CUR-70525351F21C7806C32130DE",
+        "REPP-CUR-208BF20BF0B96D162F524536",
+        "REPP-CUR-F514EFAB64C32843EC4CA2FB",
+        "REPP-CUR-DFE369B4554332817AB93E13",
+        "REPP-CUR-4D041B9FD6C88373559D9462",
+        "REPP-CUR-14098598AE6A6A8443EF6F6A",
+        "REPP-CUR-E11F11D0126B053250ECAF65",
+        "REPP-CUR-66AAD5EF41F1B7E8484D57DF",
+        "REPP-CUR-CEB050B59B91CA03B41EE86D",
+        "REPP-CUR-0F477F97779AE5FE8F5012AA",
+        "REPP-CUR-09D332CF4EAF99EDA2A65275",
+        "REPP-CUR-AA6121202FE697CD2DB3FD2B",
+        "REPP-CUR-F7E3F87DBF2E4EA4D1DA979F",
+        "REPP-CUR-000913C90B017D2C6FFAEA95",
+        "REPP-CUR-BB5A3256FEDA900EE7FB0814",
+        "REPP-CUR-9F676067422B2C2888313460",
+        "REPP-CUR-AB616D71FE35989A2E44D559",
+        "REPP-CUR-CE27EEE320972726FE09F685",
+        "REPP-CUR-1FB30F7571CD56504F75AE09",
+        "REPP-CUR-538803C742553ADE138ECE7D",
+        "REPP-CUR-6A533180CBA7CBC0F3D1EB79",
+        "REPP-CUR-8E9CA0178E3C25F57EDADFDE",
+        "REPP-CUR-E30F9503AAB93DE94BE20E96",
+        "REPP-CUR-6F9AFFEB71B7BA45D5AE10A0",
+        "REPP-CUR-FD5DB836BD2A772A518833C1",
+        "REPP-CUR-767AAE90C21A4B5489DE597F",
+        "REPP-CUR-1E53CB4FF9F200543F3FD697",
+        "REPP-CUR-4E4908FFF19AA95EDB89D452",
+        "REPP-CUR-2E54246F6166735865510233",
+        "REPP-CUR-E7EA8A66E7700D4FC77B36EA",
+        "REPP-CUR-0865C1D4F682A5984947D4ED",
+        "REPP-CUR-1891CD76531F9B21795C78C0",
+        "REPP-CUR-B9603B3004E9A08DB2075A7C",
+        "REPP-CUR-5F8BF28EEAD5DE8649A053DB",
+        "REPP-CUR-C398ACFE48D50737A9807FC7",
+        "REPP-CUR-DC00A39CBE72D92771B3DA89",
+        "REPP-CUR-460A7CA8A3EA87EE65D9038E",
+        "REPP-CUR-DBA28E15C4C21FB8D35C1422",
+        "REPP-CUR-80E531BC65058BA372934F1F",
+        "REPP-CUR-D74C67AF751B41829339028B",
+        "REPP-CUR-0F2D0C2A069529372A3E6DBA",
+        "REPP-CUR-149DDC21CF127475B9D88056"
+      ],
+      "status": "FAIL"
+    },
+    "required_files_exist": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "suitability_aggregate_ids_unique": {
+      "detail": [],
+      "status": "PASS"
+    }
+  },
+  "counts": {
+    "context_adjusted_performance_rows": 0,
+    "projected_performance_rows": 51,
+    "suitability_aggregate_rows": 51
+  },
+  "failed_checks": [
+    "projected_sources_exact"
+  ],
+  "status": "FAIL"
+}

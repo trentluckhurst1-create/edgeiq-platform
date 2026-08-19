@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "timestamp": "2026-07-20T15:03:25",
+  "checks": [
+    {
+      "check": "expand_button",
+      "target": "tsx",
+      "passed": true
+    },
+    {
+      "check": "aria_expanded",
+      "target": "tsx",
+      "passed": true
+    },
+    {
+      "check": "scroll_to_runner",
+      "target": "tsx",
+      "passed": true
+    },
+    {
+      "check": "tooltip_portal",
+      "target": "tsx",
+      "passed": true
+    }
+  ]
+}

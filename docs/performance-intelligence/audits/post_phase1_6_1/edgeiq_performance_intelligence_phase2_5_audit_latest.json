@@ -1,0 +1,36 @@
+{
+  "checks": [
+    {
+      "check": "FINGERPRINT_RULES_EXPLAINABLE",
+      "observed": 3,
+      "passed": true
+    },
+    {
+      "check": "NO_MANUAL_LABELS",
+      "observed": "deterministic rules",
+      "passed": true
+    },
+    {
+      "check": "INSUFFICIENT_SECTIONAL_EVIDENCE_PRESERVED",
+      "observed": {
+        "BALANCED_EFFICIENCY": 23895,
+        "EARLY_PRESSURE": 2947,
+        "INSUFFICIENT_SECTIONAL_EVIDENCE": 33507
+      },
+      "passed": true
+    }
+  ],
+  "fingerprint_rows": 60349,
+  "generated_timestamp": "2026-07-16T08:33:42Z",
+  "marker": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE2_5_FINGERPRINT_ENGINE_V1_FINAL_PASS",
+  "pattern_distribution": {
+    "BALANCED_EFFICIENCY": 23895,
+    "EARLY_PRESSURE": 2947,
+    "INSUFFICIENT_SECTIONAL_EVIDENCE": 33507
+  },
+  "phase": "phase2_5",
+  "rule_count": 3,
+  "snapshot_id": "eiq_fingerprints_v1_def0baaccf503a004963129a",
+  "snapshot_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\performance-intelligence\\warehouse\\phase2_5\\eiq_fingerprints_v1_def0baaccf503a004963129a",
+  "status": "PASS"
+}

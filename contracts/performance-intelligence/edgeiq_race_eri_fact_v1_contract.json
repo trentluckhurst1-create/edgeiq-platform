@@ -1,0 +1,71 @@
+{
+  "contract_name": "edgeiq_race_eri_fact_v1",
+  "contract_version": "1.0.0",
+  "grain": "one_governed_eri_row_per_eligible_race",
+  "primary_key": [
+    "race_eri_id"
+  ],
+  "natural_key": [
+    "race_id"
+  ],
+  "required_fields": [
+    "race_eri_id",
+    "race_eri_parameter_id",
+    "eri_parameter_version",
+    "race_id",
+    "race_date",
+    "eligible_runner_count",
+    "projected_performance_sum",
+    "projected_performance_mean_unrounded",
+    "projected_performance_mean",
+    "projected_performance_median",
+    "projected_performance_minimum",
+    "projected_performance_maximum",
+    "projected_performance_range",
+    "eri_value",
+    "eri_methodology_code",
+    "eri_output_decimal_places",
+    "eri_rounding_mode",
+    "eri_publication_decision",
+    "eri_method_reconciliation_decision",
+    "race_eri_status",
+    "source_projected_performance_id_set_sha256",
+    "source_projected_performance_evidence_set_sha256",
+    "source_eri_parameter_evidence_sha256",
+    "race_eri_evidence_sha256",
+    "source_projected_performance_builder_version_set",
+    "source_eri_parameter_builder_version",
+    "builder_version",
+    "contract_version",
+    "built_at_utc"
+  ],
+  "allowed_values": {
+    "eri_methodology_code": [
+      "FIELD_MEAN_PROJECTED_PERFORMANCE"
+    ],
+    "eri_rounding_mode": [
+      "ROUND_HALF_EVEN"
+    ],
+    "eri_publication_decision": [
+      "ERI_PUBLISHED"
+    ],
+    "eri_method_reconciliation_decision": [
+      "ERI_METHOD_RECONCILED"
+    ],
+    "race_eri_status": [
+      "GOVERNED_RACE_ERI"
+    ]
+  },
+  "forbidden_fields": [
+    "epi",
+    "runner_rank",
+    "race_rank",
+    "probability",
+    "fair_price",
+    "market_price",
+    "market_edge",
+    "confidence",
+    "prediction",
+    "forecast"
+  ]
+}

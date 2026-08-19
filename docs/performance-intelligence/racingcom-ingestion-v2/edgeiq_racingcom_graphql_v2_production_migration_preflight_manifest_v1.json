@@ -1,0 +1,39 @@
+{
+  "run_id": "racingcom_graphql_v2_migration_20260722T191649Z",
+  "decision": "RACINGCOM_GRAPHQL_V2_PRODUCTION_MIGRATION_PREFLIGHT_PASS",
+  "git_commit": "43960a8db58226f75365829d93c990b28f2e5dd5",
+  "production_path": "public\\data\\edgeiq_racingcom_performance_warehouse_v2.csv",
+  "candidate_path": "public\\data\\edgeiq_racingcom_performance_warehouse_v2_RUNNER_CANDIDATE.csv",
+  "production_sha256": "25ea33aba489bb8f318edcaa3d414c4f7da566573045041ad6ffbe5bff826859",
+  "candidate_sha256": "77803a32e3880598bb5fae3ba7aba49e1fb67931c2d729f567c36eeab873cfb8",
+  "production_rows": 80,
+  "candidate_rows": 138,
+  "production_races": 8,
+  "candidate_races": 13,
+  "schema_hash": "897b50fec84ee698b3e64b657c2684af3fc270fd5b02904230a28bd7e7f449a7",
+  "backup_path": "docs\\performance-intelligence\\racingcom-ingestion-v2\\migration-backups\\edgeiq_racingcom_performance_warehouse_v2_racingcom_graphql_v2_migration_20260722T191649Z.csv",
+  "rollback_script": "scripts\\rollback_edgeiq_racingcom_graphql_v2.py",
+  "prerequisite_audits": {
+    "runner_candidate_readiness": {
+      "exit_code": 0
+    },
+    "historical_regression": {
+      "exit_code": 0
+    },
+    "graphql_runner_validation": {
+      "exit_code": 0
+    },
+    "downstream_compatibility": {
+      "exit_code": 0
+    },
+    "human_review_update": {
+      "exit_code": 0
+    },
+    "migration_dry_run": {
+      "exit_code": 0
+    },
+    "rollback_dry_run": {
+      "exit_code": 0
+    }
+  }
+}

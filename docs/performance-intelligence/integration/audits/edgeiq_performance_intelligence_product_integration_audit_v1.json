@@ -1,0 +1,134 @@
+{
+  "pass_token": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE4_11_PRODUCT_INTEGRATION_AUDIT_PASS",
+  "generated_timestamp": "2026-07-16T10:33:49+00:00",
+  "status": "PASS",
+  "row_counts": {
+    "race_intelligence_index": 16,
+    "horse_intelligence_index": 211,
+    "historical_performance_intelligence_index": 975,
+    "benchmark_explanation_index": 426
+  },
+  "feed": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\performance-intelligence\\edgeiq_performance_intelligence_product_feeds_v1.json",
+  "checks": [
+    {
+      "check": "compact_product_feed_exists",
+      "status": "PASS",
+      "detail": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\performance-intelligence\\edgeiq_performance_intelligence_product_feeds_v1.json"
+    },
+    {
+      "check": "compact_feed_row_guard",
+      "status": "PASS",
+      "detail": "{\"benchmark_explanation_index\": 426, \"historical_performance_intelligence_index\": 975, \"horse_intelligence_index\": 211, \"race_intelligence_index\": 16}"
+    },
+    {
+      "check": "service_file::types.ts",
+      "status": "PASS",
+      "detail": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\src\\edgeiq-os\\services\\performance-intelligence\\types.ts"
+    },
+    {
+      "check": "service_file::performanceIntelligenceFeed.ts",
+      "status": "PASS",
+      "detail": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\src\\edgeiq-os\\services\\performance-intelligence\\performanceIntelligenceFeed.ts"
+    },
+    {
+      "check": "service_file::PerformanceIntelligenceService.ts",
+      "status": "PASS",
+      "detail": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\src\\edgeiq-os\\services\\performance-intelligence\\PerformanceIntelligenceService.ts"
+    },
+    {
+      "check": "service_file::index.ts",
+      "status": "PASS",
+      "detail": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\src\\edgeiq-os\\services\\performance-intelligence\\index.ts"
+    },
+    {
+      "check": "ui_wiring::EPI workspace",
+      "status": "PASS",
+      "detail": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\src\\edgeiq-os\\race\\components\\EpiWorkspaceWorkspace.tsx"
+    },
+    {
+      "check": "ui_wiring::Form guide",
+      "status": "PASS",
+      "detail": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\src\\edgeiq-os\\race\\components\\RaceFormGuideWorkspace.tsx"
+    },
+    {
+      "check": "ui_wiring::Overview",
+      "status": "PASS",
+      "detail": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\src\\edgeiq-os\\race\\components\\OverviewWorkspace.tsx"
+    },
+    {
+      "check": "ui_wiring::Results",
+      "status": "PASS",
+      "detail": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\src\\edgeiq-os\\race\\components\\ResultsWorkspace.tsx"
+    },
+    {
+      "check": "ui_wiring::Compare",
+      "status": "PASS",
+      "detail": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\src\\edgeiq-os\\compare\\CompareWorkspace.tsx"
+    },
+    {
+      "check": "ui_wiring::Insights",
+      "status": "PASS",
+      "detail": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\src\\edgeiq-os\\race\\components\\InsightsWorkspace.tsx"
+    },
+    {
+      "check": "frontend_warehouse_load_block::canonical_performance_facts_v0_2.csv",
+      "status": "PASS",
+      "detail": "Frontend source scan"
+    },
+    {
+      "check": "frontend_warehouse_load_block::edgeiq_results_master_v1.csv",
+      "status": "PASS",
+      "detail": "Frontend source scan"
+    },
+    {
+      "check": "frontend_warehouse_load_block::edgeiq_speed_master_v1.csv",
+      "status": "PASS",
+      "detail": "Frontend source scan"
+    },
+    {
+      "check": "frontend_warehouse_load_block::edgeiq_standardised_sectionals_v1.csv",
+      "status": "PASS",
+      "detail": "Frontend source scan"
+    },
+    {
+      "check": "frontend_warehouse_load_block::performances view",
+      "status": "PASS",
+      "detail": "Frontend source scan"
+    },
+    {
+      "check": "frontend_warehouse_load_block::879,784",
+      "status": "PASS",
+      "detail": "Frontend source scan"
+    },
+    {
+      "check": "unsupported_field_contract::runner_adjusted_time_seconds",
+      "status": "PASS",
+      "detail": "Present in manifest unsupported list and not rendered as a data field."
+    },
+    {
+      "check": "unsupported_field_contract::runner_seconds_vs_benchmark",
+      "status": "PASS",
+      "detail": "Present in manifest unsupported list and not rendered as a data field."
+    },
+    {
+      "check": "unsupported_field_contract::runner_lengths_vs_benchmark",
+      "status": "PASS",
+      "detail": "Present in manifest unsupported list and not rendered as a data field."
+    },
+    {
+      "check": "unsupported_field_contract::official_sectional_time",
+      "status": "PASS",
+      "detail": "Present in manifest unsupported list and not rendered as a data field."
+    },
+    {
+      "check": "unsupported_field_contract::sectional_benchmark_seconds",
+      "status": "PASS",
+      "detail": "Present in manifest unsupported list and not rendered as a data field."
+    },
+    {
+      "check": "unsupported_field_contract::sectional_deviation_lengths",
+      "status": "PASS",
+      "detail": "Present in manifest unsupported list and not rendered as a data field."
+    }
+  ]
+}

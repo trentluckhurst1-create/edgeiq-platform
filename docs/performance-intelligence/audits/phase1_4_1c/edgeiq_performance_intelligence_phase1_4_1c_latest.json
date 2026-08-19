@@ -1,0 +1,63 @@
+{
+  "audit_name": "EDGEiQ Performance Intelligence Phase 1.4.1C Racing Australia Identity Deduplication and Temporal Ambiguity Audit",
+  "generated_utc": "2026-07-15T21:35:42.061173+00:00",
+  "audit_version": "RACING_AUSTRALIA_IDENTITY_DEDUPLICATION_AND_TEMPORAL_AUDIT_V0_1",
+  "status": "RACING_AUSTRALIA_IDENTITY_DEDUPLICATION_AUDIT_PASS",
+  "production_data_modified": false,
+  "canonical_horse_ids_generated": 0,
+  "source_rows": 473,
+  "distinct_racing_australia_ids": 448,
+  "unique_identity_ids": 424,
+  "repeated_identity_ids": 24,
+  "repeated_name_stable_ids": 24,
+  "identity_name_conflicts": 0,
+  "crosswalk_single_code_rows": 434,
+  "crosswalk_ambiguous_rows": 14,
+  "temporal_class_counts": {
+    "ONE_RECENT_HISTORICAL_CODE_OLDER_NAMESAKES_EXIST": 14
+  },
+  "temporally_unresolved_names": 0,
+  "checks": [
+    {
+      "check": "BASE64_IDS_VALID",
+      "passed": true,
+      "observed": "invalid_rows=0"
+    },
+    {
+      "check": "REPEATED_RA_IDS_CLASSIFIED",
+      "passed": true,
+      "observed": "repeated_ids=24;name_stable=24;name_conflicts=0"
+    },
+    {
+      "check": "RA_ID_NAME_CONFLICTS",
+      "passed": true,
+      "observed": 0
+    },
+    {
+      "check": "SOURCE_ROWS_PRESERVED",
+      "passed": true,
+      "observed": "source_rows=473;membership_rows=473"
+    },
+    {
+      "check": "NO_AUTOMATIC_CROSS_PROVIDER_MERGE",
+      "passed": true,
+      "observed": "ALL_MERGES_DISABLED"
+    },
+    {
+      "check": "CANONICAL_HORSE_NOT_MATERIALISED",
+      "passed": true,
+      "observed": "ALL_CANONICAL_HORSE_IDS_BLANK"
+    }
+  ],
+  "failed_checks": [],
+  "identity_decision": "RACING_AUSTRALIA_IDS_VALIDATED_AS_PROVIDER_HORSE_IDENTITIES_CROSS_PROVIDER_LINKS_REMAIN_CANDIDATE_EVIDENCE_ONLY",
+  "canonical_horse_status": "NOT_MATERIALISED",
+  "next_stage": "Begin Benchmark Engine Phase 1.5 while durable cross-provider horse corroboration remains a parallel identity workstream.",
+  "outputs": {
+    "identity_profile": "docs/performance-intelligence/prototypes/phase1_4_1c/edgeiq_racing_australia_horse_identity_profile_v0_1_20260716_073530.csv",
+    "source_membership": "docs/performance-intelligence/prototypes/phase1_4_1c/edgeiq_racing_australia_horse_source_membership_v0_1_20260716_073530.csv",
+    "identity_conflicts": "docs/performance-intelligence/audits/phase1_4_1c/edgeiq_racing_australia_horse_identity_conflicts_v0_1_20260716_073530.csv",
+    "temporal_candidates": "docs/performance-intelligence/prototypes/phase1_4_1c/edgeiq_cross_provider_horse_temporal_candidates_v0_1_20260716_073530.csv",
+    "unresolved_ambiguities": "docs/performance-intelligence/audits/phase1_4_1c/edgeiq_cross_provider_horse_unresolved_ambiguities_v0_1_20260716_073530.csv"
+  }
+}

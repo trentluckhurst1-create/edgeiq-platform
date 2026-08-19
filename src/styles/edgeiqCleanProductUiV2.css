@@ -1,0 +1,148 @@
+/* EDGEiQ Clean Product UI V2 - tighter SaaS home */
+
+.edgeiq-home,
+.product-home,
+.home-view,
+[class*="home"] {
+  max-width: 1240px !important;
+  padding: 24px 24px 72px !important;
+}
+
+.edgeiq-hero,
+.product-hero,
+[class*="hero"] {
+  padding: 58px 12px 42px !important;
+  max-width: 860px !important;
+  margin: 0 auto 42px !important;
+}
+
+.edgeiq-hero h1,
+.product-hero h1,
+[class*="hero"] h1 {
+  font-size: clamp(54px, 6vw, 82px) !important;
+  margin-bottom: 10px !important;
+}
+
+.edgeiq-hero p,
+.product-hero p,
+[class*="hero"] p {
+  max-width: 680px !important;
+  font-size: 13px !important;
+}
+
+.edgeiq-hero p:nth-of-type(n+3),
+.product-hero p:nth-of-type(n+3),
+[class*="hero"] p:nth-of-type(n+3) {
+  display: none !important;
+}
+
+/* Stop status competing with hero */
+[class*="operational"],
+[class*="status-panel"] {
+  max-width: 720px !important;
+  margin: 0 auto 44px !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+}
+
+[class*="operational"] h2,
+[class*="operational"] h3,
+[class*="operational"] h4 {
+  text-align: center !important;
+  font-size: 11px !important;
+  color: var(--edge-muted) !important;
+  margin-bottom: 12px !important;
+}
+
+[class*="operational"] > div,
+[class*="status-grid"] {
+  display: flex !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  flex-wrap: wrap !important;
+}
+
+[class*="operational"] [class*="card"],
+[class*="status-card"] {
+  width: auto !important;
+  min-width: 138px !important;
+  min-height: 32px !important;
+  padding: 8px 12px !important;
+  border-radius: 999px !important;
+  background: rgba(7, 17, 29, 0.72) !important;
+}
+
+[class*="operational"] [class*="card"] p,
+[class*="status-card"] p {
+  display: none !important;
+}
+
+/* Cleaner sections */
+[class*="home"] section {
+  margin-bottom: 48px !important;
+}
+
+[class*="home"] section > div:first-child,
+.section-title,
+.edgeiq-section-title {
+  margin-bottom: 16px !important;
+}
+
+/* Reduce bordered-box feeling */
+.edgeiq-card,
+.product-card,
+.meeting-card,
+[class*="card"] {
+  border-color: rgba(88, 116, 145, 0.22) !important;
+  background: rgba(5, 13, 23, 0.64) !important;
+}
+
+/* Feature cards: small, even, quiet */
+[class*="reads"] [class*="card"],
+[class*="feature"] [class*="card"] {
+  min-height: 108px !important;
+  padding: 18px !important;
+}
+
+/* Meetings: compact premium cards */
+.meeting-card,
+[class*="meeting"] [class*="card"] {
+  min-height: 142px !important;
+  padding: 18px !important;
+}
+
+.meeting-card h2,
+.meeting-card h3,
+[class*="meeting"] h2,
+[class*="meeting"] h3 {
+  font-size: 18px !important;
+  text-align: left !important;
+}
+
+[class*="meeting"] [class*="card"] > div {
+  border: 0 !important;
+  background: transparent !important;
+  padding: 0 !important;
+}
+
+[class*="meeting"] button,
+.meeting-card button {
+  min-height: 34px !important;
+  padding: 0 14px !important;
+}
+
+/* Hide developer/helper slogans on home */
+[class*="home"] em,
+[class*="home"] i {
+  display: none !important;
+}
+
+/* Desktop rhythm */
+@media (min-width: 900px) {
+  [class*="meetings"] {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 16px !important;
+  }
+}

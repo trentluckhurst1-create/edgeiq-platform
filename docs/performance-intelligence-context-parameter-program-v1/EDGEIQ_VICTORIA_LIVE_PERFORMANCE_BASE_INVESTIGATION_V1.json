@@ -1,0 +1,92 @@
+{
+  "first_live_ingestion_blocker": "TIMED_RACE_NOT_BUILT_FOR_CURRENT_RESULTS",
+  "legacy_audit_stale": "NO",
+  "pipeline_trace": [
+    {
+      "current_rows_on_or_after_2026_07_20": 0,
+      "distinct_races": 0,
+      "distinct_runners": 0,
+      "first_failure": "NO_CURRENT_ROWS",
+      "input_file": "public/data/edgeiq_historical_results_warehouse_v2_graphql.csv",
+      "input_rows": 879784,
+      "maximum_date": "",
+      "minimum_date": "",
+      "rejection_reasons": "",
+      "stage": "Results Warehouse"
+    },
+    {
+      "current_rows_on_or_after_2026_07_20": 0,
+      "distinct_races": 0,
+      "distinct_runners": 0,
+      "first_failure": "NO_CURRENT_ROWS",
+      "input_file": "public/data/edgeiq_canonical_historical_timing_warehouse_v1.csv",
+      "input_rows": 70308,
+      "maximum_date": "",
+      "minimum_date": "",
+      "rejection_reasons": "",
+      "stage": "Timed Races"
+    },
+    {
+      "current_rows_on_or_after_2026_07_20": 0,
+      "distinct_races": 0,
+      "distinct_runners": 0,
+      "first_failure": "NO_CURRENT_ROWS",
+      "input_file": "public/data/edgeiq_race_time_delta_versus_standard_fact_v1.csv",
+      "input_rows": 54978,
+      "maximum_date": "",
+      "minimum_date": "",
+      "rejection_reasons": "",
+      "stage": "Race Time Delta"
+    },
+    {
+      "current_rows_on_or_after_2026_07_20": 0,
+      "distinct_races": 0,
+      "distinct_runners": 0,
+      "first_failure": "NO_CURRENT_ROWS",
+      "input_file": "public/data/edgeiq_lengths_versus_standard_fact_v1.csv",
+      "input_rows": 52414,
+      "maximum_date": "",
+      "minimum_date": "",
+      "rejection_reasons": "",
+      "stage": "Lengths v Standard"
+    },
+    {
+      "current_rows_on_or_after_2026_07_20": 0,
+      "distinct_races": 0,
+      "distinct_runners": 0,
+      "first_failure": "NO_CURRENT_ROWS",
+      "input_file": "public/data/edgeiq_performance_intelligence_base_fact_v1.csv",
+      "input_rows": 52414,
+      "maximum_date": "",
+      "minimum_date": "",
+      "rejection_reasons": "",
+      "stage": "Performance Base"
+    },
+    {
+      "current_rows_on_or_after_2026_07_20": 0,
+      "distinct_races": 0,
+      "distinct_runners": 0,
+      "first_failure": "NO_CURRENT_ROWS",
+      "input_file": "public/data/edgeiq_performance_normalisation_fact_v1.csv",
+      "input_rows": 52309,
+      "maximum_date": "",
+      "minimum_date": "",
+      "rejection_reasons": "",
+      "stage": "Normalisation"
+    },
+    {
+      "current_rows_on_or_after_2026_07_20": 0,
+      "distinct_races": 0,
+      "distinct_runners": 0,
+      "first_failure": "NO_CURRENT_ROWS",
+      "input_file": "public/data/edgeiq_performance_rating_base_fact_v1.csv",
+      "input_rows": 52309,
+      "maximum_date": "",
+      "minimum_date": "",
+      "rejection_reasons": "",
+      "stage": "Performance Rating Base"
+    }
+  ],
+  "repair_implemented": "NO",
+  "status": "BLOCKED_SOURCE_DATA_UNAVAILABLE"
+}

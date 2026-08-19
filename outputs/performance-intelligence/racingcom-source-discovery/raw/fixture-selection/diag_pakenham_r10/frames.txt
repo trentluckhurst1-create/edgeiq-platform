@@ -1,0 +1,997 @@
+FRAME 0
+URL=https://www.racing.com/form/2026-07-20/southside-pakenham-synthetic/race/10/speed-data
+LEN=893
+MONDAY, 20 JULY 2026
+Southside Pakenham Synthetic  
+2200m
+17°C
+Synth
+Track Rail
+True Entire Circuit
+Final Result
+All
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+Ladbrokes Pakenham Cup on sale Handicap
+5:00pm
+2200m
+Handicap. Three-Years-Old and Upwards, No sex restriction. BenchMark 62. Apprentices can claim. Track name: Synthetic. Track type: Synthetic. Field limit: 12.
+Race Time: 
+2:15.50  
++23.46L  
+Prize Money: 
+$27,000  
+Results
+Stewards' Report
+Speed Data
+News & Video
+Personalise Your Racing Experience
+
+We use cookies (including third-party) for site functionality, personalised content and ads, and analytics. By continuing, you consent to essential cookies only. Click "Accept all cookies" to allow non-essential cookies for personalisation and sharing usage data with our media, advertising, and analytics partners.
+
+See our Privacy Policy for details.
+
+Accept
+All CookiesDecline Non-
+Essential Cookies
+
+---
+
+FRAME 1
+URL=https://dxp-static.racing.com/sectionals/index.html#?meetCode=5191023&raceNumber=10
+LEN=7412
+Sort By:	Finishing Position
+C
+Finishing Position
+Distance Run
+Early Speed
+Mid Speed
+Late Speed
+Peak Speed
+Average Speed
+	OverviewSectionalsSplits
+POS / HORSE
+1st		
+12. Itsagiven (NZ) (7)
+T: David & Coral Feek J: C.Newitt
+
+2nd		
+3. Dundonald (5)
+T: G.M.Moloney J: P.M.Moloney
+
+3rd		
+11. Frank Express (10)
+T: A.I.Rosolini J: M.A.Salter
+
+4th		
+7. Thunderbolt Way (1)
+T: N.G.Smyth J: L.King
+
+5th		
+5. Papal Army (NZ) (2)
+T: Amy & Ash Yargi J: J.McNeil
+
+6th		
+1. Chihuly (9)
+T: G.Eurell J: Z.Spain
+
+7th		
+2. Cyclone Harmony (6)
+T: P.Gelagotis J: O.I.East
+
+8th		
+9. Good Harmony (11)
+T: P.Gelagotis J: L.J.Neindorf
+
+9th		
+4. Madame Lexis (4)
+T: N.Dunn J: T.M.Nugent
+
+10th		
+10. Knee Deep (8)
+T: Ben, Will & JD Hayes J: L.Currie
+
+11th		
+8. Burlington Gate (3)
+T: Ben, Will & JD Hayes J: J.Mott
+	
+DIST RUN	EARLY	MID	LATE	PEAK	AVG SPEED	COM
+
+2215
+metres
+	
+56.84
+km/h
+	
+62.50
+km/h
+	
+63.76
+km/h
+	
+64.40
+km/h
+	
+58.86
+km/h
+	
+!
+
+
+2232(+17)
+metres
+	
+57.42
+km/h
+	
+63.04
+km/h
+	
+62.82
+km/h
+	
+66.10
+km/h
+	
+59.29
+km/h
+	
+!
+
+
+2210(-5)
+metres
+	
+56.30
+km/h
+	
+62.82
+km/h
+	
+63.97
+km/h
+	
+64.76
+km/h
+	
+58.57
+km/h
+	
+!
+
+
+2219(+3)
+metres
+	
+57.10
+km/h
+	
+61.78
+km/h
+	
+61.52
+km/h
+	
+63.86
+km/h
+	
+58.75
+km/h
+	
+!
+
+
+2217(+2)
+metres
+	
+56.84
+km/h
+	
+62.32
+km/h
+	
+61.81
+km/h
+	
+64.62
+km/h
+	
+58.68
+km/h
+	
+!
+
+
+2226(+11)
+metres
+	
+56.70
+km/h
+	
+63.54
+km/h
+	
+62.89
+km/h
+	
+64.69
+km/h
+	
+58.90
+km/h
+	
+!
+
+
+2229(+14)
+metres
+	
+57.02
+km/h
+	
+63.04
+km/h
+	
+62.75
+km/h
+	
+64.62
+km/h
+	
+58.90
+km/h
+	
+!
+
+
+2227(+12)
+metres
+	
+57.20
+km/h
+	
+62.60
+km/h
+	
+62.06
+km/h
+	
+63.61
+km/h
+	
+58.82
+km/h
+	
+!
+
+
+2223(+8)
+metres
+	
+56.66
+km/h
+	
+62.96
+km/h
+	
+62.86
+km/h
+	
+64.19
+km/h
+	
+58.68
+km/h
+	
+!
+
+
+2231(+16)
+metres
+	
+56.99
+km/h
+	
+62.96
+km/h
+	
+61.99
+km/h
+	
+64.66
+km/h
+	
+58.82
+km/h
+	
+!
+
+
+2227(+12)
+metres
+	
+56.95
+km/h
+	
+62.39
+km/h
+	
+61.99
+km/h
+	
+64.62
+km/h
+	
+58.64
+km/h
+	
+!
+POS / HORSE
+1st		
+12. Itsagiven (NZ) (7)
+T: David & Coral Feek J: C.Newitt
+
+2nd		
+3. Dundonald (5)
+T: G.M.Moloney J: P.M.Moloney
+
+3rd		
+11. Frank Express (10)
+T: A.I.Rosolini J: M.A.Salter
+
+4th		
+7. Thunderbolt Way (1)
+T: N.G.Smyth J: L.King
+
+5th		
+5. Papal Army (NZ) (2)
+T: Amy & Ash Yargi J: J.McNeil
+
+6th		
+1. Chihuly (9)
+T: G.Eurell J: Z.Spain
+
+7th		
+2. Cyclone Harmony (6)
+T: P.Gelagotis J: O.I.East
+
+8th		
+9. Good Harmony (11)
+T: P.Gelagotis J: L.J.Neindorf
+
+9th		
+4. Madame Lexis (4)
+T: N.Dunn J: T.M.Nugent
+
+10th		
+10. Knee Deep (8)
+T: Ben, Will & JD Hayes J: L.Currie
+
+11th		
+8. Burlington Gate (3)
+T: Ben, Will & JD Hayes J: J.Mott
+	
+OVERALL	2000M	1800M	1600M	1400M	1200M	1000M	800M	600M	400M	200M
+
+2:15.50
+1st
+	
+2:01.01
+9th
+	
+1:49.16
+8th
+	
+1:36.62
+9th
+	
+1:24.12
+8th
+	
+1:11.18
+7th
+	
+58.63
+6th
+	
+46.21
+7th
+	
+34.58
+5th
+	
+23.16
+4th
+	
+11.85
+2nd
+
+
+2:15.55
+2nd
+	
+2:01.58
+2nd
+	
+1:49.76
+2nd
+	
+1:37.32
+2nd
+	
+1:24.67
+2nd
+	
+1:11.77
+2nd
+	
+59.07
+2nd
+	
+46.72
+2nd
+	
+35.00
+1st
+	
+23.65
+1st
+	
+12.14
+1st
+
+
+2:15.81
+3rd
+	
+2:00.82
+11th
+	
+1:48.92
+11th
+	
+1:36.48
+11th
+	
+1:23.94
+11th
+	
+1:10.84
+11th
+	
+58.11
+11th
+	
+45.80
+11th
+	
+34.30
+11th
+	
+22.96
+11th
+	
+11.70
+7th
+
+
+2:15.99
+4th
+	
+2:02.02
+1st
+	
+1:50.26
+1st
+	
+1:37.92
+1st
+	
+1:25.31
+1st
+	
+1:12.25
+1st
+	
+59.60
+1st
+	
+47.27
+1st
+	
+35.42
+2nd
+	
+23.92
+2nd
+	
+12.21
+4th
+
+
+2:16.02
+5th
+	
+2:01.82
+6th
+	
+1:50.01
+4th
+	
+1:37.57
+4th
+	
+1:25.07
+3rd
+	
+1:12.05
+3rd
+	
+59.39
+3rd
+	
+47.05
+3rd
+	
+35.37
+3rd
+	
+23.94
+3rd
+	
+12.28
+3rd
+
+
+2:16.07
+6th
+	
+2:01.41
+10th
+	
+1:49.52
+10th
+	
+1:37.03
+10th
+	
+1:24.51
+10th
+	
+1:11.50
+10th
+	
+58.87
+10th
+	
+46.55
+10th
+	
+34.99
+8th
+	
+23.42
+8th
+	
+11.92
+8th
+
+
+2:16.28
+7th
+	
+2:01.92
+7th
+	
+1:49.94
+9th
+	
+1:37.52
+7th
+	
+1:24.95
+7th
+	
+1:12.01
+6th
+	
+59.39
+7th
+	
+47.05
+6th
+	
+35.34
+7th
+	
+23.74
+6th
+	
+12.21
+5th
+
+
+2:16.31
+8th
+	
+2:02.17
+5th
+	
+1:50.21
+5th
+	
+1:37.76
+5th
+	
+1:25.23
+4th
+	
+1:12.25
+4th
+	
+59.62
+4th
+	
+47.33
+4th
+	
+35.51
+4th
+	
+23.84
+5th
+	
+12.22
+6th
+
+
+2:16.41
+9th
+	
+2:02.31
+4th
+	
+1:50.30
+6th
+	
+1:37.78
+6th
+	
+1:25.09
+6th
+	
+1:12.02
+8th
+	
+59.34
+8th
+	
+46.92
+8th
+	
+35.30
+9th
+	
+23.73
+10th
+	
+12.23
+10th
+
+
+2:16.55
+10th
+	
+2:02.08
+8th
+	
+1:50.33
+7th
+	
+1:37.70
+8th
+	
+1:24.98
+9th
+	
+1:11.97
+9th
+	
+59.40
+9th
+	
+47.03
+9th
+	
+35.33
+10th
+	
+23.89
+9th
+	
+12.23
+11th
+
+
+2:16.74
+11th
+	
+2:02.77
+3rd
+	
+1:50.84
+3r
+
+---
+
+FRAME 2
+URL=about:blank
+LEN=0
+
+
+---
+
+FRAME 3
+URL=about:blank
+LEN=0
+
+
+---
+
+FRAME 4
+URL=about:blank
+LEN=0
+
+
+---
+
+FRAME 5
+URL=https://platform.twitter.com/widgets/widget_iframe.1227a5674072e080ffb1ba14ac0c1079.html?origin=https%3A%2F%2Fdxp-static.racing.com
+LEN=0
+
+
+---
+
+FRAME 6
+URL=about:blank
+LEN=198
+18+‌
+Eligible‌ ‌customers‌ ‌only.‌ ‌Prices‌ ‌subject‌ ‌to‌ ‌change.‌ ‌
+Max‌ ‌stakes‌ ‌&‌ ‌T&Cs‌ ‌apply.‌
+THINK.‌ ‌IS‌ ‌THIS‌ ‌A‌ ‌BET‌ ‌YOU‌ ‌REALLY‌ ‌WANT‌ ‌TO‌ ‌PLACE?‌
+Set‌ ‌a‌ ‌deposit‌ ‌limit.‌
+
+---
+
+FRAME 7
+URL=about:blank
+LEN=0
+
+
+---
+
+FRAME 8
+URL=about:blank
+LEN=198
+18+‌
+Eligible‌ ‌customers‌ ‌only.‌ ‌Prices‌ ‌subject‌ ‌to‌ ‌change.‌ ‌
+Max‌ ‌stakes‌ ‌&‌ ‌T&Cs‌ ‌apply.‌
+THINK.‌ ‌IS‌ ‌THIS‌ ‌A‌ ‌BET‌ ‌YOU‌ ‌REALLY‌ ‌WANT‌ ‌TO‌ ‌PLACE?‌
+Set‌ ‌a‌ ‌deposit‌ ‌limit.‌
+
+---
+
+FRAME 9
+URL=about:blank
+LEN=0
+
+
+---
+
+FRAME 10
+URL=about:blank
+LEN=0
+
+
+---
+
+FRAME 11
+URL=about:blank
+LEN=0
+
+
+---
+
+FRAME 12
+URL=about:blank
+LEN=0
+
+
+---
+
+FRAME 13
+URL=about:blank
+LEN=0
+
+
+---
+
+FRAME 14
+URL=about:blank
+LEN=0
+
+
+---
+
+FRAME 15
+URL=about:blank
+LEN=4
+Join
+
+---
+
+FRAME 16
+URL=about:blank
+LEN=0
+
+
+---
+
+FRAME 17
+URL=about:blank
+LEN=22
+EVERY RACE, EVERY DAY.
+
+---
+
+FRAME 18
+URL=about:blank
+LEN=0
+
+
+---
+
+FRAME 19
+URL=about:blank
+LEN=0
+
+
+---
+
+FRAME 20
+URL=about:blank
+LEN=0
+
+
+---
+
+FRAME 21
+URL=about:blank
+LEN=0
+
+
+---
+
+FRAME 22
+URL=about:blank
+LEN=0
+
+
+---
+
+FRAME 23
+URL=about:blank
+LEN=0
+
+
+---
+
+FRAME 24
+URL=about:blank
+LEN=0
+
+
+---
+
+FRAME 25
+URL=about:blank
+LEN=0
+
+
+---
+
+FRAME 26
+URL=about:blank
+LEN=4
+Join
+
+---
+
+FRAME 27
+URL=about:blank
+LEN=0
+
+
+---
+
+FRAME 28
+URL=about:blank
+LEN=22
+EVERY RACE, EVERY DAY.
+
+---
+
+FRAME 29
+URL=about:blank
+LEN=0
+
+
+---
+
+FRAME 30
+URL=about:blank
+LEN=0
+
+
+---
+
+FRAME 31
+URL=about:blank
+LEN=0
+
+
+---
+
+FRAME 32
+URL=https://www.google.com/recaptcha/api2/aframe
+LEN=0
+
+
+---
+
+FRAME 33
+URL=https://match.adsrvr.org/track/cei?advertiser_id=5lq2lja&cookie_sync=1&upv=3.0.0&upid=ryggk4v&ref=https%3a%2f%2fwww.racing.com&redirect=1
+LEN=0
+
+
+---
+
+FRAME 34
+URL=https://platform.twitter.com/widgets/tweet_button.1227a5674072e080ffb1ba14ac0c1079.en.html#dnt=true&id=twitter-widget-0&lang=en&original_referer=https%3A%2F%2Fdxp-static.racing.com%2Fsectionals%2Findex.html%23%3FmeetCode%3D5191023%26raceNumber%3D10&size=m&text=RACING.COM&time=1784711508486&type=share&url=https%3A%2F%2Fdxp-static.racing.com%2Fsectionals%2Findex.html%23%3FmeetCode%3D5191023%26raceNumber%3D10&via=country_racing
+LEN=4
+Post
+
+---
+
+FRAME 35
+URL=https://match.adsrvr.org/track/cmf/rubicon?gdpr=0
+LEN=0
+
+
+---
+
+FRAME 36
+URL=https://match.adsrvr.org/track/cmf/google?g_uuid=&gdpr=0&gdpr_consent=&ttd_tdid=019bf264-eb4e-4b34-8be4-534cd25bdaeb&google_gid=CAESEBB05s3WbTl4I3UXff3DgnY&google_cver=1
+LEN=0
+
+
+---
+
+FRAME 37
+URL=https://match.adsrvr.org/track/cmf/appnexus?ttd=1&anid=3719571957256740087&ttd_tdid=019bf264-eb4e-4b34-8be4-534cd25bdaeb
+LEN=0
+
+
+---
+
+FRAME 38
+URL=about:blank
+LEN=0

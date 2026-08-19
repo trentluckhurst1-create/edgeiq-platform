@@ -1,0 +1,18 @@
+{
+  "generated_at": "2026-07-26T03:37:24Z",
+  "status": "PASS",
+  "metrics": {
+    "current_form_rows": 246,
+    "form_epi_rows": 189,
+    "form_edgeiq_price_rows": 166,
+    "market_terminal_rows": 246,
+    "market_terminal_epi_rows": 172,
+    "market_terminal_edgeiq_price_rows": 166,
+    "market_terminal_edge_rows": 166,
+    "current_epi_json_rows": 246,
+    "current_epi_available_rows": 189,
+    "current_eri_available_rows": 189,
+    "fair_price_rows": 246,
+    "fair_price_available_rows": 166
+  }
+}

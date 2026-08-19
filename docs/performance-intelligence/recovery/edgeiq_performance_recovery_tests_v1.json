@@ -1,0 +1,80 @@
+{
+  "status": "PASS",
+  "tests": [
+    {
+      "test": "standard_time_rows_gt_zero",
+      "status": "PASS",
+      "detail": "586"
+    },
+    {
+      "test": "standard_times_plausible",
+      "status": "PASS",
+      "detail": "all standard times >35s"
+    },
+    {
+      "test": "standard_min_observation_enforced",
+      "status": "PASS",
+      "detail": "min obs >=20"
+    },
+    {
+      "test": "lengths_v_standard_rows_gt_zero",
+      "status": "PASS",
+      "detail": "533387"
+    },
+    {
+      "test": "race_lengths_rows_gt_zero",
+      "status": "PASS",
+      "detail": "51769"
+    },
+    {
+      "test": "epi_rows_gt_zero",
+      "status": "PASS",
+      "detail": "533387"
+    },
+    {
+      "test": "eri_rows_gt_zero",
+      "status": "PASS",
+      "detail": "51769"
+    },
+    {
+      "test": "epi_range_valid",
+      "status": "PASS",
+      "detail": "first 50k sampled"
+    },
+    {
+      "test": "current_epi_available_gt_zero",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "current_eri_available_gt_zero",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "fair_price_rows_gt_zero",
+      "status": "PASS",
+      "detail": "166"
+    },
+    {
+      "test": "fair_prices_gt_one",
+      "status": "PASS",
+      "detail": "all priced >1"
+    },
+    {
+      "test": "race_probability_sums_ok",
+      "status": "PASS",
+      "detail": "16 races"
+    },
+    {
+      "test": "market_edge_rows_gt_zero",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "market_not_used_as_feature",
+      "status": "PASS",
+      "detail": "fair price source check"
+    }
+  ]
+}

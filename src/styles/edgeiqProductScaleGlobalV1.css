@@ -1,0 +1,146 @@
+/* EDGEiQ Product Scale + Global Terminal Style V1 */
+
+/* Make home fit one screen better */
+.edgeiq-product-home {
+  padding: 12px 18px 18px !important;
+}
+
+.edgeiq-product-home > div {
+  width: min(1420px, calc(100vw - 36px)) !important;
+  gap: 12px !important;
+}
+
+.edgeiq-product-home header {
+  min-height: 54px !important;
+  padding-bottom: 8px !important;
+}
+
+.edgeiq-product-home main {
+  gap: 12px !important;
+}
+
+.edgeiq-product-home section {
+  gap: 10px !important;
+}
+
+.edgeiq-product-home h1,
+.edgeiq-product-home strong[style*="82px"] {
+  font-size: 66px !important;
+}
+
+.edgeiq-product-home button {
+  min-height: 40px !important;
+}
+
+.edgeiq-product-home article {
+  min-height: unset !important;
+}
+
+.edgeiq-product-home footer {
+  display: none !important;
+}
+
+/* Product-wide terminal styling */
+.edgeiq-product-surface,
+.edgeiq-product-race,
+.edgeiq-product-meeting {
+  background:
+    radial-gradient(circle at 16% 0%, rgba(49,145,255,.14), transparent 28rem),
+    radial-gradient(circle at 82% 8%, rgba(42,245,220,.07), transparent 34rem),
+    #020814 !important;
+  color: #f8fbff !important;
+}
+
+.edgeiq-product-race section,
+.edgeiq-product-race header,
+.edgeiq-product-meeting section,
+.edgeiq-product-meeting header,
+.edgeiq-workspace-tabs,
+.edgeiq-command-workspace {
+  border-color: rgba(69,121,164,.28) !important;
+  background: linear-gradient(180deg, rgba(10,30,51,.82), rgba(4,11,21,.78)) !important;
+  box-shadow: 0 18px 48px rgba(0,0,0,.20) !important;
+  border-radius: 10px !important;
+}
+
+.edgeiq-workspace-tabs button {
+  border-radius: 8px !important;
+  letter-spacing: .11em !important;
+  text-transform: uppercase !important;
+  font-weight: 950 !important;
+}
+
+.edgeiq-product-race table,
+.edgeiq-product-race [role="table"] {
+  border-color: rgba(69,121,164,.22) !important;
+}
+
+.edgeiq-product-race th,
+.edgeiq-product-race td {
+  border-color: rgba(69,121,164,.18) !important;
+}
+
+.edgeiq-product-race strong,
+.edgeiq-product-meeting strong {
+  letter-spacing: .01em;
+}
+
+.edgeiq-product-race .edgeiq-intel-race-meta span,
+.edgeiq-product-meeting .edgeiq-intel-race-meta span {
+  border-color: rgba(80,120,180,.26) !important;
+  background: rgba(5,12,22,.58) !important;
+}
+
+/* Rename old command visual language into race-intelligence feel */
+.edgeiq-command-header::before {
+  content: "♞";
+  color: #2af5dc;
+  font-size: 28px;
+  margin-right: 8px;
+}
+
+.edgeiq-command-header {
+  position: relative;
+}
+
+.edgeiq-command-workspace [style*="Race Shape Preview"],
+.edgeiq-command-workspace [style*="Market Context"],
+.edgeiq-command-workspace [style*="Connection Intelligence"] {
+  border-color: rgba(42,245,220,.28) !important;
+}
+
+/* Consistent cards across tabs */
+.edgeiq-product-race article,
+.edgeiq-product-race details,
+.edgeiq-product-race [style*="rgba(5,12,22"],
+.edgeiq-product-meeting [style*="rgba(5,12,22"] {
+  border-color: rgba(80,120,180,.24) !important;
+}
+
+/* Keep nav product-like */
+.edgeiq-product-home nav div,
+.edgeiq-workspace-tabs button {
+  transition: border-color .15s ease, background .15s ease, color .15s ease, transform .15s ease;
+}
+
+.edgeiq-product-home nav div:hover,
+.edgeiq-workspace-tabs button:hover {
+  border-color: rgba(42,245,220,.55) !important;
+  color: #2af5dc !important;
+}
+
+/* Responsive safety */
+@media (max-width: 1200px) {
+  .edgeiq-product-home {
+    padding: 12px !important;
+  }
+
+  .edgeiq-product-home > div,
+  .edgeiq-product-home main {
+    display: block !important;
+  }
+
+  .edgeiq-product-home section {
+    margin-bottom: 12px !important;
+  }
+}

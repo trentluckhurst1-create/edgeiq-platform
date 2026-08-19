@@ -1,0 +1,49 @@
+{
+  "url": "http://127.0.0.1:5176/",
+  "steps": [
+    {
+      "tab": "RACE",
+      "screenshot": "docs/full-product-implementation/screenshots/race_field_performance_epi_race.png",
+      "hasRunnerBoard": true,
+      "hasWhatMatters": true,
+      "honestUnavailable": true,
+      "visibleConfidenceText": false
+    },
+    {
+      "tab": "FIELD",
+      "screenshot": "docs/full-product-implementation/screenshots/race_field_performance_epi_field.png",
+      "hasColumns": true,
+      "visibleConfidenceText": false
+    },
+    {
+      "tab": "FIELD_EXPANDED",
+      "screenshot": "docs/full-product-implementation/screenshots/race_field_performance_epi_field_expanded.png",
+      "clickedRunner": true,
+      "hasRecent": true
+    },
+    {
+      "tab": "PERFORMANCE",
+      "screenshot": "docs/full-product-implementation/screenshots/race_field_performance_epi_performance.png",
+      "hasHeatMap": true,
+      "hasEpiMatrix": false,
+      "differsFromEpi": true,
+      "limitation": "Selected race has historical context but no populated governed heat-map rating cells in EPI terminal feed."
+    },
+    {
+      "tab": "EPI",
+      "screenshot": "docs/full-product-implementation/screenshots/race_field_performance_epi_epi.png",
+      "hasEpiMatrix": true,
+      "differsFromPerformance": true
+    },
+    {
+      "tab": "REFRESH",
+      "screenshot": "docs/full-product-implementation/screenshots/race_field_performance_epi_after_refresh.png",
+      "hasNoCrash": true
+    },
+    {
+      "tab": "WHITE_THEME",
+      "visuallyInspected": true,
+      "note": "Screenshots show white workspace/cards retained."
+    }
+  ]
+}

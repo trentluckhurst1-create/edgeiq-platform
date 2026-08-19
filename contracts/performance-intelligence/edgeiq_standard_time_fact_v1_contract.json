@@ -1,0 +1,53 @@
+{
+  "contract_name": "edgeiq_standard_time_fact_v1",
+  "contract_version": "1.0.0",
+  "grain": "one_row_per_ready_benchmark_group",
+  "standard_time_method": "MEDIAN_WINNER_RACE_TIME_SECONDS",
+  "minimum_required_sample": 20,
+  "primary_key": ["standard_time_id"],
+  "required_fields": [
+    "standard_time_id",
+    "benchmark_group_id",
+    "benchmark_group_basis",
+    "track_name",
+    "official_distance_metres",
+    "course_name",
+    "course_name_status",
+    "surface",
+    "surface_status",
+    "track_condition",
+    "track_condition_status",
+    "standard_time_method",
+    "standard_time_seconds",
+    "sample_observation_count",
+    "sample_minimum_time_seconds",
+    "sample_maximum_time_seconds",
+    "minimum_required_sample",
+    "standard_time_status",
+    "source_group_dimension_sha256",
+    "source_membership_sha256",
+    "standard_time_evidence_sha256",
+    "source_accumulation_builder_version",
+    "builder_version",
+    "contract_version",
+    "built_at_utc"
+  ],
+  "allowed_values": {
+    "benchmark_group_basis": ["TRACK_DISTANCE"],
+    "standard_time_method": ["MEDIAN_WINNER_RACE_TIME_SECONDS"],
+    "standard_time_status": ["AVAILABLE"],
+    "course_name_status": ["NOT_AVAILABLE_IN_SOURCE"],
+    "surface_status": ["NOT_AVAILABLE_IN_SOURCE"],
+    "track_condition_status": ["NOT_AVAILABLE_IN_SOURCE"]
+  },
+  "forbidden_fields": [
+    "track_variant",
+    "condition_adjustment",
+    "course_adjustment",
+    "surface_adjustment",
+    "lengths_vs_standard",
+    "performance_rating",
+    "speed_rating",
+    "epi"
+  ]
+}

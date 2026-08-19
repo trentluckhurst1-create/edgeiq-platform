@@ -1,0 +1,14 @@
+{
+  "selected_source": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_horse_performance_observation_fact_v1.csv",
+  "candidates": [
+    {
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_horse_performance_observation_fact_v1.csv",
+      "exists": true,
+      "rows": 168,
+      "horse_column": "canonical_horse_id",
+      "date_column": "race_date",
+      "value_column": "normalised_performance_value",
+      "valid": true
+    }
+  ]
+}

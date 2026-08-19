@@ -1,0 +1,9 @@
+{
+  "audit_status": "PASS",
+  "statuses": {
+    "scratchings": "PASS",
+    "track": "PASS",
+    "weather": "PASS",
+    "market": "PASS"
+  }
+}

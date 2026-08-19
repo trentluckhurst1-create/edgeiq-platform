@@ -1,0 +1,8 @@
+EDGEIQ_ACTIVE_SOURCE_ENCODING_FINAL_REPAIR_V1
+changed_files=6
+src/screens/HomeScreen.tsx
+src/screens/MeetingsScreen.tsx
+src/services/productShellMeetingService.ts
+src/services/commandWorkspaceSummaryService.ts
+src/edgeiq-os/race/services/meetingDetailFeed.ts
+src/edgeiq-os/race/services/scratchingsFeed.ts

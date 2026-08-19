@@ -1,0 +1,33 @@
+{
+  "checks": [
+    {
+      "check_id": "phase1a_inputs_available",
+      "detail": "Both Phase 1A inventory inputs exist.",
+      "status": "PASS"
+    },
+    {
+      "check_id": "checkpoint_archive_exclusion",
+      "detail": "Checkpoint, archive, backup and legacy paths excluded.",
+      "status": "PASS"
+    },
+    {
+      "check_id": "active_candidates_detected",
+      "detail": "shortlisted_candidates=2853",
+      "status": "PASS"
+    },
+    {
+      "check_id": "high_priority_candidates_detected",
+      "detail": "high_priority_candidates=714",
+      "status": "PASS"
+    },
+    {
+      "check_id": "essential_candidate_classes",
+      "detail": "all essential classes detected",
+      "status": "PASS"
+    }
+  ],
+  "generated_utc": "2026-07-27T03:10:59+00:00",
+  "overall_status": "PASS",
+  "program_id": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE1A_1_ACTIVE_SOURCE_FORENSICS_V1",
+  "program_version": "1.0.0"
+}

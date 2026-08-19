@@ -1,0 +1,11 @@
+{
+  "Horses": [
+    {
+      "id": "runner-s",
+      "FullName": "Scratched Runner",
+      "FinalPosition": null,
+      "status": "SCRATCHED",
+      "SplitTimes": []
+    }
+  ]
+}

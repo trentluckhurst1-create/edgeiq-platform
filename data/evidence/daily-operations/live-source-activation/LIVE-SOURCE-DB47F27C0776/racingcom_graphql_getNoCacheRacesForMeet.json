@@ -1,0 +1,14 @@
+{
+  "api_key_env_present": "NO",
+  "api_key_value_written": "NO",
+  "body_bytes": 129,
+  "body_path": "data\\evidence\\daily-operations\\live-source-activation\\LIVE-SOURCE-DB47F27C0776\\racingcom_graphql_getNoCacheRacesForMeet.body",
+  "body_sha256": "a24c315d94de0c2b9f62b27710bb7fab9aa26b44642284daf010e14d1fd88804",
+  "captured_at_utc": "2026-07-29T01:39:06Z",
+  "content_type": "application/json; charset=UTF-8",
+  "error": "HTTP_401:Unauthorized",
+  "latency_seconds": 0.091,
+  "name": "racingcom_graphql_getNoCacheRacesForMeet",
+  "status": "401",
+  "url": "https://graphql.rmdprod.racing.com/"
+}

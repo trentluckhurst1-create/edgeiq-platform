@@ -1,0 +1,13 @@
+metric,value
+status,PASS_VICTORIA_PERFORMANCE_INTELLIGENCE_COMPLETE
+builder_version,edgeiq_race_context_authority_fact_v1.1.0_official_visible_page_source
+target_races,2
+complete_race_context_races,2
+partial_or_blocked_races,0
+race_class_source_rows,2
+rail_position_source_rows,2
+primary_blocker,NONE
+identity_bridge_requirement,"A durable shared horse identifier is required: Racing Australia horse ID plus Racing.com horse_code mapping, or an Australian Stud Book identifier available in both sources. Name-only bridges remain rejected."
+output,public\data\edgeiq_race_context_authority_fact_v1.csv
+inventory_csv,docs\victoria-performance-intelligence-race-context-authority-v1\EDGEIQ_RACE_CONTEXT_SOURCE_INVENTORY_V1.csv
+trace_csv,docs\victoria-performance-intelligence-race-context-authority-v1\EDGEIQ_RACE_CONTEXT_TARGET_RACE_TRACE_V1.csv

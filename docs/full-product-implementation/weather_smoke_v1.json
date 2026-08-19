@@ -1,0 +1,20 @@
+{
+  "workspace": "WEATHER",
+  "url": "http://127.0.0.1:5176/",
+  "hasWeatherWorkspace": true,
+  "hasWeatherTitle": true,
+  "hasCurrentObservations": true,
+  "hasRaceDayContext": true,
+  "hasState": true,
+  "hasAuthority": true,
+  "hasObserved": true,
+  "hasUnavailableOrStaleMessage": true,
+  "rejectedPresent": [],
+  "bodyBackground": "rgb(255, 255, 255)",
+  "selectedMeeting": "Wangaratta",
+  "dataState": "Unavailable in UI for selected meeting; v1.2 live-weather audits preserve four governed physical sources as stale.",
+  "screenshotAttempt": {
+    "ok": false,
+    "error": "pageWeather.screenshot is not a function"
+  }
+}

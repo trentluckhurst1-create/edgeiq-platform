@@ -1,0 +1,28 @@
+{
+  "checks": [
+    {
+      "check_id": "graphql_authority_available",
+      "detail": "rows=879784; unique_runner_keys=879695",
+      "status": "PASS"
+    },
+    {
+      "check_id": "residual_sources_available",
+      "detail": "unavailable=NONE",
+      "status": "PASS"
+    },
+    {
+      "check_id": "week1_result_authority",
+      "detail": "decision=REQUIRES_RESULT_VALIDATION; raw_only=0; new_race_ids=0; completed_evidence_rows=630",
+      "status": "PARTIAL"
+    },
+    {
+      "check_id": "speed_sources_classified_as_enrichment",
+      "detail": "invalid_authority_sources=NONE",
+      "status": "PASS"
+    }
+  ],
+  "generated_utc": "2026-07-27T03:52:31+00:00",
+  "overall_status": "PARTIAL",
+  "program_id": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE1A_4_4_RESIDUAL_AUTHORITY_CORRECTED_POPULATION_PREVIEW_V1",
+  "program_version": "1.0.0"
+}

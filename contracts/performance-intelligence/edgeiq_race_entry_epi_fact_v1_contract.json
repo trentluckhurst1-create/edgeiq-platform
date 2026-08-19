@@ -1,0 +1,75 @@
+{
+  "contract_name": "edgeiq_race_entry_epi_fact_v1",
+  "contract_version": "1.0.0",
+  "grain": "one_governed_epi_row_per_fully_reconciled_race_entry",
+  "primary_key": [
+    "race_entry_epi_id"
+  ],
+  "natural_key": [
+    "race_entry_id"
+  ],
+  "required_fields": [
+    "race_entry_epi_id",
+    "race_entry_id",
+    "race_id",
+    "race_date",
+    "epi_methodology",
+    "epi_base_value",
+    "historical_performance_component_id",
+    "historical_performance_component_evidence_sha256",
+    "historical_performance_normalised_value",
+    "historical_performance_weight",
+    "historical_performance_weighted_value",
+    "suitability_component_id",
+    "suitability_component_evidence_sha256",
+    "suitability_normalised_value",
+    "suitability_weight",
+    "suitability_weighted_value",
+    "race_context_component_id",
+    "race_context_component_evidence_sha256",
+    "race_context_normalised_value",
+    "race_context_weight",
+    "race_context_weighted_value",
+    "total_component_weight",
+    "weighted_component_total",
+    "epi_value",
+    "epi_parameter_id",
+    "epi_publication_decision",
+    "epi_reconciliation_decision",
+    "epi_status",
+    "race_entry_epi_evidence_sha256",
+    "source_lineage",
+    "builder_version",
+    "contract_version",
+    "built_at_utc"
+  ],
+  "allowed_values": {
+    "epi_methodology": [
+      "NORMALISED_WEIGHTED_ADDITIVE_EPI_V1"
+    ],
+    "epi_publication_decision": [
+      "EPI_PUBLISHED"
+    ],
+    "epi_reconciliation_decision": [
+      "EPI_RECONCILED"
+    ],
+    "epi_status": [
+      "GOVERNED_RACE_ENTRY_EPI"
+    ]
+  },
+  "forbidden_fields": [
+    "epi_rank",
+    "runner_rank",
+    "race_rank",
+    "probability",
+    "fair_price",
+    "market_price",
+    "market_edge",
+    "confidence",
+    "prediction",
+    "forecast",
+    "recommendation",
+    "bet",
+    "tip"
+  ]
+}

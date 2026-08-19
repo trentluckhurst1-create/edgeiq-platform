@@ -1,0 +1,67 @@
+{
+  "audit_name": "EDGEiQ Performance Intelligence Phase 1.3 Canonical Horse Identity Evidence and Durability Audit",
+  "generated_utc": "2026-07-15T19:57:56.785342+00:00",
+  "audit_version": "HORSE_IDENTITY_EVIDENCE_AUDIT_V0_1",
+  "production_data_modified": false,
+  "raw_warehouse_snapshot": "eiq_warehouse_snapshot_b24578e0eb795ab6bd076452bfff3f5e",
+  "dimension_snapshot": "eiq_dimension_snapshot_f41e99df7d4a58cdb5f6da1cb1dc39c0",
+  "performance_rows": 879784,
+  "provider_runner_ids": 879695,
+  "reused_provider_runner_ids": 89,
+  "single_use_provider_runner_ids": 879606,
+  "provider_class_counts": {
+    "PROVIDER_ID_REUSED_NAME_STABLE": 89,
+    "PROVIDER_ID_SINGLE_USE": 879606
+  },
+  "normalised_horse_names": 95707,
+  "name_class_counts": {
+    "NAME_MULTIPLE_PROVIDER_IDS_REQUIRES_RESOLUTION": 82654,
+    "NAME_SINGLE_PROVIDER_SINGLE_RUN": 13053
+  },
+  "provider_identity_conflicts": 0,
+  "track_alias_candidates": 10,
+  "checks": [
+    {
+      "check": "PERFORMANCE_EVIDENCE_ROW_COUNT",
+      "passed": true,
+      "observed": 879784
+    },
+    {
+      "check": "PERFORMANCE_MAP_COMPLETE",
+      "passed": true,
+      "observed": 0
+    },
+    {
+      "check": "HORSE_EVIDENCE_COMPLETE",
+      "passed": true,
+      "observed": 0
+    },
+    {
+      "check": "CANONICAL_HORSE_IDS_NOT_FABRICATED",
+      "passed": true,
+      "observed": "ALL_CANONICAL_HORSE_IDS_BLANK"
+    },
+    {
+      "check": "AUTOMATIC_PROMOTION_DISABLED",
+      "passed": true,
+      "observed": "NO_IDENTITY_AUTO_PROMOTION"
+    },
+    {
+      "check": "TRACK_ALIAS_CHANGES_NOT_AUTOMATIC",
+      "passed": true,
+      "observed": 10
+    }
+  ],
+  "failed_checks": [],
+  "canonical_horse_status": "NOT_MATERIALISED_INSUFFICIENT_DURABLE_IDENTITY_EVIDENCE",
+  "finding": "Provider runner identifiers are predominantly performance-scoped or single-use evidence and cannot yet be treated as durable horse IDs.",
+  "canonical_status": "HORSE_IDENTITY_EVIDENCE_AUDIT_PASS",
+  "next_stage": "Phase 1.4 audit existing entity graphs and registration evidence for durable horse identity.",
+  "outputs": {
+    "provider_runner_profile": "docs/performance-intelligence/prototypes/phase1_3/edgeiq_provider_runner_identity_profile_v0_1_20260716_055716.csv",
+    "horse_name_profile": "docs/performance-intelligence/prototypes/phase1_3/edgeiq_horse_name_identity_profile_v0_1_20260716_055716.csv",
+    "performance_identity_evidence": "docs/performance-intelligence/prototypes/phase1_3/edgeiq_performance_horse_identity_evidence_v0_1_20260716_055716.csv",
+    "provider_conflicts": "docs/performance-intelligence/audits/phase1_3/edgeiq_provider_runner_identity_conflicts_v0_1_20260716_055716.csv",
+    "track_alias_candidates": "docs/performance-intelligence/audits/phase1_3/edgeiq_track_alias_candidates_v0_1_20260716_055716.csv"
+  }
+}

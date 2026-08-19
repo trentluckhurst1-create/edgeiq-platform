@@ -1,0 +1,23 @@
+{
+  "workspace": "06_PERFORMANCE",
+  "label": "PERFORMANCE",
+  "captureErrors": [],
+  "mounted": [
+    {
+      "component": "PerformanceWorkspace",
+      "key": "PERFORMANCE",
+      "tag": "SECTION",
+      "className": "eiq-race-workspace eiq-race-workspace--performance"
+    }
+  ],
+  "mountedComponent": "PerformanceWorkspace",
+  "mountedKey": "PERFORMANCE",
+  "selectedMeeting": "2026-07-17|WANGARATTA",
+  "selectedRace": null,
+  "activeSection": "performance",
+  "viewLevel": "race",
+  "runnerCount": 30,
+  "dataAvailability": "PARTIAL_OR_PENDING",
+  "bodySample": "EDGEiQ\nRACE INTELLIGENCE\nHOME\nMEETINGS\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nEPI\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nRESULTS\nLAB\nCOMPARE\nREVIEW\nSETTINGS\nEDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM\nInformation is not Intelligence. Evidence leads. Precision decides.\nSUN, 19 JULY 2026\n06:49 pm\nAEDT\nMEETINGS\nWANGARATTA\nRACE 1\nPERFORMANCE\nRace 1\nCurrent Race\nBack to Races\nLOCATION\nWangaratta\nDATE\n2026-07-17\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nEPI\nRESULTS\nREVIEW\nFIELD EPI MATRIX\nField structure loaded\nPERFORMANCE DNA\nAwaiting race-matched rows\nPEAK PERFORMANCES\nAwaiting race-matched rows\nTRENDS & PROFILES\nAwaiting race-matched rows\nRECORD BOOK\nAwaiting race-matched rows\nSECTIONALS\nAwaiting race-matched rows\nVIEW\nEPI\nERI\nEARLY SPEED\nLATE SPEED\nSTATUS\nAwaiting race-matched performance rows\nFIELD\n30\nHISTORICAL RUNS\nPending\nPERFORMANCE MATRIX\nRunner structure is visible while race-matched history is pending\nNO\tSILK\tHORSE\tEPI\tAVG\tLAST\tL5\tL4\tL3\tL2\tL1\n1\t\tLIMBERING\tPending\tPending\tPending\t-\t-\t-\t-\t-\n2\t\tHUGHIE\tPending\tPending\tPending\t-\t-\t-\t-\t-\n3\t\tDETERMINATO\tPending\tPending\tPending\t-\t-\t-\t-\t-\n4\t\tKING TAGALOA\tPending\tPending\tPending\t-\t-\t-\t-\t-\n5\t\tOBON\tPending\tPending\tPending\t-\t-\t-\t-\t-\n6\t\tREEL DEADLY\tPending\tPending\tPending\t-\t-\t-\t-\t-\n7\t\tRUSSIAN FIREBIRD\tPending\tPending\tPending\t-\t-\t-\t-\t-\n8\t\tSKY DEEL\tPending\tPending\tPending\t-\t-\t-\t-\t-\n9\t\tEXPANDING POWER\tPending\tPending\tPending\t-\t-\t-\t-\t-\n10\t\tCAPITAL STORM\tPending\tPending\tPending\t-\t-\t-\t-\t-\n11\t\tFONTALICIOUS\tPending\tPending\tPending\t-\t-\t-\t-\t-\n12\t\tMERCHANTESSA\tPending\tPending\tPending\t-\t-\t-\t-\t-\n13\t\tMIRADOR\tPending\tPending\tPending\t-\t-\t-\t-\t-\n14\t\tRUBY GUILD\tPending\tPending\tPending\t-\t-\t-\t-\t-\n15\t\tTRICKY MISS\tPending\tPending\tPending\t-\t-\t-\t-\t-\n16\t\tPORTINARI\tPending\tPending\tPending\t-\t-\t-\t-\t-\n17\t\tMINELLO\tPending\tPending\tPending\t-\t-\t-\t-\t-\n18\t\tPINAMILLOY\tPending\tPending\tPending\t-\t-\t-\t-\t-\n19\t\tRES MIRA\tPending\tPending\tPending\t-\t-\t-\t-\t-\n20\t\tSTINGRAY BARB\tPending\tPending\tPending\t-\t-\t-\t-\t-\n21\t\tZAAC\tPending\tPending\tPending\t-\t-\t-\t-\t-\n22\t\tBABY BLUE\tPending\tPending\tPending\t-\t-\t-\t-\t-\n23\t\tCONTARINI\tPending\tPending\tPending\t-\t-\t-\t-\t-\n24\t\tETERNAL JOY\tPending\tPending\tPending\t-\t-\t-\t-\t-\n25\t\tBIG FIN\tPending\tPending\tPending\t-\t-\t-\t-\t-\n26\t\tLEVRIER\tPending\tPending\tPending\t-\t-\t-\t-\t-\n27\t\tMARCH ON BY\tPending\tPending\tPending\t-\t-\t-\t-\t-\n28\t\tBLUE SHIELD\tPending\tPending\tPending\t-\t-\t-\t-\t-\n29\t\tCALEXPO\tPending\tPending\tPending\t-\t-\t-\t-\t-\n30\t\tCIRCUS BERZERKUS\tPending\tPending\tPending\t-\t-\t-\t-\t-\nStrong\nAround benchmark\nBelow benchmark\nAwaiting row\nEDGEiQ Racing Intelligence Operating System\nBuild: 1.0.0\nData as at: 06:49 pm AEDT",
+  "renderedPath": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-live-runtime/06_PERFORMANCE_LIVE_RENDERED.png"
+}

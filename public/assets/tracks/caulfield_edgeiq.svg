@@ -1,0 +1,277 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1420" role="img" aria-labelledby="title desc">
+  <title id="title">EDGEiQ Track Map - Caulfield</title>
+  <desc id="desc">Caulfield Course Proper and Caulfield Heath map rebuilt from the supplied official map geometry with EDGEiQ styling.</desc>
+  <defs>
+    <radialGradient id="bgGlow" cx="52%" cy="46%" r="70%">
+      <stop offset="0%" stop-color="#08182a" />
+      <stop offset="55%" stop-color="#07111f" />
+      <stop offset="100%" stop-color="#03070d" />
+    </radialGradient>
+    <linearGradient id="cardFill" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#07111f" stop-opacity="0.88" />
+      <stop offset="100%" stop-color="#03070d" stop-opacity="0.8" />
+    </linearGradient>
+    <filter id="trackGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#8af2da" flood-opacity="0.2"/>
+    </filter>
+    <filter id="softCardShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="24" flood-color="#000000" flood-opacity="0.34"/>
+    </filter>
+    <style><![CDATA[
+      svg { background:#03070d; }
+      .bg { fill:url(#bgGlow); }
+      .grain { opacity:.2; }
+      .eyebrow { font:700 18px Inter, Arial, sans-serif; letter-spacing:5px; fill:#8af2da; }
+      .title { font:900 66px Inter, Arial, sans-serif; letter-spacing:3px; fill:#ffffff; }
+      .subtitle { font:800 18px Inter, Arial, sans-serif; letter-spacing:3px; fill:#8af2da; }
+      .card { fill:url(#cardFill); stroke:rgba(138,242,218,.15); stroke-width:1; rx:18; filter:url(#softCardShadow); backdrop-filter:blur(8px); }
+      .table-head { font:800 13px Inter, Arial, sans-serif; letter-spacing:1.2px; fill:#8af2da; }
+      .table-label { font:800 15px Inter, Arial, sans-serif; letter-spacing:.5px; fill:#ffffff; }
+      .table-value { font:800 17px Inter, Arial, sans-serif; fill:#ffffff; }
+      .label { font:800 13px Inter, Arial, sans-serif; letter-spacing:2.5px; fill:#8af2da; }
+      .muted { fill:#a8b3c9; font:600 13px Inter, Arial, sans-serif; letter-spacing:.9px; }
+      .pill rect { fill:rgba(7,17,31,.72); stroke:rgba(138,242,218,.15); stroke-width:1; }
+      .pill-title { font:800 11px Inter, Arial, sans-serif; letter-spacing:1px; fill:#a8b3c9; }
+      .pill-value { font:800 20px Inter, Arial, sans-serif; fill:#ffffff; }
+      .pill-sub { font:800 10px Inter, Arial, sans-serif; letter-spacing:.7px; fill:#ffffff; }
+      .accent { fill:#8af2da; }
+      .line-icon { fill:none; stroke:#ffffff; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round; opacity:.94; }
+      .track-group { filter:url(#trackGlow); shape-rendering:geometricPrecision; }
+      .track-path { fill:none; stroke-linecap:round; stroke-linejoin:round; shape-rendering:geometricPrecision; }
+      .course-base { stroke:rgba(244,247,251,.92); stroke-width:16; }
+      .course-cut { stroke:#07111d; stroke-width:8; }
+      .course-edge { stroke:rgba(138,242,218,.45); stroke-width:1.25; }
+      .heath-base { stroke:rgba(124,242,138,.86); stroke-width:12; }
+      .heath-cut { stroke:#07111d; stroke-width:4.5; }
+      .heath-edge { stroke:rgba(138,242,218,.45); stroke-width:1; }
+      .surface-separator { fill:none; stroke:#06111f; stroke-width:16; stroke-linecap:round; stroke-linejoin:round; opacity:.98; shape-rendering:geometricPrecision; }
+      .start-dot { stroke:#06111f; stroke-width:1.8; }
+      .start-tick { fill:none; stroke-width:1.5; stroke-linecap:round; opacity:.88; }
+      .course-tick { stroke:#f4f7fb; }
+      .heath-tick { stroke:#8af2da; }
+      .course-dot { fill:#f2f4f7; }
+      .heath-dot { fill:#8af2da; }
+      .marker-text { font:900 17px Inter, Arial, sans-serif; letter-spacing:.15px; paint-order:stroke; stroke:#06111f; stroke-width:4; stroke-linejoin:round; }
+      .course-text { fill:#ffffff; }
+      .heath-text { fill:#8af2da; }
+      .winning-line { stroke:#ffffff; stroke-width:5; stroke-linecap:round; }
+      .winning-dot { fill:#b91c1c; stroke:#ffffff; stroke-width:3; }
+      .winning-text { font:900 19px Inter, Arial, sans-serif; fill:#ffffff; }
+      .legend-text { font:800 16px Inter, Arial, sans-serif; fill:#ffffff; }
+      .legend-line-course { stroke:#f2f4f7; stroke-width:12; stroke-linecap:round; }
+      .legend-line-heath { stroke:#8af2da; stroke-width:12; stroke-linecap:round; }
+      .panel-title { font:800 16px Inter, Arial, sans-serif; letter-spacing:3px; fill:#8af2da; }
+      .metric-label { font:800 11px Inter, Arial, sans-serif; letter-spacing:1px; fill:#a8b3c9; }
+      .metric-value { font:800 18px Inter, Arial, sans-serif; fill:#ffffff; }
+      .divider { stroke:rgba(168,179,201,.24); stroke-width:1; }
+    ]]></style>
+  </defs>
+
+  <rect class="bg" width="1024" height="1420" />
+  <g opacity="0.26">
+    <circle cx="190" cy="580" r="410" fill="#07111f" />
+    <circle cx="805" cy="880" r="380" fill="#03070d" />
+  </g>
+
+  <g id="header">
+    <text x="34" y="43" class="eyebrow">EDGEIQ TRACK MAP</text>
+    <text x="34" y="107" class="title">CAULFIELD</text>
+    <text x="35" y="146" class="subtitle">COURSE PROPER + CAULFIELD HEATH</text>
+    
+      <g class="pill">
+        <rect x="34" y="167" width="165" height="88" rx="10" />
+        <text x="106" y="198" class="pill-title">TRACK RATING</text>
+        <text x="106" y="225" class="pill-value">Soft 5</text>
+        
+      </g>
+    
+      <g class="line-icon" transform="translate(47,188)">
+        <path d="M18 7 C5 11 4 32 12 45 C20 57 39 57 47 45 C55 32 54 11 41 7" />
+        <path d="M18 7 L18 18 M41 7 L41 18" />
+        <circle cx="16" cy="24" r="1.8"/><circle cx="43" cy="24" r="1.8"/>
+      </g>
+    
+      <g class="pill">
+        <rect x="202" y="167" width="164" height="88" rx="10" />
+        <text x="266" y="198" class="pill-title">RAIL POSITION</text>
+        <text x="266" y="222" class="pill-value">+3m</text>
+        <text x="266" y="238" class="pill-sub">ENTIRE CIRCUIT</text>
+      </g>
+    
+      <g class="line-icon" transform="translate(218,183)">
+        <path d="M22 2 L22 55" />
+        <path d="M10 8 L34 8 M10 19 L34 19 M10 30 L34 30 M10 41 L34 41 M10 52 L34 52" />
+      </g>
+    
+      <g class="pill">
+        <rect x="369" y="167" width="126" height="88" rx="10" />
+        <text x="433" y="198" class="pill-title">UPDATED</text>
+        <text x="433" y="225" class="pill-value">7:30am</text>
+        
+      </g>
+    
+      <g class="line-icon" transform="translate(379,190)">
+        <circle cx="26" cy="26" r="20" />
+        <path d="M26 13 L26 27 L37 34" />
+      </g>
+  </g>
+
+  <g id="track-details-panel">
+    <rect x="520" y="38" width="492" height="154" rx="10" class="card" />
+    <text x="538" y="65" class="panel-title">TRACK DETAILS</text>
+    <text x="705" y="92" class="table-head">CIRC.</text>
+    <text x="805" y="92" class="table-head">WIDTH</text>
+    <text x="885" y="92" class="table-head">HOME STRAIGHT</text>
+    <line x1="535" y1="108" x2="998" y2="108" class="divider" />
+    <text x="538" y="137" class="table-label">COURSE PROPER</text>
+    <text x="708" y="137" class="table-value">2080m</text>
+    <text x="812" y="137" class="table-value">30m</text>
+    <text x="920" y="137" class="table-value">302m</text>
+    <line x1="535" y1="152" x2="998" y2="152" class="divider" />
+    <text x="538" y="180" class="table-label">CAULFIELD HEATH</text>
+    <text x="708" y="180" class="table-value">1870m</text>
+    <text x="812" y="180" class="table-value">28m</text>
+    <text x="920" y="180" class="table-value">308m</text>
+  </g>
+
+  <g id="legend">
+    <rect x="762" y="241" width="248" height="92" rx="10" class="card" />
+    <line x1="785" y1="270" x2="829" y2="270" class="legend-line-course" />
+    <text x="850" y="277" class="legend-text">COURSE PROPER</text>
+    <line x1="785" y1="305" x2="829" y2="305" class="legend-line-heath" />
+    <text x="850" y="312" class="legend-text">CAULFIELD HEATH</text>
+  </g>
+
+  <g id="caulfield-track" class="track-group">
+    <g id="course-proper-shape" aria-label="Course Proper clean geometry traced from supplied source">
+      <path d="M176 289 L171 520" class="track-path course-base" />
+      <path d="M171 520 C220 462 296 435 381 432 C439 430 489 441 531 466 L655 494" class="track-path course-base" />
+      <path d="M170 615 C172 585 181 562 198 541 C244 481 312 449 388 449 C456 449 510 474 556 514 L770 735 C799 765 820 795 828 832 C837 878 846 982 836 1022 C824 1077 782 1110 729 1115 L297 1115 C219 1094 163 1031 162 954 L170 615" class="track-path course-base" />
+      <path d="M535 466 L660 495" class="track-path course-base" />
+      <path d="M814 817 L852 827" class="track-path course-base" />
+      <path d="M832 1001 C825 1031 809 1053 790 1070" class="track-path course-base" />
+
+      <path d="M176 289 L171 520" class="track-path course-cut" />
+      <path d="M171 520 C220 462 296 435 381 432 C439 430 489 441 531 466 L655 494" class="track-path course-cut" />
+      <path d="M170 615 C172 585 181 562 198 541 C244 481 312 449 388 449 C456 449 510 474 556 514 L770 735 C799 765 820 795 828 832 C837 878 846 982 836 1022 C824 1077 782 1110 729 1115 L297 1115 C219 1094 163 1031 162 954 L170 615" class="track-path course-cut" />
+      <path d="M535 466 L660 495" class="track-path course-cut" />
+      <path d="M814 817 L852 827" class="track-path course-cut" />
+      <path d="M832 1001 C825 1031 809 1053 790 1070" class="track-path course-cut" />
+
+      <path d="M176 289 L171 520" class="track-path course-edge" />
+      <path d="M171 520 C220 462 296 435 381 432 C439 430 489 441 531 466 L655 494" class="track-path course-edge" />
+      <path d="M170 615 C172 585 181 562 198 541 C244 481 312 449 388 449 C456 449 510 474 556 514 L770 735 C799 765 820 795 828 832 C837 878 846 982 836 1022 C824 1077 782 1110 729 1115 L297 1115 C219 1094 163 1031 162 954 L170 615" class="track-path course-edge" />
+      <path d="M535 466 L660 495" class="track-path course-edge" />
+      <path d="M814 817 L852 827" class="track-path course-edge" />
+      <path d="M832 1001 C825 1031 809 1053 790 1070" class="track-path course-edge" />
+    </g>
+    <g id="surface-separation" aria-label="Background separator between Course Proper and Caulfield Heath">
+      <path d="M184 557 C228 502 302 470 384 466 C429 464 472 472 512 489" class="surface-separator" />
+      <path d="M770 767 C800 809 811 858 812 936 C813 996 795 1032 758 1057" class="surface-separator" />
+    </g>
+    <g id="caulfield-heath-shape" aria-label="Caulfield Heath clean geometry traced from supplied source">
+      <path d="M210 289 L207 488" class="track-path heath-base" />
+      <path d="M246 572 C290 518 348 497 417 501 C474 504 518 526 556 565 L758 779 C787 812 800 850 805 938 C809 1006 783 1055 733 1078 C708 1089 680 1087 650 1088 L302 1087 C235 1082 194 1034 190 967 L202 650 C204 620 219 593 246 572" class="track-path heath-base" />
+
+      <path d="M210 289 L207 488" class="track-path heath-cut" />
+      <path d="M246 572 C290 518 348 497 417 501 C474 504 518 526 556 565 L758 779 C787 812 800 850 805 938 C809 1006 783 1055 733 1078 C708 1089 680 1087 650 1088 L302 1087 C235 1082 194 1034 190 967 L202 650 C204 620 219 593 246 572" class="track-path heath-cut" />
+
+      <path d="M210 289 L207 488" class="track-path heath-edge" />
+      <path d="M246 572 C290 518 348 497 417 501 C474 504 518 526 556 565 L758 779 C787 812 800 850 805 938 C809 1006 783 1055 733 1078 C708 1089 680 1087 650 1088 L302 1087 C235 1082 194 1034 190 967 L202 650 C204 620 219 593 246 572" class="track-path heath-edge" />
+    </g>
+    <g id="distance-markers">
+      <line x1="154" y1="341" x2="166" y2="341" class="start-tick course-tick" />
+      <circle cx="164" cy="341" r="4" class="start-dot course-dot" />
+      <text x="82" y="348" class="marker-text course-text" text-anchor="start">1200M</text>
+      <line x1="156" y1="430" x2="168" y2="430" class="start-tick course-tick" />
+      <circle cx="166" cy="430" r="4" class="start-dot course-dot" />
+      <text x="82" y="436" class="marker-text course-text" text-anchor="start">1100M</text>
+      <line x1="156" y1="520" x2="168" y2="520" class="start-tick course-tick" />
+      <circle cx="166" cy="520" r="4" class="start-dot course-dot" />
+      <text x="82" y="526" class="marker-text course-text" text-anchor="start">1000M</text>
+      <line x1="647" y1="491" x2="647" y2="504" class="start-tick course-tick" />
+      <circle cx="648" cy="502" r="4" class="start-dot course-dot" />
+      <text x="676" y="508" class="marker-text course-text" text-anchor="start">1400M</text>
+      <line x1="696" y1="675" x2="708" y2="672" class="start-tick course-tick" />
+      <circle cx="706" cy="676" r="4" class="start-dot course-dot" />
+      <text x="743" y="686" class="marker-text course-text" text-anchor="start">1600M</text>
+      <line x1="765" y1="758" x2="777" y2="754" class="start-tick course-tick" />
+      <circle cx="773" cy="754" r="4" class="start-dot course-dot" />
+      <text x="779" y="766" class="marker-text course-text" text-anchor="start">1700M</text>
+      <line x1="835" y1="821" x2="847" y2="824" class="start-tick course-tick" />
+      <circle cx="842" cy="824" r="4" class="start-dot course-dot" />
+      <text x="858" y="830" class="marker-text course-text" text-anchor="start">1800M</text>
+      <line x1="827" y1="1044" x2="839" y2="1049" class="start-tick course-tick" />
+      <circle cx="833" cy="1048" r="4" class="start-dot course-dot" />
+      <text x="858" y="1070" class="marker-text course-text" text-anchor="start">2000M</text>
+      <line x1="392" y1="1128" x2="392" y2="1140" class="start-tick course-tick" />
+      <circle cx="392" cy="1138" r="4" class="start-dot course-dot" />
+      <text x="365" y="1176" class="marker-text course-text" text-anchor="start">2400M</text>
+
+      <line x1="210" y1="322" x2="210" y2="334" class="start-tick heath-tick" />
+      <circle cx="210" cy="332" r="4" class="start-dot heath-dot" />
+      <text x="237" y="338" class="marker-text heath-text" text-anchor="start">1200M</text>
+      <line x1="210" y1="405" x2="210" y2="417" class="start-tick heath-tick" />
+      <circle cx="210" cy="415" r="4" class="start-dot heath-dot" />
+      <text x="224" y="423" class="marker-text heath-text" text-anchor="start">1100M</text>
+      <line x1="735" y1="789" x2="746" y2="782" class="start-tick heath-tick" />
+      <circle cx="742" cy="784" r="4" class="start-dot heath-dot" />
+      <text x="662" y="800" class="marker-text heath-text" text-anchor="start">1500M</text>
+      <line x1="768" y1="865" x2="779" y2="861" class="start-tick heath-tick" />
+      <circle cx="776" cy="862" r="4" class="start-dot heath-dot" />
+      <text x="704" y="880" class="marker-text heath-text" text-anchor="start">1600M</text>
+      <line x1="790" y1="959" x2="802" y2="958" class="start-tick heath-tick" />
+      <circle cx="800" cy="958" r="4" class="start-dot heath-dot" />
+      <text x="704" y="974" class="marker-text heath-text" text-anchor="start">1800M</text>
+      <line x1="724" y1="1065" x2="724" y2="1077" class="start-tick heath-tick" />
+      <circle cx="724" cy="1075" r="4" class="start-dot heath-dot" />
+      <text x="692" y="1065" class="marker-text heath-text" text-anchor="start">1800M</text>
+      <line x1="456" y1="1067" x2="456" y2="1079" class="start-tick heath-tick" />
+      <circle cx="456" cy="1077" r="4" class="start-dot heath-dot" />
+      <text x="425" y="1055" class="marker-text heath-text" text-anchor="start">2200M</text>
+    </g>
+    <g id="winning-post">
+      <line x1="648" y1="1044" x2="648" y2="1138" class="winning-line" />
+      <circle cx="648" cy="1044" r="20" class="winning-dot" />
+      <text x="648" y="1052" class="winning-text" text-anchor="middle">W</text>
+      <text x="648" y="1165" class="winning-text" text-anchor="middle">Winning Post</text>
+    </g>
+  </g>
+
+  <g id="meeting-conditions-panel">
+    <rect x="26" y="1210" width="970" height="150" rx="12" class="card" />
+    <text x="45" y="1242" class="panel-title">MEETING CONDITIONS</text>
+    <g transform="translate(52,1264)">
+      
+      <g class="line-icon" transform="translate(0,8)">
+        <path d="M18 7 C5 11 4 32 12 45 C20 57 39 57 47 45 C55 32 54 11 41 7" />
+        <path d="M18 7 L18 18 M41 7 L41 18" />
+        <circle cx="16" cy="24" r="1.8"/><circle cx="43" cy="24" r="1.8"/>
+      </g>
+      <text x="61" y="22" class="metric-label">TRACK RATING</text>
+      <text x="61" y="51" class="metric-value">Soft 5</text>
+      <line x1="150" y1="0" x2="150" y2="76" class="divider" />
+      
+      <g class="line-icon" transform="translate(170,8)">
+        <path d="M22 2 L22 55" />
+        <path d="M10 8 L34 8 M10 19 L34 19 M10 30 L34 30 M10 41 L34 41 M10 52 L34 52" />
+      </g>
+      <text x="221" y="22" class="metric-label">RAIL</text>
+      <text x="221" y="51" class="metric-value">+3m Entire</text>
+      <line x1="330" y1="0" x2="330" y2="76" class="divider" />
+      <text x="354" y="22" class="metric-label">RAINFALL (7D)</text>
+      <text x="354" y="51" class="metric-value">35mm</text>
+      <line x1="470" y1="0" x2="470" y2="76" class="divider" />
+      <text x="494" y="22" class="metric-label">IRRIGATION (7D)</text>
+      <text x="494" y="51" class="metric-value">52mm</text>
+      <line x1="626" y1="0" x2="626" y2="76" class="divider" />
+      <text x="650" y="22" class="metric-label">WIND</text>
+      <text x="650" y="51" class="metric-value">--</text>
+      <line x1="738" y1="0" x2="738" y2="76" class="divider" />
+      <text x="762" y="22" class="metric-label">TEMPERATURE</text>
+      <text x="762" y="51" class="metric-value">--</text>
+    </g>
+  </g>
+
+  <!-- Vector geometry source: user-supplied official Caulfield map PNG. No raster image or external branding is embedded. -->
+</svg>

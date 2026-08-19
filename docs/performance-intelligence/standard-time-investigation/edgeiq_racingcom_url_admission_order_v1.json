@@ -1,0 +1,73 @@
+{
+  "generated_utc": "2026-07-22T07:37:03.684851+00:00",
+  "governance": {
+    "read_only": true,
+    "network_access_performed": false,
+    "production_builder_executed": false,
+    "builder_modified": false,
+    "cache_modified": false,
+    "governed_output_modified": false
+  },
+  "builder": {
+    "max_fetches": 50
+  },
+  "historical_run": {
+    "run_timestamp_utc": "2026-05-15T04:09:05+00:00",
+    "candidate_rows": "1876",
+    "direct_csv_candidates": "1368",
+    "unique_csv_urls": "1368",
+    "fetch_attempts": "50",
+    "csvs_fetched_or_cached": "8",
+    "csv_fetch_failures": "42",
+    "csvs_parsed": "8",
+    "rows_parsed": "80"
+  },
+  "current_population": {
+    "unique_csv_urls": 1296,
+    "first_50_rows": 50,
+    "distinct_hosts": 1,
+    "distinct_race_dates": 31,
+    "distinct_tracks": 44,
+    "expected_filename_pattern_count": 1296
+  },
+  "population_drift": {
+    "historical_unique_urls": 1368,
+    "current_unique_urls": 1296,
+    "current_minus_historical": -72
+  },
+  "historical_success_sources": {
+    "distinct_source_urls": 8,
+    "present_in_current_candidates": 8,
+    "absent_from_current_candidates": 0,
+    "within_current_first_50": 8,
+    "minimum_current_position": 1,
+    "maximum_current_position": 11
+  },
+  "first_50_profile": {
+    "dates": {
+      "2026-05-01": 12,
+      "2026-05-30": 26,
+      "2026-05-31": 12
+    },
+    "tracks": {
+      "Caulfield": 12,
+      "Hawker": 12,
+      "Ladbrokes Geelong": 12,
+      "Morphettville": 2,
+      "Sportsbet Sandown Lakeside": 12
+    },
+    "discovery_methods": {
+      "KNOWN_DIRECT_CSV_MEETING": 12,
+      "MEETCODE_DERIVED_CLOUDFRONT": 38
+    },
+    "hosts": {
+      "d3qmfyv6ad9vwv.cloudfront.net": 50
+    }
+  },
+  "url_set_counts": {
+    "current_urls": 1296,
+    "historical_success_urls": 8,
+    "historical_success_urls_still_current": 8
+  },
+  "decision": "HISTORICAL_SUCCESS_URLS_RECONSTRUCTED"
+}

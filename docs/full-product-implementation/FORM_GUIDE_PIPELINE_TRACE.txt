@@ -1,0 +1,1522 @@
+EDGEIQ FORM GUIDE PIPELINE TRACE
+==============================================================================================================
+TARGET_BUILDER=C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\build_edgeiq_epi_workspace_terminal_feed_v1.py
+
+BUILDER CONSTANTS
+--------------------------------------------------------------------------------------------------------------
+CATALOG="DATA / 'edgeiq_three_day_product_catalog_v1.json'"
+FORM_GUIDE="DATA / 'edgeiq_form_guide_enriched_v2.json'"
+OUT="DATA / 'edgeiq_epi_workspace_terminal_feed_v1.csv'"
+SUMMARY="DATA / 'edgeiq_epi_workspace_terminal_feed_summary_v1.csv'"
+TRACE="DATA / 'edgeiq_epi_workspace_engineering_build_v1_trace.txt'"
+
+FORM-GUIDE-RELATED FILES
+--------------------------------------------------------------------------------------------------------------
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_all_runner_form_guide_v1_audit.json | modified=1783833627.3422832 | size=5181
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_form_guide_current_intelligence_coverage.json | modified=1783803253.2095037 | size=1927
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_form_guide_current_intelligence_join_audit.json | modified=1783803253.1889107 | size=1288746
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_form_guide_data_contract_v2_audit.json | modified=1784089300.0836978 | size=2287
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_form_guide_engineering_build_v1_audit.json | modified=1784089300.1744778 | size=812
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_form_guide_enriched_v1.json | modified=1783717128.9466333 | size=5185719
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_form_guide_enriched_v2.json | modified=1784508917.1864984 | size=21713571
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_form_guide_enriched_v2_CHECKPOINT_BEFORE_CURRENT_INTEL_REBUILD_20260711_154418.json | modified=1783745659.2802765 | size=20804677
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_form_guide_enriched_v2_CHECKPOINT_BEFORE_CURRENT_INTEL_REBUILD_20260711_163748.json | modified=1783750579.3443944 | size=20930692
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_form_guide_enriched_v2_CHECKPOINT_BEFORE_CURRENT_INTEL_REBUILD_20260711_193502.json | modified=1783751945.495443 | size=20930692
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_form_guide_enriched_v2_CHECKPOINT_BEFORE_CURRENT_INTEL_REBUILD_20260711_211017.json | modified=1783768100.6898322 | size=21009200
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_form_guide_enriched_v2_CHECKPOINT_BEFORE_CURRENT_INTEL_REBUILD_20260712_065207.json | modified=1783800985.7260473 | size=21542307
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_form_guide_rebuild_v1_audit.json | modified=1783879440.9333475 | size=2479
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_form_guide_v2_1_audit.json | modified=1783672490.9122734 | size=6772
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_form_guide_v2_audit.json | modified=1783661940.8119078 | size=5105
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_form_guide_v3_3_audit.json | modified=1783732640.1406283 | size=540
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_form_guide_v3_4_engine_registry.json | modified=1784508917.1962168 | size=22543
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_form_guide_v3_4_engine_wiring_audit.json | modified=1783879431.475546 | size=217
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_form_guide_v3_4_join_diagnosis.json | modified=1783745694.9814281 | size=90386
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_form_guide_v3_audit.json | modified=1783879434.2815323 | size=4262
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_form_guide_visual_structure_v2_audit.json | modified=1784089300.164434 | size=915
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\FORM_GUIDE_FINAL_LOCKED_V2_AUDIT_SUMMARY.json | modified=1784526402.5174398 | size=147
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\product-specification\FORM_GUIDE_APPROVED_PIXEL_MEASUREMENT_V1.json | modified=1784518355.3927858 | size=5434
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\product-specification\FORM_GUIDE_APPROVED_PIXEL_SPEC_V1.json | modified=1784518424.8164961 | size=10545
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\product-specification\FORM_GUIDE_EXACT_COMPATIBILITY_PATCH_V1.json | modified=1784519397.3363109 | size=110
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\product-specification\FORM_GUIDE_EXACT_INTERACTIONS_APPLY_V1.json | modified=1784518728.9053135 | size=608
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\product-specification\FORM_GUIDE_EXACT_STRUCTURE_APPLY_V1.json | modified=1784518546.6865606 | size=866
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\product-specification\FORM_GUIDE_EXACT_STYLES_APPLY_V1.json | modified=1784518692.6139033 | size=273
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\product-specification\FORM_GUIDE_EXACT_TEXT_APPLY_MUTATIONS_V1.json | modified=1784518764.8965611 | size=226
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\product-specification\FORM_GUIDE_EXACT_TEXT_APPLY_V1.json | modified=1784518764.9862506 | size=927
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\product-specification\FORM_GUIDE_EXACT_VIEW_MODEL_APPLY_V1.json | modified=1784518728.7466097 | size=3265
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\product-specification\FORM_GUIDE_FINAL_INTERACTIONS_APPLY_V2.json | modified=1784523805.846128 | size=463
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\product-specification\FORM_GUIDE_FINAL_LAYOUT_APPLY_V2.json | modified=1784523804.9081273 | size=376
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\product-specification\FORM_GUIDE_FINAL_LOCKED_SPEC_V2.json | modified=1784523480.3606346 | size=1552
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\product-specification\FORM_GUIDE_FINAL_MATCH_PROFILE_APPLY_V2.json | modified=1784523805.1492105 | size=574
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\product-specification\FORM_GUIDE_FINAL_MEASURE_V2.json | modified=1784523945.577007 | size=357
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\product-specification\FORM_GUIDE_FINAL_RECENT_FORM_APPLY_V2.json | modified=1784523805.3846948 | size=470
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\product-specification\FORM_GUIDE_FINAL_RUNNER_HERO_APPLY_V2.json | modified=1784523766.0908475 | size=102
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\product-specification\FORM_GUIDE_FINAL_TABLE_APPLY_V2.json | modified=1784523655.2399793 | size=172
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\product-specification\FORM_GUIDE_FINAL_VIEW_MODEL_APPLY_V2.json | modified=1784523805.6054406 | size=474
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\product-specification\EDGEIQ_APPROVED_UI_REBUILD\05_FORM_GUIDE_MEASUREMENTS.json | modified=1784428387.021185 | size=4453
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\screenshots\approved-ui-rebuild\05_FORM_GUIDE_COMPARISON.json | modified=1784446892.8114545 | size=5037
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\screenshots\approved-ui-rebuild\05_FORM_GUIDE_R1_COMPARISON.json | modified=1784438122.9112043 | size=4762
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\screenshots\final-live-runtime\05_FORM_GUIDE_COMPARISON.json | modified=1784451045.866612 | size=5036
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\screenshots\final-live-runtime\05_FORM_GUIDE_LIVE_RUNTIME.json | modified=1784450987.083444 | size=5064
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\screenshots\form-guide-exact\05_FORM_GUIDE_RUNTIME.json | modified=1784519581.6782541 | size=5982
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\screenshots\form-guide-final-locked\05_FORM_GUIDE_CAPTURE_SUMMARY.json | modified=1784526389.328718 | size=495
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\screenshots\form-guide-final-locked\05_FORM_GUIDE_CONSOLE.json | modified=1784526384.9551167 | size=517
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\screenshots\form-guide-final-locked\05_FORM_GUIDE_DOM_GEOMETRY.json | modified=1784526384.9433477 | size=3022
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\screenshots\form-guide-final-locked\05_FORM_GUIDE_NETWORK.json | modified=1784526384.9556415 | size=768
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\screenshots\form-guide-final-locked\05_FORM_GUIDE_RUNTIME.json | modified=1784526384.9551167 | size=4091
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\dist\data\edgeiq_all_runner_form_guide_v1_audit.json | modified=1783833627.3422832 | size=5181
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\dist\data\edgeiq_form_guide_current_intelligence_coverage.json | modified=1783803253.2095037 | size=1927
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\dist\data\edgeiq_form_guide_current_intelligence_join_audit.json | modified=1783803253.1889107 | size=1288746
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\dist\data\edgeiq_form_guide_data_contract_v2_audit.json | modified=1784089300.0836978 | size=2287
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\dist\data\edgeiq_form_guide_engineering_build_v1_audit.json | modified=1784089300.1744778 | size=812
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\dist\data\edgeiq_form_guide_enriched_v1.json | modified=1783717128.9466333 | size=5185719
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\dist\data\edgeiq_form_guide_enriched_v2.json | modified=1784508917.1864984 | size=21713571
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\dist\data\edgeiq_form_guide_enriched_v2_CHECKPOINT_BEFORE_CURRENT_INTEL_REBUILD_20260711_154418.json | modified=1783745659.2802765 | size=20804677
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\dist\data\edgeiq_form_guide_enriched_v2_CHECKPOINT_BEFORE_CURRENT_INTEL_REBUILD_20260711_163748.json | modified=1783750579.3443944 | size=20930692
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\dist\data\edgeiq_form_guide_enriched_v2_CHECKPOINT_BEFORE_CURRENT_INTEL_REBUILD_20260711_193502.json | modified=1783751945.495443 | size=20930692
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\dist\data\edgeiq_form_guide_enriched_v2_CHECKPOINT_BEFORE_CURRENT_INTEL_REBUILD_20260711_211017.json | modified=1783768100.6898322 | size=21009200
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\dist\data\edgeiq_form_guide_enriched_v2_CHECKPOINT_BEFORE_CURRENT_INTEL_REBUILD_20260712_065207.json | modified=1783800985.7260473 | size=21542307
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\dist\data\edgeiq_form_guide_rebuild_v1_audit.json | modified=1783879440.9333475 | size=2479
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\dist\data\edgeiq_form_guide_v2_1_audit.json | modified=1783672490.9122734 | size=6772
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\dist\data\edgeiq_form_guide_v2_audit.json | modified=1783661940.8119078 | size=5105
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\dist\data\edgeiq_form_guide_v3_3_audit.json | modified=1783732640.1406283 | size=540
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\dist\data\edgeiq_form_guide_v3_4_engine_registry.json | modified=1784508917.1962168 | size=22543
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\dist\data\edgeiq_form_guide_v3_4_engine_wiring_audit.json | modified=1783879431.475546 | size=217
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\dist\data\edgeiq_form_guide_v3_4_join_diagnosis.json | modified=1783745694.9814281 | size=90386
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\dist\data\edgeiq_form_guide_v3_audit.json | modified=1783879434.2815323 | size=4262
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\dist\data\edgeiq_form_guide_visual_structure_v2_audit.json | modified=1784089300.164434 | size=915
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FORM_GUIDE_FINAL_LOCKED_REBUILD_20260720_144952\docs_full-product-implementation_screenshots_form-guide-exact_05_FORM_GUIDE_RUNTIME.json | modified=1784519581.6782541 | size=5982
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FORM_GUIDE_FINAL_LOCKED_REBUILD_20260720_144952\docs_product-specification_FORM_GUIDE_APPROVED_PIXEL_SPEC_V1.json | modified=1784518424.8164961 | size=10545
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\edgeiq_beta_readiness_lock_20260715_151703\public\data\edgeiq_form_guide_enriched_v2.json | modified=1784092131.8634744 | size=21713571
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\edgeiq_beta_readiness_before_feed_refresh_20260715_150213\public\data\edgeiq_form_guide_enriched_v2.json | modified=1783821065.029482 | size=21713616
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\public\data\edgeiq_all_runner_form_guide_v1_audit.json | modified=1783833627.3422832 | size=5181
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\public\data\edgeiq_form_guide_current_intelligence_coverage.json | modified=1783803253.2095037 | size=1927
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\public\data\edgeiq_form_guide_current_intelligence_join_audit.json | modified=1783803253.1889107 | size=1288746
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\public\data\edgeiq_form_guide_data_contract_v2_audit.json | modified=1784089300.0836978 | size=2287
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\public\data\edgeiq_form_guide_engineering_build_v1_audit.json | modified=1784089300.1744778 | size=812
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\public\data\edgeiq_form_guide_enriched_v1.json | modified=1783717128.9466333 | size=5185719
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\public\data\edgeiq_form_guide_enriched_v2.json | modified=1784247993.6261528 | size=21713571
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\public\data\edgeiq_form_guide_enriched_v2_CHECKPOINT_BEFORE_CURRENT_INTEL_REBUILD_20260711_154418.json | modified=1783745659.2802765 | size=20804677
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\public\data\edgeiq_form_guide_enriched_v2_CHECKPOINT_BEFORE_CURRENT_INTEL_REBUILD_20260711_163748.json | modified=1783750579.3443944 | size=20930692
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\public\data\edgeiq_form_guide_enriched_v2_CHECKPOINT_BEFORE_CURRENT_INTEL_REBUILD_20260711_193502.json | modified=1783751945.495443 | size=20930692
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\public\data\edgeiq_form_guide_enriched_v2_CHECKPOINT_BEFORE_CURRENT_INTEL_REBUILD_20260711_211017.json | modified=1783768100.6898322 | size=21009200
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\public\data\edgeiq_form_guide_enriched_v2_CHECKPOINT_BEFORE_CURRENT_INTEL_REBUILD_20260712_065207.json | modified=1783800985.7260473 | size=21542307
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\public\data\edgeiq_form_guide_rebuild_v1_audit.json | modified=1783879440.9333475 | size=2479
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\public\data\edgeiq_form_guide_v2_1_audit.json | modified=1783672490.9122734 | size=6772
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\public\data\edgeiq_form_guide_v2_audit.json | modified=1783661940.8119078 | size=5105
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\public\data\edgeiq_form_guide_v3_3_audit.json | modified=1783732640.1406283 | size=540
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\public\data\edgeiq_form_guide_v3_4_engine_registry.json | modified=1784247993.640245 | size=22543
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\public\data\edgeiq_form_guide_v3_4_engine_wiring_audit.json | modified=1783879431.475546 | size=217
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\public\data\edgeiq_form_guide_v3_4_join_diagnosis.json | modified=1783745694.9814281 | size=90386
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\public\data\edgeiq_form_guide_v3_audit.json | modified=1783879434.2815323 | size=4262
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\public\data\edgeiq_form_guide_visual_structure_v2_audit.json | modified=1784089300.164434 | size=915
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\docs\full-product-implementation\screenshots\approved-ui-rebuild\05_FORM_GUIDE_COMPARISON.json | modified=1784446892.8114545 | size=5037
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\docs\full-product-implementation\screenshots\approved-ui-rebuild\05_FORM_GUIDE_R1_COMPARISON.json | modified=1784438122.9112043 | size=4762
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\docs\full-product-implementation\screenshots\final-live-runtime\05_FORM_GUIDE_COMPARISON.json | modified=1784451045.866612 | size=5036
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\docs\full-product-implementation\screenshots\final-live-runtime\05_FORM_GUIDE_LIVE_RUNTIME.json | modified=1784450987.083444 | size=5064
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_form_guide_current_intelligence_coverage.csv | modified=1783803253.2095037 | size=681
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_form_guide_current_intelligence_join_audit.csv | modified=1783803253.2085035 | size=727885
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_form_guide_enriched_v1.csv | modified=1783717128.8875453 | size=89831
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_form_guide_enriched_v2.csv | modified=1784508917.1929915 | size=40536
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_form_guide_exact_conformance_audit_v1.csv | modified=1784519595.4876974 | size=2305
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_form_guide_exact_conformance_audit_v1_summary.csv | modified=1784519595.4876974 | size=123
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_form_guide_expansion_v1_audit.csv | modified=1782932726.7968152 | size=283
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_form_guide_table_structure_audit_summary_v1.csv | modified=1783879366.7079854 | size=37
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_form_guide_table_structure_audit_v1.csv | modified=1783879366.7079854 | size=333
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_form_guide_v1_audit.csv | modified=1782930885.9049358 | size=290
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_form_guide_v2_1_coverage.csv | modified=1783717128.8915455 | size=2607
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_form_guide_v2_1_join_audit.csv | modified=1783717128.8905458 | size=79619
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_form_guide_v2_1_source_inventory.csv | modified=1783717128.881042 | size=205839
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_form_guide_v3_3_coverage.csv | modified=1783729352.6864533 | size=43278
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_form_guide_v3_3_join_audit.csv | modified=1783729352.6834493 | size=119301
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_form_guide_v3_3_source_inventory.csv | modified=1783729352.679321 | size=10077
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_form_guide_v3_4_coverage.csv | modified=1784508917.1962168 | size=2427
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_form_guide_v3_4_engine_join_audit.csv | modified=1784508917.1929915 | size=52961
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_form_guide_v3_4_engine_registry.csv | modified=1784508917.1962168 | size=15126
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_form_guide_v3_4_join_failures.csv | modified=1783745694.9829347 | size=99781
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\edgeiq_form_guide_final_spec_audit_v1.csv | modified=1784526514.7069778 | size=1267
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\FORM_GUIDE_FINAL_DATA_BINDING_MATRIX.csv | modified=1784523480.3681526 | size=4689
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\FORM_GUIDE_FINAL_LOCKED_V2_AUDIT.csv | modified=1784526402.5174398 | size=1055
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\FORM_GUIDE_HISTORICAL_EPI_AMBIGUITY_FORENSIC_AUDIT.csv | modified=1784538681.657796 | size=86900
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\FORM_GUIDE_HISTORICAL_EPI_CANONICAL_TRACK_PREFLIGHT.csv | modified=1784538435.7787795 | size=438659
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\FORM_GUIDE_HISTORICAL_EPI_MISMATCH_DETAIL_AUDIT.csv | modified=1784538301.5979161 | size=1355092
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\product-specification\FORM_GUIDE_APPROVED_GEOMETRY_V1.csv | modified=1784518424.8164961 | size=1629
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\product-specification\FORM_GUIDE_APPROVED_PIXEL_MEASUREMENT_V1.csv | modified=1784518355.3927858 | size=819
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\product-specification\FORM_GUIDE_APPROVED_TEXT_SPEC_V1.csv | modified=1784518424.8164961 | size=1201
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\product-specification\FORM_GUIDE_FINAL_COLOURS_V2.csv | modified=1784523480.3641405 | size=261
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\product-specification\FORM_GUIDE_FINAL_GEOMETRY_V2.csv | modified=1784523480.3621373 | size=632
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\product-specification\FORM_GUIDE_FINAL_TABLE_COLUMNS_V2.csv | modified=1784523480.365645 | size=1223
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\product-specification\FORM_GUIDE_FINAL_TEXT_V2.csv | modified=1784523480.3641405 | size=216
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\product-specification\FORM_GUIDE_FINAL_TYPOGRAPHY_V2.csv | modified=1784523480.3641405 | size=288
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\screenshots\form-guide-exact\05_FORM_GUIDE_REGION_DIFF.csv | modified=1784519581.6782541 | size=866
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\screenshots\form-guide-final-locked\05_FORM_GUIDE_REGION_DIFF.csv | modified=1784526389.32721 | size=204
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\dist\data\edgeiq_form_guide_current_intelligence_coverage.csv | modified=1783803253.2095037 | size=681
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\dist\data\edgeiq_form_guide_current_intelligence_join_audit.csv | modified=1783803253.2085035 | size=727885
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\dist\data\edgeiq_form_guide_enriched_v1.csv | modified=1783717128.8875453 | size=89831
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\dist\data\edgeiq_form_guide_enriched_v2.csv | modified=1784508917.1929915 | size=40536
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\dist\data\edgeiq_form_guide_exact_conformance_audit_v1.csv | modified=1784519595.4876974 | size=2305
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\dist\data\edgeiq_form_guide_exact_conformance_audit_v1_summary.csv | modified=1784519595.4876974 | size=123
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\dist\data\edgeiq_form_guide_expansion_v1_audit.csv | modified=1782932726.7968152 | size=283
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\dist\data\edgeiq_form_guide_table_structure_audit_summary_v1.csv | modified=1783879366.7079854 | size=37
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\dist\data\edgeiq_form_guide_table_structure_audit_v1.csv | modified=1783879366.7079854 | size=333
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\dist\data\edgeiq_form_guide_v1_audit.csv | modified=1782930885.9049358 | size=290
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\dist\data\edgeiq_form_guide_v2_1_coverage.csv | modified=1783717128.8915455 | size=2607
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\dist\data\edgeiq_form_guide_v2_1_join_audit.csv | modified=1783717128.8905458 | size=79619
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\dist\data\edgeiq_form_guide_v2_1_source_inventory.csv | modified=1783717128.881042 | size=205839
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\dist\data\edgeiq_form_guide_v3_3_coverage.csv | modified=1783729352.6864533 | size=43278
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\dist\data\edgeiq_form_guide_v3_3_join_audit.csv | modified=1783729352.6834493 | size=119301
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\dist\data\edgeiq_form_guide_v3_3_source_inventory.csv | modified=1783729352.679321 | size=10077
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\dist\data\edgeiq_form_guide_v3_4_coverage.csv | modified=1784508917.1962168 | size=2427
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\dist\data\edgeiq_form_guide_v3_4_engine_join_audit.csv | modified=1784508917.1929915 | size=52961
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\dist\data\edgeiq_form_guide_v3_4_engine_registry.csv | modified=1784508917.1962168 | size=15126
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\dist\data\edgeiq_form_guide_v3_4_join_failures.csv | modified=1783745694.9829347 | size=99781
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FORM_GUIDE_FINAL_LOCKED_REBUILD_20260720_144952\docs_product-specification_FORM_GUIDE_APPROVED_GEOMETRY_V1.csv | modified=1784518424.8164961 | size=1629
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FORM_GUIDE_FINAL_LOCKED_REBUILD_20260720_144952\docs_product-specification_FORM_GUIDE_APPROVED_TEXT_SPEC_V1.csv | modified=1784518424.8164961 | size=1201
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\edgeiq_beta_readiness_lock_20260715_151703\public\data\edgeiq_form_guide_enriched_v2.csv | modified=1784092131.8702328 | size=40536
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\edgeiq_beta_readiness_before_feed_refresh_20260715_150213\public\data\edgeiq_form_guide_enriched_v2.csv | modified=1783821065.0394578 | size=40536
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\public\data\edgeiq_form_guide_current_intelligence_coverage.csv | modified=1783803253.2095037 | size=681
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\public\data\edgeiq_form_guide_current_intelligence_join_audit.csv | modified=1783803253.2085035 | size=727885
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\public\data\edgeiq_form_guide_enriched_v1.csv | modified=1783717128.8875453 | size=89831
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\public\data\edgeiq_form_guide_enriched_v2.csv | modified=1784247993.634788 | size=40536
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\public\data\edgeiq_form_guide_expansion_v1_audit.csv | modified=1782932726.7968152 | size=283
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\public\data\edgeiq_form_guide_table_structure_audit_summary_v1.csv | modified=1783879366.7079854 | size=37
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\public\data\edgeiq_form_guide_table_structure_audit_v1.csv | modified=1783879366.7079854 | size=333
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\public\data\edgeiq_form_guide_v1_audit.csv | modified=1782930885.9049358 | size=290
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\public\data\edgeiq_form_guide_v2_1_coverage.csv | modified=1783717128.8915455 | size=2607
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\public\data\edgeiq_form_guide_v2_1_join_audit.csv | modified=1783717128.8905458 | size=79619
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\public\data\edgeiq_form_guide_v2_1_source_inventory.csv | modified=1783717128.881042 | size=205839
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\public\data\edgeiq_form_guide_v3_3_coverage.csv | modified=1783729352.6864533 | size=43278
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\public\data\edgeiq_form_guide_v3_3_join_audit.csv | modified=1783729352.6834493 | size=119301
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\public\data\edgeiq_form_guide_v3_3_source_inventory.csv | modified=1783729352.679321 | size=10077
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\public\data\edgeiq_form_guide_v3_4_coverage.csv | modified=1784247993.6387901 | size=2427
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\public\data\edgeiq_form_guide_v3_4_engine_join_audit.csv | modified=1784247993.6377902 | size=52961
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\public\data\edgeiq_form_guide_v3_4_engine_registry.csv | modified=1784247993.640245 | size=15126
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\public\data\edgeiq_form_guide_v3_4_join_failures.csv | modified=1783745694.9829347 | size=99781
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\docs\full-product-implementation\edgeiq_form_guide_final_spec_audit_v1.csv | modified=1784451166.391837 | size=1232
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_approved_ui_phase06_form_guide_v1.py | modified=1784436975.7127614 | size=9123
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_form_guide_complete_view_model_v1.py | modified=1784518728.5663962 | size=1670
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_form_guide_exact_compatibility_patch_v1.py | modified=1784519397.126621 | size=2267
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_form_guide_exact_interactions_v1.py | modified=1784518728.571695 | size=1171
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_form_guide_exact_structure_v1.py | modified=1784518546.5063508 | size=9588
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_form_guide_exact_styles_v1.py | modified=1784518692.4387958 | size=20496
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_form_guide_exact_text_mutations_v1.py | modified=1784518764.7350423 | size=1119
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_form_guide_exact_text_v1.py | modified=1784518728.5663962 | size=1307
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_form_guide_final_interactions_v2.py | modified=1784523804.609858 | size=1354
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_form_guide_final_layout_v2.py | modified=1784523804.6044774 | size=1357
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_form_guide_final_match_profile_v2.py | modified=1784523804.6059966 | size=1405
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_form_guide_final_recent_form_v2.py | modified=1784523804.607502 | size=1367
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_form_guide_final_runner_hero_v2.py | modified=1784523765.8515978 | size=11167
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_form_guide_final_spec_v1.py | modified=1784373300.59647 | size=41123
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_form_guide_final_table_v2.py | modified=1784525087.8776016 | size=27524
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_form_guide_final_view_model_v2.py | modified=1784523804.608004 | size=1369
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_all_runner_form_guide_v1.py | modified=1783724115.9579809 | size=9157
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_form_guide_data_contract_v2.py | modified=1783878795.9789855 | size=4860
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_form_guide_engineering_build_v1.py | modified=1783879063.2522273 | size=1953
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_form_guide_exact_conformance_v1.py | modified=1784519067.373467 | size=5360
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_form_guide_expansion_v1.py | modified=1782932088.7615838 | size=1888
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_form_guide_final_locked_v2.py | modified=1784525087.8782983 | size=5968
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_form_guide_final_spec_v1.py | modified=1784526497.3902378 | size=5510
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_form_guide_historical_epi_ambiguity_forensic_tmp.py | modified=1784538678.9979796 | size=11486
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_form_guide_historical_epi_canonical_track_preflight_tmp.py | modified=1784538433.3743927 | size=8588
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_form_guide_historical_epi_mismatch_detail_tmp.py | modified=1784538297.4873786 | size=12230
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_form_guide_historical_epi_source_and_builder_tmp.py | modified=1784537720.0965343 | size=11585
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_form_guide_inner_value_coverage_tmp.py | modified=1784537561.4264224 | size=6257
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_form_guide_rebuild_v1.py | modified=1783659405.5720034 | size=5664
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_form_guide_rebuild_v1_CHECKPOINT_BEFORE_FORM_GUIDE_V2_20260710_152416.py | modified=1783659405.5720034 | size=5664
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_form_guide_table_structure_v1.py | modified=1783811407.8183649 | size=2077
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_form_guide_unmatched_forensic_tmp.py | modified=1784538125.42616 | size=3082
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_form_guide_v1.py | modified=1782930854.655998 | size=1821
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_form_guide_v2.py | modified=1783661891.3688183 | size=11515
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_form_guide_v2_1.py | modified=1783672071.7841046 | size=12317
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_form_guide_v3.py | modified=1783717908.0710368 | size=8115
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_form_guide_v3_3.py | modified=1783732429.4122882 | size=6923
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_form_guide_v3_4_engine_wiring.py | modified=1783737017.9174325 | size=8948
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_form_guide_v3_4_join_diagnosis.py | modified=1783745683.6671696 | size=7303
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_form_guide_visual_structure_v2.py | modified=1783878862.2922611 | size=3245
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\build_edgeiq_form_guide_approved_pixel_spec_v1.py | modified=1784518424.6424375 | size=9744
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\build_edgeiq_form_guide_enriched_v1.py | modified=1783716275.8951266 | size=40465
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\build_edgeiq_form_guide_enriched_v1_CHECKPOINT_BEFORE_ALL_RUNNER_V1_20260711_075326.py | modified=1783716275.8951266 | size=40465
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\build_edgeiq_form_guide_enriched_v1_CHECKPOINT_BEFORE_ENGINE_WIRING_V3_4_20260711_114946.py | modified=1783716275.8951266 | size=40465
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\build_edgeiq_form_guide_enriched_v1_CHECKPOINT_BEFORE_FORM_GUIDE_V3_20260711_064019.py | modified=1783672277.8892217 | size=36273
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\build_edgeiq_form_guide_enriched_v1_CHECKPOINT_BEFORE_FORM_GUIDE_V3_3_20260711_095927.py | modified=1783716275.8951266 | size=40465
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\build_edgeiq_form_guide_enriched_v2.py | modified=1783820904.7097023 | size=53394
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\build_edgeiq_form_guide_enriched_v2_CHECKPOINT_BEFORE_CURRENT_INTEL_FIELD_PATCH_20260711_161153.py | modified=1783736914.313718 | size=44260
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\build_edgeiq_form_guide_enriched_v2_CHECKPOINT_BEFORE_CURRENT_INTEL_V1_1_20260711_192517.py | modified=1783750313.4222083 | size=46228
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\build_edgeiq_form_guide_final_locked_spec_v2.py | modified=1784523480.0927863 | size=10342
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\build_edgeiq_form_guide_v3_3_reports.py | modified=1783729020.1615229 | size=16243
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\build_edgeiq_three_day_product_catalog_v1_CHECKPOINT_BEFORE_FORM_GUIDE_REBUILD_V1_20260710_143053.py | modified=1783654677.8424804 | size=23572
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\build_edgeiq_three_day_product_catalog_v1_CHECKPOINT_BEFORE_FORM_GUIDE_V2_20260710_152416.py | modified=1783659311.7235334 | size=27880
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\build_runner_workspace_form_guide_v13.py | modified=1783548175.200703 | size=15838
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\capture_edgeiq_form_guide_exact_comparison_v1.py | modified=1784519218.6069658 | size=7615
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\capture_edgeiq_form_guide_final_locked_v2.py | modified=1784526976.0683875 | size=10698
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\checkpoint_edgeiq_form_guide_engineering_build_v1.py | modified=1783877596.0455065 | size=2469
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\fix_edgeiq_form_guide_final_spec_import_v1.py | modified=1784373475.9737408 | size=762
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\fix_edgeiq_form_guide_runner_anchor_contrast_v1.py | modified=1784374911.280746 | size=1702
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\inspect_edgeiq_form_guide_actual_run_schema_tmp.py | modified=1784537467.6307755 | size=6731
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\inspect_edgeiq_form_guide_enriched_structure_tmp.py | modified=1784528964.9972582 | size=2456
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\inspect_edgeiq_form_guide_historical_epi_builder_tmp.py | modified=1784571440.3176174 | size=2011
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\measure_edgeiq_form_guide_approved_png_v1.py | modified=1784518354.3265307 | size=5100
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\measure_edgeiq_form_guide_final_locked_v2.py | modified=1784523945.2899468 | size=1487
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\patch_edgeiq_form_guide_enriched_v2_current_intel_fields.py | modified=1783750257.20623 | size=8113
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\probe_form_guide_rich_runner_tmp.py | modified=1784523033.287517 | size=1854
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\trace_edgeiq_form_guide_pipeline_tmp.py | modified=1784572425.1094654 | size=2618
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\apply_edgeiq_form_guide_final_spec_v1.py | modified=1784373300.59647 | size=41123
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\audit_edgeiq_all_runner_form_guide_v1.py | modified=1783724115.9579809 | size=9157
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\audit_edgeiq_form_guide_data_contract_v2.py | modified=1783878795.9789855 | size=4860
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\audit_edgeiq_form_guide_engineering_build_v1.py | modified=1783879063.2522273 | size=1953
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\audit_edgeiq_form_guide_expansion_v1.py | modified=1782932088.7615838 | size=1888
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\audit_edgeiq_form_guide_final_spec_v1.py | modified=1784373700.0196166 | size=5312
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\audit_edgeiq_form_guide_rebuild_v1.py | modified=1783659405.5720034 | size=5664
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\audit_edgeiq_form_guide_rebuild_v1_CHECKPOINT_BEFORE_FORM_GUIDE_V2_20260710_152416.py | modified=1783659405.5720034 | size=5664
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\audit_edgeiq_form_guide_table_structure_v1.py | modified=1783811407.8183649 | size=2077
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\audit_edgeiq_form_guide_v1.py | modified=1782930854.655998 | size=1821
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\audit_edgeiq_form_guide_v2.py | modified=1783661891.3688183 | size=11515
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\audit_edgeiq_form_guide_v2_1.py | modified=1783672071.7841046 | size=12317
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\audit_edgeiq_form_guide_v3.py | modified=1783717908.0710368 | size=8115
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\audit_edgeiq_form_guide_v3_3.py | modified=1783732429.4122882 | size=6923
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\audit_edgeiq_form_guide_v3_4_engine_wiring.py | modified=1783737017.9174325 | size=8948
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\audit_edgeiq_form_guide_v3_4_join_diagnosis.py | modified=1783745683.6671696 | size=7303
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\audit_edgeiq_form_guide_visual_structure_v2.py | modified=1783878862.2922611 | size=3245
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\build_edgeiq_form_guide_enriched_v1.py | modified=1783716275.8951266 | size=40465
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\build_edgeiq_form_guide_enriched_v1_CHECKPOINT_BEFORE_ALL_RUNNER_V1_20260711_075326.py | modified=1783716275.8951266 | size=40465
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\build_edgeiq_form_guide_enriched_v1_CHECKPOINT_BEFORE_ENGINE_WIRING_V3_4_20260711_114946.py | modified=1783716275.8951266 | size=40465
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\build_edgeiq_form_guide_enriched_v1_CHECKPOINT_BEFORE_FORM_GUIDE_V3_20260711_064019.py | modified=1783672277.8892217 | size=36273
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\build_edgeiq_form_guide_enriched_v1_CHECKPOINT_BEFORE_FORM_GUIDE_V3_3_20260711_095927.py | modified=1783716275.8951266 | size=40465
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\build_edgeiq_form_guide_enriched_v2.py | modified=1783820904.7097023 | size=53394
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\build_edgeiq_form_guide_enriched_v2_CHECKPOINT_BEFORE_CURRENT_INTEL_FIELD_PATCH_20260711_161153.py | modified=1783736914.313718 | size=44260
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\build_edgeiq_form_guide_enriched_v2_CHECKPOINT_BEFORE_CURRENT_INTEL_V1_1_20260711_192517.py | modified=1783750313.4222083 | size=46228
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\build_edgeiq_form_guide_v3_3_reports.py | modified=1783729020.1615229 | size=16243
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\build_edgeiq_three_day_product_catalog_v1_CHECKPOINT_BEFORE_FORM_GUIDE_REBUILD_V1_20260710_143053.py | modified=1783654677.8424804 | size=23572
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\build_edgeiq_three_day_product_catalog_v1_CHECKPOINT_BEFORE_FORM_GUIDE_V2_20260710_152416.py | modified=1783659311.7235334 | size=27880
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\build_runner_workspace_form_guide_v13.py | modified=1783548175.200703 | size=15838
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\checkpoint_edgeiq_form_guide_engineering_build_v1.py | modified=1783877596.0455065 | size=2469
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\fix_edgeiq_form_guide_final_spec_import_v1.py | modified=1784373475.9737408 | size=762
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\fix_edgeiq_form_guide_runner_anchor_contrast_v1.py | modified=1784374911.280746 | size=1702
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\patch_edgeiq_form_guide_enriched_v2_current_intel_fields.py | modified=1783750257.20623 | size=8113
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\edgeiq_scratchings_engineering_build_v1_20260713_164018\scripts\audit_edgeiq_form_guide_engineering_build_v1.py | modified=1783879063.2522273 | size=1953
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\edgeiq_light_repair_v1_20260712T013207Z\scripts\build_edgeiq_form_guide_enriched_v2.py | modified=1783810792.1766906 | size=51724
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\edgeiq_light_design_epi_map_v1_20260711T224718Z\scripts\build_edgeiq_form_guide_enriched_v2.py | modified=1783800867.5373144 | size=50282
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\edgeiq_form_guide_engineering_build_v1_20260713_033414\scripts\build_edgeiq_form_guide_enriched_v2.py | modified=1783877654.0619893 | size=53394
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\edgeiq_current_speed_projection_v1_20260711_203312\scripts\build_edgeiq_form_guide_enriched_v2.py | modified=1783761986.9556446 | size=46545
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\edgeiq_beta_intelligence_completion_v1_20260712_054719\scripts\build_edgeiq_form_guide_enriched_v2.py | modified=1783767205.35902 | size=48711
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\scripts\apply_edgeiq_approved_ui_phase06_form_guide_v1.py | modified=1784436975.7127614 | size=9123
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\scripts\apply_edgeiq_form_guide_final_spec_v1.py | modified=1784373300.59647 | size=41123
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\scripts\audit_edgeiq_all_runner_form_guide_v1.py | modified=1783724115.9579809 | size=9157
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\scripts\audit_edgeiq_form_guide_data_contract_v2.py | modified=1783878795.9789855 | size=4860
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\scripts\audit_edgeiq_form_guide_engineering_build_v1.py | modified=1783879063.2522273 | size=1953
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\scripts\audit_edgeiq_form_guide_expansion_v1.py | modified=1782932088.7615838 | size=1888
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\scripts\audit_edgeiq_form_guide_final_spec_v1.py | modified=1784373700.0196166 | size=5312
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\scripts\audit_edgeiq_form_guide_rebuild_v1.py | modified=1783659405.5720034 | size=5664
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\scripts\audit_edgeiq_form_guide_rebuild_v1_CHECKPOINT_BEFORE_FORM_GUIDE_V2_20260710_152416.py | modified=1783659405.5720034 | size=5664
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\scripts\audit_edgeiq_form_guide_table_structure_v1.py | modified=1783811407.8183649 | size=2077
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\scripts\audit_edgeiq_form_guide_v1.py | modified=1782930854.655998 | size=1821
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\scripts\audit_edgeiq_form_guide_v2.py | modified=1783661891.3688183 | size=11515
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\scripts\audit_edgeiq_form_guide_v2_1.py | modified=1783672071.7841046 | size=12317
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\scripts\audit_edgeiq_form_guide_v3.py | modified=1783717908.0710368 | size=8115
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\scripts\audit_edgeiq_form_guide_v3_3.py | modified=1783732429.4122882 | size=6923
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\scripts\audit_edgeiq_form_guide_v3_4_engine_wiring.py | modified=1783737017.9174325 | size=8948
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\scripts\audit_edgeiq_form_guide_v3_4_join_diagnosis.py | modified=1783745683.6671696 | size=7303
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\scripts\audit_edgeiq_form_guide_visual_structure_v2.py | modified=1783878862.2922611 | size=3245
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\scripts\build_edgeiq_form_guide_enriched_v1.py | modified=1783716275.8951266 | size=40465
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\scripts\build_edgeiq_form_guide_enriched_v1_CHECKPOINT_BEFORE_ALL_RUNNER_V1_20260711_075326.py | modified=1783716275.8951266 | size=40465
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\scripts\build_edgeiq_form_guide_enriched_v1_CHECKPOINT_BEFORE_ENGINE_WIRING_V3_4_20260711_114946.py | modified=1783716275.8951266 | size=40465
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\scripts\build_edgeiq_form_guide_enriched_v1_CHECKPOINT_BEFORE_FORM_GUIDE_V3_20260711_064019.py | modified=1783672277.8892217 | size=36273
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\scripts\build_edgeiq_form_guide_enriched_v1_CHECKPOINT_BEFORE_FORM_GUIDE_V3_3_20260711_095927.py | modified=1783716275.8951266 | size=40465
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\scripts\build_edgeiq_form_guide_enriched_v2.py | modified=1783820904.7097023 | size=53394
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\scripts\build_edgeiq_form_guide_enriched_v2_CHECKPOINT_BEFORE_CURRENT_INTEL_FIELD_PATCH_20260711_161153.py | modified=1783736914.313718 | size=44260
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\scripts\build_edgeiq_form_guide_enriched_v2_CHECKPOINT_BEFORE_CURRENT_INTEL_V1_1_20260711_192517.py | modified=1783750313.4222083 | size=46228
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\scripts\build_edgeiq_form_guide_v3_3_reports.py | modified=1783729020.1615229 | size=16243
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\scripts\build_edgeiq_three_day_product_catalog_v1_CHECKPOINT_BEFORE_FORM_GUIDE_REBUILD_V1_20260710_143053.py | modified=1783654677.8424804 | size=23572
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\scripts\build_edgeiq_three_day_product_catalog_v1_CHECKPOINT_BEFORE_FORM_GUIDE_V2_20260710_152416.py | modified=1783659311.7235334 | size=27880
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\scripts\build_runner_workspace_form_guide_v13.py | modified=1783548175.200703 | size=15838
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\scripts\checkpoint_edgeiq_form_guide_engineering_build_v1.py | modified=1783877596.0455065 | size=2469
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\scripts\fix_edgeiq_form_guide_final_spec_import_v1.py | modified=1784373475.9737408 | size=762
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\scripts\fix_edgeiq_form_guide_runner_anchor_contrast_v1.py | modified=1784374911.280746 | size=1702
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\scripts\patch_edgeiq_form_guide_enriched_v2_current_intel_fields.py | modified=1783750257.20623 | size=8113
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\apply_edgeiq_form_guide_final_spec_v1.py | modified=1784373300.59647 | size=41123
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\audit_edgeiq_all_runner_form_guide_v1.py | modified=1783724115.9579809 | size=9157
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\audit_edgeiq_form_guide_data_contract_v2.py | modified=1783878795.9789855 | size=4860
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\audit_edgeiq_form_guide_engineering_build_v1.py | modified=1783879063.2522273 | size=1953
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\audit_edgeiq_form_guide_expansion_v1.py | modified=1782932088.7615838 | size=1888
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\audit_edgeiq_form_guide_final_spec_v1.py | modified=1784373700.0196166 | size=5312
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\audit_edgeiq_form_guide_rebuild_v1.py | modified=1783659405.5720034 | size=5664
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\audit_edgeiq_form_guide_rebuild_v1_CHECKPOINT_BEFORE_FORM_GUIDE_V2_20260710_152416.py | modified=1783659405.5720034 | size=5664
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\audit_edgeiq_form_guide_table_structure_v1.py | modified=1783811407.8183649 | size=2077
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\audit_edgeiq_form_guide_v1.py | modified=1782930854.655998 | size=1821
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\audit_edgeiq_form_guide_v2.py | modified=1783661891.3688183 | size=11515
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\audit_edgeiq_form_guide_v2_1.py | modified=1783672071.7841046 | size=12317
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\audit_edgeiq_form_guide_v3.py | modified=1783717908.0710368 | size=8115
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\audit_edgeiq_form_guide_v3_3.py | modified=1783732429.4122882 | size=6923
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\audit_edgeiq_form_guide_v3_4_engine_wiring.py | modified=1783737017.9174325 | size=8948
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\audit_edgeiq_form_guide_v3_4_join_diagnosis.py | modified=1783745683.6671696 | size=7303
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\audit_edgeiq_form_guide_visual_structure_v2.py | modified=1783878862.2922611 | size=3245
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\build_edgeiq_form_guide_enriched_v1.py | modified=1783716275.8951266 | size=40465
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\build_edgeiq_form_guide_enriched_v1_CHECKPOINT_BEFORE_ALL_RUNNER_V1_20260711_075326.py | modified=1783716275.8951266 | size=40465
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\build_edgeiq_form_guide_enriched_v1_CHECKPOINT_BEFORE_ENGINE_WIRING_V3_4_20260711_114946.py | modified=1783716275.8951266 | size=40465
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\build_edgeiq_form_guide_enriched_v1_CHECKPOINT_BEFORE_FORM_GUIDE_V3_20260711_064019.py | modified=1783672277.8892217 | size=36273
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\build_edgeiq_form_guide_enriched_v1_CHECKPOINT_BEFORE_FORM_GUIDE_V3_3_20260711_095927.py | modified=1783716275.8951266 | size=40465
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\build_edgeiq_form_guide_enriched_v2.py | modified=1783820904.7097023 | size=53394
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\build_edgeiq_form_guide_enriched_v2_CHECKPOINT_BEFORE_CURRENT_INTEL_FIELD_PATCH_20260711_161153.py | modified=1783736914.313718 | size=44260
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\build_edgeiq_form_guide_enriched_v2_CHECKPOINT_BEFORE_CURRENT_INTEL_V1_1_20260711_192517.py | modified=1783750313.4222083 | size=46228
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\build_edgeiq_form_guide_v3_3_reports.py | modified=1783729020.1615229 | size=16243
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\build_edgeiq_three_day_product_catalog_v1_CHECKPOINT_BEFORE_FORM_GUIDE_REBUILD_V1_20260710_143053.py | modified=1783654677.8424804 | size=23572
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\build_edgeiq_three_day_product_catalog_v1_CHECKPOINT_BEFORE_FORM_GUIDE_V2_20260710_152416.py | modified=1783659311.7235334 | size=27880
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\build_runner_workspace_form_guide_v13.py | modified=1783548175.200703 | size=15838
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\checkpoint_edgeiq_form_guide_engineering_build_v1.py | modified=1783877596.0455065 | size=2469
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\fix_edgeiq_form_guide_final_spec_import_v1.py | modified=1784373475.9737408 | size=762
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\fix_edgeiq_form_guide_runner_anchor_contrast_v1.py | modified=1784374911.280746 | size=1702
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\docs\full-product-implementation\checkpoints\CHECKPOINT_BEFORE_FULL_APPROVED_UI_REBUILD_20260719_121910\scripts\patch_edgeiq_form_guide_enriched_v2_current_intel_fields.py | modified=1783750257.20623 | size=8113
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_current_form_momentum_v1.json | modified=1784508972.7663963 | size=394608
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_graphql_getRacesForMeet_payload_v1.json | modified=1782033441.857717 | size=761348
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_results_runner_performance_v1_audit.json | modified=1784090014.7937305 | size=388
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\performance_chart_data.json | modified=1774412426.2545555 | size=3363090
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\performance-intelligence\edgeiq_performance_intelligence_product_feeds_v1.json | modified=1784508993.0221868 | size=4785765
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\performance-intelligence\edgeiq_performance_intelligence_product_manifest_v1.json | modified=1784508993.0405774 | size=1943
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\node_modules\eslint\lib\cli-engine\formatters\formatters-meta.json | modified=1783141493.6150727 | size=1039
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\node_modules\ajv-formats\node_modules\ajv\lib\refs\json-schema-2020-12\meta\format-annotation.json | modified=1783141460.2849457 | size=420
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\node_modules\ajv-formats\node_modules\ajv\lib\refs\json-schema-2019-09\meta\format.json | modified=1783141460.3128965 | size=375
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\node_modules\ajv-formats\node_modules\ajv\dist\refs\json-schema-2020-12\meta\format-annotation.json | modified=1783141460.275884 | size=420
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\node_modules\ajv-formats\node_modules\ajv\dist\refs\json-schema-2019-09\meta\format.json | modified=1783141460.2975893 | size=375
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\node_modules\@modelcontextprotocol\sdk\node_modules\ajv\lib\refs\json-schema-2020-12\meta\format-annotation.json | modified=1783141460.2938478 | size=420
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\node_modules\@modelcontextprotocol\sdk\node_modules\ajv\lib\refs\json-schema-2019-09\meta\format.json | modified=1783141460.3152888 | size=375
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\node_modules\@modelcontextprotocol\sdk\node_modules\ajv\dist\refs\json-schema-2020-12\meta\format-annotation.json | modified=1783141460.2802622 | size=420
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\node_modules\@modelcontextprotocol\sdk\node_modules\ajv\dist\refs\json-schema-2019-09\meta\format.json | modified=1783141460.3092718 | size=375
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\EDGEIQ_RACE_FIELD_PERFORMANCE_EPI_BROWSER_SMOKE_V1.json | modified=1784369750.940364 | size=1617
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\product-specification\EDGEIQ_APPROVED_UI_REBUILD\06_PERFORMANCE_MEASUREMENTS.json | modified=1784428393.707844 | size=4421
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\edgeiq_performance_intelligence_phase0_1_fast_latest.json | modified=1784101155.9065688 | size=894
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\edgeiq_performance_intelligence_phase0_1_fast_summary_20260715_173915.json | modified=1784101155.9065688 | size=894
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\edgeiq_performance_intelligence_phase0_latest.json | modified=1784090889.7933936 | size=29663
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\edgeiq_performance_intelligence_phase0_summary_20260715_144153.json | modified=1784090889.7933936 | size=29663
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\inventories\edgeiq_performance_intelligence_asset_inventory_20260715_144153.json | modified=1784090889.513623 | size=12084111
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\warehouse\performance-facts-corrected\eiq_performance_facts_v0_2_a0c3715ab506d19f9301d8a4\performance_facts_manifest_v0_2.json | modified=1784188411.256004 | size=4557
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\warehouse\performance-facts\eiq_performance_facts_snapshot_23704301541550b883a8a05d3419c3a1\performance_facts_manifest.json | modified=1784156998.2542713 | size=2918
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\snapshots\phase1_0\edgeiq_performance_warehouse_snapshot_manifest_v0_1_20260716_044520.json | modified=1784141148.581127 | size=7251
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\snapshots\phase1_0\edgeiq_performance_warehouse_snapshot_manifest_v0_1_latest.json | modified=1784141148.581127 | size=7251
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\snapshots\phase1_0_3\edgeiq_performance_warehouse_snapshot_manifest_v0_2_20260716_051250.json | modified=1784142833.528149 | size=6601
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\snapshots\phase1_0_3\edgeiq_performance_warehouse_snapshot_manifest_v0_2_latest.json | modified=1784142833.5362675 | size=6601
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\integration\audits\edgeiq_performance_intelligence_phase4_0_product_feeds_latest.json | modified=1784508993.0405774 | size=1943
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\integration\audits\edgeiq_performance_intelligence_product_integration_audit_v1.json | modified=1784198035.4160798 | size=5447
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase0_2\edgeiq_performance_intelligence_phase0_2_detail_20260715_181822.json | modified=1784103503.0055165 | size=4611045
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase0_2\edgeiq_performance_intelligence_phase0_2_domains_readable.json | modified=1784105021.3184602 | size=12468721
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase0_2\edgeiq_performance_intelligence_phase0_2_latest.json | modified=1784103503.013466 | size=17266
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase0_2\edgeiq_performance_intelligence_phase0_2_summary_20260715_181822.json | modified=1784103503.013466 | size=17266
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase0_3\edgeiq_performance_intelligence_phase0_3_detail_20260715_191041.json | modified=1784106641.4107893 | size=276304
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase0_3\edgeiq_performance_intelligence_phase0_3_detail_20260716_040530.json | modified=1784138730.1956086 | size=276304
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase0_3\edgeiq_performance_intelligence_phase0_3_latest.json | modified=1784138730.1966114 | size=5316
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase0_3\edgeiq_performance_intelligence_phase0_3_summary_20260715_191041.json | modified=1784106641.4117892 | size=5316
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase0_3\edgeiq_performance_intelligence_phase0_3_summary_20260716_040530.json | modified=1784138730.1956086 | size=5316
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase0_4\edgeiq_performance_intelligence_phase0_4_latest.json | modified=1784139107.7811556 | size=1283
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase0_4\edgeiq_performance_intelligence_phase0_4_summary_20260716_041147.json | modified=1784139107.7811556 | size=1283
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase0_5\edgeiq_performance_intelligence_phase0_5_latest.json | modified=1784139388.4534552 | size=14996
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase0_5\edgeiq_performance_intelligence_phase0_5_summary_20260716_041523.json | modified=1784139388.4534552 | size=14996
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase0_6\edgeiq_performance_intelligence_phase0_6_latest.json | modified=1784139628.9426935 | size=2061
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase0_6\edgeiq_performance_intelligence_phase0_6_summary_20260716_042028.json | modified=1784139628.9426935 | size=2061
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase0_7\edgeiq_performance_intelligence_phase0_7_latest.json | modified=1784139879.3335333 | size=35354
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase0_7\edgeiq_performance_intelligence_phase0_7_summary_20260716_042332.json | modified=1784139879.3335333 | size=35354
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase0_8\edgeiq_performance_intelligence_phase0_8_latest.json | modified=1784140402.4167724 | size=134779
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase0_8\edgeiq_performance_intelligence_phase0_8_summary_20260716_043230.json | modified=1784140402.41503 | size=134779
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase0_9\edgeiq_performance_intelligence_phase0_9_latest.json | modified=1784140766.8721397 | size=130924
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase0_9\edgeiq_performance_intelligence_phase0_9_summary_20260716_043859.json | modified=1784140766.8675358 | size=130924
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase1_0\edgeiq_performance_intelligence_phase1_0_latest.json | modified=1784141148.581127 | size=7251
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase1_0\edgeiq_performance_intelligence_phase1_0_summary_20260716_044520.json | modified=1784141148.581127 | size=7251
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase1_0_1\edgeiq_performance_intelligence_phase1_0_1_latest.json | modified=1784141543.6038938 | size=2730
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase1_0_1\edgeiq_performance_intelligence_phase1_0_1_summary_20260716_045140.json | modified=1784141543.6038938 | size=2730
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase1_0_2\edgeiq_performance_intelligence_phase1_0_2_latest.json | modified=1784142109.870794 | size=2486
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase1_0_2\edgeiq_performance_intelligence_phase1_0_2_summary_20260716_050048.json | modified=1784142109.8702705 | size=2486
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase1_0_3\edgeiq_performance_intelligence_phase1_0_3_latest.json | modified=1784142833.5362675 | size=6601
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase1_0_3\edgeiq_performance_intelligence_phase1_0_3_summary_20260716_051250.json | modified=1784142833.5362675 | size=6601
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase1_1\edgeiq_performance_intelligence_phase1_1_latest.json | modified=1784143125.5593035 | size=3283
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase1_1\edgeiq_performance_intelligence_phase1_1_summary_eiq_warehouse_snapshot_b24578e0eb795ab6bd076452bfff3f5e.json | modified=1784143125.5593035 | size=3283
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase1_2\edgeiq_performance_intelligence_phase1_2_latest.json | modified=1784144715.88247 | size=3853
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase1_2\edgeiq_performance_intelligence_phase1_2_summary_eiq_dimension_snapshot_f41e99df7d4a58cdb5f6da1cb1dc39c0.json | modified=1784144715.88247 | size=3853
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase1_3\edgeiq_performance_intelligence_phase1_3_latest.json | modified=1784145476.7889922 | size=2870
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase1_3\edgeiq_performance_intelligence_phase1_3_summary_20260716_055716.json | modified=1784145476.7889922 | size=2870
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase1_4\edgeiq_performance_intelligence_phase1_4_detail_20260716_060956.json | modified=1784146196.038931 | size=1790526
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase1_4\edgeiq_performance_intelligence_phase1_4_latest.json | modified=1784146196.0421164 | size=49151
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase1_4\edgeiq_performance_intelligence_phase1_4_summary_20260716_060956.json | modified=1784146196.040899 | size=49151
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase1_4_1\edgeiq_performance_intelligence_phase1_4_1_latest.json | modified=1784146553.848665 | size=2976
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase1_4_1\edgeiq_performance_intelligence_phase1_4_1_summary_20260716_061543.json | modified=1784146553.848665 | size=2976
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase1_4_1a\edgeiq_performance_intelligence_phase1_4_1a_latest.json | modified=1784146934.89347 | size=3153
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase1_4_1a\edgeiq_performance_intelligence_phase1_4_1a_summary_20260716_062201.json | modified=1784146934.89347 | size=3153
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase1_4_1b\edgeiq_performance_intelligence_phase1_4_1b_latest.json | modified=1784147492.4605322 | size=1319
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase1_4_1b\edgeiq_performance_intelligence_phase1_4_1b_summary_20260716_063119.json | modified=1784147492.4605322 | size=1319
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase1_4_1c\edgeiq_performance_intelligence_phase1_4_1c_latest.json | modified=1784151342.0576587 | size=2768
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase1_4_1c\edgeiq_performance_intelligence_phase1_4_1c_summary_20260716_073530.json | modified=1784151342.0576587 | size=2768
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase1_5\edgeiq_performance_intelligence_phase1_5_latest.json | modified=1784151805.7263453 | size=12077
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase1_5\edgeiq_performance_intelligence_phase1_5_summary_20260716_074325.json | modified=1784151805.721033 | size=12077
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase1_5a\edgeiq_performance_intelligence_phase1_5a_latest.json | modified=1784156384.7403388 | size=121698
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase1_5a\edgeiq_performance_intelligence_phase1_5a_summary_20260716_085944.json | modified=1784156384.7364 | size=121698
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase1_5b\edgeiq_performance_intelligence_phase1_5b_latest.json | modified=1784157000.3920562 | size=2918
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase1_5b\edgeiq_performance_intelligence_phase1_5b_summary_eiq_performance_facts_snapshot_23704301541550b883a8a05d3419c3a1.json | modified=1784157000.393561 | size=2918
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase1_5b_1\edgeiq_performance_intelligence_phase1_5b_1_latest.json | modified=1784157506.0610318 | size=1979
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase1_5b_1\edgeiq_performance_intelligence_phase1_5b_1_summary_20260716_091806.json | modified=1784157506.0610318 | size=1979
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase1_5b_2\edgeiq_performance_intelligence_phase1_5b_2_latest.json | modified=1784158973.0346475 | size=2232
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase1_5b_2\edgeiq_performance_intelligence_phase1_5b_2_summary_20260716_093033.json | modified=1784158234.8200142 | size=2232
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase1_5b_2\edgeiq_performance_intelligence_phase1_5b_2_summary_20260716_094251.json | modified=1784158973.0346475 | size=2232
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase1_5b_4\edgeiq_performance_intelligence_phase1_5b_4_latest.json | modified=1784159520.1371627 | size=3149
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase1_5b_4\edgeiq_performance_intelligence_phase1_5b_4_summary_20260716_095159.json | modified=1784159520.1371627 | size=3149
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase1_5b_5\edgeiq_performance_intelligence_phase1_5b_5_latest.json | modified=1784160080.6028304 | size=512
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase1_6\edgeiq_performance_fact_phase1_6_latest.json | modified=1784160592.044417 | size=511
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase1_6_1\edgeiq_performance_intelligence_phase1_6_1_audit_eiq_performance_facts_v0_2_a0c3715ab506d19f9301d8a4.json | modified=1784188523.8197744 | size=2117
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase1_6_1\edgeiq_performance_intelligence_phase1_6_1_audit_latest.json | modified=1784188523.8197744 | size=2117
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase1_6_1\edgeiq_performance_intelligence_phase1_6_1_failed_latest.json | modified=1784187913.7844844 | size=513
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase1_6_1\edgeiq_performance_intelligence_phase1_6_1_latest.json | modified=1784188413.5094738 | size=4557
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\phase1_6_1\edgeiq_performance_intelligence_phase1_6_1_summary_eiq_performance_facts_v0_2_a0c3715ab506d19f9301d8a4.json | modified=1784188413.5104756 | size=4557
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\post_phase1_6_1\edgeiq_performance_intelligence_phase1_7_audit_latest.json | modified=1784190729.1435661 | size=1177
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\post_phase1_6_1\edgeiq_performance_intelligence_phase1_8_audit_latest.json | modified=1784190732.5234962 | size=1006
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\post_phase1_6_1\edgeiq_performance_intelligence_phase1_9_audit_latest.json | modified=1784190740.4634488 | size=1718
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\post_phase1_6_1\edgeiq_performance_intelligence_phase2_0a_audit_latest.json | modified=1784190742.3904114 | size=926
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\post_phase1_6_1\edgeiq_performance_intelligence_phase2_1_audit_latest.json | modified=1784190796.8027494 | size=1021
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\post_phase1_6_1\edgeiq_performance_intelligence_phase2_2_audit_latest.json | modified=1784190817.6005895 | size=1018
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\post_phase1_6_1\edgeiq_performance_intelligence_phase2_3_audit_latest.json | modified=1784190820.8446882 | size=1215
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\post_phase1_6_1\edgeiq_performance_intelligence_phase2_4_audit_latest.json | modified=1784190820.9074907 | size=874
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\post_phase1_6_1\edgeiq_performance_intelligence_phase2_5_audit_latest.json | modified=1784190822.2802546 | size=1120
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\post_phase1_6_1\edgeiq_performance_intelligence_phase2_6_audit_latest.json | modified=1784190851.426944 | size=1225
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\post_phase1_6_1\edgeiq_performance_intelligence_phase2_7_audit_latest.json | modified=1784190872.3837929 | size=1536
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\post_phase1_6_1\edgeiq_performance_intelligence_phase2_8_audit_latest.json | modified=1784190872.441749 | size=870
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\post_phase1_6_1\edgeiq_performance_intelligence_phase2_9_audit_latest.json | modified=1784190872.5052238 | size=854
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\post_phase1_6_1\edgeiq_performance_intelligence_phase3_0_audit_latest.json | modified=1784190872.5529518 | size=3952
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\audits\post_phase1_6_1\edgeiq_performance_intelligence_platform_foundation_final_report_latest.json | modified=1784190959.3894167 | size=18972
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\architecture\phase0_4\edgeiq_canonical_performance_schema_v0_1.json | modified=1784139107.776957 | size=20184
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\architecture\phase0_4\edgeiq_performance_intelligence_migration_map_v0_1.json | modified=1784139107.776957 | size=6631
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\performance-intelligence\architecture\phase0_4\edgeiq_performance_quality_states_v0_1.json | modified=1784139107.776957 | size=2328
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\screenshots\approved-ui-rebuild\06_PERFORMANCE_COMPARISON.json | modified=1784446893.973598 | size=5044
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\screenshots\final-live-runtime\06_PERFORMANCE_COMPARISON.json | modified=1784451047.129364 | size=5043
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\screenshots\final-live-runtime\06_PERFORMANCE_LIVE_RUNTIME.json | modified=1784450989.6048965 | size=3740
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\dist\data\edgeiq_current_form_momentum_v1.json | modified=1784508972.7663963 | size=394608
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\dist\data\edgeiq_graphql_getRacesForMeet_payload_v1.json | modified=1782033441.857717 | size=761348
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\dist\data\edgeiq_results_runner_performance_v1_audit.json | modified=1784090014.7937305 | size=388
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\dist\data\performance_chart_data.json | modified=1774412426.2545555 | size=3363090
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\dist\performance-intelligence\edgeiq_performance_intelligence_product_feeds_v1.json | modified=1784508993.0221868 | size=4785765
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\dist\performance-intelligence\edgeiq_performance_intelligence_product_manifest_v1.json | modified=1784508993.0405774 | size=1943
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\data\weather-source-audit\turftrax-stream\004_caulfield_post_form_client.json | modified=1783646528.1391582 | size=48
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\data\weather-source-audit\turftrax-stream\007_caulfield_post_form_clientName.json | modified=1783646529.0117748 | size=48
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\data\weather-source-audit\turftrax-stream\010_caulfield_post_form_name.json | modified=1783646529.8863623 | size=48
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\data\weather-source-audit\turftrax-stream\013_caulfield_post_form_venue.json | modified=1783646530.753311 | size=48
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\data\weather-source-audit\turftrax-stream\016_caulfield_post_form_course.json | modified=1783646531.6092126 | size=48
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\data\weather-source-audit\turftrax-stream\019_caulfield_post_form_track.json | modified=1783646532.4788682 | size=48
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\data\weather-source-audit\turftrax-stream\022_caulfield_post_form_visualiser.json | modified=1783646533.35367 | size=48
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\data\weather-source-audit\turftrax-stream\027_ladbrokes_post_form_client.json | modified=1783646534.7745366 | size=48
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\data\weather-source-audit\turftrax-stream\030_ladbrokes_post_form_clientName.json | modified=1783646535.6432548 | size=48
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\data\weather-source-audit\turftrax-stream\033_ladbrokes_post_form_name.json | modified=1783646536.5072145 | size=48
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\data\weather-source-audit\turftrax-stream\036_ladbrokes_post_form_venue.json | modified=1783646537.3689492 | size=48
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\data\weather-source-audit\turftrax-stream\039_ladbrokes_post_form_course.json | modified=1783646538.2224207 | size=48
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\data\weather-source-audit\turftrax-stream\042_ladbrokes_post_form_track.json | modified=1783646539.083616 | size=48
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\data\weather-source-audit\turftrax-stream\045_ladbrokes_post_form_visualiser.json | modified=1783646539.9632852 | size=48
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\data\weather-source-audit\turftrax-stream\050_mornington_post_form_client.json | modified=1783646541.3831422 | size=48
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\data\weather-source-audit\turftrax-stream\053_mornington_post_form_clientName.json | modified=1783646542.2448394 | size=48
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\data\weather-source-audit\turftrax-stream\056_mornington_post_form_name.json | modified=1783646543.1111608 | size=48
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\data\weather-source-audit\turftrax-stream\059_mornington_post_form_venue.json | modified=1783646543.9690013 | size=48
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\data\weather-source-audit\turftrax-stream\062_mornington_post_form_course.json | modified=1783646544.8332944 | size=48
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\data\weather-source-audit\turftrax-stream\065_mornington_post_form_track.json | modified=1783646545.685032 | size=48
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\data\weather-source-audit\turftrax-stream\068_mornington_post_form_visualiser.json | modified=1783646546.594856 | size=48
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\public\data\edgeiq_current_form_momentum_v1.json | modified=1784248058.9897804 | size=394608
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\public\data\edgeiq_graphql_getRacesForMeet_payload_v1.json | modified=1782033441.857717 | size=761348
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\public\data\edgeiq_results_runner_performance_v1_audit.json | modified=1784090014.7937305 | size=388
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\public\data\performance_chart_data.json | modified=1774412426.2545555 | size=3363090
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\docs\full-product-implementation\EDGEIQ_RACE_FIELD_PERFORMANCE_EPI_BROWSER_SMOKE_V1.json | modified=1784369750.940364 | size=1617
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\docs\full-product-implementation\screenshots\approved-ui-rebuild\06_PERFORMANCE_COMPARISON.json | modified=1784446893.973598 | size=5044
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\docs\full-product-implementation\screenshots\final-live-runtime\06_PERFORMANCE_COMPARISON.json | modified=1784451047.129364 | size=5043
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\checkpoints\EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414\docs\full-product-implementation\screenshots\final-live-runtime\06_PERFORMANCE_LIVE_RUNTIME.json | modified=1784450989.6048965 | size=3740
+
+SCRIPTS REFERENCING FORM GUIDE OUTPUT
+--------------------------------------------------------------------------------------------------------------
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_comprehensive_form_columns_v14.py
+38: print("[EDGEIQ] Comprehensive form guide columns applied")
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_approved_ui_phase01_visual_measurements_v1.py
+22: "05_FORM_GUIDE",
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_approved_ui_phase02b_sidebar_line_icons_v1.py
+61: { key: "formGuide", label: "FORM GUIDE", Icon: ClipboardList },
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_approved_ui_phase02_shell_v1.py
+58: '{ key: "formGuide", label: "FORM GUIDE" }': '{ key: "formGuide", label: "FORM GUIDE", icon: "G" }',
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_approved_ui_phase05_race_overview_v1.py
+186: {["RACE OVERVIEW", "FIELD & RUNNERS", "FORM GUIDE", "MAP", "MARKET", "OVERVIEW", "INSIGHTS", "RESULTS"].map((item, index) => (
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_approved_ui_phase06_form_guide_v1.py
+10: MARKER = "/* EDGEIQ APPROVED UI PHASE 06 FORM GUIDE */"
+15: out = CHECKPOINT_ROOT / f"CHECKPOINT_APPROVED_UI_PHASE06_FORM_GUIDE_PATCH_{stamp}"
+441: print("EDGEIQ_APPROVED_UI_PHASE06_FORM_GUIDE_PASS")
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_field_workspace_foundation_v1.py
+134: 'const tabs = ["FORM GUIDE", "MAP", "MARKET", "OVERVIEW", "INSIGHTS", "EPI", "REVIEW"] as const;',
+135: 'const tabs = ["FIELD", "FORM GUIDE", "MAP", "MARKET", "OVERVIEW", "INSIGHTS", "EPI", "REVIEW"] as const;',
+139: '''      {tab === "FORM GUIDE" ? (
+149: ) : tab === "FORM GUIDE" ? (
+160: replace_once(path, '  field: "FORM GUIDE",', '  field: "FIELD",')
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_final_pixel_spec_phase1_v1.py
+60: { label: "Form Guide", section: "formGuide", detail: "Field, profile, gear, market and recent form." },
+350: {["FORM GUIDE", "MAP", "EPI", "MARKET", "INSIGHTS"].map((label) => (
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_final_runtime_phase01_workspace_resolver_v1.py
+210: rw = rw.replace('const tabs = ["RACE", "FIELD", "FORM GUIDE", "PERFORMANCE", "MAP", "MARKET", "OVERVIEW", "INSIGHTS", "EPI", "REVIEW"] as const;', 'const tabs = ["RACE", "FIELD", "FORM GUIDE", "PERFORMANCE", "MAP", "MARKET", "OVERVIEW", "INSIGHTS", "EPI", "RESULTS", "REVIEW"] as const;')
+212: rw = rw.replace('export type RaceTab = typeof tabs[number];\n', '''export type RaceTab = typeof tabs[number];\n\nconst mountedComponentByRaceTab: Record<RaceTab, string> = {\n  RACE: "RaceIntelligenceWorkspace",\n  FIELD: "FieldWorkspace",\n  "FORM GUIDE": "RaceFormGuideWorkspace",\n  PERFORMANCE: "PerformanceWorkspace",\n  MAP: "MapWorkspace",\n  MARKET: "MarketWorkspace",\n  OVERVIEW: "OverviewWorkspace",\n  INSIGHTS: "InsightsWorkspace",\n  EPI: "EpiWorkspaceWorkspace",\n  RESULTS: "RaceResultsWorkspace",\n  REVIEW: "ReviewWorkspace",\n};\n''')
+375: ('FORM GUIDE','formGuide','race','RaceFormGuideWorkspace','RaceFormGuideWorkspace','PASS'),
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_final_runtime_phase03_no_fallbacks_v1.py
+265: onOpenTab?: (tab: "FORM GUIDE" | "MAP" | "MARKET" | "OVERVIEW" | "INSIGHTS" | "EPI" | "REVIEW") => void;
+278: onOpenTab?: (tab: "FORM GUIDE" | "MAP" | "MARKET" | "OVERVIEW" | "INSIGHTS" | "EPI" | "REVIEW") => void;
+310: </main><aside className="eiq-overview-v1-side"><section className="eiq-overview-v1-panel"><div className="eiq-overview-v1-panel__title"><span>What Matters Today</span></div><p className="eiq-overview-v1-copy">Race-level overview rows are pending; use FIELD, FORM GUIDE and MAP for available race structure.</p></section></aside></div>
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_final_runtime_phase05_audit_capture_hardening_v1.py
+24: text = text.replace('"05_FORM_GUIDE": ("FORM GUIDE", "RaceFormGuideWorkspace", ["FORM GUIDE", "LAST FIVE", "RUNNER"])', '"05_FORM_GUIDE": ("FORM GUIDE", "RaceFormGuideWorkspace", ["FORM GUIDE", "LAST 5", "RUNNER"])')
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_form_guide_complete_view_model_v1.py
+12: REPORT = ROOT / "docs/product-specification/FORM_GUIDE_EXACT_VIEW_MODEL_APPLY_V1.json"
+25: status = "FORM_GUIDE_VIEW_MODEL_COMPLETE" if all(row["present"] for row in checks) else "FORM_GUIDE_VIEW_MODEL_REVIEW_REQUIRED"
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_form_guide_exact_compatibility_patch_v1.py
+7: REPORT = ROOT / "docs/product-specification/FORM_GUIDE_EXACT_COMPATIBILITY_PATCH_V1.json"
+67: REPORT.write_text(json.dumps({"status":"FORM_GUIDE_EXACT_COMPATIBILITY_PATCH_APPLIED", "timestamp":datetime.now().isoformat()}, indent=2), encoding="utf-8")
+68: print(json.dumps({"status":"FORM_GUIDE_EXACT_COMPATIBILITY_PATCH_APPLIED"}, indent=2))
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_form_guide_exact_interactions_v1.py
+8: REPORT = ROOT / "docs/product-specification/FORM_GUIDE_EXACT_INTERACTIONS_APPLY_V1.json"
+21: status = "FORM_GUIDE_EXACT_INTERACTIONS_APPLIED" if all(row["present"] for row in checks) else "FORM_GUIDE_EXACT_INTERACTIONS_REVIEW_REQUIRED"
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_form_guide_exact_structure_v1.py
+11: REPORT = ROOT / "docs/product-specification/FORM_GUIDE_EXACT_STRUCTURE_APPLY_V1.json"
+14: (TSX, ROOT / "src/edgeiq-os/race/components/RaceFormGuideWorkspace_CHECKPOINT_PRE_FORM_GUIDE_EXACT_PIXEL_SPEC_20260720.tsx"),
+15: (CSS, ROOT / "src/edgeiq-os/styles/edgeiqOsV2_CHECKPOINT_PRE_FORM_GUIDE_EXACT_PIXEL_SPEC_20260720.css"),
+85: old_root = '<section className="eiq-race-form-guide eiq-race-form-guide--v3 eiq-race-form-guide--v4 eiq-race-form-guide--all-runner" aria-label="Race form guide">'
+86: new_root = '<section className="eiq-race-form-guide eiq-race-form-guide--v3 eiq-race-form-guide--v4 eiq-race-form-guide--all-runner eiq-race-form-guide--approved-exact" aria-label="Race form guide" data-edgeiq-workspace="form-guide-approved-exact" data-region="form_guide_workspace">'
+90: tools = '''      <div className="eiq-form-approved-tools" data-region="form_tools" aria-label="Form guide controls">
+178: REPORT.write_text(json.dumps({"status":"FORM_GUIDE_EXACT_STRUCTURE_APPLIED", "changes": changes, "timestamp": datetime.now().isoformat()}, indent=2), encoding="utf-8")
+179: print(json.dumps({"status":"FORM_GUIDE_EXACT_STRUCTURE_APPLIED", "changed": [name for name, ok in changes if ok], "checkpoint_count": len(CHECKPOINTS)}, indent=2))
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_form_guide_exact_styles_v1.py
+8: TOKENS = ROOT / "docs/product-specification/FORM_GUIDE_APPROVED_STYLE_TOKENS_V1.css"
+9: REPORT = ROOT / "docs/product-specification/FORM_GUIDE_EXACT_STYLES_APPLY_V1.json"
+10: MARKER_START = "/* EDGEIQ FORM GUIDE APPROVED EXACT PIXEL SPEC V1 START */"
+11: MARKER_END = "/* EDGEIQ FORM GUIDE APPROVED EXACT PIXEL SPEC V1 END */"
+14: /* EDGEIQ FORM GUIDE APPROVED EXACT PIXEL SPEC V1 START */
+639: /* EDGEIQ FORM GUIDE APPROVED EXACT PIXEL SPEC V1 END */
+651: REPORT.write_text(json.dumps({"status":"FORM_GUIDE_EXACT_STYLES_APPLIED", "css_file":str(CSS), "timestamp":datetime.now().isoformat(), "marker":"EDGEIQ FORM GUIDE APPROVED EXACT PIXEL SPEC V1"}, indent=2), encoding="utf-8")
+652: print(json.dumps({"status":"FORM_GUIDE_EXACT_STYLES_APPLIED", "css_file":str(CSS)}, indent=2))
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_form_guide_exact_text_mutations_v1.py
+8: REPORT = ROOT / "docs/product-specification/FORM_GUIDE_EXACT_TEXT_APPLY_MUTATIONS_V1.json"
+23: REPORT.write_text(json.dumps({"status":"FORM_GUIDE_EXACT_TEXT_MUTATIONS_APPLIED", "applied":applied, "timestamp":datetime.now().isoformat()}, indent=2), encoding="utf-8")
+24: print(json.dumps({"status":"FORM_GUIDE_EXACT_TEXT_MUTATIONS_APPLIED", "applied":applied}, indent=2))
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_form_guide_exact_text_v1.py
+9: TEXT_SPEC = ROOT / "docs/product-specification/FORM_GUIDE_APPROVED_TEXT_SPEC_V1.csv"
+10: REPORT = ROOT / "docs/product-specification/FORM_GUIDE_EXACT_TEXT_APPLY_V1.json"
+13: "FORM GUIDE", "Ratings View", "CUSTOMISE COLUMNS", "EXPORT", "TODAY'S MATCH", "HORSE PROFILE (CAREER)", "TODAY'S MATCH INSIGHTS", "RECENT FORM", "EPI", "EDGEiQ PRICE", "MARKET"
+21: status = "FORM_GUIDE_EXACT_TEXT_APPLIED" if all(row["present"] for row in checks) else "FORM_GUIDE_EXACT_TEXT_REVIEW_REQUIRED"
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_form_guide_final_interactions_v2.py
+9: REPORT = ROOT / 'docs' / 'product-specification' / 'FORM_GUIDE_FINAL_INTERACTIONS_APPLY_V2.json'
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_form_guide_final_layout_v2.py
+9: REPORT = ROOT / 'docs' / 'product-specification' / 'FORM_GUIDE_FINAL_LAYOUT_APPLY_V2.json'
+10: CHECKS = [('root_marker', 'tsx', 'data-edgeiq-workspace="form-guide-final-locked"'), ('race_selector_suppressed', 'tsx', 'eiq-form-final-tools'), ('final_css_scope', 'css', 'EDGEIQ FORM GUIDE FINAL LOCKED V2 START')]
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_form_guide_final_match_profile_v2.py
+9: REPORT = ROOT / 'docs' / 'product-specification' / 'FORM_GUIDE_FINAL_MATCH_PROFILE_APPLY_V2.json'
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_form_guide_final_recent_form_v2.py
+9: REPORT = ROOT / 'docs' / 'product-specification' / 'FORM_GUIDE_FINAL_RECENT_FORM_APPLY_V2.json'
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_form_guide_final_runner_hero_v2.py
+8: REPORT = ROOT / 'docs' / 'product-specification' / 'FORM_GUIDE_FINAL_RUNNER_HERO_APPLY_V2.json'
+9: MARKER_START = '/* EDGEIQ FORM GUIDE FINAL LOCKED V2 START */'
+10: MARKER_END = '/* EDGEIQ FORM GUIDE FINAL LOCKED V2 END */'
+12: /* EDGEIQ FORM GUIDE FINAL LOCKED V2 START */
+375: /* EDGEIQ FORM GUIDE FINAL LOCKED V2 END */
+387: REPORT.write_text(json.dumps({'status':'FORM_GUIDE_FINAL_RUNNER_HERO_V2_CSS_APPLIED','timestamp':datetime.now().isoformat(timespec='seconds')}, indent=2), encoding='utf-8')
+388: print('FORM_GUIDE_FINAL_RUNNER_HERO_V2_CSS_APPLIED')
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_form_guide_final_spec_v1.py
+10: CHECKPOINT_DIR = ROOT / "docs" / "full-product-implementation" / "checkpoints" / f"FORM_GUIDE_FINAL_SPEC_V1_{STAMP}"
+30: TRACE = """# EDGEIQ FORM GUIDE Trace V1
+40: | LAST 5 | Enriched form guide / official form string | formGuideNormaliser.lastFive | RaceFormGuideWorkspace main table | Available starts only; no padded dashes. |
+46: | DAYS | Enriched form guide current runner row | daysSinceLastRun | RaceFormGuideWorkspace main table and dossier | Available where last official run date is joined. |
+67: - No product-facing Confidence column or field is rendered by the FORM GUIDE component.
+68: - No Race Shape or Avg Finish columns are rendered in the FORM GUIDE main table.
+707: console.warn("Form Guide enrichment unavailable", error);
+717: <section className="eiq-race-form-guide eiq-race-form-guide--v3 eiq-race-form-guide--v4 eiq-race-form-guide--all-runner" aria-label="Race form guide">
+720: <span>FORM GUIDE</span>
+830: /* EDGEIQ FORM GUIDE FINAL SPEC V1 */
+1140: """    source: run.sectionalIndices ? "edgeiq_standardised_sectionals" : "edgeiq_form_guide_enriched_v2",\n  }));\n}""",
+1141: """    source: run.sectionalIndices ? "edgeiq_standardised_sectionals" : "edgeiq_form_guide_enriched_v2",\n  };\n  });\n}""",
+1162: marker = "/* EDGEIQ FORM GUIDE FINAL SPEC V1 */"
+1178: write(ROOT / "docs" / "full-product-implementation" / "EDGEIQ_FORM_GUIDE_TRACE_V1.md", TRACE.format(generated=datetime.now().isoformat(timespec="seconds")))
+1186: print("EDGEIQ_FORM_GUIDE_FINAL_SPEC_V1_APPLIED")
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_form_guide_final_table_v2.py
+8: REPORT = ROOT / 'docs' / 'product-specification' / 'FORM_GUIDE_FINAL_TABLE_APPLY_V2.json'
+485: console.warn("Form Guide enrichment unavailable", error);
+492: <section className="eiq-race-form-guide eiq-race-form-guide--v3 eiq-race-form-guide--v4 eiq-race-form-guide--all-runner eiq-race-form-guide--approved-exact eiq-race-form-guide--final-locked" aria-label="Race form guide" data-edgeiq-workspace="form-guide-final-locked" data-region="form_guide_workspace">
+495: <span>FORM GUIDE</span>
+502: <div className="eiq-form-approved-tools eiq-form-final-tools" data-region="form_tools" aria-label="Form guide controls">
+554: REPORT.write_text(json.dumps({'status':'FORM_GUIDE_FINAL_TABLE_V2_APPLIED','timestamp':datetime.now().isoformat(timespec='seconds'),'component':str(TSX.relative_to(ROOT))}, indent=2), encoding='utf-8')
+555: print('FORM_GUIDE_FINAL_TABLE_V2_APPLIED')
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_form_guide_final_view_model_v2.py
+9: REPORT = ROOT / 'docs' / 'product-specification' / 'FORM_GUIDE_FINAL_VIEW_MODEL_APPLY_V2.json'
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_full_product_navigation_foundation_v1.py
+59: { key: "formGuide", label: "FORM GUIDE" },
+101: const [tab, setTab] = useState<RaceTab>("FORM GUIDE");''',
+106: initialTab = "FORM GUIDE",
+142: field: "FORM GUIDE",
+143: formGuide: "FORM GUIDE",
+235: initialTab={raceTabBySection[activeSection] ?? "FORM GUIDE"}
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_historical_epi_matching_repair_v1.py
+13: FORM = DATA / "edgeiq_form_guide_enriched_v2.json"
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_home_settings_final_spec_v1.py
+18: { label: "Form Guide", detail: "Inspect field, profiles, gear, prices and recent runs." },
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_index_framework_v18.py
+28: "EDGEIQ Form Guide": "EDGEiQ Form Guide",
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_market_coverage_repair_v1.py
+16: FORM_ENRICHED = DATA / "edgeiq_form_guide_enriched_v2.json"
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_overview_final_spec_v1.py
+32: onOpenTab?: (tab: "FORM GUIDE" | "MAP" | "MARKET" | "OVERVIEW" | "INSIGHTS" | "EPI" | "REVIEW") => void;
+37: const OPEN_TAB_MAP: Record<string, "FORM GUIDE" | "MAP" | "MARKET" | "OVERVIEW" | "INSIGHTS" | "EPI" | "REVIEW"> = {
+38: FORM: "FORM GUIDE",
+39: "FORM GUIDE": "FORM GUIDE",
+405: {["FORM GUIDE", "MAP", "EPI", "MARKET", "INSIGHTS"].map((label) => (
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_performance_workspace_split_v1.py
+397: 'const tabs = ["FIELD", "FORM GUIDE", "MAP", "MARKET", "OVERVIEW", "INSIGHTS", "EPI", "REVIEW"] as const;',
+398: 'const tabs = ["FIELD", "FORM GUIDE", "PERFORMANCE", "MAP", "MARKET", "OVERVIEW", "INSIGHTS", "EPI", "REVIEW"] as const;',
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_race_field_performance_epi_tranche_v1.py
+85: form_count, form_keys = json_summary(data / "edgeiq_form_guide_enriched_v2.json")
+121: f"- edgeiq_form_guide_enriched_v2.json races: {form_count}; keys sampled: {', '.join(form_keys[:24])}",
+1455: text = text.replace('const tabs = ["FIELD", "FORM GUIDE", "PERFORMANCE", "MAP", "MARKET", "OVERVIEW", "INSIGHTS", "EPI", "REVIEW"] as const;', 'const tabs = ["RACE", "FIELD", "FORM GUIDE", "PERFORMANCE", "MAP", "MARKET", "OVERVIEW", "INSIGHTS", "EPI", "REVIEW"] as const;')
+1465: ) : tab === "FORM GUIDE" ? (''',
+1483: ) : tab === "FORM GUIDE" ? (''',
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_edgeiq_review_final_spec_v1.py
+10: actionTab?: "FORM GUIDE" | "MAP" | "MARKET" | "OVERVIEW" | "INSIGHTS" | "EPI" | "REVIEW";
+84: label: "Form guide",
+87: actionTab: "FORM GUIDE",
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\apply_workflow_tabs_compact_header_v19.py
+25: '{tab === "form" ? "Form Guide" : tab.toUpperCase()}',
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_all_runner_form_guide_v1.py
+14: ENRICHED = ROOT / "public" / "data" / "edgeiq_form_guide_enriched_v1.json"
+15: OUT_TXT = ROOT / "public" / "data" / "edgeiq_all_runner_form_guide_v1_audit.txt"
+16: OUT_JSON = ROOT / "public" / "data" / "edgeiq_all_runner_form_guide_v1_audit.json"
+123: add(checks, "no_selected_runner_state", all(token not in component for token in ["selectedRunnerId", "setSelectedRunnerId", "selectedRunner =", "selectableDefault"]), "No selected-runner state remains in the Form Guide.")
+126: add(checks, "no_table_selected_row_css", ".eiq-form-summary-table--v3 tbody tr.is-active" not in css, "Selected-row styling removed from the Form Guide table.")
+127: add(checks, "no_zebra_striping_css", ".eiq-form-summary-table--v3 tbody tr:nth-child" not in css and ".eiq-form-summary-table--all-runner tbody tr:nth-child" not in css, "Zebra striping is absent from Form Guide table CSS.")
+146: add(checks, "workspace_tabs_work", all(token in workspace for token in ['"FORM GUIDE"', '"MARKET"', '"MAP"', '"OVERVIEW"']), "FORM GUIDE, MARKET, MAP and OVERVIEW routing remains present.")
+147: add(checks, "feed_available", bool(counts), "Enriched form guide feed is available.")
+149: status = "EDGEIQ_ALL_RUNNER_FORM_GUIDE_V1_AUDIT_PASS" if all(check["status"] == "PASS" for check in checks) else "EDGEIQ_ALL_RUNNER_FORM_GUIDE_V1_AUDIT_FAIL"
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_approved_ui_rebuild_v1.py
+20: "05_FORM_GUIDE",
+107: for label in ["HOME", "MEETINGS", "RACE", "FIELD", "FORM GUIDE", "PERFORMANCE", "EPI", "MAP", "MARKET", "OVERVIEW", "INSIGHTS", "RESULTS", "LAB", "COMPARE", "REVIEW"]:
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_beta_intelligence_completion_v1.py
+15: ENRICHED = DATA / "edgeiq_form_guide_enriched_v2.json"
+247: "form_guide_all_runner_workflow_intact": "scrollToRunner" in src_text and "runner-profile-" in src_text,
+248: "workspace_tabs_intact": all(token in overview_source for token in ['"FORM GUIDE"', '"MARKET"', '"MAP"', '"OVERVIEW"']),
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_catalog_form_race_key_join_v1.py
+29: form_payload = module.read_json(module.FORM_GUIDE)
+56: "EDGEIQ CATALOG ↔ FORM GUIDE RACE-KEY JOIN AUDIT",
+60: f"FORM_GUIDE_RACES={len(form_rows)}",
+186: "TOP FORM GUIDE CANDIDATES",
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_current_app_dependency_graph_v1.py
+44: "edgeiq_form_guide_enriched_v2.json",
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_current_identity_matching_v1.py
+20: FORM = DATA / "edgeiq_form_guide_enriched_v2.json"
+352: "- Form Guide enrichment is keyed by canonical `raceDate|normalised track|raceNumber` and then runner identity.",
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_current_intelligence_pipeline_v1.py
+14: BASE_FEED = DATA / "edgeiq_form_guide_enriched_v2.json"
+20: JOIN_AUDIT_JSON = DATA / "edgeiq_form_guide_current_intelligence_join_audit.json"
+21: JOIN_AUDIT_CSV = DATA / "edgeiq_form_guide_current_intelligence_join_audit.csv"
+22: JOIN_AUDIT_TXT = DATA / "edgeiq_form_guide_current_intelligence_join_audit.txt"
+24: COVERAGE_JSON = DATA / "edgeiq_form_guide_current_intelligence_coverage.json"
+25: COVERAGE_CSV = DATA / "edgeiq_form_guide_current_intelligence_coverage.csv"
+26: COVERAGE_TXT = DATA / "edgeiq_form_guide_current_intelligence_coverage.txt"
+571: "EDGEiQ Form Guide current intelligence join audit",
+597: "EDGEiQ Form Guide current intelligence coverage",
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_current_intelligence_pipeline_v1_CHECKPOINT_BEFORE_AUDIT_KEY_PATCH_20260711_162345.py
+14: BASE_FEED = DATA / "edgeiq_form_guide_enriched_v2.json"
+20: JOIN_AUDIT_JSON = DATA / "edgeiq_form_guide_current_intelligence_join_audit.json"
+21: JOIN_AUDIT_CSV = DATA / "edgeiq_form_guide_current_intelligence_join_audit.csv"
+22: JOIN_AUDIT_TXT = DATA / "edgeiq_form_guide_current_intelligence_join_audit.txt"
+24: COVERAGE_JSON = DATA / "edgeiq_form_guide_current_intelligence_coverage.json"
+25: COVERAGE_CSV = DATA / "edgeiq_form_guide_current_intelligence_coverage.csv"
+26: COVERAGE_TXT = DATA / "edgeiq_form_guide_current_intelligence_coverage.txt"
+568: "EDGEiQ Form Guide current intelligence join audit",
+594: "EDGEiQ Form Guide current intelligence coverage",
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_current_intelligence_pipeline_v1_CHECKPOINT_BEFORE_LATE_SPEED_AUDIT_SOURCE_20260711_163041.py
+14: BASE_FEED = DATA / "edgeiq_form_guide_enriched_v2.json"
+20: JOIN_AUDIT_JSON = DATA / "edgeiq_form_guide_current_intelligence_join_audit.json"
+21: JOIN_AUDIT_CSV = DATA / "edgeiq_form_guide_current_intelligence_join_audit.csv"
+22: JOIN_AUDIT_TXT = DATA / "edgeiq_form_guide_current_intelligence_join_audit.txt"
+24: COVERAGE_JSON = DATA / "edgeiq_form_guide_current_intelligence_coverage.json"
+25: COVERAGE_CSV = DATA / "edgeiq_form_guide_current_intelligence_coverage.csv"
+26: COVERAGE_TXT = DATA / "edgeiq_form_guide_current_intelligence_coverage.txt"
+571: "EDGEiQ Form Guide current intelligence join audit",
+597: "EDGEiQ Form Guide current intelligence coverage",
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_current_intelligence_v1_1.py
+17: ENRICHED = DATA / "edgeiq_form_guide_enriched_v2.json"
+165: {"entity": "EPI", "source": "edgeiq_current_field_projection_v5_2.csv", "builder_engine": "build_edgeiq_current_field_projection_v5_2.py -> build_edgeiq_live_runner_board_v1.py -> build_edgeiq_live_runner_board_governed_v1.py", "generated_feed": "edgeiq_live_runner_board_governed_v1.csv", "typescript_service_adapter": "formGuideEnrichedFeed.ts -> formGuideNormaliser.ts", "operational_state": "not consumed by OperationalRaceStateService", "form_guide_bridge": "build_edgeiq_form_guide_enriched_v2.py", "enriched_v2_field": "runner.epi.value", "verdict": "production current runner projection"},
+166: {"entity": "EDGEiQ Price", "source": "edgeiq_current_fair_prices_review_v5_2.csv + edgeiq_probability_engine_v3.csv", "builder_engine": "build_edgeiq_probability_engine_v3.py -> build_edgeiq_live_runner_board_v1.py -> build_edgeiq_live_runner_board_governed_v1.py", "generated_feed": "edgeiq_live_runner_board_governed_v1.csv", "typescript_service_adapter": "formGuideEnrichedFeed.ts -> formGuideNormaliser.ts", "operational_state": "not consumed by OperationalRaceStateService", "form_guide_bridge": "build_edgeiq_form_guide_enriched_v2.py", "enriched_v2_field": "runner.edgeiqPrice.value", "verdict": "governed production price; separate from market"},
+167: {"entity": "Early Speed", "source": "edgeiq_current_early_speed_v1.json earlySpeed", "builder_engine": "build_edgeiq_current_early_speed_v1.py", "generated_feed": "edgeiq_current_early_speed_v1.json", "typescript_service_adapter": "formGuideEnrichedFeed.ts -> formGuideNormaliser.ts", "operational_state": "not consumed by OperationalRaceStateService", "form_guide_bridge": "build_edgeiq_form_guide_enriched_v2.py; stale projected_spd remains blocked", "enriched_v2_field": "runner.earlySpeed.value", "verdict": "approved current projection source when populated"},
+168: {"entity": "Late Speed", "source": "edgeiq_current_late_speed_v1.json lateSpeed", "builder_engine": "build_edgeiq_current_late_speed_v1.py", "generated_feed": "edgeiq_current_late_speed_v1.json", "typescript_service_adapter": "formGuideEnrichedFeed.ts -> formGuideNormaliser.ts", "operational_state": "not consumed by OperationalRaceStateService", "form_guide_bridge": "build_edgeiq_form_guide_enriched_v2.py; live_speed_map late_power_index remains blocked", "enriched_v2_field": "runner.lateSpeed.value", "verdict": "approved current projection source when populated"},
+169: {"entity": "Race Shape", "source": "speed_map_report.csv + edgeiq_universal_sectional_memory_v1.csv", "builder_engine": "build_live_speed_map_engine_v3.py", "generated_feed": "live_speed_map_v3.csv", "typescript_service_adapter": "formGuideEnrichedFeed.ts -> formGuideNormaliser.ts", "operational_state": "not consumed by OperationalRaceStateService", "form_guide_bridge": "build_edgeiq_form_guide_enriched_v2.py with V1.1 evidence guard", "enriched_v2_field": "runner.raceShape.value", "verdict": "runner-specific only where speed-map evidence exists"},
+170: {"entity": "Tempo", "source": "edgeiq_universal_sectional_memory_v1.csv best_tempo_setup", "builder_engine": "build_live_speed_map_engine_v3.py", "generated_feed": "live_speed_map_v3.csv tempo_fit/projected_tempo_shape", "typescript_service_adapter": "Map/Form services", "operational_state": "command-only aggregate engines separate", "form_guide_bridge": "not a runner current projection", "enriched_v2_field": "runner.raceShape when runner evidence exists", "verdict": "runner profile/setup evidence"},
+171: {"entity": "Pressure", "source": "pressure engines/replays in public data", "builder_engine": "pressure-engine services; historical pressure feeds", "generated_feed": "not wired into Form Guide current runner rows", "typescript_service_adapter": "command components", "operational_state": "used for command summaries", "form_guide_bridge": "none", "enriched_v2_field": "none", "verdict": "not a current Form Guide runner metric"},
+172: {"entity": "Market", "source": "edgeiq_three_day_product_catalog_v1 embedded odds", "builder_engine": "build_edgeiq_current_intelligence_catalog_bridge_v1.py", "generated_feed": "sportsbet_live_market_v1.csv and live terminal feeds", "typescript_service_adapter": "formGuideEnrichedFeed.ts -> formGuideNormaliser.ts", "operational_state": "not consumed by OperationalRaceStateService", "form_guide_bridge": "build_edgeiq_form_guide_enriched_v2.py", "enriched_v2_field": "runner.marketPrice.value", "verdict": "market kept separate from EDGEiQ Price"},
+177: "OperationalRaceStateService is not the canonical source for runner-level Form Guide metrics.",
+178: "Canonical current Form Guide path remains: three-day catalog -> current-intelligence bridge -> governed live board/speed map -> enriched V2 JSON -> frontend services.",
+202: ("runner-level metrics", "none", "runner-level", "not present", "not present", "none", True, "not available", 0, "Form Guide does not use OperationalRaceStateService"),
+260: "EPI SPD approval verdict: NOT APPROVED for Form Guide Early Speed; no current same-race EPI SPD field was found.",
+382: "form_guide_routing_intact": ENRICHED.exists(),
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_current_lock_reconciliation_v1.py
+20: "edgeiq_form_guide_engineering_build_v1_audit.json",
+33: "form_guide": "CURRENT_VALID",
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_current_speed_projection_v1.py
+36: ENRICHED = DATA / "edgeiq_form_guide_enriched_v2.json"
+310: "form_guide_all_runner_workflow_intact": ENRICHED.exists() and len(enriched) == 503,
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_current_speed_projection_v1_CHECKPOINT_BEFORE_BETA_COMPLETION_20260712_064326.py
+36: ENRICHED = DATA / "edgeiq_form_guide_enriched_v2.json"
+310: "form_guide_all_runner_workflow_intact": ENRICHED.exists() and len(enriched) == 503,
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_data_wiring_v1.py
+14: ("FORM_GUIDE_ENRICHED", "src/edgeiq-os/race/components/RaceFormGuideWorkspace.tsx", ["loadFormGuideEnrichedFeed", "normaliseFormGuideRace"]),
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_engineering_specification_library_v1.py
+94: "FORM GUIDE",
+95: ENGINEERING / "WORKSPACES" / "BETA-001_FORM_GUIDE_ENGINEERING.md",
+186: "BETA-001_FORM_GUIDE.md",
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_final_beta_false_defaults_fast_v1.py
+19: "edgeiq_form_guide_enriched_v2.json",
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_final_beta_false_defaults_v1.py
+34: "form_guide",
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_final_beta_repository_state_v1.py
+25: "FORM_GUIDE": "src/edgeiq-os/race/components/RaceFormGuideWorkspace.tsx",
+65: "edgeiq_form_guide_enriched_v2.csv",
+278: "FORM_GUIDE": "edgeiq_form_guide_engineering_build_v1_audit.json",
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_final_forensic_conformance_v1.py
+122: "HOME", "MEETINGS", "RACE", "FIELD", "FORM GUIDE", "PERFORMANCE", "EPI", "MAP",
+366: add("GLOBAL", "Navigation", "GLOBAL-NAV-001", "Exact global navigation names and order remain locked.", "HOME > MEETINGS > RACE > FIELD > FORM GUIDE > PERFORMANCE > EPI > MAP > MARKET > OVERVIEW > INSIGHTS > RESULTS > LAB > COMPARE > REVIEW > SETTINGS", route_order_check)
+370: "RACE", "FIELD", "FIELD expanded", "FORM GUIDE", "FORM GUIDE expanded", "PERFORMANCE", "EPI",
+384: add("FIELD", "Columns", "FIELD-001", "Field table uses approved columns and does not duplicate full Form Guide dossier.", "NO/SILK/RUNNER/BAR/WGT/JOCKEY/TRAINER/EDGEiQ/MARKET/STATUS.", lambda: pass_if(all(contains("src/edgeiq-os/race/components/FieldWorkspace.tsx", token) for token in ["EDGEiQ", "MARKET", "STATUS"]) and not contains("src/edgeiq-os/race/components/FieldWorkspace.tsx", "Today"), "Field source includes approved table labels and omits dossier language.", "source", "src/edgeiq-os/race/components/FieldWorkspace.tsx", "src/edgeiq-os/race/components/FieldWorkspace.tsx", "FieldWorkspace"))
+385: add("FORM GUIDE", "Summary Columns", "FORM-COL-001", "Main Form Guide columns exactly match approved V4 order.", "NO/SILKS/LAST 5/HORSE/TRAINER/JOCKEY/WT/BAR/DAYS/EPI/EARLY SPEED/LATE SPEED/SUITABILITY/FORM MOMENTUM/MARKET/EDGEiQ PRICE.", form_columns_check)
+386: add("FORM GUIDE", "Rejected Columns", "FORM-COL-002", "Rejected Form Guide columns are absent.", "No Confidence/Race Shape/Avg Finish/Back/Lay/generic rank/tip/recommendation.", no_rejected_form_columns_check)
+387: add("FORM GUIDE", "Recent Form Columns", "FORM-RECENT-001", "Recent Form includes governed fields and ESI movement columns.", "DATE/TRACK/DIST/CLASS/COND/JOCKEY/BAR/WT/POS/FIELD/SP/MARGIN/EPI/ERI/PIR/8-6/6-4/4-2/2-F.", recent_form_columns_check)
+433: ("Form Guide", "EPI/early/late/suitability/momentum/price/profile/recent form", "RaceFormGuideWorkspace", "formGuideNormaliser/formGuideEnrichedFeed/formGuideWorkspaceViewModel", "edgeiq_form_guide_enriched_v2.csv and governed terminal feeds", "approved form columns and dossier fields", "empty strings/dash/unavailable copy", "current + historical", "normaliser/view-model"),
+499: "public/data/edgeiq_form_guide_enriched_v2.csv",
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_final_live_data_population_v1.py
+23: {"workspace": "FORM GUIDE", "name": "form_guide_enriched_v2", "url": "/data/edgeiq_form_guide_enriched_v2.json", "kind": "json", "role": "live-expanded", "schema": []},
+24: {"workspace": "FORM GUIDE", "name": "form_guide_enriched_v1", "url": "/data/edgeiq_form_guide_enriched_v1.json", "kind": "json", "role": "reference", "schema": []},
+59: ("FORM GUIDE", "edgeiq_form_guide_enriched_v2.json"),
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_final_live_runtime_completion_v1.py
+17: "05_FORM_GUIDE": ("FORM GUIDE", "RaceFormGuideWorkspace", ["FORM GUIDE", "LAST 5", "RUNNER"]),
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_form_guide_data_contract_v2.py
+9: OUT_TXT = ROOT / "public/data/edgeiq_form_guide_data_contract_v2_audit.txt"
+10: OUT_JSON = ROOT / "public/data/edgeiq_form_guide_data_contract_v2_audit.json"
+14: FEED = ROOT / "public/data/edgeiq_form_guide_enriched_v2.json"
+112: "status": f"EDGEIQ_FORM_GUIDE_DATA_CONTRACT_V2_AUDIT_{status}",
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_form_guide_engineering_build_v1.py
+10: OUT_TXT = ROOT / "public/data/edgeiq_form_guide_engineering_build_v1_audit.txt"
+11: OUT_JSON = ROOT / "public/data/edgeiq_form_guide_engineering_build_v1_audit.json"
+15: "scripts/audit_edgeiq_form_guide_data_contract_v2.py",
+16: "scripts/audit_edgeiq_form_guide_visual_structure_v2.py",
+43: "status": f"EDGEIQ_FORM_GUIDE_ENGINEERING_BUILD_V1_AUDIT_{status}",
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_form_guide_exact_conformance_v1.py
+11: AUDIT_CSV = PUBLIC_OUT / "edgeiq_form_guide_exact_conformance_audit_v1.csv"
+12: AUDIT_SUMMARY = PUBLIC_OUT / "edgeiq_form_guide_exact_conformance_audit_v1_summary.csv"
+13: AUDIT_REPORT = PUBLIC_OUT / "edgeiq_form_guide_exact_conformance_audit_v1_report.txt"
+16: SPEC_DIR / "FORM_GUIDE_APPROVED_PIXEL_SPEC_V1.md",
+17: SPEC_DIR / "FORM_GUIDE_APPROVED_PIXEL_SPEC_V1.json",
+18: SPEC_DIR / "FORM_GUIDE_APPROVED_TEXT_SPEC_V1.csv",
+19: SPEC_DIR / "FORM_GUIDE_APPROVED_GEOMETRY_V1.csv",
+20: SPEC_DIR / "FORM_GUIDE_APPROVED_STYLE_TOKENS_V1.css",
+21: OUT / "05_FORM_GUIDE_APPROVED.png",
+22: OUT / "05_FORM_GUIDE_LIVE_RENDERED.png",
+23: OUT / "05_FORM_GUIDE_OVERLAY_50.png",
+24: OUT / "05_FORM_GUIDE_DIFF.png",
+25: OUT / "05_FORM_GUIDE_EDGE_DIFF.png",
+26: OUT / "05_FORM_GUIDE_REGION_DIFF.csv",
+27: OUT / "05_FORM_GUIDE_RUNTIME.json",
+44: "exact_css_marker": (CSS, "EDGEIQ FORM GUIDE APPROVED EXACT PIXEL SPEC V1 START"),
+48: path = OUT / "05_FORM_GUIDE_RUNTIME.json"
+62: rows.append({"check":"runtime_capture", "item":"runtime_status", "status":"PASS" if rt_status == "FORM_GUIDE_LIVE_CAPTURED" else "FAIL", "detail":rt_status})
+66: region_path = OUT / "05_FORM_GUIDE_REGION_DIFF.csv"
+82: status = "FORM_GUIDE_EXACT_CONFORMANCE_PASS" if fail_count == 0 else "FORM_GUIDE_EXACT_CONFORMANCE_REVIEW_REQUIRED"
+88: "EDGEiQ FORM GUIDE EXACT CONFORMANCE AUDIT V1",
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_form_guide_expansion_v1.py
+9: OUT = ROOT / "public" / "data" / "edgeiq_form_guide_expansion_v1_audit.csv"
+20: ("form_guide_columns_still_exist", all(col in src for col in required_columns)),
+31: print(f"Form Guide expansion audit: PASS={len(rows) - len(failures)} FAIL={len(failures)}")
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_form_guide_final_locked_v2.py
+10: RUNTIME = SHOT_DIR / '05_FORM_GUIDE_RUNTIME.json'
+11: DOM = SHOT_DIR / '05_FORM_GUIDE_DOM_GEOMETRY.json'
+12: CONSOLE = SHOT_DIR / '05_FORM_GUIDE_CONSOLE.json'
+13: NETWORK = SHOT_DIR / '05_FORM_GUIDE_NETWORK.json'
+14: AUDIT_CSV = ROOT / 'docs' / 'full-product-implementation' / 'FORM_GUIDE_FINAL_LOCKED_V2_AUDIT.csv'
+15: SUMMARY = ROOT / 'docs' / 'full-product-implementation' / 'FORM_GUIDE_FINAL_LOCKED_V2_AUDIT_SUMMARY.json'
+16: REPORT = ROOT / 'docs' / 'full-product-implementation' / 'FORM_GUIDE_FINAL_LOCKED_V2_AUDIT_REPORT.md'
+19: '05_FORM_GUIDE_APPROVED.png','05_FORM_GUIDE_LIVE_1536x1024.png','05_FORM_GUIDE_OVERLAY_50.png','05_FORM_GUIDE_DIFF.png','05_FORM_GUIDE_EDGE_DIFF.png','05_FORM_GUIDE_REGION_DIFF.csv','05_FORM_GUIDE_DOM_GEOMETRY.json','05_FORM_GUIDE_RUNTIME.json','05_FORM_GUIDE_CONSOLE.json','05_FORM_GUIDE_NETWORK.json'
+66: add(rows,'final_css_present','EDGEIQ FORM GUIDE FINAL LOCKED V2 START' in css,'css marker')
+74: status = 'FORM_GUIDE_FINAL_LOCKED_V2_PASS' if not failed else 'FORM_GUIDE_FINAL_LOCKED_V2_REVIEW_REQUIRED'
+77: REPORT.write_text('# FORM GUIDE FINAL LOCKED V2 AUDIT\n\n' + f"Status: `{status}`\n\n" + '\n'.join(f"- {r['check']}: {r['passed']} ({r['detail']})" for r in rows) + '\n', encoding='utf-8')
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_form_guide_final_spec_v1.py
+13: OUT_CSV = DOCS / "edgeiq_form_guide_final_spec_audit_v1.csv"
+14: OUT_MD = DOCS / "EDGEIQ_FORM_GUIDE_FINAL_SPEC_AUDIT_V1.md"
+99: add("APPROVED_MAIN_COLUMNS", has_array(component, "summaryColumns", APPROVED_MAIN_COLUMNS), "Main table column order matches locked FORM GUIDE spec.")
+111: add("NO_MOCK_DEMO_SAMPLE", not re.search(r"\b(mock|demo|sample|placeholder)\b", combined, re.I), "Touched FORM GUIDE files contain no mock/demo/sample/placeholder strings.")
+121: lines = ["# EDGEIQ FORM GUIDE Final Spec Audit V1", ""]
+125: lines.append("EDGEIQ_FORM_GUIDE_FINAL_SPEC_AUDIT_PASS" if not failed else "EDGEIQ_FORM_GUIDE_FINAL_SPEC_AUDIT_FAIL")
+128: print("EDGEIQ_FORM_GUIDE_FINAL_SPEC_AUDIT_PASS" if not failed else "EDGEIQ_FORM_GUIDE_FINAL_SPEC_AUDIT_FAIL")
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_form_guide_historical_epi_ambiguity_forensic_tmp.py
+12: FORM = DATA / "edgeiq_form_guide_enriched_v2.json"
+15: OUT_TXT = DOCS / "FORM_GUIDE_HISTORICAL_EPI_AMBIGUITY_FORENSIC_AUDIT.txt"
+16: OUT_CSV = DOCS / "FORM_GUIDE_HISTORICAL_EPI_AMBIGUITY_FORENSIC_AUDIT.csv"
+369: "EDGEIQ FORM GUIDE HISTORICAL EPI AMBIGUITY FORENSIC AUDIT",
+412: "EDGEIQ_FORM_GUIDE_HISTORICAL_EPI_AMBIGUITY_FORENSIC_AUDIT_PASS",
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_form_guide_historical_epi_canonical_track_preflight_tmp.py
+12: FORM = DATA / "edgeiq_form_guide_enriched_v2.json"
+15: OUT_TXT = DOCS / "FORM_GUIDE_HISTORICAL_EPI_CANONICAL_TRACK_PREFLIGHT.txt"
+16: OUT_CSV = DOCS / "FORM_GUIDE_HISTORICAL_EPI_CANONICAL_TRACK_PREFLIGHT.csv"
+321: "EDGEIQ FORM GUIDE HISTORICAL EPI CANONICAL TRACK PREFLIGHT",
+334: marker = "EDGEIQ_FORM_GUIDE_HISTORICAL_EPI_CANONICAL_TRACK_PREFLIGHT_PASS"
+337: marker = "EDGEIQ_FORM_GUIDE_HISTORICAL_EPI_CANONICAL_TRACK_PREFLIGHT_BLOCKED"
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_form_guide_historical_epi_mismatch_detail_tmp.py
+13: FORM = DATA / "edgeiq_form_guide_enriched_v2.json"
+16: OUT_TXT = DOCS / "FORM_GUIDE_HISTORICAL_EPI_MISMATCH_DETAIL_AUDIT.txt"
+17: OUT_CSV = DOCS / "FORM_GUIDE_HISTORICAL_EPI_MISMATCH_DETAIL_AUDIT.csv"
+302: "EDGEIQ FORM GUIDE HISTORICAL EPI MISMATCH DETAIL AUDIT",
+385: "EDGEIQ_FORM_GUIDE_HISTORICAL_EPI_MISMATCH_DETAIL_AUDIT_PASS",
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_form_guide_historical_epi_source_and_builder_tmp.py
+9: FORM_FEED = ROOT / "public" / "data" / "edgeiq_form_guide_enriched_v2.json"
+10: REPORT = ROOT / "docs" / "full-product-implementation" / "FORM_GUIDE_HISTORICAL_EPI_SOURCE_AND_BUILDER_AUDIT.txt"
+28: "edgeiq_form_guide_enriched_v2.json",
+65: lines.append("EDGEIQ FORM GUIDE HISTORICAL EPI SOURCE AND BUILDER AUDIT")
+109: lines.append("FORM GUIDE BUILDER / ASSIGNMENT LOCATIONS")
+145: # Load Form Guide historical-run identity set
+181: lines.append("FORM GUIDE HISTORICAL IDENTITY SUMMARY")
+365: print("EDGEIQ_FORM_GUIDE_HISTORICAL_EPI_SOURCE_AND_BUILDER_AUDIT_PASS")
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_form_guide_inner_value_coverage_tmp.py
+6: SOURCE = ROOT / "public" / "data" / "edgeiq_form_guide_enriched_v2.json"
+7: REPORT = ROOT / "docs" / "full-product-implementation" / "FORM_GUIDE_INNER_VALUE_COVERAGE_AUDIT.txt"
+137: lines.append("EDGEIQ FORM GUIDE INNER VALUE COVERAGE AUDIT")
+206: print("EDGEIQ_FORM_GUIDE_INNER_VALUE_COVERAGE_AUDIT_PASS")
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_form_guide_rebuild_v1.py
+18: AUDIT_TXT = DATA / "edgeiq_form_guide_rebuild_v1_audit.txt"
+19: AUDIT_JSON = DATA / "edgeiq_form_guide_rebuild_v1_audit.json"
+99: source_check("form guide component exists", COMPONENT.exists(), str(COMPONENT)),
+124: status = "EDGEIQ_FORM_GUIDE_REBUILD_V1_AUDIT_PASS" if passed else "EDGEIQ_FORM_GUIDE_REBUILD_V1_AUDIT_FAIL"
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_form_guide_rebuild_v1_CHECKPOINT_BEFORE_FORM_GUIDE_V2_20260710_152416.py
+18: AUDIT_TXT = DATA / "edgeiq_form_guide_rebuild_v1_audit.txt"
+19: AUDIT_JSON = DATA / "edgeiq_form_guide_rebuild_v1_audit.json"
+99: source_check("form guide component exists", COMPONENT.exists(), str(COMPONENT)),
+124: status = "EDGEIQ_FORM_GUIDE_REBUILD_V1_AUDIT_PASS" if passed else "EDGEIQ_FORM_GUIDE_REBUILD_V1_AUDIT_FAIL"
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_form_guide_table_structure_v1.py
+9: OUT = ROOT / "public" / "data" / "edgeiq_form_guide_table_structure_audit_v1.csv"
+10: SUMMARY = ROOT / "public" / "data" / "edgeiq_form_guide_table_structure_audit_summary_v1.csv"
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_form_guide_unmatched_forensic_tmp.py
+10: FORM = DATA / "edgeiq_form_guide_enriched_v2.json"
+13: OUT = ROOT / "docs" / "full-product-implementation" / "FORM_GUIDE_UNMATCHED_FORENSIC_AUDIT.txt"
+107: lines.append("EDGEIQ FORM GUIDE UNMATCHED FORENSIC AUDIT")
+127: print("EDGEIQ_FORM_GUIDE_UNMATCHED_FORENSIC_AUDIT_PASS")
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_form_guide_v1.py
+9: OUT = ROOT / "public" / "data" / "edgeiq_form_guide_v1_audit.csv"
+17: ("edgeiq_form_guide_present", "EDGEiQ Form Guide" in src),
+18: ("required_form_guide_columns_present", all(col in src for col in required_columns)),
+31: print(f"Form Guide audit: PASS={len(rows) - len(failures)} FAIL={len(failures)}")
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_form_guide_v2.py
+17: AUDIT_TXT = DATA / "edgeiq_form_guide_v2_audit.txt"
+18: AUDIT_JSON = DATA / "edgeiq_form_guide_v2_audit.json"
+218: check("no tipping language in form guide", not re.search(r"\b(BET|BACK|LAY|TIP|WATCH|SELECTION|DECISION)\b", component, re.I)),
+230: status = "EDGEIQ_FORM_GUIDE_V2_AUDIT_PASS" if passed else "EDGEIQ_FORM_GUIDE_V2_AUDIT_FAIL"
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_form_guide_v2_1.py
+15: ENRICHED_JSON = DATA / "edgeiq_form_guide_enriched_v1.json"
+16: ENRICHED_CSV = DATA / "edgeiq_form_guide_enriched_v1.csv"
+17: SOURCE_INVENTORY = DATA / "edgeiq_form_guide_v2_1_source_inventory.csv"
+18: COVERAGE_CSV = DATA / "edgeiq_form_guide_v2_1_coverage.csv"
+19: JOIN_AUDIT = DATA / "edgeiq_form_guide_v2_1_join_audit.csv"
+21: AUDIT_TXT = DATA / "edgeiq_form_guide_v2_1_audit.txt"
+22: AUDIT_JSON = DATA / "edgeiq_form_guide_v2_1_audit.json"
+75: status = "EDGEIQ_FORM_GUIDE_V2_1_AUDIT_FAIL"
+184: checks.append(check("Frontend uses enriched adapter", "loadFormGuideEnrichedFeed" in component_src and "findEnrichedFormGuideRace" in component_src and "edgeiq_form_guide_enriched_v1.json" in service_src))
+203: status = "EDGEIQ_FORM_GUIDE_V2_1_AUDIT_PASS" if all(item["passed"] for item in checks) else "EDGEIQ_FORM_GUIDE_V2_1_AUDIT_FAIL"
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_form_guide_v3.py
+14: ENRICHED = ROOT / "public" / "data" / "edgeiq_form_guide_enriched_v1.json"
+15: OUT_TXT = ROOT / "public" / "data" / "edgeiq_form_guide_v3_audit.txt"
+16: OUT_JSON = ROOT / "public" / "data" / "edgeiq_form_guide_v3_audit.json"
+209: all(token in workspace for token in ['"FORM GUIDE"', '"MARKET"', '"MAP"', '"OVERVIEW"']),
+222: "No star rating UI is present in the V3 form guide code.",
+228: "Enriched form guide feed exists.",
+232: status = "EDGEIQ_FORM_GUIDE_V3_AUDIT_PASS" if all(check["status"] == "PASS" for check in checks) else "EDGEIQ_FORM_GUIDE_V3_AUDIT_FAIL"
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_form_guide_v3_3.py
+15: AUDIT_TXT = DATA / "edgeiq_form_guide_v3_3_audit.txt"
+16: AUDIT_JSON = DATA / "edgeiq_form_guide_v3_3_audit.json"
+60: DATA / "edgeiq_form_guide_v3_3_source_inventory.csv",
+61: DATA / "edgeiq_form_guide_v3_3_source_inventory_summary.txt",
+62: DATA / "edgeiq_form_guide_v3_3_join_audit.csv",
+63: DATA / "edgeiq_form_guide_v3_3_coverage.csv",
+64: DATA / "edgeiq_form_guide_v3_3_coverage_summary.txt",
+130: failures.append("Form guide min-width is not fixed at 1640px for the current OS shell.")
+142: join_path = DATA / "edgeiq_form_guide_v3_3_join_audit.csv"
+158: coverage_path = DATA / "edgeiq_form_guide_v3_3_coverage.csv"
+165: status = "EDGEIQ_FORM_GUIDE_V3_3_AUDIT_PASS" if not failures else "EDGEIQ_FORM_GUIDE_V3_3_AUDIT_FAIL"
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_form_guide_v3_4_engine_wiring.py
+12: REGISTRY_CSV = DATA / "edgeiq_form_guide_v3_4_engine_registry.csv"
+13: REGISTRY_JSON = DATA / "edgeiq_form_guide_v3_4_engine_registry.json"
+14: REGISTRY_SUMMARY = DATA / "edgeiq_form_guide_v3_4_engine_registry_summary.txt"
+15: FEED = DATA / "edgeiq_form_guide_enriched_v2.json"
+16: JOIN_AUDIT = DATA / "edgeiq_form_guide_v3_4_engine_join_audit.csv"
+17: COVERAGE = DATA / "edgeiq_form_guide_v3_4_coverage.csv"
+18: COVERAGE_SUMMARY = DATA / "edgeiq_form_guide_v3_4_coverage_summary.txt"
+19: AUDIT_TXT = DATA / "edgeiq_form_guide_v3_4_engine_wiring_audit.txt"
+20: AUDIT_JSON = DATA / "edgeiq_form_guide_v3_4_engine_wiring_audit.json"
+96: if payload.get("schemaVersion") != "edgeiq_form_guide_enriched_v2":
+97: failures.append("Enriched feed schemaVersion is not edgeiq_form_guide_enriched_v2.")
+150: if "edgeiq_form_guide_enriched_v2.json" not in service_text:
+151: failures.append("Frontend service does not consume edgeiq_form_guide_enriched_v2.json.")
+169: status = "EDGEIQ_FORM_GUIDE_V3_4_ENGINE_WIRING_AUDIT_PASS" if not failures else "EDGEIQ_FORM_GUIDE_V3_4_ENGINE_WIRING_AUDIT_FAIL"
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_form_guide_v3_4_join_diagnosis.py
+12: JOIN_AUDIT = DATA / "edgeiq_form_guide_v3_4_engine_join_audit.csv"
+13: COVERAGE = DATA / "edgeiq_form_guide_v3_4_coverage.csv"
+15: OUT_TXT = DATA / "edgeiq_form_guide_v3_4_join_diagnosis.txt"
+16: OUT_JSON = DATA / "edgeiq_form_guide_v3_4_join_diagnosis.json"
+17: OUT_CSV = DATA / "edgeiq_form_guide_v3_4_join_failures.csv"
+186: lines.append("EDGEiQ FORM GUIDE V3.4 JOIN DIAGNOSIS")
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_form_guide_visual_structure_v2.py
+8: OUT_TXT = ROOT / "public/data/edgeiq_form_guide_visual_structure_v2_audit.txt"
+9: OUT_JSON = ROOT / "public/data/edgeiq_form_guide_visual_structure_v2_audit.json"
+23: "name": "form_guide_engineering_css_layer_present",
+24: "pass": "EDGEIQ FORM GUIDE ENGINEERING BUILD V1" in css,
+67: "status": f"EDGEIQ_FORM_GUIDE_VISUAL_STRUCTURE_V2_AUDIT_{status}",
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_full_product_acceptance_v1.py
+8: "audit_edgeiq_form_guide_final_spec_v1.py",
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_full_product_foundation_v1.py
+21: "FORM GUIDE",
+40: "FORM GUIDE": ["RaceFormGuideWorkspace", "FormGuideWorkspace"],
+153: workspace == "FORM GUIDE" and "FORM GUIDE" in nav_labels
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_historical_epi_governed_recovery_post_build_v1.py
+15: / "FORM_GUIDE_HISTORICAL_EPI_GOVERNED_RECOVERY_POST_BUILD_AUDIT.txt"
+61: "EDGEIQ FORM GUIDE HISTORICAL EPI GOVERNED RECOVERY POST-BUILD AUDIT",
+111: print("EDGEIQ_FORM_GUIDE_HISTORICAL_EPI_GOVERNED_RECOVERY_POST_BUILD_AUDIT_PASS")
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_historical_epi_matching_repair_v1.py
+64: "epi_field_source": "edgeiq_form_guide_enriched_v2.json:historicalEpi or edgeiq_historical_performance_rating_v6_1_research.csv when matched",
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_light_design_system_v3.py
+17: marker = "EDGEIQ LIGHT DESIGN SYSTEM, FORM GUIDE TABLE CLEANUP, MAP CONSOLIDATION AND EPI CURRENT RATING V1"
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_product_unification_v1.py
+32: ("form guide enriched rows", count_csv(PUBLIC / "edgeiq_form_guide_enriched_v2.csv") > 0, count_csv(PUBLIC / "edgeiq_form_guide_enriched_v2.csv")),
+70: - FORM GUIDE
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_professional_form_engine_v1.py
+11: "Professional Form Guide",
+12: "Official Form Guide",
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_race_workspace_baseline_v1.py
+20: "form_guide": "src/edgeiq-os/race/components/RaceFormGuideWorkspace.tsx",
+43: "form_guide_enriched": "public/data/edgeiq_form_guide_enriched_v2.json",
+52: EXPECTED_RACE_TABS = ["FORM GUIDE", "MAP", "MARKET", "OVERVIEW", "INSIGHTS", "EPI", "REVIEW"]
+188: REQUIRED_FILES["form_guide"],
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_remaining_beta_autonomous_completion_v1.py
+41: "Form Guide": "edgeiq_form_guide_engineering_build_v1_audit.txt",
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\audit_edgeiq_three_day_routing_final_v1.py
+176: check("selected race field reaches Form Guide", 'tab === "FORM GUIDE"' in race_workspace_source and "field.map" in race_workspace_source),
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\build_edgeiq_current_app_dependency_graph_v1.py
+40: "Form Guide / Field / Market / EPI",
+43: "build_edgeiq_form_guide_enriched_v2.py; build_edgeiq_epi_workspace_terminal_feed_v1.py; build_edgeiq_market_terminal_feed_v1.py",
+44: "edgeiq_form_guide_enriched_v2.json; edgeiq_epi_workspace_terminal_feed_v1.csv; edgeiq_market_terminal_feed_v1.csv",
+54: "Form Guide / Market",
+57: "build_edgeiq_form_guide_enriched_v2.py; build_edgeiq_market_terminal_feed_v1.py",
+58: "edgeiq_form_guide_enriched_v2.json; edgeiq_market_terminal_feed_v1.csv",
+68: "Form Guide / MAP",
+72: "edgeiq_form_guide_enriched_v2.json; edgeiq_map_terminal_feed_v1.csv",
+82: "Form Guide",
+85: "build_edgeiq_current_late_speed_v1.py; build_edgeiq_form_guide_enriched_v2.py",
+86: "edgeiq_form_guide_enriched_v2.json",
+96: "Form Guide / Insights",
+100: "edgeiq_form_guide_enriched_v2.json; edgeiq_insights_terminal_feed_v1.csv",
+110: "Form Guide / Insights",
+114: "edgeiq_form_guide_enriched_v2.json; edgeiq_insights_terminal_feed_v1.csv",
+124: "Form Guide recent form / Results",
+127: "build_edgeiq_form_guide_enriched_v2.py; build_edgeiq_meeting_results_terminal_feed_v1.py",
+128: "edgeiq_form_guide_enriched_v2.json; edgeiq_meeting_results_terminal_feed_v1.csv",
+138: "Form Guide / Market",
+141: "build_edgeiq_form_guide_enriched_v2.py; build_edgeiq_market_terminal_feed_v1.py",
+142: "edgeiq_form_guide_enriched_v2.json; edgeiq_market_terminal_feed_v1.csv",
+236: "Meeting Scratchings / Form Guide",
+240: "edgeiq_form_guide_enriched_v2.json; three-day catalogue",
+250: "Field / Form Guide / MAP",
+254: "edgeiq_form_guide_enriched_v2.json; edgeiq_map_terminal_feed_v1.csv; three-day catalogue JSON",
+264: "Field / Form Guide / MAP",
+268: "edgeiq_form_guide_enriched_v2.json; edgeiq_map_terminal_feed_v1.csv",
+278: "Field / Form Guide / MAP / Results",
+282: "edgeiq_form_guide_enriched_v2.json; edgeiq_map_terminal_feed_v1.csv; edgeiq_meeting_results_terminal_feed_v1.csv",
+292: "Field / Form Guide / MAP / Results",
+296: "edgeiq_form_guide_enriched_v2.json; edgeiq_map_terminal_feed_v1.csv; edgeiq_meeting_results_terminal_feed_v1.csv",
+306: "Meeting Gear / Form Guide",
+309: "build_edgeiq_gear_terminal_feed_v1.py; build_edgeiq_form_guide_enriched_v2.py",
+310: "edgeiq_gear_terminal_feed_v1.csv; edgeiq_form_guide_enriched_v2.json",
+334: "Form Guide",
+337: "build_edgeiq_form_guide_enriched_v2.py",
+338: "edgeiq_form_guide_enriched_v2.json",
+348: "Form Guide",
+351: "build_edgeiq_form_guide_enriched_v2.py",
+352: "edgeiq_form_guide_enriched_v2.json",
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\build_edgeiq_current_race_intelligence_v1.py
+24: ENRICHED = DATA / "edgeiq_form_guide_enriched_v2.json"
+158: questions.append({"question": "Which current market prices differ most from EDGEiQ assessed price?", "source": "edgeiq_form_guide_enriched_v2"})
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\build_edgeiq_daily_pipeline_scripts_v1.py
+30: "scripts/build_edgeiq_form_guide_enriched_v2.py",
+83: for name in ["edgeiq_form_guide_enriched_v2.csv", "edgeiq_epi_workspace_terminal_feed_v1.csv", "edgeiq_map_terminal_feed_v1.csv", "edgeiq_market_terminal_feed_v1.csv", "edgeiq_overview_terminal_feed_v1.csv", "edgeiq_insights_terminal_feed_v1.csv"]:
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\build_edgeiq_epi_workspace_terminal_feed_v1.py
+12: FORM_GUIDE = DATA / "edgeiq_form_guide_enriched_v2.json"
+452: return " | ".join(dict.fromkeys(values)) or "edgeiq_form_guide_enriched_v2.json"
+471: or "edgeiq_form_guide_enriched_v2.json:historicalEpi",
+601: form_payload = read_json(FORM_GUIDE)
+711: f"form_guide={FORM_GUIDE.name}",
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\build_edgeiq_form_guide_approved_pixel_spec_v1.py
+8: MEASURE = SPEC_DIR / "FORM_GUIDE_APPROVED_PIXEL_MEASUREMENT_V1.json"
+9: LEGACY_MEASURE = ROOT / "docs/product-specification/EDGEIQ_APPROVED_UI_REBUILD/05_FORM_GUIDE_MEASUREMENTS.json"
+11: MD = SPEC_DIR / "FORM_GUIDE_APPROVED_PIXEL_SPEC_V1.md"
+12: JSON_OUT = SPEC_DIR / "FORM_GUIDE_APPROVED_PIXEL_SPEC_V1.json"
+13: TEXT_CSV = SPEC_DIR / "FORM_GUIDE_APPROVED_TEXT_SPEC_V1.csv"
+14: GEOM_CSV = SPEC_DIR / "FORM_GUIDE_APPROVED_GEOMETRY_V1.csv"
+15: TOKENS_CSS = SPEC_DIR / "FORM_GUIDE_APPROVED_STYLE_TOKENS_V1.css"
+21: {"id":"content", "x":207, "y":72, "w":1310, "h":900, "role":"workspace_content", "notes":"FORM GUIDE page content area."},
+22: {"id":"breadcrumb", "x":208, "y":78, "w":350, "h":16, "role":"breadcrumb", "notes":"MEETINGS > FLEMINGTON > RACE 1 > FORM GUIDE."},
+25: {"id":"subnav", "x":208, "y":170, "w":1308, "h":40, "role":"section_tabs", "notes":"Race overview through Form Guide, active blue underline on Form Guide."},
+41: ("workspace_active", "FORM GUIDE", "left_nav + subnav", "13px/800"),
+42: ("breadcrumb", "MEETINGS > FLEMINGTON > RACE 1 > FORM GUIDE", "breadcrumb", "11px/900 uppercase"),
+83: "version": "FORM_GUIDE_APPROVED_PIXEL_SPEC_V1",
+84: "authority": "05_FORM_GUIDE_APPROVED.png",
+87: "implementation_scope": "Live React/CSS FORM GUIDE screen. Data remains governed/live; no demo data; no model maths changed.",
+102: "must_preserve": ["live governed field", "enriched form guide feed", "EPI/ERI/pricing/rating calculations"],
+133: "# FORM GUIDE APPROVED PIXEL SPEC V1",
+135: f"Source authority: `05_FORM_GUIDE_APPROVED.png`",
+139: "This spec is the implementation contract for the live FORM GUIDE workspace. It preserves live governed data and limits changes to React structure, copy, interactions, and CSS presentation.",
+152: "- FORM GUIDE opens inside the preserved EDGEiQ race workspace navigation.",
+160: "See `FORM_GUIDE_APPROVED_TEXT_SPEC_V1.csv` for exact visible labels and typography intent.",
+164: "See `FORM_GUIDE_APPROVED_GEOMETRY_V1.csv` for region-level pixel boxes measured against the approved 1536x1024 PNG.",
+167: print(json.dumps({"status":"FORM_GUIDE_APPROVED_PIXEL_SPEC_BUILT", "files":[str(MD), str(JSON_OUT), str(TEXT_CSV), str(GEOM_CSV), str(TOKENS_CSS)]}, indent=2))
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\build_edgeiq_form_guide_enriched_v1.py
+19: ENRICHED_JSON = DATA / "edgeiq_form_guide_enriched_v1.json"
+20: ENRICHED_CSV = DATA / "edgeiq_form_guide_enriched_v1.csv"
+21: SOURCE_INVENTORY = DATA / "edgeiq_form_guide_v2_1_source_inventory.csv"
+22: SOURCE_INVENTORY_SUMMARY = DATA / "edgeiq_form_guide_v2_1_source_inventory_summary.txt"
+23: COVERAGE_CSV = DATA / "edgeiq_form_guide_v2_1_coverage.csv"
+24: COVERAGE_SUMMARY = DATA / "edgeiq_form_guide_v2_1_coverage_summary.txt"
+25: JOIN_AUDIT = DATA / "edgeiq_form_guide_v2_1_join_audit.csv"
+869: "schemaVersion": "edgeiq_form_guide_enriched_v1",
+893: "EDGEiQ Form Guide V2.1 source inventory",
+914: "EDGEiQ Form Guide V2.1 coverage summary",
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\build_edgeiq_form_guide_enriched_v1_CHECKPOINT_BEFORE_ALL_RUNNER_V1_20260711_075326.py
+19: ENRICHED_JSON = DATA / "edgeiq_form_guide_enriched_v1.json"
+20: ENRICHED_CSV = DATA / "edgeiq_form_guide_enriched_v1.csv"
+21: SOURCE_INVENTORY = DATA / "edgeiq_form_guide_v2_1_source_inventory.csv"
+22: SOURCE_INVENTORY_SUMMARY = DATA / "edgeiq_form_guide_v2_1_source_inventory_summary.txt"
+23: COVERAGE_CSV = DATA / "edgeiq_form_guide_v2_1_coverage.csv"
+24: COVERAGE_SUMMARY = DATA / "edgeiq_form_guide_v2_1_coverage_summary.txt"
+25: JOIN_AUDIT = DATA / "edgeiq_form_guide_v2_1_join_audit.csv"
+869: "schemaVersion": "edgeiq_form_guide_enriched_v1",
+893: "EDGEiQ Form Guide V2.1 source inventory",
+914: "EDGEiQ Form Guide V2.1 coverage summary",
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\build_edgeiq_form_guide_enriched_v1_CHECKPOINT_BEFORE_ENGINE_WIRING_V3_4_20260711_114946.py
+19: ENRICHED_JSON = DATA / "edgeiq_form_guide_enriched_v1.json"
+20: ENRICHED_CSV = DATA / "edgeiq_form_guide_enriched_v1.csv"
+21: SOURCE_INVENTORY = DATA / "edgeiq_form_guide_v2_1_source_inventory.csv"
+22: SOURCE_INVENTORY_SUMMARY = DATA / "edgeiq_form_guide_v2_1_source_inventory_summary.txt"
+23: COVERAGE_CSV = DATA / "edgeiq_form_guide_v2_1_coverage.csv"
+24: COVERAGE_SUMMARY = DATA / "edgeiq_form_guide_v2_1_coverage_summary.txt"
+25: JOIN_AUDIT = DATA / "edgeiq_form_guide_v2_1_join_audit.csv"
+869: "schemaVersion": "edgeiq_form_guide_enriched_v1",
+893: "EDGEiQ Form Guide V2.1 source inventory",
+914: "EDGEiQ Form Guide V2.1 coverage summary",
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\build_edgeiq_form_guide_enriched_v1_CHECKPOINT_BEFORE_FORM_GUIDE_V3_20260711_064019.py
+19: ENRICHED_JSON = DATA / "edgeiq_form_guide_enriched_v1.json"
+20: ENRICHED_CSV = DATA / "edgeiq_form_guide_enriched_v1.csv"
+21: SOURCE_INVENTORY = DATA / "edgeiq_form_guide_v2_1_source_inventory.csv"
+22: SOURCE_INVENTORY_SUMMARY = DATA / "edgeiq_form_guide_v2_1_source_inventory_summary.txt"
+23: COVERAGE_CSV = DATA / "edgeiq_form_guide_v2_1_coverage.csv"
+24: COVERAGE_SUMMARY = DATA / "edgeiq_form_guide_v2_1_coverage_summary.txt"
+25: JOIN_AUDIT = DATA / "edgeiq_form_guide_v2_1_join_audit.csv"
+775: "schemaVersion": "edgeiq_form_guide_enriched_v1",
+799: "EDGEiQ Form Guide V2.1 source inventory",
+820: "EDGEiQ Form Guide V2.1 coverage summary",
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\build_edgeiq_form_guide_enriched_v1_CHECKPOINT_BEFORE_FORM_GUIDE_V3_3_20260711_095927.py
+19: ENRICHED_JSON = DATA / "edgeiq_form_guide_enriched_v1.json"
+20: ENRICHED_CSV = DATA / "edgeiq_form_guide_enriched_v1.csv"
+21: SOURCE_INVENTORY = DATA / "edgeiq_form_guide_v2_1_source_inventory.csv"
+22: SOURCE_INVENTORY_SUMMARY = DATA / "edgeiq_form_guide_v2_1_source_inventory_summary.txt"
+23: COVERAGE_CSV = DATA / "edgeiq_form_guide_v2_1_coverage.csv"
+24: COVERAGE_SUMMARY = DATA / "edgeiq_form_guide_v2_1_coverage_summary.txt"
+25: JOIN_AUDIT = DATA / "edgeiq_form_guide_v2_1_join_audit.csv"
+869: "schemaVersion": "edgeiq_form_guide_enriched_v1",
+893: "EDGEiQ Form Guide V2.1 source inventory",
+914: "EDGEiQ Form Guide V2.1 coverage summary",
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\build_edgeiq_form_guide_enriched_v2.py
+17: BASE_FEED = DATA / "edgeiq_form_guide_enriched_v1.json"
+42: OUT_JSON = DATA / "edgeiq_form_guide_enriched_v2.json"
+43: OUT_CSV = DATA / "edgeiq_form_guide_enriched_v2.csv"
+44: REGISTRY_CSV = DATA / "edgeiq_form_guide_v3_4_engine_registry.csv"
+45: REGISTRY_JSON = DATA / "edgeiq_form_guide_v3_4_engine_registry.json"
+46: REGISTRY_SUMMARY = DATA / "edgeiq_form_guide_v3_4_engine_registry_summary.txt"
+47: JOIN_AUDIT = DATA / "edgeiq_form_guide_v3_4_engine_join_audit.csv"
+48: COVERAGE_CSV = DATA / "edgeiq_form_guide_v3_4_coverage.csv"
+49: COVERAGE_SUMMARY = DATA / "edgeiq_form_guide_v3_4_coverage_summary.txt"
+796: "schemaVersion": "edgeiq_form_guide_enriched_v2",
+799: "base": "edgeiq_form_guide_enriched_v1.json",
+822: "EDGEiQ Form Guide V3.4 engine registry",
+836: "EDGEiQ Form Guide V3.4 coverage summary",
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\build_edgeiq_form_guide_enriched_v2_CHECKPOINT_BEFORE_CURRENT_INTEL_FIELD_PATCH_20260711_161153.py
+17: BASE_FEED = DATA / "edgeiq_form_guide_enriched_v1.json"
+35: OUT_JSON = DATA / "edgeiq_form_guide_enriched_v2.json"
+36: OUT_CSV = DATA / "edgeiq_form_guide_enriched_v2.csv"
+37: REGISTRY_CSV = DATA / "edgeiq_form_guide_v3_4_engine_registry.csv"
+38: REGISTRY_JSON = DATA / "edgeiq_form_guide_v3_4_engine_registry.json"
+39: REGISTRY_SUMMARY = DATA / "edgeiq_form_guide_v3_4_engine_registry_summary.txt"
+40: JOIN_AUDIT = DATA / "edgeiq_form_guide_v3_4_engine_join_audit.csv"
+41: COVERAGE_CSV = DATA / "edgeiq_form_guide_v3_4_coverage.csv"
+42: COVERAGE_SUMMARY = DATA / "edgeiq_form_guide_v3_4_coverage_summary.txt"
+695: "schemaVersion": "edgeiq_form_guide_enriched_v2",
+698: "base": "edgeiq_form_guide_enriched_v1.json",
+717: "EDGEiQ Form Guide V3.4 engine registry",
+731: "EDGEiQ Form Guide V3.4 coverage summary",
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\build_edgeiq_form_guide_enriched_v2_CHECKPOINT_BEFORE_CURRENT_INTEL_V1_1_20260711_192517.py
+17: BASE_FEED = DATA / "edgeiq_form_guide_enriched_v1.json"
+35: OUT_JSON = DATA / "edgeiq_form_guide_enriched_v2.json"
+36: OUT_CSV = DATA / "edgeiq_form_guide_enriched_v2.csv"
+37: REGISTRY_CSV = DATA / "edgeiq_form_guide_v3_4_engine_registry.csv"
+38: REGISTRY_JSON = DATA / "edgeiq_form_guide_v3_4_engine_registry.json"
+39: REGISTRY_SUMMARY = DATA / "edgeiq_form_guide_v3_4_engine_registry_summary.txt"
+40: JOIN_AUDIT = DATA / "edgeiq_form_guide_v3_4_engine_join_audit.csv"
+41: COVERAGE_CSV = DATA / "edgeiq_form_guide_v3_4_coverage.csv"
+42: COVERAGE_SUMMARY = DATA / "edgeiq_form_guide_v3_4_coverage_summary.txt"
+699: "schemaVersion": "edgeiq_form_guide_enriched_v2",
+702: "base": "edgeiq_form_guide_enriched_v1.json",
+721: "EDGEiQ Form Guide V3.4 engine registry",
+735: "EDGEiQ Form Guide V3.4 coverage summary",
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\build_edgeiq_form_guide_final_locked_spec_v2.py
+12: SRC_APPROVED = IMPL_DIR / 'screenshots' / 'form-guide-exact' / '05_FORM_GUIDE_APPROVED.png'
+14: BINDING = IMPL_DIR / 'FORM_GUIDE_FINAL_DATA_BINDING_MATRIX.csv'
+15: TRACE = IMPL_DIR / 'FORM_GUIDE_FINAL_LIVE_COMPONENT_TRACE.md'
+45: SPEC_MD = '''# FORM GUIDE FINAL LOCKED SPEC V2
+47: This spec supersedes the rejected runtime of the prior Form Guide rebuild. The approved screenshot remains the visual target, but V2 requires the live workspace to render a rich selected runner, a populated profile matrix, and governed recent-form evidence instead of sparse placeholder panels.
+54: - No race selector chip row inside FORM GUIDE
+77: TOKENS_CSS = '''/* EDGEiQ FORM GUIDE FINAL LOCKED V2 TOKENS */
+93: INTERACTIONS = '''# FORM GUIDE FINAL LOCKED INTERACTIONS V2
+98: - Race navigation remains controlled by the surrounding race workspace, not by a FORM GUIDE chip row.
+117: ['FORM GUIDE','required'],
+136: ['--eiq-fg-bg','#f3efe4','Form guide surface'],
+154: shutil.copy2(SRC_APPROVED, SHOT_DIR / '05_FORM_GUIDE_APPROVED.png')
+156: (SPEC_DIR / 'FORM_GUIDE_FINAL_LOCKED_SPEC_V2.md').write_text(SPEC_MD, encoding='utf-8')
+157: (SPEC_DIR / 'FORM_GUIDE_FINAL_LOCKED_SPEC_V2.json').write_text(json.dumps({
+158: 'version':'FORM_GUIDE_FINAL_LOCKED_SPEC_V2',
+170: write_csv(SPEC_DIR / 'FORM_GUIDE_FINAL_GEOMETRY_V2.csv', GEOMETRY_ROWS)
+171: write_csv(SPEC_DIR / 'FORM_GUIDE_FINAL_TEXT_V2.csv', TEXT_ROWS)
+172: write_csv(SPEC_DIR / 'FORM_GUIDE_FINAL_TYPOGRAPHY_V2.csv', TYPO_ROWS)
+173: write_csv(SPEC_DIR / 'FORM_GUIDE_FINAL_COLOURS_V2.csv', COLOUR_ROWS)
+174: write_csv(SPEC_DIR / 'FORM_GUIDE_FINAL_TABLE_COLUMNS_V2.csv', [['table','ordinal','column','binding']] + [['summary',i+1,c,b] for i,(c,b,_) in enumerate(SUMMARY_COLUMNS)] + [['recent_form',i+1,c,b] for i,(c,b) in enumerate(RECENT_COLUMNS)])
+175: (SPEC_DIR / 'FORM_GUIDE_FINAL_INTERACTIONS_V2.md').write_text(INTERACTIONS, encoding='utf-8')
+178: TRACE.write_text(f'''# FORM GUIDE FINAL LIVE COMPONENT TRACE
+192: Race workspace renders the FORM GUIDE tab through the EDGEiQ OS race component tree. The final locked marker is located on the root `<section>` returned by `RaceFormGuideWorkspace`.
+198: - FORM GUIDE visual/data presentation only.
+200: print(json.dumps({'status':'FORM_GUIDE_FINAL_LOCKED_SPEC_V2_BUILT','files':10}, indent=2))
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\build_edgeiq_form_guide_v3_3_reports.py
+13: INVENTORY_CSV = DATA / "edgeiq_form_guide_v3_3_source_inventory.csv"
+14: INVENTORY_SUMMARY = DATA / "edgeiq_form_guide_v3_3_source_inventory_summary.txt"
+15: JOIN_AUDIT_CSV = DATA / "edgeiq_form_guide_v3_3_join_audit.csv"
+16: COVERAGE_CSV = DATA / "edgeiq_form_guide_v3_3_coverage.csv"
+17: COVERAGE_SUMMARY = DATA / "edgeiq_form_guide_v3_3_coverage_summary.txt"
+22: "file": "edgeiq_form_guide_enriched_v1.json",
+25: "reason": "Current Form Guide V3.3 terminal feed; contains race, runner, profile, current price, EPI, and official recent form contract.",
+28: "file": "edgeiq_form_guide_enriched_v1.csv",
+43: "reason": "Live board is useful for current race completeness checks but Form Guide V3.3 does not copy unwired model fields into display columns.",
+67: "reason": "DNA feed supports adjacent analysis; not used to populate Form Guide V3.3 metric columns without an approved join contract.",
+156: path = DATA / "edgeiq_form_guide_enriched_v1.json"
+352: "EDGEIQ Form Guide V3.3 Source Inventory",
+356: "Canonical runner profile source: edgeiq_form_guide_enriched_v1.json",
+367: "EDGEIQ Form Guide V3.3 Coverage Summary",
+379: print("EDGEIQ_FORM_GUIDE_V3_3_REPORTS_BUILT")
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\build_edgeiq_market_terminal_feed_v1.py
+12: ENRICHED = DATA / "edgeiq_form_guide_enriched_v2.json"
+257: source_name(enriched.get("marketPrice"), "edgeiq_form_guide_enriched_v2") if enriched and market_price else "",
+260: source_name(enriched.get("edgeiqPrice"), "edgeiq_form_guide_enriched_v2") if enriched and edgeiq_price else "",
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\build_edgeiq_product_unification_audit_script_v1.py
+40: ("form guide enriched rows", count_csv(PUBLIC / "edgeiq_form_guide_enriched_v2.csv") > 0, count_csv(PUBLIC / "edgeiq_form_guide_enriched_v2.csv")),
+78: - FORM GUIDE
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\build_edgeiq_professional_form_engine_v1.py
+516: <span>Official Form Guide</span>
+729: <span>Professional Form Guide</span>
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\build_edgeiq_race_workspace_baseline_doc_v1.py
+29: ("RaceWorkspace", "src/edgeiq-os/race/components/RaceWorkspace.tsx", "Race-level tab container: FORM GUIDE, MAP, MARKET, OVERVIEW, INSIGHTS, EPI, REVIEW."),
+30: ("RaceFormGuideWorkspace", "src/edgeiq-os/race/components/RaceFormGuideWorkspace.tsx", "Full race form guide table, metric guide, runner profile stack and recent form rows."),
+42: ("Form guide enrichment", "src/edgeiq-os/race/services/formGuideEnrichedFeed.ts", "/data/edgeiq_form_guide_enriched_v2.json"),
+43: ("Form guide normaliser", "src/edgeiq-os/race/services/formGuideNormaliser.ts", "Normalises raceBook + field + enriched JSON into display rows"),
+54: "public/data/edgeiq_form_guide_enriched_v2.json",
+74: lines.append("- Race-level tabs: FORM GUIDE, MAP, MARKET, OVERVIEW, INSIGHTS, EPI, REVIEW.")
+102: lines.append("- FORM GUIDE is the most complete race workspace surface. It uses `edgeiq_form_guide_enriched_v2.json`, displays summary metrics, all-runner profiles, recent form, profile records, jockey/class/preparation sections, and ESI split columns.")
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\build_runner_workspace_form_guide_v13.py
+6: tsx_backup = Path("src/edgeiq-os/race/RaceFileV3_CHECKPOINT_BEFORE_RUNNER_WORKSPACE_FORM_GUIDE_V13_20260709.tsx")
+7: css_backup = Path("src/edgeiq-os/styles/edgeiqOsV2_CHECKPOINT_BEFORE_RUNNER_WORKSPACE_FORM_GUIDE_V13.css")
+64: {tab === "form" ? "Form Guide" : tab.toUpperCase()}
+94: <span>EDGEIQ Form Guide</span>
+235: /* EDGEIQ RUNNER WORKSPACE + FORM GUIDE — V13 */
+511: if "EDGEIQ RUNNER WORKSPACE + FORM GUIDE — V13" not in css.read_text(encoding="utf-8"):
+514: print("[EDGEIQ] Runner Workspace + Form Guide V13 built")
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\capture_edgeiq_approved_ui_rebuild_v1.py
+26: ("05_FORM_GUIDE", "nav", "FORM GUIDE"),
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\capture_edgeiq_final_live_runtime_completion_v1.py
+19: ("05_FORM_GUIDE", "race-nav", "FORM GUIDE"),
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\capture_edgeiq_form_guide_exact_comparison_v1.py
+12: APPROVED = OUT / "05_FORM_GUIDE_APPROVED.png"
+13: LIVE = OUT / "05_FORM_GUIDE_LIVE_RENDERED.png"
+14: OVERLAY = OUT / "05_FORM_GUIDE_OVERLAY_50.png"
+15: DIFF = OUT / "05_FORM_GUIDE_DIFF.png"
+16: EDGE_DIFF = OUT / "05_FORM_GUIDE_EDGE_DIFF.png"
+17: REGION_DIFF = OUT / "05_FORM_GUIDE_REGION_DIFF.csv"
+18: RUNTIME = OUT / "05_FORM_GUIDE_RUNTIME.json"
+19: SPEC = ROOT / "docs/product-specification/FORM_GUIDE_APPROVED_PIXEL_SPEC_V1.json"
+22: js = OUT / "edgeiq_form_guide_exact_capture_tmp.mjs"
+59: await clickText(page, 'FORM GUIDE');
+63: await clickText(page, 'FORM GUIDE');
+84: status: exactCount ? 'FORM_GUIDE_LIVE_CAPTURED' : 'FORM_GUIDE_WORKSPACE_NOT_FOUND',
+145: src = ROOT / "docs/full-product-implementation/screenshots/approved-ui-rebuild/05_FORM_GUIDE_APPROVED.png"
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\capture_edgeiq_form_guide_final_locked_v2.py
+9: APPROVED = SHOT_DIR / '05_FORM_GUIDE_APPROVED.png'
+10: LIVE = SHOT_DIR / '05_FORM_GUIDE_LIVE_1536x1024.png'
+11: OVERLAY = SHOT_DIR / '05_FORM_GUIDE_OVERLAY_50.png'
+12: DIFF = SHOT_DIR / '05_FORM_GUIDE_DIFF.png'
+13: EDGE_DIFF = SHOT_DIR / '05_FORM_GUIDE_EDGE_DIFF.png'
+14: REGION_DIFF = SHOT_DIR / '05_FORM_GUIDE_REGION_DIFF.csv'
+15: DOM_GEOMETRY = SHOT_DIR / '05_FORM_GUIDE_DOM_GEOMETRY.json'
+16: RUNTIME = SHOT_DIR / '05_FORM_GUIDE_RUNTIME.json'
+17: CONSOLE = SHOT_DIR / '05_FORM_GUIDE_CONSOLE.json'
+18: NETWORK = SHOT_DIR / '05_FORM_GUIDE_NETWORK.json'
+19: CAPTURE_JS = SHOT_DIR / 'capture_form_guide_final_locked_v2.mjs'
+62: await clickText(page, 'FORM GUIDE');
+70: await clickText(page, 'FORM GUIDE');
+113: fs.writeFileSync({json.dumps(str(RUNTIME))}, JSON.stringify({{ status: markerCount ? 'FORM_GUIDE_FINAL_LOCKED_LIVE_CAPTURED' : 'FORM_GUIDE_FINAL_LOCKED_NOT_FOUND', captured_at: new Date().toISOString(), markerCount, oldMarkerCount, ...runtime }}, null, 2));
+191: summary = {'status':'FORM_GUIDE_CAPTURE_COMPLETE' if capture_status == 0 else 'FORM_GUIDE_CAPTURE_REVIEW_REQUIRED','timestamp':datetime.now().isoformat(timespec='seconds'), **server_runtime, 'diff':diff_info}
+192: (SHOT_DIR / '05_FORM_GUIDE_CAPTURE_SUMMARY.json').write_text(json.dumps(summary, indent=2), encoding='utf-8')
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\checkpoint_edgeiq_beta_intelligence_completion_v1.py
+16: "scripts/build_edgeiq_form_guide_enriched_v2.py",
+17: "scripts/run_edgeiq_form_guide_current_intelligence_pipeline_v1.ps1",
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\checkpoint_edgeiq_current_intelligence_pipeline_outputs_v1.py
+18: DATA / "edgeiq_form_guide_enriched_v2.json",
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\checkpoint_edgeiq_current_speed_projection_v1.py
+12: ROOT / "scripts" / "build_edgeiq_form_guide_enriched_v2.py",
+13: ROOT / "scripts" / "run_edgeiq_form_guide_current_intelligence_pipeline_v1.ps1",
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\checkpoint_edgeiq_form_guide_engineering_build_v1.py
+9: TASK = "EDGEIQ_FORM_GUIDE_ENGINEERING_BUILD_V1"
+21: "scripts/build_edgeiq_form_guide_enriched_v2.py",
+22: "scripts/run_edgeiq_form_guide_current_intelligence_pipeline_v1.ps1",
+36: checkpoint_root = ROOT / "checkpoints" / f"edgeiq_form_guide_engineering_build_v1_{timestamp}"
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\checkpoint_edgeiq_light_design_epi_map_v1.py
+23: "scripts/build_edgeiq_form_guide_enriched_v2.py",
+25: "scripts/run_edgeiq_form_guide_current_intelligence_pipeline_v1.ps1",
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\checkpoint_edgeiq_scratchings_engineering_build_v1.py
+24: "scripts/audit_edgeiq_form_guide_engineering_build_v1.py",
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\edgeiq_beta_readiness_common_v1.py
+125: path = PUBLIC_DATA / "edgeiq_form_guide_enriched_v2.json"
+199: {"workspace": "Performance", "displayed_field": "EPI", "canonical_builder": "build_edgeiq_form_guide_enriched_v2.py / build_edgeiq_epi_workspace_terminal_feed_v1.py", "service": "formGuideNormaliser.ts / epiWorkspaceFeed.ts", "feed": "edgeiq_form_guide_enriched_v2.json / edgeiq_epi_workspace_terminal_feed_v1.csv", "ui": "RaceFormGuideWorkspace / EpiWorkspaceWorkspace", "reason": "current and historical ratings"},
+200: {"workspace": "Performance", "displayed_field": "ERI", "canonical_builder": "build_edgeiq_form_guide_enriched_v2.py", "service": "formGuideNormaliser.ts / epiWorkspaceFeed.ts", "feed": "edgeiq_form_guide_enriched_v2.json / edgeiq_epi_workspace_terminal_feed_v1.csv", "ui": "Recent form / EPI context", "reason": "historical race strength"},
+201: {"workspace": "Form", "displayed_field": "Early Speed", "canonical_builder": "build_edgeiq_current_early_speed_v1.py", "service": "formGuideNormaliser.ts", "feed": "edgeiq_form_guide_enriched_v2.json", "ui": "RaceFormGuideWorkspace", "reason": "current race speed projection"},
+202: {"workspace": "Form", "displayed_field": "Late Speed", "canonical_builder": "build_edgeiq_current_late_speed_v1.py", "service": "formGuideNormaliser.ts", "feed": "edgeiq_form_guide_enriched_v2.json", "ui": "RaceFormGuideWorkspace", "reason": "current race late speed projection"},
+203: {"workspace": "Form", "displayed_field": "Suitability", "canonical_builder": "build_edgeiq_current_suitability_v1.py", "service": "formGuideNormaliser.ts", "feed": "edgeiq_form_guide_enriched_v2.json", "ui": "RaceFormGuideWorkspace", "reason": "current race suitability"},
+204: {"workspace": "Form", "displayed_field": "Form Momentum", "canonical_builder": "build_edgeiq_current_form_momentum_v1.py", "service": "formGuideNormaliser.ts", "feed": "edgeiq_form_guide_enriched_v2.json", "ui": "RaceFormGuideWorkspace", "reason": "current form trend"},
+205: {"workspace": "Market", "displayed_field": "Market", "canonical_builder": "build_edgeiq_market_terminal_feed_v1.py", "service": "marketFeed.ts / formGuideNormaliser.ts", "feed": "edgeiq_market_terminal_feed_v1.csv / edgeiq_form_guide_enriched_v2.json", "ui": "MarketWorkspace / RaceFormGuideWorkspace", "reason": "current market when available"},
+206: {"workspace": "Market", "displayed_field": "EDGEiQ Price", "canonical_builder": "build_edgeiq_form_guide_enriched_v2.py / build_edgeiq_market_terminal_feed_v1.py", "service": "marketFeed.ts / formGuideNormaliser.ts", "feed": "edgeiq_market_terminal_feed_v1.csv / edgeiq_form_guide_enriched_v2.json", "ui": "MarketWorkspace / RaceFormGuideWorkspace", "reason": "assessed price"},
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\edgeiq_current_speed_projection_v1_common.py
+23: ENRICHED = DATA / "edgeiq_form_guide_enriched_v2.json"
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\fix_edgeiq_form_guide_final_spec_import_v1.py
+15: print("EDGEIQ_FORM_GUIDE_FINAL_SPEC_IMPORT_FIXED")
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\fix_edgeiq_form_guide_runner_anchor_contrast_v1.py
+7: CHECKPOINT = ROOT / "docs" / "full-product-implementation" / "checkpoints" / f"FORM_GUIDE_RUNNER_ANCHOR_CONTRAST_V1_{STAMP}" / "src" / "edgeiq-os" / "styles" / "edgeiqOsV2.css"
+11: /* EDGEIQ FORM GUIDE RUNNER ANCHOR CONTRAST V1 */
+47: marker = "/* EDGEIQ FORM GUIDE RUNNER ANCHOR CONTRAST V1 */"
+52: print("EDGEIQ_FORM_GUIDE_RUNNER_ANCHOR_CONTRAST_FIXED")
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\inspect_edgeiq_form_guide_actual_run_schema_tmp.py
+6: SOURCE = ROOT / "public" / "data" / "edgeiq_form_guide_enriched_v2.json"
+7: REPORT = ROOT / "docs" / "full-product-implementation" / "FORM_GUIDE_ACTUAL_RUN_SCHEMA_DIAGNOSTIC.txt"
+123: lines.append("EDGEIQ FORM GUIDE ACTUAL RUN SCHEMA DIAGNOSTIC")
+193: print("EDGEIQ_FORM_GUIDE_ACTUAL_RUN_SCHEMA_DIAGNOSTIC_PASS")
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\inspect_edgeiq_form_guide_enriched_structure_tmp.py
+6: source = root / "public" / "data" / "edgeiq_form_guide_enriched_v2.json"
+7: output = root / "docs" / "full-product-implementation" / "FORM_GUIDE_ENRICHED_V2_STRUCTURE_INSPECTION.txt"
+54: report.append("EDGEIQ FORM GUIDE ENRICHED V2 STRUCTURE INSPECTION")
+70: print("EDGEIQ_FORM_GUIDE_STRUCTURE_INSPECTION_PASS")
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\inspect_edgeiq_form_guide_historical_epi_builder_tmp.py
+6: OUT = ROOT / "docs" / "full-product-implementation" / "FORM_GUIDE_HISTORICAL_EPI_BUILDER_LIVE_INSPECTION.txt"
+50: "EDGEIQ FORM GUIDE HISTORICAL EPI BUILDER LIVE INSPECTION",
+73: print("EDGEIQ_FORM_GUIDE_HISTORICAL_EPI_BUILDER_LIVE_INSPECTION_PASS")
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\inspect_edgeiq_historical_epi_write_path_tmp.py
+9: FORM = ROOT / "public" / "data" / "edgeiq_form_guide_enriched_v2.json"
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\intelligence_v2_presentation_update.py
+41: <section className="race-panel race-form-guide-panel" aria-label="Selected runner form guide">
+42: <PanelTitle kicker="FORM GUIDE" title={clean(selectedRunner?.horse) || "Selected runner"} meta="last five official starts" />
+93: <section className="race-panel race-form-guide-panel" aria-label="Selected runner form guide">
+94: <PanelTitle kicker="FORM GUIDE" title={clean(selectedRunner?.horse) || "Selected runner"} meta="last five official starts" />
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\measure_edgeiq_form_guide_approved_png_v1.py
+11: ROOT / "docs/full-product-implementation/screenshots/approved-ui-rebuild/05_FORM_GUIDE_APPROVED.png",
+12: ROOT / "docs/full-product-implementation/screenshots/final-live-runtime/05_FORM_GUIDE_APPROVED.png",
+13: ROOT / "docs/product-specification/EDGEIQ_APPROVED_UI_REBUILD/approved-pngs/EDGEiQ_APPROVED_TABS/05_FORM_GUIDE_APPROVED.png",
+17: MEASURE_OUT = SPEC_DIR / "FORM_GUIDE_APPROVED_PIXEL_MEASUREMENT_V1.json"
+18: INVENTORY_OUT = SPEC_DIR / "FORM_GUIDE_APPROVED_PIXEL_MEASUREMENT_V1.csv"
+100: raise SystemExit("No approved FORM GUIDE PNG found")
+118: copied = EXACT_DIR / "05_FORM_GUIDE_APPROVED.png"
+121: "status": "FORM_GUIDE_APPROVED_PNG_MEASURED",
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\measure_edgeiq_form_guide_final_locked_v2.py
+8: SRC = ROOT / 'docs' / 'full-product-implementation' / 'screenshots' / 'form-guide-exact' / '05_FORM_GUIDE_APPROVED.png'
+9: REPORT = ROOT / 'docs' / 'product-specification' / 'FORM_GUIDE_FINAL_MEASURE_V2.json'
+19: target = SHOT_DIR / '05_FORM_GUIDE_APPROVED.png'
+27: info = {'status':'FORM_GUIDE_FINAL_APPROVED_MEASURED','timestamp':datetime.now().isoformat(timespec='seconds'),'path':str(path.relative_to(ROOT)),'sha256':digest,'width':size[0] if size else None,'height':size[1] if size else None,'method':'png_header_hash'}
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\patch_edgeiq_form_guide_enriched_v2_current_intel_fields.py
+7: TARGET = ROOT / "scripts" / "build_edgeiq_form_guide_enriched_v2.py"
+100: print("EDGEIQ_FORM_GUIDE_ENRICHED_V2_CURRENT_INTEL_FIELD_PATCH_COMPLETE")
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\patch_edgeiq_historical_epi_governed_recovery_v1.py
+354: return direct, clean(value.get("source")) or "edgeiq_form_guide_enriched_v2.json:historicalEpi", clean(value.get("version") or value.get("asAt"))
+388: or "edgeiq_form_guide_enriched_v2.json:historicalEpi",
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\probe_edgeiq_historical_epi_governed_lookup_tmp.py
+23: form_payload = module.read_json(module.FORM_GUIDE)
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\probe_edgeiq_historical_epi_runtime_traversal_tmp.py
+29: form_payload = module.read_json(module.FORM_GUIDE)
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\probe_edgeiq_race_join_structure_tmp.py
+21: form_payload = module.read_json(module.FORM_GUIDE)
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\probe_form_guide_rich_runner_tmp.py
+5: path = ROOT/'public/data/edgeiq_form_guide_enriched_v2.json'
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\run_edgeiq_beta_governed_data_completion_v1.py
+152: "Form Guide": {
+156: "feed": "edgeiq_form_guide_enriched_v2.csv",
+157: "builder": "build_edgeiq_form_guide_enriched_v2.py",
+657: if "racingcom" in lower or "three_day" in lower or "form_guide" in lower:
+697: "scratchings": "Scratchings|Form Guide|MAP|Market",
+698: "gear": "Gear Changes|Form Guide",
+699: "market": "Market|Form Guide|Overview",
+700: "results": "Results|EPI Workspace|Form Guide",
+701: "sectionals": "Results|Form Guide|EPI Workspace",
+702: "speed": "Form Guide|MAP|EPI Workspace",
+704: "form": "Form Guide|EPI Workspace",
+705: "meetings": "Meetings|Meeting Detail|Form Guide",
+706: "performance": "EPI Workspace|Form Guide",
+1144: r"terminal_feed|three_day|current|official|weather_beta|form_guide_enriched|scratchings|gear|track_map|market_terminal|overview_terminal|insights_terminal|epi_workspace",
+1269: ("catalog_to_form_guide", "Form Guide", "edgeiq_three_day_product_catalog_v1.json", "edgeiq_form_guide_enriched_v2.csv", ["date", "track", "race_no", "runner"], ["race_date", "track", "race_no", "runner"]),
+1347: "Form Guide": "edgeiq_form_guide_enriched_v2.csv",
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\run_edgeiq_daily_rolling_product_pipeline_v1.py
+22: "scripts/build_edgeiq_form_guide_enriched_v2.py",
+77: for name in ["edgeiq_form_guide_enriched_v2.csv", "edgeiq_epi_workspace_terminal_feed_v1.csv", "edgeiq_map_terminal_feed_v1.csv", "edgeiq_market_terminal_feed_v1.csv", "edgeiq_overview_terminal_feed_v1.csv", "edgeiq_insights_terminal_feed_v1.csv"]:
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\trace_edgeiq_form_guide_pipeline_tmp.py
+9: OUT = ROOT / "docs" / "full-product-implementation" / "FORM_GUIDE_PIPELINE_TRACE.txt"
+26: "EDGEIQ FORM GUIDE PIPELINE TRACE",
+72: "SCRIPTS REFERENCING FORM GUIDE OUTPUT",
+84: if "form_guide" in lowered or "form guide" in lowered:
+87: if "form_guide" in line.lower() or "form guide" in line.lower():
+99: print("FORM_GUIDE_PIPELINE_TRACE_PASS")
+
+C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\performance-intelligence\product-integration\audit_edgeiq_performance_intelligence_product_integration_v1.py
+24: "Form guide": ROOT / "src" / "edgeiq-os" / "race" / "components" / "RaceFormGuideWorkspace.tsx",
+151: "- EPI, Form Guide, Overview, Results, Compare and Insights consume service lookups.",

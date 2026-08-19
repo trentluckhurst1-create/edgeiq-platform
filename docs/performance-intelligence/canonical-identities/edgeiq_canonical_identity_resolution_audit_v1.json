@@ -1,0 +1,70 @@
+{
+  "step": 1,
+  "status": "PASS",
+  "generated_utc": "2026-07-25T21:50:00Z",
+  "metrics": {
+    "raw_identity_rows": 879784,
+    "domains": {
+      "horse": {
+        "raw_mappings": 97112,
+        "canonical_identities": 97112,
+        "resolved_rows": 97112,
+        "unresolved_rows": 0,
+        "ambiguous_rows": 0,
+        "rejected_rows": 0
+      },
+      "race": {
+        "raw_mappings": 71019,
+        "canonical_identities": 71019,
+        "resolved_rows": 71019,
+        "unresolved_rows": 0,
+        "ambiguous_rows": 0,
+        "rejected_rows": 0
+      },
+      "meeting": {
+        "raw_mappings": 8600,
+        "canonical_identities": 8600,
+        "resolved_rows": 8600,
+        "unresolved_rows": 0,
+        "ambiguous_rows": 0,
+        "rejected_rows": 0
+      },
+      "track": {
+        "raw_mappings": 100,
+        "canonical_identities": 87,
+        "resolved_rows": 100,
+        "unresolved_rows": 0,
+        "ambiguous_rows": 0,
+        "rejected_rows": 0
+      },
+      "jockey": {
+        "raw_mappings": 1491,
+        "canonical_identities": 1491,
+        "resolved_rows": 1491,
+        "unresolved_rows": 0,
+        "ambiguous_rows": 0,
+        "rejected_rows": 0
+      },
+      "trainer": {
+        "raw_mappings": 3759,
+        "canonical_identities": 3759,
+        "resolved_rows": 3759,
+        "unresolved_rows": 0,
+        "ambiguous_rows": 0,
+        "rejected_rows": 0
+      },
+      "performance": {
+        "raw_mappings": 879784,
+        "canonical_identities": 879784,
+        "resolved_rows": 879784,
+        "unresolved_rows": 0,
+        "ambiguous_rows": 0,
+        "rejected_rows": 0
+      }
+    }
+  },
+  "duplicate_source_mappings": 0,
+  "canonical_collisions": 0,
+  "orphan_identities": 0,
+  "elapsed_seconds": 77.539
+}

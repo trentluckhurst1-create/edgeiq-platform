@@ -1,0 +1,62 @@
+{
+  "audit_name": "EDGEiQ Performance Intelligence Phase 1.0.1 Duplicate Performance Evidence Resolution",
+  "generated_utc": "2026-07-15T18:51:40.704386+00:00",
+  "status": "DUPLICATE_EVIDENCE_RESOLUTION_FAIL",
+  "production_data_modified": false,
+  "source_asset": "docs/performance-intelligence/prototypes/phase0_5/edgeiq_canonical_performance_identity_prototype_v0_1_20260716_041523.csv",
+  "source_sha256": "8924ad1c00a7317f3ce69ac177fee1fb85f64e8be693c318238612a3c14e0985",
+  "source_rows": 879784,
+  "source_unique_performance_ids": 879695,
+  "duplicate_performance_ids": 89,
+  "duplicate_source_rows": 89,
+  "exact_duplicate_groups": 0,
+  "conflicting_duplicate_groups": 89,
+  "canonical_output_rows": 879606,
+  "canonical_output_sha256": "9e0cb8787c8578e5d1ce5ac0c4feb213456f4ea7afed59974e3d1f0e068f43a1",
+  "membership_output_rows": 879784,
+  "membership_output_sha256": "5cba7440db2a55f6730693b760288cde684c84a21b9885778f3aecfe3ed01820",
+  "duplicate_output_rows": 0,
+  "blank_output_ids": 0,
+  "resolution_counts": {
+    "UNIQUE_SOURCE_ROW": 879606
+  },
+  "checks": [
+    {
+      "check": "SOURCE_ROW_ACCOUNTING",
+      "passed": false,
+      "observed": "source_rows=879784;canonical_rows=879606;duplicate_source_rows=89;conflict_groups=89"
+    },
+    {
+      "check": "CANONICAL_PRIMARY_KEY_UNIQUE",
+      "passed": true,
+      "observed": "duplicates=0;blank=0"
+    },
+    {
+      "check": "CANONICAL_ROW_COUNT",
+      "passed": true,
+      "observed": "output_rows=879606;expected_rows=879606"
+    },
+    {
+      "check": "CONFLICTS_NOT_SILENTLY_MATERIALISED",
+      "passed": true,
+      "observed": "conflicting_groups=89"
+    },
+    {
+      "check": "SOURCE_EVIDENCE_PRESERVED",
+      "passed": true,
+      "observed": "membership_rows=879784"
+    }
+  ],
+  "failed_checks": [
+    "SOURCE_ROW_ACCOUNTING"
+  ],
+  "canonical_status": "CANONICAL_MATERIALISATION_BLOCKED",
+  "next_stage": "Resolve failed Phase 1.0.1 checks.",
+  "outputs": {
+    "canonical_performance_identity": "docs/performance-intelligence/prototypes/phase1_0_1/edgeiq_canonical_performance_identity_v0_2_20260716_045140.csv",
+    "source_evidence_membership": "docs/performance-intelligence/prototypes/phase1_0_1/edgeiq_performance_source_evidence_membership_v0_1_20260716_045140.csv",
+    "duplicate_groups": "docs/performance-intelligence/audits/phase1_0_1/edgeiq_performance_duplicate_groups_v0_1_20260716_045140.csv",
+    "conflicts": "docs/performance-intelligence/audits/phase1_0_1/edgeiq_performance_duplicate_conflicts_v0_1_20260716_045140.csv",
+    "checks": "docs/performance-intelligence/audits/phase1_0_1/edgeiq_performance_identity_v0_2_checks_20260716_045140.csv"
+  }
+}

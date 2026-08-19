@@ -1,0 +1,124 @@
+{
+  "audit_name": "edgeiq_race_entry_epi_relative_context_fact_v1",
+  "audit_version": "1.0.0",
+  "audited_at_utc": "2026-07-22T21:21:21Z",
+  "checks": {
+    "contract_fields_exact": {
+      "detail": {
+        "actual": [
+          "race_entry_epi_relative_context_id",
+          "race_entry_id",
+          "race_entry_epi_id",
+          "race_id",
+          "race_date",
+          "race_epi_distribution_id",
+          "runner_epi_value",
+          "eligible_epi_population_count",
+          "field_epi_mean",
+          "epi_minus_field_mean",
+          "field_epi_population_standard_deviation",
+          "epi_population_z_score",
+          "minimum_epi",
+          "maximum_epi",
+          "epi_range",
+          "distance_above_minimum_epi",
+          "distance_below_maximum_epi",
+          "race_entry_epi_evidence_sha256",
+          "race_epi_distribution_evidence_sha256",
+          "epi_relative_context_publication_decision",
+          "epi_relative_context_reconciliation_decision",
+          "epi_relative_context_status",
+          "race_entry_epi_relative_context_evidence_sha256",
+          "source_lineage",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ],
+        "expected": [
+          "race_entry_epi_relative_context_id",
+          "race_entry_id",
+          "race_entry_epi_id",
+          "race_id",
+          "race_date",
+          "race_epi_distribution_id",
+          "runner_epi_value",
+          "eligible_epi_population_count",
+          "field_epi_mean",
+          "epi_minus_field_mean",
+          "field_epi_population_standard_deviation",
+          "epi_population_z_score",
+          "minimum_epi",
+          "maximum_epi",
+          "epi_range",
+          "distance_above_minimum_epi",
+          "distance_below_maximum_epi",
+          "race_entry_epi_evidence_sha256",
+          "race_epi_distribution_evidence_sha256",
+          "epi_relative_context_publication_decision",
+          "epi_relative_context_reconciliation_decision",
+          "epi_relative_context_status",
+          "race_entry_epi_relative_context_evidence_sha256",
+          "source_lineage",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ]
+      },
+      "status": "PASS"
+    },
+    "deterministic_relative_context_evidence": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "deterministic_relative_context_identity": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "natural_keys_unique": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "no_forbidden_fields": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "primary_keys_unique": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "published_population_exact": {
+      "detail": {
+        "epi_rows": 0,
+        "fact_rows": 0
+      },
+      "status": "PASS"
+    },
+    "relative_context_arithmetic_reconciled": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "relative_context_governance_exact": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "relative_context_lineage_complete": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "relative_context_sources_reconciled": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "required_files_exist": {
+      "detail": [],
+      "status": "PASS"
+    }
+  },
+  "counts": {
+    "race_entry_epi_rows": 0,
+    "race_epi_distribution_rows": 0,
+    "relative_context_rows": 0
+  },
+  "failed_checks": [],
+  "status": "PASS"
+}

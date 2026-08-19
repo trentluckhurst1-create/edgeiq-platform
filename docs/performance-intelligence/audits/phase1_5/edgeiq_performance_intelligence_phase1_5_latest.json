@@ -1,0 +1,419 @@
+{
+  "audit_name": "EDGEiQ Performance Intelligence Phase 1.5 Benchmark Evidence Readiness Audit",
+  "generated_utc": "2026-07-15T21:43:25.723276+00:00",
+  "audit_version": "BENCHMARK_EVIDENCE_READINESS_V0_1",
+  "status": "BENCHMARK_EVIDENCE_READINESS_PARTIAL",
+  "production_data_modified": false,
+  "benchmarks_calculated": false,
+  "raw_warehouse_snapshot_id": "eiq_warehouse_snapshot_b24578e0eb795ab6bd076452bfff3f5e",
+  "dimension_snapshot_id": "eiq_dimension_snapshot_f41e99df7d4a58cdb5f6da1cb1dc39c0",
+  "performance_profile": {
+    "path": "docs/performance-intelligence/warehouse/raw/eiq_warehouse_snapshot_b24578e0eb795ab6bd076452bfff3f5e/canonical_performance_evidence.csv",
+    "rows": 879784,
+    "columns": [
+      "performance_id",
+      "race_id",
+      "meeting_id",
+      "horse_id",
+      "source_evidence_id",
+      "source_row_number",
+      "provider_race_id",
+      "provider_runner_id",
+      "race_date",
+      "state",
+      "track",
+      "race_number",
+      "horse_name",
+      "identity_method",
+      "identity_quality_state",
+      "identity_version",
+      "evidence_version",
+      "generated_at",
+      "legacy_performance_id",
+      "performance_natural_key_version",
+      "rekeyed_at"
+    ],
+    "detected_fields": {
+      "performance_id": "performance_id",
+      "race_id": "race_id",
+      "race_date": "race_date",
+      "state": "state",
+      "track": "track",
+      "course": "",
+      "race_number": "race_number",
+      "distance": "",
+      "race_class": "",
+      "going": "",
+      "rail": "",
+      "official_time": "",
+      "finish_position": "",
+      "margin": "",
+      "weight": "",
+      "barrier": "",
+      "sp": ""
+    },
+    "coverage": {
+      "performance_id": {
+        "field": "performance_id",
+        "present_rows": 879784,
+        "coverage_pct": 100.0,
+        "numeric_valid_rows": 0,
+        "numeric_valid_pct": 0.0,
+        "distinct_value_count_capped": 0
+      },
+      "race_id": {
+        "field": "race_id",
+        "present_rows": 879784,
+        "coverage_pct": 100.0,
+        "numeric_valid_rows": 0,
+        "numeric_valid_pct": 0.0,
+        "distinct_value_count_capped": 0
+      },
+      "race_date": {
+        "field": "race_date",
+        "present_rows": 879784,
+        "coverage_pct": 100.0,
+        "numeric_valid_rows": 0,
+        "numeric_valid_pct": 0.0,
+        "distinct_value_count_capped": 0
+      },
+      "state": {
+        "field": "state",
+        "present_rows": 879784,
+        "coverage_pct": 100.0,
+        "numeric_valid_rows": 0,
+        "numeric_valid_pct": 0.0,
+        "distinct_value_count_capped": 1
+      },
+      "track": {
+        "field": "track",
+        "present_rows": 879784,
+        "coverage_pct": 100.0,
+        "numeric_valid_rows": 0,
+        "numeric_valid_pct": 0.0,
+        "distinct_value_count_capped": 100
+      },
+      "course": {
+        "field": "",
+        "present_rows": 0,
+        "coverage_pct": 0.0,
+        "numeric_valid_rows": 0,
+        "numeric_valid_pct": 0.0,
+        "distinct_value_count_capped": 0
+      },
+      "race_number": {
+        "field": "race_number",
+        "present_rows": 879784,
+        "coverage_pct": 100.0,
+        "numeric_valid_rows": 0,
+        "numeric_valid_pct": 0.0,
+        "distinct_value_count_capped": 0
+      },
+      "distance": {
+        "field": "",
+        "present_rows": 0,
+        "coverage_pct": 0.0,
+        "numeric_valid_rows": 0,
+        "numeric_valid_pct": 0.0,
+        "distinct_value_count_capped": 0
+      },
+      "race_class": {
+        "field": "",
+        "present_rows": 0,
+        "coverage_pct": 0.0,
+        "numeric_valid_rows": 0,
+        "numeric_valid_pct": 0.0,
+        "distinct_value_count_capped": 0
+      },
+      "going": {
+        "field": "",
+        "present_rows": 0,
+        "coverage_pct": 0.0,
+        "numeric_valid_rows": 0,
+        "numeric_valid_pct": 0.0,
+        "distinct_value_count_capped": 0
+      },
+      "rail": {
+        "field": "",
+        "present_rows": 0,
+        "coverage_pct": 0.0,
+        "numeric_valid_rows": 0,
+        "numeric_valid_pct": 0.0,
+        "distinct_value_count_capped": 0
+      },
+      "official_time": {
+        "field": "",
+        "present_rows": 0,
+        "coverage_pct": 0.0,
+        "numeric_valid_rows": 0,
+        "numeric_valid_pct": 0.0,
+        "distinct_value_count_capped": 0
+      },
+      "finish_position": {
+        "field": "",
+        "present_rows": 0,
+        "coverage_pct": 0.0,
+        "numeric_valid_rows": 0,
+        "numeric_valid_pct": 0.0,
+        "distinct_value_count_capped": 0
+      },
+      "margin": {
+        "field": "",
+        "present_rows": 0,
+        "coverage_pct": 0.0,
+        "numeric_valid_rows": 0,
+        "numeric_valid_pct": 0.0,
+        "distinct_value_count_capped": 0
+      },
+      "weight": {
+        "field": "",
+        "present_rows": 0,
+        "coverage_pct": 0.0,
+        "numeric_valid_rows": 0,
+        "numeric_valid_pct": 0.0,
+        "distinct_value_count_capped": 0
+      },
+      "barrier": {
+        "field": "",
+        "present_rows": 0,
+        "coverage_pct": 0.0,
+        "numeric_valid_rows": 0,
+        "numeric_valid_pct": 0.0,
+        "distinct_value_count_capped": 0
+      },
+      "sp": {
+        "field": "",
+        "present_rows": 0,
+        "coverage_pct": 0.0,
+        "numeric_valid_rows": 0,
+        "numeric_valid_pct": 0.0,
+        "distinct_value_count_capped": 0
+      }
+    },
+    "min_race_date": "2000-08-02",
+    "max_race_date": "2026-06-24"
+  },
+  "sectional_profile": {
+    "path": "docs/performance-intelligence/warehouse/raw/eiq_warehouse_snapshot_b24578e0eb795ab6bd076452bfff3f5e/canonical_sectional_evidence.csv",
+    "rows": 103766,
+    "columns": [
+      "performance_sectional_id",
+      "performance_id",
+      "race_id",
+      "meeting_id",
+      "horse_id",
+      "source_evidence_id",
+      "source_row_number",
+      "provider_code",
+      "race_date",
+      "canonical_track",
+      "race_number",
+      "canonical_horse",
+      "link_method",
+      "linkage_version",
+      "timing_quality_state",
+      "evidence_version",
+      "source_sha256",
+      "migration_version",
+      "generated_at",
+      "raw_meeting_date",
+      "raw_track",
+      "raw_race_no",
+      "raw_horse_name",
+      "raw_horse_key",
+      "raw_position",
+      "raw_layout_type",
+      "raw_dist_run",
+      "raw_early_speed",
+      "raw_mid_speed",
+      "raw_late_speed",
+      "raw_peak_speed",
+      "raw_avg_speed",
+      "raw_source_file",
+      "raw_source_url",
+      "legacy_performance_id",
+      "legacy_performance_sectional_id",
+      "identity_remap_version",
+      "remapped_at"
+    ],
+    "detected_fields": {
+      "performance_sectional_id": "performance_sectional_id",
+      "performance_id": "performance_id",
+      "race_date": "race_date",
+      "track": "canonical_track",
+      "race_number": "race_number",
+      "horse": "canonical_horse",
+      "last_800": "",
+      "last_600": "",
+      "last_400": "",
+      "last_200": "",
+      "split_800_600": "",
+      "split_600_400": "",
+      "split_400_200": "",
+      "split_200_finish": "",
+      "timing_quality_state": "timing_quality_state"
+    },
+    "coverage": {
+      "performance_sectional_id": {
+        "field": "performance_sectional_id",
+        "present_rows": 103766,
+        "coverage_pct": 100.0,
+        "numeric_valid_rows": 0,
+        "numeric_valid_pct": 0.0
+      },
+      "performance_id": {
+        "field": "performance_id",
+        "present_rows": 103766,
+        "coverage_pct": 100.0,
+        "numeric_valid_rows": 0,
+        "numeric_valid_pct": 0.0
+      },
+      "race_date": {
+        "field": "race_date",
+        "present_rows": 103766,
+        "coverage_pct": 100.0,
+        "numeric_valid_rows": 0,
+        "numeric_valid_pct": 0.0
+      },
+      "track": {
+        "field": "canonical_track",
+        "present_rows": 103766,
+        "coverage_pct": 100.0,
+        "numeric_valid_rows": 0,
+        "numeric_valid_pct": 0.0
+      },
+      "race_number": {
+        "field": "race_number",
+        "present_rows": 103766,
+        "coverage_pct": 100.0,
+        "numeric_valid_rows": 0,
+        "numeric_valid_pct": 0.0
+      },
+      "horse": {
+        "field": "canonical_horse",
+        "present_rows": 103766,
+        "coverage_pct": 100.0,
+        "numeric_valid_rows": 0,
+        "numeric_valid_pct": 0.0
+      },
+      "last_800": {
+        "field": "",
+        "present_rows": 0,
+        "coverage_pct": 0.0,
+        "numeric_valid_rows": 0,
+        "numeric_valid_pct": 0.0
+      },
+      "last_600": {
+        "field": "",
+        "present_rows": 0,
+        "coverage_pct": 0.0,
+        "numeric_valid_rows": 0,
+        "numeric_valid_pct": 0.0
+      },
+      "last_400": {
+        "field": "",
+        "present_rows": 0,
+        "coverage_pct": 0.0,
+        "numeric_valid_rows": 0,
+        "numeric_valid_pct": 0.0
+      },
+      "last_200": {
+        "field": "",
+        "present_rows": 0,
+        "coverage_pct": 0.0,
+        "numeric_valid_rows": 0,
+        "numeric_valid_pct": 0.0
+      },
+      "split_800_600": {
+        "field": "",
+        "present_rows": 0,
+        "coverage_pct": 0.0,
+        "numeric_valid_rows": 0,
+        "numeric_valid_pct": 0.0
+      },
+      "split_600_400": {
+        "field": "",
+        "present_rows": 0,
+        "coverage_pct": 0.0,
+        "numeric_valid_rows": 0,
+        "numeric_valid_pct": 0.0
+      },
+      "split_400_200": {
+        "field": "",
+        "present_rows": 0,
+        "coverage_pct": 0.0,
+        "numeric_valid_rows": 0,
+        "numeric_valid_pct": 0.0
+      },
+      "split_200_finish": {
+        "field": "",
+        "present_rows": 0,
+        "coverage_pct": 0.0,
+        "numeric_valid_rows": 0,
+        "numeric_valid_pct": 0.0
+      },
+      "timing_quality_state": {
+        "field": "timing_quality_state",
+        "present_rows": 103766,
+        "coverage_pct": 100.0,
+        "numeric_valid_rows": 0,
+        "numeric_valid_pct": 0.0
+      }
+    },
+    "quality_state_counts": {
+      "COMPLETE": 103766
+    }
+  },
+  "missing_base_fields": [
+    "distance",
+    "official_time"
+  ],
+  "available_hierarchy_fields": [
+    "track"
+  ],
+  "available_sectional_fields": [],
+  "base_benchmark_status": "BASE_RACE_TIME_BENCHMARK_EVIDENCE_BLOCKED",
+  "sectional_benchmark_status": "SECTIONAL_BENCHMARK_EVIDENCE_BLOCKED",
+  "checks": [
+    {
+      "check": "RAW_WAREHOUSE_AVAILABLE",
+      "passed": true,
+      "observed": "eiq_warehouse_snapshot_b24578e0eb795ab6bd076452bfff3f5e"
+    },
+    {
+      "check": "DIMENSION_WAREHOUSE_AVAILABLE",
+      "passed": true,
+      "observed": "eiq_dimension_snapshot_f41e99df7d4a58cdb5f6da1cb1dc39c0"
+    },
+    {
+      "check": "BASE_BENCHMARK_FIELDS",
+      "passed": false,
+      "observed": "distance | official_time"
+    },
+    {
+      "check": "BENCHMARK_HIERARCHY_FIELDS",
+      "passed": false,
+      "observed": "track"
+    },
+    {
+      "check": "SECTIONAL_TIME_FIELDS",
+      "passed": false,
+      "observed": "NONE"
+    },
+    {
+      "check": "NO_BENCHMARKS_CALCULATED",
+      "passed": true,
+      "observed": "READINESS_AUDIT_ONLY"
+    }
+  ],
+  "failed_checks": [
+    "BASE_BENCHMARK_FIELDS",
+    "BENCHMARK_HIERARCHY_FIELDS",
+    "SECTIONAL_TIME_FIELDS"
+  ],
+  "next_stage": "Phase 1.5.1 define benchmark eligibility, exclusion rules, minimum samples and hierarchy fallback contracts.",
+  "outputs": {
+    "field_catalog": "docs/performance-intelligence/prototypes/phase1_5/edgeiq_benchmark_evidence_field_catalog_v0_1_20260716_074325.csv",
+    "architecture": "docs/performance-intelligence/architecture/phase1_5/EDGEIQ_BENCHMARK_ENGINE_READINESS_V0_1.md"
+  }
+}

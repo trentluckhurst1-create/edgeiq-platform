@@ -1,0 +1,8 @@
+{
+  "complete_context_eligible": 5,
+  "complete_context_ineligible": 0,
+  "primary_blocking_reason": "CLASS_CONTEXT_INELIGIBLE_MISSING_CONTEXT",
+  "snapshot_eligible_for_epi_context": 5,
+  "snapshot_rows": 5,
+  "status": "PASS_WITH_GOVERNED_CONTEXT_EXCLUSIONS"
+}

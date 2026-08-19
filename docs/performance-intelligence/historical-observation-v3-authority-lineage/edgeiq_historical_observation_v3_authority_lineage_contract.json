@@ -1,0 +1,71 @@
+{
+  "checks": [
+    {
+      "check": "RAW_PATH_CLASSIFICATION",
+      "detail": "docs/performance-intelligence/warehouse/raw/eiq_warehouse_snapshot_b24578e0eb795ab6bd076452bfff3f5e/canonical_performance_evidence.csv",
+      "result": "PASS"
+    },
+    {
+      "check": "CORRECTED_PATH_CLASSIFICATION",
+      "detail": "docs/performance-intelligence/warehouse/performance-facts-corrected/eiq_performance_facts_v0_2_a0c3715ab506d19f9301d8a4/canonical_performance_facts_v0_2.csv",
+      "result": "PASS"
+    },
+    {
+      "check": "RAW_POPULATION_MATCH",
+      "detail": "actual=879784; expected=879784",
+      "result": "PASS"
+    },
+    {
+      "check": "CORRECTED_POPULATION_MATCH",
+      "detail": "actual=879784; expected=879784",
+      "result": "PASS"
+    },
+    {
+      "check": "RAW_IDENTITY_PRESENT",
+      "detail": "race_id",
+      "result": "FAIL"
+    },
+    {
+      "check": "RAW_LINEAGE_PRESENT",
+      "detail": "source_row_number",
+      "result": "PASS"
+    },
+    {
+      "check": "CORRECTED_DERIVATION_PRESENT",
+      "detail": "benchmark_eligible|performance_fact_id|quality_state",
+      "result": "PASS"
+    },
+    {
+      "check": "RAW_ASSET_CATALOG_REFERENCE",
+      "detail": "docs/performance-intelligence/warehouse/raw/eiq_warehouse_snapshot_b24578e0eb795ab6bd076452bfff3f5e/asset_catalog.csv",
+      "result": "PASS"
+    },
+    {
+      "check": "RAW_MATERIALISATION_REFERENCE",
+      "detail": "docs/performance-intelligence/warehouse/raw/eiq_warehouse_snapshot_b24578e0eb795ab6bd076452bfff3f5e/materialisation_checks.csv",
+      "result": "PASS"
+    },
+    {
+      "check": "PIPELINE_LINEAGE_SCRIPT",
+      "detail": "scripts/audit_edgeiq_historical_observation_v3_authority_lineage_phase1a_6b_1_v1.py",
+      "result": "PASS"
+    },
+    {
+      "check": "FILES_ARE_NOT_BYTE_IDENTICAL",
+      "detail": "raw_sha256=5754e424b57031b3a6e50b4ecd8675af21b10a7a624b85d3810795562e0d1df2; corrected_sha256=51c5c04ce04bdd28dbcec5beb3c4766bdff4d0e5e6da555d22e2046280c6ec1b",
+      "result": "PASS"
+    }
+  ],
+  "contract_id": "EDGEIQ_HISTORICAL_OBSERVATION_V3_PHYSICAL_AUTHORITY_CONTRACT_V1",
+  "decision": "LINEAGE_NOT_YET_PROVEN",
+  "generated_at_utc": "2026-07-27T06:14:44+00:00",
+  "population_contract": {
+    "duplicate_excess": 89,
+    "physical_rows": 879784,
+    "unique_raw_identities": 879695
+  },
+  "rejected_as_source_authority": null,
+  "selected_authority": null,
+  "status": "EDGEIQ_HISTORICAL_OBSERVATION_V3_AUTHORITY_LINEAGE_PHASE1A_6B_1_V1_FAIL",
+  "warehouse_build_authorised": false
+}

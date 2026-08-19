@@ -1,0 +1,29 @@
+[
+  {
+    "client": "caulfield",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/caulfield.html",
+    "status": 200,
+    "content_type": "application/json; charset=utf-8",
+    "bytes": 41716,
+    "json": true,
+    "preview": "{\n    \"status\": 0,\n    \"payload\": {\n        \"header\": {\n            \"description\": \"Turftrax Weather Data Visualisation for Caulfield Racecourse on Fri, 10 Jul 2026 02:33:31 +0100\",\n            \"signature\": \"Turftrax ITS WDV API Stream prod-V1.5.3-20"
+  },
+  {
+    "client": "ladbrokes",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/ladbrokes.html",
+    "status": 200,
+    "content_type": "application/json; charset=utf-8",
+    "bytes": 32344,
+    "json": true,
+    "preview": "{\n    \"status\": 0,\n    \"payload\": {\n        \"header\": {\n            \"description\": \"Turftrax Weather Data Visualisation for Sportsbet Sandown Racecourse on Fri, 10 Jul 2026 02:33:33 +0100\",\n            \"signature\": \"Turftrax ITS WDV API Stream prod-V"
+  },
+  {
+    "client": "mornington",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/mornington.html",
+    "status": 200,
+    "content_type": "application/json; charset=utf-8",
+    "bytes": 27444,
+    "json": true,
+    "preview": "{\n    \"status\": 0,\n    \"payload\": {\n        \"header\": {\n            \"description\": \"Turftrax Weather Data Visualisation for Mornington Racecourse on Fri, 10 Jul 2026 02:33:35 +0100\",\n            \"signature\": \"Turftrax ITS WDV API Stream prod-V1.5.3-2"
+  }
+]

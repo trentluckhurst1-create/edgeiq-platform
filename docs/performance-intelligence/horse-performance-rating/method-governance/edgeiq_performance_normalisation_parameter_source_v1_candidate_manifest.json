@@ -1,0 +1,20 @@
+{
+  "status": "NORMALISATION_PARAMETER_CANDIDATE_BUILT",
+  "semantic_method": "NORM_A_HISTORICAL_POPULATION_LINEAR_CENTRE_SCALE_V1",
+  "executable_method": "LINEAR_CENTRE_AND_SCALE",
+  "model_version": "HPR-NORM-A-v1",
+  "population_count": 168,
+  "minimum_population": 100,
+  "centre_value": "-0.193589285714",
+  "scale_value": "1.637341550205",
+  "population_sha256": "d953d4021980927428522522e40385a874f9ddb19a654a67004a89a4aa61a421",
+  "source_evidence_sha256": "abc1fcec8dc56bcaaf9eee0c0f5cdada575112dec0646788c9f01bb07be3ca42",
+  "effective_from_date": "2026-07-20",
+  "effective_to_date": "",
+  "outlier_method": "NONE_IN_HPR_NORM_A_V1",
+  "missing_parameter_rule": "FAIL_CLOSED_NO_FALLBACK_UNLESS_APPROVED",
+  "population_method": "GLOBAL_ALL_GOVERNED_HISTORICAL_PERFORMANCE_POPULATION",
+  "provenance_status": "OWNER_APPROVED_BOOTSTRAP_POPULATION",
+  "built_at_utc": "2026-07-23T02:55:01Z",
+  "candidate_path": "C:/Users/trent/OneDrive/Documents/EDGEIQ_PLATFORM/config/performance-intelligence/edgeiq_performance_normalisation_parameter_source_v1_CANDIDATE.csv"
+}

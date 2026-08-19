@@ -1,0 +1,67 @@
+{
+  "audit_name": "EDGEiQ Performance Intelligence Phase 1.5B.1 Performance-Fact Unit Semantics Audit",
+  "generated_utc": "2026-07-15T23:18:26.063341+00:00",
+  "audit_version": "PERFORMANCE_FACT_UNIT_SEMANTICS_AUDIT_V0_1",
+  "status": "PERFORMANCE_FACT_UNIT_SEMANTICS_PARTIAL",
+  "production_data_modified": false,
+  "performance_facts_modified": false,
+  "source_rows": 879784,
+  "distinct_races": 71019,
+  "rows_with_winning_time": 712883,
+  "raw_time_format_counts": {
+    "DECIMAL_TEXT": 712883
+  },
+  "raw_time_range_counts": {
+    "3000_TO_29999": 712347,
+    "30_TO_299": 9,
+    "GE_30000": 527
+  },
+  "race_time_unit_counts": {
+    "CENTISECONDS_PLAUSIBLE": 60366,
+    "SECONDS_PLAUSIBLE": 1,
+    "TIME_UNAVAILABLE": 10652
+  },
+  "centisecond_dominance_pct": 99.998343,
+  "race_time_conflicts": 54486,
+  "rows_with_margin": 659520,
+  "rows_with_margin_lengths": 879784,
+  "raw_margin_counts": {
+    "NON_ZERO": 658802,
+    "ZERO": 718
+  },
+  "raw_margin_length_counts": {
+    "NON_ZERO": 658802,
+    "ZERO": 220982
+  },
+  "checks": [
+    {
+      "check": "SOURCE_ROWS_PROFILED",
+      "passed": true,
+      "observed": 879784
+    },
+    {
+      "check": "RACE_TIME_CONSISTENCY",
+      "passed": false,
+      "observed": 216394
+    },
+    {
+      "check": "TIME_UNIT_IDENTIFIED",
+      "passed": true,
+      "observed": "centisecond_dominance_pct=99.998343"
+    },
+    {
+      "check": "NO_AUTOMATIC_CONVERSION",
+      "passed": true,
+      "observed": "AUDIT_ONLY"
+    }
+  ],
+  "failed_checks": [
+    "RACE_TIME_CONSISTENCY"
+  ],
+  "time_unit_decision": "WINNING_TIME_UNIT_REMAINS_UNRESOLVED",
+  "current_snapshot_status": "BLOCKED_PENDING_UNIT_RESOLUTION",
+  "next_stage": "Resolve mixed or conflicting winning-time units before benchmarks.",
+  "outputs": {
+    "race_time_unit_profile": "docs/performance-intelligence/prototypes/phase1_5b_1/edgeiq_race_time_unit_profile_v0_1_20260716_091806.csv"
+  }
+}

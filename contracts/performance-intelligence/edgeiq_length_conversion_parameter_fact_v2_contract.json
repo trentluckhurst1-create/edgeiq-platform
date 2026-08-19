@@ -1,0 +1,49 @@
+{
+  "contract_name": "edgeiq_length_conversion_parameter_fact_v2",
+  "contract_version": "2.0.0",
+  "grain": "one_row_per_governed_surface_condition_conversion_parameter",
+  "primary_key": [
+    "length_conversion_parameter_id"
+  ],
+  "required_fields": [
+    "length_conversion_parameter_id",
+    "conversion_scope",
+    "surface_group",
+    "track_condition_min",
+    "track_condition_max",
+    "track_condition_group",
+    "lengths_per_second",
+    "seconds_per_length",
+    "conversion_model_version",
+    "parameter_status",
+    "effective_from_date",
+    "effective_to_date",
+    "evidence_reference",
+    "source_evidence_sha256",
+    "parameter_evidence_sha256",
+    "builder_version",
+    "contract_version",
+    "built_at_utc"
+  ],
+  "allowed_values": {
+    "conversion_scope": [
+      "SURFACE_CONDITION"
+    ],
+    "parameter_status": [
+      "AVAILABLE"
+    ],
+    "conversion_model_version": [
+      "EDGEIQ_SURFACE_AWARE_LENGTHS_PER_SECOND_V2"
+    ]
+  },
+  "forbidden_fields": [
+    "track_variant",
+    "condition_adjustment",
+    "course_adjustment",
+    "surface_adjustment",
+    "lengths_versus_standard",
+    "performance_rating",
+    "speed_rating",
+    "epi"
+  ]
+}

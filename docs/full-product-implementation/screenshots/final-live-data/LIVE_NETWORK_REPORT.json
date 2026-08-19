@@ -1,0 +1,508 @@
+{
+  "generatedAt": "2026-07-20T01:07:45.730Z",
+  "url": "http://127.0.0.1:5173/?dev-preview=1",
+  "selectedContext": {
+    "activeSection": "home",
+    "viewLevel": "race",
+    "selectedMeetingsDayKey": "TODAY",
+    "selectedMeetingKey": "2026-07-20|PAKENHAM",
+    "selectedRaceKey": "2026-07-20|PAKENHAM|R1",
+    "selectedRunnerIndex": 0
+  },
+  "totalDataRequests": 82,
+  "failedDataRequests": 0,
+  "requests": [
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_three_day_product_catalog_v1.json?updated=1784509630673",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_three_day_window_v1.json?updated=1784509630671",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_daily_pipeline_status_v1.json?updated=1784509630675",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_daily_pipeline_status_v1.json?updated=1784509630679",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_three_day_product_catalog_v1.json?updated=1784509632175",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_daily_pipeline_status_v1.json?updated=1784509632175",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_daily_pipeline_status_v1.json?updated=1784509632176",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_three_day_window_v1.json?updated=1784509632174",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_daily_pipeline_status_v1.json?updated=1784509632179",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_daily_pipeline_status_v1.json?updated=1784509632179",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_three_day_window_v1.json?updated=1784509634276",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_three_day_product_catalog_v1.json?updated=1784509634277",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_daily_pipeline_status_v1.json?updated=1784509634278",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_daily_pipeline_status_v1.json?updated=1784509634280",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_three_day_product_catalog_v1.json?updated=1784509636369",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_daily_pipeline_status_v1.json?updated=1784509636370",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_daily_pipeline_status_v1.json?updated=1784509636371",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_current_race_intelligence_v1.json?updated=1784509636467",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_form_guide_enriched_v2.json?updated=1784509636468",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_three_day_product_catalog_v1.json?updated=1784509638473",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_daily_pipeline_status_v1.json?updated=1784509638474",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_daily_pipeline_status_v1.json?updated=1784509638475",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_form_guide_enriched_v2.json?updated=1784509638549",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_three_day_product_catalog_v1.json?updated=1784509640559",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_daily_pipeline_status_v1.json?updated=1784509640559",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_daily_pipeline_status_v1.json?updated=1784509640560",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_form_guide_enriched_v2.json?updated=1784509640667",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_three_day_product_catalog_v1.json?updated=1784509642649",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_daily_pipeline_status_v1.json?updated=1784509642651",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_daily_pipeline_status_v1.json?updated=1784509642650",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_epi_workspace_terminal_feed_v1.csv?updated=1784509642692",
+      "status": 200,
+      "ok": true,
+      "contentType": "text/csv"
+    },
+    {
+      "url": "http://127.0.0.1:5173/performance-intelligence/edgeiq_performance_intelligence_product_feeds_v1.json?updated=1784509642693",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_form_guide_enriched_v2.json?updated=1784509642693",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_three_day_product_catalog_v1.json?updated=1784509644789",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_daily_pipeline_status_v1.json?updated=1784509644790",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_daily_pipeline_status_v1.json?updated=1784509644791",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_form_guide_enriched_v2.json?updated=1784509644890",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_map_terminal_feed_v1.csv?updated=1784509644889",
+      "status": 200,
+      "ok": true,
+      "contentType": "text/csv"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_three_day_product_catalog_v1.json?updated=1784509646902",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_daily_pipeline_status_v1.json?updated=1784509646903",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_daily_pipeline_status_v1.json?updated=1784509646904",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_epi_workspace_terminal_feed_v1.csv?updated=1784509646936",
+      "status": 200,
+      "ok": true,
+      "contentType": "text/csv"
+    },
+    {
+      "url": "http://127.0.0.1:5173/performance-intelligence/edgeiq_performance_intelligence_product_feeds_v1.json?updated=1784509646937",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_form_guide_enriched_v2.json?updated=1784509646937",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_three_day_product_catalog_v1.json?updated=1784509648994",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_daily_pipeline_status_v1.json?updated=1784509648995",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_daily_pipeline_status_v1.json?updated=1784509648996",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_market_terminal_feed_v1.csv?updated=1784509649158",
+      "status": 200,
+      "ok": true,
+      "contentType": "text/csv"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_form_guide_enriched_v2.json?updated=1784509649159",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_three_day_product_catalog_v1.json?updated=1784509651069",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_daily_pipeline_status_v1.json?updated=1784509651070",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_daily_pipeline_status_v1.json?updated=1784509651071",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_overview_terminal_feed_v1.csv?updated=1784509651111",
+      "status": 200,
+      "ok": true,
+      "contentType": "text/csv"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_map_terminal_feed_v1.csv?updated=1784509651112",
+      "status": 200,
+      "ok": true,
+      "contentType": "text/csv"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_epi_workspace_terminal_feed_v1.csv?updated=1784509651111",
+      "status": 200,
+      "ok": true,
+      "contentType": "text/csv"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_form_guide_enriched_v2.json?updated=1784509651112",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/performance-intelligence/edgeiq_performance_intelligence_product_feeds_v1.json?updated=1784509651112",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_three_day_product_catalog_v1.json?updated=1784509653172",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_daily_pipeline_status_v1.json?updated=1784509653174",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_daily_pipeline_status_v1.json?updated=1784509653172",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_insights_terminal_feed_v1.csv?updated=1784509653217",
+      "status": 200,
+      "ok": true,
+      "contentType": "text/csv"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_form_guide_enriched_v2.json?updated=1784509653218",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/performance-intelligence/edgeiq_performance_intelligence_product_feeds_v1.json?updated=1784509653218",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_three_day_product_catalog_v1.json?updated=1784509655325",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_daily_pipeline_status_v1.json?updated=1784509655326",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_daily_pipeline_status_v1.json?updated=1784509655327",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_form_guide_enriched_v2.json?updated=1784509655409",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/performance-intelligence/edgeiq_performance_intelligence_product_feeds_v1.json?updated=1784509657535",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_daily_pipeline_status_v1.json?updated=1784509657536",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_three_day_product_catalog_v1.json?updated=1784509657536",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_daily_pipeline_status_v1.json?updated=1784509657538",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/performance-intelligence/edgeiq_performance_intelligence_product_feeds_v1.json?updated=1784509659640",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_three_day_product_catalog_v1.json?updated=1784509659642",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_daily_pipeline_status_v1.json?updated=1784509659642",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_daily_pipeline_status_v1.json?updated=1784509659644",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_three_day_product_catalog_v1.json?updated=1784509661715",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_daily_pipeline_status_v1.json?updated=1784509661716",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_daily_pipeline_status_v1.json?updated=1784509661717",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_form_guide_enriched_v2.json?updated=1784509661770",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_three_day_product_catalog_v1.json?updated=1784509663823",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_daily_pipeline_status_v1.json?updated=1784509663824",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    },
+    {
+      "url": "http://127.0.0.1:5173/data/edgeiq_daily_pipeline_status_v1.json?updated=1784509663826",
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json"
+    }
+  ]
+}

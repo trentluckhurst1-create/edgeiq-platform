@@ -1,0 +1,13 @@
+{
+  "input_observations": 898,
+  "valid_segment_observations": 449,
+  "elapsed_times_derived": 449,
+  "rejected_observations": 449,
+  "rejection_reasons": {
+    "CUMULATIVE_POINT_NOT_USED_AS_INCREMENTAL_SEGMENT": 449
+  },
+  "races_represented": 5,
+  "runners_represented": 58,
+  "segments_represented": 32,
+  "deterministic_hash": "d95b669b5d315155b40297c044c24482beff788943c6bcf203edd3e05f3bee49"
+}

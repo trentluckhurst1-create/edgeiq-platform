@@ -1,0 +1,3831 @@
+{
+  "audit_name": "EDGEiQ Performance Intelligence Phase 0.8 Sectional Link Validation and Residual Diagnosis",
+  "generated_utc": "2026-07-15T18:33:22.413157+00:00",
+  "production_data_modified": false,
+  "identity_source": "docs/performance-intelligence/prototypes/phase0_5/edgeiq_canonical_performance_identity_prototype_v0_1_20260716_041523.csv",
+  "linkage_source": "docs/performance-intelligence/prototypes/phase0_7/edgeiq_governed_sectional_performance_linkage_v0_1_20260716_042332.csv",
+  "link_validation": {
+    "source_rows": 130484,
+    "linked_rows": 126640,
+    "validated_rows": 122959,
+    "validation_mismatch_rows": 3681,
+    "validated_pct_of_linked": 97.0933,
+    "status_counts": {
+      "AMBIGUOUS": 2,
+      "LINKED": 126640,
+      "UNLINKED": 3842
+    },
+    "method_counts": {
+      "DATE_HORSE_ONLY_UNIQUE": 1201,
+      "DATE_RACE_HORSE_NORMALISED": 17769,
+      "DATE_TRACK_HORSE_NORMALISED": 3857,
+      "DATE_TRACK_RACE_HORSE_NORMALISED": 103813,
+      "NONE": 3844
+    },
+    "validation_counts": {
+      "NOT_LINKED": 3844,
+      "VALIDATED": 122959,
+      "VALIDATION_MISMATCH": 3681
+    },
+    "promotion_counts": {
+      "AUTO_PROMOTION_ELIGIBLE": 103813,
+      "CONDITIONAL_VALIDATION_REQUIRED": 21626,
+      "RESEARCH_ONLY_NOT_PROMOTABLE": 1201,
+      "UNLINKED_OR_AMBIGUOUS": 3844
+    },
+    "mismatch_samples": [
+      {
+        "performance_id": "eiq_performance_2f68afd0d34d5b8bbea6a5aeee9665f0",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-21",
+        "result_date": "2023-01-21",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "1",
+        "result_race_number": "1",
+        "sectional_horse": "AMUR",
+        "result_horse": "AMUR"
+      },
+      {
+        "performance_id": "eiq_performance_74d3f820d61953e199bd63c0007d79bd",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-21",
+        "result_date": "2023-01-21",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "1",
+        "result_race_number": "1",
+        "sectional_horse": "SOMEPEOPLECALLME",
+        "result_horse": "SOMEPEOPLECALLME"
+      },
+      {
+        "performance_id": "eiq_performance_1ba67578f9aa53d6a4a0b82dadb003bb",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-21",
+        "result_date": "2023-01-21",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "1",
+        "result_race_number": "1",
+        "sectional_horse": "MEGSMAGIC",
+        "result_horse": "MEGSMAGIC"
+      },
+      {
+        "performance_id": "eiq_performance_f007ccfff6005613b54e98b651d5a186",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-21",
+        "result_date": "2023-01-21",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "1",
+        "result_race_number": "1",
+        "sectional_horse": "LEZEBRA",
+        "result_horse": "LEZEBRA"
+      },
+      {
+        "performance_id": "eiq_performance_5f8636e6a1c95d3ab854446d93ac0d9a",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-21",
+        "result_date": "2023-01-21",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "1",
+        "result_race_number": "1",
+        "sectional_horse": "INTERNATIONAL",
+        "result_horse": "INTERNATIONAL"
+      },
+      {
+        "performance_id": "eiq_performance_fc218081e0d351deaa92d9f8d0dae2a4",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-21",
+        "result_date": "2023-01-21",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "2",
+        "result_race_number": "2",
+        "sectional_horse": "UNFLINCHING",
+        "result_horse": "UNFLINCHING"
+      },
+      {
+        "performance_id": "eiq_performance_91331e8d141f5930922f4d0b080069a8",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-21",
+        "result_date": "2023-01-21",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "2",
+        "result_race_number": "2",
+        "sectional_horse": "LADYSOLLY",
+        "result_horse": "LADYSOLLY"
+      },
+      {
+        "performance_id": "eiq_performance_cd3ceccee1675f0bb3e1f3bcf77b97f7",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-21",
+        "result_date": "2023-01-21",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "2",
+        "result_race_number": "2",
+        "sectional_horse": "JOSEYLIN",
+        "result_horse": "JOSEYLIN"
+      },
+      {
+        "performance_id": "eiq_performance_bafa3ce4a1ad5eb7bf19c0bb410b41e3",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-21",
+        "result_date": "2023-01-21",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "2",
+        "result_race_number": "2",
+        "sectional_horse": "YOUNGLIAM",
+        "result_horse": "YOUNGLIAM"
+      },
+      {
+        "performance_id": "eiq_performance_c00d13860fbd5c0e9fe2528b8e71c346",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-21",
+        "result_date": "2023-01-21",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "2",
+        "result_race_number": "2",
+        "sectional_horse": "BIFROST",
+        "result_horse": "BIFROST"
+      },
+      {
+        "performance_id": "eiq_performance_3ebeaef4303b51a1baba9e9deac365cd",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-21",
+        "result_date": "2023-01-21",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "2",
+        "result_race_number": "2",
+        "sectional_horse": "WAYTOTHESTARS",
+        "result_horse": "WAYTOTHESTARS"
+      },
+      {
+        "performance_id": "eiq_performance_0e0ceb1f856d55f0b7eb6173db0e51ad",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-21",
+        "result_date": "2023-01-21",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "7",
+        "result_race_number": "7",
+        "sectional_horse": "DANCETODUBAI",
+        "result_horse": "DANCETODUBAI"
+      },
+      {
+        "performance_id": "eiq_performance_c7a3dd248a00514d855c325a769ad223",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-21",
+        "result_date": "2023-01-21",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "7",
+        "result_race_number": "7",
+        "sectional_horse": "SACREDPALACE",
+        "result_horse": "SACREDPALACE"
+      },
+      {
+        "performance_id": "eiq_performance_9a20dbcc7f2e55dd8991a23088868659",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-21",
+        "result_date": "2023-01-21",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "7",
+        "result_race_number": "7",
+        "sectional_horse": "STRIPPEDBACK",
+        "result_horse": "STRIPPEDBACK"
+      },
+      {
+        "performance_id": "eiq_performance_0fc24656c582557d9573c1a2fe2e8ac7",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-21",
+        "result_date": "2023-01-21",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "7",
+        "result_race_number": "7",
+        "sectional_horse": "COLSRIDGE",
+        "result_horse": "COLSRIDGE"
+      },
+      {
+        "performance_id": "eiq_performance_e0db4e8b84ed5668af005da1820c7a3d",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-21",
+        "result_date": "2023-01-21",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "7",
+        "result_race_number": "7",
+        "sectional_horse": "EXETER",
+        "result_horse": "EXETER"
+      },
+      {
+        "performance_id": "eiq_performance_013c1fe0d9dd51d9b7b9c189b43cb109",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-21",
+        "result_date": "2023-01-21",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "7",
+        "result_race_number": "7",
+        "sectional_horse": "CONQUEROR",
+        "result_horse": "CONQUEROR"
+      },
+      {
+        "performance_id": "eiq_performance_e73213f0d5325d69872a3ade8b7a0a2d",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-21",
+        "result_date": "2023-01-21",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "7",
+        "result_race_number": "7",
+        "sectional_horse": "APRESLAMER",
+        "result_horse": "APRESLAMER"
+      },
+      {
+        "performance_id": "eiq_performance_d2d7f84cfcc657bb880da23e1952baa4",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-21",
+        "result_date": "2023-01-21",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "7",
+        "result_race_number": "7",
+        "sectional_horse": "WATCHMEDANCE",
+        "result_horse": "WATCHMEDANCE"
+      },
+      {
+        "performance_id": "eiq_performance_0959c8fee40259d896b5d3e4a86973ae",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-21",
+        "result_date": "2023-01-21",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "7",
+        "result_race_number": "7",
+        "sectional_horse": "PASMALOTRU",
+        "result_horse": "PASMALOTRU"
+      },
+      {
+        "performance_id": "eiq_performance_410a38a9bb1852159222310a8614ab49",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-21",
+        "result_date": "2023-01-21",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "7",
+        "result_race_number": "7",
+        "sectional_horse": "HICKOK",
+        "result_horse": "HICKOK"
+      },
+      {
+        "performance_id": "eiq_performance_1945f6c30d6f57a0a67d0fe108af2052",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-21",
+        "result_date": "2023-01-21",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "7",
+        "result_race_number": "7",
+        "sectional_horse": "BILLTHEBOXER",
+        "result_horse": "BILLTHEBOXER"
+      },
+      {
+        "performance_id": "eiq_performance_2bc29c7b6bb75f7ebbc1d9fab7357ad0",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-21",
+        "result_date": "2023-01-21",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "7",
+        "result_race_number": "7",
+        "sectional_horse": "FINEDANE",
+        "result_horse": "FINEDANE"
+      },
+      {
+        "performance_id": "eiq_performance_804527e5456d55a29afb41c587c5892c",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-21",
+        "result_date": "2023-01-21",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "8",
+        "result_race_number": "8",
+        "sectional_horse": "POUNDING",
+        "result_horse": "POUNDING"
+      },
+      {
+        "performance_id": "eiq_performance_53b400fd42515e399c48ba1149931b80",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-21",
+        "result_date": "2023-01-21",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "8",
+        "result_race_number": "8",
+        "sectional_horse": "CORNERPOCKET",
+        "result_horse": "CORNERPOCKET"
+      },
+      {
+        "performance_id": "eiq_performance_a6e35a8a66015a7ba989e581a404422a",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-21",
+        "result_date": "2023-01-21",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "8",
+        "result_race_number": "8",
+        "sectional_horse": "ASCENSION",
+        "result_horse": "ASCENSION"
+      },
+      {
+        "performance_id": "eiq_performance_ca2461200f535fc8b47848f33bd01432",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-21",
+        "result_date": "2023-01-21",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "8",
+        "result_race_number": "8",
+        "sectional_horse": "SAVANNAHCLOUD",
+        "result_horse": "SAVANNAHCLOUD"
+      },
+      {
+        "performance_id": "eiq_performance_a454a7ad678e56a0b5dc0898fed15c49",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-21",
+        "result_date": "2023-01-21",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "8",
+        "result_race_number": "8",
+        "sectional_horse": "MUNHAMEK",
+        "result_horse": "MUNHAMEK"
+      },
+      {
+        "performance_id": "eiq_performance_9decb2bda25856cc9469b4e6a76a9de9",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-21",
+        "result_date": "2023-01-21",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "8",
+        "result_race_number": "8",
+        "sectional_horse": "PLAYOFFS",
+        "result_horse": "PLAYOFFS"
+      },
+      {
+        "performance_id": "eiq_performance_efca4eb4df0a5011a074e82b748490fe",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-21",
+        "result_date": "2023-01-21",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "8",
+        "result_race_number": "8",
+        "sectional_horse": "EXPLOSIVEJACK",
+        "result_horse": "EXPLOSIVEJACK"
+      },
+      {
+        "performance_id": "eiq_performance_732186b87bfa567ebf361ecccc0dbe88",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-21",
+        "result_date": "2023-01-21",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "8",
+        "result_race_number": "8",
+        "sectional_horse": "DONTDOUBTDORY",
+        "result_horse": "DONTDOUBTDORY"
+      },
+      {
+        "performance_id": "eiq_performance_1c1b081fc0995b1f957523e778ff868e",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-21",
+        "result_date": "2023-01-21",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "8",
+        "result_race_number": "8",
+        "sectional_horse": "NERVENOTVERVE",
+        "result_horse": "NERVENOTVERVE"
+      },
+      {
+        "performance_id": "eiq_performance_5729bd483b51519fa3c49ca57560c4f8",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "1",
+        "result_race_number": "1",
+        "sectional_horse": "EATON",
+        "result_horse": "EATON"
+      },
+      {
+        "performance_id": "eiq_performance_5a494ed7f1235440929be037a793e5fa",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "1",
+        "result_race_number": "1",
+        "sectional_horse": "SWORDSDRAWN",
+        "result_horse": "SWORDSDRAWN"
+      },
+      {
+        "performance_id": "eiq_performance_70c690cba47a501c815fc088a0b305f7",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "1",
+        "result_race_number": "1",
+        "sectional_horse": "PRINCESSRHAENYS",
+        "result_horse": "PRINCESSRHAENYS"
+      },
+      {
+        "performance_id": "eiq_performance_69781b8f34535e0b850cd6b33b9406f5",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "1",
+        "result_race_number": "1",
+        "sectional_horse": "SOUSLESNUAGES",
+        "result_horse": "SOUSLESNUAGES"
+      },
+      {
+        "performance_id": "eiq_performance_f83133a93b865414875aaa0ab66c5bf8",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "1",
+        "result_race_number": "1",
+        "sectional_horse": "NEVERAGAIN",
+        "result_horse": "NEVERAGAIN"
+      },
+      {
+        "performance_id": "eiq_performance_0b0de40226b15f3bbc7b6614966c7d59",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "1",
+        "result_race_number": "1",
+        "sectional_horse": "SEEMARIE",
+        "result_horse": "SEEMARIE"
+      },
+      {
+        "performance_id": "eiq_performance_c5876387f1d6563abe1dfd098947a0bf",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "1",
+        "result_race_number": "1",
+        "sectional_horse": "EXTRAELUSIVE",
+        "result_horse": "EXTRAELUSIVE"
+      },
+      {
+        "performance_id": "eiq_performance_ca7d4db52f1e5b0f801df59ca3e6825a",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "1",
+        "result_race_number": "1",
+        "sectional_horse": "SOUND",
+        "result_horse": "SOUND"
+      },
+      {
+        "performance_id": "eiq_performance_2286772a8a67526f914237c38d6ae32d",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "2",
+        "result_race_number": "2",
+        "sectional_horse": "FIGHTINGARROW",
+        "result_horse": "FIGHTINGARROW"
+      },
+      {
+        "performance_id": "eiq_performance_383b3f024cd651f38ed5968b0dac3046",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "2",
+        "result_race_number": "2",
+        "sectional_horse": "MARCOLT",
+        "result_horse": "MARCOLT"
+      },
+      {
+        "performance_id": "eiq_performance_cede9c00c5c250c8ad8c78476cdf7799",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "2",
+        "result_race_number": "2",
+        "sectional_horse": "BOLDBOURBON",
+        "result_horse": "BOLDBOURBON"
+      },
+      {
+        "performance_id": "eiq_performance_f22407072a5351db9cf5e1f9024a08c1",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "2",
+        "result_race_number": "2",
+        "sectional_horse": "ACCUSE",
+        "result_horse": "ACCUSE"
+      },
+      {
+        "performance_id": "eiq_performance_9dd3413263f55f62a9d5177da7a0dd95",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "2",
+        "result_race_number": "2",
+        "sectional_horse": "LIBERATEDGIRL",
+        "result_horse": "LIBERATEDGIRL"
+      },
+      {
+        "performance_id": "eiq_performance_d8b002a747ae54f0bc99932b1ed412b0",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "2",
+        "result_race_number": "2",
+        "sectional_horse": "CONFRONTATIONAL",
+        "result_horse": "CONFRONTATIONAL"
+      },
+      {
+        "performance_id": "eiq_performance_e96d706d55bd5fccb57d61a9839c3c6e",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "2",
+        "result_race_number": "2",
+        "sectional_horse": "HARDSQUEEZE",
+        "result_horse": "HARDSQUEEZE"
+      },
+      {
+        "performance_id": "eiq_performance_327861220b595dccbdd41ab0f4b88a5e",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "2",
+        "result_race_number": "2",
+        "sectional_horse": "GLENTANEOUS",
+        "result_horse": "GLENTANEOUS"
+      },
+      {
+        "performance_id": "eiq_performance_4ff5dbfbd80b5d7ba8dd9204a097f284",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "2",
+        "result_race_number": "2",
+        "sectional_horse": "COMMANDODRIFT",
+        "result_horse": "COMMANDODRIFT"
+      },
+      {
+        "performance_id": "eiq_performance_7a0c7a32358e5cdf817f08b39ee9c3af",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "2",
+        "result_race_number": "2",
+        "sectional_horse": "UNIQUELY",
+        "result_horse": "UNIQUELY"
+      },
+      {
+        "performance_id": "eiq_performance_58964d15c14c5ce386185cbe3af38431",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "2",
+        "result_race_number": "2",
+        "sectional_horse": "NOONDAYGUN",
+        "result_horse": "NOONDAYGUN"
+      },
+      {
+        "performance_id": "eiq_performance_3faa89336d925ad8ad11d711633d077e",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "2",
+        "result_race_number": "2",
+        "sectional_horse": "ISABELLASSPRING",
+        "result_horse": "ISABELLASSPRING"
+      },
+      {
+        "performance_id": "eiq_performance_5d446723b4c552388f98ce7043a9d5d9",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "2",
+        "result_race_number": "2",
+        "sectional_horse": "BLACKQUEEN",
+        "result_horse": "BLACKQUEEN"
+      },
+      {
+        "performance_id": "eiq_performance_c7294e2f5c6d54169206cf19b1368e98",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "3",
+        "result_race_number": "3",
+        "sectional_horse": "NOSECRET",
+        "result_horse": "NOSECRET"
+      },
+      {
+        "performance_id": "eiq_performance_a77bbdbda5f45738b9a2a5a78edbb45d",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "3",
+        "result_race_number": "3",
+        "sectional_horse": "MIROCKALY",
+        "result_horse": "MIROCKALY"
+      },
+      {
+        "performance_id": "eiq_performance_41a78305ed875cea8abea7b352644486",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "3",
+        "result_race_number": "3",
+        "sectional_horse": "ELECTRICBELLE",
+        "result_horse": "ELECTRICBELLE"
+      },
+      {
+        "performance_id": "eiq_performance_9f2b4c8ef8d95af4b65345d56fdd028c",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "3",
+        "result_race_number": "3",
+        "sectional_horse": "DANEONTOUR",
+        "result_horse": "DANEONTOUR"
+      },
+      {
+        "performance_id": "eiq_performance_bb7c38227d4454eaa95a734e3b935f2a",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "3",
+        "result_race_number": "3",
+        "sectional_horse": "TUBBYTWOTRACKS",
+        "result_horse": "TUBBYTWOTRACKS"
+      },
+      {
+        "performance_id": "eiq_performance_c6605ec71d795382aef5b05d1bf2858c",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "3",
+        "result_race_number": "3",
+        "sectional_horse": "BALLYNORA",
+        "result_horse": "BALLYNORA"
+      },
+      {
+        "performance_id": "eiq_performance_ce3dd66e673d5a33a253babd2f793f43",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "3",
+        "result_race_number": "3",
+        "sectional_horse": "STRAWBERRYMOON",
+        "result_horse": "STRAWBERRYMOON"
+      },
+      {
+        "performance_id": "eiq_performance_3b1464730b0457c3b1bb48a0d24f8a3d",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "4",
+        "result_race_number": "4",
+        "sectional_horse": "FISSION",
+        "result_horse": "FISSION"
+      },
+      {
+        "performance_id": "eiq_performance_97cc9dba320e5d74a325f14cc82bcc25",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "4",
+        "result_race_number": "4",
+        "sectional_horse": "CLARITY",
+        "result_horse": "CLARITY"
+      },
+      {
+        "performance_id": "eiq_performance_53d14d96dbab5a1d84ee834dcb1983b3",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "4",
+        "result_race_number": "4",
+        "sectional_horse": "COMMANDAPPROVED",
+        "result_horse": "COMMANDAPPROVED"
+      },
+      {
+        "performance_id": "eiq_performance_f1a2ec2f63165c0487897a430b11c0b8",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "4",
+        "result_race_number": "4",
+        "sectional_horse": "BISTRO",
+        "result_horse": "BISTRO"
+      },
+      {
+        "performance_id": "eiq_performance_0b9d41f9d38a5d8a81802a89086069ce",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "5",
+        "result_race_number": "5",
+        "sectional_horse": "MAMARAGAN",
+        "result_horse": "MAMARAGAN"
+      },
+      {
+        "performance_id": "eiq_performance_efe14f90f4cf55bcb93eb2dd3b24f5a8",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "5",
+        "result_race_number": "5",
+        "sectional_horse": "JEANVALJEAN",
+        "result_horse": "JEANVALJEAN"
+      },
+      {
+        "performance_id": "eiq_performance_a5add903fb7a5227ae8dba9efa84f982",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "5",
+        "result_race_number": "5",
+        "sectional_horse": "LLOYDSCROWN",
+        "result_horse": "LLOYDSCROWN"
+      },
+      {
+        "performance_id": "eiq_performance_c34af5538f4d5bb98425c677c045af18",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "5",
+        "result_race_number": "5",
+        "sectional_horse": "BIFROST",
+        "result_horse": "BIFROST"
+      },
+      {
+        "performance_id": "eiq_performance_ba42416ab1f850a490492c698c255c09",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "5",
+        "result_race_number": "5",
+        "sectional_horse": "NOTENOUGHEFFORT",
+        "result_horse": "NOTENOUGHEFFORT"
+      },
+      {
+        "performance_id": "eiq_performance_277ad095e9fd56dcb7daa942e87ece04",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "5",
+        "result_race_number": "5",
+        "sectional_horse": "GLENFERRIEGIRL",
+        "result_horse": "GLENFERRIEGIRL"
+      },
+      {
+        "performance_id": "eiq_performance_b418c02e295653c7a902d884d5446709",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "5",
+        "result_race_number": "5",
+        "sectional_horse": "STAYINTOUCH",
+        "result_horse": "STAYINTOUCH"
+      },
+      {
+        "performance_id": "eiq_performance_5884691aefed5c4e8d9c71ca76dcbbad",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "5",
+        "result_race_number": "5",
+        "sectional_horse": "AMINATU",
+        "result_horse": "AMINATU"
+      },
+      {
+        "performance_id": "eiq_performance_de6e8775236a50df893a766a4331b557",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "5",
+        "result_race_number": "5",
+        "sectional_horse": "TAKENOFF",
+        "result_horse": "TAKENOFF"
+      },
+      {
+        "performance_id": "eiq_performance_64a1ad6574f558698f51a37d2f4fa39f",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "6",
+        "result_race_number": "6",
+        "sectional_horse": "DANNYSSTDARCI",
+        "result_horse": "DANNYSSTDARCI"
+      },
+      {
+        "performance_id": "eiq_performance_4213b579fa6f50e7b153d68a3d3b6004",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "6",
+        "result_race_number": "6",
+        "sectional_horse": "LUNACAT",
+        "result_horse": "LUNACAT"
+      },
+      {
+        "performance_id": "eiq_performance_fed7fa1359755df7849472732efcbc9c",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "6",
+        "result_race_number": "6",
+        "sectional_horse": "LITTLEMISSKUBI",
+        "result_horse": "LITTLEMISSKUBI"
+      },
+      {
+        "performance_id": "eiq_performance_001e30cecee65c308a36c40e37292ddf",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "6",
+        "result_race_number": "6",
+        "sectional_horse": "LADYHAMPTON",
+        "result_horse": "LADYHAMPTON"
+      },
+      {
+        "performance_id": "eiq_performance_9fd66671086e586386d7e8d50e5f9dcc",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "6",
+        "result_race_number": "6",
+        "sectional_horse": "QURAYSHA",
+        "result_horse": "QURAYSHA"
+      },
+      {
+        "performance_id": "eiq_performance_fdf4fcefee7353f8a03dc416b98e6e70",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "6",
+        "result_race_number": "6",
+        "sectional_horse": "IMDIVINE",
+        "result_horse": "IMDIVINE"
+      },
+      {
+        "performance_id": "eiq_performance_a4f6f149b1ae534fa7be881f4c85579c",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "6",
+        "result_race_number": "6",
+        "sectional_horse": "DONNANATALINA",
+        "result_horse": "DONNANATALINA"
+      },
+      {
+        "performance_id": "eiq_performance_448e9cb1a248565aaca859097623cfc7",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "6",
+        "result_race_number": "6",
+        "sectional_horse": "SNAPPYLILTHING",
+        "result_horse": "SNAPPYLILTHING"
+      },
+      {
+        "performance_id": "eiq_performance_c78697f5b4c95f5c96f27901e1ecc775",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "7",
+        "result_race_number": "7",
+        "sectional_horse": "JIGSAW",
+        "result_horse": "JIGSAW"
+      },
+      {
+        "performance_id": "eiq_performance_54f26648fe6e512f923103515cf5c154",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "7",
+        "result_race_number": "7",
+        "sectional_horse": "TURAATH",
+        "result_horse": "TURAATH"
+      },
+      {
+        "performance_id": "eiq_performance_ab5a7b3eed06596bb4dc6a24de750024",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "7",
+        "result_race_number": "7",
+        "sectional_horse": "CALYPSOREIGN",
+        "result_horse": "CALYPSOREIGN"
+      },
+      {
+        "performance_id": "eiq_performance_163a8906baa5534893daf9ed75a8aa81",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "7",
+        "result_race_number": "7",
+        "sectional_horse": "SNAPPER",
+        "result_horse": "SNAPPER"
+      },
+      {
+        "performance_id": "eiq_performance_4f410acc4866526594aff1f22e6546d9",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "7",
+        "result_race_number": "7",
+        "sectional_horse": "WESTERNEMPIRE",
+        "result_horse": "WESTERNEMPIRE"
+      },
+      {
+        "performance_id": "eiq_performance_a7d59b63ef30583b9e2d2887aa40c788",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "7",
+        "result_race_number": "7",
+        "sectional_horse": "IRONCLAD",
+        "result_horse": "IRONCLAD"
+      },
+      {
+        "performance_id": "eiq_performance_3b4428b4fb365e529054e508d721a60a",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "7",
+        "result_race_number": "7",
+        "sectional_horse": "SUPERSTORM",
+        "result_horse": "SUPERSTORM"
+      },
+      {
+        "performance_id": "eiq_performance_eb679442940e58ed97128f1d67f0cfff",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "8",
+        "result_race_number": "8",
+        "sectional_horse": "KENTUCKYCASANOVA",
+        "result_horse": "KENTUCKYCASANOVA"
+      },
+      {
+        "performance_id": "eiq_performance_480a4fd8baa25c348aeab4a868a26f74",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "8",
+        "result_race_number": "8",
+        "sectional_horse": "LUMBERPUNK",
+        "result_horse": "LUMBERPUNK"
+      },
+      {
+        "performance_id": "eiq_performance_42cc6212ede550d790c92cc26e0b8c78",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "8",
+        "result_race_number": "8",
+        "sectional_horse": "EXETER",
+        "result_horse": "EXETER"
+      },
+      {
+        "performance_id": "eiq_performance_048cffde24b55d538c194ec5d57bd828",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "8",
+        "result_race_number": "8",
+        "sectional_horse": "BRENLYNSTROOPER",
+        "result_horse": "BRENLYNSTROOPER"
+      },
+      {
+        "performance_id": "eiq_performance_8dab7f9ede295356861f2767617900bb",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "8",
+        "result_race_number": "8",
+        "sectional_horse": "DEEPSPEED",
+        "result_horse": "DEEPSPEED"
+      },
+      {
+        "performance_id": "eiq_performance_8768eaaa49915083bd516dc60754131d",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "8",
+        "result_race_number": "8",
+        "sectional_horse": "MAGNUMBULLET",
+        "result_horse": "MAGNUMBULLET"
+      },
+      {
+        "performance_id": "eiq_performance_523717f03a7e5ee8bab1145f6c706570",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "8",
+        "result_race_number": "8",
+        "sectional_horse": "EXTREMESTEP",
+        "result_horse": "EXTREMESTEP"
+      },
+      {
+        "performance_id": "eiq_performance_6f0966badbea5c21a4442925a8f9d71b",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "8",
+        "result_race_number": "8",
+        "sectional_horse": "SORELRISING",
+        "result_horse": "SORELRISING"
+      },
+      {
+        "performance_id": "eiq_performance_5eb28b1a114d55e99e75b82314e07061",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "8",
+        "result_race_number": "8",
+        "sectional_horse": "BIGAPPLE",
+        "result_horse": "BIGAPPLE"
+      },
+      {
+        "performance_id": "eiq_performance_86e88f9610c35aaebee1b18b2f9e964d",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-01-28",
+        "result_date": "2023-01-28",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "8",
+        "result_race_number": "8",
+        "sectional_horse": "WINSUM",
+        "result_horse": "WINSUM"
+      },
+      {
+        "performance_id": "eiq_performance_58cc7127d1b3507d925c17522ae5be2b",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "1",
+        "result_race_number": "1",
+        "sectional_horse": "COBBLESTONEWAY",
+        "result_horse": "COBBLESTONEWAY"
+      },
+      {
+        "performance_id": "eiq_performance_5e014e75e24b599fa2234cb741e4421f",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "1",
+        "result_race_number": "1",
+        "sectional_horse": "THESWOOPER",
+        "result_horse": "THESWOOPER"
+      },
+      {
+        "performance_id": "eiq_performance_3870f01a37b95ef0ad7e0aa020384630",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "1",
+        "result_race_number": "1",
+        "sectional_horse": "GRAYSONG",
+        "result_horse": "GRAYSONG"
+      },
+      {
+        "performance_id": "eiq_performance_ea0a2aeae41b58bfae3d6468522e1423",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "1",
+        "result_race_number": "1",
+        "sectional_horse": "ELSOLEADO",
+        "result_horse": "ELSOLEADO"
+      },
+      {
+        "performance_id": "eiq_performance_f11b106cc6c3586cae6549c5ee8f3a0f",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "1",
+        "result_race_number": "1",
+        "sectional_horse": "STREETELITE",
+        "result_horse": "STREETELITE"
+      },
+      {
+        "performance_id": "eiq_performance_ec37d4db3a9657d8a8cd826a4b0bbc67",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "1",
+        "result_race_number": "1",
+        "sectional_horse": "STARMAGIC",
+        "result_horse": "STARMAGIC"
+      },
+      {
+        "performance_id": "eiq_performance_2fd2e19f4d3b58a8a6fa5e43d05de28d",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "1",
+        "result_race_number": "1",
+        "sectional_horse": "FINEREBEL",
+        "result_horse": "FINEREBEL"
+      },
+      {
+        "performance_id": "eiq_performance_bc1842bdd2135951bf31bb827257c10d",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "1",
+        "result_race_number": "1",
+        "sectional_horse": "KIPYEGON",
+        "result_horse": "KIPYEGON"
+      },
+      {
+        "performance_id": "eiq_performance_701db07bd8d25e7487a6560017a9da34",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "2",
+        "result_race_number": "2",
+        "sectional_horse": "TANTATMAGIC",
+        "result_horse": "TANTATMAGIC"
+      },
+      {
+        "performance_id": "eiq_performance_5cc8437fa3c051c3b8093a25014137a1",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "2",
+        "result_race_number": "2",
+        "sectional_horse": "CAPITALTHEATRE",
+        "result_horse": "CAPITALTHEATRE"
+      },
+      {
+        "performance_id": "eiq_performance_203d9dc0fab35fb88248f877a733eebe",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "2",
+        "result_race_number": "2",
+        "sectional_horse": "SCUDERIA",
+        "result_horse": "SCUDERIA"
+      },
+      {
+        "performance_id": "eiq_performance_055f2aa8a3db5ee3b34b65e6fc9603e1",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "2",
+        "result_race_number": "2",
+        "sectional_horse": "BLONDEVENTURE",
+        "result_horse": "BLONDEVENTURE"
+      },
+      {
+        "performance_id": "eiq_performance_82ec746e39f45d5d9be5592a9a071f6e",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "2",
+        "result_race_number": "2",
+        "sectional_horse": "ROCKDIAMOND",
+        "result_horse": "ROCKDIAMOND"
+      },
+      {
+        "performance_id": "eiq_performance_a2e20c78267b5e76aa375f44acb41792",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "3",
+        "result_race_number": "3",
+        "sectional_horse": "FOXICON",
+        "result_horse": "FOXICON"
+      },
+      {
+        "performance_id": "eiq_performance_02485eef6fb65b3d91b6219ca82dbc74",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "3",
+        "result_race_number": "3",
+        "sectional_horse": "BERRYBUBBLY",
+        "result_horse": "BERRYBUBBLY"
+      },
+      {
+        "performance_id": "eiq_performance_d7c195abc3b35b3a9bda527baaf05e4a",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "3",
+        "result_race_number": "3",
+        "sectional_horse": "BEAUKATI",
+        "result_horse": "BEAUKATI"
+      },
+      {
+        "performance_id": "eiq_performance_2cfe7bfd112d563b9c299b4206f55d6b",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "3",
+        "result_race_number": "3",
+        "sectional_horse": "LINGLING",
+        "result_horse": "LINGLING"
+      },
+      {
+        "performance_id": "eiq_performance_4c9c14821faa5017902f44c3a801698b",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "3",
+        "result_race_number": "3",
+        "sectional_horse": "TILLOTSON",
+        "result_horse": "TILLOTSON"
+      },
+      {
+        "performance_id": "eiq_performance_60cf6e0340c65054b4a0c9d505a8ec2d",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "3",
+        "result_race_number": "3",
+        "sectional_horse": "INEBRIATING",
+        "result_horse": "INEBRIATING"
+      },
+      {
+        "performance_id": "eiq_performance_6f7bf3b52469590cbfa26a130ea8b6f8",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "3",
+        "result_race_number": "3",
+        "sectional_horse": "PRINCESSFLAGRANT",
+        "result_horse": "PRINCESSFLAGRANT"
+      },
+      {
+        "performance_id": "eiq_performance_5c33de7c2ba25d078c9c09d5962f5789",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "4",
+        "result_race_number": "4",
+        "sectional_horse": "MUTINOUS",
+        "result_horse": "MUTINOUS"
+      },
+      {
+        "performance_id": "eiq_performance_b7cd65733352525696e297b2a11b247d",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "4",
+        "result_race_number": "4",
+        "sectional_horse": "SUPERTHIEF",
+        "result_horse": "SUPERTHIEF"
+      },
+      {
+        "performance_id": "eiq_performance_20f07c0b9c825a7589d9b369bba26094",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "4",
+        "result_race_number": "4",
+        "sectional_horse": "TAXFREEPROPHET",
+        "result_horse": "TAXFREEPROPHET"
+      },
+      {
+        "performance_id": "eiq_performance_531f42ae1d8352ed882b0bcd1fb53df1",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "4",
+        "result_race_number": "4",
+        "sectional_horse": "CECILSTREETLAD",
+        "result_horse": "CECILSTREETLAD"
+      },
+      {
+        "performance_id": "eiq_performance_70c8ac3bf3855eb284c6971a3cca4896",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "4",
+        "result_race_number": "4",
+        "sectional_horse": "SOUTHERNFRONT",
+        "result_horse": "SOUTHERNFRONT"
+      },
+      {
+        "performance_id": "eiq_performance_d5e080ba55925810b89c6ba19f5ff2bb",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "4",
+        "result_race_number": "4",
+        "sectional_horse": "YOUNGLIAM",
+        "result_horse": "YOUNGLIAM"
+      },
+      {
+        "performance_id": "eiq_performance_d040c22f5fac5f8098a4ba03aaa3ee68",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "4",
+        "result_race_number": "4",
+        "sectional_horse": "LOWLEVELFLYING",
+        "result_horse": "LOWLEVELFLYING"
+      },
+      {
+        "performance_id": "eiq_performance_bbdf3b9f01c851c7b4908f2a1aa3e65b",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "4",
+        "result_race_number": "4",
+        "sectional_horse": "KEVSGIRL",
+        "result_horse": "KEVSGIRL"
+      },
+      {
+        "performance_id": "eiq_performance_3a056093f5d056a39418e75136fb5c2c",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "4",
+        "result_race_number": "4",
+        "sectional_horse": "OURZACRACKER",
+        "result_horse": "OURZACRACKER"
+      },
+      {
+        "performance_id": "eiq_performance_b68bd521b03e5704a928b8409071ef99",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "5",
+        "result_race_number": "5",
+        "sectional_horse": "VADABOY",
+        "result_horse": "VADABOY"
+      },
+      {
+        "performance_id": "eiq_performance_b60c617f013f5cc69baba656e43ba6a6",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "5",
+        "result_race_number": "5",
+        "sectional_horse": "REBELRACER",
+        "result_horse": "REBELRACER"
+      },
+      {
+        "performance_id": "eiq_performance_8b67a7ae53885bba9634cb70771ef3ef",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "5",
+        "result_race_number": "5",
+        "sectional_horse": "YOUNGHOSTESS",
+        "result_horse": "YOUNGHOSTESS"
+      },
+      {
+        "performance_id": "eiq_performance_29d2cec1e6cb562e8e3861b9d26f7940",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "5",
+        "result_race_number": "5",
+        "sectional_horse": "HAVISHAM",
+        "result_horse": "HAVISHAM"
+      },
+      {
+        "performance_id": "eiq_performance_03d059f5c3c95495957884e8a3573d58",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "5",
+        "result_race_number": "5",
+        "sectional_horse": "FIELDSOFGRACE",
+        "result_horse": "FIELDSOFGRACE"
+      },
+      {
+        "performance_id": "eiq_performance_01b767c610415132844a9fa0b41b8968",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "5",
+        "result_race_number": "5",
+        "sectional_horse": "MRBLACKWOOD",
+        "result_horse": "MRBLACKWOOD"
+      },
+      {
+        "performance_id": "eiq_performance_1635202c75925dba9f6906002580e772",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "5",
+        "result_race_number": "5",
+        "sectional_horse": "LOFTYSTAR",
+        "result_horse": "LOFTYSTAR"
+      },
+      {
+        "performance_id": "eiq_performance_ffb4ffcd902f5d90aa8ac78812874c41",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "5",
+        "result_race_number": "5",
+        "sectional_horse": "HANDFUL",
+        "result_horse": "HANDFUL"
+      },
+      {
+        "performance_id": "eiq_performance_dc823f9202ab53e2b4061ab092a20933",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "5",
+        "result_race_number": "5",
+        "sectional_horse": "MANCOMAN",
+        "result_horse": "MANCOMAN"
+      },
+      {
+        "performance_id": "eiq_performance_870c69864b89594ea009d097b41c8fb9",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "5",
+        "result_race_number": "5",
+        "sectional_horse": "TOYETIC",
+        "result_horse": "TOYETIC"
+      },
+      {
+        "performance_id": "eiq_performance_2a49ec0dc11953879d6ed68f1995b577",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "6",
+        "result_race_number": "6",
+        "sectional_horse": "DIAMONDMODEL",
+        "result_horse": "DIAMONDMODEL"
+      },
+      {
+        "performance_id": "eiq_performance_3a18f6db6a39503283dae91c71c06711",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "6",
+        "result_race_number": "6",
+        "sectional_horse": "HEAVENLYEAGLE",
+        "result_horse": "HEAVENLYEAGLE"
+      },
+      {
+        "performance_id": "eiq_performance_0064c5ad76785e8f915148ad8661698d",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "6",
+        "result_race_number": "6",
+        "sectional_horse": "YASUKE",
+        "result_horse": "YASUKE"
+      },
+      {
+        "performance_id": "eiq_performance_96a7641c228d5665af054722d2b02845",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "6",
+        "result_race_number": "6",
+        "sectional_horse": "CHOQUANT",
+        "result_horse": "CHOQUANT"
+      },
+      {
+        "performance_id": "eiq_performance_bf3c6664679a5ece925f92484562f4ac",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "6",
+        "result_race_number": "6",
+        "sectional_horse": "NATIVEGIRL",
+        "result_horse": "NATIVEGIRL"
+      },
+      {
+        "performance_id": "eiq_performance_dcc5511fca6e553982cbad7823e196e6",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "6",
+        "result_race_number": "6",
+        "sectional_horse": "NEWJERSEY",
+        "result_horse": "NEWJERSEY"
+      },
+      {
+        "performance_id": "eiq_performance_a235f0afbcc150fd9875e0a42fd16168",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "6",
+        "result_race_number": "6",
+        "sectional_horse": "NEWLEVEL",
+        "result_horse": "NEWLEVEL"
+      },
+      {
+        "performance_id": "eiq_performance_b4b0bb9a4ebc51d7a9b42bbbdf639b89",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "6",
+        "result_race_number": "6",
+        "sectional_horse": "DEPLOYANDDESTROY",
+        "result_horse": "DEPLOYANDDESTROY"
+      },
+      {
+        "performance_id": "eiq_performance_be57b752a2fe5b95846a546b45e360da",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "6",
+        "result_race_number": "6",
+        "sectional_horse": "PICCOLOFIORE",
+        "result_horse": "PICCOLOFIORE"
+      },
+      {
+        "performance_id": "eiq_performance_308ea69fb7435c418b7f47c91a0c1da6",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "6",
+        "result_race_number": "6",
+        "sectional_horse": "PLASTUN",
+        "result_horse": "PLASTUN"
+      },
+      {
+        "performance_id": "eiq_performance_54addc8fd6045893a20eb45cb9a32255",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "7",
+        "result_race_number": "7",
+        "sectional_horse": "THEKINGSGOSPEL",
+        "result_horse": "THEKINGSGOSPEL"
+      },
+      {
+        "performance_id": "eiq_performance_74e857f02bc050b0811ba526e22151ff",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "7",
+        "result_race_number": "7",
+        "sectional_horse": "MRIMABELIEVER",
+        "result_horse": "MRIMABELIEVER"
+      },
+      {
+        "performance_id": "eiq_performance_bc7f6ddb0d5f523d82fb334635e65f1d",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "7",
+        "result_race_number": "7",
+        "sectional_horse": "TAVISTEEL",
+        "result_horse": "TAVISTEEL"
+      },
+      {
+        "performance_id": "eiq_performance_b579c78b9fcf5cbe8b5f4c778c5c1413",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "7",
+        "result_race_number": "7",
+        "sectional_horse": "ACQUIESCENT",
+        "result_horse": "ACQUIESCENT"
+      },
+      {
+        "performance_id": "eiq_performance_610123b520bb5304b5866a4ec1543612",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "7",
+        "result_race_number": "7",
+        "sectional_horse": "FREEDOMESCAPE",
+        "result_horse": "FREEDOMESCAPE"
+      },
+      {
+        "performance_id": "eiq_performance_25958bd7f0c258d8ad1d78b8560a43b4",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "7",
+        "result_race_number": "7",
+        "sectional_horse": "FORESTDIAMOND",
+        "result_horse": "FORESTDIAMOND"
+      },
+      {
+        "performance_id": "eiq_performance_2d867aaf207154eda92611acc6342ebf",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "7",
+        "result_race_number": "7",
+        "sectional_horse": "INORDINATE",
+        "result_horse": "INORDINATE"
+      },
+      {
+        "performance_id": "eiq_performance_3cb75018d3a55498a7335adc059a69ba",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "7",
+        "result_race_number": "7",
+        "sectional_horse": "WAITAPU",
+        "result_horse": "WAITAPU"
+      },
+      {
+        "performance_id": "eiq_performance_351a05780546528397e5ec60128d2bf4",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "8",
+        "result_race_number": "8",
+        "sectional_horse": "HOLYMANZ",
+        "result_horse": "HOLYMANZ"
+      },
+      {
+        "performance_id": "eiq_performance_4467c29666dd53d3bd3573b1c9ce1377",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "8",
+        "result_race_number": "8",
+        "sectional_horse": "VONGOLE",
+        "result_horse": "VONGOLE"
+      },
+      {
+        "performance_id": "eiq_performance_ee02f1bcb0c252ea87d1e90fc20d2f7d",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "8",
+        "result_race_number": "8",
+        "sectional_horse": "ELITEICON",
+        "result_horse": "ELITEICON"
+      },
+      {
+        "performance_id": "eiq_performance_d90a98fd8c835c36ac57f68d21af3a67",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "8",
+        "result_race_number": "8",
+        "sectional_horse": "ATOMICSELFIE",
+        "result_horse": "ATOMICSELFIE"
+      },
+      {
+        "performance_id": "eiq_performance_3045275ceac55323a80f83eabd78ca79",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "8",
+        "result_race_number": "8",
+        "sectional_horse": "INDUETIME",
+        "result_horse": "INDUETIME"
+      },
+      {
+        "performance_id": "eiq_performance_8cdfe2aa868051d6a44fe30fe76a695a",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "8",
+        "result_race_number": "8",
+        "sectional_horse": "TRUENOBILITY",
+        "result_horse": "TRUENOBILITY"
+      },
+      {
+        "performance_id": "eiq_performance_86a5e7b9221552259ec8b3f616f1060b",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "8",
+        "result_race_number": "8",
+        "sectional_horse": "REDPHANTOM",
+        "result_horse": "REDPHANTOM"
+      },
+      {
+        "performance_id": "eiq_performance_548df6c4c4f55246b45ee88c0a948053",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "8",
+        "result_race_number": "8",
+        "sectional_horse": "SHESBOOMING",
+        "result_horse": "SHESBOOMING"
+      },
+      {
+        "performance_id": "eiq_performance_3e3f1156815551c29e1ca67fc7d6462d",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-03",
+        "result_date": "2023-02-03",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "8",
+        "result_race_number": "8",
+        "sectional_horse": "IMMORTALSPIRIT",
+        "result_horse": "IMMORTALSPIRIT"
+      },
+      {
+        "performance_id": "eiq_performance_dce74133bd9c58a3a75fab3663dd4c6c",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "1",
+        "result_race_number": "1",
+        "sectional_horse": "SKINNYDIP",
+        "result_horse": "SKINNYDIP"
+      },
+      {
+        "performance_id": "eiq_performance_d93c614478be5502bf0eb434a3641d2f",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "1",
+        "result_race_number": "1",
+        "sectional_horse": "MRFABULOUS",
+        "result_horse": "MRFABULOUS"
+      },
+      {
+        "performance_id": "eiq_performance_7933c2e3f0865b6e959afee4ff31b5b6",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "1",
+        "result_race_number": "1",
+        "sectional_horse": "NEWYORKSCANDAL",
+        "result_horse": "NEWYORKSCANDAL"
+      },
+      {
+        "performance_id": "eiq_performance_217db949a9535229b9b913164804d714",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "1",
+        "result_race_number": "1",
+        "sectional_horse": "STATESWOMAN",
+        "result_horse": "STATESWOMAN"
+      },
+      {
+        "performance_id": "eiq_performance_536a4ced0ff55a19b4fc9f4f885b7b67",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "1",
+        "result_race_number": "1",
+        "sectional_horse": "DEVOTEDPOET",
+        "result_horse": "DEVOTEDPOET"
+      },
+      {
+        "performance_id": "eiq_performance_ecc11c7e3e0f55d99e40dc24a1c8edcc",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "1",
+        "result_race_number": "1",
+        "sectional_horse": "UNDISTURBED",
+        "result_horse": "UNDISTURBED"
+      },
+      {
+        "performance_id": "eiq_performance_6e1898762542567a896ee3697f33e0f2",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "1",
+        "result_race_number": "1",
+        "sectional_horse": "ANGELRAIDER",
+        "result_horse": "ANGELRAIDER"
+      },
+      {
+        "performance_id": "eiq_performance_1ea3584e6ed75788800abddb580c4f52",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "1",
+        "result_race_number": "1",
+        "sectional_horse": "SHOUTOUTGIRL",
+        "result_horse": "SHOUTOUTGIRL"
+      },
+      {
+        "performance_id": "eiq_performance_f74925f93a3258d88a04827d521b8f51",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "1",
+        "result_race_number": "1",
+        "sectional_horse": "HASHE",
+        "result_horse": "HASHE"
+      },
+      {
+        "performance_id": "eiq_performance_f605ba170ca7513c914276db405bbfae",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "1",
+        "result_race_number": "1",
+        "sectional_horse": "HIGHLANDFALCON",
+        "result_horse": "HIGHLANDFALCON"
+      },
+      {
+        "performance_id": "eiq_performance_99982b4b856e5ab8bedbe4903f6f7bb6",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "1",
+        "result_race_number": "1",
+        "sectional_horse": "ABRACADABRA",
+        "result_horse": "ABRACADABRA"
+      },
+      {
+        "performance_id": "eiq_performance_4d0677a7eeb059bba9cb4943fa980758",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "2",
+        "result_race_number": "2",
+        "sectional_horse": "SUNDAYBUZZ",
+        "result_horse": "SUNDAYBUZZ"
+      },
+      {
+        "performance_id": "eiq_performance_26459eddd4295228afae306ea5aead9a",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "2",
+        "result_race_number": "2",
+        "sectional_horse": "JUMPINJAGUAR",
+        "result_horse": "JUMPINJAGUAR"
+      },
+      {
+        "performance_id": "eiq_performance_7af7540ed6ff5a13803eb9918fef3dd0",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "2",
+        "result_race_number": "2",
+        "sectional_horse": "ACCOUNTABILITY",
+        "result_horse": "ACCOUNTABILITY"
+      },
+      {
+        "performance_id": "eiq_performance_de66e0e225ab590fa986b38b255b19a3",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "2",
+        "result_race_number": "2",
+        "sectional_horse": "TRADUCE",
+        "result_horse": "TRADUCE"
+      },
+      {
+        "performance_id": "eiq_performance_2983b7e9ed6359c59042938e5420413f",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "2",
+        "result_race_number": "2",
+        "sectional_horse": "TOYETIC",
+        "result_horse": "TOYETIC"
+      },
+      {
+        "performance_id": "eiq_performance_38759c6d90d75ca985087614834293b1",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "2",
+        "result_race_number": "2",
+        "sectional_horse": "CEARDAI",
+        "result_horse": "CEARDAI"
+      },
+      {
+        "performance_id": "eiq_performance_74f2ddd6a0f25a5c9290709bb238d0af",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "2",
+        "result_race_number": "2",
+        "sectional_horse": "SAVVYACQUISITION",
+        "result_horse": "SAVVYACQUISITION"
+      },
+      {
+        "performance_id": "eiq_performance_a8a0673d80cc5b66ad0ad7e19113e455",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "2",
+        "result_race_number": "2",
+        "sectional_horse": "PEACEPROCESS",
+        "result_horse": "PEACEPROCESS"
+      },
+      {
+        "performance_id": "eiq_performance_2f5d8d8c3e52509b945202ff42c5020d",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "3",
+        "result_race_number": "3",
+        "sectional_horse": "LIBERATEDGIRL",
+        "result_horse": "LIBERATEDGIRL"
+      },
+      {
+        "performance_id": "eiq_performance_00c66f20fae654688206713568ffc648",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "3",
+        "result_race_number": "3",
+        "sectional_horse": "HARDSQUEEZE",
+        "result_horse": "HARDSQUEEZE"
+      },
+      {
+        "performance_id": "eiq_performance_e1748932cc9e5e3f919647e3904360bf",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "3",
+        "result_race_number": "3",
+        "sectional_horse": "TRIUMPHANTMISS",
+        "result_horse": "TRIUMPHANTMISS"
+      },
+      {
+        "performance_id": "eiq_performance_dabf0667550e5d7ea6dd08b647072be6",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "3",
+        "result_race_number": "3",
+        "sectional_horse": "PLAYINGITSAFE",
+        "result_horse": "PLAYINGITSAFE"
+      },
+      {
+        "performance_id": "eiq_performance_4050a39c78eb5fe798362bdd4500142c",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "3",
+        "result_race_number": "3",
+        "sectional_horse": "PANKHURST",
+        "result_horse": "PANKHURST"
+      },
+      {
+        "performance_id": "eiq_performance_64fec370be775aef9e82042fddf4f8d1",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "3",
+        "result_race_number": "3",
+        "sectional_horse": "SMELISHA",
+        "result_horse": "SMELISHA"
+      },
+      {
+        "performance_id": "eiq_performance_733422c2edf35d7b83629356057bff62",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "3",
+        "result_race_number": "3",
+        "sectional_horse": "RUTHERFORD",
+        "result_horse": "RUTHERFORD"
+      },
+      {
+        "performance_id": "eiq_performance_684dd6a33bff52e58d8a4b391b0b9e3b",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "3",
+        "result_race_number": "3",
+        "sectional_horse": "UNIQUELY",
+        "result_horse": "UNIQUELY"
+      },
+      {
+        "performance_id": "eiq_performance_a0f080765d705272ab5f6a43f475e672",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "3",
+        "result_race_number": "3",
+        "sectional_horse": "ISABELLASSPRING",
+        "result_horse": "ISABELLASSPRING"
+      },
+      {
+        "performance_id": "eiq_performance_40855f5817ef5b68a364e9a47ce52f92",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "4",
+        "result_race_number": "4",
+        "sectional_horse": "ASPENCOLORADO",
+        "result_horse": "ASPENCOLORADO"
+      },
+      {
+        "performance_id": "eiq_performance_ff0e597e327c5908b49f38c7ca6586b7",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "4",
+        "result_race_number": "4",
+        "sectional_horse": "ALPHAVILLE",
+        "result_horse": "ALPHAVILLE"
+      },
+      {
+        "performance_id": "eiq_performance_d2732f185a5b52da9c84bb0f0839ade4",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "4",
+        "result_race_number": "4",
+        "sectional_horse": "RUMBLEDAGAIN",
+        "result_horse": "RUMBLEDAGAIN"
+      },
+      {
+        "performance_id": "eiq_performance_e82af08762b05a1893ec758f3b284cc3",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "4",
+        "result_race_number": "4",
+        "sectional_horse": "PONTIFICATE",
+        "result_horse": "PONTIFICATE"
+      },
+      {
+        "performance_id": "eiq_performance_6e5c8f2baa505365a40e8fa9072bcaf2",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "4",
+        "result_race_number": "4",
+        "sectional_horse": "TAKARA",
+        "result_horse": "TAKARA"
+      },
+      {
+        "performance_id": "eiq_performance_bf429564227b5bae83e9d7d4af3058a6",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "4",
+        "result_race_number": "4",
+        "sectional_horse": "DANISHFORTUNE",
+        "result_horse": "DANISHFORTUNE"
+      },
+      {
+        "performance_id": "eiq_performance_56ec843c2f945fb595ee8fb5081f8ea8",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "4",
+        "result_race_number": "4",
+        "sectional_horse": "SHESNOTORIOUS",
+        "result_horse": "SHESNOTORIOUS"
+      },
+      {
+        "performance_id": "eiq_performance_d69a4852fa5a5f9ba40d95549ce58e9d",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "4",
+        "result_race_number": "4",
+        "sectional_horse": "SCHILLEREFFECT",
+        "result_horse": "SCHILLEREFFECT"
+      },
+      {
+        "performance_id": "eiq_performance_840e7a91725d5db0b26c7b85f2a43f36",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "4",
+        "result_race_number": "4",
+        "sectional_horse": "ELFI",
+        "result_horse": "ELFI"
+      },
+      {
+        "performance_id": "eiq_performance_9b084deabb1652119f5133371e52a742",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "5",
+        "result_race_number": "5",
+        "sectional_horse": "SPARRING",
+        "result_horse": "SPARRING"
+      },
+      {
+        "performance_id": "eiq_performance_2a2cabedcee153118fffae3ae62be50d",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "5",
+        "result_race_number": "5",
+        "sectional_horse": "STARZBARWON",
+        "result_horse": "STARZBARWON"
+      },
+      {
+        "performance_id": "eiq_performance_6c80c4c5770b57a5b7254e2de0e48ba4",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "5",
+        "result_race_number": "5",
+        "sectional_horse": "SQUIZZYMIZZY",
+        "result_horse": "SQUIZZYMIZZY"
+      },
+      {
+        "performance_id": "eiq_performance_315c606d750d5a828e0a4b57024fbfd0",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "5",
+        "result_race_number": "5",
+        "sectional_horse": "TOMTHESTAR",
+        "result_horse": "TOMTHESTAR"
+      },
+      {
+        "performance_id": "eiq_performance_ebf005c613d25bd5a406f5c811cc8dc1",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "5",
+        "result_race_number": "5",
+        "sectional_horse": "PRAIRIEFIRE",
+        "result_horse": "PRAIRIEFIRE"
+      },
+      {
+        "performance_id": "eiq_performance_3d0fdece5a0456a38c090f5b13eea62c",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "5",
+        "result_race_number": "5",
+        "sectional_horse": "PRINCEOFMERCIA",
+        "result_horse": "PRINCEOFMERCIA"
+      },
+      {
+        "performance_id": "eiq_performance_853755f2d8f155769901db70e56ca04f",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "5",
+        "result_race_number": "5",
+        "sectional_horse": "ABADDON",
+        "result_horse": "ABADDON"
+      },
+      {
+        "performance_id": "eiq_performance_d1372e91bad3571bb957511b1da23e36",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "5",
+        "result_race_number": "5",
+        "sectional_horse": "TITANS",
+        "result_horse": "TITANS"
+      },
+      {
+        "performance_id": "eiq_performance_cb9db7ea319c585dbe83095ad068f0b3",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "5",
+        "result_race_number": "5",
+        "sectional_horse": "SOUTHERNFRONT",
+        "result_horse": "SOUTHERNFRONT"
+      },
+      {
+        "performance_id": "eiq_performance_0a230f23c0155527b38d4a42eb82ce31",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "5",
+        "result_race_number": "5",
+        "sectional_horse": "CASHISQUEEN",
+        "result_horse": "CASHISQUEEN"
+      },
+      {
+        "performance_id": "eiq_performance_7f3d298df0a15a1ab679e24519a1543c",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "5",
+        "result_race_number": "5",
+        "sectional_horse": "AVIDGENERAL",
+        "result_horse": "AVIDGENERAL"
+      },
+      {
+        "performance_id": "eiq_performance_58704804e5165c9bb4ad1340dba4dfa5",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "6",
+        "result_race_number": "6",
+        "sectional_horse": "GOLDREVOLVER",
+        "result_horse": "GOLDREVOLVER"
+      },
+      {
+        "performance_id": "eiq_performance_f2ba056f0d1a55269ffc52edc5c45944",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "6",
+        "result_race_number": "6",
+        "sectional_horse": "JENNILALA",
+        "result_horse": "JENNILALA"
+      },
+      {
+        "performance_id": "eiq_performance_1aafda44f2ad5335801f500653c671ea",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "6",
+        "result_race_number": "6",
+        "sectional_horse": "THREERINGS",
+        "result_horse": "THREERINGS"
+      },
+      {
+        "performance_id": "eiq_performance_06536251fb6d58fc9a66179417d5dad3",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "6",
+        "result_race_number": "6",
+        "sectional_horse": "THEBRILLBUILDING",
+        "result_horse": "THEBRILLBUILDING"
+      },
+      {
+        "performance_id": "eiq_performance_fedbff1c6ce356ffaf37061c170485f2",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "6",
+        "result_race_number": "6",
+        "sectional_horse": "EXTRAVAGANTCHOICE",
+        "result_horse": "EXTRAVAGANTCHOICE"
+      },
+      {
+        "performance_id": "eiq_performance_1feb87741e2a5c86a0f64a9856b104fc",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "6",
+        "result_race_number": "6",
+        "sectional_horse": "SOGREYSFUL",
+        "result_horse": "SOGREYSFUL"
+      },
+      {
+        "performance_id": "eiq_performance_a5465955e3355722b971c8281e6a4195",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "6",
+        "result_race_number": "6",
+        "sectional_horse": "ADAMENT",
+        "result_horse": "ADAMENT"
+      },
+      {
+        "performance_id": "eiq_performance_7d299b9f7bfb527cb69fbf11ddf7b36c",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "6",
+        "result_race_number": "6",
+        "sectional_horse": "AMATI",
+        "result_horse": "AMATI"
+      },
+      {
+        "performance_id": "eiq_performance_9f3e71527e605924bf980f7e7919c77e",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "6",
+        "result_race_number": "6",
+        "sectional_horse": "RIVKIN",
+        "result_horse": "RIVKIN"
+      },
+      {
+        "performance_id": "eiq_performance_e65b39623c0f5e90b421c81b2bc3b4f1",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "7",
+        "result_race_number": "7",
+        "sectional_horse": "REDHOTNICC",
+        "result_horse": "REDHOTNICC"
+      },
+      {
+        "performance_id": "eiq_performance_4088438ef37b5835bce45ce562292760",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "7",
+        "result_race_number": "7",
+        "sectional_horse": "THEHASS",
+        "result_horse": "THEHASS"
+      },
+      {
+        "performance_id": "eiq_performance_112f99e9e5c25ed3b1a2694de605e609",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "7",
+        "result_race_number": "7",
+        "sectional_horse": "BLOODOATH",
+        "result_horse": "BLOODOATH"
+      },
+      {
+        "performance_id": "eiq_performance_8a18c0d682f95d829acd9acc40ce9957",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "7",
+        "result_race_number": "7",
+        "sectional_horse": "EPONYMOUS",
+        "result_horse": "EPONYMOUS"
+      },
+      {
+        "performance_id": "eiq_performance_2928f7eecfa45837bc8502250012f854",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "7",
+        "result_race_number": "7",
+        "sectional_horse": "THELASTNAPOLEON",
+        "result_horse": "THELASTNAPOLEON"
+      },
+      {
+        "performance_id": "eiq_performance_9a051e7bdadb569c8d34d6e3241ac752",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "7",
+        "result_race_number": "7",
+        "sectional_horse": "HARBIN",
+        "result_horse": "HARBIN"
+      },
+      {
+        "performance_id": "eiq_performance_54b7e49603eb59488906e424f0ee9bac",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "7",
+        "result_race_number": "7",
+        "sectional_horse": "ANILLA",
+        "result_horse": "ANILLA"
+      },
+      {
+        "performance_id": "eiq_performance_3dc013d08a2e5de5b17c6a6b028db178",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "7",
+        "result_race_number": "7",
+        "sectional_horse": "HARDREALITY",
+        "result_horse": "HARDREALITY"
+      },
+      {
+        "performance_id": "eiq_performance_980635a28d2c578d8085f9be9714f962",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "7",
+        "result_race_number": "7",
+        "sectional_horse": "TAPNRUN",
+        "result_horse": "TAPNRUN"
+      },
+      {
+        "performance_id": "eiq_performance_6a46ada31a70537f989c5911e91f7e67",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "7",
+        "result_race_number": "7",
+        "sectional_horse": "HIDDENLEGEND",
+        "result_horse": "HIDDENLEGEND"
+      },
+      {
+        "performance_id": "eiq_performance_ba848664a58b5a86808fa8e1c433fdbc",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "7",
+        "result_race_number": "7",
+        "sectional_horse": "MISTERYUSHU",
+        "result_horse": "MISTERYUSHU"
+      },
+      {
+        "performance_id": "eiq_performance_4f4b14276f1c56e597b3c320037d3299",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "8",
+        "result_race_number": "8",
+        "sectional_horse": "MISSMIDDLEPARK",
+        "result_horse": "MISSMIDDLEPARK"
+      },
+      {
+        "performance_id": "eiq_performance_2a3db975deba571d96eb49ae4229356f",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "8",
+        "result_race_number": "8",
+        "sectional_horse": "JUSTATHEORY",
+        "result_horse": "JUSTATHEORY"
+      },
+      {
+        "performance_id": "eiq_performance_7e81e22c1dbd5adf95f050c70a682ee7",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "8",
+        "result_race_number": "8",
+        "sectional_horse": "CIRCLEOFMAGIC",
+        "result_horse": "CIRCLEOFMAGIC"
+      },
+      {
+        "performance_id": "eiq_performance_b7b9c028bf4853eda3b7e48fe816df8f",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "8",
+        "result_race_number": "8",
+        "sectional_horse": "EVERYLITTLEBREEZE",
+        "result_horse": "EVERYLITTLEBREEZE"
+      },
+      {
+        "performance_id": "eiq_performance_7d177e005555547c8ab2b82c42c48622",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "8",
+        "result_race_number": "8",
+        "sectional_horse": "VIENTIANE",
+        "result_horse": "VIENTIANE"
+      },
+      {
+        "performance_id": "eiq_performance_cd7d19b618b05bf3a028ccc263555e63",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "8",
+        "result_race_number": "8",
+        "sectional_horse": "SKEPTICISM",
+        "result_horse": "SKEPTICISM"
+      },
+      {
+        "performance_id": "eiq_performance_f3da8aab7aee5e5cac7bdb4c8a15cf05",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "8",
+        "result_race_number": "8",
+        "sectional_horse": "JEZOULENKO",
+        "result_horse": "JEZOULENKO"
+      },
+      {
+        "performance_id": "eiq_performance_5304de6f0eb65de0880e5ef1c43bf6e2",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "8",
+        "result_race_number": "8",
+        "sectional_horse": "TOMROCKS",
+        "result_horse": "TOMROCKS"
+      },
+      {
+        "performance_id": "eiq_performance_5526583cb1d252e3b3c6b4b10076acc4",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "8",
+        "result_race_number": "8",
+        "sectional_horse": "IMPENDINGSHADOW",
+        "result_horse": "IMPENDINGSHADOW"
+      },
+      {
+        "performance_id": "eiq_performance_bad13c54d3b15b609f99327e75c53083",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-10",
+        "result_date": "2023-02-10",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "8",
+        "result_race_number": "8",
+        "sectional_horse": "BELLASORELLINA",
+        "result_horse": "BELLASORELLINA"
+      },
+      {
+        "performance_id": "eiq_performance_60ffb9ba72e956989d5c9165ecd3ddbd",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-17",
+        "result_date": "2023-02-17",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "1",
+        "result_race_number": "1",
+        "sectional_horse": "NOSECRET",
+        "result_horse": "NOSECRET"
+      },
+      {
+        "performance_id": "eiq_performance_4ca271fb654058d9a553f3b3532a75f1",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-17",
+        "result_date": "2023-02-17",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "1",
+        "result_race_number": "1",
+        "sectional_horse": "SOARINGEAGLE",
+        "result_horse": "SOARINGEAGLE"
+      },
+      {
+        "performance_id": "eiq_performance_761c1195386056398e3eceaa9ee44fa9",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-17",
+        "result_date": "2023-02-17",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "1",
+        "result_race_number": "1",
+        "sectional_horse": "LADYADELAIDE",
+        "result_horse": "LADYADELAIDE"
+      },
+      {
+        "performance_id": "eiq_performance_ae85d2965e485675b9e615899bb8f398",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-17",
+        "result_date": "2023-02-17",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "1",
+        "result_race_number": "1",
+        "sectional_horse": "DIAMONDMODEL",
+        "result_horse": "DIAMONDMODEL"
+      },
+      {
+        "performance_id": "eiq_performance_a9bc28d39e0a56fd8dd0479b8c7f2f52",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-17",
+        "result_date": "2023-02-17",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "1",
+        "result_race_number": "1",
+        "sectional_horse": "CANTINA",
+        "result_horse": "CANTINA"
+      },
+      {
+        "performance_id": "eiq_performance_9049a2ad5d2a5e5fabb298925bee5e5d",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-17",
+        "result_date": "2023-02-17",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "1",
+        "result_race_number": "1",
+        "sectional_horse": "CABLEDEVEGA",
+        "result_horse": "CABLEDEVEGA"
+      },
+      {
+        "performance_id": "eiq_performance_3f5e42a9bfad59458f25930d23dfa1e5",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-17",
+        "result_date": "2023-02-17",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "1",
+        "result_race_number": "1",
+        "sectional_horse": "READILYREWARDED",
+        "result_horse": "READILYREWARDED"
+      },
+      {
+        "performance_id": "eiq_performance_8c9f9274ee8156719ab7db695b2243ba",
+        "link_method": "DATE_TRACK_RACE_HORSE_NORMALISED",
+        "sectional_date": "2023-02-17",
+        "result_date": "2023-02-17",
+        "sectional_track": "VALLEY",
+        "result_track": "THEVALLEY",
+        "sectional_race_number": "2",
+        "result_race_number": "2",
+        "sectional_horse": "TICKTOCKLADY",
+        "result_horse": "TICKTOCKLADY"
+      }
+    ]
+  },
+  "unlinked_diagnosis": {
+    "unlinked_rows": 3844,
+    "reason_counts": {
+      "DUPLICATE_OR_AMBIGUOUS_RESULT_EVIDENCE": 1,
+      "HORSE_NOT_PRESENT_ON_DATE": 2246,
+      "RESULT_DATE_NOT_PRESENT": 1596,
+      "TRACK_ALIAS_OR_RESULT_VENUE_MISMATCH": 1
+    },
+    "top_tracks": [
+      {
+        "track": "VALLEY",
+        "rows": 633
+      },
+      {
+        "track": "KILMORE",
+        "rows": 564
+      },
+      {
+        "track": "YARRAVALLEY",
+        "rows": 377
+      },
+      {
+        "track": "BENALLA",
+        "rows": 319
+      },
+      {
+        "track": "WERRIBEE",
+        "rows": 238
+      },
+      {
+        "track": "HORSHAM",
+        "rows": 227
+      },
+      {
+        "track": "SALE",
+        "rows": 177
+      },
+      {
+        "track": "STONYCREEK",
+        "rows": 137
+      },
+      {
+        "track": "WARRNAMBOOL",
+        "rows": 86
+      },
+      {
+        "track": "CAMPERDOWN",
+        "rows": 83
+      },
+      {
+        "track": "PAKENHAMSYNTHETIC",
+        "rows": 82
+      },
+      {
+        "track": "CRANBOURNE",
+        "rows": 81
+      },
+      {
+        "track": "BALLARAT",
+        "rows": 81
+      },
+      {
+        "track": "EDENHOPE",
+        "rows": 78
+      },
+      {
+        "track": "AVOCA",
+        "rows": 78
+      },
+      {
+        "track": "MORNINGTON",
+        "rows": 77
+      },
+      {
+        "track": "DONALD",
+        "rows": 76
+      },
+      {
+        "track": "GEELONG",
+        "rows": 72
+      },
+      {
+        "track": "KERANG",
+        "rows": 71
+      },
+      {
+        "track": "WARRACKNABEAL",
+        "rows": 67
+      },
+      {
+        "track": "BURRUMBEET",
+        "rows": 63
+      },
+      {
+        "track": "GREATWESTERN",
+        "rows": 63
+      },
+      {
+        "track": "HANGINGROCK",
+        "rows": 59
+      },
+      {
+        "track": "FLEMINGTON",
+        "rows": 6
+      },
+      {
+        "track": "PAKENHAM",
+        "rows": 6
+      },
+      {
+        "track": "SANDOWNHILLSIDE",
+        "rows": 5
+      },
+      {
+        "track": "BENDIGO",
+        "rows": 5
+      },
+      {
+        "track": "SANDOWNLAKESIDE",
+        "rows": 5
+      },
+      {
+        "track": "PARKKYNETON",
+        "rows": 5
+      },
+      {
+        "track": "MOE",
+        "rows": 5
+      },
+      {
+        "track": "CAULFIELD",
+        "rows": 4
+      },
+      {
+        "track": "ECHUCA",
+        "rows": 2
+      },
+      {
+        "track": "WODONGA",
+        "rows": 2
+      },
+      {
+        "track": "SEYMOUR",
+        "rows": 2
+      },
+      {
+        "track": "BAIRNSDALE",
+        "rows": 2
+      },
+      {
+        "track": "WANGARATTA",
+        "rows": 2
+      },
+      {
+        "track": "TATURA",
+        "rows": 1
+      },
+      {
+        "track": "PARKWERRIBEE",
+        "rows": 1
+      },
+      {
+        "track": "STAWELL",
+        "rows": 1
+      },
+      {
+        "track": "SWANHILL",
+        "rows": 1
+      }
+    ],
+    "top_dates": [
+      {
+        "date": "2025-01-24",
+        "rows": 152
+      },
+      {
+        "date": "2025-04-26",
+        "rows": 150
+      },
+      {
+        "date": "2025-03-22",
+        "rows": 147
+      },
+      {
+        "date": "2025-02-21",
+        "rows": 142
+      },
+      {
+        "date": "2025-01-31",
+        "rows": 139
+      },
+      {
+        "date": "2025-04-19",
+        "rows": 138
+      },
+      {
+        "date": "2023-12-23",
+        "rows": 106
+      },
+      {
+        "date": "2025-04-12",
+        "rows": 95
+      },
+      {
+        "date": "2023-12-31",
+        "rows": 85
+      },
+      {
+        "date": "2025-01-18",
+        "rows": 84
+      },
+      {
+        "date": "2025-01-19",
+        "rows": 83
+      },
+      {
+        "date": "2023-10-26",
+        "rows": 78
+      },
+      {
+        "date": "2025-02-22",
+        "rows": 78
+      },
+      {
+        "date": "2025-03-08",
+        "rows": 78
+      },
+      {
+        "date": "2025-03-29",
+        "rows": 78
+      },
+      {
+        "date": "2025-01-14",
+        "rows": 77
+      },
+      {
+        "date": "2025-04-14",
+        "rows": 77
+      },
+      {
+        "date": "2023-10-09",
+        "rows": 76
+      },
+      {
+        "date": "2023-12-29",
+        "rows": 76
+      },
+      {
+        "date": "2025-04-07",
+        "rows": 75
+      },
+      {
+        "date": "2025-01-02",
+        "rows": 74
+      },
+      {
+        "date": "2025-01-21",
+        "rows": 74
+      },
+      {
+        "date": "2025-01-28",
+        "rows": 74
+      },
+      {
+        "date": "2025-03-09",
+        "rows": 74
+      },
+      {
+        "date": "2024-10-25",
+        "rows": 73
+      },
+      {
+        "date": "2025-02-11",
+        "rows": 71
+      },
+      {
+        "date": "2025-03-31",
+        "rows": 71
+      },
+      {
+        "date": "2025-02-08",
+        "rows": 70
+      },
+      {
+        "date": "2025-05-20",
+        "rows": 69
+      },
+      {
+        "date": "2025-04-05",
+        "rows": 68
+      },
+      {
+        "date": "2023-12-30",
+        "rows": 67
+      },
+      {
+        "date": "2025-03-14",
+        "rows": 67
+      },
+      {
+        "date": "2023-10-11",
+        "rows": 66
+      },
+      {
+        "date": "2025-02-07",
+        "rows": 65
+      },
+      {
+        "date": "2025-02-04",
+        "rows": 64
+      },
+      {
+        "date": "2025-01-01",
+        "rows": 63
+      },
+      {
+        "date": "2025-01-04",
+        "rows": 63
+      },
+      {
+        "date": "2025-01-25",
+        "rows": 63
+      },
+      {
+        "date": "2025-04-01",
+        "rows": 63
+      },
+      {
+        "date": "2025-02-14",
+        "rows": 62
+      },
+      {
+        "date": "2025-01-10",
+        "rows": 61
+      },
+      {
+        "date": "2025-04-17",
+        "rows": 60
+      },
+      {
+        "date": "2025-01-26",
+        "rows": 57
+      },
+      {
+        "date": "2025-02-28",
+        "rows": 55
+      },
+      {
+        "date": "2025-03-07",
+        "rows": 54
+      },
+      {
+        "date": "2025-02-16",
+        "rows": 50
+      },
+      {
+        "date": "2025-02-02",
+        "rows": 30
+      },
+      {
+        "date": "2025-03-16",
+        "rows": 8
+      },
+      {
+        "date": "2023-01-26",
+        "rows": 2
+      },
+      {
+        "date": "2023-06-04",
+        "rows": 2
+      }
+    ],
+    "top_date_tracks": [
+      {
+        "date_track": "2023-12-23|SALE",
+        "rows": 106
+      },
+      {
+        "date_track": "2025-04-12|WERRIBEE",
+        "rows": 95
+      },
+      {
+        "date_track": "2025-04-26|HORSHAM",
+        "rows": 89
+      },
+      {
+        "date_track": "2023-12-31|WARRNAMBOOL",
+        "rows": 85
+      },
+      {
+        "date_track": "2025-01-18|CAMPERDOWN",
+        "rows": 83
+      },
+      {
+        "date_track": "2025-01-19|BENALLA",
+        "rows": 83
+      },
+      {
+        "date_track": "2025-01-31|WERRIBEE",
+        "rows": 81
+      },
+      {
+        "date_track": "2023-10-26|BALLARAT",
+        "rows": 78
+      },
+      {
+        "date_track": "2025-02-22|YARRAVALLEY",
+        "rows": 78
+      },
+      {
+        "date_track": "2025-03-08|EDENHOPE",
+        "rows": 78
+      },
+      {
+        "date_track": "2025-03-29|AVOCA",
+        "rows": 78
+      },
+      {
+        "date_track": "2025-01-14|KILMORE",
+        "rows": 77
+      },
+      {
+        "date_track": "2025-03-22|BENALLA",
+        "rows": 77
+      },
+      {
+        "date_track": "2025-04-14|BENALLA",
+        "rows": 77
+      },
+      {
+        "date_track": "2023-10-09|PAKENHAMSYNTHETIC",
+        "rows": 76
+      },
+      {
+        "date_track": "2023-12-29|CRANBOURNE",
+        "rows": 76
+      },
+      {
+        "date_track": "2025-01-24|KILMORE",
+        "rows": 76
+      },
+      {
+        "date_track": "2025-01-24|VALLEY",
+        "rows": 76
+      },
+      {
+        "date_track": "2025-02-21|KILMORE",
+        "rows": 76
+      },
+      {
+        "date_track": "2025-04-07|DONALD",
+        "rows": 75
+      },
+      {
+        "date_track": "2025-01-02|YARRAVALLEY",
+        "rows": 74
+      },
+      {
+        "date_track": "2025-01-21|YARRAVALLEY",
+        "rows": 74
+      },
+      {
+        "date_track": "2025-01-28|HORSHAM",
+        "rows": 74
+      },
+      {
+        "date_track": "2025-03-09|STONYCREEK",
+        "rows": 74
+      },
+      {
+        "date_track": "2024-10-25|MORNINGTON",
+        "rows": 73
+      },
+      {
+        "date_track": "2025-02-11|KILMORE",
+        "rows": 71
+      },
+      {
+        "date_track": "2025-03-31|YARRAVALLEY",
+        "rows": 71
+      },
+      {
+        "date_track": "2025-04-19|KERANG",
+        "rows": 71
+      },
+      {
+        "date_track": "2025-02-08|YARRAVALLEY",
+        "rows": 70
+      },
+      {
+        "date_track": "2025-03-22|VALLEY",
+        "rows": 70
+      },
+      {
+        "date_track": "2025-05-20|KILMORE",
+        "rows": 69
+      },
+      {
+        "date_track": "2023-12-30|VALLEY",
+        "rows": 67
+      },
+      {
+        "date_track": "2025-03-14|KILMORE",
+        "rows": 67
+      },
+      {
+        "date_track": "2025-04-05|KILMORE",
+        "rows": 67
+      },
+      {
+        "date_track": "2025-04-19|WARRACKNABEAL",
+        "rows": 67
+      },
+      {
+        "date_track": "2023-10-11|SALE",
+        "rows": 66
+      },
+      {
+        "date_track": "2025-02-21|VALLEY",
+        "rows": 66
+      },
+      {
+        "date_track": "2025-02-07|VALLEY",
+        "rows": 65
+      },
+      {
+        "date_track": "2025-02-04|HORSHAM",
+        "rows": 64
+      },
+      {
+        "date_track": "2025-01-01|BURRUMBEET",
+        "rows": 63
+      },
+      {
+        "date_track": "2025-01-04|STONYCREEK",
+        "rows": 63
+      },
+      {
+        "date_track": "2025-01-25|GREATWESTERN",
+        "rows": 63
+      },
+      {
+        "date_track": "2025-04-01|GEELONG",
+        "rows": 63
+      },
+      {
+        "date_track": "2025-02-14|VALLEY",
+        "rows": 62
+      },
+      {
+        "date_track": "2025-01-10|WERRIBEE",
+        "rows": 61
+      },
+      {
+        "date_track": "2025-04-26|VALLEY",
+        "rows": 61
+      },
+      {
+        "date_track": "2025-04-17|KILMORE",
+        "rows": 60
+      },
+      {
+        "date_track": "2025-01-31|VALLEY",
+        "rows": 58
+      },
+      {
+        "date_track": "2025-01-26|HANGINGROCK",
+        "rows": 57
+      },
+      {
+        "date_track": "2025-02-28|VALLEY",
+        "rows": 55
+      },
+      {
+        "date_track": "2025-03-07|VALLEY",
+        "rows": 53
+      },
+      {
+        "date_track": "2025-02-16|BENALLA",
+        "rows": 50
+      },
+      {
+        "date_track": "2025-02-02|BENALLA",
+        "rows": 29
+      },
+      {
+        "date_track": "2025-03-16|YARRAVALLEY",
+        "rows": 8
+      },
+      {
+        "date_track": "2023-01-26|HANGINGROCK",
+        "rows": 2
+      },
+      {
+        "date_track": "2023-06-04|GEELONG",
+        "rows": 2
+      },
+      {
+        "date_track": "2023-07-25|PAKENHAMSYNTHETIC",
+        "rows": 2
+      },
+      {
+        "date_track": "2023-08-17|SEYMOUR",
+        "rows": 2
+      },
+      {
+        "date_track": "2024-01-07|MORNINGTON",
+        "rows": 2
+      },
+      {
+        "date_track": "2025-03-19|SANDOWNHILLSIDE",
+        "rows": 2
+      },
+      {
+        "date_track": "2023-01-13|CRANBOURNE",
+        "rows": 1
+      },
+      {
+        "date_track": "2023-01-20|FLEMINGTON",
+        "rows": 1
+      },
+      {
+        "date_track": "2023-01-22|MORNINGTON",
+        "rows": 1
+      },
+      {
+        "date_track": "2023-02-05|SALE",
+        "rows": 1
+      },
+      {
+        "date_track": "2023-02-23|PAKENHAM",
+        "rows": 1
+      },
+      {
+        "date_track": "2023-03-03|PAKENHAM",
+        "rows": 1
+      },
+      {
+        "date_track": "2023-03-12|ECHUCA",
+        "rows": 1
+      },
+      {
+        "date_track": "2023-03-15|SANDOWNHILLSIDE",
+        "rows": 1
+      },
+      {
+        "date_track": "2023-03-29|SANDOWNHILLSIDE",
+        "rows": 1
+      },
+      {
+        "date_track": "2023-04-11|BENDIGO",
+        "rows": 1
+      },
+      {
+        "date_track": "2023-04-15|SANDOWNLAKESIDE",
+        "rows": 1
+      },
+      {
+        "date_track": "2023-05-11|KILMORE",
+        "rows": 1
+      },
+      {
+        "date_track": "2023-05-21|SANDOWNLAKESIDE",
+        "rows": 1
+      },
+      {
+        "date_track": "2023-06-01|ECHUCA",
+        "rows": 1
+      },
+      {
+        "date_track": "2023-06-14|SANDOWNHILLSIDE",
+        "rows": 1
+      },
+      {
+        "date_track": "2023-06-16|GEELONG",
+        "rows": 1
+      },
+      {
+        "date_track": "2023-06-17|DONALD",
+        "rows": 1
+      },
+      {
+        "date_track": "2023-06-30|GEELONG",
+        "rows": 1
+      },
+      {
+        "date_track": "2023-07-05|SANDOWNLAKESIDE",
+        "rows": 1
+      },
+      {
+        "date_track": "2023-07-12|SANDOWNLAKESIDE",
+        "rows": 1
+      },
+      {
+        "date_track": "2023-08-02|SALE",
+        "rows": 1
+      },
+      {
+        "date_track": "2023-08-06|WODONGA",
+        "rows": 1
+      },
+      {
+        "date_track": "2023-08-14|PAKENHAMSYNTHETIC",
+        "rows": 1
+      },
+      {
+        "date_track": "2023-08-28|PAKENHAMSYNTHETIC",
+        "rows": 1
+      },
+      {
+        "date_track": "2023-09-07|CRANBOURNE",
+        "rows": 1
+      },
+      {
+        "date_track": "2023-09-22|BALLARAT",
+        "rows": 1
+      },
+      {
+        "date_track": "2023-09-23|TATURA",
+        "rows": 1
+      },
+      {
+        "date_track": "2023-09-29|BENALLA",
+        "rows": 1
+      },
+      {
+        "date_track": "2023-10-12|PARKKYNETON",
+        "rows": 1
+      },
+      {
+        "date_track": "2023-10-25|GEELONG",
+        "rows": 1
+      },
+      {
+        "date_track": "2023-10-28|YARRAVALLEY",
+        "rows": 1
+      },
+      {
+        "date_track": "2023-11-06|BALLARAT",
+        "rows": 1
+      },
+      {
+        "date_track": "2023-11-11|GEELONG",
+        "rows": 1
+      },
+      {
+        "date_track": "2023-11-20|PARKKYNETON",
+        "rows": 1
+      },
+      {
+        "date_track": "2023-12-08|MOE",
+        "rows": 1
+      },
+      {
+        "date_track": "2024-01-12|CRANBOURNE",
+        "rows": 1
+      },
+      {
+        "date_track": "2024-01-23|SALE",
+        "rows": 1
+      },
+      {
+        "date_track": "2024-01-27|MOE",
+        "rows": 1
+      },
+      {
+        "date_track": "2024-02-10|YARRAVALLEY",
+        "rows": 1
+      },
+      {
+        "date_track": "2024-02-20|BENALLA",
+        "rows": 1
+      }
+    ]
+  },
+  "promotion_manifest": {
+    "eligible_rows": 100143,
+    "promotion_state_counts": {
+      "ELIGIBLE_FOR_CANONICAL_MIGRATION_REVIEW": 100143,
+      "NOT_ELIGIBLE": 7525,
+      "REQUIRES_SECONDARY_EVIDENCE_REVIEW": 21615,
+      "RESEARCH_ONLY": 1201
+    }
+  },
+  "canonical_status": "VALIDATED_LINKAGE_PROTOTYPE_NOT_YET_MIGRATED",
+  "next_stage": "Phase 0.9 immutable canonical sectional evidence migration prototype",
+  "outputs": {
+    "validation": "docs/performance-intelligence/prototypes/phase0_8/edgeiq_sectional_link_validation_v0_1_20260716_043230.csv",
+    "residual_diagnosis": "docs/performance-intelligence/audits/phase0_8/edgeiq_sectional_residual_diagnosis_v0_1_20260716_043230.csv",
+    "migration_manifest": "docs/performance-intelligence/prototypes/phase0_8/edgeiq_sectional_migration_manifest_v0_1_20260716_043230.csv",
+    "governance_specification": "docs/performance-intelligence/architecture/phase0_8/EDGEIQ_SECTIONAL_LINKAGE_GOVERNANCE_V0_1.md"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "pipeline": "EDGEIQ_RACING_COM_VISIBLE_PAGE_SECTIONALS_INGESTION_V1",
+  "created_at_utc": "2026-07-29T04:52:57Z",
+  "target_command": "python .\\scripts\\run_edgeiq_racing_com_visible_sectionals_pipeline_v1.py --date TODAY --state VIC --promote",
+  "source_method": "Visible public Racing.com pages opened in Chromium only",
+  "security_constraints": [
+    "No protected GraphQL access",
+    "No x-api-key capture or reuse",
+    "No cookies, browser storage or hidden credentials read",
+    "No network credential interception",
+    "Only rendered DOM text, visible table cells, screenshots and sanitised HTML retained"
+  ],
+  "raw_evidence_root": "data\\raw\\racing-com-visible-v1",
+  "operational_root": "data\\operational\\racing-com-visible-v1",
+  "state": "VIC",
+  "date": "TODAY"
+}

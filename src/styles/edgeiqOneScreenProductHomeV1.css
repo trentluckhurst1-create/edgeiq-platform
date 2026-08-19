@@ -1,0 +1,253 @@
+/* EDGEiQ One Screen Product Home V1 */
+
+body {
+  overflow-x: hidden;
+}
+
+[class*="home"] {
+  max-width: 1280px !important;
+  margin: 0 auto !important;
+  padding: 14px 22px 28px !important;
+  transform: scale(.84);
+  transform-origin: top center;
+}
+
+[class*="home"]::before {
+  content: "▰ EDGEiQ";
+  position: fixed;
+  top: 14px;
+  left: 26px;
+  z-index: 50;
+  color: #f8fbff;
+  font-size: 22px;
+  font-weight: 1000;
+  letter-spacing: .03em;
+}
+
+[class*="home"]::after {
+  content: "RACING INTELLIGENCE PLATFORM";
+  position: fixed;
+  top: 42px;
+  left: 62px;
+  z-index: 50;
+  color: #9ca9bb;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: .22em;
+}
+
+[class*="home"] > section:first-of-type {
+  display: grid !important;
+  grid-template-columns: 1fr 520px !important;
+  gap: 34px !important;
+  align-items: center !important;
+  margin: 44px 0 24px !important;
+}
+
+[class*="hero"] {
+  padding: 18px 0 12px !important;
+  text-align: center !important;
+  margin: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+}
+
+[class*="hero"] h1::before {
+  content: "▰";
+  display: block;
+  color: #2bd3ff;
+  font-size: 54px;
+  line-height: .8;
+  margin: 0 auto 8px;
+  transform: skewX(-16deg);
+  text-shadow: 0 0 26px rgba(43,211,255,.38);
+}
+
+[class*="hero"] h1 {
+  font-size: 66px !important;
+  line-height: .88 !important;
+  margin: 0 0 8px !important;
+  letter-spacing: -.055em !important;
+}
+
+[class*="hero"] h2,
+[class*="hero"] h3 {
+  font-size: 20px !important;
+  line-height: 1.12 !important;
+  margin: 0 0 10px !important;
+  letter-spacing: .16em !important;
+  text-transform: uppercase !important;
+  color: #2bd3ff !important;
+}
+
+[class*="hero"] p {
+  max-width: 520px !important;
+  margin: 0 auto 12px !important;
+  font-size: 13px !important;
+  line-height: 1.42 !important;
+}
+
+[class*="hero"] p:nth-of-type(n+3) {
+  display: none !important;
+}
+
+button,
+[class*="button"] {
+  min-height: 34px !important;
+  padding: 0 16px !important;
+  font-size: 10px !important;
+  border-radius: 8px !important;
+}
+
+/* System status with icons */
+[class*="operational"] {
+  margin: 0 !important;
+  padding: 14px !important;
+  max-width: 520px !important;
+}
+
+[class*="operational"] h2,
+[class*="operational"] h3,
+[class*="operational"] h4 {
+  font-size: 12px !important;
+  margin-bottom: 10px !important;
+}
+
+[class*="operational"] > div,
+[class*="status-grid"] {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 10px !important;
+}
+
+[class*="operational"] [class*="card"],
+[class*="status-card"] {
+  min-height: 92px !important;
+  padding: 12px 8px !important;
+  text-align: center !important;
+}
+
+[class*="operational"] [class*="card"]::before {
+  display: block;
+  font-size: 28px;
+  line-height: 1;
+  margin-bottom: 7px;
+}
+
+[class*="operational"] [class*="card"]:nth-of-type(1)::before { content: "◎"; color: #61f08b; }
+[class*="operational"] [class*="card"]:nth-of-type(2)::before { content: "↗"; color: #ffcd4d; }
+[class*="operational"] [class*="card"]:nth-of-type(3)::before { content: "♞"; color: #ff8b2b; }
+[class*="operational"] [class*="card"]:nth-of-type(4)::before { content: "◈"; color: #61f08b; }
+
+[class*="operational"] [class*="card"] h4,
+[class*="status-card"] h4 {
+  font-size: 10px !important;
+  margin: 0 0 3px !important;
+}
+
+[class*="operational"] [class*="card"] p,
+[class*="status-card"] p {
+  font-size: 9px !important;
+  margin: 0 !important;
+}
+
+/* Section rhythm */
+[class*="home"] section {
+  margin-bottom: 18px !important;
+}
+
+[class*="home"] em {
+  display: none !important;
+}
+
+/* Feature cards with symbols */
+[class*="reads"],
+[class*="feature"] {
+  display: grid !important;
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  gap: 12px !important;
+}
+
+[class*="reads"] [class*="card"],
+[class*="feature"] [class*="card"] {
+  min-height: 128px !important;
+  padding: 14px !important;
+  text-align: left !important;
+}
+
+[class*="reads"] [class*="card"]::before {
+  display: block;
+  font-size: 30px;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+[class*="reads"] [class*="card"]:nth-of-type(1)::before { content: "◎"; color: #2e86ff; }
+[class*="reads"] [class*="card"]:nth-of-type(2)::before { content: "〽"; color: #9b5cff; }
+[class*="reads"] [class*="card"]:nth-of-type(3)::before { content: "▥"; color: #2bd3ff; }
+[class*="reads"] [class*="card"]:nth-of-type(4)::before { content: "♟"; color: #44f1df; }
+[class*="reads"] [class*="card"]:nth-of-type(5)::before { content: "♞"; color: #ffcd4d; }
+
+[class*="reads"] [class*="card"] h3,
+[class*="feature"] [class*="card"] h3 {
+  font-size: 13px !important;
+  margin-bottom: 6px !important;
+}
+
+[class*="reads"] [class*="card"] p,
+[class*="feature"] [class*="card"] p {
+  font-size: 11px !important;
+  line-height: 1.35 !important;
+}
+
+/* Meeting cards with horse logo */
+[class*="meetings"] {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 14px !important;
+}
+
+[class*="meeting"] [class*="card"] {
+  min-height: 134px !important;
+  padding: 16px !important;
+}
+
+[class*="meeting"] h2,
+[class*="meeting"] h3 {
+  font-size: 19px !important;
+  text-align: left !important;
+}
+
+[class*="meeting"] h2::before,
+[class*="meeting"] h3::before {
+  content: "♞";
+  display: inline-block;
+  margin-right: 10px;
+  color: #2e86ff;
+  font-size: 25px;
+  text-shadow: 0 0 18px rgba(46,134,255,.42);
+}
+
+[class*="meeting"] [class*="card"] > div {
+  border: 0 !important;
+  background: transparent !important;
+  padding: 0 !important;
+}
+
+[class*="meeting"] button {
+  min-height: 30px !important;
+  padding: 0 13px !important;
+}
+
+@media (max-width: 1100px) {
+  [class*="home"] {
+    transform: none;
+  }
+
+  [class*="home"] > section:first-of-type,
+  [class*="reads"],
+  [class*="feature"],
+  [class*="meetings"] {
+    display: block !important;
+  }
+}

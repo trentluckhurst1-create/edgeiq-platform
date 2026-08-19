@@ -1,0 +1,32 @@
+{
+  "allowed_raw_inputs": [
+    "meeting metadata",
+    "race metadata",
+    "runner identity",
+    "official result fields",
+    "race time",
+    "runner race time",
+    "raw SectionalTimes",
+    "raw SplitTimes",
+    "download metadata when public"
+  ],
+  "ignored_racingcom_derived_metrics": [
+    "standardTimeDifference",
+    "standardTimeId",
+    "rankings/colour classifications",
+    "speed ratings",
+    "derived comments",
+    "proprietary standard figures"
+  ],
+  "edgeiq_calculates": [
+    "Standard Times",
+    "Race Time Delta",
+    "sectional deltas",
+    "Lengths v Standard",
+    "Performance Base",
+    "normalisation",
+    "ratings",
+    "EPI"
+  ],
+  "canonical_admission": "NO until public access and unit semantics are governed"
+}

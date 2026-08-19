@@ -1,0 +1,473 @@
+{
+  "generated_utc": "2026-07-22T07:43:38.172418+00:00",
+  "governance": {
+    "read_only": true,
+    "builder_executed": false,
+    "builder_modified": false,
+    "network_access_performed": false,
+    "governed_outputs_modified": false
+  },
+  "builder": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\scripts\\build_edgeiq_racingcom_csv_ingestion_v1.py",
+  "builder_line_count": 584,
+  "assignments": [
+    {
+      "name": "APP_ROOT",
+      "start_line": 16,
+      "end_line": 16,
+      "source": "00013: import pandas as pd\n00014: \n00015: \n00016: APP_ROOT = Path(__file__).resolve().parents[1]\n00017: PROJECT_ROOT = Path(__file__).resolve().parents[3]\n00018: DATA = APP_ROOT / \"public\" / \"data\"\n00019: OUTPUTS = PROJECT_ROOT / \"outputs\""
+    },
+    {
+      "name": "PROJECT_ROOT",
+      "start_line": 17,
+      "end_line": 17,
+      "source": "00014: \n00015: \n00016: APP_ROOT = Path(__file__).resolve().parents[1]\n00017: PROJECT_ROOT = Path(__file__).resolve().parents[3]\n00018: DATA = APP_ROOT / \"public\" / \"data\"\n00019: OUTPUTS = PROJECT_ROOT / \"outputs\"\n00020: RAW_CACHE = OUTPUTS / \"sectionals\" / \"raw\" / \"VIC\" / \"racingcom_csv\""
+    },
+    {
+      "name": "RAW_CACHE",
+      "start_line": 20,
+      "end_line": 20,
+      "source": "00017: PROJECT_ROOT = Path(__file__).resolve().parents[3]\n00018: DATA = APP_ROOT / \"public\" / \"data\"\n00019: OUTPUTS = PROJECT_ROOT / \"outputs\"\n00020: RAW_CACHE = OUTPUTS / \"sectionals\" / \"raw\" / \"VIC\" / \"racingcom_csv\"\n00021: \n00022: CALENDAR_DISCOVERY = DATA / \"edgeiq_racingcom_calendar_discovery_v1.csv\"\n00023: COMPLETED_PROBE = DATA / \"edgeiq_racingcom_completed_payload_probe_v1.csv\""
+    },
+    {
+      "name": "MAX_FETCHES",
+      "start_line": 27,
+      "end_line": 27,
+      "source": "00024: INGESTION_OUT = DATA / \"edgeiq_racingcom_csv_ingestion_v1.csv\"\n00025: DIAGNOSTICS_OUT = DATA / \"edgeiq_racingcom_csv_ingestion_diagnostics_v1.csv\"\n00026: \n00027: MAX_FETCHES = int(os.environ.get(\"EDGEIQ_RACINGCOM_CSV_MAX_FETCHES\", \"50\"))\n00028: REQUEST_SLEEP_SECONDS = float(os.environ.get(\"EDGEIQ_RACINGCOM_CSV_SLEEP_SECONDS\", \"0.5\"))\n00029: CLOUDFRONT_BASE = \"https://d3qmfyv6ad9vwv.cloudfront.net\"\n00030: "
+    },
+    {
+      "name": "CLOUDFRONT_BASE",
+      "start_line": 29,
+      "end_line": 29,
+      "source": "00026: \n00027: MAX_FETCHES = int(os.environ.get(\"EDGEIQ_RACINGCOM_CSV_MAX_FETCHES\", \"50\"))\n00028: REQUEST_SLEEP_SECONDS = float(os.environ.get(\"EDGEIQ_RACINGCOM_CSV_SLEEP_SECONDS\", \"0.5\"))\n00029: CLOUDFRONT_BASE = \"https://d3qmfyv6ad9vwv.cloudfront.net\"\n00030: \n00031: OUT_COLUMNS = [\n00032:     \"horse\","
+    }
+  ],
+  "relevant_functions": [
+    {
+      "name": "read_csv",
+      "start_line": 79,
+      "end_line": 89,
+      "line_count": 11,
+      "matched_patterns": []
+    },
+    {
+      "name": "race_no_key",
+      "start_line": 103,
+      "end_line": 105,
+      "line_count": 3,
+      "matched_patterns": [
+        "race_number"
+      ]
+    },
+    {
+      "name": "fetch_text",
+      "start_line": 114,
+      "end_line": 130,
+      "line_count": 17,
+      "matched_patterns": []
+    },
+    {
+      "name": "local_payload_files",
+      "start_line": 133,
+      "end_line": 144,
+      "line_count": 12,
+      "matched_patterns": [
+        "sort_values"
+      ]
+    },
+    {
+      "name": "csv_links_from_text",
+      "start_line": 147,
+      "end_line": 155,
+      "line_count": 9,
+      "matched_patterns": []
+    },
+    {
+      "name": "calendar_entries_from_payloads",
+      "start_line": 158,
+      "end_line": 213,
+      "line_count": 56,
+      "matched_patterns": [
+        "meetcode"
+      ]
+    },
+    {
+      "name": "race_number_from_url",
+      "start_line": 216,
+      "end_line": 218,
+      "line_count": 3,
+      "matched_patterns": [
+        "race_number"
+      ]
+    },
+    {
+      "name": "discover_candidates",
+      "start_line": 221,
+      "end_line": 298,
+      "line_count": 78,
+      "matched_patterns": [
+        "twelve_race_expansion",
+        "csv_url",
+        "drop_duplicates",
+        "sort_values",
+        "race_number",
+        "meetcode",
+        "discovery_method"
+      ]
+    },
+    {
+      "name": "discover_page_csv_links",
+      "start_line": 301,
+      "end_line": 334,
+      "line_count": 34,
+      "matched_patterns": [
+        "csv_url",
+        "race_number",
+        "discovery_method"
+      ]
+    },
+    {
+      "name": "parse_metadata",
+      "start_line": 371,
+      "end_line": 387,
+      "line_count": 17,
+      "matched_patterns": [
+        "race_number"
+      ]
+    },
+    {
+      "name": "parse_racingcom_csv",
+      "start_line": 390,
+      "end_line": 485,
+      "line_count": 96,
+      "matched_patterns": [
+        "race_number"
+      ]
+    },
+    {
+      "name": "main",
+      "start_line": 488,
+      "end_line": 580,
+      "line_count": 93,
+      "matched_patterns": [
+        "max_fetches_reference",
+        "fetch_break",
+        "csv_url",
+        "drop_duplicates",
+        "race_number"
+      ]
+    }
+  ],
+  "pattern_hits": [
+    {
+      "pattern": "parent_resolution",
+      "line": 16,
+      "source": "APP_ROOT = Path(__file__).resolve().parents[1]"
+    },
+    {
+      "pattern": "parent_resolution",
+      "line": 17,
+      "source": "PROJECT_ROOT = Path(__file__).resolve().parents[3]"
+    },
+    {
+      "pattern": "max_fetches_reference",
+      "line": 27,
+      "source": "MAX_FETCHES = int(os.environ.get(\"EDGEIQ_RACINGCOM_CSV_MAX_FETCHES\", \"50\"))"
+    },
+    {
+      "pattern": "race_number",
+      "line": 37,
+      "source": "    \"race_no\","
+    },
+    {
+      "pattern": "race_number",
+      "line": 103,
+      "source": "def race_no_key(value) -> str:"
+    },
+    {
+      "pattern": "sort_values",
+      "line": 144,
+      "source": "    return sorted(set(files))"
+    },
+    {
+      "pattern": "meetcode",
+      "line": 171,
+      "source": "                    meet_code = clean(item.get(\"MeetCode\", \"\"))"
+    },
+    {
+      "pattern": "meetcode",
+      "line": 173,
+      "source": "                    if meet_code and url_segment:"
+    },
+    {
+      "pattern": "meetcode",
+      "line": 175,
+      "source": "                            \"meet_code\": meet_code,"
+    },
+    {
+      "pattern": "meetcode",
+      "line": 187,
+      "source": "        for match in re.finditer(r\"\\{[^{}]*\\\"MeetCode\\\"\\s*:\\s*\\\"?(\\d+)\\\"?[^{}]*\\\"UrlSegment\\\"\\s*:\\s*\\\"([^\\\"]+)\\\"[^{}]*\\}\", text):"
+    },
+    {
+      "pattern": "meetcode",
+      "line": 189,
+      "source": "            meet_code = match.group(1)"
+    },
+    {
+      "pattern": "meetcode",
+      "line": 197,
+      "source": "            if meet_code and url_segment:"
+    },
+    {
+      "pattern": "meetcode",
+      "line": 199,
+      "source": "                    \"meet_code\": meet_code,"
+    },
+    {
+      "pattern": "meetcode",
+      "line": 209,
+      "source": "        key = (entry[\"meet_code\"], entry[\"url_segment\"])"
+    },
+    {
+      "pattern": "race_number",
+      "line": 216,
+      "source": "def race_number_from_url(url: str) -> str:"
+    },
+    {
+      "pattern": "twelve_race_expansion",
+      "line": 228,
+      "source": "    for race_no in range(1, 13):"
+    },
+    {
+      "pattern": "race_number",
+      "line": 228,
+      "source": "    for race_no in range(1, 13):"
+    },
+    {
+      "pattern": "race_number",
+      "line": 232,
+      "source": "            \"race_no\": str(race_no),"
+    },
+    {
+      "pattern": "race_number",
+      "line": 233,
+      "source": "            \"speed_data_url\": f\"https://www.racing.com/form/2026-05-01/ladbrokes-geelong/race/{race_no}/speed-data\","
+    },
+    {
+      "pattern": "csv_url",
+      "line": 234,
+      "source": "            \"csv_url\": f\"{CLOUDFRONT_BASE}/5191125_{race_no:02d}.csv\","
+    },
+    {
+      "pattern": "race_number",
+      "line": 234,
+      "source": "            \"csv_url\": f\"{CLOUDFRONT_BASE}/5191125_{race_no:02d}.csv\","
+    },
+    {
+      "pattern": "discovery_method",
+      "line": 235,
+      "source": "            \"discovery_method\": \"KNOWN_DIRECT_CSV_MEETING\","
+    },
+    {
+      "pattern": "race_number",
+      "line": 242,
+      "source": "        race_no = race_no_key(row.get(\"race_no\", \"\")) or race_number_from_url(speed_url)"
+    },
+    {
+      "pattern": "race_number",
+      "line": 248,
+      "source": "            \"race_no\": race_no,"
+    },
+    {
+      "pattern": "csv_url",
+      "line": 250,
+      "source": "            \"csv_url\": \"\","
+    },
+    {
+      "pattern": "discovery_method",
+      "line": 251,
+      "source": "            \"discovery_method\": \"CALENDAR_SPEED_PAGE\","
+    },
+    {
+      "pattern": "race_number",
+      "line": 258,
+      "source": "        race_no = race_no_key(row.get(\"race_no\", \"\")) or race_number_from_url(page_url)"
+    },
+    {
+      "pattern": "race_number",
+      "line": 264,
+      "source": "            \"race_no\": race_no,"
+    },
+    {
+      "pattern": "csv_url",
+      "line": 266,
+      "source": "            \"csv_url\": \"\","
+    },
+    {
+      "pattern": "discovery_method",
+      "line": 267,
+      "source": "            \"discovery_method\": \"COMPLETED_PROBE_SPEED_PAGE\","
+    },
+    {
+      "pattern": "twelve_race_expansion",
+      "line": 281,
+      "source": "        for race_no in range(1, 13):"
+    },
+    {
+      "pattern": "race_number",
+      "line": 281,
+      "source": "        for race_no in range(1, 13):"
+    },
+    {
+      "pattern": "race_number",
+      "line": 285,
+      "source": "                \"race_no\": str(race_no),"
+    },
+    {
+      "pattern": "race_number",
+      "line": 286,
+      "source": "                \"speed_data_url\": f\"https://www.racing.com/form/{entry['url_segment']}/race/{race_no}/speed-data\","
+    },
+    {
+      "pattern": "csv_url",
+      "line": 287,
+      "source": "                \"csv_url\": f\"{CLOUDFRONT_BASE}/{entry['meet_code']}_{race_no:02d}.csv\","
+    },
+    {
+      "pattern": "race_number",
+      "line": 287,
+      "source": "                \"csv_url\": f\"{CLOUDFRONT_BASE}/{entry['meet_code']}_{race_no:02d}.csv\","
+    },
+    {
+      "pattern": "meetcode",
+      "line": 287,
+      "source": "                \"csv_url\": f\"{CLOUDFRONT_BASE}/{entry['meet_code']}_{race_no:02d}.csv\","
+    },
+    {
+      "pattern": "meetcode",
+      "line": 288,
+      "source": "                \"discovery_method\": \"MEETCODE_DERIVED_CLOUDFRONT\","
+    },
+    {
+      "pattern": "discovery_method",
+      "line": 288,
+      "source": "                \"discovery_method\": \"MEETCODE_DERIVED_CLOUDFRONT\","
+    },
+    {
+      "pattern": "csv_url",
+      "line": 295,
+      "source": "        return pd.DataFrame(columns=[\"race_date\", \"track\", \"race_no\", \"speed_data_url\", \"csv_url\", \"discovery_method\"])"
+    },
+    {
+      "pattern": "race_number",
+      "line": 295,
+      "source": "        return pd.DataFrame(columns=[\"race_date\", \"track\", \"race_no\", \"speed_data_url\", \"csv_url\", \"discovery_method\"])"
+    },
+    {
+      "pattern": "discovery_method",
+      "line": 295,
+      "source": "        return pd.DataFrame(columns=[\"race_date\", \"track\", \"race_no\", \"speed_data_url\", \"csv_url\", \"discovery_method\"])"
+    },
+    {
+      "pattern": "csv_url",
+      "line": 296,
+      "source": "    out = out.drop_duplicates(subset=[\"race_date\", \"track\", \"race_no\", \"csv_url\", \"speed_data_url\"], keep=\"first\")"
+    },
+    {
+      "pattern": "drop_duplicates",
+      "line": 296,
+      "source": "    out = out.drop_duplicates(subset=[\"race_date\", \"track\", \"race_no\", \"csv_url\", \"speed_data_url\"], keep=\"first\")"
+    },
+    {
+      "pattern": "race_number",
+      "line": 296,
+      "source": "    out = out.drop_duplicates(subset=[\"race_date\", \"track\", \"race_no\", \"csv_url\", \"speed_data_url\"], keep=\"first\")"
+    },
+    {
+      "pattern": "sort_values",
+      "line": 297,
+      "source": "    out = out.sort_values([\"_priority\", \"_date_sort\", \"track\", \"race_no\"], ascending=[True, False, True, True])"
+    },
+    {
+      "pattern": "race_number",
+      "line": 297,
+      "source": "    out = out.sort_values([\"_priority\", \"_date_sort\", \"track\", \"race_no\"], ascending=[True, False, True, True])"
+    },
+    {
+      "pattern": "race_number",
+      "line": 324,
+      "source": "                    \"race_no\": clean(row.get(\"race_no\", \"\")),"
+    },
+    {
+      "pattern": "csv_url",
+      "line": 326,
+      "source": "                    \"csv_url\": link,"
+    },
+    {
+      "pattern": "discovery_method",
+      "line": 327,
+      "source": "                    \"discovery_method\": f\"HTML_CSV_LINK_HTTP_{status}\","
+    },
+    {
+      "pattern": "race_number",
+      "line": 384,
+      "source": "        \"race_no\": clean(fallback.get(\"race_no\", \"\")),"
+    },
+    {
+      "pattern": "race_number",
+      "line": 465,
+      "source": "            \"race_no\": metadata[\"race_no\"],"
+    },
+    {
+      "pattern": "csv_url",
+      "line": 493,
+      "source": "    direct_candidates = candidates[candidates[\"csv_url\"].map(has_value)].copy() if not candidates.empty else pd.DataFrame()"
+    },
+    {
+      "pattern": "max_fetches_reference",
+      "line": 494,
+      "source": "    page_rows, page_fetches, page_csv_links = discover_page_csv_links(candidates, max(0, min(10, MAX_FETCHES // 5)))"
+    },
+    {
+      "pattern": "csv_url",
+      "line": 497,
+      "source": "    csv_candidates = candidates[candidates[\"csv_url\"].map(has_value)].drop_duplicates(subset=[\"csv_url\"]).copy() if not candidates.empty else pd.DataFrame()"
+    },
+    {
+      "pattern": "drop_duplicates",
+      "line": 497,
+      "source": "    csv_candidates = candidates[candidates[\"csv_url\"].map(has_value)].drop_duplicates(subset=[\"csv_url\"]).copy() if not candidates.empty else pd.DataFrame()"
+    },
+    {
+      "pattern": "max_fetches_reference",
+      "line": 503,
+      "source": "        if fetch_attempts >= MAX_FETCHES:"
+    },
+    {
+      "pattern": "fetch_break",
+      "line": 503,
+      "source": "        if fetch_attempts >= MAX_FETCHES:"
+    },
+    {
+      "pattern": "csv_url",
+      "line": 505,
+      "source": "        url = clean(candidate.get(\"csv_url\", \"\"))"
+    },
+    {
+      "pattern": "drop_duplicates",
+      "line": 546,
+      "source": "        output = output.drop_duplicates(subset=[\"horse_key\", \"race_date\", \"track\", \"race_no\", \"source_url\"], keep=\"first\")"
+    },
+    {
+      "pattern": "race_number",
+      "line": 546,
+      "source": "        output = output.drop_duplicates(subset=[\"horse_key\", \"race_date\", \"track\", \"race_no\", \"source_url\"], keep=\"first\")"
+    },
+    {
+      "pattern": "max_fetches_reference",
+      "line": 559,
+      "source": "        {\"metric\": \"fetch_attempts\", \"value\": str(fetch_attempts), \"notes\": f\"Max fetches {MAX_FETCHES}\"},"
+    }
+  ],
+  "decision": "BUILDER_REMEDIATION_SOURCE_MAP_CREATED"
+}

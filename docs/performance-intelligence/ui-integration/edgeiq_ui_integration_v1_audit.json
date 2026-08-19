@@ -1,0 +1,11 @@
+{
+  "step": 9,
+  "status": "PASS",
+  "generated_utc": "2026-07-25T21:56:24Z",
+  "frontend_build_status": "PASS",
+  "frontend_build_code": 0,
+  "workspace_count": 13,
+  "no_react_engine_calculation_audit": "STATIC_SOURCE_SCAN_ONLY_ENGINE_FEEDS_PUBLISHED",
+  "build_output_tail": "\n> racing-dashboard@0.0.0 build\n> tsc -b && vite build\n\n\u001b[36mvite v7.3.2 \u001b[32mbuilding client environment for production...\u001b[36m\u001b[39m\ntransforming...\n\u001b[32m\u00e2\u0153\u201c\u001b[39m 1945 modules transformed.\nrendering chunks...\ncomputing gzip size...\n\u001b[2mdist/\u001b[22m\u001b[32mindex.html                 \u001b[39m\u001b[1m\u001b[2m    0.55 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m \u00e2\u201d\u201a gzip:   0.34 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[35massets/index-BzqNKoiF.css  \u001b[39m\u001b[1m\u001b[2m1,090.47 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m \u00e2\u201d\u201a gzip: 150.86 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[36massets/index-CYYrVfx3.js   \u001b[39m\u001b[1m\u001b[33m2,348.97 kB\u001b[39m\u001b[22m\u001b[2m \u00e2\u201d\u201a gzip: 364.65 kB\u001b[22m\n\u001b[33m\n(!) Some chunks are larger than 500 kB after minification. Consider:\n- Using dynamic import() to code-split the application\n- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks\n- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.\u001b[39m\n\u001b[32m\u00e2\u0153\u201c built in 3m 53s\u001b[39m\n",
+  "elapsed_seconds": 246.09
+}

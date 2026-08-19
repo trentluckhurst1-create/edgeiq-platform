@@ -1,0 +1,403 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"   "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Sportsbet Sandown - Track and Weather Conditions</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta http-equiv="refresh" content="1200;URL='?automatic=yes'">
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Sportsbet Sandown Racecourse Track and Weather Conditions">
+        <meta name="version" content="prod/v1.2.0">
+        <meta name="date" content="2020-07-06T12:00:00">
+        <meta name="author" content="Peter Irving">
+        <meta name="copywrite" content="2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Turftrax Ltd. All Rights Reserved.">
+        <link type="text/css" rel="stylesheet" href="../assets/css/normalize.css">
+        <link type="text/css" rel="stylesheet" href="../assets/css/base.css">
+        <link type="text/css" rel="stylesheet" href="livery.css">
+        <script type="text/javascript" src="../assets/js/common.js"></script>
+        <script type="text/javascript">
+            /* Feature Dependant Properties */
+            var clientName = 'ladbrokes';
+            var streamApi = '/visualiser/stream/';
+            var responseInterval = 10000;        // Milliseconds until forced AJAX "timeout" Abort
+            var updateInterval = '300';
+            var naText = 'N/a';
+            var windRepeater = {"going":{"enabled":true,"divXPos":810,"divYPos":10,"mapWidth":950,"repeaterWidth":132,"repeaterText":true,"deviation":-0.05,"mapRotation":0}};
+            var jsLogger = 'ondemand';
+            var lastUpdateContent = {};
+            var uiAuditTrace = '<br>**** UI Index Start ****<br><br>**** UI Index End ****<br>';
+            var runtimeAuditTrace = 'active';
+                      var useRainGauge = 2;
+            var allowRetry = true;
+            /***[TTITS_TEMPLATE_TAG_FORCEREFRESH_CODE]***/
+        </script>
+    </head>
+    <body>
+        <div id="main-container" class="main-container">
+            <div class="advisory" style="display:none;">
+                <dl id="advisory-notice"><dd></dd></dl>
+            </div>
+            <div id="header">
+                <div class="going-report-information">Next Meeting<span id="location-track-type"></span>:&nbsp;<span id="location-date"></span></div>
+                <div class="refresh-timer">Next refresh in <span id="update-countdown">0</span> seconds</div>
+                <div class="refresh-status">Refresh Status: <span id="update-status">...initialising page...</span></div>
+                <div class="menu-icons">
+                    <div id="wdv-reload">
+                        <img src="/assets/icons/reload-00.svg" title="Click to Reload this Visualiser" onclick="ButtonAction('reload', this);" alt="Reload Visualiser">
+                    </div>
+                    <div id="wdv-update">
+                        <img src="/assets/icons/force-update-00.svg" title="Click to get the Lastest Update" onclick="ButtonAction('update-2', this);" alt="Force Update">
+                    </div>
+                    <!-- Other privilege based Tools here -->
+                    <div id="menu-tool" data-show-icon="open-across" data-hide-icon="close-across">                       <img src="/assets/icons/open-across-00.svg" onclick="its.visualiser.common.ShowHide('tool-container', this);" alt="Display Tools Control">                   </div>                   <div id="tool-container">                   <div id="api-mini-cms-tool">                       <img src="../assets/images/going-stick-00.svg" title="Click to show Mini-CMS" onclick="ToggleMiniCms();" alt="Going Stick Tool">                   </div>                        <div id="log-tool">                           <img src="/assets/icons/blank-doc-00.svg" onclick="its.visualiser.common.ConsoleLogger(this);" alt="Console Logging Disabled">                       </div>                        <div id="trace-tool">                           <img src="/assets/icons/audit-trace-00.svg" onclick="window.its.visualiser.base.auditTool.Display();" alt="Runtime Audit Trace">                       </div>                       <div id="api-tool">                           <img src="/assets/icons/api-response-00.svg" onclick="window.its.visualiser.base.apiTool.Display();" alt="Show API Response">                       </div>                        <div id="warning-tool">                           <img src="/assets/icons/warning-notice-00.svg" onclick="window.its.visualiser.base.WarningTool.Display();" alt="Advisory Notices">                       </div>                   </div>
+                </div>
+            </div>
+            <div id="going-report-wdv" style="display:none;">
+                <div class="update-content-report">
+                    <div class="metric-display-banner">
+                        Going Report for Meeting on <span id="going-race-date"></span>
+                    </div>
+                    <div class="metric-display-map">
+                        <div class="metric-title-map">Updated <span id="going-report-date"></span></div>
+                        <div class="going-map">
+                            <img id="going-map" src="" alt="" style="width:100%;">
+                        </div>
+                        <div id="going-wind-repeater">
+                            <img id="going-compass-north" src="../assets/images/compass-north-00.svg" alt="North">
+                            <img id="going-wind-dir-repeat" src="../assets/images/wind-repeater-00.svg" alt="Wind Direction">
+                        </div>
+                    </div>
+                    <div class="metric-display" id="going-metric">
+                        <div class="metric-title">
+                            Track Rating
+                        </div>
+                        <div class="metric-inner">
+                            <div class="metric-sensor-icon">
+                                <img src="../assets/images/going-00.svg" alt="Official Going">
+                            </div>
+                            <div id="going-report" class="metric-comment"></div>
+                            <div class="metric-source">Source: Latest Going Report</div>
+                        </div>
+                    </div>
+                    <div class="metric-display" id="rail-metric">
+                        <div class="metric-title">
+                            Rail
+                        </div>
+                        <div class="metric-inner">
+                            <div class="metric-sensor-icon">
+                                <img src="../assets/images/rails-00.svg" alt="Rail information">
+                            </div>
+                            <div id="rail-report" class="metric-comment"></div>
+                            <div class="metric-source">Source: Latest Going Report</div>
+                        </div>
+                    </div>
+                    <div class="metric-display" id="stick-metric">
+                        <div class="metric-title">
+                            GoingStick
+                        </div>
+                        <div class="metric-inner">
+                            <div class="metric-sensor-icon">
+                                <img src="../assets/images/going-stick-00.svg" alt="Going Stick reading">
+                            </div>
+                            <div id="stick-report" class="metric-comment"></div>
+                            <div class="metric-source">Source: Latest Going Report</div>
+                        </div>
+                    </div>
+                    <div class="metric-display" id="weather-metric">
+                        <div class="metric-title">Weather</div>
+                        <div class="metric-inner">
+                            <div class="metric-sensor-icon">
+                                <img src="../assets/images/weather-00.svg" alt="Weather forecast">
+                            </div>
+                            <div id="weather-comment" class="metric-comment"></div>
+                            <div class="metric-source">Source: Latest Going Report</div>
+                        </div>
+                    </div>
+                    <div class="metric-display" id="irrigation-metric">
+                        <div class="metric-title">Irrigation</div>
+                        <div class="metric-inner">
+                            <div class="metric-sensor-icon">
+                                <img src="../assets/images/watering-00.svg" alt="Watering">
+                            </div>
+                            <div id="irrigation-report" class="metric-comment"></div>
+                            <div class="metric-source">Source: Latest Going Report</div>
+                        </div>
+                    </div>
+                    <div class="metric-display" id="stalls-metric">
+                        <div class="metric-title">Additional Information</div>
+                        <div class="metric-inner">
+                            <div class="metric-sensor-icon">
+                                <img src="../assets/images/additional-00.svg" alt="Additional Information">
+                            </div>
+                            <div id="additional-comment" class="metric-comment"></div>
+                            <div class="metric-source">Source: Latest Going Report</div>
+                        </div>
+                    </div>
+                </div>
+            </div>           <div id="weather-report-wdv" style="display:none;">
+                <div class="update-content-weather">
+                    <div class="metric-display-banner-lite">
+                        Weather Report for <span id="weather-date"></span>
+                        <div class="metric-display-subbanner">
+                            &nbsp;<span id="station-activity-status"></span> Last Reading: <span id="weather-last-update"></span>
+                        </div>
+                    </div>
+                    <div class="metric-display" id="rain-metric">
+                        <div class="metric-title">
+                            <span id="rain-title">Rain</span>&nbsp;<span class="smaller">(mm)</span>
+                        </div>
+                        <div class="metric-inner">
+                            <div class="metric-sensor-icon">
+                                <img src="../assets/images/rain-00.svg" alt="Rain">
+                            </div>
+                            <div class="metric-reading">
+                                <div class="metric-reading-line">
+                                    <div class="metric-reading-prompt">Since 6:00 am:</div>
+                                    <div id="rain-since" class="metric-reading-content"></div>
+                                </div>
+                                <div class="metric-reading-line">
+                                    <div class="metric-reading-prompt">24 Hours:</div>
+                                    <div id="rain-24hr" class="metric-reading-content"></div>
+                                </div>
+                                <div class="metric-reading-line">
+                                    <div class="metric-reading-prompt">7 Days:</div>
+                                    <div id="rain-7day" class="metric-reading-content"></div>
+                                </div>
+                            </div>
+                            <div class="metric-source">Source: Sportsbet Sandown Live WTX</div>
+                        </div>
+                    </div>
+                    <div class="metric-display" id="et-metric">
+                        <div class="metric-title">Evapotranspiration&nbsp;<span class="smaller">(mm)</span></div>
+                        <div class="metric-inner">
+                            <div class="metric-sensor-icon">
+                                <img src="../assets/images/evaporation-00.svg" alt="Moisture Loss">
+                            </div>
+                            <div class="metric-reading">
+                                <div class="metric-reading-line">
+                                    <div class="metric-reading-prompt">Since 6:00 am:</div>
+                                    <div id="et-since" class="metric-reading-content"></div>
+                                </div>
+                                <div class="metric-reading-line">
+                                    <div class="metric-reading-prompt">24 Hours:</div>
+                                    <div id="et-24hr" class="metric-reading-content"></div>
+                                </div>
+                                <div class="metric-reading-line">
+                                    <div class="metric-reading-prompt">7 Days:</div>
+                                    <div id="et-7day" class="metric-reading-content"></div>
+                                </div>
+                            </div>
+                            <div class="metric-source">Source: Sportsbet Sandown Live WTX</div>
+                        </div>
+                    </div>
+                    <div class="metric-display" id="humidity-metric">
+                        <div class="metric-title">Humidity <span class="smaller">(%)</span></div>
+                        <div class="metric-inner">
+                            <div class="metric-sensor-icon">
+                                <img src="../assets/images/humidity-00.svg" alt="Humidity">
+                            </div>
+                            <div class="metric-reading">
+                                <div class="metric-reading-line">
+                                    <div class="metric-reading-prompt">Live:</div>
+                                    <div id="humidity-current" class="metric-reading-content"></div>
+                                </div>
+                                <div class="metric-reading-line">
+                                    <div class="metric-reading-prompt">Minimum:</div>
+                                    <div id="humidity-min" class="metric-reading-content"></div>
+                                </div>
+                                <div class="metric-reading-line">
+                                    <div class="metric-reading-prompt">Maximum:</div>
+                                    <div id="humidity-max" class="metric-reading-content"></div>
+                                </div>
+                            </div>
+                            <div class="metric-source">Source: Sportsbet Sandown Live WTX</div>
+                        </div>
+                    </div>
+                    <div class="metric-display" id="temperature-metric">
+                        <div class="metric-title">Temperature <span class="smaller">(&deg;C)</span></div>
+                        <div class="metric-inner">
+                            <div class="metric-sensor-icon">
+                                <img src="../assets/images/temperature-00.svg" alt="Temperature">
+                            </div>
+                            <div class="metric-reading">
+                                <div class="metric-reading-line">
+                                    <div class="metric-reading-prompt">Live:</div>
+                                    <div id="temperature-current" class="metric-reading-content"></div>
+                                </div>
+                                <div class="metric-reading-line">
+                                    <div class="metric-reading-prompt">Minimum:</div>
+                                    <div id="temperature-min" class="metric-reading-content"></div>
+                                </div>
+                                <div class="metric-reading-line">
+                                    <div class="metric-reading-prompt">Maximum:</div>
+                                    <div id="temperature-max" class="metric-reading-content"></div>
+                                </div>
+                            </div>
+                            <div class="metric-source">Source: Sportsbet Sandown Live WTX</div>
+                       </div>
+                    </div>
+                    <div class="metric-display" id="winddirection-metric">
+                        <div class="metric-title">Wind Direction</div>
+                        <div class="metric-inner">
+                            <div class="metric-sensor-icon-round">
+                                <img id="wind-dir-icon" src="../assets/images/wind-direction-00.svg" alt="Wind Direction">
+                            </div>
+                            <div class="metric-reading">
+                                <div class="compass-bezel">
+                                    <img src="../assets/images/compass-bezel-00.svg" alt="Compass Bezel">
+                                    <div id="winddirection-current-rose" class="compass-rose"></div>
+                                </div>
+                                <div id="winddirection-text" class="metric-reading-line center-text"></div>
+                                <div id="winddirection-current" class="metric-reading-line center-text"></div>
+                            </div>
+                            <div class="metric-source">Source: Sportsbet Sandown Live WTX</div>
+                        </div>
+                    </div>
+                    <div class="metric-display" id="windspeed-metric">
+                        <div class="metric-title">
+                            Wind Speed &amp; Gust <span class="smaller">(km/h)</span>
+                        </div>
+                        <div class="metric-inner">
+                            <div class="metric-sensor-icon">
+                                <img src="../assets/images/wind-gust-00.svg" alt="Wind Gust">
+                            </div>
+                            <div class="metric-reading">
+                                <div class="metric-reading-line-tall">
+                                    <div class="metric-reading-prompt">Live:</div>
+                                    <div id="windspeed-current" class="metric-reading-content"></div>
+                                </div>
+                                <div class="metric-reading-line-tall">
+                                    <div class="metric-reading-prompt">Average:</div>
+                                    <div id="windspeed-average" class="metric-reading-content"></div>
+                                </div>
+                                <div class="metric-reading-line-tall">
+                                    <div class="metric-reading-prompt">Live Gust:</div>
+                                    <div id="windgust-current" class="metric-reading-content"></div>
+                                </div>
+                                <div class="metric-reading-line">
+                                    <div class="metric-reading-prompt">
+                                        <span>Maximum Gust:</span>
+                                        <span id="windgust-event" class="much-smaller"></span>
+                                    </div>
+                                    <div id="windgust-max" class="metric-reading-content"></div>
+                                </div>
+                            </div>
+                            <div class="metric-source">Source: Sportsbet Sandown Live WTX</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="wdv-explained" style="display:none;">
+				<p>For a typical race meeting at Sandown up to 35 waypoint grid locations are assessed using an electromechanical GoingStick. Three &#039;penetration&#039; and three &#039;shear&#039; measurements, representative of forces exerted by the horses hoof when it is on contact with the ground, are taken in each grid. Volumetric soil moisture content data is also collected, meaning that 140 scientifically generated measurements contribute to each Going Report &amp; Map produced. The process takes approximately 60 minutes and the detailed data is uploaded to a database and analysed alongsidethe live and historic weather and going data to assist with, for example, irrigation planning (if required) for a race meeting.</p>
+            </div>
+            <div id="wdv-disclaimer">
+				<p>Live meteorological data is streamed from WeatherTrax equipment placed at 5 locations around the track, the main station is close to the 2000 meter start position. The data is logged every minute 24hrs/day and typically refreshes every five minutes on the App. Every effort is made to ensure the accuracy of this data, but values presented can differ from forecast predictions and automatically or manually recorded weather data at nearby locations. Recorded weather data can be dependent on a number of factors including; type of sensors used, methodology, height/positioning of sensing equipment and specific timing of updates.</p>
+            </div>
+            <div class="footer">
+                <div class="footer-logo">
+                    <img src="../assets/images/turftrax-main-logo.jpg" alt="Turftrax Ltd">
+                    <a href="https://twitter.com/turftrax" class="twitter-follow-button">Follow @twitterapi</a>
+                    <script type="text/javascript">!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                </div>
+                <div class="footer-text">
+                    <p class="footer-credentials">&copy; 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Turftrax Ltd. <br>All Rights Reserved.</p>
+                    <p class="footer-powered-by">Powered by <a href="https://www.turftrax.com" target="_blank">TurfTrax Ltd</a></p>
+                </div>
+            </div>
+<!--[TTITS_TEMPLATE_TAG_ADVISORYNOTICE_HTMLxx]-->
+            <div id="api-mini-cms" class="menu-display" style="display:none;">
+                <div class="api-mini-cms-header">
+                    Visualiser Mini-CMS
+                    <div class="popup-close">
+                        <img class="page-icon" src="/assets/icons/close-icon-00.svg" onclick="ToggleMiniCms();" title="Click to Close" alt="Close Mini-CMS">
+                    </div>
+                </div>
+                <div class="api-mini-cms-list" onclick="ResetPopup(this);">
+                    <div class="api-mini-cms-line">
+                        <div class="api-mini-cms-prompt">Description:</div>
+                        <div class="api-mini-cms-content">Sportsbet Sandown Racecourse Track and Weather Conditions</div>
+                    </div>
+                    <div class="api-mini-cms-line">
+                        <div class="api-mini-cms-prompt">Page Title:</div>
+                        <div class="api-mini-cms-content">Sportsbet Sandown - Track and Weather Conditions</div>
+                    </div>
+                    <div class="api-mini-cms-line">
+                        <div class="api-mini-cms-prompt">Version:</div>
+                        <div class="api-mini-cms-content"><span id="api-mini-cms-version"></span></div>
+                    </div>
+                    <div class="api-mini-cms-line">
+                        <div class="api-mini-cms-prompt">Track Type:</div>
+                        <div class="api-mini-cms-content"><span id="api-mini-cms-track"></span></div>
+                    </div>
+                    <div class="api-mini-cms-line">
+                        <div class="api-mini-cms-prompt">Mapping Service:</div>
+                        <div class="api-mini-cms-content"><span id="api-mini-cms-mappping"></span></div>
+                    </div>
+                    <div class="api-mini-cms-line">
+                        <div class="api-mini-cms-prompt">Going Map:</div>
+                        <div class="api-mini-cms-content"><span id="api-mini-cms-map"></span></div>
+                    </div>
+                    <div class="api-mini-cms-line">
+                        <div class="api-mini-cms-prompt">- Name:</div>
+                        <div class="api-mini-cms-content"><span id="api-mini-cms-mapname"></span></div>
+                    </div>
+                    <div class="api-mini-cms-line">
+                        <div class="api-mini-cms-prompt">Going Report:</div>
+                        <div class="api-mini-cms-content">
+                            <span id="api-mini-cms-report"></span>
+                            <button class="tiny-cms-button" type="button" onclick="ButtonAction('hub-link', this);" title="Click to Connect to TT Hub">Hub Link</button>
+                        </div>
+                    </div>
+                    <div class="api-mini-cms-line">
+                        <div class="api-mini-cms-prompt">Display Report:</div>
+                        <div class="api-mini-cms-content">
+                            <span id="api-mini-cms-display"></span>
+                        </div>
+                    </div>
+                    <div class="api-mini-cms-line">
+                        <div class="api-mini-cms-prompt">- When:</div>
+                        <div class="api-mini-cms-content">
+                            <span id="api-mini-cms-when"></span>
+                        </div>
+                    </div>
+                    <div class="api-mini-cms-line">
+                        <div class="api-mini-cms-prompt">AWT Report:</div>
+                        <div class="api-mini-cms-content">
+                            <span id="api-mini-cms-awt-report"></span>
+                            <button class="tiny-cms-button" type="button" onclick="ButtonAction('uat-link', this);" title="Click to Connect to TT Hub">Hub Link</button>
+                        </div>
+                    </div>
+                    <div class="api-mini-cms-line">
+                        <div class="api-mini-cms-prompt">- Map Name:</div>
+                        <div class="api-mini-cms-content"><span id="api-mini-cms-awt-mapname"></span></div>
+                    </div>
+                    <div class="api-mini-cms-line">
+                        <div class="api-mini-cms-prompt">Station Type:</div>
+                        <div class="api-mini-cms-content">
+                            <span id="api-mini-cms-type"></span>
+                        </div>
+                    </div>
+                    <div class="api-mini-cms-line">
+                        <div class="api-mini-cms-prompt">Rain Gauges:</div>
+                        <div class="api-mini-cms-content">
+                            <span id="api-mini-cms-rg"></span>
+                        </div>
+                    </div>
+                    <div class="api-mini-cms-line">
+                            <button id="api-mini-cms-userg1" class="mini-cms-button" type="button" value="1" onclick="ButtonAction('userg', this);" title="Click to View this Rain Gauge">Use RG1</button>
+                            <button id="api-mini-cms-userg2" class="mini-cms-button" type="button" value="2" onclick="ButtonAction('userg', this);" title="Click to View this Rain Gauge">Use RG2</button>
+                            <button id="api-mini-cms-usergdefault" class="mini-cms-button" type="button" value="2" onclick="ButtonAction('userg', this);"  title="" disabled style="cursor:not-allowed;">Use Default</button>
+                    </div>                    <div class="api-mini-cms-line">
+                        <div class="api-mini-cms-prompt">Actions:</div>
+                        <div class="api-mini-cms-content">&nbsp;</div>
+                    </div>
+                    <div class="api-mini-cms-line">
+                        <button class="small-cms-button" type="button" onclick="ButtonAction('update-1');" title="Click to get the Lastest Update">Force Update</button>
+                        <button class="small-cms-button" type="button" onclick="ButtonAction('reload', this);" title="Click to Reload this Visualiser">Reload</button>
+                    </div>
+                </div>
+            </div>
+<!--[_TTITS_TEMPLATE_TAG_RUNTRACE_HTML]-->
+        </div>
+        <script type="text/javascript" src="../assets/js/base.js"></script>   </body>
+</html>

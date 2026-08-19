@@ -1,0 +1,23 @@
+{
+  "daily_operations_audit_status": "PASS",
+  "epi": 0,
+  "horse_aggregates": 0,
+  "horse_ratings": 0,
+  "normalisation_rows": 0,
+  "offline_fixture_status": "PASS",
+  "overall_status": "CODE_COMPLETE_ACCESS_REQUIRED",
+  "performance_base_rows_added": 0,
+  "post_cutoff_canonical_timing_rows_added": 0,
+  "post_cutoff_official_results_found": 0,
+  "post_cutoff_official_timings_found": 0,
+  "production_systems_changed": "NO",
+  "projected_performance": 0,
+  "racing_australia_status": "SOURCE_ACCESS_FORBIDDEN",
+  "racingcom_catalogue_status": "SUPPORTED_AND_WORKING",
+  "racingcom_graphql_status": "SUPPORTED_CREDENTIAL_REQUIRED",
+  "run_id": "EXTDATA-A39AA06D61FD",
+  "secrets_committed": "NO",
+  "security_audit_status": "PASS",
+  "snapshots": 0,
+  "starting_commit": "9ec66c3"
+}

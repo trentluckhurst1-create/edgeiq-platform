@@ -1,0 +1,68 @@
+{
+  "status": "RACINGCOM_PARSER_V2_PASS",
+  "built_utc": "2026-07-22T08:41:18+00:00",
+  "files_consumed": 8,
+  "parsed_files": 8,
+  "runner_rows": 80,
+  "reject_rows": 0,
+  "duplicate_runner_rows": 0,
+  "production_changed": "NO",
+  "file_results": [
+    {
+      "race_id": "2026-05-01_GEELONG_R1",
+      "status": "PARSED",
+      "runner_rows": "9",
+      "reject_rows": "0",
+      "cache_path": "outputs\\performance-intelligence\\racingcom-v2\\raw\\csv-acquisition\\https_d3qmfyv6ad9vwv_cloudfront_net_5191125_01_csv_b5f45814c4783f77.csv"
+    },
+    {
+      "race_id": "2026-05-01_GEELONG_R2",
+      "status": "PARSED",
+      "runner_rows": "8",
+      "reject_rows": "0",
+      "cache_path": "outputs\\performance-intelligence\\racingcom-v2\\raw\\csv-acquisition\\https_d3qmfyv6ad9vwv_cloudfront_net_5191125_02_csv_ebdf2b46556b8662.csv"
+    },
+    {
+      "race_id": "2026-05-01_GEELONG_R3",
+      "status": "PARSED",
+      "runner_rows": "13",
+      "reject_rows": "0",
+      "cache_path": "outputs\\performance-intelligence\\racingcom-v2\\raw\\csv-acquisition\\https_d3qmfyv6ad9vwv_cloudfront_net_5191125_03_csv_00248a9d99dc8b36.csv"
+    },
+    {
+      "race_id": "2026-05-01_GEELONG_R4",
+      "status": "PARSED",
+      "runner_rows": "10",
+      "reject_rows": "0",
+      "cache_path": "outputs\\performance-intelligence\\racingcom-v2\\raw\\csv-acquisition\\https_d3qmfyv6ad9vwv_cloudfront_net_5191125_04_csv_ac4e2b85bbd75950.csv"
+    },
+    {
+      "race_id": "2026-05-01_GEELONG_R5",
+      "status": "PARSED",
+      "runner_rows": "7",
+      "reject_rows": "0",
+      "cache_path": "outputs\\performance-intelligence\\racingcom-v2\\raw\\csv-acquisition\\https_d3qmfyv6ad9vwv_cloudfront_net_5191125_05_csv_eb2297a7ef6e85da.csv"
+    },
+    {
+      "race_id": "2026-05-01_GEELONG_R6",
+      "status": "PARSED",
+      "runner_rows": "11",
+      "reject_rows": "0",
+      "cache_path": "outputs\\performance-intelligence\\racingcom-v2\\raw\\csv-acquisition\\https_d3qmfyv6ad9vwv_cloudfront_net_5191125_06_csv_62fbc37e928516af.csv"
+    },
+    {
+      "race_id": "2026-05-01_GEELONG_R7",
+      "status": "PARSED",
+      "runner_rows": "11",
+      "reject_rows": "0",
+      "cache_path": "outputs\\performance-intelligence\\racingcom-v2\\raw\\csv-acquisition\\https_d3qmfyv6ad9vwv_cloudfront_net_5191125_07_csv_431485ec3fb04f40.csv"
+    },
+    {
+      "race_id": "2026-05-01_GEELONG_R8",
+      "status": "PARSED",
+      "runner_rows": "11",
+      "reject_rows": "0",
+      "cache_path": "outputs\\performance-intelligence\\racingcom-v2\\raw\\csv-acquisition\\https_d3qmfyv6ad9vwv_cloudfront_net_5191125_08_csv_a1daa3bf0bd287c8.csv"
+    }
+  ]
+}

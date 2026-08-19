@@ -1,0 +1,7 @@
+﻿metric,value
+status,EDGEIQ_VIC_THREE_DAY_RACE_LIST_V1_BUILT
+meetings,4
+races,33
+meetings_with_races,4
+output,C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_vic_three_day_race_list_v1.csv
+built_at,2026-07-29T01:32:13+00:00

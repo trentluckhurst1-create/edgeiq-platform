@@ -1,0 +1,41 @@
+{
+  "contract_name": "edgeiq_race_entry_horse_rating_snapshot_v2",
+  "contract_version": "V2",
+  "grain": "ONE_ROW_PER_CANONICAL_RACE_AND_RUNNER",
+  "builder_version": "EDGEIQ_RACE_ENTRY_HORSE_RATING_SNAPSHOT_V2",
+  "method_version": "STRICTLY_PRIOR_LATEST_GOVERNED_HORSE_RATING_V1",
+  "temporal_rule": "RATING_AS_OF_DATE_STRICTLY_PRIOR_TO_TARGET_RACE_DATE",
+  "availability_rule": "NO_FABRICATED_OR_FALLBACK_RATING",
+  "primary_key": [
+    "canonical_race_id",
+    "canonical_runner_id"
+  ],
+  "fields": [
+    "race_entry_horse_rating_snapshot_id",
+    "canonical_race_id",
+    "canonical_runner_id",
+    "canonical_horse_id",
+    "canonical_horse_name",
+    "race_date",
+    "selected_horse_performance_rating_id",
+    "selected_rating_as_of_date",
+    "selected_horse_performance_rating_value",
+    "rating_age_days",
+    "eligible_prior_rating_count",
+    "first_eligible_rating_date",
+    "latest_eligible_rating_date",
+    "lowest_eligible_rating_value",
+    "highest_eligible_rating_value",
+    "average_eligible_rating_value",
+    "horse_performance_rating_method",
+    "horse_performance_rating_model_version",
+    "race_entry_horse_rating_snapshot_status",
+    "race_entry_horse_rating_snapshot_reason_code",
+    "source_race_entry_evidence_sha256",
+    "source_selected_rating_evidence_sha256",
+    "source_eligible_rating_ids_sha256",
+    "snapshot_builder_version",
+    "snapshot_method_version",
+    "race_entry_horse_rating_snapshot_evidence_sha256"
+  ]
+}

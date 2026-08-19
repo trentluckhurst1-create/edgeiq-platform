@@ -1,0 +1,864 @@
+EDGEIQ TURFTRAX STREAM PROBE
+========================================
+
+Endpoint: https://its.turftrax.co.uk/visualiser/stream/
+Requests tested: 69
+Interesting responses: 66
+
+----------------------------------------------------------------------
+Label: caulfield_get_plain
+Client: caulfield
+Method: GET
+URL: https://its.turftrax.co.uk/visualiser/stream/
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\001_caulfield_get_plain.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: caulfield_get_client
+Client: caulfield
+Method: GET
+URL: https://its.turftrax.co.uk/visualiser/stream/?client=caulfield
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\003_caulfield_get_client.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: caulfield_post_form_client
+Client: caulfield
+Method: POST
+URL: https://its.turftrax.co.uk/visualiser/stream/
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\004_caulfield_post_form_client.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: caulfield_post_json_client
+Client: caulfield
+Method: POST
+URL: https://its.turftrax.co.uk/visualiser/stream/
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\005_caulfield_post_json_client.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: caulfield_get_clientName
+Client: caulfield
+Method: GET
+URL: https://its.turftrax.co.uk/visualiser/stream/?clientName=caulfield
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\006_caulfield_get_clientName.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: caulfield_post_form_clientName
+Client: caulfield
+Method: POST
+URL: https://its.turftrax.co.uk/visualiser/stream/
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\007_caulfield_post_form_clientName.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: caulfield_post_json_clientName
+Client: caulfield
+Method: POST
+URL: https://its.turftrax.co.uk/visualiser/stream/
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\008_caulfield_post_json_clientName.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: caulfield_get_name
+Client: caulfield
+Method: GET
+URL: https://its.turftrax.co.uk/visualiser/stream/?name=caulfield
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\009_caulfield_get_name.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: caulfield_post_form_name
+Client: caulfield
+Method: POST
+URL: https://its.turftrax.co.uk/visualiser/stream/
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\010_caulfield_post_form_name.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: caulfield_post_json_name
+Client: caulfield
+Method: POST
+URL: https://its.turftrax.co.uk/visualiser/stream/
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\011_caulfield_post_json_name.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: caulfield_get_venue
+Client: caulfield
+Method: GET
+URL: https://its.turftrax.co.uk/visualiser/stream/?venue=caulfield
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\012_caulfield_get_venue.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: caulfield_post_form_venue
+Client: caulfield
+Method: POST
+URL: https://its.turftrax.co.uk/visualiser/stream/
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\013_caulfield_post_form_venue.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: caulfield_post_json_venue
+Client: caulfield
+Method: POST
+URL: https://its.turftrax.co.uk/visualiser/stream/
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\014_caulfield_post_json_venue.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: caulfield_get_course
+Client: caulfield
+Method: GET
+URL: https://its.turftrax.co.uk/visualiser/stream/?course=caulfield
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\015_caulfield_get_course.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: caulfield_post_form_course
+Client: caulfield
+Method: POST
+URL: https://its.turftrax.co.uk/visualiser/stream/
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\016_caulfield_post_form_course.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: caulfield_post_json_course
+Client: caulfield
+Method: POST
+URL: https://its.turftrax.co.uk/visualiser/stream/
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\017_caulfield_post_json_course.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: caulfield_get_track
+Client: caulfield
+Method: GET
+URL: https://its.turftrax.co.uk/visualiser/stream/?track=caulfield
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\018_caulfield_get_track.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: caulfield_post_form_track
+Client: caulfield
+Method: POST
+URL: https://its.turftrax.co.uk/visualiser/stream/
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\019_caulfield_post_form_track.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: caulfield_post_json_track
+Client: caulfield
+Method: POST
+URL: https://its.turftrax.co.uk/visualiser/stream/
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\020_caulfield_post_json_track.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: caulfield_get_visualiser
+Client: caulfield
+Method: GET
+URL: https://its.turftrax.co.uk/visualiser/stream/?visualiser=caulfield
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\021_caulfield_get_visualiser.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: caulfield_post_form_visualiser
+Client: caulfield
+Method: POST
+URL: https://its.turftrax.co.uk/visualiser/stream/
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\022_caulfield_post_form_visualiser.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: caulfield_post_json_visualiser
+Client: caulfield
+Method: POST
+URL: https://its.turftrax.co.uk/visualiser/stream/
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\023_caulfield_post_json_visualiser.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: ladbrokes_get_plain
+Client: ladbrokes
+Method: GET
+URL: https://its.turftrax.co.uk/visualiser/stream/
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\024_ladbrokes_get_plain.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: ladbrokes_get_client
+Client: ladbrokes
+Method: GET
+URL: https://its.turftrax.co.uk/visualiser/stream/?client=ladbrokes
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\026_ladbrokes_get_client.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: ladbrokes_post_form_client
+Client: ladbrokes
+Method: POST
+URL: https://its.turftrax.co.uk/visualiser/stream/
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\027_ladbrokes_post_form_client.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: ladbrokes_post_json_client
+Client: ladbrokes
+Method: POST
+URL: https://its.turftrax.co.uk/visualiser/stream/
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\028_ladbrokes_post_json_client.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: ladbrokes_get_clientName
+Client: ladbrokes
+Method: GET
+URL: https://its.turftrax.co.uk/visualiser/stream/?clientName=ladbrokes
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\029_ladbrokes_get_clientName.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: ladbrokes_post_form_clientName
+Client: ladbrokes
+Method: POST
+URL: https://its.turftrax.co.uk/visualiser/stream/
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\030_ladbrokes_post_form_clientName.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: ladbrokes_post_json_clientName
+Client: ladbrokes
+Method: POST
+URL: https://its.turftrax.co.uk/visualiser/stream/
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\031_ladbrokes_post_json_clientName.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: ladbrokes_get_name
+Client: ladbrokes
+Method: GET
+URL: https://its.turftrax.co.uk/visualiser/stream/?name=ladbrokes
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\032_ladbrokes_get_name.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: ladbrokes_post_form_name
+Client: ladbrokes
+Method: POST
+URL: https://its.turftrax.co.uk/visualiser/stream/
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\033_ladbrokes_post_form_name.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: ladbrokes_post_json_name
+Client: ladbrokes
+Method: POST
+URL: https://its.turftrax.co.uk/visualiser/stream/
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\034_ladbrokes_post_json_name.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: ladbrokes_get_venue
+Client: ladbrokes
+Method: GET
+URL: https://its.turftrax.co.uk/visualiser/stream/?venue=ladbrokes
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\035_ladbrokes_get_venue.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: ladbrokes_post_form_venue
+Client: ladbrokes
+Method: POST
+URL: https://its.turftrax.co.uk/visualiser/stream/
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\036_ladbrokes_post_form_venue.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: ladbrokes_post_json_venue
+Client: ladbrokes
+Method: POST
+URL: https://its.turftrax.co.uk/visualiser/stream/
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\037_ladbrokes_post_json_venue.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: ladbrokes_get_course
+Client: ladbrokes
+Method: GET
+URL: https://its.turftrax.co.uk/visualiser/stream/?course=ladbrokes
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\038_ladbrokes_get_course.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: ladbrokes_post_form_course
+Client: ladbrokes
+Method: POST
+URL: https://its.turftrax.co.uk/visualiser/stream/
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\039_ladbrokes_post_form_course.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: ladbrokes_post_json_course
+Client: ladbrokes
+Method: POST
+URL: https://its.turftrax.co.uk/visualiser/stream/
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\040_ladbrokes_post_json_course.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: ladbrokes_get_track
+Client: ladbrokes
+Method: GET
+URL: https://its.turftrax.co.uk/visualiser/stream/?track=ladbrokes
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\041_ladbrokes_get_track.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: ladbrokes_post_form_track
+Client: ladbrokes
+Method: POST
+URL: https://its.turftrax.co.uk/visualiser/stream/
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\042_ladbrokes_post_form_track.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: ladbrokes_post_json_track
+Client: ladbrokes
+Method: POST
+URL: https://its.turftrax.co.uk/visualiser/stream/
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\043_ladbrokes_post_json_track.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: ladbrokes_get_visualiser
+Client: ladbrokes
+Method: GET
+URL: https://its.turftrax.co.uk/visualiser/stream/?visualiser=ladbrokes
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\044_ladbrokes_get_visualiser.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: ladbrokes_post_form_visualiser
+Client: ladbrokes
+Method: POST
+URL: https://its.turftrax.co.uk/visualiser/stream/
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\045_ladbrokes_post_form_visualiser.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: ladbrokes_post_json_visualiser
+Client: ladbrokes
+Method: POST
+URL: https://its.turftrax.co.uk/visualiser/stream/
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\046_ladbrokes_post_json_visualiser.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: mornington_get_plain
+Client: mornington
+Method: GET
+URL: https://its.turftrax.co.uk/visualiser/stream/
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\047_mornington_get_plain.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: mornington_get_client
+Client: mornington
+Method: GET
+URL: https://its.turftrax.co.uk/visualiser/stream/?client=mornington
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\049_mornington_get_client.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: mornington_post_form_client
+Client: mornington
+Method: POST
+URL: https://its.turftrax.co.uk/visualiser/stream/
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\050_mornington_post_form_client.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: mornington_post_json_client
+Client: mornington
+Method: POST
+URL: https://its.turftrax.co.uk/visualiser/stream/
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\051_mornington_post_json_client.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: mornington_get_clientName
+Client: mornington
+Method: GET
+URL: https://its.turftrax.co.uk/visualiser/stream/?clientName=mornington
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\052_mornington_get_clientName.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: mornington_post_form_clientName
+Client: mornington
+Method: POST
+URL: https://its.turftrax.co.uk/visualiser/stream/
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\053_mornington_post_form_clientName.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: mornington_post_json_clientName
+Client: mornington
+Method: POST
+URL: https://its.turftrax.co.uk/visualiser/stream/
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\054_mornington_post_json_clientName.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: mornington_get_name
+Client: mornington
+Method: GET
+URL: https://its.turftrax.co.uk/visualiser/stream/?name=mornington
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\055_mornington_get_name.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: mornington_post_form_name
+Client: mornington
+Method: POST
+URL: https://its.turftrax.co.uk/visualiser/stream/
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\056_mornington_post_form_name.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: mornington_post_json_name
+Client: mornington
+Method: POST
+URL: https://its.turftrax.co.uk/visualiser/stream/
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\057_mornington_post_json_name.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: mornington_get_venue
+Client: mornington
+Method: GET
+URL: https://its.turftrax.co.uk/visualiser/stream/?venue=mornington
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\058_mornington_get_venue.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: mornington_post_form_venue
+Client: mornington
+Method: POST
+URL: https://its.turftrax.co.uk/visualiser/stream/
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\059_mornington_post_form_venue.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: mornington_post_json_venue
+Client: mornington
+Method: POST
+URL: https://its.turftrax.co.uk/visualiser/stream/
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\060_mornington_post_json_venue.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: mornington_get_course
+Client: mornington
+Method: GET
+URL: https://its.turftrax.co.uk/visualiser/stream/?course=mornington
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\061_mornington_get_course.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: mornington_post_form_course
+Client: mornington
+Method: POST
+URL: https://its.turftrax.co.uk/visualiser/stream/
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\062_mornington_post_form_course.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: mornington_post_json_course
+Client: mornington
+Method: POST
+URL: https://its.turftrax.co.uk/visualiser/stream/
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\063_mornington_post_json_course.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: mornington_get_track
+Client: mornington
+Method: GET
+URL: https://its.turftrax.co.uk/visualiser/stream/?track=mornington
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\064_mornington_get_track.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: mornington_post_form_track
+Client: mornington
+Method: POST
+URL: https://its.turftrax.co.uk/visualiser/stream/
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\065_mornington_post_form_track.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: mornington_post_json_track
+Client: mornington
+Method: POST
+URL: https://its.turftrax.co.uk/visualiser/stream/
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\066_mornington_post_json_track.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: mornington_get_visualiser
+Client: mornington
+Method: GET
+URL: https://its.turftrax.co.uk/visualiser/stream/?visualiser=mornington
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\067_mornington_get_visualiser.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: mornington_post_form_visualiser
+Client: mornington
+Method: POST
+URL: https://its.turftrax.co.uk/visualiser/stream/
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\068_mornington_post_form_visualiser.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}
+
+----------------------------------------------------------------------
+Label: mornington_post_json_visualiser
+Client: mornington
+Method: POST
+URL: https://its.turftrax.co.uk/visualiser/stream/
+Status: 200
+Content-Type: application/json; charset=utf-8
+Bytes: 48
+Saved: data\weather-source-audit\turftrax-stream\069_mornington_post_json_visualiser.json
+
+PREVIEW
+{"status": 480, "content":"No Client Specified"}

@@ -1,0 +1,308 @@
+{
+  "header": {
+    "title": "Race Meetings",
+    "generated_time": "2026-07-26T02:08:26.194450099Z",
+    "url": "/affiliates/v1/racing/meetings?enc=json&date_from=2026-07-27&date_to=2026-07-27&category=T&country=AUS&limit=200&offset=0"
+  },
+  "params": {
+    "enc": "json",
+    "ids": null,
+    "date_from": "2026-07-27T00:00:00Z",
+    "date_to": "2026-07-27T00:00:00Z",
+    "type": "T",
+    "country": "AUS",
+    "limit": 200,
+    "offset": 0,
+    "futures": false,
+    "meeting_numbers": null
+  },
+  "data": {
+    "meetings": [
+      {
+        "meeting": "69951e06-a4f1-511d-929c-df61edebf950",
+        "name": "Ballarat Synthetic",
+        "date": "2026-07-27T00:00:00Z",
+        "track_condition": "Synthetic",
+        "category": "T",
+        "category_name": "Thoroughbred Horse Racing",
+        "country": "AUS",
+        "state": "VIC",
+        "races": [
+          {
+            "id": "0c2f7628-0320-4b58-b4c4-2d7e747356d3",
+            "race_number": 1,
+            "name": "Ciaron Maher Racing Mdn Plate",
+            "start_time": "2026-07-27T02:00:00Z",
+            "track_condition": "Synthetic",
+            "distance": 1000,
+            "weather": "SHWRY",
+            "country": "AUS",
+            "state": "VIC",
+            "status": "Open"
+          },
+          {
+            "id": "3a4adaaa-fc89-4903-9370-32eedb7750c4",
+            "race_number": 2,
+            "name": "Toohey's Form-Crete Mdn Plate",
+            "start_time": "2026-07-27T02:30:00Z",
+            "track_condition": "Synthetic",
+            "distance": 1200,
+            "weather": "SHWRY",
+            "country": "AUS",
+            "state": "VIC",
+            "status": "Open"
+          },
+          {
+            "id": "00af82f7-37b8-4952-b175-2bf7c8ebb17c",
+            "race_number": 3,
+            "name": "Aac Temp Fencing Mdn Plate",
+            "start_time": "2026-07-27T03:00:00Z",
+            "track_condition": "Synthetic",
+            "distance": 1500,
+            "weather": "SHWRY",
+            "country": "AUS",
+            "state": "VIC",
+            "status": "Open"
+          },
+          {
+            "id": "c137569a-c34c-4df2-8f75-fea86c700b42",
+            "race_number": 4,
+            "name": "Erikev Firewood Mdn Plate",
+            "start_time": "2026-07-27T03:30:00Z",
+            "track_condition": "Synthetic",
+            "distance": 2200,
+            "weather": "SHWRY",
+            "country": "AUS",
+            "state": "VIC",
+            "status": "Open"
+          },
+          {
+            "id": "bb184837-c38c-4015-a945-d150380f61cb",
+            "race_number": 5,
+            "name": "Smith & Sons Ballarat Hcp (Bm56)",
+            "start_time": "2026-07-27T04:00:00Z",
+            "track_condition": "Synthetic",
+            "distance": 2200,
+            "weather": "SHWRY",
+            "country": "AUS",
+            "state": "VIC",
+            "status": "Open"
+          },
+          {
+            "id": "43d8027b-2164-4927-8488-5f2d7dbf8bbc",
+            "race_number": 6,
+            "name": "The Red Lion Hcp (Bm56)",
+            "start_time": "2026-07-27T04:30:00Z",
+            "track_condition": "Synthetic",
+            "distance": 1000,
+            "weather": "SHWRY",
+            "country": "AUS",
+            "state": "VIC",
+            "status": "Open"
+          },
+          {
+            "id": "c6ea5961-d52b-48ec-9825-c46878d7af42",
+            "race_number": 7,
+            "name": "Manhari Hcp (Bm56)",
+            "start_time": "2026-07-27T05:00:00Z",
+            "track_condition": "Synthetic",
+            "distance": 1200,
+            "weather": "SHWRY",
+            "country": "AUS",
+            "state": "VIC",
+            "status": "Open"
+          },
+          {
+            "id": "a803424f-899c-4c5b-b804-2eb44f45672c",
+            "race_number": 8,
+            "name": "Hygain Edge Hcp (Bm56)",
+            "start_time": "2026-07-27T05:30:00Z",
+            "track_condition": "Synthetic",
+            "distance": 1200,
+            "weather": "SHWRY",
+            "country": "AUS",
+            "state": "VIC",
+            "status": "Open"
+          },
+          {
+            "id": "fbe2a99b-bab9-41e4-94f4-cf02d77e1d49",
+            "race_number": 9,
+            "name": "Sportsbet Race Previews Hcp (Bm56)",
+            "start_time": "2026-07-27T06:00:00Z",
+            "track_condition": "Synthetic",
+            "distance": 1500,
+            "weather": "SHWRY",
+            "country": "AUS",
+            "state": "VIC",
+            "status": "Open"
+          },
+          {
+            "id": "e45324f7-26e9-4d89-a5a8-1cdc88144366",
+            "race_number": 10,
+            "name": "Hygain Edge Hcp (Bm56)",
+            "start_time": "2026-07-27T06:30:00Z",
+            "track_condition": "Synthetic",
+            "distance": 1500,
+            "weather": "SHWRY",
+            "country": "AUS",
+            "state": "VIC",
+            "status": "Open"
+          }
+        ],
+        "video_channels": [
+          "Live1"
+        ],
+        "quaddie": [
+          7,
+          8,
+          9,
+          10
+        ],
+        "early_quaddie": [
+          3,
+          4,
+          5,
+          6
+        ],
+        "daily_double": [
+          8,
+          10
+        ],
+        "treble": [
+          8,
+          9,
+          10
+        ]
+      },
+      {
+        "meeting": "e0eb2f08-3ff2-59f1-ba38-bb2c5a8868ac",
+        "name": "Albury",
+        "date": "2026-07-27T00:00:00Z",
+        "track_condition": "Heavy9",
+        "category": "T",
+        "category_name": "Thoroughbred Horse Racing",
+        "country": "AUS",
+        "state": "NSW",
+        "races": [
+          {
+            "id": "8ee911f9-04ac-42fc-9a18-ff5a878cccc9",
+            "race_number": 1,
+            "name": "Habitat Planning Plate Mdn Plate (C1)",
+            "start_time": "2026-07-27T02:40:00Z",
+            "track_condition": "Heavy9",
+            "distance": 2000,
+            "weather": "OCAST",
+            "country": "AUS",
+            "state": "NSW",
+            "status": "Open"
+          },
+          {
+            "id": "df1df8d7-59e8-4fa8-a379-e37d600c567f",
+            "race_number": 2,
+            "name": "Jockeys Celebration Day C,G&E Mdn Plate",
+            "start_time": "2026-07-27T03:15:00Z",
+            "track_condition": "Heavy9",
+            "distance": 1175,
+            "weather": "OCAST",
+            "country": "AUS",
+            "state": "NSW",
+            "status": "Open"
+          },
+          {
+            "id": "23ce9adf-de0c-4b7e-8495-0a809c7953d3",
+            "race_number": 3,
+            "name": "Tyrepower East Albury F&M Mdn Plate",
+            "start_time": "2026-07-27T03:50:00Z",
+            "track_condition": "Heavy9",
+            "distance": 1175,
+            "weather": "OCAST",
+            "country": "AUS",
+            "state": "NSW",
+            "status": "Open"
+          },
+          {
+            "id": "6e7a8086-ecbb-4461-a547-d49b81859b7c",
+            "race_number": 4,
+            "name": "Team Thoroughbred Nsw Country Boosted Mdn Hcp",
+            "start_time": "2026-07-27T04:25:00Z",
+            "track_condition": "Heavy9",
+            "distance": 1500,
+            "weather": "OCAST",
+            "country": "AUS",
+            "state": "NSW",
+            "status": "Open"
+          },
+          {
+            "id": "71175668-e150-44ff-b1af-5e29b061edb7",
+            "race_number": 5,
+            "name": "Conway Printing Country Boosted Hcp (Bm58)",
+            "start_time": "2026-07-27T05:05:00Z",
+            "track_condition": "Heavy9",
+            "distance": 1600,
+            "weather": "OCAST",
+            "country": "AUS",
+            "state": "NSW",
+            "status": "Open"
+          },
+          {
+            "id": "cd5bcb06-2ea3-4b99-af12-6c8c4bbbd7bb",
+            "race_number": 6,
+            "name": "Dash + Co Hcp (C2)",
+            "start_time": "2026-07-27T05:40:00Z",
+            "track_condition": "Heavy9",
+            "distance": 1400,
+            "weather": "OCAST",
+            "country": "AUS",
+            "state": "NSW",
+            "status": "Open"
+          },
+          {
+            "id": "ac405f43-5bc1-44c0-828d-fe4e620da71f",
+            "race_number": 7,
+            "name": "Spring Carnival Packages On Sale Now Hcp (Bm66)",
+            "start_time": "2026-07-27T06:15:00Z",
+            "track_condition": "Heavy9",
+            "distance": 1175,
+            "weather": "OCAST",
+            "country": "AUS",
+            "state": "NSW",
+            "status": "Open"
+          },
+          {
+            "id": "82da1780-ff60-4784-9b73-4b75ec37df68",
+            "race_number": 8,
+            "name": "Nsw Jockeys Association Hcp (Bm58)",
+            "start_time": "2026-07-27T06:50:00Z",
+            "track_condition": "Heavy9",
+            "distance": 900,
+            "weather": "OCAST",
+            "country": "AUS",
+            "state": "NSW",
+            "status": "Open"
+          }
+        ],
+        "quaddie": [
+          5,
+          6,
+          7,
+          8
+        ],
+        "early_quaddie": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "daily_double": [
+          6,
+          8
+        ],
+        "treble": [
+          6,
+          7,
+          8
+        ]
+      }
+    ]
+  }
+}

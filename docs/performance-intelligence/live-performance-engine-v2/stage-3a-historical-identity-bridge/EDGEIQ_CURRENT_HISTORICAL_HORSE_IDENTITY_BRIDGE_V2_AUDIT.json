@@ -1,0 +1,22 @@
+{
+  "status": "EDGEIQ_CURRENT_HISTORICAL_HORSE_IDENTITY_BRIDGE_V2_AUDIT_PASS",
+  "current_unique_runners": 204,
+  "historical_unique_ids": 24,
+  "historical_name_field": "canonical_horse_name",
+  "identity_status_counts": {
+    "IDENTITY_RESOLVED": 1,
+    "IDENTITY_UNRESOLVED": 203
+  },
+  "resolved_current_runners": 1,
+  "checks": {
+    "one_bridge_row_per_current_runner": true,
+    "current_runner_ids_unique": true,
+    "resolved_rows_have_historical_id": true,
+    "name_fallback_is_unique_only": true,
+    "no_fuzzy_matching": true,
+    "evidence_complete": true,
+    "deterministic_rerun": true
+  },
+  "candidate_sha256": "9e807282b90bb218934a8ac36f006f0b25b7158ef66b31bba3266e9dc33cb18c",
+  "production_sha256": "9e807282b90bb218934a8ac36f006f0b25b7158ef66b31bba3266e9dc33cb18c"
+}

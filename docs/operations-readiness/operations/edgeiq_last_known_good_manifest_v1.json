@@ -1,0 +1,25 @@
+{
+  "generated_utc": "2026-07-26T03:33:19+00:00",
+  "files": [
+    {
+      "file": "edgeiq_three_day_window_v1.json",
+      "bytes": 564
+    },
+    {
+      "file": "edgeiq_three_day_product_catalog_v1.json",
+      "bytes": 12561413
+    },
+    {
+      "file": "edgeiq_vic_three_day_race_list_v1.csv",
+      "bytes": 5201169
+    },
+    {
+      "file": "edgeiq_live_terminal_feed_v1.csv",
+      "bytes": 303034
+    },
+    {
+      "file": "edgeiq_vic_live_terminal_feed_v1.csv",
+      "bytes": 303034
+    }
+  ]
+}

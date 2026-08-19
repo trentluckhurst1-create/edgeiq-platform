@@ -1,0 +1,55 @@
+{
+  "status": "RACINGCOM_MEETING_DISCOVERY_V2_PASS",
+  "built_utc": "2026-07-22T19:21:33+00:00",
+  "meeting_rows": 186,
+  "canonical_meetings": 186,
+  "source_types": {
+    "LOCAL_RACE_FIELDS_MEETING_EVIDENCE": 5,
+    "RACINGCOM_GET_MEETS_BY_MONTH": 185
+  },
+  "fetches": 4,
+  "fetch_log": [
+    {
+      "source_url": "https://www.racing.com/services/appv2/GetMeetsByMonth/2026/7",
+      "http_status": "200",
+      "payload_path": "outputs\\performance-intelligence\\racingcom-v2\\raw\\meeting-discovery\\https_www_racing_com_services_appv2_GetMeetsByMonth_2026_7_f8c4ab40318d.txt",
+      "source_hash": "dca5f3f2b144a0b70fb647a1d252290a23b1ee585bbc6ba7476935841c1adcd5",
+      "bytes": "176870",
+      "status": "FETCHED"
+    },
+    {
+      "source_url": "https://www.racing.com/services/appv2/GetMeetsByMonth/2026/6",
+      "http_status": "200",
+      "payload_path": "outputs\\performance-intelligence\\racingcom-v2\\raw\\meeting-discovery\\https_www_racing_com_services_appv2_GetMeetsByMonth_2026_6_b9b7bdf9584c.txt",
+      "source_hash": "f83f4acccf6b3e6384e93d645ad3cc633e8470d49d95902b80081cb25dbc028c",
+      "bytes": "169087",
+      "status": "FETCHED"
+    },
+    {
+      "source_url": "https://www.racing.com/services/appv2/GetMeetsByMonth/2026/8",
+      "http_status": "200",
+      "payload_path": "outputs\\performance-intelligence\\racingcom-v2\\raw\\meeting-discovery\\https_www_racing_com_services_appv2_GetMeetsByMonth_2026_8_cfdcd1b2f44a.txt",
+      "source_hash": "1780ac1a669bfa313db8834326f4ec9c2ea78e07bfcf92fa2b930ddcf9c3362b",
+      "bytes": "97476",
+      "status": "FETCHED"
+    },
+    {
+      "source_url": "https://www.racing.com/calendar",
+      "http_status": "200",
+      "payload_path": "outputs\\performance-intelligence\\racingcom-v2\\raw\\meeting-discovery\\https_www_racing_com_calendar_0f5281d476b0.txt",
+      "source_hash": "e01c871dbdafe04517c36e05b9cbe9683fa5a8232e1776b1f2d078ee214da104",
+      "bytes": "109086",
+      "status": "FETCHED",
+      "observed_links": "0"
+    }
+  ],
+  "race_level_columns": [],
+  "duplicate_meeting_ids": 0,
+  "invalid_dates": 0,
+  "invalid_meeting_urls": 0,
+  "missing_provenance": 0,
+  "repo_root_escape_count": 0,
+  "production_changed": "NO",
+  "race_level_rows_generated": 0,
+  "fixed_race_expansion_used": "NO"
+}

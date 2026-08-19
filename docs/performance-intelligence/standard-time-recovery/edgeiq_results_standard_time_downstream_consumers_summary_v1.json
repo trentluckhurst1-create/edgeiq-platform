@@ -1,0 +1,8 @@
+{
+  "results_standard_time_rows": 7,
+  "results_lengths_v_standard_calculated_rows": 0,
+  "results_lengths_v_standard_blocked_rows": 168,
+  "canonical_standard_time_rows_preserved": 0,
+  "canonical_lengths_v_standard_rows_preserved": 0,
+  "downstream_rebuild_status": "PARTIAL_STANDARD_TIME_READY_LENGTHS_BLOCKED"
+}

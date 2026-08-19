@@ -1,0 +1,26 @@
+window.evalMathExpression = function anonymous(code
+) {
+
+    try {
+        context.eval = eval;
+        context.code = code;
+    } catch(e) {
+        var context = window.context || {};
+        context.eval = eval;
+        context.code = code;
+    }
+    const scopeProxy = new Proxy(context, {
+        has(prop) { return !(prop in context) },
+        get(target, prop) {
+            if (prop in target) {
+                return target[prop];
+            }
+            if (!(typeof prop === 'symbol')) {
+                throw new Error(`Unexpected token '${prop.toString()}'.`);
+            }
+        }
+    });
+    with (scopeProxy) {
+        return eval(code);
+    }
+}

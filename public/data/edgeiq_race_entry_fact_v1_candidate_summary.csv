@@ -1,0 +1,8 @@
+metric,value
+candidate_rows,204
+rejected_rows,445
+candidate_races,17
+active_entries,188
+scratched_entries,6
+emergency_entries,10
+source,public/data/edgeiq_three_day_product_catalog_v1.json

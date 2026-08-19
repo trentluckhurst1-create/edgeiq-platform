@@ -1,0 +1,284 @@
+{
+  "asset_catalog": [
+    {
+      "asset_file": "canonical_performance_evidence.csv",
+      "asset_name": "canonical_performance_evidence",
+      "asset_type": "IMMUTABLE_CANONICAL_EVIDENCE",
+      "max_race_date": "2026-06-24",
+      "min_race_date": "2000-08-02",
+      "primary_key": "performance_id",
+      "rows": "879784",
+      "schema_version": "PERFORMANCE_IDENTITY_V0_2",
+      "sha256": "5754e424b57031b3a6e50b4ecd8675af21b10a7a624b85d3810795562e0d1df2",
+      "warehouse_snapshot_id": "eiq_warehouse_snapshot_b24578e0eb795ab6bd076452bfff3f5e"
+    },
+    {
+      "asset_file": "canonical_sectional_evidence.csv",
+      "asset_name": "canonical_sectional_evidence",
+      "asset_type": "IMMUTABLE_CANONICAL_EVIDENCE",
+      "max_race_date": "2026-06-04",
+      "min_race_date": "2023-01-01",
+      "primary_key": "performance_sectional_id",
+      "rows": "103766",
+      "schema_version": "CANONICAL_SECTIONAL_EVIDENCE_V0_2",
+      "sha256": "072c1ccf556bfc0476c1d4507d0828b6210c8d5865e411c6a42b5e4a3de1fa42",
+      "warehouse_snapshot_id": "eiq_warehouse_snapshot_b24578e0eb795ab6bd076452bfff3f5e"
+    }
+  ],
+  "canonical_expression": {
+    "complete_population": true,
+    "complete_rows": 879784,
+    "duplicate_contract_match": true,
+    "duplicate_excess": 89,
+    "expression": "race_id + horse_id",
+    "expression_type": "PAIR",
+    "fields": [
+      "race_id",
+      "horse_id"
+    ],
+    "incomplete_rows": 0,
+    "unique_contract_match": true,
+    "unique_identities": 879695
+  },
+  "canonical_identity_semantics": {
+    "classification": "CANONICAL_RESOLVED_IDENTITY",
+    "expression": "race_id + horse_id",
+    "numeric_population_equivalent": true,
+    "source_authority_key": false
+  },
+  "checks": [
+    {
+      "check": "RAW_SOURCE_EXISTS",
+      "detail": "docs/performance-intelligence/warehouse/raw/eiq_warehouse_snapshot_b24578e0eb795ab6bd076452bfff3f5e/canonical_performance_evidence.csv",
+      "result": "PASS"
+    },
+    {
+      "check": "RAW_SCHEMA_COMPLETE",
+      "detail": "required=11; present=11",
+      "result": "PASS"
+    },
+    {
+      "check": "RAW_PHYSICAL_POPULATION",
+      "detail": "actual=879784; expected=879784",
+      "result": "PASS"
+    },
+    {
+      "check": "PROVIDER_RAW_KEY_CONTRACT",
+      "detail": "race_id + provider_runner_id; unique=879695; duplicates=89",
+      "result": "PASS"
+    },
+    {
+      "check": "PROVIDER_IDENTITY_COMPLETE",
+      "detail": "blank_provider_runner_id=0",
+      "result": "PASS"
+    },
+    {
+      "check": "CANONICAL_HORSE_ID_COMPLETE",
+      "detail": "blank_horse_id=0",
+      "result": "PASS"
+    },
+    {
+      "check": "CANONICAL_KEY_NUMERIC_EQUIVALENCE",
+      "detail": "race_id + horse_id reproduces population but is classified as canonical rather than raw",
+      "result": "PASS"
+    },
+    {
+      "check": "PROVIDER_CANONICAL_FIELD_DISTINCTION",
+      "detail": "provider_runner_id and horse_id are stored as separate governed fields",
+      "result": "PASS"
+    },
+    {
+      "check": "IDENTITY_PROCESSING_METADATA",
+      "detail": "identity_method, identity_version and performance_natural_key_version populated",
+      "result": "PASS"
+    },
+    {
+      "check": "RAW_ASSET_REGISTRATION",
+      "detail": "docs/performance-intelligence/warehouse/raw/eiq_warehouse_snapshot_b24578e0eb795ab6bd076452bfff3f5e/asset_catalog.csv",
+      "result": "PASS"
+    },
+    {
+      "check": "RAW_MATERIALISATION",
+      "detail": "docs/performance-intelligence/warehouse/raw/eiq_warehouse_snapshot_b24578e0eb795ab6bd076452bfff3f5e/materialisation_checks.csv",
+      "result": "PASS"
+    },
+    {
+      "check": "CORRECTED_FACTS_DOWNSTREAM_SCHEMA",
+      "detail": "benchmark_eligible|performance_fact_id|quality_state",
+      "result": "PASS"
+    }
+  ],
+  "corrected_header": [
+    "performance_fact_id",
+    "source_version",
+    "generated_timestamp",
+    "race_id",
+    "runner_id",
+    "race_date",
+    "track",
+    "state",
+    "race_number",
+    "race_name",
+    "race_class",
+    "distance_raw",
+    "distance_metres",
+    "track_condition",
+    "track_rating",
+    "rail_position",
+    "weather",
+    "horse",
+    "horse_code",
+    "trainer",
+    "trainer_code",
+    "jockey",
+    "jockey_code",
+    "barrier",
+    "weight",
+    "finish_position",
+    "margin_raw",
+    "margin_lengths",
+    "starting_price",
+    "starting_price_decimal",
+    "raw_winning_time",
+    "governed_time_seconds",
+    "time_unit",
+    "benchmark_eligible",
+    "quality_state",
+    "legacy_performance_fact_id",
+    "source_row_number",
+    "identity_version",
+    "identity_natural_key",
+    "collision_resolution_state",
+    "identity_collision_discriminator",
+    "recomputed_performance_fact_id",
+    "race_context_key",
+    "race_time_consistency_state",
+    "race_time_unit_state",
+    "race_time_source_unit",
+    "race_time_governed_seconds",
+    "race_benchmark_eligible",
+    "performance_benchmark_eligible",
+    "benchmark_exclusion_reason",
+    "governance_version",
+    "governance_generated_at"
+  ],
+  "decision": "LOCK_CANONICAL_PERFORMANCE_EVIDENCE_AS_PHYSICAL_AUTHORITY",
+  "decision_rationale": "The canonical performance evidence dataset is the registered and materialised raw warehouse asset. Its provider-side identity expression `race_id + provider_runner_id` exactly reproduces the governed 879,695 unique raw identities and duplicate excess of 89. `horse_id` is retained as EDGEIQ's canonical resolved horse identity and is not substituted for the provider raw key.",
+  "existing_v2_modified": false,
+  "generated_at_utc": "2026-07-27T06:42:55+00:00",
+  "lock_id": "EDGEIQ_HISTORICAL_OBSERVATION_V3_RAW_AUTHORITY_SEMANTIC_LOCK_PHASE1A_6B_1B_V1",
+  "materialisation_checks": [
+    {
+      "check": "SOURCE_SNAPSHOT_PASSED",
+      "observed": "eiq_warehouse_snapshot_b24578e0eb795ab6bd076452bfff3f5e",
+      "passed": "True"
+    },
+    {
+      "check": "PERFORMANCE_SOURCE_HASH",
+      "observed": "5754e424b57031b3a6e50b4ecd8675af21b10a7a624b85d3810795562e0d1df2",
+      "passed": "True"
+    },
+    {
+      "check": "SECTIONAL_SOURCE_HASH",
+      "observed": "072c1ccf556bfc0476c1d4507d0828b6210c8d5865e411c6a42b5e4a3de1fa42",
+      "passed": "True"
+    },
+    {
+      "check": "PERFORMANCE_COPY_HASH",
+      "observed": "5754e424b57031b3a6e50b4ecd8675af21b10a7a624b85d3810795562e0d1df2",
+      "passed": "True"
+    },
+    {
+      "check": "SECTIONAL_COPY_HASH",
+      "observed": "072c1ccf556bfc0476c1d4507d0828b6210c8d5865e411c6a42b5e4a3de1fa42",
+      "passed": "True"
+    },
+    {
+      "check": "PERFORMANCE_ROW_COUNT",
+      "observed": "879784",
+      "passed": "True"
+    },
+    {
+      "check": "SECTIONAL_ROW_COUNT",
+      "observed": "103766",
+      "passed": "True"
+    },
+    {
+      "check": "ALL_PHASE1_0_3_CHECKS_PASSED",
+      "observed": "11",
+      "passed": "True"
+    }
+  ],
+  "provider_expression": {
+    "complete_population": true,
+    "complete_rows": 879784,
+    "duplicate_contract_match": true,
+    "duplicate_excess": 89,
+    "expression": "race_id + provider_runner_id",
+    "expression_type": "PAIR",
+    "fields": [
+      "race_id",
+      "provider_runner_id"
+    ],
+    "incomplete_rows": 0,
+    "unique_contract_match": true,
+    "unique_identities": 879695
+  },
+  "raw_header": [
+    "performance_id",
+    "race_id",
+    "meeting_id",
+    "horse_id",
+    "source_evidence_id",
+    "source_row_number",
+    "provider_race_id",
+    "provider_runner_id",
+    "race_date",
+    "state",
+    "track",
+    "race_number",
+    "horse_name",
+    "identity_method",
+    "identity_quality_state",
+    "identity_version",
+    "evidence_version",
+    "generated_at",
+    "legacy_performance_id",
+    "performance_natural_key_version",
+    "rekeyed_at"
+  ],
+  "raw_semantics": {
+    "horse_id_blank": 0,
+    "identity_method_counts": {
+      "PROVIDER_RUNNER_ID": 879784
+    },
+    "identity_quality_counts": {
+      "COMPLETE": 879784
+    },
+    "identity_version_counts": {
+      "PERFORMANCE_IDENTITY_PROTOTYPE_V0_1": 879784
+    },
+    "natural_key_version_counts": {
+      "PERFORMANCE_IDENTITY_V0_2_FULL_RACE_CONTEXT": 879784
+    },
+    "physical_rows": 879784,
+    "provider_horse_different": 879784,
+    "provider_horse_equal": 0,
+    "provider_runner_blank": 0
+  },
+  "rejected_v3_modified": false,
+  "selected_physical_authority": "docs/performance-intelligence/warehouse/raw/eiq_warehouse_snapshot_b24578e0eb795ab6bd076452bfff3f5e/canonical_performance_evidence.csv",
+  "selected_raw_identity": {
+    "duplicate_excess": 89,
+    "expression": "race_id + provider_runner_id",
+    "fields": [
+      "race_id",
+      "provider_runner_id"
+    ],
+    "physical_rows": 879784,
+    "unique_raw_identities": 879695
+  },
+  "semantic_evidence_count": 1676,
+  "status": "EDGEIQ_HISTORICAL_OBSERVATION_V3_RAW_AUTHORITY_SEMANTIC_LOCK_PHASE1A_6B_1B_V1_PASS",
+  "warehouse_written": false
+}

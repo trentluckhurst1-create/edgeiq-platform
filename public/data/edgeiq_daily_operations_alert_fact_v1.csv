@@ -1,0 +1,2 @@
+operation_run_id,severity,category,message,created_at_utc,builder_version
+DAILYOPS-2026-07-15-2026-07-28-7E34B128B4,INFO,NORMALISATION_UNAVAILABLE,No post-cutoff normalisation rows available or no eligible source rows yet.,2026-07-29T01:36:16Z,EDGEIQ_DAILY_OPERATIONS_ENGINE_V1

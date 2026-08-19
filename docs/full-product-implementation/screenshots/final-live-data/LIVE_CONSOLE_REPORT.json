@@ -1,0 +1,535 @@
+{
+  "generatedAt": "2026-07-20T01:07:45.731Z",
+  "url": "http://127.0.0.1:5173/?dev-preview=1",
+  "selectedContext": {
+    "activeSection": "home",
+    "viewLevel": "race",
+    "selectedMeetingsDayKey": "TODAY",
+    "selectedMeetingKey": "2026-07-20|PAKENHAM",
+    "selectedRaceKey": "2026-07-20|PAKENHAM|R1",
+    "selectedRunnerIndex": 0
+  },
+  "pageErrors": [],
+  "console": [
+    {
+      "type": "debug",
+      "text": "[vite] connecting..."
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connected."
+    },
+    {
+      "type": "info",
+      "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+    },
+    {
+      "type": "warning",
+      "text": "Clerk disabled: missing VITE_CLERK_PUBLISHABLE_KEY"
+    },
+    {
+      "type": "info",
+      "text": "EDGEiQ daily pipeline status READY 2026-07-20 [2026-07-20, 2026-07-21, 2026-07-22]"
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connecting..."
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connected."
+    },
+    {
+      "type": "info",
+      "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+    },
+    {
+      "type": "warning",
+      "text": "Clerk disabled: missing VITE_CLERK_PUBLISHABLE_KEY"
+    },
+    {
+      "type": "info",
+      "text": "EDGEiQ daily pipeline status READY 2026-07-20 [2026-07-20, 2026-07-21, 2026-07-22]"
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connecting..."
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connected."
+    },
+    {
+      "type": "info",
+      "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+    },
+    {
+      "type": "warning",
+      "text": "Clerk disabled: missing VITE_CLERK_PUBLISHABLE_KEY"
+    },
+    {
+      "type": "info",
+      "text": "EDGEiQ daily pipeline status READY 2026-07-20 [2026-07-20, 2026-07-21, 2026-07-22]"
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connecting..."
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connected."
+    },
+    {
+      "type": "info",
+      "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+    },
+    {
+      "type": "warning",
+      "text": "Clerk disabled: missing VITE_CLERK_PUBLISHABLE_KEY"
+    },
+    {
+      "type": "info",
+      "text": "EDGEiQ daily pipeline status READY 2026-07-20 [2026-07-20, 2026-07-21, 2026-07-22]"
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connecting..."
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connected."
+    },
+    {
+      "type": "info",
+      "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+    },
+    {
+      "type": "warning",
+      "text": "Clerk disabled: missing VITE_CLERK_PUBLISHABLE_KEY"
+    },
+    {
+      "type": "info",
+      "text": "EDGEiQ daily pipeline status READY 2026-07-20 [2026-07-20, 2026-07-21, 2026-07-22]"
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connecting..."
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connected."
+    },
+    {
+      "type": "info",
+      "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+    },
+    {
+      "type": "warning",
+      "text": "Clerk disabled: missing VITE_CLERK_PUBLISHABLE_KEY"
+    },
+    {
+      "type": "info",
+      "text": "EDGEiQ daily pipeline status READY 2026-07-20 [2026-07-20, 2026-07-21, 2026-07-22]"
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connecting..."
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connected."
+    },
+    {
+      "type": "info",
+      "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+    },
+    {
+      "type": "warning",
+      "text": "Clerk disabled: missing VITE_CLERK_PUBLISHABLE_KEY"
+    },
+    {
+      "type": "info",
+      "text": "EDGEiQ daily pipeline status READY 2026-07-20 [2026-07-20, 2026-07-21, 2026-07-22]"
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connecting..."
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connected."
+    },
+    {
+      "type": "info",
+      "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+    },
+    {
+      "type": "warning",
+      "text": "Clerk disabled: missing VITE_CLERK_PUBLISHABLE_KEY"
+    },
+    {
+      "type": "info",
+      "text": "EDGEiQ daily pipeline status READY 2026-07-20 [2026-07-20, 2026-07-21, 2026-07-22]"
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connecting..."
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connected."
+    },
+    {
+      "type": "info",
+      "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+    },
+    {
+      "type": "warning",
+      "text": "Clerk disabled: missing VITE_CLERK_PUBLISHABLE_KEY"
+    },
+    {
+      "type": "info",
+      "text": "EDGEiQ daily pipeline status READY 2026-07-20 [2026-07-20, 2026-07-21, 2026-07-22]"
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connecting..."
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connected."
+    },
+    {
+      "type": "info",
+      "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+    },
+    {
+      "type": "warning",
+      "text": "Clerk disabled: missing VITE_CLERK_PUBLISHABLE_KEY"
+    },
+    {
+      "type": "info",
+      "text": "EDGEiQ daily pipeline status READY 2026-07-20 [2026-07-20, 2026-07-21, 2026-07-22]"
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connecting..."
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connected."
+    },
+    {
+      "type": "info",
+      "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+    },
+    {
+      "type": "warning",
+      "text": "Clerk disabled: missing VITE_CLERK_PUBLISHABLE_KEY"
+    },
+    {
+      "type": "info",
+      "text": "EDGEiQ daily pipeline status READY 2026-07-20 [2026-07-20, 2026-07-21, 2026-07-22]"
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connecting..."
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connected."
+    },
+    {
+      "type": "info",
+      "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+    },
+    {
+      "type": "warning",
+      "text": "Clerk disabled: missing VITE_CLERK_PUBLISHABLE_KEY"
+    },
+    {
+      "type": "info",
+      "text": "EDGEiQ daily pipeline status READY 2026-07-20 [2026-07-20, 2026-07-21, 2026-07-22]"
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connecting..."
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connected."
+    },
+    {
+      "type": "info",
+      "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+    },
+    {
+      "type": "warning",
+      "text": "Clerk disabled: missing VITE_CLERK_PUBLISHABLE_KEY"
+    },
+    {
+      "type": "info",
+      "text": "EDGEiQ daily pipeline status READY 2026-07-20 [2026-07-20, 2026-07-21, 2026-07-22]"
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connecting..."
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connected."
+    },
+    {
+      "type": "info",
+      "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+    },
+    {
+      "type": "warning",
+      "text": "Clerk disabled: missing VITE_CLERK_PUBLISHABLE_KEY"
+    },
+    {
+      "type": "info",
+      "text": "EDGEiQ daily pipeline status READY 2026-07-20 [2026-07-20, 2026-07-21, 2026-07-22]"
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connecting..."
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connected."
+    },
+    {
+      "type": "info",
+      "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+    },
+    {
+      "type": "warning",
+      "text": "Clerk disabled: missing VITE_CLERK_PUBLISHABLE_KEY"
+    },
+    {
+      "type": "info",
+      "text": "EDGEiQ daily pipeline status READY 2026-07-20 [2026-07-20, 2026-07-21, 2026-07-22]"
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connecting..."
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connected."
+    },
+    {
+      "type": "info",
+      "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+    },
+    {
+      "type": "warning",
+      "text": "Clerk disabled: missing VITE_CLERK_PUBLISHABLE_KEY"
+    },
+    {
+      "type": "info",
+      "text": "EDGEiQ daily pipeline status READY 2026-07-20 [2026-07-20, 2026-07-21, 2026-07-22]"
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connecting..."
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connected."
+    },
+    {
+      "type": "info",
+      "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+    },
+    {
+      "type": "warning",
+      "text": "Clerk disabled: missing VITE_CLERK_PUBLISHABLE_KEY"
+    },
+    {
+      "type": "info",
+      "text": "EDGEiQ daily pipeline status READY 2026-07-20 [2026-07-20, 2026-07-21, 2026-07-22]"
+    }
+  ],
+  "uncaughtErrorCount": 0,
+  "consoleErrorCount": 0,
+  "workspaceReports": [
+    {
+      "workspace": "HOME",
+      "activeSection": "home",
+      "screenshot": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-live-data\\HOME_POPULATED.png",
+      "screenshotStatus": "SAVED",
+      "bodyLength": 1820,
+      "hasFailedToFetch": false,
+      "hasPakenham": true,
+      "hasRaceContext": true,
+      "bodySample": "EDGEiQ RACE INTELLIGENCE HOME MEETINGS RACE FIELD FORM GUIDE PERFORMANCE EPI MAP MARKET OVERVIEW INSIGHTS RESULTS LAB COMPARE REVIEW SETTINGS EDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM Information is not Intelligence. Evidence leads. Precision decides. MON, 20 JULY 2026 11:07 am AEDT HOME Welcome to EDGEiQ EDGEiQ is the Professional Racing Intelligence Operating System. We turn governed data and advanced analytics into actionable intelligence for serious form students, analysts, and racing professionals. Evidence First Only governed, verified data. No estimates. No shortcuts. Built For Professionals Advanced tools for analysis, comparison, and insight. Complete Intelligence Every race. Every runner. Every angle that matters. TODAY'S MEETINGS Monday 20 July 2026 VIEW ALL MEETINGS MEETING STATE RAIL TRACK RATING WEATHER RACES DECLARED SCRATCHINGS Coleraine Not supplied Not supplied Not supplied Weather unavailable 0 0 0 Pakenham Synthetic VIC Not supplied Synth Weather unavailable 10 170 0 WORKSPACES Race intelligence workspace Open the approved race overview and field context EPI Leaders Today See the top rated runners across all meetings Value Opportunities Runners wi"
+    },
+    {
+      "workspace": "MEETINGS",
+      "activeSection": "meetings",
+      "screenshot": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-live-data\\MEETINGS_POPULATED.png",
+      "screenshotStatus": "SAVED",
+      "bodyLength": 1026,
+      "hasFailedToFetch": false,
+      "hasPakenham": true,
+      "hasRaceContext": true,
+      "bodySample": "EDGEiQ RACE INTELLIGENCE HOME MEETINGS RACE FIELD FORM GUIDE PERFORMANCE EPI MAP MARKET OVERVIEW INSIGHTS RESULTS LAB COMPARE REVIEW SETTINGS EDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM Information is not Intelligence. Evidence leads. Precision decides. MON, 20 JULY 2026 11:07 am AEDT MEETINGS Three day racing outlook. Select a meeting to view races and details. DATE RANGE (BUILDER CONTROLLED) TODAY Mon, 20 July TOMORROW Tue, 21 July DAY +2 Wed, 22 July MEETINGS (MONDAY 20 JULY 2026) FILTERS OPEN MEETING SELECT MEETING STATE RAIL TRACK WEATHER RACES DECLARED SCRATCHINGS Select Coleraine Not supplied Not supplied Not supplied Weather unavailable 0 0 0 Selected Pakenham Synthetic VIC Not supplied Synth Weather unavailable 10 170 0 Showing 1 to 2 of 2 meetings Current Completed Abandoned Postponed RACE START TIMES (ALL MEETINGS) 11AM 12PM 1PM 2PM 3PM 4PM 5PM 6PM Coleraine (0) Pakenham Synthetic (10) R1 R2 R3 R4 R5 R6 R7 EDGEiQ Racing Intelligence Operating System Build: 1.0.0 Data as at: 11:07 am AEDT"
+    },
+    {
+      "workspace": "RACE",
+      "activeSection": "race",
+      "screenshot": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-live-data\\RACE_POPULATED.png",
+      "screenshotStatus": "SAVED",
+      "bodyLength": 2608,
+      "hasFailedToFetch": false,
+      "hasPakenham": true,
+      "hasRaceContext": true,
+      "bodySample": "EDGEiQ RACE INTELLIGENCE HOME MEETINGS RACE FIELD FORM GUIDE PERFORMANCE EPI MAP MARKET OVERVIEW INSIGHTS RESULTS LAB COMPARE REVIEW SETTINGS EDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM Information is not Intelligence. Evidence leads. Precision decides. MON, 20 JULY 2026 11:07 am AEDT MEETINGS › PAKENHAM SYNTHETIC › RACE 1 Race 1 Ladbrokes Odds Surge Maiden Plate Maiden Pakenham Synthetic 2026-07-20 Time unavailable 1000m Surface unavailable Prizemoney: Unavailable Weather unavailable BACK TO RACES RACE OVERVIEW FIELD & RUNNERS FORM GUIDE MAP MARKET OVERVIEW INSIGHTS RESULTS RACE SUMMARY Race 1 Name Ladbrokes Odds Surge Maiden Plate Class Maiden Distance 1000m Prize Money Unavailable Surface Unavailable Rail Unavailable Track Rating Synth First Race Unavailable Last Race Unavailable RACE CONDITIONS Track Rating Synth Rail Position Unavailable Track Bias Unavailable Wind Unavailable Temperature Unavailable Humidity Unavailable Rain (24h) Unavailable Rain (7d) Unavailable Penetrometer Unavailable MEETING INFORMATION Track Type Unavailable Track Circumference Unavailable Straight Unavailable Direction Unavailable Rail Position Unavailable Penetrometer Unavailable Irrigati"
+    },
+    {
+      "workspace": "FIELD",
+      "activeSection": "field",
+      "screenshot": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-live-data\\FIELD_POPULATED.png",
+      "screenshotStatus": "SAVED",
+      "bodyLength": 1834,
+      "hasFailedToFetch": false,
+      "hasPakenham": true,
+      "hasRaceContext": true,
+      "bodySample": "EDGEiQ RACE INTELLIGENCE HOME MEETINGS RACE FIELD FORM GUIDE PERFORMANCE EPI MAP MARKET OVERVIEW INSIGHTS RESULTS LAB COMPARE REVIEW SETTINGS EDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM Information is not Intelligence. Evidence leads. Precision decides. MON, 20 JULY 2026 11:07 am AEDT MEETINGS PAKENHAM SYNTHETIC RACE 1 FIELD Race 1 Ladbrokes Odds Surge Maiden Plate Maiden Back to Races LOCATION Pakenham Synthetic DATE 2026-07-20 DISTANCE 1000m TRACK Synth RACE FIELD FORM GUIDE PERFORMANCE MAP MARKET OVERVIEW INSIGHTS EPI RESULTS REVIEW FIELD Race field Official runners with governed EDGEiQ fields where available. NO SILK RUNNER BAR WGT JOCKEY TRAINER EDGEIQ MARKET STATUS 1 Bohemian Boy - Not available - - - Not available Active 2 Brazen Bold - Not available - - - Not available Active 3 Chigurh - Not available - - - Not available Active 4 Crudens Tycoon - Not available - - - Not available Active 5 Guv - Not available - - - Not available Active 6 Inside Word - Not available - - - Not available Active 7 Phillip Island - Not available - - - Not available Active 8 Pocketfullofcash - Not available - - - Not available Active 9 Sodapop - Not available - - - Not available Activ"
+    },
+    {
+      "workspace": "FORM GUIDE",
+      "activeSection": "formGuide",
+      "screenshot": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-live-data\\FORM_GUIDE_POPULATED.png",
+      "screenshotStatus": "SAVED",
+      "bodyLength": 1847,
+      "hasFailedToFetch": false,
+      "hasPakenham": true,
+      "hasRaceContext": true,
+      "bodySample": "EDGEiQ RACE INTELLIGENCE HOME MEETINGS RACE FIELD FORM GUIDE PERFORMANCE EPI MAP MARKET OVERVIEW INSIGHTS RESULTS LAB COMPARE REVIEW SETTINGS EDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM Information is not Intelligence. Evidence leads. Precision decides. MON, 20 JULY 2026 11:07 am AEDT MEETINGS PAKENHAM SYNTHETIC RACE 1 FORM GUIDE Race 1 Ladbrokes Odds Surge Maiden Plate Maiden Back to Races LOCATION Pakenham Synthetic DATE 2026-07-20 DISTANCE 1000m TRACK Synth RACE FIELD FORM GUIDE PERFORMANCE MAP MARKET OVERVIEW INSIGHTS EPI RESULTS REVIEW R1 R2 R3 R4 R5 R6 R7 R8 R9 R10 METRIC GUIDE NO SILKS LAST 5 HORSE TRAINER JOCKEY WT BAR DAYS EPI EARLY SPEED LATE SPEED SUITABILITY FORM MOMENTUM MARKET EDGEIQ PRICE 1 Bohemian Boy HORSE PROFILE 1 Bohemian Boy EPI EARLY SPEED LATE SPEED SUITABILITY FORM MOMENTUM MARKET EDGEIQ PRICE TRAINER JOCKEY WT BAR MARKET EDGEIQ PRICE DAYS GEAR HORSE PROFILE Career evidence for today's race CAREER & CONDITIONS CAREER TRACK DISTANCE TRACK/DIST FIRM GOOD SOFT HEAVY CONNECTIONS & CLASS JOCKEY CLASS PREPARATION 1ST UP 2ND UP 3RD UP TODAY'S MATCH Governed match evidence is not available for this runner. RECENT FORM Last 8 Starts ESI is EDGEiQ standa"
+    },
+    {
+      "workspace": "PERFORMANCE",
+      "activeSection": "performance",
+      "screenshot": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-live-data\\PERFORMANCE_POPULATED.png",
+      "screenshotStatus": "SAVED",
+      "bodyLength": 1816,
+      "hasFailedToFetch": false,
+      "hasPakenham": true,
+      "hasRaceContext": true,
+      "bodySample": "EDGEiQ RACE INTELLIGENCE HOME MEETINGS RACE FIELD FORM GUIDE PERFORMANCE EPI MAP MARKET OVERVIEW INSIGHTS RESULTS LAB COMPARE REVIEW SETTINGS EDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM Information is not Intelligence. Evidence leads. Precision decides. MON, 20 JULY 2026 11:07 am AEDT MEETINGS PAKENHAM SYNTHETIC RACE 1 PERFORMANCE Race 1 Ladbrokes Odds Surge Maiden Plate Maiden Back to Races LOCATION Pakenham Synthetic DATE 2026-07-20 DISTANCE 1000m TRACK Synth RACE FIELD FORM GUIDE PERFORMANCE MAP MARKET OVERVIEW INSIGHTS EPI RESULTS REVIEW FIELD EPI MATRIX Quick field scan PERFORMANCE DNA Single horse analysis PEAK PERFORMANCES Top runs in career TRENDS & PROFILES Performance analytics RECORD BOOK Career bests SECTIONALS Speed and sectional data VIEW EPI ERI EARLY SPEED LATE SPEED SUITABILITY FORM MOMENTUM STATUS Governed historical performance cells loaded. ROWS 18 HISTORICAL RUNS 13 PERFORMANCE MATRIX NO / SILK / HORSE / EPI / AVG / LAST / historical runs NO SILK HORSE EPI AVG LAST L5 L4 L3 L2 L1 1 Bohemian Boy - - - - - - - - 2 Brazen Bold - - - - - - - - 3 Chigurh - - - - - - - - 4 Crudens Tycoon - - - - - - - - 5 Guv - - - - - - - - 6 Inside Word - - - - - - - -"
+    },
+    {
+      "workspace": "MAP",
+      "activeSection": "map",
+      "screenshot": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-live-data\\MAP_POPULATED.png",
+      "screenshotStatus": "SAVED",
+      "bodyLength": 2264,
+      "hasFailedToFetch": false,
+      "hasPakenham": true,
+      "hasRaceContext": true,
+      "bodySample": "EDGEiQ RACE INTELLIGENCE HOME MEETINGS RACE FIELD FORM GUIDE PERFORMANCE EPI MAP MARKET OVERVIEW INSIGHTS RESULTS LAB COMPARE REVIEW SETTINGS EDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM Information is not Intelligence. Evidence leads. Precision decides. MON, 20 JULY 2026 11:07 am AEDT MEETINGS PAKENHAM SYNTHETIC RACE 1 MAP Race 1 Ladbrokes Odds Surge Maiden Plate Maiden Back to Races LOCATION Pakenham Synthetic DATE 2026-07-20 DISTANCE 1000m TRACK Synth RACE FIELD FORM GUIDE PERFORMANCE MAP MARKET OVERVIEW INSIGHTS EPI RESULTS REVIEW MAP How will this race be run? Traditional barrier map. Right-to-left travel. Plain blue lanes. RUNNERS 18 RACE READ Pending RACE MAP - PREDICTED SETTLING POSITIONS Victorian orientation. Barrier 1 bottom. Travel right to left. RACING DIRECTION ← 1 Bohemian Boy No speed 2 Brazen Bold No speed 3 Chigurh No speed 4 Crudens Tycoon No speed 5 Guv No speed 6 Inside Word No speed 7 Phillip Island No speed 8 Pocketfullofcash No speed 9 Sodapop No speed 10 Blue Spanish Sky No speed 11 Emerald Lady No speed 12 Gunnah's Conker No speed 13 Tommy's Lass No speed 14 One Day At A Time No speed 15 The Troubleshooter No speed 16 Prince Of Portland No spee"
+    },
+    {
+      "workspace": "EPI",
+      "activeSection": "epi",
+      "screenshot": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-live-data\\EPI_POPULATED.png",
+      "screenshotStatus": "SAVED",
+      "bodyLength": 2914,
+      "hasFailedToFetch": false,
+      "hasPakenham": true,
+      "hasRaceContext": true,
+      "bodySample": "EDGEiQ RACE INTELLIGENCE HOME MEETINGS RACE FIELD FORM GUIDE PERFORMANCE EPI MAP MARKET OVERVIEW INSIGHTS RESULTS LAB COMPARE REVIEW SETTINGS EDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM Information is not Intelligence. Evidence leads. Precision decides. MON, 20 JULY 2026 11:07 am AEDT MEETINGS PAKENHAM SYNTHETIC RACE 1 EPI Race 1 Ladbrokes Odds Surge Maiden Plate Maiden Back to Races LOCATION Pakenham Synthetic DATE 2026-07-20 DISTANCE 1000m TRACK Synth RACE FIELD FORM GUIDE PERFORMANCE MAP MARKET OVERVIEW INSIGHTS EPI RESULTS REVIEW EPI Pakenham Synthetic R1 EDGEIQ Performance Index field ranking, last-10 profile, evidence status and benchmark race strength. STATUS unavailable ROWS 18 SOURCE ROWS 374 SELECTED RUNNER Bohemian Boy CURRENT EPI RACE RANK FIELD AVERAGE DIFFERENCE PEAK LAST 10 AVERAGE LAST 10 TREND EPI MATRIX Field ranking, last-10 profile and evidence status RANK NO RUNNER JOCKEY TRAINER CURRENT EPI FIELD DIFF PEAK LAST 10 AVG LAST 10 TREND VALID STARTS EVIDENCE STATUS 1 Bohemian Boy Unavailable Unavailable Stable 0 unavailable unavailable 2 Brazen Bold Unavailable Unavailable Stable 0 unavailable unavailable 3 Chigurh Unavailable Unavailable Stable 0 unav"
+    },
+    {
+      "workspace": "MARKET",
+      "activeSection": "market",
+      "screenshot": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-live-data\\MARKET_POPULATED.png",
+      "screenshotStatus": "SAVED",
+      "bodyLength": 2100,
+      "hasFailedToFetch": false,
+      "hasPakenham": true,
+      "hasRaceContext": true,
+      "bodySample": "EDGEiQ RACE INTELLIGENCE HOME MEETINGS RACE FIELD FORM GUIDE PERFORMANCE EPI MAP MARKET OVERVIEW INSIGHTS RESULTS LAB COMPARE REVIEW SETTINGS EDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM Information is not Intelligence. Evidence leads. Precision decides. MON, 20 JULY 2026 11:07 am AEDT MEETINGS PAKENHAM SYNTHETIC RACE 1 MARKET Race 1 Ladbrokes Odds Surge Maiden Plate Maiden Back to Races LOCATION Pakenham Synthetic DATE 2026-07-20 DISTANCE 1000m TRACK Synth RACE FIELD FORM GUIDE PERFORMANCE MAP MARKET OVERVIEW INSIGHTS EPI RESULTS REVIEW MARKET Market and EDGEiQ price context Current market, EDGEiQ assessed price and governed edge for every runner. RUNNERS 18 RACE READ Pending MARKET BOARD NO / RUNNER / EDGEIQ / MARKET / FAIR / EDGE / FLUC 60s % / STATUS NO RUNNER EDGEIQ MARKET FAIR EDGE FLUC 60S % STATUS 1 Bohemian Boy Unavailable Pending Pending Pending Market 2 Brazen Bold Unavailable Pending Pending Pending Market 3 Chigurh Unavailable Pending Pending Pending Market 4 Crudens Tycoon Unavailable Pending Pending Pending Market 5 Guv Unavailable Pending Pending Pending Market 6 Inside Word Unavailable Pending Pending Pending Market 7 Phillip Island Unavailable Pending "
+    },
+    {
+      "workspace": "OVERVIEW",
+      "activeSection": "overview",
+      "screenshot": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-live-data\\OVERVIEW_POPULATED.png",
+      "screenshotStatus": "SAVED",
+      "bodyLength": 3152,
+      "hasFailedToFetch": false,
+      "hasPakenham": true,
+      "hasRaceContext": true,
+      "bodySample": "EDGEiQ RACE INTELLIGENCE HOME MEETINGS RACE FIELD FORM GUIDE PERFORMANCE EPI MAP MARKET OVERVIEW INSIGHTS RESULTS LAB COMPARE REVIEW SETTINGS EDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM Information is not Intelligence. Evidence leads. Precision decides. MON, 20 JULY 2026 11:07 am AEDT MEETINGS PAKENHAM SYNTHETIC RACE 1 OVERVIEW Race 1 Ladbrokes Odds Surge Maiden Plate Maiden Back to Races LOCATION Pakenham Synthetic DATE 2026-07-20 DISTANCE 1000m TRACK Synth RACE FIELD FORM GUIDE PERFORMANCE MAP MARKET OVERVIEW INSIGHTS EPI RESULTS REVIEW OVERVIEW Pakenham Synthetic R1 Concise race summary, speed-map preview, EPI snapshot and runner board. OVERVIEW 6 EPI ROWS 18 MAP ROWS 18 RACE ENVIRONMENT Pakenham Synthetic | R1 | 1000m | Maiden | Synth Available MAP / RACE SHAPE Map feed rows 18; race-shape summary pending Partial FIELD INTELLIGENCE Pending Pending EPI SNAPSHOT Awaiting EPI figures 18 runners listed SPEED MAP PREVIEW Awaiting map evidence 18 active runners RACE EVIDENCE 3 populated reads 6 overview sections SPEED MAP PREVIEW Awaiting governed positions LEAD No governed runners ON PACE No governed runners MIDFIELD No governed runners BACK No governed runners AWAITING"
+    },
+    {
+      "workspace": "INSIGHTS",
+      "activeSection": "insights",
+      "screenshot": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-live-data\\INSIGHTS_POPULATED.png",
+      "screenshotStatus": "SAVED",
+      "bodyLength": 3225,
+      "hasFailedToFetch": false,
+      "hasPakenham": true,
+      "hasRaceContext": true,
+      "bodySample": "EDGEiQ RACE INTELLIGENCE HOME MEETINGS RACE FIELD FORM GUIDE PERFORMANCE EPI MAP MARKET OVERVIEW INSIGHTS RESULTS LAB COMPARE REVIEW SETTINGS EDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM Information is not Intelligence. Evidence leads. Precision decides. MON, 20 JULY 2026 11:07 am AEDT MEETINGS PAKENHAM SYNTHETIC RACE 1 INSIGHTS Race 1 Ladbrokes Odds Surge Maiden Plate Maiden Back to Races LOCATION Pakenham Synthetic DATE 2026-07-20 DISTANCE 1000m TRACK Synth RACE FIELD FORM GUIDE PERFORMANCE MAP MARKET OVERVIEW INSIGHTS EPI RESULTS REVIEW INSIGHTS Pakenham Synthetic R1 GOVERNED CATEGORIES ONLY. UNSUPPORTED READS REMAIN UNAVAILABLE. WORKSPACE BETA-012 STATUS unavailable ROWS 18 STABLE INTENT Not supplied Governed feed has not supplied this category for the selected race. PREPARATION STAGE Not supplied Governed feed has not supplied this category for the selected race. HEAVY SKILL Not supplied Governed feed has not supplied this category for the selected race. CAMPAIGN PROFILE Not supplied Governed feed has not supplied this category for the selected race. APPROVED CATEGORIES Stable Intent, Preparation Stage, Heavy Skill and Campaign Profile are shown only when supplied "
+    },
+    {
+      "workspace": "RESULTS",
+      "activeSection": "results",
+      "screenshot": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-live-data\\RESULTS_POPULATED.png",
+      "screenshotStatus": "SAVED",
+      "bodyLength": 2542,
+      "hasFailedToFetch": false,
+      "hasPakenham": true,
+      "hasRaceContext": true,
+      "bodySample": "EDGEiQ RACE INTELLIGENCE HOME MEETINGS RACE FIELD FORM GUIDE PERFORMANCE EPI MAP MARKET OVERVIEW INSIGHTS RESULTS LAB COMPARE REVIEW SETTINGS EDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM Information is not Intelligence. Evidence leads. Precision decides. MON, 20 JULY 2026 11:07 am AEDT MEETINGS PAKENHAM SYNTHETIC RACE 1 RESULTS Race 1 Ladbrokes Odds Surge Maiden Plate Maiden Back to Races LOCATION Pakenham Synthetic DATE 2026-07-20 DISTANCE 1000m TRACK Synth RACE FIELD FORM GUIDE PERFORMANCE MAP MARKET OVERVIEW INSIGHTS EPI RESULTS REVIEW RESULTS Pakenham Synthetic R1 Awaiting official result. The approved review structure remains available while official result fields are pending. STATUS Awaiting official result WINNER Pending RACE RATING Pending SECTIONALS Lengths vs standard when governed STEWARDS Pending OFFICIAL FINISHING ORDER Pending result structure Pos No Horse Jockey Trainer SP Margin Status Pending - Bohemian Boy - - Pending Pending Pending Pending - Brazen Bold - - Pending Pending Pending Pending - Chigurh - - Pending Pending Pending Pending - Crudens Tycoon - - Pending Pending Pending Pending - Guv - - Pending Pending Pending Pending - Inside Word - - Pendi"
+    },
+    {
+      "workspace": "LAB",
+      "activeSection": "lab",
+      "screenshot": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-live-data\\LAB_POPULATED.png",
+      "screenshotStatus": "SAVED",
+      "bodyLength": 4154,
+      "hasFailedToFetch": false,
+      "hasPakenham": true,
+      "hasRaceContext": true,
+      "bodySample": "EDGEiQ RACE INTELLIGENCE HOME MEETINGS RACE FIELD FORM GUIDE PERFORMANCE EPI MAP MARKET OVERVIEW INSIGHTS RESULTS LAB COMPARE REVIEW SETTINGS EDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM Information is not Intelligence. Evidence leads. Precision decides. MON, 20 JULY 2026 11:07 am AEDT LAB Stats Engine & Query Builder Build browser-safe racing queries across the approved product intelligence set. RACES 26 HORSES 374 BENCHMARKS 785 HISTORICAL ROWS 2086 UNIVERSE Today TRACK All Tracks Moe Pakenham Synthetic Sandown Hillside SCOPE All Races ENTITY Horse Race Benchmark Jockey - Governed research data is not available for this module. Trainer - Governed research data is not available for this module. METRIC Performance Count Eligible Performances GROUP BY No Grouping Track Race Condition Class SORT Highest First Lowest First RESULT LIMIT 3 10 25 50 FILTER RUN QUERY HORSE RESEARCH 374 rows returned from governed horse research data. HORSE TRACK RACE PROFILE PERFORMANCE COUNT ELIGIBLE PERFORMANCES DATE RANGE MOSCOW RED WARRNAMBOOL 2026-07-21|MOE|R5 ESTABLISHED PROFILE 77 53 2018-01-28..2026-05-10 IN YOUR HANDS SPORTSBET-PAKENHAM 2026-07-21|MOE|R6 ESTABLISHED PROFILE 64 42 2023"
+    },
+    {
+      "workspace": "COMPARE",
+      "activeSection": "compare",
+      "screenshot": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-live-data\\COMPARE_POPULATED.png",
+      "screenshotStatus": "SAVED",
+      "bodyLength": 2809,
+      "hasFailedToFetch": false,
+      "hasPakenham": false,
+      "hasRaceContext": true,
+      "bodySample": "EDGEiQ RACE INTELLIGENCE HOME MEETINGS RACE FIELD FORM GUIDE PERFORMANCE EPI MAP MARKET OVERVIEW INSIGHTS RESULTS LAB COMPARE REVIEW SETTINGS EDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM Information is not Intelligence. Evidence leads. Precision decides. MON, 20 JULY 2026 11:07 am AEDT COMPARE Side-by-side governed comparison Compare horses or races using common certified performance fields. Values that are not present in the governed feed remain unavailable. FEED Loaded 2026-07-20T00:56:15Z ENTITY HORSE RACE LEFT Bohemian Boy BRAZEN BOLD Chigurh Crudens Tycoon Guv INSIDE WORD PHILLIP ISLAND Pocketfullofcash SODAPOP Blue Spanish Sky Emerald Lady Gunnah's Conker Tommy's Lass ONE DAY AT A TIME THE TROUBLESHOOTER PRINCE OF PORTLAND ARTISON DARLING ROSE RIGHT Bohemian Boy BRAZEN BOLD Chigurh Crudens Tycoon Guv INSIDE WORD PHILLIP ISLAND Pocketfullofcash SODAPOP Blue Spanish Sky Emerald Lady Gunnah's Conker Tommy's Lass ONE DAY AT A TIME THE TROUBLESHOOTER PRINCE OF PORTLAND ARTISON DARLING ROSE SCOPE Current race runners LEFT Bohemian Boy 0 starts PROFILE STATE Insufficient Evidence RUNS 0 ELIGIBLE RUNS 0 DATE RANGE Unavailable RIGHT BRAZEN BOLD 2026-06-11..2026-06-11 | 1 s"
+    },
+    {
+      "workspace": "REVIEW",
+      "activeSection": "review",
+      "screenshot": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-live-data\\REVIEW_POPULATED.png",
+      "screenshotStatus": "SAVED",
+      "bodyLength": 1725,
+      "hasFailedToFetch": false,
+      "hasPakenham": true,
+      "hasRaceContext": true,
+      "bodySample": "EDGEiQ RACE INTELLIGENCE HOME MEETINGS RACE FIELD FORM GUIDE PERFORMANCE EPI MAP MARKET OVERVIEW INSIGHTS RESULTS LAB COMPARE REVIEW SETTINGS EDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM Information is not Intelligence. Evidence leads. Precision decides. MON, 20 JULY 2026 11:07 am AEDT MEETINGS PAKENHAM SYNTHETIC RACE 1 REVIEW Race 1 Ladbrokes Odds Surge Maiden Plate Maiden Back to Races LOCATION Pakenham Synthetic DATE 2026-07-20 DISTANCE 1000m TRACK Synth RACE FIELD FORM GUIDE PERFORMANCE MAP MARKET OVERVIEW INSIGHTS EPI RESULTS REVIEW REVIEW Sectional and performance review Pakenham Synthetic R1 | Ladbrokes Odds Surge Maiden Plate STATUS Awaiting result RACE KEY 2026-07-20|PAKENHAM|R1 DISTANCE 1000m CLASS Maiden TRACK Synth RAIL Unavailable FIELD 18 WINNER Pending result RUNNERS / SCRATCHINGS Pending result SECTIONAL SUMMARY Pending result SECTIONAL PROFILE Pending result RUNNER PERFORMANCE SNAPSHOT Pending result STEWARDS / NOTES Pending result REVIEW STRUCTURE Race analysis modules AREA STATE DETAIL ACTION Form guide Available 18 runners loaded for this race. Open Form guide Race intelligence Available Race overview and current intelligence are available for review"
+    },
+    {
+      "workspace": "SETTINGS",
+      "activeSection": "settings",
+      "screenshot": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-live-data\\SETTINGS_POPULATED.png",
+      "screenshotStatus": "SAVED",
+      "bodyLength": 1170,
+      "hasFailedToFetch": false,
+      "hasPakenham": false,
+      "hasRaceContext": true,
+      "bodySample": "EDGEiQ RACE INTELLIGENCE HOME MEETINGS RACE FIELD FORM GUIDE PERFORMANCE EPI MAP MARKET OVERVIEW INSIGHTS RESULTS LAB COMPARE REVIEW SETTINGS EDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM Information is not Intelligence. Evidence leads. Precision decides. MON, 20 JULY 2026 11:07 am AEDT SETTINGS Product settings and data boundaries Configuration surface for what is currently connected. Nothing here changes model outputs or production calculations. DISPLAY Theme Light workspace locked Tables Compact racing form layout Contrast Dark text on white surfaces DATA Browser feeds Compact governed feeds only Warehouse data Backend builders only Unavailable values Shown honestly WEATHER Source state Builder-owned Freshness Service supplied Timestamps Preserved from live feed REVIEW Saved records Not connected Result analysis Requires supplied result User notes Not stored in this build BOUNDARY Settings are display and governance only. Pricing, EPI, ERI, EPF, weather freshness and performance intelligence calculations remain owned by their existing services and builders. EDGEiQ Racing Intelligence Operating System Build: 1.0.0 Data as at: 11:07 am AEDT"
+    }
+  ]
+}

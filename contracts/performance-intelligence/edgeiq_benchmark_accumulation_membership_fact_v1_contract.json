@@ -1,0 +1,21 @@
+{
+  "contract_name": "edgeiq_benchmark_accumulation_membership_fact_v1",
+  "contract_version": "1.0.0",
+  "grain": "one_row_per_eligible_observation_to_benchmark_group_membership",
+  "primary_key": ["benchmark_group_id", "benchmark_observation_id"],
+  "required_fields": [
+    "benchmark_group_id",
+    "benchmark_observation_id",
+    "membership_ordinal",
+    "track_name",
+    "official_distance_metres",
+    "membership_sha256",
+    "source_benchmark_use_class",
+    "builder_version",
+    "contract_version",
+    "built_at_utc"
+  ],
+  "allowed_values": {
+    "source_benchmark_use_class": ["STANDARD_TIME_ELIGIBLE"]
+  }
+}

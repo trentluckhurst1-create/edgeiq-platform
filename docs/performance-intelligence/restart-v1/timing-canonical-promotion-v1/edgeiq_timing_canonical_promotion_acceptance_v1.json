@@ -1,0 +1,65 @@
+{
+  "generated_utc": "2026-07-30T07:44:11Z",
+  "lengths_v_standard": 52414,
+  "new_contract": "public/data/edgeiq_canonical_historical_timing_warehouse_v1.csv",
+  "old_contract": "public/data/edgeiq_benchmark_observation_fact_v1.csv retained; current-window role public/data/edgeiq_benchmark_observation_current_window_v2_1.csv",
+  "performance_base": 52414,
+  "race_time_deltas": 54978,
+  "rollback_archive": "docs/performance-intelligence/restart-v1/timing-canonical-promotion-v1/archive/20260730T074411Z",
+  "rollback_status": "AVAILABLE",
+  "standard_times": 695,
+  "status": "PASS",
+  "three_race_reconciliation": {
+    "cause": "AUDIT_COUNTING_SCOPE_DIFFERENCE_RAW_TIME_NONBLANK_VERSUS_GOVERNED_SECONDS_NUMERIC_POSITIVE",
+    "difference": 3,
+    "exact_three_records": [
+      {
+        "action": "EXCLUDED_UNTIL_SUPPORTED_TIME_UNIT_TRANSFORMATION_EXISTS",
+        "canonical_race_id": "EIQ_RACE_477B30F765AAC875",
+        "cause": "PRIOR_AUDIT_COUNTED_NONBLANK_RAW_OFFICIAL_RACE_TIME_BUT_RECOVERY_REQUIRES_NUMERIC_POSITIVE_SECONDS",
+        "distance_metres": "5500",
+        "official_race_time": "42274.0",
+        "official_race_time_seconds": "",
+        "race_class": "Steeple",
+        "race_date": "2023-05-04",
+        "race_number": "7.0",
+        "source_record_key": "2023-05-04|WARRNAMBOOL|5329042.0|7.0|13748404|STERN IDOL",
+        "time_unit": "UNSUPPORTED_TIME_UNIT",
+        "track": "WARRNAMBOOL"
+      },
+      {
+        "action": "EXCLUDED_UNTIL_SUPPORTED_TIME_UNIT_TRANSFORMATION_EXISTS",
+        "canonical_race_id": "EIQ_RACE_B5B4A24EC160FD5B",
+        "cause": "PRIOR_AUDIT_COUNTED_NONBLANK_RAW_OFFICIAL_RACE_TIME_BUT_RECOVERY_REQUIRES_NUMERIC_POSITIVE_SECONDS",
+        "distance_metres": "5500",
+        "official_race_time": "43605.0",
+        "official_race_time_seconds": "",
+        "race_class": "Steeple",
+        "race_date": "2007-05-03",
+        "race_number": "7.0",
+        "source_record_key": "2007-05-03|WARRNAMBOOL|838672.0|7.0|5532217|CLEARVIEW BAY",
+        "time_unit": "UNSUPPORTED_TIME_UNIT",
+        "track": "WARRNAMBOOL"
+      },
+      {
+        "action": "EXCLUDED_UNTIL_SUPPORTED_TIME_UNIT_TRANSFORMATION_EXISTS",
+        "canonical_race_id": "EIQ_RACE_C407130DC4B7DC56",
+        "cause": "PRIOR_AUDIT_COUNTED_NONBLANK_RAW_OFFICIAL_RACE_TIME_BUT_RECOVERY_REQUIRES_NUMERIC_POSITIVE_SECONDS",
+        "distance_metres": "1000",
+        "official_race_time": "100.0",
+        "official_race_time_seconds": "",
+        "race_class": "Trial",
+        "race_date": "2024-10-14",
+        "race_number": "5.0",
+        "source_record_key": "2024-10-14|BET365 SEYMOUR|5405029.0|5.0|14660401|ROSEY OF THE TOSEY",
+        "time_unit": "UNSUPPORTED_TIME_UNIT",
+        "track": "BET365 SEYMOUR"
+      }
+    ],
+    "numeric_positive_official_race_time_seconds_distinct_races": 70308,
+    "prior_audit_timed_races": 70311,
+    "raw_official_race_time_nonblank_distinct_races": 70311,
+    "status": "RECONCILED"
+  },
+  "timed_races": 70308
+}

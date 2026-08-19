@@ -1,0 +1,70 @@
+{
+  "marker": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE1_6_1_AUDIT_PASS",
+  "snapshot_id": "eiq_performance_facts_v0_2_a0c3715ab506d19f9301d8a4",
+  "snapshot_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\performance-intelligence\\warehouse\\performance-facts-corrected\\eiq_performance_facts_v0_2_a0c3715ab506d19f9301d8a4",
+  "rows": 879784,
+  "unique_performance_ids": 879784,
+  "blank_performance_ids": 0,
+  "duplicate_performance_ids": 0,
+  "id_reproducibility_percentage": 100.0,
+  "race_contract_linkage_percentage": 100.0,
+  "governed_eligible_runner_rows": 712628,
+  "governed_blocked_runner_rows": 167156,
+  "conflict_runner_rows": 612,
+  "time_unavailable_runner_rows": 9639,
+  "source_incomplete_runner_rows": 166901,
+  "checks": [
+    {
+      "check": "SOURCE_OUTPUT_ROW_COUNT",
+      "passed": true,
+      "observed": 879784
+    },
+    {
+      "check": "PERFORMANCE_PRIMARY_KEY",
+      "passed": true,
+      "observed": "blank=0;duplicates=0;unique=879784"
+    },
+    {
+      "check": "PERFORMANCE_ID_REPRODUCIBILITY",
+      "passed": true,
+      "observed": 0
+    },
+    {
+      "check": "LEGACY_ID_LINEAGE",
+      "passed": true,
+      "observed": "legacy_missing=0;identity_version_missing=0"
+    },
+    {
+      "check": "RACE_CONTRACT_LINKAGE",
+      "passed": true,
+      "observed": 0
+    },
+    {
+      "check": "GOVERNED_ELIGIBILITY_APPLIED",
+      "passed": true,
+      "observed": "eligible=712628;blocked=167156"
+    },
+    {
+      "check": "CONFLICTS_QUARANTINED",
+      "passed": true,
+      "observed": "conflict_rows=612;eligible=0"
+    },
+    {
+      "check": "TIME_UNAVAILABLE_BLOCKED",
+      "passed": true,
+      "observed": "no_time_rows=9639;eligible=0"
+    },
+    {
+      "check": "SOURCE_INCOMPLETE_BLOCKED",
+      "passed": true,
+      "observed": "source_incomplete_rows=166901;eligible=0"
+    },
+    {
+      "check": "INTEGRITY_HASHES",
+      "passed": true,
+      "observed": "all files verified"
+    }
+  ],
+  "failed_checks": [],
+  "manifest_status": "CORRECTED_PERFORMANCE_FACTS_PASS"
+}

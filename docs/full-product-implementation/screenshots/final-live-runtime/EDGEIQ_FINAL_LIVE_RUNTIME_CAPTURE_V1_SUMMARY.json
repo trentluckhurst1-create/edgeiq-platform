@@ -1,0 +1,13 @@
+{
+  "built_at": "2026-07-19T18:51:02+10:00",
+  "workspace_count": 19,
+  "live_rendered_count": 19,
+  "approved_copy_count": 19,
+  "overlay_count": 19,
+  "diff_count": 19,
+  "runtime_json_count": 19,
+  "comparison_count": 19,
+  "capture_error_count": 0,
+  "average_rms_difference": 50.993,
+  "status": "EDGEIQ_FINAL_LIVE_RUNTIME_CAPTURE_COMPLETE"
+}

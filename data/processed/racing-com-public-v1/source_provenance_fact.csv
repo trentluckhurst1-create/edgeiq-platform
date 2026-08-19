@@ -1,0 +1,2 @@
+source,source_path,access_classification,rows_normalised,canonical_admission,reason
+Racing.com retained getRaceForm payloads,outputs/sectionals/raw/VIC/racingcom_full_payloads/getRaceForm_*.json,LOCAL_GOVERNED_EVIDENCE_DIRECT_PUBLIC_NOT_CONFIRMED,2682,NO,Public anonymous runner-sectional replay not confirmed

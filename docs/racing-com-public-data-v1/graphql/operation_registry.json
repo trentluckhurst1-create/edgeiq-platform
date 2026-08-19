@@ -1,0 +1,34 @@
+[
+  {
+    "operation_name": "MEETING",
+    "document_path": "docs\\racing-com-public-data-v1\\graphql\\operation_documents\\meeting.graphql",
+    "source": "repository_frontend_forensics_and_governed_local_evidence",
+    "document_sha256": "fdf61f0526c30be7ff45a6b4ceff94a5a78e5cc5edc5fb0f72b6b1f5094e8028",
+    "direct_graphql_replay_status": 200,
+    "access_classification": "PUBLIC_ANONYMOUS_CONFIRMED"
+  },
+  {
+    "operation_name": "RACE",
+    "document_path": "docs\\racing-com-public-data-v1\\graphql\\operation_documents\\race.graphql",
+    "source": "repository_frontend_forensics_and_governed_local_evidence",
+    "document_sha256": "5d5008bcdee6d9994d48ab6112544de57567b8bb386a4ec30fc08c9a90aa4a3c",
+    "direct_graphql_replay_status": "SKIPPED_CREDENTIAL_ABSENT",
+    "access_classification": "CREDENTIAL_REQUIRED"
+  },
+  {
+    "operation_name": "SECTIONAL_AVAILABILITY",
+    "document_path": "docs\\racing-com-public-data-v1\\graphql\\operation_documents\\sectional_availability.graphql",
+    "source": "repository_frontend_forensics_and_governed_local_evidence",
+    "document_sha256": "13744b4a62c3f237d18713f5c8a8391709cbbadd1b95bd4e7b1814587b0c24be",
+    "direct_graphql_replay_status": "SKIPPED_CREDENTIAL_ABSENT",
+    "access_classification": "CREDENTIAL_REQUIRED"
+  },
+  {
+    "operation_name": "RUNNER_SECTIONALS",
+    "document_path": "docs\\racing-com-public-data-v1\\graphql\\operation_documents\\runner_sectionals.graphql",
+    "source": "repository_frontend_forensics_and_governed_local_evidence",
+    "document_sha256": "1f0a90f3dfdad2b1327d01462a74ad54ea1a0230d2396fd3857c2aa25ee19911",
+    "direct_graphql_replay_status": "SKIPPED_CREDENTIAL_ABSENT",
+    "access_classification": "CREDENTIAL_REQUIRED"
+  }
+]

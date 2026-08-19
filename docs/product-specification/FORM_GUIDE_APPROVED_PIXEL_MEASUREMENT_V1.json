@@ -1,0 +1,310 @@
+{
+  "status": "FORM_GUIDE_APPROVED_PNG_MEASURED",
+  "chosen_source": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\approved-ui-rebuild\\05_FORM_GUIDE_APPROVED.png",
+  "copied_source": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\form-guide-exact\\05_FORM_GUIDE_APPROVED.png",
+  "sha256": "B13DB8C7300A3660C0E54600129F37EF877A172ECAB32121F2FDA86D18D7797C",
+  "canvas": {
+    "width": 1536,
+    "height": 1024
+  },
+  "content_bounds": {
+    "left": 6,
+    "top": 0,
+    "right": 1518,
+    "bottom": 1004
+  },
+  "dominant_colours": [
+    {
+      "hex": "#100100100",
+      "rgb": [
+        256,
+        256,
+        256
+      ],
+      "share": 0.70504
+    },
+    {
+      "hex": "#f8f8100",
+      "rgb": [
+        248,
+        248,
+        256
+      ],
+      "share": 0.05386
+    },
+    {
+      "hex": "#f8f8f8",
+      "rgb": [
+        248,
+        248,
+        248
+      ],
+      "share": 0.02482
+    },
+    {
+      "hex": "#f8100100",
+      "rgb": [
+        248,
+        256,
+        256
+      ],
+      "share": 0.01447
+    },
+    {
+      "hex": "#f0f0f8",
+      "rgb": [
+        240,
+        240,
+        248
+      ],
+      "share": 0.01135
+    },
+    {
+      "hex": "#f0f8100",
+      "rgb": [
+        240,
+        248,
+        256
+      ],
+      "share": 0.00933
+    },
+    {
+      "hex": "#e8e8f0",
+      "rgb": [
+        232,
+        232,
+        240
+      ],
+      "share": 0.00789
+    },
+    {
+      "hex": "#d0e0100",
+      "rgb": [
+        208,
+        224,
+        256
+      ],
+      "share": 0.00714
+    },
+    {
+      "hex": "#d0d0e0",
+      "rgb": [
+        208,
+        208,
+        224
+      ],
+      "share": 0.00559
+    },
+    {
+      "hex": "#e8f0100",
+      "rgb": [
+        232,
+        240,
+        256
+      ],
+      "share": 0.00554
+    },
+    {
+      "hex": "#d8d8e8",
+      "rgb": [
+        216,
+        216,
+        232
+      ],
+      "share": 0.00536
+    },
+    {
+      "hex": "#e0e0f0",
+      "rgb": [
+        224,
+        224,
+        240
+      ],
+      "share": 0.00526
+    },
+    {
+      "hex": "#c8c8e0",
+      "rgb": [
+        200,
+        200,
+        224
+      ],
+      "share": 0.00502
+    },
+    {
+      "hex": "#f0f0100",
+      "rgb": [
+        240,
+        240,
+        256
+      ],
+      "share": 0.00481
+    }
+  ],
+  "rule_scan": {
+    "vertical": [
+      20,
+      72,
+      100,
+      104,
+      208,
+      242,
+      374,
+      506,
+      528,
+      532,
+      555,
+      565,
+      570,
+      574,
+      588,
+      590,
+      597,
+      605,
+      626,
+      635,
+      648,
+      664,
+      672,
+      680,
+      691,
+      710,
+      718,
+      722,
+      738,
+      790,
+      820,
+      834,
+      842,
+      850,
+      858,
+      884,
+      888,
+      891,
+      900,
+      903,
+      912,
+      924,
+      963,
+      1006,
+      1018,
+      1022,
+      1026,
+      1032,
+      1046,
+      1078,
+      1091,
+      1124,
+      1138,
+      1155,
+      1194,
+      1217,
+      1224,
+      1230,
+      1250,
+      1270,
+      1276,
+      1280,
+      1305,
+      1328,
+      1343,
+      1363,
+      1382,
+      1385,
+      1390,
+      1396,
+      1401,
+      1431,
+      1458,
+      1465,
+      1468,
+      1482,
+      1492,
+      1516
+    ],
+    "horizontal": [
+      24,
+      50,
+      84,
+      100,
+      116,
+      146,
+      170,
+      190,
+      208,
+      221,
+      236,
+      256,
+      275,
+      289,
+      301,
+      314,
+      340,
+      364,
+      388,
+      414,
+      426,
+      431,
+      438,
+      462,
+      476,
+      518,
+      528,
+      540,
+      552,
+      568,
+      575,
+      590,
+      610,
+      627,
+      636,
+      648,
+      658,
+      668,
+      690,
+      718,
+      722,
+      748,
+      757,
+      766,
+      788,
+      807,
+      826,
+      844,
+      864,
+      870,
+      882,
+      902,
+      920,
+      950,
+      970,
+      998
+    ]
+  },
+  "candidate_pngs": [
+    {
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\approved-ui-rebuild\\05_FORM_GUIDE_APPROVED.png",
+      "name": "05_FORM_GUIDE_APPROVED.png",
+      "bytes": 1532622,
+      "sha256": "B13DB8C7300A3660C0E54600129F37EF877A172ECAB32121F2FDA86D18D7797C",
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-live-runtime\\05_FORM_GUIDE_APPROVED.png",
+      "name": "05_FORM_GUIDE_APPROVED.png",
+      "bytes": 1532622,
+      "sha256": "B13DB8C7300A3660C0E54600129F37EF877A172ECAB32121F2FDA86D18D7797C",
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\product-specification\\EDGEIQ_APPROVED_UI_REBUILD\\approved-pngs\\EDGEiQ_APPROVED_TABS\\05_FORM_GUIDE_APPROVED.png",
+      "name": "05_FORM_GUIDE_APPROVED.png",
+      "bytes": 1532622,
+      "sha256": "B13DB8C7300A3660C0E54600129F37EF877A172ECAB32121F2FDA86D18D7797C",
+      "width": 1536,
+      "height": 1024
+    }
+  ]
+}

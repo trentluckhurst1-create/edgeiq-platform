@@ -1,0 +1,23 @@
+{
+  "input_elapsed_observations": 449,
+  "standard_time_matched_observations": 168,
+  "converted_observations": 0,
+  "blocked_observations": 168,
+  "races": 2,
+  "runners": 24,
+  "benchmark_groups": 7,
+  "minimum_lvs": "",
+  "maximum_lvs": "",
+  "median_lvs": "",
+  "p05": "",
+  "p95": "",
+  "unsupported_observations": 168,
+  "missing_condition_observations": 0,
+  "firm_conversions": 0,
+  "good_conversions": 0,
+  "soft_conversions": 0,
+  "heavy_conversions": 0,
+  "conversion_method_distribution": "EDGEIQ_GOING_DEPENDENT_LENGTHS_PER_SECOND_V1",
+  "deterministic_hash": "d175b8d2a98e5b9e453627aa8d7aaf29125e2fd9a144e734b69305f0c07e2274",
+  "status": "LENGTHS_V_STANDARD_SCOPE_BLOCKED_FOR_CURRENT_ROWS"
+}

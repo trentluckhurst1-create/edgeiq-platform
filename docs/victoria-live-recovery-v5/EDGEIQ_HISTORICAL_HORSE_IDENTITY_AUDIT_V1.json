@@ -1,0 +1,10 @@
+{
+  "current_distinct_canonical_horses": 80,
+  "current_governed_identity_rows": 80,
+  "current_identity_rows": 80,
+  "historical_identity_recovery_attempted": "NO",
+  "identity_blocker_reopened": "NO",
+  "identity_method": "RACING_AUSTRALIA_SOURCE_ID_EXACT_CURRENT_CROSSWALK",
+  "reason": "Historical HPR-NORM-A-v1 application is not authorised, so no historical identity expansion was required or safe in V5.",
+  "status": "PASS"
+}

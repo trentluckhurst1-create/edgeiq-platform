@@ -1,0 +1,74 @@
+{
+  "stn": {
+    "identity": {
+      "bom_stn_num": 90173,
+      "river_stn_id": null,
+      "bom_stn_name": "Hamilton",
+      "wmo_stn_id": 94829,
+      "wigos_stn_id": null,
+      "ht_above_msl": 241.1,
+      "ht_barometer": 241.7
+    },
+    "location": {
+      "lat_dec_deg": -37.6486,
+      "long_dec_deg": 142.0636,
+      "timezone": "Australia/Melbourne"
+    }
+  },
+  "obs": {
+    "datetime_utc": "2026-07-10T03:40:00Z",
+    "temp": {
+      "dry_bulb_1min_cel": 13.2,
+      "apparent_1min_cel": 9.77,
+      "dew_pnt_1min_cel": 9.07,
+      "wet_bulb_1min_avg_cel": 11.09,
+      "wet_bulb_globe_sun_cel": 15.96,
+      "wet_bulb_globe_shade_cel": 11.72,
+      "wet_bulb_depression_cel": 2.11,
+      "dry_bulb_max_cel": 13.5,
+      "dry_bulb_max_time_utc": "2026-07-10T03:39:00Z",
+      "dry_bulb_min_cel": 4.3,
+      "dry_bulb_min_time_utc": "2026-07-09T18:06:00Z",
+      "rel_hum_percent": 76.0
+    },
+    "pres": {
+      "stn_lvl_hpa": null,
+      "msl_hpa": 1022.0,
+      "qnh_hpa": 1021.6
+    },
+    "wind": {
+      "speed_10m_mps": 5.299,
+      "dirn_10m_ord": "N",
+      "gust_speed_10m_mps": 8.746,
+      "gust_dirn_10m_deg_t": 359.0,
+      "gust_speed_10m_max_mps": 9.26,
+      "gust_10m_max_utc": "2026-07-10T01:12:00Z",
+      "run_2m_total_m": null
+    },
+    "precip": {
+      "since_0900lct_total_mm": 0.0,
+      "since_0000lct_total_mm": 0.0,
+      "24h_0900lct_total_mm": 0.0,
+      "10min_total_mm": 0.0,
+      "1h_total_mm": 0.0,
+      "24h_total_mm": null
+    },
+    "visibility": {
+      "horiz_m": 46292.0
+    },
+    "cloud": {
+      "base_ht_s1_m": 0.0,
+      "base_ht_s2_m": 0.0,
+      "base_ht_s3_m": 0.0,
+      "base_ht_s4_m": 603.504,
+      "base_ht_s5_m": null,
+      "total_cover_amt_text": null,
+      "low_layer_cover_amt_okta": null,
+      "low_layer_height_m": null,
+      "med_layer_cover_amt_okta": null,
+      "med_layer_height_m": null,
+      "high_layer_cover_amt_okta": null,
+      "high_layer_height_m": null
+    }
+  }
+}

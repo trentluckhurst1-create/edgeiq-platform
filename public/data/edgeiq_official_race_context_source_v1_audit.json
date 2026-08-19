@@ -1,0 +1,29 @@
+{
+  "status": "OFFICIAL_RACE_CONTEXT_SOURCE_BUILT",
+  "target_races": 2,
+  "complete_races": 2,
+  "blocked_races": 0,
+  "meetings_discovered": 1,
+  "meeting_payloads_captured": 1,
+  "race_list_payloads_captured": 1,
+  "protected_systems": {
+    "pricing_changed": "NO",
+    "probability_changed": "NO",
+    "v6_1_changed": "NO",
+    "v7_2g2_changed": "NO",
+    "ui_changed": "NO"
+  },
+  "capture_audit": [
+    {
+      "race_date": "2026-07-25",
+      "track": "CAULFIELD",
+      "meet_code": "5191040",
+      "source_url": "https://www.racing.com/form/2026-07-25/caulfield/race/5",
+      "meeting_payload_captured": true,
+      "race_list_payload_captured": true,
+      "visible_text_file": "docs\\victoria-performance-intelligence-race-context-authority-v1\\raw-official-race-context-v1\\2026-07-25_CAULFIELD_visible_text_9b6f8041893f375e.txt",
+      "visible_text_length": 2044,
+      "errors": ""
+    }
+  ]
+}

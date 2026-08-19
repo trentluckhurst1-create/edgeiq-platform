@@ -1,0 +1,32 @@
+{
+  "generated_utc": "2026-07-22T07:54:55.436735+00:00",
+  "current_date_used": "2026-07-22",
+  "governance": {
+    "read_only": true,
+    "network_access_performed": false,
+    "production_files_modified": false,
+    "v2_contracts_modified": false
+  },
+  "source_rows": {
+    "calendar": 568,
+    "completed": 110,
+    "total": 678
+  },
+  "evidence_origin_counts": {
+    "EXPLICIT_RACE_COLUMN": 678
+  },
+  "meeting_findings": {
+    "meeting_source_groups": 50,
+    "exact_1_to_12_patterns": 44,
+    "future_exact_1_to_12_patterns": 12
+  },
+  "date_findings": {
+    "future_source_rows": 144
+  },
+  "overlap_findings": {
+    "canonical_races_present_in_both_sources": 0
+  },
+  "explicit_race_column_rows": 678,
+  "url_derived_only_rows": 0,
+  "decision": "UPSTREAM_RACE_EVIDENCE_REQUIRES_REMEDIATION"
+}

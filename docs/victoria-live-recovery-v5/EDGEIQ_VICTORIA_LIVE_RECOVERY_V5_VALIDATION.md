@@ -1,0 +1,23 @@
+# EDGEiQ Victoria Live Recovery V5 Validation
+
+- overall_status: `BLOCKED_GOVERNED_HISTORY_DEPTH`
+- python_compileall_root: `FAIL_ARCHIVED_CHECKPOINT_SCRIPT_ERRORS_UNRELATED_TO_V5`
+- python_compileall_root_error_scope: `checkpoints and docs/full-product-implementation/checkpoints archived scripts only`
+- python_compileall_scripts: `PASS_ACTIVE_SCRIPTS`
+- v5_script_py_compile: `PASS`
+- historical_eligibility_investigation_idempotency: `PASS_HASH_IDENTICAL_ACROSS_TWO_RUNS`
+- horse_observation_audit: `PASS`
+- horse_aggregate_audit: `PASS_WITH_GOVERNED_INSUFFICIENCY_MINIMUM_OBSERVATIONS_NOT_MET`
+- horse_rating_audit: `PASS_ZERO_ROWS_NO_AGGREGATES`
+- snapshot_audit: `PASS_ZERO_ROWS_NO_RATINGS`
+- epi_audit: `PASS_ZERO_ROWS_NO_COMPONENTS`
+- victoria_current_ratings_epi_audit: `BLOCKED_HORSE_AGGREGATES`
+- victoria_live_acceptance: `READY_TO_REBUILD_DOWNSTREAM`
+- victoria_live_pipeline_forensics: `PIPELINE_FORENSICS_BLOCKER_FOUND_FIRST_ZERO_STAGE_HORSE_AGGREGATES`
+- daily_operations_audit: `PASS`
+- npm_run_typecheck: `NOT_AVAILABLE_MISSING_PACKAGE_SCRIPT`
+- npx_tsc_b: `PASS`
+- npm_run_build: `PASS`
+- production_or_governance_math_changed: `NO`
+- historical_rebuild_performed: `NO`
+- reason: `Repository temporal authority explicitly blocks applying HPR-NORM-A-v1 to pre-2026-07-20 performance dates.`

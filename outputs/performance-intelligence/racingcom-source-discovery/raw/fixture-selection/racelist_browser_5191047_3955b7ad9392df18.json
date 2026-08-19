@@ -1,0 +1,1405 @@
+{
+  "requested_page": "https://www.racing.com/form/2026-07-19/bet365-seymour",
+  "response_url": "https://graphql.rmdprod.racing.com/?query=query%20getRaceNumberList_CD(%24meetCode%3A%20ID!)%20%7B%20getNoCacheRacesForMeet(meetCode%3A%20%24meetCode)%20%7B%20id%20meet%20%7B%20venue%20meetUrl%20meetUrlSegment%20trackMap%20%7D%20raceNumber%20raceStatus%20distance%20time%20name%20nameForm%20trackCondition%20isTrial%20isJumpOut%20trackRating%20trackRecordTime%20trackRecordHorseCode%20trackRecordHorseName%20trackRecordRace%20%7B%20date%20%7D%20condition%20prizeMoney%20totalPrizeMoney%20hasSectionals%20hasTips%20hasSpeedMap%20hasResults%20hasStewards%20hasHistory%20hasSectionals%20hasField%20hasFullForm%20trackCode%20rdcClass%20formRaceEntries%20%7B%20horseName%20position%20winningTime%20standardTimeDifference%20%7D%20toEightHundredMetresSeconds%20standardTimeTo800Difference%20eightHundredToFourHundredMetresSeconds%20standardTime800To400Difference%20fourHundredToFinishMetresSeconds%20standardTime400ToFinishDifference%20raceTime%20standardTimeDifference%20standardTimeId%20stewardsReportUrl%20%7D%20%7D&variables=%7B%22meetCode%22%3A%225191047%22%7D",
+  "payload": {
+    "data": {
+      "getNoCacheRacesForMeet": [
+        {
+          "id": "5461568",
+          "meet": {
+            "venue": "bet365 Seymour",
+            "meetUrl": "https://www.racing.com/form/2026-07-19/bet365-seymour",
+            "meetUrlSegment": "2026-07-19/bet365-seymour",
+            "trackMap": "https://s3-ap-southeast-2.amazonaws.com/racevic.static/trackmaps/SEYM.svg"
+          },
+          "raceNumber": 7,
+          "raceStatus": "Paying",
+          "distance": "2040m",
+          "time": "2026-07-19T05:25:00.000Z",
+          "name": "Seymour Park - Stud Hand Appreciation BM62 Handicap",
+          "nameForm": "BM62",
+          "trackCondition": "Heavy",
+          "isTrial": 0,
+          "isJumpOut": 0,
+          "trackRating": "9",
+          "trackRecordTime": "12240",
+          "trackRecordHorseCode": "524597",
+          "trackRecordHorseName": "Reckless Draw",
+          "trackRecordRace": {
+            "date": null
+          },
+          "condition": "Handicap. Three-Years-Old and Upwards, No sex restriction. BenchMark 62. Apprentices can claim. Track name: Main. Track type: Turf. Field limit: 12.",
+          "prizeMoney": [
+            "{\"Position\":1,\"Value\":\"19250.00\"}",
+            "{\"Position\":2,\"Value\":\"6300.00\"}",
+            "{\"Position\":3,\"Value\":\"3150.00\"}",
+            "{\"Position\":4,\"Value\":\"1750.00\"}",
+            "{\"Position\":5,\"Value\":\"1050.00\"}",
+            "{\"Position\":6,\"Value\":\"700.00\"}",
+            "{\"Position\":7,\"Value\":\"700.00\"}",
+            "{\"Position\":8,\"Value\":\"700.00\"}",
+            "{\"Position\":9,\"Value\":\"700.00\"}",
+            "{\"Position\":10,\"Value\":\"700.00\"}"
+          ],
+          "totalPrizeMoney": "35000.00",
+          "hasSectionals": false,
+          "hasTips": false,
+          "hasSpeedMap": false,
+          "hasResults": true,
+          "hasStewards": true,
+          "hasHistory": false,
+          "hasField": false,
+          "hasFullForm": false,
+          "trackCode": "353",
+          "rdcClass": "BM 58",
+          "formRaceEntries": [
+            {
+              "horseName": "Ceremonious",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Durban Harbour",
+              "position": 3,
+              "winningTime": "13369",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Perfuse",
+              "position": 7,
+              "winningTime": "13369",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "High Tempo",
+              "position": 2,
+              "winningTime": "13369",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Mickio",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "The Charlatan",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Earth Dance",
+              "position": 9,
+              "winningTime": "13369",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Governor King",
+              "position": 1,
+              "winningTime": "13369",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Outdrive",
+              "position": 5,
+              "winningTime": "13369",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Salt Spray",
+              "position": 4,
+              "winningTime": "13369",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Timeonlees",
+              "position": 6,
+              "winningTime": "13369",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "First Day",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Power Pivot",
+              "position": 12,
+              "winningTime": "13369",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Spietata",
+              "position": 11,
+              "winningTime": "13369",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Hard To Go Wrong",
+              "position": 8,
+              "winningTime": "13369",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Knee Deep",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Blue Ismay",
+              "position": 10,
+              "winningTime": "13369",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Ideelistic",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            }
+          ],
+          "toEightHundredMetresSeconds": null,
+          "standardTimeTo800Difference": null,
+          "eightHundredToFourHundredMetresSeconds": 0,
+          "standardTime800To400Difference": null,
+          "fourHundredToFinishMetresSeconds": 0,
+          "standardTime400ToFinishDifference": null,
+          "raceTime": null,
+          "standardTimeDifference": null,
+          "standardTimeId": null,
+          "stewardsReportUrl": "https://cdn.rmdprod.racing.com/RV/stewards/2026-07-19/bet365-seymour/stewardsreports/race-7.htm"
+        },
+        {
+          "id": "5461569",
+          "meet": {
+            "venue": "bet365 Seymour",
+            "meetUrl": "https://www.racing.com/form/2026-07-19/bet365-seymour",
+            "meetUrlSegment": "2026-07-19/bet365-seymour",
+            "trackMap": "https://s3-ap-southeast-2.amazonaws.com/racevic.static/trackmaps/SEYM.svg"
+          },
+          "raceNumber": 6,
+          "raceStatus": "Paying",
+          "distance": "1600m",
+          "time": "2026-07-19T04:45:00.000Z",
+          "name": "Magic Millions Digital BM62 Handicap",
+          "nameForm": "BM62",
+          "trackCondition": "Heavy",
+          "isTrial": 0,
+          "isJumpOut": 0,
+          "trackRating": "9",
+          "trackRecordTime": "9350",
+          "trackRecordHorseCode": "244760",
+          "trackRecordHorseName": "Zaparri",
+          "trackRecordRace": {
+            "date": null
+          },
+          "condition": "Handicap. Two-Years-Old and Upwards, No sex restriction. BenchMark 62. Apprentices can claim. Track name: Main. Track type: Turf. Field limit: 12.",
+          "prizeMoney": [
+            "{\"Position\":1,\"Value\":\"19250.00\"}",
+            "{\"Position\":2,\"Value\":\"6300.00\"}",
+            "{\"Position\":3,\"Value\":\"3150.00\"}",
+            "{\"Position\":4,\"Value\":\"1750.00\"}",
+            "{\"Position\":5,\"Value\":\"1050.00\"}",
+            "{\"Position\":6,\"Value\":\"700.00\"}",
+            "{\"Position\":7,\"Value\":\"700.00\"}",
+            "{\"Position\":8,\"Value\":\"700.00\"}",
+            "{\"Position\":9,\"Value\":\"700.00\"}",
+            "{\"Position\":10,\"Value\":\"700.00\"}"
+          ],
+          "totalPrizeMoney": "35000.00",
+          "hasSectionals": false,
+          "hasTips": false,
+          "hasSpeedMap": false,
+          "hasResults": true,
+          "hasStewards": true,
+          "hasHistory": false,
+          "hasField": false,
+          "hasFullForm": false,
+          "trackCode": "353",
+          "rdcClass": "BM 58",
+          "formRaceEntries": [
+            {
+              "horseName": "One Long Day",
+              "position": 1,
+              "winningTime": "10176",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Enchanted Jenni",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Kiss My Rock",
+              "position": 10,
+              "winningTime": "10176",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Sir Rockford",
+              "position": 6,
+              "winningTime": "10176",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Too Big",
+              "position": 8,
+              "winningTime": "10176",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Annotate",
+              "position": 2,
+              "winningTime": "10176",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Russian Roni",
+              "position": 12,
+              "winningTime": "10176",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Torn",
+              "position": 4,
+              "winningTime": "10176",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Staphani",
+              "position": 5,
+              "winningTime": "10176",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Fenestella",
+              "position": 7,
+              "winningTime": "10176",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Princess Painton",
+              "position": 9,
+              "winningTime": "10176",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Baywatch",
+              "position": 3,
+              "winningTime": "10176",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Queen Of The Surf",
+              "position": 11,
+              "winningTime": "10176",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Pick Wisely",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Square Deal",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Azeola",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Treasury Place",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Moscow Red",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            }
+          ],
+          "toEightHundredMetresSeconds": null,
+          "standardTimeTo800Difference": null,
+          "eightHundredToFourHundredMetresSeconds": 0,
+          "standardTime800To400Difference": null,
+          "fourHundredToFinishMetresSeconds": 0,
+          "standardTime400ToFinishDifference": null,
+          "raceTime": null,
+          "standardTimeDifference": "-2.1L",
+          "standardTimeId": "353_Heavy_1600_All",
+          "stewardsReportUrl": "https://cdn.rmdprod.racing.com/RV/stewards/2026-07-19/bet365-seymour/stewardsreports/race-6.htm"
+        },
+        {
+          "id": "5461570",
+          "meet": {
+            "venue": "bet365 Seymour",
+            "meetUrl": "https://www.racing.com/form/2026-07-19/bet365-seymour",
+            "meetUrlSegment": "2026-07-19/bet365-seymour",
+            "trackMap": "https://s3-ap-southeast-2.amazonaws.com/racevic.static/trackmaps/SEYM.svg"
+          },
+          "raceNumber": 9,
+          "raceStatus": "Paying",
+          "distance": "1300m",
+          "time": "2026-07-19T06:45:00.000Z",
+          "name": "Tallarook Rural Supplies BM62 Handicap",
+          "nameForm": "BM62",
+          "trackCondition": "Heavy",
+          "isTrial": 0,
+          "isJumpOut": 0,
+          "trackRating": "9",
+          "trackRecordTime": "7490",
+          "trackRecordHorseCode": "232795",
+          "trackRecordHorseName": "Rising Supreme",
+          "trackRecordRace": {
+            "date": null
+          },
+          "condition": "Handicap. Two-Years-Old and Upwards, No sex restriction. BenchMark 62. Apprentices can claim. Track name: Main. Track type: Turf. Field limit: 12.",
+          "prizeMoney": [
+            "{\"Position\":1,\"Value\":\"19250.00\"}",
+            "{\"Position\":2,\"Value\":\"6300.00\"}",
+            "{\"Position\":3,\"Value\":\"3150.00\"}",
+            "{\"Position\":4,\"Value\":\"1750.00\"}",
+            "{\"Position\":5,\"Value\":\"1050.00\"}",
+            "{\"Position\":6,\"Value\":\"700.00\"}",
+            "{\"Position\":7,\"Value\":\"700.00\"}",
+            "{\"Position\":8,\"Value\":\"700.00\"}",
+            "{\"Position\":9,\"Value\":\"700.00\"}",
+            "{\"Position\":10,\"Value\":\"700.00\"}"
+          ],
+          "totalPrizeMoney": "35000.00",
+          "hasSectionals": false,
+          "hasTips": false,
+          "hasSpeedMap": false,
+          "hasResults": true,
+          "hasStewards": true,
+          "hasHistory": false,
+          "hasField": false,
+          "hasFullForm": false,
+          "trackCode": "353",
+          "rdcClass": "BM 58",
+          "formRaceEntries": [
+            {
+              "horseName": "Zourain",
+              "position": 1,
+              "winningTime": "8000",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Tijuana",
+              "position": 9,
+              "winningTime": "8000",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Capricorn Star",
+              "position": 6,
+              "winningTime": "8000",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Gunado",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Hawk Power",
+              "position": 7,
+              "winningTime": "8000",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Is That All",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Best Of The Best",
+              "position": 8,
+              "winningTime": "8000",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Gobbo's Mate",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Cashout",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Our Justify",
+              "position": 2,
+              "winningTime": "8000",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Homeward",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Bardia's Dream",
+              "position": 4,
+              "winningTime": "8000",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Acheter",
+              "position": 5,
+              "winningTime": "8000",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Boulder Jack",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Friendzoned",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Naval Force",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Belmia",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "True Prophet",
+              "position": 3,
+              "winningTime": "8000",
+              "standardTimeDifference": null
+            }
+          ],
+          "toEightHundredMetresSeconds": null,
+          "standardTimeTo800Difference": null,
+          "eightHundredToFourHundredMetresSeconds": 0,
+          "standardTime800To400Difference": null,
+          "fourHundredToFinishMetresSeconds": 0,
+          "standardTime400ToFinishDifference": null,
+          "raceTime": null,
+          "standardTimeDifference": null,
+          "standardTimeId": null,
+          "stewardsReportUrl": "https://cdn.rmdprod.racing.com/RV/stewards/2026-07-19/bet365-seymour/stewardsreports/race-9.htm"
+        },
+        {
+          "id": "5461571",
+          "meet": {
+            "venue": "bet365 Seymour",
+            "meetUrl": "https://www.racing.com/form/2026-07-19/bet365-seymour",
+            "meetUrlSegment": "2026-07-19/bet365-seymour",
+            "trackMap": "https://s3-ap-southeast-2.amazonaws.com/racevic.static/trackmaps/SEYM.svg"
+          },
+          "raceNumber": 8,
+          "raceStatus": "Paying",
+          "distance": "1000m",
+          "time": "2026-07-19T06:05:00.000Z",
+          "name": "Blue Gum Farm - Libertad BM62 Handicap",
+          "nameForm": "BM62",
+          "trackCondition": "Heavy",
+          "isTrial": 0,
+          "isJumpOut": 0,
+          "trackRating": "9",
+          "trackRecordTime": "5675",
+          "trackRecordHorseCode": "652506",
+          "trackRecordHorseName": "Wild One",
+          "trackRecordRace": {
+            "date": "2009-11-11"
+          },
+          "condition": "Handicap. No age restriction, No sex restriction. BenchMark 62. Apprentices can claim. Track name: Main. Track type: Turf. Field limit: 12.",
+          "prizeMoney": [
+            "{\"Position\":1,\"Value\":\"19250.00\"}",
+            "{\"Position\":2,\"Value\":\"6300.00\"}",
+            "{\"Position\":3,\"Value\":\"3150.00\"}",
+            "{\"Position\":4,\"Value\":\"1750.00\"}",
+            "{\"Position\":5,\"Value\":\"1050.00\"}",
+            "{\"Position\":6,\"Value\":\"700.00\"}",
+            "{\"Position\":7,\"Value\":\"700.00\"}",
+            "{\"Position\":8,\"Value\":\"700.00\"}",
+            "{\"Position\":9,\"Value\":\"700.00\"}",
+            "{\"Position\":10,\"Value\":\"700.00\"}"
+          ],
+          "totalPrizeMoney": "35000.00",
+          "hasSectionals": false,
+          "hasTips": false,
+          "hasSpeedMap": false,
+          "hasResults": true,
+          "hasStewards": true,
+          "hasHistory": false,
+          "hasField": false,
+          "hasFullForm": false,
+          "trackCode": "353",
+          "rdcClass": "BM 58",
+          "formRaceEntries": [
+            {
+              "horseName": "Orlabent",
+              "position": 10,
+              "winningTime": "6046",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Cumboogle",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Frosted In Time",
+              "position": 4,
+              "winningTime": "6046",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Meisho",
+              "position": 6,
+              "winningTime": "6046",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Scoobartie",
+              "position": 1,
+              "winningTime": "6046",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Sonic Surge",
+              "position": 8,
+              "winningTime": "6046",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Struggle Street",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Forever With Ned",
+              "position": 5,
+              "winningTime": "6046",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Induction",
+              "position": 3,
+              "winningTime": "6046",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Lonstar",
+              "position": 2,
+              "winningTime": "6046",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Sheila",
+              "position": 9,
+              "winningTime": "6046",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Swift Hit",
+              "position": 11,
+              "winningTime": "6046",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Lack Of Restraint",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Moaksun",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Adki",
+              "position": 7,
+              "winningTime": "6046",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Fortyfour Magnum",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Ourzacracker",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            }
+          ],
+          "toEightHundredMetresSeconds": null,
+          "standardTimeTo800Difference": null,
+          "eightHundredToFourHundredMetresSeconds": 0,
+          "standardTime800To400Difference": null,
+          "fourHundredToFinishMetresSeconds": 0,
+          "standardTime400ToFinishDifference": null,
+          "raceTime": null,
+          "standardTimeDifference": null,
+          "standardTimeId": null,
+          "stewardsReportUrl": "https://cdn.rmdprod.racing.com/RV/stewards/2026-07-19/bet365-seymour/stewardsreports/race-8.htm"
+        },
+        {
+          "id": "5461572",
+          "meet": {
+            "venue": "bet365 Seymour",
+            "meetUrl": "https://www.racing.com/form/2026-07-19/bet365-seymour",
+            "meetUrlSegment": "2026-07-19/bet365-seymour",
+            "trackMap": "https://s3-ap-southeast-2.amazonaws.com/racevic.static/trackmaps/SEYM.svg"
+          },
+          "raceNumber": 5,
+          "raceStatus": "Paying",
+          "distance": "1600m",
+          "time": "2026-07-19T04:10:00.000Z",
+          "name": "Racetrack Vets Maiden Plate",
+          "nameForm": "MDN-SW",
+          "trackCondition": "Heavy",
+          "isTrial": 0,
+          "isJumpOut": 0,
+          "trackRating": "9",
+          "trackRecordTime": "9350",
+          "trackRecordHorseCode": "244760",
+          "trackRecordHorseName": "Zaparri",
+          "trackRecordRace": {
+            "date": null
+          },
+          "condition": "Set Weights. No age restriction, No sex restriction. Maiden. Apprentices can claim. Track name: Main. Track type: Turf. Field limit: 12.",
+          "prizeMoney": [
+            "{\"Position\":1,\"Value\":\"23375.00\"}",
+            "{\"Position\":2,\"Value\":\"7650.00\"}",
+            "{\"Position\":3,\"Value\":\"3825.00\"}",
+            "{\"Position\":4,\"Value\":\"2125.00\"}",
+            "{\"Position\":5,\"Value\":\"1275.00\"}",
+            "{\"Position\":6,\"Value\":\"850.00\"}",
+            "{\"Position\":7,\"Value\":\"850.00\"}",
+            "{\"Position\":8,\"Value\":\"850.00\"}",
+            "{\"Position\":9,\"Value\":\"850.00\"}",
+            "{\"Position\":10,\"Value\":\"850.00\"}"
+          ],
+          "totalPrizeMoney": "42500.00",
+          "hasSectionals": false,
+          "hasTips": false,
+          "hasSpeedMap": false,
+          "hasResults": true,
+          "hasStewards": true,
+          "hasHistory": false,
+          "hasField": false,
+          "hasFullForm": false,
+          "trackCode": "353",
+          "rdcClass": "Maiden",
+          "formRaceEntries": [
+            {
+              "horseName": "A Long Story Short",
+              "position": 1,
+              "winningTime": "10247",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Boss Boy",
+              "position": 3,
+              "winningTime": "10247",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Deltakai",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Gottacookacurry",
+              "position": 9,
+              "winningTime": "10247",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "King Tagaloa",
+              "position": 2,
+              "winningTime": "10247",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Long Shot",
+              "position": 10,
+              "winningTime": "10247",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Maranoa Boy",
+              "position": 6,
+              "winningTime": "10247",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Rainy Night",
+              "position": 4,
+              "winningTime": "10247",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Where Eagles Dare",
+              "position": 11,
+              "winningTime": "10247",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Elegant Force",
+              "position": 5,
+              "winningTime": "10247",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Tornado Anwa",
+              "position": 12,
+              "winningTime": "10247",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Venus Shock",
+              "position": 7,
+              "winningTime": "10247",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Dandynomite",
+              "position": 8,
+              "winningTime": "10247",
+              "standardTimeDifference": null
+            }
+          ],
+          "toEightHundredMetresSeconds": null,
+          "standardTimeTo800Difference": null,
+          "eightHundredToFourHundredMetresSeconds": 0,
+          "standardTime800To400Difference": null,
+          "fourHundredToFinishMetresSeconds": 0,
+          "standardTime400ToFinishDifference": null,
+          "raceTime": null,
+          "standardTimeDifference": "-6.36L",
+          "standardTimeId": "353_Heavy_1600_All",
+          "stewardsReportUrl": "https://cdn.rmdprod.racing.com/RV/stewards/2026-07-19/bet365-seymour/stewardsreports/race-5.htm"
+        },
+        {
+          "id": "5461573",
+          "meet": {
+            "venue": "bet365 Seymour",
+            "meetUrl": "https://www.racing.com/form/2026-07-19/bet365-seymour",
+            "meetUrlSegment": "2026-07-19/bet365-seymour",
+            "trackMap": "https://s3-ap-southeast-2.amazonaws.com/racevic.static/trackmaps/SEYM.svg"
+          },
+          "raceNumber": 2,
+          "raceStatus": "Paying",
+          "distance": "1200m",
+          "time": "2026-07-19T02:15:00.000Z",
+          "name": "Early Espionage Speed Maiden Plate",
+          "nameForm": "2Y MDN-SW",
+          "trackCondition": "Heavy",
+          "isTrial": 0,
+          "isJumpOut": 0,
+          "trackRating": "9",
+          "trackRecordTime": "6830",
+          "trackRecordHorseCode": "275695",
+          "trackRecordHorseName": "Guns for Hire (NZ)",
+          "trackRecordRace": {
+            "date": null
+          },
+          "condition": "Set Weights. Two-Years-Old, No sex restriction. Maiden. Apprentices can claim. Track name: Main. Track type: Turf. Field limit: 12. This race carries VOBIS Silver Bonuses of $12,000 for qualified horses.",
+          "prizeMoney": [
+            "{\"Position\":1,\"Value\":\"23375.00\"}",
+            "{\"Position\":2,\"Value\":\"7650.00\"}",
+            "{\"Position\":3,\"Value\":\"3825.00\"}",
+            "{\"Position\":4,\"Value\":\"2125.00\"}",
+            "{\"Position\":5,\"Value\":\"1275.00\"}",
+            "{\"Position\":6,\"Value\":\"850.00\"}",
+            "{\"Position\":7,\"Value\":\"850.00\"}",
+            "{\"Position\":8,\"Value\":\"850.00\"}",
+            "{\"Position\":9,\"Value\":\"850.00\"}",
+            "{\"Position\":10,\"Value\":\"850.00\"}"
+          ],
+          "totalPrizeMoney": "42500.00",
+          "hasSectionals": false,
+          "hasTips": false,
+          "hasSpeedMap": false,
+          "hasResults": true,
+          "hasStewards": true,
+          "hasHistory": false,
+          "hasField": false,
+          "hasFullForm": false,
+          "trackCode": "353",
+          "rdcClass": "Maiden",
+          "formRaceEntries": [
+            {
+              "horseName": "Blues Traveler",
+              "position": 6,
+              "winningTime": "7355",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Caxton Street",
+              "position": 5,
+              "winningTime": "7355",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Drink Me Pretty",
+              "position": 7,
+              "winningTime": "7355",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Dustee",
+              "position": 1,
+              "winningTime": "7355",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Exploit",
+              "position": 4,
+              "winningTime": "7355",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Imperial Valley",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Keen Observer",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Whimsy Smile",
+              "position": 3,
+              "winningTime": "7355",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "La Reina Vega",
+              "position": 2,
+              "winningTime": "7355",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Mirador",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Mistressof Mayfair",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Novamira",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            }
+          ],
+          "toEightHundredMetresSeconds": null,
+          "standardTimeTo800Difference": null,
+          "eightHundredToFourHundredMetresSeconds": 0,
+          "standardTime800To400Difference": null,
+          "fourHundredToFinishMetresSeconds": 0,
+          "standardTime400ToFinishDifference": null,
+          "raceTime": null,
+          "standardTimeDifference": "-3.66L",
+          "standardTimeId": "353_Heavy_1200_All",
+          "stewardsReportUrl": "https://cdn.rmdprod.racing.com/RV/stewards/2026-07-19/bet365-seymour/stewardsreports/race-2.htm"
+        },
+        {
+          "id": "5461574",
+          "meet": {
+            "venue": "bet365 Seymour",
+            "meetUrl": "https://www.racing.com/form/2026-07-19/bet365-seymour",
+            "meetUrlSegment": "2026-07-19/bet365-seymour",
+            "trackMap": "https://s3-ap-southeast-2.amazonaws.com/racevic.static/trackmaps/SEYM.svg"
+          },
+          "raceNumber": 3,
+          "raceStatus": "Paying",
+          "distance": "1100m",
+          "time": "2026-07-19T02:55:00.000Z",
+          "name": "Mangalore Park Maiden Plate",
+          "nameForm": "MDN-SW",
+          "trackCondition": "Heavy",
+          "isTrial": 0,
+          "isJumpOut": 0,
+          "trackRating": "9",
+          "trackRecordTime": "6259",
+          "trackRecordHorseCode": "377329",
+          "trackRecordHorseName": "Cino",
+          "trackRecordRace": {
+            "date": "2000-01-08"
+          },
+          "condition": "Set Weights. No age restriction, No sex restriction. Maiden. Apprentices can claim. Track name: Main. Track type: Turf. Field limit: 12. This race carries VOBIS Gold Bonuses of $20,000 for qualified horses. This race carries VOBIS Platinum $30,000 in vouchers for qualified horses.",
+          "prizeMoney": [
+            "{\"Position\":1,\"Value\":\"23375.00\"}",
+            "{\"Position\":2,\"Value\":\"7650.00\"}",
+            "{\"Position\":3,\"Value\":\"3825.00\"}",
+            "{\"Position\":4,\"Value\":\"2125.00\"}",
+            "{\"Position\":5,\"Value\":\"1275.00\"}",
+            "{\"Position\":6,\"Value\":\"850.00\"}",
+            "{\"Position\":7,\"Value\":\"850.00\"}",
+            "{\"Position\":8,\"Value\":\"850.00\"}",
+            "{\"Position\":9,\"Value\":\"850.00\"}",
+            "{\"Position\":10,\"Value\":\"850.00\"}"
+          ],
+          "totalPrizeMoney": "42500.00",
+          "hasSectionals": false,
+          "hasTips": false,
+          "hasSpeedMap": false,
+          "hasResults": true,
+          "hasStewards": true,
+          "hasHistory": false,
+          "hasField": false,
+          "hasFullForm": false,
+          "trackCode": "353",
+          "rdcClass": "Maiden",
+          "formRaceEntries": [
+            {
+              "horseName": "Covert Mission",
+              "position": 7,
+              "winningTime": "6697",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Cries And Whispers",
+              "position": 4,
+              "winningTime": "6697",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Points For Effort",
+              "position": 12,
+              "winningTime": "6697",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Watten Assett",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Cool Step",
+              "position": 10,
+              "winningTime": "6697",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "He Xiangu",
+              "position": 5,
+              "winningTime": "6697",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Ice Ice Daisy",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Mathletes",
+              "position": 9,
+              "winningTime": "6697",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "My Friend Flo",
+              "position": 11,
+              "winningTime": "6697",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Spirit Of Gaia",
+              "position": 3,
+              "winningTime": "6697",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Yellowknife",
+              "position": 6,
+              "winningTime": "6697",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Millionaire Lover",
+              "position": 8,
+              "winningTime": "6697",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Works Dirty",
+              "position": 1,
+              "winningTime": "6697",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Panino",
+              "position": 2,
+              "winningTime": "6697",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Overflirt",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Shes A Good Cause",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Naughty Jamie",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            }
+          ],
+          "toEightHundredMetresSeconds": null,
+          "standardTimeTo800Difference": null,
+          "eightHundredToFourHundredMetresSeconds": 0,
+          "standardTime800To400Difference": null,
+          "fourHundredToFinishMetresSeconds": 0,
+          "standardTime400ToFinishDifference": null,
+          "raceTime": null,
+          "standardTimeDifference": null,
+          "standardTimeId": null,
+          "stewardsReportUrl": "https://cdn.rmdprod.racing.com/RV/stewards/2026-07-19/bet365-seymour/stewardsreports/race-3.htm"
+        },
+        {
+          "id": "5461575",
+          "meet": {
+            "venue": "bet365 Seymour",
+            "meetUrl": "https://www.racing.com/form/2026-07-19/bet365-seymour",
+            "meetUrlSegment": "2026-07-19/bet365-seymour",
+            "trackMap": "https://s3-ap-southeast-2.amazonaws.com/racevic.static/trackmaps/SEYM.svg"
+          },
+          "raceNumber": 4,
+          "raceStatus": "Paying",
+          "distance": "1300m",
+          "time": "2026-07-19T03:35:00.000Z",
+          "name": "Haeusler's Maiden Plate",
+          "nameForm": "MDN-SW",
+          "trackCondition": "Heavy",
+          "isTrial": 0,
+          "isJumpOut": 0,
+          "trackRating": "9",
+          "trackRecordTime": "7490",
+          "trackRecordHorseCode": "232795",
+          "trackRecordHorseName": "Rising Supreme",
+          "trackRecordRace": {
+            "date": null
+          },
+          "condition": "Set Weights. No age restriction, No sex restriction. Maiden. Apprentices can claim. Track name: Main. Track type: Turf. Field limit: 12.",
+          "prizeMoney": [
+            "{\"Position\":1,\"Value\":\"30250.00\"}",
+            "{\"Position\":2,\"Value\":\"9900.00\"}",
+            "{\"Position\":3,\"Value\":\"4950.00\"}",
+            "{\"Position\":4,\"Value\":\"2750.00\"}",
+            "{\"Position\":5,\"Value\":\"1650.00\"}",
+            "{\"Position\":6,\"Value\":\"1100.00\"}",
+            "{\"Position\":7,\"Value\":\"1100.00\"}",
+            "{\"Position\":8,\"Value\":\"1100.00\"}",
+            "{\"Position\":9,\"Value\":\"1100.00\"}",
+            "{\"Position\":10,\"Value\":\"1100.00\"}"
+          ],
+          "totalPrizeMoney": "55000.00",
+          "hasSectionals": false,
+          "hasTips": false,
+          "hasSpeedMap": false,
+          "hasResults": true,
+          "hasStewards": true,
+          "hasHistory": false,
+          "hasField": false,
+          "hasFullForm": false,
+          "trackCode": "353",
+          "rdcClass": "Maiden",
+          "formRaceEntries": [
+            {
+              "horseName": "Higher Command",
+              "position": 9,
+              "winningTime": "7939",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Iberian Lynx",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Media Puppet",
+              "position": 1,
+              "winningTime": "7939",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Carry Trade",
+              "position": 2,
+              "winningTime": "7939",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Crystallise",
+              "position": 11,
+              "winningTime": "7939",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Dolce Carolina",
+              "position": 8,
+              "winningTime": "7939",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Estival",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Isle Aroha",
+              "position": 12,
+              "winningTime": "7939",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Ravens Glow",
+              "position": 3,
+              "winningTime": "7939",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Sharp Remark",
+              "position": 7,
+              "winningTime": "7939",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Independant Lad",
+              "position": 6,
+              "winningTime": "7939",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Courting",
+              "position": 10,
+              "winningTime": "7939",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Goodello",
+              "position": 4,
+              "winningTime": "7939",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Bradford",
+              "position": 5,
+              "winningTime": "7939",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Sheza Raveela",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Haunted Kynexion",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Marley Namoi",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Ernie",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            }
+          ],
+          "toEightHundredMetresSeconds": null,
+          "standardTimeTo800Difference": null,
+          "eightHundredToFourHundredMetresSeconds": 0,
+          "standardTime800To400Difference": null,
+          "fourHundredToFinishMetresSeconds": 0,
+          "standardTime400ToFinishDifference": null,
+          "raceTime": null,
+          "standardTimeDifference": null,
+          "standardTimeId": null,
+          "stewardsReportUrl": "https://cdn.rmdprod.racing.com/RV/stewards/2026-07-19/bet365-seymour/stewardsreports/race-4.htm"
+        },
+        {
+          "id": "5471845",
+          "meet": {
+            "venue": "bet365 Seymour",
+            "meetUrl": "https://www.racing.com/form/2026-07-19/bet365-seymour",
+            "meetUrlSegment": "2026-07-19/bet365-seymour",
+            "trackMap": "https://s3-ap-southeast-2.amazonaws.com/racevic.static/trackmaps/SEYM.svg"
+          },
+          "raceNumber": 1,
+          "raceStatus": "Paying",
+          "distance": "1425m",
+          "time": "2026-07-19T01:40:00.000Z",
+          "name": "bet365 Bet Boost Handicap",
+          "nameForm": "2Y  HCP",
+          "trackCondition": "Heavy",
+          "isTrial": 0,
+          "isJumpOut": 0,
+          "trackRating": "9",
+          "trackRecordTime": "8244",
+          "trackRecordHorseCode": "5351856",
+          "trackRecordHorseName": "Castle On High (NZ)",
+          "trackRecordRace": {
+            "date": "2024-12-19"
+          },
+          "condition": "Handicap. Two-Years-Old, No sex restriction. No class restriction. Apprentices can claim. Track name: Main. Track type: Turf. Field limit: 12. This race carries VOBIS Silver Bonuses of $12,000 for qualified horses.",
+          "prizeMoney": [
+            "{\"Position\":1,\"Value\":\"23375.00\"}",
+            "{\"Position\":2,\"Value\":\"7650.00\"}",
+            "{\"Position\":3,\"Value\":\"3825.00\"}",
+            "{\"Position\":4,\"Value\":\"2125.00\"}",
+            "{\"Position\":5,\"Value\":\"1275.00\"}",
+            "{\"Position\":6,\"Value\":\"850.00\"}",
+            "{\"Position\":7,\"Value\":\"850.00\"}",
+            "{\"Position\":8,\"Value\":\"850.00\"}",
+            "{\"Position\":9,\"Value\":\"850.00\"}",
+            "{\"Position\":10,\"Value\":\"850.00\"}"
+          ],
+          "totalPrizeMoney": "42500.00",
+          "hasSectionals": false,
+          "hasTips": false,
+          "hasSpeedMap": false,
+          "hasResults": true,
+          "hasStewards": true,
+          "hasHistory": false,
+          "hasField": false,
+          "hasFullForm": false,
+          "trackCode": "353",
+          "rdcClass": "Open",
+          "formRaceEntries": [
+            {
+              "horseName": "Lift Net",
+              "position": 5,
+              "winningTime": "8954",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Expensive Taste",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Karvecchian",
+              "position": 7,
+              "winningTime": "8954",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "No Friends",
+              "position": 1,
+              "winningTime": "8954",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Upcoming Season",
+              "position": 6,
+              "winningTime": "8954",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Victorious Dream",
+              "position": 4,
+              "winningTime": "8954",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Soulsease River",
+              "position": 3,
+              "winningTime": "8954",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "And There You Go",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Mareenya",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Lady Puissance",
+              "position": 2,
+              "winningTime": "8954",
+              "standardTimeDifference": null
+            }
+          ],
+          "toEightHundredMetresSeconds": null,
+          "standardTimeTo800Difference": null,
+          "eightHundredToFourHundredMetresSeconds": 0,
+          "standardTime800To400Difference": null,
+          "fourHundredToFinishMetresSeconds": 0,
+          "standardTime400ToFinishDifference": null,
+          "raceTime": null,
+          "standardTimeDifference": "-0.84L",
+          "standardTimeId": "353_Heavy_1400_All",
+          "stewardsReportUrl": "https://cdn.rmdprod.racing.com/RV/stewards/2026-07-19/bet365-seymour/stewardsreports/race-1.htm"
+        }
+      ]
+    }
+  }
+}

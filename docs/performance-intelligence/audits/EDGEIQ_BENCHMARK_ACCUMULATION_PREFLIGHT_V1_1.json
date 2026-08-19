@@ -1,0 +1,182 @@
+{
+  "audit_name": "EDGEIQ Benchmark Accumulation Input Preflight V1.1",
+  "status": "PASS",
+  "join_key": "benchmark_observation_id",
+  "counts": {
+    "eligibility_rows": 39,
+    "observation_rows": 39,
+    "standard_time_eligible_rows": 24,
+    "joined_standard_rows": 24,
+    "missing_join_rows": 0
+  },
+  "missing_join_ids": [],
+  "dimension_coverage": {
+    "track_name": {
+      "row_count": 24,
+      "populated_count": 24,
+      "blank_count": 0,
+      "distinct_count": 2,
+      "distinct_values": {
+        "Caulfield": 9,
+        "Sportsbet Sandown Lakeside": 15
+      }
+    },
+    "course_name": {
+      "row_count": 24,
+      "populated_count": 0,
+      "blank_count": 24,
+      "distinct_count": 0,
+      "distinct_values": {}
+    },
+    "surface": {
+      "row_count": 24,
+      "populated_count": 0,
+      "blank_count": 24,
+      "distinct_count": 0,
+      "distinct_values": {}
+    },
+    "official_distance_metres": {
+      "row_count": 24,
+      "populated_count": 24,
+      "blank_count": 0,
+      "distinct_count": 9,
+      "distinct_values": {
+        "1100": 2,
+        "1200": 5,
+        "1300": 5,
+        "1400": 2,
+        "1600": 6,
+        "2000": 1,
+        "2100": 1,
+        "2400": 1,
+        "3200": 1
+      }
+    },
+    "track_condition": {
+      "row_count": 24,
+      "populated_count": 0,
+      "blank_count": 24,
+      "distinct_count": 0,
+      "distinct_values": {}
+    }
+  },
+  "candidate_benchmark_groups": {
+    "group_count": 12,
+    "groups": {
+      "Caulfield|||1100|": 2,
+      "Caulfield|||1200|": 3,
+      "Caulfield|||1400|": 1,
+      "Caulfield|||1600|": 2,
+      "Caulfield|||2000|": 1,
+      "Sportsbet Sandown Lakeside|||1200|": 2,
+      "Sportsbet Sandown Lakeside|||1300|": 5,
+      "Sportsbet Sandown Lakeside|||1400|": 1,
+      "Sportsbet Sandown Lakeside|||1600|": 4,
+      "Sportsbet Sandown Lakeside|||2100|": 1,
+      "Sportsbet Sandown Lakeside|||2400|": 1,
+      "Sportsbet Sandown Lakeside|||3200|": 1
+    }
+  },
+  "joined_examples": [
+    {
+      "benchmark_observation_id": "BOF1-67F454F7C819930DE2A82BB0",
+      "race_key": "2026-05-30|CAULFIELD|R01",
+      "track_name": "Caulfield",
+      "course_name": "",
+      "surface": "",
+      "official_distance_metres": "1200",
+      "track_condition": "",
+      "winner_race_time_seconds": "73.6"
+    },
+    {
+      "benchmark_observation_id": "BOF1-6C01FD4F21505965A03B3F34",
+      "race_key": "2026-05-30|CAULFIELD|R02",
+      "track_name": "Caulfield",
+      "course_name": "",
+      "surface": "",
+      "official_distance_metres": "1200",
+      "track_condition": "",
+      "winner_race_time_seconds": "72.34"
+    },
+    {
+      "benchmark_observation_id": "BOF1-F0DED6BBDFB119455EA532DB",
+      "race_key": "2026-05-30|CAULFIELD|R03",
+      "track_name": "Caulfield",
+      "course_name": "",
+      "surface": "",
+      "official_distance_metres": "1400",
+      "track_condition": "",
+      "winner_race_time_seconds": "86.51"
+    },
+    {
+      "benchmark_observation_id": "BOF1-B37B439FD03E9BEB53518519",
+      "race_key": "2026-05-30|CAULFIELD|R04",
+      "track_name": "Caulfield",
+      "course_name": "",
+      "surface": "",
+      "official_distance_metres": "1600",
+      "track_condition": "",
+      "winner_race_time_seconds": "100.16"
+    },
+    {
+      "benchmark_observation_id": "BOF1-7549AEF3D43EBF79E355A2C7",
+      "race_key": "2026-05-30|CAULFIELD|R05",
+      "track_name": "Caulfield",
+      "course_name": "",
+      "surface": "",
+      "official_distance_metres": "1600",
+      "track_condition": "",
+      "winner_race_time_seconds": "99.79"
+    },
+    {
+      "benchmark_observation_id": "BOF1-AB7109E43A6F1163138C5C77",
+      "race_key": "2026-05-30|CAULFIELD|R06",
+      "track_name": "Caulfield",
+      "course_name": "",
+      "surface": "",
+      "official_distance_metres": "2000",
+      "track_condition": "",
+      "winner_race_time_seconds": "127.59"
+    },
+    {
+      "benchmark_observation_id": "BOF1-C9047FD08B0DAD607CAA972C",
+      "race_key": "2026-05-30|CAULFIELD|R07",
+      "track_name": "Caulfield",
+      "course_name": "",
+      "surface": "",
+      "official_distance_metres": "1100",
+      "track_condition": "",
+      "winner_race_time_seconds": "65.75"
+    },
+    {
+      "benchmark_observation_id": "BOF1-E8F2DA9D8A0297087D6606F2",
+      "race_key": "2026-05-30|CAULFIELD|R08",
+      "track_name": "Caulfield",
+      "course_name": "",
+      "surface": "",
+      "official_distance_metres": "1100",
+      "track_condition": "",
+      "winner_race_time_seconds": "65.54"
+    },
+    {
+      "benchmark_observation_id": "BOF1-9FB522CC4AB71ED7CFCA4177",
+      "race_key": "2026-05-30|CAULFIELD|R09",
+      "track_name": "Caulfield",
+      "course_name": "",
+      "surface": "",
+      "official_distance_metres": "1200",
+      "track_condition": "",
+      "winner_race_time_seconds": "73.39"
+    },
+    {
+      "benchmark_observation_id": "BOF1-ABA58DBCE5C4C20E7F856AF6",
+      "race_key": "2026-05-31|SPORTSBET SANDOWN LAKESIDE|R03",
+      "track_name": "Sportsbet Sandown Lakeside",
+      "course_name": "",
+      "surface": "",
+      "official_distance_metres": "1600",
+      "track_condition": "",
+      "winner_race_time_seconds": "100.94"
+    }
+  ]
+}

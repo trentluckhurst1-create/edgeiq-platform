@@ -1,0 +1,61 @@
+{
+  "audit_name": "EDGEIQ_RACINGCOM_RUNNER_SPEED_REPRODUCIBILITY_V1",
+  "generated_at_utc": "2026-07-21T19:27:51+00:00",
+  "status": "PASS",
+  "failures": [],
+  "builder": "scripts/build_edgeiq_racingcom_runner_speed_warehouse_v1.py",
+  "builder_return_code": 0,
+  "builder_stdout": "[runner_speed_warehouse_v1] races: 39\n[runner_speed_warehouse_v1] runners: 392\n[runner_speed_warehouse_v1] runner sectionals: 2854\n[runner_speed_warehouse_v1] runner splits: 2682\n[runner_speed_warehouse_v1] audit status: PASS\n[runner_speed_warehouse_v1] wrote public\\data\\edgeiq_racingcom_runner_speed_fact_v1.csv\n[runner_speed_warehouse_v1] wrote public\\data\\edgeiq_racingcom_runner_sectional_fact_v1.csv\n[runner_speed_warehouse_v1] wrote public\\data\\edgeiq_racingcom_runner_split_fact_v1.csv\n[runner_speed_warehouse_v1] wrote public\\data\\edgeiq_racingcom_race_speed_summary_v1.csv\n[runner_speed_warehouse_v1] wrote public\\data\\edgeiq_racingcom_runner_speed_warehouse_v1_audit.json\nEDGEIQ_RACINGCOM_RUNNER_SPEED_WAREHOUSE_V1_AUDIT_PASS\n",
+  "builder_stderr": "",
+  "before": {
+    "public/data/edgeiq_racingcom_runner_speed_fact_v1.csv": {
+      "exists": true,
+      "size": 272232,
+      "sha256": "74f2e8275152005bcb761472a7368c675bdd1f448bdf801d2be153f220b6b61e"
+    },
+    "public/data/edgeiq_racingcom_runner_sectional_fact_v1.csv": {
+      "exists": true,
+      "size": 832216,
+      "sha256": "2fe70a747ea7083efb1ced48df56d71ad4015ff8d62720b853e6f0095e3ed42e"
+    },
+    "public/data/edgeiq_racingcom_runner_split_fact_v1.csv": {
+      "exists": true,
+      "size": 793716,
+      "sha256": "96b8348f0ad5c48988f2e5012a69bb1d14f34d8ce6b1ca33b84d72ddeff7588a"
+    },
+    "public/data/edgeiq_racingcom_race_speed_summary_v1.csv": {
+      "exists": true,
+      "size": 188199,
+      "sha256": "e1322431df1afa770d7bea98833abeebbf0c4daa6249e292322e0a2744e8f027"
+    }
+  },
+  "after": {
+    "public/data/edgeiq_racingcom_runner_speed_fact_v1.csv": {
+      "exists": true,
+      "size": 272232,
+      "sha256": "74f2e8275152005bcb761472a7368c675bdd1f448bdf801d2be153f220b6b61e"
+    },
+    "public/data/edgeiq_racingcom_runner_sectional_fact_v1.csv": {
+      "exists": true,
+      "size": 832216,
+      "sha256": "2fe70a747ea7083efb1ced48df56d71ad4015ff8d62720b853e6f0095e3ed42e"
+    },
+    "public/data/edgeiq_racingcom_runner_split_fact_v1.csv": {
+      "exists": true,
+      "size": 793716,
+      "sha256": "96b8348f0ad5c48988f2e5012a69bb1d14f34d8ce6b1ca33b84d72ddeff7588a"
+    },
+    "public/data/edgeiq_racingcom_race_speed_summary_v1.csv": {
+      "exists": true,
+      "size": 188199,
+      "sha256": "e1322431df1afa770d7bea98833abeebbf0c4daa6249e292322e0a2744e8f027"
+    }
+  },
+  "missing_files": [],
+  "mismatches": [],
+  "semantic_control": {
+    "same_source_payloads_required": true,
+    "output_hashes_must_remain_identical": true,
+    "audit_timestamp_excluded_from_comparison": true
+  }
+}

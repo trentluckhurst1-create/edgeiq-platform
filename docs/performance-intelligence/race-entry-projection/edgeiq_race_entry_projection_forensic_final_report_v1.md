@@ -1,0 +1,46 @@
+# Race Entry Projected Performance Forensic Final V1
+
+overall_status: `EDGEIQ_PERFORMANCE_INTELLIGENCE_BLOCKED_BY_PROJECTED_FACT_INPUT`
+
+active_projected_performance_builder: `scripts/build_edgeiq_race_entry_projected_performance_fact_v1.py`
+
+active_output_contract: `contracts/performance-intelligence/edgeiq_race_entry_projected_performance_fact_v1_contract.json`
+
+current_race_entry_source: `public/data/edgeiq_race_entry_fact_v1.csv`
+
+current_race_entry_rows: `204`
+
+current_future_source_files: `0`
+
+historical_performance_source: `public/data/edgeiq_horse_performance_rating_fact_v1.csv`
+
+historical_performance_rows: `0`
+
+identity_matches: `0`
+
+identity_misses: `204`
+
+temporally_eligible_matches: `0`
+
+first_zero_row_stage: `current race entries loaded`
+
+minimum_history_requirement: `prior rating required; no current/future entries to evaluate`
+
+runners_meeting_minimum: `0`
+
+runners_below_minimum: `0`
+
+projected_performance_candidate_rows: `0`
+
+projected_performance_production_rows: `0`
+
+projected_performance_hash: `2d7996a050856e252e6639bdb6569f9cff9b49442cf8ee5cbc676c92fc92fc54`
+
+epi_input_rows: `0`
+
+epi_output_rows: `0`
+
+genuine_data_gap: `NO_ACTIVE_RACE_ENTRIES_AVAILABLE`
+
+remaining_blocker: `Refresh or rebuild canonical current race-entry fact from a current/future governed race-entry source, then rerun projection chain.`
+

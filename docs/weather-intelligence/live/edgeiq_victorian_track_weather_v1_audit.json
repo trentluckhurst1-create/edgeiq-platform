@@ -1,0 +1,12 @@
+{
+  "status": "PASS_WITH_GAPS",
+  "generated_at": "2026-07-26T03:40:39+00:00",
+  "runtime_records_published": 3,
+  "meetings_required": 3,
+  "direct_source_meetings": 0,
+  "bom_meetings": 3,
+  "current": 0,
+  "stale": 0,
+  "unavailable": 3,
+  "licence_blocked": 0
+}

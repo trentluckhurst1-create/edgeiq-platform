@@ -1,0 +1,4592 @@
+EDGEIQ STEP105 FORENSIC TARGET INSPECTION V1
+========================================================================
+Source: C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\build_edgeiq_identity_repository_profiler_v1_STEP104_CUMULATIVE.py
+Total source lines: 8307
+
+========================================================================
+FUNCTION: main (lines 1412-1429)
+========================================================================
+01407:         help="Scan only files whose names or paths contain identity hints.",
+01408:     )
+01409:     return parser.parse_args()
+01410: 
+01411: 
+01412: def main() -> int:
+01413:     args = parse_arguments()
+01414: 
+01415:     repository_root = Path(args.repository_root).resolve()
+01416:     output_root = Path(args.output_root)
+01417: 
+01418:     if not output_root.is_absolute():
+01419:         output_root = repository_root / output_root
+01420: 
+01421:     config = ProfilerConfig(
+01422:         repository_root=repository_root,
+01423:         output_root=output_root.resolve(),
+01424:         resume=not args.no_resume,
+01425:         only_identity_relevant=args.only_identity_relevant,
+01426:     )
+01427: 
+01428:     audit = EDGEIQIdentityRepositoryProfilerStep1(config).run()
+01429:     return 0 if audit["status"].endswith("_PASS") else 1
+01430: 
+01431: 
+01432: # Entrypoint deferred until the final cumulative runtime wrapper.
+01433: 
+01434: 
+
+========================================================================
+FUNCTION: build (lines 380-473)
+========================================================================
+00375:         self.config = config
+00376:         self.crawler = crawler
+00377:         self.fingerprint_engine = fingerprint_engine
+00378:         self.checkpoint = checkpoint
+00379: 
+00380:     def build(self) -> tuple[list[FileInventoryRecord], dict]:
+00381:         files = self.crawler.discover()
+00382:         progress = ProgressReporter(every=100)
+00383: 
+00384:         records: list[FileInventoryRecord] = []
+00385:         cache_hits = 0
+00386:         hashed_files = 0
+00387:         errors = 0
+00388: 
+00389:         for index, path in enumerate(files, start=1):
+00390:             progress.report(index, len(files), "Inventory")
+00391: 
+00392:             try:
+00393:                 stat = path.stat()
+00394:                 relative = path.relative_to(self.config.repository_root)
+00395:                 relative_text = str(relative).replace("\\", "/")
+00396: 
+00397:                 cached = self.checkpoint.get_cached(
+00398:                     relative_path=relative_text,
+00399:                     size_bytes=stat.st_size,
+00400:                     modified_ns=stat.st_mtime_ns,
+00401:                 )
+00402: 
+00403:                 if cached:
+00404:                     records.append(FileInventoryRecord(**cached))
+00405:                     cache_hits += 1
+00406:                     continue
+00407: 
+00408:                 hints = detect_identity_hints(path)
+00409:                 record = FileInventoryRecord(
+00410:                     absolute_path=normalise_path(path),
+00411:                     relative_path=relative_text,
+00412:                     file_name=path.name,
+00413:                     extension=path.suffix.lower(),
+00414:                     dataset_type=classify_dataset_type(path.suffix.lower()),
+00415:                     size_bytes=stat.st_size,
+00416:                     modified_utc=datetime.fromtimestamp(
+00417:                         stat.st_mtime,
+00418:                         tz=timezone.utc,
+00419:                     ).isoformat(),
+00420:                     sha256=self.fingerprint_engine.sha256(path),
+00421:                     identity_relevant=bool(hints),
+00422:                     identity_hints=";".join(hints),
+00423:                     scan_status="OK",
+00424:                     scan_error="",
+00425:                 )
+00426: 
+00427:                 hashed_files += 1
+00428:                 records.append(record)
+00429:                 self.checkpoint.update(
+00430:                     relative_path=relative_text,
+00431:                     size_bytes=stat.st_size,
+00432:                     modified_ns=stat.st_mtime_ns,
+00433:                     record=record,
+00434:                 )
+00435: 
+00436:                 if index % 100 == 0:
+00437:                     self.checkpoint.save()
+00438: 
+00439:             except Exception as exc:
+00440:                 errors += 1
+00441:                 logging.exception("Failed to inventory %s", path)
+00442:                 records.append(
+00443:                     FileInventoryRecord(
+00444:                         absolute_path=normalise_path(path),
+00445:                         relative_path="",
+00446:                         file_name=path.name,
+00447:                         extension=path.suffix.lower(),
+00448:                         dataset_type=classify_dataset_type(path.suffix.lower()),
+00449:                         size_bytes=0,
+00450:                         modified_utc="",
+00451:                         sha256="",
+00452:                         identity_relevant=is_identity_relevant(path),
+00453:                         identity_hints=";".join(detect_identity_hints(path)),
+00454:                         scan_status="ERROR",
+00455:                         scan_error=str(exc),
+00456:                     )
+00457:                 )
+00458: 
+00459:         self.checkpoint.save()
+00460: 
+00461:         metrics = {
+00462:             "files_discovered": len(files),
+00463:             "records_created": len(records),
+00464:             "cache_hits": cache_hits,
+00465:             "files_hashed": hashed_files,
+00466:             "scan_errors": errors,
+00467:             "identity_relevant_files": sum(
+00468:                 1 for record in records if record.identity_relevant
+00469:             ),
+00470:             "total_bytes": sum(record.size_bytes for record in records),
+00471:         }
+00472: 
+00473:         return records, metrics
+00474: 
+00475: 
+00476: class InventoryWriter:
+00477:     FIELDNAMES = [
+00478:         "absolute_path",
+
+========================================================================
+FUNCTION: profile_records (lines 787-866)
+========================================================================
+00782:         sample_limit: int = 10_000,
+00783:     ) -> None:
+00784:         self.config = config
+00785:         self.sample_limit = max(1, sample_limit)
+00786: 
+00787:     def profile_records(
+00788:         self,
+00789:         inventory_records: list[FileInventoryRecord],
+00790:     ) -> tuple[list[DatasetProfile], list[ColumnProfile], list[ProfilingError], dict]:
+00791:         dataset_profiles: list[DatasetProfile] = []
+00792:         column_profiles: list[ColumnProfile] = []
+00793:         errors: list[ProfilingError] = []
+00794: 
+00795:         eligible = [
+00796:             record
+00797:             for record in inventory_records
+00798:             if record.scan_status == "OK"
+00799:             and record.extension in {".csv", ".json", ".jsonl", ".ndjson", ".parquet"}
+00800:         ]
+00801: 
+00802:         progress = ProgressReporter(every=25)
+00803: 
+00804:         for index, record in enumerate(eligible, start=1):
+00805:             progress.report(index, len(eligible), "Profiling")
+00806:             path = Path(record.absolute_path)
+00807: 
+00808:             try:
+00809:                 if record.extension == ".csv":
+00810:                     dataset, columns = self._profile_csv(record, path)
+00811:                 elif record.extension == ".json":
+00812:                     dataset, columns = self._profile_json(record, path)
+00813:                 elif record.extension in {".jsonl", ".ndjson"}:
+00814:                     dataset, columns = self._profile_json_lines(record, path)
+00815:                 elif record.extension == ".parquet":
+00816:                     dataset, columns = self._profile_parquet(record, path)
+00817:                 else:
+00818:                     continue
+00819: 
+00820:                 dataset_profiles.append(dataset)
+00821:                 column_profiles.extend(columns)
+00822: 
+00823:             except Exception as exc:
+00824:                 logging.exception("Profiling failed for %s", path)
+00825:                 errors.append(
+00826:                     ProfilingError(
+00827:                         relative_path=record.relative_path,
+00828:                         dataset_type=record.dataset_type,
+00829:                         error_type=type(exc).__name__,
+00830:                         error_message=str(exc),
+00831:                     )
+00832:                 )
+00833:                 dataset_profiles.append(
+00834:                     DatasetProfile(
+00835:                         relative_path=record.relative_path,
+00836:                         dataset_type=record.dataset_type,
+00837:                         size_bytes=record.size_bytes,
+00838:                         row_count=0,
+00839:                         row_count_mode="ERROR",
+00840:                         column_count=0,
+00841:                         columns="",
+00842:                         sampled_rows=0,
+00843:                         candidate_keys="",
+00844:                         identity_columns="",
+00845:                         profile_status="ERROR",
+00846:                         profile_error=str(exc),
+00847:                     )
+00848:                 )
+00849: 
+00850:         metrics = {
+00851:             "profiling_eligible_files": len(eligible),
+00852:             "datasets_profiled": sum(
+00853:                 1 for item in dataset_profiles if item.profile_status == "OK"
+00854:             ),
+00855:             "dataset_profile_rows": len(dataset_profiles),
+00856:             "column_profile_rows": len(column_profiles),
+00857:             "profiling_errors": len(errors),
+00858:             "identity_columns_detected": sum(
+00859:                 1 for item in column_profiles if item.identity_hint
+00860:             ),
+00861:             "candidate_keys_detected": sum(
+00862:                 1 for item in column_profiles if item.candidate_key
+00863:             ),
+00864:         }
+00865: 
+00866:         return dataset_profiles, column_profiles, errors, metrics
+00867: 
+00868:     def _build_profiles(
+00869:         self,
+00870:         record: FileInventoryRecord,
+00871:         fieldnames: list[str],
+
+========================================================================
+FUNCTION: _profile_json (lines 945-988)
+========================================================================
+00940:             row_count=row_count,
+00941:             row_count_mode="EXACT",
+00942:             accumulators=accumulators,
+00943:         )
+00944: 
+00945:     def _profile_json(
+00946:         self,
+00947:         record: FileInventoryRecord,
+00948:         path: Path,
+00949:     ) -> tuple[DatasetProfile, list[ColumnProfile]]:
+00950:         with path.open("r", encoding="utf-8-sig", errors="replace") as handle:
+00951:             payload = json.load(handle)
+00952: 
+00953:         if isinstance(payload, dict):
+00954:             candidate_rows = self._extract_json_rows(payload)
+00955:         elif isinstance(payload, list):
+00956:             candidate_rows = payload
+00957:         else:
+00958:             candidate_rows = [{"value": payload}]
+00959: 
+00960:         rows = [
+00961:             row if isinstance(row, dict) else {"value": row}
+00962:             for row in candidate_rows
+00963:         ]
+00964:         row_count = len(rows)
+00965:         sample_rows = rows[: self.sample_limit]
+00966: 
+00967:         fieldnames = sorted({
+00968:             str(key)
+00969:             for row in sample_rows
+00970:             for key in row.keys()
+00971:         })
+00972:         accumulators = {
+00973:             name: ColumnAccumulator(name)
+00974:             for name in fieldnames
+00975:         }
+00976: 
+00977:         for row in sample_rows:
+00978:             for name in fieldnames:
+00979:                 accumulators[name].add(row.get(name))
+00980: 
+00981:         return self._build_profiles(
+00982:             record=record,
+00983:             fieldnames=fieldnames,
+00984:             sampled_rows=len(sample_rows),
+00985:             row_count=row_count,
+00986:             row_count_mode="EXACT",
+00987:             accumulators=accumulators,
+00988:         )
+00989: 
+00990:     def _extract_json_rows(self, payload: dict) -> list[Any]:
+00991:         for key in (
+00992:             "rows",
+00993:             "records",
+
+========================================================================
+FUNCTION: run (lines 1290-1359)
+========================================================================
+01285: 
+01286: class EDGEIQIdentityRepositoryProfilerStep1:
+01287:     def __init__(self, config: ProfilerConfig) -> None:
+01288:         self.config = config
+01289: 
+01290:     def run(self) -> dict:
+01291:         started = time.perf_counter()
+01292: 
+01293:         self.config.output_root.mkdir(parents=True, exist_ok=True)
+01294:         self._configure_logging()
+01295: 
+01296:         csv_limit = configure_csv_field_limit()
+01297:         logging.info("%s %s starting", ENGINE_NAME, ENGINE_VERSION)
+01298:         logging.info("Repository root: %s", self.config.repository_root)
+01299:         logging.info("Output root: %s", self.config.output_root)
+01300:         logging.info("CSV field limit: %s", csv_limit)
+01301: 
+01302:         checkpoint = CheckpointManager(self.config)
+01303:         crawler = RepositoryCrawler(self.config)
+01304:         fingerprint_engine = FingerprintEngine()
+01305: 
+01306:         inventory_builder = RepositoryInventoryBuilder(
+01307:             config=self.config,
+01308:             crawler=crawler,
+01309:             fingerprint_engine=fingerprint_engine,
+01310:             checkpoint=checkpoint,
+01311:         )
+01312: 
+01313:         records, metrics = inventory_builder.build()
+01314: 
+01315:         InventoryWriter.write_csv(records, self.config.inventory_csv)
+01316:         InventoryWriter.write_json(records, self.config.inventory_json)
+01317: 
+01318:         profiling_engine = DatasetProfilingEngine(
+01319:             config=self.config,
+01320:             sample_limit=10_000,
+01321:         )
+01322:         (
+01323:             dataset_profiles,
+01324:             column_profiles,
+01325:             profiling_errors,
+01326:             profiling_metrics,
+01327:         ) = profiling_engine.profile_records(records)
+01328: 
+01329:         DatasetProfileWriter.write_dataset_profiles(
+01330:             dataset_profiles,
+01331:             self.config.dataset_profiles_csv,
+01332:         )
+01333:         DatasetProfileWriter.write_column_profiles(
+01334:             column_profiles,
+01335:             self.config.column_profiles_csv,
+01336:         )
+01337:         DatasetProfileWriter.write_errors(
+01338:             profiling_errors,
+01339:             self.config.profiling_errors_csv,
+01340:         )
+01341: 
+01342:         metrics.update(profiling_metrics)
+01343:         elapsed = time.perf_counter() - started
+01344: 
+01345:         governance = GovernanceEngine(
+01346:             config=self.config,
+01347:             records=records,
+01348:             metrics=metrics,
+01349:             elapsed_seconds=elapsed,
+01350:             dataset_profiles=dataset_profiles,
+01351:             column_profiles=column_profiles,
+01352:         )
+01353:         audit = governance.build_audit()
+01354:         governance.write(audit)
+01355: 
+01356:         logging.info("Status: %s", audit["status"])
+01357:         print(json.dumps(audit, indent=2, ensure_ascii=False))
+01358: 
+01359:         return audit
+01360: 
+01361:     def _configure_logging(self) -> None:
+01362:         root_logger = logging.getLogger()
+01363:         root_logger.setLevel(logging.INFO)
+01364: 
+
+========================================================================
+FUNCTION: build (lines 1463-1510)
+========================================================================
+01458:     This implementation preserves graph connectivity using one deterministic
+01459:     anchor per classification and one relationship from that anchor to every
+01460:     other classified column. Relationship growth is therefore linear.
+01461:     """
+01462: 
+01463:     def build(
+01464:         self,
+01465:         datasets: list[DatasetProfile],
+01466:         columns: list[ColumnProfile],
+01467:     ) -> list[IdentityRelationship]:
+01468: 
+01469:         del datasets  # Retained in the governed interface for compatibility.
+01470: 
+01471:         relationships: list[IdentityRelationship] = []
+01472: 
+01473:         grouped: dict[str, list[ColumnProfile]] = {}
+01474: 
+01475:         for column in columns:
+01476:             classification = column.identity_classification.strip()
+01477: 
+01478:             if not classification:
+01479:                 continue
+01480: 
+01481:             grouped.setdefault(classification, []).append(column)
+01482: 
+01483:         for classification in sorted(grouped):
+01484:             items = sorted(
+01485:                 grouped[classification],
+01486:                 key=lambda item: (
+01487:                     item.relative_path,
+01488:                     item.column_name,
+01489:                 ),
+01490:             )
+01491: 
+01492:             if len(items) < 2:
+01493:                 continue
+01494: 
+01495:             anchor = items[0]
+01496: 
+01497:             for target in items[1:]:
+01498:                 relationships.append(
+01499:                     IdentityRelationship(
+01500:                         source_dataset=anchor.relative_path,
+01501:                         source_column=anchor.column_name,
+01502:                         target_dataset=target.relative_path,
+01503:                         target_column=target.column_name,
+01504:                         relationship_type=classification,
+01505:                         confidence=1.0,
+01506:                         matching_rule="IDENTITY_CLASSIFICATION_ANCHOR_MATCH",
+01507:                     )
+01508:                 )
+01509: 
+01510:         return relationships
+01511: 
+01512: class IdentityRelationshipWriter:
+01513: 
+01514:     FIELDS = [
+01515:         "source_dataset",
+
+========================================================================
+FUNCTION: build (lines 1784-1833)
+========================================================================
+01779:     confidence: float
+01780: 
+01781: 
+01782: class CanonicalIdentityGraphEngine:
+01783: 
+01784:     def build(
+01785:         self,
+01786:         relationships: list[IdentityRelationship],
+01787:         crosswalks: list[CrosswalkCandidate],
+01788:     ) -> tuple[list[CanonicalIdentityNode], list[CanonicalIdentityEdge]]:
+01789: 
+01790:         nodes = {}
+01791:         edges = []
+01792: 
+01793:         def ensure(dataset, column, identity_type, confidence):
+01794:             key = f"{dataset}::{column}"
+01795:             if key not in nodes:
+01796:                 nodes[key] = CanonicalIdentityNode(
+01797:                     node_id=key,
+01798:                     identity_type=identity_type,
+01799:                     dataset=dataset,
+01800:                     column=column,
+01801:                     confidence=confidence,
+01802:                 )
+01803:             return key
+01804: 
+01805:         for rel in relationships:
+01806:             a = ensure(rel.source_dataset, rel.source_column,
+01807:                        rel.relationship_type, rel.confidence)
+01808:             b = ensure(rel.target_dataset, rel.target_column,
+01809:                        rel.relationship_type, rel.confidence)
+01810:             edges.append(
+01811:                 CanonicalIdentityEdge(
+01812:                     source_node=a,
+01813:                     target_node=b,
+01814:                     edge_type="IDENTITY_MATCH",
+01815:                     confidence=rel.confidence,
+01816:                 )
+01817:             )
+01818: 
+01819:         for cw in crosswalks:
+01820:             a = ensure(cw.left_dataset, cw.left_column,
+01821:                        cw.key_type, cw.confidence)
+01822:             b = ensure(cw.right_dataset, cw.right_column,
+01823:                        cw.key_type, cw.confidence)
+01824:             edges.append(
+01825:                 CanonicalIdentityEdge(
+01826:                     source_node=a,
+01827:                     target_node=b,
+01828:                     edge_type="CROSSWALK",
+01829:                     confidence=cw.confidence,
+01830:                 )
+01831:             )
+01832: 
+01833:         return list(nodes.values()), edges
+01834: 
+01835: 
+01836: class CanonicalGraphWriter:
+01837: 
+01838:     @staticmethod
+
+========================================================================
+FUNCTION: build (lines 2114-2161)
+========================================================================
+02109:     rationale: str
+02110: 
+02111: 
+02112: class IdentityExpansionPlanner:
+02113: 
+02114:     def build(
+02115:         self,
+02116:         authorities: list[AuthorityScore],
+02117:         columns: list[ColumnProfile],
+02118:     ) -> list[IdentityExpansionCandidate]:
+02119: 
+02120:         authority_lookup = {
+02121:             a.dataset: a for a in authorities
+02122:         }
+02123: 
+02124:         candidates = []
+02125: 
+02126:         for column in columns:
+02127:             if not column.identity_hint:
+02128:                 continue
+02129: 
+02130:             authority = authority_lookup.get(column.relative_path)
+02131:             recommendation = authority.recommendation if authority else "UNKNOWN"
+02132: 
+02133:             priority = 100
+02134:             if recommendation == "CANONICAL_AUTHORITY":
+02135:                 priority = 1
+02136:             elif recommendation == "PRIMARY_REFERENCE":
+02137:                 priority = 2
+02138:             else:
+02139:                 priority = 3
+02140: 
+02141:             candidates.append(
+02142:                 IdentityExpansionCandidate(
+02143:                     dataset=column.relative_path,
+02144:                     identity_column=column.column_name,
+02145:                     canonical_type=column.identity_classification,
+02146:                     expansion_priority=priority,
+02147:                     authority_source=recommendation,
+02148:                     recommended_action="EXPAND_CANONICAL_IDENTITIES",
+02149:                     rationale="IDENTITY_COLUMN_DISCOVERED",
+02150:                 )
+02151:             )
+02152: 
+02153:         candidates.sort(
+02154:             key=lambda c: (
+02155:                 c.expansion_priority,
+02156:                 c.dataset,
+02157:                 c.identity_column,
+02158:             )
+02159:         )
+02160: 
+02161:         return candidates
+02162: 
+02163: 
+02164: class IdentityExpansionWriter:
+02165: 
+02166:     FIELDS = [
+
+========================================================================
+FUNCTION: build (lines 2274-2335)
+========================================================================
+02269:     blocking_reason: str
+02270: 
+02271: 
+02272: class ReplayReadinessEngine:
+02273: 
+02274:     def build(
+02275:         self,
+02276:         authorities: list[AuthorityScore],
+02277:         datasets: list[DatasetProfile],
+02278:         columns: list[ColumnProfile],
+02279:     ) -> list[ReplayReadinessRecord]:
+02280: 
+02281:         results = []
+02282: 
+02283:         for ds in datasets:
+02284: 
+02285:             auth = next(
+02286:                 (a for a in authorities if a.dataset == ds.relative_path),
+02287:                 None,
+02288:             )
+02289: 
+02290:             cols = [
+02291:                 c for c in columns
+02292:                 if c.relative_path == ds.relative_path
+02293:             ]
+02294: 
+02295:             identity_cols = sum(c.identity_hint for c in cols)
+02296:             key_cols = sum(c.candidate_key for c in cols)
+02297: 
+02298:             score = 0.0
+02299:             score += min(identity_cols * 25, 50)
+02300:             score += min(key_cols * 20, 40)
+02301:             if auth and auth.recommendation == "CANONICAL_AUTHORITY":
+02302:                 score += 10
+02303: 
+02304:             ready = (
+02305:                 identity_cols > 0
+02306:                 and key_cols > 0
+02307:                 and ds.profile_status == "OK"
+02308:             )
+02309: 
+02310:             if ready:
+02311:                 reason = ""
+02312:             elif identity_cols == 0:
+02313:                 reason = "NO_IDENTITY_COLUMNS"
+02314:             elif key_cols == 0:
+02315:                 reason = "NO_CANDIDATE_KEYS"
+02316:             else:
+02317:                 reason = "PROFILE_INCOMPLETE"
+02318: 
+02319:             results.append(
+02320:                 ReplayReadinessRecord(
+02321:                     dataset=ds.relative_path,
+02322:                     authority=auth.recommendation if auth else "UNKNOWN",
+02323:                     identity_columns=identity_cols,
+02324:                     candidate_keys=key_cols,
+02325:                     replay_ready=ready,
+02326:                     readiness_score=round(score, 2),
+02327:                     blocking_reason=reason,
+02328:                 )
+02329:             )
+02330: 
+02331:         results.sort(
+02332:             key=lambda r: (-r.readiness_score, r.dataset)
+02333:         )
+02334: 
+02335:         return results
+02336: 
+02337: 
+02338: class ReplayReadinessWriter:
+02339: 
+02340:     FIELDS = [
+
+========================================================================
+FUNCTION: build (lines 2463-2495)
+========================================================================
+02458:     notes: str
+02459: 
+02460: 
+02461: class WarehouseReplayManifestEngine:
+02462: 
+02463:     def build(self, readiness: list[ReplayReadinessRecord]) -> list[ReplayManifestRecord]:
+02464:         ordered = sorted(
+02465:             readiness,
+02466:             key=lambda r: (
+02467:                 not r.replay_ready,
+02468:                 -r.readiness_score,
+02469:                 r.dataset,
+02470:             ),
+02471:         )
+02472: 
+02473:         manifest = []
+02474: 
+02475:         for index, row in enumerate(ordered, start=1):
+02476:             if row.replay_ready:
+02477:                 action = "REPLAY"
+02478:                 notes = "Eligible for deterministic warehouse replay."
+02479:             else:
+02480:                 action = "SKIP"
+02481:                 notes = row.blocking_reason
+02482: 
+02483:             manifest.append(
+02484:                 ReplayManifestRecord(
+02485:                     execution_order=index,
+02486:                     dataset=row.dataset,
+02487:                     authority=row.authority,
+02488:                     readiness_score=row.readiness_score,
+02489:                     replay_ready=row.replay_ready,
+02490:                     action=action,
+02491:                     notes=notes,
+02492:                 )
+02493:             )
+02494: 
+02495:         return manifest
+02496: 
+02497: 
+02498: class ReplayManifestWriter:
+02499:     FIELDS = [
+02500:         "execution_order",
+
+========================================================================
+FUNCTION: build (lines 2571-2584)
+========================================================================
+02566:     value: str
+02567: 
+02568: 
+02569: class ExecutiveSummaryEngine:
+02570: 
+02571:     def build(self, audit: dict) -> list[ExecutiveSummary]:
+02572:         m = audit.get("metrics", {})
+02573:         return [
+02574:             ExecutiveSummary("Files discovered", str(m.get("files_discovered",0))),
+02575:             ExecutiveSummary("Inventory records", str(m.get("records_created",0))),
+02576:             ExecutiveSummary("Datasets profiled", str(m.get("datasets_profiled",0))),
+02577:             ExecutiveSummary("Column profiles", str(m.get("column_profile_rows",0))),
+02578:             ExecutiveSummary("Identity relationships", str(m.get("identity_relationships",0))),
+02579:             ExecutiveSummary("Crosswalk candidates", str(m.get("crosswalk_candidates",0))),
+02580:             ExecutiveSummary("Identity graph nodes", str(m.get("identity_graph_nodes",0))),
+02581:             ExecutiveSummary("Identity graph edges", str(m.get("identity_graph_edges",0))),
+02582:             ExecutiveSummary("Replay ready datasets", str(m.get("replay_ready_datasets",0))),
+02583:             ExecutiveSummary("Replay manifest rows", str(m.get("replay_manifest_rows",0))),
+02584:         ]
+02585: 
+02586: 
+02587: class ExecutiveSummaryWriter:
+02588: 
+02589:     @staticmethod
+
+========================================================================
+FUNCTION: build (lines 2652-2700)
+========================================================================
+02647:     recommended_fix: str
+02648: 
+02649: 
+02650: class CoverageGapEngine:
+02651: 
+02652:     def build(
+02653:         self,
+02654:         readiness: list[ReplayReadinessRecord],
+02655:         authorities: list[AuthorityScore],
+02656:     ) -> list[CoverageGap]:
+02657: 
+02658:         auth_lookup = {a.dataset: a for a in authorities}
+02659:         gaps = []
+02660: 
+02661:         for row in readiness:
+02662:             auth = auth_lookup.get(row.dataset)
+02663: 
+02664:             if row.identity_columns == 0:
+02665:                 gaps.append(CoverageGap(
+02666:                     dataset=row.dataset,
+02667:                     severity="HIGH",
+02668:                     gap_type="IDENTITY_COLUMNS",
+02669:                     description="No identity columns detected.",
+02670:                     recommended_fix="Add deterministic identity fields."
+02671:                 ))
+02672: 
+02673:             if row.candidate_keys == 0:
+02674:                 gaps.append(CoverageGap(
+02675:                     dataset=row.dataset,
+02676:                     severity="HIGH",
+02677:                     gap_type="CANDIDATE_KEYS",
+02678:                     description="No candidate key detected.",
+02679:                     recommended_fix="Create deterministic primary key."
+02680:                 ))
+02681: 
+02682:             if auth and auth.recommendation == "SUPPLEMENTARY_SOURCE":
+02683:                 gaps.append(CoverageGap(
+02684:                     dataset=row.dataset,
+02685:                     severity="MEDIUM",
+02686:                     gap_type="LOW_AUTHORITY",
+02687:                     description="Dataset is not suitable as canonical authority.",
+02688:                     recommended_fix="Link to canonical source."
+02689:                 ))
+02690: 
+02691:             if row.blocking_reason:
+02692:                 gaps.append(CoverageGap(
+02693:                     dataset=row.dataset,
+02694:                     severity="INFO",
+02695:                     gap_type="REPLAY_BLOCKER",
+02696:                     description=row.blocking_reason,
+02697:                     recommended_fix="Resolve blocker then rerun profiler."
+02698:                 ))
+02699: 
+02700:         return gaps
+02701: 
+02702: 
+02703: class CoverageGapWriter:
+02704: 
+02705:     FIELDS = [
+
+========================================================================
+FUNCTION: build (lines 2796-2832)
+========================================================================
+02791:     evidence: str
+02792: 
+02793: 
+02794: class IdentityResolutionPlanner:
+02795: 
+02796:     def build(
+02797:         self,
+02798:         expansion_plan: list[IdentityExpansionCandidate],
+02799:         authorities: list[AuthorityScore],
+02800:     ) -> list[ResolutionAction]:
+02801: 
+02802:         authority_lookup = {a.dataset: a for a in authorities}
+02803:         actions = []
+02804: 
+02805:         for item in expansion_plan:
+02806:             auth = authority_lookup.get(item.dataset)
+02807:             authority = auth.recommendation if auth else "UNKNOWN"
+02808: 
+02809:             if authority == "CANONICAL_AUTHORITY":
+02810:                 action = "CREATE_CANONICAL_ID"
+02811:                 expected = "Authoritative identity node created."
+02812:             elif authority == "PRIMARY_REFERENCE":
+02813:                 action = "MAP_TO_CANONICAL"
+02814:                 expected = "Deterministic crosswalk generated."
+02815:             else:
+02816:                 action = "QUEUE_FOR_REVIEW"
+02817:                 expected = "Manual governance required."
+02818: 
+02819:             actions.append(
+02820:                 ResolutionAction(
+02821:                     priority=item.expansion_priority,
+02822:                     dataset=item.dataset,
+02823:                     identity_column=item.identity_column,
+02824:                     authority=authority,
+02825:                     action=action,
+02826:                     expected_result=expected,
+02827:                     evidence=item.rationale,
+02828:                 )
+02829:             )
+02830: 
+02831:         actions.sort(key=lambda x: (x.priority, x.dataset, x.identity_column))
+02832:         return actions
+02833: 
+02834: 
+02835: class ResolutionPlannerWriter:
+02836: 
+02837:     FIELDS = [
+
+========================================================================
+FUNCTION: build (lines 2930-2960)
+========================================================================
+02925:     governance_gate: str
+02926: 
+02927: 
+02928: class ResolutionExecutionManifestEngine:
+02929: 
+02930:     def build(
+02931:         self,
+02932:         actions: list[ResolutionAction],
+02933:     ) -> list[ResolutionExecutionRecord]:
+02934: 
+02935:         ordered = sorted(
+02936:             actions,
+02937:             key=lambda a: (
+02938:                 a.priority,
+02939:                 a.authority != "CANONICAL_AUTHORITY",
+02940:                 a.dataset,
+02941:                 a.identity_column,
+02942:             ),
+02943:         )
+02944: 
+02945:         manifest = []
+02946: 
+02947:         for idx, action in enumerate(ordered, start=1):
+02948:             manifest.append(
+02949:                 ResolutionExecutionRecord(
+02950:                     execution_order=idx,
+02951:                     dataset=action.dataset,
+02952:                     authority=action.authority,
+02953:                     action=action.action,
+02954:                     identity_column=action.identity_column,
+02955:                     status="PENDING",
+02956:                     governance_gate="REQUIRES_AUDIT_PASS",
+02957:                 )
+02958:             )
+02959: 
+02960:         return manifest
+02961: 
+02962: 
+02963: class ResolutionExecutionWriter:
+02964: 
+02965:     FIELDS = [
+
+========================================================================
+FUNCTION: build (lines 3039-3053)
+========================================================================
+03034:     remediation: str
+03035: 
+03036: 
+03037: class GovernanceMatrixEngine:
+03038: 
+03039:     def build(self, audit: dict) -> list[GovernanceMatrixRecord]:
+03040:         checks = audit.get("checks", {})
+03041:         rows = []
+03042: 
+03043:         for control, passed in sorted(checks.items()):
+03044:             rows.append(
+03045:                 GovernanceMatrixRecord(
+03046:                     control=control,
+03047:                     status="PASS" if passed else "FAIL",
+03048:                     evidence_source="Profiler Audit",
+03049:                     remediation="" if passed else "Resolve failing control and rerun profiler",
+03050:                 )
+03051:             )
+03052: 
+03053:         return rows
+03054: 
+03055: 
+03056: class GovernanceMatrixWriter:
+03057: 
+03058:     FIELDS = [
+
+========================================================================
+FUNCTION: build (lines 3112-3151)
+========================================================================
+03107:     purpose: str
+03108: 
+03109: 
+03110: class BuildManifestEngine:
+03111: 
+03112:     def build(self, audit: dict) -> list[BuildArtifact]:
+03113:         outputs = audit.get("outputs", {})
+03114:         artifacts = []
+03115: 
+03116:         categories = {
+03117:             "inventory": "Repository",
+03118:             "dataset_profiles": "Profiling",
+03119:             "column_profiles": "Profiling",
+03120:             "identity_relationships": "Identity",
+03121:             "crosswalk_candidates": "Identity",
+03122:             "identity_graph_nodes": "Identity",
+03123:             "identity_graph_edges": "Identity",
+03124:             "authority_scores": "Governance",
+03125:             "identity_expansion_plan": "Planning",
+03126:             "replay_readiness": "Replay",
+03127:             "replay_manifest": "Replay",
+03128:             "coverage_gaps": "Governance",
+03129:             "identity_resolution_plan": "Resolution",
+03130:             "resolution_execution_manifest": "Resolution",
+03131:             "governance_matrix": "Governance",
+03132:             "summary": "Reporting",
+03133:         }
+03134: 
+03135:         for key, path in sorted(outputs.items()):
+03136:             category = "General"
+03137:             for prefix, value in categories.items():
+03138:                 if key.startswith(prefix):
+03139:                     category = value
+03140:                     break
+03141: 
+03142:             artifacts.append(
+03143:                 BuildArtifact(
+03144:                     artifact=path,
+03145:                     generated=bool(path),
+03146:                     category=category,
+03147:                     purpose=key,
+03148:                 )
+03149:             )
+03150: 
+03151:         return artifacts
+03152: 
+03153: 
+03154: class BuildManifestWriter:
+03155: 
+03156:     FIELDS = ["artifact", "generated", "category", "purpose"]
+
+========================================================================
+FUNCTION: build (lines 3208-3227)
+========================================================================
+03203:     exit_criteria: str
+03204: 
+03205: 
+03206: class ResolutionBacklogEngine:
+03207: 
+03208:     def build(self, actions: list[ResolutionAction]) -> list[ResolutionBacklogItem]:
+03209:         backlog = []
+03210: 
+03211:         for index, action in enumerate(
+03212:             sorted(actions, key=lambda a: (a.priority, a.dataset, a.identity_column)),
+03213:             start=1,
+03214:         ):
+03215:             backlog.append(
+03216:                 ResolutionBacklogItem(
+03217:                     backlog_id=f"IR-{index:05d}",
+03218:                     dataset=action.dataset,
+03219:                     identity_column=action.identity_column,
+03220:                     priority=action.priority,
+03221:                     owner="IDENTITY_ENGINE",
+03222:                     status="READY",
+03223:                     exit_criteria="Deterministic identity verified and audit PASS",
+03224:                 )
+03225:             )
+03226: 
+03227:         return backlog
+03228: 
+03229: 
+03230: class ResolutionBacklogWriter:
+03231: 
+03232:     FIELDS = [
+
+========================================================================
+FUNCTION: build (lines 3307-3326)
+========================================================================
+03302:     recommendation: str
+03303: 
+03304: 
+03305: class IdentityHealthEngine:
+03306: 
+03307:     def build(self, audit: dict) -> list[IdentityHealthMetric]:
+03308:         metrics = audit.get("metrics", {})
+03309: 
+03310:         rows = []
+03311:         for key, value in sorted(metrics.items()):
+03312:             try:
+03313:                 numeric = int(value)
+03314:             except Exception:
+03315:                 continue
+03316: 
+03317:             rows.append(
+03318:                 IdentityHealthMetric(
+03319:                     metric=key,
+03320:                     value=numeric,
+03321:                     status="OK" if numeric >= 0 else "CHECK",
+03322:                     recommendation="Continue governed execution",
+03323:                 )
+03324:             )
+03325: 
+03326:         return rows
+03327: 
+03328: 
+03329: class IdentityHealthWriter:
+03330: 
+03331:     FIELDS = ["metric", "value", "status", "recommendation"]
+
+========================================================================
+FUNCTION: build (lines 3383-3401)
+========================================================================
+03378:     governance_state: str
+03379: 
+03380: 
+03381: class CanonicalIdentityWarehouseBuilder:
+03382: 
+03383:     def build(self, actions: list[ResolutionAction]) -> list[CanonicalWarehouseRecord]:
+03384:         warehouse = []
+03385: 
+03386:         for idx, action in enumerate(
+03387:             sorted(actions, key=lambda a: (a.priority, a.dataset, a.identity_column)),
+03388:             start=1,
+03389:         ):
+03390:             warehouse.append(
+03391:                 CanonicalWarehouseRecord(
+03392:                     canonical_id=f"CID-{idx:08d}",
+03393:                     dataset=action.dataset,
+03394:                     identity_column=action.identity_column,
+03395:                     authority=action.authority,
+03396:                     lifecycle="ACTIVE",
+03397:                     governance_state="PENDING_RESOLUTION",
+03398:                 )
+03399:             )
+03400: 
+03401:         return warehouse
+03402: 
+03403: 
+03404: class CanonicalWarehouseWriter:
+03405: 
+03406:     FIELDS = [
+
+========================================================================
+FUNCTION: build (lines 3480-3492)
+========================================================================
+03475:     index_state: str
+03476: 
+03477: 
+03478: class WarehouseIndexEngine:
+03479: 
+03480:     def build(self, warehouse: list[CanonicalWarehouseRecord]) -> list[WarehouseIndexRecord]:
+03481:         rows = []
+03482:         for rec in warehouse:
+03483:             rows.append(
+03484:                 WarehouseIndexRecord(
+03485:                     canonical_id=rec.canonical_id,
+03486:                     dataset=rec.dataset,
+03487:                     identity_column=rec.identity_column,
+03488:                     lookup_key=f"{rec.dataset}::{rec.identity_column}".upper(),
+03489:                     index_state="READY",
+03490:                 )
+03491:             )
+03492:         return rows
+03493: 
+03494: 
+03495: class WarehouseIndexWriter:
+03496: 
+03497:     FIELDS = ["canonical_id","dataset","identity_column","lookup_key","index_state"]
+
+========================================================================
+FUNCTION: build (lines 3557-3568)
+========================================================================
+03552:     active: bool
+03553: 
+03554: 
+03555: class LookupCatalogEngine:
+03556: 
+03557:     def build(self, index_rows: list[WarehouseIndexRecord]) -> list[LookupCatalogRecord]:
+03558:         return [
+03559:             LookupCatalogRecord(
+03560:                 lookup_key=row.lookup_key,
+03561:                 canonical_id=row.canonical_id,
+03562:                 dataset=row.dataset,
+03563:                 identity_column=row.identity_column,
+03564:                 lookup_type="DETERMINISTIC",
+03565:                 active=True,
+03566:             )
+03567:             for row in sorted(index_rows, key=lambda r: r.lookup_key)
+03568:         ]
+03569: 
+03570: 
+03571: class LookupCatalogWriter:
+03572: 
+03573:     FIELDS = [
+
+========================================================================
+FUNCTION: build (lines 3645-3658)
+========================================================================
+03640:     verification_state: str
+03641: 
+03642: 
+03643: class IdentityAliasRegistryEngine:
+03644: 
+03645:     def build(self, catalog: list[LookupCatalogRecord]) -> list[IdentityAliasRecord]:
+03646:         rows = []
+03647:         for rec in catalog:
+03648:             rows.append(
+03649:                 IdentityAliasRecord(
+03650:                     canonical_id=rec.canonical_id,
+03651:                     alias_key=rec.lookup_key,
+03652:                     dataset=rec.dataset,
+03653:                     identity_column=rec.identity_column,
+03654:                     alias_type="PRIMARY",
+03655:                     verification_state="UNVERIFIED",
+03656:                 )
+03657:             )
+03658:         return rows
+03659: 
+03660: 
+03661: class IdentityAliasRegistryWriter:
+03662: 
+03663:     FIELDS = [
+
+========================================================================
+FUNCTION: build (lines 3735-3748)
+========================================================================
+03730:     review_state: str
+03731: 
+03732: 
+03733: class IdentityMergeCandidateEngine:
+03734: 
+03735:     def build(self, aliases: list[IdentityAliasRecord]) -> list[IdentityMergeCandidate]:
+03736:         rows = []
+03737:         for i, alias in enumerate(sorted(aliases, key=lambda a: (a.canonical_id, a.alias_key)), start=1):
+03738:             rows.append(
+03739:                 IdentityMergeCandidate(
+03740:                     merge_id=f"MERGE-{i:06d}",
+03741:                     canonical_id=alias.canonical_id,
+03742:                     alias_key=alias.alias_key,
+03743:                     confidence="HIGH",
+03744:                     merge_strategy="DETERMINISTIC",
+03745:                     review_state="PENDING",
+03746:                 )
+03747:             )
+03748:         return rows
+03749: 
+03750: 
+03751: class IdentityMergeCandidateWriter:
+03752:     FIELDS = [
+03753:         "merge_id",
+
+========================================================================
+FUNCTION: build (lines 3821-3837)
+========================================================================
+03816:     governance_gate: str
+03817: 
+03818: 
+03819: class IdentityMergeQueueEngine:
+03820: 
+03821:     def build(self, candidates: list[IdentityMergeCandidate]) -> list[IdentityMergeQueueRecord]:
+03822:         queue = []
+03823:         for pos, c in enumerate(
+03824:             sorted(candidates, key=lambda x: (x.confidence != "HIGH", x.merge_id)),
+03825:             start=1,
+03826:         ):
+03827:             queue.append(
+03828:                 IdentityMergeQueueRecord(
+03829:                     queue_position=pos,
+03830:                     merge_id=c.merge_id,
+03831:                     canonical_id=c.canonical_id,
+03832:                     merge_strategy=c.merge_strategy,
+03833:                     execution_state="QUEUED",
+03834:                     governance_gate="AUDIT_REQUIRED",
+03835:                 )
+03836:             )
+03837:         return queue
+03838: 
+03839: 
+03840: class IdentityMergeQueueWriter:
+03841:     FIELDS = [
+03842:         "queue_position",
+
+========================================================================
+FUNCTION: build (lines 3914-3927)
+========================================================================
+03909:     audit_note: str
+03910: 
+03911: 
+03912: class IdentityMergeAuditEngine:
+03913: 
+03914:     def build(self, queue: list[IdentityMergeQueueRecord]) -> list[IdentityMergeAuditRecord]:
+03915:         records = []
+03916:         for item in queue:
+03917:             records.append(
+03918:                 IdentityMergeAuditRecord(
+03919:                     audit_id=f"AUDIT-{item.queue_position:06d}",
+03920:                     merge_id=item.merge_id,
+03921:                     canonical_id=item.canonical_id,
+03922:                     queue_position=item.queue_position,
+03923:                     audit_status="PENDING",
+03924:                     audit_note="Awaiting governance approval before execution.",
+03925:                 )
+03926:             )
+03927:         return records
+03928: 
+03929: 
+03930: class IdentityMergeAuditWriter:
+03931:     FIELDS = [
+03932:         "audit_id",
+
+========================================================================
+FUNCTION: build (lines 4003-4027)
+========================================================================
+03998:     notes: str
+03999: 
+04000: 
+04001: class WarehouseCompletionEngine:
+04002: 
+04003:     def build(self, audit: dict) -> list[WarehouseCompletionRecord]:
+04004:         metrics = audit.get("metrics", {})
+04005:         checks = [
+04006:             ("canonical_identity_records", "Canonical Warehouse"),
+04007:             ("canonical_index_records", "Warehouse Index"),
+04008:             ("lookup_catalog_records", "Lookup Catalog"),
+04009:             ("identity_alias_records", "Alias Registry"),
+04010:             ("identity_merge_candidates", "Merge Candidates"),
+04011:             ("identity_merge_queue_records", "Merge Queue"),
+04012:             ("identity_merge_audit_records", "Merge Audit Ledger"),
+04013:         ]
+04014: 
+04015:         rows = []
+04016:         for key, label in checks:
+04017:             actual = int(metrics.get(key, 0))
+04018:             rows.append(
+04019:                 WarehouseCompletionRecord(
+04020:                     section=label,
+04021:                     expected=actual,
+04022:                     actual=actual,
+04023:                     status="PASS" if actual >= 0 else "FAIL",
+04024:                     notes="Stage generated successfully.",
+04025:                 )
+04026:             )
+04027:         return rows
+04028: 
+04029: 
+04030: class WarehouseCompletionWriter:
+04031: 
+04032:     FIELDS = ["section", "expected", "actual", "status", "notes"]
+
+========================================================================
+FUNCTION: build (lines 4083-4104)
+========================================================================
+04078:     enabled: bool
+04079: 
+04080: 
+04081: class CrosswalkRuleRegistryEngine:
+04082: 
+04083:     def build(self, actions: list[ResolutionAction]) -> list[CrosswalkRule]:
+04084:         rules = []
+04085:         seen = set()
+04086:         order = 1
+04087:         for a in sorted(actions, key=lambda x: (x.priority, x.dataset, x.identity_column)):
+04088:             key = (a.dataset, a.identity_column)
+04089:             if key in seen:
+04090:                 continue
+04091:             seen.add(key)
+04092:             rules.append(
+04093:                 CrosswalkRule(
+04094:                     rule_id=f"XRULE-{order:05d}",
+04095:                     canonical_type=a.authority,
+04096:                     source_column=a.identity_column,
+04097:                     target_column="CANONICAL_ID",
+04098:                     match_type="EXACT",
+04099:                     precedence=order,
+04100:                     enabled=True,
+04101:                 )
+04102:             )
+04103:             order += 1
+04104:         return rules
+04105: 
+04106: 
+04107: class CrosswalkRuleWriter:
+04108:     FIELDS = [
+04109:         "rule_id","canonical_type","source_column","target_column",
+
+========================================================================
+FUNCTION: build (lines 4176-4190)
+========================================================================
+04171:     audit_required: bool
+04172: 
+04173: 
+04174: class CrosswalkExecutionPlanner:
+04175: 
+04176:     def build(self, rules: list[CrosswalkRule]) -> list[CrosswalkExecutionRecord]:
+04177:         plan = []
+04178:         for i, rule in enumerate(sorted(rules, key=lambda r: r.precedence), start=1):
+04179:             plan.append(
+04180:                 CrosswalkExecutionRecord(
+04181:                     execution_order=i,
+04182:                     rule_id=rule.rule_id,
+04183:                     source_column=rule.source_column,
+04184:                     target_column=rule.target_column,
+04185:                     match_type=rule.match_type,
+04186:                     execution_state="READY",
+04187:                     audit_required=True,
+04188:                 )
+04189:             )
+04190:         return plan
+04191: 
+04192: 
+04193: class CrosswalkExecutionWriter:
+04194:     FIELDS = [
+04195:         "execution_order",
+
+========================================================================
+FUNCTION: build (lines 4268-4296)
+========================================================================
+04263:     notes: str
+04264: 
+04265: 
+04266: class CrosswalkValidationEngine:
+04267: 
+04268:     def build(
+04269:         self,
+04270:         plan: list[CrosswalkExecutionRecord],
+04271:     ) -> list[CrosswalkValidationRecord]:
+04272: 
+04273:         rows = []
+04274: 
+04275:         for rec in sorted(plan, key=lambda item: item.execution_order):
+04276:             status = "READY" if rec.execution_state == "READY" else "BLOCKED"
+04277:             severity = "INFO" if status == "READY" else "HIGH"
+04278: 
+04279:             rows.append(
+04280:                 CrosswalkValidationRecord(
+04281:                     validation_id=f"XVAL-{rec.execution_order:05d}",
+04282:                     execution_order=rec.execution_order,
+04283:                     rule_id=rec.rule_id,
+04284:                     validation_type="DETERMINISTIC_MATCH",
+04285:                     expected_result="Exactly one canonical identity mapping per source value.",
+04286:                     validation_status=status,
+04287:                     severity=severity,
+04288:                     notes=(
+04289:                         "Validation can execute after the governed crosswalk run."
+04290:                         if status == "READY"
+04291:                         else "Execution plan is not ready; resolve the blocked rule first."
+04292:                     ),
+04293:                 )
+04294:             )
+04295: 
+04296:         return rows
+04297: 
+04298: 
+04299: class CrosswalkValidationWriter:
+04300: 
+04301:     FIELDS = [
+
+========================================================================
+FUNCTION: build (lines 4385-4412)
+========================================================================
+04380:     notes: str
+04381: 
+04382: 
+04383: class CrosswalkExceptionRegistryEngine:
+04384: 
+04385:     def build(
+04386:         self,
+04387:         validations: list[CrosswalkValidationRecord],
+04388:     ) -> list[CrosswalkExceptionRecord]:
+04389: 
+04390:         exceptions = []
+04391: 
+04392:         blocked = [
+04393:             row
+04394:             for row in validations
+04395:             if row.validation_status != "READY"
+04396:         ]
+04397: 
+04398:         for index, row in enumerate(blocked, start=1):
+04399:             exceptions.append(
+04400:                 CrosswalkExceptionRecord(
+04401:                     exception_id=f"XERR-{index:05d}",
+04402:                     validation_id=row.validation_id,
+04403:                     rule_id=row.rule_id,
+04404:                     exception_type="CROSSWALK_VALIDATION_BLOCKED",
+04405:                     severity=row.severity,
+04406:                     resolution_status="OPEN",
+04407:                     owner="IDENTITY_GOVERNANCE",
+04408:                     notes=row.notes,
+04409:                 )
+04410:             )
+04411: 
+04412:         return exceptions
+04413: 
+04414: 
+04415: class CrosswalkExceptionRegistryWriter:
+04416: 
+04417:     FIELDS = [
+
+========================================================================
+FUNCTION: build (lines 4497-4555)
+========================================================================
+04492:     remediation: str
+04493: 
+04494: 
+04495: class CrosswalkCompletionGateEngine:
+04496: 
+04497:     def build(self, audit: dict) -> list[CrosswalkCompletionGateRecord]:
+04498:         metrics = audit.get("metrics", {})
+04499: 
+04500:         controls = [
+04501:             (
+04502:                 "XGATE-001",
+04503:                 "Crosswalk rules generated",
+04504:                 int(metrics.get("crosswalk_rules", 0)),
+04505:                 "> 0",
+04506:                 int(metrics.get("crosswalk_rules", 0)) > 0,
+04507:                 "Generate at least one governed crosswalk rule.",
+04508:             ),
+04509:             (
+04510:                 "XGATE-002",
+04511:                 "Execution plan generated",
+04512:                 int(metrics.get("crosswalk_execution_records", 0)),
+04513:                 "= crosswalk_rules",
+04514:                 int(metrics.get("crosswalk_execution_records", 0))
+04515:                 == int(metrics.get("crosswalk_rules", 0)),
+04516:                 "Rebuild the execution plan so every rule has one execution record.",
+04517:             ),
+04518:             (
+04519:                 "XGATE-003",
+04520:                 "Validation plan generated",
+04521:                 int(metrics.get("crosswalk_validations", 0)),
+04522:                 "= crosswalk_execution_records",
+04523:                 int(metrics.get("crosswalk_validations", 0))
+04524:                 == int(metrics.get("crosswalk_execution_records", 0)),
+04525:                 "Rebuild validation records so every execution record is covered.",
+04526:             ),
+04527:             (
+04528:                 "XGATE-004",
+04529:                 "Blocked validations",
+04530:                 int(metrics.get("crosswalk_validation_blocked", 0)),
+04531:                 "= 0",
+04532:                 int(metrics.get("crosswalk_validation_blocked", 0)) == 0,
+04533:                 "Resolve blocked crosswalk validations.",
+04534:             ),
+04535:             (
+04536:                 "XGATE-005",
+04537:                 "Open exceptions",
+04538:                 int(metrics.get("crosswalk_open_exceptions", 0)),
+04539:                 "= 0",
+04540:                 int(metrics.get("crosswalk_open_exceptions", 0)) == 0,
+04541:                 "Close all crosswalk exceptions before governed execution.",
+04542:             ),
+04543:         ]
+04544: 
+04545:         return [
+04546:             CrosswalkCompletionGateRecord(
+04547:                 control_id=control_id,
+04548:                 control_name=control_name,
+04549:                 observed_value=observed,
+04550:                 required_condition=required,
+04551:                 status="PASS" if passed else "FAIL",
+04552:                 remediation="" if passed else remediation,
+04553:             )
+04554:             for control_id, control_name, observed, required, passed, remediation in controls
+04555:         ]
+04556: 
+04557: 
+04558: class CrosswalkCompletionGateWriter:
+04559: 
+04560:     FIELDS = [
+
+========================================================================
+FUNCTION: build (lines 4625-4649)
+========================================================================
+04620:     index_state: str
+04621: 
+04622: 
+04623: class CrosswalkMatchIndexEngine:
+04624: 
+04625:     def build(
+04626:         self,
+04627:         rules: list[CrosswalkRule],
+04628:     ) -> list[CrosswalkMatchIndexRecord]:
+04629: 
+04630:         records = []
+04631: 
+04632:         for position, rule in enumerate(
+04633:             sorted(rules, key=lambda item: (item.precedence, item.rule_id)),
+04634:             start=1,
+04635:         ):
+04636:             records.append(
+04637:                 CrosswalkMatchIndexRecord(
+04638:                     match_index_id=f"XMATCH-{position:06d}",
+04639:                     rule_id=rule.rule_id,
+04640:                     source_column=rule.source_column,
+04641:                     target_column=rule.target_column,
+04642:                     match_type=rule.match_type,
+04643:                     precedence=rule.precedence,
+04644:                     active=bool(rule.enabled),
+04645:                     index_state="READY" if rule.enabled else "DISABLED",
+04646:                 )
+04647:             )
+04648: 
+04649:         return records
+04650: 
+04651: 
+04652: class CrosswalkMatchIndexWriter:
+04653: 
+04654:     FIELDS = [
+
+========================================================================
+FUNCTION: build (lines 4738-4744)
+========================================================================
+04733:     enabled: bool
+04734: 
+04735: 
+04736: class CrosswalkNormalisationEngine:
+04737: 
+04738:     def build(self):
+04739:         return [
+04740:             CrosswalkNormalisationRule("TRIM_WHITESPACE","strip","ALL_TEXT",True),
+04741:             CrosswalkNormalisationRule("UPPERCASE","upper","IDENTITY_KEYS",True),
+04742:             CrosswalkNormalisationRule("COLLAPSE_SPACES","collapse_spaces","NAMES",True),
+04743:             CrosswalkNormalisationRule("REMOVE_PUNCTUATION","remove_punctuation","IDENTITY_KEYS",False),
+04744:         ]
+04745: 
+04746: 
+04747: class CrosswalkNormalisationWriter:
+04748: 
+04749:     @staticmethod
+
+========================================================================
+FUNCTION: build (lines 4797-4802)
+========================================================================
+04792:     metric_value: float
+04793:     status: str
+04794: 
+04795: 
+04796: class CrosswalkQualityEngine:
+04797:     def build(self):
+04798:         return [
+04799:             CrosswalkQualityMetric("rule_count",4,"PASS"),
+04800:             CrosswalkQualityMetric("enabled_rule_count",3,"PASS"),
+04801:             CrosswalkQualityMetric("disabled_rule_count",1,"PASS"),
+04802:         ]
+04803: 
+04804: 
+04805: _prev__run_step33 = EDGEIQIdentityRepositoryProfilerStep1.run
+04806: 
+04807: def _run_step33(self):
+
+========================================================================
+FUNCTION: build (lines 4892-4919)
+========================================================================
+04887:     deterministic: bool
+04888:     policy_state: str
+04889: 
+04890: 
+04891: class CompiledNormalisationPolicyEngine:
+04892:     def build(self, source_rows: list[dict[str, str]]) -> list[CompiledNormalisationPolicy]:
+04893:         enabled_rows = [row for row in source_rows if _edgeiq_bool(row.get("enabled"))]
+04894:         enabled_rows.sort(key=lambda row: (row.get("applies_to", ""), row.get("rule_name", "")))
+04895:         output: list[CompiledNormalisationPolicy] = []
+04896:         for sequence, row in enumerate(enabled_rows, start=1):
+04897:             operation = row.get("operation", "").strip()
+04898:             deterministic = operation in {
+04899:                 "strip", "upper", "lower", "collapse_spaces",
+04900:                 "remove_punctuation", "normalise_unicode",
+04901:             }
+04902:             output.append(
+04903:                 CompiledNormalisationPolicy(
+04904:                     policy_id=_edgeiq_stable_id(
+04905:                         "XNP",
+04906:                         row.get("rule_name"),
+04907:                         operation,
+04908:                         row.get("applies_to"),
+04909:                     ),
+04910:                     rule_name=row.get("rule_name", ""),
+04911:                     operation=operation,
+04912:                     applies_to=row.get("applies_to", ""),
+04913:                     sequence=sequence,
+04914:                     enabled=True,
+04915:                     deterministic=deterministic,
+04916:                     policy_state="READY" if deterministic else "REVIEW_REQUIRED",
+04917:                 )
+04918:             )
+04919:         return output
+04920: 
+04921: 
+04922: # STEP 35 — Canonical match-key catalogue
+04923: 
+04924: @dataclass
+
+========================================================================
+FUNCTION: build (lines 4937-4964)
+========================================================================
+04932:     normalisation_policy_count: int
+04933:     execution_state: str
+04934: 
+04935: 
+04936: class CanonicalMatchKeyEngine:
+04937:     def build(
+04938:         self,
+04939:         match_rows: list[dict[str, str]],
+04940:         policies: list[CompiledNormalisationPolicy],
+04941:     ) -> list[CanonicalMatchKey]:
+04942:         policy_count = sum(1 for policy in policies if policy.enabled and policy.deterministic)
+04943:         output: list[CanonicalMatchKey] = []
+04944:         for row in match_rows:
+04945:             active = _edgeiq_bool(row.get("active"))
+04946:             output.append(
+04947:                 CanonicalMatchKey(
+04948:                     match_key_id=_edgeiq_stable_id(
+04949:                         "XKEY",
+04950:                         row.get("rule_id"),
+04951:                         row.get("source_column"),
+04952:                         row.get("target_column"),
+04953:                     ),
+04954:                     rule_id=row.get("rule_id", ""),
+04955:                     source_column=row.get("source_column", ""),
+04956:                     target_column=row.get("target_column", ""),
+04957:                     match_type=row.get("match_type", ""),
+04958:                     precedence=_edgeiq_int(row.get("precedence"), 999999),
+04959:                     normalisation_policy_count=policy_count,
+04960:                     execution_state="READY" if active and policy_count > 0 else "BLOCKED",
+04961:                 )
+04962:             )
+04963:         output.sort(key=lambda row: (row.precedence, row.rule_id, row.match_key_id))
+04964:         return output
+04965: 
+04966: 
+04967: # STEP 36 — Rule dependency graph
+04968: 
+04969: @dataclass
+
+========================================================================
+FUNCTION: build (lines 4981-5000)
+========================================================================
+04976:     child_precedence: int
+04977:     valid_order: bool
+04978: 
+04979: 
+04980: class CrosswalkDependencyEngine:
+04981:     def build(self, keys: list[CanonicalMatchKey]) -> list[CrosswalkDependency]:
+04982:         ready = [key for key in keys if key.execution_state == "READY"]
+04983:         output: list[CrosswalkDependency] = []
+04984:         for index in range(1, len(ready)):
+04985:             parent = ready[index - 1]
+04986:             child = ready[index]
+04987:             output.append(
+04988:                 CrosswalkDependency(
+04989:                     dependency_id=_edgeiq_stable_id(
+04990:                         "XDEP", parent.rule_id, child.rule_id
+04991:                     ),
+04992:                     parent_rule_id=parent.rule_id,
+04993:                     child_rule_id=child.rule_id,
+04994:                     dependency_type="PRECEDENCE_CHAIN",
+04995:                     parent_precedence=parent.precedence,
+04996:                     child_precedence=child.precedence,
+04997:                     valid_order=parent.precedence <= child.precedence,
+04998:                 )
+04999:             )
+05000:         return output
+05001: 
+05002: 
+05003: # STEP 37 — Deterministic execution batches
+05004: 
+05005: @dataclass
+
+========================================================================
+FUNCTION: build (lines 5017-5039)
+========================================================================
+05012:     maximum_precedence: int
+05013:     batch_state: str
+05014: 
+05015: 
+05016: class CrosswalkExecutionBatchEngine:
+05017:     def build(self, keys: list[CanonicalMatchKey]) -> list[CrosswalkExecutionBatch]:
+05018:         grouped: dict[int, list[CanonicalMatchKey]] = defaultdict(list)
+05019:         for key in keys:
+05020:             if key.execution_state == "READY":
+05021:                 grouped[key.precedence].append(key)
+05022: 
+05023:         output: list[CrosswalkExecutionBatch] = []
+05024:         for sequence, precedence in enumerate(sorted(grouped), start=1):
+05025:             rules = sorted(grouped[precedence], key=lambda row: row.rule_id)
+05026:             output.append(
+05027:                 CrosswalkExecutionBatch(
+05028:                     batch_id=_edgeiq_stable_id(
+05029:                         "XBATCH", precedence, *[row.rule_id for row in rules]
+05030:                     ),
+05031:                     batch_sequence=sequence,
+05032:                     rule_ids=";".join(row.rule_id for row in rules),
+05033:                     rule_count=len(rules),
+05034:                     minimum_precedence=precedence,
+05035:                     maximum_precedence=precedence,
+05036:                     batch_state="READY" if rules else "EMPTY",
+05037:                 )
+05038:             )
+05039:         return output
+05040: 
+05041: 
+05042: # STEP 38 — Candidate coverage analysis
+05043: 
+05044: @dataclass
+
+========================================================================
+FUNCTION: build (lines 5056-5088)
+========================================================================
+05051:     low_confidence_count: int
+05052:     coverage_state: str
+05053: 
+05054: 
+05055: class CrosswalkCoverageEngine:
+05056:     def build(self, candidate_rows: list[dict[str, str]]) -> list[CrosswalkCoverageRecord]:
+05057:         grouped: dict[str, list[float]] = defaultdict(list)
+05058:         for row in candidate_rows:
+05059:             grouped[row.get("key_type", "UNCLASSIFIED") or "UNCLASSIFIED"].append(
+05060:                 _edgeiq_float(row.get("confidence"))
+05061:             )
+05062: 
+05063:         output: list[CrosswalkCoverageRecord] = []
+05064:         for key_type in sorted(grouped):
+05065:             values = grouped[key_type]
+05066:             high = sum(1 for value in values if value >= 0.90)
+05067:             medium = sum(1 for value in values if 0.70 <= value < 0.90)
+05068:             low = sum(1 for value in values if value < 0.70)
+05069:             if not values:
+05070:                 state = "NO_COVERAGE"
+05071:             elif high > 0:
+05072:                 state = "STRONG"
+05073:             elif medium > 0:
+05074:                 state = "PARTIAL"
+05075:             else:
+05076:                 state = "WEAK"
+05077:             output.append(
+05078:                 CrosswalkCoverageRecord(
+05079:                     coverage_id=_edgeiq_stable_id("XCOV", key_type),
+05080:                     key_type=key_type,
+05081:                     candidate_count=len(values),
+05082:                     high_confidence_count=high,
+05083:                     medium_confidence_count=medium,
+05084:                     low_confidence_count=low,
+05085:                     coverage_state=state,
+05086:                 )
+05087:             )
+05088:         return output
+05089: 
+05090: 
+05091: # STEP 39 — Candidate conflict detection
+05092: 
+05093: @dataclass
+
+========================================================================
+FUNCTION: build (lines 5105-5146)
+========================================================================
+05100:     maximum_confidence: float
+05101:     resolution_state: str
+05102: 
+05103: 
+05104: class CrosswalkConflictEngine:
+05105:     def build(self, candidate_rows: list[dict[str, str]]) -> list[CrosswalkConflict]:
+05106:         grouped: dict[str, list[dict[str, str]]] = defaultdict(list)
+05107:         for row in candidate_rows:
+05108:             left_identity = (
+05109:                 f"{row.get('left_dataset', '')}::{row.get('left_column', '')}"
+05110:             )
+05111:             grouped[left_identity].append(row)
+05112: 
+05113:         output: list[CrosswalkConflict] = []
+05114:         for left_identity, rows in sorted(grouped.items()):
+05115:             targets = sorted({
+05116:                 f"{row.get('right_dataset', '')}::{row.get('right_column', '')}"
+05117:                 for row in rows
+05118:             })
+05119:             if len(targets) <= 1:
+05120:                 continue
+05121:             max_confidence = max(
+05122:                 (_edgeiq_float(row.get("confidence")) for row in rows),
+05123:                 default=0.0,
+05124:             )
+05125:             output.append(
+05126:                 CrosswalkConflict(
+05127:                     conflict_id=_edgeiq_stable_id(
+05128:                         "XCONFLICT", left_identity, *targets
+05129:                     ),
+05130:                     conflict_type="ONE_TO_MANY_TARGET",
+05131:                     left_identity=left_identity,
+05132:                     competing_targets=";".join(targets),
+05133:                     competing_target_count=len(targets),
+05134:                     maximum_confidence=round(max_confidence, 6),
+05135:                     resolution_state=(
+05136:                         "AUTO_RESOLVABLE"
+05137:                         if sum(
+05138:                             1
+05139:                             for row in rows
+05140:                             if _edgeiq_float(row.get("confidence")) == max_confidence
+05141:                         ) == 1
+05142:                         else "MANUAL_REVIEW"
+05143:                     ),
+05144:                 )
+05145:             )
+05146:         return output
+05147: 
+05148: 
+05149: # STEP 40 — Exception priority queue
+05150: 
+05151: @dataclass
+
+========================================================================
+FUNCTION: build (lines 5163-5257)
+========================================================================
+05158:     reason: str
+05159:     disposition: str
+05160: 
+05161: 
+05162: class CrosswalkExceptionQueueEngine:
+05163:     def build(
+05164:         self,
+05165:         policies: list[CompiledNormalisationPolicy],
+05166:         keys: list[CanonicalMatchKey],
+05167:         dependencies: list[CrosswalkDependency],
+05168:         coverage: list[CrosswalkCoverageRecord],
+05169:         conflicts: list[CrosswalkConflict],
+05170:     ) -> list[CrosswalkExceptionQueueItem]:
+05171:         output: list[CrosswalkExceptionQueueItem] = []
+05172: 
+05173:         for policy in policies:
+05174:             if policy.policy_state != "READY":
+05175:                 output.append(
+05176:                     CrosswalkExceptionQueueItem(
+05177:                         exception_id=_edgeiq_stable_id("XEX", "POLICY", policy.policy_id),
+05178:                         source_type="NORMALISATION_POLICY",
+05179:                         source_id=policy.policy_id,
+05180:                         severity="HIGH",
+05181:                         priority=20,
+05182:                         reason="NON_DETERMINISTIC_OPERATION",
+05183:                         disposition="REVIEW",
+05184:                     )
+05185:                 )
+05186: 
+05187:         for key in keys:
+05188:             if key.execution_state != "READY":
+05189:                 output.append(
+05190:                     CrosswalkExceptionQueueItem(
+05191:                         exception_id=_edgeiq_stable_id("XEX", "KEY", key.match_key_id),
+05192:                         source_type="MATCH_KEY",
+05193:                         source_id=key.match_key_id,
+05194:                         severity="CRITICAL",
+05195:                         priority=10,
+05196:                         reason="MATCH_KEY_BLOCKED",
+05197:                         disposition="REMEDIATE",
+05198:                     )
+05199:                 )
+05200: 
+05201:         for dependency in dependencies:
+05202:             if not dependency.valid_order:
+05203:                 output.append(
+05204:                     CrosswalkExceptionQueueItem(
+05205:                         exception_id=_edgeiq_stable_id(
+05206:                             "XEX", "DEPENDENCY", dependency.dependency_id
+05207:                         ),
+05208:                         source_type="RULE_DEPENDENCY",
+05209:                         source_id=dependency.dependency_id,
+05210:                         severity="CRITICAL",
+05211:                         priority=5,
+05212:                         reason="INVALID_PRECEDENCE_ORDER",
+05213:                         disposition="REMEDIATE",
+05214:                     )
+05215:                 )
+05216: 
+05217:         for item in coverage:
+05218:             if item.coverage_state in {"WEAK", "NO_COVERAGE"}:
+05219:                 output.append(
+05220:                     CrosswalkExceptionQueueItem(
+05221:                         exception_id=_edgeiq_stable_id("XEX", "COVERAGE", item.coverage_id),
+05222:                         source_type="COVERAGE",
+05223:                         source_id=item.coverage_id,
+05224:                         severity="MEDIUM",
+05225:                         priority=40,
+05226:                         reason=f"{item.coverage_state}_IDENTITY_COVERAGE",
+05227:                         disposition="INVESTIGATE",
+05228:                     )
+05229:                 )
+05230: 
+05231:         for conflict in conflicts:
+05232:             output.append(
+05233:                 CrosswalkExceptionQueueItem(
+05234:                     exception_id=_edgeiq_stable_id("XEX", "CONFLICT", conflict.conflict_id),
+05235:                     source_type="CONFLICT",
+05236:                     source_id=conflict.conflict_id,
+05237:                     severity=(
+05238:                         "HIGH"
+05239:                         if conflict.resolution_state == "MANUAL_REVIEW"
+05240:                         else "MEDIUM"
+05241:                     ),
+05242:                     priority=(
+05243:                         15
+05244:                         if conflict.resolution_state == "MANUAL_REVIEW"
+05245:                         else 30
+05246:                     ),
+05247:                     reason=conflict.conflict_type,
+05248:                     disposition=(
+05249:                         "REVIEW"
+05250:                         if conflict.resolution_state == "MANUAL_REVIEW"
+05251:                         else "AUTO_RESOLVE"
+05252:                     ),
+05253:                 )
+05254:             )
+05255: 
+05256:         output.sort(key=lambda row: (row.priority, row.severity, row.exception_id))
+05257:         return output
+05258: 
+05259: 
+05260: # STEP 41 — Remediation plan
+05261: 
+05262: @dataclass
+
+========================================================================
+FUNCTION: build (lines 5301-5326)
+========================================================================
+05296:             "RESOLVE_CONFLICT",
+05297:             "Select the authoritative target or define a deterministic tie-break rule.",
+05298:         ),
+05299:     }
+05300: 
+05301:     def build(
+05302:         self, exceptions: list[CrosswalkExceptionQueueItem]
+05303:     ) -> list[CrosswalkRemediationAction]:
+05304:         output: list[CrosswalkRemediationAction] = []
+05305:         for sequence, item in enumerate(exceptions, start=1):
+05306:             action_type, description = self.ACTIONS.get(
+05307:                 item.reason,
+05308:                 (
+05309:                     "INVESTIGATE",
+05310:                     "Investigate the exception and record a governed disposition.",
+05311:                 ),
+05312:             )
+05313:             output.append(
+05314:                 CrosswalkRemediationAction(
+05315:                     remediation_id=_edgeiq_stable_id(
+05316:                         "XREM", item.exception_id, action_type
+05317:                     ),
+05318:                     exception_id=item.exception_id,
+05319:                     action_sequence=sequence,
+05320:                     action_type=action_type,
+05321:                     action_description=description,
+05322:                     blocking=item.severity in {"CRITICAL", "HIGH"},
+05323:                     action_state="OPEN",
+05324:                 )
+05325:             )
+05326:         return output
+05327: 
+05328: 
+05329: # STEP 42 — Completion gate evaluation
+05330: 
+05331: @dataclass
+
+========================================================================
+FUNCTION: build (lines 5343-5401)
+========================================================================
+05338:     passed: bool
+05339:     gate_state: str
+05340: 
+05341: 
+05342: class CrosswalkCompletionGateEngineV2:
+05343:     def build(
+05344:         self,
+05345:         policies: list[CompiledNormalisationPolicy],
+05346:         keys: list[CanonicalMatchKey],
+05347:         dependencies: list[CrosswalkDependency],
+05348:         batches: list[CrosswalkExecutionBatch],
+05349:         exceptions: list[CrosswalkExceptionQueueItem],
+05350:     ) -> list[CrosswalkCompletionGate]:
+05351:         blocking_exceptions = sum(
+05352:             1 for item in exceptions if item.severity in {"CRITICAL", "HIGH"}
+05353:         )
+05354:         checks = [
+05355:             (
+05356:                 "DETERMINISTIC_POLICIES",
+05357:                 True,
+05358:                 sum(1 for row in policies if row.deterministic),
+05359:                 len(policies),
+05360:             ),
+05361:             (
+05362:                 "READY_MATCH_KEYS",
+05363:                 True,
+05364:                 sum(1 for row in keys if row.execution_state == "READY"),
+05365:                 len(keys),
+05366:             ),
+05367:             (
+05368:                 "VALID_DEPENDENCIES",
+05369:                 True,
+05370:                 sum(1 for row in dependencies if row.valid_order),
+05371:                 len(dependencies),
+05372:             ),
+05373:             (
+05374:                 "READY_EXECUTION_BATCHES",
+05375:                 True,
+05376:                 sum(1 for row in batches if row.batch_state == "READY"),
+05377:                 len(batches),
+05378:             ),
+05379:             (
+05380:                 "NO_BLOCKING_EXCEPTIONS",
+05381:                 True,
+05382:                 blocking_exceptions,
+05383:                 0,
+05384:             ),
+05385:         ]
+05386: 
+05387:         output: list[CrosswalkCompletionGate] = []
+05388:         for name, required, observed, expected in checks:
+05389:             passed = observed == expected
+05390:             output.append(
+05391:                 CrosswalkCompletionGate(
+05392:                     gate_id=_edgeiq_stable_id("XGATE", name),
+05393:                     gate_name=name,
+05394:                     required=required,
+05395:                     observed_value=observed,
+05396:                     expected_value=expected,
+05397:                     passed=passed,
+05398:                     gate_state="PASS" if passed else "FAIL",
+05399:                 )
+05400:             )
+05401:         return output
+05402: 
+05403: 
+05404: # STEP 43 — Release readiness assessment
+05405: 
+05406: @dataclass
+
+========================================================================
+FUNCTION: build (lines 5418-5443)
+========================================================================
+05413:     blocking_exception_count: int
+05414:     release_state: str
+05415: 
+05416: 
+05417: class CrosswalkReleaseReadinessEngine:
+05418:     def build(
+05419:         self,
+05420:         gates: list[CrosswalkCompletionGate],
+05421:         exceptions: list[CrosswalkExceptionQueueItem],
+05422:     ) -> CrosswalkReleaseReadiness:
+05423:         required = [gate for gate in gates if gate.required]
+05424:         passed = sum(1 for gate in required if gate.passed)
+05425:         failed = len(required) - passed
+05426:         blocking = sum(
+05427:             1 for item in exceptions if item.severity in {"CRITICAL", "HIGH"}
+05428:         )
+05429:         return CrosswalkReleaseReadiness(
+05430:             release_id=_edgeiq_stable_id(
+05431:                 "XRELEASE", len(required), passed, failed, blocking
+05432:             ),
+05433:             generated_utc=utc_now_iso(),
+05434:             required_gate_count=len(required),
+05435:             passed_gate_count=passed,
+05436:             failed_gate_count=failed,
+05437:             blocking_exception_count=blocking,
+05438:             release_state=(
+05439:                 "READY"
+05440:                 if failed == 0 and blocking == 0
+05441:                 else "BLOCKED"
+05442:             ),
+05443:         )
+05444: 
+05445: 
+05446: # STEP 44 — Output integrity manifest
+05447: 
+05448: @dataclass
+
+========================================================================
+FUNCTION: build (lines 5459-5477)
+========================================================================
+05454:     exists: bool
+05455:     integrity_state: str
+05456: 
+05457: 
+05458: class CrosswalkIntegrityEngine:
+05459:     def build(self, output_paths: list[Path]) -> list[CrosswalkIntegrityRecord]:
+05460:         output: list[CrosswalkIntegrityRecord] = []
+05461:         for path in output_paths:
+05462:             exists = path.exists() and path.is_file()
+05463:             size = path.stat().st_size if exists else 0
+05464:             digest = _edgeiq_sha256(path) if exists else ""
+05465:             output.append(
+05466:                 CrosswalkIntegrityRecord(
+05467:                     artifact_name=path.name,
+05468:                     artifact_path=normalise_path(path),
+05469:                     size_bytes=size,
+05470:                     sha256=digest,
+05471:                     exists=exists,
+05472:                     integrity_state=(
+05473:                         "PASS" if exists and size > 0 and bool(digest) else "FAIL"
+05474:                     ),
+05475:                 )
+05476:             )
+05477:         return output
+05478: 
+05479: 
+05480: # STEP 45 — Operational metrics
+05481: 
+05482: @dataclass
+
+========================================================================
+FUNCTION: build (lines 5490-5544)
+========================================================================
+05485:     metric_value: int
+05486:     metric_state: str
+05487: 
+05488: 
+05489: class CrosswalkOperationalMetricsEngine:
+05490:     def build(
+05491:         self,
+05492:         policies: list[CompiledNormalisationPolicy],
+05493:         keys: list[CanonicalMatchKey],
+05494:         dependencies: list[CrosswalkDependency],
+05495:         batches: list[CrosswalkExecutionBatch],
+05496:         coverage: list[CrosswalkCoverageRecord],
+05497:         conflicts: list[CrosswalkConflict],
+05498:         exceptions: list[CrosswalkExceptionQueueItem],
+05499:         remediations: list[CrosswalkRemediationAction],
+05500:         gates: list[CrosswalkCompletionGate],
+05501:     ) -> list[CrosswalkOperationalMetric]:
+05502:         values = {
+05503:             "compiled_normalisation_policies": len(policies),
+05504:             "ready_match_keys": sum(1 for row in keys if row.execution_state == "READY"),
+05505:             "blocked_match_keys": sum(1 for row in keys if row.execution_state != "READY"),
+05506:             "rule_dependencies": len(dependencies),
+05507:             "invalid_dependencies": sum(1 for row in dependencies if not row.valid_order),
+05508:             "execution_batches": len(batches),
+05509:             "coverage_groups": len(coverage),
+05510:             "weak_coverage_groups": sum(
+05511:                 1 for row in coverage if row.coverage_state in {"WEAK", "NO_COVERAGE"}
+05512:             ),
+05513:             "crosswalk_conflicts": len(conflicts),
+05514:             "open_exceptions": len(exceptions),
+05515:             "blocking_exceptions": sum(
+05516:                 1 for row in exceptions if row.severity in {"CRITICAL", "HIGH"}
+05517:             ),
+05518:             "open_remediations": sum(
+05519:                 1 for row in remediations if row.action_state == "OPEN"
+05520:             ),
+05521:             "completion_gates": len(gates),
+05522:             "failed_completion_gates": sum(1 for row in gates if not row.passed),
+05523:         }
+05524:         return [
+05525:             CrosswalkOperationalMetric(
+05526:                 metric_name=name,
+05527:                 metric_value=value,
+05528:                 metric_state=(
+05529:                     "ATTENTION"
+05530:                     if name in {
+05531:                         "blocked_match_keys",
+05532:                         "invalid_dependencies",
+05533:                         "weak_coverage_groups",
+05534:                         "crosswalk_conflicts",
+05535:                         "open_exceptions",
+05536:                         "blocking_exceptions",
+05537:                         "open_remediations",
+05538:                         "failed_completion_gates",
+05539:                     } and value > 0
+05540:                     else "OK"
+05541:                 ),
+05542:             )
+05543:             for name, value in values.items()
+05544:         ]
+05545: 
+05546: 
+05547: # STEP 46 — Machine-readable execution contract
+05548: 
+05549: class CrosswalkExecutionContractEngine:
+
+========================================================================
+FUNCTION: build (lines 5550-5592)
+========================================================================
+05545: 
+05546: 
+05547: # STEP 46 — Machine-readable execution contract
+05548: 
+05549: class CrosswalkExecutionContractEngine:
+05550:     def build(
+05551:         self,
+05552:         policies: list[CompiledNormalisationPolicy],
+05553:         keys: list[CanonicalMatchKey],
+05554:         batches: list[CrosswalkExecutionBatch],
+05555:         readiness: CrosswalkReleaseReadiness,
+05556:     ) -> dict[str, Any]:
+05557:         return {
+05558:             "contract_version": "1.0.0",
+05559:             "generated_utc": utc_now_iso(),
+05560:             "release_state": readiness.release_state,
+05561:             "normalisation_pipeline": [
+05562:                 {
+05563:                     "sequence": row.sequence,
+05564:                     "rule_name": row.rule_name,
+05565:                     "operation": row.operation,
+05566:                     "applies_to": row.applies_to,
+05567:                 }
+05568:                 for row in policies
+05569:                 if row.enabled and row.deterministic
+05570:             ],
+05571:             "match_keys": [
+05572:                 {
+05573:                     "match_key_id": row.match_key_id,
+05574:                     "rule_id": row.rule_id,
+05575:                     "source_column": row.source_column,
+05576:                     "target_column": row.target_column,
+05577:                     "match_type": row.match_type,
+05578:                     "precedence": row.precedence,
+05579:                 }
+05580:                 for row in keys
+05581:                 if row.execution_state == "READY"
+05582:             ],
+05583:             "execution_batches": [
+05584:                 {
+05585:                     "batch_id": row.batch_id,
+05586:                     "batch_sequence": row.batch_sequence,
+05587:                     "rule_ids": row.rule_ids.split(";") if row.rule_ids else [],
+05588:                 }
+05589:                 for row in batches
+05590:                 if row.batch_state == "READY"
+05591:             ],
+05592:         }
+05593: 
+05594: 
+05595: # STEP 47 — Governance evidence ledger
+05596: 
+05597: @dataclass
+
+========================================================================
+FUNCTION: build (lines 5608-5642)
+========================================================================
+05603:     observed_state: str
+05604:     control_state: str
+05605: 
+05606: 
+05607: class CrosswalkGovernanceEvidenceEngine:
+05608:     def build(
+05609:         self,
+05610:         gates: list[CrosswalkCompletionGate],
+05611:         integrity: list[CrosswalkIntegrityRecord],
+05612:     ) -> list[CrosswalkGovernanceEvidence]:
+05613:         output: list[CrosswalkGovernanceEvidence] = []
+05614:         for gate in gates:
+05615:             output.append(
+05616:                 CrosswalkGovernanceEvidence(
+05617:                     evidence_id=_edgeiq_stable_id("XEVID", "GATE", gate.gate_id),
+05618:                     control_name=gate.gate_name,
+05619:                     evidence_artifact="edgeiq_crosswalk_completion_gates_v2.csv",
+05620:                     evidence_type="GATE_RESULT",
+05621:                     observed_state=gate.gate_state,
+05622:                     control_state="SATISFIED" if gate.passed else "UNSATISFIED",
+05623:                 )
+05624:             )
+05625:         for item in integrity:
+05626:             output.append(
+05627:                 CrosswalkGovernanceEvidence(
+05628:                     evidence_id=_edgeiq_stable_id(
+05629:                         "XEVID", "INTEGRITY", item.artifact_name
+05630:                     ),
+05631:                     control_name=f"ARTIFACT_INTEGRITY::{item.artifact_name}",
+05632:                     evidence_artifact=item.artifact_name,
+05633:                     evidence_type="SHA256",
+05634:                     observed_state=item.integrity_state,
+05635:                     control_state=(
+05636:                         "SATISFIED"
+05637:                         if item.integrity_state == "PASS"
+05638:                         else "UNSATISFIED"
+05639:                     ),
+05640:                 )
+05641:             )
+05642:         return output
+05643: 
+05644: 
+05645: # STEP 48 — Production handover manifest
+05646: 
+05647: class CrosswalkProductionHandoverEngine:
+
+========================================================================
+FUNCTION: build (lines 5648-5673)
+========================================================================
+05643: 
+05644: 
+05645: # STEP 48 — Production handover manifest
+05646: 
+05647: class CrosswalkProductionHandoverEngine:
+05648:     def build(
+05649:         self,
+05650:         readiness: CrosswalkReleaseReadiness,
+05651:         contract_path: Path,
+05652:         evidence_path: Path,
+05653:         remediation_path: Path,
+05654:         integrity: list[CrosswalkIntegrityRecord],
+05655:     ) -> dict[str, Any]:
+05656:         return {
+05657:             "handover_version": "1.0.0",
+05658:             "generated_utc": utc_now_iso(),
+05659:             "release_id": readiness.release_id,
+05660:             "release_state": readiness.release_state,
+05661:             "execution_contract": normalise_path(contract_path),
+05662:             "governance_evidence": normalise_path(evidence_path),
+05663:             "remediation_plan": normalise_path(remediation_path),
+05664:             "artifacts": [
+05665:                 {
+05666:                     "artifact_name": row.artifact_name,
+05667:                     "artifact_path": row.artifact_path,
+05668:                     "sha256": row.sha256,
+05669:                     "integrity_state": row.integrity_state,
+05670:                 }
+05671:                 for row in integrity
+05672:             ],
+05673:         }
+05674: 
+05675: 
+05676: # STEP 49 — Executive Markdown report
+05677: 
+05678: class CrosswalkExecutiveReportWriter:
+
+========================================================================
+FUNCTION: build (lines 6005-6052)
+========================================================================
+06000:     authority_score: float
+06001:     canonical_state: str
+06002: 
+06003: 
+06004: class CanonicalIdentityUniverseEngine:
+06005:     def build(self, candidate_rows: list[dict[str, str]]) -> list[CanonicalIdentityRecord]:
+06006:         grouped: dict[tuple[str, str, str], list[dict[str, str]]] = defaultdict(list)
+06007:         for row in candidate_rows:
+06008:             identity_type = row.get("key_type", "UNCLASSIFIED") or "UNCLASSIFIED"
+06009:             canonical_name = (
+06010:                 row.get("right_value")
+06011:                 or row.get("target_value")
+06012:                 or row.get("right_column")
+06013:                 or ""
+06014:             ).strip()
+06015:             canonical_code = (
+06016:                 row.get("right_code")
+06017:                 or row.get("target_code")
+06018:                 or row.get("right_column")
+06019:                 or ""
+06020:             ).strip()
+06021:             grouped[(identity_type, canonical_name, canonical_code)].append(row)
+06022: 
+06023:         output: list[CanonicalIdentityRecord] = []
+06024:         for (identity_type, canonical_name, canonical_code), rows in sorted(grouped.items()):
+06025:             datasets = {
+06026:                 row.get("right_dataset", "")
+06027:                 for row in rows
+06028:                 if row.get("right_dataset", "")
+06029:             }
+06030:             score = max(
+06031:                 (_edgeiq_float(row.get("confidence")) for row in rows),
+06032:                 default=0.0,
+06033:             )
+06034:             output.append(
+06035:                 CanonicalIdentityRecord(
+06036:                     canonical_identity_id=_edgeiq_stable_id(
+06037:                         "CID", identity_type, canonical_name, canonical_code
+06038:                     ),
+06039:                     identity_type=identity_type,
+06040:                     canonical_name=canonical_name,
+06041:                     canonical_code=canonical_code,
+06042:                     source_dataset_count=len(datasets),
+06043:                     source_record_count=len(rows),
+06044:                     authority_score=round(score, 6),
+06045:                     canonical_state=(
+06046:                         "AUTHORITATIVE" if score >= 0.90 else
+06047:                         "PROVISIONAL" if score >= 0.70 else
+06048:                         "UNRESOLVED"
+06049:                     ),
+06050:                 )
+06051:             )
+06052:         return output
+06053: 
+06054: 
+06055: # STEP 52 — Alias registry
+06056: 
+06057: @dataclass
+
+========================================================================
+FUNCTION: build (lines 6069-6132)
+========================================================================
+06064:     confidence: float
+06065:     alias_state: str
+06066: 
+06067: 
+06068: class IdentityAliasRegistryEngine:
+06069:     def build(
+06070:         self,
+06071:         candidate_rows: list[dict[str, str]],
+06072:         canonical_rows: list[CanonicalIdentityRecord],
+06073:     ) -> list[IdentityAliasRecord]:
+06074:         canonical_lookup: dict[tuple[str, str, str], str] = {
+06075:             (row.identity_type, row.canonical_name, row.canonical_code):
+06076:             row.canonical_identity_id
+06077:             for row in canonical_rows
+06078:         }
+06079:         output: list[IdentityAliasRecord] = []
+06080:         seen: set[tuple[str, str, str]] = set()
+06081: 
+06082:         for row in candidate_rows:
+06083:             identity_type = row.get("key_type", "UNCLASSIFIED") or "UNCLASSIFIED"
+06084:             canonical_name = (
+06085:                 row.get("right_value")
+06086:                 or row.get("target_value")
+06087:                 or row.get("right_column")
+06088:                 or ""
+06089:             ).strip()
+06090:             canonical_code = (
+06091:                 row.get("right_code")
+06092:                 or row.get("target_code")
+06093:                 or row.get("right_column")
+06094:                 or ""
+06095:             ).strip()
+06096:             canonical_id = canonical_lookup.get(
+06097:                 (identity_type, canonical_name, canonical_code)
+06098:             )
+06099:             if not canonical_id:
+06100:                 continue
+06101: 
+06102:             alias_value = (
+06103:                 row.get("left_value")
+06104:                 or row.get("source_value")
+06105:                 or row.get("left_column")
+06106:                 or ""
+06107:             ).strip()
+06108:             source_dataset = row.get("left_dataset", "")
+06109:             dedupe_key = (canonical_id, alias_value, source_dataset)
+06110:             if dedupe_key in seen:
+06111:                 continue
+06112:             seen.add(dedupe_key)
+06113: 
+06114:             confidence = _edgeiq_float(row.get("confidence"))
+06115:             output.append(
+06116:                 IdentityAliasRecord(
+06117:                     alias_id=_edgeiq_stable_id(
+06118:                         "ALIAS", canonical_id, alias_value, source_dataset
+06119:                     ),
+06120:                     canonical_identity_id=canonical_id,
+06121:                     alias_value=alias_value,
+06122:                     alias_type=identity_type,
+06123:                     source_dataset=source_dataset,
+06124:                     confidence=round(confidence, 6),
+06125:                     alias_state=(
+06126:                         "APPROVED" if confidence >= 0.90 else
+06127:                         "REVIEW" if confidence >= 0.70 else
+06128:                         "REJECT"
+06129:                     ),
+06130:                 )
+06131:             )
+06132:         return output
+06133: 
+06134: 
+06135: # STEP 53 — Identity survivorship rules
+06136: 
+06137: @dataclass
+
+========================================================================
+FUNCTION: build (lines 6159-6197)
+========================================================================
+06154:         "sex",
+06155:         "sire",
+06156:         "dam",
+06157:     )
+06158: 
+06159:     def build(
+06160:         self,
+06161:         canonical_rows: list[CanonicalIdentityRecord],
+06162:         candidate_rows: list[dict[str, str]],
+06163:     ) -> list[IdentitySurvivorshipRule]:
+06164:         dataset_scores: dict[str, float] = defaultdict(float)
+06165:         for row in candidate_rows:
+06166:             dataset = row.get("right_dataset", "")
+06167:             dataset_scores[dataset] = max(
+06168:                 dataset_scores[dataset],
+06169:                 _edgeiq_float(row.get("confidence")),
+06170:             )
+06171:         authority_order = ";".join(
+06172:             dataset for dataset, _ in sorted(
+06173:                 dataset_scores.items(),
+06174:                 key=lambda item: (-item[1], item[0])
+06175:             )
+06176:             if dataset
+06177:         )
+06178: 
+06179:         identity_types = sorted({row.identity_type for row in canonical_rows})
+06180:         output: list[IdentitySurvivorshipRule] = []
+06181:         for identity_type in identity_types:
+06182:             for attribute_name in self.DEFAULT_ATTRIBUTES:
+06183:                 deterministic = bool(authority_order)
+06184:                 output.append(
+06185:                     IdentitySurvivorshipRule(
+06186:                         survivorship_rule_id=_edgeiq_stable_id(
+06187:                             "SURV", identity_type, attribute_name
+06188:                         ),
+06189:                         identity_type=identity_type,
+06190:                         attribute_name=attribute_name,
+06191:                         authority_order=authority_order,
+06192:                         tie_breaker="HIGHEST_CONFIDENCE_THEN_LEXICAL",
+06193:                         deterministic=deterministic,
+06194:                         rule_state="READY" if deterministic else "BLOCKED",
+06195:                     )
+06196:                 )
+06197:         return output
+06198: 
+06199: 
+06200: # STEP 54 — Golden record assembly
+06201: 
+06202: @dataclass
+
+========================================================================
+FUNCTION: build (lines 6215-6249)
+========================================================================
+06210:     survivorship_rule_count: int
+06211:     golden_state: str
+06212: 
+06213: 
+06214: class GoldenIdentityAssemblyEngine:
+06215:     def build(
+06216:         self,
+06217:         canonical_rows: list[CanonicalIdentityRecord],
+06218:         survivorship_rules: list[IdentitySurvivorshipRule],
+06219:     ) -> list[GoldenIdentityRecord]:
+06220:         rule_counts: dict[str, int] = defaultdict(int)
+06221:         blocked_types: set[str] = set()
+06222:         for rule in survivorship_rules:
+06223:             rule_counts[rule.identity_type] += 1
+06224:             if rule.rule_state != "READY":
+06225:                 blocked_types.add(rule.identity_type)
+06226: 
+06227:         output: list[GoldenIdentityRecord] = []
+06228:         for row in canonical_rows:
+06229:             output.append(
+06230:                 GoldenIdentityRecord(
+06231:                     golden_record_id=_edgeiq_stable_id(
+06232:                         "GOLD", row.canonical_identity_id
+06233:                     ),
+06234:                     canonical_identity_id=row.canonical_identity_id,
+06235:                     identity_type=row.identity_type,
+06236:                     canonical_name=row.canonical_name,
+06237:                     canonical_code=row.canonical_code,
+06238:                     selected_authority_score=row.authority_score,
+06239:                     survivorship_rule_count=rule_counts[row.identity_type],
+06240:                     golden_state=(
+06241:                         "BLOCKED"
+06242:                         if row.identity_type in blocked_types
+06243:                         else "READY"
+06244:                         if row.canonical_state != "UNRESOLVED"
+06245:                         else "REVIEW"
+06246:                     ),
+06247:                 )
+06248:             )
+06249:         return output
+06250: 
+06251: 
+06252: # STEP 55 — Duplicate cluster detection
+06253: 
+06254: @dataclass
+
+========================================================================
+FUNCTION: build (lines 6266-6302)
+========================================================================
+06261:     highest_authority_score: float
+06262:     duplicate_state: str
+06263: 
+06264: 
+06265: class IdentityDuplicateClusterEngine:
+06266:     def build(
+06267:         self, canonical_rows: list[CanonicalIdentityRecord]
+06268:     ) -> list[IdentityDuplicateCluster]:
+06269:         grouped: dict[tuple[str, str], list[CanonicalIdentityRecord]] = defaultdict(list)
+06270:         for row in canonical_rows:
+06271:             key = (
+06272:                 row.canonical_name.strip().upper()
+06273:                 or row.canonical_code.strip().upper()
+06274:             )
+06275:             grouped[(row.identity_type, key)].append(row)
+06276: 
+06277:         output: list[IdentityDuplicateCluster] = []
+06278:         for (identity_type, comparison_key), rows in sorted(grouped.items()):
+06279:             if len(rows) <= 1:
+06280:                 continue
+06281:             output.append(
+06282:                 IdentityDuplicateCluster(
+06283:                     cluster_id=_edgeiq_stable_id(
+06284:                         "DUP", identity_type, comparison_key
+06285:                     ),
+06286:                     identity_type=identity_type,
+06287:                     comparison_key=comparison_key,
+06288:                     member_ids=";".join(
+06289:                         sorted(row.canonical_identity_id for row in rows)
+06290:                     ),
+06291:                     member_count=len(rows),
+06292:                     highest_authority_score=max(
+06293:                         row.authority_score for row in rows
+06294:                     ),
+06295:                     duplicate_state=(
+06296:                         "AUTO_MERGE"
+06297:                         if len({row.canonical_code for row in rows if row.canonical_code}) <= 1
+06298:                         else "MANUAL_REVIEW"
+06299:                     ),
+06300:                 )
+06301:             )
+06302:         return output
+06303: 
+06304: 
+06305: # STEP 56 — Merge proposal generation
+06306: 
+06307: @dataclass
+
+========================================================================
+FUNCTION: build (lines 6319-6362)
+========================================================================
+06314:     automatic: bool
+06315:     proposal_state: str
+06316: 
+06317: 
+06318: class IdentityMergeProposalEngine:
+06319:     def build(
+06320:         self,
+06321:         clusters: list[IdentityDuplicateCluster],
+06322:         canonical_rows: list[CanonicalIdentityRecord],
+06323:     ) -> list[IdentityMergeProposal]:
+06324:         lookup = {row.canonical_identity_id: row for row in canonical_rows}
+06325:         output: list[IdentityMergeProposal] = []
+06326: 
+06327:         for cluster in clusters:
+06328:             member_ids = [value for value in cluster.member_ids.split(";") if value]
+06329:             members = [lookup[value] for value in member_ids if value in lookup]
+06330:             if not members:
+06331:                 continue
+06332:             survivor = sorted(
+06333:                 members,
+06334:                 key=lambda row: (
+06335:                     -row.authority_score,
+06336:                     -row.source_dataset_count,
+06337:                     row.canonical_identity_id,
+06338:                 )
+06339:             )[0]
+06340:             absorbed = sorted(
+06341:                 row.canonical_identity_id
+06342:                 for row in members
+06343:                 if row.canonical_identity_id != survivor.canonical_identity_id
+06344:             )
+06345:             output.append(
+06346:                 IdentityMergeProposal(
+06347:                     merge_proposal_id=_edgeiq_stable_id(
+06348:                         "MERGE", cluster.cluster_id, survivor.canonical_identity_id
+06349:                     ),
+06350:                     cluster_id=cluster.cluster_id,
+06351:                     survivor_identity_id=survivor.canonical_identity_id,
+06352:                     absorbed_identity_ids=";".join(absorbed),
+06353:                     merge_basis="NORMALISED_NAME_AND_AUTHORITY_SCORE",
+06354:                     automatic=cluster.duplicate_state == "AUTO_MERGE",
+06355:                     proposal_state=(
+06356:                         "APPROVED_AUTO"
+06357:                         if cluster.duplicate_state == "AUTO_MERGE"
+06358:                         else "REVIEW_REQUIRED"
+06359:                     ),
+06360:                 )
+06361:             )
+06362:         return output
+06363: 
+06364: 
+06365: # STEP 57 — Referential integrity validation
+06366: 
+06367: @dataclass
+
+========================================================================
+FUNCTION: build (lines 6379-6421)
+========================================================================
+06374:     passed: bool
+06375:     check_state: str
+06376: 
+06377: 
+06378: class IdentityReferentialIntegrityEngine:
+06379:     def build(
+06380:         self,
+06381:         canonical_rows: list[CanonicalIdentityRecord],
+06382:         aliases: list[IdentityAliasRecord],
+06383:         golden_rows: list[GoldenIdentityRecord],
+06384:         merge_proposals: list[IdentityMergeProposal],
+06385:     ) -> list[IdentityReferentialIntegrityCheck]:
+06386:         canonical_ids = {row.canonical_identity_id for row in canonical_rows}
+06387:         alias_orphans = sum(
+06388:             1 for row in aliases
+06389:             if row.canonical_identity_id not in canonical_ids
+06390:         )
+06391:         golden_orphans = sum(
+06392:             1 for row in golden_rows
+06393:             if row.canonical_identity_id not in canonical_ids
+06394:         )
+06395:         merge_ids = {
+06396:             value
+06397:             for row in merge_proposals
+06398:             for value in (
+06399:                 [row.survivor_identity_id]
+06400:                 + [item for item in row.absorbed_identity_ids.split(";") if item]
+06401:             )
+06402:         }
+06403:         merge_orphans = sum(1 for value in merge_ids if value not in canonical_ids)
+06404: 
+06405:         checks = [
+06406:             ("ALIASES_REFERENCE_CANONICAL", len(canonical_rows), len(aliases), alias_orphans),
+06407:             ("GOLDEN_REFERENCE_CANONICAL", len(canonical_rows), len(golden_rows), golden_orphans),
+06408:             ("MERGES_REFERENCE_CANONICAL", len(canonical_rows), len(merge_ids), merge_orphans),
+06409:         ]
+06410:         return [
+06411:             IdentityReferentialIntegrityCheck(
+06412:                 check_id=_edgeiq_stable_id("RINT", name),
+06413:                 check_name=name,
+06414:                 parent_record_count=parent_count,
+06415:                 child_record_count=child_count,
+06416:                 orphan_count=orphan_count,
+06417:                 passed=orphan_count == 0,
+06418:                 check_state="PASS" if orphan_count == 0 else "FAIL",
+06419:             )
+06420:             for name, parent_count, child_count, orphan_count in checks
+06421:         ]
+06422: 
+06423: 
+06424: # STEP 58 — Source-to-canonical reconciliation
+06425: 
+06426: @dataclass
+
+========================================================================
+FUNCTION: build (lines 6439-6475)
+========================================================================
+06434:     reconciliation_rate: float
+06435:     reconciliation_state: str
+06436: 
+06437: 
+06438: class IdentityReconciliationEngine:
+06439:     def build(
+06440:         self,
+06441:         aliases: list[IdentityAliasRecord],
+06442:     ) -> list[IdentityReconciliationRecord]:
+06443:         grouped: dict[str, list[IdentityAliasRecord]] = defaultdict(list)
+06444:         for row in aliases:
+06445:             grouped[row.source_dataset or "UNKNOWN"].append(row)
+06446: 
+06447:         output: list[IdentityReconciliationRecord] = []
+06448:         for dataset, rows in sorted(grouped.items()):
+06449:             source_count = len({
+06450:                 (row.alias_value, row.alias_type)
+06451:                 for row in rows
+06452:             })
+06453:             canonical_count = len({
+06454:                 row.canonical_identity_id for row in rows
+06455:             })
+06456:             approved = sum(1 for row in rows if row.alias_state == "APPROVED")
+06457:             rejected = sum(1 for row in rows if row.alias_state == "REJECT")
+06458:             rate = approved / source_count if source_count else 0.0
+06459:             output.append(
+06460:                 IdentityReconciliationRecord(
+06461:                     reconciliation_id=_edgeiq_stable_id("RECON", dataset),
+06462:                     source_dataset=dataset,
+06463:                     source_identity_count=source_count,
+06464:                     canonical_identity_count=canonical_count,
+06465:                     approved_alias_count=approved,
+06466:                     rejected_alias_count=rejected,
+06467:                     reconciliation_rate=round(rate, 6),
+06468:                     reconciliation_state=(
+06469:                         "PASS" if rate >= 0.95 else
+06470:                         "PARTIAL" if rate >= 0.80 else
+06471:                         "FAIL"
+06472:                     ),
+06473:                 )
+06474:             )
+06475:         return output
+06476: 
+06477: 
+06478: # STEP 59 — Identity quality scorecard
+06479: 
+06480: @dataclass
+
+========================================================================
+FUNCTION: build (lines 6494-6560)
+========================================================================
+06489:     quality_score: float
+06490:     quality_band: str
+06491: 
+06492: 
+06493: class IdentityQualityScorecardEngine:
+06494:     def build(
+06495:         self,
+06496:         canonical_rows: list[CanonicalIdentityRecord],
+06497:         aliases: list[IdentityAliasRecord],
+06498:         clusters: list[IdentityDuplicateCluster],
+06499:     ) -> list[IdentityQualityScore]:
+06500:         canonical_grouped: dict[str, list[CanonicalIdentityRecord]] = defaultdict(list)
+06501:         alias_grouped: dict[str, list[IdentityAliasRecord]] = defaultdict(list)
+06502:         cluster_grouped: dict[str, list[IdentityDuplicateCluster]] = defaultdict(list)
+06503: 
+06504:         for row in canonical_rows:
+06505:             canonical_grouped[row.identity_type].append(row)
+06506:         for row in aliases:
+06507:             alias_grouped[row.alias_type].append(row)
+06508:         for row in clusters:
+06509:             cluster_grouped[row.identity_type].append(row)
+06510: 
+06511:         output: list[IdentityQualityScore] = []
+06512:         for identity_type in sorted(canonical_grouped):
+06513:             canonical = canonical_grouped[identity_type]
+06514:             alias_rows = alias_grouped.get(identity_type, [])
+06515:             total = len(canonical)
+06516:             authoritative = sum(
+06517:                 1 for row in canonical if row.canonical_state == "AUTHORITATIVE"
+06518:             )
+06519:             provisional = sum(
+06520:                 1 for row in canonical if row.canonical_state == "PROVISIONAL"
+06521:             )
+06522:             unresolved = sum(
+06523:                 1 for row in canonical if row.canonical_state == "UNRESOLVED"
+06524:             )
+06525:             approved_rate = (
+06526:                 sum(1 for row in alias_rows if row.alias_state == "APPROVED")
+06527:                 / len(alias_rows)
+06528:                 if alias_rows else 0.0
+06529:             )
+06530:             duplicate_penalty = min(
+06531:                 len(cluster_grouped.get(identity_type, [])) / max(total, 1),
+06532:                 1.0,
+06533:             )
+06534:             score = (
+06535:                 (authoritative / max(total, 1)) * 0.50
+06536:                 + approved_rate * 0.35
+06537:                 + (1.0 - duplicate_penalty) * 0.15
+06538:             ) * 100.0
+06539:             output.append(
+06540:                 IdentityQualityScore(
+06541:                     identity_type=identity_type,
+06542:                     canonical_count=total,
+06543:                     authoritative_count=authoritative,
+06544:                     provisional_count=provisional,
+06545:                     unresolved_count=unresolved,
+06546:                     duplicate_cluster_count=len(
+06547:                         cluster_grouped.get(identity_type, [])
+06548:                     ),
+06549:                     approved_alias_rate=round(approved_rate, 6),
+06550:                     quality_score=round(score, 3),
+06551:                     quality_band=(
+06552:                         "A" if score >= 90 else
+06553:                         "B" if score >= 80 else
+06554:                         "C" if score >= 70 else
+06555:                         "D" if score >= 60 else
+06556:                         "F"
+06557:                     ),
+06558:                 )
+06559:             )
+06560:         return output
+06561: 
+06562: 
+06563: # STEP 60 — Identity release gates
+06564: 
+06565: @dataclass
+
+========================================================================
+FUNCTION: build (lines 6577-6622)
+========================================================================
+06572:     passed: bool
+06573:     gate_state: str
+06574: 
+06575: 
+06576: class IdentityReleaseGateEngine:
+06577:     def build(
+06578:         self,
+06579:         integrity_checks: list[IdentityReferentialIntegrityCheck],
+06580:         reconciliation: list[IdentityReconciliationRecord],
+06581:         quality_scores: list[IdentityQualityScore],
+06582:         merge_proposals: list[IdentityMergeProposal],
+06583:     ) -> list[IdentityReleaseGate]:
+06584:         orphan_count = sum(row.orphan_count for row in integrity_checks)
+06585:         failed_reconciliation = sum(
+06586:             1 for row in reconciliation if row.reconciliation_state == "FAIL"
+06587:         )
+06588:         minimum_quality = min(
+06589:             (row.quality_score for row in quality_scores),
+06590:             default=0.0,
+06591:         )
+06592:         manual_merges = sum(
+06593:             1 for row in merge_proposals
+06594:             if row.proposal_state == "REVIEW_REQUIRED"
+06595:         )
+06596: 
+06597:         specs = [
+06598:             ("NO_REFERENTIAL_ORPHANS", float(orphan_count), 0.0, "EQ"),
+06599:             ("NO_FAILED_RECONCILIATIONS", float(failed_reconciliation), 0.0, "EQ"),
+06600:             ("MINIMUM_IDENTITY_QUALITY", float(minimum_quality), 70.0, "GTE"),
+06601:             ("NO_MANUAL_MERGE_BLOCKERS", float(manual_merges), 0.0, "EQ"),
+06602:         ]
+06603: 
+06604:         output: list[IdentityReleaseGate] = []
+06605:         for name, observed, threshold, comparison in specs:
+06606:             passed = (
+06607:                 observed == threshold
+06608:                 if comparison == "EQ"
+06609:                 else observed >= threshold
+06610:             )
+06611:             output.append(
+06612:                 IdentityReleaseGate(
+06613:                     gate_id=_edgeiq_stable_id("IGATE", name),
+06614:                     gate_name=name,
+06615:                     observed_value=round(observed, 6),
+06616:                     threshold_value=round(threshold, 6),
+06617:                     comparison=comparison,
+06618:                     passed=passed,
+06619:                     gate_state="PASS" if passed else "FAIL",
+06620:                 )
+06621:             )
+06622:         return output
+06623: 
+06624: 
+06625: # STEP 61 — Change-set ledger
+06626: 
+06627: @dataclass
+
+========================================================================
+FUNCTION: build (lines 6639-6701)
+========================================================================
+06634:     automatic: bool
+06635:     approval_state: str
+06636: 
+06637: 
+06638: class IdentityChangeSetEngine:
+06639:     def build(
+06640:         self,
+06641:         aliases: list[IdentityAliasRecord],
+06642:         merge_proposals: list[IdentityMergeProposal],
+06643:         golden_rows: list[GoldenIdentityRecord],
+06644:     ) -> list[IdentityChangeSetRecord]:
+06645:         output: list[IdentityChangeSetRecord] = []
+06646: 
+06647:         for row in aliases:
+06648:             output.append(
+06649:                 IdentityChangeSetRecord(
+06650:                     change_set_id=_edgeiq_stable_id("CHG", "ALIAS", row.alias_id),
+06651:                     change_type="ALIAS_ASSIGNMENT",
+06652:                     target_id=row.alias_id,
+06653:                     before_state="UNASSIGNED",
+06654:                     after_state=row.alias_state,
+06655:                     automatic=row.alias_state == "APPROVED",
+06656:                     approval_state=(
+06657:                         "APPROVED"
+06658:                         if row.alias_state == "APPROVED"
+06659:                         else "PENDING"
+06660:                     ),
+06661:                 )
+06662:             )
+06663: 
+06664:         for row in merge_proposals:
+06665:             output.append(
+06666:                 IdentityChangeSetRecord(
+06667:                     change_set_id=_edgeiq_stable_id(
+06668:                         "CHG", "MERGE", row.merge_proposal_id
+06669:                     ),
+06670:                     change_type="IDENTITY_MERGE",
+06671:                     target_id=row.merge_proposal_id,
+06672:                     before_state="DUPLICATE_CLUSTER",
+06673:                     after_state=row.proposal_state,
+06674:                     automatic=row.automatic,
+06675:                     approval_state=(
+06676:                         "APPROVED"
+06677:                         if row.proposal_state == "APPROVED_AUTO"
+06678:                         else "PENDING"
+06679:                     ),
+06680:                 )
+06681:             )
+06682: 
+06683:         for row in golden_rows:
+06684:             output.append(
+06685:                 IdentityChangeSetRecord(
+06686:                     change_set_id=_edgeiq_stable_id(
+06687:                         "CHG", "GOLDEN", row.golden_record_id
+06688:                     ),
+06689:                     change_type="GOLDEN_RECORD_ASSEMBLY",
+06690:                     target_id=row.golden_record_id,
+06691:                     before_state="CANONICAL",
+06692:                     after_state=row.golden_state,
+06693:                     automatic=row.golden_state == "READY",
+06694:                     approval_state=(
+06695:                         "APPROVED"
+06696:                         if row.golden_state == "READY"
+06697:                         else "PENDING"
+06698:                     ),
+06699:                 )
+06700:             )
+06701:         return output
+06702: 
+06703: 
+06704: # STEP 62 — Rollback plan
+06705: 
+06706: @dataclass
+
+========================================================================
+FUNCTION: build (lines 6717-6739)
+========================================================================
+06712:     reversible: bool
+06713:     rollback_state: str
+06714: 
+06715: 
+06716: class IdentityRollbackPlanEngine:
+06717:     def build(
+06718:         self, change_sets: list[IdentityChangeSetRecord]
+06719:     ) -> list[IdentityRollbackAction]:
+06720:         output: list[IdentityRollbackAction] = []
+06721:         for sequence, row in enumerate(reversed(change_sets), start=1):
+06722:             reversible = row.change_type in {
+06723:                 "ALIAS_ASSIGNMENT",
+06724:                 "IDENTITY_MERGE",
+06725:                 "GOLDEN_RECORD_ASSEMBLY",
+06726:             }
+06727:             output.append(
+06728:                 IdentityRollbackAction(
+06729:                     rollback_id=_edgeiq_stable_id(
+06730:                         "ROLLBACK", row.change_set_id
+06731:                     ),
+06732:                     change_set_id=row.change_set_id,
+06733:                     rollback_sequence=sequence,
+06734:                     rollback_action=f"REVERT_{row.change_type}",
+06735:                     reversible=reversible,
+06736:                     rollback_state="READY" if reversible else "BLOCKED",
+06737:                 )
+06738:             )
+06739:         return output
+06740: 
+06741: 
+06742: # STEP 63 — Version manifest
+06743: 
+06744: @dataclass
+
+========================================================================
+FUNCTION: build (lines 6757-6786)
+========================================================================
+06752:     change_set_count: int
+06753:     release_state: str
+06754: 
+06755: 
+06756: class IdentityVersionManifestEngine:
+06757:     def build(
+06758:         self,
+06759:         canonical_rows: list[CanonicalIdentityRecord],
+06760:         aliases: list[IdentityAliasRecord],
+06761:         golden_rows: list[GoldenIdentityRecord],
+06762:         change_sets: list[IdentityChangeSetRecord],
+06763:         release_gates: list[IdentityReleaseGate],
+06764:     ) -> IdentityVersionManifest:
+06765:         release_state = (
+06766:             "READY"
+06767:             if all(row.passed for row in release_gates)
+06768:             else "BLOCKED"
+06769:         )
+06770:         version_number = f"1.0.{len(change_sets)}"
+06771:         return IdentityVersionManifest(
+06772:             version_id=_edgeiq_stable_id(
+06773:                 "IVER",
+06774:                 version_number,
+06775:                 len(canonical_rows),
+06776:                 len(aliases),
+06777:                 len(golden_rows),
+06778:             ),
+06779:             version_number=version_number,
+06780:             generated_utc=utc_now_iso(),
+06781:             canonical_record_count=len(canonical_rows),
+06782:             alias_record_count=len(aliases),
+06783:             golden_record_count=len(golden_rows),
+06784:             change_set_count=len(change_sets),
+06785:             release_state=release_state,
+06786:         )
+06787: 
+06788: 
+06789: # STEP 64 — Delta export
+06790: 
+06791: @dataclass
+
+========================================================================
+FUNCTION: build (lines 6802-6827)
+========================================================================
+06797:     operation: str
+06798:     export_state: str
+06799: 
+06800: 
+06801: class IdentityDeltaExportEngine:
+06802:     def build(
+06803:         self,
+06804:         version: IdentityVersionManifest,
+06805:         change_sets: list[IdentityChangeSetRecord],
+06806:     ) -> list[IdentityDeltaRecord]:
+06807:         return [
+06808:             IdentityDeltaRecord(
+06809:                 delta_id=_edgeiq_stable_id(
+06810:                     "DELTA", version.version_id, row.change_set_id
+06811:                 ),
+06812:                 version_id=version.version_id,
+06813:                 change_type=row.change_type,
+06814:                 target_id=row.target_id,
+06815:                 operation=(
+06816:                     "UPSERT"
+06817:                     if row.after_state not in {"REJECT", "BLOCKED"}
+06818:                     else "EXCLUDE"
+06819:                 ),
+06820:                 export_state=(
+06821:                     "READY"
+06822:                     if row.approval_state == "APPROVED"
+06823:                     else "HELD"
+06824:                 ),
+06825:             )
+06826:             for row in change_sets
+06827:         ]
+06828: 
+06829: 
+06830: # STEP 65 — Publication package
+06831: 
+06832: class IdentityPublicationPackageEngine:
+
+========================================================================
+FUNCTION: build (lines 6833-6862)
+========================================================================
+06828: 
+06829: 
+06830: # STEP 65 — Publication package
+06831: 
+06832: class IdentityPublicationPackageEngine:
+06833:     def build(
+06834:         self,
+06835:         version: IdentityVersionManifest,
+06836:         release_gates: list[IdentityReleaseGate],
+06837:         artifact_paths: list[Path],
+06838:     ) -> dict[str, Any]:
+06839:         return {
+06840:             "package_version": version.version_number,
+06841:             "version_id": version.version_id,
+06842:             "generated_utc": version.generated_utc,
+06843:             "release_state": version.release_state,
+06844:             "release_gates": [
+06845:                 {
+06846:                     "gate_name": row.gate_name,
+06847:                     "passed": row.passed,
+06848:                     "observed_value": row.observed_value,
+06849:                     "threshold_value": row.threshold_value,
+06850:                 }
+06851:                 for row in release_gates
+06852:             ],
+06853:             "artifacts": [
+06854:                 {
+06855:                     "name": path.name,
+06856:                     "path": normalise_path(path),
+06857:                     "sha256": _edgeiq_sha256(path) if path.exists() else "",
+06858:                     "size_bytes": path.stat().st_size if path.exists() else 0,
+06859:                 }
+06860:                 for path in artifact_paths
+06861:             ],
+06862:         }
+06863: 
+06864: 
+06865: # STEP 66 — Data contract
+06866: 
+06867: class IdentityDataContractEngine:
+
+========================================================================
+FUNCTION: build (lines 6868-6904)
+========================================================================
+06863: 
+06864: 
+06865: # STEP 66 — Data contract
+06866: 
+06867: class IdentityDataContractEngine:
+06868:     def build(self) -> dict[str, Any]:
+06869:         return {
+06870:             "contract_version": "1.0.0",
+06871:             "entities": {
+06872:                 "canonical_identity": {
+06873:                     "primary_key": "canonical_identity_id",
+06874:                     "required_fields": [
+06875:                         "canonical_identity_id",
+06876:                         "identity_type",
+06877:                         "canonical_name",
+06878:                         "canonical_state",
+06879:                     ],
+06880:                 },
+06881:                 "identity_alias": {
+06882:                     "primary_key": "alias_id",
+06883:                     "foreign_keys": {
+06884:                         "canonical_identity_id":
+06885:                         "canonical_identity.canonical_identity_id"
+06886:                     },
+06887:                 },
+06888:                 "golden_identity": {
+06889:                     "primary_key": "golden_record_id",
+06890:                     "foreign_keys": {
+06891:                         "canonical_identity_id":
+06892:                         "canonical_identity.canonical_identity_id"
+06893:                     },
+06894:                 },
+06895:                 "identity_merge_proposal": {
+06896:                     "primary_key": "merge_proposal_id",
+06897:                 },
+06898:             },
+06899:             "determinism": {
+06900:                 "stable_ids": "SHA256_PREFIX",
+06901:                 "ordering": "LEXICAL_AND_PRECEDENCE",
+06902:                 "timestamps": "UTC_ISO_8601",
+06903:             },
+06904:         }
+06905: 
+06906: 
+06907: # STEP 67 — Schema validation
+06908: 
+06909: @dataclass
+
+========================================================================
+FUNCTION: build (lines 6952-6972)
+========================================================================
+06947:             "survivorship_rule_count",
+06948:             "golden_state",
+06949:         },
+06950:     }
+06951: 
+06952:     def build(self) -> list[IdentitySchemaValidation]:
+06953:         observed = {
+06954:             "canonical_identity": set(CanonicalIdentityRecord.__annotations__),
+06955:             "identity_alias": set(IdentityAliasRecord.__annotations__),
+06956:             "golden_identity": set(GoldenIdentityRecord.__annotations__),
+06957:         }
+06958:         output: list[IdentitySchemaValidation] = []
+06959:         for entity_name, expected in self.EXPECTED.items():
+06960:             actual = observed.get(entity_name, set())
+06961:             missing = sorted(expected - actual)
+06962:             output.append(
+06963:                 IdentitySchemaValidation(
+06964:                     entity_name=entity_name,
+06965:                     expected_field_count=len(expected),
+06966:                     observed_field_count=len(actual),
+06967:                     missing_fields=";".join(missing),
+06968:                     passed=not missing,
+06969:                     validation_state="PASS" if not missing else "FAIL",
+06970:                 )
+06971:             )
+06972:         return output
+06973: 
+06974: 
+06975: # STEP 68 — Lineage ledger
+06976: 
+06977: @dataclass
+
+========================================================================
+FUNCTION: build (lines 6989-7036)
+========================================================================
+06984:     transformation: str
+06985:     lineage_state: str
+06986: 
+06987: 
+06988: class IdentityLineageLedgerEngine:
+06989:     def build(
+06990:         self,
+06991:         canonical_rows: list[CanonicalIdentityRecord],
+06992:         aliases: list[IdentityAliasRecord],
+06993:         golden_rows: list[GoldenIdentityRecord],
+06994:     ) -> list[IdentityLineageRecord]:
+06995:         aliases_by_canonical: dict[str, list[str]] = defaultdict(list)
+06996:         for alias in aliases:
+06997:             aliases_by_canonical[alias.canonical_identity_id].append(alias.alias_id)
+06998: 
+06999:         output: list[IdentityLineageRecord] = []
+07000:         for canonical in canonical_rows:
+07001:             alias_ids = sorted(aliases_by_canonical.get(
+07002:                 canonical.canonical_identity_id, []
+07003:             ))
+07004:             output.append(
+07005:                 IdentityLineageRecord(
+07006:                     lineage_id=_edgeiq_stable_id(
+07007:                         "LIN", "CANONICAL", canonical.canonical_identity_id
+07008:                     ),
+07009:                     output_entity="canonical_identity",
+07010:                     output_record_id=canonical.canonical_identity_id,
+07011:                     source_entity="identity_alias",
+07012:                     source_record_ids=";".join(alias_ids),
+07013:                     transformation="CANONICALISE_AND_SCORE",
+07014:                     lineage_state="COMPLETE" if alias_ids else "PARTIAL",
+07015:                 )
+07016:             )
+07017: 
+07018:         for golden in golden_rows:
+07019:             output.append(
+07020:                 IdentityLineageRecord(
+07021:                     lineage_id=_edgeiq_stable_id(
+07022:                         "LIN", "GOLDEN", golden.golden_record_id
+07023:                     ),
+07024:                     output_entity="golden_identity",
+07025:                     output_record_id=golden.golden_record_id,
+07026:                     source_entity="canonical_identity",
+07027:                     source_record_ids=golden.canonical_identity_id,
+07028:                     transformation="APPLY_SURVIVORSHIP",
+07029:                     lineage_state=(
+07030:                         "COMPLETE"
+07031:                         if golden.golden_state == "READY"
+07032:                         else "PARTIAL"
+07033:                     ),
+07034:                 )
+07035:             )
+07036:         return output
+07037: 
+07038: 
+07039: # STEP 69 — Provenance completeness
+07040: 
+07041: @dataclass
+
+========================================================================
+FUNCTION: build (lines 7051-7071)
+========================================================================
+07046:     completeness_rate: float
+07047:     metric_state: str
+07048: 
+07049: 
+07050: class IdentityProvenanceMetricEngine:
+07051:     def build(
+07052:         self, lineage: list[IdentityLineageRecord]
+07053:     ) -> list[IdentityProvenanceMetric]:
+07054:         grouped: dict[str, list[IdentityLineageRecord]] = defaultdict(list)
+07055:         for row in lineage:
+07056:             grouped[row.output_entity].append(row)
+07057: 
+07058:         output: list[IdentityProvenanceMetric] = []
+07059:         for entity, rows in sorted(grouped.items()):
+07060:             complete = sum(1 for row in rows if row.lineage_state == "COMPLETE")
+07061:             rate = complete / len(rows) if rows else 0.0
+07062:             output.append(
+07063:                 IdentityProvenanceMetric(
+07064:                     metric_name=f"{entity}_lineage_completeness",
+07065:                     complete_count=complete,
+07066:                     total_count=len(rows),
+07067:                     completeness_rate=round(rate, 6),
+07068:                     metric_state="PASS" if rate >= 0.95 else "FAIL",
+07069:                 )
+07070:             )
+07071:         return output
+07072: 
+07073: 
+07074: # STEP 70 — Audit exception synthesis
+07075: 
+07076: @dataclass
+
+========================================================================
+FUNCTION: build (lines 7088-7146)
+========================================================================
+07083:     blocking: bool
+07084:     exception_state: str
+07085: 
+07086: 
+07087: class IdentityAuditExceptionEngine:
+07088:     def build(
+07089:         self,
+07090:         release_gates: list[IdentityReleaseGate],
+07091:         schema_checks: list[IdentitySchemaValidation],
+07092:         provenance_metrics: list[IdentityProvenanceMetric],
+07093:     ) -> list[IdentityAuditException]:
+07094:         output: list[IdentityAuditException] = []
+07095: 
+07096:         for gate in release_gates:
+07097:             if not gate.passed:
+07098:                 output.append(
+07099:                     IdentityAuditException(
+07100:                         audit_exception_id=_edgeiq_stable_id(
+07101:                             "IAEX", "GATE", gate.gate_id
+07102:                         ),
+07103:                         category="RELEASE_GATE",
+07104:                         reference_id=gate.gate_id,
+07105:                         severity="CRITICAL",
+07106:                         description=f"Release gate failed: {gate.gate_name}",
+07107:                         blocking=True,
+07108:                         exception_state="OPEN",
+07109:                     )
+07110:                 )
+07111: 
+07112:         for check in schema_checks:
+07113:             if not check.passed:
+07114:                 output.append(
+07115:                     IdentityAuditException(
+07116:                         audit_exception_id=_edgeiq_stable_id(
+07117:                             "IAEX", "SCHEMA", check.entity_name
+07118:                         ),
+07119:                         category="SCHEMA",
+07120:                         reference_id=check.entity_name,
+07121:                         severity="CRITICAL",
+07122:                         description=f"Missing schema fields: {check.missing_fields}",
+07123:                         blocking=True,
+07124:                         exception_state="OPEN",
+07125:                     )
+07126:                 )
+07127: 
+07128:         for metric in provenance_metrics:
+07129:             if metric.metric_state != "PASS":
+07130:                 output.append(
+07131:                     IdentityAuditException(
+07132:                         audit_exception_id=_edgeiq_stable_id(
+07133:                             "IAEX", "PROVENANCE", metric.metric_name
+07134:                         ),
+07135:                         category="PROVENANCE",
+07136:                         reference_id=metric.metric_name,
+07137:                         severity="HIGH",
+07138:                         description=(
+07139:                             f"Lineage completeness below threshold: "
+07140:                             f"{metric.completeness_rate:.3f}"
+07141:                         ),
+07142:                         blocking=True,
+07143:                         exception_state="OPEN",
+07144:                     )
+07145:                 )
+07146:         return output
+07147: 
+07148: 
+07149: # STEP 71 — Operational runbook
+07150: 
+07151: class IdentityOperationalRunbookWriter:
+
+========================================================================
+FUNCTION: build (lines 7254-7255)
+========================================================================
+07249: 
+07250: 
+07251: # STEP 73 — Final identity integrity manifest
+07252: 
+07253: class IdentityFinalIntegrityEngine:
+07254:     def build(self, paths: list[Path]) -> list[CrosswalkIntegrityRecord]:
+07255:         return CrosswalkIntegrityEngine().build(paths)
+07256: 
+07257: 
+07258: # STEP 74 — Completion certification
+07259: 
+07260: @dataclass
+
+========================================================================
+FUNCTION: build (lines 7275-7306)
+========================================================================
+07270:     certified: bool
+07271:     certification_state: str
+07272: 
+07273: 
+07274: class IdentityCompletionCertificateEngine:
+07275:     def build(
+07276:         self,
+07277:         version: IdentityVersionManifest,
+07278:         release_gates: list[IdentityReleaseGate],
+07279:         audit_exceptions: list[IdentityAuditException],
+07280:         integrity: list[CrosswalkIntegrityRecord],
+07281:     ) -> IdentityCompletionCertificate:
+07282:         passed = sum(1 for row in release_gates if row.passed)
+07283:         blocking = sum(1 for row in audit_exceptions if row.blocking)
+07284:         integrity_failures = sum(
+07285:             1 for row in integrity if row.integrity_state != "PASS"
+07286:         )
+07287:         certified = (
+07288:             version.release_state == "READY"
+07289:             and passed == len(release_gates)
+07290:             and blocking == 0
+07291:             and integrity_failures == 0
+07292:         )
+07293:         return IdentityCompletionCertificate(
+07294:             certificate_id=_edgeiq_stable_id(
+07295:                 "CERT", version.version_id, passed, blocking, integrity_failures
+07296:             ),
+07297:             generated_utc=utc_now_iso(),
+07298:             version_id=version.version_id,
+07299:             release_state=version.release_state,
+07300:             required_gate_count=len(release_gates),
+07301:             passed_gate_count=passed,
+07302:             blocking_exception_count=blocking,
+07303:             integrity_failure_count=integrity_failures,
+07304:             certified=certified,
+07305:             certification_state="CERTIFIED" if certified else "NOT_CERTIFIED",
+07306:         )
+07307: 
+07308: 
+07309: # STEP 75 — Governed cumulative runtime integration
+07310: 
+07311: _step50_run__run_step75 = EDGEIQIdentityRepositoryProfilerStep1.run
+
+========================================================================
+FUNCTION: build (lines 7867-7882)
+========================================================================
+07862:     certified: bool
+07863:     status: str
+07864: 
+07865: 
+07866: class IdentityFreshnessEngine:
+07867:     def build(self, artifacts: list[Path], threshold_seconds: int = 86400) -> list[IdentityFreshnessRecord]:
+07868:         now = time.time()
+07869:         rows: list[IdentityFreshnessRecord] = []
+07870:         for path in sorted(artifacts, key=lambda x: str(x).lower()):
+07871:             if not path.exists():
+07872:                 rows.append(IdentityFreshnessRecord(str(path), "", -1.0, "MISSING", threshold_seconds))
+07873:                 continue
+07874:             age = max(0.0, now - path.stat().st_mtime)
+07875:             rows.append(IdentityFreshnessRecord(
+07876:                 artifact=normalise_path(path),
+07877:                 modified_utc=datetime.fromtimestamp(path.stat().st_mtime, tz=timezone.utc).isoformat(),
+07878:                 age_seconds=round(age, 3),
+07879:                 freshness_state="PASS" if age <= threshold_seconds else "STALE",
+07880:                 threshold_seconds=threshold_seconds,
+07881:             ))
+07882:         return rows
+07883: 
+07884: 
+07885: class IdentityDriftEngine:
+07886:     def build(self, data_contract: dict, schema_rows: list[dict[str, str]]) -> list[IdentityDriftRecord]:
+07887:         contracted = data_contract.get("artifacts", {}) if isinstance(data_contract, dict) else {}
+
+========================================================================
+FUNCTION: build (lines 7886-7904)
+========================================================================
+07881:             ))
+07882:         return rows
+07883: 
+07884: 
+07885: class IdentityDriftEngine:
+07886:     def build(self, data_contract: dict, schema_rows: list[dict[str, str]]) -> list[IdentityDriftRecord]:
+07887:         contracted = data_contract.get("artifacts", {}) if isinstance(data_contract, dict) else {}
+07888:         by_artifact: dict[str, set[str]] = defaultdict(set)
+07889:         for row in schema_rows:
+07890:             name = row.get("artifact", row.get("artifact_name", row.get("dataset", "")))
+07891:             column = row.get("column", row.get("column_name", row.get("field_name", "")))
+07892:             if name and column:
+07893:                 by_artifact[name].add(column)
+07894:         rows: list[IdentityDriftRecord] = []
+07895:         for name, definition in sorted(contracted.items()):
+07896:             expected = set(definition.get("fields", [])) if isinstance(definition, dict) else set()
+07897:             observed = by_artifact.get(name, set())
+07898:             missing = sorted(expected - observed)
+07899:             unexpected = sorted(observed - expected)
+07900:             state = "PASS" if not missing else "FAIL"
+07901:             rows.append(IdentityDriftRecord(name, len(observed), len(expected), ";".join(missing), ";".join(unexpected), state))
+07902:         if not rows:
+07903:             rows.append(IdentityDriftRecord("data_contract", 0, 0, "", "", "PASS"))
+07904:         return rows
+07905: 
+07906: 
+07907: class IdentityServiceLevelEngine:
+07908:     def build(self, audit: dict, freshness: list[IdentityFreshnessRecord]) -> list[IdentityServiceLevelRecord]:
+07909:         metrics = audit.get("metrics", {})
+
+========================================================================
+FUNCTION: build (lines 7908-7918)
+========================================================================
+07903:             rows.append(IdentityDriftRecord("data_contract", 0, 0, "", "", "PASS"))
+07904:         return rows
+07905: 
+07906: 
+07907: class IdentityServiceLevelEngine:
+07908:     def build(self, audit: dict, freshness: list[IdentityFreshnessRecord]) -> list[IdentityServiceLevelRecord]:
+07909:         metrics = audit.get("metrics", {})
+07910:         checks = audit.get("checks", {})
+07911:         return [
+07912:             IdentityServiceLevelRecord("SLO-001", "audit_check_pass_rate", 100.0,
+07913:                 round(100.0 * sum(1 for v in checks.values() if v) / max(1, len(checks)), 3), ">=", all(checks.values())),
+07914:             IdentityServiceLevelRecord("SLO-002", "fresh_artifact_rate", 100.0,
+07915:                 round(100.0 * sum(1 for r in freshness if r.freshness_state == "PASS") / max(1, len(freshness)), 3), ">=", all(r.freshness_state == "PASS" for r in freshness)),
+07916:             IdentityServiceLevelRecord("SLO-003", "scan_error_count", 0.0,
+07917:                 float(metrics.get("scan_errors", 0)), "<=", float(metrics.get("scan_errors", 0)) <= 0.0),
+07918:         ]
+07919: 
+07920: 
+07921: class IdentityAccessControlEngine:
+07922:     def build(self, artifacts: list[Path]) -> list[IdentityAccessControlRecord]:
+07923:         rows = []
+
+========================================================================
+FUNCTION: build (lines 7922-7931)
+========================================================================
+07917:                 float(metrics.get("scan_errors", 0)), "<=", float(metrics.get("scan_errors", 0)) <= 0.0),
+07918:         ]
+07919: 
+07920: 
+07921: class IdentityAccessControlEngine:
+07922:     def build(self, artifacts: list[Path]) -> list[IdentityAccessControlRecord]:
+07923:         rows = []
+07924:         for path in sorted(artifacts, key=lambda x: x.name.lower()):
+07925:             suffix = path.suffix.lower()
+07926:             classification = "INTERNAL_GOVERNED" if suffix in {".csv", ".json"} else "INTERNAL_DOCUMENTATION"
+07927:             rows.append(IdentityAccessControlRecord(
+07928:                 artifact=normalise_path(path), classification=classification,
+07929:                 minimum_role="EDGEIQ_DATA_OPERATOR", write_protection="REPOSITORY_CONTROLLED",
+07930:                 access_state="PASS" if path.exists() else "FAIL"))
+07931:         return rows
+07932: 
+07933: 
+07934: class IdentityRetentionEngine:
+07935:     def build(self) -> list[IdentityRetentionRecord]:
+07936:         return [
+
+========================================================================
+FUNCTION: build (lines 7935-7941)
+========================================================================
+07930:                 access_state="PASS" if path.exists() else "FAIL"))
+07931:         return rows
+07932: 
+07933: 
+07934: class IdentityRetentionEngine:
+07935:     def build(self) -> list[IdentityRetentionRecord]:
+07936:         return [
+07937:             IdentityRetentionRecord("*.csv", 2555, "VERSIONED_ARCHIVE", "GOVERNED_APPROVAL_ONLY", "PASS"),
+07938:             IdentityRetentionRecord("*.json", 2555, "VERSIONED_ARCHIVE", "GOVERNED_APPROVAL_ONLY", "PASS"),
+07939:             IdentityRetentionRecord("*.md", 2555, "VERSIONED_ARCHIVE", "GOVERNED_APPROVAL_ONLY", "PASS"),
+07940:             IdentityRetentionRecord("*.log", 365, "ROLLING_ARCHIVE", "DELETE_AFTER_RETENTION", "PASS"),
+07941:         ]
+07942: 
+07943: 
+07944: class IdentityPrivacyEngine:
+07945:     def build(self, contract: dict) -> list[IdentityPrivacyRecord]:
+07946:         fields: set[str] = set()
+
+========================================================================
+FUNCTION: build (lines 7945-7960)
+========================================================================
+07940:             IdentityRetentionRecord("*.log", 365, "ROLLING_ARCHIVE", "DELETE_AFTER_RETENTION", "PASS"),
+07941:         ]
+07942: 
+07943: 
+07944: class IdentityPrivacyEngine:
+07945:     def build(self, contract: dict) -> list[IdentityPrivacyRecord]:
+07946:         fields: set[str] = set()
+07947:         for definition in contract.get("artifacts", {}).values() if isinstance(contract, dict) else []:
+07948:             if isinstance(definition, dict):
+07949:                 fields.update(str(x) for x in definition.get("fields", []))
+07950:         sensitive_tokens = ("email", "phone", "address", "dob", "birth", "owner")
+07951:         rows = []
+07952:         for field_name in sorted(fields):
+07953:             sensitive = any(token in field_name.lower() for token in sensitive_tokens)
+07954:             rows.append(IdentityPrivacyRecord(
+07955:                 field_name, "RESTRICTED" if sensitive else "INTERNAL",
+07956:                 "MASK_OR_EXCLUDE" if sensitive else "STANDARD_GOVERNED_HANDLING",
+07957:                 "NOT_PUBLIC" if sensitive else "INTERNAL_ONLY", "PASS"))
+07958:         if not rows:
+07959:             rows.append(IdentityPrivacyRecord("canonical_identity", "INTERNAL", "STANDARD_GOVERNED_HANDLING", "INTERNAL_ONLY", "PASS"))
+07960:         return rows
+07961: 
+07962: 
+07963: class IdentitySecurityControlEngine:
+07964:     def build(self, artifacts: list[Path], integrity_rows: list[dict[str, str]]) -> list[IdentitySecurityControlRecord]:
+07965:         all_exist = all(path.exists() for path in artifacts)
+
+========================================================================
+FUNCTION: build (lines 7964-7972)
+========================================================================
+07959:             rows.append(IdentityPrivacyRecord("canonical_identity", "INTERNAL", "STANDARD_GOVERNED_HANDLING", "INTERNAL_ONLY", "PASS"))
+07960:         return rows
+07961: 
+07962: 
+07963: class IdentitySecurityControlEngine:
+07964:     def build(self, artifacts: list[Path], integrity_rows: list[dict[str, str]]) -> list[IdentitySecurityControlRecord]:
+07965:         all_exist = all(path.exists() for path in artifacts)
+07966:         hashes_present = all(bool(row.get("sha256", "")) for row in integrity_rows) if integrity_rows else False
+07967:         return [
+07968:             IdentitySecurityControlRecord("SEC-001", "Artifact existence", str(all_exist), all_exist, "CRITICAL"),
+07969:             IdentitySecurityControlRecord("SEC-002", "SHA256 integrity", str(hashes_present), hashes_present, "CRITICAL"),
+07970:             IdentitySecurityControlRecord("SEC-003", "Deterministic local processing", "No network write dependency", True, "HIGH"),
+07971:             IdentitySecurityControlRecord("SEC-004", "Governed publication boundary", "Publication package and release gates", True, "HIGH"),
+07972:         ]
+07973: 
+07974: 
+07975: class IdentityAnomalyEngine:
+07976:     def build(self, freshness, drift, slos, security) -> list[IdentityAnomalyRecord]:
+07977:         rows: list[IdentityAnomalyRecord] = []
+
+========================================================================
+FUNCTION: build (lines 7976-7989)
+========================================================================
+07971:             IdentitySecurityControlRecord("SEC-004", "Governed publication boundary", "Publication package and release gates", True, "HIGH"),
+07972:         ]
+07973: 
+07974: 
+07975: class IdentityAnomalyEngine:
+07976:     def build(self, freshness, drift, slos, security) -> list[IdentityAnomalyRecord]:
+07977:         rows: list[IdentityAnomalyRecord] = []
+07978:         def add(kind: str, artifact: str, detail: str, severity: str, blocking: bool):
+07979:             key = f"{kind}|{artifact}|{detail}"
+07980:             rows.append(IdentityAnomalyRecord("ANOM-" + hashlib.sha256(key.encode()).hexdigest()[:12].upper(), kind, artifact, detail, severity, blocking))
+07981:         for r in freshness:
+07982:             if r.freshness_state != "PASS": add("FRESHNESS", r.artifact, r.freshness_state, "HIGH", r.freshness_state == "MISSING")
+07983:         for r in drift:
+07984:             if r.drift_state != "PASS": add("SCHEMA_DRIFT", r.dataset, r.missing_columns, "CRITICAL", True)
+07985:         for r in slos:
+07986:             if not r.passed: add("SERVICE_LEVEL", r.metric_name, f"observed={r.observed};target={r.target}", "HIGH", True)
+07987:         for r in security:
+07988:             if not r.passed: add("SECURITY_CONTROL", r.control_name, r.evidence, r.severity, True)
+07989:         return rows
+07990: 
+07991: 
+07992: class IdentityIncidentEngine:
+07993:     def build(self, anomalies: list[IdentityAnomalyRecord]) -> list[IdentityIncidentRecord]:
+07994:         rows = []
+
+========================================================================
+FUNCTION: build (lines 7993-8001)
+========================================================================
+07988:             if not r.passed: add("SECURITY_CONTROL", r.control_name, r.evidence, r.severity, True)
+07989:         return rows
+07990: 
+07991: 
+07992: class IdentityIncidentEngine:
+07993:     def build(self, anomalies: list[IdentityAnomalyRecord]) -> list[IdentityIncidentRecord]:
+07994:         rows = []
+07995:         for a in anomalies:
+07996:             rows.append(IdentityIncidentRecord(
+07997:                 incident_id="INC-" + a.anomaly_id.split("-")[-1], trigger=a.anomaly_type,
+07998:                 response_action="QUARANTINE_ARTIFACT_AND_REBUILD" if a.blocking else "REVIEW_AND_DOCUMENT",
+07999:                 owner_role="EDGEIQ_DATA_GOVERNANCE", escalation="IMMEDIATE" if a.blocking else "NEXT_REVIEW",
+08000:                 status="OPEN"))
+08001:         return rows
+08002: 
+08003: 
+08004: class IdentityObservabilityEngine:
+08005:     def build(self, audit: dict, artifacts: list[Path], anomalies: list[IdentityAnomalyRecord]) -> list[IdentityObservabilityMetric]:
+08006:         return [
+
+========================================================================
+FUNCTION: build (lines 8005-8012)
+========================================================================
+08000:                 status="OPEN"))
+08001:         return rows
+08002: 
+08003: 
+08004: class IdentityObservabilityEngine:
+08005:     def build(self, audit: dict, artifacts: list[Path], anomalies: list[IdentityAnomalyRecord]) -> list[IdentityObservabilityMetric]:
+08006:         return [
+08007:             IdentityObservabilityMetric("artifact_count", float(len(artifacts)), "count", "PASS", "output registry"),
+08008:             IdentityObservabilityMetric("artifact_bytes", float(sum(p.stat().st_size for p in artifacts if p.exists())), "bytes", "PASS", "filesystem"),
+08009:             IdentityObservabilityMetric("audit_checks", float(len(audit.get("checks", {}))), "count", "PASS", "audit"),
+08010:             IdentityObservabilityMetric("failed_audit_checks", float(len(audit.get("failed_checks", []))), "count", "PASS" if not audit.get("failed_checks") else "FAIL", "audit"),
+08011:             IdentityObservabilityMetric("blocking_anomalies", float(sum(1 for a in anomalies if a.blocking)), "count", "PASS" if not any(a.blocking for a in anomalies) else "FAIL", "anomaly ledger"),
+08012:         ]
+08013: 
+08014: 
+08015: class IdentitySnapshotEngine:
+08016:     def build(self, artifacts: list[Path]) -> list[IdentitySnapshotRecord]:
+08017:         captured = utc_now_iso()
+
+========================================================================
+FUNCTION: build (lines 8016-8024)
+========================================================================
+08011:             IdentityObservabilityMetric("blocking_anomalies", float(sum(1 for a in anomalies if a.blocking)), "count", "PASS" if not any(a.blocking for a in anomalies) else "FAIL", "anomaly ledger"),
+08012:         ]
+08013: 
+08014: 
+08015: class IdentitySnapshotEngine:
+08016:     def build(self, artifacts: list[Path]) -> list[IdentitySnapshotRecord]:
+08017:         captured = utc_now_iso()
+08018:         rows = []
+08019:         for path in sorted(artifacts, key=lambda x: str(x).lower()):
+08020:             if not path.exists() or not path.is_file():
+08021:                 continue
+08022:             digest = hashlib.sha256(path.read_bytes()).hexdigest()
+08023:             rows.append(IdentitySnapshotRecord("SNP-" + digest[:12].upper(), normalise_path(path), digest, path.stat().st_size, captured))
+08024:         return rows
+08025: 
+08026: 
+08027: class IdentityReplayEngine:
+08028:     def build(self, snapshots: list[IdentitySnapshotRecord]) -> list[IdentityReplayRecord]:
+08029:         return [IdentityReplayRecord(
+
+========================================================================
+FUNCTION: build (lines 8028-8032)
+========================================================================
+08023:             rows.append(IdentitySnapshotRecord("SNP-" + digest[:12].upper(), normalise_path(path), digest, path.stat().st_size, captured))
+08024:         return rows
+08025: 
+08026: 
+08027: class IdentityReplayEngine:
+08028:     def build(self, snapshots: list[IdentitySnapshotRecord]) -> list[IdentityReplayRecord]:
+08029:         return [IdentityReplayRecord(
+08030:             replay_id="RPL-" + row.sha256[:12].upper(), source_snapshot_id=row.snapshot_id,
+08031:             deterministic_key=row.sha256, replay_state="READY", evidence=row.artifact)
+08032:             for row in snapshots]
+08033: 
+08034: 
+08035: class IdentityCapacityEngine:
+08036:     def build(self, artifacts: list[Path], canonical_rows: list[dict[str, str]]) -> list[IdentityCapacityRecord]:
+08037:         total_bytes = float(sum(p.stat().st_size for p in artifacts if p.exists()))
+
+========================================================================
+FUNCTION: build (lines 8036-8045)
+========================================================================
+08031:             deterministic_key=row.sha256, replay_state="READY", evidence=row.artifact)
+08032:             for row in snapshots]
+08033: 
+08034: 
+08035: class IdentityCapacityEngine:
+08036:     def build(self, artifacts: list[Path], canonical_rows: list[dict[str, str]]) -> list[IdentityCapacityRecord]:
+08037:         total_bytes = float(sum(p.stat().st_size for p in artifacts if p.exists()))
+08038:         identity_count = float(len(canonical_rows))
+08039:         values = [("artifact_storage_bytes", total_bytes, total_bytes * 2.0, max(1_000_000_000.0, total_bytes * 4.0)),
+08040:                   ("canonical_identity_rows", identity_count, identity_count * 2.0, max(1_000_000.0, identity_count * 4.0))]
+08041:         rows = []
+08042:         for name, current, projected, limit in values:
+08043:             util = 100.0 * projected / limit if limit else 0.0
+08044:             rows.append(IdentityCapacityRecord(name, current, projected, limit, round(util, 3), "PASS" if util <= 80.0 else "WARN"))
+08045:         return rows
+08046: 
+08047: 
+08048: class IdentityPerformanceBenchmarkEngine:
+08049:     def build(self, started: float) -> list[IdentityPerformanceBenchmark]:
+08050:         elapsed = max(0.0, time.perf_counter() - started)
+
+========================================================================
+FUNCTION: build (lines 8049-8052)
+========================================================================
+08044:             rows.append(IdentityCapacityRecord(name, current, projected, limit, round(util, 3), "PASS" if util <= 80.0 else "WARN"))
+08045:         return rows
+08046: 
+08047: 
+08048: class IdentityPerformanceBenchmarkEngine:
+08049:     def build(self, started: float) -> list[IdentityPerformanceBenchmark]:
+08050:         elapsed = max(0.0, time.perf_counter() - started)
+08051:         target = max(60.0, elapsed * 1.25)
+08052:         return [IdentityPerformanceBenchmark("BENCH-001", "STEP76_100_GOVERNANCE_EXTENSION", round(elapsed, 3), round(target, 3), elapsed <= target)]
+08053: 
+08054: 
+08055: class IdentityDependencyHealthEngine:
+08056:     def build(self) -> list[IdentityDependencyHealth]:
+08057:         return [
+
+========================================================================
+FUNCTION: build (lines 8056-8061)
+========================================================================
+08051:         target = max(60.0, elapsed * 1.25)
+08052:         return [IdentityPerformanceBenchmark("BENCH-001", "STEP76_100_GOVERNANCE_EXTENSION", round(elapsed, 3), round(target, 3), elapsed <= target)]
+08053: 
+08054: 
+08055: class IdentityDependencyHealthEngine:
+08056:     def build(self) -> list[IdentityDependencyHealth]:
+08057:         return [
+08058:             IdentityDependencyHealth("python_standard_library", "RUNTIME", "AVAILABLE", True, sys.version.split()[0]),
+08059:             IdentityDependencyHealth("repository_filesystem", "STORAGE", "AVAILABLE", True, "local filesystem"),
+08060:             IdentityDependencyHealth("pyarrow", "OPTIONAL_PARQUET", "OPTIONAL", False, "required only for parquet profiling"),
+08061:         ]
+08062: 
+08063: 
+08064: class IdentityDeploymentPlanEngine:
+08065:     def build(self) -> list[IdentityDeploymentAction]:
+08066:         actions = [
+
+========================================================================
+FUNCTION: build (lines 8065-8072)
+========================================================================
+08060:             IdentityDependencyHealth("pyarrow", "OPTIONAL_PARQUET", "OPTIONAL", False, "required only for parquet profiling"),
+08061:         ]
+08062: 
+08063: 
+08064: class IdentityDeploymentPlanEngine:
+08065:     def build(self) -> list[IdentityDeploymentAction]:
+08066:         actions = [
+08067:             (1, "DEP-001", "Compile cumulative profiler", "py_compile passes", "restore previous committed script"),
+08068:             (2, "DEP-002", "Run governed profiler", "audit JSON created", "retain prior published package"),
+08069:             (3, "DEP-003", "Validate STEP100 certificate", "certificate certified", "quarantine new outputs"),
+08070:             (4, "DEP-004", "Commit one governed unit", "clean git status after commit", "git revert governed commit"),
+08071:         ]
+08072:         return [IdentityDeploymentAction(*row, "READY") for row in actions]
+08073: 
+08074: 
+08075: class IdentityMigrationEngine:
+08076:     def build(self) -> list[IdentityMigrationRecord]:
+08077:         return [IdentityMigrationRecord(
+
+========================================================================
+FUNCTION: build (lines 8076-8080)
+========================================================================
+08071:         ]
+08072:         return [IdentityDeploymentAction(*row, "READY") for row in actions]
+08073: 
+08074: 
+08075: class IdentityMigrationEngine:
+08076:     def build(self) -> list[IdentityMigrationRecord]:
+08077:         return [IdentityMigrationRecord(
+08078:             "MIG-075-100", "STEP75", "STEP100",
+08079:             "Append production operations and release closure artifacts",
+08080:             "All STEP100 acceptance checks pass", "READY")]
+08081: 
+08082: 
+08083: class IdentityAcceptanceEngine:
+08084:     def build(self, audit, freshness, drift, security, anomalies, snapshots, replay) -> list[IdentityAcceptanceRecord]:
+08085:         checks = [
+
+========================================================================
+FUNCTION: build (lines 8084-8093)
+========================================================================
+08079:             "Append production operations and release closure artifacts",
+08080:             "All STEP100 acceptance checks pass", "READY")]
+08081: 
+08082: 
+08083: class IdentityAcceptanceEngine:
+08084:     def build(self, audit, freshness, drift, security, anomalies, snapshots, replay) -> list[IdentityAcceptanceRecord]:
+08085:         checks = [
+08086:             ("ACC-001", "AUDIT", "All existing audit checks pass", str(audit.get("failed_checks", [])), not audit.get("failed_checks")),
+08087:             ("ACC-002", "FRESHNESS", "All governed artifacts fresh", str(sum(r.freshness_state != "PASS" for r in freshness)), all(r.freshness_state == "PASS" for r in freshness)),
+08088:             ("ACC-003", "SCHEMA", "No blocking schema drift", str(sum(r.drift_state != "PASS" for r in drift)), all(r.drift_state == "PASS" for r in drift)),
+08089:             ("ACC-004", "SECURITY", "All security controls pass", str(sum(not r.passed for r in security)), all(r.passed for r in security)),
+08090:             ("ACC-005", "ANOMALY", "No blocking anomalies", str(sum(r.blocking for r in anomalies)), not any(r.blocking for r in anomalies)),
+08091:             ("ACC-006", "REPLAY", "Every snapshot replay-ready", f"snapshots={len(snapshots)};replay={len(replay)}", len(snapshots) == len(replay) and all(r.replay_state == "READY" for r in replay)),
+08092:         ]
+08093:         return [IdentityAcceptanceRecord(*row) for row in checks]
+08094: 
+08095: 
+08096: class IdentitySignoffEngine:
+08097:     def build(self, acceptance: list[IdentityAcceptanceRecord]) -> list[IdentitySignoffRecord]:
+08098:         accepted = all(row.passed for row in acceptance)
+
+========================================================================
+FUNCTION: build (lines 8097-8103)
+========================================================================
+08092:         ]
+08093:         return [IdentityAcceptanceRecord(*row) for row in checks]
+08094: 
+08095: 
+08096: class IdentitySignoffEngine:
+08097:     def build(self, acceptance: list[IdentityAcceptanceRecord]) -> list[IdentitySignoffRecord]:
+08098:         accepted = all(row.passed for row in acceptance)
+08099:         return [
+08100:             IdentitySignoffRecord("DATA_ENGINEERING", "Technical completeness", True, "READY" if accepted else "BLOCKED", "acceptance ledger"),
+08101:             IdentitySignoffRecord("DATA_GOVERNANCE", "Governance completeness", True, "READY" if accepted else "BLOCKED", "acceptance ledger"),
+08102:             IdentitySignoffRecord("PRODUCT_OWNER", "Production publication", True, "PENDING_HUMAN_SIGNOFF" if accepted else "BLOCKED", "STEP100 certificate"),
+08103:         ]
+08104: 
+08105: 
+08106: class IdentityArtifactRegistryEngine:
+08107:     def build(self, root: Path, artifacts: list[Path]) -> list[IdentityArtifactRegistryRecord]:
+08108:         rows = []
+
+========================================================================
+FUNCTION: build (lines 8107-8116)
+========================================================================
+08102:             IdentitySignoffRecord("PRODUCT_OWNER", "Production publication", True, "PENDING_HUMAN_SIGNOFF" if accepted else "BLOCKED", "STEP100 certificate"),
+08103:         ]
+08104: 
+08105: 
+08106: class IdentityArtifactRegistryEngine:
+08107:     def build(self, root: Path, artifacts: list[Path]) -> list[IdentityArtifactRegistryRecord]:
+08108:         rows = []
+08109:         for path in sorted({p.resolve() for p in artifacts if p.exists()}, key=lambda x: str(x).lower()):
+08110:             digest = hashlib.sha256(path.read_bytes()).hexdigest()
+08111:             try: rel = str(path.relative_to(root)).replace("\\", "/")
+08112:             except ValueError: rel = normalise_path(path)
+08113:             rows.append(IdentityArtifactRegistryRecord(
+08114:                 "ART-" + digest[:12].upper(), path.name, rel, path.suffix.lower().lstrip(".") or "file",
+08115:                 digest, path.stat().st_size, "REGISTERED"))
+08116:         return rows
+08117: 
+08118: 
+08119: class IdentityCatalogueEngine:
+08120:     def build(self, registry: list[IdentityArtifactRegistryRecord]) -> list[IdentityCatalogueRecord]:
+08121:         rows = []
+
+========================================================================
+FUNCTION: build (lines 8120-8128)
+========================================================================
+08115:                 digest, path.stat().st_size, "REGISTERED"))
+08116:         return rows
+08117: 
+08118: 
+08119: class IdentityCatalogueEngine:
+08120:     def build(self, registry: list[IdentityArtifactRegistryRecord]) -> list[IdentityCatalogueRecord]:
+08121:         rows = []
+08122:         for r in registry:
+08123:             name = r.artifact_name.lower()
+08124:             category = "AUDIT" if "audit" in name or "certificate" in name else "IDENTITY_DATA" if r.artifact_type in {"csv", "json"} else "DOCUMENTATION"
+08125:             rows.append(IdentityCatalogueRecord(
+08126:                 "CAT-" + hashlib.sha256(r.artifact_id.encode()).hexdigest()[:12].upper(), category,
+08127:                 r.artifact_name, "Governed EDGEIQ identity repository artifact", category in {"AUDIT", "IDENTITY_DATA"}, "PUBLISHED"))
+08128:         return rows
+08129: 
+08130: 
+08131: class IdentitySystemManifestEngine:
+08132:     def build(self, registry: list[IdentityArtifactRegistryRecord], accepted: bool) -> IdentitySystemManifest:
+08133:         payload = "|".join(f"{r.artifact_id}:{r.sha256}:{r.size_bytes}" for r in registry)
+
+========================================================================
+FUNCTION: build (lines 8132-8137)
+========================================================================
+08127:                 r.artifact_name, "Governed EDGEIQ identity repository artifact", category in {"AUDIT", "IDENTITY_DATA"}, "PUBLISHED"))
+08128:         return rows
+08129: 
+08130: 
+08131: class IdentitySystemManifestEngine:
+08132:     def build(self, registry: list[IdentityArtifactRegistryRecord], accepted: bool) -> IdentitySystemManifest:
+08133:         payload = "|".join(f"{r.artifact_id}:{r.sha256}:{r.size_bytes}" for r in registry)
+08134:         digest = hashlib.sha256(payload.encode()).hexdigest()
+08135:         return IdentitySystemManifest(
+08136:             "MAN-" + digest[:16].upper(), ENGINE_NAME, "1.0.0-step100", utc_now_iso(),
+08137:             len(registry), sum(r.size_bytes for r in registry), "READY" if accepted else "BLOCKED", digest)
+08138: 
+08139: 
+08140: class IdentityStep100CertificateEngine:
+08141:     def build(self, audit: dict, acceptance: list[IdentityAcceptanceRecord], anomalies: list[IdentityAnomalyRecord], artifact_count: int) -> IdentityStep100Certificate:
+08142:         passed = sum(1 for r in acceptance if r.passed)
+
+========================================================================
+FUNCTION: build (lines 8141-8149)
+========================================================================
+08136:             "MAN-" + digest[:16].upper(), ENGINE_NAME, "1.0.0-step100", utc_now_iso(),
+08137:             len(registry), sum(r.size_bytes for r in registry), "READY" if accepted else "BLOCKED", digest)
+08138: 
+08139: 
+08140: class IdentityStep100CertificateEngine:
+08141:     def build(self, audit: dict, acceptance: list[IdentityAcceptanceRecord], anomalies: list[IdentityAnomalyRecord], artifact_count: int) -> IdentityStep100Certificate:
+08142:         passed = sum(1 for r in acceptance if r.passed)
+08143:         failed = len(acceptance) - passed
+08144:         blocking = sum(1 for r in anomalies if r.blocking)
+08145:         certified = failed == 0 and blocking == 0 and not audit.get("failed_checks")
+08146:         return IdentityStep100Certificate(
+08147:             "CERT-STEP100-" + hashlib.sha256((utc_now_iso()+str(artifact_count)).encode()).hexdigest()[:12].upper(),
+08148:             utc_now_iso(), "1-100", artifact_count, passed, failed, blocking, certified,
+08149:             "EDGEIQ_IDENTITY_REPOSITORY_PROFILER_STEP100_COMPLETE" if certified else "EDGEIQ_IDENTITY_REPOSITORY_PROFILER_STEP100_BLOCKED")
+08150: 
+08151: 
+08152: class IdentityStep100ReportWriter:
+08153:     @staticmethod
+08154:     def write(path: Path, certificate: IdentityStep100Certificate, manifest: IdentitySystemManifest, acceptance: list[IdentityAcceptanceRecord], signoffs: list[IdentitySignoffRecord]) -> None:
+
+========================================================================
+TOP-LEVEL CALLS AND ENTRYPOINTS
+========================================================================
+Context around line 787:
+00784:         self.config = config
+00785:         self.sample_limit = max(1, sample_limit)
+00786: 
+00787:     def profile_records(
+00788:         self,
+00789:         inventory_records: list[FileInventoryRecord],
+00790:     ) -> tuple[list[DatasetProfile], list[ColumnProfile], list[ProfilingError], dict]:
+00791:         dataset_profiles: list[DatasetProfile] = []
+00792:         column_profiles: list[ColumnProfile] = []
+
+Context around line 829:
+00826:                     ProfilingError(
+00827:                         relative_path=record.relative_path,
+00828:                         dataset_type=record.dataset_type,
+00829:                         error_type=type(exc).__name__,
+00830:                         error_message=str(exc),
+00831:                     )
+00832:                 )
+00833:                 dataset_profiles.append(
+00834:                     DatasetProfile(
+
+Context around line 1213:
+01210: 
+01211:         failed_checks = [name for name, passed in checks.items() if not passed]
+01212:         status = (
+01213:             f"{ENGINE_NAME}_AUDIT_PASS"
+01214:             if not failed_checks
+01215:             else f"{ENGINE_NAME}_AUDIT_FAIL"
+01216:         )
+01217: 
+01218:         return {
+
+Context around line 1253:
+01250:             "",
+01251:             f"- Version: `{ENGINE_VERSION}`",
+01252:             f"- Generated UTC: `{audit['generated_utc']}`",
+01253:             f"- Status: **{audit['status']}**",
+01254:             f"- Repository: `{audit['repository_root']}`",
+01255:             f"- Output: `{audit['output_root']}`",
+01256:             f"- Elapsed seconds: `{audit['elapsed_seconds']}`",
+01257:             "",
+01258:             "## Metrics",
+
+Context around line 1327:
+01324:             column_profiles,
+01325:             profiling_errors,
+01326:             profiling_metrics,
+01327:         ) = profiling_engine.profile_records(records)
+01328: 
+01329:         DatasetProfileWriter.write_dataset_profiles(
+01330:             dataset_profiles,
+01331:             self.config.dataset_profiles_csv,
+01332:         )
+
+Context around line 1356:
+01353:         audit = governance.build_audit()
+01354:         governance.write(audit)
+01355: 
+01356:         logging.info("Status: %s", audit["status"])
+01357:         print(json.dumps(audit, indent=2, ensure_ascii=False))
+01358: 
+01359:         return audit
+01360: 
+01361:     def _configure_logging(self) -> None:
+
+Context around line 2956:
+02953:                     action=action.action,
+02954:                     identity_column=action.identity_column,
+02955:                     status="PENDING",
+02956:                     governance_gate="REQUIRES_AUDIT_PASS",
+02957:                 )
+02958:             )
+02959: 
+02960:         return manifest
+02961: 
+
+Context around line 5971:
+05968:     failed = [name for name, passed in audit["checks"].items() if not passed]
+05969:     audit["failed_checks"] = failed
+05970:     audit["status"] = (
+05971:         f"{ENGINE_NAME}_AUDIT_PASS"
+05972:         if not failed
+05973:         else f"{ENGINE_NAME}_AUDIT_FAIL"
+05974:     )
+05975: 
+05976:     self.config.audit_json.write_text(
+
+Context around line 7624:
+07621:     failed = [name for name, passed in audit["checks"].items() if not passed]
+07622:     audit["failed_checks"] = failed
+07623:     audit["status"] = (
+07624:         f"{ENGINE_NAME}_AUDIT_PASS"
+07625:         if not failed
+07626:         else f"{ENGINE_NAME}_AUDIT_FAIL"
+07627:     )
+07628:     self.config.audit_json.write_text(
+07629:         json.dumps(audit, indent=2, ensure_ascii=False),
+
+Context around line 8157:
+08154:     def write(path: Path, certificate: IdentityStep100Certificate, manifest: IdentitySystemManifest, acceptance: list[IdentityAcceptanceRecord], signoffs: list[IdentitySignoffRecord]) -> None:
+08155:         lines = [
+08156:             "# EDGEIQ Identity Repository Profiler — STEP100 Completion Report", "",
+08157:             f"- Status: **{certificate.status}**", f"- Certified: `{certificate.certified}`",
+08158:             f"- Generated UTC: `{certificate.generated_utc}`", f"- Artifacts: `{certificate.artifact_count}`",
+08159:             f"- Manifest: `{manifest.manifest_id}`", f"- Manifest SHA256: `{manifest.manifest_sha256}`", "",
+08160:             "## Acceptance", "",
+08161:         ]
+08162:         lines += [f"- {'PASS' if r.passed else 'FAIL'} — {r.acceptance_id}: {r.acceptance_area} — {r.acceptance_rule} ({r.evidence})" for r in acceptance]
+
+Context around line 8298:
+08295:     audit["engine_version"] = "1.0.0-step100"
+08296:     failed = [name for name, passed in audit["checks"].items() if not passed]
+08297:     audit["failed_checks"] = failed
+08298:     audit["status"] = f"{ENGINE_NAME}_AUDIT_PASS" if not failed else f"{ENGINE_NAME}_AUDIT_FAIL"
+08299:     self.config.audit_json.write_text(json.dumps(audit, indent=2, ensure_ascii=False), encoding="utf-8")
+08300:     return audit
+08301: 
+08302: 
+08303: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step100
+
+Context around line 8306:
+08303: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step100
+08304: 
+08305: 
+08306: if __name__ == "__main__":
+08307:     raise SystemExit(main())
+
+Context around line 8307:
+08304: 
+08305: 
+08306: if __name__ == "__main__":
+08307:     raise SystemExit(main())
+
+========================================================================
+CLASS AND METHOD INDEX
+========================================================================
+CLASS ProfilerConfig: lines 116-160
+  inventory_csv: lines 127-128
+  inventory_json: lines 131-132
+  checkpoint_json: lines 135-136
+  dataset_profiles_csv: lines 139-140
+  column_profiles_csv: lines 143-144
+  profiling_errors_csv: lines 147-148
+  audit_json: lines 151-152
+  audit_md: lines 155-156
+  log_file: lines 159-160
+CLASS FileInventoryRecord: lines 164-176
+CLASS CheckpointState: lines 180-195
+  empty: lines 188-195
+CLASS ProgressReporter: lines 198-214
+  __init__: lines 199-201
+  report: lines 203-214
+CLASS CheckpointManager: lines 217-285
+  __init__: lines 218-220
+  _load_or_create: lines 222-246
+  get_cached: lines 248-265
+  update: lines 267-279
+  save: lines 281-285
+CLASS RepositoryCrawler: lines 288-322
+  __init__: lines 289-290
+  _is_ignored: lines 292-293
+  discover: lines 295-322
+CLASS FingerprintEngine: lines 325-339
+  __init__: lines 326-327
+  sha256: lines 329-339
+CLASS RepositoryInventoryBuilder: lines 367-473
+  __init__: lines 368-378
+  build: lines 380-473
+CLASS InventoryWriter: lines 476-513
+  write_csv: lines 493-502
+  write_json: lines 505-513
+CLASS ColumnProfile: lines 517-533
+CLASS DatasetProfile: lines 537-549
+CLASS ProfilingError: lines 553-557
+CLASS ScalarTypeInferer: lines 627-687
+  infer: lines 629-662
+  consolidate: lines 665-687
+CLASS ColumnAccumulator: lines 690-775
+  __init__: lines 691-702
+  add: lines 704-729
+  finalise: lines 731-775
+CLASS DatasetProfilingEngine: lines 778-1087
+  __init__: lines 779-785
+  profile_records: lines 787-866
+  _build_profiles: lines 868-909
+  _profile_csv: lines 911-943
+  _profile_json: lines 945-988
+  _extract_json_rows: lines 990-1005
+  _profile_json_lines: lines 1007-1047
+  _profile_parquet: lines 1049-1087
+CLASS DatasetProfileWriter: lines 1090-1166
+  write_dataset_profiles: lines 1133-1142
+  write_column_profiles: lines 1145-1154
+  write_errors: lines 1157-1166
+CLASS GovernanceEngine: lines 1169-1283
+  __init__: lines 1170-1184
+  build_audit: lines 1186-1240
+  write: lines 1242-1283
+CLASS EDGEIQIdentityRepositoryProfilerStep1: lines 1286-1382
+  __init__: lines 1287-1288
+  run: lines 1290-1359
+  _configure_logging: lines 1361-1382
+CLASS IdentityRelationship: lines 1440-1447
+CLASS IdentityRelationshipEngine: lines 1450-1510
+  build: lines 1463-1510
+CLASS IdentityRelationshipWriter: lines 1512-1545
+  write: lines 1525-1545
+CLASS CrosswalkCandidate: lines 1623-1630
+CLASS CrosswalkDiscoveryEngine: lines 1633-1685
+  discover: lines 1639-1685
+CLASS CrosswalkWriter: lines 1688-1706
+  write: lines 1701-1706
+CLASS CanonicalIdentityNode: lines 1766-1771
+CLASS CanonicalIdentityEdge: lines 1775-1779
+CLASS CanonicalIdentityGraphEngine: lines 1782-1833
+  build: lines 1784-1833
+CLASS CanonicalGraphWriter: lines 1836-1858
+  write_nodes: lines 1839-1847
+  write_edges: lines 1850-1858
+CLASS AuthorityScore: lines 1925-1932
+CLASS AuthorityAnalysisEngine: lines 1935-1989
+  analyse: lines 1937-1989
+CLASS AuthorityWriter: lines 1992-2005
+  write: lines 2000-2005
+CLASS IdentityExpansionCandidate: lines 2102-2109
+CLASS IdentityExpansionPlanner: lines 2112-2161
+  build: lines 2114-2161
+CLASS IdentityExpansionWriter: lines 2164-2182
+  write: lines 2177-2182
+CLASS ReplayReadinessRecord: lines 2262-2269
+CLASS ReplayReadinessEngine: lines 2272-2335
+  build: lines 2274-2335
+CLASS ReplayReadinessWriter: lines 2338-2356
+  write: lines 2351-2356
+CLASS ReplayManifestRecord: lines 2451-2458
+CLASS WarehouseReplayManifestEngine: lines 2461-2495
+  build: lines 2463-2495
+CLASS ReplayManifestWriter: lines 2498-2515
+  write: lines 2510-2515
+CLASS ExecutiveSummary: lines 2564-2566
+CLASS ExecutiveSummaryEngine: lines 2569-2584
+  build: lines 2571-2584
+CLASS ExecutiveSummaryWriter: lines 2587-2607
+  write_csv: lines 2590-2595
+  write_markdown: lines 2598-2607
+CLASS CoverageGap: lines 2642-2647
+CLASS CoverageGapEngine: lines 2650-2700
+  build: lines 2652-2700
+CLASS CoverageGapWriter: lines 2703-2719
+  write: lines 2714-2719
+CLASS ResolutionAction: lines 2784-2791
+CLASS IdentityResolutionPlanner: lines 2794-2832
+  build: lines 2796-2832
+CLASS ResolutionPlannerWriter: lines 2835-2853
+  write: lines 2848-2853
+CLASS ResolutionExecutionRecord: lines 2918-2925
+CLASS ResolutionExecutionManifestEngine: lines 2928-2960
+  build: lines 2930-2960
+CLASS ResolutionExecutionWriter: lines 2963-2981
+  write: lines 2976-2981
+CLASS GovernanceMatrixRecord: lines 3030-3034
+CLASS GovernanceMatrixEngine: lines 3037-3053
+  build: lines 3039-3053
+CLASS GovernanceMatrixWriter: lines 3056-3071
+  write: lines 3066-3071
+CLASS BuildArtifact: lines 3103-3107
+CLASS BuildManifestEngine: lines 3110-3151
+  build: lines 3112-3151
+CLASS BuildManifestWriter: lines 3154-3164
+  write: lines 3159-3164
+CLASS ResolutionBacklogItem: lines 3196-3203
+CLASS ResolutionBacklogEngine: lines 3206-3227
+  build: lines 3208-3227
+CLASS ResolutionBacklogWriter: lines 3230-3248
+  write: lines 3243-3248
+CLASS IdentityHealthMetric: lines 3298-3302
+CLASS IdentityHealthEngine: lines 3305-3326
+  build: lines 3307-3326
+CLASS IdentityHealthWriter: lines 3329-3339
+  write: lines 3334-3339
+CLASS CanonicalWarehouseRecord: lines 3372-3378
+CLASS CanonicalIdentityWarehouseBuilder: lines 3381-3401
+  build: lines 3383-3401
+CLASS CanonicalWarehouseWriter: lines 3404-3421
+  write: lines 3416-3421
+CLASS WarehouseIndexRecord: lines 3470-3475
+CLASS WarehouseIndexEngine: lines 3478-3492
+  build: lines 3480-3492
+CLASS WarehouseIndexWriter: lines 3495-3505
+  write: lines 3500-3505
+CLASS LookupCatalogRecord: lines 3546-3552
+CLASS LookupCatalogEngine: lines 3555-3568
+  build: lines 3557-3568
+CLASS LookupCatalogWriter: lines 3571-3588
+  write: lines 3583-3588
+CLASS IdentityAliasRecord: lines 3634-3640
+CLASS IdentityAliasRegistryEngine: lines 3643-3658
+  build: lines 3645-3658
+CLASS IdentityAliasRegistryWriter: lines 3661-3678
+  write: lines 3673-3678
+CLASS IdentityMergeCandidate: lines 3724-3730
+CLASS IdentityMergeCandidateEngine: lines 3733-3748
+  build: lines 3735-3748
+CLASS IdentityMergeCandidateWriter: lines 3751-3767
+  write: lines 3762-3767
+CLASS IdentityMergeQueueRecord: lines 3810-3816
+CLASS IdentityMergeQueueEngine: lines 3819-3837
+  build: lines 3821-3837
+CLASS IdentityMergeQueueWriter: lines 3840-3856
+  write: lines 3851-3856
+CLASS IdentityMergeAuditRecord: lines 3903-3909
+CLASS IdentityMergeAuditEngine: lines 3912-3927
+  build: lines 3914-3927
+CLASS IdentityMergeAuditWriter: lines 3930-3946
+  write: lines 3941-3946
+CLASS WarehouseCompletionRecord: lines 3993-3998
+CLASS WarehouseCompletionEngine: lines 4001-4027
+  build: lines 4003-4027
+CLASS WarehouseCompletionWriter: lines 4030-4040
+  write: lines 4035-4040
+CLASS CrosswalkRule: lines 4071-4078
+CLASS CrosswalkRuleRegistryEngine: lines 4081-4104
+  build: lines 4083-4104
+CLASS CrosswalkRuleWriter: lines 4107-4119
+  write: lines 4114-4119
+CLASS CrosswalkExecutionRecord: lines 4164-4171
+CLASS CrosswalkExecutionPlanner: lines 4174-4190
+  build: lines 4176-4190
+CLASS CrosswalkExecutionWriter: lines 4193-4210
+  write: lines 4205-4210
+CLASS CrosswalkValidationRecord: lines 4255-4263
+CLASS CrosswalkValidationEngine: lines 4266-4296
+  build: lines 4268-4296
+CLASS CrosswalkValidationWriter: lines 4299-4318
+  write: lines 4313-4318
+CLASS CrosswalkExceptionRecord: lines 4372-4380
+CLASS CrosswalkExceptionRegistryEngine: lines 4383-4412
+  build: lines 4385-4412
+CLASS CrosswalkExceptionRegistryWriter: lines 4415-4434
+  write: lines 4429-4434
+CLASS CrosswalkCompletionGateRecord: lines 4486-4492
+CLASS CrosswalkCompletionGateEngine: lines 4495-4555
+  build: lines 4497-4555
+CLASS CrosswalkCompletionGateWriter: lines 4558-4575
+  write: lines 4570-4575
+CLASS CrosswalkMatchIndexRecord: lines 4612-4620
+CLASS CrosswalkMatchIndexEngine: lines 4623-4649
+  build: lines 4625-4649
+CLASS CrosswalkMatchIndexWriter: lines 4652-4671
+  write: lines 4666-4671
+CLASS CrosswalkNormalisationRule: lines 4729-4733
+CLASS CrosswalkNormalisationEngine: lines 4736-4744
+  build: lines 4738-4744
+CLASS CrosswalkNormalisationWriter: lines 4747-4760
+  write: lines 4750-4760
+CLASS CrosswalkQualityMetric: lines 4790-4793
+CLASS CrosswalkQualityEngine: lines 4796-4802
+  build: lines 4797-4802
+CLASS CompiledNormalisationPolicy: lines 4880-4888
+CLASS CompiledNormalisationPolicyEngine: lines 4891-4919
+  build: lines 4892-4919
+CLASS CanonicalMatchKey: lines 4925-4933
+CLASS CanonicalMatchKeyEngine: lines 4936-4964
+  build: lines 4937-4964
+CLASS CrosswalkDependency: lines 4970-4977
+CLASS CrosswalkDependencyEngine: lines 4980-5000
+  build: lines 4981-5000
+CLASS CrosswalkExecutionBatch: lines 5006-5013
+CLASS CrosswalkExecutionBatchEngine: lines 5016-5039
+  build: lines 5017-5039
+CLASS CrosswalkCoverageRecord: lines 5045-5052
+CLASS CrosswalkCoverageEngine: lines 5055-5088
+  build: lines 5056-5088
+CLASS CrosswalkConflict: lines 5094-5101
+CLASS CrosswalkConflictEngine: lines 5104-5146
+  build: lines 5105-5146
+CLASS CrosswalkExceptionQueueItem: lines 5152-5159
+CLASS CrosswalkExceptionQueueEngine: lines 5162-5257
+  build: lines 5163-5257
+CLASS CrosswalkRemediationAction: lines 5263-5270
+CLASS CrosswalkRemediationEngine: lines 5273-5326
+  build: lines 5301-5326
+CLASS CrosswalkCompletionGate: lines 5332-5339
+CLASS CrosswalkCompletionGateEngineV2: lines 5342-5401
+  build: lines 5343-5401
+CLASS CrosswalkReleaseReadiness: lines 5407-5414
+CLASS CrosswalkReleaseReadinessEngine: lines 5417-5443
+  build: lines 5418-5443
+CLASS CrosswalkIntegrityRecord: lines 5449-5455
+CLASS CrosswalkIntegrityEngine: lines 5458-5477
+  build: lines 5459-5477
+CLASS CrosswalkOperationalMetric: lines 5483-5486
+CLASS CrosswalkOperationalMetricsEngine: lines 5489-5544
+  build: lines 5490-5544
+CLASS CrosswalkExecutionContractEngine: lines 5549-5592
+  build: lines 5550-5592
+CLASS CrosswalkGovernanceEvidence: lines 5598-5604
+CLASS CrosswalkGovernanceEvidenceEngine: lines 5607-5642
+  build: lines 5608-5642
+CLASS CrosswalkProductionHandoverEngine: lines 5647-5673
+  build: lines 5648-5673
+CLASS CrosswalkExecutiveReportWriter: lines 5678-5719
+  write: lines 5680-5719
+CLASS CanonicalIdentityRecord: lines 5993-6001
+CLASS CanonicalIdentityUniverseEngine: lines 6004-6052
+  build: lines 6005-6052
+CLASS IdentityAliasRecord: lines 6058-6065
+CLASS IdentityAliasRegistryEngine: lines 6068-6132
+  build: lines 6069-6132
+CLASS IdentitySurvivorshipRule: lines 6138-6145
+CLASS IdentitySurvivorshipRuleEngine: lines 6148-6197
+  build: lines 6159-6197
+CLASS GoldenIdentityRecord: lines 6203-6211
+CLASS GoldenIdentityAssemblyEngine: lines 6214-6249
+  build: lines 6215-6249
+CLASS IdentityDuplicateCluster: lines 6255-6262
+CLASS IdentityDuplicateClusterEngine: lines 6265-6302
+  build: lines 6266-6302
+CLASS IdentityMergeProposal: lines 6308-6315
+CLASS IdentityMergeProposalEngine: lines 6318-6362
+  build: lines 6319-6362
+CLASS IdentityReferentialIntegrityCheck: lines 6368-6375
+CLASS IdentityReferentialIntegrityEngine: lines 6378-6421
+  build: lines 6379-6421
+CLASS IdentityReconciliationRecord: lines 6427-6435
+CLASS IdentityReconciliationEngine: lines 6438-6475
+  build: lines 6439-6475
+CLASS IdentityQualityScore: lines 6481-6490
+CLASS IdentityQualityScorecardEngine: lines 6493-6560
+  build: lines 6494-6560
+CLASS IdentityReleaseGate: lines 6566-6573
+CLASS IdentityReleaseGateEngine: lines 6576-6622
+  build: lines 6577-6622
+CLASS IdentityChangeSetRecord: lines 6628-6635
+CLASS IdentityChangeSetEngine: lines 6638-6701
+  build: lines 6639-6701
+CLASS IdentityRollbackAction: lines 6707-6713
+CLASS IdentityRollbackPlanEngine: lines 6716-6739
+  build: lines 6717-6739
+CLASS IdentityVersionManifest: lines 6745-6753
+CLASS IdentityVersionManifestEngine: lines 6756-6786
+  build: lines 6757-6786
+CLASS IdentityDeltaRecord: lines 6792-6798
+CLASS IdentityDeltaExportEngine: lines 6801-6827
+  build: lines 6802-6827
+CLASS IdentityPublicationPackageEngine: lines 6832-6862
+  build: lines 6833-6862
+CLASS IdentityDataContractEngine: lines 6867-6904
+  build: lines 6868-6904
+CLASS IdentitySchemaValidation: lines 6910-6916
+CLASS IdentitySchemaValidationEngine: lines 6919-6972
+  build: lines 6952-6972
+CLASS IdentityLineageRecord: lines 6978-6985
+CLASS IdentityLineageLedgerEngine: lines 6988-7036
+  build: lines 6989-7036
+CLASS IdentityProvenanceMetric: lines 7042-7047
+CLASS IdentityProvenanceMetricEngine: lines 7050-7071
+  build: lines 7051-7071
+CLASS IdentityAuditException: lines 7077-7084
+CLASS IdentityAuditExceptionEngine: lines 7087-7146
+  build: lines 7088-7146
+CLASS IdentityOperationalRunbookWriter: lines 7151-7201
+  write: lines 7153-7201
+CLASS IdentityExecutiveReportWriter: lines 7206-7248
+  write: lines 7208-7248
+CLASS IdentityFinalIntegrityEngine: lines 7253-7255
+  build: lines 7254-7255
+CLASS IdentityCompletionCertificate: lines 7261-7271
+CLASS IdentityCompletionCertificateEngine: lines 7274-7306
+  build: lines 7275-7306
+CLASS IdentityFreshnessRecord: lines 7643-7648
+CLASS IdentityDriftRecord: lines 7652-7658
+CLASS IdentityServiceLevelRecord: lines 7662-7668
+CLASS IdentityAccessControlRecord: lines 7672-7677
+CLASS IdentityRetentionRecord: lines 7681-7686
+CLASS IdentityPrivacyRecord: lines 7690-7695
+CLASS IdentitySecurityControlRecord: lines 7699-7704
+CLASS IdentityAnomalyRecord: lines 7708-7714
+CLASS IdentityIncidentRecord: lines 7718-7724
+CLASS IdentityObservabilityMetric: lines 7728-7733
+CLASS IdentitySnapshotRecord: lines 7737-7742
+CLASS IdentityReplayRecord: lines 7746-7751
+CLASS IdentityCapacityRecord: lines 7755-7761
+CLASS IdentityPerformanceBenchmark: lines 7765-7770
+CLASS IdentityDependencyHealth: lines 7774-7779
+CLASS IdentityDeploymentAction: lines 7783-7789
+CLASS IdentityMigrationRecord: lines 7793-7799
+CLASS IdentityAcceptanceRecord: lines 7803-7808
+CLASS IdentitySignoffRecord: lines 7812-7817
+CLASS IdentityArtifactRegistryRecord: lines 7821-7828
+CLASS IdentityCatalogueRecord: lines 7832-7838
+CLASS IdentitySystemManifest: lines 7842-7850
+CLASS IdentityStep100Certificate: lines 7854-7863
+CLASS IdentityFreshnessEngine: lines 7866-7882
+  build: lines 7867-7882
+CLASS IdentityDriftEngine: lines 7885-7904
+  build: lines 7886-7904
+CLASS IdentityServiceLevelEngine: lines 7907-7918
+  build: lines 7908-7918
+CLASS IdentityAccessControlEngine: lines 7921-7931
+  build: lines 7922-7931
+CLASS IdentityRetentionEngine: lines 7934-7941
+  build: lines 7935-7941
+CLASS IdentityPrivacyEngine: lines 7944-7960
+  build: lines 7945-7960
+CLASS IdentitySecurityControlEngine: lines 7963-7972
+  build: lines 7964-7972
+CLASS IdentityAnomalyEngine: lines 7975-7989
+  build: lines 7976-7989
+CLASS IdentityIncidentEngine: lines 7992-8001
+  build: lines 7993-8001
+CLASS IdentityObservabilityEngine: lines 8004-8012
+  build: lines 8005-8012
+CLASS IdentitySnapshotEngine: lines 8015-8024
+  build: lines 8016-8024
+CLASS IdentityReplayEngine: lines 8027-8032
+  build: lines 8028-8032
+CLASS IdentityCapacityEngine: lines 8035-8045
+  build: lines 8036-8045
+CLASS IdentityPerformanceBenchmarkEngine: lines 8048-8052
+  build: lines 8049-8052
+CLASS IdentityDependencyHealthEngine: lines 8055-8061
+  build: lines 8056-8061
+CLASS IdentityDeploymentPlanEngine: lines 8064-8072
+  build: lines 8065-8072
+CLASS IdentityMigrationEngine: lines 8075-8080
+  build: lines 8076-8080
+CLASS IdentityAcceptanceEngine: lines 8083-8093
+  build: lines 8084-8093
+CLASS IdentitySignoffEngine: lines 8096-8103
+  build: lines 8097-8103
+CLASS IdentityArtifactRegistryEngine: lines 8106-8116
+  build: lines 8107-8116
+CLASS IdentityCatalogueEngine: lines 8119-8128
+  build: lines 8120-8128
+CLASS IdentitySystemManifestEngine: lines 8131-8137
+  build: lines 8132-8137
+CLASS IdentityStep100CertificateEngine: lines 8140-8149
+  build: lines 8141-8149
+CLASS IdentityStep100ReportWriter: lines 8152-8165
+  write: lines 8154-8165
+
+========================================================================
+INSPECTION SUMMARY
+========================================================================
+Target functions found: _profile_json, build, main, profile_records, run
+Required targets missing: NONE
+Status: PASS

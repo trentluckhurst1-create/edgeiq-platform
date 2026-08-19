@@ -1,0 +1,43 @@
+{
+  "step": 3,
+  "status": "PASS",
+  "generated_utc": "2026-07-25T21:51:35Z",
+  "total_warehouse_rows": 879784,
+  "total_races": 71025,
+  "total_timed_races": 70311,
+  "benchmark_eligible_race_rows": 66943,
+  "distinct_benchmark_groups": 15392,
+  "groups_with_1_observation": 7962,
+  "groups_with_2_observations": 2605,
+  "groups_with_3_observations": 1239,
+  "groups_below_governed_minimum": 14798,
+  "groups_meeting_governed_minimum": 594,
+  "maximum_observations_in_group": 232,
+  "median_observations_per_group": 1.0,
+  "primary_bottleneck": "SOURCE_COVERAGE",
+  "progressive_grouping": [
+    {
+      "grouping": "track_distance",
+      "groups": 1878,
+      "groups_meeting_minimum": 490,
+      "median_observations": 5.0,
+      "max_observations": 1066
+    },
+    {
+      "grouping": "track_distance_condition",
+      "groups": 3690,
+      "groups_meeting_minimum": 655,
+      "median_observations": 4.0,
+      "max_observations": 694
+    },
+    {
+      "grouping": "track_distance_condition_class",
+      "groups": 15392,
+      "groups_meeting_minimum": 594,
+      "median_observations": 1.0,
+      "max_observations": 232
+    }
+  ],
+  "threshold_changed": "NO",
+  "elapsed_seconds": 11.184
+}

@@ -1,0 +1,169 @@
+{
+  "audit_name": "edgeiq_benchmark_accumulation_fact_v1",
+  "audit_version": "1.0.0",
+  "audited_at_utc": "2026-07-21T21:01:00Z",
+  "checks": {
+    "current_expected_population": {
+      "detail": {
+        "benchmark_groups": 12,
+        "eligible_observations": 24,
+        "insufficient_sample_groups": 12,
+        "membership_rows": 24,
+        "ready_groups": 0
+      },
+      "status": "PASS"
+    },
+    "deterministic_identifiers_and_hashes": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "eligible_population_accounted_for": {
+      "detail": {
+        "eligible_count": 24,
+        "membership_count": 24,
+        "missing": [],
+        "unexpected": []
+      },
+      "status": "PASS"
+    },
+    "group_contract_fields": {
+      "detail": {
+        "actual": [
+          "benchmark_group_id",
+          "benchmark_group_basis",
+          "track_name",
+          "official_distance_metres",
+          "course_name",
+          "course_name_status",
+          "surface",
+          "surface_status",
+          "track_condition",
+          "track_condition_status",
+          "eligible_observation_count",
+          "minimum_required_sample",
+          "benchmark_ready",
+          "accumulation_status",
+          "group_dimension_sha256",
+          "membership_sha256",
+          "source_eligibility_rule_version",
+          "source_observation_canonical_version",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ],
+        "expected": [
+          "benchmark_group_id",
+          "benchmark_group_basis",
+          "track_name",
+          "official_distance_metres",
+          "course_name",
+          "course_name_status",
+          "surface",
+          "surface_status",
+          "track_condition",
+          "track_condition_status",
+          "eligible_observation_count",
+          "minimum_required_sample",
+          "benchmark_ready",
+          "accumulation_status",
+          "group_dimension_sha256",
+          "membership_sha256",
+          "source_eligibility_rule_version",
+          "source_observation_canonical_version",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ]
+      },
+      "status": "PASS"
+    },
+    "membership_contract_fields": {
+      "detail": {
+        "actual": [
+          "benchmark_group_id",
+          "benchmark_observation_id",
+          "membership_ordinal",
+          "track_name",
+          "official_distance_metres",
+          "membership_sha256",
+          "source_benchmark_use_class",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ],
+        "expected": [
+          "benchmark_group_id",
+          "benchmark_observation_id",
+          "membership_ordinal",
+          "track_name",
+          "official_distance_metres",
+          "membership_sha256",
+          "source_benchmark_use_class",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ]
+      },
+      "status": "PASS"
+    },
+    "membership_exactly_once": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "membership_integrity": {
+      "detail": {
+        "errors": [],
+        "unknown_groups": []
+      },
+      "status": "PASS"
+    },
+    "no_ineligible_memberships": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "no_statistical_fields": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "readiness_governance": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "required_files_exist": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "source_groups_equal_output_groups": {
+      "detail": {
+        "missing": [],
+        "output_group_count": 12,
+        "source_group_count": 12,
+        "unexpected": []
+      },
+      "status": "PASS"
+    },
+    "unavailable_dimension_governance": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "unique_benchmark_group_ids": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "unique_group_dimensions": {
+      "detail": [],
+      "status": "PASS"
+    }
+  },
+  "counts": {
+    "benchmark_group_rows": 12,
+    "eligibility_rows": 39,
+    "insufficient_sample_groups": 12,
+    "membership_rows": 24,
+    "observation_rows": 39,
+    "ready_groups": 0,
+    "standard_time_eligible_rows": 24
+  },
+  "failed_checks": [],
+  "status": "PASS"
+}

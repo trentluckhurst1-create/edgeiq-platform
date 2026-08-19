@@ -1,0 +1,38 @@
+{
+  "checks": [
+    {
+      "check_id": "target_file_availability",
+      "detail": "existing=9; missing=0",
+      "status": "PASS"
+    },
+    {
+      "check_id": "target_file_readability",
+      "detail": "inspection_errors=0",
+      "status": "PASS"
+    },
+    {
+      "check_id": "runner_identity_key_detection",
+      "detail": "exact_key_audits=7",
+      "status": "PASS"
+    },
+    {
+      "check_id": "pairwise_equivalence_completed",
+      "detail": "pairwise_comparisons=36",
+      "status": "PASS"
+    },
+    {
+      "check_id": "active_lineage_reference_detection",
+      "detail": "active_python_references=98",
+      "status": "PASS"
+    },
+    {
+      "check_id": "exact_duplicate_detection",
+      "detail": "byte_identical_pairs=1",
+      "status": "PASS"
+    }
+  ],
+  "generated_utc": "2026-07-27T03:17:36+00:00",
+  "overall_status": "PASS",
+  "program_id": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE1A_2_WAREHOUSE_LINEAGE_EQUIVALENCE_V1",
+  "program_version": "1.0.0"
+}

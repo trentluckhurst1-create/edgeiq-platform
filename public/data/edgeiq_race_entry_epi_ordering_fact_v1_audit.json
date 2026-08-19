@@ -1,0 +1,126 @@
+{
+  "audit_name": "edgeiq_race_entry_epi_ordering_fact_v1",
+  "audit_version": "1.0.0",
+  "audited_at_utc": "2026-07-23T03:01:42Z",
+  "checks": {
+    "contract_fields_exact": {
+      "detail": {
+        "actual": [
+          "race_entry_epi_ordering_id",
+          "race_entry_id",
+          "race_entry_epi_relative_context_id",
+          "race_id",
+          "race_date",
+          "runner_epi_value",
+          "eligible_epi_population_count",
+          "epi_display_order_position",
+          "epi_competition_rank",
+          "epi_dense_rank",
+          "epi_tie_group_size",
+          "epi_tie_group_position",
+          "epi_tie_status",
+          "race_entry_epi_relative_context_evidence_sha256",
+          "epi_ordering_publication_decision",
+          "epi_ordering_reconciliation_decision",
+          "epi_ordering_status",
+          "race_entry_epi_ordering_evidence_sha256",
+          "source_lineage",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ],
+        "expected": [
+          "race_entry_epi_ordering_id",
+          "race_entry_id",
+          "race_entry_epi_relative_context_id",
+          "race_id",
+          "race_date",
+          "runner_epi_value",
+          "eligible_epi_population_count",
+          "epi_display_order_position",
+          "epi_competition_rank",
+          "epi_dense_rank",
+          "epi_tie_group_size",
+          "epi_tie_group_position",
+          "epi_tie_status",
+          "race_entry_epi_relative_context_evidence_sha256",
+          "epi_ordering_publication_decision",
+          "epi_ordering_reconciliation_decision",
+          "epi_ordering_status",
+          "race_entry_epi_ordering_evidence_sha256",
+          "source_lineage",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ]
+      },
+      "status": "PASS"
+    },
+    "descending_epi_ordering_reconciled": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "deterministic_ordering_evidence": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "deterministic_ordering_identity": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "explicit_tie_handling_reconciled": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "natural_keys_unique": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "no_forbidden_fields": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "ordering_governance_exact": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "ordering_lineage_complete": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "ordering_sources_reconciled": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "primary_keys_unique": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "published_population_exact": {
+      "detail": {
+        "fact_rows": 0,
+        "source_rows": 0
+      },
+      "status": "PASS"
+    },
+    "race_population_keys_exact": {
+      "detail": {
+        "fact_races": 0,
+        "source_races": 0
+      },
+      "status": "PASS"
+    },
+    "required_files_exist": {
+      "detail": [],
+      "status": "PASS"
+    }
+  },
+  "counts": {
+    "ordering_rows": 0,
+    "relative_context_rows": 0,
+    "source_race_count": 0,
+    "tied_ordering_rows": 0
+  },
+  "failed_checks": [],
+  "status": "PASS"
+}

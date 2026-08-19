@@ -1,0 +1,24 @@
+{
+  "generated_utc": "2026-07-25T21:06:05.888686+00:00",
+  "root": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM",
+  "branch": "feature/component-refactor",
+  "last_commits": "32b8beb audit: assess Racing.com identity enrichment potential v1\na85b67e feat: classify historical observation identity failures v1\nf7d665c fix: rebuild historical observation warehouse with expanded identities v2\nbc5e31d fix: expand governed historical horse identities v2\n2a0592a feat: build canonical historical run observation warehouse v2",
+  "git_status_line_count": 825,
+  "relevant_artifact_count": 57,
+  "classification_counts": {
+    "CANONICAL": 1,
+    "RUN_LOG": 2,
+    "SUPERSEDED": 27,
+    "FORENSIC_TOOL": 5,
+    "VALID_OUTPUT": 19,
+    "FAILED_RUN": 2,
+    "PATCH_GENERATOR": 1
+  },
+  "newest_profiler": "scripts/build_edgeiq_identity_repository_profiler_final_v1.py",
+  "canonical_exists": true,
+  "canonical_compiles": true,
+  "canonical_compile_message": "ok",
+  "step108_artifacts": 0,
+  "huge_crosswalks_over_50mb": 0,
+  "temporary_artifacts": 0
+}

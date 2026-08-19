@@ -1,0 +1,71 @@
+{
+  "reference_repository": "https://github.com/Josh9456/Racing-Form-",
+  "files_inspected": [
+    "ladbrokes_racing_scraper.py",
+    "run_scraper.py",
+    "README.md",
+    "requirements.txt",
+    ".github/workflows/All_form_updater.yml"
+  ],
+  "reference_endpoint_usage": {
+    "base_url": "https://api-affiliates.ladbrokes.com.au/affiliates/v1/racing",
+    "meetings_endpoint": "/meetings",
+    "event_endpoint": "/events/{race_id}",
+    "additional_reference_endpoints": [
+      "/events/{race_id}/form",
+      "/runners/{runner_id}"
+    ]
+  },
+  "reference_auth_contract": {
+    "headers": [
+      "From",
+      "X-Partner"
+    ],
+    "reference_runtime_env": [
+      "SCRAPER_EMAIL",
+      "SCRAPER_PARTNER"
+    ],
+    "edgeiq_runtime_env": [
+      "EDGEIQ_LADBROKES_FROM",
+      "EDGEIQ_LADBROKES_X_PARTNER",
+      "EDGEIQ_LADBROKES_EMAIL",
+      "EDGEIQ_LADBROKES_PARTNER_NAME"
+    ],
+    "api_key_required_by_verified_docs": false,
+    "edgeiq_runtime_env_preferred": [
+      "EDGEIQ_LADBROKES_FROM",
+      "EDGEIQ_LADBROKES_X_PARTNER"
+    ],
+    "edgeiq_runtime_env_legacy_fallback": [
+      "EDGEIQ_LADBROKES_EMAIL",
+      "EDGEIQ_LADBROKES_PARTNER_NAME"
+    ]
+  },
+  "official_docs_confirmation": {
+    "docs_url": "https://nedscode.github.io/affiliate-feeds/",
+    "base_url_in_intro": "https://api.ladbrokes.com.au/affiliates/v1",
+    "racing_examples_base_url": "https://api-affiliates.ladbrokes.com.au/affiliates/v1/racing",
+    "supported_racing_endpoints": [
+      "/racing/meetings",
+      "/racing/meetings/{MEETING_ID}",
+      "/racing/events/{EVENT_ID}"
+    ],
+    "sports_api_available_via_affiliates": false,
+    "meetings_params": [
+      "enc",
+      "id",
+      "date_from",
+      "date_to",
+      "category",
+      "country",
+      "limit",
+      "offset"
+    ],
+    "event_params": [
+      "enc",
+      "id"
+    ]
+  },
+  "edgeiq_decision": "BUILD_GOVERNED_ADAPTER_DO_NOT_COPY_REFERENCE_SUBSYSTEM",
+  "folder_per_race_json_adopted_as_canonical": false
+}

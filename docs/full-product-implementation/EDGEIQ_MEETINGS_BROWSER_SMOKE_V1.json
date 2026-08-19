@@ -1,0 +1,22 @@
+{
+  "startedAt": "2026-07-18T15:18:37.490Z",
+  "routeChecks": [
+    { "check": "body_has_meetings", "pass": true },
+    { "check": "has_today", "pass": true },
+    { "check": "has_tomorrow", "pass": true },
+    { "check": "has_day_plus_2", "pass": true },
+    { "check": "has_runners_column", "pass": true },
+    { "check": "has_scratchings_column", "pass": true },
+    { "check": "has_update_column", "pass": true },
+    { "check": "no_confidence_copy", "pass": true },
+    { "check": "no_edgeiq_notes_copy", "pass": true },
+    { "check": "no_source_station_builder_feed_copy", "pass": true },
+    { "check": "white_body_background", "pass": true, "detail": "rgb(255, 255, 255)" },
+    { "check": "day_switch_TOMORROW", "pass": true },
+    { "check": "day_switch_DAY +2", "pass": true },
+    { "check": "day_switch_TODAY", "pass": true }
+  ],
+  "screenshot": "SCREENSHOT_BLOCKED: tab.playwright.screenshot is not a function",
+  "errors": [],
+  "completedAt": "2026-07-18T15:18:42.128Z"
+}

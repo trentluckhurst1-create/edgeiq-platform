@@ -1,0 +1,10 @@
+{
+  "decision": "RACINGCOM_PRODUCTION_ORCHESTRATION_BLOCKED_BY_CONFIG",
+  "api_key_status": "MISSING",
+  "production_changed": "NO",
+  "production_rows": 138,
+  "production_races": 13,
+  "candidate_rows": 138,
+  "candidate_races": 13,
+  "candidate_graphql_rows": 58
+}

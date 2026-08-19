@@ -1,0 +1,1014 @@
+{
+  "baseUrl": "http://127.0.0.1:5177/",
+  "generatedAt": "2026-07-18T21:21:31.057Z",
+  "evidence": [
+    {
+      "name": "HOME",
+      "status": "CAPTURED",
+      "route": "http://127.0.0.1:5177/",
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-conformance\\home.png",
+      "viewport": {
+        "width": 1600,
+        "height": 1000
+      },
+      "headings": [
+        "EDGEiQ",
+        "EDGEiQ",
+        "Race intelligence workspace",
+        "Light workspace locked",
+        "1",
+        "1",
+        "21",
+        "Unavailable",
+        "Current product flow",
+        "Browser-safe product feeds"
+      ],
+      "tableHeaders": [],
+      "notes": []
+    },
+    {
+      "name": "MEETINGS",
+      "status": "CAPTURED",
+      "route": "http://127.0.0.1:5177/",
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-conformance\\meetings.png",
+      "viewport": {
+        "width": 1600,
+        "height": 1000
+      },
+      "headings": [
+        "EDGEiQ",
+        "Meetings",
+        "Meeting Centre",
+        "TODAY",
+        "TOMORROW",
+        "DAY +2",
+        "Friday 17 July 2026",
+        "Wangaratta",
+        "Wangaratta",
+        "0 races scheduled"
+      ],
+      "tableHeaders": [
+        "SELECT",
+        "MEETING",
+        "STATE",
+        "RAIL",
+        "TRACK",
+        "WEATHER",
+        "RACES",
+        "DECLARED",
+        "SCRATCHINGS"
+      ],
+      "notes": []
+    },
+    {
+      "name": "MEETING DETAIL",
+      "status": "CAPTURED",
+      "route": "http://127.0.0.1:5177/",
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-conformance\\meeting-detail.png",
+      "viewport": {
+        "width": 1600,
+        "height": 1000
+      },
+      "headings": [
+        "EDGEiQ",
+        "Flemington",
+        "Flemington",
+        "VIC",
+        "9",
+        "109",
+        "0",
+        "12:05pm",
+        "4:52pm",
+        "READY",
+        "2026-07-17T00:24:00+00:00",
+        "Soft 7",
+        "Not supplied",
+        "Weather unavailable",
+        "Weather unavailable",
+        "Weather unavailable",
+        "Not supplied",
+        "Not supplied",
+        "Meeting race list",
+        "TAB Byerley Handicap",
+        "TAB We're On",
+        "RMBL Investments Rising Stars Final",
+        "ATA Trainers’ Trust Handicap",
+        "VRC Member Erica McKissack Trophy",
+        "Deane Lester Flemington Cup 1849",
+        "VRC Member Brendan Sobozynski Plate",
+        "VRC Member Richard John Rowlands Plate",
+        "VRC Member Andrew Bostock Trophy",
+        "R1 - TAB Byerley Handicap"
+      ],
+      "tableHeaders": [
+        "RACE",
+        "TIME",
+        "RACE NAME",
+        "DIST",
+        "CLASS",
+        "FIELD",
+        "SCR",
+        "STATUS"
+      ],
+      "notes": [
+        "Meeting/race selection attempted through visible controls."
+      ]
+    },
+    {
+      "name": "SCRATCHINGS",
+      "status": "CAPTURED",
+      "route": "http://127.0.0.1:5177/",
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-conformance\\scratchings.png",
+      "viewport": {
+        "width": 1600,
+        "height": 1000
+      },
+      "headings": [
+        "EDGEiQ",
+        "Flemington",
+        "Flemington",
+        "VIC",
+        "9",
+        "109",
+        "0",
+        "12:05pm",
+        "4:52pm",
+        "READY",
+        "2026-07-17T00:24:00+00:00",
+        "Soft 7",
+        "Not supplied",
+        "Weather unavailable",
+        "Weather unavailable",
+        "Weather unavailable",
+        "Not supplied",
+        "Not supplied",
+        "Meeting race list",
+        "TAB Byerley Handicap",
+        "TAB We're On",
+        "RMBL Investments Rising Stars Final",
+        "ATA Trainers’ Trust Handicap",
+        "VRC Member Erica McKissack Trophy",
+        "Deane Lester Flemington Cup 1849",
+        "VRC Member Brendan Sobozynski Plate",
+        "VRC Member Richard John Rowlands Plate",
+        "VRC Member Andrew Bostock Trophy",
+        "R1 - TAB Byerley Handicap"
+      ],
+      "tableHeaders": [
+        "RACE",
+        "TIME",
+        "RACE NAME",
+        "DIST",
+        "CLASS",
+        "FIELD",
+        "SCR",
+        "STATUS"
+      ],
+      "notes": [
+        "Tab opened."
+      ]
+    },
+    {
+      "name": "GEAR CHANGES",
+      "status": "CAPTURED",
+      "route": "http://127.0.0.1:5177/",
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-conformance\\gear-changes.png",
+      "viewport": {
+        "width": 1600,
+        "height": 1000
+      },
+      "headings": [
+        "EDGEiQ",
+        "Flemington",
+        "Flemington",
+        "VIC",
+        "9",
+        "109",
+        "0",
+        "12:05pm",
+        "4:52pm",
+        "READY",
+        "2026-07-17T00:24:00+00:00",
+        "Soft 7",
+        "Not supplied",
+        "Weather unavailable",
+        "Weather unavailable",
+        "Weather unavailable",
+        "Not supplied",
+        "Not supplied",
+        "Official gear changes and equipment updates",
+        "Unavailable",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "Unavailable",
+        "No official gear changes have been received for this meeting.",
+        "Select a gear change."
+      ],
+      "tableHeaders": [],
+      "notes": [
+        "Tab opened."
+      ]
+    },
+    {
+      "name": "TRACK",
+      "status": "CAPTURED",
+      "route": "http://127.0.0.1:5177/",
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-conformance\\track.png",
+      "viewport": {
+        "width": 1600,
+        "height": 1000
+      },
+      "headings": [
+        "EDGEiQ",
+        "Flemington",
+        "Flemington",
+        "VIC",
+        "9",
+        "109",
+        "0",
+        "12:05pm",
+        "4:52pm",
+        "READY",
+        "2026-07-17T00:24:00+00:00",
+        "Soft 7",
+        "Not supplied",
+        "Weather unavailable",
+        "Weather unavailable",
+        "Weather unavailable",
+        "Not supplied",
+        "Not supplied",
+        "Meeting race list",
+        "TAB Byerley Handicap",
+        "TAB We're On",
+        "RMBL Investments Rising Stars Final",
+        "ATA Trainers’ Trust Handicap",
+        "VRC Member Erica McKissack Trophy",
+        "Deane Lester Flemington Cup 1849",
+        "VRC Member Brendan Sobozynski Plate",
+        "VRC Member Richard John Rowlands Plate",
+        "VRC Member Andrew Bostock Trophy",
+        "R1 - TAB Byerley Handicap"
+      ],
+      "tableHeaders": [
+        "RACE",
+        "TIME",
+        "RACE NAME",
+        "DIST",
+        "CLASS",
+        "FIELD",
+        "SCR",
+        "STATUS"
+      ],
+      "notes": [
+        "Tab opened."
+      ]
+    },
+    {
+      "name": "WEATHER",
+      "status": "CAPTURED",
+      "route": "http://127.0.0.1:5177/",
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-conformance\\weather.png",
+      "viewport": {
+        "width": 1600,
+        "height": 1000
+      },
+      "headings": [
+        "EDGEiQ",
+        "Flemington",
+        "Flemington",
+        "VIC",
+        "9",
+        "109",
+        "0",
+        "12:05pm",
+        "4:52pm",
+        "READY",
+        "2026-07-17T00:24:00+00:00",
+        "Soft 7",
+        "Not supplied",
+        "Weather unavailable",
+        "Weather unavailable",
+        "Weather unavailable",
+        "Not supplied",
+        "Not supplied",
+        "Meeting race list",
+        "TAB Byerley Handicap",
+        "TAB We're On",
+        "RMBL Investments Rising Stars Final",
+        "ATA Trainers’ Trust Handicap",
+        "VRC Member Erica McKissack Trophy",
+        "Deane Lester Flemington Cup 1849",
+        "VRC Member Brendan Sobozynski Plate",
+        "VRC Member Richard John Rowlands Plate",
+        "VRC Member Andrew Bostock Trophy",
+        "R1 - TAB Byerley Handicap"
+      ],
+      "tableHeaders": [
+        "RACE",
+        "TIME",
+        "RACE NAME",
+        "DIST",
+        "CLASS",
+        "FIELD",
+        "SCR",
+        "STATUS"
+      ],
+      "notes": [
+        "Tab opened."
+      ]
+    },
+    {
+      "name": "RACE",
+      "status": "CAPTURED",
+      "route": "http://127.0.0.1:5177/",
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-conformance\\race.png",
+      "viewport": {
+        "width": 1600,
+        "height": 1000
+      },
+      "headings": [
+        "EDGEiQ",
+        "Flemington R1",
+        "R1",
+        "Flemington R1",
+        "Unavailable",
+        "Unavailable",
+        "Ko Phangan",
+        "Unavailable",
+        "LEAD",
+        "ON PACE",
+        "MIDFIELD",
+        "BACK",
+        "Ko Phangan",
+        "Notified",
+        "Achy Breaky Heart",
+        "Ko Phangan",
+        "Notified",
+        "Achy Breaky Heart",
+        "Delahra",
+        "Stunning Kitty"
+      ],
+      "tableHeaders": [
+        "NO",
+        "SILK",
+        "RUNNER",
+        "BAR",
+        "WGT",
+        "JOCKEY",
+        "TRAINER",
+        "EPI SPD",
+        "EDGEiQ",
+        "MARKET",
+        "STATUS"
+      ],
+      "notes": [
+        "Workspace opened."
+      ]
+    },
+    {
+      "name": "FIELD",
+      "status": "CAPTURED",
+      "route": "http://127.0.0.1:5177/",
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-conformance\\field.png",
+      "viewport": {
+        "width": 1600,
+        "height": 1000
+      },
+      "headings": [
+        "EDGEiQ",
+        "Flemington R1",
+        "R1",
+        "Race field",
+        "Ko Phangan",
+        "Notified",
+        "Achy Breaky Heart",
+        "Delahra",
+        "Stunning Kitty"
+      ],
+      "tableHeaders": [
+        "NO",
+        "SILK",
+        "RUNNER",
+        "BAR",
+        "WGT",
+        "JOCKEY",
+        "TRAINER",
+        "EDGEiQ",
+        "MARKET",
+        "STATUS"
+      ],
+      "notes": [
+        "Workspace opened."
+      ]
+    },
+    {
+      "name": "FIELD expanded",
+      "status": "CAPTURED",
+      "route": "http://127.0.0.1:5177/",
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-conformance\\field-expanded.png",
+      "viewport": {
+        "width": 1600,
+        "height": 1000
+      },
+      "headings": [
+        "EDGEiQ",
+        "Flemington R1",
+        "R1",
+        "Race field",
+        "Ko Phangan",
+        "Notified",
+        "Achy Breaky Heart",
+        "Delahra",
+        "Stunning Kitty"
+      ],
+      "tableHeaders": [
+        "NO",
+        "SILK",
+        "RUNNER",
+        "BAR",
+        "WGT",
+        "JOCKEY",
+        "TRAINER",
+        "EDGEiQ",
+        "MARKET",
+        "STATUS"
+      ],
+      "notes": [
+        "Attempted first visible runner expansion/open."
+      ]
+    },
+    {
+      "name": "FORM GUIDE",
+      "status": "CAPTURED",
+      "route": "http://127.0.0.1:5177/",
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-conformance\\form-guide.png",
+      "viewport": {
+        "width": 1600,
+        "height": 1000
+      },
+      "headings": [
+        "EDGEiQ",
+        "Flemington R1",
+        "R1",
+        "Flemington - Saturday 18 July 2026 - Race 1",
+        "TAB Byerley Handicap",
+        "Ko Phangan",
+        "1Ko Phangan",
+        "Career evidence for today's race",
+        "Career & Conditions",
+        "Connections & Class",
+        "Preparation",
+        "Today's Match",
+        "Last 8 Starts",
+        "Key Insights",
+        "Notified",
+        "Achy Breaky Heart"
+      ],
+      "tableHeaders": [
+        "NO",
+        "SILKS",
+        "LAST 5",
+        "HORSE",
+        "TRAINER",
+        "JOCKEY",
+        "WT",
+        "BAR",
+        "DAYS",
+        "EPI",
+        "EARLY SPEED",
+        "LATE SPEED",
+        "SUITABILITY",
+        "FORM MOMENTUM",
+        "MARKET",
+        "EDGEiQ PRICE"
+      ],
+      "notes": [
+        "Workspace opened."
+      ]
+    },
+    {
+      "name": "FORM GUIDE expanded",
+      "status": "CAPTURED",
+      "route": "http://127.0.0.1:5177/",
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-conformance\\form-guide-expanded.png",
+      "viewport": {
+        "width": 1600,
+        "height": 1000
+      },
+      "headings": [
+        "EDGEiQ",
+        "Flemington R1",
+        "R1",
+        "Flemington - Saturday 18 July 2026 - Race 1",
+        "TAB Byerley Handicap",
+        "Ko Phangan",
+        "1Ko Phangan",
+        "Career evidence for today's race",
+        "Career & Conditions",
+        "Connections & Class",
+        "Preparation",
+        "Today's Match",
+        "Last 8 Starts",
+        "Key Insights",
+        "Notified",
+        "Achy Breaky Heart"
+      ],
+      "tableHeaders": [
+        "NO",
+        "SILKS",
+        "LAST 5",
+        "HORSE",
+        "TRAINER",
+        "JOCKEY",
+        "WT",
+        "BAR",
+        "DAYS",
+        "EPI",
+        "EARLY SPEED",
+        "LATE SPEED",
+        "SUITABILITY",
+        "FORM MOMENTUM",
+        "MARKET",
+        "EDGEiQ PRICE"
+      ],
+      "notes": [
+        "Attempted first visible runner expansion/open."
+      ]
+    },
+    {
+      "name": "PERFORMANCE",
+      "status": "CAPTURED",
+      "route": "http://127.0.0.1:5177/",
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-conformance\\performance.png",
+      "viewport": {
+        "width": 1600,
+        "height": 1000
+      },
+      "headings": [
+        "EDGEiQ",
+        "Flemington R1",
+        "R1",
+        "Flemington R1",
+        "Flemington R1",
+        "Ko Phangan",
+        "Notified",
+        "Achy Breaky Heart",
+        "Delahra",
+        "Stunning Kitty"
+      ],
+      "tableHeaders": [
+        "No",
+        "Runner",
+        "Current",
+        "Peak",
+        "Average",
+        "Runs",
+        "L5",
+        "L4",
+        "L3",
+        "L2",
+        "L1"
+      ],
+      "notes": [
+        "Workspace opened."
+      ]
+    },
+    {
+      "name": "EPI",
+      "status": "CAPTURED",
+      "route": "http://127.0.0.1:5177/",
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-conformance\\epi.png",
+      "viewport": {
+        "width": 1600,
+        "height": 1000
+      },
+      "headings": [
+        "EDGEiQ",
+        "Flemington R1",
+        "R1",
+        "Flemington R1",
+        "Ko Phangan"
+      ],
+      "tableHeaders": [
+        "Rank",
+        "No",
+        "Runner",
+        "Jockey",
+        "Trainer",
+        "Current EPI",
+        "Field Diff",
+        "Peak Last 10",
+        "Avg Last 10",
+        "Trend",
+        "Valid Starts",
+        "Evidence",
+        "Status"
+      ],
+      "notes": [
+        "Workspace opened."
+      ]
+    },
+    {
+      "name": "MAP",
+      "status": "CAPTURED",
+      "route": "http://127.0.0.1:5177/",
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-conformance\\map.png",
+      "viewport": {
+        "width": 1600,
+        "height": 1000
+      },
+      "headings": [
+        "EDGEiQ",
+        "Flemington R1",
+        "R1",
+        "How will this race be run?",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "Ko Phangan",
+        "Notified",
+        "Achy Breaky Heart",
+        "Delahra",
+        "Stunning Kitty"
+      ],
+      "tableHeaders": [
+        "No",
+        "Silks",
+        "Runner",
+        "Barrier",
+        "Jockey",
+        "Trainer",
+        "Weight",
+        "EPI SPD"
+      ],
+      "notes": [
+        "Workspace opened."
+      ]
+    },
+    {
+      "name": "MARKET",
+      "status": "CAPTURED",
+      "route": "http://127.0.0.1:5177/",
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-conformance\\market.png",
+      "viewport": {
+        "width": 1600,
+        "height": 1000
+      },
+      "headings": [
+        "EDGEiQ",
+        "Flemington R1",
+        "R1",
+        "Market and EDGEiQ price context",
+        "Ko Phangan",
+        "Notified",
+        "Achy Breaky Heart",
+        "Delahra",
+        "Stunning Kitty"
+      ],
+      "tableHeaders": [
+        "NO",
+        "RUNNER",
+        "EDGEIQ",
+        "MARKET",
+        "FAIR",
+        "EDGE",
+        "FLUC 60s %",
+        "STATUS"
+      ],
+      "notes": [
+        "Workspace opened."
+      ]
+    },
+    {
+      "name": "OVERVIEW",
+      "status": "CAPTURED",
+      "route": "http://127.0.0.1:5177/",
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-conformance\\overview.png",
+      "viewport": {
+        "width": 1600,
+        "height": 1000
+      },
+      "headings": [
+        "EDGEiQ",
+        "Flemington R1",
+        "R1",
+        "Flemington R1",
+        "Flemington | R1 | 1800m | Open | Soft",
+        "Map feed rows 5; race-shape summary pending",
+        "Pending",
+        "Runners 5; Map rows 5; Market rows 5",
+        "Awaiting EPI figures",
+        "Awaiting map evidence",
+        "3 populated reads",
+        "Ko Phangan",
+        "Notified",
+        "Achy Breaky Heart",
+        "Delahra",
+        "Stunning Kitty",
+        "Ko Phangan",
+        "Notified",
+        "Achy Breaky Heart",
+        "Delahra",
+        "Stunning Kitty"
+      ],
+      "tableHeaders": [
+        "No",
+        "Runner",
+        "EPI",
+        "Trend",
+        "No",
+        "Runner",
+        "EPI",
+        "Early Speed",
+        "Map",
+        "Status"
+      ],
+      "notes": [
+        "Workspace opened."
+      ]
+    },
+    {
+      "name": "INSIGHTS",
+      "status": "CAPTURED",
+      "route": "http://127.0.0.1:5177/",
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-conformance\\insights.png",
+      "viewport": {
+        "width": 1600,
+        "height": 1000
+      },
+      "headings": [
+        "EDGEiQ",
+        "Flemington R1",
+        "R1",
+        "Flemington R1",
+        "Not supplied",
+        "Not supplied",
+        "Not supplied",
+        "Not supplied",
+        "Ko Phangan",
+        "Notified",
+        "Achy Breaky Heart",
+        "Delahra",
+        "Stunning Kitty"
+      ],
+      "tableHeaders": [
+        "No",
+        "Runner",
+        "Insight",
+        "Edge",
+        "Evidence",
+        "Status"
+      ],
+      "notes": [
+        "Workspace opened."
+      ]
+    },
+    {
+      "name": "RESULTS",
+      "status": "CAPTURED",
+      "route": "http://127.0.0.1:5177/",
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-conformance\\results.png",
+      "viewport": {
+        "width": 1600,
+        "height": 1000
+      },
+      "headings": [
+        "EDGEiQ",
+        "Global Results",
+        "Meeting Results",
+        "0",
+        "0",
+        "Results"
+      ],
+      "tableHeaders": [
+        "Race",
+        "Time",
+        "Winner",
+        "Jockey",
+        "Trainer",
+        "SP",
+        "Margin",
+        "Track",
+        "Stewards",
+        "Details"
+      ],
+      "notes": []
+    },
+    {
+      "name": "RESULTS expanded",
+      "status": "CAPTURED",
+      "route": "http://127.0.0.1:5177/",
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-conformance\\results-expanded.png",
+      "viewport": {
+        "width": 1600,
+        "height": 1000
+      },
+      "headings": [
+        "EDGEiQ",
+        "Global Results",
+        "Meeting Results",
+        "0",
+        "0",
+        "Results"
+      ],
+      "tableHeaders": [
+        "Race",
+        "Time",
+        "Winner",
+        "Jockey",
+        "Trainer",
+        "SP",
+        "Margin",
+        "Track",
+        "Stewards",
+        "Details"
+      ],
+      "notes": [
+        "Attempted first result expansion."
+      ]
+    },
+    {
+      "name": "LAB",
+      "status": "CAPTURED",
+      "route": "http://127.0.0.1:5177/",
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-conformance\\lab.png",
+      "viewport": {
+        "width": 1600,
+        "height": 1000
+      },
+      "headings": [
+        "EDGEiQ",
+        "EDGEIQ LAB",
+        "Racing Research Laboratory"
+      ],
+      "tableHeaders": [
+        "HORSE",
+        "TRACK",
+        "RACE",
+        "PROFILE",
+        "PERFORMANCE COUNT",
+        "ELIGIBLE PERFORMANCES",
+        "DATE RANGE"
+      ],
+      "notes": []
+    },
+    {
+      "name": "LAB query result",
+      "status": "CAPTURED",
+      "route": "http://127.0.0.1:5177/",
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-conformance\\lab-query-result.png",
+      "viewport": {
+        "width": 1600,
+        "height": 1000
+      },
+      "headings": [
+        "EDGEiQ",
+        "EDGEIQ LAB",
+        "Racing Research Laboratory"
+      ],
+      "tableHeaders": [
+        "HORSE",
+        "TRACK",
+        "RACE",
+        "PROFILE",
+        "PERFORMANCE COUNT",
+        "ELIGIBLE PERFORMANCES",
+        "DATE RANGE"
+      ],
+      "notes": []
+    },
+    {
+      "name": "COMPARE",
+      "status": "CAPTURED",
+      "route": "http://127.0.0.1:5177/",
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-conformance\\compare.png",
+      "viewport": {
+        "width": 1600,
+        "height": 1000
+      },
+      "headings": [
+        "EDGEiQ",
+        "Ko Phangan",
+        "PROFILE",
+        "Ko Phangan",
+        "9: 0-1-0",
+        "0.0%",
+        "11.1%",
+        "5: 0-0-0",
+        "9: 0-1-0",
+        "Avg Fin 47.00",
+        "0: 0-0-0",
+        "5: 0-1-0",
+        "1: 0-0-0",
+        "3: 0-0-0",
+        "0: 0-0-0",
+        "1: 0-0-0",
+        "1: 0-0-0",
+        "1: 0-0-0",
+        "7: 0-1-0",
+        "3: 0-0-0",
+        "2: 0-0-0",
+        "2: 0-0-0",
+        "2: 0-0-0",
+        "$13.43",
+        "$5.00",
+        "$12.00",
+        "Side-by-side governed comparison",
+        "Loaded",
+        "Current race runners",
+        "KO PHANGAN",
+        "NOTIFIED",
+        "Comparable fields only",
+        "Profile alignment",
+        "Recent governed runs"
+      ],
+      "tableHeaders": [
+        "Metric",
+        "Left",
+        "Right",
+        "Scope",
+        "Profile State",
+        "Identity State",
+        "Performance Count",
+        "Eligible Performances",
+        "Date Range",
+        "Track Profile",
+        "Distance Profile",
+        "Condition Profile",
+        "Class Profile",
+        "Pressure Profile",
+        "Late Speed Profile",
+        "Consistency Profile",
+        "Side",
+        "Date",
+        "Race",
+        "Dist",
+        "Class",
+        "Cond",
+        "Finish",
+        "Margin",
+        "SP",
+        "Benchmark"
+      ],
+      "notes": []
+    },
+    {
+      "name": "REVIEW",
+      "status": "CAPTURED",
+      "route": "http://127.0.0.1:5177/",
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-conformance\\review.png",
+      "viewport": {
+        "width": 1600,
+        "height": 1000
+      },
+      "headings": [
+        "EDGEiQ",
+        "Flemington R1",
+        "R1",
+        "Race review workspace",
+        "Awaiting result",
+        "2026-07-18|FLEMINGTON|R1",
+        "1800m",
+        "Open",
+        "Soft",
+        "Unavailable",
+        "5",
+        "Available product state",
+        "No saved review record",
+        "What EDGEiQ can show now"
+      ],
+      "tableHeaders": [
+        "Area",
+        "State",
+        "Detail",
+        "Action",
+        "Form guide",
+        "Race intelligence"
+      ],
+      "notes": []
+    },
+    {
+      "name": "SETTINGS",
+      "status": "CAPTURED",
+      "route": "http://127.0.0.1:5177/",
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-conformance\\settings.png",
+      "viewport": {
+        "width": 1600,
+        "height": 1000
+      },
+      "headings": [
+        "EDGEiQ",
+        "Settings",
+        "Product settings and data boundaries",
+        "Settings are display and governance only."
+      ],
+      "tableHeaders": [],
+      "notes": []
+    }
+  ]
+}

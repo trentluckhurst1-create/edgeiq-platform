@@ -1,0 +1,1068 @@
+{
+  "requested_page": "https://www.racing.com/form/2026-07-17/bet365-mildura",
+  "response_url": "https://graphql.rmdprod.racing.com/?query=query%20getRaceNumberList_CD(%24meetCode%3A%20ID!)%20%7B%20getNoCacheRacesForMeet(meetCode%3A%20%24meetCode)%20%7B%20id%20meet%20%7B%20venue%20meetUrl%20meetUrlSegment%20trackMap%20%7D%20raceNumber%20raceStatus%20distance%20time%20name%20nameForm%20trackCondition%20isTrial%20isJumpOut%20trackRating%20trackRecordTime%20trackRecordHorseCode%20trackRecordHorseName%20trackRecordRace%20%7B%20date%20%7D%20condition%20prizeMoney%20totalPrizeMoney%20hasSectionals%20hasTips%20hasSpeedMap%20hasResults%20hasStewards%20hasHistory%20hasSectionals%20hasField%20hasFullForm%20trackCode%20rdcClass%20formRaceEntries%20%7B%20horseName%20position%20winningTime%20standardTimeDifference%20%7D%20toEightHundredMetresSeconds%20standardTimeTo800Difference%20eightHundredToFourHundredMetresSeconds%20standardTime800To400Difference%20fourHundredToFinishMetresSeconds%20standardTime400ToFinishDifference%20raceTime%20standardTimeDifference%20standardTimeId%20stewardsReportUrl%20%7D%20%7D&variables=%7B%22meetCode%22%3A%225191050%22%7D",
+  "payload": {
+    "data": {
+      "getNoCacheRacesForMeet": [
+        {
+          "id": "5442983",
+          "meet": {
+            "venue": "bet365 Mildura",
+            "meetUrl": "https://www.racing.com/form/2026-07-17/bet365-mildura",
+            "meetUrlSegment": "2026-07-17/bet365-mildura",
+            "trackMap": "https://s3-ap-southeast-2.amazonaws.com/racevic.static/trackmaps/MILD.svg"
+          },
+          "raceNumber": 1,
+          "raceStatus": "Paying",
+          "distance": "1400m",
+          "time": "2026-07-17T02:20:00.000Z",
+          "name": "John Salisbury 11 Maiden Plate",
+          "nameForm": "3Y MDN-SW",
+          "trackCondition": "Soft",
+          "isTrial": 0,
+          "isJumpOut": 0,
+          "trackRating": "5",
+          "trackRecordTime": "8224",
+          "trackRecordHorseCode": "926268",
+          "trackRecordHorseName": "Out of Coober",
+          "trackRecordRace": {
+            "date": "2013-09-01"
+          },
+          "condition": "Set Weights. Three-Years-Old, No sex restriction. Maiden. Apprentices can claim. Track name: Main. Track type: Turf. Field limit: 14. This race carries VOBIS Silver Bonuses of $12,000 for qualified horses.",
+          "prizeMoney": [
+            "{\"Position\":1,\"Value\":\"23375.00\"}",
+            "{\"Position\":2,\"Value\":\"7650.00\"}",
+            "{\"Position\":3,\"Value\":\"3825.00\"}",
+            "{\"Position\":4,\"Value\":\"2125.00\"}",
+            "{\"Position\":5,\"Value\":\"1275.00\"}",
+            "{\"Position\":6,\"Value\":\"850.00\"}",
+            "{\"Position\":7,\"Value\":\"850.00\"}",
+            "{\"Position\":8,\"Value\":\"850.00\"}",
+            "{\"Position\":9,\"Value\":\"850.00\"}",
+            "{\"Position\":10,\"Value\":\"850.00\"}"
+          ],
+          "totalPrizeMoney": "42500.00",
+          "hasSectionals": true,
+          "hasTips": false,
+          "hasSpeedMap": false,
+          "hasResults": true,
+          "hasStewards": true,
+          "hasHistory": false,
+          "hasField": false,
+          "hasFullForm": false,
+          "trackCode": "255",
+          "rdcClass": "Maiden",
+          "formRaceEntries": [
+            {
+              "horseName": "Blackjack",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": "+5.46L"
+            },
+            {
+              "horseName": "Brazen Warrior",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": "+5.46L"
+            },
+            {
+              "horseName": "Immortalised",
+              "position": 3,
+              "winningTime": "8558",
+              "standardTimeDifference": "+5.46L"
+            },
+            {
+              "horseName": "King Fleance",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": "+5.46L"
+            },
+            {
+              "horseName": "Mike's Hope",
+              "position": 1,
+              "winningTime": "8558",
+              "standardTimeDifference": "+5.46L"
+            },
+            {
+              "horseName": "Mr Nipper",
+              "position": 5,
+              "winningTime": "8558",
+              "standardTimeDifference": "+5.46L"
+            },
+            {
+              "horseName": "Sibun",
+              "position": 2,
+              "winningTime": "8558",
+              "standardTimeDifference": "+5.46L"
+            },
+            {
+              "horseName": "Don't Doubt Dottie",
+              "position": 7,
+              "winningTime": "8558",
+              "standardTimeDifference": "+5.46L"
+            },
+            {
+              "horseName": "Rubiboo",
+              "position": 6,
+              "winningTime": "8558",
+              "standardTimeDifference": "+5.46L"
+            },
+            {
+              "horseName": "Written By Betsy",
+              "position": 4,
+              "winningTime": "8558",
+              "standardTimeDifference": "+5.46L"
+            }
+          ],
+          "toEightHundredMetresSeconds": 3806,
+          "standardTimeTo800Difference": "-2.52L",
+          "eightHundredToFourHundredMetresSeconds": 2415,
+          "standardTime800To400Difference": "+2.58L",
+          "fourHundredToFinishMetresSeconds": 2313,
+          "standardTime400ToFinishDifference": "+7.14L",
+          "raceTime": "1:25.64",
+          "standardTimeDifference": "+5.46L",
+          "standardTimeId": "255_Soft_1400_Maiden",
+          "stewardsReportUrl": "https://cdn.rmdprod.racing.com/RV/stewards/2026-07-17/bet365-mildura/stewardsreports/race-1.htm"
+        },
+        {
+          "id": "5442984",
+          "meet": {
+            "venue": "bet365 Mildura",
+            "meetUrl": "https://www.racing.com/form/2026-07-17/bet365-mildura",
+            "meetUrlSegment": "2026-07-17/bet365-mildura",
+            "trackMap": "https://s3-ap-southeast-2.amazonaws.com/racevic.static/trackmaps/MILD.svg"
+          },
+          "raceNumber": 3,
+          "raceStatus": "Paying",
+          "distance": "1200m",
+          "time": "2026-07-17T03:30:00.000Z",
+          "name": "Sunraysia Daily Maiden Plte",
+          "nameForm": "MDN-SW",
+          "trackCondition": "Soft",
+          "isTrial": 0,
+          "isJumpOut": 0,
+          "trackRating": "5",
+          "trackRecordTime": "7010",
+          "trackRecordHorseCode": "211495",
+          "trackRecordHorseName": "The Fount",
+          "trackRecordRace": {
+            "date": null
+          },
+          "condition": "Set Weights. Two-Years-Old and Upwards, No sex restriction. Maiden. Apprentices can claim. Track name: Main. Track type: Turf. Field limit: 12. This race carries VOBIS Gold Bonuses of $20,000 for qualified horses. This race carries VOBIS Platinum $30,000 in vouchers for qualified horses.",
+          "prizeMoney": [
+            "{\"Position\":1,\"Value\":\"23375.00\"}",
+            "{\"Position\":2,\"Value\":\"7650.00\"}",
+            "{\"Position\":3,\"Value\":\"3825.00\"}",
+            "{\"Position\":4,\"Value\":\"2125.00\"}",
+            "{\"Position\":5,\"Value\":\"1275.00\"}",
+            "{\"Position\":6,\"Value\":\"850.00\"}",
+            "{\"Position\":7,\"Value\":\"850.00\"}",
+            "{\"Position\":8,\"Value\":\"850.00\"}",
+            "{\"Position\":9,\"Value\":\"850.00\"}",
+            "{\"Position\":10,\"Value\":\"850.00\"}"
+          ],
+          "totalPrizeMoney": "42500.00",
+          "hasSectionals": true,
+          "hasTips": false,
+          "hasSpeedMap": false,
+          "hasResults": true,
+          "hasStewards": true,
+          "hasHistory": false,
+          "hasField": false,
+          "hasFullForm": false,
+          "trackCode": "255",
+          "rdcClass": "Maiden",
+          "formRaceEntries": [
+            {
+              "horseName": "Dream If You Can",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": "-3.3L"
+            },
+            {
+              "horseName": "Just Like Jagger",
+              "position": 2,
+              "winningTime": "7371",
+              "standardTimeDifference": "-3.3L"
+            },
+            {
+              "horseName": "Rakiynn",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": "-3.3L"
+            },
+            {
+              "horseName": "Royal Heritage",
+              "position": 1,
+              "winningTime": "7371",
+              "standardTimeDifference": "-3.3L"
+            },
+            {
+              "horseName": "Shujinko",
+              "position": 4,
+              "winningTime": "7371",
+              "standardTimeDifference": "-3.3L"
+            },
+            {
+              "horseName": "Havana Moon",
+              "position": 3,
+              "winningTime": "7371",
+              "standardTimeDifference": "-3.3L"
+            },
+            {
+              "horseName": "Naughty Jamie",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": "-3.3L"
+            },
+            {
+              "horseName": "Off'n'gawn",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": "-3.3L"
+            },
+            {
+              "horseName": "Pretty Pnina",
+              "position": 7,
+              "winningTime": "7371",
+              "standardTimeDifference": "-3.3L"
+            },
+            {
+              "horseName": "Unstirred",
+              "position": 6,
+              "winningTime": "7371",
+              "standardTimeDifference": "-3.3L"
+            },
+            {
+              "horseName": "Merchantessa",
+              "position": 5,
+              "winningTime": "7371",
+              "standardTimeDifference": "-3.3L"
+            },
+            {
+              "horseName": "On Her Own",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": "-3.3L"
+            }
+          ],
+          "toEightHundredMetresSeconds": 2644,
+          "standardTimeTo800Difference": "-7.38L",
+          "eightHundredToFourHundredMetresSeconds": 2396,
+          "standardTime800To400Difference": "-0.48L",
+          "fourHundredToFinishMetresSeconds": 2266,
+          "standardTime400ToFinishDifference": "+9.18L",
+          "raceTime": "1:13.77",
+          "standardTimeDifference": "-3.3L",
+          "standardTimeId": "255_Soft_1200_Maiden",
+          "stewardsReportUrl": "https://cdn.rmdprod.racing.com/RV/stewards/2026-07-17/bet365-mildura/stewardsreports/race-3.htm"
+        },
+        {
+          "id": "5442985",
+          "meet": {
+            "venue": "bet365 Mildura",
+            "meetUrl": "https://www.racing.com/form/2026-07-17/bet365-mildura",
+            "meetUrlSegment": "2026-07-17/bet365-mildura",
+            "trackMap": "https://s3-ap-southeast-2.amazonaws.com/racevic.static/trackmaps/MILD.svg"
+          },
+          "raceNumber": 2,
+          "raceStatus": "Paying",
+          "distance": "2000m",
+          "time": "2026-07-17T02:55:00.000Z",
+          "name": "Mildura Motor Holdings Maiden Plate",
+          "nameForm": "MDN-SW",
+          "trackCondition": "Soft",
+          "isTrial": 0,
+          "isJumpOut": 0,
+          "trackRating": "5",
+          "trackRecordTime": "12250",
+          "trackRecordHorseCode": "524462",
+          "trackRecordHorseName": "Nimble Man",
+          "trackRecordRace": {
+            "date": null
+          },
+          "condition": "Set Weights. Three-Years-Old and Upwards, No sex restriction. Maiden. Apprentices can claim. Track name: Main. Track type: Turf. Field limit: 14. This race carries VOBIS Silver Bonuses of $12,000 for qualified horses.",
+          "prizeMoney": [
+            "{\"Position\":1,\"Value\":\"23375.00\"}",
+            "{\"Position\":2,\"Value\":\"7650.00\"}",
+            "{\"Position\":3,\"Value\":\"3825.00\"}",
+            "{\"Position\":4,\"Value\":\"2125.00\"}",
+            "{\"Position\":5,\"Value\":\"1275.00\"}",
+            "{\"Position\":6,\"Value\":\"850.00\"}",
+            "{\"Position\":7,\"Value\":\"850.00\"}",
+            "{\"Position\":8,\"Value\":\"850.00\"}",
+            "{\"Position\":9,\"Value\":\"850.00\"}",
+            "{\"Position\":10,\"Value\":\"850.00\"}"
+          ],
+          "totalPrizeMoney": "42500.00",
+          "hasSectionals": true,
+          "hasTips": false,
+          "hasSpeedMap": false,
+          "hasResults": true,
+          "hasStewards": true,
+          "hasHistory": false,
+          "hasField": false,
+          "hasFullForm": false,
+          "trackCode": "255",
+          "rdcClass": "Maiden",
+          "formRaceEntries": [
+            {
+              "horseName": "All The Moves",
+              "position": 7,
+              "winningTime": "12800",
+              "standardTimeDifference": "+4.8L"
+            },
+            {
+              "horseName": "Barossa Valley",
+              "position": 4,
+              "winningTime": "12800",
+              "standardTimeDifference": "+4.8L"
+            },
+            {
+              "horseName": "Cattleman's Bar",
+              "position": 10,
+              "winningTime": "12800",
+              "standardTimeDifference": "+4.8L"
+            },
+            {
+              "horseName": "Gainsmont",
+              "position": 6,
+              "winningTime": "12800",
+              "standardTimeDifference": "+4.8L"
+            },
+            {
+              "horseName": "King's Anchor",
+              "position": 5,
+              "winningTime": "12800",
+              "standardTimeDifference": "+4.8L"
+            },
+            {
+              "horseName": "Kovu",
+              "position": 8,
+              "winningTime": "12800",
+              "standardTimeDifference": "+4.8L"
+            },
+            {
+              "horseName": "Mission Taichi",
+              "position": 3,
+              "winningTime": "12800",
+              "standardTimeDifference": "+4.8L"
+            },
+            {
+              "horseName": "Numbersneverseen",
+              "position": 9,
+              "winningTime": "12800",
+              "standardTimeDifference": "+4.8L"
+            },
+            {
+              "horseName": "Poorlittlerichkid",
+              "position": 11,
+              "winningTime": "12800",
+              "standardTimeDifference": "+4.8L"
+            },
+            {
+              "horseName": "Elegant Force",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": "+4.8L"
+            },
+            {
+              "horseName": "Hexed",
+              "position": 1,
+              "winningTime": "12800",
+              "standardTimeDifference": "+4.8L"
+            },
+            {
+              "horseName": "Ludina",
+              "position": 2,
+              "winningTime": "12800",
+              "standardTimeDifference": "+4.8L"
+            },
+            {
+              "horseName": "Safina",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": "+4.8L"
+            }
+          ],
+          "toEightHundredMetresSeconds": 7844,
+          "standardTimeTo800Difference": "+1.68L",
+          "eightHundredToFourHundredMetresSeconds": 2497,
+          "standardTime800To400Difference": "+1.68L",
+          "fourHundredToFinishMetresSeconds": 2376,
+          "standardTime400ToFinishDifference": "+7.68L",
+          "raceTime": "2:08.13",
+          "standardTimeDifference": "+4.8L",
+          "standardTimeId": "255_Soft_2000_Maiden",
+          "stewardsReportUrl": "https://cdn.rmdprod.racing.com/RV/stewards/2026-07-17/bet365-mildura/stewardsreports/race-2.htm"
+        },
+        {
+          "id": "5442986",
+          "meet": {
+            "venue": "bet365 Mildura",
+            "meetUrl": "https://www.racing.com/form/2026-07-17/bet365-mildura",
+            "meetUrlSegment": "2026-07-17/bet365-mildura",
+            "trackMap": "https://s3-ap-southeast-2.amazonaws.com/racevic.static/trackmaps/MILD.svg"
+          },
+          "raceNumber": 4,
+          "raceStatus": "Paying",
+          "distance": "1200m",
+          "time": "2026-07-17T04:05:00.000Z",
+          "name": "Mildura Gateway Tavern BM66 Handicap",
+          "nameForm": "BM66",
+          "trackCondition": "Soft",
+          "isTrial": 0,
+          "isJumpOut": 0,
+          "trackRating": "5",
+          "trackRecordTime": "7010",
+          "trackRecordHorseCode": "211495",
+          "trackRecordHorseName": "The Fount",
+          "trackRecordRace": {
+            "date": null
+          },
+          "condition": "Handicap. No age restriction, No sex restriction. BenchMark 66. Apprentices can claim. Track name: Main. Track type: Turf. Field limit: 12. This race carries VOBIS Silver Bonuses of $12,000 for qualified horses.",
+          "prizeMoney": [
+            "{\"Position\":1,\"Value\":\"19250.00\"}",
+            "{\"Position\":2,\"Value\":\"6300.00\"}",
+            "{\"Position\":3,\"Value\":\"3150.00\"}",
+            "{\"Position\":4,\"Value\":\"1750.00\"}",
+            "{\"Position\":5,\"Value\":\"1050.00\"}",
+            "{\"Position\":6,\"Value\":\"700.00\"}",
+            "{\"Position\":7,\"Value\":\"700.00\"}",
+            "{\"Position\":8,\"Value\":\"700.00\"}",
+            "{\"Position\":9,\"Value\":\"700.00\"}",
+            "{\"Position\":10,\"Value\":\"700.00\"}"
+          ],
+          "totalPrizeMoney": "35000.00",
+          "hasSectionals": true,
+          "hasTips": false,
+          "hasSpeedMap": false,
+          "hasResults": true,
+          "hasStewards": true,
+          "hasHistory": false,
+          "hasField": false,
+          "hasFullForm": false,
+          "trackCode": "255",
+          "rdcClass": "BM 64",
+          "formRaceEntries": [
+            {
+              "horseName": "Bad Blood",
+              "position": 3,
+              "winningTime": "7153",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Hollywoodboulevard",
+              "position": 10,
+              "winningTime": "7153",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Milbrae",
+              "position": 9,
+              "winningTime": "7153",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Vilnius",
+              "position": 4,
+              "winningTime": "7153",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Shalailed",
+              "position": 6,
+              "winningTime": "7153",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Chicago Blues",
+              "position": 5,
+              "winningTime": "7153",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Himeno",
+              "position": 2,
+              "winningTime": "7153",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Wicked Storm",
+              "position": 1,
+              "winningTime": "7153",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "She's Ternacious",
+              "position": 7,
+              "winningTime": "7153",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Poetic Storm",
+              "position": 8,
+              "winningTime": "7153",
+              "standardTimeDifference": null
+            }
+          ],
+          "toEightHundredMetresSeconds": 2504,
+          "standardTimeTo800Difference": "+1.02L",
+          "eightHundredToFourHundredMetresSeconds": 2290,
+          "standardTime800To400Difference": "+4.56L",
+          "fourHundredToFinishMetresSeconds": 2320,
+          "standardTime400ToFinishDifference": "+5.7L",
+          "raceTime": "1:11.59",
+          "standardTimeDifference": "+8.22L",
+          "standardTimeId": "255_Soft_1200_All",
+          "stewardsReportUrl": "https://cdn.rmdprod.racing.com/RV/stewards/2026-07-17/bet365-mildura/stewardsreports/race-4.htm"
+        },
+        {
+          "id": "5442987",
+          "meet": {
+            "venue": "bet365 Mildura",
+            "meetUrl": "https://www.racing.com/form/2026-07-17/bet365-mildura",
+            "meetUrlSegment": "2026-07-17/bet365-mildura",
+            "trackMap": "https://s3-ap-southeast-2.amazonaws.com/racevic.static/trackmaps/MILD.svg"
+          },
+          "raceNumber": 8,
+          "raceStatus": "Paying",
+          "distance": "1400m",
+          "time": "2026-07-17T06:30:00.000Z",
+          "name": "The Jade Benham BM66 Handicap",
+          "nameForm": "BM66",
+          "trackCondition": "Good",
+          "isTrial": 0,
+          "isJumpOut": 0,
+          "trackRating": "4",
+          "trackRecordTime": "8224",
+          "trackRecordHorseCode": "926268",
+          "trackRecordHorseName": "Out of Coober",
+          "trackRecordRace": {
+            "date": "2013-09-01"
+          },
+          "condition": "Handicap. No age restriction, No sex restriction. BenchMark 66. Apprentices can claim. Track name: Main. Track type: Turf. Field limit: 14. This race carries VOBIS Silver Bonuses of $12,000 for qualified horses.",
+          "prizeMoney": [
+            "{\"Position\":1,\"Value\":\"19250.00\"}",
+            "{\"Position\":2,\"Value\":\"6300.00\"}",
+            "{\"Position\":3,\"Value\":\"3150.00\"}",
+            "{\"Position\":4,\"Value\":\"1750.00\"}",
+            "{\"Position\":5,\"Value\":\"1050.00\"}",
+            "{\"Position\":6,\"Value\":\"700.00\"}",
+            "{\"Position\":7,\"Value\":\"700.00\"}",
+            "{\"Position\":8,\"Value\":\"700.00\"}",
+            "{\"Position\":9,\"Value\":\"700.00\"}",
+            "{\"Position\":10,\"Value\":\"700.00\"}"
+          ],
+          "totalPrizeMoney": "35000.00",
+          "hasSectionals": true,
+          "hasTips": false,
+          "hasSpeedMap": false,
+          "hasResults": true,
+          "hasStewards": true,
+          "hasHistory": false,
+          "hasField": false,
+          "hasFullForm": false,
+          "trackCode": "255",
+          "rdcClass": "BM 64",
+          "formRaceEntries": [
+            {
+              "horseName": "One Long Day",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Spylark",
+              "position": 11,
+              "winningTime": "8425",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Zorro's Flight",
+              "position": 2,
+              "winningTime": "8425",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "El Tercero",
+              "position": 1,
+              "winningTime": "8425",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Canny Defense",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Princess Toro",
+              "position": 8,
+              "winningTime": "8425",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Orthie's Boys",
+              "position": 7,
+              "winningTime": "8425",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Attain",
+              "position": 3,
+              "winningTime": "8425",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Bancoora",
+              "position": 6,
+              "winningTime": "8425",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "In Her Stride",
+              "position": 10,
+              "winningTime": "8425",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Blakmax",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Stole Him",
+              "position": 9,
+              "winningTime": "8425",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "She's Ann Idea",
+              "position": 5,
+              "winningTime": "8425",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Alzaro",
+              "position": 4,
+              "winningTime": "8425",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Ironbar",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Brroosha",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            }
+          ],
+          "toEightHundredMetresSeconds": 3664,
+          "standardTimeTo800Difference": "+1.56L",
+          "eightHundredToFourHundredMetresSeconds": 2379,
+          "standardTime800To400Difference": "+2.04L",
+          "fourHundredToFinishMetresSeconds": 2329,
+          "standardTime400ToFinishDifference": "+4.14L",
+          "raceTime": "1:24.30",
+          "standardTimeDifference": "+3.48L",
+          "standardTimeId": "255_Good_1400_All",
+          "stewardsReportUrl": "https://cdn.rmdprod.racing.com/RV/stewards/2026-07-17/bet365-mildura/stewardsreports/race-8.htm"
+        },
+        {
+          "id": "5442988",
+          "meet": {
+            "venue": "bet365 Mildura",
+            "meetUrl": "https://www.racing.com/form/2026-07-17/bet365-mildura",
+            "meetUrlSegment": "2026-07-17/bet365-mildura",
+            "trackMap": "https://s3-ap-southeast-2.amazonaws.com/racevic.static/trackmaps/MILD.svg"
+          },
+          "raceNumber": 5,
+          "raceStatus": "Paying",
+          "distance": "1000m",
+          "time": "2026-07-17T04:40:00.000Z",
+          "name": "Trentham Estate Golden Goblet BM70 Handicap",
+          "nameForm": "BM70",
+          "trackCondition": "Good",
+          "isTrial": 0,
+          "isJumpOut": 0,
+          "trackRating": "4",
+          "trackRecordTime": "5650",
+          "trackRecordHorseCode": "523866",
+          "trackRecordHorseName": "Captain Pug",
+          "trackRecordRace": {
+            "date": null
+          },
+          "condition": "Handicap. No age restriction, No sex restriction. BenchMark 70. Apprentices can claim. Track name: Main. Track type: Turf. Field limit: 11. This race carries VOBIS Silver Bonuses of $12,000 for qualified horses.",
+          "prizeMoney": [
+            "{\"Position\":1,\"Value\":\"19250.00\"}",
+            "{\"Position\":2,\"Value\":\"6300.00\"}",
+            "{\"Position\":3,\"Value\":\"3150.00\"}",
+            "{\"Position\":4,\"Value\":\"1750.00\"}",
+            "{\"Position\":5,\"Value\":\"1050.00\"}",
+            "{\"Position\":6,\"Value\":\"700.00\"}",
+            "{\"Position\":7,\"Value\":\"700.00\"}",
+            "{\"Position\":8,\"Value\":\"700.00\"}",
+            "{\"Position\":9,\"Value\":\"700.00\"}",
+            "{\"Position\":10,\"Value\":\"700.00\"}"
+          ],
+          "totalPrizeMoney": "35000.00",
+          "hasSectionals": true,
+          "hasTips": false,
+          "hasSpeedMap": false,
+          "hasResults": true,
+          "hasStewards": true,
+          "hasHistory": false,
+          "hasField": false,
+          "hasFullForm": false,
+          "trackCode": "255",
+          "rdcClass": "BM 70",
+          "formRaceEntries": [
+            {
+              "horseName": "Demojo",
+              "position": 3,
+              "winningTime": "5937",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Orlabent",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Surprisatic",
+              "position": 6,
+              "winningTime": "5937",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "El Pibe De Oro",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Bine",
+              "position": 7,
+              "winningTime": "5937",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Monix",
+              "position": 2,
+              "winningTime": "5937",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Grand Host",
+              "position": 4,
+              "winningTime": "5937",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Kick Your Knees Up",
+              "position": 1,
+              "winningTime": "5937",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Moaksun",
+              "position": 5,
+              "winningTime": "5937",
+              "standardTimeDifference": null
+            }
+          ],
+          "toEightHundredMetresSeconds": 1404,
+          "standardTimeTo800Difference": "-0.6L",
+          "eightHundredToFourHundredMetresSeconds": 2236,
+          "standardTime800To400Difference": "-0.06L",
+          "fourHundredToFinishMetresSeconds": 2258,
+          "standardTime400ToFinishDifference": "+3.6L",
+          "raceTime": "59.40",
+          "standardTimeDifference": "-0.24L",
+          "standardTimeId": "255_Good_1000_All",
+          "stewardsReportUrl": "https://cdn.rmdprod.racing.com/RV/stewards/2026-07-17/bet365-mildura/stewardsreports/race-5.htm"
+        },
+        {
+          "id": "5442989",
+          "meet": {
+            "venue": "bet365 Mildura",
+            "meetUrl": "https://www.racing.com/form/2026-07-17/bet365-mildura",
+            "meetUrlSegment": "2026-07-17/bet365-mildura",
+            "trackMap": "https://s3-ap-southeast-2.amazonaws.com/racevic.static/trackmaps/MILD.svg"
+          },
+          "raceNumber": 6,
+          "raceStatus": "Paying",
+          "distance": "2000m",
+          "time": "2026-07-17T05:15:00.000Z",
+          "name": "AJ & JJ Dunne Memorial BM70 Handicap",
+          "nameForm": "BM70",
+          "trackCondition": "Good",
+          "isTrial": 0,
+          "isJumpOut": 0,
+          "trackRating": "4",
+          "trackRecordTime": "12250",
+          "trackRecordHorseCode": "524462",
+          "trackRecordHorseName": "Nimble Man",
+          "trackRecordRace": {
+            "date": null
+          },
+          "condition": "Handicap. Three-Years-Old and Upwards, No sex restriction. BenchMark 70. Apprentices can claim. Track name: Main. Track type: Turf. Field limit: 14. This race carries VOBIS Silver Bonuses of $12,000 for qualified horses. This race carries VOBIS Gold Bonuses of $20,000 for qualified horses. This race carries VOBIS Platinum $30,000 in vouchers for qualified horses.",
+          "prizeMoney": [
+            "{\"Position\":1,\"Value\":\"33000.00\"}",
+            "{\"Position\":2,\"Value\":\"10800.00\"}",
+            "{\"Position\":3,\"Value\":\"5400.00\"}",
+            "{\"Position\":4,\"Value\":\"3000.00\"}",
+            "{\"Position\":5,\"Value\":\"1800.00\"}",
+            "{\"Position\":6,\"Value\":\"1200.00\"}",
+            "{\"Position\":7,\"Value\":\"1200.00\"}",
+            "{\"Position\":8,\"Value\":\"1200.00\"}",
+            "{\"Position\":9,\"Value\":\"1200.00\"}",
+            "{\"Position\":10,\"Value\":\"1200.00\"}"
+          ],
+          "totalPrizeMoney": "60000.00",
+          "hasSectionals": true,
+          "hasTips": false,
+          "hasSpeedMap": false,
+          "hasResults": true,
+          "hasStewards": true,
+          "hasHistory": false,
+          "hasField": false,
+          "hasFullForm": false,
+          "trackCode": "255",
+          "rdcClass": "BM 70",
+          "formRaceEntries": [
+            {
+              "horseName": "All So Clear",
+              "position": 3,
+              "winningTime": "12754",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Haaland",
+              "position": 4,
+              "winningTime": "12754",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "The Devil In Her",
+              "position": 5,
+              "winningTime": "12754",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Male Model",
+              "position": 1,
+              "winningTime": "12754",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Budjik Boy",
+              "position": 9,
+              "winningTime": "12754",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Longer Route",
+              "position": 2,
+              "winningTime": "12754",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Pariah Pearl",
+              "position": 8,
+              "winningTime": "12754",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Midnight Glow",
+              "position": 7,
+              "winningTime": "12754",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Tupac",
+              "position": 6,
+              "winningTime": "12754",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Petit Eagle",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Intuitu",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            }
+          ],
+          "toEightHundredMetresSeconds": 7996,
+          "standardTimeTo800Difference": "-6.3L",
+          "eightHundredToFourHundredMetresSeconds": 2346,
+          "standardTime800To400Difference": "+7.38L",
+          "fourHundredToFinishMetresSeconds": 2308,
+          "standardTime400ToFinishDifference": "+5.28L",
+          "raceTime": "2:07.58",
+          "standardTimeDifference": "-0.84L",
+          "standardTimeId": "255_Good_2000_All",
+          "stewardsReportUrl": "https://cdn.rmdprod.racing.com/RV/stewards/2026-07-17/bet365-mildura/stewardsreports/race-6.htm"
+        },
+        {
+          "id": "5442990",
+          "meet": {
+            "venue": "bet365 Mildura",
+            "meetUrl": "https://www.racing.com/form/2026-07-17/bet365-mildura",
+            "meetUrlSegment": "2026-07-17/bet365-mildura",
+            "trackMap": "https://s3-ap-southeast-2.amazonaws.com/racevic.static/trackmaps/MILD.svg"
+          },
+          "raceNumber": 7,
+          "raceStatus": "Paying",
+          "distance": "1400m",
+          "time": "2026-07-17T05:50:00.000Z",
+          "name": "bet365 Mildura Cup",
+          "nameForm": "MILDURA CUP",
+          "trackCondition": "Good",
+          "isTrial": 0,
+          "isJumpOut": 0,
+          "trackRating": "4",
+          "trackRecordTime": "8224",
+          "trackRecordHorseCode": "926268",
+          "trackRecordHorseName": "Out of Coober",
+          "trackRecordRace": {
+            "date": "2013-09-01"
+          },
+          "condition": "Handicap. No age restriction, No sex restriction. No class restriction. Apprentices cannot claim. Track name: Main. Track type: Turf. Field limit: 14. This race carries VOBIS Silver Bonuses of $12,000 for qualified horses.",
+          "prizeMoney": [
+            "{\"Position\":1,\"Value\":\"55000.00\"}",
+            "{\"Position\":2,\"Value\":\"18000.00\"}",
+            "{\"Position\":3,\"Value\":\"9000.00\"}",
+            "{\"Position\":4,\"Value\":\"5000.00\"}",
+            "{\"Position\":5,\"Value\":\"3000.00\"}",
+            "{\"Position\":6,\"Value\":\"2000.00\"}",
+            "{\"Position\":7,\"Value\":\"2000.00\"}",
+            "{\"Position\":8,\"Value\":\"2000.00\"}",
+            "{\"Position\":9,\"Value\":\"2000.00\"}",
+            "{\"Position\":10,\"Value\":\"2000.00\"}"
+          ],
+          "totalPrizeMoney": "100000.00",
+          "hasSectionals": true,
+          "hasTips": false,
+          "hasSpeedMap": false,
+          "hasResults": true,
+          "hasStewards": true,
+          "hasHistory": false,
+          "hasField": false,
+          "hasFullForm": false,
+          "trackCode": "255",
+          "rdcClass": "Open",
+          "formRaceEntries": [
+            {
+              "horseName": "Run Harry Run",
+              "position": 1,
+              "winningTime": "8422",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Sav On Ice",
+              "position": 8,
+              "winningTime": "8422",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "The Pendragon",
+              "position": 6,
+              "winningTime": "8422",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Fine Future",
+              "position": 5,
+              "winningTime": "8422",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Grand Pierro",
+              "position": 4,
+              "winningTime": "8422",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Harmonious Senora",
+              "position": 9,
+              "winningTime": "8422",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Black Storm",
+              "position": 2,
+              "winningTime": "8422",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Bullets High",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Flying Valley",
+              "position": 3,
+              "winningTime": "8422",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Ginger Sinner",
+              "position": 10,
+              "winningTime": "8422",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Sought After",
+              "position": 7,
+              "winningTime": "8422",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Emmadella",
+              "position": 11,
+              "winningTime": "8422",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Surprise Coming",
+              "position": 13,
+              "winningTime": "8422",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Drunken Sailor",
+              "position": 12,
+              "winningTime": "8422",
+              "standardTimeDifference": null
+            }
+          ],
+          "toEightHundredMetresSeconds": 3728,
+          "standardTimeTo800Difference": "-2.28L",
+          "eightHundredToFourHundredMetresSeconds": 2334,
+          "standardTime800To400Difference": "+4.74L",
+          "fourHundredToFinishMetresSeconds": 2273,
+          "standardTime400ToFinishDifference": "+7.5L",
+          "raceTime": "1:24.27",
+          "standardTimeDifference": "+3.66L",
+          "standardTimeId": "255_Good_1400_All",
+          "stewardsReportUrl": "https://cdn.rmdprod.racing.com/RV/stewards/2026-07-17/bet365-mildura/stewardsreports/race-7.htm"
+        }
+      ]
+    }
+  }
+}

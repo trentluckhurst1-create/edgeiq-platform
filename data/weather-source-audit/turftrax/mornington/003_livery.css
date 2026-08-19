@@ -1,0 +1,109 @@
+/**
+ *        file: ../assets/css/livery.css
+ *     service: ITS WeatherTrax Live Data Visualisation (WDV))
+ *      author: Peter Irving
+ *   copyright: TurfTrax Ltd, 2018 - 2024. All Rights Reserved.
+ *     version: v1.1.1. 2024-09-30T12:00:00
+ *   revisions: v1.1.1. 20240930 P.I.    i) Added (missing) CSS Defintion for .metric-sensor-round (Whiteout)
+ *                                      ii) Added clearer comments for the "whiteout"
+ *              v1.1.0. unknown  P.I. Roll-up of previous version
+ * description: Contains all colour elements of the main CSS. This makes for an
+ *              easier exercise to "brand" the Visualiser.
+ *              
+ *              In the absence of any branding this Script will be loaded. To
+ *              apply a braning merely copy this into the  Clients UI Home
+ *              Directory and adjust accordingly.
+ *              
+ *              There are, essentially, four affected concerns:
+ *                        "color" - The displayed text
+ *             "background-color" -  i) The background of the various headers
+ *                                      and, more inportanly, the Icons
+ *                                  ii) The background of the Sensor Metrics
+ *                 "border-color" - The borders of the various Sensor Metrics
+ *              The main container is included but it is not expected to require
+ *              
+ *              any adjustmrnt
+ */
+    #main-container {
+        background-color:#FAF9F7;
+        color:#000000;
+        -webkit-box-shadow:0 10px 40px 0 rgba(62, 57, 107, 0.07),
+            0 2px 9px 0 rgba(62, 57, 107, 0.06);
+        box-shadow:0 10px 40px 0 rgba(62, 57, 107, 0.07),
+            0 2px 9px 0 rgba(62, 57, 107, 0.06);
+    }
+    #header {
+        color:#FFFFFF;
+        background-color:#000000;
+    }
+    .menu-icons img {
+        background-color:#000000;
+    }
+    .menu-display {
+        border:2px solid #000000;
+        background-color:#eeeeee;
+        color:#000000;
+        padding:3px;
+    }
+    #tool-container {
+        background-color:#000000;
+    }
+    #warning-tool img {
+        background-color:red !important;
+    }
+    .menu-icon-blink {
+        background-color:#40ff00 !important;
+    }
+    .metric-display-banner, .metric-display-banner-lite {
+        border-left:1px solid #000000;
+        border-top:1px solid #000000;
+        border-right:1px solid #000000;
+    }
+    .metric-display-banner-lite {
+        border-bottom:1px solid #000000;
+    }
+    .metric-display-map, .metric-display-weather {
+        border-left:1px solid #000000;
+        border-bottom:1px solid #000000;
+        border-right:1px solid #000000;
+    }
+    .metric-display {
+        border:1px solid #000000;
+        background-color:#eeeeee;
+    }
+    .metric-display-banner, .metric-display-banner-lite, .metric-title, .metric-title-map {
+        background-color:#000000;
+        color:#FFFFFF;
+    }
+    .metric-sensor-icon, .metric-sensor-icon-round {
+        background-color:#000000;
+    }
+    .compass-bezel {
+        background-color:#000000;
+    }
+    /*
+     * This will, effectively, "wash out" the standard SVG Metric Icons colour
+     * (#eeeeee) to "white". The Icons have an innate #eeeeee background and are
+     * "negatives" images, i.e., the container background colour "shows through".
+     * Whilst this is effctive for "white" (and could be "tweaked") it is limited
+     * and. for any other background colour, the Icon would need to be bespoke.
+     * So, for any Metric for which a white background is required: Uncomment
+     * (or "re-enable" the CSS Class)the following.
+    */
+    ._metric-sensor-icon img, ._metric-sensor-icon-round img {
+        filter:brightness(0) invert(1);
+    }
+    .wind-repeater {
+        background-color:transparent;
+    }
+    .view-button:active {
+        background-color:#f76609;
+    }
+    #wdv-explained {
+        border-top:1px solid #000000;
+    }
+    #wdv-disclaimer {
+    }
+    .footer-logo img {
+        border:1px solid black;
+    }

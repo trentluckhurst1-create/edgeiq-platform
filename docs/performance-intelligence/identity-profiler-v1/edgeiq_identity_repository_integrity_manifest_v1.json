@@ -1,0 +1,120 @@
+{
+  "generated_utc": "2026-07-25T21:04:49.355687+00:00",
+  "artifacts": [
+    {
+      "path": "docs/performance-intelligence/identity-profiler-v1/edgeiq_crosswalk_candidates_v1.csv",
+      "size_bytes": 10022845309,
+      "sha256": "SKIPPED_LARGE_FILE"
+    },
+    {
+      "path": "docs/performance-intelligence/identity-profiler-v1/edgeiq_identity_column_profiles_v1.csv",
+      "size_bytes": 552053088,
+      "sha256": "SKIPPED_LARGE_FILE"
+    },
+    {
+      "path": "docs/performance-intelligence/identity-profiler-v1/edgeiq_identity_dataset_profiles_v1.csv",
+      "size_bytes": 7400852,
+      "sha256": "SKIPPED_LARGE_FILE"
+    },
+    {
+      "path": "docs/performance-intelligence/identity-profiler-v1/edgeiq_identity_profiler_final_state_forensic_v1.csv",
+      "size_bytes": 10447,
+      "sha256": "967ce764143ca0f37e1b42b3e080fec3c67cf823348fc2fae29a775dc16630c5"
+    },
+    {
+      "path": "docs/performance-intelligence/identity-profiler-v1/EDGEIQ_IDENTITY_PROFILER_FINAL_STATE_FORENSIC_V1.md",
+      "size_bytes": 1176,
+      "sha256": "7a09b5728111f03b7d2c832e8f251a465733ea1bd30d5f54610df75a7cf905b8"
+    },
+    {
+      "path": "docs/performance-intelligence/identity-profiler-v1/edgeiq_identity_profiler_final_state_forensic_v1_summary.json",
+      "size_bytes": 1066,
+      "sha256": "ec277ace25a564eb3cdbcba601e883dcc1920a4c63a96817811046d70f13580d"
+    },
+    {
+      "path": "docs/performance-intelligence/identity-profiler-v1/edgeiq_identity_profiling_errors_v1.csv",
+      "size_bytes": 56,
+      "sha256": "15b30c74c7148f5529046c17f5db3efedb7d35d4e6413e3dd23aab219b635893"
+    },
+    {
+      "path": "docs/performance-intelligence/identity-profiler-v1/edgeiq_identity_relationships_v1.csv",
+      "size_bytes": 3384186,
+      "sha256": "SKIPPED_LARGE_FILE"
+    },
+    {
+      "path": "docs/performance-intelligence/identity-profiler-v1/edgeiq_identity_repository_canonical_identity_universe_v1.csv",
+      "size_bytes": 28746,
+      "sha256": "aeac7a9ce883098b8cf6aea438ba6949d3f1fdd84ece24b88353b70ce34b29fd"
+    },
+    {
+      "path": "docs/performance-intelligence/identity-profiler-v1/edgeiq_identity_repository_checkpoint_v1.json",
+      "size_bytes": 18224314,
+      "sha256": "SKIPPED_LARGE_FILE"
+    },
+    {
+      "path": "docs/performance-intelligence/identity-profiler-v1/edgeiq_identity_repository_column_profile_v1.csv",
+      "size_bytes": 164701455,
+      "sha256": "SKIPPED_LARGE_FILE"
+    },
+    {
+      "path": "docs/performance-intelligence/identity-profiler-v1/edgeiq_identity_repository_crosswalk_candidates_v1.csv",
+      "size_bytes": 25655490,
+      "sha256": "SKIPPED_LARGE_FILE"
+    },
+    {
+      "path": "docs/performance-intelligence/identity-profiler-v1/edgeiq_identity_repository_dataset_profile_v1.csv",
+      "size_bytes": 1286145,
+      "sha256": "SKIPPED_LARGE_FILE"
+    },
+    {
+      "path": "docs/performance-intelligence/identity-profiler-v1/edgeiq_identity_repository_graph_edges_v1.csv",
+      "size_bytes": 23358490,
+      "sha256": "SKIPPED_LARGE_FILE"
+    },
+    {
+      "path": "docs/performance-intelligence/identity-profiler-v1/edgeiq_identity_repository_graph_nodes_v1.csv",
+      "size_bytes": 30592255,
+      "sha256": "SKIPPED_LARGE_FILE"
+    },
+    {
+      "path": "docs/performance-intelligence/identity-profiler-v1/edgeiq_identity_repository_identity_relationships_v1.csv",
+      "size_bytes": 24795525,
+      "sha256": "SKIPPED_LARGE_FILE"
+    },
+    {
+      "path": "docs/performance-intelligence/identity-profiler-v1/edgeiq_identity_repository_inventory_v1.csv",
+      "size_bytes": 2603037,
+      "sha256": "SKIPPED_LARGE_FILE"
+    },
+    {
+      "path": "docs/performance-intelligence/identity-profiler-v1/edgeiq_identity_repository_inventory_v1.json",
+      "size_bytes": 1994070,
+      "sha256": "SKIPPED_LARGE_FILE"
+    },
+    {
+      "path": "docs/performance-intelligence/identity-profiler-v1/edgeiq_identity_repository_profiler_v1.log",
+      "size_bytes": 897973,
+      "sha256": "13dca1491c23e6e2f34453ee9bccbfde9ee481400a5069307c500fa497642eae"
+    },
+    {
+      "path": "docs/performance-intelligence/identity-profiler-v1/EDGEIQ_IDENTITY_REPOSITORY_PROFILER_V1_AUDIT.json",
+      "size_bytes": 4036,
+      "sha256": "534f481a048772163ec93de0d9b54db3a62a04cda656b2cc95aa9991b0ff7863"
+    },
+    {
+      "path": "docs/performance-intelligence/identity-profiler-v1/EDGEIQ_IDENTITY_REPOSITORY_PROFILER_V1_AUDIT.md",
+      "size_bytes": 2901,
+      "sha256": "3b68847982dd9e94743cde8aa241beeb97e5a9dc47cc2c4f25abd43c18c85b13"
+    },
+    {
+      "path": "docs/performance-intelligence/identity-profiler-v1/edgeiq_identity_repository_profiling_errors_v1.csv",
+      "size_bytes": 758,
+      "sha256": "8b7dbdda7a504396cf362f00d797e51258b5be7abf76f7aafe39e8f0c7e38c60"
+    },
+    {
+      "path": "docs/performance-intelligence/identity-profiler-v1/edgeiq_identity_repository_schema_validation_v1.json",
+      "size_bytes": 647,
+      "sha256": "fe7f629719fb627cce65b4e85d4e6ccc4a9289550e35de069807c0bfe1bc3f4a"
+    }
+  ]
+}

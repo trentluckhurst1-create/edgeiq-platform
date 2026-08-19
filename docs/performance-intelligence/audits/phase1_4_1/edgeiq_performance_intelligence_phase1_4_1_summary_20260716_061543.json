@@ -1,0 +1,78 @@
+{
+  "audit_name": "EDGEiQ Performance Intelligence Phase 1.4.1 Durable Horse Identity Source Validation",
+  "generated_utc": "2026-07-15T20:15:53.852071+00:00",
+  "audit_version": "DURABLE_HORSE_IDENTITY_SOURCE_VALIDATION_V0_1",
+  "status": "DURABLE_HORSE_IDENTITY_SOURCE_VALIDATION_PASS",
+  "production_data_modified": false,
+  "canonical_horse_ids_generated": 0,
+  "source": "public/data/horses_master.csv",
+  "source_sha256": "94ec40935661e6a1b2b5a8e8a6f856e10bc631107bccdfa733946990415fe297",
+  "source_rows": 473,
+  "complete_core_identity_rows": 0,
+  "blank_code_rows": 0,
+  "blank_name_rows": 0,
+  "invalid_dob_rows": 0,
+  "master_horse_codes": 448,
+  "valid_master_horse_codes": 448,
+  "unique_code_groups": 424,
+  "exact_duplicate_code_groups": 24,
+  "conflicting_code_groups": 0,
+  "ambiguous_normalised_names": 0,
+  "historical_result_rows": 879784,
+  "historical_rows_with_horse_code": 879784,
+  "historical_rows_without_horse_code": 0,
+  "historical_distinct_horse_codes": 97112,
+  "historical_matched_horse_codes": 0,
+  "historical_unmatched_horse_codes": 97112,
+  "historical_matched_rows": 0,
+  "historical_unmatched_rows": 879784,
+  "performance_coverage_pct": 0.0,
+  "coded_performance_coverage_pct": 0.0,
+  "checks": [
+    {
+      "check": "HORSES_MASTER_REQUIRED_SCHEMA",
+      "passed": true,
+      "observed": "horse_code|horse_name|dob|sire|dam"
+    },
+    {
+      "check": "HORSE_CODE_NOT_BLANK",
+      "passed": true,
+      "observed": 0
+    },
+    {
+      "check": "HORSE_NAME_NOT_BLANK",
+      "passed": true,
+      "observed": 0
+    },
+    {
+      "check": "DOB_PARSE_VALID",
+      "passed": true,
+      "observed": 0
+    },
+    {
+      "check": "HORSE_CODE_CONFLICTS",
+      "passed": true,
+      "observed": 0
+    },
+    {
+      "check": "CANONICAL_HORSE_NOT_YET_MATERIALISED",
+      "passed": true,
+      "observed": "ALL_CANONICAL_HORSE_IDS_BLANK"
+    },
+    {
+      "check": "AUTOMATIC_PROMOTION_DISABLED",
+      "passed": true,
+      "observed": "NO_AUTOMATIC_PROMOTION"
+    }
+  ],
+  "failed_checks": [],
+  "identity_decision": "HORSE_CODE_VALIDATED_AS_DURABLE_REGISTRATION_IDENTITY_CANDIDATE",
+  "canonical_horse_status": "ELIGIBLE_FOR_GOVERNED_CANONICAL_MATERIALISATION_PROTOTYPE",
+  "next_stage": "Phase 1.4.2 build canonical horse dimension prototype for validated horse codes and preserve unresolved coverage separately.",
+  "outputs": {
+    "master_profile": "docs/performance-intelligence/prototypes/phase1_4_1/edgeiq_horses_master_profile_v0_1_20260716_061543.csv",
+    "code_conflicts": "docs/performance-intelligence/audits/phase1_4_1/edgeiq_horse_code_conflicts_v0_1_20260716_061543.csv",
+    "name_ambiguity": "docs/performance-intelligence/audits/phase1_4_1/edgeiq_horse_name_ambiguity_v0_1_20260716_061543.csv",
+    "result_linkage": "docs/performance-intelligence/prototypes/phase1_4_1/edgeiq_horse_code_result_linkage_v0_1_20260716_061543.csv"
+  }
+}

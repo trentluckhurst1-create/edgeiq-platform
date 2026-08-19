@@ -1,0 +1,57 @@
+{
+  "audit": "EDGEIQ_TARGET_001_COMPLETION_AUDIT_V1",
+  "audited_at_utc": "2026-07-28T19:55:47Z",
+  "status": "PASS",
+  "counts": {
+    "race_entry_rows": 204,
+    "declared_active_race_entries": 188,
+    "horse_performance_rating_rows": 24,
+    "active_entries_with_any_rating_identity_overlap": 1,
+    "active_entries_with_prior_rating": 1,
+    "active_entries_with_rating_but_no_prior_rating": 0,
+    "snapshot_rows": 1
+  },
+  "rejection_reasons": {
+    "NOT_DECLARED_OR_SCRATCHED": 16,
+    "NO_RATING_IDENTITY_OVERLAP": 187
+  },
+  "selected_snapshot_horses": [
+    "Triple Triple"
+  ],
+  "checks": [
+    {
+      "check": "snapshot_file_populated",
+      "status": "PASS",
+      "detail": 1
+    },
+    {
+      "check": "canonical_audit_passed",
+      "status": "PASS",
+      "detail": "PASS"
+    },
+    {
+      "check": "temporal_boundary_clean",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "check": "snapshot_ids_unique",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "check": "one_snapshot_per_race_entry",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "check": "current_contract_adapter_lineage_present",
+      "status": "PASS",
+      "detail": {
+        "adapter_source_rows": 1,
+        "snapshot_rows": 1
+      }
+    }
+  ],
+  "verdict": "TARGET_001_RECOVERED_WITH_CURRENT_CONTRACT_ADAPTER"
+}

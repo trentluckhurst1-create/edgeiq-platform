@@ -1,0 +1,12 @@
+{
+  "unit": "TARGET_002_STANDARD_TIME_SOURCE_DECISION_V1",
+  "target_output": "public/data/edgeiq_standard_time_fact_v1.csv",
+  "selected_resolution": "HISTORICAL_RESULTS_WAREHOUSE_BRIDGE_WHEN_ACCUMULATION_HAS_ZERO_READY_GROUPS",
+  "reason": "Current Racing.com speed benchmark accumulation has 12 groups and zero ready groups; governed historical results warehouse has winner timing coverage sufficient for track-distance standard times.",
+  "minimum_required_sample": 20,
+  "thresholds_weakened": false,
+  "condition_course_surface_adjustments_added": false,
+  "source_authority": "public/data/edgeiq_historical_results_warehouse_v2_graphql.csv",
+  "fallback_only_when_ready_accumulation_groups": 0,
+  "no_fabrication": true
+}

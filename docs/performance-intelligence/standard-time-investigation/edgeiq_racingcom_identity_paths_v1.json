@@ -1,0 +1,21 @@
+{
+  "candidate_occurrence_count": 4364,
+  "candidate_path_count": 929,
+  "diagnostic": "EDGEIQ_RACINGCOM_IDENTITY_PATHS_V1",
+  "generated_utc": "2026-07-22T07:22:06.219763+00:00",
+  "governance": {
+    "builders_modified": false,
+    "fabricated_data": false,
+    "governed_outputs_modified": false,
+    "read_only": true,
+    "thresholds_modified": false
+  },
+  "population": {
+    "invalid_json_unique_contents": 123,
+    "raw_files": 602,
+    "unique_contents": 236,
+    "valid_json_unique_contents": 113
+  },
+  "raw_directory": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\outputs\\sectionals\\raw\\VIC\\racingcom_full_payloads",
+  "top_level_schema_count": 2
+}

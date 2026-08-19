@@ -1,0 +1,20 @@
+{
+  "main_effect": {
+    "date_span_days": 365,
+    "horses": 40,
+    "observations": 100,
+    "races": 25
+  },
+  "three_or_more_dimensional_interaction": {
+    "date_span_days": 730,
+    "horses": 100,
+    "observations": 250,
+    "races": 60
+  },
+  "two_dimensional_interaction": {
+    "date_span_days": 365,
+    "horses": 60,
+    "observations": 150,
+    "races": 40
+  }
+}

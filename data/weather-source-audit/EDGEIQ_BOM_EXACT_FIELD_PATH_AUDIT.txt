@@ -1,0 +1,68 @@
+EDGEIQ BOM EXACT FIELD PATH AUDIT
+============================================================
+
+
+============================================================
+GEELONG
+============================================================
+Source: C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\data\weather-source-audit\bom-live\87184\latest_raw.json
+
+obs.datetime_utc = 2026-07-10T03:30:00Z
+obs.precip.10min_total_mm = 0.0
+obs.precip.1h_total_mm = 0.0
+obs.precip.24h_0900lct_total_mm = 0.0
+obs.precip.since_0000lct_total_mm = 0.0
+obs.precip.since_0900lct_total_mm = 0.0
+obs.temp.apparent_1min_cel = 9.63
+obs.temp.dew_pnt_1min_cel = 7.02
+obs.temp.dry_bulb_1min_cel = 11.9
+obs.temp.dry_bulb_max_cel = 12.8
+obs.temp.dry_bulb_max_time_utc = 2026-07-10T02:28:00Z
+obs.temp.dry_bulb_min_cel = 0.2
+obs.temp.dry_bulb_min_time_utc = 2026-07-09T19:49:00Z
+obs.temp.rel_hum_percent = 72.0
+obs.temp.wet_bulb_1min_avg_cel = 9.57
+obs.temp.wet_bulb_depression_cel = 2.33
+obs.temp.wet_bulb_globe_shade_cel = 10.27
+obs.wind.dirn_10m_ord = NNE
+obs.wind.gust_10m_max_utc = 2026-07-10T02:50:00Z
+obs.wind.gust_dirn_10m_deg_t = 21.0
+obs.wind.gust_speed_10m_max_mps = 3.344
+obs.wind.gust_speed_10m_mps = 3.087
+obs.wind.speed_10m_mps = 2.181
+stn.identity.bom_stn_name = Geelong Racecourse
+stn.location.lat_dec_deg = -38.1737
+stn.location.long_dec_deg = 144.3766
+
+============================================================
+HAMILTON
+============================================================
+Source: C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\data\weather-source-audit\bom-live\90173\latest_raw.json
+
+obs.datetime_utc = 2026-07-10T03:30:00Z
+obs.precip.10min_total_mm = 0.0
+obs.precip.1h_total_mm = 0.0
+obs.precip.24h_0900lct_total_mm = 0.0
+obs.precip.since_0000lct_total_mm = 0.0
+obs.precip.since_0900lct_total_mm = 0.0
+obs.temp.apparent_1min_cel = 8.79
+obs.temp.dew_pnt_1min_cel = 8.87
+obs.temp.dry_bulb_1min_cel = 13.0
+obs.temp.dry_bulb_max_cel = 13.2
+obs.temp.dry_bulb_max_time_utc = 2026-07-10T02:43:00Z
+obs.temp.dry_bulb_min_cel = 4.3
+obs.temp.dry_bulb_min_time_utc = 2026-07-09T18:06:00Z
+obs.temp.rel_hum_percent = 76.0
+obs.temp.wet_bulb_1min_avg_cel = 10.9
+obs.temp.wet_bulb_depression_cel = 2.1
+obs.temp.wet_bulb_globe_shade_cel = 11.53
+obs.temp.wet_bulb_globe_sun_cel = 15.79
+obs.wind.dirn_10m_ord = N
+obs.wind.gust_10m_max_utc = 2026-07-10T01:12:00Z
+obs.wind.gust_dirn_10m_deg_t = 359.0
+obs.wind.gust_speed_10m_max_mps = 9.26
+obs.wind.gust_speed_10m_mps = 8.231
+obs.wind.speed_10m_mps = 6.379
+stn.identity.bom_stn_name = Hamilton
+stn.location.lat_dec_deg = -37.6486
+stn.location.long_dec_deg = 142.0636

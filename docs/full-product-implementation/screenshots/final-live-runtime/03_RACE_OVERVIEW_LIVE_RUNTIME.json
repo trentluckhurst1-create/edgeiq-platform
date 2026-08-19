@@ -1,0 +1,23 @@
+{
+  "workspace": "03_RACE_OVERVIEW",
+  "label": "RACE",
+  "captureErrors": [],
+  "mounted": [
+    {
+      "component": "RaceIntelligenceWorkspace",
+      "key": "RACE",
+      "tag": "SECTION",
+      "className": "eiq-race-workspace eiq-race-workspace--race"
+    }
+  ],
+  "mountedComponent": "RaceIntelligenceWorkspace",
+  "mountedKey": "RACE",
+  "selectedMeeting": "2026-07-17|WANGARATTA",
+  "selectedRace": null,
+  "activeSection": "race",
+  "viewLevel": "race",
+  "runnerCount": 1,
+  "dataAvailability": "PARTIAL_OR_PENDING",
+  "bodySample": "EDGEiQ\nRACE INTELLIGENCE\nHOME\nMEETINGS\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nEPI\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nRESULTS\nLAB\nCOMPARE\nREVIEW\nSETTINGS\nEDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM\nInformation is not Intelligence. Evidence leads. Precision decides.\nSUN, 19 JULY 2026\n06:49 pm\nAEDT\n\nMEETINGS › WANGARATTA › RACE 1\n\nRace 1 Current Race -\nWangaratta\n2026-07-17\nTime unavailable\nDistance unavailable\nSurface unavailable\nPrizemoney: Unavailable\nWeather unavailable\nBACK TO RACES\nRACE OVERVIEW\nFIELD & RUNNERS\nFORM GUIDE\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nRESULTS\nRACE SUMMARY\nRace\n1\nName\nCurrent Race\nClass\nUnavailable\nDistance\nUnavailable\nPrize Money\nUnavailable\nSurface\nUnavailable\nRail\nUnavailable\nTrack Rating\nUnavailable\nFirst Race\nUnavailable\nLast Race\nUnavailable\nRACE CONDITIONS\nTrack Rating\nUnavailable\nRail Position\nUnavailable\nTrack Bias\nUnavailable\nWind\nUnavailable\nTemperature\nUnavailable\nHumidity\nUnavailable\nRain (24h)\nUnavailable\nRain (7d)\nUnavailable\nPenetrometer\nUnavailable\nMEETING INFORMATION\nTrack Type\nUnavailable\nTrack Circumference\nUnavailable\nStraight\nUnavailable\nDirection\nUnavailable\nRail Position\nUnavailable\nPenetrometer\nUnavailable\nIrrigation (24h)\nUnavailable\nRain (7 days)\nUnavailable\nWind\nUnavailable\nTemperature\nUnavailable\nHumidity\nUnavailable\nPressure\nUnavailable\nRACES AT THIS MEETING\nRACE\tTIME\tNAME\tDISTANCE\tCLASS\tPRIZEMONEY\tCONDITIONS\tSTATUS\tVIEW\nRace list is unavailable for this meeting.\nRace list unavailable\nCurrent\nCompleted\nAbandoned\nPostponed\nQUICK ACTIONS\nDownload Race Card\nPrint Race Card\nAdd Race Notes\nCompare Races\nEDGEiQ Racing Intelligence Operating System\nBuild: 1.0.0\nData as at: 06:49 pm AEDT",
+  "renderedPath": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-live-runtime/03_RACE_OVERVIEW_LIVE_RENDERED.png"
+}

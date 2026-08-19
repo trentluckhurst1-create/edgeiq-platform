@@ -1,0 +1,43 @@
+{
+  "checks": [
+    {
+      "check_id": "required_file_availability",
+      "detail": "all six governed target files available",
+      "status": "PASS"
+    },
+    {
+      "check_id": "raw_identity_extraction",
+      "detail": "graphql_missing=0; observation_missing=11080; performance_missing=0; performance_parse_failures=0",
+      "status": "PARTIAL"
+    },
+    {
+      "check_id": "observation_double_ingestion_check",
+      "detail": "raw identities present in both monthly files and consolidated warehouse=814236",
+      "status": "FAIL"
+    },
+    {
+      "check_id": "graphql_observation_raw_identity_overlap",
+      "detail": "intersection=879695; graphql_only=0; observation_only=1885",
+      "status": "PASS"
+    },
+    {
+      "check_id": "graphql_performance_bridge",
+      "detail": "intersection=879695; graphql_only=0; performance_only=0",
+      "status": "PASS"
+    },
+    {
+      "check_id": "snapshot_source_row_lineage",
+      "detail": "valid_rows=879784; invalid_rows=0; sha_matches=879784; sha_mismatches=0",
+      "status": "PASS"
+    },
+    {
+      "check_id": "epi_parent_population",
+      "detail": "epi_rows=533387; unique_ids=533387; missing_ids=0; not_in_parent=0",
+      "status": "PASS"
+    }
+  ],
+  "generated_utc": "2026-07-27T03:41:24+00:00",
+  "overall_status": "FAIL",
+  "program_id": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE1A_4_2_RAW_IDENTITY_BRIDGE_DOUBLE_INGESTION_AUDIT_V1",
+  "program_version": "1.0.0"
+}

@@ -1,0 +1,4 @@
+source,status,checked_at,detail
+Racing.com meeting catalogue appv2,PUBLIC_ANONYMOUS_CONFIRMED,2026-07-29T04:22:26Z,Safe public catalogue endpoint used for meeting discovery
+Racing.com GraphQL runner sectionals,SECTIONALS_ACCESS_REQUIRED,2026-07-29T04:22:26Z,Exact request is known; clean anonymous replay requires approved application credential
+Racing.com visible public sectionals,VISIBLE_PAGE_SCHEMA_CHANGED,2026-07-29T04:56:41Z,One or more pages could not be parsed or visible schema changed.

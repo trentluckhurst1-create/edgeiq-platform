@@ -1,0 +1,88 @@
+{
+  "unit": "RRV2_UNIT_010",
+  "version": "V1",
+  "verdict": "PASS",
+  "summary": {
+    "execution_row_count": 7,
+    "references_redirected": 2,
+    "snapshots_archived": 2,
+    "snapshots_retained": 3,
+    "build_pass": true,
+    "rollback_required": false,
+    "runtime_seconds": 230.99
+  },
+  "build_stdout": "docs/repository-recovery-v2/UNIT_010_BUILD_STDOUT.log",
+  "build_stderr": "docs/repository-recovery-v2/UNIT_010_BUILD_STDERR.log",
+  "execution": [
+    {
+      "item_type": "SCRIPT_REFERENCE",
+      "source_path": "scripts/fix_edgeiq_product_polish_encoding_v1.py",
+      "destination_path": "scripts/fix_edgeiq_product_polish_encoding_v1.py",
+      "action": "REDIRECT_TO_ACTIVE_SOURCE",
+      "pre_sha256": "5fc33c20ee4ba8a4d74206b0cf825c6ead786290494571914468c641a582d0b7",
+      "post_sha256": "f324e4bbdde6462ab9f28a9ffd962da418a3ef72f2d3e2e4f4a4d2570dc847c7",
+      "result": "PASS",
+      "detail": "src/edgeiq-os/race/RaceFileV3_STABLE_BEFORE_COMPONENT_EXTRACTION_20260709.tsx -> src/edgeiq-os/race/RaceFileV3.tsx"
+    },
+    {
+      "item_type": "SCRIPT_REFERENCE",
+      "source_path": "scripts/fix_edgeiq_product_polish_trademark_glyphs_v1.py",
+      "destination_path": "scripts/fix_edgeiq_product_polish_trademark_glyphs_v1.py",
+      "action": "REDIRECT_TO_ACTIVE_SOURCE",
+      "pre_sha256": "fb144b3517d27f2a4871236c8d5ee70845dd332e21aad2f19782bd53ab39608f",
+      "post_sha256": "b34a79c1f672424ec12934f0fceaa4a4eb9d096664189e024c1fb018cdfa48ab",
+      "result": "PASS",
+      "detail": "src/edgeiq-os/race/RaceFileV3_STABLE_BEFORE_COMPONENT_EXTRACTION_20260709.tsx -> src/edgeiq-os/race/RaceFileV3.tsx"
+    },
+    {
+      "item_type": "PROTECTED_SNAPSHOT",
+      "source_path": "src/edgeiq-os/race/RaceFileV3_STABLE_BEFORE_COMPONENT_EXTRACTION_20260709.tsx",
+      "destination_path": "docs/repository-recovery-v2/archive/protected-snapshots/src/edgeiq-os/race/RaceFileV3_STABLE_BEFORE_COMPONENT_EXTRACTION_20260709.tsx",
+      "action": "ARCHIVE",
+      "pre_sha256": "eb7c5442fd8a04e06593e8bbd0681a772b16ac0b21d628b845013f39c353d8fd",
+      "post_sha256": "eb7c5442fd8a04e06593e8bbd0681a772b16ac0b21d628b845013f39c353d8fd",
+      "result": "PASS",
+      "detail": "Moved with SHA256 identity preserved."
+    },
+    {
+      "item_type": "PROTECTED_SNAPSHOT",
+      "source_path": "src/edgeiq-os/styles/edgeiqOsV2_STABLE_BEFORE_COMPONENT_EXTRACTION_20260709.css",
+      "destination_path": "docs/repository-recovery-v2/archive/protected-snapshots/src/edgeiq-os/styles/edgeiqOsV2_STABLE_BEFORE_COMPONENT_EXTRACTION_20260709.css",
+      "action": "ARCHIVE",
+      "pre_sha256": "75167a6a05e376729f56b68dcda14fece41cceffdcde77969cedef4edb3b1f75",
+      "post_sha256": "75167a6a05e376729f56b68dcda14fece41cceffdcde77969cedef4edb3b1f75",
+      "result": "PASS",
+      "detail": "Moved with SHA256 identity preserved."
+    },
+    {
+      "item_type": "PROTECTED_SNAPSHOT",
+      "source_path": "src/components/RaceIntelligenceScreen_BEFORE_DNA_EXPLAINABILITY_UI_WIRE_V1.tsx",
+      "destination_path": "src/components/RaceIntelligenceScreen_BEFORE_DNA_EXPLAINABILITY_UI_WIRE_V1.tsx",
+      "action": "RETAIN",
+      "pre_sha256": "17e930637d91c79974a743653c8b6464624f326df0e39c985953eadb23db210e",
+      "post_sha256": "17e930637d91c79974a743653c8b6464624f326df0e39c985953eadb23db210e",
+      "result": "PASS",
+      "detail": "Retained because executable rollback dependency remains."
+    },
+    {
+      "item_type": "PROTECTED_SNAPSHOT",
+      "source_path": "src/components/RaceIntelligenceScreen_BEFORE_FACTOR_JOIN_KEY_FIX.tsx",
+      "destination_path": "src/components/RaceIntelligenceScreen_BEFORE_FACTOR_JOIN_KEY_FIX.tsx",
+      "action": "RETAIN",
+      "pre_sha256": "83f6f0e619f4c9dd6219ea49ba8458731b9aefd62f71ac8aaa53c515de163316",
+      "post_sha256": "83f6f0e619f4c9dd6219ea49ba8458731b9aefd62f71ac8aaa53c515de163316",
+      "result": "PASS",
+      "detail": "Retained because executable rollback dependency remains."
+    },
+    {
+      "item_type": "PROTECTED_SNAPSHOT",
+      "source_path": "src/components/RaceIntelligenceScreen_BEFORE_FACTOR_SCORECARD_V2_PY_PATCH.tsx",
+      "destination_path": "src/components/RaceIntelligenceScreen_BEFORE_FACTOR_SCORECARD_V2_PY_PATCH.tsx",
+      "action": "RETAIN",
+      "pre_sha256": "ed62257475132f1ef5cf9085cd9f943835d4095892b312e2785bc8b35f065cdc",
+      "post_sha256": "ed62257475132f1ef5cf9085cd9f943835d4095892b312e2785bc8b35f065cdc",
+      "result": "PASS",
+      "detail": "Retained because executable rollback dependency remains."
+    }
+  ]
+}

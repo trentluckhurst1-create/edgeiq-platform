@@ -1,0 +1,43 @@
+{
+  "checks": [
+    {
+      "check_id": "target_availability",
+      "detail": "all target datasets available",
+      "status": "PASS"
+    },
+    {
+      "check_id": "semantic_key_availability",
+      "detail": "unavailable=PERFORMANCE_WAREHOUSE_V1|CANONICAL_PERFORMANCE_FACTS_SNAPSHOT|HISTORICAL_RUN_OBSERVATION_FACT_V2|EPI_PERFORMANCE_FACT_V1",
+      "status": "PARTIAL"
+    },
+    {
+      "check_id": "semantic_key_population",
+      "detail": "semantic populations materialised",
+      "status": "PASS"
+    },
+    {
+      "check_id": "semantic_overlap_completed",
+      "detail": "comparable_pairs=1",
+      "status": "PASS"
+    },
+    {
+      "check_id": "observation_source_contribution_profile",
+      "detail": "source_contributions=2",
+      "status": "PASS"
+    },
+    {
+      "check_id": "semantic_duplicate_export",
+      "detail": "duplicate_groups_exported=6",
+      "status": "PASS"
+    },
+    {
+      "check_id": "active_builder_discovery",
+      "detail": "builder_references=105",
+      "status": "PASS"
+    }
+  ],
+  "generated_utc": "2026-07-27T03:31:35+00:00",
+  "overall_status": "PARTIAL",
+  "program_id": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE1A_4_SEMANTIC_IDENTITY_SOURCE_RECONCILIATION_V1",
+  "program_version": "1.0.0"
+}

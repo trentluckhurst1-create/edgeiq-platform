@@ -1,0 +1,27 @@
+{
+  "builder_version": "edgeiq_race_context_authority_fact_v1.1.0_official_visible_page_source",
+  "complete_race_context_races": 2,
+  "identity_bridge_requirement": "A durable shared horse identifier is required: Racing Australia horse ID plus Racing.com horse_code mapping, or an Australian Stud Book identifier available in both sources. Name-only bridges remain rejected.",
+  "inventory_status_counts": {
+    "FOUND": 3,
+    "NOT_FOUND": 2,
+    "PARTIAL": 5
+  },
+  "partial_or_blocked_races": 0,
+  "primary_blocker": "NONE",
+  "protected_systems": {
+    "governance_weakened": "NO",
+    "pricing_changed": "NO",
+    "probability_changed": "NO",
+    "ui_changed": "NO",
+    "v6_1_changed": "NO",
+    "v7_2g2_changed": "NO"
+  },
+  "race_class_source_rows": 2,
+  "race_context_status_counts": {
+    "COMPLETE_OFFICIAL_RACE_CONTEXT": 2
+  },
+  "rail_position_source_rows": 2,
+  "status": "PASS_VICTORIA_PERFORMANCE_INTELLIGENCE_COMPLETE",
+  "target_races": 2
+}

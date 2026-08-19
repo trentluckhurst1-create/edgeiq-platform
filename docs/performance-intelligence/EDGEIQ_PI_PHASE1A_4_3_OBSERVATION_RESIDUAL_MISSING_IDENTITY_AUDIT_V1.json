@@ -1,0 +1,33 @@
+{
+  "checks": [
+    {
+      "check_id": "required_files",
+      "detail": "GraphQL and observation files available",
+      "status": "PASS"
+    },
+    {
+      "check_id": "known_graphql_population_preserved",
+      "detail": "graphql_unique=879695; observation_contains=879695; graphql_missing_from_observation=0",
+      "status": "PASS"
+    },
+    {
+      "check_id": "observation_residual_classified",
+      "detail": "observation_only_unique_keys=1885",
+      "status": "PASS"
+    },
+    {
+      "check_id": "missing_identity_rows_classified",
+      "detail": "missing_identity_rows=11080",
+      "status": "PASS"
+    },
+    {
+      "check_id": "residual_source_resolution",
+      "detail": "residual_keys_from_other_classes=1263",
+      "status": "PARTIAL"
+    }
+  ],
+  "generated_utc": "2026-07-27T03:47:38+00:00",
+  "overall_status": "PARTIAL",
+  "program_id": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE1A_4_3_OBSERVATION_RESIDUAL_MISSING_IDENTITY_FORENSICS_V1",
+  "program_version": "1.0.0"
+}

@@ -1,0 +1,12 @@
+{
+  "audit_id": "EDGEIQ_EPI_HELPER_FUNCTION_EXTRACTION_V1",
+  "generated_at_utc": "2026-07-28T00:31:18.040801+00:00",
+  "primary_builder": "scripts/build_edgeiq_epi_workspace_terminal_feed_v1.py",
+  "eligible_python_files": 10994,
+  "target_functions_requested": 4,
+  "target_functions_found": 4,
+  "target_functions_missing": [],
+  "caller_rows": 313,
+  "dependency_rows": 14,
+  "status": "EVIDENCE_CAPTURED"
+}

@@ -1,0 +1,58 @@
+{
+  "approved_production": 0,
+  "lambda_diagnostics": [
+    {
+      "adjusted_bias": -1.6479074066756987,
+      "adjusted_mae": 4.70544045168153,
+      "adjusted_rmse": 8.257164656053567,
+      "baseline_bias": -1.2799129310344828,
+      "baseline_mae": 4.604603344827587,
+      "baseline_rmse": 8.108547950878899,
+      "regularisation_strength": 10.0,
+      "validation_rows": 29
+    },
+    {
+      "adjusted_bias": -1.5500069170398763,
+      "adjusted_mae": 4.677777241049666,
+      "adjusted_rmse": 8.208644168058864,
+      "baseline_bias": -1.2799129310344828,
+      "baseline_mae": 4.604603344827587,
+      "baseline_rmse": 8.108547950878899,
+      "regularisation_strength": 25.0,
+      "validation_rows": 29
+    },
+    {
+      "adjusted_bias": -1.471314265949997,
+      "adjusted_mae": 4.662069292055724,
+      "adjusted_rmse": 8.174827764021725,
+      "baseline_bias": -1.2799129310344828,
+      "baseline_mae": 4.604603344827587,
+      "baseline_rmse": 8.108547950878899,
+      "regularisation_strength": 50.0,
+      "validation_rows": 29
+    },
+    {
+      "adjusted_bias": -1.402863207605809,
+      "adjusted_mae": 4.644052825414024,
+      "adjusted_rmse": 8.148767272852513,
+      "baseline_bias": -1.2799129310344828,
+      "baseline_mae": 4.604603344827587,
+      "baseline_rmse": 8.108547950878899,
+      "regularisation_strength": 100.0,
+      "validation_rows": 29
+    },
+    {
+      "adjusted_bias": -1.3400077837655402,
+      "adjusted_mae": 4.624762155792487,
+      "adjusted_rmse": 8.12724946362313,
+      "baseline_bias": -1.2799129310344828,
+      "baseline_mae": 4.604603344827587,
+      "baseline_rmse": 8.108547950878899,
+      "regularisation_strength": 250.0,
+      "validation_rows": 29
+    }
+  ],
+  "regularisation_strength": 250.0,
+  "rejected": 531,
+  "research_only": 0
+}

@@ -1,0 +1,871 @@
+EDGEIQ FORM GUIDE INNER VALUE COVERAGE AUDIT
+==============================================================================
+HISTORICAL_RUNS=5039
+
+HISTORICAL INTELLIGENCE INNER-VALUE COVERAGE
+------------------------------------------------------------------------------
+performanceRating: 0/5039 (0.00%)
+historicalEpi: 0/5039 (0.00%)
+raceRating: 212/5039 (4.21%)
+historicalEarlySpeed: 2/5039 (0.04%)
+historicalLateSpeed: 2/5039 (0.04%)
+historicalSpeedRating: 3789/5039 (75.19%)
+historicalSuitability: 0/5039 (0.00%)
+historicalFormMomentum: 0/5039 (0.00%)
+benchmarkEvidence: 4113/5039 (81.62%)
+
+SECTIONAL INNER-VALUE COVERAGE
+------------------------------------------------------------------------------
+index800To600: 1030/5039 (20.44%)
+index600To400: 1030/5039 (20.44%)
+index400To200: 3/5039 (0.06%)
+index200ToFinish: 1030/5039 (20.44%)
+finishLen: 4113/5039 (81.62%)
+runsWithAnySectionalMove: 1030/5039
+runsWithAllFourSectionalMoves: 3/5039
+
+SOURCE COUNTS
+==============================================================================
+
+performanceRating
+
+historicalEpi
+
+raceRating
+  run_ratings_v1.csv:run_rating: 212
+
+historicalEarlySpeed
+  edgeiq_speed_master_v1.csv:early_rating/early_raw: 2
+
+historicalLateSpeed
+  edgeiq_speed_master_v1.csv:late_rating/late_raw: 2
+
+historicalSpeedRating
+  edgeiq_speed_master_v1.csv:speed_rating/speed_rating_raw: 3789
+
+historicalSuitability
+
+historicalFormMomentum
+
+benchmarkEvidence
+  edgeiq_form_sectional_profile_feed_v1.csv:finish_len: 4113
+
+sectionalIndices.index800To600
+  edgeiq_form_sectional_profile_feed_v1.csv:split_lengths: 1030
+
+sectionalIndices.index600To400
+  edgeiq_form_sectional_profile_feed_v1.csv:split_lengths: 1030
+
+sectionalIndices.index400To200
+  edgeiq_form_sectional_profile_feed_v1.csv:split_lengths: 3
+
+sectionalIndices.index200ToFinish
+  edgeiq_form_sectional_profile_feed_v1.csv:split_lengths: 1030
+
+sectionalIndices.finishLen
+  edgeiq_form_sectional_profile_feed_v1.csv:finish_len: 4113
+
+POPULATED EXAMPLES
+==============================================================================
+
+historicalEpi
+------------------------------------------------------------------------------
+NO POPULATED EXAMPLES
+
+raceRating
+------------------------------------------------------------------------------
+{
+  "meeting": "Geelong",
+  "raceDate": "2026-07-10",
+  "currentRaceNumber": 4,
+  "runnerId": "5346631",
+  "runnerName": "Foxsky",
+  "runDate": "2026-03-29",
+  "runTrack": "SALE",
+  "runRaceNumber": 2,
+  "raceRating": {
+    "value": 71.36372812697233,
+    "source": "run_ratings_v1.csv:run_rating",
+    "version": "run_ratings_v1",
+    "asAt": null
+  }
+}
+
+{
+  "meeting": "Geelong",
+  "raceDate": "2026-07-10",
+  "currentRaceNumber": 4,
+  "runnerId": "5346631",
+  "runnerName": "Foxsky",
+  "runDate": "2026-03-12",
+  "runTrack": "SOUTHSIDE PAKENHAM",
+  "runRaceNumber": 2,
+  "raceRating": {
+    "value": 62.53708876224452,
+    "source": "run_ratings_v1.csv:run_rating",
+    "version": "run_ratings_v1",
+    "asAt": null
+  }
+}
+
+{
+  "meeting": "Geelong",
+  "raceDate": "2026-07-10",
+  "currentRaceNumber": 4,
+  "runnerId": "5346631",
+  "runnerName": "Foxsky",
+  "runDate": "2026-02-25",
+  "runTrack": "CAULFIELD HEATH",
+  "runRaceNumber": 15,
+  "raceRating": {
+    "value": 71.6125,
+    "source": "run_ratings_v1.csv:run_rating",
+    "version": "run_ratings_v1",
+    "asAt": null
+  }
+}
+
+{
+  "meeting": "Geelong",
+  "raceDate": "2026-07-10",
+  "currentRaceNumber": 5,
+  "runnerId": "5331084",
+  "runnerName": "Untethered Soul",
+  "runDate": "2026-03-07",
+  "runTrack": "TOWONG",
+  "runRaceNumber": 5,
+  "raceRating": {
+    "value": 73.07550623622856,
+    "source": "run_ratings_v1.csv:run_rating",
+    "version": "run_ratings_v1",
+    "asAt": null
+  }
+}
+
+{
+  "meeting": "Geelong",
+  "raceDate": "2026-07-10",
+  "currentRaceNumber": 5,
+  "runnerId": "5331084",
+  "runnerName": "Untethered Soul",
+  "runDate": "2026-02-13",
+  "runTrack": "BET365 PARK KILMORE",
+  "runRaceNumber": 5,
+  "raceRating": {
+    "value": 66.15580425402734,
+    "source": "run_ratings_v1.csv:run_rating",
+    "version": "run_ratings_v1",
+    "asAt": null
+  }
+}
+
+{
+  "meeting": "Geelong",
+  "raceDate": "2026-07-10",
+  "currentRaceNumber": 5,
+  "runnerId": "5285104",
+  "runnerName": "Gambu",
+  "runDate": "2026-03-22",
+  "runTrack": "LADBROKES GEELONG",
+  "runRaceNumber": 7,
+  "raceRating": {
+    "value": 68.57559554849226,
+    "source": "run_ratings_v1.csv:run_rating",
+    "version": "run_ratings_v1",
+    "asAt": null
+  }
+}
+
+{
+  "meeting": "Geelong",
+  "raceDate": "2026-07-10",
+  "currentRaceNumber": 5,
+  "runnerId": "5285104",
+  "runnerName": "Gambu",
+  "runDate": "2026-03-11",
+  "runTrack": "BET365 HAMILTON",
+  "runRaceNumber": 10,
+  "raceRating": {
+    "value": 58.2,
+    "source": "run_ratings_v1.csv:run_rating",
+    "version": "run_ratings_v1",
+    "asAt": null
+  }
+}
+
+{
+  "meeting": "Geelong",
+  "raceDate": "2026-07-10",
+  "currentRaceNumber": 5,
+  "runnerId": "5285104",
+  "runnerName": "Gambu",
+  "runDate": "2025-07-27",
+  "runTrack": "CASTERTON",
+  "runRaceNumber": 2,
+  "raceRating": {
+    "value": 65.89697699569093,
+    "source": "run_ratings_v1.csv:run_rating",
+    "version": "run_ratings_v1",
+    "asAt": null
+  }
+}
+
+{
+  "meeting": "Geelong",
+  "raceDate": "2026-07-10",
+  "currentRaceNumber": 5,
+  "runnerId": "5285104",
+  "runnerName": "Gambu",
+  "runDate": "2025-07-20",
+  "runTrack": "BET365 HAMILTON",
+  "runRaceNumber": 4,
+  "raceRating": {
+    "value": 66.8503024746174,
+    "source": "run_ratings_v1.csv:run_rating",
+    "version": "run_ratings_v1",
+    "asAt": null
+  }
+}
+
+{
+  "meeting": "Geelong",
+  "raceDate": "2026-07-10",
+  "currentRaceNumber": 5,
+  "runnerId": "5285104",
+  "runnerName": "Gambu",
+  "runDate": "2025-07-06",
+  "runTrack": "WARRNAMBOOL",
+  "runRaceNumber": 3,
+  "raceRating": {
+    "value": 64.38617883711281,
+    "source": "run_ratings_v1.csv:run_rating",
+    "version": "run_ratings_v1",
+    "asAt": null
+  }
+}
+
+
+historicalSpeedRating
+------------------------------------------------------------------------------
+{
+  "meeting": "Geelong",
+  "raceDate": "2026-07-10",
+  "currentRaceNumber": 1,
+  "runnerId": "5355786",
+  "runnerName": "Caitlin's Punch",
+  "runDate": "2026-02-10",
+  "runTrack": "BET365 PARK KYNETON",
+  "runRaceNumber": 1,
+  "historicalSpeedRating": {
+    "value": 4.0,
+    "source": "edgeiq_speed_master_v1.csv:speed_rating/speed_rating_raw",
+    "version": "speed_master_v1",
+    "asAt": null
+  }
+}
+
+{
+  "meeting": "Geelong",
+  "raceDate": "2026-07-10",
+  "currentRaceNumber": 1,
+  "runnerId": "5355786",
+  "runnerName": "Caitlin's Punch",
+  "runDate": "2026-01-29",
+  "runTrack": "CAULFIELD HEATH",
+  "runRaceNumber": 15,
+  "historicalSpeedRating": {
+    "value": 0.0,
+    "source": "edgeiq_speed_master_v1.csv:speed_rating/speed_rating_raw",
+    "version": "speed_master_v1",
+    "asAt": null
+  }
+}
+
+{
+  "meeting": "Geelong",
+  "raceDate": "2026-07-10",
+  "currentRaceNumber": 1,
+  "runnerId": "5348516",
+  "runnerName": "Ernie",
+  "runDate": "2025-10-30",
+  "runTrack": "CAULFIELD HEATH",
+  "runRaceNumber": 18,
+  "historicalSpeedRating": {
+    "value": 4.0,
+    "source": "edgeiq_speed_master_v1.csv:speed_rating/speed_rating_raw",
+    "version": "speed_master_v1",
+    "asAt": null
+  }
+}
+
+{
+  "meeting": "Geelong",
+  "raceDate": "2026-07-10",
+  "currentRaceNumber": 1,
+  "runnerId": "5350673",
+  "runnerName": "Gasoline Rainbow",
+  "runDate": "2026-06-24",
+  "runTrack": "SPORTSBET-BALLARAT",
+  "runRaceNumber": 2,
+  "historicalSpeedRating": {
+    "value": 10.0,
+    "source": "edgeiq_speed_master_v1.csv:speed_rating/speed_rating_raw",
+    "version": "speed_master_v1",
+    "asAt": null
+  }
+}
+
+{
+  "meeting": "Geelong",
+  "raceDate": "2026-07-10",
+  "currentRaceNumber": 1,
+  "runnerId": "5350673",
+  "runnerName": "Gasoline Rainbow",
+  "runDate": "2026-06-20",
+  "runTrack": "DONALD",
+  "runRaceNumber": 2,
+  "historicalSpeedRating": {
+    "value": 8.0,
+    "source": "edgeiq_speed_master_v1.csv:speed_rating/speed_rating_raw",
+    "version": "speed_master_v1",
+    "asAt": null
+  }
+}
+
+{
+  "meeting": "Geelong",
+  "raceDate": "2026-07-10",
+  "currentRaceNumber": 1,
+  "runnerId": "5350673",
+  "runnerName": "Gasoline Rainbow",
+  "runDate": "2026-01-02",
+  "runTrack": "BET365 TERANG",
+  "runRaceNumber": 1,
+  "historicalSpeedRating": {
+    "value": 4.0,
+    "source": "edgeiq_speed_master_v1.csv:speed_rating/speed_rating_raw",
+    "version": "speed_master_v1",
+    "asAt": null
+  }
+}
+
+{
+  "meeting": "Geelong",
+  "raceDate": "2026-07-10",
+  "currentRaceNumber": 1,
+  "runnerId": "5350673",
+  "runnerName": "Gasoline Rainbow",
+  "runDate": "2025-12-16",
+  "runTrack": "BET365 TERANG",
+  "runRaceNumber": 3,
+  "historicalSpeedRating": {
+    "value": 4.0,
+    "source": "edgeiq_speed_master_v1.csv:speed_rating/speed_rating_raw",
+    "version": "speed_master_v1",
+    "asAt": null
+  }
+}
+
+{
+  "meeting": "Geelong",
+  "raceDate": "2026-07-10",
+  "currentRaceNumber": 1,
+  "runnerId": "5354632",
+  "runnerName": "Ice Quake",
+  "runDate": "2026-06-18",
+  "runTrack": "MOE",
+  "runRaceNumber": 2,
+  "historicalSpeedRating": {
+    "value": 9.0,
+    "source": "edgeiq_speed_master_v1.csv:speed_rating/speed_rating_raw",
+    "version": "speed_master_v1",
+    "asAt": null
+  }
+}
+
+{
+  "meeting": "Geelong",
+  "raceDate": "2026-07-10",
+  "currentRaceNumber": 1,
+  "runnerId": "5354632",
+  "runnerName": "Ice Quake",
+  "runDate": "2026-06-01",
+  "runTrack": "BET365 PARK KILMORE",
+  "runRaceNumber": 1,
+  "historicalSpeedRating": {
+    "value": 8.0,
+    "source": "edgeiq_speed_master_v1.csv:speed_rating/speed_rating_raw",
+    "version": "speed_master_v1",
+    "asAt": null
+  }
+}
+
+{
+  "meeting": "Geelong",
+  "raceDate": "2026-07-10",
+  "currentRaceNumber": 1,
+  "runnerId": "5354632",
+  "runnerName": "Ice Quake",
+  "runDate": "2025-09-25",
+  "runTrack": "LADBROKES GEELONG",
+  "runRaceNumber": 1,
+  "historicalSpeedRating": {
+    "value": 4.0,
+    "source": "edgeiq_speed_master_v1.csv:speed_rating/speed_rating_raw",
+    "version": "speed_master_v1",
+    "asAt": null
+  }
+}
+
+
+sectionalMoves
+------------------------------------------------------------------------------
+{
+  "meeting": "Geelong",
+  "raceDate": "2026-07-10",
+  "currentRaceNumber": 1,
+  "runnerId": "5348516",
+  "runnerName": "Ernie",
+  "runDate": "2026-05-29",
+  "runTrack": "BENDIGO",
+  "runRaceNumber": 4,
+  "sectionalIndices": {
+    "index800To600": {
+      "value": 3.17,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:split_lengths",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "index600To400": {
+      "value": 1.84,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:split_lengths",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "index400To200": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "index200ToFinish": {
+      "value": 0.28,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:split_lengths",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "finishLen": {
+      "value": 4.87,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:finish_len",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "benchmarkMode": "CLASS_BENCHMARK",
+    "signConvention": "As supplied by standardised sectionals feed: lengths versus benchmark."
+  }
+}
+
+{
+  "meeting": "Geelong",
+  "raceDate": "2026-07-10",
+  "currentRaceNumber": 1,
+  "runnerId": "5347754",
+  "runnerName": "Lyrebird Lady",
+  "runDate": "2026-05-01",
+  "runTrack": "LADBROKES GEELONG",
+  "runRaceNumber": 3,
+  "sectionalIndices": {
+    "index800To600": {
+      "value": -0.14,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:split_lengths",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "index600To400": {
+      "value": -227.0,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:split_lengths",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "index400To200": {
+      "value": -295.71,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:split_lengths",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "index200ToFinish": {
+      "value": -362.24,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:split_lengths",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "finishLen": {
+      "value": 4.15,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:finish_len",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "benchmarkMode": "CLASS_BENCHMARK",
+    "signConvention": "As supplied by standardised sectionals feed: lengths versus benchmark."
+  }
+}
+
+{
+  "meeting": "Geelong",
+  "raceDate": "2026-07-10",
+  "currentRaceNumber": 1,
+  "runnerId": "5374300",
+  "runnerName": "Mission Of Joy",
+  "runDate": "2025-12-10",
+  "runTrack": "SPORTSBET SANDOWN LAKESIDE",
+  "runRaceNumber": 3,
+  "sectionalIndices": {
+    "index800To600": {
+      "value": -0.24,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:split_lengths",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "index600To400": {
+      "value": 2.48,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:split_lengths",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "index400To200": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "index200ToFinish": {
+      "value": 1.76,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:split_lengths",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "finishLen": {
+      "value": 9.56,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:finish_len",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "benchmarkMode": "CLASS_BENCHMARK",
+    "signConvention": "As supplied by standardised sectionals feed: lengths versus benchmark."
+  }
+}
+
+{
+  "meeting": "Geelong",
+  "raceDate": "2026-07-10",
+  "currentRaceNumber": 1,
+  "runnerId": "5374300",
+  "runnerName": "Mission Of Joy",
+  "runDate": "2025-11-10",
+  "runTrack": "MORNINGTON",
+  "runRaceNumber": 3,
+  "sectionalIndices": {
+    "index800To600": {
+      "value": 0.88,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:split_lengths",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "index600To400": {
+      "value": 0.15,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:split_lengths",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "index400To200": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "index200ToFinish": {
+      "value": -1.95,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:split_lengths",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "finishLen": {
+      "value": -0.91,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:finish_len",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "benchmarkMode": "CLASS_BENCHMARK",
+    "signConvention": "As supplied by standardised sectionals feed: lengths versus benchmark."
+  }
+}
+
+{
+  "meeting": "Geelong",
+  "raceDate": "2026-07-10",
+  "currentRaceNumber": 1,
+  "runnerId": "5375657",
+  "runnerName": "Talavera",
+  "runDate": "2025-10-05",
+  "runTrack": "BENDIGO",
+  "runRaceNumber": 1,
+  "sectionalIndices": {
+    "index800To600": {
+      "value": 1.42,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:split_lengths",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "index600To400": {
+      "value": 1.03,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:split_lengths",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "index400To200": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "index200ToFinish": {
+      "value": -1.35,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:split_lengths",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "finishLen": {
+      "value": -0.45,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:finish_len",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "benchmarkMode": "CLASS_BENCHMARK",
+    "signConvention": "As supplied by standardised sectionals feed: lengths versus benchmark."
+  }
+}
+
+{
+  "meeting": "Geelong",
+  "raceDate": "2026-07-10",
+  "currentRaceNumber": 2,
+  "runnerId": "5308634",
+  "runnerName": "Back Of The Boat",
+  "runDate": "2026-05-22",
+  "runTrack": "LADBROKES GEELONG",
+  "runRaceNumber": 3,
+  "sectionalIndices": {
+    "index800To600": {
+      "value": 0.07,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:split_lengths",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "index600To400": {
+      "value": -0.36,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:split_lengths",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "index400To200": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "index200ToFinish": {
+      "value": 3.88,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:split_lengths",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "finishLen": {
+      "value": 3.61,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:finish_len",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "benchmarkMode": "CLASS_BENCHMARK",
+    "signConvention": "As supplied by standardised sectionals feed: lengths versus benchmark."
+  }
+}
+
+{
+  "meeting": "Geelong",
+  "raceDate": "2026-07-10",
+  "currentRaceNumber": 2,
+  "runnerId": "5308634",
+  "runnerName": "Back Of The Boat",
+  "runDate": "2026-04-22",
+  "runTrack": "LADBROKES GEELONG",
+  "runRaceNumber": 3,
+  "sectionalIndices": {
+    "index800To600": {
+      "value": 0.58,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:split_lengths",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "index600To400": {
+      "value": -0.11,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:split_lengths",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "index400To200": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "index200ToFinish": {
+      "value": -0.68,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:split_lengths",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "finishLen": {
+      "value": 2.64,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:finish_len",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "benchmarkMode": "CLASS_BENCHMARK",
+    "signConvention": "As supplied by standardised sectionals feed: lengths versus benchmark."
+  }
+}
+
+{
+  "meeting": "Geelong",
+  "raceDate": "2026-07-10",
+  "currentRaceNumber": 2,
+  "runnerId": "5308634",
+  "runnerName": "Back Of The Boat",
+  "runDate": "2026-04-10",
+  "runTrack": "LADBROKES GEELONG",
+  "runRaceNumber": 5,
+  "sectionalIndices": {
+    "index800To600": {
+      "value": -0.9,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:split_lengths",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "index600To400": {
+      "value": -0.52,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:split_lengths",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "index400To200": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "index200ToFinish": {
+      "value": 3.23,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:split_lengths",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "finishLen": {
+      "value": 1.47,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:finish_len",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "benchmarkMode": "CLASS_BENCHMARK",
+    "signConvention": "As supplied by standardised sectionals feed: lengths versus benchmark."
+  }
+}
+
+{
+  "meeting": "Geelong",
+  "raceDate": "2026-07-10",
+  "currentRaceNumber": 2,
+  "runnerId": "5341018",
+  "runnerName": "Donato",
+  "runDate": "2025-11-10",
+  "runTrack": "MORNINGTON",
+  "runRaceNumber": 2,
+  "sectionalIndices": {
+    "index800To600": {
+      "value": 0.88,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:split_lengths",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "index600To400": {
+      "value": -0.5,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:split_lengths",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "index400To200": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "index200ToFinish": {
+      "value": 0.33,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:split_lengths",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "finishLen": {
+      "value": 2.54,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:finish_len",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "benchmarkMode": "CLASS_BENCHMARK",
+    "signConvention": "As supplied by standardised sectionals feed: lengths versus benchmark."
+  }
+}
+
+{
+  "meeting": "Geelong",
+  "raceDate": "2026-07-10",
+  "currentRaceNumber": 2,
+  "runnerId": "5274377",
+  "runnerName": "Grinding Away",
+  "runDate": "2024-10-11",
+  "runTrack": "CRANBOURNE",
+  "runRaceNumber": 5,
+  "sectionalIndices": {
+    "index800To600": {
+      "value": 0.47,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:split_lengths",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "index600To400": {
+      "value": -1.59,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:split_lengths",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "index400To200": {
+      "value": null,
+      "source": null,
+      "version": null,
+      "asAt": null
+    },
+    "index200ToFinish": {
+      "value": 0.65,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:split_lengths",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "finishLen": {
+      "value": -3.34,
+      "source": "edgeiq_form_sectional_profile_feed_v1.csv:finish_len",
+      "version": "standardised_sectionals_v1",
+      "asAt": null
+    },
+    "benchmarkMode": "CLASS_BENCHMARK",
+    "signConvention": "As supplied by standardised sectionals feed: lengths versus benchmark."
+  }
+}

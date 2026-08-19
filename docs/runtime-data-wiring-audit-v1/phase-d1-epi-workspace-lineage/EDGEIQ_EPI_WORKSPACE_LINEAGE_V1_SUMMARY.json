@@ -1,0 +1,21 @@
+{
+  "audit_id": "EDGEIQ_EPI_WORKSPACE_LINEAGE_V1",
+  "generated_at_utc": "2026-07-27T22:04:17.918721+00:00",
+  "target_feed": "edgeiq_epi_workspace_terminal_feed_v1.csv",
+  "selected_physical_feed": "public/data/edgeiq_epi_workspace_terminal_feed_v1.csv",
+  "physical_feed_matches": 1,
+  "empty_problem_fields": 8,
+  "low_population_problem_fields": 19,
+  "direct_seed_scripts": 39,
+  "reachable_candidate_scripts": 103,
+  "write_confirmed_leaf_candidates": 13,
+  "top_write_confirmed_candidate": "scripts/apply_edgeiq_overview_final_spec_v1.py",
+  "lineage_status_counts": {
+    "CALCULATION_PRESENT_OUTPUT_NOT_CONFIRMED": 2,
+    "FIELD_ABSENT_FROM_PRODUCER_CHAIN": 18,
+    "LOGIC_AND_OUTPUT_PRESENT_BUT_EMPTY": 4,
+    "LOGIC_AND_OUTPUT_PRESENT_PARTIAL": 3
+  },
+  "remediation_queue_rows": 24,
+  "status": "REVIEW_REQUIRED"
+}

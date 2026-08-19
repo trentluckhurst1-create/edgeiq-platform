@@ -1,0 +1,165 @@
+{
+  "build_status": "PASS",
+  "browser_status": "PASS",
+  "workspace_switching_status": "PASS",
+  "date_switching_status": "PASS",
+  "meeting_selection_status": "PASS",
+  "open_meeting_status": "PASS",
+  "race_chip_navigation_pass": "PASS",
+  "search_status": "PASS",
+  "filters_status": "PASS",
+  "status_filters_status": "PASS",
+  "timeline_overlap_findings": "PASS",
+  "responsive_1920_pass": "PASS",
+  "responsive_1440_pass": "PASS",
+  "responsive_1366_pass": "PASS",
+  "table_header_height": "42px",
+  "table_row_height": "47px",
+  "minimum_body_font_size": "14px",
+  "button_height": "36px",
+  "date_control_height": "44px",
+  "race_chip_height": "28px",
+  "race_chip_count": 8,
+  "track_status_clipping_findings": 0,
+  "weather_status_clipping_findings": 0,
+  "status_filter_fallback_pass": "PASS",
+  "home_regression": "PASS",
+  "forbidden_visible_hits": [],
+  "console_warnings_errors": [],
+  "ignored_warnings": [
+    {
+      "type": "warning",
+      "text": "Clerk disabled: missing VITE_CLERK_PUBLISHABLE_KEY"
+    },
+    {
+      "type": "warning",
+      "text": "Clerk disabled: missing VITE_CLERK_PUBLISHABLE_KEY"
+    },
+    {
+      "type": "warning",
+      "text": "Clerk disabled: missing VITE_CLERK_PUBLISHABLE_KEY"
+    },
+    {
+      "type": "warning",
+      "text": "Clerk disabled: missing VITE_CLERK_PUBLISHABLE_KEY"
+    }
+  ],
+  "network_failures": [],
+  "width_checks": {
+    "r1920": {
+      "width": 1920,
+      "scrollWidth": 1920,
+      "horizontalOverflow": false,
+      "hasWorkspace": true,
+      "hasTitle": true,
+      "hasDateButtons": true,
+      "hasStatusFilters": true,
+      "hasSearch": true,
+      "hasOpenMeeting": true,
+      "headers": [
+        "SELECT",
+        "MEETING",
+        "STATE",
+        "RAIL",
+        "TRACK",
+        "WEATHER",
+        "RACES",
+        "DECLARED",
+        "SCRATCHINGS"
+      ],
+      "trackCells": [
+        "Awaiting Track Rating"
+      ],
+      "forbidden": [],
+      "conditionParagraphHits": 0,
+      "thHeight": "42px",
+      "tdHeight": "47px",
+      "tdFontSize": "14px",
+      "buttonHeight": "36px",
+      "dateButtonHeight": "44px",
+      "chipHeight": "28px",
+      "chipCount": 8,
+      "trackStatusClipping": 0,
+      "weatherStatusClipping": 0,
+      "selectedRows": 1,
+      "overlaps": 0
+    },
+    "r1440": {
+      "width": 1440,
+      "scrollWidth": 1440,
+      "horizontalOverflow": false,
+      "hasWorkspace": true,
+      "hasTitle": true,
+      "hasDateButtons": true,
+      "hasStatusFilters": true,
+      "hasSearch": true,
+      "hasOpenMeeting": true,
+      "headers": [
+        "SELECT",
+        "MEETING",
+        "STATE",
+        "RAIL",
+        "TRACK",
+        "WEATHER",
+        "RACES",
+        "DECLARED",
+        "SCRATCHINGS"
+      ],
+      "trackCells": [
+        "Awaiting Track Rating"
+      ],
+      "forbidden": [],
+      "conditionParagraphHits": 0,
+      "thHeight": "42px",
+      "tdHeight": "47px",
+      "tdFontSize": "14px",
+      "buttonHeight": "36px",
+      "dateButtonHeight": "44px",
+      "chipHeight": "28px",
+      "chipCount": 8,
+      "trackStatusClipping": 0,
+      "weatherStatusClipping": 0,
+      "selectedRows": 1,
+      "overlaps": 0
+    },
+    "r1366": {
+      "width": 1366,
+      "scrollWidth": 1366,
+      "horizontalOverflow": false,
+      "hasWorkspace": true,
+      "hasTitle": true,
+      "hasDateButtons": true,
+      "hasStatusFilters": true,
+      "hasSearch": true,
+      "hasOpenMeeting": true,
+      "headers": [
+        "SELECT",
+        "MEETING",
+        "STATE",
+        "RAIL",
+        "TRACK",
+        "WEATHER",
+        "RACES",
+        "DECLARED",
+        "SCRATCHINGS"
+      ],
+      "trackCells": [
+        "Awaiting Track Rating"
+      ],
+      "forbidden": [],
+      "conditionParagraphHits": 0,
+      "thHeight": "42px",
+      "tdHeight": "47px",
+      "tdFontSize": "14px",
+      "buttonHeight": "36px",
+      "dateButtonHeight": "44px",
+      "chipHeight": "28px",
+      "chipCount": 8,
+      "trackStatusClipping": 0,
+      "weatherStatusClipping": 0,
+      "selectedRows": 1,
+      "overlaps": 0
+    }
+  },
+  "screenshot": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\EDGEIQ_MEETINGS_WORKSPACE_V1_BROWSER_ACCEPTANCE.png"
+}

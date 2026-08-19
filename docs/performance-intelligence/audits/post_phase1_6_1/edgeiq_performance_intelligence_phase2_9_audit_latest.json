@@ -1,0 +1,26 @@
+{
+  "checks": [
+    {
+      "check": "ALL_PASS_TOKENS_VERIFIED",
+      "observed": 12,
+      "passed": true
+    },
+    {
+      "check": "INTEGRITY_MANIFESTS_PRESENT",
+      "observed": 12,
+      "passed": true
+    },
+    {
+      "check": "REACT_PUBLIC_DATA_UNTOUCHED_BY_ORCHESTRATOR",
+      "observed": "docs warehouse only",
+      "passed": true
+    }
+  ],
+  "generated_timestamp": "2026-07-16T08:34:32Z",
+  "marker": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE2_9_ORCHESTRATION_FINAL_PASS",
+  "orchestrated_snapshot_count": 12,
+  "phase": "phase2_9",
+  "snapshot_id": "eiq_orchestration_manifest_v1_53503196d26443370665e234",
+  "snapshot_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\performance-intelligence\\warehouse\\phase2_9\\eiq_orchestration_manifest_v1_53503196d26443370665e234",
+  "status": "PASS"
+}

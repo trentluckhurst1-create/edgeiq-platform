@@ -1,0 +1,55 @@
+{
+  "program": "EDGEIQ_PERFORMANCE_INTELLIGENCE",
+  "unit": "PI_RESTART_UNIT_002A",
+  "name": "Zero-Row Canonical Lineage Targets",
+  "version": "V1",
+  "generated_utc": "2026-07-28T19:12:14.276207+00:00",
+  "verdict": "PASS",
+  "governance": {
+    "engine_logic_changed": false,
+    "thresholds_changed": false,
+    "source_data_changed": false,
+    "warehouse_data_changed": false,
+    "runtime_data_changed": false,
+    "react_changed": false
+  },
+  "source_evidence": {
+    "baseline_json": "docs/performance-intelligence/restart-v1/edgeiq_performance_intelligence_restart_baseline_v1.json",
+    "inventory_csv": "docs/performance-intelligence/restart-v1/edgeiq_performance_intelligence_restart_inventory_v1.csv",
+    "baseline_commit": "633c784"
+  },
+  "summary": {
+    "expected_target_count": 2,
+    "identified_target_count": 2,
+    "header_only_target_count": 2,
+    "empty_file_target_count": 0,
+    "next_action": "TRACE_TARGET_001_PRODUCING_BUILDER",
+    "runtime_seconds": 0.032
+  },
+  "targets": [
+    {
+      "target_number": 1,
+      "relative_path": "public/data/edgeiq_race_entry_horse_performance_snapshot_fact_v1.csv",
+      "csv_status": "HEADER_ONLY",
+      "csv_data_rows": 0,
+      "csv_columns": 30,
+      "size_bytes": 876,
+      "category": "PUBLIC_RUNTIME_DATA",
+      "modified_utc": "2026-07-21T22:25:04.628991+00:00",
+      "sha256": "b906f47e8a45778b1b71de437610046a299ad864b65bb5f027b47b351c3b7a87",
+      "investigation_status": "PENDING_BUILDER_TRACE"
+    },
+    {
+      "target_number": 2,
+      "relative_path": "public/data/edgeiq_standard_time_fact_v1.csv",
+      "csv_status": "HEADER_ONLY",
+      "csv_data_rows": 0,
+      "csv_columns": 25,
+      "size_bytes": 523,
+      "category": "PUBLIC_RUNTIME_DATA",
+      "modified_utc": "2026-07-22T19:25:17.295783+00:00",
+      "sha256": "9c55d68862ed8d867b8f8746c808b25e570797ad8672a0cef70b7d639f7f0792",
+      "investigation_status": "PENDING_BUILDER_TRACE"
+    }
+  ]
+}

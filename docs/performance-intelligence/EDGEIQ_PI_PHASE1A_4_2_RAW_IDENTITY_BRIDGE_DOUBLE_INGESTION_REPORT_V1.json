@@ -1,0 +1,136 @@
+{
+  "audit": {
+    "checks": [
+      {
+        "check_id": "required_file_availability",
+        "detail": "all six governed target files available",
+        "status": "PASS"
+      },
+      {
+        "check_id": "raw_identity_extraction",
+        "detail": "graphql_missing=0; observation_missing=11080; performance_missing=0; performance_parse_failures=0",
+        "status": "PARTIAL"
+      },
+      {
+        "check_id": "observation_double_ingestion_check",
+        "detail": "raw identities present in both monthly files and consolidated warehouse=814236",
+        "status": "FAIL"
+      },
+      {
+        "check_id": "graphql_observation_raw_identity_overlap",
+        "detail": "intersection=879695; graphql_only=0; observation_only=1885",
+        "status": "PASS"
+      },
+      {
+        "check_id": "graphql_performance_bridge",
+        "detail": "intersection=879695; graphql_only=0; performance_only=0",
+        "status": "PASS"
+      },
+      {
+        "check_id": "snapshot_source_row_lineage",
+        "detail": "valid_rows=879784; invalid_rows=0; sha_matches=879784; sha_mismatches=0",
+        "status": "PASS"
+      },
+      {
+        "check_id": "epi_parent_population",
+        "detail": "epi_rows=533387; unique_ids=533387; missing_ids=0; not_in_parent=0",
+        "status": "PASS"
+      }
+    ],
+    "generated_utc": "2026-07-27T03:41:24+00:00",
+    "overall_status": "FAIL",
+    "program_id": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE1A_4_2_RAW_IDENTITY_BRIDGE_DOUBLE_INGESTION_AUDIT_V1",
+    "program_version": "1.0.0"
+  },
+  "epi": {
+    "ids_not_in_performance_warehouse": 0,
+    "missing_ids": 0,
+    "rows": 533387,
+    "unique_ids": 533387
+  },
+  "generated_utc": "2026-07-27T03:41:24+00:00",
+  "graphql": {
+    "duplicate_groups": 89,
+    "duplicate_rows": 89,
+    "missing_keys": 0,
+    "rows": 879784
+  },
+  "observation": {
+    "duplicate_groups": 879802,
+    "duplicate_rows": 879980,
+    "missing_keys": 11080,
+    "monthly_consolidated_duplicate_groups": 814236,
+    "rows": 1772640
+  },
+  "outputs": [
+    "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_4_2_RAW_IDENTITY_DATASET_PROFILE_V1.csv",
+    "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_4_2_OBSERVATION_SOURCE_PATH_PROFILE_V1.csv",
+    "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_4_2_OBSERVATION_CROSS_PATH_DUPLICATES_V1.csv",
+    "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_4_2_RAW_IDENTITY_OVERLAP_V1.csv",
+    "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_4_2_PERFORMANCE_CANONICAL_BRIDGE_V1.csv",
+    "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_4_2_SNAPSHOT_ROW_LINEAGE_AUDIT_V1.csv",
+    "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_4_2_UNMATCHED_RAW_IDENTITY_SAMPLE_V1.csv",
+    "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_4_2_RAW_IDENTITY_BRIDGE_DOUBLE_INGESTION_REPORT_V1.json",
+    "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_4_2_RAW_IDENTITY_BRIDGE_DOUBLE_INGESTION_REPORT_V1.md",
+    "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_4_2_RAW_IDENTITY_BRIDGE_DOUBLE_INGESTION_AUDIT_V1.json",
+    "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_4_2_RAW_IDENTITY_BRIDGE_DOUBLE_INGESTION_AUDIT_V1.md"
+  ],
+  "overall_status": "FAIL",
+  "performance_bridge": {
+    "duplicate_rows": 89,
+    "missing_raw_keys": 0,
+    "parse_failures": 0,
+    "rows": 879784
+  },
+  "program_id": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE1A_4_2_RAW_IDENTITY_BRIDGE_DOUBLE_INGESTION_AUDIT_V1",
+  "program_version": "1.0.0",
+  "raw_identity_overlaps": [
+    {
+      "intersection_keys": 879695,
+      "jaccard": 0.9978617936,
+      "left_coverage_by_right": 1.0,
+      "left_only_keys": 0,
+      "left_target_id": "GRAPHQL_RAW",
+      "left_unique_keys": 879695,
+      "right_coverage_by_left": 0.9978617936,
+      "right_only_keys": 1885,
+      "right_target_id": "OBSERVATION_RAW",
+      "right_unique_keys": 881580,
+      "union_keys": 881580
+    },
+    {
+      "intersection_keys": 879695,
+      "jaccard": 1.0,
+      "left_coverage_by_right": 1.0,
+      "left_only_keys": 0,
+      "left_target_id": "GRAPHQL_RAW",
+      "left_unique_keys": 879695,
+      "right_coverage_by_left": 1.0,
+      "right_only_keys": 0,
+      "right_target_id": "PERFORMANCE_WAREHOUSE_SOURCE_RECORD_KEY",
+      "right_unique_keys": 879695,
+      "union_keys": 879695
+    },
+    {
+      "intersection_keys": 879695,
+      "jaccard": 0.9978617936,
+      "left_coverage_by_right": 0.9978617936,
+      "left_only_keys": 1885,
+      "left_target_id": "OBSERVATION_RAW",
+      "left_unique_keys": 881580,
+      "right_coverage_by_left": 1.0,
+      "right_only_keys": 0,
+      "right_target_id": "PERFORMANCE_WAREHOUSE_SOURCE_RECORD_KEY",
+      "right_unique_keys": 879695,
+      "union_keys": 881580
+    }
+  ],
+  "repository_root": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM",
+  "snapshot_lineage": {
+    "invalid_row_references": 0,
+    "rows": 879784,
+    "source_sha_matches": 879784,
+    "source_sha_mismatches": 0,
+    "valid_row_references": 879784
+  }
+}

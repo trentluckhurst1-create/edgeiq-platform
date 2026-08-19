@@ -1,0 +1,1161 @@
+EDGEIQ STEP107 CROSSWALK MEMORY INSPECTION V1
+==============================================================================
+Source: C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\build_edgeiq_identity_repository_profiler_v1_STEP106_CUMULATIVE.py
+Source lines: 8595
+
+==============================================================================
+CLASS EDGEIQIdentityRepositoryProfilerStep1: lines 1373-1670
+==============================================================================
+01365:             lines.append(f"- {key}: `{value}`")
+01366: 
+01367:         self.config.audit_md.write_text(
+01368:             "\n".join(lines) + "\n",
+01369:             encoding="utf-8",
+01370:         )
+01371: 
+01372: 
+01373: class EDGEIQIdentityRepositoryProfilerStep1:
+01374:     def __init__(self, config: ProfilerConfig) -> None:
+01375:         self.config = config
+01376: 
+01377:     def run(self) -> dict:
+01378:         started = time.perf_counter()
+01379:         stage_times: dict[str, float] = {}
+01380: 
+01381:         self.config.output_root.mkdir(
+01382:             parents=True,
+01383:             exist_ok=True,
+01384:         )
+01385: 
+01386:         self._configure_logging()
+01387: 
+01388:         csv_limit = configure_csv_field_limit()
+01389: 
+01390:         logging.info(
+01391:             "%s %s starting",
+01392:             ENGINE_NAME,
+01393:             ENGINE_VERSION,
+01394:         )
+01395: 
+01396:         logging.info(
+01397:             "Repository root: %s",
+01398:             self.config.repository_root,
+01399:         )
+01400: 
+01401:         logging.info(
+01402:             "Output root: %s",
+01403:             self.config.output_root,
+01404:         )
+01405: 
+01406:         logging.info(
+01407:             "CSV field limit: %s",
+01408:             csv_limit,
+01409:         )
+01410: 
+01411:         checkpoint = CheckpointManager(self.config)
+01412:         crawler = RepositoryCrawler(self.config)
+01413:         fingerprint_engine = FingerprintEngine()
+01414: 
+01415:         logging.info(
+01416:             "STAGE_START stage=1 name=INVENTORY"
+01417:         )
+01418: 
+01419:         stage_started = time.perf_counter()
+01420: 
+01421:         inventory_builder = RepositoryInventoryBuilder(
+01422:             config=self.config,
+01423:             crawler=crawler,
+01424:             fingerprint_engine=fingerprint_engine,
+01425:             checkpoint=checkpoint,
+01426:         )
+01427: 
+01428:         records, metrics = inventory_builder.build()
+01429: 
+01430:         InventoryWriter.write_csv(
+01431:             records,
+01432:             self.config.inventory_csv,
+01433:         )
+01434: 
+01435:         InventoryWriter.write_json(
+01436:             records,
+01437:             self.config.inventory_json,
+01438:         )
+01439: 
+01440:         stage_times["inventory"] = (
+01441:             time.perf_counter() - stage_started
+01442:         )
+01443: 
+01444:         logging.info(
+01445:             "STAGE_COMPLETE stage=1 name=INVENTORY "
+01446:             "elapsed=%.3fs records=%s",
+01447:             stage_times["inventory"],
+01448:             len(records),
+01449:         )
+01450: 
+01451:         logging.info(
+01452:             "STAGE_START stage=2 name=DATASET_PROFILING"
+01453:         )
+01454: 
+01455:         stage_started = time.perf_counter()
+01456: 
+01457:         profiling_engine = DatasetProfilingEngine(
+01458:             config=self.config,
+01459:             sample_limit=10_000,
+01460:         )
+01461: 
+01462:         (
+01463:             dataset_profiles,
+01464:             column_profiles,
+01465:             profiling_errors,
+01466:             profiling_metrics,
+01467:         ) = profiling_engine.profile_records(records)
+01468: 
+01469:         stage_times["profiling"] = (
+01470:             time.perf_counter() - stage_started
+01471:         )
+01472: 
+01473:         logging.info(
+01474:             "STAGE_COMPLETE stage=2 name=DATASET_PROFILING "
+01475:             "elapsed=%.3fs datasets=%s errors=%s",
+01476:             stage_times["profiling"],
+01477:             len(dataset_profiles),
+01478:             len(profiling_errors),
+01479:         )
+01480: 
+01481:         logging.info(
+01482:             "PROFILING_COMPLETE datasets=%s columns=%s errors=%s",
+01483:             len(dataset_profiles),
+01484:             len(column_profiles),
+01485:             len(profiling_errors),
+01486:         )
+01487: 
+01488:         logging.info(
+01489:             "STAGE_START stage=3 name=PROFILE_OUTPUTS"
+01490:         )
+01491: 
+01492:         stage_started = time.perf_counter()
+01493: 
+01494:         DatasetProfileWriter.write_dataset_profiles(
+01495:             dataset_profiles,
+01496:             self.config.dataset_profiles_csv,
+01497:         )
+01498: 
+01499:         DatasetProfileWriter.write_column_profiles(
+01500:             column_profiles,
+01501:             self.config.column_profiles_csv,
+01502:         )
+01503: 
+01504:         DatasetProfileWriter.write_errors(
+01505:             profiling_errors,
+01506:             self.config.profiling_errors_csv,
+01507:         )
+01508: 
+01509:         stage_times["profile_outputs"] = (
+01510:             time.perf_counter() - stage_started
+01511:         )
+01512: 
+01513:         logging.info(
+01514:             "STAGE_COMPLETE stage=3 name=PROFILE_OUTPUTS "
+01515:             "elapsed=%.3fs",
+01516:             stage_times["profile_outputs"],
+01517:         )
+01518: 
+01519:         logging.info(
+01520:             "OUTPUTS_COMPLETE"
+01521:         )
+01522: 
+01523:         metrics.update(profiling_metrics)
+01524: 
+01525:         logging.info(
+01526:             "STAGE_START stage=4 name=GOVERNANCE_AUDIT"
+01527:         )
+01528: 
+01529:         stage_started = time.perf_counter()
+01530:         elapsed = time.perf_counter() - started
+01531: 
+01532:         governance = GovernanceEngine(
+01533:             config=self.config,
+01534:             records=records,
+01535:             metrics=metrics,
+01536:             elapsed_seconds=elapsed,
+01537:             dataset_profiles=dataset_profiles,
+01538:             column_profiles=column_profiles,
+01539:         )
+01540: 
+01541:         audit = governance.build_audit()
+01542:         governance.write(audit)
+01543: 
+01544:         stage_times["audit"] = (
+01545:             time.perf_counter() - stage_started
+01546:         )
+01547: 
+01548:         logging.info(
+01549:             "STAGE_COMPLETE stage=4 name=GOVERNANCE_AUDIT "
+01550:             "elapsed=%.3fs",
+01551:             stage_times["audit"],
+01552:         )
+01553: 
+01554:         logging.info(
+01555:             "AUDIT_COMPLETE status=%s",
+01556:             audit["status"],
+01557:         )
+01558: 
+01559:         total_elapsed = time.perf_counter() - started
+01560: 
+01561:         audit["step105_stage_timings"] = {
+01562:             key: round(value, 3)
+01563:             for key, value in stage_times.items()
+01564:         }
+01565: 
+01566:         audit["step105_total_elapsed_seconds"] = round(
+01567:             total_elapsed,
+01568:             3,
+01569:         )
+01570: 
+01571:         audit["step105_completion_contract"] = {
+01572:             "profiling_complete": True,
+01573:             "outputs_complete": True,
+01574:             "audit_complete": True,
+01575:             "shutdown_complete": True,
+01576:         }
+01577: 
+01578:         try:
+01579:             self.config.audit_json.write_text(
+01580:                 json.dumps(
+01581:                     audit,
+01582:                     indent=2,
+01583:                     ensure_ascii=False,
+01584:                 ),
+01585:                 encoding="utf-8",
+01586:             )
+01587:         except Exception:
+01588:             logging.exception(
+01589:                 "Unable to append STEP105 completion metadata "
+01590:                 "to audit JSON."
+01591:             )
+01592:             raise
+01593: 
+01594:         logging.info(
+01595:             "Status: %s",
+01596:             audit["status"],
+01597:         )
+01598: 
+01599:         print(
+01600:             json.dumps(
+01601:                 audit,
+01602:                 indent=2,
+01603:                 ensure_ascii=False,
+01604:             )
+01605:         )
+01606: 
+01607:         print("")
+01608:         print(
+01609:             "=============================================="
+01610:         )
+01611:         print(
+01612:             "EDGEIQ IDENTITY REPOSITORY PROFILER STEP105"
+01613:         )
+01614:         print(
+01615:             "=============================================="
+01616:         )
+01617:         print(f"STATUS: {audit['status']}")
+01618:         print(
+01619:             "PROFILING_COMPLETE: TRUE"
+01620:         )
+01621:         print(
+01622:             "OUTPUTS_COMPLETE: TRUE"
+01623:         )
+01624:         print(
+01625:             "AUDIT_COMPLETE: TRUE"
+01626:         )
+01627:         print(
+01628:             "SHUTDOWN_COMPLETE: TRUE"
+01629:         )
+01630:         print(
+01631:             f"TOTAL_ELAPSED_SECONDS: {total_elapsed:.3f}"
+01632:         )
+01633:         print(
+01634:             "EXIT_CODE: 0"
+01635:             if audit["status"].endswith("_AUDIT_PASS")
+01636:             else "EXIT_CODE: 1"
+01637:         )
+01638:         print(
+01639:             "=============================================="
+01640:         )
+01641: 
+01642:         logging.info(
+01643:             "SHUTDOWN_COMPLETE total_elapsed=%.3fs",
+01644:             total_elapsed,
+01645:         )
+01646: 
+01647:         return audit
+01648: 
+01649:     def _configure_logging(self) -> None:
+01650:         root_logger = logging.getLogger()
+01651:         root_logger.setLevel(logging.INFO)
+01652: 
+01653:         for handler in list(root_logger.handlers):
+01654:             root_logger.removeHandler(handler)
+01655: 
+01656:         formatter = logging.Formatter(
+01657:             "%(asctime)s | %(levelname)s | %(message)s"
+01658:         )
+01659: 
+01660:         console_handler = logging.StreamHandler(sys.stdout)
+01661:         console_handler.setFormatter(formatter)
+01662: 
+01663:         file_handler = logging.FileHandler(
+01664:             self.config.log_file,
+01665:             encoding="utf-8",
+01666:         )
+01667:         file_handler.setFormatter(formatter)
+01668: 
+01669:         root_logger.addHandler(console_handler)
+01670:         root_logger.addHandler(file_handler)
+01671: 
+01672: 
+01673: def parse_arguments() -> argparse.Namespace:
+01674:     parser = argparse.ArgumentParser(
+01675:         description="EDGEIQ Identity Repository Profiler V1 - Step 2"
+01676:     )
+01677:     parser.add_argument(
+01678:         "--repository-root",
+
+==============================================================================
+CLASS CrosswalkCandidate: lines 1911-1918
+==============================================================================
+01903: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step3
+01904: 
+01905: 
+01906: # ============================================================================
+01907: # STEP 4 — Crosswalk Discovery Engine
+01908: # ============================================================================
+01909: 
+01910: @dataclass
+01911: class CrosswalkCandidate:
+01912:     left_dataset: str
+01913:     left_column: str
+01914:     right_dataset: str
+01915:     right_column: str
+01916:     key_type: str
+01917:     confidence: float
+01918:     rationale: str
+01919: 
+01920: 
+01921: class CrosswalkDiscoveryEngine:
+01922:     """
+01923:     Deterministically discovers likely crosswalk join points from
+01924:     candidate-key columns and identity classifications.
+01925:     """
+01926: 
+
+==============================================================================
+CLASS CrosswalkDiscoveryEngine: lines 1921-1973
+==============================================================================
+01913:     left_column: str
+01914:     right_dataset: str
+01915:     right_column: str
+01916:     key_type: str
+01917:     confidence: float
+01918:     rationale: str
+01919: 
+01920: 
+01921: class CrosswalkDiscoveryEngine:
+01922:     """
+01923:     Deterministically discovers likely crosswalk join points from
+01924:     candidate-key columns and identity classifications.
+01925:     """
+01926: 
+01927:     def discover(
+01928:         self,
+01929:         columns: list[ColumnProfile],
+01930:     ) -> list[CrosswalkCandidate]:
+01931: 
+01932:         candidates: list[CrosswalkCandidate] = []
+01933: 
+01934:         identity = [c for c in columns if c.identity_hint]
+01935:         keys = [c for c in columns if c.candidate_key]
+01936: 
+01937:         for left in identity:
+01938:             for right in keys:
+01939:                 if left.relative_path == right.relative_path:
+01940:                     continue
+01941: 
+01942:                 if left.identity_classification and (
+01943:                     left.identity_classification in right.column_name.lower()
+01944:                     or right.column_name.lower() in left.identity_classification
+01945:                 ):
+01946:                     confidence = 0.95
+01947:                 elif left.inferred_type == right.inferred_type:
+01948:                     confidence = 0.75
+01949:                 else:
+01950:                     confidence = 0.50
+01951: 
+01952:                 candidates.append(
+01953:                     CrosswalkCandidate(
+01954:                         left_dataset=left.relative_path,
+01955:                         left_column=left.column_name,
+01956:                         right_dataset=right.relative_path,
+01957:                         right_column=right.column_name,
+01958:                         key_type=left.identity_classification or "candidate_key",
+01959:                         confidence=confidence,
+01960:                         rationale="IDENTITY+KEY_HEURISTIC",
+01961:                     )
+01962:                 )
+01963: 
+01964:         candidates.sort(
+01965:             key=lambda x: (
+01966:                 -x.confidence,
+01967:                 x.left_dataset,
+01968:                 x.right_dataset,
+01969:                 x.left_column,
+01970:                 x.right_column,
+01971:             )
+01972:         )
+01973:         return candidates
+01974: 
+01975: 
+01976: class CrosswalkWriter:
+01977: 
+01978:     FIELDS = [
+01979:         "left_dataset",
+01980:         "left_column",
+01981:         "right_dataset",
+
+==============================================================================
+CLASS CrosswalkWriter: lines 1976-1994
+==============================================================================
+01968:                 x.right_dataset,
+01969:                 x.left_column,
+01970:                 x.right_column,
+01971:             )
+01972:         )
+01973:         return candidates
+01974: 
+01975: 
+01976: class CrosswalkWriter:
+01977: 
+01978:     FIELDS = [
+01979:         "left_dataset",
+01980:         "left_column",
+01981:         "right_dataset",
+01982:         "right_column",
+01983:         "key_type",
+01984:         "confidence",
+01985:         "rationale",
+01986:     ]
+01987: 
+01988:     @classmethod
+01989:     def write(cls, rows, path):
+01990:         with path.open("w", newline="", encoding="utf-8-sig") as f:
+01991:             writer = csv.DictWriter(f, fieldnames=cls.FIELDS)
+01992:             writer.writeheader()
+01993:             for row in rows:
+01994:                 writer.writerow(asdict(row))
+01995: 
+01996: 
+01997: _previous_run__run_step4 = EDGEIQIdentityRepositoryProfilerStep1.run
+01998: 
+01999: def _run_step4(self):
+02000: 
+02001:     audit = _previous_run__run_step4(self)
+02002: 
+
+==============================================================================
+FUNCTION main: lines 1700-1717
+==============================================================================
+01692:     parser.add_argument(
+01693:         "--only-identity-relevant",
+01694:         action="store_true",
+01695:         help="Scan only files whose names or paths contain identity hints.",
+01696:     )
+01697:     return parser.parse_args()
+01698: 
+01699: 
+01700: def main() -> int:
+01701:     args = parse_arguments()
+01702: 
+01703:     repository_root = Path(args.repository_root).resolve()
+01704:     output_root = Path(args.output_root)
+01705: 
+01706:     if not output_root.is_absolute():
+01707:         output_root = repository_root / output_root
+01708: 
+01709:     config = ProfilerConfig(
+01710:         repository_root=repository_root,
+01711:         output_root=output_root.resolve(),
+01712:         resume=not args.no_resume,
+01713:         only_identity_relevant=args.only_identity_relevant,
+01714:     )
+01715: 
+01716:     audit = EDGEIQIdentityRepositoryProfilerStep1(config).run()
+01717:     return 0 if audit["status"].endswith("_PASS") else 1
+01718: 
+01719: 
+01720: # Entrypoint deferred until the final cumulative runtime wrapper.
+01721: 
+01722: 
+01723: # ============================================================================
+01724: # STEP 3 ADDITIONS — Identity Relationship Engine
+01725: # ============================================================================
+
+==============================================================================
+FUNCTION _run_step4: lines 1999-2044
+==============================================================================
+01991:             writer = csv.DictWriter(f, fieldnames=cls.FIELDS)
+01992:             writer.writeheader()
+01993:             for row in rows:
+01994:                 writer.writerow(asdict(row))
+01995: 
+01996: 
+01997: _previous_run__run_step4 = EDGEIQIdentityRepositoryProfilerStep1.run
+01998: 
+01999: def _run_step4(self):
+02000: 
+02001:     audit = _previous_run__run_step4(self)
+02002: 
+02003:     column_file = self.config.column_profiles_csv
+02004: 
+02005:     columns = []
+02006: 
+02007:     with column_file.open(encoding="utf-8-sig", newline="") as f:
+02008:         for row in csv.DictReader(f):
+02009:             columns.append(
+02010:                 ColumnProfile(
+02011:                     relative_path=row["relative_path"],
+02012:                     column_name=row["column_name"],
+02013:                     inferred_type=row["inferred_type"],
+02014:                     sample_rows_examined=int(row["sample_rows_examined"]),
+02015:                     non_null_count=int(row["non_null_count"]),
+02016:                     null_count=int(row["null_count"]),
+02017:                     null_percentage=float(row["null_percentage"]),
+02018:                     distinct_sample_count=int(row["distinct_sample_count"]),
+02019:                     distinct_sample_percentage=float(row["distinct_sample_percentage"]),
+02020:                     minimum_value=row["minimum_value"],
+02021:                     maximum_value=row["maximum_value"],
+02022:                     minimum_length=int(row["minimum_length"]),
+02023:                     maximum_length=int(row["maximum_length"]),
+02024:                     candidate_key=row["candidate_key"] == "True",
+02025:                     identity_hint=row["identity_hint"] == "True",
+02026:                     identity_classification=row["identity_classification"],
+02027:                 )
+02028:             )
+02029: 
+02030:     engine = CrosswalkDiscoveryEngine()
+02031:     discovered = engine.discover(columns)
+02032: 
+02033:     output = self.config.output_root / "edgeiq_crosswalk_candidates_v1.csv"
+02034:     CrosswalkWriter.write(discovered, output)
+02035: 
+02036:     audit["metrics"]["crosswalk_candidates"] = len(discovered)
+02037:     audit["outputs"]["crosswalk_candidates_csv"] = normalise_path(output)
+02038: 
+02039:     self.config.audit_json.write_text(
+02040:         json.dumps(audit, indent=2),
+02041:         encoding="utf-8",
+02042:     )
+02043: 
+02044:     return audit
+02045: 
+02046: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step4
+02047: 
+02048: 
+02049: # ============================================================================
+02050: # STEP 5 — Canonical Identity Graph Builder
+02051: # ============================================================================
+02052: 
+
+==============================================================================
+FUNCTION _run_step5: lines 2151-2203
+==============================================================================
+02143:             )
+02144:             w.writeheader()
+02145:             for e in edges:
+02146:                 w.writerow(asdict(e))
+02147: 
+02148: 
+02149: _prev_run__run_step5 = EDGEIQIdentityRepositoryProfilerStep1.run
+02150: 
+02151: def _run_step5(self):
+02152: 
+02153:     audit = _prev_run__run_step5(self)
+02154: 
+02155:     rel_file = self.config.output_root / "edgeiq_identity_relationships_v1.csv"
+02156:     cw_file = self.config.output_root / "edgeiq_crosswalk_candidates_v1.csv"
+02157: 
+02158:     relationships = []
+02159:     with rel_file.open(encoding="utf-8-sig", newline="") as f:
+02160:         for r in csv.DictReader(f):
+02161:             relationships.append(IdentityRelationship(
+02162:                 source_dataset=r["source_dataset"],
+02163:                 source_column=r["source_column"],
+02164:                 target_dataset=r["target_dataset"],
+02165:                 target_column=r["target_column"],
+02166:                 relationship_type=r["relationship_type"],
+02167:                 confidence=float(r["confidence"]),
+02168:                 matching_rule=r["matching_rule"],
+02169:             ))
+02170: 
+02171:     crosswalks = []
+02172:     with cw_file.open(encoding="utf-8-sig", newline="") as f:
+02173:         for r in csv.DictReader(f):
+02174:             crosswalks.append(CrosswalkCandidate(
+02175:                 left_dataset=r["left_dataset"],
+02176:                 left_column=r["left_column"],
+02177:                 right_dataset=r["right_dataset"],
+02178:                 right_column=r["right_column"],
+02179:                 key_type=r["key_type"],
+02180:                 confidence=float(r["confidence"]),
+02181:                 rationale=r["rationale"],
+02182:             ))
+02183: 
+02184:     engine = CanonicalIdentityGraphEngine()
+02185:     nodes, edges = engine.build(relationships, crosswalks)
+02186: 
+02187:     node_file = self.config.output_root / "edgeiq_identity_graph_nodes_v1.csv"
+02188:     edge_file = self.config.output_root / "edgeiq_identity_graph_edges_v1.csv"
+02189: 
+02190:     CanonicalGraphWriter.write_nodes(nodes, node_file)
+02191:     CanonicalGraphWriter.write_edges(edges, edge_file)
+02192: 
+02193:     audit["metrics"]["identity_graph_nodes"] = len(nodes)
+02194:     audit["metrics"]["identity_graph_edges"] = len(edges)
+02195:     audit["outputs"]["identity_graph_nodes_csv"] = normalise_path(node_file)
+02196:     audit["outputs"]["identity_graph_edges_csv"] = normalise_path(edge_file)
+02197: 
+02198:     self.config.audit_json.write_text(
+02199:         json.dumps(audit, indent=2),
+02200:         encoding="utf-8",
+02201:     )
+02202: 
+02203:     return audit
+02204: 
+02205: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step5
+02206: 
+02207: 
+02208: # ============================================================================
+02209: # STEP 6 — Authority & Canonical Source Analysis
+02210: # ============================================================================
+02211: 
+
+==============================================================================
+FUNCTION _run_step100: lines 8459-8588
+==============================================================================
+08451:         lines += ["", "## Sign-off", ""]
+08452:         lines += [f"- {r.signoff_role}: `{r.signoff_state}` — {r.signoff_scope}" for r in signoffs]
+08453:         path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+08454: 
+08455: 
+08456: _step75_run__run_step100 = EDGEIQIdentityRepositoryProfilerStep1.run
+08457: 
+08458: 
+08459: def _run_step100(self):
+08460:     step_started = time.perf_counter()
+08461:     audit = _step75_run__run_step100(self)
+08462:     root = self.config.output_root
+08463: 
+08464:     existing_artifacts = sorted(
+08465:         [path for path in root.iterdir() if path.is_file()],
+08466:         key=lambda x: x.name.lower(),
+08467:     )
+08468:     canonical_path = root / "edgeiq_canonical_identity_universe_v1.csv"
+08469:     schema_path = root / "edgeiq_identity_schema_validation_v1.csv"
+08470:     integrity_path = root / "edgeiq_identity_final_integrity_manifest_v1.csv"
+08471:     contract_path = root / "edgeiq_identity_data_contract_v1.json"
+08472: 
+08473:     canonical_rows = _edgeiq_read_csv(canonical_path)
+08474:     schema_rows = _edgeiq_read_csv(schema_path)
+08475:     integrity_rows = _edgeiq_read_csv(integrity_path)
+08476:     contract = json.loads(contract_path.read_text(encoding="utf-8")) if contract_path.exists() else {}
+08477: 
+08478:     paths = {
+08479:         "freshness": root / "edgeiq_identity_artifact_freshness_v1.csv",
+08480:         "drift": root / "edgeiq_identity_schema_drift_v1.csv",
+08481:         "service_levels": root / "edgeiq_identity_service_levels_v1.csv",
+08482:         "access_control": root / "edgeiq_identity_access_control_v1.csv",
+08483:         "retention": root / "edgeiq_identity_retention_policy_v1.csv",
+08484:         "privacy": root / "edgeiq_identity_privacy_controls_v1.csv",
+08485:         "security": root / "edgeiq_identity_security_controls_v1.csv",
+08486:         "anomalies": root / "edgeiq_identity_anomalies_v1.csv",
+08487:         "incidents": root / "edgeiq_identity_incident_response_v1.csv",
+08488:         "observability": root / "edgeiq_identity_observability_metrics_v1.csv",
+08489:         "snapshots": root / "edgeiq_identity_snapshots_v1.csv",
+08490:         "replay": root / "edgeiq_identity_replay_contract_v1.csv",
+08491:         "capacity": root / "edgeiq_identity_capacity_plan_v1.csv",
+08492:         "benchmarks": root / "edgeiq_identity_performance_benchmarks_v1.csv",
+08493:         "dependencies": root / "edgeiq_identity_dependency_health_v1.csv",
+08494:         "deployment": root / "edgeiq_identity_deployment_plan_v1.csv",
+08495:         "migration": root / "edgeiq_identity_migration_plan_v1.csv",
+08496:         "acceptance": root / "edgeiq_identity_acceptance_tests_v1.csv",
+08497:         "signoff": root / "edgeiq_identity_signoff_matrix_v1.csv",
+08498:         "artifact_registry": root / "edgeiq_identity_artifact_registry_v1.csv",
+08499:         "catalogue": root / "edgeiq_identity_catalogue_v1.csv",
+08500:         "system_manifest": root / "edgeiq_identity_system_manifest_v1.json",
+08501:         "step100_certificate": root / "edgeiq_identity_step100_completion_certificate_v1.json",
+08502:         "step100_report": root / "edgeiq_identity_step100_completion_report_v1.md",
+08503:     }
+08504: 
+08505:     freshness = IdentityFreshnessEngine().build(existing_artifacts)
+08506:     drift = IdentityDriftEngine().build(contract, schema_rows)
+08507:     slos = IdentityServiceLevelEngine().build(audit, freshness)
+08508:     access = IdentityAccessControlEngine().build(existing_artifacts)
+08509:     retention = IdentityRetentionEngine().build()
+08510:     privacy = IdentityPrivacyEngine().build(contract)
+08511:     security = IdentitySecurityControlEngine().build(existing_artifacts, integrity_rows)
+08512:     anomalies = IdentityAnomalyEngine().build(freshness, drift, slos, security)
+08513:     incidents = IdentityIncidentEngine().build(anomalies)
+08514:     observability = IdentityObservabilityEngine().build(audit, existing_artifacts, anomalies)
+08515:     snapshots = IdentitySnapshotEngine().build(existing_artifacts)
+08516:     replay = IdentityReplayEngine().build(snapshots)
+08517:     capacity = IdentityCapacityEngine().build(existing_artifacts, canonical_rows)
+08518:     benchmarks = IdentityPerformanceBenchmarkEngine().build(step_started)
+08519:     dependencies = IdentityDependencyHealthEngine().build()
+08520:     deployment = IdentityDeploymentPlanEngine().build()
+08521:     migration = IdentityMigrationEngine().build()
+08522:     acceptance = IdentityAcceptanceEngine().build(audit, freshness, drift, security, anomalies, snapshots, replay)
+08523:     signoffs = IdentitySignoffEngine().build(acceptance)
+08524: 
+08525:     table_map = [
+08526:         ("freshness", freshness, IdentityFreshnessRecord), ("drift", drift, IdentityDriftRecord),
+08527:         ("service_levels", slos, IdentityServiceLevelRecord), ("access_control", access, IdentityAccessControlRecord),
+08528:         ("retention", retention, IdentityRetentionRecord), ("privacy", privacy, IdentityPrivacyRecord),
+08529:         ("security", security, IdentitySecurityControlRecord), ("anomalies", anomalies, IdentityAnomalyRecord),
+08530:         ("incidents", incidents, IdentityIncidentRecord), ("observability", observability, IdentityObservabilityMetric),
+08531:         ("snapshots", snapshots, IdentitySnapshotRecord), ("replay", replay, IdentityReplayRecord),
+08532:         ("capacity", capacity, IdentityCapacityRecord), ("benchmarks", benchmarks, IdentityPerformanceBenchmark),
+08533:         ("dependencies", dependencies, IdentityDependencyHealth), ("deployment", deployment, IdentityDeploymentAction),
+08534:         ("migration", migration, IdentityMigrationRecord), ("acceptance", acceptance, IdentityAcceptanceRecord),
+08535:         ("signoff", signoffs, IdentitySignoffRecord),
+08536:     ]
+08537:     for name, rows, model in table_map:
+08538:         _edgeiq_write_csv(paths[name], [asdict(r) for r in rows], list(model.__annotations__))
+08539: 
+08540:     pre_registry_artifacts = existing_artifacts + [paths[name] for name, _, _ in table_map]
+08541:     registry = IdentityArtifactRegistryEngine().build(root, pre_registry_artifacts)
+08542:     _edgeiq_write_csv(paths["artifact_registry"], [asdict(r) for r in registry], list(IdentityArtifactRegistryRecord.__annotations__))
+08543:     catalogue = IdentityCatalogueEngine().build(registry)
+08544:     _edgeiq_write_csv(paths["catalogue"], [asdict(r) for r in catalogue], list(IdentityCatalogueRecord.__annotations__))
+08545: 
+08546:     accepted = all(r.passed for r in acceptance)
+08547:     manifest = IdentitySystemManifestEngine().build(registry, accepted)
+08548:     paths["system_manifest"].write_text(json.dumps(asdict(manifest), indent=2), encoding="utf-8")
+08549:     certificate = IdentityStep100CertificateEngine().build(audit, acceptance, anomalies, len(registry) + 4)
+08550:     paths["step100_certificate"].write_text(json.dumps(asdict(certificate), indent=2), encoding="utf-8")
+08551:     IdentityStep100ReportWriter.write(paths["step100_report"], certificate, manifest, acceptance, signoffs)
+08552: 
+08553:     audit["metrics"].update({
+08554:         "step100_freshness_records": len(freshness), "step100_schema_drift_records": len(drift),
+08555:         "step100_service_levels": len(slos), "step100_security_controls": len(security),
+08556:         "step100_anomalies": len(anomalies), "step100_blocking_anomalies": sum(r.blocking for r in anomalies),
+08557:         "step100_snapshots": len(snapshots), "step100_replay_records": len(replay),
+08558:         "step100_acceptance_passed": sum(r.passed for r in acceptance),
+08559:         "step100_acceptance_failed": sum(not r.passed for r in acceptance),
+08560:         "step100_registered_artifacts": len(registry), "step100_catalogue_records": len(catalogue),
+08561:         "step100_certified": 1 if certificate.certified else 0,
+08562:     })
+08563:     audit["checks"].update({
+08564:         "step100_freshness_pass": all(r.freshness_state == "PASS" for r in freshness),
+08565:         "step100_schema_drift_pass": all(r.drift_state == "PASS" for r in drift),
+08566:         "step100_service_levels_pass": all(r.passed for r in slos),
+08567:         "step100_access_controls_pass": all(r.access_state == "PASS" for r in access),
+08568:         "step100_retention_policy_pass": all(r.policy_state == "PASS" for r in retention),
+08569:         "step100_privacy_controls_pass": all(r.privacy_state == "PASS" for r in privacy),
+08570:         "step100_security_controls_pass": all(r.passed for r in security),
+08571:         "step100_no_blocking_anomalies": not any(r.blocking for r in anomalies),
+08572:         "step100_replay_ready": len(snapshots) == len(replay) and all(r.replay_state == "READY" for r in replay),
+08573:         "step100_capacity_pass": all(r.capacity_state in {"PASS", "WARN"} for r in capacity),
+08574:         "step100_benchmarks_pass": all(r.passed for r in benchmarks),
+08575:         "step100_dependencies_available": all((not r.required) or r.availability_state == "AVAILABLE" for r in dependencies),
+08576:         "step100_acceptance_pass": accepted,
+08577:         "step100_manifest_ready": manifest.release_state == "READY",
+08578:         "step100_completion_certified": certificate.certified,
+08579:         "step100_all_artifacts_created": all(path.exists() for path in paths.values()),
+08580:     })
+08581:     for name, path in paths.items():
+08582:         audit["outputs"][f"step100_{name}"] = normalise_path(path)
+08583:     audit["engine_version"] = "1.0.0-step100"
+08584:     failed = [name for name, passed in audit["checks"].items() if not passed]
+08585:     audit["failed_checks"] = failed
+08586:     audit["status"] = f"{ENGINE_NAME}_AUDIT_PASS" if not failed else f"{ENGINE_NAME}_AUDIT_FAIL"
+08587:     self.config.audit_json.write_text(json.dumps(audit, indent=2, ensure_ascii=False), encoding="utf-8")
+08588:     return audit
+08589: 
+08590: 
+08591: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step100
+08592: 
+08593: 
+08594: if __name__ == "__main__":
+08595:     raise SystemExit(main())
+
+==============================================================================
+RUN-WRAPPER ASSIGNMENTS
+==============================================================================
+01838: _old_run__run_step3 = EDGEIQIdentityRepositoryProfilerStep1.run
+01840: def _run_step3(self):
+01842:     audit = _old_run__run_step3(self)
+01903: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step3
+01997: _previous_run__run_step4 = EDGEIQIdentityRepositoryProfilerStep1.run
+01999: def _run_step4(self):
+02001:     audit = _previous_run__run_step4(self)
+02046: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step4
+02149: _prev_run__run_step5 = EDGEIQIdentityRepositoryProfilerStep1.run
+02151: def _run_step5(self):
+02153:     audit = _prev_run__run_step5(self)
+02205: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step5
+02296: _prev__run_step6 = EDGEIQIdentityRepositoryProfilerStep1.run
+02298: def _run_step6(self):
+02300:     audit = _prev__run_step6(self)
+02382: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step6
+02473: _previous__run_step7 = EDGEIQIdentityRepositoryProfilerStep1.run
+02475: def _run_step7(self):
+02477:     audit = _previous__run_step7(self)
+02542: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step7
+02647: _prev_run__run_step8 = EDGEIQIdentityRepositoryProfilerStep1.run
+02649: def _run_step8(self):
+02651:     audit = _prev_run__run_step8(self)
+02731: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step8
+02806: _previous_run__run_step9 = EDGEIQIdentityRepositoryProfilerStep1.run
+02808: def _run_step9(self):
+02810:     audit = _previous_run__run_step9(self)
+02844: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step9
+02898: _previous__run_step10 = EDGEIQIdentityRepositoryProfilerStep1.run
+02900: def _run_step10(self):
+02902:     audit = _previous__run_step10(self)
+02922: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step10
+03010: _prev__run_step11 = EDGEIQIdentityRepositoryProfilerStep1.run
+03012: def _run_step11(self):
+03014:     audit = _prev__run_step11(self)
+03064: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step11
+03144: _previous__run_step12 = EDGEIQIdentityRepositoryProfilerStep1.run
+03146: def _run_step12(self):
+03148:     audit = _previous__run_step12(self)
+03198: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step12
+03272: _previous__run_step13 = EDGEIQIdentityRepositoryProfilerStep1.run
+03274: def _run_step13(self):
+03276:     audit = _previous__run_step13(self)
+03310: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step13
+03362: _previous__run_step14 = EDGEIQIdentityRepositoryProfilerStep1.run
+03364: def _run_step14(self):
+03366:     audit = _previous__run_step14(self)
+03383: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step14
+03455: _previous__run_step15 = EDGEIQIdentityRepositoryProfilerStep1.run
+03457: def _run_step15(self):
+03459:     audit = _previous__run_step15(self)
+03476: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step15
+03539: _previous__run_step16 = EDGEIQIdentityRepositoryProfilerStep1.run
+03541: def _run_step16(self):
+03543:     audit = _previous__run_step16(self)
+03578: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step16
+03630: _previous__run_step17 = EDGEIQIdentityRepositoryProfilerStep1.run
+03632: def _run_step17(self):
+03634:     audit = _previous__run_step17(self)
+03652: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step17
+03712: _previous__run_step18 = EDGEIQIdentityRepositoryProfilerStep1.run
+03714: def _run_step18(self):
+03716:     audit = _previous__run_step18(self)
+03750: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step18
+03796: _previous__run_step19 = EDGEIQIdentityRepositoryProfilerStep1.run
+03798: def _run_step19(self):
+03799:     audit = _previous__run_step19(self)
+03826: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step19
+03879: _previous__run_step20 = EDGEIQIdentityRepositoryProfilerStep1.run
+03881: def _run_step20(self):
+03882:     audit = _previous__run_step20(self)
+03914: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step20
+03969: _previous__run_step21 = EDGEIQIdentityRepositoryProfilerStep1.run
+03971: def _run_step21(self):
+03972:     audit = _previous__run_step21(self)
+04004: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step21
+04058: _previous__run_step22 = EDGEIQIdentityRepositoryProfilerStep1.run
+04060: def _run_step22(self):
+04061:     audit = _previous__run_step22(self)
+04090: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step22
+04147: _previous__run_step23 = EDGEIQIdentityRepositoryProfilerStep1.run
+04149: def _run_step23(self):
+04150:     audit = _previous__run_step23(self)
+04183: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step23
+04237: _previous__run_step24 = EDGEIQIdentityRepositoryProfilerStep1.run
+04239: def _run_step24(self):
+04240:     audit = _previous__run_step24(self)
+04273: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step24
+04331: _previous__run_step25 = EDGEIQIdentityRepositoryProfilerStep1.run
+04333: def _run_step25(self):
+04334:     audit = _previous__run_step25(self)
+04351: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step25
+04410: _previous__run_step26 = EDGEIQIdentityRepositoryProfilerStep1.run
+04412: def _run_step26(self):
+04413:     audit = _previous__run_step26(self)
+04444: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step26
+04501: _previous__run_step27 = EDGEIQIdentityRepositoryProfilerStep1.run
+04503: def _run_step27(self):
+04504:     audit = _previous__run_step27(self)
+04535: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step27
+04609: _previous__run_step28 = EDGEIQIdentityRepositoryProfilerStep1.run
+04611: def _run_step28(self):
+04612:     audit = _previous__run_step28(self)
+04652: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step28
+04725: _previous__run_step29 = EDGEIQIdentityRepositoryProfilerStep1.run
+04727: def _run_step29(self):
+04728:     audit = _previous__run_step29(self)
+04766: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step29
+04866: _previous__run_step30 = EDGEIQIdentityRepositoryProfilerStep1.run
+04868: def _run_step30(self):
+04869:     audit = _previous__run_step30(self)
+04892: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step30
+04962: _previous__run_step31 = EDGEIQIdentityRepositoryProfilerStep1.run
+04964: def _run_step31(self):
+04965:     audit = _previous__run_step31(self)
+05009: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step31
+05051: _previous__run_step32 = EDGEIQIdentityRepositoryProfilerStep1.run
+05053: def _run_step32(self):
+05054:     audit = _previous__run_step32(self)
+05070: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step32
+05093: _prev__run_step33 = EDGEIQIdentityRepositoryProfilerStep1.run
+05095: def _run_step33(self):
+05096:     audit = _prev__run_step33(self)
+05111: EDGEIQIdentityRepositoryProfilerStep1.run=_run_step33
+06012: _step33_run__run_step50 = EDGEIQIdentityRepositoryProfilerStep1.run
+06015: def _run_step50(self):
+06016:     audit = _step33_run__run_step50(self)
+06271: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step50
+07599: _step50_run__run_step75 = EDGEIQIdentityRepositoryProfilerStep1.run
+07602: def _run_step75(self):
+07603:     audit = _step50_run__run_step75(self)
+07923: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step75
+08456: _step75_run__run_step100 = EDGEIQIdentityRepositoryProfilerStep1.run
+08459: def _run_step100(self):
+08461:     audit = _step75_run__run_step100(self)
+08591: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step100
+
+==============================================================================
+CROSSWALK CANDIDATE APPEND SITES
+==============================================================================
+Context around line 1763:
+01759:         relationships: list[IdentityRelationship] = []
+01760: 
+01761:         grouped: dict[str, list[ColumnProfile]] = {}
+01762: 
+01763:         for column in columns:
+01764:             classification = column.identity_classification.strip()
+01765: 
+01766:             if not classification:
+01767:                 continue
+01768: 
+01769:             grouped.setdefault(classification, []).append(column)
+01770: 
+01771:         for classification in sorted(grouped):
+01772:             items = sorted(
+01773:                 grouped[classification],
+
+Context around line 1934:
+01930:     ) -> list[CrosswalkCandidate]:
+01931: 
+01932:         candidates: list[CrosswalkCandidate] = []
+01933: 
+01934:         identity = [c for c in columns if c.identity_hint]
+01935:         keys = [c for c in columns if c.candidate_key]
+01936: 
+01937:         for left in identity:
+01938:             for right in keys:
+01939:                 if left.relative_path == right.relative_path:
+01940:                     continue
+01941: 
+01942:                 if left.identity_classification and (
+01943:                     left.identity_classification in right.column_name.lower()
+01944:                     or right.column_name.lower() in left.identity_classification
+
+Context around line 1935:
+01931: 
+01932:         candidates: list[CrosswalkCandidate] = []
+01933: 
+01934:         identity = [c for c in columns if c.identity_hint]
+01935:         keys = [c for c in columns if c.candidate_key]
+01936: 
+01937:         for left in identity:
+01938:             for right in keys:
+01939:                 if left.relative_path == right.relative_path:
+01940:                     continue
+01941: 
+01942:                 if left.identity_classification and (
+01943:                     left.identity_classification in right.column_name.lower()
+01944:                     or right.column_name.lower() in left.identity_classification
+01945:                 ):
+
+Context around line 1952:
+01948:                     confidence = 0.75
+01949:                 else:
+01950:                     confidence = 0.50
+01951: 
+01952:                 candidates.append(
+01953:                     CrosswalkCandidate(
+01954:                         left_dataset=left.relative_path,
+01955:                         left_column=left.column_name,
+01956:                         right_dataset=right.relative_path,
+01957:                         right_column=right.column_name,
+01958:                         key_type=left.identity_classification or "candidate_key",
+01959:                         confidence=confidence,
+01960:                         rationale="IDENTITY+KEY_HEURISTIC",
+01961:                     )
+01962:                 )
+
+Context around line 1953:
+01949:                 else:
+01950:                     confidence = 0.50
+01951: 
+01952:                 candidates.append(
+01953:                     CrosswalkCandidate(
+01954:                         left_dataset=left.relative_path,
+01955:                         left_column=left.column_name,
+01956:                         right_dataset=right.relative_path,
+01957:                         right_column=right.column_name,
+01958:                         key_type=left.identity_classification or "candidate_key",
+01959:                         confidence=confidence,
+01960:                         rationale="IDENTITY+KEY_HEURISTIC",
+01961:                     )
+01962:                 )
+01963: 
+
+Context around line 2174:
+02170: 
+02171:     crosswalks = []
+02172:     with cw_file.open(encoding="utf-8-sig", newline="") as f:
+02173:         for r in csv.DictReader(f):
+02174:             crosswalks.append(CrosswalkCandidate(
+02175:                 left_dataset=r["left_dataset"],
+02176:                 left_column=r["left_column"],
+02177:                 right_dataset=r["right_dataset"],
+02178:                 right_column=r["right_column"],
+02179:                 key_type=r["key_type"],
+02180:                 confidence=float(r["confidence"]),
+02181:                 rationale=r["rationale"],
+02182:             ))
+02183: 
+02184:     engine = CanonicalIdentityGraphEngine()
+
+Context around line 2246:
+02242: 
+02243:         results = []
+02244: 
+02245:         for ds in datasets:
+02246:             id_cols = [c for c in columns if c.relative_path == ds.relative_path and c.identity_hint]
+02247:             key_cols = [c for c in columns if c.relative_path == ds.relative_path and c.candidate_key]
+02248: 
+02249:             score = (
+02250:                 len(id_cols) * 20 +
+02251:                 len(key_cols) * 15 +
+02252:                 rel_count.get(ds.relative_path, 0) * 2 +
+02253:                 cw_count.get(ds.relative_path, 0) * 3
+02254:             )
+02255: 
+02256:             recommendation = (
+
+Context around line 2247:
+02243:         results = []
+02244: 
+02245:         for ds in datasets:
+02246:             id_cols = [c for c in columns if c.relative_path == ds.relative_path and c.identity_hint]
+02247:             key_cols = [c for c in columns if c.relative_path == ds.relative_path and c.candidate_key]
+02248: 
+02249:             score = (
+02250:                 len(id_cols) * 20 +
+02251:                 len(key_cols) * 15 +
+02252:                 rel_count.get(ds.relative_path, 0) * 2 +
+02253:                 cw_count.get(ds.relative_path, 0) * 3
+02254:             )
+02255: 
+02256:             recommendation = (
+02257:                 "CANONICAL_AUTHORITY"
+
+Context around line 2355:
+02351:         confidence=float(r["confidence"]),
+02352:         matching_rule=r["matching_rule"],
+02353:     ) for r in rel_rows]
+02354: 
+02355:     crosswalks = [CrosswalkCandidate(
+02356:         left_dataset=r["left_dataset"],
+02357:         left_column=r["left_column"],
+02358:         right_dataset=r["right_dataset"],
+02359:         right_column=r["right_column"],
+02360:         key_type=r["key_type"],
+02361:         confidence=float(r["confidence"]),
+02362:         rationale=r["rationale"],
+02363:     ) for r in cw_rows]
+02364: 
+02365:     scores = AuthorityAnalysisEngine().analyse(
+
+Context around line 2414:
+02410:         }
+02411: 
+02412:         candidates = []
+02413: 
+02414:         for column in columns:
+02415:             if not column.identity_hint:
+02416:                 continue
+02417: 
+02418:             authority = authority_lookup.get(column.relative_path)
+02419:             recommendation = authority.recommendation if authority else "UNKNOWN"
+02420: 
+02421:             priority = 100
+02422:             if recommendation == "CANONICAL_AUTHORITY":
+02423:                 priority = 1
+02424:             elif recommendation == "PRIMARY_REFERENCE":
+
+Context around line 2429:
+02425:                 priority = 2
+02426:             else:
+02427:                 priority = 3
+02428: 
+02429:             candidates.append(
+02430:                 IdentityExpansionCandidate(
+02431:                     dataset=column.relative_path,
+02432:                     identity_column=column.column_name,
+02433:                     canonical_type=column.identity_classification,
+02434:                     expansion_priority=priority,
+02435:                     authority_source=recommendation,
+02436:                     recommended_action="EXPAND_CANONICAL_IDENTITIES",
+02437:                     rationale="IDENTITY_COLUMN_DISCOVERED",
+02438:                 )
+02439:             )
+
+Context around line 2579:
+02575:                 None,
+02576:             )
+02577: 
+02578:             cols = [
+02579:                 c for c in columns
+02580:                 if c.relative_path == ds.relative_path
+02581:             ]
+02582: 
+02583:             identity_cols = sum(c.identity_hint for c in cols)
+02584:             key_cols = sum(c.candidate_key for c in cols)
+02585: 
+02586:             score = 0.0
+02587:             score += min(identity_cols * 25, 50)
+02588:             score += min(key_cols * 20, 40)
+02589:             if auth and auth.recommendation == "CANONICAL_AUTHORITY":
+
+Context around line 4157:
+04153:     with (self.config.output_root / "edgeiq_identity_merge_candidates_v1.csv").open(
+04154:         encoding="utf-8-sig", newline=""
+04155:     ) as f:
+04156:         for r in csv.DictReader(f):
+04157:             candidates.append(
+04158:                 IdentityMergeCandidate(
+04159:                     merge_id=r["merge_id"],
+04160:                     canonical_id=r["canonical_id"],
+04161:                     alias_key=r["alias_key"],
+04162:                     confidence=r["confidence"],
+04163:                     merge_strategy=r["merge_strategy"],
+04164:                     review_state=r["review_state"],
+04165:                 )
+04166:             )
+04167: 
+
+==============================================================================
+SUMMARY
+==============================================================================
+Classes found: CrosswalkCandidate, CrosswalkDiscoveryEngine, CrosswalkWriter, EDGEIQIdentityRepositoryProfilerStep1
+Functions found: _run_step100, _run_step4, _run_step5, main
+Missing required classes: NONE
+Missing required functions: NONE
+Status: PASS

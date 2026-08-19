@@ -1,0 +1,19 @@
+{
+  "conversion_model_version": "EDGEIQ_SURFACE_AWARE_LENGTHS_PER_SECOND_V2",
+  "conversion_scope": "SURFACE_CONDITION",
+  "distances_covered": [
+    "1100",
+    "1200",
+    "1400",
+    "1600",
+    "2000",
+    "2100"
+  ],
+  "lengths_versus_standard_rows": 13,
+  "race_time_delta_rows": 17,
+  "rejected_rows": 4,
+  "rejection_reasons": {
+    "NO_WAREHOUSE_CONDITION_EVIDENCE": 4
+  },
+  "status": "PASS"
+}

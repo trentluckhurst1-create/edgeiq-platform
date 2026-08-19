@@ -1,0 +1,22 @@
+{
+  "audit_status": "PASS",
+  "generated_utc": "2026-07-27T03:34:39+00:00",
+  "outputs": [
+    "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_4_1_EXACT_FIELD_PROFILE_V1.csv",
+    "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_4_1_IDENTITY_FIELD_CANDIDATES_V1.csv",
+    "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_4_1_BUILDER_FIELD_ASSIGNMENTS_V1.csv",
+    "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_4_1_EXACT_SCHEMA_FIELD_MAPPING_REPORT_V1.json",
+    "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_4_1_EXACT_SCHEMA_FIELD_MAPPING_REPORT_V1.md",
+    "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_4_1_EXACT_SCHEMA_FIELD_MAPPING_AUDIT_V1.json",
+    "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_4_1_EXACT_SCHEMA_FIELD_MAPPING_AUDIT_V1.md"
+  ],
+  "program_id": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE1A_4_1_EXACT_SCHEMA_FIELD_MAPPING_V1",
+  "program_version": "1.0.0",
+  "repository_root": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM",
+  "summary": {
+    "builder_assignment_count": 1376,
+    "identity_candidate_count": 425,
+    "profiled_field_count": 251,
+    "target_count": 6
+  }
+}

@@ -1,0 +1,962 @@
+FRAME 0 URL=https://www.racing.com/form/2026-07-20/southside-pakenham-synthetic/race/2/speed-data
+MONDAY, 20 JULY 2026
+Southside Pakenham Synthetic  
+1100m
+17°C
+Synth
+Track Rail
+True Entire Circuit
+Final Result
+All
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+Become a Southside Racing Member Maiden Plate
+1:00pm
+1100m
+Set Weights. Two-Years-Old and Upwards, No sex restriction. Maiden. Apprentices can claim. Track name: Synthetic. Track type: Synthetic. Field limit: 12.
+Race Time: 
+1:03.23  
++11.46L  
+Prize Money: 
+$32,000  
+Results
+Stewards' Report
+Speed Data
+News & Video
+Personalise Your Racing Experience
+
+We use cookies (including third-party) for site functionality, personalised content and ads, and analytics. By continuing, you consent to essential cookies only. Click "Accept all cookies" to allow non-essential cookies for personalisation and sharing usage data with our media, advertising, and analytics partners.
+
+See our Privacy Policy for details.
+
+Accept
+All CookiesDecline Non-
+Essential Cookies
+
+---FRAME---
+
+FRAME 1 URL=https://dxp-static.racing.com/sectionals/index.html#?meetCode=5191023&raceNumber=2
+Sort By:	Finishing Position
+C
+Finishing Position
+Distance Run
+Early Speed
+Mid Speed
+Late Speed
+Peak Speed
+Average Speed
+	OverviewSectionalsSplits
+POS / HORSE
+1st		
+7. Praise Her (5)
+T: G.M.Begg J: M.J.Dee
+
+2nd		
+3. Mahrajan (1)
+T: Ben, Will & JD Hayes J: J.McNeil
+
+3rd		
+2. Crime Of Passion (3)
+T: Mick Price & Michael Kent (Jnr) J: T.Stockdale
+
+4th		
+11. Agoraphobic (10)
+T: Ben, Will & JD Hayes J: D.G.Thornton
+
+5th		
+1. Alphabet (8)
+T: C.Douglas J: J.Mott
+
+6th		
+9. Torzannie (6)
+T: C.P.Diplock J: M.Castle
+
+7th		
+5. Moonlight Romance (7)
+T: N.E.Shelton J: S.Wynne
+
+8th		
+8. Shows No Shame (4)
+T: S.V.Brown J: P.M.Moloney
+
+9th		
+12. Scorching Beauty (2)
+T: D.E.A.Sutton J: C.Williams
+
+10th		
+6. Pjanoo (12)
+T: R.P.Hunter J: D.J.Dunn
+
+11th		
+4. Miss Pantera (9)
+T: V.L.Malady J: L.King
+
+12th		
+10. Turn Haast Loose (NZ) (11)
+T: M.Brown J: L.N.McNeil
+	
+DIST RUN	EARLY	MID	LATE	PEAK	AVG SPEED	COM
+
+1105
+metres
+	
+54.36
+km/h
+	
+67.82
+km/h
+	
+65.95
+km/h
+	
+69.55
+km/h
+	
+62.93
+km/h
+	
+!
+
+
+1102(-4)
+metres
+	
+55.87
+km/h
+	
+66.42
+km/h
+	
+64.08
+km/h
+	
+68.11
+km/h
+	
+62.42
+km/h
+	
+!
+
+
+1106(+1)
+metres
+	
+54.36
+km/h
+	
+68.11
+km/h
+	
+64.26
+km/h
+	
+68.36
+km/h
+	
+62.42
+km/h
+	
+!
+
+
+1105(-1)
+metres
+	
+53.21
+km/h
+	
+67.64
+km/h
+	
+64.62
+km/h
+	
+69.41
+km/h
+	
+62.03
+km/h
+	
+!
+
+
+1109(+4)
+metres
+	
+53.32
+km/h
+	
+66.42
+km/h
+	
+66.06
+km/h
+	
+68.65
+km/h
+	
+62.17
+km/h
+	
+!
+
+
+1104(-1)
+metres
+	
+53.46
+km/h
+	
+67.64
+km/h
+	
+63.76
+km/h
+	
+70.16
+km/h
+	
+61.81
+km/h
+	
+!
+
+
+1106(+1)
+metres
+	
+51.84
+km/h
+	
+66.74
+km/h
+	
+66.20
+km/h
+	
+67.43
+km/h
+	
+61.74
+km/h
+	
+!
+
+
+1103(-2)
+metres
+	
+53.75
+km/h
+	
+67.03
+km/h
+	
+63.14
+km/h
+	
+67.79
+km/h
+	
+61.52
+km/h
+	
+!
+
+
+1105
+metres
+	
+55.01
+km/h
+	
+67.72
+km/h
+	
+61.20
+km/h
+	
+69.01
+km/h
+	
+61.49
+km/h
+	
+!
+
+
+1112(+7)
+metres
+	
+52.74
+km/h
+	
+67.14
+km/h
+	
+65.34
+km/h
+	
+66.24
+km/h
+	
+61.81
+km/h
+	
+!
+
+
+1105(-1)
+metres
+	
+51.91
+km/h
+	
+65.74
+km/h
+	
+63.65
+km/h
+	
+67.00
+km/h
+	
+60.62
+km/h
+	
+!
+
+
+1106
+metres
+	
+52.27
+km/h
+	
+63.61
+km/h
+	
+58.46
+km/h
+	
+65.99
+km/h
+	
+58.32
+km/h
+	
+!
+POS / HORSE
+1st		
+7. Praise Her (5)
+T: G.M.Begg J: M.J.Dee
+
+2nd		
+3. Mahrajan (1)
+T: Ben, Will & JD Hayes J: J.McNeil
+
+3rd		
+2. Crime Of Passion (3)
+T: Mick Price & Michael Kent (Jnr) J: T.Stockdale
+
+4th		
+11. Agoraphobic (10)
+T: Ben, Will & JD Hayes J: D.G.Thornton
+
+5th		
+1. Alphabet (8)
+T: C.Douglas J: J.Mott
+
+6th		
+9. Torzannie (6)
+T: C.P.Diplock J: M.Castle
+
+7th		
+5. Moonlight Romance (7)
+T: N.E.Shelton J: S.Wynne
+
+8th		
+8. Shows No Shame (4)
+T: S.V.Brown J: P.M.Moloney
+
+9th		
+12. Scorching Beauty (2)
+T: D.E.A.Sutton J: C.Williams
+
+10th		
+6. Pjanoo (12)
+T: R.P.Hunter J: D.J.Dunn
+
+11th		
+4. Miss Pantera (9)
+T: V.L.Malady J: L.King
+
+12th		
+10. Turn Haast Loose (NZ) (11)
+T: M.Brown J: L.N.McNeil
+	
+OVERALL	1000M	800M	600M	400M	200M
+
+1:03.23
+1st
+	
+54.43
+4th
+	
+43.30
+3rd
+	
+32.77
+3rd
+	
+21.83
+4th
+	
+11.08
+2nd
+
+
+1:03.57
+2nd
+	
+55.10
+1st
+	
+44.20
+1st
+	
+33.46
+1st
+	
+22.46
+1st
+	
+11.50
+1st
+
+
+1:03.77
+3rd
+	
+55.01
+3rd
+	
+43.82
+4th
+	
+33.17
+4th
+	
+22.42
+3rd
+	
+11.42
+3rd
+
+
+1:04.12
+4th
+	
+55.15
+6th
+	
+43.75
+8th
+	
+33.02
+7th
+	
+22.30
+7th
+	
+11.54
+4th
+
+
+1:04.23
+5th
+	
+55.38
+5th
+	
+43.92
+7th
+	
+32.68
+9th
+	
+21.83
+8th
+	
+11.04
+8th
+
+
+1:04.31
+6th
+	
+55.23
+9th
+	
+44.06
+6th
+	
+33.48
+5th
+	
+22.60
+5th
+	
+11.52
+6th
+
+
+1:04.50
+7th
+	
+55.14
+12th
+	
+43.61
+12th
+	
+32.69
+10th
+	
+21.74
+10th
+	
+10.96
+9th
+
+
+1:04.55
+8th
+	
+55.54
+8th
+	
+44.39
+5th
+	
+33.69
+6th
+	
+22.78
+6th
+	
+11.64
+7th
+
+
+1:04.71
+9th
+	
+55.95
+2nd
+	
+45.00
+2nd
+	
+34.43
+2nd
+	
+23.52
+2nd
+	
+11.95
+5th
+
+
+1:04.77
+10th
+	
+55.78
+7th
+	
+44.24
+9th
+	
+33.29
+8th
+	
+22.32
+9th
+	
+11.17
+10th
+
+
+1:05.60
+11th
+	
+56.26
+11th
+	
+44.75
+11th
+	
+33.78
+11th
+	
+22.65
+11th
+	
+11.52
+11th
+
+
+1:08.28
+12th
+	
+59.00
+10th
+	
+47.46
+10th
+	
+36.26
+12th
+	
+24.64
+12th
+	
+12.69
+12th
+POS / HORSE
+1st		
+7. Praise Her (5)
+T: G.M.Begg J: M.J.Dee
+
+2nd		
+3. Mahrajan (1)
+T: Ben, Will & JD Hayes J: J.McNeil
+
+3rd		
+2. Crime Of Passion (3)
+T: Mick Price & Michael Kent (Jnr) J: T.Stockdale
+
+4th		
+11. Agoraphobic (10)
+T: Ben, Will & JD Hayes J: D.G.Thornton
+
+5th		
+1. Alphabet (8)
+T: C.Douglas J: J.Mott
+
+6th		
+9. Torzannie (6)
+T: C.P.Diplock J: M.Castle
+
+7th		
+5. Moonlight Romance (7)
+T: N.E.Shelton J: S.Wynne
+
+8th		
+8. Shows No Shame (4)
+T: S.V.Brown J: P.M.Moloney
+
+9th		
+12. Scorching Beauty (2)
+T: D.E.A.Sutton J: C.Williams
+
+10th		
+6. Pjanoo (12)
+T: R.P.Hunter J: D.J.Dunn
+
+11th		
+4. Miss Pantera (9)
+T: V.L.Malady J: L.King
+
+12th		
+10. Turn Haast Loose (NZ) (11)
+T: M.Brown J: L.N.McNeil
+	
+1100M-1000M	1000M-800M	800M-600M	600M-400M	400M-200M	200M-FINISH
+
+8.80
+4th
+	
+11.13
+3rd
+	
+10.53
+3rd
+	
+10.94
+4th
+	
+10.75
+2nd
+	
+11.08
+1st
+
+
+8.47
+1st
+	
+10.90
+1st
+	
+10.74
+1st
+	
+11.00
+1st
+	
+10.96
+1st
+	
+11.50
+2nd
+
+
+8.76
+3rd
+	
+11.19
+4th
+	
+10.65
+4th
+	
+10.75
+3rd
+	
+11.00
+3rd
+	
+11.42
+3rd
+
+
+8.98
+6th
+	
+11.40
+8th
+	
+10.73
+7th
+	
+10.72
+7th
+	
+10.76
+4th
+	
+11.54
+4th
+
+
+8.85
+5th
+	
+11.46
+7th
+	
+11.24
+9th
+	
+10.85
+8th
+	
+10.79
+8th
+	
+11.04
+5th
+
+
+9.09
+9th
+	
+11.17
+6th
+	
+10.58
+5th
+	
+10.88
+5th
+	
+11.08
+6th
+	
+11.52
+6th
+
+
+9.35
+12th
+	
+11.53
+12th
+	
+10.92
+10th
+	
+10.95
+10th
+	
+10.78
+9th
+	
+10.96
+7th
+
+
+9.01
+8th
+	
+11.15
+5th
+	
+10.70
+6th
+	
+10.91
+6th
+	
+11.14
+7th
+	
+11.64
+8th
+
+
+8.76
+2nd
+	
+10.95
+2nd
+	
+10.57
+2nd
+	
+10.91
+2nd
+	
+11.57
+5th
+	
+11.95
+9th
+
+
+8.99
+7th
+	
+11.54
+9th
+	
+10.95
+8th
+	
+10.97
+9th
+	
+11.15
+10th
+	
+11.17
+10th
+
+
+9.35
+11th
+	
+11.51
+11th
+	
+10.97
+11th
+	
+11.13
+11th
+	
+11.13
+11th
+	
+11.52
+11th
+
+
+9.28
+10th
+	
+11.54
+10th
+	
+11.20
+12th
+	
+11.62
+12th
+	
+11.95
+12th
+	
+12.69
+12th
+Download Race Sectional Data | PDF' | CSV'
+Splits & Sectionals	
+
+Splits & Sectionals data displayed on Racing.com is sourced from the following race-timing technology partners: From August 2021, sectional times for race meetings at Flemington, Caulfield, The Valley & Ladbrokes Park are provided by tripleSdata and Champion Data (note: previously, Trakus technology was used at Flemington, Caulfield and The Valley). From August 2023, Cranbourne and Pakenham sectional times are also provided by tripleSdata and Champion Data (note: previously, Daily Sectionals) From September 2017, data for all other Victorian tracks is provided by Daily Sectionals; and at South Australian tracks the sectional times are sourced from Equitime.
+
+Below each split and sectional time displayed is the horse’s position-in-running (e.g. 1st) at that point of the race.
+
+The meeting rank 'tool-tip' feature helps to identify how the fastest individual splits & sectionals for each race, which are highlighted in green, compare to the times for the rest of that particular race meeting.
+
+---FRAME---
+
+FRAME 7 URL=about:blank
+18+‌
+Eligible‌ ‌customers‌ ‌only.‌ ‌Prices‌ ‌subject‌ ‌to‌ ‌change.‌ ‌
+Max‌ ‌stakes‌ ‌&‌ ‌T&Cs‌ ‌apply.‌
+THINK.‌ ‌IS‌ ‌THIS‌ ‌A‌ ‌BET‌ ‌YOU‌ ‌REALLY‌ ‌WANT‌ ‌TO‌ ‌PLACE?‌
+Set‌ ‌a‌ ‌deposit‌ ‌limit.‌
+
+---FRAME---
+
+FRAME 9 URL=about:blank
+18+‌
+Eligible‌ ‌customers‌ ‌only.‌ ‌Prices‌ ‌subject‌ ‌to‌ ‌change.‌ ‌
+Max‌ ‌stakes‌ ‌&‌ ‌T&Cs‌ ‌apply.‌
+THINK.‌ ‌IS‌ ‌THIS‌ ‌A‌ ‌BET‌ ‌YOU‌ ‌REALLY‌ ‌WANT‌ ‌TO‌ ‌PLACE?‌
+Set‌ ‌a‌ ‌deposit‌ ‌limit.‌
+
+---FRAME---
+
+FRAME 11 URL=https://platform.twitter.com/widgets/tweet_button.1227a5674072e080ffb1ba14ac0c1079.en.html#dnt=true&id=twitter-widget-0&lang=en&original_referer=https%3A%2F%2Fdxp-static.racing.com%2Fsectionals%2Findex.html%23%3FmeetCode%3D5191023%26raceNumber%3D2&size=m&text=RACING.COM&time=1784711636195&type=share&url=https%3A%2F%2Fdxp-static.racing.com%2Fsectionals%2Findex.html%23%3FmeetCode%3D5191023%26raceNumber%3D2&via=country_racing
+Post
+
+---FRAME---
+
+FRAME 17 URL=about:blank
+Join
+
+---FRAME---
+
+FRAME 19 URL=about:blank
+EVERY RACE, EVERY DAY.
+
+---FRAME---
+
+FRAME 28 URL=about:blank
+Join
+
+---FRAME---
+
+FRAME 30 URL=about:blank
+EVERY RACE, EVERY DAY.

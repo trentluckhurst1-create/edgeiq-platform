@@ -1,0 +1,423 @@
+
+.edgeFirming {
+  animation: edgeFirmPulse 1.6s ease-in-out infinite;
+}
+
+.edgeDrifting {
+  animation: edgeDriftPulse 1.6s ease-in-out infinite;
+}
+
+.edgeStable {
+  opacity: 1;
+}
+
+.edgePriceFirming {
+  color: #42ff9b;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(66,255,155,0.45);
+}
+
+.edgePriceDrifting {
+  color: #ff6b6b;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(255,107,107,0.45);
+}
+
+@keyframes edgeFirmPulse {
+  0% { background: rgba(66,255,155,0.00); }
+  50% { background: rgba(66,255,155,0.08); }
+  100% { background: rgba(66,255,155,0.00); }
+}
+
+@keyframes edgeDriftPulse {
+  0% { background: rgba(255,107,107,0.00); }
+  50% { background: rgba(255,107,107,0.08); }
+  100% { background: rgba(255,107,107,0.00); }
+}
+
+
+/* =============================================================================
+EDGEIQ ELITE MARKET TERMINAL UPGRADE
+============================================================================= */
+
+.bookmaker-board .terminal-card {
+  border-radius: 18px;
+  border: 1px solid rgba(148,163,184,.12);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(15,23,42,.92),
+      rgba(2,6,23,.98)
+    );
+  overflow: hidden;
+}
+
+.bookmaker-board .terminal-card-head {
+  padding: 18px 22px;
+  border-bottom: 1px solid rgba(148,163,184,.08);
+}
+
+.bookmaker-board .terminal-kicker {
+  color: #34d399;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.bookmaker-board .terminal-muted {
+  margin-top: 6px;
+  color: #94a3b8;
+  font-size: 12px;
+  letter-spacing: .06em;
+}
+
+.bookmaker-summary {
+  padding: 16px 20px 0 20px;
+}
+
+.bookmaker-board .terminal-metric {
+  min-height: 86px;
+  border-radius: 16px;
+  background: rgba(15,23,42,.76);
+  border: 1px solid rgba(148,163,184,.08);
+  padding: 14px 16px;
+}
+
+.bookmaker-board .terminal-metric span {
+  color: #64748b;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-weight: 700;
+}
+
+.bookmaker-board .terminal-metric strong {
+  display: block;
+  margin-top: 10px;
+  color: #f8fafc;
+  font-size: 31px;
+  line-height: 1;
+  font-weight: 800;
+}
+
+.bookmaker-table-wrap {
+  margin-top: 18px;
+  border-top: 1px solid rgba(148,163,184,.08);
+}
+
+.bookmaker-table {
+  background: #020617;
+}
+
+.bookmaker-table thead {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(15,23,42,.98),
+      rgba(15,23,42,.88)
+    );
+}
+
+.bookmaker-table th {
+  padding: 14px 16px !important;
+  color: #94a3b8 !important;
+  font-size: 11px !important;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-weight: 800 !important;
+  border-bottom: 1px solid rgba(148,163,184,.08);
+}
+
+.bookmaker-table td {
+  padding: 15px 16px !important;
+  color: #f8fafc;
+  font-size: 14px;
+  font-weight: 500;
+  vertical-align: middle;
+}
+
+.bookmaker-table tbody tr {
+  border-top: 1px solid rgba(148,163,184,.06);
+  transition: background .16s ease;
+}
+
+.bookmaker-table tbody tr:hover {
+  background: rgba(15,23,42,.92);
+}
+
+.bookmaker-table .terminal-strong {
+  font-size: 15px;
+  font-weight: 800;
+  color: #f8fafc;
+  letter-spacing: -.01em;
+}
+
+.bookmaker-table .terminal-td {
+  white-space: nowrap;
+}
+
+.book-price {
+  font-size: 20px;
+  font-weight: 900;
+  color: #e2e8f0;
+  letter-spacing: -.03em;
+}
+
+.book-price-in {
+  color: #22c55e;
+}
+
+.book-price-out {
+  color: #ef4444;
+}
+
+.book-flucs {
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.bookmaker-board .terminal-positive {
+  color: #22c55e !important;
+  font-weight: 800;
+}
+
+.bookmaker-board .terminal-chip {
+  min-height: 32px;
+  padding: 0 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .08em;
+}
+
+.bookmaker-board .terminal-chip.live {
+  background: rgba(34,197,94,.12);
+  border: 1px solid rgba(34,197,94,.22);
+  color: #4ade80;
+}
+
+.bookmaker-board .terminal-chip.neutral {
+  background: rgba(15,23,42,.95);
+  border: 1px solid rgba(59,130,246,.24);
+  color: #dbeafe;
+}
+
+
+/* =============================================================================
+EDGEIQ MARKET UI — SILKS / FLUCS / RACE META
+============================================================================= */
+
+.book-race-meta-strip {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1px;
+  margin: 0 0 14px 0;
+  border: 1px solid rgba(148,163,184,.12);
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(15,23,42,.85);
+}
+
+.book-race-meta-strip div {
+  padding: 14px 16px;
+  background: rgba(2,6,23,.72);
+}
+
+.book-race-meta-strip span {
+  display: block;
+  color: #94a3b8;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  font-weight: 800;
+}
+
+.book-race-meta-strip strong {
+  display: block;
+  margin-top: 7px;
+  color: #f8fafc;
+  font-size: 18px;
+  line-height: 1;
+  font-weight: 900;
+}
+
+.book-silk {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  border: 1px solid rgba(255,255,255,.28);
+  box-shadow: 0 0 14px rgba(15,23,42,.75);
+}
+
+.silk-1 { background: linear-gradient(135deg,#ef4444 0 35%,#fff 35% 50%,#ef4444 50%); }
+.silk-2 { background: linear-gradient(135deg,#2563eb 0 35%,#fff 35% 50%,#111827 50%); }
+.silk-3 { background: repeating-linear-gradient(90deg,#22c55e 0 6px,#fff 6px 12px); }
+.silk-4 { background: linear-gradient(135deg,#facc15 0 45%,#ef4444 45%); }
+.silk-5 { background: repeating-linear-gradient(0deg,#166534 0 6px,#e5e7eb 6px 12px); }
+.silk-6 { background: repeating-linear-gradient(0deg,#facc15 0 5px,#020617 5px 10px); }
+.silk-7 { background: linear-gradient(180deg,#60a5fa,#1d4ed8); }
+.silk-8 { background: linear-gradient(135deg,#ec4899,#7c3aed); }
+
+.book-fluc {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.book-fluc.firming {
+  color: #22c55e;
+  text-shadow: 0 0 12px rgba(34,197,94,.32);
+}
+
+.book-fluc.drifting {
+  color: #ef4444;
+  text-shadow: 0 0 12px rgba(239,68,68,.28);
+}
+
+.book-fluc.stable {
+  color: #64748b;
+}
+
+.bookmaker-table th:first-child,
+.bookmaker-table td:first-child {
+  width: 46px;
+  text-align: center;
+}
+
+.bookmaker-table th:nth-child(2),
+.bookmaker-table td:nth-child(2) {
+  width: 64px;
+  text-align: center;
+}
+
+.bookmaker-table td:nth-child(6),
+.bookmaker-table td:nth-child(7),
+.bookmaker-table td:nth-child(8),
+.bookmaker-table td:nth-child(9) {
+  font-variant-numeric: tabular-nums;
+}
+
+.bookmaker-table .terminal-cell-right {
+  text-align: right;
+}
+
+.bookmaker-board .terminal-card {
+  padding: 14px;
+}
+
+.bookmaker-board .terminal-card-head,
+.bookmaker-summary,
+.bookmaker-table-wrap {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+
+/* =============================================================================
+EDGEIQ META STRIP FIX
+============================================================================= */
+
+.book-race-meta-strip {
+  display: grid !important;
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  gap: 0 !important;
+  align-items: stretch !important;
+  margin-bottom: 18px !important;
+}
+
+.book-race-meta-strip > div {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  min-height: 74px !important;
+}
+
+.book-race-meta-strip strong {
+  margin-top: 8px !important;
+  font-size: 20px !important;
+  font-weight: 900 !important;
+  color: #f8fafc !important;
+}
+
+.book-race-meta-strip span {
+  font-size: 10px !important;
+  letter-spacing: .14em !important;
+  text-transform: uppercase !important;
+  color: #64748b !important;
+}
+
+/* =============================================================================
+SILKS FIX
+============================================================================= */
+
+.book-silk {
+  display: inline-block !important;
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 8px !important;
+  border: 1px solid rgba(255,255,255,.24) !important;
+}
+
+/* =============================================================================
+FLUC FIX
+============================================================================= */
+
+.book-fluc {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 36px !important;
+  font-size: 22px !important;
+  font-weight: 900 !important;
+}
+
+.book-fluc.firming {
+  color: #22c55e !important;
+}
+
+.book-fluc.drifting {
+  color: #ef4444 !important;
+}
+
+.book-fluc.stable {
+  color: #64748b !important;
+}
+
+/* =============================================================================
+LIVE PRICE EMPHASIS
+============================================================================= */
+
+.book-price {
+  font-size: 18px !important;
+  font-weight: 900 !important;
+  letter-spacing: -.02em !important;
+}
+
+.book-price-in {
+  color: #22c55e !important;
+}
+
+.book-price-out {
+  color: #ef4444 !important;
+}
+
+/* =============================================================================
+TABLE DENSITY POLISH
+============================================================================= */
+
+.bookmaker-table td {
+  padding-top: 18px !important;
+  padding-bottom: 18px !important;
+}
+
+.bookmaker-table .terminal-strong {
+  font-size: 15px !important;
+  font-weight: 800 !important;
+}
+

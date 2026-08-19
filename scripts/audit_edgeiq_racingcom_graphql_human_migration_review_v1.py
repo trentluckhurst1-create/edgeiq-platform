@@ -1,0 +1,2 @@
+from build_edgeiq_racingcom_human_migration_review_package_v1 import audit_only
+raise SystemExit(audit_only())

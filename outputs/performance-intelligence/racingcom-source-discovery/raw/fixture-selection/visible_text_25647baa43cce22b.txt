@@ -1,0 +1,1023 @@
+FRAME 0 URL=https://www.racing.com/form/2026-07-20/southside-pakenham-synthetic/race/8/speed-data
+MONDAY, 20 JULY 2026
+Southside Pakenham Synthetic  
+1600m
+17°C
+Synth
+Track Rail
+True Entire Circuit
+Final Result
+All
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+Hygain Edge Handicap
+4:00pm
+1600m
+Handicap. Two-Years-Old and Upwards, No sex restriction. BenchMark 62. Apprentices can claim. Track name: Synthetic. Track type: Synthetic. Field limit: 11.
+Race Time: 
+1:37.02  
++9.24L  
+Prize Money: 
+$27,000  
+Results
+Stewards' Report
+Speed Data
+News & Video
+Personalise Your Racing Experience
+
+We use cookies (including third-party) for site functionality, personalised content and ads, and analytics. By continuing, you consent to essential cookies only. Click "Accept all cookies" to allow non-essential cookies for personalisation and sharing usage data with our media, advertising, and analytics partners.
+
+See our Privacy Policy for details.
+
+Accept
+All CookiesDecline Non-
+Essential Cookies
+
+---FRAME---
+
+FRAME 1 URL=https://dxp-static.racing.com/sectionals/index.html#?meetCode=5191023&raceNumber=8
+Sort By:	Finishing Position
+C
+Finishing Position
+Distance Run
+Early Speed
+Mid Speed
+Late Speed
+Peak Speed
+Average Speed
+	OverviewSectionalsSplits
+POS / HORSE
+1st		
+2. Bronte Beach (7)
+T: Mick Price & Michael Kent (Jnr) J: J.Mott
+
+2nd		
+4. Hulkster (8)
+T: Mick Price & Michael Kent (Jnr) J: T.Stockdale
+
+3rd		
+5. Double Pi (6)
+T: Peter G Moody & Katherine Coleman J: B.E.Temple
+
+4th		
+3. Easy Dun (3)
+T: A.Noblet J: L.Nolen
+
+5th		
+10. Fearless Writer (5)
+T: A.R.McGregor J: A.McCabe
+
+6th		
+12. Lady Elsa (NZ) (9)
+T: C.J.Littlefield J: J.B.Stanley
+
+7th		
+11. Capital Grace (1)
+T: Emma-Lee & David Browne J: D.G.Thornton
+
+8th		
+7. Ancho (11)
+T: G.W.Egan J: J.McNeil
+
+9th		
+8. Caleana (10)
+T: Mick Price & Michael Kent (Jnr) J: L.K.Cartwright
+
+10th		
+1. Ashau Valley (4)
+T: Pat Carey & Harris Walker J: N.Daniels
+
+11th		
+9. Crespiano (2)
+T: P.J.Stokes J: L.J.Neindorf
+	
+DIST RUN	EARLY	MID	LATE	PEAK	AVG SPEED	COM
+
+1607
+metres
+	
+56.12
+km/h
+	
+62.42
+km/h
+	
+64.87
+km/h
+	
+67.21
+km/h
+	
+59.62
+km/h
+	
+!
+
+
+1613(+6)
+metres
+	
+56.16
+km/h
+	
+61.02
+km/h
+	
+66.74
+km/h
+	
+68.00
+km/h
+	
+59.83
+km/h
+	
+!
+
+
+1613(+6)
+metres
+	
+56.52
+km/h
+	
+60.95
+km/h
+	
+66.17
+km/h
+	
+66.67
+km/h
+	
+59.80
+km/h
+	
+!
+
+
+1606(-1)
+metres
+	
+55.40
+km/h
+	
+63.04
+km/h
+	
+64.84
+km/h
+	
+67.54
+km/h
+	
+59.36
+km/h
+	
+!
+
+
+1611(+4)
+metres
+	
+55.80
+km/h
+	
+60.88
+km/h
+	
+66.53
+km/h
+	
+67.32
+km/h
+	
+59.51
+km/h
+	
+!
+
+
+1613(+7)
+metres
+	
+55.51
+km/h
+	
+61.13
+km/h
+	
+67.28
+km/h
+	
+68.08
+km/h
+	
+59.58
+km/h
+	
+!
+
+
+1607(+1)
+metres
+	
+55.69
+km/h
+	
+62.71
+km/h
+	
+63.90
+km/h
+	
+67.61
+km/h
+	
+59.26
+km/h
+	
+!
+
+
+1610(+3)
+metres
+	
+55.40
+km/h
+	
+61.02
+km/h
+	
+67.25
+km/h
+	
+68.15
+km/h
+	
+59.29
+km/h
+	
+!
+
+
+1617(+11)
+metres
+	
+55.94
+km/h
+	
+61.16
+km/h
+	
+65.81
+km/h
+	
+66.71
+km/h
+	
+59.54
+km/h
+	
+!
+
+
+1613(+6)
+metres
+	
+55.69
+km/h
+	
+61.09
+km/h
+	
+65.81
+km/h
+	
+67.00
+km/h
+	
+59.26
+km/h
+	
+!
+
+
+1607
+metres
+	
+56.41
+km/h
+	
+61.92
+km/h
+	
+61.24
+km/h
+	
+64.87
+km/h
+	
+58.86
+km/h
+	
+!
+POS / HORSE
+1st		
+2. Bronte Beach (7)
+T: Mick Price & Michael Kent (Jnr) J: J.Mott
+
+2nd		
+4. Hulkster (8)
+T: Mick Price & Michael Kent (Jnr) J: T.Stockdale
+
+3rd		
+5. Double Pi (6)
+T: Peter G Moody & Katherine Coleman J: B.E.Temple
+
+4th		
+3. Easy Dun (3)
+T: A.Noblet J: L.Nolen
+
+5th		
+10. Fearless Writer (5)
+T: A.R.McGregor J: A.McCabe
+
+6th		
+12. Lady Elsa (NZ) (9)
+T: C.J.Littlefield J: J.B.Stanley
+
+7th		
+11. Capital Grace (1)
+T: Emma-Lee & David Browne J: D.G.Thornton
+
+8th		
+7. Ancho (11)
+T: G.W.Egan J: J.McNeil
+
+9th		
+8. Caleana (10)
+T: Mick Price & Michael Kent (Jnr) J: L.K.Cartwright
+
+10th		
+1. Ashau Valley (4)
+T: Pat Carey & Harris Walker J: N.Daniels
+
+11th		
+9. Crespiano (2)
+T: P.J.Stokes J: L.J.Neindorf
+	
+OVERALL	1400M	1200M	1000M	800M	600M	400M	200M
+
+1:37.02
+1st
+	
+1:22.68
+3rd
+	
+1:10.20
+3rd
+	
+57.90
+3rd
+	
+45.42
+3rd
+	
+33.42
+3rd
+	
+22.18
+4th
+	
+11.29
+3rd
+
+
+1:37.03
+2nd
+	
+1:22.42
+5th
+	
+1:10.16
+4th
+	
+57.84
+4th
+	
+45.39
+4th
+	
+33.38
+4th
+	
+22.28
+3rd
+	
+11.45
+1st
+
+
+1:37.10
+3rd
+	
+1:23.00
+2nd
+	
+1:10.60
+2nd
+	
+58.27
+2nd
+	
+45.85
+2nd
+	
+33.83
+1st
+	
+22.42
+1st
+	
+11.51
+2nd
+
+
+1:37.39
+4th
+	
+1:22.34
+9th
+	
+1:09.88
+9th
+	
+57.50
+9th
+	
+45.18
+10th
+	
+33.18
+10th
+	
+22.20
+8th
+	
+11.43
+4th
+
+
+1:37.43
+5th
+	
+1:22.85
+4th
+	
+1:10.39
+5th
+	
+57.95
+5th
+	
+45.54
+5th
+	
+33.64
+5th
+	
+22.34
+6th
+	
+11.45
+5th
+
+
+1:37.49
+6th
+	
+1:22.36
+10th
+	
+1:09.94
+10th
+	
+57.57
+10th
+	
+45.28
+9th
+	
+33.28
+9th
+	
+22.10
+10th
+	
+11.35
+8th
+
+
+1:37.66
+7th
+	
+1:22.75
+8th
+	
+1:10.47
+6th
+	
+58.15
+6th
+	
+45.77
+5th
+	
+33.78
+6th
+	
+22.57
+5th
+	
+11.65
+6th
+
+
+1:37.75
+8th
+	
+1:22.62
+11th
+	
+1:09.92
+11th
+	
+57.57
+11th
+	
+45.34
+11th
+	
+33.40
+11th
+	
+22.30
+11th
+	
+11.57
+9th
+
+
+1:37.79
+9th
+	
+1:23.00
+7th
+	
+1:10.47
+8th
+	
+58.13
+8th
+	
+45.80
+7th
+	
+33.80
+7th
+	
+22.60
+7th
+	
+11.61
+10th
+
+
+1:37.98
+10th
+	
+1:23.21
+6th
+	
+1:10.73
+7th
+	
+58.36
+7th
+	
+45.94
+8th
+	
+33.93
+8th
+	
+22.74
+9th
+	
+11.76
+11th
+
+
+1:38.26
+11th
+	
+1:24.23
+1st
+	
+1:11.83
+1st
+	
+59.44
+1st
+	
+47.04
+1st
+	
+34.97
+2nd
+	
+23.54
+2nd
+	
+12.24
+7th
+POS / HORSE
+1st		
+2. Bronte Beach (7)
+T: Mick Price & Michael Kent (Jnr) J: J.Mott
+
+2nd		
+4. Hulkster (8)
+T: Mick Price & Michael Kent (Jnr) J: T.Stockdale
+
+3rd		
+5. Double Pi (6)
+T: Peter G Moody & Katherine Coleman J: B.E.Temple
+
+4th		
+3. Easy Dun (3)
+T: A.Noblet J: L.Nolen
+
+5th		
+10. Fearless Writer (5)
+T: A.R.McGregor J: A.McCabe
+
+6th		
+12. Lady Elsa (NZ) (9)
+T: C.J.Littlefield J: J.B.Stanley
+
+7th		
+11. Capital Grace (1)
+T: Emma-Lee & David Browne J: D.G.Thornton
+
+8th		
+7. Ancho (11)
+T: G.W.Egan J: J.McNeil
+
+9th		
+8. Caleana (10)
+T: Mick Price & Michael Kent (Jnr) J: L.K.Cartwright
+
+10th		
+1. Ashau Valley (4)
+T: Pat Carey & Harris Walker J: N.Daniels
+
+11th		
+9. Crespiano (2)
+T: P.J.Stokes J: L.J.Neindorf
+	
+1600M-1400M	1400M-1200M	1200M-1000M	1000M-800M	800M-600M	600M-400M	400M-200M	200M-FINISH
+
+14.34
+3rd
+	
+12.48
+3rd
+	
+12.30
+3rd
+	
+12.48
+3rd
+	
+12.00
+3rd
+	
+11.24
+4th
+	
+10.89
+3rd
+	
+11.29
+1st
+
+
+14.60
+5th
+	
+12.26
+4th
+	
+12.32
+4th
+	
+12.45
+4th
+	
+12.01
+4th
+	
+11.10
+3rd
+	
+10.83
+1st
+	
+11.45
+2nd
+
+
+14.10
+2nd
+	
+12.40
+2nd
+	
+12.33
+2nd
+	
+12.42
+2nd
+	
+12.02
+1st
+	
+11.41
+1st
+	
+10.91
+2nd
+	
+11.51
+3rd
+
+
+15.05
+9th
+	
+12.46
+9th
+	
+12.38
+9th
+	
+12.32
+10th
+	
+12.00
+10th
+	
+10.98
+8th
+	
+10.77
+4th
+	
+11.43
+4th
+
+
+14.57
+4th
+	
+12.46
+5th
+	
+12.44
+5th
+	
+12.41
+5th
+	
+11.90
+5th
+	
+11.30
+6th
+	
+10.89
+5th
+	
+11.45
+5th
+
+
+15.12
+10th
+	
+12.42
+10th
+	
+12.37
+10th
+	
+12.29
+9th
+	
+12.00
+9th
+	
+11.18
+10th
+	
+10.75
+8th
+	
+11.35
+6th
+
+
+14.90
+8th
+	
+12.28
+6th
+	
+12.32
+6th
+	
+12.38
+5th
+	
+11.99
+6th
+	
+11.21
+5th
+	
+10.92
+6th
+	
+11.65
+7th
+
+
+15.13
+11th
+	
+12.70
+11th
+	
+12.35
+11th
+	
+12.23
+11th
+	
+11.94
+11th
+	
+11.10
+11th
+	
+10.73
+9th
+	
+11.57
+8th
+
+
+14.79
+7th
+	
+12.53
+8th
+	
+12.34
+8th
+	
+12.33
+7th
+	
+12.00
+7th
+	
+11.20
+7th
+	
+10.99
+10th
+	
+11.61
+9th
+
+
+14.76
+6th
+	
+12.48
+7th
+	
+12.37
+7th
+	
+12.42
+8th
+	
+12.01
+8th
+	
+11.19
+9th
+	
+10.98
+11th
+	
+11.76
+10th
+
+
+14.02
+1st
+	
+12.40
+1st
+	
+12.39
+1st
+	
+12.40
+1st
+	
+12.07
+2nd
+	
+11.43
+2nd
+	
+11.30
+7th
+	
+12.24
+11th
+Download Race Sectional Data | PDF' | CSV'
+Splits & Sectionals	
+
+Splits & Sectionals data displayed on Racing.com is sourced from the following race-timing technology partners: From August 2021, sectional times for race meetings at Flemington, Caulfield, The Valley & Ladbrokes Park are provided by tripleSdata and Champion Data (note: previously, Trakus technology was used at Flemington, Caulfield and The Valley). From August 2023, Cranbourne and Pakenham sectional times are also provided by tripleSdata and Champion Data (note: previously, Daily Sectionals) From September 2017, data for all other Victorian tracks is provided by Daily Sectionals; and at South Australian tracks the sectional times are sourced from Equitime.
+
+Below each split and sectional time displayed is the horse’s position-in-running (e.g. 1st) at that point of the race.
+
+The meeting rank 'tool-tip' feature helps to identify how the fastest individual splits & sectionals for each race, which are highlighted in green, compare to the times for the rest of that particular race meeting.
+
+---FRAME---
+
+FRAME 7 URL=about:blank
+18+‌
+Eligible‌ ‌customers‌ ‌only.‌ ‌Prices‌ ‌subject‌ ‌to‌ ‌change.‌ ‌
+Max‌ ‌stakes‌ ‌&‌ ‌T&Cs‌ ‌apply.‌
+THINK.‌ ‌IS‌ ‌THIS‌ ‌A‌ ‌BET‌ ‌YOU‌ ‌REALLY‌ ‌WANT‌ ‌TO‌ ‌PLACE?‌
+Set‌ ‌a‌ ‌deposit‌ ‌limit.‌
+
+---FRAME---
+
+FRAME 9 URL=about:blank
+18+‌
+Eligible‌ ‌customers‌ ‌only.‌ ‌Prices‌ ‌subject‌ ‌to‌ ‌change.‌ ‌
+Max‌ ‌stakes‌ ‌&‌ ‌T&Cs‌ ‌apply.‌
+THINK.‌ ‌IS‌ ‌THIS‌ ‌A‌ ‌BET‌ ‌YOU‌ ‌REALLY‌ ‌WANT‌ ‌TO‌ ‌PLACE?‌
+Set‌ ‌a‌ ‌deposit‌ ‌limit.‌
+
+---FRAME---
+
+FRAME 16 URL=about:blank
+Join
+
+---FRAME---
+
+FRAME 18 URL=about:blank
+EVERY RACE, EVERY DAY.
+
+---FRAME---
+
+FRAME 27 URL=about:blank
+Join
+
+---FRAME---
+
+FRAME 29 URL=about:blank
+EVERY RACE, EVERY DAY.
+
+---FRAME---
+
+FRAME 33 URL=https://platform.twitter.com/widgets/tweet_button.1227a5674072e080ffb1ba14ac0c1079.en.html#dnt=true&id=twitter-widget-0&lang=en&original_referer=https%3A%2F%2Fdxp-static.racing.com%2Fsectionals%2Findex.html%23%3FmeetCode%3D5191023%26raceNumber%3D8&size=m&text=RACING.COM&time=1784711573052&type=share&url=https%3A%2F%2Fdxp-static.racing.com%2Fsectionals%2Findex.html%23%3FmeetCode%3D5191023%26raceNumber%3D8&via=country_racing
+Post

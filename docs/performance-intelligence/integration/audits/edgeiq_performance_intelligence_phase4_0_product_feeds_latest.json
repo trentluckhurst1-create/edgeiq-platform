@@ -1,0 +1,40 @@
+{
+  "pass_token": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE4_0_PRODUCT_FEEDS_PASS",
+  "generated_timestamp": "2026-07-26T03:40:21Z",
+  "feed_version": "edgeiq_performance_intelligence_product_feeds_v1",
+  "source_snapshots": [
+    "eiq_phase3_1_benchmark_certification_29da61458764bfe1ee736c09",
+    "eiq_benchmark_engine_v1_bfff49f3aa73e7fe3f4e616f",
+    "eiq_race_deviations_v1_f3f00e58a59a04be40a8c612",
+    "eiq_fingerprints_v1_def0baaccf503a004963129a",
+    "eiq_horse_intelligence_v1_fca34fe79beb9715013eca1d"
+  ],
+  "source_reports": {
+    "foundation": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\performance-intelligence\\audits\\post_phase1_6_1\\edgeiq_performance_intelligence_platform_foundation_final_report_latest.json",
+    "phase3_1": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\performance-intelligence\\audits\\phase3_1\\edgeiq_phase3_1_latest.json"
+  },
+  "row_counts": {
+    "race_intelligence_index": 18,
+    "horse_intelligence_index": 246,
+    "historical_performance_intelligence_index": 1406,
+    "benchmark_explanation_index": 674,
+    "current_product_runners": 246
+  },
+  "unsupported_fields": [
+    "runner_adjusted_time_seconds",
+    "runner_seconds_vs_benchmark",
+    "runner_lengths_vs_benchmark",
+    "official_sectional_time",
+    "sectional_benchmark_seconds",
+    "sectional_deviation_lengths"
+  ],
+  "known_limitations": [
+    "Current races expose historical benchmark context until official governed race time exists.",
+    "Runner-adjusted seconds and lengths versus benchmark remain unavailable.",
+    "Official sectional benchmarks and deviations remain unavailable.",
+    "Historical deviations shown are race-context deviations, not independently timed runner deviations."
+  ],
+  "hashes": {
+    "edgeiq_performance_intelligence_product_feeds_v1.json": "67e884218ff0ccaa7c455989462f5ce689796e3b27398c4fc4dcbfe9fea41e85"
+  }
+}

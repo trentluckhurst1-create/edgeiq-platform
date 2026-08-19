@@ -1,0 +1,600 @@
+{
+  "built_at_utc": "DETERMINISTIC_NO_WALL_CLOCK_FOR_IDEMPOTENCY",
+  "chigurh": {
+    "aggregate_available": "NO",
+    "blocking_reason": "MINIMUM_OBSERVATIONS_NOT_MET",
+    "canonical_horse_id": "RA_HORSE_34054013730",
+    "current_observation_count": 1,
+    "epi_available": "NO",
+    "historical_observation_count": 0,
+    "raceentry_id": "99566658900",
+    "rating_available": "NO",
+    "snapshot_available": "NO",
+    "source_horse_id": "34054013730",
+    "source_horse_name": "CHIGURH",
+    "total_governed_observations": 1
+  },
+  "current_head": "8df332e",
+  "current_sale": {
+    "current_runners": 80,
+    "epi": 0,
+    "governed_identities": 80,
+    "horse_aggregates": 0,
+    "horse_ratings": 0,
+    "runners_with_5_plus_observations": 0,
+    "runners_with_historical_observations": 0,
+    "snapshots": 0
+  },
+  "governance_determination": {
+    "documentation_evidence": [
+      {
+        "line": 34,
+        "path": "docs\\performance-intelligence\\horse-performance-rating\\method-governance\\EDGEIQ_HORSE_RATING_METHODOLOGY_OWNER_APPROVAL_V1.md",
+        "text": "raw_performance_lengths observations in the approved parameter population."
+      },
+      {
+        "line": 38,
+        "path": "docs\\performance-intelligence\\horse-performance-rating\\method-governance\\EDGEIQ_HORSE_RATING_METHODOLOGY_OWNER_APPROVAL_V1.md",
+        "text": "raw_performance_lengths observations in the approved parameter population."
+      },
+      {
+        "line": 40,
+        "path": "docs\\performance-intelligence\\horse-performance-rating\\method-governance\\EDGEIQ_HORSE_RATING_METHODOLOGY_OWNER_APPROVAL_V1.md",
+        "text": "PARAMETER POPULATION:"
+      },
+      {
+        "line": 45,
+        "path": "docs\\performance-intelligence\\horse-performance-rating\\method-governance\\EDGEIQ_HORSE_RATING_METHODOLOGY_OWNER_APPROVAL_V1.md",
+        "text": "MINIMUM PARAMETER POPULATION:"
+      },
+      {
+        "line": 50,
+        "path": "docs\\performance-intelligence\\horse-performance-rating\\method-governance\\EDGEIQ_HORSE_RATING_METHODOLOGY_OWNER_APPROVAL_V1.md",
+        "text": "as the HPR-NORM-A-v1 bootstrap parameter population."
+      },
+      {
+        "line": 102,
+        "path": "docs\\performance-intelligence\\horse-performance-rating\\method-governance\\EDGEIQ_HORSE_RATING_METHODOLOGY_OWNER_APPROVAL_V1.md",
+        "text": "MINIMUM OBSERVATIONS:"
+      },
+      {
+        "line": 144,
+        "path": "docs\\performance-intelligence\\horse-performance-rating\\method-governance\\EDGEIQ_HORSE_RATING_METHODOLOGY_OWNER_APPROVAL_V1.md",
+        "text": "For every live predictive use:"
+      },
+      {
+        "line": 174,
+        "path": "docs\\performance-intelligence\\horse-performance-rating\\method-governance\\EDGEIQ_HORSE_RATING_METHODOLOGY_OWNER_APPROVAL_V1.md",
+        "text": "- Minimum observations: 5."
+      },
+      {
+        "line": 181,
+        "path": "docs\\performance-intelligence\\horse-performance-rating\\method-governance\\EDGEIQ_HORSE_RATING_METHODOLOGY_OWNER_APPROVAL_V1.md",
+        "text": "- Temporal policy: live predictive use must be strictly prior to target race date/time."
+      },
+      {
+        "line": 4,
+        "path": "docs\\performance-intelligence\\restart-v1\\EDGEIQ_NORMALISATION_TEMPORAL_AUTHORITY_DECISION_V1.md",
+        "text": "Historical application authorised: NO"
+      },
+      {
+        "line": 18,
+        "path": "docs\\performance-intelligence\\restart-v1\\EDGEIQ_NORMALISATION_TEMPORAL_AUTHORITY_DECISION_V1.md",
+        "text": "- Parameter effective-from dates: 2026-07-20"
+      },
+      {
+        "line": 19,
+        "path": "docs\\performance-intelligence\\restart-v1\\EDGEIQ_NORMALISATION_TEMPORAL_AUTHORITY_DECISION_V1.md",
+        "text": "- Parameter population rows: 168"
+      },
+      {
+        "line": 20,
+        "path": "docs\\performance-intelligence\\restart-v1\\EDGEIQ_NORMALISATION_TEMPORAL_AUTHORITY_DECISION_V1.md",
+        "text": "- Parameter population dates: 2026-07-20"
+      },
+      {
+        "line": 22,
+        "path": "docs\\performance-intelligence\\restart-v1\\EDGEIQ_NORMALISATION_TEMPORAL_AUTHORITY_DECISION_V1.md",
+        "text": "- Future leakage assessment: BLOCKED_FOR_MAY_2026: HPR-NORM-A-v1 values were derived from the 2026-07-20 bootstrap population, after the 2026-05-30/31 observations."
+      },
+      {
+        "line": 26,
+        "path": "docs\\performance-intelligence\\restart-v1\\EDGEIQ_NORMALISATION_TEMPORAL_AUTHORITY_DECISION_V1.md",
+        "text": "HPR-NORM-A-v1 remains unavailable for the May 2026 observations. The 13 Performance Intelligence base rows are preserved and explicitly rejected at normalisation. This is the only governed resolution that avoids silent backdating and future leakage with the current evidence."
+      }
+    ],
+    "evidence_summary": [
+      "The parameter fact and source fact both set HPR-NORM-A-v1 effective_from_date to 2026-07-20.",
+      "The normalisation builder applies parameter lookup by race_date between effective_from_date and effective_to_date.",
+      "The temporal authority decision records Historical application authorised: NO and rejects historical application because the bootstrap parameter was derived from 2026-07-20 evidence.",
+      "The owner approval permits historical aggregate construction only from eligible governed observations; it does not override the normalisation effective-date gate."
+    ],
+    "exact_exclusion_point": "scripts/build_edgeiq_performance_normalisation_fact_v1.py filters race_date < effective_from_date and emits NORMALISATION_PARAMETER_NOT_EFFECTIVE_FOR_PERFORMANCE_DATE.",
+    "historical_hpr_norm_a_v1_application_permitted": "NO",
+    "normalisation_rejection_reasons": {
+      "NORMALISATION_PARAMETER_NOT_EFFECTIVE_FOR_PERFORMANCE_DATE": 52414
+    },
+    "policy_effective_date_interpretation": "INTERPRETATION_A_PERFORMANCE_DATE_ELIGIBILITY_RULE",
+    "script_evidence": [
+      {
+        "line": 241,
+        "path": "scripts\\build_edgeiq_performance_normalisation_fact_v1.py",
+        "text": "\"effective_from_date\","
+      },
+      {
+        "line": 282,
+        "path": "scripts\\build_edgeiq_performance_normalisation_fact_v1.py",
+        "text": "effective_from = date_value("
+      },
+      {
+        "line": 283,
+        "path": "scripts\\build_edgeiq_performance_normalisation_fact_v1.py",
+        "text": "parameter[\"effective_from_date\"],"
+      },
+      {
+        "line": 284,
+        "path": "scripts\\build_edgeiq_performance_normalisation_fact_v1.py",
+        "text": "\"effective_from_date\","
+      },
+      {
+        "line": 290,
+        "path": "scripts\\build_edgeiq_performance_normalisation_fact_v1.py",
+        "text": "if race_date < effective_from:"
+      },
+      {
+        "line": 315,
+        "path": "scripts\\build_edgeiq_performance_normalisation_fact_v1.py",
+        "text": "\"NORMALISATION_PARAMETER_NOT_EFFECTIVE_FOR_PERFORMANCE_DATE\""
+      },
+      {
+        "line": 54,
+        "path": "scripts\\build_edgeiq_horse_performance_aggregate_fact_v1.py",
+        "text": "\"minimum_observations\","
+      },
+      {
+        "line": 231,
+        "path": "scripts\\build_edgeiq_horse_performance_aggregate_fact_v1.py",
+        "text": "effective_from = date_value("
+      },
+      {
+        "line": 232,
+        "path": "scripts\\build_edgeiq_horse_performance_aggregate_fact_v1.py",
+        "text": "parameter[\"effective_from_date\"],"
+      },
+      {
+        "line": 233,
+        "path": "scripts\\build_edgeiq_horse_performance_aggregate_fact_v1.py",
+        "text": "\"effective_from_date\","
+      },
+      {
+        "line": 239,
+        "path": "scripts\\build_edgeiq_horse_performance_aggregate_fact_v1.py",
+        "text": "if as_of_date < effective_from:"
+      },
+      {
+        "line": 304,
+        "path": "scripts\\build_edgeiq_horse_performance_aggregate_fact_v1.py",
+        "text": "\"minimum_observations\","
+      },
+      {
+        "line": 309,
+        "path": "scripts\\build_edgeiq_horse_performance_aggregate_fact_v1.py",
+        "text": "\"effective_from_date\","
+      },
+      {
+        "line": 445,
+        "path": "scripts\\build_edgeiq_horse_performance_aggregate_fact_v1.py",
+        "text": "minimum_observations = positive_integer("
+      },
+      {
+        "line": 446,
+        "path": "scripts\\build_edgeiq_horse_performance_aggregate_fact_v1.py",
+        "text": "parameter[\"minimum_observations\"],"
+      },
+      {
+        "line": 447,
+        "path": "scripts\\build_edgeiq_horse_performance_aggregate_fact_v1.py",
+        "text": "\"minimum_observations\","
+      },
+      {
+        "line": 450,
+        "path": "scripts\\build_edgeiq_horse_performance_aggregate_fact_v1.py",
+        "text": "if minimum_observations > maximum_observations:"
+      },
+      {
+        "line": 494,
+        "path": "scripts\\build_edgeiq_horse_performance_aggregate_fact_v1.py",
+        "text": "if len(included_rows) < minimum_observations:"
+      },
+      {
+        "line": 668,
+        "path": "scripts\\build_edgeiq_horse_performance_aggregate_fact_v1.py",
+        "text": "\"minimum_observations\": minimum_observations,"
+      },
+      {
+        "line": 73,
+        "path": "scripts\\audit_edgeiq_normalisation_temporal_authority_v1.py",
+        "text": "parameter_effective_dates = date_set(param_source_rows, 'effective_from_date')"
+      },
+      {
+        "line": 77,
+        "path": "scripts\\audit_edgeiq_normalisation_temporal_authority_v1.py",
+        "text": "grep_hits = git(['grep', '-n', 'HPR-NORM-A-v1', 'HEAD', '--', 'config', 'docs', 'scripts', 'public/data'])"
+      },
+      {
+        "line": 83,
+        "path": "scripts\\audit_edgeiq_normalisation_temporal_authority_v1.py",
+        "text": "file_evidence(APPROVAL, 'OWNER_APPROVAL', 'Approves HPR-NORM-A-v1 bootstrap population and explicitly prohibits silent recalibration/fallback.'),"
+      },
+      {
+        "line": 90,
+        "path": "scripts\\audit_edgeiq_normalisation_temporal_authority_v1.py",
+        "text": "{'evidence_type': 'GIT_GREP', 'path_or_commit': 'HPR-NORM-A-v1 current tree', 'exists': 'YES' if grep_hits else 'NO', 'sha256': '', 'finding': grep_hits.replace('\\n', ' | ')[:1200]},"
+      },
+      {
+        "line": 103,
+        "path": "scripts\\audit_edgeiq_normalisation_temporal_authority_v1.py",
+        "text": "future_leakage_assessment = 'BLOCKED_FOR_MAY_2026: HPR-NORM-A-v1 values were derived from the 2026-07-20 bootstrap population, after the 2026-05-30/31 observations.'"
+      },
+      {
+        "line": 113,
+        "path": "scripts\\audit_edgeiq_normalisation_temporal_authority_v1.py",
+        "text": "'normalisation_model_version': 'HPR-NORM-A-v1',"
+      },
+      {
+        "line": 118,
+        "path": "scripts\\audit_edgeiq_normalisation_temporal_authority_v1.py",
+        "text": "'parameter_effective_from_dates': parameter_effective_dates,"
+      },
+      {
+        "line": 145,
+        "path": "scripts\\audit_edgeiq_normalisation_temporal_authority_v1.py",
+        "text": "'rollback_path': 'Keep current HPR-NORM-A-v1 untouched; add earlier governed parameter only if separately evidenced and versioned.',"
+      },
+      {
+        "line": 183,
+        "path": "scripts\\audit_edgeiq_normalisation_temporal_authority_v1.py",
+        "text": "'HPR-NORM-A-v1 remains unavailable for the May 2026 observations. The 13 Performance Intelligence base rows are preserved and explicitly rejected at normalisation. This is the only governed resolution that avoids silent backdating and future leakage with the current evidence.',"
+      }
+    ],
+    "status": "BLOCKED"
+  },
+  "horse_observation_depth_distribution": {
+    "0": 0,
+    "1": 8,
+    "10-19": 0,
+    "2": 0,
+    "20+": 0,
+    "3": 0,
+    "4": 0,
+    "5-9": 0,
+    "current_sale_0": 72,
+    "current_sale_1": 8,
+    "current_sale_2": 0,
+    "current_sale_3": 0,
+    "current_sale_4": 0,
+    "current_sale_5+": 0
+  },
+  "overall_status": "BLOCKED_GOVERNED_HISTORY_DEPTH",
+  "report": "EDGEIQ_VICTORIA_LIVE_RECOVERY_V5_INVESTIGATION",
+  "stage_counts": [
+    {
+      "before_2026_07_20_rows": 52414,
+      "distinct_horses_or_winners": 8,
+      "distinct_races": 52422,
+      "exists": "YES",
+      "fields": [
+        "performance_intelligence_base_id",
+        "lengths_versus_standard_id",
+        "race_time_delta_id",
+        "benchmark_observation_id",
+        "benchmark_group_id",
+        "standard_time_id",
+        "length_conversion_parameter_id",
+        "race_key",
+        "race_date",
+        "track_name",
+        "official_distance_metres",
+        "winner_horse_name",
+        "winner_race_time_seconds",
+        "standard_time_seconds",
+        "time_delta_seconds",
+        "seconds_per_length",
+        "raw_performance_lengths",
+        "raw_performance_interpretation",
+        "performance_status",
+        "calculation_method",
+        "source_lengths_versus_standard_evidence_sha256",
+        "performance_intelligence_base_evidence_sha256",
+        "source_builder_version",
+        "builder_version",
+        "contract_version",
+        "built_at_utc"
+      ],
+      "max_date": "2026-07-26",
+      "min_date": "2000-08-02",
+      "on_or_after_2026_07_20_rows": 8,
+      "path": "public\\data\\edgeiq_performance_intelligence_base_fact_v1.csv",
+      "rows": 52422,
+      "stage": "Performance Base"
+    },
+    {
+      "before_2026_07_20_rows": 0,
+      "distinct_horses_or_winners": 8,
+      "distinct_races": 8,
+      "exists": "YES",
+      "fields": [
+        "performance_normalisation_id",
+        "performance_intelligence_base_id",
+        "normalisation_parameter_id",
+        "lengths_versus_standard_id",
+        "benchmark_observation_id",
+        "race_key",
+        "race_date",
+        "track_name",
+        "official_distance_metres",
+        "winner_horse_name",
+        "raw_performance_lengths",
+        "centre_value",
+        "scale_value",
+        "normalised_performance_value",
+        "normalisation_method",
+        "normalisation_status",
+        "normalisation_model_version",
+        "source_performance_base_evidence_sha256",
+        "source_normalisation_parameter_evidence_sha256",
+        "performance_normalisation_evidence_sha256",
+        "builder_version",
+        "contract_version",
+        "built_at_utc"
+      ],
+      "max_date": "2026-07-26",
+      "min_date": "2026-07-26",
+      "on_or_after_2026_07_20_rows": 8,
+      "path": "public\\data\\edgeiq_performance_normalisation_fact_v1.csv",
+      "rows": 8,
+      "stage": "Normalisation"
+    },
+    {
+      "before_2026_07_20_rows": 0,
+      "distinct_horses_or_winners": 8,
+      "distinct_races": 8,
+      "exists": "YES",
+      "fields": [
+        "performance_rating_base_id",
+        "performance_normalisation_id",
+        "performance_intelligence_base_id",
+        "normalisation_parameter_id",
+        "lengths_versus_standard_id",
+        "benchmark_observation_id",
+        "race_key",
+        "race_date",
+        "track_name",
+        "official_distance_metres",
+        "winner_horse_name",
+        "raw_performance_lengths",
+        "normalised_performance_value",
+        "rating_base_value",
+        "rating_method",
+        "rating_status",
+        "normalisation_model_version",
+        "source_performance_normalisation_evidence_sha256",
+        "performance_rating_base_evidence_sha256",
+        "source_builder_version",
+        "builder_version",
+        "contract_version",
+        "built_at_utc"
+      ],
+      "max_date": "2026-07-26",
+      "min_date": "2026-07-26",
+      "on_or_after_2026_07_20_rows": 8,
+      "path": "public\\data\\edgeiq_performance_rating_base_fact_v1.csv",
+      "rows": 8,
+      "stage": "Performance Rating Base"
+    },
+    {
+      "before_2026_07_20_rows": 0,
+      "distinct_horses_or_winners": 8,
+      "distinct_races": 8,
+      "exists": "YES",
+      "fields": [
+        "horse_performance_observation_id",
+        "canonical_horse_id",
+        "canonical_horse_name",
+        "source_horse_name",
+        "performance_rating_base_id",
+        "performance_normalisation_id",
+        "performance_intelligence_base_id",
+        "benchmark_observation_id",
+        "race_key",
+        "race_date",
+        "track_name",
+        "official_distance_metres",
+        "raw_performance_lengths",
+        "normalised_performance_value",
+        "rating_base_value",
+        "rating_status",
+        "identity_method",
+        "identity_status",
+        "identity_evidence_reference",
+        "source_identity_evidence_sha256",
+        "source_performance_rating_base_evidence_sha256",
+        "horse_performance_observation_evidence_sha256",
+        "builder_version",
+        "contract_version",
+        "built_at_utc"
+      ],
+      "max_date": "2026-07-26",
+      "min_date": "2026-07-26",
+      "on_or_after_2026_07_20_rows": 8,
+      "path": "public\\data\\edgeiq_horse_performance_observation_fact_v1.csv",
+      "rows": 8,
+      "stage": "Horse Observations"
+    },
+    {
+      "before_2026_07_20_rows": 0,
+      "distinct_horses_or_winners": 0,
+      "distinct_races": 0,
+      "exists": "YES",
+      "fields": [
+        "horse_performance_aggregate_id",
+        "canonical_horse_id",
+        "canonical_horse_name",
+        "aggregate_as_of_date",
+        "horse_performance_aggregation_parameter_id",
+        "aggregation_method",
+        "maximum_observations",
+        "lookback_days",
+        "minimum_observations",
+        "recency_weighting_method",
+        "recency_half_life_days",
+        "eligible_observation_count",
+        "included_observation_count",
+        "oldest_included_race_date",
+        "newest_included_race_date",
+        "total_weight",
+        "aggregate_rating_value",
+        "aggregate_status",
+        "aggregation_model_version",
+        "included_observation_ids_sha256",
+        "source_parameter_evidence_sha256",
+        "source_observation_evidence_sha256",
+        "horse_performance_aggregate_evidence_sha256",
+        "builder_version",
+        "contract_version",
+        "built_at_utc"
+      ],
+      "max_date": "",
+      "min_date": "",
+      "on_or_after_2026_07_20_rows": 0,
+      "path": "public\\data\\edgeiq_horse_performance_aggregate_fact_v1.csv",
+      "rows": 0,
+      "stage": "Horse Aggregates"
+    },
+    {
+      "before_2026_07_20_rows": 0,
+      "distinct_horses_or_winners": 0,
+      "distinct_races": 0,
+      "exists": "YES",
+      "fields": [
+        "horse_performance_rating_id",
+        "horse_performance_aggregate_id",
+        "canonical_horse_id",
+        "canonical_horse_name",
+        "rating_as_of_date",
+        "horse_performance_aggregation_parameter_id",
+        "aggregation_method",
+        "included_observation_count",
+        "aggregate_rating_value",
+        "horse_performance_rating_value",
+        "horse_performance_rating_method",
+        "horse_performance_rating_status",
+        "aggregation_model_version",
+        "source_horse_performance_aggregate_evidence_sha256",
+        "horse_performance_rating_evidence_sha256",
+        "source_builder_version",
+        "builder_version",
+        "contract_version",
+        "built_at_utc"
+      ],
+      "max_date": "",
+      "min_date": "",
+      "on_or_after_2026_07_20_rows": 0,
+      "path": "public\\data\\edgeiq_horse_performance_rating_fact_v1.csv",
+      "rows": 0,
+      "stage": "Horse Ratings"
+    },
+    {
+      "before_2026_07_20_rows": 0,
+      "distinct_horses_or_winners": 0,
+      "distinct_races": 0,
+      "exists": "YES",
+      "fields": [
+        "race_entry_horse_performance_snapshot_id",
+        "race_entry_id",
+        "race_id",
+        "race_date",
+        "runner_id",
+        "canonical_horse_id",
+        "canonical_horse_name",
+        "selected_horse_performance_rating_id",
+        "selected_rating_as_of_date",
+        "rating_age_days",
+        "eligible_historical_rating_count",
+        "first_eligible_rating_date",
+        "latest_eligible_rating_date",
+        "selected_horse_performance_rating_value",
+        "highest_eligible_historical_rating_value",
+        "lowest_eligible_historical_rating_value",
+        "average_eligible_historical_rating_value",
+        "selected_included_observation_count",
+        "horse_performance_rating_method",
+        "race_entry_horse_performance_snapshot_status",
+        "source_race_entry_evidence_sha256",
+        "source_selected_rating_evidence_sha256",
+        "source_eligible_rating_ids_sha256",
+        "source_eligible_rating_evidence_sha256",
+        "race_entry_horse_performance_snapshot_evidence_sha256",
+        "source_race_entry_builder_version",
+        "source_rating_builder_version",
+        "builder_version",
+        "contract_version",
+        "built_at_utc"
+      ],
+      "max_date": "",
+      "min_date": "",
+      "on_or_after_2026_07_20_rows": 0,
+      "path": "public\\data\\edgeiq_race_entry_horse_performance_snapshot_fact_v1.csv",
+      "rows": 0,
+      "stage": "Snapshots"
+    },
+    {
+      "before_2026_07_20_rows": 0,
+      "distinct_horses_or_winners": 0,
+      "distinct_races": 0,
+      "exists": "YES",
+      "fields": [
+        "race_entry_epi_id",
+        "race_entry_id",
+        "race_id",
+        "race_date",
+        "epi_methodology",
+        "epi_base_value",
+        "historical_performance_component_id",
+        "historical_performance_component_evidence_sha256",
+        "historical_performance_normalised_value",
+        "historical_performance_weight",
+        "historical_performance_weighted_value",
+        "suitability_component_id",
+        "suitability_component_evidence_sha256",
+        "suitability_normalised_value",
+        "suitability_weight",
+        "suitability_weighted_value",
+        "race_context_component_id",
+        "race_context_component_evidence_sha256",
+        "race_context_normalised_value",
+        "race_context_weight",
+        "race_context_weighted_value",
+        "total_component_weight",
+        "weighted_component_total",
+        "epi_value",
+        "epi_parameter_id",
+        "epi_publication_decision",
+        "epi_reconciliation_decision",
+        "epi_status",
+        "race_entry_epi_evidence_sha256",
+        "source_lineage",
+        "builder_version",
+        "contract_version",
+        "built_at_utc"
+      ],
+      "max_date": "",
+      "min_date": "",
+      "on_or_after_2026_07_20_rows": 0,
+      "path": "public\\data\\edgeiq_race_entry_epi_fact_v1.csv",
+      "rows": 0,
+      "stage": "EPI"
+    }
+  ],
+  "start_commit": "8df332e"
+}

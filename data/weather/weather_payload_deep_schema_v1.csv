@@ -1,0 +1,672 @@
+﻿source_owner,source_name,repository_file,json_path,value_type,container_size,value_preview,depth
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$,object,3,,0
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.header,object,3,,1
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.header.description,str,,"Turftrax Weather Data Visualisation for Flemingtom Racecourse on Sat, 11 Jul 2026 04:57:52 +0100",2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.header.signature,str,,Turftrax ITS WDV API Stream prod-V1.5.3-2021-04-15T12:00,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.header.copyright,str,,"2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Turftrax Ltd. All Rights Reserved.",2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content,object,62,,1
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.air-temperature-current,float,,14.1,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.air-temperature-max,float,,14.4,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.air-temperature-min,float,,5.67,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.awt-race-date,str,,N/a,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.awtReport,int,,0,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.carousel,object,1,,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.carousel.temperature,object,2,,3
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.carousel.temperature.default,str,,air,4
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.carousel.temperature.list,array,1,,4
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.carousel.temperature.list[0],str,,air,5
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.disableMetic,array,0,,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.et-24hr,float,,0.44,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.et-7day,float,,1.98,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.et-since,float,,0.21,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.etEnabled,bool,,true,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.going-race-date,str,,"Saturday, 18th July, 2026",2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.goingReport,int,,0,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.haveManualRain,bool,,false,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.humidity-current,float,,75.39,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.humidity-max,float,,99.9,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.humidity-min,float,,75.11,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.isDemo,bool,,false,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.isLastMeeting,bool,,false,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.location-date,str,,"Saturday, 18th July, 2026",2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.location-track-type,str,,N/a,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.location-venue,str,,Flemington,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.mapName,str,,N/a,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.mapping-service,str,,yes,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.rain0-24hr,str,,,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.rain0-7day,str,,,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.rain0-today,str,,,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.rain1-24hr,int,,0,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.rain1-7day,float,,0.4,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.rain1-current,int,,0,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.rain1-since,int,,0,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.rain1-today,int,,0,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.rain2-24hr,int,,0,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.rain2-7day,float,,0.4,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.rain2-current,int,,0,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.rain2-since,int,,0,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.rain2-today,int,,0,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.seasonEndMessage,str,,,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.stationActivityStatus,str,,active,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.stationId,str,,N/a,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.stationType,str,,wtx,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.temperature-current,float,,14.1,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.temperature-max,float,,14.4,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.temperature-min,float,,5.67,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.trackType,str,,Turf,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.units,object,3,,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.units.linear,str,,mm,3
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.units.speed,str,,km/h,3
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.units.temperature,str,,C,3
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.use-map,str,,N/a,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.useRainGauge,int,,1,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.usingAwtReport,str,,N/a,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.usingReport,str,,N/a,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.venueId,str,,N/a,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.venueName,str,,Flemingtom Racecourse,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.weather-date,str,,11/07/26,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.weather-last-update,str,,2:57pm,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.weatherReport,int,,1,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.winddirection-current,float,,337.5,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.winddirection-current-rose,int,,1314,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.winddirection-text,str,,Northerly,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.windgust-current,float,,6.8,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.windgust-event,str,,2:06 pm,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.windspeed-average,float,,1.94,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.content.windspeed-current,int,,6,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis,object,22,,1
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.timezone-offset,int,,36000,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.offset-adjust,int,,-3600,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.local-time,object,3,,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.local-time.calendar,str,,2026-07-11 13:57:52,3
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.local-time.epoch,int,,1783774672,3
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.local-time.cache,int,,1783774620,3
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.local-date,object,3,,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.local-date.calendar,str,,2026-07-11,3
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.local-date.epoch,int,,1783724400,3
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.local-date.numericDate,str,,11/07/26,3
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.server-time,object,3,,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.server-time.calendar,str,,2026-07-11 03:57:52,3
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.server-time.epoch,int,,1783738672,3
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.server-time.cache,int,,1783774620,3
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.server-date,object,2,,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.server-date.calendar,str,,2026-07-11,3
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.server-date.epoch,int,,1783724400,3
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.local-create,object,2,,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.local-create.calendar,str,,N/a,3
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.local-create.epoch,str,,N/a,3
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.local-update,object,2,,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.local-update.calendar,str,,N/a,3
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.local-update.epoch,str,,N/a,3
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.only-published,int,,1,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.display-always,int,,0,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.days-before,object,2,,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.days-before.calendar,int,,3,3
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.days-before.epoch,int,,259200,3
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.days-after,object,2,,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.days-after.calendar,int,,3,3
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.days-after.epoch,int,,259200,3
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.turfRacingToday,int,,0,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.previous-race,object,4,,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.previous-race.calendar,str,,2026-07-04,3
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.previous-race.epoch,int,,1783119600,3
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.previous-race.fullDate,str,,"Saturday, 4th July, 2026",3
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.previous-race.numericDate,str,,04/07/26,3
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.latest-previous,object,2,,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.latest-previous.calendar,str,,2026-07-07,3
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.latest-previous.epoch,int,,1783378800,3
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.next-race,object,4,,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.next-race.calendar,str,,2026-07-18,3
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.next-race.epoch,int,,1784329200,3
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.next-race.fullDate,str,,"Saturday, 18th July, 2026",3
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.next-race.numericDate,str,,18/07/26,3
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.earliest-next,object,2,,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.earliest-next.calendar,str,,2026-07-15,3
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.earliest-next.epoch,int,,1784070000,3
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.awtRacingToday,int,,0,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.previous-race-awt,object,4,,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.previous-race-awt.calendar,str,,N/a,3
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.previous-race-awt.epoch,str,,N/a,3
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.previous-race-awt.fullDate,str,,N/a,3
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.previous-race-awt.numericDate,str,,N/a,3
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.latest-last-awt,object,2,,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.latest-last-awt.calendar,str,,N/a,3
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.latest-last-awt.epoch,str,,N/a,3
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.next-race-awt,object,4,,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.next-race-awt.calendar,str,,N/a,3
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.next-race-awt.epoch,str,,N/a,3
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.next-race-awt.fullDate,str,,N/a,3
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.next-race-awt.numericDate,str,,N/a,3
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.earliest-next-awt,object,2,,2
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.earliest-next-awt.calendar,str,,N/a,3
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,$.tardis.earliest-next-awt.epoch,str,,N/a,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$,object,2,,0
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.status,int,,0,1
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload,object,4,,1
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.header,object,3,,2
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.header.description,str,,"Turftrax Weather Data Visualisation for Caulfield Racecourse on Sat, 11 Jul 2026 04:57:54 +0100",3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.header.signature,str,,Turftrax ITS WDV API Stream prod-V1.5.3-2021-04-15T12:00,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.header.copyright,str,,"2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Turftrax Ltd. All Rights Reserved.",3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content,object,77,,2
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.additional-comment,str,,Previous meeting: 27 Jun 2026 at +3 metre rail position. Last meeting with current rail position: 15 Nov 2025,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.air-temperature-current,float,,14.7,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.air-temperature-max,float,,15.81,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.air-temperature-min,float,,7.92,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.awt-race-date,str,,N/a,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.awtReport,int,,0,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.carousel,object,1,,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.carousel.temperature,object,2,,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.carousel.temperature.default,str,,air,5
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.carousel.temperature.list,array,1,,5
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.carousel.temperature.list[0],str,,air,6
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.disableMetic,array,0,,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.et-24hr,float,,0.37,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.et-7day,float,,1.28,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.et-since,float,,0.15,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.etEnabled,bool,,true,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.going-race-date,str,,"Saturday, 11th July, 2026",3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.going-report,str,,Soft 7,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.going-report-date,str,,"Saturday, 11th July, 2026 at 6:17 am",3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.going-waypoint-map,str,,https://api.turftrax.co.uk/maps/going-reports/338784_waypoints.svg,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.going-zone-map,str,,https://api.turftrax.co.uk/maps/going-reports/338784_zones.svg,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.goingReport,int,,1,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.haveManualRain,bool,,false,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.humidity-current,float,,65.28,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.humidity-max,float,,89.09,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.humidity-min,float,,61.62,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.irrigation-report,str,,Last 24hrs- Nil/ Last 7 Days- Nil,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.isDemo,bool,,false,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.isLastMeeting,bool,,false,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.location-date,str,,"Saturday, 11th July, 2026",3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.location-title,str,,Sportsbet Caulfield Winter Raceday,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.location-track-type,str,,N/a,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.location-venue,str,,Caulfield,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.mapName,str,,Caulfield 3 Way Home Straight,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.mapping-service,str,,yes,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.racingToday,int,,1,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.rail-report,str,,+6 metres,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.rain0-24hr,str,,,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.rain0-7day,str,,,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.rain0-today,str,,,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.rain1-24hr,int,,0,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.rain1-7day,float,,0.6,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.rain1-current,int,,0,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.rain1-since,int,,0,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.rain1-today,int,,0,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.rain2-24hr,int,,0,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.rain2-7day,float,,0.6,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.rain2-since,int,,0,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.rain2-today,int,,0,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.reportStatus,object,3,,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.reportStatus.system,array,3,,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.reportStatus.system[0],str,,"Previous Turf: 27/06/26, Next Turf: 11/07/26, Displaying: Saturday, 11th July, 2026",5
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.reportStatus.system[1],str,,"Turf Report ID: 338784, <span style=""cursor:pointer;"" onclick=""ButtonAction('hub-link', this);"">Hub Link</span>",5
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.reportStatus.system[2],str,,Display the latest PUBLISHED Report: For 21 days before and 3 days after,5
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.reportStatus.report,array,0,,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.reportStatus.weather,array,0,,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.seasonEndMessage,str,,,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.stalls-report,str,,,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.stationActivityStatus,str,,active,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.stationId,int,,150000,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.stationType,str,,wtx,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.stick-report,str,,"Overall- 8.6, Penetrate- 7.7, Shear- 10.2, Rainfall since last day- 31mm, Outside 4m aerated (20m of galloping width provided)",3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.temperature-current,float,,14.7,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.temperature-max,float,,15.81,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.temperature-min,float,,7.92,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.trackType,str,,Turf,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.units,object,3,,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.units.linear,str,,mm,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.units.speed,str,,km/h,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.units.temperature,str,,C,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.use-map,str,,zone,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.useRainGauge,int,,1,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.usingAwtReport,str,,N/a,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.usingReport,str,,338784,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.venueId,int,,150,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.venueName,str,,Caulfield Racecourse,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.weather-comment,str,,"Partly cloudy, 15c maximum. Very high chance of rain, most likely late this afternoon and evening. Winds northerly 15 to 25 km/h increasing to 25 to 40 km/h in the morning then tending northwesterly 15 to 25 km/h in the late evening.",3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.weather-date,str,,11/07/26,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.weather-last-update,str,,2:58pm,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.weatherReport,int,,1,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.windRepeater,json_encoded_string,,"{""going"":{""enabled"":true,""divXPos"":50,""divYPos"":500,""mapWidth"":950,""repeaterWidth"":132,""repeaterText"":true,""deviation"":-0.05,""mapRotation"":0}}",3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.windRepeater.__decoded__,object,1,,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.windRepeater.__decoded__.going,object,8,,5
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.windRepeater.__decoded__.going.enabled,bool,,true,6
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.windRepeater.__decoded__.going.divXPos,int,,50,6
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.windRepeater.__decoded__.going.divYPos,int,,500,6
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.windRepeater.__decoded__.going.mapWidth,int,,950,6
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.windRepeater.__decoded__.going.repeaterWidth,int,,132,6
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.windRepeater.__decoded__.going.repeaterText,bool,,true,6
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.windRepeater.__decoded__.going.deviation,float,,-0.05,6
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.windRepeater.__decoded__.going.mapRotation,int,,0,6
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.winddirection-current,float,,357.5,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.winddirection-current-rose,int,,1474,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.winddirection-text,str,,Northerly,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.windgust-current,float,,3.2,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.windgust-event,str,,12:56 pm,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.windgust-max,float,,9.29,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.windgust-min,int,,0,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.windspeed-average,float,,1.52,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.content.windspeed-current,int,,2,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis,object,22,,2
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.timezone-offset,int,,36000,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.offset-adjust,int,,-3600,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.local-time,object,3,,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.local-time.calendar,str,,2026-07-11 13:57:54,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.local-time.epoch,int,,1783774674,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.local-time.cache,int,,1783774620,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.local-date,object,3,,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.local-date.calendar,str,,2026-07-11,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.local-date.epoch,int,,1783724400,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.local-date.numericDate,str,,11/07/26,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.server-time,object,3,,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.server-time.calendar,str,,2026-07-11 03:57:54,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.server-time.epoch,int,,1783738674,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.server-time.cache,int,,1783774620,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.server-date,object,2,,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.server-date.calendar,str,,2026-07-11,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.server-date.epoch,int,,1783724400,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.local-create,object,2,,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.local-create.calendar,str,,N/a,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.local-create.epoch,str,,N/a,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.local-update,object,2,,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.local-update.calendar,str,,N/a,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.local-update.epoch,str,,N/a,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.only-published,int,,1,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.display-always,int,,0,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.days-before,object,2,,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.days-before.calendar,int,,21,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.days-before.epoch,int,,1814400,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.days-after,object,2,,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.days-after.calendar,int,,3,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.days-after.epoch,int,,259200,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.turfRacingToday,int,,1,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.previous-race,object,4,,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.previous-race.calendar,str,,2026-06-27,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.previous-race.epoch,int,,1782514800,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.previous-race.fullDate,str,,"Saturday, 27th June, 2026",4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.previous-race.numericDate,str,,27/06/26,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.latest-previous,object,2,,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.latest-previous.calendar,str,,2026-06-30,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.latest-previous.epoch,int,,1782774000,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.next-race,object,4,,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.next-race.calendar,str,,2026-07-11,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.next-race.epoch,int,,1783724400,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.next-race.fullDate,str,,"Saturday, 11th July, 2026",4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.next-race.numericDate,str,,11/07/26,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.earliest-next,object,2,,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.earliest-next.calendar,str,,2026-06-20,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.earliest-next.epoch,int,,1781910000,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.awtRacingToday,int,,0,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.previous-race-awt,object,4,,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.previous-race-awt.calendar,str,,N/a,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.previous-race-awt.epoch,str,,N/a,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.previous-race-awt.fullDate,str,,N/a,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.previous-race-awt.numericDate,str,,N/a,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.latest-last-awt,object,2,,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.latest-last-awt.calendar,str,,N/a,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.latest-last-awt.epoch,str,,N/a,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.next-race-awt,object,4,,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.next-race-awt.calendar,str,,N/a,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.next-race-awt.epoch,str,,N/a,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.next-race-awt.fullDate,str,,N/a,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.next-race-awt.numericDate,str,,N/a,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.earliest-next-awt,object,2,,3
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.earliest-next-awt.calendar,str,,N/a,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.tardis.earliest-next-awt.epoch,str,,N/a,4
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,$.payload.trace,str,,**** WDV Init Start **** Config Authorise: 6 Courttesy Authorise: 5 CodeBase Authorise: 6 Station Id: 150000 Station Name: wtx-rvlCaulfield-1 Station Type: 8 Sensor Data Map: Array (     [data_00] =&gt; pressure     [data_01] =&gt; solar_load     [data_02] =&gt; ground_temp     [data_03] =&gt; solar...,2
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$,object,2,,0
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.status,int,,0,1
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload,object,4,,1
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.header,object,3,,2
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.header.description,str,,"Turftrax Weather Data Visualisation for Sportsbet Sandown Racecourse on Sat, 11 Jul 2026 04:57:55 +0100",3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.header.signature,str,,Turftrax ITS WDV API Stream prod-V1.5.3-2021-04-15T12:00,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.header.copyright,str,,"2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Turftrax Ltd. All Rights Reserved.",3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content,object,78,,2
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.additional-comment,str,,,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.air-temperature-current,float,,15.4,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.air-temperature-max,float,,15.4,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.air-temperature-min,float,,7.78,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.awt-race-date,str,,N/a,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.awtReport,int,,0,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.carousel,object,1,,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.carousel.temperature,object,2,,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.carousel.temperature.default,str,,air,5
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.carousel.temperature.list,array,1,,5
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.carousel.temperature.list[0],str,,air,6
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.disableMetic,array,0,,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.et-24hr,float,,0.95,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.et-7day,float,,2.95,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.et-since,float,,0.37,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.etEnabled,bool,,true,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.going-race-date,str,,"Wednesday, 15th July, 2026",3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.going-report,str,,Soft 7,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.going-report-date,str,,"Friday, 10th July, 2026 at 7:29 am",3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.going-waypoint-map,str,,https://api.turftrax.co.uk/maps/going-reports/338681_waypoints.svg,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.going-zone-map,str,,https://api.turftrax.co.uk/maps/going-reports/338681_zones.svg,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.goingReport,int,,1,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.haveManualRain,bool,,false,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.humidity-current,float,,64.87,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.humidity-max,float,,83.45,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.humidity-min,float,,63.23,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.irrigation-report,str,,24hrs: 0mm  7 days: 0mm,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.isDemo,bool,,false,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.isLastMeeting,bool,,false,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.location-date,str,,"Wednesday, 15th July, 2026",3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.location-title,str,,Sportsbet Hillside 15/07/2026,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.location-track-type,str,,N/a,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.location-venue,str,,Sportsbet Sandown,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.mapName,str,,Hillside,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.mapping-service,str,,yes,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.racingToday,int,,0,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.rail-report,str,,Hillside 6m,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.rain0-24hr,str,,,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.rain0-7day,str,,,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.rain0-today,str,,,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.rain1-24hr,int,,0,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.rain1-7day,float,,2.6,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.rain1-current,int,,0,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.rain1-since,int,,0,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.rain1-today,int,,0,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.rain2-24hr,int,,0,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.rain2-7day,float,,2.8,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.rain2-current,int,,0,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.rain2-since,int,,0,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.rain2-today,int,,0,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.reportStatus,object,3,,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.reportStatus.system,array,3,,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.reportStatus.system[0],str,,"Previous Turf: 08/07/26, Next Turf: 15/07/26, Displaying: Wednesday, 15th July, 2026",5
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.reportStatus.system[1],str,,"Turf Report ID: 338681, <span style=""cursor:pointer;"" onclick=""ButtonAction('hub-link', this);"">Hub Link</span>",5
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.reportStatus.system[2],str,,Display the most recent DRAFT Report: For 14 days before and 3 days after,5
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.reportStatus.report,array,0,,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.reportStatus.weather,array,0,,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.seasonEndMessage,str,,,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.stalls-report,str,,,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.stationActivityStatus,str,,active,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.stationId,int,,148000,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.stationType,str,,wtx,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.stick-report,str,,Overall: 8.1  Shear: 9,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.temperature-current,float,,15.4,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.temperature-max,float,,15.4,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.temperature-min,float,,7.78,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.trackType,str,,Turf,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.units,object,3,,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.units.linear,str,,mm,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.units.speed,str,,km/h,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.units.temperature,str,,C,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.use-map,str,,zone,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.useRainGauge,int,,2,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.usingAwtReport,str,,N/a,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.usingReport,str,,338681,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.venueId,int,,148,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.venueName,str,,Sportsbet Sandown Racecourse,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.weather-comment,str,,"Top of 14, Partly cloudy. Slight chance of a shower, most likely during the morning. Winds westerly 15 to 20 km/h becoming light during the morning then becoming west to southwesterly 15 to 20 km/h during the day.",3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.weather-date,str,,11/07/26,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.weather-last-update,str,,2:57pm,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.weatherReport,int,,1,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.windRepeater,json_encoded_string,,"{""going"":{""enabled"":true,""divXPos"":50,""divYPos"":500,""mapWidth"":950,""repeaterWidth"":132,""repeaterText"":true,""deviation"":-0.05,""mapRotation"":0}}",3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.windRepeater.__decoded__,object,1,,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.windRepeater.__decoded__.going,object,8,,5
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.windRepeater.__decoded__.going.enabled,bool,,true,6
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.windRepeater.__decoded__.going.divXPos,int,,50,6
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.windRepeater.__decoded__.going.divYPos,int,,500,6
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.windRepeater.__decoded__.going.mapWidth,int,,950,6
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.windRepeater.__decoded__.going.repeaterWidth,int,,132,6
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.windRepeater.__decoded__.going.repeaterText,bool,,true,6
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.windRepeater.__decoded__.going.deviation,float,,-0.05,6
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.windRepeater.__decoded__.going.mapRotation,int,,0,6
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.winddirection-current,float,,343.43,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.winddirection-current-rose,int,,1361,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.winddirection-text,str,,Northerly,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.windgust-current,int,,6,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.windgust-event,str,,2:07 pm,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.windgust-max,float,,11.4,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.windgust-min,float,,1.2,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.windspeed-average,float,,4.13,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.content.windspeed-current,float,,4.8,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis,object,22,,2
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.timezone-offset,int,,32400,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.offset-adjust,int,,-3600,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.local-time,object,3,,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.local-time.calendar,str,,2026-07-11 12:57:55,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.local-time.epoch,int,,1783771075,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.local-time.cache,int,,1783771020,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.local-date,object,3,,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.local-date.calendar,str,,2026-07-11,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.local-date.epoch,int,,1783724400,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.local-date.numericDate,str,,11/07/26,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.server-time,object,3,,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.server-time.calendar,str,,2026-07-11 03:57:55,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.server-time.epoch,int,,1783738675,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.server-time.cache,int,,1783771020,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.server-date,object,2,,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.server-date.calendar,str,,2026-07-11,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.server-date.epoch,int,,1783724400,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.local-create,object,2,,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.local-create.calendar,str,,N/a,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.local-create.epoch,str,,N/a,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.local-update,object,2,,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.local-update.calendar,str,,N/a,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.local-update.epoch,str,,N/a,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.only-published,int,,0,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.display-always,int,,0,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.days-before,object,2,,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.days-before.calendar,int,,14,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.days-before.epoch,int,,1209600,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.days-after,object,2,,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.days-after.calendar,int,,3,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.days-after.epoch,int,,259200,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.turfRacingToday,int,,0,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.previous-race,object,4,,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.previous-race.calendar,str,,2026-07-08,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.previous-race.epoch,int,,1783465200,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.previous-race.fullDate,str,,"Wednesday, 8th July, 2026",4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.previous-race.numericDate,str,,08/07/26,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.latest-previous,object,2,,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.latest-previous.calendar,str,,2026-07-11,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.latest-previous.epoch,int,,1783724400,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.next-race,object,4,,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.next-race.calendar,str,,2026-07-15,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.next-race.epoch,int,,1784070000,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.next-race.fullDate,str,,"Wednesday, 15th July, 2026",4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.next-race.numericDate,str,,15/07/26,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.earliest-next,object,2,,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.earliest-next.calendar,str,,2026-07-01,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.earliest-next.epoch,int,,1782860400,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.awtRacingToday,int,,0,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.previous-race-awt,object,4,,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.previous-race-awt.calendar,str,,N/a,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.previous-race-awt.epoch,str,,N/a,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.previous-race-awt.fullDate,str,,N/a,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.previous-race-awt.numericDate,str,,N/a,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.latest-last-awt,object,2,,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.latest-last-awt.calendar,str,,N/a,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.latest-last-awt.epoch,str,,N/a,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.next-race-awt,object,4,,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.next-race-awt.calendar,str,,N/a,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.next-race-awt.epoch,str,,N/a,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.next-race-awt.fullDate,str,,N/a,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.next-race-awt.numericDate,str,,N/a,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.earliest-next-awt,object,2,,3
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.earliest-next-awt.calendar,str,,N/a,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.tardis.earliest-next-awt.epoch,str,,N/a,4
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,$.payload.trace,str,,**** WDV Init Start **** Config Authorise: 6 Courttesy Authorise: 5 CodeBase Authorise: 6 Station Id: 148000 Station Name: wtx-rvlSandown-1 Station Type: 8 Sensor Data Map: Array (     [data_00] =&gt; pressure     [data_01] =&gt; solar_load     [data_02] =&gt; ground_temp     [data_03] =&gt; solar_v...,2
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$,object,2,,0
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.status,int,,0,1
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload,object,4,,1
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.header,object,3,,2
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.header.description,str,,"Turftrax Weather Data Visualisation for Mornington Racecourse on Sat, 11 Jul 2026 04:57:55 +0100",3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.header.signature,str,,Turftrax ITS WDV API Stream prod-V1.5.3-2021-04-15T12:00,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.header.copyright,str,,"2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Turftrax Ltd. All Rights Reserved.",3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content,object,77,,2
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.additional-comment,str,,,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.air-temperature-current,float,,13.06,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.air-temperature-max,float,,14.59,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.air-temperature-min,float,,6.93,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.awt-race-date,str,,N/a,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.awtReport,int,,0,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.carousel,object,1,,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.carousel.temperature,object,2,,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.carousel.temperature.default,str,,air,5
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.carousel.temperature.list,array,1,,5
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.carousel.temperature.list[0],str,,air,6
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.disableMetic,array,0,,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.et-24hr,float,,0.58,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.et-7day,float,,2.89,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.et-since,float,,0.29,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.etEnabled,bool,,true,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.going-race-date,str,,"Monday, 8th June, 2026",3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.going-report,str,,Heavy 8,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.going-report-date,str,,"Monday, 15th June, 2026 at 12:36 pm",3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.going-waypoint-map,str,,https://api.turftrax.co.uk/maps/going-reports/335148_waypoints.svg,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.going-zone-map,str,,https://api.turftrax.co.uk/maps/going-reports/335148_zones.svg,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.goingReport,int,,1,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.haveManualRain,bool,,false,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.humidity-current,float,,72.19,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.humidity-max,float,,88.11,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.humidity-min,float,,65.82,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.irrigation-report,str,,"24Hrs: 0mm, 7 Days: 0mm",3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.isDemo,bool,,false,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.isLastMeeting,bool,,false,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.location-date,str,,N/a,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.location-title,str,,Mornington Raceday,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.location-track-type,str,,N/a,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.location-venue,str,,Mornington,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.mapName,str,,Mornington,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.mapping-service,str,,yes,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.racingToday,int,,0,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.rail-report,str,,True,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.rain0-24hr,str,,,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.rain0-7day,str,,,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.rain0-today,str,,,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.rain1-24hr,int,,0,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.rain1-7day,float,,0.8,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.rain1-current,int,,0,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.rain1-since,int,,0,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.rain1-today,int,,0,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.rain2-24hr,int,,0,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.rain2-7day,int,,0,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.rain2-since,int,,0,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.rain2-today,int,,0,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.reportStatus,object,3,,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.reportStatus.system,array,3,,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.reportStatus.system[0],str,,"Previous Turf: 08/06/26, Next Turf: 11/07/26, Displaying: Monday, 8th June, 2026",5
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.reportStatus.system[1],str,,"Turf Report ID: 335148, <span style=""cursor:pointer;"" onclick=""ButtonAction('hub-link', this);"">Hub Link</span>",5
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.reportStatus.system[2],str,,Display the most recent DRAFT Report: For 14 days before and 3 days after,5
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.reportStatus.report,array,2,,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.reportStatus.report[0],str,,No Calendar Entry for Next Race Meeting - using Going Report,5
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.reportStatus.report[1],str,,No Calendar Entry for the Next Race,5
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.reportStatus.weather,array,2,,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.reportStatus.weather[0],str,,### - No Data (max_soil_temp),5
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.reportStatus.weather[1],str,,### - No Data (min_soil_temp),5
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.seasonEndMessage,str,,,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.stalls-report,str,,,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.stationActivityStatus,str,,active,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.stationId,int,,149001,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.stationType,str,,wtx,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.stick-report,str,,Going Index: Shear: Soil Moisture:,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.temperature-current,float,,13.06,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.temperature-max,float,,14.59,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.temperature-min,float,,6.93,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.trackType,str,,Turf,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.units,object,3,,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.units.linear,str,,mm,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.units.speed,str,,km/h,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.units.temperature,str,,C,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.use-map,str,,zone,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.useRainGauge,int,,1,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.usingAwtReport,str,,N/a,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.usingReport,str,,335148,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.venueId,int,,149,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.venueName,str,,Mornington Racecourse,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.weather-comment,str,,"Top of 16 degrees, Partly cloudy. Light winds becoming northerly 15 to 20 km/h in the middle of the day then becoming light in the early afternoon.",3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.weather-date,str,,11/07/26,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.weather-last-update,str,,2:57pm,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.weatherReport,int,,1,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.windRepeater,json_encoded_string,,"{""going"":{""enabled"":true,""divXPos"":50,""divYPos"":650,""mapWidth"":950,""repeaterWidth"":132,""repeaterText"":true,""deviation"":-0.05,""mapRotation"":0}}",3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.windRepeater.__decoded__,object,1,,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.windRepeater.__decoded__.going,object,8,,5
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.windRepeater.__decoded__.going.enabled,bool,,true,6
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.windRepeater.__decoded__.going.divXPos,int,,50,6
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.windRepeater.__decoded__.going.divYPos,int,,650,6
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.windRepeater.__decoded__.going.mapWidth,int,,950,6
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.windRepeater.__decoded__.going.repeaterWidth,int,,132,6
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.windRepeater.__decoded__.going.repeaterText,bool,,true,6
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.windRepeater.__decoded__.going.deviation,float,,-0.05,6
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.windRepeater.__decoded__.going.mapRotation,int,,0,6
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.winddirection-current,float,,328.18,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.winddirection-current-rose,int,,1239,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.winddirection-text,str,,Northwesterly,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.windgust-current,float,,6.73,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.windgust-event,str,,2:12 pm,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.windgust-max,float,,9.24,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.windgust-min,int,,0,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.windspeed-average,float,,1.88,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.content.windspeed-current,float,,4.8,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis,object,22,,2
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.timezone-offset,int,,36000,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.offset-adjust,int,,-3600,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.local-time,object,3,,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.local-time.calendar,str,,2026-07-11 13:57:55,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.local-time.epoch,int,,1783774675,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.local-time.cache,int,,1783774620,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.local-date,object,3,,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.local-date.calendar,str,,2026-07-11,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.local-date.epoch,int,,1783724400,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.local-date.numericDate,str,,11/07/26,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.server-time,object,3,,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.server-time.calendar,str,,2026-07-11 03:57:55,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.server-time.epoch,int,,1783738675,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.server-time.cache,int,,1783774620,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.server-date,object,2,,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.server-date.calendar,str,,2026-07-11,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.server-date.epoch,int,,1783724400,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.local-create,object,2,,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.local-create.calendar,str,,N/a,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.local-create.epoch,str,,N/a,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.local-update,object,2,,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.local-update.calendar,str,,N/a,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.local-update.epoch,str,,N/a,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.only-published,int,,0,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.display-always,int,,0,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.days-before,object,2,,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.days-before.calendar,int,,14,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.days-before.epoch,int,,1209600,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.days-after,object,2,,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.days-after.calendar,int,,3,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.days-after.epoch,int,,259200,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.turfRacingToday,int,,0,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.previous-race,object,4,,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.previous-race.calendar,str,,2026-06-08,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.previous-race.epoch,int,,1780873200,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.previous-race.fullDate,str,,"Monday, 8th June, 2026",4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.previous-race.numericDate,str,,08/06/26,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.latest-previous,object,2,,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.latest-previous.calendar,str,,2026-06-11,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.latest-previous.epoch,int,,1781132400,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.next-race,object,4,,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.next-race.calendar,str,,N/a,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.next-race.epoch,int,,4939401600,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.next-race.fullDate,str,,"Thursday, 11th July, 2126",4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.next-race.numericDate,str,,11/07/26,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.earliest-next,object,2,,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.earliest-next.calendar,str,,2126-06-27,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.earliest-next.epoch,int,,4938192000,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.awtRacingToday,int,,0,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.previous-race-awt,object,4,,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.previous-race-awt.calendar,str,,N/a,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.previous-race-awt.epoch,str,,N/a,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.previous-race-awt.fullDate,str,,N/a,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.previous-race-awt.numericDate,str,,N/a,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.latest-last-awt,object,2,,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.latest-last-awt.calendar,str,,N/a,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.latest-last-awt.epoch,str,,N/a,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.next-race-awt,object,4,,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.next-race-awt.calendar,str,,N/a,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.next-race-awt.epoch,str,,N/a,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.next-race-awt.fullDate,str,,N/a,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.next-race-awt.numericDate,str,,N/a,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.earliest-next-awt,object,2,,3
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.earliest-next-awt.calendar,str,,N/a,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.tardis.earliest-next-awt.epoch,str,,N/a,4
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,$.payload.trace,str,,**** WDV Init Start **** Config Authorise: 6 Courttesy Authorise: 5 CodeBase Authorise: 6 Station Id: 149001 Station Name: wtx-rvlMornington-2 Station Type: 8 Sensor Data Map: Array (     [data_00] =&gt; pressure     [data_01] =&gt; solar_load     [data_02] =&gt; ground_temp     [data_03] =&gt; sola...,2

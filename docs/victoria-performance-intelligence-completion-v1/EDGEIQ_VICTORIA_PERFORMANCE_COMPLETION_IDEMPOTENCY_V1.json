@@ -1,0 +1,12 @@
+{
+  "digests": {
+    "public\\data\\edgeiq_race_entry_context_adjusted_performance_fact_v1.csv": "39a26157664bfa3d94c94b68fff567d06b88fd4811ff64e7700c1efd954769cb",
+    "public\\data\\edgeiq_race_entry_context_adjustment_fact_v1.csv": "c51684fd5e2c2e475ff4d9ee3ac26678d3064d27909a429343ac1c268bd9e82e",
+    "public\\data\\edgeiq_race_entry_context_eligibility_fact_v1.csv": "9b2654ff6cc10a06c482881b786d41c6f985b7a9a88f68d2713b4cab3d9eef1c",
+    "public\\data\\edgeiq_race_entry_context_parameter_selection_fact_v1.csv": "fcdb4b7dfb1fde942ae7467fd2285e01a4e76a383d9606425dbd94bbdc57c998",
+    "public\\data\\edgeiq_race_entry_epi_fact_v1.csv": "d16763da65020b59d1d031791e1799134a53881fc3a5112fcaa2935a26157ad2",
+    "public\\data\\edgeiq_race_entry_performance_context_fact_v1.csv": "6a90c010a1ce46c16685b7de505f4c0ee4c104cd6b18c668496774c582faa5e3"
+  },
+  "note": "Builder built_at timestamps are expected to change; governed content digests exclude built_at fields only.",
+  "status": "PASS_STABLE_CONTENT_DIGESTS_BUILT_AT_EXCLUDED"
+}

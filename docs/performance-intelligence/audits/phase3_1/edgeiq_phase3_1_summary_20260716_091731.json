@@ -1,0 +1,84 @@
+{
+  "benchmark_count": 58891,
+  "benchmark_count_by_level": {
+    "1": 100,
+    "2": 100,
+    "3": 1928,
+    "4": 11548,
+    "5": 18074,
+    "6": 27141
+  },
+  "benchmark_sample_size_bands": {
+    "1": 33063,
+    "10-14": 1481,
+    "15-29": 1376,
+    "2-4": 16841,
+    "30-49": 452,
+    "5-9": 4997,
+    "50+": 681
+  },
+  "blocked_race_count": 10676,
+  "confidence_distribution": {
+    "HIGH": 337,
+    "INSUFFICIENT": 49904,
+    "LOW": 6729,
+    "MEDIUM": 1921
+  },
+  "eligible_race_count": 60349,
+  "extreme_deviation_count_abs_ge_20s": 1139,
+  "fallback_path_distribution_top25": {
+    "L6:INSUFFICIENT_1 > L5:INSUFFICIENT_1 > L4:INSUFFICIENT_1 > L3:INSUFFICIENT_2 > L2:SELECTED": 426,
+    "L6:INSUFFICIENT_1 > L5:INSUFFICIENT_1 > L4:INSUFFICIENT_1 > L3:SELECTED": 3911,
+    "L6:INSUFFICIENT_1 > L5:INSUFFICIENT_1 > L4:INSUFFICIENT_2 > L3:SELECTED": 1558,
+    "L6:INSUFFICIENT_1 > L5:INSUFFICIENT_1 > L4:INSUFFICIENT_3 > L3:SELECTED": 879,
+    "L6:INSUFFICIENT_1 > L5:INSUFFICIENT_1 > L4:INSUFFICIENT_4 > L3:SELECTED": 506,
+    "L6:INSUFFICIENT_1 > L5:INSUFFICIENT_1 > L4:SELECTED": 1466,
+    "L6:INSUFFICIENT_1 > L5:INSUFFICIENT_2 > L4:INSUFFICIENT_2 > L3:SELECTED": 540,
+    "L6:INSUFFICIENT_1 > L5:INSUFFICIENT_2 > L4:SELECTED": 924,
+    "L6:INSUFFICIENT_1 > L5:INSUFFICIENT_3 > L4:SELECTED": 933,
+    "L6:INSUFFICIENT_1 > L5:INSUFFICIENT_4 > L4:SELECTED": 796,
+    "L6:INSUFFICIENT_1 > L5:SELECTED": 3587,
+    "L6:INSUFFICIENT_2 > L5:INSUFFICIENT_2 > L4:INSUFFICIENT_2 > L3:SELECTED": 1198,
+    "L6:INSUFFICIENT_2 > L5:INSUFFICIENT_2 > L4:INSUFFICIENT_3 > L3:SELECTED": 728,
+    "L6:INSUFFICIENT_2 > L5:INSUFFICIENT_2 > L4:INSUFFICIENT_4 > L3:SELECTED": 576,
+    "L6:INSUFFICIENT_2 > L5:INSUFFICIENT_2 > L4:SELECTED": 1306,
+    "L6:INSUFFICIENT_2 > L5:INSUFFICIENT_3 > L4:SELECTED": 552,
+    "L6:INSUFFICIENT_2 > L5:INSUFFICIENT_4 > L4:SELECTED": 556,
+    "L6:INSUFFICIENT_2 > L5:SELECTED": 3202,
+    "L6:INSUFFICIENT_3 > L5:INSUFFICIENT_3 > L4:INSUFFICIENT_3 > L3:SELECTED": 672,
+    "L6:INSUFFICIENT_3 > L5:INSUFFICIENT_3 > L4:SELECTED": 1155,
+    "L6:INSUFFICIENT_3 > L5:INSUFFICIENT_4 > L4:SELECTED": 480,
+    "L6:INSUFFICIENT_3 > L5:SELECTED": 2463,
+    "L6:INSUFFICIENT_4 > L5:INSUFFICIENT_4 > L4:SELECTED": 1260,
+    "L6:INSUFFICIENT_4 > L5:SELECTED": 2076,
+    "L6:SELECTED": 24746
+  },
+  "generated_timestamp": "2026-07-16T09:17:31Z",
+  "known_limitations": [
+    "Confidence rule exists as benchmark-engine code and row fields, not as a standalone upstream registry asset. Certification recalculated the rule independently and found no mismatch.",
+    "Sparse detailed hierarchy groups are intentionally INSUFFICIENT and are not selected.",
+    "Query engine does not expose a physical membership table; membership count is reproduced by summing benchmark sample_size and certified directly from benchmark membership asset."
+  ],
+  "marker": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE3_1_BENCHMARK_ENGINE_INDEPENDENT_CERTIFICATION_PASS",
+  "material_defects": [],
+  "material_defects_found": false,
+  "membership_count": 362094,
+  "membership_explanation": "Each of 60349 eligible race observations contributes one membership row to each of 6 hierarchy levels, producing 60349 x 6 = 362094 rows.",
+  "query_crosscheck_pass": true,
+  "race_deviation_count": 60349,
+  "race_deviation_reproducibility_errors": 0,
+  "race_observation_count": 71025,
+  "races_with_no_legitimate_selected_benchmark": 0,
+  "selection_count_by_confidence": {
+    "HIGH": 7459,
+    "LOW": 33507,
+    "MEDIUM": 19383
+  },
+  "selection_count_by_level": {
+    "2": 1803,
+    "3": 13044,
+    "4": 9428,
+    "5": 11328,
+    "6": 24746
+  }
+}

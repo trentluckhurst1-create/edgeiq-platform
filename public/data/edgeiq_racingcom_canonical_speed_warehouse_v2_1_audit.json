@@ -1,0 +1,49 @@
+{
+  "audit_name": "EDGEIQ_RACINGCOM_CANONICAL_SPEED_WAREHOUSE_V2_1",
+  "generated_at_utc": "2026-07-22T19:25:16+00:00",
+  "status": "PASS",
+  "failures": [],
+  "warehouse_version": "RACINGCOM_CANONICAL_SPEED_WAREHOUSE_V2_1",
+  "semantic_dependency": {
+    "file": "public/data/edgeiq_racingcom_speed_semantics_v1_1_audit.json",
+    "required_status": "PASS",
+    "actual_status": "PASS",
+    "semantic_version": "RACINGCOM_SPEED_SEMANTICS_V1_1"
+  },
+  "base_builder": {
+    "file": "scripts/build_edgeiq_racingcom_canonical_speed_warehouse_v2.py",
+    "return_code": 0,
+    "base_audit_file": "public/data/edgeiq_racingcom_canonical_speed_warehouse_v2_1_base_audit.json"
+  },
+  "canonical_counts": {
+    "races": 39,
+    "runners": 392,
+    "sectionals": 2854,
+    "splits": 2682
+  },
+  "split_coverage_counts": {
+    "FULL_RACE": 220,
+    "PARTIAL_TIMING_WINDOW": 172,
+    "UNRESOLVED": 0
+  },
+  "unresolved_runner_keys": [],
+  "orphan_split_runner_keys": [],
+  "duplicate_runner_keys": [],
+  "missing_coverage_rows": [],
+  "controls": {
+    "ratings_calculated": false,
+    "standard_times_calculated": false,
+    "lengths_vs_standard_calculated": false,
+    "estimated_values_created": false,
+    "unknown_race_distances_invented": false,
+    "opening_untimed_distance_blank_when_unavailable": true,
+    "provider_split_values_preserved": true,
+    "partial_timing_windows_explicitly_classified": true
+  },
+  "outputs": {
+    "runner_fact": "public/data/edgeiq_racingcom_canonical_runner_speed_fact_v2_1.csv",
+    "sectional_fact": "public/data/edgeiq_racingcom_canonical_runner_sectional_fact_v2_1.csv",
+    "split_fact": "public/data/edgeiq_racingcom_canonical_runner_split_fact_v2_1.csv",
+    "race_fact": "public/data/edgeiq_racingcom_canonical_race_speed_fact_v2_1.csv"
+  }
+}

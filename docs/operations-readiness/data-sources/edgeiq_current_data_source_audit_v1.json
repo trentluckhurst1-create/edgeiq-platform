@@ -1,0 +1,304 @@
+{
+  "audit_status": "PASS",
+  "domains": [
+    {
+      "domain": "meetings",
+      "source_status": "CURRENT_FILE_IMPORT",
+      "source_name": "repository current/public feed evidence",
+      "source_type": "CSV/JSON/current file unless unavailable",
+      "input_path_or_endpoint": "public/data and existing builders",
+      "refresh_frequency": "daily/incremental where supported",
+      "last_successful_update": "file mtime or generated timestamp",
+      "data_timestamp": "not always present; freshness contract applies",
+      "coverage": "see feed/runtime audit",
+      "jurisdiction": "Victoria/current three-day where available",
+      "failure_behaviour": "preserve last-known-good and mark unavailable",
+      "fallback_behaviour": "honest unavailable state",
+      "audit_coverage": "operations-readiness v1"
+    },
+    {
+      "domain": "race fields",
+      "source_status": "CURRENT_FILE_IMPORT",
+      "source_name": "repository current/public feed evidence",
+      "source_type": "CSV/JSON/current file unless unavailable",
+      "input_path_or_endpoint": "public/data and existing builders",
+      "refresh_frequency": "daily/incremental where supported",
+      "last_successful_update": "file mtime or generated timestamp",
+      "data_timestamp": "not always present; freshness contract applies",
+      "coverage": "see feed/runtime audit",
+      "jurisdiction": "Victoria/current three-day where available",
+      "failure_behaviour": "preserve last-known-good and mark unavailable",
+      "fallback_behaviour": "honest unavailable state",
+      "audit_coverage": "operations-readiness v1"
+    },
+    {
+      "domain": "acceptances",
+      "source_status": "CURRENT_FILE_IMPORT",
+      "source_name": "repository current/public feed evidence",
+      "source_type": "CSV/JSON/current file unless unavailable",
+      "input_path_or_endpoint": "public/data and existing builders",
+      "refresh_frequency": "daily/incremental where supported",
+      "last_successful_update": "file mtime or generated timestamp",
+      "data_timestamp": "not always present; freshness contract applies",
+      "coverage": "see feed/runtime audit",
+      "jurisdiction": "Victoria/current three-day where available",
+      "failure_behaviour": "preserve last-known-good and mark unavailable",
+      "fallback_behaviour": "honest unavailable state",
+      "audit_coverage": "operations-readiness v1"
+    },
+    {
+      "domain": "barriers",
+      "source_status": "CURRENT_FILE_IMPORT",
+      "source_name": "repository current/public feed evidence",
+      "source_type": "CSV/JSON/current file unless unavailable",
+      "input_path_or_endpoint": "public/data and existing builders",
+      "refresh_frequency": "daily/incremental where supported",
+      "last_successful_update": "file mtime or generated timestamp",
+      "data_timestamp": "not always present; freshness contract applies",
+      "coverage": "see feed/runtime audit",
+      "jurisdiction": "Victoria/current three-day where available",
+      "failure_behaviour": "preserve last-known-good and mark unavailable",
+      "fallback_behaviour": "honest unavailable state",
+      "audit_coverage": "operations-readiness v1"
+    },
+    {
+      "domain": "weights",
+      "source_status": "CURRENT_FILE_IMPORT",
+      "source_name": "repository current/public feed evidence",
+      "source_type": "CSV/JSON/current file unless unavailable",
+      "input_path_or_endpoint": "public/data and existing builders",
+      "refresh_frequency": "daily/incremental where supported",
+      "last_successful_update": "file mtime or generated timestamp",
+      "data_timestamp": "not always present; freshness contract applies",
+      "coverage": "see feed/runtime audit",
+      "jurisdiction": "Victoria/current three-day where available",
+      "failure_behaviour": "preserve last-known-good and mark unavailable",
+      "fallback_behaviour": "honest unavailable state",
+      "audit_coverage": "operations-readiness v1"
+    },
+    {
+      "domain": "jockeys",
+      "source_status": "CURRENT_FILE_IMPORT",
+      "source_name": "repository current/public feed evidence",
+      "source_type": "CSV/JSON/current file unless unavailable",
+      "input_path_or_endpoint": "public/data and existing builders",
+      "refresh_frequency": "daily/incremental where supported",
+      "last_successful_update": "file mtime or generated timestamp",
+      "data_timestamp": "not always present; freshness contract applies",
+      "coverage": "see feed/runtime audit",
+      "jurisdiction": "Victoria/current three-day where available",
+      "failure_behaviour": "preserve last-known-good and mark unavailable",
+      "fallback_behaviour": "honest unavailable state",
+      "audit_coverage": "operations-readiness v1"
+    },
+    {
+      "domain": "trainers",
+      "source_status": "CURRENT_FILE_IMPORT",
+      "source_name": "repository current/public feed evidence",
+      "source_type": "CSV/JSON/current file unless unavailable",
+      "input_path_or_endpoint": "public/data and existing builders",
+      "refresh_frequency": "daily/incremental where supported",
+      "last_successful_update": "file mtime or generated timestamp",
+      "data_timestamp": "not always present; freshness contract applies",
+      "coverage": "see feed/runtime audit",
+      "jurisdiction": "Victoria/current three-day where available",
+      "failure_behaviour": "preserve last-known-good and mark unavailable",
+      "fallback_behaviour": "honest unavailable state",
+      "audit_coverage": "operations-readiness v1"
+    },
+    {
+      "domain": "scratchings",
+      "source_status": "CURRENT_FILE_IMPORT",
+      "source_name": "repository current/public feed evidence",
+      "source_type": "CSV/JSON/current file unless unavailable",
+      "input_path_or_endpoint": "public/data and existing builders",
+      "refresh_frequency": "daily/incremental where supported",
+      "last_successful_update": "file mtime or generated timestamp",
+      "data_timestamp": "not always present; freshness contract applies",
+      "coverage": "see feed/runtime audit",
+      "jurisdiction": "Victoria/current three-day where available",
+      "failure_behaviour": "preserve last-known-good and mark unavailable",
+      "fallback_behaviour": "honest unavailable state",
+      "audit_coverage": "operations-readiness v1"
+    },
+    {
+      "domain": "gear changes",
+      "source_status": "CURRENT_FILE_IMPORT",
+      "source_name": "repository current/public feed evidence",
+      "source_type": "CSV/JSON/current file unless unavailable",
+      "input_path_or_endpoint": "public/data and existing builders",
+      "refresh_frequency": "daily/incremental where supported",
+      "last_successful_update": "file mtime or generated timestamp",
+      "data_timestamp": "not always present; freshness contract applies",
+      "coverage": "see feed/runtime audit",
+      "jurisdiction": "Victoria/current three-day where available",
+      "failure_behaviour": "preserve last-known-good and mark unavailable",
+      "fallback_behaviour": "honest unavailable state",
+      "audit_coverage": "operations-readiness v1"
+    },
+    {
+      "domain": "track condition",
+      "source_status": "CURRENT_FILE_IMPORT",
+      "source_name": "repository current/public feed evidence",
+      "source_type": "CSV/JSON/current file unless unavailable",
+      "input_path_or_endpoint": "public/data and existing builders",
+      "refresh_frequency": "daily/incremental where supported",
+      "last_successful_update": "file mtime or generated timestamp",
+      "data_timestamp": "not always present; freshness contract applies",
+      "coverage": "see feed/runtime audit",
+      "jurisdiction": "Victoria/current three-day where available",
+      "failure_behaviour": "preserve last-known-good and mark unavailable",
+      "fallback_behaviour": "honest unavailable state",
+      "audit_coverage": "operations-readiness v1"
+    },
+    {
+      "domain": "rail position",
+      "source_status": "CURRENT_FILE_IMPORT",
+      "source_name": "repository current/public feed evidence",
+      "source_type": "CSV/JSON/current file unless unavailable",
+      "input_path_or_endpoint": "public/data and existing builders",
+      "refresh_frequency": "daily/incremental where supported",
+      "last_successful_update": "file mtime or generated timestamp",
+      "data_timestamp": "not always present; freshness contract applies",
+      "coverage": "see feed/runtime audit",
+      "jurisdiction": "Victoria/current three-day where available",
+      "failure_behaviour": "preserve last-known-good and mark unavailable",
+      "fallback_behaviour": "honest unavailable state",
+      "audit_coverage": "operations-readiness v1"
+    },
+    {
+      "domain": "weather",
+      "source_status": "CURRENT_FILE_IMPORT",
+      "source_name": "repository current/public feed evidence",
+      "source_type": "CSV/JSON/current file unless unavailable",
+      "input_path_or_endpoint": "public/data and existing builders",
+      "refresh_frequency": "daily/incremental where supported",
+      "last_successful_update": "file mtime or generated timestamp",
+      "data_timestamp": "not always present; freshness contract applies",
+      "coverage": "see feed/runtime audit",
+      "jurisdiction": "Victoria/current three-day where available",
+      "failure_behaviour": "preserve last-known-good and mark unavailable",
+      "fallback_behaviour": "honest unavailable state",
+      "audit_coverage": "operations-readiness v1"
+    },
+    {
+      "domain": "markets",
+      "source_status": "STATIC_SNAPSHOT",
+      "source_name": "repository current/public feed evidence",
+      "source_type": "CSV/JSON/current file unless unavailable",
+      "input_path_or_endpoint": "public/data and existing builders",
+      "refresh_frequency": "daily/incremental where supported",
+      "last_successful_update": "file mtime or generated timestamp",
+      "data_timestamp": "not always present; freshness contract applies",
+      "coverage": "see feed/runtime audit",
+      "jurisdiction": "Victoria/current three-day where available",
+      "failure_behaviour": "preserve last-known-good and mark unavailable",
+      "fallback_behaviour": "honest unavailable state",
+      "audit_coverage": "operations-readiness v1"
+    },
+    {
+      "domain": "results",
+      "source_status": "CURRENT_FILE_IMPORT",
+      "source_name": "repository current/public feed evidence",
+      "source_type": "CSV/JSON/current file unless unavailable",
+      "input_path_or_endpoint": "public/data and existing builders",
+      "refresh_frequency": "daily/incremental where supported",
+      "last_successful_update": "file mtime or generated timestamp",
+      "data_timestamp": "not always present; freshness contract applies",
+      "coverage": "see feed/runtime audit",
+      "jurisdiction": "Victoria/current three-day where available",
+      "failure_behaviour": "preserve last-known-good and mark unavailable",
+      "fallback_behaviour": "honest unavailable state",
+      "audit_coverage": "operations-readiness v1"
+    },
+    {
+      "domain": "official times",
+      "source_status": "CURRENT_FILE_IMPORT",
+      "source_name": "repository current/public feed evidence",
+      "source_type": "CSV/JSON/current file unless unavailable",
+      "input_path_or_endpoint": "public/data and existing builders",
+      "refresh_frequency": "daily/incremental where supported",
+      "last_successful_update": "file mtime or generated timestamp",
+      "data_timestamp": "not always present; freshness contract applies",
+      "coverage": "see feed/runtime audit",
+      "jurisdiction": "Victoria/current three-day where available",
+      "failure_behaviour": "preserve last-known-good and mark unavailable",
+      "fallback_behaviour": "honest unavailable state",
+      "audit_coverage": "operations-readiness v1"
+    },
+    {
+      "domain": "margins",
+      "source_status": "CURRENT_FILE_IMPORT",
+      "source_name": "repository current/public feed evidence",
+      "source_type": "CSV/JSON/current file unless unavailable",
+      "input_path_or_endpoint": "public/data and existing builders",
+      "refresh_frequency": "daily/incremental where supported",
+      "last_successful_update": "file mtime or generated timestamp",
+      "data_timestamp": "not always present; freshness contract applies",
+      "coverage": "see feed/runtime audit",
+      "jurisdiction": "Victoria/current three-day where available",
+      "failure_behaviour": "preserve last-known-good and mark unavailable",
+      "fallback_behaviour": "honest unavailable state",
+      "audit_coverage": "operations-readiness v1"
+    },
+    {
+      "domain": "sectionals",
+      "source_status": "HISTORICAL_ONLY",
+      "source_name": "repository current/public feed evidence",
+      "source_type": "CSV/JSON/current file unless unavailable",
+      "input_path_or_endpoint": "public/data and existing builders",
+      "refresh_frequency": "daily/incremental where supported",
+      "last_successful_update": "file mtime or generated timestamp",
+      "data_timestamp": "not always present; freshness contract applies",
+      "coverage": "see feed/runtime audit",
+      "jurisdiction": "Victoria/current three-day where available",
+      "failure_behaviour": "preserve last-known-good and mark unavailable",
+      "fallback_behaviour": "honest unavailable state",
+      "audit_coverage": "operations-readiness v1"
+    },
+    {
+      "domain": "stewards reports",
+      "source_status": "UNAVAILABLE",
+      "source_name": "repository current/public feed evidence",
+      "source_type": "CSV/JSON/current file unless unavailable",
+      "input_path_or_endpoint": "public/data and existing builders",
+      "refresh_frequency": "daily/incremental where supported",
+      "last_successful_update": "file mtime or generated timestamp",
+      "data_timestamp": "not always present; freshness contract applies",
+      "coverage": "see feed/runtime audit",
+      "jurisdiction": "Victoria/current three-day where available",
+      "failure_behaviour": "preserve last-known-good and mark unavailable",
+      "fallback_behaviour": "honest unavailable state",
+      "audit_coverage": "operations-readiness v1"
+    }
+  ],
+  "freshness_contract": {
+    "meeting_declarations": {
+      "freshness_required": "same operating date / three-day window"
+    },
+    "race_fields": {
+      "freshness_required": "same operating date / current acceptances"
+    },
+    "scratchings": {
+      "freshness_required": "frequent race-day refresh where live source exists"
+    },
+    "track_condition": {
+      "freshness_required": "race-day updated timestamp"
+    },
+    "weather": {
+      "freshness_required": "current observation timestamp; optional if source unavailable"
+    },
+    "markets": {
+      "freshness_required": "timestamped current price; optional/source-limited"
+    },
+    "results": {
+      "freshness_required": "post-race refresh when complete"
+    },
+    "stewards": {
+      "freshness_required": "published report timestamp; unavailable until source exists"
+    },
+    "historical_intelligence": {
+      "freshness_required": "stable warehouse release"
+    }
+  }
+}

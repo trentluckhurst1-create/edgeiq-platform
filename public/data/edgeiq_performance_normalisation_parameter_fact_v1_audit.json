@@ -1,0 +1,86 @@
+{
+  "audit_name": "edgeiq_performance_normalisation_parameter_fact_v1",
+  "audit_version": "1.0.0",
+  "audited_at_utc": "2026-07-30T07:43:47Z",
+  "checks": {
+    "contract_fields_exact": {
+      "detail": {
+        "actual": [
+          "normalisation_parameter_id",
+          "normalisation_method",
+          "centre_value",
+          "scale_value",
+          "normalisation_model_version",
+          "parameter_status",
+          "effective_from_date",
+          "effective_to_date",
+          "evidence_reference",
+          "source_evidence_sha256",
+          "parameter_evidence_sha256",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ],
+        "expected": [
+          "normalisation_parameter_id",
+          "normalisation_method",
+          "centre_value",
+          "scale_value",
+          "normalisation_model_version",
+          "parameter_status",
+          "effective_from_date",
+          "effective_to_date",
+          "evidence_reference",
+          "source_evidence_sha256",
+          "parameter_evidence_sha256",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ]
+      },
+      "status": "PASS"
+    },
+    "current_population_expected": {
+      "detail": {
+        "governance_note": "Parameter source is available; one governed AVAILABLE HPR-NORM-A-v1 row is expected after the temporal authority decision.",
+        "parameter_rows": 1,
+        "source_exists": true
+      },
+      "status": "PASS"
+    },
+    "deterministic_identity": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "evidence_hash_reproducible": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "no_effective_date_overlaps": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "no_forbidden_fields": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "parameter_governance": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "required_files_exist": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "unique_parameter_ids": {
+      "detail": [],
+      "status": "PASS"
+    }
+  },
+  "counts": {
+    "parameter_rows": 1,
+    "source_exists": true
+  },
+  "failed_checks": [],
+  "status": "PASS"
+}

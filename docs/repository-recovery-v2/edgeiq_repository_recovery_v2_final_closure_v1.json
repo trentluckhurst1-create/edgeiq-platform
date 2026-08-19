@@ -1,0 +1,218 @@
+{
+  "unit": "RRV2_UNIT_011",
+  "name": "Repository Recovery V2 Final Closure",
+  "version": "V1",
+  "verdict": "PASS",
+  "summary": {
+    "total_checks": 22,
+    "passed_checks": 22,
+    "failed_checks": 0,
+    "archived_snapshots_verified": 2,
+    "retained_snapshots_verified": 3,
+    "reference_redirects_verified": 2,
+    "remediation_commit": "5837c7b",
+    "production_build_pass": true,
+    "runtime_seconds": 203.974
+  },
+  "checks": [
+    {
+      "check_id": "C001",
+      "category": "GIT_PREFLIGHT",
+      "subject": "staging_area",
+      "expected": "empty",
+      "actual": "0",
+      "result": "PASS",
+      "detail": "The staging area must be empty before Unit 011 begins."
+    },
+    {
+      "check_id": "C002",
+      "category": "MACHINE_EVIDENCE",
+      "subject": "docs/repository-recovery-v2/edgeiq_protected_snapshot_remediation_plan_v1.json",
+      "expected": "PASS",
+      "actual": "PASS",
+      "result": "PASS",
+      "detail": "Unit 009 machine verdict must be PASS."
+    },
+    {
+      "check_id": "C003",
+      "category": "MACHINE_EVIDENCE",
+      "subject": "docs/repository-recovery-v2/edgeiq_protected_snapshot_remediation_execution_v1.json",
+      "expected": "PASS",
+      "actual": "PASS",
+      "result": "PASS",
+      "detail": "Unit 010 machine verdict must be PASS."
+    },
+    {
+      "check_id": "C004",
+      "category": "UNIT_010_SUMMARY",
+      "subject": "references_redirected",
+      "expected": "2",
+      "actual": "2",
+      "result": "PASS",
+      "detail": "Unit 010 summary field references_redirected must match."
+    },
+    {
+      "check_id": "C005",
+      "category": "UNIT_010_SUMMARY",
+      "subject": "snapshots_archived",
+      "expected": "2",
+      "actual": "2",
+      "result": "PASS",
+      "detail": "Unit 010 summary field snapshots_archived must match."
+    },
+    {
+      "check_id": "C006",
+      "category": "UNIT_010_SUMMARY",
+      "subject": "snapshots_retained",
+      "expected": "3",
+      "actual": "3",
+      "result": "PASS",
+      "detail": "Unit 010 summary field snapshots_retained must match."
+    },
+    {
+      "check_id": "C007",
+      "category": "UNIT_010_SUMMARY",
+      "subject": "build_pass",
+      "expected": "True",
+      "actual": "True",
+      "result": "PASS",
+      "detail": "Unit 010 summary field build_pass must match."
+    },
+    {
+      "check_id": "C008",
+      "category": "UNIT_010_SUMMARY",
+      "subject": "rollback_required",
+      "expected": "False",
+      "actual": "False",
+      "result": "PASS",
+      "detail": "Unit 010 summary field rollback_required must match."
+    },
+    {
+      "check_id": "C009",
+      "category": "GIT_COMMIT",
+      "subject": "5837c7b",
+      "expected": "5837c7b",
+      "actual": "5837c7b",
+      "result": "PASS",
+      "detail": "The governed remediation commit must exist."
+    },
+    {
+      "check_id": "C010",
+      "category": "GIT_COMMIT",
+      "subject": "remediation_commit_file_set",
+      "expected": "11",
+      "actual": "11",
+      "result": "PASS",
+      "detail": "Commit 5837c7b must contain exactly the 11 governed Unit 009/010 files."
+    },
+    {
+      "check_id": "C011",
+      "category": "ARCHIVE",
+      "subject": "docs/repository-recovery-v2/archive/protected-snapshots/src/edgeiq-os/race/RaceFileV3_STABLE_BEFORE_COMPONENT_EXTRACTION_20260709.tsx",
+      "expected": "exists",
+      "actual": "True",
+      "result": "PASS",
+      "detail": "Archived snapshot must exist."
+    },
+    {
+      "check_id": "C012",
+      "category": "ARCHIVE_HASH",
+      "subject": "docs/repository-recovery-v2/archive/protected-snapshots/src/edgeiq-os/race/RaceFileV3_STABLE_BEFORE_COMPONENT_EXTRACTION_20260709.tsx",
+      "expected": "eb7c5442fd8a04e06593e8bbd0681a772b16ac0b21d628b845013f39c353d8fd",
+      "actual": "eb7c5442fd8a04e06593e8bbd0681a772b16ac0b21d628b845013f39c353d8fd",
+      "result": "PASS",
+      "detail": "Archive SHA256 must match the Unit 010 execution evidence."
+    },
+    {
+      "check_id": "C013",
+      "category": "ARCHIVE",
+      "subject": "docs/repository-recovery-v2/archive/protected-snapshots/src/edgeiq-os/styles/edgeiqOsV2_STABLE_BEFORE_COMPONENT_EXTRACTION_20260709.css",
+      "expected": "exists",
+      "actual": "True",
+      "result": "PASS",
+      "detail": "Archived snapshot must exist."
+    },
+    {
+      "check_id": "C014",
+      "category": "ARCHIVE_HASH",
+      "subject": "docs/repository-recovery-v2/archive/protected-snapshots/src/edgeiq-os/styles/edgeiqOsV2_STABLE_BEFORE_COMPONENT_EXTRACTION_20260709.css",
+      "expected": "75167a6a05e376729f56b68dcda14fece41cceffdcde77969cedef4edb3b1f75",
+      "actual": "75167a6a05e376729f56b68dcda14fece41cceffdcde77969cedef4edb3b1f75",
+      "result": "PASS",
+      "detail": "Archive SHA256 must match the Unit 010 execution evidence."
+    },
+    {
+      "check_id": "C015",
+      "category": "ORIGINAL_PATH",
+      "subject": "src/edgeiq-os/race/RaceFileV3_STABLE_BEFORE_COMPONENT_EXTRACTION_20260709.tsx",
+      "expected": "absent",
+      "actual": "False",
+      "result": "PASS",
+      "detail": "Original archive candidate must no longer exist in the active source tree."
+    },
+    {
+      "check_id": "C016",
+      "category": "ORIGINAL_PATH",
+      "subject": "src/edgeiq-os/styles/edgeiqOsV2_STABLE_BEFORE_COMPONENT_EXTRACTION_20260709.css",
+      "expected": "absent",
+      "actual": "False",
+      "result": "PASS",
+      "detail": "Original archive candidate must no longer exist in the active source tree."
+    },
+    {
+      "check_id": "C017",
+      "category": "ROLLBACK_PROTECTION",
+      "subject": "src/components/RaceIntelligenceScreen_BEFORE_DNA_EXPLAINABILITY_UI_WIRE_V1.tsx",
+      "expected": "exists",
+      "actual": "True",
+      "result": "PASS",
+      "detail": "Rollback-dependent protected snapshot must remain available."
+    },
+    {
+      "check_id": "C018",
+      "category": "ROLLBACK_PROTECTION",
+      "subject": "src/components/RaceIntelligenceScreen_BEFORE_FACTOR_JOIN_KEY_FIX.tsx",
+      "expected": "exists",
+      "actual": "True",
+      "result": "PASS",
+      "detail": "Rollback-dependent protected snapshot must remain available."
+    },
+    {
+      "check_id": "C019",
+      "category": "ROLLBACK_PROTECTION",
+      "subject": "src/components/RaceIntelligenceScreen_BEFORE_FACTOR_SCORECARD_V2_PY_PATCH.tsx",
+      "expected": "exists",
+      "actual": "True",
+      "result": "PASS",
+      "detail": "Rollback-dependent protected snapshot must remain available."
+    },
+    {
+      "check_id": "C020",
+      "category": "REFERENCE_REDIRECT",
+      "subject": "scripts/fix_edgeiq_product_polish_encoding_v1.py",
+      "expected": "active=1; obsolete=0",
+      "actual": "active=1; obsolete=0",
+      "result": "PASS",
+      "detail": "Script must reference the active RaceFileV3 source exactly once and the archived snapshot zero times."
+    },
+    {
+      "check_id": "C021",
+      "category": "REFERENCE_REDIRECT",
+      "subject": "scripts/fix_edgeiq_product_polish_trademark_glyphs_v1.py",
+      "expected": "active=1; obsolete=0",
+      "actual": "active=1; obsolete=0",
+      "result": "PASS",
+      "detail": "Script must reference the active RaceFileV3 source exactly once and the archived snapshot zero times."
+    },
+    {
+      "check_id": "C022",
+      "category": "PRODUCTION_BUILD",
+      "subject": "npm run build",
+      "expected": "return_code=0",
+      "actual": "return_code=0",
+      "result": "PASS",
+      "detail": "Fresh production build must pass."
+    }
+  ],
+  "build_output_tail": "\n> racing-dashboard@0.0.0 build\n> tsc -b && vite build\n\n\u001b[36mvite v7.3.2 \u001b[32mbuilding client environment for production...\u001b[36m\u001b[39m\ntransforming...\n\u001b[32mâœ“\u001b[39m 1946 modules transformed.\nrendering chunks...\ncomputing gzip size...\n\u001b[2mdist/\u001b[22m\u001b[32mindex.html                 \u001b[39m\u001b[1m\u001b[2m    0.55 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m â”‚ gzip:   0.34 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[35massets/index-h5lcVjlI.css  \u001b[39m\u001b[1m\u001b[2m1,155.65 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m â”‚ gzip: 158.15 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[36massets/index-BDM1eneJ.js   \u001b[39m\u001b[1m\u001b[33m2,365.05 kB\u001b[39m\u001b[22m\u001b[2m â”‚ gzip: 369.22 kB\u001b[22m\n\u001b[32mâœ“ built in 3m 15s\u001b[39m\n\n\u001b[33m\n(!) Some chunks are larger than 500 kB after minification. Consider:\n- Using dynamic import() to code-split the application\n- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks\n- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.\u001b[39m\n"
+}

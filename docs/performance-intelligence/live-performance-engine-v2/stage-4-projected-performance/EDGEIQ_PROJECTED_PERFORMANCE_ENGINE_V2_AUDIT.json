@@ -1,0 +1,18 @@
+{
+  "status": "EDGEIQ_PROJECTED_PERFORMANCE_ENGINE_V2_AUDIT_PASS",
+  "rows": 204,
+  "status_counts": {
+    "PROJECTED_PERFORMANCE_NOT_APPLICABLE": 6,
+    "PROJECTED_PERFORMANCE_UNAVAILABLE": 198
+  },
+  "checks": {
+    "one_row_per_context": true,
+    "no_projection_without_rating": true,
+    "no_projection_without_suitability": true,
+    "available_formula_exact": true,
+    "evidence_complete": true,
+    "deterministic_rerun": true
+  },
+  "candidate_sha256": "f8ade4e08b50445f534dc61cf30420719bbe373e4fb4b7c8cff8927661772524",
+  "production_sha256": "f8ade4e08b50445f534dc61cf30420719bbe373e4fb4b7c8cff8927661772524"
+}

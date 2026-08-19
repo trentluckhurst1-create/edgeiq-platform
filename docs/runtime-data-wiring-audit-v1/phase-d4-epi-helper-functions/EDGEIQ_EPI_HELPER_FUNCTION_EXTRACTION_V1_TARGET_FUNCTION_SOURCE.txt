@@ -1,0 +1,153 @@
+====================================================================================================
+FUNCTION: current_epi_value FILE: scripts/build_edgeiq_epi_workspace_terminal_feed_v1.py LINES: 434-435
+====================================================================================================
+434: def current_epi_value(runner: dict[str, Any]) -> float | None:
+435:     return metric_float(runner.get("epi") or runner.get("rating"))
+
+RETURN STATEMENTS:
+435: return metric_float(runner.get("epi") or runner.get("rating"))
+
+GET LOOKUP KEYS:
+epi | rating
+
+SUBSCRIPT KEYS:
+(str, Any)
+
+====================================================================================================
+FUNCTION: historical_epi_for_run FILE: scripts/build_edgeiq_epi_workspace_terminal_feed_v1.py LINES: 455-513
+====================================================================================================
+455: def historical_epi_for_run(
+456:     runner: dict[str, Any],
+457:     run: dict[str, Any],
+458:     historical: dict[tuple[str, str, str, str], dict[str, Any]],
+459: ) -> tuple[float | None, str, str]:
+460:     direct = metric_float(run.get("historicalEpi"))
+461: 
+462:     if direct is not None:
+463:         value = (
+464:             run.get("historicalEpi")
+465:             if isinstance(run.get("historicalEpi"), dict)
+466:             else {}
+467:         )
+468:         return (
+469:             direct,
+470:             clean(value.get("source"))
+471:             or "edgeiq_form_guide_enriched_v2.json:historicalEpi",
+472:             clean(value.get("version") or value.get("asAt")),
+473:         )
+474: 
+475:     key = (
+476:         runner_match_key(runner.get("runnerName")),
+477:         clean(run.get("date")),
+478:         canonical_track(run.get("track")),
+479:         number_text(run.get("distance")),
+480:     )
+481: 
+482:     result = historical.get(key)
+483: 
+484:     if not result:
+485:         return None, "", ""
+486: 
+487:     if result.get("status") not in {
+488:         "UNIQUE",
+489:         "SAME_RATING_MULTIPLE_ROWS",
+490:     }:
+491:         return None, "", ""
+492: 
+493:     rating = metric_float(result.get("rating"))
+494: 
+495:     if rating is None:
+496:         return None, "", ""
+497: 
+498:     status = clean(result.get("status"))
+499:     source_suffix = (
+500:         ":same_rating_duplicates_collapsed"
+501:         if status == "SAME_RATING_MULTIPLE_ROWS"
+502:         else ""
+503:     )
+504: 
+505:     return (
+506:         rating,
+507:         (
+508:             "edgeiq_historical_performance_rating_v6_1_research.csv:"
+509:             "performance_rating_v6_1_research"
+510:             f"{source_suffix}"
+511:         ),
+512:         clean(result.get("built_at")),
+513:     )
+
+RETURN STATEMENTS:
+505: return (
+        rating,
+        (
+            "edgeiq_historical_performance_rating_v6_1_research.csv:"
+            "performance_rating_v6_1_research"
+            f"{source_suffix}"
+        ),
+        clean(result.get("built_at")),
+    )
+468: return (
+            direct,
+            clean(value.get("source"))
+            or "edgeiq_form_guide_enriched_v2.json:historicalEpi",
+            clean(value.get("version") or value.get("asAt")),
+        )
+485: return None, "", ""
+491: return None, "", ""
+496: return None, "", ""
+
+GET LOOKUP KEYS:
+asAt | built_at | date | distance | historicalEpi | rating | runnerName | source | status | track | version
+
+SUBSCRIPT KEYS:
+(float | None, str, str) | (str, Any) | (str, str, str, str) | (tuple[str, str, str, str], dict[str, Any])
+
+====================================================================================================
+FUNCTION: metric FILE: scripts/build_edgeiq_epi_workspace_terminal_feed_v1.py LINES: 203-212
+====================================================================================================
+203: def metric(value: Any, places: int = 1) -> str:
+204:     if isinstance(value, dict):
+205:         value = value.get("value")
+206:     text = clean(value)
+207:     if not text:
+208:         return ""
+209:     try:
+210:         return f"{float(text):.{places}f}"
+211:     except ValueError:
+212:         return text
+
+RETURN STATEMENTS:
+208: return ""
+210: return f"{float(text):.{places}f}"
+212: return text
+
+GET LOOKUP KEYS:
+value
+
+SUBSCRIPT KEYS:
+
+
+====================================================================================================
+FUNCTION: metric_float FILE: scripts/build_edgeiq_epi_workspace_terminal_feed_v1.py LINES: 215-224
+====================================================================================================
+215: def metric_float(value: Any) -> float | None:
+216:     if isinstance(value, dict):
+217:         value = value.get("value")
+218:     text = clean(value)
+219:     if not text:
+220:         return None
+221:     try:
+222:         return float(text)
+223:     except ValueError:
+224:         return None
+
+RETURN STATEMENTS:
+220: return None
+222: return float(text)
+224: return None
+
+GET LOOKUP KEYS:
+value
+
+SUBSCRIPT KEYS:
+

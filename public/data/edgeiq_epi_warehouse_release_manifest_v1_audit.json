@@ -1,0 +1,184 @@
+{
+  "audit_name": "edgeiq_epi_warehouse_release_manifest_v1",
+  "audit_version": "1.0.0",
+  "audited_at_utc": "2026-07-28T21:04:16Z",
+  "checks": {
+    "artifact_fields_exact": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "artifact_hashes_and_sizes_valid": {
+      "detail": [
+        "edgeiq_race_entry_epi_fact_v1:audit:sha256",
+        "edgeiq_race_epi_distribution_fact_v1:audit:sha256",
+        "edgeiq_race_entry_epi_relative_context_fact_v1:audit:sha256",
+        "edgeiq_race_entry_epi_ordering_fact_v1:audit:sha256",
+        "edgeiq_race_epi_ordering_summary_fact_v1:audit:sha256",
+        "edgeiq_race_entry_epi_publication_snapshot_fact_v1:audit:sha256",
+        "edgeiq_race_epi_publication_snapshot_fact_v1:audit:sha256"
+      ],
+      "status": "FAIL"
+    },
+    "fact_profiles_match": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "governed_artifacts_tracked_and_clean": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "layer_evidence_valid": {
+      "detail": [
+        "edgeiq_race_entry_epi_fact_v1",
+        "edgeiq_race_epi_distribution_fact_v1",
+        "edgeiq_race_entry_epi_relative_context_fact_v1",
+        "edgeiq_race_entry_epi_ordering_fact_v1",
+        "edgeiq_race_epi_ordering_summary_fact_v1",
+        "edgeiq_race_entry_epi_publication_snapshot_fact_v1",
+        "edgeiq_race_epi_publication_snapshot_fact_v1"
+      ],
+      "status": "FAIL"
+    },
+    "layer_fields_exact": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "release_evidence_deterministic": {
+      "detail": {
+        "actual": "75311d47eb5f75e4836b928e78d508f796f57334f485b287c250b807bf3937c5",
+        "expected": "f5aec0271ceb4d696e99021fe21d0de6a89a1abaa2b131c0285793515fd30191"
+      },
+      "status": "FAIL"
+    },
+    "release_governance_exact": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "release_identity_deterministic": {
+      "detail": {
+        "actual": "EPIWH1-0D4762902AF588313D8FBAD4A6D94403",
+        "expected": "EPIWH1-0D4762902AF588313D8FBAD4A6D94403"
+      },
+      "status": "PASS"
+    },
+    "release_summary_counts_valid": {
+      "detail": {
+        "artifact_count": 42,
+        "builder_version": "edgeiq_epi_warehouse_release_manifest_v1.0.0",
+        "clean_artifact_count": 42,
+        "governed_layer_count": 7,
+        "passed_audit_count": 7,
+        "source_fact_total_row_count": 0,
+        "tracked_artifact_count": 42
+      },
+      "status": "PASS"
+    },
+    "required_files_exist": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "required_layer_count": {
+      "detail": 7,
+      "status": "PASS"
+    },
+    "source_audits_pass_and_match": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "source_contracts_match": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "source_git_commit_exists": {
+      "detail": "06c8124f860e7221a248ff975467dca03ef2cce1",
+      "status": "PASS"
+    },
+    "terminal_natural_keys_reverified": {
+      "detail": {
+        "race_rows": 0,
+        "runner_race_keys": 0,
+        "runner_rows": 0,
+        "unique_race_keys": 0,
+        "unique_runner_ids": 0
+      },
+      "status": "PASS"
+    },
+    "terminal_publication_populations_non_empty": {
+      "detail": {
+        "race_rows": 0,
+        "runner_race_keys": 0,
+        "runner_rows": 0
+      },
+      "status": "FAIL"
+    },
+    "terminal_reconciliation_flags_pass": {
+      "detail": {
+        "every_race_snapshot_has_runner_population": true,
+        "every_runner_race_has_race_snapshot": true,
+        "race_natural_keys_unique": true,
+        "race_population_reconciled": true,
+        "runner_natural_keys_unique": true,
+        "runner_population_reconciled": true
+      },
+      "status": "PASS"
+    },
+    "top_level_fields_exact": {
+      "detail": {
+        "actual": [
+          "epi_warehouse_release_evidence_sha256",
+          "epi_warehouse_release_id",
+          "governed_layers",
+          "manifest_contract_version",
+          "reconciliation_decision",
+          "release_created_at_utc",
+          "release_decision",
+          "release_status",
+          "release_summary",
+          "source_git",
+          "terminal_reconciliation",
+          "warehouse_name",
+          "warehouse_version"
+        ],
+        "expected": [
+          "epi_warehouse_release_id",
+          "warehouse_name",
+          "warehouse_version",
+          "manifest_contract_version",
+          "release_created_at_utc",
+          "source_git",
+          "governed_layers",
+          "terminal_reconciliation",
+          "release_summary",
+          "release_decision",
+          "reconciliation_decision",
+          "release_status",
+          "epi_warehouse_release_evidence_sha256"
+        ]
+      },
+      "status": "PASS"
+    }
+  },
+  "counts": {
+    "artifact_count": 42,
+    "governed_layer_count": 7,
+    "passed_audit_count": 7,
+    "race_publication_snapshot_rows": 0,
+    "runner_publication_race_count": 0,
+    "runner_publication_snapshot_rows": 0
+  },
+  "failed_checks": [
+    "artifact_hashes_and_sizes_valid",
+    "layer_evidence_valid",
+    "terminal_publication_populations_non_empty",
+    "release_evidence_deterministic"
+  ],
+  "release": {
+    "epi_warehouse_release_id": "EPIWH1-0D4762902AF588313D8FBAD4A6D94403",
+    "release_decision": "EPI_WAREHOUSE_V1_RELEASED",
+    "release_status": "GOVERNED_EPI_WAREHOUSE_RELEASE",
+    "source_git_head": "06c8124f860e7221a248ff975467dca03ef2cce1",
+    "warehouse_name": "EDGEIQ_CANONICAL_EPI_WAREHOUSE",
+    "warehouse_version": "1.0.0"
+  },
+  "status": "FAIL"
+}

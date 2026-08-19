@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "program": "EDGEIQ Repository Recovery V2",
+  "recovery_unit": "RRV2 Unit 007 - Governed Snapshot Archive Execution",
+  "verdict": "PASS",
+  "archive_decision": "EXECUTED_AND_VALIDATED",
+  "archived_file_count": 72,
+  "protected_snapshot_count": 5,
+  "manifest_rows_completed": 72,
+  "repository_items_complete": 72,
+  "repository_items_pending": 3200,
+  "repository_recovery_completion_percent": 2.2,
+  "validation_results": [
+    {
+      "name": "typescript_no_emit",
+      "command": [
+        "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\node_modules\\.bin\\tsc.cmd",
+        "--noEmit"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "duration_seconds": 7.4,
+      "log_path": "docs/repository-recovery-v2/governed-snapshot-archive-v1-logs/typescript_no_emit.log"
+    },
+    {
+      "name": "build",
+      "command": [
+        "npm.cmd",
+        "run",
+        "build"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "duration_seconds": 201.381,
+      "log_path": "docs/repository-recovery-v2/governed-snapshot-archive-v1-logs/build.log"
+    }
+  ],
+  "archive_root": "docs/repository-recovery-v2/archive/snapshots-v1",
+  "duration_seconds": 209.007
+}

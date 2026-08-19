@@ -1,0 +1,88 @@
+{
+  "audit_name": "EDGEIQ Benchmark Eligibility Fact V1 Build Audit",
+  "audit_version": "1.0.0",
+  "generated_at_utc": "2026-07-22T19:25:17.048266+00:00",
+  "status": "PASS",
+  "pass_marker": "EDGEIQ_BENCHMARK_ELIGIBILITY_FACT_V1_AUDIT_PASS",
+  "eligibility_rule_version": "EDGEIQ_BENCHMARK_ELIGIBILITY_RULES_V1",
+  "minimum_runner_count": 2,
+  "input_file": {
+    "path": "public/data/edgeiq_benchmark_observation_fact_v1.csv",
+    "sha256": "e88b7c7f6fd6496804d4f912df0d66c1d57eaf8b16a536ced4c7aa3bbd988efc",
+    "bytes": 18904
+  },
+  "input_audit_file": {
+    "path": "public/data/edgeiq_benchmark_observation_fact_v1_audit.json",
+    "sha256": "be1798b003c6437b8aa017bb2cf6692293a4e325bf0748896a2f15cab3088de1",
+    "bytes": 6073
+  },
+  "output_file": {
+    "path": "public/data/edgeiq_benchmark_eligibility_fact_v1.csv",
+    "sha256": "79017ae2082e834deb677b2e7cde0ecc42f45184f89ceb8684446ab4eeb26373",
+    "bytes": 14410
+  },
+  "counts": {
+    "source_observations": 39,
+    "eligibility_rows": 39,
+    "standard_time_eligible": 24,
+    "sectional_reference_only": 15,
+    "ineligible": 0
+  },
+  "benchmark_use_class_counts": {
+    "SECTIONAL_REFERENCE_ONLY": 15,
+    "STANDARD_TIME_ELIGIBLE": 24
+  },
+  "eligibility_reason_counts": {
+    "ELIGIBLE_FULL_RACE_EVIDENCE": 24,
+    "PARTIAL_WINDOW_SECTIONAL_EVIDENCE_ONLY": 15
+  },
+  "governance_checks": {
+    "source_audit_passed": true,
+    "one_output_per_source_observation": true,
+    "unique_eligibility_ids": true,
+    "unique_observation_ids": true,
+    "no_silent_observation_loss": true,
+    "partial_never_standard_time_eligible": true,
+    "full_race_required_for_standard_time": true,
+    "ineligible_rows_have_reasons": true,
+    "eligible_rows_have_zero_failed_rules": true,
+    "no_benchmark_calculation_fields": true,
+    "deterministic_ordering": true
+  },
+  "failed_checks": [],
+  "source_headers": [
+    "benchmark_observation_id",
+    "race_key",
+    "race_date",
+    "track_name",
+    "course_name",
+    "race_number",
+    "official_distance_metres",
+    "surface",
+    "track_condition",
+    "rail_position",
+    "race_class",
+    "runner_count",
+    "race_split_coverage_type",
+    "full_race_coverage_runner_count",
+    "partial_timing_window_runner_count",
+    "unresolved_coverage_runner_count",
+    "winner_runner_key",
+    "winner_horse_name",
+    "winner_race_time_seconds",
+    "winner_last_600_seconds",
+    "winner_last_400_seconds",
+    "winner_last_200_seconds",
+    "winner_split_window_start_marker_metres",
+    "winner_split_window_distance_metres",
+    "winner_split_window_seconds",
+    "winner_opening_untimed_distance_metres",
+    "source_provider",
+    "source_canonical_version",
+    "source_semantic_version",
+    "observation_status",
+    "evidence_complete",
+    "race_source_row_sha256",
+    "winner_source_row_sha256"
+  ]
+}

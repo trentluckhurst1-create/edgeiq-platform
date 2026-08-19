@@ -1,0 +1,72 @@
+{
+  "quality_state_version": "0.1",
+  "generated_utc": "2026-07-15T18:11:47.780492+00:00",
+  "states": [
+    {
+      "state": "COMPLETE",
+      "meaning": "Required evidence is complete and internally consistent.",
+      "usable_for_benchmarks": true,
+      "usable_for_performance": true
+    },
+    {
+      "state": "PARTIAL",
+      "meaning": "Some evidence exists but one or more expected fields are absent.",
+      "usable_for_benchmarks": false,
+      "usable_for_performance": "ENGINE_SPECIFIC"
+    },
+    {
+      "state": "TIMING_INCONSISTENCY",
+      "meaning": "Timing evidence is internally inconsistent.",
+      "usable_for_benchmarks": false,
+      "usable_for_performance": false
+    },
+    {
+      "state": "BENCHMARK_UNAVAILABLE",
+      "meaning": "Valid performance evidence exists but no governed benchmark is available.",
+      "usable_for_benchmarks": false,
+      "usable_for_performance": false
+    },
+    {
+      "state": "SECTIONAL_MISMATCH",
+      "meaning": "Sectional evidence does not reconcile with race or runner evidence.",
+      "usable_for_benchmarks": false,
+      "usable_for_performance": false
+    },
+    {
+      "state": "SOURCE_CONFLICT",
+      "meaning": "Authoritative sources disagree.",
+      "usable_for_benchmarks": false,
+      "usable_for_performance": false
+    },
+    {
+      "state": "IDENTITY_UNRESOLVED",
+      "meaning": "Race or horse identity cannot be safely resolved.",
+      "usable_for_benchmarks": false,
+      "usable_for_performance": false
+    },
+    {
+      "state": "INSUFFICIENT_EVIDENCE",
+      "meaning": "Evidence does not satisfy minimum engine requirements.",
+      "usable_for_benchmarks": false,
+      "usable_for_performance": false
+    },
+    {
+      "state": "EXCLUDED",
+      "meaning": "Explicitly excluded by a governed rule.",
+      "usable_for_benchmarks": false,
+      "usable_for_performance": false
+    },
+    {
+      "state": "SUPERSEDED",
+      "meaning": "Replaced by a later immutable evidence version.",
+      "usable_for_benchmarks": false,
+      "usable_for_performance": false
+    },
+    {
+      "state": "PENDING_VALIDATION",
+      "meaning": "Ingested but not yet validated.",
+      "usable_for_benchmarks": false,
+      "usable_for_performance": false
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "audit_name": "edgeiq_context_parameter_registry_v1",
+  "audited_at_utc": "2026-07-30T00:04:06Z",
+  "builder_version": "edgeiq_context_parameter_registry_v1.0.0_header_only_governed_unavailable",
+  "checks": {
+    "contract_header_published": {
+      "detail": [
+        "context_parameter_id",
+        "race_distance_m",
+        "race_class_code",
+        "track_id",
+        "track_configuration",
+        "track_condition",
+        "racing_surface",
+        "barrier_band",
+        "weight_band",
+        "field_size_band",
+        "distance_adjustment",
+        "class_adjustment",
+        "track_adjustment",
+        "track_configuration_adjustment",
+        "track_condition_adjustment",
+        "surface_adjustment",
+        "barrier_adjustment",
+        "weight_adjustment",
+        "field_size_adjustment",
+        "parameter_status",
+        "context_parameter_evidence_sha256",
+        "builder_version",
+        "contract_version",
+        "built_at_utc"
+      ],
+      "status": "PASS"
+    },
+    "no_default_parameters": {
+      "detail": true,
+      "status": "PASS"
+    },
+    "no_empirical_coefficients_available": {
+      "detail": true,
+      "status": "PASS"
+    },
+    "no_fabricated_adjustments": {
+      "detail": true,
+      "status": "PASS"
+    },
+    "registry_file_published": {
+      "detail": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_context_parameter_registry_v1.csv",
+      "status": "PASS"
+    }
+  },
+  "contract_version": "1.0.0",
+  "counts": {
+    "governed_parameter_rows": 0,
+    "registry_rows": 0
+  },
+  "evidence_sha256": "c78c3b708de0edf3afbcfcada4c9854bc5c402d2ced23526717057d9bca9a4f3",
+  "status": "BLOCKED_CONTEXT_PARAMETER_REGISTRY_UNAVAILABLE"
+}

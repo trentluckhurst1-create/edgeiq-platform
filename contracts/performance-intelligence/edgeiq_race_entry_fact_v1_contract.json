@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "edgeiq_race_entry_fact_v1_contract",
+  "grain": "one row per canonical target race and canonical runner",
+  "output": "public/data/edgeiq_race_entry_fact_v1.csv",
+  "requiredFields": [
+    "canonical_race_id",
+    "canonical_runner_id",
+    "race_date",
+    "meeting_date",
+    "canonical_track",
+    "course_identity",
+    "state",
+    "country",
+    "race_number",
+    "race_name",
+    "race_distance_metres",
+    "surface_group",
+    "track_condition_number",
+    "scheduled_start_time",
+    "saddlecloth_number",
+    "runner_name",
+    "barrier",
+    "weight_kg",
+    "jockey_name",
+    "trainer_name",
+    "declaration_status",
+    "scratching_status",
+    "source_updated_at",
+    "source_system",
+    "source_record_id",
+    "source_hash",
+    "audit_status"
+  ],
+  "allowedRowStatuses": [
+    "ACTIVE_ENTRY",
+    "SCRATCHED_ENTRY",
+    "EMERGENCY_ENTRY",
+    "BALLOTED_OUT",
+    "UNKNOWN_DECLARATION_STATUS"
+  ],
+  "sourceRules": [
+    "target race date must be current or future",
+    "race must be genuinely scheduled and race-level status must pass final-field governance for promotion",
+    "results-only rows cannot create target entries",
+    "source_record_id and source_hash preserve provenance",
+    "scratchings are retained with scratching_status=SCRATCHED"
+  ],
+  "nonGoals": [
+    "pricing",
+    "probability",
+    "V6.1",
+    "V7.2G2",
+    "frontend calculation"
+  ]
+}

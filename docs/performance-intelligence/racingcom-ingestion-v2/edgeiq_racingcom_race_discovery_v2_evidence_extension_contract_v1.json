@@ -1,0 +1,99 @@
+{
+  "built_utc": "2026-07-22T18:07:59+00:00",
+  "status": "RACINGCOM_RACE_DISCOVERY_V2_EVIDENCE_EXTENSION_CONTRACT_DEFINED",
+  "canonical_identity": [
+    "race_date",
+    "track_key",
+    "race_no_numeric"
+  ],
+  "required_fields": [
+    "race_id",
+    "meeting_id",
+    "race_date",
+    "track",
+    "track_key",
+    "state",
+    "meet_code",
+    "race_no",
+    "race_no_numeric",
+    "race_url",
+    "speed_data_url",
+    "discovery_method",
+    "evidence_strength",
+    "source_url",
+    "source_artifact",
+    "source_record_id",
+    "source_request_id",
+    "source_response_id",
+    "source_payload_path",
+    "source_sha256",
+    "observed_in_source",
+    "race_status",
+    "completed_status",
+    "is_future",
+    "has_speed_data",
+    "speed_data_status",
+    "provenance",
+    "discovered_utc",
+    "pipeline_version"
+  ],
+  "supported_discovery_methods": [
+    {
+      "discovery_method": "VALIDATED_GRAPHQL_RACE_PAYLOAD",
+      "precedence": 1,
+      "description": "Validated getRaceForm GraphQL payload with runner and sectional populations.",
+      "race_existence": "YES",
+      "speed_eligibility": "YES_WHEN_SECTIONAL_POPULATION_PRESENT"
+    },
+    {
+      "discovery_method": "OBSERVED_GRAPHQL_REQUEST",
+      "precedence": 2,
+      "description": "Captured Racing.com GraphQL getRaceForm request tied to an observed race page.",
+      "race_existence": "YES",
+      "speed_eligibility": "NO_UNLESS_VALIDATED_SPEED_PAYLOAD_EXISTS"
+    },
+    {
+      "discovery_method": "OBSERVED_SPEED_DATA_PAGE",
+      "precedence": 3,
+      "description": "Browser-observed Racing.com speed-data page for a completed race.",
+      "race_existence": "YES",
+      "speed_eligibility": "NO_UNLESS_VALIDATED_SPEED_PAYLOAD_EXISTS"
+    },
+    {
+      "discovery_method": "OBSERVED_RACE_PAGE",
+      "precedence": 4,
+      "description": "Browser-observed completed Racing.com race page.",
+      "race_existence": "YES",
+      "speed_eligibility": "NO"
+    },
+    {
+      "discovery_method": "HISTORICAL_SUCCESS_RACE",
+      "precedence": 5,
+      "description": "Previously fetched and parsed historical source race.",
+      "race_existence": "YES",
+      "speed_eligibility": "YES_WHEN_HISTORICAL_SOURCE_IS_SPEED_DATA"
+    },
+    {
+      "discovery_method": "OBSERVED_STRUCTURED_RACE",
+      "precedence": 6,
+      "description": "Race observed in a retained structured source without generated race-number expansion.",
+      "race_existence": "YES",
+      "speed_eligibility": "NO_UNLESS_SUPPORTED_BY_SPEED_SOURCE"
+    }
+  ],
+  "dedup_precedence": [
+    "VALIDATED_GRAPHQL_RACE_WITH_SPEED",
+    "VALIDATED_GRAPHQL_RACE_NO_SPEED",
+    "HISTORICAL_SUCCESS_RACE",
+    "OBSERVED_STRUCTURED_RACE",
+    "OBSERVED_RACE_PAGE"
+  ],
+  "governance": {
+    "race_existence_is_separate_from_speed_data_eligibility": true,
+    "manual_fixture_status_allowed": false,
+    "synthetic_race_number_expansion_allowed": false,
+    "graphql_admission_semantics_unchanged": true
+  },
+  "production_changed": "NO",
+  "ui_changed": "NO"
+}

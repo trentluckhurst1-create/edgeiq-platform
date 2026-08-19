@@ -1,0 +1,5 @@
+{
+  "audit_status": "PASS",
+  "last_known_good_directory": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\operations-readiness\\operations\\last-known-good",
+  "recovery_command": "python -u .\\scripts\\run_edgeiq_daily_product_refresh_v1.py --audit-only"
+}

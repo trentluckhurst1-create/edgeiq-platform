@@ -1,0 +1,35 @@
+{
+  "url": "http://127.0.0.1:4174",
+  "loaded": true,
+  "body_text_sample": "EDGEiQ\nRACE INTELLIGENCE\nHOME\nMEETINGS\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nEPI\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nRESULTS\nLAB\nCOMPARE\nREVIEW\nSETTINGS\nEDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM\nInformation is not Intelligence. Evidence leads. Precision decides.\nSUN, 26 JULY 2026\n12:23 pm\nAEDT\nMEETINGS\n\nThree day racing outlook. Select a meeting to view races and details.\n\nDATE RANGE (BUILDER CONTROLLED)\nTODAY\nSun, 26 July\nTOMORROW\nMon, 27 July\nDAY +2\nTue, 28 July\nMEETINGS (SUNDAY 26 JULY 2026)\nFILTERS\nOPEN MEETING\nSELECT\tMEETING\tSTATE\tRAIL\tTRACK\tWEATHER\tRACES\tDECLARED\tSCRATCHINGS\nSelected\tSale\tVIC\tNot supplied\tSet Weights. Three-Years-Old and Upwards, No sex restriction. Maiden. Apprentices can claim. Track name: Main. Track type: Turf. Field limit: 14. This race carries VOBIS Silver Bonuses of $12,000 for qualified horses. Soft\tWeather unavailable\t8\t108\t28\nShowing 1 to 1 of 1 meetings\nCurrent\nCompleted\nAbandoned\nPostponed\nRACE START TIMES (ALL MEETINGS)\n11AM\n12PM\n1PM\n2PM\n3PM\n4PM\n5PM\n6PM\nSale (8)\nR1\nR2\nR3\nR4\nR5\nR6\nR7\nEDGEiQ Racing Intelligence Operating System\nBuild: 1.0.0\nData as at: 12:23 pm AEDT",
+  "console_messages": [
+    {
+      "type": "warning",
+      "text": "Clerk disabled: missing VITE_CLERK_PUBLISHABLE_KEY"
+    },
+    {
+      "type": "info",
+      "text": "EDGEiQ daily pipeline status READY 2026-07-20 [2026-07-20, 2026-07-21, 2026-07-22]"
+    }
+  ],
+  "page_errors": [],
+  "data_responses": [
+    {
+      "url": "http://127.0.0.1:4174/",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4174/data/edgeiq_three_day_window_v1.json?updated=1785032586664",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4174/data/edgeiq_daily_pipeline_status_v1.json?updated=1785032586667",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4174/data/edgeiq_three_day_product_catalog_v1.json?updated=1785032586666",
+      "status": 200
+    }
+  ],
+  "screenshot": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\operations-readiness\\data-population\\browser\\edgeiq_product_population_smoke_home.png"
+}

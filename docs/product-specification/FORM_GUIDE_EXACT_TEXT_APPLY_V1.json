@@ -1,0 +1,51 @@
+{
+  "status": "FORM_GUIDE_EXACT_TEXT_APPLIED",
+  "required_label_checks": [
+    {
+      "label": "FORM GUIDE",
+      "present": true
+    },
+    {
+      "label": "Ratings View",
+      "present": true
+    },
+    {
+      "label": "CUSTOMISE COLUMNS",
+      "present": true
+    },
+    {
+      "label": "EXPORT",
+      "present": true
+    },
+    {
+      "label": "TODAY'S MATCH",
+      "present": true
+    },
+    {
+      "label": "HORSE PROFILE (CAREER)",
+      "present": true
+    },
+    {
+      "label": "TODAY'S MATCH INSIGHTS",
+      "present": true
+    },
+    {
+      "label": "RECENT FORM",
+      "present": true
+    },
+    {
+      "label": "EPI",
+      "present": true
+    },
+    {
+      "label": "EDGEiQ PRICE",
+      "present": true
+    },
+    {
+      "label": "MARKET",
+      "present": true
+    }
+  ],
+  "text_spec_rows": 15,
+  "timestamp": "2026-07-20T13:39:24.988655"
+}

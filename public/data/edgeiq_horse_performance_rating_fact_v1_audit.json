@@ -1,0 +1,108 @@
+{
+  "audit_name": "edgeiq_horse_performance_rating_fact_v1",
+  "audit_version": "1.0.0",
+  "audited_at_utc": "2026-07-30T07:47:10Z",
+  "checks": {
+    "canonical_aggregate_lineage": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "contract_fields_exact": {
+      "detail": {
+        "actual": [
+          "horse_performance_rating_id",
+          "horse_performance_aggregate_id",
+          "canonical_horse_id",
+          "canonical_horse_name",
+          "rating_as_of_date",
+          "horse_performance_aggregation_parameter_id",
+          "aggregation_method",
+          "included_observation_count",
+          "aggregate_rating_value",
+          "horse_performance_rating_value",
+          "horse_performance_rating_method",
+          "horse_performance_rating_status",
+          "aggregation_model_version",
+          "source_horse_performance_aggregate_evidence_sha256",
+          "horse_performance_rating_evidence_sha256",
+          "source_builder_version",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ],
+        "expected": [
+          "horse_performance_rating_id",
+          "horse_performance_aggregate_id",
+          "canonical_horse_id",
+          "canonical_horse_name",
+          "rating_as_of_date",
+          "horse_performance_aggregation_parameter_id",
+          "aggregation_method",
+          "included_observation_count",
+          "aggregate_rating_value",
+          "horse_performance_rating_value",
+          "horse_performance_rating_method",
+          "horse_performance_rating_status",
+          "aggregation_model_version",
+          "source_horse_performance_aggregate_evidence_sha256",
+          "horse_performance_rating_evidence_sha256",
+          "source_builder_version",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ]
+      },
+      "status": "PASS"
+    },
+    "current_population_expected": {
+      "detail": {
+        "horse_performance_aggregate_rows": 0,
+        "horse_performance_rating_rows": 0
+      },
+      "status": "PASS"
+    },
+    "deterministic_identity_and_evidence": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "horse_rating_governance": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "no_forbidden_fields": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "one_rating_per_aggregate": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "rating_value_exact": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "required_files_exist": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "source_population_exact": {
+      "detail": {
+        "fact_rows": 0,
+        "missing": [],
+        "source_rows": 0,
+        "unexpected": []
+      },
+      "status": "PASS"
+    },
+    "unique_horse_performance_rating_ids": {
+      "detail": [],
+      "status": "PASS"
+    }
+  },
+  "counts": {
+    "horse_performance_aggregate_rows": 0,
+    "horse_performance_rating_rows": 0
+  },
+  "failed_checks": [],
+  "status": "PASS"
+}

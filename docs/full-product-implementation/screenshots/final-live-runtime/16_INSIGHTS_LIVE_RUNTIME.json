@@ -1,0 +1,23 @@
+{
+  "workspace": "16_INSIGHTS",
+  "label": "INSIGHTS",
+  "captureErrors": [],
+  "mounted": [
+    {
+      "component": "InsightsWorkspace",
+      "key": "INSIGHTS",
+      "tag": "SECTION",
+      "className": "eiq-race-workspace eiq-race-workspace--insights"
+    }
+  ],
+  "mountedComponent": "InsightsWorkspace",
+  "mountedKey": "INSIGHTS",
+  "selectedMeeting": "2026-07-17|WANGARATTA",
+  "selectedRace": null,
+  "activeSection": "insights",
+  "viewLevel": "race",
+  "runnerCount": 24,
+  "dataAvailability": "PARTIAL_OR_PENDING",
+  "bodySample": "EDGEiQ\nRACE INTELLIGENCE\nHOME\nMEETINGS\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nEPI\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nRESULTS\nLAB\nCOMPARE\nREVIEW\nSETTINGS\nEDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM\nInformation is not Intelligence. Evidence leads. Precision decides.\nSUN, 19 JULY 2026\n06:50 pm\nAEDT\nMEETINGS\nWANGARATTA\nRACE 1\nINSIGHTS\nRace 1\nCurrent Race\nBack to Races\nLOCATION\nWangaratta\nDATE\n2026-07-17\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nEPI\nRESULTS\nREVIEW\n\nINSIGHTS\n\nWangaratta R1\nAPPROVED INSIGHT CATEGORIES ARE STAGED; RACE-MATCHED CARDS ARE PENDING FOR THIS SELECTED RACE.\nSTABLE INTENT\nPending\nPREPARATION\nPending\nRUNNERS\n24\nSTABLE INTENT\nNot supplied\n\nGoverned feed has not supplied this category for the selected race.\n\nPREPARATION STAGE\nNot supplied\n\nGoverned feed has not supplied this category for the selected race.\n\nHEAVY SKILL\nNot supplied\n\nGoverned feed has not supplied this category for the selected race.\n\nCAMPAIGN PROFILE\nNot supplied\n\nGoverned feed has not supplied this category for the selected race.\n\nAPPROVED CATEGORIES\n\nStable Intent, Preparation Stage, Heavy Skill and Campaign Profile will display only when matched rows are supplied.\n\nRUNNER INSIGHTS\nNo | Runner | Insight | Edge | Evidence | Status\nNO\tRUNNER\tINSIGHT\tEDGE\tEVIDENCE\tSTATUS\n1\tLIMBERING\tAwaiting governed insight\tNot supplied\tNot supplied\tAwaiting row\n2\tHUGHIE\tAwaiting governed insight\tNot supplied\tNot supplied\tAwaiting row\n3\tDETERMINATO\tAwaiting governed insight\tNot supplied\tNot supplied\tAwaiting row\n4\tKING TAGALOA\tAwaiting governed insight\tNot supplied\tNot supplied\tAwaiting row\n5\tOBON\tAwaiting governed insight\tNot supplied\tNot supplied\tAwaiting row\n6\tREEL DEADLY\tAwaiting governed insight\tNot supplied\tNot supplied\tAwaiting row\n7\tRUSSIAN FIREBIRD\tAwaiting governed insight\tNot supplied\tNot supplied\tAwaiting row\n8\tSKY DEEL\tAwaiting governed insight\tNot supplied\tNot supplied\tAwaiting row\n9\tEXPANDING POWER\tAwaiting governed insight\tNot supplied\tNot supplied\tAwaiting row\n10\tCAPITAL STORM\tAwaiting governed insight\tNot supplied\tNot supplied\tAwaiting row\n11\tFONTALICIOUS\tAwaiting governed insight\tNot supplied\tNot supplied\tAwaiting row\n12\tMERCHANTESSA\tAwaiting governed insight\tNot supplied\tNot supplied\tAwaiting row\n13\tMIRADOR\tAwaiting governed insight\tNot supplied\tNot supplied\tAwaiting row\n14\tRUBY GUILD\tAwaiting governed insight\tNot supplied\tNot supplied\tAwaiting row\n15\tTRICKY MISS\tAwaiting governed insight\tNot supplied\tNot supplied\tAwaiting row\n16\tPORTINARI\tAwaiting governed insight\tNot supplied\tNot supplied\tAwaiting row\n17\tMINELLO\tAwaiting governed insight\tNot supplied\tNot supplied\tAwaiting row\n18\tPINAMILLOY\tAwaiting governed insight\tNot supplied\tNot supplied\tAwaiting row\n19\tRES MIRA\tAwaiting governed insight\tNot supplied\tNot supplied\tAwaiting row\n20\tSTINGRAY BARB\tAwaiting governed insight\tNot supplied\tNot supplied\tAwaiting row\n21\tZAAC\tAwaiting governed insight\tNot supplied\tNot supplied\tAwaiting row\n22\tBABY BLUE\tAwaiting governed insight\tNot supplied\tNot supplied\tAwaiting row\n23\tCONTARINI\tAwaiting governed insight\tNot supplied\tNot supplied\tAwaiting row\n24\tETERNAL JOY\tAwaiting governed insight\tNot supplied\tNot supplied\tAwaiting row\nCERTIFIED EVIDENCE\n\nCertified performance evidence is not available for this race.\n\nDATA GAPS\nAPPROVED CATEGORIES\n0 / 4\nRUNNER READS\n0 / 24\nPENDING RUNNERS\n24\nOTHER GOVERNED SIGNALS\n0\nWORKSPACE STATUS\nSTATUS\nempty\nMATCHED ROWS\n0\nLOADED ROWS\n340\nEDGEiQ Racing Intelligence Operating System\nBuild: 1.0.0\nData as at: 06:50 pm AEDT",
+  "renderedPath": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-live-runtime/16_INSIGHTS_LIVE_RENDERED.png"
+}

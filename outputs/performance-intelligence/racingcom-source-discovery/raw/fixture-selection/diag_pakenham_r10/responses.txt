@@ -1,0 +1,132 @@
+200	text/html	https://www.racing.com/form/2026-07-20/southside-pakenham-synthetic/race/10/speed-data
+200	text/javascript	https://www.racing.com/form/modules/remoteEntry.js?v=4474
+200	text/javascript	https://www.racing.com/form/js/runtime.31aff3ff22255b4a10e7.bundle.js
+200	text/javascript	https://www.racing.com/form/config.js?v=4474
+200	text/javascript	https://www.racing.com/form/js/main.ec0929acf2b7c48b0722.bundle.js
+200	text/javascript	https://www.racing.com/form/js/6616.f0376113b056b9f14013.bundle.js
+200	text/javascript	https://www.racing.com/form/modules/2784.e0cf3f90a18b5e2a5499.chunk.js
+200	text/javascript	https://www.racing.com/form/modules/1711.c8f162d5ca38701266e1.chunk.js
+200	text/javascript	https://www.racing.com/form/modules/npm.lodash.dcd84380122eb9f5a4eb.chunk.js
+200	text/javascript	https://www.racing.com/form/modules/5064.9334bfcf5a9278a33e7f.chunk.js
+200	text/javascript	https://www.racing.com/form/modules/npm.react-responsive.2b74d02fc2ad7e0deec9.chunk.js
+200	text/css	https://www.racing.com/form/modules/rdc.7180.css
+200	text/javascript	https://www.racing.com/form/modules/npm.emotion.135d85f8e15be43902e6.chunk.js
+200	text/javascript	https://www.racing.com/form/js/6889.9a0bd9b6300435e54c79.bundle.js
+200	text/javascript	https://www.racing.com/form/modules/npm.reduxjs.52ea7b9479801eb5e2ab.chunk.js
+200	text/javascript	https://www.racing.com/form/modules/npm.styled-system.c0d103ee1f8f4d2ca6b1.chunk.js
+200	text/javascript	https://www.racing.com/form/modules/npm.react-redux.8f107a38d1dfd3bfa20e.chunk.js
+200	text/javascript	https://www.racing.com/form/modules/npm.redux-saga.0e74249ed78e58814756.chunk.js
+200	text/javascript	https://www.racing.com/form/modules/npm.react-dom.fb5a6d339dfd17fc682f.chunk.js
+200	text/javascript	https://www.racing.com/form/modules/npm.regenerator-runtime.75f63e8f40ac1ec5a554.chunk.js
+200	text/javascript	https://www.racing.com/form/modules/npm.redux-injectors.524da7cd41082fe9b4b6.chunk.js
+200	text/javascript	https://www.racing.com/form/modules/npm.react-ga4.16c6d6342e676be08e5c.chunk.js
+200	text/javascript	https://www.racing.com/form/modules/8717.ca4957e5ac7ba3f8d749.chunk.js
+200	text/javascript	https://www.racing.com/form/modules/7180.1e5843ae1c327a9f6881.chunk.js
+200	text/javascript	https://www.racing.com/form/modules/4725.207efa7631224971800f.chunk.js
+200	text/javascript	https://www.racing.com/form/js/9790.9e4ac6200ceec15b962b.bundle.js
+200	text/css	https://www.racing.com/form/modules/rdc.4725.css
+200	text/css	https://www.racing.com/form/3800.css
+200	text/javascript	https://www.racing.com/form/js/140.4574c93d56e6c40d5441.bundle.js
+200	text/javascript	https://www.racing.com/form/modules/1102.6c1c04758c28c9c77154.chunk.js
+200	text/javascript	https://www.racing.com/form/modules/5005.12973cc6efde798009f7.chunk.js
+200	text/javascript	https://www.racing.com/form/modules/2462.c174cb26073c0df53679.chunk.js
+200	text/javascript	https://www.racing.com/form/modules/npm.racing-assets.67066d936dba52444db0.chunk.js
+200	text/javascript	https://www.racing.com/form/modules/npm.core-js.7d86e339247cc83db95e.chunk.js
+200	text/javascript	https://www.racing.com/form/modules/npm.rdc.57d2fc43b3bc6d0fb9be.chunk.js
+200	text/javascript	https://www.racing.com/form/modules/5067.e2a6a947f16c71bcaa40.chunk.js
+200	text/javascript	https://www.racing.com/form/modules/2975.fa27f87ee1dbc8ac3484.chunk.js
+200	text/javascript	https://www.racing.com/form/modules/npm.react-modal.4354e1dfb33c6f13dd74.chunk.js
+200	text/javascript	https://www.racing.com/form/modules/4782.a618d19af9fba938a3c0.chunk.js
+200	text/javascript	https://www.racing.com/form/modules/6242.e7077cf2dead22a19bef.chunk.js
+200	text/javascript	https://www.racing.com/form/js/5440.dea55a5afe5ad27c0faf.bundle.js
+200	text/javascript	https://www.racing.com/form/js/423.7ba5a27e0f2bf5a8a264.bundle.js
+200	text/javascript	https://www.racing.com/form/js/5491.e265fa5b444414340c0f.bundle.js
+200	text/javascript	https://www.racing.com/form/js/1805.9aeee66e845d3802b8d8.bundle.js
+200	text/javascript	https://www.racing.com/form/js/6582.71033b4cdd0a245bf548.bundle.js
+200	text/javascript	https://www.racing.com/form/modules/npm.aws-amplify.6b021bf88f773f592c25.chunk.js
+200	text/javascript	https://www.racing.com/form/js/1227.d695fe0c856e9bc9ee9a.bundle.js
+200	text/javascript	https://www.racing.com/form/js/2066.afa6ed2f17ace71b3b8b.bundle.js
+200	text/javascript	https://www.racing.com/form/js/5423.ff41174d1d0c260d0d7a.bundle.js
+200	text/javascript	https://www.racing.com/form/js/587.69b4e28af64382f188aa.bundle.js
+200	text/javascript	https://www.racing.com/form/js/6034.fd7b55e1f8452935b08f.bundle.js
+200	text/javascript	https://www.racing.com/form/js/5640.983ab06a707033283c7a.bundle.js
+200	text/javascript	https://www.racing.com/form/modules/npm.axios.492c3e36c8112692b6b3.chunk.js
+200	text/javascript	https://www.racing.com/form/js/8321.d2f26a22fe6d133d9d02.bundle.js
+200	text/javascript	https://www.racing.com/form/js/6388.0b1d483680d8271acc8e.bundle.js
+200	text/javascript	https://www.racing.com/form/js/6647.70c3403af80eddc799f4.bundle.js
+200	text/javascript	https://www.racing.com/form/js/7160.430c43be50c2b8046a0e.bundle.js
+200	text/javascript	https://www.racing.com/form/js/755.07fd7bf077c9291981c7.bundle.js
+200	text/javascript	https://www.racing.com/form/js/2524.a7a6704d7033f3de8a53.bundle.js
+200	text/javascript	https://www.racing.com/form/js/4104.3bcace52a8adf1c75cb4.bundle.js
+200	text/javascript	https://www.racing.com/form/js/2175.d5dfb04037e8dd322320.bundle.js
+200	text/javascript	https://www.racing.com/form/js/4764.4176e04f082d54404933.bundle.js
+200	text/javascript	https://www.racing.com/form/js/2565.f6ca677a64463920ee4b.bundle.js
+200	text/javascript	https://www.racing.com/form/js/9502.beead1308ac894f0714d.bundle.js
+200	text/javascript	https://www.racing.com/form/js/5997.d0d7312149c6713f3b5f.bundle.js
+200	text/javascript	https://www.racing.com/form/js/5578.257fc5c38e05cca5ade4.bundle.js
+200	text/javascript	https://www.racing.com/form/js/3028.6e2c412305161573c403.bundle.js
+200	text/javascript	https://www.racing.com/form/js/1032.603ff28fa024f365ea7b.bundle.js
+200	text/javascript	https://www.racing.com/form/js/7791.ae6bc6e866ae2b6dc037.bundle.js
+200	text/javascript	https://www.racing.com/form/js/7198.dad15167bdddc8fd0064.bundle.js
+200	text/javascript	https://www.racing.com/form/js/3800.ed46fcac41cbd2d83ccf.bundle.js
+200	application/javascript	https://js-agent.newrelic.com/nr-spa-1210.min.js
+200	text/javascript	https://www.racing.com/form/modules/npm.wry.c14883bfbdc7b0add7b0.chunk.js
+200	text/javascript	https://www.racing.com/form/modules/npm.apollo.2d1018114d46ce611cf0.chunk.js
+200	text/javascript	https://www.racing.com/form/modules/npm.sitecore-jss.b6160513db3ad778b155.chunk.js
+200	text/html;charset=UTF-8	https://idp.racing.com/authorize?client_id=2xw77BDhfwH7QQNOrJeOzxbfVzUIE6vC&scope=openid+profile+email&audience=https%3A%2F%2Fprod2-rplus.au.auth0.com%2Fapi%2Fv2%2F&redirect_uri=https%3A%2F%2Fwww.racing.com%2Fplus%2Fapi%2Fauth%2Fcallback&prompt=none&response_type=code&response_mode=web_message&state=bGFnZXhZS2xwR0RXaXJER1RjMEZHX3JWWWcycDdJdGxDMDZlNkE1ZUxQRw%3D%3D&nonce=Q3VFaldYZG1BdmtMckZITEdzVUFqTDF2ZEVIUHRNYkZiS1AtdnFlMVR2Uw%3D%3D&code_challenge=kD8J11Df4WBQiNXI1rU32fTJI8E-g2yi_JmBeKbRGXs&code_challenge_method=S256&auth0Client=eyJuYW1lIjoiYXV0aDAtcmVhY3QiLCJ2ZXJzaW9uIjoiMi4yLjQifQ%3D%3D
+200	text/javascript	https://www.racing.com/form/modules/985.75a2c89c125b8ba4834c.chunk.js
+200	application/json; charset=UTF-8	https://graphql.rmdprod.racing.com/?query=query%20GetMeetingByVenueDateTrial(%20%24venueName%3A%20String%20%24date%3A%20String%20%24isTrial%3A%20Int%20%24isJumpOut%3A%20Int%20)%20%7B%20GetMeetingByVenueDateTrial(%20venueName%3A%20%24venueName%20date%3A%20%24date%20isTrial%3A%20%24isTrial%20isJumpOut%3A%20%24isJumpOut%20)%20%7B%20id%20date%20venueName%20venueCode%20meetUrl%20isTrial%20isJumpOut%20%7D%20%7D&variables=%7B%22venueName%22%3A%22southside-pakenham-synthetic%22%2C%22date%22%3A%222026-07-20%22%2C%22isTrial%22%3A0%2C%22isJumpOut%22%3A0%7D
+200	text/javascript	https://www.racing.com/form/modules/npm.rdcm.e9d078958fc7fabc63db.chunk.js
+200	text/javascript	https://www.racing.com/form/modules/npm.auth0.cb918d0b7a97f7a0de08.chunk.js
+200	text/javascript	https://www.racing.com/form/modules/npm.sitecore-feaas.a26d89c50f45c0699abb.chunk.js
+200	text/javascript	https://www.racing.com/form/modules/npm.optimism.ebb93322ea2e56e81c48.chunk.js
+200	text/javascript	https://www.racing.com/form/modules/5990.d579f679e8900da3aad6.chunk.js
+200	text/javascript	https://www.racing.com/form/modules/837.80f6fcbbade64b516b34.chunk.js
+200	text/javascript	https://www.racing.com/form/modules/5558.f791e9aef4aaf75c0238.chunk.js
+200	application/json; charset=UTF-8	https://graphql.rmdprod.racing.com/?query=query%20GetMeetCode_CD(%24venueName%3A%20String%20%24date%3A%20String)%20%7B%20GetMeetingByVenue(venueName%3A%20%24venueName%20date%3A%20%24date)%20%7B%20id%20isJumpOut%20isTrial%20%7D%20%7D&variables=%7B%22venueName%22%3A%22southside-pakenham-synthetic%22%2C%22date%22%3A%222026-07-20%22%7D
+200	text/javascript	https://www.racing.com/form/modules/8215.5b277a5b9f1dc3b76477.chunk.js
+200	text/javascript	https://www.racing.com/form/modules/8048.74de9d708fbc9adb8b19.chunk.js
+200	text/javascript	https://www.racing.com/form/modules/2292.db72748787ee361aba1e.chunk.js
+200	text/javascript	https://www.racing.com/form/modules/4241.a3b6735293b23d097ed6.chunk.js
+200	application/json; charset=UTF-8	https://graphql.rmdprod.racing.com/?query=query%20getMeeting_CD(%24meetCode%3A%20ID!)%20%7B%20getMeeting(id%3A%20%24meetCode)%20%7B%20track%20venue%20isJumpOut%20isTrial%20venueName%20venueCode%20venueAbbr%20trackName%20state%20firstRaceTime%20isTab%20meetUrl%20meetUrlSegment%20trackRating%20trackCondition%20date%20railPosition%20trackMapWhite%20venueCode%20date%20id%20previousRailPosition%20straight%20status%20hasRunners%20hasRaceList%20hasTips%20hasStewards%20weather%20weatherAirTemp%20weatherApparentTemp%20weatherRain%20weatherRainRange%20weatherWindDirection%20weatherWindSpeed%20weatherIcon%20weatherMin%20weatherMax%20weatherText%20weatherRainChance%20penetrometer%20rainfall%20trackInfo%20stewardsReportUrl%20trackConditions%20%7B%20raceNumber%20condition%20arrowIndicator%20%7D%20previousRailPositions%20%7B%20meetCode%20meetDate%20railPosition%20trackCondition%20trackRating%20comments%20meet%20%7B%20meetTips%20%7B%20shortComment%20longComment%20%7D%20%7D%20%7D%20%7D%20%7D&variables=%7B%22meetCode%22%3A%225191023%22%7D
+200	application/json; charset=UTF-8	https://graphql.rmdprod.racing.com/?query=query%20getRaceNumberList_CD(%24meetCode%3A%20ID!)%20%7B%20getNoCacheRacesForMeet(meetCode%3A%20%24meetCode)%20%7B%20id%20meet%20%7B%20venue%20meetUrl%20meetUrlSegment%20trackMap%20%7D%20raceNumber%20raceStatus%20distance%20time%20name%20nameForm%20trackCondition%20isTrial%20isJumpOut%20trackRating%20trackRecordTime%20trackRecordHorseCode%20trackRecordHorseName%20trackRecordRace%20%7B%20date%20%7D%20condition%20prizeMoney%20totalPrizeMoney%20hasSectionals%20hasTips%20hasSpeedMap%20hasResults%20hasStewards%20hasHistory%20hasSectionals%20hasField%20hasFullForm%20trackCode%20rdcClass%20formRaceEntries%20%7B%20horseName%20position%20winningTime%20standardTimeDifference%20%7D%20toEightHundredMetresSeconds%20standardTimeTo800Difference%20eightHundredToFourHundredMetresSeconds%20standardTime800To400Difference%20fourHundredToFinishMetresSeconds%20standardTime400ToFinishDifference%20raceTime%20standardTimeDifference%20standardTimeId%20stewardsReportUrl%20%7D%20%7D&variables=%7B%22meetCode%22%3A%225191023%22%7D
+200	text/javascript; charset=UTF-8	https://securepubads.g.doubleclick.net/tag/js/gpt.js
+200	application/json; charset=UTF-8	https://graphql.api.racing.com/?query=query%20GetLayoutForRoute(%24routePath%3A%20String!%2C%20%24placeholder%3A%20String)%20%7B%0A%20%20layoutForRoute%3A%20getLayoutForRoute(%0A%20%20%20%20routePath%3A%20%24routePath%0A%20%20%20%20placeholder%3A%20%24placeholder%0A%20%20)%0A%7D%0A&operationName=GetLayoutForRoute&variables=%7B%22routePath%22%3A%22%2F%22%2C%22placeholder%22%3A%22headless-footer%22%7D
+200	text/javascript	https://bam-cell.nr-data.net/1/678c050173?a=1385873344&sa=1&v=1210.e2a3f80&t=Unnamed%20Transaction&rst=7214&ck=1&ref=https://www.racing.com/form/2026-07-20/southside-pakenham-synthetic/race/10/speed-data&be=248&fe=7149&dc=545&af=err,xhr,stn,ins,spa&perf=%7B%22timing%22:%7B%22of%22:1784711461315,%22n%22:0,%22f%22:1,%22dn%22:8,%22dne%22:80,%22c%22:80,%22s%22:101,%22ce%22:121,%22rq%22:121,%22rp%22:234,%22rpe%22:243,%22dl%22:240,%22di%22:391,%22ds%22:545,%22de%22:546,%22dc%22:7148,%22l%22:7148,%22le%22:7150%7D,%22navigation%22:%7B%7D%7D&jsonp=NREUM.setToken
+200	text/javascript	https://www.racing.com/form/modules/1962.2d11fb0d3b3187edf3ff.chunk.js
+200	application/json; charset=UTF-8	https://graphql.api.racing.com/?query=query%20GetLayoutForRoute(%24routePath%3A%20String!%2C%20%24placeholder%3A%20String)%20%7B%0A%20%20layoutForRoute%3A%20getLayoutForRoute(%0A%20%20%20%20routePath%3A%20%24routePath%0A%20%20%20%20placeholder%3A%20%24placeholder%0A%20%20)%0A%7D%0A&operationName=GetLayoutForRoute&variables=%7B%22routePath%22%3A%22%2F%22%2C%22placeholder%22%3A%22headless-header%22%7D
+200	image/gif	https://bam-cell.nr-data.net/events/1/678c050173?a=1385873344&sa=1&v=1210.e2a3f80&t=Unnamed%20Transaction&rst=8055&ck=1&ref=https://www.racing.com/form/2026-07-20/southside-pakenham-synthetic/race/10/speed-data
+200	application/json; charset=utf-8	https://www.racing.com/services/appv2/GetMeetsByMonth/2026/7
+200	application/json; charset=UTF-8	https://graphql.rmdprod.racing.com/?query=query%20GetRaceMeetingsByStateNew_CD(%20%24states%3A%20String!%20%24daysBack%3A%20Int!%20%24daysForward%3A%20Int!%20%24userDate%3A%20String!%20)%20%7B%20GetRaceMeetingsByStateNew(%20states%3A%20%24states%20daysBack%3A%20%24daysBack%20daysForward%3A%20%24daysForward%20userDate%3A%20%24userDate%20)%20%7B%20id%20venue%20date%20state%20isTrial%20isJumpOut%20meetUrl%20sortOrder%20%7D%20%7D&variables=%7B%22userDate%22%3A%222026-07-22%22%2C%22states%22%3A%22QLD%7CSA%7CNSW%7CACT%7CWA%7CNT%7CTAS%22%2C%22daysBack%22%3A2%2C%22daysForward%22%3A-2%7D
+200	application/json; charset=UTF-8	https://graphql.rmdprod.racing.com/?query=query%20CDGetTodaysRacesByState(%24states%3A%20String!)%20%7B%20nextToJump%3A%20GetNextToJumpByState(states%3A%20%24states)%20%7B%20...CDRace%20__typename%20%7D%20%7D%20fragment%20CDRace%20on%20Race%20%7B%20id%20time%20group%20raceStatus%20raceNumber%20resultsString%20meet%20%7B%20id%20venue%20venueCode%20state%20status%20meetUrl%20meetQualityColor%20isTrial%20isJumpOut%20date%20__typename%20%7D%20__typename%20%7D&variables=%7B%22states%22%3A%22SA%7CQLD%7CNSW%7CWA%7CACT%7CNT%7CTAS%22%7D
+200	application/json; charset=UTF-8	https://graphql.rmdprod.racing.com/?query=query%20GetRaceStandardTimes_CD(%24trackCode%3A%20String!%20%24raceDistance%3A%20Int)%20%7B%20GetRaceStandardTimes(trackCode%3A%20%24trackCode%20raceDistance%3A%20%24raceDistance)%20%7B%20trackCondition%20raceClassGroup%20finishTimeStandard%20racesCount%20%7D%20%7D&variables=%7B%22trackCode%22%3A%22948%22%2C%22raceDistance%22%3A%222200m%22%7D
+200	application/json; charset=UTF-8	https://graphql.rmdprod.racing.com/?query=query%20GetRaceEntryBadges_CD(%24id%3A%20ID!)%20%7B%20Meet(id%3A%20%24id)%20%7B%20meetTips%20%7B%20getOn%20%7B%20comment%20raceEntryItemCode%20%7D%20nextBestTips%20%7B%20comment%20raceEntryItemCode%20%7D%20bestBet%20%7B%20comment%20raceEntryItemCode%20%7D%20bestRoughie%20%7B%20comment%20raceEntryItemCode%20%7D%20bestValue%20%7B%20comment%20raceEntryItemCode%20%7D%20shortComment%20longComment%20tipster%20%7B%20tipsterId%20tipsterName%20%7D%20%7D%20races%20%7B%20id%20raceNumber%20formRaceEntries%20%7B%20id%20horse%20%7B%20id%20name%20sectionalStars%20%7B%20race%20%7B%20location%20date%20%7D%20sectionalStarTag%20dateTimeCreated%20tipster%20%7B%20tipsterName%20%7D%20%7D%20%7D%20%7D%20%7D%20%7D%20%7D&variables=%7B%22id%22%3A%225191023%22%7D
+200	image/webp	https://dxp-cdn.racing.com/api/public/content/RacingLogoPNG-235666.webp
+200	text/html	https://dxp-static.racing.com/sectionals/index.html
+200	image/png	https://dxp-cdn.racing.com/api/public/content/bestbets_minilogo-39195.png
+200	image/webp	https://dxp-cdn.racing.com/api/public/content/vrc-logo-39529.webp
+200	text/javascript; charset=UTF-8	https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202607170101/pubads_impl.js?cb=31099833
+200	image/webp	https://dxp-cdn.racing.com/api/public/content/163f7ff6f0f64b37a4fb6fe28b9296e7
+200	image/svg+xml	https://dxp-cdn.racing.com/api/public/content/3a6fd350779340e885e5e9f663246396
+200	image/svg+xml	https://dxp-cdn.racing.com/api/public/content/new-color-mrc_inline-black-39525.svg
+200	image/svg+xml	https://dxp-cdn.racing.com/api/public/content/14f01e84437f4679874107dba4148ac7
+200	image/svg+xml	https://dxp-cdn.racing.com/api/public/content/RDC-logo-red-text-3751270.svg
+200	image/svg+xml	https://dxp-cdn.racing.com/api/public/content/Winning-Post-Avatar-2910735.svg
+200	image/png	https://dxp-cdn.racing.com/api/public/content/RPHOTOS_MASTER_BLUE_CMYK-39496.png
+200	image/webp	https://dxp-cdn.racing.com/api/public/content/ssr_horz_white-836331.webp
+200	text/html;charset=UTF-8	https://idp.racing.com/authorize?client_id=2xw77BDhfwH7QQNOrJeOzxbfVzUIE6vC&scope=openid+profile+email&audience=https%3A%2F%2Fprod2-rplus.au.auth0.com%2Fapi%2Fv2%2F&redirect_uri=https%3A%2F%2Fwww.racing.com%2Fplus%2Fapi%2Fauth%2Fcallback&prompt=none&response_type=code&response_mode=web_message&state=TUVJM0JJakJTZWZLNm1BZGVCRngxYm40SW1lZ1c5flVMWXA3c1BJLmtjVA%3D%3D&nonce=ZkZ1ZTJpZjUteDZha1FoczlmdTExczVsZ2U4Rk84TFhXTEpuUmlLNWY1eA%3D%3D&code_challenge=6ArCi_jiQ3-_EQhHU3TVBQT1sq2Q0Lc86hixQqwNFLI&code_challenge_method=S256&auth0Client=eyJuYW1lIjoiYXV0aDAtcmVhY3QiLCJ2ZXJzaW9uIjoiMi4yLjQifQ%3D%3D
+200	application/json; charset=UTF-8	https://graphql.rmdprod.racing.com/?query=query%20getRaceResults_CD(%24meetCode%3A%20ID!%20%24raceNumber%3A%20Int!)%20%7B%20getRaceForm(meetCode%3A%20%24meetCode%20raceNumber%3A%20%24raceNumber)%20%7B%20id%20meetCode%20venue%20%7B%20venueName%20state%20%7D%20raceNumber%20photoFinish%20raceStatus%20rdcClass%20isTrial%20isJumpOut%20videoItems%20%7B%20id%20contenttype%20poster%20%7D%20formRaceEntries%20%7B%20id%20bonusBadgeRunner%20meetCode%20raceNumber%20...RaceWithEntry%20gearHasChanges%20gearChanges%20lastGear%20lastGearDate%20finish%20horseName%20horseCode%20horseCountry%20horseUrl%20silkUrl%20comment%20commentStewards%20race%20%7B%20meet%20%7B%20meetUrl%20meetTips%20%7B%20longComment%20shortComment%20%7D%20%7D%20%7D%20horse%20%7B%20id%20lastFive%20silkUrl%20stats%20%7B%20key%20firsts%20starts%20thirds%20seconds%20%7D%20lastProfessionalRaceEntryItem%20%7B%20raceCode%20position%20race%20%7B%20runnersCount%20distance%20date%20venueAbbr%20%7D%20%7D%20%7D%20standardTimeDifference%20jockeyUrl%20jockeyName%20trainerUrl%20trainerCode%20jockeyCode%20trainerName%20positionAt400%20positionAt400Abv%20positionAt800%20positionAt800Abv%20bettingFluctuationsPriceOpen%20bettingFluctuationsPriceMoveOne%20bettingFluctuationsPriceMoveTwo%20bonusMoney%20%7D%20%7D%20GetBettingData(meetCode%3A%20%24meetCode%20raceNumber%3A%20%24raceNumber)%20%7B%20exotics%20%7B%20poolStatusCode%20wageringProduct%20selections%20amount%20%7D%20%7D%20%7D%20fragment%20RaceWithEntry%20on%20RaceEntryItem%20%7B%20position%20barrierNumber%20liveBarrierNumber%20prizeMoney%20scratched%20startingPrice%20odds%20%7B%20id%20providerCode%20oddsPlace%20oddsWin%20oddsIsFavouriteWin%20oddsIsMarketMover%20deepLinkWin%20deepLinkPlace%20deepLinkRace%20flucsWin%20%7B%20updateTime%20amount%20%7D%20%7D%20comment%20commentShort%20commentStewards%20raceEntryNumber%20apprenticeCanClaim%20apprenticeAllowedClaim%20weight%20margin%20winningTime%20finish%20finishAbv%20%7D&variables=%7B%22meetCode%22%3A%225191023%22%2C%22raceNumber%22%3A10%7D
+200	text/javascript	https://www.google-analytics.com/analytics.js
+200	image/svg+xml	https://dxp-cdn.racing.com/api/public/content/rdc_logo_white-3404924.svg
+200	image/svg+xml	https://dxp-cdn.racing.com/api/public/content/Google-Play-Store-Badge-851581.svg
+200	image/svg+xml	https://dxp-cdn.racing.com/api/public/content/Apple-Store-Badge-851579.svg
+200	binary/octet-stream	https://dxp-static.racing.com/layouts/app.aspx?ts=20250723
+200	application/javascript	https://dxp-static.racing.com/resources/Racing/js/controllers/rdcHeaderController.js?v=20250616053253
+200	text/css	https://cdn.racing.com/resources/Racing/css/global.C9A42E9D944F7309F9E49826A1886323.min.css
+200	text/javascript; charset=utf-8	https://unpkg.com/react@16.13.1/umd/react.development.js
+200	application/javascript	https://dxp-static.racing.com/resources/Racing/js/controllers/rdcFormAnalystTipsController.js?v=20250616053253
+200	text/css; charset=utf-8	https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,900italic,900,700italic,700,500,500italic
+200	text/css	https://cdn.racing.com/resources/Racing/css/utilities.046D9130F64AC80E3F3FF73CCA4031C5.min.css
+200	text/css	https://cdn.racing.com/resources/racing/themes/racing/theme-racing-default.D5E48E48242780A55FA2D5E5E6515B10.min.css
+200	application/javascript	https://cdn.racing.com/framework/libs/react/react-16.13.1.min.js
+200	text/css	https://cdn.racing.com/framework/racing/legacy/rdc.vendor.css?v=664bffb31c4c44941794

@@ -1,0 +1,49 @@
+{
+  "contract_name": "edgeiq_horse_performance_aggregation_parameter_fact_v1",
+  "contract_version": "1.0.0",
+  "grain": "one_row_per_governed_effective_horse_performance_aggregation_policy",
+  "primary_key": [
+    "horse_performance_aggregation_parameter_id"
+  ],
+  "required_fields": [
+    "horse_performance_aggregation_parameter_id",
+    "aggregation_method",
+    "maximum_observations",
+    "lookback_days",
+    "minimum_observations",
+    "recency_weighting_method",
+    "recency_half_life_days",
+    "aggregation_model_version",
+    "parameter_status",
+    "effective_from_date",
+    "effective_to_date",
+    "evidence_reference",
+    "source_evidence_sha256",
+    "parameter_evidence_sha256",
+    "builder_version",
+    "contract_version",
+    "built_at_utc"
+  ],
+  "allowed_values": {
+    "aggregation_method": [
+      "ARITHMETIC_MEAN",
+      "WEIGHTED_ARITHMETIC_MEAN"
+    ],
+    "recency_weighting_method": [
+      "NONE",
+      "EXPONENTIAL_HALF_LIFE"
+    ],
+    "parameter_status": [
+      "AVAILABLE"
+    ]
+  },
+  "forbidden_fields": [
+    "canonical_horse_id",
+    "rating_base_value",
+    "aggregated_rating",
+    "horse_rating",
+    "epi",
+    "eri",
+    "predictive_rating"
+  ]
+}

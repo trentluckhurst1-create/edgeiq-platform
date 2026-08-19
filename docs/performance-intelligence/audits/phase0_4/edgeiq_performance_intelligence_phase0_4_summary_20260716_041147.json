@@ -1,0 +1,26 @@
+{
+  "audit_name": "EDGEiQ Performance Intelligence Phase 0.4 Canonical Schema and Migration Map",
+  "generated_utc": "2026-07-15T18:11:47.781226+00:00",
+  "phase0_3_source": "docs/performance-intelligence/audits/phase0_3/edgeiq_performance_intelligence_phase0_3_detail_20260716_040530.json",
+  "schema_version": "0.1",
+  "schema_tables": 10,
+  "schema_fields": 116,
+  "migration_entries": 13,
+  "quality_states": 11,
+  "source_priority_groups": 5,
+  "scripts_checked": 25,
+  "syntax_error_scripts": 9,
+  "syntax_error_paths": [
+    "scripts/build_edgeiq_canonical_results_truth_v1.py",
+    "scripts/build_edgeiq_historical_performance_rating_v6_1_research.py",
+    "scripts/build_edgeiq_historical_results_warehouse_v2_graphql.py",
+    "scripts/build_edgeiq_race_strength_history_v1.py",
+    "scripts/build_edgeiq_race_strength_v3.py",
+    "scripts/build_edgeiq_racingcom_results_warehouse_all_v1.py",
+    "scripts/build_edgeiq_results_warehouse_full_consolidation_v1.py",
+    "scripts/build_edgeiq_runner_history_detail_v1.py",
+    "scripts/build_edgeiq_trusted_sectional_universe_v2.py"
+  ],
+  "canonical_status": "ARCHITECTURE_DEFINED_DATA_NOT_MIGRATED",
+  "next_stage": "Phase 0.5 canonical performance identity and source-evidence migration prototype"
+}

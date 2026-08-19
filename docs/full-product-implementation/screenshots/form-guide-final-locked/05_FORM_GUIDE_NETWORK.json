@@ -1,0 +1,27 @@
+[
+  {
+    "type": "requestfailed",
+    "url": "http://127.0.0.1:5173/src/edgeiq-os/EdgeiqOsV2.tsx",
+    "failure": "net::ERR_ABORTED"
+  },
+  {
+    "type": "requestfailed",
+    "url": "http://127.0.0.1:5173/node_modules/.vite/deps/chunk-BPGYRLWZ.js?v=45a08adf",
+    "failure": "net::ERR_ABORTED"
+  },
+  {
+    "type": "requestfailed",
+    "url": "http://127.0.0.1:5173/node_modules/.vite/deps/chunk-G3PMV62Z.js?v=45a08adf",
+    "failure": "net::ERR_ABORTED"
+  },
+  {
+    "type": "requestfailed",
+    "url": "http://127.0.0.1:5173/node_modules/vite/dist/client/env.mjs",
+    "failure": "net::ERR_ABORTED"
+  },
+  {
+    "type": "requestfailed",
+    "url": "http://127.0.0.1:5173/node_modules/.vite/deps/chunk-LOG2ZSQO.js?v=45a08adf",
+    "failure": "net::ERR_ABORTED"
+  }
+]

@@ -1,0 +1,34 @@
+{
+  "approved": 114,
+  "chigurh": [
+    {
+      "approval_status": "APPROVED",
+      "barrier": "10",
+      "canonical_horse_id": "RA_HORSE_34054013730",
+      "canonical_horse_name": "CHIGURH",
+      "created_at": "2026-07-29T19:59:27Z",
+      "effective_from": "2026-07-20",
+      "evidence_reference": "docs/victoria-live-recovery-v3/raw-evidence/RA_RESULTS_2026-07-26_SALE_598617F0.html#horsecode=34054013730;raceentry=99566658900",
+      "evidence_type": "PUBLIC_RA_HORSEFULLFORM_HORSECODE",
+      "identity_evidence_sha256": "e6596cf8cc5fec7c44e30ffe227bee6c82d7cd4f7d769badcbe27c29042593ac",
+      "jockey": "Luke Nolen",
+      "match_method": "EXACT_SOURCE_ID_NEW_CANONICAL",
+      "policy_version": "RA-HORSE-ID-GOV-V4",
+      "race_number": "3",
+      "result_fact_evidence_sha256": "841aaf3678b39bf9835f19b1dea285a1dbd16005fb28ee8efa1c6960e3666a3e",
+      "saddlecloth": "3",
+      "source_horse_id": "34054013730",
+      "source_horse_name": "CHIGURH",
+      "source_meeting_date": "2026-07-26",
+      "source_race_entry_id": "99566658900",
+      "source_system": "RACING_AUSTRALIA",
+      "track": "SALE",
+      "trainer": "Ben, Will & JD Hayes"
+    }
+  ],
+  "existing_canonical_horses_matched": 0,
+  "new_canonical_horses": 114,
+  "rows": 114,
+  "source_ids_retained": 114,
+  "unresolved": 0
+}

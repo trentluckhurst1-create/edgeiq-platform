@@ -1,0 +1,157 @@
+{
+  "source": "EDGEiQ_APPROVED_TABS.zip",
+  "workspace_count": 19,
+  "canvas": {
+    "width": 1536,
+    "height": 1024
+  },
+  "common_dominant_colors": [
+    [
+      "#ffffff",
+      19
+    ],
+    [
+      "#f8f8f8",
+      19
+    ],
+    [
+      "#f8f8ff",
+      19
+    ],
+    [
+      "#f0f0f8",
+      19
+    ],
+    [
+      "#f8ffff",
+      19
+    ],
+    [
+      "#f0f8f8",
+      14
+    ],
+    [
+      "#fff8ff",
+      14
+    ],
+    [
+      "#f0f8ff",
+      5
+    ],
+    [
+      "#e8f0ff",
+      4
+    ],
+    [
+      "#e8e8f0",
+      3
+    ],
+    [
+      "#fff8f8",
+      3
+    ],
+    [
+      "#e0e0e8",
+      2
+    ],
+    [
+      "#f0f8f0",
+      2
+    ],
+    [
+      "#e0e8ff",
+      2
+    ],
+    [
+      "#e0e0f0",
+      2
+    ],
+    [
+      "#d0d8e0",
+      1
+    ],
+    [
+      "#e0e8e8",
+      1
+    ],
+    [
+      "#f0f0ff",
+      1
+    ],
+    [
+      "#fff8e8",
+      1
+    ],
+    [
+      "#e8f0f8",
+      1
+    ],
+    [
+      "#f0f0f0",
+      1
+    ]
+  ],
+  "left_navigation_width_estimates": {
+    "01_HOME": 37,
+    "02_MEETINGS": 36,
+    "03_RACE_OVERVIEW": 35,
+    "04_FIELD": 35,
+    "05_FORM_GUIDE": 21,
+    "06_PERFORMANCE": 22,
+    "07_MAP": 22,
+    "08_EPI": 23,
+    "09_MARKET": 21,
+    "10_OVERVIEW": 22,
+    "11_SCRATCHINGS": 22,
+    "12_GEAR_CHANGES": 22,
+    "13_TRACK": 21,
+    "14_WEATHER": 21,
+    "15_RESULTS": 21,
+    "16_INSIGHTS": 21,
+    "17_LAB": 21,
+    "18_COMPARE": 20,
+    "19_REVIEW": 21
+  },
+  "top_header_height_estimates": {
+    "01_HOME": 31,
+    "02_MEETINGS": 28,
+    "03_RACE_OVERVIEW": 30,
+    "04_FIELD": 32,
+    "05_FORM_GUIDE": 24,
+    "06_PERFORMANCE": 22,
+    "07_MAP": 23,
+    "08_EPI": 25,
+    "09_MARKET": 25,
+    "10_OVERVIEW": 25,
+    "11_SCRATCHINGS": 24,
+    "12_GEAR_CHANGES": 28,
+    "13_TRACK": 25,
+    "14_WEATHER": 28,
+    "15_RESULTS": 27,
+    "16_INSIGHTS": 25,
+    "17_LAB": 25,
+    "18_COMPARE": 25,
+    "19_REVIEW": 25
+  },
+  "table_row_height_estimates": {
+    "01_HOME": 33,
+    "02_MEETINGS": 36,
+    "03_RACE_OVERVIEW": 25,
+    "04_FIELD": 36,
+    "05_FORM_GUIDE": 23,
+    "06_PERFORMANCE": 25,
+    "07_MAP": 31,
+    "08_EPI": 24,
+    "09_MARKET": 25,
+    "10_OVERVIEW": 30,
+    "11_SCRATCHINGS": 30,
+    "12_GEAR_CHANGES": 32,
+    "13_TRACK": 31,
+    "14_WEATHER": 39,
+    "15_RESULTS": 28,
+    "16_INSIGHTS": 37,
+    "17_LAB": 26,
+    "18_COMPARE": 24,
+    "19_REVIEW": 35
+  }
+}

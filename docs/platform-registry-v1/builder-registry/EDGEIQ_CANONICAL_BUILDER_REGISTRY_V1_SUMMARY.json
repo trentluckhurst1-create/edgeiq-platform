@@ -1,0 +1,18 @@
+{
+  "registry_version": "1.0.0",
+  "generated_at_utc": "2026-07-28T04:00:55+00:00",
+  "repository_root": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM",
+  "python_file_count": 10997,
+  "builder_count": 5558,
+  "parsed_builder_count": 1885,
+  "parse_failure_count": 3673,
+  "dependency_record_count": 22334,
+  "local_dependency_count": 2495,
+  "input_claim_count": 4720,
+  "output_claim_count": 2917,
+  "public_feed_output_claim_count": 47,
+  "duplicate_output_path_count": 556,
+  "active_builder_count": 1380,
+  "noncanonical_builder_count": 4178,
+  "verdict": "PARTIAL_PARSE_FAILURES"
+}

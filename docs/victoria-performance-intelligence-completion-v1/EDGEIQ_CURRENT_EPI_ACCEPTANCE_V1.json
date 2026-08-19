@@ -1,0 +1,7 @@
+{
+  "blocking_reason": "MISSING_REQUIRED_EPI_COMPONENT because exact governed context parameters are unavailable; suitability/projected/ERI components cannot be created without governed adjustment lineage",
+  "current_runners_with_epi": 0,
+  "epi_rows": 0,
+  "snapshot_rows": 5,
+  "status": "BLOCKED_EPI_COMPONENT_CONTRACT"
+}

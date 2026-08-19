@@ -1,0 +1,11 @@
+{
+  "source_rows": 0,
+  "valid_rows": 0,
+  "processed_preview_rows": 0,
+  "promote_requested": true,
+  "canonical_rows_before": 2682,
+  "canonical_rows_promoted": 0,
+  "duplicate_rows_ignored": 0,
+  "canonical_rows_after": 2682,
+  "status": "NO_VALID_VISIBLE_SECTIONALS"
+}

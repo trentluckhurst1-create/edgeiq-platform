@@ -1,0 +1,65 @@
+{
+  "contract_name": "edgeiq_race_eri_parameter_fact_v1",
+  "contract_version": "1.0.0",
+  "grain": "one_governed_eri_parameter_version",
+  "primary_key": [
+    "race_eri_parameter_id"
+  ],
+  "natural_key": [
+    "eri_parameter_version"
+  ],
+  "required_fields": [
+    "race_eri_parameter_id",
+    "eri_parameter_version",
+    "eri_methodology_code",
+    "eri_methodology_name",
+    "eri_input_population_rule",
+    "eri_complete_field_required",
+    "minimum_eligible_runner_count",
+    "eri_output_decimal_places",
+    "eri_rounding_mode",
+    "eri_parameter_scope",
+    "effective_from_date",
+    "effective_to_date",
+    "eri_parameter_decision",
+    "race_eri_parameter_status",
+    "race_eri_parameter_evidence_sha256",
+    "builder_version",
+    "contract_version",
+    "built_at_utc"
+  ],
+  "allowed_values": {
+    "eri_methodology_code": [
+      "FIELD_MEAN_PROJECTED_PERFORMANCE"
+    ],
+    "eri_complete_field_required": [
+      "TRUE"
+    ],
+    "eri_rounding_mode": [
+      "ROUND_HALF_EVEN"
+    ],
+    "eri_parameter_scope": [
+      "GLOBAL"
+    ],
+    "eri_parameter_decision": [
+      "ERI_PARAMETER_AUTHORISED"
+    ],
+    "race_eri_parameter_status": [
+      "GOVERNED_ERI_PARAMETER"
+    ]
+  },
+  "forbidden_fields": [
+    "eri_value",
+    "projected_performance_value",
+    "epi",
+    "runner_rank",
+    "race_rank",
+    "probability",
+    "fair_price",
+    "market_price",
+    "market_edge",
+    "confidence",
+    "prediction",
+    "forecast"
+  ]
+}

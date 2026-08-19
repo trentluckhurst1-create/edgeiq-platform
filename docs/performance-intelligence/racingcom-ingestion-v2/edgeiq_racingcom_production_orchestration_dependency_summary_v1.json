@@ -1,0 +1,11 @@
+{
+  "active_production_ingestion_entry_point": "scripts/run_edgeiq_racingcom_ingestion_v2_production.py",
+  "active_schedulable_command": "python -u scripts/run_edgeiq_racingcom_ingestion_v2_production.py --offline",
+  "current_warehouse_writer": "scripts/build_edgeiq_racingcom_runner_aggregate_adapter_v2.py plus orchestrator atomic promotion",
+  "manual_candidate_promotion_required_after_orchestrator": "NO",
+  "continuation_state": "docs/performance-intelligence/racingcom-ingestion-v2/edgeiq_racingcom_production_orchestration_state_v1.json",
+  "network_acquisition_enabled_by": "--network with EDGEIQ_RACINGCOM_WIDGET_API_KEY",
+  "offline_cache_mode_enabled_by": "--offline",
+  "api_key_environment_variable": "EDGEIQ_RACINGCOM_WIDGET_API_KEY",
+  "api_key_value_written": "NO"
+}

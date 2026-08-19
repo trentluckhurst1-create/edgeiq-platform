@@ -1,0 +1,24 @@
+{
+  "status": "EDGEIQ_RACE_ENTRY_SUITABILITY_V2_AUDIT_PASS",
+  "historical_source_rows": 168,
+  "invalid_historical_rows": 0,
+  "resolved_identity_count": 1,
+  "suitability_rows": 204,
+  "suitability_status_counts": {
+    "SUITABILITY_NOT_APPLICABLE_ENTRY_INACTIVE": 6,
+    "SUITABILITY_UNAVAILABLE": 198
+  },
+  "available_component_count_distribution": {
+    "0": 204
+  },
+  "checks": {
+    "one_row_per_context": true,
+    "natural_keys_unique": true,
+    "no_fake_composite": true,
+    "strictly_prior_evidence": true,
+    "evidence_complete": true,
+    "deterministic_rerun": true
+  },
+  "candidate_sha256": "496215af6a1968478eb319e662a596a7283b1ffd89fa820e6b6c1ea952961f5f",
+  "production_sha256": "496215af6a1968478eb319e662a596a7283b1ffd89fa820e6b6c1ea952961f5f"
+}

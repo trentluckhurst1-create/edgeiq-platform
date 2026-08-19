@@ -1,0 +1,22 @@
+{
+  "startedAt": "2026-07-18T16:25:58.358Z",
+  "routeChecks": [
+    { "check": "has_gear_workspace", "pass": true },
+    { "check": "has_official_header", "pass": true },
+    { "check": "has_latest_official_update", "pass": true },
+    { "check": "has_summary_or_empty_state", "pass": true },
+    { "check": "has_previous_today_first_time_contract", "pass": true },
+    { "check": "no_source_column", "pass": true },
+    { "check": "no_data_freshness_panel", "pass": true },
+    { "check": "no_confidence_copy", "pass": true },
+    { "check": "no_impact_scoring_language", "pass": true },
+    { "check": "white_body_background", "pass": true, "detail": "rgb(255, 255, 255)" }
+  ],
+  "screenshot": "SCREENSHOT_BLOCKED: tab.playwright.screenshot is not a function",
+  "errors": [],
+  "dom": {
+    "url": "http://127.0.0.1:5176/",
+    "title": "racing-dashboard"
+  },
+  "completedAt": "2026-07-18T16:26:01.327Z"
+}

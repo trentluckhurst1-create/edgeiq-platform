@@ -1,0 +1,126 @@
+{
+  "audit_name": "edgeiq_horse_performance_profile_fact_v1",
+  "audit_version": "1.0.0",
+  "audited_at_utc": "2026-07-21T22:19:47Z",
+  "checks": {
+    "contract_fields_exact": {
+      "detail": {
+        "actual": [
+          "horse_performance_profile_id",
+          "canonical_horse_id",
+          "canonical_horse_name",
+          "historical_rating_count",
+          "first_governed_rating_date",
+          "latest_governed_rating_date",
+          "latest_horse_performance_rating_id",
+          "latest_horse_performance_rating_value",
+          "highest_historical_rating_value",
+          "lowest_historical_rating_value",
+          "average_historical_rating_value",
+          "latest_included_observation_count",
+          "maximum_included_observation_count",
+          "minimum_included_observation_count",
+          "total_included_observation_count",
+          "horse_performance_profile_status",
+          "source_horse_performance_rating_ids_sha256",
+          "source_horse_performance_rating_evidence_sha256",
+          "horse_performance_profile_evidence_sha256",
+          "source_builder_versions_sha256",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ],
+        "expected": [
+          "horse_performance_profile_id",
+          "canonical_horse_id",
+          "canonical_horse_name",
+          "historical_rating_count",
+          "first_governed_rating_date",
+          "latest_governed_rating_date",
+          "latest_horse_performance_rating_id",
+          "latest_horse_performance_rating_value",
+          "highest_historical_rating_value",
+          "lowest_historical_rating_value",
+          "average_historical_rating_value",
+          "latest_included_observation_count",
+          "maximum_included_observation_count",
+          "minimum_included_observation_count",
+          "total_included_observation_count",
+          "horse_performance_profile_status",
+          "source_horse_performance_rating_ids_sha256",
+          "source_horse_performance_rating_evidence_sha256",
+          "horse_performance_profile_evidence_sha256",
+          "source_builder_versions_sha256",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ]
+      },
+      "status": "PASS"
+    },
+    "current_population_expected": {
+      "detail": {
+        "canonical_horses": 0,
+        "horse_performance_profile_rows": 0,
+        "horse_performance_rating_rows": 0
+      },
+      "status": "PASS"
+    },
+    "deterministic_profile_identity": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "no_forbidden_fields": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "one_profile_per_canonical_horse": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "profile_governance": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "profile_ids_unique": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "profile_metrics_exact": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "profile_population_exact": {
+      "detail": {
+        "missing_profiles": [],
+        "profile_rows": 0,
+        "source_horses": 0,
+        "unexpected_profiles": []
+      },
+      "status": "PASS"
+    },
+    "required_files_exist": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "source_rating_governance": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "source_rating_ids_unique": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "source_rating_lineage": {
+      "detail": [],
+      "status": "PASS"
+    }
+  },
+  "counts": {
+    "canonical_horses": 0,
+    "horse_performance_profile_rows": 0,
+    "horse_performance_rating_rows": 0
+  },
+  "failed_checks": [],
+  "status": "PASS"
+}

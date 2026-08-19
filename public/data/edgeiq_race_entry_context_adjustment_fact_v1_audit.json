@@ -1,0 +1,143 @@
+{
+  "audit_name": "edgeiq_race_entry_context_adjustment_fact_v1",
+  "audit_version": "1.1.0_current_ineligible_context_allowed",
+  "audited_at_utc": "2026-07-30T00:04:06Z",
+  "checks": {
+    "adjustment_arithmetic_exact": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "adjustment_decisions_governed": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "adjustment_governance": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "adjustment_ids_unique": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "adjustment_population_exact": {
+      "detail": {
+        "adjustment_rows": 5,
+        "selection_rows": 5
+      },
+      "status": "PASS"
+    },
+    "contract_fields_exact": {
+      "detail": {
+        "actual": [
+          "race_entry_context_adjustment_id",
+          "race_entry_context_parameter_selection_id",
+          "race_entry_context_eligibility_id",
+          "race_entry_performance_context_id",
+          "race_entry_id",
+          "race_id",
+          "race_date",
+          "runner_id",
+          "canonical_horse_id",
+          "canonical_horse_name",
+          "historical_rating_value",
+          "context_parameter_id",
+          "source_parameter_selection_decision",
+          "distance_adjustment",
+          "class_adjustment",
+          "track_adjustment",
+          "track_configuration_adjustment",
+          "track_condition_adjustment",
+          "surface_adjustment",
+          "barrier_adjustment",
+          "weight_adjustment",
+          "field_size_adjustment",
+          "total_context_adjustment",
+          "context_adjustment_application_decision",
+          "race_entry_context_adjustment_status",
+          "source_selection_evidence_sha256",
+          "source_context_evidence_sha256",
+          "source_parameter_evidence_sha256",
+          "race_entry_context_adjustment_evidence_sha256",
+          "source_selection_builder_version",
+          "source_context_builder_version",
+          "source_parameter_builder_version",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ],
+        "expected": [
+          "race_entry_context_adjustment_id",
+          "race_entry_context_parameter_selection_id",
+          "race_entry_context_eligibility_id",
+          "race_entry_performance_context_id",
+          "race_entry_id",
+          "race_id",
+          "race_date",
+          "runner_id",
+          "canonical_horse_id",
+          "canonical_horse_name",
+          "historical_rating_value",
+          "context_parameter_id",
+          "source_parameter_selection_decision",
+          "distance_adjustment",
+          "class_adjustment",
+          "track_adjustment",
+          "track_configuration_adjustment",
+          "track_condition_adjustment",
+          "surface_adjustment",
+          "barrier_adjustment",
+          "weight_adjustment",
+          "field_size_adjustment",
+          "total_context_adjustment",
+          "context_adjustment_application_decision",
+          "race_entry_context_adjustment_status",
+          "source_selection_evidence_sha256",
+          "source_context_evidence_sha256",
+          "source_parameter_evidence_sha256",
+          "race_entry_context_adjustment_evidence_sha256",
+          "source_selection_builder_version",
+          "source_context_builder_version",
+          "source_parameter_builder_version",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ]
+      },
+      "status": "PASS"
+    },
+    "current_population_expected": {
+      "detail": {
+        "adjustment_applied_rows": 0,
+        "adjustment_rows": 5,
+        "context_ineligible_rows": 0,
+        "selection_rows": 5
+      },
+      "status": "PASS"
+    },
+    "deterministic_adjustment_identity": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "no_forbidden_fields": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "one_adjustment_per_selection": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "required_files_exist": {
+      "detail": [],
+      "status": "PASS"
+    }
+  },
+  "counts": {
+    "adjustment_applied_rows": 0,
+    "context_adjustment_rows": 5,
+    "context_ineligible_rows": 0,
+    "context_parameter_selection_rows": 5,
+    "parameter_not_available_rows": 5
+  },
+  "failed_checks": [],
+  "status": "PASS"
+}

@@ -1,0 +1,23 @@
+{
+  "audit_id": "EDGEIQ_BUILDER_TRACE_V1",
+  "generated_at_utc": "2026-07-27T21:54:15.805977+00:00",
+  "problem_field_rows": 428,
+  "empty_field_rows": 109,
+  "low_population_field_rows": 319,
+  "affected_runtime_feeds": 28,
+  "candidate_source_files_scanned": 15938,
+  "feeds_with_builder_candidates": 28,
+  "feeds_without_builder_candidates": 0,
+  "trace_status_counts": {
+    "FIELD_NOT_FOUND_IN_BUILDER": 216,
+    "FIELD_REFERENCE_ONLY": 3,
+    "LOGIC_PRESENT_BUT_OUTPUT_EMPTY": 56,
+    "LOGIC_PRESENT_PARTIAL_POPULATION": 91,
+    "OUTPUT_FIELD_DECLARED_CALCULATION_NOT_CONFIRMED": 62
+  },
+  "missing_calculation_rows": 281,
+  "missing_write_rows": 0,
+  "no_builder_rows": 0,
+  "logic_present_problem_rows": 147,
+  "status": "REVIEW_REQUIRED"
+}

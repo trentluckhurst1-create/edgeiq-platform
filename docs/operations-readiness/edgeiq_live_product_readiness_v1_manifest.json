@@ -1,0 +1,159 @@
+{
+  "outputs": "required operations-readiness outputs generated",
+  "runtime_feeds": [
+    {
+      "feed": "three_day_window",
+      "file": "edgeiq_three_day_window_v1.json",
+      "runtime_path": "/data/edgeiq_three_day_window_v1.json",
+      "exists": true,
+      "bytes": 564,
+      "rows_or_items": 1,
+      "mtime": "2026-07-26T08:32:26",
+      "columns": "json",
+      "status": "PASS"
+    },
+    {
+      "feed": "three_day_catalog",
+      "file": "edgeiq_three_day_product_catalog_v1.json",
+      "runtime_path": "/data/edgeiq_three_day_product_catalog_v1.json",
+      "exists": true,
+      "bytes": 10330779,
+      "rows_or_items": 1,
+      "mtime": "2026-07-26T08:36:43",
+      "columns": "json",
+      "status": "PASS"
+    },
+    {
+      "feed": "meeting_calendar",
+      "file": "edgeiq_vic_three_day_meeting_calendar_v1.csv",
+      "runtime_path": "/data/edgeiq_vic_three_day_meeting_calendar_v1.csv",
+      "exists": true,
+      "bytes": 190,
+      "rows_or_items": 4,
+      "mtime": "2026-07-26T08:32:27",
+      "columns": "race_date|track|meeting_type|day_bucket",
+      "status": "PASS"
+    },
+    {
+      "feed": "race_list",
+      "file": "edgeiq_vic_three_day_race_list_v1.csv",
+      "runtime_path": "/data/edgeiq_vic_three_day_race_list_v1.csv",
+      "exists": true,
+      "bytes": 4480229,
+      "rows_or_items": 33,
+      "mtime": "2026-07-26T08:36:42",
+      "columns": "race_date|day_bucket|track|normalised_track|meeting_key|meet_code|track_code|meet_status|full_status|url_segment|form_url|race_id|race_no|race_name|race_class|distance|race_time_utc|race_status|track_condition|track_rating",
+      "status": "PASS"
+    },
+    {
+      "feed": "live_terminal",
+      "file": "edgeiq_live_terminal_feed_v1.csv",
+      "runtime_path": "/data/edgeiq_live_terminal_feed_v1.csv",
+      "exists": true,
+      "bytes": 435048,
+      "rows_or_items": 503,
+      "mtime": "2026-07-12T06:52:31",
+      "columns": "race_date|day_bucket|meeting_key|race_key|runner_key|track|display_track|race_no|race_number|race_name|race_class|class|distance|distance_m|race_time|track_condition|track_rating|rail_position|rail|field_size",
+      "status": "PASS"
+    },
+    {
+      "feed": "vic_live_terminal",
+      "file": "edgeiq_vic_live_terminal_feed_v1.csv",
+      "runtime_path": "/data/edgeiq_vic_live_terminal_feed_v1.csv",
+      "exists": true,
+      "bytes": 257414,
+      "rows_or_items": 503,
+      "mtime": "2026-07-12T06:52:07",
+      "columns": "race_date|day_bucket|meeting_key|race_key|runner_key|track|display_track|race_no|race_number|race_name|race_class|class|distance|distance_m|race_time|track_condition|track_rating|rail_position|rail|field_size",
+      "status": "PASS"
+    },
+    {
+      "feed": "overview",
+      "file": "edgeiq_overview_terminal_feed_v1.csv",
+      "runtime_path": "/data/edgeiq_overview_terminal_feed_v1.csv",
+      "exists": true,
+      "bytes": 35320,
+      "rows_or_items": 156,
+      "mtime": "2026-07-26T08:38:20",
+      "columns": "workspace_id|meeting_key|race_key|generated_at|race_date|track|race_no|section|evidence|source|status|open|source_timestamp|source_confidence|row_status",
+      "status": "PASS"
+    },
+    {
+      "feed": "performance",
+      "file": "edgeiq_epi_workspace_terminal_feed_v1.csv",
+      "runtime_path": "/data/edgeiq_epi_workspace_terminal_feed_v1.csv",
+      "exists": true,
+      "bytes": 119052,
+      "rows_or_items": 371,
+      "mtime": "2026-07-26T08:38:21",
+      "columns": "workspace_id|meeting_key|race_key|generated_at|race_date|track|race_no|no|horse|current_epi|rank|field_avg|diff|start_10|start_9|start_8|start_7|start_6|start_5|start_4",
+      "status": "PASS"
+    },
+    {
+      "feed": "map",
+      "file": "edgeiq_map_terminal_feed_v1.csv",
+      "runtime_path": "/data/edgeiq_map_terminal_feed_v1.csv",
+      "exists": true,
+      "bytes": 72950,
+      "rows_or_items": 371,
+      "mtime": "2026-07-26T08:38:20",
+      "columns": "workspace_id|meeting_key|race_key|generated_at|race_date|track|race_no|no|horse|barrier|effective_barrier|run_style|early_speed|projected_position|source|source_timestamp|source_confidence|row_status",
+      "status": "PASS"
+    },
+    {
+      "feed": "market",
+      "file": "edgeiq_market_terminal_feed_v1.csv",
+      "runtime_path": "/data/edgeiq_market_terminal_feed_v1.csv",
+      "exists": true,
+      "bytes": 77292,
+      "rows_or_items": 371,
+      "mtime": "2026-07-26T08:38:20",
+      "columns": "workspace_id|meeting_key|race_key|generated_at|race_date|track|race_no|no|horse|epi|market|open|high|low|move|edgeiq_price|edge|status|source|source_timestamp",
+      "status": "PASS"
+    },
+    {
+      "feed": "insights",
+      "file": "edgeiq_insights_terminal_feed_v1.csv",
+      "runtime_path": "/data/edgeiq_insights_terminal_feed_v1.csv",
+      "exists": true,
+      "bytes": 94094,
+      "rows_or_items": 501,
+      "mtime": "2026-07-26T08:38:22",
+      "columns": "workspace_id|meeting_key|race_key|generated_at|race_date|track|race_no|row_kind|card_type|card_title|card_value|card_detail|no|horse|key_insight|edge|confidence|source|source_timestamp|source_confidence",
+      "status": "PASS"
+    },
+    {
+      "feed": "gear",
+      "file": "edgeiq_gear_terminal_feed_v1.csv",
+      "runtime_path": "/data/edgeiq_gear_terminal_feed_v1.csv",
+      "exists": true,
+      "bytes": 49843,
+      "rows_or_items": 371,
+      "mtime": "2026-07-26T08:38:22",
+      "columns": "race_date|track|race_no|race_key|runner|normalized_runner|gear_current|gear_changes|gear_added|gear_removed|first_time_gear|gear_change_flag|source_confidence",
+      "status": "PASS"
+    },
+    {
+      "feed": "results",
+      "file": "edgeiq_meeting_results_terminal_feed_v1.csv",
+      "runtime_path": "/data/edgeiq_meeting_results_terminal_feed_v1.csv",
+      "exists": true,
+      "bytes": 5265,
+      "rows_or_items": 26,
+      "mtime": "2026-07-26T08:38:22",
+      "columns": "meeting_key|race_key|race_date|track|race_no|time|winner|jockey|trainer|sp_tab|margin|official_time|track_condition|status|open|source|source_timestamp|source_confidence",
+      "status": "PASS"
+    },
+    {
+      "feed": "weather",
+      "file": "edgeiq_on_track_weather_governed_v1_2.csv",
+      "runtime_path": "/data/edgeiq_on_track_weather_governed_v1_2.csv",
+      "exists": false,
+      "bytes": 0,
+      "rows_or_items": 0,
+      "mtime": "",
+      "columns": "",
+      "status": "FAIL"
+    }
+  ]
+}

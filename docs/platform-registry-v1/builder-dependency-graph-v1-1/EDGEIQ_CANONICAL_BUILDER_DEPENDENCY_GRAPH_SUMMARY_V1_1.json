@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.1",
+  "generated_utc": "2026-07-28T05:15:40.553566+00:00",
+  "verdict": "PASS",
+  "canonical_builder_node_count": 1280,
+  "dependency_edge_count": 197,
+  "orphan_builder_count": 1163,
+  "builders_with_inputs": 488,
+  "builders_with_outputs": 201,
+  "resolved_output_path_count": 696,
+  "unresolved_dependency_record_count": 2013
+}

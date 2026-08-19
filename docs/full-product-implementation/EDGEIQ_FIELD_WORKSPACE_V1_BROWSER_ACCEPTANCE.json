@@ -1,0 +1,345 @@
+{
+  "status": "PASS",
+  "url": "http://localhost:5173/",
+  "screenshots": [
+    "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\EDGEIQ_FIELD_WORKSPACE_V1_1920.png",
+    "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\EDGEIQ_FIELD_WORKSPACE_V1_1600.png",
+    "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\EDGEIQ_FIELD_WORKSPACE_V1_1440.png",
+    "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\EDGEIQ_FIELD_WORKSPACE_V1_1366.png"
+  ],
+  "results": [
+    {
+      "check": "1920_mounted_field",
+      "status": "PASS"
+    },
+    {
+      "check": "1920_active_tab_field",
+      "status": "PASS"
+    },
+    {
+      "check": "1920_no_browser_horizontal_overflow",
+      "status": "PASS"
+    },
+    {
+      "check": "1920_review_not_orphaned",
+      "status": "PASS"
+    },
+    {
+      "check": "1920_headers_exact",
+      "status": "PASS"
+    },
+    {
+      "check": "1920_counts_rendered",
+      "status": "PASS"
+    },
+    {
+      "check": "1920_compact_field_header",
+      "status": "PASS"
+    },
+    {
+      "check": "1920_admin_wall_removed",
+      "status": "PASS"
+    },
+    {
+      "check": "1920_table_inside_wrap",
+      "status": "PASS"
+    },
+    {
+      "check": "1920_click_expands_one_row",
+      "status": "PASS"
+    },
+    {
+      "check": "1920_expanded_no_raw_placeholders",
+      "status": "PASS"
+    },
+    {
+      "check": "1920_expanded_max_five",
+      "status": "PASS"
+    },
+    {
+      "check": "1920_active_runner_expansion",
+      "status": "PASS"
+    },
+    {
+      "check": "1920_keyboard_toggle",
+      "status": "PASS"
+    },
+    {
+      "check": "1920_scratched_runner_expansion_not_present",
+      "status": "PASS",
+      "note": "No scratched row in selected test race"
+    },
+    {
+      "check": "1600_mounted_field",
+      "status": "PASS"
+    },
+    {
+      "check": "1600_active_tab_field",
+      "status": "PASS"
+    },
+    {
+      "check": "1600_no_browser_horizontal_overflow",
+      "status": "PASS"
+    },
+    {
+      "check": "1600_review_not_orphaned",
+      "status": "PASS"
+    },
+    {
+      "check": "1600_headers_exact",
+      "status": "PASS"
+    },
+    {
+      "check": "1600_counts_rendered",
+      "status": "PASS"
+    },
+    {
+      "check": "1600_compact_field_header",
+      "status": "PASS"
+    },
+    {
+      "check": "1600_admin_wall_removed",
+      "status": "PASS"
+    },
+    {
+      "check": "1600_table_inside_wrap",
+      "status": "PASS"
+    },
+    {
+      "check": "1600_click_expands_one_row",
+      "status": "PASS"
+    },
+    {
+      "check": "1600_expanded_no_raw_placeholders",
+      "status": "PASS"
+    },
+    {
+      "check": "1600_expanded_max_five",
+      "status": "PASS"
+    },
+    {
+      "check": "1600_active_runner_expansion",
+      "status": "PASS"
+    },
+    {
+      "check": "1600_keyboard_toggle",
+      "status": "PASS"
+    },
+    {
+      "check": "1600_scratched_runner_expansion_not_present",
+      "status": "PASS",
+      "note": "No scratched row in selected test race"
+    },
+    {
+      "check": "1440_mounted_field",
+      "status": "PASS"
+    },
+    {
+      "check": "1440_active_tab_field",
+      "status": "PASS"
+    },
+    {
+      "check": "1440_no_browser_horizontal_overflow",
+      "status": "PASS"
+    },
+    {
+      "check": "1440_review_not_orphaned",
+      "status": "PASS"
+    },
+    {
+      "check": "1440_headers_exact",
+      "status": "PASS"
+    },
+    {
+      "check": "1440_counts_rendered",
+      "status": "PASS"
+    },
+    {
+      "check": "1440_compact_field_header",
+      "status": "PASS"
+    },
+    {
+      "check": "1440_admin_wall_removed",
+      "status": "PASS"
+    },
+    {
+      "check": "1440_table_inside_wrap",
+      "status": "PASS"
+    },
+    {
+      "check": "1440_click_expands_one_row",
+      "status": "PASS"
+    },
+    {
+      "check": "1440_expanded_no_raw_placeholders",
+      "status": "PASS"
+    },
+    {
+      "check": "1440_expanded_max_five",
+      "status": "PASS"
+    },
+    {
+      "check": "1440_active_runner_expansion",
+      "status": "PASS"
+    },
+    {
+      "check": "1440_keyboard_toggle",
+      "status": "PASS"
+    },
+    {
+      "check": "1440_scratched_runner_expansion_not_present",
+      "status": "PASS",
+      "note": "No scratched row in selected test race"
+    },
+    {
+      "check": "1366_mounted_field",
+      "status": "PASS"
+    },
+    {
+      "check": "1366_active_tab_field",
+      "status": "PASS"
+    },
+    {
+      "check": "1366_no_browser_horizontal_overflow",
+      "status": "PASS"
+    },
+    {
+      "check": "1366_review_not_orphaned",
+      "status": "PASS"
+    },
+    {
+      "check": "1366_headers_exact",
+      "status": "PASS"
+    },
+    {
+      "check": "1366_counts_rendered",
+      "status": "PASS"
+    },
+    {
+      "check": "1366_compact_field_header",
+      "status": "PASS"
+    },
+    {
+      "check": "1366_admin_wall_removed",
+      "status": "PASS"
+    },
+    {
+      "check": "1366_table_inside_wrap",
+      "status": "PASS"
+    },
+    {
+      "check": "1366_click_expands_one_row",
+      "status": "PASS"
+    },
+    {
+      "check": "1366_expanded_no_raw_placeholders",
+      "status": "PASS"
+    },
+    {
+      "check": "1366_expanded_max_five",
+      "status": "PASS"
+    },
+    {
+      "check": "1366_active_runner_expansion",
+      "status": "PASS"
+    },
+    {
+      "check": "1366_keyboard_toggle",
+      "status": "PASS"
+    },
+    {
+      "check": "1366_scratched_runner_expansion_not_present",
+      "status": "PASS",
+      "note": "No scratched row in selected test race"
+    },
+    {
+      "check": "R1_switching",
+      "status": "PASS",
+      "rows": 8
+    },
+    {
+      "check": "R2_switching",
+      "status": "PASS",
+      "rows": 19
+    },
+    {
+      "check": "R3_switching",
+      "status": "PASS",
+      "rows": 14
+    },
+    {
+      "check": "fewer_than_five_state",
+      "status": "PASS",
+      "race": "R1",
+      "rows": 4
+    },
+    {
+      "check": "no_history_state_browser",
+      "status": "PASS",
+      "race": "R2"
+    },
+    {
+      "check": "scratched_runner_expansion",
+      "status": "PASS",
+      "race": "R2"
+    },
+    {
+      "check": "race_navigation_regression",
+      "status": "PASS"
+    },
+    {
+      "check": "form_guide_navigation",
+      "status": "PASS"
+    },
+    {
+      "check": "field_navigation_return",
+      "status": "PASS"
+    },
+    {
+      "check": "browser_console",
+      "status": "PASS",
+      "consoleMessages": [
+        {
+          "type": "debug",
+          "text": "[vite] connecting..."
+        },
+        {
+          "type": "debug",
+          "text": "[vite] connected."
+        },
+        {
+          "type": "info",
+          "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+        },
+        {
+          "type": "warning",
+          "text": "Clerk disabled: missing VITE_CLERK_PUBLISHABLE_KEY"
+        },
+        {
+          "type": "info",
+          "text": "EDGEiQ daily pipeline status READY 2026-07-20 [2026-07-20, 2026-07-21, 2026-07-22]"
+        },
+        {
+          "type": "debug",
+          "text": "[vite] connecting..."
+        },
+        {
+          "type": "debug",
+          "text": "[vite] connected."
+        },
+        {
+          "type": "info",
+          "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+        },
+        {
+          "type": "warning",
+          "text": "Clerk disabled: missing VITE_CLERK_PUBLISHABLE_KEY"
+        },
+        {
+          "type": "info",
+          "text": "EDGEiQ daily pipeline status READY 2026-07-20 [2026-07-20, 2026-07-21, 2026-07-22]"
+        }
+      ]
+    }
+  ]
+}

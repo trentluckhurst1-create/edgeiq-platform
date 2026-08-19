@@ -1,0 +1,23 @@
+{
+  "workspace": "19_REVIEW",
+  "label": "REVIEW",
+  "captureErrors": [],
+  "mounted": [
+    {
+      "component": "ReviewWorkspace",
+      "key": "REVIEW",
+      "tag": "SECTION",
+      "className": "eiq-race-workspace eiq-race-workspace--review"
+    }
+  ],
+  "mountedComponent": "ReviewWorkspace",
+  "mountedKey": "REVIEW",
+  "selectedMeeting": "2026-07-17|WANGARATTA",
+  "selectedRace": null,
+  "activeSection": "review",
+  "viewLevel": "race",
+  "runnerCount": 3,
+  "dataAvailability": "PARTIAL_OR_PENDING",
+  "bodySample": "EDGEiQ\nRACE INTELLIGENCE\nHOME\nMEETINGS\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nEPI\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nRESULTS\nLAB\nCOMPARE\nREVIEW\nSETTINGS\nEDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM\nInformation is not Intelligence. Evidence leads. Precision decides.\nSUN, 19 JULY 2026\n06:50 pm\nAEDT\nMEETINGS\nWANGARATTA\nRACE 1\nREVIEW\nRace 1\nCurrent Race\nBack to Races\nLOCATION\nWangaratta\nDATE\n2026-07-17\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nEPI\nRESULTS\nREVIEW\nREVIEW\nSectional and performance review\n\nWangaratta R1 | Current Race\n\nSTATUS\nAwaiting result\nRACE KEY\nUnavailable\nDISTANCE\nUnavailable\nCLASS\nUnavailable\nTRACK\nUnavailable\nRAIL\nUnavailable\nFIELD\n30\nWINNER\nPending result\nRUNNERS / SCRATCHINGS\nPending result\nSECTIONAL SUMMARY\nPending result\nSECTIONAL PROFILE\nPending result\nRUNNER PERFORMANCE SNAPSHOT\nPending result\nSTEWARDS / NOTES\nPending result\nREVIEW STRUCTURE\nRace analysis modules\nAREA\tSTATE\tDETAIL\tACTION\nForm guide\tAvailable\t30 runners loaded for this race.\tOpen Form guide\nRace intelligence\tAvailable\tRace overview and current intelligence are available for review.\tOpen Race intelligence\nMarket worksheet\tAvailable\tMarket values exist in the current field feed.\tOpen Market worksheet\nSAVED REVIEW\nNo saved review record\n\nReview persistence is not connected for this race, so EDGEiQ is not showing saved notes or completed analysis that the product has not created.\n\nREVIEW BOUNDARY\nWhat EDGEiQ can show now\nReview only displays race work already available in the current product state.\nOfficial result analysis remains held until a result is supplied.\nNo saved item is shown without a real saved record.\nEDGEiQ Racing Intelligence Operating System\nBuild: 1.0.0\nData as at: 06:50 pm AEDT",
+  "renderedPath": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-live-runtime/19_REVIEW_LIVE_RENDERED.png"
+}

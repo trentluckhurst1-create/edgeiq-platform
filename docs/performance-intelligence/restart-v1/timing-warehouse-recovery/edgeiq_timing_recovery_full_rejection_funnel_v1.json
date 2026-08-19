@@ -1,0 +1,51 @@
+[
+  {
+    "accepted_rows": 39,
+    "input_rows": "",
+    "primary_reason": "CURRENT_WINDOW_SPEED_WAREHOUSE_SCOPE",
+    "rejected_rows": "",
+    "stage": "current_racingcom_v2_1_canonical_speed_races"
+  },
+  {
+    "accepted_rows": 879784,
+    "input_rows": 879784,
+    "primary_reason": "GOVERNED_WAREHOUSE_AUDIT_PASS",
+    "rejected_rows": 0,
+    "stage": "historical_performance_warehouse_runner_rows"
+  },
+  {
+    "accepted_rows": 70308,
+    "input_rows": 71025,
+    "primary_reason": "VALID_OFFICIAL_RACE_TIME_SECONDS",
+    "rejected_rows": 717,
+    "stage": "historical_unique_races"
+  },
+  {
+    "accepted_rows": 695,
+    "input_rows": 70308,
+    "primary_reason": "GROUP_SAMPLE_THRESHOLD_MIN20_UNCHANGED",
+    "rejected_rows": 3411,
+    "stage": "recovered_standard_time_min20_groups"
+  },
+  {
+    "accepted_rows": 54978,
+    "input_rows": 70308,
+    "primary_reason": "NO_RECOVERED_STANDARD_TIME_GROUP",
+    "rejected_rows": 15330,
+    "stage": "recovered_delta_standard_time_match"
+  },
+  {
+    "accepted_rows": 52414,
+    "input_rows": 54978,
+    "primary_reason": "SURFACE_CONDITION_PARAMETER_AVAILABLE",
+    "rejected_rows": 2564,
+    "stage": "recovered_lengths_surface_condition_parameter"
+  },
+  {
+    "accepted_rows": 0,
+    "input_rows": 52414,
+    "primary_reason": "HPR_NORM_A_V1_EFFECTIVE_FROM_2026_07_20",
+    "rejected_rows": 52414,
+    "stage": "normalisation_temporal_eligibility"
+  }
+]

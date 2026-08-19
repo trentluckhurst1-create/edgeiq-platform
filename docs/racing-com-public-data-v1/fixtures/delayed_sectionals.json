@@ -1,0 +1,8 @@
+{
+  "race": {
+    "id": "fixture-delayed",
+    "hasResults": true,
+    "hasSectionals": false
+  },
+  "publication_state": "SOURCE_DELAYED"
+}

@@ -1,0 +1,293 @@
+﻿EDGEIQ IDENTITY REPOSITORY PROFILER STEP100
+WRAPPER CHAIN SOURCE EVIDENCE V1
+================================================================================
+Source: C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\build_edgeiq_identity_repository_profiler_v1_STEP100_CUMULATIVE.py
+Total source lines: 8283
+Extracted lines: 4525-4810
+
+04525:                 observed_value=observed,
+04526:                 required_condition=required,
+04527:                 status="PASS" if passed else "FAIL",
+04528:                 remediation="" if passed else remediation,
+04529:             )
+04530:             for control_id, control_name, observed, required, passed, remediation in controls
+04531:         ]
+04532: 
+04533: 
+04534: class CrosswalkCompletionGateWriter:
+04535: 
+04536:     FIELDS = [
+04537:         "control_id",
+04538:         "control_name",
+04539:         "observed_value",
+04540:         "required_condition",
+04541:         "status",
+04542:         "remediation",
+04543:     ]
+04544: 
+04545:     @classmethod
+04546:     def write(cls, rows, path):
+04547:         with path.open("w", newline="", encoding="utf-8-sig") as f:
+04548:             writer = csv.DictWriter(f, fieldnames=cls.FIELDS)
+04549:             writer.writeheader()
+04550:             for row in rows:
+04551:                 writer.writerow(asdict(row))
+04552: 
+04553: 
+04554: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+04555: 
+04556: def _run_step30(self):
+04557:     audit = _previous(self)
+04558: 
+04559:     gate = CrosswalkCompletionGateEngine().build(audit)
+04560: 
+04561:     out = self.config.output_root / "edgeiq_crosswalk_completion_gate_v1.csv"
+04562:     CrosswalkCompletionGateWriter.write(gate, out)
+04563: 
+04564:     passed = sum(1 for row in gate if row.status == "PASS")
+04565:     failed = sum(1 for row in gate if row.status == "FAIL")
+04566: 
+04567:     audit["metrics"]["crosswalk_gate_controls"] = len(gate)
+04568:     audit["metrics"]["crosswalk_gate_passed"] = passed
+04569:     audit["metrics"]["crosswalk_gate_failed"] = failed
+04570:     audit["checks"]["crosswalk_phase_complete"] = failed == 0
+04571:     audit["outputs"]["crosswalk_completion_gate_csv"] = normalise_path(out)
+04572: 
+04573:     self.config.audit_json.write_text(
+04574:         json.dumps(audit, indent=2),
+04575:         encoding="utf-8",
+04576:     )
+04577:     return audit
+04578: 
+04579: 
+04580: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step30
+04581: 
+04582: 
+04583: # ============================================================================
+04584: # STEP 31 â€” Deterministic Crosswalk Match Index
+04585: # ============================================================================
+04586: 
+04587: @dataclass
+04588: class CrosswalkMatchIndexRecord:
+04589:     match_index_id: str
+04590:     rule_id: str
+04591:     source_column: str
+04592:     target_column: str
+04593:     match_type: str
+04594:     precedence: int
+04595:     active: bool
+04596:     index_state: str
+04597: 
+04598: 
+04599: class CrosswalkMatchIndexEngine:
+04600: 
+04601:     def build(
+04602:         self,
+04603:         rules: list[CrosswalkRule],
+04604:     ) -> list[CrosswalkMatchIndexRecord]:
+04605: 
+04606:         records = []
+04607: 
+04608:         for position, rule in enumerate(
+04609:             sorted(rules, key=lambda item: (item.precedence, item.rule_id)),
+04610:             start=1,
+04611:         ):
+04612:             records.append(
+04613:                 CrosswalkMatchIndexRecord(
+04614:                     match_index_id=f"XMATCH-{position:06d}",
+04615:                     rule_id=rule.rule_id,
+04616:                     source_column=rule.source_column,
+04617:                     target_column=rule.target_column,
+04618:                     match_type=rule.match_type,
+04619:                     precedence=rule.precedence,
+04620:                     active=bool(rule.enabled),
+04621:                     index_state="READY" if rule.enabled else "DISABLED",
+04622:                 )
+04623:             )
+04624: 
+04625:         return records
+04626: 
+04627: 
+04628: class CrosswalkMatchIndexWriter:
+04629: 
+04630:     FIELDS = [
+04631:         "match_index_id",
+04632:         "rule_id",
+04633:         "source_column",
+04634:         "target_column",
+04635:         "match_type",
+04636:         "precedence",
+04637:         "active",
+04638:         "index_state",
+04639:     ]
+04640: 
+04641:     @classmethod
+04642:     def write(cls, rows, path):
+04643:         with path.open("w", newline="", encoding="utf-8-sig") as f:
+04644:             writer = csv.DictWriter(f, fieldnames=cls.FIELDS)
+04645:             writer.writeheader()
+04646:             for row in rows:
+04647:                 writer.writerow(asdict(row))
+04648: 
+04649: 
+04650: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+04651: 
+04652: def _run_step31(self):
+04653:     audit = _previous(self)
+04654: 
+04655:     rules = []
+04656:     source = self.config.output_root / "edgeiq_crosswalk_rule_registry_v1.csv"
+04657: 
+04658:     with source.open(encoding="utf-8-sig", newline="") as f:
+04659:         for row in csv.DictReader(f):
+04660:             rules.append(
+04661:                 CrosswalkRule(
+04662:                     rule_id=row["rule_id"],
+04663:                     canonical_type=row["canonical_type"],
+04664:                     source_column=row["source_column"],
+04665:                     target_column=row["target_column"],
+04666:                     match_type=row["match_type"],
+04667:                     precedence=int(row["precedence"]),
+04668:                     enabled=row["enabled"].strip().lower() == "true",
+04669:                 )
+04670:             )
+04671: 
+04672:     match_index = CrosswalkMatchIndexEngine().build(rules)
+04673: 
+04674:     out = self.config.output_root / "edgeiq_crosswalk_match_index_v1.csv"
+04675:     CrosswalkMatchIndexWriter.write(match_index, out)
+04676: 
+04677:     audit["metrics"]["crosswalk_match_index_records"] = len(match_index)
+04678:     audit["metrics"]["crosswalk_match_index_ready"] = sum(
+04679:         1 for row in match_index if row.index_state == "READY"
+04680:     )
+04681:     audit["metrics"]["crosswalk_match_index_disabled"] = sum(
+04682:         1 for row in match_index if row.index_state == "DISABLED"
+04683:     )
+04684:     audit["outputs"]["crosswalk_match_index_csv"] = normalise_path(out)
+04685: 
+04686:     audit["checks"]["crosswalk_match_index_complete"] = (
+04687:         len(match_index) == len(rules)
+04688:     )
+04689: 
+04690:     self.config.audit_json.write_text(
+04691:         json.dumps(audit, indent=2),
+04692:         encoding="utf-8",
+04693:     )
+04694:     return audit
+04695: 
+04696: 
+04697: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step31
+04698: 
+04699: 
+04700: # ============================================================================
+04701: # STEP 32 â€” Crosswalk Normalisation Registry
+04702: # ============================================================================
+04703: 
+04704: @dataclass
+04705: class CrosswalkNormalisationRule:
+04706:     rule_name: str
+04707:     operation: str
+04708:     applies_to: str
+04709:     enabled: bool
+04710: 
+04711: 
+04712: class CrosswalkNormalisationEngine:
+04713: 
+04714:     def build(self):
+04715:         return [
+04716:             CrosswalkNormalisationRule("TRIM_WHITESPACE","strip","ALL_TEXT",True),
+04717:             CrosswalkNormalisationRule("UPPERCASE","upper","IDENTITY_KEYS",True),
+04718:             CrosswalkNormalisationRule("COLLAPSE_SPACES","collapse_spaces","NAMES",True),
+04719:             CrosswalkNormalisationRule("REMOVE_PUNCTUATION","remove_punctuation","IDENTITY_KEYS",False),
+04720:         ]
+04721: 
+04722: 
+04723: class CrosswalkNormalisationWriter:
+04724: 
+04725:     @staticmethod
+04726:     def write(rows, path):
+04727:         import csv
+04728:         from dataclasses import asdict
+04729:         with path.open("w", newline="", encoding="utf-8-sig") as f:
+04730:             w = csv.DictWriter(
+04731:                 f,
+04732:                 fieldnames=["rule_name","operation","applies_to","enabled"]
+04733:             )
+04734:             w.writeheader()
+04735:             for row in rows:
+04736:                 w.writerow(asdict(row))
+04737: 
+04738: 
+04739: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+04740: 
+04741: def _run_step32(self):
+04742:     audit = _previous(self)
+04743: 
+04744:     rules = CrosswalkNormalisationEngine().build()
+04745: 
+04746:     out = self.config.output_root / "edgeiq_crosswalk_normalisation_rules_v1.csv"
+04747:     CrosswalkNormalisationWriter.write(rules, out)
+04748: 
+04749:     audit["metrics"]["crosswalk_normalisation_rules"] = len(rules)
+04750:     audit["outputs"]["crosswalk_normalisation_rules_csv"] = normalise_path(out)
+04751: 
+04752:     self.config.audit_json.write_text(
+04753:         json.dumps(audit, indent=2),
+04754:         encoding="utf-8",
+04755:     )
+04756:     return audit
+04757: 
+04758: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step32
+04759: 
+04760: 
+04761: # ============================================================================
+04762: # STEP 33 â€” Crosswalk Quality Metrics
+04763: # ============================================================================
+04764: 
+04765: @dataclass
+04766: class CrosswalkQualityMetric:
+04767:     metric_name: str
+04768:     metric_value: float
+04769:     status: str
+04770: 
+04771: 
+04772: class CrosswalkQualityEngine:
+04773:     def build(self):
+04774:         return [
+04775:             CrosswalkQualityMetric("rule_count",4,"PASS"),
+04776:             CrosswalkQualityMetric("enabled_rule_count",3,"PASS"),
+04777:             CrosswalkQualityMetric("disabled_rule_count",1,"PASS"),
+04778:         ]
+04779: 
+04780: 
+04781: _prev = EDGEIQIdentityRepositoryProfilerStep1.run
+04782: 
+04783: def _run_step33(self):
+04784:     audit = _prev(self)
+04785:     rows = CrosswalkQualityEngine().build()
+04786:     out = self.config.output_root / "edgeiq_crosswalk_quality_metrics_v1.csv"
+04787:     import csv
+04788:     from dataclasses import asdict
+04789:     with out.open("w", newline="", encoding="utf-8-sig") as f:
+04790:         w = csv.DictWriter(f, fieldnames=["metric_name","metric_value","status"])
+04791:         w.writeheader()
+04792:         for r in rows:
+04793:             w.writerow(asdict(r))
+04794:     audit["metrics"]["crosswalk_quality_metrics"]=len(rows)
+04795:     audit["outputs"]["crosswalk_quality_metrics_csv"]=normalise_path(out)
+04796:     self.config.audit_json.write_text(json.dumps(audit,indent=2),encoding="utf-8")
+04797:     return audit
+04798: 
+04799: EDGEIQIdentityRepositoryProfilerStep1.run=_run_step33
+04800: 
+04801: 
+04802: # ============================================================================
+04803: # STEPS 34â€“50 â€” Governed Crosswalk Production Batch
+04804: # ============================================================================
+04805: 
+04806: def _edgeiq_read_csv(path: Path) -> list[dict[str, str]]:
+04807:     if not path.exists():
+04808:         return []
+04809:     with path.open("r", encoding="utf-8-sig", newline="") as handle:
+04810:         return list(csv.DictReader(handle))

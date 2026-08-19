@@ -1,0 +1,250 @@
+633c784|2026-07-29 04:54:33 +1000|repository recovery v2: final closure
+5837c7b|2026-07-29 04:48:18 +1000|repository recovery v2: remediate protected snapshots
+ede91f4|2026-07-29 03:17:18 +1000|chore(repository): archive verified historical snapshots
+1946062|2026-07-28 16:40:36 +1000|Add corrected platform governance dashboard v1.1
+d7171c6|2026-07-28 15:23:31 +1000|Add corrected product feed registry v1.1
+7b069c4|2026-07-28 15:15:41 +1000|Correct canonical builder dependency graph v1.1
+1b7b970|2026-07-28 15:12:19 +1000|Add canonical builder dependency graph v1
+1e6f2ab|2026-07-28 15:10:10 +1000|Add canonical scope refiner v1
+805042e|2026-07-28 15:05:29 +1000|Add canonical parse failure auditor v1
+b551089|2026-07-28 14:16:56 +1000|Add live-source canonical builder registry v1.1
+61a624a|2026-07-28 14:02:39 +1000|Add governed EDGEIQ canonical builder registry v1
+ed91351|2026-07-27 18:18:23 +1000|Build governed Historical Observation Warehouse V3
+dd3cc03|2026-07-27 15:50:29 +1000|audit historical observation v3 builder architecture
+8c607b0|2026-07-27 14:02:55 +1000|govern performance observation correction specification
+c2b3324|2026-07-27 09:49:52 +1000|fix(field): lock workspace presentation
+d446625|2026-07-26 18:14:27 +1000|fix(race): final polish workspace presentation
+4538a1a|2026-07-26 17:34:06 +1000|fix(race): repair workspace visual rendering
+24f6583|2026-07-26 16:44:21 +1000|fix(race): implement locked professional workspace specification
+711b981|2026-07-26 15:51:39 +1000|fix(meetings): complete locked professional workspace
+83b9cac|2026-07-26 13:23:23 +1000|fix(performance): restore governed current EPI ERI pricing lineage
+64bbabc|2026-07-26 12:53:09 +1000|feat(market): finalise governed Ladbrokes integration
+284049f|2026-07-26 11:16:55 +1000|feat(weather): add Victorian BOM station registry and licence-gated ingestion
+a0d7a60|2026-07-26 10:06:59 +1000|fix(operations): finalise daily-use acceptance and source disclosure
+30042c4|2026-07-26 09:15:22 +1000|feat(operations): complete live product readiness and daily refresh
+e7a0fbd|2026-07-26 08:08:45 +1000|fix(performance): finalise governed weight-adjusted EPI
+16a13f5|2026-07-26 07:57:41 +1000|feat(performance): complete governed performance intelligence program
+dbbf87c|2026-07-26 07:07:13 +1000|fix(identity-profiler): finalize bounded governed repository profiler
+32b8beb|2026-07-24 11:59:42 +1000|audit: assess Racing.com identity enrichment potential v1
+a85b67e|2026-07-24 11:51:46 +1000|feat: classify historical observation identity failures v1
+f7d665c|2026-07-24 11:08:37 +1000|fix: rebuild historical observation warehouse with expanded identities v2
+bc5e31d|2026-07-24 11:05:53 +1000|fix: expand governed historical horse identities v2
+2a0592a|2026-07-23 19:19:55 +1000|feat: build canonical historical run observation warehouse v2
+f3b1164|2026-07-23 16:15:23 +1000|feat: inventory historical observation sources v2
+b8ee80d|2026-07-23 16:15:23 +1000|fix: register current racingcom horse identities v2
+889bd89|2026-07-23 14:34:18 +1000|feat: build canonical horse master warehouse v2
+2425636|2026-07-23 14:16:25 +1000|feat: publish canonical race intelligence feed v2
+914ab6c|2026-07-23 14:16:25 +1000|feat: establish fail closed epi engine v2 readiness
+99e2e19|2026-07-23 14:16:24 +1000|feat: build canonical projected performance engine v2
+1dffd84|2026-07-23 14:16:24 +1000|feat: govern live to historical identity and suitability v2
+f4f407d|2026-07-23 14:05:58 +1000|feat: build canonical empirical suitability engine v2
+c891b67|2026-07-23 14:05:58 +1000|fix: correct canonical active field sizes v2
+e07a210|2026-07-23 13:58:04 +1000|feat: build canonical factual race context v2
+80968dc|2026-07-23 13:51:06 +1000|feat: build canonical live horse rating snapshot v2
+d5def96|2026-07-23 13:08:11 +1000|feat: formalize performance intelligence production program
+335b3b2|2026-07-23 13:02:24 +1000|data: audit governed projected performance and epi availability
+db7e44b|2026-07-23 13:01:15 +1000|data: match governed horse ratings to live entries
+ea6cb59|2026-07-23 13:00:14 +1000|data: build governed rolling horse performance ratings
+d6f9b9e|2026-07-23 12:58:11 +1000|data: activate governed horse aggregation parameters
+d55a480|2026-07-23 12:56:07 +1000|data: activate governed performance normalisation parameters
+b154504|2026-07-23 12:54:12 +1000|docs: approve horse rating methodology v1
+020f1a8|2026-07-23 12:41:44 +1000|docs: prepare horse rating methodology owner decision
+7fec114|2026-07-23 12:31:43 +1000|docs: record horse rating governance validation results
+6c6cafe|2026-07-23 12:12:34 +1000|docs: finalize horse rating governance source recovery
+34212db|2026-07-23 12:09:40 +1000|audit: decide horse rating parameter provenance
+26cf0a6|2026-07-23 12:08:15 +1000|data: build governed horse performance identity map
+e4932b5|2026-07-23 11:59:47 +1000|audit: recover horse performance aggregation contract
+486cc09|2026-07-23 11:58:53 +1000|audit: recover performance normalisation contract
+5f0f4ec|2026-07-23 11:58:06 +1000|audit: recover historical horse rating method evidence
+1e42868|2026-07-23 11:49:52 +1000|audit: trace horse rating governance source consumers
+3f59958|2026-07-23 11:27:47 +1000|audit: certify horse performance rating recovery blocker
+c600e62|2026-07-23 11:15:21 +1000|audit: report live entry historical rating coverage
+7792241|2026-07-23 11:14:07 +1000|audit: check horse performance rating builder defects
+789c6e8|2026-07-23 11:12:57 +1000|audit: verify horse performance rating eligibility gates
+5d0fe21|2026-07-23 11:11:48 +1000|audit: verify historical performance horse identities
+a1c2fa8|2026-07-23 11:09:40 +1000|audit: verify horse performance rating input compatibility
+5c51958|2026-07-23 11:08:17 +1000|audit: prove horse performance rating fact grain
+9cf25ef|2026-07-23 11:07:12 +1000|audit: expose horse performance rating row funnel
+082180f|2026-07-23 11:05:04 +1000|audit: recover governed horse performance rating method
+4c86633|2026-07-23 11:03:45 +1000|audit: trace horse performance rating builder
+31b73be|2026-07-23 10:46:40 +1000|audit: refresh race entry source inventory after live repair
+7f061b3|2026-07-23 10:46:10 +1000|audit: certify live race entry epi activation status
+59cecc1|2026-07-23 08:38:51 +1000|data: build live race entry projected performance facts
+c12b8c1|2026-07-23 08:38:12 +1000|data: build canonical live race entry fact v1
+a6456e4|2026-07-23 08:35:02 +1000|data: govern live race entry runner identities
+7635274|2026-07-23 08:35:02 +1000|fix: restore canonical live race identities
+f145e9b|2026-07-23 08:33:18 +1000|fix: restore live race field ingestion
+5ddaf59|2026-07-23 08:17:14 +1000|audit: decide authoritative live race entry source
+aaf95b0|2026-07-23 08:15:54 +1000|audit: trace three day window race entry coverage
+91aa946|2026-07-23 08:14:23 +1000|audit: inventory current race entry sources
+f5afa9f|2026-07-23 07:45:47 +1000|audit: classify projected performance blocker as no active race entries
+e51d26c|2026-07-23 07:39:40 +1000|audit: classify current race entry source availability
+0650030|2026-07-23 07:33:43 +1000|audit: expose race entry projection row funnel
+0da827b|2026-07-23 07:32:40 +1000|audit: trace race entry projected performance builder
+2f4bb63|2026-07-23 07:26:49 +1000|audit: certify performance intelligence final live v2 synthetic path
+3d97113|2026-07-23 07:22:01 +1000|feat: activate australian synthetic performance intelligence pipeline
+a81f521|2026-07-23 07:21:35 +1000|data: rebuild epi with australian synthetic performance inputs
+669b5ad|2026-07-23 07:20:55 +1000|audit: certify epi readiness with australian synthetic data
+62f4424|2026-07-23 07:20:37 +1000|data: add australian synthetic early and late speed coverage
+d1866ba|2026-07-23 07:20:26 +1000|feat: rebuild runner sectional performance from synthetic lvs
+e89bd47|2026-07-23 07:20:10 +1000|data: produce australian synthetic lengths versus standard v2
+056ccdc|2026-07-23 07:19:48 +1000|feat: extend length conversion provider for australian synthetic
+c872fc9|2026-07-23 07:19:35 +1000|data: govern canonical australian surface identities
+d9e695b|2026-07-23 07:19:16 +1000|docs: approve australian synthetic length conversion v2
+ce19b17|2026-07-23 06:58:16 +1000|audit: certify performance intelligence final live v2
+cefb567|2026-07-23 06:51:58 +1000|feat: activate complete performance intelligence orchestration
+a8469cc|2026-07-23 06:51:20 +1000|audit: update epi readiness after length method approval
+23d348a|2026-07-23 06:50:29 +1000|data: rebuild governed early and late speed feeds
+7f3ccd8|2026-07-23 06:49:39 +1000|feat: build governed runner sectional performance v1
+156ec56|2026-07-23 06:48:52 +1000|audit: validate edgeiq length conversion sensitivity v1
+f87c6b5|2026-07-23 06:48:14 +1000|data: produce governed results lengths versus standard v1
+48c46d7|2026-07-23 06:44:48 +1000|feat: implement edgeiq length conversion provider v1
+d3940db|2026-07-23 06:44:04 +1000|docs: approve edgeiq going-dependent length conversion v1
+7364a7c|2026-07-23 06:36:33 +1000|audit: certify performance intelligence length method blocker
+c4db173|2026-07-23 06:31:03 +1000|feat: gate performance intelligence production orchestration
+6980ad9|2026-07-23 06:30:20 +1000|audit: determine epi dependency readiness
+288f6f7|2026-07-23 06:29:23 +1000|audit: gate results lengths versus standard recovery
+6b6c111|2026-07-23 06:27:51 +1000|audit: block ungoverned seconds per length methods
+fb520e7|2026-07-23 06:26:41 +1000|audit: recover edgeiq seconds per length methodology
+ecce8ca|2026-07-23 06:06:46 +1000|audit: certify results standard time recovery
+92a270e|2026-07-23 06:05:31 +1000|audit: trace results standard time downstream consumers
+c2ebcdb|2026-07-23 05:57:23 +1000|data: compute results lengths versus standard
+a0a385f|2026-07-23 05:55:44 +1000|data: compute results-based standard times
+6ed72ff|2026-07-23 05:54:39 +1000|audit: evaluate results standard time eligibility
+efb3815|2026-07-23 05:53:45 +1000|feat: build results-based standard time facts
+f32970a|2026-07-23 05:53:00 +1000|docs: define standard time observation contract
+64f8bd1|2026-07-23 05:52:23 +1000|feat: derive governed results elapsed times
+9c5c667|2026-07-23 05:49:28 +1000|audit: prove racingcom speed observation semantics
+c649078|2026-07-23 05:47:00 +1000|audit: identify results warehouse standard time source
+d98481d|2026-07-23 05:33:20 +1000|audit: certify performance intelligence live e2e
+7d8262f|2026-07-23 05:26:11 +1000|data: rebuild performance fact warehouse from graphql ingestion
+2fc1123|2026-07-23 05:23:01 +1000|audit: report racingcom fresh graphql acquisition population
+30fdbf8|2026-07-23 05:22:15 +1000|feat: wire racingcom graphql v2 production orchestration
+6026cb3|2026-07-23 05:18:03 +1000|feat: promote racingcom graphql runner warehouse v2
+c90f6b9|2026-07-23 05:17:32 +1000|audit: preserve racingcom graphql v2 pre-migration backup
+b3ee03e|2026-07-23 05:17:11 +1000|audit: approve racingcom graphql v2 production migration
+43960a8|2026-07-23 05:14:48 +1000|fix: make racingcom runner adapter idempotent after promotion
+3695f09|2026-07-23 05:01:39 +1000|docs: update racingcom migration review for runner adapter
+8dcabe4|2026-07-23 05:00:03 +1000|audit: gate racingcom runner-compatible candidate
+fe62562|2026-07-23 04:59:47 +1000|audit: verify racingcom runner candidate compatibility
+d0a5943|2026-07-23 04:59:46 +1000|test: validate racingcom graphql runner aggregation
+28dfd36|2026-07-23 04:59:46 +1000|test: prove racingcom historical runner compatibility
+84c3a87|2026-07-23 04:59:24 +1000|feat: build racingcom runner aggregate adapter v2
+076431c|2026-07-23 04:59:09 +1000|docs: define racingcom runner aggregate contract v2
+2734602|2026-07-23 04:58:57 +1000|audit: determine racingcom runner aggregation semantics
+5ac77b7|2026-07-23 04:54:57 +1000|audit: profile racingcom production runner contract
+de6535f|2026-07-23 04:42:48 +1000|docs: add racingcom graphql human migration review package
+db0ce43|2026-07-23 04:29:53 +1000|docs: report racingcom graphql integration readiness
+ad48a59|2026-07-23 04:28:30 +1000|test: gate racingcom graphql migration readiness
+55618eb|2026-07-23 04:27:36 +1000|test: add racingcom graphql integration e2e gate
+aeef172|2026-07-23 04:26:47 +1000|feat: build racingcom graphql candidate warehouse
+ead8f30|2026-07-23 04:25:44 +1000|test: add racingcom graphql integration checks
+44e2231|2026-07-23 04:24:55 +1000|feat: normalize racingcom speed sources into canonical contract
+005421a|2026-07-23 04:21:47 +1000|feat: parse racingcom graphql speed payloads
+12352a1|2026-07-23 04:20:00 +1000|test: validate racingcom graphql speed responses
+154cb6a|2026-07-23 04:19:04 +1000|feat: acquire racingcom graphql speed payloads
+ae6621e|2026-07-23 04:18:54 +1000|fix: align racingcom graphql request query with observed schema
+eada2f4|2026-07-23 04:16:04 +1000|docs: govern racingcom graphql api key configuration
+2c473ca|2026-07-23 04:15:15 +1000|feat: build racingcom graphql request contract
+3542dec|2026-07-23 04:13:49 +1000|fix: admit verified racingcom graphql speed races
+681de9e|2026-07-23 04:13:18 +1000|fix: extend racingcom race discovery with graphql evidence
+438f931|2026-07-23 04:09:52 +1000|feat: build racingcom graphql race evidence adapter
+66e13ae|2026-07-23 04:08:06 +1000|docs: define racingcom race discovery evidence extension
+4c11fcc|2026-07-23 04:07:04 +1000|audit: diagnose racingcom race discovery fixture gap
+d5247d8|2026-07-23 04:00:27 +1000|feat: add racingcom graphql source admission
+9a37e81|2026-07-22 19:41:25 +1000|audit: gate racingcom fresh source migration readiness
+7a32b14|2026-07-22 19:39:08 +1000|docs: define racingcom fresh source integration
+2457d8d|2026-07-22 19:38:09 +1000|feat: prove fresh racingcom speed-data acquisition
+fedbd04|2026-07-22 19:33:23 +1000|audit: validate racingcom speed-data source candidates
+df4b78a|2026-07-22 19:29:40 +1000|audit: capture racingcom speed-data network traffic
+b01966b|2026-07-22 19:19:25 +1000|audit: inspect racingcom static speed-data sources
+2b05578|2026-07-22 19:15:37 +1000|audit: define racingcom speed-data discovery fixtures
+daf2241|2026-07-22 18:50:15 +1000|docs: add racingcom ingestion v2 e2e gate
+a6726eb|2026-07-22 18:45:58 +1000|feat: build racingcom performance warehouse v2
+d4f9b90|2026-07-22 18:42:02 +1000|refactor: isolate racingcom speed-data parser
+4468ecf|2026-07-22 18:38:49 +1000|feat: add governed racingcom csv acquisition v2
+6d4a81d|2026-07-22 18:34:48 +1000|feat: add governed racingcom speed-page discovery
+b2994b4|2026-07-22 18:32:43 +1000|fix: govern racingcom csv admission from verified races
+1e277a4|2026-07-22 18:29:52 +1000|feat: add evidence-based racingcom race discovery v2
+2d76997|2026-07-22 18:24:08 +1000|feat: build governed racingcom meeting discovery v2
+66f565e|2026-07-22 18:20:15 +1000|audit: trace racingcom calendar discovery producer
+f346575|2026-07-22 14:40:08 +1000|Release governed EDGEiQ EPI warehouse v1
+06c8124|2026-07-22 14:28:52 +1000|Build governed race EPI publication snapshot fact v1
+3628694|2026-07-22 14:20:04 +1000|Build governed race entry EPI publication snapshot fact v1
+2e6048c|2026-07-22 14:11:36 +1000|Build governed race EPI ordering summary fact v1
+a882177|2026-07-22 13:59:51 +1000|Build governed race entry EPI ordering fact v1
+7879e8e|2026-07-22 13:52:16 +1000|Build governed race entry EPI relative context fact v1
+e67685c|2026-07-22 12:42:08 +1000|Build governed race EPI distribution fact v1
+3d54871|2026-07-22 12:33:19 +1000|Build governed race entry EPI fact v1
+eb2c4d4|2026-07-22 12:21:58 +1000|Build governed race entry EPI component fact v1
+cb6ad42|2026-07-22 12:02:29 +1000|Build governed EPI component normalisation parameter fact v1
+0096256|2026-07-22 11:20:48 +1000|Build governed EPI parameter fact v1
+1e8bf13|2026-07-22 11:14:36 +1000|Build governed race entry ERI context fact v1
+3476447|2026-07-22 10:52:48 +1000|Build governed race ERI fact v1
+f324bf2|2026-07-22 10:43:27 +1000|Build governed race ERI parameter fact v1
+4db97c0|2026-07-22 10:38:08 +1000|Build governed race entry projected performance fact v1
+141989d|2026-07-22 10:30:52 +1000|Build governed race entry suitability aggregate fact v1
+727c5f2|2026-07-22 10:23:23 +1000|Build governed race entry suitability component fact v1
+90050e9|2026-07-22 09:46:07 +1000|Build governed race entry context adjusted performance fact v1
+4010c2e|2026-07-22 09:37:01 +1000|Build governed race entry context adjustment fact v1
+8a1a94d|2026-07-22 09:27:34 +1000|Build governed race entry context parameter selection fact v1
+484a2d2|2026-07-22 08:44:21 +1000|Build governed race entry context eligibility fact v1
+917939b|2026-07-22 08:38:52 +1000|Build governed race entry performance context fact v1
+2be14ea|2026-07-22 08:25:05 +1000|Build governed race entry horse performance snapshot fact v1
+c041fbf|2026-07-22 08:19:47 +1000|Build governed horse performance profile fact v1
+714e13c|2026-07-22 08:15:18 +1000|Build governed horse performance rating fact v1
+be571d0|2026-07-22 08:11:16 +1000|Build governed horse performance aggregate fact v1
+6d4a112|2026-07-22 07:53:36 +1000|Build governed horse performance aggregation parameter fact v1
+b64efd5|2026-07-22 07:46:34 +1000|Build governed horse performance observation fact v1
+953eead|2026-07-22 07:43:04 +1000|Build governed performance rating base fact v1
+a40d72f|2026-07-22 07:38:18 +1000|Build governed performance normalisation parameter fact v1
+5c3f384|2026-07-22 07:33:33 +1000|Build governed performance normalisation fact v1
+004c8d5|2026-07-22 07:31:28 +1000|Build governed performance intelligence base fact v1
+869b907|2026-07-22 07:25:48 +1000|Build governed length conversion parameter fact v1
+b951e85|2026-07-22 07:17:31 +1000|Build governed lengths versus standard engine v1
+254f1a6|2026-07-22 07:13:54 +1000|Build governed race time delta versus standard v1
+5d9a3b0|2026-07-22 07:10:42 +1000|Build governed standard time engine v1
+2ad99e3|2026-07-22 06:59:14 +1000|Build governed benchmark accumulation fact v1
+f4ce826|2026-07-22 06:31:49 +1000|Build governed benchmark eligibility fact v1
+dc19ba3|2026-07-22 06:05:25 +1000|Build governed benchmark observation fact v1
+10c8e6d|2026-07-22 05:43:03 +1000|Build canonical Racing.com speed warehouse v2.1
+f097fe0|2026-07-22 05:33:21 +1000|Correct Racing.com split timing window semantics v1.1
+ac9973d|2026-07-22 05:06:39 +1000|Build canonical Racing.com speed warehouse v2
+ae76031|2026-07-22 04:52:55 +1000|Validate Racing.com speed field semantics v1
+fac8d89|2026-07-22 04:46:32 +1000|Audit Racing.com speed warehouse reproducibility
+6b7cbd2|2026-07-22 04:44:57 +1000|Add governed Racing.com runner speed warehouse outputs
+cd37d43|2026-07-22 04:42:36 +1000|Build governed Racing.com runner speed warehouse v1
+5501653|2026-07-20 15:56:28 +1000|Complete final locked Form Guide implementation
+7f852d2|2026-07-20 13:54:29 +1000|Rebuild Form Guide to exact approved pixel specification
+a55bdeb|2026-07-20 11:10:48 +1000|Restore live governed data population
+080174e|2026-07-19 18:58:16 +1000|Complete final live runtime workspace wiring
+803f560|2026-07-19 17:48:22 +1000|Complete approved UI rebuild and conformance evidence
+abce08d|2026-07-19 11:47:41 +1000|Fix final conformance meeting navigation state
+0254fd1|2026-07-19 10:07:49 +1000|Fix final pixel spec acceptance gates
+7b71513|2026-07-19 09:01:57 +1000|Implement final pixel spec phase 1 shell
+b805df4|2026-07-19 07:59:27 +1000|Add final forensic conformance audit
+80681fc|2026-07-19 04:57:23 +1000|Add full product acceptance audit
+405b5c3|2026-07-19 04:48:16 +1000|Complete home and settings final spec
+c770788|2026-07-19 04:33:25 +1000|Complete review workspace final spec
+f9892f8|2026-07-19 04:19:03 +1000|Complete compare workspace final spec
+275f8fa|2026-07-19 03:51:14 +1000|Complete lab workspace final spec
+3025408|2026-07-19 03:26:57 +1000|Complete weather workspace final spec
+acb9bea|2026-07-19 02:49:39 +1000|Implement TRACK final spec tranche
+8f58d9a|2026-07-19 02:29:53 +1000|Implement GEAR CHANGES final spec tranche
+24d845e|2026-07-19 02:02:04 +1000|Implement SCRATCHINGS final spec tranche
+86e7afb|2026-07-19 01:45:51 +1000|Implement MEETING DETAIL final spec tranche
+9bbfc9b|2026-07-19 01:24:40 +1000|Implement MEETINGS final spec tranche
+ca4506f|2026-07-19 00:55:02 +1000|Implement RESULTS final spec tranche
+f9608b3|2026-07-19 00:25:26 +1000|Implement INSIGHTS final spec tranche
+a71f873|2026-07-18 23:50:00 +1000|Implement OVERVIEW final spec tranche
+1b90fde|2026-07-18 23:03:33 +1000|Certify MARKET final spec tranche
+4b32f4b|2026-07-18 22:48:40 +1000|Implement MAP final spec tranche
+e8dc329|2026-07-18 21:54:50 +1000|Implement form guide final spec tranche
+c54b367|2026-07-18 20:34:52 +1000|Implement race field performance epi workspace tranche
+3312192|2026-07-18 18:13:45 +1000|Split EDGEiQ performance workspace route
+bb65953|2026-07-18 16:43:21 +1000|Implement EDGEiQ product navigation foundation
+3b55eb5|2026-07-11 18:55:31 +1000|Repair current race intelligence pipeline and populate Form Guide
+26edee2|2026-07-08 17:44:30 +1000|Audit professional historical form engine
+49d2643|2026-07-08 17:43:00 +1000|Build professional historical form engine
+2ed8041|2026-07-08 17:07:47 +1000|Build EDGEiQ Compare workspace
+16bee5d|2026-07-08 13:58:06 +1000|Build professional Race Book

@@ -1,0 +1,43 @@
+{
+  "duplicate_current_status": "PASS",
+  "first_remaining_blocker": "NO_VALIDATED_CONTEXT_PARAMETERS_AND_NO_CURRENT_SNAPSHOT_EPI_COMPONENT_SET",
+  "historical_preservation_status": "PASS",
+  "metrics": {
+    "approved_interactions": 0,
+    "approved_main_effects": 0,
+    "candidate_interactions": 454,
+    "candidate_main_effects": 77,
+    "canonical_warehouse_current_rows": 114,
+    "current_races": 11,
+    "current_runners": 114,
+    "duplicate_current_race_runner_rows": 0,
+    "epi_rows": 0,
+    "historical_rows_assessed": 31602,
+    "horse_observations_added": 11,
+    "lengths_v_standard_rows": 11,
+    "normalisation_rows": 11,
+    "official_current_source_rows": 114,
+    "performance_base_rows": 11,
+    "performance_rating_base_rows": 11,
+    "race_time_delta_rows": 11,
+    "rejected_parameters": 531,
+    "research_only_parameters": 0,
+    "rows_with_valid_pre_race_baseline": 195,
+    "timed_race_rows": 11,
+    "training_rows": 195,
+    "validation_rows": 29
+  },
+  "overall_status": "PASS_CURRENT_RESULTS_BLOCKED_CONTEXT_VALIDATION",
+  "protected_systems": {
+    "hpr_norm_a_v1_changed": "NO",
+    "hpr_norm_a_v2_changed": "NO",
+    "minimum_observations_changed": "NO",
+    "pricing_changed": "NO",
+    "probability_changed": "NO",
+    "ui_changed": "NO",
+    "v6_1_changed": "NO",
+    "v7_2g2_changed": "NO"
+  },
+  "track_a_status": "PASS_CONTEXT_METHODOLOGY_NO_APPROVED_PARAMETERS",
+  "track_b_status": "PASS_CANONICAL_CURRENT_RESULTS_REPAIRED"
+}

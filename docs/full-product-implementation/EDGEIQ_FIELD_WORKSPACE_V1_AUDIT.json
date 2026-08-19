@@ -1,0 +1,125 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "check": "render_path_field_tab",
+      "file": "src\\edgeiq-os\\race\\components\\RaceWorkspace.tsx",
+      "expected_present": true,
+      "status": "PASS"
+    },
+    {
+      "check": "shared_header_present",
+      "file": "src\\edgeiq-os\\race\\components\\RaceWorkspace.tsx",
+      "expected_present": true,
+      "status": "PASS"
+    },
+    {
+      "check": "admin_wall_filter_present",
+      "file": "src\\edgeiq-os\\race\\components\\RaceWorkspace.tsx",
+      "expected_present": true,
+      "status": "PASS"
+    },
+    {
+      "check": "header_meta_has_track_rail_weather",
+      "file": "src\\edgeiq-os\\race\\components\\RaceWorkspace.tsx",
+      "expected_present": true,
+      "status": "PASS"
+    },
+    {
+      "check": "surface_meta_removed",
+      "file": "src\\edgeiq-os\\race\\components\\RaceWorkspace.tsx",
+      "expected_present": false,
+      "status": "PASS"
+    },
+    {
+      "check": "field_compact_header",
+      "file": "src\\edgeiq-os\\race\\components\\FieldWorkspace.tsx",
+      "expected_present": true,
+      "status": "PASS"
+    },
+    {
+      "check": "generic_header_removed",
+      "file": "src\\edgeiq-os\\race\\components\\FieldWorkspace.tsx",
+      "expected_present": false,
+      "status": "PASS"
+    },
+    {
+      "check": "epi_label_present",
+      "file": "src\\edgeiq-os\\race\\components\\FieldWorkspace.tsx",
+      "expected_present": true,
+      "status": "PASS"
+    },
+    {
+      "check": "generic_edgeiq_header_removed",
+      "file": "src\\edgeiq-os\\race\\components\\FieldWorkspace.tsx",
+      "expected_present": false,
+      "status": "PASS"
+    },
+    {
+      "check": "row_click_expansion",
+      "file": "src\\edgeiq-os\\race\\components\\FieldWorkspace.tsx",
+      "expected_present": true,
+      "status": "PASS"
+    },
+    {
+      "check": "keyboard_expansion",
+      "file": "src\\edgeiq-os\\race\\components\\FieldWorkspace.tsx",
+      "expected_present": true,
+      "status": "PASS"
+    },
+    {
+      "check": "no_history_state",
+      "file": "src\\edgeiq-os\\race\\components\\FieldWorkspace.tsx",
+      "expected_present": true,
+      "status": "PASS"
+    },
+    {
+      "check": "open_profile_removed",
+      "file": "src\\edgeiq-os\\race\\components\\FieldWorkspace.tsx",
+      "expected_present": false,
+      "status": "PASS"
+    },
+    {
+      "check": "recent_runs_limited_to_five",
+      "file": "src\\edgeiq-os\\race\\components\\FieldWorkspace.tsx",
+      "expected_present": true,
+      "status": "PASS"
+    },
+    {
+      "check": "scratch_from_market",
+      "file": "src\\edgeiq-os\\race\\services\\fieldWorkspaceViewModel.ts",
+      "expected_present": true,
+      "status": "PASS"
+    },
+    {
+      "check": "scratched_flag_output",
+      "file": "src\\edgeiq-os\\race\\services\\fieldWorkspaceViewModel.ts",
+      "expected_present": true,
+      "status": "PASS"
+    },
+    {
+      "check": "expanded_css_scoped",
+      "file": "src\\edgeiq-os\\styles\\edgeiqOsV2.css",
+      "expected_present": true,
+      "status": "PASS"
+    },
+    {
+      "check": "field_tabs_compact_css",
+      "file": "src\\edgeiq-os\\styles\\edgeiqOsV2.css",
+      "expected_present": true,
+      "status": "PASS"
+    },
+    {
+      "check": "no_raw_copy_Governed recent-start rows are not published",
+      "file": "src/edgeiq-os/race/components/FieldWorkspace.tsx",
+      "expected_present": false,
+      "status": "PASS"
+    },
+    {
+      "check": "no_raw_copy_Official runners with governed EDGEiQ fields",
+      "file": "src/edgeiq-os/race/components/FieldWorkspace.tsx",
+      "expected_present": false,
+      "status": "PASS"
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "checks": [
+    {
+      "check": "crosswalk_exists",
+      "detail": "{\"rows\": 80}",
+      "status": "PASS"
+    },
+    {
+      "check": "source_horse_ids_retained",
+      "detail": "{\"nonblank\": 80, \"rows\": 80}",
+      "status": "PASS"
+    },
+    {
+      "check": "no_fuzzy_auto_promotion",
+      "detail": "{\"methods\": [\"EXACT_SOURCE_ID_NEW_CANONICAL\"]}",
+      "status": "PASS"
+    },
+    {
+      "check": "source_id_unique_canonical",
+      "detail": "{\"duplicate_triples\": []}",
+      "status": "PASS"
+    },
+    {
+      "check": "no_source_id_to_multiple_canonical",
+      "detail": "{\"conflicts\": {}}",
+      "status": "PASS"
+    },
+    {
+      "check": "current_rating_winners_approved",
+      "detail": "{\"missing\": []}",
+      "status": "PASS"
+    },
+    {
+      "check": "partial_safe_observation_processing",
+      "detail": "{\"observations\": 8, \"rating_rows\": 8, \"rejections\": 0}",
+      "status": "PASS"
+    },
+    {
+      "check": "identity_rejection_evidence_retained",
+      "detail": "{\"path\": \"public\\\\data\\\\edgeiq_horse_performance_observation_fact_v1_rejections.csv\", \"rows\": 0}",
+      "status": "PASS"
+    },
+    {
+      "check": "post_cutoff_observations",
+      "detail": "{\"post_cutoff_observations\": 8}",
+      "status": "PASS"
+    },
+    {
+      "check": "chigurh_resolved",
+      "detail": "[{\"approval_status\": \"APPROVED\", \"barrier\": \"10\", \"canonical_horse_id\": \"RA_HORSE_34054013730\", \"canonical_horse_name\": \"CHIGURH\", \"created_at\": \"2026-07-29T19:59:27Z\", \"effective_from\": \"2026-07-20\", \"evidence_reference\": \"docs/victoria-live-recovery-v3/raw-evidence/RA_RESULTS_2026-07-26_SALE_598617F0.html#horsecode=34054013730;raceentry=99566658900\", \"evidence_type\": \"PUBLIC_RA_HORSEFULLFORM_HORSECODE\", \"identity_evidence_sha256\": \"e6596cf8cc5fec7c44e30ffe227bee6c82d7cd4f7d769badcbe27c29042593ac\", \"jockey\": \"Luke Nolen\", \"match_method\": \"EXACT_SOURCE_ID_NEW_CANONICAL\", \"policy_version\": \"RA-HORSE-ID-GOV-V4\", \"race_number\": \"3\", \"result_fact_evidence_sha256\": \"841aaf3678b39bf9835f19b1dea285a1dbd16005fb28ee8efa1c6960e3666a3e\", \"saddlecloth\": \"3\", \"source_horse_id\": \"34054013730\", \"source_horse_name\": \"CHIGURH\", \"source_meeting_date\": \"2026-07-26\", \"source_race_entry_id\": \"99566658900\", \"source_system\": \"RACING_AUSTRALIA\", \"track\": \"SALE\", \"trainer\": \"Ben, Will & JD Hayes\"}]",
+      "status": "PASS"
+    }
+  ],
+  "counts": {
+    "crosswalk_rows": 80,
+    "identity_map_rows": 104,
+    "identity_rejections": 0,
+    "post_cutoff_observations": 8,
+    "post_cutoff_ratings": 8
+  },
+  "hpr_norm_a_v1_sha256": "d866a85fa615bc6fc0b58c74cdbba4f63806103b5f3b7ca1c12b4ba7949e962d",
+  "status": "PASS"
+}

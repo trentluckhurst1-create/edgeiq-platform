@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "edgeiq_three_day_window_v1",
+  "timezone": "Australia/Melbourne",
+  "generatedAt": "2026-07-26T12:06:13+10:00",
+  "dateSource": "AUSTRALIA_MELBOURNE_CLOCK",
+  "today": "2026-07-26",
+  "tomorrow": "2026-07-27",
+  "dayPlus2": "2026-07-28",
+  "dates": [
+    {
+      "key": "TODAY",
+      "date": "2026-07-26",
+      "dayOffset": 0
+    },
+    {
+      "key": "TOMORROW",
+      "date": "2026-07-27",
+      "dayOffset": 1
+    },
+    {
+      "key": "DAY_PLUS_2",
+      "date": "2026-07-28",
+      "dayOffset": 2
+    }
+  ]
+}

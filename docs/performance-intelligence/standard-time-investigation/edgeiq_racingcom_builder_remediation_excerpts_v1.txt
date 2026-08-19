@@ -1,0 +1,584 @@
+================================================================================
+ASSIGNMENT: APP_ROOT
+LINES: 16-16
+================================================================================
+00013: import pandas as pd
+00014: 
+00015: 
+00016: APP_ROOT = Path(__file__).resolve().parents[1]
+00017: PROJECT_ROOT = Path(__file__).resolve().parents[3]
+00018: DATA = APP_ROOT / "public" / "data"
+00019: OUTPUTS = PROJECT_ROOT / "outputs"
+
+================================================================================
+ASSIGNMENT: PROJECT_ROOT
+LINES: 17-17
+================================================================================
+00014: 
+00015: 
+00016: APP_ROOT = Path(__file__).resolve().parents[1]
+00017: PROJECT_ROOT = Path(__file__).resolve().parents[3]
+00018: DATA = APP_ROOT / "public" / "data"
+00019: OUTPUTS = PROJECT_ROOT / "outputs"
+00020: RAW_CACHE = OUTPUTS / "sectionals" / "raw" / "VIC" / "racingcom_csv"
+
+================================================================================
+ASSIGNMENT: RAW_CACHE
+LINES: 20-20
+================================================================================
+00017: PROJECT_ROOT = Path(__file__).resolve().parents[3]
+00018: DATA = APP_ROOT / "public" / "data"
+00019: OUTPUTS = PROJECT_ROOT / "outputs"
+00020: RAW_CACHE = OUTPUTS / "sectionals" / "raw" / "VIC" / "racingcom_csv"
+00021: 
+00022: CALENDAR_DISCOVERY = DATA / "edgeiq_racingcom_calendar_discovery_v1.csv"
+00023: COMPLETED_PROBE = DATA / "edgeiq_racingcom_completed_payload_probe_v1.csv"
+
+================================================================================
+ASSIGNMENT: MAX_FETCHES
+LINES: 27-27
+================================================================================
+00024: INGESTION_OUT = DATA / "edgeiq_racingcom_csv_ingestion_v1.csv"
+00025: DIAGNOSTICS_OUT = DATA / "edgeiq_racingcom_csv_ingestion_diagnostics_v1.csv"
+00026: 
+00027: MAX_FETCHES = int(os.environ.get("EDGEIQ_RACINGCOM_CSV_MAX_FETCHES", "50"))
+00028: REQUEST_SLEEP_SECONDS = float(os.environ.get("EDGEIQ_RACINGCOM_CSV_SLEEP_SECONDS", "0.5"))
+00029: CLOUDFRONT_BASE = "https://d3qmfyv6ad9vwv.cloudfront.net"
+00030: 
+
+================================================================================
+ASSIGNMENT: CLOUDFRONT_BASE
+LINES: 29-29
+================================================================================
+00026: 
+00027: MAX_FETCHES = int(os.environ.get("EDGEIQ_RACINGCOM_CSV_MAX_FETCHES", "50"))
+00028: REQUEST_SLEEP_SECONDS = float(os.environ.get("EDGEIQ_RACINGCOM_CSV_SLEEP_SECONDS", "0.5"))
+00029: CLOUDFRONT_BASE = "https://d3qmfyv6ad9vwv.cloudfront.net"
+00030: 
+00031: OUT_COLUMNS = [
+00032:     "horse",
+
+================================================================================
+FUNCTION: read_csv
+LINES: 79-89
+PATTERNS: 
+================================================================================
+00078: 
+00079: def read_csv(path: Path) -> pd.DataFrame:
+00080:     if not path.exists():
+00081:         log(f"missing {path.relative_to(PROJECT_ROOT)}")
+00082:         return pd.DataFrame()
+00083:     try:
+00084:         df = pd.read_csv(path, dtype=str, encoding="utf-8-sig", on_bad_lines="skip").fillna("")
+00085:         log(f"read {path.relative_to(PROJECT_ROOT)}: {len(df)} rows")
+00086:         return df
+00087:     except Exception as exc:
+00088:         log(f"warning: failed to read {path.name}: {exc}")
+00089:         return pd.DataFrame()
+00090: 
+
+================================================================================
+FUNCTION: race_no_key
+LINES: 103-105
+PATTERNS: race_number
+================================================================================
+00102: 
+00103: def race_no_key(value) -> str:
+00104:     match = re.search(r"\d+", clean(value))
+00105:     return str(int(match.group(0))) if match else ""
+00106: 
+
+================================================================================
+FUNCTION: fetch_text
+LINES: 114-130
+PATTERNS: 
+================================================================================
+00113: 
+00114: def fetch_text(url: str, timeout: int = 25) -> tuple[int, str, bytes]:
+00115:     req = Request(
+00116:         url,
+00117:         headers={
+00118:             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36",
+00119:             "Accept": "text/html,text/csv,application/json;q=0.9,*/*;q=0.8",
+00120:             "Referer": "https://www.racing.com/",
+00121:         },
+00122:     )
+00123:     with urlopen(req, timeout=timeout) as response:
+00124:         status = getattr(response, "status", 200)
+00125:         body = response.read()
+00126:     try:
+00127:         text = body.decode("utf-8-sig")
+00128:     except UnicodeDecodeError:
+00129:         text = body.decode("latin-1", errors="replace")
+00130:     return int(status), text, body
+00131: 
+
+================================================================================
+FUNCTION: local_payload_files
+LINES: 133-144
+PATTERNS: sort_values
+================================================================================
+00132: 
+00133: def local_payload_files() -> list[Path]:
+00134:     roots = [
+00135:         OUTPUTS / "sectionals" / "raw" / "VIC" / "racingcom_network_probe",
+00136:         OUTPUTS / "sectionals" / "raw" / "VIC" / "racingcom_full_payloads",
+00137:         OUTPUTS / "sectionals" / "raw" / "VIC" / "racingcom_completed_payloads",
+00138:     ]
+00139:     files = []
+00140:     for root in roots:
+00141:         if root.exists():
+00142:             files.extend(path for path in root.rglob("*") if path.is_file() and path.suffix.lower() in {".json", ".txt", ".html"})
+00143:     files.extend(path for path in (OUTPUTS / "sectionals" / "raw" / "VIC").glob("*.html") if path.is_file())
+00144:     return sorted(set(files))
+00145: 
+
+================================================================================
+FUNCTION: csv_links_from_text
+LINES: 147-155
+PATTERNS: 
+================================================================================
+00146: 
+00147: def csv_links_from_text(text: str, base_url: str = "") -> set[str]:
+00148:     links = set()
+00149:     for match in re.finditer(r"https?://[^\"'\s<>]+?\.csv(?:\?[^\"'\s<>]*)?", text, flags=re.IGNORECASE):
+00150:         links.add(match.group(0).replace("\\u0026", "&"))
+00151:     for match in re.finditer(r"(?:href|src)\s*=\s*[\"']([^\"']+?\.csv(?:\?[^\"']*)?)[\"']", text, flags=re.IGNORECASE):
+00152:         links.add(urljoin(base_url, match.group(1)))
+00153:     for match in re.finditer(r"cloudfront\.net/([^\"'\s<>]+?\.csv)", text, flags=re.IGNORECASE):
+00154:         links.add("https://d3qmfyv6ad9vwv.cloudfront.net/" + match.group(1).split("/")[-1])
+00155:     return links
+00156: 
+
+================================================================================
+FUNCTION: calendar_entries_from_payloads
+LINES: 158-213
+PATTERNS: meetcode
+================================================================================
+00157: 
+00158: def calendar_entries_from_payloads() -> list[dict[str, str]]:
+00159:     entries = []
+00160:     for path in local_payload_files():
+00161:         try:
+00162:             text = path.read_text(encoding="utf-8-sig", errors="ignore")
+00163:         except Exception:
+00164:             continue
+00165:         try:
+00166:             payload = json.loads(text)
+00167:             stack = [payload]
+00168:             while stack:
+00169:                 item = stack.pop()
+00170:                 if isinstance(item, dict):
+00171:                     meet_code = clean(item.get("MeetCode", ""))
+00172:                     url_segment = clean(item.get("UrlSegment", ""))
+00173:                     if meet_code and url_segment:
+00174:                         entries.append({
+00175:                             "meet_code": meet_code,
+00176:                             "url_segment": url_segment,
+00177:                             "race_date": date_key(item.get("Date", "")) or date_key(url_segment[:10]),
+00178:                             "track": clean(item.get("Venue", "")) or clean(item.get("Track", "")),
+00179:                             "status": clean(item.get("FullStatus", "")) or clean(item.get("MeetStatus", "")),
+00180:                             "source": path.relative_to(PROJECT_ROOT).as_posix(),
+00181:                         })
+00182:                     stack.extend(item.values())
+00183:                 elif isinstance(item, list):
+00184:                     stack.extend(item)
+00185:         except Exception:
+00186:             pass
+00187:         for match in re.finditer(r"\{[^{}]*\"MeetCode\"\s*:\s*\"?(\d+)\"?[^{}]*\"UrlSegment\"\s*:\s*\"([^\"]+)\"[^{}]*\}", text):
+00188:             blob = match.group(0)
+00189:             meet_code = match.group(1)
+00190:             url_segment = match.group(2)
+00191:             venue_match = re.search(r"\"Venue\"\s*:\s*\"([^\"]+)\"", blob)
+00192:             date_match = re.search(r"\"Date\"\s*:\s*\"([^\"]+)\"", blob)
+00193:             status_match = re.search(r"\"FullStatus\"\s*:\s*\"([^\"]+)\"", blob)
+00194:             track = venue_match.group(1) if venue_match else ""
+00195:             race_date = date_key(date_match.group(1)) if date_match else date_key(url_segment[:10])
+00196:             status = status_match.group(1) if status_match else ""
+00197:             if meet_code and url_segment:
+00198:                 entries.append({
+00199:                     "meet_code": meet_code,
+00200:                     "url_segment": url_segment,
+00201:                     "race_date": race_date,
+00202:                     "track": track,
+00203:                     "status": status,
+00204:                     "source": path.relative_to(PROJECT_ROOT).as_posix(),
+00205:                 })
+00206:     seen = set()
+00207:     unique = []
+00208:     for entry in entries:
+00209:         key = (entry["meet_code"], entry["url_segment"])
+00210:         if key not in seen:
+00211:             seen.add(key)
+00212:             unique.append(entry)
+00213:     return unique
+00214: 
+
+================================================================================
+FUNCTION: race_number_from_url
+LINES: 216-218
+PATTERNS: race_number
+================================================================================
+00215: 
+00216: def race_number_from_url(url: str) -> str:
+00217:     match = re.search(r"/race/(\d+)", clean(url), flags=re.IGNORECASE)
+00218:     return str(int(match.group(1))) if match else ""
+00219: 
+
+================================================================================
+FUNCTION: discover_candidates
+LINES: 221-298
+PATTERNS: twelve_race_expansion, csv_url, drop_duplicates, sort_values, race_number, meetcode, discovery_method
+================================================================================
+00220: 
+00221: def discover_candidates() -> pd.DataFrame:
+00222:     rows = []
+00223:     calendar = read_csv(CALENDAR_DISCOVERY)
+00224:     completed = read_csv(COMPLETED_PROBE)
+00225:     today = pd.Timestamp(datetime.now().date())
+00226: 
+00227:     # Confirmed public Racing.com direct CSV meeting pattern from the supplied breakthrough URL.
+00228:     for race_no in range(1, 13):
+00229:         rows.append({
+00230:             "race_date": "2026-05-01",
+00231:             "track": "Ladbrokes Geelong",
+00232:             "race_no": str(race_no),
+00233:             "speed_data_url": f"https://www.racing.com/form/2026-05-01/ladbrokes-geelong/race/{race_no}/speed-data",
+00234:             "csv_url": f"{CLOUDFRONT_BASE}/5191125_{race_no:02d}.csv",
+00235:             "discovery_method": "KNOWN_DIRECT_CSV_MEETING",
+00236:             "_priority": 0,
+00237:             "_date_sort": pd.Timestamp("2026-05-01"),
+00238:         })
+00239: 
+00240:     for _, row in calendar.iterrows() if not calendar.empty else []:
+00241:         speed_url = clean(row.get("speed_data_url", ""))
+00242:         race_no = race_no_key(row.get("race_no", "")) or race_number_from_url(speed_url)
+00243:         dkey = date_key(row.get("race_date", ""))
+00244:         dt = pd.to_datetime(dkey, errors="coerce")
+00245:         rows.append({
+00246:             "race_date": dkey,
+00247:             "track": clean(row.get("track", "")),
+00248:             "race_no": race_no,
+00249:             "speed_data_url": speed_url,
+00250:             "csv_url": "",
+00251:             "discovery_method": "CALENDAR_SPEED_PAGE",
+00252:             "_priority": 5 if pd.notna(dt) and dt < today else 9,
+00253:             "_date_sort": dt,
+00254:         })
+00255: 
+00256:     for _, row in completed.iterrows() if not completed.empty else []:
+00257:         page_url = clean(row.get("url", ""))
+00258:         race_no = race_no_key(row.get("race_no", "")) or race_number_from_url(page_url)
+00259:         dkey = date_key(row.get("race_date", ""))
+00260:         dt = pd.to_datetime(dkey, errors="coerce")
+00261:         rows.append({
+00262:             "race_date": dkey,
+00263:             "track": clean(row.get("track", "")),
+00264:             "race_no": race_no,
+00265:             "speed_data_url": page_url if page_url.endswith("/speed-data") else f"{page_url}/speed-data",
+00266:             "csv_url": "",
+00267:             "discovery_method": "COMPLETED_PROBE_SPEED_PAGE",
+00268:             "_priority": 4,
+00269:             "_date_sort": dt,
+00270:         })
+00271: 
+00272:     for entry in calendar_entries_from_payloads():
+00273:         dkey = date_key(entry["race_date"])
+00274:         dt = pd.to_datetime(dkey, errors="coerce")
+00275:         status = clean(entry.get("status", "")).upper()
+00276:         if pd.isna(dt):
+00277:             continue
+00278:         if dt >= today and "RESULT" not in status:
+00279:             continue
+00280:         priority = 1 if "RESULT" in status else 2
+00281:         for race_no in range(1, 13):
+00282:             rows.append({
+00283:                 "race_date": dkey,
+00284:                 "track": entry["track"],
+00285:                 "race_no": str(race_no),
+00286:                 "speed_data_url": f"https://www.racing.com/form/{entry['url_segment']}/race/{race_no}/speed-data",
+00287:                 "csv_url": f"{CLOUDFRONT_BASE}/{entry['meet_code']}_{race_no:02d}.csv",
+00288:                 "discovery_method": "MEETCODE_DERIVED_CLOUDFRONT",
+00289:                 "_priority": priority,
+00290:                 "_date_sort": dt,
+00291:             })
+00292: 
+00293:     out = pd.DataFrame(rows)
+00294:     if out.empty:
+00295:         return pd.DataFrame(columns=["race_date", "track", "race_no", "speed_data_url", "csv_url", "discovery_method"])
+00296:     out = out.drop_duplicates(subset=["race_date", "track", "race_no", "csv_url", "speed_data_url"], keep="first")
+00297:     out = out.sort_values(["_priority", "_date_sort", "track", "race_no"], ascending=[True, False, True, True])
+00298:     return out
+00299: 
+
+================================================================================
+FUNCTION: discover_page_csv_links
+LINES: 301-334
+PATTERNS: csv_url, race_number, discovery_method
+================================================================================
+00300: 
+00301: def discover_page_csv_links(candidates: pd.DataFrame, remaining_fetches: int) -> tuple[list[dict[str, str]], int, int]:
+00302:     rows = []
+00303:     page_fetches = 0
+00304:     page_csv_links = 0
+00305:     if remaining_fetches <= 0:
+00306:         return rows, page_fetches, page_csv_links
+00307:     seen_pages = set()
+00308:     for _, row in candidates.iterrows():
+00309:         if page_fetches >= remaining_fetches:
+00310:             break
+00311:         page_url = clean(row.get("speed_data_url", ""))
+00312:         if not page_url or page_url in seen_pages:
+00313:             continue
+00314:         seen_pages.add(page_url)
+00315:         try:
+00316:             status, text, _ = fetch_text(page_url)
+00317:             page_fetches += 1
+00318:             links = csv_links_from_text(text, page_url)
+00319:             page_csv_links += len(links)
+00320:             for link in links:
+00321:                 rows.append({
+00322:                     "race_date": clean(row.get("race_date", "")),
+00323:                     "track": clean(row.get("track", "")),
+00324:                     "race_no": clean(row.get("race_no", "")),
+00325:                     "speed_data_url": page_url,
+00326:                     "csv_url": link,
+00327:                     "discovery_method": f"HTML_CSV_LINK_HTTP_{status}",
+00328:                 })
+00329:             time.sleep(REQUEST_SLEEP_SECONDS)
+00330:         except Exception:
+00331:             page_fetches += 1
+00332:             time.sleep(REQUEST_SLEEP_SECONDS)
+00333:             continue
+00334:     return rows, page_fetches, page_csv_links
+00335: 
+
+================================================================================
+FUNCTION: parse_metadata
+LINES: 371-387
+PATTERNS: race_number
+================================================================================
+00370: 
+00371: def parse_metadata(first_row: list[str], fallback: dict[str, str]) -> dict[str, str]:
+00372:     race_date = date_key(first_row[0] if len(first_row) > 0 else "") or clean(fallback.get("race_date", ""))
+00373:     meeting = clean(first_row[1] if len(first_row) > 1 else "")
+00374:     track = clean(fallback.get("track", "")) or meeting.split("-")[0].strip()
+00375:     race_time = clean(first_row[3] if len(first_row) > 3 else "")
+00376:     distance = ""
+00377:     if len(first_row) > 4:
+00378:         match = re.search(r"_(\d+)m_", clean(first_row[4]), flags=re.IGNORECASE)
+00379:         if match:
+00380:             distance = match.group(1)
+00381:     return {
+00382:         "race_date": race_date,
+00383:         "track": track,
+00384:         "race_no": clean(fallback.get("race_no", "")),
+00385:         "race_time": race_time,
+00386:         "distance": distance,
+00387:     }
+00388: 
+
+================================================================================
+FUNCTION: parse_racingcom_csv
+LINES: 390-485
+PATTERNS: race_number
+================================================================================
+00389: 
+00390: def parse_racingcom_csv(path: Path, source_url: str, fallback: dict[str, str]) -> list[dict[str, str]]:
+00391:     try:
+00392:         with path.open("r", encoding="utf-8-sig", newline="") as f:
+00393:             records = list(csv.reader(f, delimiter=";"))
+00394:     except UnicodeDecodeError:
+00395:         with path.open("r", encoding="latin-1", newline="") as f:
+00396:             records = list(csv.reader(f, delimiter=";"))
+00397:     if not records:
+00398:         return []
+00399: 
+00400:     metadata = parse_metadata(records[0], fallback)
+00401:     rows = []
+00402:     for record in records[1:]:
+00403:         if len(record) < 5:
+00404:             continue
+00405:         horse = clean(record[0])
+00406:         if not horse:
+00407:             continue
+00408:         barrier = clean(record[1])
+00409:         segments = []
+00410:         idx = 2
+00411:         while idx + 2 < len(record):
+00412:             marker = clean(record[idx])
+00413:             speed = clean(record[idx + 1])
+00414:             split = clean(record[idx + 2])
+00415:             if marker:
+00416:                 try:
+00417:                     marker_value = float(marker)
+00418:                 except Exception:
+00419:                     marker_value = None
+00420:                 try:
+00421:                     speed_value = float(speed)
+00422:                 except Exception:
+00423:                     speed_value = None
+00424:                 split_seconds = to_seconds(split)
+00425:                 segments.append({"marker": marker_value, "speed": speed_value, "split_seconds": split_seconds})
+00426:             idx += 3
+00427: 
+00428:         valid_splits = [s["split_seconds"] for s in segments if s["split_seconds"] is not None]
+00429:         valid_speeds = [s["speed"] for s in segments if s["speed"] is not None]
+00430:         last200 = valid_splits[-1] if valid_splits else None
+00431:         last400 = sum(valid_splits[-2:]) if len(valid_splits) >= 2 else None
+00432:         last600 = sum(valid_splits[-3:]) if len(valid_splits) >= 3 else None
+00433:         peak_speed = max(valid_speeds) if valid_speeds else None
+00434:         avg_speed = sum(valid_speeds) / len(valid_speeds) if valid_speeds else None
+00435: 
+00436:         early_speed = mid_speed = late_speed = None
+00437:         if valid_speeds:
+00438:             third = max(1, len(valid_speeds) // 3)
+00439:             early = valid_speeds[:third]
+00440:             middle = valid_speeds[third:-third] if len(valid_speeds) > third * 2 else valid_speeds[third:]
+00441:             late = valid_speeds[-third:]
+00442:             early_speed = sum(early) / len(early) if early else None
+00443:             mid_speed = sum(middle) / len(middle) if middle else None
+00444:             late_speed = sum(late) / len(late) if late else None
+00445: 
+00446:         distance = metadata["distance"] or fmt_number(max([s["marker"] for s in segments if s["marker"] is not None], default=None), 0)
+00447:         pace_profile = "SPRINT_HOME" if late_speed and early_speed and late_speed > early_speed + 0.4 else ""
+00448:         if late_speed and early_speed and late_speed < early_speed - 0.4:
+00449:             pace_profile = "SLOW_FINISH"
+00450:         tempo_grade = ""
+00451:         if has_value(last600):
+00452:             if float(last600) <= 34:
+00453:                 tempo_grade = "FAST_LAST600"
+00454:             elif float(last600) >= 37:
+00455:                 tempo_grade = "SLOW_LAST600"
+00456:             else:
+00457:                 tempo_grade = "STANDARD_LAST600"
+00458: 
+00459:         rows.append({
+00460:             "horse": horse,
+00461:             "horse_key": norm(horse),
+00462:             "race_date": metadata["race_date"],
+00463:             "track": metadata["track"],
+00464:             "state": "VIC",
+00465:             "race_no": metadata["race_no"],
+00466:             "distance": distance,
+00467:             "barrier": barrier,
+00468:             "last200": fmt_number(last200),
+00469:             "last400": fmt_number(last400),
+00470:             "last600": fmt_number(last600),
+00471:             "last_200": fmt_number(last200),
+00472:             "last_400": fmt_number(last400),
+00473:             "last_600": fmt_number(last600),
+00474:             "early_speed": fmt_number(early_speed),
+00475:             "mid_speed": fmt_number(mid_speed),
+00476:             "late_speed": fmt_number(late_speed),
+00477:             "peak_speed": fmt_number(peak_speed),
+00478:             "avg_speed": fmt_number(avg_speed),
+00479:             "race_time": metadata["race_time"],
+00480:             "tempo_grade": tempo_grade,
+00481:             "pace_profile": pace_profile,
+00482:             "sectional_source": "RACING.COM_DIRECT_CSV",
+00483:             "source_url": source_url,
+00484:         })
+00485:     return rows
+00486: 
+
+================================================================================
+FUNCTION: main
+LINES: 488-580
+PATTERNS: max_fetches_reference, fetch_break, csv_url, drop_duplicates, race_number
+================================================================================
+00487: 
+00488: def main() -> int:
+00489:     DATA.mkdir(parents=True, exist_ok=True)
+00490:     RAW_CACHE.mkdir(parents=True, exist_ok=True)
+00491: 
+00492:     candidates = discover_candidates()
+00493:     direct_candidates = candidates[candidates["csv_url"].map(has_value)].copy() if not candidates.empty else pd.DataFrame()
+00494:     page_rows, page_fetches, page_csv_links = discover_page_csv_links(candidates, max(0, min(10, MAX_FETCHES // 5)))
+00495:     if page_rows:
+00496:         candidates = pd.concat([candidates, pd.DataFrame(page_rows)], ignore_index=True)
+00497:     csv_candidates = candidates[candidates["csv_url"].map(has_value)].drop_duplicates(subset=["csv_url"]).copy() if not candidates.empty else pd.DataFrame()
+00498: 
+00499:     output_rows = []
+00500:     fetch_attempts = fetched = failed = parsed_files = 0
+00501:     status_counts: dict[str, int] = {}
+00502:     for _, candidate in csv_candidates.iterrows():
+00503:         if fetch_attempts >= MAX_FETCHES:
+00504:             break
+00505:         url = clean(candidate.get("csv_url", ""))
+00506:         if not url.lower().endswith(".csv"):
+00507:             continue
+00508:         fetch_attempts += 1
+00509:         cache_path = cache_path_for_url(url)
+00510:         try:
+00511:             if cache_path.exists() and cache_path.stat().st_size > 0:
+00512:                 status = 200
+00513:             else:
+00514:                 status, _, body = fetch_text(url)
+00515:                 cache_path.write_bytes(body)
+00516:                 time.sleep(REQUEST_SLEEP_SECONDS)
+00517:             status_counts[str(status)] = status_counts.get(str(status), 0) + 1
+00518:             fetched += 1
+00519:             parsed = parse_racingcom_csv(cache_path, url, candidate.to_dict())
+00520:             if parsed:
+00521:                 parsed_files += 1
+00522:                 output_rows.extend(parsed)
+00523:         except HTTPError as exc:
+00524:             failed += 1
+00525:             status_counts[f"HTTP_{exc.code}"] = status_counts.get(f"HTTP_{exc.code}", 0) + 1
+00526:             time.sleep(REQUEST_SLEEP_SECONDS)
+00527:         except (URLError, TimeoutError, OSError, ValueError) as exc:
+00528:             failed += 1
+00529:             key = type(exc).__name__
+00530:             status_counts[key] = status_counts.get(key, 0) + 1
+00531:             time.sleep(REQUEST_SLEEP_SECONDS)
+00532: 
+00533:     parsed_cache_urls = {clean(row.get("source_url", "")) for row in output_rows}
+00534:     for cache_file in RAW_CACHE.glob("*.csv"):
+00535:         source_url = f"{CLOUDFRONT_BASE}/{cache_file.name}"
+00536:         if source_url in parsed_cache_urls:
+00537:             continue
+00538:         parsed = parse_racingcom_csv(cache_file, source_url, {})
+00539:         if parsed:
+00540:             parsed_files += 1
+00541:             output_rows.extend(parsed)
+00542:             parsed_cache_urls.add(source_url)
+00543: 
+00544:     output = pd.DataFrame(output_rows, columns=OUT_COLUMNS)
+00545:     if not output.empty:
+00546:         output = output.drop_duplicates(subset=["horse_key", "race_date", "track", "race_no", "source_url"], keep="first")
+00547:     else:
+00548:         output = pd.DataFrame(columns=OUT_COLUMNS)
+00549:     output.to_csv(INGESTION_OUT, index=False, encoding="utf-8")
+00550: 
+00551:     total = len(output)
+00552:     diag_rows = [
+00553:         {"metric": "run_timestamp_utc", "value": datetime.now(timezone.utc).isoformat(timespec="seconds"), "notes": "UTC run timestamp"},
+00554:         {"metric": "candidate_rows", "value": str(len(candidates)), "notes": "Candidate speed pages/direct CSV rows considered"},
+00555:         {"metric": "direct_csv_candidates", "value": str(len(direct_candidates)), "notes": "CSV URLs derived before page-link discovery"},
+00556:         {"metric": "page_fetches_for_discovery", "value": str(page_fetches), "notes": "Speed-data pages fetched to find embedded CSV links"},
+00557:         {"metric": "page_csv_links_discovered", "value": str(page_csv_links), "notes": "Explicit CSV href/cloudfront links discovered in HTML"},
+00558:         {"metric": "unique_csv_urls", "value": str(len(csv_candidates)), "notes": "Unique direct CSV URLs available to fetch"},
+00559:         {"metric": "fetch_attempts", "value": str(fetch_attempts), "notes": f"Max fetches {MAX_FETCHES}"},
+00560:         {"metric": "csvs_fetched_or_cached", "value": str(fetched), "notes": json.dumps(status_counts, sort_keys=True)},
+00561:         {"metric": "csv_fetch_failures", "value": str(failed), "notes": "HTTP/network failures"},
+00562:         {"metric": "csvs_parsed", "value": str(parsed_files), "notes": "CSV files with at least one parsed runner"},
+00563:         {"metric": "rows_parsed", "value": str(total), "notes": "Normalised runner sectional rows"},
+00564:         {"metric": "last200_coverage_pct", "value": pct(int(output["last200"].map(has_value).sum()) if total else 0, total), "notes": "Racing.com CSV rows with final 200m split"},
+00565:         {"metric": "last400_coverage_pct", "value": pct(int(output["last400"].map(has_value).sum()) if total else 0, total), "notes": "Racing.com CSV rows with final 400m aggregate"},
+00566:         {"metric": "last600_coverage_pct", "value": pct(int(output["last600"].map(has_value).sum()) if total else 0, total), "notes": "Racing.com CSV rows with final 600m aggregate"},
+00567:         {"metric": "raw_cache_dir", "value": RAW_CACHE.relative_to(PROJECT_ROOT).as_posix(), "notes": "Raw CSV cache directory"},
+00568:     ]
+00569:     diagnostics = pd.DataFrame(diag_rows, columns=DIAG_COLUMNS)
+00570:     diagnostics.to_csv(DIAGNOSTICS_OUT, index=False, encoding="utf-8")
+00571: 
+00572:     log(f"CSV links discovered: {len(csv_candidates)}")
+00573:     log(f"CSVs fetched or cached: {fetched}")
+00574:     log(f"rows parsed: {total}")
+00575:     log(f"last200 coverage: {diag_rows[-4]['value']}%")
+00576:     log(f"last400 coverage: {diag_rows[-3]['value']}%")
+00577:     log(f"last600 coverage: {diag_rows[-2]['value']}%")
+00578:     log(f"wrote {INGESTION_OUT.relative_to(APP_ROOT)}")
+00579:     log(f"wrote {DIAGNOSTICS_OUT.relative_to(APP_ROOT)}")
+00580:     return 0
+00581: 

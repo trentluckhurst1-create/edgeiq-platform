@@ -1,0 +1,73 @@
+{
+  "canonical_timing_rows_added": 0,
+  "post_cutoff_official_results_found": 0,
+  "post_cutoff_official_timings_found": 0,
+  "rows": [
+    {
+      "accepted_for_canonical_ingestion": "NO",
+      "bytes": 3471839,
+      "classification": "CURRENT_DISCOVERY_OR_CONDITION",
+      "finding": "not official post-race timing evidence for canonical performance promotion",
+      "latest_data_date": "2026-07-31",
+      "path": "public\\data\\edgeiq_vic_three_day_race_list_v1.csv",
+      "post_cutoff_rows": 33,
+      "rows": 33,
+      "sha256": "7b17311c536495e1926d735013cb7e5dc8cce8ac63c0f8b7f348f14c34ed5f14"
+    },
+    {
+      "accepted_for_canonical_ingestion": "NO",
+      "bytes": 299,
+      "classification": "NO_POST_CUTOFF_OFFICIAL_RESULT_TIMING",
+      "finding": "not official post-race timing evidence for canonical performance promotion",
+      "latest_data_date": "",
+      "path": "public\\data\\edgeiq_daily_condition_evidence_v1.csv",
+      "post_cutoff_rows": 0,
+      "rows": 0,
+      "sha256": "107548d6f55b35c81d82377dc9a05524970cd0076eb4395cdb9b0791eb7045eb"
+    },
+    {
+      "accepted_for_canonical_ingestion": "NO",
+      "bytes": 272232,
+      "classification": "NO_POST_CUTOFF_OFFICIAL_RESULT_TIMING",
+      "finding": "not official post-race timing evidence for canonical performance promotion",
+      "latest_data_date": "2026-07-01",
+      "path": "public\\data\\edgeiq_racingcom_runner_speed_fact_v1.csv",
+      "post_cutoff_rows": 0,
+      "rows": 392,
+      "sha256": "74f2e8275152005bcb761472a7368c675bdd1f448bdf801d2be153f220b6b61e"
+    },
+    {
+      "accepted_for_canonical_ingestion": "NO",
+      "bytes": 13632164,
+      "classification": "NO_POST_CUTOFF_OFFICIAL_RESULT_TIMING",
+      "finding": "not official post-race timing evidence for canonical performance promotion",
+      "latest_data_date": "2026-05-12",
+      "path": "public\\data\\ra_calendar_official_results.csv",
+      "post_cutoff_rows": 0,
+      "rows": 15265,
+      "sha256": "cdf3b8fc3957eaca5a8dc08d6355da24aa3d8e9b0d7445ff8e89f0a7b49412de"
+    },
+    {
+      "accepted_for_canonical_ingestion": "NO",
+      "bytes": 504293405,
+      "classification": "NO_POST_CUTOFF_OFFICIAL_RESULT_TIMING",
+      "finding": "not official post-race timing evidence for canonical performance promotion",
+      "latest_data_date": "2026-06-24",
+      "path": "public\\data\\edgeiq_historical_results_warehouse_v2_graphql.csv",
+      "post_cutoff_rows": 0,
+      "rows": 879784,
+      "sha256": "13f17e2ae21802aef5017a9a09cbb9ec572c9fda4c8fa8f85da27231e8828974"
+    },
+    {
+      "accepted_for_canonical_ingestion": "NO",
+      "bytes": 49793539,
+      "classification": "NO_POST_CUTOFF_OFFICIAL_RESULT_TIMING",
+      "finding": "not official post-race timing evidence for canonical performance promotion",
+      "latest_data_date": "2026-06-21",
+      "path": "public\\data\\edgeiq_canonical_historical_timing_warehouse_v1.csv",
+      "post_cutoff_rows": 0,
+      "rows": 70308,
+      "sha256": "5a6cdc0db2609bc29014173c2de3b07e300e825139192b84b46892f21f81ad9b"
+    }
+  ]
+}

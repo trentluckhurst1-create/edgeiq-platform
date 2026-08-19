@@ -1,0 +1,121 @@
+{
+  "audit_name": "edgeiq_epi_component_normalisation_parameter_fact_v1",
+  "audit_version": "1.0.0",
+  "audited_at_utc": "2026-07-23T03:01:41Z",
+  "checks": {
+    "component_population_exact": {
+      "detail": {
+        "actual": [
+          "HISTORICAL_PERFORMANCE",
+          "RACE_CONTEXT",
+          "SUITABILITY"
+        ],
+        "expected": [
+          "HISTORICAL_PERFORMANCE",
+          "RACE_CONTEXT",
+          "SUITABILITY"
+        ]
+      },
+      "status": "PASS"
+    },
+    "contract_fields_exact": {
+      "detail": {
+        "actual": [
+          "epi_component_normalisation_parameter_id",
+          "normalisation_parameter_version",
+          "epi_component_code",
+          "normalisation_methodology",
+          "normalisation_population_scope",
+          "standard_deviation_basis",
+          "minimum_population_count",
+          "normalised_lower_cap",
+          "normalised_upper_cap",
+          "zero_variance_policy",
+          "normalisation_output_decimal_places",
+          "normalisation_rounding_mode",
+          "effective_from_date",
+          "effective_to_date",
+          "normalisation_parameter_publication_decision",
+          "normalisation_parameter_reconciliation_decision",
+          "normalisation_parameter_status",
+          "normalisation_parameter_evidence_sha256",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ],
+        "expected": [
+          "epi_component_normalisation_parameter_id",
+          "normalisation_parameter_version",
+          "epi_component_code",
+          "normalisation_methodology",
+          "normalisation_population_scope",
+          "standard_deviation_basis",
+          "minimum_population_count",
+          "normalised_lower_cap",
+          "normalised_upper_cap",
+          "zero_variance_policy",
+          "normalisation_output_decimal_places",
+          "normalisation_rounding_mode",
+          "effective_from_date",
+          "effective_to_date",
+          "normalisation_parameter_publication_decision",
+          "normalisation_parameter_reconciliation_decision",
+          "normalisation_parameter_status",
+          "normalisation_parameter_evidence_sha256",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ]
+      },
+      "status": "PASS"
+    },
+    "deterministic_parameter_evidence": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "deterministic_parameter_identity": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "exact_parameter_row_count": {
+      "detail": {
+        "row_count": 3
+      },
+      "status": "PASS"
+    },
+    "natural_keys_unique": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "no_forbidden_fields": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "parameter_arithmetic_exact": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "parameter_governance_exact": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "parameter_ids_unique": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "parameter_lineage_complete": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "required_files_exist": {
+      "detail": [],
+      "status": "PASS"
+    }
+  },
+  "counts": {
+    "component_count": 3,
+    "normalisation_parameter_rows": 3
+  },
+  "failed_checks": [],
+  "status": "PASS"
+}

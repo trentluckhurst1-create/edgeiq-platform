@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "generated_utc": "2026-07-28T05:12:18.680089+00:00",
+  "verdict": "PASS",
+  "canonical_builder_node_count": 1280,
+  "dependency_edge_count": 0,
+  "explicit_edge_count": 0,
+  "inferred_edge_count": 0,
+  "orphan_builder_count": 1280,
+  "dead_end_builder_count": 201,
+  "root_builder_count": 0,
+  "cyclic_component_count": 0,
+  "builders_with_unresolved_inputs": 0,
+  "total_unresolved_input_paths": 0,
+  "outputs": {
+    "nodes_csv": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\platform-registry-v1\\builder-dependency-graph-v1\\EDGEIQ_CANONICAL_BUILDER_GRAPH_NODES_V1.csv",
+    "edges_csv": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\platform-registry-v1\\builder-dependency-graph-v1\\EDGEIQ_CANONICAL_BUILDER_GRAPH_EDGES_V1.csv",
+    "orphans_csv": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\platform-registry-v1\\builder-dependency-graph-v1\\EDGEIQ_CANONICAL_BUILDER_ORPHANS_V1.csv",
+    "dead_ends_csv": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\platform-registry-v1\\builder-dependency-graph-v1\\EDGEIQ_CANONICAL_BUILDER_DEAD_ENDS_V1.csv",
+    "cycles_csv": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\platform-registry-v1\\builder-dependency-graph-v1\\EDGEIQ_CANONICAL_BUILDER_CYCLES_V1.csv",
+    "report_md": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\platform-registry-v1\\builder-dependency-graph-v1\\EDGEIQ_CANONICAL_BUILDER_DEPENDENCY_GRAPH_REPORT_V1.md"
+  }
+}

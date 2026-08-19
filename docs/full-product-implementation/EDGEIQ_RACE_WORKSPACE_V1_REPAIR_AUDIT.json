@@ -1,0 +1,101 @@
+{
+  "overall_status": "PASS",
+  "checks": [
+    {
+      "check": "checkpoint_script_exists",
+      "status": "PASS"
+    },
+    {
+      "check": "apply_script_exists",
+      "status": "PASS"
+    },
+    {
+      "check": "browser_acceptance_script_exists",
+      "status": "PASS"
+    },
+    {
+      "check": "forensic_report_exists",
+      "status": "PASS"
+    },
+    {
+      "check": "mounted_component_race",
+      "status": "PASS"
+    },
+    {
+      "check": "race_component_attr",
+      "status": "PASS"
+    },
+    {
+      "check": "live_shell_scope_css",
+      "status": "PASS"
+    },
+    {
+      "check": "race_tabs_unhidden",
+      "status": "PASS"
+    },
+    {
+      "check": "four_summary_cards_source",
+      "status": "PASS"
+    },
+    {
+      "check": "what_matters_source",
+      "status": "PASS"
+    },
+    {
+      "check": "speed_map_preview_source",
+      "status": "PASS"
+    },
+    {
+      "check": "epi_top3_source",
+      "status": "PASS"
+    },
+    {
+      "check": "runner_board_headers",
+      "status": "PASS"
+    },
+    {
+      "check": "old_headers_removed",
+      "status": "PASS"
+    },
+    {
+      "check": "mojibake_removed",
+      "status": "PASS"
+    },
+    {
+      "check": "browser_acceptance_pass",
+      "status": "PASS"
+    },
+    {
+      "check": "responsive_1920_pass",
+      "status": "PASS"
+    },
+    {
+      "check": "responsive_1600_pass",
+      "status": "PASS"
+    },
+    {
+      "check": "responsive_1440_pass",
+      "status": "PASS"
+    },
+    {
+      "check": "responsive_1366_pass",
+      "status": "PASS"
+    },
+    {
+      "check": "home_regression_pass",
+      "status": "PASS"
+    },
+    {
+      "check": "meetings_regression_pass",
+      "status": "PASS"
+    },
+    {
+      "check": "field_regression_pass",
+      "status": "PASS"
+    },
+    {
+      "check": "r1_r2_r3_switching_pass",
+      "status": "PASS"
+    }
+  ]
+}

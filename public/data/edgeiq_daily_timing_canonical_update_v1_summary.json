@@ -1,0 +1,11 @@
+{
+  "conflicts": 0,
+  "corrected_rows": 0,
+  "dry_run": false,
+  "new_canonical_rows": 2,
+  "operation_run_id": "CANONICAL-TIMING-2026-07-20-2026-07-30-B2BB4EB0AE",
+  "rollback_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\daily-operations-engine-v1\\rollback\\CANONICAL-TIMING-2026-07-20-2026-07-30-B2BB4EB0AE",
+  "status": "PASS",
+  "timed_races_after": 70319,
+  "timed_races_before": 70317
+}

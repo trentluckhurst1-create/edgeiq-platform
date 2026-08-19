@@ -1,0 +1,213 @@
+{
+  "audit_id": "EDGEIQ_EPI_WORKSPACE_RUNTIME_TRACE_V1",
+  "generated_at_utc": "2026-07-28T00:37:53.626165+00:00",
+  "builder_path": "scripts/build_edgeiq_epi_workspace_terminal_feed_v1.py",
+  "builder_signature": "() -> 'tuple[int, int, int, int]'",
+  "builder_sha256_before": "bcf0cac2c4f9a34028afbf70d8f66f32772f16b46b87a80ea3d55145fdc810fb",
+  "builder_sha256_after": "bcf0cac2c4f9a34028afbf70d8f66f32772f16b46b87a80ea3d55145fdc810fb",
+  "builder_unchanged": true,
+  "feed_path": "public/data/edgeiq_epi_workspace_terminal_feed_v1.csv",
+  "feed_sha256_before": "fae2ea2e98622b8ae1b501c3d6f80eacaa46b8bcc847a013e9d238de1cd3d7db",
+  "feed_sha256_after": "f32b71ed20c2ac22f095d4a59500dd7c0731f8ebcb35b73e7db02460ac26b725",
+  "feed_before": {
+    "exists": true,
+    "rows": 371,
+    "columns": [
+      "workspace_id",
+      "meeting_key",
+      "race_key",
+      "generated_at",
+      "race_date",
+      "track",
+      "race_no",
+      "no",
+      "horse",
+      "current_epi",
+      "rank",
+      "field_avg",
+      "diff",
+      "start_10",
+      "start_9",
+      "start_8",
+      "start_7",
+      "start_6",
+      "start_5",
+      "start_4",
+      "start_3",
+      "start_2",
+      "start_1",
+      "peak_last_10",
+      "average_last_10",
+      "governed_trend",
+      "source",
+      "source_timestamp",
+      "source_confidence",
+      "row_status",
+      "start_10_class",
+      "start_9_class",
+      "start_8_class",
+      "start_7_class",
+      "start_6_class",
+      "start_5_class",
+      "start_4_class",
+      "start_3_class",
+      "start_2_class",
+      "start_1_class",
+      "start_10_context",
+      "start_9_context",
+      "start_8_context",
+      "start_7_context",
+      "start_6_context",
+      "start_5_context",
+      "start_4_context",
+      "start_3_context",
+      "start_2_context",
+      "start_1_context"
+    ],
+    "population": {
+      "current_epi": {
+        "present": true,
+        "populated": 0,
+        "blank": 371
+      },
+      "rank": {
+        "present": true,
+        "populated": 0,
+        "blank": 371
+      },
+      "field_avg": {
+        "present": true,
+        "populated": 0,
+        "blank": 371
+      },
+      "diff": {
+        "present": true,
+        "populated": 0,
+        "blank": 371
+      },
+      "peak_last_10": {
+        "present": true,
+        "populated": 185,
+        "blank": 186
+      },
+      "average_last_10": {
+        "present": true,
+        "populated": 185,
+        "blank": 186
+      },
+      "governed_trend": {
+        "present": true,
+        "populated": 75,
+        "blank": 296
+      }
+    }
+  },
+  "feed_after": {
+    "exists": true,
+    "rows": 246,
+    "columns": [
+      "workspace_id",
+      "meeting_key",
+      "race_key",
+      "generated_at",
+      "race_date",
+      "track",
+      "race_no",
+      "no",
+      "horse",
+      "current_epi",
+      "rank",
+      "field_avg",
+      "diff",
+      "start_10",
+      "start_9",
+      "start_8",
+      "start_7",
+      "start_6",
+      "start_5",
+      "start_4",
+      "start_3",
+      "start_2",
+      "start_1",
+      "peak_last_10",
+      "average_last_10",
+      "governed_trend",
+      "source",
+      "source_timestamp",
+      "source_confidence",
+      "row_status",
+      "start_10_class",
+      "start_9_class",
+      "start_8_class",
+      "start_7_class",
+      "start_6_class",
+      "start_5_class",
+      "start_4_class",
+      "start_3_class",
+      "start_2_class",
+      "start_1_class",
+      "start_10_context",
+      "start_9_context",
+      "start_8_context",
+      "start_7_context",
+      "start_6_context",
+      "start_5_context",
+      "start_4_context",
+      "start_3_context",
+      "start_2_context",
+      "start_1_context"
+    ],
+    "population": {
+      "current_epi": {
+        "present": true,
+        "populated": 189,
+        "blank": 57
+      },
+      "rank": {
+        "present": true,
+        "populated": 189,
+        "blank": 57
+      },
+      "field_avg": {
+        "present": true,
+        "populated": 246,
+        "blank": 0
+      },
+      "diff": {
+        "present": true,
+        "populated": 189,
+        "blank": 57
+      },
+      "peak_last_10": {
+        "present": true,
+        "populated": 123,
+        "blank": 123
+      },
+      "average_last_10": {
+        "present": true,
+        "populated": 123,
+        "blank": 123
+      },
+      "governed_trend": {
+        "present": true,
+        "populated": 53,
+        "blank": 193
+      }
+    }
+  },
+  "build_result": "[246, 18, 300, 300]",
+  "build_exception": null,
+  "runtime_calls": 492,
+  "runner_arguments_with_epi_key": 492,
+  "runner_arguments_with_populated_epi_value": 378,
+  "helper_returned_numeric_value": 378,
+  "empty_runner_dictionaries": 0,
+  "missing_epi_and_rating": 0,
+  "epi_present_but_helper_returned_none": 0,
+  "classifications": {
+    "EPI_OBJECT_VALUE_BLANK": 114,
+    "CURRENT_EPI_RETURNED": 378
+  },
+  "verdict": "CURRENT_EPI_NOW_POPULATED",
+  "status": "EVIDENCE_CAPTURED"
+}

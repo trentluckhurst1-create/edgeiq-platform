@@ -1,0 +1,12 @@
+{
+  "source_rows": 898,
+  "valid_elapsed_observations": 449,
+  "performance_fact_rows": 449,
+  "races": 5,
+  "runners": 58,
+  "benchmark_groups": 32,
+  "largest_group_count": 24,
+  "duplicate_contribution_count": 0,
+  "rejections": 449,
+  "deterministic_hash": "f79011e6a7629c16af85b9131b8adf95372e7cee4b1b35d4cc32f4d2a8ef14d6"
+}

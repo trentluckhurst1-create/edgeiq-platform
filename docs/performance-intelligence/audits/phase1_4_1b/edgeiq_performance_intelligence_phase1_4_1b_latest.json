@@ -1,0 +1,24 @@
+{
+  "audit_name": "EDGEiQ Performance Intelligence Phase 1.4.1B Cross-Provider Horse Identity Candidate Audit",
+  "generated_utc": "2026-07-15T20:31:32.464095+00:00",
+  "status": "CROSS_PROVIDER_HORSE_IDENTITY_AUDIT_FAIL",
+  "production_data_modified": false,
+  "canonical_horse_ids_generated": 0,
+  "master_rows": 473,
+  "decoded_racing_australia_ids": 473,
+  "duplicate_racing_australia_ids": 24,
+  "invalid_base64_rows": 0,
+  "classification_counts": {
+    "EXACT_NAME_MULTIPLE_HISTORICAL_CODES_AMBIGUOUS": 16,
+    "EXACT_NAME_SINGLE_HISTORICAL_CODE_CANDIDATE": 457
+  },
+  "exact_name_single_code_candidates": 457,
+  "exact_name_ambiguous_candidates": 16,
+  "no_exact_name_match_rows": 0,
+  "identity_decision": "CROSS_PROVIDER_CANDIDATE_EVIDENCE_ONLY_CANONICAL_HORSE_REMAINS_BLOCKED",
+  "next_stage": "Acquire pedigree, DOB, sex or official registration corroboration for exact-name single-code candidates, or query Racing Australia horse pages for durable identity attributes.",
+  "outputs": {
+    "candidate_crosswalk": "docs/performance-intelligence/prototypes/phase1_4_1b/edgeiq_cross_provider_horse_identity_candidates_v0_1_20260716_063119.csv",
+    "checks": "docs/performance-intelligence/audits/phase1_4_1b/edgeiq_performance_intelligence_phase1_4_1b_checks_20260716_063119.csv"
+  }
+}

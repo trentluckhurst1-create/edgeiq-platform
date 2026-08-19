@@ -1,0 +1,152 @@
+EDGEIQ FORM GUIDE HISTORICAL EPI AMBIGUITY FORENSIC AUDIT
+================================================================================================
+
+AMBIGUOUS_FORM_RUNS=130
+AMBIGUOUS_RESEARCH_ROWS=260
+SAME_RATING_MULTIPLE_ROWS=54
+CONFLICTING_RATINGS=76
+NO_RATED_ROWS=0
+EXACT_DUPLICATE=0
+DISTINCT_SOURCE_ROWS=130
+
+SOURCE PAIRS
+------------------------------------------------------------------------------------------------
+   56 | run_context.csv <> run_context_FIXED.csv
+   11 | horse_runs_ra.csv <> run_context.csv
+
+AMBIGUOUS RUN DETAILS
+------------------------------------------------------------------------------------------------
+CONFLICTING_RATINGS | Back Of The Boat | 2026-03-09 | WARRNAMBOOL -> WNBL | 1300m | matches=2 | ratings=66.66 | 69.64 | sources=run_context.csv | run_context_FIXED.csv
+CONFLICTING_RATINGS | Back Of The Boat | 2026-02-17 | PICKLEBET PARK WERRIBEE -> WERR | 1100m | matches=2 | ratings=38.46 | 40.16 | sources=run_context.csv | run_context_FIXED.csv
+CONFLICTING_RATINGS | Donato | 2025-11-10 | MORNINGTON -> MORN | 1000m | matches=2 | ratings=47.26 | 49.39 | sources=run_context.csv | run_context_FIXED.csv
+SAME_RATING_MULTIPLE_ROWS | Upolu | 2026-01-14 | LADBROKES GEELONG -> GEEL | 1412m | matches=2 | ratings=60.62 | sources=run_context.csv
+SAME_RATING_MULTIPLE_ROWS | Upolu | 2026-01-02 | BET365 TERANG -> TER | 1200m | matches=2 | ratings=71.74 | sources=run_context.csv
+SAME_RATING_MULTIPLE_ROWS | Upolu | 2025-12-20 | BET365 COLAC -> CLAC | 1200m | matches=2 | ratings=71.79 | sources=run_context.csv
+CONFLICTING_RATINGS | Reddivo | 2025-11-30 | WARRNAMBOOL -> WNBL | 4600m | matches=2 | ratings=46.65 | 47.84 | sources=run_context.csv
+SAME_RATING_MULTIPLE_ROWS | Reddivo | 2025-11-14 | LADBROKES GEELONG -> GEEL | 3762m | matches=2 | ratings=76.3 | sources=run_context.csv
+CONFLICTING_RATINGS | Star Buyer | 2026-02-28 | SPORTSBET-WANGARATTA -> WANG | 1590m | matches=2 | ratings=52.09 | 52.46 | sources=run_context.csv | run_context_FIXED.csv
+CONFLICTING_RATINGS | Star Buyer | 2026-02-09 | CAULFIELD HEATH -> CAUH | 1800m | matches=2 | ratings=59.86 | 60.01 | sources=run_context.csv | run_context_FIXED.csv
+CONFLICTING_RATINGS | Star Buyer | 2026-01-31 | BET365 PARK KYNETON -> KYNE | 1856m | matches=2 | ratings=61.83 | 62.28 | sources=run_context.csv | run_context_FIXED.csv
+CONFLICTING_RATINGS | Star Buyer | 2026-01-18 | SPORTSBET-WANGARATTA -> WANG | 1400m | matches=2 | ratings=60.35 | 60.5 | sources=run_context.csv | run_context_FIXED.csv
+CONFLICTING_RATINGS | Star Buyer | 2025-12-20 | CAULFIELD HEATH -> CAUH | 1500m | matches=2 | ratings=53.45 | 54.2 | sources=run_context.csv | run_context_FIXED.csv
+SAME_RATING_MULTIPLE_ROWS | Mozzoni | 2025-12-03 | CAULFIELD HEATH -> CAUH | 1600m | matches=2 | ratings=52.55 | sources=run_context.csv | run_context_FIXED.csv
+CONFLICTING_RATINGS | Carnival Riches | 2026-01-10 | FLEMINGTON -> FLEM | 1600m | matches=2 | ratings=57.11 | 57.56 | sources=run_context.csv | run_context_FIXED.csv
+CONFLICTING_RATINGS | Carnival Riches | 2025-12-31 | BET365 ECHUCA -> ECHA | 1400m | matches=2 | ratings=78.15 | 84.64 | sources=run_context.csv | run_context_FIXED.csv
+CONFLICTING_RATINGS | Carnival Riches | 2025-12-18 | BET365 SEYMOUR -> SEYM | 1422m | matches=2 | ratings=43.21 | 45.51 | sources=run_context.csv | run_context_FIXED.csv
+CONFLICTING_RATINGS | Carnival Riches | 2025-12-05 | MORNINGTON -> MORN | 1000m | matches=2 | ratings=57.25 | 59.8 | sources=run_context.csv | run_context_FIXED.csv
+CONFLICTING_RATINGS | Don'tcallmechamp | 2025-12-21 | HORSHAM -> HSHM | 1200m | matches=2 | ratings=54.12 | 54.62 | sources=run_context.csv | run_context_FIXED.csv
+CONFLICTING_RATINGS | Wild Ruby | 2026-03-08 | BET365 ECHUCA -> ECHA | 1200m | matches=2 | ratings=72.39 | 75.79 | sources=run_context.csv | run_context_FIXED.csv
+CONFLICTING_RATINGS | Wild Ruby | 2026-02-14 | SPORTSBET-BALLARAT -> BRAT | 1200m | matches=2 | ratings=50.26 | 52.38 | sources=run_context.csv | run_context_FIXED.csv
+SAME_RATING_MULTIPLE_ROWS | Luna Cat | 2026-02-21 | CAULFIELD -> CAUL | 1100m | matches=2 | ratings=55.26 | sources=run_context.csv
+CONFLICTING_RATINGS | Luna Cat | 2026-01-31 | CAULFIELD -> CAUL | 1100m | matches=2 | ratings=62.82 | 63.12 | sources=run_context.csv
+CONFLICTING_RATINGS | Luna Cat | 2026-01-17 | FLEMINGTON -> FLEM | 1100m | matches=2 | ratings=68.42 | 69.47 | sources=run_context.csv
+SAME_RATING_MULTIPLE_ROWS | Wintery | 2026-03-14 | CAULFIELD -> CAUL | 1200m | matches=2 | ratings=44.28 | sources=run_context.csv
+SAME_RATING_MULTIPLE_ROWS | Wintery | 2026-02-28 | FLEMINGTON -> FLEM | 1100m | matches=2 | ratings=51.72 | sources=run_context.csv
+SAME_RATING_MULTIPLE_ROWS | Wintery | 2026-02-07 | CAULFIELD -> CAUL | 1100m | matches=2 | ratings=77.42 | sources=run_context.csv
+SAME_RATING_MULTIPLE_ROWS | Wintery | 2026-01-23 | SOUTHSIDE PAKENHAM -> PAKM | 1000m | matches=2 | ratings=83.91 | sources=run_context.csv
+CONFLICTING_RATINGS | Sir Atlas | 2026-03-14 | CAULFIELD -> CAUL | 1600m | matches=2 | ratings=82.59 | 88.12 | sources=run_context.csv
+SAME_RATING_MULTIPLE_ROWS | Sir Atlas | 2026-02-28 | SPORTSBET-WANGARATTA -> WANG | 1590m | matches=2 | ratings=85.92 | sources=run_context.csv
+SAME_RATING_MULTIPLE_ROWS | Sir Atlas | 2026-02-13 | SOUTHSIDE CRANBOURNE -> CRAN | 1400m | matches=2 | ratings=63.14 | sources=run_context.csv
+SAME_RATING_MULTIPLE_ROWS | Amleto | 2025-12-12 | LADBROKES GEELONG -> GEEL | 2450m | matches=2 | ratings=75.42 | sources=run_context.csv
+SAME_RATING_MULTIPLE_ROWS | Dirnaseer | 2025-11-30 | WARRNAMBOOL -> WNBL | 1200m | matches=2 | ratings=78.15 | sources=run_context.csv
+SAME_RATING_MULTIPLE_ROWS | Dirnaseer | 2025-11-11 | WARRNAMBOOL -> WNBL | 1200m | matches=2 | ratings=70.29 | sources=run_context.csv
+CONFLICTING_RATINGS | Watchme Win | 2025-12-13 | SOUTHSIDE PAKENHAM -> PAKM | 1400m | matches=2 | ratings=47.8 | 49.1 | sources=run_context.csv
+CONFLICTING_RATINGS | Watchme Win | 2025-11-22 | SOUTHSIDE CRANBOURNE -> CRAN | 1200m | matches=2 | ratings=61.95 | 63.91 | sources=run_context.csv
+CONFLICTING_RATINGS | Big Swinger | 2026-01-03 | LADBROKES GEELONG -> GEEL | 1100m | matches=2 | ratings=53.8 | 54.8 | sources=horse_runs_ra.csv | run_context.csv
+CONFLICTING_RATINGS | Big Swinger | 2025-12-13 | SOUTHSIDE PAKENHAM -> PAKM | 1200m | matches=2 | ratings=75.19 | 76.79 | sources=horse_runs_ra.csv | run_context.csv
+CONFLICTING_RATINGS | Big Swinger | 2025-11-29 | CAULFIELD -> CAUL | 1400m | matches=2 | ratings=66.44 | 69.15 | sources=horse_runs_ra.csv | run_context.csv
+CONFLICTING_RATINGS | Narbold | 2026-02-21 | CAULFIELD -> CAUL | 1400m | matches=2 | ratings=62.38 | 63.58 | sources=run_context.csv | run_context_FIXED.csv
+CONFLICTING_RATINGS | Narbold | 2026-01-24 | CAULFIELD -> CAUL | 1600m | matches=2 | ratings=83.91 | 86.46 | sources=run_context.csv | run_context_FIXED.csv
+CONFLICTING_RATINGS | Narbold | 2026-01-10 | FLEMINGTON -> FLEM | 1400m | matches=2 | ratings=43.88 | 44.33 | sources=run_context.csv | run_context_FIXED.csv
+SAME_RATING_MULTIPLE_ROWS | Beach Pad | 2025-12-31 | FLEMINGTON -> FLEM | 1800m | matches=2 | ratings=41.05 | sources=run_context.csv
+CONFLICTING_RATINGS | Taka Speed | 2026-02-14 | FLEMINGTON -> FLEM | 2000m | matches=2 | ratings=38.76 | 39.36 | sources=horse_runs_ra.csv | run_context.csv
+CONFLICTING_RATINGS | Taka Speed | 2026-01-28 | SPORTSBET SANDOWN HILLSIDE -> SANH | 1800m | matches=2 | ratings=83.97 | 84.4 | sources=horse_runs_ra.csv | run_context.csv
+CONFLICTING_RATINGS | Taka Speed | 2025-12-23 | MORNINGTON -> MORN | 1500m | matches=2 | ratings=84.34 | 84.77 | sources=horse_runs_ra.csv | run_context.csv
+SAME_RATING_MULTIPLE_ROWS | Adjudicate | 2026-03-08 | BET365 ECHUCA -> ECHA | 1600m | matches=2 | ratings=42.5 | sources=run_context.csv
+SAME_RATING_MULTIPLE_ROWS | Adjudicate | 2026-02-20 | BET365 SEYMOUR -> SEYM | 1600m | matches=2 | ratings=36.5 | sources=run_context.csv
+CONFLICTING_RATINGS | Adjudicate | 2026-01-30 | SOUTHSIDE CRANBOURNE -> CRAN | 1500m | matches=2 | ratings=47.47 | 48.97 | sources=run_context.csv
+SAME_RATING_MULTIPLE_ROWS | Dark Harmony | 2025-12-16 | BET365 TERANG -> TER | 1400m | matches=2 | ratings=74.3 | sources=run_context.csv
+CONFLICTING_RATINGS | Dark Harmony | 2025-11-30 | WARRNAMBOOL -> WNBL | 1400m | matches=2 | ratings=51.88 | 52.12 | sources=run_context.csv
+SAME_RATING_MULTIPLE_ROWS | Dark Harmony | 2025-11-09 | ARARAT -> ARAT | 1600m | matches=2 | ratings=54.73 | sources=run_context.csv
+CONFLICTING_RATINGS | Don'tcallmechamp | 2025-12-21 | HORSHAM -> HSHM | 1200m | matches=2 | ratings=54.12 | 54.62 | sources=run_context.csv | run_context_FIXED.csv
+CONFLICTING_RATINGS | Carnival Riches | 2026-01-10 | FLEMINGTON -> FLEM | 1600m | matches=2 | ratings=57.11 | 57.56 | sources=run_context.csv | run_context_FIXED.csv
+CONFLICTING_RATINGS | Carnival Riches | 2025-12-31 | BET365 ECHUCA -> ECHA | 1400m | matches=2 | ratings=78.15 | 84.64 | sources=run_context.csv | run_context_FIXED.csv
+CONFLICTING_RATINGS | Carnival Riches | 2025-12-18 | BET365 SEYMOUR -> SEYM | 1422m | matches=2 | ratings=43.21 | 45.51 | sources=run_context.csv | run_context_FIXED.csv
+CONFLICTING_RATINGS | Carnival Riches | 2025-12-05 | MORNINGTON -> MORN | 1000m | matches=2 | ratings=57.25 | 59.8 | sources=run_context.csv | run_context_FIXED.csv
+SAME_RATING_MULTIPLE_ROWS | Friday At Five | 2025-12-16 | BET365 TERANG -> TER | 1600m | matches=2 | ratings=63.16 | sources=run_context.csv
+SAME_RATING_MULTIPLE_ROWS | Shal Exceed | 2025-11-16 | DONALD -> DON | 1620m | matches=2 | ratings=55.52 | sources=run_context.csv
+CONFLICTING_RATINGS | Frostration | 2025-12-14 | TATURA -> TAT | 1450m | matches=2 | ratings=58.73 | 61.28 | sources=run_context.csv | run_context_FIXED.csv
+CONFLICTING_RATINGS | Frostration | 2025-11-13 | BET365 SEYMOUR -> SEYM | 1000m | matches=2 | ratings=46.19 | 48.32 | sources=run_context.csv | run_context_FIXED.csv
+CONFLICTING_RATINGS | Final Quarter | 2026-02-27 | BET365 PARK KYNETON -> KYNE | 1218m | matches=2 | ratings=53.0 | 53.5 | sources=horse_runs_ra.csv | run_context.csv
+CONFLICTING_RATINGS | Final Quarter | 2026-02-20 | BET365 SEYMOUR -> SEYM | 1200m | matches=2 | ratings=52.79 | 52.92 | sources=horse_runs_ra.csv | run_context.csv
+CONFLICTING_RATINGS | Final Quarter | 2025-11-30 | WARRNAMBOOL -> WNBL | 2000m | matches=2 | ratings=61.06 | 61.21 | sources=horse_runs_ra.csv | run_context.csv
+CONFLICTING_RATINGS | Shadow Black | 2025-12-02 | DONALD -> DON | 1000m | matches=2 | ratings=54.51 | 55.01 | sources=run_context.csv | run_context_FIXED.csv
+CONFLICTING_RATINGS | Shadow Black | 2025-11-11 | WARRNAMBOOL -> WNBL | 1000m | matches=2 | ratings=60.97 | 61.57 | sources=run_context.csv | run_context_FIXED.csv
+CONFLICTING_RATINGS | Stirrup | 2025-12-15 | PICKLEBET PARK WERRIBEE -> WERR | 1108m | matches=2 | ratings=53.16 | 53.66 | sources=run_context.csv | run_context_FIXED.csv
+SAME_RATING_MULTIPLE_ROWS | Stirrup | 2025-12-05 | MORNINGTON -> MORN | 1000m | matches=2 | ratings=51.98 | sources=run_context.csv | run_context_FIXED.csv
+CONFLICTING_RATINGS | Miss Himalaya | 2026-03-06 | BET365 PARK KILMORE -> KILM | 1100m | matches=2 | ratings=61.42 | 62.02 | sources=run_context.csv | run_context_FIXED.csv
+CONFLICTING_RATINGS | Miss Himalaya | 2026-02-27 | BET365 PARK KYNETON -> KYNE | 1218m | matches=2 | ratings=53.45 | 53.95 | sources=run_context.csv | run_context_FIXED.csv
+CONFLICTING_RATINGS | Miss Himalaya | 2026-02-07 | BET365 YARRA VALLEY -> YVL | 1000m | matches=2 | ratings=52.17 | 52.67 | sources=horse_runs_ra.csv | run_context.csv
+CONFLICTING_RATINGS | Miss Himalaya | 2026-01-13 | BET365 YARRA VALLEY -> YVL | 1200m | matches=2 | ratings=45.26 | 45.66 | sources=horse_runs_ra.csv | run_context.csv
+CONFLICTING_RATINGS | Sparkling Award | 2025-11-23 | BET365 PARK KILMORE -> KILM | 1200m | matches=2 | ratings=55.75 | 58.3 | sources=run_context.csv | run_context_FIXED.csv
+SAME_RATING_MULTIPLE_ROWS | Shoma | 2026-02-25 | SPORTSBET SANDOWN HILLSIDE -> SANH | 1300m | matches=2 | ratings=71.33 | sources=run_context.csv
+SAME_RATING_MULTIPLE_ROWS | Durham | 2025-11-16 | DONALD -> DON | 1350m | matches=2 | ratings=47.99 | sources=run_context.csv
+SAME_RATING_MULTIPLE_ROWS | Just Curious | 2026-03-13 | BET365 PARK KYNETON -> KYNE | 1459m | matches=2 | ratings=49.88 | sources=run_context.csv
+CONFLICTING_RATINGS | Justibella | 2025-11-14 | SOUTHSIDE PAKENHAM -> PAKM | 1400m | matches=2 | ratings=34.7 | 36.4 | sources=run_context.csv | run_context_FIXED.csv
+SAME_RATING_MULTIPLE_ROWS | The Narrator | 2025-11-25 | ARARAT -> ARAT | 1300m | matches=2 | ratings=61.14 | sources=run_context.csv
+CONFLICTING_RATINGS | Vianarra | 2026-03-04 | CAULFIELD HEATH -> CAUH | 1500m | matches=2 | ratings=74.33 | 74.53 | sources=run_context.csv
+SAME_RATING_MULTIPLE_ROWS | Vianarra | 2026-02-10 | BET365 PARK KYNETON -> KYNE | 1479m | matches=2 | ratings=83.61 | sources=run_context.csv
+SAME_RATING_MULTIPLE_ROWS | Vianarra | 2026-01-18 | SPORTSBET-WANGARATTA -> WANG | 1400m | matches=2 | ratings=60.32 | sources=run_context.csv
+SAME_RATING_MULTIPLE_ROWS | Rose Of Shalaa | 2026-02-10 | BET365 PARK KYNETON -> KYNE | 1479m | matches=2 | ratings=68.46 | sources=run_context.csv
+SAME_RATING_MULTIPLE_ROWS | Rose Of Shalaa | 2026-01-20 | LADBROKES GEELONG -> GEEL | 1425m | matches=2 | ratings=62.19 | sources=run_context.csv
+SAME_RATING_MULTIPLE_ROWS | Rose Of Shalaa | 2025-12-31 | WARRNAMBOOL -> WNBL | 1400m | matches=2 | ratings=63.29 | sources=run_context.csv
+SAME_RATING_MULTIPLE_ROWS | Rose Of Shalaa | 2025-12-16 | BET365 TERANG -> TER | 1200m | matches=2 | ratings=62.85 | sources=run_context.csv
+SAME_RATING_MULTIPLE_ROWS | Rose Of Shalaa | 2025-11-30 | WARRNAMBOOL -> WNBL | 1200m | matches=2 | ratings=54.96 | sources=run_context.csv
+CONFLICTING_RATINGS | Wild Ruby | 2026-03-08 | BET365 ECHUCA -> ECHA | 1200m | matches=2 | ratings=72.39 | 75.79 | sources=run_context.csv | run_context_FIXED.csv
+CONFLICTING_RATINGS | Wild Ruby | 2026-02-14 | SPORTSBET-BALLARAT -> BRAT | 1200m | matches=2 | ratings=50.26 | 52.38 | sources=run_context.csv | run_context_FIXED.csv
+SAME_RATING_MULTIPLE_ROWS | Dani California | 2026-01-16 | SOUTHSIDE PAKENHAM -> PAKM | 1200m | matches=2 | ratings=43.97 | sources=run_context.csv | run_context_FIXED.csv
+CONFLICTING_RATINGS | El Salto | 2026-03-08 | BET365 ECHUCA -> ECHA | 1000m | matches=2 | ratings=58.8 | 59.25 | sources=run_context.csv | run_context_FIXED.csv
+CONFLICTING_RATINGS | El Salto | 2026-02-22 | SPORTSBET-BALLARAT -> BRAT | 1000m | matches=2 | ratings=72.11 | 72.71 | sources=run_context.csv | run_context_FIXED.csv
+CONFLICTING_RATINGS | El Salto | 2026-02-14 | SPORTSBET-BALLARAT -> BRAT | 1000m | matches=2 | ratings=82.34 | 84.04 | sources=run_context.csv | run_context_FIXED.csv
+CONFLICTING_RATINGS | El Salto | 2025-12-22 | SPORTSBET-WANGARATTA -> WANG | 1000m | matches=2 | ratings=43.07 | 43.47 | sources=run_context.csv | run_context_FIXED.csv
+CONFLICTING_RATINGS | El Salto | 2025-12-14 | TATURA -> TAT | 1000m | matches=2 | ratings=74.44 | 75.24 | sources=run_context.csv | run_context_FIXED.csv
+CONFLICTING_RATINGS | El Salto | 2025-12-02 | DONALD -> DON | 1000m | matches=2 | ratings=63.35 | 63.95 | sources=run_context.csv | run_context_FIXED.csv
+CONFLICTING_RATINGS | El Salto | 2025-11-20 | SPORTSBET-BALLARAT -> BRAT | 1000m | matches=2 | ratings=74.01 | 74.21 | sources=run_context.csv | run_context_FIXED.csv
+CONFLICTING_RATINGS | El Salto | 2025-11-09 | ARARAT -> ARAT | 1100m | matches=2 | ratings=36.0 | 36.1 | sources=run_context.csv | run_context_FIXED.csv
+SAME_RATING_MULTIPLE_ROWS | Palentino Heights | 2026-02-20 | BET365 TERANG -> TER | 2156m | matches=2 | ratings=52.27 | sources=run_context.csv
+CONFLICTING_RATINGS | Step In Time | 2025-11-11 | WARRNAMBOOL -> WNBL | 2000m | matches=2 | ratings=52.35 | 52.48 | sources=run_context.csv | run_context_FIXED.csv
+SAME_RATING_MULTIPLE_ROWS | Untethered | 2026-03-03 | ARARAT -> ARAT | 2200m | matches=2 | ratings=83.0 | sources=run_context.csv
+CONFLICTING_RATINGS | Untethered | 2026-02-08 | ARARAT -> ARAT | 2200m | matches=2 | ratings=51.83 | 52.7 | sources=run_context.csv
+CONFLICTING_RATINGS | Untethered | 2026-01-31 | BET365 PARK KYNETON -> KYNE | 1856m | matches=2 | ratings=62.39 | 62.84 | sources=run_context.csv | run_context_FIXED.csv
+SAME_RATING_MULTIPLE_ROWS | Untethered | 2026-01-08 | SPORTSBET SANDOWN LAKESIDE -> SANL | 1400m | matches=2 | ratings=45.11 | sources=run_context.csv | run_context_FIXED.csv
+SAME_RATING_MULTIPLE_ROWS | Ardakan | 2026-03-06 | SOUTHSIDE PAKENHAM -> PAKM | 2500m | matches=2 | ratings=64.59 | sources=run_context.csv
+SAME_RATING_MULTIPLE_ROWS | Ardakan | 2026-01-17 | FLEMINGTON -> FLEM | 2000m | matches=2 | ratings=42.97 | sources=run_context.csv
+SAME_RATING_MULTIPLE_ROWS | Ardakan | 2025-12-31 | WARRNAMBOOL -> WNBL | 1700m | matches=2 | ratings=40.03 | sources=run_context.csv
+SAME_RATING_MULTIPLE_ROWS | Christmas | 2026-03-03 | ARARAT -> ARAT | 2200m | matches=2 | ratings=45.46 | sources=run_context.csv
+CONFLICTING_RATINGS | Mr Lincoln | 2025-11-30 | WARRNAMBOOL -> WNBL | 4600m | matches=2 | ratings=39.5 | 40.45 | sources=run_context.csv
+SAME_RATING_MULTIPLE_ROWS | Ongatiti | 2025-12-19 | SOUTHSIDE CRANBOURNE -> CRAN | 2600m | matches=2 | ratings=60.75 | sources=run_context.csv
+SAME_RATING_MULTIPLE_ROWS | Ongatiti | 2025-12-05 | SOUTHSIDE CRANBOURNE -> CRAN | 2580m | matches=2 | ratings=47.91 | sources=run_context.csv
+CONFLICTING_RATINGS | Ongatiti | 2025-11-16 | DONALD -> DON | 2200m | matches=2 | ratings=70.37 | 70.55 | sources=run_context.csv
+SAME_RATING_MULTIPLE_ROWS | Raise The Note | 2026-02-20 | BET365 TERANG -> TER | 2156m | matches=2 | ratings=39.6 | sources=run_context.csv
+SAME_RATING_MULTIPLE_ROWS | Last Card Louie | 2026-03-14 | LADBROKES GEELONG -> GEEL | 1715m | matches=2 | ratings=43.9 | sources=run_context.csv
+CONFLICTING_RATINGS | Last Card Louie | 2025-12-12 | LADBROKES GEELONG -> GEEL | 2450m | matches=2 | ratings=51.13 | 53.26 | sources=run_context.csv | run_context_FIXED.csv
+CONFLICTING_RATINGS | Last Card Louie | 2025-12-05 | MORNINGTON -> MORN | 2400m | matches=2 | ratings=69.8 | 73.2 | sources=run_context.csv | run_context_FIXED.csv
+CONFLICTING_RATINGS | Last Card Louie | 2025-11-26 | LADBROKES GEELONG -> GEEL | 2418m | matches=2 | ratings=71.36 | 74.76 | sources=run_context.csv | run_context_FIXED.csv
+CONFLICTING_RATINGS | Last Card Louie | 2025-11-14 | LADBROKES GEELONG -> GEEL | 2412m | matches=2 | ratings=59.89 | 62.44 | sources=run_context.csv | run_context_FIXED.csv
+CONFLICTING_RATINGS | Last Card Louie | 2025-11-09 | ARARAT -> ARAT | 4000m | matches=2 | ratings=51.84 | 52.21 | sources=run_context.csv | run_context_FIXED.csv
+CONFLICTING_RATINGS | Lucky Chance | 2025-11-14 | SOUTHSIDE PAKENHAM -> PAKM | 2000m | matches=2 | ratings=60.3 | 63.28 | sources=run_context.csv | run_context_FIXED.csv
+SAME_RATING_MULTIPLE_ROWS | Miss Delightful | 2026-01-02 | BET365 TERANG -> TER | 1600m | matches=2 | ratings=64.32 | sources=run_context.csv
+SAME_RATING_MULTIPLE_ROWS | Lisa Lass | 2026-02-12 | SOUTHSIDE PAKENHAM -> PAKM | 2000m | matches=2 | ratings=54.88 | sources=run_context.csv
+SAME_RATING_MULTIPLE_ROWS | Lisa Lass | 2026-01-30 | SOUTHSIDE CRANBOURNE -> CRAN | 1500m | matches=2 | ratings=77.75 | sources=run_context.csv
+CONFLICTING_RATINGS | Back Of The Boat | 2026-03-09 | WARRNAMBOOL -> WNBL | 1300m | matches=2 | ratings=66.66 | 69.64 | sources=run_context.csv | run_context_FIXED.csv
+CONFLICTING_RATINGS | Back Of The Boat | 2026-02-17 | PICKLEBET PARK WERRIBEE -> WERR | 1100m | matches=2 | ratings=38.46 | 40.16 | sources=run_context.csv | run_context_FIXED.csv
+CONFLICTING_RATINGS | Mr Lincoln | 2025-11-30 | WARRNAMBOOL -> WNBL | 4600m | matches=2 | ratings=39.5 | 40.45 | sources=run_context.csv
+SAME_RATING_MULTIPLE_ROWS | Not Usual Dream | 2026-03-06 | BET365 PARK KILMORE -> KILM | 1600m | matches=2 | ratings=53.07 | sources=run_context.csv
+SAME_RATING_MULTIPLE_ROWS | Raise The Note | 2026-02-20 | BET365 TERANG -> TER | 2156m | matches=2 | ratings=39.6 | sources=run_context.csv
+SAME_RATING_MULTIPLE_ROWS | Charlie Messy Hair | 2025-12-19 | SOUTHSIDE CRANBOURNE -> CRAN | 2600m | matches=2 | ratings=64.78 | sources=run_context.csv
+SAME_RATING_MULTIPLE_ROWS | Charlie Messy Hair | 2025-12-05 | MORNINGTON -> MORN | 2400m | matches=2 | ratings=57.97 | sources=run_context.csv
+SAME_RATING_MULTIPLE_ROWS | Charlie Messy Hair | 2025-11-10 | MORNINGTON -> MORN | 2435m | matches=2 | ratings=50.66 | sources=run_context.csv
+
+DETAIL_CSV=C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\docs\full-product-implementation\FORM_GUIDE_HISTORICAL_EPI_AMBIGUITY_FORENSIC_AUDIT.csv
+
+EDGEIQ_FORM_GUIDE_HISTORICAL_EPI_AMBIGUITY_FORENSIC_AUDIT_PASS

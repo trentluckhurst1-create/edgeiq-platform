@@ -1,0 +1,92 @@
+{
+  "version": "FORM_GUIDE_FINAL_LOCKED_SPEC_V2",
+  "viewport": {
+    "width": 1536,
+    "height": 1024,
+    "deviceScaleFactor": 1,
+    "zoom": "100%"
+  },
+  "component": "src/edgeiq-os/race/components/RaceFormGuideWorkspace.tsx",
+  "marker": "form-guide-final-locked",
+  "summaryColumns": [
+    "NO",
+    "SILK",
+    "LAST 5",
+    "HORSE",
+    "TRAINER",
+    "JOCKEY",
+    "WT",
+    "BAR",
+    "DAYS",
+    "EPI",
+    "EARLY SPEED",
+    "LATE SPEED",
+    "SUITABILITY",
+    "FORM MOMENTUM",
+    "MARKET",
+    "EDGEiQ PRICE"
+  ],
+  "recentFormColumns": [
+    "DATE",
+    "TRACK",
+    "DIST",
+    "CLASS",
+    "GOING",
+    "JOCKEY",
+    "BARRIER",
+    "WEIGHT",
+    "EPI",
+    "ERI",
+    "POS",
+    "POSITION IN RUNNING",
+    "MARGIN",
+    "SP",
+    "8-6",
+    "6-4",
+    "4-2",
+    "2-F"
+  ],
+  "profileMatrixColumns": [
+    "CATEGORY",
+    "CAREER",
+    "TODAY DISTANCE",
+    "TODAY TRACK",
+    "FIRM",
+    "TODAY GOING",
+    "SOFT",
+    "HEAVY",
+    "TRACK/DIST",
+    "TODAY CLASS",
+    "TODAY JOCKEY",
+    "1ST UP",
+    "2ND UP",
+    "3RD UP"
+  ],
+  "profileMatrixRows": [
+    "STARTS",
+    "WINS",
+    "PLACES",
+    "WIN %",
+    "PLACE %",
+    "AVG EPI",
+    "AVG ERI"
+  ],
+  "todayMatchRows": [
+    "Track",
+    "Distance",
+    "Going",
+    "Rail",
+    "Tempo",
+    "Pace Setup"
+  ],
+  "forbiddenVisibleText": [
+    "UNKNOWN",
+    "NOT LOADED",
+    "SOURCE GAP",
+    "null",
+    "undefined",
+    "NaN",
+    "Metric Guide"
+  ],
+  "modelMathChanged": false
+}

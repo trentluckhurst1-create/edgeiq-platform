@@ -1,0 +1,1857 @@
+{
+  "summary": {
+    "status": "PASS",
+    "files_discovered": 150,
+    "files_passed": 150,
+    "files_failed": 0,
+    "maximum_rows_sampled_per_file": 5000,
+    "large_historical_files_skipped": true
+  },
+  "metric_coverage": [
+    {
+      "metric": "epi",
+      "populated": 0,
+      "missing": 0,
+      "invalid_placeholders": 0
+    },
+    {
+      "metric": "eri",
+      "populated": 0,
+      "missing": 0,
+      "invalid_placeholders": 0
+    },
+    {
+      "metric": "early_speed",
+      "populated": 7981,
+      "missing": 24,
+      "invalid_placeholders": 0
+    },
+    {
+      "metric": "late_speed",
+      "populated": 2168,
+      "missing": 2832,
+      "invalid_placeholders": 0
+    },
+    {
+      "metric": "suitability",
+      "populated": 1432,
+      "missing": 0,
+      "invalid_placeholders": 0
+    },
+    {
+      "metric": "form_momentum",
+      "populated": 0,
+      "missing": 0,
+      "invalid_placeholders": 0
+    },
+    {
+      "metric": "fair_price",
+      "populated": 51003,
+      "missing": 1643,
+      "invalid_placeholders": 0
+    },
+    {
+      "metric": "market_price",
+      "populated": 4459,
+      "missing": 7935,
+      "invalid_placeholders": 0
+    },
+    {
+      "metric": "edge",
+      "populated": 13931,
+      "missing": 17795,
+      "invalid_placeholders": 0
+    },
+    {
+      "metric": "recent_form",
+      "populated": 218,
+      "missing": 2386,
+      "invalid_placeholders": 0
+    },
+    {
+      "metric": "sectionals",
+      "populated": 0,
+      "missing": 0,
+      "invalid_placeholders": 0
+    }
+  ],
+  "files": [
+    {
+      "path": "public\\data\\backups\\edgeiq_price_truth_history_v1_before_settlement_20260601_205622Z.csv",
+      "size_mb": 0.08,
+      "sample_rows": 348,
+      "columns": 27,
+      "metrics": {
+        "fair_price": [
+          "edgeiq_price"
+        ]
+      },
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\checkpoints\\edgeiq_command_enrichment_feed_v2_BEFORE_COMMAND_V3_APPLY_20260628_065252.csv",
+      "size_mb": 0.13,
+      "sample_rows": 383,
+      "columns": 30,
+      "metrics": {
+        "fair_price": [
+          "edgeiq_active_display_fair_price",
+          "edgeiq_v7_2g2_guarded_display_fair_price"
+        ]
+      },
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\checkpoints\\edgeiq_command_enrichment_feed_v2_BEFORE_FRESH_CURRENT_APPLY_20260627_204159.csv",
+      "size_mb": 0.2,
+      "sample_rows": 378,
+      "columns": 30,
+      "metrics": {
+        "fair_price": [
+          "edgeiq_active_display_fair_price",
+          "edgeiq_v7_2g2_guarded_display_fair_price"
+        ]
+      },
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\checkpoints\\edgeiq_command_enrichment_feed_v2_BEFORE_FRESH_REBUILD_20260627_203432.csv",
+      "size_mb": 0.2,
+      "sample_rows": 378,
+      "columns": 30,
+      "metrics": {
+        "fair_price": [
+          "edgeiq_active_display_fair_price",
+          "edgeiq_v7_2g2_guarded_display_fair_price"
+        ]
+      },
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\checkpoints\\edgeiq_command_enrichment_feed_v2_BEFORE_V3_1_APPLY_20260628_070515.csv",
+      "size_mb": 0.51,
+      "sample_rows": 383,
+      "columns": 40,
+      "metrics": {
+        "fair_price": [
+          "edgeiq_active_display_fair_price",
+          "edgeiq_v7_2g2_guarded_display_fair_price"
+        ]
+      },
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\checkpoints\\edgeiq_command_enrichment_feed_v2_BEFORE_V3_1_APPLY_20260628_070956.csv",
+      "size_mb": 0.54,
+      "sample_rows": 383,
+      "columns": 47,
+      "metrics": {
+        "fair_price": [
+          "edgeiq_active_display_fair_price",
+          "edgeiq_price_source_v3_1",
+          "edgeiq_price_truth_status_v3_1",
+          "edgeiq_v7_2g2_guarded_display_fair_price"
+        ]
+      },
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\checkpoints\\edgeiq_command_enrichment_feed_v2_BEFORE_V3_2_APPLY_20260628_071952.csv",
+      "size_mb": 0.63,
+      "sample_rows": 383,
+      "columns": 51,
+      "metrics": {
+        "fair_price": [
+          "edgeiq_active_display_fair_price",
+          "edgeiq_price_source_v3_1",
+          "edgeiq_price_truth_status_v3_1",
+          "edgeiq_v7_2g2_guarded_display_fair_price"
+        ]
+      },
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\checkpoints\\edgeiq_command_enrichment_feed_v2_BEFORE_V3_3_APPLY_20260628_072759.csv",
+      "size_mb": 0.68,
+      "sample_rows": 383,
+      "columns": 64,
+      "metrics": {
+        "fair_price": [
+          "edgeiq_active_display_fair_price",
+          "edgeiq_price_source_v3_1",
+          "edgeiq_price_truth_status_v3_1",
+          "edgeiq_v7_2g2_guarded_display_fair_price"
+        ]
+      },
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\checkpoints\\edgeiq_command_enrichment_feed_v3_BEFORE_V3_1_APPLY_20260628_070515.csv",
+      "size_mb": 0.51,
+      "sample_rows": 383,
+      "columns": 40,
+      "metrics": {
+        "fair_price": [
+          "edgeiq_active_display_fair_price",
+          "edgeiq_v7_2g2_guarded_display_fair_price"
+        ]
+      },
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\checkpoints\\edgeiq_command_enrichment_feed_v3_BEFORE_V3_1_APPLY_20260628_070956.csv",
+      "size_mb": 0.54,
+      "sample_rows": 383,
+      "columns": 47,
+      "metrics": {
+        "fair_price": [
+          "edgeiq_active_display_fair_price",
+          "edgeiq_price_source_v3_1",
+          "edgeiq_price_truth_status_v3_1",
+          "edgeiq_v7_2g2_guarded_display_fair_price"
+        ]
+      },
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\checkpoints\\edgeiq_command_enrichment_feed_v3_BEFORE_V3_2_APPLY_20260628_071952.csv",
+      "size_mb": 0.63,
+      "sample_rows": 383,
+      "columns": 51,
+      "metrics": {
+        "fair_price": [
+          "edgeiq_active_display_fair_price",
+          "edgeiq_price_source_v3_1",
+          "edgeiq_price_truth_status_v3_1",
+          "edgeiq_v7_2g2_guarded_display_fair_price"
+        ]
+      },
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\checkpoints\\edgeiq_command_enrichment_feed_v3_BEFORE_V3_3_APPLY_20260628_072759.csv",
+      "size_mb": 0.68,
+      "sample_rows": 383,
+      "columns": 64,
+      "metrics": {
+        "fair_price": [
+          "edgeiq_active_display_fair_price",
+          "edgeiq_price_source_v3_1",
+          "edgeiq_price_truth_status_v3_1",
+          "edgeiq_v7_2g2_guarded_display_fair_price"
+        ]
+      },
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\checkpoints\\edgeiq_current_intelligence_evidence_fix_candidate_v1_BEFORE_FRESH_REBUILD_20260627_203432.csv",
+      "size_mb": 0.65,
+      "sample_rows": 378,
+      "columns": 140,
+      "metrics": {
+        "early_speed": [
+          "early_speed_band",
+          "early_speed_rating"
+        ],
+        "fair_price": [
+          "V6_1_RESEARCH_fair_price",
+          "display_fair_price",
+          "edgeiq_price_engine_version_v7_2",
+          "edgeiq_v7_2_preview_display_fair_price",
+          "edgeiq_v7_2_preview_fair_price",
+          "edgeiq_v7_2g2_guarded_display_fair_price",
+          "edgeiq_v7_2g2_on_preview_display_fair_price",
+          "fair_price",
+          "fair_price_display",
+          "fair_price_raw",
+          "ui_fair_price"
+        ],
+        "market_price": [
+          "tab_fixed_win"
+        ],
+        "edge": [
+          "display_edge_pct",
+          "edge_pct",
+          "edge_pct_display",
+          "edge_pct_raw",
+          "ui_edge_pct"
+        ]
+      },
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\checkpoints\\edgeiq_live_runner_board_governed_v1_BEFORE_COMMAND_V3_APPLY_20260628_065252.csv",
+      "size_mb": 0.39,
+      "sample_rows": 383,
+      "columns": 112,
+      "metrics": {
+        "early_speed": [
+          "early_speed_band",
+          "early_speed_rating"
+        ],
+        "fair_price": [
+          "V6_1_RESEARCH_fair_price",
+          "display_fair_price",
+          "edgeiq_v7_2g2_guarded_display_fair_price",
+          "edgeiq_v7_2g2_on_preview_display_fair_price",
+          "fair_price",
+          "ui_fair_price"
+        ],
+        "market_price": [
+          "tab_fixed_win"
+        ],
+        "edge": [
+          "display_edge_pct",
+          "edge_pct",
+          "ui_edge_pct"
+        ]
+      },
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\checkpoints\\edgeiq_live_runner_board_governed_v1_BEFORE_EVIDENCE_APPLY_20260627_185802.csv",
+      "size_mb": 0.51,
+      "sample_rows": 378,
+      "columns": 132,
+      "metrics": {
+        "early_speed": [
+          "early_speed_band",
+          "early_speed_rating"
+        ],
+        "fair_price": [
+          "V6_1_RESEARCH_fair_price",
+          "display_fair_price",
+          "edgeiq_price_engine_version_v7_2",
+          "edgeiq_v7_2_preview_display_fair_price",
+          "edgeiq_v7_2_preview_fair_price",
+          "edgeiq_v7_2g2_guarded_display_fair_price",
+          "edgeiq_v7_2g2_on_preview_display_fair_price",
+          "fair_price",
+          "fair_price_display",
+          "fair_price_raw",
+          "ui_fair_price"
+        ],
+        "market_price": [
+          "tab_fixed_win"
+        ],
+        "edge": [
+          "display_edge_pct",
+          "edge_pct",
+          "edge_pct_display",
+          "edge_pct_raw",
+          "ui_edge_pct"
+        ]
+      },
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\checkpoints\\edgeiq_live_runner_board_governed_v1_BEFORE_EVIDENCE_MERGE_20260627_185629.csv",
+      "size_mb": 0.51,
+      "sample_rows": 378,
+      "columns": 132,
+      "metrics": {
+        "early_speed": [
+          "early_speed_band",
+          "early_speed_rating"
+        ],
+        "fair_price": [
+          "V6_1_RESEARCH_fair_price",
+          "display_fair_price",
+          "edgeiq_price_engine_version_v7_2",
+          "edgeiq_v7_2_preview_display_fair_price",
+          "edgeiq_v7_2_preview_fair_price",
+          "edgeiq_v7_2g2_guarded_display_fair_price",
+          "edgeiq_v7_2g2_on_preview_display_fair_price",
+          "fair_price",
+          "fair_price_display",
+          "fair_price_raw",
+          "ui_fair_price"
+        ],
+        "market_price": [
+          "tab_fixed_win"
+        ],
+        "edge": [
+          "display_edge_pct",
+          "edge_pct",
+          "edge_pct_display",
+          "edge_pct_raw",
+          "ui_edge_pct"
+        ]
+      },
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\checkpoints\\edgeiq_live_runner_board_governed_v1_BEFORE_FRESH_CURRENT_APPLY_20260627_204159.csv",
+      "size_mb": 0.65,
+      "sample_rows": 378,
+      "columns": 140,
+      "metrics": {
+        "early_speed": [
+          "early_speed_band",
+          "early_speed_rating"
+        ],
+        "fair_price": [
+          "V6_1_RESEARCH_fair_price",
+          "display_fair_price",
+          "edgeiq_price_engine_version_v7_2",
+          "edgeiq_v7_2_preview_display_fair_price",
+          "edgeiq_v7_2_preview_fair_price",
+          "edgeiq_v7_2g2_guarded_display_fair_price",
+          "edgeiq_v7_2g2_on_preview_display_fair_price",
+          "fair_price",
+          "fair_price_display",
+          "fair_price_raw",
+          "ui_fair_price"
+        ],
+        "market_price": [
+          "tab_fixed_win"
+        ],
+        "edge": [
+          "display_edge_pct",
+          "edge_pct",
+          "edge_pct_display",
+          "edge_pct_raw",
+          "ui_edge_pct"
+        ]
+      },
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\checkpoints\\edgeiq_live_runner_board_governed_v1_BEFORE_FRESH_REBUILD_20260627_203432.csv",
+      "size_mb": 0.65,
+      "sample_rows": 378,
+      "columns": 140,
+      "metrics": {
+        "early_speed": [
+          "early_speed_band",
+          "early_speed_rating"
+        ],
+        "fair_price": [
+          "V6_1_RESEARCH_fair_price",
+          "display_fair_price",
+          "edgeiq_price_engine_version_v7_2",
+          "edgeiq_v7_2_preview_display_fair_price",
+          "edgeiq_v7_2_preview_fair_price",
+          "edgeiq_v7_2g2_guarded_display_fair_price",
+          "edgeiq_v7_2g2_on_preview_display_fair_price",
+          "fair_price",
+          "fair_price_display",
+          "fair_price_raw",
+          "ui_fair_price"
+        ],
+        "market_price": [
+          "tab_fixed_win"
+        ],
+        "edge": [
+          "display_edge_pct",
+          "edge_pct",
+          "edge_pct_display",
+          "edge_pct_raw",
+          "ui_edge_pct"
+        ]
+      },
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\checkpoints\\edgeiq_live_runner_board_governed_v1_CHECKPOINT_BEFORE_V7_2_20260627_162119.csv",
+      "size_mb": 0.28,
+      "sample_rows": 378,
+      "columns": 100,
+      "metrics": {
+        "early_speed": [
+          "early_speed_band",
+          "early_speed_rating"
+        ],
+        "fair_price": [
+          "V6_1_RESEARCH_fair_price",
+          "display_fair_price",
+          "fair_price",
+          "fair_price_display",
+          "fair_price_raw",
+          "ui_fair_price"
+        ],
+        "market_price": [
+          "tab_fixed_win"
+        ],
+        "edge": [
+          "display_edge_pct",
+          "edge_pct",
+          "edge_pct_display",
+          "edge_pct_raw",
+          "ui_edge_pct"
+        ]
+      },
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\checkpoints\\edgeiq_live_runner_board_v1_CHECKPOINT_BEFORE_V7_2_20260627_162119.csv",
+      "size_mb": 0.29,
+      "sample_rows": 383,
+      "columns": 92,
+      "metrics": {
+        "early_speed": [
+          "early_speed_band",
+          "early_speed_rating"
+        ],
+        "fair_price": [
+          "V6_1_RESEARCH_fair_price",
+          "display_fair_price",
+          "fair_price",
+          "ui_fair_price"
+        ],
+        "market_price": [
+          "tab_fixed_win"
+        ],
+        "edge": [
+          "display_edge_pct",
+          "edge_pct",
+          "ui_edge_pct"
+        ]
+      },
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\checkpoints\\edgeiq_live_runner_board_v1_SOURCE_FOR_FRESH_REBUILD_20260627_203432.csv",
+      "size_mb": 0.29,
+      "sample_rows": 383,
+      "columns": 92,
+      "metrics": {
+        "early_speed": [
+          "early_speed_band",
+          "early_speed_rating"
+        ],
+        "fair_price": [
+          "V6_1_RESEARCH_fair_price",
+          "display_fair_price",
+          "fair_price",
+          "ui_fair_price"
+        ],
+        "market_price": [
+          "tab_fixed_win"
+        ],
+        "edge": [
+          "display_edge_pct",
+          "edge_pct",
+          "ui_edge_pct"
+        ]
+      },
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\checkpoints\\edgeiq_live_terminal_feed_v1_CHECKPOINT_BEFORE_V7_2_20260627_162119.csv",
+      "size_mb": 0.32,
+      "sample_rows": 383,
+      "columns": 89,
+      "metrics": {
+        "fair_price": [
+          "ui_fair_price"
+        ],
+        "market_price": [
+          "fixed_win",
+          "market_price",
+          "tab_fixed_win"
+        ],
+        "edge": [
+          "edge_pct",
+          "edge_rank",
+          "ui_edge_pct"
+        ]
+      },
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\checkpoints\\edgeiq_vic_live_terminal_feed_v1_CHECKPOINT_BEFORE_V7_2_20260627_162119.csv",
+      "size_mb": 0.32,
+      "sample_rows": 383,
+      "columns": 89,
+      "metrics": {
+        "fair_price": [
+          "ui_fair_price"
+        ],
+        "market_price": [
+          "fixed_win",
+          "market_price",
+          "tab_fixed_win"
+        ],
+        "edge": [
+          "edge_pct",
+          "edge_rank",
+          "ui_edge_pct"
+        ]
+      },
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edge_intelligence.csv",
+      "size_mb": 0.22,
+      "sample_rows": 1543,
+      "columns": 16,
+      "metrics": {
+        "market_price": [
+          "market_price"
+        ],
+        "edge": [
+          "edge_grade",
+          "edge_pct",
+          "edge_reason",
+          "edge_score"
+        ]
+      },
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_accountability_by_track.csv",
+      "size_mb": 0.0,
+      "sample_rows": 55,
+      "columns": 4,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_accountability_match_types.csv",
+      "size_mb": 0.0,
+      "sample_rows": 4,
+      "columns": 2,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_accountability_pending_breakdown.csv",
+      "size_mb": 0.0,
+      "sample_rows": 47,
+      "columns": 4,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_accountability_summary.csv",
+      "size_mb": 0.0,
+      "sample_rows": 1,
+      "columns": 11,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_active_build_chain_dry_run_v1.csv",
+      "size_mb": 0.01,
+      "sample_rows": 13,
+      "columns": 15,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_active_build_chain_dry_run_v1_summary.csv",
+      "size_mb": 0.0,
+      "sample_rows": 13,
+      "columns": 2,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_active_build_chain_manifest_v1.csv",
+      "size_mb": 0.0,
+      "sample_rows": 13,
+      "columns": 10,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_active_file_manifest_v1.csv",
+      "size_mb": 0.11,
+      "sample_rows": 574,
+      "columns": 9,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_active_form_bridge_diagnostics_v1.csv",
+      "size_mb": 0.0,
+      "sample_rows": 1,
+      "columns": 7,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_active_form_bridge_v1.csv",
+      "size_mb": 0.0,
+      "sample_rows": 8,
+      "columns": 17,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_active_form_truth_quality_diagnostics_v1.csv",
+      "size_mb": 0.0,
+      "sample_rows": 1,
+      "columns": 8,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_active_form_truth_quality_v1.csv",
+      "size_mb": 0.0,
+      "sample_rows": 8,
+      "columns": 21,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_active_ra_browser_capture_diagnostics_v1.csv",
+      "size_mb": 0.0,
+      "sample_rows": 8,
+      "columns": 8,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_active_ra_profile_backfill_diagnostics_v1.csv",
+      "size_mb": 0.0,
+      "sample_rows": 8,
+      "columns": 6,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_active_ra_profile_backfill_targets_v1.csv",
+      "size_mb": 0.0,
+      "sample_rows": 8,
+      "columns": 9,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_active_ra_profile_backfill_v1.csv",
+      "size_mb": 0.0,
+      "sample_rows": 0,
+      "columns": 0,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_active_race_selector.csv",
+      "size_mb": 0.0,
+      "sample_rows": 9,
+      "columns": 11,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_active_race_selector_WORKING_TODAY_ONLY_TAB_20260615.csv",
+      "size_mb": 0.0,
+      "sample_rows": 10,
+      "columns": 11,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_active_runner_form_truth_diagnostics_v1.csv",
+      "size_mb": 0.0,
+      "sample_rows": 1,
+      "columns": 7,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_active_runner_form_truth_v1.csv",
+      "size_mb": 0.0,
+      "sample_rows": 8,
+      "columns": 17,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_adaptive_signal_weights.csv",
+      "size_mb": 0.1,
+      "sample_rows": 746,
+      "columns": 14,
+      "metrics": {
+        "market_price": [
+          "market_price"
+        ],
+        "edge": [
+          "compressed_edge"
+        ]
+      },
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_adaptive_staking_summary_v1.csv",
+      "size_mb": 0.0,
+      "sample_rows": 2,
+      "columns": 6,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_adaptive_staking_v1.csv",
+      "size_mb": 0.01,
+      "sample_rows": 27,
+      "columns": 43,
+      "metrics": {
+        "market_price": [
+          "latest_market_price",
+          "market_price"
+        ],
+        "edge": [
+          "edge_pct"
+        ]
+      },
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_all_csv_column_inventory_v1.csv",
+      "size_mb": 5.7,
+      "sample_rows": 5000,
+      "columns": 2,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_all_runner_form_guide_v1_audit.json",
+      "size_mb": 0.0,
+      "sample_rows": 1,
+      "columns": 6,
+      "metrics": {
+        "recent_form": [
+          "recent_form_columns"
+        ]
+      },
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_all_tabs_integrity_checkpoint_v1.csv",
+      "size_mb": 0.0,
+      "sample_rows": 1,
+      "columns": 13,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_backfill_to_temporal_key_audit_v1.csv",
+      "size_mb": 0.01,
+      "sample_rows": 89,
+      "columns": 9,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_barrier_bias_by_track_v1.csv",
+      "size_mb": 0.83,
+      "sample_rows": 5000,
+      "columns": 28,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_barrier_bias_summary_v1.csv",
+      "size_mb": 0.0,
+      "sample_rows": 9,
+      "columns": 2,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_barrier_bias_v1.csv",
+      "size_mb": 41.61,
+      "sample_rows": 5000,
+      "columns": 34,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_barrier_dna_v1.csv",
+      "size_mb": 15.14,
+      "sample_rows": 5000,
+      "columns": 13,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_barrier_dna_v1_summary.csv",
+      "size_mb": 0.0,
+      "sample_rows": 14,
+      "columns": 2,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_barrier_rail_condition_bias_rank1_relevance_v1.csv",
+      "size_mb": 4.73,
+      "sample_rows": 5000,
+      "columns": 40,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_barrier_rail_condition_bias_replay_by_bucket_v1.csv",
+      "size_mb": 1.71,
+      "sample_rows": 5000,
+      "columns": 26,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_barrier_rail_condition_bias_replay_v1.csv",
+      "size_mb": 36.0,
+      "sample_rows": 5000,
+      "columns": 33,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_barrier_rail_condition_bias_replay_v1.json",
+      "size_mb": 0.05,
+      "sample_rows": 1,
+      "columns": 5,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_barrier_rail_condition_bias_replay_v1_summary.csv",
+      "size_mb": 0.0,
+      "sample_rows": 17,
+      "columns": 2,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_barrier_rail_condition_pricing_impact_replay_by_band_v1.csv",
+      "size_mb": 0.0,
+      "sample_rows": 5,
+      "columns": 14,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_barrier_rail_condition_pricing_impact_replay_by_overlay_threshold_v1.csv",
+      "size_mb": 0.0,
+      "sample_rows": 12,
+      "columns": 8,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_barrier_rail_condition_pricing_impact_replay_v1.csv",
+      "size_mb": 38.02,
+      "sample_rows": 5000,
+      "columns": 36,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_barrier_rail_condition_pricing_impact_replay_v1_summary.csv",
+      "size_mb": 0.0,
+      "sample_rows": 34,
+      "columns": 2,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_barrier_track_dna_v1.csv",
+      "size_mb": 42.89,
+      "sample_rows": 5000,
+      "columns": 15,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_barrier_track_dna_v1_summary.csv",
+      "size_mb": 0.0,
+      "sample_rows": 14,
+      "columns": 2,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_bayesian_blending_v1.csv",
+      "size_mb": 0.02,
+      "sample_rows": 110,
+      "columns": 18,
+      "metrics": {
+        "fair_price": [
+          "blended_fair_price"
+        ]
+      },
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_benchmark_accumulation_fact_v1.csv",
+      "size_mb": 0.01,
+      "sample_rows": 12,
+      "columns": 21,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_benchmark_accumulation_fact_v1_audit.json",
+      "size_mb": 0.0,
+      "sample_rows": 1,
+      "columns": 7,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_benchmark_accumulation_membership_fact_v1.csv",
+      "size_mb": 0.01,
+      "sample_rows": 24,
+      "columns": 10,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_benchmark_eligibility_fact_v1.csv",
+      "size_mb": 0.01,
+      "sample_rows": 39,
+      "columns": 20,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_benchmark_eligibility_fact_v1_audit.json",
+      "size_mb": 0.0,
+      "sample_rows": 1,
+      "columns": 16,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_benchmark_observation_fact_v1.csv",
+      "size_mb": 0.02,
+      "sample_rows": 39,
+      "columns": 33,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_benchmark_observation_fact_v1_audit.json",
+      "size_mb": 0.01,
+      "sample_rows": 1,
+      "columns": 17,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_benchmark_sectional_display_v1_audit.json",
+      "size_mb": 0.0,
+      "sample_rows": 1,
+      "columns": 3,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_bet_feedback_by_action.csv",
+      "size_mb": 0.0,
+      "sample_rows": 6,
+      "columns": 3,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_bet_feedback_by_track.csv",
+      "size_mb": 0.0,
+      "sample_rows": 46,
+      "columns": 4,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_bet_feedback_loop.csv",
+      "size_mb": 0.08,
+      "sample_rows": 339,
+      "columns": 36,
+      "metrics": {
+        "market_price": [
+          "market_price"
+        ]
+      },
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_bet_feedback_summary.csv",
+      "size_mb": 0.0,
+      "sample_rows": 1,
+      "columns": 10,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_bet_quality_engine_v1.csv",
+      "size_mb": 288.37,
+      "sample_rows": 5000,
+      "columns": 86,
+      "metrics": {
+        "fair_price": [
+          "fair_price_replay_v1"
+        ]
+      },
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_bet_quality_engine_v1.json",
+      "size_mb": 0.0,
+      "sample_rows": 1,
+      "columns": 4,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_bet_quality_engine_v1_1.csv",
+      "size_mb": 373.64,
+      "sample_rows": 5000,
+      "columns": 102,
+      "metrics": {
+        "late_speed": [
+          "avg_late_speed"
+        ],
+        "fair_price": [
+          "fair_price_replay_v1"
+        ]
+      },
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_bet_quality_engine_v1_1.json",
+      "size_mb": 0.0,
+      "sample_rows": 1,
+      "columns": 9,
+      "metrics": {
+        "edge": [
+          "edge_execution_staking_changed"
+        ]
+      },
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_bet_quality_engine_v1_1_by_grade.csv",
+      "size_mb": 0.0,
+      "sample_rows": 6,
+      "columns": 7,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_bet_quality_engine_v1_1_by_score_band.csv",
+      "size_mb": 0.0,
+      "sample_rows": 6,
+      "columns": 7,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_bet_quality_engine_v1_1_summary.csv",
+      "size_mb": 0.0,
+      "sample_rows": 9,
+      "columns": 2,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_bet_quality_engine_v1_by_grade.csv",
+      "size_mb": 0.0,
+      "sample_rows": 3,
+      "columns": 6,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_bet_quality_engine_v1_by_score_band.csv",
+      "size_mb": 0.0,
+      "sample_rows": 3,
+      "columns": 6,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_bet_quality_engine_v1_summary.csv",
+      "size_mb": 0.0,
+      "sample_rows": 4,
+      "columns": 2,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_beta_cross_workspace_consistency_v1.csv",
+      "size_mb": 0.05,
+      "sample_rows": 297,
+      "columns": 5,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_beta_data_coverage_matrix_v1.csv",
+      "size_mb": 0.03,
+      "sample_rows": 220,
+      "columns": 15,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_beta_data_coverage_summary_v1.json",
+      "size_mb": 0.0,
+      "sample_rows": 1,
+      "columns": 9,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_beta_data_join_integrity_v1.csv",
+      "size_mb": 0.0,
+      "sample_rows": 8,
+      "columns": 18,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_beta_data_join_integrity_v1_audit.json",
+      "size_mb": 0.0,
+      "sample_rows": 1,
+      "columns": 2,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_beta_governed_data_completion_v1_final_report.json",
+      "size_mb": 0.01,
+      "sample_rows": 1,
+      "columns": 6,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_beta_governed_data_completion_v1_progress.json",
+      "size_mb": 0.0,
+      "sample_rows": 1,
+      "columns": 17,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_beta_governed_source_registry_v1.csv",
+      "size_mb": 1.69,
+      "sample_rows": 5000,
+      "columns": 20,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_beta_intelligence_completion_v1_audit.json",
+      "size_mb": 0.0,
+      "sample_rows": 1,
+      "columns": 6,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_beta_intelligence_v1_distribution.csv",
+      "size_mb": 0.0,
+      "sample_rows": 18,
+      "columns": 12,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_beta_intelligence_v1_semantic_audit.csv",
+      "size_mb": 0.0,
+      "sample_rows": 6,
+      "columns": 6,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_beta_readiness_report_v2_audit.json",
+      "size_mb": 0.01,
+      "sample_rows": 1,
+      "columns": 8,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_beta_workspace_field_inventory_v1.csv",
+      "size_mb": 0.09,
+      "sample_rows": 220,
+      "columns": 22,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_betting_edges.csv",
+      "size_mb": 0.62,
+      "sample_rows": 1171,
+      "columns": 78,
+      "metrics": {
+        "early_speed": [
+          "early_speed_score"
+        ],
+        "market_price": [
+          "market_price",
+          "market_price_clean"
+        ],
+        "edge": [
+          "edge_grade",
+          "edge_pct",
+          "edge_ratio",
+          "elite_edge_pct"
+        ],
+        "recent_form": [
+          "rating_std_last5"
+        ]
+      },
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_bias_discovery_report_v1.csv",
+      "size_mb": 0.02,
+      "sample_rows": 125,
+      "columns": 20,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_bias_discovery_report_v1.json",
+      "size_mb": 0.05,
+      "sample_rows": 1,
+      "columns": 6,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_bias_discovery_report_v1_summary.csv",
+      "size_mb": 0.0,
+      "sample_rows": 8,
+      "columns": 2,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_bias_factor_relevance_audit_summary_v1.csv",
+      "size_mb": 0.0,
+      "sample_rows": 17,
+      "columns": 2,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_bias_factor_relevance_audit_v1.csv",
+      "size_mb": 4.77,
+      "sample_rows": 5000,
+      "columns": 44,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_blank_jockey_source_audit_summary_v1.csv",
+      "size_mb": 0.01,
+      "sample_rows": 80,
+      "columns": 7,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_blank_jockey_source_audit_v1.csv",
+      "size_mb": 0.05,
+      "sample_rows": 172,
+      "columns": 20,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_blank_screen_5176_deep_raw.json",
+      "size_mb": 0.01,
+      "sample_rows": 1,
+      "columns": 11,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_blank_screen_devpreview_diag_raw.json",
+      "size_mb": 0.05,
+      "sample_rows": 2,
+      "columns": 10,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_blank_screen_postfix_diag_raw.json",
+      "size_mb": 0.0,
+      "sample_rows": 2,
+      "columns": 10,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_blank_screen_runtime_diag_raw.json",
+      "size_mb": 0.01,
+      "sample_rows": 2,
+      "columns": 11,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_blank_screen_runtime_fix_v1_audit.csv",
+      "size_mb": 0.0,
+      "sample_rows": 10,
+      "columns": 3,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_blank_screen_runtime_fix_v1_summary.csv",
+      "size_mb": 0.0,
+      "sample_rows": 10,
+      "columns": 2,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_bom_location_api_contract_trace_v1.json",
+      "size_mb": 0.0,
+      "sample_rows": 1,
+      "columns": 7,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_bom_search_location_resolver_v1_audit.json",
+      "size_mb": 0.0,
+      "sample_rows": 1,
+      "columns": 13,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_bom_track_location_registry_v1_audit.json",
+      "size_mb": 0.0,
+      "sample_rows": 1,
+      "columns": 10,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_bookmaker_board_v1.csv",
+      "size_mb": 0.02,
+      "sample_rows": 81,
+      "columns": 29,
+      "metrics": {
+        "edge": [
+          "edge_pct"
+        ]
+      },
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_builder_integrity_audit_v1.json",
+      "size_mb": 1.73,
+      "sample_rows": 1,
+      "columns": 7,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_calibrated_execution_board.csv",
+      "size_mb": 1.78,
+      "sample_rows": 1432,
+      "columns": 97,
+      "metrics": {
+        "suitability": [
+          "suitability_multiplier"
+        ],
+        "market_price": [
+          "market_price"
+        ],
+        "edge": [
+          "calibrated_edge_pct",
+          "edge_pct"
+        ],
+        "recent_form": [
+          "last5_flat_avg"
+        ]
+      },
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_calibrated_review_summary_v1.csv",
+      "size_mb": 0.0,
+      "sample_rows": 1,
+      "columns": 10,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_calibrated_review_v1.csv",
+      "size_mb": 0.01,
+      "sample_rows": 31,
+      "columns": 28,
+      "metrics": {
+        "market_price": [
+          "market_price"
+        ],
+        "edge": [
+          "calibrated_edge_pct",
+          "edge_pct"
+        ]
+      },
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_calibration_history_v1.csv",
+      "size_mb": 0.0,
+      "sample_rows": 1,
+      "columns": 12,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_calibration_history_v1_audit.csv",
+      "size_mb": 0.0,
+      "sample_rows": 13,
+      "columns": 5,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_calibration_summary_v1.csv",
+      "size_mb": 0.0,
+      "sample_rows": 1,
+      "columns": 10,
+      "metrics": {
+        "edge": [
+          "calibrated_avg_edge_pct",
+          "calibrated_max_edge_pct",
+          "raw_avg_edge_pct",
+          "raw_max_edge_pct"
+        ]
+      },
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_campaign_feed_v1.csv",
+      "size_mb": 0.1,
+      "sample_rows": 383,
+      "columns": 22,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_campaign_feed_v1_audit.csv",
+      "size_mb": 0.03,
+      "sample_rows": 383,
+      "columns": 7,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_campaign_feed_v1_summary.csv",
+      "size_mb": 0.0,
+      "sample_rows": 1,
+      "columns": 11,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_campaign_frontend_join_audit_v1.csv",
+      "size_mb": 0.08,
+      "sample_rows": 370,
+      "columns": 24,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_campaign_frontend_join_audit_v1_summary.csv",
+      "size_mb": 0.0,
+      "sample_rows": 26,
+      "columns": 19,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_campaign_intelligence_coverage_audit_v1.csv",
+      "size_mb": 0.07,
+      "sample_rows": 112,
+      "columns": 37,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_campaign_intelligence_coverage_audit_v1_summary.csv",
+      "size_mb": 0.0,
+      "sample_rows": 14,
+      "columns": 4,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_campaign_intelligence_engine_v1.csv",
+      "size_mb": 0.07,
+      "sample_rows": 370,
+      "columns": 22,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_campaign_intelligence_engine_v1_1.csv",
+      "size_mb": 0.16,
+      "sample_rows": 370,
+      "columns": 28,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_campaign_intelligence_engine_v1_1_audit.csv",
+      "size_mb": 0.18,
+      "sample_rows": 370,
+      "columns": 31,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_campaign_intelligence_engine_v1_1_quality_audit.csv",
+      "size_mb": 0.02,
+      "sample_rows": 85,
+      "columns": 20,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_campaign_intelligence_engine_v1_1_quality_summary.csv",
+      "size_mb": 0.0,
+      "sample_rows": 1,
+      "columns": 26,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_campaign_intelligence_engine_v1_1_summary.csv",
+      "size_mb": 0.0,
+      "sample_rows": 1,
+      "columns": 18,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_campaign_intelligence_engine_v1_audit.csv",
+      "size_mb": 0.1,
+      "sample_rows": 370,
+      "columns": 32,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_campaign_intelligence_engine_v1_summary.csv",
+      "size_mb": 0.0,
+      "sample_rows": 1,
+      "columns": 26,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_campaign_source_trace_all_current_v1.csv",
+      "size_mb": 0.09,
+      "sample_rows": 383,
+      "columns": 21,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_campaign_source_trace_all_current_v1_summary.csv",
+      "size_mb": 0.0,
+      "sample_rows": 1,
+      "columns": 10,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_canonical_horse_alias_v2.csv",
+      "size_mb": 270.63,
+      "sample_rows": 5000,
+      "columns": 11,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_canonical_horse_alias_v2_CANDIDATE.csv",
+      "size_mb": 270.63,
+      "sample_rows": 5000,
+      "columns": 11,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_canonical_horse_master_v2.csv",
+      "size_mb": 220.51,
+      "sample_rows": 5000,
+      "columns": 18,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_canonical_horse_master_v2_CANDIDATE.csv",
+      "size_mb": 220.51,
+      "sample_rows": 5000,
+      "columns": 18,
+      "metrics": {},
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "path": "public\\data\\edgeiq_canonical_market_entity_graph_v1.csv",
+      "size_mb": 0.05,
+      "sample_rows": 192,
+      "columns": 26,
+      "metrics": {
+        "market_price": [
+          "market_price"
+        ]
+      },
+      "status": "PASS",
+      "error": ""
+    }
+  ]
+}

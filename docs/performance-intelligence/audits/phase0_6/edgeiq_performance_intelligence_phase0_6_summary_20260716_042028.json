@@ -1,0 +1,57 @@
+{
+  "audit_name": "EDGEiQ Performance Intelligence Phase 0.6 Sectional Linkage Diagnosis",
+  "generated_utc": "2026-07-15T18:20:28.945057+00:00",
+  "results_rows": 879784,
+  "sectional_rows": 130484,
+  "results_columns": 53,
+  "sectional_columns": 15,
+  "candidate_plans": 4,
+  "candidate_tests_run": 2,
+  "best_candidate": {
+    "candidate_name": "DATE_HORSE_ONLY",
+    "strength": "UNSAFE_WITHOUT_UNIQUENESS",
+    "components": "race_date | horse",
+    "result_unique_keys": 877983,
+    "result_ambiguous_keys": 888,
+    "sectional_rows": 130484,
+    "sectional_rows_with_complete_key": 130484,
+    "exact_unique_matches": 105580,
+    "ambiguous_matches": 119,
+    "unmatched_rows": 24785,
+    "exact_unique_match_pct": 80.9141,
+    "ambiguous_match_pct": 0.0912
+  },
+  "phase0_5_zero_link_reason": "ASSUMED_FIELD_NAMES_DID_NOT_MATCH_ACTUAL_WAREHOUSE_SCHEMA",
+  "canonical_status": "LINKAGE_STRATEGY_NOT_YET_PROMOTED",
+  "next_stage": "Phase 0.7 governed sectional performance linkage prototype using the strongest unique key",
+  "linkage_tests": [
+    {
+      "candidate_name": "DATE_TRACK_RACE_AND_HORSE",
+      "strength": "STRONG",
+      "components": "race_date | track | race_number | horse",
+      "result_unique_keys": 879778,
+      "result_ambiguous_keys": 3,
+      "sectional_rows": 130484,
+      "sectional_rows_with_complete_key": 130484,
+      "exact_unique_matches": 0,
+      "ambiguous_matches": 0,
+      "unmatched_rows": 130484,
+      "exact_unique_match_pct": 0.0,
+      "ambiguous_match_pct": 0.0
+    },
+    {
+      "candidate_name": "DATE_HORSE_ONLY",
+      "strength": "UNSAFE_WITHOUT_UNIQUENESS",
+      "components": "race_date | horse",
+      "result_unique_keys": 877983,
+      "result_ambiguous_keys": 888,
+      "sectional_rows": 130484,
+      "sectional_rows_with_complete_key": 130484,
+      "exact_unique_matches": 105580,
+      "ambiguous_matches": 119,
+      "unmatched_rows": 24785,
+      "exact_unique_match_pct": 80.9141,
+      "ambiguous_match_pct": 0.0912
+    }
+  ]
+}

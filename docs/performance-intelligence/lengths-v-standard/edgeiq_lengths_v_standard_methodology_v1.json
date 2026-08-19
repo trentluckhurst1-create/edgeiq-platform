@@ -1,0 +1,5 @@
+{
+  "sign_convention": "positive lengths_v_standard means faster/better than standard",
+  "seconds_per_length": 0.17,
+  "sectionals": "only populated where official sectional evidence exists; blank otherwise"
+}

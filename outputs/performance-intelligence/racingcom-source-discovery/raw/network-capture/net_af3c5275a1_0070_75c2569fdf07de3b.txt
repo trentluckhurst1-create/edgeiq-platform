@@ -1,0 +1,5 @@
+.better-render-webkits {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+

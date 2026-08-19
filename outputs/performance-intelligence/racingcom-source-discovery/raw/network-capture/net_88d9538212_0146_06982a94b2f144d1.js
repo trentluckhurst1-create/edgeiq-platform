@@ -1,0 +1,9 @@
+app.value('rdc-header', rdc.header.default);
+app.value('rdc-live-vision', rdc.liveVision.default);
+app.value('rdc-mini-calendar', rdc.miniCalendar.default);
+app.value('rdc-replay-hub-tiles', rdc.replayHubTiles.default);
+app.value('rdc-form-analyst-tips', rdc.formAnalystTips.default);
+app.value('rdc-race-replay', rdc.raceReplay.default);
+app.value('rdc-linius-replay', rdc.liniusReplay.default);
+app.value('rdc-blackbook-top-runners', rdc.blackbookTopRunners.default);
+app.value('rdc-multiselect-dropdown', rdc.multiselectDropdown.default);

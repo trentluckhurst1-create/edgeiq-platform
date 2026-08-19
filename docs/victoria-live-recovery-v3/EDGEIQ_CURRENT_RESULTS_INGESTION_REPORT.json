@@ -1,0 +1,424 @@
+{
+  "counts_after": {
+    "daily_result_facts": 114,
+    "epi": 0,
+    "horse_ratings": 0,
+    "lengths_v_standard": 52425,
+    "normalisation": 11,
+    "performance_base": 52425,
+    "race_time_delta": 54989,
+    "results_warehouse_rows": 879876,
+    "snapshots": 0,
+    "timed_races": 70319
+  },
+  "counts_before": {
+    "daily_result_facts": 92,
+    "epi": 0,
+    "horse_ratings": 1265,
+    "lengths_v_standard": 52423,
+    "normalisation": 52318,
+    "performance_base": 52423,
+    "race_time_delta": 54987,
+    "results_warehouse_rows": 879876,
+    "snapshots": 5,
+    "timed_races": 70317
+  },
+  "downstream": {
+    "length_rejections": 2564,
+    "lengths_v_standard_post_cutoff": 11,
+    "lengths_v_standard_rows": 52425,
+    "performance_base_post_cutoff": 11,
+    "performance_base_rows": 52425,
+    "race_time_delta_post_cutoff": 11,
+    "race_time_delta_rows": 54989
+  },
+  "dry_run": false,
+  "failed_stages": [],
+  "hpr_norm_a_v1_hash_after": "8ced91efbb695309aaac68654ba2025c0c5997a0c866d365852edfe4faf96277",
+  "hpr_norm_a_v1_hash_before": "8ced91efbb695309aaac68654ba2025c0c5997a0c866d365852edfe4faf96277",
+  "ingestion": [
+    {
+      "attempt_count": 1,
+      "classification": "RESULTS_AVAILABLE",
+      "content_type": "text/html; charset=utf-8",
+      "first_failure": "",
+      "http_status": 200,
+      "meeting_date": "2026-07-26",
+      "races_parsed": 8,
+      "rejection_reasons": "",
+      "request_attempted": "YES",
+      "response_byte_count": 188751,
+      "retained_raw_file_path": "docs/victoria-live-recovery-v3/raw-evidence/RA_RESULTS_2026-07-26_SALE_598617F0.html",
+      "rows_parsed": 80,
+      "rows_rejected": 0,
+      "scheduled_races": "8",
+      "selected_url": "https://www.racingaustralia.horse/FreeFields/Results.aspx?Key=2026Jul26,VIC,Sale",
+      "source": "RACING_AUSTRALIA_PUBLIC_RESULTS_HTML",
+      "track": "SALE",
+      "valid_result_facts": 80
+    },
+    {
+      "attempt_count": 1,
+      "classification": "RESULTS_PENDING_OR_UNAVAILABLE",
+      "content_type": "text/html; charset=utf-8",
+      "first_failure": "RESULTS_NOT_YET_OFFICIAL_OR_SOURCE_EMPTY",
+      "http_status": 200,
+      "meeting_date": "2026-07-26",
+      "races_parsed": 0,
+      "rejection_reasons": "",
+      "request_attempted": "YES",
+      "response_byte_count": 31181,
+      "retained_raw_file_path": "docs/victoria-live-recovery-v3/raw-evidence/RA_RESULTS_2026-07-26_WODONGA_0E6894EB.html",
+      "rows_parsed": 0,
+      "rows_rejected": 0,
+      "scheduled_races": "0",
+      "selected_url": "https://www.racingaustralia.horse/FreeFields/Results.aspx?Key=2026Jul26,VIC,Wodonga",
+      "source": "RACING_AUSTRALIA_PUBLIC_RESULTS_HTML",
+      "track": "WODONGA",
+      "valid_result_facts": 0
+    },
+    {
+      "attempt_count": 2,
+      "classification": "RESULTS_PENDING_OR_UNAVAILABLE",
+      "content_type": "text/html; charset=utf-8",
+      "first_failure": "RESULTS_NOT_YET_OFFICIAL_OR_SOURCE_EMPTY",
+      "http_status": 200,
+      "meeting_date": "2026-07-27",
+      "races_parsed": 0,
+      "rejection_reasons": "",
+      "request_attempted": "YES",
+      "response_byte_count": 31320,
+      "retained_raw_file_path": "docs/victoria-live-recovery-v3/raw-evidence/RA_RESULTS_2026-07-27_BALLARATSYNTHETIC_596694A5.html",
+      "rows_parsed": 0,
+      "rows_rejected": 0,
+      "scheduled_races": "0",
+      "selected_url": "https://www.racingaustralia.horse/FreeFields/Results.aspx?Key=2026Jul27,VIC,Ballarat%20Synthetic",
+      "source": "RACING_AUSTRALIA_PUBLIC_RESULTS_HTML",
+      "track": "BALLARAT SYNTHETIC",
+      "valid_result_facts": 0
+    },
+    {
+      "attempt_count": 1,
+      "classification": "RESULTS_PENDING_OR_UNAVAILABLE",
+      "content_type": "text/html; charset=utf-8",
+      "first_failure": "RESULTS_NOT_YET_OFFICIAL_OR_SOURCE_EMPTY",
+      "http_status": 200,
+      "meeting_date": "2026-07-28",
+      "races_parsed": 0,
+      "rejection_reasons": "",
+      "request_attempted": "YES",
+      "response_byte_count": 31222,
+      "retained_raw_file_path": "docs/victoria-live-recovery-v3/raw-evidence/RA_RESULTS_2026-07-28_SWANHILL_23850E26.html",
+      "rows_parsed": 0,
+      "rows_rejected": 0,
+      "scheduled_races": "0",
+      "selected_url": "https://www.racingaustralia.horse/FreeFields/Results.aspx?Key=2026Jul28,VIC,Swan%20Hill",
+      "source": "RACING_AUSTRALIA_PUBLIC_RESULTS_HTML",
+      "track": "SWAN HILL",
+      "valid_result_facts": 0
+    },
+    {
+      "attempt_count": 3,
+      "classification": "RESULTS_PENDING_OR_UNAVAILABLE",
+      "content_type": "text/html; charset=utf-8",
+      "first_failure": "RESULTS_NOT_YET_OFFICIAL_OR_SOURCE_EMPTY",
+      "http_status": 200,
+      "meeting_date": "2026-07-29",
+      "races_parsed": 0,
+      "rejection_reasons": "",
+      "request_attempted": "YES",
+      "response_byte_count": 31301,
+      "retained_raw_file_path": "docs/victoria-live-recovery-v3/raw-evidence/RA_RESULTS_2026-07-29_SANDOWNHILLSIDE_2E75CAE4.html",
+      "rows_parsed": 0,
+      "rows_rejected": 0,
+      "scheduled_races": "8",
+      "selected_url": "https://www.racingaustralia.horse/FreeFields/Results.aspx?Key=2026Jul29,VIC,Sandown%20Hillside",
+      "source": "RACING_AUSTRALIA_PUBLIC_RESULTS_HTML",
+      "track": "SANDOWN HILLSIDE",
+      "valid_result_facts": 0
+    },
+    {
+      "attempt_count": 1,
+      "classification": "RESULTS_AVAILABLE",
+      "content_type": "text/html; charset=utf-8",
+      "first_failure": "",
+      "http_status": 200,
+      "meeting_date": "2026-07-30",
+      "races_parsed": 3,
+      "rejection_reasons": "",
+      "request_attempted": "YES",
+      "response_byte_count": 92105,
+      "retained_raw_file_path": "docs/victoria-live-recovery-v3/raw-evidence/RA_RESULTS_2026-07-30_BENDIGO_4BBB24F0.html",
+      "rows_parsed": 34,
+      "rows_rejected": 0,
+      "scheduled_races": "8",
+      "selected_url": "https://www.racingaustralia.horse/FreeFields/Results.aspx?Key=2026Jul30,VIC,Bendigo",
+      "source": "RACING_AUSTRALIA_PUBLIC_RESULTS_HTML",
+      "track": "BENDIGO",
+      "valid_result_facts": 34
+    }
+  ],
+  "meetings": [
+    {
+      "date": "2026-07-26",
+      "meeting_code": "EIQM-3560DCAC43CE69CF989F9E87",
+      "meeting_name": "SALE",
+      "scheduled_races": "8",
+      "track": "SALE"
+    },
+    {
+      "date": "2026-07-26",
+      "meeting_code": "",
+      "meeting_name": "WODONGA",
+      "scheduled_races": "0",
+      "track": "WODONGA"
+    },
+    {
+      "date": "2026-07-27",
+      "meeting_code": "",
+      "meeting_name": "BALLARAT SYNTHETIC",
+      "scheduled_races": "0",
+      "track": "BALLARAT SYNTHETIC"
+    },
+    {
+      "date": "2026-07-28",
+      "meeting_code": "",
+      "meeting_name": "SWAN HILL",
+      "scheduled_races": "0",
+      "track": "SWAN HILL"
+    },
+    {
+      "date": "2026-07-29",
+      "meeting_code": "5191035",
+      "meeting_name": "SANDOWN HILLSIDE",
+      "scheduled_races": "8",
+      "track": "SANDOWN HILLSIDE"
+    },
+    {
+      "date": "2026-07-30",
+      "meeting_code": "5191037",
+      "meeting_name": "BENDIGO",
+      "scheduled_races": "8",
+      "track": "BENDIGO"
+    }
+  ],
+  "operation_run_id": "VICLIVEV3-4AD06ABCBFE7",
+  "post_cutoff": {
+    "epi": 0,
+    "lengths_v_standard": 11,
+    "normalisation": 11,
+    "performance_base": 11,
+    "race_time_delta": 11,
+    "ratings": 0,
+    "result_races": 11,
+    "result_runners": 114,
+    "snapshots": 0,
+    "timed_races": 11
+  },
+  "result_summary": {
+    "date_from": "2026-07-20",
+    "date_to": "2026-07-30",
+    "dry_run": false,
+    "facts": 114,
+    "mode": "V3_RA_PUBLIC_RESULTS",
+    "operation_run_id": "VICLIVEV3-4AD06ABCBFE7",
+    "raw_rows": 114,
+    "rejections": 0,
+    "status": "PASS"
+  },
+  "source_decision": {
+    "cookies_or_session_used": "NO",
+    "final_status": "PASS_CURRENT_RESULTS_CORE",
+    "hidden_credentials_used": "NO",
+    "hpr_norm_a_v1_changed": "NO",
+    "protected_api_used": "NO",
+    "selected_source": "RACING_AUSTRALIA_PUBLIC_RESULTS_HTML",
+    "source_access_status": "HTTP_200_PUBLIC_FOR_SALE; RESULTS_UNAVAILABLE_PUBLIC_MESSAGE_FOR_SANDOWN_OR_PENDING_MEETINGS"
+  },
+  "stages": [
+    {
+      "command": "C:\\Python314\\python.exe scripts/build_edgeiq_daily_official_timing_ingestion_v1.py --mode DEEP_BACKFILL --date-from 2026-07-20 --date-to 2026-07-30",
+      "returncode": 0,
+      "runtime_seconds": 0.214,
+      "stderr_tail": "",
+      "stdout_tail": "{\n  \"status\": \"PASS\",\n  \"operation_run_id\": \"TIMING-2026-07-20-2026-07-30-6B5FDFDA49\",\n  \"timing_candidates\": 11,\n  \"rejections\": 0,\n  \"mode\": \"DEEP_BACKFILL\"\n}\n"
+    },
+    {
+      "command": "C:\\Python314\\python.exe scripts/update_edgeiq_canonical_historical_timing_warehouse_v1.py --mode DEEP_BACKFILL --date-from 2026-07-20 --date-to 2026-07-30",
+      "returncode": 0,
+      "runtime_seconds": 2.503,
+      "stderr_tail": "",
+      "stdout_tail": "{\n  \"status\": \"PASS\",\n  \"operation_run_id\": \"CANONICAL-TIMING-2026-07-20-2026-07-30-B2BB4EB0AE\",\n  \"dry_run\": false,\n  \"timed_races_before\": 70317,\n  \"timed_races_after\": 70319,\n  \"new_canonical_rows\": 2,\n  \"corrected_rows\": 0,\n  \"conflicts\": 0,\n  \"rollback_path\": \"C:\\\\Users\\\\trent\\\\OneDrive\\\\Documents\\\\EDGEIQ_PLATFORM\\\\docs\\\\daily-operations-engine-v1\\\\rollback\\\\CANONICAL-TIMING-2026-07-20-2026-07-30-B2BB4EB0AE\"\n}\n"
+    },
+    {
+      "command": "C:\\Python314\\python.exe scripts/audit_edgeiq_race_time_delta_versus_standard_v1.py",
+      "returncode": 0,
+      "runtime_seconds": 2.413,
+      "stderr_tail": "",
+      "stdout_tail": "ual\": [\n          \"race_time_delta_id\",\n          \"benchmark_observation_id\",\n          \"benchmark_group_id\",\n          \"standard_time_id\",\n          \"race_key\",\n          \"race_date\",\n          \"track_name\",\n          \"official_distance_metres\",\n          \"winner_horse_name\",\n          \"winner_race_time_seconds\",\n          \"standard_time_seconds\",\n          \"time_delta_seconds\",\n          \"time_delta_interpretation\",\n          \"calculation_method\",\n          \"source_observation_sha256\",\n          \"source_standard_time_evidence_sha256\",\n          \"race_time_delta_evidence_sha256\",\n          \"builder_version\",\n          \"contract_version\",\n          \"built_at_utc\"\n        ],\n        \"expected\": [\n          \"race_time_delta_id\",\n          \"benchmark_observation_id\",\n          \"benchmark_group_id\",\n          \"standard_time_id\",\n          \"race_key\",\n          \"race_date\",\n          \"track_name\",\n          \"official_distance_metres\",\n          \"winner_horse_name\",\n          \"winner_race_time_seconds\",\n          \"standard_time_seconds\",\n          \"time_delta_seconds\",\n          \"time_delta_interpretation\",\n          \"calculation_method\",\n          \"source_observation_sha256\",\n          \"source_standard_time_evidence_sha256\",\n          \"race_time_delta_evidence_sha256\",\n          \"builder_version\",\n          \"contract_version\",\n          \"built_at_utc\"\n        ]\n      }\n    },\n    \"unique_race_time_delta_ids\": {\n      \"status\": \"PASS\",\n      \"detail\": []\n    },\n    \"one_row_per_observation\": {\n      \"status\": \"PASS\",\n      \"detail\": []\n    },\n    \"expected_population_exact\": {\n      \"status\": \"PASS\",\n      \"detail\": {\n        \"expected_count\": 54989,\n        \"output_count\": 54989,\n        \"missing_sample\": [],\n        \"unexpected_sample\": []\n      }\n    },\n    \"calculation_reproducible\": {\n      \"status\": \"PASS\",\n      \"detail\": []\n    },\n    \"time_delta_interpretation\": {\n      \"status\": \"PASS\",\n      \"detail\": []\n    },\n    \"deterministic_identity_and_evidence\": {\n      \"status\": \"PASS\",\n      \"detail\": []\n    },\n    \"canonical_lineage\": {\n      \"status\": \"PASS\",\n      \"detail\": []\n    },\n    \"calculation_governance\": {\n      \"status\": \"PASS\",\n      \"detail\": []\n    },\n    \"no_forbidden_fields\": {\n      \"status\": \"PASS\",\n      \"detail\": []\n    },\n    \"current_population_expected\": {\n      \"status\": \"PASS\",\n      \"detail\": {\n        \"standard_time_rows\": 695,\n        \"race_time_delta_rows\": 54989,\n        \"delta_mode\": \"RECOVERED_CANONICAL\"\n      }\n    }\n  }\n}\n"
+    },
+    {
+      "command": "C:\\Python314\\python.exe scripts/audit_edgeiq_lengths_versus_standard_v1.py",
+      "returncode": 0,
+      "runtime_seconds": 1.928,
+      "stderr_tail": "",
+      "stdout_tail": "ce_date\",\n          \"track_name\",\n          \"official_distance_metres\",\n          \"winner_horse_name\",\n          \"winner_race_time_seconds\",\n          \"standard_time_seconds\",\n          \"time_delta_seconds\",\n          \"seconds_per_length\",\n          \"lengths_versus_standard\",\n          \"lengths_versus_standard_interpretation\",\n          \"calculation_method\",\n          \"conversion_scope\",\n          \"conversion_model_version\",\n          \"source_race_time_delta_evidence_sha256\",\n          \"source_conversion_parameter_evidence_sha256\",\n          \"lengths_versus_standard_evidence_sha256\",\n          \"builder_version\",\n          \"contract_version\",\n          \"built_at_utc\"\n        ],\n        \"expected\": [\n          \"lengths_versus_standard_id\",\n          \"race_time_delta_id\",\n          \"benchmark_observation_id\",\n          \"benchmark_group_id\",\n          \"standard_time_id\",\n          \"length_conversion_parameter_id\",\n          \"race_key\",\n          \"race_date\",\n          \"track_name\",\n          \"official_distance_metres\",\n          \"winner_horse_name\",\n          \"winner_race_time_seconds\",\n          \"standard_time_seconds\",\n          \"time_delta_seconds\",\n          \"seconds_per_length\",\n          \"lengths_versus_standard\",\n          \"lengths_versus_standard_interpretation\",\n          \"calculation_method\",\n          \"conversion_scope\",\n          \"conversion_model_version\",\n          \"source_race_time_delta_evidence_sha256\",\n          \"source_conversion_parameter_evidence_sha256\",\n          \"lengths_versus_standard_evidence_sha256\",\n          \"builder_version\",\n          \"contract_version\",\n          \"built_at_utc\"\n        ]\n      }\n    },\n    \"row_funnel_exact\": {\n      \"status\": \"PASS\",\n      \"detail\": {\n        \"delta_rows\": 54989,\n        \"converted\": 52425,\n        \"rejected\": 2564\n      }\n    },\n    \"unique_lengths_versus_standard_ids\": {\n      \"status\": \"PASS\",\n      \"detail\": []\n    },\n    \"one_output_per_race_time_delta\": {\n      \"status\": \"PASS\",\n      \"detail\": []\n    },\n    \"calculation_reproducible\": {\n      \"status\": \"PASS\",\n      \"detail\": []\n    },\n    \"canonical_lineage\": {\n      \"status\": \"PASS\",\n      \"detail\": []\n    },\n    \"conversion_parameter_governance\": {\n      \"status\": \"PASS\",\n      \"detail\": []\n    },\n    \"deterministic_evidence\": {\n      \"status\": \"PASS\",\n      \"detail\": []\n    },\n    \"rejections_are_explicit\": {\n      \"status\": \"PASS\",\n      \"detail\": {\n        \"NO_GOVERNED_SURFACE_CONDITION_LENGTH_PARAMETER\": 2564\n      }\n    }\n  }\n}\n"
+    },
+    {
+      "command": "C:\\Python314\\python.exe scripts/audit_edgeiq_performance_intelligence_base_fact_v1.py",
+      "returncode": 0,
+      "runtime_seconds": 2.411,
+      "stderr_tail": "",
+      "stdout_tail": "EDGEIQ_PERFORMANCE_INTELLIGENCE_BASE_FACT_V1_AUDIT_PASS\nlengths_versus_standard_rows=52425\nperformance_intelligence_base_rows=52425\naudit_output=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_performance_intelligence_base_fact_v1_audit.json\n"
+    },
+    {
+      "command": "C:\\Python314\\python.exe scripts/build_edgeiq_performance_normalisation_fact_v1.py",
+      "returncode": 0,
+      "runtime_seconds": 1.207,
+      "stderr_tail": "",
+      "stdout_tail": "EDGEIQ_PERFORMANCE_NORMALISATION_FACT_V1_BUILD_PASS\nperformance_base_rows=52425\nnormalisation_parameter_rows=1\nperformance_normalisation_rows=11\nrejected_base_rows=52414\noutput=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_performance_normalisation_fact_v1.csv\n"
+    },
+    {
+      "command": "C:\\Python314\\python.exe scripts/audit_edgeiq_performance_normalisation_fact_v1.py",
+      "returncode": 0,
+      "runtime_seconds": 1.015,
+      "stderr_tail": "",
+      "stdout_tail": "EDGEIQ_PERFORMANCE_NORMALISATION_FACT_V1_AUDIT_PASS\nperformance_base_rows=52425\nnormalisation_parameter_rows=1\nperformance_normalisation_rows=11\nnormalisation_rejection_rows=52414\naudit_output=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_performance_normalisation_fact_v1_audit.json\n"
+    },
+    {
+      "command": "C:\\Python314\\python.exe scripts/build_edgeiq_performance_rating_base_fact_v1.py",
+      "returncode": 0,
+      "runtime_seconds": 0.124,
+      "stderr_tail": "",
+      "stdout_tail": "EDGEIQ_PERFORMANCE_RATING_BASE_FACT_V1_BUILD_PASS\nperformance_normalisation_rows=11\nperformance_rating_base_rows=11\noutput=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_performance_rating_base_fact_v1.csv\n"
+    },
+    {
+      "command": "C:\\Python314\\python.exe scripts/audit_edgeiq_performance_rating_base_fact_v1.py",
+      "returncode": 0,
+      "runtime_seconds": 0.134,
+      "stderr_tail": "",
+      "stdout_tail": "EDGEIQ_PERFORMANCE_RATING_BASE_FACT_V1_AUDIT_PASS\nperformance_normalisation_rows=11\nperformance_rating_base_rows=11\naudit_output=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_performance_rating_base_fact_v1_audit.json\n"
+    },
+    {
+      "command": "C:\\Python314\\python.exe scripts/build_edgeiq_current_ra_horse_identity_crosswalk_v1.py",
+      "returncode": 0,
+      "runtime_seconds": 3.203,
+      "stderr_tail": "",
+      "stdout_tail": "{\n  \"status\": \"HORSE_IDENTITY_APPROVED\",\n  \"crosswalk_rows\": 114,\n  \"identity_map_rows\": 138,\n  \"unresolved\": 0,\n  \"chigurh\": {\n    \"source_system\": \"RACING_AUSTRALIA\",\n    \"source_horse_id\": \"34054013730\",\n    \"source_race_entry_id\": \"99566658900\",\n    \"source_horse_name\": \"CHIGURH\",\n    \"canonical_horse_id\": \"RA_HORSE_34054013730\",\n    \"canonical_horse_name\": \"CHIGURH\",\n    \"match_method\": \"EXACT_SOURCE_ID_NEW_CANONICAL\",\n    \"evidence_type\": \"PUBLIC_RA_HORSEFULLFORM_HORSECODE\",\n    \"evidence_reference\": \"docs/victoria-live-recovery-v3/raw-evidence/RA_RESULTS_2026-07-26_SALE_598617F0.html#horsecode=34054013730;raceentry=99566658900\",\n    \"approval_status\": \"APPROVED\",\n    \"policy_version\": \"RA-HORSE-ID-GOV-V4\",\n    \"effective_from\": \"2026-07-20\",\n    \"created_at\": \"2026-07-29T19:59:27Z\",\n    \"source_meeting_date\": \"2026-07-26\",\n    \"track\": \"SALE\",\n    \"race_number\": \"3\",\n    \"trainer\": \"Ben, Will & JD Hayes\",\n    \"jockey\": \"Luke Nolen\",\n    \"barrier\": \"10\",\n    \"saddlecloth\": \"3\",\n    \"result_fact_evidence_sha256\": \"841aaf3678b39bf9835f19b1dea285a1dbd16005fb28ee8efa1c6960e3666a3e\",\n    \"identity_evidence_sha256\": \"e6596cf8cc5fec7c44e30ffe227bee6c82d7cd4f7d769badcbe27c29042593ac\"\n  }\n}\n"
+    },
+    {
+      "command": "C:\\Python314\\python.exe scripts/build_edgeiq_horse_performance_observation_fact_v1.py",
+      "returncode": 0,
+      "runtime_seconds": 0.123,
+      "stderr_tail": "",
+      "stdout_tail": "EDGEIQ_HORSE_PERFORMANCE_OBSERVATION_FACT_V1_BUILD_PASS\nperformance_rating_base_rows=11\nidentity_map_rows=138\nhorse_performance_observation_rows=11\nidentity_rejection_rows=0\noutput=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_horse_performance_observation_fact_v1.csv\n"
+    },
+    {
+      "command": "C:\\Python314\\python.exe scripts/audit_edgeiq_horse_performance_observation_fact_v1.py",
+      "returncode": 0,
+      "runtime_seconds": 0.122,
+      "stderr_tail": "",
+      "stdout_tail": "EDGEIQ_HORSE_PERFORMANCE_OBSERVATION_FACT_V1_AUDIT_PASS\nperformance_rating_base_rows=11\nidentity_map_rows=138\nhorse_performance_observation_rows=11\nidentity_rejection_rows=0\naudit_output=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_horse_performance_observation_fact_v1_audit.json\n"
+    },
+    {
+      "command": "C:\\Python314\\python.exe scripts/build_edgeiq_horse_performance_aggregate_fact_v1.py",
+      "returncode": 0,
+      "runtime_seconds": 0.12,
+      "stderr_tail": "",
+      "stdout_tail": "EDGEIQ_HORSE_PERFORMANCE_AGGREGATE_FACT_V1_BUILD_PASS\nhorse_performance_observation_rows=11\naggregation_parameter_rows=1\nhorse_performance_aggregate_rows=0\noutput=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_horse_performance_aggregate_fact_v1.csv\n"
+    },
+    {
+      "command": "C:\\Python314\\python.exe scripts/audit_edgeiq_horse_performance_aggregate_fact_v1.py",
+      "returncode": 0,
+      "runtime_seconds": 0.115,
+      "stderr_tail": "",
+      "stdout_tail": "EDGEIQ_HORSE_PERFORMANCE_AGGREGATE_FACT_V1_AUDIT_PASS\nhorse_performance_observation_rows=11\naggregation_parameter_rows=1\nhorse_performance_aggregate_rows=0\nminimum_observations_required=5\nobserved_horses_below_minimum=True\naudit_output=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_horse_performance_aggregate_fact_v1_audit.json\n"
+    },
+    {
+      "command": "C:\\Python314\\python.exe scripts/build_edgeiq_horse_performance_rating_fact_v1.py",
+      "returncode": 0,
+      "runtime_seconds": 0.105,
+      "stderr_tail": "",
+      "stdout_tail": "EDGEIQ_HORSE_PERFORMANCE_RATING_FACT_V1_BUILD_PASS\nhorse_performance_aggregate_rows=0\nhorse_performance_rating_rows=0\noutput=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_horse_performance_rating_fact_v1.csv\n"
+    },
+    {
+      "command": "C:\\Python314\\python.exe scripts/audit_edgeiq_horse_performance_rating_fact_v1.py",
+      "returncode": 0,
+      "runtime_seconds": 0.154,
+      "stderr_tail": "",
+      "stdout_tail": "EDGEIQ_HORSE_PERFORMANCE_RATING_FACT_V1_AUDIT_PASS\nhorse_performance_aggregate_rows=0\nhorse_performance_rating_rows=0\naudit_output=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_horse_performance_rating_fact_v1_audit.json\n"
+    },
+    {
+      "command": "C:\\Python314\\python.exe scripts/build_edgeiq_race_entry_horse_performance_snapshot_fact_v1.py",
+      "returncode": 0,
+      "runtime_seconds": 0.116,
+      "stderr_tail": "",
+      "stdout_tail": "EDGEIQ_RACE_ENTRY_HORSE_PERFORMANCE_SNAPSHOT_FACT_V1_BUILD_PASS\nhorse_performance_rating_rows=0\nrace_entry_rows=NOT_REQUIRED\neligible_race_entries=0\nrace_entry_horse_performance_snapshot_rows=0\noutput=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_race_entry_horse_performance_snapshot_fact_v1.csv\n"
+    },
+    {
+      "command": "C:\\Python314\\python.exe scripts/audit_edgeiq_race_entry_horse_performance_snapshot_fact_v1.py",
+      "returncode": 0,
+      "runtime_seconds": 0.117,
+      "stderr_tail": "",
+      "stdout_tail": "EDGEIQ_RACE_ENTRY_HORSE_PERFORMANCE_SNAPSHOT_FACT_V1_AUDIT_PASS\nhorse_performance_rating_rows=0\nrace_entry_rows=0\nrace_entry_horse_performance_snapshot_rows=0\naudit_output=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_race_entry_horse_performance_snapshot_fact_v1_audit.json\n"
+    },
+    {
+      "command": "C:\\Python314\\python.exe scripts/build_edgeiq_race_entry_performance_context_fact_v1.py",
+      "returncode": 0,
+      "runtime_seconds": 0.116,
+      "stderr_tail": "",
+      "stdout_tail": "EDGEIQ_RACE_ENTRY_PERFORMANCE_CONTEXT_FACT_V1_BUILD_PASS\nrace_entry_horse_performance_snapshot_rows=0\nrace_entry_rows=NOT_REQUIRED\nrace_entry_performance_context_rows=0\noutput=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_race_entry_performance_context_fact_v1.csv\n"
+    },
+    {
+      "command": "C:\\Python314\\python.exe scripts/audit_edgeiq_race_entry_performance_context_fact_v1.py",
+      "returncode": 0,
+      "runtime_seconds": 0.138,
+      "stderr_tail": "",
+      "stdout_tail": "EDGEIQ_RACE_ENTRY_PERFORMANCE_CONTEXT_FACT_V1_AUDIT_PASS\nrace_entry_horse_performance_snapshot_rows=0\nrace_entry_rows=0\nrace_entry_performance_context_rows=0\naudit_output=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_race_entry_performance_context_fact_v1_audit.json\n"
+    },
+    {
+      "command": "C:\\Python314\\python.exe scripts/build_edgeiq_race_entry_context_adjusted_performance_fact_v1.py",
+      "returncode": 0,
+      "runtime_seconds": 0.127,
+      "stderr_tail": "",
+      "stdout_tail": "EDGEIQ_RACE_ENTRY_CONTEXT_ADJUSTED_PERFORMANCE_FACT_V1_BUILD_PASS\ncontext_adjustment_rows=5\nperformance_adjusted_rows=0\nparameter_not_available_rows=5\ncontext_ineligible_rows=0\ncontext_adjusted_performance_rows=5\noutput=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_race_entry_context_adjusted_performance_fact_v1.csv\n"
+    },
+    {
+      "command": "C:\\Python314\\python.exe scripts/audit_edgeiq_race_entry_context_adjusted_performance_fact_v1.py",
+      "returncode": 0,
+      "runtime_seconds": 0.137,
+      "stderr_tail": "",
+      "stdout_tail": "EDGEIQ_RACE_ENTRY_CONTEXT_ADJUSTED_PERFORMANCE_FACT_V1_AUDIT_PASS\ncontext_adjustment_rows=5\nperformance_adjusted_rows=0\nparameter_not_available_rows=5\ncontext_ineligible_rows=0\ncontext_adjusted_performance_rows=5\naudit_output=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_race_entry_context_adjusted_performance_fact_v1_audit.json\n"
+    },
+    {
+      "command": "C:\\Python314\\python.exe scripts/build_edgeiq_race_entry_projected_performance_fact_v1.py",
+      "returncode": 0,
+      "runtime_seconds": 0.122,
+      "stderr_tail": "",
+      "stdout_tail": "EDGEIQ_RACE_ENTRY_PROJECTED_PERFORMANCE_FACT_V1_BUILD_PASS\nsuitability_aggregate_rows=0\ncontext_adjusted_performance_rows=NOT_REQUIRED\nprojected_performance_rows=0\noutput=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_race_entry_projected_performance_fact_v1.csv\n"
+    },
+    {
+      "command": "C:\\Python314\\python.exe scripts/audit_edgeiq_race_entry_projected_performance_fact_v1.py",
+      "returncode": 0,
+      "runtime_seconds": 0.139,
+      "stderr_tail": "",
+      "stdout_tail": "EDGEIQ_RACE_ENTRY_PROJECTED_PERFORMANCE_FACT_V1_AUDIT_PASS\ncontext_adjusted_performance_rows=5\nsuitability_aggregate_rows=0\nprojected_performance_rows=0\naudit_output=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_race_entry_projected_performance_fact_v1_audit.json\n"
+    },
+    {
+      "command": "C:\\Python314\\python.exe scripts/build_edgeiq_race_entry_epi_fact_v1.py",
+      "returncode": 0,
+      "runtime_seconds": 0.139,
+      "stderr_tail": "",
+      "stdout_tail": "EDGEIQ_RACE_ENTRY_EPI_FACT_V1_BUILD_PASS\nepi_component_rows=0\nrace_entry_epi_rows=0\nepi_parameter_id=EPIP1-14578898B157ACE77DF0A29F\noutput=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_race_entry_epi_fact_v1.csv\n"
+    },
+    {
+      "command": "C:\\Python314\\python.exe scripts/audit_edgeiq_race_entry_epi_fact_v1.py",
+      "returncode": 0,
+      "runtime_seconds": 0.122,
+      "stderr_tail": "",
+      "stdout_tail": "EDGEIQ_RACE_ENTRY_EPI_FACT_V1_AUDIT_PASS\nepi_component_rows=0\neligible_race_entry_count=0\nrace_entry_epi_rows=0\naudit_output=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_race_entry_epi_fact_v1_audit.json\n"
+    }
+  ],
+  "start_commit": "5ba1197",
+  "status": "PASS_CURRENT_RESULTS_CORE"
+}

@@ -1,0 +1,74 @@
+{
+  "stn": {
+    "identity": {
+      "bom_stn_num": 87184,
+      "river_stn_id": null,
+      "bom_stn_name": "Geelong Racecourse",
+      "wmo_stn_id": 94857,
+      "wigos_stn_id": null,
+      "ht_above_msl": 12.9,
+      "ht_barometer": 13.4
+    },
+    "location": {
+      "lat_dec_deg": -38.1737,
+      "long_dec_deg": 144.3766,
+      "timezone": "Australia/Melbourne"
+    }
+  },
+  "obs": {
+    "datetime_utc": "2026-07-10T03:20:00Z",
+    "temp": {
+      "dry_bulb_1min_cel": 12.3,
+      "apparent_1min_cel": 10.45,
+      "dew_pnt_1min_cel": 8.2,
+      "wet_bulb_1min_avg_cel": 10.28,
+      "wet_bulb_globe_sun_cel": null,
+      "wet_bulb_globe_shade_cel": 10.89,
+      "wet_bulb_depression_cel": 2.02,
+      "dry_bulb_max_cel": 12.8,
+      "dry_bulb_max_time_utc": "2026-07-10T02:28:00Z",
+      "dry_bulb_min_cel": 0.2,
+      "dry_bulb_min_time_utc": "2026-07-09T19:49:00Z",
+      "rel_hum_percent": 76.0
+    },
+    "pres": {
+      "stn_lvl_hpa": null,
+      "msl_hpa": 1023.0,
+      "qnh_hpa": null
+    },
+    "wind": {
+      "speed_10m_mps": 2.207,
+      "dirn_10m_ord": "NNE",
+      "gust_speed_10m_mps": 2.778,
+      "gust_dirn_10m_deg_t": 21.0,
+      "gust_speed_10m_max_mps": 3.344,
+      "gust_10m_max_utc": "2026-07-10T02:50:00Z",
+      "run_2m_total_m": null
+    },
+    "precip": {
+      "since_0900lct_total_mm": 0.0,
+      "since_0000lct_total_mm": 0.0,
+      "24h_0900lct_total_mm": 0.0,
+      "10min_total_mm": 0.0,
+      "1h_total_mm": 0.0,
+      "24h_total_mm": null
+    },
+    "visibility": {
+      "horiz_m": null
+    },
+    "cloud": {
+      "base_ht_s1_m": null,
+      "base_ht_s2_m": null,
+      "base_ht_s3_m": null,
+      "base_ht_s4_m": null,
+      "base_ht_s5_m": null,
+      "total_cover_amt_text": null,
+      "low_layer_cover_amt_okta": null,
+      "low_layer_height_m": null,
+      "med_layer_cover_amt_okta": null,
+      "med_layer_height_m": null,
+      "high_layer_cover_amt_okta": null,
+      "high_layer_height_m": null
+    }
+  }
+}

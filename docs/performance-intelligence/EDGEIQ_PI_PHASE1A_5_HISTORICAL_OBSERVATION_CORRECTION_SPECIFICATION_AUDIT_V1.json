@@ -1,0 +1,43 @@
+{
+  "checks": [
+    {
+      "check_id": "source_row_count",
+      "detail": "actual=879784; expected=879784",
+      "status": "PASS"
+    },
+    {
+      "check_id": "unique_raw_key_count",
+      "detail": "actual=879695; expected=879695",
+      "status": "PASS"
+    },
+    {
+      "check_id": "duplicate_group_count",
+      "detail": "actual=89; expected=89",
+      "status": "PASS"
+    },
+    {
+      "check_id": "duplicate_excess_row_count",
+      "detail": "actual=89; expected=89",
+      "status": "PASS"
+    },
+    {
+      "check_id": "missing_raw_keys",
+      "detail": "actual=0; expected=0",
+      "status": "PASS"
+    },
+    {
+      "check_id": "source_policy_complete",
+      "detail": "policy_classes=7; expected=7",
+      "status": "PASS"
+    },
+    {
+      "check_id": "output_contract_defined",
+      "detail": "contract_fields=17",
+      "status": "PASS"
+    }
+  ],
+  "generated_utc": "2026-07-27T04:01:51+00:00",
+  "overall_status": "PASS",
+  "program_id": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE1A_5_HISTORICAL_OBSERVATION_CORRECTION_SPECIFICATION_V1",
+  "program_version": "1.0.0"
+}

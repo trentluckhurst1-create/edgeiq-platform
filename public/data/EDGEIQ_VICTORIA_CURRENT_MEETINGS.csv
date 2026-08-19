@@ -1,0 +1,7 @@
+meeting_name,meeting_code,date,track,scheduled_races,source_of_discovery,source_status
+SALE,EIQM-3560DCAC43CE69CF989F9E87,2026-07-26,SALE,8,edgeiq_daily_race_discovery_v1.csv|edgeiq_vic_three_day_meeting_calendar_v1.csv|edgeiq_vic_three_day_meeting_universe.csv,FIELDS_READY|SCHEDULED|TODAY
+WODONGA,,2026-07-26,WODONGA,0,edgeiq_vic_three_day_meeting_calendar_v1.csv,TODAY
+BALLARAT SYNTHETIC,,2026-07-27,BALLARAT SYNTHETIC,0,edgeiq_vic_three_day_meeting_calendar_v1.csv,TOMORROW
+SWAN HILL,,2026-07-28,SWAN HILL,0,edgeiq_vic_three_day_meeting_calendar_v1.csv,DAY+2
+SANDOWN HILLSIDE,5191035,2026-07-29,SANDOWN HILLSIDE,8,edgeiq_vic_three_day_race_list_v1.csv,Results
+BENDIGO,5191037,2026-07-30,BENDIGO,8,edgeiq_vic_three_day_race_list_v1.csv,Results

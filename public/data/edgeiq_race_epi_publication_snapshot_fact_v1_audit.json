@@ -1,0 +1,147 @@
+{
+  "audit_name": "edgeiq_race_epi_publication_snapshot_fact_v1",
+  "audit_version": "1.0.0",
+  "audited_at_utc": "2026-07-22T21:21:22Z",
+  "checks": {
+    "contract_fields_exact": {
+      "detail": {
+        "actual": [
+          "race_epi_publication_snapshot_id",
+          "race_id",
+          "race_date",
+          "ordered_epi_population_count",
+          "distinct_epi_count",
+          "unique_epi_entry_count",
+          "tied_epi_entry_count",
+          "tie_group_count",
+          "largest_tie_group_size",
+          "top_epi",
+          "second_distinct_epi_available",
+          "second_distinct_epi",
+          "top_to_second_epi_gap_available",
+          "top_to_second_epi_gap",
+          "top_epi_tie_group_size",
+          "top_epi_tie_status",
+          "distribution_population_field",
+          "distribution_population_value",
+          "distribution_population_reconciliation_status",
+          "source_distribution_id",
+          "source_distribution_evidence_sha256",
+          "source_distribution_record_json",
+          "source_distribution_record_sha256",
+          "source_ordering_summary_id",
+          "source_ordering_summary_evidence_sha256",
+          "race_epi_snapshot_publication_decision",
+          "race_epi_snapshot_reconciliation_decision",
+          "race_epi_snapshot_status",
+          "race_epi_publication_snapshot_evidence_sha256",
+          "source_lineage",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ],
+        "expected": [
+          "race_epi_publication_snapshot_id",
+          "race_id",
+          "race_date",
+          "ordered_epi_population_count",
+          "distinct_epi_count",
+          "unique_epi_entry_count",
+          "tied_epi_entry_count",
+          "tie_group_count",
+          "largest_tie_group_size",
+          "top_epi",
+          "second_distinct_epi_available",
+          "second_distinct_epi",
+          "top_to_second_epi_gap_available",
+          "top_to_second_epi_gap",
+          "top_epi_tie_group_size",
+          "top_epi_tie_status",
+          "distribution_population_field",
+          "distribution_population_value",
+          "distribution_population_reconciliation_status",
+          "source_distribution_id",
+          "source_distribution_evidence_sha256",
+          "source_distribution_record_json",
+          "source_distribution_record_sha256",
+          "source_ordering_summary_id",
+          "source_ordering_summary_evidence_sha256",
+          "race_epi_snapshot_publication_decision",
+          "race_epi_snapshot_reconciliation_decision",
+          "race_epi_snapshot_status",
+          "race_epi_publication_snapshot_evidence_sha256",
+          "source_lineage",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ]
+      },
+      "status": "PASS"
+    },
+    "deterministic_snapshot_evidence": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "deterministic_snapshot_identity": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "distribution_evidence_field_resolved": {
+      "detail": "race_epi_distribution_evidence_sha256",
+      "status": "PASS"
+    },
+    "distribution_identity_field_resolved": {
+      "detail": "race_epi_distribution_id",
+      "status": "PASS"
+    },
+    "distribution_record_preserved_exactly": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "no_forbidden_fields": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "ordering_summary_fields_preserved": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "population_reconciliation_valid": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "required_files_exist": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "snapshot_governance_exact": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "snapshot_lineage_complete": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "snapshot_primary_keys_unique": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "source_race_populations_exact": {
+      "detail": {
+        "distribution_rows": 0,
+        "ordering_summary_rows": 0,
+        "snapshot_rows": 0
+      },
+      "status": "PASS"
+    }
+  },
+  "counts": {
+    "distribution_rows": 0,
+    "ordering_summary_rows": 0,
+    "population_not_exposed_rows": 0,
+    "population_reconciled_rows": 0,
+    "publication_snapshot_rows": 0
+  },
+  "failed_checks": [],
+  "status": "PASS"
+}

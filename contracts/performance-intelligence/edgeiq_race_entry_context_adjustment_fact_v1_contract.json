@@ -1,0 +1,80 @@
+{
+  "contract_name": "edgeiq_race_entry_context_adjustment_fact_v1",
+  "contract_version": "1.0.0",
+  "grain": "one_governed_context_adjustment_application_decision_per_parameter_selection",
+  "primary_key": [
+    "race_entry_context_adjustment_id"
+  ],
+  "natural_key": [
+    "race_entry_context_parameter_selection_id"
+  ],
+  "required_fields": [
+    "race_entry_context_adjustment_id",
+    "race_entry_context_parameter_selection_id",
+    "race_entry_context_eligibility_id",
+    "race_entry_performance_context_id",
+    "race_entry_id",
+    "race_id",
+    "race_date",
+    "runner_id",
+    "canonical_horse_id",
+    "canonical_horse_name",
+    "historical_rating_value",
+    "context_parameter_id",
+    "source_parameter_selection_decision",
+    "distance_adjustment",
+    "class_adjustment",
+    "track_adjustment",
+    "track_configuration_adjustment",
+    "track_condition_adjustment",
+    "surface_adjustment",
+    "barrier_adjustment",
+    "weight_adjustment",
+    "field_size_adjustment",
+    "total_context_adjustment",
+    "context_adjustment_application_decision",
+    "race_entry_context_adjustment_status",
+    "source_selection_evidence_sha256",
+    "source_context_evidence_sha256",
+    "source_parameter_evidence_sha256",
+    "race_entry_context_adjustment_evidence_sha256",
+    "source_selection_builder_version",
+    "source_context_builder_version",
+    "source_parameter_builder_version",
+    "builder_version",
+    "contract_version",
+    "built_at_utc"
+  ],
+  "allowed_values": {
+    "source_parameter_selection_decision": [
+      "PARAMETER_SELECTED",
+      "PARAMETER_NOT_AVAILABLE",
+      "CONTEXT_INELIGIBLE"
+    ],
+    "context_adjustment_application_decision": [
+      "ADJUSTMENT_APPLIED",
+      "PARAMETER_NOT_AVAILABLE",
+      "CONTEXT_INELIGIBLE"
+    ],
+    "race_entry_context_adjustment_status": [
+      "GOVERNED_CONTEXT_ADJUSTMENT_APPLIED",
+      "GOVERNED_CONTEXT_PARAMETER_NOT_AVAILABLE",
+      "CONTEXT_NOT_ELIGIBLE_FOR_ADJUSTMENT"
+    ]
+  },
+  "forbidden_fields": [
+    "context_adjusted_rating",
+    "suitability",
+    "epi",
+    "eri",
+    "runner_rank",
+    "race_rank",
+    "fair_price",
+    "market_price",
+    "market_edge",
+    "prediction",
+    "forecast_rating",
+    "interpolated_adjustment",
+    "fallback_adjustment"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "generated_utc": "2026-07-28T05:05:28.539722+00:00",
+  "verdict": "PASS",
+  "repository_root": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM",
+  "input_registry_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\platform-registry-v1\\builder-registry-v1-1\\EDGEIQ_CANONICAL_BUILDER_REGISTRY_V1_1.csv",
+  "input_failures_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\platform-registry-v1\\builder-registry-v1-1\\EDGEIQ_CANONICAL_BUILDER_PARSE_FAILURES_V1_1.csv",
+  "canonical_builder_count": 1341,
+  "canonical_parse_failure_count": 853,
+  "canonical_parse_failure_percentage": 63.6092,
+  "classification_counts": {
+    "ACTIVE_CODE": 3,
+    "ARCHIVED": 46,
+    "CHECKPOINT": 14,
+    "GENERATED": 1,
+    "UNKNOWN": 789
+  },
+  "governance_action_counts": {
+    "ARCHIVE": 14,
+    "EXCLUDE": 47,
+    "INVESTIGATE": 789,
+    "REPAIR": 3
+  },
+  "confidence_counts": {
+    "HIGH": 849,
+    "MEDIUM": 4
+  },
+  "observed_error_type_counts": {
+    "NO_PARSE_FAILURE": 850,
+    "SyntaxError": 3
+  },
+  "directory_count": 3,
+  "active_or_truncated_defect_count": 3,
+  "estimated_canonical_platform_health_percentage": 99.7763
+}

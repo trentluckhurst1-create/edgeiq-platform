@@ -1,0 +1,11 @@
+{
+  "built_utc": "2026-07-29T01:33:39+00:00",
+  "status": "RACINGCOM_GRAPHQL_ACQUISITION_V1_BLOCKED_BY_CONFIG",
+  "request_rows": 5,
+  "acquired_rows": 0,
+  "rejections": 5,
+  "api_key_env_present": "NO",
+  "api_key_value_written": "NO",
+  "production_changed": "NO",
+  "ui_changed": "NO"
+}

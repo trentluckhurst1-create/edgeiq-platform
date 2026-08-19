@@ -1,0 +1,11 @@
+{
+  "generated_at": "2026-07-26T03:37:24Z",
+  "runner_lengths_v_standard_rows": 533387,
+  "race_lengths_v_standard_rows": 51769,
+  "epi_rows": 533387,
+  "eri_rows": 51769,
+  "unmatched_benchmark_rows": 232783,
+  "invalid_calculation_rows": 113614,
+  "epi_method": "50 + runner_lengths_v_standard * 2.5",
+  "weight_adjustment_status": "INSUFFICIENT_EMPIRICAL_EVIDENCE"
+}

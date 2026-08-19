@@ -1,0 +1,67 @@
+{
+  "generated_utc": "2026-07-26T00:06:13+00:00",
+  "overall_status": "PARTIAL",
+  "readiness": "READY_WITH_OPTIONAL_SOURCE_LIMITATIONS",
+  "phase_results": {
+    "Baseline": "PASS",
+    "Scratchings reconciliation": "PASS",
+    "Market disclosure": "PASS",
+    "Browser workspace acceptance": "PARTIAL",
+    "Browser switching": "PASS",
+    "Post-race lifecycle": "PASS",
+    "Optional source states": "PASS",
+    "Daily refresh": "PASS"
+  },
+  "scratchings": {
+    "generated_utc": "2026-07-25T23:58:45+00:00",
+    "meetings": 3,
+    "races": 26,
+    "declared_runners": 371,
+    "active_runners": 353,
+    "total_current_scratchings": 18,
+    "daily_refresh_legacy_scratchings": null,
+    "legacy_metric_scope": "runner.status text containing SCR only",
+    "correct_metric_scope": "official/source scratched boolean, de-duplicated once per race runner",
+    "reconciliation_status": "PASS",
+    "scratchings_scope_discrepancy_cause": "Daily refresh legacy metric checked runner status text only; Meetings/catalog count official/source scratched booleans.",
+    "new_scratchings_this_run": "NOT_CALCULATED_NO_PREVIOUS_SNAPSHOT_DIFF_IN_THIS_ACCEPTANCE_RUN",
+    "scratching_changes_this_run": "NOT_CALCULATED_NO_PREVIOUS_SNAPSHOT_DIFF_IN_THIS_ACCEPTANCE_RUN",
+    "reinstated_runners_this_run": "NOT_CALCULATED_NO_PREVIOUS_SNAPSHOT_DIFF_IN_THIS_ACCEPTANCE_RUN"
+  },
+  "market": {
+    "generated_utc": "2026-07-25T23:58:45+00:00",
+    "rows": 371,
+    "snapshot_rows": 258,
+    "unavailable_rows": 113,
+    "live_rows": 0,
+    "status": "PASS"
+  },
+  "browser_workspace_status": "PARTIAL",
+  "browser_switching_status": "PASS",
+  "post_race_status": "PASS",
+  "optional_source_states": [
+    {
+      "source": "weather",
+      "state": "WEATHER_UNAVAILABLE",
+      "evidence": "current governed weather file absent or timestamp limited"
+    },
+    {
+      "source": "live market",
+      "state": "MARKET_SNAPSHOT",
+      "evidence": "edgeiq_market_terminal_feed_v1 carries snapshot disclosure metadata"
+    },
+    {
+      "source": "sectionals",
+      "state": "SECTIONALS_HISTORICAL_ONLY",
+      "evidence": "historical sectional warehouses exist; current official sectionals not guaranteed"
+    },
+    {
+      "source": "stewards",
+      "state": "STEWARDS_UNAVAILABLE",
+      "evidence": "no governed current stewards provider; Results copy states unavailable"
+    }
+  ],
+  "last_known_good_protected": true,
+  "no_react_engine_calculations": true,
+  "no_fabricated_data": true
+}

@@ -1,0 +1,19 @@
+{
+  "audit_id": "EDGEIQ_EPI_WORKSPACE_BUILDER_FORENSICS_V1",
+  "generated_at_utc": "2026-07-27T22:12:51.121535+00:00",
+  "target_builder": "scripts/build_edgeiq_epi_workspace_terminal_feed_v1.py",
+  "target_feed": "edgeiq_epi_workspace_terminal_feed_v1.csv",
+  "builder_line_count": 725,
+  "target_fields": 24,
+  "field_context_rows": 18,
+  "functions_with_target_fields": 2,
+  "file_literals": 6,
+  "resolved_source_files": 6,
+  "source_field_matches": 60,
+  "field_status_counts": {
+    "BUILDER_AND_UPSTREAM_DATA_PRESENT": 1,
+    "MISSING_FROM_CANONICAL_BUILDER": 20,
+    "UPSTREAM_COLUMN_PRESENT_BUT_EMPTY": 3
+  },
+  "status": "REVIEW_REQUIRED"
+}

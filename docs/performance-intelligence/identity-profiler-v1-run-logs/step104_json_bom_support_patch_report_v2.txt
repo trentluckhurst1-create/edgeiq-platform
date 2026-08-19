@@ -1,0 +1,15 @@
+EDGEIQ IDENTITY REPOSITORY PROFILER
+STEP104 JSON BOM SUPPORT PATCH V2
+
+Source: C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\build_edgeiq_identity_repository_profiler_v1_STEP103_CUMULATIVE.py
+Target: C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\build_edgeiq_identity_repository_profiler_v1_STEP104_CUMULATIVE.py
+
+STATUS: PASS
+Reader changes: 1
+
+VERIFIED:
+- STEP104 parses
+- _profile_json uses utf-8-sig
+- STEP103 bounded relationship markers remain
+
+SOURCE REPOSITORY FILES MODIFIED: NO

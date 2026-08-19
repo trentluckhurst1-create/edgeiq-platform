@@ -1,0 +1,105 @@
+{
+  "audit_name": "EDGEIQ_RACINGCOM_SPEED_SEMANTICS_V1_1",
+  "generated_at_utc": "2026-07-21T19:32:06+00:00",
+  "status": "PASS",
+  "races_checked": 39,
+  "runners_checked": 392,
+  "sectional_rows_checked": 2854,
+  "split_rows_checked": 2682,
+  "total_failed_checks": 0,
+  "missing_mandatory_checks": [],
+  "check_results": {
+    "SPLIT_SUM_RECONCILES_TIMING_WINDOW": {
+      "PASS": 392,
+      "FAIL": 0,
+      "NOT_TESTED": 0
+    },
+    "LAST_600_EQUALS_600M_CUMULATIVE": {
+      "PASS": 392,
+      "FAIL": 0,
+      "NOT_TESTED": 0
+    },
+    "LAST_200_EQUALS_200M_CUMULATIVE": {
+      "PASS": 392,
+      "FAIL": 0,
+      "NOT_TESTED": 0
+    },
+    "SPLIT_EQUALS_CUMULATIVE_DIFFERENCE": {
+      "PASS": 2462,
+      "FAIL": 0,
+      "NOT_TESTED": 220
+    },
+    "TIME_VARIATION_IS_CENTISECONDS": {
+      "PASS": 392,
+      "FAIL": 0,
+      "NOT_TESTED": 0
+    },
+    "DISTANCE_VARIATION_EQUALS_DISTANCE_DIFFERENCE": {
+      "PASS": 336,
+      "FAIL": 0,
+      "NOT_TESTED": 56
+    },
+    "WINNER_TIME_EQUALS_RACE_TIME": {
+      "PASS": 39,
+      "FAIL": 0,
+      "NOT_TESTED": 0
+    }
+  },
+  "semantic_findings": {
+    "sectional_time_semantics": {
+      "status": "CONFIRMED",
+      "finding": "SectionalTimes are cumulative times remaining from each distance marker to the finish.",
+      "basis": "Adjacent cumulative differences reconcile with supplied SplitTimes."
+    },
+    "split_time_semantics": {
+      "status": "CONFIRMED",
+      "finding": "SplitTimes are individual segment times. Their sum reconciles either with full runner race time or with the cumulative time from the provider's first available timing marker to the finish.",
+      "coverage_rule": "Split coverage must not be assumed to begin at the race start. Races with a non-200-metre starting distance may have an opening untimed segment before the first supplied split marker."
+    },
+    "six_hundred_metres_time": {
+      "status": "CONFIRMED",
+      "finding": "SixHundredMetresTime represents cumulative time from the 600m marker to the finish."
+    },
+    "two_hundred_metres_time": {
+      "status": "CONFIRMED",
+      "finding": "TwoHundredMetresTime represents cumulative time from the 200m marker to the finish."
+    },
+    "time_variation_to_winner": {
+      "status": "CONFIRMED_WITH_TOLERANCE",
+      "finding": "TimeVarToWinner is supplied in hundredths of a second rather than seconds.",
+      "tolerance_reason": "Displayed race times are rounded to hundredths."
+    },
+    "distance_variation_to_winner": {
+      "status": "CONFIRMED",
+      "finding": "DistanceVarToWinner equals runner DistanceRun minus winner DistanceRun."
+    },
+    "distance_run": {
+      "status": "STRONGLY_SUPPORTED",
+      "finding": "DistanceRun behaves as distance travelled in metres.",
+      "constraint": "This audit validates internal differences but does not independently verify the external provider unit."
+    },
+    "average_speed": {
+      "status": "UNRESOLVED",
+      "finding": "Values are preserved as source values. The precise provider calculation and unit are not asserted."
+    },
+    "early_mid_late_speed": {
+      "status": "UNRESOLVED",
+      "finding": "Values are preserved as source values. The provider segment definitions and units require broader evidence."
+    },
+    "overall_peak_speed": {
+      "status": "UNRESOLVED",
+      "finding": "Peak speed is preserved as a source value. Sampling interval and unit are not yet proven."
+    },
+    "distance_from_rail": {
+      "status": "UNRESOLVED",
+      "finding": "DistanceFromRail is preserved as a source value. Whether it represents mean, maximum or another aggregate is not yet proven."
+    }
+  },
+  "controls": {
+    "source_values_modified": false,
+    "ratings_calculated": false,
+    "benchmarks_calculated": false,
+    "unknown_units_asserted": false,
+    "provider_documentation_assumed": false
+  }
+}

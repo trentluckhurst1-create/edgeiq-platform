@@ -1,0 +1,60 @@
+{
+  "overall_status": "PASS",
+  "checks": [
+    {
+      "check": "base repair attr retained",
+      "status": "PASS",
+      "evidence": "Race component still marks repair-v1 render path."
+    },
+    {
+      "check": "visible What Matters count",
+      "status": "PASS",
+      "evidence": "Count is derived from visible rendered matters, not runner count."
+    },
+    {
+      "check": "speed state classes",
+      "status": "PASS",
+      "evidence": "Speed panel has populated/empty state classes."
+    },
+    {
+      "check": "duplicate Race Conditions removed",
+      "status": "PASS",
+      "evidence": "Standalone duplicate conditions section absent from TSX."
+    },
+    {
+      "check": "EPI Available hidden",
+      "status": "PASS",
+      "evidence": "Normal Available labels are suppressed."
+    },
+    {
+      "check": "EPI hierarchy CSS",
+      "status": "PASS",
+      "evidence": "EPI value has a stronger scan style."
+    },
+    {
+      "check": "EDGEiQ PRICE label",
+      "status": "PASS",
+      "evidence": "Runner board labels approved price column unambiguously."
+    },
+    {
+      "check": "top spacing CSS",
+      "status": "PASS",
+      "evidence": "Compact top breathing room added in Race scope."
+    },
+    {
+      "check": "compact empty speed CSS",
+      "status": "PASS",
+      "evidence": "Empty speed state height reduced without touching populated state."
+    },
+    {
+      "check": "live shell scope retained",
+      "status": "PASS",
+      "evidence": "No regression to .edgeiq-os-only scoping."
+    },
+    {
+      "check": "model math untouched by source scope",
+      "status": "PASS",
+      "evidence": "React display polish only."
+    }
+  ]
+}

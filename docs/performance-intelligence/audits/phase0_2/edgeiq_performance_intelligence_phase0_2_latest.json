@@ -1,0 +1,502 @@
+{
+  "audit_name": "EDGEiQ Performance Intelligence Phase 0.2 Domain Audit",
+  "generated_utc": "2026-07-15T08:16:15.468020+00:00",
+  "canonical_status": "NOT_YET_DETERMINED",
+  "domain_summaries": {
+    "results_warehouse": {
+      "domain": "results_warehouse",
+      "status": "EXISTING_REQUIRES_LINEAGE_VALIDATION",
+      "scripts_found": 13,
+      "data_files_found": 970,
+      "populated_data_files": 924,
+      "largest_candidate_data_files": [
+        {
+          "path": "public/data/edgeiq_results_master_v1.csv",
+          "rows": 931245,
+          "min_date": "2000-08-02",
+          "max_date": "2026-06-24",
+          "unique_races_estimate": 76304,
+          "unique_horses_estimate": 0
+        },
+        {
+          "path": "public/data/edgeiq_historical_results_warehouse_v2_graphql.csv",
+          "rows": 879784,
+          "min_date": "2000-08-02",
+          "max_date": "2026-06-24",
+          "unique_races_estimate": 71019,
+          "unique_horses_estimate": 879695
+        },
+        {
+          "path": "public/data/edgeiq_historical_results_warehouse_v2_graphql_CHECKPOINT_20260623_164849.csv",
+          "rows": 879784,
+          "min_date": "2000-08-02",
+          "max_date": "2026-06-24",
+          "unique_races_estimate": 71019,
+          "unique_horses_estimate": 879695
+        },
+        {
+          "path": "public/data/edgeiq_racingcom_results_warehouse_all_v1.csv",
+          "rows": 165816,
+          "min_date": "2026-04-12",
+          "max_date": "2026-06-14",
+          "unique_races_estimate": 14623,
+          "unique_horses_estimate": 1017
+        },
+        {
+          "path": "public/data/edgeiq_racingcom_results_warehouse_v1.csv",
+          "rows": 165816,
+          "min_date": "2026-04-12",
+          "max_date": "2026-06-14",
+          "unique_races_estimate": 14623,
+          "unique_horses_estimate": 1017
+        },
+        {
+          "path": "public/data/edgeiq_racingcom_results_warehouse_full_v1.csv",
+          "rows": 164277,
+          "min_date": "2023-02-11",
+          "max_date": "2026-06-06",
+          "unique_races_estimate": 13720,
+          "unique_horses_estimate": 0
+        },
+        {
+          "path": "public/data/edgeiq_canonical_results_truth_v1.csv",
+          "rows": 47887,
+          "min_date": "2025-08-23",
+          "max_date": "2026-05-24",
+          "unique_races_estimate": 4870,
+          "unique_horses_estimate": 23111
+        },
+        {
+          "path": "public/data/results_enriched.csv",
+          "rows": 27951,
+          "min_date": "2025-08-23",
+          "max_date": "2026-03-15",
+          "unique_races_estimate": 2922,
+          "unique_horses_estimate": 11792
+        },
+        {
+          "path": "public/data/results_report.csv",
+          "rows": 27917,
+          "min_date": "2025-08-23",
+          "max_date": "2026-03-15",
+          "unique_races_estimate": 2922,
+          "unique_horses_estimate": 11792
+        },
+        {
+          "path": "public/data/edgeiq_graphql_november_2024_results_v1.csv",
+          "rows": 5424,
+          "min_date": "2024-11-01",
+          "max_date": "2024-11-30",
+          "unique_races_estimate": 456,
+          "unique_horses_estimate": 5424
+        }
+      ]
+    },
+    "sectional_warehouse": {
+      "domain": "sectional_warehouse",
+      "status": "EXISTING_REQUIRES_LINEAGE_VALIDATION",
+      "scripts_found": 14,
+      "data_files_found": 27,
+      "populated_data_files": 26,
+      "largest_candidate_data_files": [
+        {
+          "path": "public/data/edgeiq_standardised_sectionals_v1.csv",
+          "rows": 1355824,
+          "min_date": "2000-08-02",
+          "max_date": "2026-06-23",
+          "unique_races_estimate": 65804,
+          "unique_horses_estimate": 0
+        },
+        {
+          "path": "public/data/racingcom_sectional_warehouse_v2.csv",
+          "rows": 130484,
+          "min_date": "2023-01-01",
+          "max_date": "2026-06-04",
+          "unique_races_estimate": 0,
+          "unique_horses_estimate": 18201
+        },
+        {
+          "path": "public/data/edgeiq_vic_90day_sectional_warehouse_final_v1.csv",
+          "rows": 4605,
+          "min_date": "2026-03-04",
+          "max_date": "2026-05-02",
+          "unique_races_estimate": 539,
+          "unique_horses_estimate": 2056
+        },
+        {
+          "path": "public/data/racingcom_sectional_warehouse_readiness_v1.csv",
+          "rows": 4330,
+          "min_date": "",
+          "max_date": "",
+          "unique_races_estimate": 0,
+          "unique_horses_estimate": 4330
+        },
+        {
+          "path": "public/data/racingcom_sectional_warehouse_v1.csv",
+          "rows": 1864,
+          "min_date": "2026-02-14",
+          "max_date": "2026-05-31",
+          "unique_races_estimate": 0,
+          "unique_horses_estimate": 1665
+        },
+        {
+          "path": "public/data/edgeiq_vic_90day_sectional_warehouse_final_diagnostics_v1.csv",
+          "rows": 1188,
+          "min_date": "2026-03-01",
+          "max_date": "2026-05-02",
+          "unique_races_estimate": 1188,
+          "unique_horses_estimate": 0
+        },
+        {
+          "path": "public/data/edgeiq_trusted_sectional_universe_v2.csv",
+          "rows": 865,
+          "min_date": "2026-05-19",
+          "max_date": "2026-05-20",
+          "unique_races_estimate": 15,
+          "unique_horses_estimate": 184
+        },
+        {
+          "path": "public/data/racingcom_sectionals_normalised_v1.csv",
+          "rows": 246,
+          "min_date": "2026-05-30",
+          "max_date": "2026-05-31",
+          "unique_races_estimate": 0,
+          "unique_horses_estimate": 177
+        },
+        {
+          "path": "public/data/edgeiq_sectional_schema_v2.csv",
+          "rows": 184,
+          "min_date": "2026-05-19",
+          "max_date": "2026-05-20",
+          "unique_races_estimate": 15,
+          "unique_horses_estimate": 184
+        },
+        {
+          "path": "public/data/racingcom_sectional_history_master_v1.csv",
+          "rows": 180,
+          "min_date": "2026-05-30",
+          "max_date": "2026-05-31",
+          "unique_races_estimate": 0,
+          "unique_horses_estimate": 177
+        }
+      ]
+    },
+    "benchmark_engine": {
+      "domain": "benchmark_engine",
+      "status": "EXISTING_REQUIRES_LINEAGE_VALIDATION",
+      "scripts_found": 7,
+      "data_files_found": 33,
+      "populated_data_files": 33,
+      "largest_candidate_data_files": [
+        {
+          "path": "public/data/edgeiq_standardised_sectionals_v1.csv",
+          "rows": 1355824,
+          "min_date": "2000-08-02",
+          "max_date": "2026-06-23",
+          "unique_races_estimate": 65804,
+          "unique_horses_estimate": 0
+        },
+        {
+          "path": "public/data/edgeiq_sectional_strength_runs_v1.csv",
+          "rows": 130484,
+          "min_date": "2023-01-01",
+          "max_date": "2026-06-04",
+          "unique_races_estimate": 13405,
+          "unique_horses_estimate": 18201
+        },
+        {
+          "path": "public/data/edgeiq_race_strength_independence_audit_v1.csv",
+          "rows": 129002,
+          "min_date": "2023-02-11",
+          "max_date": "2026-06-06",
+          "unique_races_estimate": 13576,
+          "unique_horses_estimate": 17912
+        },
+        {
+          "path": "public/data/edgeiq_sectional_strength_v2.csv",
+          "rows": 18210,
+          "min_date": "",
+          "max_date": "",
+          "unique_races_estimate": 0,
+          "unique_horses_estimate": 18210
+        },
+        {
+          "path": "public/data/edgeiq_sectional_strength_engine_v1.csv",
+          "rows": 18210,
+          "min_date": "",
+          "max_date": "",
+          "unique_races_estimate": 0,
+          "unique_horses_estimate": 18210
+        },
+        {
+          "path": "public/data/edgeiq_race_strength_conditional_audit_v1.csv",
+          "rows": 6554,
+          "min_date": "2023-02-11",
+          "max_date": "2026-06-06",
+          "unique_races_estimate": 0,
+          "unique_horses_estimate": 3537
+        },
+        {
+          "path": "public/data/edgeiq_race_strength_v1.csv",
+          "rows": 6064,
+          "min_date": "2025-01-01",
+          "max_date": "2026-06-04",
+          "unique_races_estimate": 6064,
+          "unique_horses_estimate": 0
+        },
+        {
+          "path": "public/data/edgeiq_standard_times_v1.csv",
+          "rows": 5065,
+          "min_date": "",
+          "max_date": "",
+          "unique_races_estimate": 0,
+          "unique_horses_estimate": 0
+        },
+        {
+          "path": "public/data/edgeiq_predictive_engine_baseline_benchmark_v1.csv",
+          "rows": 4182,
+          "min_date": "2026-01-01",
+          "max_date": "2026-06-21",
+          "unique_races_estimate": 697,
+          "unique_horses_estimate": 0
+        },
+        {
+          "path": "public/data/edgeiq_race_strength_history_v1.csv",
+          "rows": 3463,
+          "min_date": "2025-05-01",
+          "max_date": "2026-03-19",
+          "unique_races_estimate": 2922,
+          "unique_horses_estimate": 0
+        }
+      ]
+    },
+    "identity_engine": {
+      "domain": "identity_engine",
+      "status": "EXISTING_REQUIRES_LINEAGE_VALIDATION",
+      "scripts_found": 8,
+      "data_files_found": 11,
+      "populated_data_files": 11,
+      "largest_candidate_data_files": [
+        {
+          "path": "public/data/edgeiq_runner_entity_graph_v1.csv",
+          "rows": 73164,
+          "min_date": "",
+          "max_date": "",
+          "unique_races_estimate": 0,
+          "unique_horses_estimate": 0
+        },
+        {
+          "path": "public/data/edgeiq_sectional_identity_engine_v2.csv",
+          "rows": 71404,
+          "min_date": "01/04/2026",
+          "max_date": "31/03/2026",
+          "unique_races_estimate": 2315,
+          "unique_horses_estimate": 7321
+        },
+        {
+          "path": "public/data/edgeiq_sectional_identity_engine_v3.csv",
+          "rows": 71404,
+          "min_date": "01/04/2026",
+          "max_date": "31/03/2026",
+          "unique_races_estimate": 2315,
+          "unique_horses_estimate": 4814
+        },
+        {
+          "path": "public/data/edgeiq_sectional_identity_engine_v1.csv",
+          "rows": 71404,
+          "min_date": "01/04/2026",
+          "max_date": "31/03/2026",
+          "unique_races_estimate": 2315,
+          "unique_horses_estimate": 7321
+        },
+        {
+          "path": "public/data/edgeiq_temporal_identity_memory_v1.csv",
+          "rows": 241,
+          "min_date": "",
+          "max_date": "",
+          "unique_races_estimate": 0,
+          "unique_horses_estimate": 241
+        },
+        {
+          "path": "public/data/edgeiq_canonical_market_entity_graph_v1.csv",
+          "rows": 192,
+          "min_date": "2026-05-19",
+          "max_date": "2026-05-20",
+          "unique_races_estimate": 15,
+          "unique_horses_estimate": 184
+        },
+        {
+          "path": "public/data/edgeiq_temporal_identity_memory_summary_v1.csv",
+          "rows": 18,
+          "min_date": "",
+          "max_date": "",
+          "unique_races_estimate": 0,
+          "unique_horses_estimate": 0
+        },
+        {
+          "path": "public/data/edgeiq_sectional_identity_summary_v3.csv",
+          "rows": 16,
+          "min_date": "",
+          "max_date": "",
+          "unique_races_estimate": 0,
+          "unique_horses_estimate": 0
+        },
+        {
+          "path": "public/data/edgeiq_runner_entity_graph_summary_v1.csv",
+          "rows": 14,
+          "min_date": "",
+          "max_date": "",
+          "unique_races_estimate": 0,
+          "unique_horses_estimate": 0
+        },
+        {
+          "path": "public/data/edgeiq_sectional_identity_summary_v2.csv",
+          "rows": 12,
+          "min_date": "",
+          "max_date": "",
+          "unique_races_estimate": 0,
+          "unique_horses_estimate": 0
+        }
+      ]
+    },
+    "performance_ratings": {
+      "domain": "performance_ratings",
+      "status": "EXISTING_REQUIRES_LINEAGE_VALIDATION",
+      "scripts_found": 9,
+      "data_files_found": 164,
+      "populated_data_files": 163,
+      "largest_candidate_data_files": [
+        {
+          "path": "public/data/edgeiq_runner_dna_weight_ladder_v1_detail.csv",
+          "rows": 516008,
+          "min_date": "2023-02-11",
+          "max_date": "2026-06-06",
+          "unique_races_estimate": 13576,
+          "unique_horses_estimate": 17905
+        },
+        {
+          "path": "public/data/edgeiq_runner_dna_predictive_value_v1.csv",
+          "rows": 129002,
+          "min_date": "2023-02-11",
+          "max_date": "2026-06-06",
+          "unique_races_estimate": 13576,
+          "unique_horses_estimate": 17905
+        },
+        {
+          "path": "public/data/edgeiq_runner_dna_v6_3_probability_calibration_replay_v1.csv",
+          "rows": 129002,
+          "min_date": "2023-02-11",
+          "max_date": "2026-06-06",
+          "unique_races_estimate": 13576,
+          "unique_horses_estimate": 17905
+        },
+        {
+          "path": "public/data/edgeiq_runner_dna_v6_3_historical_replay_v1.csv",
+          "rows": 129002,
+          "min_date": "2023-02-11",
+          "max_date": "2026-06-06",
+          "unique_races_estimate": 13576,
+          "unique_horses_estimate": 17905
+        },
+        {
+          "path": "public/data/edgeiq_historical_performance_rating_v6_1_research.csv",
+          "rows": 71327,
+          "min_date": "2017-01-28",
+          "max_date": "2026-06-04",
+          "unique_races_estimate": 0,
+          "unique_horses_estimate": 18663
+        },
+        {
+          "path": "public/data/edgeiq_historical_performance_rating_v6_1_research_CHECKPOINT_BACKFILLED_RISK_20260617.csv",
+          "rows": 71327,
+          "min_date": "2017-01-28",
+          "max_date": "2026-06-04",
+          "unique_races_estimate": 0,
+          "unique_horses_estimate": 18663
+        },
+        {
+          "path": "public/data/edgeiq_historical_performance_rating_v6_1_research_WORKING_100_RESEARCH_10_FALLBACK_20260615.csv",
+          "rows": 71327,
+          "min_date": "2017-01-28",
+          "max_date": "2026-06-04",
+          "unique_races_estimate": 0,
+          "unique_horses_estimate": 18663
+        },
+        {
+          "path": "public/data/edgeiq_historical_performance_rating_v5_1.csv",
+          "rows": 71327,
+          "min_date": "2017-01-28",
+          "max_date": "2026-06-04",
+          "unique_races_estimate": 0,
+          "unique_horses_estimate": 18663
+        },
+        {
+          "path": "public/data/edgeiq_historical_performance_rating_v5_1_BACKFILLED_POWER_V1.csv",
+          "rows": 71327,
+          "min_date": "2017-01-28",
+          "max_date": "2026-06-04",
+          "unique_races_estimate": 0,
+          "unique_horses_estimate": 18663
+        },
+        {
+          "path": "public/data/edgeiq_historical_performance_rating_v6_1_research_CHECKPOINT_20260614.csv",
+          "rows": 66867,
+          "min_date": "2017-01-28",
+          "max_date": "2026-06-03",
+          "unique_races_estimate": 0,
+          "unique_horses_estimate": 14203
+        }
+      ]
+    },
+    "length_conversion": {
+      "domain": "length_conversion",
+      "status": "LEGACY_CONVERSION_PRESENT_REQUIRES_GOVERNANCE",
+      "scripts_found": 2,
+      "data_files_found": 5,
+      "populated_data_files": 5,
+      "largest_candidate_data_files": [
+        {
+          "path": "public/data/edgeiq_standardised_sectionals_v1.csv",
+          "rows": 1355824,
+          "min_date": "2000-08-02",
+          "max_date": "2026-06-23",
+          "unique_races_estimate": 65804,
+          "unique_horses_estimate": 0
+        },
+        {
+          "path": "public/data/edgeiq_lengths_per_point_engine_v1.csv",
+          "rows": 1301,
+          "min_date": "",
+          "max_date": "",
+          "unique_races_estimate": 0,
+          "unique_horses_estimate": 0
+        },
+        {
+          "path": "public/data/edgeiq_standardised_sectionals_examples_v1.csv",
+          "rows": 80,
+          "min_date": "2000-08-02",
+          "max_date": "2000-08-02",
+          "unique_races_estimate": 8,
+          "unique_horses_estimate": 0
+        },
+        {
+          "path": "public/data/edgeiq_standardised_sectionals_summary_v1.csv",
+          "rows": 1,
+          "min_date": "",
+          "max_date": "",
+          "unique_races_estimate": 0,
+          "unique_horses_estimate": 0
+        },
+        {
+          "path": "public/data/edgeiq_lengths_per_point_engine_summary_v1.csv",
+          "rows": 1,
+          "min_date": "",
+          "max_date": "",
+          "unique_races_estimate": 0,
+          "unique_horses_estimate": 0
+        }
+      ]
+    }
+  },
+  "next_stage": "Phase 0.3 canonical candidate lineage validation"
+}

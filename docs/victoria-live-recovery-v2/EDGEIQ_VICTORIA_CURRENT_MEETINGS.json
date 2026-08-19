@@ -1,0 +1,56 @@
+[
+  {
+    "meeting_name": "SALE",
+    "meeting_code": "EIQM-3560DCAC43CE69CF989F9E87",
+    "date": "2026-07-26",
+    "track": "SALE",
+    "scheduled_races": 8,
+    "source_of_discovery": "edgeiq_daily_race_discovery_v1.csv|edgeiq_vic_three_day_meeting_calendar_v1.csv|edgeiq_vic_three_day_meeting_universe.csv",
+    "source_status": "FIELDS_READY|SCHEDULED|TODAY"
+  },
+  {
+    "meeting_name": "WODONGA",
+    "meeting_code": "",
+    "date": "2026-07-26",
+    "track": "WODONGA",
+    "scheduled_races": 0,
+    "source_of_discovery": "edgeiq_vic_three_day_meeting_calendar_v1.csv",
+    "source_status": "TODAY"
+  },
+  {
+    "meeting_name": "BALLARAT SYNTHETIC",
+    "meeting_code": "",
+    "date": "2026-07-27",
+    "track": "BALLARAT SYNTHETIC",
+    "scheduled_races": 0,
+    "source_of_discovery": "edgeiq_vic_three_day_meeting_calendar_v1.csv",
+    "source_status": "TOMORROW"
+  },
+  {
+    "meeting_name": "SWAN HILL",
+    "meeting_code": "",
+    "date": "2026-07-28",
+    "track": "SWAN HILL",
+    "scheduled_races": 0,
+    "source_of_discovery": "edgeiq_vic_three_day_meeting_calendar_v1.csv",
+    "source_status": "DAY+2"
+  },
+  {
+    "meeting_name": "SANDOWN HILLSIDE",
+    "meeting_code": "5191035",
+    "date": "2026-07-29",
+    "track": "SANDOWN HILLSIDE",
+    "scheduled_races": 8,
+    "source_of_discovery": "edgeiq_vic_three_day_race_list_v1.csv",
+    "source_status": "Results"
+  },
+  {
+    "meeting_name": "BENDIGO",
+    "meeting_code": "5191037",
+    "date": "2026-07-30",
+    "track": "BENDIGO",
+    "scheduled_races": 8,
+    "source_of_discovery": "edgeiq_vic_three_day_race_list_v1.csv",
+    "source_status": "Results"
+  }
+]

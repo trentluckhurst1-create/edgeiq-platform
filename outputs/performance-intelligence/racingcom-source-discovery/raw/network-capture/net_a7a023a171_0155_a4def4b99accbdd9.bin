@@ -1,0 +1,117 @@
+
+var sitecore = {
+    baseUrls: {
+        news: "",
+        horse: "horses",
+        jockey: "jockeys",
+        trainer: "trainers",
+        form: "form",
+        results: "results",
+        api: "https://api.racing.com/",
+        rvapi: "//webappsapi.rvdata.com.au/api/",
+        rvwebsite: "https://rv.racing.com",
+        ownerswebsite: "https://owner.racing.com"
+    },
+    raceTypes: {
+        race: "race",
+        heat: "heat"
+    },
+	device: "Default",
+    host: "rvnew",
+    isSecureConnection: true,
+    version: "2.0.8439.0",
+    defaultPlayer:'r1AhYzlzl',
+    allowAccess: false,
+    isProduction: true,
+    context: {"debugging":{"deviceType":3},"brightcove":{"defaultPlayer":{"playerId":"r1AhYzlzl","options":{"autoplay":false,"fullscreen":false}},"formPlayer":{"playerId":"c7A7mw8Wj2","options":null}}},
+    graphql: {
+        endpoint: "https://graphql.rmdprod.racing.com",
+        headerAPIKey: "da2-6nsi4ztsynar3l3frgxf77q5fe"
+    },
+    blackbookGraphQL: {
+        endpoint: "https://appsync-bb.racing.com/graphql",
+        headerAPIKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hZ2VzaGppQGdtYWlsLmNvbSIsImV4cCI6MTY2MzExNjU5MCwiaWF0IjoxNjYwNTI0NTkwfQ.P6IDjQ6fu84T1sjTzFJpb9Z1moYIZTXaMpq69LWskWg"
+    },
+    sectionals: {
+        cloudfrontUrl: "https://d3qmfyv6ad9vwv.cloudfront.net/"
+    },
+    liniusPlayerWidgetUrl : document.location.origin + '/resources/Racing/static/linius/editorial.html',
+    VenueTrackMapping: [{"venue_code":226,"track":"Kyneton"},{"venue_code":434,"track":"Wodonga"}],
+    tippingHub: {
+        GraphqlEndpoint: "https://fais-api.racing.com/api/tippinghub/graphql/",
+        ChampionDataEndpoint: "https://graphql.rmdprod.racing.com",
+        ChampionDataEndpointKey: "da2-6nsi4ztsynar3l3frgxf77q5fe",
+        BrightCovePlayerIdForReplay: 'SJ9OrWAjx_default',
+        BrightCovePlayerIdForLinius: "o4pAZI10I_default",
+        LiniusReplay: "https://d20khqxhsh8k6o.cloudfront.net",
+        ConfigClickToPlay: true
+    },
+    PinpointNotificationsEndpoint: "https://appsync-notifications.racing.com/graphql/",
+    PinpointNotificationsEndpointKey: "da2-talp27x2trdu5fmtyokpsivpby",
+    JockeyAvatar: 'https://www.racing.com/-/media/racing/no-content-found-images/jockey.jpg',
+    TrainerAvatar: 'https://www.racing.com/-/media/racing/no-content-found-images/trainer.jpg',
+    HorseAvatar: 'https://www.racing.com/-/media/racing/no-content-found-images/horse.jpg',
+    Auth0Domain: "idp.racing.com",
+    Auth0ClientId: "lcy1HJWgaWMieO9H0V0fDu3dg6P5v0t5",
+    Auth0NeedAccessToken: false,
+    Auth0FeatureToggle: false,
+    Auth0LoginEndpoint: "https://idp.racing.com/wsfed/lcy1HJWgaWMieO9H0V0fDu3dg6P5v0t5",
+    Auth0LogoutEndpoint: "/logout.aspx"
+};
+
+// auth0 redirection via the /plus route
+window.redirectToAuth0 = window.redirectToAuth0 || function () {
+    window.location.href = '/plus?ref=' + window.location.pathname;
+};
+
+window.customGetCookie = function (name) {
+    var i, x, y, ARRcookies = document.cookie.split(";");
+    for (i = 0; i < ARRcookies.length; i++) {
+        x = ARRcookies[i].substr(0, ARRcookies[i].indexOf("="));
+        y = ARRcookies[i].substr(ARRcookies[i].indexOf("=") + 1);
+        x = x.replace(/^\s+|\s+$/g, "");
+        if (x == name) {
+            return decodeURI(y);
+        }
+    }
+    return null;
+};
+
+window.customRemoveCookie = function (name) {
+    document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+};
+
+// auth0 + r+ 2.0 first login event
+window.trackGAFirstLogin = window.trackGAFirstLogin || function () {
+	if (!window.gtag && typeof window.trackGAFirstLogin === 'function') {
+		setTimeout(function() {
+			window.trackGAFirstLogin();
+		}, 500);
+	} else {
+		try {
+			var rvfirstlogin = window.customGetCookie('rvfirstlogin');
+			if (rvfirstlogin && window.trackCustomAction) {
+				window.customRemoveCookie('rvfirstlogin');
+				window.trackCustomAction('R+ 2.0', 'Auth0_login', window.href, 'First_login');
+			}
+		} catch (err) {
+			console.log('RV.Helper.Cookie: ', err);
+		}
+	}
+};
+
+window.document.addEventListener("DOMContentLoaded", function() {
+    window.trackGAFirstLogin && window.trackGAFirstLogin();
+});
+
+var magento = {
+    config: {
+        api: {
+            baseUrl: "https://store.countryracing.com.au",
+            basePath: "/rest/V1/",
+            publicToken: "9fglhtnfk06l3p8c7hx77jj3x1uet9re"
+        }
+    }
+};
+
+var currentDate = [2,10,2024];

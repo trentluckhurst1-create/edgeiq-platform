@@ -1,0 +1,27 @@
+{
+  "generated_utc": "2026-07-26T00:06:13+00:00",
+  "outputs": [
+    "docs\\operations-readiness\\final-acceptance\\edgeiq_browser_switching_acceptance_v1.csv",
+    "docs\\operations-readiness\\final-acceptance\\edgeiq_browser_switching_audit_v1.json",
+    "docs\\operations-readiness\\final-acceptance\\edgeiq_browser_switching_report_v1.md",
+    "docs\\operations-readiness\\final-acceptance\\edgeiq_browser_workspace_acceptance_v1.csv",
+    "docs\\operations-readiness\\final-acceptance\\edgeiq_browser_workspace_acceptance_v1.json",
+    "docs\\operations-readiness\\final-acceptance\\edgeiq_browser_workspace_acceptance_v1.md",
+    "docs\\operations-readiness\\final-acceptance\\edgeiq_final_acceptance_baseline_v1.json",
+    "docs\\operations-readiness\\final-acceptance\\edgeiq_final_acceptance_baseline_v1.md",
+    "docs\\operations-readiness\\final-acceptance\\edgeiq_final_browser_acceptance_runner_v1.mjs",
+    "docs\\operations-readiness\\final-acceptance\\edgeiq_final_operational_acceptance_v1_audit.json",
+    "docs\\operations-readiness\\final-acceptance\\edgeiq_final_operational_acceptance_v1_matrix.csv",
+    "docs\\operations-readiness\\final-acceptance\\edgeiq_market_disclosure_acceptance_v1.csv",
+    "docs\\operations-readiness\\final-acceptance\\edgeiq_market_disclosure_audit_v1.json",
+    "docs\\operations-readiness\\final-acceptance\\edgeiq_market_disclosure_report_v1.md",
+    "docs\\operations-readiness\\final-acceptance\\edgeiq_optional_source_states_audit_v1.json",
+    "docs\\operations-readiness\\final-acceptance\\edgeiq_optional_source_states_v1.csv",
+    "docs\\operations-readiness\\final-acceptance\\edgeiq_post_race_lifecycle_acceptance_v1.csv",
+    "docs\\operations-readiness\\final-acceptance\\edgeiq_post_race_lifecycle_audit_v1.json",
+    "docs\\operations-readiness\\final-acceptance\\edgeiq_post_race_lifecycle_report_v1.md",
+    "docs\\operations-readiness\\final-acceptance\\edgeiq_scratchings_reconciliation_v1.csv",
+    "docs\\operations-readiness\\final-acceptance\\edgeiq_scratchings_reconciliation_v1.json",
+    "docs\\operations-readiness\\final-acceptance\\edgeiq_scratchings_reconciliation_v1.md"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "starting_head": "33bace02d223b2bf744ed0d59ed9a431007fff8d",
+  "starting_log": "33bace0 external data: add Racing.com public discovery v1",
+  "dirty_worktree_count": 1086,
+  "retained_payload_glob": "outputs/sectionals/raw/VIC/racingcom_full_payloads/getRaceForm_*.json",
+  "existing_runner_split_rows": 2682,
+  "existing_normalised_sectional_rows": 2682,
+  "existing_acceptance_status": "CODE_COMPLETE_ACCESS_REQUIRED"
+}

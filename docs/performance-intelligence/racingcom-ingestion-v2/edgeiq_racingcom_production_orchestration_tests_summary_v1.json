@@ -1,0 +1,8 @@
+{
+  "decision": "RACINGCOM_PRODUCTION_ORCHESTRATION_TESTS_PASS",
+  "offline_rerun_result": "PASS",
+  "network_rerun_result": "PASS",
+  "deterministic_hash_result": "PASS",
+  "continuation_result": "PASS",
+  "production_changed_by_tests": "NO"
+}

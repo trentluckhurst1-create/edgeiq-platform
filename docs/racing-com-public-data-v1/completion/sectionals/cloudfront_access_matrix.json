@@ -1,0 +1,23 @@
+[
+  {
+    "resource_type": "CSV",
+    "url_source": "none discovered from retained response/public code",
+    "anonymous_status": "NOT_TESTED_NO_DISCOVERED_URL",
+    "includes_runner_splits": "UNKNOWN",
+    "decision": "NO_GOVERNED_FALLBACK"
+  },
+  {
+    "resource_type": "PDF",
+    "url_source": "none discovered from retained response/public code",
+    "anonymous_status": "NOT_TESTED_NO_DISCOVERED_URL",
+    "includes_runner_splits": "UNKNOWN",
+    "decision": "NO_GOVERNED_FALLBACK"
+  },
+  {
+    "resource_type": "JSON",
+    "url_source": "GraphQL only",
+    "anonymous_status": "401 clean replay",
+    "includes_runner_splits": "YES when credentialed/browser-keyed",
+    "decision": "CREDENTIAL_REQUIRED"
+  }
+]

@@ -1,0 +1,79 @@
+{
+  "contract_name": "edgeiq_epi_warehouse_release_manifest_v1",
+  "contract_version": "1.0.0",
+  "warehouse_name": "EDGEIQ_CANONICAL_EPI_WAREHOUSE",
+  "warehouse_version": "1.0.0",
+  "grain": "one_release_manifest_per_governed_epi_warehouse_release",
+  "primary_key": [
+    "epi_warehouse_release_id"
+  ],
+  "required_top_level_fields": [
+    "epi_warehouse_release_id",
+    "warehouse_name",
+    "warehouse_version",
+    "manifest_contract_version",
+    "release_created_at_utc",
+    "source_git",
+    "governed_layers",
+    "terminal_reconciliation",
+    "release_summary",
+    "release_decision",
+    "reconciliation_decision",
+    "release_status",
+    "epi_warehouse_release_evidence_sha256"
+  ],
+  "required_layer_fields": [
+    "layer_sequence",
+    "layer_name",
+    "layer_base_name",
+    "contract_name",
+    "fact_row_count",
+    "fact_column_count",
+    "audit_status",
+    "audit_counts",
+    "artifacts",
+    "layer_evidence_sha256"
+  ],
+  "required_artifact_fields": [
+    "artifact_role",
+    "repository_path",
+    "size_bytes",
+    "sha256",
+    "git_tracked",
+    "git_clean"
+  ],
+  "allowed_values": {
+    "release_decision": [
+      "EPI_WAREHOUSE_V1_RELEASED"
+    ],
+    "reconciliation_decision": [
+      "EPI_WAREHOUSE_V1_RECONCILED"
+    ],
+    "release_status": [
+      "GOVERNED_EPI_WAREHOUSE_RELEASE"
+    ],
+    "audit_status": [
+      "PASS"
+    ]
+  },
+  "required_layer_count": 7,
+  "minimum_fact_row_count": 1,
+  "required_artifact_count_per_layer": 6,
+  "forbidden_fields": [
+    "probability",
+    "implied_probability",
+    "fair_price",
+    "market_price",
+    "market_edge",
+    "expected_value",
+    "confidence",
+    "prediction",
+    "recommendation",
+    "selection",
+    "tip",
+    "bet",
+    "staking",
+    "bookmaker",
+    "value_classification"
+  ]
+}

@@ -1,0 +1,962 @@
+FRAME 0 URL=https://www.racing.com/form/2026-07-20/southside-pakenham-synthetic/race/9/speed-data
+MONDAY, 20 JULY 2026
+Southside Pakenham Synthetic  
+1200m
+17°C
+Synth
+Track Rail
+True Entire Circuit
+Final Result
+All
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+Grant's Plumbing & Drainage Solutions Handicap
+4:30pm
+1200m
+Handicap. Two-Years-Old and Upwards, No sex restriction. BenchMark 70. Apprentices can claim. Track name: Synthetic. Track type: Synthetic. Field limit: 12.
+Race Time: 
+1:09.03  
++9.96L  
+Prize Money: 
+$27,000  
+Results
+Stewards' Report
+Speed Data
+News & Video
+Personalise Your Racing Experience
+
+We use cookies (including third-party) for site functionality, personalised content and ads, and analytics. By continuing, you consent to essential cookies only. Click "Accept all cookies" to allow non-essential cookies for personalisation and sharing usage data with our media, advertising, and analytics partners.
+
+See our Privacy Policy for details.
+
+Accept
+All CookiesDecline Non-
+Essential Cookies
+
+---FRAME---
+
+FRAME 1 URL=https://dxp-static.racing.com/sectionals/index.html#?meetCode=5191023&raceNumber=9
+Sort By:	Finishing Position
+C
+Finishing Position
+Distance Run
+Early Speed
+Mid Speed
+Late Speed
+Peak Speed
+Average Speed
+	OverviewSectionalsSplits
+POS / HORSE
+1st		
+7. Lake Forest (9)
+T: P.Gelagotis J: L.J.Neindorf
+
+2nd		
+9. Prince Of Brooky (11)
+T: N.M.Burke J: B.R.Kinninmont
+
+3rd		
+5. Shaalute (5)
+T: M.Laurie J: R.L.Hammond
+
+4th		
+3. Spirited Defence (6)
+T: A.Noblet J: T.Stockdale
+
+5th		
+6. Cardone (2)
+T: D.F.Meagher J: D.J.Dunn
+
+6th		
+8. Humble Trader (7)
+T: G.Eurell J: J.Mott
+
+7th		
+13. Duel Venture (3)
+T: G.Eurell J: J.Bowditch
+
+8th		
+4. Just For Show (8)
+T: Ben, Will & JD Hayes J: J.McNeil
+
+9th		
+12. Spirit Of Jo (1)
+T: Lee & Shannon Hope J: P.M.Moloney
+
+10th		
+2. Primal Spirit (NZ) (4)
+T: R.J.Goodwin J: J.Noonan
+
+11th		
+1. Le Ferrari (12)
+T: Ben, Will & JD Hayes J: O.I.East
+
+12th		
+14. Eternal Darkness (10)
+T: A.B.Chibnall J: J.G.Radley
+	
+DIST RUN	EARLY	MID	LATE	PEAK	AVG SPEED	COM
+
+1208
+metres
+	
+59.65
+km/h
+	
+65.56
+km/h
+	
+63.97
+km/h
+	
+69.12
+km/h
+	
+63.00
+km/h
+	
+!
+
+
+1212(+4)
+metres
+	
+59.54
+km/h
+	
+66.13
+km/h
+	
+65.95
+km/h
+	
+69.95
+km/h
+	
+63.22
+km/h
+	
+!
+
+
+1204(-3)
+metres
+	
+58.14
+km/h
+	
+65.77
+km/h
+	
+64.26
+km/h
+	
+68.36
+km/h
+	
+62.53
+km/h
+	
+!
+
+
+1213(+5)
+metres
+	
+58.46
+km/h
+	
+66.49
+km/h
+	
+65.88
+km/h
+	
+68.11
+km/h
+	
+62.64
+km/h
+	
+!
+
+
+1204(-3)
+metres
+	
+58.75
+km/h
+	
+65.56
+km/h
+	
+62.57
+km/h
+	
+69.26
+km/h
+	
+62.17
+km/h
+	
+!
+
+
+1212(+5)
+metres
+	
+56.92
+km/h
+	
+66.38
+km/h
+	
+67.21
+km/h
+	
+68.90
+km/h
+	
+62.50
+km/h
+	
+!
+
+
+1208(+1)
+metres
+	
+58.36
+km/h
+	
+65.56
+km/h
+	
+63.29
+km/h
+	
+67.36
+km/h
+	
+62.24
+km/h
+	
+!
+
+
+1211(+3)
+metres
+	
+57.67
+km/h
+	
+66.74
+km/h
+	
+65.45
+km/h
+	
+68.04
+km/h
+	
+62.32
+km/h
+	
+!
+
+
+1203(-4)
+metres
+	
+58.07
+km/h
+	
+65.41
+km/h
+	
+62.35
+km/h
+	
+68.98
+km/h
+	
+61.81
+km/h
+	
+!
+
+
+1210(+3)
+metres
+	
+59.08
+km/h
+	
+65.99
+km/h
+	
+64.62
+km/h
+	
+68.87
+km/h
+	
+62.10
+km/h
+	
+!
+
+
+1213(+5)
+metres
+	
+59.08
+km/h
+	
+66.35
+km/h
+	
+64.22
+km/h
+	
+69.26
+km/h
+	
+62.03
+km/h
+	
+!
+
+
+1214(+6)
+metres
+	
+57.96
+km/h
+	
+67.00
+km/h
+	
+64.80
+km/h
+	
+68.65
+km/h
+	
+61.81
+km/h
+	
+!
+POS / HORSE
+1st		
+7. Lake Forest (9)
+T: P.Gelagotis J: L.J.Neindorf
+
+2nd		
+9. Prince Of Brooky (11)
+T: N.M.Burke J: B.R.Kinninmont
+
+3rd		
+5. Shaalute (5)
+T: M.Laurie J: R.L.Hammond
+
+4th		
+3. Spirited Defence (6)
+T: A.Noblet J: T.Stockdale
+
+5th		
+6. Cardone (2)
+T: D.F.Meagher J: D.J.Dunn
+
+6th		
+8. Humble Trader (7)
+T: G.Eurell J: J.Mott
+
+7th		
+13. Duel Venture (3)
+T: G.Eurell J: J.Bowditch
+
+8th		
+4. Just For Show (8)
+T: Ben, Will & JD Hayes J: J.McNeil
+
+9th		
+12. Spirit Of Jo (1)
+T: Lee & Shannon Hope J: P.M.Moloney
+
+10th		
+2. Primal Spirit (NZ) (4)
+T: R.J.Goodwin J: J.Noonan
+
+11th		
+1. Le Ferrari (12)
+T: Ben, Will & JD Hayes J: O.I.East
+
+12th		
+14. Eternal Darkness (10)
+T: A.B.Chibnall J: J.G.Radley
+	
+OVERALL	1000M	800M	600M	400M	200M
+
+1:09.03
+1st
+	
+55.45
+1st
+	
+44.82
+1st
+	
+33.68
+1st
+	
+22.53
+1st
+	
+11.54
+1st
+
+
+1:09.04
+2nd
+	
+55.28
+3rd
+	
+44.74
+2nd
+	
+33.50
+2nd
+	
+22.29
+4th
+	
+11.34
+2nd
+
+
+1:09.30
+3rd
+	
+55.28
+8th
+	
+44.49
+8th
+	
+33.47
+7th
+	
+22.36
+7th
+	
+11.51
+3rd
+
+
+1:09.72
+4th
+	
+55.77
+7th
+	
+45.01
+6th
+	
+33.92
+6th
+	
+22.87
+6th
+	
+11.87
+5th
+
+
+1:09.73
+5th
+	
+55.89
+5th
+	
+45.17
+5th
+	
+34.09
+5th
+	
+23.01
+2nd
+	
+11.94
+4th
+
+
+1:09.80
+6th
+	
+55.34
+12th
+	
+44.41
+12th
+	
+33.20
+12th
+	
+22.26
+12th
+	
+11.50
+10th
+
+
+1:09.85
+7th
+	
+56.05
+4th
+	
+45.15
+7th
+	
+33.99
+8th
+	
+22.71
+9th
+	
+11.65
+9th
+
+
+1:09.97
+8th
+	
+55.76
+11th
+	
+44.93
+11th
+	
+33.85
+11th
+	
+22.63
+11th
+	
+11.59
+12th
+
+
+1:10.08
+9th
+	
+55.95
+9th
+	
+45.27
+9th
+	
+34.21
+9th
+	
+23.09
+8th
+	
+11.92
+8th
+
+
+1:10.15
+10th
+	
+56.39
+2nd
+	
+45.72
+3rd
+	
+34.57
+3rd
+	
+23.40
+4th
+	
+12.24
+6th
+
+
+1:10.39
+11th
+	
+56.45
+6th
+	
+45.89
+4th
+	
+34.76
+4th
+	
+23.65
+3rd
+	
+12.42
+7th
+
+
+1:10.72
+12th
+	
+56.53
+10th
+	
+45.81
+10th
+	
+34.72
+10th
+	
+23.56
+10th
+	
+12.40
+11th
+POS / HORSE
+1st		
+7. Lake Forest (9)
+T: P.Gelagotis J: L.J.Neindorf
+
+2nd		
+9. Prince Of Brooky (11)
+T: N.M.Burke J: B.R.Kinninmont
+
+3rd		
+5. Shaalute (5)
+T: M.Laurie J: R.L.Hammond
+
+4th		
+3. Spirited Defence (6)
+T: A.Noblet J: T.Stockdale
+
+5th		
+6. Cardone (2)
+T: D.F.Meagher J: D.J.Dunn
+
+6th		
+8. Humble Trader (7)
+T: G.Eurell J: J.Mott
+
+7th		
+13. Duel Venture (3)
+T: G.Eurell J: J.Bowditch
+
+8th		
+4. Just For Show (8)
+T: Ben, Will & JD Hayes J: J.McNeil
+
+9th		
+12. Spirit Of Jo (1)
+T: Lee & Shannon Hope J: P.M.Moloney
+
+10th		
+2. Primal Spirit (NZ) (4)
+T: R.J.Goodwin J: J.Noonan
+
+11th		
+1. Le Ferrari (12)
+T: Ben, Will & JD Hayes J: O.I.East
+
+12th		
+14. Eternal Darkness (10)
+T: A.B.Chibnall J: J.G.Radley
+	
+1200M-1000M	1000M-800M	800M-600M	600M-400M	400M-200M	200M-FINISH
+
+13.57
+1st
+	
+10.63
+1st
+	
+11.14
+1st
+	
+11.15
+1st
+	
+10.99
+1st
+	
+11.54
+1st
+
+
+13.76
+3rd
+	
+10.54
+2nd
+	
+11.24
+2nd
+	
+11.21
+4th
+	
+10.95
+2nd
+	
+11.34
+2nd
+
+
+14.02
+8th
+	
+10.79
+8th
+	
+11.02
+7th
+	
+11.11
+7th
+	
+10.85
+3rd
+	
+11.51
+3rd
+
+
+13.94
+7th
+	
+10.76
+6th
+	
+11.09
+6th
+	
+11.05
+6th
+	
+11.00
+5th
+	
+11.87
+4th
+
+
+13.84
+5th
+	
+10.72
+5th
+	
+11.08
+5th
+	
+11.08
+2nd
+	
+11.07
+4th
+	
+11.94
+5th
+
+
+14.47
+12th
+	
+10.93
+12th
+	
+11.21
+12th
+	
+10.94
+12th
+	
+10.76
+10th
+	
+11.50
+6th
+
+
+13.81
+4th
+	
+10.90
+7th
+	
+11.16
+8th
+	
+11.28
+9th
+	
+11.06
+9th
+	
+11.65
+7th
+
+
+14.21
+11th
+	
+10.83
+11th
+	
+11.08
+11th
+	
+11.22
+11th
+	
+11.04
+12th
+	
+11.59
+8th
+
+
+14.14
+9th
+	
+10.68
+9th
+	
+11.06
+9th
+	
+11.12
+8th
+	
+11.17
+8th
+	
+11.92
+9th
+
+
+13.75
+2nd
+	
+10.67
+3rd
+	
+11.15
+3rd
+	
+11.17
+4th
+	
+11.16
+6th
+	
+12.24
+10th
+
+
+13.94
+6th
+	
+10.56
+4th
+	
+11.13
+4th
+	
+11.11
+3rd
+	
+11.23
+7th
+	
+12.42
+11th
+
+
+14.18
+10th
+	
+10.72
+10th
+	
+11.09
+10th
+	
+11.16
+10th
+	
+11.16
+11th
+	
+12.40
+12th
+Download Race Sectional Data | PDF' | CSV'
+Splits & Sectionals	
+
+Splits & Sectionals data displayed on Racing.com is sourced from the following race-timing technology partners: From August 2021, sectional times for race meetings at Flemington, Caulfield, The Valley & Ladbrokes Park are provided by tripleSdata and Champion Data (note: previously, Trakus technology was used at Flemington, Caulfield and The Valley). From August 2023, Cranbourne and Pakenham sectional times are also provided by tripleSdata and Champion Data (note: previously, Daily Sectionals) From September 2017, data for all other Victorian tracks is provided by Daily Sectionals; and at South Australian tracks the sectional times are sourced from Equitime.
+
+Below each split and sectional time displayed is the horse’s position-in-running (e.g. 1st) at that point of the race.
+
+The meeting rank 'tool-tip' feature helps to identify how the fastest individual splits & sectionals for each race, which are highlighted in green, compare to the times for the rest of that particular race meeting.
+
+---FRAME---
+
+FRAME 6 URL=about:blank
+18+‌
+Eligible‌ ‌customers‌ ‌only.‌ ‌Prices‌ ‌subject‌ ‌to‌ ‌change.‌ ‌
+Max‌ ‌stakes‌ ‌&‌ ‌T&Cs‌ ‌apply.‌
+THINK.‌ ‌IS‌ ‌THIS‌ ‌A‌ ‌BET‌ ‌YOU‌ ‌REALLY‌ ‌WANT‌ ‌TO‌ ‌PLACE?‌
+Set‌ ‌a‌ ‌deposit‌ ‌limit.‌
+
+---FRAME---
+
+FRAME 8 URL=about:blank
+18+‌
+Eligible‌ ‌customers‌ ‌only.‌ ‌Prices‌ ‌subject‌ ‌to‌ ‌change.‌ ‌
+Max‌ ‌stakes‌ ‌&‌ ‌T&Cs‌ ‌apply.‌
+THINK.‌ ‌IS‌ ‌THIS‌ ‌A‌ ‌BET‌ ‌YOU‌ ‌REALLY‌ ‌WANT‌ ‌TO‌ ‌PLACE?‌
+Set‌ ‌a‌ ‌deposit‌ ‌limit.‌
+
+---FRAME---
+
+FRAME 15 URL=about:blank
+Join
+
+---FRAME---
+
+FRAME 17 URL=about:blank
+EVERY RACE, EVERY DAY.
+
+---FRAME---
+
+FRAME 26 URL=about:blank
+Join
+
+---FRAME---
+
+FRAME 28 URL=about:blank
+EVERY RACE, EVERY DAY.
+
+---FRAME---
+
+FRAME 32 URL=https://platform.twitter.com/widgets/tweet_button.1227a5674072e080ffb1ba14ac0c1079.en.html#dnt=true&id=twitter-widget-0&lang=en&original_referer=https%3A%2F%2Fdxp-static.racing.com%2Fsectionals%2Findex.html%23%3FmeetCode%3D5191023%26raceNumber%3D9&size=m&text=RACING.COM&time=1784711562302&type=share&url=https%3A%2F%2Fdxp-static.racing.com%2Fsectionals%2Findex.html%23%3FmeetCode%3D5191023%26raceNumber%3D9&via=country_racing
+Post

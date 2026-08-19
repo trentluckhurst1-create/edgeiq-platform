@@ -1,0 +1,12 @@
+{
+  "bodyBg": "rgb(255, 255, 255)",
+  "rejectedTerms": [],
+  "reviewBoundaryPresent": true,
+  "reviewWorkspacePresent": true,
+  "reviewableWorkPresent": true,
+  "savedReviewPresent": true,
+  "status": "PASS",
+  "tableRows": 3,
+  "url": "http://127.0.0.1:5176/",
+  "screenshot": "blocked: pageWeather.screenshot is not a function"
+}

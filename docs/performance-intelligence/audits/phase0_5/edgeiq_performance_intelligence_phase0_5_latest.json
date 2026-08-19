@@ -1,0 +1,420 @@
+{
+  "audit_name": "EDGEiQ Performance Intelligence Phase 0.5 Canonical Identity and Source-Evidence Prototype",
+  "generated_utc": "2026-07-15T18:15:23.358639+00:00",
+  "prototype_version": "0.1",
+  "status": "PROTOTYPE_PASS",
+  "production_data_modified": false,
+  "results_source": "public/data/edgeiq_historical_results_warehouse_v2_graphql.csv",
+  "sectional_source": "public/data/racingcom_sectional_warehouse_v2.csv",
+  "source_evidence_records": 2,
+  "performance_identity": {
+    "source_rows": 879784,
+    "unique_meetings": 8600,
+    "unique_races": 71019,
+    "unique_horses": 879695,
+    "unique_performances": 879695,
+    "duplicate_performance_ids": 89,
+    "duplicate_source_rows": 89,
+    "unresolved_rows": 0,
+    "quality_counts": {
+      "COMPLETE": 879784
+    },
+    "identity_method_counts": {
+      "PROVIDER_RUNNER_ID": 879784
+    },
+    "min_race_date": "2000-08-02",
+    "max_race_date": "2026-06-24",
+    "duplicate_samples": [
+      {
+        "performance_id": "eiq_performance_202b0ab1a1ec5abc90ae4e64cdcb79da",
+        "source_row_number": 807742,
+        "provider_race_id": "5433728.0",
+        "provider_runner_id": "15284768",
+        "horse_name": "VERDAD",
+        "reason": "MULTIPLE_SOURCE_ROWS_FOR_SAME_CANONICAL_PERFORMANCE"
+      },
+      {
+        "performance_id": "eiq_performance_e0e3f2508dc754db9f1d1e838ac9ffb7",
+        "source_row_number": 807743,
+        "provider_race_id": "5433728.0",
+        "provider_runner_id": "15289631",
+        "horse_name": "INDISPENSABLE",
+        "reason": "MULTIPLE_SOURCE_ROWS_FOR_SAME_CANONICAL_PERFORMANCE"
+      },
+      {
+        "performance_id": "eiq_performance_6b5ed2ca1ead5b0fac73d316148201e8",
+        "source_row_number": 807744,
+        "provider_race_id": "5433728.0",
+        "provider_runner_id": "15280398",
+        "horse_name": "JACKS ON ICE",
+        "reason": "MULTIPLE_SOURCE_ROWS_FOR_SAME_CANONICAL_PERFORMANCE"
+      },
+      {
+        "performance_id": "eiq_performance_66929737ffa35715a35c3896cf7127b8",
+        "source_row_number": 807745,
+        "provider_race_id": "5433728.0",
+        "provider_runner_id": "15285975",
+        "horse_name": "TYPHOON HARMONY",
+        "reason": "MULTIPLE_SOURCE_ROWS_FOR_SAME_CANONICAL_PERFORMANCE"
+      },
+      {
+        "performance_id": "eiq_performance_e3ae1f45f23155fd9e2d9ebc94d786f0",
+        "source_row_number": 807746,
+        "provider_race_id": "5433728.0",
+        "provider_runner_id": "15288653",
+        "horse_name": "CAPPER THIRTYNINE",
+        "reason": "MULTIPLE_SOURCE_ROWS_FOR_SAME_CANONICAL_PERFORMANCE"
+      },
+      {
+        "performance_id": "eiq_performance_7d66cdd17b735f5fbfa3134a1602581e",
+        "source_row_number": 807747,
+        "provider_race_id": "5433728.0",
+        "provider_runner_id": "15290310",
+        "horse_name": "PERSIAN SPIRIT",
+        "reason": "MULTIPLE_SOURCE_ROWS_FOR_SAME_CANONICAL_PERFORMANCE"
+      },
+      {
+        "performance_id": "eiq_performance_fae10361924a5e8f9c5381be115f5eaf",
+        "source_row_number": 807748,
+        "provider_race_id": "5433728.0",
+        "provider_runner_id": "15289710",
+        "horse_name": "PROVED",
+        "reason": "MULTIPLE_SOURCE_ROWS_FOR_SAME_CANONICAL_PERFORMANCE"
+      },
+      {
+        "performance_id": "eiq_performance_26886ba514af53c0a77777a3800d341e",
+        "source_row_number": 807749,
+        "provider_race_id": "5433728.0",
+        "provider_runner_id": "15289691",
+        "horse_name": "ROADCONE",
+        "reason": "MULTIPLE_SOURCE_ROWS_FOR_SAME_CANONICAL_PERFORMANCE"
+      },
+      {
+        "performance_id": "eiq_performance_171f364bcc055034b8ca4ca2925eb9bf",
+        "source_row_number": 807750,
+        "provider_race_id": "5433728.0",
+        "provider_runner_id": "15289692",
+        "horse_name": "SOUGHT AFTER",
+        "reason": "MULTIPLE_SOURCE_ROWS_FOR_SAME_CANONICAL_PERFORMANCE"
+      },
+      {
+        "performance_id": "eiq_performance_8050ff0f99275a00aed35bcd43070120",
+        "source_row_number": 807751,
+        "provider_race_id": "5433728.0",
+        "provider_runner_id": "15289067",
+        "horse_name": "KAHHOF",
+        "reason": "MULTIPLE_SOURCE_ROWS_FOR_SAME_CANONICAL_PERFORMANCE"
+      },
+      {
+        "performance_id": "eiq_performance_c062011071d15c20a3723ff0cf4e5f34",
+        "source_row_number": 807752,
+        "provider_race_id": "5433728.0",
+        "provider_runner_id": "15287440",
+        "horse_name": "NAVAL ACADEMY",
+        "reason": "MULTIPLE_SOURCE_ROWS_FOR_SAME_CANONICAL_PERFORMANCE"
+      },
+      {
+        "performance_id": "eiq_performance_71df185b595b53d7a18e911dae36afad",
+        "source_row_number": 807753,
+        "provider_race_id": "5433728.0",
+        "provider_runner_id": "15289926",
+        "horse_name": "STOLI BOLLI",
+        "reason": "MULTIPLE_SOURCE_ROWS_FOR_SAME_CANONICAL_PERFORMANCE"
+      },
+      {
+        "performance_id": "eiq_performance_2936f5b733205476ab79a25564c4a932",
+        "source_row_number": 807754,
+        "provider_race_id": "5433728.0",
+        "provider_runner_id": "15289977",
+        "horse_name": "SPIONE",
+        "reason": "MULTIPLE_SOURCE_ROWS_FOR_SAME_CANONICAL_PERFORMANCE"
+      },
+      {
+        "performance_id": "eiq_performance_fca8d0bc7f725dd5ac00fecf3f7f0cae",
+        "source_row_number": 807755,
+        "provider_race_id": "5433728.0",
+        "provider_runner_id": "15287421",
+        "horse_name": "KIKO",
+        "reason": "MULTIPLE_SOURCE_ROWS_FOR_SAME_CANONICAL_PERFORMANCE"
+      },
+      {
+        "performance_id": "eiq_performance_686f064aa52c53b7ada8cc28b97094c6",
+        "source_row_number": 807756,
+        "provider_race_id": "5433729.0",
+        "provider_runner_id": "15288442",
+        "horse_name": "OUTTA COMPTON",
+        "reason": "MULTIPLE_SOURCE_ROWS_FOR_SAME_CANONICAL_PERFORMANCE"
+      },
+      {
+        "performance_id": "eiq_performance_ec841f346a6f5f4a9a92740ff7b3d4af",
+        "source_row_number": 807757,
+        "provider_race_id": "5433729.0",
+        "provider_runner_id": "15289633",
+        "horse_name": "PRINCE OF HELENA",
+        "reason": "MULTIPLE_SOURCE_ROWS_FOR_SAME_CANONICAL_PERFORMANCE"
+      },
+      {
+        "performance_id": "eiq_performance_1331f92621f35df1be290b9eed8dd623",
+        "source_row_number": 807758,
+        "provider_race_id": "5433729.0",
+        "provider_runner_id": "15289720",
+        "horse_name": "DRAGOON",
+        "reason": "MULTIPLE_SOURCE_ROWS_FOR_SAME_CANONICAL_PERFORMANCE"
+      },
+      {
+        "performance_id": "eiq_performance_3cd0ae01549f5af5bc62b2500a836cec",
+        "source_row_number": 807759,
+        "provider_race_id": "5433729.0",
+        "provider_runner_id": "15287218",
+        "horse_name": "OCEAN BEYOND",
+        "reason": "MULTIPLE_SOURCE_ROWS_FOR_SAME_CANONICAL_PERFORMANCE"
+      },
+      {
+        "performance_id": "eiq_performance_ce7522eb5d155f0a9fb0eee01ae1c250",
+        "source_row_number": 807760,
+        "provider_race_id": "5433729.0",
+        "provider_runner_id": "15288337",
+        "horse_name": "FLYING VALLEY",
+        "reason": "MULTIPLE_SOURCE_ROWS_FOR_SAME_CANONICAL_PERFORMANCE"
+      },
+      {
+        "performance_id": "eiq_performance_7a7d524d6a31560a92fc66c186183c4e",
+        "source_row_number": 807761,
+        "provider_race_id": "5433729.0",
+        "provider_runner_id": "15288649",
+        "horse_name": "HAARACAINE",
+        "reason": "MULTIPLE_SOURCE_ROWS_FOR_SAME_CANONICAL_PERFORMANCE"
+      }
+    ]
+  },
+  "sectional_linkage": {
+    "sectional_source_rows": 130484,
+    "linked_rows": 0,
+    "linkage_pct": 0.0,
+    "provider_id_links": 0,
+    "composite_links": 0,
+    "ambiguous_rows": 0,
+    "unlinked_rows": 130484,
+    "status_counts": {
+      "UNLINKED": 130484
+    },
+    "unlinked_samples": [
+      {
+        "source_row_number": 2,
+        "link_status": "UNLINKED",
+        "provider_race_id": "",
+        "provider_runner_id": "",
+        "race_date": "2023-01-01",
+        "track": "BURRUMBEET",
+        "race_number": "6",
+        "horse_name": "Catadude"
+      },
+      {
+        "source_row_number": 3,
+        "link_status": "UNLINKED",
+        "provider_race_id": "",
+        "provider_runner_id": "",
+        "race_date": "2023-01-01",
+        "track": "BURRUMBEET",
+        "race_number": "6",
+        "horse_name": "Hayrick Lane"
+      },
+      {
+        "source_row_number": 4,
+        "link_status": "UNLINKED",
+        "provider_race_id": "",
+        "provider_runner_id": "",
+        "race_date": "2023-01-01",
+        "track": "BURRUMBEET",
+        "race_number": "6",
+        "horse_name": "We Want Frankie"
+      },
+      {
+        "source_row_number": 5,
+        "link_status": "UNLINKED",
+        "provider_race_id": "",
+        "provider_runner_id": "",
+        "race_date": "2023-01-01",
+        "track": "BURRUMBEET",
+        "race_number": "6",
+        "horse_name": "Sandblast"
+      },
+      {
+        "source_row_number": 6,
+        "link_status": "UNLINKED",
+        "provider_race_id": "",
+        "provider_runner_id": "",
+        "race_date": "2023-01-01",
+        "track": "BURRUMBEET",
+        "race_number": "6",
+        "horse_name": "Dynamic Blue"
+      },
+      {
+        "source_row_number": 7,
+        "link_status": "UNLINKED",
+        "provider_race_id": "",
+        "provider_runner_id": "",
+        "race_date": "2023-01-01",
+        "track": "BURRUMBEET",
+        "race_number": "6",
+        "horse_name": "Elbereth"
+      },
+      {
+        "source_row_number": 8,
+        "link_status": "UNLINKED",
+        "provider_race_id": "",
+        "provider_runner_id": "",
+        "race_date": "2023-01-01",
+        "track": "BURRUMBEET",
+        "race_number": "6",
+        "horse_name": "Lewandowski"
+      },
+      {
+        "source_row_number": 9,
+        "link_status": "UNLINKED",
+        "provider_race_id": "",
+        "provider_runner_id": "",
+        "race_date": "2023-01-01",
+        "track": "BURRUMBEET",
+        "race_number": "7",
+        "horse_name": "Honour De Hero"
+      },
+      {
+        "source_row_number": 10,
+        "link_status": "UNLINKED",
+        "provider_race_id": "",
+        "provider_runner_id": "",
+        "race_date": "2023-01-01",
+        "track": "BURRUMBEET",
+        "race_number": "7",
+        "horse_name": "Maazle"
+      },
+      {
+        "source_row_number": 11,
+        "link_status": "UNLINKED",
+        "provider_race_id": "",
+        "provider_runner_id": "",
+        "race_date": "2023-01-01",
+        "track": "BURRUMBEET",
+        "race_number": "7",
+        "horse_name": "Speed Lover"
+      },
+      {
+        "source_row_number": 12,
+        "link_status": "UNLINKED",
+        "provider_race_id": "",
+        "provider_runner_id": "",
+        "race_date": "2023-01-01",
+        "track": "BURRUMBEET",
+        "race_number": "7",
+        "horse_name": "Lady Ardoyne"
+      },
+      {
+        "source_row_number": 13,
+        "link_status": "UNLINKED",
+        "provider_race_id": "",
+        "provider_runner_id": "",
+        "race_date": "2023-01-01",
+        "track": "BURRUMBEET",
+        "race_number": "7",
+        "horse_name": "Azoustic"
+      },
+      {
+        "source_row_number": 14,
+        "link_status": "UNLINKED",
+        "provider_race_id": "",
+        "provider_runner_id": "",
+        "race_date": "2023-01-01",
+        "track": "BURRUMBEET",
+        "race_number": "7",
+        "horse_name": "Cadboll"
+      },
+      {
+        "source_row_number": 15,
+        "link_status": "UNLINKED",
+        "provider_race_id": "",
+        "provider_runner_id": "",
+        "race_date": "2023-01-01",
+        "track": "BURRUMBEET",
+        "race_number": "7",
+        "horse_name": "Barry's Rabbit"
+      },
+      {
+        "source_row_number": 16,
+        "link_status": "UNLINKED",
+        "provider_race_id": "",
+        "provider_runner_id": "",
+        "race_date": "2023-01-01",
+        "track": "BURRUMBEET",
+        "race_number": "7",
+        "horse_name": "Eitilt (NZ) (NZ)"
+      },
+      {
+        "source_row_number": 17,
+        "link_status": "UNLINKED",
+        "provider_race_id": "",
+        "provider_runner_id": "",
+        "race_date": "2023-01-01",
+        "track": "BURRUMBEET",
+        "race_number": "8",
+        "horse_name": "Ashy Boy"
+      },
+      {
+        "source_row_number": 18,
+        "link_status": "UNLINKED",
+        "provider_race_id": "",
+        "provider_runner_id": "",
+        "race_date": "2023-01-01",
+        "track": "BURRUMBEET",
+        "race_number": "8",
+        "horse_name": "Harbouring"
+      },
+      {
+        "source_row_number": 19,
+        "link_status": "UNLINKED",
+        "provider_race_id": "",
+        "provider_runner_id": "",
+        "race_date": "2023-01-01",
+        "track": "BURRUMBEET",
+        "race_number": "8",
+        "horse_name": "Reserve Street"
+      },
+      {
+        "source_row_number": 20,
+        "link_status": "UNLINKED",
+        "provider_race_id": "",
+        "provider_runner_id": "",
+        "race_date": "2023-01-01",
+        "track": "BURRUMBEET",
+        "race_number": "8",
+        "horse_name": "Who's Your Papy"
+      },
+      {
+        "source_row_number": 21,
+        "link_status": "UNLINKED",
+        "provider_race_id": "",
+        "provider_runner_id": "",
+        "race_date": "2023-01-01",
+        "track": "BURRUMBEET",
+        "race_number": "8",
+        "horse_name": "Bellator"
+      }
+    ]
+  },
+  "bom_syntax_correction": {
+    "scripts_checked": 9,
+    "valid_with_bom": 9,
+    "true_syntax_errors": 0,
+    "corrected_interpretation": "UTF8_BOM_IS_NOT_A_TRUE_PYTHON_SYNTAX_ERROR"
+  },
+  "outputs": {
+    "source_evidence": "docs/performance-intelligence/prototypes/phase0_5/edgeiq_source_evidence_prototype_v0_1_20260716_041523.csv",
+    "performance_identity": "docs/performance-intelligence/prototypes/phase0_5/edgeiq_canonical_performance_identity_prototype_v0_1_20260716_041523.csv",
+    "performance_duplicates": "docs/performance-intelligence/audits/phase0_5/edgeiq_performance_identity_duplicates_v0_1_20260716_041523.csv",
+    "performance_unresolved": "docs/performance-intelligence/audits/phase0_5/edgeiq_performance_identity_unresolved_v0_1_20260716_041523.csv",
+    "sectional_linkage": "docs/performance-intelligence/prototypes/phase0_5/edgeiq_sectional_performance_linkage_prototype_v0_1_20260716_041523.csv",
+    "bom_syntax_audit": "docs/performance-intelligence/audits/phase0_5/edgeiq_phase0_5_bom_syntax_correction_20260716_041523.csv"
+  },
+  "canonical_status": "PROTOTYPE_ONLY_NOT_PROMOTED",
+  "next_stage": "Phase 0.6 duplicate evidence, horse identity and sectional linkage resolution design"
+}

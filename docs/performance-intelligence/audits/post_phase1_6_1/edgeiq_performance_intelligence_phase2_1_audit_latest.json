@@ -1,0 +1,29 @@
+{
+  "checks": [
+    {
+      "check": "LENGTH_CONVERSIONS_VERSIONED",
+      "observed": "LENGTH_CONVERSION_GOVERNANCE_V1",
+      "passed": true
+    },
+    {
+      "check": "NO_ARBITRARY_CONSTANT",
+      "observed": "no numeric conversion emitted",
+      "passed": true
+    },
+    {
+      "check": "UNAVAILABLE_WHEN_UNSUPPORTED",
+      "observed": 17,
+      "passed": true
+    }
+  ],
+  "conversion_coverage_state": "UNAVAILABLE_NO_GOVERNED_NUMERIC_CONTRACT",
+  "conversion_rows": 1,
+  "evidence_reference_rows": 17,
+  "generated_timestamp": "2026-07-16T08:33:16Z",
+  "governed_conversion_rows": 0,
+  "marker": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE2_1_LENGTH_CONVERSION_FINAL_PASS",
+  "phase": "phase2_1",
+  "snapshot_id": "eiq_length_conversion_contract_v1_e6e21e4e7739b4c9902d36d9",
+  "snapshot_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\performance-intelligence\\warehouse\\phase2_1\\eiq_length_conversion_contract_v1_e6e21e4e7739b4c9902d36d9",
+  "status": "PASS"
+}

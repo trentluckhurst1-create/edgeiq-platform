@@ -1,0 +1,105 @@
+{
+  "generated_utc": "2026-07-22T07:30:56.443560+00:00",
+  "governance": {
+    "read_only": true,
+    "network_access_performed": false,
+    "production_builder_executed": false,
+    "builder_modified": false,
+    "cache_modified": false,
+    "governed_output_modified": false,
+    "threshold_modified": false
+  },
+  "builder_configuration": {
+    "max_fetches": 50,
+    "raw_cache": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\outputs\\sectionals\\raw\\VIC\\racingcom_csv"
+  },
+  "existing_diagnostics": {
+    "run_timestamp_utc": {
+      "value": "2026-05-15T04:09:05+00:00",
+      "notes": "UTC run timestamp"
+    },
+    "candidate_rows": {
+      "value": "1876",
+      "notes": "Candidate speed pages/direct CSV rows considered"
+    },
+    "direct_csv_candidates": {
+      "value": "1368",
+      "notes": "CSV URLs derived before page-link discovery"
+    },
+    "page_fetches_for_discovery": {
+      "value": "10",
+      "notes": "Speed-data pages fetched to find embedded CSV links"
+    },
+    "page_csv_links_discovered": {
+      "value": "0",
+      "notes": "Explicit CSV href/cloudfront links discovered in HTML"
+    },
+    "unique_csv_urls": {
+      "value": "1368",
+      "notes": "Unique direct CSV URLs available to fetch"
+    },
+    "fetch_attempts": {
+      "value": "50",
+      "notes": "Max fetches 50"
+    },
+    "csvs_fetched_or_cached": {
+      "value": "8",
+      "notes": "{\"200\": 8, \"HTTP_403\": 42}"
+    },
+    "csv_fetch_failures": {
+      "value": "42",
+      "notes": "HTTP/network failures"
+    },
+    "csvs_parsed": {
+      "value": "8",
+      "notes": "CSV files with at least one parsed runner"
+    },
+    "rows_parsed": {
+      "value": "80",
+      "notes": "Normalised runner sectional rows"
+    },
+    "last200_coverage_pct": {
+      "value": "100.00",
+      "notes": "Racing.com CSV rows with final 200m split"
+    },
+    "last400_coverage_pct": {
+      "value": "100.00",
+      "notes": "Racing.com CSV rows with final 400m aggregate"
+    },
+    "last600_coverage_pct": {
+      "value": "100.00",
+      "notes": "Racing.com CSV rows with final 600m aggregate"
+    },
+    "raw_cache_dir": {
+      "value": "outputs/sectionals/raw/VIC/racingcom_csv",
+      "notes": "Raw CSV cache directory"
+    }
+  },
+  "candidate_population": {
+    "candidate_rows_reconstructed": 1868,
+    "candidate_discovery_error": "",
+    "candidate_rows_with_csv_url": 1296,
+    "unique_csv_urls": 1296,
+    "csv_urls_ending_dot_csv": 1296,
+    "unique_candidate_urls_with_existing_cache_file": 0
+  },
+  "cache_population": {
+    "cache_files": 0,
+    "unique_cache_hashes": 0,
+    "parser_status_counts": {},
+    "parsed_cache_files": 0,
+    "zero_row_cache_files": 0,
+    "parser_exception_files": 0,
+    "parsed_runner_rows_before_deduplication": 0,
+    "complete_race_identities": 0
+  },
+  "cache_filename_collisions": {
+    "collision_names": 0,
+    "maximum_urls_per_cache_name": 1
+  },
+  "existing_ingestion_output": {
+    "runner_rows": 80,
+    "distinct_races": 8,
+    "distinct_source_urls": 8
+  }
+}

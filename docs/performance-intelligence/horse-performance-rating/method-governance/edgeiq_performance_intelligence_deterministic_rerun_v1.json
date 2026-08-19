@@ -1,0 +1,68 @@
+{
+  "status": "PASS",
+  "before": {
+    "edgeiq_performance_normalisation_fact_v1.csv": "55040579a9e0f90f29a0bc4def60de825a9d193bd4a94ec804885bae780c49e0",
+    "edgeiq_performance_rating_base_fact_v1.csv": "f9e803e0f848c4a190f409e1da4d60123629339a041d67f618e5f2151dc10412",
+    "edgeiq_horse_performance_observation_fact_v1.csv": "90ca55b555e7e47660fb32a4f3524b53668a527f466078c36838fd5073e12e8e",
+    "edgeiq_horse_performance_aggregate_fact_v1.csv": "311a2d5681eeb4df4bb649d9255a47c60530dee31ed0612d15d7dc13a3144c86",
+    "edgeiq_horse_performance_rating_fact_v1.csv": "50b336b4c498d3f7312a9fa9f08d37b743cac71d5e8345d2964daafb1754415c",
+    "edgeiq_race_entry_projected_performance_fact_v1.csv": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "edgeiq_race_entry_epi_fact_v1.csv": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "after": {
+    "edgeiq_performance_normalisation_fact_v1.csv": "55040579a9e0f90f29a0bc4def60de825a9d193bd4a94ec804885bae780c49e0",
+    "edgeiq_performance_rating_base_fact_v1.csv": "f9e803e0f848c4a190f409e1da4d60123629339a041d67f618e5f2151dc10412",
+    "edgeiq_horse_performance_observation_fact_v1.csv": "90ca55b555e7e47660fb32a4f3524b53668a527f466078c36838fd5073e12e8e",
+    "edgeiq_horse_performance_aggregate_fact_v1.csv": "311a2d5681eeb4df4bb649d9255a47c60530dee31ed0612d15d7dc13a3144c86",
+    "edgeiq_horse_performance_rating_fact_v1.csv": "50b336b4c498d3f7312a9fa9f08d37b743cac71d5e8345d2964daafb1754415c",
+    "edgeiq_race_entry_projected_performance_fact_v1.csv": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "edgeiq_race_entry_epi_fact_v1.csv": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "runs": [
+    {
+      "builder": "build_edgeiq_performance_normalisation_fact_v1.py",
+      "returncode": 0,
+      "last_stdout_line": "output=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_performance_normalisation_fact_v1.csv",
+      "stderr": ""
+    },
+    {
+      "builder": "build_edgeiq_performance_rating_base_fact_v1.py",
+      "returncode": 0,
+      "last_stdout_line": "output=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_performance_rating_base_fact_v1.csv",
+      "stderr": ""
+    },
+    {
+      "builder": "build_edgeiq_horse_performance_observation_fact_v1.py",
+      "returncode": 0,
+      "last_stdout_line": "output=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_horse_performance_observation_fact_v1.csv",
+      "stderr": ""
+    },
+    {
+      "builder": "build_edgeiq_horse_performance_aggregate_fact_v1.py",
+      "returncode": 0,
+      "last_stdout_line": "output=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_horse_performance_aggregate_fact_v1.csv",
+      "stderr": ""
+    },
+    {
+      "builder": "build_edgeiq_horse_performance_rating_fact_v1.py",
+      "returncode": 0,
+      "last_stdout_line": "output=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_horse_performance_rating_fact_v1.csv",
+      "stderr": ""
+    },
+    {
+      "builder": "build_edgeiq_race_entry_projected_performance_fact_v1.py",
+      "returncode": 0,
+      "last_stdout_line": "output=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_race_entry_projected_performance_fact_v1.csv",
+      "stderr": ""
+    },
+    {
+      "builder": "build_edgeiq_race_entry_epi_fact_v1.py",
+      "returncode": 0,
+      "last_stdout_line": "output=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_race_entry_epi_fact_v1.csv",
+      "stderr": ""
+    }
+  ],
+  "excluded_fields": [
+    "built_at_utc"
+  ]
+}

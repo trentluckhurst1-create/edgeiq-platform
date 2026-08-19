@@ -1,0 +1,30 @@
+{
+  "admission_rules": [
+    "exactly one physical source authority must be selected",
+    "authority must be consolidated GraphQL or explicitly proven equivalent",
+    "physical data row count must equal 879784",
+    "monthly, legacy, speed, sectional, live, upcoming, checkpoint, backup, candidate and temporary sources are prohibited",
+    "minimum race and horse identity fields must exist before warehouse construction"
+  ],
+  "contract_id": "EDGEIQ_HISTORICAL_OBSERVATION_V3_AUTHORITY_CONTRACT",
+  "decision": "NO_AUTHORITY_PROVEN",
+  "expected_duplicate_excess": 89,
+  "expected_physical_rows": 879784,
+  "expected_unique_raw_identities": 879695,
+  "generated_at_utc": "2026-07-27T06:02:07+00:00",
+  "prohibited_source_classes": [
+    "BACKUP",
+    "CANDIDATE",
+    "CHECKPOINT",
+    "LEGACY",
+    "LIVE",
+    "MONTHLY",
+    "SECTIONAL",
+    "SPEED",
+    "TEMPORARY",
+    "UPCOMING"
+  ],
+  "selected_authority": null,
+  "status": "EDGEIQ_HISTORICAL_OBSERVATION_V3_AUTHORITY_RESOLUTION_PHASE1A_6B_V1_FAIL",
+  "version": "1.0.0"
+}

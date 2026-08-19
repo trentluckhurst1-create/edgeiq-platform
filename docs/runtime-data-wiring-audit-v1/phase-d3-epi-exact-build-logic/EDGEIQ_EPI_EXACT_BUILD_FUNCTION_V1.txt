@@ -1,0 +1,120 @@
+598: def build() -> tuple[int, int, int, int]:
+599:     generated_at = datetime.now(timezone.utc).isoformat()
+600:     catalog = read_json(CATALOG)
+601:     form_payload = read_json(FORM_GUIDE)
+602:     races = catalog_races(catalog)
+603:     form_index = form_race_index(form_payload)
+604:     historical = historical_rating_index(collect_historical_keys(form_index))
+605:     rows: list[dict[str, str]] = []
+606:     historical_tiles = 0
+607:     populated_contexts = 0
+608: 
+609:     for meeting, race in races:
+610:         date = clean(meeting.get("date"))
+611:         track = clean(meeting.get("meeting"))
+612:         race_no = number_text(race.get("raceNumber"))
+613:         form_race = form_index.get(race_match_key(date, track, race_no), {})
+614:         form_runners = {
+615:             runner_match_key(runner.get("runnerName")): runner
+616:             for runner in form_race.get("runners", []) or []
+617:             if isinstance(runner, dict)
+618:         }
+619:         catalog_runners = race.get("runners", []) or []
+620:         display_runners: list[tuple[str, str, dict[str, Any], dict[str, Any] | None]] = []
+621:         for index, catalog_runner in enumerate(catalog_runners, start=1):
+622:             name = runner_name(catalog_runner)
+623:             form_runner = form_runners.get(runner_match_key(name))
+624:             display_runners.append((runner_no(catalog_runner, index), name, catalog_runner, form_runner))
+625: 
+626:         current_values = [current_epi_value(form_runner) for _, _, _, form_runner in display_runners if form_runner]
+627:         current_values = [value for value in current_values if value is not None]
+628:         field_avg = sum(current_values) / len(current_values) if current_values else None
+629:         sorted_values = sorted(current_values, reverse=True)
+630: 
+631:         for no, name, _catalog_runner, form_runner in display_runners:
+632:             current_epi = current_epi_value(form_runner) if form_runner else None
+633:             rank = str(sorted_values.index(current_epi) + 1) if current_epi is not None and current_epi in sorted_values else ""
+634:             diff = current_epi - field_avg if current_epi is not None and field_avg is not None else None
+635:             row = {
+636:                 "workspace_id": "BETA-013",
+637:                 "meeting_key": clean(meeting.get("meetingKey")),
+638:                 "race_key": clean(race.get("raceKey")),
+639:                 "generated_at": generated_at,
+640:                 "race_date": date,
+641:                 "track": track,
+642:                 "race_no": race_no,
+643:                 "no": no,
+644:                 "horse": name,
+645:                 "current_epi": metric(current_epi),
+646:                 "rank": rank,
+647:                 "field_avg": metric(field_avg),
+648:                 "diff": metric(diff),
+649:                 "peak_last_10": "",
+650:                 "average_last_10": "",
+651:                 "governed_trend": "",
+652:                 "source": source_text(form_runner or {}),
+653:                 "source_timestamp": source_time(form_runner or {}) or clean(form_payload.get("generatedAt")),
+654:                 "source_confidence": "governed" if form_runner else "unavailable",
+655:                 "row_status": "current" if form_runner else "unavailable",
+656:             }
+657:             for key in START_KEYS:
+658:                 row[key] = ""
+659:                 row[f"{key}_class"] = "missing"
+660:                 row[f"{key}_context"] = ""
+661:             epi_values: list[float] = []
+662:             runs = (form_runner or {}).get("fullForm", [])[:10] if form_runner else []
+663:             for offset, run in enumerate(runs, start=1):
+664:                 if not isinstance(run, dict):
+665:                     continue
+666:                 start_key = f"start_{offset}"
+667:                 epi, epi_source, epi_version = historical_epi_for_run(form_runner or {}, run, historical)
+668:                 eri = metric_float(run.get("raceRating"))
+669:                 if epi is not None:
+670:                     row[start_key] = metric(epi)
+671:                     row[f"{start_key}_class"] = tile_class(epi, eri, run)
+672:                     epi_values.append(epi)
+673:                     historical_tiles += 1
+674:                 context = context_for_run(form_runner or {}, run, epi, epi_source, epi_version)
+675:                 row[f"{start_key}_context"] = context if epi is not None else ""
+676:                 if epi is not None:
+677:                     populated_contexts += 1
+678:             if epi_values:
+679:                 row["peak_last_10"] = metric(max(epi_values))
+680:                 row["average_last_10"] = metric(sum(epi_values) / len(epi_values))
+681:                 row["governed_trend"] = trend_from_values(epi_values)
+682:             rows.append(row)
+683: 
+684:     OUT.parent.mkdir(parents=True, exist_ok=True)
+685:     with OUT.open("w", encoding="utf-8", newline="") as handle:
+686:         writer = csv.DictWriter(handle, fieldnames=FIELDNAMES)
+687:         writer.writeheader()
+688:         writer.writerows(rows)
+689:     with SUMMARY.open("w", encoding="utf-8", newline="") as handle:
+690:         writer = csv.DictWriter(handle, fieldnames=["metric", "value"])
+691:         writer.writeheader()
+692:         writer.writerows(
+693:             [
+694:                 {"metric": "rows", "value": len(rows)},
+695:                 {"metric": "races", "value": len(races)},
+696:                 {"metric": "historical_tiles", "value": historical_tiles},
+697:                 {"metric": "contexts", "value": populated_contexts},
+698:                 {"metric": "source", "value": HISTORICAL_RATING.name},
+699:             ]
+700:         )
+701:     TRACE.write_text(
+702:         "\n".join(
+703:             [
+704:                 "EDGEIQ_EPI_WORKSPACE_TERMINAL_FEED_V1",
+705:                 f"generated_at={generated_at}",
+706:                 f"rows={len(rows)}",
+707:                 f"races={len(races)}",
+708:                 f"historical_tiles={historical_tiles}",
+709:                 f"contexts={populated_contexts}",
+710:                 f"catalog={CATALOG.name}",
+711:                 f"form_guide={FORM_GUIDE.name}",
+712:                 f"historical_rating={HISTORICAL_RATING.name}",
+713:             ]
+714:         ),
+715:         encoding="utf-8",
+716:     )
+717:     return len(rows), len(races), historical_tiles, populated_contexts

@@ -1,0 +1,486 @@
+{
+  "active_datasets": [
+    {
+      "columns": [
+        "race_key",
+        "race_date",
+        "track",
+        "race_number",
+        "source_page_url",
+        "source_payload_file",
+        "source_provider",
+        "timing_source",
+        "is_timing_complete",
+        "is_complete_data",
+        "race_time_raw",
+        "race_time_seconds",
+        "runner_id",
+        "saddle_number",
+        "horse_name",
+        "horse_url",
+        "silk_url",
+        "trainer_name",
+        "trainer_url",
+        "jockey_name",
+        "jockey_url",
+        "finish_position",
+        "finish_position_abbreviation",
+        "start_position",
+        "barrier_number",
+        "runner_race_time_raw",
+        "runner_race_time_seconds",
+        "time_variation_to_winner_source",
+        "beaten_margin_source",
+        "distance_run_source",
+        "distance_variation_to_winner_source",
+        "six_hundred_metres_time_raw",
+        "six_hundred_metres_time_seconds",
+        "two_hundred_metres_time_raw",
+        "two_hundred_metres_time_seconds",
+        "early_speed_source",
+        "mid_speed_source",
+        "late_speed_source",
+        "overall_peak_speed_source",
+        "peak_speed_location",
+        "overall_average_speed_source",
+        "distance_from_rail_source",
+        "sectional_count",
+        "split_count",
+        "comment"
+      ],
+      "dataset": "edgeiq_racingcom_runner_speed_fact_v1.csv",
+      "distinct_reference_values": 39,
+      "path": "public/data/edgeiq_racingcom_runner_speed_fact_v1.csv",
+      "reference_columns": [
+        "source_payload_file"
+      ],
+      "rows": 392,
+      "status": "FOUND"
+    },
+    {
+      "columns": [
+        "race_key",
+        "race_date",
+        "track",
+        "race_number",
+        "source_page_url",
+        "source_payload_file",
+        "runner_id",
+        "saddle_number",
+        "horse_name",
+        "sectional_sequence",
+        "distance_marker",
+        "position",
+        "cumulative_time_raw",
+        "cumulative_time_seconds",
+        "average_speed_source"
+      ],
+      "dataset": "edgeiq_racingcom_runner_sectional_fact_v1.csv",
+      "distinct_reference_values": 39,
+      "path": "public/data/edgeiq_racingcom_runner_sectional_fact_v1.csv",
+      "reference_columns": [
+        "source_payload_file"
+      ],
+      "rows": 2854,
+      "status": "FOUND"
+    },
+    {
+      "columns": [
+        "race_key",
+        "race_date",
+        "track",
+        "race_number",
+        "source_page_url",
+        "source_payload_file",
+        "runner_id",
+        "saddle_number",
+        "horse_name",
+        "split_sequence",
+        "split_distance",
+        "position",
+        "split_time_raw",
+        "split_time_seconds",
+        "average_speed_source"
+      ],
+      "dataset": "edgeiq_racingcom_runner_split_fact_v1.csv",
+      "distinct_reference_values": 39,
+      "path": "public/data/edgeiq_racingcom_runner_split_fact_v1.csv",
+      "reference_columns": [
+        "source_payload_file"
+      ],
+      "rows": 2682,
+      "status": "FOUND"
+    },
+    {
+      "columns": [
+        "race_key",
+        "race_date",
+        "track",
+        "race_number",
+        "source_page_url",
+        "source_payload_file",
+        "source_provider",
+        "timing_source",
+        "is_timing_complete",
+        "is_complete_data",
+        "race_time_raw",
+        "race_time_seconds",
+        "runner_count",
+        "sectional_distances_json",
+        "split_distances_json",
+        "field_sectional_times_json",
+        "fastest_early_source",
+        "fastest_mid_source",
+        "fastest_late_source",
+        "fastest_peak_speed_source",
+        "fastest_average_speed_source",
+        "fastest_early_info_json",
+        "fastest_mid_info_json",
+        "fastest_late_info_json",
+        "fastest_peak_speed_info_json",
+        "fastest_average_speed_info_json",
+        "fastest_sectional_times_json",
+        "fastest_split_times_json"
+      ],
+      "dataset": "edgeiq_racingcom_race_speed_summary_v1.csv",
+      "distinct_reference_values": 39,
+      "path": "public/data/edgeiq_racingcom_race_speed_summary_v1.csv",
+      "reference_columns": [
+        "source_payload_file"
+      ],
+      "rows": 39,
+      "status": "FOUND"
+    }
+  ],
+  "active_raw_population": {
+    "duplicate_file_count": 367,
+    "file_count": 660,
+    "unique_content_hashes": 293
+  },
+  "diagnostic": "EDGEIQ_ACTIVE_RACINGCOM_PAYLOAD_UNIVERSE_V1",
+  "directory_summaries": [
+    {
+      "duplicate_file_count": 366,
+      "file_count": 602,
+      "parent_directory": "outputs/sectionals/raw/VIC/racingcom_full_payloads",
+      "suffixes": {
+        ".json": 479,
+        ".txt": 123
+      },
+      "total_bytes": 33839909,
+      "unique_content_hashes": 236
+    },
+    {
+      "duplicate_file_count": 0,
+      "file_count": 29,
+      "parent_directory": "data/weather/bom-location-resolution/raw-search-pages",
+      "suffixes": {
+        ".html": 29
+      },
+      "total_bytes": 4984433,
+      "unique_content_hashes": 29
+    },
+    {
+      "duplicate_file_count": 0,
+      "file_count": 7,
+      "parent_directory": "data/weather",
+      "suffixes": {
+        ".csv": 6,
+        ".json": 1
+      },
+      "total_bytes": 206817,
+      "unique_content_hashes": 7
+    },
+    {
+      "duplicate_file_count": 0,
+      "file_count": 3,
+      "parent_directory": "data/weather-source-audit/live-turftrax",
+      "suffixes": {
+        ".json": 3
+      },
+      "total_bytes": 100237,
+      "unique_content_hashes": 3
+    },
+    {
+      "duplicate_file_count": 0,
+      "file_count": 2,
+      "parent_directory": "data/weather-source-audit/live-vrc",
+      "suffixes": {
+        ".json": 2
+      },
+      "total_bytes": 4258,
+      "unique_content_hashes": 2
+    },
+    {
+      "duplicate_file_count": 0,
+      "file_count": 1,
+      "parent_directory": "config",
+      "suffixes": {
+        ".csv": 1
+      },
+      "total_bytes": 693,
+      "unique_content_hashes": 1
+    },
+    {
+      "duplicate_file_count": 0,
+      "file_count": 1,
+      "parent_directory": "data/weather-source-audit/bom-live/87184",
+      "suffixes": {
+        ".json": 1
+      },
+      "total_bytes": 2036,
+      "unique_content_hashes": 1
+    },
+    {
+      "duplicate_file_count": 0,
+      "file_count": 1,
+      "parent_directory": "data/weather-source-audit/bom-live/89002",
+      "suffixes": {
+        ".json": 1
+      },
+      "total_bytes": 2046,
+      "unique_content_hashes": 1
+    },
+    {
+      "duplicate_file_count": 0,
+      "file_count": 1,
+      "parent_directory": "data/weather-source-audit/bom-live/90173",
+      "suffixes": {
+        ".json": 1
+      },
+      "total_bytes": 2033,
+      "unique_content_hashes": 1
+    },
+    {
+      "duplicate_file_count": 0,
+      "file_count": 1,
+      "parent_directory": "data/weather-source-audit/bom-live/94852",
+      "suffixes": {
+        ".json": 1
+      },
+      "total_bytes": 2,
+      "unique_content_hashes": 1
+    },
+    {
+      "duplicate_file_count": 0,
+      "file_count": 1,
+      "parent_directory": "data/weather-source-live/caulfield/20260713T204355Z",
+      "suffixes": {
+        ".json": 1
+      },
+      "total_bytes": 38358,
+      "unique_content_hashes": 1
+    },
+    {
+      "duplicate_file_count": 0,
+      "file_count": 1,
+      "parent_directory": "data/weather-source-live/caulfield/20260713T205456Z",
+      "suffixes": {
+        ".json": 1
+      },
+      "total_bytes": 38358,
+      "unique_content_hashes": 1
+    },
+    {
+      "duplicate_file_count": 0,
+      "file_count": 1,
+      "parent_directory": "data/weather-source-live/caulfield/20260713T220906Z",
+      "suffixes": {
+        ".json": 1
+      },
+      "total_bytes": 38348,
+      "unique_content_hashes": 1
+    },
+    {
+      "duplicate_file_count": 0,
+      "file_count": 1,
+      "parent_directory": "data/weather-source-live/flemington/20260713T204355Z",
+      "suffixes": {
+        ".json": 1
+      },
+      "total_bytes": 4271,
+      "unique_content_hashes": 1
+    },
+    {
+      "duplicate_file_count": 0,
+      "file_count": 1,
+      "parent_directory": "data/weather-source-live/flemington/20260713T205456Z",
+      "suffixes": {
+        ".json": 1
+      },
+      "total_bytes": 4270,
+      "unique_content_hashes": 1
+    },
+    {
+      "duplicate_file_count": 0,
+      "file_count": 1,
+      "parent_directory": "data/weather-source-live/flemington/20260713T220906Z",
+      "suffixes": {
+        ".json": 1
+      },
+      "total_bytes": 4272,
+      "unique_content_hashes": 1
+    },
+    {
+      "duplicate_file_count": 0,
+      "file_count": 1,
+      "parent_directory": "data/weather-source-live/mornington/20260713T204355Z",
+      "suffixes": {
+        ".json": 1
+      },
+      "total_bytes": 26325,
+      "unique_content_hashes": 1
+    },
+    {
+      "duplicate_file_count": 0,
+      "file_count": 1,
+      "parent_directory": "data/weather-source-live/mornington/20260713T205456Z",
+      "suffixes": {
+        ".json": 1
+      },
+      "total_bytes": 26334,
+      "unique_content_hashes": 1
+    },
+    {
+      "duplicate_file_count": 0,
+      "file_count": 1,
+      "parent_directory": "data/weather-source-live/mornington/20260713T220906Z",
+      "suffixes": {
+        ".json": 1
+      },
+      "total_bytes": 26330,
+      "unique_content_hashes": 1
+    },
+    {
+      "duplicate_file_count": 0,
+      "file_count": 1,
+      "parent_directory": "data/weather-source-live/sandown/20260713T204355Z",
+      "suffixes": {
+        ".json": 1
+      },
+      "total_bytes": 32374,
+      "unique_content_hashes": 1
+    },
+    {
+      "duplicate_file_count": 0,
+      "file_count": 1,
+      "parent_directory": "data/weather-source-live/sandown/20260713T205456Z",
+      "suffixes": {
+        ".json": 1
+      },
+      "total_bytes": 32373,
+      "unique_content_hashes": 1
+    },
+    {
+      "duplicate_file_count": 0,
+      "file_count": 1,
+      "parent_directory": "data/weather-source-live/sandown/20260713T220906Z",
+      "suffixes": {
+        ".json": 1
+      },
+      "total_bytes": 32367,
+      "unique_content_hashes": 1
+    }
+  ],
+  "generated_utc": "2026-07-22T07:15:10.611422+00:00",
+  "governance": {
+    "checkpoints_excluded": true,
+    "documentation_snapshots_excluded": true,
+    "fabricated_data": false,
+    "governed_builders_modified": false,
+    "governed_outputs_modified": false,
+    "read_only": true,
+    "thresholds_modified": false
+  },
+  "repository": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM",
+  "script_summaries": [
+    {
+      "line_count": 491,
+      "script": "scripts/build_edgeiq_raw_sectional_payload_discovery_v1.py",
+      "selector_evidence_lines": 69,
+      "status": "FOUND",
+      "syntax_error": "",
+      "syntax_status": "PASS"
+    },
+    {
+      "line_count": 438,
+      "script": "scripts/build_edgeiq_raw_sectional_payload_schema_parser_v1.py",
+      "selector_evidence_lines": 35,
+      "status": "FOUND",
+      "syntax_error": "",
+      "syntax_status": "PASS"
+    },
+    {
+      "line_count": 584,
+      "script": "scripts/build_edgeiq_racingcom_csv_ingestion_v1.py",
+      "selector_evidence_lines": 28,
+      "status": "FOUND",
+      "syntax_error": "",
+      "syntax_status": "PASS"
+    },
+    {
+      "line_count": 503,
+      "script": "scripts/build_edgeiq_vic_racingcom_speed_data_ingestion_v1.py",
+      "selector_evidence_lines": 4,
+      "status": "FOUND",
+      "syntax_error": "",
+      "syntax_status": "PASS"
+    },
+    {
+      "line_count": 993,
+      "script": "scripts/build_edgeiq_racingcom_runner_speed_warehouse_v1.py",
+      "selector_evidence_lines": 48,
+      "status": "FOUND",
+      "syntax_error": "",
+      "syntax_status": "PASS"
+    },
+    {
+      "line_count": 875,
+      "script": "scripts/build_edgeiq_racingcom_canonical_speed_warehouse_v2.py",
+      "selector_evidence_lines": 19,
+      "status": "FOUND",
+      "syntax_error": "",
+      "syntax_status": "PASS"
+    },
+    {
+      "line_count": 831,
+      "script": "scripts/build_edgeiq_racingcom_canonical_speed_warehouse_v2_1.py",
+      "selector_evidence_lines": 41,
+      "status": "FOUND",
+      "syntax_error": "",
+      "syntax_status": "PASS"
+    },
+    {
+      "line_count": 482,
+      "script": "scripts/build_racingcom_sectionals_from_downloads_v1.py",
+      "selector_evidence_lines": 37,
+      "status": "FOUND",
+      "syntax_error": "",
+      "syntax_status": "PASS"
+    },
+    {
+      "line_count": 497,
+      "script": "scripts/build_racingcom_sectional_history_master_v1.py",
+      "selector_evidence_lines": 35,
+      "status": "FOUND",
+      "syntax_error": "",
+      "syntax_status": "PASS"
+    },
+    {
+      "line_count": 440,
+      "script": "scripts/build_racingcom_sectional_warehouse_v1.py",
+      "selector_evidence_lines": 19,
+      "status": "FOUND",
+      "syntax_error": "",
+      "syntax_status": "PASS"
+    },
+    {
+      "line_count": 408,
+      "script": "scripts/build_racingcom_sectional_warehouse_v2.py",
+      "selector_evidence_lines": 19,
+      "status": "FOUND",
+      "syntax_error": "",
+      "syntax_status": "PASS"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "status": "EDGEIQ_PERFORMANCE_INTELLIGENCE_COMPLETION_V1_AUDIT_PASS",
+  "generated_utc": "2026-07-25T21:56:24Z",
+  "step_statuses": {
+    "step_1": "PASS",
+    "step_2": "PASS",
+    "step_3": "PASS",
+    "step_4": "PASS",
+    "step_5": "PASS",
+    "step_6": "PASS",
+    "step_7": "PASS",
+    "step_8": "PASS",
+    "step_9": "PASS"
+  },
+  "failure": "",
+  "total_elapsed_seconds": 462.061,
+  "output_roots": {
+    "canonical_identities": "docs/performance-intelligence/canonical-identities",
+    "warehouse": "docs/performance-intelligence/warehouse",
+    "standard_times": "docs/performance-intelligence/standard-times",
+    "lengths_v_standard": "docs/performance-intelligence/lengths-v-standard",
+    "epi": "docs/performance-intelligence/epi",
+    "workspace_feeds": "docs/performance-intelligence/workspace-feeds",
+    "ui": "docs/performance-intelligence/ui-integration"
+  }
+}

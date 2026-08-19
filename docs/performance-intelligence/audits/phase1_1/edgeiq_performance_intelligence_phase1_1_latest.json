@@ -1,0 +1,84 @@
+{
+  "warehouse_name": "EDGEiQ Canonical Raw Performance Warehouse",
+  "warehouse_version": "EDGEIQ_CANONICAL_RAW_WAREHOUSE_V1_0",
+  "materialisation_version": "PHASE1_1_IMMUTABLE_MATERIALISATION_V1_0",
+  "warehouse_snapshot_id": "eiq_warehouse_snapshot_b24578e0eb795ab6bd076452bfff3f5e",
+  "generated_utc": "2026-07-15T19:18:45.514177+00:00",
+  "immutable": true,
+  "production_application_modified": false,
+  "source_snapshot_manifest": "docs/performance-intelligence/snapshots/phase1_0_3/edgeiq_performance_warehouse_snapshot_manifest_v0_2_20260716_051250.json",
+  "source_snapshot_status": "SNAPSHOT_REPRODUCIBILITY_PASS",
+  "source_snapshot_audit_version": "PHASE1_0_3_REPRODUCIBILITY_AUDIT_V0_2",
+  "assets": [
+    {
+      "warehouse_snapshot_id": "eiq_warehouse_snapshot_b24578e0eb795ab6bd076452bfff3f5e",
+      "asset_name": "canonical_performance_evidence",
+      "asset_file": "canonical_performance_evidence.csv",
+      "asset_type": "IMMUTABLE_CANONICAL_EVIDENCE",
+      "rows": 879784,
+      "sha256": "5754e424b57031b3a6e50b4ecd8675af21b10a7a624b85d3810795562e0d1df2",
+      "min_race_date": "2000-08-02",
+      "max_race_date": "2026-06-24",
+      "primary_key": "performance_id",
+      "schema_version": "PERFORMANCE_IDENTITY_V0_2"
+    },
+    {
+      "warehouse_snapshot_id": "eiq_warehouse_snapshot_b24578e0eb795ab6bd076452bfff3f5e",
+      "asset_name": "canonical_sectional_evidence",
+      "asset_file": "canonical_sectional_evidence.csv",
+      "asset_type": "IMMUTABLE_CANONICAL_EVIDENCE",
+      "rows": 103766,
+      "sha256": "072c1ccf556bfc0476c1d4507d0828b6210c8d5865e411c6a42b5e4a3de1fa42",
+      "min_race_date": "2023-01-01",
+      "max_race_date": "2026-06-04",
+      "primary_key": "performance_sectional_id",
+      "schema_version": "CANONICAL_SECTIONAL_EVIDENCE_V0_2"
+    }
+  ],
+  "materialisation_checks": [
+    {
+      "check": "SOURCE_SNAPSHOT_PASSED",
+      "passed": true,
+      "observed": "eiq_warehouse_snapshot_b24578e0eb795ab6bd076452bfff3f5e"
+    },
+    {
+      "check": "PERFORMANCE_SOURCE_HASH",
+      "passed": true,
+      "observed": "5754e424b57031b3a6e50b4ecd8675af21b10a7a624b85d3810795562e0d1df2"
+    },
+    {
+      "check": "SECTIONAL_SOURCE_HASH",
+      "passed": true,
+      "observed": "072c1ccf556bfc0476c1d4507d0828b6210c8d5865e411c6a42b5e4a3de1fa42"
+    },
+    {
+      "check": "PERFORMANCE_COPY_HASH",
+      "passed": true,
+      "observed": "5754e424b57031b3a6e50b4ecd8675af21b10a7a624b85d3810795562e0d1df2"
+    },
+    {
+      "check": "SECTIONAL_COPY_HASH",
+      "passed": true,
+      "observed": "072c1ccf556bfc0476c1d4507d0828b6210c8d5865e411c6a42b5e4a3de1fa42"
+    },
+    {
+      "check": "PERFORMANCE_ROW_COUNT",
+      "passed": true,
+      "observed": 879784
+    },
+    {
+      "check": "SECTIONAL_ROW_COUNT",
+      "passed": true,
+      "observed": 103766
+    },
+    {
+      "check": "ALL_PHASE1_0_3_CHECKS_PASSED",
+      "passed": true,
+      "observed": 11
+    }
+  ],
+  "failed_checks": [],
+  "warehouse_status": "IMMUTABLE_CANONICAL_RAW_WAREHOUSE_MATERIALISED",
+  "promotion_status": "WAREHOUSE_MATERIALISED_NOT_CONNECTED_TO_PRODUCT",
+  "next_stage": "Phase 1.2 canonical source evidence and identity dimension materialisation."
+}

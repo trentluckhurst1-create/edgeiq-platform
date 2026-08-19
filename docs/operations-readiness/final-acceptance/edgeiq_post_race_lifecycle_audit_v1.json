@@ -1,0 +1,12 @@
+{
+  "generated_utc": "2026-07-25T23:58:45+00:00",
+  "status": "PASS",
+  "candidate_count": 3,
+  "idempotency": {
+    "first_hash": "993221c80d57846388cec86189fbc49deeda3126aef57d37b1d2042b5748f3db",
+    "second_hash": "993221c80d57846388cec86189fbc49deeda3126aef57d37b1d2042b5748f3db",
+    "duplicate_result": "NO",
+    "stable_output_row_counts": true
+  },
+  "provisional_status": "PROVISIONAL_RESULT_NOT_SUPPORTED_BY_CURRENT_SOURCE"
+}

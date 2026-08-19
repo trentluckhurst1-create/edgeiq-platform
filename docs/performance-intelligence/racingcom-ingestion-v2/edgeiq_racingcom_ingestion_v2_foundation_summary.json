@@ -1,0 +1,26 @@
+{
+  "status": "RACINGCOM_INGESTION_V2_FOUNDATION_PASS",
+  "built_utc": "2026-07-22T08:31:59+00:00",
+  "meeting_rows": 186,
+  "race_rows": 52,
+  "admission_rows": 52,
+  "queue_rows": 12,
+  "rejection_rows": 40,
+  "status_counts": {
+    "ADMITTED_HISTORICAL_PROVEN_CSV": 8,
+    "REJECTED_NO_SPEED_DATA_EVIDENCE": 40,
+    "REQUIRES_PAGE_DISCOVERY": 4
+  },
+  "queue_types": {
+    "CSV_ACQUISITION": 8,
+    "PAGE_DISCOVERY": 4
+  },
+  "historical_proven_csv_count": 8,
+  "explicit_csv_count": 0,
+  "requires_page_discovery_count": 4,
+  "deferred_future_count": 0,
+  "rejected_no_speed_data_count": 40,
+  "future_queue_rows": 0,
+  "constructed_csv_urls": 0,
+  "production_changed": "NO"
+}

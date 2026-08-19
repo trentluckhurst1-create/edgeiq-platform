@@ -1,0 +1,6 @@
+{
+  "decision": "HUMAN_MIGRATION_REVIEW_PACKAGE_PASS",
+  "recommendation": "RECOMMEND_APPROVE_RUNNER_ADAPTER_MIGRATION",
+  "production_changed": "NO",
+  "migration_executed": "NO"
+}

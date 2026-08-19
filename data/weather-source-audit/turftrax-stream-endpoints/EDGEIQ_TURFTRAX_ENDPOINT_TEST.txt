@@ -1,0 +1,30 @@
+EDGEIQ TURFTRAX ENDPOINT TEST
+============================================================
+
+CLIENT : caulfield
+URL    : https://its.turftrax.co.uk/visualiser/stream/caulfield.html
+STATUS : 200
+TYPE   : application/json; charset=utf-8
+BYTES  : 41716
+JSON   : True
+
+------------------------------------------------------------
+
+CLIENT : ladbrokes
+URL    : https://its.turftrax.co.uk/visualiser/stream/ladbrokes.html
+STATUS : 200
+TYPE   : application/json; charset=utf-8
+BYTES  : 32344
+JSON   : True
+
+------------------------------------------------------------
+
+CLIENT : mornington
+URL    : https://its.turftrax.co.uk/visualiser/stream/mornington.html
+STATUS : 200
+TYPE   : application/json; charset=utf-8
+BYTES  : 27444
+JSON   : True
+
+------------------------------------------------------------
+

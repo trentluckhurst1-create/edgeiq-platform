@@ -1,0 +1,9 @@
+{
+  "base_commit": "f4c1d0e",
+  "dirty_file_count": 1072,
+  "external_data_status_rows": 5,
+  "racingcom_runner_speed_rows": 392,
+  "racingcom_runner_split_rows": 2682,
+  "credential_handling": "No credentials/cookies/tokens imported. GraphQL direct runner-sectional replay skipped unless governed credential exists.",
+  "local_speed_coverage": "retained getRaceForm payload evidence through existing speed facts"
+}

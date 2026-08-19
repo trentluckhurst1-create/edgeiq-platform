@@ -1,0 +1,473 @@
+[
+  {
+    "track": "Alexandra",
+    "file": "Alexandra.png",
+    "page": 1,
+    "row": 1,
+    "col": 1
+  },
+  {
+    "track": "Ararat",
+    "file": "Ararat.png",
+    "page": 1,
+    "row": 1,
+    "col": 2
+  },
+  {
+    "track": "Avoca",
+    "file": "Avoca.png",
+    "page": 1,
+    "row": 1,
+    "col": 3
+  },
+  {
+    "track": "Bairnsdale",
+    "file": "Bairnsdale.png",
+    "page": 1,
+    "row": 1,
+    "col": 4
+  },
+  {
+    "track": "Ballarat",
+    "file": "Ballarat.png",
+    "page": 1,
+    "row": 2,
+    "col": 1
+  },
+  {
+    "track": "Balnarring",
+    "file": "Balnarring.png",
+    "page": 1,
+    "row": 2,
+    "col": 2
+  },
+  {
+    "track": "Benalla",
+    "file": "Benalla.png",
+    "page": 1,
+    "row": 2,
+    "col": 3
+  },
+  {
+    "track": "Bendigo",
+    "file": "Bendigo.png",
+    "page": 1,
+    "row": 2,
+    "col": 4
+  },
+  {
+    "track": "Buchan",
+    "file": "Buchan.png",
+    "page": 1,
+    "row": 3,
+    "col": 1
+  },
+  {
+    "track": "Burrumbeet",
+    "file": "Burrumbeet.png",
+    "page": 1,
+    "row": 3,
+    "col": 2
+  },
+  {
+    "track": "Camperdown",
+    "file": "Camperdown.png",
+    "page": 1,
+    "row": 3,
+    "col": 3
+  },
+  {
+    "track": "Casterton",
+    "file": "Casterton.png",
+    "page": 1,
+    "row": 3,
+    "col": 4
+  },
+  {
+    "track": "Colac",
+    "file": "Colac.png",
+    "page": 1,
+    "row": 4,
+    "col": 1
+  },
+  {
+    "track": "Coleraine",
+    "file": "Coleraine.png",
+    "page": 1,
+    "row": 4,
+    "col": 2
+  },
+  {
+    "track": "Cranbourne",
+    "file": "Cranbourne.png",
+    "page": 1,
+    "row": 4,
+    "col": 3
+  },
+  {
+    "track": "Dederang",
+    "file": "Dederang.png",
+    "page": 1,
+    "row": 4,
+    "col": 4
+  },
+  {
+    "track": "Donald",
+    "file": "Donald.png",
+    "page": 2,
+    "row": 1,
+    "col": 1
+  },
+  {
+    "track": "Drouin",
+    "file": "Drouin.png",
+    "page": 2,
+    "row": 1,
+    "col": 2
+  },
+  {
+    "track": "Dunkeld",
+    "file": "Dunkeld.png",
+    "page": 2,
+    "row": 1,
+    "col": 3
+  },
+  {
+    "track": "Echuca",
+    "file": "Echuca.png",
+    "page": 2,
+    "row": 1,
+    "col": 4
+  },
+  {
+    "track": "Edenhope",
+    "file": "Edenhope.png",
+    "page": 2,
+    "row": 2,
+    "col": 1
+  },
+  {
+    "track": "Geelong Turf",
+    "file": "Geelong_Turf.png",
+    "page": 2,
+    "row": 2,
+    "col": 2
+  },
+  {
+    "track": "Geelong Synthetic",
+    "file": "Geelong_Synthetic.png",
+    "page": 2,
+    "row": 2,
+    "col": 3
+  },
+  {
+    "track": "Great Western",
+    "file": "Great_Western.png",
+    "page": 2,
+    "row": 2,
+    "col": 4
+  },
+  {
+    "track": "Gunbower",
+    "file": "Gunbower.png",
+    "page": 2,
+    "row": 3,
+    "col": 1
+  },
+  {
+    "track": "Hamilton",
+    "file": "Hamilton.png",
+    "page": 2,
+    "row": 3,
+    "col": 2
+  },
+  {
+    "track": "Hanging Rock",
+    "file": "Hanging_Rock.png",
+    "page": 2,
+    "row": 3,
+    "col": 3
+  },
+  {
+    "track": "Healesville",
+    "file": "Healesville.png",
+    "page": 2,
+    "row": 3,
+    "col": 4
+  },
+  {
+    "track": "Horsham",
+    "file": "Horsham.png",
+    "page": 2,
+    "row": 4,
+    "col": 1
+  },
+  {
+    "track": "Kerang",
+    "file": "Kerang.png",
+    "page": 2,
+    "row": 4,
+    "col": 2
+  },
+  {
+    "track": "Kilmore",
+    "file": "Kilmore.png",
+    "page": 2,
+    "row": 4,
+    "col": 3
+  },
+  {
+    "track": "Kyneton",
+    "file": "Kyneton.png",
+    "page": 2,
+    "row": 4,
+    "col": 4
+  },
+  {
+    "track": "Stawell",
+    "file": "Stawell.png",
+    "page": 4,
+    "row": 1,
+    "col": 1
+  },
+  {
+    "track": "Stony Creek",
+    "file": "Stony_Creek.png",
+    "page": 4,
+    "row": 1,
+    "col": 2
+  },
+  {
+    "track": "Swan Hill",
+    "file": "Swan_Hill.png",
+    "page": 4,
+    "row": 1,
+    "col": 3
+  },
+  {
+    "track": "Swifts Creek",
+    "file": "Swifts_Creek.png",
+    "page": 4,
+    "row": 1,
+    "col": 4
+  },
+  {
+    "track": "Tatura",
+    "file": "Tatura.png",
+    "page": 4,
+    "row": 2,
+    "col": 1
+  },
+  {
+    "track": "Terang",
+    "file": "Terang.png",
+    "page": 4,
+    "row": 2,
+    "col": 2
+  },
+  {
+    "track": "Towong",
+    "file": "Towong.png",
+    "page": 4,
+    "row": 2,
+    "col": 3
+  },
+  {
+    "track": "Traralgon",
+    "file": "Traralgon.png",
+    "page": 4,
+    "row": 2,
+    "col": 4
+  },
+  {
+    "track": "Wangaratta",
+    "file": "Wangaratta.png",
+    "page": 4,
+    "row": 3,
+    "col": 1
+  },
+  {
+    "track": "Warracknabeal",
+    "file": "Warracknabeal.png",
+    "page": 4,
+    "row": 3,
+    "col": 2
+  },
+  {
+    "track": "Warrnambool",
+    "file": "Warrnambool.png",
+    "page": 4,
+    "row": 3,
+    "col": 3
+  },
+  {
+    "track": "Werribee",
+    "file": "Werribee.png",
+    "page": 4,
+    "row": 3,
+    "col": 4
+  },
+  {
+    "track": "Wodonga",
+    "file": "Wodonga.png",
+    "page": 4,
+    "row": 4,
+    "col": 1
+  },
+  {
+    "track": "Woolamai",
+    "file": "Woolamai.png",
+    "page": 4,
+    "row": 4,
+    "col": 2
+  },
+  {
+    "track": "Yarra Valley",
+    "file": "Yarra_Valley.png",
+    "page": 4,
+    "row": 4,
+    "col": 3
+  },
+  {
+    "track": "Yea",
+    "file": "Yea.png",
+    "page": 4,
+    "row": 4,
+    "col": 4
+  },
+  {
+    "track": "Manangatang",
+    "file": "Manangatang.png",
+    "page": 3,
+    "row": 1,
+    "col": 1
+  },
+  {
+    "track": "Mansfield",
+    "file": "Mansfield.png",
+    "page": 3,
+    "row": 1,
+    "col": 2
+  },
+  {
+    "track": "Merton",
+    "file": "Merton.png",
+    "page": 3,
+    "row": 1,
+    "col": 3
+  },
+  {
+    "track": "Mildura",
+    "file": "Mildura.png",
+    "page": 3,
+    "row": 1,
+    "col": 4
+  },
+  {
+    "track": "Moe",
+    "file": "Moe.png",
+    "page": 3,
+    "row": 2,
+    "col": 1
+  },
+  {
+    "track": "Mornington",
+    "file": "Mornington.png",
+    "page": 3,
+    "row": 2,
+    "col": 2
+  },
+  {
+    "track": "Mortlake",
+    "file": "Mortlake.png",
+    "page": 3,
+    "row": 2,
+    "col": 3
+  },
+  {
+    "track": "Mt Wycheproof",
+    "file": "Mt_Wycheproof.png",
+    "page": 3,
+    "row": 2,
+    "col": 4
+  },
+  {
+    "track": "Murtoa",
+    "file": "Murtoa.png",
+    "page": 3,
+    "row": 3,
+    "col": 1
+  },
+  {
+    "track": "Nhill",
+    "file": "Nhill.png",
+    "page": 3,
+    "row": 3,
+    "col": 2
+  },
+  {
+    "track": "Omeo",
+    "file": "Omeo.png",
+    "page": 3,
+    "row": 3,
+    "col": 3
+  },
+  {
+    "track": "Pakenham Tynong Turf",
+    "file": "Pakenham_Tynong_Turf.png",
+    "page": 3
+  },
+  {
+    "track": "Pakenham Tynong Synthetic",
+    "file": "Pakenham_Tynong_Synthetic.png",
+    "page": 3
+  },
+  {
+    "track": "Penshurst",
+    "file": "Penshurst.png",
+    "page": 3,
+    "row": 4,
+    "col": 1
+  },
+  {
+    "track": "Sale",
+    "file": "Sale.png",
+    "page": 3,
+    "row": 4,
+    "col": 2
+  },
+  {
+    "track": "Seymour",
+    "file": "Seymour.png",
+    "page": 3,
+    "row": 4,
+    "col": 3
+  },
+  {
+    "track": "St Arnaud",
+    "file": "St_Arnaud.png",
+    "page": 3,
+    "row": 4,
+    "col": 4
+  },
+  {
+    "track": "Caulfield",
+    "file": "Caulfield.png",
+    "page": 5
+  },
+  {
+    "track": "Flemington",
+    "file": "Flemington.png",
+    "page": 5
+  },
+  {
+    "track": "Moonee Valley",
+    "file": "Moonee_Valley.png",
+    "page": 5
+  },
+  {
+    "track": "Sandown",
+    "file": "Sandown.png",
+    "page": 5
+  }
+]

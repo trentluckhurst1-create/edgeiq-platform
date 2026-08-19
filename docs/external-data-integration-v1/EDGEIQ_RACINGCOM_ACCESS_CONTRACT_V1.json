@@ -1,0 +1,13 @@
+{
+  "credential_rotation_considerations": "operator-owned rotation",
+  "endpoint": "https://graphql.rmdprod.racing.com/",
+  "intended_access_class": "SUPPORTED_CREDENTIAL_REQUIRED",
+  "licence_review_status": "REQUIRED",
+  "operator_action_required": "Obtain approved key and set only in PowerShell session",
+  "repository_configuration_required": "$env:RACINGCOM_PUBLIC_WIDGET_API_KEY=\"<APPROVED_VALUE>\"",
+  "required_authentication": "RACINGCOM_PUBLIC_WIDGET_API_KEY",
+  "safe_failure_behaviour": "skip request when key absent",
+  "secret_storage_rule": "never commit, print, log, or persist value",
+  "source_of_evidence": "repository adapter contract and prior 401 evidence",
+  "validation_command": "python .\\scripts\\validate_edgeiq_external_data_credentials_v1.py"
+}

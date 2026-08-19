@@ -1,0 +1,29 @@
+{
+  "audit_name": "edgeiq_performance_intelligence_upstream_funnel_audit_v1",
+  "audited_at_utc": "2026-07-28T21:37:57Z",
+  "benchmark_eligibility_rows": 39,
+  "benchmark_membership_rows": 24,
+  "canonical_timed_race_observations": 39,
+  "coverage_limiting_stage": "BENCHMARK_OBSERVATION_POPULATION_LIMITED_TO_39_CANONICAL_TIMED_RACES",
+  "lengths_versus_standard_rejections": 4,
+  "lengths_versus_standard_rows": 13,
+  "normalisation_rejections": 13,
+  "normalisation_rows": 0,
+  "performance_base_rows": 13,
+  "race_time_delta_rows": 17,
+  "races_with_standard_time_matches": 17,
+  "races_without_standard_time_matches": 22,
+  "rejection_reason_counts": {
+    "NORMALISATION_PARAMETER_NOT_EFFECTIVE_FOR_PERFORMANCE_DATE": 13,
+    "NO_WAREHOUSE_CONDITION_EVIDENCE": 4,
+    "PARTIAL_WINDOW_SECTIONAL_EVIDENCE_ONLY": 15
+  },
+  "standard_time_rows": 502,
+  "terminal_stage_counts": {
+    "LENGTHS_STANDARD_REJECTED": 4,
+    "NORMALISATION_REJECTED": 13,
+    "NOT_STANDARD_TIME_ELIGIBLE": 15,
+    "NO_STANDARD_TIME_MATCH": 7
+  },
+  "thresholds_weakened": "NO"
+}

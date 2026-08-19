@@ -1,0 +1,6 @@
+﻿source_owner,track_group,repository_file,file_exists,file_bytes,json_parse_status,top_level_fields,payload_fields,record_count,timestamp_candidates,production_use_status,notes
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_turf_raw.json,YES,4256,PASS,content|header|tardis,,,,REQUIRES_SCHEMA_REVIEW,
+VRC,Flemington,data\weather-source-audit\live-vrc\vrc_wind_raw.json,YES,2,NOT_PRESENT,,,,,REQUIRES_SCHEMA_REVIEW,
+TURFTRAX,Caulfield,data\weather-source-audit\live-turftrax\caulfield_raw.json,YES,42632,PASS,payload|status,content|header|tardis|trace,,,REQUIRES_SCHEMA_REVIEW,
+TURFTRAX,Sandown,data\weather-source-audit\live-turftrax\ladbrokes_raw.json,YES,31276,PASS,payload|status,content|header|tardis|trace,,,REQUIRES_SCHEMA_REVIEW,
+TURFTRAX,Mornington,data\weather-source-audit\live-turftrax\mornington_raw.json,YES,26329,PASS,payload|status,content|header|tardis|trace,,,REQUIRES_SCHEMA_REVIEW,

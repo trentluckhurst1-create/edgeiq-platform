@@ -1,0 +1,29 @@
+{
+  "status": "RACINGCOM_RACE_DISCOVERY_V2_PASS",
+  "built_utc": "2026-07-22T19:21:34+00:00",
+  "race_rows": 59,
+  "canonical_races": 59,
+  "base_merged_without_graphql": 52,
+  "graphql_evidence_rows": 7,
+  "source_counts": {
+    "COMPLETED_PAYLOAD_RACE": 4,
+    "HISTORICAL_SUCCESS_RACE": 8,
+    "OBSERVED_GRAPHQL_REQUEST": 2,
+    "OBSERVED_STRUCTURED_RACE": 40,
+    "VALIDATED_GRAPHQL_RACE_PAYLOAD": 5
+  },
+  "duplicate_races": 0,
+  "bad_numeric_race_numbers": 0,
+  "unsupported_race_identities": 0,
+  "future_historical_acquisition_eligible_rows": 0,
+  "meeting_contract_missing_rows": 17,
+  "exact_1_12_groups": 0,
+  "all_five_fresh_graphql_races_present": 5,
+  "both_negative_control_races_present": 2,
+  "fresh_graphql_speed_data_rows": 5,
+  "negative_control_no_speed_rows": 2,
+  "fixed_race_expansion_used": "NO",
+  "constructed_race_urls_without_source": 0,
+  "constructed_speed_data_urls_without_source": 0,
+  "production_changed": "NO"
+}

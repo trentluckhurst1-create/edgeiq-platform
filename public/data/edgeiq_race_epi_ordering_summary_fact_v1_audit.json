@@ -1,0 +1,123 @@
+{
+  "audit_name": "edgeiq_race_epi_ordering_summary_fact_v1",
+  "audit_version": "1.0.0",
+  "audited_at_utc": "2026-07-22T21:21:22Z",
+  "checks": {
+    "contract_fields_exact": {
+      "detail": {
+        "actual": [
+          "race_epi_ordering_summary_id",
+          "race_id",
+          "race_date",
+          "ordered_epi_population_count",
+          "distinct_epi_count",
+          "unique_epi_entry_count",
+          "tied_epi_entry_count",
+          "tie_group_count",
+          "largest_tie_group_size",
+          "top_epi",
+          "second_distinct_epi_available",
+          "second_distinct_epi",
+          "top_to_second_epi_gap_available",
+          "top_to_second_epi_gap",
+          "top_epi_tie_group_size",
+          "top_epi_tie_status",
+          "source_ordering_identity_sha256",
+          "source_ordering_evidence_sha256",
+          "race_epi_ordering_summary_publication_decision",
+          "race_epi_ordering_summary_reconciliation_decision",
+          "race_epi_ordering_summary_status",
+          "race_epi_ordering_summary_evidence_sha256",
+          "source_lineage",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ],
+        "expected": [
+          "race_epi_ordering_summary_id",
+          "race_id",
+          "race_date",
+          "ordered_epi_population_count",
+          "distinct_epi_count",
+          "unique_epi_entry_count",
+          "tied_epi_entry_count",
+          "tie_group_count",
+          "largest_tie_group_size",
+          "top_epi",
+          "second_distinct_epi_available",
+          "second_distinct_epi",
+          "top_to_second_epi_gap_available",
+          "top_to_second_epi_gap",
+          "top_epi_tie_group_size",
+          "top_epi_tie_status",
+          "source_ordering_identity_sha256",
+          "source_ordering_evidence_sha256",
+          "race_epi_ordering_summary_publication_decision",
+          "race_epi_ordering_summary_reconciliation_decision",
+          "race_epi_ordering_summary_status",
+          "race_epi_ordering_summary_evidence_sha256",
+          "source_lineage",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ]
+      },
+      "status": "PASS"
+    },
+    "deterministic_summary_evidence": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "deterministic_summary_identity": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "natural_keys_unique": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "no_forbidden_fields": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "ordering_summary_governance_exact": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "ordering_summary_lineage_complete": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "ordering_summary_metrics_reconciled": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "ordering_summary_sources_reconciled": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "primary_keys_unique": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "published_race_population_exact": {
+      "detail": {
+        "fact_races": 0,
+        "source_races": 0
+      },
+      "status": "PASS"
+    },
+    "required_files_exist": {
+      "detail": [],
+      "status": "PASS"
+    }
+  },
+  "counts": {
+    "ordering_rows": 0,
+    "source_race_count": 0,
+    "summary_rows": 0,
+    "top_epi_tied_races": 0
+  },
+  "failed_checks": [],
+  "status": "PASS"
+}

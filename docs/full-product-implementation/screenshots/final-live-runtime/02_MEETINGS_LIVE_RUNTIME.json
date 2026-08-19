@@ -1,0 +1,23 @@
+{
+  "workspace": "02_MEETINGS",
+  "label": "MEETINGS",
+  "captureErrors": [],
+  "mounted": [
+    {
+      "component": "MeetingsWorkspace",
+      "key": "MEETINGS",
+      "tag": "SECTION",
+      "className": "eiq-meetings-approved"
+    }
+  ],
+  "mountedComponent": "MeetingsWorkspace",
+  "mountedKey": "MEETINGS",
+  "selectedMeeting": "2026-07-17|WANGARATTA",
+  "selectedRace": null,
+  "activeSection": "meetings",
+  "viewLevel": "meetings",
+  "runnerCount": 1,
+  "dataAvailability": "AVAILABLE_OR_NOT_STATED",
+  "bodySample": "EDGEiQ\nRACE INTELLIGENCE\nHOME\nMEETINGS\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nEPI\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nRESULTS\nLAB\nCOMPARE\nREVIEW\nSETTINGS\nEDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM\nInformation is not Intelligence. Evidence leads. Precision decides.\nSUN, 19 JULY 2026\n06:49 pm\nAEDT\nMEETINGS\n\nThree day racing outlook. Select a meeting to view races and details.\n\nDATE RANGE (BUILDER CONTROLLED)\nTODAY\nFri, 17 July\nTOMORROW\nSat, 18 July\nDAY +2\nSun, 19 July\nMEETINGS (FRIDAY 17 JULY 2026)\nFILTERS\nOPEN MEETING\nSELECT\tMEETING\tSTATE\tRAIL\tTRACK\tWEATHER\tRACES\tDECLARED\tSCRATCHINGS\nSelected\tWangaratta\tNot supplied\tNot supplied\tNot supplied\tWeather unavailable\t0\t0\t0\nShowing 1 to 1 of 1 meetings\nCurrent\nCompleted\nAbandoned\nPostponed\nRACE START TIMES (ALL MEETINGS)\n11AM\n12PM\n1PM\n2PM\n3PM\n4PM\n5PM\n6PM\nWangaratta (0)\nEDGEiQ Racing Intelligence Operating System\nBuild: 1.0.0\nData as at: 06:49 pm AEDT",
+  "renderedPath": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-live-runtime/02_MEETINGS_LIVE_RENDERED.png"
+}

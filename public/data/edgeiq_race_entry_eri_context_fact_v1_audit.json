@@ -1,0 +1,128 @@
+{
+  "audit_name": "edgeiq_race_entry_eri_context_fact_v1",
+  "audit_version": "1.0.0",
+  "audited_at_utc": "2026-07-30T00:04:07Z",
+  "checks": {
+    "context_arithmetic_exact": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "context_governance_complete": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "context_ids_unique": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "context_lineage_complete": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "context_natural_keys_unique": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "contract_fields_exact": {
+      "detail": {
+        "actual": [
+          "race_entry_eri_context_id",
+          "race_entry_projected_performance_id",
+          "race_eri_id",
+          "race_eri_parameter_id",
+          "race_entry_id",
+          "race_id",
+          "race_date",
+          "projected_performance_value",
+          "eri_value",
+          "projected_performance_vs_eri",
+          "context_output_decimal_places",
+          "context_rounding_mode",
+          "eri_context_publication_decision",
+          "eri_context_reconciliation_decision",
+          "race_entry_eri_context_status",
+          "source_projected_performance_evidence_sha256",
+          "source_race_eri_evidence_sha256",
+          "source_eri_parameter_evidence_sha256",
+          "race_entry_eri_context_evidence_sha256",
+          "source_projected_performance_builder_version",
+          "source_race_eri_builder_version",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ],
+        "expected": [
+          "race_entry_eri_context_id",
+          "race_entry_projected_performance_id",
+          "race_eri_id",
+          "race_eri_parameter_id",
+          "race_entry_id",
+          "race_id",
+          "race_date",
+          "projected_performance_value",
+          "eri_value",
+          "projected_performance_vs_eri",
+          "context_output_decimal_places",
+          "context_rounding_mode",
+          "eri_context_publication_decision",
+          "eri_context_reconciliation_decision",
+          "race_entry_eri_context_status",
+          "source_projected_performance_evidence_sha256",
+          "source_race_eri_evidence_sha256",
+          "source_eri_parameter_evidence_sha256",
+          "race_entry_eri_context_evidence_sha256",
+          "source_projected_performance_builder_version",
+          "source_race_eri_builder_version",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ]
+      },
+      "status": "PASS"
+    },
+    "current_population_expected": {
+      "detail": {
+        "projected_performance_rows": 0,
+        "race_entry_eri_context_rows": 0,
+        "race_eri_rows": 0
+      },
+      "status": "PASS"
+    },
+    "deterministic_context_evidence": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "deterministic_context_identity": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "no_forbidden_fields": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "published_population_exact": {
+      "detail": {
+        "actual_count": 0,
+        "expected_count": 0,
+        "missing": [],
+        "unexpected": []
+      },
+      "status": "PASS"
+    },
+    "required_files_exist": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "source_join_exact": {
+      "detail": [],
+      "status": "PASS"
+    }
+  },
+  "counts": {
+    "projected_performance_rows": 0,
+    "race_entry_eri_context_rows": 0,
+    "race_eri_rows": 0
+  },
+  "failed_checks": [],
+  "status": "PASS"
+}

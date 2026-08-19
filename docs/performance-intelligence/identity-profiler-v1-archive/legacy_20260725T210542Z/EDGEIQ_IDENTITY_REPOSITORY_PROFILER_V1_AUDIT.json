@@ -1,0 +1,73 @@
+{
+  "engine_name": "EDGEIQ_IDENTITY_REPOSITORY_PROFILER_V1",
+  "engine_version": "1.0.0-step107-complete-runtime-fix",
+  "generated_utc": "2026-07-25T09:20:33.359529+00:00",
+  "status": "EDGEIQ_IDENTITY_REPOSITORY_PROFILER_V1_AUDIT_PASS",
+  "repository_root": "C:/Users/trent/OneDrive/Documents/EDGEIQ_PLATFORM",
+  "output_root": "C:/Users/trent/OneDrive/Documents/EDGEIQ_PLATFORM/docs/performance-intelligence/identity-profiler-v1",
+  "elapsed_seconds": 1732.103,
+  "metrics": {
+    "files_discovered": 19169,
+    "records_created": 19169,
+    "cache_hits": 19158,
+    "files_hashed": 11,
+    "scan_errors": 0,
+    "identity_relevant_files": 4153,
+    "total_bytes": 45410059344,
+    "profiling_eligible_files": 16384,
+    "datasets_profiled": 16384,
+    "dataset_profile_rows": 16384,
+    "column_profile_rows": 303331,
+    "profiling_errors": 0,
+    "identity_columns_detected": 12167,
+    "candidate_keys_detected": 47446,
+    "identity_relationships": 12161,
+    "crosswalk_identity_columns": 12167,
+    "crosswalk_candidate_key_columns": 47446,
+    "crosswalk_candidates": 37768162,
+    "crosswalk_discovery_mode": "STREAMED_DIRECT_IDENTITY_EVIDENCE"
+  },
+  "checks": {
+    "repository_root_exists": true,
+    "repository_root_is_directory": true,
+    "files_discovered": true,
+    "inventory_rows_reconcile": true,
+    "inventory_csv_exists": true,
+    "inventory_json_exists": true,
+    "checkpoint_exists": true,
+    "dataset_profiles_csv_exists": true,
+    "column_profiles_csv_exists": true,
+    "profiling_errors_csv_exists": true,
+    "dataset_profiles_generated": true,
+    "column_profiles_generated": true,
+    "no_scan_errors": true,
+    "all_successful_rows_have_hashes": true
+  },
+  "failed_checks": [],
+  "outputs": {
+    "inventory_csv": "C:/Users/trent/OneDrive/Documents/EDGEIQ_PLATFORM/docs/performance-intelligence/identity-profiler-v1/edgeiq_identity_repository_inventory_v1.csv",
+    "inventory_json": "C:/Users/trent/OneDrive/Documents/EDGEIQ_PLATFORM/docs/performance-intelligence/identity-profiler-v1/edgeiq_identity_repository_inventory_v1.json",
+    "checkpoint_json": "C:/Users/trent/OneDrive/Documents/EDGEIQ_PLATFORM/docs/performance-intelligence/identity-profiler-v1/edgeiq_identity_repository_checkpoint_v1.json",
+    "dataset_profiles_csv": "C:/Users/trent/OneDrive/Documents/EDGEIQ_PLATFORM/docs/performance-intelligence/identity-profiler-v1/edgeiq_identity_dataset_profiles_v1.csv",
+    "column_profiles_csv": "C:/Users/trent/OneDrive/Documents/EDGEIQ_PLATFORM/docs/performance-intelligence/identity-profiler-v1/edgeiq_identity_column_profiles_v1.csv",
+    "profiling_errors_csv": "C:/Users/trent/OneDrive/Documents/EDGEIQ_PLATFORM/docs/performance-intelligence/identity-profiler-v1/edgeiq_identity_profiling_errors_v1.csv",
+    "audit_json": "C:/Users/trent/OneDrive/Documents/EDGEIQ_PLATFORM/docs/performance-intelligence/identity-profiler-v1/EDGEIQ_IDENTITY_REPOSITORY_PROFILER_V1_AUDIT.json",
+    "audit_markdown": "C:/Users/trent/OneDrive/Documents/EDGEIQ_PLATFORM/docs/performance-intelligence/identity-profiler-v1/EDGEIQ_IDENTITY_REPOSITORY_PROFILER_V1_AUDIT.md",
+    "log_file": "C:/Users/trent/OneDrive/Documents/EDGEIQ_PLATFORM/docs/performance-intelligence/identity-profiler-v1/edgeiq_identity_repository_profiler_v1.log",
+    "identity_relationships_csv": "C:/Users/trent/OneDrive/Documents/EDGEIQ_PLATFORM/docs/performance-intelligence/identity-profiler-v1/edgeiq_identity_relationships_v1.csv",
+    "crosswalk_candidates_csv": "C:/Users/trent/OneDrive/Documents/EDGEIQ_PLATFORM/docs/performance-intelligence/identity-profiler-v1/edgeiq_crosswalk_candidates_v1.csv"
+  },
+  "step105_stage_timings": {
+    "inventory": 8.267,
+    "profiling": 1712.061,
+    "profile_outputs": 11.655,
+    "audit": 0.005
+  },
+  "step105_total_elapsed_seconds": 1732.109,
+  "step105_completion_contract": {
+    "profiling_complete": true,
+    "outputs_complete": true,
+    "audit_complete": true,
+    "shutdown_complete": true
+  }
+}

@@ -1,0 +1,891 @@
+FRAME 0 URL=https://www.racing.com/form/2026-07-20/southside-pakenham-synthetic/race/3/speed-data
+MONDAY, 20 JULY 2026
+Southside Pakenham Synthetic  
+1100m
+17°C
+Synth
+Track Rail
+True Entire Circuit
+Final Result
+All
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+Frankston Sand Soil & Mini Mix Maiden Plate
+1:30pm
+1100m
+Set Weights. Two-Years-Old and Upwards, No sex restriction. Maiden. Apprentices can claim. Track name: Synthetic. Track type: Synthetic. Field limit: 12.
+Race Time: 
+1:04.68  
++2.76L  
+Prize Money: 
+$32,000  
+Results
+Stewards' Report
+Speed Data
+News & Video
+Personalise Your Racing Experience
+
+We use cookies (including third-party) for site functionality, personalised content and ads, and analytics. By continuing, you consent to essential cookies only. Click "Accept all cookies" to allow non-essential cookies for personalisation and sharing usage data with our media, advertising, and analytics partners.
+
+See our Privacy Policy for details.
+
+Accept
+All CookiesDecline Non-
+Essential Cookies
+
+---FRAME---
+
+FRAME 1 URL=https://dxp-static.racing.com/sectionals/index.html#?meetCode=5191023&raceNumber=3
+Sort By:	Finishing Position
+C
+Finishing Position
+Distance Run
+Early Speed
+Mid Speed
+Late Speed
+Peak Speed
+Average Speed
+	OverviewSectionalsSplits
+POS / HORSE
+1st		
+9. Jundah (2)
+T: Peter G Moody & Katherine Coleman J: L.Nolen
+
+2nd		
+6. Cosmic Shower (8)
+T: P.J.Stokes J: L.J.Neindorf
+
+3rd		
+4. Sheer Panic (10)
+T: C.Scott J: J.Bowditch
+
+4th		
+2. Planet Mars (7)
+T: J.R.Dore J: J.Noonan
+
+5th		
+5. Alodie (11)
+T: C.P.Diplock J: M.Castle
+
+6th		
+12. Liquid Asset (4)
+T: Mick Price & Michael Kent (Jnr) J: T.Stockdale
+
+7th		
+10. Sealand (5)
+T: L.M.Kennewell J: M.J.Dee
+
+8th		
+11. Alpine Point (9)
+T: Ben, Will & JD Hayes J: J.McNeil
+
+9th		
+1. Hot Defense (1)
+T: M.E.Huglin J: A.McCabe
+
+10th		
+3. Satellite Chester (3)
+T: J.S.Cockram J: T.P.Ladd
+
+11th		
+7. Fierce Ruby (6)
+T: Ben, Will & JD Hayes J: D.G.Thornton
+	
+DIST RUN	EARLY	MID	LATE	PEAK	AVG SPEED	COM
+
+1105
+metres
+	
+53.64
+km/h
+	
+63.65
+km/h
+	
+66.53
+km/h
+	
+69.16
+km/h
+	
+61.49
+km/h
+	
+!
+
+
+1107(+2)
+metres
+	
+52.60
+km/h
+	
+63.86
+km/h
+	
+66.96
+km/h
+	
+69.01
+km/h
+	
+61.34
+km/h
+	
+!
+
+
+1104(-1)
+metres
+	
+54.47
+km/h
+	
+63.83
+km/h
+	
+64.26
+km/h
+	
+66.28
+km/h
+	
+61.09
+km/h
+	
+!
+
+
+1109(+4)
+metres
+	
+54.18
+km/h
+	
+63.86
+km/h
+	
+64.87
+km/h
+	
+67.00
+km/h
+	
+61.27
+km/h
+	
+!
+
+
+1107(+3)
+metres
+	
+54.54
+km/h
+	
+63.43
+km/h
+	
+64.69
+km/h
+	
+67.39
+km/h
+	
+61.13
+km/h
+	
+!
+
+
+1106(+1)
+metres
+	
+53.28
+km/h
+	
+63.54
+km/h
+	
+65.52
+km/h
+	
+68.08
+km/h
+	
+61.02
+km/h
+	
+!
+
+
+1110(+6)
+metres
+	
+53.60
+km/h
+	
+64.30
+km/h
+	
+66.42
+km/h
+	
+67.61
+km/h
+	
+61.20
+km/h
+	
+!
+
+
+1112(+7)
+metres
+	
+53.14
+km/h
+	
+63.43
+km/h
+	
+67.07
+km/h
+	
+68.51
+km/h
+	
+61.02
+km/h
+	
+!
+
+
+1102(-2)
+metres
+	
+53.75
+km/h
+	
+63.14
+km/h
+	
+63.72
+km/h
+	
+66.53
+km/h
+	
+60.44
+km/h
+	
+!
+
+
+1105
+metres
+	
+53.28
+km/h
+	
+63.11
+km/h
+	
+64.48
+km/h
+	
+65.92
+km/h
+	
+60.55
+km/h
+	
+!
+
+
+1109(+4)
+metres
+	
+52.67
+km/h
+	
+63.68
+km/h
+	
+64.87
+km/h
+	
+68.18
+km/h
+	
+60.66
+km/h
+	
+!
+POS / HORSE
+1st		
+9. Jundah (2)
+T: Peter G Moody & Katherine Coleman J: L.Nolen
+
+2nd		
+6. Cosmic Shower (8)
+T: P.J.Stokes J: L.J.Neindorf
+
+3rd		
+4. Sheer Panic (10)
+T: C.Scott J: J.Bowditch
+
+4th		
+2. Planet Mars (7)
+T: J.R.Dore J: J.Noonan
+
+5th		
+5. Alodie (11)
+T: C.P.Diplock J: M.Castle
+
+6th		
+12. Liquid Asset (4)
+T: Mick Price & Michael Kent (Jnr) J: T.Stockdale
+
+7th		
+10. Sealand (5)
+T: L.M.Kennewell J: M.J.Dee
+
+8th		
+11. Alpine Point (9)
+T: Ben, Will & JD Hayes J: J.McNeil
+
+9th		
+1. Hot Defense (1)
+T: M.E.Huglin J: A.McCabe
+
+10th		
+3. Satellite Chester (3)
+T: J.S.Cockram J: T.P.Ladd
+
+11th		
+7. Fierce Ruby (6)
+T: Ben, Will & JD Hayes J: D.G.Thornton
+	
+OVERALL	1000M	800M	600M	400M	200M
+
+1:04.68
+1st
+	
+56.08
+4th
+	
+44.47
+5th
+	
+32.91
+5th
+	
+21.64
+5th
+	
+10.88
+2nd
+
+
+1:04.97
+2nd
+	
+55.76
+11th
+	
+44.35
+11th
+	
+32.85
+10th
+	
+21.56
+10th
+	
+10.99
+5th
+
+
+1:05.05
+3rd
+	
+56.59
+1st
+	
+45.13
+2nd
+	
+33.64
+1st
+	
+22.38
+1st
+	
+11.35
+1st
+
+
+1:05.16
+4th
+	
+56.48
+6th
+	
+45.17
+3rd
+	
+33.64
+3rd
+	
+22.25
+3rd
+	
+11.34
+3rd
+
+
+1:05.19
+5th
+	
+56.73
+2nd
+	
+45.33
+1st
+	
+33.75
+2nd
+	
+22.29
+2nd
+	
+11.32
+4th
+
+
+1:05.24
+6th
+	
+56.35
+8th
+	
+44.92
+7th
+	
+33.27
+7th
+	
+21.98
+7th
+	
+11.08
+8th
+
+
+1:05.30
+7th
+	
+56.66
+5th
+	
+45.06
+6th
+	
+33.50
+6th
+	
+22.20
+6th
+	
+11.30
+6th
+
+
+1:05.61
+8th
+	
+56.61
+10th
+	
+45.17
+9th
+	
+33.60
+9th
+	
+22.33
+8th
+	
+11.55
+7th
+
+
+1:05.62
+9th
+	
+57.05
+3rd
+	
+45.52
+4th
+	
+34.01
+4th
+	
+22.61
+4th
+	
+11.45
+9th
+
+
+1:05.71
+10th
+	
+56.97
+7th
+	
+45.36
+8th
+	
+33.75
+8th
+	
+22.32
+9th
+	
+11.22
+11th
+
+
+1:05.82
+11th
+	
+56.88
+9th
+	
+45.23
+10th
+	
+33.52
+11th
+	
+22.24
+11th
+	
+11.46
+10th
+POS / HORSE
+1st		
+9. Jundah (2)
+T: Peter G Moody & Katherine Coleman J: L.Nolen
+
+2nd		
+6. Cosmic Shower (8)
+T: P.J.Stokes J: L.J.Neindorf
+
+3rd		
+4. Sheer Panic (10)
+T: C.Scott J: J.Bowditch
+
+4th		
+2. Planet Mars (7)
+T: J.R.Dore J: J.Noonan
+
+5th		
+5. Alodie (11)
+T: C.P.Diplock J: M.Castle
+
+6th		
+12. Liquid Asset (4)
+T: Mick Price & Michael Kent (Jnr) J: T.Stockdale
+
+7th		
+10. Sealand (5)
+T: L.M.Kennewell J: M.J.Dee
+
+8th		
+11. Alpine Point (9)
+T: Ben, Will & JD Hayes J: J.McNeil
+
+9th		
+1. Hot Defense (1)
+T: M.E.Huglin J: A.McCabe
+
+10th		
+3. Satellite Chester (3)
+T: J.S.Cockram J: T.P.Ladd
+
+11th		
+7. Fierce Ruby (6)
+T: Ben, Will & JD Hayes J: D.G.Thornton
+	
+1100M-1000M	1000M-800M	800M-600M	600M-400M	400M-200M	200M-FINISH
+
+8.60
+4th
+	
+11.61
+5th
+	
+11.56
+5th
+	
+11.27
+5th
+	
+10.76
+2nd
+	
+10.88
+1st
+
+
+9.21
+11th
+	
+11.41
+11th
+	
+11.50
+10th
+	
+11.29
+10th
+	
+10.57
+5th
+	
+10.99
+2nd
+
+
+8.45
+1st
+	
+11.46
+2nd
+	
+11.49
+1st
+	
+11.26
+1st
+	
+11.03
+1st
+	
+11.35
+3rd
+
+
+8.67
+6th
+	
+11.31
+3rd
+	
+11.53
+3rd
+	
+11.39
+3rd
+	
+10.91
+3rd
+	
+11.34
+4th
+
+
+8.46
+2nd
+	
+11.40
+1st
+	
+11.58
+2nd
+	
+11.46
+2nd
+	
+10.97
+4th
+	
+11.32
+5th
+
+
+8.87
+8th
+	
+11.43
+7th
+	
+11.65
+7th
+	
+11.29
+7th
+	
+10.90
+8th
+	
+11.08
+6th
+
+
+8.64
+5th
+	
+11.60
+6th
+	
+11.56
+6th
+	
+11.30
+6th
+	
+10.90
+6th
+	
+11.30
+7th
+
+
+9.00
+10th
+	
+11.44
+9th
+	
+11.57
+9th
+	
+11.27
+8th
+	
+10.78
+7th
+	
+11.55
+8th
+
+
+8.56
+3rd
+	
+11.53
+4th
+	
+11.51
+4th
+	
+11.40
+4th
+	
+11.16
+9th
+	
+11.45
+9th
+
+
+8.74
+7th
+	
+11.61
+8th
+	
+11.61
+8th
+	
+11.43
+9th
+	
+11.10
+11th
+	
+11.22
+10th
+
+
+8.94
+9th
+	
+11.65
+10th
+	
+11.71
+11th
+	
+11.28
+11th
+	
+10.78
+10th
+	
+11.46
+11th
+Download Race Sectional Data | PDF' | CSV'
+Splits & Sectionals	
+
+Splits & Sectionals data displayed on Racing.com is sourced from the following race-timing technology partners: From August 2021, sectional times for race meetings at Flemington, Caulfield, The Valley & Ladbrokes Park are provided by tripleSdata and Champion Data (note: previously, Trakus technology was used at Flemington, Caulfield and The Valley). From August 2023, Cranbourne and Pakenham sectional times are also provided by tripleSdata and Champion Data (note: previously, Daily Sectionals) From September 2017, data for all other Victorian tracks is provided by Daily Sectionals; and at South Australian tracks the sectional times are sourced from Equitime.
+
+Below each split and sectional time displayed is the horse’s position-in-running (e.g. 1st) at that point of the race.
+
+The meeting rank 'tool-tip' feature helps to identify how the fastest individual splits & sectionals for each race, which are highlighted in green, compare to the times for the rest of that particular race meeting.
+
+---FRAME---
+
+FRAME 6 URL=about:blank
+18+‌
+Eligible‌ ‌customers‌ ‌only.‌ ‌Prices‌ ‌subject‌ ‌to‌ ‌change.‌ ‌
+Max‌ ‌stakes‌ ‌&‌ ‌T&Cs‌ ‌apply.‌
+THINK.‌ ‌IS‌ ‌THIS‌ ‌A‌ ‌BET‌ ‌YOU‌ ‌REALLY‌ ‌WANT‌ ‌TO‌ ‌PLACE?‌
+Set‌ ‌a‌ ‌deposit‌ ‌limit.‌
+
+---FRAME---
+
+FRAME 8 URL=about:blank
+18+‌
+Eligible‌ ‌customers‌ ‌only.‌ ‌Prices‌ ‌subject‌ ‌to‌ ‌change.‌ ‌
+Max‌ ‌stakes‌ ‌&‌ ‌T&Cs‌ ‌apply.‌
+THINK.‌ ‌IS‌ ‌THIS‌ ‌A‌ ‌BET‌ ‌YOU‌ ‌REALLY‌ ‌WANT‌ ‌TO‌ ‌PLACE?‌
+Set‌ ‌a‌ ‌deposit‌ ‌limit.‌
+
+---FRAME---
+
+FRAME 10 URL=https://platform.twitter.com/widgets/tweet_button.1227a5674072e080ffb1ba14ac0c1079.en.html#dnt=true&id=twitter-widget-0&lang=en&original_referer=https%3A%2F%2Fdxp-static.racing.com%2Fsectionals%2Findex.html%23%3FmeetCode%3D5191023%26raceNumber%3D3&size=m&text=RACING.COM&time=1784711625736&type=share&url=https%3A%2F%2Fdxp-static.racing.com%2Fsectionals%2Findex.html%23%3FmeetCode%3D5191023%26raceNumber%3D3&via=country_racing
+Post
+
+---FRAME---
+
+FRAME 16 URL=about:blank
+Join
+
+---FRAME---
+
+FRAME 18 URL=about:blank
+EVERY RACE, EVERY DAY.
+
+---FRAME---
+
+FRAME 27 URL=about:blank
+Join
+
+---FRAME---
+
+FRAME 29 URL=about:blank
+EVERY RACE, EVERY DAY.

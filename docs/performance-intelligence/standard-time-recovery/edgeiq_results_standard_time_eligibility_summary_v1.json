@@ -1,0 +1,17 @@
+{
+  "total_detailed_observations": 449,
+  "eligible_observations": 449,
+  "ineligible_observations": 0,
+  "benchmark_groups": 32,
+  "groups_1_4": 0,
+  "groups_5_9": 0,
+  "groups_10_19": 25,
+  "groups_20_or_more": 7,
+  "largest_group_size": 24,
+  "median_group_size": 11.0,
+  "total_deficit": 219,
+  "minimum_sample": 20,
+  "previous_reduced_performance_fact_rows": 39,
+  "previous_reduced_benchmark_eligible_rows": 24,
+  "previous_reduced_groups_meeting_minimum": 0
+}

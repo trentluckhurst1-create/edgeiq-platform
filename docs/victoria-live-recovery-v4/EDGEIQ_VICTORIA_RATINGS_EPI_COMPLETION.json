@@ -1,0 +1,27 @@
+{
+  "latest": {
+    "epi": "",
+    "observation": "2026-07-26",
+    "rating": ""
+  },
+  "minimum_observations_required": "5",
+  "observed_horse_counts": {
+    "RA_HORSE_31850116620": 1,
+    "RA_HORSE_33402042720": 1,
+    "RA_HORSE_33600975630": 1,
+    "RA_HORSE_33738393600": 1,
+    "RA_HORSE_33779044860": 1,
+    "RA_HORSE_33832584000": 1,
+    "RA_HORSE_33861467790": 1,
+    "RA_HORSE_34054013730": 1
+  },
+  "post_cutoff": {
+    "epi": 0,
+    "horse_aggregates": 0,
+    "horse_observations": 8,
+    "horse_ratings": 0,
+    "performance_rating_base": 8,
+    "snapshots": 0
+  },
+  "status": "BLOCKED_HORSE_AGGREGATES"
+}

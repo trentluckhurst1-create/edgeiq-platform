@@ -1,0 +1,43 @@
+# EDGEiQ Daily Betting Readiness V1
+
+Status: READY
+
+- current_meetings: 2
+- current_races: 17
+- declared_runners: 246
+- active_runners: 213
+- scratched_runners: 33
+- recent_form_available: 186
+- early_speed_available: 107
+- late_speed_available: 109
+- suitability_available: 169
+- form_momentum_available: 172
+- map_available: 107
+- profile_available: 187
+- standard_time_rows: 586
+- lengths_v_standard_rows: 533387
+- performance_fact_rows: 879784
+- EPI_available: 189
+- ERI_available: 189
+- fair_price_available: 166
+- market_available: 241
+- edge_available: 166
+- EPI_unavailable_supported: 57
+- ERI_unavailable_supported: 57
+- fair_price_unavailable_supported: 80
+- edge_unavailable_supported: 80
+- unexplained_blanks: 0
+- identity_conflicts: 0
+- duplicate_current_runners: 0
+- stale_output_findings: 0
+- cross_workspace_conflicts: 0
+- credential_exposure: NO
+- daily_refresh_result: PASS
+- test_result: PASS
+- build_result: PASS
+- browser_acceptance_result: PASS
+- browser_switching_result: PASS
+- cross_workspace_consistency: PASS
+- latest_commit: 997235c fix(performance): restore governed current EPI ERI pricing lineage
+- daily_betting_readiness_status: READY
+- stale_output_details: 

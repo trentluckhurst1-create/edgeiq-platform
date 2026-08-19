@@ -1,0 +1,43 @@
+{
+  "registry_version": "1.1.0",
+  "generated_at_utc": "2026-07-28T04:16:46+00:00",
+  "repository_root": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM",
+  "active_source_roots": [
+    "scripts",
+    "src"
+  ],
+  "live_python_file_count": 3094,
+  "total_builder_count": 1500,
+  "canonical_builder_count": 1341,
+  "historical_builder_count": 159,
+  "canonical_parse_failure_count": 853,
+  "historical_parse_failure_count": 96,
+  "dependency_record_count": 5618,
+  "input_claim_count": 1011,
+  "output_claim_count": 432,
+  "canonical_output_claim_count": 372,
+  "canonical_public_feed_output_count": 12,
+  "canonical_duplicate_output_count": 11,
+  "excluded_directory_names": [
+    ".git",
+    ".idea",
+    ".pytest_cache",
+    ".ruff_cache",
+    ".venv",
+    "__pycache__",
+    "archive",
+    "archived",
+    "archives",
+    "backup",
+    "backups",
+    "build",
+    "checkpoint",
+    "checkpoints",
+    "dist",
+    "env",
+    "legacy",
+    "node_modules",
+    "venv"
+  ],
+  "verdict": "FAIL_CANONICAL_PARSE_FAILURES"
+}

@@ -1,0 +1,18 @@
+{
+  "step": 7,
+  "status": "PASS",
+  "generated_utc": "2026-07-25T21:52:05Z",
+  "epi_performance_rows": 545846,
+  "eri_race_rows": 53071,
+  "market_leakage": "NO",
+  "future_leakage": "NO",
+  "elapsed_seconds": 7.252,
+  "weight_adjusted_epi_verification": "PARTIALLY_IMPLEMENTED_FAIL_CLOSED",
+  "weight_adjustment_status": "INSUFFICIENT_EMPIRICAL_EVIDENCE",
+  "weight_carried_rows": 544749,
+  "weight_adjustment_rows": 0,
+  "weight_adjustment_null_rows": 545846,
+  "weight_market_leakage": "NO",
+  "weight_future_leakage": "NO",
+  "weight_double_count_audit": "NO_ACTIVE_WEIGHT_ADJUSTMENT_APPLIED"
+}

@@ -1,0 +1,255 @@
+{
+  "workspace": "11_SCRATCHINGS",
+  "approved": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\approved-ui-rebuild\\11_SCRATCHINGS_APPROVED.png",
+  "rendered": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\approved-ui-rebuild\\11_SCRATCHINGS_RENDERED.png",
+  "overlay": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\approved-ui-rebuild\\11_SCRATCHINGS_OVERLAY.png",
+  "diff": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\approved-ui-rebuild\\11_SCRATCHINGS_DIFF.png",
+  "side_by_side": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\approved-ui-rebuild\\11_SCRATCHINGS_SIDE_BY_SIDE.png",
+  "material_regions_image": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\approved-ui-rebuild\\11_SCRATCHINGS_MATERIAL_REGIONS.png",
+  "rms_difference": 42.744,
+  "material_region_count": 422,
+  "material_regions_sample": [
+    {
+      "left": 24,
+      "top": 0,
+      "right": 48,
+      "bottom": 24
+    },
+    {
+      "left": 48,
+      "top": 0,
+      "right": 72,
+      "bottom": 24
+    },
+    {
+      "left": 72,
+      "top": 0,
+      "right": 96,
+      "bottom": 24
+    },
+    {
+      "left": 96,
+      "top": 0,
+      "right": 120,
+      "bottom": 24
+    },
+    {
+      "left": 144,
+      "top": 0,
+      "right": 168,
+      "bottom": 24
+    },
+    {
+      "left": 216,
+      "top": 0,
+      "right": 240,
+      "bottom": 24
+    },
+    {
+      "left": 240,
+      "top": 0,
+      "right": 264,
+      "bottom": 24
+    },
+    {
+      "left": 264,
+      "top": 0,
+      "right": 288,
+      "bottom": 24
+    },
+    {
+      "left": 288,
+      "top": 0,
+      "right": 312,
+      "bottom": 24
+    },
+    {
+      "left": 312,
+      "top": 0,
+      "right": 336,
+      "bottom": 24
+    },
+    {
+      "left": 336,
+      "top": 0,
+      "right": 360,
+      "bottom": 24
+    },
+    {
+      "left": 360,
+      "top": 0,
+      "right": 384,
+      "bottom": 24
+    },
+    {
+      "left": 384,
+      "top": 0,
+      "right": 408,
+      "bottom": 24
+    },
+    {
+      "left": 408,
+      "top": 0,
+      "right": 432,
+      "bottom": 24
+    },
+    {
+      "left": 432,
+      "top": 0,
+      "right": 456,
+      "bottom": 24
+    },
+    {
+      "left": 456,
+      "top": 0,
+      "right": 480,
+      "bottom": 24
+    },
+    {
+      "left": 480,
+      "top": 0,
+      "right": 504,
+      "bottom": 24
+    },
+    {
+      "left": 504,
+      "top": 0,
+      "right": 528,
+      "bottom": 24
+    },
+    {
+      "left": 528,
+      "top": 0,
+      "right": 552,
+      "bottom": 24
+    },
+    {
+      "left": 552,
+      "top": 0,
+      "right": 576,
+      "bottom": 24
+    },
+    {
+      "left": 576,
+      "top": 0,
+      "right": 600,
+      "bottom": 24
+    },
+    {
+      "left": 600,
+      "top": 0,
+      "right": 624,
+      "bottom": 24
+    },
+    {
+      "left": 624,
+      "top": 0,
+      "right": 648,
+      "bottom": 24
+    },
+    {
+      "left": 648,
+      "top": 0,
+      "right": 672,
+      "bottom": 24
+    },
+    {
+      "left": 672,
+      "top": 0,
+      "right": 696,
+      "bottom": 24
+    },
+    {
+      "left": 696,
+      "top": 0,
+      "right": 720,
+      "bottom": 24
+    },
+    {
+      "left": 720,
+      "top": 0,
+      "right": 744,
+      "bottom": 24
+    },
+    {
+      "left": 744,
+      "top": 0,
+      "right": 768,
+      "bottom": 24
+    },
+    {
+      "left": 768,
+      "top": 0,
+      "right": 792,
+      "bottom": 24
+    },
+    {
+      "left": 792,
+      "top": 0,
+      "right": 816,
+      "bottom": 24
+    },
+    {
+      "left": 816,
+      "top": 0,
+      "right": 840,
+      "bottom": 24
+    },
+    {
+      "left": 840,
+      "top": 0,
+      "right": 864,
+      "bottom": 24
+    },
+    {
+      "left": 864,
+      "top": 0,
+      "right": 888,
+      "bottom": 24
+    },
+    {
+      "left": 888,
+      "top": 0,
+      "right": 912,
+      "bottom": 24
+    },
+    {
+      "left": 912,
+      "top": 0,
+      "right": 936,
+      "bottom": 24
+    },
+    {
+      "left": 936,
+      "top": 0,
+      "right": 960,
+      "bottom": 24
+    },
+    {
+      "left": 1440,
+      "top": 0,
+      "right": 1464,
+      "bottom": 24
+    },
+    {
+      "left": 0,
+      "top": 24,
+      "right": 24,
+      "bottom": 48
+    },
+    {
+      "left": 24,
+      "top": 24,
+      "right": 48,
+      "bottom": 48
+    },
+    {
+      "left": 48,
+      "top": 24,
+      "right": 72,
+      "bottom": 48
+    }
+  ],
+  "visual_status": "REVIEW_REQUIRED",
+  "note": "A low metric is not a pass by itself; inspect structure, content, spacing, and prohibited content."
+}

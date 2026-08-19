@@ -1,0 +1,259 @@
+{
+  "audit_name": "EDGEIQ Benchmark Accumulation Fact V1 Preflight",
+  "status": "COMPLETE",
+  "eligibility_source": "public\\data\\edgeiq_benchmark_eligibility_fact_v1.csv",
+  "observation_source": "public\\data\\edgeiq_benchmark_observation_fact_v1.csv",
+  "eligibility_headers": [
+    "benchmark_eligibility_id",
+    "benchmark_observation_id",
+    "race_key",
+    "race_date",
+    "track_name",
+    "official_distance_metres",
+    "runner_count",
+    "race_split_coverage_type",
+    "winner_horse_name",
+    "winner_race_time_seconds",
+    "winner_last_600_seconds",
+    "winner_last_400_seconds",
+    "winner_last_200_seconds",
+    "benchmark_use_class",
+    "standard_time_eligible",
+    "sectional_reference_eligible",
+    "eligibility_rule_version",
+    "eligibility_reason_codes",
+    "failed_rule_count",
+    "source_observation_sha256"
+  ],
+  "observation_headers": [
+    "benchmark_observation_id",
+    "race_key",
+    "race_date",
+    "track_name",
+    "course_name",
+    "race_number",
+    "official_distance_metres",
+    "surface",
+    "track_condition",
+    "rail_position",
+    "race_class",
+    "runner_count",
+    "race_split_coverage_type",
+    "full_race_coverage_runner_count",
+    "partial_timing_window_runner_count",
+    "unresolved_coverage_runner_count",
+    "winner_runner_key",
+    "winner_horse_name",
+    "winner_race_time_seconds",
+    "winner_last_600_seconds",
+    "winner_last_400_seconds",
+    "winner_last_200_seconds",
+    "winner_split_window_start_marker_metres",
+    "winner_split_window_distance_metres",
+    "winner_split_window_seconds",
+    "winner_opening_untimed_distance_metres",
+    "source_provider",
+    "source_canonical_version",
+    "source_semantic_version",
+    "observation_status",
+    "evidence_complete",
+    "race_source_row_sha256",
+    "winner_source_row_sha256"
+  ],
+  "counts": {
+    "eligibility_rows": 39,
+    "observation_rows": 39,
+    "standard_time_eligible_rows": 24,
+    "joined_standard_rows": 0
+  },
+  "candidate_field_coverage": {
+    "observation_id": {
+      "eligibility_non_blank": 0,
+      "observation_non_blank": 0
+    },
+    "race_key": {
+      "eligibility_non_blank": 39,
+      "observation_non_blank": 39
+    },
+    "track_code": {
+      "eligibility_non_blank": 0,
+      "observation_non_blank": 0
+    },
+    "track_name": {
+      "eligibility_non_blank": 39,
+      "observation_non_blank": 39
+    },
+    "track": {
+      "eligibility_non_blank": 0,
+      "observation_non_blank": 0
+    },
+    "course": {
+      "eligibility_non_blank": 0,
+      "observation_non_blank": 0
+    },
+    "course_name": {
+      "eligibility_non_blank": 0,
+      "observation_non_blank": 0
+    },
+    "surface": {
+      "eligibility_non_blank": 0,
+      "observation_non_blank": 0
+    },
+    "official_distance_metres": {
+      "eligibility_non_blank": 24,
+      "observation_non_blank": 24
+    },
+    "distance_metres": {
+      "eligibility_non_blank": 0,
+      "observation_non_blank": 0
+    },
+    "track_condition": {
+      "eligibility_non_blank": 0,
+      "observation_non_blank": 0
+    },
+    "track_condition_code": {
+      "eligibility_non_blank": 0,
+      "observation_non_blank": 0
+    },
+    "benchmark_use_class": {
+      "eligibility_non_blank": 39,
+      "observation_non_blank": 0
+    },
+    "standard_time_eligible": {
+      "eligibility_non_blank": 39,
+      "observation_non_blank": 0
+    }
+  },
+  "standard_time_join_examples": [
+    {
+      "observation_id": "",
+      "eligibility_row": {
+        "benchmark_eligibility_id": "BEF1-E9DDAE4CC6AE3D78B219CF01",
+        "benchmark_observation_id": "BOF1-67F454F7C819930DE2A82BB0",
+        "race_key": "2026-05-30|CAULFIELD|R01",
+        "race_date": "2026-05-30",
+        "track_name": "Caulfield",
+        "official_distance_metres": "1200",
+        "runner_count": "8",
+        "race_split_coverage_type": "FULL_RACE",
+        "winner_horse_name": "Obambulate",
+        "winner_race_time_seconds": "73.6",
+        "winner_last_600_seconds": "35.42",
+        "winner_last_400_seconds": "23.42",
+        "winner_last_200_seconds": "12.06",
+        "benchmark_use_class": "STANDARD_TIME_ELIGIBLE",
+        "standard_time_eligible": "true",
+        "sectional_reference_eligible": "false",
+        "eligibility_rule_version": "EDGEIQ_BENCHMARK_ELIGIBILITY_RULES_V1",
+        "eligibility_reason_codes": "ELIGIBLE_FULL_RACE_EVIDENCE",
+        "failed_rule_count": "0",
+        "source_observation_sha256": "fddf1e8d4bc7710094750d535bf585c432d4018a905d2184fbace7e51e9fa49e"
+      },
+      "observation_row": {}
+    },
+    {
+      "observation_id": "",
+      "eligibility_row": {
+        "benchmark_eligibility_id": "BEF1-6F1ACBFBA53A545E70EA57E7",
+        "benchmark_observation_id": "BOF1-6C01FD4F21505965A03B3F34",
+        "race_key": "2026-05-30|CAULFIELD|R02",
+        "race_date": "2026-05-30",
+        "track_name": "Caulfield",
+        "official_distance_metres": "1200",
+        "runner_count": "9",
+        "race_split_coverage_type": "FULL_RACE",
+        "winner_horse_name": "Flyer",
+        "winner_race_time_seconds": "72.34",
+        "winner_last_600_seconds": "36.25",
+        "winner_last_400_seconds": "24.38",
+        "winner_last_200_seconds": "12.64",
+        "benchmark_use_class": "STANDARD_TIME_ELIGIBLE",
+        "standard_time_eligible": "true",
+        "sectional_reference_eligible": "false",
+        "eligibility_rule_version": "EDGEIQ_BENCHMARK_ELIGIBILITY_RULES_V1",
+        "eligibility_reason_codes": "ELIGIBLE_FULL_RACE_EVIDENCE",
+        "failed_rule_count": "0",
+        "source_observation_sha256": "c28bb766225bdf01d9ca1ea82e82f4804e7962a92d70bf4fc17b7a3bba5ec559"
+      },
+      "observation_row": {}
+    },
+    {
+      "observation_id": "",
+      "eligibility_row": {
+        "benchmark_eligibility_id": "BEF1-3C260F2A28D39E0A7D7B701C",
+        "benchmark_observation_id": "BOF1-F0DED6BBDFB119455EA532DB",
+        "race_key": "2026-05-30|CAULFIELD|R03",
+        "race_date": "2026-05-30",
+        "track_name": "Caulfield",
+        "official_distance_metres": "1400",
+        "runner_count": "8",
+        "race_split_coverage_type": "FULL_RACE",
+        "winner_horse_name": "Clevor Trever",
+        "winner_race_time_seconds": "86.51",
+        "winner_last_600_seconds": "35.65",
+        "winner_last_400_seconds": "23.64",
+        "winner_last_200_seconds": "12",
+        "benchmark_use_class": "STANDARD_TIME_ELIGIBLE",
+        "standard_time_eligible": "true",
+        "sectional_reference_eligible": "false",
+        "eligibility_rule_version": "EDGEIQ_BENCHMARK_ELIGIBILITY_RULES_V1",
+        "eligibility_reason_codes": "ELIGIBLE_FULL_RACE_EVIDENCE",
+        "failed_rule_count": "0",
+        "source_observation_sha256": "486d41976cdaad9f903ded2781c5a971d6bb143ddde2c343026f4d55f7dfe4ee"
+      },
+      "observation_row": {}
+    },
+    {
+      "observation_id": "",
+      "eligibility_row": {
+        "benchmark_eligibility_id": "BEF1-F3DD31FD2E397839F78953CE",
+        "benchmark_observation_id": "BOF1-B37B439FD03E9BEB53518519",
+        "race_key": "2026-05-30|CAULFIELD|R04",
+        "race_date": "2026-05-30",
+        "track_name": "Caulfield",
+        "official_distance_metres": "1600",
+        "runner_count": "7",
+        "race_split_coverage_type": "FULL_RACE",
+        "winner_horse_name": "First Chorus (NZ)",
+        "winner_race_time_seconds": "100.16",
+        "winner_last_600_seconds": "36.71",
+        "winner_last_400_seconds": "24.63",
+        "winner_last_200_seconds": "12.58",
+        "benchmark_use_class": "STANDARD_TIME_ELIGIBLE",
+        "standard_time_eligible": "true",
+        "sectional_reference_eligible": "false",
+        "eligibility_rule_version": "EDGEIQ_BENCHMARK_ELIGIBILITY_RULES_V1",
+        "eligibility_reason_codes": "ELIGIBLE_FULL_RACE_EVIDENCE",
+        "failed_rule_count": "0",
+        "source_observation_sha256": "1dae48ebb79c6f1f30366aae0f728062f433f1e5cb75ebb7f97c97433957eeb4"
+      },
+      "observation_row": {}
+    },
+    {
+      "observation_id": "",
+      "eligibility_row": {
+        "benchmark_eligibility_id": "BEF1-2E2D17C163A076BDE9114D14",
+        "benchmark_observation_id": "BOF1-7549AEF3D43EBF79E355A2C7",
+        "race_key": "2026-05-30|CAULFIELD|R05",
+        "race_date": "2026-05-30",
+        "track_name": "Caulfield",
+        "official_distance_metres": "1600",
+        "runner_count": "7",
+        "race_split_coverage_type": "FULL_RACE",
+        "winner_horse_name": "Jimmy The Bear",
+        "winner_race_time_seconds": "99.79",
+        "winner_last_600_seconds": "36.16",
+        "winner_last_400_seconds": "24.24",
+        "winner_last_200_seconds": "12.41",
+        "benchmark_use_class": "STANDARD_TIME_ELIGIBLE",
+        "standard_time_eligible": "true",
+        "sectional_reference_eligible": "false",
+        "eligibility_rule_version": "EDGEIQ_BENCHMARK_ELIGIBILITY_RULES_V1",
+        "eligibility_reason_codes": "ELIGIBLE_FULL_RACE_EVIDENCE",
+        "failed_rule_count": "0",
+        "source_observation_sha256": "c6053d8b87161593e371caeeda97f5bc7449ac29c450bdf7fdade9d75c88633d"
+      },
+      "observation_row": {}
+    }
+  ]
+}

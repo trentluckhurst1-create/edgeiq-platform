@@ -1,0 +1,421 @@
+{
+  "overall_status": "PASS",
+  "tested_url": "http://localhost:5173/",
+  "before_metrics": {
+    "speedPanelHeight": 236,
+    "speedEmptyHeight": 162,
+    "runnerBoardTop": 1016
+  },
+  "viewports": [
+    {
+      "width": 1920,
+      "activeWorkspaceKey": "RACE",
+      "mountedComponent": "RaceIntelligenceWorkspace",
+      "raceAttr": "repair-v1",
+      "tabs": {
+        "selector": ".eiq-context-tabs",
+        "exists": true,
+        "top": 106,
+        "height": 48,
+        "width": 1696,
+        "display": "grid",
+        "text": "RACE FIELD FORM GUIDE PERFORMANCE MAP MARKET OVERVIEW INSIGHTS EPI RESULTS REVIEW"
+      },
+      "race": {
+        "selector": ".eiq-race-v1",
+        "exists": true,
+        "top": 172,
+        "height": 2136,
+        "width": 1696,
+        "display": "grid",
+        "text": "MEETINGS > Sale > RACE 1 > RACE Race 1 Current Race - Back to Races MEETING Sale DATE 26 July 2026 TIME Pending result DISTANCE - TRACK Track Rating Awaiting RAIL Rail Not Supplied WEATHER Weather Awaiting Feed PRIZEMONEY Prizemoney Not Published RACES AT THIS MEETING R1 Time Not Published R2 Time Not Published R3 Time Not Published R4 Time Not Published R5 Time Not Published R6 Time Not Published R7 Time Not Published R8 Time Not Published TEMPO Awaiting Map Evidence Governed map evidence pending EPF Insufficient Evidence Expected performance figure KEY DETERMINANTS LIMBERING No determinant supplied HIDDEN ANGLES Insufficient Evidence No hidden angle supplied WHAT MATTERS TODAY 3 ACTIVE Awaiting Map Evidence Insufficient Performance Evidence Insufficient Governed Statements SPEED MAP PREVIEW TRAVEL RIGHT TO LEFT Awaiting Speed Evidence EPI TOP 3 GOVERNED EPI 1 1 LIMBERING Insufficient Evidence 2 2 HUGHIE Insufficient Evidence 3 3 DETERMINATO Insufficient Evidence RUNNER BOARD 30 RUNNERS NO SILK RUNNER BAR WGT JOCKEY TRAINER EPI SPD EDGEiQ PRICE MARKET STATUS 1 LIMBERING 2 58kg Not Notified RAHARNA MCDONALD - - - Awaiting Market Active 2 HUGHIE 3 57.5kg Not Notified JAMIE EDWARDS - - - Awaiting Market Active 3 DETERMINATO 4 57kg BILLY EGAN DOMINIC SUTTON - - - Awaiting Market Active 4 KING TAGALOA 5 56.5kg DYLAN DEAN JULIUS SANDHU - - - Awaiting Market Active 5 OBON 6 56kg LUKE NOLEN MICHAEL KENT - - - Awaiting Market Active 6 REEL DEADLY 7 55.5kg THOMAS STOCKDALE CIARON MAHER - - - Awaiting Market Active 7 RUSSIAN FIREBIRD 8 55kg BRAD RAWILLER TOBY LAKE - - - Awaiting Market Active 8 SKY DEEL 9 54.5kg JAMIE MOTT GAVIN BEDGGOOD - - - Awaiting Market Active 9 EXPANDING POWER 10 54kg LACHLAN NEINDORF ENVER JUSUFOVIC - - - Awaiting Market Active 10 CAPITAL STORM 11 53.5kg LACHLAN NEINDORF PHILLIP STOKES - - - Awaiting Market Active 11 FONTALICIOUS 12 53kg PATRICK MOLONEY SHANE NICHOLS & HAYDEN BLACK - - - Awaiting Market Active 12 MERCHANTESSA 13 52.5kg TEO NUGENT JASON WARREN - - - Awaiting Market Active 13 MIRADOR 14 52kg DANIEL STACKHOUSE BEN, WILL & JD HAYES - - - Awaiting Market Active 14 RUBY GUILD 15 51.5kg NATHAN PUNCH ROBBIE GRIFFITHS - - - Awaiting Market Active 15 TRICKY MISS 16 51kg JAKE NOONAN CIARON MAHER - - - Awaiting Market Active 16 PORTINARI 17 50.5kg DANIEL STACKHOUSE BEN, WILL & JD HAYES - - - Awaiting Market Active 17 MINELLO 18 50kg JAMIE MOTT ANTHONY & SAM FREEDMAN - - - Awaiting Market Active 18 PINAMILLOY 19 49.5kg ZAC SPAIN JASON WARREN - - - Awaiting Market Active 19 RES MIRA 20 49kg BRAD RAWILLER MARK WEBB - - - Awaiting Market Active 20 STINGRAY BARB 21 48.5kg NADIA DANIELS PAT CAREY & HARRIS WALKER - - - Awaiting Market Active 21 ZAAC 22 48kg THOMAS STOCKDALE JOHN MCARDLE - - - Awaiting Market Active 22 BABY BLUE 23 47.5kg DAMIEN THORNTON BEN, WILL & JD HAYES - - - Awaiting Market Active 23 CONTARINI 24 47kg BEAU MERTENS CHRIS WALLER - - - Awaiting Market Active 24 ETERNAL JOY 25 46.5kg JORDAN CHILDS BEN, WILL & JD HAYES - - - Awaiting Market Active 25 BIG FIN 26 46kg TEO NUGENT BROOKE VERWEY-MITCHELL - - - Awaiting Market Active 26 LEVRIER 27 45.5kg PATRICK MOLONEY MATT LAURIE - - - Awaiting Market Active 27 MARCH ON BY 28 45kg RYAN HOUSTON SIMON ZAHRA - - - Awaiting Market Active 28 BLUE SHIELD 29 44.5kg LACHLAN NEINDORF MICK PRICE & MICHAEL KENT JNR - - - Awaiting Market Active 29 CALEXPO 30 44kg DANIEL STACKHOUSE BEN, WILL & JD HAYES - - - Awaiting Market Active 30 CIRCUS BERZERKUS 31 43.5kg BAILEY KINNINMONT JIM CERCHI (JNR) - - - Awaiting Market Active"
+      },
+      "speed": {
+        "selector": ".eiq-race-v1__speed",
+        "exists": true,
+        "top": 630,
+        "height": 132,
+        "width": 1012,
+        "display": "block",
+        "text": "SPEED MAP PREVIEW TRAVEL RIGHT TO LEFT Awaiting Speed Evidence"
+      },
+      "speedEmpty": {
+        "selector": ".eiq-race-v1__empty",
+        "exists": true,
+        "top": 675,
+        "height": 72,
+        "width": 982,
+        "display": "grid",
+        "text": "Awaiting Speed Evidence"
+      },
+      "board": {
+        "selector": ".eiq-race-v1__board",
+        "exists": true,
+        "top": 876,
+        "height": 1432,
+        "width": 1696,
+        "display": "block",
+        "text": "RUNNER BOARD 30 RUNNERS NO SILK RUNNER BAR WGT JOCKEY TRAINER EPI SPD EDGEiQ PRICE MARKET STATUS 1 LIMBERING 2 58kg Not Notified RAHARNA MCDONALD - - - Awaiting Market Active 2 HUGHIE 3 57.5kg Not Notified JAMIE EDWARDS - - - Awaiting Market Active 3 DETERMINATO 4 57kg BILLY EGAN DOMINIC SUTTON - - - Awaiting Market Active 4 KING TAGALOA 5 56.5kg DYLAN DEAN JULIUS SANDHU - - - Awaiting Market Active 5 OBON 6 56kg LUKE NOLEN MICHAEL KENT - - - Awaiting Market Active 6 REEL DEADLY 7 55.5kg THOMAS STOCKDALE CIARON MAHER - - - Awaiting Market Active 7 RUSSIAN FIREBIRD 8 55kg BRAD RAWILLER TOBY LAKE - - - Awaiting Market Active 8 SKY DEEL 9 54.5kg JAMIE MOTT GAVIN BEDGGOOD - - - Awaiting Market Active 9 EXPANDING POWER 10 54kg LACHLAN NEINDORF ENVER JUSUFOVIC - - - Awaiting Market Active 10 CAPITAL STORM 11 53.5kg LACHLAN NEINDORF PHILLIP STOKES - - - Awaiting Market Active 11 FONTALICIOUS 12 53kg PATRICK MOLONEY SHANE NICHOLS & HAYDEN BLACK - - - Awaiting Market Active 12 MERCHANTESSA 13 52.5kg TEO NUGENT JASON WARREN - - - Awaiting Market Active 13 MIRADOR 14 52kg DANIEL STACKHOUSE BEN, WILL & JD HAYES - - - Awaiting Market Active 14 RUBY GUILD 15 51.5kg NATHAN PUNCH ROBBIE GRIFFITHS - - - Awaiting Market Active 15 TRICKY MISS 16 51kg JAKE NOONAN CIARON MAHER - - - Awaiting Market Active 16 PORTINARI 17 50.5kg DANIEL STACKHOUSE BEN, WILL & JD HAYES - - - Awaiting Market Active 17 MINELLO 18 50kg JAMIE MOTT ANTHONY & SAM FREEDMAN - - - Awaiting Market Active 18 PINAMILLOY 19 49.5kg ZAC SPAIN JASON WARREN - - - Awaiting Market Active 19 RES MIRA 20 49kg BRAD RAWILLER MARK WEBB - - - Awaiting Market Active 20 STINGRAY BARB 21 48.5kg NADIA DANIELS PAT CAREY & HARRIS WALKER - - - Awaiting Market Active 21 ZAAC 22 48kg THOMAS STOCKDALE JOHN MCARDLE - - - Awaiting Market Active 22 BABY BLUE 23 47.5kg DAMIEN THORNTON BEN, WILL & JD HAYES - - - Awaiting Market Active 23 CONTARINI 24 47kg BEAU MERTENS CHRIS WALLER - - - Awaiting Market Active 24 ETERNAL JOY 25 46.5kg JORDAN CHILDS BEN, WILL & JD HAYES - - - Awaiting Market Active 25 BIG FIN 26 46kg TEO NUGENT BROOKE VERWEY-MITCHELL - - - Awaiting Market Active 26 LEVRIER 27 45.5kg PATRICK MOLONEY MATT LAURIE - - - Awaiting Market Active 27 MARCH ON BY 28 45kg RYAN HOUSTON SIMON ZAHRA - - - Awaiting Market Active 28 BLUE SHIELD 29 44.5kg LACHLAN NEINDORF MICK PRICE & MICHAEL KENT JNR - - - Awaiting Market Active 29 CALEXPO 30 44kg DANIEL STACKHOUSE BEN, WILL & JD HAYES - - - Awaiting Market Active 30 CIRCUS BERZERKUS 31 43.5kg BAILEY KINNINMONT JIM CERCHI (JNR) - - - Awaiting Market Active"
+      },
+      "mattersText": "3 ACTIVE",
+      "visibleMatterItems": 3,
+      "visibleMatterCount": 3,
+      "epiStatuses": [
+        "Insufficient Evidence",
+        "Insufficient Evidence",
+        "Insufficient Evidence"
+      ],
+      "headers": [
+        "NO",
+        "SILK",
+        "RUNNER",
+        "BAR",
+        "WGT",
+        "JOCKEY",
+        "TRAINER",
+        "EPI",
+        "SPD",
+        "EDGEiQ PRICE",
+        "MARKET",
+        "STATUS"
+      ],
+      "conditionsPanelCount": 0,
+      "approvedShellPresent": true,
+      "edgeiqOsPresent": false,
+      "badDump": false,
+      "badEncoding": false,
+      "noOverlap": true,
+      "horizontalOverflow": false,
+      "runnerBoardMovedUp": true,
+      "speedEmptyReduced": true,
+      "speedPanelReduced": true,
+      "pass": true
+    },
+    {
+      "width": 1600,
+      "activeWorkspaceKey": "RACE",
+      "mountedComponent": "RaceIntelligenceWorkspace",
+      "raceAttr": "repair-v1",
+      "tabs": {
+        "selector": ".eiq-context-tabs",
+        "exists": true,
+        "top": 106,
+        "height": 48,
+        "width": 1376,
+        "display": "grid",
+        "text": "RACE FIELD FORM GUIDE PERFORMANCE MAP MARKET OVERVIEW INSIGHTS EPI RESULTS REVIEW"
+      },
+      "race": {
+        "selector": ".eiq-race-v1",
+        "exists": true,
+        "top": 172,
+        "height": 2072,
+        "width": 1376,
+        "display": "grid",
+        "text": "MEETINGS > Current Meeting > RACE 1 > RACE Race 1 Current Race - Back to Races MEETING Current Meeting DATE Date Not Published TIME Pending result DISTANCE - TRACK Track Rating Awaiting RAIL Rail Not Supplied WEATHER Weather Awaiting Feed PRIZEMONEY Prizemoney Not Published TEMPO Awaiting Map Evidence Governed map evidence pending EPF Insufficient Evidence Expected performance figure KEY DETERMINANTS LIMBERING No determinant supplied HIDDEN ANGLES Insufficient Evidence No hidden angle supplied WHAT MATTERS TODAY 3 ACTIVE Awaiting Map Evidence Insufficient Performance Evidence Insufficient Governed Statements SPEED MAP PREVIEW TRAVEL RIGHT TO LEFT Awaiting Speed Evidence EPI TOP 3 GOVERNED EPI 1 1 LIMBERING Insufficient Evidence 2 2 HUGHIE Insufficient Evidence 3 3 DETERMINATO Insufficient Evidence RUNNER BOARD 30 RUNNERS NO SILK RUNNER BAR WGT JOCKEY TRAINER EPI SPD EDGEiQ PRICE MARKET STATUS 1 LIMBERING 2 58kg Not Notified RAHARNA MCDONALD - - - Awaiting Market Active 2 HUGHIE 3 57.5kg Not Notified JAMIE EDWARDS - - - Awaiting Market Active 3 DETERMINATO 4 57kg BILLY EGAN DOMINIC SUTTON - - - Awaiting Market Active 4 KING TAGALOA 5 56.5kg DYLAN DEAN JULIUS SANDHU - - - Awaiting Market Active 5 OBON 6 56kg LUKE NOLEN MICHAEL KENT - - - Awaiting Market Active 6 REEL DEADLY 7 55.5kg THOMAS STOCKDALE CIARON MAHER - - - Awaiting Market Active 7 RUSSIAN FIREBIRD 8 55kg BRAD RAWILLER TOBY LAKE - - - Awaiting Market Active 8 SKY DEEL 9 54.5kg JAMIE MOTT GAVIN BEDGGOOD - - - Awaiting Market Active 9 EXPANDING POWER 10 54kg LACHLAN NEINDORF ENVER JUSUFOVIC - - - Awaiting Market Active 10 CAPITAL STORM 11 53.5kg LACHLAN NEINDORF PHILLIP STOKES - - - Awaiting Market Active 11 FONTALICIOUS 12 53kg PATRICK MOLONEY SHANE NICHOLS & HAYDEN BLACK - - - Awaiting Market Active 12 MERCHANTESSA 13 52.5kg TEO NUGENT JASON WARREN - - - Awaiting Market Active 13 MIRADOR 14 52kg DANIEL STACKHOUSE BEN, WILL & JD HAYES - - - Awaiting Market Active 14 RUBY GUILD 15 51.5kg NATHAN PUNCH ROBBIE GRIFFITHS - - - Awaiting Market Active 15 TRICKY MISS 16 51kg JAKE NOONAN CIARON MAHER - - - Awaiting Market Active 16 PORTINARI 17 50.5kg DANIEL STACKHOUSE BEN, WILL & JD HAYES - - - Awaiting Market Active 17 MINELLO 18 50kg JAMIE MOTT ANTHONY & SAM FREEDMAN - - - Awaiting Market Active 18 PINAMILLOY 19 49.5kg ZAC SPAIN JASON WARREN - - - Awaiting Market Active 19 RES MIRA 20 49kg BRAD RAWILLER MARK WEBB - - - Awaiting Market Active 20 STINGRAY BARB 21 48.5kg NADIA DANIELS PAT CAREY & HARRIS WALKER - - - Awaiting Market Active 21 ZAAC 22 48kg THOMAS STOCKDALE JOHN MCARDLE - - - Awaiting Market Active 22 BABY BLUE 23 47.5kg DAMIEN THORNTON BEN, WILL & JD HAYES - - - Awaiting Market Active 23 CONTARINI 24 47kg BEAU MERTENS CHRIS WALLER - - - Awaiting Market Active 24 ETERNAL JOY 25 46.5kg JORDAN CHILDS BEN, WILL & JD HAYES - - - Awaiting Market Active 25 BIG FIN 26 46kg TEO NUGENT BROOKE VERWEY-MITCHELL - - - Awaiting Market Active 26 LEVRIER 27 45.5kg PATRICK MOLONEY MATT LAURIE - - - Awaiting Market Active 27 MARCH ON BY 28 45kg RYAN HOUSTON SIMON ZAHRA - - - Awaiting Market Active 28 BLUE SHIELD 29 44.5kg LACHLAN NEINDORF MICK PRICE & MICHAEL KENT JNR - - - Awaiting Market Active 29 CALEXPO 30 44kg DANIEL STACKHOUSE BEN, WILL & JD HAYES - - - Awaiting Market Active 30 CIRCUS BERZERKUS 31 43.5kg BAILEY KINNINMONT JIM CERCHI (JNR) - - - Awaiting Market Active"
+      },
+      "speed": {
+        "selector": ".eiq-race-v1__speed",
+        "exists": true,
+        "top": 566,
+        "height": 132,
+        "width": 820,
+        "display": "block",
+        "text": "SPEED MAP PREVIEW TRAVEL RIGHT TO LEFT Awaiting Speed Evidence"
+      },
+      "speedEmpty": {
+        "selector": ".eiq-race-v1__empty",
+        "exists": true,
+        "top": 611,
+        "height": 72,
+        "width": 790,
+        "display": "grid",
+        "text": "Awaiting Speed Evidence"
+      },
+      "board": {
+        "selector": ".eiq-race-v1__board",
+        "exists": true,
+        "top": 812,
+        "height": 1432,
+        "width": 1376,
+        "display": "block",
+        "text": "RUNNER BOARD 30 RUNNERS NO SILK RUNNER BAR WGT JOCKEY TRAINER EPI SPD EDGEiQ PRICE MARKET STATUS 1 LIMBERING 2 58kg Not Notified RAHARNA MCDONALD - - - Awaiting Market Active 2 HUGHIE 3 57.5kg Not Notified JAMIE EDWARDS - - - Awaiting Market Active 3 DETERMINATO 4 57kg BILLY EGAN DOMINIC SUTTON - - - Awaiting Market Active 4 KING TAGALOA 5 56.5kg DYLAN DEAN JULIUS SANDHU - - - Awaiting Market Active 5 OBON 6 56kg LUKE NOLEN MICHAEL KENT - - - Awaiting Market Active 6 REEL DEADLY 7 55.5kg THOMAS STOCKDALE CIARON MAHER - - - Awaiting Market Active 7 RUSSIAN FIREBIRD 8 55kg BRAD RAWILLER TOBY LAKE - - - Awaiting Market Active 8 SKY DEEL 9 54.5kg JAMIE MOTT GAVIN BEDGGOOD - - - Awaiting Market Active 9 EXPANDING POWER 10 54kg LACHLAN NEINDORF ENVER JUSUFOVIC - - - Awaiting Market Active 10 CAPITAL STORM 11 53.5kg LACHLAN NEINDORF PHILLIP STOKES - - - Awaiting Market Active 11 FONTALICIOUS 12 53kg PATRICK MOLONEY SHANE NICHOLS & HAYDEN BLACK - - - Awaiting Market Active 12 MERCHANTESSA 13 52.5kg TEO NUGENT JASON WARREN - - - Awaiting Market Active 13 MIRADOR 14 52kg DANIEL STACKHOUSE BEN, WILL & JD HAYES - - - Awaiting Market Active 14 RUBY GUILD 15 51.5kg NATHAN PUNCH ROBBIE GRIFFITHS - - - Awaiting Market Active 15 TRICKY MISS 16 51kg JAKE NOONAN CIARON MAHER - - - Awaiting Market Active 16 PORTINARI 17 50.5kg DANIEL STACKHOUSE BEN, WILL & JD HAYES - - - Awaiting Market Active 17 MINELLO 18 50kg JAMIE MOTT ANTHONY & SAM FREEDMAN - - - Awaiting Market Active 18 PINAMILLOY 19 49.5kg ZAC SPAIN JASON WARREN - - - Awaiting Market Active 19 RES MIRA 20 49kg BRAD RAWILLER MARK WEBB - - - Awaiting Market Active 20 STINGRAY BARB 21 48.5kg NADIA DANIELS PAT CAREY & HARRIS WALKER - - - Awaiting Market Active 21 ZAAC 22 48kg THOMAS STOCKDALE JOHN MCARDLE - - - Awaiting Market Active 22 BABY BLUE 23 47.5kg DAMIEN THORNTON BEN, WILL & JD HAYES - - - Awaiting Market Active 23 CONTARINI 24 47kg BEAU MERTENS CHRIS WALLER - - - Awaiting Market Active 24 ETERNAL JOY 25 46.5kg JORDAN CHILDS BEN, WILL & JD HAYES - - - Awaiting Market Active 25 BIG FIN 26 46kg TEO NUGENT BROOKE VERWEY-MITCHELL - - - Awaiting Market Active 26 LEVRIER 27 45.5kg PATRICK MOLONEY MATT LAURIE - - - Awaiting Market Active 27 MARCH ON BY 28 45kg RYAN HOUSTON SIMON ZAHRA - - - Awaiting Market Active 28 BLUE SHIELD 29 44.5kg LACHLAN NEINDORF MICK PRICE & MICHAEL KENT JNR - - - Awaiting Market Active 29 CALEXPO 30 44kg DANIEL STACKHOUSE BEN, WILL & JD HAYES - - - Awaiting Market Active 30 CIRCUS BERZERKUS 31 43.5kg BAILEY KINNINMONT JIM CERCHI (JNR) - - - Awaiting Market Active"
+      },
+      "mattersText": "3 ACTIVE",
+      "visibleMatterItems": 3,
+      "visibleMatterCount": 3,
+      "epiStatuses": [
+        "Insufficient Evidence",
+        "Insufficient Evidence",
+        "Insufficient Evidence"
+      ],
+      "headers": [
+        "NO",
+        "SILK",
+        "RUNNER",
+        "BAR",
+        "WGT",
+        "JOCKEY",
+        "TRAINER",
+        "EPI",
+        "SPD",
+        "EDGEiQ PRICE",
+        "MARKET",
+        "STATUS"
+      ],
+      "conditionsPanelCount": 0,
+      "approvedShellPresent": true,
+      "edgeiqOsPresent": false,
+      "badDump": false,
+      "badEncoding": false,
+      "noOverlap": true,
+      "horizontalOverflow": false,
+      "runnerBoardMovedUp": true,
+      "speedEmptyReduced": true,
+      "speedPanelReduced": true,
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "activeWorkspaceKey": "RACE",
+      "mountedComponent": "RaceIntelligenceWorkspace",
+      "raceAttr": "repair-v1",
+      "tabs": {
+        "selector": ".eiq-context-tabs",
+        "exists": true,
+        "top": 106,
+        "height": 48,
+        "width": 1282,
+        "display": "grid",
+        "text": "RACE FIELD FORM GUIDE PERFORMANCE MAP MARKET OVERVIEW INSIGHTS EPI RESULTS REVIEW"
+      },
+      "race": {
+        "selector": ".eiq-race-v1",
+        "exists": true,
+        "top": 172,
+        "height": 2120,
+        "width": 1282,
+        "display": "grid",
+        "text": "MEETINGS > Current Meeting > RACE 1 > RACE Race 1 Current Race - Back to Races MEETING Current Meeting DATE Date Not Published TIME Pending result DISTANCE - TRACK Track Rating Awaiting RAIL Rail Not Supplied WEATHER Weather Awaiting Feed PRIZEMONEY Prizemoney Not Published TEMPO Awaiting Map Evidence Governed map evidence pending EPF Insufficient Evidence Expected performance figure KEY DETERMINANTS LIMBERING No determinant supplied HIDDEN ANGLES Insufficient Evidence No hidden angle supplied WHAT MATTERS TODAY 3 ACTIVE Awaiting Map Evidence Insufficient Performance Evidence Insufficient Governed Statements SPEED MAP PREVIEW TRAVEL RIGHT TO LEFT Awaiting Speed Evidence EPI TOP 3 GOVERNED EPI 1 1 LIMBERING Insufficient Evidence 2 2 HUGHIE Insufficient Evidence 3 3 DETERMINATO Insufficient Evidence RUNNER BOARD 30 RUNNERS NO SILK RUNNER BAR WGT JOCKEY TRAINER EPI SPD EDGEiQ PRICE MARKET STATUS 1 LIMBERING 2 58kg Not Notified RAHARNA MCDONALD - - - Awaiting Market Active 2 HUGHIE 3 57.5kg Not Notified JAMIE EDWARDS - - - Awaiting Market Active 3 DETERMINATO 4 57kg BILLY EGAN DOMINIC SUTTON - - - Awaiting Market Active 4 KING TAGALOA 5 56.5kg DYLAN DEAN JULIUS SANDHU - - - Awaiting Market Active 5 OBON 6 56kg LUKE NOLEN MICHAEL KENT - - - Awaiting Market Active 6 REEL DEADLY 7 55.5kg THOMAS STOCKDALE CIARON MAHER - - - Awaiting Market Active 7 RUSSIAN FIREBIRD 8 55kg BRAD RAWILLER TOBY LAKE - - - Awaiting Market Active 8 SKY DEEL 9 54.5kg JAMIE MOTT GAVIN BEDGGOOD - - - Awaiting Market Active 9 EXPANDING POWER 10 54kg LACHLAN NEINDORF ENVER JUSUFOVIC - - - Awaiting Market Active 10 CAPITAL STORM 11 53.5kg LACHLAN NEINDORF PHILLIP STOKES - - - Awaiting Market Active 11 FONTALICIOUS 12 53kg PATRICK MOLONEY SHANE NICHOLS & HAYDEN BLACK - - - Awaiting Market Active 12 MERCHANTESSA 13 52.5kg TEO NUGENT JASON WARREN - - - Awaiting Market Active 13 MIRADOR 14 52kg DANIEL STACKHOUSE BEN, WILL & JD HAYES - - - Awaiting Market Active 14 RUBY GUILD 15 51.5kg NATHAN PUNCH ROBBIE GRIFFITHS - - - Awaiting Market Active 15 TRICKY MISS 16 51kg JAKE NOONAN CIARON MAHER - - - Awaiting Market Active 16 PORTINARI 17 50.5kg DANIEL STACKHOUSE BEN, WILL & JD HAYES - - - Awaiting Market Active 17 MINELLO 18 50kg JAMIE MOTT ANTHONY & SAM FREEDMAN - - - Awaiting Market Active 18 PINAMILLOY 19 49.5kg ZAC SPAIN JASON WARREN - - - Awaiting Market Active 19 RES MIRA 20 49kg BRAD RAWILLER MARK WEBB - - - Awaiting Market Active 20 STINGRAY BARB 21 48.5kg NADIA DANIELS PAT CAREY & HARRIS WALKER - - - Awaiting Market Active 21 ZAAC 22 48kg THOMAS STOCKDALE JOHN MCARDLE - - - Awaiting Market Active 22 BABY BLUE 23 47.5kg DAMIEN THORNTON BEN, WILL & JD HAYES - - - Awaiting Market Active 23 CONTARINI 24 47kg BEAU MERTENS CHRIS WALLER - - - Awaiting Market Active 24 ETERNAL JOY 25 46.5kg JORDAN CHILDS BEN, WILL & JD HAYES - - - Awaiting Market Active 25 BIG FIN 26 46kg TEO NUGENT BROOKE VERWEY-MITCHELL - - - Awaiting Market Active 26 LEVRIER 27 45.5kg PATRICK MOLONEY MATT LAURIE - - - Awaiting Market Active 27 MARCH ON BY 28 45kg RYAN HOUSTON SIMON ZAHRA - - - Awaiting Market Active 28 BLUE SHIELD 29 44.5kg LACHLAN NEINDORF MICK PRICE & MICHAEL KENT JNR - - - Awaiting Market Active 29 CALEXPO 30 44kg DANIEL STACKHOUSE BEN, WILL & JD HAYES - - - Awaiting Market Active 30 CIRCUS BERZERKUS 31 43.5kg BAILEY KINNINMONT JIM CERCHI (JNR) - - - Awaiting Market Active"
+      },
+      "speed": {
+        "selector": ".eiq-race-v1__speed",
+        "exists": true,
+        "top": 614,
+        "height": 132,
+        "width": 763,
+        "display": "block",
+        "text": "SPEED MAP PREVIEW TRAVEL RIGHT TO LEFT Awaiting Speed Evidence"
+      },
+      "speedEmpty": {
+        "selector": ".eiq-race-v1__empty",
+        "exists": true,
+        "top": 659,
+        "height": 72,
+        "width": 733,
+        "display": "grid",
+        "text": "Awaiting Speed Evidence"
+      },
+      "board": {
+        "selector": ".eiq-race-v1__board",
+        "exists": true,
+        "top": 860,
+        "height": 1432,
+        "width": 1282,
+        "display": "block",
+        "text": "RUNNER BOARD 30 RUNNERS NO SILK RUNNER BAR WGT JOCKEY TRAINER EPI SPD EDGEiQ PRICE MARKET STATUS 1 LIMBERING 2 58kg Not Notified RAHARNA MCDONALD - - - Awaiting Market Active 2 HUGHIE 3 57.5kg Not Notified JAMIE EDWARDS - - - Awaiting Market Active 3 DETERMINATO 4 57kg BILLY EGAN DOMINIC SUTTON - - - Awaiting Market Active 4 KING TAGALOA 5 56.5kg DYLAN DEAN JULIUS SANDHU - - - Awaiting Market Active 5 OBON 6 56kg LUKE NOLEN MICHAEL KENT - - - Awaiting Market Active 6 REEL DEADLY 7 55.5kg THOMAS STOCKDALE CIARON MAHER - - - Awaiting Market Active 7 RUSSIAN FIREBIRD 8 55kg BRAD RAWILLER TOBY LAKE - - - Awaiting Market Active 8 SKY DEEL 9 54.5kg JAMIE MOTT GAVIN BEDGGOOD - - - Awaiting Market Active 9 EXPANDING POWER 10 54kg LACHLAN NEINDORF ENVER JUSUFOVIC - - - Awaiting Market Active 10 CAPITAL STORM 11 53.5kg LACHLAN NEINDORF PHILLIP STOKES - - - Awaiting Market Active 11 FONTALICIOUS 12 53kg PATRICK MOLONEY SHANE NICHOLS & HAYDEN BLACK - - - Awaiting Market Active 12 MERCHANTESSA 13 52.5kg TEO NUGENT JASON WARREN - - - Awaiting Market Active 13 MIRADOR 14 52kg DANIEL STACKHOUSE BEN, WILL & JD HAYES - - - Awaiting Market Active 14 RUBY GUILD 15 51.5kg NATHAN PUNCH ROBBIE GRIFFITHS - - - Awaiting Market Active 15 TRICKY MISS 16 51kg JAKE NOONAN CIARON MAHER - - - Awaiting Market Active 16 PORTINARI 17 50.5kg DANIEL STACKHOUSE BEN, WILL & JD HAYES - - - Awaiting Market Active 17 MINELLO 18 50kg JAMIE MOTT ANTHONY & SAM FREEDMAN - - - Awaiting Market Active 18 PINAMILLOY 19 49.5kg ZAC SPAIN JASON WARREN - - - Awaiting Market Active 19 RES MIRA 20 49kg BRAD RAWILLER MARK WEBB - - - Awaiting Market Active 20 STINGRAY BARB 21 48.5kg NADIA DANIELS PAT CAREY & HARRIS WALKER - - - Awaiting Market Active 21 ZAAC 22 48kg THOMAS STOCKDALE JOHN MCARDLE - - - Awaiting Market Active 22 BABY BLUE 23 47.5kg DAMIEN THORNTON BEN, WILL & JD HAYES - - - Awaiting Market Active 23 CONTARINI 24 47kg BEAU MERTENS CHRIS WALLER - - - Awaiting Market Active 24 ETERNAL JOY 25 46.5kg JORDAN CHILDS BEN, WILL & JD HAYES - - - Awaiting Market Active 25 BIG FIN 26 46kg TEO NUGENT BROOKE VERWEY-MITCHELL - - - Awaiting Market Active 26 LEVRIER 27 45.5kg PATRICK MOLONEY MATT LAURIE - - - Awaiting Market Active 27 MARCH ON BY 28 45kg RYAN HOUSTON SIMON ZAHRA - - - Awaiting Market Active 28 BLUE SHIELD 29 44.5kg LACHLAN NEINDORF MICK PRICE & MICHAEL KENT JNR - - - Awaiting Market Active 29 CALEXPO 30 44kg DANIEL STACKHOUSE BEN, WILL & JD HAYES - - - Awaiting Market Active 30 CIRCUS BERZERKUS 31 43.5kg BAILEY KINNINMONT JIM CERCHI (JNR) - - - Awaiting Market Active"
+      },
+      "mattersText": "3 ACTIVE",
+      "visibleMatterItems": 3,
+      "visibleMatterCount": 3,
+      "epiStatuses": [
+        "Insufficient Evidence",
+        "Insufficient Evidence",
+        "Insufficient Evidence"
+      ],
+      "headers": [
+        "NO",
+        "SILK",
+        "RUNNER",
+        "BAR",
+        "WGT",
+        "JOCKEY",
+        "TRAINER",
+        "EPI",
+        "SPD",
+        "EDGEiQ PRICE",
+        "MARKET",
+        "STATUS"
+      ],
+      "conditionsPanelCount": 0,
+      "approvedShellPresent": true,
+      "edgeiqOsPresent": false,
+      "badDump": false,
+      "badEncoding": false,
+      "noOverlap": true,
+      "horizontalOverflow": false,
+      "runnerBoardMovedUp": true,
+      "speedEmptyReduced": true,
+      "speedPanelReduced": true,
+      "pass": true
+    },
+    {
+      "width": 1366,
+      "activeWorkspaceKey": "RACE",
+      "mountedComponent": "RaceIntelligenceWorkspace",
+      "raceAttr": "repair-v1",
+      "tabs": {
+        "selector": ".eiq-context-tabs",
+        "exists": true,
+        "top": 106,
+        "height": 90,
+        "width": 1282,
+        "display": "grid",
+        "text": "RACE FIELD FORM GUIDE PERFORMANCE MAP MARKET OVERVIEW INSIGHTS EPI RESULTS REVIEW"
+      },
+      "race": {
+        "selector": ".eiq-race-v1",
+        "exists": true,
+        "top": 214,
+        "height": 2120,
+        "width": 1282,
+        "display": "grid",
+        "text": "MEETINGS > Current Meeting > RACE 1 > RACE Race 1 Current Race - Back to Races MEETING Current Meeting DATE Date Not Published TIME Pending result DISTANCE - TRACK Track Rating Awaiting RAIL Rail Not Supplied WEATHER Weather Awaiting Feed PRIZEMONEY Prizemoney Not Published TEMPO Awaiting Map Evidence Governed map evidence pending EPF Insufficient Evidence Expected performance figure KEY DETERMINANTS LIMBERING No determinant supplied HIDDEN ANGLES Insufficient Evidence No hidden angle supplied WHAT MATTERS TODAY 3 ACTIVE Awaiting Map Evidence Insufficient Performance Evidence Insufficient Governed Statements SPEED MAP PREVIEW TRAVEL RIGHT TO LEFT Awaiting Speed Evidence EPI TOP 3 GOVERNED EPI 1 1 LIMBERING Insufficient Evidence 2 2 HUGHIE Insufficient Evidence 3 3 DETERMINATO Insufficient Evidence RUNNER BOARD 30 RUNNERS NO SILK RUNNER BAR WGT JOCKEY TRAINER EPI SPD EDGEiQ PRICE MARKET STATUS 1 LIMBERING 2 58kg Not Notified RAHARNA MCDONALD - - - Awaiting Market Active 2 HUGHIE 3 57.5kg Not Notified JAMIE EDWARDS - - - Awaiting Market Active 3 DETERMINATO 4 57kg BILLY EGAN DOMINIC SUTTON - - - Awaiting Market Active 4 KING TAGALOA 5 56.5kg DYLAN DEAN JULIUS SANDHU - - - Awaiting Market Active 5 OBON 6 56kg LUKE NOLEN MICHAEL KENT - - - Awaiting Market Active 6 REEL DEADLY 7 55.5kg THOMAS STOCKDALE CIARON MAHER - - - Awaiting Market Active 7 RUSSIAN FIREBIRD 8 55kg BRAD RAWILLER TOBY LAKE - - - Awaiting Market Active 8 SKY DEEL 9 54.5kg JAMIE MOTT GAVIN BEDGGOOD - - - Awaiting Market Active 9 EXPANDING POWER 10 54kg LACHLAN NEINDORF ENVER JUSUFOVIC - - - Awaiting Market Active 10 CAPITAL STORM 11 53.5kg LACHLAN NEINDORF PHILLIP STOKES - - - Awaiting Market Active 11 FONTALICIOUS 12 53kg PATRICK MOLONEY SHANE NICHOLS & HAYDEN BLACK - - - Awaiting Market Active 12 MERCHANTESSA 13 52.5kg TEO NUGENT JASON WARREN - - - Awaiting Market Active 13 MIRADOR 14 52kg DANIEL STACKHOUSE BEN, WILL & JD HAYES - - - Awaiting Market Active 14 RUBY GUILD 15 51.5kg NATHAN PUNCH ROBBIE GRIFFITHS - - - Awaiting Market Active 15 TRICKY MISS 16 51kg JAKE NOONAN CIARON MAHER - - - Awaiting Market Active 16 PORTINARI 17 50.5kg DANIEL STACKHOUSE BEN, WILL & JD HAYES - - - Awaiting Market Active 17 MINELLO 18 50kg JAMIE MOTT ANTHONY & SAM FREEDMAN - - - Awaiting Market Active 18 PINAMILLOY 19 49.5kg ZAC SPAIN JASON WARREN - - - Awaiting Market Active 19 RES MIRA 20 49kg BRAD RAWILLER MARK WEBB - - - Awaiting Market Active 20 STINGRAY BARB 21 48.5kg NADIA DANIELS PAT CAREY & HARRIS WALKER - - - Awaiting Market Active 21 ZAAC 22 48kg THOMAS STOCKDALE JOHN MCARDLE - - - Awaiting Market Active 22 BABY BLUE 23 47.5kg DAMIEN THORNTON BEN, WILL & JD HAYES - - - Awaiting Market Active 23 CONTARINI 24 47kg BEAU MERTENS CHRIS WALLER - - - Awaiting Market Active 24 ETERNAL JOY 25 46.5kg JORDAN CHILDS BEN, WILL & JD HAYES - - - Awaiting Market Active 25 BIG FIN 26 46kg TEO NUGENT BROOKE VERWEY-MITCHELL - - - Awaiting Market Active 26 LEVRIER 27 45.5kg PATRICK MOLONEY MATT LAURIE - - - Awaiting Market Active 27 MARCH ON BY 28 45kg RYAN HOUSTON SIMON ZAHRA - - - Awaiting Market Active 28 BLUE SHIELD 29 44.5kg LACHLAN NEINDORF MICK PRICE & MICHAEL KENT JNR - - - Awaiting Market Active 29 CALEXPO 30 44kg DANIEL STACKHOUSE BEN, WILL & JD HAYES - - - Awaiting Market Active 30 CIRCUS BERZERKUS 31 43.5kg BAILEY KINNINMONT JIM CERCHI (JNR) - - - Awaiting Market Active"
+      },
+      "speed": {
+        "selector": ".eiq-race-v1__speed",
+        "exists": true,
+        "top": 656,
+        "height": 132,
+        "width": 763,
+        "display": "block",
+        "text": "SPEED MAP PREVIEW TRAVEL RIGHT TO LEFT Awaiting Speed Evidence"
+      },
+      "speedEmpty": {
+        "selector": ".eiq-race-v1__empty",
+        "exists": true,
+        "top": 701,
+        "height": 72,
+        "width": 733,
+        "display": "grid",
+        "text": "Awaiting Speed Evidence"
+      },
+      "board": {
+        "selector": ".eiq-race-v1__board",
+        "exists": true,
+        "top": 902,
+        "height": 1432,
+        "width": 1282,
+        "display": "block",
+        "text": "RUNNER BOARD 30 RUNNERS NO SILK RUNNER BAR WGT JOCKEY TRAINER EPI SPD EDGEiQ PRICE MARKET STATUS 1 LIMBERING 2 58kg Not Notified RAHARNA MCDONALD - - - Awaiting Market Active 2 HUGHIE 3 57.5kg Not Notified JAMIE EDWARDS - - - Awaiting Market Active 3 DETERMINATO 4 57kg BILLY EGAN DOMINIC SUTTON - - - Awaiting Market Active 4 KING TAGALOA 5 56.5kg DYLAN DEAN JULIUS SANDHU - - - Awaiting Market Active 5 OBON 6 56kg LUKE NOLEN MICHAEL KENT - - - Awaiting Market Active 6 REEL DEADLY 7 55.5kg THOMAS STOCKDALE CIARON MAHER - - - Awaiting Market Active 7 RUSSIAN FIREBIRD 8 55kg BRAD RAWILLER TOBY LAKE - - - Awaiting Market Active 8 SKY DEEL 9 54.5kg JAMIE MOTT GAVIN BEDGGOOD - - - Awaiting Market Active 9 EXPANDING POWER 10 54kg LACHLAN NEINDORF ENVER JUSUFOVIC - - - Awaiting Market Active 10 CAPITAL STORM 11 53.5kg LACHLAN NEINDORF PHILLIP STOKES - - - Awaiting Market Active 11 FONTALICIOUS 12 53kg PATRICK MOLONEY SHANE NICHOLS & HAYDEN BLACK - - - Awaiting Market Active 12 MERCHANTESSA 13 52.5kg TEO NUGENT JASON WARREN - - - Awaiting Market Active 13 MIRADOR 14 52kg DANIEL STACKHOUSE BEN, WILL & JD HAYES - - - Awaiting Market Active 14 RUBY GUILD 15 51.5kg NATHAN PUNCH ROBBIE GRIFFITHS - - - Awaiting Market Active 15 TRICKY MISS 16 51kg JAKE NOONAN CIARON MAHER - - - Awaiting Market Active 16 PORTINARI 17 50.5kg DANIEL STACKHOUSE BEN, WILL & JD HAYES - - - Awaiting Market Active 17 MINELLO 18 50kg JAMIE MOTT ANTHONY & SAM FREEDMAN - - - Awaiting Market Active 18 PINAMILLOY 19 49.5kg ZAC SPAIN JASON WARREN - - - Awaiting Market Active 19 RES MIRA 20 49kg BRAD RAWILLER MARK WEBB - - - Awaiting Market Active 20 STINGRAY BARB 21 48.5kg NADIA DANIELS PAT CAREY & HARRIS WALKER - - - Awaiting Market Active 21 ZAAC 22 48kg THOMAS STOCKDALE JOHN MCARDLE - - - Awaiting Market Active 22 BABY BLUE 23 47.5kg DAMIEN THORNTON BEN, WILL & JD HAYES - - - Awaiting Market Active 23 CONTARINI 24 47kg BEAU MERTENS CHRIS WALLER - - - Awaiting Market Active 24 ETERNAL JOY 25 46.5kg JORDAN CHILDS BEN, WILL & JD HAYES - - - Awaiting Market Active 25 BIG FIN 26 46kg TEO NUGENT BROOKE VERWEY-MITCHELL - - - Awaiting Market Active 26 LEVRIER 27 45.5kg PATRICK MOLONEY MATT LAURIE - - - Awaiting Market Active 27 MARCH ON BY 28 45kg RYAN HOUSTON SIMON ZAHRA - - - Awaiting Market Active 28 BLUE SHIELD 29 44.5kg LACHLAN NEINDORF MICK PRICE & MICHAEL KENT JNR - - - Awaiting Market Active 29 CALEXPO 30 44kg DANIEL STACKHOUSE BEN, WILL & JD HAYES - - - Awaiting Market Active 30 CIRCUS BERZERKUS 31 43.5kg BAILEY KINNINMONT JIM CERCHI (JNR) - - - Awaiting Market Active"
+      },
+      "mattersText": "3 ACTIVE",
+      "visibleMatterItems": 3,
+      "visibleMatterCount": 3,
+      "epiStatuses": [
+        "Insufficient Evidence",
+        "Insufficient Evidence",
+        "Insufficient Evidence"
+      ],
+      "headers": [
+        "NO",
+        "SILK",
+        "RUNNER",
+        "BAR",
+        "WGT",
+        "JOCKEY",
+        "TRAINER",
+        "EPI",
+        "SPD",
+        "EDGEiQ PRICE",
+        "MARKET",
+        "STATUS"
+      ],
+      "conditionsPanelCount": 0,
+      "approvedShellPresent": true,
+      "edgeiqOsPresent": false,
+      "badDump": false,
+      "badEncoding": false,
+      "noOverlap": true,
+      "horizontalOverflow": false,
+      "runnerBoardMovedUp": true,
+      "speedEmptyReduced": true,
+      "speedPanelReduced": true,
+      "pass": true
+    }
+  ],
+  "console": [
+    {
+      "width": 1920,
+      "type": "warning",
+      "text": "Clerk disabled: missing VITE_CLERK_PUBLISHABLE_KEY"
+    },
+    {
+      "width": 1600,
+      "type": "warning",
+      "text": "Clerk disabled: missing VITE_CLERK_PUBLISHABLE_KEY"
+    },
+    {
+      "width": 1440,
+      "type": "warning",
+      "text": "Clerk disabled: missing VITE_CLERK_PUBLISHABLE_KEY"
+    },
+    {
+      "width": 1366,
+      "type": "warning",
+      "text": "Clerk disabled: missing VITE_CLERK_PUBLISHABLE_KEY"
+    }
+  ],
+  "hard_error_count": 0,
+  "home_regression_status": "PASS",
+  "meetings_regression_status": "PASS",
+  "field_regression_status": "PASS",
+  "race_switching_status": "PASS",
+  "home": {
+    "tabName": "HOME",
+    "clicked": true,
+    "activeWorkspaceKey": "HOME",
+    "selectorExists": true,
+    "bodyText": "EDGEiQ RACE INTELLIGENCE HOME MEETINGS RACE FIELD FORM GUIDE PERFORMANCE EPI MAP MARKET OVERVIEW INSIGHTS RESULTS LAB COMPARE REVIEW SETTINGS EDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM Information is not Intelligence. Evidence leads. Precision decides. SUN, 26 JULY 2026 06:13 pm AEDT Welcome to EDGEIQ Professional racing intelligence for daily operators. Governed meetings, race shape, performance, market context and review tools in one operating system. Data Quality Pipeline Ready Status Ready Window 2026-07-20 Meetings 1 Races 8 Declared 108 Scratchings 0 Last Build 20 July, 10:56 am EF Evidence First Governed race, runner and market context in one operating view. PR Built For Professionals Fast navigation for analysts working through live race days. CI Complete Intelligence"
+  },
+  "meetings": {
+    "tabName": "MEETINGS",
+    "clicked": true,
+    "activeWorkspaceKey": "MEETINGS",
+    "selectorExists": true,
+    "bodyText": "EDGEiQ RACE INTELLIGENCE HOME MEETINGS RACE FIELD FORM GUIDE PERFORMANCE EPI MAP MARKET OVERVIEW INSIGHTS RESULTS LAB COMPARE REVIEW SETTINGS EDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM Information is not Intelligence. Evidence leads. Precision decides. SUN, 26 JULY 2026 06:13 pm AEDT MEETINGS Three day racing outlook. Select a meeting to view races and details. DATE RANGE TODAY Sun, 26 July TOMORROW Mon, 27 July DAY +2 Tue, 28 July MEETINGS (SUNDAY 26 JULY 2026) Search meetings Filters Open Meeting SELECT MEETING STATE RAIL TRACK WEATHER RACES DECLARED SCRATCHINGS Selected Sale VIC Not supplied Awaiting Track Rating Awaiting Weather Feed 8 108 0 Showing 1 to 1 of 1 meetings Current Completed Abandoned Postponed RACE START TIMES ALL MEETINGS Race start times not published. Sal"
+  },
+  "field": {
+    "tabName": "FIELD",
+    "clicked": true,
+    "activeWorkspaceKey": "FIELD",
+    "selectorExists": true,
+    "bodyText": "EDGEiQ RACE INTELLIGENCE HOME MEETINGS RACE FIELD FORM GUIDE PERFORMANCE EPI MAP MARKET OVERVIEW INSIGHTS RESULTS LAB COMPARE REVIEW SETTINGS EDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM Information is not Intelligence. Evidence leads. Precision decides. SUN, 26 JULY 2026 06:13 pm AEDT MEETINGS SALE RACE 1 FIELD Race 1 Sale Cup Maiden Plate Maiden Back to Races LOCATION Sale DATE 2026-07-26 DISTANCE 2200m TRACK Set Weights. Three-Years-Old and Upwards, No sex restriction. Maiden. Apprentices can claim. Track name: Main. Track type: Turf. Field limit: 14. This race carries VOBIS Silver Bonuses of $12,000 for qualified horses. RACE FIELD FORM GUIDE PERFORMANCE MAP MARKET OVERVIEW INSIGHTS EPI RESULTS REVIEW FIELD Race field Official runners with governed EDGEiQ fields. NO SILK RU"
+  },
+  "switches": [
+    {
+      "label": "R1",
+      "clicked": true,
+      "activeWorkspaceKey": "RACE",
+      "identity": "Race 1 Sale Cup Maiden Plate Maiden Back to Races",
+      "activeSelector": "R1 Time Not Published",
+      "pass": true
+    },
+    {
+      "label": "R2",
+      "clicked": true,
+      "activeWorkspaceKey": "RACE",
+      "identity": "Race 2 Maiden Plate Maiden Back to Races",
+      "activeSelector": "R2 Time Not Published",
+      "pass": true
+    },
+    {
+      "label": "R3",
+      "clicked": true,
+      "activeWorkspaceKey": "RACE",
+      "identity": "Race 3 Viatek Maiden Plate Maiden Back to Races",
+      "activeSelector": "R3 Time Not Published",
+      "pass": true
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "overall_status": "EDGEIQ_PERFORMANCE_INTELLIGENCE_LIVE_PARTIAL_HISTORICAL_COVERAGE",
+  "normalisation_method": "NORM_A_HISTORICAL_POPULATION_LINEAR_CENTRE_SCALE_V1",
+  "normalisation_version": "HPR-NORM-A-v1",
+  "centre_value": "-0.193589285714",
+  "scale_value": "1.637341550205",
+  "normalisation_parameter_hash": "382eb7ca17eef645ec747d2cc0034c0851bac76e27b43f2e143ab5af2e4f26a9",
+  "aggregation_method": "AGG_B_WEIGHTED_ARITHMETIC_MEAN_EXPONENTIAL_HALF_LIFE_V1",
+  "aggregation_version": "HPR-AGG-B-v1",
+  "aggregation_parameter_hash": "27cc5486536af26f2d5b2c307b05d1ee56d9cba25689d3889767f4b5fbe7910b",
+  "row_counts": {
+    "normalisation_source": 1,
+    "normalisation_parameter": 1,
+    "aggregation_source": 1,
+    "aggregation_parameter": 1,
+    "historical_pi": 168,
+    "normalisation": 168,
+    "rating_base": 168,
+    "identity_map": 24,
+    "observation": 168,
+    "aggregate": 24,
+    "horse_rating": 24,
+    "live_entries": 204,
+    "live_rating_match": 204,
+    "projected_performance": 0,
+    "epi": 0,
+    "epi_component": 0,
+    "epi_ordering": 0,
+    "epi_distribution": 0
+  },
+  "live_coverage": {
+    "live_entries": 204,
+    "active_entries": 188,
+    "active_horses_with_ratings": 1,
+    "active_horses_without_ratings": 187,
+    "projected_performance_rows": 0,
+    "epi_rows": 0
+  },
+  "horse_rating_hash": "ed4eff644e2ec0fe2ac16da7710653997363bcac93470b1b93a19d780536ed0d",
+  "trust_manifest": "C:/Users/trent/OneDrive/Documents/EDGEIQ_PLATFORM/public/data/edgeiq_performance_intelligence_trust_manifest_v1.json",
+  "validation": {
+    "python_compile": "PASS",
+    "typescript": "PASS",
+    "vite": "PASS_3M05S_WITH_CHUNK_SIZE_WARNING",
+    "smoke": "PASS"
+  },
+  "program_smoke": "C:/Users/trent/OneDrive/Documents/EDGEIQ_PLATFORM/docs/performance-intelligence/horse-performance-rating/method-governance/edgeiq_performance_intelligence_program_smoke_v1.json"
+}

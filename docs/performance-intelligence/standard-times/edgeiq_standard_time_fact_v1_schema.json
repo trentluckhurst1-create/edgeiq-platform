@@ -1,0 +1,24 @@
+{
+  "fields": [
+    "standard_time_id",
+    "canonical_track_id",
+    "track_display_name",
+    "track_layout",
+    "distance_metres",
+    "track_condition_group",
+    "race_class_group",
+    "jurisdiction",
+    "surface",
+    "benchmark_group_key",
+    "observation_count",
+    "standard_time_seconds",
+    "dispersion_measure",
+    "minimum_time_seconds",
+    "maximum_time_seconds",
+    "effective_start_date",
+    "effective_end_date",
+    "methodology_version",
+    "build_timestamp"
+  ],
+  "primary_key": "standard_time_id"
+}

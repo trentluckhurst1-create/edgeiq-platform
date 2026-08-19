@@ -1,0 +1,731 @@
+
+==========================================================================================
+src/edgeiq-os/race/RaceFileV3.tsx
+==========================================================================================
+0001: import { Fragment, type ReactNode, useMemo, useState } from "react";
+0002: import { RaceFileService } from "../services/RaceFileService";
+0003: import { type GlobalSection } from "./components/AppNavigation";
+0004: import { HistoricalRunCard } from "./components/HistoricalRunCard";
+0005: import { GlobalResultsWorkspace } from "./components/GlobalResultsWorkspace";
+0006: import { LabWorkspace } from "./components/LabWorkspace";
+0007: import { MeetingWorkspace } from "./components/MeetingWorkspace";
+0008: import { MeetingsWorkspace } from "./components/MeetingsWorkspace";
+0009: import { RaceWorkspace } from "./components/RaceWorkspace";
+0010: import { RunnerProfileWorkspace } from "./components/RunnerProfileWorkspace";
+0011: import { RunnerTabs, type RunnerWorkspaceMode } from "./components/RunnerTabs";
+0012: import { SettingsWorkspace } from "./components/SettingsWorkspace";
+0013: import { WorkspaceShell } from "./components/WorkspaceShell";
+0014: 
+0015: const file = RaceFileService.buildRaceBook();
+0016: const primary = file.field[0];
+0017: 
+0018: type WorkbenchMode = RunnerWorkspaceMode;
+0019: type ViewLevel = "meetings" | "meeting" | "race" | "runner";
+0020: type SectionalStandard = "sameClass" | "open" | "trackDistance" | "todayProjection";
+0021: 
+0022: function clean(value: any): string {
+0023:   if (value === null || value === undefined || value === "") return "-";
+0024:   return String(value)
+0025:     .replace(/\s+/g, " ")
+0026:     .trim();
+0027: }
+0028: function market(value: any): string {
+0029:   const raw = clean(value);
+0030:   if (!raw || raw === "-" || raw.toUpperCase() === "MISSING") return "Not available";
+0031:   if (raw.toUpperCase() === "SCRATCHED") return "Scratched";
+0032:   const n = Number(raw);
+0033:   return Number.isFinite(n) ? `$${n.toFixed(n < 10 ? 2 : 0)}` : raw;
+0034: }
+0035: 
+0036: function weight(value: any): string {
+0037:   const raw = clean(value);
+0038:   return raw && raw !== "-" ? raw : "Not available";
+0039: }
+0040: 
+0041: function dna(value: any): string {
+0042:   const raw = clean(value);
+0043:   if (!raw || raw === "-" || raw.toUpperCase().includes("HTTP")) return "Not available";
+0044:   return raw;
+0045: }
+0046: 
+0047: function score(run: any): number {
+0048:   return Number(run?.professionalForm?.assignment?.score ?? 0);
+0049: }
+0050: 
+0051: function importance(run: any): "PRIMARY" | "SUPPORTING" | "REFERENCE" | "BACKGROUND" {
+0052:   const s = score(run);
+0053:   if (s >= 88) return "PRIMARY";
+0054:   if (s >= 76) return "SUPPORTING";
+0055:   if (s >= 62) return "REFERENCE";
+0056:   return "BACKGROUND";
+0057: }
+0058: 
+0059: function chanceTypeLabel(value: string) {
+0060:   if (value === "PRIMARY") return "Key Chance";
+0061:   if (value === "SUPPORTING") return "Genuine Chance";
+0062:   if (value === "REFERENCE") return "Useful Run";
+0063:   if (value === "BACKGROUND") return "Watch";
+0064:   return "Forgive / Ignore";
+0065: }
+0066: 
+0067: function runReferenceLabel(value: string) {
+0068:   if (value === "PRIMARY") return "Key Run";
+0069:   if (value === "SUPPORTING") return "Strong Run";
+0070:   if (value === "REFERENCE") return "Useful Run";
+0071:   if (value === "BACKGROUND") return "Watch";
+0072:   return "Query Run";
+0073: }
+0074: 
+0075: function suitabilityFromScore(value: number) {
+0076:   if (value >= 75) return "Strong";
+0077:   if (value >= 55) return "Suitable";
+0078:   if (value >= 35) return "Moderate";
+0079:   return "Query";
+0080: }
+0081: 
+0082: function punterCopy(value: any) {
+0083:   return clean(value)
+0084:     .replace(/Strong historical\s+evidence for today.?s assignment\./gi, "Strong form read for today's race.")
+0085:     .replace(/Strong in defeat\. The performance rated better than the finishing position suggests\./gi, "Better than the finishing position suggests. Previous run has more merit than it reads on paper.")
+0086:     .replace(/Relevant historical assignment with usable evidence for today\./gi, "Relevant past run with usable clues for today.")
+0087:     .replace(/Form line requires caution due to weaker race strength\./gi, "Form line needs caution because that race was weaker.")
+0088:     .replace(/Background form\. Useful context, but not a primary match for today\./gi, "Watch run. Useful context, but not a key read for today.")
+0089:     .replace(/today's assignment/gi, "today's race")
+0090:     .replace(/assignment/gi, "race setup")
+0091:     .replace(/historical\s+evidence/gi, "past form")
+0092:     .replace(/evidence quality/gi, "setup read")
+0093:     .replace(/evidence/gi, "form")
+0094:     .trim();
+0095: }
+0096: 
+0097: function ratingBand(value: any): string {
+0098:   const n = Number(value ?? 0);
+0099:   if (n >= 90) return "Elite";
+0100:   if (n >= 84) return "Strong";
+0101:   if (n >= 76) return "Positive";
+0102:   if (n >= 68) return "Neutral";
+0103:   return "Caution";
+0104: }
+0105: 
+0106: function narrative(run: any): string {
+0107:   return punterCopy(run?.professionalForm?.evidence?.narrative ?? "Useful past form. Open the run to test whether it transfers to today's race.");
+0108: }
+0109: 
+0110: function verdict(run: any): string {
+0111:   return clean(run?.professionalForm?.assignment?.verdict ?? "Needs context");
+0112: }
+0113: 
+0114: function reasons(run: any): string[] {
+0115:   const list = run?.professionalForm?.assignment?.reasons ?? [];
+0116:   if (list.length) return list.map((x: string) => punterCopy(x));
+0117:   return ["Past race provides a useful form clue", "Performance can be tested against today's race", "Race strength and run rating provide context"];
+0118: }
+0119: 
+0120: function changes(run: any): string[] {
+0121:   const list = run?.professionalForm?.assignment?.watch ?? [];
+0122:   if (list.length) return list.map((x: string) => punterCopy(x));
+0123:   return ["Track, pressure and class should be checked before relying on this run", "Use as a clue, not as a standalone conclusion"];
+0124: }
+0125: 
+0126: function quality(run: any): string {
+0127:   const s = score(run);
+0128:   if (s >= 88) return "Strong";
+0129:   if (s >= 70) return "Useful";
+0130:   if (s >= 50) return "Limited";
+0131:   return "Weak";
+0132: }
+0133: 
+0134: function RatingTile({ label, value, sub }: { label: string; value: any; sub?: string }) {
+0135:   const band = ratingBand(value);
+0136:   return (
+0137:     <article className={`eiq-rating-tile is-${band.toLowerCase()}`}>
+0138:       <span>{label}</span>
+0139:       <strong>{clean(value)}</strong>
+0140:       <em>{sub ?? band}</em>
+0141:     </article>
+0142:   );
+0143: }
+0144: 
+0145: function EvidenceBadge({ run }: { run: any }) {
+0146:   const label = importance(run);
+0147:   const display =
+0148:     runReferenceLabel(label);
+0149:   return <b className={`eiq-evidence-badge is-${label.toLowerCase()}`}>{display}</b>;
+0150: }
+0151: 
+0152: function MatchBar({ value }: { value: number }) {
+0153:   const width = Math.max(4, Math.min(100, value));
+0154:   return (
+0155:     <div className="eiq-match-bar">
+0156:       <i style={{ width: `${width}%` }} />
+0157:       <strong>{value}%</strong>
+0158:     </div>
+0159:   );
+0160: }
+0161: 
+0162: 
+0163: function VerdictPanel({ run }: { run: any }) {
+0164:   const match = score(run);
+0165:   const level = quality(run);
+0166:   const role = importance(run);
+0167:   const positives = reasons(run).slice(0, 3);
+0168:   const risks = changes(run).slice(0, 3);
+0169: 
+0170:   return (
+0171:     <section className="eiq-verdict-panel">
+0172:       <div>
+0173:         <span>EDGEiQ Verdict</span>
+0174:         <strong>{role === "PRIMARY" ? "Key run for today's view." : role === "SUPPORTING" ? "Strong run once today's differences are checked." : "Use as wider context only."}</strong>
+0175:         <p>
+0176:           Race suitability is {suitabilityFromScore(match).toLowerCase()}. This past run helps explain the horse, but should still be tested against today's track, class, pressure, tempo and barrier.
+0177:         </p>
+0178:       </div>
+0179: 
+0180:       <aside>
+0181:         <span>ETI</span>
+0182:         <MatchBar value={match} />
+0183:         <b>{chanceTypeLabel(role)}</b>
+0184:       </aside>
+0185: 
+0186:       <article>
+0187:         <span>Best Support</span>
+0188:         <ul>{positives.map((x) => <li key={x}>- {x}</li>)}</ul>
+0189:       </article>
+0190: 
+0191:       <article>
+0192:         <span>Main Risks</span>
+0193:         <ul>{risks.map((x) => <li key={x}>- {x}</li>)}</ul>
+0194:       </article>
+0195:     </section>
+0196:   );
+0197: }
+0198: 
+0199: function FactorScorePanel({ run }: { run: any }) {
+0200:   const evidence = run.professionalForm?.evidence ?? {};
+0201:   const rows = [
+0202:     ["ERI", evidence.raceStrength?.overall ?? run.edgeiqRaceStrength, "+", "Strong past form"],
+0203:     ["EPI", evidence.runRating?.overall ?? run.edgeiqRunRating, "+", "Performance quality"],
+0204:     ["Pressure", evidence.pressure, "+", "Pressure profile"],
+0205:     ["Tempo", evidence.tempo, "+", "Race speed profile"],
+0206:     ["Barrier", run.professionalForm?.official?.barrier, "+/-", "Needs comparison"],
+0207:     ["Track", run.professionalForm?.official?.condition, "+/-", "Condition transfer"],
+0208:   ];
+0209: 
+0210:   return (
+0211:     <section className="eiq-factor-score-panel">
+0212:       <span>Form Weighting</span>
+0213:       <table>
+0214:         <thead>
+0215:           <tr><th>Factor</th><th>Value</th><th>Impact</th><th>Reason</th></tr>
+0216:         </thead>
+0217:         <tbody>
+0218:           {rows.map(([factor, value, impact, reason]) => (
+0219:             <tr key={factor}>
+0220:               <td>{factor}</td>
+0221:               <td>{clean(value)}</td>
+0222:               <td><b className={impact === "+" ? "is-plus" : "is-watch"}>{impact}</b></td>
+0223:               <td>{reason}</td>
+0224:             </tr>
+0225:           ))}
+0226:         </tbody>
+0227:       </table>
+0228:     </section>
+0229:   );
+0230: }
+0231: 
+0232: 
+0233: function similarityScore(value: any, max = 100): number {
+0234:   const n = Number(value ?? 0);
+0235:   if (!Number.isFinite(n)) return 50;
+0236:   return Math.max(0, Math.min(max, n));
+0237: }
+0238: 
+0239: function SimilarityEnginePanel({ run }: { run: any }) {
+0240:   const evidence = run.professionalForm?.evidence ?? {};
+0241:   const official = run.professionalForm?.official ?? {};
+0242:   const match = score(run);
+0243: 
+0244:   const factors = [
+0245:     ["Distance", clean(official.distance), clean(file.raceBook.official.distance), clean(official.distance) === clean(file.raceBook.official.distance) ? 100 : 58],
+0246:     ["Track", clean(official.condition), clean(file.raceBook.official.trackCondition), clean(official.condition) === clean(file.raceBook.official.trackCondition) ? 92 : 48],
+0247:     ["Class", clean(official.raceClass), clean(file.raceBook.official.raceClass), clean(official.raceClass) === clean(file.raceBook.official.raceClass) ? 92 : 62],
+0248:     ["Pressure", clean(evidence.pressure), clean(file.raceBook.intelligence.pressure), 86],
+0249:     ["Tempo", clean(evidence.tempo), clean(file.raceBook.intelligence.tempo), 82],
+0250:     ["ERI", clean(evidence.raceStrength?.overall ?? run.edgeiqRaceStrength), "Today benchmark", similarityScore(evidence.raceStrength?.overall ?? run.edgeiqRaceStrength)],
+0251:     ["EPI", clean(evidence.runRating?.overall ?? run.edgeiqRunRating), "Performance benchmark", similarityScore(evidence.runRating?.overall ?? run.edgeiqRunRating)],
+0252:     ["Barrier", clean(official.barrier), clean(primary?.official?.barrier), clean(official.barrier) === clean(primary?.official?.barrier) ? 90 : 55],
+0253:   ];
+0254: 
+0255:   return (
+0256:     <section className="eiq-similarity-engine">
+0257:       <header>
+0258:         <div>
+0259:           <span>ETI Similarity Engine</span>
+0260:           <strong>Race Suitability</strong>
+... TRUNCATED AT 260 LINES OF 549
+
+==========================================================================================
+src/edgeiq-os/services/RaceFileService.ts
+==========================================================================================
+0001: import { buildRaceFileV2 } from "./race-file-v2";
+0002: import { buildRaceStrengthBreakdown } from "./RaceStrengthService";
+0003: import { buildRunRatingBreakdown } from "./RunRatingService";
+0004: import { buildAssignmentComparison } from "./CompareService";
+0005: 
+0006: export type {
+0007:   RaceFileModelV1,
+0008:   RaceFileRunnerProfile,
+0009:   HistoricalRun,
+0010:   OfficialRaceData,
+0011:   OfficialRunnerData,
+0012:   EdgeiqSpeedProfileSplit,
+0013: } from "./race-file-model";
+0014: 
+0015: function buildRunNarrative(run: any, runRating: any, raceStrength: any, assignment: any): string {
+0016:   if (assignment.score >= 88 && runRating.overall >= 86 && raceStrength.overall >= 80) {
+0017:     return "Strong historical evidence for today's assignment.";
+0018:   }
+0019: 
+0020:   if (runRating.overall >= 88 && String(run?.finish ?? "").toUpperCase() !== "1ST") {
+0021:     return "Strong in defeat. The performance rated better than the finishing position suggests.";
+0022:   }
+0023: 
+0024:   if (assignment.score >= 80) {
+0025:     return "Relevant historical assignment with usable evidence for today.";
+0026:   }
+0027: 
+0028:   if (raceStrength.overall < 62) {
+0029:     return "Form line requires caution due to weaker race strength.";
+0030:   }
+0031: 
+0032:   return "Background form. Useful context, but not a primary match for today.";
+0033: }
+0034: 
+0035: export function buildProfessionalRaceBook() {
+0036:   const file = buildRaceFileV2();
+0037: 
+0038:   const today = {
+0039:     race: `${file.officialRace.meeting} R${file.officialRace.raceNumber}`,
+0040:     distance: file.officialRace.distance,
+0041:     className: file.officialRace.raceClass,
+0042:     condition: file.officialRace.trackCondition,
+0043:     rail: file.officialRace.rail,
+0044:     pressure: file.raceRead.pressure,
+0045:     tempo: file.raceRead.tempo,
+0046:     trackSignature: file.raceRead.trackSignature,
+0047:     speedProfile: file.raceRead.speedProfile,
+0048:   };
+0049: 
+0050:   const field = file.field.map((runner: any) => {
+0051:     const historicalRuns = (runner.historicalRuns ?? []).map((run: any) => {
+0052:       const runRating = buildRunRatingBreakdown(run);
+0053:       const raceStrength = buildRaceStrengthBreakdown(run);
+0054:       const assignment = buildAssignmentComparison(today, run);
+0055: 
+0056:       return {
+0057:         ...run,
+0058:         professionalForm: {
+0059:           official: {
+0060:             date: run.date,
+0061:             track: run.track,
+0062:             race: run.race,
+0063:             distance: run.distance,
+0064:             raceClass: run.raceClass,
+0065:             condition: run.condition,
+0066:             rail: run.rail ?? "Not recorded",
+0067:             barrier: run.barrier,
+0068:             weight: run.weight,
+0069:             jockey: run.jockey,
+0070:             sp: run.sp,
+0071:             finish: run.finish,
+0072:             margin: run.margin,
+0073:             officialRaceTime: run.officialRaceTime,
+0074:             winnerTime: run.winnerTime ?? "Not recorded",
+0075:             fieldSize: run.fieldSize ?? "Not recorded",
+0076:           },
+0077:           evidence: {
+0078:             runRating,
+0079:             raceStrength,
+0080:             speedProfile: run.speedProfile,
+0081:             pressure: run.pressureRating,
+0082:             tempo: run.tempoRating,
+0083:             trackSignature: run.trackSignatureMatch,
+0084:             raceFlow: run.raceFlowMatch,
+0085:             runnerDNA: runner.runnerDNA,
+0086:             narrative: buildRunNarrative(run, runRating, raceStrength, assignment),
+0087:           },
+0088:           assignment,
+0089:         },
+0090:       };
+0091:     });
+0092: 
+0093:     return {
+0094:       ...runner,
+0095:       historicalRuns,
+0096:       evidenceRuns: [...historicalRuns].sort(
+0097:         (a: any, b: any) =>
+0098:           (b.professionalForm?.assignment?.score ?? 0) -
+0099:           (a.professionalForm?.assignment?.score ?? 0)
+0100:       ),
+0101:     };
+0102:   });
+0103: 
+0104:   return {
+0105:     ...file,
+0106:     field,
+0107:     raceBook: {
+0108:       official: {
+0109:         meeting: file.officialRace.meeting,
+0110:         raceNumber: file.officialRace.raceNumber,
+0111:         raceName: file.officialRace.raceName,
+0112:         distance: file.officialRace.distance,
+0113:         raceClass: file.officialRace.raceClass,
+0114:         trackCondition: file.officialRace.trackCondition,
+0115:         rail: file.officialRace.rail,
+0116:         officialRaceTime: file.officialRace.officialRaceTime ?? "Pending",
+0117:         prizeMoney: file.officialRace.prizeMoney ?? "Pending",
+0118:         fieldSize: file.field.length,
+0119:       },
+0120:       intelligence: {
+0121:         raceFlow: file.raceRead.raceFlow,
+0122:         pressure: file.raceRead.pressure,
+0123:         tempo: file.raceRead.tempo,
+0124:         trackSignature: file.raceRead.trackSignature,
+0125:         speedProfile: file.raceRead.speedProfile,
+0126:         confidence: file.raceRead.confidence,
+0127:         raceStrength: buildRaceStrengthBreakdown(),
+0128:         runRating: buildRunRatingBreakdown(),
+0129:       },
+0130:     },
+0131:   };
+0132: }
+0133: 
+0134: export const RaceFileService = {
+0135:   build: buildRaceFileV2,
+0136:   buildRaceBook: buildProfessionalRaceBook,
+0137: };
+0138: 
+0139: export { buildRaceFileV2, buildRaceFileV2 as buildRaceFile };
+
+==========================================================================================
+src/edgeiq-os/services/RunRatingService.ts
+==========================================================================================
+0001: export type RunRatingBand =
+0002:   | "ELITE"
+0003:   | "STRONG"
+0004:   | "POSITIVE"
+0005:   | "NEUTRAL"
+0006:   | "NEGATIVE"
+0007:   | "POOR";
+0008: 
+0009: export type RunRatingBreakdown = {
+0010:   overall: number;
+0011:   early: number;
+0012:   mid: number;
+0013:   late: number;
+0014:   efficiency: number;
+0015:   pressureResponse: number;
+0016:   band: RunRatingBand;
+0017:   narrative: string;
+0018:   supportingEvidence: string[];
+0019: };
+0020: 
+0021: function toNumber(value: unknown, fallback = 0): number {
+0022:   const n = Number(String(value ?? "").replace(/[^\d.-]/g, ""));
+0023:   return Number.isFinite(n) ? n : fallback;
+0024: }
+0025: 
+0026: function clamp(value: number, min = 0, max = 100): number {
+0027:   return Math.max(min, Math.min(max, value));
+0028: }
+0029: 
+0030: function bandFor(score: number): RunRatingBand {
+0031:   if (score >= 90) return "ELITE";
+0032:   if (score >= 84) return "STRONG";
+0033:   if (score >= 76) return "POSITIVE";
+0034:   if (score >= 66) return "NEUTRAL";
+0035:   if (score >= 55) return "NEGATIVE";
+0036:   return "POOR";
+0037: }
+0038: 
+0039: export function buildRunRatingBreakdown(run?: any): RunRatingBreakdown {
+0040:   const rawRating = toNumber(run?.edgeiqRunRating ?? run?.runRating ?? run?.rating, 72);
+0041:   const pressure = String(run?.pressureRating ?? run?.pressure ?? "").toUpperCase();
+0042:   const tempo = String(run?.tempoRating ?? run?.tempo ?? "").toUpperCase();
+0043:   const relative = toNumber(run?.relativePerformance, 0);
+0044: 
+0045:   const early = clamp(rawRating - 4 + (tempo.includes("FAST") ? 4 : 0));
+0046:   const mid = clamp(rawRating - 2 + (pressure.includes("HIGH") ? 3 : 0));
+0047:   const late = clamp(rawRating + Math.max(relative, 0) * 2);
+0048:   const efficiency = clamp(rawRating + (relative >= 0 ? 3 : -3));
+0049:   const pressureResponse = clamp(rawRating + (pressure.includes("HIGH") ? 4 : pressure.includes("LOW") ? -1 : 1));
+0050: 
+0051:   const overall = clamp(
+0052:     rawRating * 0.5 +
+0053:       early * 0.1 +
+0054:       mid * 0.12 +
+0055:       late * 0.14 +
+0056:       efficiency * 0.07 +
+0057:       pressureResponse * 0.07
+0058:   );
+0059: 
+0060:   const band = bandFor(overall);
+0061:   const supportingEvidence = [
+0062:     overall >= 84 ? "High-grade performance figure" : "Performance figure requires context",
+0063:     late >= 84 ? "Late-speed profile supports the run" : "Late-speed profile not dominant",
+0064:     pressureResponse >= 84 ? "Handled pressure profile" : "Pressure response mixed",
+0065:     efficiency >= 80 ? "Efficient against EDGEIQ standard" : "Efficiency below peak range",
+0066:   ];
+0067: 
+0068:   return {
+0069:     overall: Number(overall.toFixed(1)),
+0070:     early: Number(early.toFixed(1)),
+0071:     mid: Number(mid.toFixed(1)),
+0072:     late: Number(late.toFixed(1)),
+0073:     efficiency: Number(efficiency.toFixed(1)),
+0074:     pressureResponse: Number(pressureResponse.toFixed(1)),
+0075:     band,
+0076:     narrative:
+0077:       band === "ELITE"
+0078:         ? "Elite historical performance."
+0079:         : band === "STRONG"
+0080:           ? "Strong professional-grade run."
+0081:           : band === "POSITIVE"
+0082:             ? "Positive run with usable evidence."
+0083:             : "Run requires supporting context.",
+0084:     supportingEvidence,
+0085:   };
+0086: }
+
+==========================================================================================
+src/edgeiq-os/services/RaceStrengthService.ts
+==========================================================================================
+0001: export type RaceStrengthBand =
+0002:   | "ELITE"
+0003:   | "STRONG"
+0004:   | "ABOVE_AVERAGE"
+0005:   | "AVERAGE"
+0006:   | "WEAK";
+0007: 
+0008: export type RaceStrengthBreakdown = {
+0009:   overall: number;
+0010:   speedQuality: number;
+0011:   pressureQuality: number;
+0012:   depth: number;
+0013:   finishStrength: number;
+0014:   historicalPercentile: number;
+0015:   band: RaceStrengthBand;
+0016:   narrative: string;
+0017: };
+0018: 
+0019: function toNumber(value: unknown, fallback = 0): number {
+0020:   const n = Number(String(value ?? "").replace(/[^\d.-]/g, ""));
+0021:   return Number.isFinite(n) ? n : fallback;
+0022: }
+0023: 
+0024: function clamp(value: number, min = 0, max = 100): number {
+0025:   return Math.max(min, Math.min(max, value));
+0026: }
+0027: 
+0028: function bandFor(score: number): RaceStrengthBand {
+0029:   if (score >= 88) return "ELITE";
+0030:   if (score >= 80) return "STRONG";
+0031:   if (score >= 72) return "ABOVE_AVERAGE";
+0032:   if (score >= 62) return "AVERAGE";
+0033:   return "WEAK";
+0034: }
+0035: 
+0036: export function buildRaceStrengthBreakdown(run?: any): RaceStrengthBreakdown {
+0037:   const base = toNumber(run?.edgeiqRaceStrength ?? run?.raceStrength, 68);
+0038:   const pressure = String(run?.pressureRating ?? run?.pressure ?? "").toUpperCase();
+0039:   const tempo = String(run?.tempoRating ?? run?.tempo ?? "").toUpperCase();
+0040:   const fieldSize = toNumber(run?.fieldSize, 10);
+0041: 
+0042:   const speedQuality = clamp(base + (tempo.includes("FAST") ? 5 : tempo.includes("SLOW") ? -4 : 1));
+0043:   const pressureQuality = clamp(base + (pressure.includes("HIGH") ? 5 : pressure.includes("LOW") ? -3 : 1));
+0044:   const depth = clamp(base + Math.min(fieldSize, 16) * 0.6);
+0045:   const finishStrength = clamp(base + (speedQuality >= 82 ? 3 : 0));
+0046:   const historicalPercentile = clamp(base);
+0047: 
+0048:   const overall = clamp(
+0049:     speedQuality * 0.25 +
+0050:       pressureQuality * 0.22 +
+0051:       depth * 0.2 +
+0052:       finishStrength * 0.18 +
+0053:       historicalPercentile * 0.15
+0054:   );
+0055: 
+0056:   const band = bandFor(overall);
+0057: 
+0058:   return {
+0059:     overall: Number(overall.toFixed(1)),
+0060:     speedQuality: Number(speedQuality.toFixed(1)),
+0061:     pressureQuality: Number(pressureQuality.toFixed(1)),
+0062:     depth: Number(depth.toFixed(1)),
+0063:     finishStrength: Number(finishStrength.toFixed(1)),
+0064:     historicalPercentile: Number(historicalPercentile.toFixed(1)),
+0065:     band,
+0066:     narrative:
+0067:       band === "ELITE"
+0068:         ? "Elite-strength historical race."
+0069:         : band === "STRONG"
+0070:           ? "Strong race with reliable form merit."
+0071:           : band === "ABOVE_AVERAGE"
+0072:             ? "Above-average race strength."
+0073:             : band === "AVERAGE"
+0074:               ? "Standard race strength."
+0075:               : "Weak race strength; upgrade evidence cautiously.",
+0076:   };
+0077: }
+
+==========================================================================================
+src/edgeiq-os/services/CompareService.ts
+==========================================================================================
+0001: import { RaceFileService } from "./RaceFileService";
+0002: 
+0003: function clean(value: unknown): string {
+0004:   return String(value ?? "").trim();
+0005: }
+0006: 
+0007: function scoreTextMatch(a: unknown, b: unknown, weight: number): number {
+0008:   const left = clean(a).toUpperCase();
+0009:   const right = clean(b).toUpperCase();
+0010:   if (!left || !right) return weight * 0.45;
+0011:   if (left === right) return weight;
+0012:   if (left.includes(right) || right.includes(left)) return weight * 0.8;
+0013:   return weight * 0.35;
+0014: }
+0015: 
+0016: function scoreDistance(a: unknown, b: unknown, weight: number): number {
+0017:   const n1 = Number(clean(a).replace(/[^\d.]/g, ""));
+0018:   const n2 = Number(clean(b).replace(/[^\d.]/g, ""));
+0019:   if (!Number.isFinite(n1) || !Number.isFinite(n2)) return weight * 0.45;
+0020:   const diff = Math.abs(n1 - n2);
+0021:   if (diff <= 50) return weight;
+0022:   if (diff <= 100) return weight * 0.85;
+0023:   if (diff <= 200) return weight * 0.65;
+0024:   return weight * 0.35;
+0025: }
+0026: 
+0027: function verdict(score: number): string {
+0028:   if (score >= 90) return "ELITE RACE SUITABILITY";
+0029:   if (score >= 82) return "STRONG RACE SUITABILITY";
+0030:   if (score >= 72) return "USEFUL HISTORICAL REFERENCE";
+0031:   if (score >= 60) return "QUERY WITH SOME UPSIDE";
+0032:   return "LOW CONFIDENCE";
+0033: }
+0034: 
+0035: export function buildAssignmentComparison(today: any, historical: any) {
+0036:   const components = [
+0037:     { label: "Distance", score: scoreDistance(today.distance, historical?.distance, 18) },
+0038:     { label: "Class", score: scoreTextMatch(today.className, historical?.raceClass, 12) },
+0039:     { label: "Track condition", score: scoreTextMatch(today.condition, historical?.condition, 12) },
+0040:     { label: "Pressure", score: scoreTextMatch(today.pressure, historical?.pressureRating, 16) },
+0041:     { label: "Tempo", score: scoreTextMatch(today.tempo, historical?.tempoRating, 16) },
+0042:     { label: "TrackSignature", score: scoreTextMatch(today.trackSignature, historical?.trackSignatureMatch, 12) },
+0043:     { label: "SpeedProfile", score: scoreTextMatch(today.speedProfile, historical?.raceFlowMatch, 8) },
+0044:     { label: "Barrier", score: historical?.barrier ? 4 : 2 },
+0045:     { label: "Weight", score: historical?.weight ? 2 : 1 },
+0046:   ];
+0047: 
+0048:   const score = Math.round(components.reduce((sum, item) => sum + item.score, 0));
+0049:   const strengths = components.filter((item) => item.score >= 0.75 * Math.max(item.score, 1)).slice(0, 5);
+0050: 
+0051:   return {
+0052:     score,
+0053:     verdict: verdict(score),
+0054:     reasons: components
+0055:       .filter((item) => item.score >= 7)
+0056:       .map((item) => item.label),
+0057:     watch: components
+0058:       .filter((item) => item.score < 7)
+0059:       .map((item) => item.label),
+0060:     components: components.map((item) => ({
+0061:       label: item.label,
+0062:       score: Number(item.score.toFixed(1)),
+0063:     })),
+0064:     evidenceConfidence:
+0065:       score >= 84 ? "HIGH" : score >= 70 ? "MEDIUM" : "LOW",
+0066:     assessment:
+0067:       score >= 84
+0068:         ? "This past run lines up strongly with today's race."
+0069:         : score >= 70
+0070:           ? "This past run is useful, with a few differences to respect."
+0071:           : "This past run is background form rather than a key reference.",
+0072:     strengths: strengths.map((item) => item.label),
+0073:   };
+0074: }
+0075: 
+0076: export function buildCompareModel() {
+0077:   const file = RaceFileService.buildRaceBook();
+0078:   const runner = file.field[0];
+0079:   const historical = runner?.historicalRuns?.[0];
+0080: 
+0081:   const today = {
+0082:     race: `${file.raceBook.official.meeting} R${file.raceBook.official.raceNumber}`,
+0083:     distance: file.raceBook.official.distance,
+0084:     className: file.raceBook.official.raceClass,
+0085:     condition: file.raceBook.official.trackCondition,
+0086:     rail: file.raceBook.official.rail,
+0087:     pressure: file.raceBook.intelligence.pressure,
+0088:     tempo: file.raceBook.intelligence.tempo,
+0089:     trackSignature: file.raceBook.intelligence.trackSignature,
+0090:     speedProfile: file.raceBook.intelligence.speedProfile,
+0091:   };
+0092: 
+0093:   return {
+0094:     today,
+0095:     historical: historical
+0096:       ? {
+0097:           race: `${historical.track} · ${historical.distance} · ${historical.raceClass}`,
+0098:           condition: historical.condition,
+0099:           barrier: historical.barrier,
+0100:           weight: historical.weight,
+0101:           jockey: historical.jockey,
+0102:           officialTime: historical.officialRaceTime,
+0103:           raceStrength: historical.edgeiqRaceStrength,
+0104:           runRating: historical.edgeiqRunRating,
+0105:           pressure: historical.pressureRating,
+0106:           tempo: historical.tempoRating,
+0107:           trackSignature: historical.trackSignatureMatch,
+0108:           raceFlow: historical.raceFlowMatch,
+0109:           speedProfile: historical.speedProfile,
+0110:           positionInRunning: historical.positionInRunning,
+0111:         }
+0112:       : null,
+0113:     similarity: historical
+0114:       ? buildAssignmentComparison(today, historical)
+0115:       : {
+0116:           score: 0,
+0117:           verdict: "NO HISTORICAL MATCH",
+0118:           reasons: [],
+0119:           watch: ["No comparable historical run available"],
+0120:           components: [],
+0121:           evidenceConfidence: "LOW",
+0122:           assessment: "No historical assignment comparison is available.",
+0123:           strengths: [],
+0124:         },
+0125:   };
+0126: }
+0127: 
+0128: export const CompareService = {
+0129:   build: buildCompareModel,
+0130:   buildAssignmentComparison,
+0131: };
+
+==========================================================================================
+src/edgeiq-os/services/index.ts
+==========================================================================================
+0001: export * from "./RaceFileService";
+0002: export * from "./SpeedProfileService";
+0003: export * from "./TrackSignatureService";
+0004: export * from "./PressureService";
+0005: export * from "./TempoService";
+0006: export * from "./PositionService";
+0007: export * from "./CommandService";
+0008: export * from "./EvidenceService";
+0009: export * from "./RunnerDNAService";
+0010: export * from "./RaceFlowService";
+0011: export * from "./MarketBehaviourService";
+0012: export * from "./RaceStrengthService";
+0013: export * from "./RunRatingService";

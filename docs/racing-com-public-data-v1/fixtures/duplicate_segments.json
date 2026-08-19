@@ -1,0 +1,17 @@
+{
+  "Horses": [
+    {
+      "id": "runner-dup",
+      "SplitTimes": [
+        {
+          "Distance": "1000m-800m",
+          "Time": "12.0"
+        },
+        {
+          "Distance": "1000m-800m",
+          "Time": "12.1"
+        }
+      ]
+    }
+  ]
+}

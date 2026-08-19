@@ -1,0 +1,9 @@
+{
+  "audit_id": "EDGEIQ_CANONICAL_RUNTIME_FEED_PRODUCERS_V1",
+  "generated_at_utc": "2026-07-27T21:57:28.812890+00:00",
+  "runtime_feeds": 33,
+  "canonical_write_confirmed": 22,
+  "reference_only": 11,
+  "no_producer_found": 0,
+  "status": "REVIEW_REQUIRED"
+}

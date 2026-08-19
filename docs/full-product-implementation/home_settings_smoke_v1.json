@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "home": {
+    "bodyBg": "rgb(255, 255, 255)",
+    "label": "HOME",
+    "present": true,
+    "rejectedTerms": [],
+    "required": {
+      "Data Discipline": true,
+      "Race intelligence workspace": true,
+      "Workspaces": true
+    },
+    "status": "PASS"
+  },
+  "settings": {
+    "bodyBg": "rgb(255, 255, 255)",
+    "label": "SETTINGS",
+    "present": true,
+    "rejectedTerms": [],
+    "required": {
+      "Boundary": true,
+      "Product settings and data boundaries": true
+    },
+    "status": "PASS"
+  },
+  "screenshot": "blocked: pageWeather.screenshot is not a function"
+}

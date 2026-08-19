@@ -1,0 +1,9 @@
+{
+  "data": {
+    "sectionaltimes_callback": {
+      "Horses": "array",
+      "Horses[].SectionalTimes": "array",
+      "Horses[].SplitTimes": "array"
+    }
+  }
+}

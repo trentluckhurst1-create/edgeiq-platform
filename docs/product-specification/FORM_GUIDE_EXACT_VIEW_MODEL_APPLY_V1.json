@@ -1,0 +1,156 @@
+{
+  "status": "FORM_GUIDE_VIEW_MODEL_COMPLETE",
+  "checks": [
+    {
+      "category": "summary_columns",
+      "item": "NO",
+      "present": true
+    },
+    {
+      "category": "summary_columns",
+      "item": "SILKS",
+      "present": true
+    },
+    {
+      "category": "summary_columns",
+      "item": "LAST 5",
+      "present": true
+    },
+    {
+      "category": "summary_columns",
+      "item": "HORSE",
+      "present": true
+    },
+    {
+      "category": "summary_columns",
+      "item": "TRAINER",
+      "present": true
+    },
+    {
+      "category": "summary_columns",
+      "item": "JOCKEY",
+      "present": true
+    },
+    {
+      "category": "summary_columns",
+      "item": "WT",
+      "present": true
+    },
+    {
+      "category": "summary_columns",
+      "item": "BAR",
+      "present": true
+    },
+    {
+      "category": "summary_columns",
+      "item": "DAYS",
+      "present": true
+    },
+    {
+      "category": "summary_columns",
+      "item": "EPI",
+      "present": true
+    },
+    {
+      "category": "summary_columns",
+      "item": "EARLY SPEED",
+      "present": true
+    },
+    {
+      "category": "summary_columns",
+      "item": "LATE SPEED",
+      "present": true
+    },
+    {
+      "category": "summary_columns",
+      "item": "SUITABILITY",
+      "present": true
+    },
+    {
+      "category": "summary_columns",
+      "item": "FORM MOMENTUM",
+      "present": true
+    },
+    {
+      "category": "summary_columns",
+      "item": "MARKET",
+      "present": true
+    },
+    {
+      "category": "summary_columns",
+      "item": "EDGEiQ PRICE",
+      "present": true
+    },
+    {
+      "category": "summary_columns",
+      "item": "EDGE",
+      "present": true
+    },
+    {
+      "category": "summary_columns",
+      "item": "FLUC 60s %",
+      "present": true
+    },
+    {
+      "category": "runner_fields",
+      "item": "careerProfile",
+      "present": true
+    },
+    {
+      "category": "runner_fields",
+      "item": "conditionProfile",
+      "present": true
+    },
+    {
+      "category": "runner_fields",
+      "item": "classProfile",
+      "present": true
+    },
+    {
+      "category": "runner_fields",
+      "item": "jockeyProfile",
+      "present": true
+    },
+    {
+      "category": "runner_fields",
+      "item": "raceDayPattern",
+      "present": true
+    },
+    {
+      "category": "runner_fields",
+      "item": "recentRuns",
+      "present": true
+    },
+    {
+      "category": "runner_fields",
+      "item": "epiRank",
+      "present": true
+    },
+    {
+      "category": "runner_fields",
+      "item": "epiFieldAverage",
+      "present": true
+    },
+    {
+      "category": "runner_fields",
+      "item": "epiDifference",
+      "present": true
+    },
+    {
+      "category": "live_feed_functions",
+      "item": "loadFormGuideEnrichedFeed",
+      "present": true
+    },
+    {
+      "category": "live_feed_functions",
+      "item": "findEnrichedFormGuideRace",
+      "present": true
+    },
+    {
+      "category": "live_feed_functions",
+      "item": "normaliseFormGuideRace",
+      "present": true
+    }
+  ],
+  "timestamp": "2026-07-20T13:38:48.746316"
+}

@@ -1,0 +1,86 @@
+{
+  "contract_name": "EDGEIQ Benchmark Eligibility Fact V1",
+  "contract_version": "1.0.0",
+  "grain": "one row per benchmark_observation_id",
+  "source_fact": "EDGEIQ_BENCHMARK_OBSERVATION_FACT_V1",
+  "minimum_runner_count": 2,
+  "allowed_benchmark_use_classes": [
+    "STANDARD_TIME_ELIGIBLE",
+    "SECTIONAL_REFERENCE_ONLY",
+    "INELIGIBLE"
+  ],
+  "standard_time_eligibility": {
+    "required_coverage_type": "FULL_RACE",
+    "requires_complete_observation": true,
+    "requires_complete_evidence": true,
+    "requires_positive_official_distance": true,
+    "requires_positive_winner_race_time": true,
+    "requires_winner_identity": true,
+    "requires_zero_unresolved_coverage": true,
+    "minimum_runner_count": 2
+  },
+  "sectional_reference_eligibility": {
+    "required_coverage_type": "PARTIAL_TIMING_WINDOW",
+    "requires_complete_observation": true,
+    "requires_complete_evidence": true,
+    "requires_positive_official_distance": false,
+    "requires_positive_winner_race_time": true,
+    "requires_winner_identity": true,
+    "requires_zero_unresolved_coverage": true,
+    "requires_at_least_one_exact_closing_sectional": true,
+    "minimum_runner_count": 2,
+    "requires_governed_partial_window_identity": true
+  },
+  "fields": [
+    {
+      "name": "benchmark_eligibility_id",
+      "type": "string",
+      "nullable": false
+    },
+    {
+      "name": "benchmark_observation_id",
+      "type": "string",
+      "nullable": false
+    },
+    {
+      "name": "race_key",
+      "type": "string",
+      "nullable": false
+    },
+    {
+      "name": "benchmark_use_class",
+      "type": "enum-string",
+      "nullable": false
+    },
+    {
+      "name": "standard_time_eligible",
+      "type": "boolean-string",
+      "nullable": false
+    },
+    {
+      "name": "sectional_reference_eligible",
+      "type": "boolean-string",
+      "nullable": false
+    },
+    {
+      "name": "eligibility_rule_version",
+      "type": "string",
+      "nullable": false
+    },
+    {
+      "name": "eligibility_reason_codes",
+      "type": "pipe-delimited-string",
+      "nullable": false
+    },
+    {
+      "name": "failed_rule_count",
+      "type": "integer-string",
+      "nullable": false
+    },
+    {
+      "name": "source_observation_sha256",
+      "type": "sha256-string",
+      "nullable": false
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "audit_name": "edgeiq_horse_performance_observation_fact_v1",
+  "audit_version": "1.0.0",
+  "audited_at_utc": "2026-07-30T07:47:09Z",
+  "checks": {
+    "contract_fields_exact": {
+      "detail": {
+        "actual": [
+          "horse_performance_observation_id",
+          "canonical_horse_id",
+          "canonical_horse_name",
+          "source_horse_name",
+          "performance_rating_base_id",
+          "performance_normalisation_id",
+          "performance_intelligence_base_id",
+          "benchmark_observation_id",
+          "race_key",
+          "race_date",
+          "track_name",
+          "official_distance_metres",
+          "raw_performance_lengths",
+          "normalised_performance_value",
+          "rating_base_value",
+          "rating_status",
+          "identity_method",
+          "identity_status",
+          "identity_evidence_reference",
+          "source_identity_evidence_sha256",
+          "source_performance_rating_base_evidence_sha256",
+          "horse_performance_observation_evidence_sha256",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ],
+        "expected": [
+          "horse_performance_observation_id",
+          "canonical_horse_id",
+          "canonical_horse_name",
+          "source_horse_name",
+          "performance_rating_base_id",
+          "performance_normalisation_id",
+          "performance_intelligence_base_id",
+          "benchmark_observation_id",
+          "race_key",
+          "race_date",
+          "track_name",
+          "official_distance_metres",
+          "raw_performance_lengths",
+          "normalised_performance_value",
+          "rating_base_value",
+          "rating_status",
+          "identity_method",
+          "identity_status",
+          "identity_evidence_reference",
+          "source_identity_evidence_sha256",
+          "source_performance_rating_base_evidence_sha256",
+          "horse_performance_observation_evidence_sha256",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ]
+      },
+      "status": "PASS"
+    },
+    "current_population_expected": {
+      "detail": {
+        "horse_performance_observation_rows": 0,
+        "identity_map_rows": 138,
+        "identity_rejection_rows": 0,
+        "performance_rating_base_rows": 0
+      },
+      "status": "PASS"
+    },
+    "identity_map_available": {
+      "detail": {
+        "identity_map_rows": 138
+      },
+      "status": "PASS"
+    },
+    "no_forbidden_fields": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "observation_governance": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "one_observation_per_rating_base_row": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "required_files_exist": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "source_population_exact": {
+      "detail": {
+        "fact_rows": 0,
+        "missing": [],
+        "rating_rows": 0,
+        "rejection_rows": 0,
+        "unexpected": []
+      },
+      "status": "PASS"
+    },
+    "unique_horse_performance_observation_ids": {
+      "detail": [],
+      "status": "PASS"
+    }
+  },
+  "counts": {
+    "horse_performance_observation_rows": 0,
+    "identity_map_rows": 138,
+    "identity_rejection_rows": 0,
+    "performance_rating_base_rows": 0
+  },
+  "failed_checks": [],
+  "status": "PASS"
+}

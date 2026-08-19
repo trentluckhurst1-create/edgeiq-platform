@@ -1,0 +1,9 @@
+{
+  "status": "PRODUCTION_TARGET_RESOLVED",
+  "production_path": "public\\data\\edgeiq_racingcom_performance_warehouse_v2.csv",
+  "candidate_path": "public\\data\\edgeiq_racingcom_performance_warehouse_v2_GRAPHQL_CANDIDATE.csv",
+  "production_sha256": "25ea33aba489bb8f318edcaa3d414c4f7da566573045041ad6ffbe5bff826859",
+  "candidate_sha256": "7cda463af111faf8f7c13179dfca758da2095187e5bba9047ea347683ebdbe2e",
+  "active_writer_count": 2,
+  "active_reader_count": 8
+}

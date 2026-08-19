@@ -1,0 +1,20 @@
+{
+  "audit_scope": "all_horse_performance_observation_fact_v1_rows",
+  "canonical_historical_horses": 29957,
+  "durable_alias_merges_created": 0,
+  "exclusion_reason_counts": {
+    "INSUFFICIENT_PRIOR_OBSERVATIONS": 21419,
+    "JOIN_DEFECT": 229,
+    "NO_PRIOR_OBSERVATION": 29957,
+    "VALID_PRE_RACE_BASELINE": 715
+  },
+  "historical_observation_rows_assessed": 52320,
+  "horses_with_10_plus_observations": 21,
+  "horses_with_2_plus_observations": 12195,
+  "horses_with_3_plus_observations": 5512,
+  "horses_with_5_plus_observations": 1139,
+  "identity_fragmentation_name_groups": 139,
+  "minimum_production_observations_preserved": 5,
+  "name_only_alias_merges_rejected": true,
+  "valid_pre_race_baseline_rows": 715
+}

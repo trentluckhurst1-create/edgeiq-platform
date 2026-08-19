@@ -1,0 +1,7 @@
+{
+  "audit_status": "PASS",
+  "daily_refresh_command": "python -u .\\scripts\\run_edgeiq_daily_product_refresh_v1.py",
+  "frontend_startup_command": "npm run dev",
+  "frontend_build_command": "npm run build",
+  "audit_only_command": "python -u .\\scripts\\run_edgeiq_daily_product_refresh_v1.py --audit-only"
+}

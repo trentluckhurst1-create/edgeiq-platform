@@ -1,0 +1,18 @@
+{
+  "source_url": "https://www.racing.com/form/2026-07-29/sportsbet-sandown-hillside/race/7/speed-data",
+  "retrieved_at": "2026-07-29T04:55:51Z",
+  "page_title": "Form | Field | Sportsbet Sandown Hillside | Race 7 | Wednesday | 29 July 2026 | VIC | Racing.com",
+  "meeting_identity": "sportsbet-sandown-hillside",
+  "race_identity": "R7",
+  "collector_version": "EDGEIQ_RACING_COM_VISIBLE_PAGE_COLLECTOR_V1",
+  "selector_version": "VISIBLE_DOM_TEXT_TABLES_V1",
+  "visible_table_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "screenshot_hash": "b910aa9753a5641b3a2d1d89e06382ee488b68867cf3a18449e2e9eff8602fbe",
+  "row_count": 0,
+  "section_count": 0,
+  "clicked_labels": [
+    "Overview",
+    "Sectionals"
+  ],
+  "status": "PAGE_SCHEMA_CHANGED"
+}

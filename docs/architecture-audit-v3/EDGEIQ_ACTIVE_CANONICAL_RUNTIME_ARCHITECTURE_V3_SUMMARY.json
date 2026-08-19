@@ -1,0 +1,58 @@
+{
+  "audit_id": "EDGEIQ_ACTIVE_CANONICAL_RUNTIME_ARCHITECTURE_V3",
+  "generated_at_utc": "2026-07-27T21:04:01.387651+00:00",
+  "repository_root": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM",
+  "output_root": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\architecture-audit-v3",
+  "overall_status": "REVIEW_REQUIRED",
+  "counts": {
+    "repository_files": 52454,
+    "runtime_entrypoints": 29,
+    "reachable_source_files": 173,
+    "canonical_name_reachable_sources": 167,
+    "historical_or_noncanonical_reachable_sources": 6,
+    "source_dependency_edges": 313,
+    "runtime_data_references": 262,
+    "required_input_references": 53,
+    "missing_required_input_references": 5,
+    "generated_output_references": 67,
+    "canonicality_groups_requiring_review": 1177,
+    "single_canonical_with_history_groups": 332
+  },
+  "embedded_state_counts": {
+    "CANDIDATE": 350,
+    "CANONICAL_NAME_CANDIDATE": 25618,
+    "EMBEDDED_BACKUP": 172,
+    "EMBEDDED_CHECKPOINT": 22691,
+    "HISTORICAL_OR_NONCANONICAL": 1343,
+    "INVESTIGATION": 954,
+    "LEGACY": 240,
+    "RECOVERY": 174,
+    "RESEARCH": 589,
+    "TEMPORARY": 288,
+    "WORKING_COPY": 35
+  },
+  "domain_counts": {
+    "archive": 407,
+    "automation": 3190,
+    "checkpoint": 17501,
+    "contract": 41,
+    "documentation": 6069,
+    "frontend": 1087,
+    "generated_output": 1977,
+    "other": 88,
+    "public_asset": 12229,
+    "public_data": 8983,
+    "repository_root": 23,
+    "source_data": 859
+  },
+  "principles": [
+    "No repository files deleted, moved, renamed or repaired.",
+    "Only docs/architecture-audit-v3 outputs are written.",
+    "Runtime evidence begins from discovered entrypoints.",
+    "Reachability is evidence of use, not proof of execution.",
+    "Historical filename markers do not automatically mean deletion.",
+    "Missing required-input classification is heuristic and requires review.",
+    "Generated outputs are separated from required runtime inputs.",
+    "Canonicality conflicts require evidence before remediation."
+  ]
+}

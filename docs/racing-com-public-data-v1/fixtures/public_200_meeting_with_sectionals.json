@@ -1,0 +1,28 @@
+{
+  "http_status": 200,
+  "meet": {
+    "id": "fixture-meet",
+    "venue": "Fixture Park"
+  },
+  "race": {
+    "id": "fixture-race",
+    "hasSectionals": true,
+    "hasResults": true
+  },
+  "Horses": [
+    {
+      "id": "runner-1",
+      "FullName": "Fixture Horse",
+      "SaddleNumber": 1,
+      "FinalPosition": 1,
+      "SplitTimes": [
+        {
+          "Distance": "1200m-1000m",
+          "Position": 1,
+          "Time": "12.10",
+          "AvgSpeed": 16.53
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "aggregate_rows": 1265,
+  "horse_rating_rows": 1265,
+  "normalisation_rows": 52317,
+  "observation_rows": 52317,
+  "rating_base_rows": 52317,
+  "snapshot_rows": 5,
+  "status": "PASS_WITH_GOVERNED_EXCLUSIONS"
+}

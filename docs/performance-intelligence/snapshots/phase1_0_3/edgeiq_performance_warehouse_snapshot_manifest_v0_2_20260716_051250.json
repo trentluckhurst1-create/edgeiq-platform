@@ -1,0 +1,215 @@
+{
+  "audit_name": "EDGEiQ Performance Intelligence Phase 1.0.3 Corrected Snapshot Reproducibility Audit",
+  "generated_utc": "2026-07-15T19:13:53.534370+00:00",
+  "warehouse_snapshot_id": "eiq_warehouse_snapshot_b24578e0eb795ab6bd076452bfff3f5e",
+  "snapshot_version": "PERFORMANCE_WAREHOUSE_SNAPSHOT_V0_2",
+  "audit_version": "PHASE1_0_3_REPRODUCIBILITY_AUDIT_V0_2",
+  "status": "SNAPSHOT_REPRODUCIBILITY_PASS",
+  "production_data_modified": false,
+  "performance_profile": {
+    "label": "canonical_performance_identity_v0_2",
+    "path": "docs/performance-intelligence/prototypes/phase1_0_2/edgeiq_canonical_performance_identity_v0_2_20260716_050048.csv",
+    "sha256": "5754e424b57031b3a6e50b4ecd8675af21b10a7a624b85d3810795562e0d1df2",
+    "size_bytes": 463367739,
+    "rows": 879784,
+    "columns": [
+      "performance_id",
+      "race_id",
+      "meeting_id",
+      "horse_id",
+      "source_evidence_id",
+      "source_row_number",
+      "provider_race_id",
+      "provider_runner_id",
+      "race_date",
+      "state",
+      "track",
+      "race_number",
+      "horse_name",
+      "identity_method",
+      "identity_quality_state",
+      "identity_version",
+      "evidence_version",
+      "generated_at",
+      "legacy_performance_id",
+      "performance_natural_key_version",
+      "rekeyed_at"
+    ],
+    "column_count": 21,
+    "missing_required_columns": [],
+    "duplicate_primary_key_rows": 0,
+    "blank_primary_key_rows": 0,
+    "blank_non_null_counts": {},
+    "unique_races": 71019,
+    "unique_horses": 879695,
+    "unique_performances": 879784,
+    "min_race_date": "2000-08-02",
+    "max_race_date": "2026-06-24",
+    "quality_state_counts": {
+      "COMPLETE": 879784
+    },
+    "version_counts": {
+      "evidence_version=1": 879784,
+      "identity_version=PERFORMANCE_IDENTITY_PROTOTYPE_V0_1": 879784,
+      "performance_natural_key_version=PERFORMANCE_IDENTITY_V0_2_FULL_RACE_CONTEXT": 879784
+    }
+  },
+  "sectional_profile": {
+    "label": "canonical_sectional_evidence_v0_2",
+    "path": "docs/performance-intelligence/prototypes/phase1_0_2/edgeiq_canonical_sectional_evidence_v0_2_20260716_050048.csv",
+    "sha256": "072c1ccf556bfc0476c1d4507d0828b6210c8d5865e411c6a42b5e4a3de1fa42",
+    "size_bytes": 97085029,
+    "rows": 103766,
+    "columns": [
+      "performance_sectional_id",
+      "performance_id",
+      "race_id",
+      "meeting_id",
+      "horse_id",
+      "source_evidence_id",
+      "source_row_number",
+      "provider_code",
+      "race_date",
+      "canonical_track",
+      "race_number",
+      "canonical_horse",
+      "link_method",
+      "linkage_version",
+      "timing_quality_state",
+      "evidence_version",
+      "source_sha256",
+      "migration_version",
+      "generated_at",
+      "raw_meeting_date",
+      "raw_track",
+      "raw_race_no",
+      "raw_horse_name",
+      "raw_horse_key",
+      "raw_position",
+      "raw_layout_type",
+      "raw_dist_run",
+      "raw_early_speed",
+      "raw_mid_speed",
+      "raw_late_speed",
+      "raw_peak_speed",
+      "raw_avg_speed",
+      "raw_source_file",
+      "raw_source_url",
+      "legacy_performance_id",
+      "legacy_performance_sectional_id",
+      "identity_remap_version",
+      "remapped_at"
+    ],
+    "column_count": 38,
+    "missing_required_columns": [],
+    "duplicate_primary_key_rows": 0,
+    "blank_primary_key_rows": 0,
+    "blank_non_null_counts": {},
+    "unique_races": 10532,
+    "unique_horses": 103765,
+    "unique_performances": 103765,
+    "min_race_date": "2023-01-01",
+    "max_race_date": "2026-06-04",
+    "quality_state_counts": {
+      "COMPLETE": 103766
+    },
+    "version_counts": {
+      "evidence_version=1": 103766,
+      "identity_remap_version=LEGACY_PERFORMANCE_ID_REMAP_V0_1": 103766,
+      "linkage_version=SECTIONAL_LINKAGE_V0_2": 103766,
+      "migration_version=CANONICAL_SECTIONAL_EVIDENCE_V0_1": 103766
+    }
+  },
+  "performance_id_reproducibility": {
+    "rows_checked": 879784,
+    "reproducible_rows": 879784,
+    "mismatch_rows": 0,
+    "incomplete_natural_key_rows": 0,
+    "version_mismatch_rows": 0,
+    "reproducibility_pct": 100.0,
+    "mismatch_samples": []
+  },
+  "sectional_id_reproducibility": {
+    "rows_checked": 103766,
+    "reproducible_rows": 103766,
+    "mismatch_rows": 0,
+    "incomplete_natural_key_rows": 0,
+    "reproducibility_pct": 100.0,
+    "mismatch_samples": []
+  },
+  "foreign_key_validation": {
+    "parent_performance_ids": 879784,
+    "sectional_rows": 103766,
+    "matched_rows": 103766,
+    "missing_rows": 0,
+    "match_pct": 100.0,
+    "missing_samples": []
+  },
+  "legacy_collision_lineage": {
+    "legacy_ids": 879695,
+    "legacy_collision_groups": 89,
+    "correctly_split_groups": 89,
+    "incorrectly_unsplit_groups": 0,
+    "incorrectly_unsplit_samples": []
+  },
+  "audit_checks": [
+    {
+      "check": "PERFORMANCE_SCHEMA",
+      "passed": true,
+      "observed": "NO_MISSING_COLUMNS"
+    },
+    {
+      "check": "SECTIONAL_SCHEMA",
+      "passed": true,
+      "observed": "NO_MISSING_COLUMNS"
+    },
+    {
+      "check": "PERFORMANCE_PRIMARY_KEY_UNIQUE",
+      "passed": true,
+      "observed": "duplicates=0;blank=0"
+    },
+    {
+      "check": "SECTIONAL_PRIMARY_KEY_UNIQUE",
+      "passed": true,
+      "observed": "duplicates=0;blank=0"
+    },
+    {
+      "check": "PERFORMANCE_REQUIRED_VALUES",
+      "passed": true,
+      "observed": "{}"
+    },
+    {
+      "check": "SECTIONAL_REQUIRED_VALUES",
+      "passed": true,
+      "observed": "{}"
+    },
+    {
+      "check": "PERFORMANCE_ID_REPRODUCIBILITY",
+      "passed": true,
+      "observed": "reproducible=879784;mismatches=0;incomplete=0;version_mismatches=0"
+    },
+    {
+      "check": "SECTIONAL_ID_REPRODUCIBILITY",
+      "passed": true,
+      "observed": "reproducible=103766;mismatches=0;incomplete=0"
+    },
+    {
+      "check": "SECTIONAL_PERFORMANCE_FOREIGN_KEY",
+      "passed": true,
+      "observed": "matched=103766;missing=0"
+    },
+    {
+      "check": "LEGACY_COLLISIONS_SPLIT",
+      "passed": true,
+      "observed": "collision_groups=89;correctly_split=89;incorrectly_unsplit=0"
+    },
+    {
+      "check": "QUALITY_STATE_CONTRACT",
+      "passed": true,
+      "observed": "performance_unknown=[];sectional_unknown=[]"
+    }
+  ],
+  "failed_checks": [],
+  "canonical_status": "SNAPSHOT_VALIDATED_NOT_PROMOTED",
+  "next_stage": "Phase 1.1 immutable canonical raw performance warehouse materialisation."
+}

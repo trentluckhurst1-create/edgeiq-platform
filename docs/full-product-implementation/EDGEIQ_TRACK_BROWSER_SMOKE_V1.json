@@ -1,0 +1,25 @@
+{
+  "startedAt": "2026-07-18T16:45:52.376Z",
+  "routeChecks": [
+    { "check": "has_track_workspace", "pass": true },
+    { "check": "has_current_track_header", "pass": true },
+    { "check": "has_track_condition", "pass": true },
+    { "check": "has_rail_and_map", "pass": true },
+    { "check": "has_track_details", "pass": true },
+    { "check": "has_pattern_or_unavailable", "pass": true },
+    { "check": "has_historical_or_unavailable", "pass": true },
+    { "check": "has_notes_or_unavailable", "pass": true },
+    { "check": "no_source_debug_language", "pass": true },
+    { "check": "no_confidence_copy", "pass": true },
+    { "check": "no_records_claims", "pass": true },
+    { "check": "white_body_background", "pass": true, "detail": "rgb(255, 255, 255)" }
+  ],
+  "screenshot": "SCREENSHOT_BLOCKED: tab.playwright.screenshot is not a function",
+  "errors": [],
+  "dom": {
+    "url": "http://127.0.0.1:5176/",
+    "title": "racing-dashboard",
+    "trackImageCount": 1
+  },
+  "completedAt": "2026-07-18T16:45:53.778Z"
+}

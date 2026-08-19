@@ -1,0 +1,40 @@
+{
+  "generated_utc": "2026-07-22T07:40:54.656087+00:00",
+  "governance": {
+    "read_only": true,
+    "network_access_performed": false,
+    "production_builder_executed": false,
+    "builder_modified": false,
+    "governed_output_modified": false
+  },
+  "candidate_population": {
+    "rows": 1296,
+    "meetings": 104,
+    "historical_success_urls": 8,
+    "legitimacy_counts": {
+      "BEYOND_EVIDENCED_RACE_LIMIT": 12,
+      "DERIVED_WITHIN_EVIDENCED_LIMIT": 24,
+      "DERIVED_WITHOUT_RACE_LIMIT_EVIDENCE": 1248,
+      "DIRECT_URL_NOT_HISTORICALLY_FETCHED": 4,
+      "HISTORICALLY_FETCHED_AND_PARSED": 8
+    },
+    "discovery_method_counts": {
+      "KNOWN_DIRECT_CSV_MEETING": 12,
+      "MEETCODE_DERIVED_CLOUDFRONT": 1284
+    }
+  },
+  "first_50": {
+    "rows": 50,
+    "legitimacy_counts": {
+      "BEYOND_EVIDENCED_RACE_LIMIT": 7,
+      "DERIVED_WITHIN_EVIDENCED_LIMIT": 17,
+      "DERIVED_WITHOUT_RACE_LIMIT_EVIDENCE": 14,
+      "DIRECT_URL_NOT_HISTORICALLY_FETCHED": 4,
+      "HISTORICALLY_FETCHED_AND_PARSED": 8
+    }
+  },
+  "ordering": {
+    "meetings_with_lexical_race_order_bias": 104
+  },
+  "decision": "CANDIDATE_LEGITIMACY_EVIDENCE_CREATED"
+}

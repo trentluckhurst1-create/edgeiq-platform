@@ -1,0 +1,125 @@
+{
+  "status": "READY",
+  "generated_at": "2026-07-20T00:56:33.163212+00:00",
+  "melbourne_date": "2026-07-20",
+  "window_dates": [
+    "2026-07-20",
+    "2026-07-21",
+    "2026-07-22"
+  ],
+  "log_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\logs\\daily-pipeline\\edgeiq_daily_pipeline_2026-07-20_105237.log",
+  "stages": [
+    {
+      "name": "scripts/build_edgeiq_three_day_window_v1.py",
+      "status": "READY",
+      "detail": "Completed"
+    },
+    {
+      "name": "scripts/build_edgeiq_vic_three_day_meeting_universe.py",
+      "status": "READY",
+      "detail": "Completed"
+    },
+    {
+      "name": "scripts/build_edgeiq_vic_three_day_meeting_calendar_v1.py",
+      "status": "READY",
+      "detail": "Completed"
+    },
+    {
+      "name": "scripts/build_edgeiq_racingcom_three_day_race_list_v1.py",
+      "status": "READY",
+      "detail": "Completed"
+    },
+    {
+      "name": "scripts/build_edgeiq_three_day_product_catalog_v1.py",
+      "status": "READY",
+      "detail": "Completed"
+    },
+    {
+      "name": "scripts/build_edgeiq_form_guide_enriched_v2.py",
+      "status": "READY",
+      "detail": "Completed"
+    },
+    {
+      "name": "scripts/build_edgeiq_current_early_speed_v1.py",
+      "status": "READY",
+      "detail": "Completed"
+    },
+    {
+      "name": "scripts/build_edgeiq_current_late_speed_v1.py",
+      "status": "READY",
+      "detail": "Completed"
+    },
+    {
+      "name": "scripts/build_edgeiq_current_suitability_v1.py",
+      "status": "READY",
+      "detail": "Completed"
+    },
+    {
+      "name": "scripts/build_edgeiq_current_form_momentum_v1.py",
+      "status": "READY",
+      "detail": "Completed"
+    },
+    {
+      "name": "scripts/build_edgeiq_current_race_shape_v2.py",
+      "status": "READY",
+      "detail": "Completed"
+    },
+    {
+      "name": "scripts/build_edgeiq_map_terminal_feed_v1.py",
+      "status": "READY",
+      "detail": "Completed"
+    },
+    {
+      "name": "scripts/build_edgeiq_market_terminal_feed_v1.py",
+      "status": "READY",
+      "detail": "Completed"
+    },
+    {
+      "name": "scripts/build_edgeiq_overview_terminal_feed_v1.py",
+      "status": "READY",
+      "detail": "Completed"
+    },
+    {
+      "name": "scripts/build_edgeiq_epi_workspace_terminal_feed_v1.py",
+      "status": "READY",
+      "detail": "Completed"
+    },
+    {
+      "name": "scripts/build_edgeiq_insights_terminal_feed_v1.py",
+      "status": "READY",
+      "detail": "Completed"
+    },
+    {
+      "name": "scripts/build_edgeiq_gear_terminal_feed_v1.py",
+      "status": "READY",
+      "detail": "Completed"
+    },
+    {
+      "name": "scripts/build_edgeiq_meeting_results_terminal_feed_v1.py",
+      "status": "READY",
+      "detail": "Completed"
+    },
+    {
+      "name": "scripts/performance-intelligence/product-integration/build_edgeiq_performance_intelligence_product_feeds_v1.py",
+      "status": "READY",
+      "detail": "Completed"
+    },
+    {
+      "name": "scripts/build_edgeiq_on_track_weather_governed_v1_2.py",
+      "status": "READY",
+      "detail": "Completed"
+    }
+  ],
+  "counts": {
+    "catalog_meetings": 4,
+    "catalog_races": 26,
+    "catalog_runners": 374,
+    "edgeiq_form_guide_enriched_v2.csv": 503,
+    "edgeiq_epi_workspace_terminal_feed_v1.csv": 374,
+    "edgeiq_map_terminal_feed_v1.csv": 374,
+    "edgeiq_market_terminal_feed_v1.csv": 374,
+    "edgeiq_overview_terminal_feed_v1.csv": 156,
+    "edgeiq_insights_terminal_feed_v1.csv": 504
+  },
+  "last_successful_status": null
+}

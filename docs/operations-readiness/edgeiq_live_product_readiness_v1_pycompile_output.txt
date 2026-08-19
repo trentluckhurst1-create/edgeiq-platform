@@ -1,0 +1,30 @@
+{
+  "args": [
+    "C:\\Python314\\python.exe",
+    "-m",
+    "py_compile",
+    "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\scripts\\run_edgeiq_daily_product_refresh_v1.py"
+  ],
+  "returncode": 0,
+  "stdout": "",
+  "elapsed_seconds": 0.11
+}
+============================================================
+EDGEIQ DAILY PRODUCT REFRESH V1
+============================================================
+OPERATING_DATE: 2026-07-26
+TIMEZONE: Australia/Melbourne
+MEETINGS_BUILT: 3
+RACES_BUILT: 26
+RUNNERS_BUILT: 371
+SCRATCHINGS: 0
+TRACK_STATUS: PARTIAL
+WEATHER_STATUS: PARTIAL
+MARKET_STATUS: PASS
+RESULTS_STATUS: PASS
+FEEDS_PUBLISHED: 5
+AUDIT_STATUS: PASS
+LAST_KNOWN_GOOD_PRESERVED: TRUE
+ELAPSED_SECONDS: 0.12
+EXIT_CODE: 0
+============================================================

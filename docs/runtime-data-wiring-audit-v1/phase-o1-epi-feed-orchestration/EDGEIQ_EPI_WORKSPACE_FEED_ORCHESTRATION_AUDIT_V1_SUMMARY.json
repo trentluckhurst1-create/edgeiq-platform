@@ -1,0 +1,51 @@
+{
+  "audit_id": "EDGEIQ_EPI_WORKSPACE_FEED_ORCHESTRATION_AUDIT_V1",
+  "generated_at_utc": "2026-07-28T01:13:01.022308+00:00",
+  "canonical_feed": "public/data/edgeiq_epi_workspace_terminal_feed_v1.csv",
+  "canonical_metadata": {
+    "path": "public/data/edgeiq_epi_workspace_terminal_feed_v1.csv",
+    "filename": "edgeiq_epi_workspace_terminal_feed_v1.csv",
+    "extension": ".csv",
+    "size_bytes": 247512,
+    "modified_utc": "2026-07-28T00:37:53.562393+00:00",
+    "sha256": "f32b71ed20c2ac22f095d4a59500dd7c0731f8ebcb35b73e7db02460ac26b725",
+    "checkpoint_or_archive": false,
+    "runtime_relevance": "ACTIVE_RUNTIME_PATH",
+    "csv_row_count": 246
+  },
+  "eligible_files_scanned": 38738,
+  "reference_rows": 3698,
+  "reference_classifications": {
+    "PATH_REFERENCE": 3665,
+    "READER_REFERENCE": 32,
+    "READER_AND_WRITER_REFERENCE": 1
+  },
+  "active_writer_paths": [],
+  "active_reader_paths": [
+    "scripts/audit_edgeiq_data_coverage_report_v1.py",
+    "scripts/audit_edgeiq_end_to_end_validation_v1.py",
+    "scripts/audit_edgeiq_governed_field_trace_v1.py",
+    "scripts/repair_edgeiq_beta_readiness_e2e_best_race_v1.py"
+  ],
+  "active_react_paths": [
+    "src/edgeiq-os/race/services/epiWorkspaceFeed.ts",
+    "src/edgeiq-os/race/services/epiWorkspaceFeed_CHECKPOINT_BEFORE_RACE_KEY_NORMALISATION_20260721_052533.ts"
+  ],
+  "active_path_reference_count": 121,
+  "duplicate_or_similar_files": 162,
+  "exact_filename_copies": 4,
+  "active_exact_filename_copies": 1,
+  "checkpoint_exact_filename_copies": 3,
+  "exact_name_different_hash_count": 3,
+  "orchestration_candidates": 175,
+  "findings": [
+    "2 React consumer path(s) identified.",
+    "3 checkpoint/archive copies of the exact feed were identified."
+  ],
+  "warnings": [
+    "No active runtime writer was identified for the canonical feed.",
+    "3 exact-name feed copy or copies differ from the current canonical feed hash."
+  ],
+  "verdict": "CANONICAL_WRITER_NOT_PROVEN",
+  "status": "EVIDENCE_CAPTURED"
+}

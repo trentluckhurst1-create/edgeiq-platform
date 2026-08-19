@@ -1,0 +1,58 @@
+[
+  {
+    "label": "latest_qc_false",
+    "url": "https://api.bom.gov.au/apikey/v1/observations/latest/87184/atm/surf_air",
+    "params": {
+      "include_qc_results": "false"
+    },
+    "status": 200,
+    "final_url": "https://api.bom.gov.au/apikey/v1/observations/latest/87184/atm/surf_air?include_qc_results=false",
+    "content_type": "application/json",
+    "bytes": 1447,
+    "raw_path": "data\\weather-source-audit\\bom-live\\87184\\qc-probe\\latest_qc_false.json",
+    "json": true,
+    "parsed_path": "data\\weather-source-audit\\bom-live\\87184\\qc-probe\\latest_qc_false_parsed.json"
+  },
+  {
+    "label": "latest_qc_true",
+    "url": "https://api.bom.gov.au/apikey/v1/observations/latest/87184/atm/surf_air",
+    "params": {
+      "include_qc_results": "true"
+    },
+    "status": 200,
+    "final_url": "https://api.bom.gov.au/apikey/v1/observations/latest/87184/atm/surf_air?include_qc_results=true",
+    "content_type": "application/json",
+    "bytes": 2391,
+    "raw_path": "data\\weather-source-audit\\bom-live\\87184\\qc-probe\\latest_qc_true.json",
+    "json": true,
+    "parsed_path": "data\\weather-source-audit\\bom-live\\87184\\qc-probe\\latest_qc_true_parsed.json"
+  },
+  {
+    "label": "recent_qc_false",
+    "url": "https://api.bom.gov.au/apikey/v1/observations/recent/87184/atm/surf_air",
+    "params": {
+      "include_qc_results": "false"
+    },
+    "status": 400,
+    "final_url": "https://api.bom.gov.au/apikey/v1/observations/recent/87184/atm/surf_air?include_qc_results=false",
+    "content_type": "application/json",
+    "bytes": 231,
+    "raw_path": "data\\weather-source-audit\\bom-live\\87184\\qc-probe\\recent_qc_false.json",
+    "json": true,
+    "parsed_path": "data\\weather-source-audit\\bom-live\\87184\\qc-probe\\recent_qc_false_parsed.json"
+  },
+  {
+    "label": "recent_qc_true",
+    "url": "https://api.bom.gov.au/apikey/v1/observations/recent/87184/atm/surf_air",
+    "params": {
+      "include_qc_results": "true"
+    },
+    "status": 400,
+    "final_url": "https://api.bom.gov.au/apikey/v1/observations/recent/87184/atm/surf_air?include_qc_results=true",
+    "content_type": "application/json",
+    "bytes": 231,
+    "raw_path": "data\\weather-source-audit\\bom-live\\87184\\qc-probe\\recent_qc_true.json",
+    "json": true,
+    "parsed_path": "data\\weather-source-audit\\bom-live\\87184\\qc-probe\\recent_qc_true_parsed.json"
+  }
+]

@@ -1,0 +1,227 @@
+{
+  "header": {
+    "title": "Race Meetings",
+    "generated_time": "2026-07-26T02:08:36.313382282Z",
+    "url": "/affiliates/v1/racing/meetings?enc=json&date_from=2026-07-28&date_to=2026-07-28&category=T&country=AUS&limit=200&offset=0"
+  },
+  "params": {
+    "enc": "json",
+    "ids": null,
+    "date_from": "2026-07-28T00:00:00Z",
+    "date_to": "2026-07-28T00:00:00Z",
+    "type": "T",
+    "country": "AUS",
+    "limit": 200,
+    "offset": 0,
+    "futures": false,
+    "meeting_numbers": null
+  },
+  "data": {
+    "meetings": [
+      {
+        "meeting": "fc144097-192e-5886-9079-e2710b0a6416",
+        "name": "Swan Hill",
+        "date": "2026-07-28T00:00:00Z",
+        "track_condition": "Soft6",
+        "category": "T",
+        "category_name": "Thoroughbred Horse Racing",
+        "country": "AUS",
+        "state": "VIC",
+        "races": [
+          {
+            "id": "08c010d2-84b1-41d9-9975-08b8c67ffa18",
+            "race_number": 1,
+            "name": "Bet365 Same Race Multi Mdn Plate",
+            "start_time": "2026-07-28T03:00:00Z",
+            "track_condition": "Soft6",
+            "distance": 975,
+            "weather": "Showers",
+            "country": "AUS",
+            "state": "VIC",
+            "status": "Open"
+          },
+          {
+            "id": "48430e0f-e50d-4915-b62b-91d24740b03e",
+            "race_number": 2,
+            "name": "Jarrod Arentz Electrical & Solar Solutions Mdn Plate",
+            "start_time": "2026-07-28T03:30:00Z",
+            "track_condition": "Soft6",
+            "distance": 975,
+            "weather": "Showers",
+            "country": "AUS",
+            "state": "VIC",
+            "status": "Open"
+          },
+          {
+            "id": "33d7d4b6-fb31-49a2-98bc-055401682c2d",
+            "race_number": 3,
+            "name": "Ultima Hotel Mdn Plate",
+            "start_time": "2026-07-28T04:00:00Z",
+            "track_condition": "Soft6",
+            "distance": 1300,
+            "weather": "Showers",
+            "country": "AUS",
+            "state": "VIC",
+            "status": "Open"
+          },
+          {
+            "id": "ab7d6559-75bc-4ac8-b73e-1159dba0610f",
+            "race_number": 4,
+            "name": "Footts Swan Hill Demolition Group Mdn Plate",
+            "start_time": "2026-07-28T04:30:00Z",
+            "track_condition": "Soft6",
+            "distance": 1600,
+            "weather": "Showers",
+            "country": "AUS",
+            "state": "VIC",
+            "status": "Open"
+          },
+          {
+            "id": "b94d09ec-0b25-404c-9e6b-c2790e438e41",
+            "race_number": 5,
+            "name": "Busbiz.net.au Hcp (Bm62)",
+            "start_time": "2026-07-28T05:00:00Z",
+            "track_condition": "Soft6",
+            "distance": 2400,
+            "weather": "Showers",
+            "country": "AUS",
+            "state": "VIC",
+            "status": "Open"
+          },
+          {
+            "id": "ec6da533-00b3-4f64-b82c-4f9c9f6cac48",
+            "race_number": 6,
+            "name": "Pooles Accountants & Tax Specialists Hcp (Bm62)",
+            "start_time": "2026-07-28T05:30:00Z",
+            "track_condition": "Soft6",
+            "distance": 975,
+            "weather": "Showers",
+            "country": "AUS",
+            "state": "VIC",
+            "status": "Open"
+          },
+          {
+            "id": "33325b57-b2f1-4d04-a670-fd9787496b55",
+            "race_number": 7,
+            "name": "The Bottle-O Swan Hill Hcp (Bm62)",
+            "start_time": "2026-07-28T06:00:00Z",
+            "track_condition": "Soft6",
+            "distance": 1200,
+            "weather": "Showers",
+            "country": "AUS",
+            "state": "VIC",
+            "status": "Open"
+          },
+          {
+            "id": "df144eb1-fd92-4e9f-88df-5522292a2148",
+            "race_number": 8,
+            "name": "Manangatang Cup Saturday 10th October Hcp (Bm62)",
+            "start_time": "2026-07-28T06:30:00Z",
+            "track_condition": "Soft6",
+            "distance": 1300,
+            "weather": "Showers",
+            "country": "AUS",
+            "state": "VIC",
+            "status": "Open"
+          }
+        ]
+      },
+      {
+        "meeting": "898f7159-8037-5fbf-9455-33fd75d607da",
+        "name": "Bathurst",
+        "date": "2026-07-28T00:00:00Z",
+        "track_condition": "Good4",
+        "category": "T",
+        "category_name": "Thoroughbred Horse Racing",
+        "country": "AUS",
+        "state": "NSW",
+        "races": [
+          {
+            "id": "fa8d4529-fa65-4357-8379-2d4e492a7caa",
+            "race_number": 1,
+            "name": "John Kinghorn Memorial Mdn Plate",
+            "start_time": "2026-07-28T03:05:00Z",
+            "track_condition": "Good4",
+            "distance": 1400,
+            "weather": "Cloudy",
+            "country": "AUS",
+            "state": "NSW",
+            "status": "Open"
+          },
+          {
+            "id": "ca414c98-3c8a-4bee-a046-dd724a6330d0",
+            "race_number": 2,
+            "name": "Central West Smoke Alarms Country Boosted Mdn Plate",
+            "start_time": "2026-07-28T03:40:00Z",
+            "track_condition": "Good4",
+            "distance": 1100,
+            "weather": "Cloudy",
+            "country": "AUS",
+            "state": "NSW",
+            "status": "Open"
+          },
+          {
+            "id": "61e426c4-84b2-4d3b-a19d-b117309c968d",
+            "race_number": 3,
+            "name": "Drb Contracting Mdn Hcp",
+            "start_time": "2026-07-28T04:15:00Z",
+            "track_condition": "Good4",
+            "distance": 1200,
+            "weather": "Cloudy",
+            "country": "AUS",
+            "state": "NSW",
+            "status": "Open"
+          },
+          {
+            "id": "5c4f9bcd-5e33-4938-8ac6-6e7b10261596",
+            "race_number": 4,
+            "name": "Bathurst Ag, Horse & Pet Hcp (C1)",
+            "start_time": "2026-07-28T04:50:00Z",
+            "track_condition": "Good4",
+            "distance": 1400,
+            "weather": "Cloudy",
+            "country": "AUS",
+            "state": "NSW",
+            "status": "Open"
+          },
+          {
+            "id": "639b899d-2fd5-45ce-b661-0bea1a7a012b",
+            "race_number": 5,
+            "name": "Offroad 4x4 Bathurst Hcp (Bm66)",
+            "start_time": "2026-07-28T05:25:00Z",
+            "track_condition": "Good4",
+            "distance": 1800,
+            "weather": "Cloudy",
+            "country": "AUS",
+            "state": "NSW",
+            "status": "Open"
+          },
+          {
+            "id": "c3375570-f346-4864-9739-f118f23b80a8",
+            "race_number": 6,
+            "name": "Sheds N Homes Bathurst Hcp (Bm66)",
+            "start_time": "2026-07-28T06:05:00Z",
+            "track_condition": "Good4",
+            "distance": 1100,
+            "weather": "Cloudy",
+            "country": "AUS",
+            "state": "NSW",
+            "status": "Open"
+          },
+          {
+            "id": "b4bbe3b3-7a18-4218-a858-48e893406320",
+            "race_number": 7,
+            "name": "Dusty Hooves Media Country Boosted Hcp (Bm58)",
+            "start_time": "2026-07-28T06:45:00Z",
+            "track_condition": "Good4",
+            "distance": 1300,
+            "weather": "Cloudy",
+            "country": "AUS",
+            "state": "NSW",
+            "status": "Open"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "checks": [
+    {
+      "check": "SECTIONAL_TYPES_NOT_MISLABELLED",
+      "observed": "speed not promoted",
+      "passed": true
+    },
+    {
+      "check": "NO_FABRICATED_SECTIONALS",
+      "observed": "0 canonical rows",
+      "passed": true
+    },
+    {
+      "check": "SOURCE_INVENTORY_CREATED",
+      "observed": 304,
+      "passed": true
+    }
+  ],
+  "generated_timestamp": "2026-07-16T08:33:40Z",
+  "marker": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE2_3_SECTIONAL_EVIDENCE_FINAL_PASS",
+  "phase": "phase2_3",
+  "primary_blocker": "NO_SOURCE_SPECIFIC_OFFICIAL_SECTIONAL_GOVERNANCE",
+  "sectional_evidence_by_type": {
+    "POTENTIAL_SECTIONAL_SOURCE_REQUIRES_SOURCE_SPECIFIC_GOVERNANCE": 36,
+    "SECTIONAL_RELATED_FILE_NO_SUPPORTED_CANONICAL_FIELDS": 154,
+    "SPEED_METRIC_NOT_OFFICIAL_SECTIONAL_TIME": 114
+  },
+  "sectional_evidence_rows": 0,
+  "sectional_source_inventory_rows": 304,
+  "snapshot_id": "eiq_sectional_evidence_v1_ee98d5587756e9fa9ee944ad",
+  "snapshot_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\performance-intelligence\\warehouse\\phase2_3\\eiq_sectional_evidence_v1_ee98d5587756e9fa9ee944ad",
+  "status": "PASS_PARTIAL_BLOCKED"
+}

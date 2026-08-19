@@ -1,0 +1,37 @@
+﻿EDGEIQ BOM LOCATION API CONTRACT EVIDENCE
+
+Repository file:
+data\weather-source-audit\bom-stations\87184\bom_station_source_audit.json
+
+Matched text:
+api.test2.bom.gov.au
+
+Nearby URLs:
+https://csat-dev.nonprod.service.bom.gov.au|https://stage-15-20-search.clients.funnelback.com|https://www.bom.gov.au/themes/custom/bom_theme/bom-react/dist/main.bundle.js?b2f352443ff3f4ef77eb034538d7f6df0cf84e0ac2d486c4b50d7d3188addd83
+
+Request evidence:
+
+
+Context:
+.bundle.js",
+      "url": "https://www.bom.gov.au/themes/custom/bom_theme/bom-react/dist/main.bundle.js?b2f352443ff3f4ef77eb034538d7f6df0cf84e0ac2d486c4b50d7d3188addd83",
+      "keyword": "wind",
+      "context": "includes(\"/weatherstation/\")};t.isWeatherStationDetailPage=i,t.isWeatherAndClimatePage=()=>{const e=(0,n.getPathname)();return!!e&&!!e.includes(\"/weather-and-climate/\")};const o=()=>{const e=(0,n.getPathname)();return!!e&&!!e.includes(\"/location/\")};t.isLocationPage=o;const s=()=>{const{hostname:e}=window.location;return!(!e||!e.includes(\"localhost\")&&!e.includes(\"react-react-ci.apps\"))};t.isDevelopmentEnv=s,t.isDynamicPage=()=>!!s()||o()||i()||a(),t.isHomePage=()=>\"/\"===(0,n.getPathname)(),t.isHighSeasPage=()=>{const e=(0,n.getPathname)();return!!e&&!!e.includes(\"/highseas-location/\")},t.isRiverPage=()=>{const e=(0,n.getPathname)();return!!e&&!!e.includes(\"/river-location/\")},t.isWarningsPage=()=>{const e=(0,n.getPathname)();return!!e&&!!e.includes(\"/warning/\")}},1122:function(e,t){\"use strict\";Object.defineProperty(t,\"__esModule\",{value:!0}),t.DailyAstroResponseFcst=void 0;class r{static discriminator=void 0;static mapping=void 0;static attributeTypeMap=[{name:\"daily\",baseName:\"daily"
+    },
+    {
+      "document": "022_main.bundle.js",
+      "url": "https://www.bom.gov.au/themes/custom/bom_theme/bom-react/dist/main.bundle.js?b2f352443ff3f4ef77eb034538d7f6df0cf84e0ac2d486c4b50d7d3188addd83",
+      "keyword": "wind",
+      "context": "ps://api.test2.bom.gov.au/apikey/v1/mapping\",content:\"/api/v1\",csat:\"https://csat-dev.nonprod.service.bom.gov.au\"},o=(t.FUNNELBACK_URL=\"https://stage-15-20-search.clients.funnelback.com\",(0,n.isDevelopmentEnv)()?\"themes/custom/bom_theme/bom-react/dist/data/drupal\":\"/config/towns_places\"),s=void 0!==window.drupalSettings?window.drupalSettings.bomStrings.towns_places.config_path:o,c=(t.LOCATION_TOWNS_CITIES_URL=`${s}/towns-cities.json`,t.LOCATION_MAJOR_CITIES_URL=`${s}/major-cities.json`,void 0!==window.drupalSettings?window.drupalSettings.bomStrings.apis.location_api:i.locations),u=void 0!==window.drupalSettings?window.drupalSettings.bomStrings.apis.forecast_api:i.forecasts,l=void 0!==window.drupalSettings?window.drupalSettings.bomStrings.apis.observation_api:i.observations,d=(t.warningsApiBaseurl=void 0!==window.drupalSettings?window.drupalSettings.bomStrings.apis.warnings_api:i.warnings,void 0!==window.drupalSettings?window.drupalSettings.bomStrings.apis.products_api:i.products),f=voi"
+    },
+    {
+      "document": "022_main.bundle.js",
+      "url": "https://www.bom.gov.au/themes/custom/bom_theme/bom-react/dist/main.bundle.js?b2f352443ff3f4ef77eb034538d7f6df0cf84e0ac2d486c4b50d7d3188addd83",
+      "keyword": "wind",
+      "context": ".au/apikey/v1/mapping\",content:\"/api/v1\",csat:\"https://csat-dev.nonprod.service.bom.gov.au\"},o=(t.FUNNELBACK_URL=\"https://stage-15-20-search.clients.funnelback.com\",(0,n.isDevelopmentEnv)()?\"themes/custom/bom_theme/bom-react/dist/data/drupal\":\"/config/towns_places\"),s=void 0!==window.drupalSettings?window.drupalSettings.bomStrings.towns_places.config_path:o,c=(t.LOCATION_TOWNS_CITIES_URL=`${s}/towns-cities.json`,t.LOCATION_MAJOR_CITIES_URL=`${s}/major-cities.json`,void 0!==window.drupalSettings?window.drupalSettings.bomStrings.apis.location_api:i.locations),u=void 0!==window.drupalSettings?window.drupalSettings.bomStrings.apis.forecast_api:i.forecasts,l=void 0!==window.drupalSettings?window.drupalSettings.bomStrings.apis.observation_api:i.observations,d=(t.warningsApiBaseurl=void 0!==window.drupalSettings?window.drupalSettings.bomStrings.apis.warnings_api:i.warnings,void 0!==window.drupalSettings?window.drupalSettings.bomStrings.apis.products_api:i.products),f=void 0!==window.drupalSet"
+    },
+    {
+      "document": "022_main.bundle.js",
+      "url": "https://www.bom.gov.au/themes/custom/bom_theme/bom-react/dist/main.bundle.js?b2f352443ff3f4ef77eb034538d7f6df0cf84e0ac2d486c4b50d7d3188addd83",
+      "keyword": "wind",
+      "co

@@ -1,0 +1,1171 @@
+{
+  "data": {
+    "getNoCacheRacesForMeet": [
+      {
+        "id": "5440674",
+        "meet": {
+          "venue": "Caulfield",
+          "meetUrl": "https://www.racing.com/form/2026-07-25/caulfield",
+          "meetUrlSegment": "2026-07-25/caulfield",
+          "trackMap": "https://s3-ap-southeast-2.amazonaws.com/racevic.static/trackmaps/CAUL.svg"
+        },
+        "raceNumber": 2,
+        "raceStatus": "Paying",
+        "distance": "1100m",
+        "time": "2026-07-25T02:45:00.000Z",
+        "name": "Stow Robotics Handicap",
+        "nameForm": "2Y  HCP",
+        "trackCondition": "Soft",
+        "isTrial": 0,
+        "isJumpOut": 0,
+        "trackRating": "6",
+        "trackRecordTime": "6173",
+        "trackRecordHorseCode": "742367",
+        "trackRecordHorseName": "Here de Angels",
+        "trackRecordRace": {
+          "date": "2010-02-06"
+        },
+        "condition": "Handicap. Two-Years-Old, No sex restriction. No class restriction. Apprentices can claim. Track name: Main. Track type: Turf. Field limit: 16. This race carries VOBIS Silver Bonuses of $30,000 for qualified horses.",
+        "prizeMoney": [
+          "{\"Position\":1,\"Value\":\"82500.00\"}",
+          "{\"Position\":2,\"Value\":\"27000.00\"}",
+          "{\"Position\":3,\"Value\":\"13500.00\"}",
+          "{\"Position\":4,\"Value\":\"7500.00\"}",
+          "{\"Position\":5,\"Value\":\"4500.00\"}",
+          "{\"Position\":6,\"Value\":\"3000.00\"}",
+          "{\"Position\":7,\"Value\":\"3000.00\"}",
+          "{\"Position\":8,\"Value\":\"3000.00\"}",
+          "{\"Position\":9,\"Value\":\"3000.00\"}",
+          "{\"Position\":10,\"Value\":\"3000.00\"}"
+        ],
+        "totalPrizeMoney": "150000.00",
+        "hasSectionals": true,
+        "hasTips": false,
+        "hasSpeedMap": false,
+        "hasResults": true,
+        "hasStewards": true,
+        "hasHistory": false,
+        "hasField": false,
+        "hasFullForm": false,
+        "trackCode": "81",
+        "rdcClass": "Open",
+        "formRaceEntries": [
+          {
+            "horseName": "Ghana's Akan",
+            "position": 4,
+            "winningTime": "6421",
+            "standardTimeDifference": "+4.86L"
+          },
+          {
+            "horseName": "Milsons Point",
+            "position": 6,
+            "winningTime": "6421",
+            "standardTimeDifference": "+4.86L"
+          },
+          {
+            "horseName": "Torture",
+            "position": 8,
+            "winningTime": "6421",
+            "standardTimeDifference": "+4.86L"
+          },
+          {
+            "horseName": "Rebel Tuesday",
+            "position": 109,
+            "winningTime": null,
+            "standardTimeDifference": "+4.86L"
+          },
+          {
+            "horseName": "Brazen Dechambeau",
+            "position": 5,
+            "winningTime": "6421",
+            "standardTimeDifference": "+4.86L"
+          },
+          {
+            "horseName": "Stakes",
+            "position": 3,
+            "winningTime": "6421",
+            "standardTimeDifference": "+4.86L"
+          },
+          {
+            "horseName": "Jacaranda",
+            "position": 109,
+            "winningTime": null,
+            "standardTimeDifference": "+4.86L"
+          },
+          {
+            "horseName": "Resolutely",
+            "position": 2,
+            "winningTime": "6421",
+            "standardTimeDifference": "+4.86L"
+          },
+          {
+            "horseName": "Orchid Sky",
+            "position": 7,
+            "winningTime": "6421",
+            "standardTimeDifference": "+4.86L"
+          },
+          {
+            "horseName": "Brazen Panda",
+            "position": 9,
+            "winningTime": "6421",
+            "standardTimeDifference": "+4.86L"
+          },
+          {
+            "horseName": "Doubt Time",
+            "position": 1,
+            "winningTime": "6421",
+            "standardTimeDifference": "+4.86L"
+          },
+          {
+            "horseName": "No Confetti",
+            "position": 109,
+            "winningTime": null,
+            "standardTimeDifference": "+4.86L"
+          }
+        ],
+        "toEightHundredMetresSeconds": 1864,
+        "standardTimeTo800Difference": "-0.06L",
+        "eightHundredToFourHundredMetresSeconds": 2235,
+        "standardTime800To400Difference": "+1.26L",
+        "fourHundredToFinishMetresSeconds": 2322,
+        "standardTime400ToFinishDifference": "+3.72L",
+        "raceTime": "1:04.21",
+        "standardTimeDifference": "+4.86L",
+        "standardTimeId": "81_Soft_1100_Open",
+        "stewardsReportUrl": "https://cdn.rmdprod.racing.com/RV/stewards/2026-07-25/caulfield/stewardsreports/race-2.htm"
+      },
+      {
+        "id": "5440675",
+        "meet": {
+          "venue": "Caulfield",
+          "meetUrl": "https://www.racing.com/form/2026-07-25/caulfield",
+          "meetUrlSegment": "2026-07-25/caulfield",
+          "trackMap": "https://s3-ap-southeast-2.amazonaws.com/racevic.static/trackmaps/CAUL.svg"
+        },
+        "raceNumber": 9,
+        "raceStatus": "Paying",
+        "distance": "1400m",
+        "time": "2026-07-25T06:55:00.000Z",
+        "name": "MRC Membership Made Of Moments Handicap",
+        "nameForm": "3Y  HCP",
+        "trackCondition": "Soft",
+        "isTrial": 0,
+        "isJumpOut": 0,
+        "trackRating": "6",
+        "trackRecordTime": "8120",
+        "trackRecordHorseCode": "643083",
+        "trackRecordHorseName": "Exceed And Excel",
+        "trackRecordRace": {
+          "date": "2003-09-21"
+        },
+        "condition": "Handicap. Three-Years-Old, No sex restriction. No class restriction. Apprentices can claim. Track name: Main. Track type: Turf. Field limit: 14. This race carries VOBIS Silver Bonuses of $30,000 for qualified horses.",
+        "prizeMoney": [
+          "{\"Position\":1,\"Value\":\"82500.00\"}",
+          "{\"Position\":2,\"Value\":\"27000.00\"}",
+          "{\"Position\":3,\"Value\":\"13500.00\"}",
+          "{\"Position\":4,\"Value\":\"7500.00\"}",
+          "{\"Position\":5,\"Value\":\"4500.00\"}",
+          "{\"Position\":6,\"Value\":\"3000.00\"}",
+          "{\"Position\":7,\"Value\":\"3000.00\"}",
+          "{\"Position\":8,\"Value\":\"3000.00\"}",
+          "{\"Position\":9,\"Value\":\"3000.00\"}",
+          "{\"Position\":10,\"Value\":\"3000.00\"}"
+        ],
+        "totalPrizeMoney": "150000.00",
+        "hasSectionals": true,
+        "hasTips": false,
+        "hasSpeedMap": false,
+        "hasResults": true,
+        "hasStewards": true,
+        "hasHistory": false,
+        "hasField": false,
+        "hasFullForm": false,
+        "trackCode": "81",
+        "rdcClass": "Open",
+        "formRaceEntries": [
+          {
+            "horseName": "Just Too Fly",
+            "position": 11,
+            "winningTime": "8371",
+            "standardTimeDifference": "+12.36L"
+          },
+          {
+            "horseName": "Cruiserweight",
+            "position": 4,
+            "winningTime": "8371",
+            "standardTimeDifference": "+12.36L"
+          },
+          {
+            "horseName": "Itazura",
+            "position": 109,
+            "winningTime": null,
+            "standardTimeDifference": "+12.36L"
+          },
+          {
+            "horseName": "Jenni Gone Bonkers",
+            "position": 5,
+            "winningTime": "8371",
+            "standardTimeDifference": "+12.36L"
+          },
+          {
+            "horseName": "Celtics",
+            "position": 2,
+            "winningTime": "8371",
+            "standardTimeDifference": "+12.36L"
+          },
+          {
+            "horseName": "Mahershala",
+            "position": 3,
+            "winningTime": "8371",
+            "standardTimeDifference": "+12.36L"
+          },
+          {
+            "horseName": "Barking Mad",
+            "position": 109,
+            "winningTime": null,
+            "standardTimeDifference": "+12.36L"
+          },
+          {
+            "horseName": "Lauberhorn",
+            "position": 1,
+            "winningTime": "8371",
+            "standardTimeDifference": "+12.36L"
+          },
+          {
+            "horseName": "Blankfield",
+            "position": 9,
+            "winningTime": "8371",
+            "standardTimeDifference": "+12.36L"
+          },
+          {
+            "horseName": "Centu Cavaddi",
+            "position": 109,
+            "winningTime": null,
+            "standardTimeDifference": "+12.36L"
+          },
+          {
+            "horseName": "Ludlum",
+            "position": 8,
+            "winningTime": "8371",
+            "standardTimeDifference": "+12.36L"
+          },
+          {
+            "horseName": "Magnetic Chess",
+            "position": 109,
+            "winningTime": null,
+            "standardTimeDifference": "+12.36L"
+          },
+          {
+            "horseName": "Falset Star",
+            "position": 10,
+            "winningTime": "8371",
+            "standardTimeDifference": "+12.36L"
+          },
+          {
+            "horseName": "Hotei Senshi",
+            "position": 7,
+            "winningTime": "8371",
+            "standardTimeDifference": "+12.36L"
+          },
+          {
+            "horseName": "Shares",
+            "position": 6,
+            "winningTime": "8371",
+            "standardTimeDifference": "+12.36L"
+          }
+        ],
+        "toEightHundredMetresSeconds": 3801,
+        "standardTimeTo800Difference": "-3.96L",
+        "eightHundredToFourHundredMetresSeconds": 2215,
+        "standardTime800To400Difference": "+12.18L",
+        "fourHundredToFinishMetresSeconds": 2355,
+        "standardTime400ToFinishDifference": "+4.14L",
+        "raceTime": "1:23.71",
+        "standardTimeDifference": "+12.36L",
+        "standardTimeId": "81_Soft_1400_Open",
+        "stewardsReportUrl": "https://cdn.rmdprod.racing.com/RV/stewards/2026-07-25/caulfield/stewardsreports/race-9.htm"
+      },
+      {
+        "id": "5440676",
+        "meet": {
+          "venue": "Caulfield",
+          "meetUrl": "https://www.racing.com/form/2026-07-25/caulfield",
+          "meetUrlSegment": "2026-07-25/caulfield",
+          "trackMap": "https://s3-ap-southeast-2.amazonaws.com/racevic.static/trackmaps/CAUL.svg"
+        },
+        "raceNumber": 6,
+        "raceStatus": "Paying",
+        "distance": "2400m",
+        "time": "2026-07-25T05:10:00.000Z",
+        "name": "Sportsbet Same Race Multi Handicap",
+        "nameForm": "3Y  HCP",
+        "trackCondition": "Soft",
+        "isTrial": 0,
+        "isJumpOut": 0,
+        "trackRating": "6",
+        "trackRecordTime": "14532",
+        "trackRecordHorseCode": "404412",
+        "trackRecordHorseName": "Diatribe",
+        "trackRecordRace": {
+          "date": "2000-10-21"
+        },
+        "condition": "Handicap. Three-Years-Old, No sex restriction. No class restriction. Apprentices can claim. Track name: Main. Track type: Turf. Field limit: 15. This race carries VOBIS Silver Bonuses of $30,000 for qualified horses.",
+        "prizeMoney": [
+          "{\"Position\":1,\"Value\":\"82500.00\"}",
+          "{\"Position\":2,\"Value\":\"27000.00\"}",
+          "{\"Position\":3,\"Value\":\"13500.00\"}",
+          "{\"Position\":4,\"Value\":\"7500.00\"}",
+          "{\"Position\":5,\"Value\":\"4500.00\"}",
+          "{\"Position\":6,\"Value\":\"3000.00\"}",
+          "{\"Position\":7,\"Value\":\"3000.00\"}",
+          "{\"Position\":8,\"Value\":\"3000.00\"}",
+          "{\"Position\":9,\"Value\":\"3000.00\"}",
+          "{\"Position\":10,\"Value\":\"3000.00\"}"
+        ],
+        "totalPrizeMoney": "150000.00",
+        "hasSectionals": true,
+        "hasTips": false,
+        "hasSpeedMap": false,
+        "hasResults": true,
+        "hasStewards": true,
+        "hasHistory": false,
+        "hasField": false,
+        "hasFullForm": false,
+        "trackCode": "81",
+        "rdcClass": "Open",
+        "formRaceEntries": [
+          {
+            "horseName": "Decalogue",
+            "position": 4,
+            "winningTime": "15234",
+            "standardTimeDifference": "+7.08L"
+          },
+          {
+            "horseName": "Dirnaseer",
+            "position": 10,
+            "winningTime": "15234",
+            "standardTimeDifference": "+7.08L"
+          },
+          {
+            "horseName": "Brillantezza",
+            "position": 8,
+            "winningTime": "15234",
+            "standardTimeDifference": "+7.08L"
+          },
+          {
+            "horseName": "Engine Of War",
+            "position": 2,
+            "winningTime": "15234",
+            "standardTimeDifference": "+7.08L"
+          },
+          {
+            "horseName": "Our Chief",
+            "position": 1,
+            "winningTime": "15234",
+            "standardTimeDifference": "+7.08L"
+          },
+          {
+            "horseName": "Harbour Town",
+            "position": 7,
+            "winningTime": "15234",
+            "standardTimeDifference": "+7.08L"
+          },
+          {
+            "horseName": "Kings Reflection",
+            "position": 5,
+            "winningTime": "15234",
+            "standardTimeDifference": "+7.08L"
+          },
+          {
+            "horseName": "Menthon",
+            "position": 9,
+            "winningTime": "15234",
+            "standardTimeDifference": "+7.08L"
+          },
+          {
+            "horseName": "Pressurised",
+            "position": 3,
+            "winningTime": "15234",
+            "standardTimeDifference": "+7.08L"
+          },
+          {
+            "horseName": "Ferrario",
+            "position": 6,
+            "winningTime": "15234",
+            "standardTimeDifference": "+7.08L"
+          },
+          {
+            "horseName": "Don't Doubt Dare",
+            "position": 109,
+            "winningTime": null,
+            "standardTimeDifference": "+7.08L"
+          }
+        ],
+        "toEightHundredMetresSeconds": 10578,
+        "standardTimeTo800Difference": "-6.66L",
+        "eightHundredToFourHundredMetresSeconds": 2269,
+        "standardTime800To400Difference": "+9.3L",
+        "fourHundredToFinishMetresSeconds": 2387,
+        "standardTime400ToFinishDifference": "+5.52L",
+        "raceTime": "2:32.34",
+        "standardTimeDifference": "+7.08L",
+        "standardTimeId": "81_Soft_2400_Open",
+        "stewardsReportUrl": "https://cdn.rmdprod.racing.com/RV/stewards/2026-07-25/caulfield/stewardsreports/race-6.htm"
+      },
+      {
+        "id": "5440677",
+        "meet": {
+          "venue": "Caulfield",
+          "meetUrl": "https://www.racing.com/form/2026-07-25/caulfield",
+          "meetUrlSegment": "2026-07-25/caulfield",
+          "trackMap": "https://s3-ap-southeast-2.amazonaws.com/racevic.static/trackmaps/CAUL.svg"
+        },
+        "raceNumber": 4,
+        "raceStatus": "Paying",
+        "distance": "1100m",
+        "time": "2026-07-25T03:55:00.000Z",
+        "name": "Quayclean Handicap",
+        "nameForm": "3Y  HCP",
+        "trackCondition": "Soft",
+        "isTrial": 0,
+        "isJumpOut": 0,
+        "trackRating": "6",
+        "trackRecordTime": "6173",
+        "trackRecordHorseCode": "742367",
+        "trackRecordHorseName": "Here de Angels",
+        "trackRecordRace": {
+          "date": "2010-02-06"
+        },
+        "condition": "Handicap. Three-Years-Old, No sex restriction. No class restriction. Apprentices can claim. Track name: Main. Track type: Turf. Field limit: 16. This race carries VOBIS Silver Bonuses of $30,000 for qualified horses.",
+        "prizeMoney": [
+          "{\"Position\":1,\"Value\":\"82500.00\"}",
+          "{\"Position\":2,\"Value\":\"27000.00\"}",
+          "{\"Position\":3,\"Value\":\"13500.00\"}",
+          "{\"Position\":4,\"Value\":\"7500.00\"}",
+          "{\"Position\":5,\"Value\":\"4500.00\"}",
+          "{\"Position\":6,\"Value\":\"3000.00\"}",
+          "{\"Position\":7,\"Value\":\"3000.00\"}",
+          "{\"Position\":8,\"Value\":\"3000.00\"}",
+          "{\"Position\":9,\"Value\":\"3000.00\"}",
+          "{\"Position\":10,\"Value\":\"3000.00\"}"
+        ],
+        "totalPrizeMoney": "150000.00",
+        "hasSectionals": true,
+        "hasTips": false,
+        "hasSpeedMap": false,
+        "hasResults": true,
+        "hasStewards": true,
+        "hasHistory": false,
+        "hasField": false,
+        "hasFullForm": false,
+        "trackCode": "81",
+        "rdcClass": "Open",
+        "formRaceEntries": [
+          {
+            "horseName": "Snow Mercy",
+            "position": 12,
+            "winningTime": "6394",
+            "standardTimeDifference": "+6.48L"
+          },
+          {
+            "horseName": "Prince Tycoon",
+            "position": 1,
+            "winningTime": "6394",
+            "standardTimeDifference": "+6.48L"
+          },
+          {
+            "horseName": "Signature Scent",
+            "position": 4,
+            "winningTime": "6394",
+            "standardTimeDifference": "+6.48L"
+          },
+          {
+            "horseName": "Afterberna",
+            "position": 2,
+            "winningTime": "6394",
+            "standardTimeDifference": "+6.48L"
+          },
+          {
+            "horseName": "Express Class",
+            "position": 8,
+            "winningTime": "6394",
+            "standardTimeDifference": "+6.48L"
+          },
+          {
+            "horseName": "Farcited",
+            "position": 5,
+            "winningTime": "6394",
+            "standardTimeDifference": "+6.48L"
+          },
+          {
+            "horseName": "Jenni The Ninja",
+            "position": 10,
+            "winningTime": "6394",
+            "standardTimeDifference": "+6.48L"
+          },
+          {
+            "horseName": "Logam",
+            "position": 109,
+            "winningTime": null,
+            "standardTimeDifference": "+6.48L"
+          },
+          {
+            "horseName": "Nightime Star",
+            "position": 9,
+            "winningTime": "6394",
+            "standardTimeDifference": "+6.48L"
+          },
+          {
+            "horseName": "The Benchmark",
+            "position": 7,
+            "winningTime": "6394",
+            "standardTimeDifference": "+6.48L"
+          },
+          {
+            "horseName": "Final Moment",
+            "position": 6,
+            "winningTime": "6394",
+            "standardTimeDifference": "+6.48L"
+          },
+          {
+            "horseName": "Talladega Girl",
+            "position": 13,
+            "winningTime": "6394",
+            "standardTimeDifference": "+6.48L"
+          },
+          {
+            "horseName": "Beautiful Bevy",
+            "position": 3,
+            "winningTime": "6394",
+            "standardTimeDifference": "+6.48L"
+          },
+          {
+            "horseName": "Pacific Glamour",
+            "position": 11,
+            "winningTime": "6394",
+            "standardTimeDifference": "+6.48L"
+          }
+        ],
+        "toEightHundredMetresSeconds": 1828,
+        "standardTimeTo800Difference": "+2.1L",
+        "eightHundredToFourHundredMetresSeconds": 2206,
+        "standardTime800To400Difference": "+3L",
+        "fourHundredToFinishMetresSeconds": 2360,
+        "standardTime400ToFinishDifference": "+1.44L",
+        "raceTime": "1:03.94",
+        "standardTimeDifference": "+6.48L",
+        "standardTimeId": "81_Soft_1100_Open",
+        "stewardsReportUrl": "https://cdn.rmdprod.racing.com/RV/stewards/2026-07-25/caulfield/stewardsreports/race-4.htm"
+      },
+      {
+        "id": "5440678",
+        "meet": {
+          "venue": "Caulfield",
+          "meetUrl": "https://www.racing.com/form/2026-07-25/caulfield",
+          "meetUrlSegment": "2026-07-25/caulfield",
+          "trackMap": "https://s3-ap-southeast-2.amazonaws.com/racevic.static/trackmaps/CAUL.svg"
+        },
+        "raceNumber": 3,
+        "raceStatus": "Paying",
+        "distance": "1100m",
+        "time": "2026-07-25T03:20:00.000Z",
+        "name": "Sportsbet Caulfield Cup Carnival Hospitality Handicap",
+        "nameForm": "BM84",
+        "trackCondition": "Soft",
+        "isTrial": 0,
+        "isJumpOut": 0,
+        "trackRating": "6",
+        "trackRecordTime": "6173",
+        "trackRecordHorseCode": "742367",
+        "trackRecordHorseName": "Here de Angels",
+        "trackRecordRace": {
+          "date": "2010-02-06"
+        },
+        "condition": "Handicap. No age restriction, No sex restriction. BenchMark 84. Apprentices can claim. Track name: Main. Track type: Turf. Field limit: 16.",
+        "prizeMoney": [
+          "{\"Position\":1,\"Value\":\"71500.00\"}",
+          "{\"Position\":2,\"Value\":\"23400.00\"}",
+          "{\"Position\":3,\"Value\":\"11700.00\"}",
+          "{\"Position\":4,\"Value\":\"6500.00\"}",
+          "{\"Position\":5,\"Value\":\"3900.00\"}",
+          "{\"Position\":6,\"Value\":\"2600.00\"}",
+          "{\"Position\":7,\"Value\":\"2600.00\"}",
+          "{\"Position\":8,\"Value\":\"2600.00\"}",
+          "{\"Position\":9,\"Value\":\"2600.00\"}",
+          "{\"Position\":10,\"Value\":\"2600.00\"}"
+        ],
+        "totalPrizeMoney": "130000.00",
+        "hasSectionals": true,
+        "hasTips": false,
+        "hasSpeedMap": false,
+        "hasResults": true,
+        "hasStewards": true,
+        "hasHistory": false,
+        "hasField": false,
+        "hasFullForm": false,
+        "trackCode": "81",
+        "rdcClass": "BM 84",
+        "formRaceEntries": [
+          {
+            "horseName": "Salsa Fellow",
+            "position": 5,
+            "winningTime": "6465",
+            "standardTimeDifference": "+2.82L"
+          },
+          {
+            "horseName": "Vestas",
+            "position": 109,
+            "winningTime": null,
+            "standardTimeDifference": "+2.82L"
+          },
+          {
+            "horseName": "Tennessee Bound",
+            "position": 1,
+            "winningTime": "6465",
+            "standardTimeDifference": "+2.82L"
+          },
+          {
+            "horseName": "Apache Song",
+            "position": 6,
+            "winningTime": "6465",
+            "standardTimeDifference": "+2.82L"
+          },
+          {
+            "horseName": "Luna Cat",
+            "position": 3,
+            "winningTime": "6465",
+            "standardTimeDifference": "+2.82L"
+          },
+          {
+            "horseName": "Butternut Princess",
+            "position": 4,
+            "winningTime": "6465",
+            "standardTimeDifference": "+2.82L"
+          },
+          {
+            "horseName": "Dancing Storm",
+            "position": 6,
+            "winningTime": "6465",
+            "standardTimeDifference": "+2.82L"
+          },
+          {
+            "horseName": "Behaviour",
+            "position": 2,
+            "winningTime": "6465",
+            "standardTimeDifference": "+2.82L"
+          }
+        ],
+        "toEightHundredMetresSeconds": 1967,
+        "standardTimeTo800Difference": "-5.28L",
+        "eightHundredToFourHundredMetresSeconds": 2227,
+        "standardTime800To400Difference": "+1.32L",
+        "fourHundredToFinishMetresSeconds": 2271,
+        "standardTime400ToFinishDifference": "+6.72L",
+        "raceTime": "1:04.65",
+        "standardTimeDifference": "+2.82L",
+        "standardTimeId": "81_Soft_1100_BM 84",
+        "stewardsReportUrl": "https://cdn.rmdprod.racing.com/RV/stewards/2026-07-25/caulfield/stewardsreports/race-3.htm"
+      },
+      {
+        "id": "5440679",
+        "meet": {
+          "venue": "Caulfield",
+          "meetUrl": "https://www.racing.com/form/2026-07-25/caulfield",
+          "meetUrlSegment": "2026-07-25/caulfield",
+          "trackMap": "https://s3-ap-southeast-2.amazonaws.com/racevic.static/trackmaps/CAUL.svg"
+        },
+        "raceNumber": 8,
+        "raceStatus": "Paying",
+        "distance": "2000m",
+        "time": "2026-07-25T06:25:00.000Z",
+        "name": "Stow Storage Solutions Handicap",
+        "nameForm": "BM84",
+        "trackCondition": "Soft",
+        "isTrial": 0,
+        "isJumpOut": 0,
+        "trackRating": "6",
+        "trackRecordTime": "12033",
+        "trackRecordHorseCode": "5143067",
+        "trackRecordHorseName": "Hang Man (IRE)",
+        "trackRecordRace": {
+          "date": "2021-04-03"
+        },
+        "condition": "Handicap. Three-Years-Old and Upwards, No sex restriction. BenchMark 84. Apprentices can claim. Track name: Main. Track type: Turf. Field limit: 15.",
+        "prizeMoney": [
+          "{\"Position\":1,\"Value\":\"71500.00\"}",
+          "{\"Position\":2,\"Value\":\"23400.00\"}",
+          "{\"Position\":3,\"Value\":\"11700.00\"}",
+          "{\"Position\":4,\"Value\":\"6500.00\"}",
+          "{\"Position\":5,\"Value\":\"3900.00\"}",
+          "{\"Position\":6,\"Value\":\"2600.00\"}",
+          "{\"Position\":7,\"Value\":\"2600.00\"}",
+          "{\"Position\":8,\"Value\":\"2600.00\"}",
+          "{\"Position\":9,\"Value\":\"2600.00\"}",
+          "{\"Position\":10,\"Value\":\"2600.00\"}"
+        ],
+        "totalPrizeMoney": "130000.00",
+        "hasSectionals": true,
+        "hasTips": false,
+        "hasSpeedMap": false,
+        "hasResults": true,
+        "hasStewards": true,
+        "hasHistory": false,
+        "hasField": false,
+        "hasFullForm": false,
+        "trackCode": "81",
+        "rdcClass": "BM 84",
+        "formRaceEntries": [
+          {
+            "horseName": "Diwali",
+            "position": 6,
+            "winningTime": "12408",
+            "standardTimeDifference": "+2.58L"
+          },
+          {
+            "horseName": "Makdane",
+            "position": 5,
+            "winningTime": "12408",
+            "standardTimeDifference": "+2.58L"
+          },
+          {
+            "horseName": "Prince Eric",
+            "position": 9,
+            "winningTime": "12408",
+            "standardTimeDifference": "+2.58L"
+          },
+          {
+            "horseName": "Station One",
+            "position": 14,
+            "winningTime": "12408",
+            "standardTimeDifference": "+2.58L"
+          },
+          {
+            "horseName": "Aftermath",
+            "position": 8,
+            "winningTime": "12408",
+            "standardTimeDifference": "+2.58L"
+          },
+          {
+            "horseName": "Stop The Rock",
+            "position": 7,
+            "winningTime": "12408",
+            "standardTimeDifference": "+2.58L"
+          },
+          {
+            "horseName": "Savour The Dream",
+            "position": 10,
+            "winningTime": "12408",
+            "standardTimeDifference": "+2.58L"
+          },
+          {
+            "horseName": "Test The Law",
+            "position": 13,
+            "winningTime": "12408",
+            "standardTimeDifference": "+2.58L"
+          },
+          {
+            "horseName": "Crimson Vine",
+            "position": 12,
+            "winningTime": "12408",
+            "standardTimeDifference": "+2.58L"
+          },
+          {
+            "horseName": "Beach Pad",
+            "position": 3,
+            "winningTime": "12408",
+            "standardTimeDifference": "+2.58L"
+          },
+          {
+            "horseName": "Amleto",
+            "position": 1,
+            "winningTime": "12408",
+            "standardTimeDifference": "+2.58L"
+          },
+          {
+            "horseName": "Belle Savoir",
+            "position": 10,
+            "winningTime": "12408",
+            "standardTimeDifference": "+2.58L"
+          },
+          {
+            "horseName": "Leonchroi",
+            "position": 2,
+            "winningTime": "12408",
+            "standardTimeDifference": "+2.58L"
+          },
+          {
+            "horseName": "Oraqua",
+            "position": 109,
+            "winningTime": null,
+            "standardTimeDifference": "+2.58L"
+          },
+          {
+            "horseName": "Aeolian",
+            "position": 4,
+            "winningTime": "12408",
+            "standardTimeDifference": "+2.58L"
+          }
+        ],
+        "toEightHundredMetresSeconds": 7689,
+        "standardTimeTo800Difference": "-3.9L",
+        "eightHundredToFourHundredMetresSeconds": 2297,
+        "standardTime800To400Difference": "+5.52L",
+        "fourHundredToFinishMetresSeconds": 2422,
+        "standardTime400ToFinishDifference": "+0.96L",
+        "raceTime": "2:04.08",
+        "standardTimeDifference": "+2.58L",
+        "standardTimeId": "81_Soft_2000_BM 84",
+        "stewardsReportUrl": "https://cdn.rmdprod.racing.com/RV/stewards/2026-07-25/caulfield/stewardsreports/race-8.htm"
+      },
+      {
+        "id": "5440680",
+        "meet": {
+          "venue": "Caulfield",
+          "meetUrl": "https://www.racing.com/form/2026-07-25/caulfield",
+          "meetUrlSegment": "2026-07-25/caulfield",
+          "trackMap": "https://s3-ap-southeast-2.amazonaws.com/racevic.static/trackmaps/CAUL.svg"
+        },
+        "raceNumber": 7,
+        "raceStatus": "Paying",
+        "distance": "1200m",
+        "time": "2026-07-25T05:50:00.000Z",
+        "name": "The Big Screen Company Bletchingly Stakes",
+        "nameForm": "BLETCHINGLY",
+        "trackCondition": "Soft",
+        "isTrial": 0,
+        "isJumpOut": 0,
+        "trackRating": "6",
+        "trackRecordTime": "6774",
+        "trackRecordHorseCode": "679876",
+        "trackRecordHorseName": "Miss Andretti",
+        "trackRecordRace": {
+          "date": "2007-03-10"
+        },
+        "condition": "Standard Weight for Age. Group 3. No age restriction, No sex restriction. No class restriction. Apprentices cannot claim. Track name: Main. Track type: Turf. Field limit: 16.",
+        "prizeMoney": [
+          "{\"Position\":1,\"Value\":\"120000.00\"}",
+          "{\"Position\":2,\"Value\":\"36000.00\"}",
+          "{\"Position\":3,\"Value\":\"18000.00\"}",
+          "{\"Position\":4,\"Value\":\"9000.00\"}",
+          "{\"Position\":5,\"Value\":\"5000.00\"}",
+          "{\"Position\":6,\"Value\":\"4000.00\"}",
+          "{\"Position\":7,\"Value\":\"4000.00\"}",
+          "{\"Position\":8,\"Value\":\"4000.00\"}"
+        ],
+        "totalPrizeMoney": "200000.00",
+        "hasSectionals": true,
+        "hasTips": false,
+        "hasSpeedMap": false,
+        "hasResults": true,
+        "hasStewards": true,
+        "hasHistory": false,
+        "hasField": false,
+        "hasFullForm": false,
+        "trackCode": "81",
+        "rdcClass": "Group 3",
+        "formRaceEntries": [
+          {
+            "horseName": "Cosmic Crusader",
+            "position": 1,
+            "winningTime": "7063",
+            "standardTimeDifference": "+3.78L"
+          },
+          {
+            "horseName": "Recommendation",
+            "position": 3,
+            "winningTime": "7063",
+            "standardTimeDifference": "+3.78L"
+          },
+          {
+            "horseName": "Zou Sensation",
+            "position": 5,
+            "winningTime": "7063",
+            "standardTimeDifference": "+3.78L"
+          },
+          {
+            "horseName": "Aztec Ruler",
+            "position": 8,
+            "winningTime": "7063",
+            "standardTimeDifference": "+3.78L"
+          },
+          {
+            "horseName": "Title Fighter",
+            "position": 9,
+            "winningTime": "7063",
+            "standardTimeDifference": "+3.78L"
+          },
+          {
+            "horseName": "Watchme Win",
+            "position": 6,
+            "winningTime": "7063",
+            "standardTimeDifference": "+3.78L"
+          },
+          {
+            "horseName": "Winnasedge",
+            "position": 2,
+            "winningTime": "7063",
+            "standardTimeDifference": "+3.78L"
+          },
+          {
+            "horseName": "Miraval Rose",
+            "position": 7,
+            "winningTime": "7063",
+            "standardTimeDifference": "+3.78L"
+          },
+          {
+            "horseName": "Samangu",
+            "position": 4,
+            "winningTime": "7063",
+            "standardTimeDifference": "+3.78L"
+          }
+        ],
+        "toEightHundredMetresSeconds": 2562,
+        "standardTimeTo800Difference": "-7.56L",
+        "eightHundredToFourHundredMetresSeconds": 2222,
+        "standardTime800To400Difference": "+5.34L",
+        "fourHundredToFinishMetresSeconds": 2279,
+        "standardTime400ToFinishDifference": "+5.94L",
+        "raceTime": "1:10.63",
+        "standardTimeDifference": "+3.78L",
+        "standardTimeId": "81_Soft_1200_Group 3",
+        "stewardsReportUrl": "https://cdn.rmdprod.racing.com/RV/stewards/2026-07-25/caulfield/stewardsreports/race-7.htm"
+      },
+      {
+        "id": "5440681",
+        "meet": {
+          "venue": "Caulfield",
+          "meetUrl": "https://www.racing.com/form/2026-07-25/caulfield",
+          "meetUrlSegment": "2026-07-25/caulfield",
+          "trackMap": "https://s3-ap-southeast-2.amazonaws.com/racevic.static/trackmaps/CAUL.svg"
+        },
+        "raceNumber": 5,
+        "raceStatus": "Paying",
+        "distance": "1600m",
+        "time": "2026-07-25T04:30:00.000Z",
+        "name": "Tobin Brothers Celebrating Lives Handicap",
+        "nameForm": "BM100",
+        "trackCondition": "Soft",
+        "isTrial": 0,
+        "isJumpOut": 0,
+        "trackRating": "6",
+        "trackRecordTime": "9428",
+        "trackRecordHorseCode": "559502",
+        "trackRecordHorseName": "Fields of Omagh",
+        "trackRecordRace": {
+          "date": "2006-03-04"
+        },
+        "condition": "Handicap. No age restriction, No sex restriction. BenchMark 100. Apprentices can claim. Track name: Main. Track type: Turf. Field limit: 15.",
+        "prizeMoney": [
+          "{\"Position\":1,\"Value\":\"82500.00\"}",
+          "{\"Position\":2,\"Value\":\"27000.00\"}",
+          "{\"Position\":3,\"Value\":\"13500.00\"}",
+          "{\"Position\":4,\"Value\":\"7500.00\"}",
+          "{\"Position\":5,\"Value\":\"4500.00\"}",
+          "{\"Position\":6,\"Value\":\"3000.00\"}",
+          "{\"Position\":7,\"Value\":\"3000.00\"}",
+          "{\"Position\":8,\"Value\":\"3000.00\"}",
+          "{\"Position\":9,\"Value\":\"3000.00\"}",
+          "{\"Position\":10,\"Value\":\"3000.00\"}"
+        ],
+        "totalPrizeMoney": "150000.00",
+        "hasSectionals": true,
+        "hasTips": false,
+        "hasSpeedMap": false,
+        "hasResults": true,
+        "hasStewards": true,
+        "hasHistory": false,
+        "hasField": false,
+        "hasFullForm": false,
+        "trackCode": "81",
+        "rdcClass": "Open",
+        "formRaceEntries": [
+          {
+            "horseName": "Jimmy The Bear",
+            "position": 9,
+            "winningTime": "9824",
+            "standardTimeDifference": "+4.2L"
+          },
+          {
+            "horseName": "Detonator Jack",
+            "position": 8,
+            "winningTime": "9824",
+            "standardTimeDifference": "+4.2L"
+          },
+          {
+            "horseName": "Magnaspin",
+            "position": 2,
+            "winningTime": "9824",
+            "standardTimeDifference": "+4.2L"
+          },
+          {
+            "horseName": "Unlimited",
+            "position": 5,
+            "winningTime": "9824",
+            "standardTimeDifference": "+4.2L"
+          },
+          {
+            "horseName": "Seafall",
+            "position": 3,
+            "winningTime": "9824",
+            "standardTimeDifference": "+4.2L"
+          },
+          {
+            "horseName": "Tuff Tu Mus",
+            "position": 7,
+            "winningTime": "9824",
+            "standardTimeDifference": "+4.2L"
+          },
+          {
+            "horseName": "St Lawrence",
+            "position": 6,
+            "winningTime": "9824",
+            "standardTimeDifference": "+4.2L"
+          },
+          {
+            "horseName": "Rumbled Again",
+            "position": 4,
+            "winningTime": "9824",
+            "standardTimeDifference": "+4.2L"
+          },
+          {
+            "horseName": "First Chorus",
+            "position": 1,
+            "winningTime": "9824",
+            "standardTimeDifference": "+4.2L"
+          }
+        ],
+        "toEightHundredMetresSeconds": 5248,
+        "standardTimeTo800Difference": "-10.74L",
+        "eightHundredToFourHundredMetresSeconds": 2292,
+        "standardTime800To400Difference": "+7.02L",
+        "fourHundredToFinishMetresSeconds": 2284,
+        "standardTime400ToFinishDifference": "+7.92L",
+        "raceTime": "1:38.24",
+        "standardTimeDifference": "+4.2L",
+        "standardTimeId": "81_Soft_1600_Open",
+        "stewardsReportUrl": "https://cdn.rmdprod.racing.com/RV/stewards/2026-07-25/caulfield/stewardsreports/race-5.htm"
+      },
+      {
+        "id": "5440682",
+        "meet": {
+          "venue": "Caulfield",
+          "meetUrl": "https://www.racing.com/form/2026-07-25/caulfield",
+          "meetUrlSegment": "2026-07-25/caulfield",
+          "trackMap": "https://s3-ap-southeast-2.amazonaws.com/racevic.static/trackmaps/CAUL.svg"
+        },
+        "raceNumber": 1,
+        "raceStatus": "Paying",
+        "distance": "1200m",
+        "time": "2026-07-25T02:10:00.000Z",
+        "name": "Sportsbet Fixed Odds Exotics Handicap",
+        "nameForm": "F&M BM74",
+        "trackCondition": "Soft",
+        "isTrial": 0,
+        "isJumpOut": 0,
+        "trackRating": "6",
+        "trackRecordTime": "6774",
+        "trackRecordHorseCode": "679876",
+        "trackRecordHorseName": "Miss Andretti",
+        "trackRecordRace": {
+          "date": "2007-03-10"
+        },
+        "condition": "Handicap. No age restriction, Fillies and Mares. BenchMark 74. Apprentices can claim. Track name: Main. Track type: Turf. Field limit: 16.",
+        "prizeMoney": [
+          "{\"Position\":1,\"Value\":\"44000.00\"}",
+          "{\"Position\":2,\"Value\":\"14400.00\"}",
+          "{\"Position\":3,\"Value\":\"7200.00\"}",
+          "{\"Position\":4,\"Value\":\"4000.00\"}",
+          "{\"Position\":5,\"Value\":\"2400.00\"}",
+          "{\"Position\":6,\"Value\":\"1600.00\"}",
+          "{\"Position\":7,\"Value\":\"1600.00\"}",
+          "{\"Position\":8,\"Value\":\"1600.00\"}",
+          "{\"Position\":9,\"Value\":\"1600.00\"}",
+          "{\"Position\":10,\"Value\":\"1600.00\"}"
+        ],
+        "totalPrizeMoney": "80000.00",
+        "hasSectionals": true,
+        "hasTips": false,
+        "hasSpeedMap": false,
+        "hasResults": true,
+        "hasStewards": true,
+        "hasHistory": false,
+        "hasField": false,
+        "hasFullForm": false,
+        "trackCode": "81",
+        "rdcClass": "BM 70",
+        "formRaceEntries": [
+          {
+            "horseName": "Takeko",
+            "position": 6,
+            "winningTime": "7029",
+            "standardTimeDifference": null
+          },
+          {
+            "horseName": "Glasgow Lass",
+            "position": 3,
+            "winningTime": "7029",
+            "standardTimeDifference": null
+          },
+          {
+            "horseName": "Custom",
+            "position": 1,
+            "winningTime": "7029",
+            "standardTimeDifference": null
+          },
+          {
+            "horseName": "Divine Thoughts",
+            "position": 10,
+            "winningTime": "7029",
+            "standardTimeDifference": null
+          },
+          {
+            "horseName": "Recuperato",
+            "position": 5,
+            "winningTime": "7029",
+            "standardTimeDifference": null
+          },
+          {
+            "horseName": "Royal Lass",
+            "position": 4,
+            "winningTime": "7029",
+            "standardTimeDifference": null
+          },
+          {
+            "horseName": "Mystery 'N' Drama",
+            "position": 8,
+            "winningTime": "7029",
+            "standardTimeDifference": null
+          },
+          {
+            "horseName": "Sun Setting",
+            "position": 2,
+            "winningTime": "7029",
+            "standardTimeDifference": null
+          },
+          {
+            "horseName": "Vain Champagne",
+            "position": 7,
+            "winningTime": "7029",
+            "standardTimeDifference": null
+          },
+          {
+            "horseName": "Happy Link",
+            "position": 9,
+            "winningTime": "7029",
+            "standardTimeDifference": null
+          }
+        ],
+        "toEightHundredMetresSeconds": 2447,
+        "standardTimeTo800Difference": "+0.3L",
+        "eightHundredToFourHundredMetresSeconds": 2257,
+        "standardTime800To400Difference": "+3.18L",
+        "fourHundredToFinishMetresSeconds": 2325,
+        "standardTime400ToFinishDifference": "+3.18L",
+        "raceTime": "1:10.29",
+        "standardTimeDifference": "+6.72L",
+        "standardTimeId": "81_Soft_1200_All",
+        "stewardsReportUrl": "https://cdn.rmdprod.racing.com/RV/stewards/2026-07-25/caulfield/stewardsreports/race-1.htm"
+      }
+    ]
+  }
+}

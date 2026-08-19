@@ -1,0 +1,72 @@
+{
+  "contract_name": "edgeiq_race_entry_epi_component_fact_v1",
+  "contract_version": "1.0.0",
+  "grain": "one_governed_row_per_race_entry_and_epi_component",
+  "primary_key": [
+    "race_entry_epi_component_id"
+  ],
+  "natural_key": [
+    "race_entry_id",
+    "epi_component_code"
+  ],
+  "required_fields": [
+    "race_entry_epi_component_id",
+    "race_entry_id",
+    "race_id",
+    "race_date",
+    "epi_component_code",
+    "component_source_fact_name",
+    "component_source_fact_id",
+    "component_source_value_field",
+    "component_source_evidence_sha256",
+    "raw_component_value",
+    "field_population_count",
+    "field_component_mean",
+    "field_component_population_standard_deviation",
+    "unbounded_normalised_component_value",
+    "capped_normalised_component_value",
+    "authorised_component_weight",
+    "weighted_component_value",
+    "epi_parameter_id",
+    "epi_component_normalisation_parameter_id",
+    "epi_component_publication_decision",
+    "epi_component_reconciliation_decision",
+    "epi_component_status",
+    "race_entry_epi_component_evidence_sha256",
+    "source_lineage",
+    "builder_version",
+    "contract_version",
+    "built_at_utc"
+  ],
+  "allowed_values": {
+    "epi_component_code": [
+      "HISTORICAL_PERFORMANCE",
+      "SUITABILITY",
+      "RACE_CONTEXT"
+    ],
+    "epi_component_publication_decision": [
+      "EPI_COMPONENT_PUBLISHED"
+    ],
+    "epi_component_reconciliation_decision": [
+      "EPI_COMPONENT_RECONCILED"
+    ],
+    "epi_component_status": [
+      "GOVERNED_RACE_ENTRY_EPI_COMPONENT"
+    ]
+  },
+  "forbidden_fields": [
+    "epi",
+    "epi_value",
+    "final_epi",
+    "epi_rank",
+    "runner_rank",
+    "race_rank",
+    "probability",
+    "fair_price",
+    "market_price",
+    "market_edge",
+    "confidence",
+    "prediction",
+    "forecast"
+  ]
+}

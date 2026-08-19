@@ -1,0 +1,26 @@
+{
+  "checks": [
+    {
+      "check": "INTEGRATION_CONTRACTS_VERSIONED",
+      "observed": 7,
+      "passed": true
+    },
+    {
+      "check": "UNSUPPORTED_FIELDS_EXPLICIT",
+      "observed": "UNAVAILABLE emitted",
+      "passed": true
+    },
+    {
+      "check": "NO_EPI_ERI_CREATED",
+      "observed": "placeholder only",
+      "passed": true
+    }
+  ],
+  "generated_timestamp": "2026-07-16T08:34:32Z",
+  "integration_contract_rows": 7,
+  "marker": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE2_8_INTEGRATION_CONTRACTS_FINAL_PASS",
+  "phase": "phase2_8",
+  "snapshot_id": "eiq_product_integration_contracts_v1_6eb5a98327c6e6338fd2c807",
+  "snapshot_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\performance-intelligence\\warehouse\\phase2_8\\eiq_product_integration_contracts_v1_6eb5a98327c6e6338fd2c807",
+  "status": "PASS"
+}

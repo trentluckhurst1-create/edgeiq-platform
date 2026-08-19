@@ -1,0 +1,7 @@
+{
+  "decision": "RACINGCOM_GRAPHQL_V2_PRODUCTION_MIGRATION_PREFLIGHT_PASS",
+  "run_id": "racingcom_graphql_v2_migration_20260722T191649Z",
+  "pass": 22,
+  "fail": 0,
+  "production_changed": "NO"
+}

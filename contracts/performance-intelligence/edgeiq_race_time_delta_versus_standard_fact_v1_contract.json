@@ -1,0 +1,48 @@
+{
+  "contract_name": "edgeiq_race_time_delta_versus_standard_fact_v1",
+  "contract_version": "1.0.0",
+  "grain": "one_row_per_standard_time_eligible_observation_with_available_standard",
+  "calculation_method": "WINNER_RACE_TIME_MINUS_STANDARD_TIME_SECONDS",
+  "primary_key": ["race_time_delta_id"],
+  "required_fields": [
+    "race_time_delta_id",
+    "benchmark_observation_id",
+    "benchmark_group_id",
+    "standard_time_id",
+    "race_key",
+    "race_date",
+    "track_name",
+    "official_distance_metres",
+    "winner_horse_name",
+    "winner_race_time_seconds",
+    "standard_time_seconds",
+    "time_delta_seconds",
+    "time_delta_interpretation",
+    "calculation_method",
+    "source_observation_sha256",
+    "source_standard_time_evidence_sha256",
+    "race_time_delta_evidence_sha256",
+    "builder_version",
+    "contract_version",
+    "built_at_utc"
+  ],
+  "allowed_values": {
+    "time_delta_interpretation": [
+      "FASTER_THAN_STANDARD",
+      "EQUAL_TO_STANDARD",
+      "SLOWER_THAN_STANDARD"
+    ],
+    "calculation_method": [
+      "WINNER_RACE_TIME_MINUS_STANDARD_TIME_SECONDS"
+    ]
+  },
+  "forbidden_fields": [
+    "seconds_per_length",
+    "lengths_vs_standard",
+    "track_variant",
+    "condition_adjustment",
+    "performance_rating",
+    "speed_rating",
+    "epi"
+  ]
+}

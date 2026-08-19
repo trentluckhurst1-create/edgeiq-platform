@@ -1,0 +1,28 @@
+{
+  "schema_version": "EDGEIQ_DAILY_OPERATIONS_CONFIG_SCHEMA_V1",
+  "required_keys": [
+    "alert_thresholds",
+    "allowed_source_adapters",
+    "canonical_promotion_mode",
+    "config_version",
+    "default_lookback_days",
+    "enabled_jurisdictions",
+    "enabled_states",
+    "evidence_root",
+    "full_rebuild_mode",
+    "lock_path",
+    "log_root",
+    "manifest_retention_days",
+    "output_root",
+    "protected_systems",
+    "raw_evidence_retention_days",
+    "source_authority_order",
+    "source_retry_settings",
+    "speed_refresh_window",
+    "staging_root",
+    "stale_lock_minutes",
+    "timezone"
+  ],
+  "secret_policy": "No credentials or secrets may be stored in config/edgeiq_daily_operations_v1.json.",
+  "mode_defaults_are_safe": true
+}

@@ -1,0 +1,58 @@
+{
+  "status": "FORM_GUIDE_EXACT_STRUCTURE_APPLIED",
+  "changes": [
+    [
+      "summary_columns_edge_fluc",
+      true
+    ],
+    [
+      "summary_widths_edge_fluc",
+      true
+    ],
+    [
+      "price_display_helpers",
+      true
+    ],
+    [
+      "todaymatch_marker",
+      true
+    ],
+    [
+      "today_match_region",
+      true
+    ],
+    [
+      "insights_region",
+      true
+    ],
+    [
+      "recent_form_region",
+      true
+    ],
+    [
+      "root_exact_class",
+      true
+    ],
+    [
+      "approved_tools_row",
+      true
+    ],
+    [
+      "summary_table_region",
+      true
+    ],
+    [
+      "edge_fluc_cells",
+      true
+    ],
+    [
+      "runner_header_region",
+      true
+    ],
+    [
+      "dossier_grid_restructure",
+      true
+    ]
+  ],
+  "timestamp": "2026-07-20T13:35:46.686665"
+}

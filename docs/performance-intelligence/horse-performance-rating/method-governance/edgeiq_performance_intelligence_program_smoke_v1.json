@@ -1,0 +1,45 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "check": "manifest_exists",
+      "status": "PASS",
+      "detail": "C:/Users/trent/OneDrive/Documents/EDGEIQ_PLATFORM/public/data/edgeiq_performance_intelligence_trust_manifest_v1.json"
+    },
+    {
+      "check": "normalisation_rows_168",
+      "status": "PASS",
+      "detail": 168
+    },
+    {
+      "check": "rating_base_rows_168",
+      "status": "PASS",
+      "detail": 168
+    },
+    {
+      "check": "horse_rating_rows_24",
+      "status": "PASS",
+      "detail": 24
+    },
+    {
+      "check": "active_entries_188",
+      "status": "PASS",
+      "detail": 188
+    },
+    {
+      "check": "partial_coverage_explicit",
+      "status": "PASS",
+      "detail": "EDGEIQ_PERFORMANCE_INTELLIGENCE_LIVE_PARTIAL_HISTORICAL_COVERAGE"
+    },
+    {
+      "check": "epi_unavailable_explicit",
+      "status": "PASS",
+      "detail": 0
+    },
+    {
+      "check": "deterministic_pass",
+      "status": "PASS",
+      "detail": "PASS"
+    }
+  ]
+}

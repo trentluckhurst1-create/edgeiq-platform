@@ -1,0 +1,12 @@
+{
+  "current_runners": 80,
+  "epi": 0,
+  "governed_identities": 80,
+  "horse_aggregates": 0,
+  "horse_observations": 8,
+  "horse_ratings": 0,
+  "performance_rating_base_rows": 8,
+  "remaining_blocker": "No eligible horse has five governed HPR observations. Historical pre-cutoff HPR-NORM-A-v1 application is explicitly blocked by current temporal authority.",
+  "snapshots": 0,
+  "status": "BLOCKED_GOVERNED_HISTORY_DEPTH"
+}

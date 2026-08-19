@@ -1,0 +1,12 @@
+{
+  "status": "LICENCE_REQUIRED",
+  "generated_at": "2026-07-26T01:15:31+00:00",
+  "approved_bom_station_rows": 0,
+  "current_observations": 0,
+  "stale_observations": 0,
+  "unavailable_observations": 0,
+  "notes": [
+    "No automated BOM production collection executed because data access is licence-gated.",
+    "No fabricated observations were published."
+  ]
+}

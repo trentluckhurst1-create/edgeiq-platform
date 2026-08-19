@@ -1,0 +1,21 @@
+{
+  "status": "LENGTHS_V_STANDARD_V2_AUDIT_PASS",
+  "matched_observations": 168,
+  "converted_observations": 168,
+  "blocked_observations": 0,
+  "turf_converted_observations": 0,
+  "australian_synthetic_converted_observations": 168,
+  "races": 2,
+  "runners": 24,
+  "benchmark_groups": 7,
+  "minimum_lvs": "-12.342000",
+  "maximum_lvs": "3.822000",
+  "median_lvs": "0.000000",
+  "p05": "-2.525400",
+  "p95": "2.096400",
+  "positive_rows": 82,
+  "zero_rows": 4,
+  "negative_rows": 82,
+  "candidate_hash": "89407374ba388fee0d24696146c896410899b3d498fa3d8eb00f8f9bac68f93b",
+  "final_hash": "89407374ba388fee0d24696146c896410899b3d498fa3d8eb00f8f9bac68f93b"
+}

@@ -1,0 +1,92 @@
+{
+  "canonical_identity_semantics": {
+    "classification": "CANONICAL_RESOLVED_IDENTITY",
+    "expression": "race_id + horse_id",
+    "numeric_population_equivalent": true,
+    "source_authority_key": false
+  },
+  "checks": [
+    {
+      "check": "RAW_SOURCE_EXISTS",
+      "detail": "docs/performance-intelligence/warehouse/raw/eiq_warehouse_snapshot_b24578e0eb795ab6bd076452bfff3f5e/canonical_performance_evidence.csv",
+      "result": "PASS"
+    },
+    {
+      "check": "RAW_SCHEMA_COMPLETE",
+      "detail": "required=11; present=11",
+      "result": "PASS"
+    },
+    {
+      "check": "RAW_PHYSICAL_POPULATION",
+      "detail": "actual=879784; expected=879784",
+      "result": "PASS"
+    },
+    {
+      "check": "PROVIDER_RAW_KEY_CONTRACT",
+      "detail": "race_id + provider_runner_id; unique=879695; duplicates=89",
+      "result": "PASS"
+    },
+    {
+      "check": "PROVIDER_IDENTITY_COMPLETE",
+      "detail": "blank_provider_runner_id=0",
+      "result": "PASS"
+    },
+    {
+      "check": "CANONICAL_HORSE_ID_COMPLETE",
+      "detail": "blank_horse_id=0",
+      "result": "PASS"
+    },
+    {
+      "check": "CANONICAL_KEY_NUMERIC_EQUIVALENCE",
+      "detail": "race_id + horse_id reproduces population but is classified as canonical rather than raw",
+      "result": "PASS"
+    },
+    {
+      "check": "PROVIDER_CANONICAL_FIELD_DISTINCTION",
+      "detail": "provider_runner_id and horse_id are stored as separate governed fields",
+      "result": "PASS"
+    },
+    {
+      "check": "IDENTITY_PROCESSING_METADATA",
+      "detail": "identity_method, identity_version and performance_natural_key_version populated",
+      "result": "PASS"
+    },
+    {
+      "check": "RAW_ASSET_REGISTRATION",
+      "detail": "docs/performance-intelligence/warehouse/raw/eiq_warehouse_snapshot_b24578e0eb795ab6bd076452bfff3f5e/asset_catalog.csv",
+      "result": "PASS"
+    },
+    {
+      "check": "RAW_MATERIALISATION",
+      "detail": "docs/performance-intelligence/warehouse/raw/eiq_warehouse_snapshot_b24578e0eb795ab6bd076452bfff3f5e/materialisation_checks.csv",
+      "result": "PASS"
+    },
+    {
+      "check": "CORRECTED_FACTS_DOWNSTREAM_SCHEMA",
+      "detail": "benchmark_eligible|performance_fact_id|quality_state",
+      "result": "PASS"
+    }
+  ],
+  "contract_id": "EDGEIQ_HISTORICAL_OBSERVATION_V3_PHYSICAL_AUTHORITY_CONTRACT_V1",
+  "decision": "LOCK_CANONICAL_PERFORMANCE_EVIDENCE_AS_PHYSICAL_AUTHORITY",
+  "generated_at_utc": "2026-07-27T06:42:55+00:00",
+  "population_contract": {
+    "duplicate_excess": 89,
+    "physical_rows": 879784,
+    "unique_raw_identities": 879695
+  },
+  "rejected_as_source_authority": "docs/performance-intelligence/warehouse/performance-facts-corrected/eiq_performance_facts_v0_2_a0c3715ab506d19f9301d8a4/canonical_performance_facts_v0_2.csv",
+  "selected_physical_authority": "docs/performance-intelligence/warehouse/raw/eiq_warehouse_snapshot_b24578e0eb795ab6bd076452bfff3f5e/canonical_performance_evidence.csv",
+  "selected_raw_identity": {
+    "duplicate_excess": 89,
+    "expression": "race_id + provider_runner_id",
+    "fields": [
+      "race_id",
+      "provider_runner_id"
+    ],
+    "physical_rows": 879784,
+    "unique_raw_identities": 879695
+  },
+  "status": "EDGEIQ_HISTORICAL_OBSERVATION_V3_RAW_AUTHORITY_SEMANTIC_LOCK_PHASE1A_6B_1B_V1_PASS",
+  "warehouse_build_authorised": true
+}

@@ -1,0 +1,23 @@
+{
+  "checks": [
+    {
+      "check": "SECTIONAL_BENCHMARK_UNSUPPORTED_TYPES_BLOCKED",
+      "observed": "no official split evidence",
+      "passed": true
+    },
+    {
+      "check": "SECTIONAL_DEVIATIONS_REPRODUCIBLE",
+      "observed": 0,
+      "passed": true
+    }
+  ],
+  "generated_timestamp": "2026-07-16T08:33:40Z",
+  "marker": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE2_4_SECTIONAL_BENCHMARK_FINAL_PASS",
+  "phase": "phase2_4",
+  "primary_blocker": "NO_CANONICAL_SECTIONAL_TIME_EVIDENCE",
+  "sectional_benchmark_rows": 0,
+  "sectional_deviation_rows": 0,
+  "snapshot_id": "eiq_sectional_benchmarks_v1_e95c48c54f72d5845e1e752e",
+  "snapshot_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\performance-intelligence\\warehouse\\phase2_4\\eiq_sectional_benchmarks_v1_e95c48c54f72d5845e1e752e",
+  "status": "PASS_PARTIAL_BLOCKED"
+}

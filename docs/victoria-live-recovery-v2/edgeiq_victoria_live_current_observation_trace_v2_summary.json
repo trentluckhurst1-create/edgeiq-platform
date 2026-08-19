@@ -1,0 +1,12 @@
+{
+  "status": "BLOCKED_CURRENT_RESULTS_NOT_INGESTED",
+  "root_cause": "CURRENT_RESULTS_NOT_INGESTED",
+  "current_meetings": 6,
+  "post_2026_07_20_result_races": 0,
+  "post_2026_07_20_timed_races": 8,
+  "post_2026_07_20_performance_base_races": 6,
+  "category_counts": {
+    "RESULT_NOT_IMPORTED": 4,
+    "ORCHESTRATION_NOT_RUN": 2
+  }
+}

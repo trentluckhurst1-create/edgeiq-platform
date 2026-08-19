@@ -1,0 +1,138 @@
+{
+  "built_at_utc": "2026-07-22T21:21:47Z",
+  "network_mode": "OFFLINE",
+  "decision": "PERFORMANCE_INTELLIGENCE_PRODUCTION_V2_SYNTHETIC_CHAIN_PASS",
+  "stages": [
+    {
+      "stage": "elapsed_time_observations",
+      "script": "scripts/build_edgeiq_results_elapsed_time_observations_v1.py",
+      "requirement": "REQUIRED",
+      "status": "PASS",
+      "return_code": 0,
+      "detail": "{   \"input_observations\": 898,   \"valid_segment_observations\": 449,   \"elapsed_times_derived\": 449,   \"rejected_observations\": 449,   \"rejection_reasons\": {     \"CUMULATIVE_POINT_NOT_USED_AS_INCREMENTAL_SEGMENT\": 449   },   \"races_represented\": 5,   \"runners_represented\": 58,   \"segments_represented\": 32,   \"deterministic_hash\": \"d95b669b5d315155b40297c044c24482beff788943c6bcf203edd3e05f3bee49\" } "
+    },
+    {
+      "stage": "standard_time_facts",
+      "script": "scripts/build_edgeiq_standard_time_performance_facts_from_results_v1.py",
+      "requirement": "REQUIRED",
+      "status": "PASS",
+      "return_code": 0,
+      "detail": "{   \"source_rows\": 898,   \"valid_elapsed_observations\": 449,   \"performance_fact_rows\": 449,   \"races\": 5,   \"runners\": 58,   \"benchmark_groups\": 32,   \"largest_group_count\": 24,   \"duplicate_contribution_count\": 0,   \"rejections\": 449,   \"deterministic_hash\": \"f79011e6a7629c16af85b9131b8adf95372e7cee4b1b35d4cc32f4d2a8ef14d6\" } "
+    },
+    {
+      "stage": "benchmark_eligibility",
+      "script": "scripts/build_edgeiq_results_standard_time_eligibility_v1.py",
+      "requirement": "REQUIRED",
+      "status": "PASS",
+      "return_code": 0,
+      "detail": "{   \"total_detailed_observations\": 449,   \"eligible_observations\": 449,   \"ineligible_observations\": 0,   \"benchmark_groups\": 32,   \"groups_1_4\": 0,   \"groups_5_9\": 0,   \"groups_10_19\": 25,   \"groups_20_or_more\": 7,   \"largest_group_size\": 24,   \"median_group_size\": 11.0,   \"total_deficit\": 219,   \"minimum_sample\": 20,   \"previous_reduced_performance_fact_rows\": 39,   \"previous_reduced_benchmark_eligible_rows\": 24,   \"previous_reduced_groups_meeting_minimum\": 0 } "
+    },
+    {
+      "stage": "standard_times",
+      "script": "scripts/build_edgeiq_results_standard_times_v1.py",
+      "requirement": "REQUIRED",
+      "status": "PASS",
+      "return_code": 0,
+      "detail": "{   \"input_fact_rows\": 449,   \"eligible_benchmark_groups\": 7,   \"standard_time_rows\": 7,   \"minimum_sample\": 20,   \"groups_below_minimum_in_output\": 0,   \"decision\": \"RESULTS_STANDARD_TIME_PASS_NONZERO\",   \"deterministic_hash\": \"a60fa15d312278a20452e41b82ff735e8d7434656186dd0c26802b42ff75d9d5\" } "
+    },
+    {
+      "stage": "surface_registry",
+      "script": "scripts/build_edgeiq_canonical_surface_registry_v1.py",
+      "requirement": "REQUIRED",
+      "status": "PASS",
+      "return_code": 0,
+      "detail": "{   \"registry_rows\": 7,   \"australian_synthetic_aliases\": 5,   \"status\": \"CANONICAL_SURFACE_REGISTRY_BUILT\" } "
+    },
+    {
+      "stage": "surface_registry_audit",
+      "script": "scripts/audit_edgeiq_canonical_surface_registry_v1.py",
+      "requirement": "REQUIRED",
+      "status": "PASS",
+      "return_code": 0,
+      "detail": "{   \"status\": \"PASS\",   \"checks\": 6,   \"current_synthetic_rows\": 449 } "
+    },
+    {
+      "stage": "length_conversion_provider_tests",
+      "script": "scripts/test_edgeiq_length_conversion_method_v1.py",
+      "requirement": "REQUIRED",
+      "status": "PASS",
+      "return_code": 0,
+      "detail": "{   \"method_version\": \"EDGEIQ_SURFACE_AWARE_LENGTHS_PER_SECOND_V2\",   \"tests\": 22,   \"passed\": true,   \"failures\": [] } "
+    },
+    {
+      "stage": "lengths_v_standard_v2",
+      "script": "scripts/build_edgeiq_results_lengths_v_standard_v2.py",
+      "requirement": "REQUIRED",
+      "status": "PASS",
+      "return_code": 0,
+      "detail": "{   \"matched_observations\": 168,   \"converted_observations\": 168,   \"blocked_observations\": 0,   \"australian_synthetic_converted_observations\": 168,   \"candidate_hash\": \"89407374ba388fee0d24696146c896410899b3d498fa3d8eb00f8f9bac68f93b\",   \"status\": \"LENGTHS_V_STANDARD_V2_CANDIDATE_BUILT\" } "
+    },
+    {
+      "stage": "lengths_v_standard_v2_audit",
+      "script": "scripts/audit_edgeiq_results_lengths_v_standard_v2.py",
+      "requirement": "REQUIRED",
+      "status": "PASS",
+      "return_code": 0,
+      "detail": "{   \"status\": \"LENGTHS_V_STANDARD_V2_AUDIT_PASS\",   \"matched_observations\": 168,   \"converted_observations\": 168,   \"blocked_observations\": 0,   \"turf_converted_observations\": 0,   \"australian_synthetic_converted_observations\": 168,   \"races\": 2,   \"runners\": 24,   \"benchmark_groups\": 7,   \"minimum_lvs\": \"-12.342000\",   \"maximum_lvs\": \"3.822000\",   \"median_lvs\": \"0.000000\",   \"p05\": \"-2.525400\",   \"p95\": \"2.096400\",   \"positive_rows\": 82,   \"zero_rows\": 4,   \"negative_rows\": 82,   \"candidate_hash\": \"89407374ba388fee0d24696146c896410899b3d498fa3d8eb00f8f9bac68f93b\",   \"final_hash\": \"89407374ba388fee0d24696146c896410899b3d498fa3d8eb00f8f9bac68f93b\" } "
+    },
+    {
+      "stage": "runner_sectional_v2",
+      "script": "scripts/build_edgeiq_runner_sectional_performance_v2.py",
+      "requirement": "REQUIRED",
+      "status": "PASS",
+      "return_code": 0,
+      "detail": "{   \"input_lvs_rows\": 168,   \"runner_rows\": 24,   \"races\": 2,   \"early_rows\": 24,   \"mid_rows\": 24,   \"late_rows\": 24,   \"final_rows\": 24,   \"complete_coverage\": 24,   \"partial_coverage\": 0,   \"status\": \"RUNNER_SECTIONAL_PERFORMANCE_V2_BUILT\" } "
+    },
+    {
+      "stage": "early_late_speed_v2",
+      "script": "scripts/build_edgeiq_results_early_late_speed_v2.py",
+      "requirement": "REQUIRED",
+      "status": "PASS",
+      "return_code": 0,
+      "detail": "{   \"sectional_input_rows\": 24,   \"runner_input_rows\": 24,   \"early_speed_output_rows\": 24,   \"late_speed_output_rows\": 24,   \"historical_rows_retained\": 1006,   \"fresh_rows_added\": 48,   \"rejected_rows\": 0,   \"status\": \"EARLY_LATE_SPEED_V2_BUILT\" } "
+    },
+    {
+      "stage": "canonical_lvs_fact",
+      "script": "scripts/build_edgeiq_lengths_versus_standard_fact_from_results_v2.py",
+      "requirement": "REQUIRED",
+      "status": "PASS",
+      "return_code": 0,
+      "detail": "{   \"source_rows\": 168,   \"canonical_lengths_rows\": 168,   \"output_hash\": \"5e59508c162c316586781abad4531b3f55dd3fe8d68128690db93daf65f295ef\",   \"status\": \"CANONICAL_LVS_FACT_REBUILT_FROM_RESULTS_V2\" } "
+    },
+    {
+      "stage": "performance_intelligence_base",
+      "script": "scripts/build_edgeiq_performance_intelligence_base_fact_v1.py",
+      "requirement": "REQUIRED",
+      "status": "PASS",
+      "return_code": 0,
+      "detail": "EDGEIQ_PERFORMANCE_INTELLIGENCE_BASE_FACT_V1_BUILD_PASS lengths_versus_standard_rows=168 performance_intelligence_base_rows=168 output=C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_performance_intelligence_base_fact_v1.csv "
+    },
+    {
+      "stage": "epi_dependency",
+      "script": "scripts/audit_edgeiq_epi_performance_dependency_v1.py",
+      "requirement": "REQUIRED",
+      "status": "PASS",
+      "return_code": 0,
+      "detail": "{   \"epi_readiness\": \"EPI_INPUTS_PARTIAL_PROJECTED_PERFORMANCE_MISSING\",   \"lengths_v_standard_rows\": 168,   \"canonical_lengths_rows\": 168,   \"sectional_rows\": 24,   \"early_rows\": 24,   \"late_rows\": 24,   \"performance_intelligence_base_rows\": 168,   \"projected_performance_rows\": 0 } "
+    },
+    {
+      "stage": "deterministic_rerun_lengths_v2",
+      "script": "scripts/build_edgeiq_results_lengths_v_standard_v2.py",
+      "requirement": "VALIDATION",
+      "status": "PASS",
+      "return_code": 0,
+      "detail": "{   \"matched_observations\": 168,   \"converted_observations\": 168,   \"blocked_observations\": 0,   \"australian_synthetic_converted_observations\": 168,   \"candidate_hash\": \"89407374ba388fee0d24696146c896410899b3d498fa3d8eb00f8f9bac68f93b\",   \"status\": \"LENGTHS_V_STANDARD_V2_CANDIDATE_BUILT\" } "
+    },
+    {
+      "stage": "candidate_hash_comparison",
+      "script": "",
+      "requirement": "VALIDATION",
+      "status": "PASS",
+      "return_code": "",
+      "detail": "first=89407374ba388fee0d24696146c896410899b3d498fa3d8eb00f8f9bac68f93b; second=89407374ba388fee0d24696146c896410899b3d498fa3d8eb00f8f9bac68f93b"
+    }
+  ],
+  "candidate_paths_active": "NO",
+  "production_outputs_overwritten": "PERFORMANCE_INTELLIGENCE_ONLY",
+  "deterministic_hash_match": "YES"
+}

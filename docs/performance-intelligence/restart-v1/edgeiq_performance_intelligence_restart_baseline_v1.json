@@ -1,0 +1,374 @@
+{
+  "program": "EDGEIQ_PERFORMANCE_INTELLIGENCE",
+  "unit": "PI_RESTART_UNIT_001",
+  "name": "Performance Intelligence Restart Baseline",
+  "version": "V1",
+  "generated_utc": "2026-07-28T19:04:02.520395+00:00",
+  "verdict": "PASS",
+  "governance": {
+    "engine_logic_changed": false,
+    "thresholds_changed": false,
+    "source_data_changed": false,
+    "runtime_data_changed": false,
+    "react_changed": false,
+    "manual_file_edits": false
+  },
+  "summary": {
+    "inventory_file_count": 3450,
+    "script_count": 661,
+    "csv_count": 659,
+    "json_count": 576,
+    "markdown_count": 313,
+    "populated_csv_count": 616,
+    "header_only_csv_count": 32,
+    "empty_csv_count": 9,
+    "csv_parse_error_count": 2,
+    "important_expected_count": 15,
+    "important_present_count": 15,
+    "important_missing_count": 0,
+    "important_zero_row_count": 2,
+    "category_counts": {
+      "BUILDER_OR_AUDIT_SCRIPT": 661,
+      "CANONICAL_IDENTITY": 9,
+      "CONTRACT": 41,
+      "DATA_OR_AUDIT": 807,
+      "EVIDENCE_OR_REPORT": 255,
+      "IDENTITY_PROFILER": 81,
+      "LENGTHS_V_STANDARD": 59,
+      "OTHER_PERFORMANCE_INTELLIGENCE": 7,
+      "PUBLIC_RUNTIME_DATA": 39,
+      "RACE_ENTRY_PROJECTION": 20,
+      "RAW_OR_INTERMEDIATE_OUTPUT": 1362,
+      "STANDARD_TIME": 109
+    },
+    "current_branch": "feature/component-refactor",
+    "current_head": "633c784ec6d497103e9e401b5a391bd56ca664f3",
+    "current_head_short": "633c784",
+    "next_action": "FORENSICALLY_TRACE_FIRST_ZERO_ROW_CANONICAL_OUTPUT",
+    "next_reason": "At least one expected canonical Performance Intelligence CSV exists but contains zero data rows.",
+    "runtime_seconds": 258.287
+  },
+  "important_path_status": [
+    {
+      "relative_path": "docs/performance-intelligence/canonical-identities/edgeiq_canonical_performance_identity_v1.csv",
+      "present": true,
+      "size_bytes": 429544067,
+      "csv_status": "POPULATED",
+      "csv_data_rows": 879784
+    },
+    {
+      "relative_path": "docs/performance-intelligence/canonical-identities/edgeiq_canonical_horse_identity_v1.csv",
+      "present": true,
+      "size_bytes": 31192022,
+      "csv_status": "POPULATED",
+      "csv_data_rows": 97112
+    },
+    {
+      "relative_path": "docs/performance-intelligence/canonical-identities/edgeiq_canonical_race_identity_v1.csv",
+      "present": true,
+      "size_bytes": 21701622,
+      "csv_status": "POPULATED",
+      "csv_data_rows": 71019
+    },
+    {
+      "relative_path": "docs/performance-intelligence/canonical-identities/edgeiq_canonical_meeting_identity_v1.csv",
+      "present": true,
+      "size_bytes": 2726238,
+      "csv_status": "POPULATED",
+      "csv_data_rows": 8600
+    },
+    {
+      "relative_path": "docs/performance-intelligence/canonical-identities/edgeiq_canonical_track_identity_v1.csv",
+      "present": true,
+      "size_bytes": 33458,
+      "csv_status": "POPULATED",
+      "csv_data_rows": 100
+    },
+    {
+      "relative_path": "docs/performance-intelligence/epi/edgeiq_epi_performance_fact_v1.csv",
+      "present": true,
+      "size_bytes": 175233456,
+      "csv_status": "POPULATED",
+      "csv_data_rows": 533387
+    },
+    {
+      "relative_path": "docs/performance-intelligence/lengths-v-standard/edgeiq_runner_lengths_v_standard_fact_v1.csv",
+      "present": true,
+      "size_bytes": 80343742,
+      "csv_status": "POPULATED",
+      "csv_data_rows": 533387
+    },
+    {
+      "relative_path": "public/data/edgeiq_standard_time_fact_v1.csv",
+      "present": true,
+      "size_bytes": 523,
+      "csv_status": "HEADER_ONLY",
+      "csv_data_rows": 0
+    },
+    {
+      "relative_path": "public/data/edgeiq_performance_intelligence_base_fact_v1.csv",
+      "present": true,
+      "size_bytes": 117161,
+      "csv_status": "POPULATED",
+      "csv_data_rows": 168
+    },
+    {
+      "relative_path": "public/data/edgeiq_performance_normalisation_fact_v1.csv",
+      "present": true,
+      "size_bytes": 102669,
+      "csv_status": "POPULATED",
+      "csv_data_rows": 168
+    },
+    {
+      "relative_path": "public/data/edgeiq_performance_rating_base_fact_v1.csv",
+      "present": true,
+      "size_bytes": 0,
+      "csv_status": "",
+      "csv_data_rows": ""
+    },
+    {
+      "relative_path": "public/data/edgeiq_horse_performance_observation_fact_v1.csv",
+      "present": true,
+      "size_bytes": 143612,
+      "csv_status": "POPULATED",
+      "csv_data_rows": 168
+    },
+    {
+      "relative_path": "public/data/edgeiq_horse_performance_rating_fact_v1.csv",
+      "present": true,
+      "size_bytes": 12702,
+      "csv_status": "POPULATED",
+      "csv_data_rows": 24
+    },
+    {
+      "relative_path": "public/data/edgeiq_horse_performance_aggregate_fact_v1.csv",
+      "present": true,
+      "size_bytes": 14853,
+      "csv_status": "POPULATED",
+      "csv_data_rows": 24
+    },
+    {
+      "relative_path": "public/data/edgeiq_race_entry_horse_performance_snapshot_fact_v1.csv",
+      "present": true,
+      "size_bytes": 876,
+      "csv_status": "HEADER_ONLY",
+      "csv_data_rows": 0
+    }
+  ],
+  "header_only_csvs": [
+    {
+      "relative_path": "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_4_UNMATCHED_SEMANTIC_SAMPLE_V1.csv",
+      "size_bytes": 76,
+      "csv_columns": 7
+    },
+    {
+      "relative_path": "docs/performance-intelligence/audits/phase1_5b_4/edgeiq_race_time_invalid_v0_1_20260716_095159.csv",
+      "size_bytes": 580,
+      "csv_columns": 31
+    },
+    {
+      "relative_path": "docs/performance-intelligence/horse-performance-rating/edgeiq_historical_performance_identity_collisions_v1.csv",
+      "size_bytes": 91,
+      "csv_columns": 5
+    },
+    {
+      "relative_path": "docs/performance-intelligence/horse-performance-rating/edgeiq_historical_performance_identity_matches_v1.csv",
+      "size_bytes": 107,
+      "csv_columns": 6
+    },
+    {
+      "relative_path": "docs/performance-intelligence/racingcom-ingestion-v2/edgeiq_racingcom_csv_acquisition_rejections_v2.csv",
+      "size_bytes": 246,
+      "csv_columns": 21
+    },
+    {
+      "relative_path": "docs/performance-intelligence/racingcom-ingestion-v2/edgeiq_racingcom_graphql_acquisition_rejections_v1.csv",
+      "size_bytes": 63,
+      "csv_columns": 4
+    },
+    {
+      "relative_path": "docs/performance-intelligence/racingcom-ingestion-v2/edgeiq_racingcom_graphql_parser_rejections_v2.csv",
+      "size_bytes": 57,
+      "csv_columns": 4
+    },
+    {
+      "relative_path": "docs/performance-intelligence/racingcom-ingestion-v2/edgeiq_racingcom_graphql_race_evidence_rejections_v1.csv",
+      "size_bytes": 70,
+      "csv_columns": 6
+    },
+    {
+      "relative_path": "docs/performance-intelligence/racingcom-ingestion-v2/edgeiq_racingcom_historical_runner_aggregation_exceptions_v1.csv",
+      "size_bytes": 29,
+      "csv_columns": 3
+    },
+    {
+      "relative_path": "docs/performance-intelligence/racingcom-ingestion-v2/edgeiq_racingcom_parser_rejections_v2.csv",
+      "size_bytes": 50,
+      "csv_columns": 6
+    },
+    {
+      "relative_path": "docs/performance-intelligence/racingcom-ingestion-v2/edgeiq_racingcom_production_candidate_value_changes_v1.csv",
+      "size_bytes": 98,
+      "csv_columns": 7
+    },
+    {
+      "relative_path": "docs/performance-intelligence/racingcom-ingestion-v2/edgeiq_racingcom_runner_candidate_historical_changes_v1.csv",
+      "size_bytes": 59,
+      "csv_columns": 5
+    },
+    {
+      "relative_path": "docs/performance-intelligence/racingcom-source-discovery/edgeiq_racingcom_embedded_payload_ledger_v1.csv",
+      "size_bytes": 90,
+      "csv_columns": 8
+    },
+    {
+      "relative_path": "docs/performance-intelligence/warehouse-v2/canonical-horse-master/edgeiq_current_runner_unresolved_identity_v2.csv",
+      "size_bytes": 162,
+      "csv_columns": 8
+    },
+    {
+      "relative_path": "docs/performance-intelligence/warehouse-v2/historical-horse-identity-expansion-v2/edgeiq_historical_horse_identity_conflicts_v2.csv",
+      "size_bytes": 108,
+      "csv_columns": 5
+    },
+    {
+      "relative_path": "docs/performance-intelligence/warehouse-v2/racingcom-identity-resolution-v2/edgeiq_racingcom_failure_recovery_candidates_v2.csv",
+      "size_bytes": 168,
+      "csv_columns": 9
+    },
+    {
+      "relative_path": "docs/performance-intelligence/warehouse/phase2_3/eiq_sectional_evidence_v1_ee98d5587756e9fa9ee944ad/performance_sectional_evidence_v1.csv",
+      "size_bytes": 256,
+      "csv_columns": 17
+    },
+    {
+      "relative_path": "docs/performance-intelligence/warehouse/phase2_4/eiq_sectional_benchmarks_v1_e95c48c54f72d5845e1e752e/sectional_benchmarks_v1.csv",
+      "size_bytes": 176,
+      "csv_columns": 10
+    },
+    {
+      "relative_path": "docs/performance-intelligence/warehouse/phase2_4/eiq_sectional_benchmarks_v1_e95c48c54f72d5845e1e752e/sectional_deviations_v1.csv",
+      "size_bytes": 128,
+      "csv_columns": 6
+    },
+    {
+      "relative_path": "docs/performance-intelligence/identity-profiler-v1/edgeiq_identity_profiling_errors_v1.csv",
+      "size_bytes": 56,
+      "csv_columns": 4
+    },
+    {
+      "relative_path": "docs/performance-intelligence/lengths-v-standard/edgeiq_historical_implied_seconds_per_length_v1.csv",
+      "size_bytes": 147,
+      "csv_columns": 9
+    },
+    {
+      "relative_path": "public/data/edgeiq_horse_performance_profile_fact_v1.csv",
+      "size_bytes": 696,
+      "csv_columns": 23
+    },
+    {
+      "relative_path": "public/data/edgeiq_race_entry_context_adjusted_performance_fact_v1.csv",
+      "size_bytes": 655,
+      "csv_columns": 24
+    },
+    {
+      "relative_path": "public/data/edgeiq_race_entry_horse_performance_snapshot_fact_v1.csv",
+      "size_bytes": 876,
+      "csv_columns": 30
+    },
+    {
+      "relative_path": "public/data/edgeiq_race_entry_projected_performance_fact_v1.csv",
+      "size_bytes": 947,
+      "csv_columns": 31
+    },
+    {
+      "relative_path": "public/data/edgeiq_standard_time_fact_v1.csv",
+      "size_bytes": 523,
+      "csv_columns": 25
+    },
+    {
+      "relative_path": "docs/performance-intelligence/race-entry-projection/edgeiq_race_entry_historical_identity_matches_v1.csv",
+      "size_bytes": 184,
+      "csv_columns": 11
+    },
+    {
+      "relative_path": "docs/performance-intelligence/race-entry-projection/edgeiq_race_entry_identity_collision_v1.csv",
+      "size_bytes": 59,
+      "csv_columns": 4
+    },
+    {
+      "relative_path": "docs/performance-intelligence/race-entry-projection/edgeiq_race_entry_projection_temporal_candidates_v1.csv",
+      "size_bytes": 88,
+      "csv_columns": 6
+    },
+    {
+      "relative_path": "docs/performance-intelligence/race-entry-projection/edgeiq_race_entry_projection_temporal_rejections_v1.csv",
+      "size_bytes": 91,
+      "csv_columns": 6
+    },
+    {
+      "relative_path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_cache_root_escape_ledger_v1.csv",
+      "size_bytes": 212,
+      "csv_columns": 17
+    },
+    {
+      "relative_path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_csv_cache_admission_ledger_v1.csv",
+      "size_bytes": 2,
+      "csv_columns": 0
+    }
+  ],
+  "empty_csvs": [
+    {
+      "relative_path": "docs/performance-intelligence/audits/phase0_5/edgeiq_performance_identity_unresolved_v0_1_20260716_041523.csv",
+      "size_bytes": 0
+    },
+    {
+      "relative_path": "docs/performance-intelligence/audits/phase0_9/edgeiq_canonical_sectional_evidence_duplicates_v0_1_20260716_043859.csv",
+      "size_bytes": 0
+    },
+    {
+      "relative_path": "docs/performance-intelligence/audits/phase1_3/edgeiq_provider_runner_identity_conflicts_v0_1_20260716_055716.csv",
+      "size_bytes": 0
+    },
+    {
+      "relative_path": "docs/performance-intelligence/audits/phase1_4_1/edgeiq_horse_code_conflicts_v0_1_20260716_061543.csv",
+      "size_bytes": 0
+    },
+    {
+      "relative_path": "docs/performance-intelligence/audits/phase1_4_1/edgeiq_horse_name_ambiguity_v0_1_20260716_061543.csv",
+      "size_bytes": 0
+    },
+    {
+      "relative_path": "docs/performance-intelligence/audits/phase1_4_1a/edgeiq_horse_code_normalised_conflicts_v0_1_20260716_062201.csv",
+      "size_bytes": 0
+    },
+    {
+      "relative_path": "docs/performance-intelligence/audits/phase1_4_1c/edgeiq_cross_provider_horse_unresolved_ambiguities_v0_1_20260716_073530.csv",
+      "size_bytes": 0
+    },
+    {
+      "relative_path": "docs/performance-intelligence/audits/phase1_4_1c/edgeiq_racing_australia_horse_identity_conflicts_v0_1_20260716_073530.csv",
+      "size_bytes": 0
+    },
+    {
+      "relative_path": "docs/performance-intelligence/audits/phase1_5a/edgeiq_performance_source_lineage_mismatches_v0_1_20260716_085944.csv",
+      "size_bytes": 0
+    }
+  ],
+  "csv_parse_errors": [
+    {
+      "relative_path": "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_FIELD_FREQUENCY_V1.csv",
+      "error": "Error: field larger than field limit (131072)"
+    },
+    {
+      "relative_path": "docs/performance-intelligence/identity-profiler-v1/edgeiq_identity_repository_column_profile_v1.csv",
+      "error": "Error: field larger than field limit (131072)"
+    }
+  ],
+  "outputs": {
+    "inventory_csv": "docs/performance-intelligence/restart-v1/edgeiq_performance_intelligence_restart_inventory_v1.csv",
+    "baseline_json": "docs/performance-intelligence/restart-v1/edgeiq_performance_intelligence_restart_baseline_v1.json",
+    "baseline_markdown": "docs/performance-intelligence/restart-v1/EDGEIQ_PERFORMANCE_INTELLIGENCE_RESTART_BASELINE_V1.md",
+    "git_history_text": "docs/performance-intelligence/restart-v1/edgeiq_performance_intelligence_restart_git_history_v1.txt"
+  }
+}

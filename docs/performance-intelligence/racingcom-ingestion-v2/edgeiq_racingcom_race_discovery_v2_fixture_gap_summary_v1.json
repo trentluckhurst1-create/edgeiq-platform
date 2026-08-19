@@ -1,0 +1,15 @@
+{
+  "built_utc": "2026-07-22T18:06:56+00:00",
+  "status": "RACINGCOM_RACE_DISCOVERY_V2_FIXTURE_GAP_DIAGNOSIS_PASS",
+  "fixture_races_reviewed": 7,
+  "valid_fresh_fixtures": 5,
+  "negative_controls": 2,
+  "valid_fresh_missing_from_v2": 5,
+  "controls_missing_from_v2": 2,
+  "direct_evidence_available_valid_fresh": 5,
+  "direct_evidence_available_controls": 2,
+  "gap_root_cause": "ACTIVE_V2_BUILDER_DOES_NOT_CONSUME_RETAINED_BROWSER_NETWORK_OR_VALIDATED_GRAPHQL_RACE_EVIDENCE",
+  "recommended_next_unit": "BUILD_GOVERNED_GRAPHQL_RACE_EVIDENCE_ADAPTER",
+  "production_changed": "NO",
+  "ui_changed": "NO"
+}

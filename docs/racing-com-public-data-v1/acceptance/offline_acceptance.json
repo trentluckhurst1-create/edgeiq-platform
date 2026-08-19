@@ -1,0 +1,33 @@
+{
+  "mode": "OFFLINE",
+  "status": "CODE_COMPLETE_ACCESS_REQUIRED",
+  "generated_at": "2026-07-29T04:22:26Z",
+  "credential_env_var": "RACINGCOM_CHAMPION_DATA_ENDPOINT_KEY",
+  "credential_state": "ABSENT",
+  "steps": [
+    {
+      "cmd": "python scripts/build_edgeiq_racing_com_runner_sectionals_completion_v1.py",
+      "returncode": 0,
+      "stdout": "{\n  \"status\": \"PASS\",\n  \"completion_dir\": \"docs\\\\racing-com-public-data-v1\\\\completion\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "cmd": "python scripts/edgeiq_racing_com_public_adapter_v1.py --mode all",
+      "returncode": 0,
+      "stdout": "{\n  \"mode\": \"all\",\n  \"generated_at\": \"2026-07-29T04:22:24Z\",\n  \"discover_meetings\": {\n    \"status\": 200,\n    \"path\": \"data\\\\raw\\\\racing-com-public-v1\\\\meeting\\\\appv2_get_meets_2026_7_200.json\"\n  },\n  \"processed\": {\n    \"races\": 39,\n    \"runner_results\": 392,\n    \"runner_sectional_rows\": 2682,\n    \"validation_pass\": 2682\n  }\n}\n",
+      "stderr": ""
+    },
+    {
+      "cmd": "python scripts/import_racing_com_runner_sectionals_official_file_v1.py",
+      "returncode": 0,
+      "stdout": "{\n  \"status\": \"PASS_OFFICIAL_IMPORT_READY\",\n  \"input_file\": \"docs\\\\racing-com-public-data-v1\\\\fixtures\\\\public_200_meeting_with_sectionals.json\",\n  \"rows\": 1,\n  \"valid_rows\": 1,\n  \"canonical_rows_promoted\": 0,\n  \"canonical_admission\": \"NO_PREVIEW_ONLY\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "cmd": "python scripts/audit_racing_com_public_adapter_security_v1.py",
+      "returncode": 0,
+      "stdout": "PASS\n",
+      "stderr": ""
+    }
+  ]
+}

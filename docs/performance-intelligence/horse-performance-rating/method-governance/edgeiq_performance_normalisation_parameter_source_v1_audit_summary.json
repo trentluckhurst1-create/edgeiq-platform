@@ -1,0 +1,11 @@
+{
+  "verdict": "PASS",
+  "candidate_hash": "382eb7ca17eef645ec747d2cc0034c0851bac76e27b43f2e143ab5af2e4f26a9",
+  "population_count": 168,
+  "centre_value": "-0.193589285714",
+  "scale_value": "1.637341550205",
+  "population_sha256": "d953d4021980927428522522e40385a874f9ddb19a654a67004a89a4aa61a421",
+  "promoted": "YES",
+  "promoted_path": "C:/Users/trent/OneDrive/Documents/EDGEIQ_PLATFORM/config/performance-intelligence/edgeiq_performance_normalisation_parameter_source_v1.csv",
+  "promoted_hash": "382eb7ca17eef645ec747d2cc0034c0851bac76e27b43f2e143ab5af2e4f26a9"
+}

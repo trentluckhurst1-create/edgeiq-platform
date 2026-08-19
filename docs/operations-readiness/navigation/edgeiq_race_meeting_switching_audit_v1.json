@@ -1,0 +1,40 @@
+{
+  "audit_status": "PARTIAL",
+  "transitions": [
+    {
+      "transition": "Race 1 to Race 2",
+      "status": "PARTIAL",
+      "notes": "static feed/route evidence; full browser switching not proven"
+    },
+    {
+      "transition": "Race 2 to final race",
+      "status": "PARTIAL",
+      "notes": "static feed/route evidence; full browser switching not proven"
+    },
+    {
+      "transition": "final race to Race 1",
+      "status": "PARTIAL",
+      "notes": "static feed/route evidence; full browser switching not proven"
+    },
+    {
+      "transition": "Meeting A to Meeting B",
+      "status": "PARTIAL",
+      "notes": "static feed/route evidence; full browser switching not proven"
+    },
+    {
+      "transition": "TODAY to TOMORROW",
+      "status": "PARTIAL",
+      "notes": "static feed/route evidence; full browser switching not proven"
+    },
+    {
+      "transition": "TOMORROW to DAY+2",
+      "status": "PARTIAL",
+      "notes": "static feed/route evidence; full browser switching not proven"
+    },
+    {
+      "transition": "refresh browser on selected race",
+      "status": "PARTIAL",
+      "notes": "static feed/route evidence; full browser switching not proven"
+    }
+  ]
+}

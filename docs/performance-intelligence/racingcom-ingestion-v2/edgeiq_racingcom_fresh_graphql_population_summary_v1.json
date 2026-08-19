@@ -1,0 +1,9 @@
+{
+  "decision": "FRESH_GRAPHQL_POPULATION_NO_NEW_NETWORK_WORK",
+  "races_discovered": 59,
+  "graphql_eligible_races": 5,
+  "previously_acquired_races": 5,
+  "new_acquisition_candidates": 0,
+  "api_key_status": "MISSING",
+  "production_changed": "NO"
+}

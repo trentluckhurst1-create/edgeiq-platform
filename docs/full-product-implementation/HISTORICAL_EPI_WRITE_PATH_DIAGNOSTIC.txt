@@ -1,0 +1,743 @@
+EDGEIQ HISTORICAL EPI WRITE-PATH DIAGNOSTIC
+==============================================================================================================
+
+BUILDER=C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\scripts\build_edgeiq_epi_workspace_terminal_feed_v1.py
+BUILDER_LINES=725
+
+BUILDER WRITE PATH — LINES 240 TO END
+--------------------------------------------------------------------------------------------------------------
+00240: 
+00241: def read_csv_rows(path: Path):
+00242:     if not path.exists():
+00243:         return
+00244:     with path.open("r", encoding="utf-8", errors="replace", newline="") as handle:
+00245:         yield from csv.DictReader(handle)
+00246: 
+00247: 
+00248: def catalog_races(payload: dict[str, Any]) -> list[tuple[dict[str, Any], dict[str, Any]]]:
+00249:     pairs: list[tuple[dict[str, Any], dict[str, Any]]] = []
+00250:     for meeting in payload.get("meetings", []) if isinstance(payload, dict) else []:
+00251:         if not isinstance(meeting, dict):
+00252:             continue
+00253:         for race in meeting.get("races", []) or []:
+00254:             if isinstance(race, dict):
+00255:                 pairs.append((meeting, race))
+00256:     return pairs
+00257: 
+00258: 
+00259: def form_race_index(payload: dict[str, Any]) -> dict[tuple[str, str, str], dict[str, Any]]:
+00260:     index: dict[tuple[str, str, str], dict[str, Any]] = {}
+00261:     for race in payload.get("races", []) if isinstance(payload, dict) else []:
+00262:         if not isinstance(race, dict):
+00263:             continue
+00264:         key = race_match_key(race.get("raceDate"), race.get("meeting"), race.get("raceNumber"))
+00265:         if all(key):
+00266:             index[key] = race
+00267:     return index
+00268: 
+00269: 
+00270: def runner_no(runner: dict[str, Any], fallback: int) -> str:
+00271:     official = runner.get("official") if isinstance(runner.get("official"), dict) else {}
+00272:     return number_text(official.get("no") or official.get("number") or runner.get("runnerNumber")) or str(fallback)
+00273: 
+00274: 
+00275: def runner_name(runner: dict[str, Any]) -> str:
+00276:     official = runner.get("official") if isinstance(runner.get("official"), dict) else {}
+00277:     source = runner.get("source") if isinstance(runner.get("source"), dict) else {}
+00278:     return clean(official.get("runner") or source.get("horseName") or source.get("runnerName") or runner.get("runnerName"))
+00279: 
+00280: 
+00281: def collect_historical_keys(form_races: dict[tuple[str, str, str], dict[str, Any]]) -> set[tuple[str, str, str, str]]:
+00282:     keys: set[tuple[str, str, str, str]] = set()
+00283:     for race in form_races.values():
+00284:         for runner in race.get("runners", []) or []:
+00285:             horse_key = runner_match_key(runner.get("runnerName"))
+00286:             for run in runner.get("fullForm", []) or []:
+00287:                 distance = number_text(run.get("distance"))
+00288:                 key = (
+00289:                     horse_key,
+00290:                     clean(run.get("date")),
+00291:                     canonical_track(run.get("track")),
+00292:                     distance,
+00293:                 )
+00294:                 if horse_key and key[1] and key[2]:
+00295:                     keys.add(key)
+00296:     return keys
+00297: 
+00298: 
+00299: def historical_rating_index(
+00300:     required_keys: set[tuple[str, str, str, str]]
+00301: ) -> dict[tuple[str, str, str, str], dict[str, Any]]:
+00302:     grouped: dict[tuple[str, str, str, str], list[dict[str, str]]] = {}
+00303:     governed: dict[tuple[str, str, str, str], dict[str, Any]] = {}
+00304: 
+00305:     if not required_keys:
+00306:         return governed
+00307: 
+00308:     for row in read_csv_rows(HISTORICAL_RATING) or []:
+00309:         horse = runner_match_key(row.get("horse"))
+00310:         date = clean(row.get("race_date"))
+00311:         track = canonical_track(row.get("track"))
+00312:         distance = number_text(row.get("distance"))
+00313:         key = (horse, date, track, distance)
+00314: 
+00315:         if key in required_keys:
+00316:             grouped.setdefault(key, []).append(row)
+00317: 
+00318:     conflicts: list[dict[str, str]] = []
+00319: 
+00320:     for key, rows in grouped.items():
+00321:         rated_rows: list[tuple[float, dict[str, str]]] = []
+00322: 
+00323:         for row in rows:
+00324:             rating = metric_float(row.get("performance_rating_v6_1_research"))
+00325:             if rating is not None:
+00326:                 rated_rows.append((rating, row))
+00327: 
+00328:         unique_ratings = sorted({rating for rating, _ in rated_rows})
+00329: 
+00330:         if len(unique_ratings) == 1:
+00331:             rating = unique_ratings[0]
+00332: 
+00333:             source_files = sorted(
+00334:                 {
+00335:                     clean(row.get("source_file")) or clean(row.get("_source_file"))
+00336:                     for _, row in rated_rows
+00337:                     if clean(row.get("source_file")) or clean(row.get("_source_file"))
+00338:                 }
+00339:             )
+00340: 
+00341:             built_values = sorted(
+00342:                 {
+00343:                     clean(row.get("built_at_v6_1_research"))
+00344:                     for _, row in rated_rows
+00345:                     if clean(row.get("built_at_v6_1_research"))
+00346:                 }
+00347:             )
+00348: 
+00349:             governed[key] = {
+00350:                 "status": "UNIQUE" if len(rows) == 1 else "SAME_RATING_MULTIPLE_ROWS",
+00351:                 "rating": rating,
+00352:                 "source_files": source_files,
+00353:                 "built_at": built_values[-1] if built_values else "",
+00354:                 "match_count": len(rows),
+00355:             }
+00356:             continue
+00357: 
+00358:         if len(unique_ratings) > 1:
+00359:             horse, date, track, distance = key
+00360:             source_files = sorted(
+00361:                 {
+00362:                     clean(row.get("source_file")) or clean(row.get("_source_file"))
+00363:                     for row in rows
+00364:                     if clean(row.get("source_file")) or clean(row.get("_source_file"))
+00365:                 }
+00366:             )
+00367: 
+00368:             governed[key] = {
+00369:                 "status": "CONFLICTING_RATINGS",
+00370:                 "rating": None,
+00371:                 "ratings": unique_ratings,
+00372:                 "source_files": source_files,
+00373:                 "built_at": "",
+00374:                 "match_count": len(rows),
+00375:             }
+00376: 
+00377:             conflicts.append(
+00378:                 {
+00379:                     "horse_key": horse,
+00380:                     "race_date": date,
+00381:                     "canonical_track": track,
+00382:                     "distance": distance,
+00383:                     "match_count": str(len(rows)),
+00384:                     "candidate_ratings": " | ".join(
+00385:                         f"{rating:.10g}" for rating in unique_ratings
+00386:                     ),
+00387:                     "source_files": " | ".join(source_files),
+00388:                     "decision": "HISTORICAL_EPI_UNAVAILABLE_CONFLICT",
+00389:                 }
+00390:             )
+00391:             continue
+00392: 
+00393:         governed[key] = {
+00394:             "status": "NO_RATED_ROWS",
+00395:             "rating": None,
+00396:             "source_files": [],
+00397:             "built_at": "",
+00398:             "match_count": len(rows),
+00399:         }
+00400: 
+00401:     conflict_fields = [
+00402:         "horse_key",
+00403:         "race_date",
+00404:         "canonical_track",
+00405:         "distance",
+00406:         "match_count",
+00407:         "candidate_ratings",
+00408:         "source_files",
+00409:         "decision",
+00410:     ]
+00411: 
+00412:     with HISTORICAL_EPI_CONFLICTS.open(
+00413:         "w",
+00414:         encoding="utf-8",
+00415:         newline="",
+00416:     ) as handle:
+00417:         writer = csv.DictWriter(handle, fieldnames=conflict_fields)
+00418:         writer.writeheader()
+00419:         writer.writerows(
+00420:             sorted(
+00421:                 conflicts,
+00422:                 key=lambda row: (
+00423:                     row["horse_key"],
+00424:                     row["race_date"],
+00425:                     row["canonical_track"],
+00426:                     row["distance"],
+00427:                 ),
+00428:             )
+00429:         )
+00430: 
+00431:     return governed
+00432: 
+00433: 
+00434: def current_epi_value(runner: dict[str, Any]) -> float | None:
+00435:     return metric_float(runner.get("epi") or runner.get("rating"))
+00436: 
+00437: 
+00438: def source_time(runner: dict[str, Any]) -> str:
+00439:     for key in ["epi", "rating", "earlySpeed", "lateSpeed", "suitability", "formMomentum"]:
+00440:         value = runner.get(key)
+00441:         if isinstance(value, dict) and clean(value.get("asAt")):
+00442:             return clean(value.get("asAt"))
+00443:     return ""
+00444: 
+00445: 
+00446: def source_text(runner: dict[str, Any]) -> str:
+00447:     values = []
+00448:     for key in ["epi", "rating"]:
+00449:         value = runner.get(key)
+00450:         if isinstance(value, dict) and clean(value.get("source")):
+00451:             values.append(clean(value.get("source")))
+00452:     return " | ".join(dict.fromkeys(values)) or "edgeiq_form_guide_enriched_v2.json"
+00453: 
+00454: 
+00455: def historical_epi_for_run(
+00456:     runner: dict[str, Any],
+00457:     run: dict[str, Any],
+00458:     historical: dict[tuple[str, str, str, str], dict[str, Any]],
+00459: ) -> tuple[float | None, str, str]:
+00460:     direct = metric_float(run.get("historicalEpi"))
+00461: 
+00462:     if direct is not None:
+00463:         value = (
+00464:             run.get("historicalEpi")
+00465:             if isinstance(run.get("historicalEpi"), dict)
+00466:             else {}
+00467:         )
+00468:         return (
+00469:             direct,
+00470:             clean(value.get("source"))
+00471:             or "edgeiq_form_guide_enriched_v2.json:historicalEpi",
+00472:             clean(value.get("version") or value.get("asAt")),
+00473:         )
+00474: 
+00475:     key = (
+00476:         runner_match_key(runner.get("runnerName")),
+00477:         clean(run.get("date")),
+00478:         canonical_track(run.get("track")),
+00479:         number_text(run.get("distance")),
+00480:     )
+00481: 
+00482:     result = historical.get(key)
+00483: 
+00484:     if not result:
+00485:         return None, "", ""
+00486: 
+00487:     if result.get("status") not in {
+00488:         "UNIQUE",
+00489:         "SAME_RATING_MULTIPLE_ROWS",
+00490:     }:
+00491:         return None, "", ""
+00492: 
+00493:     rating = metric_float(result.get("rating"))
+00494: 
+00495:     if rating is None:
+00496:         return None, "", ""
+00497: 
+00498:     status = clean(result.get("status"))
+00499:     source_suffix = (
+00500:         ":same_rating_duplicates_collapsed"
+00501:         if status == "SAME_RATING_MULTIPLE_ROWS"
+00502:         else ""
+00503:     )
+00504: 
+00505:     return (
+00506:         rating,
+00507:         (
+00508:             "edgeiq_historical_performance_rating_v6_1_research.csv:"
+00509:             "performance_rating_v6_1_research"
+00510:             f"{source_suffix}"
+00511:         ),
+00512:         clean(result.get("built_at")),
+00513:     )
+00514: 
+00515: 
+00516: def margin_float(value: Any) -> float | None:
+00517:     text = clean(value).upper().replace("L", "")
+00518:     if not text:
+00519:         return None
+00520:     try:
+00521:         return float(text)
+00522:     except ValueError:
+00523:         return None
+00524: 
+00525: 
+00526: def position_number(value: Any) -> int | None:
+00527:     text = clean(value)
+00528:     digits = "".join(ch for ch in text if ch.isdigit())
+00529:     if not digits:
+00530:         return None
+00531:     try:
+00532:         return int(digits)
+00533:     except ValueError:
+00534:         return None
+00535: 
+00536: 
+00537: def tile_class(epi: float | None, eri: float | None, run: dict[str, Any]) -> str:
+00538:     if epi is None:
+00539:         return "missing"
+00540:     if eri is None:
+00541:         position = position_number(run.get("position"))
+00542:         margin = margin_float(run.get("margin"))
+00543:         if position == 1 or (margin is not None and margin <= 1):
+00544:             return "positive"
+00545:         if (position is not None and position >= 8) or (margin is not None and margin >= 6):
+00546:             return "negative"
+00547:         return "neutral"
+00548:     diff = epi - eri
+00549:     if diff >= 2:
+00550:         return "positive"
+00551:     if diff <= -2:
+00552:         return "negative"
+00553:     return "neutral"
+00554: 
+00555: 
+00556: def context_for_run(runner: dict[str, Any], run: dict[str, Any], epi: float | None, epi_source: str, epi_version: str) -> str:
+00557:     eri = metric(run.get("raceRating"))
+00558:     sectionals = run.get("sectionalIndices") if isinstance(run.get("sectionalIndices"), dict) else {}
+00559:     values = {
+00560:         "DATE": clean(run.get("date")),
+00561:         "TRACK": clean(run.get("track")),
+00562:         "MEETING / RACE": f"{clean(run.get('track'))} R{number_text(run.get('raceNumber'))}".strip(),
+00563:         "DISTANCE": f"{number_text(run.get('distance'))}m" if number_text(run.get("distance")) else "",
+00564:         "CLASS": clean(run.get("class")),
+00565:         "CONDITION": clean(run.get("condition")),
+00566:         "BARRIER": number_text(run.get("barrier")),
+00567:         "WEIGHT": clean(run.get("weight")),
+00568:         "JOCKEY": clean(run.get("jockey")),
+00569:         "TRAINER": clean(runner.get("latestTrainer") or runner.get("trainer")),
+00570:         "FINISH": clean(run.get("position")),
+00571:         "MARGIN": clean(run.get("margin")),
+00572:         "SP": clean(run.get("startingPrice")),
+00573:         "EPI": metric(epi),
+00574:         "ERI": eri,
+00575:         "8-6": metric(sectionals.get("index800To600") if isinstance(sectionals, dict) else None),
+00576:         "6-4": metric(sectionals.get("index600To400") if isinstance(sectionals, dict) else None),
+00577:         "4-2": metric(sectionals.get("index400To200") if isinstance(sectionals, dict) else None),
+00578:         "2-F": metric(sectionals.get("index200ToFinish") if isinstance(sectionals, dict) else None),
+00579:         "SOURCE": epi_source,
+00580:         "VERSION / TIMESTAMP": epi_version,
+00581:     }
+00582:     return json.dumps({field: values.get(field, "") for field in CONTEXT_FIELDS}, separators=(",", ":"))
+00583: 
+00584: 
+00585: def trend_from_values(values: list[float]) -> str:
+00586:     if len(values) < 3:
+00587:         return ""
+00588:     recent = sum(values[:3]) / 3
+00589:     older = sum(values[-3:]) / 3
+00590:     delta = recent - older
+00591:     if delta >= 2:
+00592:         return "Rising"
+00593:     if delta <= -2:
+00594:         return "Easing"
+00595:     return "Holding"
+00596: 
+00597: 
+00598: def build() -> tuple[int, int, int, int]:
+00599:     generated_at = datetime.now(timezone.utc).isoformat()
+00600:     catalog = read_json(CATALOG)
+00601:     form_payload = read_json(FORM_GUIDE)
+00602:     races = catalog_races(catalog)
+00603:     form_index = form_race_index(form_payload)
+00604:     historical = historical_rating_index(collect_historical_keys(form_index))
+00605:     rows: list[dict[str, str]] = []
+00606:     historical_tiles = 0
+00607:     populated_contexts = 0
+00608: 
+00609:     for meeting, race in races:
+00610:         date = clean(meeting.get("date"))
+00611:         track = clean(meeting.get("meeting"))
+00612:         race_no = number_text(race.get("raceNumber"))
+00613:         form_race = form_index.get(race_match_key(date, track, race_no), {})
+00614:         form_runners = {
+00615:             runner_match_key(runner.get("runnerName")): runner
+00616:             for runner in form_race.get("runners", []) or []
+00617:             if isinstance(runner, dict)
+00618:         }
+00619:         catalog_runners = race.get("runners", []) or []
+00620:         display_runners: list[tuple[str, str, dict[str, Any], dict[str, Any] | None]] = []
+00621:         for index, catalog_runner in enumerate(catalog_runners, start=1):
+00622:             name = runner_name(catalog_runner)
+00623:             form_runner = form_runners.get(runner_match_key(name))
+00624:             display_runners.append((runner_no(catalog_runner, index), name, catalog_runner, form_runner))
+00625: 
+00626:         current_values = [current_epi_value(form_runner) for _, _, _, form_runner in display_runners if form_runner]
+00627:         current_values = [value for value in current_values if value is not None]
+00628:         field_avg = sum(current_values) / len(current_values) if current_values else None
+00629:         sorted_values = sorted(current_values, reverse=True)
+00630: 
+00631:         for no, name, _catalog_runner, form_runner in display_runners:
+00632:             current_epi = current_epi_value(form_runner) if form_runner else None
+00633:             rank = str(sorted_values.index(current_epi) + 1) if current_epi is not None and current_epi in sorted_values else ""
+00634:             diff = current_epi - field_avg if current_epi is not None and field_avg is not None else None
+00635:             row = {
+00636:                 "workspace_id": "BETA-013",
+00637:                 "meeting_key": clean(meeting.get("meetingKey")),
+00638:                 "race_key": clean(race.get("raceKey")),
+00639:                 "generated_at": generated_at,
+00640:                 "race_date": date,
+00641:                 "track": track,
+00642:                 "race_no": race_no,
+00643:                 "no": no,
+00644:                 "horse": name,
+00645:                 "current_epi": metric(current_epi),
+00646:                 "rank": rank,
+00647:                 "field_avg": metric(field_avg),
+00648:                 "diff": metric(diff),
+00649:                 "peak_last_10": "",
+00650:                 "average_last_10": "",
+00651:                 "governed_trend": "",
+00652:                 "source": source_text(form_runner or {}),
+00653:                 "source_timestamp": source_time(form_runner or {}) or clean(form_payload.get("generatedAt")),
+00654:                 "source_confidence": "governed" if form_runner else "unavailable",
+00655:                 "row_status": "current" if form_runner else "unavailable",
+00656:             }
+00657:             for key in START_KEYS:
+00658:                 row[key] = ""
+00659:                 row[f"{key}_class"] = "missing"
+00660:                 row[f"{key}_context"] = ""
+00661:             epi_values: list[float] = []
+00662:             runs = (form_runner or {}).get("fullForm", [])[:10] if form_runner else []
+00663:             for offset, run in enumerate(runs, start=1):
+00664:                 if not isinstance(run, dict):
+00665:                     continue
+00666:                 start_key = f"start_{offset}"
+00667:                 epi, epi_source, epi_version = historical_epi_for_run(form_runner or {}, run, historical)
+00668:                 eri = metric_float(run.get("raceRating"))
+00669:                 if epi is not None:
+00670:                     row[start_key] = metric(epi)
+00671:                     row[f"{start_key}_class"] = tile_class(epi, eri, run)
+00672:                     epi_values.append(epi)
+00673:                     historical_tiles += 1
+00674:                 context = context_for_run(form_runner or {}, run, epi, epi_source, epi_version)
+00675:                 row[f"{start_key}_context"] = context if epi is not None else ""
+00676:                 if epi is not None:
+00677:                     populated_contexts += 1
+00678:             if epi_values:
+00679:                 row["peak_last_10"] = metric(max(epi_values))
+00680:                 row["average_last_10"] = metric(sum(epi_values) / len(epi_values))
+00681:                 row["governed_trend"] = trend_from_values(epi_values)
+00682:             rows.append(row)
+00683: 
+00684:     OUT.parent.mkdir(parents=True, exist_ok=True)
+00685:     with OUT.open("w", encoding="utf-8", newline="") as handle:
+00686:         writer = csv.DictWriter(handle, fieldnames=FIELDNAMES)
+00687:         writer.writeheader()
+00688:         writer.writerows(rows)
+00689:     with SUMMARY.open("w", encoding="utf-8", newline="") as handle:
+00690:         writer = csv.DictWriter(handle, fieldnames=["metric", "value"])
+00691:         writer.writeheader()
+00692:         writer.writerows(
+00693:             [
+00694:                 {"metric": "rows", "value": len(rows)},
+00695:                 {"metric": "races", "value": len(races)},
+00696:                 {"metric": "historical_tiles", "value": historical_tiles},
+00697:                 {"metric": "contexts", "value": populated_contexts},
+00698:                 {"metric": "source", "value": HISTORICAL_RATING.name},
+00699:             ]
+00700:         )
+00701:     TRACE.write_text(
+00702:         "\n".join(
+00703:             [
+00704:                 "EDGEIQ_EPI_WORKSPACE_TERMINAL_FEED_V1",
+00705:                 f"generated_at={generated_at}",
+00706:                 f"rows={len(rows)}",
+00707:                 f"races={len(races)}",
+00708:                 f"historical_tiles={historical_tiles}",
+00709:                 f"contexts={populated_contexts}",
+00710:                 f"catalog={CATALOG.name}",
+00711:                 f"form_guide={FORM_GUIDE.name}",
+00712:                 f"historical_rating={HISTORICAL_RATING.name}",
+00713:             ]
+00714:         ),
+00715:         encoding="utf-8",
+00716:     )
+00717:     return len(rows), len(races), historical_tiles, populated_contexts
+00718: 
+00719: 
+00720: if __name__ == "__main__":
+00721:     row_count, race_count, tile_count, context_count = build()
+00722:     print(
+00723:         f"EDGEIQ_EPI_WORKSPACE_TERMINAL_FEED_V1 rows={row_count} races={race_count} "
+00724:         f"historical_tiles={tile_count} contexts={context_count}"
+00725:     )
+
+OUTPUT FEED INSPECTION
+--------------------------------------------------------------------------------------------------------------
+FEED=C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_epi_workspace_terminal_feed_v1.csv
+FEED_ROWS=374
+FEED_HEADERS=['workspace_id', 'meeting_key', 'race_key', 'generated_at', 'race_date', 'track', 'race_no', 'no', 'horse', 'current_epi', 'rank', 'field_avg', 'diff', 'start_10', 'start_9', 'start_8', 'start_7', 'start_6', 'start_5', 'start_4', 'start_3', 'start_2', 'start_1', 'peak_last_10', 'average_last_10', 'governed_trend', 'source', 'source_timestamp', 'source_confidence', 'row_status', 'start_10_class', 'start_9_class', 'start_8_class', 'start_7_class', 'start_6_class', 'start_5_class', 'start_4_class', 'start_3_class', 'start_2_class', 'start_1_class', 'start_10_context', 'start_9_context', 'start_8_context', 'start_7_context', 'start_6_context', 'start_5_context', 'start_4_context', 'start_3_context', 'start_2_context', 'start_1_context']
+
+DETECTED_START_FIELDS=['start_10', 'start_9', 'start_8', 'start_7', 'start_6', 'start_5', 'start_4', 'start_3', 'start_2', 'start_1']
+
+ROW_1
+HORSE=Bohemian Boy
+CURRENT_EPI=
+start_10=''
+start_10_context=''
+start_9=''
+start_9_context=''
+start_8=''
+start_8_context=''
+start_7=''
+start_7_context=''
+start_6=''
+start_6_context=''
+start_5=''
+start_5_context=''
+start_4=''
+start_4_context=''
+start_3=''
+start_3_context=''
+start_2=''
+start_2_context=''
+start_1=''
+start_1_context=''
+--------------------------------------------------------------------------------------------------------------
+ROW_2
+HORSE=Brazen Bold
+CURRENT_EPI=
+start_10=''
+start_10_context=''
+start_9=''
+start_9_context=''
+start_8=''
+start_8_context=''
+start_7=''
+start_7_context=''
+start_6=''
+start_6_context=''
+start_5=''
+start_5_context=''
+start_4=''
+start_4_context=''
+start_3=''
+start_3_context=''
+start_2=''
+start_2_context=''
+start_1=''
+start_1_context=''
+--------------------------------------------------------------------------------------------------------------
+ROW_3
+HORSE=Chigurh
+CURRENT_EPI=
+start_10=''
+start_10_context=''
+start_9=''
+start_9_context=''
+start_8=''
+start_8_context=''
+start_7=''
+start_7_context=''
+start_6=''
+start_6_context=''
+start_5=''
+start_5_context=''
+start_4=''
+start_4_context=''
+start_3=''
+start_3_context=''
+start_2=''
+start_2_context=''
+start_1=''
+start_1_context=''
+--------------------------------------------------------------------------------------------------------------
+ROW_4
+HORSE=Crudens Tycoon
+CURRENT_EPI=
+start_10=''
+start_10_context=''
+start_9=''
+start_9_context=''
+start_8=''
+start_8_context=''
+start_7=''
+start_7_context=''
+start_6=''
+start_6_context=''
+start_5=''
+start_5_context=''
+start_4=''
+start_4_context=''
+start_3=''
+start_3_context=''
+start_2=''
+start_2_context=''
+start_1=''
+start_1_context=''
+--------------------------------------------------------------------------------------------------------------
+ROW_5
+HORSE=Guv
+CURRENT_EPI=
+start_10=''
+start_10_context=''
+start_9=''
+start_9_context=''
+start_8=''
+start_8_context=''
+start_7=''
+start_7_context=''
+start_6=''
+start_6_context=''
+start_5=''
+start_5_context=''
+start_4=''
+start_4_context=''
+start_3=''
+start_3_context=''
+start_2=''
+start_2_context=''
+start_1=''
+start_1_context=''
+--------------------------------------------------------------------------------------------------------------
+ROW_6
+HORSE=Inside Word
+CURRENT_EPI=
+start_10=''
+start_10_context=''
+start_9=''
+start_9_context=''
+start_8=''
+start_8_context=''
+start_7=''
+start_7_context=''
+start_6=''
+start_6_context=''
+start_5=''
+start_5_context=''
+start_4=''
+start_4_context=''
+start_3=''
+start_3_context=''
+start_2=''
+start_2_context=''
+start_1=''
+start_1_context=''
+--------------------------------------------------------------------------------------------------------------
+ROW_7
+HORSE=Phillip Island
+CURRENT_EPI=
+start_10=''
+start_10_context=''
+start_9=''
+start_9_context=''
+start_8=''
+start_8_context=''
+start_7=''
+start_7_context=''
+start_6=''
+start_6_context=''
+start_5=''
+start_5_context=''
+start_4=''
+start_4_context=''
+start_3=''
+start_3_context=''
+start_2=''
+start_2_context=''
+start_1=''
+start_1_context=''
+--------------------------------------------------------------------------------------------------------------
+ROW_8
+HORSE=Pocketfullofcash
+CURRENT_EPI=
+start_10=''
+start_10_context=''
+start_9=''
+start_9_context=''
+start_8=''
+start_8_context=''
+start_7=''
+start_7_context=''
+start_6=''
+start_6_context=''
+start_5=''
+start_5_context=''
+start_4=''
+start_4_context=''
+start_3=''
+start_3_context=''
+start_2=''
+start_2_context=''
+start_1=''
+start_1_context=''
+--------------------------------------------------------------------------------------------------------------
+ROW_9
+HORSE=Sodapop
+CURRENT_EPI=
+start_10=''
+start_10_context=''
+start_9=''
+start_9_context=''
+start_8=''
+start_8_context=''
+start_7=''
+start_7_context=''
+start_6=''
+start_6_context=''
+start_5=''
+start_5_context=''
+start_4=''
+start_4_context=''
+start_3=''
+start_3_context=''
+start_2=''
+start_2_context=''
+start_1=''
+start_1_context=''
+--------------------------------------------------------------------------------------------------------------
+ROW_10
+HORSE=Blue Spanish Sky
+CURRENT_EPI=
+start_10=''
+start_10_context=''
+start_9=''
+start_9_context=''
+start_8=''
+start_8_context=''
+start_7=''
+start_7_context=''
+start_6=''
+start_6_context=''
+start_5=''
+start_5_context=''
+start_4=''
+start_4_context=''
+start_3=''
+start_3_context=''
+start_2=''
+start_2_context=''
+start_1=''
+start_1_context=''
+--------------------------------------------------------------------------------------------------------------

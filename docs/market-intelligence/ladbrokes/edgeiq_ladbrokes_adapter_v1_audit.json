@@ -1,0 +1,419 @@
+{
+  "adapter_status": "LADBROKES_OBSERVATION_BUILT",
+  "mode": "ACTIVE_MARKET_REFRESH",
+  "runtime_rows": 472,
+  "matched_rows": 217,
+  "live_fixed_win_rows": 430,
+  "request_audit": [
+    {
+      "request_type": "meetings",
+      "race_date": "2026-07-26",
+      "url": "https://api-affiliates.ladbrokes.com.au/affiliates/v1/racing/meetings?enc=json&date_from=2026-07-26&date_to=2026-07-26&category=T&country=AUS&limit=200&offset=0",
+      "status_code": 200,
+      "error": ""
+    },
+    {
+      "request_type": "event",
+      "race_date": "2026-07-26",
+      "url": "https://api-affiliates.ladbrokes.com.au/affiliates/v1/racing/events/073d2b5e-7259-474a-a97d-98002562b7f5?enc=json",
+      "status_code": 200,
+      "error": ""
+    },
+    {
+      "request_type": "event",
+      "race_date": "2026-07-26",
+      "url": "https://api-affiliates.ladbrokes.com.au/affiliates/v1/racing/events/743c03fe-956b-4ebe-89bb-1ce85fa09ba7?enc=json",
+      "status_code": 200,
+      "error": ""
+    },
+    {
+      "request_type": "event",
+      "race_date": "2026-07-26",
+      "url": "https://api-affiliates.ladbrokes.com.au/affiliates/v1/racing/events/39daa769-a6dd-4b54-bc25-83ba56eb7583?enc=json",
+      "status_code": 200,
+      "error": ""
+    },
+    {
+      "request_type": "event",
+      "race_date": "2026-07-26",
+      "url": "https://api-affiliates.ladbrokes.com.au/affiliates/v1/racing/events/4e90ef4a-13fb-4aac-a612-7d0e2a84a62f?enc=json",
+      "status_code": 200,
+      "error": ""
+    },
+    {
+      "request_type": "event",
+      "race_date": "2026-07-26",
+      "url": "https://api-affiliates.ladbrokes.com.au/affiliates/v1/racing/events/99f79cde-b369-4441-b608-5e5730397517?enc=json",
+      "status_code": 200,
+      "error": ""
+    },
+    {
+      "request_type": "event",
+      "race_date": "2026-07-26",
+      "url": "https://api-affiliates.ladbrokes.com.au/affiliates/v1/racing/events/4c395ade-9d38-4c53-afca-c7e4445e148a?enc=json",
+      "status_code": 200,
+      "error": ""
+    },
+    {
+      "request_type": "event",
+      "race_date": "2026-07-26",
+      "url": "https://api-affiliates.ladbrokes.com.au/affiliates/v1/racing/events/1686a5d4-816f-4a1e-bb5f-f4c58b23be1c?enc=json",
+      "status_code": 200,
+      "error": ""
+    },
+    {
+      "request_type": "event",
+      "race_date": "2026-07-26",
+      "url": "https://api-affiliates.ladbrokes.com.au/affiliates/v1/racing/events/73de4675-01ae-4a4d-a027-e3dfc4e18f04?enc=json",
+      "status_code": 200,
+      "error": ""
+    },
+    {
+      "request_type": "event",
+      "race_date": "2026-07-26",
+      "url": "https://api-affiliates.ladbrokes.com.au/affiliates/v1/racing/events/295039a9-ee3f-4824-89aa-cc5bb8d6b904?enc=json",
+      "status_code": 200,
+      "error": ""
+    },
+    {
+      "request_type": "event",
+      "race_date": "2026-07-26",
+      "url": "https://api-affiliates.ladbrokes.com.au/affiliates/v1/racing/events/732c9d19-b8ef-457d-a086-06903dd24da2?enc=json",
+      "status_code": 200,
+      "error": ""
+    },
+    {
+      "request_type": "event",
+      "race_date": "2026-07-26",
+      "url": "https://api-affiliates.ladbrokes.com.au/affiliates/v1/racing/events/8df80370-5a7c-4360-a947-7b7028408e03?enc=json",
+      "status_code": 200,
+      "error": ""
+    },
+    {
+      "request_type": "event",
+      "race_date": "2026-07-26",
+      "url": "https://api-affiliates.ladbrokes.com.au/affiliates/v1/racing/events/69c478b9-3b30-4b12-958a-b1bb080322c2?enc=json",
+      "status_code": 200,
+      "error": ""
+    },
+    {
+      "request_type": "event",
+      "race_date": "2026-07-26",
+      "url": "https://api-affiliates.ladbrokes.com.au/affiliates/v1/racing/events/f38c2286-e2ae-4247-afe1-73cc3516defd?enc=json",
+      "status_code": 200,
+      "error": ""
+    },
+    {
+      "request_type": "event",
+      "race_date": "2026-07-26",
+      "url": "https://api-affiliates.ladbrokes.com.au/affiliates/v1/racing/events/5e45d7a5-347c-4539-8a82-31c643c5d2b4?enc=json",
+      "status_code": 200,
+      "error": ""
+    },
+    {
+      "request_type": "event",
+      "race_date": "2026-07-26",
+      "url": "https://api-affiliates.ladbrokes.com.au/affiliates/v1/racing/events/d2794df6-ad41-4c9f-b910-e3652cee51bb?enc=json",
+      "status_code": 200,
+      "error": ""
+    },
+    {
+      "request_type": "meetings",
+      "race_date": "2026-07-27",
+      "url": "https://api-affiliates.ladbrokes.com.au/affiliates/v1/racing/meetings?enc=json&date_from=2026-07-27&date_to=2026-07-27&category=T&country=AUS&limit=200&offset=0",
+      "status_code": 200,
+      "error": ""
+    },
+    {
+      "request_type": "event",
+      "race_date": "2026-07-27",
+      "url": "https://api-affiliates.ladbrokes.com.au/affiliates/v1/racing/events/0c2f7628-0320-4b58-b4c4-2d7e747356d3?enc=json",
+      "status_code": 200,
+      "error": ""
+    },
+    {
+      "request_type": "event",
+      "race_date": "2026-07-27",
+      "url": "https://api-affiliates.ladbrokes.com.au/affiliates/v1/racing/events/3a4adaaa-fc89-4903-9370-32eedb7750c4?enc=json",
+      "status_code": 200,
+      "error": ""
+    },
+    {
+      "request_type": "event",
+      "race_date": "2026-07-27",
+      "url": "https://api-affiliates.ladbrokes.com.au/affiliates/v1/racing/events/00af82f7-37b8-4952-b175-2bf7c8ebb17c?enc=json",
+      "status_code": 200,
+      "error": ""
+    },
+    {
+      "request_type": "event",
+      "race_date": "2026-07-27",
+      "url": "https://api-affiliates.ladbrokes.com.au/affiliates/v1/racing/events/c137569a-c34c-4df2-8f75-fea86c700b42?enc=json",
+      "status_code": 200,
+      "error": ""
+    },
+    {
+      "request_type": "event",
+      "race_date": "2026-07-27",
+      "url": "https://api-affiliates.ladbrokes.com.au/affiliates/v1/racing/events/bb184837-c38c-4015-a945-d150380f61cb?enc=json",
+      "status_code": 200,
+      "error": ""
+    },
+    {
+      "request_type": "event",
+      "race_date": "2026-07-27",
+      "url": "https://api-affiliates.ladbrokes.com.au/affiliates/v1/racing/events/43d8027b-2164-4927-8488-5f2d7dbf8bbc?enc=json",
+      "status_code": 200,
+      "error": ""
+    },
+    {
+      "request_type": "event",
+      "race_date": "2026-07-27",
+      "url": "https://api-affiliates.ladbrokes.com.au/affiliates/v1/racing/events/c6ea5961-d52b-48ec-9825-c46878d7af42?enc=json",
+      "status_code": 200,
+      "error": ""
+    },
+    {
+      "request_type": "event",
+      "race_date": "2026-07-27",
+      "url": "https://api-affiliates.ladbrokes.com.au/affiliates/v1/racing/events/a803424f-899c-4c5b-b804-2eb44f45672c?enc=json",
+      "status_code": 200,
+      "error": ""
+    },
+    {
+      "request_type": "event",
+      "race_date": "2026-07-27",
+      "url": "https://api-affiliates.ladbrokes.com.au/affiliates/v1/racing/events/fbe2a99b-bab9-41e4-94f4-cf02d77e1d49?enc=json",
+      "status_code": 200,
+      "error": ""
+    },
+    {
+      "request_type": "event",
+      "race_date": "2026-07-27",
+      "url": "https://api-affiliates.ladbrokes.com.au/affiliates/v1/racing/events/e45324f7-26e9-4d89-a5a8-1cdc88144366?enc=json",
+      "status_code": 200,
+      "error": ""
+    },
+    {
+      "request_type": "meetings",
+      "race_date": "2026-07-28",
+      "url": "https://api-affiliates.ladbrokes.com.au/affiliates/v1/racing/meetings?enc=json&date_from=2026-07-28&date_to=2026-07-28&category=T&country=AUS&limit=200&offset=0",
+      "status_code": 200,
+      "error": ""
+    },
+    {
+      "request_type": "event",
+      "race_date": "2026-07-28",
+      "url": "https://api-affiliates.ladbrokes.com.au/affiliates/v1/racing/events/08c010d2-84b1-41d9-9975-08b8c67ffa18?enc=json",
+      "status_code": 200,
+      "error": ""
+    },
+    {
+      "request_type": "event",
+      "race_date": "2026-07-28",
+      "url": "https://api-affiliates.ladbrokes.com.au/affiliates/v1/racing/events/48430e0f-e50d-4915-b62b-91d24740b03e?enc=json",
+      "status_code": 200,
+      "error": ""
+    },
+    {
+      "request_type": "event",
+      "race_date": "2026-07-28",
+      "url": "https://api-affiliates.ladbrokes.com.au/affiliates/v1/racing/events/33d7d4b6-fb31-49a2-98bc-055401682c2d?enc=json",
+      "status_code": 200,
+      "error": ""
+    },
+    {
+      "request_type": "event",
+      "race_date": "2026-07-28",
+      "url": "https://api-affiliates.ladbrokes.com.au/affiliates/v1/racing/events/ab7d6559-75bc-4ac8-b73e-1159dba0610f?enc=json",
+      "status_code": 200,
+      "error": ""
+    },
+    {
+      "request_type": "event",
+      "race_date": "2026-07-28",
+      "url": "https://api-affiliates.ladbrokes.com.au/affiliates/v1/racing/events/b94d09ec-0b25-404c-9e6b-c2790e438e41?enc=json",
+      "status_code": 200,
+      "error": ""
+    },
+    {
+      "request_type": "event",
+      "race_date": "2026-07-28",
+      "url": "https://api-affiliates.ladbrokes.com.au/affiliates/v1/racing/events/ec6da533-00b3-4f64-b82c-4f9c9f6cac48?enc=json",
+      "status_code": 200,
+      "error": ""
+    },
+    {
+      "request_type": "event",
+      "race_date": "2026-07-28",
+      "url": "https://api-affiliates.ladbrokes.com.au/affiliates/v1/racing/events/33325b57-b2f1-4d04-a670-fd9787496b55?enc=json",
+      "status_code": 200,
+      "error": ""
+    },
+    {
+      "request_type": "event",
+      "race_date": "2026-07-28",
+      "url": "https://api-affiliates.ladbrokes.com.au/affiliates/v1/racing/events/df144eb1-fd92-4e9f-88df-5522292a2148?enc=json",
+      "status_code": 200,
+      "error": ""
+    }
+  ],
+  "raw_local_files": [
+    {
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\data\\market\\ladbrokes\\raw\\2026-07-26\\meetings_offset_0.json",
+      "sha256": "712102dfe86cc9a623f95feb23c2334b567d03b090299c168de28c3f078419aa"
+    },
+    {
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\data\\market\\ladbrokes\\raw\\2026-07-26\\event_073d2b5e-7259-474a-a97d-98002562b7f5.json",
+      "sha256": "032f0c044eb20d3e4a2f0b57a1f6e32a83a32c0c0d9c056c89a8b02bbdfcf4a5"
+    },
+    {
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\data\\market\\ladbrokes\\raw\\2026-07-26\\event_743c03fe-956b-4ebe-89bb-1ce85fa09ba7.json",
+      "sha256": "bbfad377865225e8b56413c84bc97778c987f03d265da06a1cd8200c74a35743"
+    },
+    {
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\data\\market\\ladbrokes\\raw\\2026-07-26\\event_39daa769-a6dd-4b54-bc25-83ba56eb7583.json",
+      "sha256": "47c9ff54688deb5a454782da798287450d0b1810849a034e5a1a677fa3677622"
+    },
+    {
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\data\\market\\ladbrokes\\raw\\2026-07-26\\event_4e90ef4a-13fb-4aac-a612-7d0e2a84a62f.json",
+      "sha256": "cb973e99b6a3f10137277c9e323c6ac8c506fdab10ef53499de56d4e3ca28467"
+    },
+    {
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\data\\market\\ladbrokes\\raw\\2026-07-26\\event_99f79cde-b369-4441-b608-5e5730397517.json",
+      "sha256": "63d76222afaed5e241667828bc89479e7ffccee80e721c0084ea76ec18096e61"
+    },
+    {
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\data\\market\\ladbrokes\\raw\\2026-07-26\\event_4c395ade-9d38-4c53-afca-c7e4445e148a.json",
+      "sha256": "1ecb4f944413da4cb843bf4f27209f30dcdf0245ac8376400a62d81f6d1a02f2"
+    },
+    {
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\data\\market\\ladbrokes\\raw\\2026-07-26\\event_1686a5d4-816f-4a1e-bb5f-f4c58b23be1c.json",
+      "sha256": "a50b4d3f66cc1210fb6ebaff29800ee3cc702cc2c724633a2dd33b441481e713"
+    },
+    {
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\data\\market\\ladbrokes\\raw\\2026-07-26\\event_73de4675-01ae-4a4d-a027-e3dfc4e18f04.json",
+      "sha256": "5644910f440015663593e087e820a36b180d6bf69d39d090ee58fd6064c0e87d"
+    },
+    {
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\data\\market\\ladbrokes\\raw\\2026-07-26\\event_295039a9-ee3f-4824-89aa-cc5bb8d6b904.json",
+      "sha256": "160bf481d4de4b976c22ed9b44dfe098dc9ffcbccaee02e3a63645b18dd777f0"
+    },
+    {
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\data\\market\\ladbrokes\\raw\\2026-07-26\\event_732c9d19-b8ef-457d-a086-06903dd24da2.json",
+      "sha256": "12362857cda2033f099ad4335bfcec740fffc7cad6d7c0d908f143d9750d0eac"
+    },
+    {
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\data\\market\\ladbrokes\\raw\\2026-07-26\\event_8df80370-5a7c-4360-a947-7b7028408e03.json",
+      "sha256": "dcceec2b4c1ca4243fffb1e211e02af6d03268a11822bf5797d6d594c9163d60"
+    },
+    {
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\data\\market\\ladbrokes\\raw\\2026-07-26\\event_69c478b9-3b30-4b12-958a-b1bb080322c2.json",
+      "sha256": "2485cadb175869fe5b91111a5ae7388a3a0e94c3279b7d8c46a4801e523ff319"
+    },
+    {
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\data\\market\\ladbrokes\\raw\\2026-07-26\\event_f38c2286-e2ae-4247-afe1-73cc3516defd.json",
+      "sha256": "adecf600216246c3202acd236e17555b18389a35094877ba2ba1ec4970ef4e98"
+    },
+    {
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\data\\market\\ladbrokes\\raw\\2026-07-26\\event_5e45d7a5-347c-4539-8a82-31c643c5d2b4.json",
+      "sha256": "6ee76fd203b376580ae3447272c65d68b71308a8f00e675b3413eb1f94166d84"
+    },
+    {
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\data\\market\\ladbrokes\\raw\\2026-07-26\\event_d2794df6-ad41-4c9f-b910-e3652cee51bb.json",
+      "sha256": "370474d39e1f9f014637d296e414a87a1f33332aefb561b6edd3f73b4156b6b1"
+    },
+    {
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\data\\market\\ladbrokes\\raw\\2026-07-27\\meetings_offset_0.json",
+      "sha256": "4f06b7354351607123c018294e1991609761f57552e340ab2dc85a8507c1e0c1"
+    },
+    {
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\data\\market\\ladbrokes\\raw\\2026-07-27\\event_0c2f7628-0320-4b58-b4c4-2d7e747356d3.json",
+      "sha256": "1f16ebae68ebcc8d31c298fba9507ae2b8d9e564a263c22cb09e69e71d52bb5f"
+    },
+    {
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\data\\market\\ladbrokes\\raw\\2026-07-27\\event_3a4adaaa-fc89-4903-9370-32eedb7750c4.json",
+      "sha256": "7cd5ca64b4b2e640b4c96194d1a77eba26d2ba1bcd214b95961ce45f84939214"
+    },
+    {
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\data\\market\\ladbrokes\\raw\\2026-07-27\\event_00af82f7-37b8-4952-b175-2bf7c8ebb17c.json",
+      "sha256": "90736b0ed68c41035badab351d136e6c322fb421437e5f84cea10b96a472b7fe"
+    },
+    {
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\data\\market\\ladbrokes\\raw\\2026-07-27\\event_c137569a-c34c-4df2-8f75-fea86c700b42.json",
+      "sha256": "6ba9a318130df15f79aa449c81a8a81f2f9b78cd463170a34046a18f4fc124cf"
+    },
+    {
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\data\\market\\ladbrokes\\raw\\2026-07-27\\event_bb184837-c38c-4015-a945-d150380f61cb.json",
+      "sha256": "29ac06058e30484161c86feb45e52555ec6ab907e3ca7c029e671375969cae68"
+    },
+    {
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\data\\market\\ladbrokes\\raw\\2026-07-27\\event_43d8027b-2164-4927-8488-5f2d7dbf8bbc.json",
+      "sha256": "104e0fb4fec7dfc69bb7fabf58184c738d0bd35b861613cfa6045aab1853e5b4"
+    },
+    {
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\data\\market\\ladbrokes\\raw\\2026-07-27\\event_c6ea5961-d52b-48ec-9825-c46878d7af42.json",
+      "sha256": "6eadedb55113ed1976f6473c82a25a459648583b3d00f744811b6f569bd8da01"
+    },
+    {
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\data\\market\\ladbrokes\\raw\\2026-07-27\\event_a803424f-899c-4c5b-b804-2eb44f45672c.json",
+      "sha256": "2d09350bb07174b31e8cbeab58ba947ca03bd8c4acd97181bc0b80ae9e2d3d2a"
+    },
+    {
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\data\\market\\ladbrokes\\raw\\2026-07-27\\event_fbe2a99b-bab9-41e4-94f4-cf02d77e1d49.json",
+      "sha256": "6dc221ff84a2af6327e510cd80c3f8b224b163c926d70a11f6207ea483c9ce08"
+    },
+    {
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\data\\market\\ladbrokes\\raw\\2026-07-27\\event_e45324f7-26e9-4d89-a5a8-1cdc88144366.json",
+      "sha256": "7bd357187e9f53c6baa5414b3b1bfcda0ebeef47ab33fe8a5bb016bbc4967d2d"
+    },
+    {
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\data\\market\\ladbrokes\\raw\\2026-07-28\\meetings_offset_0.json",
+      "sha256": "8607ee69b354235faaaedea79ba50dbe00566d061808b8beceafb85ce20e82e1"
+    },
+    {
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\data\\market\\ladbrokes\\raw\\2026-07-28\\event_08c010d2-84b1-41d9-9975-08b8c67ffa18.json",
+      "sha256": "9fafa70c7f6d773fdce0ef6a500314362c339ac11b86b114653d1ec52c7f3555"
+    },
+    {
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\data\\market\\ladbrokes\\raw\\2026-07-28\\event_48430e0f-e50d-4915-b62b-91d24740b03e.json",
+      "sha256": "3dfcc919b28992a07f3262f6e5c90f1dd2b7503dcf945a46baab455b1087388b"
+    },
+    {
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\data\\market\\ladbrokes\\raw\\2026-07-28\\event_33d7d4b6-fb31-49a2-98bc-055401682c2d.json",
+      "sha256": "cfb1d4cf69b70f1591cee5a5d7e0f8fa336c5f4396504db4098475e037e10390"
+    },
+    {
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\data\\market\\ladbrokes\\raw\\2026-07-28\\event_ab7d6559-75bc-4ac8-b73e-1159dba0610f.json",
+      "sha256": "9f973dac21ead76db09d1e2550361020133fa91c62334b397f552813c6de4d1a"
+    },
+    {
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\data\\market\\ladbrokes\\raw\\2026-07-28\\event_b94d09ec-0b25-404c-9e6b-c2790e438e41.json",
+      "sha256": "6e2099c6cc45036d9e69550054b1cb64139b33971364663ca27911750d6c5fde"
+    },
+    {
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\data\\market\\ladbrokes\\raw\\2026-07-28\\event_ec6da533-00b3-4f64-b82c-4f9c9f6cac48.json",
+      "sha256": "6be5e90ddf5dfafcd939812620f3608cc470054372e55369b4ff0b7702ccde9f"
+    },
+    {
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\data\\market\\ladbrokes\\raw\\2026-07-28\\event_33325b57-b2f1-4d04-a670-fd9787496b55.json",
+      "sha256": "b0349ddec2b0030b7271dd82fae611e3020c691e1f3f89b80b445add90711ae6"
+    },
+    {
+      "path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\data\\market\\ladbrokes\\raw\\2026-07-28\\event_df144eb1-fd92-4e9f-88df-5522292a2148.json",
+      "sha256": "2e73824d9f8ec3d7dfa846c149538eed74142daf42af97cfb189b16907925387"
+    }
+  ],
+  "terms": {
+    "API_ACCESS_AUTHORISED": "ENV_CONFIGURED_PENDING_PROVIDER_ACCEPTANCE",
+    "LOCAL_PERSONAL_USE_ALLOWED": "CONDITIONAL_ON_AUTHORISED_AFFILIATE_ACCESS",
+    "PUBLIC_REPUBLICATION_ALLOWED": "NO_WITHOUT_WRITTEN_PERMISSION",
+    "COMMERCIAL_USE_ALLOWED": "NO_UNLESS_WRITTEN_PERMISSION_OR_CONTRACT",
+    "WRITTEN_PERMISSION_REQUIRED": "YES_FOR_RAW_DATA_REPUBLICATION_OR_COMMERCIAL_REUSE",
+    "TERMS_UNCLEAR": "PARTIAL_PUBLIC_DOCS_DO_NOT_REPLACE_LADBROKES_CONTRACT",
+    "credential_values_written_to_outputs": "NO",
+    "raw_payload_publication": "NO_RAW_PAYLOADS_WRITTEN_TO_PUBLIC_DATA"
+  },
+  "market_workspace_wired": false,
+  "production_pricing_changed": false
+}

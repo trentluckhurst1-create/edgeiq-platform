@@ -1,0 +1,13 @@
+{
+  "HTTP_status": "403",
+  "body_bytes": 564,
+  "body_path": "data\\evidence\\external-data-integration-v1\\EXTDATA-A39AA06D61FD\\racing_australia_calendar.body",
+  "body_sha256": "cab538fd1647961eb35348c1bd84e1fde389ad89672587d2fe3c007a0bc9e67f",
+  "checked_at": "2026-07-29T02:07:56Z",
+  "content_type": "text/html",
+  "error": "HTTP_403:Forbidden",
+  "latency_seconds": 0.103,
+  "response_class": "ACCESS_FORBIDDEN",
+  "source_name": "racing_australia_calendar",
+  "url": "https://www.racingaustralia.horse/FreeFields/Calendar_Results.aspx?State=VIC"
+}

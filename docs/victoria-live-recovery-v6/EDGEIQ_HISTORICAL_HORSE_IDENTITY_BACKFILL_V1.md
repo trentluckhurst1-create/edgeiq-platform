@@ -1,0 +1,9 @@
+# Historical Horse Identity Backfill V1
+
+{
+  "ambiguous_identities": 104,
+  "approved_identities": 52320,
+  "distinct_historical_horses": 29955,
+  "identity_rejection_rows": 105,
+  "unresolved_identities": 1
+}

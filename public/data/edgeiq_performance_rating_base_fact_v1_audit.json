@@ -1,0 +1,116 @@
+{
+  "audit_name": "edgeiq_performance_rating_base_fact_v1",
+  "audit_version": "1.0.0",
+  "audited_at_utc": "2026-07-30T07:47:09Z",
+  "checks": {
+    "canonical_lineage": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "contract_fields_exact": {
+      "detail": {
+        "actual": [
+          "performance_rating_base_id",
+          "performance_normalisation_id",
+          "performance_intelligence_base_id",
+          "normalisation_parameter_id",
+          "lengths_versus_standard_id",
+          "benchmark_observation_id",
+          "race_key",
+          "race_date",
+          "track_name",
+          "official_distance_metres",
+          "winner_horse_name",
+          "raw_performance_lengths",
+          "normalised_performance_value",
+          "rating_base_value",
+          "rating_method",
+          "rating_status",
+          "normalisation_model_version",
+          "source_performance_normalisation_evidence_sha256",
+          "performance_rating_base_evidence_sha256",
+          "source_builder_version",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ],
+        "expected": [
+          "performance_rating_base_id",
+          "performance_normalisation_id",
+          "performance_intelligence_base_id",
+          "normalisation_parameter_id",
+          "lengths_versus_standard_id",
+          "benchmark_observation_id",
+          "race_key",
+          "race_date",
+          "track_name",
+          "official_distance_metres",
+          "winner_horse_name",
+          "raw_performance_lengths",
+          "normalised_performance_value",
+          "rating_base_value",
+          "rating_method",
+          "rating_status",
+          "normalisation_model_version",
+          "source_performance_normalisation_evidence_sha256",
+          "performance_rating_base_evidence_sha256",
+          "source_builder_version",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ]
+      },
+      "status": "PASS"
+    },
+    "current_population_expected": {
+      "detail": {
+        "performance_normalisation_rows": 0,
+        "performance_rating_base_rows": 0
+      },
+      "status": "PASS"
+    },
+    "deterministic_identity_and_evidence": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "no_forbidden_fields": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "one_row_per_normalisation_observation": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "rating_base_value_exact": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "rating_governance": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "required_files_exist": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "source_population_exact": {
+      "detail": {
+        "fact_rows": 0,
+        "missing": [],
+        "source_rows": 0,
+        "unexpected": []
+      },
+      "status": "PASS"
+    },
+    "unique_performance_rating_base_ids": {
+      "detail": [],
+      "status": "PASS"
+    }
+  },
+  "counts": {
+    "performance_normalisation_rows": 0,
+    "performance_rating_base_rows": 0
+  },
+  "failed_checks": [],
+  "status": "PASS"
+}

@@ -1,0 +1,74 @@
+{
+  "stn": {
+    "identity": {
+      "bom_stn_num": 89002,
+      "river_stn_id": null,
+      "bom_stn_name": "Ballarat",
+      "wmo_stn_id": 94852,
+      "wigos_stn_id": null,
+      "ht_above_msl": 435.2,
+      "ht_barometer": 435.6
+    },
+    "location": {
+      "lat_dec_deg": -37.5127,
+      "long_dec_deg": 143.7911,
+      "timezone": "Australia/Melbourne"
+    }
+  },
+  "obs": {
+    "datetime_utc": "2026-07-10T03:40:00Z",
+    "temp": {
+      "dry_bulb_1min_cel": 8.9,
+      "apparent_1min_cel": 4.35,
+      "dew_pnt_1min_cel": 5.82,
+      "wet_bulb_1min_avg_cel": 7.46,
+      "wet_bulb_globe_sun_cel": 12.61,
+      "wet_bulb_globe_shade_cel": 7.89,
+      "wet_bulb_depression_cel": 1.44,
+      "dry_bulb_max_cel": 9.5,
+      "dry_bulb_max_time_utc": "2026-07-10T01:42:00Z",
+      "dry_bulb_min_cel": 0.3,
+      "dry_bulb_min_time_utc": "2026-07-09T14:33:00Z",
+      "rel_hum_percent": 81.0
+    },
+    "pres": {
+      "stn_lvl_hpa": null,
+      "msl_hpa": 1023.3,
+      "qnh_hpa": 1022.4
+    },
+    "wind": {
+      "speed_10m_mps": 5.299,
+      "dirn_10m_ord": "NNE",
+      "gust_speed_10m_mps": 6.688,
+      "gust_dirn_10m_deg_t": 12.0,
+      "gust_speed_10m_max_mps": 9.26,
+      "gust_10m_max_utc": "2026-07-10T00:43:00Z",
+      "run_2m_total_m": null
+    },
+    "precip": {
+      "since_0900lct_total_mm": 0.0,
+      "since_0000lct_total_mm": 0.2,
+      "24h_0900lct_total_mm": 0.0,
+      "10min_total_mm": 0.0,
+      "1h_total_mm": 0.0,
+      "24h_total_mm": null
+    },
+    "visibility": {
+      "horiz_m": 53967.0
+    },
+    "cloud": {
+      "base_ht_s1_m": 5102.352,
+      "base_ht_s2_m": 5111.496,
+      "base_ht_s3_m": 5111.496,
+      "base_ht_s4_m": 5102.352,
+      "base_ht_s5_m": null,
+      "total_cover_amt_text": null,
+      "low_layer_cover_amt_okta": null,
+      "low_layer_height_m": null,
+      "med_layer_cover_amt_okta": null,
+      "med_layer_height_m": null,
+      "high_layer_cover_amt_okta": null,
+      "high_layer_height_m": null
+    }
+  }
+}

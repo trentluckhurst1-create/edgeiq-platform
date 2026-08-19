@@ -1,0 +1,1226 @@
+EDGEIQ DEEP WEATHER SOURCE AUDIT — MRC_METROPOLITAN
+======================================================================
+
+Page: https://mrc.racing.com/racing/raceday-track-weather-live
+External scripts: 19
+Inline script blocks: 1
+Documents with findings: 15
+
+----------------------------------------------------------------------
+Document: mrc_metropolitan.html
+Kind: html
+URL: https://mrc.racing.com/racing/raceday-track-weather-live
+
+LIKELY URLS:
+  /track-induction-link
+  https://dxp-cdn.racing.com/api/public/content/202208-Memsie-453-152417.webp?v=054cd5a8
+  https://dxp-cdn.racing.com/api/public/content/202302-Blue-Diamond-411-2987171.webp?v=f3be51c2
+  https://dxp-cdn.racing.com/api/public/content/MRC-Tracks-and-Facilities-Rules---November-2025-V.1-6862887.pdf?v=d5bcb82f
+  https://dxp-cdn.racing.com/api/public/content/RPHOTOS_MASTER_BLUE_CMYK-39496.webp?v=ab6b442a
+  https://dxp-cdn.racing.com/api/public/content/RacingLogoPNG-235666.webp?v=63404c7d
+  https://dxp-cdn.racing.com/api/public/content/RacingVictoriaLogo-208270.webp?v=ce8620fe
+  https://dxp-cdn.racing.com/api/public/content/TheValleyLogo-208367.webp?v=b25dfa04
+  https://dxp-cdn.racing.com/api/public/content/Untitled-design-%2850%29-8793413.webp?v=b5917935
+  https://dxp-cdn.racing.com/api/public/content/Untitled-design-%2851%29-8793414.webp?v=7660954f
+  https://dxp-cdn.racing.com/api/public/content/ba2cb7ef998f4919a53a091d87cbff11?v=e9cb40d6
+  https://dxp-cdn.racing.com/api/public/content/bestbets_minilogo-39195.webp?v=150f897d
+  https://dxp-cdn.racing.com/api/public/content/fb852aea3eff4ad7bd2c450d5a8ce7b8?v=9d460605
+  https://dxp-cdn.racing.com/api/public/content/flag-1-236527.webp?v=2ecca5d3
+  https://dxp-cdn.racing.com/api/public/content/flag-2-236525.webp?v=a3ef2225
+  https://dxp-cdn.racing.com/api/public/content/flag-3-236523.webp?v=019ffd5c
+  https://dxp-cdn.racing.com/api/public/content/new-color-mrc_inline-black-208290.webp?v=4259ffe4
+  https://dxp-cdn.racing.com/api/public/content/ssr_horz_white-836331.webp?v=fce7b951
+  https://dxp-cdn.racing.com/api/public/content/vrc-logo-39529.webp?v=f1275d00
+  https://rmpl-p-001.sitecorecontenthub.cloud/api/gateway/152417/thumbnail
+  https://rmpl-p-001.sitecorecontenthub.cloud/api/gateway/208270/thumbnail
+  https://rmpl-p-001.sitecorecontenthub.cloud/api/gateway/208290/thumbnail
+  https://rmpl-p-001.sitecorecontenthub.cloud/api/gateway/208367/thumbnail
+  https://rmpl-p-001.sitecorecontenthub.cloud/api/gateway/235666/thumbnail
+  https://rmpl-p-001.sitecorecontenthub.cloud/api/gateway/2987171/thumbnail
+  https://rmpl-p-001.sitecorecontenthub.cloud/api/gateway/39195/thumbnail
+  https://rmpl-p-001.sitecorecontenthub.cloud/api/gateway/39496/thumbnail
+  https://rmpl-p-001.sitecorecontenthub.cloud/api/gateway/39529/thumbnail
+  https://rmpl-p-001.sitecorecontenthub.cloud/api/gateway/836331/thumbnail
+  https://rmpl-p-001.sitecorecontenthub.cloud/api/gateway/8626115/thumbnail
+  https://rmpl-p-001.sitecorecontenthub.cloud/api/gateway/8793413/thumbnail
+  https://rmpl-p-001.sitecorecontenthub.cloud/api/gateway/8793414/thumbnail
+  https://rmpl-p-001.sitecorecontenthub.cloud/api/gateway/92589/thumbnail
+
+KEYWORD CONTEXT:
+  [weather]
+  ">{"props":{"pageProps":{"site":{"name":"MRC","hostName":"int-mrc.racing.com","language":"en"},"locale":"en","layoutData":{"sitecore":{"context":{"pageEditing":false,"site":{"name":"MRC"},"pageState":"normal","editMode":"chromes","language":"en","itemPath":"/racing/raceday-track-weather-live","variantId":"_default"},"route":{"name":"raceday-track-weather-live","displayName":"raceday-track-weather-live","fields":{"Description":{"value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulf
+
+  [weather]
+  ing.com","language":"en"},"locale":"en","layoutData":{"sitecore":{"context":{"pageEditing":false,"site":{"name":"MRC"},"pageState":"normal","editMode":"chromes","language":"en","itemPath":"/racing/raceday-track-weather-live","variantId":"_default"},"route":{"name":"raceday-track-weather-live","displayName":"raceday-track-weather-live","fields":{"Description":{"value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026 Sandown. \n"},"PublicUrl":{"value":""},"Title
+
+  [weather]
+  youtData":{"sitecore":{"context":{"pageEditing":false,"site":{"name":"MRC"},"pageState":"normal","editMode":"chromes","language":"en","itemPath":"/racing/raceday-track-weather-live","variantId":"_default"},"route":{"name":"raceday-track-weather-live","displayName":"raceday-track-weather-live","fields":{"Description":{"value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026 Sandown. \n"},"PublicUrl":{"value":""},"Title":{"value":"Raceday Track \u0026 Weather Up
+
+  [weather]
+  ,"editMode":"chromes","language":"en","itemPath":"/racing/raceday-track-weather-live","variantId":"_default"},"route":{"name":"raceday-track-weather-live","displayName":"raceday-track-weather-live","fields":{"Description":{"value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026 Sandown. \n"},"PublicUrl":{"value":""},"Title":{"value":"Raceday Track \u0026 Weather Updates | Melbourne Racing Club"},"Image":{"value":{"height":"4482","dam-content-type":"Image","al
+
+  [weather]
+  day-track-weather-live","fields":{"Description":{"value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026 Sandown. \n"},"PublicUrl":{"value":""},"Title":{"value":"Raceday Track \u0026 Weather Updates | Melbourne Racing Club"},"Image":{"value":{"height":"4482","dam-content-type":"Image","alt":"bw","width":"6720","thumbnailsrc":"https://rmpl-p-001.sitecorecontenthub.cloud/api/gateway/152417/thumbnail","src":"https://dxp-cdn.racing.com/api/public/content/202208-M
+
+  [weather]
+  //rmpl-p-001.sitecorecontenthub.cloud/api/gateway/152417/thumbnail","src":"https://dxp-cdn.racing.com/api/public/content/202208-Memsie-453-152417.webp?v=054cd5a8","dam-id":"gOsGapyUTwOHhlY73Gfbuw"}},"Advertisers":[],"NavigationFilter":[],"NavigationTitle":{"value":"raceday track weather live"},"NavigationClass":null,"SxaTags":[],"Page Design":{"id":"889688c6-b952-48f8-beb3-ef136a5708d3","url":"/Presentation/Page-Designs/Content-Page","name":"Content Page","displayName":"Content Page","fields":{"PartialDesigns":[{"id":"5b23a4f3-4a53-4adc-bd67-070b8d2ac0a1
+
+  [weather]
+  ext2"},"Base Partial Design":null}},{"id":"875bfa4c-30f9-41ca-b24d-c777217ad130","url":"/Presentation/Partial-Designs/Global/Footer","name":"Footer","displayName":"Footer","fields":{"Signature":{"value":"footer"},"Base Partial Design":null}}]}},"MetaKeywords":{"value":"Track And Weather Caulfield Racecourse, Track And Weather Mornington Racecourse, Track And Weather Sportsbet Sandown"},"MetaDescription":{"value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026
+
+  [weather]
+  ":"875bfa4c-30f9-41ca-b24d-c777217ad130","url":"/Presentation/Partial-Designs/Global/Footer","name":"Footer","displayName":"Footer","fields":{"Signature":{"value":"footer"},"Base Partial Design":null}}]}},"MetaKeywords":{"value":"Track And Weather Caulfield Racecourse, Track And Weather Mornington Racecourse, Track And Weather Sportsbet Sandown"},"MetaDescription":{"value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026 Sandown."},"CanonicalUrl":{"value":""},
+
+  [weather]
+  "url":"/Presentation/Partial-Designs/Global/Footer","name":"Footer","displayName":"Footer","fields":{"Signature":{"value":"footer"},"Base Partial Design":null}}]}},"MetaKeywords":{"value":"Track And Weather Caulfield Racecourse, Track And Weather Mornington Racecourse, Track And Weather Sportsbet Sandown"},"MetaDescription":{"value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026 Sandown."},"CanonicalUrl":{"value":""},"PageType":{"id":"858d3126-2620-4e2e-b02f
+
+  [weather]
+  gnature":{"value":"footer"},"Base Partial Design":null}}]}},"MetaKeywords":{"value":"Track And Weather Caulfield Racecourse, Track And Weather Mornington Racecourse, Track And Weather Sportsbet Sandown"},"MetaDescription":{"value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026 Sandown."},"CanonicalUrl":{"value":""},"PageType":{"id":"858d3126-2620-4e2e-b02f-6fe420670390","url":"https://localhost/sitecore/login/sitecore/system/Settings/Foundation/DCA/DCAMetada
+
+  [weather]
+  "858d3126-2620-4e2e-b02f-6fe420670390","url":"https://localhost/sitecore/login/sitecore/system/Settings/Foundation/DCA/DCAMetadata/Enums/PageTypes/Content","name":"Content","displayName":"Content","fields":{"Value":{"value":"Content"}}},"MetaTitle":{"value":"Raceday Track \u0026 Weather Updates | Melbourne Racing Club"},"RobotsTag":{"id":"659142f0-49f0-414d-b02a-4e28d389fa8c","url":"https://localhost/sitecore/login/sitecore/system/Settings/Foundation/DCA/DCAMetadata/Enums/RobotMetaTags/all","name":"all","displayName":"All","fields":{"Value":{"value":"all
+
+  [weather]
+  2a-4e28d389fa8c","url":"https://localhost/sitecore/login/sitecore/system/Settings/Foundation/DCA/DCAMetadata/Enums/RobotMetaTags/all","name":"all","displayName":"All","fields":{"Value":{"value":"all"}}},"OpenGraphType":{"value":""},"OpenGraphTitle":{"value":"Raceday Track \u0026 Weather Updates | Melbourne Racing Club"},"OpenGraphAdmins":{"value":""},"OpenGraphImageUrl":{"value":{}},"OpenGraphDescription":{"value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u00
+
+  [weather]
+  value":"all"}}},"OpenGraphType":{"value":""},"OpenGraphTitle":{"value":"Raceday Track \u0026 Weather Updates | Melbourne Racing Club"},"OpenGraphAdmins":{"value":""},"OpenGraphImageUrl":{"value":{}},"OpenGraphDescription":{"value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026 Sandown."},"OpenGraphSiteName":{"value":""},"OpenGraphAppId":{"value":""},"TwitterCardType":{"id":"32f6a4e4-93dd-4a9c-aa60-cdedb0bedabb","url":"https://localhost/sitecore/login/sitecor
+
+  [weather]
+  -442d-8807-054eb7df2d7c","componentName":"DCAMetadata","dataSource":"","params":{"GridParameters":"col-12","DynamicPlaceholderId":"3","FieldNames":"Default"},"fields":{"data":{"mDatasource":{"fields":[{"name":"Description","value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026 Sandown. \n","jsonValue":{"value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026 Sando
+
+  [weather]
+  atasource":{"fields":[{"name":"Description","value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026 Sandown. \n","jsonValue":{"value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026 Sandown. \n"}},{"name":"PublicUrl","value":"","jsonValue":{"value":""}},{"name":"Title","value":"Raceday Track \u0026 Weather Updates | Melbourne Racing Club","jsonValue":{"value":"Rac
+
+  [weather]
+  nValue":{"value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026 Sandown. \n"}},{"name":"PublicUrl","value":"","jsonValue":{"value":""}},{"name":"Title","value":"Raceday Track \u0026 Weather Updates | Melbourne Racing Club","jsonValue":{"value":"Raceday Track \u0026 Weather Updates | Melbourne Racing Club"}},{"name":"Image","value":"\u003cimage src=\"https://dxp-cdn.racing.com/api/public/content/202208-Memsie-453-152417.webp?v=054cd5a8\" dam-id=\"gOsGapyUTwOH
+
+  [weather]
+  n for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026 Sandown. \n"}},{"name":"PublicUrl","value":"","jsonValue":{"value":""}},{"name":"Title","value":"Raceday Track \u0026 Weather Updates | Melbourne Racing Club","jsonValue":{"value":"Raceday Track \u0026 Weather Updates | Melbourne Racing Club"}},{"name":"Image","value":"\u003cimage src=\"https://dxp-cdn.racing.com/api/public/content/202208-Memsie-453-152417.webp?v=054cd5a8\" dam-id=\"gOsGapyUTwOHhlY73Gfbuw\" width=\"6720\" height=\"4482\" alt=\"bw\" dam-content-type=\"Image\" th
+
+  [weather]
+  ":"https://dxp-cdn.racing.com/api/public/content/202208-Memsie-453-152417.webp?v=054cd5a8","dam-id":"gOsGapyUTwOHhlY73Gfbuw"}}},{"name":"Advertisers","value":"","jsonValue":[]},{"name":"NavigationFilter","value":"","jsonValue":[]},{"name":"NavigationTitle","value":"raceday track weather live","jsonValue":{"value":"raceday track weather live"}},{"name":"NavigationClass","value":"","jsonValue":null},{"name":"ChangeFrequency","value":"{D23B4654-53A5-4589-8B1B-5665A763D144}","jsonValue":{"id":"d23b4654-53a5-4589-8b1b-5665a763d144","url":"https://localhost/si
+
+  [weather]
+  02208-Memsie-453-152417.webp?v=054cd5a8","dam-id":"gOsGapyUTwOHhlY73Gfbuw"}}},{"name":"Advertisers","value":"","jsonValue":[]},{"name":"NavigationFilter","value":"","jsonValue":[]},{"name":"NavigationTitle","value":"raceday track weather live","jsonValue":{"value":"raceday track weather live"}},{"name":"NavigationClass","value":"","jsonValue":null},{"name":"ChangeFrequency","value":"{D23B4654-53A5-4589-8B1B-5665A763D144}","jsonValue":{"id":"d23b4654-53a5-4589-8b1b-5665a763d144","url":"https://localhost/sitecore/login/sitecore/system/Settings/Foundation/E
+
+  [weather]
+  }},{"name":"__Created","value":"20250819T001343Z","jsonValue":{"value":"2025-08-19T00:13:43Z"}},{"name":"__Updated","value":"20250819T002051Z","jsonValue":{"value":"2025-08-19T00:20:51Z"}},{"name":"__Semantics","value":"","jsonValue":[]},{"name":"MetaKeywords","value":"Track And Weather Caulfield Racecourse, Track And Weather Mornington Racecourse, Track And Weather Sportsbet Sandown","jsonValue":{"value":"Track And Weather Caulfield Racecourse, Track And Weather Mornington Racecourse, Track And Weather Sportsbet Sandown"}},{"name":"MetaDescription","val
+
+  [weather]
+  T001343Z","jsonValue":{"value":"2025-08-19T00:13:43Z"}},{"name":"__Updated","value":"20250819T002051Z","jsonValue":{"value":"2025-08-19T00:20:51Z"}},{"name":"__Semantics","value":"","jsonValue":[]},{"name":"MetaKeywords","value":"Track And Weather Caulfield Racecourse, Track And Weather Mornington Racecourse, Track And Weather Sportsbet Sandown","jsonValue":{"value":"Track And Weather Caulfield Racecourse, Track And Weather Mornington Racecourse, Track And Weather Sportsbet Sandown"}},{"name":"MetaDescription","value":"Stay updated with the latest race d
+
+  [weather]
+  9T00:13:43Z"}},{"name":"__Updated","value":"20250819T002051Z","jsonValue":{"value":"2025-08-19T00:20:51Z"}},{"name":"__Semantics","value":"","jsonValue":[]},{"name":"MetaKeywords","value":"Track And Weather Caulfield Racecourse, Track And Weather Mornington Racecourse, Track And Weather Sportsbet Sandown","jsonValue":{"value":"Track And Weather Caulfield Racecourse, Track And Weather Mornington Racecourse, Track And Weather Sportsbet Sandown"}},{"name":"MetaDescription","value":"Stay updated with the latest race day track and weather information for Melb
+
+  [weather]
+  Z","jsonValue":{"value":"2025-08-19T00:20:51Z"}},{"name":"__Semantics","value":"","jsonValue":[]},{"name":"MetaKeywords","value":"Track And Weather Caulfield Racecourse, Track And Weather Mornington Racecourse, Track And Weather Sportsbet Sandown","jsonValue":{"value":"Track And Weather Caulfield Racecourse, Track And Weather Mornington Racecourse, Track And Weather Sportsbet Sandown"}},{"name":"MetaDescription","value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Morningto
+
+  [weather]
+  0:51Z"}},{"name":"__Semantics","value":"","jsonValue":[]},{"name":"MetaKeywords","value":"Track And Weather Caulfield Racecourse, Track And Weather Mornington Racecourse, Track And Weather Sportsbet Sandown","jsonValue":{"value":"Track And Weather Caulfield Racecourse, Track And Weather Mornington Racecourse, Track And Weather Sportsbet Sandown"}},{"name":"MetaDescription","value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026 Sandown.","jsonValue":{"value":
+
+  [weather]
+  ,"jsonValue":[]},{"name":"MetaKeywords","value":"Track And Weather Caulfield Racecourse, Track And Weather Mornington Racecourse, Track And Weather Sportsbet Sandown","jsonValue":{"value":"Track And Weather Caulfield Racecourse, Track And Weather Mornington Racecourse, Track And Weather Sportsbet Sandown"}},{"name":"MetaDescription","value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026 Sandown.","jsonValue":{"value":"Stay updated with the latest race day tr
+
+  [weather]
+  ngton Racecourse, Track And Weather Sportsbet Sandown","jsonValue":{"value":"Track And Weather Caulfield Racecourse, Track And Weather Mornington Racecourse, Track And Weather Sportsbet Sandown"}},{"name":"MetaDescription","value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026 Sandown.","jsonValue":{"value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026 Sandown.
+
+  [weather]
+  Sportsbet Sandown"}},{"name":"MetaDescription","value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026 Sandown.","jsonValue":{"value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026 Sandown."}},{"name":"CanonicalUrl","value":"","jsonValue":{"value":""}},{"name":"PageType","value":"{858D3126-2620-4E2E-B02F-6FE420670390}","jsonValue":{"id":"858d3126-2620-4e2e-b02f-6
+
+  [weather]
+  6-2620-4e2e-b02f-6fe420670390","url":"https://localhost/sitecore/login/sitecore/system/Settings/Foundation/DCA/DCAMetadata/Enums/PageTypes/Content","name":"Content","displayName":"Content","fields":{"Value":{"value":"Content"}}}},{"name":"MetaTitle","value":"Raceday Track \u0026 Weather Updates | Melbourne Racing Club","jsonValue":{"value":"Raceday Track \u0026 Weather Updates | Melbourne Racing Club"}},{"name":"RobotsTag","value":"{659142F0-49F0-414D-B02A-4E28D389FA8C}","jsonValue":{"id":"659142f0-49f0-414d-b02a-4e28d389fa8c","url":"https://localhost/si
+
+  [weather]
+  em/Settings/Foundation/DCA/DCAMetadata/Enums/PageTypes/Content","name":"Content","displayName":"Content","fields":{"Value":{"value":"Content"}}}},{"name":"MetaTitle","value":"Raceday Track \u0026 Weather Updates | Melbourne Racing Club","jsonValue":{"value":"Raceday Track \u0026 Weather Updates | Melbourne Racing Club"}},{"name":"RobotsTag","value":"{659142F0-49F0-414D-B02A-4E28D389FA8C}","jsonValue":{"id":"659142f0-49f0-414d-b02a-4e28d389fa8c","url":"https://localhost/sitecore/login/sitecore/system/Settings/Foundation/DCA/DCAMetadata/Enums/RobotMetaTags
+
+  [weather]
+  t/sitecore/login/sitecore/system/Settings/Foundation/DCA/DCAMetadata/Enums/RobotMetaTags/all","name":"all","displayName":"All","fields":{"Value":{"value":"all"}}}},{"name":"OpenGraphType","value":"","jsonValue":{"value":""}},{"name":"OpenGraphTitle","value":"Raceday Track \u0026 Weather Updates | Melbourne Racing Club","jsonValue":{"value":"Raceday Track \u0026 Weather Updates | Melbourne Racing Club"}},{"name":"OpenGraphAdmins","value":"","jsonValue":{"value":""}},{"name":"OpenGraphImageUrl","value":"","jsonValue":{"value":{}}},{"name":"OpenGraphDescrip
+
+  [weather]
+  Tags/all","name":"all","displayName":"All","fields":{"Value":{"value":"all"}}}},{"name":"OpenGraphType","value":"","jsonValue":{"value":""}},{"name":"OpenGraphTitle","value":"Raceday Track \u0026 Weather Updates | Melbourne Racing Club","jsonValue":{"value":"Raceday Track \u0026 Weather Updates | Melbourne Racing Club"}},{"name":"OpenGraphAdmins","value":"","jsonValue":{"value":""}},{"name":"OpenGraphImageUrl","value":"","jsonValue":{"value":{}}},{"name":"OpenGraphDescription","value":"Stay updated with the latest race day track and weather information f
+
+  [weather]
+  Raceday Track \u0026 Weather Updates | Melbourne Racing Club"}},{"name":"OpenGraphAdmins","value":"","jsonValue":{"value":""}},{"name":"OpenGraphImageUrl","value":"","jsonValue":{"value":{}}},{"name":"OpenGraphDescription","value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026 Sandown.","jsonValue":{"value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026 Sandown.
+
+  [weather]
+  ":{"value":{}}},{"name":"OpenGraphDescription","value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026 Sandown.","jsonValue":{"value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026 Sandown."}},{"name":"OpenGraphSiteName","value":"","jsonValue":{"value":""}},{"name":"OpenGraphAppId","value":"","jsonValue":{"value":""}},{"name":"TwitterCardType","value":"{32F6A4E4-
+
+  [weather]
+  l-12","CacheClearingBehavior":"Clear on publish","DynamicPlaceholderId":"1","FieldNames":"Default"},"placeholders":{"container-{*}":[{"uid":"5b957288-cce6-45d0-8adc-1405c763b2e5","componentName":"DCAHeroBanner","dataSource":"/sitecore/content/Racing/MRC/Home/racing/raceday-track-weather-live/Data/hero","params":{"GridParameters":"col-12","FieldNames":"Default","DynamicPlaceholderId":"18"},"fields":{"SecondaryCTALink":{"value":{"href":""}},"Title":{"value":"Raceday Track \u0026 Weather"},"Image":{"value":{"height":"500","dam-content-type":"Image","width":
+
+  [weather]
+  oBanner","dataSource":"/sitecore/content/Racing/MRC/Home/racing/raceday-track-weather-live/Data/hero","params":{"GridParameters":"col-12","FieldNames":"Default","DynamicPlaceholderId":"18"},"fields":{"SecondaryCTALink":{"value":{"href":""}},"Title":{"value":"Raceday Track \u0026 Weather"},"Image":{"value":{"height":"500","dam-content-type":"Image","width":"1500","thumbnailsrc":"https://rmpl-p-001.sitecorecontenthub.cloud/api/gateway/2987171/thumbnail","src":"https://dxp-cdn.racing.com/api/public/content/202302-Blue-Diamond-411-2987171.webp?v=f3be51c2","d
+
+  [weather]
+  :"col-12 offset-lg-1 col-lg-7","Styles":"indent-top","DynamicPlaceholderId":"17","FieldNames":"Default"},"placeholders":{"container-{*}":[{"uid":"b70834c4-4040-46ef-8934-5c8c28f1ee2a","componentName":"RichText","dataSource":"/sitecore/content/Racing/MRC/Home/racing/raceday-track-weather-live/Data/Text 10","params":{"GridParameters":"col-12 col-lg-12","FieldNames":"Default","DynamicPlaceholderId":"21"},"fields":{"Text":{"value":"\u003cdiv class=\"ck-content\"\u003e\u003ch3\u003e\u0026nbsp;\u003c/h3\u003e\u003ch3 style=\"text-align:center;\"\u003eLive Data
+
+  [weather]
+  \u003e\u003ch3\u003e\u0026nbsp;\u003c/h3\u003e\u003ch3 style=\"text-align:center;\"\u003eLive Data Feed\u003c/h3\u003e\u003c/div\u003e"}}},{"uid":"64bd49ba-a022-448c-ac7b-27c4c759d42b","componentName":"DCATabs","dataSource":"/sitecore/content/Racing/MRC/Home/racing/raceday-track-weather-live/Data/tabs","params":{"GridParameters":"col-12 me-lg-auto col-lg-12 offset-lg-0","SearchIgnore":"1","FieldNames":"Default","Styles":"position-center tabs--align-centre position-left utils__indent-top-small","DynamicPlaceholderId":"1"},"fields":{"DynamicPlaceholderId":
+
+  [weather]
+  ynamicPlaceholderId":"2"},"fields":{"Title":{"value":"Caulfield"},"DynamicPlaceholderId":{"value":""}},"placeholders":{"DCATabItem-{*}":[{"uid":"4c46b4ae-bfce-4410-a034-f4ebc9d4f5c9","componentName":"DCAIframe","dataSource":"/sitecore/content/Racing/MRC/Home/racing/raceday-track-weather-live/Data/caul iframe","params":{"GridParameters":"col-12","SearchIgnore":"1","FieldNames":"Default","DynamicPlaceholderId":"14"},"fields":{"RenderScriptTag":{"value":false},"ScriptTagAttributes":{"value":""},"ScriptSrc":{"value":""},"DesktopHeight":{"value":null},"Loadin
+
+  [weather]
+  o.uk/visualiser/ladbrokes"},"EnableDynamicResizing":{"value":true},"MobileHeight":{"value":null},"Title":{"value":"Sportsbet Sandown "}}},{"uid":"da74fc1e-d88d-4c6f-8a5a-630b1879dfe7","componentName":"RichText","dataSource":"/sitecore/content/Racing/MRC/Home/racing/raceday-track-weather-live/Data/Text 4","params":{"GridParameters":"col-12","FieldNames":"Default","DynamicPlaceholderId":"11"},"fields":{"Text":{"value":""}}}]}},{"uid":"eab877b2-5af4-4fbc-953b-1fbb4d87a355","componentName":"DCATabItem","dataSource":"/sitecore/content/Racing/MRC/Home/racing/r
+
+  [weather]
+  Data/Text 4","params":{"GridParameters":"col-12","FieldNames":"Default","DynamicPlaceholderId":"11"},"fields":{"Text":{"value":""}}}]}},{"uid":"eab877b2-5af4-4fbc-953b-1fbb4d87a355","componentName":"DCATabItem","dataSource":"/sitecore/content/Racing/MRC/Home/racing/raceday-track-weather-live/Data/morn tab","params":{"GridParameters":"col-12","SearchIgnore":"1","FieldNames":"Default","DynamicPlaceholderId":"12"},"fields":{"Title":{"value":"Mornington"},"DynamicPlaceholderId":{"value":""}},"placeholders":{"DCATabItem-{*}":[{"uid":"4ff77638-2f65-4180-899d-e
+
+----------------------------------------------------------------------
+Document: 001_polyfills-42372ed130431b0a.js
+Kind: javascript
+URL: https://dxp-assets.racing.com/_next/static/chunks/polyfills-42372ed130431b0a.js
+
+KEYWORD CONTEXT:
+  [xmlhttprequest]
+  his.message=t,this.name=e;var r=Error(t);this.stack=r.stack}).prototype=Object.create(Error.prototype),lb.prototype.constructor=lb}function hb(t,e){return new Promise(function(r,n){var o=new ub(t,e);if(o.signal&&o.signal.aborted)return n(new lb("Aborted","AbortError"));var i=new XMLHttpRequest;function a(){i.abort()}i.onload=function(){var t,e,n={status:i.status,statusText:i.statusText,headers:(t=i.getAllResponseHeaders()||"",e=new tb,t.replace(/\r?\n[\t ]+/g," ").split(/\r?\n/).forEach(function(t){var r=t.split(":"),n=r.shift().trim();if(n){var o=r.join
+
+----------------------------------------------------------------------
+Document: 004_main-3aa2eabb19e25bf2.js
+Kind: javascript
+URL: https://dxp-assets.racing.com/_next/static/chunks/main-3aa2eabb19e25bf2.js
+
+LIKELY URLS:
+  /api
+  /api/
+  /api/|-/|favicon.ico|sc_logo.svg).*
+  https://fonts.googleapis.com/
+  https://fonts.googleapis.com/css
+
+KEYWORD CONTEXT:
+  [/api/]
+  .json)?[\\/#\\?]?$",originalSource:"/"},{regexp:"^(?:\\/(_next\\/data\\/[^/]{1,}))?(?:\\/((?!_next\\/)[^/.]{1,}))(?:\\/((?!api\\/|_next\\/|story|healthz|sitecore\\/api\\/|-\\/|favicon.ico|sc_logo.svg).*))(.json)?[\\/#\\?]?$",originalSource:"/((?!api/|_next/|story|healthz|sitecore/api/|-/|favicon.ico|sc_logo.svg).*)"}],window.__MIDDLEWARE_MATCHERS}getDataHref(e){let{asPath:t,href:r,locale:n}=e,{pathname:f,query:d,search:p}=(0,l.parseRelativeUrl)(r),{pathname:h}=(0,l.parseRelativeUrl)(t),m=(0,c.removeTrailingSlash)(f);if("/"!==m[0])throw Error('Route name 
+
+  [/api/]
+  hared,V.instrument]}},$={edgeSSREntry:"__next_edge_ssr_entry__",metadata:"__next_metadata__",metadataRoute:"__next_metadata_route__",metadataImageMeta:"__next_metadata_image_meta__"}},9423:function(e,t){"use strict";function r(e){return"/api"===e||!!(null==e?void 0:e.startsWith("/api/"))}Object.defineProperty(t,"__esModule",{value:!0}),Object.defineProperty(t,"isAPIRoute",{enumerable:!0,get:function(){return r}})},676:function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),function(e,t){for(var r in t)Object.defineProperty(e,r,{enum
+
+  [fetch(]
+  lateAs)(f,h,d).result:m)}_isSsg(e){return this.promisedSsgManifest.then(t=>t.has(e))}loadPage(e){return this.routeLoader.loadRoute(e).then(e=>{if("component"in e)return{page:e.component,mod:e.exports,styleSheets:e.styles.map(e=>({href:e.href,text:e.content}))};throw e.error})}prefetch(e){return this.routeLoader.prefetch(e)}constructor(e,t){this.routeLoader=(0,f.createRouteLoader)(t),this.buildId=e,this.assetPrefix=t,this.promisedSsgManifest=new Promise(e=>{window.__SSG_MANIFEST?e(window.__SSG_MANIFEST):window.__SSG_MANIFEST_CB=()=>{e(window.__SSG_MANIFES
+
+  [fetch(]
+  eturn this.promisedSsgManifest.then(t=>t.has(e))}loadPage(e){return this.routeLoader.loadRoute(e).then(e=>{if("component"in e)return{page:e.component,mod:e.exports,styleSheets:e.styles.map(e=>({href:e.href,text:e.content}))};throw e.error})}prefetch(e){return this.routeLoader.prefetch(e)}constructor(e,t){this.routeLoader=(0,f.createRouteLoader)(t),this.buildId=e,this.assetPrefix=t,this.promisedSsgManifest=new Promise(e=>{window.__SSG_MANIFEST?e(window.__SSG_MANIFEST):window.__SSG_MANIFEST_CB=()=>{e(window.__SSG_MANIFEST)}})}}("function"==typeof t.default
+
+  [fetch(]
+  ]')?Promise.resolve():(r.set(e.toString(),n=new Promise((r,n)=>{(t=document.createElement("script")).onload=r,t.onerror=()=>n(s(Error("Failed to load script: "+e))),t.crossOrigin=void 0,t.src=e,document.body.appendChild(t)})),n))}}function l(e){let t=n.get(e);return t||n.set(e,t=fetch(e,{credentials:"same-origin"}).then(t=>{if(!t.ok)throw Error("Failed to load stylesheet: "+e);return t.text().then(t=>({href:e,content:t}))}).catch(e=>{throw s(e)})),t}return{whenEntrypoint:e=>i(e,t),onEntrypoint(e,r){(r?Promise.resolve().then(()=>r()).then(e=>({component:e
+
+  [fetch(]
+  henEntrypoint(r).then(t=>({entrypoint:t,styles:e[1]}))),3800,s(Error("Route did not complete loading: "+r))).then(e=>{let{entrypoint:t,styles:r}=e,n=Object.assign({styles:r},t);return"error"in t?t:n}).catch(e=>{if(n)throw e;return{error:e}}).finally(()=>null==o?void 0:o())})},prefetch(t){let r;return(r=navigator.connection)&&(r.saveData||/2g/.test(r.effectiveType))?Promise.resolve():h(e,t).then(e=>Promise.all(c?e.scripts.map(e=>{var t,r,n;return t=e.toString(),r="script",new Promise((e,o)=>{if(document.querySelector('\n      link[rel="prefetch"][href^="'
+
+  [fetch(]
+  48),u=r(5411),s=r(6316),l=r(8077);function c(e){return{back(){e.back()},forward(){e.forward()},refresh(){e.reload()},fastRefresh(){},push(t,r){let{scroll:n}=void 0===r?{}:r;e.push(t,void 0,{scroll:n})},replace(t,r){let{scroll:n}=void 0===r?{}:r;e.replace(t,void 0,{scroll:n})},prefetch(t){e.prefetch(t)}}}function f(e){return e.isReady&&e.query?(0,s.asPathToSearchParams)(e.asPath):new URLSearchParams}function d(e){if(!e.isReady||!e.query)return null;let t={};for(let r of Object.keys((0,l.getRouteRegex)(e.pathname).groups))t[r]=e.query[r];return t}function 
+
+  [fetch(]
+  s=r(6316),l=r(8077);function c(e){return{back(){e.back()},forward(){e.forward()},refresh(){e.reload()},fastRefresh(){},push(t,r){let{scroll:n}=void 0===r?{}:r;e.push(t,void 0,{scroll:n})},replace(t,r){let{scroll:n}=void 0===r?{}:r;e.replace(t,void 0,{scroll:n})},prefetch(t){e.prefetch(t)}}}function f(e){return e.isReady&&e.query?(0,s.asPathToSearchParams)(e.asPath):new URLSearchParams}function d(e){if(!e.isReady||!e.query)return null;let t={};for(let r of Object.keys((0,l.getRouteRegex)(e.pathname).groups))t[r]=e.query[r];return t}function p(e){let{child
+
+  [fetch(]
+  .parse(e)}catch(e){return null}}function G(e){let{dataHref:t,inflightCache:r,isPrefetch:n,hasMiddleware:o,isServerRender:a,parseJSON:u,persistCache:s,isBackground:l,unstable_skipClientCache:c}=e,{href:f}=new URL(t,window.location.href),d=e=>{var l;return(function e(t,r,n){return fetch(t,{credentials:"same-origin",method:n.method||"GET",headers:Object.assign({},n.headers,{"x-nextjs-data":"1"})}).then(o=>!o.ok&&r>1&&o.status>=500?e(t,r-1,n):o)})(t,a?3:1,{headers:Object.assign({},n?{purpose:"prefetch"}:{},n&&o?{"x-middleware-prefetch":"1"}:{}),method:null!=
+
+  [fetch(]
+  =t||"top"===t){window.scrollTo(0,0);return}let e=decodeURIComponent(t),r=document.getElementById(e);if(r){r.scrollIntoView();return}let n=document.getElementsByName(e)[0];n&&n.scrollIntoView()},{onlyHashChange:this.onlyAHashChange(e)})}urlIsNew(e){return this.asPath!==e}async prefetch(e,t,r){if(void 0===t&&(t=e),void 0===r&&(r={}),(0,I.isBot)(window.navigator.userAgent))return;let n=(0,h.parseRelativeUrl)(e),o=n.pathname,{pathname:u,query:s}=n,l=u;if(!1===r.locale){u=(0,c.normalizeLocalePath)(u,this.locales).pathname,n.pathname=u,e=(0,y.formatWithValidat
+
+  [websocket]
+  tate===n.OPEN)return n.send(e)}let s=0;function l(e){!function t(){let r;function i(){if(n.onerror=null,n.onclose=null,n.close(),++s>25){window.location.reload();return}clearTimeout(r),r=setTimeout(t,s>5?5e3:1e3)}n&&n.close();let u=(0,o.getSocketUrl)(e.assetPrefix);(n=new window.WebSocket(""+u+e.path)).onopen=function(){s=0,window.console.log("[HMR] connected")},n.onerror=i,n.onclose=i,n.onmessage=function(e){let t=JSON.parse(e.data);for(let e of a)e(t)}}()}("function"==typeof t.default||"object"==typeof t.default&&null!==t.default)&&void 0===t.default._
+
+----------------------------------------------------------------------
+Document: 005__app-e6ebad81e7756ae0.js
+Kind: javascript
+URL: https://dxp-assets.racing.com/_next/static/chunks/pages/_app-e6ebad81e7756ae0.js
+
+LIKELY URLS:
+  /api/graph/edge
+  https://dxp-cdn.racing.com/api/public/content/755caf966b954f618a8e39992aa35015?v=b5b2394c
+  https://dxp-cdn.racing.com/api/public/content/79e7a4d83b6343f2934c8b45a6738f73?v=6377ac45
+  https://dxp-cdn.racing.com/api/public/content/835ce133ac3c4d0ead6640e8222bddf7?v=17c20030
+  https://dxp-cdn.racing.com/api/public/content/9e099dd24d654d4a959490b5ca065a2f?v=06c64a9f
+  https://dxp-cdn.racing.com/api/public/content/alexandra-favicon-317540.ico?v=a2a2fef5
+  https://dxp-cdn.racing.com/api/public/content/apsley-favicon-317538.ico?v=51476d5a
+  https://dxp-cdn.racing.com/api/public/content/ararat-favicon-317541.ico?v=9cf4c3d6
+  https://dxp-cdn.racing.com/api/public/content/avoca-favicon-317544.ico?v=ed301d12
+  https://dxp-cdn.racing.com/api/public/content/bairnsdale-favicon-317546.ico?v=0dd334f3
+  https://dxp-cdn.racing.com/api/public/content/ballan-favicon-317547.ico?v=b70881d8
+  https://dxp-cdn.racing.com/api/public/content/ballarat-favicon-317552.ico?v=40cb5c97
+  https://dxp-cdn.racing.com/api/public/content/benalla-favicon-317554.ico?v=94e1ca74
+  https://dxp-cdn.racing.com/api/public/content/buchan-favicon-317561.ico?v=c552e93b
+  https://dxp-cdn.racing.com/api/public/content/burrumbeet-favicon-317598.ico?v=af72dded
+  https://dxp-cdn.racing.com/api/public/content/camperdown-favicon-317579.ico?v=f7ea52f6
+  https://dxp-cdn.racing.com/api/public/content/casterton-favicon-317585.ico?v=6d152817
+  https://dxp-cdn.racing.com/api/public/content/colac-favicon-317592.ico?v=990a222d
+  https://dxp-cdn.racing.com/api/public/content/coleraine-favicon-317603.ico?v=8df47b64
+  https://dxp-cdn.racing.com/api/public/content/dederang-favicon-317618.ico?v=6294a7d3
+  https://dxp-cdn.racing.com/api/public/content/donald-favicon-317627.ico?v=f264fdfa
+  https://dxp-cdn.racing.com/api/public/content/drouin-favicon-317628.ico?v=e1d49ff6
+  https://dxp-cdn.racing.com/api/public/content/dunkeld-favicon-317638.ico?v=e769b201
+  https://dxp-cdn.racing.com/api/public/content/ec24eec79a1442faa2d5cb5855dbbb15?v=bf087859
+  https://dxp-cdn.racing.com/api/public/content/echuca-favicon-317649.ico?v=c27d3cc8
+  https://dxp-cdn.racing.com/api/public/content/edenhope-favicon-317659.ico?v=e5f846d1
+  https://dxp-cdn.racing.com/api/public/content/favicon_mrc-208168.ico?v=b709622e
+  https://dxp-cdn.racing.com/api/public/content/favicon_rv-208174.ico?v=2b0778d0
+  https://dxp-cdn.racing.com/api/public/content/geelong-favicon-317652.ico?v=c3eb378a
+  https://dxp-cdn.racing.com/api/public/content/greatwestern-favicon-317667.ico?v=857af5da
+  https://dxp-cdn.racing.com/api/public/content/gsp-favicon-317684.ico?v=c4371158
+  https://dxp-cdn.racing.com/api/public/content/gunbower-favicon-317674.ico?v=4ef87aca
+  https://dxp-cdn.racing.com/api/public/content/hamilton-favicon-317685.ico?v=6acd84f2
+  https://dxp-cdn.racing.com/api/public/content/healesville-favicon-317693.ico?v=4ca21260
+  https://dxp-cdn.racing.com/api/public/content/horsham-favicon-317699.ico?v=91b3331b
+  https://dxp-cdn.racing.com/api/public/content/kerang-favicon-317702.ico?v=58ce50c9
+  https://dxp-cdn.racing.com/api/public/content/kilmore-favicon-317707.ico?v=ab5890cd
+  https://dxp-cdn.racing.com/api/public/content/kyneton-favicon-317719.ico?v=2166ee04
+  https://dxp-cdn.racing.com/api/public/content/latrobe-favicon-317717.ico?v=7c85bf04
+  https://dxp-cdn.racing.com/api/public/content/manangatang-favicon-317720.ico?v=f4c7d340
+  https://dxp-cdn.racing.com/api/public/content/mansfield-favicon-317724.ico?v=4a86120e
+  https://dxp-cdn.racing.com/api/public/content/merton-favicon-317729.ico?v=79693bc6
+  https://dxp-cdn.racing.com/api/public/content/mildura-favicon-317737.ico?v=9ea60260
+  https://dxp-cdn.racing.com/api/public/content/mortlake-favicon-317744.ico?v=8b10e3c1
+  https://dxp-cdn.racing.com/api/public/content/murtoa-favicon-317751.ico?v=2286e789
+  https://dxp-cdn.racing.com/api/public/content/nhill-favicon-317757.ico?v=8c92fd76
+  https://dxp-cdn.racing.com/api/public/content/penshurst-favicon-317778.ico?v=135f5794
+  https://dxp-cdn.racing.com/api/public/content/sale-favicon-317781.ico?v=6cb3c043
+  https://dxp-cdn.racing.com/api/public/content/seymour-favicon-317783.ico?v=f712b6fe
+  https://dxp-cdn.racing.com/api/public/content/starnaud-favicon-317504.ico?v=b0c8f5bd
+  https://dxp-cdn.racing.com/api/public/content/stawell-favicon-317506.ico?v=30c43529
+  https://dxp-cdn.racing.com/api/public/content/stony-creek-favicon-317502.ico?v=97bb90d6
+  https://dxp-cdn.racing.com/api/public/content/swan-hill-favicon-317508.ico?v=dae4cc45
+  https://dxp-cdn.racing.com/api/public/content/tambo-valley-favicon-317510.ico?v=b9964683
+  https://dxp-cdn.racing.com/api/public/content/tatura-favicon-317513.ico?v=09f81dc4
+  https://dxp-cdn.racing.com/api/public/content/terang-favicon-317512.ico?v=77cb7941
+  https://dxp-cdn.racing.com/api/public/content/towong-favicon-317516.ico?v=6990203c
+  https://dxp-cdn.racing.com/api/public/content/wangaratta-favicon-317518.ico?v=cfae56c1
+  https://dxp-cdn.racing.com/api/public/content/warracknabeal-favicon-317520.ico?v=523f1a86
+  https://dxp-cdn.racing.com/api/public/content/warrnambool-favicon-317524.ico?v=51df344b
+  https://dxp-cdn.racing.com/api/public/content/werribee-favicon-317522.ico?v=1e011d08
+  https://dxp-cdn.racing.com/api/public/content/wodonga-favicon-317528.ico?v=7cb29b0c
+  https://dxp-cdn.racing.com/api/public/content/woodford-favicon-317530.ico?v=c80c2f02
+  https://dxp-cdn.racing.com/api/public/content/woolamai-favicon-317532.ico?v=30fcd415
+  https://dxp-cdn.racing.com/api/public/content/yarra-valley-favicon-317534.ico?v=7e7f4cb6
+  https://dxp-cdn.racing.com/api/public/content/yea-favicon-317536.ico?v=f68fa318
+  https://dxp-cdn.racingjd.com/api/public/content/favicon_crv-662466.ico?v=1b20a81c
+  https://dxp-cdn.racingjd.com/api/public/content/favicon_crv-662466.ico?v=cc635f3c
+  https://dxp-cdn.racingjd.com/api/public/content/favicon_mrc-662470.ico?v=0fc9dbb5
+  https://dxp-cdn.racingjd.com/api/public/content/favicon_mrc-662470.ico?v=c09cab55
+  https://dxp-cdn.racingjd.com/api/public/content/favicon_mvrc-662467.ico?v=b3d48c5e
+  https://dxp-cdn.racingjd.com/api/public/content/favicon_rdc-662472.ico?v=54e3b4fa
+  https://edge.sitecorecloud.io/api/graphql/v1
+  https://graphql.api.racing.com
+  https://xmapi.racing.com
+
+KEYWORD CONTEXT:
+  [graphql]
+  tecoreApiKey=a.env.SITECORE_API_KEY||"UVFRL0o2ZU82WDE2NFFOUk1UQThPbktQc1BrbU5pdi9PZlBBdmZJVHhKST18dmljdG9yaWFudGg1MDIyLXJkY21keHAtcHJvZHVjdGlvbi0zMWIw",r.sitecoreApiHost=a.env.SITECORE_API_HOST||"https://edge.sitecorecloud.io",r.sitecoreSiteName=a.env.SITECORE_SITE_NAME||"RDC",r.graphQLEndpointPath=a.env.GRAPH_QL_ENDPOINT_PATH||"/sitecore/api/graph/edge",r.defaultLanguage=a.env.DEFAULT_LANGUAGE||"en",r.graphQLEndpoint=a.env.GRAPH_QL_ENDPOINT||"https://edge.sitecorecloud.io/api/graphql/v1",r.layoutServiceConfigurationName=a.env.LAYOUT_SERVICE_CONFIGURATIO
+
+  [graphql]
+  eHAtcHJvZHVjdGlvbi0zMWIw",r.sitecoreApiHost=a.env.SITECORE_API_HOST||"https://edge.sitecorecloud.io",r.sitecoreSiteName=a.env.SITECORE_SITE_NAME||"RDC",r.graphQLEndpointPath=a.env.GRAPH_QL_ENDPOINT_PATH||"/sitecore/api/graph/edge",r.defaultLanguage=a.env.DEFAULT_LANGUAGE||"en",r.graphQLEndpoint=a.env.GRAPH_QL_ENDPOINT||"https://edge.sitecorecloud.io/api/graphql/v1",r.layoutServiceConfigurationName=a.env.LAYOUT_SERVICE_CONFIGURATION_NAME||"sxa-jss",r.publicUrl="https://dxp-assets.racing.com",r.racingAuthHost=a.env.RACING_AUTH_HOST||"https://www.racing.com
+
+  [graphql]
+  //edge.sitecorecloud.io",r.sitecoreSiteName=a.env.SITECORE_SITE_NAME||"RDC",r.graphQLEndpointPath=a.env.GRAPH_QL_ENDPOINT_PATH||"/sitecore/api/graph/edge",r.defaultLanguage=a.env.DEFAULT_LANGUAGE||"en",r.graphQLEndpoint=a.env.GRAPH_QL_ENDPOINT||"https://edge.sitecorecloud.io/api/graphql/v1",r.layoutServiceConfigurationName=a.env.LAYOUT_SERVICE_CONFIGURATION_NAME||"sxa-jss",r.publicUrl="https://dxp-assets.racing.com",r.racingAuthHost=a.env.RACING_AUTH_HOST||"https://www.racing.com/",r.sitecoreEdgeUrl=a.env.SITECORE_EDGE_URL||"https://edge-platform.sitecor
+
+  [graphql]
+  rKey":"139336996-16248249557","searchEnvironment":"apse2","environmentName":"PRODUCTION","brightcoveAcccount":"3461375237001","newrelicApplicationId":"1386179054","newrelicAccountId":"4443456","newrelicLicenseKey":"NRJS-ff3800093bcda5eb688","newrelicMonitorEnabled":"YES","appSyncGraphQLHost":"https://graphql.api.racing.com","appSyncGraphQLAPIKey":"da2-r5s52y73i5c7vi6vxflvfdufsa","rdcServicesHost":"https://www.racing.com","cloudfrontXmProxyHost":"https://xmapi.racing.com","cloudfrontXmProxyApiKey":"UVFRL0o2ZU82WDE2NFFOUk1UQThPbktQc1BrbU5pdi9PZlBBdmZJVHhKS
+
+  [graphql]
+  249557","searchEnvironment":"apse2","environmentName":"PRODUCTION","brightcoveAcccount":"3461375237001","newrelicApplicationId":"1386179054","newrelicAccountId":"4443456","newrelicLicenseKey":"NRJS-ff3800093bcda5eb688","newrelicMonitorEnabled":"YES","appSyncGraphQLHost":"https://graphql.api.racing.com","appSyncGraphQLAPIKey":"da2-r5s52y73i5c7vi6vxflvfdufsa","rdcServicesHost":"https://www.racing.com","cloudfrontXmProxyHost":"https://xmapi.racing.com","cloudfrontXmProxyApiKey":"UVFRL0o2ZU82WDE2NFFOUk1UQThPbktQc1BrbU5pdi9PZlBBdmZJVHhKST18dmljdG9yaWFudGg1MDI
+
+  [graphql]
+  e2","environmentName":"PRODUCTION","brightcoveAcccount":"3461375237001","newrelicApplicationId":"1386179054","newrelicAccountId":"4443456","newrelicLicenseKey":"NRJS-ff3800093bcda5eb688","newrelicMonitorEnabled":"YES","appSyncGraphQLHost":"https://graphql.api.racing.com","appSyncGraphQLAPIKey":"da2-r5s52y73i5c7vi6vxflvfdufsa","rdcServicesHost":"https://www.racing.com","cloudfrontXmProxyHost":"https://xmapi.racing.com","cloudfrontXmProxyApiKey":"UVFRL0o2ZU82WDE2NFFOUk1UQThPbktQc1BrbU5pdi9PZlBBdmZJVHhKST18dmljdG9yaWFudGg1MDIyLXJkY21keHAtcHJvZHVjdGlvbi0zMWI
+
+  [/api/]
+  1UQThPbktQc1BrbU5pdi9PZlBBdmZJVHhKST18dmljdG9yaWFudGg1MDIyLXJkY21keHAtcHJvZHVjdGlvbi0zMWIw",r.sitecoreApiHost=a.env.SITECORE_API_HOST||"https://edge.sitecorecloud.io",r.sitecoreSiteName=a.env.SITECORE_SITE_NAME||"RDC",r.graphQLEndpointPath=a.env.GRAPH_QL_ENDPOINT_PATH||"/sitecore/api/graph/edge",r.defaultLanguage=a.env.DEFAULT_LANGUAGE||"en",r.graphQLEndpoint=a.env.GRAPH_QL_ENDPOINT||"https://edge.sitecorecloud.io/api/graphql/v1",r.layoutServiceConfigurationName=a.env.LAYOUT_SERVICE_CONFIGURATION_NAME||"sxa-jss",r.publicUrl="https://dxp-assets.racing.com
+
+  [/api/]
+  ttps://edge.sitecorecloud.io",r.sitecoreSiteName=a.env.SITECORE_SITE_NAME||"RDC",r.graphQLEndpointPath=a.env.GRAPH_QL_ENDPOINT_PATH||"/sitecore/api/graph/edge",r.defaultLanguage=a.env.DEFAULT_LANGUAGE||"en",r.graphQLEndpoint=a.env.GRAPH_QL_ENDPOINT||"https://edge.sitecorecloud.io/api/graphql/v1",r.layoutServiceConfigurationName=a.env.LAYOUT_SERVICE_CONFIGURATION_NAME||"sxa-jss",r.publicUrl="https://dxp-assets.racing.com",r.racingAuthHost=a.env.RACING_AUTH_HOST||"https://www.racing.com/",r.sitecoreEdgeUrl=a.env.SITECORE_EDGE_URL||"https://edge-platform.si
+
+  [/api/]
+  AC6B88A464377296B84","siteTheme":"","siteGoogleAnalytics":"","siteGoogleMapKey":"","favIcon":""},{"siteName":"PERFTEST","sitePath":"3559E7E073A24A4B98FCECF4D0C0739E","siteTheme":"mrc-theme","siteGoogleAnalytics":"Test","siteGoogleMapKey":"","favIcon":"https://dxp-cdn.racingjd.com/api/public/content/favicon_mrc-662470.ico?v=c09cab55"},{"siteName":"DEV","sitePath":"ED2109B04422497E9B666044467017DF","siteTheme":"mrc-theme","siteGoogleAnalytics":"Test","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp-cdn.racingjd.com/api/pu
+
+  [/api/]
+  gjd.com/api/public/content/favicon_mrc-662470.ico?v=c09cab55"},{"siteName":"DEV","sitePath":"ED2109B04422497E9B666044467017DF","siteTheme":"mrc-theme","siteGoogleAnalytics":"Test","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp-cdn.racingjd.com/api/public/content/favicon_mrc-662470.ico?v=0fc9dbb5"},{"siteName":"RV","sitePath":"3F1C7FB19D98487EA7F21EF45F2D5689","siteTheme":"rv-theme","siteGoogleAnalytics":"GTM-KKZBFMG","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp-cdn.racing.com/api
+
+  [/api/]
+  .com/api/public/content/favicon_mrc-662470.ico?v=0fc9dbb5"},{"siteName":"RV","sitePath":"3F1C7FB19D98487EA7F21EF45F2D5689","siteTheme":"rv-theme","siteGoogleAnalytics":"GTM-KKZBFMG","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp-cdn.racing.com/api/public/content/favicon_rv-208174.ico?v=2b0778d0"},{"siteName":"MVRC","sitePath":"1535507F44D846A79C0608FF42CF6FAA","siteTheme":"mvrc-theme","siteGoogleAnalytics":"","siteGoogleMapKey":"","favIcon":"https://dxp-cdn.racingjd.com/api/public/content/favicon_mvrc-662467.ico?v=b3d
+
+  [/api/]
+  xmHEPaZ-Wg","favIcon":"https://dxp-cdn.racing.com/api/public/content/favicon_rv-208174.ico?v=2b0778d0"},{"siteName":"MVRC","sitePath":"1535507F44D846A79C0608FF42CF6FAA","siteTheme":"mvrc-theme","siteGoogleAnalytics":"","siteGoogleMapKey":"","favIcon":"https://dxp-cdn.racingjd.com/api/public/content/favicon_mvrc-662467.ico?v=b3d48c5e"},{"siteName":"MVRC","sitePath":"4B3209DB3A444E57B45BE8211D36DB6D","siteTheme":"mvrc-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"","favIcon":"https://dxp-cdn.racingjd.com/api/public/content/favicon_mvrc-662
+
+  [/api/]
+  vIcon":"https://dxp-cdn.racingjd.com/api/public/content/favicon_mvrc-662467.ico?v=b3d48c5e"},{"siteName":"MVRC","sitePath":"4B3209DB3A444E57B45BE8211D36DB6D","siteTheme":"mvrc-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"","favIcon":"https://dxp-cdn.racingjd.com/api/public/content/favicon_mvrc-662467.ico?v=b3d48c5e"},{"siteName":"MRC","sitePath":"F198445AA3924687ABD6D4826FE4633D","siteTheme":"mrc-theme","siteGoogleAnalytics":"GTM-PCXB5Z","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp-cdn.racing.com/a
+
+  [/api/]
+  om/api/public/content/favicon_mvrc-662467.ico?v=b3d48c5e"},{"siteName":"MRC","sitePath":"F198445AA3924687ABD6D4826FE4633D","siteTheme":"mrc-theme","siteGoogleAnalytics":"GTM-PCXB5Z","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp-cdn.racing.com/api/public/content/favicon_mrc-208168.ico?v=b709622e"},{"siteName":"HAMILTON","sitePath":"00B40AEBC913463093CFE1DC3A7FEBEC","siteTheme":"crv-hamilton-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp-cd
+
+  [/api/]
+  content/favicon_mrc-208168.ico?v=b709622e"},{"siteName":"HAMILTON","sitePath":"00B40AEBC913463093CFE1DC3A7FEBEC","siteTheme":"crv-hamilton-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp-cdn.racing.com/api/public/content/hamilton-favicon-317685.ico?v=6acd84f2"},{"siteName":"APSLEY","sitePath":"019261374DC44643AD9AD66974EBA562","siteTheme":"crv-apsley-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp-c
+
+  [/api/]
+  ontent/hamilton-favicon-317685.ico?v=6acd84f2"},{"siteName":"APSLEY","sitePath":"019261374DC44643AD9AD66974EBA562","siteTheme":"crv-apsley-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp-cdn.racing.com/api/public/content/apsley-favicon-317538.ico?v=51476d5a"},{"siteName":"BALNARRING","sitePath":"042A499D07ED48F5A9925E60FDA410FE","siteTheme":"crv-balnarring-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https:/
+
+  [/api/]
+  psley-favicon-317538.ico?v=51476d5a"},{"siteName":"BALNARRING","sitePath":"042A499D07ED48F5A9925E60FDA410FE","siteTheme":"crv-balnarring-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp-cdn.racingjd.com/api/public/content/favicon_crv-662466.ico?v=cc635f3c"},{"siteName":"GEELONG","sitePath":"0540974721A944B897BA53CC901570E0","siteTheme":"crv-geelong-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp-cdn.
+
+  [/api/]
+  c/content/favicon_crv-662466.ico?v=cc635f3c"},{"siteName":"GEELONG","sitePath":"0540974721A944B897BA53CC901570E0","siteTheme":"crv-geelong-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp-cdn.racing.com/api/public/content/geelong-favicon-317652.ico?v=c3eb378a"},{"siteName":"TATURA","sitePath":"06273FBBDBB941A3A63FE2003466FC6F","siteTheme":"crv-tatura-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp-cd
+
+  [/api/]
+  content/geelong-favicon-317652.ico?v=c3eb378a"},{"siteName":"TATURA","sitePath":"06273FBBDBB941A3A63FE2003466FC6F","siteTheme":"crv-tatura-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp-cdn.racing.com/api/public/content/tatura-favicon-317513.ico?v=09f81dc4"},{"siteName":"YEA","sitePath":"075DE15F9F86405A8C719582AF5A1872","siteTheme":"crv-yea-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp-cdn.racin
+
+  [/api/]
+  public/content/tatura-favicon-317513.ico?v=09f81dc4"},{"siteName":"YEA","sitePath":"075DE15F9F86405A8C719582AF5A1872","siteTheme":"crv-yea-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp-cdn.racing.com/api/public/content/yea-favicon-317536.ico?v=f68fa318"},{"siteName":"TOWONG","sitePath":"079D6079AC15414E88662AE31209C2DE","siteTheme":"crv-towong-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp-cdn.ra
+
+  [/api/]
+  lic/content/yea-favicon-317536.ico?v=f68fa318"},{"siteName":"TOWONG","sitePath":"079D6079AC15414E88662AE31209C2DE","siteTheme":"crv-towong-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp-cdn.racing.com/api/public/content/towong-favicon-317516.ico?v=6990203c"},{"siteName":"MERTON","sitePath":"08C1553D5D1C49DA844D67931AB77FB9","siteTheme":"crv-merton-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp-cdn
+
+  [/api/]
+  /content/towong-favicon-317516.ico?v=6990203c"},{"siteName":"MERTON","sitePath":"08C1553D5D1C49DA844D67931AB77FB9","siteTheme":"crv-merton-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp-cdn.racing.com/api/public/content/merton-favicon-317729.ico?v=79693bc6"},{"siteName":"KILMORE","sitePath":"0C21C133C8E3485180407E7667311011","siteTheme":"crv-kilmore-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp-c
+
+  [/api/]
+  ontent/merton-favicon-317729.ico?v=79693bc6"},{"siteName":"KILMORE","sitePath":"0C21C133C8E3485180407E7667311011","siteTheme":"crv-kilmore-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp-cdn.racing.com/api/public/content/kilmore-favicon-317707.ico?v=ab5890cd"},{"siteName":"BENDIGO","sitePath":"177ED17AB2CB465BB75CF9210AEA82B0","siteTheme":"crv-bendigo-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp-
+
+  [/api/]
+  ntent/kilmore-favicon-317707.ico?v=ab5890cd"},{"siteName":"BENDIGO","sitePath":"177ED17AB2CB465BB75CF9210AEA82B0","siteTheme":"crv-bendigo-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp-cdn.racing.com/api/public/content/755caf966b954f618a8e39992aa35015?v=b5b2394c"},{"siteName":"ALEXANDRA","sitePath":"1979D04DC48342A7AF6320F19751C7D7","siteTheme":"crv-alexandra-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"ht
+
+  [/api/]
+  af966b954f618a8e39992aa35015?v=b5b2394c"},{"siteName":"ALEXANDRA","sitePath":"1979D04DC48342A7AF6320F19751C7D7","siteTheme":"crv-alexandra-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp-cdn.racing.com/api/public/content/alexandra-favicon-317540.ico?v=a2a2fef5"},{"siteName":"WERRIBEE","sitePath":"1B5E911F00B14F408CE80C6685E653ED","siteTheme":"crv-werribee-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://
+
+  [/api/]
+  t/alexandra-favicon-317540.ico?v=a2a2fef5"},{"siteName":"WERRIBEE","sitePath":"1B5E911F00B14F408CE80C6685E653ED","siteTheme":"crv-werribee-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp-cdn.racing.com/api/public/content/werribee-favicon-317522.ico?v=1e011d08"},{"siteName":"BENALLA","sitePath":"1E3057AA09AF4C2288ED9CD3A0622562","siteTheme":"crv-benalla-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp
+
+  [/api/]
+  tent/werribee-favicon-317522.ico?v=1e011d08"},{"siteName":"BENALLA","sitePath":"1E3057AA09AF4C2288ED9CD3A0622562","siteTheme":"crv-benalla-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp-cdn.racing.com/api/public/content/benalla-favicon-317554.ico?v=94e1ca74"},{"siteName":"HEALESVILLE","sitePath":"24B6A7B2B41B4D888B7FE51FF9037B35","siteTheme":"crv-healesville-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"http
+
+  [/api/]
+  nalla-favicon-317554.ico?v=94e1ca74"},{"siteName":"HEALESVILLE","sitePath":"24B6A7B2B41B4D888B7FE51FF9037B35","siteTheme":"crv-healesville-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp-cdn.racing.com/api/public/content/healesville-favicon-317693.ico?v=4ca21260"},{"siteName":"DROUIN","sitePath":"274F69A6FF9341D1B9DB62B9A016F0AD","siteTheme":"crv-drouin-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dx
+
+  [/api/]
+  ent/healesville-favicon-317693.ico?v=4ca21260"},{"siteName":"DROUIN","sitePath":"274F69A6FF9341D1B9DB62B9A016F0AD","siteTheme":"crv-drouin-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp-cdn.racing.com/api/public/content/drouin-favicon-317628.ico?v=e1d49ff6"},{"siteName":"MOE","sitePath":"29AD10C03E1B4DB4A5CF8AEEE7DE2C6F","siteTheme":"crv-moe-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp-cdn.racin
+
+  [/api/]
+  public/content/drouin-favicon-317628.ico?v=e1d49ff6"},{"siteName":"MOE","sitePath":"29AD10C03E1B4DB4A5CF8AEEE7DE2C6F","siteTheme":"crv-moe-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp-cdn.racing.com/api/public/content/79e7a4d83b6343f2934c8b45a6738f73?v=6377ac45"},{"siteName":"WARRNAMBOOL","sitePath":"2C0DA98D99044DDA9436F8C09678181F","siteTheme":"crv-warrnambool-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon"
+
+  [/api/]
+  3b6343f2934c8b45a6738f73?v=6377ac45"},{"siteName":"WARRNAMBOOL","sitePath":"2C0DA98D99044DDA9436F8C09678181F","siteTheme":"crv-warrnambool-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp-cdn.racing.com/api/public/content/warrnambool-favicon-317524.ico?v=51df344b"},{"siteName":"DEDERANG","sitePath":"30D0993C845B48D982EEFA963FEB296F","siteTheme":"crv-dederang-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https:
+
+  [/api/]
+  warrnambool-favicon-317524.ico?v=51df344b"},{"siteName":"DEDERANG","sitePath":"30D0993C845B48D982EEFA963FEB296F","siteTheme":"crv-dederang-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp-cdn.racing.com/api/public/content/dederang-favicon-317618.ico?v=6294a7d3"},{"siteName":"BALLARAT","sitePath":"3420AB49C38D432B8C1D4362BD18DC29","siteTheme":"crv-ballarat-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://d
+
+  [/api/]
+  nt/dederang-favicon-317618.ico?v=6294a7d3"},{"siteName":"BALLARAT","sitePath":"3420AB49C38D432B8C1D4362BD18DC29","siteTheme":"crv-ballarat-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp-cdn.racing.com/api/public/content/ballarat-favicon-317552.ico?v=40cb5c97"},{"siteName":"WODONGA","sitePath":"3495EF5B1D9B4BECB5F6D468DAA02144","siteTheme":"crv-wodonga-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp
+
+  [/api/]
+  tent/ballarat-favicon-317552.ico?v=40cb5c97"},{"siteName":"WODONGA","sitePath":"3495EF5B1D9B4BECB5F6D468DAA02144","siteTheme":"crv-wodonga-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp-cdn.racing.com/api/public/content/wodonga-favicon-317528.ico?v=7cb29b0c"},{"siteName":"SOUTHSIDE","sitePath":"370FBE14C58341169F678173D5DC2A53","siteTheme":"southside-theme","siteGoogleAnalytics":"GTM-PTP9HDZN","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp
+
+  [/api/]
+  tent/wodonga-favicon-317528.ico?v=7cb29b0c"},{"siteName":"SOUTHSIDE","sitePath":"370FBE14C58341169F678173D5DC2A53","siteTheme":"southside-theme","siteGoogleAnalytics":"GTM-PTP9HDZN","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp-cdn.racing.com/api/public/content/ec24eec79a1442faa2d5cb5855dbbb15?v=bf087859"},{"siteName":"DONALD","sitePath":"42A37EBE5B504C1C8A29757CD1D6E764","siteTheme":"crv-donald-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://
+
+  [/api/]
+  t/ec24eec79a1442faa2d5cb5855dbbb15?v=bf087859"},{"siteName":"DONALD","sitePath":"42A37EBE5B504C1C8A29757CD1D6E764","siteTheme":"crv-donald-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp-cdn.racing.com/api/public/content/donald-favicon-317627.ico?v=f264fdfa"},{"siteName":"COLAC","sitePath":"432A7ACF13F34C57B256A8E40A382DCF","siteTheme":"crv-colac-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp-cdn.r
+
+  [/api/]
+  ic/content/donald-favicon-317627.ico?v=f264fdfa"},{"siteName":"COLAC","sitePath":"432A7ACF13F34C57B256A8E40A382DCF","siteTheme":"crv-colac-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp-cdn.racing.com/api/public/content/colac-favicon-317592.ico?v=990a222d"},{"siteName":"GEELONG-STPATS","sitePath":"457074B7A00B4AB18F82548859595153","siteTheme":"crv-geelong-stpats-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"
+
+  [/api/]
+  favicon-317592.ico?v=990a222d"},{"siteName":"GEELONG-STPATS","sitePath":"457074B7A00B4AB18F82548859595153","siteTheme":"crv-geelong-stpats-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp-cdn.racing.com/api/public/content/gsp-favicon-317684.ico?v=c4371158"},{"siteName":"ARARAT","sitePath":"4683C3DACA2D439084973BA81427BD93","siteTheme":"crv-ararat-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp-cdn.ra
+
+  [/api/]
+  lic/content/gsp-favicon-317684.ico?v=c4371158"},{"siteName":"ARARAT","sitePath":"4683C3DACA2D439084973BA81427BD93","siteTheme":"crv-ararat-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp-cdn.racing.com/api/public/content/ararat-favicon-317541.ico?v=9cf4c3d6"},{"siteName":"MURTOA","sitePath":"487F90D778A34470B45AB0EC2023C2D9","siteTheme":"crv-murtoa-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp-cdn
+
+  [/api/]
+  /content/ararat-favicon-317541.ico?v=9cf4c3d6"},{"siteName":"MURTOA","sitePath":"487F90D778A34470B45AB0EC2023C2D9","siteTheme":"crv-murtoa-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp-cdn.racing.com/api/public/content/murtoa-favicon-317751.ico?v=2286e789"},{"siteName":"HORSHAM","sitePath":"537CCA7B00F846D689B83976DB372281","siteTheme":"crv-horsham-theme","siteGoogleAnalytics":"GTM-K8KVJ32","siteGoogleMapKey":"AIzaSyCY5KCSwpP9bIBJ42BDnKSaVxmHEPaZ-Wg","favIcon":"https://dxp-c
+
+----------------------------------------------------------------------
+Document: 006_8fea067f-e34320f080630477.js
+Kind: javascript
+URL: https://dxp-assets.racing.com/_next/static/chunks/8fea067f-e34320f080630477.js
+
+LIKELY URLS:
+  /Apia
+  /Apia|LMT
+----------------------------------------------------------------------
+Document: 007_66b1ed8f-ee59cc9d3d0278d6.js
+Kind: javascript
+URL: https://dxp-assets.racing.com/_next/static/chunks/66b1ed8f-ee59cc9d3d0278d6.js
+
+LIKELY URLS:
+  /Apia
+  /Apia|LMT
+----------------------------------------------------------------------
+Document: 008_2852872c-fd64288b03635ec3.js
+Kind: javascript
+URL: https://dxp-assets.racing.com/_next/static/chunks/2852872c-fd64288b03635ec3.js
+
+LIKELY URLS:
+  /Apia
+  /Apia|LMT
+----------------------------------------------------------------------
+Document: 009_443bfb52-e4fe45d88b81b30d.js
+Kind: javascript
+URL: https://dxp-assets.racing.com/_next/static/chunks/443bfb52-e4fe45d88b81b30d.js
+
+LIKELY URLS:
+  /ApiClients/Assignments/
+  /api/discover/v2`,eventUrl:`${o}/api/event/v4/publish`}))},t$=t=
+  /api/v1/search/{{domain
+  /apiclients
+  /apiclients/
+  /apiclients/assignments
+  /trackingEvents
+  /trackingEvents/
+  https://api.ordercloud.io
+
+KEYWORD CONTEXT:
+  [/api/]
+  sh",tQ=(t,e)=>{let n=Object.assign({},t,e),{orderCloudRegion:i="usWest",env:r="prod",discoverDomainId:s}=e;if(!s)throw Error("{discoverDomainId} has not been provided.");return n.domainId=s,n.connector="oc",Object.assign(n,{useAccessToken:!0,apiDomain:tB[i],searchUrl:`${tB[i]}${"/api/v1/search/{{domain}}".replace("{{domain}}",s)}`,eventUrl:`${tM[r]}${tK.replace("{{key}}",s)}`})},tH=t=>{let e=t.split("-");return 2===e.length&&e[1]||""},tW=(t,e)=>{let n;let i=Object.assign({},t,e),{env:r="prod",customerKey:s=""}=i,{serviceHost:o,apiKey:a}=e,c=t$(s);if(!c)t
+
+  [/api/]
+  Key" has not been set but not serviceHost provided. Please, review your domain configuration');return Object.assign(i,(n=tM[r],a?{apiDomain:n,searchUrl:`${n}${"/discover/v2/{{key}}".replace("{{key}}",tH(s))}`,eventUrl:`${n}${tK.replace("{{key}}",s)}`}:{apiDomain:o,searchUrl:`${o}/api/discover/v2`,eventUrl:`${o}/api/event/v4/publish`}))},t$=t=>{if(t){let e=t.match(/^(\d+)-(\d+)$/);if(e)return[e[1],e[2]]}return null},tJ={apiDomain:"",apiKey:"",clientId:"",connector:"sitecore",cookieOptions:{},customerKey:"",debug:!1,domainHash:"",domainId:"",env:"prod",eve
+
+  [/api/]
+  rviceHost provided. Please, review your domain configuration');return Object.assign(i,(n=tM[r],a?{apiDomain:n,searchUrl:`${n}${"/discover/v2/{{key}}".replace("{{key}}",tH(s))}`,eventUrl:`${n}${tK.replace("{{key}}",s)}`}:{apiDomain:o,searchUrl:`${o}/api/discover/v2`,eventUrl:`${o}/api/event/v4/publish`}))},t$=t=>{if(t){let e=t.match(/^(\d+)-(\d+)$/);if(e)return[e[1],e[2]]}return null},tJ={apiDomain:"",apiKey:"",clientId:"",connector:"sitecore",cookieOptions:{},customerKey:"",debug:!1,domainHash:"",domainId:"",env:"prod",eventUrl:"",orderCloudRegion:"usWes
+
+  [axios]
+  >{let s;!1!==(s=e(n,r,t))&&(i[r]=s||n)}),Object.defineProperties(t,i)},eO="abcdefghijklmnopqrstuvwxyz",eD="0123456789",ek={DIGIT:eD,ALPHA:eO,ALPHA_DIGIT:eO+eO.toUpperCase()+eD},ex=ei("AsyncFunction"),eN=(I="function"==typeof setImmediate,R=eu(eE.postMessage),I?setImmediate:R?(_=`axios@${Math.random()}`,L=[],eE.addEventListener("message",({source:t,data:e})=>{t===eE&&e===_&&L.length&&L.shift()()},!1),t=>{L.push(t),eE.postMessage(_,"*")}):t=>setTimeout(t)),eG="undefined"!=typeof queueMicrotask?queueMicrotask.bind(eE):void 0!==r&&r.nextTick||eN,eF={isArray:
+
+  [axios]
+  turn t};return n(t,0)},isAsyncFn:ex,isThenable:t=>t&&(ep(t)||eu(t))&&eu(t.then)&&eu(t.catch),setImmediate:eN,asap:eG};function ej(t,e,n,i,r){Error.call(this),Error.captureStackTrace?Error.captureStackTrace(this,this.constructor):this.stack=Error().stack,this.message=t,this.name="AxiosError",e&&(this.code=e),n&&(this.config=n),i&&(this.request=i),r&&(this.response=r,this.status=r.status?r.status:null)}eF.inherits(ej,Error,{toJSON:function(){return{message:this.message,name:this.name,description:this.description,number:this.number,fileName:this.fileName,li
+
+  [axios]
+  ERR_BAD_OPTION","ECONNABORTED","ETIMEDOUT","ERR_NETWORK","ERR_FR_TOO_MANY_REDIRECTS","ERR_DEPRECATED","ERR_BAD_RESPONSE","ERR_BAD_REQUEST","ERR_CANCELED","ERR_NOT_SUPPORT","ERR_INVALID_URL"].forEach(t=>{eq[t]={value:t}}),Object.defineProperties(ej,eq),Object.defineProperty(eU,"isAxiosError",{value:!0}),ej.from=(t,e,n,i,r,s)=>{let o=Object.create(eU);return eF.toFlatObject(t,o,function(t){return t!==Error.prototype},t=>"isAxiosError"!==t),ej.call(o,t.message,e,n,i,r),o.cause=t,o.name=t.name,s&&Object.assign(o,s),o};let eK=eF.toFlatObject(eF,{},null,functi
+
+  [axios]
+  ANCELED","ERR_NOT_SUPPORT","ERR_INVALID_URL"].forEach(t=>{eq[t]={value:t}}),Object.defineProperties(ej,eq),Object.defineProperty(eU,"isAxiosError",{value:!0}),ej.from=(t,e,n,i,r,s)=>{let o=Object.create(eU);return eF.toFlatObject(t,o,function(t){return t!==Error.prototype},t=>"isAxiosError"!==t),ej.call(o,t.message,e,n,i,r),o.cause=t,o.name=t.name,s&&Object.assign(o,s),o};let eK=eF.toFlatObject(eF,{},null,function(t){return/^is[A-Z]/.test(t)}),eQ=function(t,e,n){if(!eF.isObject(t))throw TypeError("target must be an object");e=e||new FormData;let i=(n=eF.
+
+  [axios]
+  turn eF.forEach(this,(n,i)=>{null!=n&&!1!==n&&(e[i]=t&&eF.isArray(n)?n.join(", "):n)}),e}[Symbol.iterator](){return Object.entries(this.toJSON())[Symbol.iterator]()}toString(){return Object.entries(this.toJSON()).map(([t,e])=>t+": "+e).join("\n")}get[Symbol.toStringTag](){return"AxiosHeaders"}static from(t){return t instanceof this?t:new this(t)}static concat(t,...e){let n=new this(t);return e.forEach(t=>n.set(t)),n}static accessor(t){let e=(this[e9]=this[e9]={accessors:{}}).accessors,n=this.prototype;function i(t){let i=nt(t);e[i]||(function(t,e){let n=
+
+  [axios]
+  esponse.headers=ni.from(e.response.headers))),Promise.reject(e)})}let nx={};["object","boolean","number","function","string","symbol"].forEach((t,e)=>{nx[t]=function(n){return typeof n===t||"a"+(e<1?"n ":" ")+t}});let nN={};nx.transitional=function(t,e,n){function i(t,e){return"[Axios v1.7.7] Transitional option '"+t+"'"+e+(n?". "+n:"")}return(n,r,s)=>{if(!1===t)throw new ej(i(r," has been removed"+(e?" in "+e:"")),ej.ERR_DEPRECATED);return e&&!nN[r]&&(nN[r]=!0,console.warn(i(r," has been deprecated since v"+e+" and will be removed in the near future")))
+
+  [axios]
+  rkAuthenticationRequired:511};Object.entries(nq).forEach(([t,e])=>{nq[e]=t});let nV=function t(e){let n=new nj(e),i=t9(nj.prototype.request,n);return eF.extend(i,nj.prototype,n,{allOwnKeys:!0}),eF.extend(i,n,null,{allOwnKeys:!0}),i.create=function(n){return t(nm(e,n))},i}(e8);nV.Axios=nj,nV.CanceledError=no,nV.CancelToken=nU,nV.isCancel=ns,nV.VERSION="1.7.7",nV.toFormData=eQ,nV.AxiosError=ej,nV.Cancel=nV.CanceledError,nV.all=function(t){return Promise.all(t)},nV.spread=function(t){return function(e){return t.apply(null,e)}},nV.isAxiosError=function(t){re
+
+  [axios]
+   n=new nj(e),i=t9(nj.prototype.request,n);return eF.extend(i,nj.prototype,n,{allOwnKeys:!0}),eF.extend(i,n,null,{allOwnKeys:!0}),i.create=function(n){return t(nm(e,n))},i}(e8);nV.Axios=nj,nV.CanceledError=no,nV.CancelToken=nU,nV.isCancel=ns,nV.VERSION="1.7.7",nV.toFormData=eQ,nV.AxiosError=ej,nV.Cancel=nV.CanceledError,nV.all=function(t){return Promise.all(t)},nV.spread=function(t){return function(e){return t.apply(null,e)}},nV.isAxiosError=function(t){return eF.isObject(t)&&!0===t.isAxiosError},nV.mergeConfig=nm,nV.AxiosHeaders=ni,nV.formToJSON=t=>e6(eF
+
+  [axios]
+  rn t(nm(e,n))},i}(e8);nV.Axios=nj,nV.CanceledError=no,nV.CancelToken=nU,nV.isCancel=ns,nV.VERSION="1.7.7",nV.toFormData=eQ,nV.AxiosError=ej,nV.Cancel=nV.CanceledError,nV.all=function(t){return Promise.all(t)},nV.spread=function(t){return function(e){return t.apply(null,e)}},nV.isAxiosError=function(t){return eF.isObject(t)&&!0===t.isAxiosError},nV.mergeConfig=nm,nV.AxiosHeaders=ni,nV.formToJSON=t=>e6(eF.isHTMLForm(t)?new FormData(t):t),nV.getAdapter=nO,nV.HttpStatusCode=nq,nV.default=nV;var nM=function(t,e){return(nM=Object.setPrototypeOf||({__proto__:[]
+
+  [axios]
+  V.CancelToken=nU,nV.isCancel=ns,nV.VERSION="1.7.7",nV.toFormData=eQ,nV.AxiosError=ej,nV.Cancel=nV.CanceledError,nV.all=function(t){return Promise.all(t)},nV.spread=function(t){return function(e){return t.apply(null,e)}},nV.isAxiosError=function(t){return eF.isObject(t)&&!0===t.isAxiosError},nV.mergeConfig=nm,nV.AxiosHeaders=ni,nV.formToJSON=t=>e6(eF.isHTMLForm(t)?new FormData(t):t),nV.getAdapter=nO,nV.HttpStatusCode=nq,nV.default=nV;var nM=function(t,e){return(nM=Object.setPrototypeOf||({__proto__:[]})instanceof Array&&function(t,e){t.__proto__=e}||funct
+
+  [axios]
+  V.VERSION="1.7.7",nV.toFormData=eQ,nV.AxiosError=ej,nV.Cancel=nV.CanceledError,nV.all=function(t){return Promise.all(t)},nV.spread=function(t){return function(e){return t.apply(null,e)}},nV.isAxiosError=function(t){return eF.isObject(t)&&!0===t.isAxiosError},nV.mergeConfig=nm,nV.AxiosHeaders=ni,nV.formToJSON=t=>e6(eF.isHTMLForm(t)?new FormData(t):t),nV.getAdapter=nO,nV.HttpStatusCode=nq,nV.default=nV;var nM=function(t,e){return(nM=Object.setPrototypeOf||({__proto__:[]})instanceof Array&&function(t,e){t.__proto__=e}||function(t,e){for(var n in e)e.hasOwnP
+
+  [axios]
+  t(e)))};for(var s in i)r(s);delete e.filters}for(var s in e){var o=e[s];o&&n.push("".concat(s,"=").concat(encodeURIComponent(o)))}return n.length?"".concat(n.join("&")):""}},nX=new(function(){function t(){if(void 0===nV)throw Error("Ordercloud is missing required peer dependency axios. This must be installed and loaded before the OrderCloud SDK");this.Anonymous=this.Anonymous.bind(this),this.ClientCredentials=this.ClientCredentials.bind(this),this.ElevatedLogin=this.ElevatedLogin.bind(this),this.Login=this.Login.bind(this),this.RefreshToken=this.RefreshT
+
+  [axios]
+  in(" ")," ").concat(r.join(" "))),a={grant_type:"password",username:t,password:e,client_id:n,scope:o},c=nH.Get(),[4,nV.post("".concat(c.baseApiUrl,"/oauth/token"),nY.serialize(a),nB({headers:{"Content-Type":"application/x-www-form-urlencoded",Accept:"application/json"},adapter:c.axiosAdapter},s)).catch(function(t){if(t.response)throw new nW(t);throw t})];case 1:return[2,u.sent().data]}})})},t.prototype.ElevatedLogin=function(t,e,n,i,r,s,o){return void 0===o&&(o={}),nK(this,void 0,void 0,function(){var a,c,u;return nQ(this,function(h){switch(h.label){case
+
+  [axios]
+  cat(s.join(" "))),c={grant_type:"password",scope:a,client_id:i,username:e,password:n,client_secret:t},u=nH.Get(),[4,nV.post("".concat(u.baseApiUrl,"/oauth/token"),nY.serialize(c),nB({headers:{"Content-Type":"application/x-www-form-urlencoded",Accept:"application/json"},adapter:u.axiosAdapter},o)).catch(function(t){if(t.response)throw new nW(t);throw t})];case 1:return[2,h.sent().data]}})})},t.prototype.ClientCredentials=function(t,e,n,i,r){return void 0===r&&(r={}),nK(this,void 0,void 0,function(){var s,o,a;return nQ(this,function(c){switch(c.label){case
+
+  [axios]
+   ")," ").concat(i.join(" "))),o={grant_type:"client_credentials",scope:s,client_id:e,client_secret:t},a=nH.Get(),[4,nV.post("".concat(a.baseApiUrl,"/oauth/token"),nY.serialize(o),nB({headers:{"Content-Type":"application/x-www-form-urlencoded",Accept:"application/json"},adapter:a.axiosAdapter},r)).catch(function(t){if(t.response)throw new nW(t);throw t})];case 1:return[2,c.sent().data]}})})},t.prototype.RefreshToken=function(t,e,n){return void 0===n&&(n={}),nK(this,void 0,void 0,function(){var i,r;return nQ(this,function(s){switch(s.label){case 0:return i
+
+  [axios]
+  ,function(s){switch(s.label){case 0:return i={grant_type:"refresh_token",client_id:e,refresh_token:t},r=nH.Get(),[4,nV.post("".concat(r.baseApiUrl,"/oauth/token"),nY.serialize(i),nB({headers:{"Content-Type":"application/x-www-form-urlencoded",Accept:"application/json"},adapter:r.axiosAdapter},n)).catch(function(t){if(t.response)throw new nW(t);throw t})];case 1:return[2,s.sent().data]}})})},t.prototype.Anonymous=function(t,e,n,i){return void 0===i&&(i={}),nK(this,void 0,void 0,function(){var r,s,o;return nQ(this,function(a){switch(a.label){case 0:if(e&&!
+
+  [axios]
+  lient_credentials",client_id:t,scope:r},i.anonuserid&&(s.anonuserid=i.anonuserid,delete i.anonuserid),o=nH.Get(),[4,nV.post("".concat(o.baseApiUrl,"/oauth/token"),nY.serialize(s),nB({headers:{"Content-Type":"application/x-www-form-urlencoded",Accept:"application/json"},adapter:o.axiosAdapter},i)).catch(function(t){if(t.response)throw new nW(t);throw t})];case 1:return[2,a.sent().data]}})})},t}()),nZ=Function("try {return this===global;}catch(e){return false;}"),n0=new(function(){function t(){this.accessTokenCookieName=".access-token",this.impersonationTo
+
+  [axios]
+  n)];case 1:return[2,t.sent()]}})})},this.delete=function(e,n){return nK(t,void 0,void 0,function(){return nQ(this,function(t){switch(t.label){case 0:return[4,this.makeApiCall("delete",e,n)];case 1:return[2,t.sent()]}})})},void 0===nV)throw Error("Missing required peer dependency axios. This must be installed and loaded before the OrderCloud SDK");this.get=this.get.bind(this),this.put=this.put.bind(this),this.post=this.post.bind(this),this.patch=this.patch.bind(this),this.delete=this.delete.bind(this),this._resolveToken=this._resolveToken.bind(this),this.
+
+  [axios]
+  solveToken=function(t){var e;return e=t.accessToken?t.accessToken:t.impersonating?n0.GetImpersonationToken():n0.GetAccessToken(),delete t.accessToken,delete t.impersonating,e},t.prototype._buildRequestConfig=function(t){var e=nH.Get(),n=nB(nB({},t),{paramsSerializer:nY,adapter:e.axiosAdapter,timeout:e.timeoutInMilliseconds,headers:{"Content-Type":"application/json"}});return this._addTokenToConfig(n)},t}());new(function(){function t(){this.impersonating=!1,this.List=this.List.bind(this),this.Create=this.Create.bind(this),this.Get=this.Get.bind(this),this
+
+  [fetch(]
+  ,i.body){let[t,n]=nu(e,nc(nh(u)));r=nb(i.body,65536,t,n)}}eF.isString(l)||(l=l?"include":"omit");let s="credentials"in Request.prototype;f=new Request(n,{...d,signal:m,method:i.toUpperCase(),headers:p.normalize().toJSON(),body:r,duplex:"half",credentials:s?l:void 0});let o=await fetch(f),a=nT&&("stream"===h||"response"===h);if(nT&&(c||a&&g)){let t={};["status","statusText","headers"].forEach(e=>{t[e]=o[e]});let e=eF.toFiniteNumber(o.headers.get("content-length")),[n,i]=c&&nu(e,nc(nh(c),!0))||[];o=new Response(nb(o.body,65536,n,()=>{i&&i(),g&&g()}),t)}h=h
+
+  [fetch(]
+  is.cache[t]=e}delete(t){delete this.cache[t]}all(){return this.cache}clear(){this.cache={},window.RFK_CACHE[this.name]=this.cache}getName(){return this.name}}("api-adapter"),n5={cache:!0};class n6{static async trackEvent(t){let e=ir(t),{eventUrl:n,apiKey:i}=tY();try{return(await fetch(n,{method:"POST",headers:{"Content-Type":"application/json",Authorization:i},body:JSON.stringify(e)})).json()}catch(t){return tV.error(t),tV.error("There was a problem on the service call"),t.message||null}}static async callApiWithoutCache(t,e){try{let n=await fetch(t,e),i=
+
+  [fetch(]
+  return(await fetch(n,{method:"POST",headers:{"Content-Type":"application/json",Authorization:i},body:JSON.stringify(e)})).json()}catch(t){return tV.error(t),tV.error("There was a problem on the service call"),t.message||null}}static async callApiWithoutCache(t,e){try{let n=await fetch(t,e),i=await n.json();return Promise.resolve(i)}catch(t){return tV.error(t),tV.error("There was a problem on the service call"),t.message||null}}static async callApiWithCache(t,e){let n=n3.createKey(e);if(n3.has(n))return n3.get(n);let i=await n6.callApiWithoutCache(t,e);re
+
+  [fetch(]
+  dated||!this.state.dataUpdatedAt||this.observers.some(t=>t.getCurrentResult().isStale)}isStaleByTime(t=0){return this.state.isInvalidated||!this.state.dataUpdatedAt||!iT(this.state.dataUpdatedAt,t)}onFocus(){var t;let e=this.observers.find(t=>t.shouldFetchOnWindowFocus());e&&e.refetch({cancelRefetch:!1}),null==(t=this.retryer)||t.continue()}onOnline(){var t;let e=this.observers.find(t=>t.shouldFetchOnReconnect());e&&e.refetch({cancelRefetch:!1}),null==(t=this.retryer)||t.continue()}addObserver(t){this.observers.includes(t)||(this.observers.push(t),this.c
+
+  [fetch(]
+  .state.dataUpdatedAt||!iT(this.state.dataUpdatedAt,t)}onFocus(){var t;let e=this.observers.find(t=>t.shouldFetchOnWindowFocus());e&&e.refetch({cancelRefetch:!1}),null==(t=this.retryer)||t.continue()}onOnline(){var t;let e=this.observers.find(t=>t.shouldFetchOnReconnect());e&&e.refetch({cancelRefetch:!1}),null==(t=this.retryer)||t.continue()}addObserver(t){this.observers.includes(t)||(this.observers.push(t),this.clearGcTimeout(),this.cache.notify({type:"observerAdded",query:this,observer:t}))}removeObserver(t){this.observers.includes(t)&&(this.observers=t
+
+  [fetch(]
+  lConsumed?this.retryer.cancel({revert:!0}):this.retryer.cancelRetry()),this.scheduleGc()),this.cache.notify({type:"observerRemoved",query:this,observer:t}))}getObserversCount(){return this.observers.length}invalidate(){this.state.isInvalidated||this.dispatch({type:"invalidate"})}fetch(t,e){var n,i,r,s;if("idle"!==this.state.fetchStatus){if(this.state.dataUpdatedAt&&null!=e&&e.cancelRefetch)this.cancel({silent:!0});else if(this.promise)return null==(r=this.retryer)||r.continueRetry(),this.promise}if(t&&this.setOptions(t),!this.options.queryFn){let t=this.
+
+  [fetch(]
+  tchOptions:e,options:this.options,queryKey:this.queryKey,state:this.state,fetchFn:()=>this.options.queryFn?(this.abortSignalConsumed=!1,this.options.queryFn(a)):Promise.reject("Missing queryFn for queryKey '"+this.options.queryHash+"'")};c(u),null==(n=this.options.behavior)||n.onFetch(u),this.revertState=this.state,("idle"===this.state.fetchStatus||this.state.fetchMeta!==(null==(i=u.fetchOptions)?void 0:i.meta))&&this.dispatch({type:"fetch",meta:null==(s=u.fetchOptions)?void 0:s.meta});let h=t=>{var e,n,i,r;iY(t)&&t.silent||this.dispatch({type:"error",er
+
+  [fetch(]
+  ype)return Promise.resolve();let n={...i,type:null!=(t=null!=(e=i.refetchType)?e:i.type)?t:"active"};return this.refetchQueries(n,r)})}refetchQueries(t,e,n){let[i,r]=iR(t,e,n),s=Promise.all(iB.batch(()=>this.queryCache.findAll(i).filter(t=>!t.isDisabled()).map(t=>{var e;return t.fetch(void 0,{...r,cancelRefetch:null==(e=null==r?void 0:r.cancelRefetch)||e,meta:{refetchPage:i.refetchPage}})}))).then(iE);return null!=r&&r.throwOnError||(s=s.catch(iE)),s}fetchQuery(t,e,n){let i=iI(t,e,n),r=this.defaultQueryOptions(i);void 0===r.retry&&(r.retry=!1);let s=this
+
+  [fetch(]
+  lRefetch)||e,meta:{refetchPage:i.refetchPage}})}))).then(iE);return null!=r&&r.throwOnError||(s=s.catch(iE)),s}fetchQuery(t,e,n){let i=iI(t,e,n),r=this.defaultQueryOptions(i);void 0===r.retry&&(r.retry=!1);let s=this.queryCache.build(this,r);return s.isStaleByTime(r.staleTime)?s.fetch(r):Promise.resolve(s.state.data)}prefetchQuery(t,e,n){return this.fetchQuery(t,e,n).then(iE).catch(iE)}fetchInfiniteQuery(t,e,n){let i=iI(t,e,n);return i.behavior={onFetch:t=>{t.fetchFn=()=>{var e,n,i,r,s,o,a;let c;let u=null==(e=t.fetchOptions)||null==(n=e.meta)?void 0:n.r
+
+  [fetch(]
+  s=new Set,this.selectError=null,this.bindMethods(),this.setOptions(e)}bindMethods(){this.remove=this.remove.bind(this),this.refetch=this.refetch.bind(this)}onSubscribe(){1===this.listeners.size&&(this.currentQuery.addObserver(this),rv(this.currentQuery,this.options)&&this.executeFetch(),this.updateTimers())}onUnsubscribe(){this.hasListeners()||this.destroy()}shouldFetchOnReconnect(){return rw(this.currentQuery,this.options,this.options.refetchOnReconnect)}shouldFetchOnWindowFocus(){return rw(this.currentQuery,this.options,this.options.refetchOnWindowFocu
+
+  [fetch(]
+  s}),void 0!==this.options.enabled&&"boolean"!=typeof this.options.enabled)throw Error("Expected enabled to be a boolean");this.options.queryKey||(this.options.queryKey=n.queryKey),this.updateQuery();let r=this.hasListeners();r&&ry(this.currentQuery,i,this.options,n)&&this.executeFetch(),this.updateResult(e),r&&(this.currentQuery!==i||this.options.enabled!==n.enabled||this.options.staleTime!==n.staleTime)&&this.updateStaleTimeout();let s=this.computeRefetchInterval();r&&(this.currentQuery!==i||this.options.enabled!==n.enabled||s!==this.currentRefetchInter
+
+  [fetch(]
+  rentResult}trackResult(t){let e={};return Object.keys(t).forEach(n=>{Object.defineProperty(e,n,{configurable:!1,enumerable:!0,get:()=>(this.trackedProps.add(n),t[n])})}),e}getCurrentQuery(){return this.currentQuery}remove(){this.client.getQueryCache().remove(this.currentQuery)}refetch({refetchPage:t,...e}={}){return this.fetch({...e,meta:{refetchPage:t}})}fetchOptimistic(t){let e=this.client.defaultQueryOptions(t),n=this.client.getQueryCache().build(this.client,e);return n.isFetchingOptimistic=!0,n.fetch().then(()=>this.createResult(n,e))}fetch(t){var e;
+
+  [fetch(]
+  bject.keys(t).forEach(n=>{Object.defineProperty(e,n,{configurable:!1,enumerable:!0,get:()=>(this.trackedProps.add(n),t[n])})}),e}getCurrentQuery(){return this.currentQuery}remove(){this.client.getQueryCache().remove(this.currentQuery)}refetch({refetchPage:t,...e}={}){return this.fetch({...e,meta:{refetchPage:t}})}fetchOptimistic(t){let e=this.client.defaultQueryOptions(t),n=this.client.getQueryCache().build(this.client,e);return n.isFetchingOptimistic=!0,n.fetch().then(()=>this.createResult(n,e))}fetch(t){var e;return this.executeFetch({...t,cancelRefetc
+
+  [fetch(]
+  this.client.getQueryCache().remove(this.currentQuery)}refetch({refetchPage:t,...e}={}){return this.fetch({...e,meta:{refetchPage:t}})}fetchOptimistic(t){let e=this.client.defaultQueryOptions(t),n=this.client.getQueryCache().build(this.client,e);return n.isFetchingOptimistic=!0,n.fetch().then(()=>this.createResult(n,e))}fetch(t){var e;return this.executeFetch({...t,cancelRefetch:null==(e=t.cancelRefetch)||e}).then(()=>(this.updateResult(),this.currentResult))}executeFetch(t){this.updateQuery();let e=this.currentQuery.fetch(this.options,t);return null!=t&&
+
+  [fetch(]
+  urrentQuery)}refetch({refetchPage:t,...e}={}){return this.fetch({...e,meta:{refetchPage:t}})}fetchOptimistic(t){let e=this.client.defaultQueryOptions(t),n=this.client.getQueryCache().build(this.client,e);return n.isFetchingOptimistic=!0,n.fetch().then(()=>this.createResult(n,e))}fetch(t){var e;return this.executeFetch({...t,cancelRefetch:null==(e=t.cancelRefetch)||e}).then(()=>(this.updateResult(),this.currentResult))}executeFetch(t){this.updateQuery();let e=this.currentQuery.fetch(this.options,t);return null!=t&&t.throwOnError||(e=e.catch(iE)),e}updateS
+
+  [fetch(]
+  t,...e}={}){return this.fetch({...e,meta:{refetchPage:t}})}fetchOptimistic(t){let e=this.client.defaultQueryOptions(t),n=this.client.getQueryCache().build(this.client,e);return n.isFetchingOptimistic=!0,n.fetch().then(()=>this.createResult(n,e))}fetch(t){var e;return this.executeFetch({...t,cancelRefetch:null==(e=t.cancelRefetch)||e}).then(()=>(this.updateResult(),this.currentResult))}executeFetch(t){this.updateQuery();let e=this.currentQuery.fetch(this.options,t);return null!=t&&t.throwOnError||(e=e.catch(iE)),e}updateStaleTimeout(){if(this.clearStaleTi
+
+  [fetch(]
+  (t),n=this.client.getQueryCache().build(this.client,e);return n.isFetchingOptimistic=!0,n.fetch().then(()=>this.createResult(n,e))}fetch(t){var e;return this.executeFetch({...t,cancelRefetch:null==(e=t.cancelRefetch)||e}).then(()=>(this.updateResult(),this.currentResult))}executeFetch(t){this.updateQuery();let e=this.currentQuery.fetch(this.options,t);return null!=t&&t.throwOnError||(e=e.catch(iE)),e}updateStaleTimeout(){if(this.clearStaleTimeout(),iA||this.currentResult.isStale||!iP(this.options.staleTime))return;let t=iT(this.currentResult.dataUpdatedA
+
+  [fetch(]
+  e);return n.isFetchingOptimistic=!0,n.fetch().then(()=>this.createResult(n,e))}fetch(t){var e;return this.executeFetch({...t,cancelRefetch:null==(e=t.cancelRefetch)||e}).then(()=>(this.updateResult(),this.currentResult))}executeFetch(t){this.updateQuery();let e=this.currentQuery.fetch(this.options,t);return null!=t&&t.throwOnError||(e=e.catch(iE)),e}updateStaleTimeout(){if(this.clearStaleTimeout(),iA||this.currentResult.isStale||!iP(this.options.staleTime))return;let t=iT(this.currentResult.dataUpdatedAt,this.options.staleTime)+1;this.staleTimeoutId=setT
+
+----------------------------------------------------------------------
+Document: 010_e413f370-cf8bf9c37d2b8238.js
+Kind: javascript
+URL: https://dxp-assets.racing.com/_next/static/chunks/e413f370-cf8bf9c37d2b8238.js
+
+LIKELY URLS:
+  /ApiClients/Assignments/
+  /api/discover/v2`,eventUrl:`${o}/api/event/v4/publish`}))},tM=t=
+  /api/v1/search/{{domain
+  /apiclients
+  /apiclients/
+  /apiclients/assignments
+  /trackingEvents
+  /trackingEvents/
+  https://api.ordercloud.io
+
+KEYWORD CONTEXT:
+  [/api/]
+  sh",tq=(t,e)=>{let n=Object.assign({},t,e),{orderCloudRegion:i="usWest",env:r="prod",discoverDomainId:s}=e;if(!s)throw Error("{discoverDomainId} has not been provided.");return n.domainId=s,n.connector="oc",Object.assign(n,{useAccessToken:!0,apiDomain:tU[i],searchUrl:`${tU[i]}${"/api/v1/search/{{domain}}".replace("{{domain}}",s)}`,eventUrl:`${tN[r]}${tj.replace("{{key}}",s)}`})},tF=t=>{let e=t.split("-");return 2===e.length&&e[1]||""},tB=(t,e)=>{let n;let i=Object.assign({},t,e),{env:r="prod",customerKey:s=""}=i,{serviceHost:o,apiKey:a}=e,c=tM(s);if(!c)t
+
+  [/api/]
+  Key" has not been set but not serviceHost provided. Please, review your domain configuration');return Object.assign(i,(n=tN[r],a?{apiDomain:n,searchUrl:`${n}${"/discover/v2/{{key}}".replace("{{key}}",tF(s))}`,eventUrl:`${n}${tj.replace("{{key}}",s)}`}:{apiDomain:o,searchUrl:`${o}/api/discover/v2`,eventUrl:`${o}/api/event/v4/publish`}))},tM=t=>{if(t){let e=t.match(/^(\d+)-(\d+)$/);if(e)return[e[1],e[2]]}return null},tK={apiDomain:"",apiKey:"",clientId:"",connector:"sitecore",cookieOptions:{},customerKey:"",debug:!1,domainHash:"",domainId:"",env:"prod",eve
+
+  [/api/]
+  rviceHost provided. Please, review your domain configuration');return Object.assign(i,(n=tN[r],a?{apiDomain:n,searchUrl:`${n}${"/discover/v2/{{key}}".replace("{{key}}",tF(s))}`,eventUrl:`${n}${tj.replace("{{key}}",s)}`}:{apiDomain:o,searchUrl:`${o}/api/discover/v2`,eventUrl:`${o}/api/event/v4/publish`}))},tM=t=>{if(t){let e=t.match(/^(\d+)-(\d+)$/);if(e)return[e[1],e[2]]}return null},tK={apiDomain:"",apiKey:"",clientId:"",connector:"sitecore",cookieOptions:{},customerKey:"",debug:!1,domainHash:"",domainId:"",env:"prod",eventUrl:"",orderCloudRegion:"usWes
+
+  [axios]
+  >{let s;!1!==(s=e(n,r,t))&&(i[r]=s||n)}),Object.defineProperties(t,i)},eP="abcdefghijklmnopqrstuvwxyz",eT="0123456789",eD={DIGIT:eT,ALPHA:eP,ALPHA_DIGIT:eP+eP.toUpperCase()+eT},eO=t7("AsyncFunction"),eL=(E="function"==typeof setImmediate,P=ei(ew.postMessage),E?setImmediate:P?(T=`axios@${Math.random()}`,D=[],ew.addEventListener("message",({source:t,data:e})=>{t===ew&&e===T&&D.length&&D.shift()()},!1),t=>{D.push(t),ew.postMessage(T,"*")}):t=>setTimeout(t)),eR="undefined"!=typeof queueMicrotask?queueMicrotask.bind(ew):void 0!==r&&r.nextTick||eL,eI={isArray:
+
+  [axios]
+  turn t};return n(t,0)},isAsyncFn:eO,isThenable:t=>t&&(es(t)||ei(t))&&ei(t.then)&&ei(t.catch),setImmediate:eL,asap:eR};function ek(t,e,n,i,r){Error.call(this),Error.captureStackTrace?Error.captureStackTrace(this,this.constructor):this.stack=Error().stack,this.message=t,this.name="AxiosError",e&&(this.code=e),n&&(this.config=n),i&&(this.request=i),r&&(this.response=r,this.status=r.status?r.status:null)}eI.inherits(ek,Error,{toJSON:function(){return{message:this.message,name:this.name,description:this.description,number:this.number,fileName:this.fileName,li
+
+  [axios]
+  ERR_BAD_OPTION","ECONNABORTED","ETIMEDOUT","ERR_NETWORK","ERR_FR_TOO_MANY_REDIRECTS","ERR_DEPRECATED","ERR_BAD_RESPONSE","ERR_BAD_REQUEST","ERR_CANCELED","ERR_NOT_SUPPORT","ERR_INVALID_URL"].forEach(t=>{eG[t]={value:t}}),Object.defineProperties(ek,eG),Object.defineProperty(e_,"isAxiosError",{value:!0}),ek.from=(t,e,n,i,r,s)=>{let o=Object.create(e_);return eI.toFlatObject(t,o,function(t){return t!==Error.prototype},t=>"isAxiosError"!==t),ek.call(o,t.message,e,n,i,r),o.cause=t,o.name=t.name,s&&Object.assign(o,s),o};let ej=eI.toFlatObject(eI,{},null,functi
+
+  [axios]
+  ANCELED","ERR_NOT_SUPPORT","ERR_INVALID_URL"].forEach(t=>{eG[t]={value:t}}),Object.defineProperties(ek,eG),Object.defineProperty(e_,"isAxiosError",{value:!0}),ek.from=(t,e,n,i,r,s)=>{let o=Object.create(e_);return eI.toFlatObject(t,o,function(t){return t!==Error.prototype},t=>"isAxiosError"!==t),ek.call(o,t.message,e,n,i,r),o.cause=t,o.name=t.name,s&&Object.assign(o,s),o};let ej=eI.toFlatObject(eI,{},null,function(t){return/^is[A-Z]/.test(t)}),eq=function(t,e,n){if(!eI.isObject(t))throw TypeError("target must be an object");e=e||new FormData;let i=(n=eI.
+
+  [axios]
+  turn eI.forEach(this,(n,i)=>{null!=n&&!1!==n&&(e[i]=t&&eI.isArray(n)?n.join(", "):n)}),e}[Symbol.iterator](){return Object.entries(this.toJSON())[Symbol.iterator]()}toString(){return Object.entries(this.toJSON()).map(([t,e])=>t+": "+e).join("\n")}get[Symbol.toStringTag](){return"AxiosHeaders"}static from(t){return t instanceof this?t:new this(t)}static concat(t,...e){let n=new this(t);return e.forEach(t=>n.set(t)),n}static accessor(t){let e=(this[e4]=this[e4]={accessors:{}}).accessors,n=this.prototype;function i(t){let i=e3(t);e[i]||(function(t,e){let n=
+
+  [axios]
+  esponse.headers=e7.from(e.response.headers))),Promise.reject(e)})}let nO={};["object","boolean","number","function","string","symbol"].forEach((t,e)=>{nO[t]=function(n){return typeof n===t||"a"+(e<1?"n ":" ")+t}});let nL={};nO.transitional=function(t,e,n){function i(t,e){return"[Axios v1.7.7] Transitional option '"+t+"'"+e+(n?". "+n:"")}return(n,r,s)=>{if(!1===t)throw new ek(i(r," has been removed"+(e?" in "+e:"")),ek.ERR_DEPRECATED);return e&&!nL[r]&&(nL[r]=!0,console.warn(i(r," has been deprecated since v"+e+" and will be removed in the near future")))
+
+  [axios]
+  rkAuthenticationRequired:511};Object.entries(nG).forEach(([t,e])=>{nG[e]=t});let nx=function t(e){let n=new nk(e),i=t4(nk.prototype.request,n);return eI.extend(i,nk.prototype,n,{allOwnKeys:!0}),eI.extend(i,n,null,{allOwnKeys:!0}),i.create=function(n){return t(nh(e,n))},i}(e1);nx.Axios=nk,nx.CanceledError=nt,nx.CancelToken=n_,nx.isCancel=e9,nx.VERSION="1.7.7",nx.toFormData=eq,nx.AxiosError=ek,nx.Cancel=nx.CanceledError,nx.all=function(t){return Promise.all(t)},nx.spread=function(t){return function(e){return t.apply(null,e)}},nx.isAxiosError=function(t){re
+
+  [axios]
+   n=new nk(e),i=t4(nk.prototype.request,n);return eI.extend(i,nk.prototype,n,{allOwnKeys:!0}),eI.extend(i,n,null,{allOwnKeys:!0}),i.create=function(n){return t(nh(e,n))},i}(e1);nx.Axios=nk,nx.CanceledError=nt,nx.CancelToken=n_,nx.isCancel=e9,nx.VERSION="1.7.7",nx.toFormData=eq,nx.AxiosError=ek,nx.Cancel=nx.CanceledError,nx.all=function(t){return Promise.all(t)},nx.spread=function(t){return function(e){return t.apply(null,e)}},nx.isAxiosError=function(t){return eI.isObject(t)&&!0===t.isAxiosError},nx.mergeConfig=nh,nx.AxiosHeaders=e7,nx.formToJSON=t=>e0(eI
+
+  [axios]
+  rn t(nh(e,n))},i}(e1);nx.Axios=nk,nx.CanceledError=nt,nx.CancelToken=n_,nx.isCancel=e9,nx.VERSION="1.7.7",nx.toFormData=eq,nx.AxiosError=ek,nx.Cancel=nx.CanceledError,nx.all=function(t){return Promise.all(t)},nx.spread=function(t){return function(e){return t.apply(null,e)}},nx.isAxiosError=function(t){return eI.isObject(t)&&!0===t.isAxiosError},nx.mergeConfig=nh,nx.AxiosHeaders=e7,nx.formToJSON=t=>e0(eI.isHTMLForm(t)?new FormData(t):t),nx.getAdapter=nP,nx.HttpStatusCode=nG,nx.default=nx;var nN=function(t,e){return(nN=Object.setPrototypeOf||({__proto__:[]
+
+  [axios]
+  x.CancelToken=n_,nx.isCancel=e9,nx.VERSION="1.7.7",nx.toFormData=eq,nx.AxiosError=ek,nx.Cancel=nx.CanceledError,nx.all=function(t){return Promise.all(t)},nx.spread=function(t){return function(e){return t.apply(null,e)}},nx.isAxiosError=function(t){return eI.isObject(t)&&!0===t.isAxiosError},nx.mergeConfig=nh,nx.AxiosHeaders=e7,nx.formToJSON=t=>e0(eI.isHTMLForm(t)?new FormData(t):t),nx.getAdapter=nP,nx.HttpStatusCode=nG,nx.default=nx;var nN=function(t,e){return(nN=Object.setPrototypeOf||({__proto__:[]})instanceof Array&&function(t,e){t.__proto__=e}||funct
+
+  [axios]
+  x.VERSION="1.7.7",nx.toFormData=eq,nx.AxiosError=ek,nx.Cancel=nx.CanceledError,nx.all=function(t){return Promise.all(t)},nx.spread=function(t){return function(e){return t.apply(null,e)}},nx.isAxiosError=function(t){return eI.isObject(t)&&!0===t.isAxiosError},nx.mergeConfig=nh,nx.AxiosHeaders=e7,nx.formToJSON=t=>e0(eI.isHTMLForm(t)?new FormData(t):t),nx.getAdapter=nP,nx.HttpStatusCode=nG,nx.default=nx;var nN=function(t,e){return(nN=Object.setPrototypeOf||({__proto__:[]})instanceof Array&&function(t,e){t.__proto__=e}||function(t,e){for(var n in e)e.hasOwnP
+
+  [axios]
+  t(e)))};for(var s in i)r(s);delete e.filters}for(var s in e){var o=e[s];o&&n.push("".concat(s,"=").concat(encodeURIComponent(o)))}return n.length?"".concat(n.join("&")):""}},nH=new(function(){function t(){if(void 0===nx)throw Error("Ordercloud is missing required peer dependency axios. This must be installed and loaded before the OrderCloud SDK");this.Anonymous=this.Anonymous.bind(this),this.ClientCredentials=this.ClientCredentials.bind(this),this.ElevatedLogin=this.ElevatedLogin.bind(this),this.Login=this.Login.bind(this),this.RefreshToken=this.RefreshT
+
+  [axios]
+  in(" ")," ").concat(r.join(" "))),a={grant_type:"password",username:t,password:e,client_id:n,scope:o},c=nF.Get(),[4,nx.post("".concat(c.baseApiUrl,"/oauth/token"),nQ.serialize(a),nU({headers:{"Content-Type":"application/x-www-form-urlencoded",Accept:"application/json"},adapter:c.axiosAdapter},s)).catch(function(t){if(t.response)throw new nB(t);throw t})];case 1:return[2,h.sent().data]}})})},t.prototype.ElevatedLogin=function(t,e,n,i,r,s,o){return void 0===o&&(o={}),nj(this,void 0,void 0,function(){var a,c,h;return nq(this,function(u){switch(u.label){case
+
+  [axios]
+  cat(s.join(" "))),c={grant_type:"password",scope:a,client_id:i,username:e,password:n,client_secret:t},h=nF.Get(),[4,nx.post("".concat(h.baseApiUrl,"/oauth/token"),nQ.serialize(c),nU({headers:{"Content-Type":"application/x-www-form-urlencoded",Accept:"application/json"},adapter:h.axiosAdapter},o)).catch(function(t){if(t.response)throw new nB(t);throw t})];case 1:return[2,u.sent().data]}})})},t.prototype.ClientCredentials=function(t,e,n,i,r){return void 0===r&&(r={}),nj(this,void 0,void 0,function(){var s,o,a;return nq(this,function(c){switch(c.label){case
+
+  [axios]
+   ")," ").concat(i.join(" "))),o={grant_type:"client_credentials",scope:s,client_id:e,client_secret:t},a=nF.Get(),[4,nx.post("".concat(a.baseApiUrl,"/oauth/token"),nQ.serialize(o),nU({headers:{"Content-Type":"application/x-www-form-urlencoded",Accept:"application/json"},adapter:a.axiosAdapter},r)).catch(function(t){if(t.response)throw new nB(t);throw t})];case 1:return[2,c.sent().data]}})})},t.prototype.RefreshToken=function(t,e,n){return void 0===n&&(n={}),nj(this,void 0,void 0,function(){var i,r;return nq(this,function(s){switch(s.label){case 0:return i
+
+  [axios]
+  ,function(s){switch(s.label){case 0:return i={grant_type:"refresh_token",client_id:e,refresh_token:t},r=nF.Get(),[4,nx.post("".concat(r.baseApiUrl,"/oauth/token"),nQ.serialize(i),nU({headers:{"Content-Type":"application/x-www-form-urlencoded",Accept:"application/json"},adapter:r.axiosAdapter},n)).catch(function(t){if(t.response)throw new nB(t);throw t})];case 1:return[2,s.sent().data]}})})},t.prototype.Anonymous=function(t,e,n,i){return void 0===i&&(i={}),nj(this,void 0,void 0,function(){var r,s,o;return nq(this,function(a){switch(a.label){case 0:if(e&&!
+
+  [axios]
+  lient_credentials",client_id:t,scope:r},i.anonuserid&&(s.anonuserid=i.anonuserid,delete i.anonuserid),o=nF.Get(),[4,nx.post("".concat(o.baseApiUrl,"/oauth/token"),nQ.serialize(s),nU({headers:{"Content-Type":"application/x-www-form-urlencoded",Accept:"application/json"},adapter:o.axiosAdapter},i)).catch(function(t){if(t.response)throw new nB(t);throw t})];case 1:return[2,a.sent().data]}})})},t}()),nW=Function("try {return this===global;}catch(e){return false;}"),nJ=new(function(){function t(){this.accessTokenCookieName=".access-token",this.impersonationTo
+
+  [axios]
+  n)];case 1:return[2,t.sent()]}})})},this.delete=function(e,n){return nj(t,void 0,void 0,function(){return nq(this,function(t){switch(t.label){case 0:return[4,this.makeApiCall("delete",e,n)];case 1:return[2,t.sent()]}})})},void 0===nx)throw Error("Missing required peer dependency axios. This must be installed and loaded before the OrderCloud SDK");this.get=this.get.bind(this),this.put=this.put.bind(this),this.post=this.post.bind(this),this.patch=this.patch.bind(this),this.delete=this.delete.bind(this),this._resolveToken=this._resolveToken.bind(this),this.
+
+  [axios]
+  solveToken=function(t){var e;return e=t.accessToken?t.accessToken:t.impersonating?nJ.GetImpersonationToken():nJ.GetAccessToken(),delete t.accessToken,delete t.impersonating,e},t.prototype._buildRequestConfig=function(t){var e=nF.Get(),n=nU(nU({},t),{paramsSerializer:nQ,adapter:e.axiosAdapter,timeout:e.timeoutInMilliseconds,headers:{"Content-Type":"application/json"}});return this._addTokenToConfig(n)},t}());new(function(){function t(){this.impersonating=!1,this.List=this.List.bind(this),this.Create=this.Create.bind(this),this.Get=this.Get.bind(this),this
+
+  [fetch(]
+  ,i.body){let[t,n]=ni(e,nn(nr(h)));r=nf(i.body,65536,t,n)}}eI.isString(d)||(d=d?"include":"omit");let s="credentials"in Request.prototype;f=new Request(n,{...l,signal:m,method:i.toUpperCase(),headers:p.normalize().toJSON(),body:r,duplex:"half",credentials:s?d:void 0});let o=await fetch(f),a=nb&&("stream"===u||"response"===u);if(nb&&(c||a&&g)){let t={};["status","statusText","headers"].forEach(e=>{t[e]=o[e]});let e=eI.toFiniteNumber(o.headers.get("content-length")),[n,i]=c&&ni(e,nn(nr(c),!0))||[];o=new Response(nf(o.body,65536,n,()=>{i&&i(),g&&g()}),t)}u=u
+
+  [fetch(]
+  is.cache[t]=e}delete(t){delete this.cache[t]}all(){return this.cache}clear(){this.cache={},window.RFK_CACHE[this.name]=this.cache}getName(){return this.name}}("api-adapter"),nZ={cache:!0};class n0{static async trackEvent(t){let e=n7(t),{eventUrl:n,apiKey:i}=tQ();try{return(await fetch(n,{method:"POST",headers:{"Content-Type":"application/json",Authorization:i},body:JSON.stringify(e)})).json()}catch(t){return tx.error(t),tx.error("There was a problem on the service call"),t.message||null}}static async callApiWithoutCache(t,e){try{let n=await fetch(t,e),i=
+
+  [fetch(]
+  return(await fetch(n,{method:"POST",headers:{"Content-Type":"application/json",Authorization:i},body:JSON.stringify(e)})).json()}catch(t){return tx.error(t),tx.error("There was a problem on the service call"),t.message||null}}static async callApiWithoutCache(t,e){try{let n=await fetch(t,e),i=await n.json();return Promise.resolve(i)}catch(t){return tx.error(t),tx.error("There was a problem on the service call"),t.message||null}}static async callApiWithCache(t,e){let n=nX.createKey(e);if(nX.has(n))return nX.get(n);let i=await n0.callApiWithoutCache(t,e);re
+
+  [fetch(]
+  dated||!this.state.dataUpdatedAt||this.observers.some(t=>t.getCurrentResult().isStale)}isStaleByTime(t=0){return this.state.isInvalidated||!this.state.dataUpdatedAt||!ib(this.state.dataUpdatedAt,t)}onFocus(){var t;let e=this.observers.find(t=>t.shouldFetchOnWindowFocus());e&&e.refetch({cancelRefetch:!1}),null==(t=this.retryer)||t.continue()}onOnline(){var t;let e=this.observers.find(t=>t.shouldFetchOnReconnect());e&&e.refetch({cancelRefetch:!1}),null==(t=this.retryer)||t.continue()}addObserver(t){this.observers.includes(t)||(this.observers.push(t),this.c
+
+  [fetch(]
+  .state.dataUpdatedAt||!ib(this.state.dataUpdatedAt,t)}onFocus(){var t;let e=this.observers.find(t=>t.shouldFetchOnWindowFocus());e&&e.refetch({cancelRefetch:!1}),null==(t=this.retryer)||t.continue()}onOnline(){var t;let e=this.observers.find(t=>t.shouldFetchOnReconnect());e&&e.refetch({cancelRefetch:!1}),null==(t=this.retryer)||t.continue()}addObserver(t){this.observers.includes(t)||(this.observers.push(t),this.clearGcTimeout(),this.cache.notify({type:"observerAdded",query:this,observer:t}))}removeObserver(t){this.observers.includes(t)&&(this.observers=t
+
+  [fetch(]
+  lConsumed?this.retryer.cancel({revert:!0}):this.retryer.cancelRetry()),this.scheduleGc()),this.cache.notify({type:"observerRemoved",query:this,observer:t}))}getObserversCount(){return this.observers.length}invalidate(){this.state.isInvalidated||this.dispatch({type:"invalidate"})}fetch(t,e){var n,i,r,s;if("idle"!==this.state.fetchStatus){if(this.state.dataUpdatedAt&&null!=e&&e.cancelRefetch)this.cancel({silent:!0});else if(this.promise)return null==(r=this.retryer)||r.continueRetry(),this.promise}if(t&&this.setOptions(t),!this.options.queryFn){let t=this.
+
+  [fetch(]
+  tchOptions:e,options:this.options,queryKey:this.queryKey,state:this.state,fetchFn:()=>this.options.queryFn?(this.abortSignalConsumed=!1,this.options.queryFn(a)):Promise.reject("Missing queryFn for queryKey '"+this.options.queryHash+"'")};c(h),null==(n=this.options.behavior)||n.onFetch(h),this.revertState=this.state,("idle"===this.state.fetchStatus||this.state.fetchMeta!==(null==(i=h.fetchOptions)?void 0:i.meta))&&this.dispatch({type:"fetch",meta:null==(s=h.fetchOptions)?void 0:s.meta});let u=t=>{var e,n,i,r;iQ(t)&&t.silent||this.dispatch({type:"error",er
+
+  [fetch(]
+  ype)return Promise.resolve();let n={...i,type:null!=(t=null!=(e=i.refetchType)?e:i.type)?t:"active"};return this.refetchQueries(n,r)})}refetchQueries(t,e,n){let[i,r]=iC(t,e,n),s=Promise.all(iU.batch(()=>this.queryCache.findAll(i).filter(t=>!t.isDisabled()).map(t=>{var e;return t.fetch(void 0,{...r,cancelRefetch:null==(e=null==r?void 0:r.cancelRefetch)||e,meta:{refetchPage:i.refetchPage}})}))).then(iw);return null!=r&&r.throwOnError||(s=s.catch(iw)),s}fetchQuery(t,e,n){let i=iS(t,e,n),r=this.defaultQueryOptions(i);void 0===r.retry&&(r.retry=!1);let s=this
+
+  [fetch(]
+  lRefetch)||e,meta:{refetchPage:i.refetchPage}})}))).then(iw);return null!=r&&r.throwOnError||(s=s.catch(iw)),s}fetchQuery(t,e,n){let i=iS(t,e,n),r=this.defaultQueryOptions(i);void 0===r.retry&&(r.retry=!1);let s=this.queryCache.build(this,r);return s.isStaleByTime(r.staleTime)?s.fetch(r):Promise.resolve(s.state.data)}prefetchQuery(t,e,n){return this.fetchQuery(t,e,n).then(iw).catch(iw)}fetchInfiniteQuery(t,e,n){let i=iS(t,e,n);return i.behavior={onFetch:t=>{t.fetchFn=()=>{var e,n,i,r,s,o,a;let c;let h=null==(e=t.fetchOptions)||null==(n=e.meta)?void 0:n.r
+
+  [fetch(]
+  s=new Set,this.selectError=null,this.bindMethods(),this.setOptions(e)}bindMethods(){this.remove=this.remove.bind(this),this.refetch=this.refetch.bind(this)}onSubscribe(){1===this.listeners.size&&(this.currentQuery.addObserver(this),rp(this.currentQuery,this.options)&&this.executeFetch(),this.updateTimers())}onUnsubscribe(){this.hasListeners()||this.destroy()}shouldFetchOnReconnect(){return rd(this.currentQuery,this.options,this.options.refetchOnReconnect)}shouldFetchOnWindowFocus(){return rd(this.currentQuery,this.options,this.options.refetchOnWindowFocu
+
+  [fetch(]
+  s}),void 0!==this.options.enabled&&"boolean"!=typeof this.options.enabled)throw Error("Expected enabled to be a boolean");this.options.queryKey||(this.options.queryKey=n.queryKey),this.updateQuery();let r=this.hasListeners();r&&rl(this.currentQuery,i,this.options,n)&&this.executeFetch(),this.updateResult(e),r&&(this.currentQuery!==i||this.options.enabled!==n.enabled||this.options.staleTime!==n.staleTime)&&this.updateStaleTimeout();let s=this.computeRefetchInterval();r&&(this.currentQuery!==i||this.options.enabled!==n.enabled||s!==this.currentRefetchInter
+
+  [fetch(]
+  rentResult}trackResult(t){let e={};return Object.keys(t).forEach(n=>{Object.defineProperty(e,n,{configurable:!1,enumerable:!0,get:()=>(this.trackedProps.add(n),t[n])})}),e}getCurrentQuery(){return this.currentQuery}remove(){this.client.getQueryCache().remove(this.currentQuery)}refetch({refetchPage:t,...e}={}){return this.fetch({...e,meta:{refetchPage:t}})}fetchOptimistic(t){let e=this.client.defaultQueryOptions(t),n=this.client.getQueryCache().build(this.client,e);return n.isFetchingOptimistic=!0,n.fetch().then(()=>this.createResult(n,e))}fetch(t){var e;
+
+  [fetch(]
+  bject.keys(t).forEach(n=>{Object.defineProperty(e,n,{configurable:!1,enumerable:!0,get:()=>(this.trackedProps.add(n),t[n])})}),e}getCurrentQuery(){return this.currentQuery}remove(){this.client.getQueryCache().remove(this.currentQuery)}refetch({refetchPage:t,...e}={}){return this.fetch({...e,meta:{refetchPage:t}})}fetchOptimistic(t){let e=this.client.defaultQueryOptions(t),n=this.client.getQueryCache().build(this.client,e);return n.isFetchingOptimistic=!0,n.fetch().then(()=>this.createResult(n,e))}fetch(t){var e;return this.executeFetch({...t,cancelRefetc
+
+  [fetch(]
+  this.client.getQueryCache().remove(this.currentQuery)}refetch({refetchPage:t,...e}={}){return this.fetch({...e,meta:{refetchPage:t}})}fetchOptimistic(t){let e=this.client.defaultQueryOptions(t),n=this.client.getQueryCache().build(this.client,e);return n.isFetchingOptimistic=!0,n.fetch().then(()=>this.createResult(n,e))}fetch(t){var e;return this.executeFetch({...t,cancelRefetch:null==(e=t.cancelRefetch)||e}).then(()=>(this.updateResult(),this.currentResult))}executeFetch(t){this.updateQuery();let e=this.currentQuery.fetch(this.options,t);return null!=t&&
+
+  [fetch(]
+  urrentQuery)}refetch({refetchPage:t,...e}={}){return this.fetch({...e,meta:{refetchPage:t}})}fetchOptimistic(t){let e=this.client.defaultQueryOptions(t),n=this.client.getQueryCache().build(this.client,e);return n.isFetchingOptimistic=!0,n.fetch().then(()=>this.createResult(n,e))}fetch(t){var e;return this.executeFetch({...t,cancelRefetch:null==(e=t.cancelRefetch)||e}).then(()=>(this.updateResult(),this.currentResult))}executeFetch(t){this.updateQuery();let e=this.currentQuery.fetch(this.options,t);return null!=t&&t.throwOnError||(e=e.catch(iw)),e}updateS
+
+  [fetch(]
+  t,...e}={}){return this.fetch({...e,meta:{refetchPage:t}})}fetchOptimistic(t){let e=this.client.defaultQueryOptions(t),n=this.client.getQueryCache().build(this.client,e);return n.isFetchingOptimistic=!0,n.fetch().then(()=>this.createResult(n,e))}fetch(t){var e;return this.executeFetch({...t,cancelRefetch:null==(e=t.cancelRefetch)||e}).then(()=>(this.updateResult(),this.currentResult))}executeFetch(t){this.updateQuery();let e=this.currentQuery.fetch(this.options,t);return null!=t&&t.throwOnError||(e=e.catch(iw)),e}updateStaleTimeout(){if(this.clearStaleTi
+
+  [fetch(]
+  (t),n=this.client.getQueryCache().build(this.client,e);return n.isFetchingOptimistic=!0,n.fetch().then(()=>this.createResult(n,e))}fetch(t){var e;return this.executeFetch({...t,cancelRefetch:null==(e=t.cancelRefetch)||e}).then(()=>(this.updateResult(),this.currentResult))}executeFetch(t){this.updateQuery();let e=this.currentQuery.fetch(this.options,t);return null!=t&&t.throwOnError||(e=e.catch(iw)),e}updateStaleTimeout(){if(this.clearStaleTimeout(),iv||this.currentResult.isStale||!iy(this.options.staleTime))return;let t=ib(this.currentResult.dataUpdatedA
+
+  [fetch(]
+  e);return n.isFetchingOptimistic=!0,n.fetch().then(()=>this.createResult(n,e))}fetch(t){var e;return this.executeFetch({...t,cancelRefetch:null==(e=t.cancelRefetch)||e}).then(()=>(this.updateResult(),this.currentResult))}executeFetch(t){this.updateQuery();let e=this.currentQuery.fetch(this.options,t);return null!=t&&t.throwOnError||(e=e.catch(iw)),e}updateStaleTimeout(){if(this.clearStaleTimeout(),iv||this.currentResult.isStale||!iy(this.options.staleTime))return;let t=ib(this.currentResult.dataUpdatedAt,this.options.staleTime)+1;this.staleTimeoutId=setT
+
+----------------------------------------------------------------------
+Document: 013_cb416139-34637b4976c7a37d.js
+Kind: javascript
+URL: https://dxp-assets.racing.com/_next/static/chunks/cb416139-34637b4976c7a37d.js
+
+KEYWORD CONTEXT:
+  [fetch(]
+  overy-code"],ev=(e,t)=>new Promise(function(n,r){let o=new MessageChannel;o.port1.onmessage=function(e){e.data.error?r(Error(e.data.error)):n(e.data),o.port1.close()},t.postMessage(e,[o.port2])}),eb=(e,t,n)=>{let r;let o=new AbortController;return t.signal=o.signal,Promise.race([fetch(e,t),new Promise((e,t)=>{r=setTimeout(()=>{o.abort(),t(Error("Timeout when executing 'fetch'"))},n)})]).finally(()=>{clearTimeout(r)})},ek=async function(e,t,n,r,o,i){let a=arguments.length>6&&void 0!==arguments[6]?arguments[6]:1e4;return o?(async(e,t,n,r,o,i,a,s)=>ev({type
+
+  [fetch(]
+  ;if(n&&await this.hooks.setDpopNonce(n),!this.hasUseDpopNonceError(e))return e;if(!n||!t.onUseDpopNonceError)throw new W(n);return t.onUseDpopNonceError()}async internalFetchWithAuth(e,t,n,r){let o=this.buildBaseRequest(e,t);await this.prepareRequest(o,r);let i=await this.config.fetch(o);return this.handleResponse(i,n)}fetchWithAuth(e,t,n){let r={onUseDpopNonceError:()=>this.internalFetchWithAuth(e,t,Object.assign(Object.assign({},r),{onUseDpopNonceError:void 0}),n)};return this.internalFetchWithAuth(e,t,r,n)}}class e4{constructor(e,t){this.myAccountFetc
+
+  [fetch(]
+  d 0:t[r4],r=tn(oe,this),"object"==typeof n&&null!==n&&"uat"in n&&"number"==typeof n.uat&&!(Date.now()-n.uat>=r)&&"jwks"in n&&n9(n.jwks)&&Array.isArray(n.jwks.keys)&&Array.prototype.every.call(n.jwks.keys,n9)&&(to(ot,this,tn(oa,this).uat),to(oi,this,r3(tn(oa,this).jwks))))}pendingFetch(){return!!tn(on,this)}coolingDown(){return"number"==typeof tn(ot,this)&&Date.now()<tn(ot,this)+tn(r7,this)}fresh(){return"number"==typeof tn(ot,this)&&Date.now()<tn(ot,this)+tn(oe,this)}jwks(){var e;return null===(e=tn(oi,this))||void 0===e?void 0:e.jwks()}async getKey(e,t)
+
+  [fetch(]
+  ype:e.type}}var oX=(ou=new WeakMap,od=new WeakMap,oh=new WeakMap,class{constructor(e){var t;tr(this,ou,void 0),tr(this,od,void 0),tr(this,oh,void 0),to(ou,this,"https://".concat(e.domain)),to(od,this,e.clientId),to(oh,this,null!==(t=e.customFetch)&&void 0!==t?t:function(){return fetch(...arguments)})}async listAuthenticators(e){let t="".concat(tn(ou,this),"/mfa/authenticators"),{mfaToken:n}=e,r=await tn(oh,this).call(this,t,{method:"GET",headers:{Authorization:"Bearer ".concat(n),"Content-Type":"application/json"}});if(!r.ok){let e=await r.json();throw n
+
+  [fetch(]
+  ));return async(t,r)=>{let o=t instanceof Request?new Headers(t.headers):new Headers;return null!=r&&r.headers&&new Headers(r.headers).forEach((e,t)=>{o.set(t,e)}),o.set("Auth0-Client",n),e(t,ts(ts({},r),{},{headers:o}))}}(null!==(t=e.customFetch)&&void 0!==t?t:function(){return fetch(...arguments)},!1===(null==(n=e.telemetry)?void 0:n.enabled)?n:{enabled:!0,name:null!==(r=null==n?void 0:n.name)&&void 0!==r?r:"@auth0/auth0-auth-js",version:null!==(o=null==n?void 0:n.version)&&void 0!==o?o:"1.6.0"}));let i=oq(e.discoveryCache);to(o_,this,oQ.createDiscover
+
+  [fetch(]
+  c(e,t)=>n.getKey(e,t);return Object.defineProperties(r,{coolingDown:{get:()=>n.coolingDown(),enumerable:!0,configurable:!1},fresh:{get:()=>n.fresh(),enumerable:!0,configurable:!1},reload:{value:()=>n.reload(),enumerable:!0,configurable:!1,writable:!1},reloading:{get:()=>n.pendingFetch(),enumerable:!0,configurable:!1},jwks:{value:()=>n.jwks(),enumerable:!0,configurable:!1,writable:!1}}),r}(new URL(r),{cacheMaxAge:n.ttlMs,[r9]:tn(ob,this),[r4]:tn(oT,this)}));let{payload:o}=await rZ(e.logoutToken,tn(ok,this),{issuer:t.issuer,audience:tn(ov,this).clientId,al
+
+  [websocket]
+  wks()}async getKey(e,t){tn(oi,this)&&this.fresh()||await this.reload();try{return await tn(oi,this).call(this,e,t)}catch(n){if(n instanceof nq&&!1===this.coolingDown())return await this.reload(),tn(oi,this).call(this,e,t);throw n}}async reload(){tn(on,this)&&("undefined"!=typeof WebSocketPair||"undefined"!=typeof navigator&&"Cloudflare-Workers"===navigator.userAgent||"undefined"!=typeof EdgeRuntime&&"vercel"===EdgeRuntime)&&to(on,this,void 0),tn(on,this)||to(on,this,(async function(e,t,n){let r=arguments.length>3&&void 0!==arguments[3]?arguments[3]:fetch
+
+----------------------------------------------------------------------
+Document: 015_629-977d38476d09441b.js
+Kind: javascript
+URL: https://dxp-assets.racing.com/_next/static/chunks/629-977d38476d09441b.js
+
+LIKELY URLS:
+  /api/graphql/v1?sitecoreContextId=${e}`,t.getEdgeProxyFormsUrl=(e,t,r=n.SITECORE_EDGE_URL_DEFAULT)=
+  /api/layout/${e}/${r}`}setupReqHeaders(e){let
+  https://components.sitecorecloud.io/api
+  https://nextjs.org/docs/app/api-reference/functions/use-search-params#updating-searchparams
+  https://nextjs.org/docs/messages/next-dynamic-api-wrong-context
+
+KEYWORD CONTEXT:
+  [weather]
+  445.445 0 0 0-.629.628l2.667 2.667a.444.444 0 0 0 .628 0l2.667-2.667a.444.444 0 0 0-.629-.628l-1.908 1.908zm-3.11-2.222v-.888H1.516l1.908-1.908a.444.444 0 1 0-.628-.629L.13 7.686a.444.444 0 0 0 0 .628l2.667 2.667a.444.444 0 1 0 .628-.629L1.517 8.444z",clipRule:"evenodd"})))},raceWeatherIcon1:function(e){return tW.createElement("svg",nb({xmlns:"http://www.w3.org/2000/svg",width:"1em",height:"1em",fill:"none",viewBox:"0 0 16 16"},e),tA||(tA=tW.createElement("g",{fill:"#000",fillOpacity:.5,clipPath:"url(#sunny_svg__a)"},tW.createElement("path",{d:"M3.285 4.
+
+  [weather]
+  .673M3.285 11.753l-.945.945a.676.676 0 0 0 0 .945.676.676 0 0 0 .945 0l.945-.945a.676.676 0 0 0 0-.945.676.676 0 0 0-.945 0"}))),tR||(tR=tW.createElement("defs",null,tW.createElement("clipPath",{id:"sunny_svg__a"},tW.createElement("path",{fill:"#fff",d:"M0 0h16v16H0z"})))))},raceWeatherIcon2:function(e){return tW.createElement("svg",nw({xmlns:"http://www.w3.org/2000/svg",width:"1em",height:"1em",fill:"none",viewBox:"0 0 16 16"},e),tF||(tF=tW.createElement("g",{clipPath:"url(#night2_svg__a)"},tW.createElement("path",{fill:"#000",fillOpacity:.5,d:"M12.484 
+
+  [weather]
+  5-6.544 4.09-7.469a6.2 6.2 0 0 1 1.69-.235c1.512 0 2.909.55 3.989 1.513a5.8 5.8 0 0 0-2.162.235A6.11 6.11 0 0 0 6.41 6.934"}))),tz||(tz=tW.createElement("defs",null,tW.createElement("clipPath",{id:"night2_svg__a"},tW.createElement("path",{fill:"#fff",d:"M0 0h16v16H0z"})))))},raceWeatherIcon3:function(e){return tW.createElement("svg",nE({xmlns:"http://www.w3.org/2000/svg",width:"1em",height:"1em",fill:"none",viewBox:"0 0 16 16"},e),t$||(t$=tW.createElement("path",{fill:"#000",fillOpacity:.5,d:"M4.712 4.425a.6.6 0 0 0 .84 0 .6.6 0 0 0 0-.84l-.84-.84a.6.6 0
+
+  [weather]
+  381 1.31 0 2.363 1.026 2.363 2.336s-1.053 2.335-2.363 2.335M15.402 7.212h-1.181c-.328 0-.598.293-.598.62s.27.62.598.62h1.181c.328 0 .584-.293.598-.62 0-.327-.27-.62-.598-.62M13.922 2.745a.6.6 0 0 0-.84 0l-.84.84a.6.6 0 0 0 0 .84.6.6 0 0 0 .84 0l.84-.84a.6.6 0 0 0 0-.84"})))},raceWeatherIcon4:function(e){return tW.createElement("svg",nS({xmlns:"http://www.w3.org/2000/svg",width:"1em",height:"1em",fill:"none",viewBox:"0 0 16 16"},e),tB||(tB=tW.createElement("path",{fill:"#000",fillOpacity:.5,d:"M11.628 4.907c-.261 0-.505.036-.73.07A5.82 5.82 0 0 0 5.814 2C
+
+  [weather]
+  .907 4.338c0 1.602-1.305 2.859-2.907 2.859l-5.734.082c-1.263 0-2.316-.419-2.947-1.097v-.017c-.842-.8-1.484-1.949-1.484-3.256 0-2.42 1.939-4.37 4.36-4.37a4.36 4.36 0 0 1 4.243 3.379c.453-.297.99-.453 1.58-.453a2.906 2.906 0 0 1 2.889 2.577h-.017c.017 0 .017.176.017.298z"})))},raceWeatherIcon6:nx,raceWeatherIcon8:function(e){return tW.createElement("svg",nO({xmlns:"http://www.w3.org/2000/svg",width:"1em",height:"1em",fill:"none",viewBox:"0 0 16 16"},e),t||(t=tW.createElement("g",{fill:"#000",fillOpacity:.5,clipPath:"url(#sun-fewshowers_svg__a)"},tW.createE
+
+  [weather]
+  .305 2.859-2.907 2.859l-5.734.082c-1.263 0-2.316-.419-2.947-1.097v-.017c-.842-.8-1.484-1.949-1.484-3.256 0-2.42 1.939-4.37 4.36-4.37a4.36 4.36 0 0 1 4.243 3.379c.453-.297.99-.453 1.58-.453a2.906 2.906 0 0 1 2.889 2.577h-.017c.017 0 .017.176.017.298z"})))},raceWeatherIcon6:nx,raceWeatherIcon8:function(e){return tW.createElement("svg",nO({xmlns:"http://www.w3.org/2000/svg",width:"1em",height:"1em",fill:"none",viewBox:"0 0 16 16"},e),t||(t=tW.createElement("g",{fill:"#000",fillOpacity:.5,clipPath:"url(#sun-fewshowers_svg__a)"},tW.createElement("path",{d:"M4
+
+  [weather]
+  59.026-.538.05a4.3 4.3 0 0 0-1.5-1.563 2.14 2.14 0 0 1 1.511-.627c1.179 0 2.142.96 2.129 2.14 0 .14-.014.282-.038.41"}))),r||(r=tW.createElement("defs",null,tW.createElement("clipPath",{id:"sun-fewshowers_svg__a"},tW.createElement("path",{fill:"#fff",d:"M0 0h16v16H0z"})))))},raceWeatherIcon9:nC,raceWeatherIcon10:nx,raceWeatherIcon11:nM,raceWeatherIcon12:nL,raceWeatherIcon13:nC,raceWeatherIcon14:function(e){return tW.createElement("svg",nN({xmlns:"http://www.w3.org/2000/svg",width:"1em",height:"1em",fill:"none",viewBox:"0 0 16 16"},e),c||(c=tW.createEleme
+
+  [weather]
+  .3 0 0 0-1.5-1.563 2.14 2.14 0 0 1 1.511-.627c1.179 0 2.142.96 2.129 2.14 0 .14-.014.282-.038.41"}))),r||(r=tW.createElement("defs",null,tW.createElement("clipPath",{id:"sun-fewshowers_svg__a"},tW.createElement("path",{fill:"#fff",d:"M0 0h16v16H0z"})))))},raceWeatherIcon9:nC,raceWeatherIcon10:nx,raceWeatherIcon11:nM,raceWeatherIcon12:nL,raceWeatherIcon13:nC,raceWeatherIcon14:function(e){return tW.createElement("svg",nN({xmlns:"http://www.w3.org/2000/svg",width:"1em",height:"1em",fill:"none",viewBox:"0 0 16 16"},e),c||(c=tW.createElement("path",{fill:"#00
+
+  [weather]
+  14 2.14 0 0 1 1.511-.627c1.179 0 2.142.96 2.129 2.14 0 .14-.014.282-.038.41"}))),r||(r=tW.createElement("defs",null,tW.createElement("clipPath",{id:"sun-fewshowers_svg__a"},tW.createElement("path",{fill:"#fff",d:"M0 0h16v16H0z"})))))},raceWeatherIcon9:nC,raceWeatherIcon10:nx,raceWeatherIcon11:nM,raceWeatherIcon12:nL,raceWeatherIcon13:nC,raceWeatherIcon14:function(e){return tW.createElement("svg",nN({xmlns:"http://www.w3.org/2000/svg",width:"1em",height:"1em",fill:"none",viewBox:"0 0 16 16"},e),c||(c=tW.createElement("path",{fill:"#000",fillOpacity:.5,d:"
+
+  [weather]
+  627c1.179 0 2.142.96 2.129 2.14 0 .14-.014.282-.038.41"}))),r||(r=tW.createElement("defs",null,tW.createElement("clipPath",{id:"sun-fewshowers_svg__a"},tW.createElement("path",{fill:"#fff",d:"M0 0h16v16H0z"})))))},raceWeatherIcon9:nC,raceWeatherIcon10:nx,raceWeatherIcon11:nM,raceWeatherIcon12:nL,raceWeatherIcon13:nC,raceWeatherIcon14:function(e){return tW.createElement("svg",nN({xmlns:"http://www.w3.org/2000/svg",width:"1em",height:"1em",fill:"none",viewBox:"0 0 16 16"},e),c||(c=tW.createElement("path",{fill:"#000",fillOpacity:.5,d:"M1.989 6.08v-.566l.55
+
+  [weather]
+  2.129 2.14 0 .14-.014.282-.038.41"}))),r||(r=tW.createElement("defs",null,tW.createElement("clipPath",{id:"sun-fewshowers_svg__a"},tW.createElement("path",{fill:"#fff",d:"M0 0h16v16H0z"})))))},raceWeatherIcon9:nC,raceWeatherIcon10:nx,raceWeatherIcon11:nM,raceWeatherIcon12:nL,raceWeatherIcon13:nC,raceWeatherIcon14:function(e){return tW.createElement("svg",nN({xmlns:"http://www.w3.org/2000/svg",width:"1em",height:"1em",fill:"none",viewBox:"0 0 16 16"},e),c||(c=tW.createElement("path",{fill:"#000",fillOpacity:.5,d:"M1.989 6.08v-.566l.55.291c.211.13.51.049.6
+
+  [weather]
+  .282-.038.41"}))),r||(r=tW.createElement("defs",null,tW.createElement("clipPath",{id:"sun-fewshowers_svg__a"},tW.createElement("path",{fill:"#fff",d:"M0 0h16v16H0z"})))))},raceWeatherIcon9:nC,raceWeatherIcon10:nx,raceWeatherIcon11:nM,raceWeatherIcon12:nL,raceWeatherIcon13:nC,raceWeatherIcon14:function(e){return tW.createElement("svg",nN({xmlns:"http://www.w3.org/2000/svg",width:"1em",height:"1em",fill:"none",viewBox:"0 0 16 16"},e),c||(c=tW.createElement("path",{fill:"#000",fillOpacity:.5,d:"M1.989 6.08v-.566l.55.291c.211.13.51.049.64-.161a.483.483 0 0 0
+
+  [weather]
+  l-.735-.42a.68.68 0 0 0-.917.242.665.665 0 0 0 .237.906l.725.421-.729.42a.674.674 0 0 0-.243.907.69.69 0 0 0 .92.242l.742-.42v.841c0 .356.255.664.627.664.356 0 .627-.292.627-.664V6.47l.75.42c.307.178.734.081.928-.242m-1.844-.428h-.987l-.502-.835.502-.836h.987l.501.836z"})))},raceWeatherIcon15:function(e){return tW.createElement("svg",nI({xmlns:"http://www.w3.org/2000/svg",width:"1em",height:"1em",fill:"none",viewBox:"0 0 16 16"},e),d||(d=tW.createElement("g",{clipPath:"url(#snow_svg__a)"},tW.createElement("path",{fill:"#000",fillOpacity:.5,d:"M14.1 9.266
+
+  [weather]
+  .204 1.266c.95.547 2.195.229 2.742-.719a2.016 2.016 0 0 0-.71-2.734M9.292 10.68H6.27L4.745 8.062 6.27 5.445h3.022l1.525 2.617z"}))),u||(u=tW.createElement("defs",null,tW.createElement("clipPath",{id:"snow_svg__a"},tW.createElement("path",{fill:"#fff",d:"M0 0h16v16H0z"})))))},raceWeatherIcon16:nj,raceWeatherIcon17:nM,raceWeatherIcon18:nL,raceWeatherIcon19:nj,muted:function(e){return tW.createElement("svg",nA({width:"1em",height:"1em",fill:"none"},e),f||(f=tW.createElement("path",{fill:"#fff",fillRule:"evenodd",d:"M1.725 2.876C1.19 2.34 1.07 1.588 1.46 1.1
+
+  [weather]
+  195.229 2.742-.719a2.016 2.016 0 0 0-.71-2.734M9.292 10.68H6.27L4.745 8.062 6.27 5.445h3.022l1.525 2.617z"}))),u||(u=tW.createElement("defs",null,tW.createElement("clipPath",{id:"snow_svg__a"},tW.createElement("path",{fill:"#fff",d:"M0 0h16v16H0z"})))))},raceWeatherIcon16:nj,raceWeatherIcon17:nM,raceWeatherIcon18:nL,raceWeatherIcon19:nj,muted:function(e){return tW.createElement("svg",nA({width:"1em",height:"1em",fill:"none"},e),f||(f=tW.createElement("path",{fill:"#fff",fillRule:"evenodd",d:"M1.725 2.876C1.19 2.34 1.07 1.588 1.46 1.197c.363-.363 1.037-.2
+
+  [weather]
+  016 2.016 0 0 0-.71-2.734M9.292 10.68H6.27L4.745 8.062 6.27 5.445h3.022l1.525 2.617z"}))),u||(u=tW.createElement("defs",null,tW.createElement("clipPath",{id:"snow_svg__a"},tW.createElement("path",{fill:"#fff",d:"M0 0h16v16H0z"})))))},raceWeatherIcon16:nj,raceWeatherIcon17:nM,raceWeatherIcon18:nL,raceWeatherIcon19:nj,muted:function(e){return tW.createElement("svg",nA({width:"1em",height:"1em",fill:"none"},e),f||(f=tW.createElement("path",{fill:"#fff",fillRule:"evenodd",d:"M1.725 2.876C1.19 2.34 1.07 1.588 1.46 1.197c.363-.363 1.037-.286 1.562.157l.118.108
+
+  [weather]
+  .734M9.292 10.68H6.27L4.745 8.062 6.27 5.445h3.022l1.525 2.617z"}))),u||(u=tW.createElement("defs",null,tW.createElement("clipPath",{id:"snow_svg__a"},tW.createElement("path",{fill:"#fff",d:"M0 0h16v16H0z"})))))},raceWeatherIcon16:nj,raceWeatherIcon17:nM,raceWeatherIcon18:nL,raceWeatherIcon19:nj,muted:function(e){return tW.createElement("svg",nA({width:"1em",height:"1em",fill:"none"},e),f||(f=tW.createElement("path",{fill:"#fff",fillRule:"evenodd",d:"M1.725 2.876C1.19 2.34 1.07 1.588 1.46 1.197c.363-.363 1.037-.286 1.562.157l.118.108 13.61 13.612c.537.53
+
+  [trackrating]
+  m().createElement("label",{className:"participant-calendar__side-modal-race-date"},(0,T.localTimezoneDate)(null==e?void 0:e.raceDate,O)),m().createElement("h4",{className:"participant-calendar__side-modal-track"},null==e?void 0:e.track,(null==e?void 0:e.track)&&(null==e?void 0:e.trackRating)?" | ":"",null==e?void 0:e.trackRating))),m().createElement("div",{className:"participant-calendar__side-modal-content"},m().createElement("div",{className:"participant-calendar__side-modal-type"},null==e?void 0:e.groupType,(null==e?void 0:e.groupType)&&(null==e?void 
+
+  [trackrating]
+  articipant-calendar__side-modal-race-date"},(0,T.localTimezoneDate)(null==e?void 0:e.raceDate,O)),m().createElement("h4",{className:"participant-calendar__side-modal-track"},null==e?void 0:e.track,(null==e?void 0:e.track)&&(null==e?void 0:e.trackRating)?" | ":"",null==e?void 0:e.trackRating))),m().createElement("div",{className:"participant-calendar__side-modal-content"},m().createElement("div",{className:"participant-calendar__side-modal-type"},null==e?void 0:e.groupType,(null==e?void 0:e.groupType)&&(null==e?void 0:e.trackType)?" | ":"",null==e?void 0:
+
+  [graphql]
+  the value to an integer greater than or equal to 0.',i.IE_0002="[IE-0002] Timeout exceeded. The server did not respond within the allotted time."},3961:function(e,t,r){"use strict";t.mm=t.$m=void 0;var n=r(1363);Object.defineProperty(t,"$m",{enumerable:!0,get:function(){return n.GraphQLRequestClient}}),Object.defineProperty(t,"mm",{enumerable:!0,get:function(){return n.getEdgeProxyContentUrl}})},7854:function(e,t,r){"use strict";r.d(t,{Q:function(){return n}});class n{constructor(e){this.config=e,this.DEFAULT_EXPORT_NAME="Default",this.components=new Map
+
+  [graphql]
+  le",{value:!0}),t.HIDDEN_RENDERING_NAME=t.SITECORE_EDGE_URL_DEFAULT=t.siteNameError=t.JSS_MODE=t.FETCH_WITH=t.SitecoreTemplateId=void 0,(n=r||(t.SitecoreTemplateId=r={})).JssApp="061cba1554744b918a0617903b102b82",n.DictionaryEntry="6d1cd89719364a3aa511289a94c2a7b1",t.FETCH_WITH={GRAPHQL:"GraphQL",REST:"REST"},t.JSS_MODE={CONNECTED:"connected",DISCONNECTED:"disconnected"},t.siteNameError="The siteName cannot be empty",t.SITECORE_EDGE_URL_DEFAULT="https://edge-platform.sitecorecloud.io",t.HIDDEN_RENDERING_NAME="Hidden Rendering"},3884:function(e,t,r){"use 
+
+  [graphql]
+  e:!0}),t.HIDDEN_RENDERING_NAME=t.SITECORE_EDGE_URL_DEFAULT=t.siteNameError=t.JSS_MODE=t.FETCH_WITH=t.SitecoreTemplateId=void 0,(n=r||(t.SitecoreTemplateId=r={})).JssApp="061cba1554744b918a0617903b102b82",n.DictionaryEntry="6d1cd89719364a3aa511289a94c2a7b1",t.FETCH_WITH={GRAPHQL:"GraphQL",REST:"REST"},t.JSS_MODE={CONNECTED:"connected",DISCONNECTED:"disconnected"},t.siteNameError="The siteName cannot be empty",t.SITECORE_EDGE_URL_DEFAULT="https://edge-platform.sitecorecloud.io",t.HIDDEN_RENDERING_NAME="Hidden Rendering"},3884:function(e,t,r){"use strict";v
+
+  [graphql]
+  atch(e){a(e)}}function s(e){var t;e.done?i(e.value):((t=e.value)instanceof r?t:new r(function(e){e(t)})).then(o,l)}s((n=n.apply(e,t||[])).next())})},i=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.GraphQLEditingService=t.dictionaryQuery=t.query=void 0;let a=i(r(6907)),o=r(2796),l=r(5733);t.query=`   query EditingQuery(      $siteName: String!      $itemId: String!      $language: String!      $version: String      $after: String      $pageSize: Int = 1000  ) {      item(pa
+
+  [graphql]
+   $language, first: $pageSize, after: $after) {            results {              key              value            }            pageInfo {              endCursor              hasNext            }          }        }      }    }  `;class s{constructor(e){this.serviceConfig=e,this.graphQLClient=this.getGraphQLClient()}fetchEditingData(e){return n(this,arguments,void 0,function*({siteName:e,itemId:r,language:n,version:i,layoutKind:s=l.LayoutKind.Final}){var c,d,u,p,h;if(a.default.editing("fetching editing data for %s %s %s %s",e,r,n,i,s),!e)throw RangeError
+
+  [graphql]
+  geSize, after: $after) {            results {              key              value            }            pageInfo {              endCursor              hasNext            }          }        }      }    }  `;class s{constructor(e){this.serviceConfig=e,this.graphQLClient=this.getGraphQLClient()}fetchEditingData(e){return n(this,arguments,void 0,function*({siteName:e,itemId:r,language:n,version:i,layoutKind:s=l.LayoutKind.Final}){var c,d,u,p,h;if(a.default.editing("fetching editing data for %s %s %s %s",e,r,n,i,s),!e)throw RangeError("The site name must b
+
+  [graphql]
+  ind:s=l.LayoutKind.Final}){var c,d,u,p,h;if(a.default.editing("fetching editing data for %s %s %s %s",e,r,n,i,s),!e)throw RangeError("The site name must be a non-empty string");if(!n)throw RangeError("The language must be a non-empty string");let f={},m=[],v=!0,g="",y=yield this.graphQLClient.request(t.query,{siteName:e,itemId:r,version:i,language:n},{headers:{sc_layoutKind:s}});for((null===(d=null===(c=null==y?void 0:y.site)||void 0===c?void 0:c.siteInfo)||void 0===d?void 0:d.dictionary)?(m=y.site.siteInfo.dictionary.results,v=y.site.siteInfo.dictionary
+
+  [graphql]
+  ind:s}});for((null===(d=null===(c=null==y?void 0:y.site)||void 0===c?void 0:c.siteInfo)||void 0===d?void 0:d.dictionary)?(m=y.site.siteInfo.dictionary.results,v=y.site.siteInfo.dictionary.pageInfo.hasNext,g=y.site.siteInfo.dictionary.pageInfo.endCursor):v=!1;v;){let r=yield this.graphQLClient.request(t.dictionaryQuery,{siteName:e,language:n,after:g});(null===(p=null===(u=null==r?void 0:r.site)||void 0===u?void 0:u.siteInfo)||void 0===p?void 0:p.dictionary)?(m=m.concat(r.site.siteInfo.dictionary.results),v=r.site.siteInfo.dictionary.pageInfo.hasNext,g=r.s
+
+  [graphql]
+  t,g=r.site.siteInfo.dictionary.pageInfo.endCursor):v=!1}return m.forEach(e=>f[e.key]=e.value),{layoutData:(null===(h=null==y?void 0:y.item)||void 0===h?void 0:h.rendered)||{sitecore:{context:{pageEditing:!0,language:n,editMode:o.EditMode.Metadata},route:null}},dictionary:f}})}getGraphQLClient(){if(!this.serviceConfig.clientFactory)throw Error("clientFactory needs to be provided when initializing GraphQL client.");return this.serviceConfig.clientFactory({debugger:a.default.editing,headers:{sc_editMode:"true"}})}}t.GraphQLEditingService=s},8920:function(e,
+
+  [graphql]
+  ll==y?void 0:y.item)||void 0===h?void 0:h.rendered)||{sitecore:{context:{pageEditing:!0,language:n,editMode:o.EditMode.Metadata},route:null}},dictionary:f}})}getGraphQLClient(){if(!this.serviceConfig.clientFactory)throw Error("clientFactory needs to be provided when initializing GraphQL client.");return this.serviceConfig.clientFactory({debugger:a.default.editing,headers:{sc_editMode:"true"}})}}t.GraphQLEditingService=s},8920:function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.MetadataKind=t.LayoutKind=t.mapButtonToCommand=t.D
+
+  [graphql]
+  etadata},route:null}},dictionary:f}})}getGraphQLClient(){if(!this.serviceConfig.clientFactory)throw Error("clientFactory needs to be provided when initializing GraphQL client.");return this.serviceConfig.clientFactory({debugger:a.default.editing,headers:{sc_editMode:"true"}})}}t.GraphQLEditingService=s},8920:function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.MetadataKind=t.LayoutKind=t.mapButtonToCommand=t.DefaultEditFrameButtonIds=t.DefaultEditFrameButtons=t.DefaultEditFrameButton=t.PAGES_EDITING_MARKER=t.QUERY_PARAM_EDITING
+
+  [graphql]
+  Ids=t.DefaultEditFrameButtons=t.DefaultEditFrameButton=t.PAGES_EDITING_MARKER=t.QUERY_PARAM_EDITING_SECRET=t.EDITING_ALLOWED_ORIGINS=t.getJssPagesClientData=t.handleEditorAnchors=t.resetEditorChromes=t.isEditorActive=t.HorizonEditor=t.ExperienceEditor=t.DEFAULT_PLACEHOLDER_UID=t.GraphQLEditingService=void 0;var n=r(6221);Object.defineProperty(t,"GraphQLEditingService",{enumerable:!0,get:function(){return n.GraphQLEditingService}});var i=r(7526);Object.defineProperty(t,"DEFAULT_PLACEHOLDER_UID",{enumerable:!0,get:function(){return i.DEFAULT_PLACEHOLDER_UI
+
+  [graphql]
+  NG_MARKER=t.QUERY_PARAM_EDITING_SECRET=t.EDITING_ALLOWED_ORIGINS=t.getJssPagesClientData=t.handleEditorAnchors=t.resetEditorChromes=t.isEditorActive=t.HorizonEditor=t.ExperienceEditor=t.DEFAULT_PLACEHOLDER_UID=t.GraphQLEditingService=void 0;var n=r(6221);Object.defineProperty(t,"GraphQLEditingService",{enumerable:!0,get:function(){return n.GraphQLEditingService}});var i=r(7526);Object.defineProperty(t,"DEFAULT_PLACEHOLDER_UID",{enumerable:!0,get:function(){return i.DEFAULT_PLACEHOLDER_UID}}),Object.defineProperty(t,"ExperienceEditor",{enumerable:!0,get:f
+
+  [graphql]
+  NS=t.getJssPagesClientData=t.handleEditorAnchors=t.resetEditorChromes=t.isEditorActive=t.HorizonEditor=t.ExperienceEditor=t.DEFAULT_PLACEHOLDER_UID=t.GraphQLEditingService=void 0;var n=r(6221);Object.defineProperty(t,"GraphQLEditingService",{enumerable:!0,get:function(){return n.GraphQLEditingService}});var i=r(7526);Object.defineProperty(t,"DEFAULT_PLACEHOLDER_UID",{enumerable:!0,get:function(){return i.DEFAULT_PLACEHOLDER_UID}}),Object.defineProperty(t,"ExperienceEditor",{enumerable:!0,get:function(){return i.ExperienceEditor}}),Object.defineProperty(t
+
+  [graphql]
+  atch(e){a(e)}}function s(e){var t;e.done?i(e.value):((t=e.value)instanceof r?t:new r(function(e){e(t)})).then(o,l)}s((n=n.apply(e,t||[])).next())})},i=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.GraphQLRequestClient=t.DefaultRetryStrategy=void 0;let a=r(852),o=i(r(4564)),l=i(r(6907)),s=i(r(3627));class c{constructor(e={}){this.statusCodes=e.statusCodes||[429],this.errorCodes=e.errorCodes||["ECONNRESET","ETIMEDOUT","EPROTO"],this.factor=e.factor||2}shouldRetry(e,t,r){var 
+
+  [graphql]
+  r,t-1)}}t.DefaultRetryStrategy=c;class d{constructor(e,t={}){var r;if(this.endpoint=e,this.headers={},t.apiKey&&(this.headers.sc_apikey=t.apiKey),t.headers&&(this.headers=Object.assign(Object.assign({},this.headers),t.headers)),!e||!(0,o.default)(e).hostname)throw Error(`Invalid GraphQL endpoint '${e}'. Verify that 'layoutServiceHost' property in 'scjssconfig.json' file or appropriate environment variable is set`);this.timeout=t.timeout,this.retries=null!==(r=t.retries)&&void 0!==r?r:3,this.retryStrategy=t.retryStrategy||new c({statusCodes:[429,502,503,5
+
+  [graphql]
+  ServiceHost' property in 'scjssconfig.json' file or appropriate environment variable is set`);this.timeout=t.timeout,this.retries=null!==(r=t.retries)&&void 0!==r?r:3,this.retryStrategy=t.retryStrategy||new c({statusCodes:[429,502,503,504,520,521,522,523,524]}),this.client=new a.GraphQLClient(e,{headers:this.headers,fetch:t.fetch}),this.debug=t.debugger||l.default.http}static createClientFactory({endpoint:e,apiKey:t}){return (r={})=>new d(e,Object.assign(Object.assign({},r),{apiKey:t}))}request(e,t,r){return n(this,void 0,void 0,function*(){let i=1,a=()=
+
+  [graphql]
+  r?void 0:r.status)||e.code;if(!this.retryStrategy.shouldRetry(e,i,this.retries))return Promise.reject(e);{let t=this.retryStrategy.getDelay(e,i);return this.debug("Error: %s. Retrying in %dms (attempt %d).",n,t,i),i++,new Promise(e=>setTimeout(e,t)).then(a)}}))});return a()})}}t.GraphQLRequestClient=d},7690:function(e,t,r){"use strict";var n=this&&this.__awaiter||function(e,t,r,n){return new(r||(r=Promise))(function(i,a){function o(e){try{s(n.next(e))}catch(e){a(e)}}function l(e){try{s(n.throw(e))}catch(e){a(e)}}function s(e){var t;e.done?i(e.value):((t=
+
+  [graphql]
+   }  `},4007:function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.getEdgeProxyFormsUrl=t.getEdgeProxyContentUrl=void 0;let n=r(3204),i=e=>e.endsWith("/")?e.slice(0,-1):e;t.getEdgeProxyContentUrl=(e,t=n.SITECORE_EDGE_URL_DEFAULT)=>`${i(t)}/v1/content/api/graphql/v1?sitecoreContextId=${e}`,t.getEdgeProxyFormsUrl=(e,t,r=n.SITECORE_EDGE_URL_DEFAULT)=>`${i(r)}/v1/forms/publisher/${t}?sitecoreContextId=${e}`},6489:function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.getEdgeProxyFormsUrl=t.getEdgeProxyContent
+
+  [graphql]
+  d=${e}`,t.getEdgeProxyFormsUrl=(e,t,r=n.SITECORE_EDGE_URL_DEFAULT)=>`${i(r)}/v1/forms/publisher/${t}?sitecoreContextId=${e}`},6489:function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.getEdgeProxyFormsUrl=t.getEdgeProxyContentUrl=t.SearchQueryService=t.GraphQLRequestClient=t.DefaultRetryStrategy=t.getAppRootId=void 0;var n=r(7690);Object.defineProperty(t,"getAppRootId",{enumerable:!0,get:function(){return n.getAppRootId}});var i=r(5349);Object.defineProperty(t,"DefaultRetryStrategy",{enumerable:!0,get:function(){return i.Defaul
+
+  [graphql]
+  =t.getAppRootId=void 0;var n=r(7690);Object.defineProperty(t,"getAppRootId",{enumerable:!0,get:function(){return n.getAppRootId}});var i=r(5349);Object.defineProperty(t,"DefaultRetryStrategy",{enumerable:!0,get:function(){return i.DefaultRetryStrategy}}),Object.defineProperty(t,"GraphQLRequestClient",{enumerable:!0,get:function(){return i.GraphQLRequestClient}});var a=r(4578);Object.defineProperty(t,"SearchQueryService",{enumerable:!0,get:function(){return a.SearchQueryService}});var o=r(4007);Object.defineProperty(t,"getEdgeProxyContentUrl",{enumerable:
+
+----------------------------------------------------------------------
+Document: 016_576-7284368b50ffc2eb.js
+Kind: javascript
+URL: https://dxp-assets.racing.com/_next/static/chunks/576-7284368b50ffc2eb.js
+
+LIKELY URLS:
+  /api/auth/callback?returnTo=
+  /api/auth/login
+  https://api-engage-ap.sitecorecloud.io
+  https://dxp-cdn.racing.com/api/public/content/RDC-logo-red-text-3751270.svg
+  https://rmpl-p-001.sitecorecontenthub.cloud/api/public/content/14f01e84437f4679874107dba4148ac7?v=9bb6724d
+  https://rmpl-p-001.sitecorecontenthub.cloud/api/public/content/3a6fd350779340e885e5e9f663246396?v=598e145f
+  https://rmpl-p-001.sitecorecontenthub.cloud/api/public/content/7d296b36cc144767be28d0e896d994e1?v=48ac77f9
+  https://rmpl-p-001.sitecorecontenthub.cloud/api/public/content/f575b8938e044d7ab404bb2916b972d9?v=d4e81c2d
+  https://rmpl-p-001.sitecorecontenthub.cloud/api/public/content/f7fcacd9ee09426b86646b67f737b184?v=a9610664
+
+KEYWORD CONTEXT:
+  [trackrating]
+        success\n          responseCode\n          errorMessage\n          results {\n            totalCount\n            races {\n              raceNumber\n              australianState\n              raceId\n              distanceCategories\n              raceDate\n              trackRating\n              trackCondition\n              track\n              raceName\n              meetType\n              entryAge\n              bonusMoney\n              distance\n              meetCategory\n              groupType\n              entrySex\n              tra
+
+  [trackrating]
+  =t?void 0:null===(n=t.races)||void 0===n?void 0:n.map(e=>({raceId:null==e?void 0:e.raceId,raceDate:null==e?void 0:e.raceDate,meetCategory:null==e?void 0:e.meetCategory,meetType:null==e?void 0:e.meetType,location:null==e?void 0:e.australianState,track:(null==e?void 0:e.track)||"",trackRating:"".concat((null==e?void 0:e.trackCondition)||"").concat((null==e?void 0:e.trackCondition)&&(null==e?void 0:e.trackRating)?" ":"").concat((null==e?void 0:e.trackRating)||""),groupType:(null==e?void 0:e.groupType)||"",gender:null==e?void 0:e.entrySex,trackType:(null==e?
+
+  [trackrating]
+  ate,meetCategory:null==e?void 0:e.meetCategory,meetType:null==e?void 0:e.meetType,location:null==e?void 0:e.australianState,track:(null==e?void 0:e.track)||"",trackRating:"".concat((null==e?void 0:e.trackCondition)||"").concat((null==e?void 0:e.trackCondition)&&(null==e?void 0:e.trackRating)?" ":"").concat((null==e?void 0:e.trackRating)||""),groupType:(null==e?void 0:e.groupType)||"",gender:null==e?void 0:e.entrySex,trackType:(null==e?void 0:e.trackType)||"",raceName:null==e?void 0:e.raceName,age:null==e?void 0:e.entryAge,class:null==e?void 0:e.entryClas
+
+  [trackrating]
+  ,meetType:null==e?void 0:e.meetType,location:null==e?void 0:e.australianState,track:(null==e?void 0:e.track)||"",trackRating:"".concat((null==e?void 0:e.trackCondition)||"").concat((null==e?void 0:e.trackCondition)&&(null==e?void 0:e.trackRating)?" ":"").concat((null==e?void 0:e.trackRating)||""),groupType:(null==e?void 0:e.groupType)||"",gender:null==e?void 0:e.entrySex,trackType:(null==e?void 0:e.trackType)||"",raceName:null==e?void 0:e.raceName,age:null==e?void 0:e.entryAge,class:null==e?void 0:e.entryClass,distance:(null==e?void 0:e.distance)?(null==
+
+  [trackrating]
+  =eM.RaceNameLabel)||void 0===t?void 0:t.value,raceDate:null==eM?void 0:null===(a=eM.RaceDateLabel)||void 0===a?void 0:a.value,location:null==eM?void 0:null===(d=eM.LocationLabel)||void 0===d?void 0:d.value,track:null==eM?void 0:null===(r=eM.TrackLabel)||void 0===r?void 0:r.value,trackRating:null==eM?void 0:null===(u=eM.TrackRatingLabel)||void 0===u?void 0:u.value,meetCategory:null==eM?void 0:null===(v=eM.MeetCategoryLabel)||void 0===v?void 0:v.value,meetType:null==eM?void 0:null===(s=eM.MeetTypeLabel)||void 0===s?void 0:s.value,age:null==eM?void 0:null==
+
+  [trackrating]
+  alue,raceDate:null==eM?void 0:null===(a=eM.RaceDateLabel)||void 0===a?void 0:a.value,location:null==eM?void 0:null===(d=eM.LocationLabel)||void 0===d?void 0:d.value,track:null==eM?void 0:null===(r=eM.TrackLabel)||void 0===r?void 0:r.value,trackRating:null==eM?void 0:null===(u=eM.TrackRatingLabel)||void 0===u?void 0:u.value,meetCategory:null==eM?void 0:null===(v=eM.MeetCategoryLabel)||void 0===v?void 0:v.value,meetType:null==eM?void 0:null===(s=eM.MeetTypeLabel)||void 0===s?void 0:s.value,age:null==eM?void 0:null===(c=eM.AgeLabel)||void 0===c?void 0:c.val
+
+  [graphql]
+  _TEMPLATE_NAMES:function(){return te},ARTICLE_TYPES:function(){return tl}});var Z={};i.r(Z),i.d(Z,{Default:function(){return td},LatestArticles:function(){return tr},MixedView:function(){return tv},SingleStackView:function(){return tu}});var $={};i.r($);var ee={};i.r(ee),i.d(ee,{GraphQLGlobalSettings:function(){return tb}});var el={};i.r(el),i.d(el,{ORGNISATION_INFO:function(){return tI}});var ei={};i.r(ei),i.d(ei,{Default:function(){return tA},getStaticProps:function(){return tE}});var en={};i.r(en),i.d(en,{Default:function(){return tj}});var eo={};i.r(
+
+  [graphql]
+   t}});var eD={};i.r(eD),i.d(eD,{EVENTS_SETTINGS:function(){return de},RACING:function(){return dl}});var eE={};i.r(eE),i.d(eE,{CALENDAR:function(){return dt},EVENT:function(){return da},ITEM_GUIDS:function(){return dn},SITE_NAMES:function(){return di}});var eA={};i.r(eA),i.d(eA,{GraphQLCalendarSettings:function(){return dd},fetchCalendarEvents:function(){return dr},fetchRaceMeets:function(){return du}});var ex={};i.r(ex),i.d(ex,{GenerateEventStatusBadgesQuery:function(){return ds},GenerateEventTypeBadgesQuery:function(){return dm},GenerateRaceMeetTypesQu
+
+  [graphql]
+  nction(){return dd},fetchCalendarEvents:function(){return dr},fetchRaceMeets:function(){return du}});var ex={};i.r(ex),i.d(ex,{GenerateEventStatusBadgesQuery:function(){return ds},GenerateEventTypeBadgesQuery:function(){return dm},GenerateRaceMeetTypesQuery:function(){return dc},GraphQLEventCardSettings:function(){return dp}});var ej={};i.r(ej),i.d(ej,{Default:function(){return dI},getStaticProps:function(){return db}});var eN={};i.r(eN),i.d(eN,{Default:function(){return dA},getStaticProps:function(){return dE}});var eM={};i.r(eM),i.d(eM,{Default:functio
+
+  [graphql]
+  rF},UTILITY_HOME_ICON:function(){return rR},UTILITY_HOME_LABEL:function(){return rw},UTILITY_HOME_LINK_TYPE:function(){return r_},UTILITY_HOME_URL:function(){return rP},UTILITY_LOGIN_ICON:function(){return rk},UTILITY_LOGIN_LABEL:function(){return rV}});var eJ={};i.r(eJ),i.d(eJ,{GraphQLheadernav:function(){return rU}});var eq={};i.r(eq),i.d(eq,{SEARCH_SETTINGS:function(){return rQ}});var eY={};i.r(eY),i.d(eY,{mapSearchEnvironment:function(){return rW}});var eX={};i.r(eX),i.d(eX,{Default:function(){return rX},getStaticProps:function(){return rq}});var eZ=
+
+  [graphql]
+  urn rW}});var eX={};i.r(eX),i.d(eX,{Default:function(){return rX},getStaticProps:function(){return rq}});var eZ={};i.r(eZ),i.d(eZ,{Default:function(){return rZ}});var e$={};i.r(e$),i.d(e$,{Default:function(){return r1},Horizontal:function(){return r2}});var e0={};i.r(e0),i.d(e0,{GraphQLlocalnav:function(){return r4}});var e1={};i.r(e1),i.d(e1,{Default:function(){return r6},getStaticProps:function(){return r8}});var e2={};i.r(e2);var e4={};i.r(e4),i.d(e4,{GenerateRaceListQuery:function(){return ue}});var e3={};i.r(e3),i.d(e3,{fetchMeetingInformation:funct
+
+  [graphql]
+  1={};i.r(e1),i.d(e1,{Default:function(){return r6},getStaticProps:function(){return r8}});var e2={};i.r(e2);var e4={};i.r(e4),i.d(e4,{GenerateRaceListQuery:function(){return ue}});var e3={};i.r(e3),i.d(e3,{fetchMeetingInformation:function(){return ul}});var e5={};i.r(e5),i.d(e5,{GraphQLRaceStatuses:function(){return un}});var e9={};i.r(e9),i.d(e9,{Default:function(){return ud},getStaticProps:function(){return ua}});var e8={};i.r(e8);var e7={};i.r(e7),i.d(e7,{GenerateRaceListQuery:function(){return ur}});var e6={};i.r(e6),i.d(e6,{fetchMeetingInformation:f
+
+  [graphql]
+  EASON_START_MONTH:function(){return uK},TEMPLATE_IDS:function(){return uH}});var lc={};i.r(lc),i.d(lc,{Default:function(){return uZ},getStaticProps:function(){return uX}});var lm={};i.r(lm);var lp={};i.r(lp),i.d(lp,{GenerateGetParticipantCalendarFilterQuery:function(){return u1},GraphQLParticipantCalendarSettings:function(){return u8},fetchParticipantRaceData:function(){return u2},getFilterData:function(){return u5},getFilterValueItems:function(){return u3},getFilterValues_BACKUP:function(){return u4}});var lg={};i.r(lg),i.d(lg,{Default:function(){return
+
+  [graphql]
+  0,lk.jsx)(ii.x,{field:e.Content},"".concat(n)):null===(l=e.Content)||void 0===l?void 0:l.value};var i$=i(5256);let i0=async e=>{var l;let i=lB().customSiteConfig?JSON.parse(lB().customSiteConfig):void 0;return await fetch(e,{headers:{"x-api-key":null!==(l=null==i?void 0:i.appSyncGraphQLAPIKey)&&void 0!==l?l:"","content-type":"application/json;charset=UTF-8"},method:"GET"}).then(e=>{if(e)return e.json()}).catch(e=>{throw console.error(e),e})},i1="internal",i2="/plus/sign-up",i4=50,i3=2592e6,i5=100,i9="RDCMiniPlayerTopPanel",i8=(e,l)=>e&&(null==e?void 0:e.
+
+  [graphql]
+             date_published\n            image_url\n            video_duration\n            external_id\n        }\n    }\n  }\n  ")}let i6=async e=>{var l,i,n;let o=lB().customSiteConfig?JSON.parse(lB().customSiteConfig):void 0,t=i7(e),a=await i0("".concat(null==o?void 0:o.appSyncGraphQLHost,"?query=").concat(encodeURIComponent(t)));return null==a?void 0:null===(n=a.data)||void 0===n?void 0:null===(i=n.getVideos)||void 0===i?void 0:null===(l=i.results)||void 0===l?void 0:l.map(e=>{var l;return{VideoId:null!==(l=null==e?void 0:e.external_id)&&void 0!==l?l:
+
+  [graphql]
+  c\n            dam_content_type\n            dam_id\n            thumbnail_src\n          }\n        }\n      }\n    }\n  }")}let oJ=async(e,l)=>{var i,n,o;let t=lB().customSiteConfig?JSON.parse(lB().customSiteConfig):void 0,a=oK(e,l),d=await i0("".concat(null==t?void 0:t.appSyncGraphQLHost,"?query=").concat(encodeURIComponent(a)));return null==d?void 0:null===(o=d.data)||void 0===o?void 0:null===(n=o.getNewsGroupList)||void 0===n?void 0:null===(i=n.results)||void 0===i?void 0:i.map(e=>{var l;return{identifier:null==e?void 0:e.id,articles:null==e?void 0:
+
+  [graphql]
+        src\n              dam_content_type\n              dam_id\n              thumbnail_src\n            }\n      }\n    }")}let o7=async(e,l,i)=>{var n,o;let t=lB().customSiteConfig?JSON.parse(lB().customSiteConfig):void 0,a=o8(e,l),d=await i0("".concat(null==t?void 0:t.appSyncGraphQLHost,"?query=").concat(encodeURIComponent(a)));return null==d?void 0:null===(o=d.data)||void 0===o?void 0:null===(n=o.getNewsList)||void 0===n?void 0:n.map((e,l)=>{var n,o,t,a,d,r,u,v,s,c,m,p,g;return{Fields:{Title:(null==e?void 0:e.short_title)?null==e?void 0:e.short_titl
+
+  [graphql]
+  l===(l=n.site)||void 0===l?void 0:l.name)&&void 0!==i?i:"");return(0,lk.jsx)(o6.ArticleList,{...o})};var ts=i(9008),tc=i.n(ts),tm=i(7978),tp=i(8205),tg=i(3961);let th=e=>{let l;if(e.sitecoreEdgeContextId)l={endpoint:(0,tg.mm)(e.sitecoreEdgeContextId,e.sitecoreEdgeUrl)};else if(e.graphQLEndpoint&&e.sitecoreApiKey)l={endpoint:e.graphQLEndpoint,apiKey:e.sitecoreApiKey};else throw Error("Please configure either your sitecoreEdgeContextId, or your graphQLEndpoint and sitecoreApiKey.");return tg.$m.createClientFactory(l)};var tf=i(7113),ty=i.n(tf);let tC=Objec
+
+  [graphql]
+  0!==i?i:"");return(0,lk.jsx)(o6.ArticleList,{...o})};var ts=i(9008),tc=i.n(ts),tm=i(7978),tp=i(8205),tg=i(3961);let th=e=>{let l;if(e.sitecoreEdgeContextId)l={endpoint:(0,tg.mm)(e.sitecoreEdgeContextId,e.sitecoreEdgeUrl)};else if(e.graphQLEndpoint&&e.sitecoreApiKey)l={endpoint:e.graphQLEndpoint,apiKey:e.sitecoreApiKey};else throw Error("Please configure either your sitecoreEdgeContextId, or your graphQLEndpoint and sitecoreApiKey.");return tg.$m.createClientFactory(l)};var tf=i(7113),ty=i.n(tf);let tC=Object.freeze({cacheTimeout:60,cacheEnabled:!0});clas
+
+  [graphql]
+  e=>{let l;if(e.sitecoreEdgeContextId)l={endpoint:(0,tg.mm)(e.sitecoreEdgeContextId,e.sitecoreEdgeUrl)};else if(e.graphQLEndpoint&&e.sitecoreApiKey)l={endpoint:e.graphQLEndpoint,apiKey:e.sitecoreApiKey};else throw Error("Please configure either your sitecoreEdgeContextId, or your graphQLEndpoint and sitecoreApiKey.");return tg.$m.createClientFactory(l)};var tf=i(7113),ty=i.n(tf);let tC=Object.freeze({cacheTimeout:60,cacheEnabled:!0});class tT{getCacheValue(e){return this.options.cacheEnabled?this.cache.get(e):null}setCacheValue(e,l){return this.options.ca
+
+  [graphql]
+  tCacheKey(e,l),o,1e3*this.cacheDurationInSeconds),o}async fetchGlobalSettingsQuery(e){let l=lB().customSiteConfig?JSON.parse(lB().customSiteConfig):lB().customSiteConfig,i=null==l?void 0:l.siteSettings.find(l=>l.siteName===e),n=i?i.sitePath:"";if(n){var o,t,a,d;console.log("EXEC_GRAPHQL: metadata-settings: fetchGlobalSettingsQuery".concat(n));let e=await this.graphQLClient.request('\n  query globalSettingsQuery {\n    globalSettingSearch: search (\n        where: {\n          AND: [\n            {\n              name: "_templates"\n              value: "
+
+  [graphql]
+  (e){let l=lB().customSiteConfig?JSON.parse(lB().customSiteConfig):lB().customSiteConfig,i=null==l?void 0:l.siteSettings.find(l=>l.siteName===e),n=i?i.sitePath:"";if(n){var o,t,a,d;console.log("EXEC_GRAPHQL: metadata-settings: fetchGlobalSettingsQuery".concat(n));let e=await this.graphQLClient.request('\n  query globalSettingsQuery {\n    globalSettingSearch: search (\n        where: {\n          AND: [\n            {\n              name: "_templates"\n              value: "'.concat(tS.GLOBAL_SETTINGS,'"\n              operator: EQ\n            }\n       
+
+  [graphql]
+  t.results.length)>0)return null==e?void 0:null===(d=e.globalSettingSearch)||void 0===d?void 0:null===(a=d.results)||void 0===a?void 0:a[0]}return{}}GetGlobalSettingsData(){var e;return new tT({cacheEnabled:null===(e=this.config.cacheEnabled)||void 0===e||e,cacheTimeout:1800})}getGraphQLClient(){if(!this.config.endpoint){if(!this.config.clientFactory)throw Error("You should provide either an endpoint and apiKey, or a clientFactory.");return this.config.clientFactory({debugger:tm.Z.multisite})}return new tg.$m(this.config.endpoint,{apiKey:this.config.apiKe
+
+  [graphql]
+  or a clientFactory.");return this.config.clientFactory({debugger:tm.Z.multisite})}return new tg.$m(this.config.endpoint,{apiKey:this.config.apiKey,debugger:tm.Z.multisite})}getCacheKey(e,l){return"article-metadata-cache-".concat(e,"-").concat(l)}constructor(e){this.config=e,this.graphQLClient=this.getGraphQLClient(),this.cacheDurationInSeconds=900}}let tI={RDC:{OrganisationName:"racing.com",OrganisationId:"racing.com",OrganisationLogoUrl:"https://dxp-cdn.racing.com/api/public/content/RDC-logo-red-text-3751270.svg"}},tL=e=>e===te.IMAGE_ARTICLE?tl.IMAGE_AR
+
+  [graphql]
+  return this.config.clientFactory({debugger:tm.Z.multisite})}return new tg.$m(this.config.endpoint,{apiKey:this.config.apiKey,debugger:tm.Z.multisite})}getCacheKey(e,l){return"article-metadata-cache-".concat(e,"-").concat(l)}constructor(e){this.config=e,this.graphQLClient=this.getGraphQLClient(),this.cacheDurationInSeconds=900}}let tI={RDC:{OrganisationName:"racing.com",OrganisationId:"racing.com",OrganisationLogoUrl:"https://dxp-cdn.racing.com/api/public/content/RDC-logo-red-text-3751270.svg"}},tL=e=>e===te.IMAGE_ARTICLE?tl.IMAGE_ARTICLE:e===te.VIDEO_ART
+
+  [graphql]
+  =o?await this.fetchWithStatesQuery():[],u=[];return u.push({eventLocations:a,raceClubs:d,states:r,siteName:e}),ty().put(this.getCacheKey(e,l),u,1e3*this.cacheDurationInSeconds),u}async fetchWithEventLocationsQuery(e){let l=lY(e),i=dn.SHARED_SITE;if(l){var n,o,t;console.log("EXEC_GRAPHQL: dca-calendar: fetchWithEventLocationsQuery: ".concat(l));let e=await this.graphQLClient.request(a5(l,i,de.TEMPLATES.EVENT_LOCATION));if((null==e?void 0:null===(n=e.eventLocationsSearch)||void 0===n?void 0:n.results)&&(null==e?void 0:null===(o=e.eventLocationsSearch)||voi
+
+  [graphql]
+  ubs:d,states:r,siteName:e}),ty().put(this.getCacheKey(e,l),u,1e3*this.cacheDurationInSeconds),u}async fetchWithEventLocationsQuery(e){let l=lY(e),i=dn.SHARED_SITE;if(l){var n,o,t;console.log("EXEC_GRAPHQL: dca-calendar: fetchWithEventLocationsQuery: ".concat(l));let e=await this.graphQLClient.request(a5(l,i,de.TEMPLATES.EVENT_LOCATION));if((null==e?void 0:null===(n=e.eventLocationsSearch)||void 0===n?void 0:n.results)&&(null==e?void 0:null===(o=e.eventLocationsSearch)||void 0===o?void 0:o.results.length)>0)return null==e?void 0:null===(t=e.eventLocations
+
+  [graphql]
+  arch)||void 0===n?void 0:n.results)&&(null==e?void 0:null===(o=e.eventLocationsSearch)||void 0===o?void 0:o.results.length)>0)return null==e?void 0:null===(t=e.eventLocationsSearch)||void 0===t?void 0:t.results}return[]}async fetchWithRaceClubsQuery(){var e,l,i;console.log("EXEC_GRAPHQL: dca-calendar: fetchWithRaceClubsQuery");let n=await this.graphQLClient.request(a9(de.TEMPLATES.RACE_CLUB,de.FOLDERS.RACE_CLUBS));return(null==n?void 0:null===(e=n.raceClubsSearch)||void 0===e?void 0:e.results)&&(null==n?void 0:null===(l=n.raceClubsSearch)||void 0===l?voi
+
+  [graphql]
+  ventLocationsSearch)||void 0===o?void 0:o.results.length)>0)return null==e?void 0:null===(t=e.eventLocationsSearch)||void 0===t?void 0:t.results}return[]}async fetchWithRaceClubsQuery(){var e,l,i;console.log("EXEC_GRAPHQL: dca-calendar: fetchWithRaceClubsQuery");let n=await this.graphQLClient.request(a9(de.TEMPLATES.RACE_CLUB,de.FOLDERS.RACE_CLUBS));return(null==n?void 0:null===(e=n.raceClubsSearch)||void 0===e?void 0:e.results)&&(null==n?void 0:null===(l=n.raceClubsSearch)||void 0===l?void 0:l.results.length)>0?null==n?void 0:null===(i=n.raceClubsSearch
+
+  [graphql]
+   0:null===(e=n.raceClubsSearch)||void 0===e?void 0:e.results)&&(null==n?void 0:null===(l=n.raceClubsSearch)||void 0===l?void 0:l.results.length)>0?null==n?void 0:null===(i=n.raceClubsSearch)||void 0===i?void 0:i.results:[]}async fetchWithStatesQuery(){var e,l,i;console.log("EXEC_GRAPHQL: dca-calendar: fetchWithStatesQuery");let n=await this.graphQLClient.request(a8(de.TEMPLATES.STATE,de.FOLDERS.COUNTRY_AU));return(null==n?void 0:null===(e=n.statesSearch)||void 0===e?void 0:e.results)&&(null==n?void 0:null===(l=n.statesSearch)||void 0===l?void 0:l.results
+
+  [graphql]
+  (null==n?void 0:null===(l=n.raceClubsSearch)||void 0===l?void 0:l.results.length)>0?null==n?void 0:null===(i=n.raceClubsSearch)||void 0===i?void 0:i.results:[]}async fetchWithStatesQuery(){var e,l,i;console.log("EXEC_GRAPHQL: dca-calendar: fetchWithStatesQuery");let n=await this.graphQLClient.request(a8(de.TEMPLATES.STATE,de.FOLDERS.COUNTRY_AU));return(null==n?void 0:null===(e=n.statesSearch)||void 0===e?void 0:e.results)&&(null==n?void 0:null===(l=n.statesSearch)||void 0===l?void 0:l.results.length)>0?null==n?void 0:null===(i=n.statesSearch)||void 0===i
+
+  [graphql]
+  ?void 0:null===(l=n.statesSearch)||void 0===l?void 0:l.results.length)>0?null==n?void 0:null===(i=n.statesSearch)||void 0===i?void 0:i.results:[]}GetCalendarSettingsData(){var e;return new tT({cacheEnabled:null===(e=this.config.cacheEnabled)||void 0===e||e,cacheTimeout:1800})}getGraphQLClient(){if(!this.config.endpoint){if(!this.config.clientFactory)throw Error("You should provide either an endpoint and apiKey, or a clientFactory.");return this.config.clientFactory({debugger:tm.Z.multisite})}return new tg.$m(this.config.endpoint,{apiKey:this.config.apiKe
+
+  [graphql]
+  t and apiKey, or a clientFactory.");return this.config.clientFactory({debugger:tm.Z.multisite})}return new tg.$m(this.config.endpoint,{apiKey:this.config.apiKey,debugger:tm.Z.multisite})}getCacheKey(e,l){return"calendar-".concat(e,"-").concat(l)}constructor(e){this.config=e,this.graphQLClient=this.getGraphQLClient(),this.cacheDurationInSeconds=900}}let dr=async e=>{var l,i;let n=lB().customSiteConfig?JSON.parse(lB().customSiteConfig):void 0,o=a7(e),t=await i0("".concat(null==n?void 0:n.appSyncGraphQLHost,"?query=").concat(encodeURIComponent(o)));return n
+
+  [graphql]
+  entFactory.");return this.config.clientFactory({debugger:tm.Z.multisite})}return new tg.$m(this.config.endpoint,{apiKey:this.config.apiKey,debugger:tm.Z.multisite})}getCacheKey(e,l){return"calendar-".concat(e,"-").concat(l)}constructor(e){this.config=e,this.graphQLClient=this.getGraphQLClient(),this.cacheDurationInSeconds=900}}let dr=async e=>{var l,i;let n=lB().customSiteConfig?JSON.parse(lB().customSiteConfig):void 0,o=a7(e),t=await i0("".concat(null==n?void 0:n.appSyncGraphQLHost,"?query=").concat(encodeURIComponent(o)));return null==t?void 0:null===(
+
+  [graphql]
+  r-".concat(e,"-").concat(l)}constructor(e){this.config=e,this.graphQLClient=this.getGraphQLClient(),this.cacheDurationInSeconds=900}}let dr=async e=>{var l,i;let n=lB().customSiteConfig?JSON.parse(lB().customSiteConfig):void 0,o=a7(e),t=await i0("".concat(null==n?void 0:n.appSyncGraphQLHost,"?query=").concat(encodeURIComponent(o)));return null==t?void 0:null===(i=t.data)||void 0===i?void 0:null===(l=i.getCalendarItems)||void 0===l?void 0:l.map(e=>{var l,i,n,o,t,a,d;let r=!!(null==e?void 0:e.thumbnail_image),u=r?e.thumbnail_image:null==e?void 0:null===(l=
+
+  [graphql]
+  ate:null==e?void 0:e.state,EventId:null==e?void 0:e.id,ClubId:null==e?void 0:e.club_id,RaceClubs:null==e?void 0:e.club_name}})},du=async e=>{var l,i;let n=lB().customSiteConfig?JSON.parse(lB().customSiteConfig):void 0,o=a6(e.meetCode),a=await i0("".concat(null==n?void 0:n.appSyncGraphQLHost,"?query=").concat(encodeURI(o)));return null==a?void 0:null===(i=a.data)||void 0===i?void 0:null===(l=i.getRaces)||void 0===l?void 0:l.map(e=>{let l={Params:{Identifier:"",Styles:""},Fields:{VideoType:t.BRIGHTCOVE,VideoId:e.videoId,Autoplay:!0}};return{RaceNumber:null
+
+  [graphql]
+  adgesQuery();let a={};a=await this.fetchWithEventCardSettingsQuery(e);let d=[];return d.push({eventStatusBadges:n,raceMeetTypes:o,eventTypeBadges:t,eventCardSettings:a}),this.cache.setCacheValue(this.getCacheKey(e,l),d),d}async fetchWithEventStatusBadgesQuery(){console.log("EXEC_GRAPHQL: event-card-settings: fetchWithEventStatusBadgesQuery");let e=await this.graphQLClient.request(ds()),l=[];return l.push({eventStatusBadgesSearch:e.eventStatusBadgesSearch}),l}async fetchWithRaceMeetTypesQuery(){console.log("EXEC_GRAPHQL: event-card-settings: fetchWithRace
+
+  [graphql]
+  turn d.push({eventStatusBadges:n,raceMeetTypes:o,eventTypeBadges:t,eventCardSettings:a}),this.cache.setCacheValue(this.getCacheKey(e,l),d),d}async fetchWithEventStatusBadgesQuery(){console.log("EXEC_GRAPHQL: event-card-settings: fetchWithEventStatusBadgesQuery");let e=await this.graphQLClient.request(ds()),l=[];return l.push({eventStatusBadgesSearch:e.eventStatusBadgesSearch}),l}async fetchWithRaceMeetTypesQuery(){console.log("EXEC_GRAPHQL: event-card-settings: fetchWithRaceMeetTypesQuery");let e=await this.graphQLClient.request(dc()),l=[];return l.push(
+
+  [graphql]
+  EventStatusBadgesQuery(){console.log("EXEC_GRAPHQL: event-card-settings: fetchWithEventStatusBadgesQuery");let e=await this.graphQLClient.request(ds()),l=[];return l.push({eventStatusBadgesSearch:e.eventStatusBadgesSearch}),l}async fetchWithRaceMeetTypesQuery(){console.log("EXEC_GRAPHQL: event-card-settings: fetchWithRaceMeetTypesQuery");let e=await this.graphQLClient.request(dc()),l=[];return l.push({raceMeetTypesSearch:e.raceMeetTypesSearch}),l}async fetchWithEventTypeBadgesQuery(){console.log("EXEC_GRAPHQL: event-card-settings: fetchWithEventTypeBadge
+
+  [graphql]
+  hWithEventStatusBadgesQuery");let e=await this.graphQLClient.request(ds()),l=[];return l.push({eventStatusBadgesSearch:e.eventStatusBadgesSearch}),l}async fetchWithRaceMeetTypesQuery(){console.log("EXEC_GRAPHQL: event-card-settings: fetchWithRaceMeetTypesQuery");let e=await this.graphQLClient.request(dc()),l=[];return l.push({raceMeetTypesSearch:e.raceMeetTypesSearch}),l}async fetchWithEventTypeBadgesQuery(){console.log("EXEC_GRAPHQL: event-card-settings: fetchWithEventTypeBadgesQuery");let e=await this.graphQLClient.request(dm()),l=[];return l.push({eve
+
+----------------------------------------------------------------------
+Document: 017__5B_5B...path_5D_5D-77dd2c0c97159027.js
+Kind: javascript
+URL: https://dxp-assets.racing.com/_next/static/chunks/pages/%5B%5B...path%5D%5D-77dd2c0c97159027.js
+
+LIKELY URLS:
+  https://dxp-prod.racing.com/plus/api/auth/callback
+  https://prod2-rplus.au.auth0.com/api/v2/
+
+KEYWORD CONTEXT:
+  [/api/]
+  ComponentFactory({isEditing:x}),layoutData:_,api:{edge:{contextId:h().sitecoreEdgeContextId,edgeUrl:h().sitecoreEdgeUrl}},children:g?(0,r.jsx)(f.tw,{domain:"idp.racing.com",clientId:"2xw77BDhfwH7QQNOrJeOzxbfVzUIE6vC",authorizationParams:{audience:"https://prod2-rplus.au.auth0.com/api/v2/",redirect_uri:"https://dxp-prod.racing.com/plus/api/auth/callback"},cacheLocation:"localstorage",children:(0,r.jsx)(p.default,{children:(0,r.jsx)(E.GoogleAdManagerProvider,{children:(0,r.jsx)(a.Z,{layoutData:_,headLinks:v})})})}):(0,r.jsx)(a.Z,{layoutData:_,headLinks:v})
+
+  [/api/]
+  contextId:h().sitecoreEdgeContextId,edgeUrl:h().sitecoreEdgeUrl}},children:g?(0,r.jsx)(f.tw,{domain:"idp.racing.com",clientId:"2xw77BDhfwH7QQNOrJeOzxbfVzUIE6vC",authorizationParams:{audience:"https://prod2-rplus.au.auth0.com/api/v2/",redirect_uri:"https://dxp-prod.racing.com/plus/api/auth/callback"},cacheLocation:"localstorage",children:(0,r.jsx)(p.default,{children:(0,r.jsx)(E.GoogleAdManagerProvider,{children:(0,r.jsx)(a.Z,{layoutData:_,headLinks:v})})})}):(0,r.jsx)(a.Z,{layoutData:_,headLinks:v})})})}}},function(e){e.O(0,[867,601,678,265,714,29,863,56
+
+----------------------------------------------------------------------
+Document: 018__buildManifest.js
+Kind: javascript
+URL: https://dxp-assets.racing.com/_next/static/y-FAruFE9pAbQaXondj6n/_buildManifest.js
+
+LIKELY URLS:
+  /api/:path*
+  /api/getStoryDoc
+  /api/healthz
+  /api/robots
+  /api/sitemap
+
+KEYWORD CONTEXT:
+  [/api/]
+  self.__BUILD_MANIFEST=function(e,a,t,s,c,n,i,o,r,h,l,d){return{__rewrites:{afterFiles:[{has:e,source:"/:nextInternalLocale(en)/sitecore/api/:path*",destination:e},{has:e,source:"/:nextInternalLocale(en)/-/:path*",destination:e},{has:e,source:"/:nextInternalLocale(en)/healthz",destination:"/:nextInternalLocale/api/healthz"},{has:e,source:"/:nextInternalLocale(en)/sitecore/service/:path*",destination:e},{has:e,sou
+
+  [/api/]
+  (e,a,t,s,c,n,i,o,r,h,l,d){return{__rewrites:{afterFiles:[{has:e,source:"/:nextInternalLocale(en)/sitecore/api/:path*",destination:e},{has:e,source:"/:nextInternalLocale(en)/-/:path*",destination:e},{has:e,source:"/:nextInternalLocale(en)/healthz",destination:"/:nextInternalLocale/api/healthz"},{has:e,source:"/:nextInternalLocale(en)/sitecore/service/:path*",destination:e},{has:e,source:"/:nextInternalLocale(en)/plus/:path*",destination:e},{has:e,source:"/:nextInternalLocale(en)/getStoryDoc",destination:"/:nextInternalLocale/api/getStoryDoc"},{has:e,sourc
+
+  [/api/]
+  stination:"/:nextInternalLocale/api/healthz"},{has:e,source:"/:nextInternalLocale(en)/sitecore/service/:path*",destination:e},{has:e,source:"/:nextInternalLocale(en)/plus/:path*",destination:e},{has:e,source:"/:nextInternalLocale(en)/getStoryDoc",destination:"/:nextInternalLocale/api/getStoryDoc"},{has:e,source:"/:nextInternalLocale(en)/robots.txt",destination:"/:nextInternalLocale/api/robots"},{has:e,source:"/:nextInternalLocale(en)/sitemap:id([\\w-]{0,}).xml",destination:"/:nextInternalLocale/api/sitemap"}],beforeFiles:[],fallback:[]},"/404":[a,t,s,c,n
+
+  [/api/]
+  path*",destination:e},{has:e,source:"/:nextInternalLocale(en)/plus/:path*",destination:e},{has:e,source:"/:nextInternalLocale(en)/getStoryDoc",destination:"/:nextInternalLocale/api/getStoryDoc"},{has:e,source:"/:nextInternalLocale(en)/robots.txt",destination:"/:nextInternalLocale/api/robots"},{has:e,source:"/:nextInternalLocale(en)/sitemap:id([\\w-]{0,}).xml",destination:"/:nextInternalLocale/api/sitemap"}],beforeFiles:[],fallback:[]},"/404":[a,t,s,c,n,i,o,r,h,l,d,"static/chunks/pages/404-9eb0e6e776ec094e.js"],"/500":["static/chunks/pages/500-47623d70bb9
+
+  [/api/]
+  rnalLocale(en)/getStoryDoc",destination:"/:nextInternalLocale/api/getStoryDoc"},{has:e,source:"/:nextInternalLocale(en)/robots.txt",destination:"/:nextInternalLocale/api/robots"},{has:e,source:"/:nextInternalLocale(en)/sitemap:id([\\w-]{0,}).xml",destination:"/:nextInternalLocale/api/sitemap"}],beforeFiles:[],fallback:[]},"/404":[a,t,s,c,n,i,o,r,h,l,d,"static/chunks/pages/404-9eb0e6e776ec094e.js"],"/500":["static/chunks/pages/500-47623d70bb940d83.js"],"/_apm":["static/chunks/pages/_apm-f2a5a5d1125be010.js"],"/_error":["static/chunks/pages/_error-d6793412
+
+----------------------------------------------------------------------
+Document: inline_019.txt
+Kind: inline_script
+URL: https://mrc.racing.com/racing/raceday-track-weather-live
+
+LIKELY URLS:
+  /track-induction-link
+  https://dxp-cdn.racing.com/api/public/content/202208-Memsie-453-152417.webp?v=054cd5a8
+  https://dxp-cdn.racing.com/api/public/content/202302-Blue-Diamond-411-2987171.webp?v=f3be51c2
+  https://dxp-cdn.racing.com/api/public/content/MRC-Tracks-and-Facilities-Rules---November-2025-V.1-6862887.pdf?v=d5bcb82f
+  https://dxp-cdn.racing.com/api/public/content/RPHOTOS_MASTER_BLUE_CMYK-39496.webp?v=ab6b442a
+  https://dxp-cdn.racing.com/api/public/content/RacingLogoPNG-235666.webp?v=63404c7d
+  https://dxp-cdn.racing.com/api/public/content/RacingVictoriaLogo-208270.webp?v=ce8620fe
+  https://dxp-cdn.racing.com/api/public/content/TheValleyLogo-208367.webp?v=b25dfa04
+  https://dxp-cdn.racing.com/api/public/content/Untitled-design-%2850%29-8793413.webp?v=b5917935
+  https://dxp-cdn.racing.com/api/public/content/Untitled-design-%2851%29-8793414.webp?v=7660954f
+  https://dxp-cdn.racing.com/api/public/content/ba2cb7ef998f4919a53a091d87cbff11?v=e9cb40d6
+  https://dxp-cdn.racing.com/api/public/content/bestbets_minilogo-39195.webp?v=150f897d
+  https://dxp-cdn.racing.com/api/public/content/fb852aea3eff4ad7bd2c450d5a8ce7b8?v=9d460605
+  https://dxp-cdn.racing.com/api/public/content/flag-1-236527.webp?v=2ecca5d3
+  https://dxp-cdn.racing.com/api/public/content/flag-2-236525.webp?v=a3ef2225
+  https://dxp-cdn.racing.com/api/public/content/flag-3-236523.webp?v=019ffd5c
+  https://dxp-cdn.racing.com/api/public/content/new-color-mrc_inline-black-208290.webp?v=4259ffe4
+  https://dxp-cdn.racing.com/api/public/content/ssr_horz_white-836331.webp?v=fce7b951
+  https://dxp-cdn.racing.com/api/public/content/vrc-logo-39529.webp?v=f1275d00
+  https://rmpl-p-001.sitecorecontenthub.cloud/api/gateway/152417/thumbnail
+  https://rmpl-p-001.sitecorecontenthub.cloud/api/gateway/208270/thumbnail
+  https://rmpl-p-001.sitecorecontenthub.cloud/api/gateway/208290/thumbnail
+  https://rmpl-p-001.sitecorecontenthub.cloud/api/gateway/208367/thumbnail
+  https://rmpl-p-001.sitecorecontenthub.cloud/api/gateway/235666/thumbnail
+  https://rmpl-p-001.sitecorecontenthub.cloud/api/gateway/2987171/thumbnail
+  https://rmpl-p-001.sitecorecontenthub.cloud/api/gateway/39195/thumbnail
+  https://rmpl-p-001.sitecorecontenthub.cloud/api/gateway/39496/thumbnail
+  https://rmpl-p-001.sitecorecontenthub.cloud/api/gateway/39529/thumbnail
+  https://rmpl-p-001.sitecorecontenthub.cloud/api/gateway/836331/thumbnail
+  https://rmpl-p-001.sitecorecontenthub.cloud/api/gateway/8626115/thumbnail
+  https://rmpl-p-001.sitecorecontenthub.cloud/api/gateway/8793413/thumbnail
+  https://rmpl-p-001.sitecorecontenthub.cloud/api/gateway/8793414/thumbnail
+  https://rmpl-p-001.sitecorecontenthub.cloud/api/gateway/92589/thumbnail
+
+KEYWORD CONTEXT:
+  [weather]
+  {"props":{"pageProps":{"site":{"name":"MRC","hostName":"int-mrc.racing.com","language":"en"},"locale":"en","layoutData":{"sitecore":{"context":{"pageEditing":false,"site":{"name":"MRC"},"pageState":"normal","editMode":"chromes","language":"en","itemPath":"/racing/raceday-track-weather-live","variantId":"_default"},"route":{"name":"raceday-track-weather-live","displayName":"raceday-track-weather-live","fields":{"Description":{"value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulf
+
+  [weather]
+  ing.com","language":"en"},"locale":"en","layoutData":{"sitecore":{"context":{"pageEditing":false,"site":{"name":"MRC"},"pageState":"normal","editMode":"chromes","language":"en","itemPath":"/racing/raceday-track-weather-live","variantId":"_default"},"route":{"name":"raceday-track-weather-live","displayName":"raceday-track-weather-live","fields":{"Description":{"value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026 Sandown. \n"},"PublicUrl":{"value":""},"Title
+
+  [weather]
+  youtData":{"sitecore":{"context":{"pageEditing":false,"site":{"name":"MRC"},"pageState":"normal","editMode":"chromes","language":"en","itemPath":"/racing/raceday-track-weather-live","variantId":"_default"},"route":{"name":"raceday-track-weather-live","displayName":"raceday-track-weather-live","fields":{"Description":{"value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026 Sandown. \n"},"PublicUrl":{"value":""},"Title":{"value":"Raceday Track \u0026 Weather Up
+
+  [weather]
+  ,"editMode":"chromes","language":"en","itemPath":"/racing/raceday-track-weather-live","variantId":"_default"},"route":{"name":"raceday-track-weather-live","displayName":"raceday-track-weather-live","fields":{"Description":{"value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026 Sandown. \n"},"PublicUrl":{"value":""},"Title":{"value":"Raceday Track \u0026 Weather Updates | Melbourne Racing Club"},"Image":{"value":{"height":"4482","dam-content-type":"Image","al
+
+  [weather]
+  day-track-weather-live","fields":{"Description":{"value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026 Sandown. \n"},"PublicUrl":{"value":""},"Title":{"value":"Raceday Track \u0026 Weather Updates | Melbourne Racing Club"},"Image":{"value":{"height":"4482","dam-content-type":"Image","alt":"bw","width":"6720","thumbnailsrc":"https://rmpl-p-001.sitecorecontenthub.cloud/api/gateway/152417/thumbnail","src":"https://dxp-cdn.racing.com/api/public/content/202208-M
+
+  [weather]
+  //rmpl-p-001.sitecorecontenthub.cloud/api/gateway/152417/thumbnail","src":"https://dxp-cdn.racing.com/api/public/content/202208-Memsie-453-152417.webp?v=054cd5a8","dam-id":"gOsGapyUTwOHhlY73Gfbuw"}},"Advertisers":[],"NavigationFilter":[],"NavigationTitle":{"value":"raceday track weather live"},"NavigationClass":null,"SxaTags":[],"Page Design":{"id":"889688c6-b952-48f8-beb3-ef136a5708d3","url":"/Presentation/Page-Designs/Content-Page","name":"Content Page","displayName":"Content Page","fields":{"PartialDesigns":[{"id":"5b23a4f3-4a53-4adc-bd67-070b8d2ac0a1
+
+  [weather]
+  ext2"},"Base Partial Design":null}},{"id":"875bfa4c-30f9-41ca-b24d-c777217ad130","url":"/Presentation/Partial-Designs/Global/Footer","name":"Footer","displayName":"Footer","fields":{"Signature":{"value":"footer"},"Base Partial Design":null}}]}},"MetaKeywords":{"value":"Track And Weather Caulfield Racecourse, Track And Weather Mornington Racecourse, Track And Weather Sportsbet Sandown"},"MetaDescription":{"value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026
+
+  [weather]
+  ":"875bfa4c-30f9-41ca-b24d-c777217ad130","url":"/Presentation/Partial-Designs/Global/Footer","name":"Footer","displayName":"Footer","fields":{"Signature":{"value":"footer"},"Base Partial Design":null}}]}},"MetaKeywords":{"value":"Track And Weather Caulfield Racecourse, Track And Weather Mornington Racecourse, Track And Weather Sportsbet Sandown"},"MetaDescription":{"value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026 Sandown."},"CanonicalUrl":{"value":""},
+
+  [weather]
+  "url":"/Presentation/Partial-Designs/Global/Footer","name":"Footer","displayName":"Footer","fields":{"Signature":{"value":"footer"},"Base Partial Design":null}}]}},"MetaKeywords":{"value":"Track And Weather Caulfield Racecourse, Track And Weather Mornington Racecourse, Track And Weather Sportsbet Sandown"},"MetaDescription":{"value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026 Sandown."},"CanonicalUrl":{"value":""},"PageType":{"id":"858d3126-2620-4e2e-b02f
+
+  [weather]
+  gnature":{"value":"footer"},"Base Partial Design":null}}]}},"MetaKeywords":{"value":"Track And Weather Caulfield Racecourse, Track And Weather Mornington Racecourse, Track And Weather Sportsbet Sandown"},"MetaDescription":{"value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026 Sandown."},"CanonicalUrl":{"value":""},"PageType":{"id":"858d3126-2620-4e2e-b02f-6fe420670390","url":"https://localhost/sitecore/login/sitecore/system/Settings/Foundation/DCA/DCAMetada
+
+  [weather]
+  "858d3126-2620-4e2e-b02f-6fe420670390","url":"https://localhost/sitecore/login/sitecore/system/Settings/Foundation/DCA/DCAMetadata/Enums/PageTypes/Content","name":"Content","displayName":"Content","fields":{"Value":{"value":"Content"}}},"MetaTitle":{"value":"Raceday Track \u0026 Weather Updates | Melbourne Racing Club"},"RobotsTag":{"id":"659142f0-49f0-414d-b02a-4e28d389fa8c","url":"https://localhost/sitecore/login/sitecore/system/Settings/Foundation/DCA/DCAMetadata/Enums/RobotMetaTags/all","name":"all","displayName":"All","fields":{"Value":{"value":"all
+
+  [weather]
+  2a-4e28d389fa8c","url":"https://localhost/sitecore/login/sitecore/system/Settings/Foundation/DCA/DCAMetadata/Enums/RobotMetaTags/all","name":"all","displayName":"All","fields":{"Value":{"value":"all"}}},"OpenGraphType":{"value":""},"OpenGraphTitle":{"value":"Raceday Track \u0026 Weather Updates | Melbourne Racing Club"},"OpenGraphAdmins":{"value":""},"OpenGraphImageUrl":{"value":{}},"OpenGraphDescription":{"value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u00
+
+  [weather]
+  value":"all"}}},"OpenGraphType":{"value":""},"OpenGraphTitle":{"value":"Raceday Track \u0026 Weather Updates | Melbourne Racing Club"},"OpenGraphAdmins":{"value":""},"OpenGraphImageUrl":{"value":{}},"OpenGraphDescription":{"value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026 Sandown."},"OpenGraphSiteName":{"value":""},"OpenGraphAppId":{"value":""},"TwitterCardType":{"id":"32f6a4e4-93dd-4a9c-aa60-cdedb0bedabb","url":"https://localhost/sitecore/login/sitecor
+
+  [weather]
+  -442d-8807-054eb7df2d7c","componentName":"DCAMetadata","dataSource":"","params":{"GridParameters":"col-12","DynamicPlaceholderId":"3","FieldNames":"Default"},"fields":{"data":{"mDatasource":{"fields":[{"name":"Description","value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026 Sandown. \n","jsonValue":{"value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026 Sando
+
+  [weather]
+  atasource":{"fields":[{"name":"Description","value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026 Sandown. \n","jsonValue":{"value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026 Sandown. \n"}},{"name":"PublicUrl","value":"","jsonValue":{"value":""}},{"name":"Title","value":"Raceday Track \u0026 Weather Updates | Melbourne Racing Club","jsonValue":{"value":"Rac
+
+  [weather]
+  nValue":{"value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026 Sandown. \n"}},{"name":"PublicUrl","value":"","jsonValue":{"value":""}},{"name":"Title","value":"Raceday Track \u0026 Weather Updates | Melbourne Racing Club","jsonValue":{"value":"Raceday Track \u0026 Weather Updates | Melbourne Racing Club"}},{"name":"Image","value":"\u003cimage src=\"https://dxp-cdn.racing.com/api/public/content/202208-Memsie-453-152417.webp?v=054cd5a8\" dam-id=\"gOsGapyUTwOH
+
+  [weather]
+  n for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026 Sandown. \n"}},{"name":"PublicUrl","value":"","jsonValue":{"value":""}},{"name":"Title","value":"Raceday Track \u0026 Weather Updates | Melbourne Racing Club","jsonValue":{"value":"Raceday Track \u0026 Weather Updates | Melbourne Racing Club"}},{"name":"Image","value":"\u003cimage src=\"https://dxp-cdn.racing.com/api/public/content/202208-Memsie-453-152417.webp?v=054cd5a8\" dam-id=\"gOsGapyUTwOHhlY73Gfbuw\" width=\"6720\" height=\"4482\" alt=\"bw\" dam-content-type=\"Image\" th
+
+  [weather]
+  ":"https://dxp-cdn.racing.com/api/public/content/202208-Memsie-453-152417.webp?v=054cd5a8","dam-id":"gOsGapyUTwOHhlY73Gfbuw"}}},{"name":"Advertisers","value":"","jsonValue":[]},{"name":"NavigationFilter","value":"","jsonValue":[]},{"name":"NavigationTitle","value":"raceday track weather live","jsonValue":{"value":"raceday track weather live"}},{"name":"NavigationClass","value":"","jsonValue":null},{"name":"ChangeFrequency","value":"{D23B4654-53A5-4589-8B1B-5665A763D144}","jsonValue":{"id":"d23b4654-53a5-4589-8b1b-5665a763d144","url":"https://localhost/si
+
+  [weather]
+  02208-Memsie-453-152417.webp?v=054cd5a8","dam-id":"gOsGapyUTwOHhlY73Gfbuw"}}},{"name":"Advertisers","value":"","jsonValue":[]},{"name":"NavigationFilter","value":"","jsonValue":[]},{"name":"NavigationTitle","value":"raceday track weather live","jsonValue":{"value":"raceday track weather live"}},{"name":"NavigationClass","value":"","jsonValue":null},{"name":"ChangeFrequency","value":"{D23B4654-53A5-4589-8B1B-5665A763D144}","jsonValue":{"id":"d23b4654-53a5-4589-8b1b-5665a763d144","url":"https://localhost/sitecore/login/sitecore/system/Settings/Foundation/E
+
+  [weather]
+  }},{"name":"__Created","value":"20250819T001343Z","jsonValue":{"value":"2025-08-19T00:13:43Z"}},{"name":"__Updated","value":"20250819T002051Z","jsonValue":{"value":"2025-08-19T00:20:51Z"}},{"name":"__Semantics","value":"","jsonValue":[]},{"name":"MetaKeywords","value":"Track And Weather Caulfield Racecourse, Track And Weather Mornington Racecourse, Track And Weather Sportsbet Sandown","jsonValue":{"value":"Track And Weather Caulfield Racecourse, Track And Weather Mornington Racecourse, Track And Weather Sportsbet Sandown"}},{"name":"MetaDescription","val
+
+  [weather]
+  T001343Z","jsonValue":{"value":"2025-08-19T00:13:43Z"}},{"name":"__Updated","value":"20250819T002051Z","jsonValue":{"value":"2025-08-19T00:20:51Z"}},{"name":"__Semantics","value":"","jsonValue":[]},{"name":"MetaKeywords","value":"Track And Weather Caulfield Racecourse, Track And Weather Mornington Racecourse, Track And Weather Sportsbet Sandown","jsonValue":{"value":"Track And Weather Caulfield Racecourse, Track And Weather Mornington Racecourse, Track And Weather Sportsbet Sandown"}},{"name":"MetaDescription","value":"Stay updated with the latest race d
+
+  [weather]
+  9T00:13:43Z"}},{"name":"__Updated","value":"20250819T002051Z","jsonValue":{"value":"2025-08-19T00:20:51Z"}},{"name":"__Semantics","value":"","jsonValue":[]},{"name":"MetaKeywords","value":"Track And Weather Caulfield Racecourse, Track And Weather Mornington Racecourse, Track And Weather Sportsbet Sandown","jsonValue":{"value":"Track And Weather Caulfield Racecourse, Track And Weather Mornington Racecourse, Track And Weather Sportsbet Sandown"}},{"name":"MetaDescription","value":"Stay updated with the latest race day track and weather information for Melb
+
+  [weather]
+  Z","jsonValue":{"value":"2025-08-19T00:20:51Z"}},{"name":"__Semantics","value":"","jsonValue":[]},{"name":"MetaKeywords","value":"Track And Weather Caulfield Racecourse, Track And Weather Mornington Racecourse, Track And Weather Sportsbet Sandown","jsonValue":{"value":"Track And Weather Caulfield Racecourse, Track And Weather Mornington Racecourse, Track And Weather Sportsbet Sandown"}},{"name":"MetaDescription","value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Morningto
+
+  [weather]
+  0:51Z"}},{"name":"__Semantics","value":"","jsonValue":[]},{"name":"MetaKeywords","value":"Track And Weather Caulfield Racecourse, Track And Weather Mornington Racecourse, Track And Weather Sportsbet Sandown","jsonValue":{"value":"Track And Weather Caulfield Racecourse, Track And Weather Mornington Racecourse, Track And Weather Sportsbet Sandown"}},{"name":"MetaDescription","value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026 Sandown.","jsonValue":{"value":
+
+  [weather]
+  ,"jsonValue":[]},{"name":"MetaKeywords","value":"Track And Weather Caulfield Racecourse, Track And Weather Mornington Racecourse, Track And Weather Sportsbet Sandown","jsonValue":{"value":"Track And Weather Caulfield Racecourse, Track And Weather Mornington Racecourse, Track And Weather Sportsbet Sandown"}},{"name":"MetaDescription","value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026 Sandown.","jsonValue":{"value":"Stay updated with the latest race day tr
+
+  [weather]
+  ngton Racecourse, Track And Weather Sportsbet Sandown","jsonValue":{"value":"Track And Weather Caulfield Racecourse, Track And Weather Mornington Racecourse, Track And Weather Sportsbet Sandown"}},{"name":"MetaDescription","value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026 Sandown.","jsonValue":{"value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026 Sandown.
+
+  [weather]
+  Sportsbet Sandown"}},{"name":"MetaDescription","value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026 Sandown.","jsonValue":{"value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026 Sandown."}},{"name":"CanonicalUrl","value":"","jsonValue":{"value":""}},{"name":"PageType","value":"{858D3126-2620-4E2E-B02F-6FE420670390}","jsonValue":{"id":"858d3126-2620-4e2e-b02f-6
+
+  [weather]
+  6-2620-4e2e-b02f-6fe420670390","url":"https://localhost/sitecore/login/sitecore/system/Settings/Foundation/DCA/DCAMetadata/Enums/PageTypes/Content","name":"Content","displayName":"Content","fields":{"Value":{"value":"Content"}}}},{"name":"MetaTitle","value":"Raceday Track \u0026 Weather Updates | Melbourne Racing Club","jsonValue":{"value":"Raceday Track \u0026 Weather Updates | Melbourne Racing Club"}},{"name":"RobotsTag","value":"{659142F0-49F0-414D-B02A-4E28D389FA8C}","jsonValue":{"id":"659142f0-49f0-414d-b02a-4e28d389fa8c","url":"https://localhost/si
+
+  [weather]
+  em/Settings/Foundation/DCA/DCAMetadata/Enums/PageTypes/Content","name":"Content","displayName":"Content","fields":{"Value":{"value":"Content"}}}},{"name":"MetaTitle","value":"Raceday Track \u0026 Weather Updates | Melbourne Racing Club","jsonValue":{"value":"Raceday Track \u0026 Weather Updates | Melbourne Racing Club"}},{"name":"RobotsTag","value":"{659142F0-49F0-414D-B02A-4E28D389FA8C}","jsonValue":{"id":"659142f0-49f0-414d-b02a-4e28d389fa8c","url":"https://localhost/sitecore/login/sitecore/system/Settings/Foundation/DCA/DCAMetadata/Enums/RobotMetaTags
+
+  [weather]
+  t/sitecore/login/sitecore/system/Settings/Foundation/DCA/DCAMetadata/Enums/RobotMetaTags/all","name":"all","displayName":"All","fields":{"Value":{"value":"all"}}}},{"name":"OpenGraphType","value":"","jsonValue":{"value":""}},{"name":"OpenGraphTitle","value":"Raceday Track \u0026 Weather Updates | Melbourne Racing Club","jsonValue":{"value":"Raceday Track \u0026 Weather Updates | Melbourne Racing Club"}},{"name":"OpenGraphAdmins","value":"","jsonValue":{"value":""}},{"name":"OpenGraphImageUrl","value":"","jsonValue":{"value":{}}},{"name":"OpenGraphDescrip
+
+  [weather]
+  Tags/all","name":"all","displayName":"All","fields":{"Value":{"value":"all"}}}},{"name":"OpenGraphType","value":"","jsonValue":{"value":""}},{"name":"OpenGraphTitle","value":"Raceday Track \u0026 Weather Updates | Melbourne Racing Club","jsonValue":{"value":"Raceday Track \u0026 Weather Updates | Melbourne Racing Club"}},{"name":"OpenGraphAdmins","value":"","jsonValue":{"value":""}},{"name":"OpenGraphImageUrl","value":"","jsonValue":{"value":{}}},{"name":"OpenGraphDescription","value":"Stay updated with the latest race day track and weather information f
+
+  [weather]
+  Raceday Track \u0026 Weather Updates | Melbourne Racing Club"}},{"name":"OpenGraphAdmins","value":"","jsonValue":{"value":""}},{"name":"OpenGraphImageUrl","value":"","jsonValue":{"value":{}}},{"name":"OpenGraphDescription","value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026 Sandown.","jsonValue":{"value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026 Sandown.
+
+  [weather]
+  ":{"value":{}}},{"name":"OpenGraphDescription","value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026 Sandown.","jsonValue":{"value":"Stay updated with the latest race day track and weather information for Melbourne Racing Club's three locations at Caulfield, Mornington \u0026 Sandown."}},{"name":"OpenGraphSiteName","value":"","jsonValue":{"value":""}},{"name":"OpenGraphAppId","value":"","jsonValue":{"value":""}},{"name":"TwitterCardType","value":"{32F6A4E4-
+
+  [weather]
+  l-12","CacheClearingBehavior":"Clear on publish","DynamicPlaceholderId":"1","FieldNames":"Default"},"placeholders":{"container-{*}":[{"uid":"5b957288-cce6-45d0-8adc-1405c763b2e5","componentName":"DCAHeroBanner","dataSource":"/sitecore/content/Racing/MRC/Home/racing/raceday-track-weather-live/Data/hero","params":{"GridParameters":"col-12","FieldNames":"Default","DynamicPlaceholderId":"18"},"fields":{"SecondaryCTALink":{"value":{"href":""}},"Title":{"value":"Raceday Track \u0026 Weather"},"Image":{"value":{"height":"500","dam-content-type":"Image","width":
+
+  [weather]
+  oBanner","dataSource":"/sitecore/content/Racing/MRC/Home/racing/raceday-track-weather-live/Data/hero","params":{"GridParameters":"col-12","FieldNames":"Default","DynamicPlaceholderId":"18"},"fields":{"SecondaryCTALink":{"value":{"href":""}},"Title":{"value":"Raceday Track \u0026 Weather"},"Image":{"value":{"height":"500","dam-content-type":"Image","width":"1500","thumbnailsrc":"https://rmpl-p-001.sitecorecontenthub.cloud/api/gateway/2987171/thumbnail","src":"https://dxp-cdn.racing.com/api/public/content/202302-Blue-Diamond-411-2987171.webp?v=f3be51c2","d
+
+  [weather]
+  :"col-12 offset-lg-1 col-lg-7","Styles":"indent-top","DynamicPlaceholderId":"17","FieldNames":"Default"},"placeholders":{"container-{*}":[{"uid":"b70834c4-4040-46ef-8934-5c8c28f1ee2a","componentName":"RichText","dataSource":"/sitecore/content/Racing/MRC/Home/racing/raceday-track-weather-live/Data/Text 10","params":{"GridParameters":"col-12 col-lg-12","FieldNames":"Default","DynamicPlaceholderId":"21"},"fields":{"Text":{"value":"\u003cdiv class=\"ck-content\"\u003e\u003ch3\u003e\u0026nbsp;\u003c/h3\u003e\u003ch3 style=\"text-align:center;\"\u003eLive Data
+
+  [weather]
+  \u003e\u003ch3\u003e\u0026nbsp;\u003c/h3\u003e\u003ch3 style=\"text-align:center;\"\u003eLive Data Feed\u003c/h3\u003e\u003c/div\u003e"}}},{"uid":"64bd49ba-a022-448c-ac7b-27c4c759d42b","componentName":"DCATabs","dataSource":"/sitecore/content/Racing/MRC/Home/racing/raceday-track-weather-live/Data/tabs","params":{"GridParameters":"col-12 me-lg-auto col-lg-12 offset-lg-0","SearchIgnore":"1","FieldNames":"Default","Styles":"position-center tabs--align-centre position-left utils__indent-top-small","DynamicPlaceholderId":"1"},"fields":{"DynamicPlaceholderId":
+
+  [weather]
+  ynamicPlaceholderId":"2"},"fields":{"Title":{"value":"Caulfield"},"DynamicPlaceholderId":{"value":""}},"placeholders":{"DCATabItem-{*}":[{"uid":"4c46b4ae-bfce-4410-a034-f4ebc9d4f5c9","componentName":"DCAIframe","dataSource":"/sitecore/content/Racing/MRC/Home/racing/raceday-track-weather-live/Data/caul iframe","params":{"GridParameters":"col-12","SearchIgnore":"1","FieldNames":"Default","DynamicPlaceholderId":"14"},"fields":{"RenderScriptTag":{"value":false},"ScriptTagAttributes":{"value":""},"ScriptSrc":{"value":""},"DesktopHeight":{"value":null},"Loadin
+
+  [weather]
+  o.uk/visualiser/ladbrokes"},"EnableDynamicResizing":{"value":true},"MobileHeight":{"value":null},"Title":{"value":"Sportsbet Sandown "}}},{"uid":"da74fc1e-d88d-4c6f-8a5a-630b1879dfe7","componentName":"RichText","dataSource":"/sitecore/content/Racing/MRC/Home/racing/raceday-track-weather-live/Data/Text 4","params":{"GridParameters":"col-12","FieldNames":"Default","DynamicPlaceholderId":"11"},"fields":{"Text":{"value":""}}}]}},{"uid":"eab877b2-5af4-4fbc-953b-1fbb4d87a355","componentName":"DCATabItem","dataSource":"/sitecore/content/Racing/MRC/Home/racing/r
+
+  [weather]
+  Data/Text 4","params":{"GridParameters":"col-12","FieldNames":"Default","DynamicPlaceholderId":"11"},"fields":{"Text":{"value":""}}}]}},{"uid":"eab877b2-5af4-4fbc-953b-1fbb4d87a355","componentName":"DCATabItem","dataSource":"/sitecore/content/Racing/MRC/Home/racing/raceday-track-weather-live/Data/morn tab","params":{"GridParameters":"col-12","SearchIgnore":"1","FieldNames":"Default","DynamicPlaceholderId":"12"},"fields":{"Title":{"value":"Mornington"},"DynamicPlaceholderId":{"value":""}},"placeholders":{"DCATabItem-{*}":[{"uid":"4ff77638-2f65-4180-899d-e

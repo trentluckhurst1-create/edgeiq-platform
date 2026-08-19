@@ -1,0 +1,22 @@
+{
+  "execution_order_reviewed": [
+    "Race entry fact",
+    "Historical normalisation",
+    "Horse observations",
+    "Horse aggregates",
+    "Horse ratings",
+    "Race-entry snapshots",
+    "Performance context",
+    "Context eligibility",
+    "Context parameter selection",
+    "Context adjustment",
+    "Adjusted performance",
+    "Suitability",
+    "Projected performance",
+    "ERI",
+    "EPI components",
+    "EPI fact"
+  ],
+  "orchestration_change_applied": "No daily orchestration promotion applied because downstream remains blocked by missing governed context and identity evidence.",
+  "status": "PASS_WITH_GOVERNED_BLOCKERS"
+}

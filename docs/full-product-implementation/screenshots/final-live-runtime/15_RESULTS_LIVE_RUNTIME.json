@@ -1,0 +1,29 @@
+{
+  "workspace": "15_RESULTS",
+  "label": "RESULTS",
+  "captureErrors": [],
+  "mounted": [
+    {
+      "component": "RaceResultsWorkspace",
+      "key": "RESULTS",
+      "tag": "SECTION",
+      "className": "eiq-race-workspace eiq-race-workspace--results"
+    },
+    {
+      "component": "RaceResultsWorkspace",
+      "key": "RESULTS",
+      "tag": "SECTION",
+      "className": "eiq-results-live-workspace"
+    }
+  ],
+  "mountedComponent": "RaceResultsWorkspace",
+  "mountedKey": "RESULTS",
+  "selectedMeeting": "2026-07-17|WANGARATTA",
+  "selectedRace": null,
+  "activeSection": "results",
+  "viewLevel": "race",
+  "runnerCount": 30,
+  "dataAvailability": "PARTIAL_OR_PENDING",
+  "bodySample": "EDGEiQ\nRACE INTELLIGENCE\nHOME\nMEETINGS\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nEPI\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nRESULTS\nLAB\nCOMPARE\nREVIEW\nSETTINGS\nEDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM\nInformation is not Intelligence. Evidence leads. Precision decides.\nSUN, 19 JULY 2026\n06:50 pm\nAEDT\nMEETINGS\nWANGARATTA\nRACE 1\nRESULTS\nRace 1\nCurrent Race\nBack to Races\nLOCATION\nWangaratta\nDATE\n2026-07-17\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nEPI\nRESULTS\nREVIEW\nRESULTS\nWangaratta R1\n\nAwaiting official result. The approved review structure remains available while official result fields are pending.\n\nSTATUS\nAwaiting official result\nWINNER\nPending\nRACE RATING\nPending\nSECTIONALS\nLengths vs standard when governed\nSTEWARDS\nPending\nOFFICIAL FINISHING ORDER\nPending result structure\nPos\tNo\tHorse\tJockey\tTrainer\tSP\tMargin\tStatus\nPending\t-\tLIMBERING\tNot Notified\tRAHARNA MCDONALD\tPending\tPending\tACTIVE\nPending\t-\tHUGHIE\tNot Notified\tJAMIE EDWARDS\tPending\tPending\tACTIVE\nPending\t-\tDETERMINATO\tBILLY EGAN\tDOMINIC SUTTON\tPending\tPending\tACTIVE\nPending\t-\tKING TAGALOA\tDYLAN DEAN\tJULIUS SANDHU\tPending\tPending\tACTIVE\nPending\t-\tOBON\tLUKE NOLEN\tMICHAEL KENT\tPending\tPending\tACTIVE\nPending\t-\tREEL DEADLY\tTHOMAS STOCKDALE\tCIARON MAHER\tPending\tPending\tACTIVE\nPending\t-\tRUSSIAN FIREBIRD\tBRAD RAWILLER\tTOBY LAKE\tPending\tPending\tACTIVE\nPending\t-\tSKY DEEL\tJAMIE MOTT\tGAVIN BEDGGOOD\tPending\tPending\tACTIVE\nPending\t-\tEXPANDING POWER\tLACHLAN NEINDORF\tENVER JUSUFOVIC\tPending\tPending\tACTIVE\nPending\t-\tCAPITAL STORM\tLACHLAN NEINDORF\tPHILLIP STOKES\tPending\tPending\tACTIVE\nPending\t-\tFONTALICIOUS\tPATRICK MOLONEY\tSHANE NICHOLS & HAYDEN BLACK\tPending\tPending\tACTIVE\nPending\t-\tMERCHANTESSA\tTEO NUGENT\tJASON WARREN\tPending\tPending\tACTIVE\nPending\t-\tMIRADOR\tDANIEL STACKHOUSE\tBEN, WILL & JD HAYES\tPending\tPending\tACTIVE\nPending\t-\tRUBY GUILD\tNATHAN PUNCH\tROBBIE GRIFFITHS\tPending\tPending\tACTIVE\nPending\t-\tTRICKY MISS\tJAKE NOONAN\tCIARON MAHER\tPending\tPending\tACTIVE\nPending\t-\tPORTINARI\tDANIEL STACKHOUSE\tBEN, WILL & JD HAYES\tPending\tPending\tACTIVE\nPending\t-\tMINELLO\tJAMIE MOTT\tANTHONY & SAM FREEDMAN\tPending\tPending\tACTIVE\nPending\t-\tPINAMILLOY\tZAC SPAIN\tJASON WARREN\tPending\tPending\tACTIVE\nPending\t-\tRES MIRA\tBRAD RAWILLER\tMARK WEBB\tPending\tPending\tACTIVE\nPending\t-\tSTINGRAY BARB\tNADIA DANIELS\tPAT CAREY & HARRIS WALKER\tPending\tPending\tACTIVE\nPending\t-\tZAAC\tTHOMAS STOCKDALE\tJOHN MCARDLE\tPending\tPending\tACTIVE\nPending\t-\tBABY BLUE\tDAMIEN THORNTON\tBEN, WILL & JD HAYES\tPending\tPending\tACTIVE\nPending\t-\tCONTARINI\tBEAU MERTENS\tCHRIS WALLER\tPending\tPending\tACTIVE\nPending\t-\tETERNAL JOY\tJORDAN CHILDS\tBEN, WILL & JD HAYES\tPending\tPending\tACTIVE\nPending\t-\tBIG FIN\tTEO NUGENT\tBROOKE VERWEY-MITCHELL\tPending\tPending\tACTIVE\nPending\t-\tLEVRIER\tPATRICK MOLONEY\tMATT LAURIE\tPending\tPending\tACTIVE\nPending\t-\tMARCH ON BY\tRYAN HOUSTON\tSIMON ZAHRA\tPending\tPending\tACTIVE\nPending\t-\tBLUE SHIELD\tLACHLAN NEINDORF\tMICK PRICE & MICHAEL KENT JNR\tPending\tPending\tACTIVE\nPending\t-\tCALEXPO\tDANIEL STACKHOUSE\tBEN, WILL & JD HAYES\tPending\tPending\tACTIVE\nPending\t-\tCIRCUS BERZERKUS\tBAILEY KINNINMONT\tJIM CERCHI (JNR)\tPending\tPending\tACTIVE\nRUNNER PERFORMANCE SNAPSHOT\nGoverned EPI / ERI\n\nCurrent runner performance fields remain visible; official sectional review unlocks when result and sectional feeds are governed.\n\nLIMBERING\nEPI - / ERI -\nHUGHIE\nEPI - / ERI -\nDETERMINATO\nEPI - / ERI -\nKING TAGALOA\nEPI - / ERI -\nOBON\nEPI - / ERI -\nREEL DEADLY\nEPI - / ERI -\nREVIEW NOTES\nPending-safe review state\nOfficial finishing order, SP and margins are populated only when governed result rows exist.\nSectional lengths versus standard remain unavailable until the governed sectional source is connected.\nNo replay or simulated result data is displayed.\nEDGEiQ Racing Intelligence Operating System\nBuild: 1.0.0\nData as at: 06:50 pm AEDT",
+  "renderedPath": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-live-runtime/15_RESULTS_LIVE_RENDERED.png"
+}

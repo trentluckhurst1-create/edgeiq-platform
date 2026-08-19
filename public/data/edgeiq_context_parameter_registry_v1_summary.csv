@@ -1,0 +1,10 @@
+metric,value
+status,BLOCKED_CONTEXT_PARAMETER_REGISTRY_UNAVAILABLE
+registry_rows,0
+governed_parameter_rows,0
+adjustment_components_fabricated,NO
+parameter_coefficients_estimated,NO
+parameter_coefficients_defaulted,NO
+builder_version,edgeiq_context_parameter_registry_v1.0.0_header_only_governed_unavailable
+contract_version,1.0.0
+built_at_utc,2026-07-30T00:04:06Z

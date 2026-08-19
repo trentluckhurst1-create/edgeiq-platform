@@ -1,0 +1,9 @@
+{
+  "status": "PIPELINE_FORENSICS_BLOCKER_FOUND",
+  "stages_audited": 14,
+  "passing_stages": 12,
+  "blocked_stages": 2,
+  "first_zero_stage": "Projected Performance",
+  "first_missing_stage": "NONE",
+  "first_blocker": "Projected Performance"
+}

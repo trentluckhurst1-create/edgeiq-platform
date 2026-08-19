@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0",
+  "repository_recovery_program": "EDGEIQ Repository Recovery V2",
+  "total_repository_items": 3272,
+  "items_by_phase": {
+    "PHASE_01_SNAPSHOT": 77,
+    "PHASE_02_ACTIVE_SOURCE": 86,
+    "PHASE_03_DOCUMENTATION": 1051,
+    "PHASE_04_GENERATED_OUTPUTS": 637,
+    "PHASE_05_DATASETS": 843,
+    "PHASE_06_BUILDERS": 522,
+    "PHASE_07_PUBLIC_ASSETS": 38,
+    "PHASE_08_MISC": 18
+  },
+  "items_by_action": {
+    "ARCHIVE": 75,
+    "COMMIT": 646,
+    "KEEP": 1051,
+    "REVIEW": 1500
+  },
+  "items_by_risk": {
+    "CONTROLLED_UNIT": 9,
+    "HIGH": 163,
+    "LOW_REVIEW_REQUIRED": 1695,
+    "MEDIUM": 1404,
+    "UNRESOLVED": 1
+  },
+  "items_by_governed_unit": {
+    "GOVERNANCE_DOCUMENTATION": 1051,
+    "PLATFORM_DATA_ASSET": 843,
+    "GENERATED_EVIDENCE_OUTPUT": 637,
+    "AUDIT_SCRIPT": 192,
+    "SUPPORT_SCRIPT": 146,
+    "BUILDER_SCRIPT": 81,
+    "SNAPSHOT_AND_LEGACY_SOURCE": 77,
+    "MIGRATION_OR_PATCH_SCRIPT": 76,
+    "PUBLIC_RUNTIME_ASSET": 38,
+    "SHARED_UI_COMPONENT": 28,
+    "VALIDATION_SCRIPT": 27,
+    "SOURCE_UNIT_UNRESOLVED": 26,
+    "MISCELLANEOUS_REPOSITORY_ITEM": 18,
+    "APPLICATION_STYLING": 13,
+    "RACE_WORKSPACE": 6,
+    "MAP_WORKSPACE": 4,
+    "FORM_WORKSPACE": 3,
+    "FRONTEND_DATA_WIRING": 3,
+    "MARKET_WORKSPACE": 1,
+    "MEETINGS_WORKSPACE": 1,
+    "SHARED_TYPES": 1
+  },
+  "items_by_status": {
+    "COMPLETE": 72,
+    "PENDING": 3200
+  },
+  "items_pending": 3200,
+  "items_complete": 72,
+  "repository_recovery_completion_percent": 2.2,
+  "validation": {
+    "verdict": "PASS",
+    "unique_repository_paths": 3272,
+    "unique_recovery_ids": 3272,
+    "deterministic_ordering": true,
+    "mandatory_fields_populated": true
+  },
+  "latest_completed_unit": {
+    "unit": "RRV2 Unit 007",
+    "name": "Governed Snapshot Archive Execution",
+    "items_completed": 72
+  }
+}

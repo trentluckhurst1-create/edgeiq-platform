@@ -1,0 +1,23 @@
+{
+  "components": [
+    {
+      "component": "official_results_ingestion",
+      "current_failure": "returned raw_rows=0 facts=0 for post-cutoff window",
+      "expected_schema": "official result facts",
+      "input": "historic local CSV sources",
+      "output": "edgeiq_daily_official_results_fact_v1.csv",
+      "script_path": "scripts/build_edgeiq_daily_official_results_ingestion_v1.py",
+      "source_class": "LOCAL_HISTORIC"
+    },
+    {
+      "component": "racing_australia_public_results_repair",
+      "current_failure": "none for Sale; pending for Sandown/Bendigo where source says unavailable",
+      "expected_schema": "finish/margin/time/runner facts",
+      "input": "Racing Australia public Results.aspx HTML",
+      "output": "daily official facts + raw evidence",
+      "script_path": "scripts/run_edgeiq_victoria_current_results_pipeline_v1.py",
+      "source_class": "PUBLIC_OFFICIAL_HTML"
+    }
+  ],
+  "start_commit": "5ba1197"
+}

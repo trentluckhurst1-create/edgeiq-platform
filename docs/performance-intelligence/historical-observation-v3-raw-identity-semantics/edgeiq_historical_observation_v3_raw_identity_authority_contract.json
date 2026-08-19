@@ -1,0 +1,25 @@
+{
+  "asset_catalog_proven": true,
+  "contract_id": "EDGEIQ_HISTORICAL_OBSERVATION_V3_RAW_IDENTITY_AUTHORITY_CONTRACT_V1",
+  "corrected_derived_fields": [
+    "performance_fact_id",
+    "benchmark_eligible",
+    "quality_state"
+  ],
+  "decision": "MULTIPLE_IDENTITY_EXPRESSIONS_MATCH",
+  "generated_at_utc": "2026-07-27T06:29:30+00:00",
+  "materialisation_proven": true,
+  "non_circular_raw_reference_count": 42,
+  "population_contract": {
+    "duplicate_excess": 89,
+    "physical_rows": 879784,
+    "unique_raw_identities": 879695
+  },
+  "raw_source_lineage_fields": [
+    "source_row_number"
+  ],
+  "selected_physical_authority": null,
+  "selected_raw_identity_expression": null,
+  "status": "EDGEIQ_HISTORICAL_OBSERVATION_V3_RAW_IDENTITY_SEMANTICS_PHASE1A_6B_1A_V1_FAIL",
+  "warehouse_build_authorised": false
+}

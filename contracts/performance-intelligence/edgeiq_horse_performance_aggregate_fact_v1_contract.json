@@ -1,0 +1,66 @@
+{
+  "contract_name": "edgeiq_horse_performance_aggregate_fact_v1",
+  "contract_version": "1.0.0",
+  "grain": "one_row_per_canonical_horse_as_of_date_and_effective_aggregation_parameter_when_minimum_observations_are_met",
+  "primary_key": [
+    "horse_performance_aggregate_id"
+  ],
+  "required_fields": [
+    "horse_performance_aggregate_id",
+    "canonical_horse_id",
+    "canonical_horse_name",
+    "aggregate_as_of_date",
+    "horse_performance_aggregation_parameter_id",
+    "aggregation_method",
+    "maximum_observations",
+    "lookback_days",
+    "minimum_observations",
+    "recency_weighting_method",
+    "recency_half_life_days",
+    "eligible_observation_count",
+    "included_observation_count",
+    "oldest_included_race_date",
+    "newest_included_race_date",
+    "total_weight",
+    "aggregate_rating_value",
+    "aggregate_status",
+    "aggregation_model_version",
+    "included_observation_ids_sha256",
+    "source_parameter_evidence_sha256",
+    "source_observation_evidence_sha256",
+    "horse_performance_aggregate_evidence_sha256",
+    "builder_version",
+    "contract_version",
+    "built_at_utc"
+  ],
+  "allowed_values": {
+    "aggregation_method": [
+      "ARITHMETIC_MEAN",
+      "WEIGHTED_ARITHMETIC_MEAN"
+    ],
+    "recency_weighting_method": [
+      "NONE",
+      "EXPONENTIAL_HALF_LIFE"
+    ],
+    "aggregate_status": [
+      "HISTORICAL_AGGREGATE_GOVERNED"
+    ]
+  },
+  "forbidden_fields": [
+    "epi",
+    "eri",
+    "today_epi",
+    "predictive_rating",
+    "forecast_rating",
+    "performance_rank",
+    "class_adjustment",
+    "distance_adjustment",
+    "track_adjustment",
+    "condition_adjustment",
+    "jockey_adjustment",
+    "trainer_adjustment",
+    "barrier_adjustment",
+    "weight_carried_adjustment",
+    "preparation_stage_adjustment"
+  ]
+}

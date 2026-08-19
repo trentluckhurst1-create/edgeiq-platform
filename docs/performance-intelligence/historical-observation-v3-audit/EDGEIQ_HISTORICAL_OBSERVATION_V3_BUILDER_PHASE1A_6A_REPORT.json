@@ -1,0 +1,215 @@
+{
+  "audit_id": "EDGEIQ_HISTORICAL_OBSERVATION_V3_BUILDER_PHASE1A_6A_AUDIT_V1",
+  "builder": "scripts/rebuild_edgeiq_historical_observation_warehouse_v3.py",
+  "builder_findings": {
+    "functions": [
+      "clean",
+      "col",
+      "load_collisions",
+      "load_crosswalk",
+      "main",
+      "nf",
+      "nn",
+      "now",
+      "obs_id",
+      "rc",
+      "read_csv",
+      "sha"
+    ],
+    "glob_calls": [],
+    "observation_id_calls": [
+      {
+        "expression": "obs_id([rel, str(n), fhash, key, date, track, race, runner])",
+        "function": "obs_id",
+        "line": 168
+      }
+    ],
+    "recursive_glob_calls": [
+      {
+        "expression": "PUBLIC.rglob('*.csv')",
+        "function": "PUBLIC.rglob",
+        "line": 108
+      }
+    ]
+  },
+  "candidate_header": [
+    "observation_id",
+    "source_system",
+    "source_path",
+    "source_row_number",
+    "source_file_sha256",
+    "horse_key",
+    "source_horse_name",
+    "normalised_horse_name",
+    "source_url",
+    "race_date",
+    "track",
+    "race_number",
+    "runner_number",
+    "canonical_horse_id",
+    "canonical_horse_name",
+    "identity_status",
+    "identity_resolution_method",
+    "identity_evidence_sha256"
+  ],
+  "existing_audit": {
+    "candidate_observations": 2431489,
+    "candidate_sha256": "9d5cfe030f60bf5c3d2ac4011bc5a82855c531f647fe2abf165418917d14a08a",
+    "checks": {
+      "all_rows_replayed": true,
+      "candidate_exists": true,
+      "crosswalk_loaded": true,
+      "identity_reconciles": true,
+      "identity_v2_passed": true,
+      "no_fuzzy_matching_used": true,
+      "observation_ids_unique": true,
+      "sources_discovered": true
+    },
+    "collision_keys": 717,
+    "collision_rows": 80603,
+    "crosswalk_keys": 820,
+    "duplicate_observation_ids": 0,
+    "generated_at_utc": "2026-07-24T02:43:49+00:00",
+    "promoted": false,
+    "promotion": null,
+    "resolved_percentage": 6.161451,
+    "resolved_rows": 149815,
+    "rows_scanned": 2431489,
+    "source_files": 277,
+    "status": "EDGEIQ_HISTORICAL_OBSERVATION_WAREHOUSE_V3_AUDIT_PASS",
+    "unresolved_no_crosswalk_rows": 1791529,
+    "unresolved_no_horse_key_rows": 409542
+  },
+  "existing_contract": {
+    "candidate_output": "docs/performance-intelligence/warehouse-v2/historical-observation-warehouse-v3/edgeiq_historical_observation_warehouse_v3_CANDIDATE.csv",
+    "contract_id": "EDGEIQ_HISTORICAL_OBSERVATION_WAREHOUSE_V3_CONTRACT",
+    "promotion_target": "public/data/edgeiq_historical_observation_warehouse_v3.csv",
+    "rules": [
+      "deterministic crosswalk only",
+      "collision keys rejected",
+      "no fuzzy matching",
+      "source identity preserved per row"
+    ],
+    "source_identity_field": "horse_key",
+    "source_system": "RACINGCOM",
+    "version": "3.0.0"
+  },
+  "existing_outputs": {
+    "audit": "docs/performance-intelligence/warehouse-v2/historical-observation-warehouse-v3/EDGEIQ_HISTORICAL_OBSERVATION_WAREHOUSE_V3_AUDIT.json",
+    "candidate": "docs/performance-intelligence/warehouse-v2/historical-observation-warehouse-v3/edgeiq_historical_observation_warehouse_v3_CANDIDATE.csv",
+    "contract": "docs/performance-intelligence/warehouse-v2/historical-observation-warehouse-v3/edgeiq_historical_observation_warehouse_v3_contract.json",
+    "source_summary": "docs/performance-intelligence/warehouse-v2/historical-observation-warehouse-v3/edgeiq_historical_observation_v3_source_summary.csv"
+  },
+  "expected_population_contract": {
+    "duplicate_excess": 89,
+    "physical_rows": 879784,
+    "unique_raw_identities": 879695
+  },
+  "generated_at_utc": "2026-07-27T05:49:31+00:00",
+  "governance_checks": [
+    {
+      "check_id": "A01",
+      "evidence": "scripts/rebuild_edgeiq_historical_observation_warehouse_v3.py",
+      "requirement": "Builder must exist and remain inspectable without execution.",
+      "result": "PASS",
+      "severity": "CRITICAL"
+    },
+    {
+      "check_id": "A02",
+      "evidence": "Builder uses a recursive public/data CSV discovery rule without an explicit consolidated-authority allow-list.",
+      "requirement": "Source admission must use the approved consolidated GraphQL authority only.",
+      "result": "FAIL",
+      "severity": "CRITICAL"
+    },
+    {
+      "check_id": "A03",
+      "evidence": "{\"checkpoint\": false, \"legacy\": false, \"live\": false, \"monthly\": false, \"sectional\": false, \"speed\": false}",
+      "requirement": "Monthly, legacy, speed, sectional, live and checkpoint sources must be explicitly excluded.",
+      "result": "FAIL",
+      "severity": "CRITICAL"
+    },
+    {
+      "check_id": "A04",
+      "evidence": "Source files in summary: 277; classifications: {'REJECT_BACKUP': 2, 'REJECT_SECTIONAL': 46, 'REJECT_SPEED': 146, 'UNAPPROVED_GRAPHQL_OR_UNKNOWN': 2, 'UNAPPROVED_RACINGCOM_OR_UNKNOWN': 81}",
+      "requirement": "Previously admitted sources must conform to the approved source authority.",
+      "result": "FAIL",
+      "severity": "CRITICAL"
+    },
+    {
+      "check_id": "A05",
+      "evidence": "Candidate fields inspected from header only: observation_id, source_system, source_path, source_row_number, source_file_sha256, horse_key, source_horse_name, normalised_horse_name, source_url, race_date, track, race_number, runner_number, canonical_horse_id, canonical_horse_name, identity_status, identity_resolution_method, identity_evidence_sha256",
+      "requirement": "Every admitted observation must preserve row-level source and identity lineage.",
+      "result": "PASS",
+      "severity": "HIGH"
+    },
+    {
+      "check_id": "A06",
+      "evidence": "Builder contract declares no fuzzy matching.",
+      "requirement": "Identity resolution must remain deterministic and prohibit fuzzy matching.",
+      "result": "PASS",
+      "severity": "HIGH"
+    },
+    {
+      "check_id": "A07",
+      "evidence": "obs_id defined=True; obs_id calls=1",
+      "requirement": "Observation identifiers must be generated deterministically.",
+      "result": "PASS",
+      "severity": "HIGH"
+    },
+    {
+      "check_id": "A08",
+      "evidence": "No recognised physical-row metric found in existing audit JSON.",
+      "requirement": "Physical population must equal 879,784 rows.",
+      "result": "NOT_VERIFIED",
+      "severity": "CRITICAL"
+    },
+    {
+      "check_id": "A09",
+      "evidence": "No recognised unique-identity metric found in existing audit JSON.",
+      "requirement": "Unique raw observation identities must equal 879,695.",
+      "result": "NOT_VERIFIED",
+      "severity": "CRITICAL"
+    },
+    {
+      "check_id": "A10",
+      "evidence": "No recognised duplicate metric found in existing audit JSON.",
+      "requirement": "The governed duplicate excess must remain 89.",
+      "result": "NOT_VERIFIED",
+      "severity": "CRITICAL"
+    },
+    {
+      "check_id": "A11",
+      "evidence": "Candidate header contains identity and source-lineage fields only.",
+      "requirement": "Observation construction must remain separate from downstream performance enrichment.",
+      "result": "PASS",
+      "severity": "HIGH"
+    },
+    {
+      "check_id": "A12",
+      "evidence": "SHA256/rebuild language exists, but this inspection phase did not execute two builds or establish byte-identical outputs.",
+      "requirement": "The builder must verify byte-identical deterministic rebuilds.",
+      "result": "PARTIAL",
+      "severity": "HIGH"
+    }
+  ],
+  "mode": "INSPECTION_ONLY",
+  "mutations_performed": [],
+  "promotion_executed": false,
+  "recommendation": "REPLACE",
+  "recommendation_reason": "The existing builder's source-admission architecture is broad and does not enforce the locked consolidated GraphQL authority. Because source authority defines the warehouse population, this is a foundational divergence rather than a cosmetic defect.",
+  "result_counts": {
+    "FAIL": 3,
+    "NOT_VERIFIED": 3,
+    "PARTIAL": 1,
+    "PASS": 5
+  },
+  "source_classification_counts": {
+    "REJECT_BACKUP": 2,
+    "REJECT_SECTIONAL": 46,
+    "REJECT_SPEED": 146,
+    "UNAPPROVED_GRAPHQL_OR_UNKNOWN": 2,
+    "UNAPPROVED_RACINGCOM_OR_UNKNOWN": 81
+  },
+  "status": "EDGEIQ_HISTORICAL_OBSERVATION_V3_BUILDER_PHASE1A_6A_AUDIT_V1_FAIL",
+  "warehouse_rebuild_executed": false
+}

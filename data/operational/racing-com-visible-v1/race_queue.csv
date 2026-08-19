@@ -1,0 +1,9 @@
+meeting_date,venue,race_number,race_url,queue_state,row_count,section_count,raw_dir,error
+2026-07-29,sportsbet-sandown-hillside,1,https://www.racing.com/form/2026-07-29/sportsbet-sandown-hillside/race/1/speed-data,NO_SECTIONALS,0,0,data\raw\racing-com-visible-v1\2026-07-29\sportsbet-sandown-hillside\R1,
+2026-07-29,sportsbet-sandown-hillside,2,https://www.racing.com/form/2026-07-29/sportsbet-sandown-hillside/race/2/speed-data,NO_SECTIONALS,0,0,data\raw\racing-com-visible-v1\2026-07-29\sportsbet-sandown-hillside\R2,
+2026-07-29,sportsbet-sandown-hillside,3,https://www.racing.com/form/2026-07-29/sportsbet-sandown-hillside/race/3/speed-data,NO_SECTIONALS,0,0,data\raw\racing-com-visible-v1\2026-07-29\sportsbet-sandown-hillside\R3,
+2026-07-29,sportsbet-sandown-hillside,4,https://www.racing.com/form/2026-07-29/sportsbet-sandown-hillside/race/4/speed-data,NO_SECTIONALS,0,0,data\raw\racing-com-visible-v1\2026-07-29\sportsbet-sandown-hillside\R4,
+2026-07-29,sportsbet-sandown-hillside,5,https://www.racing.com/form/2026-07-29/sportsbet-sandown-hillside/race/5/speed-data,FAILED_TRANSIENT,0,0,data\raw\racing-com-visible-v1\2026-07-29\sportsbet-sandown-hillside\R5,TimeoutError: Timeout 45000ms exceeded.
+2026-07-29,sportsbet-sandown-hillside,6,https://www.racing.com/form/2026-07-29/sportsbet-sandown-hillside/race/6/speed-data,FAILED_TRANSIENT,0,0,data\raw\racing-com-visible-v1\2026-07-29\sportsbet-sandown-hillside\R6,TimeoutError: Timeout 45000ms exceeded.
+2026-07-29,sportsbet-sandown-hillside,7,https://www.racing.com/form/2026-07-29/sportsbet-sandown-hillside/race/7/speed-data,PAGE_SCHEMA_CHANGED,0,0,data\raw\racing-com-visible-v1\2026-07-29\sportsbet-sandown-hillside\R7,
+2026-07-29,sportsbet-sandown-hillside,8,https://www.racing.com/form/2026-07-29/sportsbet-sandown-hillside/race/8/speed-data,FAILED_TRANSIENT,0,0,data\raw\racing-com-visible-v1\2026-07-29\sportsbet-sandown-hillside\R8,TimeoutError: Timeout 45000ms exceeded.

@@ -1,0 +1,97 @@
+{
+  "unit": "RRV2_UNIT_008",
+  "version": "V1_BOUNDED",
+  "generated_at_utc": "2026-07-28T18:25:49.570891+00:00",
+  "verdict": "PASS",
+  "bounded_execution": {
+    "maximum_runtime_seconds": 90,
+    "maximum_script_files": 5000,
+    "maximum_file_bytes": 2000000,
+    "maximum_css_candidates": 25,
+    "difflib_used": false,
+    "repository_mutation_performed": false
+  },
+  "summary": {
+    "protected_snapshot_count": 5,
+    "reference_evidence_rows": 5,
+    "css_candidate_rows": 25,
+    "status_counts": {
+      "EXECUTABLE_DEPENDENCY_CONFIRMED": 3,
+      "NON_EXECUTABLE_REFERENCE_ONLY": 1,
+      "NO_EXECUTABLE_REFERENCE_FOUND": 1
+    },
+    "runtime_seconds": 6.179
+  },
+  "resolutions": [
+    {
+      "snapshot_path": "src/components/RaceIntelligenceScreen_BEFORE_DNA_EXPLAINABILITY_UI_WIRE_V1.tsx",
+      "snapshot_exists": "TRUE",
+      "snapshot_sha256": "17e930637d91c79974a743653c8b6464624f326df0e39c985953eadb23db210e",
+      "detected_reference_count": 1,
+      "detected_reference_file_count": 1,
+      "reference_classes": "ROLLBACK_OR_BACKUP_REFERENCE",
+      "active_counterpart": "",
+      "css_best_candidate": "",
+      "css_best_candidate_score": "",
+      "resolution_status": "EXECUTABLE_DEPENDENCY_CONFIRMED",
+      "recommended_action": "RETAIN_PENDING_SCRIPT_REMEDIATION",
+      "rationale": "At least one script appears to consume this snapshot as an input, backup or rollback source."
+    },
+    {
+      "snapshot_path": "src/components/RaceIntelligenceScreen_BEFORE_FACTOR_JOIN_KEY_FIX.tsx",
+      "snapshot_exists": "TRUE",
+      "snapshot_sha256": "83f6f0e619f4c9dd6219ea49ba8458731b9aefd62f71ac8aaa53c515de163316",
+      "detected_reference_count": 1,
+      "detected_reference_file_count": 1,
+      "reference_classes": "ROLLBACK_OR_BACKUP_REFERENCE",
+      "active_counterpart": "",
+      "css_best_candidate": "",
+      "css_best_candidate_score": "",
+      "resolution_status": "EXECUTABLE_DEPENDENCY_CONFIRMED",
+      "recommended_action": "RETAIN_PENDING_SCRIPT_REMEDIATION",
+      "rationale": "At least one script appears to consume this snapshot as an input, backup or rollback source."
+    },
+    {
+      "snapshot_path": "src/components/RaceIntelligenceScreen_BEFORE_FACTOR_SCORECARD_V2_PY_PATCH.tsx",
+      "snapshot_exists": "TRUE",
+      "snapshot_sha256": "ed62257475132f1ef5cf9085cd9f943835d4095892b312e2785bc8b35f065cdc",
+      "detected_reference_count": 1,
+      "detected_reference_file_count": 1,
+      "reference_classes": "ROLLBACK_OR_BACKUP_REFERENCE",
+      "active_counterpart": "",
+      "css_best_candidate": "",
+      "css_best_candidate_score": "",
+      "resolution_status": "EXECUTABLE_DEPENDENCY_CONFIRMED",
+      "recommended_action": "RETAIN_PENDING_SCRIPT_REMEDIATION",
+      "rationale": "At least one script appears to consume this snapshot as an input, backup or rollback source."
+    },
+    {
+      "snapshot_path": "src/edgeiq-os/race/RaceFileV3_STABLE_BEFORE_COMPONENT_EXTRACTION_20260709.tsx",
+      "snapshot_exists": "TRUE",
+      "snapshot_sha256": "eb7c5442fd8a04e06593e8bbd0681a772b16ac0b21d628b845013f39c353d8fd",
+      "detected_reference_count": 2,
+      "detected_reference_file_count": 2,
+      "reference_classes": "TEXTUAL_PATH_REFERENCE",
+      "active_counterpart": "",
+      "css_best_candidate": "",
+      "css_best_candidate_score": "",
+      "resolution_status": "NON_EXECUTABLE_REFERENCE_ONLY",
+      "recommended_action": "REVIEW_REFERENCE_THEN_ARCHIVE_SIMULATION",
+      "rationale": "References were detected but none were classified as executable input dependencies."
+    },
+    {
+      "snapshot_path": "src/edgeiq-os/styles/edgeiqOsV2_STABLE_BEFORE_COMPONENT_EXTRACTION_20260709.css",
+      "snapshot_exists": "TRUE",
+      "snapshot_sha256": "75167a6a05e376729f56b68dcda14fece41cceffdcde77969cedef4edb3b1f75",
+      "detected_reference_count": 0,
+      "detected_reference_file_count": 0,
+      "reference_classes": "",
+      "active_counterpart": "src/edgeiq-os/styles/edgeiqOsV2.css",
+      "css_best_candidate": "src/edgeiq-os/styles/edgeiqOsV2.css",
+      "css_best_candidate_score": "0.271794",
+      "resolution_status": "NO_EXECUTABLE_REFERENCE_FOUND",
+      "recommended_action": "REVIEW_FOR_GOVERNED_ARCHIVE_SIMULATION",
+      "rationale": "No script dependency was detected in the bounded governed search."
+    }
+  ]
+}

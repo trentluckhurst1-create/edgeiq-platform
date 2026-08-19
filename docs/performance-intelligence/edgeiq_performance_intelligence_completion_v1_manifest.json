@@ -1,0 +1,9 @@
+{
+  "canonical_identities": "docs/performance-intelligence/canonical-identities",
+  "warehouse": "docs/performance-intelligence/warehouse",
+  "standard_times": "docs/performance-intelligence/standard-times",
+  "lengths_v_standard": "docs/performance-intelligence/lengths-v-standard",
+  "epi": "docs/performance-intelligence/epi",
+  "workspace_feeds": "docs/performance-intelligence/workspace-feeds",
+  "ui": "docs/performance-intelligence/ui-integration"
+}

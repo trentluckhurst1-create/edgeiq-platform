@@ -1,0 +1,234 @@
+{
+  "documentation_evidence": [
+    {
+      "line": 34,
+      "path": "docs\\performance-intelligence\\horse-performance-rating\\method-governance\\EDGEIQ_HORSE_RATING_METHODOLOGY_OWNER_APPROVAL_V1.md",
+      "text": "raw_performance_lengths observations in the approved parameter population."
+    },
+    {
+      "line": 38,
+      "path": "docs\\performance-intelligence\\horse-performance-rating\\method-governance\\EDGEIQ_HORSE_RATING_METHODOLOGY_OWNER_APPROVAL_V1.md",
+      "text": "raw_performance_lengths observations in the approved parameter population."
+    },
+    {
+      "line": 40,
+      "path": "docs\\performance-intelligence\\horse-performance-rating\\method-governance\\EDGEIQ_HORSE_RATING_METHODOLOGY_OWNER_APPROVAL_V1.md",
+      "text": "PARAMETER POPULATION:"
+    },
+    {
+      "line": 45,
+      "path": "docs\\performance-intelligence\\horse-performance-rating\\method-governance\\EDGEIQ_HORSE_RATING_METHODOLOGY_OWNER_APPROVAL_V1.md",
+      "text": "MINIMUM PARAMETER POPULATION:"
+    },
+    {
+      "line": 50,
+      "path": "docs\\performance-intelligence\\horse-performance-rating\\method-governance\\EDGEIQ_HORSE_RATING_METHODOLOGY_OWNER_APPROVAL_V1.md",
+      "text": "as the HPR-NORM-A-v1 bootstrap parameter population."
+    },
+    {
+      "line": 102,
+      "path": "docs\\performance-intelligence\\horse-performance-rating\\method-governance\\EDGEIQ_HORSE_RATING_METHODOLOGY_OWNER_APPROVAL_V1.md",
+      "text": "MINIMUM OBSERVATIONS:"
+    },
+    {
+      "line": 144,
+      "path": "docs\\performance-intelligence\\horse-performance-rating\\method-governance\\EDGEIQ_HORSE_RATING_METHODOLOGY_OWNER_APPROVAL_V1.md",
+      "text": "For every live predictive use:"
+    },
+    {
+      "line": 174,
+      "path": "docs\\performance-intelligence\\horse-performance-rating\\method-governance\\EDGEIQ_HORSE_RATING_METHODOLOGY_OWNER_APPROVAL_V1.md",
+      "text": "- Minimum observations: 5."
+    },
+    {
+      "line": 181,
+      "path": "docs\\performance-intelligence\\horse-performance-rating\\method-governance\\EDGEIQ_HORSE_RATING_METHODOLOGY_OWNER_APPROVAL_V1.md",
+      "text": "- Temporal policy: live predictive use must be strictly prior to target race date/time."
+    },
+    {
+      "line": 4,
+      "path": "docs\\performance-intelligence\\restart-v1\\EDGEIQ_NORMALISATION_TEMPORAL_AUTHORITY_DECISION_V1.md",
+      "text": "Historical application authorised: NO"
+    },
+    {
+      "line": 18,
+      "path": "docs\\performance-intelligence\\restart-v1\\EDGEIQ_NORMALISATION_TEMPORAL_AUTHORITY_DECISION_V1.md",
+      "text": "- Parameter effective-from dates: 2026-07-20"
+    },
+    {
+      "line": 19,
+      "path": "docs\\performance-intelligence\\restart-v1\\EDGEIQ_NORMALISATION_TEMPORAL_AUTHORITY_DECISION_V1.md",
+      "text": "- Parameter population rows: 168"
+    },
+    {
+      "line": 20,
+      "path": "docs\\performance-intelligence\\restart-v1\\EDGEIQ_NORMALISATION_TEMPORAL_AUTHORITY_DECISION_V1.md",
+      "text": "- Parameter population dates: 2026-07-20"
+    },
+    {
+      "line": 22,
+      "path": "docs\\performance-intelligence\\restart-v1\\EDGEIQ_NORMALISATION_TEMPORAL_AUTHORITY_DECISION_V1.md",
+      "text": "- Future leakage assessment: BLOCKED_FOR_MAY_2026: HPR-NORM-A-v1 values were derived from the 2026-07-20 bootstrap population, after the 2026-05-30/31 observations."
+    },
+    {
+      "line": 26,
+      "path": "docs\\performance-intelligence\\restart-v1\\EDGEIQ_NORMALISATION_TEMPORAL_AUTHORITY_DECISION_V1.md",
+      "text": "HPR-NORM-A-v1 remains unavailable for the May 2026 observations. The 13 Performance Intelligence base rows are preserved and explicitly rejected at normalisation. This is the only governed resolution that avoids silent backdating and future leakage with the current evidence."
+    }
+  ],
+  "evidence_summary": [
+    "The parameter fact and source fact both set HPR-NORM-A-v1 effective_from_date to 2026-07-20.",
+    "The normalisation builder applies parameter lookup by race_date between effective_from_date and effective_to_date.",
+    "The temporal authority decision records Historical application authorised: NO and rejects historical application because the bootstrap parameter was derived from 2026-07-20 evidence.",
+    "The owner approval permits historical aggregate construction only from eligible governed observations; it does not override the normalisation effective-date gate."
+  ],
+  "exact_exclusion_point": "scripts/build_edgeiq_performance_normalisation_fact_v1.py filters race_date < effective_from_date and emits NORMALISATION_PARAMETER_NOT_EFFECTIVE_FOR_PERFORMANCE_DATE.",
+  "historical_hpr_norm_a_v1_application_permitted": "NO",
+  "normalisation_rejection_reasons": {
+    "NORMALISATION_PARAMETER_NOT_EFFECTIVE_FOR_PERFORMANCE_DATE": 52414
+  },
+  "policy_effective_date_interpretation": "INTERPRETATION_A_PERFORMANCE_DATE_ELIGIBILITY_RULE",
+  "script_evidence": [
+    {
+      "line": 241,
+      "path": "scripts\\build_edgeiq_performance_normalisation_fact_v1.py",
+      "text": "\"effective_from_date\","
+    },
+    {
+      "line": 282,
+      "path": "scripts\\build_edgeiq_performance_normalisation_fact_v1.py",
+      "text": "effective_from = date_value("
+    },
+    {
+      "line": 283,
+      "path": "scripts\\build_edgeiq_performance_normalisation_fact_v1.py",
+      "text": "parameter[\"effective_from_date\"],"
+    },
+    {
+      "line": 284,
+      "path": "scripts\\build_edgeiq_performance_normalisation_fact_v1.py",
+      "text": "\"effective_from_date\","
+    },
+    {
+      "line": 290,
+      "path": "scripts\\build_edgeiq_performance_normalisation_fact_v1.py",
+      "text": "if race_date < effective_from:"
+    },
+    {
+      "line": 315,
+      "path": "scripts\\build_edgeiq_performance_normalisation_fact_v1.py",
+      "text": "\"NORMALISATION_PARAMETER_NOT_EFFECTIVE_FOR_PERFORMANCE_DATE\""
+    },
+    {
+      "line": 54,
+      "path": "scripts\\build_edgeiq_horse_performance_aggregate_fact_v1.py",
+      "text": "\"minimum_observations\","
+    },
+    {
+      "line": 231,
+      "path": "scripts\\build_edgeiq_horse_performance_aggregate_fact_v1.py",
+      "text": "effective_from = date_value("
+    },
+    {
+      "line": 232,
+      "path": "scripts\\build_edgeiq_horse_performance_aggregate_fact_v1.py",
+      "text": "parameter[\"effective_from_date\"],"
+    },
+    {
+      "line": 233,
+      "path": "scripts\\build_edgeiq_horse_performance_aggregate_fact_v1.py",
+      "text": "\"effective_from_date\","
+    },
+    {
+      "line": 239,
+      "path": "scripts\\build_edgeiq_horse_performance_aggregate_fact_v1.py",
+      "text": "if as_of_date < effective_from:"
+    },
+    {
+      "line": 304,
+      "path": "scripts\\build_edgeiq_horse_performance_aggregate_fact_v1.py",
+      "text": "\"minimum_observations\","
+    },
+    {
+      "line": 309,
+      "path": "scripts\\build_edgeiq_horse_performance_aggregate_fact_v1.py",
+      "text": "\"effective_from_date\","
+    },
+    {
+      "line": 445,
+      "path": "scripts\\build_edgeiq_horse_performance_aggregate_fact_v1.py",
+      "text": "minimum_observations = positive_integer("
+    },
+    {
+      "line": 446,
+      "path": "scripts\\build_edgeiq_horse_performance_aggregate_fact_v1.py",
+      "text": "parameter[\"minimum_observations\"],"
+    },
+    {
+      "line": 447,
+      "path": "scripts\\build_edgeiq_horse_performance_aggregate_fact_v1.py",
+      "text": "\"minimum_observations\","
+    },
+    {
+      "line": 450,
+      "path": "scripts\\build_edgeiq_horse_performance_aggregate_fact_v1.py",
+      "text": "if minimum_observations > maximum_observations:"
+    },
+    {
+      "line": 494,
+      "path": "scripts\\build_edgeiq_horse_performance_aggregate_fact_v1.py",
+      "text": "if len(included_rows) < minimum_observations:"
+    },
+    {
+      "line": 668,
+      "path": "scripts\\build_edgeiq_horse_performance_aggregate_fact_v1.py",
+      "text": "\"minimum_observations\": minimum_observations,"
+    },
+    {
+      "line": 73,
+      "path": "scripts\\audit_edgeiq_normalisation_temporal_authority_v1.py",
+      "text": "parameter_effective_dates = date_set(param_source_rows, 'effective_from_date')"
+    },
+    {
+      "line": 77,
+      "path": "scripts\\audit_edgeiq_normalisation_temporal_authority_v1.py",
+      "text": "grep_hits = git(['grep', '-n', 'HPR-NORM-A-v1', 'HEAD', '--', 'config', 'docs', 'scripts', 'public/data'])"
+    },
+    {
+      "line": 83,
+      "path": "scripts\\audit_edgeiq_normalisation_temporal_authority_v1.py",
+      "text": "file_evidence(APPROVAL, 'OWNER_APPROVAL', 'Approves HPR-NORM-A-v1 bootstrap population and explicitly prohibits silent recalibration/fallback.'),"
+    },
+    {
+      "line": 90,
+      "path": "scripts\\audit_edgeiq_normalisation_temporal_authority_v1.py",
+      "text": "{'evidence_type': 'GIT_GREP', 'path_or_commit': 'HPR-NORM-A-v1 current tree', 'exists': 'YES' if grep_hits else 'NO', 'sha256': '', 'finding': grep_hits.replace('\\n', ' | ')[:1200]},"
+    },
+    {
+      "line": 103,
+      "path": "scripts\\audit_edgeiq_normalisation_temporal_authority_v1.py",
+      "text": "future_leakage_assessment = 'BLOCKED_FOR_MAY_2026: HPR-NORM-A-v1 values were derived from the 2026-07-20 bootstrap population, after the 2026-05-30/31 observations.'"
+    },
+    {
+      "line": 113,
+      "path": "scripts\\audit_edgeiq_normalisation_temporal_authority_v1.py",
+      "text": "'normalisation_model_version': 'HPR-NORM-A-v1',"
+    },
+    {
+      "line": 118,
+      "path": "scripts\\audit_edgeiq_normalisation_temporal_authority_v1.py",
+      "text": "'parameter_effective_from_dates': parameter_effective_dates,"
+    },
+    {
+      "line": 145,
+      "path": "scripts\\audit_edgeiq_normalisation_temporal_authority_v1.py",
+      "text": "'rollback_path': 'Keep current HPR-NORM-A-v1 untouched; add earlier governed parameter only if separately evidenced and versioned.',"
+    },
+    {
+      "line": 183,
+      "path": "scripts\\audit_edgeiq_normalisation_temporal_authority_v1.py",
+      "text": "'HPR-NORM-A-v1 remains unavailable for the May 2026 observations. The 13 Performance Intelligence base rows are preserved and explicitly rejected at normalisation. This is the only governed resolution that avoids silent backdating and future leakage with the current evidence.',"
+    }
+  ],
+  "status": "BLOCKED"
+}

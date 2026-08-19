@@ -1,0 +1,14 @@
+{
+  "mode": "all",
+  "generated_at": "2026-07-29T04:22:24Z",
+  "discover_meetings": {
+    "status": 200,
+    "path": "data\\raw\\racing-com-public-v1\\meeting\\appv2_get_meets_2026_7_200.json"
+  },
+  "processed": {
+    "races": 39,
+    "runner_results": 392,
+    "runner_sectional_rows": 2682,
+    "validation_pass": 2682
+  }
+}

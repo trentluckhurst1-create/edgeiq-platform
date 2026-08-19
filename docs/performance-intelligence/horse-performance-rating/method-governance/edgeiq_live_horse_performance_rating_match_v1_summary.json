@@ -1,0 +1,19 @@
+{
+  "live_entries": 204,
+  "active_entries": 188,
+  "scratched_entries": 6,
+  "emergency_entries": 10,
+  "historical_matches": 1,
+  "temporal_matches": 1,
+  "identity_misses": 0,
+  "insufficient_history_runners": 187,
+  "debutants": 0,
+  "no_temporally_eligible_rating": 0,
+  "output_hash": "52eacfffbba397be7182d74f5c8440e53332fd1adcf4767bfbfdf09bf16b1f5f",
+  "status_counts": {
+    "SCRATCHED": 6,
+    "INSUFFICIENT_HISTORY": 187,
+    "EMERGENCY": 10,
+    "HISTORICAL_RATING_AVAILABLE": 1
+  }
+}

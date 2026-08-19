@@ -1,0 +1,22 @@
+{
+  "test": "workspace_refresh_persistence",
+  "url": "http://127.0.0.1:5177/",
+  "steps": [
+    "Select TOMORROW Saturday 18 July 2026",
+    "Select Flemington",
+    "Open meeting",
+    "Select R6 Deane Lester Flemington Cup 1849",
+    "Open race workspace",
+    "Reload browser tab"
+  ],
+  "visible_after_reload": {
+    "active_buttons": ["MEETINGS", "FORM GUIDE", "R6"],
+    "required_text_present": {
+      "Flemington R6": true,
+      "Race 6": true,
+      "FORM GUIDE": true,
+      "Deane Lester Flemington Cup 1849": true
+    }
+  },
+  "status": "PASS"
+}

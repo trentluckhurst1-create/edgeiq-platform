@@ -1,0 +1,13 @@
+{
+  "bodyBg": "rgb(255, 255, 255)",
+  "commonMetricsPresent": true,
+  "compareWorkspacePresent": true,
+  "dataBoundaryPresent": true,
+  "historicalContextPresent": true,
+  "rejectedTerms": [],
+  "selectCount": 3,
+  "status": "PASS",
+  "tableRows": 18,
+  "url": "http://127.0.0.1:5176/",
+  "screenshot": "blocked: pageWeather.screenshot is not a function"
+}

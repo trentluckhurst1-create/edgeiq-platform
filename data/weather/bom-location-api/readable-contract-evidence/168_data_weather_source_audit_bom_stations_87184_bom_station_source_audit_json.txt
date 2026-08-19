@@ -1,0 +1,34 @@
+﻿EDGEIQ BOM LOCATION API CONTRACT EVIDENCE
+
+Repository file:
+data\weather-source-audit\bom-stations\87184\bom_station_source_audit.json
+
+Matched text:
+api.test2.bom.gov.au
+
+Nearby URLs:
+https://api.test2.bom.gov.au/apikey/v1/forecasts|https://api.test2.bom.gov.au/apikey/v1/locations|https://drupal.dev1.bae.bom.gov.au/api/v1/webform/webform/7b9822b8-cd75-444|https://drupal.dev1.bae.bom.gov.au/api/v1/webform/webform/7b9822b8-cd75-4446-b25d-5775e3e73dd4|https://fastapi-forecast.apps.ocp.mgmt.bae.bom.gov.au/apikey/v|https://fastapi-forecast.apps.ocp.mgmt.bae.bom.gov.au/apikey/v1/forecasts|https://fastapi-location.apps.ocp.mgmt.bae.bom.gov.au/apikey/v1/locations|https://www.bom.gov.au/themes/custom/bom_theme/bom-react/dist/main.bundle.js?b2f352443ff3f4ef77eb034538d7f6df0cf84e0ac2d486c4b50d7d3188addd83
+
+Request evidence:
+
+
+Context:
+RL=t.CONTENT_API_URL=t.API_HEADER_KEYS=void 0;var n=r(935);const a=(0,n.isDevelopmentEnv)()&&!1,i={locations:a?\"https://api.test2.bom.gov.au/apikey/v1/locations\":\"https://fastapi-location.apps.ocp.mgmt.bae.bom.gov.au/apikey/v1/locations\",forecasts:a?\"https://api.test2.bom.gov.au/apikey/v1/forecasts\":\"https://fastapi-forecast.apps.ocp.mgmt.bae.bom.gov.au/apikey/v"
+    },
+    {
+      "document": "022_main.bundle.js",
+      "url": "https://www.bom.gov.au/themes/custom/bom_theme/bom-react/dist/main.bundle.js?b2f352443ff3f4ef77eb034538d7f6df0cf84e0ac2d486c4b50d7d3188addd83",
+      "keyword": "rain",
+      "context": "TOWNS_CITIES_URL=t.LOCATION_SEARCH_URL=t.LOCATION_SEARCH_AUTOCOMPLETE=t.LOCATION_MAJOR_CITIES_URL=t.LOCATION_LIST_URL=t.LOCATION_EXISTS_URL=t.LOCATION_DETAILS_URL=t.LATEST_OBS_URL=t.LATEST_OBS_LIST=t.LATEST_HEIGHT_BULLETIN_URL=t.LATEST_3_HOURLY_RAINFALL=t.LATEST_24_HOURLY_RAINFALL=t.LATEST_1_HOURLY_RAINFALL=t.GLOBAL_ALERTS=t.FUNNELBACK_URL=t.FORECAST_TIDAL_URL=t.FORECAST_TEXT_URL=t.FORECAST_LIST_URL=t.FORECAST_GRID_URL=t.FORECAST_ASTRO_URL=t.FORECAST_3_HOURLY_URL=t.FORECAST_1_HOURLY_URL=t.FEEDBACK_SUBMIT_URL=t.FEEDBACK_FORM_URL=t.EXTREME_OBS_URL=t.CURATED_ALERTS=t.CSAT_FORM_URL=t.CSAT_FEEDBACK_SUBMIT_URL=t.CONTENT_API_URL=t.API_HEADER_KEYS=void 0;var n=r(935);const a=(0,n.isDevelopmentEnv)()&&!1,i={locations:a?\"https://api.test2.bom.gov.au/apikey/v1/locations\":\"https://fastapi-location.apps.ocp.mgmt.bae.bom.gov.au/apikey/v1/locations\",forecasts:a?\"https://api.test2.bom.gov.au/apikey/v1/forecasts\":\"https://fastapi-forecast.apps.ocp.mgmt.bae.bom.gov.au/apikey/v1/forecasts\",observations:a"
+    },
+    {
+      "document": "022_main.bundle.js",
+      "url": "https://www.bom.gov.au/themes/custom/bom_theme/bom-react/dist/main.bundle.js?b2f352443ff3f4ef77eb034538d7f6df0cf84e0ac2d486c4b50d7d3188addd83",
+      "keyword": "rain",
+      "context": "URL=`${u}/tidal`,t.FORECAST_ASTRO_URL=`${u}/astro`,t.LATEST_OBS_URL=`${l}/latest`,t.LATEST_HEIGHT_BULLETIN_URL=`${l}/latest-heights/terr/surf_wtr`,t.RECENT_OBS_URL=`${l}/recent`,t.EXTREME_OBS_URL=`${l}/extremes/latest/atm/surf_air`,t.LATEST_OBS_LIST=`${l}/latest-list/atm/surf_air`,t.LATEST_1_HOURLY_RAINFALL=`${l}/latest-1hourly-rainfall/atm/surf_air`,t.LATEST_3_HOURLY_RAINFALL=`${l}/latest-3hourly-rainfall/atm/surf_air`,t.LATEST_24_HOURLY_RAINFALL=`${l}/latest-24hourly-rainfall/atm/surf_air`,t.CONTENT_API_URL=`${p}`,t.NEARBY_NEWS_URL=`${p}/nearby-news`,t.WARNING_ID_URL=\"/warning\",t.WARNING_COUNT_LIST=\"/count\",t.WARNING_LIST=\"/list\",t.CURATED_ALERTS=`${p}/curated-alerts`,t.GLOBAL_ALERTS=`${p}/global-alerts`,t.FEEDBACK_FORM_URL=`${p}/webform/webform/4e354064-7745-4948-b8be-04c0309d6286`,t.CSAT_FORM_URL=\"https://drupal.dev1.bae.bom.gov.au/api/v1/webform/webform/7b9822b8-cd75-4446-b25d-5775e3e73dd4\",t.FEEDBACK_SUBMIT_URL=`${p}/webform_submission/was_this_page_useful`,t.CSAT_FEEDBACK_SUBMIT"
+    },
+    {
+      "document": "022_main.bundle.js",
+      "url": "https://www.bom.gov.au/themes/custom/bom_theme/bom-react/dist/main.bundle.js?b2f352443ff3f4ef77eb034538d7f6df0cf84e0ac2d486c4b50d7d3188addd83",
+      "keyword": "rain",
+      "context": "TRO_URL=`${u}/astro`,t.LATEST_OBS_URL=`${l}/latest`,t.LATEST_HEIGHT_BULLETIN_URL=`${l}/latest-heights/terr/surf_wtr`,t.RECENT_OBS_URL=`${l}/recent`,t.EXTREME_OBS_URL=`${l}/extremes/latest/atm/surf_air`,t.LATEST_OBS_LIST=`${l}/latest-list/atm/surf_air`,t.LATEST_1_HOURLY_RAINFALL=`${l}/latest-1hourly-rainfall/atm/surf_air`,t.LATEST_3_HOURLY_RAINFALL=`${l}/latest-3hourly-rainfall/atm/surf_air`,t.LATEST_24_HOURLY_RAINFALL=`${l}/latest-24hourly-rainfall/atm/surf_air`,t.CONTENT_API_URL=`${p}`,t.NEARBY_NEWS_URL=`${p}/nearby-news`,t.WARNING_ID_URL=\"/warning\",t.WARNING_COUNT_LIST=\"/count\",t.WARNING_LIST=\"/list\",t.CURATED_ALERTS=`${p}/curated-alerts`,t.GLOBAL_ALERTS=`${p}/global-alerts`,t.FEEDBACK_FORM_URL=`${p}/webform/webform/4e354064-7745-4948-b8be-04c0309d6286`,t.CSAT_FORM_URL=\"https://drupal.dev1.bae.bom.gov.au/api/v1/webform/webform/7b9822b8-cd75-444

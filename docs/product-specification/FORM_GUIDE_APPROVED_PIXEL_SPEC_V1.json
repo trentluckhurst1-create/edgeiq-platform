@@ -1,0 +1,476 @@
+{
+  "version": "FORM_GUIDE_APPROVED_PIXEL_SPEC_V1",
+  "authority": "05_FORM_GUIDE_APPROVED.png",
+  "source_png_sha256": "B13DB8C7300A3660C0E54600129F37EF877A172ECAB32121F2FDA86D18D7797C",
+  "canvas": {
+    "width": 1536,
+    "height": 1024
+  },
+  "implementation_scope": "Live React/CSS FORM GUIDE screen. Data remains governed/live; no demo data; no model maths changed.",
+  "style_tokens": {
+    "blue": "#0759d7",
+    "blue_dark": "#07166c",
+    "navy": "#091a44",
+    "text": "#07135f",
+    "muted": "#52637f",
+    "line": "#dde5ef",
+    "line_strong": "#c8d3df",
+    "surface": "#ffffff",
+    "surface_soft": "#f7f9fc",
+    "blue_soft": "#edf4ff",
+    "green": "#087e2f",
+    "green_soft": "#eaf7ee",
+    "red": "#cc3340",
+    "red_soft": "#fdecec",
+    "font_family": "Inter, Segoe UI, Roboto, Helvetica, Arial, sans-serif"
+  },
+  "regions": [
+    {
+      "id": "canvas",
+      "x": 0,
+      "y": 0,
+      "w": 1536,
+      "h": 1024,
+      "role": "root",
+      "notes": "Approved PNG canvas."
+    },
+    {
+      "id": "left_nav",
+      "x": 0,
+      "y": 0,
+      "w": 186,
+      "h": 1024,
+      "role": "persistent_navigation",
+      "notes": "White left rail with EDGEiQ brand and workspace buttons."
+    },
+    {
+      "id": "topbar",
+      "x": 186,
+      "y": 0,
+      "w": 1350,
+      "h": 66,
+      "role": "global_header",
+      "notes": "Product title, operating-system subtitle, date/time/status icons."
+    },
+    {
+      "id": "content",
+      "x": 207,
+      "y": 72,
+      "w": 1310,
+      "h": 900,
+      "role": "workspace_content",
+      "notes": "FORM GUIDE page content area."
+    },
+    {
+      "id": "breadcrumb",
+      "x": 208,
+      "y": 78,
+      "w": 350,
+      "h": 16,
+      "role": "breadcrumb",
+      "notes": "MEETINGS > FLEMINGTON > RACE 1 > FORM GUIDE."
+    },
+    {
+      "id": "race_title",
+      "x": 208,
+      "y": 102,
+      "w": 350,
+      "h": 34,
+      "role": "race_identity",
+      "notes": "Race 1, race name, class badge."
+    },
+    {
+      "id": "race_meta",
+      "x": 208,
+      "y": 144,
+      "w": 1010,
+      "h": 20,
+      "role": "race_metadata",
+      "notes": "Location, date, time, distance, surface, prize money, weather."
+    },
+    {
+      "id": "subnav",
+      "x": 208,
+      "y": 170,
+      "w": 1308,
+      "h": 40,
+      "role": "section_tabs",
+      "notes": "Race overview through Form Guide, active blue underline on Form Guide."
+    },
+    {
+      "id": "form_tools",
+      "x": 993,
+      "y": 221,
+      "w": 466,
+      "h": 22,
+      "role": "form_tools",
+      "notes": "Ratings View selector, customise columns, export."
+    },
+    {
+      "id": "summary_table",
+      "x": 208,
+      "y": 249,
+      "w": 1308,
+      "h": 153,
+      "role": "runner_summary_table",
+      "notes": "16-column all-runner table with five compact runner rows."
+    },
+    {
+      "id": "expanded_runner",
+      "x": 208,
+      "y": 414,
+      "w": 1308,
+      "h": 556,
+      "role": "expanded_runner_card",
+      "notes": "Selected runner profile card with blue outline."
+    },
+    {
+      "id": "runner_header",
+      "x": 220,
+      "y": 426,
+      "w": 1245,
+      "h": 62,
+      "role": "selected_runner_header",
+      "notes": "Saddlecloth, silk, horse name and top metric strip."
+    },
+    {
+      "id": "today_match",
+      "x": 218,
+      "y": 497,
+      "w": 204,
+      "h": 232,
+      "role": "today_match_panel",
+      "notes": "Track/distance/going/rail/tempo/pace setup with match rating."
+    },
+    {
+      "id": "profile_matrix",
+      "x": 428,
+      "y": 497,
+      "w": 878,
+      "h": 232,
+      "role": "horse_profile_matrix",
+      "notes": "Career, condition, class, jockey and prep matrix with Today badges."
+    },
+    {
+      "id": "match_insights",
+      "x": 1310,
+      "y": 497,
+      "w": 198,
+      "h": 232,
+      "role": "match_insights",
+      "notes": "Five selected-runner insight bullets."
+    },
+    {
+      "id": "recent_form",
+      "x": 220,
+      "y": 742,
+      "w": 1280,
+      "h": 210,
+      "role": "recent_form_table",
+      "notes": "Recent form last 8 starts table plus sectional legend."
+    },
+    {
+      "id": "footer",
+      "x": 612,
+      "y": 993,
+      "w": 850,
+      "h": 20,
+      "role": "app_footer",
+      "notes": "Copyright/build/data timestamp footer."
+    }
+  ],
+  "text_spec": [
+    {
+      "id": "brand",
+      "text": "EDGEiQ",
+      "region": "left_nav",
+      "typography": "42px/900"
+    },
+    {
+      "id": "system_title",
+      "text": "EDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM",
+      "region": "topbar",
+      "typography": "24px/900"
+    },
+    {
+      "id": "system_subtitle",
+      "text": "Information is not Intelligence. Evidence leads. Precision decides.",
+      "region": "topbar",
+      "typography": "14px/400"
+    },
+    {
+      "id": "workspace_active",
+      "text": "FORM GUIDE",
+      "region": "left_nav + subnav",
+      "typography": "13px/800"
+    },
+    {
+      "id": "breadcrumb",
+      "text": "MEETINGS > FLEMINGTON > RACE 1 > FORM GUIDE",
+      "region": "breadcrumb",
+      "typography": "11px/900 uppercase"
+    },
+    {
+      "id": "race_title",
+      "text": "Race 1",
+      "region": "race_title",
+      "typography": "26px/900"
+    },
+    {
+      "id": "race_name",
+      "text": "TAB Trophy",
+      "region": "race_title",
+      "typography": "19px/900"
+    },
+    {
+      "id": "race_class",
+      "text": "BM 70",
+      "region": "race_title",
+      "typography": "badge 14px/900"
+    },
+    {
+      "id": "summary_headers",
+      "text": "NO|SILK|HORSE|TRAINER|JOCKEY|BARRIER|WEIGHT (kg)|DAYS|EPI|EPI +/-|EARLY SPEED (Gate)|LATE SPEED (Finish)|SUITABILITY (Today)|FORM MOMENTUM (Last 5)|MARKET|EDGEiQ PRICE (Fair)|EDGE|FLUC 60s %",
+      "region": "summary_table",
+      "typography": "10px/900 uppercase"
+    },
+    {
+      "id": "selected_horse",
+      "text": "JIMMYSSTAR",
+      "region": "runner_header",
+      "typography": "22px/900"
+    },
+    {
+      "id": "metric_strip",
+      "text": "EPI (Today)|EPI Rank|Suitability|Form Momentum|Edge|EDGEiQ Price (Fair)|Market",
+      "region": "runner_header",
+      "typography": "11px/900 uppercase"
+    },
+    {
+      "id": "today_match",
+      "text": "TODAY'S MATCH",
+      "region": "today_match",
+      "typography": "12px/900 uppercase"
+    },
+    {
+      "id": "profile_matrix",
+      "text": "HORSE PROFILE (CAREER)",
+      "region": "profile_matrix",
+      "typography": "12px/900 uppercase"
+    },
+    {
+      "id": "insights",
+      "text": "TODAY'S MATCH INSIGHTS",
+      "region": "match_insights",
+      "typography": "12px/900 uppercase"
+    },
+    {
+      "id": "recent_form",
+      "text": "RECENT FORM (LAST 8 STARTS)",
+      "region": "recent_form",
+      "typography": "12px/900 uppercase"
+    }
+  ],
+  "legacy_machine_measurement": {
+    "content_bounds": {
+      "left": 6,
+      "top": 10,
+      "right": 1517,
+      "bottom": 1004
+    },
+    "major_vertical_boundaries_x": [
+      21,
+      230,
+      358,
+      363,
+      369,
+      374,
+      708,
+      722,
+      789,
+      964,
+      969,
+      1130,
+      1361,
+      1369
+    ],
+    "major_horizontal_boundaries_y": [
+      24,
+      52,
+      149,
+      190,
+      260,
+      291,
+      315,
+      341,
+      365,
+      389,
+      440,
+      541,
+      628,
+      649,
+      687,
+      767
+    ],
+    "dominant_colors": [
+      {
+        "hex": "#ffffff",
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "share": 0.7635
+      },
+      {
+        "hex": "#f8f8ff",
+        "rgb": [
+          248,
+          248,
+          255
+        ],
+        "share": 0.0618
+      },
+      {
+        "hex": "#f8f8f8",
+        "rgb": [
+          248,
+          248,
+          248
+        ],
+        "share": 0.0352
+      },
+      {
+        "hex": "#f8ffff",
+        "rgb": [
+          248,
+          255,
+          255
+        ],
+        "share": 0.0138
+      },
+      {
+        "hex": "#f0f0f8",
+        "rgb": [
+          240,
+          240,
+          248
+        ],
+        "share": 0.0105
+      },
+      {
+        "hex": "#f0f8f0",
+        "rgb": [
+          240,
+          248,
+          240
+        ],
+        "share": 0.0046
+      },
+      {
+        "hex": "#fff8ff",
+        "rgb": [
+          255,
+          248,
+          255
+        ],
+        "share": 0.0045
+      },
+      {
+        "hex": "#e8f0ff",
+        "rgb": [
+          232,
+          240,
+          255
+        ],
+        "share": 0.0036
+      },
+      {
+        "hex": "#f0f8ff",
+        "rgb": [
+          240,
+          248,
+          255
+        ],
+        "share": 0.0032
+      },
+      {
+        "hex": "#f8fff8",
+        "rgb": [
+          248,
+          255,
+          248
+        ],
+        "share": 0.0025
+      },
+      {
+        "hex": "#f0f8f8",
+        "rgb": [
+          240,
+          248,
+          248
+        ],
+        "share": 0.0021
+      },
+      {
+        "hex": "#e8f0e8",
+        "rgb": [
+          232,
+          240,
+          232
+        ],
+        "share": 0.0021
+      }
+    ]
+  },
+  "acceptance": {
+    "required_live_regions": [
+      "left_nav",
+      "topbar",
+      "content",
+      "breadcrumb",
+      "race_title",
+      "race_meta",
+      "subnav",
+      "form_tools",
+      "summary_table",
+      "expanded_runner",
+      "runner_header",
+      "today_match",
+      "profile_matrix",
+      "match_insights",
+      "recent_form",
+      "footer"
+    ],
+    "required_columns": [
+      "NO",
+      "SILK",
+      "HORSE",
+      "TRAINER",
+      "JOCKEY",
+      "BARRIER",
+      "WEIGHT (kg)",
+      "DAYS",
+      "EPI",
+      "EPI +/-",
+      "EARLY SPEED (Gate)",
+      "LATE SPEED (Finish)",
+      "SUITABILITY (Today)",
+      "FORM MOMENTUM (Last 5)",
+      "MARKET",
+      "EDGEiQ PRICE (Fair)",
+      "EDGE",
+      "FLUC 60s %"
+    ],
+    "must_preserve": [
+      "live governed field",
+      "enriched form guide feed",
+      "EPI/ERI/pricing/rating calculations"
+    ],
+    "must_not_show": [
+      "demo runner data",
+      "approximation-only placeholder",
+      "redesigned unrelated workspace"
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "body_bytes": 187472,
+  "body_path": "data\\evidence\\daily-operations\\live-source-activation\\LIVE-SOURCE-BB24001265F4\\racingcom_calendar_getmeetsbymonth_2026_07.body",
+  "body_sha256": "d5a4af1dd6b59bd4c21ce699095586c95bc385fec11b34c2f60afe2fe6d6cb6b",
+  "captured_at_utc": "2026-07-29T01:38:04Z",
+  "content_type": "application/json; charset=utf-8",
+  "error": "",
+  "latency_seconds": 0.166,
+  "name": "racingcom_calendar_getmeetsbymonth_2026_07",
+  "status": "200",
+  "url": "https://www.racing.com/services/appv2/GetMeetsByMonth/2026/7"
+}

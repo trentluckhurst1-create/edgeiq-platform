@@ -1,0 +1,39 @@
+{
+  "mode": "FULL_DRY_RUN",
+  "status": "CODE_COMPLETE_ACCESS_REQUIRED",
+  "generated_at": "2026-07-29T04:22:58Z",
+  "credential_env_var": "RACINGCOM_CHAMPION_DATA_ENDPOINT_KEY",
+  "credential_state": "ABSENT",
+  "steps": [
+    {
+      "cmd": "python scripts/build_edgeiq_racing_com_runner_sectionals_completion_v1.py",
+      "returncode": 0,
+      "stdout": "{\n  \"status\": \"PASS\",\n  \"completion_dir\": \"docs\\\\racing-com-public-data-v1\\\\completion\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "cmd": "python scripts/replay_racing_com_runner_sectionals_v1.py --mode ALL --dry-run --output-root docs/racing-com-public-data-v1/completion/dry-run",
+      "returncode": 0,
+      "stdout": "{\n  \"decision\": \"CREDENTIAL_REQUIRED\",\n  \"rows\": [\n    {\n      \"mode\": \"ANONYMOUS_MINIMAL\",\n      \"endpoint\": \"https://graphql.rmdprod.racing.com/\",\n      \"method\": \"GET\",\n      \"query_variables\": \"{\\\"meetCode\\\": \\\"5191101\\\", \\\"raceNumber\\\": \\\"1\\\"}\",\n      \"status_code\": \"DRY_RUN\",\n      \"response_content_type\": \"\",\n      \"response_schema_match\": \"NO\",\n      \"contains_sectionaltimes_callback\": \"NO\",\n      \"horse_count\": 0,\n      \"sectional_time_count\": 0,\n      \"split_time_count\": 0,\n      \"credential_state\": \"ABSENT\",\n      \"cookie_state\": \"ABSENT\",\n      \"access_classification\": \"CREDENTIAL_REQUIRED\",\n      \"response_hash\": \"\",\n      \"raw_response_path\": \"\",\n      \"error\": \"\"\n    },\n    {\n      \"mode\": \"ANONYMOUS_BROWSER_HEADERS\",\n      \"endpoint\": \"https://graphql.rmdprod.racing.com/\",\n      \"method\": \"GET\",\n      \"query_variables\": \"{\\\"meetCode\\\": \\\"5191101\\\", \\\"raceNumber\\\": \\\"1\\\"}\",\n      \"status_code\": \"DRY_RUN\",\n      \"response_content_type\": \"\",\n      \"response_schema_match\": \"NO\",\n      \"contains_sectionaltimes_callback\": \"NO\",\n      \"horse_count\": 0,\n      \"sectional_time_count\": 0,\n      \"split_time_count\": 0,\n      \"credential_state\": \"ABSENT\",\n      \"cookie_state\": \"ABSENT\",\n      \"access_classification\": \"CREDENTIAL_REQUIRED\",\n      \"response_hash\": \"\",\n      \"raw_response_path\": \"\",\n      \"error\": \"\"\n    },\n    {\n      \"mode\": \"APPROVED_CREDENTIAL\",\n      \"endpoint\": \"https://graphql.rmdprod.racing.com/\",\n      \"method\": \"GET\",\n      \"query_variables\": \"{\\\"meetCode\\\": \\\"5191101\\\", \\\"raceNumber\\\": \\\"1\\\"}\",\n      \"status_code\": \"DRY_RUN\",\n      \"response_content_type\": \"\",\n      \"response_schema_match\": \"NO\",\n      \"contains_sectionaltimes_callback\": \"NO\",\n      \"horse_count\": 0,\n      \"sectional_time_count\": 0,\n      \"split_time_count\": 0,\n      \"credential_state\": \"ABSENT\",\n      \"cookie_state\": \"ABSENT\",\n      \"access_classification\": \"CREDENTIAL_REQUIRED\",\n      \"response_hash\": \"\",\n      \"raw_response_path\": \"\",\n      \"error\": \"\"\n    }\n  ]\n}\n",
+      "stderr": ""
+    },
+    {
+      "cmd": "python scripts/import_racing_com_runner_sectionals_official_file_v1.py",
+      "returncode": 0,
+      "stdout": "{\n  \"status\": \"PASS_OFFICIAL_IMPORT_READY\",\n  \"input_file\": \"docs\\\\racing-com-public-data-v1\\\\fixtures\\\\public_200_meeting_with_sectionals.json\",\n  \"rows\": 1,\n  \"valid_rows\": 1,\n  \"canonical_rows_promoted\": 0,\n  \"canonical_admission\": \"NO_PREVIEW_ONLY\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "cmd": "python scripts/build_edgeiq_racing_com_runner_sectionals_completion_v1.py",
+      "returncode": 0,
+      "stdout": "{\n  \"status\": \"PASS\",\n  \"completion_dir\": \"docs\\\\racing-com-public-data-v1\\\\completion\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "cmd": "python scripts/audit_edgeiq_racing_com_public_data_v1.py",
+      "returncode": 0,
+      "stdout": "{\n  \"audit_status\": \"PASS\",\n  \"acceptance_status\": \"CODE_COMPLETE_ACCESS_REQUIRED\",\n  \"runner_sectional_rows\": 2682\n}\n",
+      "stderr": ""
+    }
+  ]
+}

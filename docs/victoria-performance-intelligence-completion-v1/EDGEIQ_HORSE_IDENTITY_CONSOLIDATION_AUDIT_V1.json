@@ -1,0 +1,7 @@
+{
+  "approved_ra_rcom_bridges": 0,
+  "current_ra_horses": 80,
+  "historical_observations_consolidated_into_ra_horses": 0,
+  "reason": "No approved governed RA-to-RCOM bridge rows were available; historical and current observations remain isolated by source identity.",
+  "status": "PASS_WITH_GOVERNED_IDENTITY_EXCLUSIONS"
+}

@@ -1,0 +1,5 @@
+﻿"Track","TemperatureUnit","WindSpeedUnit","WindGustUnit","RainfallUnit","HumidityUnit","PressureUnit","GoingUnit","RawUnitsJson"
+"Flemington","C",,,,,,,"{""linear"":""mm"",""speed"":""km/h"",""temperature"":""C""}"
+"Caulfield","C",,,,,,,"{""linear"":""mm"",""speed"":""km/h"",""temperature"":""C""}"
+"Sandown","C",,,,,,,"{""linear"":""mm"",""speed"":""km/h"",""temperature"":""C""}"
+"Mornington","C",,,,,,,"{""linear"":""mm"",""speed"":""km/h"",""temperature"":""C""}"

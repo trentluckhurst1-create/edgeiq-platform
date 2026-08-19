@@ -1,0 +1,132 @@
+[
+  {
+    "region": "form_guide_workspace",
+    "x": 206,
+    "y": 329,
+    "w": 1312,
+    "h": 1813,
+    "visible": true,
+    "tag": "section",
+    "className": "eiq-race-form-guide eiq-race-form-guide--v3 eiq-race-form-guide--v4 eiq-race-form-guide--all-runner eiq-race-form-guide--approved-exact eiq-race-form-guide--final-locked"
+  },
+  {
+    "region": "form_tools",
+    "x": 207,
+    "y": 330,
+    "w": 1310,
+    "h": 45,
+    "visible": true,
+    "tag": "div",
+    "className": "eiq-form-approved-tools eiq-form-final-tools"
+  },
+  {
+    "region": "summary_table",
+    "x": 207,
+    "y": 385,
+    "w": 1310,
+    "h": 1756,
+    "visible": true,
+    "tag": "div",
+    "className": "eiq-form-summary-table eiq-form-summary-table--v3 eiq-form-summary-table--all-runner eiq-form-summary-table--final-locked"
+  },
+  {
+    "region": "true",
+    "x": 209,
+    "y": 447,
+    "w": 1314,
+    "h": 764,
+    "visible": true,
+    "tag": "article",
+    "className": "eiq-form-v31-runner-sheet eiq-form-v4-runner-sheet eiq-form-final-runner-sheet"
+  },
+  {
+    "region": "runner_header",
+    "x": 220,
+    "y": 458,
+    "w": 1292,
+    "h": 63,
+    "visible": true,
+    "tag": "section",
+    "className": "eiq-form-v3-runner-header eiq-form-v31-runner-header eiq-form-v4-runner-header eiq-form-final-runner-header"
+  },
+  {
+    "region": "hero_metrics",
+    "x": 747,
+    "y": 458,
+    "w": 765,
+    "h": 63,
+    "visible": true,
+    "tag": "dl",
+    "className": "eiq-form-v4-current-strip eiq-form-final-current-strip"
+  },
+  {
+    "region": "expanded_runner",
+    "x": 220,
+    "y": 529,
+    "w": 1292,
+    "h": 395,
+    "visible": true,
+    "tag": "section",
+    "className": "eiq-form-v4-dossier-grid eiq-form-approved-dossier-grid eiq-form-final-dossier-grid"
+  },
+  {
+    "region": "today_match",
+    "x": 236,
+    "y": 541,
+    "w": 205,
+    "h": 371,
+    "visible": true,
+    "tag": "aside",
+    "className": "eiq-form-v4-today-match eiq-form-final-today-match"
+  },
+  {
+    "region": "profile_matrix_wrap",
+    "x": 449,
+    "y": 541,
+    "w": 841,
+    "h": 371,
+    "visible": true,
+    "tag": "div",
+    "className": "eiq-form-v4-dossier-main eiq-form-final-dossier-main"
+  },
+  {
+    "region": "profile_matrix",
+    "x": 450,
+    "y": 542,
+    "w": 840,
+    "h": 369,
+    "visible": true,
+    "tag": "section",
+    "className": "eiq-form-final-profile-matrix"
+  },
+  {
+    "region": "match_insights",
+    "x": 1298,
+    "y": 541,
+    "w": 198,
+    "h": 371,
+    "visible": true,
+    "tag": "section",
+    "className": "eiq-form-v31-insights eiq-form-v4-key-insights eiq-form-final-match-read"
+  },
+  {
+    "region": "recent_form",
+    "x": 236,
+    "y": 932,
+    "w": 1260,
+    "h": 210,
+    "visible": true,
+    "tag": "section",
+    "className": "eiq-form-v31-recent-form eiq-form-v4-recent-form eiq-form-final-recent-form"
+  },
+  {
+    "region": "sectional_legend",
+    "x": 236,
+    "y": 1156,
+    "w": 1260,
+    "h": 30,
+    "visible": true,
+    "tag": "div",
+    "className": "eiq-form-final-sectional-legend"
+  }
+]

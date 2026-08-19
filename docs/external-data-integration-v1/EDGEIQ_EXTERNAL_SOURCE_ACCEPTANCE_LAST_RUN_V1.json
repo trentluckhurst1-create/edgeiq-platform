@@ -1,0 +1,110 @@
+{
+  "checked_at": "2026-07-29T02:08:26Z",
+  "mode": "FULL",
+  "rows": [
+    {
+      "authentication": "N/A",
+      "canonical_promotion": "NO",
+      "downstream_performance": "not run",
+      "identity": "not run",
+      "mode": "FULL",
+      "network_access": "SUCCESS",
+      "operator_action": "continue current-day discovery",
+      "parser": "not run",
+      "publication_availability": "2026-07-31",
+      "source": "RACINGCOM_THREE_DAY_PRODUCT_CATALOG",
+      "status": "SUPPORTED_AND_WORKING"
+    },
+    {
+      "authentication": "NO",
+      "canonical_promotion": "NO",
+      "downstream_performance": "not run",
+      "identity": "not run",
+      "mode": "FULL",
+      "network_access": "AUTHENTICATION_REQUIRED",
+      "operator_action": "Set approved RACINGCOM_PUBLIC_WIDGET_API_KEY",
+      "parser": "not run",
+      "publication_availability": "2026-07-01",
+      "source": "RACINGCOM_GRAPHQL_SPEED_TIMING",
+      "status": "SUPPORTED_CREDENTIAL_REQUIRED"
+    },
+    {
+      "authentication": "N/A",
+      "canonical_promotion": "NO",
+      "downstream_performance": "not run",
+      "identity": "not run",
+      "mode": "FULL",
+      "network_access": "ACCESS_FORBIDDEN",
+      "operator_action": "Resolve approved access or use official manual export/commercial feed",
+      "parser": "not run",
+      "publication_availability": "2026-05-12",
+      "source": "RACING_AUSTRALIA_FREEFIELDS_RESULTS",
+      "status": "SOURCE_ACCESS_FORBIDDEN"
+    },
+    {
+      "authentication": "N/A",
+      "canonical_promotion": "NO",
+      "downstream_performance": "not run",
+      "identity": "not run",
+      "mode": "FULL",
+      "network_access": "LOCAL_FILE",
+      "operator_action": "Wait for approved speed source or import official export",
+      "parser": "not run",
+      "publication_availability": "2026-07-01",
+      "source": "LOCAL_RACINGCOM_SPEED_OUTPUTS",
+      "status": "SOURCE_DELAYED"
+    },
+    {
+      "authentication": "N/A",
+      "canonical_promotion": "NO",
+      "downstream_performance": "not run",
+      "identity": "not run",
+      "mode": "FULL",
+      "network_access": "LOCAL_FILE",
+      "operator_action": "continue collection",
+      "parser": "not run",
+      "publication_availability": "2026-07-31",
+      "source": "GOVERNED_TRACK_CONDITION_EVIDENCE",
+      "status": "SOURCE_DELAYED"
+    },
+    {
+      "authentication": "ABSENT",
+      "canonical_promotion": "NO",
+      "downstream_performance": "NO",
+      "identity": "not run",
+      "mode": "FULL",
+      "network_access": "SKIPPED",
+      "operator_action": "Set approved RACINGCOM_PUBLIC_WIDGET_API_KEY",
+      "parser": "not run",
+      "publication_availability": "NOT_TESTED",
+      "source": "RACINGCOM_GRAPHQL_SPEED_TIMING",
+      "status": "SUPPORTED_CREDENTIAL_REQUIRED"
+    },
+    {
+      "authentication": "UNKNOWN_OR_FORBIDDEN",
+      "canonical_promotion": "NO",
+      "downstream_performance": "NO",
+      "identity": "existing",
+      "mode": "FULL",
+      "network_access": "ACCESS_FORBIDDEN_OR_OFFLINE",
+      "operator_action": "Resolve approved access or use official manual export",
+      "parser": "existing",
+      "publication_availability": "NOT_CONFIRMED",
+      "source": "RACING_AUSTRALIA_FREEFIELDS_RESULTS",
+      "status": "SOURCE_ACCESS_FORBIDDEN"
+    },
+    {
+      "authentication": "OPERATOR_EXTERNAL",
+      "canonical_promotion": "candidate only",
+      "downstream_performance": "dry-run ready",
+      "identity": "validated at import",
+      "mode": "FULL",
+      "network_access": "N/A",
+      "operator_action": "Provide unmodified official export file",
+      "parser": "available",
+      "publication_availability": "REQUIRES_FILE",
+      "source": "OPERATOR_OFFICIAL_FILE_IMPORT",
+      "status": "SUPPORTED_MANUAL_EXPORT_REQUIRED"
+    }
+  ]
+}

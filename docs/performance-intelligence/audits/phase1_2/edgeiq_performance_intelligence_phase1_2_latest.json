@@ -1,0 +1,108 @@
+{
+  "warehouse_name": "EDGEiQ Canonical Identity Dimension Warehouse",
+  "dimension_version": "EDGEIQ_IDENTITY_DIMENSIONS_V0_1",
+  "materialisation_version": "PHASE1_2_IDENTITY_DIMENSION_MATERIALISATION_V0_1",
+  "dimension_snapshot_id": "eiq_dimension_snapshot_f41e99df7d4a58cdb5f6da1cb1dc39c0",
+  "raw_warehouse_snapshot_id": "eiq_warehouse_snapshot_b24578e0eb795ab6bd076452bfff3f5e",
+  "generated_utc": "2026-07-15T19:43:56.002168+00:00",
+  "immutable": true,
+  "production_application_modified": false,
+  "canonical_horse_dimension_status": "NOT_YET_MATERIALISED",
+  "horse_identity_rule": "Provider runner identifiers are preserved as evidence and are not declared durable canonical horse IDs.",
+  "assets": [
+    {
+      "asset_name": "track_dimension",
+      "asset_file": "track_dimension.csv",
+      "rows": 83,
+      "primary_key": "track_id",
+      "identity_status": "CANONICAL_CONTEXT_ID",
+      "sha256": "2c65a31a6a147b77a46bcdac04f6747b30917cce8b321a06b988cc082ac37824"
+    },
+    {
+      "asset_name": "meeting_dimension",
+      "asset_file": "meeting_dimension.csv",
+      "rows": 8599,
+      "primary_key": "meeting_id",
+      "identity_status": "CANONICAL_CONTEXT_ID",
+      "sha256": "563471350aa494c5076122986a67369327620318d54c531ccf055cb6a456ae3c"
+    },
+    {
+      "asset_name": "race_dimension",
+      "asset_file": "race_dimension.csv",
+      "rows": 71025,
+      "primary_key": "race_id",
+      "identity_status": "CANONICAL_CONTEXT_ID",
+      "sha256": "fc1c46edb49e6b1d522469f823824a8270d967083610482713ff0d44f238772a"
+    },
+    {
+      "asset_name": "horse_identity_evidence_dimension",
+      "asset_file": "horse_identity_evidence_dimension.csv",
+      "rows": 879695,
+      "primary_key": "horse_identity_evidence_id",
+      "identity_status": "PROVIDER_IDENTITY_EVIDENCE_NOT_CANONICAL_HORSE",
+      "sha256": "9d0ea17439035f161bb838c1a2f835c6bc3ca60d9f88a3031065188f8bbee98a"
+    },
+    {
+      "asset_name": "performance_dimension_map",
+      "asset_file": "performance_dimension_map.csv",
+      "rows": 879784,
+      "primary_key": "performance_id",
+      "identity_status": "CANONICAL_MAPPING",
+      "sha256": "7990d2863ba5ef48054be36e540d2516860db2eaab1ed49c6e52a2f1311af61c"
+    },
+    {
+      "asset_name": "sectional_dimension_map",
+      "asset_file": "sectional_dimension_map.csv",
+      "rows": 103766,
+      "primary_key": "performance_sectional_id",
+      "identity_status": "CANONICAL_MAPPING",
+      "sha256": "8c360da9578d6252afdbcd5e58be4d74f56141191f780860e7e69f00dd4f7f0c"
+    }
+  ],
+  "materialisation_checks": [
+    {
+      "check": "RAW_WAREHOUSE_STATUS",
+      "passed": true,
+      "observed": "IMMUTABLE_CANONICAL_RAW_WAREHOUSE_MATERIALISED"
+    },
+    {
+      "check": "PERFORMANCE_MAP_ROW_COUNT",
+      "passed": true,
+      "observed": 879784
+    },
+    {
+      "check": "SECTIONAL_MAP_ROW_COUNT",
+      "passed": true,
+      "observed": "rows=103766;missing_performance=0"
+    },
+    {
+      "check": "TRACK_DIMENSION_CONFLICTS",
+      "passed": true,
+      "observed": 0
+    },
+    {
+      "check": "MEETING_DIMENSION_CONFLICTS",
+      "passed": true,
+      "observed": 0
+    },
+    {
+      "check": "RACE_DIMENSION_CONFLICTS",
+      "passed": true,
+      "observed": 0
+    },
+    {
+      "check": "HORSE_IDENTITY_EVIDENCE_CONFLICTS",
+      "passed": true,
+      "observed": 0
+    },
+    {
+      "check": "CANONICAL_HORSE_NOT_FABRICATED",
+      "passed": true,
+      "observed": "ALL_CANONICAL_HORSE_IDS_REMAIN_UNASSIGNED"
+    }
+  ],
+  "failed_checks": [],
+  "warehouse_status": "IMMUTABLE_IDENTITY_DIMENSIONS_MATERIALISED",
+  "promotion_status": "NOT_CONNECTED_TO_PRODUCT",
+  "next_stage": "Phase 1.3 canonical horse identity resolution architecture and evidence linkage audit."
+}

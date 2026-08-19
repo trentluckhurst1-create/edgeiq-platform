@@ -1,0 +1,112 @@
+{
+  "url": "http://127.0.0.1:4179/",
+  "browser_status": "PASS",
+  "race_opened": true,
+  "races_tested": 3,
+  "unique_race_titles": 3,
+  "race_switching_status": "PASS",
+  "workspace_switching_status": "PASS",
+  "workspace_tabs": {
+    "FIELD": "FIELD",
+    "FORM GUIDE": "FORM GUIDE",
+    "PERFORMANCE": "PERFORMANCE",
+    "MAP": "MAP",
+    "MARKET": "MARKET",
+    "OVERVIEW": "OVERVIEW",
+    "INSIGHTS": "INSIGHTS",
+    "EPI": "EPI",
+    "RESULTS": "RESULTS",
+    "REVIEW": "REVIEW",
+    "RACE": "RACE"
+  },
+  "back_to_races_status": "PASS",
+  "race_snapshots": [
+    {
+      "title": "Race 1 Sale Cup Maiden Plate",
+      "rows": 8,
+      "activeTab": "RACE",
+      "forbiddenHits": [],
+      "hasRunnerBoard": true,
+      "hasEpiTop3": true,
+      "hasSpeedMap": true
+    },
+    {
+      "title": "Race 2 Maiden Plate",
+      "rows": 19,
+      "activeTab": "RACE",
+      "forbiddenHits": [],
+      "hasRunnerBoard": true,
+      "hasEpiTop3": true,
+      "hasSpeedMap": true
+    },
+    {
+      "title": "Race 3 Viatek Maiden Plate",
+      "rows": 14,
+      "activeTab": "RACE",
+      "forbiddenHits": [],
+      "hasRunnerBoard": true,
+      "hasEpiTop3": true,
+      "hasSpeedMap": true
+    }
+  ],
+  "race_selector_evidence": {
+    "count": 8,
+    "text": "RACES AT THIS MEETING\nR1Time Not PublishedR2Time Not PublishedR3Time Not PublishedR4Time Not PublishedR5Time Not PublishedR6Time Not PublishedR7Time Not PublishedR8Time Not Published"
+  },
+  "forbidden_visible_hits": [],
+  "page_errors": [],
+  "console_messages": [],
+  "known_console_messages": [
+    {
+      "type": "warning",
+      "text": "Clerk disabled: missing VITE_CLERK_PUBLISHABLE_KEY"
+    }
+  ],
+  "network_failures": [],
+  "viewport_results": [
+    {
+      "viewport": "1920",
+      "horizontalOverflow": false,
+      "brokenImages": 0,
+      "raceCardCount": 4,
+      "tableHeaderHeight": "24px",
+      "tableRowHeight": "54px",
+      "screenshot": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\EDGEIQ_RACE_WORKSPACE_V1_1920.png",
+      "pass": true
+    },
+    {
+      "viewport": "1600",
+      "horizontalOverflow": false,
+      "brokenImages": 0,
+      "raceCardCount": 4,
+      "tableHeaderHeight": "24px",
+      "tableRowHeight": "54px",
+      "screenshot": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\EDGEIQ_RACE_WORKSPACE_V1_1600.png",
+      "pass": true
+    },
+    {
+      "viewport": "1440",
+      "horizontalOverflow": false,
+      "brokenImages": 0,
+      "raceCardCount": 4,
+      "tableHeaderHeight": "48px",
+      "tableRowHeight": "52.9531px",
+      "screenshot": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\EDGEIQ_RACE_WORKSPACE_V1_1440.png",
+      "pass": true
+    },
+    {
+      "viewport": "1366",
+      "horizontalOverflow": false,
+      "brokenImages": 0,
+      "raceCardCount": 4,
+      "tableHeaderHeight": "48px",
+      "tableRowHeight": "41.8438px",
+      "screenshot": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\EDGEIQ_RACE_WORKSPACE_V1_1366.png",
+      "pass": true
+    }
+  ],
+  "responsive_all_pass": "PASS",
+  "home_regression_status": "PASS",
+  "meetings_regression_status": "PASS",
+  "overall_status": "PASS"
+}

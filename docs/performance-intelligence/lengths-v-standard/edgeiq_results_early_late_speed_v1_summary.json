@@ -1,0 +1,12 @@
+{
+  "input_sectional_rows": 24,
+  "historical_current_early_rows_retained": 503,
+  "historical_current_late_rows_retained": 503,
+  "fresh_runner_rows": 24,
+  "early_speed_rows": 24,
+  "late_speed_rows": 24,
+  "early_calculated_rows": 0,
+  "late_calculated_rows": 0,
+  "rejections": 48,
+  "status": "EARLY_LATE_SPEED_SCOPE_BLOCKED_FOR_CURRENT_ROWS"
+}

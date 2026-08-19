@@ -1,0 +1,228 @@
+﻿from __future__ import annotations
+
+import csv
+import json
+import re
+from datetime import datetime, timezone
+from pathlib import Path
+from urllib.request import Request, urlopen
+from urllib.error import HTTPError, URLError
+
+ROOT = Path(__file__).resolve().parents[1]
+DATA = ROOT / "public" / "data"
+
+OUT = DATA / "edgeiq_racingcom_historical_calendar_backfill_v1.csv"
+AUDIT = DATA / "edgeiq_racingcom_historical_calendar_backfill_v1_audit.csv"
+
+START_YEAR = 2023
+END_YEAR = 2026
+
+VIC_ONLY = True
+
+OUT_COLUMNS = [
+    "built_at",
+    "meeting_date",
+    "track",
+    "state",
+    "event_type",
+    "meet_status",
+    "is_trial",
+    "is_jumpout",
+    "is_abandoned",
+    "has_race_information",
+    "meeting_url",
+    "race_no",
+    "race_url",
+    "speed_data_url",
+    "source_url",
+    "discovery_status",
+]
+
+AUDIT_COLUMNS = [
+    "built_at",
+    "start_year",
+    "end_year",
+    "months_requested",
+    "months_fetched",
+    "calendar_entries_seen",
+    "vic_entries_kept",
+    "meetings_kept",
+    "race_rows_built",
+    "graphql_endpoint_called_by_script",
+    "api_key_extracted",
+    "private_endpoint_used",
+    "final_status",
+]
+
+def clean(v) -> str:
+    return "" if v is None else str(v).strip()
+
+def date_key(v) -> str:
+    text = clean(v)
+    if not text:
+        return ""
+    return text[:10]
+
+def race_count_guess(entry: dict) -> int:
+    venue = clean(entry.get("Venue") or entry.get("Track")).upper()
+    date_text = date_key(entry.get("Date"))
+    month = date_text[5:7] if len(date_text) >= 7 else ""
+
+    spring_major_tracks = (
+        "FLEMINGTON",
+        "CAULFIELD",
+        "MOONEE VALLEY",
+    )
+
+    if month in {"10", "11"} and any(track in venue for track in spring_major_tracks):
+        return 10
+
+    return 8
+
+def write_csv(path: Path, rows: list[dict], columns: list[str]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_suffix(".tmp")
+    with tmp.open("w", encoding="utf-8", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=columns, extrasaction="ignore")
+        w.writeheader()
+        for r in rows:
+            w.writerow({c: r.get(c, "") for c in columns})
+    tmp.replace(path)
+
+def fetch_month(year: int, month: int) -> tuple[dict, str, int, str]:
+    url = f"https://www.racing.com/services/appv2/GetMeetsByMonth/{year}/{month}"
+    req = Request(
+        url,
+        headers={
+            "User-Agent": "EDGEiQ-Racing/1.0 public-calendar-backfill",
+            "Accept": "application/json,text/plain,*/*",
+            "Referer": "https://www.racing.com/calendar",
+        },
+    )
+    try:
+        with urlopen(req, timeout=45) as res:
+            body = res.read().decode(res.headers.get_content_charset() or "utf-8", errors="replace")
+            return json.loads(body), "FETCHED", int(res.status), url
+    except HTTPError as e:
+        return {}, f"HTTP_{e.code}", int(e.code), url
+    except URLError as e:
+        return {}, f"URL_ERROR_{clean(e.reason)}", 0, url
+    except Exception as e:
+        return {}, f"ERROR_{e.__class__.__name__}", 0, url
+
+def entries_from_payload(payload: dict) -> list[dict]:
+    out = []
+    for month in payload.get("Months") or []:
+        for e in month.get("CalendarEntries") or []:
+            if isinstance(e, dict):
+                out.append(e)
+        for e in month.get("CalendarEntriesList") or []:
+            if isinstance(e, dict):
+                out.append(e)
+    return out
+
+def main() -> None:
+    built_at = datetime.now(timezone.utc).isoformat()
+    rows = []
+    seen = set()
+
+    months_requested = 0
+    months_fetched = 0
+    entries_seen = 0
+    vic_entries = 0
+    meetings_kept = 0
+
+    for y in range(START_YEAR, END_YEAR + 1):
+        for m in range(1, 13):
+            months_requested += 1
+            payload, status, code, source_url = fetch_month(y, m)
+            if status != "FETCHED":
+                continue
+            months_fetched += 1
+            entries = entries_from_payload(payload)
+            entries_seen += len(entries)
+
+            for e in entries:
+                state = clean(e.get("State"))
+                if VIC_ONLY and state.upper() != "VIC":
+                    continue
+
+                is_trial = str(e.get("IsTrial", "")).upper() == "TRUE"
+                is_jumpout = str(e.get("IsJumpout", "")).upper() == "TRUE"
+                is_abandoned = str(e.get("IsAbandoned", "")).upper() == "TRUE"
+                has_info = str(e.get("HasRaceInformation", "")).upper() == "TRUE"
+
+                if is_trial or is_jumpout or is_abandoned or not has_info:
+                    continue
+
+                url_segment = clean(e.get("UrlSegment"))
+                meeting_date = date_key(e.get("Date")) or (url_segment[:10] if re.match(r"^\d{4}-\d{2}-\d{2}/", url_segment) else "")
+                track = clean(e.get("Venue")) or clean(e.get("Track"))
+
+                if not meeting_date or not track or not url_segment:
+                    continue
+
+                meeting_url = f"https://www.racing.com/form/{url_segment.strip('/')}"
+                vic_entries += 1
+                meetings_kept += 1
+
+                for rno in range(1, race_count_guess(e) + 1):
+                    race_url = f"{meeting_url}/race/{rno}"
+                    speed_url = f"{race_url}/speed-data"
+                    key = (meeting_date, meeting_url, str(rno))
+                    if key in seen:
+                        continue
+                    seen.add(key)
+
+                    rows.append({
+                        "built_at": built_at,
+                        "meeting_date": meeting_date,
+                        "track": track.upper(),
+                        "state": state,
+                        "event_type": clean(e.get("EventType")),
+                        "meet_status": clean(e.get("MeetStatus")),
+                        "is_trial": str(is_trial).upper(),
+                        "is_jumpout": str(is_jumpout).upper(),
+                        "is_abandoned": str(is_abandoned).upper(),
+                        "has_race_information": str(has_info).upper(),
+                        "meeting_url": meeting_url,
+                        "race_no": str(rno),
+                        "race_url": race_url,
+                        "speed_data_url": speed_url,
+                        "source_url": source_url,
+                        "discovery_status": "PUBLIC_RACINGCOM_MONTH_BACKFILL_CANDIDATE",
+                    })
+
+    rows.sort(key=lambda r: (r["meeting_date"], r["track"], int(r["race_no"])))
+
+    audit = [{
+        "built_at": built_at,
+        "start_year": START_YEAR,
+        "end_year": END_YEAR,
+        "months_requested": months_requested,
+        "months_fetched": months_fetched,
+        "calendar_entries_seen": entries_seen,
+        "vic_entries_kept": vic_entries,
+        "meetings_kept": meetings_kept,
+        "race_rows_built": len(rows),
+        "graphql_endpoint_called_by_script": "FALSE",
+        "api_key_extracted": "FALSE",
+        "private_endpoint_used": "FALSE",
+        "final_status": "HISTORICAL_CALENDAR_BACKFILL_BUILT" if rows else "NO_ROWS_BUILT",
+    }]
+
+    write_csv(OUT, rows, OUT_COLUMNS)
+    write_csv(AUDIT, audit, AUDIT_COLUMNS)
+
+    print("EDGEiQ Racing.com historical calendar backfill V1 built")
+    print(f"months_fetched={months_fetched}/{months_requested}")
+    print(f"calendar_entries_seen={entries_seen}")
+    print(f"meetings_kept={meetings_kept}")
+    print(f"race_rows_built={len(rows)}")
+    print(f"saved={OUT}")
+    print(f"audit={AUDIT}")
+    print(f"final_status={audit[0]['final_status']}")
+
+if __name__ == "__main__":
+    main()
+

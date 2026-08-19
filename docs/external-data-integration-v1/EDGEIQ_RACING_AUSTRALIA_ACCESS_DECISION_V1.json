@@ -1,0 +1,9 @@
+{
+  "classification": "SOURCE_ACCESS_FORBIDDEN",
+  "current_result": "HTTP 403 from current environment",
+  "endpoint": "https://www.racingaustralia.horse/FreeFields/Results.aspx",
+  "licensing_review": "REQUIRED",
+  "not_attempted": "IP rotation, proxying, cookie harvesting, browser evasion, CAPTCHA bypass",
+  "operator_action_required": "Resolve approved access or use official manual export/commercial feed",
+  "source": "Racing Australia FreeFields"
+}

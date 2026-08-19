@@ -1,0 +1,5 @@
+{
+  "runner_sectional_source": "getRaceForm data.sectionaltimes_callback.Horses[].SplitTimes",
+  "unit_semantics": "metres from finish labels parsed into start/end metres",
+  "public_anonymous_replay": "NOT_CONFIRMED"
+}

@@ -1,0 +1,193 @@
+{
+  "status": 0,
+  "payload": {
+    "header": {
+      "description": "Turftrax Weather Data Visualisation for Sportsbet Sandown Racecourse on Fri, 10 Jul 2026 02:33:33 +0100",
+      "signature": "Turftrax ITS WDV API Stream prod-V1.5.3-2021-04-15T12:00",
+      "copyright": "2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Turftrax Ltd. All Rights Reserved."
+    },
+    "content": {
+      "additional-comment": "",
+      "air-temperature-current": 13.24,
+      "air-temperature-max": 13.26,
+      "air-temperature-min": 1.49,
+      "awt-race-date": "N/a",
+      "awtReport": 0,
+      "carousel": {
+        "temperature": {
+          "default": "air",
+          "list": [
+            "air"
+          ]
+        }
+      },
+      "disableMetic": [],
+      "et-24hr": 0.53,
+      "et-7day": 2.32,
+      "et-since": 0.12,
+      "etEnabled": true,
+      "going-race-date": "Wednesday, 15th July, 2026",
+      "going-report": "Soft 7 ",
+      "going-report-date": "Friday, 10th July, 2026 at 7:29 am",
+      "going-waypoint-map": "https://api.turftrax.co.uk/maps/going-reports/338681_waypoints.svg",
+      "going-zone-map": "https://api.turftrax.co.uk/maps/going-reports/338681_zones.svg",
+      "goingReport": 1,
+      "haveManualRain": false,
+      "humidity-current": 63.11,
+      "humidity-max": 98.88,
+      "humidity-min": 62.31,
+      "irrigation-report": "24hrs: 0mm\r\n7 days: 0mm",
+      "isDemo": false,
+      "isLastMeeting": false,
+      "location-date": "Wednesday, 15th July, 2026",
+      "location-title": "Sportsbet Hillside 15/07/2026",
+      "location-track-type": "N/a",
+      "location-venue": "Sportsbet Sandown",
+      "mapName": "Hillside",
+      "mapping-service": "yes",
+      "racingToday": 0,
+      "rail-report": "Hillside 6m",
+      "rain0-24hr": "",
+      "rain0-7day": "",
+      "rain0-today": "",
+      "rain1-24hr": 0.2,
+      "rain1-7day": 3.2,
+      "rain1-current": 0,
+      "rain1-since": 0,
+      "rain1-today": 0,
+      "rain2-24hr": 0,
+      "rain2-7day": 3.4,
+      "rain2-current": 0,
+      "rain2-since": 0,
+      "rain2-today": 0,
+      "reportStatus": {
+        "system": [
+          "Previous Turf: 08/07/26, Next Turf: 15/07/26, Displaying: Wednesday, 15th July, 2026",
+          "Turf Report ID: 338681, <span style=\"cursor:pointer;\" onclick=\"ButtonAction('hub-link', this);\">Hub Link</span>",
+          "Display the most recent DRAFT Report: For 14 days before and 3 days after"
+        ],
+        "report": [],
+        "weather": []
+      },
+      "seasonEndMessage": "",
+      "stalls-report": "",
+      "stationActivityStatus": "active",
+      "stationId": 148000,
+      "stationType": "wtx",
+      "stick-report": "Overall: 8.1\r\nShear: 9",
+      "temperature-current": 13.24,
+      "temperature-max": 13.26,
+      "temperature-min": 1.49,
+      "trackType": "Turf",
+      "units": {
+        "linear": "mm",
+        "speed": "km/h",
+        "temperature": "C"
+      },
+      "use-map": "zone",
+      "useRainGauge": 2,
+      "usingAwtReport": "N/a",
+      "usingReport": "338681",
+      "venueId": 148,
+      "venueName": "Sportsbet Sandown Racecourse",
+      "weather-comment": "Top of 14, Partly cloudy. Slight chance of a shower, most likely during the morning. Winds westerly 15 to 20 km/h becoming light during the morning then becoming west to southwesterly 15 to 20 km/h during the day.",
+      "weather-date": "10/07/26",
+      "weather-last-update": "12:33pm",
+      "weatherReport": 1,
+      "windRepeater": "{\"going\":{\"enabled\":true,\"divXPos\":50,\"divYPos\":500,\"mapWidth\":950,\"repeaterWidth\":132,\"repeaterText\":true,\"deviation\":-0.05,\"mapRotation\":0}}",
+      "winddirection-current": 339.57,
+      "winddirection-current-rose": 1331,
+      "winddirection-text": "Northerly",
+      "windgust-current": 4.22,
+      "windgust-event": "12:19 pm",
+      "windgust-max": 5.2,
+      "windgust-min": 0,
+      "windspeed-average": 0.65,
+      "windspeed-current": 4
+    },
+    "tardis": {
+      "timezone-offset": 32400,
+      "offset-adjust": -3600,
+      "local-time": {
+        "calendar": "2026-07-10 10:33:33",
+        "epoch": 1783676013,
+        "cache": 1783675980
+      },
+      "local-date": {
+        "calendar": "2026-07-10",
+        "epoch": 1783638000,
+        "numericDate": "10/07/26"
+      },
+      "server-time": {
+        "calendar": "2026-07-10 01:33:33",
+        "epoch": 1783643613,
+        "cache": 1783675980
+      },
+      "server-date": {
+        "calendar": "2026-07-10",
+        "epoch": 1783638000
+      },
+      "local-create": {
+        "calendar": "N/a",
+        "epoch": "N/a"
+      },
+      "local-update": {
+        "calendar": "N/a",
+        "epoch": "N/a"
+      },
+      "only-published": 0,
+      "display-always": 0,
+      "days-before": {
+        "calendar": 14,
+        "epoch": 1209600
+      },
+      "days-after": {
+        "calendar": 3,
+        "epoch": 259200
+      },
+      "turfRacingToday": 0,
+      "previous-race": {
+        "calendar": "2026-07-08",
+        "epoch": 1783465200,
+        "fullDate": "Wednesday, 8th July, 2026",
+        "numericDate": "08/07/26"
+      },
+      "latest-previous": {
+        "calendar": "2026-07-11",
+        "epoch": 1783724400
+      },
+      "next-race": {
+        "calendar": "2026-07-15",
+        "epoch": 1784070000,
+        "fullDate": "Wednesday, 15th July, 2026",
+        "numericDate": "15/07/26"
+      },
+      "earliest-next": {
+        "calendar": "2026-07-01",
+        "epoch": 1782860400
+      },
+      "awtRacingToday": 0,
+      "previous-race-awt": {
+        "calendar": "N/a",
+        "epoch": "N/a",
+        "fullDate": "N/a",
+        "numericDate": "N/a"
+      },
+      "latest-last-awt": {
+        "calendar": "N/a",
+        "epoch": "N/a"
+      },
+      "next-race-awt": {
+        "calendar": "N/a",
+        "epoch": "N/a",
+        "fullDate": "N/a",
+        "numericDate": "N/a"
+      },
+      "earliest-next-awt": {
+        "calendar": "N/a",
+        "epoch": "N/a"
+      }
+    },
+    "trace": "**** WDV Init Start ****\nConfig Authorise: 6\nCourttesy Authorise: 5\nCodeBase Authorise: 6\nStation Id: 148000\nStation Name: wtx-rvlSandown-1\nStation Type: 8\nSensor Data Map:\nArray\n(\n    [data_00] =&gt; pressure\n    [data_01] =&gt; solar_load\n    [data_02] =&gt; ground_temp\n    [data_03] =&gt; solar_volts\n    [data_04] =&gt; solar_w_m2\n    [data_05] =&gt; wind_direction\n    [data_06] =&gt; air_temp\n    [data_07] =&gt; humidity\n    [data_08] =&gt; battery_load\n    [data_09] =&gt; battery_volts\n    [data_10] =&gt; soil_temp\n    [data_15] =&gt; true_gust\n    [data_16] =&gt; wind_speed\n    [data_17] =&gt; rg1_counter\n    [data_18] =&gt; rg2_counter\n    [data_19] =&gt; wind_gust\n    [data_26] =&gt; gps_lat\n    [data_27] =&gt; gps_lon\n    [data_28] =&gt; gps_alt\n    [data_30] =&gt; other_temp\n    [data_31] =&gt; poly_temp\n)\n\nWeather Config:\nArray\n(\n    [enabled] =&gt; 1\n    [render] =&gt; 1\n    [locationText] =&gt;  placed at 5 locations around the track, the main station is close to the 2000 meter start position\n    [evapotranspiration] =&gt; 1\n    [etSensorName] =&gt; evaporation_1\n    [defaultRainGauge] =&gt; 2\n    [useRainGauge] =&gt; 2\n    [todaySince] =&gt; Array\n        (\n            [sinceHours] =&gt; 06:00 am\n            [display] =&gt; 6:00 am\n        )\n\n    [skipSensor] =&gt; Array\n        (\n            [0] =&gt; poly_temp\n            [1] =&gt; max_poly_temp\n            [2] =&gt; min_poly_temp\n        )\n\n    [disabledSensor] =&gt; Array\n        (\n        )\n\n    [current] =&gt; Array\n        (\n            [required] =&gt; 1\n            [sensorList] =&gt; Array\n                (\n                    [0] =&gt; rg1_counter\n                    [1] =&gt; rg2_counter\n                    [2] =&gt; wind_speed\n                    [3] =&gt; wind_gust\n                    [4] =&gt; wind_direction\n                    [5] =&gt; air_temp\n                    [6] =&gt; ground_temp\n                    [7] =&gt; soil_temp\n                    [8] =&gt; humidity\n                )\n\n        )\n\n    [since] =&gt; Array\n        (\n            [required] =&gt; 1\n            [sensorList] =&gt; Array\n                (\n                    [minMax] =&gt; Array\n                        (\n                            [0] =&gt; wind_gust\n                            [1] =&gt; air_temp\n                            [2] =&gt; ground_temp\n                            [3] =&gt; soil_temp\n                            [4] =&gt; humidity\n                        )\n\n                    [total] =&gt; Array\n                        (\n                            [0] =&gt; rg1_counter\n                            [1] =&gt; rg2_counter\n                        )\n\n                )\n\n        )\n\n    [today] =&gt; Array\n        (\n            [required] =&gt; 1\n            [sensorList] =&gt; Array\n                (\n                    [minMax] =&gt; Array\n                        (\n                            [0] =&gt; wind_gust\n                            [1] =&gt; air_temp\n                            [2] =&gt; ground_temp\n                            [3] =&gt; soil_temp\n                            [4] =&gt; humidity\n                        )\n\n                    [total] =&gt; Array\n                        (\n                            [0] =&gt; rg1_counter\n                            [1] =&gt; rg2_counter\n                        )\n\n                )\n\n        )\n\n    [maxtime] =&gt; Array\n        (\n            [required] =&gt; 1\n            [sensorList] =&gt; Array\n                (\n                    [0] =&gt; wind_gust\n                    [1] =&gt; air_temp\n                    [2] =&gt; ground_temp\n                    [3] =&gt; soil_temp\n                    [4] =&gt; humidity\n                )\n\n        )\n\n    [24hour] =&gt; Array\n        (\n            [required] =&gt; 1\n            [sensorList] =&gt; Array\n                (\n                    [minMax] =&gt; Array\n                        (\n                        )\n\n                    [total] =&gt; Array\n                        (\n                            [0] =&gt; rg1_counter\n                            [1] =&gt; rg2_counter\n                        )\n\n                )\n\n        )\n\n    [7day] =&gt; Array\n        (\n            [required] =&gt; 1\n            [sensorList] =&gt; Array\n                (\n                    [minMax] =&gt; Array\n                        (\n                        )\n\n                    [total] =&gt; Array\n                        (\n                            [0] =&gt; rg1_counter\n                            [1] =&gt; rg2_counter\n                        )\n\n                )\n\n        )\n\n    [dataMap] =&gt; Array\n        (\n            [data_00] =&gt; pressure\n            [data_01] =&gt; solar_load\n            [data_02] =&gt; ground_temp\n            [data_03] =&gt; solar_volts\n            [data_04] =&gt; solar_w_m2\n            [data_05] =&gt; wind_direction\n            [data_06] =&gt; air_temp\n            [data_07] =&gt; humidity\n            [data_08] =&gt; battery_load\n            [data_09] =&gt; battery_volts\n            [data_10] =&gt; soil_temp\n            [data_15] =&gt; true_gust\n            [data_16] =&gt; wind_speed\n            [data_17] =&gt; rg1_counter\n            [data_18] =&gt; rg2_counter\n            [data_19] =&gt; wind_gust\n            [data_26] =&gt; gps_lat\n            [data_27] =&gt; gps_lon\n            [data_28] =&gt; gps_alt\n            [data_30] =&gt; other_temp\n            [data_31] =&gt; poly_temp\n        )\n\n    [calculatedMap] =&gt; Array\n        (\n            [calc_00] =&gt; rain_difference_1\n            [calc_01] =&gt; rain_total_1\n            [calc_02] =&gt; rain_total_2\n            [calc_03] =&gt; evaporation_1\n        )\n\n    [stationId] =&gt; 148000\n    [lastReadingDate] =&gt; \n    [weatherReportWtx] =&gt; Array\n        (\n            [enabled] =&gt; 1\n            [render] =&gt; 1\n            [locationText] =&gt;  placed at 5 locations around the track, the main station is close to the 2000 meter start position\n            [evapotranspiration] =&gt; 1\n            [etSensorName] =&gt; evaporation_1\n            [defaultRainGauge] =&gt; 2\n            [useRainGauge] =&gt; 2\n            [todaySince] =&gt; Array\n                (\n                    [sinceHours] =&gt; 06:00 am\n                    [display] =&gt; 6:00 am\n                )\n\n            [skipSensor] =&gt; Array\n                (\n                    [0] =&gt; poly_temp\n                    [1] =&gt; max_poly_temp\n                    [2] =&gt; min_poly_temp\n                )\n\n            [disabledSensor] =&gt; Array\n                (\n                )\n\n            [current] =&gt; Array\n                (\n                    [required] =&gt; 1\n                    [sensorList] =&gt; Array\n                        (\n                            [0] =&gt; rg1_counter\n                            [1] =&gt; rg2_counter\n                            [2] =&gt; wind_speed\n                            [3] =&gt; wind_gust\n                            [4] =&gt; wind_direction\n                            [5] =&gt; air_temp\n                            [6] =&gt; ground_temp\n                            [7] =&gt; soil_temp\n                            [8] =&gt; humidity\n                        )\n\n                )\n\n            [since] =&gt; Array\n                (\n                    [required] =&gt; 1\n                    [sensorList] =&gt; Array\n                        (\n                            [minMax] =&gt; Array\n                                (\n                                    [0] =&gt; wind_gust\n                                    [1] =&gt; air_temp\n                                    [2] =&gt; ground_temp\n                                    [3] =&gt; soil_temp\n                                    [4] =&gt; humidity\n                                )\n\n                            [total] =&gt; Array\n                                (\n                                    [0] =&gt; rg1_counter\n                                    [1] =&gt; rg2_counter\n                                )\n\n                        )\n\n                )\n\n            [today] =&gt; Array\n                (\n                    [required] =&gt; 1\n                    [sensorList] =&gt; Array\n                        (\n                            [minMax] =&gt; Array\n                                (\n                                    [0] =&gt; wind_gust\n                                    [1] =&gt; air_temp\n                                    [2] =&gt; ground_temp\n                                    [3] =&gt; soil_temp\n                                    [4] =&gt; humidity\n                                )\n\n                            [total] =&gt; Array\n                                (\n                                    [0] =&gt; rg1_counter\n                                    [1] =&gt; rg2_counter\n                                )\n\n                        )\n\n                )\n\n            [maxtime] =&gt; Array\n                (\n                    [required] =&gt; 1\n                    [sensorList] =&gt; Array\n                        (\n                            [0] =&gt; wind_gust\n                            [1] =&gt; air_temp\n                            [2] =&gt; ground_temp\n                            [3] =&gt; soil_temp\n                            [4] =&gt; humidity\n                        )\n\n                )\n\n            [24hour] =&gt; Array\n                (\n                    [required] =&gt; 1\n                    [sensorList] =&gt; Array\n                        (\n                            [minMax] =&gt; Array\n                                (\n                                )\n\n                            [total] =&gt; Array\n                                (\n                                    [0] =&gt; rg1_counter\n                                    [1] =&gt; rg2_counter\n                                )\n\n                        )\n\n                )\n\n            [7day] =&gt; Array\n                (\n                    [required] =&gt; 1\n                    [sensorList] =&gt; Array\n                        (\n                            [minMax] =&gt; Array\n                                (\n                                )\n\n                            [total] =&gt; Array\n                                (\n                                    [0] =&gt; rg1_counter\n                                    [1] =&gt; rg2_counter\n                                )\n\n                        )\n\n                )\n\n        )\n\n)\n\nTime Now: 1783647213\nDefault Authorise: 6\nEmma COOKIE Name: emma-its-session-token\nFull Racing Calendar:\nArray\n(\n    [turf] =&gt; Array\n        (\n            [0] =&gt; Array\n                (\n                    [race_date] =&gt; 2026-01-28\n                    [race_type] =&gt; 2\n                    [calendar_note] =&gt; rvl|au|australia|aus|hf_racecalendar_250812\n                )\n\n            [1] =&gt; Array\n                (\n                    [race_date] =&gt; 2026-02-04\n                    [race_type] =&gt; 2\n                    [calendar_note] =&gt; rvl|au|australia|aus|hf_racecalendar_250812\n                )\n\n            [2] =&gt; Array\n                (\n                    [race_date] =&gt; 2026-02-25\n                    [race_type] =&gt; 2\n                    [calendar_note] =&gt; rvl|au|australia|aus|hf_racecalendar_250812\n                )\n\n            [3] =&gt; Array\n                (\n                    [race_date] =&gt; 2026-03-11\n                    [race_type] =&gt; 2\n                    [calendar_note] =&gt; rvl|au|australia|aus|hf_racecalendar_250812\n                )\n\n            [4] =&gt; Array\n                (\n                    [race_date] =&gt; 2026-03-25\n                    [race_type] =&gt; 2\n                    [calendar_note] =&gt; rvl|au|australia|aus|hf_racecalendar_250812\n                )\n\n            [5] =&gt; Array\n                (\n                    [race_date] =&gt; 2026-04-06\n                    [race_type] =&gt; 2\n                    [calendar_note] =&gt; rvl|au|australia|aus|hf_racecalendar_250812\n                )\n\n            [6] =&gt; Array\n                (\n                    [race_date] =&gt; 2026-04-15\n                    [race_type] =&gt; 2\n                    [calendar_note] =&gt; rvl|au|australia|aus|hf_racecalendar_250812\n                )\n\n            [7] =&gt; Array\n                (\n                    [race_date] =&gt; 2026-05-23\n                    [race_type] =&gt; 2\n                    [calendar_note] =&gt; rvl|au|australia|aus|hf_racecalendar_250812\n                )\n\n            [8] =&gt; Array\n                (\n                    [race_date] =&gt; 2026-05-31\n                    [race_type] =&gt; 2\n                    [calendar_note] =&gt; rvl|au|australia|aus|hf_racecalendar_250812\n                )\n\n            [9] =&gt; Array\n                (\n                    [race_date] =&gt; 2026-06-03\n                    [race_type] =&gt; 2\n                    [calendar_note] =&gt; rvl|au|australia|aus|hf_racecalendar_250812\n                )\n\n            [10] =&gt; Array\n                (\n                    [race_date] =&gt; 2026-06-13\n                    [race_type] =&gt; 2\n                    [calendar_note] =&gt; rvl|au|australia|aus|hf_racecalendar_250812\n                )\n\n            [11] =&gt; Array\n                (\n                    [race_date] =&gt; 2026-07-01\n                    [race_type] =&gt; 2\n                    [calendar_note] =&gt; rvl|au|australia|aus|hf_racecalendar_250812\n                )\n\n            [12] =&gt; Array\n                (\n                    [race_date] =&gt; 2026-07-08\n                    [race_type] =&gt; 2\n                    [calendar_note] =&gt; rvl|au|australia|aus|hf_racecalendar_250812\n                )\n\n            [13] =&gt; Array\n                (\n                    [race_date] =&gt; 2026-07-15\n                    [race_type] =&gt; 2\n                    [calendar_note] =&gt; rvl|au|australia|aus|hf_racecalendar_250812\n                )\n\n            [14] =&gt; Array\n                (\n                    [race_date] =&gt; 2026-07-22\n                    [race_type] =&gt; 2\n                    [calendar_note] =&gt; rvl|au|australia|aus|hf_racecalendar_250812\n                )\n\n            [15] =&gt; Array\n                (\n                    [race_date] =&gt; 2026-07-29\n                    [race_type] =&gt; 2\n                    [calendar_note] =&gt; rvl|au|australia|aus|hf_racecalendar_250812\n                )\n\n        )\n\n    [awt] =&gt; Array\n        (\n        )\n\n)\nArray\n(\n    [0] =&gt; 2026-01-28\n    [1] =&gt; 2026-02-04\n    [2] =&gt; 2026-02-25\n    [3] =&gt; 2026-03-11\n    [4] =&gt; 2026-03-25\n    [5] =&gt; 2026-04-06\n    [6] =&gt; 2026-04-15\n    [7] =&gt; 2026-05-23\n    [8] =&gt; 2026-05-31\n    [9] =&gt; 2026-06-03\n    [10] =&gt; 2026-06-13\n    [11] =&gt; 2026-07-01\n    [12] =&gt; 2026-07-08\n    [13] =&gt; 2026-07-15\n    [14] =&gt; 2026-07-22\n    [15] =&gt; 2026-07-29\n)\nProcessing: 2026-01-28\nSetting Last Date: 2026-01-28\nProcessing: 2026-02-04\nSetting Last Date: 2026-02-04\nProcessing: 2026-02-25\nSetting Last Date: 2026-02-25\nProcessing: 2026-03-11\nSetting Last Date: 2026-03-11\nProcessing: 2026-03-25\nSetting Last Date: 2026-03-25\nProcessing: 2026-04-06\nSetting Last Date: 2026-04-06\nProcessing: 2026-04-15\nSetting Last Date: 2026-04-15\nProcessing: 2026-05-23\nSetting Last Date: 2026-05-23\nProcessing: 2026-05-31\nSetting Last Date: 2026-05-31\nProcessing: 2026-06-03\nSetting Last Date: 2026-06-03\nProcessing: 2026-06-13\nSetting Last Date: 2026-06-13\nProcessing: 2026-07-01\nSetting Last Date: 2026-07-01\nProcessing: 2026-07-08\nSetting Last Date: 2026-07-08\nProcessing: 2026-07-15\nSetting Next Date: 2026-07-15\nLast: 2026-07-08, Next: 2026-07-15, Today: N/a\nNext Turft Race (INIT:884): 2026-07-15\nNext AWT Race (INIT:885): \nWeather Current Query: select reading_epoch, data_02 as ground_temp, data_05 as wind_direction, data_06 as air_temp, data_07 as humidity, data_10 as soil_temp, data_16 as wind_speed, data_17 as rg1_counter, data_18 as rg2_counter, data_19 as wind_gust from emdb.station_readings  where station_id = 148000 and reading_date &gt;= \"2026-07-10\" and is_summary_data = 0 order by reading_epoch desc limit 1\nTurf Race Window 6\nTurf Report Query:\nSELECT id, map_id, make_date, official_going, additional_comments, weather_comments, stick_comments, status, waypoint_map, zone_map, created_at, updated_at, race_date, watering, rails, stalls, meeting_description\nFROM tthub.going_reports\nWHERE map_id  IN (120,121,248,257,264)\n\n AND race_date BETWEEN \"2026-07-08 00:00:00\" AND \"2026-07-15 00:00:00\"\nORDER BY race_date DESC, updated_at DESC\n\n\nReturn: 0\nFiltering out AWT Reports\nreport Race Date: 2026-07-15\nIs Turf Meeting\nreport Race Date: 2026-07-15\nIs Turf Meeting\nreport Race Date: 2026-07-15\nIs Turf Meeting\nreport Race Date: 2026-07-08\nIs Turf Meeting\nreport Race Date: 2026-07-08\nIs Turf Meeting\nreport Race Date: 2026-07-08\nIs Turf Meeting\nreport Race Date: 2026-07-08\nIs Turf Meeting\nGetting Most Recent Report\nFinal Report List:\nArray\n(\n    [0] =&gt; Array\n        (\n            [id] =&gt; 338681\n            [map_id] =&gt; 120\n            [make_date] =&gt; 2026-07-09 22:27:00\n            [official_going] =&gt; Soft 7 \n            [additional_comments] =&gt; \n            [weather_comments] =&gt; Top of 14, Partly cloudy. Slight chance of a shower, most likely during the morning. Winds westerly 15 to 20 km/h becoming light during the morning then becoming west to southwesterly 15 to 20 km/h during the day.\n            [stick_comments] =&gt; Overall: 8.1\r\nShear: 9\n            [status] =&gt; 1\n            [waypoint_map] =&gt; 338681_waypoints.svg\n            [zone_map] =&gt; 338681_zones.svg\n            [created_at] =&gt; 2026-07-09 23:27:21\n            [updated_at] =&gt; 2026-07-09 23:29:32\n            [race_date] =&gt; 2026-07-15\n            [watering] =&gt; 24hrs: 0mm\r\n7 days: 0mm\n            [rails] =&gt; Hillside 6m\n            [stalls] =&gt; \n            [meeting_description] =&gt; Sportsbet Hillside 15/07/2026\n        )\n\n    [1] =&gt; Array\n        (\n            [id] =&gt; 335826\n            [map_id] =&gt; 120\n            [make_date] =&gt; 2026-07-15 00:45:00\n            [official_going] =&gt; Soft 7 \n            [additional_comments] =&gt; \n            [weather_comments] =&gt; Top of 14, Partly cloudy. Medium chance of showers. Winds westerly 15 to 20 km/h turning southwesterly during the day.\n            [stick_comments] =&gt; \n            [status] =&gt; 1\n            [waypoint_map] =&gt; 335826_waypoints.svg\n            [zone_map] =&gt; 335826_zones.svg\n            [created_at] =&gt; 2026-06-12 21:02:34\n            [updated_at] =&gt; 2026-07-09 00:45:21\n            [race_date] =&gt; 2026-07-15\n            [watering] =&gt; 24hrs: 0mm\r\n7 days: 0mm\n            [rails] =&gt; Hillside 6m\n            [stalls] =&gt; \n            [meeting_description] =&gt; Sportsbet Hillside 15/07/2026\n        )\n\n    [2] =&gt; Array\n        (\n            [id] =&gt; 338424\n            [map_id] =&gt; 121\n            [make_date] =&gt; 2026-07-09 00:40:00\n            [official_going] =&gt; Soft 7\n            [additional_comments] =&gt; \n            [weather_comments] =&gt; Top of 14, Partly cloudy. Medium chance of showers. Winds westerly 15 to 20 km/h turning southwesterly during the day.\n            [stick_comments] =&gt; \n            [status] =&gt; 1\n            [waypoint_map] =&gt; 338424_waypoints.svg\n            [zone_map] =&gt; 338424_zones.svg\n            [created_at] =&gt; 2026-07-07 21:20:25\n            [updated_at] =&gt; 2026-07-09 00:42:28\n            [race_date] =&gt; 2026-07-15\n            [watering] =&gt; 24 hours: 0mm\r\n7 days: 0mm\n            [rails] =&gt; Hillside 6m\n            [stalls] =&gt; \n            [meeting_description] =&gt; Sportsbet Hillside 15/07/2026\n        )\n\n    [3] =&gt; Array\n        (\n            [id] =&gt; 338321\n            [map_id] =&gt; 121\n            [make_date] =&gt; 2026-07-06 22:00:00\n            [official_going] =&gt; Heavy 8\n            [additional_comments] =&gt; \n            [weather_comments] =&gt; Top of 12, Partly cloudy. The chance of morning fog. Light winds.\n            [stick_comments] =&gt; Overall: 8.6\r\nShear: 9.6\r\nSoil Moisture: 39.80%\n            [status] =&gt; 1\n            [waypoint_map] =&gt; 338321_waypoints.svg\n            [zone_map] =&gt; 338321_zones.svg\n            [created_at] =&gt; 2026-07-06 23:00:56\n            [updated_at] =&gt; 2026-07-06 23:34:11\n            [race_date] =&gt; 2026-07-08\n            [watering] =&gt; 24hrs: 0mm\r\n7 days: 0mm\n            [rails] =&gt; Lakeside - 3m\n            [stalls] =&gt; \n            [meeting_description] =&gt; Sportsbet Lakeside 08/07/2026\n        )\n\n    [4] =&gt; Array\n        (\n            [id] =&gt; 338221\n            [map_id] =&gt; 121\n            [make_date] =&gt; 2026-07-05 21:30:00\n            [official_going] =&gt; Heavy 8\n            [additional_comments] =&gt; \n            [weather_comments] =&gt; Top of 12, Partly cloudy. The chance of morning fog. Light winds.\n            [stick_comments] =&gt; Overall: 7.6\r\nShear: 8.4\r\nSoil Moisture: 40.20%\n            [status] =&gt; 1\n            [waypoint_map] =&gt; 338221_waypoints.svg\n            [zone_map] =&gt; 338221_zones.svg\n            [created_at] =&gt; 2026-07-05 22:49:01\n            [updated_at] =&gt; 2026-07-05 23:02:05\n            [race_date] =&gt; 2026-07-08\n            [watering] =&gt; 24hrs: 0mm\r\n7 days: 0mm\n            [rails] =&gt; Lakeside - 3m\n            [stalls] =&gt; \n            [meeting_description] =&gt; \n        )\n\n    [5] =&gt; Array\n        (\n            [id] =&gt; 337972\n            [map_id] =&gt; 121\n            [make_date] =&gt; 2026-07-02 22:22:00\n            [official_going] =&gt; Heavy 10\n            [additional_comments] =&gt; \n            [weather_comments] =&gt; Top of 15, Partly cloudy. Slight chance of a shower. Light winds.\n            [stick_comments] =&gt; Overall: 7.9\r\nShear: 9.3\n            [status] =&gt; 1\n            [waypoint_map] =&gt; 337972_waypoints.svg\n            [zone_map] =&gt; 337972_zones.svg\n            [created_at] =&gt; 2026-07-02 23:22:13\n            [updated_at] =&gt; 2026-07-02 23:25:22\n            [race_date] =&gt; 2026-07-08\n            [watering] =&gt; 24hrs: 0mm\r\n7 days: 0mm\n            [rails] =&gt; Lakeside - 3m\n            [stalls] =&gt; \n            [meeting_description] =&gt; Sportsbet Lakeside 08/07/2026\n        )\n\n    [6] =&gt; Array\n        (\n            [id] =&gt; 337858\n            [map_id] =&gt; 121\n            [make_date] =&gt; 2026-07-02 06:48:00\n            [official_going] =&gt; Heavy 10\n            [additional_comments] =&gt; \n            [weather_comments] =&gt; Top of 14, Partly cloudy. Light winds.\n            [stick_comments] =&gt; Overall: 8\r\nShear: 9.2\n            [status] =&gt; 1\n            [waypoint_map] =&gt; 337858_waypoints.svg\n            [zone_map] =&gt; 337858_zones.svg\n            [created_at] =&gt; 2026-07-01 23:30:23\n            [updated_at] =&gt; 2026-07-02 06:48:38\n            [race_date] =&gt; 2026-07-08\n            [watering] =&gt; 24hrs: 0mm\r\n7 days: 0mm\n            [rails] =&gt; Lakeside - 3m\n            [stalls] =&gt; \n            [meeting_description] =&gt; Sportsbet Lakeside 08/07/2026\n        )\n\n)\n\nNext Turf Race Date (INIT:170): 2026-07-15\nNext Turf Race Date (INIT:184): 2026-07-15\nReport Date: Friday, 10th July, 2026 at 7:29 am\nNext Turft Race (INIT:972): 2026-07-15\nNext AWT Race (INIT:973): \nNext Actual Race (INIT:974): Wednesday, 15th July, 2026 on N/a\n\n**** WDV Init End ****\n**** API Stream Start\nMap ID: 120\nArray\n(\n    [going] =&gt; Array\n        (\n            [enabled] =&gt; 1\n            [divXPos] =&gt; 810\n            [divYPos] =&gt; 10\n            [mapWidth] =&gt; 950\n            [repeaterWidth] =&gt; 132\n            [repeaterText] =&gt; 1\n            [deviation] =&gt; -0.05\n            [mapRotation] =&gt; 0\n        )\n\n)\nArray\n(\n    [divXPos] =&gt; 50\n    [divYPos] =&gt; 500\n)\nArray\n(\n    [enabled] =&gt; 1\n    [divXPos] =&gt; 50\n    [divYPos] =&gt; 500\n    [mapWidth] =&gt; 950\n    [repeaterWidth] =&gt; 132\n    [repeaterText] =&gt; 1\n    [deviation] =&gt; -0.05\n    [mapRotation] =&gt; 0\n)\nNext Turf Race Date (API:235): 2026-07-15\nNext AWT Race Date (API:236): \nGoing Race Today: No, AWT Race Today: No\n\n**** API Stream End\n"
+  }
+}

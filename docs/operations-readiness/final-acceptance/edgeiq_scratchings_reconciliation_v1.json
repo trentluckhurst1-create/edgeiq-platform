@@ -1,0 +1,16 @@
+{
+  "generated_utc": "2026-07-25T23:58:45+00:00",
+  "meetings": 3,
+  "races": 26,
+  "declared_runners": 371,
+  "active_runners": 353,
+  "total_current_scratchings": 18,
+  "daily_refresh_legacy_scratchings": null,
+  "legacy_metric_scope": "runner.status text containing SCR only",
+  "correct_metric_scope": "official/source scratched boolean, de-duplicated once per race runner",
+  "reconciliation_status": "PASS",
+  "scratchings_scope_discrepancy_cause": "Daily refresh legacy metric checked runner status text only; Meetings/catalog count official/source scratched booleans.",
+  "new_scratchings_this_run": "NOT_CALCULATED_NO_PREVIOUS_SNAPSHOT_DIFF_IN_THIS_ACCEPTANCE_RUN",
+  "scratching_changes_this_run": "NOT_CALCULATED_NO_PREVIOUS_SNAPSHOT_DIFF_IN_THIS_ACCEPTANCE_RUN",
+  "reinstated_runners_this_run": "NOT_CALCULATED_NO_PREVIOUS_SNAPSHOT_DIFF_IN_THIS_ACCEPTANCE_RUN"
+}

@@ -1,0 +1,68 @@
+{
+  "audit": {
+    "checks": [
+      {
+        "check_id": "required_files",
+        "detail": "GraphQL and observation files available",
+        "status": "PASS"
+      },
+      {
+        "check_id": "known_graphql_population_preserved",
+        "detail": "graphql_unique=879695; observation_contains=879695; graphql_missing_from_observation=0",
+        "status": "PASS"
+      },
+      {
+        "check_id": "observation_residual_classified",
+        "detail": "observation_only_unique_keys=1885",
+        "status": "PASS"
+      },
+      {
+        "check_id": "missing_identity_rows_classified",
+        "detail": "missing_identity_rows=11080",
+        "status": "PASS"
+      },
+      {
+        "check_id": "residual_source_resolution",
+        "detail": "residual_keys_from_other_classes=1263",
+        "status": "PARTIAL"
+      }
+    ],
+    "generated_utc": "2026-07-27T03:47:38+00:00",
+    "overall_status": "PARTIAL",
+    "program_id": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE1A_4_3_OBSERVATION_RESIDUAL_MISSING_IDENTITY_FORENSICS_V1",
+    "program_version": "1.0.0"
+  },
+  "generated_utc": "2026-07-27T03:47:38+00:00",
+  "graphql": {
+    "duplicate_groups": 89,
+    "duplicate_rows": 89,
+    "rows": 879784,
+    "sha256": "13f17e2ae21802aef5017a9a09cbb9ec572c9fda4c8fa8f85da27231e8828974",
+    "unique_raw_keys": 879695
+  },
+  "observation": {
+    "duplicate_rows": 879980,
+    "missing_identity_rows": 11080,
+    "observation_only_unique_keys": 1885,
+    "rows": 1772640,
+    "sha256": "428ac99ebf0e0eb4c410be77421cf65280eabbc1670a3356c888f18dc60a7e01",
+    "unique_raw_keys": 881580
+  },
+  "outputs": [
+    "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_4_3_OBSERVATION_CLASS_PROFILE_V1.csv",
+    "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_4_3_OBSERVATION_SOURCE_PATH_DETAIL_V1.csv",
+    "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_4_3_OBSERVATION_ONLY_KEY_PROFILE_V1.csv",
+    "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_4_3_OBSERVATION_ONLY_KEY_SAMPLE_V1.csv",
+    "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_4_3_MISSING_IDENTITY_PROFILE_V1.csv",
+    "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_4_3_MISSING_IDENTITY_SAMPLE_V1.csv",
+    "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_4_3_DUPLICATE_MULTIPLICITY_PROFILE_V1.csv",
+    "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_4_3_OBSERVATION_RESIDUAL_MISSING_IDENTITY_REPORT_V1.json",
+    "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_4_3_OBSERVATION_RESIDUAL_MISSING_IDENTITY_REPORT_V1.md",
+    "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_4_3_OBSERVATION_RESIDUAL_MISSING_IDENTITY_AUDIT_V1.json",
+    "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_4_3_OBSERVATION_RESIDUAL_MISSING_IDENTITY_AUDIT_V1.md"
+  ],
+  "overall_status": "PARTIAL",
+  "program_id": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE1A_4_3_OBSERVATION_RESIDUAL_MISSING_IDENTITY_FORENSICS_V1",
+  "program_version": "1.0.0",
+  "repository_root": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM"
+}

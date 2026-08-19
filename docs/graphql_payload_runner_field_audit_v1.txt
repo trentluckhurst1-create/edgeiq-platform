@@ -1,0 +1,735 @@
+EDGEIQ GRAPHQL PAYLOAD AUDIT
+========================================================================================================================
+Payload: C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_graphql_getRacesForMeet_payload_v1.json
+Race objects: 8
+
+========================================================================================================================
+MEETING : None
+STATE   : VIC
+RACE    : 1
+RUNNERS : 8
+
+HORSE    : Dom
+TRAINER  : B. & W. & JD.Hayes
+JOCKEY   : B.Shinn
+BARRIER  : 3
+LIVE BAR : 3
+WEIGHT   : 58kg
+SCRATCH  : False
+
+HORSE    : Stormy Grove
+TRAINER  : Patrick & Michelle Payne
+JOCKEY   : H.T.Coffey
+BARRIER  : 0
+LIVE BAR : 1
+WEIGHT   : 57.5kg
+SCRATCH  : True
+
+HORSE    : Zourain
+TRAINER  : R.D.Griffiths
+JOCKEY   : Z.Spain
+BARRIER  : 6
+LIVE BAR : 6
+WEIGHT   : 57.5kg
+SCRATCH  : False
+
+HORSE    : Garnacho
+TRAINER  : E. & D.Browne
+JOCKEY   : C.Williams
+BARRIER  : 4
+LIVE BAR : 4
+WEIGHT   : 57kg
+SCRATCH  : False
+
+HORSE    : Seindeel
+TRAINER  : A. & S.Freedman
+JOCKEY   : D.Moor
+BARRIER  : 5
+LIVE BAR : 5
+WEIGHT   : 57kg
+SCRATCH  : False
+
+HORSE    : Regal Secret
+TRAINER  : P.J.Stokes
+JOCKEY   : D.W.Stackhouse
+BARRIER  : 2
+LIVE BAR : 2
+WEIGHT   : 56kg
+SCRATCH  : False
+
+HORSE    : Xarpo
+TRAINER  : S.Zahra
+JOCKEY   : L.Riordan
+BARRIER  : 7
+LIVE BAR : 7
+WEIGHT   : 55kg
+SCRATCH  : False
+
+HORSE    : Stella Bystarlight
+TRAINER  : R.J.Meunier
+JOCKEY   : J.B.Stanley
+BARRIER  : 1
+LIVE BAR : 1
+WEIGHT   : 54kg
+SCRATCH  : False
+
+========================================================================================================================
+MEETING : None
+STATE   : VIC
+RACE    : 8
+RUNNERS : 13
+
+HORSE    : Bold Print
+TRAINER  : R.B.Cunningham
+JOCKEY   : T.Prebble
+BARRIER  : 1
+LIVE BAR : 1
+WEIGHT   : 62.5kg
+SCRATCH  : False
+
+HORSE    : Boonie
+TRAINER  : T.Dabernig
+JOCKEY   : J.E.Weatherley
+BARRIER  : 5
+LIVE BAR : 5
+WEIGHT   : 62kg
+SCRATCH  : False
+
+HORSE    : Lazy Susan
+TRAINER  : G.M.Bedggood
+JOCKEY   : J.Kennedy
+BARRIER  : 4
+LIVE BAR : 4
+WEIGHT   : 61kg
+SCRATCH  : False
+
+HORSE    : Big Me
+TRAINER  : N.R.Ryan
+JOCKEY   : B.Shinn
+BARRIER  : 9
+LIVE BAR : 9
+WEIGHT   : 60.5kg
+SCRATCH  : False
+
+HORSE    : Rocket Tiger
+TRAINER  : W.B.Brisbourne
+JOCKEY   : J.B.Stanley
+BARRIER  : 10
+LIVE BAR : 10
+WEIGHT   : 60.5kg
+SCRATCH  : False
+
+HORSE    : Epic Centre
+TRAINER  : C.Douglas
+JOCKEY   : J.Mott
+BARRIER  : 0
+LIVE BAR : 11
+WEIGHT   : 60kg
+SCRATCH  : True
+
+HORSE    : Grand Larceny
+TRAINER  : M. & W. & J.Hawkes
+JOCKEY   : C.Williams
+BARRIER  : 0
+LIVE BAR : 11
+WEIGHT   : 60kg
+SCRATCH  : True
+
+HORSE    : Links
+TRAINER  : C.Maher
+JOCKEY   : S.R.Osborne
+BARRIER  : 3
+LIVE BAR : 3
+WEIGHT   : 59.5kg
+SCRATCH  : False
+
+HORSE    : Layeruponlayer
+TRAINER  : M.R.Smerdon
+JOCKEY   : D.W.Stackhouse
+BARRIER  : 2
+LIVE BAR : 2
+WEIGHT   : 59kg
+SCRATCH  : False
+
+HORSE    : Chinqui
+TRAINER  : A. & S.Freedman
+JOCKEY   : D.Moor
+BARRIER  : 8
+LIVE BAR : 8
+WEIGHT   : 58kg
+SCRATCH  : False
+
+HORSE    : Miss Titeline
+TRAINER  : M.T.Leonard
+JOCKEY   : H.T.Coffey
+BARRIER  : 7
+LIVE BAR : 7
+WEIGHT   : 56.5kg
+SCRATCH  : False
+
+HORSE    : Barnage
+TRAINER  : Matthew.Fsadni
+JOCKEY   : J.Keating
+BARRIER  : 0
+LIVE BAR : 7
+WEIGHT   : 56kg
+SCRATCH  : True
+
+HORSE    : Mr Magnus
+TRAINER  : R.D.Griffiths
+JOCKEY   : Z.Spain
+BARRIER  : 6
+LIVE BAR : 6
+WEIGHT   : 55.5kg
+SCRATCH  : False
+
+========================================================================================================================
+MEETING : None
+STATE   : VIC
+RACE    : 4
+RUNNERS : 7
+
+HORSE    : Munhamek
+TRAINER  : N.R.Ryan
+JOCKEY   : B.Shinn
+BARRIER  : 7
+LIVE BAR : 7
+WEIGHT   : 60kg
+SCRATCH  : False
+
+HORSE    : Running By
+TRAINER  : C.Maher
+JOCKEY   : S.R.Osborne
+BARRIER  : 4
+LIVE BAR : 4
+WEIGHT   : 55kg
+SCRATCH  : False
+
+HORSE    : Roll On High
+TRAINER  : P.G.Moody & K.Coleman
+JOCKEY   : L.Meech
+BARRIER  : 1
+LIVE BAR : 1
+WEIGHT   : 54.5kg
+SCRATCH  : False
+
+HORSE    : The Open
+TRAINER  : Patrick & Michelle Payne
+JOCKEY   : J.Kah
+BARRIER  : 5
+LIVE BAR : 5
+WEIGHT   : 54kg
+SCRATCH  : False
+
+HORSE    : Windstorm
+TRAINER  : G.M.Bedggood
+JOCKEY   : H.T.Coffey
+BARRIER  : 2
+LIVE BAR : 2
+WEIGHT   : 54kg
+SCRATCH  : False
+
+HORSE    : Miraval Rose
+TRAINER  : G.M.Begg
+JOCKEY   : C.Williams
+BARRIER  : 6
+LIVE BAR : 6
+WEIGHT   : 54kg
+SCRATCH  : False
+
+HORSE    : Modown
+TRAINER  : C.J.Littlefield
+JOCKEY   : B.Mertens
+BARRIER  : 3
+LIVE BAR : 3
+WEIGHT   : 54kg
+SCRATCH  : False
+
+========================================================================================================================
+MEETING : None
+STATE   : VIC
+RACE    : 2
+RUNNERS : 10
+
+HORSE    : Saint Lazare
+TRAINER  : L.Kennewell & L.Yeomans
+JOCKEY   : R.McLeod
+BARRIER  : 7
+LIVE BAR : 7
+WEIGHT   : 59.5kg
+SCRATCH  : False
+
+HORSE    : Wascaly
+TRAINER  : CC.Chan
+JOCKEY   : J.Mott
+BARRIER  : 4
+LIVE BAR : 4
+WEIGHT   : 58.5kg
+SCRATCH  : False
+
+HORSE    : Enxuto
+TRAINER  : R.D.Griffiths
+JOCKEY   : P.M.Moloney
+BARRIER  : 2
+LIVE BAR : 2
+WEIGHT   : 57kg
+SCRATCH  : False
+
+HORSE    : The Negotiator
+TRAINER  : C.I.Brown
+JOCKEY   : D.W.Stackhouse
+BARRIER  : 3
+LIVE BAR : 3
+WEIGHT   : 57kg
+SCRATCH  : False
+
+HORSE    : Only Old Once
+TRAINER  : R.L.Cully
+JOCKEY   : H.T.Coffey
+BARRIER  : 5
+LIVE BAR : 5
+WEIGHT   : 56kg
+SCRATCH  : False
+
+HORSE    : Dream All Day
+TRAINER  : M.Price & M.Kent (Jnr)
+JOCKEY   : B.Shinn
+BARRIER  : 9
+LIVE BAR : 9
+WEIGHT   : 55.5kg
+SCRATCH  : False
+
+HORSE    : Alabama Girl
+TRAINER  : J.Sandhu
+JOCKEY   : B.Mertens
+BARRIER  : 0
+LIVE BAR : 9
+WEIGHT   : 54kg
+SCRATCH  : True
+
+HORSE    : Mogadishu
+TRAINER  : J.J.Robinson
+JOCKEY   : R.L.Hammond
+BARRIER  : 6
+LIVE BAR : 6
+WEIGHT   : 54kg
+SCRATCH  : False
+
+HORSE    : Elle Mcfearsome
+TRAINER  : B.Stanley
+JOCKEY   : J.B.Stanley
+BARRIER  : 8
+LIVE BAR : 8
+WEIGHT   : 54kg
+SCRATCH  : False
+
+HORSE    : Firm As A Rock
+TRAINER  : G.L.Donaldson
+JOCKEY   : S.R.Osborne
+BARRIER  : 1
+LIVE BAR : 1
+WEIGHT   : 54kg
+SCRATCH  : False
+
+========================================================================================================================
+MEETING : None
+STATE   : VIC
+RACE    : 7
+RUNNERS : 14
+
+HORSE    : Thorin
+TRAINER  : J.Sandhu
+JOCKEY   : K.Quilty
+BARRIER  : 0
+LIVE BAR : 9
+WEIGHT   : 63kg
+SCRATCH  : True
+
+HORSE    : Zamborghini
+TRAINER  : M.Laurie
+JOCKEY   : R.L.Hammond
+BARRIER  : 7
+LIVE BAR : 7
+WEIGHT   : 62.5kg
+SCRATCH  : False
+
+HORSE    : Moveforlex
+TRAINER  : Patrick & Michelle Payne
+JOCKEY   : D.W.Stackhouse
+BARRIER  : 11
+LIVE BAR : 11
+WEIGHT   : 61kg
+SCRATCH  : False
+
+HORSE    : Cyclone Harmony
+TRAINER  : P.Gelagotis
+JOCKEY   : T.L.Chapman
+BARRIER  : 1
+LIVE BAR : 1
+WEIGHT   : 60.5kg
+SCRATCH  : False
+
+HORSE    : Blushing Tycoon
+TRAINER  : T.Busuttin & N.Young
+JOCKEY   : C.Williams
+BARRIER  : 10
+LIVE BAR : 10
+WEIGHT   : 59kg
+SCRATCH  : False
+
+HORSE    : Nishino Crescent
+TRAINER  : H.Dwyer
+JOCKEY   : M.T.Aitken
+BARRIER  : 8
+LIVE BAR : 8
+WEIGHT   : 59kg
+SCRATCH  : False
+
+HORSE    : Blazing Rebel
+TRAINER  : G.M.Bedggood
+JOCKEY   : H.T.Coffey
+BARRIER  : 0
+LIVE BAR : 12
+WEIGHT   : 58.5kg
+SCRATCH  : True
+
+HORSE    : Et Tu Brute
+TRAINER  : A. & S.Freedman
+JOCKEY   : J.Mott
+BARRIER  : 3
+LIVE BAR : 3
+WEIGHT   : 58kg
+SCRATCH  : False
+
+HORSE    : The Western Front
+TRAINER  : B. & W. & JD.Hayes
+JOCKEY   : J.Kennedy
+BARRIER  : 12
+LIVE BAR : 12
+WEIGHT   : 58kg
+SCRATCH  : False
+
+HORSE    : Sound Of Cannons
+TRAINER  : C.E.Thomas
+JOCKEY   : Z.Spain
+BARRIER  : 6
+LIVE BAR : 6
+WEIGHT   : 57.5kg
+SCRATCH  : False
+
+HORSE    : Cotton Tree
+TRAINER  : M.Price & M.Kent (Jnr)
+JOCKEY   : B.Shinn
+BARRIER  : 9
+LIVE BAR : 9
+WEIGHT   : 57kg
+SCRATCH  : False
+
+HORSE    : Lygon Street Luigi
+TRAINER  : D.L.Pagan
+JOCKEY   : J.B.Stanley
+BARRIER  : 2
+LIVE BAR : 2
+WEIGHT   : 56.5kg
+SCRATCH  : False
+
+HORSE    : Midnight Glow
+TRAINER  : V.L.Malady
+JOCKEY   : J.Childs
+BARRIER  : 4
+LIVE BAR : 4
+WEIGHT   : 56.5kg
+SCRATCH  : False
+
+HORSE    : Inevitable Award
+TRAINER  : P.A.Preusker
+JOCKEY   : D.Moor
+BARRIER  : 5
+LIVE BAR : 5
+WEIGHT   : 56kg
+SCRATCH  : False
+
+========================================================================================================================
+MEETING : None
+STATE   : VIC
+RACE    : 6
+RUNNERS : 10
+
+HORSE    : Muramasa
+TRAINER  : T.Busuttin & N.Young
+JOCKEY   : B.Shinn
+BARRIER  : 1
+LIVE BAR : 1
+WEIGHT   : 59kg
+SCRATCH  : False
+
+HORSE    : Goldman
+TRAINER  : G.Waterhouse & A.Bott
+JOCKEY   : C.Williams
+BARRIER  : 5
+LIVE BAR : 5
+WEIGHT   : 58.5kg
+SCRATCH  : False
+
+HORSE    : Interpretation
+TRAINER  : C.Maher
+JOCKEY   : S.R.Osborne
+BARRIER  : 3
+LIVE BAR : 3
+WEIGHT   : 57kg
+SCRATCH  : False
+
+HORSE    : Mormona
+TRAINER  : Annabel Neasham & Rob Archibald
+JOCKEY   : D.Moor
+BARRIER  : 4
+LIVE BAR : 4
+WEIGHT   : 54kg
+SCRATCH  : False
+
+HORSE    : Grand Pierro
+TRAINER  : J.Warren
+JOCKEY   : Z.Spain
+BARRIER  : 10
+LIVE BAR : 10
+WEIGHT   : 54kg
+SCRATCH  : False
+
+HORSE    : Kirkeby
+TRAINER  : C.J.Waller
+JOCKEY   : F.W.Kersley
+BARRIER  : 7
+LIVE BAR : 7
+WEIGHT   : 54kg
+SCRATCH  : False
+
+HORSE    : Newfoundland
+TRAINER  : G.Waterhouse & A.Bott
+JOCKEY   : B.Mertens
+BARRIER  : 8
+LIVE BAR : 8
+WEIGHT   : 54kg
+SCRATCH  : False
+
+HORSE    : Queen Takes King
+TRAINER  : S.Jackson
+JOCKEY   : H.T.Coffey
+BARRIER  : 2
+LIVE BAR : 2
+WEIGHT   : 54kg
+SCRATCH  : False
+
+HORSE    : Just Berrilliant
+TRAINER  : Ricky.Maund
+JOCKEY   : J.Bowditch
+BARRIER  : 6
+LIVE BAR : 6
+WEIGHT   : 54kg
+SCRATCH  : False
+
+HORSE    : Infinity Imperial
+TRAINER  : L.Howley
+JOCKEY   : J.Kennedy
+BARRIER  : 9
+LIVE BAR : 9
+WEIGHT   : 54kg
+SCRATCH  : False
+
+========================================================================================================================
+MEETING : None
+STATE   : VIC
+RACE    : 5
+RUNNERS : 12
+
+HORSE    : Miss Tarzy
+TRAINER  : A. & S.Freedman
+JOCKEY   : J.Mott
+BARRIER  : 7
+LIVE BAR : 7
+WEIGHT   : 63kg
+SCRATCH  : False
+
+HORSE    : Matron Bullwinkel
+TRAINER  : M.J.Leek
+JOCKEY   : B.Mertens
+BARRIER  : 0
+LIVE BAR : 1
+WEIGHT   : 61kg
+SCRATCH  : True
+
+HORSE    : Zambezi Khan
+TRAINER  : Patrick & Michelle Payne
+JOCKEY   : T.Prebble
+BARRIER  : 6
+LIVE BAR : 6
+WEIGHT   : 60.5kg
+SCRATCH  : False
+
+HORSE    : Served Cold
+TRAINER  : D.T.O'Brien
+JOCKEY   : D.Moor
+BARRIER  : 2
+LIVE BAR : 2
+WEIGHT   : 59kg
+SCRATCH  : False
+
+HORSE    : Steal The Sun
+TRAINER  : L.Howley
+JOCKEY   : J.Kennedy
+BARRIER  : 3
+LIVE BAR : 3
+WEIGHT   : 59kg
+SCRATCH  : False
+
+HORSE    : Both Sides Now
+TRAINER  : C.Maher
+JOCKEY   : J.B.Stanley
+BARRIER  : 1
+LIVE BAR : 1
+WEIGHT   : 58.5kg
+SCRATCH  : False
+
+HORSE    : Princess Nefertiti
+TRAINER  : W.B.Brisbourne
+JOCKEY   : None
+BARRIER  : 0
+LIVE BAR : 9
+WEIGHT   : 58.5kg
+SCRATCH  : True
+
+HORSE    : Hanafubuki
+TRAINER  : T.Busuttin & N.Young
+JOCKEY   : J.Childs
+BARRIER  : 5
+LIVE BAR : 5
+WEIGHT   : 58kg
+SCRATCH  : False
+
+HORSE    : Shezavixen
+TRAINER  : R.D.Griffiths
+JOCKEY   : D.Keane
+BARRIER  : 0
+LIVE BAR : 6
+WEIGHT   : 58kg
+SCRATCH  : True
+
+HORSE    : Dane On Tour
+TRAINER  : D. & C.Feek
+JOCKEY   : D.W.Stackhouse
+BARRIER  : 4
+LIVE BAR : 4
+WEIGHT   : 56.5kg
+SCRATCH  : False
+
+HORSE    : Dreams Come True
+TRAINER  : M.Price & M.Kent (Jnr)
+JOCKEY   : B.Shinn
+BARRIER  : 8
+LIVE BAR : 8
+WEIGHT   : 56kg
+SCRATCH  : False
+
+HORSE    : Expeetee
+TRAINER  : G.W.Egan
+JOCKEY   : L.King
+BARRIER  : 0
+LIVE BAR : 8
+WEIGHT   : 55.5kg
+SCRATCH  : True
+
+========================================================================================================================
+MEETING : None
+STATE   : VIC
+RACE    : 3
+RUNNERS : 11
+
+HORSE    : Capper Thirtynine
+TRAINER  : N.R.Ryan
+JOCKEY   : R.McLeod
+BARRIER  : 5
+LIVE BAR : 5
+WEIGHT   : 61.5kg
+SCRATCH  : False
+
+HORSE    : Gronkowski
+TRAINER  : C.Douglas
+JOCKEY   : J.Mott
+BARRIER  : 11
+LIVE BAR : 11
+WEIGHT   : 58.5kg
+SCRATCH  : False
+
+HORSE    : Trapeze Warrior
+TRAINER  : P.J.Stokes
+JOCKEY   : T.Stockdale
+BARRIER  : 8
+LIVE BAR : 8
+WEIGHT   : 58.5kg
+SCRATCH  : False
+
+HORSE    : Apparatus
+TRAINER  : B. & W. & JD.Hayes
+JOCKEY   : B.Shinn
+BARRIER  : 1
+LIVE BAR : 1
+WEIGHT   : 58kg
+SCRATCH  : False
+
+HORSE    : Redoute's Night
+TRAINER  : C.M.Alderson
+JOCKEY   : C.Williams
+BARRIER  : 10
+LIVE BAR : 10
+WEIGHT   : 58kg
+SCRATCH  : False
+
+HORSE    : Makalu
+TRAINER  : L.Howley
+JOCKEY   : J.Kennedy
+BARRIER  : 7
+LIVE BAR : 7
+WEIGHT   : 57.5kg
+SCRATCH  : False
+
+HORSE    : Street Elite
+TRAINER  : R.D.Griffiths
+JOCKEY   : T.Prebble
+BARRIER  : 6
+LIVE BAR : 6
+WEIGHT   : 57kg
+SCRATCH  : False
+
+HORSE    : Pyrois
+TRAINER  : T. & C.McEvoy
+JOCKEY   : H.T.Coffey
+BARRIER  : 3
+LIVE BAR : 3
+WEIGHT   : 56.5kg
+SCRATCH  : False
+
+HORSE    : Attain
+TRAINER  : R.E.Laing
+JOCKEY   : J.Childs
+BARRIER  : 9
+LIVE BAR : 9
+WEIGHT   : 56kg
+SCRATCH  : False
+
+HORSE    : Isdell
+TRAINER  : C.Weller
+JOCKEY   : J.B.Stanley
+BARRIER  : 4
+LIVE BAR : 4
+WEIGHT   : 56kg
+SCRATCH  : False
+
+HORSE    : Posh I'm Not
+TRAINER  : P.J.Smith
+JOCKEY   : Z.Spain
+BARRIER  : 2
+LIVE BAR : 2
+WEIGHT   : 55.5kg
+SCRATCH  : False
+
+========================================================================================================================
+TOTAL RUNNERS: 85

@@ -1,0 +1,138 @@
+{
+  "warehouse_name": "EDGEiQ Corrected Canonical Performance Facts Warehouse",
+  "warehouse_version": "EDGEIQ_CANONICAL_PERFORMANCE_FACTS_V0_2",
+  "materialisation_version": "PHASE1_6_1_CORRECTED_IDENTITY_AND_GOVERNANCE_V0_2",
+  "identity_version": "PERFORMANCE_FACT_ID_V0_2_RACE_CONTEXT_RUNNER_HORSE",
+  "snapshot_id": "eiq_performance_facts_v0_2_a0c3715ab506d19f9301d8a4",
+  "generated_utc": "2026-07-16T07:52:45Z",
+  "immutable": true,
+  "production_data_modified": false,
+  "public_data_modified": false,
+  "benchmarks_calculated": false,
+  "source_performance_facts": {
+    "path": "docs/performance-intelligence/prototypes/phase1_6/edgeiq_performance_fact_v0_1_20260716_100919.csv",
+    "sha256": "ea80cce0974c990eb83d76155f6c734a57b2c61d415e1143799eb9420f7a8a7e",
+    "rows": 879784
+  },
+  "race_governance_profile": {
+    "path": "docs/performance-intelligence/prototypes/phase1_5b_4/edgeiq_non_blank_race_time_profile_v0_1_20260716_095159.csv",
+    "sha256": "f611c05a1eaa32677b08526fd3cbce1c62712c72e129f3c522a614e859f6d383",
+    "distinct_races": 71025
+  },
+  "output_assets": [
+    {
+      "asset_name": "canonical_performance_facts_v0_2",
+      "path": "canonical_performance_facts_v0_2.csv",
+      "rows": 879784,
+      "sha256": "51c5c04ce04bdd28dbcec5beb3c4766bdff4d0e5e6da555d22e2046280c6ec1b"
+    },
+    {
+      "asset_name": "performance_fact_quality_states_v0_2",
+      "path": "performance_fact_quality_states_v0_2.csv",
+      "rows": 879784,
+      "sha256": "a0752d82d247242a7369eb4f21699decf0c7d96801f725b026838e6004313af5"
+    }
+  ],
+  "source_rows": 879784,
+  "output_rows": 879784,
+  "unique_performance_id_count": 879784,
+  "blank_performance_id_count": 0,
+  "duplicate_performance_id_count": 0,
+  "id_reproducibility_percentage": 100.0,
+  "race_contract_linkage_percentage": 100.0,
+  "governed_benchmark_eligible_rows": 712628,
+  "governed_benchmark_blocked_rows": 167156,
+  "source_incomplete_rows": 166901,
+  "genuine_conflict_races_quarantined": 24,
+  "quarantined_conflict_runner_rows": 612,
+  "time_unavailable_runner_rows": 9639,
+  "legacy_duplicate_groups_requiring_new_identity": 89,
+  "natural_identity_collision_groups": 0,
+  "source_quality_state_counts": {
+    "COMPLETE": 712883,
+    "SOURCE_INCOMPLETE": 166901
+  },
+  "race_consistency_state_counts": {
+    "CONSISTENT_COMPLETE": 159193,
+    "CONSISTENT_WITH_MISSING": 710340,
+    "MULTIPLE_NON_BLANK_VALUES": 612,
+    "NO_TIME_AVAILABLE": 9639
+  },
+  "time_unit_state_counts": {
+    "CENTISECONDS_CONFIRMED": 712628,
+    "DISTANCE_UNAVAILABLE_OR_CONFLICTED": 156905,
+    "TIME_CONFLICT_QUARANTINED": 612,
+    "TIME_UNAVAILABLE": 9639
+  },
+  "exclusion_reason_counts": {
+    "RACE_TIME_CONFLICT": 612,
+    "RACE_TIME_UNAVAILABLE": 9639,
+    "SOURCE_INCOMPLETE": 166901,
+    "TIME_UNIT_NOT_CONFIRMED": 167156
+  },
+  "checks": [
+    {
+      "check": "SOURCE_OUTPUT_ROW_COUNT",
+      "passed": true,
+      "observed": "source=879784;output=879784"
+    },
+    {
+      "check": "PERFORMANCE_PRIMARY_KEY",
+      "passed": true,
+      "observed": "blank=0;duplicates=0;unique=879784"
+    },
+    {
+      "check": "PERFORMANCE_ID_REPRODUCIBILITY",
+      "passed": true,
+      "observed": "mismatches=0"
+    },
+    {
+      "check": "LEGACY_ID_LINEAGE",
+      "passed": true,
+      "observed": "legacy_missing=0"
+    },
+    {
+      "check": "RACE_CONTRACT_LINKAGE",
+      "passed": true,
+      "observed": "missing=0"
+    },
+    {
+      "check": "GOVERNED_ELIGIBILITY_APPLIED",
+      "passed": true,
+      "observed": "eligible=712628;blocked=167156"
+    },
+    {
+      "check": "CONFLICTS_QUARANTINED",
+      "passed": true,
+      "observed": "conflict_races=24;rows=612"
+    },
+    {
+      "check": "TIME_UNAVAILABLE_BLOCKED",
+      "passed": true,
+      "observed": "rows=9639;races=714"
+    },
+    {
+      "check": "SOURCE_INCOMPLETE_BLOCKED",
+      "passed": true,
+      "observed": "rows=166901"
+    },
+    {
+      "check": "NO_BENCHMARKS_CALCULATED",
+      "passed": true,
+      "observed": "PERFORMANCE_FACTS_ONLY"
+    },
+    {
+      "check": "INTEGRITY_HASHES",
+      "passed": true,
+      "observed": "pending integrity manifest"
+    },
+    {
+      "check": "IMMUTABLE_SNAPSHOT",
+      "passed": true,
+      "observed": "pending final rename"
+    }
+  ],
+  "failed_checks": [],
+  "status": "CORRECTED_PERFORMANCE_FACTS_PASS",
+  "next_stage": "Phase 1.7 may build one race-level benchmark observation per governed race context."
+}

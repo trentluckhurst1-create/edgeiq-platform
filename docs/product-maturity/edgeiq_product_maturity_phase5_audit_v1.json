@@ -1,0 +1,342 @@
+{
+  "generated_timestamp": "2026-07-16T17:55:58+00:00",
+  "status": "PASS",
+  "workspace_audit": [
+    {
+      "workspace": "HOME",
+      "targets": "src/edgeiq-os/home, src/edgeiq-os/components",
+      "tables": "0",
+      "buttons": "0",
+      "class_sample": "eiq-operational-rail, eiq-ops, eiq-ops__item, eiq-ops__items, eiq-os3-today, eiq-os3-today__path, eiq-os3-today__section, eiq-os3-today__stats, eiq-timeline, eiq-workspace, eiq-workspace__body, eiq-workspace__content",
+      "loading_state": "NO",
+      "unavailable_state": "NO",
+      "evidence_terms": "1",
+      "issues": "loading state not explicit; unavailable state not explicit; evidence UX incomplete"
+    },
+    {
+      "workspace": "MEETINGS",
+      "targets": "src/edgeiq-os/race/components/MeetingsWorkspace.tsx, src/edgeiq-os/race/components/MeetingWorkspace.tsx",
+      "tables": "2",
+      "buttons": "6",
+      "class_sample": "eiq-context-tabs eiq-meeting-v1-tabs, eiq-meeting-v1-condition-strip, eiq-meeting-v1-detail-grid, eiq-meeting-v1-layout, eiq-meeting-v1-main-stack, eiq-meeting-v1-panel, eiq-meeting-v1-pending, eiq-meeting-v1-summary-strip, eiq-meeting-v1-table, eiq-meeting-v1-table-scroll, eiq-meeting-workspace eiq-meeting-v1, eiq-meetings-engineering__days",
+      "loading_state": "YES",
+      "unavailable_state": "YES",
+      "evidence_terms": "0",
+      "issues": "evidence UX incomplete"
+    },
+    {
+      "workspace": "RACE",
+      "targets": "src/edgeiq-os/race/components/RaceWorkspace.tsx",
+      "tables": "0",
+      "buttons": "2",
+      "class_sample": "eiq-context-tabs, eiq-race-workspace, eiq-workspace-breadcrumb, eiq-workspace-panel eiq-review-workspace-shell, eiq-workspace-panel__title, eiq-workspace-unavailable eiq-review-pending-state",
+      "loading_state": "NO",
+      "unavailable_state": "YES",
+      "evidence_terms": "1",
+      "issues": "loading state not explicit; evidence UX incomplete"
+    },
+    {
+      "workspace": "FIELD",
+      "targets": "src/edgeiq-os/race/components/RaceFormGuideWorkspace.tsx, src/edgeiq-os/field",
+      "tables": "6",
+      "buttons": "3",
+      "class_sample": "eiq-cell-compact, eiq-cell-days, eiq-cell-epi, eiq-cell-last-five, eiq-cell-momentum, eiq-cell-no, eiq-cell-price eiq-cell-edgeiq-price, eiq-cell-price eiq-cell-market, eiq-cell-suitability, eiq-form-detail-silk, eiq-form-detail-silk eiq-form-silk--fallback, eiq-form-empty",
+      "loading_state": "YES",
+      "unavailable_state": "YES",
+      "evidence_terms": "4",
+      "issues": "No blocking consistency issue found by static audit"
+    },
+    {
+      "workspace": "PERFORMANCE",
+      "targets": "src/edgeiq-os/race/components/EpiWorkspaceWorkspace.tsx, src/edgeiq-os/performance",
+      "tables": "1",
+      "buttons": "2",
+      "class_sample": "eiq-epi-v1, eiq-epi-v1-context, eiq-epi-v1-copy, eiq-epi-v1-empty, eiq-epi-v1-facts, eiq-epi-v1-grid, eiq-epi-v1-hero, eiq-epi-v1-horse-button, eiq-epi-v1-legend, eiq-epi-v1-panel, eiq-epi-v1-panel eiq-epi-v1-table-panel, eiq-epi-v1-panel__title",
+      "loading_state": "YES",
+      "unavailable_state": "YES",
+      "evidence_terms": "2",
+      "issues": "evidence UX incomplete"
+    },
+    {
+      "workspace": "FORM",
+      "targets": "src/edgeiq-os/race/components/RaceFormGuideWorkspace.tsx, src/edgeiq-os/race/components/FormGuideWorkspace.tsx",
+      "tables": "7",
+      "buttons": "3",
+      "class_sample": "eiq-cell-compact, eiq-cell-days, eiq-cell-epi, eiq-cell-last-five, eiq-cell-momentum, eiq-cell-no, eiq-cell-price eiq-cell-edgeiq-price, eiq-cell-price eiq-cell-market, eiq-cell-suitability, eiq-form-detail-silk, eiq-form-detail-silk eiq-form-silk--fallback, eiq-form-empty",
+      "loading_state": "YES",
+      "unavailable_state": "YES",
+      "evidence_terms": "4",
+      "issues": "No blocking consistency issue found by static audit"
+    },
+    {
+      "workspace": "MAP",
+      "targets": "src/edgeiq-os/race/components/MapWorkspace.tsx, src/edgeiq-os/map",
+      "tables": "1",
+      "buttons": "1",
+      "class_sample": "eiq-map-v1, eiq-map-v1-barriers, eiq-map-v1-copy, eiq-map-v1-empty, eiq-map-v1-facts, eiq-map-v1-grid, eiq-map-v1-hero, eiq-map-v1-panel, eiq-map-v1-panel eiq-map-v1-visual-panel, eiq-map-v1-panel__title, eiq-map-v1-runner-grid, eiq-map-v1-runner-line",
+      "loading_state": "NO",
+      "unavailable_state": "YES",
+      "evidence_terms": "3",
+      "issues": "loading state not explicit"
+    },
+    {
+      "workspace": "MARKET",
+      "targets": "src/edgeiq-os/race/components/MarketWorkspace.tsx, src/edgeiq-os/market",
+      "tables": "1",
+      "buttons": "0",
+      "class_sample": "eiq-market-v1, eiq-market-v1-copy, eiq-market-v1-empty, eiq-market-v1-facts, eiq-market-v1-grid, eiq-market-v1-hero, eiq-market-v1-panel, eiq-market-v1-panel eiq-market-v1-table-panel, eiq-market-v1-panel__title, eiq-market-v1-side, eiq-market-v1-table, eiq-market-v1-table-scroll",
+      "loading_state": "NO",
+      "unavailable_state": "YES",
+      "evidence_terms": "1",
+      "issues": "loading state not explicit; evidence UX incomplete"
+    },
+    {
+      "workspace": "RESULTS",
+      "targets": "src/edgeiq-os/race/components/ResultsWorkspace.tsx, src/edgeiq-os/results",
+      "tables": "1",
+      "buttons": "3",
+      "class_sample": "eiq-results-workspace, eiq-results-workspace__actions, eiq-results-workspace__body, eiq-results-workspace__empty, eiq-results-workspace__header, eiq-results-workspace__panel, eiq-results-workspace__summary, eiq-results-workspace__title",
+      "loading_state": "NO",
+      "unavailable_state": "YES",
+      "evidence_terms": "4",
+      "issues": "loading state not explicit"
+    },
+    {
+      "workspace": "RUNNER PROFILE",
+      "targets": "src/edgeiq-os/race/components/RunnerProfileWorkspace.tsx, src/edgeiq-os/race/components/RunnerProfileSummary.tsx",
+      "tables": "0",
+      "buttons": "1",
+      "class_sample": "eiq-form-workbench eiq-runner-workspace-v13, eiq-runner-pending, eiq-runner-profile-summary eiq-runner-profile-summary--v2, eiq-runner-profile-summary__metrics, eiq-runner-profile-summary__metrics eiq-runner-profile-summary__metrics--intelligence, eiq-runner-profile-summary__narrative, eiq-runner-profile-summary__panel eiq-runner-profile-summary__intelligence, eiq-runner-profile-summary__panel eiq-runner-profile-summary__snapshot, eiq-runner-profile-summary__panel eiq-runner-profile-summary__stats, eiq-runner-profile-summary__section, eiq-runner-profile-summary__section-grid, eiq-runner-profile-summary__title",
+      "loading_state": "NO",
+      "unavailable_state": "YES",
+      "evidence_terms": "1",
+      "issues": "loading state not explicit; evidence UX incomplete"
+    },
+    {
+      "workspace": "OVERVIEW",
+      "targets": "src/edgeiq-os/race/components/OverviewWorkspace.tsx",
+      "tables": "1",
+      "buttons": "1",
+      "class_sample": "eiq-overview-v1, eiq-overview-v1-card, eiq-overview-v1-card__head, eiq-overview-v1-cards, eiq-overview-v1-copy, eiq-overview-v1-empty, eiq-overview-v1-facts, eiq-overview-v1-grid, eiq-overview-v1-hero, eiq-overview-v1-panel, eiq-overview-v1-panel__title, eiq-overview-v1-side",
+      "loading_state": "YES",
+      "unavailable_state": "YES",
+      "evidence_terms": "3",
+      "issues": "No blocking consistency issue found by static audit"
+    },
+    {
+      "workspace": "INSIGHTS",
+      "targets": "src/edgeiq-os/race/components/InsightsWorkspace.tsx, src/edgeiq-os/intelligence",
+      "tables": "1",
+      "buttons": "1",
+      "class_sample": "eiq-insights-v1, eiq-insights-v1-card, eiq-insights-v1-cards, eiq-insights-v1-copy, eiq-insights-v1-empty, eiq-insights-v1-facts, eiq-insights-v1-grid, eiq-insights-v1-hero, eiq-insights-v1-list, eiq-insights-v1-main, eiq-insights-v1-panel, eiq-insights-v1-panel eiq-insights-v1-table-panel",
+      "loading_state": "YES",
+      "unavailable_state": "YES",
+      "evidence_terms": "4",
+      "issues": "No blocking consistency issue found by static audit"
+    },
+    {
+      "workspace": "COMPARE",
+      "targets": "src/edgeiq-os/compare/CompareWorkspace.tsx",
+      "tables": "0",
+      "buttons": "0",
+      "class_sample": "eiq-compare-workspace, eiq-compare-workspace__grid, eiq-compare-workspace__speed",
+      "loading_state": "NO",
+      "unavailable_state": "YES",
+      "evidence_terms": "2",
+      "issues": "loading state not explicit; evidence UX incomplete"
+    }
+  ],
+  "service_audit": {
+    "fetch_refs": {
+      "src/edgeiq-os/services/adapters/csvAdapterUtils.ts": 1,
+      "src/edgeiq-os/services/feed-loader/ProductFeedCache.ts": 1,
+      "src/edgeiq-os/services/weather/EdgeiqWeatherService.ts": 1,
+      "src/edgeiq-os/race/services/epiWorkspaceFeed.ts": 1,
+      "src/edgeiq-os/race/services/formGuideEnrichedFeed.ts": 1,
+      "src/edgeiq-os/race/services/gearChangesFeed.ts": 1,
+      "src/edgeiq-os/race/services/insightsFeed.ts": 1,
+      "src/edgeiq-os/race/services/mapFeed.ts": 1,
+      "src/edgeiq-os/race/services/marketFeed.ts": 1,
+      "src/edgeiq-os/race/services/meetingsFeed.ts": 1,
+      "src/edgeiq-os/race/services/overviewFeed.ts": 1,
+      "src/edgeiq-os/race/services/resultsFeed.ts": 1,
+      "src/edgeiq-os/race/services/runnerProfileStats.ts": 1,
+      "src/edgeiq-os/race/services/trackFeed.ts": 2,
+      "src/edgeiq-os/race/services/weatherFeed.ts": 1
+    },
+    "parse_refs": {
+      "src/edgeiq-os/services/adapters/csvAdapterUtils.ts": 2,
+      "src/edgeiq-os/services/feed-loader/FeedParser.ts": 2,
+      "src/edgeiq-os/race/services/epiWorkspaceFeed.ts": 2,
+      "src/edgeiq-os/race/services/gearChangesFeed.ts": 2,
+      "src/edgeiq-os/race/services/insightsFeed.ts": 2,
+      "src/edgeiq-os/race/services/mapFeed.ts": 2,
+      "src/edgeiq-os/race/services/marketFeed.ts": 2,
+      "src/edgeiq-os/race/services/overviewFeed.ts": 2,
+      "src/edgeiq-os/race/services/resultsFeed.ts": 2,
+      "src/edgeiq-os/race/services/runnerProfileStats.ts": 1,
+      "src/edgeiq-os/race/services/trackFeed.ts": 2
+    },
+    "cache_refs": {
+      "src/edgeiq-os/services/feed-loader/FeedLoader.ts": 1,
+      "src/edgeiq-os/services/feed-loader/ProductFeedCache.ts": 1,
+      "src/edgeiq-os/services/performance-intelligence/PerformanceIntelligenceService.ts": 5,
+      "src/edgeiq-os/services/weather/EdgeiqWeatherService.ts": 17,
+      "src/edgeiq-os/race/services/epiWorkspaceFeed.ts": 10,
+      "src/edgeiq-os/race/services/formGuideEnrichedFeed.ts": 10,
+      "src/edgeiq-os/race/services/formGuideNormaliser.ts": 2,
+      "src/edgeiq-os/race/services/gearChangesFeed.ts": 11,
+      "src/edgeiq-os/race/services/insightsFeed.ts": 10,
+      "src/edgeiq-os/race/services/mapFeed.ts": 10,
+      "src/edgeiq-os/race/services/marketFeed.ts": 10,
+      "src/edgeiq-os/race/services/meetingDetailFeed.ts": 8,
+      "src/edgeiq-os/race/services/meetingsFeed.ts": 20,
+      "src/edgeiq-os/race/services/overviewFeed.ts": 10,
+      "src/edgeiq-os/race/services/resultsFeed.ts": 12,
+      "src/edgeiq-os/race/services/runnerProfileStats.ts": 13,
+      "src/edgeiq-os/race/services/scratchingsFeed.ts": 1,
+      "src/edgeiq-os/race/services/trackFeed.ts": 10,
+      "src/edgeiq-os/race/services/weatherFeed.ts": 10
+    },
+    "product_cache_users": [
+      "src/edgeiq-os/services/feed-loader/index.ts",
+      "src/edgeiq-os/services/performance-intelligence/performanceIntelligenceFeed.ts",
+      "src/edgeiq-os/race/services/threeDayCatalog.ts"
+    ],
+    "remaining_duplicate_csv_parsers": 11,
+    "remaining_fetch_services": 15
+  },
+  "performance_audit": {
+    "dist_assets": [
+      {
+        "file": "dist/assets/index-Dt_ODncx.js",
+        "bytes": 2253358
+      },
+      {
+        "file": "dist/assets/index-bCgbq43x.css",
+        "bytes": 754058
+      }
+    ],
+    "largest_public_feeds": [
+      {
+        "file": "public/data/edgeiq_historical_results_warehouse_v2_graphql.csv",
+        "bytes": 504293405
+      },
+      {
+        "file": "public/data/edgeiq_historical_results_warehouse_v2_graphql_CHECKPOINT_20260623_164849.csv",
+        "bytes": 504293405
+      },
+      {
+        "file": "public/data/edgeiq_results_master_v1.csv",
+        "bytes": 481021956
+      },
+      {
+        "file": "public/data/edgeiq_results_terminal_feed_v1.csv",
+        "bytes": 435242182
+      },
+      {
+        "file": "public/data/edgeiq_standardised_sectionals_v1.csv",
+        "bytes": 408819581
+      },
+      {
+        "file": "public/data/edgeiq_bet_quality_engine_v1_1.csv",
+        "bytes": 391793553
+      },
+      {
+        "file": "public/data/edgeiq_epf_v1_1_guardrailed.csv",
+        "bytes": 323082993
+      },
+      {
+        "file": "public/data/edgeiq_fair_price_v8_brc_fallback_replay_v1.csv",
+        "bytes": 319946674
+      },
+      {
+        "file": "public/data/edgeiq_form_sectional_profile_feed_v1.csv",
+        "bytes": 307977606
+      },
+      {
+        "file": "public/data/edgeiq_bet_quality_engine_v1.csv",
+        "bytes": 302379190
+      },
+      {
+        "file": "public/data/edgeiq_context_warehouse_v2_graphql.csv",
+        "bytes": 299417169
+      },
+      {
+        "file": "public/data/edgeiq_context_warehouse_v2_graphql_CHECKPOINT_20260623_165745.csv",
+        "bytes": 299417169
+      },
+      {
+        "file": "public/data/edgeiq_speed_master_v1.csv",
+        "bytes": 295358552
+      },
+      {
+        "file": "public/data/edgeiq_fair_price_v8_interaction_filter_replay_v1.csv",
+        "bytes": 294058324
+      },
+      {
+        "file": "public/data/edgeiq_dna_registry_v2.csv",
+        "bytes": 212429693
+      },
+      {
+        "file": "public/data/edgeiq_epf_v1.csv",
+        "bytes": 209936117
+      },
+      {
+        "file": "public/data/edgeiq_sectional_intelligence_v1.csv",
+        "bytes": 202345938
+      },
+      {
+        "file": "public/data/edgeiq_hidden_gem_engine_v1.csv",
+        "bytes": 182429006
+      },
+      {
+        "file": "public/data/edgeiq_prior_asof_rating_spine_v1.csv",
+        "bytes": 181788959
+      },
+      {
+        "file": "public/data/edgeiq_execution_v3_replay_v1.csv",
+        "bytes": 173056278
+      }
+    ]
+  },
+  "production_checks": [
+    {
+      "check": "warehouse_not_loaded::canonical_performance_facts_v0_2.csv",
+      "status": "PASS"
+    },
+    {
+      "check": "warehouse_not_loaded::edgeiq_results_master_v1.csv",
+      "status": "PASS"
+    },
+    {
+      "check": "warehouse_not_loaded::edgeiq_speed_master_v1.csv",
+      "status": "PASS"
+    },
+    {
+      "check": "warehouse_not_loaded::edgeiq_standardised_sectionals_v1.csv",
+      "status": "PASS"
+    },
+    {
+      "check": "warehouse_not_loaded::879,784",
+      "status": "PASS"
+    },
+    {
+      "check": "canonical_json_feed_cache_present",
+      "status": "PASS"
+    },
+    {
+      "check": "performance_feed_uses_canonical_cache",
+      "status": "PASS"
+    },
+    {
+      "check": "three_day_catalog_uses_canonical_cache",
+      "status": "PASS"
+    },
+    {
+      "check": "public_data_not_modified_by_phase5",
+      "status": "PASS"
+    }
+  ],
+  "pass_token": "EDGEIQ_PRODUCT_PRODUCTION_READINESS_PASS"
+}

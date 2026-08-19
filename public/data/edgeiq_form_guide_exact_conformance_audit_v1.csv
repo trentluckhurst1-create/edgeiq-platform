@@ -1,0 +1,29 @@
+check,item,status,detail
+required_file,docs\product-specification\FORM_GUIDE_APPROVED_PIXEL_SPEC_V1.md,PASS,2246
+required_file,docs\product-specification\FORM_GUIDE_APPROVED_PIXEL_SPEC_V1.json,PASS,10545
+required_file,docs\product-specification\FORM_GUIDE_APPROVED_TEXT_SPEC_V1.csv,PASS,1201
+required_file,docs\product-specification\FORM_GUIDE_APPROVED_GEOMETRY_V1.csv,PASS,1629
+required_file,docs\product-specification\FORM_GUIDE_APPROVED_STYLE_TOKENS_V1.css,PASS,579
+required_file,docs\full-product-implementation\screenshots\form-guide-exact\05_FORM_GUIDE_APPROVED.png,PASS,1532622
+required_file,docs\full-product-implementation\screenshots\form-guide-exact\05_FORM_GUIDE_LIVE_RENDERED.png,PASS,80945
+required_file,docs\full-product-implementation\screenshots\form-guide-exact\05_FORM_GUIDE_OVERLAY_50.png,PASS,1100645
+required_file,docs\full-product-implementation\screenshots\form-guide-exact\05_FORM_GUIDE_DIFF.png,PASS,1393312
+required_file,docs\full-product-implementation\screenshots\form-guide-exact\05_FORM_GUIDE_EDGE_DIFF.png,PASS,704570
+required_file,docs\full-product-implementation\screenshots\form-guide-exact\05_FORM_GUIDE_REGION_DIFF.csv,PASS,866
+required_file,docs\full-product-implementation\screenshots\form-guide-exact\05_FORM_GUIDE_RUNTIME.json,PASS,5982
+source_marker,workspace_marker,PASS,"data-edgeiq-workspace=""form-guide-approved-exact"""
+source_marker,approved_tools,PASS,eiq-form-approved-tools
+source_marker,summary_table_region,PASS,"data-region=""summary_table"""
+source_marker,expanded_runner_region,PASS,"data-region=""expanded_runner"""
+source_marker,today_match_label,PASS,TODAY'S MATCH
+source_marker,profile_matrix_label,PASS,HORSE PROFILE (CAREER)
+source_marker,insights_label,PASS,TODAY'S MATCH INSIGHTS
+source_marker,recent_form_region,PASS,"data-region=""recent_form"""
+source_marker,edge_column,PASS,"""EDGE"""
+source_marker,fluc_column,PASS,"""FLUC 60s %"""
+source_marker,exact_css_marker,PASS,EDGEIQ FORM GUIDE APPROVED EXACT PIXEL SPEC V1 START
+runtime_capture,runtime_status,PASS,FORM_GUIDE_LIVE_CAPTURED
+runtime_capture,page_errors,PASS,0
+runtime_capture,pixel_rms_difference,INFO,47.658
+region_diff,measured_regions,PASS,8
+region_diff,missing_regions,WARN,left_nav|topbar|content|breadcrumb|race_title|race_meta|subnav|footer

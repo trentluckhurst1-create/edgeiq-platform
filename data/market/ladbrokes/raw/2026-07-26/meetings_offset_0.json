@@ -1,0 +1,1134 @@
+{
+  "header": {
+    "title": "Race Meetings",
+    "generated_time": "2026-07-26T02:08:10.136270992Z",
+    "url": "/affiliates/v1/racing/meetings?enc=json&date_from=2026-07-26&date_to=2026-07-26&category=T&country=AUS&limit=200&offset=0"
+  },
+  "params": {
+    "enc": "json",
+    "ids": null,
+    "date_from": "2026-07-26T00:00:00Z",
+    "date_to": "2026-07-26T00:00:00Z",
+    "type": "T",
+    "country": "AUS",
+    "limit": 200,
+    "offset": 0,
+    "futures": false,
+    "meeting_numbers": null
+  },
+  "data": {
+    "meetings": [
+      {
+        "meeting": "271492f4-d018-5b89-bca3-2416649dfd14",
+        "name": "Devonport Synthetic",
+        "date": "2026-07-26T00:00:00Z",
+        "track_condition": "Synthetic",
+        "category": "T",
+        "category_name": "Thoroughbred Horse Racing",
+        "country": "AUS",
+        "state": "TAS",
+        "races": [
+          {
+            "id": "70b39a6d-1f86-4d34-b4f1-4706053e87cf",
+            "race_number": 1,
+            "name": "Goodstone Group Mdn Plate",
+            "start_time": "2026-07-26T01:45:00Z",
+            "track_condition": "Synthetic",
+            "distance": 1650,
+            "weather": "FINE",
+            "country": "AUS",
+            "state": "TAS",
+            "status": "Final"
+          },
+          {
+            "id": "8cc6167d-520b-406f-9bb9-8ad7e2f3c15a",
+            "race_number": 2,
+            "name": "Ladbrokes Big Bets Copy Now Mdn Plate",
+            "start_time": "2026-07-26T02:15:00Z",
+            "track_condition": "Synthetic",
+            "distance": 1150,
+            "weather": "FINE",
+            "country": "AUS",
+            "state": "TAS",
+            "status": "Open"
+          },
+          {
+            "id": "e20702bf-66bc-48ed-a983-9b50c5c82a7f",
+            "race_number": 3,
+            "name": "Racing Owners Club Tasmania Hcp (Bm72)",
+            "start_time": "2026-07-26T02:47:00Z",
+            "track_condition": "Synthetic",
+            "distance": 1880,
+            "weather": "FINE",
+            "country": "AUS",
+            "state": "TAS",
+            "status": "Open"
+          },
+          {
+            "id": "cb0707ef-9414-4e04-aa7f-462c72c615b7",
+            "race_number": 4,
+            "name": "Meridian Horse Transport Plate (C3)",
+            "start_time": "2026-07-26T03:22:00Z",
+            "track_condition": "Synthetic",
+            "distance": 1350,
+            "weather": "Fine",
+            "country": "AUS",
+            "state": "TAS",
+            "status": "Open"
+          },
+          {
+            "id": "3909166c-af32-4e4f-8275-b76f069e9fe5",
+            "race_number": 5,
+            "name": "Ladies Day Hcp (Bm60)",
+            "start_time": "2026-07-26T03:57:00Z",
+            "track_condition": "Synthetic",
+            "distance": 1350,
+            "weather": "FINE",
+            "country": "AUS",
+            "state": "TAS",
+            "status": "Open"
+          },
+          {
+            "id": "4417680c-8e37-4556-94c0-5c99fb1a906f",
+            "race_number": 6,
+            "name": "Stables At Spreyton Plate (C4)",
+            "start_time": "2026-07-26T04:35:00Z",
+            "track_condition": "Synthetic",
+            "distance": 1150,
+            "weather": "Fine",
+            "country": "AUS",
+            "state": "TAS",
+            "status": "Open"
+          },
+          {
+            "id": "da56b427-39e4-4aee-a1fd-1b83bd364edc",
+            "race_number": 7,
+            "name": "#Gottaluvtassieracing Hcp (C1)",
+            "start_time": "2026-07-26T05:15:00Z",
+            "track_condition": "Synthetic",
+            "distance": 1150,
+            "weather": "Fine",
+            "country": "AUS",
+            "state": "TAS",
+            "status": "Open"
+          },
+          {
+            "id": "3dcf937d-5ec9-428e-b46d-dd3836e3bd7e",
+            "race_number": 8,
+            "name": "The White Wardrobe Hcp (Bm68)",
+            "start_time": "2026-07-26T05:55:00Z",
+            "track_condition": "Synthetic",
+            "distance": 1650,
+            "weather": "Fine",
+            "country": "AUS",
+            "state": "TAS",
+            "status": "Open"
+          }
+        ],
+        "video_channels": [
+          "Live1"
+        ],
+        "quaddie": [
+          5,
+          6,
+          7,
+          8
+        ],
+        "early_quaddie": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "daily_double": [
+          6,
+          8
+        ],
+        "treble": [
+          6,
+          7,
+          8
+        ]
+      },
+      {
+        "meeting": "c6840499-a537-5bd9-a377-9ac38d34a302",
+        "name": "Sale",
+        "date": "2026-07-26T00:00:00Z",
+        "track_condition": "Soft7",
+        "category": "T",
+        "category_name": "Thoroughbred Horse Racing",
+        "country": "AUS",
+        "state": "VIC",
+        "races": [
+          {
+            "id": "073d2b5e-7259-474a-a97d-98002562b7f5",
+            "race_number": 1,
+            "name": "Ladbrokes Sale Cup 25th Oct – Book Now Mdn Plate",
+            "start_time": "2026-07-26T02:00:00Z",
+            "track_condition": "Soft7",
+            "distance": 2200,
+            "weather": "OCAST",
+            "country": "AUS",
+            "state": "VIC",
+            "status": "Interim"
+          },
+          {
+            "id": "743c03fe-956b-4ebe-89bb-1ce85fa09ba7",
+            "race_number": 2,
+            "name": "Thankyou Members & Sponsors Of 2025/26 Mdn Plate",
+            "start_time": "2026-07-26T02:35:00Z",
+            "track_condition": "Soft7",
+            "distance": 1400,
+            "weather": "OCAST",
+            "country": "AUS",
+            "state": "VIC",
+            "status": "Open"
+          },
+          {
+            "id": "39daa769-a6dd-4b54-bc25-83ba56eb7583",
+            "race_number": 3,
+            "name": "Viatek Mdn Plate",
+            "start_time": "2026-07-26T03:10:00Z",
+            "track_condition": "Soft7",
+            "distance": 1000,
+            "weather": "OCAST",
+            "country": "AUS",
+            "state": "VIC",
+            "status": "Open"
+          },
+          {
+            "id": "4e90ef4a-13fb-4aac-a612-7d0e2a84a62f",
+            "race_number": 4,
+            "name": "Ladbrokes Place Extra To 10th Mdn Plate",
+            "start_time": "2026-07-26T03:45:00Z",
+            "track_condition": "Soft7",
+            "distance": 1100,
+            "weather": "OCAST",
+            "country": "AUS",
+            "state": "VIC",
+            "status": "Open"
+          },
+          {
+            "id": "99f79cde-b369-4441-b608-5e5730397517",
+            "race_number": 5,
+            "name": "Carlton Draught Hcp (Bm70)",
+            "start_time": "2026-07-26T04:20:00Z",
+            "track_condition": "Soft7",
+            "distance": 1200,
+            "weather": "OCAST",
+            "country": "AUS",
+            "state": "VIC",
+            "status": "Open"
+          },
+          {
+            "id": "4c395ade-9d38-4c53-afca-c7e4445e148a",
+            "race_number": 6,
+            "name": "Elliman Property Hcp (Bm62)",
+            "start_time": "2026-07-26T05:00:00Z",
+            "track_condition": "Soft7",
+            "distance": 1000,
+            "weather": "OCAST",
+            "country": "AUS",
+            "state": "VIC",
+            "status": "Open"
+          },
+          {
+            "id": "1686a5d4-816f-4a1e-bb5f-f4c58b23be1c",
+            "race_number": 7,
+            "name": "Ladbrokes Odds Surge Hcp (Bm66)",
+            "start_time": "2026-07-26T05:40:00Z",
+            "track_condition": "Soft7",
+            "distance": 1600,
+            "weather": "OCAST",
+            "country": "AUS",
+            "state": "VIC",
+            "status": "Open"
+          },
+          {
+            "id": "73de4675-01ae-4a4d-a027-e3dfc4e18f04",
+            "race_number": 8,
+            "name": "Gippsland Funeral Services Hcp (Bm62)",
+            "start_time": "2026-07-26T06:20:00Z",
+            "track_condition": "Soft7",
+            "distance": 1400,
+            "weather": "OCAST",
+            "country": "AUS",
+            "state": "VIC",
+            "status": "Open"
+          }
+        ],
+        "video_channels": [
+          "Live1"
+        ],
+        "quaddie": [
+          5,
+          6,
+          7,
+          8
+        ],
+        "early_quaddie": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "daily_double": [
+          6,
+          8
+        ],
+        "treble": [
+          6,
+          7,
+          8
+        ]
+      },
+      {
+        "meeting": "f82978dd-cdb6-598b-8ce3-d12a64ca3574",
+        "name": "Sunshine Coast",
+        "date": "2026-07-26T00:00:00Z",
+        "track_condition": "Good4",
+        "category": "T",
+        "category_name": "Thoroughbred Horse Racing",
+        "country": "AUS",
+        "state": "QLD",
+        "races": [
+          {
+            "id": "2f127124-f636-44a1-a449-926c4810663a",
+            "race_number": 1,
+            "name": "Vawdrey C,G&E Hcp (C1)",
+            "start_time": "2026-07-26T02:07:00Z",
+            "track_condition": "Good4",
+            "distance": 1000,
+            "weather": "Fine",
+            "country": "AUS",
+            "state": "QLD",
+            "status": "Closed"
+          },
+          {
+            "id": "13788e1d-74a5-42f7-9e17-825885bcc8dd",
+            "race_number": 2,
+            "name": "Qube F&M Hcp (C1)",
+            "start_time": "2026-07-26T02:40:00Z",
+            "track_condition": "Good4",
+            "distance": 1000,
+            "weather": "Fine",
+            "country": "AUS",
+            "state": "QLD",
+            "status": "Open"
+          },
+          {
+            "id": "c3a3e663-affd-4668-9acf-c2ec1d2dcfc1",
+            "race_number": 3,
+            "name": "C & H Recruitment Mdn Hcp",
+            "start_time": "2026-07-26T03:14:00Z",
+            "track_condition": "Good4",
+            "distance": 1200,
+            "weather": "Fine",
+            "country": "AUS",
+            "state": "QLD",
+            "status": "Open"
+          },
+          {
+            "id": "75da1eff-aa86-4bbb-a164-a570f1387ffd",
+            "race_number": 4,
+            "name": "Butler Freight Mdn Plate",
+            "start_time": "2026-07-26T03:49:00Z",
+            "track_condition": "Good4",
+            "distance": 1400,
+            "weather": "FINE",
+            "country": "AUS",
+            "state": "QLD",
+            "status": "Open"
+          },
+          {
+            "id": "9505cf12-8915-4aba-9cbd-8913eea57683",
+            "race_number": 5,
+            "name": "Rambla Hcp (C4)",
+            "start_time": "2026-07-26T04:25:00Z",
+            "track_condition": "Good4",
+            "distance": 1000,
+            "weather": "FINE",
+            "country": "AUS",
+            "state": "QLD",
+            "status": "Open"
+          },
+          {
+            "id": "26dfda34-66dd-457b-8434-9c3e0b3760c1",
+            "race_number": 6,
+            "name": "Stramit Hcp (Bm70)",
+            "start_time": "2026-07-26T05:05:00Z",
+            "track_condition": "Good4",
+            "distance": 1200,
+            "weather": "FINE",
+            "country": "AUS",
+            "state": "QLD",
+            "status": "Open"
+          },
+          {
+            "id": "30292ca9-9998-4886-aa25-93510e439d6a",
+            "race_number": 7,
+            "name": "Genis Steel Hcp (Bm62)",
+            "start_time": "2026-07-26T05:45:00Z",
+            "track_condition": "Good4",
+            "distance": 1600,
+            "weather": "FINE",
+            "country": "AUS",
+            "state": "QLD",
+            "status": "Open"
+          },
+          {
+            "id": "6c8e525e-12ea-4980-a124-8c8385d27eab",
+            "race_number": 8,
+            "name": "Troon Remingtons Insurance Hcp (Bm62)",
+            "start_time": "2026-07-26T06:25:00Z",
+            "track_condition": "Good4",
+            "distance": 1300,
+            "weather": "Fine",
+            "country": "AUS",
+            "state": "QLD",
+            "status": "Open"
+          }
+        ],
+        "video_channels": [
+          "Live1"
+        ],
+        "quaddie": [
+          5,
+          6,
+          7,
+          8
+        ],
+        "early_quaddie": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "daily_double": [
+          6,
+          8
+        ],
+        "treble": [
+          6,
+          7,
+          8
+        ]
+      },
+      {
+        "meeting": "e1c2f884-b763-5ae0-b7f8-d8c0e51d211b",
+        "name": "Sapphire Coast",
+        "date": "2026-07-26T00:00:00Z",
+        "track_condition": "Soft7",
+        "category": "T",
+        "category_name": "Thoroughbred Horse Racing",
+        "country": "AUS",
+        "state": "NSW",
+        "races": [
+          {
+            "id": "147e3bf8-1866-4470-bc61-36e5a06e60fb",
+            "race_number": 1,
+            "name": "Eden Tyrepower Country Boosted Mdn Plate",
+            "start_time": "2026-07-26T02:30:00Z",
+            "track_condition": "Soft7",
+            "distance": 1010,
+            "weather": "FINE",
+            "country": "AUS",
+            "state": "NSW",
+            "status": "Open"
+          },
+          {
+            "id": "9c9378aa-3726-407d-8ecc-30131d28874e",
+            "race_number": 2,
+            "name": "Eden Motel Country Boosted Hcp (C1)",
+            "start_time": "2026-07-26T03:05:00Z",
+            "track_condition": "Soft7",
+            "distance": 1010,
+            "weather": "FINE",
+            "country": "AUS",
+            "state": "NSW",
+            "status": "Open"
+          },
+          {
+            "id": "0e489c04-886b-42aa-ba9c-d07bb21b949a",
+            "race_number": 3,
+            "name": "South Coast Timber Eden Cup Hcp (Bm74)",
+            "start_time": "2026-07-26T03:40:00Z",
+            "track_condition": "Soft7",
+            "distance": 1410,
+            "weather": "Fine",
+            "country": "AUS",
+            "state": "NSW",
+            "status": "Open"
+          },
+          {
+            "id": "4a2cbafa-4925-4cfa-9722-569d305324df",
+            "race_number": 4,
+            "name": "Great Southern Inn Super Mdn Plate",
+            "start_time": "2026-07-26T04:15:00Z",
+            "track_condition": "Soft7",
+            "distance": 1410,
+            "weather": "FINE",
+            "country": "AUS",
+            "state": "NSW",
+            "status": "Open"
+          },
+          {
+            "id": "7ff2f4fd-2a4c-45d3-8a0e-0a40cbf0564b",
+            "race_number": 5,
+            "name": "South Coast Fish Processors Mdn Plate (C1)",
+            "start_time": "2026-07-26T04:55:00Z",
+            "track_condition": "Soft7",
+            "distance": 1610,
+            "weather": "Fine",
+            "country": "AUS",
+            "state": "NSW",
+            "status": "Open"
+          },
+          {
+            "id": "937614c9-2302-4680-b5ba-34682688c9bc",
+            "race_number": 6,
+            "name": "Eden Sport & Recreation Club Hcp (Bm66)",
+            "start_time": "2026-07-26T05:35:00Z",
+            "track_condition": "Soft7",
+            "distance": 1210,
+            "weather": "FINE",
+            "country": "AUS",
+            "state": "NSW",
+            "status": "Open"
+          },
+          {
+            "id": "9f94c9ec-4d1f-44aa-a2ee-02527f9dba4c",
+            "race_number": 7,
+            "name": "Wolumla Pub Mdn Hcp",
+            "start_time": "2026-07-26T06:15:00Z",
+            "track_condition": "Soft7",
+            "distance": 1210,
+            "weather": "FINE",
+            "country": "AUS",
+            "state": "NSW",
+            "status": "Open"
+          }
+        ],
+        "quaddie": [
+          4,
+          5,
+          6,
+          7
+        ],
+        "early_quaddie": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "daily_double": [
+          5,
+          7
+        ],
+        "treble": [
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "meeting": "4b55f5cf-1a7a-5787-b721-28bb7678e936",
+        "name": "Alice Springs",
+        "date": "2026-07-26T00:00:00Z",
+        "track_condition": "Good",
+        "category": "T",
+        "category_name": "Thoroughbred Horse Racing",
+        "country": "AUS",
+        "state": "NT",
+        "races": [
+          {
+            "id": "744cbd0d-88e9-4573-a8e6-5c3cfb875e42",
+            "race_number": 1,
+            "name": "Ladbrokes Red Centre Winter Series Heat 7 Hcp (58)",
+            "start_time": "2026-07-26T02:37:00Z",
+            "track_condition": "Good",
+            "distance": 1200,
+            "weather": "FINE",
+            "country": "AUS",
+            "state": "NT",
+            "status": "Open"
+          },
+          {
+            "id": "66e3fea3-e038-44d9-a7e1-4d17a8075851",
+            "race_number": 2,
+            "name": "Ladbrokes Red Centre Winter Series Heat 7 Hcp (58)",
+            "start_time": "2026-07-26T03:17:00Z",
+            "track_condition": "Good",
+            "distance": 1200,
+            "weather": "Fine",
+            "country": "AUS",
+            "state": "NT",
+            "status": "Open"
+          },
+          {
+            "id": "af435e67-8c6e-4c83-92d9-27baaf99364f",
+            "race_number": 3,
+            "name": "Leadership On Larapinta Mdn Plate",
+            "start_time": "2026-07-26T03:50:00Z",
+            "track_condition": "Good",
+            "distance": 1100,
+            "weather": "Fine",
+            "country": "AUS",
+            "state": "NT",
+            "status": "Open"
+          },
+          {
+            "id": "4da6b080-d12a-4f8b-9d4e-867044379d02",
+            "race_number": 4,
+            "name": "Truckies Day 28th August Hcp",
+            "start_time": "2026-07-26T04:27:00Z",
+            "track_condition": "Good",
+            "distance": 1100,
+            "weather": "FINE",
+            "country": "AUS",
+            "state": "NT",
+            "status": "Open"
+          },
+          {
+            "id": "e630f62d-4746-4070-95b2-dc0fbf5e3e85",
+            "race_number": 5,
+            "name": "A-One Mechanics Hcp (64)",
+            "start_time": "2026-07-26T04:57:00Z",
+            "track_condition": "Good",
+            "distance": 1100,
+            "weather": "FINE",
+            "country": "AUS",
+            "state": "NT",
+            "status": "Open"
+          },
+          {
+            "id": "cc8bd3fc-a044-40ff-bb11-065ff570f042",
+            "race_number": 6,
+            "name": "Remembering Mikala Club Hcp (70)",
+            "start_time": "2026-07-26T05:32:00Z",
+            "track_condition": "Good",
+            "distance": 1400,
+            "weather": "FINE",
+            "country": "AUS",
+            "state": "NT",
+            "status": "Open"
+          }
+        ],
+        "video_channels": [
+          "Live1",
+          "Live2"
+        ],
+        "quaddie": [
+          3,
+          4,
+          5,
+          6
+        ],
+        "early_quaddie": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "daily_double": [
+          4,
+          6
+        ],
+        "treble": [
+          4,
+          5,
+          6
+        ]
+      },
+      {
+        "meeting": "e6eddd47-96a7-5ae2-98af-e15d1480343b",
+        "name": "Muswellbrook",
+        "date": "2026-07-26T00:00:00Z",
+        "track_condition": "Good4",
+        "category": "T",
+        "category_name": "Thoroughbred Horse Racing",
+        "country": "AUS",
+        "state": "NSW",
+        "races": [
+          {
+            "id": "3a39effd-162c-4243-9720-ac2c2b0dd0dd",
+            "race_number": 1,
+            "name": "Empireguard Mdn Plate",
+            "start_time": "2026-07-26T02:51:00Z",
+            "track_condition": "Good4",
+            "distance": 1750,
+            "weather": "FINE",
+            "country": "AUS",
+            "state": "NSW",
+            "status": "Open"
+          },
+          {
+            "id": "4492d095-9d3a-4872-9fde-4d7a591d1d17",
+            "race_number": 2,
+            "name": "Vinery Stud Country Boosted Hcp (C1)",
+            "start_time": "2026-07-26T03:26:00Z",
+            "track_condition": "Good4",
+            "distance": 1000,
+            "weather": "Fine",
+            "country": "AUS",
+            "state": "NSW",
+            "status": "Open"
+          },
+          {
+            "id": "10b0d757-bb56-4713-a67d-7b8d77e3b1ca",
+            "race_number": 3,
+            "name": "Broadlands Muswellbrook Hcp (Bm66)",
+            "start_time": "2026-07-26T04:01:00Z",
+            "track_condition": "Good4",
+            "distance": 1500,
+            "weather": "FINE",
+            "country": "AUS",
+            "state": "NSW",
+            "status": "Open"
+          },
+          {
+            "id": "05dd3b0c-659b-4456-a5c6-55e4078934b9",
+            "race_number": 4,
+            "name": "Muswellbrook Motors Mdn Hcp",
+            "start_time": "2026-07-26T04:40:00Z",
+            "track_condition": "Good4",
+            "distance": 1000,
+            "weather": "Fine",
+            "country": "AUS",
+            "state": "NSW",
+            "status": "Open"
+          },
+          {
+            "id": "49a4a153-a326-410c-97e7-d0fbbf7affd8",
+            "race_number": 5,
+            "name": "Rosevale Angus Country Boosted Mdn Hcp",
+            "start_time": "2026-07-26T05:20:00Z",
+            "track_condition": "Good4",
+            "distance": 1280,
+            "weather": "FINE",
+            "country": "AUS",
+            "state": "NSW",
+            "status": "Open"
+          },
+          {
+            "id": "b1ef8ae8-83d4-44e1-9f4e-accdd965c729",
+            "race_number": 6,
+            "name": "Bengalla Cup Hcp",
+            "start_time": "2026-07-26T06:00:00Z",
+            "track_condition": "Good4",
+            "distance": 1280,
+            "weather": "Fine",
+            "country": "AUS",
+            "state": "NSW",
+            "status": "Open"
+          },
+          {
+            "id": "e8c2b7ee-fad2-4272-9590-761fa9467839",
+            "race_number": 7,
+            "name": "Viatek Nsw Hcp (Bm58)",
+            "start_time": "2026-07-26T06:40:00Z",
+            "track_condition": "Good4",
+            "distance": 1280,
+            "weather": "FINE",
+            "country": "AUS",
+            "state": "NSW",
+            "status": "Open"
+          }
+        ],
+        "quaddie": [
+          4,
+          5,
+          6,
+          7
+        ],
+        "early_quaddie": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "daily_double": [
+          5,
+          7
+        ],
+        "treble": [
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "meeting": "bc96c31a-5287-5c47-aa51-680996a0a997",
+        "name": "Wodonga",
+        "date": "2026-07-26T00:00:00Z",
+        "track_condition": "Heavy9",
+        "category": "T",
+        "category_name": "Thoroughbred Horse Racing",
+        "country": "AUS",
+        "state": "VIC",
+        "races": [
+          {
+            "id": "295039a9-ee3f-4824-89aa-cc5bb8d6b904",
+            "race_number": 1,
+            "name": "Snap Print Solutions Mdn Plate",
+            "start_time": "2026-07-26T02:55:00Z",
+            "track_condition": "Heavy9",
+            "distance": 1400,
+            "weather": "OCAST",
+            "country": "AUS",
+            "state": "VIC",
+            "status": "Open"
+          },
+          {
+            "id": "732c9d19-b8ef-457d-a086-06903dd24da2",
+            "race_number": 2,
+            "name": "Denise Casey Mdn Plate",
+            "start_time": "2026-07-26T03:30:00Z",
+            "track_condition": "Heavy9",
+            "distance": 1200,
+            "weather": "OCAST",
+            "country": "AUS",
+            "state": "VIC",
+            "status": "Open"
+          },
+          {
+            "id": "8df80370-5a7c-4360-a947-7b7028408e03",
+            "race_number": 3,
+            "name": "Picklebet Jack Maher Classic Hcp",
+            "start_time": "2026-07-26T04:05:00Z",
+            "track_condition": "Heavy9",
+            "distance": 1200,
+            "weather": "OCAST",
+            "country": "AUS",
+            "state": "VIC",
+            "status": "Open"
+          },
+          {
+            "id": "69c478b9-3b30-4b12-958a-b1bb080322c2",
+            "race_number": 4,
+            "name": "Mcgrath Family Hcp (56)",
+            "start_time": "2026-07-26T04:45:00Z",
+            "track_condition": "Heavy9",
+            "distance": 2050,
+            "weather": "OCAST",
+            "country": "AUS",
+            "state": "VIC",
+            "status": "Open"
+          },
+          {
+            "id": "f38c2286-e2ae-4247-afe1-73cc3516defd",
+            "race_number": 5,
+            "name": "Vin Tobin Hcp (56)",
+            "start_time": "2026-07-26T05:25:00Z",
+            "track_condition": "Heavy9",
+            "distance": 1400,
+            "weather": "OCAST",
+            "country": "AUS",
+            "state": "VIC",
+            "status": "Open"
+          },
+          {
+            "id": "5e45d7a5-347c-4539-8a82-31c643c5d2b4",
+            "race_number": 6,
+            "name": "Vale Colin 'Snowy' Matthews Hcp (56)",
+            "start_time": "2026-07-26T06:05:00Z",
+            "track_condition": "Heavy9",
+            "distance": 1300,
+            "weather": "OCAST",
+            "country": "AUS",
+            "state": "VIC",
+            "status": "Open"
+          },
+          {
+            "id": "d2794df6-ad41-4c9f-b910-e3652cee51bb",
+            "race_number": 7,
+            "name": "Carlton Draught Hcp (56)",
+            "start_time": "2026-07-26T06:45:00Z",
+            "track_condition": "Heavy9",
+            "distance": 1100,
+            "weather": "OCAST",
+            "country": "AUS",
+            "state": "VIC",
+            "status": "Open"
+          }
+        ],
+        "video_channels": [
+          "Live1"
+        ],
+        "quaddie": [
+          4,
+          5,
+          6,
+          7
+        ],
+        "early_quaddie": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "daily_double": [
+          5,
+          7
+        ],
+        "treble": [
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "meeting": "ba762e0f-0dd3-5708-b4df-cab1594771fd",
+        "name": "Balaklava",
+        "date": "2026-07-26T00:00:00Z",
+        "track_condition": "Soft7",
+        "category": "T",
+        "category_name": "Thoroughbred Horse Racing",
+        "country": "AUS",
+        "state": "SA",
+        "races": [
+          {
+            "id": "27dec613-3924-4945-8953-0aa63978aed2",
+            "race_number": 1,
+            "name": "Taylors Wines Hcp (58)",
+            "start_time": "2026-07-26T03:18:00Z",
+            "track_condition": "Soft7",
+            "distance": 2200,
+            "weather": "OCAST",
+            "country": "AUS",
+            "state": "SA",
+            "status": "Open"
+          },
+          {
+            "id": "1c07bc8a-74cb-4fc9-948e-f3321a9d4f5e",
+            "race_number": 2,
+            "name": "Gawler South Bakery Mdn Plate",
+            "start_time": "2026-07-26T03:53:00Z",
+            "track_condition": "Soft7",
+            "distance": 1050,
+            "weather": "OCAST",
+            "country": "AUS",
+            "state": "SA",
+            "status": "Open"
+          },
+          {
+            "id": "19b5c1da-038d-4f27-bf68-fb5ef9e4fb6a",
+            "race_number": 3,
+            "name": "Balaklava Cup 16th September Mdn Plate",
+            "start_time": "2026-07-26T04:30:00Z",
+            "track_condition": "Soft7",
+            "distance": 1050,
+            "weather": "OCAST",
+            "country": "AUS",
+            "state": "SA",
+            "status": "Open"
+          },
+          {
+            "id": "6ca074c9-844d-461a-a89b-73418045f6bd",
+            "race_number": 4,
+            "name": "Sportsbet Racing Form Mdn Plate",
+            "start_time": "2026-07-26T05:10:00Z",
+            "track_condition": "Soft7",
+            "distance": 1400,
+            "weather": "OCAST",
+            "country": "AUS",
+            "state": "SA",
+            "status": "Open"
+          },
+          {
+            "id": "de95b37b-6c14-496b-be5b-13dd600c83a5",
+            "race_number": 5,
+            "name": "Bmd Plate (C1)",
+            "start_time": "2026-07-26T05:50:00Z",
+            "track_condition": "Soft7",
+            "distance": 2200,
+            "weather": "OCAST",
+            "country": "AUS",
+            "state": "SA",
+            "status": "Open"
+          },
+          {
+            "id": "61dbd901-caa3-4ac0-a8af-0c83e507f22b",
+            "race_number": 6,
+            "name": "Agfert Hcp (Bm56)",
+            "start_time": "2026-07-26T06:30:00Z",
+            "track_condition": "Soft7",
+            "distance": 1050,
+            "weather": "OCAST",
+            "country": "AUS",
+            "state": "SA",
+            "status": "Open"
+          },
+          {
+            "id": "0dc285a3-8495-4f2f-848a-349380dbc3c7",
+            "race_number": 7,
+            "name": "Tqcsi Hcp (56)",
+            "start_time": "2026-07-26T07:05:00Z",
+            "track_condition": "Soft7",
+            "distance": 1400,
+            "weather": "OCAST",
+            "country": "AUS",
+            "state": "SA",
+            "status": "Open"
+          }
+        ],
+        "video_channels": [
+          "Live1"
+        ],
+        "quaddie": [
+          4,
+          5,
+          6,
+          7
+        ],
+        "early_quaddie": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "daily_double": [
+          5,
+          7
+        ],
+        "treble": [
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "meeting": "4a08d5b3-e60e-5eaa-8a02-698ccdf2c17e",
+        "name": "Kalgoorlie",
+        "date": "2026-07-26T00:00:00Z",
+        "track_condition": "Good4",
+        "category": "T",
+        "category_name": "Thoroughbred Horse Racing",
+        "country": "AUS",
+        "state": "WA",
+        "races": [
+          {
+            "id": "2d472b1a-a52f-4888-a72d-1480797dd5b7",
+            "race_number": 1,
+            "name": "Regal Engineering Mdn",
+            "start_time": "2026-07-26T04:10:00Z",
+            "track_condition": "Good4",
+            "distance": 1400,
+            "weather": "Fine",
+            "country": "AUS",
+            "state": "WA",
+            "status": "Open"
+          },
+          {
+            "id": "5835622c-7895-495e-8d45-190c9e006ac3",
+            "race_number": 2,
+            "name": "Encore Monitoring Mdn",
+            "start_time": "2026-07-26T04:50:00Z",
+            "track_condition": "Good4",
+            "distance": 1100,
+            "weather": "Fine",
+            "country": "AUS",
+            "state": "WA",
+            "status": "Open"
+          },
+          {
+            "id": "63e4b4a2-047b-4c9e-81a4-5bf1f3c9f631",
+            "race_number": 3,
+            "name": "Hydramech Hcp (64+)",
+            "start_time": "2026-07-26T05:30:00Z",
+            "track_condition": "Good4",
+            "distance": 1760,
+            "weather": "Fine",
+            "country": "AUS",
+            "state": "WA",
+            "status": "Open"
+          },
+          {
+            "id": "0d8ad9da-491d-423b-94f2-1c0e797a5122",
+            "race_number": 4,
+            "name": "Challenge Drilling Hcp (C2)",
+            "start_time": "2026-07-26T06:10:00Z",
+            "track_condition": "Good4",
+            "distance": 1600,
+            "weather": "FINE",
+            "country": "AUS",
+            "state": "WA",
+            "status": "Open"
+          },
+          {
+            "id": "856a602d-9a85-4256-b226-8969964bb99b",
+            "race_number": 5,
+            "name": "Nj Industries Hcp (58+)",
+            "start_time": "2026-07-26T06:50:00Z",
+            "track_condition": "Good4",
+            "distance": 1100,
+            "weather": "FINE",
+            "country": "AUS",
+            "state": "WA",
+            "status": "Open"
+          },
+          {
+            "id": "a5afd361-defc-4519-8010-2283007abf66",
+            "race_number": 6,
+            "name": "Goldfields Variety Hcp (70+)",
+            "start_time": "2026-07-26T07:25:00Z",
+            "track_condition": "Good4",
+            "distance": 1200,
+            "weather": "FINE",
+            "country": "AUS",
+            "state": "WA",
+            "status": "Open"
+          },
+          {
+            "id": "cb947cc1-616f-4fe7-be0c-1d7a9a066e78",
+            "race_number": 7,
+            "name": "Terra Drilling Hcp (C2)",
+            "start_time": "2026-07-26T08:04:00Z",
+            "track_condition": "Good4",
+            "distance": 1200,
+            "weather": "Fine",
+            "country": "AUS",
+            "state": "WA",
+            "status": "Open"
+          },
+          {
+            "id": "5cf39195-65ef-4b35-b54b-5419203fbc55",
+            "race_number": 8,
+            "name": "The Animal Hospital Hcp (58+)",
+            "start_time": "2026-07-26T08:39:00Z",
+            "track_condition": "Good4",
+            "distance": 1400,
+            "weather": "FINE",
+            "country": "AUS",
+            "state": "WA",
+            "status": "Open"
+          }
+        ],
+        "video_channels": [
+          "Live1"
+        ],
+        "quaddie": [
+          5,
+          6,
+          7,
+          8
+        ],
+        "early_quaddie": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "daily_double": [
+          6,
+          8
+        ],
+        "treble": [
+          6,
+          7,
+          8
+        ]
+      }
+    ]
+  }
+}

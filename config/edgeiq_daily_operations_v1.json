@@ -1,0 +1,57 @@
+{
+  "config_version": "EDGEIQ_DAILY_OPERATIONS_CONFIG_V1",
+  "timezone": "Australia/Sydney",
+  "enabled_jurisdictions": [
+    "AU"
+  ],
+  "enabled_states": [
+    "VIC"
+  ],
+  "default_lookback_days": 14,
+  "evidence_root": "data/evidence/daily-operations",
+  "staging_root": "public/data/daily-operations/staging",
+  "output_root": "public/data",
+  "log_root": "logs/daily-operations",
+  "lock_path": "public/data/edgeiq_daily_operations_engine_v1.lock.json",
+  "stale_lock_minutes": 240,
+  "source_retry_settings": {
+    "results_pending_days": 14,
+    "timing_pending_days": 14,
+    "condition_pending_days": 7,
+    "speed_pending_days": 14
+  },
+  "source_authority_order": [
+    "RACING_AUSTRALIA_RESULTS",
+    "RACINGCOM_GRAPHQL_RESULTS",
+    "RACINGCOM_THREE_DAY_CATALOG",
+    "RACINGCOM_SPEED_DATA",
+    "GOVERNED_WEATHER_CONDITION_REGISTRY"
+  ],
+  "allowed_source_adapters": [
+    "LOCAL_REPOSITORY_CSV",
+    "LOCAL_REPOSITORY_JSON",
+    "RACINGCOM_EXISTING_COLLECTOR_OUTPUT",
+    "RACING_AUSTRALIA_EXISTING_COLLECTOR_OUTPUT"
+  ],
+  "speed_refresh_window": {
+    "start_local": "07:00",
+    "end_local": "22:00",
+    "minimum_minutes_between_runs": 60
+  },
+  "canonical_promotion_mode": "ATOMIC_APPEND_WITH_HISTORY",
+  "full_rebuild_mode": "REQUIRED_FOR_PERFORMANCE_INTELLIGENCE_V1",
+  "alert_thresholds": {
+    "pending_timing_days": 14,
+    "pending_speed_days": 14,
+    "critical_schema_failures": 1
+  },
+  "raw_evidence_retention_days": 365,
+  "manifest_retention_days": 365,
+  "protected_systems": [
+    "pricing",
+    "probability",
+    "V6.1",
+    "V7.2G2",
+    "approved_ui"
+  ]
+}

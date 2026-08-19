@@ -1,0 +1,24 @@
+EDGEIQ METROPOLITAN WEATHER SOURCE AUDIT
+============================================
+
+Source: vrc_flemington
+URL: https://www.vrc.com.au/track-and-weather-conditions/
+Status: 200
+HTML bytes: 59227
+Scripts: 1
+Candidate endpoints/assets: 8
+
+Source: mrc_metropolitan
+URL: https://mrc.racing.com/racing/raceday-track-weather-live
+Status: 200
+HTML bytes: 75299
+Scripts: 19
+Candidate endpoints/assets: 32
+
+NEXT STEP
+---------
+Inspect candidate URLs and JavaScript bundles for JSON, GraphQL,
+WeatherTrax, station, sensor, track-condition and rainfall endpoints.
+
+Do not build the production weather feed until the source and
+refresh behaviour are confirmed.

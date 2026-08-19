@@ -1,0 +1,9 @@
+{
+  "input_fact_rows": 449,
+  "eligible_benchmark_groups": 7,
+  "standard_time_rows": 7,
+  "minimum_sample": 20,
+  "groups_below_minimum_in_output": 0,
+  "decision": "RESULTS_STANDARD_TIME_PASS_NONZERO",
+  "deterministic_hash": "a60fa15d312278a20452e41b82ff735e8d7434656186dd0c26802b42ff75d9d5"
+}

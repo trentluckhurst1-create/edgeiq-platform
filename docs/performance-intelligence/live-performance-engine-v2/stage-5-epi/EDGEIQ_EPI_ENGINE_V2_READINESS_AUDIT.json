@@ -1,0 +1,15 @@
+{
+  "status": "EDGEIQ_EPI_ENGINE_V2_READINESS_AUDIT_PASS",
+  "rows": 204,
+  "status_counts": {
+    "EPI_UNAVAILABLE": 204
+  },
+  "checks": {
+    "one_row_per_projected_row": true,
+    "no_fabricated_epi_values": true,
+    "explicit_reason_on_every_row": true,
+    "deterministic_rerun": true
+  },
+  "candidate_sha256": "bdb9a0430765a3d6b11462ad2dc6ab31d56d36d8ad7381c89c7a6c6c1e32b022",
+  "production_sha256": "bdb9a0430765a3d6b11462ad2dc6ab31d56d36d8ad7381c89c7a6c6c1e32b022"
+}

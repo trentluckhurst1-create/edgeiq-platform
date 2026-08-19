@@ -1,0 +1,1904 @@
+﻿EDGEIQ THREE-DAY + WEATHER WIRING AUDIT
+========================================================================
+
+Generated: 2026-07-10 12:12:13
+Today: 2026-07-10
+Tomorrow: 2026-07-11
+Sunday: 2026-07-12
+
+
+========================================================================
+FILE: .\src\edgeiq-os\race\RaceFileV3.tsx
+========================================================================
+
+PATTERN: raceBook
+Line 15: const file = RaceFileService.buildRaceBook();
+  import { SettingsWorkspace } from "./components/SettingsWorkspace";
+  import { WorkspaceShell } from "./components/WorkspaceShell";
+  
+  const primary = file.field[0];
+  
+  type WorkbenchMode = RunnerWorkspaceMode;
+  type ViewLevel = "meetings" | "meeting" | "race" | "runner";
+  type SectionalStandard = "sameClass" | "open" | "trackDistance" | "todayProjection";
+  
+  function clean(value: any): string {
+    if (value === null || value === undefined || value === "") return "-";
+Line 245: ["Distance", clean(official.distance), clean(file.raceBook.official.distance), clean(official.distance) === clean(file.raceBook.official.distance) ? 100 : 58],
+    const match = score(run);
+  
+    const factors = [
+      ["Track", clean(official.condition), clean(file.raceBook.official.trackCondition), clean(official.condition) === clean(file.raceBook.official.trackCondition) ? 92 : 48],
+      ["Class", clean(official.raceClass), clean(file.raceBook.official.raceClass), clean(official.raceClass) === clean(file.raceBook.official.raceClass) ? 92 : 62],
+      ["Pressure", clean(evidence.pressure), clean(file.raceBook.intelligence.pressure), 86],
+      ["Tempo", clean(evidence.tempo), clean(file.raceBook.intelligence.tempo), 82],
+      ["ERI", clean(evidence.raceStrength?.overall ?? run.edgeiqRaceStrength), "Today benchmark", similarityScore(evidence.raceStrength?.overall ?? run.edgeiqRaceStrength)],
+      ["EPI", clean(evidence.runRating?.overall ?? run.edgeiqRunRating), "Performance benchmark", similarityScore(evidence.runRating?.overall ?? run.edgeiqRunRating)],
+      ["Barrier", clean(official.barrier), clean(primary?.official?.barrier), clean(official.barrier) === clean(primary?.official?.barrier) ? 90 : 55],
+    ];
+Line 246: ["Track", clean(official.condition), clean(file.raceBook.official.trackCondition), clean(official.condition) === clean(file.raceBook.official.trackCondition) ? 92 : 48],
+  
+    const factors = [
+      ["Distance", clean(official.distance), clean(file.raceBook.official.distance), clean(official.distance) === clean(file.raceBook.official.distance) ? 100 : 58],
+      ["Class", clean(official.raceClass), clean(file.raceBook.official.raceClass), clean(official.raceClass) === clean(file.raceBook.official.raceClass) ? 92 : 62],
+      ["Pressure", clean(evidence.pressure), clean(file.raceBook.intelligence.pressure), 86],
+      ["Tempo", clean(evidence.tempo), clean(file.raceBook.intelligence.tempo), 82],
+      ["ERI", clean(evidence.raceStrength?.overall ?? run.edgeiqRaceStrength), "Today benchmark", similarityScore(evidence.raceStrength?.overall ?? run.edgeiqRaceStrength)],
+      ["EPI", clean(evidence.runRating?.overall ?? run.edgeiqRunRating), "Performance benchmark", similarityScore(evidence.runRating?.overall ?? run.edgeiqRunRating)],
+      ["Barrier", clean(official.barrier), clean(primary?.official?.barrier), clean(official.barrier) === clean(primary?.official?.barrier) ? 90 : 55],
+    ];
+  
+Line 247: ["Class", clean(official.raceClass), clean(file.raceBook.official.raceClass), clean(official.raceClass) === clean(file.raceBook.official.raceClass) ? 92 : 62],
+    const factors = [
+      ["Distance", clean(official.distance), clean(file.raceBook.official.distance), clean(official.distance) === clean(file.raceBook.official.distance) ? 100 : 58],
+      ["Track", clean(official.condition), clean(file.raceBook.official.trackCondition), clean(official.condition) === clean(file.raceBook.official.trackCondition) ? 92 : 48],
+      ["Pressure", clean(evidence.pressure), clean(file.raceBook.intelligence.pressure), 86],
+      ["Tempo", clean(evidence.tempo), clean(file.raceBook.intelligence.tempo), 82],
+      ["ERI", clean(evidence.raceStrength?.overall ?? run.edgeiqRaceStrength), "Today benchmark", similarityScore(evidence.raceStrength?.overall ?? run.edgeiqRaceStrength)],
+      ["EPI", clean(evidence.runRating?.overall ?? run.edgeiqRunRating), "Performance benchmark", similarityScore(evidence.runRating?.overall ?? run.edgeiqRunRating)],
+      ["Barrier", clean(official.barrier), clean(primary?.official?.barrier), clean(official.barrier) === clean(primary?.official?.barrier) ? 90 : 55],
+    ];
+  
+    return (
+Line 248: ["Pressure", clean(evidence.pressure), clean(file.raceBook.intelligence.pressure), 86],
+      ["Distance", clean(official.distance), clean(file.raceBook.official.distance), clean(official.distance) === clean(file.raceBook.official.distance) ? 100 : 58],
+      ["Track", clean(official.condition), clean(file.raceBook.official.trackCondition), clean(official.condition) === clean(file.raceBook.official.trackCondition) ? 92 : 48],
+      ["Class", clean(official.raceClass), clean(file.raceBook.official.raceClass), clean(official.raceClass) === clean(file.raceBook.official.raceClass) ? 92 : 62],
+      ["Tempo", clean(evidence.tempo), clean(file.raceBook.intelligence.tempo), 82],
+      ["ERI", clean(evidence.raceStrength?.overall ?? run.edgeiqRaceStrength), "Today benchmark", similarityScore(evidence.raceStrength?.overall ?? run.edgeiqRaceStrength)],
+      ["EPI", clean(evidence.runRating?.overall ?? run.edgeiqRunRating), "Performance benchmark", similarityScore(evidence.runRating?.overall ?? run.edgeiqRunRating)],
+      ["Barrier", clean(official.barrier), clean(primary?.official?.barrier), clean(official.barrier) === clean(primary?.official?.barrier) ? 90 : 55],
+    ];
+  
+    return (
+      <section className="eiq-similarity-engine">
+Line 249: ["Tempo", clean(evidence.tempo), clean(file.raceBook.intelligence.tempo), 82],
+      ["Track", clean(official.condition), clean(file.raceBook.official.trackCondition), clean(official.condition) === clean(file.raceBook.official.trackCondition) ? 92 : 48],
+      ["Class", clean(official.raceClass), clean(file.raceBook.official.raceClass), clean(official.raceClass) === clean(file.raceBook.official.raceClass) ? 92 : 62],
+      ["Pressure", clean(evidence.pressure), clean(file.raceBook.intelligence.pressure), 86],
+      ["ERI", clean(evidence.raceStrength?.overall ?? run.edgeiqRaceStrength), "Today benchmark", similarityScore(evidence.raceStrength?.overall ?? run.edgeiqRaceStrength)],
+      ["EPI", clean(evidence.runRating?.overall ?? run.edgeiqRunRating), "Performance benchmark", similarityScore(evidence.runRating?.overall ?? run.edgeiqRunRating)],
+      ["Barrier", clean(official.barrier), clean(primary?.official?.barrier), clean(official.barrier) === clean(primary?.official?.barrier) ? 90 : 55],
+    ];
+  
+    return (
+      <section className="eiq-similarity-engine">
+        <header>
+Line 333: const today = file.raceBook.official;
+  function ComparisonTable({ run }: { run: any }) {
+    const official = run.professionalForm?.official ?? {};
+    const evidence = run.professionalForm?.evidence ?? {};
+    const intelligence = file.raceBook.intelligence;
+  
+    const rows = [
+      ["Distance", official.distance, today.distance, clean(official.distance) === clean(today.distance) ? "Same" : "Different"],
+      ["Track", official.condition, today.trackCondition, clean(official.condition) === clean(today.trackCondition) ? "Same" : "Different"],
+      ["Class", official.raceClass, today.raceClass, clean(official.raceClass) === clean(today.raceClass) ? "Similar" : "Check"],
+      ["Barrier", official.barrier, primary?.official?.barrier, "Compare"],
+      ["Weight", official.weight, primary?.official?.weight, "Compare"],
+Line 334: const intelligence = file.raceBook.intelligence;
+    const official = run.professionalForm?.official ?? {};
+    const evidence = run.professionalForm?.evidence ?? {};
+    const today = file.raceBook.official;
+  
+    const rows = [
+      ["Distance", official.distance, today.distance, clean(official.distance) === clean(today.distance) ? "Same" : "Different"],
+      ["Track", official.condition, today.trackCondition, clean(official.condition) === clean(today.trackCondition) ? "Same" : "Different"],
+      ["Class", official.raceClass, today.raceClass, clean(official.raceClass) === clean(today.raceClass) ? "Similar" : "Check"],
+      ["Barrier", official.barrier, primary?.official?.barrier, "Compare"],
+      ["Weight", official.weight, primary?.official?.weight, "Compare"],
+      ["Pressure", evidence.pressure, intelligence.pressure, clean(evidence.pressure) === clean(intelligence.pressure) ? "Aligned" : "Changed"],
+Line 477: ? `${clean(file.raceBook.official.meeting)} R${clean(file.raceBook.official.raceNumber)}`
+            : viewLevel === "runner"
+              ? clean(selectedRunner?.official?.runner)
+              : viewLevel === "race"
+                : viewLevel === "meeting"
+                  ? clean(file.raceBook.official.meeting)
+                  : "Meetings";
+  
+    const shellMeta =
+      activeSection === "meetings"
+        ? `${clean(file.raceBook.official.meeting)} | R${clean(file.raceBook.official.raceNumber)} | ${clean(file.raceBook.official.distance)} | ${clean(file.raceBook.official.trackCondition)}`
+        : undefined;
+Line 479: ? clean(file.raceBook.official.meeting)
+              : viewLevel === "race"
+                ? `${clean(file.raceBook.official.meeting)} R${clean(file.raceBook.official.raceNumber)}`
+                : viewLevel === "meeting"
+                  : "Meetings";
+  
+    const shellMeta =
+      activeSection === "meetings"
+        ? `${clean(file.raceBook.official.meeting)} | R${clean(file.raceBook.official.raceNumber)} | ${clean(file.raceBook.official.distance)} | ${clean(file.raceBook.official.trackCondition)}`
+        : undefined;
+  
+    return (
+Line 484: ? `${clean(file.raceBook.official.meeting)} | R${clean(file.raceBook.official.raceNumber)} | ${clean(file.raceBook.official.distance)} | ${clean(file.raceBook.official.trackCondition)}`
+  
+    const shellMeta =
+      activeSection === "meetings"
+        : undefined;
+  
+    return (
+      <WorkspaceShell activeSection={activeSection} onSectionChange={openSection} eyebrow="EDGEIQ OS" title={shellTitle} meta={shellMeta}>
+        {activeSection === "results" ? (
+          <GlobalResultsWorkspace />
+        ) : activeSection === "lab" ? (
+          <LabWorkspace />
+Line 497: raceBook={file.raceBook}
+          <SettingsWorkspace />
+        ) : viewLevel === "meetings" ? (
+          <MeetingsWorkspace
+            field={file.field}
+            clean={clean}
+            onOpenMeeting={() => setViewLevel("meeting")}
+          />
+        ) : viewLevel === "meeting" ? (
+          <MeetingWorkspace
+            raceBook={file.raceBook}
+            field={file.field}
+Line 504: raceBook={file.raceBook}
+          />
+        ) : viewLevel === "meeting" ? (
+          <MeetingWorkspace
+            field={file.field}
+            clean={clean}
+            onBackToMeetings={() => setViewLevel("meetings")}
+            onOpenRace={() => setViewLevel("race")}
+          />
+        ) : viewLevel === "race" ? (
+          <RaceWorkspace
+            raceBook={file.raceBook}
+Line 512: raceBook={file.raceBook}
+          />
+        ) : viewLevel === "race" ? (
+          <RaceWorkspace
+            field={file.field}
+            selectedRunnerIndex={selectedRunnerIndex}
+            clean={clean}
+            weight={weight}
+            market={market}
+            onBackToMeeting={() => setViewLevel("meeting")}
+            onOpenRunner={(index) => {
+              setSelectedRunnerIndex(index);
+Line 528: raceBook={file.raceBook}
+        ) : (
+          <RunnerProfileWorkspace
+            runner={selectedRunner}
+            field={file.field}
+            mode={mode}
+            setMode={setMode}
+            displayedRuns={displayedRuns}
+            bestRun={bestRun}
+            sectionalStandard={sectionalStandard}
+            setSectionalStandard={setSectionalStandard}
+            clean={clean}
+
+PATTERN: meeting
+Line 7: import { MeetingWorkspace } from "./components/MeetingWorkspace";
+  import { HistoricalRunCard } from "./components/HistoricalRunCard";
+  import { GlobalResultsWorkspace } from "./components/GlobalResultsWorkspace";
+  import { LabWorkspace } from "./components/LabWorkspace";
+  import { MeetingsWorkspace } from "./components/MeetingsWorkspace";
+  import { RaceWorkspace } from "./components/RaceWorkspace";
+  import { RunnerProfileWorkspace } from "./components/RunnerProfileWorkspace";
+  import { RunnerTabs, type RunnerWorkspaceMode } from "./components/RunnerTabs";
+  import { SettingsWorkspace } from "./components/SettingsWorkspace";
+  import { WorkspaceShell } from "./components/WorkspaceShell";
+  
+  const file = RaceFileService.buildRaceBook();
+Line 8: import { MeetingsWorkspace } from "./components/MeetingsWorkspace";
+  import { GlobalResultsWorkspace } from "./components/GlobalResultsWorkspace";
+  import { LabWorkspace } from "./components/LabWorkspace";
+  import { MeetingWorkspace } from "./components/MeetingWorkspace";
+  import { RaceWorkspace } from "./components/RaceWorkspace";
+  import { RunnerProfileWorkspace } from "./components/RunnerProfileWorkspace";
+  import { RunnerTabs, type RunnerWorkspaceMode } from "./components/RunnerTabs";
+  import { SettingsWorkspace } from "./components/SettingsWorkspace";
+  import { WorkspaceShell } from "./components/WorkspaceShell";
+  
+  const file = RaceFileService.buildRaceBook();
+  const primary = file.field[0];
+Line 19: type ViewLevel = "meetings" | "meeting" | "race" | "runner";
+  const primary = file.field[0];
+  
+  type WorkbenchMode = RunnerWorkspaceMode;
+  type SectionalStandard = "sameClass" | "open" | "trackDistance" | "todayProjection";
+  
+  function clean(value: any): string {
+    if (value === null || value === undefined || value === "") return "-";
+    return String(value)
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+Line 447: const [activeSection, setActiveSection] = useState<GlobalSection>("meetings");
+  }
+  
+  export function RaceFileV3() {
+    const [viewLevel, setViewLevel] = useState<ViewLevel>("meetings");
+    const [selectedRunnerIndex, setSelectedRunnerIndex] = useState(0);
+    const [mode, setMode] = useState<WorkbenchMode>("profile");
+    const [sectionalStandard, setSectionalStandard] = useState<SectionalStandard>("sameClass");
+    const selectedRunner = file.field[selectedRunnerIndex] ?? primary;
+  
+    const displayedRuns = useMemo(() => {
+      if (!selectedRunner) return [];
+Line 448: const [viewLevel, setViewLevel] = useState<ViewLevel>("meetings");
+  
+  export function RaceFileV3() {
+    const [activeSection, setActiveSection] = useState<GlobalSection>("meetings");
+    const [selectedRunnerIndex, setSelectedRunnerIndex] = useState(0);
+    const [mode, setMode] = useState<WorkbenchMode>("profile");
+    const [sectionalStandard, setSectionalStandard] = useState<SectionalStandard>("sameClass");
+    const selectedRunner = file.field[selectedRunnerIndex] ?? primary;
+  
+    const displayedRuns = useMemo(() => {
+      if (!selectedRunner) return [];
+      if (mode === "results") return (selectedRunner as any).evidenceRuns ?? selectedRunner.historicalRuns;
+Line 464: if (section === "meetings") setViewLevel("meetings");
+  
+    function openSection(section: GlobalSection) {
+      setActiveSection(section);
+    }
+  
+    const shellTitle =
+      activeSection === "results"
+        ? "Global Results"
+        : activeSection === "lab"
+          ? "EDGEIQ LAB"
+          : activeSection === "settings"
+Line 477: ? `${clean(file.raceBook.official.meeting)} R${clean(file.raceBook.official.raceNumber)}`
+            : viewLevel === "runner"
+              ? clean(selectedRunner?.official?.runner)
+              : viewLevel === "race"
+                : viewLevel === "meeting"
+                  ? clean(file.raceBook.official.meeting)
+                  : "Meetings";
+  
+    const shellMeta =
+      activeSection === "meetings"
+        ? `${clean(file.raceBook.official.meeting)} | R${clean(file.raceBook.official.raceNumber)} | ${clean(file.raceBook.official.distance)} | ${clean(file.raceBook.official.trackCondition)}`
+        : undefined;
+Line 478: : viewLevel === "meeting"
+              ? clean(selectedRunner?.official?.runner)
+              : viewLevel === "race"
+                ? `${clean(file.raceBook.official.meeting)} R${clean(file.raceBook.official.raceNumber)}`
+                  ? clean(file.raceBook.official.meeting)
+                  : "Meetings";
+  
+    const shellMeta =
+      activeSection === "meetings"
+        ? `${clean(file.raceBook.official.meeting)} | R${clean(file.raceBook.official.raceNumber)} | ${clean(file.raceBook.official.distance)} | ${clean(file.raceBook.official.trackCondition)}`
+        : undefined;
+  
+Line 479: ? clean(file.raceBook.official.meeting)
+              : viewLevel === "race"
+                ? `${clean(file.raceBook.official.meeting)} R${clean(file.raceBook.official.raceNumber)}`
+                : viewLevel === "meeting"
+                  : "Meetings";
+  
+    const shellMeta =
+      activeSection === "meetings"
+        ? `${clean(file.raceBook.official.meeting)} | R${clean(file.raceBook.official.raceNumber)} | ${clean(file.raceBook.official.distance)} | ${clean(file.raceBook.official.trackCondition)}`
+        : undefined;
+  
+    return (
+Line 480: : "Meetings";
+                ? `${clean(file.raceBook.official.meeting)} R${clean(file.raceBook.official.raceNumber)}`
+                : viewLevel === "meeting"
+                  ? clean(file.raceBook.official.meeting)
+  
+    const shellMeta =
+      activeSection === "meetings"
+        ? `${clean(file.raceBook.official.meeting)} | R${clean(file.raceBook.official.raceNumber)} | ${clean(file.raceBook.official.distance)} | ${clean(file.raceBook.official.trackCondition)}`
+        : undefined;
+  
+    return (
+      <WorkspaceShell activeSection={activeSection} onSectionChange={openSection} eyebrow="EDGEIQ OS" title={shellTitle} meta={shellMeta}>
+Line 483: activeSection === "meetings"
+                  : "Meetings";
+  
+    const shellMeta =
+        ? `${clean(file.raceBook.official.meeting)} | R${clean(file.raceBook.official.raceNumber)} | ${clean(file.raceBook.official.distance)} | ${clean(file.raceBook.official.trackCondition)}`
+        : undefined;
+  
+    return (
+      <WorkspaceShell activeSection={activeSection} onSectionChange={openSection} eyebrow="EDGEIQ OS" title={shellTitle} meta={shellMeta}>
+        {activeSection === "results" ? (
+          <GlobalResultsWorkspace />
+        ) : activeSection === "lab" ? (
+Line 484: ? `${clean(file.raceBook.official.meeting)} | R${clean(file.raceBook.official.raceNumber)} | ${clean(file.raceBook.official.distance)} | ${clean(file.raceBook.official.trackCondition)}`
+  
+    const shellMeta =
+      activeSection === "meetings"
+        : undefined;
+  
+    return (
+      <WorkspaceShell activeSection={activeSection} onSectionChange={openSection} eyebrow="EDGEIQ OS" title={shellTitle} meta={shellMeta}>
+        {activeSection === "results" ? (
+          <GlobalResultsWorkspace />
+        ) : activeSection === "lab" ? (
+          <LabWorkspace />
+Line 495: ) : viewLevel === "meetings" ? (
+          <LabWorkspace />
+        ) : activeSection === "settings" ? (
+          <SettingsWorkspace />
+          <MeetingsWorkspace
+            raceBook={file.raceBook}
+            field={file.field}
+            clean={clean}
+            onOpenMeeting={() => setViewLevel("meeting")}
+          />
+        ) : viewLevel === "meeting" ? (
+          <MeetingWorkspace
+Line 496: <MeetingsWorkspace
+        ) : activeSection === "settings" ? (
+          <SettingsWorkspace />
+        ) : viewLevel === "meetings" ? (
+            raceBook={file.raceBook}
+            field={file.field}
+            clean={clean}
+            onOpenMeeting={() => setViewLevel("meeting")}
+          />
+        ) : viewLevel === "meeting" ? (
+          <MeetingWorkspace
+            raceBook={file.raceBook}
+Line 500: onOpenMeeting={() => setViewLevel("meeting")}
+            raceBook={file.raceBook}
+            field={file.field}
+            clean={clean}
+          />
+        ) : viewLevel === "meeting" ? (
+          <MeetingWorkspace
+            raceBook={file.raceBook}
+            field={file.field}
+            clean={clean}
+            onBackToMeetings={() => setViewLevel("meetings")}
+            onOpenRace={() => setViewLevel("race")}
+Line 502: ) : viewLevel === "meeting" ? (
+            clean={clean}
+            onOpenMeeting={() => setViewLevel("meeting")}
+          />
+          <MeetingWorkspace
+            raceBook={file.raceBook}
+            field={file.field}
+            clean={clean}
+            onBackToMeetings={() => setViewLevel("meetings")}
+            onOpenRace={() => setViewLevel("race")}
+          />
+        ) : viewLevel === "race" ? (
+Line 503: <MeetingWorkspace
+            onOpenMeeting={() => setViewLevel("meeting")}
+          />
+        ) : viewLevel === "meeting" ? (
+            raceBook={file.raceBook}
+            field={file.field}
+            clean={clean}
+            onBackToMeetings={() => setViewLevel("meetings")}
+            onOpenRace={() => setViewLevel("race")}
+          />
+        ) : viewLevel === "race" ? (
+          <RaceWorkspace
+Line 507: onBackToMeetings={() => setViewLevel("meetings")}
+            raceBook={file.raceBook}
+            field={file.field}
+            clean={clean}
+            onOpenRace={() => setViewLevel("race")}
+          />
+        ) : viewLevel === "race" ? (
+          <RaceWorkspace
+            raceBook={file.raceBook}
+            field={file.field}
+            selectedRunnerIndex={selectedRunnerIndex}
+            clean={clean}
+Line 518: onBackToMeeting={() => setViewLevel("meeting")}
+            clean={clean}
+            weight={weight}
+            market={market}
+            onOpenRunner={(index) => {
+              setSelectedRunnerIndex(index);
+              setMode("profile");
+              setViewLevel("runner");
+            }}
+          />
+        ) : (
+          <RunnerProfileWorkspace
+
+PATTERN: TODAY
+Line 20: type SectionalStandard = "sameClass" | "open" | "trackDistance" | "todayProjection";
+  
+  type WorkbenchMode = RunnerWorkspaceMode;
+  type ViewLevel = "meetings" | "meeting" | "race" | "runner";
+  
+  function clean(value: any): string {
+    if (value === null || value === undefined || value === "") return "-";
+    return String(value)
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+  function market(value: any): string {
+Line 84: .replace(/Strong historical\s+evidence for today.?s assignment\./gi, "Strong form read for today's race.")
+  
+  function punterCopy(value: any) {
+    return clean(value)
+      .replace(/Strong in defeat\. The performance rated better than the finishing position suggests\./gi, "Better than the finishing position suggests. Previous run has more merit than it reads on paper.")
+      .replace(/Relevant historical assignment with usable evidence for today\./gi, "Relevant past run with usable clues for today.")
+      .replace(/Form line requires caution due to weaker race strength\./gi, "Form line needs caution because that race was weaker.")
+      .replace(/Background form\. Useful context, but not a primary match for today\./gi, "Watch run. Useful context, but not a key read for today.")
+      .replace(/today's assignment/gi, "today's race")
+      .replace(/assignment/gi, "race setup")
+      .replace(/historical\s+evidence/gi, "past form")
+      .replace(/evidence quality/gi, "setup read")
+Line 86: .replace(/Relevant historical assignment with usable evidence for today\./gi, "Relevant past run with usable clues for today.")
+    return clean(value)
+      .replace(/Strong historical\s+evidence for today.?s assignment\./gi, "Strong form read for today's race.")
+      .replace(/Strong in defeat\. The performance rated better than the finishing position suggests\./gi, "Better than the finishing position suggests. Previous run has more merit than it reads on paper.")
+      .replace(/Form line requires caution due to weaker race strength\./gi, "Form line needs caution because that race was weaker.")
+      .replace(/Background form\. Useful context, but not a primary match for today\./gi, "Watch run. Useful context, but not a key read for today.")
+      .replace(/today's assignment/gi, "today's race")
+      .replace(/assignment/gi, "race setup")
+      .replace(/historical\s+evidence/gi, "past form")
+      .replace(/evidence quality/gi, "setup read")
+      .replace(/evidence/gi, "form")
+      .trim();
+Line 88: .replace(/Background form\. Useful context, but not a primary match for today\./gi, "Watch run. Useful context, but not a key read for today.")
+      .replace(/Strong in defeat\. The performance rated better than the finishing position suggests\./gi, "Better than the finishing position suggests. Previous run has more merit than it reads on paper.")
+      .replace(/Relevant historical assignment with usable evidence for today\./gi, "Relevant past run with usable clues for today.")
+      .replace(/Form line requires caution due to weaker race strength\./gi, "Form line needs caution because that race was weaker.")
+      .replace(/today's assignment/gi, "today's race")
+      .replace(/assignment/gi, "race setup")
+      .replace(/historical\s+evidence/gi, "past form")
+      .replace(/evidence quality/gi, "setup read")
+      .replace(/evidence/gi, "form")
+      .trim();
+  }
+  
+Line 89: .replace(/today's assignment/gi, "today's race")
+      .replace(/Relevant historical assignment with usable evidence for today\./gi, "Relevant past run with usable clues for today.")
+      .replace(/Form line requires caution due to weaker race strength\./gi, "Form line needs caution because that race was weaker.")
+      .replace(/Background form\. Useful context, but not a primary match for today\./gi, "Watch run. Useful context, but not a key read for today.")
+      .replace(/assignment/gi, "race setup")
+      .replace(/historical\s+evidence/gi, "past form")
+      .replace(/evidence quality/gi, "setup read")
+      .replace(/evidence/gi, "form")
+      .trim();
+  }
+  
+  function ratingBand(value: any): string {
+Line 107: return punterCopy(run?.professionalForm?.evidence?.narrative ?? "Useful past form. Open the run to test whether it transfers to today's race.");
+  }
+  
+  function narrative(run: any): string {
+  }
+  
+  function verdict(run: any): string {
+    return clean(run?.professionalForm?.assignment?.verdict ?? "Needs context");
+  }
+  
+  function reasons(run: any): string[] {
+    const list = run?.professionalForm?.assignment?.reasons ?? [];
+Line 117: return ["Past race provides a useful form clue", "Performance can be tested against today's race", "Race strength and run rating provide context"];
+  function reasons(run: any): string[] {
+    const list = run?.professionalForm?.assignment?.reasons ?? [];
+    if (list.length) return list.map((x: string) => punterCopy(x));
+  }
+  
+  function changes(run: any): string[] {
+    const list = run?.professionalForm?.assignment?.watch ?? [];
+    if (list.length) return list.map((x: string) => punterCopy(x));
+    return ["Track, pressure and class should be checked before relying on this run", "Use as a clue, not as a standalone conclusion"];
+  }
+  
+Line 174: <strong>{role === "PRIMARY" ? "Key run for today's view." : role === "SUPPORTING" ? "Strong run once today's differences are checked." : "Use as wider context only."}</strong>
+      <section className="eiq-verdict-panel">
+        <div>
+          <span>EDGEiQ Verdict</span>
+          <p>
+            Race suitability is {suitabilityFromScore(match).toLowerCase()}. This past run helps explain the horse, but should still be tested against today's track, class, pressure, tempo and barrier.
+          </p>
+        </div>
+  
+        <aside>
+          <span>ETI</span>
+          <MatchBar value={match} />
+Line 176: Race suitability is {suitabilityFromScore(match).toLowerCase()}. This past run helps explain the horse, but should still be tested against today's track, class, pressure, tempo and barrier.
+          <span>EDGEiQ Verdict</span>
+          <strong>{role === "PRIMARY" ? "Key run for today's view." : role === "SUPPORTING" ? "Strong run once today's differences are checked." : "Use as wider context only."}</strong>
+          <p>
+          </p>
+        </div>
+  
+        <aside>
+          <span>ETI</span>
+          <MatchBar value={match} />
+          <b>{chanceTypeLabel(role)}</b>
+        </aside>
+Line 250: ["ERI", clean(evidence.raceStrength?.overall ?? run.edgeiqRaceStrength), "Today benchmark", similarityScore(evidence.raceStrength?.overall ?? run.edgeiqRaceStrength)],
+      ["Class", clean(official.raceClass), clean(file.raceBook.official.raceClass), clean(official.raceClass) === clean(file.raceBook.official.raceClass) ? 92 : 62],
+      ["Pressure", clean(evidence.pressure), clean(file.raceBook.intelligence.pressure), 86],
+      ["Tempo", clean(evidence.tempo), clean(file.raceBook.intelligence.tempo), 82],
+      ["EPI", clean(evidence.runRating?.overall ?? run.edgeiqRunRating), "Performance benchmark", similarityScore(evidence.runRating?.overall ?? run.edgeiqRunRating)],
+      ["Barrier", clean(official.barrier), clean(primary?.official?.barrier), clean(official.barrier) === clean(primary?.official?.barrier) ? 90 : 55],
+    ];
+  
+    return (
+      <section className="eiq-similarity-engine">
+        <header>
+          <div>
+Line 261: <p>EDGEIQ compares the past performance against today's race so the analyst can see what lines up and what needs challenging.</p>
+          <div>
+            <span>ETI Similarity Engine</span>
+            <strong>Race Suitability</strong>
+          </div>
+          <aside>
+            <span>ETI</span>
+            <MatchBar value={match} />
+          </aside>
+        </header>
+  
+        <div className="eiq-similarity-grid">
+Line 270: {factors.map(([factor, historical, today, value]) => (
+        </header>
+  
+        <div className="eiq-similarity-grid">
+            <article key={factor}>
+              <div>
+                <span>{factor}</span>
+                <strong>{value}%</strong>
+              </div>
+              <i><b style={{ width: `${value}%` }} /></i>
+              <footer>
+                <em>{historical}</em>
+Line 279: <em>{today}</em>
+              <i><b style={{ width: `${value}%` }} /></i>
+              <footer>
+                <em>{historical}</em>
+              </footer>
+            </article>
+          ))}
+        </div>
+      </section>
+    );
+  }
+  
+Line 299: ? "Key run. Strong form read for today's assessment."
+          <span>Analyst Verdict</span>
+          <strong>
+            {role === "PRIMARY"
+            : role === "SUPPORTING"
+              ? "Strong run once today's differences are checked."
+              : "Watch only. Useful context, not a standalone benchmark."}
+        </strong>
+        <p>
+          The selected {clean(official.track)} run returned a {clean(evidence.runRating?.overall ?? run.edgeiqRunRating)} EPI and {clean(evidence.raceStrength?.overall ?? run.edgeiqRaceStrength)} ERI.
+          Race suitability is {suitabilityFromScore(match).toLowerCase()}, so EDGEIQ treats it as a {runReferenceLabel(role).toLowerCase()}. The analyst should use it to understand the horse, then challenge it against today's track, class, pressure, tempo and barrier.
+        </p>
+Line 301: ? "Strong run once today's differences are checked."
+            {role === "PRIMARY"
+            ? "Key run. Strong form read for today's assessment."
+            : role === "SUPPORTING"
+              : "Watch only. Useful context, not a standalone benchmark."}
+        </strong>
+        <p>
+          The selected {clean(official.track)} run returned a {clean(evidence.runRating?.overall ?? run.edgeiqRunRating)} EPI and {clean(evidence.raceStrength?.overall ?? run.edgeiqRaceStrength)} ERI.
+          Race suitability is {suitabilityFromScore(match).toLowerCase()}, so EDGEIQ treats it as a {runReferenceLabel(role).toLowerCase()}. The analyst should use it to understand the horse, then challenge it against today's track, class, pressure, tempo and barrier.
+        </p>
+      </section>
+    );
+Line 306: Race suitability is {suitabilityFromScore(match).toLowerCase()}, so EDGEIQ treats it as a {runReferenceLabel(role).toLowerCase()}. The analyst should use it to understand the horse, then challenge it against today's track, class, pressure, tempo and barrier.
+        </strong>
+        <p>
+          The selected {clean(official.track)} run returned a {clean(evidence.runRating?.overall ?? run.edgeiqRunRating)} EPI and {clean(evidence.raceStrength?.overall ?? run.edgeiqRaceStrength)} ERI.
+        </p>
+      </section>
+    );
+  }
+  
+  
+  
+  function sectionalProfile(run: any, standard: SectionalStandard) {
+Line 333: const today = file.raceBook.official;
+  function ComparisonTable({ run }: { run: any }) {
+    const official = run.professionalForm?.official ?? {};
+    const evidence = run.professionalForm?.evidence ?? {};
+    const intelligence = file.raceBook.intelligence;
+  
+    const rows = [
+      ["Distance", official.distance, today.distance, clean(official.distance) === clean(today.distance) ? "Same" : "Different"],
+      ["Track", official.condition, today.trackCondition, clean(official.condition) === clean(today.trackCondition) ? "Same" : "Different"],
+      ["Class", official.raceClass, today.raceClass, clean(official.raceClass) === clean(today.raceClass) ? "Similar" : "Check"],
+      ["Barrier", official.barrier, primary?.official?.barrier, "Compare"],
+      ["Weight", official.weight, primary?.official?.weight, "Compare"],
+Line 337: ["Distance", official.distance, today.distance, clean(official.distance) === clean(today.distance) ? "Same" : "Different"],
+    const intelligence = file.raceBook.intelligence;
+  
+    const rows = [
+      ["Track", official.condition, today.trackCondition, clean(official.condition) === clean(today.trackCondition) ? "Same" : "Different"],
+      ["Class", official.raceClass, today.raceClass, clean(official.raceClass) === clean(today.raceClass) ? "Similar" : "Check"],
+      ["Barrier", official.barrier, primary?.official?.barrier, "Compare"],
+      ["Weight", official.weight, primary?.official?.weight, "Compare"],
+      ["Pressure", evidence.pressure, intelligence.pressure, clean(evidence.pressure) === clean(intelligence.pressure) ? "Aligned" : "Changed"],
+      ["Tempo", evidence.tempo, intelligence.tempo, clean(evidence.tempo) === clean(intelligence.tempo) ? "Aligned" : "Changed"],
+      ["Race Flow", evidence.raceFlow, intelligence.raceFlow, clean(evidence.raceFlow) === clean(intelligence.raceFlow) ? "Aligned" : "Changed"],
+    ];
+Line 338: ["Track", official.condition, today.trackCondition, clean(official.condition) === clean(today.trackCondition) ? "Same" : "Different"],
+  
+    const rows = [
+      ["Distance", official.distance, today.distance, clean(official.distance) === clean(today.distance) ? "Same" : "Different"],
+      ["Class", official.raceClass, today.raceClass, clean(official.raceClass) === clean(today.raceClass) ? "Similar" : "Check"],
+      ["Barrier", official.barrier, primary?.official?.barrier, "Compare"],
+      ["Weight", official.weight, primary?.official?.weight, "Compare"],
+      ["Pressure", evidence.pressure, intelligence.pressure, clean(evidence.pressure) === clean(intelligence.pressure) ? "Aligned" : "Changed"],
+      ["Tempo", evidence.tempo, intelligence.tempo, clean(evidence.tempo) === clean(intelligence.tempo) ? "Aligned" : "Changed"],
+      ["Race Flow", evidence.raceFlow, intelligence.raceFlow, clean(evidence.raceFlow) === clean(intelligence.raceFlow) ? "Aligned" : "Changed"],
+    ];
+  
+Line 339: ["Class", official.raceClass, today.raceClass, clean(official.raceClass) === clean(today.raceClass) ? "Similar" : "Check"],
+    const rows = [
+      ["Distance", official.distance, today.distance, clean(official.distance) === clean(today.distance) ? "Same" : "Different"],
+      ["Track", official.condition, today.trackCondition, clean(official.condition) === clean(today.trackCondition) ? "Same" : "Different"],
+      ["Barrier", official.barrier, primary?.official?.barrier, "Compare"],
+      ["Weight", official.weight, primary?.official?.weight, "Compare"],
+      ["Pressure", evidence.pressure, intelligence.pressure, clean(evidence.pressure) === clean(intelligence.pressure) ? "Aligned" : "Changed"],
+      ["Tempo", evidence.tempo, intelligence.tempo, clean(evidence.tempo) === clean(intelligence.tempo) ? "Aligned" : "Changed"],
+      ["Race Flow", evidence.raceFlow, intelligence.raceFlow, clean(evidence.raceFlow) === clean(intelligence.raceFlow) ? "Aligned" : "Changed"],
+    ];
+  
+    return (
+Line 349: <span>Today vs Historical</span>
+  
+    return (
+      <section className="eiq-what-changed">
+        <table>
+          <thead>
+            <tr><th>Factor</th><th>Historical</th><th>Today</th><th>Assessment</th></tr>
+          </thead>
+          <tbody>
+            {rows.map(([factor, historical, current, assessment]) => (
+              <tr key={factor}>
+                <td>{factor}</td>
+Line 352: <tr><th>Factor</th><th>Historical</th><th>Today</th><th>Assessment</th></tr>
+        <span>Today vs Historical</span>
+        <table>
+          <thead>
+          </thead>
+          <tbody>
+            {rows.map(([factor, historical, current, assessment]) => (
+              <tr key={factor}>
+                <td>{factor}</td>
+                <td>{clean(historical)}</td>
+                <td>{clean(current)}</td>
+                <td>{assessment}</td>
+
+========================================================================
+FILE: .\src\edgeiq-os\race\components\MeetingWorkspace.tsx
+========================================================================
+
+PATTERN: raceBook
+Line 5: raceBook: any;
+  import { MeetingWeatherWorkspace } from "./MeetingWeatherWorkspace";
+  
+  type MeetingWorkspaceProps = {
+    field: any[];
+    clean: (value: any) => string;
+    onBackToMeetings: () => void;
+    onOpenRace: () => void;
+  };
+  
+  const tabs = ["RACES", "SCRATCHINGS", "GEAR", "TRACK", "WEATHER", "RESULTS"] as const;
+  type MeetingTab = typeof tabs[number];
+Line 24: export function MeetingWorkspace({ raceBook, field, clean, onBackToMeetings, onOpenRace }: MeetingWorkspaceProps) {
+    );
+  }
+  
+    const [tab, setTab] = useState<MeetingTab>("RACES");
+    const official = raceBook?.official ?? {};
+    const intelligence = raceBook?.intelligence ?? {};
+  
+    return (
+      <section className="eiq-meeting-workspace">
+        <div className="eiq-workspace-breadcrumb">
+          <button type="button" onClick={onBackToMeetings}>MEETINGS</button>
+Line 26: const official = raceBook?.official ?? {};
+  
+  export function MeetingWorkspace({ raceBook, field, clean, onBackToMeetings, onOpenRace }: MeetingWorkspaceProps) {
+    const [tab, setTab] = useState<MeetingTab>("RACES");
+    const intelligence = raceBook?.intelligence ?? {};
+  
+    return (
+      <section className="eiq-meeting-workspace">
+        <div className="eiq-workspace-breadcrumb">
+          <button type="button" onClick={onBackToMeetings}>MEETINGS</button>
+          <span>/</span>
+          <strong>{clean(official.meeting)}</strong>
+Line 27: const intelligence = raceBook?.intelligence ?? {};
+  export function MeetingWorkspace({ raceBook, field, clean, onBackToMeetings, onOpenRace }: MeetingWorkspaceProps) {
+    const [tab, setTab] = useState<MeetingTab>("RACES");
+    const official = raceBook?.official ?? {};
+  
+    return (
+      <section className="eiq-meeting-workspace">
+        <div className="eiq-workspace-breadcrumb">
+          <button type="button" onClick={onBackToMeetings}>MEETINGS</button>
+          <span>/</span>
+          <strong>{clean(official.meeting)}</strong>
+        </div>
+Line 69: <MeetingWeatherWorkspace raceBook={raceBook} clean={clean} />
+        ) : tab === "TRACK" ? (
+          <EmptyPanel title="Track" body="Track intelligence data not yet connected for this meeting." />
+        ) : tab === "WEATHER" ? (
+        ) : (
+          <EmptyPanel title="Results" body="Results data not yet connected for this meeting." />
+        )}
+      </section>
+    );
+  }
+  
+  
+
+PATTERN: meeting
+Line 2: import { MeetingWeatherWorkspace } from "./MeetingWeatherWorkspace";
+  import { useState } from "react";
+  
+  type MeetingWorkspaceProps = {
+    raceBook: any;
+    field: any[];
+    clean: (value: any) => string;
+    onBackToMeetings: () => void;
+    onOpenRace: () => void;
+  };
+Line 4: type MeetingWorkspaceProps = {
+  import { useState } from "react";
+  import { MeetingWeatherWorkspace } from "./MeetingWeatherWorkspace";
+  
+    raceBook: any;
+    field: any[];
+    clean: (value: any) => string;
+    onBackToMeetings: () => void;
+    onOpenRace: () => void;
+  };
+  
+  const tabs = ["RACES", "SCRATCHINGS", "GEAR", "TRACK", "WEATHER", "RESULTS"] as const;
+Line 8: onBackToMeetings: () => void;
+    raceBook: any;
+    field: any[];
+    clean: (value: any) => string;
+    onOpenRace: () => void;
+  };
+  
+  const tabs = ["RACES", "SCRATCHINGS", "GEAR", "TRACK", "WEATHER", "RESULTS"] as const;
+  type MeetingTab = typeof tabs[number];
+  
+  function EmptyPanel({ title, body }: { title: string; body: string }) {
+    return (
+Line 13: type MeetingTab = typeof tabs[number];
+  };
+  
+  const tabs = ["RACES", "SCRATCHINGS", "GEAR", "TRACK", "WEATHER", "RESULTS"] as const;
+  
+  function EmptyPanel({ title, body }: { title: string; body: string }) {
+    return (
+      <section className="eiq-workspace-panel">
+        <span>{title}</span>
+        <strong>{body}</strong>
+      </section>
+    );
+Line 24: export function MeetingWorkspace({ raceBook, field, clean, onBackToMeetings, onOpenRace }: MeetingWorkspaceProps) {
+    );
+  }
+  
+    const [tab, setTab] = useState<MeetingTab>("RACES");
+    const official = raceBook?.official ?? {};
+    const intelligence = raceBook?.intelligence ?? {};
+  
+    return (
+      <section className="eiq-meeting-workspace">
+        <div className="eiq-workspace-breadcrumb">
+          <button type="button" onClick={onBackToMeetings}>MEETINGS</button>
+Line 25: const [tab, setTab] = useState<MeetingTab>("RACES");
+  }
+  
+  export function MeetingWorkspace({ raceBook, field, clean, onBackToMeetings, onOpenRace }: MeetingWorkspaceProps) {
+    const official = raceBook?.official ?? {};
+    const intelligence = raceBook?.intelligence ?? {};
+  
+    return (
+      <section className="eiq-meeting-workspace">
+        <div className="eiq-workspace-breadcrumb">
+          <button type="button" onClick={onBackToMeetings}>MEETINGS</button>
+          <span>/</span>
+Line 30: <section className="eiq-meeting-workspace">
+    const intelligence = raceBook?.intelligence ?? {};
+  
+    return (
+        <div className="eiq-workspace-breadcrumb">
+          <button type="button" onClick={onBackToMeetings}>MEETINGS</button>
+          <span>/</span>
+          <strong>{clean(official.meeting)}</strong>
+        </div>
+  
+        <nav className="eiq-context-tabs" aria-label="Meeting workspace navigation">
+          {tabs.map((item) => (
+Line 32: <button type="button" onClick={onBackToMeetings}>MEETINGS</button>
+    return (
+      <section className="eiq-meeting-workspace">
+        <div className="eiq-workspace-breadcrumb">
+          <span>/</span>
+          <strong>{clean(official.meeting)}</strong>
+        </div>
+  
+        <nav className="eiq-context-tabs" aria-label="Meeting workspace navigation">
+          {tabs.map((item) => (
+            <button key={item} type="button" className={tab === item ? "is-active" : ""} onClick={() => setTab(item)}>
+              {item}
+Line 34: <strong>{clean(official.meeting)}</strong>
+        <div className="eiq-workspace-breadcrumb">
+          <button type="button" onClick={onBackToMeetings}>MEETINGS</button>
+          <span>/</span>
+        </div>
+  
+        <nav className="eiq-context-tabs" aria-label="Meeting workspace navigation">
+          {tabs.map((item) => (
+            <button key={item} type="button" className={tab === item ? "is-active" : ""} onClick={() => setTab(item)}>
+              {item}
+            </button>
+          ))}
+Line 37: <nav className="eiq-context-tabs" aria-label="Meeting workspace navigation">
+          <strong>{clean(official.meeting)}</strong>
+        </div>
+  
+          {tabs.map((item) => (
+            <button key={item} type="button" className={tab === item ? "is-active" : ""} onClick={() => setTab(item)}>
+              {item}
+            </button>
+          ))}
+        </nav>
+  
+        {tab === "RACES" ? (
+Line 63: <EmptyPanel title="Scratchings" body="Scratchings data not yet connected for this meeting." />
+            </article>
+          </div>
+        ) : tab === "SCRATCHINGS" ? (
+        ) : tab === "GEAR" ? (
+          <EmptyPanel title="Gear" body="Gear changes data not yet connected for this meeting." />
+        ) : tab === "TRACK" ? (
+          <EmptyPanel title="Track" body="Track intelligence data not yet connected for this meeting." />
+        ) : tab === "WEATHER" ? (
+          <MeetingWeatherWorkspace raceBook={raceBook} clean={clean} />
+        ) : (
+          <EmptyPanel title="Results" body="Results data not yet connected for this meeting." />
+Line 65: <EmptyPanel title="Gear" body="Gear changes data not yet connected for this meeting." />
+        ) : tab === "SCRATCHINGS" ? (
+          <EmptyPanel title="Scratchings" body="Scratchings data not yet connected for this meeting." />
+        ) : tab === "GEAR" ? (
+        ) : tab === "TRACK" ? (
+          <EmptyPanel title="Track" body="Track intelligence data not yet connected for this meeting." />
+        ) : tab === "WEATHER" ? (
+          <MeetingWeatherWorkspace raceBook={raceBook} clean={clean} />
+        ) : (
+          <EmptyPanel title="Results" body="Results data not yet connected for this meeting." />
+        )}
+      </section>
+Line 67: <EmptyPanel title="Track" body="Track intelligence data not yet connected for this meeting." />
+        ) : tab === "GEAR" ? (
+          <EmptyPanel title="Gear" body="Gear changes data not yet connected for this meeting." />
+        ) : tab === "TRACK" ? (
+        ) : tab === "WEATHER" ? (
+          <MeetingWeatherWorkspace raceBook={raceBook} clean={clean} />
+        ) : (
+          <EmptyPanel title="Results" body="Results data not yet connected for this meeting." />
+        )}
+      </section>
+    );
+  }
+Line 69: <MeetingWeatherWorkspace raceBook={raceBook} clean={clean} />
+        ) : tab === "TRACK" ? (
+          <EmptyPanel title="Track" body="Track intelligence data not yet connected for this meeting." />
+        ) : tab === "WEATHER" ? (
+        ) : (
+          <EmptyPanel title="Results" body="Results data not yet connected for this meeting." />
+        )}
+      </section>
+    );
+  }
+  
+  
+Line 71: <EmptyPanel title="Results" body="Results data not yet connected for this meeting." />
+        ) : tab === "WEATHER" ? (
+          <MeetingWeatherWorkspace raceBook={raceBook} clean={clean} />
+        ) : (
+        )}
+      </section>
+    );
+  }
+  
+  
+
+========================================================================
+FILE: .\src\edgeiq-os\race\components\MeetingWeatherWorkspace.tsx
+========================================================================
+
+PATTERN: raceBook
+Line 8: raceBook: any;
+  } from "../../services/weather";
+  
+  type MeetingWeatherWorkspaceProps = {
+    clean: (value: any) => string;
+  };
+  
+  type WeatherDatumProps = {
+    label: string;
+    value: string | null;
+    wide?: boolean;
+  };
+Line 114: raceBook,
+  }
+  
+  export function MeetingWeatherWorkspace({
+    clean,
+  }: MeetingWeatherWorkspaceProps) {
+    const official = raceBook?.official ?? {};
+    const localTrack =
+      raceBook?.track ??
+      raceBook?.trackIntel ??
+      raceBook?.trackIntelligence ??
+      {};
+Line 117: const official = raceBook?.official ?? {};
+    raceBook,
+    clean,
+  }: MeetingWeatherWorkspaceProps) {
+    const localTrack =
+      raceBook?.track ??
+      raceBook?.trackIntel ??
+      raceBook?.trackIntelligence ??
+      {};
+  
+    const meeting =
+      firstText(
+Line 119: raceBook?.track ??
+  }: MeetingWeatherWorkspaceProps) {
+    const official = raceBook?.official ?? {};
+    const localTrack =
+      raceBook?.trackIntel ??
+      raceBook?.trackIntelligence ??
+      {};
+  
+    const meeting =
+      firstText(
+        clean(official.meeting),
+        clean(official.venue),
+Line 120: raceBook?.trackIntel ??
+    const official = raceBook?.official ?? {};
+    const localTrack =
+      raceBook?.track ??
+      raceBook?.trackIntelligence ??
+      {};
+  
+    const meeting =
+      firstText(
+        clean(official.meeting),
+        clean(official.venue),
+        clean(official.track),
+Line 121: raceBook?.trackIntelligence ??
+    const localTrack =
+      raceBook?.track ??
+      raceBook?.trackIntel ??
+      {};
+  
+    const meeting =
+      firstText(
+        clean(official.meeting),
+        clean(official.venue),
+        clean(official.track),
+      ) ?? "Current Meeting";
+
+PATTERN: meeting
+Line 3: getMeetingWeather,
+  import { useCallback, useEffect, useMemo, useState } from "react";
+  import {
+    type EdgeiqWeatherRecord,
+  } from "../../services/weather";
+  
+  type MeetingWeatherWorkspaceProps = {
+    raceBook: any;
+    clean: (value: any) => string;
+  };
+  
+Line 7: type MeetingWeatherWorkspaceProps = {
+    type EdgeiqWeatherRecord,
+  } from "../../services/weather";
+  
+    raceBook: any;
+    clean: (value: any) => string;
+  };
+  
+  type WeatherDatumProps = {
+    label: string;
+    value: string | null;
+    wide?: boolean;
+Line 113: export function MeetingWeatherWorkspace({
+    );
+  }
+  
+    raceBook,
+    clean,
+  }: MeetingWeatherWorkspaceProps) {
+    const official = raceBook?.official ?? {};
+    const localTrack =
+      raceBook?.track ??
+      raceBook?.trackIntel ??
+      raceBook?.trackIntelligence ??
+Line 116: }: MeetingWeatherWorkspaceProps) {
+  export function MeetingWeatherWorkspace({
+    raceBook,
+    clean,
+    const official = raceBook?.official ?? {};
+    const localTrack =
+      raceBook?.track ??
+      raceBook?.trackIntel ??
+      raceBook?.trackIntelligence ??
+      {};
+  
+    const meeting =
+Line 124: const meeting =
+      raceBook?.trackIntelligence ??
+      {};
+  
+      firstText(
+        clean(official.meeting),
+        clean(official.venue),
+        clean(official.track),
+      ) ?? "Current Meeting";
+  
+    const raceDate = firstText(
+      clean(official.date),
+Line 126: clean(official.meeting),
+  
+    const meeting =
+      firstText(
+        clean(official.venue),
+        clean(official.track),
+      ) ?? "Current Meeting";
+  
+    const raceDate = firstText(
+      clean(official.date),
+      clean(official.raceDate),
+      clean(official.meetingDate),
+Line 129: ) ?? "Current Meeting";
+        clean(official.meeting),
+        clean(official.venue),
+        clean(official.track),
+  
+    const raceDate = firstText(
+      clean(official.date),
+      clean(official.raceDate),
+      clean(official.meetingDate),
+    );
+  
+    const [weather, setWeather] =
+Line 134: clean(official.meetingDate),
+    const raceDate = firstText(
+      clean(official.date),
+      clean(official.raceDate),
+    );
+  
+    const [weather, setWeather] =
+      useState<EdgeiqWeatherRecord | null>(null);
+  
+    const [loadState, setLoadState] = useState<
+      "LOADING" | "READY" | "UNAVAILABLE"
+    >("LOADING");
+Line 147: const record = await getMeetingWeather(meeting, force);
+    const loadWeather = useCallback(
+      async (force = false) => {
+        try {
+  
+          setWeather(record);
+          setLoadState(record ? "READY" : "UNAVAILABLE");
+        } catch {
+          setLoadState("UNAVAILABLE");
+        }
+      },
+      [meeting],
+Line 155: [meeting],
+          setLoadState("UNAVAILABLE");
+        }
+      },
+    );
+  
+    useEffect(() => {
+      void loadWeather(false);
+  
+      const refreshTimer = window.setInterval(() => {
+        void loadWeather(true);
+      }, 5 * 60 * 1000);
+Line 279: meetingTitle: firstText(weather?.meeting_title),
+          weather?.source_observed_time,
+        ),
+        stationStatus: firstText(weather?.station_status),
+        meetingDate: firstText(weather?.meeting_date),
+        ratingUpdated: firstText(
+          weather?.official_track_rating_updated,
+        ),
+      };
+    }, [weather, official, localTrack, clean]);
+  
+    const meetingContext = [
+Line 280: meetingDate: firstText(weather?.meeting_date),
+        ),
+        stationStatus: firstText(weather?.station_status),
+        meetingTitle: firstText(weather?.meeting_title),
+        ratingUpdated: firstText(
+          weather?.official_track_rating_updated,
+        ),
+      };
+    }, [weather, official, localTrack, clean]);
+  
+    const meetingContext = [
+      raceDate ?? values.meetingDate,
+Line 287: const meetingContext = [
+      };
+    }, [weather, official, localTrack, clean]);
+  
+      raceDate ?? values.meetingDate,
+      values.officialTrackRating,
+      values.rail ? `Rail ${values.rail}` : null,
+    ]
+      .filter(Boolean)
+      .join(" · ");
+  
+    const hasTrackData = Boolean(
+Line 288: raceDate ?? values.meetingDate,
+    }, [weather, official, localTrack, clean]);
+  
+    const meetingContext = [
+      values.officialTrackRating,
+      values.rail ? `Rail ${values.rail}` : null,
+    ]
+      .filter(Boolean)
+      .join(" · ");
+  
+    const hasTrackData = Boolean(
+      values.officialTrackRating ||
+Line 322: <span>Meeting Weather</span>
+      <section className="eiq-metro-weather">
+        <header className="eiq-metro-weather__header">
+          <div>
+            <strong>{values.meetingTitle ?? meeting}</strong>
+            {meetingContext ? <p>{meetingContext}</p> : null}
+          </div>
+  
+          <div className="eiq-metro-weather__source-summary">
+            <SourceStatus status={weather?.source_status ?? null} />
+  
+            {values.provider ? (
+Line 323: <strong>{values.meetingTitle ?? meeting}</strong>
+        <header className="eiq-metro-weather__header">
+          <div>
+            <span>Meeting Weather</span>
+            {meetingContext ? <p>{meetingContext}</p> : null}
+          </div>
+  
+          <div className="eiq-metro-weather__source-summary">
+            <SourceStatus status={weather?.source_status ?? null} />
+  
+            {values.provider ? (
+              <strong>{values.provider}</strong>
+Line 324: {meetingContext ? <p>{meetingContext}</p> : null}
+          <div>
+            <span>Meeting Weather</span>
+            <strong>{values.meetingTitle ?? meeting}</strong>
+          </div>
+  
+          <div className="eiq-metro-weather__source-summary">
+            <SourceStatus status={weather?.source_status ?? null} />
+  
+            {values.provider ? (
+              <strong>{values.provider}</strong>
+            ) : null}
+Line 348: <strong>Loading meeting conditions.</strong>
+        {loadState === "LOADING" && !weather ? (
+          <section className="eiq-metro-weather__empty">
+            <span>Official Source</span>
+          </section>
+        ) : null}
+  
+        {loadState === "UNAVAILABLE" && !weather ? (
+          <section className="eiq-metro-weather__empty">
+            <span>Official Source</span>
+            <strong>
+              Official weather data is not available for this meeting.
+Line 356: Official weather data is not available for this meeting.
+          <section className="eiq-metro-weather__empty">
+            <span>Official Source</span>
+            <strong>
+            </strong>
+            <p>
+              EDGEIQ does not fill missing source fields with assumptions.
+            </p>
+          </section>
+        ) : null}
+  
+        {hasTrackData ? (
+
+PATTERN: raceDate
+Line 131: const raceDate = firstText(
+        clean(official.track),
+      ) ?? "Current Meeting";
+  
+      clean(official.date),
+      clean(official.raceDate),
+      clean(official.meetingDate),
+    );
+  
+    const [weather, setWeather] =
+      useState<EdgeiqWeatherRecord | null>(null);
+  
+Line 133: clean(official.raceDate),
+  
+    const raceDate = firstText(
+      clean(official.date),
+      clean(official.meetingDate),
+    );
+  
+    const [weather, setWeather] =
+      useState<EdgeiqWeatherRecord | null>(null);
+  
+    const [loadState, setLoadState] = useState<
+      "LOADING" | "READY" | "UNAVAILABLE"
+Line 288: raceDate ?? values.meetingDate,
+    }, [weather, official, localTrack, clean]);
+  
+    const meetingContext = [
+      values.officialTrackRating,
+      values.rail ? `Rail ${values.rail}` : null,
+    ]
+      .filter(Boolean)
+      .join(" · ");
+  
+    const hasTrackData = Boolean(
+      values.officialTrackRating ||
+
+PATTERN: meetingDate
+Line 134: clean(official.meetingDate),
+    const raceDate = firstText(
+      clean(official.date),
+      clean(official.raceDate),
+    );
+  
+    const [weather, setWeather] =
+      useState<EdgeiqWeatherRecord | null>(null);
+  
+    const [loadState, setLoadState] = useState<
+      "LOADING" | "READY" | "UNAVAILABLE"
+    >("LOADING");
+Line 280: meetingDate: firstText(weather?.meeting_date),
+        ),
+        stationStatus: firstText(weather?.station_status),
+        meetingTitle: firstText(weather?.meeting_title),
+        ratingUpdated: firstText(
+          weather?.official_track_rating_updated,
+        ),
+      };
+    }, [weather, official, localTrack, clean]);
+  
+    const meetingContext = [
+      raceDate ?? values.meetingDate,
+Line 288: raceDate ?? values.meetingDate,
+    }, [weather, official, localTrack, clean]);
+  
+    const meetingContext = [
+      values.officialTrackRating,
+      values.rail ? `Rail ${values.rail}` : null,
+    ]
+      .filter(Boolean)
+      .join(" · ");
+  
+    const hasTrackData = Boolean(
+      values.officialTrackRating ||
+
+PATTERN: TODAY
+Line 226: rainfallToday: metric(
+        temperatureRange,
+        humidity: metric(weather?.humidity_pct, "%", 1),
+  
+          weather?.rainfall_today_mm,
+          " mm",
+          1,
+        ),
+        rainfall24h: metric(
+          weather?.rainfall_24h_mm,
+          " mm",
+          1,
+Line 227: weather?.rainfall_today_mm,
+        humidity: metric(weather?.humidity_pct, "%", 1),
+  
+        rainfallToday: metric(
+          " mm",
+          1,
+        ),
+        rainfall24h: metric(
+          weather?.rainfall_24h_mm,
+          " mm",
+          1,
+        ),
+Line 305: values.rainfallToday ||
+    const hasWeatherData = Boolean(
+      values.temperature ||
+        values.humidity ||
+        values.rainfall24h ||
+        values.rainfall7day ||
+        values.wind ||
+        values.windGust ||
+        values.moistureLoss,
+    );
+  
+    const hasComments = Boolean(
+Line 438: label="Rainfall Today"
+              />
+  
+              <WeatherDatum
+                value={values.rainfallToday}
+              />
+  
+              <WeatherDatum
+                label="Rainfall — 24 Hours"
+                value={values.rainfall24h}
+              />
+  
+Line 439: value={values.rainfallToday}
+  
+              <WeatherDatum
+                label="Rainfall Today"
+              />
+  
+              <WeatherDatum
+                label="Rainfall — 24 Hours"
+                value={values.rainfall24h}
+              />
+  
+              <WeatherDatum
+
+PATTERN: getMeetingWeather
+Line 3: getMeetingWeather,
+  import { useCallback, useEffect, useMemo, useState } from "react";
+  import {
+    type EdgeiqWeatherRecord,
+  } from "../../services/weather";
+  
+  type MeetingWeatherWorkspaceProps = {
+    raceBook: any;
+    clean: (value: any) => string;
+  };
+  
+Line 147: const record = await getMeetingWeather(meeting, force);
+    const loadWeather = useCallback(
+      async (force = false) => {
+        try {
+  
+          setWeather(record);
+          setLoadState(record ? "READY" : "UNAVAILABLE");
+        } catch {
+          setLoadState("UNAVAILABLE");
+        }
+      },
+      [meeting],
+
+========================================================================
+FILE: .\src\edgeiq-os\services\weather\EdgeiqWeatherService.ts
+========================================================================
+
+PATTERN: fetch\(
+Line 38: pendingFeed = fetch(requestUrl, {
+    const requestUrl =
+      `${WEATHER_FEED_URL}?updated=${encodeURIComponent(String(now))}`;
+  
+      cache: "no-store",
+    })
+      .then(async (response) => {
+        if (!response.ok) {
+          throw new Error(
+            `Weather feed request failed with status ${response.status}`,
+          );
+        }
+
+PATTERN: /data/
+Line 6: const WEATHER_FEED_URL = "/data/edgeiq_metropolitan_weather_v1.json";
+    EdgeiqWeatherRecord,
+  } from "./WeatherTypes";
+  
+  const WEATHER_CACHE_TTL_MS = 4 * 60 * 1000;
+  
+  let cachedFeed: EdgeiqWeatherFeed | null = null;
+  let cachedAt = 0;
+  let pendingFeed: Promise<EdgeiqWeatherFeed> | null = null;
+  
+  function normaliseMeeting(value: unknown): string {
+    return String(value ?? "")
+
+PATTERN: meeting
+Line 13: function normaliseMeeting(value: unknown): string {
+  let cachedAt = 0;
+  let pendingFeed: Promise<EdgeiqWeatherFeed> | null = null;
+  
+    return String(value ?? "")
+      .trim()
+      .toUpperCase()
+      .replace(/^SPORTSBET[-\s]+/, "")
+      .replace(/\s+/g, " ");
+  }
+  
+  async function loadFeed(force = false): Promise<EdgeiqWeatherFeed> {
+Line 62: export async function getMeetingWeather(
+    return pendingFeed;
+  }
+  
+    meeting: unknown,
+    force = false,
+  ): Promise<EdgeiqWeatherRecord | null> {
+    const key = normaliseMeeting(meeting);
+  
+    if (!key) return null;
+  
+    const feed = await loadFeed(force);
+Line 63: meeting: unknown,
+  }
+  
+  export async function getMeetingWeather(
+    force = false,
+  ): Promise<EdgeiqWeatherRecord | null> {
+    const key = normaliseMeeting(meeting);
+  
+    if (!key) return null;
+  
+    const feed = await loadFeed(force);
+  
+Line 66: const key = normaliseMeeting(meeting);
+    meeting: unknown,
+    force = false,
+  ): Promise<EdgeiqWeatherRecord | null> {
+  
+    if (!key) return null;
+  
+    const feed = await loadFeed(force);
+  
+    return (
+      feed.records.find((record) => {
+        const recordKey = normaliseMeeting(
+Line 74: const recordKey = normaliseMeeting(
+  
+    return (
+      feed.records.find((record) => {
+          record.meeting_key || record.meeting || record.course,
+        );
+  
+        return (
+          recordKey === key ||
+          key.includes(recordKey) ||
+          recordKey.includes(key)
+        );
+Line 75: record.meeting_key || record.meeting || record.course,
+    return (
+      feed.records.find((record) => {
+        const recordKey = normaliseMeeting(
+        );
+  
+        return (
+          recordKey === key ||
+          key.includes(recordKey) ||
+          recordKey.includes(key)
+        );
+      }) ?? null
+
+PATTERN: getMeetingWeather
+Line 62: export async function getMeetingWeather(
+    return pendingFeed;
+  }
+  
+    meeting: unknown,
+    force = false,
+  ): Promise<EdgeiqWeatherRecord | null> {
+    const key = normaliseMeeting(meeting);
+  
+    if (!key) return null;
+  
+    const feed = await loadFeed(force);
+
+PATTERN: normaliseMeeting
+Line 13: function normaliseMeeting(value: unknown): string {
+  let cachedAt = 0;
+  let pendingFeed: Promise<EdgeiqWeatherFeed> | null = null;
+  
+    return String(value ?? "")
+      .trim()
+      .toUpperCase()
+      .replace(/^SPORTSBET[-\s]+/, "")
+      .replace(/\s+/g, " ");
+  }
+  
+  async function loadFeed(force = false): Promise<EdgeiqWeatherFeed> {
+Line 66: const key = normaliseMeeting(meeting);
+    meeting: unknown,
+    force = false,
+  ): Promise<EdgeiqWeatherRecord | null> {
+  
+    if (!key) return null;
+  
+    const feed = await loadFeed(force);
+  
+    return (
+      feed.records.find((record) => {
+        const recordKey = normaliseMeeting(
+Line 74: const recordKey = normaliseMeeting(
+  
+    return (
+      feed.records.find((record) => {
+          record.meeting_key || record.meeting || record.course,
+        );
+  
+        return (
+          recordKey === key ||
+          key.includes(recordKey) ||
+          recordKey.includes(key)
+        );
+
+PATTERN: records
+Line 73: feed.records.find((record) => {
+    const feed = await loadFeed(force);
+  
+    return (
+        const recordKey = normaliseMeeting(
+          record.meeting_key || record.meeting || record.course,
+        );
+  
+        return (
+          recordKey === key ||
+          key.includes(recordKey) ||
+          recordKey.includes(key)
+
+PATTERN: SPORTSBET
+Line 17: .replace(/^SPORTSBET[-\s]+/, "")
+    return String(value ?? "")
+      .trim()
+      .toUpperCase()
+      .replace(/\s+/g, " ");
+  }
+  
+  async function loadFeed(force = false): Promise<EdgeiqWeatherFeed> {
+    const now = Date.now();
+    const cacheIsFresh =
+      cachedFeed !== null &&
+      now - cachedAt < WEATHER_CACHE_TTL_MS;
+
+========================================================================
+FILE: .\src\edgeiq-os\services\weather\WeatherTypes.ts
+========================================================================
+
+PATTERN: meeting
+Line 2: meeting_key: string;
+  export type EdgeiqWeatherRecord = {
+    meeting: string;
+    course: string;
+  
+    provider: string;
+    source_name: string;
+    source_url: string;
+    source_endpoint?: string | null;
+  
+Line 3: meeting: string;
+  export type EdgeiqWeatherRecord = {
+    meeting_key: string;
+    course: string;
+  
+    provider: string;
+    source_name: string;
+    source_url: string;
+    source_endpoint?: string | null;
+  
+    fetched_at_utc: string;
+Line 57: meeting_date?: string | null;
+    wind_station: string | null;
+    wind_station_count: number;
+  
+    meeting_title?: string | null;
+  
+    station_id?: string | number | null;
+    station_type?: string | null;
+    venue_id?: string | number | null;
+    report_id?: string | null;
+  
+    going_waypoint_map?: string | null;
+Line 58: meeting_title?: string | null;
+    wind_station_count: number;
+  
+    meeting_date?: string | null;
+  
+    station_id?: string | number | null;
+    station_type?: string | null;
+    venue_id?: string | number | null;
+    report_id?: string | null;
+  
+    going_waypoint_map?: string | null;
+    going_zone_map?: string | null;
+
+PATTERN: TODAY
+Line 30: rainfall_today_mm: number | null;
+  
+    rainfall_24h_mm: number | null;
+    rainfall_since_9am_mm: number | null;
+    rainfall_current_mm?: number | null;
+    rainfall_7day_mm?: number | null;
+    forecast_rainfall: string | null;
+  
+    humidity_pct: number | null;
+    humidity_min_pct?: number | null;
+    humidity_max_pct?: number | null;
+  
+
+PATTERN: provider_registry
+Line 81: provider_registry?: Record<string, string>;
+  export type EdgeiqWeatherFeed = {
+    schema_version: string;
+    generated_at_utc: string;
+    records: EdgeiqWeatherRecord[];
+  };
+
+PATTERN: records
+Line 82: records: EdgeiqWeatherRecord[];
+    schema_version: string;
+    generated_at_utc: string;
+    provider_registry?: Record<string, string>;
+  };
+
+========================================================================
+FILE: .\src\edgeiq-os\services\race-file-v2.ts
+========================================================================
+
+PATTERN: meeting
+Line 65: meeting: state.meetingName,
+  
+    return {
+      officialRace: {
+        raceNumber: state.raceNumber,
+        raceName: state.raceName,
+        distance: state.distance,
+        raceClass: state.raceClass,
+        trackCondition: state.trackCondition,
+        rail: state.rail,
+        officialRaceTime: "Pending result",
+        prizeMoney: "Race file",
+
+PATTERN: TODAY
+Line 79: trackSignature: track.todayPattern,
+        raceFlow: position.position,
+        pressure: pressure.band,
+        tempo: tempo.band,
+        speedProfile: speed.confidence,
+        confidence: pressure.confidence,
+      },
+      field: names.map((runner, index) => {
+        const liveRunner = findLiveRunnerSnapshot(runner);
+  
+        return {
+        official: {
+Line 100: trackSignature: index === 0 ? track.todayPattern : "Reference",
+        edgeRating: liveRunner?.edgeRating || (index === 0 ? "89.6" : index < 3 ? "84.0" : "Developing"),
+        runnerDNA: liveRunner?.runnerDNA || (runner as any)?.runnerDNA || "Awaiting DNA",
+        speedProfile: index === 0 ? speed.confidence : index < 3 ? "Strong" : "Developing",
+        raceFlow: index === 0 ? "Positive" : "Monitoring",
+        marketBehaviour: liveRunner?.market ? "Live market available" : "Market pending",
+        assessment:
+          index === 0
+            ? "Key chance profile. Past form is available and should be tested against today's race."
+            : "Capable profile, but needs the right race shape before taking a firm view.",
+        historicalRuns: [sampleRun(0, runner), sampleRun(1, runner)],
+      };
+Line 105: ? "Key chance profile. Past form is available and should be tested against today's race."
+        marketBehaviour: liveRunner?.market ? "Live market available" : "Market pending",
+        assessment:
+          index === 0
+            : "Capable profile, but needs the right race shape before taking a firm view.",
+        historicalRuns: [sampleRun(0, runner), sampleRun(1, runner)],
+      };
+      }),
+    };
+  }
+
+========================================================================
+FILE: .\src\edgeiq-os\shell\EdgeiqOsShell.tsx
+========================================================================
+
+========================================================================
+PUBLIC DATA FILES
+========================================================================
+
+========================================================================
+DATE + MEETING VALUES FOUND IN PUBLIC DATA
+========================================================================
+
+FILE: edgeiq_metropolitan_weather_v1.json
+DATES: 2026-07-10
+MEETINGS: CAULFIELD, FLEMINGTON, MORNINGTON, SANDOWN, SPORTSBET CAULFIELD
+
+FILE: edgeiq_metropolitan_weather_v1_summary.txt
+DATES: 
+MEETINGS: CAULFIELD, FLEMINGTON, MORNINGTON, SANDOWN
+
+FILE: edgeiq_metropolitan_weather_v1_CHECKPOINT_BEFORE_PROVIDER_REGISTRY_20260710_114555.json
+DATES: 
+MEETINGS: FLEMINGTON
+
+FILE: edgeiq_metropolitan_weather_v1_summary_CHECKPOINT_BEFORE_PROVIDER_REGISTRY_20260710_114555.txt
+DATES: 
+MEETINGS: FLEMINGTON
+
+FILE: edgeiq_runner_profile_stats_v1_summary.txt
+DATES: 2000-08-02, 2026-06-24
+MEETINGS: 
+
+FILE: edgeiq_runner_profile_stats_v1.csv
+DATES: 2000-08-02, 2000-08-03, 2000-08-05, 2000-08-06, 2000-08-07, 2000-08-08, 2000-08-09, 2000-08-10, 2000-08-11, 2000-08-12, 2000-08-13, 2000-08-14, 2000-08-16, 2000-08-17, 2000-08-18, 2000-08-19, 2000-08-20, 2000-08-21, 2000-08-23, 2000-08-24
+MEETINGS: CAULFIELD, CAULFIELD HEATH, FLEMINGTON, LADBROKES PARK, MOONEE VALLEY, MORNINGTON, SANDOWN
+
+FILE: edgeiq_ui_language_audit_v1.txt
+DATES: 2026-07-10
+MEETINGS: 
+
+FILE: edgeiq_runner_profile_stats_v1_summary_CHECKPOINT_BEFORE_RACING_RECORD_FORMAT_20260710_082623.txt
+DATES: 2000-08-02, 2026-06-24
+MEETINGS: 
+
+FILE: edgeiq_runner_profile_stats_v1_CHECKPOINT_BEFORE_RACING_RECORD_FORMAT_20260710_082623.csv
+DATES: 2000-08-02, 2000-08-03, 2000-08-05, 2000-08-06, 2000-08-07, 2000-08-08, 2000-08-09, 2000-08-10, 2000-08-11, 2000-08-12, 2000-08-13, 2000-08-14, 2000-08-16, 2000-08-17, 2000-08-18, 2000-08-19, 2000-08-20, 2000-08-21, 2000-08-23, 2000-08-24
+MEETINGS: CAULFIELD, CAULFIELD HEATH, FLEMINGTON, LADBROKES PARK, MOONEE VALLEY, MORNINGTON, SANDOWN
+
+FILE: edgeiq_runner_profile_stats_source_audit_summary_v1.csv
+DATES: 2000-08-02, 2023-01-01, 2023-02-11, 2025-01-01, 2025-01-07, 2025-01-30, 2025-04-30, 2025-05-01, 2025-08-15, 2026-05-07, 2026-05-10, 2026-05-11, 2026-05-12, 2026-05-14, 2026-05-15, 2026-05-18, 2026-06-04, 2026-06-05, 2026-06-06, 2026-06-07
+MEETINGS: 
+
+FILE: edgeiq_runner_profile_stats_source_audit_v1.csv
+DATES: 2000-08-02, 2000-08-05, 2000-08-06, 2000-08-31, 2000-09-01, 2000-09-30, 2000-10-01, 2000-10-31, 2000-11-04, 2000-11-30, 2000-12-01, 2000-12-31, 2001-01-01, 2001-01-31, 2001-02-01, 2001-02-27, 2001-03-01, 2001-03-31, 2001-04-01, 2001-04-30
+MEETINGS: 
+
+FILE: edgeiq_ui_column_data_audit_v1.txt
+DATES: 2026-05-30, 2026-05-31
+MEETINGS: CAULFIELD, SANDOWN
+
+FILE: edgeiq_dna_column_audit_v1.txt
+DATES: 2026-06-25
+MEETINGS: 
+
+FILE: edgeiq_race_probability_integrity_v1.csv
+DATES: 2026-07-04, 2026-07-05
+MEETINGS: FLEMINGTON
+
+FILE: edgeiq_live_runner_board_probability_normalisation_v1_detail.csv
+DATES: 2026-07-04, 2026-07-05
+MEETINGS: FLEMINGTON
+
+FILE: edgeiq_live_runner_board_v1.csv
+DATES: 2026-07-04, 2026-07-05
+MEETINGS: FLEMINGTON
+
+FILE: edgeiq_live_runner_board_v1_BEFORE_PROB_NORMALISE_V1.csv
+DATES: 2026-07-04, 2026-07-05
+MEETINGS: FLEMINGTON
+
+FILE: edgeiq_no_projection_fallback_adjustment_summary_v1.csv
+DATES: 2026-07-04
+MEETINGS: 
+
+FILE: edgeiq_live_runner_board_v1_diagnostics.csv
+DATES: 2026-07-04, 2026-07-05
+MEETINGS: 
+
+FILE: edgeiq_live_runner_board_v1_unmatched.csv
+DATES: 2026-07-04
+MEETINGS: FLEMINGTON
+
+FILE: edgeiq_live_v6_1_research_vs_production_comparison_v1_TAB_ONLY_TODAY.csv
+DATES: 2026-07-04
+MEETINGS: FLEMINGTON
+
+FILE: edgeiq_current_fair_prices_V6_1_RESEARCH_replay.csv
+DATES: 2025-04-18, 2025-08-28, 2025-09-06, 2025-09-26, 2025-09-27, 2025-10-04, 2025-10-23, 2025-10-27, 2025-10-30, 2025-11-04, 2025-11-08, 2025-11-09, 2025-11-11, 2025-11-12, 2025-11-14, 2025-11-15, 2025-11-23, 2025-11-29, 2025-12-02, 2025-12-03
+MEETINGS: CAULFIELD, CAULFIELD HEATH, FLEMINGTON, MORNINGTON, SANDOWN
+
+FILE: edgeiq_current_field_projection_V6_1_RESEARCH_replay.csv
+DATES: 2025-04-18, 2025-08-28, 2025-09-06, 2025-09-26, 2025-09-27, 2025-10-04, 2025-10-23, 2025-10-27, 2025-10-30, 2025-11-04, 2025-11-08, 2025-11-09, 2025-11-11, 2025-11-12, 2025-11-14, 2025-11-15, 2025-11-23, 2025-11-29, 2025-12-02, 2025-12-03
+MEETINGS: CAULFIELD, CAULFIELD HEATH, FLEMINGTON, MORNINGTON, SANDOWN
+
+FILE: edgeiq_historical_performance_rating_v6_1_research.csv
+DATES: 2017-01-28, 2017-05-07, 2017-07-22, 2017-08-09, 2017-08-11, 2017-08-13, 2017-09-09, 2017-09-23, 2017-10-03, 2017-10-17, 2017-10-19, 2017-10-29, 2017-11-01, 2017-11-15, 2017-12-01, 2017-12-16, 2018-01-07, 2018-01-20, 2018-02-10, 2018-02-18
+MEETINGS: CAULFIELD, CAULFIELD HEATH, FLEMINGTON, MORNINGTON, SANDOWN
+
+FILE: edgeiq_current_fair_prices_review_v5_2.csv
+DATES: 2026-07-04, 2026-07-05
+MEETINGS: FLEMINGTON
+
+FILE: edgeiq_current_field_projection_v5_2_audit.csv
+DATES: 2026-07-04, 2026-07-05
+MEETINGS: FLEMINGTON
+
+FILE: edgeiq_current_field_projection_v5_2.csv
+DATES: 2025-04-18, 2025-08-28, 2025-09-06, 2025-09-26, 2025-09-27, 2025-10-04, 2025-10-23, 2025-10-27, 2025-10-30, 2025-11-04, 2025-11-08, 2025-11-09, 2025-11-11, 2025-11-12, 2025-11-14, 2025-11-15, 2025-11-23, 2025-11-29, 2025-12-02, 2025-12-03
+MEETINGS: CAULFIELD, CAULFIELD HEATH, FLEMINGTON, MORNINGTON, SANDOWN
+
+FILE: edgeiq_current_race_class_correction_v5_1_audit.csv
+DATES: 2026-07-04, 2026-07-05
+MEETINGS: FLEMINGTON
+
+FILE: edgeiq_current_race_class_correction_v5_1.csv
+DATES: 2026-07-04, 2026-07-05
+MEETINGS: FLEMINGTON
+
+FILE: edgeiq_active_race_selector.csv
+DATES: 2026-07-04
+MEETINGS: FLEMINGTON
+
+FILE: edgeiq_vic_live_terminal_feed_v1_summary.csv
+DATES: 2026-07-04, 2026-07-06
+MEETINGS: 
+
+FILE: edgeiq_live_terminal_feed_v1.csv
+DATES: 2026-07-04, 2026-07-05
+MEETINGS: FLEMINGTON
+
+FILE: edgeiq_vic_live_terminal_feed_v1.csv
+DATES: 2026-07-04, 2026-07-05
+MEETINGS: FLEMINGTON
+
+FILE: edgeiq_live_terminal_feed_v1_TAB_ONLY_TODAY.csv
+DATES: 2026-07-04
+MEETINGS: FLEMINGTON
+
+FILE: edgeiq_current_day_source_inventory_audit_v1.csv
+DATES: 2026-06-15, 2026-06-17, 2026-07-03, 2026-07-04, 2026-07-05
+MEETINGS: FLEMINGTON
+
+FILE: edgeiq_current_day_source_inventory_summary_v1.csv
+DATES: 2026-07-04, 2026-07-05, 2026-07-06
+MEETINGS: FLEMINGTON
+
+FILE: edgeiq_vic_three_day_meeting_diagnostics.csv
+DATES: 2026-07-04, 2026-07-05, 2026-07-06
+MEETINGS: FLEMINGTON
+
+FILE: edgeiq_vic_three_day_meeting_universe.csv
+DATES: 2026-07-04, 2026-07-05
+MEETINGS: FLEMINGTON
+
+FILE: edgeiq_vic_three_day_race_fields.csv
+DATES: 2026-07-04, 2026-07-05
+MEETINGS: FLEMINGTON
+
+FILE: edgeiq_vic_three_day_meeting_calendar_v1.csv
+DATES: 2026-07-04, 2026-07-05, 2026-07-06
+MEETINGS: FLEMINGTON
+
+FILE: race_card_report.csv
+DATES: 2026-07-04, 2026-07-05
+MEETINGS: FLEMINGTON
+
+FILE: edgeiq_tab_calendar_racecards_v1.csv
+DATES: 2026-07-04, 2026-07-05
+MEETINGS: FLEMINGTON

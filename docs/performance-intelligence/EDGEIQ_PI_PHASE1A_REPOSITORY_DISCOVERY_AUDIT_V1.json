@@ -1,0 +1,43 @@
+{
+  "checks": [
+    {
+      "check_id": "repository_root_exists",
+      "detail": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM",
+      "status": "PASS"
+    },
+    {
+      "check_id": "dataset_inventory_created",
+      "detail": "datasets=16656",
+      "status": "PASS"
+    },
+    {
+      "check_id": "python_inventory_created",
+      "detail": "python_files=10945",
+      "status": "PASS"
+    },
+    {
+      "check_id": "dataset_schema_readability",
+      "detail": "schema_errors=20",
+      "status": "PARTIAL"
+    },
+    {
+      "check_id": "python_syntax_scan",
+      "detail": "syntax_failures=20",
+      "status": "PARTIAL"
+    },
+    {
+      "check_id": "candidate_source_detection",
+      "detail": "candidate_sources=10172",
+      "status": "PASS"
+    },
+    {
+      "check_id": "output_location_available",
+      "detail": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\performance-intelligence",
+      "status": "PASS"
+    }
+  ],
+  "generated_utc": "2026-07-27T03:06:36+00:00",
+  "overall_status": "PARTIAL",
+  "program_id": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE1A_REPOSITORY_DISCOVERY_V1",
+  "program_version": "1.0.0"
+}

@@ -1,0 +1,12 @@
+{
+  "source_url": "https://www.racing.com/form/2026-07-29/sportsbet-sandown-hillside/race/7/speed-data",
+  "retrieved_at": "2026-07-29T04:55:31Z",
+  "collector_version": "EDGEIQ_RACING_COM_VISIBLE_PAGE_COLLECTOR_V1",
+  "selector_version": "VISIBLE_DOM_TEXT_TABLES_V1",
+  "events": [],
+  "status": "PAGE_SCHEMA_CHANGED",
+  "clicked_labels": [
+    "Overview",
+    "Sectionals"
+  ]
+}

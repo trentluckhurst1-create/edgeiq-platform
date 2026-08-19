@@ -1,0 +1,23 @@
+{
+  "workspace": "11_SCRATCHINGS",
+  "label": "SCRATCHINGS",
+  "captureErrors": [],
+  "mounted": [
+    {
+      "component": "MeetingScratchingsWorkspace",
+      "key": "SCRATCHINGS",
+      "tag": "SECTION",
+      "className": "eiq-meeting-workspace eiq-meeting-v1"
+    }
+  ],
+  "mountedComponent": "MeetingScratchingsWorkspace",
+  "mountedKey": "SCRATCHINGS",
+  "selectedMeeting": "2026-07-17|WANGARATTA",
+  "selectedRace": null,
+  "activeSection": "meetings",
+  "viewLevel": "meeting",
+  "runnerCount": 0,
+  "dataAvailability": "PARTIAL_OR_PENDING",
+  "bodySample": "EDGEiQ\nRACE INTELLIGENCE\nHOME\nMEETINGS\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nEPI\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nRESULTS\nLAB\nCOMPARE\nREVIEW\nSETTINGS\nEDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM\nInformation is not Intelligence. Evidence leads. Precision decides.\nSUN, 19 JULY 2026\n06:50 pm\nAEDT\nMEETING DETAIL\nWangaratta\n\nWangaratta | Friday 17 July 2026\n\nBack to Meetings\nSTATE\nNot supplied\nRACES\n0\nRUNNERS\nNot supplied\nSCRATCHINGS\n0\nFIRST\nUnavailable\nLAST\nUnavailable\nSTATUS\nFIELDS PENDING\nOFFICIAL UPDATE\nUnavailable\nTRACK\nTrack rating unavailable\nRAIL\nNot supplied\nWEATHER\nWeather unavailable\nWIND\nWeather unavailable\nTEMP\nWeather unavailable\nRAIN\nNot supplied\nIRRIGATION\nNot supplied\nRACES\nSCRATCHINGS\nGEAR CHANGES\nTRACK\nWEATHER\nRESULTS\nSCRATCHINGS\nOfficial meeting scratchings\n\nScratched runners remain visible where operationally useful.\n\nLatest official update\nUnavailable\nREFRESH\nTOTAL SCRATCHINGS\n0\nRACES AFFECTED\n0\nEMERGENCIES\n0\nRACE\nALL RACES\nSTATUS\nALL STATUS\nSEARCH HORSE / TRAINER / JOCKEY\nSCRATCHINGS\nOfficial scratchings data is currently unavailable.\n\nRace fields remain governed by the current official meeting data.\n\nEDGEiQ Racing Intelligence Operating System\nBuild: 1.0.0\nData as at: 06:50 pm AEDT",
+  "renderedPath": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-live-runtime/11_SCRATCHINGS_LIVE_RENDERED.png"
+}

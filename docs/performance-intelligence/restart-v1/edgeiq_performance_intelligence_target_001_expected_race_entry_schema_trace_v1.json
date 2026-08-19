@@ -1,0 +1,64 @@
+{
+  "unit": "PI_RESTART_UNIT_002D",
+  "generated_utc": "2026-07-28T19:45:11.005064+00:00",
+  "verdict": "PASS",
+  "repository": {
+    "branch": "feature/component-refactor",
+    "head": "df4791f5c4d724e660dd837603780c2254279da4"
+  },
+  "producer": {
+    "relative_path": "scripts/build_edgeiq_race_entry_horse_performance_snapshot_fact_v1.py",
+    "sha256": "fadcd74ec11fcb3b09676435d248c5dfca0edb2deff6d3895c2889f66479a22b"
+  },
+  "current_input": {
+    "relative_path": "public/data/edgeiq_race_entry_fact_v1.csv",
+    "row_count": 204,
+    "column_count": 27,
+    "matched_expected_fields": [
+      "race_date"
+    ],
+    "missing_expected_fields": [
+      "race_entry_id",
+      "race_id",
+      "runner_id",
+      "canonical_horse_id",
+      "canonical_horse_name",
+      "race_entry_status",
+      "race_entry_evidence_sha256",
+      "builder_version"
+    ],
+    "expected_field_coverage": 1
+  },
+  "expected_fields": [
+    "race_entry_id",
+    "race_id",
+    "race_date",
+    "runner_id",
+    "canonical_horse_id",
+    "canonical_horse_name",
+    "race_entry_status",
+    "race_entry_evidence_sha256",
+    "builder_version"
+  ],
+  "search": {
+    "scanned_csv_files": 13643,
+    "candidate_count": 5138,
+    "exact_match_count": 0,
+    "populated_exact_match_count": 0,
+    "strongest_candidate": ""
+  },
+  "finding": {
+    "classification": "NO_COMPATIBLE_RACE_ENTRY_DATASET_FOUND",
+    "first_collapse_stage": "RACE_ENTRY_INPUT_CONTRACT_VALIDATION",
+    "repair_authorised": false,
+    "next_action": "TRACE_CANONICAL_RACE_ENTRY_SCHEMA_EVOLUTION"
+  },
+  "governance": {
+    "engine_logic_changed": false,
+    "thresholds_changed": false,
+    "source_data_changed": false,
+    "warehouse_data_changed": false,
+    "runtime_data_changed": false,
+    "react_changed": false
+  }
+}

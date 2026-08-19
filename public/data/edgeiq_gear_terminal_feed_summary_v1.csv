@@ -1,0 +1,2 @@
+source_file,output_file,catalog_runners,current_gear_rows,gear_change_rows,terminal_rows,target_under_rows,hard_limit_rows,status,built_at,notes
+public\data\edgeiq_three_day_product_catalog_v1.json,public\data\edgeiq_gear_terminal_feed_v1.csv,246,0,0,246,5000,10000,OK,2026-07-26T03:40:20+00:00,Current-window feed. Gear fields are blank when the product catalogue does not supply current gear; no historical gear is projected into current race context.

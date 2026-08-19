@@ -1,0 +1,9 @@
+{
+  "decision": "PERFORMANCE_INTELLIGENCE_CONSUMER_PATHS_PASS",
+  "consumer_references": 211,
+  "ui_candidate_or_research_refs": 0,
+  "missing_required_outputs": [],
+  "standard_time_rows": 0,
+  "lengths_v_standard_rows": 168,
+  "react_calculates_benchmarks": "NO_EVIDENCE_FOUND"
+}

@@ -1,0 +1,72 @@
+[
+  {
+    "workspace": "RACE",
+    "path": "docs/performance-intelligence/workspace-feeds/edgeiq_race_performance_feed_v1.csv",
+    "public_path": "public/data/edgeiq_race_performance_feed_v1.csv",
+    "rows": 50000,
+    "status": "PASS"
+  },
+  {
+    "workspace": "FIELD",
+    "path": "docs/performance-intelligence/workspace-feeds/edgeiq_field_performance_feed_v1.csv",
+    "public_path": "public/data/edgeiq_field_performance_feed_v1.csv",
+    "rows": 50000,
+    "status": "PASS"
+  },
+  {
+    "workspace": "PERFORMANCE",
+    "path": "docs/performance-intelligence/workspace-feeds/edgeiq_performance_performance_feed_v1.csv",
+    "public_path": "public/data/edgeiq_performance_performance_feed_v1.csv",
+    "rows": 50000,
+    "status": "PASS"
+  },
+  {
+    "workspace": "FORM",
+    "path": "docs/performance-intelligence/workspace-feeds/edgeiq_form_performance_feed_v1.csv",
+    "public_path": "public/data/edgeiq_form_performance_feed_v1.csv",
+    "rows": 50000,
+    "status": "PASS"
+  },
+  {
+    "workspace": "MAP",
+    "path": "docs/performance-intelligence/workspace-feeds/edgeiq_map_performance_feed_v1.csv",
+    "public_path": "public/data/edgeiq_map_performance_feed_v1.csv",
+    "rows": 50000,
+    "status": "PASS"
+  },
+  {
+    "workspace": "NEXUS",
+    "path": "docs/performance-intelligence/workspace-feeds/edgeiq_nexus_performance_feed_v1.csv",
+    "public_path": "public/data/edgeiq_nexus_performance_feed_v1.csv",
+    "rows": 50000,
+    "status": "PASS"
+  },
+  {
+    "workspace": "MARKET",
+    "path": "docs/performance-intelligence/workspace-feeds/edgeiq_market_performance_feed_v1.csv",
+    "public_path": "public/data/edgeiq_market_performance_feed_v1.csv",
+    "rows": 50000,
+    "status": "PASS"
+  },
+  {
+    "workspace": "RESULTS",
+    "path": "docs/performance-intelligence/workspace-feeds/edgeiq_results_performance_feed_v1.csv",
+    "public_path": "public/data/edgeiq_results_performance_feed_v1.csv",
+    "rows": 50000,
+    "status": "PASS"
+  },
+  {
+    "workspace": "OVERVIEW",
+    "path": "docs/performance-intelligence/workspace-feeds/edgeiq_overview_performance_feed_v1.csv",
+    "public_path": "public/data/edgeiq_overview_performance_feed_v1.csv",
+    "rows": 50000,
+    "status": "PASS"
+  },
+  {
+    "workspace": "INSIGHTS",
+    "path": "docs/performance-intelligence/workspace-feeds/edgeiq_insights_performance_feed_v1.csv",
+    "public_path": "public/data/edgeiq_insights_performance_feed_v1.csv",
+    "rows": 50000,
+    "status": "PASS"
+  }
+]

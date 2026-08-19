@@ -1,0 +1,20 @@
+{
+  "audit_method": "INDEXED_BY_DATE_TRACK_RACE_NO",
+  "audit_name": "edgeiq_lengths_standard_condition_rejection_audit_v1",
+  "audited_at_utc": "2026-07-30T07:47:04Z",
+  "candidate_files": [
+    "public\\data\\edgeiq_historical_results_warehouse_v2_graphql.csv",
+    "public\\data\\edgeiq_vic_three_day_race_list_v1.csv",
+    "public\\data\\edgeiq_vic_three_day_race_fields.csv",
+    "public\\data\\edgeiq_live_track_intelligence_v2_1.csv",
+    "public\\data\\edgeiq_track_intelligence_card_v1.csv",
+    "public\\data\\edgeiq_racingcom_race_speed_summary_v1.csv"
+  ],
+  "decision": "CONDITION_CANDIDATE_REVIEW_REQUIRED",
+  "no_inference_declaration": "YES",
+  "rejection_rows": 2564,
+  "status_counts": {
+    "AUTHORITATIVE_CONDITION_CANDIDATE_FOUND_REVIEW_REQUIRED": 2525,
+    "SOURCE_MATCH_WITHOUT_CONDITION": 39
+  }
+}

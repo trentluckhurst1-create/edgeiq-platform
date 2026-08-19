@@ -1,0 +1,20 @@
+{
+  "built_utc": "2026-07-22T09:41:04+00:00",
+  "final_decision": "RACINGCOM_INGESTION_V2_RESEARCH_ONLY",
+  "checks": 19,
+  "pass": 18,
+  "warn": 1,
+  "fail": 0,
+  "fixtures": 15,
+  "historical_fixture_races": 8,
+  "historical_unique_runners": 80,
+  "fresh_visible_fixture_races": 5,
+  "fresh_acquired_fixture_races": 5,
+  "fresh_normalised_rows": 449,
+  "negative_controls": 2,
+  "negative_controls_rejected": 2,
+  "poc_output_sha256": "786fbb2590dd97c01aafff72e3fb03676cfbe9d35f4004baf6d6128cf4e0840a",
+  "production_changed": "NO",
+  "ui_changed": "NO",
+  "migration_performed": "NO"
+}

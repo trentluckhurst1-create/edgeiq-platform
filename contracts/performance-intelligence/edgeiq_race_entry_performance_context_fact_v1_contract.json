@@ -1,0 +1,77 @@
+{
+  "contract_name": "edgeiq_race_entry_performance_context_fact_v1",
+  "contract_version": "1.0.0",
+  "grain": "one_factual_declared_race_context_row_per_governed_race_entry_horse_performance_snapshot",
+  "primary_key": [
+    "race_entry_performance_context_id"
+  ],
+  "natural_key": [
+    "race_entry_horse_performance_snapshot_id"
+  ],
+  "required_fields": [
+    "race_entry_performance_context_id",
+    "race_entry_horse_performance_snapshot_id",
+    "race_entry_id",
+    "race_id",
+    "race_date",
+    "runner_id",
+    "canonical_horse_id",
+    "canonical_horse_name",
+    "selected_horse_performance_rating_id",
+    "selected_rating_as_of_date",
+    "rating_age_days",
+    "context_historical_rating_value",
+    "race_distance_m",
+    "race_class_code",
+    "track_id",
+    "track_name",
+    "track_configuration",
+    "track_condition",
+    "racing_surface",
+    "rail_position",
+    "barrier",
+    "allocated_weight_kg",
+    "declared_field_size",
+    "race_entry_performance_context_status",
+    "source_snapshot_evidence_sha256",
+    "source_race_entry_evidence_sha256",
+    "race_entry_performance_context_evidence_sha256",
+    "source_snapshot_builder_version",
+    "source_race_entry_builder_version",
+    "builder_version",
+    "contract_version",
+    "built_at_utc"
+  ],
+  "allowed_values": {
+    "race_entry_performance_context_status": [
+      "FACTUAL_DECLARED_RACE_CONTEXT_GOVERNED"
+    ]
+  },
+  "forbidden_fields": [
+    "epi",
+    "eri",
+    "suitability",
+    "context_adjusted_rating",
+    "today_rating",
+    "predictive_rating",
+    "forecast_rating",
+    "runner_rank",
+    "race_rank",
+    "fair_price",
+    "market_price",
+    "class_adjustment",
+    "distance_adjustment",
+    "track_adjustment",
+    "track_condition_adjustment",
+    "surface_adjustment",
+    "rail_adjustment",
+    "race_shape_adjustment",
+    "pace_adjustment",
+    "map_adjustment",
+    "jockey_adjustment",
+    "trainer_adjustment",
+    "barrier_adjustment",
+    "weight_adjustment",
+    "field_size_adjustment"
+  ]
+}

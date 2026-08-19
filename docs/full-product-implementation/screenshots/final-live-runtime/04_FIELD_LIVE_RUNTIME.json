@@ -1,0 +1,23 @@
+{
+  "workspace": "04_FIELD",
+  "label": "FIELD",
+  "captureErrors": [],
+  "mounted": [
+    {
+      "component": "FieldWorkspace",
+      "key": "FIELD",
+      "tag": "SECTION",
+      "className": "eiq-race-workspace eiq-race-workspace--field"
+    }
+  ],
+  "mountedComponent": "FieldWorkspace",
+  "mountedKey": "FIELD",
+  "selectedMeeting": "2026-07-17|WANGARATTA",
+  "selectedRace": null,
+  "activeSection": "field",
+  "viewLevel": "race",
+  "runnerCount": 30,
+  "dataAvailability": "AVAILABLE_OR_NOT_STATED",
+  "bodySample": "EDGEiQ\nRACE INTELLIGENCE\nHOME\nMEETINGS\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nEPI\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nRESULTS\nLAB\nCOMPARE\nREVIEW\nSETTINGS\nEDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM\nInformation is not Intelligence. Evidence leads. Precision decides.\nSUN, 19 JULY 2026\n06:49 pm\nAEDT\nMEETINGS\nWANGARATTA\nRACE 1\nFIELD\nRace 1\nCurrent Race\nBack to Races\nLOCATION\nWangaratta\nDATE\n2026-07-17\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nEPI\nRESULTS\nREVIEW\nFIELD\nRace field\n\nOfficial runners with governed EDGEiQ fields where available.\n\nNO\tSILK\tRUNNER\tBAR\tWGT\tJOCKEY\tTRAINER\tEDGEIQ\tMARKET\tSTATUS\n1\t\n\t\nLIMBERING\n\t2\t58kg\tNot Notified\tRAHARNA MCDONALD\t-\tScratched\tACTIVE\n2\t\n\t\nHUGHIE\n\t3\t57.5kg\tNot Notified\tJAMIE EDWARDS\t-\tScratched\tACTIVE\n3\t\n\t\nDETERMINATO\n\t4\t57kg\tBILLY EGAN\tDOMINIC SUTTON\t-\t$4.80\tACTIVE\n4\t\n\t\nKING TAGALOA\n\t5\t56.5kg\tDYLAN DEAN\tJULIUS SANDHU\t-\t$18\tACTIVE\n5\t\n\t\nOBON\n\t6\t56kg\tLUKE NOLEN\tMICHAEL KENT\t-\t$2.90\tACTIVE\n6\t\n\t\nREEL DEADLY\n\t7\t55.5kg\tTHOMAS STOCKDALE\tCIARON MAHER\t-\t$10\tACTIVE\n7\t\n\t\nRUSSIAN FIREBIRD\n\t8\t55kg\tBRAD RAWILLER\tTOBY LAKE\t-\t$41\tACTIVE\n8\t\n\t\nSKY DEEL\n\t9\t54.5kg\tJAMIE MOTT\tGAVIN BEDGGOOD\t-\t$12\tACTIVE\n9\t\n\t\nEXPANDING POWER\n\t10\t54kg\tLACHLAN NEINDORF\tENVER JUSUFOVIC\t-\t$2.25\tACTIVE\n10\t\n\t\nCAPITAL STORM\n\t11\t53.5kg\tLACHLAN NEINDORF\tPHILLIP STOKES\t-\tTAB_FIXED_WIN\tACTIVE\n11\t\n\t\nFONTALICIOUS\n\t12\t53kg\tPATRICK MOLONEY\tSHANE NICHOLS & HAYDEN BLACK\t-\t$13\tACTIVE\n12\t\n\t\nMERCHANTESSA\n\t13\t52.5kg\tTEO NUGENT\tJASON WARREN\t-\tTAB_FIXED_WIN\tACTIVE\n13\t\n\t\nMIRADOR\n\t14\t52kg\tDANIEL STACKHOUSE\tBEN, WILL & JD HAYES\t-\t$3.40\tACTIVE\n14\t\n\t\nRUBY GUILD\n\t15\t51.5kg\tNATHAN PUNCH\tROBBIE GRIFFITHS\t-\t$8.50\tACTIVE\n15\t\n\t\nTRICKY MISS\n\t16\t51kg\tJAKE NOONAN\tCIARON MAHER\t-\t$26\tACTIVE\n16\t\n\t\nPORTINARI\n\t17\t50.5kg\tDANIEL STACKHOUSE\tBEN, WILL & JD HAYES\t-\t$4.00\tACTIVE\n17\t\n\t\nMINELLO\n\t18\t50kg\tJAMIE MOTT\tANTHONY & SAM FREEDMAN\t-\t$12\tACTIVE\n18\t\n\t\nPINAMILLOY\n\t19\t49.5kg\tZAC SPAIN\tJASON WARREN\t-\t$16\tACTIVE\n19\t\n\t\nRES MIRA\n\t20\t49kg\tBRAD RAWILLER\tMARK WEBB\t-\t$61\tACTIVE\n20\t\n\t\nSTINGRAY BARB\n\t21\t48.5kg\tNADIA DANIELS\tPAT CAREY & HARRIS WALKER\t-\t$101\tACTIVE\n21\t\n\t\nZAAC\n\t22\t48kg\tTHOMAS STOCKDALE\tJOHN MCARDLE\t-\tTAB_FIXED_WIN\tACTIVE\n22\t\n\t\nBABY BLUE\n\t23\t47.5kg\tDAMIEN THORNTON\tBEN, WILL & JD HAYES\t-\t$12\tACTIVE\n23\t\n\t\nCONTARINI\n\t24\t47kg\tBEAU MERTENS\tCHRIS WALLER\t-\t$12\tACTIVE\n24\t\n\t\nETERNAL JOY\n\t25\t46.5kg\tJORDAN CHILDS\tBEN, WILL & JD HAYES\t-\t$5.00\tACTIVE\n25\t\n\t\nBIG FIN\n\t26\t46kg\tTEO NUGENT\tBROOKE VERWEY-MITCHELL\t-\t$151\tACTIVE\n26\t\n\t\nLEVRIER\n\t27\t45.5kg\tPATRICK MOLONEY\tMATT LAURIE\t-\t$7.00\tACTIVE\n27\t\n\t\nMARCH ON BY\n\t28\t45kg\tRYAN HOUSTON\tSIMON ZAHRA\t-\t$26\tACTIVE\n28\t\n\t\nBLUE SHIELD\n\t29\t44.5kg\tLACHLAN NEINDORF\tMICK PRICE & MICHAEL KENT JNR\t-\t$1.95\tACTIVE\n29\t\n\t\nCALEXPO\n\t30\t44kg\tDANIEL STACKHOUSE\tBEN, WILL & JD HAYES\t-\tTAB_FIXED_WIN\tACTIVE\n30\t\n\t\nCIRCUS BERZERKUS\n\t31\t43.5kg\tBAILEY KINNINMONT\tJIM CERCHI (JNR)\t-\t$151\tACTIVE\nEDGEiQ Racing Intelligence Operating System\nBuild: 1.0.0\nData as at: 06:49 pm AEDT",
+  "renderedPath": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-live-runtime/04_FIELD_LIVE_RENDERED.png"
+}

@@ -1,0 +1,776 @@
+﻿01450: class IdentityRelationshipEngine:
+01451:     """
+01452:     Builds a deterministic identity graph from discovered profiles.
+01453:     """
+01454: 
+01455:     def build(
+01456:         self,
+01457:         datasets: list[DatasetProfile],
+01458:         columns: list[ColumnProfile],
+01459:     ) -> list[IdentityRelationship]:
+01460: 
+01461:         relationships: list[IdentityRelationship] = []
+01462: 
+01463:         grouped: dict[str, list[ColumnProfile]] = {}
+01464:         for c in columns:
+01465:             grouped.setdefault(c.identity_classification, []).append(c)
+01466: 
+01467:         for classification, items in grouped.items():
+01468:             if len(items) < 2:
+01469:                 continue
+01470: 
+01471:             for i in range(len(items)):
+01472:                 for j in range(i + 1, len(items)):
+01473:                     relationships.append(
+01474:                         IdentityRelationship(
+01475:                             source_dataset=items[i].relative_path,
+01476:                             source_column=items[i].column_name,
+01477:                             target_dataset=items[j].relative_path,
+01478:                             target_column=items[j].column_name,
+01479:                             relationship_type=classification,
+01480:                             confidence=1.0,
+01481:                             matching_rule="IDENTITY_CLASSIFICATION_MATCH",
+01482:                         )
+01483:                     )
+01484: 
+01485:         return relationships
+01486: 
+01487: 
+01488: class IdentityRelationshipWriter:
+01489: 
+01490:     FIELDS = [
+01491:         "source_dataset",
+01492:         "source_column",
+01493:         "target_dataset",
+01494:         "target_column",
+01495:         "relationship_type",
+01496:         "confidence",
+01497:         "matching_rule",
+01498:     ]
+01499: 
+01500:     @classmethod
+01501:     def write(
+01502:         cls,
+01503:         rows: list[IdentityRelationship],
+01504:         path: Path,
+01505:     ) -> None:
+01506: 
+01507:         with path.open(
+01508:             "w",
+01509:             newline="",
+01510:             encoding="utf-8-sig",
+01511:         ) as handle:
+01512: 
+01513:             writer = csv.DictWriter(
+01514:                 handle,
+01515:                 fieldnames=cls.FIELDS,
+01516:             )
+01517: 
+01518:             writer.writeheader()
+01519: 
+01520:             for row in rows:
+01521:                 writer.writerow(asdict(row))
+01522: 
+01523: 
+01524: # ---- Inject relationship generation into runtime ----
+01525: 
+01526: _old_run = EDGEIQIdentityRepositoryProfilerStep1.run
+01527: 
+01528: def _run_step3(self):
+01529: 
+01530:     audit = _old_run(self)
+01531: 
+01532:     dataset_csv = self.config.dataset_profiles_csv
+01533:     column_csv = self.config.column_profiles_csv
+01534: 
+01535:     datasets = []
+01536:     with dataset_csv.open(encoding="utf-8-sig", newline="") as f:
+01537:         for row in csv.DictReader(f):
+01538:             datasets.append(DatasetProfile(**{
+01539:                 "relative_path": row["relative_path"],
+01540:                 "dataset_type": row["dataset_type"],
+01541:                 "size_bytes": int(row["size_bytes"]),
+01542:                 "row_count": int(row["row_count"]),
+01543:                 "row_count_mode": row["row_count_mode"],
+01544:                 "column_count": int(row["column_count"]),
+01545:                 "columns": row["columns"],
+01546:                 "sampled_rows": int(row["sampled_rows"]),
+01547:                 "candidate_keys": row["candidate_keys"],
+01548:                 "identity_columns": row["identity_columns"],
+01549:                 "profile_status": row["profile_status"],
+01550:                 "profile_error": row["profile_error"],
+01551:             }))
+01552: 
+01553:     columns = []
+01554:     with column_csv.open(encoding="utf-8-sig", newline="") as f:
+01555:         for row in csv.DictReader(f):
+01556:             columns.append(ColumnProfile(
+01557:                 relative_path=row["relative_path"],
+01558:                 column_name=row["column_name"],
+01559:                 inferred_type=row["inferred_type"],
+01560:                 sample_rows_examined=int(row["sample_rows_examined"]),
+01561:                 non_null_count=int(row["non_null_count"]),
+01562:                 null_count=int(row["null_count"]),
+01563:                 null_percentage=float(row["null_percentage"]),
+01564:                 distinct_sample_count=int(row["distinct_sample_count"]),
+01565:                 distinct_sample_percentage=float(row["distinct_sample_percentage"]),
+01566:                 minimum_value=row["minimum_value"],
+01567:                 maximum_value=row["maximum_value"],
+01568:                 minimum_length=int(row["minimum_length"]),
+01569:                 maximum_length=int(row["maximum_length"]),
+01570:                 candidate_key=row["candidate_key"]=="True",
+01571:                 identity_hint=row["identity_hint"]=="True",
+01572:                 identity_classification=row["identity_classification"],
+01573:             ))
+01574: 
+01575:     engine = IdentityRelationshipEngine()
+01576:     relationships = engine.build(datasets, columns)
+01577: 
+01578:     output = self.config.output_root / "edgeiq_identity_relationships_v1.csv"
+01579:     IdentityRelationshipWriter.write(relationships, output)
+01580: 
+01581:     audit["metrics"]["identity_relationships"] = len(relationships)
+01582:     audit["outputs"]["identity_relationships_csv"] = normalise_path(output)
+01583: 
+01584:     self.config.audit_json.write_text(
+01585:         json.dumps(audit, indent=2),
+01586:         encoding="utf-8",
+01587:     )
+01588: 
+01589:     return audit
+01590: 
+01591: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step3
+01592: 
+01593: 
+01594: # ============================================================================
+01595: # STEP 4 â€” Crosswalk Discovery Engine
+01596: # ============================================================================
+01597: 
+01598: @dataclass
+01599: class CrosswalkCandidate:
+01600:     left_dataset: str
+01601:     left_column: str
+01602:     right_dataset: str
+01603:     right_column: str
+01604:     key_type: str
+01605:     confidence: float
+01606:     rationale: str
+01607: 
+01608: 
+01609: class CrosswalkDiscoveryEngine:
+01610:     """
+01611:     Deterministically discovers likely crosswalk join points from
+01612:     candidate-key columns and identity classifications.
+01613:     """
+01614: 
+01615:     def discover(
+01616:         self,
+01617:         columns: list[ColumnProfile],
+01618:     ) -> list[CrosswalkCandidate]:
+01619: 
+01620:         candidates: list[CrosswalkCandidate] = []
+01621: 
+01622:         identity = [c for c in columns if c.identity_hint]
+01623:         keys = [c for c in columns if c.candidate_key]
+01624: 
+01625:         for left in identity:
+01626:             for right in keys:
+01627:                 if left.relative_path == right.relative_path:
+01628:                     continue
+01629: 
+01630:                 if left.identity_classification and (
+01631:                     left.identity_classification in right.column_name.lower()
+01632:                     or right.column_name.lower() in left.identity_classification
+01633:                 ):
+01634:                     confidence = 0.95
+01635:                 elif left.inferred_type == right.inferred_type:
+01636:                     confidence = 0.75
+01637:                 else:
+01638:                     confidence = 0.50
+01639: 
+01640:                 candidates.append(
+01641:                     CrosswalkCandidate(
+01642:                         left_dataset=left.relative_path,
+01643:                         left_column=left.column_name,
+01644:                         right_dataset=right.relative_path,
+01645:                         right_column=right.column_name,
+01646:                         key_type=left.identity_classification or "candidate_key",
+01647:                         confidence=confidence,
+01648:                         rationale="IDENTITY+KEY_HEURISTIC",
+01649:                     )
+01650:                 )
+01651: 
+01652:         candidates.sort(
+01653:             key=lambda x: (
+01654:                 -x.confidence,
+01655:                 x.left_dataset,
+01656:                 x.right_dataset,
+01657:                 x.left_column,
+01658:                 x.right_column,
+01659:             )
+01660:         )
+01661:         return candidates
+01662: 
+01663: 
+01664: class CrosswalkWriter:
+01665: 
+01666:     FIELDS = [
+01667:         "left_dataset",
+01668:         "left_column",
+01669:         "right_dataset",
+01670:         "right_column",
+01671:         "key_type",
+01672:         "confidence",
+01673:         "rationale",
+01674:     ]
+01675: 
+01676:     @classmethod
+01677:     def write(cls, rows, path):
+01678:         with path.open("w", newline="", encoding="utf-8-sig") as f:
+01679:             writer = csv.DictWriter(f, fieldnames=cls.FIELDS)
+01680:             writer.writeheader()
+01681:             for row in rows:
+01682:                 writer.writerow(asdict(row))
+01683: 
+01684: 
+01685: _previous_run = EDGEIQIdentityRepositoryProfilerStep1.run
+01686: 
+01687: def _run_step4(self):
+01688: 
+01689:     audit = _previous_run(self)
+01690: 
+01691:     column_file = self.config.column_profiles_csv
+01692: 
+01693:     columns = []
+01694: 
+01695:     with column_file.open(encoding="utf-8-sig", newline="") as f:
+01696:         for row in csv.DictReader(f):
+01697:             columns.append(
+01698:                 ColumnProfile(
+01699:                     relative_path=row["relative_path"],
+01700:                     column_name=row["column_name"],
+01701:                     inferred_type=row["inferred_type"],
+01702:                     sample_rows_examined=int(row["sample_rows_examined"]),
+01703:                     non_null_count=int(row["non_null_count"]),
+01704:                     null_count=int(row["null_count"]),
+01705:                     null_percentage=float(row["null_percentage"]),
+01706:                     distinct_sample_count=int(row["distinct_sample_count"]),
+01707:                     distinct_sample_percentage=float(row["distinct_sample_percentage"]),
+01708:                     minimum_value=row["minimum_value"],
+01709:                     maximum_value=row["maximum_value"],
+01710:                     minimum_length=int(row["minimum_length"]),
+01711:                     maximum_length=int(row["maximum_length"]),
+01712:                     candidate_key=row["candidate_key"] == "True",
+01713:                     identity_hint=row["identity_hint"] == "True",
+01714:                     identity_classification=row["identity_classification"],
+01715:                 )
+01716:             )
+01717: 
+01718:     engine = CrosswalkDiscoveryEngine()
+01719:     discovered = engine.discover(columns)
+01720: 
+01721:     output = self.config.output_root / "edgeiq_crosswalk_candidates_v1.csv"
+01722:     CrosswalkWriter.write(discovered, output)
+01723: 
+01724:     audit["metrics"]["crosswalk_candidates"] = len(discovered)
+01725:     audit["outputs"]["crosswalk_candidates_csv"] = normalise_path(output)
+01726: 
+01727:     self.config.audit_json.write_text(
+01728:         json.dumps(audit, indent=2),
+01729:         encoding="utf-8",
+01730:     )
+01731: 
+01732:     return audit
+01733: 
+01734: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step4
+01735: 
+01736: 
+01737: # ============================================================================
+01738: # STEP 5 â€” Canonical Identity Graph Builder
+01739: # ============================================================================
+01740: 
+01741: @dataclass
+01742: class CanonicalIdentityNode:
+01743:     node_id: str
+01744:     identity_type: str
+01745:     dataset: str
+01746:     column: str
+01747:     confidence: float
+01748: 
+01749: 
+01750: @dataclass
+01751: class CanonicalIdentityEdge:
+01752:     source_node: str
+01753:     target_node: str
+01754:     edge_type: str
+01755:     confidence: float
+01756: 
+01757: 
+01758: class CanonicalIdentityGraphEngine:
+01759: 
+01760:     def build(
+01761:         self,
+01762:         relationships: list[IdentityRelationship],
+01763:         crosswalks: list[CrosswalkCandidate],
+01764:     ) -> tuple[list[CanonicalIdentityNode], list[CanonicalIdentityEdge]]:
+01765: 
+01766:         nodes = {}
+01767:         edges = []
+01768: 
+01769:         def ensure(dataset, column, identity_type, confidence):
+01770:             key = f"{dataset}::{column}"
+01771:             if key not in nodes:
+01772:                 nodes[key] = CanonicalIdentityNode(
+01773:                     node_id=key,
+01774:                     identity_type=identity_type,
+01775:                     dataset=dataset,
+01776:                     column=column,
+01777:                     confidence=confidence,
+01778:                 )
+01779:             return key
+01780: 
+01781:         for rel in relationships:
+01782:             a = ensure(rel.source_dataset, rel.source_column,
+01783:                        rel.relationship_type, rel.confidence)
+01784:             b = ensure(rel.target_dataset, rel.target_column,
+01785:                        rel.relationship_type, rel.confidence)
+01786:             edges.append(
+01787:                 CanonicalIdentityEdge(
+01788:                     source_node=a,
+01789:                     target_node=b,
+01790:                     edge_type="IDENTITY_MATCH",
+01791:                     confidence=rel.confidence,
+01792:                 )
+01793:             )
+01794: 
+01795:         for cw in crosswalks:
+01796:             a = ensure(cw.left_dataset, cw.left_column,
+01797:                        cw.key_type, cw.confidence)
+01798:             b = ensure(cw.right_dataset, cw.right_column,
+01799:                        cw.key_type, cw.confidence)
+01800:             edges.append(
+01801:                 CanonicalIdentityEdge(
+01802:                     source_node=a,
+01803:                     target_node=b,
+01804:                     edge_type="CROSSWALK",
+01805:                     confidence=cw.confidence,
+01806:                 )
+01807:             )
+01808: 
+01809:         return list(nodes.values()), edges
+01810: 
+01811: 
+01812: class CanonicalGraphWriter:
+01813: 
+01814:     @staticmethod
+01815:     def write_nodes(nodes, path):
+01816:         with path.open("w", newline="", encoding="utf-8-sig") as f:
+01817:             w = csv.DictWriter(
+01818:                 f,
+01819:                 fieldnames=["node_id","identity_type","dataset","column","confidence"]
+01820:             )
+01821:             w.writeheader()
+01822:             for n in nodes:
+01823:                 w.writerow(asdict(n))
+01824: 
+01825:     @staticmethod
+01826:     def write_edges(edges, path):
+01827:         with path.open("w", newline="", encoding="utf-8-sig") as f:
+01828:             w = csv.DictWriter(
+01829:                 f,
+01830:                 fieldnames=["source_node","target_node","edge_type","confidence"]
+01831:             )
+01832:             w.writeheader()
+01833:             for e in edges:
+01834:                 w.writerow(asdict(e))
+01835: 
+01836: 
+01837: _prev_run = EDGEIQIdentityRepositoryProfilerStep1.run
+01838: 
+01839: def _run_step5(self):
+01840: 
+01841:     audit = _prev_run(self)
+01842: 
+01843:     rel_file = self.config.output_root / "edgeiq_identity_relationships_v1.csv"
+01844:     cw_file = self.config.output_root / "edgeiq_crosswalk_candidates_v1.csv"
+01845: 
+01846:     relationships = []
+01847:     with rel_file.open(encoding="utf-8-sig", newline="") as f:
+01848:         for r in csv.DictReader(f):
+01849:             relationships.append(IdentityRelationship(
+01850:                 source_dataset=r["source_dataset"],
+01851:                 source_column=r["source_column"],
+01852:                 target_dataset=r["target_dataset"],
+01853:                 target_column=r["target_column"],
+01854:                 relationship_type=r["relationship_type"],
+01855:                 confidence=float(r["confidence"]),
+01856:                 matching_rule=r["matching_rule"],
+01857:             ))
+01858: 
+01859:     crosswalks = []
+01860:     with cw_file.open(encoding="utf-8-sig", newline="") as f:
+01861:         for r in csv.DictReader(f):
+01862:             crosswalks.append(CrosswalkCandidate(
+01863:                 left_dataset=r["left_dataset"],
+01864:                 left_column=r["left_column"],
+01865:                 right_dataset=r["right_dataset"],
+01866:                 right_column=r["right_column"],
+01867:                 key_type=r["key_type"],
+01868:                 confidence=float(r["confidence"]),
+01869:                 rationale=r["rationale"],
+01870:             ))
+01871: 
+01872:     engine = CanonicalIdentityGraphEngine()
+01873:     nodes, edges = engine.build(relationships, crosswalks)
+01874: 
+01875:     node_file = self.config.output_root / "edgeiq_identity_graph_nodes_v1.csv"
+01876:     edge_file = self.config.output_root / "edgeiq_identity_graph_edges_v1.csv"
+01877: 
+01878:     CanonicalGraphWriter.write_nodes(nodes, node_file)
+01879:     CanonicalGraphWriter.write_edges(edges, edge_file)
+01880: 
+01881:     audit["metrics"]["identity_graph_nodes"] = len(nodes)
+01882:     audit["metrics"]["identity_graph_edges"] = len(edges)
+01883:     audit["outputs"]["identity_graph_nodes_csv"] = normalise_path(node_file)
+01884:     audit["outputs"]["identity_graph_edges_csv"] = normalise_path(edge_file)
+01885: 
+01886:     self.config.audit_json.write_text(
+01887:         json.dumps(audit, indent=2),
+01888:         encoding="utf-8",
+01889:     )
+01890: 
+01891:     return audit
+01892: 
+01893: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step5
+01894: 
+01895: 
+01896: # ============================================================================
+01897: # STEP 6 â€” Authority & Canonical Source Analysis
+01898: # ============================================================================
+01899: 
+01900: @dataclass
+01901: class AuthorityScore:
+01902:     dataset: str
+01903:     authority_score: float
+01904:     identity_columns: int
+01905:     candidate_keys: int
+01906:     relationships: int
+01907:     crosswalks: int
+01908:     recommendation: str
+01909: 
+01910: 
+01911: class AuthorityAnalysisEngine:
+01912: 
+01913:     def analyse(
+01914:         self,
+01915:         datasets: list[DatasetProfile],
+01916:         columns: list[ColumnProfile],
+01917:         relationships: list[IdentityRelationship],
+01918:         crosswalks: list[CrosswalkCandidate],
+01919:     ) -> list[AuthorityScore]:
+01920: 
+01921:         rel_count = {}
+01922:         for r in relationships:
+01923:             rel_count[r.source_dataset] = rel_count.get(r.source_dataset, 0) + 1
+01924:             rel_count[r.target_dataset] = rel_count.get(r.target_dataset, 0) + 1
+01925: 
+01926:         cw_count = {}
+01927:         for c in crosswalks:
+01928:             cw_count[c.left_dataset] = cw_count.get(c.left_dataset, 0) + 1
+01929:             cw_count[c.right_dataset] = cw_count.get(c.right_dataset, 0) + 1
+01930: 
+01931:         results = []
+01932: 
+01933:         for ds in datasets:
+01934:             id_cols = [c for c in columns if c.relative_path == ds.relative_path and c.identity_hint]
+01935:             key_cols = [c for c in columns if c.relative_path == ds.relative_path and c.candidate_key]
+01936: 
+01937:             score = (
+01938:                 len(id_cols) * 20 +
+01939:                 len(key_cols) * 15 +
+01940:                 rel_count.get(ds.relative_path, 0) * 2 +
+01941:                 cw_count.get(ds.relative_path, 0) * 3
+01942:             )
+01943: 
+01944:             recommendation = (
+01945:                 "CANONICAL_AUTHORITY"
+01946:                 if score >= 80 else
+01947:                 "PRIMARY_REFERENCE"
+01948:                 if score >= 40 else
+01949:                 "SUPPLEMENTARY_SOURCE"
+01950:             )
+01951: 
+01952:             results.append(
+01953:                 AuthorityScore(
+01954:                     dataset=ds.relative_path,
+01955:                     authority_score=round(score,2),
+01956:                     identity_columns=len(id_cols),
+01957:                     candidate_keys=len(key_cols),
+01958:                     relationships=rel_count.get(ds.relative_path,0),
+01959:                     crosswalks=cw_count.get(ds.relative_path,0),
+01960:                     recommendation=recommendation,
+01961:                 )
+01962:             )
+01963: 
+01964:         results.sort(key=lambda r: (-r.authority_score, r.dataset))
+01965:         return results
+01966: 
+01967: 
+01968: class AuthorityWriter:
+01969:     FIELDS = [
+01970:         "dataset","authority_score","identity_columns",
+01971:         "candidate_keys","relationships","crosswalks",
+01972:         "recommendation"
+01973:     ]
+01974: 
+01975:     @classmethod
+01976:     def write(cls, rows, path):
+01977:         with path.open("w", newline="", encoding="utf-8-sig") as f:
+01978:             w = csv.DictWriter(f, fieldnames=cls.FIELDS)
+01979:             w.writeheader()
+01980:             for r in rows:
+01981:                 w.writerow(asdict(r))
+01982: 
+01983: 
+01984: _prev__run_step6 = EDGEIQIdentityRepositoryProfilerStep1.run
+01985: 
+01986: def _run_step6(self):
+01987: 
+01988:     audit = _prev__run_step6(self)
+01989: 
+01990:     def load_csv(path):
+01991:         with path.open(encoding="utf-8-sig", newline="") as f:
+01992:             return list(csv.DictReader(f))
+01993: 
+01994:     ds_rows = load_csv(self.config.dataset_profiles_csv)
+01995:     col_rows = load_csv(self.config.column_profiles_csv)
+01996:     rel_rows = load_csv(self.config.output_root / "edgeiq_identity_relationships_v1.csv")
+01997:     cw_rows = load_csv(self.config.output_root / "edgeiq_crosswalk_candidates_v1.csv")
+01998: 
+01999:     datasets = [DatasetProfile(
+02000:         relative_path=r["relative_path"],
+02001:         dataset_type=r["dataset_type"],
+02002:         size_bytes=int(r["size_bytes"]),
+02003:         row_count=int(r["row_count"]),
+02004:         row_count_mode=r["row_count_mode"],
+02005:         column_count=int(r["column_count"]),
+02006:         columns=r["columns"],
+02007:         sampled_rows=int(r["sampled_rows"]),
+02008:         candidate_keys=r["candidate_keys"],
+02009:         identity_columns=r["identity_columns"],
+02010:         profile_status=r["profile_status"],
+02011:         profile_error=r["profile_error"],
+02012:     ) for r in ds_rows]
+02013: 
+02014:     columns = [ColumnProfile(
+02015:         relative_path=r["relative_path"],
+02016:         column_name=r["column_name"],
+02017:         inferred_type=r["inferred_type"],
+02018:         sample_rows_examined=int(r["sample_rows_examined"]),
+02019:         non_null_count=int(r["non_null_count"]),
+02020:         null_count=int(r["null_count"]),
+02021:         null_percentage=float(r["null_percentage"]),
+02022:         distinct_sample_count=int(r["distinct_sample_count"]),
+02023:         distinct_sample_percentage=float(r["distinct_sample_percentage"]),
+02024:         minimum_value=r["minimum_value"],
+02025:         maximum_value=r["maximum_value"],
+02026:         minimum_length=int(r["minimum_length"]),
+02027:         maximum_length=int(r["maximum_length"]),
+02028:         candidate_key=r["candidate_key"]=="True",
+02029:         identity_hint=r["identity_hint"]=="True",
+02030:         identity_classification=r["identity_classification"],
+02031:     ) for r in col_rows]
+02032: 
+02033:     relationships = [IdentityRelationship(
+02034:         source_dataset=r["source_dataset"],
+02035:         source_column=r["source_column"],
+02036:         target_dataset=r["target_dataset"],
+02037:         target_column=r["target_column"],
+02038:         relationship_type=r["relationship_type"],
+02039:         confidence=float(r["confidence"]),
+02040:         matching_rule=r["matching_rule"],
+02041:     ) for r in rel_rows]
+02042: 
+02043:     crosswalks = [CrosswalkCandidate(
+02044:         left_dataset=r["left_dataset"],
+02045:         left_column=r["left_column"],
+02046:         right_dataset=r["right_dataset"],
+02047:         right_column=r["right_column"],
+02048:         key_type=r["key_type"],
+02049:         confidence=float(r["confidence"]),
+02050:         rationale=r["rationale"],
+02051:     ) for r in cw_rows]
+02052: 
+02053:     scores = AuthorityAnalysisEngine().analyse(
+02054:         datasets, columns, relationships, crosswalks
+02055:     )
+02056: 
+02057:     out = self.config.output_root / "edgeiq_dataset_authority_scores_v1.csv"
+02058:     AuthorityWriter.write(scores, out)
+02059: 
+02060:     audit["metrics"]["authority_ranked_datasets"] = len(scores)
+02061:     audit["outputs"]["authority_scores_csv"] = normalise_path(out)
+02062: 
+02063:     self.config.audit_json.write_text(
+02064:         json.dumps(audit, indent=2),
+02065:         encoding="utf-8"
+02066:     )
+02067: 
+02068:     return audit
+02069: 
+02070: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step6
+02071: 
+02072: 
+02073: # ============================================================================
+02074: # STEP 7 â€” Identity Expansion Planner
+02075: # ============================================================================
+02076: 
+02077: @dataclass
+02078: class IdentityExpansionCandidate:
+02079:     dataset: str
+02080:     identity_column: str
+02081:     canonical_type: str
+02082:     expansion_priority: int
+02083:     authority_source: str
+02084:     recommended_action: str
+02085:     rationale: str
+02086: 
+02087: 
+02088: class IdentityExpansionPlanner:
+02089: 
+02090:     def build(
+02091:         self,
+02092:         authorities: list[AuthorityScore],
+02093:         columns: list[ColumnProfile],
+02094:     ) -> list[IdentityExpansionCandidate]:
+02095: 
+02096:         authority_lookup = {
+02097:             a.dataset: a for a in authorities
+02098:         }
+02099: 
+02100:         candidates = []
+02101: 
+02102:         for column in columns:
+02103:             if not column.identity_hint:
+02104:                 continue
+02105: 
+02106:             authority = authority_lookup.get(column.relative_path)
+02107:             recommendation = authority.recommendation if authority else "UNKNOWN"
+02108: 
+02109:             priority = 100
+02110:             if recommendation == "CANONICAL_AUTHORITY":
+02111:                 priority = 1
+02112:             elif recommendation == "PRIMARY_REFERENCE":
+02113:                 priority = 2
+02114:             else:
+02115:                 priority = 3
+02116: 
+02117:             candidates.append(
+02118:                 IdentityExpansionCandidate(
+02119:                     dataset=column.relative_path,
+02120:                     identity_column=column.column_name,
+02121:                     canonical_type=column.identity_classification,
+02122:                     expansion_priority=priority,
+02123:                     authority_source=recommendation,
+02124:                     recommended_action="EXPAND_CANONICAL_IDENTITIES",
+02125:                     rationale="IDENTITY_COLUMN_DISCOVERED",
+02126:                 )
+02127:             )
+02128: 
+02129:         candidates.sort(
+02130:             key=lambda c: (
+02131:                 c.expansion_priority,
+02132:                 c.dataset,
+02133:                 c.identity_column,
+02134:             )
+02135:         )
+02136: 
+02137:         return candidates
+02138: 
+02139: 
+02140: class IdentityExpansionWriter:
+02141: 
+02142:     FIELDS = [
+02143:         "dataset",
+02144:         "identity_column",
+02145:         "canonical_type",
+02146:         "expansion_priority",
+02147:         "authority_source",
+02148:         "recommended_action",
+02149:         "rationale",
+02150:     ]
+02151: 
+02152:     @classmethod
+02153:     def write(cls, rows, path):
+02154:         with path.open("w", newline="", encoding="utf-8-sig") as f:
+02155:             w = csv.DictWriter(f, fieldnames=cls.FIELDS)
+02156:             w.writeheader()
+02157:             for r in rows:
+02158:                 w.writerow(asdict(r))
+02159: 
+02160: 
+02161: _previous__run_step7 = EDGEIQIdentityRepositoryProfilerStep1.run
+02162: 
+02163: def _run_step7(self):
+02164: 
+02165:     audit = _previous__run_step7(self)
+02166: 
+02167:     def load(path):
+02168:         with path.open(encoding="utf-8-sig", newline="") as f:
+02169:             return list(csv.DictReader(f))
+02170: 
+02171:     authority_rows = load(
+02172:         self.config.output_root / "edgeiq_dataset_authority_scores_v1.csv"
+02173:     )
+02174: 
+02175:     column_rows = load(
+02176:         self.config.column_profiles_csv
+02177:     )
+02178: 
+02179:     authorities = [
+02180:         AuthorityScore(
+02181:             dataset=r["dataset"],
+02182:             authority_score=float(r["authority_score"]),
+02183:             identity_columns=int(r["identity_columns"]),
+02184:             candidate_keys=int(r["candidate_keys"]),
+02185:             relationships=int(r["relationships"]),
+02186:             crosswalks=int(r["crosswalks"]),
+02187:             recommendation=r["recommendation"],
+02188:         )
+02189:         for r in authority_rows
+02190:     ]
+02191: 
+02192:     columns = [
+02193:         ColumnProfile(
+02194:             relative_path=r["relative_path"],
+02195:             column_name=r["column_name"],
+02196:             inferred_type=r["inferred_type"],
+02197:             sample_rows_examined=int(r["sample_rows_examined"]),
+02198:             non_null_count=int(r["non_null_count"]),
+02199:             null_count=int(r["null_count"]),
+02200:             null_percentage=float(r["null_percentage"]),
+02201:             distinct_sample_count=int(r["distinct_sample_count"]),
+02202:             distinct_sample_percentage=float(r["distinct_sample_percentage"]),
+02203:             minimum_value=r["minimum_value"],
+02204:             maximum_value=r["maximum_value"],
+02205:             minimum_length=int(r["minimum_length"]),
+02206:             maximum_length=int(r["maximum_length"]),
+02207:             candidate_key=r["candidate_key"]=="True",
+02208:             identity_hint=r["identity_hint"]=="True",
+02209:             identity_classification=r["identity_classification"],
+02210:         )
+02211:         for r in column_rows
+02212:     ]
+02213: 
+02214:     planner = IdentityExpansionPlanner()
+02215:     plan = planner.build(authorities, columns)
+02216: 
+02217:     out = self.config.output_root / "edgeiq_identity_expansion_plan_v1.csv"
+02218:     IdentityExpansionWriter.write(plan, out)
+02219: 
+02220:     audit["metrics"]["identity_expansion_candidates"] = len(plan)
+02221:     audit["outputs"]["identity_expansion_plan_csv"] = normalise_path(out)
+02222: 
+02223:     self.config.audit_json.write_text(
+02224:         json.dumps(audit, indent=2),
+02225:         encoding="utf-8",

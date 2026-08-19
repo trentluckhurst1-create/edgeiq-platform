@@ -1,0 +1,145 @@
+{
+  "audit_name": "edgeiq_race_entry_epi_component_fact_v1",
+  "audit_version": "1.0.0",
+  "audited_at_utc": "2026-07-30T00:04:08Z",
+  "checks": {
+    "component_governance_exact": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "component_lineage_complete": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "component_numeric_integrity": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "component_parameters_exact": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "component_row_count_exact": {
+      "detail": {
+        "actual_component_rows": 0,
+        "expected_component_rows": 0,
+        "race_entry_count": 0
+      },
+      "status": "PASS"
+    },
+    "contract_fields_exact": {
+      "detail": {
+        "actual": [
+          "race_entry_epi_component_id",
+          "race_entry_id",
+          "race_id",
+          "race_date",
+          "epi_component_code",
+          "component_source_fact_name",
+          "component_source_fact_id",
+          "component_source_value_field",
+          "component_source_evidence_sha256",
+          "raw_component_value",
+          "field_population_count",
+          "field_component_mean",
+          "field_component_population_standard_deviation",
+          "unbounded_normalised_component_value",
+          "capped_normalised_component_value",
+          "authorised_component_weight",
+          "weighted_component_value",
+          "epi_parameter_id",
+          "epi_component_normalisation_parameter_id",
+          "epi_component_publication_decision",
+          "epi_component_reconciliation_decision",
+          "epi_component_status",
+          "race_entry_epi_component_evidence_sha256",
+          "source_lineage",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ],
+        "expected": [
+          "race_entry_epi_component_id",
+          "race_entry_id",
+          "race_id",
+          "race_date",
+          "epi_component_code",
+          "component_source_fact_name",
+          "component_source_fact_id",
+          "component_source_value_field",
+          "component_source_evidence_sha256",
+          "raw_component_value",
+          "field_population_count",
+          "field_component_mean",
+          "field_component_population_standard_deviation",
+          "unbounded_normalised_component_value",
+          "capped_normalised_component_value",
+          "authorised_component_weight",
+          "weighted_component_value",
+          "epi_parameter_id",
+          "epi_component_normalisation_parameter_id",
+          "epi_component_publication_decision",
+          "epi_component_reconciliation_decision",
+          "epi_component_status",
+          "race_entry_epi_component_evidence_sha256",
+          "source_lineage",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ]
+      },
+      "status": "PASS"
+    },
+    "deterministic_component_evidence": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "deterministic_component_identity": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "natural_keys_unique": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "no_forbidden_fields": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "one_epi_parameter_row": {
+      "detail": {
+        "row_count": 1
+      },
+      "status": "PASS"
+    },
+    "population_statistics_reconciled": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "primary_keys_unique": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "required_files_exist": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "three_components_per_entry": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "three_normalisation_parameter_rows": {
+      "detail": {
+        "row_count": 3
+      },
+      "status": "PASS"
+    }
+  },
+  "counts": {
+    "epi_component_rows": 0,
+    "race_component_population_count": 0,
+    "race_entry_count": 0
+  },
+  "failed_checks": [],
+  "status": "PASS"
+}

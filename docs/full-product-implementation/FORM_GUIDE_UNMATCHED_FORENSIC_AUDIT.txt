@@ -1,0 +1,42 @@
+EDGEIQ FORM GUIDE UNMATCHED FORENSIC AUDIT
+================================================================================
+
+FULL_MATCH: 674
+NAME_ONLY: 3167
+DISTANCE_ONLY: 103
+HORSE_NOT_PRESENT: 127
+TRACK_ONLY: 867
+DATE_ONLY: 101
+
+EXAMPLES
+--------------------------------------------------------------------------------
+('NAME', "Caitlin's Punch", '2026-01-29', 'CAULFIELDHEATH', '800')
+('DISTANCE', 'Ernie', '2026-05-29', 'BENDIGO', '1100')
+('NAME', 'Ernie', '2025-10-30', 'CAULFIELDHEATH', '800')
+('NAME', 'Gasoline Rainbow', '2026-06-24', 'SPORTSBETBALLARAT', '1200')
+('NAME', 'Gasoline Rainbow', '2026-06-20', 'DONALD', '1350')
+('NAME', 'Ice Quake', '2026-06-18', 'MOE', '1208')
+('DISTANCE', 'Ice Quake', '2026-06-01', 'BET365PARKKILMORE', '1107')
+('NAME', 'Ice Quake', '2025-09-25', 'LADBROKESGEELONG', '1140')
+('NAME', 'Ice Quake', '2025-05-15', 'CAULFIELDHEATH', '800')
+('NAME', 'Lyrebird Lady', '2026-06-16', 'SPORTSBETBALLARATSYNTHETIC', '1400')
+('DISTANCE', 'Lyrebird Lady', '2026-05-26', 'BET365HAMILTON', '1200')
+('NAME', 'Lyrebird Lady', '2026-05-01', 'LADBROKESGEELONG', '1243')
+('NAME', 'Mission Of Joy', '2025-11-29', 'BET365YARRAVALLEY', '1209')
+('NAME', 'Needlestick', '2026-06-21', 'SPORTSBETBALLARATSYNTHETIC', '1100')
+('NAME', 'Needlestick', '2025-11-01', 'BET365MORTLAKE', '1100')
+('NAME', 'Needlestick', '2025-05-20', 'HORSHAM', '800')
+('NAME', 'Only Opera', '2026-01-27', 'LADBROKESGEELONG', '1000')
+('DISTANCE', 'Talavera', '2025-10-05', 'BENDIGO', '1500')
+('NAME', 'Talavera', '2025-09-18', 'DONALD', '1050')
+('NONE', 'Xtra Stylish', '2026-06-19', 'LADBROKESGEELONG', '1425')
+('NAME', 'Back Of The Boat', '2026-06-11', 'BET365SEYMOUR', '1300')
+('NAME', 'Back Of The Boat', '2026-05-22', 'LADBROKESGEELONG', '1300')
+('TRACK', 'Back Of The Boat', '2026-05-03', 'SPORTSBETWANGARATTA', '1300')
+('TRACK', 'Back Of The Boat', '2026-04-22', 'LADBROKESGEELONG', '1325')
+('TRACK', 'Back Of The Boat', '2026-04-10', 'LADBROKESGEELONG', '1312')
+('NAME', 'Back Of The Boat', '2026-01-27', 'LADBROKESGEELONG', '1000')
+('TRACK', 'Back Of The Boat', '2025-08-23', 'SPORTSBETWANGARATTA', '1300')
+('TRACK', 'Back Of The Boat', '2025-07-27', 'CASTERTON', '1400')
+('TRACK', 'Back Of The Boat', '2025-06-29', 'CASTERTON', '1400')
+('TRACK', 'Back Of The Boat', '2025-06-05', 'LADBROKESGEELONG', '1200')

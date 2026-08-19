@@ -1,0 +1,18 @@
+{
+  "approved_from_date": "2026-07-30",
+  "backfill_execution_timestamp": "2026-07-30T00:00:00Z",
+  "centre_value": "-0.193589",
+  "formula_status": "FORMULA_UNCHANGED",
+  "formula_version": "HPR-NORM-A",
+  "historical_backfill_authorised": true,
+  "historical_eligibility_from_date": "2001-01-01",
+  "minimum_observations_changed": false,
+  "normalisation_method": "LINEAR_CENTRE_AND_SCALE",
+  "policy_evidence_sha256": "2a145468c8dc6b7130cd08e08e063bd31ab9d434af5f7bdf05e0002d699b2738",
+  "policy_id": "HPR-NORM-A-v2",
+  "policy_version": "HPR-NORM-A-v2",
+  "scale_value": "1.637342",
+  "source_hpr_norm_a_v1_parameter_evidence_sha256": "4f78130be693dc4392e15358270863b3fbdb1b8acd9f7b487704ea0b3aae8131",
+  "source_hpr_norm_a_v1_parameter_id": "PNP1-857E573537B32FF28FD6F5E6",
+  "supersedes_policy_id": "HPR-NORM-A-v1"
+}

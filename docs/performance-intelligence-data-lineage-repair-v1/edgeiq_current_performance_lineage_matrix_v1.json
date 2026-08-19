@@ -1,0 +1,123 @@
+{
+  "approved_context_parameters": 0,
+  "built_at_utc": "2026-07-30T00:00:00Z",
+  "canonical_historical_horses": 29957,
+  "complete_epi_component_rows": 0,
+  "component_population_stats": {
+    "historical_performance": {
+      "count": 0,
+      "mean": 0.0,
+      "population_stddev": 0.0
+    },
+    "race_context": {
+      "count": 114,
+      "mean": 10.912280701754385,
+      "population_stddev": 2.3115325041404358
+    },
+    "suitability": {
+      "count": 56,
+      "mean": 54.96071428571429,
+      "population_stddev": 5.016959757072168
+    }
+  },
+  "current_publication_rows": 114,
+  "current_races": 11,
+  "current_results_rows": 114,
+  "current_runners": 114,
+  "current_runners_with_epi": 0,
+  "current_runners_without_epi": 114,
+  "current_snapshots": 0,
+  "duplicate_current_race_runner_rows": 0,
+  "epi_rows": 0,
+  "failure_reason_counts": {
+    "NO_PRIOR_OBSERVATION": 103,
+    "NO_PRIOR_OBSERVATION_TARGET_RACE_OBSERVATION_EXCLUDED": 11
+  },
+  "failure_stage_counts": {
+    "HISTORICAL_PERFORMANCE_OBSERVATIONS": 114
+  },
+  "historical_identity_consolidation": {
+    "durable_alias_merges_created": 0,
+    "name_fragmentation_groups_assessed": 139,
+    "name_only_alias_merges_rejected": 139
+  },
+  "historical_observations": 52320,
+  "historical_performance_component_source_rows": 0,
+  "historical_performance_rows": 52320,
+  "historical_pre_race_state_audit": {
+    "audit_scope": "all_horse_performance_observation_fact_v1_rows",
+    "canonical_historical_horses": 29957,
+    "durable_alias_merges_created": 0,
+    "exclusion_reason_counts": {
+      "INSUFFICIENT_PRIOR_OBSERVATIONS": 21419,
+      "JOIN_DEFECT": 229,
+      "NO_PRIOR_OBSERVATION": 29957,
+      "VALID_PRE_RACE_BASELINE": 715
+    },
+    "historical_observation_rows_assessed": 52320,
+    "horses_with_10_plus_observations": 21,
+    "horses_with_2_plus_observations": 12195,
+    "horses_with_3_plus_observations": 5512,
+    "horses_with_5_plus_observations": 1139,
+    "identity_fragmentation_name_groups": 139,
+    "minimum_production_observations_preserved": 5,
+    "name_only_alias_merges_rejected": true,
+    "valid_pre_race_baseline_rows": 715
+  },
+  "historical_rating_states": 1265,
+  "horse_aggregates": 1265,
+  "horse_ratings": 1265,
+  "horses_with_10_plus_observations": 21,
+  "horses_with_2_plus_observations": 12195,
+  "horses_with_3_plus_observations": 5512,
+  "horses_with_5_plus_observations": 1139,
+  "identity_matches": 114,
+  "lineage_matrix_rows": 114,
+  "minimum_production_observations_preserved": 5,
+  "operation_run_id": "EDGEIQ_PERFORMANCE_INTELLIGENCE_CURRENT_LINEAGE_REPAIR_V1",
+  "overall_status": "PASS_CURRENT_LINEAGE_PUBLICATION_PARTIAL_DURABLE_HISTORY_BLOCKED",
+  "projected_performance_rows": 0,
+  "protected_systems": {
+    "hpr_norm_a_v1_changed": false,
+    "hpr_norm_a_v2_changed": false,
+    "minimum_observations_changed": false,
+    "pricing_changed": false,
+    "probability_changed": false,
+    "ui_changed": false,
+    "v6_1_changed": false,
+    "v7_2g2_changed": false
+  },
+  "race_context_component_source_rows": 114,
+  "registry_rows": 0,
+  "root_cause_summary": [
+    "The 114 accepted current runners are Racing Australia result rows with approved RA_HORSE identities.",
+    "The existing snapshot and context facts are still populated from a stale 5-row Racing.com race-entry path.",
+    "No durable repository-internal RA_HORSE to RCOM_HORSE historical bridge exists for the current runner population.",
+    "Same-day target-race observations for 11 RA_HORSE identities are excluded from pre-race state to prevent temporal leakage.",
+    "Production aggregates and ratings preserve minimum_observations=5; no name-only alias merges were created."
+  ],
+  "semantic_hashes": {
+    "docs\\performance-intelligence-data-lineage-repair-v1\\edgeiq_current_component_availability_v1.csv": "5D5D43ABDD0CE3961AA0736A22F7FBCA23028A063179656BEFC5ABF8546F4AF8",
+    "docs\\performance-intelligence-data-lineage-repair-v1\\edgeiq_current_performance_lineage_matrix_v1.csv": "3DF973FEFF19834E41E6FBED67981DFC51DF197FF99E4050A2019F895149B70C",
+    "docs\\performance-intelligence-data-lineage-repair-v1\\edgeiq_current_runner_blocking_reasons_v1.csv": "4E3822C6F698DF2A5FC478C77D137DD880E20BAE285336F66B4FDFA26615E9D6",
+    "docs\\performance-intelligence-data-lineage-repair-v1\\edgeiq_historical_identity_consolidation_audit_v1.csv": "91FC963CD47CBFCA09A22346C9E7FE1C7CB28BE8E8BF16BB29CCBC2C7FE40ADB",
+    "docs\\performance-intelligence-data-lineage-repair-v1\\edgeiq_historical_pre_race_state_audit_v1.csv": "037CF2DEA3C4E68057A184718B6BA85705AE644D491BB1F862F7E3792453FD14",
+    "docs\\performance-intelligence-data-lineage-repair-v1\\edgeiq_identifier_publication_audit_v1.csv": "796B04F126D79583CD569D9F0ED78A5A19EC39D0A88C21EA8D9494D24905B066",
+    "public\\data\\edgeiq_performance_intelligence_current_publication_v1.csv": "6AF58AB5F732084732F168EE4F3218BC68696AEA806EA0A97F4405B3230E4889"
+  },
+  "source_hashes": {
+    "public\\data\\edgeiq_context_parameter_registry_v1.csv": "BB0E2A15E0F3D4C78A20B5BDED9E33DE8E8A55E6F1917E73457BFF1140597F9B",
+    "public\\data\\edgeiq_current_horse_identity_crosswalk_v1.csv": "62F61612F04444DC566D54CAAB9C51E5AC5E27CC1E8B776BF4A88CEC71943117",
+    "public\\data\\edgeiq_current_suitability_v1.csv": "ADE87288960EEAE87463BEA9DAB1DEE205AD2E8C5763642BBD4BF127E395B582",
+    "public\\data\\edgeiq_daily_official_results_fact_v1.csv": "8AD92EBE577A8A89716782BEE17C6142A3EBE3CAD3D12FB9272978787A444AB8",
+    "public\\data\\edgeiq_horse_performance_aggregate_fact_v1.csv": "DF474FD7441BA4653479532BFE43E349A115F435F38BEB6DA7708C8DB9C861F1",
+    "public\\data\\edgeiq_horse_performance_observation_fact_v1.csv": "1553D705377079F2C95F7574DC6CFF2350939B013B2A7BC540A94A93BEC04A78",
+    "public\\data\\edgeiq_horse_performance_rating_fact_v1.csv": "EF35D238B7E250BA7A88D14C84439CBA4BA4498C2E4BD1D201270E9E19C64891",
+    "public\\data\\edgeiq_race_entry_epi_component_fact_v1.csv": "9FFD4FCF3F417B63BE3ECE04F1C6C7A6A48F3FD7C5A678583831095BBFEC7295",
+    "public\\data\\edgeiq_race_entry_epi_fact_v1.csv": "1CE983A236E648CF7ECBEAD42C8E9D2024A6FBEB30DC2C059401A567A34CD7E9",
+    "public\\data\\edgeiq_race_entry_horse_performance_snapshot_fact_v1.csv": "8988F86F3739923506806E43B384A896E00D84CF9C30A8BC6E1D53CE2209C5EA",
+    "public\\data\\edgeiq_race_entry_performance_context_fact_v1.csv": "51740B09C74EAB08927318EF4AACD66B18EE3E5747A4C2050F19CDB17305875A",
+    "public\\data\\edgeiq_race_entry_projected_performance_fact_v1.csv": "2D7996A050856E252E6639BDB6569F9CFF9B49442CF8EE5CBC676C92FC92FC54"
+  },
+  "suitability_component_source_rows": 80
+}

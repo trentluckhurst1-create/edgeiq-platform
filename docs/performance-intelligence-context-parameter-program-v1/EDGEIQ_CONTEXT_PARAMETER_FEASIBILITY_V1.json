@@ -1,0 +1,10 @@
+{
+  "approved_parameters": 0,
+  "candidate_parameters": 33116,
+  "full_signatures_assessed": 26668,
+  "historical_rows_assessed": 31602,
+  "rejected_parameters": 33116,
+  "status": "BLOCKED_CONTEXT_PARAMETER_METHODOLOGY_AUTHORITY",
+  "training_rows": 31602,
+  "validation_rows": 0
+}

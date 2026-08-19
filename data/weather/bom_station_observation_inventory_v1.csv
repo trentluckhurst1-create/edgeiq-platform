@@ -1,0 +1,5 @@
+﻿station_id,latest_file,json_parse_status,station_name,station_state,latitude,longitude,elevation,observation_count,observation_fields,latest_timestamp,endpoint_pattern,racecourse_mapping_status,notes
+87184,data\weather-source-audit\bom-live\87184\latest_raw.json,PASS,,,,,,1,cloud|datetime_utc|precip|pres|temp|visibility|wind,,https://api.bom.gov.au/apikey/v1/observations/latest/87184/atm/surf_air,UNMAPPED,
+89002,data\weather-source-audit\bom-live\89002\latest_raw.json,PASS,,,,,,1,cloud|datetime_utc|precip|pres|temp|visibility|wind,,https://api.bom.gov.au/apikey/v1/observations/latest/89002/atm/surf_air,UNMAPPED,
+90173,data\weather-source-audit\bom-live\90173\latest_raw.json,PASS,,,,,,1,cloud|datetime_utc|precip|pres|temp|visibility|wind,,https://api.bom.gov.au/apikey/v1/observations/latest/90173/atm/surf_air,UNMAPPED,
+94852,data\weather-source-audit\bom-live\94852\latest_raw.json,NOT_PRESENT,,,,,,,,,https://api.bom.gov.au/apikey/v1/observations/latest/94852/atm/surf_air,UNMAPPED,

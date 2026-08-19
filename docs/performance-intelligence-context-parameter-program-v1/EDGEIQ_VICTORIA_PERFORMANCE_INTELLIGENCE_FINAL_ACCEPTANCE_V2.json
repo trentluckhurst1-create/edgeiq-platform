@@ -1,0 +1,24 @@
+{
+  "metrics": {
+    "approved_parameters": 0,
+    "candidate_parameters": 33116,
+    "context_rows": 5,
+    "epi_rows": 0,
+    "historical_rows_assessed": 31602,
+    "rejected_parameters": 33116,
+    "training_rows": 31602
+  },
+  "overall_status": "BLOCKED_CONTEXT_PARAMETER_METHODOLOGY_AUTHORITY",
+  "protected_systems": {
+    "hpr_norm_a_v1_changed": "NO",
+    "hpr_norm_a_v2_changed": "NO",
+    "minimum_observations_changed": "NO",
+    "pricing_changed": "NO",
+    "probability_changed": "NO",
+    "ui_changed": "NO",
+    "v6_1_changed": "NO",
+    "v7_2g2_changed": "NO"
+  },
+  "track_a_status": "BLOCKED_CONTEXT_PARAMETER_METHODOLOGY_AUTHORITY",
+  "track_b_status": "BLOCKED_SOURCE_DATA_UNAVAILABLE"
+}

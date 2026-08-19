@@ -1,0 +1,9 @@
+{
+  "built_utc": "2026-07-22T18:07:59+00:00",
+  "status": "RACINGCOM_RACE_DISCOVERY_V2_EVIDENCE_EXTENSION_CONTRACT_DEFINED",
+  "supported_discovery_methods": 6,
+  "required_fields": 29,
+  "manual_fixture_status_allowed": "NO",
+  "production_changed": "NO",
+  "ui_changed": "NO"
+}

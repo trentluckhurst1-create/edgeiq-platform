@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "timestamp": "2026-07-20T15:03:24",
+  "checks": [
+    {
+      "check": "root_marker",
+      "target": "tsx",
+      "passed": true
+    },
+    {
+      "check": "race_selector_suppressed",
+      "target": "tsx",
+      "passed": true
+    },
+    {
+      "check": "final_css_scope",
+      "target": "css",
+      "passed": true
+    }
+  ]
+}

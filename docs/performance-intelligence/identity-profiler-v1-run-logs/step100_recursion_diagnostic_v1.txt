@@ -1,0 +1,1393 @@
+EDGEIQ IDENTITY REPOSITORY PROFILER STEP100
+RECURSION DIAGNOSTIC V1
+================================================================================
+Source: C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\build_edgeiq_identity_repository_profiler_v1_STEP100_CUMULATIVE.py
+Source bytes: 275570
+Source lines: 8283
+Source SHA256: 22d2b8facfcfbaf7025179c931745734ec62751ceab71c7361e59d54715550af
+
+FUNCTION DEFINITIONS
+--------------------------------------------------------------------------------
+_run_step31: lines 4652-4694
+_run_step32: lines 4741-4756
+_run_step33: lines 4783-4797
+_run_step100: lines 8147-8276
+
+TARGET SYMBOL OCCURRENCES
+--------------------------------------------------------------------------------
+01984: _prev = EDGEIQIdentityRepositoryProfilerStep1.run
+01988:     audit = _prev(self)
+02161: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+02165:     audit = _previous(self)
+02586: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+02590:     audit = _previous(self)
+02698: _prev = EDGEIQIdentityRepositoryProfilerStep1.run
+02702:     audit = _prev(self)
+02832: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+02836:     audit = _previous(self)
+02960: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+02964:     audit = _previous(self)
+03050: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+03054:     audit = _previous(self)
+03143: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+03147:     audit = _previous(self)
+03227: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+03231:     audit = _previous(self)
+03318: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+03322:     audit = _previous(self)
+03400: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+03404:     audit = _previous(self)
+03484: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+03487:     audit = _previous(self)
+03567: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+03570:     audit = _previous(self)
+03657: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+03660:     audit = _previous(self)
+03746: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+03749:     audit = _previous(self)
+03835: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+03838:     audit = _previous(self)
+03925: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+03928:     audit = _previous(self)
+04019: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+04022:     audit = _previous(self)
+04098: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+04101:     audit = _previous(self)
+04189: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+04192:     audit = _previous(self)
+04297: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+04300:     audit = _previous(self)
+04413: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+04416:     audit = _previous(self)
+04554: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+04557:     audit = _previous(self)
+04650: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+04652: def _run_step31(self):
+04653:     audit = _previous(self)
+04697: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step31
+04739: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+04741: def _run_step32(self):
+04742:     audit = _previous(self)
+04758: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step32
+04781: _prev = EDGEIQIdentityRepositoryProfilerStep1.run
+04783: def _run_step33(self):
+04784:     audit = _prev(self)
+04799: EDGEIQIdentityRepositoryProfilerStep1.run=_run_step33
+05700: _step33_run = EDGEIQIdentityRepositoryProfilerStep1.run
+05704:     audit = _step33_run(self)
+07287: _step50_run = EDGEIQIdentityRepositoryProfilerStep1.run
+07291:     audit = _step50_run(self)
+08144: _step75_run = EDGEIQIdentityRepositoryProfilerStep1.run
+08147: def _run_step100(self):
+08149:     audit = _step75_run(self)
+08279: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step100
+
+ASSIGNMENTS AND REBINDINGS
+--------------------------------------------------------------------------------
+01984: _prev = EDGEIQIdentityRepositoryProfilerStep1.run
+
+02161: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+
+02586: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+
+02698: _prev = EDGEIQIdentityRepositoryProfilerStep1.run
+
+02832: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+
+02960: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+
+03050: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+
+03143: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+
+03227: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+
+03318: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+
+03400: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+
+03484: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+
+03567: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+
+03657: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+
+03746: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+
+03835: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+
+03925: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+
+04019: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+
+04098: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+
+04189: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+
+04297: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+
+04413: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+
+04554: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+
+04650: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+
+04739: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+
+04781: _prev = EDGEIQIdentityRepositoryProfilerStep1.run
+
+05700: _step33_run = EDGEIQIdentityRepositoryProfilerStep1.run
+
+07287: _step50_run = EDGEIQIdentityRepositoryProfilerStep1.run
+
+08144: _step75_run = EDGEIQIdentityRepositoryProfilerStep1.run
+
+
+FOCUSED SOURCE WINDOWS
+--------------------------------------------------------------------------------
+
+--- SOURCE LINES 1972-2006 ---
+01972:         "recommendation"
+01973:     ]
+01974: 
+01975:     @classmethod
+01976:     def write(cls, rows, path):
+01977:         with path.open("w", newline="", encoding="utf-8-sig") as f:
+01978:             w = csv.DictWriter(f, fieldnames=cls.FIELDS)
+01979:             w.writeheader()
+01980:             for r in rows:
+01981:                 w.writerow(asdict(r))
+01982: 
+01983: 
+01984: _prev = EDGEIQIdentityRepositoryProfilerStep1.run
+01985: 
+01986: def _run_step6(self):
+01987: 
+01988:     audit = _prev(self)
+01989: 
+01990:     def load_csv(path):
+01991:         with path.open(encoding="utf-8-sig", newline="") as f:
+01992:             return list(csv.DictReader(f))
+01993: 
+01994:     ds_rows = load_csv(self.config.dataset_profiles_csv)
+01995:     col_rows = load_csv(self.config.column_profiles_csv)
+01996:     rel_rows = load_csv(self.config.output_root / "edgeiq_identity_relationships_v1.csv")
+01997:     cw_rows = load_csv(self.config.output_root / "edgeiq_crosswalk_candidates_v1.csv")
+01998: 
+01999:     datasets = [DatasetProfile(
+02000:         relative_path=r["relative_path"],
+02001:         dataset_type=r["dataset_type"],
+02002:         size_bytes=int(r["size_bytes"]),
+02003:         row_count=int(r["row_count"]),
+02004:         row_count_mode=r["row_count_mode"],
+02005:         column_count=int(r["column_count"]),
+02006:         columns=r["columns"],
+
+--- SOURCE LINES 2149-2183 ---
+02149:         "rationale",
+02150:     ]
+02151: 
+02152:     @classmethod
+02153:     def write(cls, rows, path):
+02154:         with path.open("w", newline="", encoding="utf-8-sig") as f:
+02155:             w = csv.DictWriter(f, fieldnames=cls.FIELDS)
+02156:             w.writeheader()
+02157:             for r in rows:
+02158:                 w.writerow(asdict(r))
+02159: 
+02160: 
+02161: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+02162: 
+02163: def _run_step7(self):
+02164: 
+02165:     audit = _previous(self)
+02166: 
+02167:     def load(path):
+02168:         with path.open(encoding="utf-8-sig", newline="") as f:
+02169:             return list(csv.DictReader(f))
+02170: 
+02171:     authority_rows = load(
+02172:         self.config.output_root / "edgeiq_dataset_authority_scores_v1.csv"
+02173:     )
+02174: 
+02175:     column_rows = load(
+02176:         self.config.column_profiles_csv
+02177:     )
+02178: 
+02179:     authorities = [
+02180:         AuthorityScore(
+02181:             dataset=r["dataset"],
+02182:             authority_score=float(r["authority_score"]),
+02183:             identity_columns=int(r["identity_columns"]),
+
+--- SOURCE LINES 2574-2608 ---
+02574:     def write_markdown(rows, path):
+02575:         lines = [
+02576:             "# EDGEIQ Identity Repository Profiler",
+02577:             "",
+02578:             "## Executive Summary",
+02579:             ""
+02580:         ]
+02581:         for r in rows:
+02582:             lines.append(f"- **{r.metric}:** {r.value}")
+02583:         path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+02584: 
+02585: 
+02586: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+02587: 
+02588: def _run_step10(self):
+02589: 
+02590:     audit = _previous(self)
+02591: 
+02592:     summary = ExecutiveSummaryEngine().build(audit)
+02593: 
+02594:     csv_file = self.config.output_root / "edgeiq_identity_summary_v1.csv"
+02595:     md_file = self.config.output_root / "edgeiq_identity_summary_v1.md"
+02596: 
+02597:     ExecutiveSummaryWriter.write_csv(summary, csv_file)
+02598:     ExecutiveSummaryWriter.write_markdown(summary, md_file)
+02599: 
+02600:     audit["outputs"]["summary_csv"] = normalise_path(csv_file)
+02601:     audit["outputs"]["summary_markdown"] = normalise_path(md_file)
+02602: 
+02603:     self.config.audit_json.write_text(
+02604:         json.dumps(audit, indent=2),
+02605:         encoding="utf-8",
+02606:     )
+02607: 
+02608:     return audit
+
+--- SOURCE LINES 2686-2720 ---
+02686:         "recommended_fix",
+02687:     ]
+02688: 
+02689:     @classmethod
+02690:     def write(cls, rows, path):
+02691:         with path.open("w", newline="", encoding="utf-8-sig") as f:
+02692:             w = csv.DictWriter(f, fieldnames=cls.FIELDS)
+02693:             w.writeheader()
+02694:             for r in rows:
+02695:                 w.writerow(asdict(r))
+02696: 
+02697: 
+02698: _prev = EDGEIQIdentityRepositoryProfilerStep1.run
+02699: 
+02700: def _run_step11(self):
+02701: 
+02702:     audit = _prev(self)
+02703: 
+02704:     def load(path):
+02705:         with path.open(encoding="utf-8-sig", newline="") as f:
+02706:             return list(csv.DictReader(f))
+02707: 
+02708:     readiness_rows = load(self.config.output_root / "edgeiq_replay_readiness_v1.csv")
+02709:     authority_rows = load(self.config.output_root / "edgeiq_dataset_authority_scores_v1.csv")
+02710: 
+02711:     readiness = [
+02712:         ReplayReadinessRecord(
+02713:             dataset=r["dataset"],
+02714:             authority=r["authority"],
+02715:             identity_columns=int(r["identity_columns"]),
+02716:             candidate_keys=int(r["candidate_keys"]),
+02717:             replay_ready=r["replay_ready"] == "True",
+02718:             readiness_score=float(r["readiness_score"]),
+02719:             blocking_reason=r["blocking_reason"],
+02720:         )
+
+--- SOURCE LINES 2820-2854 ---
+02820:         "evidence",
+02821:     ]
+02822: 
+02823:     @classmethod
+02824:     def write(cls, rows, path):
+02825:         with path.open("w", newline="", encoding="utf-8-sig") as f:
+02826:             writer = csv.DictWriter(f, fieldnames=cls.FIELDS)
+02827:             writer.writeheader()
+02828:             for row in rows:
+02829:                 writer.writerow(asdict(row))
+02830: 
+02831: 
+02832: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+02833: 
+02834: def _run_step12(self):
+02835: 
+02836:     audit = _previous(self)
+02837: 
+02838:     def load(path):
+02839:         with path.open(encoding="utf-8-sig", newline="") as f:
+02840:             return list(csv.DictReader(f))
+02841: 
+02842:     authority_rows = load(self.config.output_root / "edgeiq_dataset_authority_scores_v1.csv")
+02843:     plan_rows = load(self.config.output_root / "edgeiq_identity_expansion_plan_v1.csv")
+02844: 
+02845:     authorities = [
+02846:         AuthorityScore(
+02847:             dataset=r["dataset"],
+02848:             authority_score=float(r["authority_score"]),
+02849:             identity_columns=int(r["identity_columns"]),
+02850:             candidate_keys=int(r["candidate_keys"]),
+02851:             relationships=int(r["relationships"]),
+02852:             crosswalks=int(r["crosswalks"]),
+02853:             recommendation=r["recommendation"],
+02854:         )
+
+--- SOURCE LINES 2948-2982 ---
+02948:         "governance_gate",
+02949:     ]
+02950: 
+02951:     @classmethod
+02952:     def write(cls, rows, path):
+02953:         with path.open("w", newline="", encoding="utf-8-sig") as f:
+02954:             w = csv.DictWriter(f, fieldnames=cls.FIELDS)
+02955:             w.writeheader()
+02956:             for row in rows:
+02957:                 w.writerow(asdict(row))
+02958: 
+02959: 
+02960: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+02961: 
+02962: def _run_step13(self):
+02963: 
+02964:     audit = _previous(self)
+02965: 
+02966:     plan_file = self.config.output_root / "edgeiq_identity_resolution_plan_v1.csv"
+02967: 
+02968:     actions = []
+02969:     with plan_file.open(encoding="utf-8-sig", newline="") as f:
+02970:         for r in csv.DictReader(f):
+02971:             actions.append(
+02972:                 ResolutionAction(
+02973:                     priority=int(r["priority"]),
+02974:                     dataset=r["dataset"],
+02975:                     identity_column=r["identity_column"],
+02976:                     authority=r["authority"],
+02977:                     action=r["action"],
+02978:                     expected_result=r["expected_result"],
+02979:                     evidence=r["evidence"],
+02980:                 )
+02981:             )
+02982: 
+
+--- SOURCE LINES 3038-3072 ---
+03038:         "remediation",
+03039:     ]
+03040: 
+03041:     @classmethod
+03042:     def write(cls, rows, path):
+03043:         with path.open("w", newline="", encoding="utf-8-sig") as f:
+03044:             writer = csv.DictWriter(f, fieldnames=cls.FIELDS)
+03045:             writer.writeheader()
+03046:             for row in rows:
+03047:                 writer.writerow(asdict(row))
+03048: 
+03049: 
+03050: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+03051: 
+03052: def _run_step14(self):
+03053: 
+03054:     audit = _previous(self)
+03055: 
+03056:     matrix = GovernanceMatrixEngine().build(audit)
+03057: 
+03058:     out = self.config.output_root / "edgeiq_governance_matrix_v1.csv"
+03059:     GovernanceMatrixWriter.write(matrix, out)
+03060: 
+03061:     audit["metrics"]["governance_controls"] = len(matrix)
+03062:     audit["outputs"]["governance_matrix_csv"] = normalise_path(out)
+03063: 
+03064:     self.config.audit_json.write_text(
+03065:         json.dumps(audit, indent=2),
+03066:         encoding="utf-8",
+03067:     )
+03068: 
+03069:     return audit
+03070: 
+03071: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step14
+03072: 
+
+--- SOURCE LINES 3131-3165 ---
+03131: 
+03132:     FIELDS = ["artifact", "generated", "category", "purpose"]
+03133: 
+03134:     @classmethod
+03135:     def write(cls, rows, path):
+03136:         with path.open("w", newline="", encoding="utf-8-sig") as f:
+03137:             writer = csv.DictWriter(f, fieldnames=cls.FIELDS)
+03138:             writer.writeheader()
+03139:             for row in rows:
+03140:                 writer.writerow(asdict(row))
+03141: 
+03142: 
+03143: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+03144: 
+03145: def _run_step15(self):
+03146: 
+03147:     audit = _previous(self)
+03148: 
+03149:     manifest = BuildManifestEngine().build(audit)
+03150: 
+03151:     out = self.config.output_root / "edgeiq_build_manifest_v1.csv"
+03152:     BuildManifestWriter.write(manifest, out)
+03153: 
+03154:     audit["metrics"]["generated_artifacts"] = len(manifest)
+03155:     audit["outputs"]["build_manifest_csv"] = normalise_path(out)
+03156: 
+03157:     self.config.audit_json.write_text(
+03158:         json.dumps(audit, indent=2),
+03159:         encoding="utf-8",
+03160:     )
+03161: 
+03162:     return audit
+03163: 
+03164: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step15
+03165: 
+
+--- SOURCE LINES 3215-3249 ---
+03215:         "exit_criteria",
+03216:     ]
+03217: 
+03218:     @classmethod
+03219:     def write(cls, rows, path):
+03220:         with path.open("w", newline="", encoding="utf-8-sig") as f:
+03221:             writer = csv.DictWriter(f, fieldnames=cls.FIELDS)
+03222:             writer.writeheader()
+03223:             for row in rows:
+03224:                 writer.writerow(asdict(row))
+03225: 
+03226: 
+03227: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+03228: 
+03229: def _run_step16(self):
+03230: 
+03231:     audit = _previous(self)
+03232: 
+03233:     plan_file = self.config.output_root / "edgeiq_identity_resolution_plan_v1.csv"
+03234: 
+03235:     actions = []
+03236:     with plan_file.open(encoding="utf-8-sig", newline="") as f:
+03237:         for r in csv.DictReader(f):
+03238:             actions.append(
+03239:                 ResolutionAction(
+03240:                     priority=int(r["priority"]),
+03241:                     dataset=r["dataset"],
+03242:                     identity_column=r["identity_column"],
+03243:                     authority=r["authority"],
+03244:                     action=r["action"],
+03245:                     expected_result=r["expected_result"],
+03246:                     evidence=r["evidence"],
+03247:                 )
+03248:             )
+03249: 
+
+--- SOURCE LINES 3306-3340 ---
+03306: 
+03307:     FIELDS = ["metric", "value", "status", "recommendation"]
+03308: 
+03309:     @classmethod
+03310:     def write(cls, rows, path):
+03311:         with path.open("w", newline="", encoding="utf-8-sig") as f:
+03312:             w = csv.DictWriter(f, fieldnames=cls.FIELDS)
+03313:             w.writeheader()
+03314:             for row in rows:
+03315:                 w.writerow(asdict(row))
+03316: 
+03317: 
+03318: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+03319: 
+03320: def _run_step17(self):
+03321: 
+03322:     audit = _previous(self)
+03323: 
+03324:     dashboard = IdentityHealthEngine().build(audit)
+03325: 
+03326:     out = self.config.output_root / "edgeiq_identity_health_dashboard_v1.csv"
+03327:     IdentityHealthWriter.write(dashboard, out)
+03328: 
+03329:     audit["metrics"]["identity_health_metrics"] = len(dashboard)
+03330:     audit["outputs"]["identity_health_dashboard_csv"] = normalise_path(out)
+03331: 
+03332:     self.config.audit_json.write_text(
+03333:         json.dumps(audit, indent=2),
+03334:         encoding="utf-8",
+03335:     )
+03336: 
+03337:     return audit
+03338: 
+03339: 
+03340: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step17
+
+--- SOURCE LINES 3388-3422 ---
+03388:         "governance_state",
+03389:     ]
+03390: 
+03391:     @classmethod
+03392:     def write(cls, rows, path):
+03393:         with path.open("w", newline="", encoding="utf-8-sig") as f:
+03394:             writer = csv.DictWriter(f, fieldnames=cls.FIELDS)
+03395:             writer.writeheader()
+03396:             for row in rows:
+03397:                 writer.writerow(asdict(row))
+03398: 
+03399: 
+03400: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+03401: 
+03402: def _run_step18(self):
+03403: 
+03404:     audit = _previous(self)
+03405: 
+03406:     plan_file = self.config.output_root / "edgeiq_identity_resolution_plan_v1.csv"
+03407: 
+03408:     actions = []
+03409:     with plan_file.open(encoding="utf-8-sig", newline="") as f:
+03410:         for r in csv.DictReader(f):
+03411:             actions.append(
+03412:                 ResolutionAction(
+03413:                     priority=int(r["priority"]),
+03414:                     dataset=r["dataset"],
+03415:                     identity_column=r["identity_column"],
+03416:                     authority=r["authority"],
+03417:                     action=r["action"],
+03418:                     expected_result=r["expected_result"],
+03419:                     evidence=r["evidence"],
+03420:                 )
+03421:             )
+03422: 
+
+--- SOURCE LINES 3472-3505 ---
+03472: 
+03473:     FIELDS = ["canonical_id","dataset","identity_column","lookup_key","index_state"]
+03474: 
+03475:     @classmethod
+03476:     def write(cls, rows, path):
+03477:         with path.open("w", newline="", encoding="utf-8-sig") as f:
+03478:             w = csv.DictWriter(f, fieldnames=cls.FIELDS)
+03479:             w.writeheader()
+03480:             for row in rows:
+03481:                 w.writerow(asdict(row))
+03482: 
+03483: 
+03484: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+03485: 
+03486: def _run_step19(self):
+03487:     audit = _previous(self)
+03488: 
+03489:     warehouse = []
+03490:     with (self.config.output_root / "edgeiq_canonical_identity_warehouse_v1.csv").open(
+03491:         encoding="utf-8-sig", newline=""
+03492:     ) as f:
+03493:         for r in csv.DictReader(f):
+03494:             warehouse.append(
+03495:                 CanonicalWarehouseRecord(
+03496:                     canonical_id=r["canonical_id"],
+03497:                     dataset=r["dataset"],
+03498:                     identity_column=r["identity_column"],
+03499:                     authority=r["authority"],
+03500:                     lifecycle=r["lifecycle"],
+03501:                     governance_state=r["governance_state"],
+03502:                 )
+03503:             )
+03504: 
+03505:     index = WarehouseIndexEngine().build(warehouse)
+
+--- SOURCE LINES 3555-3588 ---
+03555:         "active",
+03556:     ]
+03557: 
+03558:     @classmethod
+03559:     def write(cls, rows, path):
+03560:         with path.open("w", newline="", encoding="utf-8-sig") as f:
+03561:             w = csv.DictWriter(f, fieldnames=cls.FIELDS)
+03562:             w.writeheader()
+03563:             for row in rows:
+03564:                 w.writerow(asdict(row))
+03565: 
+03566: 
+03567: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+03568: 
+03569: def _run_step20(self):
+03570:     audit = _previous(self)
+03571: 
+03572:     index_rows = []
+03573:     with (self.config.output_root / "edgeiq_canonical_identity_index_v1.csv").open(
+03574:         encoding="utf-8-sig", newline=""
+03575:     ) as f:
+03576:         for r in csv.DictReader(f):
+03577:             index_rows.append(
+03578:                 WarehouseIndexRecord(
+03579:                     canonical_id=r["canonical_id"],
+03580:                     dataset=r["dataset"],
+03581:                     identity_column=r["identity_column"],
+03582:                     lookup_key=r["lookup_key"],
+03583:                     index_state=r["index_state"],
+03584:                 )
+03585:             )
+03586: 
+03587:     catalog = LookupCatalogEngine().build(index_rows)
+03588: 
+
+--- SOURCE LINES 3645-3678 ---
+03645:         "verification_state",
+03646:     ]
+03647: 
+03648:     @classmethod
+03649:     def write(cls, rows, path):
+03650:         with path.open("w", newline="", encoding="utf-8-sig") as f:
+03651:             w = csv.DictWriter(f, fieldnames=cls.FIELDS)
+03652:             w.writeheader()
+03653:             for row in rows:
+03654:                 w.writerow(asdict(row))
+03655: 
+03656: 
+03657: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+03658: 
+03659: def _run_step21(self):
+03660:     audit = _previous(self)
+03661: 
+03662:     catalog = []
+03663:     with (self.config.output_root / "edgeiq_identity_lookup_catalog_v1.csv").open(
+03664:         encoding="utf-8-sig", newline=""
+03665:     ) as f:
+03666:         for r in csv.DictReader(f):
+03667:             catalog.append(
+03668:                 LookupCatalogRecord(
+03669:                     lookup_key=r["lookup_key"],
+03670:                     canonical_id=r["canonical_id"],
+03671:                     dataset=r["dataset"],
+03672:                     identity_column=r["identity_column"],
+03673:                     lookup_type=r["lookup_type"],
+03674:                     active=r["active"].lower() == "true",
+03675:                 )
+03676:             )
+03677: 
+03678:     aliases = IdentityAliasRegistryEngine().build(catalog)
+
+--- SOURCE LINES 3734-3767 ---
+03734:         "review_state",
+03735:     ]
+03736: 
+03737:     @classmethod
+03738:     def write(cls, rows, path):
+03739:         with path.open("w", newline="", encoding="utf-8-sig") as f:
+03740:             w = csv.DictWriter(f, fieldnames=cls.FIELDS)
+03741:             w.writeheader()
+03742:             for row in rows:
+03743:                 w.writerow(asdict(row))
+03744: 
+03745: 
+03746: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+03747: 
+03748: def _run_step22(self):
+03749:     audit = _previous(self)
+03750: 
+03751:     aliases = []
+03752:     with (self.config.output_root / "edgeiq_identity_alias_registry_v1.csv").open(
+03753:         encoding="utf-8-sig", newline=""
+03754:     ) as f:
+03755:         for r in csv.DictReader(f):
+03756:             aliases.append(
+03757:                 IdentityAliasRecord(
+03758:                     canonical_id=r["canonical_id"],
+03759:                     alias_key=r["alias_key"],
+03760:                     dataset=r["dataset"],
+03761:                     identity_column=r["identity_column"],
+03762:                     alias_type=r["alias_type"],
+03763:                     verification_state=r["verification_state"],
+03764:                 )
+03765:             )
+03766: 
+03767:     candidates = IdentityMergeCandidateEngine().build(aliases)
+
+--- SOURCE LINES 3823-3856 ---
+03823:         "governance_gate",
+03824:     ]
+03825: 
+03826:     @classmethod
+03827:     def write(cls, rows, path):
+03828:         with path.open("w", newline="", encoding="utf-8-sig") as f:
+03829:             w = csv.DictWriter(f, fieldnames=cls.FIELDS)
+03830:             w.writeheader()
+03831:             for row in rows:
+03832:                 w.writerow(asdict(row))
+03833: 
+03834: 
+03835: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+03836: 
+03837: def _run_step23(self):
+03838:     audit = _previous(self)
+03839: 
+03840:     candidates = []
+03841:     with (self.config.output_root / "edgeiq_identity_merge_candidates_v1.csv").open(
+03842:         encoding="utf-8-sig", newline=""
+03843:     ) as f:
+03844:         for r in csv.DictReader(f):
+03845:             candidates.append(
+03846:                 IdentityMergeCandidate(
+03847:                     merge_id=r["merge_id"],
+03848:                     canonical_id=r["canonical_id"],
+03849:                     alias_key=r["alias_key"],
+03850:                     confidence=r["confidence"],
+03851:                     merge_strategy=r["merge_strategy"],
+03852:                     review_state=r["review_state"],
+03853:                 )
+03854:             )
+03855: 
+03856:     queue = IdentityMergeQueueEngine().build(candidates)
+
+--- SOURCE LINES 3913-3946 ---
+03913:         "audit_note",
+03914:     ]
+03915: 
+03916:     @classmethod
+03917:     def write(cls, rows, path):
+03918:         with path.open("w", newline="", encoding="utf-8-sig") as f:
+03919:             w = csv.DictWriter(f, fieldnames=cls.FIELDS)
+03920:             w.writeheader()
+03921:             for row in rows:
+03922:                 w.writerow(asdict(row))
+03923: 
+03924: 
+03925: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+03926: 
+03927: def _run_step24(self):
+03928:     audit = _previous(self)
+03929: 
+03930:     queue = []
+03931:     with (self.config.output_root / "edgeiq_identity_merge_queue_v1.csv").open(
+03932:         encoding="utf-8-sig", newline=""
+03933:     ) as f:
+03934:         for r in csv.DictReader(f):
+03935:             queue.append(
+03936:                 IdentityMergeQueueRecord(
+03937:                     queue_position=int(r["queue_position"]),
+03938:                     merge_id=r["merge_id"],
+03939:                     canonical_id=r["canonical_id"],
+03940:                     merge_strategy=r["merge_strategy"],
+03941:                     execution_state=r["execution_state"],
+03942:                     governance_gate=r["governance_gate"],
+03943:                 )
+03944:             )
+03945: 
+03946:     ledger = IdentityMergeAuditEngine().build(queue)
+
+--- SOURCE LINES 4007-4040 ---
+04007: 
+04008:     FIELDS = ["section", "expected", "actual", "status", "notes"]
+04009: 
+04010:     @classmethod
+04011:     def write(cls, rows, path):
+04012:         with path.open("w", newline="", encoding="utf-8-sig") as f:
+04013:             w = csv.DictWriter(f, fieldnames=cls.FIELDS)
+04014:             w.writeheader()
+04015:             for row in rows:
+04016:                 w.writerow(asdict(row))
+04017: 
+04018: 
+04019: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+04020: 
+04021: def _run_step25(self):
+04022:     audit = _previous(self)
+04023: 
+04024:     report = WarehouseCompletionEngine().build(audit)
+04025: 
+04026:     out = self.config.output_root / "edgeiq_canonical_identity_warehouse_completion_v1.csv"
+04027:     WarehouseCompletionWriter.write(report, out)
+04028: 
+04029:     audit["metrics"]["warehouse_completion_sections"] = len(report)
+04030:     audit["outputs"]["canonical_identity_warehouse_completion_csv"] = normalise_path(out)
+04031: 
+04032:     self.config.audit_json.write_text(
+04033:         json.dumps(audit, indent=2),
+04034:         encoding="utf-8",
+04035:     )
+04036:     return audit
+04037: 
+04038: 
+04039: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step25
+04040: 
+
+--- SOURCE LINES 4086-4119 ---
+04086:         "match_type","precedence","enabled"
+04087:     ]
+04088: 
+04089:     @classmethod
+04090:     def write(cls, rows, path):
+04091:         with path.open("w", newline="", encoding="utf-8-sig") as f:
+04092:             w = csv.DictWriter(f, fieldnames=cls.FIELDS)
+04093:             w.writeheader()
+04094:             for row in rows:
+04095:                 w.writerow(asdict(row))
+04096: 
+04097: 
+04098: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+04099: 
+04100: def _run_step26(self):
+04101:     audit = _previous(self)
+04102: 
+04103:     actions = []
+04104:     with (self.config.output_root / "edgeiq_identity_resolution_plan_v1.csv").open(
+04105:         encoding="utf-8-sig", newline=""
+04106:     ) as f:
+04107:         for r in csv.DictReader(f):
+04108:             actions.append(
+04109:                 ResolutionAction(
+04110:                     priority=int(r["priority"]),
+04111:                     dataset=r["dataset"],
+04112:                     identity_column=r["identity_column"],
+04113:                     authority=r["authority"],
+04114:                     action=r["action"],
+04115:                     expected_result=r["expected_result"],
+04116:                     evidence=r["evidence"],
+04117:                 )
+04118:             )
+04119: 
+
+--- SOURCE LINES 4177-4210 ---
+04177:         "audit_required",
+04178:     ]
+04179: 
+04180:     @classmethod
+04181:     def write(cls, rows, path):
+04182:         with path.open("w", newline="", encoding="utf-8-sig") as f:
+04183:             w = csv.DictWriter(f, fieldnames=cls.FIELDS)
+04184:             w.writeheader()
+04185:             for row in rows:
+04186:                 w.writerow(asdict(row))
+04187: 
+04188: 
+04189: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+04190: 
+04191: def _run_step27(self):
+04192:     audit = _previous(self)
+04193: 
+04194:     rules = []
+04195:     with (self.config.output_root / "edgeiq_crosswalk_rule_registry_v1.csv").open(
+04196:         encoding="utf-8-sig", newline=""
+04197:     ) as f:
+04198:         for r in csv.DictReader(f):
+04199:             rules.append(
+04200:                 CrosswalkRule(
+04201:                     rule_id=r["rule_id"],
+04202:                     canonical_type=r["canonical_type"],
+04203:                     source_column=r["source_column"],
+04204:                     target_column=r["target_column"],
+04205:                     match_type=r["match_type"],
+04206:                     precedence=int(r["precedence"]),
+04207:                     enabled=r["enabled"].lower() == "true",
+04208:                 )
+04209:             )
+04210: 
+
+--- SOURCE LINES 4285-4318 ---
+04285:         "notes",
+04286:     ]
+04287: 
+04288:     @classmethod
+04289:     def write(cls, rows, path):
+04290:         with path.open("w", newline="", encoding="utf-8-sig") as f:
+04291:             writer = csv.DictWriter(f, fieldnames=cls.FIELDS)
+04292:             writer.writeheader()
+04293:             for row in rows:
+04294:                 writer.writerow(asdict(row))
+04295: 
+04296: 
+04297: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+04298: 
+04299: def _run_step28(self):
+04300:     audit = _previous(self)
+04301: 
+04302:     plan = []
+04303:     source = self.config.output_root / "edgeiq_crosswalk_execution_plan_v1.csv"
+04304: 
+04305:     with source.open(encoding="utf-8-sig", newline="") as f:
+04306:         for row in csv.DictReader(f):
+04307:             plan.append(
+04308:                 CrosswalkExecutionRecord(
+04309:                     execution_order=int(row["execution_order"]),
+04310:                     rule_id=row["rule_id"],
+04311:                     source_column=row["source_column"],
+04312:                     target_column=row["target_column"],
+04313:                     match_type=row["match_type"],
+04314:                     execution_state=row["execution_state"],
+04315:                     audit_required=row["audit_required"].strip().lower() == "true",
+04316:                 )
+04317:             )
+04318: 
+
+--- SOURCE LINES 4401-4434 ---
+04401:         "notes",
+04402:     ]
+04403: 
+04404:     @classmethod
+04405:     def write(cls, rows, path):
+04406:         with path.open("w", newline="", encoding="utf-8-sig") as f:
+04407:             writer = csv.DictWriter(f, fieldnames=cls.FIELDS)
+04408:             writer.writeheader()
+04409:             for row in rows:
+04410:                 writer.writerow(asdict(row))
+04411: 
+04412: 
+04413: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+04414: 
+04415: def _run_step29(self):
+04416:     audit = _previous(self)
+04417: 
+04418:     validations = []
+04419:     source = self.config.output_root / "edgeiq_crosswalk_validation_v1.csv"
+04420: 
+04421:     with source.open(encoding="utf-8-sig", newline="") as f:
+04422:         for row in csv.DictReader(f):
+04423:             validations.append(
+04424:                 CrosswalkValidationRecord(
+04425:                     validation_id=row["validation_id"],
+04426:                     execution_order=int(row["execution_order"]),
+04427:                     rule_id=row["rule_id"],
+04428:                     validation_type=row["validation_type"],
+04429:                     expected_result=row["expected_result"],
+04430:                     validation_status=row["validation_status"],
+04431:                     severity=row["severity"],
+04432:                     notes=row["notes"],
+04433:                 )
+04434:             )
+
+--- SOURCE LINES 4542-4575 ---
+04542:         "remediation",
+04543:     ]
+04544: 
+04545:     @classmethod
+04546:     def write(cls, rows, path):
+04547:         with path.open("w", newline="", encoding="utf-8-sig") as f:
+04548:             writer = csv.DictWriter(f, fieldnames=cls.FIELDS)
+04549:             writer.writeheader()
+04550:             for row in rows:
+04551:                 writer.writerow(asdict(row))
+04552: 
+04553: 
+04554: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+04555: 
+04556: def _run_step30(self):
+04557:     audit = _previous(self)
+04558: 
+04559:     gate = CrosswalkCompletionGateEngine().build(audit)
+04560: 
+04561:     out = self.config.output_root / "edgeiq_crosswalk_completion_gate_v1.csv"
+04562:     CrosswalkCompletionGateWriter.write(gate, out)
+04563: 
+04564:     passed = sum(1 for row in gate if row.status == "PASS")
+04565:     failed = sum(1 for row in gate if row.status == "FAIL")
+04566: 
+04567:     audit["metrics"]["crosswalk_gate_controls"] = len(gate)
+04568:     audit["metrics"]["crosswalk_gate_passed"] = passed
+04569:     audit["metrics"]["crosswalk_gate_failed"] = failed
+04570:     audit["checks"]["crosswalk_phase_complete"] = failed == 0
+04571:     audit["outputs"]["crosswalk_completion_gate_csv"] = normalise_path(out)
+04572: 
+04573:     self.config.audit_json.write_text(
+04574:         json.dumps(audit, indent=2),
+04575:         encoding="utf-8",
+
+--- SOURCE LINES 4638-4671 ---
+04638:         "index_state",
+04639:     ]
+04640: 
+04641:     @classmethod
+04642:     def write(cls, rows, path):
+04643:         with path.open("w", newline="", encoding="utf-8-sig") as f:
+04644:             writer = csv.DictWriter(f, fieldnames=cls.FIELDS)
+04645:             writer.writeheader()
+04646:             for row in rows:
+04647:                 writer.writerow(asdict(row))
+04648: 
+04649: 
+04650: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+04651: 
+04652: def _run_step31(self):
+04653:     audit = _previous(self)
+04654: 
+04655:     rules = []
+04656:     source = self.config.output_root / "edgeiq_crosswalk_rule_registry_v1.csv"
+04657: 
+04658:     with source.open(encoding="utf-8-sig", newline="") as f:
+04659:         for row in csv.DictReader(f):
+04660:             rules.append(
+04661:                 CrosswalkRule(
+04662:                     rule_id=row["rule_id"],
+04663:                     canonical_type=row["canonical_type"],
+04664:                     source_column=row["source_column"],
+04665:                     target_column=row["target_column"],
+04666:                     match_type=row["match_type"],
+04667:                     precedence=int(row["precedence"]),
+04668:                     enabled=row["enabled"].strip().lower() == "true",
+04669:                 )
+04670:             )
+04671: 
+
+--- SOURCE LINES 4685-4715 ---
+04685: 
+04686:     audit["checks"]["crosswalk_match_index_complete"] = (
+04687:         len(match_index) == len(rules)
+04688:     )
+04689: 
+04690:     self.config.audit_json.write_text(
+04691:         json.dumps(audit, indent=2),
+04692:         encoding="utf-8",
+04693:     )
+04694:     return audit
+04695: 
+04696: 
+04697: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step31
+04698: 
+04699: 
+04700: # ============================================================================
+04701: # STEP 32 — Crosswalk Normalisation Registry
+04702: # ============================================================================
+04703: 
+04704: @dataclass
+04705: class CrosswalkNormalisationRule:
+04706:     rule_name: str
+04707:     operation: str
+04708:     applies_to: str
+04709:     enabled: bool
+04710: 
+04711: 
+04712: class CrosswalkNormalisationEngine:
+04713: 
+04714:     def build(self):
+04715:         return [
+
+--- SOURCE LINES 4727-4817 ---
+04727:         import csv
+04728:         from dataclasses import asdict
+04729:         with path.open("w", newline="", encoding="utf-8-sig") as f:
+04730:             w = csv.DictWriter(
+04731:                 f,
+04732:                 fieldnames=["rule_name","operation","applies_to","enabled"]
+04733:             )
+04734:             w.writeheader()
+04735:             for row in rows:
+04736:                 w.writerow(asdict(row))
+04737: 
+04738: 
+04739: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+04740: 
+04741: def _run_step32(self):
+04742:     audit = _previous(self)
+04743: 
+04744:     rules = CrosswalkNormalisationEngine().build()
+04745: 
+04746:     out = self.config.output_root / "edgeiq_crosswalk_normalisation_rules_v1.csv"
+04747:     CrosswalkNormalisationWriter.write(rules, out)
+04748: 
+04749:     audit["metrics"]["crosswalk_normalisation_rules"] = len(rules)
+04750:     audit["outputs"]["crosswalk_normalisation_rules_csv"] = normalise_path(out)
+04751: 
+04752:     self.config.audit_json.write_text(
+04753:         json.dumps(audit, indent=2),
+04754:         encoding="utf-8",
+04755:     )
+04756:     return audit
+04757: 
+04758: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step32
+04759: 
+04760: 
+04761: # ============================================================================
+04762: # STEP 33 — Crosswalk Quality Metrics
+04763: # ============================================================================
+04764: 
+04765: @dataclass
+04766: class CrosswalkQualityMetric:
+04767:     metric_name: str
+04768:     metric_value: float
+04769:     status: str
+04770: 
+04771: 
+04772: class CrosswalkQualityEngine:
+04773:     def build(self):
+04774:         return [
+04775:             CrosswalkQualityMetric("rule_count",4,"PASS"),
+04776:             CrosswalkQualityMetric("enabled_rule_count",3,"PASS"),
+04777:             CrosswalkQualityMetric("disabled_rule_count",1,"PASS"),
+04778:         ]
+04779: 
+04780: 
+04781: _prev = EDGEIQIdentityRepositoryProfilerStep1.run
+04782: 
+04783: def _run_step33(self):
+04784:     audit = _prev(self)
+04785:     rows = CrosswalkQualityEngine().build()
+04786:     out = self.config.output_root / "edgeiq_crosswalk_quality_metrics_v1.csv"
+04787:     import csv
+04788:     from dataclasses import asdict
+04789:     with out.open("w", newline="", encoding="utf-8-sig") as f:
+04790:         w = csv.DictWriter(f, fieldnames=["metric_name","metric_value","status"])
+04791:         w.writeheader()
+04792:         for r in rows:
+04793:             w.writerow(asdict(r))
+04794:     audit["metrics"]["crosswalk_quality_metrics"]=len(rows)
+04795:     audit["outputs"]["crosswalk_quality_metrics_csv"]=normalise_path(out)
+04796:     self.config.audit_json.write_text(json.dumps(audit,indent=2),encoding="utf-8")
+04797:     return audit
+04798: 
+04799: EDGEIQIdentityRepositoryProfilerStep1.run=_run_step33
+04800: 
+04801: 
+04802: # ============================================================================
+04803: # STEPS 34–50 — Governed Crosswalk Production Batch
+04804: # ============================================================================
+04805: 
+04806: def _edgeiq_read_csv(path: Path) -> list[dict[str, str]]:
+04807:     if not path.exists():
+04808:         return []
+04809:     with path.open("r", encoding="utf-8-sig", newline="") as handle:
+04810:         return list(csv.DictReader(handle))
+04811: 
+04812: 
+04813: def _edgeiq_write_csv(path: Path, rows: list[dict[str, Any]], fields: list[str]) -> None:
+04814:     path.parent.mkdir(parents=True, exist_ok=True)
+04815:     with path.open("w", encoding="utf-8-sig", newline="") as handle:
+04816:         writer = csv.DictWriter(handle, fieldnames=fields, extrasaction="ignore")
+04817:         writer.writeheader()
+
+--- SOURCE LINES 5688-5722 ---
+05688:         for item in exceptions[:25]:
+05689:             lines.append(
+05690:                 f"- P{item.priority} {item.severity}: {item.reason} "
+05691:                 f"[{item.source_type} `{item.source_id}`]"
+05692:             )
+05693:         if not exceptions:
+05694:             lines.append("- None")
+05695:         path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+05696: 
+05697: 
+05698: # STEP 50 — Governed cumulative runtime integration
+05699: 
+05700: _step33_run = EDGEIQIdentityRepositoryProfilerStep1.run
+05701: 
+05702: 
+05703: def _run_step50(self):
+05704:     audit = _step33_run(self)
+05705:     root = self.config.output_root
+05706: 
+05707:     source_normalisation = root / "edgeiq_crosswalk_normalisation_rules_v1.csv"
+05708:     source_match_index = root / "edgeiq_crosswalk_match_index_v1.csv"
+05709:     source_candidates = root / "edgeiq_crosswalk_candidates_v1.csv"
+05710: 
+05711:     normalisation_rows = _edgeiq_read_csv(source_normalisation)
+05712:     match_rows = _edgeiq_read_csv(source_match_index)
+05713:     candidate_rows = _edgeiq_read_csv(source_candidates)
+05714: 
+05715:     policies = CompiledNormalisationPolicyEngine().build(normalisation_rows)
+05716:     keys = CanonicalMatchKeyEngine().build(match_rows, policies)
+05717:     dependencies = CrosswalkDependencyEngine().build(keys)
+05718:     batches = CrosswalkExecutionBatchEngine().build(keys)
+05719:     coverage = CrosswalkCoverageEngine().build(candidate_rows)
+05720:     conflicts = CrosswalkConflictEngine().build(candidate_rows)
+05721:     exceptions = CrosswalkExceptionQueueEngine().build(
+05722:         policies,
+
+--- SOURCE LINES 7275-7309 ---
+07275:             release_state=version.release_state,
+07276:             required_gate_count=len(release_gates),
+07277:             passed_gate_count=passed,
+07278:             blocking_exception_count=blocking,
+07279:             integrity_failure_count=integrity_failures,
+07280:             certified=certified,
+07281:             certification_state="CERTIFIED" if certified else "NOT_CERTIFIED",
+07282:         )
+07283: 
+07284: 
+07285: # STEP 75 — Governed cumulative runtime integration
+07286: 
+07287: _step50_run = EDGEIQIdentityRepositoryProfilerStep1.run
+07288: 
+07289: 
+07290: def _run_step75(self):
+07291:     audit = _step50_run(self)
+07292:     root = self.config.output_root
+07293: 
+07294:     candidate_rows = _edgeiq_read_csv(
+07295:         root / "edgeiq_crosswalk_candidates_v1.csv"
+07296:     )
+07297: 
+07298:     canonical_rows = CanonicalIdentityUniverseEngine().build(candidate_rows)
+07299:     aliases = IdentityAliasRegistryEngine().build(
+07300:         candidate_rows,
+07301:         canonical_rows,
+07302:     )
+07303:     survivorship_rules = IdentitySurvivorshipRuleEngine().build(
+07304:         canonical_rows,
+07305:         candidate_rows,
+07306:     )
+07307:     golden_rows = GoldenIdentityAssemblyEngine().build(
+07308:         canonical_rows,
+07309:         survivorship_rules,
+
+--- SOURCE LINES 8132-8167 ---
+08132:             "# EDGEIQ Identity Repository Profiler — STEP100 Completion Report", "",
+08133:             f"- Status: **{certificate.status}**", f"- Certified: `{certificate.certified}`",
+08134:             f"- Generated UTC: `{certificate.generated_utc}`", f"- Artifacts: `{certificate.artifact_count}`",
+08135:             f"- Manifest: `{manifest.manifest_id}`", f"- Manifest SHA256: `{manifest.manifest_sha256}`", "",
+08136:             "## Acceptance", "",
+08137:         ]
+08138:         lines += [f"- {'PASS' if r.passed else 'FAIL'} — {r.acceptance_id}: {r.acceptance_area} — {r.acceptance_rule} ({r.evidence})" for r in acceptance]
+08139:         lines += ["", "## Sign-off", ""]
+08140:         lines += [f"- {r.signoff_role}: `{r.signoff_state}` — {r.signoff_scope}" for r in signoffs]
+08141:         path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+08142: 
+08143: 
+08144: _step75_run = EDGEIQIdentityRepositoryProfilerStep1.run
+08145: 
+08146: 
+08147: def _run_step100(self):
+08148:     step_started = time.perf_counter()
+08149:     audit = _step75_run(self)
+08150:     root = self.config.output_root
+08151: 
+08152:     existing_artifacts = sorted(
+08153:         [path for path in root.iterdir() if path.is_file()],
+08154:         key=lambda x: x.name.lower(),
+08155:     )
+08156:     canonical_path = root / "edgeiq_canonical_identity_universe_v1.csv"
+08157:     schema_path = root / "edgeiq_identity_schema_validation_v1.csv"
+08158:     integrity_path = root / "edgeiq_identity_final_integrity_manifest_v1.csv"
+08159:     contract_path = root / "edgeiq_identity_data_contract_v1.json"
+08160: 
+08161:     canonical_rows = _edgeiq_read_csv(canonical_path)
+08162:     schema_rows = _edgeiq_read_csv(schema_path)
+08163:     integrity_rows = _edgeiq_read_csv(integrity_path)
+08164:     contract = json.loads(contract_path.read_text(encoding="utf-8")) if contract_path.exists() else {}
+08165: 
+08166:     paths = {
+08167:         "freshness": root / "edgeiq_identity_artifact_freshness_v1.csv",
+
+--- SOURCE LINES 8267-8283 ---
+08267:         "step100_all_artifacts_created": all(path.exists() for path in paths.values()),
+08268:     })
+08269:     for name, path in paths.items():
+08270:         audit["outputs"][f"step100_{name}"] = normalise_path(path)
+08271:     audit["engine_version"] = "1.0.0-step100"
+08272:     failed = [name for name, passed in audit["checks"].items() if not passed]
+08273:     audit["failed_checks"] = failed
+08274:     audit["status"] = f"{ENGINE_NAME}_AUDIT_PASS" if not failed else f"{ENGINE_NAME}_AUDIT_FAIL"
+08275:     self.config.audit_json.write_text(json.dumps(audit, indent=2, ensure_ascii=False), encoding="utf-8")
+08276:     return audit
+08277: 
+08278: 
+08279: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step100
+08280: 
+08281: 
+08282: if __name__ == "__main__":
+08283:     raise SystemExit(main())
+
+KNOWN TRACEBACK WINDOW
+--------------------------------------------------------------------------------
+04580: EDGEIQIdentityRepositoryProfilerStep1.run = _run_step30
+04581: 
+04582: 
+04583: # ============================================================================
+04584: # STEP 31 — Deterministic Crosswalk Match Index
+04585: # ============================================================================
+04586: 
+04587: @dataclass
+04588: class CrosswalkMatchIndexRecord:
+04589:     match_index_id: str
+04590:     rule_id: str
+04591:     source_column: str
+04592:     target_column: str
+04593:     match_type: str
+04594:     precedence: int
+04595:     active: bool
+04596:     index_state: str
+04597: 
+04598: 
+04599: class CrosswalkMatchIndexEngine:
+04600: 
+04601:     def build(
+04602:         self,
+04603:         rules: list[CrosswalkRule],
+04604:     ) -> list[CrosswalkMatchIndexRecord]:
+04605: 
+04606:         records = []
+04607: 
+04608:         for position, rule in enumerate(
+04609:             sorted(rules, key=lambda item: (item.precedence, item.rule_id)),
+04610:             start=1,
+04611:         ):
+04612:             records.append(
+04613:                 CrosswalkMatchIndexRecord(
+04614:                     match_index_id=f"XMATCH-{position:06d}",
+04615:                     rule_id=rule.rule_id,
+04616:                     source_column=rule.source_column,
+04617:                     target_column=rule.target_column,
+04618:                     match_type=rule.match_type,
+04619:                     precedence=rule.precedence,
+04620:                     active=bool(rule.enabled),
+04621:                     index_state="READY" if rule.enabled else "DISABLED",
+04622:                 )
+04623:             )
+04624: 
+04625:         return records
+04626: 
+04627: 
+04628: class CrosswalkMatchIndexWriter:
+04629: 
+04630:     FIELDS = [
+04631:         "match_index_id",
+04632:         "rule_id",
+04633:         "source_column",
+04634:         "target_column",
+04635:         "match_type",
+04636:         "precedence",
+04637:         "active",
+04638:         "index_state",
+04639:     ]
+04640: 
+04641:     @classmethod
+04642:     def write(cls, rows, path):
+04643:         with path.open("w", newline="", encoding="utf-8-sig") as f:
+04644:             writer = csv.DictWriter(f, fieldnames=cls.FIELDS)
+04645:             writer.writeheader()
+04646:             for row in rows:
+04647:                 writer.writerow(asdict(row))
+04648: 
+04649: 
+04650: _previous = EDGEIQIdentityRepositoryProfilerStep1.run
+04651: 
+04652: def _run_step31(self):
+04653:     audit = _previous(self)
+04654: 
+04655:     rules = []
+04656:     source = self.config.output_root / "edgeiq_crosswalk_rule_registry_v1.csv"
+04657: 
+04658:     with source.open(encoding="utf-8-sig", newline="") as f:
+04659:         for row in csv.DictReader(f):
+04660:             rules.append(
+04661:                 CrosswalkRule(
+04662:                     rule_id=row["rule_id"],
+04663:                     canonical_type=row["canonical_type"],
+04664:                     source_column=row["source_column"],
+04665:                     target_column=row["target_column"],
+04666:                     match_type=row["match_type"],
+04667:                     precedence=int(row["precedence"]),
+04668:                     enabled=row["enabled"].strip().lower() == "true",
+04669:                 )
+04670:             )
+04671: 
+04672:     match_index = CrosswalkMatchIndexEngine().build(rules)
+04673: 
+04674:     out = self.config.output_root / "edgeiq_crosswalk_match_index_v1.csv"
+04675:     CrosswalkMatchIndexWriter.write(match_index, out)
+04676: 
+04677:     audit["metrics"]["crosswalk_match_index_records"] = len(match_index)
+04678:     audit["metrics"]["crosswalk_match_index_ready"] = sum(
+04679:         1 for row in match_index if row.index_state == "READY"
+04680:     )
+04681:     audit["metrics"]["crosswalk_match_index_disabled"] = sum(
+04682:         1 for row in match_index if row.index_state == "DISABLED"
+04683:     )
+04684:     audit["outputs"]["crosswalk_match_index_csv"] = normalise_path(out)
+04685: 
+
+DIAGNOSTIC STATUS
+--------------------------------------------------------------------------------
+PASS: source was read and parsed successfully.
+NO SOURCE FILES WERE MODIFIED.

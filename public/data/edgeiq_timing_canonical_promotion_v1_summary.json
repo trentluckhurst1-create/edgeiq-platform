@@ -1,0 +1,143 @@
+{
+  "archived_files": [
+    {
+      "archive_path": "docs/performance-intelligence/restart-v1/timing-canonical-promotion-v1/archive/20260730T074411Z/public/data/edgeiq_benchmark_observation_fact_v1.csv",
+      "exists_before": true,
+      "path": "public/data/edgeiq_benchmark_observation_fact_v1.csv",
+      "rows_before": 39,
+      "sha256_before": "e88b7c7f6fd6496804d4f912df0d66c1d57eaf8b16a536ced4c7aa3bbd988efc"
+    },
+    {
+      "archive_path": "docs/performance-intelligence/restart-v1/timing-canonical-promotion-v1/archive/20260730T074411Z/public/data/edgeiq_benchmark_observation_current_window_v2_1.csv",
+      "exists_before": true,
+      "path": "public/data/edgeiq_benchmark_observation_current_window_v2_1.csv",
+      "rows_before": 39,
+      "sha256_before": "e88b7c7f6fd6496804d4f912df0d66c1d57eaf8b16a536ced4c7aa3bbd988efc"
+    },
+    {
+      "archive_path": "docs/performance-intelligence/restart-v1/timing-canonical-promotion-v1/archive/20260730T074411Z/public/data/edgeiq_benchmark_observation_current_window_v2_1_metadata.json",
+      "exists_before": true,
+      "path": "public/data/edgeiq_benchmark_observation_current_window_v2_1_metadata.json",
+      "rows_before": 6,
+      "sha256_before": "9415e894d302e74223c1dbf831790e4f4164fa46fdb4eb6f0f83618e3659e05f"
+    },
+    {
+      "archive_path": "docs/performance-intelligence/restart-v1/timing-canonical-promotion-v1/archive/20260730T074411Z/public/data/edgeiq_canonical_historical_timing_warehouse_v1.csv",
+      "exists_before": true,
+      "path": "public/data/edgeiq_canonical_historical_timing_warehouse_v1.csv",
+      "rows_before": 70319,
+      "sha256_before": "1a883451e54ada81b3f37159ec752d46af44967b03e0df39201d281b18eec4cb"
+    },
+    {
+      "archive_path": "docs/performance-intelligence/restart-v1/timing-canonical-promotion-v1/archive/20260730T074411Z/public/data/edgeiq_standard_time_fact_v1.csv",
+      "exists_before": true,
+      "path": "public/data/edgeiq_standard_time_fact_v1.csv",
+      "rows_before": 695,
+      "sha256_before": "42096d23343ec1d85013cef975e5fa385b7821c337399f3df9d1acefd3696a7d"
+    },
+    {
+      "archive_path": "docs/performance-intelligence/restart-v1/timing-canonical-promotion-v1/archive/20260730T074411Z/public/data/edgeiq_race_time_delta_versus_standard_fact_v1.csv",
+      "exists_before": true,
+      "path": "public/data/edgeiq_race_time_delta_versus_standard_fact_v1.csv",
+      "rows_before": 54989,
+      "sha256_before": "dfe64e490d98fe63346067a1effd6968295953064bc7f74c0f5bf1240e20f2c4"
+    },
+    {
+      "archive_path": "docs/performance-intelligence/restart-v1/timing-canonical-promotion-v1/archive/20260730T074411Z/public/data/edgeiq_lengths_versus_standard_fact_v1.csv",
+      "exists_before": true,
+      "path": "public/data/edgeiq_lengths_versus_standard_fact_v1.csv",
+      "rows_before": 52425,
+      "sha256_before": "260c4f0b74e7c859442313dca20f0de65baf2da6ecc4ea55a79f0241c719df5f"
+    },
+    {
+      "archive_path": "docs/performance-intelligence/restart-v1/timing-canonical-promotion-v1/archive/20260730T074411Z/public/data/edgeiq_lengths_versus_standard_fact_v1_rejections.csv",
+      "exists_before": true,
+      "path": "public/data/edgeiq_lengths_versus_standard_fact_v1_rejections.csv",
+      "rows_before": 2564,
+      "sha256_before": "70852119ba2e7ca4c293231e7cb686cea774a3f0ff8cb2d6cfca271bb1ec9e12"
+    },
+    {
+      "archive_path": "docs/performance-intelligence/restart-v1/timing-canonical-promotion-v1/archive/20260730T074411Z/public/data/edgeiq_performance_intelligence_base_fact_v1.csv",
+      "exists_before": true,
+      "path": "public/data/edgeiq_performance_intelligence_base_fact_v1.csv",
+      "rows_before": 52425,
+      "sha256_before": "ccf73975aeb7145a4d04f63e6258cf9e36fcc9a8ac784927199499c73559617a"
+    }
+  ],
+  "generated_utc": "2026-07-30T07:44:11Z",
+  "promotion_rows": [
+    {
+      "artifact": "timing_warehouse",
+      "canonical_path": "public/data/edgeiq_canonical_historical_timing_warehouse_v1.csv",
+      "hash_match": "YES",
+      "promotion_status": "PROMOTED",
+      "rows_after": 70308,
+      "rows_before": 70319,
+      "sha256_after": "0de5b4251c3eaa5c47080cd5616ca202294e4ea0389d61e646beee1d9c859f0f",
+      "sha256_before": "1a883451e54ada81b3f37159ec752d46af44967b03e0df39201d281b18eec4cb",
+      "source_path": "public/data/edgeiq_recovered_timing_warehouse_v1.csv",
+      "source_sha256": "0de5b4251c3eaa5c47080cd5616ca202294e4ea0389d61e646beee1d9c859f0f"
+    },
+    {
+      "artifact": "standard_time",
+      "canonical_path": "public/data/edgeiq_standard_time_fact_v1.csv",
+      "hash_match": "YES",
+      "promotion_status": "PROMOTED",
+      "rows_after": 695,
+      "rows_before": 695,
+      "sha256_after": "90854c4cdc474aeb1e0b35c149b885053683c134b43212b8abaa24311c7cc709",
+      "sha256_before": "42096d23343ec1d85013cef975e5fa385b7821c337399f3df9d1acefd3696a7d",
+      "source_path": "public/data/edgeiq_standard_time_fact_recovered_v1.csv",
+      "source_sha256": "90854c4cdc474aeb1e0b35c149b885053683c134b43212b8abaa24311c7cc709"
+    },
+    {
+      "artifact": "race_time_delta",
+      "canonical_path": "public/data/edgeiq_race_time_delta_versus_standard_fact_v1.csv",
+      "hash_match": "YES",
+      "promotion_status": "PROMOTED",
+      "rows_after": 54978,
+      "rows_before": 54989,
+      "sha256_after": "d6da68962b664814147e3e0900916ed512effc32b0ec7e145bf84505f0e9f4ce",
+      "sha256_before": "dfe64e490d98fe63346067a1effd6968295953064bc7f74c0f5bf1240e20f2c4",
+      "source_path": "public/data/edgeiq_race_time_delta_versus_standard_recovered_v1.csv",
+      "source_sha256": "d6da68962b664814147e3e0900916ed512effc32b0ec7e145bf84505f0e9f4ce"
+    },
+    {
+      "artifact": "lengths_versus_standard",
+      "canonical_path": "public/data/edgeiq_lengths_versus_standard_fact_v1.csv",
+      "hash_match": "YES",
+      "promotion_status": "PROMOTED",
+      "rows_after": 52414,
+      "rows_before": 52425,
+      "sha256_after": "90b014efaef426aa906e4e2b28b388ebd769061ec9eef1bfde0edd20168a649c",
+      "sha256_before": "260c4f0b74e7c859442313dca20f0de65baf2da6ecc4ea55a79f0241c719df5f",
+      "source_path": "public/data/edgeiq_lengths_versus_standard_recovered_v1.csv",
+      "source_sha256": "90b014efaef426aa906e4e2b28b388ebd769061ec9eef1bfde0edd20168a649c"
+    },
+    {
+      "artifact": "lengths_versus_standard_rejections",
+      "canonical_path": "public/data/edgeiq_lengths_versus_standard_fact_v1_rejections.csv",
+      "hash_match": "YES",
+      "promotion_status": "PROMOTED",
+      "rows_after": 2564,
+      "rows_before": 2564,
+      "sha256_after": "eaa63af13dd5f5f7e6271d8a467b8ae0ca3f3d9df24ab52b4ca5a50ba70ee677",
+      "sha256_before": "70852119ba2e7ca4c293231e7cb686cea774a3f0ff8cb2d6cfca271bb1ec9e12",
+      "source_path": "public/data/edgeiq_lengths_versus_standard_recovered_v1_rejections.csv",
+      "source_sha256": "eaa63af13dd5f5f7e6271d8a467b8ae0ca3f3d9df24ab52b4ca5a50ba70ee677"
+    },
+    {
+      "artifact": "performance_base",
+      "canonical_path": "public/data/edgeiq_performance_intelligence_base_fact_v1.csv",
+      "hash_match": "YES",
+      "promotion_status": "PROMOTED",
+      "rows_after": 52414,
+      "rows_before": 52425,
+      "sha256_after": "bada7faa3ee9d820d3e8410e2399b198f0eeddef7cd4186f25719d44997477dd",
+      "sha256_before": "ccf73975aeb7145a4d04f63e6258cf9e36fcc9a8ac784927199499c73559617a",
+      "source_path": "public/data/edgeiq_performance_intelligence_base_recovered_v1.csv",
+      "source_sha256": "bada7faa3ee9d820d3e8410e2399b198f0eeddef7cd4186f25719d44997477dd"
+    }
+  ],
+  "status": "PASS"
+}

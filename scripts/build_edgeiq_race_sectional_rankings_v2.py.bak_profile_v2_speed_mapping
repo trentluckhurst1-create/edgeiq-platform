@@ -1,0 +1,350 @@
+﻿import csv
+from pathlib import Path
+from collections import defaultdict
+
+ROOT = Path(__file__).resolve().parents[1]
+DATA = ROOT / "public" / "data"
+
+LIVE = DATA / "edgeiq_live_sectional_intelligence_v1.csv"
+ABILITY = DATA / "edgeiq_sectional_ability_engine_v3.csv"
+PACE = DATA / "edgeiq_pace_advantage_engine_v1.csv"
+
+OUT = DATA / "edgeiq_race_sectional_rankings_v2.csv"
+AUDIT = DATA / "edgeiq_race_sectional_rankings_v2_audit.csv"
+
+MIN_BEST_SECTIONAL = 55.0
+MIN_BEST_CLOSER = 60.0
+MIN_BEST_SUSTAINED = 60.0
+MIN_CONFIDENCE = 50.0
+MIN_DANGEROUS_ABILITY = 60.0
+MAX_DANGEROUS_CONFIDENCE = 65.0
+MIN_PACE_FIT_SCORE = 45.0
+
+def clean(v):
+    return "" if v is None else str(v).strip()
+
+def key(v):
+    return clean(v).upper().replace("'", "").replace(".", "").replace("-", " ")
+
+def to_float(v, default=0.0):
+    try:
+        if v is None or str(v).strip() == "":
+            return default
+        return float(v)
+    except Exception:
+        return default
+
+def race_key(row):
+    track = clean(row.get("track") or row.get("meeting") or row.get("venue"))
+    race_no = clean(row.get("race_no") or row.get("race") or row.get("race_number"))
+    return f"{track}|{race_no}"
+
+def horse_key(row):
+    return key(row.get("horse_name") or row.get("runner_name") or row.get("horse"))
+
+def read_csv(path):
+    if not path.exists():
+        return []
+    with path.open("r", encoding="utf-8-sig", newline="") as f:
+        return list(csv.DictReader(f))
+
+live_rows = read_csv(LIVE)
+ability_rows = read_csv(ABILITY)
+pace_rows = read_csv(PACE)
+
+ability_by_horse = {}
+for r in ability_rows:
+    ability_by_horse[horse_key(r)] = r
+
+pace_by_race_horse = {}
+for r in pace_rows:
+    pace_by_race_horse[(race_key(r), horse_key(r))] = r
+
+race_groups = defaultdict(list)
+
+for live in live_rows:
+    rk = race_key(live)
+    hk = horse_key(live)
+    if not rk or not hk:
+        continue
+
+    ability = ability_by_horse.get(hk, {})
+    pace = pace_by_race_horse.get((rk, hk), {})
+
+    row = {
+        "track": clean(live.get("track") or live.get("meeting") or live.get("venue")),
+        "race_no": clean(live.get("race_no") or live.get("race") or live.get("race_number")),
+        "race_key": rk,
+        "horse_name": clean(live.get("horse_name") or live.get("runner_name") or live.get("horse")),
+        "_horse_key": hk,
+        "sectional_ability_score": to_float(ability.get("sectional_ability_score_v3")),
+        "sectional_ability_class": clean(ability.get("sectional_ability_class_v3")),
+        "sectional_confidence_score": to_float(ability.get("sectional_confidence_score_v3")),
+        "sectional_reliability_rank": clean(ability.get("sectional_reliability_rank_v3")),
+        "closing_speed_score": to_float(ability.get("closing_speed_score")),
+        "sustained_speed_score": to_float(ability.get("sustained_speed_score")),
+        "peak_speed_score": to_float(ability.get("peak_speed_score")),
+        "pace_advantage_status": clean(
+            pace.get("pace_advantage_status")
+            or pace.get("advantage_status")
+            or pace.get("status")
+        ),
+        "pace_advantage_signal": clean(
+            pace.get("pace_advantage")
+            or pace.get("pace_signal")
+            or pace.get("advantage_type")
+        ),
+    }
+
+    race_groups[rk].append(row)
+
+def ordered_rank(rows, score_fn):
+    return {
+        r["_horse_key"]: idx + 1
+        for idx, r in enumerate(sorted(rows, key=score_fn, reverse=True))
+    }
+
+def eligible_best(rows, score_field, minimum):
+    elig = [r for r in rows if to_float(r.get(score_field)) >= minimum]
+    if not elig:
+        return None
+    return sorted(elig, key=lambda r: to_float(r.get(score_field)), reverse=True)[0]
+
+def dangerous_score(r):
+    ability = to_float(r.get("sectional_ability_score"))
+    conf = to_float(r.get("sectional_confidence_score"))
+    rel = clean(r.get("sectional_reliability_rank")).upper()
+
+    if ability < MIN_DANGEROUS_ABILITY or conf > MAX_DANGEROUS_CONFIDENCE:
+        return -999
+
+    rel_bonus = 0
+    if rel == "D":
+        rel_bonus = 12
+    elif rel == "C":
+        rel_bonus = 8
+    elif rel == "B":
+        rel_bonus = 3
+
+    return ability + rel_bonus + ((MAX_DANGEROUS_CONFIDENCE - conf) * 0.20)
+
+def pace_fit_score(r):
+    ability = to_float(r.get("sectional_ability_score"))
+    conf = to_float(r.get("sectional_confidence_score"))
+    closing = to_float(r.get("closing_speed_score"))
+    sustained = to_float(r.get("sustained_speed_score"))
+
+    status = clean(r.get("pace_advantage_status")).upper()
+    signal = clean(r.get("pace_advantage_signal")).upper()
+
+    bonus = 0.0
+    if "VERY_POSITIVE" in status:
+        bonus += 14
+    elif "POSITIVE" in status:
+        bonus += 8
+    elif "NEGATIVE" in status:
+        bonus -= 12
+
+    if "PACE_COLLAPSE" in signal:
+        bonus += closing * 0.08
+    if "SOFT_LEAD" in signal:
+        bonus += sustained * 0.06
+    if "TURN_OF_FOOT" in signal:
+        bonus += closing * 0.06
+
+    return (ability * 0.60) + (conf * 0.15) + bonus
+
+def eligible_dangerous(rows):
+    elig = [r for r in rows if dangerous_score(r) > -999]
+    if not elig:
+        return None
+    return sorted(elig, key=dangerous_score, reverse=True)[0]
+
+def eligible_pace_fit(rows):
+    elig = [r for r in rows if pace_fit_score(r) >= MIN_PACE_FIT_SCORE and to_float(r.get("sectional_ability_score")) >= 50]
+    if not elig:
+        return None
+    return sorted(elig, key=pace_fit_score, reverse=True)[0]
+
+out_rows = []
+
+race_summary_counts = {
+    "races_with_best_sectional": 0,
+    "races_with_best_closer": 0,
+    "races_with_best_sustained": 0,
+    "races_with_highest_confidence": 0,
+    "races_with_dangerous_improver": 0,
+    "races_with_best_pace_fit": 0,
+}
+
+for rk, rows in race_groups.items():
+    ability_rank = ordered_rank(rows, lambda r: to_float(r.get("sectional_ability_score")))
+    confidence_rank = ordered_rank(rows, lambda r: to_float(r.get("sectional_confidence_score")))
+    closing_rank = ordered_rank(rows, lambda r: to_float(r.get("closing_speed_score")))
+    sustained_rank = ordered_rank(rows, lambda r: to_float(r.get("sustained_speed_score")))
+    dangerous_rank = ordered_rank(rows, dangerous_score)
+    pace_rank = ordered_rank(rows, pace_fit_score)
+
+    best_sectional = eligible_best(rows, "sectional_ability_score", MIN_BEST_SECTIONAL)
+    best_closer = eligible_best(rows, "closing_speed_score", MIN_BEST_CLOSER)
+    best_sustained = eligible_best(rows, "sustained_speed_score", MIN_BEST_SUSTAINED)
+    highest_confidence = eligible_best(rows, "sectional_confidence_score", MIN_CONFIDENCE)
+    dangerous = eligible_dangerous(rows)
+    pace_fit = eligible_pace_fit(rows)
+
+    if best_sectional:
+        race_summary_counts["races_with_best_sectional"] += 1
+    if best_closer:
+        race_summary_counts["races_with_best_closer"] += 1
+    if best_sustained:
+        race_summary_counts["races_with_best_sustained"] += 1
+    if highest_confidence:
+        race_summary_counts["races_with_highest_confidence"] += 1
+    if dangerous:
+        race_summary_counts["races_with_dangerous_improver"] += 1
+    if pace_fit:
+        race_summary_counts["races_with_best_pace_fit"] += 1
+
+    winners = {
+        "BEST_SECTIONAL_HORSE": best_sectional["_horse_key"] if best_sectional else "",
+        "HIGHEST_CONFIDENCE": highest_confidence["_horse_key"] if highest_confidence else "",
+        "BEST_CLOSER": best_closer["_horse_key"] if best_closer else "",
+        "BEST_SUSTAINED": best_sustained["_horse_key"] if best_sustained else "",
+        "DANGEROUS_IMPROVER": dangerous["_horse_key"] if dangerous else "",
+        "BEST_PACE_FIT": pace_fit["_horse_key"] if pace_fit else "",
+    }
+
+    race_has_any_signal = any(winners.values())
+
+    for r in rows:
+        hk = r["_horse_key"]
+
+        flags = []
+        for flag, winner_hk in winners.items():
+            if winner_hk and winner_hk == hk:
+                flags.append(flag)
+
+        if not flags:
+            flags.append("NO_TOP_RANK" if race_has_any_signal else "NO_MEANINGFUL_SECTIONAL_SIGNAL")
+
+        primary = flags[0]
+
+        note_parts = []
+        if "BEST_SECTIONAL_HORSE" in flags:
+            note_parts.append("Top qualified sectional ability in this race")
+        if "BEST_CLOSER" in flags:
+            note_parts.append("Top qualified closing profile")
+        if "BEST_SUSTAINED" in flags:
+            note_parts.append("Top qualified sustained-speed profile")
+        if "DANGEROUS_IMPROVER" in flags:
+            note_parts.append("High-upside sectional profile but not fully proven")
+        if "BEST_PACE_FIT" in flags:
+            note_parts.append("Best qualified sectional plus pace-shape fit")
+        if "HIGHEST_CONFIDENCE" in flags:
+            note_parts.append("Most reliable qualified sectional evidence")
+        if not note_parts and primary == "NO_MEANINGFUL_SECTIONAL_SIGNAL":
+            note_parts.append("No runner clears minimum sectional evidence thresholds")
+        elif not note_parts:
+            note_parts.append("No qualified top sectional edge")
+
+        out_rows.append({
+            "track": r["track"],
+            "race_no": r["race_no"],
+            "race_key": r["race_key"],
+            "horse_name": r["horse_name"],
+            "sectional_ability_score": round(to_float(r.get("sectional_ability_score")), 2),
+            "sectional_ability_class": r["sectional_ability_class"],
+            "sectional_confidence_score": round(to_float(r.get("sectional_confidence_score")), 2),
+            "sectional_reliability_rank": r["sectional_reliability_rank"],
+            "closing_speed_score": round(to_float(r.get("closing_speed_score")), 2),
+            "sustained_speed_score": round(to_float(r.get("sustained_speed_score")), 2),
+            "pace_advantage_status": r["pace_advantage_status"],
+            "pace_advantage_signal": r["pace_advantage_signal"],
+            "sectional_ability_rank": ability_rank.get(hk, ""),
+            "sectional_confidence_rank": confidence_rank.get(hk, ""),
+            "closing_rank": closing_rank.get(hk, ""),
+            "sustained_rank": sustained_rank.get(hk, ""),
+            "dangerous_improver_rank": dangerous_rank.get(hk, ""),
+            "pace_fit_rank": pace_rank.get(hk, ""),
+            "race_sectional_primary_flag": primary,
+            "race_sectional_flags": "|".join(flags),
+            "race_sectional_note": "; ".join(note_parts),
+            "qualified_best_sectional_min": MIN_BEST_SECTIONAL,
+            "qualified_best_closer_min": MIN_BEST_CLOSER,
+            "qualified_best_sustained_min": MIN_BEST_SUSTAINED,
+            "qualified_confidence_min": MIN_CONFIDENCE,
+        })
+
+fields = [
+    "track",
+    "race_no",
+    "race_key",
+    "horse_name",
+    "sectional_ability_score",
+    "sectional_ability_class",
+    "sectional_confidence_score",
+    "sectional_reliability_rank",
+    "closing_speed_score",
+    "sustained_speed_score",
+    "pace_advantage_status",
+    "pace_advantage_signal",
+    "sectional_ability_rank",
+    "sectional_confidence_rank",
+    "closing_rank",
+    "sustained_rank",
+    "dangerous_improver_rank",
+    "pace_fit_rank",
+    "race_sectional_primary_flag",
+    "race_sectional_flags",
+    "race_sectional_note",
+    "qualified_best_sectional_min",
+    "qualified_best_closer_min",
+    "qualified_best_sustained_min",
+    "qualified_confidence_min",
+]
+
+with OUT.open("w", encoding="utf-8", newline="") as f:
+    writer = csv.DictWriter(f, fieldnames=fields)
+    writer.writeheader()
+    writer.writerows(out_rows)
+
+flag_counts = defaultdict(int)
+for r in out_rows:
+    for flag in clean(r.get("race_sectional_flags")).split("|"):
+        if flag:
+            flag_counts[flag] += 1
+
+audit_row = {
+    "live_rows_loaded": len(live_rows),
+    "ability_rows_loaded": len(ability_rows),
+    "pace_rows_loaded": len(pace_rows),
+    "output_rows": len(out_rows),
+    "race_count": len(race_groups),
+    "races_with_best_sectional": race_summary_counts["races_with_best_sectional"],
+    "races_with_highest_confidence": race_summary_counts["races_with_highest_confidence"],
+    "races_with_best_closer": race_summary_counts["races_with_best_closer"],
+    "races_with_best_sustained": race_summary_counts["races_with_best_sustained"],
+    "races_with_dangerous_improver": race_summary_counts["races_with_dangerous_improver"],
+    "races_with_best_pace_fit": race_summary_counts["races_with_best_pace_fit"],
+    "best_sectional_horse_flags": flag_counts.get("BEST_SECTIONAL_HORSE", 0),
+    "highest_confidence_flags": flag_counts.get("HIGHEST_CONFIDENCE", 0),
+    "best_closer_flags": flag_counts.get("BEST_CLOSER", 0),
+    "best_sustained_flags": flag_counts.get("BEST_SUSTAINED", 0),
+    "dangerous_improver_flags": flag_counts.get("DANGEROUS_IMPROVER", 0),
+    "best_pace_fit_flags": flag_counts.get("BEST_PACE_FIT", 0),
+    "no_meaningful_sectional_signal_rows": flag_counts.get("NO_MEANINGFUL_SECTIONAL_SIGNAL", 0),
+    "no_top_rank_rows": flag_counts.get("NO_TOP_RANK", 0),
+    "final_status": "RACE_SECTIONAL_RANKINGS_V2_BUILT",
+}
+
+with AUDIT.open("w", encoding="utf-8", newline="") as f:
+    writer = csv.DictWriter(f, fieldnames=list(audit_row.keys()))
+    writer.writeheader()
+    writer.writerow(audit_row)
+
+print("EDGEiQ Race Sectional Rankings V2 built")
+print(f"rows={len(out_rows)}")
+print(f"races={len(race_groups)}")
+print(f"saved={OUT}")
+print(f"audit={AUDIT}")
+print("final_status=RACE_SECTIONAL_RANKINGS_V2_BUILT")

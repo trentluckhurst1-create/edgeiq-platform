@@ -1,0 +1,13 @@
+{
+  "built_utc": "2026-07-22T19:21:34+00:00",
+  "status": "RACINGCOM_GRAPHQL_RACE_EVIDENCE_V1_PASS",
+  "evidence_rows": 7,
+  "rejections": 0,
+  "validated_graphql_race_with_speed": 5,
+  "validated_graphql_race_no_speed": 2,
+  "graphql_host": "graphql.rmdprod.racing.com",
+  "graphql_operation": "sectionaltimes_callback",
+  "graphql_resolver": "getRaceForm",
+  "production_changed": "NO",
+  "ui_changed": "NO"
+}

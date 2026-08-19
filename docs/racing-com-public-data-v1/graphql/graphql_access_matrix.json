@@ -1,0 +1,34 @@
+[
+  {
+    "operation_name": "MEETING",
+    "endpoint": "https://graphql.rmdprod.racing.com",
+    "mode": "ALL",
+    "http_status": 200,
+    "access_classification": "PUBLIC_ANONYMOUS_CONFIRMED",
+    "detail": "Public appv2 meeting catalogue probe."
+  },
+  {
+    "operation_name": "RACE",
+    "endpoint": "https://graphql.rmdprod.racing.com",
+    "mode": "ALL",
+    "http_status": "SKIPPED_CREDENTIAL_ABSENT",
+    "access_classification": "CREDENTIAL_REQUIRED",
+    "detail": "No credential or browser context supplied; direct replay not attempted."
+  },
+  {
+    "operation_name": "SECTIONAL_AVAILABILITY",
+    "endpoint": "https://graphql.rmdprod.racing.com",
+    "mode": "ALL",
+    "http_status": "SKIPPED_CREDENTIAL_ABSENT",
+    "access_classification": "CREDENTIAL_REQUIRED",
+    "detail": "No credential or browser context supplied; direct replay not attempted."
+  },
+  {
+    "operation_name": "RUNNER_SECTIONALS",
+    "endpoint": "https://graphql.rmdprod.racing.com",
+    "mode": "ALL",
+    "http_status": "SKIPPED_CREDENTIAL_ABSENT",
+    "access_classification": "CREDENTIAL_REQUIRED",
+    "detail": "No credential or browser context supplied; direct replay not attempted."
+  }
+]

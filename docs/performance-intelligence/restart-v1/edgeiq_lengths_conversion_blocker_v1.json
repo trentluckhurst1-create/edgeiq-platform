@@ -1,0 +1,86 @@
+{
+  "audit": "EDGEIQ_LENGTHS_CONVERSION_BLOCKER_V1",
+  "audited_at_utc": "2026-07-28T20:09:58Z",
+  "status": "BLOCKED",
+  "counts": {
+    "race_time_delta_rows": 17,
+    "length_conversion_parameter_rows": 0,
+    "delta_distance_count": 6
+  },
+  "delta_distances": {
+    "1100": 2,
+    "1200": 5,
+    "1400": 2,
+    "1600": 6,
+    "2000": 1,
+    "2100": 1
+  },
+  "missing_parameter_distances": [
+    "1100",
+    "1200",
+    "1400",
+    "1600",
+    "2000",
+    "2100"
+  ],
+  "blocker": "MISSING_GOVERNED_EXACT_DISTANCE_SECONDS_PER_LENGTH_PARAMETER_ROWS_OR_SOURCE_SCHEMA",
+  "governance": {
+    "length_conversion_parameter_source_exists": true,
+    "length_conversion_parameter_source_schema_exact": false,
+    "coefficient_fabricated": false,
+    "lengths_output_rebuilt": false
+  },
+  "checks": [
+    {
+      "check": "race_time_delta_rows_exist",
+      "status": "PASS",
+      "detail": 17
+    },
+    {
+      "check": "length_conversion_parameter_fact_populated",
+      "status": "FAIL",
+      "detail": 0
+    },
+    {
+      "check": "exact_distance_parameter_source_schema_available",
+      "status": "FAIL",
+      "detail": {
+        "path": "config\\performance-intelligence\\edgeiq_length_conversion_parameter_source_v1.csv",
+        "actual_fields": [
+          "method_version",
+          "surface",
+          "track_condition_min",
+          "track_condition_max",
+          "track_condition_group",
+          "lengths_per_second",
+          "seconds_per_length",
+          "status",
+          "provenance_class"
+        ],
+        "expected_fields": [
+          "conversion_scope",
+          "official_distance_metres",
+          "seconds_per_length",
+          "conversion_model_version",
+          "parameter_status",
+          "effective_from_date",
+          "effective_to_date",
+          "evidence_reference",
+          "evidence_sha256"
+        ]
+      }
+    },
+    {
+      "check": "all_delta_distances_have_parameters",
+      "status": "FAIL",
+      "detail": [
+        "1100",
+        "1200",
+        "1400",
+        "1600",
+        "2000",
+        "2100"
+      ]
+    }
+  ]
+}

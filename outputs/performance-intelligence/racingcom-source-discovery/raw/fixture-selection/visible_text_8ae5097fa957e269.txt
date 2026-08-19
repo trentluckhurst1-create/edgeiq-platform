@@ -1,0 +1,957 @@
+FRAME 0 URL=https://www.racing.com/form/2026-07-20/southside-pakenham-synthetic/race/5/speed-data
+MONDAY, 20 JULY 2026
+Southside Pakenham Synthetic  
+1400m
+17°C
+Synth
+Track Rail
+True Entire Circuit
+Final Result
+All
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+Ray White Pakenham & Officer Maiden Plate
+2:30pm
+1400m
+Set Weights. Two-Years-Old and Upwards, No sex restriction. Maiden. Apprentices can claim. Track name: Synthetic. Track type: Synthetic. Field limit: 12.
+Race Time: 
+1:24.65  
++4.68L  
+Prize Money: 
+$32,000  
+Results
+Stewards' Report
+Speed Data
+News & Video
+Personalise Your Racing Experience
+
+We use cookies (including third-party) for site functionality, personalised content and ads, and analytics. By continuing, you consent to essential cookies only. Click "Accept all cookies" to allow non-essential cookies for personalisation and sharing usage data with our media, advertising, and analytics partners.
+
+See our Privacy Policy for details.
+
+Accept
+All CookiesDecline Non-
+Essential Cookies
+
+---FRAME---
+
+FRAME 1 URL=https://dxp-static.racing.com/sectionals/index.html#?meetCode=5191023&raceNumber=5
+Sort By:	Finishing Position
+C
+Finishing Position
+Distance Run
+Early Speed
+Mid Speed
+Late Speed
+Peak Speed
+Average Speed
+	OverviewSectionalsSplits
+POS / HORSE
+1st		
+7. Butterscotch (10)
+T: Peter G Moody & Katherine Coleman J: L.Nolen
+
+2nd		
+5. Swift Endorsement (11)
+T: Ben, Will & JD Hayes J: J.Mott
+
+3rd		
+4. Soundwave (NZ) (1)
+T: Emma-Lee & David Browne J: J.McNeil
+
+4th		
+11. Thommo (NZ) (4)
+T: Mick Price & Michael Kent (Jnr) J: C.Williams
+
+5th		
+9. Macca's Angel (3)
+T: P.J.Stokes J: L.K.Cartwright
+
+6th		
+10. Queens Of Vino (9)
+T: Ben, Will & JD Hayes J: D.G.Thornton
+
+7th		
+13. Divergent (7)
+T: P.J.Stokes J: L.J.Neindorf
+
+8th		
+14. Donato (8)
+T: M.B.Scott J: D.J.Dunn
+
+9th		
+3. Ominous (5)
+T: G.M.Begg J: M.J.Dee
+
+10th		
+8. Finnish Girl (6)
+T: R.J.Pompe J: S.R.Hateley
+
+11th		
+1. Casual Ghai (2)
+T: J.Warren J: T.M.Nugent
+	
+DIST RUN	EARLY	MID	LATE	PEAK	AVG SPEED	COM
+
+1407
+metres
+	
+56.84
+km/h
+	
+60.37
+km/h
+	
+64.40
+km/h
+	
+66.92
+km/h
+	
+59.83
+km/h
+	
+!
+
+
+1408(+1)
+metres
+	
+56.23
+km/h
+	
+60.62
+km/h
+	
+64.58
+km/h
+	
+68.00
+km/h
+	
+59.65
+km/h
+	
+!
+
+
+1403(-4)
+metres
+	
+56.30
+km/h
+	
+59.80
+km/h
+	
+64.33
+km/h
+	
+65.56
+km/h
+	
+59.40
+km/h
+	
+!
+
+
+1403(-5)
+metres
+	
+56.81
+km/h
+	
+59.40
+km/h
+	
+63.72
+km/h
+	
+65.34
+km/h
+	
+59.40
+km/h
+	
+!
+
+
+1406(-2)
+metres
+	
+56.38
+km/h
+	
+59.90
+km/h
+	
+64.04
+km/h
+	
+67.36
+km/h
+	
+59.44
+km/h
+	
+!
+
+
+1407
+metres
+	
+55.80
+km/h
+	
+60.52
+km/h
+	
+64.62
+km/h
+	
+67.68
+km/h
+	
+59.44
+km/h
+	
+!
+
+
+1404(-3)
+metres
+	
+57.17
+km/h
+	
+59.65
+km/h
+	
+62.35
+km/h
+	
+64.69
+km/h
+	
+59.29
+km/h
+	
+!
+
+
+1407
+metres
+	
+56.56
+km/h
+	
+60.34
+km/h
+	
+63.04
+km/h
+	
+65.20
+km/h
+	
+59.33
+km/h
+	
+!
+
+
+1404(-4)
+metres
+	
+56.59
+km/h
+	
+59.58
+km/h
+	
+62.86
+km/h
+	
+65.70
+km/h
+	
+59.15
+km/h
+	
+!
+
+
+1402(-5)
+metres
+	
+57.28
+km/h
+	
+59.33
+km/h
+	
+60.41
+km/h
+	
+64.80
+km/h
+	
+58.72
+km/h
+	
+!
+
+
+1403(-5)
+metres
+	
+56.20
+km/h
+	
+58.72
+km/h
+	
+54.79
+km/h
+	
+63.94
+km/h
+	
+56.48
+km/h
+	
+!
+POS / HORSE
+1st		
+7. Butterscotch (10)
+T: Peter G Moody & Katherine Coleman J: L.Nolen
+
+2nd		
+5. Swift Endorsement (11)
+T: Ben, Will & JD Hayes J: J.Mott
+
+3rd		
+4. Soundwave (NZ) (1)
+T: Emma-Lee & David Browne J: J.McNeil
+
+4th		
+11. Thommo (NZ) (4)
+T: Mick Price & Michael Kent (Jnr) J: C.Williams
+
+5th		
+9. Macca's Angel (3)
+T: P.J.Stokes J: L.K.Cartwright
+
+6th		
+10. Queens Of Vino (9)
+T: Ben, Will & JD Hayes J: D.G.Thornton
+
+7th		
+13. Divergent (7)
+T: P.J.Stokes J: L.J.Neindorf
+
+8th		
+14. Donato (8)
+T: M.B.Scott J: D.J.Dunn
+
+9th		
+3. Ominous (5)
+T: G.M.Begg J: M.J.Dee
+
+10th		
+8. Finnish Girl (6)
+T: R.J.Pompe J: S.R.Hateley
+
+11th		
+1. Casual Ghai (2)
+T: J.Warren J: T.M.Nugent
+	
+OVERALL	1200M	1000M	800M	600M	400M	200M
+
+1:24.65
+1st
+	
+1:10.06
+3rd
+	
+58.60
+3rd
+	
+46.60
+3rd
+	
+34.19
+3rd
+	
+22.34
+3rd
+	
+11.35
+1st
+
+
+1:24.96
+2nd
+	
+1:10.05
+9th
+	
+58.57
+9th
+	
+46.41
+10th
+	
+34.08
+9th
+	
+22.34
+7th
+	
+11.48
+3rd
+
+
+1:25.01
+3rd
+	
+1:10.17
+8th
+	
+58.75
+7th
+	
+46.65
+8th
+	
+34.31
+7th
+	
+22.39
+8th
+	
+11.27
+8th
+
+
+1:25.05
+4th
+	
+1:10.44
+4th
+	
+58.97
+4th
+	
+46.95
+4th
+	
+34.53
+4th
+	
+22.58
+4th
+	
+11.34
+6th
+
+
+1:25.17
+5th
+	
+1:10.40
+7th
+	
+58.92
+6th
+	
+46.82
+7th
+	
+34.35
+8th
+	
+22.49
+9th
+	
+11.55
+4th
+
+
+1:25.22
+6th
+	
+1:10.29
+10th
+	
+58.75
+11th
+	
+46.43
+11th
+	
+34.04
+11th
+	
+22.28
+10th
+	
+11.42
+10th
+
+
+1:25.25
+7th
+	
+1:10.87
+1st
+	
+59.48
+2nd
+	
+47.43
+2nd
+	
+35.00
+2nd
+	
+23.09
+2nd
+	
+11.82
+2nd
+
+
+1:25.36
+8th
+	
+1:10.69
+5th
+	
+59.09
+8th
+	
+47.09
+6th
+	
+34.74
+5th
+	
+22.88
+5th
+	
+11.67
+5th
+
+
+1:25.45
+9th
+	
+1:10.68
+6th
+	
+59.21
+5th
+	
+47.22
+5th
+	
+34.78
+6th
+	
+22.90
+6th
+	
+11.68
+9th
+
+
+1:25.95
+10th
+	
+1:11.57
+2nd
+	
+1:00.24
+1st
+	
+48.25
+1st
+	
+35.88
+1st
+	
+23.86
+1st
+	
+12.24
+7th
+
+
+1:29.43
+11th
+	
+1:14.40
+11th
+	
+1:02.99
+10th
+	
+50.95
+9th
+	
+38.46
+10th
+	
+26.30
+11th
+	
+14.11
+11th
+POS / HORSE
+1st		
+7. Butterscotch (10)
+T: Peter G Moody & Katherine Coleman J: L.Nolen
+
+2nd		
+5. Swift Endorsement (11)
+T: Ben, Will & JD Hayes J: J.Mott
+
+3rd		
+4. Soundwave (NZ) (1)
+T: Emma-Lee & David Browne J: J.McNeil
+
+4th		
+11. Thommo (NZ) (4)
+T: Mick Price & Michael Kent (Jnr) J: C.Williams
+
+5th		
+9. Macca's Angel (3)
+T: P.J.Stokes J: L.K.Cartwright
+
+6th		
+10. Queens Of Vino (9)
+T: Ben, Will & JD Hayes J: D.G.Thornton
+
+7th		
+13. Divergent (7)
+T: P.J.Stokes J: L.J.Neindorf
+
+8th		
+14. Donato (8)
+T: M.B.Scott J: D.J.Dunn
+
+9th		
+3. Ominous (5)
+T: G.M.Begg J: M.J.Dee
+
+10th		
+8. Finnish Girl (6)
+T: R.J.Pompe J: S.R.Hateley
+
+11th		
+1. Casual Ghai (2)
+T: J.Warren J: T.M.Nugent
+	
+1400M-1200M	1200M-1000M	1000M-800M	800M-600M	600M-400M	400M-200M	200M-FINISH
+
+14.58
+3rd
+	
+11.46
+3rd
+	
+12.00
+3rd
+	
+12.41
+3rd
+	
+11.85
+3rd
+	
+10.99
+1st
+	
+11.35
+1st
+
+
+14.90
+9th
+	
+11.48
+9th
+	
+12.16
+10th
+	
+12.33
+9th
+	
+11.74
+7th
+	
+10.86
+3rd
+	
+11.48
+2nd
+
+
+14.84
+8th
+	
+11.42
+7th
+	
+12.10
+8th
+	
+12.34
+7th
+	
+11.92
+8th
+	
+11.12
+8th
+	
+11.27
+3rd
+
+
+14.60
+4th
+	
+11.47
+4th
+	
+12.02
+4th
+	
+12.42
+4th
+	
+11.95
+4th
+	
+11.24
+6th
+	
+11.34
+4th
+
+
+14.77
+7th
+	
+11.48
+6th
+	
+12.10
+7th
+	
+12.47
+8th
+	
+11.86
+9th
+	
+10.94
+4th
+	
+11.55
+5th
+
+
+14.93
+10th
+	
+11.54
+11th
+	
+12.32
+11th
+	
+12.39
+11th
+	
+11.76
+10th
+	
+10.86
+10th
+	
+11.42
+6th
+
+
+14.37
+1st
+	
+11.39
+2nd
+	
+12.05
+2nd
+	
+12.43
+2nd
+	
+11.91
+2nd
+	
+11.27
+2nd
+	
+11.82
+7th
+
+
+14.67
+5th
+	
+11.60
+8th
+	
+12.00
+6th
+	
+12.35
+5th
+	
+11.86
+5th
+	
+11.21
+5th
+	
+11.67
+8th
+
+
+14.75
+6th
+	
+11.47
+5th
+	
+11.99
+5th
+	
+12.44
+6th
+	
+11.88
+6th
+	
+11.22
+9th
+	
+11.68
+9th
+
+
+14.38
+2nd
+	
+11.33
+1st
+	
+11.99
+1st
+	
+12.37
+1st
+	
+12.02
+1st
+	
+11.62
+7th
+	
+12.24
+10th
+
+
+15.02
+11th
+	
+11.41
+10th
+	
+12.04
+9th
+	
+12.49
+10th
+	
+12.16
+11th
+	
+12.19
+11th
+	
+14.11
+11th
+Download Race Sectional Data | PDF' | CSV'
+Splits & Sectionals	
+
+Splits & Sectionals data displayed on Racing.com is sourced from the following race-timing technology partners: From August 2021, sectional times for race meetings at Flemington, Caulfield, The Valley & Ladbrokes Park are provided by tripleSdata and Champion Data (note: previously, Trakus technology was used at Flemington, Caulfield and The Valley). From August 2023, Cranbourne and Pakenham sectional times are also provided by tripleSdata and Champion Data (note: previously, Daily Sectionals) From September 2017, data for all other Victorian tracks is provided by Daily Sectionals; and at South Australian tracks the sectional times are sourced from Equitime.
+
+Below each split and sectional time displayed is the horse’s position-in-running (e.g. 1st) at that point of the race.
+
+The meeting rank 'tool-tip' feature helps to identify how the fastest individual splits & sectionals for each race, which are highlighted in green, compare to the times for the rest of that particular race meeting.
+
+---FRAME---
+
+FRAME 6 URL=about:blank
+18+‌
+Eligible‌ ‌customers‌ ‌only.‌ ‌Prices‌ ‌subject‌ ‌to‌ ‌change.‌ ‌
+Max‌ ‌stakes‌ ‌&‌ ‌T&Cs‌ ‌apply.‌
+THINK.‌ ‌IS‌ ‌THIS‌ ‌A‌ ‌BET‌ ‌YOU‌ ‌REALLY‌ ‌WANT‌ ‌TO‌ ‌PLACE?‌
+Set‌ ‌a‌ ‌deposit‌ ‌limit.‌
+
+---FRAME---
+
+FRAME 8 URL=about:blank
+18+‌
+Eligible‌ ‌customers‌ ‌only.‌ ‌Prices‌ ‌subject‌ ‌to‌ ‌change.‌ ‌
+Max‌ ‌stakes‌ ‌&‌ ‌T&Cs‌ ‌apply.‌
+THINK.‌ ‌IS‌ ‌THIS‌ ‌A‌ ‌BET‌ ‌YOU‌ ‌REALLY‌ ‌WANT‌ ‌TO‌ ‌PLACE?‌
+Set‌ ‌a‌ ‌deposit‌ ‌limit.‌
+
+---FRAME---
+
+FRAME 15 URL=about:blank
+Join
+
+---FRAME---
+
+FRAME 17 URL=about:blank
+EVERY RACE, EVERY DAY.
+
+---FRAME---
+
+FRAME 21 URL=https://platform.twitter.com/widgets/tweet_button.1227a5674072e080ffb1ba14ac0c1079.en.html#dnt=true&id=twitter-widget-0&lang=en&original_referer=https%3A%2F%2Fdxp-static.racing.com%2Fsectionals%2Findex.html%23%3FmeetCode%3D5191023%26raceNumber%3D5&size=m&text=RACING.COM&time=1784711604846&type=share&url=https%3A%2F%2Fdxp-static.racing.com%2Fsectionals%2Findex.html%23%3FmeetCode%3D5191023%26raceNumber%3D5&via=country_racing
+Post
+
+---FRAME---
+
+FRAME 27 URL=about:blank
+Join
+
+---FRAME---
+
+FRAME 29 URL=about:blank
+EVERY RACE, EVERY DAY.

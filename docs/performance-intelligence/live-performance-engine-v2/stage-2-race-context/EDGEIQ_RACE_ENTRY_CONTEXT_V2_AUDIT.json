@@ -1,0 +1,33 @@
+{
+  "status": "EDGEIQ_RACE_ENTRY_CONTEXT_V2_AUDIT_PASS",
+  "builder_version": "EDGEIQ_RACE_ENTRY_CONTEXT_V2",
+  "method_version": "FACTUAL_DECLARED_RACE_CONTEXT_ONLY_V1",
+  "race_entry_rows": 204,
+  "snapshot_rows": 204,
+  "context_rows": 204,
+  "participation_status_counts": {
+    "ACTIVE_ENTRY": 188,
+    "EMERGENCY": 10,
+    "SCRATCHED": 6
+  },
+  "context_status_counts": {
+    "RACE_CONTEXT_AVAILABLE": 198,
+    "RACE_CONTEXT_RECORDED_ENTRY_INACTIVE": 6
+  },
+  "checks": {
+    "race_entry_schema_valid": true,
+    "stage_1_snapshot_schema_valid": true,
+    "one_context_per_race_entry": true,
+    "natural_keys_unique": true,
+    "context_ids_unique": true,
+    "snapshot_population_join_exact": true,
+    "field_sizes_positive": true,
+    "active_field_not_above_declared": true,
+    "no_fake_historical_rating": true,
+    "evidence_complete": true,
+    "deterministic_rerun": true
+  },
+  "candidate_sha256": "06f91ce9e800fceaae5e6674fd1bdb90ec6b312ab223923af69f1f7f0f86e59a",
+  "production_sha256": "06f91ce9e800fceaae5e6674fd1bdb90ec6b312ab223923af69f1f7f0f86e59a",
+  "promotion_status": "ATOMIC_PROMOTION_PASS"
+}

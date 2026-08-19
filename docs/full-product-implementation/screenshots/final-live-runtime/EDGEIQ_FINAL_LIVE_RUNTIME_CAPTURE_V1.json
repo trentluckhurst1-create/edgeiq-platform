@@ -1,0 +1,452 @@
+{
+  "built_at": "2026-07-19T08:50:39.915Z",
+  "url": "http://127.0.0.1:5182/",
+  "workspace_count": 19,
+  "capture_error_count": 0,
+  "capture_errors": [],
+  "results": [
+    {
+      "workspace": "01_HOME",
+      "label": "HOME",
+      "captureErrors": [],
+      "mounted": [
+        {
+          "component": "EdgeiqOsHome",
+          "key": "HOME",
+          "tag": "SECTION",
+          "className": "eiq-home-approved"
+        }
+      ],
+      "mountedComponent": "EdgeiqOsHome",
+      "mountedKey": "HOME",
+      "selectedMeeting": "2026-07-17|WANGARATTA",
+      "selectedRace": null,
+      "activeSection": "home",
+      "viewLevel": "meetings",
+      "runnerCount": 1,
+      "dataAvailability": "PARTIAL_OR_PENDING",
+      "bodySample": "EDGEiQ\nRACE INTELLIGENCE\nHOME\nMEETINGS\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nEPI\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nRESULTS\nLAB\nCOMPARE\nREVIEW\nSETTINGS\nEDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM\nInformation is not Intelligence. Evidence leads. Precision decides.\nSUN, 19 JULY 2026\n06:49 pm\nAEDT\nHOME\nWelcome to EDGEiQ\n\nEDGEiQ is the Professional Racing Intelligence Operating System. We turn governed data and advanced analytics into actionable intelligence for serious form students, analysts, and racing professionals.\n\nEvidence First\n\nOnly governed, verified data. No estimates. No shortcuts.\n\nBuilt For Professionals\n\nAdvanced tools for analysis, comparison, and insight.\n\nComplete Intelligence\n\nEvery race. Every runner. Every angle that matters.\n\nTODAY'S MEETINGS\nFriday 17 July 2026\nVIEW ALL MEETINGS\nMEETING\tSTATE\tRAIL\tTRACK RATING\tWEATHER\tRACES\tDECLARED\tSCRATCHINGS\tFIRST\tLAST\tSTATUS\nWangaratta\tNot supplied\tNot supplied\tNot supplied\tWeather unavailable\t0\t0\t0\tNot supplied\tNot supplied\tCurrent\nWORKSPACES\nRace intelligence workspace\nOpen the approved race overview and field context\nEPI Leaders Today\nSee the top rated runners across all meetings\nValue Opportunities\nRunners with strong EDGEiQ Price separation\nMarket Movers\nBiggest market shifts in the current feed\nTrack Bias Monitor\nLive bias detection across Victorian tracks\nDATA QUALITY\nData Discipline\nBrowser-safe product feeds\nData Discipline\nBrowser-safe product feeds\nData Discipline\nBrowser-safe product feeds\nLive Data Feeds\nAll Systems Operational\nRace Fields\nPending\nReports & Results\nUp to date\nWeather Feeds\nGoverned unavailable\nVIEW DATA STATUS CENTRE\nRECENT ANALYSIS\n\nNo recent governed analysis is available.\n\nVIEW ALL RECENT ANALYSIS\nDATA STATUS\nAll Systems Operational\n0 races | 0 declared runners | 0 scratchings\nContinue: Wangaratta Race\nEDGEiQ Racing Intelligence Operating System\nBuild: 1.0.0\nData as at: 06:49 pm AEDT",
+      "renderedPath": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-live-runtime/01_HOME_LIVE_RENDERED.png"
+    },
+    {
+      "workspace": "02_MEETINGS",
+      "label": "MEETINGS",
+      "captureErrors": [],
+      "mounted": [
+        {
+          "component": "MeetingsWorkspace",
+          "key": "MEETINGS",
+          "tag": "SECTION",
+          "className": "eiq-meetings-approved"
+        }
+      ],
+      "mountedComponent": "MeetingsWorkspace",
+      "mountedKey": "MEETINGS",
+      "selectedMeeting": "2026-07-17|WANGARATTA",
+      "selectedRace": null,
+      "activeSection": "meetings",
+      "viewLevel": "meetings",
+      "runnerCount": 1,
+      "dataAvailability": "AVAILABLE_OR_NOT_STATED",
+      "bodySample": "EDGEiQ\nRACE INTELLIGENCE\nHOME\nMEETINGS\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nEPI\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nRESULTS\nLAB\nCOMPARE\nREVIEW\nSETTINGS\nEDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM\nInformation is not Intelligence. Evidence leads. Precision decides.\nSUN, 19 JULY 2026\n06:49 pm\nAEDT\nMEETINGS\n\nThree day racing outlook. Select a meeting to view races and details.\n\nDATE RANGE (BUILDER CONTROLLED)\nTODAY\nFri, 17 July\nTOMORROW\nSat, 18 July\nDAY +2\nSun, 19 July\nMEETINGS (FRIDAY 17 JULY 2026)\nFILTERS\nOPEN MEETING\nSELECT\tMEETING\tSTATE\tRAIL\tTRACK\tWEATHER\tRACES\tDECLARED\tSCRATCHINGS\nSelected\tWangaratta\tNot supplied\tNot supplied\tNot supplied\tWeather unavailable\t0\t0\t0\nShowing 1 to 1 of 1 meetings\nCurrent\nCompleted\nAbandoned\nPostponed\nRACE START TIMES (ALL MEETINGS)\n11AM\n12PM\n1PM\n2PM\n3PM\n4PM\n5PM\n6PM\nWangaratta (0)\nEDGEiQ Racing Intelligence Operating System\nBuild: 1.0.0\nData as at: 06:49 pm AEDT",
+      "renderedPath": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-live-runtime/02_MEETINGS_LIVE_RENDERED.png"
+    },
+    {
+      "workspace": "03_RACE_OVERVIEW",
+      "label": "RACE",
+      "captureErrors": [],
+      "mounted": [
+        {
+          "component": "RaceIntelligenceWorkspace",
+          "key": "RACE",
+          "tag": "SECTION",
+          "className": "eiq-race-workspace eiq-race-workspace--race"
+        }
+      ],
+      "mountedComponent": "RaceIntelligenceWorkspace",
+      "mountedKey": "RACE",
+      "selectedMeeting": "2026-07-17|WANGARATTA",
+      "selectedRace": null,
+      "activeSection": "race",
+      "viewLevel": "race",
+      "runnerCount": 1,
+      "dataAvailability": "PARTIAL_OR_PENDING",
+      "bodySample": "EDGEiQ\nRACE INTELLIGENCE\nHOME\nMEETINGS\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nEPI\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nRESULTS\nLAB\nCOMPARE\nREVIEW\nSETTINGS\nEDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM\nInformation is not Intelligence. Evidence leads. Precision decides.\nSUN, 19 JULY 2026\n06:49 pm\nAEDT\n\nMEETINGS › WANGARATTA › RACE 1\n\nRace 1 Current Race -\nWangaratta\n2026-07-17\nTime unavailable\nDistance unavailable\nSurface unavailable\nPrizemoney: Unavailable\nWeather unavailable\nBACK TO RACES\nRACE OVERVIEW\nFIELD & RUNNERS\nFORM GUIDE\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nRESULTS\nRACE SUMMARY\nRace\n1\nName\nCurrent Race\nClass\nUnavailable\nDistance\nUnavailable\nPrize Money\nUnavailable\nSurface\nUnavailable\nRail\nUnavailable\nTrack Rating\nUnavailable\nFirst Race\nUnavailable\nLast Race\nUnavailable\nRACE CONDITIONS\nTrack Rating\nUnavailable\nRail Position\nUnavailable\nTrack Bias\nUnavailable\nWind\nUnavailable\nTemperature\nUnavailable\nHumidity\nUnavailable\nRain (24h)\nUnavailable\nRain (7d)\nUnavailable\nPenetrometer\nUnavailable\nMEETING INFORMATION\nTrack Type\nUnavailable\nTrack Circumference\nUnavailable\nStraight\nUnavailable\nDirection\nUnavailable\nRail Position\nUnavailable\nPenetrometer\nUnavailable\nIrrigation (24h)\nUnavailable\nRain (7 days)\nUnavailable\nWind\nUnavailable\nTemperature\nUnavailable\nHumidity\nUnavailable\nPressure\nUnavailable\nRACES AT THIS MEETING\nRACE\tTIME\tNAME\tDISTANCE\tCLASS\tPRIZEMONEY\tCONDITIONS\tSTATUS\tVIEW\nRace list is unavailable for this meeting.\nRace list unavailable\nCurrent\nCompleted\nAbandoned\nPostponed\nQUICK ACTIONS\nDownload Race Card\nPrint Race Card\nAdd Race Notes\nCompare Races\nEDGEiQ Racing Intelligence Operating System\nBuild: 1.0.0\nData as at: 06:49 pm AEDT",
+      "renderedPath": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-live-runtime/03_RACE_OVERVIEW_LIVE_RENDERED.png"
+    },
+    {
+      "workspace": "04_FIELD",
+      "label": "FIELD",
+      "captureErrors": [],
+      "mounted": [
+        {
+          "component": "FieldWorkspace",
+          "key": "FIELD",
+          "tag": "SECTION",
+          "className": "eiq-race-workspace eiq-race-workspace--field"
+        }
+      ],
+      "mountedComponent": "FieldWorkspace",
+      "mountedKey": "FIELD",
+      "selectedMeeting": "2026-07-17|WANGARATTA",
+      "selectedRace": null,
+      "activeSection": "field",
+      "viewLevel": "race",
+      "runnerCount": 30,
+      "dataAvailability": "AVAILABLE_OR_NOT_STATED",
+      "bodySample": "EDGEiQ\nRACE INTELLIGENCE\nHOME\nMEETINGS\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nEPI\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nRESULTS\nLAB\nCOMPARE\nREVIEW\nSETTINGS\nEDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM\nInformation is not Intelligence. Evidence leads. Precision decides.\nSUN, 19 JULY 2026\n06:49 pm\nAEDT\nMEETINGS\nWANGARATTA\nRACE 1\nFIELD\nRace 1\nCurrent Race\nBack to Races\nLOCATION\nWangaratta\nDATE\n2026-07-17\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nEPI\nRESULTS\nREVIEW\nFIELD\nRace field\n\nOfficial runners with governed EDGEiQ fields where available.\n\nNO\tSILK\tRUNNER\tBAR\tWGT\tJOCKEY\tTRAINER\tEDGEIQ\tMARKET\tSTATUS\n1\t\n\t\nLIMBERING\n\t2\t58kg\tNot Notified\tRAHARNA MCDONALD\t-\tScratched\tACTIVE\n2\t\n\t\nHUGHIE\n\t3\t57.5kg\tNot Notified\tJAMIE EDWARDS\t-\tScratched\tACTIVE\n3\t\n\t\nDETERMINATO\n\t4\t57kg\tBILLY EGAN\tDOMINIC SUTTON\t-\t$4.80\tACTIVE\n4\t\n\t\nKING TAGALOA\n\t5\t56.5kg\tDYLAN DEAN\tJULIUS SANDHU\t-\t$18\tACTIVE\n5\t\n\t\nOBON\n\t6\t56kg\tLUKE NOLEN\tMICHAEL KENT\t-\t$2.90\tACTIVE\n6\t\n\t\nREEL DEADLY\n\t7\t55.5kg\tTHOMAS STOCKDALE\tCIARON MAHER\t-\t$10\tACTIVE\n7\t\n\t\nRUSSIAN FIREBIRD\n\t8\t55kg\tBRAD RAWILLER\tTOBY LAKE\t-\t$41\tACTIVE\n8\t\n\t\nSKY DEEL\n\t9\t54.5kg\tJAMIE MOTT\tGAVIN BEDGGOOD\t-\t$12\tACTIVE\n9\t\n\t\nEXPANDING POWER\n\t10\t54kg\tLACHLAN NEINDORF\tENVER JUSUFOVIC\t-\t$2.25\tACTIVE\n10\t\n\t\nCAPITAL STORM\n\t11\t53.5kg\tLACHLAN NEINDORF\tPHILLIP STOKES\t-\tTAB_FIXED_WIN\tACTIVE\n11\t\n\t\nFONTALICIOUS\n\t12\t53kg\tPATRICK MOLONEY\tSHANE NICHOLS & HAYDEN BLACK\t-\t$13\tACTIVE\n12\t\n\t\nMERCHANTESSA\n\t13\t52.5kg\tTEO NUGENT\tJASON WARREN\t-\tTAB_FIXED_WIN\tACTIVE\n13\t\n\t\nMIRADOR\n\t14\t52kg\tDANIEL STACKHOUSE\tBEN, WILL & JD HAYES\t-\t$3.40\tACTIVE\n14\t\n\t\nRUBY GUILD\n\t15\t51.5kg\tNATHAN PUNCH\tROBBIE GRIFFITHS\t-\t$8.50\tACTIVE\n15\t\n\t\nTRICKY MISS\n\t16\t51kg\tJAKE NOONAN\tCIARON MAHER\t-\t$26\tACTIVE\n16\t\n\t\nPORTINARI\n\t17\t50.5kg\tDANIEL STACKHOUSE\tBEN, WILL & JD HAYES\t-\t$4.00\tACTIVE\n17\t\n\t\nMINELLO\n\t18\t50kg\tJAMIE MOTT\tANTHONY & SAM FREEDMAN\t-\t$12\tACTIVE\n18\t\n\t\nPINAMILLOY\n\t19\t49.5kg\tZAC SPAIN\tJASON WARREN\t-\t$16\tACTIVE\n19\t\n\t\nRES MIRA\n\t20\t49kg\tBRAD RAWILLER\tMARK WEBB\t-\t$61\tACTIVE\n20\t\n\t\nSTINGRAY BARB\n\t21\t48.5kg\tNADIA DANIELS\tPAT CAREY & HARRIS WALKER\t-\t$101\tACTIVE\n21\t\n\t\nZAAC\n\t22\t48kg\tTHOMAS STOCKDALE\tJOHN MCARDLE\t-\tTAB_FIXED_WIN\tACTIVE\n22\t\n\t\nBABY BLUE\n\t23\t47.5kg\tDAMIEN THORNTON\tBEN, WILL & JD HAYES\t-\t$12\tACTIVE\n23\t\n\t\nCONTARINI\n\t24\t47kg\tBEAU MERTENS\tCHRIS WALLER\t-\t$12\tACTIVE\n24\t\n\t\nETERNAL JOY\n\t25\t46.5kg\tJORDAN CHILDS\tBEN, WILL & JD HAYES\t-\t$5.00\tACTIVE\n25\t\n\t\nBIG FIN\n\t26\t46kg\tTEO NUGENT\tBROOKE VERWEY-MITCHELL\t-\t$151\tACTIVE\n26\t\n\t\nLEVRIER\n\t27\t45.5kg\tPATRICK MOLONEY\tMATT LAURIE\t-\t$7.00\tACTIVE\n27\t\n\t\nMARCH ON BY\n\t28\t45kg\tRYAN HOUSTON\tSIMON ZAHRA\t-\t$26\tACTIVE\n28\t\n\t\nBLUE SHIELD\n\t29\t44.5kg\tLACHLAN NEINDORF\tMICK PRICE & MICHAEL KENT JNR\t-\t$1.95\tACTIVE\n29\t\n\t\nCALEXPO\n\t30\t44kg\tDANIEL STACKHOUSE\tBEN, WILL & JD HAYES\t-\tTAB_FIXED_WIN\tACTIVE\n30\t\n\t\nCIRCUS BERZERKUS\n\t31\t43.5kg\tBAILEY KINNINMONT\tJIM CERCHI (JNR)\t-\t$151\tACTIVE\nEDGEiQ Racing Intelligence Operating System\nBuild: 1.0.0\nData as at: 06:49 pm AEDT",
+      "renderedPath": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-live-runtime/04_FIELD_LIVE_RENDERED.png"
+    },
+    {
+      "workspace": "05_FORM_GUIDE",
+      "label": "FORM GUIDE",
+      "captureErrors": [],
+      "mounted": [
+        {
+          "component": "RaceFormGuideWorkspace",
+          "key": "FORM GUIDE",
+          "tag": "SECTION",
+          "className": "eiq-race-workspace eiq-race-workspace--form-guide"
+        }
+      ],
+      "mountedComponent": "RaceFormGuideWorkspace",
+      "mountedKey": "FORM GUIDE",
+      "selectedMeeting": "2026-07-17|WANGARATTA",
+      "selectedRace": null,
+      "activeSection": "formGuide",
+      "viewLevel": "race",
+      "runnerCount": 31,
+      "dataAvailability": "AVAILABLE_OR_NOT_STATED",
+      "bodySample": "EDGEiQ\nRACE INTELLIGENCE\nHOME\nMEETINGS\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nEPI\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nRESULTS\nLAB\nCOMPARE\nREVIEW\nSETTINGS\nEDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM\nInformation is not Intelligence. Evidence leads. Precision decides.\nSUN, 19 JULY 2026\n06:49 pm\nAEDT\nMEETINGS\nWANGARATTA\nRACE 1\nFORM GUIDE\nRace 1\nCurrent Race\nBack to Races\nLOCATION\nWangaratta\nDATE\n2026-07-17\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nEPI\nRESULTS\nREVIEW\nMETRIC GUIDE\nNO\n\t\nSILKS\n\t\nLAST 5\n\t\nHORSE\n\t\nTRAINER\n\t\nJOCKEY\n\t\nWT\n\t\nBAR\n\t\nDAYS\n\t\nEPI\n\t\nEARLY SPEED\n\t\nLATE SPEED\n\t\nSUITABILITY\n\t\nFORM MOMENTUM\n\t\nMARKET\n\t\nEDGEIQ PRICE\n\n1\t\n\t\t\nLIMBERING\n\tRAHARNA MCDONALD\tNot Notified\t58kg\t2\t\t\t\t\t\t\t\t\n\nHORSE PROFILE\n1\nLIMBERING\n\nTrainer: RAHARNA MCDONALD | Jockey: Not Notified | Bar 2 | 58kg\n\nEPI\nEARLY SPEED\nLATE SPEED\nSUITABILITY\nFORM MOMENTUM\nMARKET\nEDGEIQ PRICE\nTRAINERRAHARNA MCDONALD\nJOCKEYNot Notified\nWT58kg\nBAR2\nMARKET\nEDGEIQ PRICE\nDAYS\nGEAR\nHORSE PROFILE\nCareer evidence for today's race\nCAREER & CONDITIONS\nCAREER\nTRACK\nDISTANCE\nTRACK/DIST\nFIRM\nGOOD\nSOFT\nHEAVY\nCONNECTIONS & CLASS\nJOCKEY\nCLASS\nPREPARATION\n1ST UP\n2ND UP\n3RD UP\nTODAY'S MATCH\n\nGoverned match evidence is not available for this runner.\n\nRECENT FORM\nLast 8 Starts\n\nESI is EDGEiQ standardised lengths. Negative is inside standard; positive is outside standard.\n\nOfficial recent-run detail is not available in the current source for this runner.\n\nKEY INSIGHTS\n\nApproved insight inputs are not available for this runner.\n\n\n2\t\n\t\t\nHUGHIE\n\tJAMIE EDWARDS\tNot Notified\t57.5kg\t3\t\t\t\t\t\t\t\t\n3\t\n\t\t\nDETERMINATO\n\tDOMINIC SUTTON\tBILLY EGAN\t57kg\t4\t\t\t\t\t\t\t\t\n4\t\n\t\t\nKING TAGALOA\n\tJULIUS SANDHU\tDYLAN DEAN\t56.5kg\t5\t\t\t\t\t\t\t\t\n5\t\n\t\t\nOBON\n\tMICHAEL KENT\tLUKE NOLEN\t56kg\t6\t\t\t\t\t\t\t\t\n6\t\n\t\t\nREEL DEADLY\n\tCIARON MAHER\tTHOMAS STOCKDALE\t55.5kg\t7\t\t\t\t\t\t\t\t\n7\t\n\t\t\nRUSSIAN FIREBIRD\n\tTOBY LAKE\tBRAD RAWILLER\t55kg\t8\t\t\t\t\t\t\t\t\n8\t\n\t\t\nSKY DEEL\n\tGAVIN BEDGGOOD\tJAMIE MOTT\t54.5kg\t9\t\t\t\t\t\t\t\t\n9\t\n\t\t\nEXPANDING POWER\n\tENVER JUSUFOVIC\tLACHLAN NEINDORF\t54kg\t10\t\t\t\t\t\t\t\t\n10\t\n\t\t\nCAPITAL STORM\n\tPHILLIP STOKES\tLACHLAN NEINDORF\t53.5kg\t11\t\t\t\t\t\t\t\t\n11\t\n\t\t\nFONTALICIOUS\n\tSHANE NICHOLS & HAYDEN BLACK\tPATRICK MOLONEY\t53kg\t12\t\t\t\t\t\t\t\t\n12\t\n\t\t\nMERCHANTESSA\n\tJASON WARREN\tTEO NUGENT\t52.5kg\t13\t\t\t\t\t\t\t\t\n13\t\n\t\t\nMIRADOR\n\tBEN, WILL & JD HAYES\tDANIEL STACKHOUSE\t52kg\t14\t\t\t\t\t\t\t\t\n14\t\n\t\t\nRUBY GUILD\n\tROBBIE GRIFFITHS\tNATHAN PUNCH\t51.5kg\t15\t\t\t\t\t\t\t\t\n15\t\n\t\t\nTRICKY MISS\n\tCIARON MAHER\tJAKE NOONAN\t51kg\t16\t\t\t\t\t\t\t\t\n16\t\n\t\t\nPORTINARI\n\tBEN, WILL & JD HAYES\tDANIEL STACKHOUSE\t50.5kg\t17\t\t\t\t\t\t\t\t\n17\t\n\t\t\nMINELLO\n\tANTHONY & SAM FREEDMAN\tJAMIE MOTT\t50kg\t18\t\t\t\t\t\t\t\t\n18\t\n\t\t\nPINAMILLOY\n\tJASON WARREN\tZAC SPAIN\t49.5kg\t19\t\t\t\t\t\t\t\t\n19\t\n\t\t\nRES MIRA\n\tMARK WEBB\tBRAD RAWILLER\t49kg\t20\t\t\t\t\t\t\t\t\n20\t\n\t\t\nSTINGRAY BARB\n\tPAT CAREY & HARRIS WALKER\tNADIA DANIELS\t48.5kg\t21\t\t\t\t\t\t\t\t\n21\t\n\t\t\nZAAC\n\tJOHN MCARDLE\tTHOMAS STOCKDALE\t48kg\t22\t\t\t\t\t\t\t\t\n22\t\n\t\t\nBABY BLUE\n\tBEN, WILL & JD HAYES\tDAMIEN THORNTON\t47.5kg\t23\t\t\t\t\t\t\t\t\n23\t\n\t\t\nCONTARINI\n\tCHRIS WALLER\tBEAU MERTENS\t47kg\t24\t\t\t\t\t\t\t\t\n24\t\n\t\t\nETERNAL JOY\n\tBEN, WILL & JD HAYES\tJORDAN CHILDS\t46.5kg\t25\t\t\t\t\t\t\t\t\n25\t\n\t\t\nBIG FIN\n\tBROOKE VERWEY-MITCHELL\tTEO NUGENT\t46kg\t26\t\t\t\t\t\t\t\t\n26\t\n\t\t\nLEVRIER\n\tMATT LAURIE\tPATRICK MOLONEY\t45.5kg\t27\t\t\t\t\t\t\t\t\n27\t\n\t\t\nMARCH ON BY\n\tSIMON ZAHRA\tRYAN HOUSTON\t45kg\t28\t\t\t\t\t\t\t\t\n28\t\n\t\t\nBLUE SHIELD\n\tMICK PRICE & MICHAEL KENT JNR\tLACHLAN NEINDORF\t44.5kg\t29\t\t\t\t\t\t\t\t\n29\t\n\t\t\nCALEXPO\n\tBEN, WILL & JD HAYES\tDANIEL STACKHOUSE\t44kg\t30\t\t\t\t\t\t\t\t\n30\t\n\t\t\nCIRCUS BERZERKUS\n\tJIM CERCHI (JNR)\tBAILEY KINNINMONT\t43.5kg\t31\t\t\t\t\t\t\t\t\n30 runners | 0 scratched\nData is modelled and subject to change.\nEDGEiQ Racing Intelligence Operating System\nBuild: 1.0.0\nData as at: 06:49 pm AEDT",
+      "renderedPath": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-live-runtime/05_FORM_GUIDE_LIVE_RENDERED.png"
+    },
+    {
+      "workspace": "06_PERFORMANCE",
+      "label": "PERFORMANCE",
+      "captureErrors": [],
+      "mounted": [
+        {
+          "component": "PerformanceWorkspace",
+          "key": "PERFORMANCE",
+          "tag": "SECTION",
+          "className": "eiq-race-workspace eiq-race-workspace--performance"
+        }
+      ],
+      "mountedComponent": "PerformanceWorkspace",
+      "mountedKey": "PERFORMANCE",
+      "selectedMeeting": "2026-07-17|WANGARATTA",
+      "selectedRace": null,
+      "activeSection": "performance",
+      "viewLevel": "race",
+      "runnerCount": 30,
+      "dataAvailability": "PARTIAL_OR_PENDING",
+      "bodySample": "EDGEiQ\nRACE INTELLIGENCE\nHOME\nMEETINGS\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nEPI\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nRESULTS\nLAB\nCOMPARE\nREVIEW\nSETTINGS\nEDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM\nInformation is not Intelligence. Evidence leads. Precision decides.\nSUN, 19 JULY 2026\n06:49 pm\nAEDT\nMEETINGS\nWANGARATTA\nRACE 1\nPERFORMANCE\nRace 1\nCurrent Race\nBack to Races\nLOCATION\nWangaratta\nDATE\n2026-07-17\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nEPI\nRESULTS\nREVIEW\nFIELD EPI MATRIX\nField structure loaded\nPERFORMANCE DNA\nAwaiting race-matched rows\nPEAK PERFORMANCES\nAwaiting race-matched rows\nTRENDS & PROFILES\nAwaiting race-matched rows\nRECORD BOOK\nAwaiting race-matched rows\nSECTIONALS\nAwaiting race-matched rows\nVIEW\nEPI\nERI\nEARLY SPEED\nLATE SPEED\nSTATUS\nAwaiting race-matched performance rows\nFIELD\n30\nHISTORICAL RUNS\nPending\nPERFORMANCE MATRIX\nRunner structure is visible while race-matched history is pending\nNO\tSILK\tHORSE\tEPI\tAVG\tLAST\tL5\tL4\tL3\tL2\tL1\n1\t\tLIMBERING\tPending\tPending\tPending\t-\t-\t-\t-\t-\n2\t\tHUGHIE\tPending\tPending\tPending\t-\t-\t-\t-\t-\n3\t\tDETERMINATO\tPending\tPending\tPending\t-\t-\t-\t-\t-\n4\t\tKING TAGALOA\tPending\tPending\tPending\t-\t-\t-\t-\t-\n5\t\tOBON\tPending\tPending\tPending\t-\t-\t-\t-\t-\n6\t\tREEL DEADLY\tPending\tPending\tPending\t-\t-\t-\t-\t-\n7\t\tRUSSIAN FIREBIRD\tPending\tPending\tPending\t-\t-\t-\t-\t-\n8\t\tSKY DEEL\tPending\tPending\tPending\t-\t-\t-\t-\t-\n9\t\tEXPANDING POWER\tPending\tPending\tPending\t-\t-\t-\t-\t-\n10\t\tCAPITAL STORM\tPending\tPending\tPending\t-\t-\t-\t-\t-\n11\t\tFONTALICIOUS\tPending\tPending\tPending\t-\t-\t-\t-\t-\n12\t\tMERCHANTESSA\tPending\tPending\tPending\t-\t-\t-\t-\t-\n13\t\tMIRADOR\tPending\tPending\tPending\t-\t-\t-\t-\t-\n14\t\tRUBY GUILD\tPending\tPending\tPending\t-\t-\t-\t-\t-\n15\t\tTRICKY MISS\tPending\tPending\tPending\t-\t-\t-\t-\t-\n16\t\tPORTINARI\tPending\tPending\tPending\t-\t-\t-\t-\t-\n17\t\tMINELLO\tPending\tPending\tPending\t-\t-\t-\t-\t-\n18\t\tPINAMILLOY\tPending\tPending\tPending\t-\t-\t-\t-\t-\n19\t\tRES MIRA\tPending\tPending\tPending\t-\t-\t-\t-\t-\n20\t\tSTINGRAY BARB\tPending\tPending\tPending\t-\t-\t-\t-\t-\n21\t\tZAAC\tPending\tPending\tPending\t-\t-\t-\t-\t-\n22\t\tBABY BLUE\tPending\tPending\tPending\t-\t-\t-\t-\t-\n23\t\tCONTARINI\tPending\tPending\tPending\t-\t-\t-\t-\t-\n24\t\tETERNAL JOY\tPending\tPending\tPending\t-\t-\t-\t-\t-\n25\t\tBIG FIN\tPending\tPending\tPending\t-\t-\t-\t-\t-\n26\t\tLEVRIER\tPending\tPending\tPending\t-\t-\t-\t-\t-\n27\t\tMARCH ON BY\tPending\tPending\tPending\t-\t-\t-\t-\t-\n28\t\tBLUE SHIELD\tPending\tPending\tPending\t-\t-\t-\t-\t-\n29\t\tCALEXPO\tPending\tPending\tPending\t-\t-\t-\t-\t-\n30\t\tCIRCUS BERZERKUS\tPending\tPending\tPending\t-\t-\t-\t-\t-\nStrong\nAround benchmark\nBelow benchmark\nAwaiting row\nEDGEiQ Racing Intelligence Operating System\nBuild: 1.0.0\nData as at: 06:49 pm AEDT",
+      "renderedPath": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-live-runtime/06_PERFORMANCE_LIVE_RENDERED.png"
+    },
+    {
+      "workspace": "07_MAP",
+      "label": "MAP",
+      "captureErrors": [],
+      "mounted": [
+        {
+          "component": "MapWorkspace",
+          "key": "MAP",
+          "tag": "SECTION",
+          "className": "eiq-race-workspace eiq-race-workspace--map"
+        }
+      ],
+      "mountedComponent": "MapWorkspace",
+      "mountedKey": "MAP",
+      "selectedMeeting": "2026-07-17|WANGARATTA",
+      "selectedRace": null,
+      "activeSection": "map",
+      "viewLevel": "race",
+      "runnerCount": 30,
+      "dataAvailability": "PARTIAL_OR_PENDING",
+      "bodySample": "EDGEiQ\nRACE INTELLIGENCE\nHOME\nMEETINGS\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nEPI\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nRESULTS\nLAB\nCOMPARE\nREVIEW\nSETTINGS\nEDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM\nInformation is not Intelligence. Evidence leads. Precision decides.\nSUN, 19 JULY 2026\n06:49 pm\nAEDT\nMEETINGS\nWANGARATTA\nRACE 1\nMAP\nRace 1\nCurrent Race\nBack to Races\nLOCATION\nWangaratta\nDATE\n2026-07-17\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nEPI\nRESULTS\nREVIEW\n\nMAP\n\nHow will this race be run?\nTraditional barrier map. Right-to-left travel. Plain blue lanes.\nRUNNERS\n30\nRACE READ\nPending\nRACE MAP - PREDICTED SETTLING POSITIONS\nVictorian orientation. Barrier 1 bottom. Travel right to left.\nRACING DIRECTION\n←\n30\nCIRCUS BERZERKUS\nNo speed\n29\nCALEXPO\nNo speed\n28\nBLUE SHIELD\nNo speed\n27\nMARCH ON BY\nNo speed\n26\nLEVRIER\nNo speed\n25\nBIG FIN\nNo speed\n24\nETERNAL JOY\nNo speed\n23\nCONTARINI\nNo speed\n22\nBABY BLUE\nNo speed\n21\nZAAC\nNo speed\n20\nSTINGRAY BARB\nNo speed\n19\nRES MIRA\nNo speed\n18\nPINAMILLOY\nNo speed\n17\nMINELLO\nNo speed\n16\nPORTINARI\nNo speed\n15\nTRICKY MISS\nNo speed\n14\nRUBY GUILD\nNo speed\n13\nMIRADOR\nNo speed\n12\nMERCHANTESSA\nNo speed\n11\nFONTALICIOUS\nNo speed\n10\nCAPITAL STORM\nNo speed\n9\nEXPANDING POWER\nNo speed\n8\nSKY DEEL\nNo speed\n7\nRUSSIAN FIREBIRD\nNo speed\n6\nREEL DEADLY\nNo speed\n5\nOBON\nNo speed\n4\nKING TAGALOA\nNo speed\n3\nDETERMINATO\nNo speed\n2\nHUGHIE\nNo speed\n1\nLIMBERING\nNo speed\n31\n30\n29\n28\n27\n26\n25\n24\n23\n22\n21\n20\n19\n18\n17\n16\n15\n14\n13\n12\n11\n10\n9\n8\n7\n6\n5\n4\n3\n2\nRACE SHAPE SUMMARY\nACTIVE RUNNERS\n30\nPOSITION READS\n0\nAWAITING EVIDENCE\n30\nMAP STATUS\nGoverned Pending\nTACTICAL NOTES\n\nRunners without governed speed evidence stay at the barrier side. Barrier order remains available for race-shape review.\n\nKEY RUNNER POSITIONS\nLEADERS\nPending\nON PACE\nPending\nEVIDENCE\nBarrier order only\nRUNNER MAP TABLE\nGoverned barrier, personnel and speed read\nNO\tSILKS\tRUNNER\tBARRIER\tJOCKEY\tTRAINER\tWEIGHT\tEPI SPD\n30\t-\tCIRCUS BERZERKUS\t31\tBAILEY KINNINMONT\tJIM CERCHI (JNR)\t43.5kg\t-\n29\t-\tCALEXPO\t30\tDANIEL STACKHOUSE\tBEN, WILL & JD HAYES\t44kg\t-\n28\t-\tBLUE SHIELD\t29\tLACHLAN NEINDORF\tMICK PRICE & MICHAEL KENT JNR\t44.5kg\t-\n27\t-\tMARCH ON BY\t28\tRYAN HOUSTON\tSIMON ZAHRA\t45kg\t-\n26\t-\tLEVRIER\t27\tPATRICK MOLONEY\tMATT LAURIE\t45.5kg\t-\n25\t-\tBIG FIN\t26\tTEO NUGENT\tBROOKE VERWEY-MITCHELL\t46kg\t-\n24\t-\tETERNAL JOY\t25\tJORDAN CHILDS\tBEN, WILL & JD HAYES\t46.5kg\t-\n23\t-\tCONTARINI\t24\tBEAU MERTENS\tCHRIS WALLER\t47kg\t-\n22\t-\tBABY BLUE\t23\tDAMIEN THORNTON\tBEN, WILL & JD HAYES\t47.5kg\t-\n21\t-\tZAAC\t22\tTHOMAS STOCKDALE\tJOHN MCARDLE\t48kg\t-\n20\t-\tSTINGRAY BARB\t21\tNADIA DANIELS\tPAT CAREY & HARRIS WALKER\t48.5kg\t-\n19\t-\tRES MIRA\t20\tBRAD RAWILLER\tMARK WEBB\t49kg\t-\n18\t-\tPINAMILLOY\t19\tZAC SPAIN\tJASON WARREN\t49.5kg\t-\n17\t-\tMINELLO\t18\tJAMIE MOTT\tANTHONY & SAM FREEDMAN\t50kg\t-\n16\t-\tPORTINARI\t17\tDANIEL STACKHOUSE\tBEN, WILL & JD HAYES\t50.5kg\t-\n15\t-\tTRICKY MISS\t16\tJAKE NOONAN\tCIARON MAHER\t51kg\t-\n14\t-\tRUBY GUILD\t15\tNATHAN PUNCH\tROBBIE GRIFFITHS\t51.5kg\t-\n13\t-\tMIRADOR\t14\tDANIEL STACKHOUSE\tBEN, WILL & JD HAYES\t52kg\t-\n12\t-\tMERCHANTESSA\t13\tTEO NUGENT\tJASON WARREN\t52.5kg\t-\n11\t-\tFONTALICIOUS\t12\tPATRICK MOLONEY\tSHANE NICHOLS & HAYDEN BLACK\t53kg\t-\n10\t-\tCAPITAL STORM\t11\tLACHLAN NEINDORF\tPHILLIP STOKES\t53.5kg\t-\n9\t-\tEXPANDING POWER\t10\tLACHLAN NEINDORF\tENVER JUSUFOVIC\t54kg\t-\n8\t-\tSKY DEEL\t9\tJAMIE MOTT\tGAVIN BEDGGOOD\t54.5kg\t-\n7\t-\tRUSSIAN FIREBIRD\t8\tBRAD RAWILLER\tTOBY LAKE\t55kg\t-\n6\t-\tREEL DEADLY\t7\tTHOMAS STOCKDALE\tCIARON MAHER\t55.5kg\t-\n5\t-\tOBON\t6\tLUKE NOLEN\tMICHAEL KENT\t56kg\t-\n4\t-\tKING TAGALOA\t5\tDYLAN DEAN\tJULIUS SANDHU\t56.5kg\t-\n3\t-\tDETERMINATO\t4\tBILLY EGAN\tDOMINIC SUTTON\t57kg\t-\n2\t-\tHUGHIE\t3\tNot Notified\tJAMIE EDWARDS\t57.5kg\t-\n1\t-\tLIMBERING\t2\tNot Notified\tRAHARNA MCDONALD\t58kg\t-\nEDGEiQ Racing Intelligence Operating System\nBuild: 1.0.0\nData as at: 06:49 pm AEDT",
+      "renderedPath": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-live-runtime/07_MAP_LIVE_RENDERED.png"
+    },
+    {
+      "workspace": "08_EPI",
+      "label": "EPI",
+      "captureErrors": [],
+      "mounted": [
+        {
+          "component": "EpiWorkspaceWorkspace",
+          "key": "EPI",
+          "tag": "SECTION",
+          "className": "eiq-race-workspace eiq-race-workspace--epi"
+        }
+      ],
+      "mountedComponent": "EpiWorkspaceWorkspace",
+      "mountedKey": "EPI",
+      "selectedMeeting": "2026-07-17|WANGARATTA",
+      "selectedRace": null,
+      "activeSection": "epi",
+      "viewLevel": "race",
+      "runnerCount": 30,
+      "dataAvailability": "PARTIAL_OR_PENDING",
+      "bodySample": "EDGEiQ\nRACE INTELLIGENCE\nHOME\nMEETINGS\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nEPI\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nRESULTS\nLAB\nCOMPARE\nREVIEW\nSETTINGS\nEDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM\nInformation is not Intelligence. Evidence leads. Precision decides.\nSUN, 19 JULY 2026\n06:49 pm\nAEDT\nMEETINGS\nWANGARATTA\nRACE 1\nEPI\nRace 1\nCurrent Race\nBack to Races\nLOCATION\nWangaratta\nDATE\n2026-07-17\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nEPI\nRESULTS\nREVIEW\n\nEPI\n\nWangaratta R1\nEDGEIQ Performance Index structure is available while race-matched EPI rows are pending.\nSTATUS\nAwaiting race-matched EPI rows\nFIELD\n30\nSOURCE ROWS\n250\nSELECTED RUNNER\nSelect a runner\nCURRENT EPI\nRACE RANK\nFIELD AVERAGE\nDIFFERENCE\nPEAK LAST 10\nAVERAGE LAST 10\nTREND\nEPI MATRIX\nRunner rows are visible with pending EPI fields\nRANK\tNO\tRUNNER\tJOCKEY\tTRAINER\tCURRENT EPI\tFIELD DIFF\tPEAK LAST 10\tAVG LAST 10\tTREND\tVALID STARTS\tEVIDENCE\tSTATUS\nPending\t1\tLIMBERING\tNot Notified\tRAHARNA MCDONALD\tPending\tPending\tPending\tPending\tPending\tPending\tPending\tAwaiting row\nPending\t2\tHUGHIE\tNot Notified\tJAMIE EDWARDS\tPending\tPending\tPending\tPending\tPending\tPending\tPending\tAwaiting row\nPending\t3\tDETERMINATO\tBILLY EGAN\tDOMINIC SUTTON\tPending\tPending\tPending\tPending\tPending\tPending\tPending\tAwaiting row\nPending\t4\tKING TAGALOA\tDYLAN DEAN\tJULIUS SANDHU\tPending\tPending\tPending\tPending\tPending\tPending\tPending\tAwaiting row\nPending\t5\tOBON\tLUKE NOLEN\tMICHAEL KENT\tPending\tPending\tPending\tPending\tPending\tPending\tPending\tAwaiting row\nPending\t6\tREEL DEADLY\tTHOMAS STOCKDALE\tCIARON MAHER\tPending\tPending\tPending\tPending\tPending\tPending\tPending\tAwaiting row\nPending\t7\tRUSSIAN FIREBIRD\tBRAD RAWILLER\tTOBY LAKE\tPending\tPending\tPending\tPending\tPending\tPending\tPending\tAwaiting row\nPending\t8\tSKY DEEL\tJAMIE MOTT\tGAVIN BEDGGOOD\tPending\tPending\tPending\tPending\tPending\tPending\tPending\tAwaiting row\nPending\t9\tEXPANDING POWER\tLACHLAN NEINDORF\tENVER JUSUFOVIC\tPending\tPending\tPending\tPending\tPending\tPending\tPending\tAwaiting row\nPending\t10\tCAPITAL STORM\tLACHLAN NEINDORF\tPHILLIP STOKES\tPending\tPending\tPending\tPending\tPending\tPending\tPending\tAwaiting row\nPending\t11\tFONTALICIOUS\tPATRICK MOLONEY\tSHANE NICHOLS & HAYDEN BLACK\tPending\tPending\tPending\tPending\tPending\tPending\tPending\tAwaiting row\nPending\t12\tMERCHANTESSA\tTEO NUGENT\tJASON WARREN\tPending\tPending\tPending\tPending\tPending\tPending\tPending\tAwaiting row\nPending\t13\tMIRADOR\tDANIEL STACKHOUSE\tBEN, WILL & JD HAYES\tPending\tPending\tPending\tPending\tPending\tPending\tPending\tAwaiting row\nPending\t14\tRUBY GUILD\tNATHAN PUNCH\tROBBIE GRIFFITHS\tPending\tPending\tPending\tPending\tPending\tPending\tPending\tAwaiting row\nPending\t15\tTRICKY MISS\tJAKE NOONAN\tCIARON MAHER\tPending\tPending\tPending\tPending\tPending\tPending\tPending\tAwaiting row\nPending\t16\tPORTINARI\tDANIEL STACKHOUSE\tBEN, WILL & JD HAYES\tPending\tPending\tPending\tPending\tPending\tPending\tPending\tAwaiting row\nPending\t17\tMINELLO\tJAMIE MOTT\tANTHONY & SAM FREEDMAN\tPending\tPending\tPending\tPending\tPending\tPending\tPending\tAwaiting row\nPending\t18\tPINAMILLOY\tZAC SPAIN\tJASON WARREN\tPending\tPending\tPending\tPending\tPending\tPending\tPending\tAwaiting row\nPending\t19\tRES MIRA\tBRAD RAWILLER\tMARK WEBB\tPending\tPending\tPending\tPending\tPending\tPending\tPending\tAwaiting row\nPending\t20\tSTINGRAY BARB\tNADIA DANIELS\tPAT CAREY & HARRIS WALKER\tPending\tPending\tPending\tPending\tPending\tPending\tPending\tAwaiting row\nPending\t21\tZAAC\tTHOMAS STOCKDALE\tJOHN MCARDLE\tPending\tPending\tPending\tPending\tPending\tPending\tPending\tAwaiting row\nPending\t22\tBABY BLUE\tDAMIEN THORNTON\tBEN, WILL & JD HAYES\tPending\tPending\tPending\tPending\tPending\tPending\tPending\tAwaiting row\nPending\t23\tCONTARINI\tBEAU MERTENS\tCHRIS WALLER\tPending\tPending\tPending\tPending\tPending\tPending\tPending\tAwaiting row\nPending\t24\tETERNAL JOY\tJORDAN CHILDS\tBEN, WILL & JD HAYES\tPending\tPending\tPending\tPending\tPending\tPending\tPending\tAwaiting row\nPending\t25\tBIG FIN\tTEO NUGENT\tBROOKE VERWEY-MITCHELL\tPending\tPending\tPending\tPending\tPending\tPending\tPending\tAwaiting row\nPending\t26\tLEVRIER\tPATRICK MOLONEY\tMATT LAURIE\tPending\tPending\tPending\tPending\tPending\tPending\tPending\tAwaiting row\nPending\t27\tMARCH ON BY\tRYAN HOUSTON\tSIMON ZAHRA\tPending\tPending\tPending\tPending\tPending\tPending\tPending\tAwaiting row\nPending\t28\tBLUE SHIELD\tLACHLAN NEINDORF\tMICK PRICE & MICHAEL KENT JNR\tPending\tPending\tPending\tPending\tPending\tPending\tPending\tAwaiting row\nPending\t29\tCALEXPO\tDANIEL STACKHOUSE\tBEN, WILL & JD HAYES\tPending\tPending\tPending\tPending\tPending\tPending\tPending\tAwaiting row\nPending\t30\tCIRCUS BERZERKUS\tBAILEY KINNINMONT\tJIM CERCHI (JNR)\tPending\tPending\tPending\tPending\tPending\tPending\tPending\tAwaiting row\nRACE BENCHMARK\n\nRace benchmark context is not available for this race.\n\nHISTORICAL EPI\n\nRace-matched historical EPI rows are pending for this selected race.\n\nRATING EXPLANATION\n\nNo EPI value is shown until the governed feed supplies a matched row.\n\nEDGEiQ Racing Intelligence Operating System\nBuild: 1.0.0\nData as at: 06:49 pm AEDT",
+      "renderedPath": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-live-runtime/08_EPI_LIVE_RENDERED.png"
+    },
+    {
+      "workspace": "09_MARKET",
+      "label": "MARKET",
+      "captureErrors": [],
+      "mounted": [
+        {
+          "component": "MarketWorkspace",
+          "key": "MARKET",
+          "tag": "SECTION",
+          "className": "eiq-race-workspace eiq-race-workspace--market"
+        }
+      ],
+      "mountedComponent": "MarketWorkspace",
+      "mountedKey": "MARKET",
+      "selectedMeeting": "2026-07-17|WANGARATTA",
+      "selectedRace": null,
+      "activeSection": "market",
+      "viewLevel": "race",
+      "runnerCount": 30,
+      "dataAvailability": "PARTIAL_OR_PENDING",
+      "bodySample": "EDGEiQ\nRACE INTELLIGENCE\nHOME\nMEETINGS\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nEPI\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nRESULTS\nLAB\nCOMPARE\nREVIEW\nSETTINGS\nEDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM\nInformation is not Intelligence. Evidence leads. Precision decides.\nSUN, 19 JULY 2026\n06:49 pm\nAEDT\nMEETINGS\nWANGARATTA\nRACE 1\nMARKET\nRace 1\nCurrent Race\nBack to Races\nLOCATION\nWangaratta\nDATE\n2026-07-17\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nEPI\nRESULTS\nREVIEW\n\nMARKET\n\nMarket and EDGEiQ price context\nCurrent market, EDGEiQ assessed price and governed edge for every runner.\nRUNNERS\n30\nRACE READ\nPending\nMARKET BOARD\nNO / RUNNER / EDGEIQ / MARKET / FAIR / EDGE / FLUC 60s % / STATUS\nNO\tRUNNER\tEDGEIQ\tMARKET\tFAIR\tEDGE\tFLUC 60S %\tSTATUS\n1\tLIMBERING\tUnavailable\t\t\tPending\tPending\tPending Market\n2\tHUGHIE\tUnavailable\t\t\tPending\tPending\tPending Market\n3\tDETERMINATO\tUnavailable\t\t\tPending\tPending\tPending Market\n4\tKING TAGALOA\tUnavailable\t\t\tPending\tPending\tPending Market\n5\tOBON\tUnavailable\t\t\tPending\tPending\tPending Market\n6\tREEL DEADLY\tUnavailable\t\t\tPending\tPending\tPending Market\n7\tRUSSIAN FIREBIRD\tUnavailable\t\t\tPending\tPending\tPending Market\n8\tSKY DEEL\tUnavailable\t\t\tPending\tPending\tPending Market\n9\tEXPANDING POWER\tUnavailable\t\t\tPending\tPending\tPending Market\n10\tCAPITAL STORM\tUnavailable\t\t\tPending\tPending\tPending Market\n11\tFONTALICIOUS\tUnavailable\t\t\tPending\tPending\tPending Market\n12\tMERCHANTESSA\tUnavailable\t\t\tPending\tPending\tPending Market\n13\tMIRADOR\tUnavailable\t\t\tPending\tPending\tPending Market\n14\tRUBY GUILD\tUnavailable\t\t\tPending\tPending\tPending Market\n15\tTRICKY MISS\tUnavailable\t\t\tPending\tPending\tPending Market\n16\tPORTINARI\tUnavailable\t\t\tPending\tPending\tPending Market\n17\tMINELLO\tUnavailable\t\t\tPending\tPending\tPending Market\n18\tPINAMILLOY\tUnavailable\t\t\tPending\tPending\tPending Market\n19\tRES MIRA\tUnavailable\t\t\tPending\tPending\tPending Market\n20\tSTINGRAY BARB\tUnavailable\t\t\tPending\tPending\tPending Market\n21\tZAAC\tUnavailable\t\t\tPending\tPending\tPending Market\n22\tBABY BLUE\tUnavailable\t\t\tPending\tPending\tPending Market\n23\tCONTARINI\tUnavailable\t\t\tPending\tPending\tPending Market\n24\tETERNAL JOY\tUnavailable\t\t\tPending\tPending\tPending Market\n25\tBIG FIN\tUnavailable\t\t\tPending\tPending\tPending Market\n26\tLEVRIER\tUnavailable\t\t\tPending\tPending\tPending Market\n27\tMARCH ON BY\tUnavailable\t\t\tPending\tPending\tPending Market\n28\tBLUE SHIELD\tUnavailable\t\t\tPending\tPending\tPending Market\n29\tCALEXPO\tUnavailable\t\t\tPending\tPending\tPending Market\n30\tCIRCUS BERZERKUS\tUnavailable\t\t\tPending\tPending\tPending Market\nMARKET READ\nRUNNERS\n30\nPRICED\n0\nPENDING\n30\nMARKET NOTE\n\nPending Market means current prices are not available for that runner yet.\n\nEDGEiQ Racing Intelligence Operating System\nBuild: 1.0.0\nData as at: 06:49 pm AEDT",
+      "renderedPath": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-live-runtime/09_MARKET_LIVE_RENDERED.png"
+    },
+    {
+      "workspace": "10_OVERVIEW",
+      "label": "OVERVIEW",
+      "captureErrors": [],
+      "mounted": [
+        {
+          "component": "OverviewWorkspace",
+          "key": "OVERVIEW",
+          "tag": "SECTION",
+          "className": "eiq-race-workspace eiq-race-workspace--overview"
+        }
+      ],
+      "mountedComponent": "OverviewWorkspace",
+      "mountedKey": "OVERVIEW",
+      "selectedMeeting": "2026-07-17|WANGARATTA",
+      "selectedRace": null,
+      "activeSection": "overview",
+      "viewLevel": "race",
+      "runnerCount": 12,
+      "dataAvailability": "PARTIAL_OR_PENDING",
+      "bodySample": "EDGEiQ\nRACE INTELLIGENCE\nHOME\nMEETINGS\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nEPI\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nRESULTS\nLAB\nCOMPARE\nREVIEW\nSETTINGS\nEDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM\nInformation is not Intelligence. Evidence leads. Precision decides.\nSUN, 19 JULY 2026\n06:49 pm\nAEDT\nMEETINGS\nWANGARATTA\nRACE 1\nOVERVIEW\nRace 1\nCurrent Race\nBack to Races\nLOCATION\nWangaratta\nDATE\n2026-07-17\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nEPI\nRESULTS\nREVIEW\n\nOVERVIEW\n\nWangaratta R1\nRace shell, runner board and next-action structure are available while specialist reads are pending.\nOVERVIEW\nPending\nFIELD\n12\nMAP\nPending\nTempo Profile\nPending\nRace-shape rows are not matched yet.\nEPI Top 3\nPending\nEPI rows are not matched yet.\nRUNNER BOARD\nDeclared runners remain visible for race navigation\nNO\tRUNNER\tCURRENT EPI\tTREND\n1\tLIMBERING\tPending\tPending\n2\tHUGHIE\tPending\tPending\n3\tDETERMINATO\tPending\tPending\n4\tKING TAGALOA\tPending\tPending\n5\tOBON\tPending\tPending\n6\tREEL DEADLY\tPending\tPending\n7\tRUSSIAN FIREBIRD\tPending\tPending\n8\tSKY DEEL\tPending\tPending\n9\tEXPANDING POWER\tPending\tPending\n10\tCAPITAL STORM\tPending\tPending\n11\tFONTALICIOUS\tPending\tPending\n12\tMERCHANTESSA\tPending\tPending\nEDGEiQ Racing Intelligence Operating System\nBuild: 1.0.0\nData as at: 06:49 pm AEDT",
+      "renderedPath": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-live-runtime/10_OVERVIEW_LIVE_RENDERED.png"
+    },
+    {
+      "workspace": "11_SCRATCHINGS",
+      "label": "SCRATCHINGS",
+      "captureErrors": [],
+      "mounted": [
+        {
+          "component": "MeetingScratchingsWorkspace",
+          "key": "SCRATCHINGS",
+          "tag": "SECTION",
+          "className": "eiq-meeting-workspace eiq-meeting-v1"
+        }
+      ],
+      "mountedComponent": "MeetingScratchingsWorkspace",
+      "mountedKey": "SCRATCHINGS",
+      "selectedMeeting": "2026-07-17|WANGARATTA",
+      "selectedRace": null,
+      "activeSection": "meetings",
+      "viewLevel": "meeting",
+      "runnerCount": 0,
+      "dataAvailability": "PARTIAL_OR_PENDING",
+      "bodySample": "EDGEiQ\nRACE INTELLIGENCE\nHOME\nMEETINGS\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nEPI\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nRESULTS\nLAB\nCOMPARE\nREVIEW\nSETTINGS\nEDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM\nInformation is not Intelligence. Evidence leads. Precision decides.\nSUN, 19 JULY 2026\n06:50 pm\nAEDT\nMEETING DETAIL\nWangaratta\n\nWangaratta | Friday 17 July 2026\n\nBack to Meetings\nSTATE\nNot supplied\nRACES\n0\nRUNNERS\nNot supplied\nSCRATCHINGS\n0\nFIRST\nUnavailable\nLAST\nUnavailable\nSTATUS\nFIELDS PENDING\nOFFICIAL UPDATE\nUnavailable\nTRACK\nTrack rating unavailable\nRAIL\nNot supplied\nWEATHER\nWeather unavailable\nWIND\nWeather unavailable\nTEMP\nWeather unavailable\nRAIN\nNot supplied\nIRRIGATION\nNot supplied\nRACES\nSCRATCHINGS\nGEAR CHANGES\nTRACK\nWEATHER\nRESULTS\nSCRATCHINGS\nOfficial meeting scratchings\n\nScratched runners remain visible where operationally useful.\n\nLatest official update\nUnavailable\nREFRESH\nTOTAL SCRATCHINGS\n0\nRACES AFFECTED\n0\nEMERGENCIES\n0\nRACE\nALL RACES\nSTATUS\nALL STATUS\nSEARCH HORSE / TRAINER / JOCKEY\nSCRATCHINGS\nOfficial scratchings data is currently unavailable.\n\nRace fields remain governed by the current official meeting data.\n\nEDGEiQ Racing Intelligence Operating System\nBuild: 1.0.0\nData as at: 06:50 pm AEDT",
+      "renderedPath": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-live-runtime/11_SCRATCHINGS_LIVE_RENDERED.png"
+    },
+    {
+      "workspace": "12_GEAR_CHANGES",
+      "label": "GEAR CHANGES",
+      "captureErrors": [],
+      "mounted": [
+        {
+          "component": "MeetingGearChangesWorkspace",
+          "key": "GEAR_CHANGES",
+          "tag": "SECTION",
+          "className": "eiq-meeting-workspace eiq-meeting-v1"
+        }
+      ],
+      "mountedComponent": "MeetingGearChangesWorkspace",
+      "mountedKey": "GEAR_CHANGES",
+      "selectedMeeting": "2026-07-17|WANGARATTA",
+      "selectedRace": null,
+      "activeSection": "meetings",
+      "viewLevel": "meeting",
+      "runnerCount": 0,
+      "dataAvailability": "PARTIAL_OR_PENDING",
+      "bodySample": "EDGEiQ\nRACE INTELLIGENCE\nHOME\nMEETINGS\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nEPI\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nRESULTS\nLAB\nCOMPARE\nREVIEW\nSETTINGS\nEDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM\nInformation is not Intelligence. Evidence leads. Precision decides.\nSUN, 19 JULY 2026\n06:50 pm\nAEDT\nMEETING DETAIL\nWangaratta\n\nWangaratta | Friday 17 July 2026\n\nBack to Meetings\nSTATE\nNot supplied\nRACES\n0\nRUNNERS\nNot supplied\nSCRATCHINGS\n0\nFIRST\nUnavailable\nLAST\nUnavailable\nSTATUS\nFIELDS PENDING\nOFFICIAL UPDATE\nUnavailable\nTRACK\nTrack rating unavailable\nRAIL\nNot supplied\nWEATHER\nWeather unavailable\nWIND\nWeather unavailable\nTEMP\nWeather unavailable\nRAIN\nNot supplied\nIRRIGATION\nNot supplied\nRACES\nSCRATCHINGS\nGEAR CHANGES\nTRACK\nWEATHER\nRESULTS\nGEAR CHANGES\nOfficial gear changes and equipment updates\nLatest official update\nUnavailable\nTOTAL GEAR CHANGES\n0\nFIRST TIME\n0\nGEAR ADDED\n0\nGEAR REMOVED\n0\nAFFECTED RUNNERS\n0\nLATEST UPDATE\nUnavailable\nRACE\nALL RACES\nCHANGE\nALL CHANGES\nSEARCH HORSE / GEAR\nGEAR CHANGES\nNo official gear changes have been received for this meeting.\n\nRunner equipment remains governed by official race fields where available.\n\nRUNNER GEAR DETAIL\nSelect a gear change.\n\nOfficial equipment details will appear when a supplied runner record is selected.\n\nEDGEiQ Racing Intelligence Operating System\nBuild: 1.0.0\nData as at: 06:50 pm AEDT",
+      "renderedPath": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-live-runtime/12_GEAR_CHANGES_LIVE_RENDERED.png"
+    },
+    {
+      "workspace": "13_TRACK",
+      "label": "TRACK",
+      "captureErrors": [],
+      "mounted": [
+        {
+          "component": "MeetingTrackWorkspace",
+          "key": "TRACK",
+          "tag": "SECTION",
+          "className": "eiq-meeting-workspace eiq-meeting-v1"
+        }
+      ],
+      "mountedComponent": "MeetingTrackWorkspace",
+      "mountedKey": "TRACK",
+      "selectedMeeting": "2026-07-17|WANGARATTA",
+      "selectedRace": null,
+      "activeSection": "meetings",
+      "viewLevel": "meeting",
+      "runnerCount": 0,
+      "dataAvailability": "PARTIAL_OR_PENDING",
+      "bodySample": "EDGEiQ\nRACE INTELLIGENCE\nHOME\nMEETINGS\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nEPI\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nRESULTS\nLAB\nCOMPARE\nREVIEW\nSETTINGS\nEDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM\nInformation is not Intelligence. Evidence leads. Precision decides.\nSUN, 19 JULY 2026\n06:50 pm\nAEDT\nMEETING DETAIL\nWangaratta\n\nWangaratta | Friday 17 July 2026\n\nBack to Meetings\nSTATE\nNot supplied\nRACES\n0\nRUNNERS\nNot supplied\nSCRATCHINGS\n0\nFIRST\nUnavailable\nLAST\nUnavailable\nSTATUS\nFIELDS PENDING\nOFFICIAL UPDATE\nUnavailable\nTRACK\nTrack rating unavailable\nRAIL\nNot supplied\nWEATHER\nWeather unavailable\nWIND\nWeather unavailable\nTEMP\nWeather unavailable\nRAIN\nNot supplied\nIRRIGATION\nNot supplied\nRACES\nSCRATCHINGS\nGEAR CHANGES\nTRACK\nWEATHER\nRESULTS\nTRACK\nCurrent track, rail and profile context\n\nWangaratta\n\nTRACK CONDITION\nCurrent official context\nOFFICIAL RATING\nUnavailable\nRAIL\nUnavailable\nTRACK TYPE\nUnavailable\nPENETROMETER\nUnavailable\nRAIN 24H\nUnavailable\nRAIN 7 DAYS\nUnavailable\nIRRIGATION 24H\nUnavailable\nIRRIGATION 7 DAYS\nUnavailable\nRAIL POSITION AND TRACK MAP\nUnavailable\nTRACK DETAILS\nCurrent operational profile\nSURFACE\nUnavailable\nCOURSE TYPE\nUnavailable\nDIRECTION\nUnavailable\nDISTANCES\nUnavailable\nEDGEIQ TRUE TRACK\nUnavailable\nSURFACE DELTA\nUnavailable\nTRACK PATTERN ANALYSIS\nLane and settling-position evidence\nTrack pattern evidence unavailable.\n\nLane and settling-position evidence has not been supplied for this meeting context.\n\nHISTORICAL PROFILE\nRecent comparable track evidence\nHistorical track profile unavailable.\n\nNo comparable historical track profile has been supplied for this meeting context.\n\nTRACK NOTES\nOfficial and governed context\nTrack notes unavailable.\n\nNo official or governed note has been supplied for this meeting.\n\nEDGEiQ Racing Intelligence Operating System\nBuild: 1.0.0\nData as at: 06:50 pm AEDT",
+      "renderedPath": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-live-runtime/13_TRACK_LIVE_RENDERED.png"
+    },
+    {
+      "workspace": "14_WEATHER",
+      "label": "WEATHER",
+      "captureErrors": [],
+      "mounted": [
+        {
+          "component": "MeetingWeatherWorkspace",
+          "key": "WEATHER",
+          "tag": "SECTION",
+          "className": "eiq-meeting-workspace eiq-meeting-v1"
+        }
+      ],
+      "mountedComponent": "MeetingWeatherWorkspace",
+      "mountedKey": "WEATHER",
+      "selectedMeeting": "2026-07-17|WANGARATTA",
+      "selectedRace": null,
+      "activeSection": "meetings",
+      "viewLevel": "meeting",
+      "runnerCount": 0,
+      "dataAvailability": "PARTIAL_OR_PENDING",
+      "bodySample": "EDGEiQ\nRACE INTELLIGENCE\nHOME\nMEETINGS\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nEPI\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nRESULTS\nLAB\nCOMPARE\nREVIEW\nSETTINGS\nEDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM\nInformation is not Intelligence. Evidence leads. Precision decides.\nSUN, 19 JULY 2026\n06:50 pm\nAEDT\nMEETING DETAIL\nWangaratta\n\nWangaratta | Friday 17 July 2026\n\nBack to Meetings\nSTATE\nNot supplied\nRACES\n0\nRUNNERS\nNot supplied\nSCRATCHINGS\n0\nFIRST\nUnavailable\nLAST\nUnavailable\nSTATUS\nFIELDS PENDING\nOFFICIAL UPDATE\nUnavailable\nTRACK\nTrack rating unavailable\nRAIL\nNot supplied\nWEATHER\nWeather unavailable\nWIND\nWeather unavailable\nTEMP\nWeather unavailable\nRAIN\nNot supplied\nIRRIGATION\nNot supplied\nRACES\nSCRATCHINGS\nGEAR CHANGES\nTRACK\nWEATHER\nRESULTS\nWEATHER\nMeeting weather and race-day conditions\n\nWangaratta\n\nSTATE\nUnavailable\nAUTHORITY\nUnavailable\nOBSERVED\n2026-07-11T03:57:50.984795+00:00\nOfficial weather data is not currently available for this meeting.\nCURRENT OBSERVATIONS\nCURRENT CONDITION\nUnavailable\nTRACK CONDITION\nUnavailable\nTEMPERATURE\nUnavailable\nWIND\nUnavailable\nGUSTS\nUnavailable\nHUMIDITY\nUnavailable\nRAIN TODAY\nUnavailable\nRAIN 24H\nUnavailable\nRAIN 7D\nUnavailable\nRACE-DAY WEATHER CONTEXT\nTRACK IMPACT\nUnavailable\nWIND IMPACT\nUnavailable\nRAIN TIMING\nUnavailable\nOVERALL OUTLOOK\nUnavailable\nEDGEiQ Racing Intelligence Operating System\nBuild: 1.0.0\nData as at: 06:50 pm AEDT",
+      "renderedPath": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-live-runtime/14_WEATHER_LIVE_RENDERED.png"
+    },
+    {
+      "workspace": "15_RESULTS",
+      "label": "RESULTS",
+      "captureErrors": [],
+      "mounted": [
+        {
+          "component": "RaceResultsWorkspace",
+          "key": "RESULTS",
+          "tag": "SECTION",
+          "className": "eiq-race-workspace eiq-race-workspace--results"
+        },
+        {
+          "component": "RaceResultsWorkspace",
+          "key": "RESULTS",
+          "tag": "SECTION",
+          "className": "eiq-results-live-workspace"
+        }
+      ],
+      "mountedComponent": "RaceResultsWorkspace",
+      "mountedKey": "RESULTS",
+      "selectedMeeting": "2026-07-17|WANGARATTA",
+      "selectedRace": null,
+      "activeSection": "results",
+      "viewLevel": "race",
+      "runnerCount": 30,
+      "dataAvailability": "PARTIAL_OR_PENDING",
+      "bodySample": "EDGEiQ\nRACE INTELLIGENCE\nHOME\nMEETINGS\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nEPI\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nRESULTS\nLAB\nCOMPARE\nREVIEW\nSETTINGS\nEDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM\nInformation is not Intelligence. Evidence leads. Precision decides.\nSUN, 19 JULY 2026\n06:50 pm\nAEDT\nMEETINGS\nWANGARATTA\nRACE 1\nRESULTS\nRace 1\nCurrent Race\nBack to Races\nLOCATION\nWangaratta\nDATE\n2026-07-17\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nEPI\nRESULTS\nREVIEW\nRESULTS\nWangaratta R1\n\nAwaiting official result. The approved review structure remains available while official result fields are pending.\n\nSTATUS\nAwaiting official result\nWINNER\nPending\nRACE RATING\nPending\nSECTIONALS\nLengths vs standard when governed\nSTEWARDS\nPending\nOFFICIAL FINISHING ORDER\nPending result structure\nPos\tNo\tHorse\tJockey\tTrainer\tSP\tMargin\tStatus\nPending\t-\tLIMBERING\tNot Notified\tRAHARNA MCDONALD\tPending\tPending\tACTIVE\nPending\t-\tHUGHIE\tNot Notified\tJAMIE EDWARDS\tPending\tPending\tACTIVE\nPending\t-\tDETERMINATO\tBILLY EGAN\tDOMINIC SUTTON\tPending\tPending\tACTIVE\nPending\t-\tKING TAGALOA\tDYLAN DEAN\tJULIUS SANDHU\tPending\tPending\tACTIVE\nPending\t-\tOBON\tLUKE NOLEN\tMICHAEL KENT\tPending\tPending\tACTIVE\nPending\t-\tREEL DEADLY\tTHOMAS STOCKDALE\tCIARON MAHER\tPending\tPending\tACTIVE\nPending\t-\tRUSSIAN FIREBIRD\tBRAD RAWILLER\tTOBY LAKE\tPending\tPending\tACTIVE\nPending\t-\tSKY DEEL\tJAMIE MOTT\tGAVIN BEDGGOOD\tPending\tPending\tACTIVE\nPending\t-\tEXPANDING POWER\tLACHLAN NEINDORF\tENVER JUSUFOVIC\tPending\tPending\tACTIVE\nPending\t-\tCAPITAL STORM\tLACHLAN NEINDORF\tPHILLIP STOKES\tPending\tPending\tACTIVE\nPending\t-\tFONTALICIOUS\tPATRICK MOLONEY\tSHANE NICHOLS & HAYDEN BLACK\tPending\tPending\tACTIVE\nPending\t-\tMERCHANTESSA\tTEO NUGENT\tJASON WARREN\tPending\tPending\tACTIVE\nPending\t-\tMIRADOR\tDANIEL STACKHOUSE\tBEN, WILL & JD HAYES\tPending\tPending\tACTIVE\nPending\t-\tRUBY GUILD\tNATHAN PUNCH\tROBBIE GRIFFITHS\tPending\tPending\tACTIVE\nPending\t-\tTRICKY MISS\tJAKE NOONAN\tCIARON MAHER\tPending\tPending\tACTIVE\nPending\t-\tPORTINARI\tDANIEL STACKHOUSE\tBEN, WILL & JD HAYES\tPending\tPending\tACTIVE\nPending\t-\tMINELLO\tJAMIE MOTT\tANTHONY & SAM FREEDMAN\tPending\tPending\tACTIVE\nPending\t-\tPINAMILLOY\tZAC SPAIN\tJASON WARREN\tPending\tPending\tACTIVE\nPending\t-\tRES MIRA\tBRAD RAWILLER\tMARK WEBB\tPending\tPending\tACTIVE\nPending\t-\tSTINGRAY BARB\tNADIA DANIELS\tPAT CAREY & HARRIS WALKER\tPending\tPending\tACTIVE\nPending\t-\tZAAC\tTHOMAS STOCKDALE\tJOHN MCARDLE\tPending\tPending\tACTIVE\nPending\t-\tBABY BLUE\tDAMIEN THORNTON\tBEN, WILL & JD HAYES\tPending\tPending\tACTIVE\nPending\t-\tCONTARINI\tBEAU MERTENS\tCHRIS WALLER\tPending\tPending\tACTIVE\nPending\t-\tETERNAL JOY\tJORDAN CHILDS\tBEN, WILL & JD HAYES\tPending\tPending\tACTIVE\nPending\t-\tBIG FIN\tTEO NUGENT\tBROOKE VERWEY-MITCHELL\tPending\tPending\tACTIVE\nPending\t-\tLEVRIER\tPATRICK MOLONEY\tMATT LAURIE\tPending\tPending\tACTIVE\nPending\t-\tMARCH ON BY\tRYAN HOUSTON\tSIMON ZAHRA\tPending\tPending\tACTIVE\nPending\t-\tBLUE SHIELD\tLACHLAN NEINDORF\tMICK PRICE & MICHAEL KENT JNR\tPending\tPending\tACTIVE\nPending\t-\tCALEXPO\tDANIEL STACKHOUSE\tBEN, WILL & JD HAYES\tPending\tPending\tACTIVE\nPending\t-\tCIRCUS BERZERKUS\tBAILEY KINNINMONT\tJIM CERCHI (JNR)\tPending\tPending\tACTIVE\nRUNNER PERFORMANCE SNAPSHOT\nGoverned EPI / ERI\n\nCurrent runner performance fields remain visible; official sectional review unlocks when result and sectional feeds are governed.\n\nLIMBERING\nEPI - / ERI -\nHUGHIE\nEPI - / ERI -\nDETERMINATO\nEPI - / ERI -\nKING TAGALOA\nEPI - / ERI -\nOBON\nEPI - / ERI -\nREEL DEADLY\nEPI - / ERI -\nREVIEW NOTES\nPending-safe review state\nOfficial finishing order, SP and margins are populated only when governed result rows exist.\nSectional lengths versus standard remain unavailable until the governed sectional source is connected.\nNo replay or simulated result data is displayed.\nEDGEiQ Racing Intelligence Operating System\nBuild: 1.0.0\nData as at: 06:50 pm AEDT",
+      "renderedPath": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-live-runtime/15_RESULTS_LIVE_RENDERED.png"
+    },
+    {
+      "workspace": "16_INSIGHTS",
+      "label": "INSIGHTS",
+      "captureErrors": [],
+      "mounted": [
+        {
+          "component": "InsightsWorkspace",
+          "key": "INSIGHTS",
+          "tag": "SECTION",
+          "className": "eiq-race-workspace eiq-race-workspace--insights"
+        }
+      ],
+      "mountedComponent": "InsightsWorkspace",
+      "mountedKey": "INSIGHTS",
+      "selectedMeeting": "2026-07-17|WANGARATTA",
+      "selectedRace": null,
+      "activeSection": "insights",
+      "viewLevel": "race",
+      "runnerCount": 24,
+      "dataAvailability": "PARTIAL_OR_PENDING",
+      "bodySample": "EDGEiQ\nRACE INTELLIGENCE\nHOME\nMEETINGS\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nEPI\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nRESULTS\nLAB\nCOMPARE\nREVIEW\nSETTINGS\nEDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM\nInformation is not Intelligence. Evidence leads. Precision decides.\nSUN, 19 JULY 2026\n06:50 pm\nAEDT\nMEETINGS\nWANGARATTA\nRACE 1\nINSIGHTS\nRace 1\nCurrent Race\nBack to Races\nLOCATION\nWangaratta\nDATE\n2026-07-17\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nEPI\nRESULTS\nREVIEW\n\nINSIGHTS\n\nWangaratta R1\nAPPROVED INSIGHT CATEGORIES ARE STAGED; RACE-MATCHED CARDS ARE PENDING FOR THIS SELECTED RACE.\nSTABLE INTENT\nPending\nPREPARATION\nPending\nRUNNERS\n24\nSTABLE INTENT\nNot supplied\n\nGoverned feed has not supplied this category for the selected race.\n\nPREPARATION STAGE\nNot supplied\n\nGoverned feed has not supplied this category for the selected race.\n\nHEAVY SKILL\nNot supplied\n\nGoverned feed has not supplied this category for the selected race.\n\nCAMPAIGN PROFILE\nNot supplied\n\nGoverned feed has not supplied this category for the selected race.\n\nAPPROVED CATEGORIES\n\nStable Intent, Preparation Stage, Heavy Skill and Campaign Profile will display only when matched rows are supplied.\n\nRUNNER INSIGHTS\nNo | Runner | Insight | Edge | Evidence | Status\nNO\tRUNNER\tINSIGHT\tEDGE\tEVIDENCE\tSTATUS\n1\tLIMBERING\tAwaiting governed insight\tNot supplied\tNot supplied\tAwaiting row\n2\tHUGHIE\tAwaiting governed insight\tNot supplied\tNot supplied\tAwaiting row\n3\tDETERMINATO\tAwaiting governed insight\tNot supplied\tNot supplied\tAwaiting row\n4\tKING TAGALOA\tAwaiting governed insight\tNot supplied\tNot supplied\tAwaiting row\n5\tOBON\tAwaiting governed insight\tNot supplied\tNot supplied\tAwaiting row\n6\tREEL DEADLY\tAwaiting governed insight\tNot supplied\tNot supplied\tAwaiting row\n7\tRUSSIAN FIREBIRD\tAwaiting governed insight\tNot supplied\tNot supplied\tAwaiting row\n8\tSKY DEEL\tAwaiting governed insight\tNot supplied\tNot supplied\tAwaiting row\n9\tEXPANDING POWER\tAwaiting governed insight\tNot supplied\tNot supplied\tAwaiting row\n10\tCAPITAL STORM\tAwaiting governed insight\tNot supplied\tNot supplied\tAwaiting row\n11\tFONTALICIOUS\tAwaiting governed insight\tNot supplied\tNot supplied\tAwaiting row\n12\tMERCHANTESSA\tAwaiting governed insight\tNot supplied\tNot supplied\tAwaiting row\n13\tMIRADOR\tAwaiting governed insight\tNot supplied\tNot supplied\tAwaiting row\n14\tRUBY GUILD\tAwaiting governed insight\tNot supplied\tNot supplied\tAwaiting row\n15\tTRICKY MISS\tAwaiting governed insight\tNot supplied\tNot supplied\tAwaiting row\n16\tPORTINARI\tAwaiting governed insight\tNot supplied\tNot supplied\tAwaiting row\n17\tMINELLO\tAwaiting governed insight\tNot supplied\tNot supplied\tAwaiting row\n18\tPINAMILLOY\tAwaiting governed insight\tNot supplied\tNot supplied\tAwaiting row\n19\tRES MIRA\tAwaiting governed insight\tNot supplied\tNot supplied\tAwaiting row\n20\tSTINGRAY BARB\tAwaiting governed insight\tNot supplied\tNot supplied\tAwaiting row\n21\tZAAC\tAwaiting governed insight\tNot supplied\tNot supplied\tAwaiting row\n22\tBABY BLUE\tAwaiting governed insight\tNot supplied\tNot supplied\tAwaiting row\n23\tCONTARINI\tAwaiting governed insight\tNot supplied\tNot supplied\tAwaiting row\n24\tETERNAL JOY\tAwaiting governed insight\tNot supplied\tNot supplied\tAwaiting row\nCERTIFIED EVIDENCE\n\nCertified performance evidence is not available for this race.\n\nDATA GAPS\nAPPROVED CATEGORIES\n0 / 4\nRUNNER READS\n0 / 24\nPENDING RUNNERS\n24\nOTHER GOVERNED SIGNALS\n0\nWORKSPACE STATUS\nSTATUS\nempty\nMATCHED ROWS\n0\nLOADED ROWS\n340\nEDGEiQ Racing Intelligence Operating System\nBuild: 1.0.0\nData as at: 06:50 pm AEDT",
+      "renderedPath": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-live-runtime/16_INSIGHTS_LIVE_RENDERED.png"
+    },
+    {
+      "workspace": "17_LAB",
+      "label": "LAB",
+      "captureErrors": [],
+      "mounted": [
+        {
+          "component": "LabWorkspace",
+          "key": "LAB",
+          "tag": "SECTION",
+          "className": "eiq-lab-workspace eiq-lab-final"
+        }
+      ],
+      "mountedComponent": "LabWorkspace",
+      "mountedKey": "LAB",
+      "selectedMeeting": "2026-07-17|WANGARATTA",
+      "selectedRace": null,
+      "activeSection": "lab",
+      "viewLevel": "race",
+      "runnerCount": 25,
+      "dataAvailability": "AVAILABLE_OR_NOT_STATED",
+      "bodySample": "EDGEiQ\nRACE INTELLIGENCE\nHOME\nMEETINGS\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nEPI\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nRESULTS\nLAB\nCOMPARE\nREVIEW\nSETTINGS\nEDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM\nInformation is not Intelligence. Evidence leads. Precision decides.\nSUN, 19 JULY 2026\n06:50 pm\nAEDT\nLAB\nStats Engine & Query Builder\n\nBuild browser-safe racing queries across the approved product intelligence set.\n\nRACES\n18\nHORSES\n250\nBENCHMARKS\n725\nHISTORICAL ROWS\n1431\nUNIVERSE\nToday\nTRACK\nAll Tracks\nFlemington\nSeymour\nSCOPE\nAll Races\nENTITY\nHorse\nRace\nBenchmark\nJockey - Governed research data is not available for this module.\nTrainer - Governed research data is not available for this module.\nMETRIC\nPerformance Count\nEligible Performances\nGROUP BY\nNo Grouping\nTrack\nRace\nCondition\nClass\nSORT\nHighest First\nLowest First\nRESULT LIMIT\n3\n10\n25\n50\nFILTER\nRUN QUERY\nHORSE RESEARCH\n250 rows returned from governed horse research data.\nHORSE\tTRACK\tRACE\tPROFILE\tPERFORMANCE COUNT\tELIGIBLE PERFORMANCES\tDATE RANGE\nOURZACRACKER\tBET365 ECHUCA\t2026-07-19|SEYMOUR|R8\tESTABLISHED PROFILE\t95\t60\t2019-11-14..2026-06-23\nMOSCOW RED\tWARRNAMBOOL\t2026-07-19|SEYMOUR|R6\tESTABLISHED PROFILE\t77\t53\t2018-01-28..2026-05-10\nADKI\tBET365 PARK KYNETON\t2026-07-19|SEYMOUR|R8\tESTABLISHED PROFILE\t70\t55\t2020-09-22..2026-06-23\nALONG THE RIVER\tTHE VALLEY\t2026-07-18|FLEMINGTON|R9\tESTABLISHED PROFILE\t56\t41\t2021-06-09..2026-06-17\nSWIFT HIT\tBET365 BENALLA\t2026-07-19|SEYMOUR|R8\tESTABLISHED PROFILE\t55\t44\t2021-03-25..2025-10-27\nIMPENDING SHADOW\tCAULFIELD\t2026-07-18|FLEMINGTON|R3\tESTABLISHED PROFILE\t49\t43\t2023-01-18..2026-06-07\nFLASH FEELING\tFLEMINGTON\t2026-07-18|FLEMINGTON|R8\tESTABLISHED PROFILE\t48\t39\t2021-09-17..2026-06-06\nHOME RULE\tWARRNAMBOOL\t2026-07-18|FLEMINGTON|R7\tESTABLISHED PROFILE\t41\t29\t2020-12-05..2025-09-26\nHIGHLAND BLAZE\tSPORTSBET SANDOWN LAKESIDE\t2026-07-18|FLEMINGTON|R6\tESTABLISHED PROFILE\t39\t36\t2023-02-19..2026-06-20\nATAEGINA\tSALE\t2026-07-18|FLEMINGTON|R3\tESTABLISHED PROFILE\t38\t29\t2023-07-14..2026-06-18\nPARVATI PARTY\tSPORTSBET SANDOWN LAKESIDE\t2026-07-18|FLEMINGTON|R6\tESTABLISHED PROFILE\t38\t30\t2023-04-16..2026-06-19\nCAT NOIR\tLADBROKES GEELONG\t2026-07-18|FLEMINGTON|R3\tESTABLISHED PROFILE\t37\t27\t2023-08-08..2026-06-24\nCHARMED RUN\tSPORTSBET SANDOWN HILLSIDE\t2026-07-18|FLEMINGTON|R9\tESTABLISHED PROFILE\t37\t29\t2023-04-09..2026-05-23\nSIR ROCKFORD\tLADBROKES PARK HILLSIDE\t2026-07-19|SEYMOUR|R6\tESTABLISHED PROFILE\t36\t30\t2023-03-28..2026-05-30\nPER SEMPRE\tAPIAM BENDIGO\t2026-07-18|FLEMINGTON|R9\tESTABLISHED PROFILE\t35\t26\t2023-12-02..2026-06-07\nWOLFY\tFLEMINGTON\t2026-07-18|FLEMINGTON|R7\tESTABLISHED PROFILE\t34\t29\t2023-07-22..2026-06-24\nBRAYDEN STAR\tCAULFIELD\t2026-07-18|FLEMINGTON|R8\tESTABLISHED PROFILE\t34\t29\t2023-05-10..2026-06-06\nBOULDER JACK\tBET365 ECHUCA\t2026-07-19|SEYMOUR|R9\tESTABLISHED PROFILE\t34\t28\t2024-01-21..2026-06-23\nBOLD SOUL\tFLEMINGTON\t2026-07-18|FLEMINGTON|R6\tESTABLISHED PROFILE\t33\t31\t2023-11-19..2026-06-20\nHARRY GOT STYLES\tFLEMINGTON\t2026-07-18|FLEMINGTON|R9\tESTABLISHED PROFILE\t33\t26\t2024-04-05..2026-06-13\nZETHUS\tFLEMINGTON\t2026-07-18|FLEMINGTON|R7\tESTABLISHED PROFILE\t32\t30\t2022-02-05..2026-06-17\nSAMUEL LANGHORNE\tFLEMINGTON\t2026-07-18|FLEMINGTON|R6\tESTABLISHED PROFILE\t31\t24\t2023-03-16..2026-06-20\nBANKERS CHOICE\tCAULFIELD\t2026-07-18|FLEMINGTON|R8\tESTABLISHED PROFILE\t31\t31\t2023-02-18..2026-06-13\nSWEET JASMINE\tSPORTSBET SANDOWN HILLSIDE\t2026-07-18|FLEMINGTON|R3\tESTABLISHED PROFILE\t30\t21\t2023-11-16..2026-06-20\nZOURAIN\tCAULFIELD HEATH\t2026-07-19|SEYMOUR|R9\tESTABLISHED PROFILE\t30\t20\t2024-03-21..2026-06-17\nRESEARCH BOUNDARY\n\nLAB exposes only approved product metrics. Jockey and trainer modules remain inactive until a validated research dataset is available.\n\nQUERY SCOPE\nUNIVERSE\nTODAY\nTRACK\nAll Tracks\nENTITY\nHORSE\nMETRIC\nPerformance Count\nGENERATED\n2026-07-17T00:27:41Z\nDATA LIMITS\nCurrent races expose historical benchmark context until official governed race time exists.\nRunner-adjusted seconds and lengths versus benchmark remain unavailable.\nOfficial sectional benchmarks and deviations remain unavailable.\nHistorical deviations shown are race-context deviations, not independently timed runner deviations.\nEDGEiQ Racing Intelligence Operating System\nBuild: 1.0.0\nData as at: 06:50 pm AEDT",
+      "renderedPath": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-live-runtime/17_LAB_LIVE_RENDERED.png"
+    },
+    {
+      "workspace": "18_COMPARE",
+      "label": "COMPARE",
+      "captureErrors": [],
+      "mounted": [
+        {
+          "component": "CompareWorkspace",
+          "key": "COMPARE",
+          "tag": "SECTION",
+          "className": "eiq-compare-final"
+        }
+      ],
+      "mountedComponent": "CompareWorkspace",
+      "mountedKey": "COMPARE",
+      "selectedMeeting": "2026-07-17|WANGARATTA",
+      "selectedRace": null,
+      "activeSection": "compare",
+      "viewLevel": "race",
+      "runnerCount": 18,
+      "dataAvailability": "PARTIAL_OR_PENDING",
+      "bodySample": "EDGEiQ\nRACE INTELLIGENCE\nHOME\nMEETINGS\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nEPI\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nRESULTS\nLAB\nCOMPARE\nREVIEW\nSETTINGS\nEDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM\nInformation is not Intelligence. Evidence leads. Precision decides.\nSUN, 19 JULY 2026\n06:50 pm\nAEDT\nCOMPARE\nSide-by-side governed comparison\n\nCompare horses or races using common certified performance fields. Values that are not present in the governed feed remain unavailable.\n\nFEED\nLoaded\n2026-07-17T00:27:41Z\nENTITY\nHORSE\nRACE\nLEFT\nKO PHANGAN\nNOTIFIED\nACHY BREAKY HEART\nDELAHRA\nSTUNNING KITTY\nHARD KICK\nLEOPARD SHARK\nTHE TROUBLESHOOTER\nAlmontego\nDark Matter\nPocketfullofcash\nRiverina Lulu\nVeneto Street\nPanchenko\nSWEET JASMINE\nBarbie'sdreamworld\nCHANGING COLOURS\nI AM VELVET\nMADIYYA\nSTORM SEASON\nLAKE VOSTOK\nIMPENDING SHADOW\nCAT NOIR\nMARINE EMPRESS\nSTREET LARK\nATAEGINA\nPALM ANGEL\nCHERISH ME\nDAVIDA\nMISS MARANDA\nANGEL IN BLACK\nDUNTULM LASS\nLICENTIOUS\nMISSAPPREHEND\nOFF THEIR PERCH\nPRAVAHA\nSALIZOU\nSKY WATCHER\nZUPPA INGLESE\nLAURA ELIZA\nPRESTIGE FOREVER\nKALEO\nFLYING DONE\nSIRIUSLY HOT\nCENSORI\nCHOWDOWN\nEMPEROR TZU\nFLYING KHAN\nLUCKY LUCKY BOOM\nMR AVERY\nOVERPRICED\nOYSTER LANE\nZEBRA FINCH\nTHE MEAN FIDDLER\nJIMMY BEANS\nDon't Doubt Dare\nWATT ON EARTH\nBOLD SOUL\nTEMPESTI\nBLACK RUN\nTAJANIS\nVIRTUOUS CIRCLE\nHIGHLAND BLAZE\nPARVATI PARTY\nSTERN IDOL\nSAMUEL LANGHORNE\nURBAN OUTLOOK\nGREAT MAXIMUS\nHOME RULE\nROYAL INSIGNIA\nMOBY DICK\nSTEEL MOVE\nBETWITCHERY\nBULLETS HIGH\nFLYER\nMR VERSE\nSIXTEEN REASONS\nBARARI\nPIASTRI\nWOLFY\nJUGIONG\nZETHUS\nBANKERS CHOICE\nSAINT GEORGE\nSmokin' Romans\nBRAYDEN STAR\nFREEDOM RALLY\nGLORY DAZE\nNELLIE LEYLAX\nSTAR OF INDIA\nTHEDOCTOROFLOVE\nSmokin' Princess\nCHIEF LITTLE ROCK\nThink Giant\nFLASH FEELING\nALONG THE RIVER\nNIMBUSTWOTHOUSAND\nHARRY GOT STYLES\nPrima Bella\nCHARMED RUN\nMARTIAL MUSIC\nSHINING SMILE\nPER SEMPRE\nLANDMARK\nONE HARD LADY\nSTREET ARTIST\nEL PIBE DE ORO\nNEXT STEP IOWA\nBRING ME POWER\nLIFT NET\nEXPENSIVE TASTE\nKarvecchian\nNO FRIENDS\nUPCOMING SEASON\nVICTORIOUS DREAM\nSOULSEASE RIVER\nAnd There You Go\nMareenya\nLADY PUISSANCE\nBlues Traveler\nCaxton Street\nDrink Me Pretty\nDUSTEE\nEXPLOIT\nImperial Valley\nKeen Observer\nWHIMSY SMILE\nLa Reina Vega\nMIRADOR\nMistressof Mayfair\nNovamira\nCOVERT MISSION\nCRIES AND WHISPERS\nPOINTS FOR EFFORT\nWATTEN ASSETT\nCool Step\nHE XIANGU\nICE ICE DAISY\nMATHLETES\nMy Friend Flo\nSPIRIT OF GAIA\nYELLOWKNIFE\nMILLIONAIRE LOVER\nWORKS DIRTY\nPANINO\nOVERFLIRT\nSHES A GOOD CAUSE\nNaughty Jamie\nHigher Command\nIBERIAN LYNX\nMedia Puppet\nCARRY TRADE\nCRYSTALLISE\nDOLCE CAROLINA\nESTIVAL\nIsle Aroha\nRAVENS GLOW\nSharp Remark\nINDEPENDANT LAD\nCourting\nGOODELLO\nBRADFORD\nSHEZA RAVEELA\nHAUNTED KYNEXION\nMARLEY NAMOI\nERNIE\nA LONG STORY SHORT\nBOSS BOY\nDELTAKAI\nGOTTACOOKACURRY\nKING TAGALOA\nLONG SHOT\nMARANOA BOY\nRAINY NIGHT\nWHERE EAGLES DARE\nELEGANT FORCE\nTORNADO ANWA\nVENUS SHOCK\nDANDYNOMITE\nONE LONG DAY\nENCHANTED JENNI\nKISS MY ROCK\nSIR ROCKFORD\nTOO BIG\nANNOTATE\nRUSSIAN RONI\nTORN\nStaphani\nFENESTELLA\nPRINCESS PAINTON\nBAYWATCH\nQUEEN OF THE SURF\nPICK WISELY\nSQUARE DEAL\nAZEOLA\nTREASURY PLACE\nMOSCOW RED\nCEREMONIOUS\nDURBAN HARBOUR\nPERFUSE\nHIGH TEMPO\nMICKIO\nTHE CHARLATAN\nEarth Dance\nGOVERNOR KING\nOUTDRIVE\nSALT SPRAY\nTIMEONLEES\nFIRST DAY\nPOWER PIVOT\nSPIETATA\nHARD TO GO WRONG\nKNEE DEEP\nBLUE ISMAY\nIDEELISTIC\nORLABENT\nCUMBOOGLE\nFROSTED IN TIME\nMEISHO\nSCOOBARTIE\nSONIC SURGE\nSTRUGGLE STREET\nFOREVER WITH NED\nINDUCTION\nLONSTAR\nSHEILA\nSWIFT HIT\nLACK OF RESTRAINT\nMOAKSUN\nADKI\nFORTYFOUR MAGNUM\nOURZACRACKER\nZOURAIN\nTIJUANA\nCAPRICORN STAR\nGUNADO\nHAWK POWER\nIS THAT ALL\nBEST OF THE BEST\nGobbo's Mate\nCASHOUT\nOUR JUSTIFY\nHOMEWARD\nBardia's Dream\nACHETER\nBOULDER JACK\nFRIENDZONED\nNAVAL FORCE\nBELMIA\nTRUE PROPHET\nRIGHT\nKO PHANGAN\nNOTIFIED\nACHY BREAKY HEART\nDELAHRA\nSTUNNING KITTY\nHARD KICK\nLEOPARD SHARK\nTHE TROUBLESHOOTER\nAlmontego\nDark Matter\nPocketfullofcash\nRiverina Lulu\nVeneto Street\nPanchenko\nSWEET JASMINE\nBarbie'sdreamworld\nCHANGING COLOURS\nI AM VELVET\nMADIYYA\nSTORM SEASON\nLAKE VOSTOK\nIMPENDING SHADOW\nCAT NOIR\nMARINE EMPRESS\nSTREET LARK\nATAEGINA\nPALM ANGEL\nCHERISH ME\nDAVIDA\nMISS MARANDA\nANGEL IN BLACK\nDUNTULM LASS\nLICENTIOUS\nMISSAPPREHEND\nOFF THEIR PERCH\nPRAVAHA\nSALIZOU\nSKY WATCHER\nZUPPA INGLESE\nLAURA ELIZA\nPRESTIGE FOREVER\nKALEO\nFLYING DONE\nSIRIUSLY HOT\nCENSORI\nCHOWDOWN\nEMPEROR TZU\nFLYING KHAN\nLUCKY LUCKY BOOM\nMR AVERY\nOVERPRICED\nOYSTER LANE\nZEBRA FINCH\nTHE MEAN FIDDLER\nJIMMY BEANS\nDon't Doubt Dare\nWATT ON EARTH\nBOLD SOUL\nTEMPESTI\nBLACK RUN\nTAJANIS\nVIRTUOUS CIRCLE\nHIGHLAND BLAZE\nPARVATI PARTY\nSTERN IDOL\nSAMUEL LANGHORNE\nURBAN OUTLOOK\nGREAT MAXIMUS\nHOME RULE\nROYAL INSIGNIA\nMOBY DICK\nSTEEL MOVE\nBETWITCHERY\nBULLETS HIGH\nFLYER\nMR VERSE\nSIXTEEN REASONS\nBARARI\nPIASTRI\nWOLFY\nJUGIONG\nZETHUS\nBANKERS CHOICE\nSAINT GEORGE\nSmokin' Romans\nBRAYDEN STAR\nFREEDOM RALLY\nGLORY DAZE\nNELLIE LEYLAX\nSTAR OF INDIA\nTHEDOCTOROFLOVE\nSmokin' Princess\nCHIEF LITTLE ROCK\nThink Giant\nFLASH FEELING\nALONG THE RIVER\nNIMBUSTWOTHOUSAND\nHARRY GOT STYLES\nPrima Bella\nCHARMED RUN\nMARTIAL MUSIC\nSHINING SMILE\nPER SEMPRE\nLANDMARK\nONE HARD LADY\nSTREET ARTIST\nEL PIBE DE ORO\nNEXT STEP IOWA\nBRING ME POWER\nLIFT NET\nEXPENSIVE TASTE\nKarvecchian\nNO FRIENDS\nUPCOMING SEASON\nVICTORIOUS DREAM\nSOULSEASE RIVER\nAnd There You Go\nMareenya\nLADY PUISSANCE\nBlues Traveler\nCaxton Street\nDrink Me Pretty\nDUSTEE\nEXPLOIT\nImperial Valley\nKeen Observer\nWHIMSY SMILE\nLa Reina Vega\nMIRADOR\nMistressof Mayfair\nNovamira\nCOVERT MISSION\nCRIES AND WHISPERS\nPOINTS FOR EFFORT\nWATTEN ASSETT\nCool Step\nHE XIANGU\nICE ICE DAISY\nMATHLETES\nMy Friend Flo\nSPIRIT OF GAIA\nYELLOWKNIFE\nMILLIONAIRE LOVER\nWORKS DIRTY\nPANINO\nOVERFLIRT\nSHES A GOOD CAUSE\nNaughty Jamie\nHigher Command\nIBERIAN LYNX\nMedia Puppet\nCARRY TRADE\nCRYSTALLISE\nDOLCE CAROLINA\nESTIVAL\nIsle Aroha\nRAVENS GLOW\nSharp Remark\nINDEPENDANT LAD\nCourting\nGOODELLO\nBRADFORD\nSHEZA RAVEELA\nHAUNTED KYNEXION\nMARLEY NAMOI\nERNIE\nA LONG STORY SHORT\nBOSS BOY\nDELTAKAI\nGOTTACOOKACURRY\nKING TAGALOA\nLONG SHOT\nMARANOA BOY\nRAINY NIGHT\nWHERE EAGLES DARE\nELEGANT FORCE\nTORNADO ANWA\nVENUS SHOCK\nDANDYNOMITE\nONE LONG DAY\nENCHANTED JENNI\nKISS MY ROCK\nSIR ROCKFORD\nTOO BIG\nANNOTATE\nRUSSIAN RONI\nTORN\nStaphani\nFENESTELLA\nPRINCESS PAINTON\nBAYWATCH\nQUEEN OF THE SURF\nPICK WISELY\nSQUARE DEAL\nAZEOLA\nTREASURY PLACE\nMOSCOW RED\nCEREMONIOUS\nDURBAN HARBOUR\nPERFUSE\nHIGH TEMPO\nMICKIO\nTHE CHARLATAN\nEarth Dance\nGOVERNOR KING\nOUTDRIVE\nSALT SPRAY\nTIMEONLEES\nFIRST DAY\nPOWER PIVOT\nSPIETATA\nHARD TO GO WRONG\nKNEE DEEP\nBLUE ISMAY\nIDEELISTIC\nORLABENT\nCUMBOOGLE\nFROSTED IN TIME\nMEISHO\nSCOOBARTIE\nSONIC SURGE\nSTRUGGLE STREET\nFOREVER WITH NED\nINDUCTION\nLONSTAR\nSHEILA\nSWIFT HIT\nLACK OF RESTRAINT\nMOAKSUN\nADKI\nFORTYFOUR MAGNUM\nOURZACRACKER\nZOURAIN\nTIJUANA\nCAPRICORN STAR\nGUNADO\nHAWK POWER\nIS THAT ALL\nBEST OF THE BEST\nGobbo's Mate\nCASHOUT\nOUR JUSTIFY\nHOMEWARD\nBardia's Dream\nACHETER\nBOULDER JACK\nFRIENDZONED\nNAVAL FORCE\nBELMIA\nTRUE PROPHET\nSCOPE\nCurrent race runners\nLEFT\nKO PHANGAN\n\n2025-11-19..2026-06-20 | 7 starts\n\nPROFILE STATE\nObserved Profile\nRUNS\n7\nELIGIBLE RUNS\n5\nDATE RANGE\n2025-11-19..2026-06-20\nRIGHT\nNOTIFIED\n\n2026-06-16..2026-06-16 | 1 starts\n\nPROFILE STATE\nInsufficient Evidence\nRUNS\n1\nELIGIBLE RUNS\n1\nDATE RANGE\n2026-06-16..2026-06-16\nDATA BOUNDARY\nComparable fields only\n\nOnly common governed fields are compared. Different sample sizes and date ranges remain visible.\n\nJockey\nGoverned side-by-side jockey comparison is not available in the current product feed.\nTrainer\nGoverned side-by-side trainer comparison is not available in the current product feed.\nTrack\nGoverned side-by-side track comparison is not available in the current product feed.\nCOMMON METRICS\nProfile alignment\nMETRIC\tLEFT\tRIGHT\tSCOPE\nProfile State\tOBSERVED_PROFILE\tINSUFFICIENT_EVIDENCE\tHorse profile\nIdentity State\tHORSE_CODE\tHORSE_CODE\tHorse profile\nPerformance Count\t7\t1\tEligible historical runs\nEligible Performances\t5\t1\tEligible historical runs\nDate Range\t2025-11-19..2026-06-20\t2026-06-16..2026-06-16\tHistorical coverage\nTrack Profile\tCAULFIELD HEATH:2;LADBROKES GEELONG:1;SPORTSBET SANDOWN LAKESIDE:1;MORNINGTON:1;FLEMINGTON:1;CAULFIELD:1\tSPORTSBET-BALLARAT SYNTHETIC:1\tComparable profile\nDistance Profile\t1100:3;1400:1;1200:1;1420:1;1000:1\t1200:1\tComparable profile\nCondition Profile\tGOOD:3;HEAVY:3;SOFT:1\tSYNTHETIC:1\tComparable profile\nClass Profile\tOPEN:7\tMAIDEN:1\tComparable profile\nPressure Profile\tUNAVAILABLE_SECTIONAL_OR_MAP_REQUIRED\tUNAVAILABLE_SECTIONAL_OR_MAP_REQUIRED\tRace shape\nLate Speed Profile\tUNAVAILABLE_SECTIONAL_REQUIRED\tUNAVAILABLE_SECTIONAL_REQUIRED\tRace shape\nConsistency Profile\tCOMPLETE:5;SOURCE_INCOMPLETE:2\tCOMPLETE:1\tPerformance pattern\nHISTORICAL CONTEXT\nRecent governed runs\nSIDE\tDATE\tRACE\tDIST\tCLASS\tCOND\tFINISH\tMARGIN\tSP\tBENCHMARK\nLeft\t2026-06-20\tFLEMINGTON R1\t1420m\tOpen\tHeavy\t4\t1.2L\t$12.00\t4\nLeft\t2026-06-08\tMORNINGTON R1\t1200m\tOpen\tHeavy\t109\tUnavailable\tUnavailable\t4\nLeft\t2026-06-03\tSPORTSBET SANDOWN LAKESIDE R2\t1400m\tOpen\tHeavy\t109\tUnavailable\tUnavailable\t3\nLeft\t2026-05-09\tCAULFIELD R1\t1100m\tOpen\tSoft\t6\t7.75L\t$12.00\t5\nLeft\t2026-01-03\tLADBROKES GEELONG R3\t1100m\tOpen\tGood\t7\t9L\t$14.00\t3\nRight\t2026-06-16\tSPORTSBET-BALLARAT SYNTHETIC R1\t1200m\tMaiden\tSynth\t5\t2.9L\t$13.00\t6\nEDGEiQ Racing Intelligence Operating System\nBuild: 1.0.0\nData as at: 06:50 pm AEDT",
+      "renderedPath": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-live-runtime/18_COMPARE_LIVE_RENDERED.png"
+    },
+    {
+      "workspace": "19_REVIEW",
+      "label": "REVIEW",
+      "captureErrors": [],
+      "mounted": [
+        {
+          "component": "ReviewWorkspace",
+          "key": "REVIEW",
+          "tag": "SECTION",
+          "className": "eiq-race-workspace eiq-race-workspace--review"
+        }
+      ],
+      "mountedComponent": "ReviewWorkspace",
+      "mountedKey": "REVIEW",
+      "selectedMeeting": "2026-07-17|WANGARATTA",
+      "selectedRace": null,
+      "activeSection": "review",
+      "viewLevel": "race",
+      "runnerCount": 3,
+      "dataAvailability": "PARTIAL_OR_PENDING",
+      "bodySample": "EDGEiQ\nRACE INTELLIGENCE\nHOME\nMEETINGS\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nEPI\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nRESULTS\nLAB\nCOMPARE\nREVIEW\nSETTINGS\nEDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM\nInformation is not Intelligence. Evidence leads. Precision decides.\nSUN, 19 JULY 2026\n06:50 pm\nAEDT\nMEETINGS\nWANGARATTA\nRACE 1\nREVIEW\nRace 1\nCurrent Race\nBack to Races\nLOCATION\nWangaratta\nDATE\n2026-07-17\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nEPI\nRESULTS\nREVIEW\nREVIEW\nSectional and performance review\n\nWangaratta R1 | Current Race\n\nSTATUS\nAwaiting result\nRACE KEY\nUnavailable\nDISTANCE\nUnavailable\nCLASS\nUnavailable\nTRACK\nUnavailable\nRAIL\nUnavailable\nFIELD\n30\nWINNER\nPending result\nRUNNERS / SCRATCHINGS\nPending result\nSECTIONAL SUMMARY\nPending result\nSECTIONAL PROFILE\nPending result\nRUNNER PERFORMANCE SNAPSHOT\nPending result\nSTEWARDS / NOTES\nPending result\nREVIEW STRUCTURE\nRace analysis modules\nAREA\tSTATE\tDETAIL\tACTION\nForm guide\tAvailable\t30 runners loaded for this race.\tOpen Form guide\nRace intelligence\tAvailable\tRace overview and current intelligence are available for review.\tOpen Race intelligence\nMarket worksheet\tAvailable\tMarket values exist in the current field feed.\tOpen Market worksheet\nSAVED REVIEW\nNo saved review record\n\nReview persistence is not connected for this race, so EDGEiQ is not showing saved notes or completed analysis that the product has not created.\n\nREVIEW BOUNDARY\nWhat EDGEiQ can show now\nReview only displays race work already available in the current product state.\nOfficial result analysis remains held until a result is supplied.\nNo saved item is shown without a real saved record.\nEDGEiQ Racing Intelligence Operating System\nBuild: 1.0.0\nData as at: 06:50 pm AEDT",
+      "renderedPath": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-live-runtime/19_REVIEW_LIVE_RENDERED.png"
+    }
+  ]
+}

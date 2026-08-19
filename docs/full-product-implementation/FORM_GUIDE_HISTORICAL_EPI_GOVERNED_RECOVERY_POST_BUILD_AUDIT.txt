@@ -1,0 +1,37 @@
+EDGEIQ FORM GUIDE HISTORICAL EPI GOVERNED RECOVERY POST-BUILD AUDIT
+====================================================================================================
+
+FEED=C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_epi_workspace_terminal_feed_v1.csv
+ROWS=374
+HISTORICAL_START_SLOTS=3740
+POPULATED_START_SLOTS=0
+BLANK_START_SLOTS=3740
+ROWS_WITH_AT_LEAST_ONE_HISTORICAL_EPI=0
+ROWS_WITHOUT_HISTORICAL_EPI=374
+CONFLICTING_LOOKUPS_REJECTED=46
+CONFLICT_FILE=C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_historical_epi_lookup_conflicts_v1.csv
+
+DECISION=REVIEW_CONFLICT_COUNT_EXPECTED_76_ACTUAL_46
+
+CONFLICT SAMPLE
+----------------------------------------------------------------------------------------------------
+ADJUDICATE | 2026-01-30 | CRAN | 1500m | 47.47 | 48.97 | run_context.csv
+BACKOFTHEBOAT | 2026-02-17 | WERR | 1100m | 38.46 | 40.16 | run_context.csv | run_context_FIXED.csv
+BACKOFTHEBOAT | 2026-03-09 | WNBL | 1300m | 66.66 | 69.64 | run_context.csv | run_context_FIXED.csv
+BIGSWINGER | 2025-11-29 | CAUL | 1400m | 66.44 | 69.15 | horse_runs_ra.csv | run_context.csv
+BIGSWINGER | 2025-12-13 | PAKM | 1200m | 75.19 | 76.79 | horse_runs_ra.csv | run_context.csv
+BIGSWINGER | 2026-01-03 | GEEL | 1100m | 53.8 | 54.8 | horse_runs_ra.csv | run_context.csv
+CARNIVALRICHES | 2025-12-05 | MORN | 1000m | 57.25 | 59.8 | run_context.csv | run_context_FIXED.csv
+CARNIVALRICHES | 2025-12-18 | SEYM | 1422m | 43.21 | 45.51 | run_context.csv | run_context_FIXED.csv
+CARNIVALRICHES | 2025-12-31 | ECHA | 1400m | 78.15 | 84.64 | run_context.csv | run_context_FIXED.csv
+CARNIVALRICHES | 2026-01-10 | FLEM | 1600m | 57.11 | 57.56 | run_context.csv | run_context_FIXED.csv
+DARKHARMONY | 2025-11-30 | WNBL | 1400m | 51.88 | 52.12 | run_context.csv
+DONATO | 2025-11-10 | MORN | 1000m | 47.26 | 49.39 | run_context.csv | run_context_FIXED.csv
+DONTCALLMECHAMP | 2025-12-21 | HSHM | 1200m | 54.12 | 54.62 | run_context.csv | run_context_FIXED.csv
+ELSALTO | 2025-11-09 | ARAT | 1100m | 36 | 36.1 | run_context.csv | run_context_FIXED.csv
+ELSALTO | 2025-11-20 | BRAT | 1000m | 74.01 | 74.21 | run_context.csv | run_context_FIXED.csv
+ELSALTO | 2025-12-02 | DON | 1000m | 63.35 | 63.95 | run_context.csv | run_context_FIXED.csv
+ELSALTO | 2025-12-14 | TAT | 1000m | 74.44 | 75.24 | run_context.csv | run_context_FIXED.csv
+ELSALTO | 2025-12-22 | WANG | 1000m | 43.07 | 43.47 | run_context.csv | run_context_FIXED.csv
+ELSALTO | 2026-02-14 | BRAT | 1000m | 82.34 | 84.04 | run_context.csv | run_context_FIXED.csv
+ELSALTO | 2026-02-22 | BRAT | 1000m | 72.11 | 72.71 | run_context.csv | run_context_FIXED.csv

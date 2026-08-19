@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.1",
+  "generated_utc": "2026-07-28T05:23:30.324448+00:00",
+  "verdict": "PASS",
+  "canonical_builder_count": 1280,
+  "canonical_python_builders_scanned": 1280,
+  "builders_with_feed_literals": 1206,
+  "product_feed_count": 7228,
+  "owned_feed_count": 2951,
+  "single_owner_feed_count": 1950,
+  "multiple_evidenced_owner_feed_count": 1001,
+  "unowned_feed_count": 4277,
+  "ownership_evidence_row_count": 6219,
+  "ambiguous_evidence_row_count": 15,
+  "ownership_coverage_percentage": 40.8273
+}

@@ -1,0 +1,16 @@
+{
+  "audit_id": "EDGEIQ_RUNTIME_FEED_DISCOVERY_V1",
+  "generated_at_utc": "2026-07-27T21:41:13.796109+00:00",
+  "repository_root": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM",
+  "entrypoints": [
+    "src/main.tsx"
+  ],
+  "reachable_source_files": 142,
+  "import_edges": 349,
+  "runtime_feed_references": 72,
+  "unique_resolved_runtime_feeds": 33,
+  "missing_runtime_feed_references": 6,
+  "dynamic_runtime_feed_references": 15,
+  "remote_runtime_feed_references": 0,
+  "status": "REVIEW_REQUIRED"
+}

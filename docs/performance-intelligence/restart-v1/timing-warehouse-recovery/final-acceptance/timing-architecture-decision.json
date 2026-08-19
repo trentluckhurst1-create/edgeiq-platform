@@ -1,0 +1,13 @@
+{
+  "decision_id": "EDGEIQ_TIMING_ARCHITECTURE_DECISION_V1",
+  "finding": "The 39-row population is the Racing.com V2.1 current-window speed warehouse, while a governed historical performance timing warehouse with 70308 timed races exists.",
+  "no_fabrication": true,
+  "pricing_changed": false,
+  "probability_changed": false,
+  "recovery_action": "Build side-by-side recovered timing and downstream candidate facts from the governed historical warehouse. Do not backdate normalisation. Do not replace current public canonical outputs until human review approves the contract switch.",
+  "selected_outcome": "OUTCOME_D_CANONICAL_CONTRACT_WAS_REPLACED_BY_INCOMPATIBLE_CURRENT_WINDOW_CONTRACT_PLUS_C_PRIOR_GOVERNED_WAREHOUSE_DISCONNECTED",
+  "thresholds_changed": false,
+  "ui_changed": false,
+  "v6_1_changed": false,
+  "v7_2g2_changed": false
+}

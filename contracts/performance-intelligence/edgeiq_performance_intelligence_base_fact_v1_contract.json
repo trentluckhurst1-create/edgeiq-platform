@@ -1,0 +1,66 @@
+{
+  "contract_name": "edgeiq_performance_intelligence_base_fact_v1",
+  "contract_version": "1.0.0",
+  "grain": "one_row_per_governed_lengths_versus_standard_observation",
+  "calculation_method": "DIRECT_GOVERNED_LENGTHS_VERSUS_STANDARD",
+  "primary_key": [
+    "performance_intelligence_base_id"
+  ],
+  "required_fields": [
+    "performance_intelligence_base_id",
+    "lengths_versus_standard_id",
+    "race_time_delta_id",
+    "benchmark_observation_id",
+    "benchmark_group_id",
+    "standard_time_id",
+    "length_conversion_parameter_id",
+    "race_key",
+    "race_date",
+    "track_name",
+    "official_distance_metres",
+    "winner_horse_name",
+    "winner_race_time_seconds",
+    "standard_time_seconds",
+    "time_delta_seconds",
+    "seconds_per_length",
+    "raw_performance_lengths",
+    "raw_performance_interpretation",
+    "performance_status",
+    "calculation_method",
+    "source_lengths_versus_standard_evidence_sha256",
+    "performance_intelligence_base_evidence_sha256",
+    "source_builder_version",
+    "builder_version",
+    "contract_version",
+    "built_at_utc"
+  ],
+  "allowed_values": {
+    "raw_performance_interpretation": [
+      "FASTER_THAN_STANDARD",
+      "EQUAL_TO_STANDARD",
+      "SLOWER_THAN_STANDARD"
+    ],
+    "performance_status": [
+      "OBSERVED_GOVERNED"
+    ],
+    "calculation_method": [
+      "DIRECT_GOVERNED_LENGTHS_VERSUS_STANDARD"
+    ]
+  },
+  "forbidden_fields": [
+    "epi",
+    "eri",
+    "speed_rating",
+    "class_rating",
+    "predictive_rating",
+    "track_variant",
+    "condition_adjustment",
+    "pace_adjustment",
+    "weight_adjustment",
+    "barrier_adjustment",
+    "jockey_adjustment",
+    "trainer_adjustment",
+    "recency_weight",
+    "form_weight"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "generated_utc": "2026-07-25T22:02:13Z",
+  "verification_status": "PARTIALLY_IMPLEMENTED",
+  "fields_confirmed": {
+    "raw_lengths_v_standard": true,
+    "weight_carried_kg": true,
+    "reference_weight_kg": true,
+    "weight_delta_kg": true,
+    "weight_adjustment_lengths": true,
+    "weight_adjusted_lengths_v_standard": true,
+    "race_strength_adjustment": true,
+    "circumstance_adjustment": true,
+    "epi_performance_rating": true
+  },
+  "feed_fields_confirmed": {
+    "raw_lengths_v_standard": true,
+    "weight_carried_kg": true,
+    "reference_weight_kg": true,
+    "weight_delta_kg": true,
+    "weight_adjustment_lengths": true,
+    "weight_adjusted_lengths_v_standard": true,
+    "race_strength_adjustment": true,
+    "circumstance_adjustment": true,
+    "epi_performance_rating": true
+  },
+  "methodology": {
+    "epi": "50 + runner_lengths_v_standard * 2.5 bounded 0-100",
+    "eri": "50 + race_lengths_v_standard * 2.0",
+    "market_inputs": "none",
+    "weight_adjustment_status": "INSUFFICIENT_EMPIRICAL_EVIDENCE",
+    "reference_weight_source": "NULL_UNTIL_APPROVED_EMPIRICAL_MODEL",
+    "weight_delta_method": "NULL_UNTIL_REFERENCE_WEIGHT_APPROVED",
+    "weight_to_lengths_coefficient": "NULL",
+    "weight_adjustment_coefficient_provenance": "NO_STABLE_EMPIRICAL_COEFFICIENT_APPROVED",
+    "weight_coefficient_varies_by_distance_or_context": "NOT_IMPLEMENTED_IN_FAIL_CLOSED_V1",
+    "raw_performance_preserved": "raw_lengths_v_standard"
+  },
+  "reference_weight_source": "FIELD_PRESENT",
+  "coefficient_provenance": "NO_STABLE_EMPIRICAL_COEFFICIENT_APPROVED",
+  "market_data_affects_adjustment": "NO",
+  "raw_performance_separately_available": true,
+  "historical_future_leakage_tests": "NO"
+}

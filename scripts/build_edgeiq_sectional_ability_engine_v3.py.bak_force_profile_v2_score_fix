@@ -1,0 +1,212 @@
+﻿import csv
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+DATA = ROOT / "public" / "data"
+
+SRC = DATA / "edgeiq_sectional_profiles_v2.csv"
+OUT = DATA / "edgeiq_sectional_ability_engine_v3.csv"
+AUDIT = DATA / "edgeiq_sectional_ability_engine_v3_audit.csv"
+
+def to_float(v, default=0.0):
+    try:
+        if v is None or str(v).strip() == "":
+            return default
+        return float(v)
+    except Exception:
+        return default
+
+def to_int(v, default=0):
+    try:
+        if v is None or str(v).strip() == "":
+            return default
+        return int(float(v))
+    except Exception:
+        return default
+
+def clamp(v, lo=0.0, hi=100.0):
+    return max(lo, min(hi, v))
+
+def evidence_score(runs):
+    if runs <= 0:
+        return 0
+    if runs == 1:
+        return 18
+    if runs == 2:
+        return 32
+    if runs == 3:
+        return 48
+    if runs == 4:
+        return 58
+    if runs == 5:
+        return 68
+    if runs == 6:
+        return 76
+    if runs == 7:
+        return 83
+    if runs == 8:
+        return 88
+    if runs == 9:
+        return 92
+    if runs >= 10:
+        return 100
+    return 0
+
+def ability_class(raw):
+    if raw >= 95:
+        return "WORLD_CLASS"
+    if raw >= 90:
+        return "ELITE"
+    if raw >= 80:
+        return "VERY_STRONG"
+    if raw >= 68:
+        return "ABOVE_AVERAGE"
+    if raw >= 56:
+        return "COMPETITIVE"
+    if raw >= 42:
+        return "AVERAGE"
+    return "LIMITED"
+
+def confidence_band(conf):
+    if conf >= 90:
+        return "VERY_HIGH_CONFIDENCE"
+    if conf >= 78:
+        return "HIGH_CONFIDENCE"
+    if conf >= 62:
+        return "MEDIUM_CONFIDENCE"
+    if conf >= 45:
+        return "LOW_CONFIDENCE"
+    return "VERY_LOW_CONFIDENCE"
+
+def sample_warning(runs, raw, conf):
+    if runs <= 2 and raw >= 75:
+        return "SMALL_SAMPLE_HIGH_UPSIDE"
+    if runs <= 3 and raw >= 80:
+        return "EARLY_HIGH_UPSIDE_NEEDS_CONFIRMATION"
+    if runs >= 8 and raw >= 70:
+        return "PROVEN_SECTIONAL_ABILITY"
+    if runs >= 8 and raw < 45:
+        return "PROVEN_LIMITED_SECTIONALS"
+    if conf < 45:
+        return "LOW_EVIDENCE"
+    return "OK"
+
+def reliability_rank(runs, conf):
+    if runs >= 10 and conf >= 78:
+        return "A"
+    if runs >= 7 and conf >= 70:
+        return "B"
+    if runs >= 4 and conf >= 55:
+        return "C"
+    if runs >= 2:
+        return "D"
+    return "E"
+
+def display_label(raw, conf, runs):
+    ac = ability_class(raw).replace("_", " ")
+    cb = confidence_band(conf).replace("_", " ")
+    if runs <= 3 and raw >= 80:
+        return f"{ac} / EARLY SAMPLE"
+    return f"{ac} / {cb}"
+
+rows = []
+
+with SRC.open("r", encoding="utf-8-sig", newline="") as f:
+    reader = csv.DictReader(f)
+    base_fields = list(reader.fieldnames or [])
+
+    for r in reader:
+        runs = to_int(r.get("runs_with_sectionals"))
+        peak = to_float(r.get("peak_speed_score"))
+        closing = to_float(r.get("closing_speed_score"))
+        sustained = to_float(r.get("sustained_speed_score"))
+        raw = to_float(r.get("sectional_ability_score"))
+
+        ev = evidence_score(runs)
+
+        spread = max(peak, closing, sustained) - min(peak, closing, sustained)
+        balance_score = clamp(100 - spread)
+
+        # Confidence only measures reliability/evidence. It does NOT change ability.
+        conf = round(clamp((ev * 0.80) + (balance_score * 0.20)), 2)
+
+        r["sectional_ability_score_v3"] = round(raw, 2)
+        r["sectional_ability_class_v3"] = ability_class(raw)
+        r["sectional_evidence_score_v3"] = round(ev, 2)
+        r["sectional_confidence_score_v3"] = conf
+        r["sectional_confidence_band_v3"] = confidence_band(conf)
+        r["sectional_reliability_rank_v3"] = reliability_rank(runs, conf)
+        r["sectional_sample_warning_v3"] = sample_warning(runs, raw, conf)
+        r["sectional_display_label_v3"] = display_label(raw, conf, runs)
+
+        rows.append(r)
+
+extra_fields = [
+    "sectional_ability_score_v3",
+    "sectional_ability_class_v3",
+    "sectional_evidence_score_v3",
+    "sectional_confidence_score_v3",
+    "sectional_confidence_band_v3",
+    "sectional_reliability_rank_v3",
+    "sectional_sample_warning_v3",
+    "sectional_display_label_v3",
+]
+
+fields = base_fields[:]
+for field in extra_fields:
+    if field not in fields:
+        fields.append(field)
+
+with OUT.open("w", encoding="utf-8", newline="") as f:
+    writer = csv.DictWriter(f, fieldnames=fields)
+    writer.writeheader()
+    writer.writerows(rows)
+
+ability_counts = {}
+confidence_counts = {}
+warning_counts = {}
+reliability_counts = {}
+
+for r in rows:
+    ability_counts[r["sectional_ability_class_v3"]] = ability_counts.get(r["sectional_ability_class_v3"], 0) + 1
+    confidence_counts[r["sectional_confidence_band_v3"]] = confidence_counts.get(r["sectional_confidence_band_v3"], 0) + 1
+    warning_counts[r["sectional_sample_warning_v3"]] = warning_counts.get(r["sectional_sample_warning_v3"], 0) + 1
+    reliability_counts[r["sectional_reliability_rank_v3"]] = reliability_counts.get(r["sectional_reliability_rank_v3"], 0) + 1
+
+audit_row = {
+    "source_rows": len(rows),
+    "world_class": ability_counts.get("WORLD_CLASS", 0),
+    "elite": ability_counts.get("ELITE", 0),
+    "very_strong": ability_counts.get("VERY_STRONG", 0),
+    "above_average": ability_counts.get("ABOVE_AVERAGE", 0),
+    "competitive": ability_counts.get("COMPETITIVE", 0),
+    "average": ability_counts.get("AVERAGE", 0),
+    "limited": ability_counts.get("LIMITED", 0),
+    "very_high_confidence": confidence_counts.get("VERY_HIGH_CONFIDENCE", 0),
+    "high_confidence": confidence_counts.get("HIGH_CONFIDENCE", 0),
+    "medium_confidence": confidence_counts.get("MEDIUM_CONFIDENCE", 0),
+    "low_confidence": confidence_counts.get("LOW_CONFIDENCE", 0),
+    "very_low_confidence": confidence_counts.get("VERY_LOW_CONFIDENCE", 0),
+    "small_sample_high_upside": warning_counts.get("SMALL_SAMPLE_HIGH_UPSIDE", 0),
+    "early_high_upside_needs_confirmation": warning_counts.get("EARLY_HIGH_UPSIDE_NEEDS_CONFIRMATION", 0),
+    "proven_sectional_ability": warning_counts.get("PROVEN_SECTIONAL_ABILITY", 0),
+    "proven_limited_sectionals": warning_counts.get("PROVEN_LIMITED_SECTIONALS", 0),
+    "rank_a": reliability_counts.get("A", 0),
+    "rank_b": reliability_counts.get("B", 0),
+    "rank_c": reliability_counts.get("C", 0),
+    "rank_d": reliability_counts.get("D", 0),
+    "rank_e": reliability_counts.get("E", 0),
+    "final_status": "SECTIONAL_ABILITY_ENGINE_V3_BUILT",
+}
+
+with AUDIT.open("w", encoding="utf-8", newline="") as f:
+    writer = csv.DictWriter(f, fieldnames=list(audit_row.keys()))
+    writer.writeheader()
+    writer.writerow(audit_row)
+
+print("EDGEiQ Sectional Ability Engine V3 built")
+print(f"rows={len(rows)}")
+print(f"saved={OUT}")
+print(f"audit={AUDIT}")
+print("final_status=SECTIONAL_ABILITY_ENGINE_V3_BUILT")
+

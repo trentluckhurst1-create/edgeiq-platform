@@ -1,0 +1,29 @@
+{
+  "meeting_declarations": {
+    "freshness_required": "same operating date / three-day window"
+  },
+  "race_fields": {
+    "freshness_required": "same operating date / current acceptances"
+  },
+  "scratchings": {
+    "freshness_required": "frequent race-day refresh where live source exists"
+  },
+  "track_condition": {
+    "freshness_required": "race-day updated timestamp"
+  },
+  "weather": {
+    "freshness_required": "current observation timestamp; optional if source unavailable"
+  },
+  "markets": {
+    "freshness_required": "timestamped current price; optional/source-limited"
+  },
+  "results": {
+    "freshness_required": "post-race refresh when complete"
+  },
+  "stewards": {
+    "freshness_required": "published report timestamp; unavailable until source exists"
+  },
+  "historical_intelligence": {
+    "freshness_required": "stable warehouse release"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "decision": "PERFORMANCE_FACT_REBUILD_PASS",
+  "canonical_runner_rows": 392,
+  "benchmark_observation_rows": 39,
+  "benchmark_eligible_rows": 39,
+  "benchmark_groups": 12,
+  "standard_time_rows": 0
+}

@@ -1,0 +1,10 @@
+{
+  "built_utc": "2026-07-22T18:26:35+00:00",
+  "status": "RACINGCOM_GRAPHQL_CANDIDATE_WAREHOUSE_V1_PASS",
+  "candidate_rows": 978,
+  "graphql_rows": 898,
+  "csv_rows": 80,
+  "candidate_public_path": "public\\data\\edgeiq_racingcom_performance_warehouse_v2_GRAPHQL_CANDIDATE.csv",
+  "production_changed": "NO",
+  "ui_changed": "NO"
+}

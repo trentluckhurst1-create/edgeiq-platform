@@ -1,0 +1,20 @@
+{
+  "Date": "Mon, 13 Jul 2026 20:43:57 GMT",
+  "Content-Type": "application/json; charset=utf-8",
+  "Transfer-Encoding": "chunked",
+  "Connection": "keep-alive",
+  "Content-Encoding": "gzip",
+  "Set-Cookie": "ARRAffinity=43577738361f73e2cfa5766455f07ad48bb1b666e4dee0eccdb289676fee90bd;Path=/;HttpOnly;Secure;Domain=www.vrc.com.au, ARRAffinitySameSite=43577738361f73e2cfa5766455f07ad48bb1b666e4dee0eccdb289676fee90bd;Path=/;HttpOnly;SameSite=None;Secure;Domain=www.vrc.com.au",
+  "Vary": "Accept-Encoding",
+  "Strict-Transport-Security": "max-age=31536000",
+  "Request-Context": "appId=cid-v1:1c784c26-5fb3-46cd-a90a-e1c2b9b65594",
+  "X-Frame-Options": "SameOrigin",
+  "X-XSS-Protection": "0",
+  "X-Content-Type-Options": "nosniff",
+  "Referrer-Policy": "strict-origin-when-cross-origin",
+  "X-Permitted-Cross-Domain-Policies": "none",
+  "Permissions-Policy": "geolocation=(self), fullscreen=*",
+  "api-supported-versions": "1.0",
+  "x-azure-ref": "20260713T204354Z-15d4d7ffcddfrh5jhC1MELc9gs00000009y0000000000vxc",
+  "X-Cache": "CONFIG_NOCACHE"
+}

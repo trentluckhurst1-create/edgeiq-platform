@@ -1,0 +1,47 @@
+# Victoria Current Ratings EPI Acceptance V3
+
+{
+  "epi": {
+    "current_runners_missing_epi": 5,
+    "distinct_current_runners_with_epi": 51,
+    "epi_status": "EPI_POPULATED",
+    "input_component_rows": 153,
+    "missing_reasons": {
+      "MISSING_REQUIRED_EPI_COMPONENT": 5
+    },
+    "output_epi_rows": 51
+  },
+  "sale": {
+    "chigurh": {
+      "aggregate_available": "NO",
+      "blocking_reason": "INSUFFICIENT_OBSERVATIONS",
+      "canonical_horse_id": "RA_HORSE_34054013730",
+      "current_observations": "0",
+      "epi_available": "NO",
+      "historical_observations": "0",
+      "race_number": "3",
+      "rating_available": "NO",
+      "runner_name": "CHIGURH",
+      "snapshot_available": "NO",
+      "total_governed_observations": "0"
+    },
+    "current_sale_runners": 80,
+    "governed_identities": 80,
+    "runners_with_5_plus_observations": 0,
+    "runners_with_aggregates": 0,
+    "runners_with_epi": 0,
+    "runners_with_historical_observations": 0,
+    "runners_with_ratings": 0,
+    "runners_with_snapshots": 0
+  },
+  "snapshots": {
+    "distinct_snapshot_horses": 5,
+    "input_ratings": 1265,
+    "latest_snapshot_date": "2026-07-25",
+    "missing_snapshot_reasons": {
+      "NO_PRIOR_HORSE_RATING": 199
+    },
+    "output_snapshots": 5,
+    "race_entry_rows": 204
+  }
+}

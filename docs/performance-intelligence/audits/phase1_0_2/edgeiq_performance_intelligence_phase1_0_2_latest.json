@@ -1,0 +1,56 @@
+{
+  "audit_name": "EDGEiQ Performance Intelligence Phase 1.0.2 Performance Identity Collision Repair",
+  "generated_utc": "2026-07-15T19:00:48.037255+00:00",
+  "status": "PERFORMANCE_IDENTITY_COLLISION_REPAIR_PASS",
+  "production_data_modified": false,
+  "source_performance_rows": 879784,
+  "new_unique_performance_ids": 879784,
+  "legacy_collision_groups": 89,
+  "duplicate_new_performance_ids": 0,
+  "source_sectional_rows": 103766,
+  "remapped_sectional_rows": 103766,
+  "unresolved_sectional_rows": 0,
+  "duplicate_new_sectional_ids": 0,
+  "checks": [
+    {
+      "check": "PERFORMANCE_ROW_COUNT_PRESERVED",
+      "passed": true,
+      "observed": "source_rows=879784;unique_new_ids=879784"
+    },
+    {
+      "check": "NEW_PERFORMANCE_IDS_UNIQUE",
+      "passed": true,
+      "observed": "duplicates=0"
+    },
+    {
+      "check": "LEGACY_COLLISIONS_SPLIT",
+      "passed": true,
+      "observed": "collision_groups=89"
+    },
+    {
+      "check": "SECTIONAL_REMAP_COMPLETE",
+      "passed": true,
+      "observed": "remapped=103766;unresolved=0"
+    },
+    {
+      "check": "NEW_SECTIONAL_IDS_UNIQUE",
+      "passed": true,
+      "observed": "duplicates=0"
+    }
+  ],
+  "failed_checks": [],
+  "canonical_status": "IDENTITY_COLLISIONS_REPAIRED_PROTOTYPE_NOT_PROMOTED",
+  "next_stage": "Rerun Phase 1.0 snapshot reproducibility audit against performance identity V0.2 and sectional evidence V0.2.",
+  "outputs": {
+    "performance_identity_v0_2": "docs/performance-intelligence/prototypes/phase1_0_2/edgeiq_canonical_performance_identity_v0_2_20260716_050048.csv",
+    "legacy_id_remap": "docs/performance-intelligence/prototypes/phase1_0_2/edgeiq_legacy_performance_id_remap_v0_1_20260716_050048.csv",
+    "sectional_evidence_v0_2": "docs/performance-intelligence/prototypes/phase1_0_2/edgeiq_canonical_sectional_evidence_v0_2_20260716_050048.csv",
+    "collision_audit": "docs/performance-intelligence/audits/phase1_0_2/edgeiq_performance_identity_collisions_v0_2_20260716_050048.csv",
+    "checks": "docs/performance-intelligence/audits/phase1_0_2/edgeiq_performance_identity_v0_2_checks_20260716_050048.csv"
+  },
+  "sha256": {
+    "performance_identity_v0_2": "5754e424b57031b3a6e50b4ecd8675af21b10a7a624b85d3810795562e0d1df2",
+    "legacy_id_remap": "9f3f3b0476e09d62523003111d4bad509a5742bc045bd012c4f9b510cf2a3f52",
+    "sectional_evidence_v0_2": "072c1ccf556bfc0476c1d4507d0828b6210c8d5865e411c6a42b5e4a3de1fa42"
+  }
+}

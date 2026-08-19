@@ -1,0 +1,138 @@
+{
+  "audit": "EDGEIQ_TARGET_002_COMPLETION_AUDIT_V1",
+  "audited_at_utc": "2026-07-28T20:05:24Z",
+  "status": "PASS",
+  "counts": {
+    "standard_time_rows": 502,
+    "historical_bridge_rows": 502,
+    "ready_accumulation_groups": 0,
+    "track_count": 61,
+    "distance_count": 172
+  },
+  "top_tracks": [
+    [
+      "BET365 GEELONG",
+      49
+    ],
+    [
+      "SALE",
+      34
+    ],
+    [
+      "BET365 PARK KYNETON",
+      23
+    ],
+    [
+      "MOE",
+      23
+    ],
+    [
+      "FLEMINGTON",
+      20
+    ],
+    [
+      "MORNINGTON",
+      18
+    ],
+    [
+      "SEYMOUR",
+      17
+    ],
+    [
+      "BET365 ECHUCA",
+      15
+    ],
+    [
+      "THE VALLEY",
+      13
+    ],
+    [
+      "CAULFIELD",
+      10
+    ]
+  ],
+  "top_distances": [
+    [
+      "1200",
+      44
+    ],
+    [
+      "1600",
+      41
+    ],
+    [
+      "1000",
+      38
+    ],
+    [
+      "1400",
+      34
+    ],
+    [
+      "1100",
+      31
+    ],
+    [
+      "1300",
+      25
+    ],
+    [
+      "2000",
+      19
+    ],
+    [
+      "1500",
+      16
+    ],
+    [
+      "2200",
+      12
+    ],
+    [
+      "2400",
+      11
+    ]
+  ],
+  "checks": [
+    {
+      "check": "standard_time_rows_populated",
+      "status": "PASS",
+      "detail": 502
+    },
+    {
+      "check": "canonical_audit_passed",
+      "status": "PASS",
+      "detail": "PASS"
+    },
+    {
+      "check": "minimum_sample_preserved",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "check": "historical_bridge_lineage_present",
+      "status": "PASS",
+      "detail": {
+        "bridge_rows": 502,
+        "standard_time_rows": 502
+      }
+    },
+    {
+      "check": "bridge_used_only_after_zero_ready_accumulation_groups",
+      "status": "PASS",
+      "detail": 0
+    },
+    {
+      "check": "standard_time_seconds_positive",
+      "status": "PASS",
+      "detail": []
+    }
+  ],
+  "verdict": "TARGET_002_STANDARD_TIME_RECOVERED",
+  "governance": {
+    "minimum_sample": 20,
+    "threshold_weakened": false,
+    "historical_source": "public\\data\\edgeiq_historical_results_warehouse_v2_graphql.csv",
+    "condition_course_surface_adjustments_added": false
+  }
+}

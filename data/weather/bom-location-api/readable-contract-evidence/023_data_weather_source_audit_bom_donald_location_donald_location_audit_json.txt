@@ -1,0 +1,127 @@
+﻿EDGEIQ BOM LOCATION API CONTRACT EVIDENCE
+
+Repository file:
+data\weather-source-audit\bom-donald-location\donald_location_audit.json
+
+Matched text:
+api.test2.bom.gov.au
+
+Nearby URLs:
+http://ogp.me/ns#|http://purl.org/dc/terms/|http://purl.org/rss/1.0/modules/content/|http://rdfs.org/sioc/ns#|http://rdfs.org/sioc/types#|http://schema.org/|http://www.w3.org/2000/01/rdf-schema#|http://www.w3.org/2001/XMLSchema#|http://www.w3.org/2004/02/skos/core#|http://xmlns.com/foaf/0.1/|https://api.test2.bom.gov.au/apikey/v1/observations|https://fastapi-observation.apps.ocp.mgmt.bae.bom.gov.au/apikey/v1/observations|https://www.bom.gov.au/location/australia/victoria/mallee/o283285303-donald
+
+Request evidence:
+
+
+Context:
+ "968334",
+      "96883",
+      "96927",
+      "96987",
+      "96991",
+      "970678",
+      "97077",
+      "97124",
+      "97180",
+      "97249",
+      "97264",
+      "97362",
+      "97369",
+      "97415",
+      "97443",
+      "97534",
+      "975382",
+      "97541",
+      "97611",
+      "97668",
+      "97688",
+      "977228",
+      "97823",
+      "97878",
+      "97891",
+      "97942",
+      "97987",
+      "97989",
+      "98014",
+      "98074",
+      "98132",
+      "981433",
+      "981509",
+      "98184",
+      "98233",
+      "98243",
+      "98254",
+      "98264",
+      "98274",
+      "98278",
+      "982888",
+      "982993",
+      "983031",
+      "98309",
+      "98323",
+      "983552",
+      "98383",
+      "984151",
+      "98546",
+      "98560",
+      "986131",
+      "986312",
+      "986376",
+      "98645",
+      "986842",
+      "98736",
+      "98742",
+      "987827",
+      "98821",
+      "98873",
+      "98920",
+      "98949",
+      "99049",
+      "990580",
+      "99115",
+      "99123",
+      "99148",
+      "99232",
+      "99282",
+      "99291",
+      "99374",
+      "99382",
+      "994572",
+      "99466",
+      "99510",
+      "99531",
+      "995459",
+      "99561",
+      "99590",
+      "99615",
+      "99620",
+      "99624",
+      "99637",
+      "99652",
+      "99667",
+      "99680",
+      "997937",
+      "99808",
+      "99810",
+      "99829",
+      "99950",
+      "99993",
+      "99999"
+    ],
+    "latitudes": [],
+    "longitudes": [],
+    "observation_urls": [
+      "https://api.test2.bom.gov.au/apikey/v1/observations",
+      "https://fastapi-observation.apps.ocp.mgmt.bae.bom.gov.au/apikey/v1/observations"
+    ],
+    "station_urls": []
+  },
+  "contexts": [
+    {
+      "document": "donald_location_page.html",
+      "keyword": "donald",
+      "context": "<!DOCTYPE html> <html lang=\"en\" dir=\"ltr\" prefix=\"content: http://purl.org/rss/1.0/modules/content/  dc: http://purl.org/dc/terms/  foaf: http://xmlns.com/foaf/0.1/  og: http://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# \"> <head>   <title>Donald, Victoria | The Bureau of Meteorology</title>   <meta charset=\"utf-8\" /> <meta name=\"keywords\" content=\"BOM, Bureau of Meteorology\" /> <link rel=\"canonical\" href=\"https://www.bom.gov.au/location/australia/victoria/mallee/o283285303-donald\" /> <meta property=\"og:site_name\" content=\"The Bureau of Meteorology\" /> <meta property=\"og:url\" content=\"https://www.bom.gov.au/location/australia/victoria/mallee/o283285303-donald\" /> <meta property=\"og:title\" content=\"Donald, Victoria | The Bureau of Meteorology\" /> <meta name=\"bom_search.title\" content=\"Weather in Donald town\" /> <meta name=\"MobileOptimized\" content=\"width\" /> <meta name=\"HandheldFriendly\" content=\"true\" /> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" /> <meta name=\"bom_search.description\" content=\"Explore weather in Donald, Victoria\" /> <meta property=\"og:image\" content=\"\" /> <meta property=\"og:type\" content=\"website\" /> <meta property=\"og:locale\" content=\"en_AU\" /> <link rel=\"icon\" href=\"/themes/custom/bom_theme/favicon.ico\" type=\"image/vnd.microsoft.icon\" />    <link rel=\"stylesheet\" media=\"all\" href=\"/sites/default/files/css/css_2o4ojlLOX7hQSFJKRnlfFhisY_CALHQb2_K9jQVKfHI.css?delta=0&amp;lan"
+    },
+    {
+      "document": "donald_location_page.html",
+      "keyword": "donald",
+      "context": "ttp://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# \"> <head>   <title>Donald, Victoria | The Bureau of Meteorology</title>   <meta charset=\"utf-8\" /> <meta name=\"keywords\" content=\"BOM, Bureau of Meteorology\" /> <link rel=\"canon

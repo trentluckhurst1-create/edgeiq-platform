@@ -1,0 +1,38 @@
+{
+  "checks": [
+    {
+      "check_id": "target_dataset_availability",
+      "detail": "all target datasets available",
+      "status": "PASS"
+    },
+    {
+      "check_id": "defensible_runner_key_detection",
+      "detail": "defensible_keys=5; targets=6",
+      "status": "PARTIAL"
+    },
+    {
+      "check_id": "population_overlap_completed",
+      "detail": "comparable_pairs=10",
+      "status": "PASS"
+    },
+    {
+      "check_id": "duplicate_evidence_exported",
+      "detail": "duplicate_groups_exported=359",
+      "status": "PASS"
+    },
+    {
+      "check_id": "builder_file_availability",
+      "detail": "existing=7; missing=4",
+      "status": "PARTIAL"
+    },
+    {
+      "check_id": "builder_syntax",
+      "detail": "syntax_failures=0",
+      "status": "PASS"
+    }
+  ],
+  "generated_utc": "2026-07-27T03:24:57+00:00",
+  "overall_status": "PARTIAL",
+  "program_id": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE1A_3_POPULATION_DUPLICATE_BUILDER_SEMANTICS_V1",
+  "program_version": "1.0.0"
+}

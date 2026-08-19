@@ -1,0 +1,52 @@
+{
+  "contract_name": "edgeiq_performance_normalisation_fact_v1",
+  "contract_version": "1.0.0",
+  "grain": "one_row_per_performance_base_row_with_one_governed_normalisation_parameter",
+  "normalisation_method": "LINEAR_CENTRE_AND_SCALE",
+  "primary_key": [
+    "performance_normalisation_id"
+  ],
+  "required_fields": [
+    "performance_normalisation_id",
+    "performance_intelligence_base_id",
+    "normalisation_parameter_id",
+    "lengths_versus_standard_id",
+    "benchmark_observation_id",
+    "race_key",
+    "race_date",
+    "track_name",
+    "official_distance_metres",
+    "winner_horse_name",
+    "raw_performance_lengths",
+    "centre_value",
+    "scale_value",
+    "normalised_performance_value",
+    "normalisation_method",
+    "normalisation_status",
+    "normalisation_model_version",
+    "source_performance_base_evidence_sha256",
+    "source_normalisation_parameter_evidence_sha256",
+    "performance_normalisation_evidence_sha256",
+    "builder_version",
+    "contract_version",
+    "built_at_utc"
+  ],
+  "allowed_values": {
+    "normalisation_method": [
+      "LINEAR_CENTRE_AND_SCALE"
+    ],
+    "normalisation_status": [
+      "NORMALISED_GOVERNED"
+    ]
+  },
+  "forbidden_fields": [
+    "epi",
+    "eri",
+    "speed_rating",
+    "class_rating",
+    "predictive_rating",
+    "track_variant",
+    "condition_adjustment",
+    "recency_weight"
+  ]
+}

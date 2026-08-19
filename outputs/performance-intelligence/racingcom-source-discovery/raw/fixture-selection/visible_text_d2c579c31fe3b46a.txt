@@ -1,0 +1,1034 @@
+FRAME 0 URL=https://www.racing.com/form/2026-07-20/southside-pakenham-synthetic/race/6/speed-data
+MONDAY, 20 JULY 2026
+Southside Pakenham Synthetic  
+1400m
+17°C
+Synth
+Track Rail
+True Entire Circuit
+Final Result
+All
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+RW Advisory Group Handicap
+3:00pm
+1400m
+Handicap. Two-Years-Old and Upwards, No sex restriction. BenchMark 62. Apprentices can claim. Track name: Synthetic. Track type: Synthetic. Field limit: 12.
+Race Time: 
+1:22.44  
++16.98L  
+Prize Money: 
+$27,000  
+Results
+Stewards' Report
+Speed Data
+News & Video
+Personalise Your Racing Experience
+
+We use cookies (including third-party) for site functionality, personalised content and ads, and analytics. By continuing, you consent to essential cookies only. Click "Accept all cookies" to allow non-essential cookies for personalisation and sharing usage data with our media, advertising, and analytics partners.
+
+See our Privacy Policy for details.
+
+Accept
+All CookiesDecline Non-
+Essential Cookies
+
+---FRAME---
+
+FRAME 1 URL=https://dxp-static.racing.com/sectionals/index.html#?meetCode=5191023&raceNumber=6
+Sort By:	Finishing Position
+C
+Finishing Position
+Distance Run
+Early Speed
+Mid Speed
+Late Speed
+Peak Speed
+Average Speed
+	OverviewSectionalsSplits
+POS / HORSE
+1st		
+12. Savannah Chill (NZ) (3)
+T: Ben, Will & JD Hayes J: J.McNeil
+
+2nd		
+4. Blondeau (1)
+T: N.E.Shelton J: B.R.Kinninmont
+
+3rd		
+13. Military Base (10)
+T: Peter G Moody & Katherine Coleman J: L.Nolen
+
+4th		
+7. The Negotiator (6)
+T: C.I.Brown J: D.G.Thornton
+
+5th		
+1. Banknote Hustler (5)
+T: Mick Price & Michael Kent (Jnr) J: O.I.East
+
+6th		
+2. Impending War (11)
+T: Ben, Will & JD Hayes J: J.Mott
+
+7th		
+8. Gallant Prince (4)
+T: C.Douglas J: J.Noonan
+
+8th		
+3. Claymore Mine (12)
+T: Pat Carey & Harris Walker J: N.Daniels
+
+9th		
+11. Queen Of Tuscany (2)
+T: B.R.Cunningham J: L.K.Cartwright
+
+10th		
+5. Clansman (7)
+T: J.F.Moloney J: L.Currie
+
+11th		
+10. King Maywin (9)
+T: G.Eurell J: L.J.Neindorf
+
+12th		
+14. Triple Triple (8)
+T: N.G.Smyth J: L.King
+	
+DIST RUN	EARLY	MID	LATE	PEAK	AVG SPEED	COM
+
+1405
+metres
+	
+58.10
+km/h
+	
+62.64
+km/h
+	
+65.45
+km/h
+	
+68.08
+km/h
+	
+61.34
+km/h
+	
+!
+
+
+1406(+2)
+metres
+	
+57.67
+km/h
+	
+63.32
+km/h
+	
+64.55
+km/h
+	
+67.25
+km/h
+	
+61.09
+km/h
+	
+!
+
+
+1408(+3)
+metres
+	
+58.61
+km/h
+	
+62.39
+km/h
+	
+63.47
+km/h
+	
+67.57
+km/h
+	
+61.02
+km/h
+	
+!
+
+
+1410(+5)
+metres
+	
+57.74
+km/h
+	
+63.65
+km/h
+	
+63.97
+km/h
+	
+66.35
+km/h
+	
+61.09
+km/h
+	
+!
+
+
+1412(+7)
+metres
+	
+58.54
+km/h
+	
+63.14
+km/h
+	
+64.69
+km/h
+	
+66.89
+km/h
+	
+61.16
+km/h
+	
+!
+
+
+1410(+5)
+metres
+	
+58.03
+km/h
+	
+63.68
+km/h
+	
+63.22
+km/h
+	
+66.20
+km/h
+	
+61.02
+km/h
+	
+!
+
+
+1403(-2)
+metres
+	
+58.46
+km/h
+	
+62.06
+km/h
+	
+62.86
+km/h
+	
+66.17
+km/h
+	
+60.70
+km/h
+	
+!
+
+
+1404
+metres
+	
+59.65
+km/h
+	
+61.27
+km/h
+	
+61.67
+km/h
+	
+68.15
+km/h
+	
+60.66
+km/h
+	
+!
+
+
+1403(-2)
+metres
+	
+57.06
+km/h
+	
+63.65
+km/h
+	
+62.96
+km/h
+	
+66.60
+km/h
+	
+60.48
+km/h
+	
+!
+
+
+1403(-2)
+metres
+	
+58.72
+km/h
+	
+61.92
+km/h
+	
+61.70
+km/h
+	
+65.92
+km/h
+	
+60.44
+km/h
+	
+!
+
+
+1405
+metres
+	
+59.11
+km/h
+	
+62.35
+km/h
+	
+60.41
+km/h
+	
+66.28
+km/h
+	
+60.37
+km/h
+	
+!
+
+
+1402(-3)
+metres
+	
+59.36
+km/h
+	
+61.13
+km/h
+	
+55.80
+km/h
+	
+66.82
+km/h
+	
+58.79
+km/h
+	
+!
+POS / HORSE
+1st		
+12. Savannah Chill (NZ) (3)
+T: Ben, Will & JD Hayes J: J.McNeil
+
+2nd		
+4. Blondeau (1)
+T: N.E.Shelton J: B.R.Kinninmont
+
+3rd		
+13. Military Base (10)
+T: Peter G Moody & Katherine Coleman J: L.Nolen
+
+4th		
+7. The Negotiator (6)
+T: C.I.Brown J: D.G.Thornton
+
+5th		
+1. Banknote Hustler (5)
+T: Mick Price & Michael Kent (Jnr) J: O.I.East
+
+6th		
+2. Impending War (11)
+T: Ben, Will & JD Hayes J: J.Mott
+
+7th		
+8. Gallant Prince (4)
+T: C.Douglas J: J.Noonan
+
+8th		
+3. Claymore Mine (12)
+T: Pat Carey & Harris Walker J: N.Daniels
+
+9th		
+11. Queen Of Tuscany (2)
+T: B.R.Cunningham J: L.K.Cartwright
+
+10th		
+5. Clansman (7)
+T: J.F.Moloney J: L.Currie
+
+11th		
+10. King Maywin (9)
+T: G.Eurell J: L.J.Neindorf
+
+12th		
+14. Triple Triple (8)
+T: N.G.Smyth J: L.King
+	
+OVERALL	1200M	1000M	800M	600M	400M	200M
+
+1:22.44
+1st
+	
+1:07.90
+8th
+	
+56.77
+8th
+	
+45.20
+8th
+	
+33.53
+8th
+	
+22.04
+8th
+	
+11.21
+1st
+
+
+1:22.87
+2nd
+	
+1:08.09
+11th
+	
+56.81
+11th
+	
+45.38
+11th
+	
+33.83
+11th
+	
+22.37
+10th
+	
+11.49
+3rd
+
+
+1:23.08
+3rd
+	
+1:08.93
+4th
+	
+57.85
+4th
+	
+46.19
+5th
+	
+34.38
+5th
+	
+22.78
+6th
+	
+11.50
+10th
+
+
+1:23.09
+4th
+	
+1:08.35
+10th
+	
+57.07
+10th
+	
+45.66
+10th
+	
+34.07
+10th
+	
+22.57
+11th
+	
+11.56
+8th
+
+
+1:23.12
+5th
+	
+1:08.67
+7th
+	
+57.68
+7th
+	
+46.12
+6th
+	
+34.42
+6th
+	
+22.87
+5th
+	
+11.68
+5th
+
+
+1:23.17
+6th
+	
+1:08.57
+9th
+	
+57.38
+9th
+	
+45.90
+9th
+	
+34.19
+9th
+	
+22.77
+8th
+	
+11.71
+6th
+
+
+1:23.23
+7th
+	
+1:08.98
+6th
+	
+57.88
+6th
+	
+46.23
+7th
+	
+34.43
+7th
+	
+22.91
+7th
+	
+11.77
+7th
+
+
+1:23.30
+8th
+	
+1:09.25
+2nd
+	
+58.48
+1st
+	
+47.04
+1st
+	
+35.13
+1st
+	
+23.35
+2nd
+	
+12.02
+2nd
+
+
+1:23.51
+9th
+	
+1:08.49
+12th
+	
+57.08
+12th
+	
+45.63
+12th
+	
+34.15
+12th
+	
+22.91
+12th
+	
+11.78
+11th
+
+
+1:23.56
+10th
+	
+1:09.39
+5th
+	
+58.29
+5th
+	
+46.74
+4th
+	
+34.95
+4th
+	
+23.36
+4th
+	
+12.00
+9th
+
+
+1:23.76
+11th
+	
+1:09.66
+3rd
+	
+58.68
+3rd
+	
+47.09
+3rd
+	
+35.34
+3rd
+	
+23.85
+1st
+	
+12.36
+4th
+
+
+1:25.87
+12th
+	
+1:11.96
+1st
+	
+1:01.00
+2nd
+	
+49.43
+2nd
+	
+37.55
+2nd
+	
+25.79
+3rd
+	
+13.87
+12th
+POS / HORSE
+1st		
+12. Savannah Chill (NZ) (3)
+T: Ben, Will & JD Hayes J: J.McNeil
+
+2nd		
+4. Blondeau (1)
+T: N.E.Shelton J: B.R.Kinninmont
+
+3rd		
+13. Military Base (10)
+T: Peter G Moody & Katherine Coleman J: L.Nolen
+
+4th		
+7. The Negotiator (6)
+T: C.I.Brown J: D.G.Thornton
+
+5th		
+1. Banknote Hustler (5)
+T: Mick Price & Michael Kent (Jnr) J: O.I.East
+
+6th		
+2. Impending War (11)
+T: Ben, Will & JD Hayes J: J.Mott
+
+7th		
+8. Gallant Prince (4)
+T: C.Douglas J: J.Noonan
+
+8th		
+3. Claymore Mine (12)
+T: Pat Carey & Harris Walker J: N.Daniels
+
+9th		
+11. Queen Of Tuscany (2)
+T: B.R.Cunningham J: L.K.Cartwright
+
+10th		
+5. Clansman (7)
+T: J.F.Moloney J: L.Currie
+
+11th		
+10. King Maywin (9)
+T: G.Eurell J: L.J.Neindorf
+
+12th		
+14. Triple Triple (8)
+T: N.G.Smyth J: L.King
+	
+1400M-1200M	1200M-1000M	1000M-800M	800M-600M	600M-400M	400M-200M	200M-FINISH
+
+14.54
+8th
+	
+11.13
+8th
+	
+11.57
+8th
+	
+11.67
+8th
+	
+11.49
+8th
+	
+10.83
+1st
+	
+11.21
+1st
+
+
+14.77
+11th
+	
+11.28
+11th
+	
+11.43
+11th
+	
+11.55
+11th
+	
+11.46
+10th
+	
+10.88
+3rd
+	
+11.49
+2nd
+
+
+14.14
+4th
+	
+11.08
+4th
+	
+11.66
+5th
+	
+11.81
+5th
+	
+11.60
+6th
+	
+11.28
+10th
+	
+11.50
+3rd
+
+
+14.73
+10th
+	
+11.28
+10th
+	
+11.41
+10th
+	
+11.59
+10th
+	
+11.50
+11th
+	
+11.01
+8th
+	
+11.56
+4th
+
+
+14.45
+7th
+	
+10.99
+7th
+	
+11.56
+6th
+	
+11.70
+6th
+	
+11.55
+5th
+	
+11.19
+5th
+	
+11.68
+5th
+
+
+14.59
+9th
+	
+11.19
+9th
+	
+11.48
+9th
+	
+11.71
+9th
+	
+11.42
+8th
+	
+11.06
+6th
+	
+11.71
+6th
+
+
+14.26
+6th
+	
+11.10
+6th
+	
+11.65
+7th
+	
+11.80
+7th
+	
+11.52
+7th
+	
+11.14
+7th
+	
+11.77
+7th
+
+
+14.05
+2nd
+	
+10.77
+1st
+	
+11.44
+1st
+	
+11.91
+1st
+	
+11.78
+2nd
+	
+11.33
+2nd
+	
+12.02
+8th
+
+
+15.02
+12th
+	
+11.41
+12th
+	
+11.45
+12th
+	
+11.48
+12th
+	
+11.24
+12th
+	
+11.13
+11th
+	
+11.78
+9th
+
+
+14.17
+5th
+	
+11.10
+5th
+	
+11.55
+4th
+	
+11.79
+4th
+	
+11.59
+4th
+	
+11.36
+9th
+	
+12.00
+10th
+
+
+14.10
+3rd
+	
+10.98
+3rd
+	
+11.59
+3rd
+	
+11.75
+3rd
+	
+11.49
+1st
+	
+11.49
+4th
+	
+12.36
+11th
+
+
+13.91
+1st
+	
+10.96
+2nd
+	
+11.57
+2nd
+	
+11.88
+2nd
+	
+11.76
+3rd
+	
+11.92
+12th
+	
+13.87
+12th
+Download Race Sectional Data | PDF' | CSV'
+Splits & Sectionals	
+
+Splits & Sectionals data displayed on Racing.com is sourced from the following race-timing technology partners: From August 2021, sectional times for race meetings at Flemington, Caulfield, The Valley & Ladbrokes Park are provided by tripleSdata and Champion Data (note: previously, Trakus technology was used at Flemington, Caulfield and The Valley). From August 2023, Cranbourne and Pakenham sectional times are also provided by tripleSdata and Champion Data (note: previously, Daily Sectionals) From September 2017, data for all other Victorian tracks is provided by Daily Sectionals; and at South Australian tracks the sectional times are sourced from Equitime.
+
+Below each split and sectional time displayed is the horse’s position-in-running (e.g. 1st) at that point of the race.
+
+The meeting rank 'tool-tip' feature helps to identify how the fastest individual splits & sectionals for each race, which are highlighted in green, compare to the times for the rest of that particular race meeting.
+
+---FRAME---
+
+FRAME 7 URL=about:blank
+18+‌
+Eligible‌ ‌customers‌ ‌only.‌ ‌Prices‌ ‌subject‌ ‌to‌ ‌change.‌ ‌
+Max‌ ‌stakes‌ ‌&‌ ‌T&Cs‌ ‌apply.‌
+THINK.‌ ‌IS‌ ‌THIS‌ ‌A‌ ‌BET‌ ‌YOU‌ ‌REALLY‌ ‌WANT‌ ‌TO‌ ‌PLACE?‌
+Set‌ ‌a‌ ‌deposit‌ ‌limit.‌
+
+---FRAME---
+
+FRAME 9 URL=about:blank
+18+‌
+Eligible‌ ‌customers‌ ‌only.‌ ‌Prices‌ ‌subject‌ ‌to‌ ‌change.‌ ‌
+Max‌ ‌stakes‌ ‌&‌ ‌T&Cs‌ ‌apply.‌
+THINK.‌ ‌IS‌ ‌THIS‌ ‌A‌ ‌BET‌ ‌YOU‌ ‌REALLY‌ ‌WANT‌ ‌TO‌ ‌PLACE?‌
+Set‌ ‌a‌ ‌deposit‌ ‌limit.‌
+
+---FRAME---
+
+FRAME 16 URL=about:blank
+Join
+
+---FRAME---
+
+FRAME 18 URL=about:blank
+EVERY RACE, EVERY DAY.
+
+---FRAME---
+
+FRAME 27 URL=about:blank
+Join
+
+---FRAME---
+
+FRAME 29 URL=about:blank
+EVERY RACE, EVERY DAY.
+
+---FRAME---
+
+FRAME 33 URL=https://platform.twitter.com/widgets/tweet_button.1227a5674072e080ffb1ba14ac0c1079.en.html#dnt=true&id=twitter-widget-0&lang=en&original_referer=https%3A%2F%2Fdxp-static.racing.com%2Fsectionals%2Findex.html%23%3FmeetCode%3D5191023%26raceNumber%3D6&size=m&text=RACING.COM&time=1784711593847&type=share&url=https%3A%2F%2Fdxp-static.racing.com%2Fsectionals%2Findex.html%23%3FmeetCode%3D5191023%26raceNumber%3D6&via=country_racing
+Post

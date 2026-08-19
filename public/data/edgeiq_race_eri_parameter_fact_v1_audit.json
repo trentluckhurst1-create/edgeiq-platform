@@ -1,0 +1,100 @@
+{
+  "audit_name": "edgeiq_race_eri_parameter_fact_v1",
+  "audit_version": "1.0.0",
+  "audited_at_utc": "2026-07-22T00:43:24Z",
+  "checks": {
+    "contract_fields_exact": {
+      "detail": {
+        "actual": [
+          "race_eri_parameter_id",
+          "eri_parameter_version",
+          "eri_methodology_code",
+          "eri_methodology_name",
+          "eri_input_population_rule",
+          "eri_complete_field_required",
+          "minimum_eligible_runner_count",
+          "eri_output_decimal_places",
+          "eri_rounding_mode",
+          "eri_parameter_scope",
+          "effective_from_date",
+          "effective_to_date",
+          "eri_parameter_decision",
+          "race_eri_parameter_status",
+          "race_eri_parameter_evidence_sha256",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ],
+        "expected": [
+          "race_eri_parameter_id",
+          "eri_parameter_version",
+          "eri_methodology_code",
+          "eri_methodology_name",
+          "eri_input_population_rule",
+          "eri_complete_field_required",
+          "minimum_eligible_runner_count",
+          "eri_output_decimal_places",
+          "eri_rounding_mode",
+          "eri_parameter_scope",
+          "effective_from_date",
+          "effective_to_date",
+          "eri_parameter_decision",
+          "race_eri_parameter_status",
+          "race_eri_parameter_evidence_sha256",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ]
+      },
+      "status": "PASS"
+    },
+    "deterministic_parameter_evidence": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "deterministic_parameter_identity": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "no_forbidden_fields": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "parameter_dates_valid": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "parameter_governance_complete": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "parameter_ids_unique": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "parameter_population_exact": {
+      "detail": {
+        "actual": 1,
+        "expected": 1
+      },
+      "status": "PASS"
+    },
+    "parameter_values_governed": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "parameter_versions_unique": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "required_files_exist": {
+      "detail": [],
+      "status": "PASS"
+    }
+  },
+  "counts": {
+    "eri_parameter_rows": 1
+  },
+  "failed_checks": [],
+  "status": "PASS"
+}

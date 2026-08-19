@@ -1,0 +1,78 @@
+{
+  "contract_name": "edgeiq_race_entry_horse_performance_snapshot_fact_v1",
+  "contract_version": "1.0.0",
+  "grain": "at_most_one_point_in_time_historical_horse_rating_snapshot_per_governed_race_entry",
+  "primary_key": [
+    "race_entry_horse_performance_snapshot_id"
+  ],
+  "natural_key": [
+    "race_entry_id"
+  ],
+  "required_fields": [
+    "race_entry_horse_performance_snapshot_id",
+    "race_entry_id",
+    "race_id",
+    "race_date",
+    "runner_id",
+    "canonical_horse_id",
+    "canonical_horse_name",
+    "selected_horse_performance_rating_id",
+    "selected_rating_as_of_date",
+    "rating_age_days",
+    "eligible_historical_rating_count",
+    "first_eligible_rating_date",
+    "latest_eligible_rating_date",
+    "selected_horse_performance_rating_value",
+    "highest_eligible_historical_rating_value",
+    "lowest_eligible_historical_rating_value",
+    "average_eligible_historical_rating_value",
+    "selected_included_observation_count",
+    "horse_performance_rating_method",
+    "race_entry_horse_performance_snapshot_status",
+    "source_race_entry_evidence_sha256",
+    "source_selected_rating_evidence_sha256",
+    "source_eligible_rating_ids_sha256",
+    "source_eligible_rating_evidence_sha256",
+    "race_entry_horse_performance_snapshot_evidence_sha256",
+    "source_race_entry_builder_version",
+    "source_rating_builder_version",
+    "builder_version",
+    "contract_version",
+    "built_at_utc"
+  ],
+  "allowed_values": {
+    "horse_performance_rating_method": [
+      "DIRECT_HISTORICAL_AGGREGATE_VALUE"
+    ],
+    "race_entry_horse_performance_snapshot_status": [
+      "POINT_IN_TIME_HISTORICAL_RATING_AVAILABLE"
+    ]
+  },
+  "forbidden_fields": [
+    "epi",
+    "eri",
+    "suitability",
+    "today_epi",
+    "today_rating",
+    "predictive_rating",
+    "forecast_rating",
+    "runner_rank",
+    "race_rank",
+    "fair_price",
+    "market_price",
+    "class_adjustment",
+    "distance_adjustment",
+    "track_adjustment",
+    "track_condition_adjustment",
+    "race_shape_adjustment",
+    "pace_adjustment",
+    "map_adjustment",
+    "jockey_adjustment",
+    "trainer_adjustment",
+    "barrier_adjustment",
+    "weight_carried_adjustment",
+    "preparation_stage_adjustment",
+    "fitness_adjustment",
+    "horse_performance_profile_id"
+  ]
+}

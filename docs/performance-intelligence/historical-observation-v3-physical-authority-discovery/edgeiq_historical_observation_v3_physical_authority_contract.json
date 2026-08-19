@@ -1,0 +1,13 @@
+{
+  "contract_id": "EDGEIQ_HISTORICAL_OBSERVATION_V3_PHYSICAL_AUTHORITY_CONTRACT_V1",
+  "decision": "AMBIGUOUS_PHYSICAL_AUTHORITY",
+  "generated_at_utc": "2026-07-27T06:10:20+00:00",
+  "population_contract": {
+    "duplicate_excess": 89,
+    "physical_rows": 879784,
+    "unique_raw_identities": 879695
+  },
+  "selected_authority": null,
+  "status": "EDGEIQ_HISTORICAL_OBSERVATION_V3_PHYSICAL_AUTHORITY_DISCOVERY_PHASE1A_6B_0_V1_FAIL",
+  "warehouse_build_authorised": false
+}

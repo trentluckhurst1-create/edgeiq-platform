@@ -1,0 +1,44 @@
+{
+  "contract_name": "edgeiq_performance_normalisation_parameter_fact_v1",
+  "contract_version": "1.0.0",
+  "grain": "one_row_per_governed_effective_normalisation_parameter",
+  "primary_key": [
+    "normalisation_parameter_id"
+  ],
+  "required_fields": [
+    "normalisation_parameter_id",
+    "normalisation_method",
+    "centre_value",
+    "scale_value",
+    "normalisation_model_version",
+    "parameter_status",
+    "effective_from_date",
+    "effective_to_date",
+    "evidence_reference",
+    "source_evidence_sha256",
+    "parameter_evidence_sha256",
+    "builder_version",
+    "contract_version",
+    "built_at_utc"
+  ],
+  "allowed_values": {
+    "normalisation_method": [
+      "LINEAR_CENTRE_AND_SCALE"
+    ],
+    "parameter_status": [
+      "AVAILABLE"
+    ]
+  },
+  "forbidden_fields": [
+    "normalised_performance_value",
+    "raw_performance_lengths",
+    "epi",
+    "eri",
+    "speed_rating",
+    "class_rating",
+    "predictive_rating",
+    "track_variant",
+    "condition_adjustment",
+    "recency_weight"
+  ]
+}

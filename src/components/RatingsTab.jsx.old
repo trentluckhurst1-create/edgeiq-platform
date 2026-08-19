@@ -1,0 +1,418 @@
+import React, { useMemo } from "react";
+
+function norm(value) {
+  return String(value ?? "")
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, " ");
+}
+
+function cleanRaceNo(value) {
+  if (value === null || value === undefined) return "";
+  return String(value).replace(/^r/i, "").trim();
+}
+
+function num(value) {
+  if (value === null || value === undefined || value === "") return null;
+  const n = Number(value);
+  return Number.isFinite(n) ? n : null;
+}
+
+function fmt(value) {
+  return value === null || value === undefined || Number.isNaN(value)
+    ? "-"
+    : Number(value).toFixed(1);
+}
+
+function avg(values) {
+  const clean = values.filter((v) => v !== null && v !== undefined && !Number.isNaN(v));
+  if (!clean.length) return null;
+  return clean.reduce((a, b) => a + b, 0) / clean.length;
+}
+
+function pick(row, keys, fallback = "") {
+  for (const key of keys) {
+    if (row && row[key] !== undefined && row[key] !== null && row[key] !== "") {
+      return row[key];
+    }
+  }
+  return fallback;
+}
+
+function horseName(row) {
+  return pick(row, ["horse", "runner", "Horse", "Runner", "horse_name"]);
+}
+
+function horseNo(row) {
+  const raw = pick(row, ["horse_no", "horseNo", "no", "No", "runner_number", "number"]);
+  if (raw === "") return "";
+  const n = Number(raw);
+  return Number.isFinite(n) ? String(Math.trunc(n)) : String(raw);
+}
+
+function jockey(row) {
+  return pick(row, ["jockey", "Jockey"]);
+}
+
+function trainer(row) {
+  return pick(row, ["trainer", "Trainer"]);
+}
+
+function barrier(row) {
+  const raw = pick(row, ["barrier", "Barrier"]);
+  if (raw === "") return "";
+  const n = Number(raw);
+  return Number.isFinite(n) ? String(Math.trunc(n)) : String(raw);
+}
+
+function gap(row) {
+  return (
+    num(pick(row, ["gap_to_win", "gap", "Gap"], null))
+  );
+}
+
+function raceDate(row) {
+  return pick(row, ["race_date", "date", "Date"]);
+}
+
+function trackName(row) {
+  return pick(row, ["track", "Track"]);
+}
+
+function raceNo(row) {
+  return pick(row, ["race_no", "race_number", "race", "Race"]);
+}
+
+function requiredToWinFromRow(row) {
+  return num(
+    pick(
+      row,
+      ["required_to_win", "projected_winning_rating", "winning_figure", "required"],
+      null
+    )
+  );
+}
+
+function matchesSelectedRace(row, selectedRace) {
+  if (!selectedRace) return true;
+
+  const rowDate = norm(raceDate(row));
+  const rowTrack = norm(trackName(row));
+  const rowRace = cleanRaceNo(raceNo(row));
+
+  const selDate = norm(
+    pick(selectedRace, ["race_date", "date", "Date"])
+  );
+  const selTrack = norm(
+    pick(selectedRace, ["track", "Track"])
+  );
+  const selRace = cleanRaceNo(
+    pick(selectedRace, ["race_no", "race_number", "race", "Race"])
+  );
+
+  return rowDate === selDate && rowTrack === selTrack && rowRace === selRace;
+}
+
+function gapClass(value) {
+  const n = num(value);
+  if (n === null) return "rt-gap";
+  if (n >= 3) return "rt-gap rt-gap-strong";
+  if (n >= 1) return "rt-gap rt-gap-good";
+  if (n > -1) return "rt-gap rt-gap-neutral";
+  return "rt-gap rt-gap-poor";
+}
+
+export default function RatingsTab({
+  raceRows = [],
+  runnerFormHistory = [],
+  selectedRace = null,
+  requiredToWin = null,
+}) {
+  const visibleRaceRows = useMemo(() => {
+    return (raceRows || []).filter((row) => matchesSelectedRace(row, selectedRace));
+  }, [raceRows, selectedRace]);
+
+  const raceContext = useMemo(() => {
+    const first = visibleRaceRows[0] || selectedRace || {};
+    return {
+      date: norm(raceDate(first)),
+      track: norm(trackName(first)),
+      raceNo: cleanRaceNo(raceNo(first)),
+    };
+  }, [visibleRaceRows, selectedRace]);
+
+  const ratingsLookup = useMemo(() => {
+    const lookup = new Map();
+
+    for (const row of runnerFormHistory || []) {
+      const formDate = norm(row?.race_date);
+      const formTrack = norm(row?.track);
+      const formRaceNo = cleanRaceNo(row?.race_number);
+
+      if (
+        raceContext.date &&
+        raceContext.track &&
+        raceContext.raceNo &&
+        !(
+          formDate === raceContext.date &&
+          formTrack === raceContext.track &&
+          formRaceNo === raceContext.raceNo
+        )
+      ) {
+        continue;
+      }
+
+      const key = norm(row?.horse_upcoming);
+      if (!key) continue;
+
+      const back = num(row?.run_number_back);
+      const rating = num(row?.run_rating);
+
+      if (back === null || rating === null) continue;
+
+      if (!lookup.has(key)) {
+        lookup.set(key, {});
+      }
+
+      lookup.get(key)[back] = rating;
+    }
+
+    return lookup;
+  }, [runnerFormHistory, raceContext]);
+
+  const tableRows = useMemo(() => {
+    return visibleRaceRows.map((row) => {
+      const key = norm(horseName(row));
+      const runs = ratingsLookup.get(key) || {};
+
+      const ls1 = runs[1] ?? null;
+      const ls2 = runs[2] ?? null;
+      const ls3 = runs[3] ?? null;
+      const ls4 = runs[4] ?? null;
+      const ls5 = runs[5] ?? null;
+
+      const avg5 = avg([ls5, ls4, ls3, ls2, ls1]);
+      const avg3 = avg([ls3, ls2, ls1]);
+
+      const peakPool = [ls5, ls4, ls3, ls2, ls1].filter(
+        (v) => v !== null && v !== undefined && !Number.isNaN(v)
+      );
+      const peak = peakPool.length ? Math.max(...peakPool) : null;
+
+      return {
+        ...row,
+        ls1,
+        ls2,
+        ls3,
+        ls4,
+        ls5,
+        avg5,
+        avg3,
+        peak,
+      };
+    });
+  }, [visibleRaceRows, ratingsLookup]);
+
+  const winningFigure = useMemo(() => {
+    const explicit = num(requiredToWin);
+    if (explicit !== null) return explicit;
+
+    const fromSelectedRace = num(
+      pick(
+        selectedRace || {},
+        ["required_to_win", "projected_winning_rating", "winning_figure", "required"],
+        null
+      )
+    );
+    if (fromSelectedRace !== null) return fromSelectedRace;
+
+    for (const row of visibleRaceRows) {
+      const val = requiredToWinFromRow(row);
+      if (val !== null) return val;
+    }
+
+    return null;
+  }, [requiredToWin, selectedRace, visibleRaceRows]);
+
+  return (
+    <div className="rt-wrap">
+      <div className="rt-head">
+        <div>
+          <div className="rt-title">Ratings</div>
+          <div className="rt-subtitle">Last-start ratings board for the selected race</div>
+        </div>
+
+        <div className="rt-badge">
+          <span className="rt-badge-label">Winning Figure</span>
+          <span className="rt-badge-value">{fmt(winningFigure)}</span>
+        </div>
+      </div>
+
+      <div className="rt-table-wrap">
+        <table className="rt-table">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Horse</th>
+              <th>Jockey</th>
+              <th>Trainer</th>
+              <th>Bar</th>
+              <th>5LS</th>
+              <th>4LS</th>
+              <th>3LS</th>
+              <th>2LS</th>
+              <th>1LS</th>
+              <th>5LSA</th>
+              <th>3LSA</th>
+              <th>PEAK</th>
+              <th>GAP</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {tableRows.map((row, idx) => (
+              <tr key={`${horseName(row)}-${idx}`}>
+                <td>{horseNo(row)}</td>
+                <td className="rt-horse">{horseName(row)}</td>
+                <td>{jockey(row)}</td>
+                <td>{trainer(row)}</td>
+                <td>{barrier(row)}</td>
+                <td>{fmt(row.ls5)}</td>
+                <td>{fmt(row.ls4)}</td>
+                <td>{fmt(row.ls3)}</td>
+                <td>{fmt(row.ls2)}</td>
+                <td>{fmt(row.ls1)}</td>
+                <td>{fmt(row.avg5)}</td>
+                <td>{fmt(row.avg3)}</td>
+                <td>{fmt(row.peak)}</td>
+                <td className={gapClass(gap(row))}>{fmt(gap(row))}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+        {!tableRows.length && (
+          <div className="rt-empty">No ratings rows found for this race.</div>
+        )}
+      </div>
+
+      <style>{`
+        .rt-wrap {
+          display: flex;
+          flex-direction: column;
+          gap: 14px;
+          color: #ffffff;
+        }
+
+        .rt-head {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 16px;
+          flex-wrap: wrap;
+        }
+
+        .rt-title {
+          font-size: 22px;
+          font-weight: 800;
+          letter-spacing: 0.02em;
+        }
+
+        .rt-subtitle {
+          margin-top: 4px;
+          font-size: 13px;
+          color: rgba(255,255,255,0.68);
+        }
+
+        .rt-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          padding: 10px 14px;
+          border-radius: 999px;
+          border: 1px solid rgba(255,255,255,0.10);
+          background: rgba(255,255,255,0.05);
+        }
+
+        .rt-badge-label {
+          font-size: 12px;
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+          color: rgba(255,255,255,0.68);
+        }
+
+        .rt-badge-value {
+          font-size: 18px;
+          font-weight: 800;
+          color: #ffd54a;
+        }
+
+        .rt-table-wrap {
+          overflow-x: auto;
+          border-radius: 18px;
+          border: 1px solid rgba(255,255,255,0.10);
+          background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+        }
+
+        .rt-table {
+          width: 100%;
+          min-width: 1200px;
+          border-collapse: collapse;
+        }
+
+        .rt-table th {
+          padding: 14px 12px;
+          text-align: left;
+          font-size: 12px;
+          font-weight: 800;
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+          color: rgba(255,255,255,0.70);
+          background: rgba(255,255,255,0.05);
+          border-bottom: 1px solid rgba(255,255,255,0.08);
+          white-space: nowrap;
+        }
+
+        .rt-table td {
+          padding: 14px 12px;
+          border-bottom: 1px solid rgba(255,255,255,0.06);
+          font-size: 14px;
+          white-space: nowrap;
+        }
+
+        .rt-table tr:hover {
+          background: rgba(255,255,255,0.04);
+        }
+
+        .rt-horse {
+          font-weight: 700;
+        }
+
+        .rt-gap {
+          font-weight: 700;
+        }
+
+        .rt-gap-strong {
+          color: #7cfc9a;
+        }
+
+        .rt-gap-good {
+          color: #c7ff8a;
+        }
+
+        .rt-gap-neutral {
+          color: #f5f5f5;
+        }
+
+        .rt-gap-poor {
+          color: #ff8b8b;
+        }
+
+        .rt-empty {
+          padding: 20px;
+          color: rgba(255,255,255,0.70);
+        }
+      `}</style>
+    </div>
+  );
+}

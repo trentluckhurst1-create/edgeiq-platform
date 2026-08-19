@@ -1,0 +1,123 @@
+{
+  "migration_map_version": "0.1",
+  "generated_utc": "2026-07-15T18:11:47.779626+00:00",
+  "migrations": [
+    {
+      "domain": "raw_results",
+      "source_asset": "public/data/edgeiq_historical_results_warehouse_v2_graphql.csv",
+      "classification": "REUSABLE_AFTER_IDENTITY_REPAIR",
+      "target_table": "source_evidence + performance_evidence",
+      "priority": 1,
+      "reason": "Deepest official historical coverage with provider race and runner identifiers.",
+      "required_actions": "Resolve 89 duplicate performance keys; preserve monthly GraphQL files as source evidence; add immutable evidence versions."
+    },
+    {
+      "domain": "results_consolidation",
+      "source_asset": "public/data/edgeiq_results_master_v1.csv",
+      "classification": "REUSABLE_AFTER_SCHEMA_MIGRATION",
+      "target_table": "performance_evidence",
+      "priority": 2,
+      "reason": "Largest consolidated result asset and broadest race coverage.",
+      "required_actions": "Identify missing horse field mapping; create horse_id and performance_id; separate source evidence from derived fields."
+    },
+    {
+      "domain": "canonical_truth_experiment",
+      "source_asset": "public/data/edgeiq_canonical_results_truth_v1.csv",
+      "classification": "REUSABLE_LOGIC_NOT_CANONICAL_DATA",
+      "target_table": "identity resolution and conflict-resolution rules",
+      "priority": 3,
+      "reason": "Contains useful canonicalisation concepts and complete derived performance keys over a smaller window.",
+      "required_actions": "Extract rules; do not treat limited 2025-2026 output as global canonical warehouse."
+    },
+    {
+      "domain": "sectional_source",
+      "source_asset": "public/data/racingcom_sectional_warehouse_v2.csv",
+      "classification": "STRONG_RAW_SECTIONAL_CANDIDATE",
+      "target_table": "performance_sectional_evidence",
+      "priority": 1,
+      "reason": "Runner-level sectional records with 130,484 unique performance rows and no duplicate performance keys.",
+      "required_actions": "Attach canonical race_id and horse_id; preserve timing provider; formalise sectional quality states."
+    },
+    {
+      "domain": "standardised_sectionals",
+      "source_asset": "public/data/edgeiq_standardised_sectionals_v1.csv",
+      "classification": "DERIVED_ASSET_REQUIRES_DECOMPOSITION",
+      "target_table": "performance_sectional_derivation",
+      "priority": 2,
+      "reason": "Large historical derived asset with benchmark and quality metadata.",
+      "required_actions": "Do not use as raw sectional warehouse; reconstruct performance identities; add engine and conversion versions; separate raw seconds from derived lengths."
+    },
+    {
+      "domain": "sectional_identity",
+      "source_asset": "public/data/edgeiq_sectional_identity_engine_v3.csv",
+      "classification": "REUSABLE_IDENTITY_EVIDENCE",
+      "target_table": "identity_resolution_event",
+      "priority": 1,
+      "reason": "Contains trusted, likely, unsafe and unresolved identity evidence.",
+      "required_actions": "Do not treat rows as unique performances; preserve multiple candidate rows and resolution evidence; remove duplicated-performance assumption."
+    },
+    {
+      "domain": "runner_identity",
+      "source_asset": "public/data/edgeiq_runner_entity_graph_v1.csv",
+      "classification": "REUSABLE_ENTITY_GRAPH",
+      "target_table": "canonical_horse + horse_alias + provider_horse_identifier",
+      "priority": 1,
+      "reason": "Largest existing identity-oriented asset.",
+      "required_actions": "Audit columns and graph semantics; define permanent horse_id; retain aliases and provider IDs separately."
+    },
+    {
+      "domain": "benchmark_definitions",
+      "source_asset": "public/data/edgeiq_standard_times_v1.csv",
+      "classification": "LEGACY_BENCHMARK_SEED",
+      "target_table": "benchmark_definition",
+      "priority": 1,
+      "reason": "Existing standard-time definitions can seed benchmark migration.",
+      "required_actions": "Add benchmark_id, hierarchy level, eligibility counts, exclusions, confidence, version, validity window and warehouse snapshot."
+    },
+    {
+      "domain": "race_strength",
+      "source_asset": "public/data/edgeiq_race_strength_v1.csv",
+      "classification": "LEGACY_DERIVED_BENCHMARK",
+      "target_table": "race_derivation",
+      "priority": 2,
+      "reason": "Existing race-strength history is useful but lacks complete canonical governance.",
+      "required_actions": "Trace source inputs; add engine version and derivation run; separate retrospective and pre-race strength."
+    },
+    {
+      "domain": "performance_ratings",
+      "source_asset": "public/data/edgeiq_historical_performance_rating_v5_1.csv",
+      "classification": "REUSABLE_RESEARCH_OUTPUT",
+      "target_table": "performance_derivation",
+      "priority": 1,
+      "reason": "Broad historical rating coverage and mature existing performance work.",
+      "required_actions": "Create performance_id links; distinguish source evidence from rating outputs; preserve formula and engine version."
+    },
+    {
+      "domain": "runner_history",
+      "source_asset": "public/data/edgeiq_runner_history_detail_v1.csv",
+      "classification": "REUSABLE_APPLICATION_VIEW",
+      "target_table": "query view generated from canonical warehouse",
+      "priority": 3,
+      "reason": "Best current integrated performance view but only 2,280 rows.",
+      "required_actions": "Do not promote as warehouse; rebuild as a query product over canonical performance records."
+    },
+    {
+      "domain": "length_conversion",
+      "source_asset": "scripts/build_edgeiq_standardised_sectionals_v1.py",
+      "classification": "LEGACY_FIXED_CONVERSION",
+      "target_table": "length_conversion_definition",
+      "priority": 1,
+      "reason": "Current conversion uses a fixed 0.17 seconds per length.",
+      "required_actions": "Preserve as conversion version LEGACY_FIXED_0_17_V1; do not silently reuse as permanent universal conversion; formally test contextual alternatives."
+    },
+    {
+      "domain": "lengths_per_point",
+      "source_asset": "public/data/edgeiq_lengths_per_point_engine_v1.csv",
+      "classification": "RESEARCH_CANDIDATE",
+      "target_table": "length_conversion_definition",
+      "priority": 2,
+      "reason": "May contain contextual conversion evidence.",
+      "required_actions": "Trace creator logic and inputs; compare against fixed 0.17 methodology; validate units and sign convention."
+    }
+  ]
+}

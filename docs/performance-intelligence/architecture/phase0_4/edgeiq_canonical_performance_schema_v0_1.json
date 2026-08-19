@@ -1,0 +1,727 @@
+{
+  "schema_name": "EDGEiQ Canonical Performance Schema",
+  "schema_version": "0.1",
+  "generated_utc": "2026-07-15T18:11:47.776446+00:00",
+  "sign_convention": {
+    "negative": "Faster or better than benchmark",
+    "positive": "Slower or worse than benchmark"
+  },
+  "tables": {
+    "source_evidence": [
+      {
+        "field": "source_evidence_id",
+        "type": "string",
+        "required": true,
+        "description": "Immutable ID for one ingested source record."
+      },
+      {
+        "field": "provider_code",
+        "type": "string",
+        "required": true,
+        "description": "Provider identity such as RACING_COM or RACING_AUSTRALIA."
+      },
+      {
+        "field": "provider_record_id",
+        "type": "string",
+        "required": false,
+        "description": "Provider-native record identifier."
+      },
+      {
+        "field": "source_url",
+        "type": "string",
+        "required": false,
+        "description": "Original source endpoint or page."
+      },
+      {
+        "field": "source_file",
+        "type": "string",
+        "required": true,
+        "description": "Repository or warehouse file holding the evidence."
+      },
+      {
+        "field": "source_sha256",
+        "type": "string",
+        "required": true,
+        "description": "Hash of source payload or source file."
+      },
+      {
+        "field": "source_published_at",
+        "type": "timestamp",
+        "required": false,
+        "description": "Provider publication timestamp."
+      },
+      {
+        "field": "ingested_at",
+        "type": "timestamp",
+        "required": true,
+        "description": "EDGEiQ ingestion timestamp."
+      },
+      {
+        "field": "evidence_version",
+        "type": "integer",
+        "required": true,
+        "description": "Immutable source evidence version."
+      },
+      {
+        "field": "supersedes_source_evidence_id",
+        "type": "string",
+        "required": false,
+        "description": "Previous source evidence version."
+      },
+      {
+        "field": "is_current_version",
+        "type": "boolean",
+        "required": true,
+        "description": "Whether this is the active evidence version."
+      },
+      {
+        "field": "raw_payload_location",
+        "type": "string",
+        "required": false,
+        "description": "Location of preserved raw payload."
+      }
+    ],
+    "canonical_meeting": [
+      {
+        "field": "meeting_id",
+        "type": "string",
+        "required": true,
+        "description": "Permanent canonical meeting identity."
+      },
+      {
+        "field": "jurisdiction_code",
+        "type": "string",
+        "required": true,
+        "description": "Jurisdiction such as VIC or WA."
+      },
+      {
+        "field": "meeting_date",
+        "type": "date",
+        "required": true,
+        "description": "Official local meeting date."
+      },
+      {
+        "field": "track_id",
+        "type": "string",
+        "required": true,
+        "description": "Canonical track identity."
+      },
+      {
+        "field": "course_id",
+        "type": "string",
+        "required": false,
+        "description": "Canonical course identity."
+      },
+      {
+        "field": "meeting_status",
+        "type": "string",
+        "required": true,
+        "description": "Scheduled, completed, abandoned, transferred or corrected."
+      },
+      {
+        "field": "source_evidence_id",
+        "type": "string",
+        "required": true,
+        "description": "Evidence supporting the meeting."
+      }
+    ],
+    "canonical_race": [
+      {
+        "field": "race_id",
+        "type": "string",
+        "required": true,
+        "description": "Permanent canonical race identity."
+      },
+      {
+        "field": "meeting_id",
+        "type": "string",
+        "required": true,
+        "description": "Canonical meeting identity."
+      },
+      {
+        "field": "race_number",
+        "type": "integer",
+        "required": true,
+        "description": "Official race number."
+      },
+      {
+        "field": "race_name",
+        "type": "string",
+        "required": false,
+        "description": "Official race name."
+      },
+      {
+        "field": "distance_metres",
+        "type": "integer",
+        "required": true,
+        "description": "Official race distance."
+      },
+      {
+        "field": "class_id",
+        "type": "string",
+        "required": false,
+        "description": "Canonical class identity."
+      },
+      {
+        "field": "going_id",
+        "type": "string",
+        "required": false,
+        "description": "Canonical going identity."
+      },
+      {
+        "field": "rail_id",
+        "type": "string",
+        "required": false,
+        "description": "Canonical rail identity."
+      },
+      {
+        "field": "race_status",
+        "type": "string",
+        "required": true,
+        "description": "Official race status."
+      },
+      {
+        "field": "source_evidence_id",
+        "type": "string",
+        "required": true,
+        "description": "Evidence supporting the race."
+      }
+    ],
+    "canonical_horse": [
+      {
+        "field": "horse_id",
+        "type": "string",
+        "required": true,
+        "description": "Permanent canonical horse identity."
+      },
+      {
+        "field": "horse_name",
+        "type": "string",
+        "required": true,
+        "description": "Current canonical horse name."
+      },
+      {
+        "field": "country_code",
+        "type": "string",
+        "required": false,
+        "description": "Country suffix or registration country."
+      },
+      {
+        "field": "foaling_year",
+        "type": "integer",
+        "required": false,
+        "description": "Foaling year where available."
+      },
+      {
+        "field": "sex",
+        "type": "string",
+        "required": false,
+        "description": "Official sex."
+      },
+      {
+        "field": "identity_status",
+        "type": "string",
+        "required": true,
+        "description": "Resolved, likely, ambiguous or unresolved."
+      },
+      {
+        "field": "identity_confidence",
+        "type": "decimal",
+        "required": false,
+        "description": "Governed identity confidence."
+      }
+    ],
+    "performance_evidence": [
+      {
+        "field": "performance_id",
+        "type": "string",
+        "required": true,
+        "description": "Permanent identity for one horse in one race."
+      },
+      {
+        "field": "race_id",
+        "type": "string",
+        "required": true,
+        "description": "Canonical race identity."
+      },
+      {
+        "field": "horse_id",
+        "type": "string",
+        "required": true,
+        "description": "Canonical horse identity."
+      },
+      {
+        "field": "source_evidence_id",
+        "type": "string",
+        "required": true,
+        "description": "Evidence supporting the performance."
+      },
+      {
+        "field": "trainer_id",
+        "type": "string",
+        "required": false,
+        "description": "Canonical trainer identity."
+      },
+      {
+        "field": "jockey_id",
+        "type": "string",
+        "required": false,
+        "description": "Canonical jockey identity."
+      },
+      {
+        "field": "barrier",
+        "type": "integer",
+        "required": false,
+        "description": "Official barrier."
+      },
+      {
+        "field": "weight_kg",
+        "type": "decimal",
+        "required": false,
+        "description": "Official carried weight."
+      },
+      {
+        "field": "starting_price",
+        "type": "decimal",
+        "required": false,
+        "description": "Official starting price."
+      },
+      {
+        "field": "finish_position",
+        "type": "integer",
+        "required": false,
+        "description": "Official finish position."
+      },
+      {
+        "field": "finish_status",
+        "type": "string",
+        "required": true,
+        "description": "Finished, scratched, DNF, disqualified or other."
+      },
+      {
+        "field": "margin_to_winner_lengths",
+        "type": "decimal",
+        "required": false,
+        "description": "Official margin to winner."
+      },
+      {
+        "field": "official_race_time_seconds",
+        "type": "decimal",
+        "required": false,
+        "description": "Official final race time."
+      },
+      {
+        "field": "performance_quality_state",
+        "type": "string",
+        "required": true,
+        "description": "Complete, partial, mismatch, excluded or unresolved."
+      },
+      {
+        "field": "evidence_version",
+        "type": "integer",
+        "required": true,
+        "description": "Evidence version used for this performance."
+      }
+    ],
+    "performance_sectional_evidence": [
+      {
+        "field": "performance_sectional_id",
+        "type": "string",
+        "required": true,
+        "description": "Permanent split evidence identity."
+      },
+      {
+        "field": "performance_id",
+        "type": "string",
+        "required": true,
+        "description": "Canonical performance identity."
+      },
+      {
+        "field": "split_start_metres",
+        "type": "integer",
+        "required": true,
+        "description": "Split starting marker."
+      },
+      {
+        "field": "split_end_metres",
+        "type": "integer",
+        "required": true,
+        "description": "Split ending marker."
+      },
+      {
+        "field": "split_type",
+        "type": "string",
+        "required": true,
+        "description": "Incremental or cumulative."
+      },
+      {
+        "field": "raw_time_seconds",
+        "type": "decimal",
+        "required": false,
+        "description": "Raw official or provider sectional time."
+      },
+      {
+        "field": "position_at_split",
+        "type": "integer",
+        "required": false,
+        "description": "Official position at split."
+      },
+      {
+        "field": "margin_at_split_lengths",
+        "type": "decimal",
+        "required": false,
+        "description": "Official margin at split."
+      },
+      {
+        "field": "timing_provider",
+        "type": "string",
+        "required": false,
+        "description": "Timing provider identity."
+      },
+      {
+        "field": "timing_quality_state",
+        "type": "string",
+        "required": true,
+        "description": "Complete, partial, inconsistent, mismatch or excluded."
+      },
+      {
+        "field": "source_evidence_id",
+        "type": "string",
+        "required": true,
+        "description": "Source evidence for this split."
+      }
+    ],
+    "benchmark_definition": [
+      {
+        "field": "benchmark_id",
+        "type": "string",
+        "required": true,
+        "description": "Permanent governed benchmark identity."
+      },
+      {
+        "field": "benchmark_type",
+        "type": "string",
+        "required": true,
+        "description": "Final time, sectional, pace or race-strength benchmark."
+      },
+      {
+        "field": "hierarchy_level",
+        "type": "string",
+        "required": true,
+        "description": "Track, course, distance, class, going or rail level."
+      },
+      {
+        "field": "track_id",
+        "type": "string",
+        "required": false,
+        "description": "Canonical track dimension."
+      },
+      {
+        "field": "course_id",
+        "type": "string",
+        "required": false,
+        "description": "Canonical course dimension."
+      },
+      {
+        "field": "distance_metres",
+        "type": "integer",
+        "required": false,
+        "description": "Distance dimension."
+      },
+      {
+        "field": "class_id",
+        "type": "string",
+        "required": false,
+        "description": "Class dimension."
+      },
+      {
+        "field": "going_id",
+        "type": "string",
+        "required": false,
+        "description": "Going dimension."
+      },
+      {
+        "field": "rail_id",
+        "type": "string",
+        "required": false,
+        "description": "Rail dimension."
+      },
+      {
+        "field": "benchmark_value",
+        "type": "decimal",
+        "required": true,
+        "description": "Governed benchmark value."
+      },
+      {
+        "field": "benchmark_unit",
+        "type": "string",
+        "required": true,
+        "description": "Seconds, metres per second, rating or other."
+      },
+      {
+        "field": "eligible_sample_count",
+        "type": "integer",
+        "required": true,
+        "description": "Eligible sample count."
+      },
+      {
+        "field": "included_sample_count",
+        "type": "integer",
+        "required": true,
+        "description": "Included sample count."
+      },
+      {
+        "field": "excluded_sample_count",
+        "type": "integer",
+        "required": true,
+        "description": "Excluded sample count."
+      },
+      {
+        "field": "confidence",
+        "type": "decimal",
+        "required": true,
+        "description": "Governed benchmark confidence."
+      },
+      {
+        "field": "quality_state",
+        "type": "string",
+        "required": true,
+        "description": "Benchmark quality state."
+      },
+      {
+        "field": "benchmark_engine_version",
+        "type": "string",
+        "required": true,
+        "description": "Engine version."
+      },
+      {
+        "field": "warehouse_snapshot_id",
+        "type": "string",
+        "required": true,
+        "description": "Input warehouse snapshot."
+      },
+      {
+        "field": "valid_from",
+        "type": "date",
+        "required": true,
+        "description": "Benchmark validity start."
+      },
+      {
+        "field": "valid_to",
+        "type": "date",
+        "required": false,
+        "description": "Benchmark validity end."
+      },
+      {
+        "field": "generated_at",
+        "type": "timestamp",
+        "required": true,
+        "description": "Generation timestamp."
+      }
+    ],
+    "performance_derivation": [
+      {
+        "field": "performance_derivation_id",
+        "type": "string",
+        "required": true,
+        "description": "Permanent derivation record ID."
+      },
+      {
+        "field": "performance_id",
+        "type": "string",
+        "required": true,
+        "description": "Canonical performance identity."
+      },
+      {
+        "field": "benchmark_id",
+        "type": "string",
+        "required": false,
+        "description": "Selected benchmark."
+      },
+      {
+        "field": "benchmark_level_requested",
+        "type": "string",
+        "required": false,
+        "description": "Requested benchmark hierarchy level."
+      },
+      {
+        "field": "benchmark_level_used",
+        "type": "string",
+        "required": false,
+        "description": "Actual benchmark hierarchy level."
+      },
+      {
+        "field": "benchmark_fallback_reason",
+        "type": "string",
+        "required": false,
+        "description": "Reason for benchmark fallback."
+      },
+      {
+        "field": "seconds_vs_benchmark",
+        "type": "decimal",
+        "required": false,
+        "description": "Negative means faster than benchmark."
+      },
+      {
+        "field": "lengths_vs_benchmark",
+        "type": "decimal",
+        "required": false,
+        "description": "Negative means faster than benchmark."
+      },
+      {
+        "field": "performance_quality_state",
+        "type": "string",
+        "required": true,
+        "description": "Derived performance quality state."
+      },
+      {
+        "field": "performance_engine_version",
+        "type": "string",
+        "required": true,
+        "description": "Performance engine version."
+      },
+      {
+        "field": "benchmark_engine_version",
+        "type": "string",
+        "required": false,
+        "description": "Benchmark engine version."
+      },
+      {
+        "field": "length_conversion_version",
+        "type": "string",
+        "required": false,
+        "description": "Length conversion version."
+      },
+      {
+        "field": "derivation_run_id",
+        "type": "string",
+        "required": true,
+        "description": "Reproducible derivation run identity."
+      },
+      {
+        "field": "generated_at",
+        "type": "timestamp",
+        "required": true,
+        "description": "Generation timestamp."
+      }
+    ],
+    "performance_sectional_derivation": [
+      {
+        "field": "sectional_derivation_id",
+        "type": "string",
+        "required": true,
+        "description": "Permanent sectional derivation ID."
+      },
+      {
+        "field": "performance_sectional_id",
+        "type": "string",
+        "required": true,
+        "description": "Raw sectional evidence identity."
+      },
+      {
+        "field": "benchmark_id",
+        "type": "string",
+        "required": false,
+        "description": "Selected sectional benchmark."
+      },
+      {
+        "field": "seconds_vs_benchmark",
+        "type": "decimal",
+        "required": false,
+        "description": "Negative means faster than benchmark."
+      },
+      {
+        "field": "lengths_vs_benchmark",
+        "type": "decimal",
+        "required": false,
+        "description": "Negative means faster than benchmark."
+      },
+      {
+        "field": "conversion_method",
+        "type": "string",
+        "required": false,
+        "description": "Governed seconds-to-lengths methodology."
+      },
+      {
+        "field": "conversion_version",
+        "type": "string",
+        "required": false,
+        "description": "Conversion engine version."
+      },
+      {
+        "field": "quality_state",
+        "type": "string",
+        "required": true,
+        "description": "Sectional derivation quality state."
+      },
+      {
+        "field": "derivation_run_id",
+        "type": "string",
+        "required": true,
+        "description": "Reproducible derivation run identity."
+      },
+      {
+        "field": "generated_at",
+        "type": "timestamp",
+        "required": true,
+        "description": "Generation timestamp."
+      }
+    ],
+    "engine_run": [
+      {
+        "field": "engine_run_id",
+        "type": "string",
+        "required": true,
+        "description": "Permanent engine execution identity."
+      },
+      {
+        "field": "engine_name",
+        "type": "string",
+        "required": true,
+        "description": "Canonical engine name."
+      },
+      {
+        "field": "engine_version",
+        "type": "string",
+        "required": true,
+        "description": "Canonical engine version."
+      },
+      {
+        "field": "configuration_version",
+        "type": "string",
+        "required": true,
+        "description": "Configuration version."
+      },
+      {
+        "field": "input_snapshot_id",
+        "type": "string",
+        "required": true,
+        "description": "Input warehouse snapshot."
+      },
+      {
+        "field": "started_at",
+        "type": "timestamp",
+        "required": true,
+        "description": "Run start timestamp."
+      },
+      {
+        "field": "completed_at",
+        "type": "timestamp",
+        "required": false,
+        "description": "Run completion timestamp."
+      },
+      {
+        "field": "run_status",
+        "type": "string",
+        "required": true,
+        "description": "Started, completed, failed or superseded."
+      },
+      {
+        "field": "output_manifest",
+        "type": "string",
+        "required": false,
+        "description": "Manifest of generated outputs."
+      }
+    ]
+  }
+}

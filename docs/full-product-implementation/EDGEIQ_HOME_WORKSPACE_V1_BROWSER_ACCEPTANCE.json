@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "url": "http://127.0.0.1:5176/",
+  "screenshot": "docs/full-product-implementation/EDGEIQ_HOME_WORKSPACE_V1_BROWSER_ACCEPTANCE.png",
+  "home_workspace_rendered": true,
+  "welcome_present": true,
+  "todays_meetings_present": true,
+  "data_quality_present": true,
+  "recent_analysis_present": true,
+  "workspace_launcher_rows": 8,
+  "value_panels": 3,
+  "meeting_table_headers": [
+    "Meeting",
+    "State",
+    "Rail",
+    "Track",
+    "Weather",
+    "Races",
+    "Declared",
+    "Scratchings"
+  ],
+  "forbidden_visible_wording": [],
+  "console_warnings_errors": [],
+  "horizontal_overflow": false,
+  "build": "PASS",
+  "scope": "presentation_only"
+}

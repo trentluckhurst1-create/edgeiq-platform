@@ -1,0 +1,283 @@
+EDGEIQ DEEP WEATHER SOURCE AUDIT — VRC_FLEMINGTON
+======================================================================
+
+Page: https://www.vrc.com.au/track-and-weather-conditions/
+External scripts: 1
+Inline script blocks: 3
+Documents with findings: 2
+
+----------------------------------------------------------------------
+Document: vrc_flemington.html
+Kind: html
+URL: https://www.vrc.com.au/track-and-weather-conditions/
+
+LIKELY URLS:
+  /track-and-weather-conditions/
+  /track-records-and-attendances/
+  /weather/course-map.svg
+  https://vrc-prod-cdn-cxdkhbhwgvh3e0g5.z01.azurefd.net/media/p1ygjdv3/blessing-of-the-track-1230x600px.jpg
+  https://vrc-prod-cdn-cxdkhbhwgvh3e0g5.z01.azurefd.net/media/tg1kxgfj/liams-track-report.jpg?width=530&amp;height=310&amp;v=1d91cb4866ea730
+  https://vrc-prod-cdn-cxdkhbhwgvh3e0g5.z01.azurefd.net/media/tg1kxgfj/liams-track-report.jpg?width=760&amp;height=445&amp;quality=80&amp;v=1d91cb4866ea730
+  https://www.vrc.com.au/track-and-weather-conditions/
+
+KEYWORD CONTEXT:
+  [weathertrax]
+  tem">10-20 km/h</div>                     <div class="conditions-wind__legend-item">20+ km/h</div>                 </div>             </div>             <div class="conditions-wind__text  conditions-wind__text--going">                 <p>Live meteorological data is streamed from WeatherTrax equipment. The data is logged every minute 24hrs/day and typically refreshes every five minutes on the App. Every effort is made to ensure the accuracy of this data.</p>                  <div class="conditions-wind__legend">                     <h5>TRACK RATING</h5>  
+
+  [weathertrax]
+  		</div>  				<div class="conditions_data__block" data-condition="weather"> 					<span class="conditions_data__block-title">Weather</span> 					<h2 class="conditions_data__block-data"></h2> 				</div>  			</div>  			<p class="small-text">Live meteorological data is streamed from WeatherTrax equipment. The data is logged every minute 24hrs/day and typically refreshes every five minutes on the App. Every effort is made to ensure the accuracy of this data, but values presented can differ from forecast predictions and automatically or manually recorded weath
+
+  [weather]
+   Google Tag Manager -->     <meta charset="utf-8">     <meta name="format-detection" content="telephone=no">     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no, viewport-fit=cover">        <title>Track and weather conditions at Flemington Racecourse | VRC</title>      <meta name="description" content="Track conditions at Flemington are vital to race outcomes. We aim to provide you with the most up-to-date information on track conditions and weather at Flemington." />   <!-- Open Gr
+
+  [weather]
+  port-fit=cover">        <title>Track and weather conditions at Flemington Racecourse | VRC</title>      <meta name="description" content="Track conditions at Flemington are vital to race outcomes. We aim to provide you with the most up-to-date information on track conditions and weather at Flemington." />   <!-- Open Graph tags --> <meta property="og:site_name" content="">     <meta property="og:title" content="Track and weather conditions" />      <meta property="og:description" content="Track conditions at Flemington are vital to race outcomes. We aim 
+
+  [weather]
+  onditions at Flemington are vital to race outcomes. We aim to provide you with the most up-to-date information on track conditions and weather at Flemington." />   <!-- Open Graph tags --> <meta property="og:site_name" content="">     <meta property="og:title" content="Track and weather conditions" />      <meta property="og:description" content="Track conditions at Flemington are vital to race outcomes. We aim to provide you with the most up-to-date information on track conditions and weather at Flemington." />  <meta name="twitter:card" content="summar
+
+  [weather]
+  e_name" content="">     <meta property="og:title" content="Track and weather conditions" />      <meta property="og:description" content="Track conditions at Flemington are vital to race outcomes. We aim to provide you with the most up-to-date information on track conditions and weather at Flemington." />  <meta name="twitter:card" content="summary_large_image">       <meta property="og:image" content="https://vrc-prod-cdn-cxdkhbhwgvh3e0g5.z01.azurefd.net/media/p1ygjdv3/blessing-of-the-track-1230x600px.jpg" />     <meta property="og:image:width" content=
+
+  [weather]
+  zurefd.net/media/p1ygjdv3/blessing-of-the-track-1230x600px.jpg" />     <meta property="og:image:width" content="1230" />     <meta property="og:image:height" content="600" /> <meta property="og:type" content="" /> <meta property="og:url" content="https://www.vrc.com.au/track-and-weather-conditions/" />       <link rel="canonical" href="https://www.vrc.com.au/track-and-weather-conditions/" />      <link rel="icon" href="/images/favicon.png?v=2">     <!--[if IE]>         <link rel="shortcut icon" href="/images/favicon.ico?v=2">     <![endif]-->     <!-- Pr
+
+  [weather]
+  mage:width" content="1230" />     <meta property="og:image:height" content="600" /> <meta property="og:type" content="" /> <meta property="og:url" content="https://www.vrc.com.au/track-and-weather-conditions/" />       <link rel="canonical" href="https://www.vrc.com.au/track-and-weather-conditions/" />      <link rel="icon" href="/images/favicon.png?v=2">     <!--[if IE]>         <link rel="shortcut icon" href="/images/favicon.ico?v=2">     <![endif]-->     <!-- Project CSS -->         <link id="bundle-style" rel="stylesheet" href="/build/vrc.css?v=63918
+
+  [weather]
+  late</a>                             </div>                             <div class="header__sub-right">                                         <a href="/latest-news/" gtm-data-tertiarymenu="Latest news">Latest news</a>                                         <a href="/track-and-weather-conditions/" gtm-data-tertiarymenu="Track and weather conditions">Track and weather conditions</a>                                         <a href="/racing/vrc-winter-series-heats-and-finals/" gtm-data-tertiarymenu="VRC Winter Series Heats and Finals">VRC Winter Series He
+
+  [weather]
+                    <div class="header__sub-right">                                         <a href="/latest-news/" gtm-data-tertiarymenu="Latest news">Latest news</a>                                         <a href="/track-and-weather-conditions/" gtm-data-tertiarymenu="Track and weather conditions">Track and weather conditions</a>                                         <a href="/racing/vrc-winter-series-heats-and-finals/" gtm-data-tertiarymenu="VRC Winter Series Heats and Finals">VRC Winter Series Heats and Finals</a>                                    
+
+  [weather]
+  header__sub-right">                                         <a href="/latest-news/" gtm-data-tertiarymenu="Latest news">Latest news</a>                                         <a href="/track-and-weather-conditions/" gtm-data-tertiarymenu="Track and weather conditions">Track and weather conditions</a>                                         <a href="/racing/vrc-winter-series-heats-and-finals/" gtm-data-tertiarymenu="VRC Winter Series Heats and Finals">VRC Winter Series Heats and Finals</a>                                         <a href="/video-news/" gt
+
+  [weather]
+  lass="banner__inner">             <div class="banner__title">                     <div class="banner__small-title">                         AT THE TRACK                     </div>                 <h1 class="banner__large-title">                     <span class="mobile">Track and Weather &#xA;Conditions</span>                     <span class="desktop">Track and Weather Conditions</span>                 </h1>             </div>         </div>     </div> </div> </div>                 <section >                 <div class="bs-container">                     
+
+  [weather]
+  div class="banner__small-title">                         AT THE TRACK                     </div>                 <h1 class="banner__large-title">                     <span class="mobile">Track and Weather &#xA;Conditions</span>                     <span class="desktop">Track and Weather Conditions</span>                 </h1>             </div>         </div>     </div> </div> </div>                 <section >                 <div class="bs-container">                             <div class="bs-row">      <div class="rte container  container--narrow view
+
+  [weather]
+  r--narrow viewport-check">         <p style="text-align: center;"><span class="intro-text" style="text-align: center;">The track conditions at Flemington are vital to the outcome of the races. We aim to provide you with the most up-to-date information on the track conditions and weather at Flemington. </span></p> <p style="text-align: center;"><strong><span style="text-align: center;">Please note: The track and weather conditions technology for Flemington is being upgraded. Going Stick Data is correct and updated each race day, however, wind data is turn
+
+  [weather]
+  ions at Flemington are vital to the outcome of the races. We aim to provide you with the most up-to-date information on the track conditions and weather at Flemington. </span></p> <p style="text-align: center;"><strong><span style="text-align: center;">Please note: The track and weather conditions technology for Flemington is being upgraded. Going Stick Data is correct and updated each race day, however, wind data is turned off as part of the upgrade. We apologise for any inconvenience.</span></strong></p>     </div>                             </div>   
+
+  [weather]
+  tem">10-20 km/h</div>                     <div class="conditions-wind__legend-item">20+ km/h</div>                 </div>             </div>             <div class="conditions-wind__text  conditions-wind__text--going">                 <p>Live meteorological data is streamed from WeatherTrax equipment. The data is logged every minute 24hrs/day and typically refreshes every five minutes on the App. Every effort is made to ensure the accuracy of this data.</p>                  <div class="conditions-wind__legend">                     <h5>TRACK RATING</h5>  
+
+  [weather]
+      <div class="conditions-wind__legend">                     <h5>TRACK RATING</h5>                     <h2 class="conditions-wind__legend-going"></h2>                 </div>             </div>              <div class="conditions-wind__map-img">                 <img src="/images/weather/course-map.svg" alt="Map">                  <div class="conditions-wind__north">                     <div class="conditions-wind__north-arrow">                         <svg class="icon  icon-arrow-north"><use xlink:href="#arrow-north"></use></svg>                     </di
+
+  [weather]
+   experienced by a horse during a race).</p>"> 							<svg class="icon icon-info-solid"><use xlink:href="#info-solid"></use></svg> 						</span> 					</span> 					<h2 class="conditions_data__block-data"></h2> 				</div>  				<!--<div class="conditions_data__block" data-condition="weather"> 					<span class="conditions_data__block-title">Weather</span> 					<h2 class="conditions_data__block-data"></h2> 				</div>-->  				<div class="conditions_data__block" data-condition="temperature"> 					<span class="conditions_data__block-title">Temperature</span> 				
+
+  [weather]
+  class="icon icon-info-solid"><use xlink:href="#info-solid"></use></svg> 						</span> 					</span> 					<h2 class="conditions_data__block-data"></h2> 				</div>  				<!--<div class="conditions_data__block" data-condition="weather"> 					<span class="conditions_data__block-title">Weather</span> 					<h2 class="conditions_data__block-data"></h2> 				</div>-->  				<div class="conditions_data__block" data-condition="temperature"> 					<span class="conditions_data__block-title">Temperature</span> 					<h2 class="conditions_data__block-data"></h2> 				</div> 
+
+  [weather]
+  k-data"></h2> 				</div>  				<div class="conditions_data__block" data-condition="irrigation"> 					<span class="conditions_data__block-title">Irrigation</span> 					<h2 class="conditions_data__block-data"></h2> 				</div>  				<div class="conditions_data__block" data-condition="weather"> 					<span class="conditions_data__block-title">Weather</span> 					<h2 class="conditions_data__block-data"></h2> 				</div>  			</div>  			<p class="small-text">Live meteorological data is streamed from WeatherTrax equipment. The data is logged every minute 24hrs/day a
+
+  [weather]
+  _block" data-condition="irrigation"> 					<span class="conditions_data__block-title">Irrigation</span> 					<h2 class="conditions_data__block-data"></h2> 				</div>  				<div class="conditions_data__block" data-condition="weather"> 					<span class="conditions_data__block-title">Weather</span> 					<h2 class="conditions_data__block-data"></h2> 				</div>  			</div>  			<p class="small-text">Live meteorological data is streamed from WeatherTrax equipment. The data is logged every minute 24hrs/day and typically refreshes every five minutes on the App. Ever
+
+  [weather]
+  		</div>  				<div class="conditions_data__block" data-condition="weather"> 					<span class="conditions_data__block-title">Weather</span> 					<h2 class="conditions_data__block-data"></h2> 				</div>  			</div>  			<p class="small-text">Live meteorological data is streamed from WeatherTrax equipment. The data is logged every minute 24hrs/day and typically refreshes every five minutes on the App. Every effort is made to ensure the accuracy of this data, but values presented can differ from forecast predictions and automatically or manually recorded weath
+
+  [weather]
+  from WeatherTrax equipment. The data is logged every minute 24hrs/day and typically refreshes every five minutes on the App. Every effort is made to ensure the accuracy of this data, but values presented can differ from forecast predictions and automatically or manually recorded weather data at nearby locations. Recorded weather data can be dependent on a number of factors including; type of sensors used, methodology, height/positioning of sensing equipment and specific timing of updates.</p> 		</div> 	</div> </div>   <div id="video-modal-wind" class="mo
+
+  [weather]
+  ged every minute 24hrs/day and typically refreshes every five minutes on the App. Every effort is made to ensure the accuracy of this data, but values presented can differ from forecast predictions and automatically or manually recorded weather data at nearby locations. Recorded weather data can be dependent on a number of factors including; type of sensors used, methodology, height/positioning of sensing equipment and specific timing of updates.</p> 		</div> 	</div> </div>   <div id="video-modal-wind" class="modal  modal-video  modal-video--wind" aria-h
+
+  [weather]
+  ontent 							</div> 						</div> 						<div class="login-modal__body"> 							<div class="login-modal__form"> 								<h2 class="heading-4">Member login</h2>  								<span class="login-modal__success  intro-text">You are now logged in</span>  								  <form action="/track-and-weather-conditions/" enctype="multipart/form-data" id="formfeb07d2587f8441093f28e1a8ff09fa5" method="post"><input id="loginModel_RedirectUrl" name="loginModel.RedirectUrl" type="hidden" value="https://www.vrc.com.au/track-and-weather-conditions/" />        <div class="login-modal
+
+  [weather]
+   logged in</span>  								  <form action="/track-and-weather-conditions/" enctype="multipart/form-data" id="formfeb07d2587f8441093f28e1a8ff09fa5" method="post"><input id="loginModel_RedirectUrl" name="loginModel.RedirectUrl" type="hidden" value="https://www.vrc.com.au/track-and-weather-conditions/" />        <div class="login-modal__form-email">             <label for="loginModel_Username">Email address</label>             <input data-val="true" data-val-required="The User name field is required." id="loginModel_Username" name="loginModel.Username" type
+
+  [meteorological]
+  <div class="conditions-wind__legend-item">10-20 km/h</div>                     <div class="conditions-wind__legend-item">20+ km/h</div>                 </div>             </div>             <div class="conditions-wind__text  conditions-wind__text--going">                 <p>Live meteorological data is streamed from WeatherTrax equipment. The data is logged every minute 24hrs/day and typically refreshes every five minutes on the App. Every effort is made to ensure the accuracy of this data.</p>                  <div class="conditions-wind__legend">       
+
+  [meteorological]
+                <div class="conditions-wind__station-speed"></div>                     </div>                 </div>             </div>         </div>     </div> </div>      <div class="conditions-data"> 	<div class="container"> 		<div class="conditions-data__content"> 			<h2>Live Meteorological Data</h2>  			<div class="conditions-data__blocks"> 				<div class="conditions_data__block" data-condition="rating"> 					<span class="conditions_data__block-title">Track Rating</span> 					<h2 class="conditions_data__block-data"></h2> 				</div>  				<div class="c
+
+  [meteorological]
+  conditions_data__block-data"></h2> 				</div>  				<div class="conditions_data__block" data-condition="weather"> 					<span class="conditions_data__block-title">Weather</span> 					<h2 class="conditions_data__block-data"></h2> 				</div>  			</div>  			<p class="small-text">Live meteorological data is streamed from WeatherTrax equipment. The data is logged every minute 24hrs/day and typically refreshes every five minutes on the App. Every effort is made to ensure the accuracy of this data, but values presented can differ from forecast predictions and aut
+
+  [temperature]
+  -data"></h2> 				</div>  				<!--<div class="conditions_data__block" data-condition="weather"> 					<span class="conditions_data__block-title">Weather</span> 					<h2 class="conditions_data__block-data"></h2> 				</div>-->  				<div class="conditions_data__block" data-condition="temperature"> 					<span class="conditions_data__block-title">Temperature</span> 					<h2 class="conditions_data__block-data"></h2> 				</div>  				<div class="conditions_data__block" data-condition="rain"> 					<span class="conditions_data__block-title">Rain</span> 					<h2 clas
+
+  [temperature]
+  block" data-condition="weather"> 					<span class="conditions_data__block-title">Weather</span> 					<h2 class="conditions_data__block-data"></h2> 				</div>-->  				<div class="conditions_data__block" data-condition="temperature"> 					<span class="conditions_data__block-title">Temperature</span> 					<h2 class="conditions_data__block-data"></h2> 				</div>  				<div class="conditions_data__block" data-condition="rain"> 					<span class="conditions_data__block-title">Rain</span> 					<h2 class="conditions_data__block-data"></h2> 				</div>  				<div cla
+
+  [humidity]
+  s_data__block-data"></h2> 				</div>  				<div class="conditions_data__block" data-condition="rain"> 					<span class="conditions_data__block-title">Rain</span> 					<h2 class="conditions_data__block-data"></h2> 				</div>  				<div class="conditions_data__block" data-condition="humidity"> 					<span class="conditions_data__block-title">Humidity</span> 					<h2 class="conditions_data__block-data"></h2> 				</div>  				<div class="conditions_data__block" data-condition="moisture-loss"> 					<span class="conditions_data__block-title"> 						Moisture Loss 	
+
+  [humidity]
+  tions_data__block" data-condition="rain"> 					<span class="conditions_data__block-title">Rain</span> 					<h2 class="conditions_data__block-data"></h2> 				</div>  				<div class="conditions_data__block" data-condition="humidity"> 					<span class="conditions_data__block-title">Humidity</span> 					<h2 class="conditions_data__block-data"></h2> 				</div>  				<div class="conditions_data__block" data-condition="moisture-loss"> 					<span class="conditions_data__block-title"> 						Moisture Loss 						<span data-tippy-content="<h5>MOISTURE LOSS</h5><p>Dai
+
+  [irrigation]
+  lock-data"></h2> 				</div>  				<div class="conditions_data__block" data-condition="soil"> 					<span class="conditions_data__block-title">Soil Moisture</span> 					<h2 class="conditions_data__block-data"></h2> 				</div>  				<div class="conditions_data__block" data-condition="irrigation"> 					<span class="conditions_data__block-title">Irrigation</span> 					<h2 class="conditions_data__block-data"></h2> 				</div>  				<div class="conditions_data__block" data-condition="weather"> 					<span class="conditions_data__block-title">Weather</span> 					<h2 
+
+  [irrigation]
+  _block" data-condition="soil"> 					<span class="conditions_data__block-title">Soil Moisture</span> 					<h2 class="conditions_data__block-data"></h2> 				</div>  				<div class="conditions_data__block" data-condition="irrigation"> 					<span class="conditions_data__block-title">Irrigation</span> 					<h2 class="conditions_data__block-data"></h2> 				</div>  				<div class="conditions_data__block" data-condition="weather"> 					<span class="conditions_data__block-title">Weather</span> 					<h2 class="conditions_data__block-data"></h2> 				</div>  			</di
+
+  [soil moisture]
+  		<svg class="icon icon-info-solid"><use xlink:href="#info-solid"></use></svg> 						</span> 					</span> 					<h2 class="conditions_data__block-data"></h2> 				</div>  				<div class="conditions_data__block" data-condition="soil"> 					<span class="conditions_data__block-title">Soil Moisture</span> 					<h2 class="conditions_data__block-data"></h2> 				</div>  				<div class="conditions_data__block" data-condition="irrigation"> 					<span class="conditions_data__block-title">Irrigation</span> 					<h2 class="conditions_data__block-data"></h2> 				</div>
+
+  [moisture loss]
+  ata-condition="humidity"> 					<span class="conditions_data__block-title">Humidity</span> 					<h2 class="conditions_data__block-data"></h2> 				</div>  				<div class="conditions_data__block" data-condition="moisture-loss"> 					<span class="conditions_data__block-title"> 						Moisture Loss 						<span data-tippy-content="<h5>MOISTURE LOSS</h5><p>Daily moisture evaporation in the sand profile.</p>"> 							<svg class="icon icon-info-solid"><use xlink:href="#info-solid"></use></svg> 						</span> 					</span> 					<h2 class="conditions_data__block-data"
+
+  [moisture loss]
+  ions_data__block-title">Humidity</span> 					<h2 class="conditions_data__block-data"></h2> 				</div>  				<div class="conditions_data__block" data-condition="moisture-loss"> 					<span class="conditions_data__block-title"> 						Moisture Loss 						<span data-tippy-content="<h5>MOISTURE LOSS</h5><p>Daily moisture evaporation in the sand profile.</p>"> 							<svg class="icon icon-info-solid"><use xlink:href="#info-solid"></use></svg> 						</span> 					</span> 					<h2 class="conditions_data__block-data"></h2> 				</div>  				<div class="conditions_data
+
+  [goingstick]
+  s_data__block" data-condition="rail"> 					<span class="conditions_data__block-title">Rail</span> 					<h2 class="conditions_data__block-data"></h2> 				</div>  				<div class="conditions_data__block" data-condition="stick"> 					<span class="conditions_data__block-title"> 						GoingStick 						<span data-tippy-content="<h5>GOING STICK</h5><p>The GoingStick accurately measures the penetration (the amount of force required to push the tip into the ground) and the shear (the energy needed to pull back to an angle of 45 degrees from the ground). These two 
+
+  [goingstick]
+  a__block-title">Rail</span> 					<h2 class="conditions_data__block-data"></h2> 				</div>  				<div class="conditions_data__block" data-condition="stick"> 					<span class="conditions_data__block-title"> 						GoingStick 						<span data-tippy-content="<h5>GOING STICK</h5><p>The GoingStick accurately measures the penetration (the amount of force required to push the tip into the ground) and the shear (the energy needed to pull back to an angle of 45 degrees from the ground). These two measures taken in combination represent a scientifically based proxy f
+
+----------------------------------------------------------------------
+Document: 001_vrc.js
+Kind: javascript
+URL: https://www.vrc.com.au/build/vrc.js?v=639188884160000000
+
+LIKELY URLS:
+  /Api/MccSearchApi/Search
+  /Api/NewsApi/NewsDetailPages
+  /Api/NewsApi/NewsPageResults
+  /Api/VrcSearchApi/Search
+  /api/MccProductSearchApi/GetProductEvents?category=
+  /api/MccProductSearchApi/GetProducts?category=
+  /api/TurfSportsAPI/GetTurfData
+  /api/VrcProductSearchApi/GetProductEvents?category=
+  /api/VrcProductSearchApi/GetProducts?category=
+  /api/membersapi/logout
+  /api/membersapi/memberlogin
+  /api/turfsportsapi/GetWindData
+  /weather/
+
+KEYWORD CONTEXT:
+  [weather]
+  etails"},E.a.createElement("div",{className:"jumpouts__list-venue"},"Flemington"),E.a.createElement("div",{className:"jumpouts__list-text"},"".concat(n[r].Heats[o].TrackConditions," | Time: ").concat(n[r].Heats[o].Time," sec"))),E.a.createElement("div",{className:"jumpouts__list-weather"},n[r].Heats[o].Weather&&E.a.createElement("img",{src:"/images/weather/".concat(n[r].Heats[o].Weather,".svg"),alt:"{data[currentDay].Heats[currentHeat].Weather}"}),E.a.createElement("div",{className:"jumpouts__temps"},E.a.createElement("div",{className:"jumpouts__temps-cu
+
+  [weather]
+  nt("div",{className:"jumpouts__list-venue"},"Flemington"),E.a.createElement("div",{className:"jumpouts__list-text"},"".concat(n[r].Heats[o].TrackConditions," | Time: ").concat(n[r].Heats[o].Time," sec"))),E.a.createElement("div",{className:"jumpouts__list-weather"},n[r].Heats[o].Weather&&E.a.createElement("img",{src:"/images/weather/".concat(n[r].Heats[o].Weather,".svg"),alt:"{data[currentDay].Heats[currentHeat].Weather}"}),E.a.createElement("div",{className:"jumpouts__temps"},E.a.createElement("div",{className:"jumpouts__temps-current"},n[r].Heats[o].Te
+
+  [weather]
+  emington"),E.a.createElement("div",{className:"jumpouts__list-text"},"".concat(n[r].Heats[o].TrackConditions," | Time: ").concat(n[r].Heats[o].Time," sec"))),E.a.createElement("div",{className:"jumpouts__list-weather"},n[r].Heats[o].Weather&&E.a.createElement("img",{src:"/images/weather/".concat(n[r].Heats[o].Weather,".svg"),alt:"{data[currentDay].Heats[currentHeat].Weather}"}),E.a.createElement("div",{className:"jumpouts__temps"},E.a.createElement("div",{className:"jumpouts__temps-current"},n[r].Heats[o].Temperature),E.a.createElement("div",{className:"
+
+  [weather]
+  iv",{className:"jumpouts__list-text"},"".concat(n[r].Heats[o].TrackConditions," | Time: ").concat(n[r].Heats[o].Time," sec"))),E.a.createElement("div",{className:"jumpouts__list-weather"},n[r].Heats[o].Weather&&E.a.createElement("img",{src:"/images/weather/".concat(n[r].Heats[o].Weather,".svg"),alt:"{data[currentDay].Heats[currentHeat].Weather}"}),E.a.createElement("div",{className:"jumpouts__temps"},E.a.createElement("div",{className:"jumpouts__temps-current"},n[r].Heats[o].Temperature),E.a.createElement("div",{className:"jumpouts__temps-other"},E.a.cre
+
+  [weather]
+  [o].TrackConditions," | Time: ").concat(n[r].Heats[o].Time," sec"))),E.a.createElement("div",{className:"jumpouts__list-weather"},n[r].Heats[o].Weather&&E.a.createElement("img",{src:"/images/weather/".concat(n[r].Heats[o].Weather,".svg"),alt:"{data[currentDay].Heats[currentHeat].Weather}"}),E.a.createElement("div",{className:"jumpouts__temps"},E.a.createElement("div",{className:"jumpouts__temps-current"},n[r].Heats[o].Temperature),E.a.createElement("div",{className:"jumpouts__temps-other"},E.a.createElement("div",{className:"jumpouts__temps-min"},parseIn
+
+  [weather]
+  eateElement("div",{className:"jumpouts__temps-min"},parseInt(n[r].Heats[o].Temperature,10)),E.a.createElement("div",{className:"jumpouts__temps-max"},parseInt(n[r].Heats[o].Temperature,10)))))),E.a.createElement("a",{href:window.TrackDataPage,className:"jumpouts__link"},"Track & Weather Conditions")))};dt.propTypes={data:Ke.a.arrayOf(Ke.a.any).isRequired,currentDay:Ke.a.number.isRequired,currentHeat:Ke.a.number.isRequired};var ft=dt;function pt(e,t){return function(e){if(Array.isArray(e))return e}(e)||function(e,t){if("undefined"==typeof Symbol||!(Symbol
+
+  [weather]
+  rrigation-report")?s()('div[data-condition="irrigation"]').find(".conditions_data__block-data").html(e.content["irrigation-report"].replace(/(?:\r\n|\r|\n)/g,"<br>")):s()('div[data-condition="irrigation"]').find(".conditions_data__block-data").text("-"),e.content.hasOwnProperty("weather-comment")){var n=e.content["weather-comment"].split(" - ").join("<br>");s()('div[data-condition="weather"]').find(".conditions_data__block-data").html(n)}else s()('div[data-condition="weather"]').find(".conditions_data__block-data").text("-");if(e.content.hasOwnProperty("
+
+  [weather]
+  dition="irrigation"]').find(".conditions_data__block-data").html(e.content["irrigation-report"].replace(/(?:\r\n|\r|\n)/g,"<br>")):s()('div[data-condition="irrigation"]').find(".conditions_data__block-data").text("-"),e.content.hasOwnProperty("weather-comment")){var n=e.content["weather-comment"].split(" - ").join("<br>");s()('div[data-condition="weather"]').find(".conditions_data__block-data").html(n)}else s()('div[data-condition="weather"]').find(".conditions_data__block-data").text("-");if(e.content.hasOwnProperty("additional-comment")){var r="";r=e.c
+
+  [weather]
+  ntent["irrigation-report"].replace(/(?:\r\n|\r|\n)/g,"<br>")):s()('div[data-condition="irrigation"]').find(".conditions_data__block-data").text("-"),e.content.hasOwnProperty("weather-comment")){var n=e.content["weather-comment"].split(" - ").join("<br>");s()('div[data-condition="weather"]').find(".conditions_data__block-data").html(n)}else s()('div[data-condition="weather"]').find(".conditions_data__block-data").text("-");if(e.content.hasOwnProperty("additional-comment")){var r="";r=e.content["additional-comment"].split("\r\n").reduce((function(e,t){retu
+
+  [weather]
+  irrigation"]').find(".conditions_data__block-data").text("-"),e.content.hasOwnProperty("weather-comment")){var n=e.content["weather-comment"].split(" - ").join("<br>");s()('div[data-condition="weather"]').find(".conditions_data__block-data").html(n)}else s()('div[data-condition="weather"]').find(".conditions_data__block-data").text("-");if(e.content.hasOwnProperty("additional-comment")){var r="";r=e.content["additional-comment"].split("\r\n").reduce((function(e,t){return-1!==t.indexOf("Moisture")?t.substr(9):e}),r),s()('div[data-condition="soil"]').find(
+
+  [temperature]
+  ].Weather&&E.a.createElement("img",{src:"/images/weather/".concat(n[r].Heats[o].Weather,".svg"),alt:"{data[currentDay].Heats[currentHeat].Weather}"}),E.a.createElement("div",{className:"jumpouts__temps"},E.a.createElement("div",{className:"jumpouts__temps-current"},n[r].Heats[o].Temperature),E.a.createElement("div",{className:"jumpouts__temps-other"},E.a.createElement("div",{className:"jumpouts__temps-min"},parseInt(n[r].Heats[o].Temperature,10)),E.a.createElement("div",{className:"jumpouts__temps-max"},parseInt(n[r].Heats[o].Temperature,10)))))),E.a.cre
+
+  [temperature]
+  createElement("div",{className:"jumpouts__temps"},E.a.createElement("div",{className:"jumpouts__temps-current"},n[r].Heats[o].Temperature),E.a.createElement("div",{className:"jumpouts__temps-other"},E.a.createElement("div",{className:"jumpouts__temps-min"},parseInt(n[r].Heats[o].Temperature,10)),E.a.createElement("div",{className:"jumpouts__temps-max"},parseInt(n[r].Heats[o].Temperature,10)))))),E.a.createElement("a",{href:window.TrackDataPage,className:"jumpouts__link"},"Track & Weather Conditions")))};dt.propTypes={data:Ke.a.arrayOf(Ke.a.any).isRequire
+
+  [temperature]
+  mps-current"},n[r].Heats[o].Temperature),E.a.createElement("div",{className:"jumpouts__temps-other"},E.a.createElement("div",{className:"jumpouts__temps-min"},parseInt(n[r].Heats[o].Temperature,10)),E.a.createElement("div",{className:"jumpouts__temps-max"},parseInt(n[r].Heats[o].Temperature,10)))))),E.a.createElement("a",{href:window.TrackDataPage,className:"jumpouts__link"},"Track & Weather Conditions")))};dt.propTypes={data:Ke.a.arrayOf(Ke.a.any).isRequired,currentDay:Ke.a.number.isRequired,currentHeat:Ke.a.number.isRequired};var ft=dt;function pt(e,t)
+
+  [temperature]
+  ent.hasOwnProperty("stick-report")){var t=e.content["stick-report"].split(" - ");s()('div[data-condition="stick"]').find(".conditions_data__block-data").html(t[0])}else s()('div[data-condition="stick"]').find(".conditions_data__block-data").text("-");if(e.content.hasOwnProperty("temperature-current")?s()('div[data-condition="temperature"]').find(".conditions_data__block-data").html("".concat(e.content["temperature-current"],"&deg;")):s()('div[data-condition="temperature"]').find(".conditions_data__block-data").html("-"),e.content.hasOwnProperty("rain1-24
+
+  [temperature]
+  tent["stick-report"].split(" - ");s()('div[data-condition="stick"]').find(".conditions_data__block-data").html(t[0])}else s()('div[data-condition="stick"]').find(".conditions_data__block-data").text("-");if(e.content.hasOwnProperty("temperature-current")?s()('div[data-condition="temperature"]').find(".conditions_data__block-data").html("".concat(e.content["temperature-current"],"&deg;")):s()('div[data-condition="temperature"]').find(".conditions_data__block-data").html("-"),e.content.hasOwnProperty("rain1-24hr")?s()('div[data-condition="rain"]').find(".c
+
+  [temperature]
+  ditions_data__block-data").html(t[0])}else s()('div[data-condition="stick"]').find(".conditions_data__block-data").text("-");if(e.content.hasOwnProperty("temperature-current")?s()('div[data-condition="temperature"]').find(".conditions_data__block-data").html("".concat(e.content["temperature-current"],"&deg;")):s()('div[data-condition="temperature"]').find(".conditions_data__block-data").html("-"),e.content.hasOwnProperty("rain1-24hr")?s()('div[data-condition="rain"]').find(".conditions_data__block-data").text("".concat(e.content["rain1-24hr"],"mm")):s()(
+
+  [temperature]
+  condition="stick"]').find(".conditions_data__block-data").text("-");if(e.content.hasOwnProperty("temperature-current")?s()('div[data-condition="temperature"]').find(".conditions_data__block-data").html("".concat(e.content["temperature-current"],"&deg;")):s()('div[data-condition="temperature"]').find(".conditions_data__block-data").html("-"),e.content.hasOwnProperty("rain1-24hr")?s()('div[data-condition="rain"]').find(".conditions_data__block-data").text("".concat(e.content["rain1-24hr"],"mm")):s()('div[data-condition="rain"]').find(".conditions_data__blo
+
+  [humidity]
+  data").html("-"),e.content.hasOwnProperty("rain1-24hr")?s()('div[data-condition="rain"]').find(".conditions_data__block-data").text("".concat(e.content["rain1-24hr"],"mm")):s()('div[data-condition="rain"]').find(".conditions_data__block-data").text("-"),e.content.hasOwnProperty("humidity-current")?s()('div[data-condition="humidity"]').find(".conditions_data__block-data").text("".concat(e.content["humidity-current"],"%")):s()('div[data-condition="humidity"]').find(".conditions_data__block-data").text("-"),e.content.hasOwnProperty("et-24hr")?s()('div[data-
+
+  [humidity]
+  ain1-24hr")?s()('div[data-condition="rain"]').find(".conditions_data__block-data").text("".concat(e.content["rain1-24hr"],"mm")):s()('div[data-condition="rain"]').find(".conditions_data__block-data").text("-"),e.content.hasOwnProperty("humidity-current")?s()('div[data-condition="humidity"]').find(".conditions_data__block-data").text("".concat(e.content["humidity-current"],"%")):s()('div[data-condition="humidity"]').find(".conditions_data__block-data").text("-"),e.content.hasOwnProperty("et-24hr")?s()('div[data-condition="moisture-loss"]').find(".conditio
+
+  [humidity]
+  data").text("".concat(e.content["rain1-24hr"],"mm")):s()('div[data-condition="rain"]').find(".conditions_data__block-data").text("-"),e.content.hasOwnProperty("humidity-current")?s()('div[data-condition="humidity"]').find(".conditions_data__block-data").text("".concat(e.content["humidity-current"],"%")):s()('div[data-condition="humidity"]').find(".conditions_data__block-data").text("-"),e.content.hasOwnProperty("et-24hr")?s()('div[data-condition="moisture-loss"]').find(".conditions_data__block-data").text("".concat(e.content["et-24hr"],"mm")):s()('div[da
+
+  [humidity]
+  )):s()('div[data-condition="rain"]').find(".conditions_data__block-data").text("-"),e.content.hasOwnProperty("humidity-current")?s()('div[data-condition="humidity"]').find(".conditions_data__block-data").text("".concat(e.content["humidity-current"],"%")):s()('div[data-condition="humidity"]').find(".conditions_data__block-data").text("-"),e.content.hasOwnProperty("et-24hr")?s()('div[data-condition="moisture-loss"]').find(".conditions_data__block-data").text("".concat(e.content["et-24hr"],"mm")):s()('div[data-condition="moisture-loss"]').find(".conditions_
+
+  [irrigation]
+  "-"),e.content.hasOwnProperty("et-24hr")?s()('div[data-condition="moisture-loss"]').find(".conditions_data__block-data").text("".concat(e.content["et-24hr"],"mm")):s()('div[data-condition="moisture-loss"]').find(".conditions_data__block-data").text("-"),e.content.hasOwnProperty("irrigation-report")?s()('div[data-condition="irrigation"]').find(".conditions_data__block-data").html(e.content["irrigation-report"].replace(/(?:\r\n|\r|\n)/g,"<br>")):s()('div[data-condition="irrigation"]').find(".conditions_data__block-data").text("-"),e.content.hasOwnProperty(
+
+  [irrigation]
+  'div[data-condition="moisture-loss"]').find(".conditions_data__block-data").text("".concat(e.content["et-24hr"],"mm")):s()('div[data-condition="moisture-loss"]').find(".conditions_data__block-data").text("-"),e.content.hasOwnProperty("irrigation-report")?s()('div[data-condition="irrigation"]').find(".conditions_data__block-data").html(e.content["irrigation-report"].replace(/(?:\r\n|\r|\n)/g,"<br>")):s()('div[data-condition="irrigation"]').find(".conditions_data__block-data").text("-"),e.content.hasOwnProperty("weather-comment")){var n=e.content["weather-
+
+  [irrigation]
+  -data").text("".concat(e.content["et-24hr"],"mm")):s()('div[data-condition="moisture-loss"]').find(".conditions_data__block-data").text("-"),e.content.hasOwnProperty("irrigation-report")?s()('div[data-condition="irrigation"]').find(".conditions_data__block-data").html(e.content["irrigation-report"].replace(/(?:\r\n|\r|\n)/g,"<br>")):s()('div[data-condition="irrigation"]').find(".conditions_data__block-data").text("-"),e.content.hasOwnProperty("weather-comment")){var n=e.content["weather-comment"].split(" - ").join("<br>");s()('div[data-condition="weather
+
+  [irrigation]
+  ture-loss"]').find(".conditions_data__block-data").text("-"),e.content.hasOwnProperty("irrigation-report")?s()('div[data-condition="irrigation"]').find(".conditions_data__block-data").html(e.content["irrigation-report"].replace(/(?:\r\n|\r|\n)/g,"<br>")):s()('div[data-condition="irrigation"]').find(".conditions_data__block-data").text("-"),e.content.hasOwnProperty("weather-comment")){var n=e.content["weather-comment"].split(" - ").join("<br>");s()('div[data-condition="weather"]').find(".conditions_data__block-data").html(n)}else s()('div[data-condition="
+
+  [/api/]
+  ispatchEvent(new Event("resize")))}))}))},function(e,t,n){},function(e,t,n){"use strict";n(511);var r=n(0),o=n.n(r),i=o()("body").hasClass("vrc-site");window.newsCurrPage=window.newsCurrPage||1,window.newsCurrCat=window.newsCurrCat||"";window.getNews=function(e,t){var n="/Umbraco/Api/NewsApi/NewsDetailPages";i&&(n="/umbraco/Api/NewsApi/NewsPageResults"),o.a.get(n,{itemsPerPage:"12",pageNumber:t,category:e,pId:window.pId}).done((function(n){if(console.log("Data Loaded",n),i&&function(e,t){var n={category:e.replace(/\+/g," ").replace(/%26/g,"&").replace(/%
+
+  [/api/]
+  ction(e,t,n){},function(e,t,n){"use strict";n(511);var r=n(0),o=n.n(r),i=o()("body").hasClass("vrc-site");window.newsCurrPage=window.newsCurrPage||1,window.newsCurrCat=window.newsCurrCat||"";window.getNews=function(e,t){var n="/Umbraco/Api/NewsApi/NewsDetailPages";i&&(n="/umbraco/Api/NewsApi/NewsPageResults"),o.a.get(n,{itemsPerPage:"12",pageNumber:t,category:e,pId:window.pId}).done((function(n){if(console.log("Data Loaded",n),i&&function(e,t){var n={category:e.replace(/\+/g," ").replace(/%26/g,"&").replace(/%2B/g," "),pageNumber:t};window.setUrlParam(n)
+
+  [/api/]
+  (".news-listing-more button").on("click",(function(e){o()(e.target).prop("disabled",!0),window.newsCurrPage+=1,window.getNews(window.newsCurrCat,window.newsCurrPage)}))}))},function(e,t,n){},function(e,t,n){"use strict";n(513);var r,o=n(0),i=n.n(o);function a(e,t){var n="/Umbraco/Api/MccSearchApi/Search";i()("body").hasClass("vrc-site")&&(n="/Umbraco/Api/VrcSearchApi/Search"),i.a.get(n,{searchQuery:e,itemsPerPage:"10",pageNumber:t}).done((function(e){if(e.TotalItems){if(r){var n="results";1===e.TotalItems&&(n="result"),i()(".search-title__count").text("F
+
+  [/api/]
+  ("disabled",!0),window.newsCurrPage+=1,window.getNews(window.newsCurrCat,window.newsCurrPage)}))}))},function(e,t,n){},function(e,t,n){"use strict";n(513);var r,o=n(0),i=n.n(o);function a(e,t){var n="/Umbraco/Api/MccSearchApi/Search";i()("body").hasClass("vrc-site")&&(n="/Umbraco/Api/VrcSearchApi/Search"),i.a.get(n,{searchQuery:e,itemsPerPage:"10",pageNumber:t}).done((function(e){if(e.TotalItems){if(r){var n="results";1===e.TotalItems&&(n="result"),i()(".search-title__count").text("Found ".concat(e.TotalItems," ").concat(n)).addClass("found"),i()(".searc
+
+  [/api/]
+  );t.hasClass("accordion--expanded")?(t.find(".accordion__content").slideUp(),t.removeClass("accordion--expanded")):window.accordionOpen(t)})),s()("#header-login, #header-login-mobile").on("click",(function(e){s()(e.target).closest("button").hasClass("loggedIn")?(s.a.get("/umbraco/api/membersapi/logout"),s()("#login-modal-form").slideDown(),s()(".login-modal__success").slideUp(),s()("#header-login, #header-login-mobile").removeClass("loggedIn").find("span").text("Member Login"),s()("body").removeClass("loggedIn")):(r=null,o=null,l(null))})),s()("#login-mo
+
+  [/api/]
+  ()("#login-modal-form .login-modal__form-member").removeClass("error"):(s()("#login-modal-form .login-modal__form-member .login-modal__error").text("Please provide your Member Number"),s()("#login-modal-form .login-modal__form-member").addClass("error"),t=!1),t?s.a.post("/umbraco/api/membersapi/memberlogin",{username:n,password:a}).done((function(){s()("#login-modal-form").slideUp(),s()(".login-modal__success").slideDown(),s()("#header-login, #header-login-mobile").addClass("loggedIn").find("span").text("Logout"),s()("body").addClass("loggedIn"),r?window
+
+  [/api/]
+  ent-slider__slides').empty():u()('.product-search__screen[data-screen="3"] .product-search__choices').empty(),u()('.product-search__drop[data-screen="3"] .product-search__drop-options').empty(),u()("#product-search-modal-3 .event-sidebar__search-day-list").empty();var t="/umbraco/api/VrcProductSearchApi/GetProductEvents?category=".concat(r,"&taxonomy=").concat(o);p&&(t="/umbraco/api/MccProductSearchApi/GetProductEvents?category=".concat(r,"&taxonomy=").concat(o)),u.a.getJSON(t,(function(e){e.length?u.a.each(e,(function(e,t){var n=new Date(t.EventDate),r=
+
+  [/api/]
+  .empty(),u()('.product-search__drop[data-screen="3"] .product-search__drop-options').empty(),u()("#product-search-modal-3 .event-sidebar__search-day-list").empty();var t="/umbraco/api/VrcProductSearchApi/GetProductEvents?category=".concat(r,"&taxonomy=").concat(o);p&&(t="/umbraco/api/MccProductSearchApi/GetProductEvents?category=".concat(r,"&taxonomy=").concat(o)),u.a.getJSON(t,(function(e){e.length?u.a.each(e,(function(e,t){var n=new Date(t.EventDate),r=n.getDay(),o=n.getDate(),a=n.getMonth(),s=n.getFullYear();if(p){var l=u()(u()('script[data-template="
+
+  [/api/]
+  _error">There are no events for your selected options</h1>').appendTo('.product-search__screen[data-screen="3"] .product-search__choices')})).fail((function(e){console.log("ajax error",e)}))}else if("4"===e){u()(".product-search__products .cards--product").empty();var n="/umbraco/api/VrcProductSearchApi/GetProducts?category=".concat(r,"&taxonomy=").concat(o,"&eventId=").concat(i);p&&(n="/umbraco/api/MccProductSearchApi/GetProducts?category=".concat(r,"&taxonomy=").concat(o,"&eventId=").concat(i)),u.a.getJSON(n,(function(e){u()(".product-search__total").t
+
+  [/api/]
+  ct-search__choices')})).fail((function(e){console.log("ajax error",e)}))}else if("4"===e){u()(".product-search__products .cards--product").empty();var n="/umbraco/api/VrcProductSearchApi/GetProducts?category=".concat(r,"&taxonomy=").concat(o,"&eventId=").concat(i);p&&(n="/umbraco/api/MccProductSearchApi/GetProducts?category=".concat(r,"&taxonomy=").concat(o,"&eventId=").concat(i)),u.a.getJSON(n,(function(e){u()(".product-search__total").text(e.length),e.length?u.a.each(e,(function(e,t){var n=u()(u()('script[data-template="product-search-product"]')[0].in
+
+  [/api/]
+  ElementById("jumpouts")&&T.a.render(E.a.createElement(mt,null),document.getElementById("jumpouts"));n(614);function vt(e,t){(null==t||t>e.length)&&(t=e.length);for(var n=0,r=new Array(t);n<t;n++)r[n]=e[n];return r}s()(document).ready((function(){function e(){s.a.getJSON("/umbraco/api/turfsportsapi/GetWindData",(function(e){console.log("winddata",e),console.log("data keys",Object.keys(e)),console.log("data vals",Object.values(e)),s.a.each(e,(function(e,t){console.log(e,t),console.log("KEY",e);var n,r,o=s()('.conditions-wind__station[data-station="'.concat
+
+  [/api/]
+  ddClass("wind-high"):n>=10&&e.addClass("wind-med"),o.text("".concat(n," km/h"))}(o,parseInt(t.direction,10),parseFloat(t.speed)))}))})).fail((function(e){console.log("ajax error",e)}))}(s()(".conditions-wind").length||s()(".event-conditions__track").length)&&s.a.getJSON("/umbraco/api/TurfSportsAPI/GetTurfData",(function(e){if(console.log("turfdata",e),e.content.hasOwnProperty("going-report")?(s()('div[data-condition="rating"]').find(".conditions_data__block-data").text(e.content["going-report"]),s()(".conditions-wind__legend-going").text(e.content["going
+
+  [fetch(]
+  ryExclusion(u)}))}o.collapseEmptyDivs&&n.collapseEmptyDivs(),o.disablePublisherConsole&&n.disablePublisherConsole(),o.companionAds&&(l.companionAds().setRefreshUnfilledSlots(!0),o.disableInitialLoad||n.enableVideoAds()),o.disableInitialLoad&&n.disableInitialLoad(),o.noFetch&&n.noFetch(),o.setCentering&&n.setCentering(!0),n.addEventListener("slotRenderEnded",(function(t){i++;var n=e("#"+t.slot.getSlotId().getDomId()),a=t.isEmpty?"none":"block",l=n.data("existingContent");"none"===a&&e.trim(l).length>0&&"original"===o.collapseEmptyDivs&&(n.show().html(l),a
+
+  [fetch(]
+  Interval((function(){f&&(c(),d(100),f=!1)}),100),setInterval((function(){p&&(a&&(s=a.offsetHeight),l&&(u=s+l.offsetTop+l.offsetHeight),d(100),p=!1)}),250),o()(window).on("load",(function(){d(0)})),d(0)},function(e,t,n){0},function(e,t,n){var r;(r=n(379)).keys().forEach(r),window.fetch("/build/sprite.svg?v=21").then((function(e){return e.text()})).then((function(e){var t=document.createElement("div");t.style.display="none",document.body.appendChild(t),t.innerHTML=e})),window.fetch("/build/inside-run-sprite.svg?v=11").then((function(e){return e.text()})).t
+
+  [fetch(]
+  0)},function(e,t,n){0},function(e,t,n){var r;(r=n(379)).keys().forEach(r),window.fetch("/build/sprite.svg?v=21").then((function(e){return e.text()})).then((function(e){var t=document.createElement("div");t.style.display="none",document.body.appendChild(t),t.innerHTML=e})),window.fetch("/build/inside-run-sprite.svg?v=11").then((function(e){return e.text()})).then((function(e){var t=document.createElement("div");t.style.display="none",document.body.appendChild(t),t.innerHTML=e}))},function(e,t,n){var r={"./alert-thin.svg":380,"./alert.svg":381,"./arrow--le

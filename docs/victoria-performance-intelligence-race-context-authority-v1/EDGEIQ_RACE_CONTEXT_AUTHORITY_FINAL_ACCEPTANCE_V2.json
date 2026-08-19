@@ -1,0 +1,161 @@
+{
+  "built_at_utc": "2026-07-30T00:05:59Z",
+  "current_blocker": "No governed empirical context parameter registry exists for exact distance/class/track/configuration/condition/surface/barrier/weight/field-size signatures.",
+  "deterministic_identity_requirement": {
+    "current_bridge_status": "NO_DURABLE_RA_TO_RCOM_BRIDGE_DISCOVERED",
+    "name_only_linking": "REJECTED",
+    "required_future_bridge": [
+      "Racing Australia durable horse identifier",
+      "Racing.com durable horse identifier",
+      "Australian Stud Book identifier"
+    ]
+  },
+  "document": "EDGEIQ_RACE_CONTEXT_AUTHORITY_FINAL_ACCEPTANCE_V2",
+  "epi_status": "BLOCKED_BY_CONTEXT_PARAMETER_UNAVAILABLE",
+  "no_fabrication_controls": {
+    "coefficients_fabricated": "NO",
+    "context_adjustments_defaulted": "NO",
+    "identity_bridge_name_only": "NO",
+    "race_class_inferred": "NO",
+    "rail_defaulted": "NO"
+  },
+  "overall_status": "BLOCKED_SOURCE_DATA_UNAVAILABLE",
+  "pipeline": [
+    {
+      "notes": "Racing.com visible page evidence provides rdcClass and railPosition for target races.",
+      "rows": 2,
+      "stage": "Official Race Context Source",
+      "status": "PASS_FOUND_OFFICIAL_VISIBLE_PAGE_SOURCE"
+    },
+    {
+      "notes": "race_class_code and rail_position are populated only from official evidence.",
+      "rows": 2,
+      "stage": "Race Context Authority",
+      "status": "PASS"
+    },
+    {
+      "notes": "Snapshots joined to governed race context.",
+      "rows": 5,
+      "stage": "Race Entry Performance Context",
+      "status": "PASS"
+    },
+    {
+      "notes": "5 rows eligible in latest refresh.",
+      "rows": 5,
+      "stage": "Context Eligibility",
+      "status": "PASS"
+    },
+    {
+      "notes": "No governed empirical distance/class/track/configuration/condition/surface/barrier/weight/field-size adjustment coefficients exist; header-only fail-closed registry published.",
+      "rows": 0,
+      "stage": "Context Parameter Registry",
+      "status": "BLOCKED_SOURCE_DATA_UNAVAILABLE"
+    },
+    {
+      "notes": "",
+      "rows": 5,
+      "stage": "Context Parameter Selection",
+      "status": "PASS_FAIL_CLOSED_PARAMETER_NOT_AVAILABLE"
+    },
+    {
+      "notes": "",
+      "rows": 5,
+      "stage": "Context Adjustment",
+      "status": "PASS_FAIL_CLOSED_PARAMETER_NOT_AVAILABLE"
+    },
+    {
+      "notes": "No projection rows because no governed adjustment parameters are available.",
+      "rows": 0,
+      "stage": "Projected Performance",
+      "status": "BLOCKED_BY_CONTEXT_PARAMETER_UNAVAILABLE"
+    },
+    {
+      "notes": "No suitability/projection components are emitted without governed context parameters.",
+      "rows": 0,
+      "stage": "EPI Component",
+      "status": "BLOCKED_BY_CONTEXT_PARAMETER_UNAVAILABLE"
+    },
+    {
+      "notes": "EPI remains empty by contract.",
+      "rows": 0,
+      "stage": "EPI",
+      "status": "BLOCKED_BY_CONTEXT_PARAMETER_UNAVAILABLE"
+    }
+  ],
+  "pipeline_trace_file": "docs/victoria-performance-intelligence-race-context-authority-v1/EDGEIQ_RACE_CONTEXT_PIPELINE_TRACE_V2.csv",
+  "protected_systems": {
+    "pricing_changed": "NO",
+    "probability_changed": "NO",
+    "ui_changed": "NO",
+    "v6_1_changed": "NO",
+    "v7_2g2_changed": "NO"
+  },
+  "race_class_code_status": "FOUND_OFFICIAL_EVIDENCE_AND_AUTHORITY_POPULATED",
+  "rail_position_status": "FOUND_OFFICIAL_EVIDENCE_AND_AUTHORITY_POPULATED",
+  "refresh_mandatory_failures": [],
+  "refresh_manifest_status": "PASS_WITH_GOVERNED_UNAVAILABLE_STAGES",
+  "row_counts": {
+    "context_adjusted_performance": 5,
+    "context_adjustment": 5,
+    "context_eligibility": 5,
+    "context_parameter_registry": 0,
+    "context_parameter_selection": 5,
+    "epi": 0,
+    "epi_component": 0,
+    "official_context_source": 2,
+    "projected_performance": 0,
+    "race_context_authority": 2,
+    "race_entry_context": 5,
+    "suitability_component": 0
+  },
+  "source_files": {
+    "context_adjusted_performance": {
+      "path": "public/data/edgeiq_race_entry_context_adjusted_performance_fact_v1.csv",
+      "sha256": "2d0a5da8fe6ef046a0823c199ea9aa772415f750bdad8ea9e02c5f72b9dfc15d"
+    },
+    "context_adjustment": {
+      "path": "public/data/edgeiq_race_entry_context_adjustment_fact_v1.csv",
+      "sha256": "8e5a2341c45d02c914543ae8ca4894f5117447fc072ad97f7f4d38b719a2b991"
+    },
+    "context_eligibility": {
+      "path": "public/data/edgeiq_race_entry_context_eligibility_fact_v1.csv",
+      "sha256": "01ecab4b43859676b32681244b187f75f97e99f122796b983453c1a46efa2b9f"
+    },
+    "context_parameter_registry": {
+      "path": "public/data/edgeiq_context_parameter_registry_v1.csv",
+      "sha256": "bb0e2a15e0f3d4c78a20b5bded9e33de8e8a55e6f1917e73457bff1140597f9b"
+    },
+    "context_parameter_selection": {
+      "path": "public/data/edgeiq_race_entry_context_parameter_selection_fact_v1.csv",
+      "sha256": "9bf8eff3414d716a0aa01b1d0fdc3aee36b30e510ca4a9595a92ef1fb6f6f203"
+    },
+    "epi": {
+      "path": "public/data/edgeiq_race_entry_epi_fact_v1.csv",
+      "sha256": "1ce983a236e648cf7ecbead42c8e9d2024a6fbeb30dc2c059401a567a34cd7e9"
+    },
+    "epi_component": {
+      "path": "public/data/edgeiq_race_entry_epi_component_fact_v1.csv",
+      "sha256": "9ffd4fcf3f417b63be3ece04f1c6c7a6a48f3fd7c5a678583831095bbfec7295"
+    },
+    "official_context_source": {
+      "path": "public/data/edgeiq_official_race_context_source_v1.csv",
+      "sha256": "c257503e4d8ac973b4c21ad75d0cb116a3e9fa950229923c8a22cfec95b8101c"
+    },
+    "projected_performance": {
+      "path": "public/data/edgeiq_race_entry_projected_performance_fact_v1.csv",
+      "sha256": "2d7996a050856e252e6639bdb6569f9cff9b49442cf8ee5cbc676c92fc92fc54"
+    },
+    "race_context_authority": {
+      "path": "public/data/edgeiq_race_context_authority_fact_v1.csv",
+      "sha256": "827773eb7073527d77af90e3647547c4126e5fffdf6b661b1d9b09e9621564be"
+    },
+    "race_entry_context": {
+      "path": "public/data/edgeiq_race_entry_performance_context_fact_v1.csv",
+      "sha256": "55d5797cc00e77c74d8d45c115bd423b2c1a31db566d8d60cd6b401fd025b93c"
+    },
+    "suitability_component": {
+      "path": "public/data/edgeiq_race_entry_suitability_component_fact_v1.csv",
+      "sha256": "d37cecd7bed903c70200d6bfd8a913f1b30a77d50cf2a35fc3562b95db04badb"
+    }
+  }
+}

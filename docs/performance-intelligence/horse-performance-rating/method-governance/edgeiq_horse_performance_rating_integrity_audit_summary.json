@@ -1,0 +1,13 @@
+{
+  "verdict": "PASS",
+  "historical_pi_rows": 168,
+  "normalised_rows": 168,
+  "rating_base_rows": 168,
+  "horse_observation_rows": 168,
+  "horse_aggregate_rows": 24,
+  "horse_rating_rows": 24,
+  "unique_rated_horses": 24,
+  "horse_rating_hash": "0ab065e2f6046abe5157770ada541f669467c319e2a896eea58c50dbbca6097a",
+  "candidate_hash": "0ab065e2f6046abe5157770ada541f669467c319e2a896eea58c50dbbca6097a",
+  "candidate_promotion": "PASS"
+}

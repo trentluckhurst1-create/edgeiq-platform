@@ -1,0 +1,12 @@
+{
+  "decision": "STANDARD_TIME_RECOVERY_BLOCKED_INSUFFICIENT_OBSERVATIONS",
+  "total_performance_observations": 39,
+  "benchmark_eligible_observations": 24,
+  "benchmark_groups": 12,
+  "groups_meeting_minimum": 0,
+  "groups_below_minimum": 12,
+  "standard_time_rows": 0,
+  "minimum_required_sample": 20,
+  "total_observation_deficit": 216,
+  "threshold_changed": "NO"
+}

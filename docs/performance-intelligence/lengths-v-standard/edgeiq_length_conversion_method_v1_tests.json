@@ -1,0 +1,231 @@
+{
+  "test_count": 16,
+  "passed": 16,
+  "failed": 0,
+  "tests": [
+    {
+      "surface": "turf",
+      "condition": 1,
+      "expected_status": "AVAILABLE",
+      "actual": {
+        "method_version": "EDGEIQ_GOING_DEPENDENT_LENGTHS_PER_SECOND_V1",
+        "track_condition_group": "FIRM",
+        "lengths_per_second": "6.000000000",
+        "seconds_per_length": "0.166666667",
+        "status": "AVAILABLE",
+        "reason": ""
+      },
+      "passed": true
+    },
+    {
+      "surface": "turf",
+      "condition": 2,
+      "expected_status": "AVAILABLE",
+      "actual": {
+        "method_version": "EDGEIQ_GOING_DEPENDENT_LENGTHS_PER_SECOND_V1",
+        "track_condition_group": "FIRM",
+        "lengths_per_second": "6.000000000",
+        "seconds_per_length": "0.166666667",
+        "status": "AVAILABLE",
+        "reason": ""
+      },
+      "passed": true
+    },
+    {
+      "surface": "TURF",
+      "condition": 3,
+      "expected_status": "AVAILABLE",
+      "actual": {
+        "method_version": "EDGEIQ_GOING_DEPENDENT_LENGTHS_PER_SECOND_V1",
+        "track_condition_group": "GOOD",
+        "lengths_per_second": "6.000000000",
+        "seconds_per_length": "0.166666667",
+        "status": "AVAILABLE",
+        "reason": ""
+      },
+      "passed": true
+    },
+    {
+      "surface": "TURF",
+      "condition": 4,
+      "expected_status": "AVAILABLE",
+      "actual": {
+        "method_version": "EDGEIQ_GOING_DEPENDENT_LENGTHS_PER_SECOND_V1",
+        "track_condition_group": "GOOD",
+        "lengths_per_second": "6.000000000",
+        "seconds_per_length": "0.166666667",
+        "status": "AVAILABLE",
+        "reason": ""
+      },
+      "passed": true
+    },
+    {
+      "surface": "Turf",
+      "condition": 5,
+      "expected_status": "AVAILABLE",
+      "actual": {
+        "method_version": "EDGEIQ_GOING_DEPENDENT_LENGTHS_PER_SECOND_V1",
+        "track_condition_group": "SOFT",
+        "lengths_per_second": "5.000000000",
+        "seconds_per_length": "0.200000000",
+        "status": "AVAILABLE",
+        "reason": ""
+      },
+      "passed": true
+    },
+    {
+      "surface": "Turf",
+      "condition": 6,
+      "expected_status": "AVAILABLE",
+      "actual": {
+        "method_version": "EDGEIQ_GOING_DEPENDENT_LENGTHS_PER_SECOND_V1",
+        "track_condition_group": "SOFT",
+        "lengths_per_second": "5.000000000",
+        "seconds_per_length": "0.200000000",
+        "status": "AVAILABLE",
+        "reason": ""
+      },
+      "passed": true
+    },
+    {
+      "surface": "Turf",
+      "condition": 7,
+      "expected_status": "AVAILABLE",
+      "actual": {
+        "method_version": "EDGEIQ_GOING_DEPENDENT_LENGTHS_PER_SECOND_V1",
+        "track_condition_group": "SOFT",
+        "lengths_per_second": "5.000000000",
+        "seconds_per_length": "0.200000000",
+        "status": "AVAILABLE",
+        "reason": ""
+      },
+      "passed": true
+    },
+    {
+      "surface": "TURF",
+      "condition": 8,
+      "expected_status": "AVAILABLE",
+      "actual": {
+        "method_version": "EDGEIQ_GOING_DEPENDENT_LENGTHS_PER_SECOND_V1",
+        "track_condition_group": "HEAVY",
+        "lengths_per_second": "5.000000000",
+        "seconds_per_length": "0.200000000",
+        "status": "AVAILABLE",
+        "reason": ""
+      },
+      "passed": true
+    },
+    {
+      "surface": "TURF",
+      "condition": 9,
+      "expected_status": "AVAILABLE",
+      "actual": {
+        "method_version": "EDGEIQ_GOING_DEPENDENT_LENGTHS_PER_SECOND_V1",
+        "track_condition_group": "HEAVY",
+        "lengths_per_second": "5.000000000",
+        "seconds_per_length": "0.200000000",
+        "status": "AVAILABLE",
+        "reason": ""
+      },
+      "passed": true
+    },
+    {
+      "surface": "TURF",
+      "condition": 10,
+      "expected_status": "AVAILABLE",
+      "actual": {
+        "method_version": "EDGEIQ_GOING_DEPENDENT_LENGTHS_PER_SECOND_V1",
+        "track_condition_group": "HEAVY",
+        "lengths_per_second": "5.000000000",
+        "seconds_per_length": "0.200000000",
+        "status": "AVAILABLE",
+        "reason": ""
+      },
+      "passed": true
+    },
+    {
+      "surface": "TURF",
+      "condition": "",
+      "expected_status": "BLOCKED_UNSUPPORTED_LENGTH_CONVERSION_SCOPE",
+      "actual": {
+        "method_version": "EDGEIQ_GOING_DEPENDENT_LENGTHS_PER_SECOND_V1",
+        "track_condition_group": "",
+        "lengths_per_second": "",
+        "seconds_per_length": "",
+        "status": "BLOCKED_UNSUPPORTED_LENGTH_CONVERSION_SCOPE",
+        "reason": "MISSING_TRACK_CONDITION_NUMBER"
+      },
+      "passed": true
+    },
+    {
+      "surface": "TURF",
+      "condition": 0,
+      "expected_status": "BLOCKED_UNSUPPORTED_LENGTH_CONVERSION_SCOPE",
+      "actual": {
+        "method_version": "EDGEIQ_GOING_DEPENDENT_LENGTHS_PER_SECOND_V1",
+        "track_condition_group": "",
+        "lengths_per_second": "",
+        "seconds_per_length": "",
+        "status": "BLOCKED_UNSUPPORTED_LENGTH_CONVERSION_SCOPE",
+        "reason": "INVALID_TRACK_CONDITION_NUMBER"
+      },
+      "passed": true
+    },
+    {
+      "surface": "TURF",
+      "condition": 11,
+      "expected_status": "BLOCKED_UNSUPPORTED_LENGTH_CONVERSION_SCOPE",
+      "actual": {
+        "method_version": "EDGEIQ_GOING_DEPENDENT_LENGTHS_PER_SECOND_V1",
+        "track_condition_group": "",
+        "lengths_per_second": "",
+        "seconds_per_length": "",
+        "status": "BLOCKED_UNSUPPORTED_LENGTH_CONVERSION_SCOPE",
+        "reason": "INVALID_TRACK_CONDITION_NUMBER"
+      },
+      "passed": true
+    },
+    {
+      "surface": "",
+      "condition": 4,
+      "expected_status": "BLOCKED_UNSUPPORTED_LENGTH_CONVERSION_SCOPE",
+      "actual": {
+        "method_version": "EDGEIQ_GOING_DEPENDENT_LENGTHS_PER_SECOND_V1",
+        "track_condition_group": "",
+        "lengths_per_second": "",
+        "seconds_per_length": "",
+        "status": "BLOCKED_UNSUPPORTED_LENGTH_CONVERSION_SCOPE",
+        "reason": "MISSING_SURFACE"
+      },
+      "passed": true
+    },
+    {
+      "surface": "Synthetic",
+      "condition": 4,
+      "expected_status": "BLOCKED_UNSUPPORTED_LENGTH_CONVERSION_SCOPE",
+      "actual": {
+        "method_version": "EDGEIQ_GOING_DEPENDENT_LENGTHS_PER_SECOND_V1",
+        "track_condition_group": "",
+        "lengths_per_second": "",
+        "seconds_per_length": "",
+        "status": "BLOCKED_UNSUPPORTED_LENGTH_CONVERSION_SCOPE",
+        "reason": "UNSUPPORTED_SURFACE"
+      },
+      "passed": true
+    },
+    {
+      "surface": "TURF",
+      "condition": "Soft 6",
+      "expected_status": "AVAILABLE",
+      "actual": {
+        "method_version": "EDGEIQ_GOING_DEPENDENT_LENGTHS_PER_SECOND_V1",
+        "track_condition_group": "SOFT",
+        "lengths_per_second": "5.000000000",
+        "seconds_per_length": "0.200000000",
+        "status": "AVAILABLE",
+        "reason": ""
+      },
+      "passed": true
+    }
+  ]
+}

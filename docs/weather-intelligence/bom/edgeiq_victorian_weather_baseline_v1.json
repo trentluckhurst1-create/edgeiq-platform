@@ -1,0 +1,2968 @@
+{
+  "schema_version": "edgeiq_victorian_weather_baseline_v1",
+  "generated_at": "2026-07-26T01:13:30+00:00",
+  "weather_files": [
+    {
+      "path": "data\\weather\\bom-location-api\\bom_location_api_contract_evidence_v1.csv",
+      "bytes": 25022623
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\001_data_weather_source_audit_bom_donald_location_022_main_bundle_js.txt",
+      "bytes": 5004
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\002_data_weather_source_audit_bom_donald_location_022_main_bundle_js.txt",
+      "bytes": 5004
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\003_data_weather_source_audit_bom_donald_location_022_main_bundle_js.txt",
+      "bytes": 4626
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\004_data_weather_source_audit_bom_donald_location_022_main_bundle_js.txt",
+      "bytes": 5004
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\005_data_weather_source_audit_bom_donald_location_022_main_bundle_js.txt",
+      "bytes": 5004
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\006_data_weather_source_audit_bom_donald_location_022_main_bundle_js.txt",
+      "bytes": 5004
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\007_data_weather_source_audit_bom_donald_location_022_main_bundle_js.txt",
+      "bytes": 5004
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\008_data_weather_source_audit_bom_donald_location_022_main_bundle_js.txt",
+      "bytes": 5004
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\009_data_weather_source_audit_bom_donald_location_022_main_bundle_js.txt",
+      "bytes": 5004
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\010_data_weather_source_audit_bom_donald_location_022_main_bundle_js.txt",
+      "bytes": 4626
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\011_data_weather_source_audit_bom_donald_location_022_main_bundle_js.txt",
+      "bytes": 4626
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\012_data_weather_source_audit_bom_donald_location_022_main_bundle_js.txt",
+      "bytes": 4626
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\013_data_weather_source_audit_bom_donald_location_022_main_bundle_js.txt",
+      "bytes": 4626
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\014_data_weather_source_audit_bom_donald_location_022_main_bundle_js.txt",
+      "bytes": 4626
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\015_data_weather_source_audit_bom_donald_location_022_main_bundle_js.txt",
+      "bytes": 4626
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\016_data_weather_source_audit_bom_donald_location_022_main_bundle_js.txt",
+      "bytes": 4996
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\017_data_weather_source_audit_bom_donald_location_022_main_bundle_js.txt",
+      "bytes": 4982
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\018_data_weather_source_audit_bom_donald_location_022_main_bundle_js.txt",
+      "bytes": 4982
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\019_data_weather_source_audit_bom_donald_location_022_main_bundle_js.txt",
+      "bytes": 4982
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\020_data_weather_source_audit_bom_donald_location_022_main_bundle_js.txt",
+      "bytes": 4982
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\021_data_weather_source_audit_bom_donald_location_022_main_bundle_js.txt",
+      "bytes": 4604
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\022_data_weather_source_audit_bom_donald_location_022_main_bundle_js.txt",
+      "bytes": 2384125
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\023_data_weather_source_audit_bom_donald_location_donald_location_audit_json.txt",
+      "bytes": 4754
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\024_data_weather_source_audit_bom_donald_location_EDGEIQ_BOM_DONALD_LOCATION_AUDIT_txt.txt",
+      "bytes": 4786
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\025_data_weather_source_audit_bom_stations_87184_022_main_bundle_js.txt",
+      "bytes": 5003
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\026_data_weather_source_audit_bom_stations_87184_022_main_bundle_js.txt",
+      "bytes": 5003
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\027_data_weather_source_audit_bom_stations_87184_022_main_bundle_js.txt",
+      "bytes": 4625
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\028_data_weather_source_audit_bom_stations_87184_022_main_bundle_js.txt",
+      "bytes": 5003
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\029_data_weather_source_audit_bom_stations_87184_022_main_bundle_js.txt",
+      "bytes": 5003
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\030_data_weather_source_audit_bom_stations_87184_022_main_bundle_js.txt",
+      "bytes": 5003
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\031_data_weather_source_audit_bom_stations_87184_022_main_bundle_js.txt",
+      "bytes": 5003
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\032_data_weather_source_audit_bom_stations_87184_022_main_bundle_js.txt",
+      "bytes": 5003
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\033_data_weather_source_audit_bom_stations_87184_022_main_bundle_js.txt",
+      "bytes": 5003
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\034_data_weather_source_audit_bom_stations_87184_022_main_bundle_js.txt",
+      "bytes": 4625
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\035_data_weather_source_audit_bom_stations_87184_022_main_bundle_js.txt",
+      "bytes": 4625
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\036_data_weather_source_audit_bom_stations_87184_022_main_bundle_js.txt",
+      "bytes": 4625
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\037_data_weather_source_audit_bom_stations_87184_022_main_bundle_js.txt",
+      "bytes": 4625
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\038_data_weather_source_audit_bom_stations_87184_022_main_bundle_js.txt",
+      "bytes": 4625
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\039_data_weather_source_audit_bom_stations_87184_022_main_bundle_js.txt",
+      "bytes": 4625
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\040_data_weather_source_audit_bom_stations_87184_022_main_bundle_js.txt",
+      "bytes": 4995
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\041_data_weather_source_audit_bom_stations_87184_022_main_bundle_js.txt",
+      "bytes": 4981
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\042_data_weather_source_audit_bom_stations_87184_022_main_bundle_js.txt",
+      "bytes": 4981
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\043_data_weather_source_audit_bom_stations_87184_022_main_bundle_js.txt",
+      "bytes": 4981
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\044_data_weather_source_audit_bom_stations_87184_022_main_bundle_js.txt",
+      "bytes": 4981
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\045_data_weather_source_audit_bom_stations_87184_022_main_bundle_js.txt",
+      "bytes": 4603
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\046_data_weather_source_audit_bom_stations_87184_022_main_bundle_js.txt",
+      "bytes": 2384124
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\047_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5599
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\048_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 6798
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\049_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5156
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\050_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5156
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\051_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5293
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\052_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5156
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\053_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5107
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\054_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5107
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\055_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5156
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\056_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5190
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\057_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5292
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\058_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5156
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\059_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5107
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\060_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4692
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\061_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4680
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\062_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4741
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\063_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4770
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\064_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4801
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\065_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4832
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\066_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4684
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\067_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4667
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\068_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4741
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\069_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4762
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\070_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4801
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\071_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4824
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\072_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4748
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\073_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4748
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\074_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4825
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\075_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4850
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\076_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4832
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\077_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4857
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\078_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4893
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\079_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4918
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\080_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4895
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\081_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4895
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\082_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4927
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\083_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4910
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\084_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5202
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\085_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5128
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\086_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5173
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\087_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5173
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\088_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5201
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\089_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5201
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\090_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5201
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\091_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5201
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\092_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5156
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\093_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5156
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\094_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5040
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\095_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5028
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\096_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5133
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\097_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5068
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\098_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5064
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\099_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5064
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\100_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5128
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\101_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5111
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\102_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5157
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\103_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5136
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\104_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5159
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\105_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5159
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\106_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5234
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\107_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5259
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\108_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5205
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\109_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5205
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\110_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5207
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\111_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5191
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\112_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5156
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\113_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5226
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\114_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5156
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\115_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5216
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\116_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5156
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\117_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5156
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\118_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5107
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\119_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5107
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\120_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5454
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\121_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5559
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\122_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5671
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\123_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5779
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\124_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5897
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\125_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 6000
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\126_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5156
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\127_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5186
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\128_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5186
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\129_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5186
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\130_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5186
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\131_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5186
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\132_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5183
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\133_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5134
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\134_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5134
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\135_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5134
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\136_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5134
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\137_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5107
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\138_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5107
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\139_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5107
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\140_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5107
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\141_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5107
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\142_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5107
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\143_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5107
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\144_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5033
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\145_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5033
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\146_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5033
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\147_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5156
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\148_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5182
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\149_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5179
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\150_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5183
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\151_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5183
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\152_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5156
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\153_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5156
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\154_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5107
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\155_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5107
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\156_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5107
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\157_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5107
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\158_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5107
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\159_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5107
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\160_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5033
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\161_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5033
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\162_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5033
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\163_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4667
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\164_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4667
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\165_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4741
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\166_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4815
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\167_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4801
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\168_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4877
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\169_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4667
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\170_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4667
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\171_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4741
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\172_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4807
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\173_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4801
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\174_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4869
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\175_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4491
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\176_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4778
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\177_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4778
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\178_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4778
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\179_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4805
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\180_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4805
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\181_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4805
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\182_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4812
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\183_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4812
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\184_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4812
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\185_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4873
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\186_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4873
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\187_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4873
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\188_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4926
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\189_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4926
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\190_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4926
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\191_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4907
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\192_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4951
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\193_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5078
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\194_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5182
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\195_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5178
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\196_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5185
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\197_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5209
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\198_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5209
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\199_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5209
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\200_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5209
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\201_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5209
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\202_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5209
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\203_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5231
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\204_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5231
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\205_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5231
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\206_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5231
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\207_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5231
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\208_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5231
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\209_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5201
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\210_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5201
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\211_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5201
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\212_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5201
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\213_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5201
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\214_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5201
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\215_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5156
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\216_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5156
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\217_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5156
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\218_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5156
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\219_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5156
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\220_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5156
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\221_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5020
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\222_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5020
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\223_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5017
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\224_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5021
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\225_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5021
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\226_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5113
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\227_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5113
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\228_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5110
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\229_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5114
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\230_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5114
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\231_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5096
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\232_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5096
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\233_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5096
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\234_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5096
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\235_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5096
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\236_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5111
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\237_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5111
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\238_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5161
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\239_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5111
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\240_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5111
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\241_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5111
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\242_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5136
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\243_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5136
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\244_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5136
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\245_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5136
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\246_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5136
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\247_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5136
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\248_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5189
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\249_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5189
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\250_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5189
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\251_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5189
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\252_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5189
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\253_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5189
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\254_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5214
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\255_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5214
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\256_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5214
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\257_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5214
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\258_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5214
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\259_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5214
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\260_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5245
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\261_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5245
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\262_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5245
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\263_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5245
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\264_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5245
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\265_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5245
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\266_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5191
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\267_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5191
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\268_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5240
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\269_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5191
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\270_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5191
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\271_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5191
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\272_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5156
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\273_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5181
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\274_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5181
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\275_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5181
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\276_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5181
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\277_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5181
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\278_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5156
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\279_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5171
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\280_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5171
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\281_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5171
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\282_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5171
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\283_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5171
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\284_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5197
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\285_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5148
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\286_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5148
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\287_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5148
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\288_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5148
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\289_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5107
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\290_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5158
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\291_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5107
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\292_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5107
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\293_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5107
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\294_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5107
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\295_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5136
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\296_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5062
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\297_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5062
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\298_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5062
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\299_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5033
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\300_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5054
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\301_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5054
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\302_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5054
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\303_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5054
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\304_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5076
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\305_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5027
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\306_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5027
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\307_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5027
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\308_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5035
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\309_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4984
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\310_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4984
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\311_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4984
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\312_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4984
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\313_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5017
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\314_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4943
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\315_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4943
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\316_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4910
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\317_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4937
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\318_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4937
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\319_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4937
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\320_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4910
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\321_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4858
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\322_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4858
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\323_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4858
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\324_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4858
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\325_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4858
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\326_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4894
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\327_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4894
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\328_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4814
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\329_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4778
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\330_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4808
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\331_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4808
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\332_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4778
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\333_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4778
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\334_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4778
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\335_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4778
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\336_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4730
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\337_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 6703
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\338_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5174
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\339_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5148
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\340_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5234
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\341_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5148
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\342_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5148
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\343_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4713
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\344_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4733
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\345_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4793
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\346_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4705
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\347_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4733
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\348_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4793
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\349_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4766
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\350_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4793
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\351_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4800
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\352_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4861
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\353_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4914
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\354_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4859
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\355_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5120
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\356_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5197
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\357_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5219
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\358_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5193
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\359_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5148
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\360_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4974
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\361_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5060
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\362_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5084
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\363_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5149
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\364_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5178
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\365_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5177
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\366_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5202
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\367_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5233
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\368_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5228
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\369_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5169
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\370_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5159
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\371_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5148
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\372_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5099
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\373_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5588
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\374_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 6787
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\375_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5146
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\376_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5272
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\377_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5134
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\378_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5134
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\379_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5271
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\380_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5134
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\381_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5085
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\382_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5085
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\383_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5011
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\384_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5144
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\385_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5271
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\386_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5134
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\387_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5168
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\388_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5270
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\389_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5134
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\390_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5085
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\391_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5011
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\392_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4498
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\393_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4582
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\394_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4670
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\395_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4670
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\396_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4658
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\397_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4719
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\398_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4719
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\399_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4748
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\400_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4779
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\401_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4779
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\402_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4810
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\403_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4662
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\404_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4662
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\405_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4645
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\406_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4719
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\407_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4719
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\408_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4740
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\409_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4779
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\410_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4779
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\411_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4802
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\412_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4469
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\413_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4726
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\414_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4726
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\415_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4726
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\416_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4756
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\417_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4803
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\418_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4828
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\419_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4763
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\420_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4810
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\421_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4835
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\422_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4823
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\423_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4871
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\424_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4896
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\425_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4873
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\426_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4873
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\427_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4873
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\428_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4845
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\429_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4905
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\430_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4888
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\431_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5127
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\432_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5180
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\433_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5106
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\434_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5151
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\435_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5151
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\436_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5151
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\437_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5179
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\438_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5179
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\439_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5179
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\440_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5179
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\441_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5179
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\442_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5179
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\443_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5134
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\444_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5134
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\445_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5134
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\446_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5134
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\447_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4960
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\448_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5018
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\449_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5006
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\450_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5058
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\451_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5111
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\452_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5046
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\453_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5042
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\454_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5042
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\455_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5042
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\456_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5106
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\457_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5106
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\458_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5089
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\459_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5135
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\460_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5135
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\461_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5114
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\462_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5137
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\463_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5137
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\464_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5137
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\465_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5172
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\466_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5212
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\467_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5237
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\468_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5183
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\469_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5183
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\470_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5183
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\471_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5185
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\472_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5185
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\473_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5169
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\474_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5134
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\475_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5134
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\476_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5204
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\477_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5134
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\478_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5194
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\479_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5134
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\480_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5134
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\481_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5085
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\482_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5085
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\483_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4836
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\484_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4836
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\485_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4756
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\486_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4756
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\487_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4756
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\488_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4708
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\489_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4648
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\490_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5328
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\491_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 5326
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\492_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_json.txt",
+      "bytes": 4711
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\493_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_txt.txt",
+      "bytes": 5899
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\494_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_txt.txt",
+      "bytes": 7021
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\495_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_txt.txt",
+      "bytes": 5761
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\496_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_txt.txt",
+      "bytes": 5859
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\497_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_txt.txt",
+      "bytes": 5957
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\498_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_txt.txt",
+      "bytes": 6051
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\499_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_txt.txt",
+      "bytes": 6155
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\500_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_txt.txt",
+      "bytes": 6218
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\501_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_txt.txt",
+      "bytes": 6919
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\502_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_txt.txt",
+      "bytes": 5888
+    },
+    {
+      "path": "data\\weather\\bom-location-api\\readable-contract-evidence\\503_data_weather_source_audit_bom_stations_87184_bom_station_source_audit_txt.txt",
+      "bytes": 7010
+    },
+    {
+      "path": "data\\weather\\bom-location-resolution\\bom_search_location_candidates_v1.csv",
+      "bytes": 202
+    },
+    {
+      "path": "data\\weather\\bom-location-resolution\\bom_search_location_manual_review_v1.csv",
+      "bytes": 14638
+    },
+    {
+      "path": "data\\weather\\bom_payload_deep_schema_v1.csv",
+      "bytes": 20600
+    },
+    {
+      "path": "data\\weather\\bom_station_observation_inventory_v1.csv",
+      "bytes": 1003
+    },
+    {
+      "path": "data\\weather\\bom_track_location_manual_review_v1.csv",
+      "bytes": 10129
+    },
+    {
+      "path": "data\\weather\\bom_track_location_registry_v1.csv",
+      "bytes": 12123
+    },
+    {
+      "path": "data\\weather\\bom_track_location_registry_v1.json",
+      "bytes": 29902
+    },
+    {
+      "path": "data\\weather\\bom_track_location_registry_v1_1.csv",
+      "bytes": 17312
+    },
+    {
+      "path": "data\\weather\\bom_track_location_registry_v1_1.json",
+      "bytes": 45013
+    },
+    {
+      "path": "data\\weather\\live_raw_on_track_weather_source_status_v1.csv",
+      "bytes": 728
+    },
+    {
+      "path": "data\\weather\\live_raw_on_track_weather_v1.csv",
+      "bytes": 1536
+    },
+    {
+      "path": "data\\weather\\live_raw_on_track_weather_v1.json",
+      "bytes": 28719
+    },
+    {
+      "path": "data\\weather\\on_track_weather_all_units_v1.csv",
+      "bytes": 380
+    },
+    {
+      "path": "data\\weather\\on_track_weather_freshness_v1.csv",
+      "bytes": 806
+    },
+    {
+      "path": "data\\weather\\on_track_weather_governed_v1_1.csv",
+      "bytes": 4364
+    },
+    {
+      "path": "data\\weather\\on_track_weather_governed_v1_1_lineage.csv",
+      "bytes": 3204
+    },
+    {
+      "path": "data\\weather\\on_track_weather_governed_v1_2.csv",
+      "bytes": 2696
+    },
+    {
+      "path": "data\\weather\\on_track_weather_governed_v1_2_lineage.csv",
+      "bytes": 7196
+    },
+    {
+      "path": "data\\weather\\on_track_weather_observation_lineage_v1.csv",
+      "bytes": 8238
+    },
+    {
+      "path": "data\\weather\\on_track_weather_observation_v1.csv",
+      "bytes": 3582
+    },
+    {
+      "path": "data\\weather\\on_track_weather_payload_inventory_v1.csv",
+      "bytes": 916
+    },
+    {
+      "path": "data\\weather\\on_track_weather_units_v1.csv",
+      "bytes": 477
+    },
+    {
+      "path": "data\\weather\\weather_information_required_v1.csv",
+      "bytes": 46639
+    },
+    {
+      "path": "data\\weather\\weather_payload_candidate_values_v1.csv",
+      "bytes": 67011
+    },
+    {
+      "path": "data\\weather\\weather_payload_deep_schema_v1.csv",
+      "bytes": 87307
+    },
+    {
+      "path": "data\\weather\\weather_source_evidence_v1.csv",
+      "bytes": 79339
+    },
+    {
+      "path": "data\\weather\\weather_source_registry_v1.csv",
+      "bytes": 10719
+    },
+    {
+      "path": "data\\weather\\weather_source_verified_candidates_v1.csv",
+      "bytes": 1527
+    },
+    {
+      "path": "data\\weather\\weather_wind_unit_evidence_v1.csv",
+      "bytes": 2451352
+    },
+    {
+      "path": "docs\\operations-readiness\\live-data\\edgeiq_live_weather_acceptance_v1.csv",
+      "bytes": 75
+    },
+    {
+      "path": "public\\data\\edgeiq_bom_location_api_contract_trace_v1.json",
+      "bytes": 490
+    },
+    {
+      "path": "public\\data\\edgeiq_bom_location_api_contract_trace_v1.txt",
+      "bytes": 1304770
+    },
+    {
+      "path": "public\\data\\edgeiq_bom_search_location_resolver_v1_audit.json",
+      "bytes": 879
+    },
+    {
+      "path": "public\\data\\edgeiq_bom_search_location_resolver_v1_audit.txt",
+      "bytes": 575
+    },
+    {
+      "path": "public\\data\\edgeiq_bom_track_location_registry_v1_audit.json",
+      "bytes": 813
+    },
+    {
+      "path": "public\\data\\edgeiq_bom_track_location_registry_v1_audit.txt",
+      "bytes": 423
+    },
+    {
+      "path": "public\\data\\edgeiq_live_on_track_weather_ingestion_v1_final_report.json",
+      "bytes": 3896
+    },
+    {
+      "path": "public\\data\\edgeiq_live_on_track_weather_ingestion_v1_final_report.txt",
+      "bytes": 2119
+    },
+    {
+      "path": "public\\data\\edgeiq_live_on_track_weather_probe_v1.json",
+      "bytes": 6284
+    },
+    {
+      "path": "public\\data\\edgeiq_live_on_track_weather_probe_v1.txt",
+      "bytes": 1445
+    },
+    {
+      "path": "public\\data\\edgeiq_live_track_intelligence_v1.csv",
+      "bytes": 479800
+    },
+    {
+      "path": "public\\data\\edgeiq_live_track_intelligence_v1.json",
+      "bytes": 425
+    },
+    {
+      "path": "public\\data\\edgeiq_live_track_intelligence_v1_summary.csv",
+      "bytes": 389
+    },
+    {
+      "path": "public\\data\\edgeiq_live_track_intelligence_v1_unmatched.csv",
+      "bytes": 2270
+    },
+    {
+      "path": "public\\data\\edgeiq_live_track_intelligence_v2.csv",
+      "bytes": 110658
+    },
+    {
+      "path": "public\\data\\edgeiq_live_track_intelligence_v2_1.csv",
+      "bytes": 481145
+    },
+    {
+      "path": "public\\data\\edgeiq_live_track_intelligence_v2_1_summary.csv",
+      "bytes": 320
+    },
+    {
+      "path": "public\\data\\edgeiq_live_track_intelligence_v2_summary.csv",
+      "bytes": 239
+    },
+    {
+      "path": "public\\data\\edgeiq_live_weather_feed_v1.csv",
+      "bytes": 14300
+    },
+    {
+      "path": "public\\data\\edgeiq_meeting_weather_tab_v1_audit.json",
+      "bytes": 341
+    },
+    {
+      "path": "public\\data\\edgeiq_meeting_weather_tab_v1_audit.txt",
+      "bytes": 211
+    },
+    {
+      "path": "public\\data\\edgeiq_metropolitan_weather_v1.json",
+      "bytes": 9920
+    },
+    {
+      "path": "public\\data\\edgeiq_metropolitan_weather_v1_CHECKPOINT_BEFORE_PROVIDER_REGISTRY_20260710_114555.json",
+      "bytes": 1467
+    },
+    {
+      "path": "public\\data\\edgeiq_metropolitan_weather_v1_CHECKPOINT_BEFORE_VICTORIA_COMPLETE_20260710_134803.json",
+      "bytes": 9961
+    },
+    {
+      "path": "public\\data\\edgeiq_metropolitan_weather_v1_summary.txt",
+      "bytes": 1926
+    },
+    {
+      "path": "public\\data\\edgeiq_metropolitan_weather_v1_summary_CHECKPOINT_BEFORE_PROVIDER_REGISTRY_20260710_114555.txt",
+      "bytes": 943
+    },
+    {
+      "path": "public\\data\\edgeiq_metropolitan_weather_v1_summary_CHECKPOINT_BEFORE_VICTORIA_COMPLETE_20260710_134803.txt",
+      "bytes": 1994
+    },
+    {
+      "path": "public\\data\\edgeiq_on_track_weather_freshness_v1.json",
+      "bytes": 2342
+    },
+    {
+      "path": "public\\data\\edgeiq_on_track_weather_freshness_v1_audit.json",
+      "bytes": 2627
+    },
+    {
+      "path": "public\\data\\edgeiq_on_track_weather_freshness_v1_audit.txt",
+      "bytes": 251
+    },
+    {
+      "path": "public\\data\\edgeiq_on_track_weather_governed_v1_1.json",
+      "bytes": 10231
+    },
+    {
+      "path": "public\\data\\edgeiq_on_track_weather_governed_v1_1_audit.json",
+      "bytes": 796
+    },
+    {
+      "path": "public\\data\\edgeiq_on_track_weather_governed_v1_1_audit.txt",
+      "bytes": 374
+    },
+    {
+      "path": "public\\data\\edgeiq_on_track_weather_governed_v1_2.json",
+      "bytes": 5869
+    },
+    {
+      "path": "public\\data\\edgeiq_on_track_weather_governed_v1_2_audit.json",
+      "bytes": 622
+    },
+    {
+      "path": "public\\data\\edgeiq_on_track_weather_governed_v1_2_audit.txt",
+      "bytes": 331
+    },
+    {
+      "path": "public\\data\\edgeiq_on_track_weather_observation_v1.json",
+      "bytes": 7851
+    },
+    {
+      "path": "public\\data\\edgeiq_on_track_weather_observation_v1_audit.json",
+      "bytes": 1045
+    },
+    {
+      "path": "public\\data\\edgeiq_on_track_weather_observation_v1_audit.txt",
+      "bytes": 493
+    },
+    {
+      "path": "public\\data\\edgeiq_race_weather_v1.json",
+      "bytes": 3985
+    },
+    {
+      "path": "public\\data\\edgeiq_track_intelligence_by_distance_v2.csv",
+      "bytes": 6530
+    },
+    {
+      "path": "public\\data\\edgeiq_track_intelligence_by_track_v2.csv",
+      "bytes": 107207
+    },
+    {
+      "path": "public\\data\\edgeiq_track_intelligence_card_v1.csv",
+      "bytes": 25310
+    },
+    {
+      "path": "public\\data\\edgeiq_track_intelligence_card_v1_summary.csv",
+      "bytes": 370
+    },
+    {
+      "path": "public\\data\\edgeiq_track_intelligence_profile_by_condition_v2.csv",
+      "bytes": 485746
+    },
+    {
+      "path": "public\\data\\edgeiq_track_intelligence_profile_v2.csv",
+      "bytes": 465174
+    },
+    {
+      "path": "public\\data\\edgeiq_track_intelligence_profile_v2.json",
+      "bytes": 1043
+    },
+    {
+      "path": "public\\data\\edgeiq_track_intelligence_profile_v2_summary.csv",
+      "bytes": 902
+    },
+    {
+      "path": "public\\data\\edgeiq_track_intelligence_runner_profile_v2.csv",
+      "bytes": 23578777
+    },
+    {
+      "path": "public\\data\\edgeiq_vic_bom_observations_v1.json",
+      "bytes": 4146
+    },
+    {
+      "path": "public\\data\\edgeiq_vic_bom_observations_v1_audit.txt",
+      "bytes": 617
+    },
+    {
+      "path": "public\\data\\edgeiq_vic_bom_observations_v1_summary.txt",
+      "bytes": 1507
+    },
+    {
+      "path": "public\\data\\edgeiq_victorian_track_weather_v1.json",
+      "bytes": 3399
+    },
+    {
+      "path": "public\\data\\edgeiq_victorian_weather_registry_v1_audit.txt",
+      "bytes": 370
+    },
+    {
+      "path": "public\\data\\edgeiq_weather_beta_v1_coverage.csv",
+      "bytes": 299
+    },
+    {
+      "path": "public\\data\\edgeiq_weather_beta_v1_coverage_summary.txt",
+      "bytes": 97
+    },
+    {
+      "path": "public\\data\\edgeiq_weather_beta_v1_station_mapping_audit.csv",
+      "bytes": 348
+    },
+    {
+      "path": "public\\data\\edgeiq_weather_current_repository_trace_v1.txt",
+      "bytes": 502871
+    },
+    {
+      "path": "public\\data\\edgeiq_weather_data_contract_v2_audit.json",
+      "bytes": 509
+    },
+    {
+      "path": "public\\data\\edgeiq_weather_data_contract_v2_audit.txt",
+      "bytes": 388
+    },
+    {
+      "path": "public\\data\\edgeiq_weather_engine_audit_v1.csv",
+      "bytes": 684
+    },
+    {
+      "path": "public\\data\\edgeiq_weather_engine_summary_v1.csv",
+      "bytes": 240
+    },
+    {
+      "path": "public\\data\\edgeiq_weather_engine_v1.csv",
+      "bytes": 14300
+    },
+    {
+      "path": "public\\data\\edgeiq_weather_engineering_build_v1_audit.json",
+      "bytes": 711
+    },
+    {
+      "path": "public\\data\\edgeiq_weather_engineering_build_v1_audit.txt",
+      "bytes": 430
+    },
+    {
+      "path": "public\\data\\edgeiq_weather_engineering_build_v1_lineage.txt",
+      "bytes": 597
+    },
+    {
+      "path": "public\\data\\edgeiq_weather_engineering_build_v1_trace.txt",
+      "bytes": 823
+    },
+    {
+      "path": "public\\data\\edgeiq_weather_payload_schema_v1_audit.json",
+      "bytes": 936
+    },
+    {
+      "path": "public\\data\\edgeiq_weather_payload_schema_v1_audit.txt",
+      "bytes": 414
+    },
+    {
+      "path": "public\\data\\edgeiq_weather_source_candidate_audit_v1.json",
+      "bytes": 1027
+    },
+    {
+      "path": "public\\data\\edgeiq_weather_source_candidate_audit_v1.txt",
+      "bytes": 478
+    },
+    {
+      "path": "public\\data\\edgeiq_weather_source_registry_v1_audit.json",
+      "bytes": 860
+    },
+    {
+      "path": "public\\data\\edgeiq_weather_source_registry_v1_audit.txt",
+      "bytes": 497
+    },
+    {
+      "path": "public\\data\\edgeiq_weather_visual_structure_v1_audit.json",
+      "bytes": 326
+    },
+    {
+      "path": "public\\data\\edgeiq_weather_visual_structure_v1_audit.txt",
+      "bytes": 239
+    },
+    {
+      "path": "public\\data\\track_intelligence_missing_runner_style.csv",
+      "bytes": 2123
+    },
+    {
+      "path": "public\\data\\visual_audits\\edgeiq_beta_v1_weather.png",
+      "bytes": 8041
+    },
+    {
+      "path": "public\\data\\visual_audits\\edgeiq_form_guide_v3_4_overview_weather.png",
+      "bytes": 42332
+    },
+    {
+      "path": "public\\data\\visual_audits\\edgeiq_form_guide_v3_4_weather_header.png",
+      "bytes": 92418
+    },
+    {
+      "path": "public\\data\\visual_audits\\edgeiq_form_guide_v3_4_weather_view.png",
+      "bytes": 121346
+    },
+    {
+      "path": "public\\data\\visual_audits\\edgeiq_light_design_v3_meeting_weather.png",
+      "bytes": 41893
+    },
+    {
+      "path": "public\\data\\visual_audits\\edgeiq_live_on_track_weather_v1\\02_weather_ballarat_unavailable_stale_state.png",
+      "bytes": 198620
+    },
+    {
+      "path": "public\\data\\visual_audits\\edgeiq_live_on_track_weather_v1\\03_live_on_track_weather_fresh_sources.png",
+      "bytes": 130298
+    },
+    {
+      "path": "public\\data\\visual_audits\\edgeiq_live_on_track_weather_v1\\live_on_track_weather_audit.html",
+      "bytes": 3979
+    },
+    {
+      "path": "public\\data\\visual_audits\\edgeiq_live_on_track_weather_v1\\live_on_track_weather_audit.svg",
+      "bytes": 6311
+    },
+    {
+      "path": "public\\data\\visual_audits\\edgeiq_meeting_detail_engineering_v1_08_weather_pending.png",
+      "bytes": 75998
+    },
+    {
+      "path": "public\\data\\visual_audits\\edgeiq_meeting_workspace_v1_weather.png",
+      "bytes": 79322
+    },
+    {
+      "path": "public\\data\\visual_audits\\edgeiq_weather_engineering_v1_01_complete_weather.png",
+      "bytes": 137939
+    },
+    {
+      "path": "public\\data\\visual_audits\\edgeiq_weather_engineering_v1_02_hourly_forecast.png",
+      "bytes": 114838
+    },
+    {
+      "path": "public\\data\\visual_audits\\edgeiq_weather_engineering_v1_03_race_day_impact.png",
+      "bytes": 114838
+    },
+    {
+      "path": "public\\data\\visual_audits\\edgeiq_weather_engineering_v1_04_partial_availability.png",
+      "bytes": 135725
+    },
+    {
+      "path": "public\\data\\visual_audits\\edgeiq_weather_engineering_v1_05_fully_unavailable_meeting.png",
+      "bytes": 88226
+    },
+    {
+      "path": "public\\data\\visual_audits\\edgeiq_weather_engineering_v1_06_narrow_desktop.png",
+      "bytes": 91674
+    },
+    {
+      "path": "public\\data\\visual_audits\\edgeiq_weather_engineering_v1_browser_notes.txt",
+      "bytes": 977
+    },
+    {
+      "path": "scripts\\__pycache__\\apply_edgeiq_approved_ui_phase15_weather_v1.cpython-314.pyc",
+      "bytes": 385
+    },
+    {
+      "path": "scripts\\__pycache__\\apply_edgeiq_track_weather_user_cleanup_v1.cpython-314.pyc",
+      "bytes": 12598
+    },
+    {
+      "path": "scripts\\__pycache__\\apply_edgeiq_weather_summary_compact_v1.cpython-314.pyc",
+      "bytes": 4112
+    },
+    {
+      "path": "scripts\\__pycache__\\apply_edgeiq_weather_summary_final_v2.cpython-314.pyc",
+      "bytes": 3236
+    },
+    {
+      "path": "scripts\\__pycache__\\audit_edgeiq_victorian_track_weather_v1.cpython-314.pyc",
+      "bytes": 7546
+    },
+    {
+      "path": "scripts\\__pycache__\\build_edgeiq_bom_data_access_assessment_v1.cpython-314.pyc",
+      "bytes": 3630
+    },
+    {
+      "path": "scripts\\__pycache__\\build_edgeiq_bom_latest_observations_v1.cpython-314.pyc",
+      "bytes": 3756
+    },
+    {
+      "path": "scripts\\__pycache__\\build_edgeiq_victorian_track_weather_v1.cpython-314.pyc",
+      "bytes": 6942
+    },
+    {
+      "path": "scripts\\__pycache__\\build_edgeiq_victorian_weather_baseline_v1.cpython-314.pyc",
+      "bytes": 4252
+    },
+    {
+      "path": "scripts\\__pycache__\\discover_edgeiq_bom_victorian_stations_v1.cpython-314.pyc",
+      "bytes": 3406
+    },
+    {
+      "path": "scripts\\__pycache__\\edgeiq_weather_victoria_common_v1.cpython-314.pyc",
+      "bytes": 8446
+    },
+    {
+      "path": "scripts\\__pycache__\\fix_edgeiq_weather_sourcepanel_render_v1.cpython-314.pyc",
+      "bytes": 1367
+    },
+    {
+      "path": "scripts\\__pycache__\\fix_edgeiq_weather_sourcepanel_syntax_v1.cpython-314.pyc",
+      "bytes": 1480
+    },
+    {
+      "path": "scripts\\__pycache__\\patch_edgeiq_weather_workspace_live_conditions_v1.cpython-314.pyc",
+      "bytes": 6184
+    },
+    {
+      "path": "scripts\\__pycache__\\select_edgeiq_track_bom_station_mapping_v1.cpython-314.pyc",
+      "bytes": 6721
+    },
+    {
+      "path": "scripts\\apply_edgeiq_approved_ui_phase15_weather_v1.py",
+      "bytes": 170
+    },
+    {
+      "path": "scripts\\apply_edgeiq_live_on_track_weather_ingestion_v1.py",
+      "bytes": 45747
+    },
+    {
+      "path": "scripts\\apply_edgeiq_track_weather_user_cleanup_v1.py",
+      "bytes": 10998
+    },
+    {
+      "path": "scripts\\apply_edgeiq_weather_final_spec_v1.py",
+      "bytes": 20615
+    },
+    {
+      "path": "scripts\\apply_edgeiq_weather_summary_compact_v1.py",
+      "bytes": 3501
+    },
+    {
+      "path": "scripts\\apply_edgeiq_weather_summary_final_v2.py",
+      "bytes": 2669
+    },
+    {
+      "path": "scripts\\audit_edgeiq_bom_donald_location_v1.py",
+      "bytes": 6236
+    },
+    {
+      "path": "scripts\\audit_edgeiq_bom_exact_field_paths_v1.py",
+      "bytes": 2024
+    },
+    {
+      "path": "scripts\\audit_edgeiq_bom_observation_endpoint_v1.py",
+      "bytes": 5406
+    },
+    {
+      "path": "scripts\\audit_edgeiq_live_on_track_weather_ingestion_v1.py",
+      "bytes": 5245
+    },
+    {
+      "path": "scripts\\audit_edgeiq_meeting_weather_tab_v1.py",
+      "bytes": 902
+    },
+    {
+      "path": "scripts\\audit_edgeiq_metropolitan_weather_sources_v1.py",
+      "bytes": 4577
+    },
+    {
+      "path": "scripts\\audit_edgeiq_metropolitan_weather_sources_v2.py",
+      "bytes": 8814
+    },
+    {
+      "path": "scripts\\audit_edgeiq_on_track_weather_freshness_v1.py",
+      "bytes": 5271
+    },
+    {
+      "path": "scripts\\audit_edgeiq_victorian_track_weather_v1.py",
+      "bytes": 3895
+    },
+    {
+      "path": "scripts\\audit_edgeiq_weather_data_contract_v2.py",
+      "bytes": 2907
+    },
+    {
+      "path": "scripts\\audit_edgeiq_weather_engine_v1.py",
+      "bytes": 4377
+    },
+    {
+      "path": "scripts\\audit_edgeiq_weather_engineering_build_v1.py",
+      "bytes": 2619
+    },
+    {
+      "path": "scripts\\audit_edgeiq_weather_final_spec_v1.py",
+      "bytes": 4874
+    },
+    {
+      "path": "scripts\\audit_edgeiq_weather_payload_schema_v1.py",
+      "bytes": 11193
+    },
+    {
+      "path": "scripts\\audit_edgeiq_weather_source_candidates_v1.py",
+      "bytes": 16914
+    },
+    {
+      "path": "scripts\\audit_edgeiq_weather_visual_structure_v1.py",
+      "bytes": 2309
+    },
+    {
+      "path": "scripts\\build_edgeiq_bom_data_access_assessment_v1.py",
+      "bytes": 2528
+    },
+    {
+      "path": "scripts\\build_edgeiq_bom_latest_observations_v1.py",
+      "bytes": 2295
+    },
+    {
+      "path": "scripts\\build_edgeiq_bom_station_87184_v1.py",
+      "bytes": 14560
+    },
+    {
+      "path": "scripts\\build_edgeiq_bom_station_87184_v1_CHECKPOINT_BEFORE_SCHEMA_FIX_20260710_133344.py",
+      "bytes": 14560
+    },
+    {
+      "path": "scripts\\build_edgeiq_bom_towns_registry_v1.py",
+      "bytes": 22120
+    },
+    {
+      "path": "scripts\\build_edgeiq_bom_track_location_registry_v1.py",
+      "bytes": 17794
+    },
+    {
+      "path": "scripts\\build_edgeiq_live_on_track_weather_snapshot_v1.py",
+      "bytes": 5421
+    },
+    {
+      "path": "scripts\\build_edgeiq_live_on_track_weather_visual_audit_v1.py",
+      "bytes": 4021
+    },
+    {
+      "path": "scripts\\build_edgeiq_live_track_intelligence_v1.py",
+      "bytes": 12925
+    },
+    {
+      "path": "scripts\\build_edgeiq_live_track_intelligence_v2.py",
+      "bytes": 11320
+    },
+    {
+      "path": "scripts\\build_edgeiq_live_track_intelligence_v2_1.py",
+      "bytes": 13156
+    },
+    {
+      "path": "scripts\\build_edgeiq_metropolitan_weather_registry_v1.py",
+      "bytes": 17242
+    },
+    {
+      "path": "scripts\\build_edgeiq_metropolitan_weather_v1.py",
+      "bytes": 14046
+    },
+    {
+      "path": "scripts\\build_edgeiq_metropolitan_weather_v1_CHECKPOINT_BEFORE_LIVE_REFRESH_20260710_110601.py",
+      "bytes": 13359
+    },
+    {
+      "path": "scripts\\build_edgeiq_metropolitan_weather_v1_CHECKPOINT_BEFORE_TURFDATA_WIND_FIX_20260710_105919.py",
+      "bytes": 11097
+    },
+    {
+      "path": "scripts\\build_edgeiq_on_track_weather_governed_v1_1.py",
+      "bytes": 9045
+    },
+    {
+      "path": "scripts\\build_edgeiq_on_track_weather_governed_v1_2.py",
+      "bytes": 11898
+    },
+    {
+      "path": "scripts\\build_edgeiq_on_track_weather_observation_v1.py",
+      "bytes": 16755
+    },
+    {
+      "path": "scripts\\build_edgeiq_racing_australia_track_and_audit_bom_v1.py",
+      "bytes": 20876
+    },
+    {
+      "path": "scripts\\build_edgeiq_track_intelligence_card_v1.py",
+      "bytes": 8331
+    },
+    {
+      "path": "scripts\\build_edgeiq_track_intelligence_profile_v2.py",
+      "bytes": 16400
+    },
+    {
+      "path": "scripts\\build_edgeiq_vic_bom_observations_v1.py",
+      "bytes": 13677
+    },
+    {
+      "path": "scripts\\build_edgeiq_vic_bom_observations_v1_CHECKPOINT_BEFORE_EXACT_SCHEMA_20260710_134443.py",
+      "bytes": 11476
+    },
+    {
+      "path": "scripts\\build_edgeiq_vic_bom_observations_v1_CHECKPOINT_BEFORE_VICTORIA_COMPLETE_20260710_134803.py",
+      "bytes": 13685
+    },
+    {
+      "path": "scripts\\build_edgeiq_victorian_track_weather_v1.py",
+      "bytes": 3542
+    },
+    {
+      "path": "scripts\\build_edgeiq_victorian_weather_baseline_v1.py",
+      "bytes": 2223
+    },
+    {
+      "path": "scripts\\build_edgeiq_victorian_weather_registry_v1.py",
+      "bytes": 19620
+    },
+    {
+      "path": "scripts\\build_edgeiq_weather_beta_v1.py",
+      "bytes": 4326
+    },
+    {
+      "path": "scripts\\build_edgeiq_weather_engine_v1.py",
+      "bytes": 8438
+    },
+    {
+      "path": "scripts\\build_edgeiq_weather_source_registry_v1.py",
+      "bytes": 16884
+    },
+    {
+      "path": "scripts\\capture_edgeiq_weather_engineering_v1_visuals.mjs",
+      "bytes": 3314
+    },
+    {
+      "path": "scripts\\checkpoint_edgeiq_weather_engineering_build_v1.py",
+      "bytes": 209
+    },
+    {
+      "path": "scripts\\discover_edgeiq_bom_victorian_stations_v1.py",
+      "bytes": 3263
+    },
+    {
+      "path": "scripts\\edgeiq_weather_victoria_common_v1.py",
+      "bytes": 3489
+    },
+    {
+      "path": "scripts\\fix_edgeiq_weather_sourcepanel_render_v1.py",
+      "bytes": 869
+    },
+    {
+      "path": "scripts\\fix_edgeiq_weather_sourcepanel_syntax_v1.py",
+      "bytes": 1025
+    },
+    {
+      "path": "scripts\\patch_edgeiq_weather_workspace_live_conditions_v1.py",
+      "bytes": 5049
+    },
+    {
+      "path": "scripts\\patch_edgeiq_weather_workspace_on_track_feed_v1.py",
+      "bytes": 932
+    },
+    {
+      "path": "scripts\\probe_edgeiq_live_on_track_weather_v1.py",
+      "bytes": 6499
+    },
+    {
+      "path": "scripts\\refresh_edgeiq_weather_once.ps1",
+      "bytes": 471
+    },
+    {
+      "path": "scripts\\refresh_edgeiq_weather_once_CHECKPOINT_BEFORE_PROVIDER_REGISTRY_20260710_114555.ps1",
+      "bytes": 448
+    },
+    {
+      "path": "scripts\\refresh_edgeiq_weather_once_CHECKPOINT_BEFORE_VICTORIA_COMPLETE_20260710_134803.ps1",
+      "bytes": 483
+    },
+    {
+      "path": "scripts\\resolve_edgeiq_bom_search_locations_v1.py",
+      "bytes": 18733
+    },
+    {
+      "path": "scripts\\run_edgeiq_daily_product_refresh_v1_CHECKPOINT_PRE_VICTORIAN_TRACK_WEATHER_V1.py",
+      "bytes": 8475
+    },
+    {
+      "path": "scripts\\run_edgeiq_weather_live.ps1",
+      "bytes": 1071
+    },
+    {
+      "path": "scripts\\run_edgeiq_weather_live_CHECKPOINT_BEFORE_PROVIDER_REGISTRY_20260710_114555.ps1",
+      "bytes": 864
+    },
+    {
+      "path": "scripts\\run_edgeiq_weather_live_CHECKPOINT_BEFORE_VICTORIA_COMPLETE_20260710_134803.ps1",
+      "bytes": 1053
+    },
+    {
+      "path": "scripts\\select_edgeiq_track_bom_station_mapping_v1.py",
+      "bytes": 4613
+    },
+    {
+      "path": "scripts\\trace_edgeiq_bom_location_api_contract_v1.py",
+      "bytes": 7659
+    },
+    {
+      "path": "scripts\\update_edgeiq_weather_source_registry_live_v1.py",
+      "bytes": 2846
+    },
+    {
+      "path": "scripts\\wire_edgeiq_metropolitan_weather_workspace_v3.py",
+      "bytes": 21399
+    },
+    {
+      "path": "src\\edgeiq-os\\race\\components\\MeetingWeatherWorkspace.tsx",
+      "bytes": 5684
+    },
+    {
+      "path": "src\\edgeiq-os\\race\\components\\MeetingWeatherWorkspace_CHECKPOINT_BEFORE_FACTUAL_WEATHER_V2_20260710_103814.tsx",
+      "bytes": 3769
+    },
+    {
+      "path": "src\\edgeiq-os\\race\\components\\MeetingWeatherWorkspace_CHECKPOINT_BEFORE_FACTUAL_WEATHER_V2_20260710_103814_CHECKPOINT_PRE_ENCODING_REPAIR_V1.tsx",
+      "bytes": 3769
+    },
+    {
+      "path": "src\\edgeiq-os\\race\\components\\MeetingWeatherWorkspace_CHECKPOINT_BEFORE_FULL_PRODUCT_DIRECTIVE_FOUNDATION_20260718_154427.tsx",
+      "bytes": 7074
+    },
+    {
+      "path": "src\\edgeiq-os\\race\\components\\MeetingWeatherWorkspace_CHECKPOINT_BEFORE_LIVE_REFRESH_20260710_110601.tsx",
+      "bytes": 11150
+    },
+    {
+      "path": "src\\edgeiq-os\\race\\components\\MeetingWeatherWorkspace_CHECKPOINT_BEFORE_LIVE_REFRESH_20260710_110601_CHECKPOINT_PRE_ENCODING_REPAIR_V1.tsx",
+      "bytes": 11150
+    },
+    {
+      "path": "src\\edgeiq-os\\race\\components\\MeetingWeatherWorkspace_CHECKPOINT_BEFORE_METRO_WIRING_20260710_120553.tsx",
+      "bytes": 11661
+    },
+    {
+      "path": "src\\edgeiq-os\\race\\components\\MeetingWeatherWorkspace_CHECKPOINT_BEFORE_METRO_WIRING_20260710_120553_CHECKPOINT_PRE_ENCODING_REPAIR_V1.tsx",
+      "bytes": 11661
+    },
+    {
+      "path": "src\\edgeiq-os\\race\\components\\MeetingWeatherWorkspace_CHECKPOINT_BEFORE_VRC_WEATHER_ENGINE_V1_20260710_105105.tsx",
+      "bytes": 8410
+    },
+    {
+      "path": "src\\edgeiq-os\\race\\components\\MeetingWeatherWorkspace_CHECKPOINT_BEFORE_VRC_WEATHER_ENGINE_V1_20260710_105105_CHECKPOINT_PRE_ENCODING_REPAIR_V1.tsx",
+      "bytes": 8410
+    },
+    {
+      "path": "src\\edgeiq-os\\race\\components\\MeetingWeatherWorkspace_CHECKPOINT_PRE_VICTORIAN_TRACK_TYPE_FIX.tsx",
+      "bytes": 5653
+    },
+    {
+      "path": "src\\edgeiq-os\\race\\components\\MeetingWorkspace_CHECKPOINT_BEFORE_WEATHER_TAB_V1_20260710.tsx",
+      "bytes": 2890
+    },
+    {
+      "path": "src\\edgeiq-os\\race\\services\\weatherFeed.ts",
+      "bytes": 14066
+    },
+    {
+      "path": "src\\edgeiq-os\\race\\services\\weatherFeed_CHECKPOINT_PRE_VICTORIAN_TRACK_TYPE_FIX.ts",
+      "bytes": 14041
+    },
+    {
+      "path": "src\\edgeiq-os\\race\\services\\weatherFeed_CHECKPOINT_PRE_VICTORIAN_TRACK_WEATHER_V1.ts",
+      "bytes": 11791
+    }
+  ],
+  "existing_direct_integrations": [
+    {
+      "track": "Flemington",
+      "provider": "VRC",
+      "source": "edgeiq_on_track_weather_governed_v1_2.json"
+    },
+    {
+      "track": "Caulfield",
+      "provider": "MRC/TurfTrax",
+      "source": "edgeiq_on_track_weather_governed_v1_2.json"
+    },
+    {
+      "track": "Caulfield Heath",
+      "provider": "MRC/TurfTrax",
+      "source": "edgeiq_on_track_weather_governed_v1_2.json"
+    },
+    {
+      "track": "Sandown Hillside",
+      "provider": "MRC/TurfTrax",
+      "source": "edgeiq_on_track_weather_governed_v1_2.json"
+    },
+    {
+      "track": "Sandown Lakeside",
+      "provider": "MRC/TurfTrax",
+      "source": "edgeiq_on_track_weather_governed_v1_2.json"
+    },
+    {
+      "track": "Mornington",
+      "provider": "MRC/TurfTrax",
+      "source": "edgeiq_on_track_weather_governed_v1_2.json"
+    }
+  ],
+  "known_prior_bom_work": [
+    "build_edgeiq_vic_bom_observations_v1.py",
+    "build_edgeiq_bom_track_location_registry_v1.py",
+    "build_edgeiq_weather_source_registry_v1.py"
+  ],
+  "important_caveat": "Forecast locations and observation stations are separate; no BOM station is approved without governed racecourse/station evidence."
+}

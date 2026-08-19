@@ -1,0 +1,15 @@
+{
+  "current_sale_depth_distribution": {
+    "0": 72,
+    "1": 8
+  },
+  "depth_distribution": {
+    "1": 8
+  },
+  "distinct_horses_with_observations": 8,
+  "explanation": "Current post-cutoff observations exist, but no horse reaches the approved five-observation aggregate threshold.",
+  "horse_observation_rows": 8,
+  "horses_with_5_plus_observations": 0,
+  "minimum_observations_required": 5,
+  "status": "PASS_WITH_GOVERNED_INSUFFICIENCY"
+}

@@ -1,0 +1,65 @@
+﻿EDGEIQ BOM LOCATION API CONTRACT EVIDENCE
+
+Repository file:
+data\weather-source-audit\bom-stations\87184\bom_station_source_audit.json
+
+Matched text:
+api.test2.bom.gov.au
+
+Nearby URLs:
+http://bom.gov.au/api/v1|http://momentjs.com/timezone/docs/#/data-loading/.|https://api.test2.bom.gov.au/apikey/v1/forecasts|https://api.test2.bom.gov.au/apikey/v1/locations|https://api.test2.bom.gov.au/apikey/v1/mapping|https://api.test2.bom.gov.au/apikey/v1/observations|https://api.test2.bom.gov.au/apikey/v1/products|https://api.test2.bom.gov.au/apikey/v1/warnings|https://bom.gov.au/api/v1|https://drupal.dev1.bae.bom.gov.au/api/v1/webform/webform/7b9822b8-cd75-4446-b25d-5775e3e73dd4|https://facebook.com/sharer.php?u=https://www.bom.gov.au/weatherstation/australia/victoria/87184|https://fastapi-forecast.apps.ocp.mgmt.bae.bom.gov.au/apikey/v1/forecasts|https://fastapi-location.apps.ocp.mgmt.bae.bom.gov.au/apikey/v1/locations|https://fastapi-observation.apps.ocp.mgmt.bae.bom.gov.au/apikey/v1/observations|https://fastapi-product.apps.ocp.mgmt.bae.bom.gov.au/apikey/v1/products|https://fastapi-warning.apps.ocp.mgmt.bae.bom.gov.au/apikey/v1/warnings|https://route-api.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World|https://twitter.com/share?text=Weather%20station%2C%20Victoria%20%7C%20The%20Bureau%20of%20Meteorology&amp;url=https://www.bom.gov.au/weatherstation/australia/victoria/87184|https://www.bom.gov.au/ForecastAccordionContent/index|https://www.bom.gov.au/ForecastDistricts/index|https://www.bom.gov.au/WeatherCard/index|https://www.bom.gov.au/WeatherCards/index|https://www.bom.gov.au/WeatherDetails/index|https://www.bom.gov.au/WeatherLayer/components/Data/index|https://www.bom.gov.au/WeatherLayer/index|https://www.bom.gov.au/WeatherMood/index|https://www.bom.gov.au/WeatherTabs/index|https://www.bom.gov.au/api|https://www.bom.gov.au/api-down-message/index|https://www.bom.gov.au/api.analytics.bom.gov.au|https://www.bom.gov.au/api.bom.gov.au|https://www.bom.gov.au/api/v1|https://www.bom.gov.au/apikey|https://www.bom.gov.au/climate/data/index.shtml|https://www.bom.gov.au/data|https://www.bom.gov.au/data-services|https://www.bom.gov.au/data-services&quot;,&quot;enableLinks&quot;:false},{&quot;linkTitle&quot;:&quot;Indigenous|https://www.bom.gov.au/data-services&quot;},&quot;columnThreeSecondHorizontalTopicInfo&quot;:{&quot;info&quot;:&quot;Find|https://www.bom.gov.au/data.json|https://www.bom.gov.au/data/drupal|https://www.bom.gov.au/forecast-districts/index|https://www.bom.gov.au/forecast_districts|https://www.bom.gov.au/forecast_districts/MapServer/0`,t.MAP_EXTENT_URL_COASTAL=`${f|https://www.bom.gov.au/weatherstation/australia/victoria/87184
+
+Request evidence:
+
+
+Context:
+{
+  "station_id": "87184",
+  "page_url": "https://www.bom.gov.au/weatherstation/australia/victoria/87184",
+  "page_status": 200,
+  "page_bytes": 180904,
+  "asset_count": 23,
+  "endpoint_candidates": [
+    "http://bom.gov.au/api/v1",
+    "http://momentjs.com/timezone/docs/#/data-loading/.",
+    "https://api.test2.bom.gov.au/apikey/v1/forecasts",
+    "https://api.test2.bom.gov.au/apikey/v1/locations",
+    "https://api.test2.bom.gov.au/apikey/v1/mapping",
+    "https://api.test2.bom.gov.au/apikey/v1/observations",
+    "https://api.test2.bom.gov.au/apikey/v1/products",
+    "https://api.test2.bom.gov.au/apikey/v1/warnings",
+    "https://bom.gov.au/api/v1",
+    "https://drupal.dev1.bae.bom.gov.au/api/v1/webform/webform/7b9822b8-cd75-4446-b25d-5775e3e73dd4",
+    "https://facebook.com/sharer.php?u=https://www.bom.gov.au/weatherstation/australia/victoria/87184",
+    "https://fastapi-forecast.apps.ocp.mgmt.bae.bom.gov.au/apikey/v1/forecasts",
+    "https://fastapi-location.apps.ocp.mgmt.bae.bom.gov.au/apikey/v1/locations",
+    "https://fastapi-observation.apps.ocp.mgmt.bae.bom.gov.au/apikey/v1/observations",
+    "https://fastapi-product.apps.ocp.mgmt.bae.bom.gov.au/apikey/v1/products",
+    "https://fastapi-warning.apps.ocp.mgmt.bae.bom.gov.au/apikey/v1/warnings",
+    "https://route-api.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World",
+    "https://twitter.com/share?text=Weather%20station%2C%20Victoria%20%7C%20The%20Bureau%20of%20Meteorology&amp;url=https://www.bom.gov.au/weatherstation/australia/victoria/87184",
+    "https://www.bom.gov.au/ForecastAccordionContent/index",
+    "https://www.bom.gov.au/ForecastDistricts/index",
+    "https://www.bom.gov.au/WeatherCard/index",
+    "https://www.bom.gov.au/WeatherCards/index",
+    "https://www.bom.gov.au/WeatherDetails/index",
+    "https://www.bom.gov.au/WeatherLayer/components/Data/index",
+    "https://www.bom.gov.au/WeatherLayer/index",
+    "https://www.bom.gov.au/WeatherMood/index",
+    "https://www.bom.gov.au/WeatherTabs/index",
+    "https://www.bom.gov.au/api",
+    "https://www.bom.gov.au/api-down-message/index",
+    "https://www.bom.gov.au/api.analytics.bom.gov.au",
+    "https://www.bom.gov.au/api.bom.gov.au",
+    "https://www.bom.gov.au/api/v1",
+    "https://www.bom.gov.au/apikey",
+    "https://www.bom.gov.au/climate/data/index.shtml",
+    "https://www.bom.gov.au/data",
+    "https://www.bom.gov.au/data-services",
+    "https://www.bom.gov.au/data-services&quot;,&quot;enableLinks&quot;:false},{&quot;linkTitle&quot;:&quot;Indigenous",
+    "https://www.bom.gov.au/data-services&quot;},&quot;columnThreeSecondHorizontalTopicInfo&quot;:{&quot;info&quot;:&quot;Find",
+    "https://www.bom.gov.au/data.json",
+    "https://www.bom.gov.au/data/drupal",
+    "https://www.bom.gov.au/forecast-districts/index",
+    "https://www.bom.gov.au/forecast_districts",
+    "https://www.bom.gov.au/forecast_districts/MapServer/0`,t.MAP_EXTENT_URL_COASTAL=`${f

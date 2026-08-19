@@ -1,0 +1,92 @@
+{
+    "status": 0,
+    "payload": {
+        "header": {
+            "description": "Turftrax Weather Data Visualisation for Caulfield Racecourse on Fri, 10 Jul 2026 02:33:31 +0100",
+            "signature": "Turftrax ITS WDV API Stream prod-V1.5.3-2021-04-15T12:00",
+            "copyright": "2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Turftrax Ltd. All Rights Reserved."
+        },
+        "content": {
+            "additional-comment": "Rainfall last 24hrs- 0mm, Rainfall last 7 Days- 11.4mm",
+            "air-temperature-current": 13.18,
+            "air-temperature-max": 13.18,
+            "air-temperature-min": 4.45,
+            "awt-race-date": "N/a",
+            "awtReport": 0,
+            "carousel": {
+                "temperature": {
+                    "default": "air",
+                    "list": [
+                        "air"
+                    ]
+                }
+            },
+            "disableMetic": [],
+            "et-24hr": 0.15,
+            "et-7day": 1.1,
+            "et-since": 0.06,
+            "etEnabled": true,
+            "going-race-date": "Saturday, 11th July, 2026",
+            "going-report": "Soft 7",
+            "going-report-date": "Friday, 10th July, 2026 at 8:00 am",
+            "going-waypoint-map": "https://api.turftrax.co.uk/maps/going-reports/338679_waypoints.svg",
+            "going-zone-map": "https://api.turftrax.co.uk/maps/going-reports/338679_zones.svg",
+            "goingReport": 1,
+            "haveManualRain": true,
+            "humidity-current": 63.75,
+            "humidity-max": 99.99,
+            "humidity-min": 63.5,
+            "irrigation-report": "Last 24hrs- Nil/ Last 7 Days- Nil",
+            "isDemo": false,
+            "isLastMeeting": false,
+            "location-date": "Saturday, 11th July, 2026",
+            "location-title": "Sportsbet Caulfield Winter Raceday",
+            "location-track-type": "N/a",
+            "location-venue": "Caulfield",
+            "mapName": "Caulfield 3 Way Home Straight ",
+            "mapping-service": "yes",
+            "racingToday": 0,
+            "rail-report": "+6 metres/ Previous meeting: 27 Jun 2026 at +3 metre rail position. Last meeting with current rail position: 15 Nov 2025 ",
+            "rain0-24hr": "0*",
+            "rain0-7day": "11.4*",
+            "rain0-today": "",
+            "rain1-24hr": 0,
+            "rain1-7day": 2,
+            "rain1-current": 0,
+            "rain1-since": 0,
+            "rain1-today": 0,
+            "rain2-24hr": 0,
+            "rain2-7day": 1.8,
+            "rain2-since": 0,
+            "rain2-today": 0,
+            "reportStatus": {
+                "system": [
+                    "Previous Turf: 27/06/26, Next Turf: 11/07/26, Displaying: Saturday, 11th July, 2026",
+                    "Turf Report ID: 338679, <span style=\"cursor:pointer;\" onclick=\"ButtonAction('hub-link', this);\">Hub Link</span>",
+                    "Display the latest PUBLISHED Report: For 21 days before and 3 days after"
+                ],
+                "report": [],
+                "weather": []
+            },
+            "seasonEndMessage": "",
+            "stalls-report": "",
+            "stationActivityStatus": "active",
+            "stationId": 150000,
+            "stationType": "wtx",
+            "stick-report": "Overall- 8.7, Penetrate- 8.4, Shear- 9.8, Rainfall since last race day- 31mm",
+            "temperature-current": 13.18,
+            "temperature-max": 13.18,
+            "temperature-min": 4.45,
+            "trackType": "Turf",
+            "units": {
+                "linear": "mm",
+                "speed": "km/h",
+                "temperature": "C"
+            },
+            "use-map": "zone",
+            "useRainGauge": 1,
+            "usingAwtReport": "N/a",
+            "usingReport": "338679",
+            "venueId": 150,
+            "venueName": "Caulfield Racecourse",
+            "weather-comment": "Forecast for Saturday 11th of July-\r\nPartly cloudy, 15c maximum. Very high chance of s

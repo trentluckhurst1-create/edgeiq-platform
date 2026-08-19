@@ -1,0 +1,317 @@
+{
+  "generated_timestamp": "2026-07-16T08:35:59Z",
+  "overall_final_status": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PLATFORM_FOUNDATION_FINAL_PASS",
+  "phase_pass_tokens": {
+    "phase1_7": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE1_7_RACE_OBSERVATIONS_FINAL_PASS",
+    "phase1_8": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE1_8_BENCHMARK_CONTRACT_FINAL_PASS",
+    "phase1_9": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE1_9_BENCHMARK_ENGINE_V1_FINAL_PASS",
+    "phase2_0a": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE2_0A_RACE_DEVIATION_FINAL_PASS",
+    "phase2_1": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE2_1_LENGTH_CONVERSION_FINAL_PASS",
+    "phase2_2": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE2_2_RUNNER_DEVIATION_FINAL_PASS",
+    "phase2_3": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE2_3_SECTIONAL_EVIDENCE_FINAL_PASS",
+    "phase2_4": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE2_4_SECTIONAL_BENCHMARK_FINAL_PASS",
+    "phase2_5": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE2_5_FINGERPRINT_ENGINE_V1_FINAL_PASS",
+    "phase2_6": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE2_6_HORSE_INTELLIGENCE_V1_FINAL_PASS",
+    "phase2_7": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE2_7_QUERY_ENGINE_V1_FINAL_PASS",
+    "phase2_8": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE2_8_INTEGRATION_CONTRACTS_FINAL_PASS",
+    "phase2_9": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE2_9_ORCHESTRATION_FINAL_PASS",
+    "phase3_0": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PLATFORM_FOUNDATION_FINAL_PASS"
+  },
+  "public_data_modified": false,
+  "react_application_modified": false,
+  "scripts_preserved": true,
+  "snapshots": {
+    "phase1_7": {
+      "manifest": {
+        "blocked_race_count": 10676,
+        "conflict_race_count": 0,
+        "eligible_race_count": 60349,
+        "generated_timestamp": "2026-07-16T08:32:09Z",
+        "immutable": true,
+        "integrity_manifest_sha256": "fe6da16ced5a494481445d0c4640bc3fc6c222576e2cf37d67b6ef5e633d313b",
+        "pass_token": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE1_7_RACE_OBSERVATIONS_FINAL_PASS",
+        "phase": "phase1_7",
+        "race_observation_count": 71025,
+        "snapshot_id": "eiq_race_observations_v0_1_9f2615d02021a4ccea10331d",
+        "snapshot_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\performance-intelligence\\warehouse\\phase1_7\\eiq_race_observations_v0_1_9f2615d02021a4ccea10331d",
+        "source_snapshot_id": "eiq_performance_facts_v0_2_a0c3715ab506d19f9301d8a4",
+        "status": "PASS",
+        "time_unavailable_race_count": 0
+      },
+      "snapshot_id": "eiq_race_observations_v0_1_9f2615d02021a4ccea10331d",
+      "snapshot_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\performance-intelligence\\warehouse\\phase1_7\\eiq_race_observations_v0_1_9f2615d02021a4ccea10331d"
+    },
+    "phase1_8": {
+      "manifest": {
+        "alias_rows": 100,
+        "dimension_rows": 71025,
+        "generated_timestamp": "2026-07-16T08:32:12Z",
+        "hierarchy_profile_rows": 64920,
+        "immutable": true,
+        "integrity_manifest_sha256": "0cbad32b681e5f9ef6960a03ec9b105b520931c6f9be1176b51e547b5f9de1c4",
+        "pass_token": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE1_8_BENCHMARK_CONTRACT_FINAL_PASS",
+        "phase": "phase1_8",
+        "snapshot_id": "eiq_benchmark_contract_v0_1_546e2a13b58700bc614778cd",
+        "snapshot_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\performance-intelligence\\warehouse\\phase1_8\\eiq_benchmark_contract_v0_1_546e2a13b58700bc614778cd",
+        "source_snapshot_id": "eiq_performance_facts_v0_2_a0c3715ab506d19f9301d8a4",
+        "status": "PASS"
+      },
+      "snapshot_id": "eiq_benchmark_contract_v0_1_546e2a13b58700bc614778cd",
+      "snapshot_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\performance-intelligence\\warehouse\\phase1_8\\eiq_benchmark_contract_v0_1_546e2a13b58700bc614778cd"
+    },
+    "phase1_9": {
+      "manifest": {
+        "benchmark_confidence_distribution": {
+          "HIGH": 337,
+          "INSUFFICIENT": 49904,
+          "LOW": 6729,
+          "MEDIUM": 1921
+        },
+        "benchmark_count": 58891,
+        "benchmark_counts_by_level": {
+          "1": 100,
+          "2": 100,
+          "3": 1928,
+          "4": 11548,
+          "5": 18074,
+          "6": 27141
+        },
+        "exclusion_count": 10676,
+        "generated_timestamp": "2026-07-16T08:32:20Z",
+        "immutable": true,
+        "integrity_manifest_sha256": "5068c2c8dab5bcd488eb8f0de97aeaf5bd18d651e2399ac22760f7d7014f93dd",
+        "membership_count": 362094,
+        "pass_token": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE1_9_BENCHMARK_ENGINE_V1_FINAL_PASS",
+        "phase": "phase1_9",
+        "selection_count": 60349,
+        "snapshot_id": "eiq_benchmark_engine_v1_bfff49f3aa73e7fe3f4e616f",
+        "snapshot_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\performance-intelligence\\warehouse\\phase1_9\\eiq_benchmark_engine_v1_bfff49f3aa73e7fe3f4e616f",
+        "source_snapshot_id": "eiq_performance_facts_v0_2_a0c3715ab506d19f9301d8a4",
+        "status": "PASS"
+      },
+      "snapshot_id": "eiq_benchmark_engine_v1_bfff49f3aa73e7fe3f4e616f",
+      "snapshot_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\performance-intelligence\\warehouse\\phase1_9\\eiq_benchmark_engine_v1_bfff49f3aa73e7fe3f4e616f"
+    },
+    "phase2_0a": {
+      "manifest": {
+        "generated_timestamp": "2026-07-16T08:32:22Z",
+        "immutable": true,
+        "integrity_manifest_sha256": "70bd66e3b716bfbf2920f85707b20af754bf49fd0f633bbbe57d12b8e3cb2e1a",
+        "pass_token": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE2_0A_RACE_DEVIATION_FINAL_PASS",
+        "phase": "phase2_0a",
+        "race_deviation_blocked_rows": 0,
+        "race_deviation_complete_rows": 60349,
+        "race_deviation_rows": 60349,
+        "snapshot_id": "eiq_race_deviations_v1_f3f00e58a59a04be40a8c612",
+        "snapshot_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\performance-intelligence\\warehouse\\phase2_0a\\eiq_race_deviations_v1_f3f00e58a59a04be40a8c612",
+        "source_snapshot_id": "eiq_performance_facts_v0_2_a0c3715ab506d19f9301d8a4",
+        "status": "PASS"
+      },
+      "snapshot_id": "eiq_race_deviations_v1_f3f00e58a59a04be40a8c612",
+      "snapshot_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\performance-intelligence\\warehouse\\phase2_0a\\eiq_race_deviations_v1_f3f00e58a59a04be40a8c612"
+    },
+    "phase2_1": {
+      "manifest": {
+        "conversion_coverage_state": "UNAVAILABLE_NO_GOVERNED_NUMERIC_CONTRACT",
+        "conversion_rows": 1,
+        "evidence_reference_rows": 17,
+        "generated_timestamp": "2026-07-16T08:33:16Z",
+        "governed_conversion_rows": 0,
+        "immutable": true,
+        "integrity_manifest_sha256": "e11255aeb014429275a4820a85c47fd3ac9239fb63dcbf16d14dffa0523c835a",
+        "pass_token": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE2_1_LENGTH_CONVERSION_FINAL_PASS",
+        "phase": "phase2_1",
+        "snapshot_id": "eiq_length_conversion_contract_v1_e6e21e4e7739b4c9902d36d9",
+        "snapshot_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\performance-intelligence\\warehouse\\phase2_1\\eiq_length_conversion_contract_v1_e6e21e4e7739b4c9902d36d9",
+        "source_snapshot_id": "eiq_performance_facts_v0_2_a0c3715ab506d19f9301d8a4",
+        "status": "PASS"
+      },
+      "snapshot_id": "eiq_length_conversion_contract_v1_e6e21e4e7739b4c9902d36d9",
+      "snapshot_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\performance-intelligence\\warehouse\\phase2_1\\eiq_length_conversion_contract_v1_e6e21e4e7739b4c9902d36d9"
+    },
+    "phase2_2": {
+      "manifest": {
+        "generated_timestamp": "2026-07-16T08:33:36Z",
+        "immutable": true,
+        "integrity_manifest_sha256": "35264ea03ca430c718b79412db518c4e97d5a3a996ce0747da1f814119d653c2",
+        "pass_token": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE2_2_RUNNER_DEVIATION_FINAL_PASS",
+        "phase": "phase2_2",
+        "primary_blocker": "NO_GOVERNED_SECONDS_PER_LENGTH_CONVERSION",
+        "runner_deviation_blocked_rows": 879784,
+        "runner_deviation_complete_rows": 0,
+        "runner_deviation_rows": 879784,
+        "snapshot_id": "eiq_runner_deviations_v1_0c6c989d66d5a95a44b60fb0",
+        "snapshot_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\performance-intelligence\\warehouse\\phase2_2\\eiq_runner_deviations_v1_0c6c989d66d5a95a44b60fb0",
+        "source_snapshot_id": "eiq_performance_facts_v0_2_a0c3715ab506d19f9301d8a4",
+        "status": "PASS_PARTIAL_BLOCKED"
+      },
+      "snapshot_id": "eiq_runner_deviations_v1_0c6c989d66d5a95a44b60fb0",
+      "snapshot_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\performance-intelligence\\warehouse\\phase2_2\\eiq_runner_deviations_v1_0c6c989d66d5a95a44b60fb0"
+    },
+    "phase2_3": {
+      "manifest": {
+        "generated_timestamp": "2026-07-16T08:33:40Z",
+        "immutable": true,
+        "integrity_manifest_sha256": "e4d446175efbba87b801ecb4fa02e39f5b9f05f478311da899e68ffc2d7b4643",
+        "pass_token": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE2_3_SECTIONAL_EVIDENCE_FINAL_PASS",
+        "phase": "phase2_3",
+        "primary_blocker": "NO_SOURCE_SPECIFIC_OFFICIAL_SECTIONAL_GOVERNANCE",
+        "sectional_evidence_by_type": {
+          "POTENTIAL_SECTIONAL_SOURCE_REQUIRES_SOURCE_SPECIFIC_GOVERNANCE": 36,
+          "SECTIONAL_RELATED_FILE_NO_SUPPORTED_CANONICAL_FIELDS": 154,
+          "SPEED_METRIC_NOT_OFFICIAL_SECTIONAL_TIME": 114
+        },
+        "sectional_evidence_rows": 0,
+        "sectional_source_inventory_rows": 304,
+        "snapshot_id": "eiq_sectional_evidence_v1_ee98d5587756e9fa9ee944ad",
+        "snapshot_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\performance-intelligence\\warehouse\\phase2_3\\eiq_sectional_evidence_v1_ee98d5587756e9fa9ee944ad",
+        "source_snapshot_id": "eiq_performance_facts_v0_2_a0c3715ab506d19f9301d8a4",
+        "status": "PASS_PARTIAL_BLOCKED"
+      },
+      "snapshot_id": "eiq_sectional_evidence_v1_ee98d5587756e9fa9ee944ad",
+      "snapshot_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\performance-intelligence\\warehouse\\phase2_3\\eiq_sectional_evidence_v1_ee98d5587756e9fa9ee944ad"
+    },
+    "phase2_4": {
+      "manifest": {
+        "generated_timestamp": "2026-07-16T08:33:40Z",
+        "immutable": true,
+        "integrity_manifest_sha256": "36ead2363bbb516e4a71a3aa3429ea2a09adf61ecb88f16e449111c8c52ce3aa",
+        "pass_token": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE2_4_SECTIONAL_BENCHMARK_FINAL_PASS",
+        "phase": "phase2_4",
+        "primary_blocker": "NO_CANONICAL_SECTIONAL_TIME_EVIDENCE",
+        "sectional_benchmark_rows": 0,
+        "sectional_deviation_rows": 0,
+        "snapshot_id": "eiq_sectional_benchmarks_v1_e95c48c54f72d5845e1e752e",
+        "snapshot_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\performance-intelligence\\warehouse\\phase2_4\\eiq_sectional_benchmarks_v1_e95c48c54f72d5845e1e752e",
+        "source_snapshot_id": "eiq_performance_facts_v0_2_a0c3715ab506d19f9301d8a4",
+        "status": "PASS_PARTIAL_BLOCKED"
+      },
+      "snapshot_id": "eiq_sectional_benchmarks_v1_e95c48c54f72d5845e1e752e",
+      "snapshot_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\performance-intelligence\\warehouse\\phase2_4\\eiq_sectional_benchmarks_v1_e95c48c54f72d5845e1e752e"
+    },
+    "phase2_5": {
+      "manifest": {
+        "fingerprint_rows": 60349,
+        "generated_timestamp": "2026-07-16T08:33:42Z",
+        "immutable": true,
+        "integrity_manifest_sha256": "9e367fe3631e95fcdd8b482bc60712b7e5a318fb6481c42b0ac58d2262f777ca",
+        "pass_token": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE2_5_FINGERPRINT_ENGINE_V1_FINAL_PASS",
+        "pattern_distribution": {
+          "BALANCED_EFFICIENCY": 23895,
+          "EARLY_PRESSURE": 2947,
+          "INSUFFICIENT_SECTIONAL_EVIDENCE": 33507
+        },
+        "phase": "phase2_5",
+        "rule_count": 3,
+        "snapshot_id": "eiq_fingerprints_v1_def0baaccf503a004963129a",
+        "snapshot_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\performance-intelligence\\warehouse\\phase2_5\\eiq_fingerprints_v1_def0baaccf503a004963129a",
+        "source_snapshot_id": "eiq_performance_facts_v0_2_a0c3715ab506d19f9301d8a4",
+        "status": "PASS"
+      },
+      "snapshot_id": "eiq_fingerprints_v1_def0baaccf503a004963129a",
+      "snapshot_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\performance-intelligence\\warehouse\\phase2_5\\eiq_fingerprints_v1_def0baaccf503a004963129a"
+    },
+    "phase2_6": {
+      "manifest": {
+        "generated_timestamp": "2026-07-16T08:34:11Z",
+        "horse_profile_count": 97112,
+        "horse_profile_quality_distribution": {
+          "EMERGING_PROFILE": 30330,
+          "ESTABLISHED_PROFILE": 24952,
+          "INSUFFICIENT_EVIDENCE": 17863,
+          "OBSERVED_PROFILE": 23967
+        },
+        "immutable": true,
+        "integrity_manifest_sha256": "a8cef9cfe465e4bef082d7aa0c7a38aa3f94f2eaa30d05f9567ed19f554ae1ce",
+        "pass_token": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE2_6_HORSE_INTELLIGENCE_V1_FINAL_PASS",
+        "phase": "phase2_6",
+        "snapshot_id": "eiq_horse_intelligence_v1_fca34fe79beb9715013eca1d",
+        "snapshot_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\performance-intelligence\\warehouse\\phase2_6\\eiq_horse_intelligence_v1_fca34fe79beb9715013eca1d",
+        "source_snapshot_id": "eiq_performance_facts_v0_2_a0c3715ab506d19f9301d8a4",
+        "status": "PASS"
+      },
+      "snapshot_id": "eiq_horse_intelligence_v1_fca34fe79beb9715013eca1d",
+      "snapshot_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\performance-intelligence\\warehouse\\phase2_6\\eiq_horse_intelligence_v1_fca34fe79beb9715013eca1d"
+    },
+    "phase2_7": {
+      "manifest": {
+        "example_query_count": 1,
+        "generated_timestamp": "2026-07-16T08:34:31Z",
+        "immutable": true,
+        "integrity_manifest_sha256": "cf1b0ea354586b3fe77f7ce979c395afd6e682b8304efebf99b74188900d3106",
+        "pass_token": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE2_7_QUERY_ENGINE_V1_FINAL_PASS",
+        "phase": "phase2_7",
+        "query_tables_views": [
+          "benchmark_selections",
+          "benchmarks",
+          "fingerprints",
+          "horse_profiles",
+          "lineage",
+          "performances",
+          "quality_states",
+          "race_deviations",
+          "race_observations",
+          "runner_deviations",
+          "sectional_deviations",
+          "sectionals"
+        ],
+        "snapshot_id": "eiq_query_engine_v1_bcaac3ed246cdf0fa398ede7",
+        "snapshot_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\performance-intelligence\\warehouse\\phase2_7\\eiq_query_engine_v1_bcaac3ed246cdf0fa398ede7",
+        "source_snapshot_id": "eiq_performance_facts_v0_2_a0c3715ab506d19f9301d8a4",
+        "status": "PASS"
+      },
+      "snapshot_id": "eiq_query_engine_v1_bcaac3ed246cdf0fa398ede7",
+      "snapshot_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\performance-intelligence\\warehouse\\phase2_7\\eiq_query_engine_v1_bcaac3ed246cdf0fa398ede7"
+    },
+    "phase2_8": {
+      "manifest": {
+        "generated_timestamp": "2026-07-16T08:34:32Z",
+        "immutable": true,
+        "integration_contract_rows": 7,
+        "integrity_manifest_sha256": "5119cb6f1ddbf1eccdc0a62f6ea1c035dd69de02d6defcf5e5317632560ab943",
+        "pass_token": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE2_8_INTEGRATION_CONTRACTS_FINAL_PASS",
+        "phase": "phase2_8",
+        "snapshot_id": "eiq_product_integration_contracts_v1_6eb5a98327c6e6338fd2c807",
+        "snapshot_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\performance-intelligence\\warehouse\\phase2_8\\eiq_product_integration_contracts_v1_6eb5a98327c6e6338fd2c807",
+        "source_snapshot_id": "eiq_performance_facts_v0_2_a0c3715ab506d19f9301d8a4",
+        "status": "PASS"
+      },
+      "snapshot_id": "eiq_product_integration_contracts_v1_6eb5a98327c6e6338fd2c807",
+      "snapshot_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\performance-intelligence\\warehouse\\phase2_8\\eiq_product_integration_contracts_v1_6eb5a98327c6e6338fd2c807"
+    },
+    "phase2_9": {
+      "manifest": {
+        "generated_timestamp": "2026-07-16T08:34:32Z",
+        "immutable": true,
+        "integrity_manifest_sha256": "f2bccdc19d6fd51f26a2950941ae6e6689137538f4beccddb1833268e00d6d8c",
+        "orchestrated_snapshot_count": 12,
+        "pass_token": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE2_9_ORCHESTRATION_FINAL_PASS",
+        "phase": "phase2_9",
+        "snapshot_id": "eiq_orchestration_manifest_v1_53503196d26443370665e234",
+        "snapshot_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\performance-intelligence\\warehouse\\phase2_9\\eiq_orchestration_manifest_v1_53503196d26443370665e234",
+        "source_snapshot_id": "eiq_performance_facts_v0_2_a0c3715ab506d19f9301d8a4",
+        "status": "PASS"
+      },
+      "snapshot_id": "eiq_orchestration_manifest_v1_53503196d26443370665e234",
+      "snapshot_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\performance-intelligence\\warehouse\\phase2_9\\eiq_orchestration_manifest_v1_53503196d26443370665e234"
+    },
+    "phase3_0": {
+      "manifest": {
+        "certification_check_count": 28,
+        "generated_timestamp": "2026-07-16T08:34:32Z",
+        "immutable": true,
+        "integrity_manifest_sha256": "efaead0def5007b9efc42c651977749efeab68366474623d72d1439ce0b784ca",
+        "known_limitation_count": 3,
+        "pass_token": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PLATFORM_FOUNDATION_FINAL_PASS",
+        "phase": "phase3_0",
+        "snapshot_id": "eiq_platform_foundation_certification_v1_6338734379f2b71aff2cbe7c",
+        "snapshot_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\performance-intelligence\\warehouse\\phase3_0\\eiq_platform_foundation_certification_v1_6338734379f2b71aff2cbe7c",
+        "source_snapshot_id": "eiq_performance_facts_v0_2_a0c3715ab506d19f9301d8a4",
+        "status": "PASS"
+      },
+      "snapshot_id": "eiq_platform_foundation_certification_v1_6338734379f2b71aff2cbe7c",
+      "snapshot_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\performance-intelligence\\warehouse\\phase3_0\\eiq_platform_foundation_certification_v1_6338734379f2b71aff2cbe7c"
+    }
+  },
+  "unsupported_values_fabricated": false
+}

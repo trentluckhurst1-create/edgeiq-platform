@@ -1,0 +1,12 @@
+{
+  "audit_name": "EDGEiQ Performance Intelligence Phase 1.6 Performance Fact Materialisation",
+  "generated_utc": "2026-07-16T00:09:52.044011+00:00",
+  "production_data_modified": false,
+  "source_rows": 879784,
+  "performance_fact_rows": 879784,
+  "complete_rows": 712883,
+  "incomplete_rows": 166901,
+  "benchmark_eligible_rows": 712883,
+  "output": "docs/performance-intelligence/prototypes/phase1_6/edgeiq_performance_fact_v0_1_20260716_100919.csv",
+  "status": "PERFORMANCE_FACT_MATERIALISED"
+}

@@ -1,0 +1,37 @@
+{
+  "checks": [
+    {
+      "check": "HORSE_PROFILES_MINIMUM_SAMPLES_ENFORCED",
+      "observed": {
+        "EMERGING_PROFILE": 30330,
+        "ESTABLISHED_PROFILE": 24952,
+        "INSUFFICIENT_EVIDENCE": 17863,
+        "OBSERVED_PROFILE": 23967
+      },
+      "passed": true
+    },
+    {
+      "check": "NO_SINGLE_RUN_DNA_DECLARATION",
+      "observed": "single run insufficient",
+      "passed": true
+    },
+    {
+      "check": "IDENTITY_QUALITY_PRESERVED",
+      "observed": "horse_code/name-only retained",
+      "passed": true
+    }
+  ],
+  "generated_timestamp": "2026-07-16T08:34:11Z",
+  "horse_profile_count": 97112,
+  "horse_profile_quality_distribution": {
+    "EMERGING_PROFILE": 30330,
+    "ESTABLISHED_PROFILE": 24952,
+    "INSUFFICIENT_EVIDENCE": 17863,
+    "OBSERVED_PROFILE": 23967
+  },
+  "marker": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE2_6_HORSE_INTELLIGENCE_V1_FINAL_PASS",
+  "phase": "phase2_6",
+  "snapshot_id": "eiq_horse_intelligence_v1_fca34fe79beb9715013eca1d",
+  "snapshot_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\performance-intelligence\\warehouse\\phase2_6\\eiq_horse_intelligence_v1_fca34fe79beb9715013eca1d",
+  "status": "PASS"
+}

@@ -1,0 +1,146 @@
+[
+  {
+    "label": "HOME",
+    "status": "OK",
+    "activeNav": "HOME",
+    "hasErrorText": false,
+    "hasField": false,
+    "header": "EDGEiQ",
+    "raceTab": ""
+  },
+  {
+    "label": "MEETINGS",
+    "status": "OK",
+    "activeNav": "MEETINGS",
+    "hasErrorText": false,
+    "hasField": false,
+    "header": "Meetings",
+    "raceTab": ""
+  },
+  {
+    "label": "RACE",
+    "status": "OK",
+    "activeNav": "RACE",
+    "hasErrorText": false,
+    "hasField": false,
+    "header": "Wangaratta R1",
+    "raceTab": "OVERVIEW"
+  },
+  {
+    "label": "FIELD",
+    "status": "OK",
+    "activeNav": "FIELD",
+    "hasErrorText": false,
+    "hasField": true,
+    "header": "Wangaratta R1",
+    "raceTab": "FIELD"
+  },
+  {
+    "label": "FORM GUIDE",
+    "status": "OK",
+    "activeNav": "FORM GUIDE",
+    "hasErrorText": false,
+    "hasField": false,
+    "header": "Wangaratta R1",
+    "raceTab": "FORM GUIDE"
+  },
+  {
+    "label": "PERFORMANCE",
+    "status": "OK",
+    "activeNav": "PERFORMANCE",
+    "hasErrorText": false,
+    "hasField": false,
+    "header": "Wangaratta R1",
+    "raceTab": "EPI"
+  },
+  {
+    "label": "EPI",
+    "status": "OK",
+    "activeNav": "EPI",
+    "hasErrorText": false,
+    "hasField": false,
+    "header": "Wangaratta R1",
+    "raceTab": "EPI"
+  },
+  {
+    "label": "MAP",
+    "status": "OK",
+    "activeNav": "MAP",
+    "hasErrorText": false,
+    "hasField": false,
+    "header": "Wangaratta R1",
+    "raceTab": "MAP"
+  },
+  {
+    "label": "MARKET",
+    "status": "OK",
+    "activeNav": "MARKET",
+    "hasErrorText": false,
+    "hasField": false,
+    "header": "Wangaratta R1",
+    "raceTab": "MARKET"
+  },
+  {
+    "label": "OVERVIEW",
+    "status": "OK",
+    "activeNav": "OVERVIEW",
+    "hasErrorText": false,
+    "hasField": false,
+    "header": "Wangaratta R1",
+    "raceTab": "OVERVIEW"
+  },
+  {
+    "label": "INSIGHTS",
+    "status": "OK",
+    "activeNav": "INSIGHTS",
+    "hasErrorText": false,
+    "hasField": false,
+    "header": "Wangaratta R1",
+    "raceTab": "INSIGHTS"
+  },
+  {
+    "label": "RESULTS",
+    "status": "OK",
+    "activeNav": "RESULTS",
+    "hasErrorText": false,
+    "hasField": false,
+    "header": "Global Results",
+    "raceTab": "YESTERDAY"
+  },
+  {
+    "label": "LAB",
+    "status": "OK",
+    "activeNav": "LAB",
+    "hasErrorText": false,
+    "hasField": false,
+    "header": "EDGEIQ LAB",
+    "raceTab": "HORSES"
+  },
+  {
+    "label": "COMPARE",
+    "status": "OK",
+    "activeNav": "COMPARE",
+    "hasErrorText": false,
+    "hasField": false,
+    "header": "LIMBERING",
+    "raceTab": ""
+  },
+  {
+    "label": "REVIEW",
+    "status": "OK",
+    "activeNav": "REVIEW",
+    "hasErrorText": false,
+    "hasField": false,
+    "header": "Wangaratta R1",
+    "raceTab": "REVIEW"
+  },
+  {
+    "label": "SETTINGS",
+    "status": "OK",
+    "activeNav": "SETTINGS",
+    "hasErrorText": false,
+    "hasField": false,
+    "header": "Settings",
+    "raceTab": ""
+  }
+]

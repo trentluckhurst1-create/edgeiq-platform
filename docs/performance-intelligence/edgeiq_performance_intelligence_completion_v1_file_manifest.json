@@ -1,0 +1,1247 @@
+{
+  "generated_file_count": 207,
+  "files": [
+    {
+      "path": "docs/performance-intelligence/EDGEIQ_BENCHMARK_ACCUMULATION_FACT_V1_SPEC.md",
+      "size_bytes": 3193,
+      "sha256": "01601b13911c6e61ea75fb981a56babc823691b213e9b98dd820c5b7f2909aaa",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/EDGEIQ_BENCHMARK_ELIGIBILITY_FACT_V1_SPEC.md",
+      "size_bytes": 2989,
+      "sha256": "48112a5881f95353a05c40a2cee4a6845c524c155e70a5c988aff237aa988d41",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/EDGEIQ_BENCHMARK_OBSERVATION_FACT_V1_SPEC.md",
+      "size_bytes": 3483,
+      "sha256": "e17f5cb24d8e17d64c7729a0bb63e230fae63307510c16a25e24c5381b13993b",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/EDGEIQ_EPI_COMPONENT_NORMALISATION_PARAMETER_FACT_V1_SPEC.md",
+      "size_bytes": 3381,
+      "sha256": "5ca76dd143db0ed082e8867280d53f8ab7bfa8c4b843022c72a3d8e12283d91a",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/EDGEIQ_EPI_PARAMETER_FACT_V1_SPEC.md",
+      "size_bytes": 3221,
+      "sha256": "09bb777bd7ce6c05194d7acd3decf9fba449e2ffb2ee57937ca02da0e02ed199",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/EDGEIQ_EPI_WAREHOUSE_RELEASE_MANIFEST_V1_SPEC.md",
+      "size_bytes": 4077,
+      "sha256": "8016a080c2186daba823a9d5386b8c7925c0523add1766a08a3af915f11f718a",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/EDGEIQ_HORSE_PERFORMANCE_AGGREGATE_FACT_V1_SPEC.md",
+      "size_bytes": 3608,
+      "sha256": "9bb96a56ca2ddde2e154069846c3634c589fa6a675c0b0c36e67e275852fa69f",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/EDGEIQ_HORSE_PERFORMANCE_AGGREGATION_PARAMETER_FACT_V1_SPEC.md",
+      "size_bytes": 2477,
+      "sha256": "6c1eea48f2fbf034fc31b65e45f32a65ac9739b9370a0f791a7055397335bec1",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/EDGEIQ_HORSE_PERFORMANCE_OBSERVATION_FACT_V1_SPEC.md",
+      "size_bytes": 2460,
+      "sha256": "2d78a60733ed9a7838896ab55562d23d6a54d2e90bee0b6c0459505f2ca4671f",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/EDGEIQ_HORSE_PERFORMANCE_PROFILE_FACT_V1_SPEC.md",
+      "size_bytes": 3348,
+      "sha256": "1ac62a96080214809a1bea263c98dc239a406c65866acc4967b558f9a39b47c1",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/EDGEIQ_HORSE_PERFORMANCE_RATING_FACT_V1_SPEC.md",
+      "size_bytes": 2852,
+      "sha256": "a4c236927e8ea86303e5b0b2f2865e6bd3c10c19432fb5e865c26f6cfe0fcce2",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/EDGEIQ_LENGTHS_VERSUS_STANDARD_ENGINE_V1_SPEC.md",
+      "size_bytes": 3095,
+      "sha256": "1a2d85272c03d1a192fd2549f98a55d9216263b9d45baa16e6c6579aa349c87e",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/EDGEIQ_LENGTH_CONVERSION_PARAMETER_FACT_V1_SPEC.md",
+      "size_bytes": 2742,
+      "sha256": "7d33ee8263ec656f927e1df5e1b8e43c5809d2c2c42ec97ceefd96ddea0c15be",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/EDGEIQ_PERFORMANCE_INTELLIGENCE_BASE_FACT_V1_SPEC.md",
+      "size_bytes": 2590,
+      "sha256": "5f6bd926f5c4bcc4c9f5016911f3484113fba8d3a342101b6c0fa5bafbfffd3d",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/EDGEIQ_PERFORMANCE_INTELLIGENCE_PRODUCTION_PROGRAM_V1.md",
+      "size_bytes": 1764,
+      "sha256": "d50a40f6458630d32ed5d08fc76a9c2ec6d8d6c38e209cc394cff8fa95ad2909",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/EDGEIQ_PERFORMANCE_INTELLIGENCE_TRUST_CERTIFICATION_V1.md",
+      "size_bytes": 1175,
+      "sha256": "d12c1e118959f245a05efbca13099dae5c079a0ee2ebb5c557f5a900c5b21975",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/EDGEIQ_PERFORMANCE_NORMALISATION_FACT_V1_SPEC.md",
+      "size_bytes": 2013,
+      "sha256": "3e9adcc9142f32d4d48790b7bdc09177bf097d7e915911c2f573b38af4ce48d3",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/EDGEIQ_PERFORMANCE_NORMALISATION_PARAMETER_FACT_V1_SPEC.md",
+      "size_bytes": 2932,
+      "sha256": "0f52d44005a83f25fc80c8433b5d9e5f4b4cc4f62d17149d521b924300688e7f",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/EDGEIQ_PERFORMANCE_RATING_BASE_FACT_V1_SPEC.md",
+      "size_bytes": 2633,
+      "sha256": "f1096012ea1eb549358f7ac30e678ccf340422d1cb6699a36b7f70f21fb69d08",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/EDGEIQ_RACE_ENTRY_CONTEXT_ADJUSTED_PERFORMANCE_FACT_V1_SPEC.md",
+      "size_bytes": 3880,
+      "sha256": "a5ef7a1d580e77033ddf5753a236bf5f954821994a617f641aecbf542e1bb146",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/EDGEIQ_RACE_ENTRY_CONTEXT_ADJUSTMENT_FACT_V1_SPEC.md",
+      "size_bytes": 4515,
+      "sha256": "0015922fa07e7f6f8f13babdeb29e66fbf810ef13321fb8afd3d214863e4c3c2",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/EDGEIQ_RACE_ENTRY_CONTEXT_ELIGIBILITY_FACT_V1_SPEC.md",
+      "size_bytes": 4975,
+      "sha256": "66e71571205f22f18496da01cff92db3e0fd3b2fabb053c1d85f7a6a9f69ed14",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/EDGEIQ_RACE_ENTRY_CONTEXT_PARAMETER_SELECTION_FACT_V1_SPEC.md",
+      "size_bytes": 4999,
+      "sha256": "01aefd763da7d43e6494326cedb5cab3be64fefc39ee16257cc755573e3b0029",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/EDGEIQ_RACE_ENTRY_EPI_COMPONENT_FACT_V1_SPEC.md",
+      "size_bytes": 3628,
+      "sha256": "8ef6bc0a6b37bca66f17e12bf3c5814c3e7900e1638365c8a45b5cdf20378710",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/EDGEIQ_RACE_ENTRY_EPI_FACT_V1_SPEC.md",
+      "size_bytes": 3729,
+      "sha256": "c794b8fc9f43b9778460aeb95603972e2a8a1d2cf4ffe78f25dfdb74d1287862",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/EDGEIQ_RACE_ENTRY_EPI_ORDERING_FACT_V1_SPEC.md",
+      "size_bytes": 4146,
+      "sha256": "038ae1d0ea06dd38179c3e1968f410a28f320ef6d1d90dedcad2d31d73ede51c",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/EDGEIQ_RACE_ENTRY_EPI_PUBLICATION_SNAPSHOT_FACT_V1_SPEC.md",
+      "size_bytes": 3687,
+      "sha256": "e97591fcdd2f7fed513598b8819b345bae1f79b945d9d34006700393da3f6cd6",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/EDGEIQ_RACE_ENTRY_EPI_RELATIVE_CONTEXT_FACT_V1_SPEC.md",
+      "size_bytes": 3710,
+      "sha256": "d4a53041b395595a305aa97ed7c663a1fb6e8a4f663af03f4f89137063d1f3e0",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/EDGEIQ_RACE_ENTRY_ERI_CONTEXT_FACT_V1_SPEC.md",
+      "size_bytes": 3760,
+      "sha256": "c1bb801e9c853fe21b3fbfc21674e9a70a9b37d0100b752f0d330b1097563489",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/EDGEIQ_RACE_ENTRY_HORSE_PERFORMANCE_SNAPSHOT_FACT_V1_SPEC.md",
+      "size_bytes": 4450,
+      "sha256": "d53526fad1ce3f10172ee76f475a225a48ea2e796d7b8cb48b5d802469247303",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/EDGEIQ_RACE_ENTRY_PERFORMANCE_CONTEXT_FACT_V1_SPEC.md",
+      "size_bytes": 3628,
+      "sha256": "6557ba24d07a2e1c5b79b4ee8dd522cbbc2177f54514faf627355c70d5eeed85",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/EDGEIQ_RACE_ENTRY_PROJECTED_PERFORMANCE_FACT_V1_SPEC.md",
+      "size_bytes": 4731,
+      "sha256": "6221ecfc731068046009a08dbf95fe4a857ebdb9244ae7a0c64a030e5114d241",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/EDGEIQ_RACE_ENTRY_SUITABILITY_AGGREGATE_FACT_V1_SPEC.md",
+      "size_bytes": 4411,
+      "sha256": "5761da869101699afd4f8f271d8bf0b10df6668738e4e7a2c5af995e23f50709",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/EDGEIQ_RACE_ENTRY_SUITABILITY_COMPONENT_FACT_V1_SPEC.md",
+      "size_bytes": 4633,
+      "sha256": "f4ba2169aa5972e2f3f56af72655d241baeae2f2127e3fd0164b25927d49e9de",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/EDGEIQ_RACE_EPI_DISTRIBUTION_FACT_V1_SPEC.md",
+      "size_bytes": 3881,
+      "sha256": "32bc6eb31f37c819cd510e8c08b2a826a27df0867cfebed1b5f59d25de3c531a",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/EDGEIQ_RACE_EPI_ORDERING_SUMMARY_FACT_V1_SPEC.md",
+      "size_bytes": 4317,
+      "sha256": "4dc4fa651c03301a2a37a3fd2c433a5e5b0a08eb250208abf297ac7ebb741f80",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/EDGEIQ_RACE_EPI_PUBLICATION_SNAPSHOT_FACT_V1_SPEC.md",
+      "size_bytes": 3662,
+      "sha256": "462935aad78cef5df9b9f6cdf0afd77435ff8c4e5c52a936c0e6f2cabe2366af",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/EDGEIQ_RACE_ERI_FACT_V1_SPEC.md",
+      "size_bytes": 6560,
+      "sha256": "3c5fd37734317a9eb4e9b9955aa1ba84ad66952bc558f320b89025033118a38b",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/EDGEIQ_RACE_ERI_PARAMETER_FACT_V1_SPEC.md",
+      "size_bytes": 4747,
+      "sha256": "6287897c5d0cc6c34a30de6c071c0100c2d90b0917628aca7c5761dfd7029c43",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/EDGEIQ_RACE_TIME_DELTA_VERSUS_STANDARD_V1_SPEC.md",
+      "size_bytes": 2161,
+      "sha256": "25df5aa2305aa414ec213fc2fb8fcf6801b4a093970f6fd4fe1fdb3fa2ecba48",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/EDGEIQ_STANDARD_TIME_ENGINE_V1_SPEC.md",
+      "size_bytes": 3018,
+      "sha256": "fa0d7f5f3be0ddc1f4d7f0c563b52cd0e484b7fd7c11b0063e1953ffaf314e11",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/canonical-identities/edgeiq_canonical_horse_identity_v1.csv",
+      "size_bytes": 31192022,
+      "sha256": "4f062de217684baf2ce050fa59fad090105a774aa35081e2cc35b26e91bc12b4",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/canonical-identities/edgeiq_canonical_identity_resolution_audit_v1.json",
+      "size_bytes": 1837,
+      "sha256": "3ea949fb4e4797dbc98dace16e6149c3810dafeb40579a5a6ea9a3f6a04802f0",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/canonical-identities/edgeiq_canonical_identity_resolution_report_v1.md",
+      "size_bytes": 187,
+      "sha256": "259e1bd2623c340b16a9438598f98ed174e5aaaad4e6f8090b35bd62936a4b06",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/canonical-identities/edgeiq_canonical_jockey_identity_v1.csv",
+      "size_bytes": 479535,
+      "sha256": "c7b356d44f65e8614b33285131b9f67b673e53d20ff56497274d967b5519c42e",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/canonical-identities/edgeiq_canonical_meeting_identity_v1.csv",
+      "size_bytes": 2726238,
+      "sha256": "a6603d865881113084917ff9ae32efa40ccb2d8e18ec4baadb3c9ef3289a20bb",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/canonical-identities/edgeiq_canonical_performance_identity_v1.csv",
+      "size_bytes": 429544067,
+      "sha256": "SKIPPED_GT_100MB",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/canonical-identities/edgeiq_canonical_race_identity_v1.csv",
+      "size_bytes": 21701622,
+      "sha256": "2384151a62edc8219f9f00af681ce9402c5c14bdc4e48bde9c76867fd0aeb987",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/canonical-identities/edgeiq_canonical_track_identity_v1.csv",
+      "size_bytes": 33458,
+      "sha256": "f66b579285c5ca89bbf181139b3829718393efa276b868d3e44cfacb2c858f46",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/canonical-identities/edgeiq_canonical_trainer_identity_v1.csv",
+      "size_bytes": 1221511,
+      "sha256": "b8b33275e9a92248e429c251d8147e4f3e5962dfc654bb56d83f1cc59d6d242d",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/edgeiq_performance_intelligence_completion_v1_audit.json",
+      "size_bytes": 912,
+      "sha256": "19d2a93e6c63a7589f7cc90fe822d51e1f982a989ac21cefc66ea010893e1529",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/edgeiq_performance_intelligence_completion_v1_manifest.json",
+      "size_bytes": 466,
+      "sha256": "c82d3976377120780c7aa96358c6ce0ba15877574ad2ac1c0d55f2aa19a9ee30",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/edgeiq_performance_intelligence_completion_v1_report.md",
+      "size_bytes": 155,
+      "sha256": "0c4508defb87b9d92c988ddebdc8cdfa7c31070477c2ed0f015217b6600061e6",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/epi/edgeiq_epi_methodology_v1.json",
+      "size_bytes": 145,
+      "sha256": "7a8b6c7bfeae279d35de20a7519be64439fe8e5ce431ebe57afb2f3a28b085e3",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/epi/edgeiq_epi_performance_fact_v1.csv",
+      "size_bytes": 104559322,
+      "sha256": "SKIPPED_GT_100MB",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/epi/edgeiq_epi_race_strength_fact_v1.csv",
+      "size_bytes": 4882601,
+      "sha256": "93c98a8d159e828f6742ace231bb13c57885c4160259803c91d3e251025b3e21",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/epi/edgeiq_epi_runner_summary_v1.csv",
+      "size_bytes": 5538792,
+      "sha256": "46d595134aeb8329145f6ae9cdb3ed91ad8c37a351d04b5f01305da054b17e11",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/epi/edgeiq_epi_warehouse_v1_audit.json",
+      "size_bytes": 229,
+      "sha256": "0ec179c35130e18491998b568cfc43a12fb56cfca23ac0dc5a96447b6013ced9",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/epi/edgeiq_epi_warehouse_v1_report.md",
+      "size_bytes": 77,
+      "sha256": "c8708b8b2b8beb6b6d48d550af4e4eb3931eebcd1289af6af477412770a4df43",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/EDGEIQ_LENGTH_CONVERSION_METHOD_V1.md",
+      "size_bytes": 2914,
+      "sha256": "23e598335160c5d6bd7b692aec8a64671aa458817cd9304c3c3e6ec07b6870dd",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/EDGEIQ_LENGTH_CONVERSION_METHOD_V2.md",
+      "size_bytes": 3396,
+      "sha256": "248f7d27c5a96071b6e58f6db81a8b122f242f2eac4b8aa6cb87f093fbe44cd0",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/EDGEIQ_SECONDS_PER_LENGTH_METHOD_DECISION_V1.md",
+      "size_bytes": 1592,
+      "sha256": "1dc7fca28e4964e288771abe37da6c39aa5371f282bc13bbe0b287e35eff058b",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_canonical_surface_registry_v1_audit.csv",
+      "size_bytes": 309,
+      "sha256": "c8bcff4f014b5898769837821d039067f532acb0a3117d09a3d1520ae65f15cf",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_canonical_surface_registry_v1_audit_summary.json",
+      "size_bytes": 76,
+      "sha256": "8dd40621ae064eda4a51707238d3b20e5a65fa0078963e0726deb1ac26b4a0fd",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_canonical_surface_registry_v1_summary.json",
+      "size_bytes": 115,
+      "sha256": "3161021a0abac34f202c91bf657ec81b9183ed389755457b8b42df3ca8c8fda0",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_epi_dependency_map_v1.csv",
+      "size_bytes": 475,
+      "sha256": "d58a25924b76f333df797194a5f565e858e7cc01d07760935a3469543f182606",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_epi_dependency_report_v1.md",
+      "size_bytes": 230,
+      "sha256": "07d67938f8c48a906c589b1a64c6665500f311f39c7db329aa0759d681adbf24",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_epi_input_readiness_v1.csv",
+      "size_bytes": 418,
+      "sha256": "6654020f95957120e64a2b9c46ab34b6294f5a8bc98a0b9828d1309706ac92ef",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_historical_conversion_consistency_v1.csv",
+      "size_bytes": 166,
+      "sha256": "d7085d2c36808d90e097d34c16808ed309903f3b2bb78b3dbf46172b3ff16dc1",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_historical_conversion_recovery_report_v1.md",
+      "size_bytes": 154,
+      "sha256": "e1f87126a9bdc05247f3bfba4c47ce58f2b815bde619caeacc3a02452e11db56",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_historical_implied_seconds_per_length_v1.csv",
+      "size_bytes": 147,
+      "sha256": "850b93d38fd0840f4bf92452239bf453ceb35bd280d26cbb4ded7b00556fde9c",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_length_conversion_method_contract_v1.csv",
+      "size_bytes": 877,
+      "sha256": "81b35040fcdd2117ad7c456b5c215ec7be686de858a91ee6f229468195763846",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_length_conversion_method_v1_tests.json",
+      "size_bytes": 7098,
+      "sha256": "3bffbf9625d09e41202e4b672b4343bd19abc56ab1cbae5d2f3f15ef7c71077d",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_length_conversion_method_v2_tests.json",
+      "size_bytes": 126,
+      "sha256": "a1a9b90afd6e4279194fc979ab50b6d06460d5ae442befdb9ae1b94882b23767",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_length_conversion_sensitivity_report_v1.md",
+      "size_bytes": 262,
+      "sha256": "5dd1dd273a11c775eccb87a960af6a1023c373b68c6913caa57f17af6d7a2e5c",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_length_conversion_sensitivity_summary_v1.json",
+      "size_bytes": 190,
+      "sha256": "229d185317deea2415c0021fb01d25e25a8caddb05859e8f1db3bca2036c8410",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_length_conversion_sensitivity_v1.csv",
+      "size_bytes": 1413,
+      "sha256": "ad202f96be8e70b0d93bb77acdbb0724e2018b7173fdc5535d1e111eb6e7537e",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_lengths_v_standard_audit_v1.json",
+      "size_bytes": 331,
+      "sha256": "bf3adfe79c1bd86f5e691595b41bc16f32d23985282c7e70789fc9a799cfaaa9",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_lengths_v_standard_methodology_v1.json",
+      "size_bytes": 216,
+      "sha256": "66dea61c57e9464fe114b72b2f57b090df7e56a4ff34de32f7664a5aa87a21c4",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_lengths_v_standard_report_v1.md",
+      "size_bytes": 86,
+      "sha256": "997a8a5661a0e15187ad4d8d58f83801b4c4fc8a334da0c5d91fc7b374d5c16d",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_lengths_versus_standard_fact_from_results_v2_summary.json",
+      "size_bytes": 207,
+      "sha256": "9f4c6cd4fe7bba8b701485640dfd0a2347095d162c3ef67b57488ab11f081d2a",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_performance_intelligence_final_live_v2.csv",
+      "size_bytes": 1327,
+      "sha256": "413c7c45d1f21e6f1b8c74170c892b72bb09275272ea8f0817bb4b08cc899bcb",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_performance_intelligence_final_live_v2_report.md",
+      "size_bytes": 1531,
+      "sha256": "a01488224551d76a16946994b94a38d75c78ebc1f4c61e1544bea06582c68c0a",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_performance_intelligence_final_live_v2_summary.json",
+      "size_bytes": 2409,
+      "sha256": "cc875af83475d1891502c3ba00d979465c4398fc8c6cddb9f781f19447d082e1",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_performance_intelligence_production_v2_manifest.csv",
+      "size_bytes": 6260,
+      "sha256": "dd557141792bdcd9caf93d9946aa085eb3b70997092d0e4faadc7e4496ff2e11",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_performance_intelligence_production_v2_manifest.json",
+      "size_bytes": 8764,
+      "sha256": "943bcbf84ed164f54f9ca307f2c8987638d94c81ebba18a5bcf0f7f662f40b08",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_performance_intelligence_production_v2_report.md",
+      "size_bytes": 302,
+      "sha256": "58842f592ccb04c961e1e1814504304d22bbc7a0349f96b5637ae92d651dcd66",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_race_lengths_v_standard_fact_v1.csv",
+      "size_bytes": 4988243,
+      "sha256": "512b8c6e92696ad0edd98fa52b38c98e95230ae5e85dc86e683517b736cbfe9f",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_results_early_late_speed_v1_report.md",
+      "size_bytes": 224,
+      "sha256": "6864c1a5fa2aa1dec1360936873fec0608262941eee82ac8fb97c3ba36978771",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_results_early_late_speed_v1_summary.json",
+      "size_bytes": 362,
+      "sha256": "1f1788e52117216883ffca4d8bb6d871c9bfc5d772609899ce57dd8fb7feea06",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_results_early_late_speed_v2_report.md",
+      "size_bytes": 262,
+      "sha256": "5aa0612c8d686fecf13b7e4c52cd3b8419c8ab8bd7a5196485be76f35d5a28ff",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_results_early_late_speed_v2_summary.json",
+      "size_bytes": 260,
+      "sha256": "93a95be913441d226501b81599719558382c11c954ef4ee8e731b9e2be3677f5",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_results_lengths_v_standard_audit_report_v1.md",
+      "size_bytes": 300,
+      "sha256": "26d06105844ccaa0fd675c87d6d962e6b2e9badce6a23237a4ab47d05e3d175b",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_results_lengths_v_standard_audit_summary_v1.json",
+      "size_bytes": 730,
+      "sha256": "ed2f3503c506a0b1ce51dc10f46156bfaaeb76c8a39268a1fbcd2b963319a443",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_results_lengths_v_standard_audit_v1.csv",
+      "size_bytes": 1041,
+      "sha256": "cc9ed4cfe3dcd61c7999d30f0e54ac696136c92ed83ffedd8b0cfca213414a78",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_results_lengths_v_standard_build_report_v1.md",
+      "size_bytes": 299,
+      "sha256": "2c0189b206e7c7ea00327c6f898c770c4715c7ccd596961cb81b3b7700e24e62",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_results_lengths_v_standard_build_summary_v1.json",
+      "size_bytes": 498,
+      "sha256": "3f26fd352f6fbc34f0d1ef8674aa360094cc313260b610b231b356ba2c797e40",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_results_lengths_v_standard_candidate_report_v1.md",
+      "size_bytes": 325,
+      "sha256": "691e461d55eaaeef9b5fad669b9373e3de9fdc2144a196d5c65f59b51b7ca916",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_results_lengths_v_standard_candidate_summary_v1.json",
+      "size_bytes": 365,
+      "sha256": "9e5fdbb3e93213bc71efd8df468d17902bd9f2d37a189912426bb8c66a0cdcab",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_results_lengths_v_standard_v2_audit.csv",
+      "size_bytes": 334,
+      "sha256": "8d5a985b41a771efeeb6563f654a155bc8386c1f4893733a9c4b70ed222b2f2f",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_results_lengths_v_standard_v2_audit_report.md",
+      "size_bytes": 296,
+      "sha256": "fa60cb000527a2ed5742bf9da8d26b8fb1906434eebc72eb9c77c12f663e795f",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_results_lengths_v_standard_v2_audit_summary.json",
+      "size_bytes": 678,
+      "sha256": "213a0ddac63ee650040bc1e9b35fec33555820e574ac5ad1c8d94dad3a344805",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_results_lengths_v_standard_v2_build_report.md",
+      "size_bytes": 208,
+      "sha256": "97f7e48e997279363e8495a57a300b35962de50169f716f5492640dbda54e7d1",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_results_lengths_v_standard_v2_build_summary.json",
+      "size_bytes": 299,
+      "sha256": "e760333d8914d775a7e127417bafdcdc3ccd7c102e897aefc420b1fbe2009a20",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_runner_lengths_v_standard_fact_v1.csv",
+      "size_bytes": 81230186,
+      "sha256": "f206b6947fa48195f0c2a0eeb295934eefd70ec51a91a758103fa85dc76535fa",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_runner_sectional_performance_v1_report.md",
+      "size_bytes": 206,
+      "sha256": "edbb00c2f03c3b5df6ddddc3b2ed742589f18b59839e5d65247dd305e193cf03",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_runner_sectional_performance_v1_summary.json",
+      "size_bytes": 222,
+      "sha256": "442a35cadceef38d0840e9975324bece7eb5df129776f0271870761bc38fd5f8",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_runner_sectional_performance_v2_report.md",
+      "size_bytes": 257,
+      "sha256": "cf7b40efa0de5fbadda493363280abdceb274a2f2f2da529752288ffeb1d60d9",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_runner_sectional_performance_v2_summary.json",
+      "size_bytes": 257,
+      "sha256": "797f2963926202ff451fa57c33465ae9de662f74c160d1311c52804dd17d8a40",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_seconds_per_length_candidate_methods_v1.csv",
+      "size_bytes": 148026,
+      "sha256": "303acc88d6ab5cc2fba0937917674fbb7fbfbb955db5c40313e9f0d333b9bb90",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_seconds_per_length_consumer_map_v1.csv",
+      "size_bytes": 41746,
+      "sha256": "e1b2be0297498f470e1fc2dd083391b45f9e60369f7f6426ad2b8bddea363e87",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_seconds_per_length_forensics_audit_v1.csv",
+      "size_bytes": 463,
+      "sha256": "056ff3b4efda7e56719c7f900f802573c5c3cb9e324bdf4849e7e4b83346f7a0",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_seconds_per_length_forensics_report_v1.md",
+      "size_bytes": 640,
+      "sha256": "c69bc2d727f5e307675af22f9351333b355c21269962ceefb1d830683f55c2a8",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_seconds_per_length_method_audit_v1.csv",
+      "size_bytes": 406,
+      "sha256": "1aa8ca6b32a0b1ac6473b540d463a55ae5162d83d4e8eb505418007ef71b8165",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_seconds_per_length_method_comparison_v1.csv",
+      "size_bytes": 1446,
+      "sha256": "d4415f3f60566422c1d7c2aa46418b083931d28c076b1196497cb6644a3d8c88",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_seconds_per_length_method_report_v1.md",
+      "size_bytes": 427,
+      "sha256": "a7f0db13f72340b86baa59a2691b330417dd3677f7e62f56c62376cb7f5de63b",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_seconds_per_length_repository_hits_v1.csv",
+      "size_bytes": 60602102,
+      "sha256": "0ce115e91a3bd349fb83700e91cbf09fb1085e84022579e81a294a2676099c13",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_seconds_per_length_sensitivity_v1.csv",
+      "size_bytes": 793,
+      "sha256": "6b5859db6cce645a76045edb952b1387c2bd5b8ba2389bc570a280b33899eb45",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_active_racingcom_payload_universe_v1.json",
+      "size_bytes": 13529,
+      "sha256": "431f1abbf07f4a36587048ca648b054287096f609c78186c6eea74bd877fcfbc",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_active_racingcom_payload_universe_v1.md",
+      "size_bytes": 4554,
+      "sha256": "c74f64b739cffbb405a7d1e9e28b3372f6673c07d6648d4c4df27fa5ba1aedb2",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_active_racingcom_raw_directory_summary_v1.csv",
+      "size_bytes": 1776,
+      "sha256": "e99dd7d486d08d24f012b3da19496782334dc15a320ad7675ce485219bed65fc",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_active_racingcom_raw_payload_inventory_v1.csv",
+      "size_bytes": 208048,
+      "sha256": "d9eae0abd5822de227e92db2cb021d2ecb1c5e25d69aa17963288ae6ceaba150",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_active_racingcom_selector_trace_v1.csv",
+      "size_bytes": 44984,
+      "sha256": "8724d88c2f50605def3d2d5ed200be01426b905f8e57736b9205dc14e8556b85",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_builder_remediation_excerpts_v1.txt",
+      "size_bytes": 30025,
+      "sha256": "2f130960e58776a638aab1a41aab08a7544b5c886fe9aa92da67e6d191cbec0f",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_builder_remediation_map_v1.json",
+      "size_bytes": 15469,
+      "sha256": "d8c26eb6be4d44afa7a062037425259dd4f1b330418203493d81a03aef535222",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_builder_remediation_map_v1.md",
+      "size_bytes": 3075,
+      "sha256": "8ae0174cc13ba2537cd3ff9b36d62b7f7f973c6cd3afc50c5ccb65554a17d6a5",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_cache_root_escape_ledger_v1.csv",
+      "size_bytes": 212,
+      "sha256": "9d0eca79e4fa9d0b9c5e557a8a546d0370efd2319b41111592d9341f4d20a92c",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_cache_root_escape_v1.json",
+      "size_bytes": 1469,
+      "sha256": "5deed0ca421431eb2c36bfe3aaa392a04058220345e2b31f1fa6cac5af3ae848",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_cache_root_escape_v1.md",
+      "size_bytes": 2271,
+      "sha256": "94e68f71930f45a821fd0751f1f4536050b9023550bc708cd0120b9538b576af",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_calendar_discovery_logic_ledger_v1.csv",
+      "size_bytes": 8086452,
+      "sha256": "81ecec2087f912b1cd7670165951e475033b372ce316ccf127f3c0a1d55a9422",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_calendar_discovery_producer_audit_v1.csv",
+      "size_bytes": 2410,
+      "sha256": "200f1b2029a3b761e702281a119d0ad1bd82fcd9dfadba5e64c3266c3404892c",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_calendar_discovery_producer_candidates_v1.csv",
+      "size_bytes": 236980,
+      "sha256": "c886f20039539d66890d586d3d021a7e91ec23218d8f76b508c4787fe2a6aab1",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_calendar_discovery_producer_excerpts_v1.txt",
+      "size_bytes": 525424,
+      "sha256": "acfcccf94922b4633359d33162deb07c473c457f51d4554925e9bdd583d8df89",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_calendar_discovery_producer_v1.json",
+      "size_bytes": 159046,
+      "sha256": "add3df28de300f760db8104fdddb1f631e80e373a2e812595a5eaa590f5fe5aa",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_calendar_discovery_producer_v1.md",
+      "size_bytes": 10838,
+      "sha256": "86407fd50bd62dca2aadf1e4a47ab4165ceef97cb5088e08622e8483c994a596",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_calendar_discovery_reference_ledger_v1.csv",
+      "size_bytes": 1057561,
+      "sha256": "e961d9ebcd5ce3883f94b6d3a61a0dade5ae04c61bcec74ce6c4b0af6167fff0",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_candidate_legitimacy_ledger_v1.csv",
+      "size_bytes": 405985,
+      "sha256": "e9ae89edc0f7c39a66e410745278b6b081530fcf1ebe2b39a636cfcca700ce59",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_candidate_legitimacy_v1.json",
+      "size_bytes": 1197,
+      "sha256": "2a6df20153b8cd52588647e451ad79dd008ad94540c7c838434af3ef18ca606a",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_candidate_legitimacy_v1.md",
+      "size_bytes": 2321,
+      "sha256": "48bbe4d9f8886915cab2563819a0c241c70f56b9bf72cd025a2570ded299abf3",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_candidate_meeting_profile_v1.csv",
+      "size_bytes": 15105,
+      "sha256": "4405e6e0895919967db464657ac84dc3fb628090751ef3b6512bbe38a4f52251",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_csv_admission_ledger_v1.json",
+      "size_bytes": 3138,
+      "sha256": "71b4f83dfcacc974fe129dee5329526eb860766e4d370a5d71c34650db1ed2d0",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_csv_admission_ledger_v1.md",
+      "size_bytes": 3524,
+      "sha256": "bccbdfd9bed0d2ac76d57edb42009d39274e916b5c93958fd9af1cc1fca7352e",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_csv_cache_admission_ledger_v1.csv",
+      "size_bytes": 2,
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_csv_cache_filename_collisions_v1.csv",
+      "size_bytes": 103760,
+      "sha256": "59477b7b3d7716072d190b73c92feab4d7c37a3f23b460730e40d3a441495d98",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_csv_candidate_population_v1.csv",
+      "size_bytes": 377939,
+      "sha256": "dff14c20198256e5794c50ec68ce3d5cb37d945cdb2509bc8e6f171c5b11e839",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_first_50_url_cohort_v1.csv",
+      "size_bytes": 13352,
+      "sha256": "8334a061aca2bc3f4ece9456653ce885152d666be6cb8a5dac9cb55e5b36c380",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_first_loss_point_v1.json",
+      "size_bytes": 1785,
+      "sha256": "ad1e2c86e94eae52172d4e50ba391006c45c8bcd3538e1fba9d4ed34a00cc6d5",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_first_loss_point_v1.md",
+      "size_bytes": 1449,
+      "sha256": "3627aa3a0d9b26e26047930a108ad2acb66410792f3519fc7b0a57c1d70f668d",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_historical_success_sources_v1.csv",
+      "size_bytes": 2070,
+      "sha256": "6e8eba40d261b6e75002935958b1cb05aa90ab09d78dc35e129979f877e40e78",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_identity_candidate_paths_v1.csv",
+      "size_bytes": 141098,
+      "sha256": "5cfa188096bd423045c0f35921666a87a26b4b6b2dce9fb423a7bddf6f834062",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_identity_path_file_profile_v1.csv",
+      "size_bytes": 45389,
+      "sha256": "cf9f5ee2c4436f609f52f617f9f5894f511348c8fb67cde66bcc6d28cff07f3b",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_identity_paths_v1.json",
+      "size_bytes": 699,
+      "sha256": "77957ad30e43df0830cd8fbf3e552b9d1a884b4f85515986cce2a9025040757e",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_identity_paths_v1.md",
+      "size_bytes": 1375,
+      "sha256": "601cb3e569fa1b690f16a45d8fd83f9145c56eea0281513e332f8bbc9f89dffe",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_payload_admission_gap_v1.json",
+      "size_bytes": 314174,
+      "sha256": "33b318f398649cc2c8b2f476aeba9f0065b650bd44b6e28e880fda5d7d558582",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_payload_admission_gap_v1.md",
+      "size_bytes": 22219,
+      "sha256": "f9e67777b7b4174c4b953b38046718bdb15d9d96137f8e0373a33f9b7622098b",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_payload_content_profile_v1.csv",
+      "size_bytes": 193983,
+      "sha256": "bf8343d01098bf3a5ea9fbed19bba2be7bdabea78c31367160c0c6c7ee460cab",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_payload_race_identity_v1.csv",
+      "size_bytes": 4093,
+      "sha256": "890128b05441dc36a7d96a255627b5407f71f3070b4266af1b23d0a20c06f128",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_payload_reference_inventory_v1.csv",
+      "size_bytes": 4599062,
+      "sha256": "82c6cc13ec66bb699b10ad5a85be0103d4898d434dd2e41099fcfa4c8d813929",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_payload_selector_script_evidence_v1.csv",
+      "size_bytes": 914080,
+      "sha256": "8d24d23610e99dd5ad18ea270a932d17d902728ba93feec070a755eea2d78546",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_raw_payload_inventory_v1.csv",
+      "size_bytes": 349420,
+      "sha256": "1a6b6a83c8befb28e20f53a7d297e6dab2a5fe7b32efbe3c8d0c98e80b3df331",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_source_column_inventory_v1.csv",
+      "size_bytes": 5327,
+      "sha256": "91ac20a36c0650a9f53862715cba693a60862615a21f6002f6aded379ca2f256",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_top_level_schema_v1.csv",
+      "size_bytes": 87,
+      "sha256": "96b0afbd9f23c228768fe864b862b1152c31089946044748d774262dd5a66b1f",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_upstream_meeting_expansion_v1.csv",
+      "size_bytes": 6129,
+      "sha256": "cad569039372afa48ccee063a25d8fc1c25398c58174434b36dfa8ab9e1182be",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_upstream_race_evidence_audit_v1.csv",
+      "size_bytes": 471,
+      "sha256": "bbdf6b238d4867875e137c9a0fa3f831eaf53c31e37e6aef37ecba745890ace2",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_upstream_race_evidence_ledger_v1.csv",
+      "size_bytes": 171090,
+      "sha256": "13f30880a03c038b78022fce3a5eaa3776c82a50137977918928813f781d60ef",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_upstream_race_evidence_v1.json",
+      "size_bytes": 833,
+      "sha256": "692a8537770ac951090a18f0c67d7b3c6f34c341f10678245c0708b56c2dfa95",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_upstream_race_evidence_v1.md",
+      "size_bytes": 2257,
+      "sha256": "f9e5e656f8f999675198a0d1db418e24b070507021ce6f48eca152cbbcf3ff66",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_upstream_source_columns_v1.csv",
+      "size_bytes": 3209,
+      "sha256": "b63413c995f92dd05dd535cd50d4d1878599803353132e5dfe5277acdc88a99d",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_upstream_source_overlap_v1.csv",
+      "size_bytes": 50361,
+      "sha256": "c694460d73b4df366a9f014c35edbd7a1173d740d0d2cde541b994c5c7568117",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_url_admission_order_ledger_v1.csv",
+      "size_bytes": 346054,
+      "sha256": "8741a25bd0fffd601f21b4335e4e1d641b65b386790f76bc64200219bfab158b",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_url_admission_order_v1.json",
+      "size_bytes": 1967,
+      "sha256": "8e5bfbd31faddb6346e71b7627dc7d4405cd1ae4561da4f99cab5189ca98a663",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_racingcom_url_admission_order_v1.md",
+      "size_bytes": 3187,
+      "sha256": "2e21224c7da8bba6225e037684e48df0f94b08a3399a9450d38619cdf0f5285d",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_standard_time_eligibility_audit_v1.json",
+      "size_bytes": 1243,
+      "sha256": "cbbf92ce3951703ff7fe46f92d9fc2dd608678316d3b5529e2b69d7160759b8a",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_standard_time_eligibility_report_v1.md",
+      "size_bytes": 140,
+      "sha256": "ba5ec5fa54e1ada419b05ff88782ce1e8ff1b44651d746650ff9b5a4c60b4d67",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_standard_time_exclusion_reasons_v1.csv",
+      "size_bytes": 109,
+      "sha256": "5c727767911afd3208a67ddec07c44f4322978b55df6d6837312f4d4398e1b4a",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_standard_time_group_distribution_v1.csv",
+      "size_bytes": 1256225,
+      "sha256": "d136f4d87d199789554ead1dadac8f335feaf4195ff3102362de10ca633e2fff",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-time-investigation/edgeiq_standard_time_source_coverage_v1.csv",
+      "size_bytes": 200,
+      "sha256": "28de3067dc99f6e26749fc13ff4acba35eeeafe102b3b6acb851c8792123311c",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-times/edgeiq_standard_time_fact_v1.csv",
+      "size_bytes": 193010,
+      "sha256": "08d10915e1ccd9cd749d0b9cdb20238728822c309e9f21c4c675d656c7667bf9",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-times/edgeiq_standard_time_fact_v1_audit.json",
+      "size_bytes": 304,
+      "sha256": "53bb1cc359c2e3a8dbaaa1d320eb168e561daf7ca770c2bd75fa57aa3f239d31",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-times/edgeiq_standard_time_fact_v1_report.md",
+      "size_bytes": 56,
+      "sha256": "cc442917c7e891bf972020b38767e8e840b498e1573359dfb1e507d3bbafc4f2",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-times/edgeiq_standard_time_fact_v1_schema.json",
+      "size_bytes": 556,
+      "sha256": "c68ff25905247918291a3bd0d0c4eee71aa25c60f3a5b3ba604442c837b5d017",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-times/edgeiq_standard_time_group_coverage_v1.csv",
+      "size_bytes": 331235,
+      "sha256": "533face7b1cf79d5f204af1e48b8e6747429f07e4bd6de55607a40e84f8c7083",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-times/edgeiq_standard_time_grouping_contract_v1.json",
+      "size_bytes": 410,
+      "sha256": "b16d63e58ffc5ce65df11e4435f8ec7a26998b7bb4d0841faf1e84839ada7f43",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-times/edgeiq_standard_time_methodology_v1.json",
+      "size_bytes": 236,
+      "sha256": "9dc538d67b619fe28d6c6d6655a65739775fb3167e5825ef4efe1bed5ef7dc1e",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-times/edgeiq_standard_time_upstream_repair_v1_audit.json",
+      "size_bytes": 355,
+      "sha256": "acc660f2d59fd097e7b63d8dfb89f5e9ccb77500354b66c99fa81c4dbefe30ba",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/standard-times/edgeiq_standard_time_upstream_repair_v1_report.md",
+      "size_bytes": 152,
+      "sha256": "c8c56d1d2874470b8f9e279d39e9e64bd8d09f95424fca80c40012b62054c585",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/ui-integration/edgeiq_ui_integration_v1_audit.json",
+      "size_bytes": 1570,
+      "sha256": "bd52bfd9586b72a6d28b8e3cffeacb8623a5391d22fa94fe543ec5bcb956ae45",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/ui-integration/edgeiq_ui_integration_v1_report.md",
+      "size_bytes": 161,
+      "sha256": "391a0485f2dba829a102a77c9d854541c18ffad8d3580996cf09d37d4ab0743e",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/ui-integration/edgeiq_ui_workspace_validation_v1.csv",
+      "size_bytes": 1366,
+      "sha256": "9bcb936df948825a222d21cb0c632dc7586d1e28aebe83e6b37896bac573defe",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/warehouse/edgeiq_performance_fact_warehouse_v1.csv",
+      "size_bytes": 402234108,
+      "sha256": "SKIPPED_GT_100MB",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/warehouse/edgeiq_performance_fact_warehouse_v1_audit.json",
+      "size_bytes": 558,
+      "sha256": "52dbd164b7b2a275716299655f376d98c7680061429858b09f706b563fbaf131",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/warehouse/edgeiq_performance_fact_warehouse_v1_manifest.json",
+      "size_bytes": 163,
+      "sha256": "ba18792d4a1758591638f348020de61c11866fff054679e03607d809fd66c344",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/warehouse/edgeiq_performance_fact_warehouse_v1_report.md",
+      "size_bytes": 117,
+      "sha256": "2f3120c883b2eb5ee01ba2e211446774076524d0b1a049d5a13aee22f113a92d",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/warehouse/edgeiq_performance_fact_warehouse_v1_schema.json",
+      "size_bytes": 838,
+      "sha256": "10835e6731405b8802bc7ec41f8a80e36a4f039d5486e76a94fbe8b77cc5fc39",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/workspace-feeds/edgeiq_field_performance_feed_v1.csv",
+      "size_bytes": 16742584,
+      "sha256": "76b3bf3e954b7af5a70b57d0714bf130c82457eba4fc2b222c164c14082bf549",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/workspace-feeds/edgeiq_form_performance_feed_v1.csv",
+      "size_bytes": 16742584,
+      "sha256": "76b3bf3e954b7af5a70b57d0714bf130c82457eba4fc2b222c164c14082bf549",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/workspace-feeds/edgeiq_insights_performance_feed_v1.csv",
+      "size_bytes": 16742584,
+      "sha256": "76b3bf3e954b7af5a70b57d0714bf130c82457eba4fc2b222c164c14082bf549",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/workspace-feeds/edgeiq_map_performance_feed_v1.csv",
+      "size_bytes": 16742584,
+      "sha256": "76b3bf3e954b7af5a70b57d0714bf130c82457eba4fc2b222c164c14082bf549",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/workspace-feeds/edgeiq_market_performance_feed_v1.csv",
+      "size_bytes": 16742584,
+      "sha256": "76b3bf3e954b7af5a70b57d0714bf130c82457eba4fc2b222c164c14082bf549",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/workspace-feeds/edgeiq_nexus_performance_feed_v1.csv",
+      "size_bytes": 16742584,
+      "sha256": "76b3bf3e954b7af5a70b57d0714bf130c82457eba4fc2b222c164c14082bf549",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/workspace-feeds/edgeiq_overview_performance_feed_v1.csv",
+      "size_bytes": 16742584,
+      "sha256": "76b3bf3e954b7af5a70b57d0714bf130c82457eba4fc2b222c164c14082bf549",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/workspace-feeds/edgeiq_performance_intelligence_feeds_v1_audit.json",
+      "size_bytes": 2902,
+      "sha256": "3cd60c31401147f6c1963ce64e72a2dcc1cfe602cd92c53772de5873b6467b19",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/workspace-feeds/edgeiq_performance_intelligence_feeds_v1_manifest.json",
+      "size_bytes": 2548,
+      "sha256": "af6c8f9cfcbd8ade4aff99ad41ed3e3b52aacc584f1ce5ec6a1c18ac2492c482",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/workspace-feeds/edgeiq_performance_intelligence_feeds_v1_report.md",
+      "size_bytes": 68,
+      "sha256": "970dd8f42d7e6f572045a745fe35b2602b0a78844d0cd83279e1be9e2d8e10d1",
+      "commit_policy": "COMMIT"
+    },
+    {
+      "path": "docs/performance-intelligence/workspace-feeds/edgeiq_performance_performance_feed_v1.csv",
+      "size_bytes": 16742584,
+      "sha256": "76b3bf3e954b7af5a70b57d0714bf130c82457eba4fc2b222c164c14082bf549",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/workspace-feeds/edgeiq_race_performance_feed_v1.csv",
+      "size_bytes": 16742584,
+      "sha256": "76b3bf3e954b7af5a70b57d0714bf130c82457eba4fc2b222c164c14082bf549",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    },
+    {
+      "path": "docs/performance-intelligence/workspace-feeds/edgeiq_results_performance_feed_v1.csv",
+      "size_bytes": 16742584,
+      "sha256": "76b3bf3e954b7af5a70b57d0714bf130c82457eba4fc2b222c164c14082bf549",
+      "commit_policy": "COMMIT_SMALL_AUDIT_REPORT_ONLY"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "input_observations": 449,
+  "standard_time_matches": 168,
+  "missing_standard_time_matches": 281,
+  "governed_parameter_rows": 0,
+  "missing_conversion_parameter_matches": 168,
+  "output_rows_calculated": 0,
+  "output_rows_total_including_blocked": 168,
+  "races": 2,
+  "runners": 24,
+  "segments": 7,
+  "status": "LENGTHS_V_STANDARD_BLOCKED_BY_MISSING_GOVERNED_CONVERSION_PARAMETER",
+  "deterministic_hash": "61ea6b243164d995ad23a3aa18fd991fec17025474846b5e02681c5d8a5b44be"
+}

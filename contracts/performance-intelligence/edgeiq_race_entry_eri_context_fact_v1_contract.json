@@ -1,0 +1,63 @@
+{
+  "contract_name": "edgeiq_race_entry_eri_context_fact_v1",
+  "contract_version": "1.0.0",
+  "grain": "one_governed_eri_context_row_per_projected_performance_entry",
+  "primary_key": [
+    "race_entry_eri_context_id"
+  ],
+  "natural_key": [
+    "race_entry_projected_performance_id"
+  ],
+  "required_fields": [
+    "race_entry_eri_context_id",
+    "race_entry_projected_performance_id",
+    "race_eri_id",
+    "race_eri_parameter_id",
+    "race_entry_id",
+    "race_id",
+    "race_date",
+    "projected_performance_value",
+    "eri_value",
+    "projected_performance_vs_eri",
+    "context_output_decimal_places",
+    "context_rounding_mode",
+    "eri_context_publication_decision",
+    "eri_context_reconciliation_decision",
+    "race_entry_eri_context_status",
+    "source_projected_performance_evidence_sha256",
+    "source_race_eri_evidence_sha256",
+    "source_eri_parameter_evidence_sha256",
+    "race_entry_eri_context_evidence_sha256",
+    "source_projected_performance_builder_version",
+    "source_race_eri_builder_version",
+    "builder_version",
+    "contract_version",
+    "built_at_utc"
+  ],
+  "allowed_values": {
+    "context_rounding_mode": [
+      "ROUND_HALF_EVEN"
+    ],
+    "eri_context_publication_decision": [
+      "ERI_CONTEXT_PUBLISHED"
+    ],
+    "eri_context_reconciliation_decision": [
+      "ERI_CONTEXT_RECONCILED"
+    ],
+    "race_entry_eri_context_status": [
+      "GOVERNED_RACE_ENTRY_ERI_CONTEXT"
+    ]
+  },
+  "forbidden_fields": [
+    "epi",
+    "runner_rank",
+    "race_rank",
+    "probability",
+    "fair_price",
+    "market_price",
+    "market_edge",
+    "confidence",
+    "prediction",
+    "forecast"
+  ]
+}

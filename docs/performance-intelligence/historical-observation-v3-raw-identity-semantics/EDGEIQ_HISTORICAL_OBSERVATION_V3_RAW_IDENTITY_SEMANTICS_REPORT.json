@@ -1,0 +1,1037 @@
+{
+  "asset_catalog": {
+    "exists": true,
+    "header": [
+      "warehouse_snapshot_id",
+      "asset_name",
+      "asset_file",
+      "asset_type",
+      "rows",
+      "sha256",
+      "min_race_date",
+      "max_race_date",
+      "primary_key",
+      "schema_version"
+    ],
+    "rows": [
+      {
+        "asset_file": "canonical_performance_evidence.csv",
+        "asset_name": "canonical_performance_evidence",
+        "asset_type": "IMMUTABLE_CANONICAL_EVIDENCE",
+        "max_race_date": "2026-06-24",
+        "min_race_date": "2000-08-02",
+        "primary_key": "performance_id",
+        "rows": "879784",
+        "schema_version": "PERFORMANCE_IDENTITY_V0_2",
+        "sha256": "5754e424b57031b3a6e50b4ecd8675af21b10a7a624b85d3810795562e0d1df2",
+        "warehouse_snapshot_id": "eiq_warehouse_snapshot_b24578e0eb795ab6bd076452bfff3f5e"
+      },
+      {
+        "asset_file": "canonical_sectional_evidence.csv",
+        "asset_name": "canonical_sectional_evidence",
+        "asset_type": "IMMUTABLE_CANONICAL_EVIDENCE",
+        "max_race_date": "2026-06-04",
+        "min_race_date": "2023-01-01",
+        "primary_key": "performance_sectional_id",
+        "rows": "103766",
+        "schema_version": "CANONICAL_SECTIONAL_EVIDENCE_V0_2",
+        "sha256": "072c1ccf556bfc0476c1d4507d0828b6210c8d5865e411c6a42b5e4a3de1fa42",
+        "warehouse_snapshot_id": "eiq_warehouse_snapshot_b24578e0eb795ab6bd076452bfff3f5e"
+      }
+    ]
+  },
+  "asset_catalog_proven": true,
+  "audit_id": "EDGEIQ_HISTORICAL_OBSERVATION_V3_RAW_IDENTITY_SEMANTICS_PHASE1A_6B_1A_V1",
+  "candidate_runner_fields": [
+    "horse_id",
+    "provider_runner_id",
+    "race_number",
+    "horse_name"
+  ],
+  "corrected_derived_fields": [
+    "performance_fact_id",
+    "benchmark_eligible",
+    "quality_state"
+  ],
+  "corrected_header": [
+    "performance_fact_id",
+    "source_version",
+    "generated_timestamp",
+    "race_id",
+    "runner_id",
+    "race_date",
+    "track",
+    "state",
+    "race_number",
+    "race_name",
+    "race_class",
+    "distance_raw",
+    "distance_metres",
+    "track_condition",
+    "track_rating",
+    "rail_position",
+    "weather",
+    "horse",
+    "horse_code",
+    "trainer",
+    "trainer_code",
+    "jockey",
+    "jockey_code",
+    "barrier",
+    "weight",
+    "finish_position",
+    "margin_raw",
+    "margin_lengths",
+    "starting_price",
+    "starting_price_decimal",
+    "raw_winning_time",
+    "governed_time_seconds",
+    "time_unit",
+    "benchmark_eligible",
+    "quality_state",
+    "legacy_performance_fact_id",
+    "source_row_number",
+    "identity_version",
+    "identity_natural_key",
+    "collision_resolution_state",
+    "identity_collision_discriminator",
+    "recomputed_performance_fact_id",
+    "race_context_key",
+    "race_time_consistency_state",
+    "race_time_unit_state",
+    "race_time_source_unit",
+    "race_time_governed_seconds",
+    "race_benchmark_eligible",
+    "performance_benchmark_eligible",
+    "benchmark_exclusion_reason",
+    "governance_version",
+    "governance_generated_at"
+  ],
+  "corrected_source": "docs/performance-intelligence/warehouse/performance-facts-corrected/eiq_performance_facts_v0_2_a0c3715ab506d19f9301d8a4/canonical_performance_facts_v0_2.csv",
+  "decision": "MULTIPLE_IDENTITY_EXPRESSIONS_MATCH",
+  "decision_reason": "Multiple complete identity expressions reproduce the governed population. The canonical expression must be distinguished by upstream source semantics.",
+  "exact_match_count": 2,
+  "existing_v2_modified": false,
+  "generated_at_utc": "2026-07-27T06:29:30+00:00",
+  "identity_expressions": [
+    {
+      "complete_population": true,
+      "complete_rows": 879784,
+      "duplicate_contract_match": true,
+      "duplicate_excess": 89,
+      "expression": "race_id + horse_id",
+      "expression_type": "PAIR",
+      "fields": [
+        "race_id",
+        "horse_id"
+      ],
+      "incomplete_rows": 0,
+      "unique_contract_match": true,
+      "unique_identities": 879695
+    },
+    {
+      "complete_population": true,
+      "complete_rows": 879784,
+      "duplicate_contract_match": true,
+      "duplicate_excess": 89,
+      "expression": "race_id + provider_runner_id",
+      "expression_type": "PAIR",
+      "fields": [
+        "race_id",
+        "provider_runner_id"
+      ],
+      "incomplete_rows": 0,
+      "unique_contract_match": true,
+      "unique_identities": 879695
+    },
+    {
+      "complete_population": true,
+      "complete_rows": 879784,
+      "duplicate_contract_match": false,
+      "duplicate_excess": 808759,
+      "expression": "race_id + race_number",
+      "expression_type": "PAIR",
+      "fields": [
+        "race_id",
+        "race_number"
+      ],
+      "incomplete_rows": 0,
+      "unique_contract_match": false,
+      "unique_identities": 71025
+    },
+    {
+      "complete_population": true,
+      "complete_rows": 879784,
+      "duplicate_contract_match": false,
+      "duplicate_excess": 91,
+      "expression": "race_id + horse_name",
+      "expression_type": "PAIR",
+      "fields": [
+        "race_id",
+        "horse_name"
+      ],
+      "incomplete_rows": 0,
+      "unique_contract_match": false,
+      "unique_identities": 879693
+    },
+    {
+      "complete_population": true,
+      "complete_rows": 879784,
+      "duplicate_contract_match": false,
+      "duplicate_excess": 0,
+      "expression": "race_id + horse_id + race_number",
+      "expression_type": "TRIPLE",
+      "fields": [
+        "race_id",
+        "horse_id",
+        "race_number"
+      ],
+      "incomplete_rows": 0,
+      "unique_contract_match": false,
+      "unique_identities": 879784
+    },
+    {
+      "complete_population": true,
+      "complete_rows": 879784,
+      "duplicate_contract_match": false,
+      "duplicate_excess": 3,
+      "expression": "race_id + horse_name + race_number",
+      "expression_type": "TRIPLE",
+      "fields": [
+        "race_id",
+        "horse_name",
+        "race_number"
+      ],
+      "incomplete_rows": 0,
+      "unique_contract_match": false,
+      "unique_identities": 879781
+    }
+  ],
+  "materialisation_checks": {
+    "exists": true,
+    "header": [
+      "check",
+      "passed",
+      "observed"
+    ],
+    "rows": [
+      {
+        "check": "SOURCE_SNAPSHOT_PASSED",
+        "observed": "eiq_warehouse_snapshot_b24578e0eb795ab6bd076452bfff3f5e",
+        "passed": "True"
+      },
+      {
+        "check": "PERFORMANCE_SOURCE_HASH",
+        "observed": "5754e424b57031b3a6e50b4ecd8675af21b10a7a624b85d3810795562e0d1df2",
+        "passed": "True"
+      },
+      {
+        "check": "SECTIONAL_SOURCE_HASH",
+        "observed": "072c1ccf556bfc0476c1d4507d0828b6210c8d5865e411c6a42b5e4a3de1fa42",
+        "passed": "True"
+      },
+      {
+        "check": "PERFORMANCE_COPY_HASH",
+        "observed": "5754e424b57031b3a6e50b4ecd8675af21b10a7a624b85d3810795562e0d1df2",
+        "passed": "True"
+      },
+      {
+        "check": "SECTIONAL_COPY_HASH",
+        "observed": "072c1ccf556bfc0476c1d4507d0828b6210c8d5865e411c6a42b5e4a3de1fa42",
+        "passed": "True"
+      },
+      {
+        "check": "PERFORMANCE_ROW_COUNT",
+        "observed": "879784",
+        "passed": "True"
+      },
+      {
+        "check": "SECTIONAL_ROW_COUNT",
+        "observed": "103766",
+        "passed": "True"
+      },
+      {
+        "check": "ALL_PHASE1_0_3_CHECKS_PASSED",
+        "observed": "11",
+        "passed": "True"
+      }
+    ]
+  },
+  "materialisation_proven": true,
+  "non_circular_lineage": [
+    {
+      "correction_language": false,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": false,
+      "references_raw": true,
+      "repository_path": "docs/performance-intelligence/audits/phase1_1/edgeiq_performance_intelligence_phase1_1_latest.json",
+      "write_language": false
+    },
+    {
+      "correction_language": false,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": false,
+      "references_raw": true,
+      "repository_path": "docs/performance-intelligence/audits/phase1_1/edgeiq_performance_intelligence_phase1_1_summary_eiq_warehouse_snapshot_b24578e0eb795ab6bd076452bfff3f5e.json",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": false,
+      "references_raw": true,
+      "repository_path": "docs/performance-intelligence/audits/phase1_5/edgeiq_performance_intelligence_phase1_5_latest.json",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": false,
+      "references_raw": true,
+      "repository_path": "docs/performance-intelligence/audits/phase1_5/edgeiq_performance_intelligence_phase1_5_summary_20260716_074325.json",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": true,
+      "references_raw": false,
+      "repository_path": "docs/performance-intelligence/audits/phase1_6_1/edgeiq_performance_intelligence_phase1_6_1_latest.json",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": true,
+      "references_raw": false,
+      "repository_path": "docs/performance-intelligence/audits/phase1_6_1/edgeiq_performance_intelligence_phase1_6_1_summary_eiq_performance_facts_v0_2_a0c3715ab506d19f9301d8a4.json",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": true,
+      "references_raw": false,
+      "repository_path": "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_1_ACTIVE_SOURCE_FORENSICS_REPORT_V1.json",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": true,
+      "references_raw": false,
+      "repository_path": "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_1_ACTIVE_SOURCE_FORENSICS_REPORT_V1.md",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": true,
+      "references_corrected": true,
+      "references_raw": true,
+      "repository_path": "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_1_ACTIVE_SOURCE_SHORTLIST_V1.csv",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": true,
+      "references_corrected": true,
+      "references_raw": true,
+      "repository_path": "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_1_ACTIVE_SOURCE_SHORTLIST_V1.json",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": true,
+      "references_raw": false,
+      "repository_path": "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_2_WAREHOUSE_EQUIVALENCE_INVENTORY_V1.csv",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": true,
+      "references_raw": false,
+      "repository_path": "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_2_WAREHOUSE_KEY_AUDIT_V1.csv",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": true,
+      "references_raw": false,
+      "repository_path": "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_2_WAREHOUSE_LINEAGE_EQUIVALENCE_REPORT_V1.json",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": true,
+      "references_raw": false,
+      "repository_path": "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_2_WAREHOUSE_LINEAGE_REFERENCES_V1.csv",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": true,
+      "references_corrected": true,
+      "references_raw": true,
+      "repository_path": "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_3_BUILDER_SEMANTICS_V1.csv",
+      "write_language": true
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": true,
+      "references_raw": false,
+      "repository_path": "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_3_DATASET_POPULATION_PROFILE_V1.csv",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": true,
+      "references_raw": false,
+      "repository_path": "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_3_DUPLICATE_RUNNER_GROUPS_V1.csv",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": true,
+      "references_raw": false,
+      "repository_path": "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_3_FIELD_SEMANTICS_V1.csv",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": true,
+      "references_corrected": true,
+      "references_raw": true,
+      "repository_path": "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_3_POPULATION_DUPLICATE_BUILDER_SEMANTICS_REPORT_V1.json",
+      "write_language": true
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": true,
+      "references_raw": false,
+      "repository_path": "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_4_1_BUILDER_FIELD_ASSIGNMENTS_V1.csv",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": true,
+      "references_raw": false,
+      "repository_path": "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_4_1_EXACT_FIELD_PROFILE_V1.csv",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": true,
+      "references_raw": false,
+      "repository_path": "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_4_1_IDENTITY_FIELD_CANDIDATES_V1.csv",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": true,
+      "references_raw": false,
+      "repository_path": "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_4_ACTIVE_BUILDER_DISCOVERY_V1.csv",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": true,
+      "references_raw": false,
+      "repository_path": "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_4_SEMANTIC_IDENTITY_SOURCE_RECONCILIATION_REPORT_V1.json",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": true,
+      "references_raw": false,
+      "repository_path": "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_4_SEMANTIC_POPULATION_PROFILE_V1.csv",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": true,
+      "references_corrected": true,
+      "references_raw": true,
+      "repository_path": "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_CANDIDATE_SOURCE_REGISTER_V1.csv",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": true,
+      "references_corrected": true,
+      "references_raw": true,
+      "repository_path": "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_DATASET_INVENTORY_V1.csv",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": true,
+      "references_corrected": true,
+      "references_raw": true,
+      "repository_path": "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_DATASET_INVENTORY_V1.json",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": true,
+      "references_corrected": true,
+      "references_raw": true,
+      "repository_path": "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_FIELD_FREQUENCY_V1.csv",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": true,
+      "references_corrected": true,
+      "references_raw": true,
+      "repository_path": "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_PYTHON_INVENTORY_V1.csv",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": true,
+      "references_corrected": true,
+      "references_raw": true,
+      "repository_path": "docs/performance-intelligence/EDGEIQ_PI_PHASE1A_PYTHON_INVENTORY_V1.json",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": true,
+      "references_corrected": true,
+      "references_raw": true,
+      "repository_path": "docs/performance-intelligence/historical-observation-v3-authority-lineage/edgeiq_historical_observation_v3_authority_lineage_contract.json",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": true,
+      "references_corrected": true,
+      "references_raw": true,
+      "repository_path": "docs/performance-intelligence/historical-observation-v3-authority-lineage/EDGEIQ_HISTORICAL_OBSERVATION_V3_AUTHORITY_LINEAGE_REPORT.json",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": true,
+      "references_corrected": true,
+      "references_raw": true,
+      "repository_path": "docs/performance-intelligence/historical-observation-v3-authority-lineage/EDGEIQ_HISTORICAL_OBSERVATION_V3_AUTHORITY_LINEAGE_REPORT.md",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": true,
+      "references_corrected": true,
+      "references_raw": true,
+      "repository_path": "docs/performance-intelligence/historical-observation-v3-authority-lineage/EDGEIQ_HISTORICAL_OBSERVATION_V3_AUTHORITY_LINEAGE_SCHEMA_MATRIX.csv",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": true,
+      "references_corrected": true,
+      "references_raw": true,
+      "repository_path": "docs/performance-intelligence/historical-observation-v3-physical-authority-discovery/EDGEIQ_HISTORICAL_OBSERVATION_V3_PHYSICAL_AUTHORITY_CANDIDATES.csv",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": true,
+      "references_corrected": true,
+      "references_raw": true,
+      "repository_path": "docs/performance-intelligence/historical-observation-v3-physical-authority-discovery/EDGEIQ_HISTORICAL_OBSERVATION_V3_PHYSICAL_AUTHORITY_DISCOVERY_REPORT.json",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": true,
+      "references_corrected": true,
+      "references_raw": true,
+      "repository_path": "docs/performance-intelligence/historical-observation-v3-physical-authority-discovery/EDGEIQ_HISTORICAL_OBSERVATION_V3_PHYSICAL_AUTHORITY_DISCOVERY_REPORT.md",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": true,
+      "references_corrected": true,
+      "references_raw": true,
+      "repository_path": "docs/performance-intelligence/historical-observation-v3-physical-authority-discovery/EDGEIQ_HISTORICAL_OBSERVATION_V3_PHYSICAL_AUTHORITY_PRODUCER_MATRIX.csv",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": true,
+      "references_corrected": true,
+      "references_raw": true,
+      "repository_path": "docs/performance-intelligence/identity-profiler-v1-archive/legacy_20260725T210542Z/edgeiq_identity_dataset_profiles_v1.csv",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": true,
+      "references_corrected": true,
+      "references_raw": true,
+      "repository_path": "docs/performance-intelligence/identity-profiler-v1-archive/legacy_20260725T210542Z/edgeiq_identity_relationships_v1.csv",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": true,
+      "references_raw": false,
+      "repository_path": "docs/performance-intelligence/identity-profiler-v1/edgeiq_identity_repository_canonical_identity_universe_v1.csv",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": true,
+      "references_corrected": true,
+      "references_raw": true,
+      "repository_path": "docs/performance-intelligence/identity-profiler-v1/edgeiq_identity_repository_column_profile_v1.csv",
+      "write_language": true
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": true,
+      "references_corrected": true,
+      "references_raw": true,
+      "repository_path": "docs/performance-intelligence/identity-profiler-v1/edgeiq_identity_repository_crosswalk_candidates_v1.csv",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": true,
+      "references_corrected": true,
+      "references_raw": true,
+      "repository_path": "docs/performance-intelligence/identity-profiler-v1/edgeiq_identity_repository_dataset_profile_v1.csv",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": true,
+      "references_corrected": true,
+      "references_raw": true,
+      "repository_path": "docs/performance-intelligence/identity-profiler-v1/edgeiq_identity_repository_graph_edges_v1.csv",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": true,
+      "references_corrected": true,
+      "references_raw": true,
+      "repository_path": "docs/performance-intelligence/identity-profiler-v1/edgeiq_identity_repository_graph_nodes_v1.csv",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": true,
+      "references_corrected": true,
+      "references_raw": true,
+      "repository_path": "docs/performance-intelligence/identity-profiler-v1/edgeiq_identity_repository_identity_relationships_v1.csv",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": true,
+      "references_corrected": true,
+      "references_raw": true,
+      "repository_path": "docs/performance-intelligence/identity-profiler-v1/edgeiq_identity_repository_inventory_v1.csv",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": true,
+      "references_corrected": true,
+      "references_raw": true,
+      "repository_path": "docs/performance-intelligence/identity-profiler-v1/edgeiq_identity_repository_inventory_v1.json",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": true,
+      "references_raw": false,
+      "repository_path": "docs/performance-intelligence/integration/audits/edgeiq_performance_intelligence_product_integration_audit_v1.csv",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": true,
+      "references_raw": false,
+      "repository_path": "docs/performance-intelligence/integration/audits/edgeiq_performance_intelligence_product_integration_audit_v1.json",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": true,
+      "references_raw": false,
+      "repository_path": "docs/performance-intelligence/integration/EDGEIQ_PERFORMANCE_INTELLIGENCE_PRODUCT_INTEGRATION_FINAL_REPORT_V1.md",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": false,
+      "references_both": false,
+      "references_corrected": true,
+      "references_raw": false,
+      "repository_path": "docs/performance-intelligence/warehouse/performance-facts-corrected/eiq_performance_facts_v0_2_a0c3715ab506d19f9301d8a4/asset_catalog.csv",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": true,
+      "references_raw": false,
+      "repository_path": "docs/performance-intelligence/warehouse/performance-facts-corrected/eiq_performance_facts_v0_2_a0c3715ab506d19f9301d8a4/integrity_manifest.json",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": true,
+      "references_raw": false,
+      "repository_path": "docs/performance-intelligence/warehouse/performance-facts-corrected/eiq_performance_facts_v0_2_a0c3715ab506d19f9301d8a4/performance_facts_manifest_v0_2.json",
+      "write_language": false
+    },
+    {
+      "correction_language": false,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": false,
+      "references_raw": true,
+      "repository_path": "docs/performance-intelligence/warehouse/raw/eiq_warehouse_snapshot_b24578e0eb795ab6bd076452bfff3f5e/asset_catalog.csv",
+      "write_language": false
+    },
+    {
+      "correction_language": false,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": false,
+      "references_raw": true,
+      "repository_path": "docs/performance-intelligence/warehouse/raw/eiq_warehouse_snapshot_b24578e0eb795ab6bd076452bfff3f5e/integrity_manifest.json",
+      "write_language": false
+    },
+    {
+      "correction_language": false,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": false,
+      "references_raw": true,
+      "repository_path": "docs/performance-intelligence/warehouse/raw/eiq_warehouse_snapshot_b24578e0eb795ab6bd076452bfff3f5e/warehouse_manifest.json",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": true,
+      "references_raw": false,
+      "repository_path": "docs/product-maturity/edgeiq_product_maturity_phase5_audit_v1.json",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": false,
+      "references_both": false,
+      "references_corrected": true,
+      "references_raw": false,
+      "repository_path": "docs/product-maturity/EDGEIQ_PRODUCT_PRODUCTION_READINESS_CERTIFICATION_V1.md",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": true,
+      "references_corrected": true,
+      "references_raw": true,
+      "repository_path": "repository_inventory.csv",
+      "write_language": false
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": true,
+      "references_raw": false,
+      "repository_path": "scripts/audit_edgeiq_product_maturity_phase5_v1.py",
+      "write_language": true
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": true,
+      "references_raw": false,
+      "repository_path": "scripts/checkpoint_edgeiq_performance_intelligence_phase1a_2_warehouse_lineage_equivalence_v1.py",
+      "write_language": true
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": true,
+      "references_raw": false,
+      "repository_path": "scripts/checkpoint_edgeiq_performance_intelligence_phase1a_3_population_duplicate_builder_semantics_v1.py",
+      "write_language": true
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": true,
+      "references_raw": false,
+      "repository_path": "scripts/checkpoint_edgeiq_performance_intelligence_phase1a_4_1_exact_schema_field_mapping_v1.py",
+      "write_language": true
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": true,
+      "references_raw": false,
+      "repository_path": "scripts/checkpoint_edgeiq_performance_intelligence_phase1a_4_2_raw_identity_bridge_double_ingestion_audit_v1.py",
+      "write_language": true
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": true,
+      "references_raw": false,
+      "repository_path": "scripts/checkpoint_edgeiq_performance_intelligence_phase1a_4_semantic_identity_source_reconciliation_v1.py",
+      "write_language": true
+    },
+    {
+      "correction_language": false,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": false,
+      "references_raw": true,
+      "repository_path": "scripts/performance-intelligence/audit_edgeiq_performance_intelligence_phase1_3.py",
+      "write_language": true
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": false,
+      "references_raw": true,
+      "repository_path": "scripts/performance-intelligence/audit_edgeiq_performance_intelligence_phase1_5.py",
+      "write_language": true
+    },
+    {
+      "correction_language": false,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": false,
+      "references_raw": true,
+      "repository_path": "scripts/performance-intelligence/audit_edgeiq_performance_intelligence_phase1_5a.py",
+      "write_language": true
+    },
+    {
+      "correction_language": false,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": false,
+      "references_raw": true,
+      "repository_path": "scripts/performance-intelligence/build_edgeiq_performance_intelligence_phase1_1.py",
+      "write_language": true
+    },
+    {
+      "correction_language": false,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": false,
+      "references_raw": true,
+      "repository_path": "scripts/performance-intelligence/build_edgeiq_performance_intelligence_phase1_2.py",
+      "write_language": true
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": false,
+      "references_raw": true,
+      "repository_path": "scripts/performance-intelligence/build_edgeiq_performance_intelligence_phase1_5b.py",
+      "write_language": true
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": true,
+      "references_raw": false,
+      "repository_path": "scripts/performance-intelligence/phase1_6_1/apply_phase1_6_1_recovery_patch.py",
+      "write_language": true
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": true,
+      "references_raw": false,
+      "repository_path": "scripts/performance-intelligence/phase1_6_1/audit_edgeiq_corrected_performance_facts_phase1_6_1.py",
+      "write_language": true
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": true,
+      "references_raw": false,
+      "repository_path": "scripts/performance-intelligence/phase1_6_1/build_edgeiq_corrected_performance_facts_phase1_6_1.py",
+      "write_language": true
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": true,
+      "references_raw": false,
+      "repository_path": "scripts/performance-intelligence/phase1_6_1/patch_phase1_6_1_corrected_builder.py",
+      "write_language": true
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": true,
+      "references_raw": false,
+      "repository_path": "scripts/performance-intelligence/product-integration/audit_edgeiq_performance_intelligence_product_integration_v1.py",
+      "write_language": true
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": true,
+      "references_raw": false,
+      "repository_path": "scripts/performance-intelligence/product-integration/build_edgeiq_performance_intelligence_product_feeds_v1.py",
+      "write_language": true
+    },
+    {
+      "correction_language": true,
+      "raw_language": true,
+      "references_both": false,
+      "references_corrected": true,
+      "references_raw": false,
+      "repository_path": "scripts/performance-intelligence/run_edgeiq_performance_intelligence_full_pipeline_v1.py",
+      "write_language": true
+    }
+  ],
+  "null_counts": {
+    "horse_id": 0,
+    "horse_name": 0,
+    "provider_runner_id": 0,
+    "race_id": 0,
+    "race_number": 0
+  },
+  "race_field": "race_id",
+  "raw_header": [
+    "performance_id",
+    "race_id",
+    "meeting_id",
+    "horse_id",
+    "source_evidence_id",
+    "source_row_number",
+    "provider_race_id",
+    "provider_runner_id",
+    "race_date",
+    "state",
+    "track",
+    "race_number",
+    "horse_name",
+    "identity_method",
+    "identity_quality_state",
+    "identity_version",
+    "evidence_version",
+    "generated_at",
+    "legacy_performance_id",
+    "performance_natural_key_version",
+    "rekeyed_at"
+  ],
+  "raw_lineage_fields": [
+    "source_row_number"
+  ],
+  "raw_source": "docs/performance-intelligence/warehouse/raw/eiq_warehouse_snapshot_b24578e0eb795ab6bd076452bfff3f5e/canonical_performance_evidence.csv",
+  "rejected_v3_modified": false,
+  "selected_identity_expression": null,
+  "status": "EDGEIQ_HISTORICAL_OBSERVATION_V3_RAW_IDENTITY_SEMANTICS_PHASE1A_6B_1A_V1_FAIL",
+  "supporting_fields": [
+    "source_row_number",
+    "race_date",
+    "track",
+    "race_number"
+  ],
+  "warehouse_written": false
+}

@@ -1,0 +1,18 @@
+{
+  "status": "BLOCKED_CURRENT_RESULTS_NOT_INGESTED",
+  "root_cause": "CURRENT_RESULTS_NOT_INGESTED",
+  "root_cause_evidence": [
+    "Canonical results warehouse max date is 2026-05-24.",
+    "Current meetings discovered in window: 6.",
+    "Latest daily operations window: 2026-07-15 to 2026-07-28.",
+    "Official results ingestion status: PASS; raw_rows=80; facts=80.",
+    "After 2026-07-20 result races: 0."
+  ],
+  "meeting_blocker_categories": {
+    "RESULT_NOT_IMPORTED": 4,
+    "ORCHESTRATION_NOT_RUN": 2
+  },
+  "implementation_safe": false,
+  "reason_no_implementation": "Investigation does not prove a deterministic formula/governance defect. It proves missing current result ingestion/source coverage.",
+  "next_governed_action": "Run or repair current official results ingestion for post-2026-07-20 Victorian resulted meetings, then rerun timing update and downstream performance refresh."
+}

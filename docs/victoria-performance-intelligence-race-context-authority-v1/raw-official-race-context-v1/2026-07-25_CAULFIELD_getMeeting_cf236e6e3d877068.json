@@ -1,0 +1,213 @@
+{
+  "data": {
+    "getMeeting": {
+      "track": "Turf",
+      "venue": "Caulfield",
+      "isJumpOut": false,
+      "isTrial": false,
+      "venueName": "caulfield",
+      "venueCode": 83,
+      "venueAbbr": "CAUL",
+      "trackName": "Caulfield",
+      "state": "VIC",
+      "firstRaceTime": "2026-07-25T02:10:00.000Z",
+      "isTab": 1,
+      "meetUrl": "https://www.racing.com/form/2026-07-25/caulfield",
+      "meetUrlSegment": "2026-07-25/caulfield",
+      "trackRating": "6",
+      "trackCondition": "Soft",
+      "date": "2026-07-25",
+      "railPosition": "Out 10m Entire Circuit",
+      "trackMapWhite": "https://s3-ap-southeast-2.amazonaws.com/racevic.static/trackmaps/white/CAUL.svg",
+      "id": "5191040",
+      "previousRailPosition": "Out 6m Entire Circuit",
+      "straight": "367",
+      "status": "Results",
+      "hasRunners": true,
+      "hasRaceList": true,
+      "hasTips": true,
+      "hasStewards": true,
+      "weather": "Overcast",
+      "weatherAirTemp": "11.9",
+      "weatherApparentTemp": "8.9",
+      "weatherRain": "0.2",
+      "weatherRainRange": "1 to 5 mm",
+      "weatherWindDirection": "NW",
+      "weatherWindSpeed": "15",
+      "weatherIcon": "4",
+      "weatherMin": "10",
+      "weatherMax": "15",
+      "weatherText": "Cloudy.",
+      "weatherRainChance": "20%",
+      "penetrometer": "0.00",
+      "rainfall": "nil last 24 hours, 1.8mm last 7 days",
+      "trackInfo": "Inspection 6AM 25/7;   Going Stick- 9.2, Penetrate- 9, Shear- 9.8, Rainfall since last race day- 19.8mm, Out­side 4m aerated (16m of clear gal­lop­ing width re­main­ing)",
+      "stewardsReportUrl": "https://cdn.rmdprod.racing.com/RV/stewards/2026-07-25/caulfield/stewardsreports/meet.htm",
+      "trackConditions": [
+        {
+          "raceNumber": 1,
+          "condition": "Soft 6",
+          "arrowIndicator": ""
+        }
+      ],
+      "previousRailPositions": [
+        {
+          "meetCode": "5191055",
+          "meetDate": "2026-07-11",
+          "railPosition": "Out 6m Entire Circuit",
+          "trackCondition": "Soft",
+          "trackRating": "7",
+          "comments": "Finalised 11/7 - 7.30am",
+          "meet": {
+            "meetTips": [
+              {
+                "shortComment": null,
+                "longComment": null
+              },
+              {
+                "shortComment": null,
+                "longComment": null
+              },
+              {
+                "shortComment": null,
+                "longComment": null
+              },
+              {
+                "shortComment": null,
+                "longComment": null
+              }
+            ]
+          }
+        },
+        {
+          "meetCode": "5191071",
+          "meetDate": "2026-06-27",
+          "railPosition": "Out 3m Entire Circuit",
+          "trackCondition": "Soft",
+          "trackRating": "7",
+          "comments": "Finalised 27/6 - 7.45am. Late Scratching R8 N20 & Late Rider R7 N17",
+          "meet": {
+            "meetTips": [
+              {
+                "shortComment": null,
+                "longComment": null
+              },
+              {
+                "shortComment": null,
+                "longComment": null
+              },
+              {
+                "shortComment": null,
+                "longComment": null
+              },
+              {
+                "shortComment": null,
+                "longComment": null
+              },
+              {
+                "shortComment": null,
+                "longComment": null
+              }
+            ]
+          }
+        },
+        {
+          "meetCode": "5191101",
+          "meetDate": "2026-05-30",
+          "railPosition": "True Entire Circuit",
+          "trackCondition": "Heavy",
+          "trackRating": "8",
+          "comments": "Finalised 30/5 - 7.30am",
+          "meet": {
+            "meetTips": [
+              {
+                "shortComment": null,
+                "longComment": null
+              },
+              {
+                "shortComment": null,
+                "longComment": null
+              },
+              {
+                "shortComment": null,
+                "longComment": null
+              },
+              {
+                "shortComment": null,
+                "longComment": null
+              },
+              {
+                "shortComment": null,
+                "longComment": null
+              },
+              {
+                "shortComment": null,
+                "longComment": null
+              }
+            ]
+          }
+        },
+        {
+          "meetCode": "5191123",
+          "meetDate": "2026-05-09",
+          "railPosition": "Out 12m Entire Circuit",
+          "trackCondition": "Soft",
+          "trackRating": "7",
+          "comments": "Track Downgraded to (Soft 7) @ 10:10 AM",
+          "meet": {
+            "meetTips": [
+              {
+                "shortComment": null,
+                "longComment": "Genuine soft track and riders edged off the inside in the home straight and aimed at the middle fairly early in the program. "
+              },
+              {
+                "shortComment": null,
+                "longComment": null
+              },
+              {
+                "shortComment": null,
+                "longComment": null
+              },
+              {
+                "shortComment": null,
+                "longComment": null
+              }
+            ]
+          }
+        },
+        {
+          "meetCode": "5191411",
+          "meetDate": "2026-04-11",
+          "railPosition": "Out 8m Entire Circuit",
+          "trackCondition": "Good",
+          "trackRating": "4",
+          "comments": "Track Downgraded to (Soft 5) @ 1:52 PM after Race 4, Track Downgraded to (Soft 6) @ 3:45 PM after Race 7, Track Downgraded to (Soft 7) @ 4:22 PM after Race 8",
+          "meet": {
+            "meetTips": [
+              {
+                "shortComment": null,
+                "longComment": null
+              },
+              {
+                "shortComment": null,
+                "longComment": null
+              },
+              {
+                "shortComment": null,
+                "longComment": null
+              },
+              {
+                "shortComment": null,
+                "longComment": null
+              },
+              {
+                "shortComment": null,
+                "longComment": null
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

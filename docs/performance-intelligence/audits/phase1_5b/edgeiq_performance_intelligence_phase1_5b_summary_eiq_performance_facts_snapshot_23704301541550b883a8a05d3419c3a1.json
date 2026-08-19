@@ -1,0 +1,85 @@
+{
+  "warehouse_name": "EDGEiQ Canonical Performance Facts Warehouse",
+  "warehouse_version": "EDGEIQ_CANONICAL_PERFORMANCE_FACTS_V0_1",
+  "materialisation_version": "PHASE1_5B_PERFORMANCE_FACTS_V0_1",
+  "performance_facts_snapshot_id": "eiq_performance_facts_snapshot_23704301541550b883a8a05d3419c3a1",
+  "raw_warehouse_snapshot_id": "eiq_warehouse_snapshot_b24578e0eb795ab6bd076452bfff3f5e",
+  "generated_utc": "2026-07-15T23:08:17.258565+00:00",
+  "immutable": true,
+  "production_application_modified": false,
+  "benchmarks_calculated": false,
+  "sectional_times_materialised": false,
+  "speed_evidence_materialised": false,
+  "source": {
+    "path": "public/data/edgeiq_historical_results_warehouse_v2_graphql.csv",
+    "sha256": "13f17e2ae21802aef5017a9a09cbb9ec572c9fda4c8fa8f85da27231e8828974",
+    "rows": 879784
+  },
+  "assets": [
+    {
+      "asset_name": "canonical_performance_facts",
+      "asset_file": "canonical_performance_facts.csv",
+      "rows": 879784,
+      "primary_key": "performance_id",
+      "sha256": "1845f561022e34bf21cf1771dd48e8ef088a37429e6b93d45d879cbbc0e52be5",
+      "asset_type": "IMMUTABLE_OFFICIAL_PERFORMANCE_FACTS"
+    },
+    {
+      "asset_name": "performance_fact_quality_states",
+      "asset_file": "performance_fact_quality_states.csv",
+      "rows": 879784,
+      "primary_key": "performance_id",
+      "sha256": "56b655eeacce74d04280f589e7f1f67fc19148fccf2a5b217069948816acb0b9",
+      "asset_type": "IMMUTABLE_EVIDENCE_QUALITY_STATES"
+    }
+  ],
+  "quality_state_counts": {
+    "COMPLETE": 716590,
+    "EXCLUDED_RACE_STATUS": 2022,
+    "PARTIAL": 5459,
+    "SCRATCHED": 155713
+  },
+  "official_time_quality_counts": {
+    "OFFICIAL_TIME_AVAILABLE": 712883,
+    "OFFICIAL_TIME_UNAVAILABLE": 166901
+  },
+  "margin_quality_counts": {
+    "OFFICIAL_MARGIN_AVAILABLE": 879784
+  },
+  "materialisation_checks": [
+    {
+      "check": "SOURCE_AND_IDENTITY_ROW_COUNT",
+      "passed": true,
+      "observed": "source=879784;identity=879784"
+    },
+    {
+      "check": "SOURCE_ROW_LINEAGE",
+      "passed": true,
+      "observed": 0
+    },
+    {
+      "check": "PERFORMANCE_PRIMARY_KEY",
+      "passed": true,
+      "observed": "duplicates=0;blank=0"
+    },
+    {
+      "check": "FACTS_ROW_COUNT",
+      "passed": true,
+      "observed": 879784
+    },
+    {
+      "check": "NO_BENCHMARK_FIELDS",
+      "passed": true,
+      "observed": "RAW_FACTS_ONLY"
+    },
+    {
+      "check": "NO_SECTIONAL_TIME_FABRICATION",
+      "passed": true,
+      "observed": "NO_SECTIONAL_SPLIT_FIELDS_MATERIALISED"
+    }
+  ],
+  "failed_checks": [],
+  "warehouse_status": "IMMUTABLE_CANONICAL_PERFORMANCE_FACTS_MATERIALISED",
+  "promotion_status": "NOT_CONNECTED_TO_PRODUCT",
+  "next_stage": "Phase 1.5C normalise race-level benchmark eligibility and create one governed race-time observation per completed race."
+}

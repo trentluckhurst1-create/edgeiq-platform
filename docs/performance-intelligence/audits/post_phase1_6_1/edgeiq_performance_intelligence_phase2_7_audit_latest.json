@@ -1,0 +1,53 @@
+{
+  "checks": [
+    {
+      "check": "QUERY_RESULTS_LINEAGE_TRACEABLE",
+      "observed": [
+        "benchmark_selections",
+        "benchmarks",
+        "fingerprints",
+        "horse_profiles",
+        "lineage",
+        "performances",
+        "quality_states",
+        "race_deviations",
+        "race_observations",
+        "runner_deviations",
+        "sectional_deviations",
+        "sectionals"
+      ],
+      "passed": true
+    },
+    {
+      "check": "SECTIONAL_LIMITATION_EXPLAINED",
+      "observed": "Returns zero because no governed official sectional time evidence is materialised in Phase 2.3.",
+      "passed": true
+    },
+    {
+      "check": "QUERY_ENGINE_TABLES_CREATED",
+      "observed": 12,
+      "passed": true
+    }
+  ],
+  "example_query_count": 1,
+  "generated_timestamp": "2026-07-16T08:34:32Z",
+  "marker": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE2_7_QUERY_ENGINE_V1_FINAL_PASS",
+  "phase": "phase2_7",
+  "query_tables_views": [
+    "benchmark_selections",
+    "benchmarks",
+    "fingerprints",
+    "horse_profiles",
+    "lineage",
+    "performances",
+    "quality_states",
+    "race_deviations",
+    "race_observations",
+    "runner_deviations",
+    "sectional_deviations",
+    "sectionals"
+  ],
+  "snapshot_id": "eiq_query_engine_v1_bcaac3ed246cdf0fa398ede7",
+  "snapshot_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\performance-intelligence\\warehouse\\phase2_7\\eiq_query_engine_v1_bcaac3ed246cdf0fa398ede7",
+  "status": "PASS"
+}

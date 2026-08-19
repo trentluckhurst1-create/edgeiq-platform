@@ -1,0 +1,17 @@
+{
+  "status": "READY_TO_REBUILD_DOWNSTREAM",
+  "blocker": "Current-window Performance Base observations exist and should feed normalisation.",
+  "normalisation_effective_from": "2026-07-20",
+  "performance_base_rows": 52425,
+  "performance_base_before_cutoff": 52414,
+  "performance_base_on_or_after_cutoff": 11,
+  "performance_base_min_date": "2000-08-02",
+  "performance_base_max_date": "2026-07-30",
+  "normalisation_rejection_reasons": {
+    "NORMALISATION_PARAMETER_NOT_EFFECTIVE_FOR_PERFORMANCE_DATE": 52414
+  },
+  "runner_sectional_rows": 2854,
+  "visible_sectional_rows": 0,
+  "sectionals_required_for_core": false,
+  "core_until_performance_base_pass": true
+}

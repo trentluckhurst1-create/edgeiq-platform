@@ -1,0 +1,81 @@
+{
+  "audit_name": "edgeiq_length_conversion_parameter_fact_v2",
+  "checks": {
+    "contract_fields_exact": {
+      "detail": {
+        "actual": [
+          "length_conversion_parameter_id",
+          "conversion_scope",
+          "surface_group",
+          "track_condition_min",
+          "track_condition_max",
+          "track_condition_group",
+          "lengths_per_second",
+          "seconds_per_length",
+          "conversion_model_version",
+          "parameter_status",
+          "effective_from_date",
+          "effective_to_date",
+          "evidence_reference",
+          "source_evidence_sha256",
+          "parameter_evidence_sha256",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ],
+        "expected": [
+          "length_conversion_parameter_id",
+          "conversion_scope",
+          "surface_group",
+          "track_condition_min",
+          "track_condition_max",
+          "track_condition_group",
+          "lengths_per_second",
+          "seconds_per_length",
+          "conversion_model_version",
+          "parameter_status",
+          "effective_from_date",
+          "effective_to_date",
+          "evidence_reference",
+          "source_evidence_sha256",
+          "parameter_evidence_sha256",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ]
+      },
+      "status": "PASS"
+    },
+    "governance_values": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "required_files_exist": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "required_surface_condition_rows": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "seconds_per_length_inverse": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "unique_parameter_ids": {
+      "detail": [
+        "LCP2-AUSTRALIAN-SYNTHETIC-STANDARD-SYNTHETIC",
+        "LCP2-TURF-FIRM",
+        "LCP2-TURF-GOOD",
+        "LCP2-TURF-SOFT",
+        "LCP2-TURF-HEAVY"
+      ],
+      "status": "PASS"
+    }
+  },
+  "counts": {
+    "parameter_rows": 5
+  },
+  "failed_checks": [],
+  "status": "PASS"
+}

@@ -1,0 +1,56 @@
+[
+  {
+    "path": "docs\\racing-com-public-data-v1\\RACING_COM_PUBLIC_DATA_V1_BASELINE.md",
+    "exists": "YES",
+    "rows": "",
+    "sha256": "1797c8654944d25ecc114878ca924f903ff3436ad23165673beae89ad7c7c342"
+  },
+  {
+    "path": "docs\\racing-com-public-data-v1\\graphql\\operation_registry.csv",
+    "exists": "YES",
+    "rows": 4,
+    "sha256": "edc023458d189cc6f4ac2408d1e58919d87d3ef09313ff86f19be3c9f00b941a"
+  },
+  {
+    "path": "docs\\racing-com-public-data-v1\\graphql\\graphql_access_matrix.csv",
+    "exists": "YES",
+    "rows": 4,
+    "sha256": "510b2e195b52468be35324407bc35291ed24c0088c2236d265d92bcb39abd14a"
+  },
+  {
+    "path": "docs\\racing-com-public-data-v1\\frontend\\bundle_inventory.csv",
+    "exists": "YES",
+    "rows": 5,
+    "sha256": "943b972aa3d6e7f3ce9dd424d5247b40fd5e68bc8133811ea05d089e1d699864"
+  },
+  {
+    "path": "public\\data\\edgeiq_racingcom_speed_network_probe_v1.csv",
+    "exists": "YES",
+    "rows": 2149,
+    "sha256": "403b7ba0e1126bad4a36d6938165aa40a52ec55e43ef26cd5cf0e8cc4179c4a6"
+  },
+  {
+    "path": "public\\data\\edgeiq_racingcom_runner_speed_fact_v1.csv",
+    "exists": "YES",
+    "rows": 392,
+    "sha256": "74f2e8275152005bcb761472a7368c675bdd1f448bdf801d2be153f220b6b61e"
+  },
+  {
+    "path": "public\\data\\edgeiq_racingcom_runner_split_fact_v1.csv",
+    "exists": "YES",
+    "rows": 2682,
+    "sha256": "96b8348f0ad5c48988f2e5012a69bb1d14f34d8ce6b1ca33b84d72ddeff7588a"
+  },
+  {
+    "path": "data\\processed\\racing-com-public-v1\\runner_sectional_fact.csv",
+    "exists": "YES",
+    "rows": 2682,
+    "sha256": "69b28d56472a7f2273034da0054d58ad6f0e09d3c989d9640871fac6f632cedb"
+  },
+  {
+    "path": "outputs/sectionals/raw/VIC/racingcom_full_payloads/getRaceForm_*.json",
+    "exists": "YES",
+    "rows": 39,
+    "sha256": "MULTI"
+  }
+]

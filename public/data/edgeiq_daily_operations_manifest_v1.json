@@ -1,0 +1,79 @@
+{
+  "date_from": "2026-07-15",
+  "date_to": "2026-07-28",
+  "metrics": {
+    "epi_rows": 0,
+    "horse_ratings": 0,
+    "normalisation_rows": 0,
+    "pending_condition_races": 8,
+    "pending_result_races": 8,
+    "pending_speed_races": 8,
+    "pending_timing_races": 8,
+    "performance_base": 52414,
+    "races_in_lifecycle": 8,
+    "timed_races": 70308
+  },
+  "mode": "BACKFILL",
+  "operation_run_id": "DAILYOPS-2026-07-15-2026-07-28-7E34B128B4",
+  "stages": [
+    {
+      "cmd": "python scripts/build_edgeiq_daily_race_discovery_v1.py --mode DEEP_BACKFILL --date-from 2026-07-15 --date-to 2026-07-28 --dry-run --no-publish",
+      "returncode": 0,
+      "runtime_seconds": 0.199,
+      "stage": "race_discovery",
+      "stderr": "",
+      "stdout": "{\n  \"status\": \"PASS\",\n  \"mode\": \"DEEP_BACKFILL\",\n  \"date_from\": \"2026-07-15\",\n  \"date_to\": \"2026-07-28\",\n  \"operation_run_id\": \"DISCOVERY-2026-07-15-2026-07-28-7C30C257CD\",\n  \"races_discovered\": 8,\n  \"rejections\": 0\n}\n"
+    },
+    {
+      "cmd": "python scripts/build_edgeiq_daily_official_results_ingestion_v1.py --mode DEEP_BACKFILL --date-from 2026-07-15 --date-to 2026-07-28 --dry-run --no-publish",
+      "returncode": 0,
+      "runtime_seconds": 37.198,
+      "stage": "official_results",
+      "stderr": "",
+      "stdout": "{\n  \"status\": \"PASS_NO_NEW_DATA\",\n  \"operation_run_id\": \"RESULTS-2026-07-15-2026-07-28-1812069F88\",\n  \"facts\": 0,\n  \"raw_rows\": 0,\n  \"rejections\": 0,\n  \"mode\": \"DEEP_BACKFILL\",\n  \"date_from\": \"2026-07-15\",\n  \"date_to\": \"2026-07-28\"\n}\n"
+    },
+    {
+      "cmd": "python scripts/build_edgeiq_daily_official_timing_ingestion_v1.py --mode DEEP_BACKFILL --date-from 2026-07-15 --date-to 2026-07-28 --dry-run --no-publish",
+      "returncode": 0,
+      "runtime_seconds": 0.157,
+      "stage": "official_timing",
+      "stderr": "",
+      "stdout": "{\n  \"status\": \"PASS_NO_NEW_DATA\",\n  \"operation_run_id\": \"TIMING-2026-07-15-2026-07-28-0081BC9B53\",\n  \"timing_candidates\": 0,\n  \"rejections\": 0,\n  \"mode\": \"DEEP_BACKFILL\"\n}\n"
+    },
+    {
+      "cmd": "python scripts/build_edgeiq_daily_condition_evidence_v1.py --mode DEEP_BACKFILL --date-from 2026-07-15 --date-to 2026-07-28 --dry-run --no-publish",
+      "returncode": 0,
+      "runtime_seconds": 0.18,
+      "stage": "condition_evidence",
+      "stderr": "",
+      "stdout": "{\n  \"status\": \"PASS_NO_NEW_DATA\",\n  \"operation_run_id\": \"CONDITION-2026-07-15-2026-07-28-5891E97B08\",\n  \"condition_rows\": 0,\n  \"available\": 0\n}\n"
+    },
+    {
+      "cmd": "python scripts/build_edgeiq_delayed_speed_data_ingestion_v1.py --mode DEEP_BACKFILL --date-from 2026-07-15 --date-to 2026-07-28 --dry-run --no-publish",
+      "returncode": 0,
+      "runtime_seconds": 0.209,
+      "stage": "delayed_speed",
+      "stderr": "",
+      "stdout": "{\n  \"status\": \"PASS\",\n  \"operation_run_id\": \"SPEED-2026-07-15-2026-07-28-60DD06160C\",\n  \"speed_rows\": 8,\n  \"available\": 0,\n  \"pending\": 8\n}\n"
+    },
+    {
+      "cmd": "python scripts/build_edgeiq_race_data_lifecycle_fact_v1.py --mode DEEP_BACKFILL --date-from 2026-07-15 --date-to 2026-07-28 --dry-run --no-publish",
+      "returncode": 0,
+      "runtime_seconds": 0.186,
+      "stage": "lifecycle",
+      "stderr": "",
+      "stdout": "{\n  \"status\": \"PASS\",\n  \"operation_run_id\": \"LIFECYCLE-2026-07-15-2026-07-28-B92E71AE25\",\n  \"races\": 8,\n  \"pending\": 8\n}\n"
+    },
+    {
+      "cmd": "python scripts/update_edgeiq_canonical_historical_timing_warehouse_v1.py --mode DEEP_BACKFILL --date-from 2026-07-15 --date-to 2026-07-28 --dry-run --no-publish",
+      "returncode": 0,
+      "runtime_seconds": 1.048,
+      "stage": "canonical_timing_update",
+      "stderr": "",
+      "stdout": "{\n  \"status\": \"PASS_NO_NEW_DATA\",\n  \"operation_run_id\": \"CANONICAL-TIMING-2026-07-15-2026-07-28-E6B0382734\",\n  \"dry_run\": true,\n  \"timed_races_before\": 70308,\n  \"timed_races_after\": 70308,\n  \"new_canonical_rows\": 0,\n  \"corrected_rows\": 0,\n  \"conflicts\": 0,\n  \"rollback_path\": \"\"\n}\n"
+    }
+  ],
+  "started_at_utc": "2026-07-29T01:36:16Z",
+  "status": "PASS",
+  "total_runtime_seconds": 39.318
+}

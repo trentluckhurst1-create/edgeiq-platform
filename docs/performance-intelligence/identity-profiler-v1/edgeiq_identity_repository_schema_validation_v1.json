@@ -1,0 +1,14 @@
+{
+  "schema_status": "PASS",
+  "required_outputs": {
+    "edgeiq_identity_repository_inventory_v1.csv": true,
+    "edgeiq_identity_repository_dataset_profile_v1.csv": true,
+    "edgeiq_identity_repository_column_profile_v1.csv": true,
+    "edgeiq_identity_repository_profiling_errors_v1.csv": true,
+    "edgeiq_identity_repository_identity_relationships_v1.csv": true,
+    "edgeiq_identity_repository_crosswalk_candidates_v1.csv": true,
+    "edgeiq_identity_repository_graph_nodes_v1.csv": true,
+    "edgeiq_identity_repository_graph_edges_v1.csv": true,
+    "edgeiq_identity_repository_canonical_identity_universe_v1.csv": true
+  }
+}

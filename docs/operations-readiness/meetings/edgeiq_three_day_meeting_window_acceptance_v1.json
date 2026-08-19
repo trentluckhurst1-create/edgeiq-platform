@@ -1,0 +1,133 @@
+{
+  "audit_status": "PASS",
+  "window": {
+    "schemaVersion": "edgeiq_three_day_window_v1",
+    "timezone": "Australia/Melbourne",
+    "generatedAt": "2026-07-26T08:32:26+10:00",
+    "dateSource": "AUSTRALIA_MELBOURNE_CLOCK",
+    "today": "2026-07-26",
+    "tomorrow": "2026-07-27",
+    "dayPlus2": "2026-07-28",
+    "dates": [
+      {
+        "key": "TODAY",
+        "date": "2026-07-26",
+        "dayOffset": 0
+      },
+      {
+        "key": "TOMORROW",
+        "date": "2026-07-27",
+        "dayOffset": 1
+      },
+      {
+        "key": "DAY_PLUS_2",
+        "date": "2026-07-28",
+        "dayOffset": 2
+      }
+    ]
+  },
+  "catalog": {
+    "meetings": 3,
+    "races": 26,
+    "runners": 371,
+    "scratchings": 0,
+    "sample": [
+      {
+        "meeting": "UNKNOWN",
+        "date": "2026-07-26",
+        "race": 1,
+        "distance": "2200m",
+        "class": "Maiden",
+        "runners": 8
+      },
+      {
+        "meeting": "UNKNOWN",
+        "date": "2026-07-26",
+        "race": 2,
+        "distance": "1400m",
+        "class": "Maiden",
+        "runners": 19
+      },
+      {
+        "meeting": "UNKNOWN",
+        "date": "2026-07-26",
+        "race": 3,
+        "distance": "1000m",
+        "class": "Maiden",
+        "runners": 14
+      },
+      {
+        "meeting": "UNKNOWN",
+        "date": "2026-07-26",
+        "race": 4,
+        "distance": "1100m",
+        "class": "Maiden",
+        "runners": 20
+      },
+      {
+        "meeting": "UNKNOWN",
+        "date": "2026-07-26",
+        "race": 5,
+        "distance": "1200m",
+        "class": "BM 70",
+        "runners": 9
+      },
+      {
+        "meeting": "UNKNOWN",
+        "date": "2026-07-26",
+        "race": 6,
+        "distance": "1000m",
+        "class": "BM 58",
+        "runners": 11
+      },
+      {
+        "meeting": "UNKNOWN",
+        "date": "2026-07-26",
+        "race": 7,
+        "distance": "1600m",
+        "class": "BM 64",
+        "runners": 10
+      },
+      {
+        "meeting": "UNKNOWN",
+        "date": "2026-07-26",
+        "race": 8,
+        "distance": "1400m",
+        "class": "BM 58",
+        "runners": 17
+      },
+      {
+        "meeting": "UNKNOWN",
+        "date": "2026-07-27",
+        "race": 1,
+        "distance": "1000m",
+        "class": "Maiden",
+        "runners": 14
+      },
+      {
+        "meeting": "UNKNOWN",
+        "date": "2026-07-27",
+        "race": 2,
+        "distance": "1200m",
+        "class": "Maiden",
+        "runners": 18
+      },
+      {
+        "meeting": "UNKNOWN",
+        "date": "2026-07-27",
+        "race": 3,
+        "distance": "1500m",
+        "class": "Maiden",
+        "runners": 18
+      },
+      {
+        "meeting": "UNKNOWN",
+        "date": "2026-07-27",
+        "race": 4,
+        "distance": "2200m",
+        "class": "Maiden",
+        "runners": 11
+      }
+    ]
+  }
+}

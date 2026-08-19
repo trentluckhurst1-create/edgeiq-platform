@@ -1,0 +1,1994 @@
+[
+  {
+    "index": 1,
+    "label": "caulfield_get_plain",
+    "client": "caulfield",
+    "method": "GET",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:05 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=100",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\001_caulfield_get_plain.json"
+  },
+  {
+    "index": 2,
+    "label": "caulfield_get_path",
+    "client": "caulfield",
+    "method": "GET",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/caulfield/",
+    "status_code": 404,
+    "content_type": "text/html; charset=iso-8859-1",
+    "response_bytes": 310,
+    "interesting": false,
+    "preview": "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"> <html><head> <title>404 Not Found</title> </head><body> <h1>Not Found</h1> <p>The requested URL /visualiser/stream/caulfield/ was not found on this server.</p> <hr> <address>Apache/2.4.7 (Ubuntu) Server at its.turftrax.co.uk Port 443</address> </body></html> ",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:05 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "310",
+      "Keep-Alive": "timeout=5, max=99",
+      "Connection": "Keep-Alive",
+      "Content-Type": "text/html; charset=iso-8859-1"
+    },
+    "parsed_json": null,
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\002_caulfield_get_path.txt"
+  },
+  {
+    "index": 3,
+    "label": "caulfield_get_client",
+    "client": "caulfield",
+    "method": "GET",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/?client=caulfield",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:06 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=98",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\003_caulfield_get_client.json"
+  },
+  {
+    "index": 4,
+    "label": "caulfield_post_form_client",
+    "client": "caulfield",
+    "method": "POST",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:06 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=97",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\004_caulfield_post_form_client.json"
+  },
+  {
+    "index": 5,
+    "label": "caulfield_post_json_client",
+    "client": "caulfield",
+    "method": "POST",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:06 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=96",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\005_caulfield_post_json_client.json"
+  },
+  {
+    "index": 6,
+    "label": "caulfield_get_clientName",
+    "client": "caulfield",
+    "method": "GET",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/?clientName=caulfield",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:06 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=95",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\006_caulfield_get_clientName.json"
+  },
+  {
+    "index": 7,
+    "label": "caulfield_post_form_clientName",
+    "client": "caulfield",
+    "method": "POST",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:07 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=94",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\007_caulfield_post_form_clientName.json"
+  },
+  {
+    "index": 8,
+    "label": "caulfield_post_json_clientName",
+    "client": "caulfield",
+    "method": "POST",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:07 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=93",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\008_caulfield_post_json_clientName.json"
+  },
+  {
+    "index": 9,
+    "label": "caulfield_get_name",
+    "client": "caulfield",
+    "method": "GET",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/?name=caulfield",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:07 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=92",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\009_caulfield_get_name.json"
+  },
+  {
+    "index": 10,
+    "label": "caulfield_post_form_name",
+    "client": "caulfield",
+    "method": "POST",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:08 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=91",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\010_caulfield_post_form_name.json"
+  },
+  {
+    "index": 11,
+    "label": "caulfield_post_json_name",
+    "client": "caulfield",
+    "method": "POST",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:08 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=90",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\011_caulfield_post_json_name.json"
+  },
+  {
+    "index": 12,
+    "label": "caulfield_get_venue",
+    "client": "caulfield",
+    "method": "GET",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/?venue=caulfield",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:08 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=89",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\012_caulfield_get_venue.json"
+  },
+  {
+    "index": 13,
+    "label": "caulfield_post_form_venue",
+    "client": "caulfield",
+    "method": "POST",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:08 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=88",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\013_caulfield_post_form_venue.json"
+  },
+  {
+    "index": 14,
+    "label": "caulfield_post_json_venue",
+    "client": "caulfield",
+    "method": "POST",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:09 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=87",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\014_caulfield_post_json_venue.json"
+  },
+  {
+    "index": 15,
+    "label": "caulfield_get_course",
+    "client": "caulfield",
+    "method": "GET",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/?course=caulfield",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:09 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=86",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\015_caulfield_get_course.json"
+  },
+  {
+    "index": 16,
+    "label": "caulfield_post_form_course",
+    "client": "caulfield",
+    "method": "POST",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:09 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=85",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\016_caulfield_post_form_course.json"
+  },
+  {
+    "index": 17,
+    "label": "caulfield_post_json_course",
+    "client": "caulfield",
+    "method": "POST",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:10 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=84",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\017_caulfield_post_json_course.json"
+  },
+  {
+    "index": 18,
+    "label": "caulfield_get_track",
+    "client": "caulfield",
+    "method": "GET",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/?track=caulfield",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:10 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=83",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\018_caulfield_get_track.json"
+  },
+  {
+    "index": 19,
+    "label": "caulfield_post_form_track",
+    "client": "caulfield",
+    "method": "POST",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:10 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=82",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\019_caulfield_post_form_track.json"
+  },
+  {
+    "index": 20,
+    "label": "caulfield_post_json_track",
+    "client": "caulfield",
+    "method": "POST",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:10 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=81",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\020_caulfield_post_json_track.json"
+  },
+  {
+    "index": 21,
+    "label": "caulfield_get_visualiser",
+    "client": "caulfield",
+    "method": "GET",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/?visualiser=caulfield",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:11 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=80",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\021_caulfield_get_visualiser.json"
+  },
+  {
+    "index": 22,
+    "label": "caulfield_post_form_visualiser",
+    "client": "caulfield",
+    "method": "POST",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:11 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=79",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\022_caulfield_post_form_visualiser.json"
+  },
+  {
+    "index": 23,
+    "label": "caulfield_post_json_visualiser",
+    "client": "caulfield",
+    "method": "POST",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:11 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=78",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\023_caulfield_post_json_visualiser.json"
+  },
+  {
+    "index": 24,
+    "label": "ladbrokes_get_plain",
+    "client": "ladbrokes",
+    "method": "GET",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:12 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=77",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\024_ladbrokes_get_plain.json"
+  },
+  {
+    "index": 25,
+    "label": "ladbrokes_get_path",
+    "client": "ladbrokes",
+    "method": "GET",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/ladbrokes/",
+    "status_code": 404,
+    "content_type": "text/html; charset=iso-8859-1",
+    "response_bytes": 310,
+    "interesting": false,
+    "preview": "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"> <html><head> <title>404 Not Found</title> </head><body> <h1>Not Found</h1> <p>The requested URL /visualiser/stream/ladbrokes/ was not found on this server.</p> <hr> <address>Apache/2.4.7 (Ubuntu) Server at its.turftrax.co.uk Port 443</address> </body></html> ",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:12 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "310",
+      "Keep-Alive": "timeout=5, max=76",
+      "Connection": "Keep-Alive",
+      "Content-Type": "text/html; charset=iso-8859-1"
+    },
+    "parsed_json": null,
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\025_ladbrokes_get_path.txt"
+  },
+  {
+    "index": 26,
+    "label": "ladbrokes_get_client",
+    "client": "ladbrokes",
+    "method": "GET",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/?client=ladbrokes",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:12 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=75",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\026_ladbrokes_get_client.json"
+  },
+  {
+    "index": 27,
+    "label": "ladbrokes_post_form_client",
+    "client": "ladbrokes",
+    "method": "POST",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:12 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=74",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\027_ladbrokes_post_form_client.json"
+  },
+  {
+    "index": 28,
+    "label": "ladbrokes_post_json_client",
+    "client": "ladbrokes",
+    "method": "POST",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:13 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=73",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\028_ladbrokes_post_json_client.json"
+  },
+  {
+    "index": 29,
+    "label": "ladbrokes_get_clientName",
+    "client": "ladbrokes",
+    "method": "GET",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/?clientName=ladbrokes",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:13 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=72",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\029_ladbrokes_get_clientName.json"
+  },
+  {
+    "index": 30,
+    "label": "ladbrokes_post_form_clientName",
+    "client": "ladbrokes",
+    "method": "POST",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:13 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=71",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\030_ladbrokes_post_form_clientName.json"
+  },
+  {
+    "index": 31,
+    "label": "ladbrokes_post_json_clientName",
+    "client": "ladbrokes",
+    "method": "POST",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:14 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=70",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\031_ladbrokes_post_json_clientName.json"
+  },
+  {
+    "index": 32,
+    "label": "ladbrokes_get_name",
+    "client": "ladbrokes",
+    "method": "GET",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/?name=ladbrokes",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:14 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=69",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\032_ladbrokes_get_name.json"
+  },
+  {
+    "index": 33,
+    "label": "ladbrokes_post_form_name",
+    "client": "ladbrokes",
+    "method": "POST",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:14 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=68",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\033_ladbrokes_post_form_name.json"
+  },
+  {
+    "index": 34,
+    "label": "ladbrokes_post_json_name",
+    "client": "ladbrokes",
+    "method": "POST",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:15 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=67",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\034_ladbrokes_post_json_name.json"
+  },
+  {
+    "index": 35,
+    "label": "ladbrokes_get_venue",
+    "client": "ladbrokes",
+    "method": "GET",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/?venue=ladbrokes",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:15 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=66",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\035_ladbrokes_get_venue.json"
+  },
+  {
+    "index": 36,
+    "label": "ladbrokes_post_form_venue",
+    "client": "ladbrokes",
+    "method": "POST",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:15 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=65",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\036_ladbrokes_post_form_venue.json"
+  },
+  {
+    "index": 37,
+    "label": "ladbrokes_post_json_venue",
+    "client": "ladbrokes",
+    "method": "POST",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:15 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=64",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\037_ladbrokes_post_json_venue.json"
+  },
+  {
+    "index": 38,
+    "label": "ladbrokes_get_course",
+    "client": "ladbrokes",
+    "method": "GET",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/?course=ladbrokes",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:16 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=63",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\038_ladbrokes_get_course.json"
+  },
+  {
+    "index": 39,
+    "label": "ladbrokes_post_form_course",
+    "client": "ladbrokes",
+    "method": "POST",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:16 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=62",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\039_ladbrokes_post_form_course.json"
+  },
+  {
+    "index": 40,
+    "label": "ladbrokes_post_json_course",
+    "client": "ladbrokes",
+    "method": "POST",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:16 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=61",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\040_ladbrokes_post_json_course.json"
+  },
+  {
+    "index": 41,
+    "label": "ladbrokes_get_track",
+    "client": "ladbrokes",
+    "method": "GET",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/?track=ladbrokes",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:17 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=60",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\041_ladbrokes_get_track.json"
+  },
+  {
+    "index": 42,
+    "label": "ladbrokes_post_form_track",
+    "client": "ladbrokes",
+    "method": "POST",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:17 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=59",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\042_ladbrokes_post_form_track.json"
+  },
+  {
+    "index": 43,
+    "label": "ladbrokes_post_json_track",
+    "client": "ladbrokes",
+    "method": "POST",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:17 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=58",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\043_ladbrokes_post_json_track.json"
+  },
+  {
+    "index": 44,
+    "label": "ladbrokes_get_visualiser",
+    "client": "ladbrokes",
+    "method": "GET",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/?visualiser=ladbrokes",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:17 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=57",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\044_ladbrokes_get_visualiser.json"
+  },
+  {
+    "index": 45,
+    "label": "ladbrokes_post_form_visualiser",
+    "client": "ladbrokes",
+    "method": "POST",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:18 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=56",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\045_ladbrokes_post_form_visualiser.json"
+  },
+  {
+    "index": 46,
+    "label": "ladbrokes_post_json_visualiser",
+    "client": "ladbrokes",
+    "method": "POST",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:18 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=55",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\046_ladbrokes_post_json_visualiser.json"
+  },
+  {
+    "index": 47,
+    "label": "mornington_get_plain",
+    "client": "mornington",
+    "method": "GET",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:18 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=54",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\047_mornington_get_plain.json"
+  },
+  {
+    "index": 48,
+    "label": "mornington_get_path",
+    "client": "mornington",
+    "method": "GET",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/mornington/",
+    "status_code": 404,
+    "content_type": "text/html; charset=iso-8859-1",
+    "response_bytes": 311,
+    "interesting": false,
+    "preview": "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"> <html><head> <title>404 Not Found</title> </head><body> <h1>Not Found</h1> <p>The requested URL /visualiser/stream/mornington/ was not found on this server.</p> <hr> <address>Apache/2.4.7 (Ubuntu) Server at its.turftrax.co.uk Port 443</address> </body></html> ",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:19 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "311",
+      "Keep-Alive": "timeout=5, max=53",
+      "Connection": "Keep-Alive",
+      "Content-Type": "text/html; charset=iso-8859-1"
+    },
+    "parsed_json": null,
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\048_mornington_get_path.txt"
+  },
+  {
+    "index": 49,
+    "label": "mornington_get_client",
+    "client": "mornington",
+    "method": "GET",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/?client=mornington",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:19 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=52",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\049_mornington_get_client.json"
+  },
+  {
+    "index": 50,
+    "label": "mornington_post_form_client",
+    "client": "mornington",
+    "method": "POST",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:19 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=51",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\050_mornington_post_form_client.json"
+  },
+  {
+    "index": 51,
+    "label": "mornington_post_json_client",
+    "client": "mornington",
+    "method": "POST",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:19 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=50",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\051_mornington_post_json_client.json"
+  },
+  {
+    "index": 52,
+    "label": "mornington_get_clientName",
+    "client": "mornington",
+    "method": "GET",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/?clientName=mornington",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:20 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=49",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\052_mornington_get_clientName.json"
+  },
+  {
+    "index": 53,
+    "label": "mornington_post_form_clientName",
+    "client": "mornington",
+    "method": "POST",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:20 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=48",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\053_mornington_post_form_clientName.json"
+  },
+  {
+    "index": 54,
+    "label": "mornington_post_json_clientName",
+    "client": "mornington",
+    "method": "POST",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:20 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=47",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\054_mornington_post_json_clientName.json"
+  },
+  {
+    "index": 55,
+    "label": "mornington_get_name",
+    "client": "mornington",
+    "method": "GET",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/?name=mornington",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:21 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=46",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\055_mornington_get_name.json"
+  },
+  {
+    "index": 56,
+    "label": "mornington_post_form_name",
+    "client": "mornington",
+    "method": "POST",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:21 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=45",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\056_mornington_post_form_name.json"
+  },
+  {
+    "index": 57,
+    "label": "mornington_post_json_name",
+    "client": "mornington",
+    "method": "POST",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:21 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=44",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\057_mornington_post_json_name.json"
+  },
+  {
+    "index": 58,
+    "label": "mornington_get_venue",
+    "client": "mornington",
+    "method": "GET",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/?venue=mornington",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:21 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=43",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\058_mornington_get_venue.json"
+  },
+  {
+    "index": 59,
+    "label": "mornington_post_form_venue",
+    "client": "mornington",
+    "method": "POST",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:22 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=42",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\059_mornington_post_form_venue.json"
+  },
+  {
+    "index": 60,
+    "label": "mornington_post_json_venue",
+    "client": "mornington",
+    "method": "POST",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:22 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=41",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\060_mornington_post_json_venue.json"
+  },
+  {
+    "index": 61,
+    "label": "mornington_get_course",
+    "client": "mornington",
+    "method": "GET",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/?course=mornington",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:22 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=40",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\061_mornington_get_course.json"
+  },
+  {
+    "index": 62,
+    "label": "mornington_post_form_course",
+    "client": "mornington",
+    "method": "POST",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:23 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=39",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\062_mornington_post_form_course.json"
+  },
+  {
+    "index": 63,
+    "label": "mornington_post_json_course",
+    "client": "mornington",
+    "method": "POST",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:23 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=38",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\063_mornington_post_json_course.json"
+  },
+  {
+    "index": 64,
+    "label": "mornington_get_track",
+    "client": "mornington",
+    "method": "GET",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/?track=mornington",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:23 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=37",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\064_mornington_get_track.json"
+  },
+  {
+    "index": 65,
+    "label": "mornington_post_form_track",
+    "client": "mornington",
+    "method": "POST",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:23 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=36",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\065_mornington_post_form_track.json"
+  },
+  {
+    "index": 66,
+    "label": "mornington_post_json_track",
+    "client": "mornington",
+    "method": "POST",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:24 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=35",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\066_mornington_post_json_track.json"
+  },
+  {
+    "index": 67,
+    "label": "mornington_get_visualiser",
+    "client": "mornington",
+    "method": "GET",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/?visualiser=mornington",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:24 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=34",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\067_mornington_get_visualiser.json"
+  },
+  {
+    "index": 68,
+    "label": "mornington_post_form_visualiser",
+    "client": "mornington",
+    "method": "POST",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:24 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=33",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\068_mornington_post_form_visualiser.json"
+  },
+  {
+    "index": 69,
+    "label": "mornington_post_json_visualiser",
+    "client": "mornington",
+    "method": "POST",
+    "url": "https://its.turftrax.co.uk/visualiser/stream/",
+    "status_code": 200,
+    "content_type": "application/json; charset=utf-8",
+    "response_bytes": 48,
+    "interesting": true,
+    "preview": "{\"status\": 480, \"content\":\"No Client Specified\"}",
+    "headers": {
+      "Date": "Fri, 10 Jul 2026 01:22:25 GMT",
+      "Server": "Apache/2.4.7 (Ubuntu)",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, PUT",
+      "Access-Control-Max-Age": "1000",
+      "Access-Control-Allow-Headers": "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+      "Content-Length": "48",
+      "Keep-Alive": "timeout=5, max=32",
+      "Connection": "Keep-Alive",
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "parsed_json": {
+      "status": 480,
+      "content": "No Client Specified"
+    },
+    "output_file": "data\\weather-source-audit\\turftrax-stream\\069_mornington_post_json_visualiser.json"
+  }
+]

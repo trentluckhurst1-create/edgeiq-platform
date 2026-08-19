@@ -1,0 +1,116 @@
+{
+  "audit_name": "edgeiq_race_time_delta_versus_standard_fact_v1",
+  "audit_version": "1.1.0",
+  "audited_at_utc": "2026-07-30T07:46:15Z",
+  "checks": {
+    "calculation_governance": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "calculation_reproducible": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "canonical_lineage": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "contract_fields_exact": {
+      "detail": {
+        "actual": [
+          "race_time_delta_id",
+          "benchmark_observation_id",
+          "benchmark_group_id",
+          "standard_time_id",
+          "race_key",
+          "race_date",
+          "track_name",
+          "official_distance_metres",
+          "winner_horse_name",
+          "winner_race_time_seconds",
+          "standard_time_seconds",
+          "time_delta_seconds",
+          "time_delta_interpretation",
+          "calculation_method",
+          "source_observation_sha256",
+          "source_standard_time_evidence_sha256",
+          "race_time_delta_evidence_sha256",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ],
+        "expected": [
+          "race_time_delta_id",
+          "benchmark_observation_id",
+          "benchmark_group_id",
+          "standard_time_id",
+          "race_key",
+          "race_date",
+          "track_name",
+          "official_distance_metres",
+          "winner_horse_name",
+          "winner_race_time_seconds",
+          "standard_time_seconds",
+          "time_delta_seconds",
+          "time_delta_interpretation",
+          "calculation_method",
+          "source_observation_sha256",
+          "source_standard_time_evidence_sha256",
+          "race_time_delta_evidence_sha256",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ]
+      },
+      "status": "PASS"
+    },
+    "current_population_expected": {
+      "detail": {
+        "delta_mode": "RECOVERED_CANONICAL",
+        "race_time_delta_rows": 54978,
+        "standard_time_rows": 695
+      },
+      "status": "PASS"
+    },
+    "deterministic_identity_and_evidence": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "expected_population_exact": {
+      "detail": {
+        "expected_count": 54978,
+        "missing_sample": [],
+        "output_count": 54978,
+        "unexpected_sample": []
+      },
+      "status": "PASS"
+    },
+    "no_forbidden_fields": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "one_row_per_observation": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "required_files_exist": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "time_delta_interpretation": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "unique_race_time_delta_ids": {
+      "detail": [],
+      "status": "PASS"
+    }
+  },
+  "counts": {
+    "race_time_delta_rows": 54978,
+    "standard_time_rows": 695
+  },
+  "delta_mode": "RECOVERED_CANONICAL",
+  "failed_checks": [],
+  "status": "PASS"
+}

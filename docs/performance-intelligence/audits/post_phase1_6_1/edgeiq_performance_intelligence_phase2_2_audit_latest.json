@@ -1,0 +1,29 @@
+{
+  "checks": [
+    {
+      "check": "RUNNER_DEVIATIONS_REPRODUCIBLE",
+      "observed": 879784,
+      "passed": true
+    },
+    {
+      "check": "NO_UNGOVERNED_LENGTH_CONVERSION",
+      "observed": "0 complete",
+      "passed": true
+    },
+    {
+      "check": "RAW_MARGIN_PRESERVED",
+      "observed": "raw and derived separate",
+      "passed": true
+    }
+  ],
+  "generated_timestamp": "2026-07-16T08:33:37Z",
+  "marker": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE2_2_RUNNER_DEVIATION_FINAL_PASS",
+  "phase": "phase2_2",
+  "primary_blocker": "NO_GOVERNED_SECONDS_PER_LENGTH_CONVERSION",
+  "runner_deviation_blocked_rows": 879784,
+  "runner_deviation_complete_rows": 0,
+  "runner_deviation_rows": 879784,
+  "snapshot_id": "eiq_runner_deviations_v1_0c6c989d66d5a95a44b60fb0",
+  "snapshot_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\performance-intelligence\\warehouse\\phase2_2\\eiq_runner_deviations_v1_0c6c989d66d5a95a44b60fb0",
+  "status": "PASS_PARTIAL_BLOCKED"
+}

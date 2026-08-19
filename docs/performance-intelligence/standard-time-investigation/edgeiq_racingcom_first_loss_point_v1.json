@@ -1,0 +1,64 @@
+{
+  "classification_counts": {
+    "NON_JSON_NO_IDENTITY": 123,
+    "VALID_JSON_COMPLETE_IDENTITY": 65,
+    "VALID_JSON_NO_IDENTITY": 3,
+    "VALID_JSON_PARTIAL_IDENTITY": 45
+  },
+  "complete_race_identities": 59,
+  "diagnostic": "EDGEIQ_RACINGCOM_FIRST_LOSS_POINT_V1",
+  "generated_utc": "2026-07-22T07:19:07.774138+00:00",
+  "governance": {
+    "builders_modified": false,
+    "fabricated_data": false,
+    "governed_outputs_modified": false,
+    "read_only": true,
+    "thresholds_modified": false
+  },
+  "governed_references": [
+    {
+      "dataset": "edgeiq_racingcom_runner_speed_fact_v1.csv",
+      "distinct_source_files": 39,
+      "rows": 392,
+      "source_columns": [
+        "source_payload_file"
+      ],
+      "status": "FOUND"
+    },
+    {
+      "dataset": "edgeiq_racingcom_runner_sectional_fact_v1.csv",
+      "distinct_source_files": 39,
+      "rows": 2854,
+      "source_columns": [
+        "source_payload_file"
+      ],
+      "status": "FOUND"
+    },
+    {
+      "dataset": "edgeiq_racingcom_runner_split_fact_v1.csv",
+      "distinct_source_files": 39,
+      "rows": 2682,
+      "source_columns": [
+        "source_payload_file"
+      ],
+      "status": "FOUND"
+    },
+    {
+      "dataset": "edgeiq_racingcom_race_speed_summary_v1.csv",
+      "distinct_source_files": 39,
+      "rows": 39,
+      "source_columns": [
+        "source_payload_file"
+      ],
+      "status": "FOUND"
+    }
+  ],
+  "partial_race_identities": 10,
+  "payload_population": {
+    "duplicate_copies": 366,
+    "files": 602,
+    "unique_hashes": 236
+  },
+  "payloads_without_identity": 126,
+  "raw_directory": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\outputs\\sectionals\\raw\\VIC\\racingcom_full_payloads"
+}

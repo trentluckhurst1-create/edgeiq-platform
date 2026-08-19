@@ -1,0 +1,17 @@
+{
+  "status": "RACINGCOM_CSV_ACQUISITION_V2_PASS",
+  "built_utc": "2026-07-22T08:38:13+00:00",
+  "total_queue_rows": 12,
+  "csv_queue_rows": 8,
+  "valid_csv_files": 8,
+  "rejected_files": 0,
+  "http_status_counts": {
+    "200": 8
+  },
+  "download_result_counts": {
+    "ACQUIRED_VALID_CSV": 8
+  },
+  "rejection_reason_counts": {},
+  "duplicate_content_count": 0,
+  "production_changed": "NO"
+}

@@ -1,0 +1,35 @@
+{
+  "generated_utc": "2026-07-25T22:02:21Z",
+  "files": [
+    {
+      "path": "docs/performance-intelligence/epi/edgeiq_epi_performance_fact_v1.csv",
+      "size_bytes": 193552255,
+      "sha256": "dd85693dc10256b1e64bcd4a7f91d298a34c44572d0a2761818097b2ae22d0a2",
+      "git_policy": "NOT_STAGED_LARGE_GENERATED_OUTPUT"
+    },
+    {
+      "path": "docs/performance-intelligence/workspace-feeds/edgeiq_performance_performance_feed_v1.csv",
+      "size_bytes": 19340003,
+      "sha256": "9b6a07d2c87891d181342e887634d76617ea1ff3bd8ad44f6bf78133e6a3c9f5",
+      "git_policy": "NOT_STAGED_LARGE_GENERATED_OUTPUT"
+    },
+    {
+      "path": "public/data/edgeiq_performance_performance_feed_v1.csv",
+      "size_bytes": 19340003,
+      "sha256": "9b6a07d2c87891d181342e887634d76617ea1ff3bd8ad44f6bf78133e6a3c9f5",
+      "git_policy": "NOT_STAGED_LARGE_GENERATED_OUTPUT"
+    },
+    {
+      "path": "docs/performance-intelligence/epi/edgeiq_weight_adjusted_epi_verification_v1.json",
+      "size_bytes": 1764,
+      "sha256": "cf87663f4baebb35bb9eb425318c7c77d80662d8631f9731c43d7834cb735d53",
+      "git_policy": "STAGED"
+    },
+    {
+      "path": "docs/performance-intelligence/warehouse/edgeiq_canonical_race_count_reconciliation_v1.csv",
+      "size_bytes": 1550,
+      "sha256": "248d877a85fc57064bb0568dd06b44410fbed64014f3e3da494a484693510435",
+      "git_policy": "STAGED"
+    }
+  ]
+}

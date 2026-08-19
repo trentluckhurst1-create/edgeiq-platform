@@ -1,0 +1,43 @@
+{
+  "output_claim_headers": [
+    "builder_id",
+    "builder_path",
+    "output_path",
+    "output_filename",
+    "suffix",
+    "is_public_data_feed",
+    "evidence"
+  ],
+  "refined_registry_headers": [
+    "builder_id",
+    "builder_name",
+    "relative_path",
+    "source_root",
+    "classification",
+    "domain",
+    "category",
+    "lifecycle_status",
+    "certification_status",
+    "python_import_count",
+    "local_dependency_count",
+    "input_claim_count",
+    "output_claim_count",
+    "public_feed_output_count",
+    "source_sha256",
+    "source_size_bytes",
+    "source_modified_utc",
+    "parse_status",
+    "parse_error_type",
+    "parse_error_line",
+    "parse_error_message",
+    "original_classification",
+    "scope_status",
+    "scope_reason"
+  ],
+  "ownership_evidence_methods": [
+    "OUTPUT_CLAIM_EXACT_PATH",
+    "OUTPUT_CLAIM_UNIQUE_FILENAME",
+    "SOURCE_LITERAL_EXACT_PATH",
+    "SOURCE_LITERAL_UNIQUE_FILENAME"
+  ]
+}

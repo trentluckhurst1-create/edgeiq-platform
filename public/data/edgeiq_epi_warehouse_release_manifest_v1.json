@@ -1,0 +1,507 @@
+{
+  "epi_warehouse_release_evidence_sha256": "75311d47eb5f75e4836b928e78d508f796f57334f485b287c250b807bf3937c5",
+  "epi_warehouse_release_id": "EPIWH1-0D4762902AF588313D8FBAD4A6D94403",
+  "governed_layers": [
+    {
+      "artifacts": [
+        {
+          "artifact_role": "specification",
+          "git_clean": true,
+          "git_tracked": true,
+          "repository_path": "docs/performance-intelligence/EDGEIQ_RACE_ENTRY_EPI_FACT_V1_SPEC.md",
+          "sha256": "c794b8fc9f43b9778460aeb95603972e2a8a1d2cf4ffe78f25dfdb74d1287862",
+          "size_bytes": 3729
+        },
+        {
+          "artifact_role": "contract",
+          "git_clean": true,
+          "git_tracked": true,
+          "repository_path": "contracts/performance-intelligence/edgeiq_race_entry_epi_fact_v1_contract.json",
+          "sha256": "04ee413279492c493fe912607a6c869d702e67916559740b87d7715c20229c0a",
+          "size_bytes": 1832
+        },
+        {
+          "artifact_role": "builder",
+          "git_clean": true,
+          "git_tracked": true,
+          "repository_path": "scripts/build_edgeiq_race_entry_epi_fact_v1.py",
+          "sha256": "dc709bbf892b1d19bea73dde1fccaabc7efdb545a1c9984f823325f867e82457",
+          "size_bytes": 24880
+        },
+        {
+          "artifact_role": "auditor",
+          "git_clean": true,
+          "git_tracked": true,
+          "repository_path": "scripts/audit_edgeiq_race_entry_epi_fact_v1.py",
+          "sha256": "1b5b15cab14ae76a6b4d99f61e5fd153ffd6dfdd643cb55c4e9d87e2ed419051",
+          "size_bytes": 28293
+        },
+        {
+          "artifact_role": "fact",
+          "git_clean": true,
+          "git_tracked": true,
+          "repository_path": "public/data/edgeiq_race_entry_epi_fact_v1.csv",
+          "sha256": "1ce983a236e648cf7ecbead42c8e9d2024a6fbeb30dc2c059401a567a34cd7e9",
+          "size_bytes": 786
+        },
+        {
+          "artifact_role": "audit",
+          "git_clean": true,
+          "git_tracked": true,
+          "repository_path": "public/data/edgeiq_race_entry_epi_fact_v1_audit.json",
+          "sha256": "4f9c769572331b31ec7f94753ee2b380c01487f6ed8aa11024cd384bede98f02",
+          "size_bytes": 4239
+        }
+      ],
+      "audit_counts": {
+        "eligible_race_entry_count": 0,
+        "epi_component_rows": 0,
+        "race_entry_epi_rows": 0
+      },
+      "audit_status": "PASS",
+      "contract_name": "edgeiq_race_entry_epi_fact_v1",
+      "fact_column_count": 33,
+      "fact_row_count": 0,
+      "layer_base_name": "edgeiq_race_entry_epi_fact_v1",
+      "layer_evidence_sha256": "701aae99e53db27dc47f186c7e50a12b97f8a8a7226618134da9ce384f1e70a1",
+      "layer_name": "Race Entry EPI Fact V1",
+      "layer_sequence": 1
+    },
+    {
+      "artifacts": [
+        {
+          "artifact_role": "specification",
+          "git_clean": true,
+          "git_tracked": true,
+          "repository_path": "docs/performance-intelligence/EDGEIQ_RACE_EPI_DISTRIBUTION_FACT_V1_SPEC.md",
+          "sha256": "32bc6eb31f37c819cd510e8c08b2a826a27df0867cfebed1b5f59d25de3c531a",
+          "size_bytes": 3881
+        },
+        {
+          "artifact_role": "contract",
+          "git_clean": true,
+          "git_tracked": true,
+          "repository_path": "contracts/performance-intelligence/edgeiq_race_epi_distribution_fact_v1_contract.json",
+          "sha256": "c0fa48776ebdd1283a6918ed6c540e99184e22527a8635148647d087ca55a297",
+          "size_bytes": 1502
+        },
+        {
+          "artifact_role": "builder",
+          "git_clean": true,
+          "git_tracked": true,
+          "repository_path": "scripts/build_edgeiq_race_epi_distribution_fact_v1.py",
+          "sha256": "d440218d2c8bcce1a6a881d2240fb23fcac2c080cf363196917ed8de9ad23ff7",
+          "size_bytes": 16717
+        },
+        {
+          "artifact_role": "auditor",
+          "git_clean": true,
+          "git_tracked": true,
+          "repository_path": "scripts/audit_edgeiq_race_epi_distribution_fact_v1.py",
+          "sha256": "019aa9b7fb7be7408daec99aafa93e12071c4985a661a6d4da88ceedc08fe8f7",
+          "size_bytes": 25518
+        },
+        {
+          "artifact_role": "fact",
+          "git_clean": true,
+          "git_tracked": true,
+          "repository_path": "public/data/edgeiq_race_epi_distribution_fact_v1.csv",
+          "sha256": "10ffd12d2ead10701e87856ed5b9602bacac1c901601008858a7ca7c1ae429b9",
+          "size_bytes": 450
+        },
+        {
+          "artifact_role": "audit",
+          "git_clean": true,
+          "git_tracked": true,
+          "repository_path": "public/data/edgeiq_race_epi_distribution_fact_v1_audit.json",
+          "sha256": "5dbc5fa3676deb1f2fa08b1af2064c5e5041629d75cf616937e1f86b996b3ec4",
+          "size_bytes": 3157
+        }
+      ],
+      "audit_counts": {
+        "race_entry_epi_rows": 0,
+        "race_epi_distribution_rows": 0,
+        "source_race_count": 0
+      },
+      "audit_status": "PASS",
+      "contract_name": "edgeiq_race_epi_distribution_fact_v1",
+      "fact_column_count": 20,
+      "fact_row_count": 0,
+      "layer_base_name": "edgeiq_race_epi_distribution_fact_v1",
+      "layer_evidence_sha256": "bee39665df43124d9c52dac2b0e22fe8690187a8bbe7e856c36cff548b18c942",
+      "layer_name": "Race EPI Distribution Fact V1",
+      "layer_sequence": 2
+    },
+    {
+      "artifacts": [
+        {
+          "artifact_role": "specification",
+          "git_clean": true,
+          "git_tracked": true,
+          "repository_path": "docs/performance-intelligence/EDGEIQ_RACE_ENTRY_EPI_RELATIVE_CONTEXT_FACT_V1_SPEC.md",
+          "sha256": "d4a53041b395595a305aa97ed7c663a1fb6e8a4f663af03f4f89137063d1f3e0",
+          "size_bytes": 3710
+        },
+        {
+          "artifact_role": "contract",
+          "git_clean": true,
+          "git_tracked": true,
+          "repository_path": "contracts/performance-intelligence/edgeiq_race_entry_epi_relative_context_fact_v1_contract.json",
+          "sha256": "412e55e02fca37b4bc90f7d1b6334920f0218b6cfdafaaf7598c0097a02a6fcd",
+          "size_bytes": 1788
+        },
+        {
+          "artifact_role": "builder",
+          "git_clean": true,
+          "git_tracked": true,
+          "repository_path": "scripts/build_edgeiq_race_entry_epi_relative_context_fact_v1.py",
+          "sha256": "fb7864b8d906ed92078015346a69681da05b9c87ba3c3751fd4022574b9239e8",
+          "size_bytes": 25542
+        },
+        {
+          "artifact_role": "auditor",
+          "git_clean": true,
+          "git_tracked": true,
+          "repository_path": "scripts/audit_edgeiq_race_entry_epi_relative_context_fact_v1.py",
+          "sha256": "34400c15b805480c56e027bc8152fd3ce9ad088457d2028dca9a4aecbad479d8",
+          "size_bytes": 23270
+        },
+        {
+          "artifact_role": "fact",
+          "git_clean": true,
+          "git_tracked": true,
+          "repository_path": "public/data/edgeiq_race_entry_epi_relative_context_fact_v1.csv",
+          "sha256": "ee771e8f92bb2241039a77961098343491426fabf416c4cd52f22f454931ffbf",
+          "size_bytes": 637
+        },
+        {
+          "artifact_role": "audit",
+          "git_clean": true,
+          "git_tracked": true,
+          "repository_path": "public/data/edgeiq_race_entry_epi_relative_context_fact_v1_audit.json",
+          "sha256": "80f295af798d9241ebb18fabd96c4723324213eb158e52506517533cd632d57c",
+          "size_bytes": 3601
+        }
+      ],
+      "audit_counts": {
+        "race_entry_epi_rows": 0,
+        "race_epi_distribution_rows": 0,
+        "relative_context_rows": 0
+      },
+      "audit_status": "PASS",
+      "contract_name": "edgeiq_race_entry_epi_relative_context_fact_v1",
+      "fact_column_count": 27,
+      "fact_row_count": 0,
+      "layer_base_name": "edgeiq_race_entry_epi_relative_context_fact_v1",
+      "layer_evidence_sha256": "cad0782beadd9e950b2bac0f6b92affea5aa1ebd5af53114621d32d9e91d1a76",
+      "layer_name": "Race Entry EPI Relative Context Fact V1",
+      "layer_sequence": 3
+    },
+    {
+      "artifacts": [
+        {
+          "artifact_role": "specification",
+          "git_clean": true,
+          "git_tracked": true,
+          "repository_path": "docs/performance-intelligence/EDGEIQ_RACE_ENTRY_EPI_ORDERING_FACT_V1_SPEC.md",
+          "sha256": "038ae1d0ea06dd38179c3e1968f410a28f320ef6d1d90dedcad2d31d73ede51c",
+          "size_bytes": 4146
+        },
+        {
+          "artifact_role": "contract",
+          "git_clean": true,
+          "git_tracked": true,
+          "repository_path": "contracts/performance-intelligence/edgeiq_race_entry_epi_ordering_fact_v1_contract.json",
+          "sha256": "9ad6ceefc2aeb40f1a921ad381e7048cf9ad42ffce0452a62ef0188bffcd6117",
+          "size_bytes": 1600
+        },
+        {
+          "artifact_role": "builder",
+          "git_clean": true,
+          "git_tracked": true,
+          "repository_path": "scripts/build_edgeiq_race_entry_epi_ordering_fact_v1.py",
+          "sha256": "acdc1223fb7263951267a8dc32554106733a5de88ed762ded63b40fc87e95887",
+          "size_bytes": 17661
+        },
+        {
+          "artifact_role": "auditor",
+          "git_clean": true,
+          "git_tracked": true,
+          "repository_path": "scripts/audit_edgeiq_race_entry_epi_ordering_fact_v1.py",
+          "sha256": "e6743460e608f02e4b3c3c1dd765434d205012d0faa78d719c623bfae12c95d6",
+          "size_bytes": 22680
+        },
+        {
+          "artifact_role": "fact",
+          "git_clean": true,
+          "git_tracked": true,
+          "repository_path": "public/data/edgeiq_race_entry_epi_ordering_fact_v1.csv",
+          "sha256": "8c3bf9ff6de325a85b0facfd47aaf78d2d50df75f06f6214f2b2abcbe09ca81c",
+          "size_bytes": 501
+        },
+        {
+          "artifact_role": "audit",
+          "git_clean": true,
+          "git_tracked": true,
+          "repository_path": "public/data/edgeiq_race_entry_epi_ordering_fact_v1_audit.json",
+          "sha256": "8e2df5026ef7ae728094becffb6d25086a879727feb01535ecaf6d34f3779196",
+          "size_bytes": 3402
+        }
+      ],
+      "audit_counts": {
+        "ordering_rows": 0,
+        "relative_context_rows": 0,
+        "source_race_count": 0,
+        "tied_ordering_rows": 0
+      },
+      "audit_status": "PASS",
+      "contract_name": "edgeiq_race_entry_epi_ordering_fact_v1",
+      "fact_column_count": 22,
+      "fact_row_count": 0,
+      "layer_base_name": "edgeiq_race_entry_epi_ordering_fact_v1",
+      "layer_evidence_sha256": "4068a8074b90fe233883eafbdcd31f6fca7f1750edc0c75c83b41b45d08c4f85",
+      "layer_name": "Race Entry EPI Ordering Fact V1",
+      "layer_sequence": 4
+    },
+    {
+      "artifacts": [
+        {
+          "artifact_role": "specification",
+          "git_clean": true,
+          "git_tracked": true,
+          "repository_path": "docs/performance-intelligence/EDGEIQ_RACE_EPI_ORDERING_SUMMARY_FACT_V1_SPEC.md",
+          "sha256": "4dc4fa651c03301a2a37a3fd2c433a5e5b0a08eb250208abf297ac7ebb741f80",
+          "size_bytes": 4317
+        },
+        {
+          "artifact_role": "contract",
+          "git_clean": true,
+          "git_tracked": true,
+          "repository_path": "contracts/performance-intelligence/edgeiq_race_epi_ordering_summary_fact_v1_contract.json",
+          "sha256": "2b2581dfa121d2a125777ba685dc997c069ab402b4f4e519e768797b27c7845e",
+          "size_bytes": 1994
+        },
+        {
+          "artifact_role": "builder",
+          "git_clean": true,
+          "git_tracked": true,
+          "repository_path": "scripts/build_edgeiq_race_epi_ordering_summary_fact_v1.py",
+          "sha256": "1d94cff5deb9b12d4196abac1b337cf7389674dcebec38abf6bb6281b6371158",
+          "size_bytes": 17307
+        },
+        {
+          "artifact_role": "auditor",
+          "git_clean": true,
+          "git_tracked": true,
+          "repository_path": "scripts/audit_edgeiq_race_epi_ordering_summary_fact_v1.py",
+          "sha256": "75ec1ead0f2f446683e829b4bae5b41eb61314d835e6a98718dbb9f6fd2b7c7d",
+          "size_bytes": 18133
+        },
+        {
+          "artifact_role": "fact",
+          "git_clean": true,
+          "git_tracked": true,
+          "repository_path": "public/data/edgeiq_race_epi_ordering_summary_fact_v1.csv",
+          "sha256": "d2f8868c85045e622e6df1d7cd2892e3f9a98b1eef05c7c7a1b5609fd8dc06cd",
+          "size_bytes": 629
+        },
+        {
+          "artifact_role": "audit",
+          "git_clean": true,
+          "git_tracked": true,
+          "repository_path": "public/data/edgeiq_race_epi_ordering_summary_fact_v1_audit.json",
+          "sha256": "388ba84c3134d023d433ab14133f20c166f96912b04e9d1ae6c92c05412c794c",
+          "size_bytes": 3546
+        }
+      ],
+      "audit_counts": {
+        "ordering_rows": 0,
+        "source_race_count": 0,
+        "summary_rows": 0,
+        "top_epi_tied_races": 0
+      },
+      "audit_status": "PASS",
+      "contract_name": "edgeiq_race_epi_ordering_summary_fact_v1",
+      "fact_column_count": 26,
+      "fact_row_count": 0,
+      "layer_base_name": "edgeiq_race_epi_ordering_summary_fact_v1",
+      "layer_evidence_sha256": "e4209599d5262b67ed06f3c07c15916e7d84aa2ed31f05ec7136aee17f31bb93",
+      "layer_name": "Race EPI Ordering Summary Fact V1",
+      "layer_sequence": 5
+    },
+    {
+      "artifacts": [
+        {
+          "artifact_role": "specification",
+          "git_clean": true,
+          "git_tracked": true,
+          "repository_path": "docs/performance-intelligence/EDGEIQ_RACE_ENTRY_EPI_PUBLICATION_SNAPSHOT_FACT_V1_SPEC.md",
+          "sha256": "e97591fcdd2f7fed513598b8819b345bae1f79b945d9d34006700393da3f6cd6",
+          "size_bytes": 3687
+        },
+        {
+          "artifact_role": "contract",
+          "git_clean": true,
+          "git_tracked": true,
+          "repository_path": "contracts/performance-intelligence/edgeiq_race_entry_epi_publication_snapshot_fact_v1_contract.json",
+          "sha256": "a5351926ee51b932e373d1c8a34b36797fc1e2f9b4fbd9f5a9bfb34d6c29acea",
+          "size_bytes": 1775
+        },
+        {
+          "artifact_role": "builder",
+          "git_clean": true,
+          "git_tracked": true,
+          "repository_path": "scripts/build_edgeiq_race_entry_epi_publication_snapshot_fact_v1.py",
+          "sha256": "4193abae8dce467865094d1d7056709b094e7c4a95cceefdfe9cf43f045ae5bb",
+          "size_bytes": 20874
+        },
+        {
+          "artifact_role": "auditor",
+          "git_clean": true,
+          "git_tracked": true,
+          "repository_path": "scripts/audit_edgeiq_race_entry_epi_publication_snapshot_fact_v1.py",
+          "sha256": "b7418176b0fef5387335e402ba3fcea696bcf305b0bc756752b4562837b1102e",
+          "size_bytes": 23114
+        },
+        {
+          "artifact_role": "fact",
+          "git_clean": true,
+          "git_tracked": true,
+          "repository_path": "public/data/edgeiq_race_entry_epi_publication_snapshot_fact_v1.csv",
+          "sha256": "5986c54cfcf9fcb567fda57ab8958b5d34ae054bbf6ae67ec258a05c09e6816f",
+          "size_bytes": 566
+        },
+        {
+          "artifact_role": "audit",
+          "git_clean": true,
+          "git_tracked": true,
+          "repository_path": "public/data/edgeiq_race_entry_epi_publication_snapshot_fact_v1_audit.json",
+          "sha256": "c082a71c197444407356d0c361effc7e034d9e6b4c972e667e51ad5a5cc2fcb1",
+          "size_bytes": 3526
+        }
+      ],
+      "audit_counts": {
+        "publication_snapshot_rows": 0,
+        "race_count": 0,
+        "source_ordering_rows": 0,
+        "tied_epi_rows": 0,
+        "unique_epi_rows": 0
+      },
+      "audit_status": "PASS",
+      "contract_name": "edgeiq_race_entry_epi_publication_snapshot_fact_v1",
+      "fact_column_count": 23,
+      "fact_row_count": 0,
+      "layer_base_name": "edgeiq_race_entry_epi_publication_snapshot_fact_v1",
+      "layer_evidence_sha256": "753203aebdf68cc1714eaa8552dc65dc9c5e4980c9c1795eef64c5477cd564aa",
+      "layer_name": "Race Entry EPI Publication Snapshot Fact V1",
+      "layer_sequence": 6
+    },
+    {
+      "artifacts": [
+        {
+          "artifact_role": "specification",
+          "git_clean": true,
+          "git_tracked": true,
+          "repository_path": "docs/performance-intelligence/EDGEIQ_RACE_EPI_PUBLICATION_SNAPSHOT_FACT_V1_SPEC.md",
+          "sha256": "462935aad78cef5df9b9f6cdf0afd77435ff8c4e5c52a936c0e6f2cabe2366af",
+          "size_bytes": 3662
+        },
+        {
+          "artifact_role": "contract",
+          "git_clean": true,
+          "git_tracked": true,
+          "repository_path": "contracts/performance-intelligence/edgeiq_race_epi_publication_snapshot_fact_v1_contract.json",
+          "sha256": "a636ac3bd4f7576e7260fc76c337dadb9da0668f63724b94ab34103e75eddf0e",
+          "size_bytes": 2342
+        },
+        {
+          "artifact_role": "builder",
+          "git_clean": true,
+          "git_tracked": true,
+          "repository_path": "scripts/build_edgeiq_race_epi_publication_snapshot_fact_v1.py",
+          "sha256": "f2a7845b7736bff5fc8e5cfb2fb5e413cf71b4120558ca91f56a81eb25178838",
+          "size_bytes": 18523
+        },
+        {
+          "artifact_role": "auditor",
+          "git_clean": true,
+          "git_tracked": true,
+          "repository_path": "scripts/audit_edgeiq_race_epi_publication_snapshot_fact_v1.py",
+          "sha256": "c82810217d6514dcccff3da46e8cbd43af90c601df3f02ff1f9639a5c03d7cf7",
+          "size_bytes": 20504
+        },
+        {
+          "artifact_role": "fact",
+          "git_clean": true,
+          "git_tracked": true,
+          "repository_path": "public/data/edgeiq_race_epi_publication_snapshot_fact_v1.csv",
+          "sha256": "c2e424c3cabf965d7004b957cbbca885724c91ca86db8b4cdfe9e5f7109295c6",
+          "size_bytes": 847
+        },
+        {
+          "artifact_role": "audit",
+          "git_clean": true,
+          "git_tracked": true,
+          "repository_path": "public/data/edgeiq_race_epi_publication_snapshot_fact_v1_audit.json",
+          "sha256": "15b58f75ef47293d0662ca6f5e94b3f39ebd4eb736979dd248ad02b3daa049e0",
+          "size_bytes": 4561
+        }
+      ],
+      "audit_counts": {
+        "distribution_rows": 0,
+        "ordering_summary_rows": 0,
+        "population_not_exposed_rows": 0,
+        "population_reconciled_rows": 0,
+        "publication_snapshot_rows": 0
+      },
+      "audit_status": "PASS",
+      "contract_name": "edgeiq_race_epi_publication_snapshot_fact_v1",
+      "fact_column_count": 33,
+      "fact_row_count": 0,
+      "layer_base_name": "edgeiq_race_epi_publication_snapshot_fact_v1",
+      "layer_evidence_sha256": "a07d4a126c9f780ef4982226f244f5f76c106ba6c0a6544befe0d989bbb7a15d",
+      "layer_name": "Race EPI Publication Snapshot Fact V1",
+      "layer_sequence": 7
+    }
+  ],
+  "manifest_contract_version": "1.0.0",
+  "reconciliation_decision": "EPI_WAREHOUSE_V1_RECONCILED",
+  "release_created_at_utc": "2026-07-22T04:40:03Z",
+  "release_decision": "EPI_WAREHOUSE_V1_RELEASED",
+  "release_status": "GOVERNED_EPI_WAREHOUSE_RELEASE",
+  "release_summary": {
+    "artifact_count": 42,
+    "builder_version": "edgeiq_epi_warehouse_release_manifest_v1.0.0",
+    "clean_artifact_count": 42,
+    "governed_layer_count": 7,
+    "passed_audit_count": 7,
+    "source_fact_total_row_count": 0,
+    "tracked_artifact_count": 42
+  },
+  "source_git": {
+    "governed_source_artifacts_clean": true,
+    "repository_root": "C:/Users/trent/OneDrive/Documents/EDGEIQ_PLATFORM",
+    "source_git_branch": "feature/component-refactor",
+    "source_git_commit_timestamp": "2026-07-22T14:28:52+10:00",
+    "source_git_head": "06c8124f860e7221a248ff975467dca03ef2cce1"
+  },
+  "terminal_reconciliation": {
+    "every_race_snapshot_has_runner_population": true,
+    "every_runner_race_has_race_snapshot": true,
+    "ordering_fact_row_count": 0,
+    "ordering_summary_row_count": 0,
+    "race_distribution_row_count": 0,
+    "race_entry_fact_row_count": 0,
+    "race_natural_keys_unique": true,
+    "race_population_reconciled": true,
+    "race_publication_race_count": 0,
+    "race_publication_snapshot_row_count": 0,
+    "relative_context_row_count": 0,
+    "runner_natural_keys_unique": true,
+    "runner_population_reconciled": true,
+    "runner_publication_race_count": 0,
+    "runner_publication_snapshot_row_count": 0
+  },
+  "warehouse_name": "EDGEIQ_CANONICAL_EPI_WAREHOUSE",
+  "warehouse_version": "1.0.0"
+}

@@ -1,0 +1,20 @@
+{
+  "startedAt": "2026-07-18T15:37:19.605Z",
+  "routeChecks": [
+    { "check": "has_meeting_detail_header", "pass": true },
+    { "check": "has_state", "pass": true },
+    { "check": "has_races", "pass": true },
+    { "check": "has_runners", "pass": true },
+    { "check": "has_scratchings", "pass": true },
+    { "check": "has_official_update", "pass": true },
+    { "check": "has_track", "pass": true },
+    { "check": "has_rail", "pass": true },
+    { "check": "has_weather_tab", "pass": true },
+    { "check": "no_confidence_copy", "pass": true },
+    { "check": "no_source_station_builder_feed_copy", "pass": true },
+    { "check": "white_body_background", "pass": true, "detail": "rgb(255, 255, 255)" }
+  ],
+  "screenshot": "SCREENSHOT_BLOCKED: tab.playwright.screenshot is not a function",
+  "errors": [],
+  "completedAt": "2026-07-18T15:37:22.219Z"
+}

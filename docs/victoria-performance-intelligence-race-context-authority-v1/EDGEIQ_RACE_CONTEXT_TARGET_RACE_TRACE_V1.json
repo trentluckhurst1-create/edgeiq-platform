@@ -1,0 +1,22 @@
+[
+  {
+    "authority": "RACING_COM_VISIBLE_PAGE_OFFICIAL_CONTEXT",
+    "race_class_value": "Open",
+    "race_key": "2026-07-25|CAULFIELD|R5",
+    "rail_position_value": "Out 10m Entire Circuit",
+    "source_file": "public\\data\\edgeiq_official_race_context_source_v1.csv",
+    "source_role": "official_visible_page_race_context",
+    "trace_status": "FOUND",
+    "track_condition_value": "Soft"
+  },
+  {
+    "authority": "RACING_COM_VISIBLE_PAGE_OFFICIAL_CONTEXT",
+    "race_class_value": "Group 3",
+    "race_key": "2026-07-25|CAULFIELD|R7",
+    "rail_position_value": "Out 10m Entire Circuit",
+    "source_file": "public\\data\\edgeiq_official_race_context_source_v1.csv",
+    "source_role": "official_visible_page_race_context",
+    "trace_status": "FOUND",
+    "track_condition_value": "Soft"
+  }
+]

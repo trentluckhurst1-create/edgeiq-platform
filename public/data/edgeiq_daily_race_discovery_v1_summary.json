@@ -1,0 +1,9 @@
+{
+  "date_from": "2026-07-15",
+  "date_to": "2026-07-28",
+  "mode": "DEEP_BACKFILL",
+  "operation_run_id": "DISCOVERY-2026-07-15-2026-07-28-7C30C257CD",
+  "races_discovered": 8,
+  "rejections": 0,
+  "status": "PASS"
+}

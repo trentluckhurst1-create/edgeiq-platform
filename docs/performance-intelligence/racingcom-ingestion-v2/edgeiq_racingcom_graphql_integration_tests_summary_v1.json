@@ -1,0 +1,9 @@
+{
+  "built_utc": "2026-07-22T18:28:57+00:00",
+  "status": "RACINGCOM_GRAPHQL_INTEGRATION_TESTS_V1_PASS",
+  "tests": 9,
+  "pass": 9,
+  "fail": 0,
+  "production_changed": "NO",
+  "ui_changed": "NO"
+}

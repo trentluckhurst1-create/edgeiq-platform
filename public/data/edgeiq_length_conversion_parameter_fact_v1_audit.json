@@ -1,0 +1,85 @@
+{
+  "audit_name": "edgeiq_length_conversion_parameter_fact_v1",
+  "audit_version": "1.0.0",
+  "audited_at_utc": "2026-07-21T21:25:48Z",
+  "checks": {
+    "contract_fields_exact": {
+      "detail": {
+        "actual": [
+          "length_conversion_parameter_id",
+          "conversion_scope",
+          "official_distance_metres",
+          "seconds_per_length",
+          "conversion_model_version",
+          "parameter_status",
+          "effective_from_date",
+          "effective_to_date",
+          "evidence_reference",
+          "source_evidence_sha256",
+          "parameter_evidence_sha256",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ],
+        "expected": [
+          "length_conversion_parameter_id",
+          "conversion_scope",
+          "official_distance_metres",
+          "seconds_per_length",
+          "conversion_model_version",
+          "parameter_status",
+          "effective_from_date",
+          "effective_to_date",
+          "evidence_reference",
+          "source_evidence_sha256",
+          "parameter_evidence_sha256",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ]
+      },
+      "status": "PASS"
+    },
+    "current_population_expected": {
+      "detail": {
+        "parameter_rows": 0,
+        "source_exists": false
+      },
+      "status": "PASS"
+    },
+    "deterministic_identity": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "evidence_hash_reproducible": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "no_effective_date_overlaps": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "no_forbidden_fields": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "parameter_governance": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "required_files_exist": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "unique_parameter_ids": {
+      "detail": [],
+      "status": "PASS"
+    }
+  },
+  "counts": {
+    "parameter_rows": 0,
+    "source_exists": false
+  },
+  "failed_checks": [],
+  "status": "PASS"
+}

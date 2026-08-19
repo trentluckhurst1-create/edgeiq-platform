@@ -1,0 +1,15 @@
+{
+  "built_utc": "2026-07-22T18:54:46+00:00",
+  "status": "RACINGCOM_PRODUCTION_RUNNER_CONTRACT_PROFILE_PASS",
+  "production_path": "public\\data\\edgeiq_racingcom_performance_warehouse_v2.csv",
+  "rows": 80,
+  "columns": 35,
+  "canonical_key": "warehouse_record_id",
+  "secondary_key": "race_id+horse_key",
+  "row_grain": "RUNNER_AGGREGATE",
+  "duplicate_records": 0,
+  "duplicate_runner_keys": 0,
+  "sorting_rule": "race_date, track, numeric race_no, horse_key",
+  "production_changed": "NO",
+  "ui_changed": "NO"
+}

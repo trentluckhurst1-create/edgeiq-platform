@@ -1,0 +1,72 @@
+{
+  "latest_operation_run_id": "DAILYOPS-2026-07-15-2026-07-28-7E34B128B4",
+  "latest_mode": "BACKFILL",
+  "latest_status": "PASS",
+  "latest_date_from": "2026-07-15",
+  "latest_date_to": "2026-07-28",
+  "execution_order": [
+    {
+      "order": 1,
+      "stage": "race_discovery",
+      "cmd": "python scripts/build_edgeiq_daily_race_discovery_v1.py --mode DEEP_BACKFILL --date-from 2026-07-15 --date-to 2026-07-28 --dry-run --no-publish",
+      "returncode": 0
+    },
+    {
+      "order": 2,
+      "stage": "official_results",
+      "cmd": "python scripts/build_edgeiq_daily_official_results_ingestion_v1.py --mode DEEP_BACKFILL --date-from 2026-07-15 --date-to 2026-07-28 --dry-run --no-publish",
+      "returncode": 0
+    },
+    {
+      "order": 3,
+      "stage": "official_timing",
+      "cmd": "python scripts/build_edgeiq_daily_official_timing_ingestion_v1.py --mode DEEP_BACKFILL --date-from 2026-07-15 --date-to 2026-07-28 --dry-run --no-publish",
+      "returncode": 0
+    },
+    {
+      "order": 4,
+      "stage": "condition_evidence",
+      "cmd": "python scripts/build_edgeiq_daily_condition_evidence_v1.py --mode DEEP_BACKFILL --date-from 2026-07-15 --date-to 2026-07-28 --dry-run --no-publish",
+      "returncode": 0
+    },
+    {
+      "order": 5,
+      "stage": "delayed_speed",
+      "cmd": "python scripts/build_edgeiq_delayed_speed_data_ingestion_v1.py --mode DEEP_BACKFILL --date-from 2026-07-15 --date-to 2026-07-28 --dry-run --no-publish",
+      "returncode": 0
+    },
+    {
+      "order": 6,
+      "stage": "lifecycle",
+      "cmd": "python scripts/build_edgeiq_race_data_lifecycle_fact_v1.py --mode DEEP_BACKFILL --date-from 2026-07-15 --date-to 2026-07-28 --dry-run --no-publish",
+      "returncode": 0
+    },
+    {
+      "order": 7,
+      "stage": "canonical_timing_update",
+      "cmd": "python scripts/update_edgeiq_canonical_historical_timing_warehouse_v1.py --mode DEEP_BACKFILL --date-from 2026-07-15 --date-to 2026-07-28 --dry-run --no-publish",
+      "returncode": 0
+    }
+  ],
+  "current_meetings_discovered": 6,
+  "result_not_imported_meetings": 4,
+  "orchestration_not_run_meetings": 2,
+  "official_results_summary": {
+    "date_from": "2026-07-20",
+    "date_to": "2026-07-30",
+    "dry_run": false,
+    "facts": 80,
+    "mode": "V3_RA_PUBLIC_RESULTS",
+    "operation_run_id": "VICLIVEV3-AC30C8C7C8A2",
+    "raw_rows": 80,
+    "rejections": 0,
+    "status": "PASS"
+  },
+  "official_timing_summary": {
+    "mode": "DEEP_BACKFILL",
+    "operation_run_id": "TIMING-2026-07-20-2026-07-30-55E962D12F",
+    "rejections": 0,
+    "status": "PASS",
+    "timing_candidates": 8
+  }
+}

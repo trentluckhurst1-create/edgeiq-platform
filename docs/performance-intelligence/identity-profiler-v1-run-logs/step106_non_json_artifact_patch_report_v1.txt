@@ -1,0 +1,22 @@
+EDGEIQ IDENTITY REPOSITORY PROFILER STEP106
+NON-JSON ARTIFACT HARDENING REPORT V1
+========================================================================
+Source: C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\build_edgeiq_identity_repository_profiler_v1_STEP105_CUMULATIVE.py
+Target: C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\build_edgeiq_identity_repository_profiler_v1_STEP106_CUMULATIVE.py
+
+Preserved:
+- STEP102 recursive-wrapper repair
+- STEP103 bounded relationship repair
+- STEP104 UTF-8 BOM support
+- STEP105 deterministic completion contract
+- STEP105 empty JSON classification
+- STEP105 JSONC configuration classification
+
+STEP106 change:
+- JSONDecodeError at character zero is classified as
+  NON_JSON_ARTIFACT rather than emitted as a traceback.
+- The first 32 raw bytes are logged in hexadecimal
+  as governed diagnostic evidence.
+- JSON failures after character zero remain genuine errors.
+
+Status: PASS

@@ -1,0 +1,31 @@
+{
+  "architecture_decision": "OUTCOME_D_CANONICAL_CONTRACT_WAS_REPLACED_BY_INCOMPATIBLE_CURRENT_WINDOW_CONTRACT_PLUS_C_PRIOR_GOVERNED_WAREHOUSE_DISCONNECTED",
+  "branch": "feature/component-refactor",
+  "canonical_timing_dataset_before": "public/data/edgeiq_benchmark_observation_fact_v1.csv",
+  "condition_evidence_status": "PASS_FOR_AVAILABLE_GROUPS_REJECT_MISSING",
+  "lengths_v_standard_rows_recovered": 52414,
+  "normalisation_output_rows_recovered": 0,
+  "normalisation_rejections_recovered": 52414,
+  "overall_status": "PARTIAL",
+  "performance_base_rows_recovered": 52414,
+  "pricing_changed": false,
+  "probability_changed": false,
+  "production_public_outputs_overwritten": false,
+  "race_identity_status": "PASS_CANONICAL_RACE_ID_PRESENT",
+  "race_time_delta_rows_recovered": 54978,
+  "remaining_blockers": [
+    "Human approval required before replacing current public canonical observation contract",
+    "HPR-NORM-A-v1 not effective for pre-2026-07-20 recovered observations",
+    "Prior warehouse audit reports 70,311 timed races; direct physical scan confirms 70,308 and should be treated as authoritative until the audit-count discrepancy is resolved."
+  ],
+  "runtime_seconds": 23.502,
+  "standard_time_rows_recovered": 695,
+  "start_commit": "89e791b",
+  "timed_rows_after_side_by_side": 70308,
+  "timed_rows_before": 39,
+  "ui_changed": false,
+  "unique_timed_races_after_side_by_side": 70308,
+  "unit_semantics_status": "PASS_EXPLICIT_TIME_UNITS_AND_SECONDS_FIELD",
+  "v6_1_changed": false,
+  "v7_2g2_changed": false
+}

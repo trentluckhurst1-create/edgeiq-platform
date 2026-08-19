@@ -1,0 +1,14 @@
+[
+  {
+    "bundle_url": "https://www.racing.com/form/config.js?v=4474",
+    "symbol": "Champion",
+    "offset": 365,
+    "context": "/live-vision.aspx?th=true\",LiniusReplay:\"https://d20khqxhsh8k6o.cloudfront.net\",ChampionDataEndpoint:\"https://graphql.rmdprod.racing.com/\",ChampionDataEndpointKey:\"[REDACTED_DA2_KEY]\",SportsBetTra"
+  },
+  {
+    "bundle_url": "https://www.racing.com/form/config.js?v=4474",
+    "symbol": "Champion",
+    "offset": 424,
+    "context": "8k6o.cloudfront.net\",ChampionDataEndpoint:\"https://graphql.rmdprod.racing.com/\",ChampionDataEndpointKey:\"[REDACTED_DA2_KEY]\",SportsBetTrackId:\"_oH2Zf8YSCS-oh1SpH8Gdo2Nd7ZgqdRLk\",LoginEndpoint:\"/pl"
+  }
+]

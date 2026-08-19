@@ -1,0 +1,23 @@
+{
+  "workspace": "01_HOME",
+  "label": "HOME",
+  "captureErrors": [],
+  "mounted": [
+    {
+      "component": "EdgeiqOsHome",
+      "key": "HOME",
+      "tag": "SECTION",
+      "className": "eiq-home-approved"
+    }
+  ],
+  "mountedComponent": "EdgeiqOsHome",
+  "mountedKey": "HOME",
+  "selectedMeeting": "2026-07-17|WANGARATTA",
+  "selectedRace": null,
+  "activeSection": "home",
+  "viewLevel": "meetings",
+  "runnerCount": 1,
+  "dataAvailability": "PARTIAL_OR_PENDING",
+  "bodySample": "EDGEiQ\nRACE INTELLIGENCE\nHOME\nMEETINGS\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nEPI\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nRESULTS\nLAB\nCOMPARE\nREVIEW\nSETTINGS\nEDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM\nInformation is not Intelligence. Evidence leads. Precision decides.\nSUN, 19 JULY 2026\n06:49 pm\nAEDT\nHOME\nWelcome to EDGEiQ\n\nEDGEiQ is the Professional Racing Intelligence Operating System. We turn governed data and advanced analytics into actionable intelligence for serious form students, analysts, and racing professionals.\n\nEvidence First\n\nOnly governed, verified data. No estimates. No shortcuts.\n\nBuilt For Professionals\n\nAdvanced tools for analysis, comparison, and insight.\n\nComplete Intelligence\n\nEvery race. Every runner. Every angle that matters.\n\nTODAY'S MEETINGS\nFriday 17 July 2026\nVIEW ALL MEETINGS\nMEETING\tSTATE\tRAIL\tTRACK RATING\tWEATHER\tRACES\tDECLARED\tSCRATCHINGS\tFIRST\tLAST\tSTATUS\nWangaratta\tNot supplied\tNot supplied\tNot supplied\tWeather unavailable\t0\t0\t0\tNot supplied\tNot supplied\tCurrent\nWORKSPACES\nRace intelligence workspace\nOpen the approved race overview and field context\nEPI Leaders Today\nSee the top rated runners across all meetings\nValue Opportunities\nRunners with strong EDGEiQ Price separation\nMarket Movers\nBiggest market shifts in the current feed\nTrack Bias Monitor\nLive bias detection across Victorian tracks\nDATA QUALITY\nData Discipline\nBrowser-safe product feeds\nData Discipline\nBrowser-safe product feeds\nData Discipline\nBrowser-safe product feeds\nLive Data Feeds\nAll Systems Operational\nRace Fields\nPending\nReports & Results\nUp to date\nWeather Feeds\nGoverned unavailable\nVIEW DATA STATUS CENTRE\nRECENT ANALYSIS\n\nNo recent governed analysis is available.\n\nVIEW ALL RECENT ANALYSIS\nDATA STATUS\nAll Systems Operational\n0 races | 0 declared runners | 0 scratchings\nContinue: Wangaratta Race\nEDGEiQ Racing Intelligence Operating System\nBuild: 1.0.0\nData as at: 06:49 pm AEDT",
+  "renderedPath": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-live-runtime/01_HOME_LIVE_RENDERED.png"
+}

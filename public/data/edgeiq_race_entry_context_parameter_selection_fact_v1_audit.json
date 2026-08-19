@@ -1,0 +1,150 @@
+{
+  "audit_name": "edgeiq_race_entry_context_parameter_selection_fact_v1",
+  "audit_version": "1.1.0_all_ineligible_context_allowed",
+  "audited_at_utc": "2026-07-30T00:04:06Z",
+  "checks": {
+    "context_required_when_eligibility_rows_exist": {
+      "detail": true,
+      "status": "PASS"
+    },
+    "contract_fields_exact": {
+      "detail": {
+        "actual": [
+          "race_entry_context_parameter_selection_id",
+          "race_entry_context_eligibility_id",
+          "race_entry_performance_context_id",
+          "race_entry_id",
+          "race_id",
+          "race_date",
+          "runner_id",
+          "canonical_horse_id",
+          "canonical_horse_name",
+          "complete_context_eligibility",
+          "source_context_eligibility_reason_code",
+          "race_distance_m",
+          "race_class_code",
+          "track_id",
+          "track_configuration",
+          "track_condition",
+          "racing_surface",
+          "barrier_band",
+          "weight_band",
+          "field_size_band",
+          "context_signature_sha256",
+          "context_parameter_id",
+          "context_parameter_selection_decision",
+          "race_entry_context_parameter_selection_status",
+          "source_eligibility_evidence_sha256",
+          "source_context_evidence_sha256",
+          "source_parameter_evidence_sha256",
+          "race_entry_context_parameter_selection_evidence_sha256",
+          "source_eligibility_builder_version",
+          "source_context_builder_version",
+          "source_parameter_builder_version",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ],
+        "expected": [
+          "race_entry_context_parameter_selection_id",
+          "race_entry_context_eligibility_id",
+          "race_entry_performance_context_id",
+          "race_entry_id",
+          "race_id",
+          "race_date",
+          "runner_id",
+          "canonical_horse_id",
+          "canonical_horse_name",
+          "complete_context_eligibility",
+          "source_context_eligibility_reason_code",
+          "race_distance_m",
+          "race_class_code",
+          "track_id",
+          "track_configuration",
+          "track_condition",
+          "racing_surface",
+          "barrier_band",
+          "weight_band",
+          "field_size_band",
+          "context_signature_sha256",
+          "context_parameter_id",
+          "context_parameter_selection_decision",
+          "race_entry_context_parameter_selection_status",
+          "source_eligibility_evidence_sha256",
+          "source_context_evidence_sha256",
+          "source_parameter_evidence_sha256",
+          "race_entry_context_parameter_selection_evidence_sha256",
+          "source_eligibility_builder_version",
+          "source_context_builder_version",
+          "source_parameter_builder_version",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ]
+      },
+      "status": "PASS"
+    },
+    "current_population_expected": {
+      "detail": {
+        "context_ineligible_rows": 0,
+        "eligibility_rows": 5,
+        "parameter_selected_rows": 0,
+        "selection_rows": 5
+      },
+      "status": "PASS"
+    },
+    "deterministic_selection_identity": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "no_forbidden_fields": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "one_selection_per_eligibility": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "parameter_registry_required_when_eligible_context_rows_exist": {
+      "detail": {
+        "eligible_context_rows": 5,
+        "parameter_registry_exists": true
+      },
+      "status": "PASS"
+    },
+    "required_files_exist": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "selection_decisions_governed": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "selection_governance": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "selection_ids_unique": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "selection_population_exact": {
+      "detail": {
+        "eligibility_rows": 5,
+        "selection_rows": 5
+      },
+      "status": "PASS"
+    }
+  },
+  "counts": {
+    "context_eligibility_rows": 5,
+    "context_ineligible_rows": 0,
+    "context_parameter_registry_rows": 0,
+    "context_parameter_selection_rows": 5,
+    "parameter_not_available_rows": 5,
+    "parameter_selected_rows": 0,
+    "performance_context_rows": 5
+  },
+  "failed_checks": [],
+  "status": "PASS"
+}

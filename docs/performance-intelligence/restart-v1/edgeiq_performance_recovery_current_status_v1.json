@@ -1,0 +1,22 @@
+{
+  "build_note": "npm run build completed in 4m 7s after longer timeout; TypeScript also passed separately.",
+  "build_status": "PASS",
+  "horse_aggregate_rows": 0,
+  "horse_observation_rows": 0,
+  "horse_rating_rows": 0,
+  "lengths_versus_standard_rejections": 4,
+  "lengths_versus_standard_rows": 13,
+  "no_fabrication": "YES",
+  "normalisation_rejections": 13,
+  "normalisation_rows": 0,
+  "parameter_v2_rows": 5,
+  "performance_base_rows": 13,
+  "projected_performance_rows": 0,
+  "race_entry_snapshot_rows": 0,
+  "race_time_delta_rows": 17,
+  "rating_base_rows": 0,
+  "remaining_blocker": "HPR-NORM-A-v1 normalisation parameter effective_from_date is 2026-07-20; converted canonical race-time deltas are 2026-05-30 and 2026-05-31, so all 13 base rows are rejected rather than normalised.",
+  "selected_conversion_model": "EDGEIQ_SURFACE_AWARE_LENGTHS_PER_SECOND_V2",
+  "starting_commit": "32ee3b8",
+  "status": "LENGTH_CONVERSION_RESOLVED_DOWNSTREAM_TEMPORAL_NORMALISATION_BLOCKED"
+}

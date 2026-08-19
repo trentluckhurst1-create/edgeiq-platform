@@ -1,0 +1,12 @@
+{
+  "built_utc": "2026-07-22T19:21:35+00:00",
+  "status": "RACINGCOM_CANONICAL_SPEED_CONTRACT_V1_PASS",
+  "canonical_rows": 978,
+  "csv_runner_aggregate_rows": 80,
+  "graphql_segment_rows": 898,
+  "races": 13,
+  "duplicate_fact_ids": 0,
+  "historical_csv_missing_speed_rows": 14,
+  "production_changed": "NO",
+  "ui_changed": "NO"
+}

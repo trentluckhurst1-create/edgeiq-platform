@@ -1,0 +1,7 @@
+{
+  "production_runner_rows": 138,
+  "canonical_runner_rows": 392,
+  "benchmark_observation_rows": 39,
+  "standard_time_rows": 0,
+  "direct_disconnect": "Production runner warehouse lacks segment and finish-position fields required by the active benchmark observation builder; active path remains canonical speed facts."
+}

@@ -1,0 +1,79 @@
+{
+  "contract_name": "edgeiq_race_entry_suitability_component_fact_v1",
+  "contract_version": "1.0.0",
+  "grain": "one_governed_suitability_component_per_context_adjusted_performance_and_component_type",
+  "primary_key": [
+    "race_entry_suitability_component_id"
+  ],
+  "natural_key": [
+    "race_entry_context_adjusted_performance_id",
+    "suitability_component_type"
+  ],
+  "required_fields": [
+    "race_entry_suitability_component_id",
+    "race_entry_context_adjusted_performance_id",
+    "race_entry_context_adjustment_id",
+    "race_entry_context_parameter_selection_id",
+    "race_entry_context_eligibility_id",
+    "race_entry_performance_context_id",
+    "race_entry_id",
+    "race_id",
+    "race_date",
+    "runner_id",
+    "canonical_horse_id",
+    "canonical_horse_name",
+    "historical_rating_value",
+    "context_parameter_id",
+    "total_context_adjustment",
+    "context_adjusted_performance_value",
+    "suitability_component_type",
+    "source_component_field",
+    "suitability_component_value",
+    "suitability_component_decision",
+    "race_entry_suitability_component_status",
+    "source_adjusted_performance_evidence_sha256",
+    "source_context_adjustment_evidence_sha256",
+    "race_entry_suitability_component_evidence_sha256",
+    "source_adjusted_performance_builder_version",
+    "source_context_adjustment_builder_version",
+    "builder_version",
+    "contract_version",
+    "built_at_utc"
+  ],
+  "allowed_values": {
+    "suitability_component_type": [
+      "DISTANCE",
+      "CLASS",
+      "TRACK",
+      "TRACK_CONFIGURATION",
+      "TRACK_CONDITION",
+      "SURFACE",
+      "BARRIER",
+      "WEIGHT",
+      "FIELD_SIZE"
+    ],
+    "suitability_component_decision": [
+      "COMPONENT_PUBLISHED"
+    ],
+    "race_entry_suitability_component_status": [
+      "GOVERNED_SUITABILITY_COMPONENT"
+    ]
+  },
+  "forbidden_fields": [
+    "aggregate_suitability",
+    "suitability_score",
+    "projected_performance",
+    "epi",
+    "eri",
+    "race_strength",
+    "runner_rank",
+    "race_rank",
+    "probability",
+    "fair_price",
+    "market_price",
+    "market_edge",
+    "confidence",
+    "prediction",
+    "forecast"
+  ]
+}

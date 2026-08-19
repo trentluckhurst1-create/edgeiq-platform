@@ -1,0 +1,13 @@
+{
+  "verdict": "PASS",
+  "checks": 20,
+  "pass_count": 20,
+  "fail_count": 0,
+  "home_file": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\src\\edgeiq-os\\home\\EdgeiqOsHome.tsx",
+  "css_file": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\src\\edgeiq-os\\styles\\edgeiqOsV2.css",
+  "outputs": [
+    "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\EDGEIQ_HOME_WORKSPACE_V1_AUDIT.csv",
+    "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\EDGEIQ_HOME_WORKSPACE_V1_AUDIT.json",
+    "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\EDGEIQ_HOME_WORKSPACE_V1_AUDIT.md"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "body_bytes": 564,
+  "body_path": "data\\evidence\\daily-operations\\live-source-activation\\LIVE-SOURCE-BB24001265F4\\racing_australia_calendar_results_vic.body",
+  "body_sha256": "cab538fd1647961eb35348c1bd84e1fde389ad89672587d2fe3c007a0bc9e67f",
+  "captured_at_utc": "2026-07-29T01:38:04Z",
+  "content_type": "text/html",
+  "error": "HTTP_403:Forbidden",
+  "latency_seconds": 0.354,
+  "name": "racing_australia_calendar_results_vic",
+  "status": "403",
+  "url": "https://www.racingaustralia.horse/FreeFields/Calendar_Results.aspx?State=VIC"
+}

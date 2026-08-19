@@ -1,0 +1,23 @@
+{
+  "workspace": "09_MARKET",
+  "label": "MARKET",
+  "captureErrors": [],
+  "mounted": [
+    {
+      "component": "MarketWorkspace",
+      "key": "MARKET",
+      "tag": "SECTION",
+      "className": "eiq-race-workspace eiq-race-workspace--market"
+    }
+  ],
+  "mountedComponent": "MarketWorkspace",
+  "mountedKey": "MARKET",
+  "selectedMeeting": "2026-07-17|WANGARATTA",
+  "selectedRace": null,
+  "activeSection": "market",
+  "viewLevel": "race",
+  "runnerCount": 30,
+  "dataAvailability": "PARTIAL_OR_PENDING",
+  "bodySample": "EDGEiQ\nRACE INTELLIGENCE\nHOME\nMEETINGS\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nEPI\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nRESULTS\nLAB\nCOMPARE\nREVIEW\nSETTINGS\nEDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM\nInformation is not Intelligence. Evidence leads. Precision decides.\nSUN, 19 JULY 2026\n06:49 pm\nAEDT\nMEETINGS\nWANGARATTA\nRACE 1\nMARKET\nRace 1\nCurrent Race\nBack to Races\nLOCATION\nWangaratta\nDATE\n2026-07-17\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nEPI\nRESULTS\nREVIEW\n\nMARKET\n\nMarket and EDGEiQ price context\nCurrent market, EDGEiQ assessed price and governed edge for every runner.\nRUNNERS\n30\nRACE READ\nPending\nMARKET BOARD\nNO / RUNNER / EDGEIQ / MARKET / FAIR / EDGE / FLUC 60s % / STATUS\nNO\tRUNNER\tEDGEIQ\tMARKET\tFAIR\tEDGE\tFLUC 60S %\tSTATUS\n1\tLIMBERING\tUnavailable\t\t\tPending\tPending\tPending Market\n2\tHUGHIE\tUnavailable\t\t\tPending\tPending\tPending Market\n3\tDETERMINATO\tUnavailable\t\t\tPending\tPending\tPending Market\n4\tKING TAGALOA\tUnavailable\t\t\tPending\tPending\tPending Market\n5\tOBON\tUnavailable\t\t\tPending\tPending\tPending Market\n6\tREEL DEADLY\tUnavailable\t\t\tPending\tPending\tPending Market\n7\tRUSSIAN FIREBIRD\tUnavailable\t\t\tPending\tPending\tPending Market\n8\tSKY DEEL\tUnavailable\t\t\tPending\tPending\tPending Market\n9\tEXPANDING POWER\tUnavailable\t\t\tPending\tPending\tPending Market\n10\tCAPITAL STORM\tUnavailable\t\t\tPending\tPending\tPending Market\n11\tFONTALICIOUS\tUnavailable\t\t\tPending\tPending\tPending Market\n12\tMERCHANTESSA\tUnavailable\t\t\tPending\tPending\tPending Market\n13\tMIRADOR\tUnavailable\t\t\tPending\tPending\tPending Market\n14\tRUBY GUILD\tUnavailable\t\t\tPending\tPending\tPending Market\n15\tTRICKY MISS\tUnavailable\t\t\tPending\tPending\tPending Market\n16\tPORTINARI\tUnavailable\t\t\tPending\tPending\tPending Market\n17\tMINELLO\tUnavailable\t\t\tPending\tPending\tPending Market\n18\tPINAMILLOY\tUnavailable\t\t\tPending\tPending\tPending Market\n19\tRES MIRA\tUnavailable\t\t\tPending\tPending\tPending Market\n20\tSTINGRAY BARB\tUnavailable\t\t\tPending\tPending\tPending Market\n21\tZAAC\tUnavailable\t\t\tPending\tPending\tPending Market\n22\tBABY BLUE\tUnavailable\t\t\tPending\tPending\tPending Market\n23\tCONTARINI\tUnavailable\t\t\tPending\tPending\tPending Market\n24\tETERNAL JOY\tUnavailable\t\t\tPending\tPending\tPending Market\n25\tBIG FIN\tUnavailable\t\t\tPending\tPending\tPending Market\n26\tLEVRIER\tUnavailable\t\t\tPending\tPending\tPending Market\n27\tMARCH ON BY\tUnavailable\t\t\tPending\tPending\tPending Market\n28\tBLUE SHIELD\tUnavailable\t\t\tPending\tPending\tPending Market\n29\tCALEXPO\tUnavailable\t\t\tPending\tPending\tPending Market\n30\tCIRCUS BERZERKUS\tUnavailable\t\t\tPending\tPending\tPending Market\nMARKET READ\nRUNNERS\n30\nPRICED\n0\nPENDING\n30\nMARKET NOTE\n\nPending Market means current prices are not available for that runner yet.\n\nEDGEiQ Racing Intelligence Operating System\nBuild: 1.0.0\nData as at: 06:49 pm AEDT",
+  "renderedPath": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-live-runtime/09_MARKET_LIVE_RENDERED.png"
+}

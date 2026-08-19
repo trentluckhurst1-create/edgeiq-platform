@@ -1,0 +1,68 @@
+{
+  "benchmark_confidence_distribution": {
+    "HIGH": 337,
+    "INSUFFICIENT": 49904,
+    "LOW": 6729,
+    "MEDIUM": 1921
+  },
+  "benchmark_count": 58891,
+  "benchmark_counts_by_level": {
+    "1": 100,
+    "2": 100,
+    "3": 1928,
+    "4": 11548,
+    "5": 18074,
+    "6": 27141
+  },
+  "checks": [
+    {
+      "check": "BENCHMARK_PRIMARY_KEY",
+      "observed": 58891,
+      "passed": true
+    },
+    {
+      "check": "OBSERVATION_MEMBERSHIP_REPRODUCIBILITY",
+      "observed": 362094,
+      "passed": true
+    },
+    {
+      "check": "SAMPLE_COUNTS_RECONCILE",
+      "observed": 362094,
+      "passed": true
+    },
+    {
+      "check": "EXCLUSIONS_RECONCILE",
+      "observed": 10676,
+      "passed": true
+    },
+    {
+      "check": "NO_RUNNER_DUPLICATION",
+      "observed": "race observation unit",
+      "passed": true
+    },
+    {
+      "check": "CONFIDENCE_CONTRACT",
+      "observed": {
+        "HIGH": 337,
+        "INSUFFICIENT": 49904,
+        "LOW": 6729,
+        "MEDIUM": 1921
+      },
+      "passed": true
+    },
+    {
+      "check": "FALLBACK_SELECTION_CONTRACT",
+      "observed": 60349,
+      "passed": true
+    }
+  ],
+  "exclusion_count": 10676,
+  "generated_timestamp": "2026-07-16T08:32:20Z",
+  "marker": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE1_9_BENCHMARK_ENGINE_V1_FINAL_PASS",
+  "membership_count": 362094,
+  "phase": "phase1_9",
+  "selection_count": 60349,
+  "snapshot_id": "eiq_benchmark_engine_v1_bfff49f3aa73e7fe3f4e616f",
+  "snapshot_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\performance-intelligence\\warehouse\\phase1_9\\eiq_benchmark_engine_v1_bfff49f3aa73e7fe3f4e616f",
+  "status": "PASS"
+}

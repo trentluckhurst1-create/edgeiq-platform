@@ -1,0 +1,25 @@
+{
+  "unit": "TARGET_001_SCHEMA_AUTHORITY_DECISION_V1",
+  "target_output": "public/data/edgeiq_race_entry_horse_performance_snapshot_fact_v1.csv",
+  "selected_authority": "public/data/edgeiq_race_entry_fact_v1.csv",
+  "selected_contract": "CURRENT_CANONICAL_RACE_ENTRY_FACT_V1",
+  "resolution": "IMPLEMENT_GOVERNED_CURRENT_CONTRACT_ADAPTER_IN_TARGET_001_PRODUCER",
+  "reason": "Unit 002D found no populated exact old-contract race-entry dataset. The current canonical race-entry fact is the only governed live/current entry authority.",
+  "output_schema_changed": false,
+  "temporal_rule_changed": false,
+  "temporal_rule": "selected_rating_as_of_date < race_date",
+  "thresholds_weakened": false,
+  "data_fabricated": false,
+  "adapter_builder_version": "edgeiq_race_entry_fact_v1.current_contract_adapter.1.0.0",
+  "field_mapping": {
+    "race_entry_id": "deterministic RE1 hash from canonical_race_id, canonical_runner_id, source_record_id",
+    "race_id": "canonical_race_id",
+    "runner_id": "canonical_runner_id",
+    "canonical_horse_id": "canonical_runner_id",
+    "canonical_horse_name": "runner_name",
+    "race_entry_status": "DECLARED_GOVERNED only for ACTIVE_ENTRY and not SCRATCHED",
+    "race_entry_evidence_sha256": "source_hash",
+    "builder_version": "edgeiq_race_entry_fact_v1.current_contract_adapter.1.0.0"
+  },
+  "classification_before_fix": "DIRECT_INPUT_SCHEMA_CONTRACT_MISMATCH"
+}

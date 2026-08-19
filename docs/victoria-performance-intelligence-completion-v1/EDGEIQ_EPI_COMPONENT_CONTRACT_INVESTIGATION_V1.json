@@ -1,0 +1,32 @@
+{
+  "complete_context_eligible_rows": 5,
+  "complete_context_ineligible_rows": 0,
+  "epi_component_rows": 0,
+  "epi_rows": 0,
+  "eri_context_rows": 0,
+  "first_failing_join": "race_entry_horse_performance_snapshot -> race_entry_performance_context -> context eligibility now succeeds; exact governed context parameter selection fails closed because no governed context parameter registry rows are available",
+  "first_failing_stage": "CONTEXT_PARAMETER_SELECTION",
+  "mandatory_epi_inputs": {
+    "HISTORICAL_PERFORMANCE": "public/data/edgeiq_race_entry_projected_performance_fact_v1.csv",
+    "RACE_CONTEXT": "public/data/edgeiq_race_entry_eri_context_fact_v1.csv",
+    "SUITABILITY": "public/data/edgeiq_race_entry_suitability_aggregate_fact_v1.csv"
+  },
+  "method_repair_applied": [
+    "Current race-entry schema adapter added to performance context builder",
+    "Empty-input guard added to parameter selection builder",
+    "Empty-input guard added to context adjustment builder",
+    "Official visible-page race context source added for race_class_code and rail_position",
+    "Header-only governed context parameter registry added so missing empirical parameters fail closed without fabricated adjustments"
+  ],
+  "no_components_fabricated": true,
+  "performance_context_rows": 5,
+  "pricing_probability_v6_v7_changed": false,
+  "primary_rejection_reason": "PARAMETER_NOT_AVAILABLE",
+  "projected_performance_rows": 0,
+  "rejection_counts": {
+    "PARAMETER_NOT_AVAILABLE": 5
+  },
+  "snapshot_rows": 5,
+  "status": "BLOCKED_EPI_COMPONENT_CONTRACT",
+  "suitability_aggregate_rows": 0
+}

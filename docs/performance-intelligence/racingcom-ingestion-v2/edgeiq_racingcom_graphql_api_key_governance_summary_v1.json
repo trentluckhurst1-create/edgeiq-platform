@@ -1,0 +1,11 @@
+{
+  "built_utc": "2026-07-22T18:15:56+00:00",
+  "status": "RACINGCOM_GRAPHQL_API_KEY_GOVERNANCE_V1_PASS",
+  "env_var": "RACINGCOM_PUBLIC_WIDGET_API_KEY",
+  "observed_public_widget_header_count": 5,
+  "observed_public_widget_key_hash_count": 1,
+  "api_key_value_written": "NO",
+  "env_present_at_build_time": "NO",
+  "production_changed": "NO",
+  "ui_changed": "NO"
+}

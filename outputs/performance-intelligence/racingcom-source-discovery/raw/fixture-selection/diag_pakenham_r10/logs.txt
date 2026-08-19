@@ -1,0 +1,31 @@
+CONSOLE warning Unsatisfied version 0.26.0 from racing-widgets of shared singleton module axios (required ~0.21.1)
+CONSOLE warning ⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+CONSOLE warning ⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+CONSOLE log error:  w: Login required
+    at w.fromPayload (https://www.racing.com/form/js/9502.beead1308ac894f0714d.bundle.js:1:10679)
+    at s (https://www.racing.com/form/js/9502.beead1308ac894f0714d.bundle.js:1:43106)
+    at nrWrapper (https://www.racing.com/form/2026-07-20/southside-pakenham-synthetic/race
+CONSOLE log meetingData.meetUrl vs location.pathname = '2026-07-20/southside-pakenham-synthetic' | '2026-07-20/southside-pakenham-synthetic'
+CONSOLE log meetingData.meetUrl vs location.pathname = '2026-07-20/southside-pakenham-synthetic' | '2026-07-20/southside-pakenham-synthetic'
+CONSOLE log meetingData.meetUrl vs location.pathname = '2026-07-20/southside-pakenham-synthetic' | '2026-07-20/southside-pakenham-synthetic'
+CONSOLE log meetingData.meetUrl vs location.pathname = '2026-07-20/southside-pakenham-synthetic' | '2026-07-20/southside-pakenham-synthetic'
+CONSOLE log meetingData.meetUrl vs location.pathname = '2026-07-20/southside-pakenham-synthetic' | '2026-07-20/southside-pakenham-synthetic'
+CONSOLE log localUserDate 2026-07-22
+CONSOLE warning DefaultComponent -  DCAOveridableThemes  not found.
+CONSOLE warning DefaultComponent -  DCAGoogleAnalytics  not found.
+CONSOLE warning DefaultComponent -  DCAMetadata  not found.
+CONSOLE warning DefaultComponent -  DCALocalNavigation  not found.
+CONSOLE warning DefaultComponent -  RDCWebStoryPlayer  not found.
+CONSOLE log error:  y: Login required
+    at y.fromPayload (https://www.racing.com/form/modules/npm.auth0.cb918d0b7a97f7a0de08.chunk.js:1:10318)
+    at s (https://www.racing.com/form/modules/npm.auth0.cb918d0b7a97f7a0de08.chunk.js:1:39464)
+    at nrWrapper (https://www.racing.com/form/2026-07-20/southside-paken
+CONSOLE log error:  y: Login required
+    at y.fromPayload (https://www.racing.com/form/modules/npm.auth0.cb918d0b7a97f7a0de08.chunk.js:1:10318)
+    at s (https://www.racing.com/form/modules/npm.auth0.cb918d0b7a97f7a0de08.chunk.js:1:39464)
+    at nrWrapper (https://www.racing.com/form/2026-07-20/southside-paken
+CONSOLE log error:  y: Login required
+    at y.fromPayload (https://www.racing.com/form/modules/npm.auth0.cb918d0b7a97f7a0de08.chunk.js:1:10318)
+    at s (https://www.racing.com/form/modules/npm.auth0.cb918d0b7a97f7a0de08.chunk.js:1:39464)
+    at nrWrapper (https://www.racing.com/form/2026-07-20/southside-paken
+CONSOLE log meetingData.meetUrl vs location.pathname = '2026-07-20/southside-pakenham-synthetic' | '2026-07-20/southside-pakenham-synthetic'

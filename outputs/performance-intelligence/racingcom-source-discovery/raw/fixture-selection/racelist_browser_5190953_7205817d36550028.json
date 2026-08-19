@@ -1,0 +1,877 @@
+{
+  "requested_page": "https://www.racing.com/form/2026-07-19/coleraine",
+  "response_url": "https://graphql.rmdprod.racing.com/?query=query%20getRaceNumberList_CD(%24meetCode%3A%20ID!)%20%7B%20getNoCacheRacesForMeet(meetCode%3A%20%24meetCode)%20%7B%20id%20meet%20%7B%20venue%20meetUrl%20meetUrlSegment%20trackMap%20%7D%20raceNumber%20raceStatus%20distance%20time%20name%20nameForm%20trackCondition%20isTrial%20isJumpOut%20trackRating%20trackRecordTime%20trackRecordHorseCode%20trackRecordHorseName%20trackRecordRace%20%7B%20date%20%7D%20condition%20prizeMoney%20totalPrizeMoney%20hasSectionals%20hasTips%20hasSpeedMap%20hasResults%20hasStewards%20hasHistory%20hasSectionals%20hasField%20hasFullForm%20trackCode%20rdcClass%20formRaceEntries%20%7B%20horseName%20position%20winningTime%20standardTimeDifference%20%7D%20toEightHundredMetresSeconds%20standardTimeTo800Difference%20eightHundredToFourHundredMetresSeconds%20standardTime800To400Difference%20fourHundredToFinishMetresSeconds%20standardTime400ToFinishDifference%20raceTime%20standardTimeDifference%20standardTimeId%20stewardsReportUrl%20%7D%20%7D&variables=%7B%22meetCode%22%3A%225190953%22%7D",
+  "payload": {
+    "data": {
+      "getNoCacheRacesForMeet": [
+        {
+          "id": "5450647",
+          "meet": {
+            "venue": "Coleraine",
+            "meetUrl": "https://www.racing.com/form/2026-07-19/coleraine",
+            "meetUrlSegment": "2026-07-19/coleraine",
+            "trackMap": "https://s3-ap-southeast-2.amazonaws.com/racevic.static/trackmaps/COLR.svg"
+          },
+          "raceNumber": 1,
+          "raceStatus": "Paying",
+          "distance": "3300m",
+          "time": "2026-07-19T02:40:00.000Z",
+          "name": "Adam Lindsay Gordon Maiden Hurdle",
+          "nameForm": "MDN HDLE-SW",
+          "trackCondition": "Soft",
+          "isTrial": 0,
+          "isJumpOut": 0,
+          "trackRating": "5",
+          "trackRecordTime": "23579",
+          "trackRecordHorseCode": "566147",
+          "trackRecordHorseName": "Icy Chances (NZ)",
+          "trackRecordRace": {
+            "date": "2007-09-30"
+          },
+          "condition": "Set Weights. Three-Years-Old and Upwards, No sex restriction. Maiden. Apprentices can claim. Track name: Steeple. Track type: Turf. Field limit: 10.",
+          "prizeMoney": [
+            "{\"Position\":1,\"Value\":\"21450.00\"}",
+            "{\"Position\":2,\"Value\":\"6600.00\"}",
+            "{\"Position\":3,\"Value\":\"2970.00\"}",
+            "{\"Position\":4,\"Value\":\"1320.00\"}",
+            "{\"Position\":5,\"Value\":\"660.00\"}",
+            "{\"Position\":6,\"Value\":\"400.00\"}",
+            "{\"Position\":7,\"Value\":\"400.00\"}",
+            "{\"Position\":8,\"Value\":\"400.00\"}",
+            "{\"Position\":9,\"Value\":\"400.00\"}",
+            "{\"Position\":10,\"Value\":\"400.00\"}"
+          ],
+          "totalPrizeMoney": "35000.00",
+          "hasSectionals": false,
+          "hasTips": false,
+          "hasSpeedMap": false,
+          "hasResults": true,
+          "hasStewards": true,
+          "hasHistory": false,
+          "hasField": false,
+          "hasFullForm": false,
+          "trackCode": "830",
+          "rdcClass": "Hurdle",
+          "formRaceEntries": [
+            {
+              "horseName": "Cherokee Brave",
+              "position": 7,
+              "winningTime": "24493",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Embezzler",
+              "position": 1,
+              "winningTime": "24493",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Gripping",
+              "position": 3,
+              "winningTime": "24493",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Highness",
+              "position": 2,
+              "winningTime": "24493",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Mash And Gravy",
+              "position": 100,
+              "winningTime": "24493",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Omeo",
+              "position": 4,
+              "winningTime": "24493",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Shogun Express",
+              "position": 6,
+              "winningTime": "24493",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Step In Time",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Zedwilldo",
+              "position": 8,
+              "winningTime": "24493",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "High Heeled",
+              "position": 5,
+              "winningTime": "24493",
+              "standardTimeDifference": null
+            }
+          ],
+          "toEightHundredMetresSeconds": null,
+          "standardTimeTo800Difference": null,
+          "eightHundredToFourHundredMetresSeconds": 0,
+          "standardTime800To400Difference": null,
+          "fourHundredToFinishMetresSeconds": 0,
+          "standardTime400ToFinishDifference": null,
+          "raceTime": null,
+          "standardTimeDifference": null,
+          "standardTimeId": null,
+          "stewardsReportUrl": "https://cdn.rmdprod.racing.com/RV/stewards/2026-07-19/coleraine/stewardsreports/race-1.htm"
+        },
+        {
+          "id": "5450648",
+          "meet": {
+            "venue": "Coleraine",
+            "meetUrl": "https://www.racing.com/form/2026-07-19/coleraine",
+            "meetUrlSegment": "2026-07-19/coleraine",
+            "trackMap": "https://s3-ap-southeast-2.amazonaws.com/racevic.static/trackmaps/COLR.svg"
+          },
+          "raceNumber": 2,
+          "raceStatus": "Paying",
+          "distance": "3300m",
+          "time": "2026-07-19T03:20:00.000Z",
+          "name": "Hammonds Paints BM115 Coleraine Hurdle",
+          "nameForm": "HDLE",
+          "trackCondition": "Soft",
+          "isTrial": 0,
+          "isJumpOut": 0,
+          "trackRating": "5",
+          "trackRecordTime": null,
+          "trackRecordHorseCode": null,
+          "trackRecordHorseName": null,
+          "trackRecordRace": null,
+          "condition": "Handicap. Three-Years-Old and Upwards, No sex restriction. BenchMark 115. Apprentices can claim. Track name: Main. Track type: Turf. Field limit: 10.",
+          "prizeMoney": [
+            "{\"Position\":1,\"Value\":\"21450.00\"}",
+            "{\"Position\":2,\"Value\":\"6600.00\"}",
+            "{\"Position\":3,\"Value\":\"2970.00\"}",
+            "{\"Position\":4,\"Value\":\"1320.00\"}",
+            "{\"Position\":5,\"Value\":\"660.00\"}",
+            "{\"Position\":6,\"Value\":\"400.00\"}",
+            "{\"Position\":7,\"Value\":\"400.00\"}",
+            "{\"Position\":8,\"Value\":\"400.00\"}",
+            "{\"Position\":9,\"Value\":\"400.00\"}",
+            "{\"Position\":10,\"Value\":\"400.00\"}"
+          ],
+          "totalPrizeMoney": "35000.00",
+          "hasSectionals": false,
+          "hasTips": false,
+          "hasSpeedMap": false,
+          "hasResults": true,
+          "hasStewards": true,
+          "hasHistory": false,
+          "hasField": false,
+          "hasFullForm": false,
+          "trackCode": "97",
+          "rdcClass": "Hurdle",
+          "formRaceEntries": [
+            {
+              "horseName": "Ferago",
+              "position": 3,
+              "winningTime": "24580",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Gambu",
+              "position": 5,
+              "winningTime": "24580",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Flashlight",
+              "position": 2,
+              "winningTime": "24580",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Split",
+              "position": 1,
+              "winningTime": "24580",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Flying Witness",
+              "position": 4,
+              "winningTime": "24580",
+              "standardTimeDifference": null
+            }
+          ],
+          "toEightHundredMetresSeconds": null,
+          "standardTimeTo800Difference": null,
+          "eightHundredToFourHundredMetresSeconds": 0,
+          "standardTime800To400Difference": null,
+          "fourHundredToFinishMetresSeconds": 0,
+          "standardTime400ToFinishDifference": null,
+          "raceTime": null,
+          "standardTimeDifference": null,
+          "standardTimeId": null,
+          "stewardsReportUrl": "https://cdn.rmdprod.racing.com/RV/stewards/2026-07-19/coleraine/stewardsreports/race-2.htm"
+        },
+        {
+          "id": "5450649",
+          "meet": {
+            "venue": "Coleraine",
+            "meetUrl": "https://www.racing.com/form/2026-07-19/coleraine",
+            "meetUrlSegment": "2026-07-19/coleraine",
+            "trackMap": "https://s3-ap-southeast-2.amazonaws.com/racevic.static/trackmaps/COLR.svg"
+          },
+          "raceNumber": 3,
+          "raceStatus": "Paying",
+          "distance": "3600m",
+          "time": "2026-07-19T03:55:00.000Z",
+          "name": "Ecycle Solutions Great Western Steeplechase",
+          "nameForm": "CHASE",
+          "trackCondition": "Soft",
+          "isTrial": 0,
+          "isJumpOut": 0,
+          "trackRating": "5",
+          "trackRecordTime": null,
+          "trackRecordHorseCode": null,
+          "trackRecordHorseName": null,
+          "trackRecordRace": null,
+          "condition": "Handicap. No age restriction, No sex restriction. No class restriction. Apprentices cannot claim. Track name: Steeple. Track type: Turf. Field limit: 10.",
+          "prizeMoney": [
+            "{\"Position\":1,\"Value\":\"37050.00\"}",
+            "{\"Position\":2,\"Value\":\"11400.00\"}",
+            "{\"Position\":3,\"Value\":\"5130.00\"}",
+            "{\"Position\":4,\"Value\":\"2280.00\"}",
+            "{\"Position\":5,\"Value\":\"1140.00\"}",
+            "{\"Position\":6,\"Value\":\"600.00\"}",
+            "{\"Position\":7,\"Value\":\"600.00\"}",
+            "{\"Position\":8,\"Value\":\"600.00\"}",
+            "{\"Position\":9,\"Value\":\"600.00\"}",
+            "{\"Position\":10,\"Value\":\"600.00\"}"
+          ],
+          "totalPrizeMoney": "60000.00",
+          "hasSectionals": false,
+          "hasTips": false,
+          "hasSpeedMap": false,
+          "hasResults": true,
+          "hasStewards": true,
+          "hasHistory": false,
+          "hasField": false,
+          "hasFullForm": false,
+          "trackCode": "830",
+          "rdcClass": "Steeple",
+          "formRaceEntries": [
+            {
+              "horseName": "Bazini",
+              "position": 7,
+              "winningTime": "26082",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Karburan",
+              "position": 101,
+              "winningTime": "26082",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Saint Eustace",
+              "position": 3,
+              "winningTime": "26082",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Not Usual Dream",
+              "position": 6,
+              "winningTime": "26082",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Nightfall",
+              "position": 5,
+              "winningTime": "26082",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Raise The Note",
+              "position": 2,
+              "winningTime": "26082",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Mungerannie",
+              "position": 4,
+              "winningTime": "26082",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Lucky Chance",
+              "position": 1,
+              "winningTime": "26082",
+              "standardTimeDifference": null
+            }
+          ],
+          "toEightHundredMetresSeconds": null,
+          "standardTimeTo800Difference": null,
+          "eightHundredToFourHundredMetresSeconds": 0,
+          "standardTime800To400Difference": null,
+          "fourHundredToFinishMetresSeconds": 0,
+          "standardTime400ToFinishDifference": null,
+          "raceTime": null,
+          "standardTimeDifference": null,
+          "standardTimeId": null,
+          "stewardsReportUrl": "https://cdn.rmdprod.racing.com/RV/stewards/2026-07-19/coleraine/stewardsreports/race-3.htm"
+        },
+        {
+          "id": "5461564",
+          "meet": {
+            "venue": "Coleraine",
+            "meetUrl": "https://www.racing.com/form/2026-07-19/coleraine",
+            "meetUrlSegment": "2026-07-19/coleraine",
+            "trackMap": "https://s3-ap-southeast-2.amazonaws.com/racevic.static/trackmaps/COLR.svg"
+          },
+          "raceNumber": 7,
+          "raceStatus": "Paying",
+          "distance": "2250m",
+          "time": "2026-07-19T06:30:00.000Z",
+          "name": "Springs Tyres BM56 Highweight Handicap",
+          "nameForm": "BM56 HWGT",
+          "trackCondition": "Soft",
+          "isTrial": 0,
+          "isJumpOut": 0,
+          "trackRating": "5",
+          "trackRecordTime": "14160",
+          "trackRecordHorseCode": "258509",
+          "trackRecordHorseName": "Melissa Kay",
+          "trackRecordRace": {
+            "date": null
+          },
+          "condition": "Handicap. No age restriction, No sex restriction. BenchMark 56. Apprentices cannot claim. Track name: Main. Track type: Turf. Field limit: 12.",
+          "prizeMoney": [
+            "{\"Position\":1,\"Value\":\"12100.00\"}",
+            "{\"Position\":2,\"Value\":\"3740.00\"}",
+            "{\"Position\":3,\"Value\":\"1760.00\"}",
+            "{\"Position\":4,\"Value\":\"990.00\"}",
+            "{\"Position\":5,\"Value\":\"660.00\"}",
+            "{\"Position\":6,\"Value\":\"550.00\"}",
+            "{\"Position\":7,\"Value\":\"550.00\"}",
+            "{\"Position\":8,\"Value\":\"550.00\"}",
+            "{\"Position\":9,\"Value\":\"550.00\"}",
+            "{\"Position\":10,\"Value\":\"550.00\"}"
+          ],
+          "totalPrizeMoney": "22000.00",
+          "hasSectionals": true,
+          "hasTips": false,
+          "hasSpeedMap": false,
+          "hasResults": true,
+          "hasStewards": true,
+          "hasHistory": false,
+          "hasField": false,
+          "hasFullForm": false,
+          "trackCode": "97",
+          "rdcClass": "BM 0-57",
+          "formRaceEntries": [
+            {
+              "horseName": "Hula Beat",
+              "position": 8,
+              "winningTime": "14374",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Sadlers Symphony",
+              "position": 1,
+              "winningTime": "14374",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Chartwell House",
+              "position": 11,
+              "winningTime": "14374",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Initial Moment",
+              "position": 10,
+              "winningTime": "14374",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Smokin' Rohie",
+              "position": 2,
+              "winningTime": "14374",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Tulchan",
+              "position": 6,
+              "winningTime": "14374",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Brave Eight",
+              "position": 9,
+              "winningTime": "14374",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Octahedron",
+              "position": 3,
+              "winningTime": "14374",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Circa",
+              "position": 4,
+              "winningTime": "14374",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Turntyne",
+              "position": 5,
+              "winningTime": "14374",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Donam",
+              "position": 7,
+              "winningTime": "14374",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "A Blue Star",
+              "position": 12,
+              "winningTime": "14374",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "El Amigos",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Isosceles",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            }
+          ],
+          "toEightHundredMetresSeconds": 9164,
+          "standardTimeTo800Difference": "+37.44L",
+          "eightHundredToFourHundredMetresSeconds": 2510,
+          "standardTime800To400Difference": "-6.72L",
+          "fourHundredToFinishMetresSeconds": 2520,
+          "standardTime400ToFinishDifference": "-0.48L",
+          "raceTime": "2:23.74",
+          "standardTimeDifference": "+19.38L",
+          "standardTimeId": "97_Soft_2250_All",
+          "stewardsReportUrl": "https://cdn.rmdprod.racing.com/RV/stewards/2026-07-19/coleraine/stewardsreports/race-7.htm"
+        },
+        {
+          "id": "5461565",
+          "meet": {
+            "venue": "Coleraine",
+            "meetUrl": "https://www.racing.com/form/2026-07-19/coleraine",
+            "meetUrlSegment": "2026-07-19/coleraine",
+            "trackMap": "https://s3-ap-southeast-2.amazonaws.com/racevic.static/trackmaps/COLR.svg"
+          },
+          "raceNumber": 6,
+          "raceStatus": "Paying",
+          "distance": "1300m",
+          "time": "2026-07-19T05:50:00.000Z",
+          "name": "Josh Lewis Accounting BM56 Highweight Handicap",
+          "nameForm": "BM56 HWGT",
+          "trackCondition": "Soft",
+          "isTrial": 0,
+          "isJumpOut": 0,
+          "trackRating": "5",
+          "trackRecordTime": "7745",
+          "trackRecordHorseCode": "5309315",
+          "trackRecordHorseName": "He's Godspeed",
+          "trackRecordRace": {
+            "date": "2024-09-27"
+          },
+          "condition": "Handicap. No age restriction, No sex restriction. BenchMark 56. Apprentices cannot claim. Track name: Main. Track type: Turf. Field limit: 12.",
+          "prizeMoney": [
+            "{\"Position\":1,\"Value\":\"12100.00\"}",
+            "{\"Position\":2,\"Value\":\"3740.00\"}",
+            "{\"Position\":3,\"Value\":\"1760.00\"}",
+            "{\"Position\":4,\"Value\":\"990.00\"}",
+            "{\"Position\":5,\"Value\":\"660.00\"}",
+            "{\"Position\":6,\"Value\":\"550.00\"}",
+            "{\"Position\":7,\"Value\":\"550.00\"}",
+            "{\"Position\":8,\"Value\":\"550.00\"}",
+            "{\"Position\":9,\"Value\":\"550.00\"}",
+            "{\"Position\":10,\"Value\":\"550.00\"}"
+          ],
+          "totalPrizeMoney": "22000.00",
+          "hasSectionals": true,
+          "hasTips": false,
+          "hasSpeedMap": false,
+          "hasResults": true,
+          "hasStewards": true,
+          "hasHistory": false,
+          "hasField": false,
+          "hasFullForm": false,
+          "trackCode": "97",
+          "rdcClass": "BM 0-57",
+          "formRaceEntries": [
+            {
+              "horseName": "Powering Away",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Darts Daly",
+              "position": 3,
+              "winningTime": "7931",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Royal Inference",
+              "position": 10,
+              "winningTime": "7931",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Mosquito Award",
+              "position": 4,
+              "winningTime": "7931",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Thinking Sensation",
+              "position": 1,
+              "winningTime": "7931",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Matrooshi",
+              "position": 5,
+              "winningTime": "7931",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Hot Stepping Hippy",
+              "position": 9,
+              "winningTime": "7931",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Elphaba",
+              "position": 7,
+              "winningTime": "7931",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Chica Con Suerte",
+              "position": 11,
+              "winningTime": "7931",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Coastal Whispers",
+              "position": 12,
+              "winningTime": "7931",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Irish Bliss",
+              "position": 8,
+              "winningTime": "7931",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "State Of Maine",
+              "position": 2,
+              "winningTime": "7931",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Cortain",
+              "position": 6,
+              "winningTime": "7931",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Smart Elissim",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Drover's Yarn",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            }
+          ],
+          "toEightHundredMetresSeconds": 3269,
+          "standardTimeTo800Difference": "-1.8L",
+          "eightHundredToFourHundredMetresSeconds": 2246,
+          "standardTime800To400Difference": "+6.72L",
+          "fourHundredToFinishMetresSeconds": 2394,
+          "standardTime400ToFinishDifference": "+1.56L",
+          "raceTime": "1:19.34",
+          "standardTimeDifference": "+5.04L",
+          "standardTimeId": "97_Soft_1300_All",
+          "stewardsReportUrl": "https://cdn.rmdprod.racing.com/RV/stewards/2026-07-19/coleraine/stewardsreports/race-6.htm"
+        },
+        {
+          "id": "5461566",
+          "meet": {
+            "venue": "Coleraine",
+            "meetUrl": "https://www.racing.com/form/2026-07-19/coleraine",
+            "meetUrlSegment": "2026-07-19/coleraine",
+            "trackMap": "https://s3-ap-southeast-2.amazonaws.com/racevic.static/trackmaps/COLR.svg"
+          },
+          "raceNumber": 4,
+          "raceStatus": "Paying",
+          "distance": "1600m",
+          "time": "2026-07-19T04:30:00.000Z",
+          "name": "Southern Grampians Livestock and Real Estate Maiden Plate Highweight",
+          "nameForm": "MDN-HWGT",
+          "trackCondition": "Soft",
+          "isTrial": 0,
+          "isJumpOut": 0,
+          "trackRating": "5",
+          "trackRecordTime": "9600",
+          "trackRecordHorseCode": "524327",
+          "trackRecordHorseName": "Lushain",
+          "trackRecordRace": {
+            "date": null
+          },
+          "condition": "Set Weights. No age restriction, No sex restriction. Maiden. Apprentices cannot claim. Track name: Main. Track type: Turf. Field limit: 12.",
+          "prizeMoney": [
+            "{\"Position\":1,\"Value\":\"17600.00\"}",
+            "{\"Position\":2,\"Value\":\"5760.00\"}",
+            "{\"Position\":3,\"Value\":\"2880.00\"}",
+            "{\"Position\":4,\"Value\":\"1600.00\"}",
+            "{\"Position\":5,\"Value\":\"960.00\"}",
+            "{\"Position\":6,\"Value\":\"640.00\"}",
+            "{\"Position\":7,\"Value\":\"640.00\"}",
+            "{\"Position\":8,\"Value\":\"640.00\"}",
+            "{\"Position\":9,\"Value\":\"640.00\"}",
+            "{\"Position\":10,\"Value\":\"640.00\"}"
+          ],
+          "totalPrizeMoney": "32000.00",
+          "hasSectionals": true,
+          "hasTips": false,
+          "hasSpeedMap": false,
+          "hasResults": true,
+          "hasStewards": true,
+          "hasHistory": false,
+          "hasField": false,
+          "hasFullForm": false,
+          "trackCode": "97",
+          "rdcClass": "Maiden",
+          "formRaceEntries": [
+            {
+              "horseName": "Ask The Captain",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Flying Shelby",
+              "position": 1,
+              "winningTime": "9925",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Helter Peltzer",
+              "position": 4,
+              "winningTime": "9925",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Hemi Two Barrell",
+              "position": 5,
+              "winningTime": "9925",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Knucklehead",
+              "position": 3,
+              "winningTime": "9925",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Tilzattack",
+              "position": 9,
+              "winningTime": "9925",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "War No More",
+              "position": 6,
+              "winningTime": "9925",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "French Court",
+              "position": 8,
+              "winningTime": "9925",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Gasoline Rainbow",
+              "position": 2,
+              "winningTime": "9925",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Our Little Cracker",
+              "position": 7,
+              "winningTime": "9925",
+              "standardTimeDifference": null
+            }
+          ],
+          "toEightHundredMetresSeconds": 5010,
+          "standardTimeTo800Difference": "-0.54L",
+          "eightHundredToFourHundredMetresSeconds": 2366,
+          "standardTime800To400Difference": "+4.02L",
+          "fourHundredToFinishMetresSeconds": 2502,
+          "standardTime400ToFinishDifference": "-1.2L",
+          "raceTime": "1:39.28",
+          "standardTimeDifference": "-0.78L",
+          "standardTimeId": "97_Soft_1600_All",
+          "stewardsReportUrl": "https://cdn.rmdprod.racing.com/RV/stewards/2026-07-19/coleraine/stewardsreports/race-4.htm"
+        },
+        {
+          "id": "5461567",
+          "meet": {
+            "venue": "Coleraine",
+            "meetUrl": "https://www.racing.com/form/2026-07-19/coleraine",
+            "meetUrlSegment": "2026-07-19/coleraine",
+            "trackMap": "https://s3-ap-southeast-2.amazonaws.com/racevic.static/trackmaps/COLR.svg"
+          },
+          "raceNumber": 5,
+          "raceStatus": "Paying",
+          "distance": "1300m",
+          "time": "2026-07-19T05:10:00.000Z",
+          "name": "Vickery Bros Maiden Plate Highweight",
+          "nameForm": "MDN-HWGT",
+          "trackCondition": "Soft",
+          "isTrial": 0,
+          "isJumpOut": 0,
+          "trackRating": "5",
+          "trackRecordTime": "7745",
+          "trackRecordHorseCode": "5309315",
+          "trackRecordHorseName": "He's Godspeed",
+          "trackRecordRace": {
+            "date": "2024-09-27"
+          },
+          "condition": "Set Weights. No age restriction, No sex restriction. Maiden. Apprentices cannot claim. Track name: Main. Track type: Turf. Field limit: 12.",
+          "prizeMoney": [
+            "{\"Position\":1,\"Value\":\"17600.00\"}",
+            "{\"Position\":2,\"Value\":\"5760.00\"}",
+            "{\"Position\":3,\"Value\":\"2880.00\"}",
+            "{\"Position\":4,\"Value\":\"1600.00\"}",
+            "{\"Position\":5,\"Value\":\"960.00\"}",
+            "{\"Position\":6,\"Value\":\"640.00\"}",
+            "{\"Position\":7,\"Value\":\"640.00\"}",
+            "{\"Position\":8,\"Value\":\"640.00\"}",
+            "{\"Position\":9,\"Value\":\"640.00\"}",
+            "{\"Position\":10,\"Value\":\"640.00\"}"
+          ],
+          "totalPrizeMoney": "32000.00",
+          "hasSectionals": true,
+          "hasTips": false,
+          "hasSpeedMap": false,
+          "hasResults": true,
+          "hasStewards": true,
+          "hasHistory": false,
+          "hasField": false,
+          "hasFullForm": false,
+          "trackCode": "97",
+          "rdcClass": "Maiden",
+          "formRaceEntries": [
+            {
+              "horseName": "Aqua Storm",
+              "position": 1,
+              "winningTime": "7973",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Atomic Tommy",
+              "position": 8,
+              "winningTime": "7973",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Back Of The Boat",
+              "position": 4,
+              "winningTime": "7973",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Chercover's Award",
+              "position": 9,
+              "winningTime": "7973",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Daniel Boone",
+              "position": 2,
+              "winningTime": "7973",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Granite Hill",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Keepy Uppy",
+              "position": 5,
+              "winningTime": "7973",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Seeing Red",
+              "position": 10,
+              "winningTime": "7973",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Tamwood",
+              "position": 3,
+              "winningTime": "7973",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "The Noble Steed",
+              "position": 7,
+              "winningTime": "7973",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Flying Nic",
+              "position": 6,
+              "winningTime": "7973",
+              "standardTimeDifference": null
+            },
+            {
+              "horseName": "Monsoon Indi",
+              "position": 109,
+              "winningTime": null,
+              "standardTimeDifference": null
+            }
+          ],
+          "toEightHundredMetresSeconds": 3232,
+          "standardTimeTo800Difference": "+0.42L",
+          "eightHundredToFourHundredMetresSeconds": 2272,
+          "standardTime800To400Difference": "+5.16L",
+          "fourHundredToFinishMetresSeconds": 2374,
+          "standardTime400ToFinishDifference": "+2.76L",
+          "raceTime": "1:19.66",
+          "standardTimeDifference": "+3.12L",
+          "standardTimeId": "97_Soft_1300_All",
+          "stewardsReportUrl": "https://cdn.rmdprod.racing.com/RV/stewards/2026-07-19/coleraine/stewardsreports/race-5.htm"
+        }
+      ]
+    }
+  }
+}

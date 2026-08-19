@@ -1,0 +1,13 @@
+{
+  "races_requested": 1,
+  "races_200": 0,
+  "races_with_sectionals": 0,
+  "horses_received": 0,
+  "split_rows_received": 0,
+  "split_rows_valid": 0,
+  "split_rows_rejected": 0,
+  "identity_failures": 0,
+  "unit_failures": 0,
+  "schema_failures": 3,
+  "canonical_rows_promoted": 0
+}

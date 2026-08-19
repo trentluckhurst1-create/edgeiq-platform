@@ -1,0 +1,269 @@
+/* EDGEiQ Branded Home UI V3 */
+
+:root {
+  --edge-bg: #020814;
+  --edge-panel: #07111d;
+  --edge-panel-soft: rgba(7,17,29,.72);
+  --edge-border: rgba(87,129,166,.26);
+  --edge-text: #f8fbff;
+  --edge-muted: #99a8ba;
+  --edge-accent: #2bd3ff;
+  --edge-blue: #2e86ff;
+  --edge-green: #61f08b;
+  --edge-gold: #ffcd4d;
+  --edge-orange: #ff8b2b;
+}
+
+body {
+  background:
+    radial-gradient(circle at 30% 8%, rgba(39,147,255,.14), transparent 28rem),
+    radial-gradient(circle at 72% 18%, rgba(43,211,255,.08), transparent 30rem),
+    #020814 !important;
+}
+
+.edgeiq-home,
+.product-home,
+.home-view,
+[class*="home"] {
+  max-width: 1380px !important;
+  margin: 0 auto !important;
+  padding: 28px 36px 58px !important;
+}
+
+/* Premium top brand feel */
+[class*="home"]::before {
+  content: "EDGEiQ";
+  position: fixed;
+  top: 30px;
+  left: 44px;
+  z-index: 20;
+  color: var(--edge-text);
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: .03em;
+}
+
+[class*="home"]::after {
+  content: "RACING INTELLIGENCE PLATFORM";
+  position: fixed;
+  top: 62px;
+  left: 45px;
+  z-index: 20;
+  color: var(--edge-muted);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .24em;
+}
+
+/* Hero + status should feel like one polished product masthead */
+[class*="home"] > section:first-of-type,
+[class*="hero"] {
+  margin-top: 72px !important;
+}
+
+.edgeiq-hero,
+.product-hero,
+[class*="hero"] {
+  position: relative !important;
+  max-width: 620px !important;
+  padding: 62px 0 38px !important;
+  margin: 0 !important;
+  text-align: center !important;
+  background: transparent !important;
+  border: 0 !important;
+}
+
+.edgeiq-hero h1,
+.product-hero h1,
+[class*="hero"] h1 {
+  position: relative !important;
+  font-size: clamp(58px, 6.6vw, 88px) !important;
+  letter-spacing: -0.065em !important;
+  line-height: .9 !important;
+  margin: 0 0 14px !important;
+}
+
+.edgeiq-hero h1::before,
+.product-hero h1::before,
+[class*="hero"] h1::before {
+  content: "E";
+  display: block;
+  width: 84px;
+  height: 58px;
+  margin: 0 auto 16px;
+  border-radius: 14px 4px 14px 4px;
+  background: linear-gradient(135deg, var(--edge-blue), var(--edge-accent));
+  color: #02101d;
+  font-size: 46px;
+  font-weight: 1000;
+  line-height: 58px;
+  transform: skewX(-14deg);
+  box-shadow: 0 0 34px rgba(43,211,255,.28);
+}
+
+.edgeiq-hero h2,
+.edgeiq-hero h3,
+.product-hero h2,
+.product-hero h3,
+[class*="hero"] h2,
+[class*="hero"] h3 {
+  color: var(--edge-accent) !important;
+  font-size: clamp(18px, 2vw, 24px) !important;
+  letter-spacing: .20em !important;
+  text-transform: uppercase !important;
+  margin-bottom: 16px !important;
+}
+
+.edgeiq-hero p,
+.product-hero p,
+[class*="hero"] p {
+  max-width: 520px !important;
+  font-size: 15px !important;
+  line-height: 1.45 !important;
+  color: #d4deea !important;
+}
+
+/* Buttons */
+button,
+.edgeiq-button,
+.product-button,
+[class*="button"] {
+  min-height: 42px !important;
+  padding: 0 22px !important;
+  border-radius: 8px !important;
+  font-size: 12px !important;
+  letter-spacing: .08em !important;
+}
+
+button:first-of-type {
+  background: linear-gradient(135deg, #1eb8e8, #2bd3ff) !important;
+  color: #03111d !important;
+  border-color: transparent !important;
+  box-shadow: 0 0 24px rgba(43,211,255,.18);
+}
+
+/* Make status a clean horizontal product row */
+[class*="operational"] {
+  background: transparent !important;
+  border: 0 !important;
+  padding: 0 !important;
+  margin: 0 0 46px auto !important;
+  max-width: 610px !important;
+}
+
+[class*="operational"] h2,
+[class*="operational"] h3 {
+  color: var(--edge-text) !important;
+  text-align: left !important;
+  font-size: 13px !important;
+  letter-spacing: .12em !important;
+  border-bottom: 1px solid rgba(43,211,255,.25);
+  padding-bottom: 12px;
+}
+
+[class*="operational"] > div,
+[class*="status-grid"] {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 14px !important;
+}
+
+[class*="operational"] [class*="card"],
+[class*="status-card"] {
+  min-width: 0 !important;
+  min-height: 116px !important;
+  border-radius: 12px !important;
+  padding: 18px 12px !important;
+  background: linear-gradient(180deg, rgba(9,22,37,.88), rgba(5,12,22,.82)) !important;
+  text-align: center !important;
+}
+
+[class*="status-card"] h4,
+[class*="operational"] [class*="card"] h4 {
+  font-size: 11px !important;
+  margin-bottom: 6px !important;
+}
+
+[class*="status-card"] p,
+[class*="operational"] [class*="card"] p {
+  display: block !important;
+  font-size: 11px !important;
+  color: var(--edge-muted) !important;
+}
+
+/* Cards */
+[class*="card"] {
+  border: 1px solid var(--edge-border) !important;
+  background: linear-gradient(180deg, rgba(9,22,37,.82), rgba(5,12,22,.74)) !important;
+  border-radius: 12px !important;
+}
+
+[class*="card"]:hover {
+  border-color: rgba(43,211,255,.45) !important;
+  transform: translateY(-1px);
+}
+
+/* Meeting cards */
+[class*="meeting"] [class*="card"] {
+  min-height: 150px !important;
+  padding: 22px !important;
+}
+
+[class*="meeting"] h2,
+[class*="meeting"] h3 {
+  font-size: 22px !important;
+  text-align: left !important;
+}
+
+[class*="meeting"] [class*="card"] > div {
+  border: 0 !important;
+  background: transparent !important;
+}
+
+/* Feature cards */
+[class*="reads"] [class*="card"],
+[class*="feature"] [class*="card"] {
+  min-height: 150px !important;
+  text-align: left !important;
+}
+
+[class*="reads"] [class*="card"]::before,
+[class*="feature"] [class*="card"]::before {
+  content: "◌";
+  display: block;
+  color: var(--edge-accent);
+  font-size: 32px;
+  line-height: 1;
+  margin-bottom: 14px;
+}
+
+[class*="home"] section {
+  margin-bottom: 46px !important;
+}
+
+@media (min-width: 980px) {
+  [class*="home"] > section:first-of-type {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) 610px !important;
+    gap: 76px !important;
+    align-items: center !important;
+  }
+
+  [class*="meetings"] {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 16px !important;
+  }
+}
+
+@media (max-width: 980px) {
+  [class*="home"]::before,
+  [class*="home"]::after {
+    display: none;
+  }
+
+  [class*="operational"] > div,
+  [class*="status-grid"] {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}

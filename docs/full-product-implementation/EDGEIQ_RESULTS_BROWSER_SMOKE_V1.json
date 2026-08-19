@@ -1,0 +1,24 @@
+{
+  "workspace": "RESULTS",
+  "url": "http://127.0.0.1:5176/",
+  "context": "Global Results using selected meeting context",
+  "checks": {
+    "hasResultsWorkspace": true,
+    "hasRaceResults": true,
+    "hasOfficialElapsedTime": false,
+    "hasCertaintyLabel": false,
+    "hasReplay": false,
+    "hasRawTiming": false,
+    "bodyBackground": "rgb(255, 255, 255)"
+  },
+  "screenshot": {
+    "status": "BLOCKED",
+    "reason": "in-app browser tab binding does not expose playwright.screenshot"
+  },
+  "visibleEvidence": [
+    "RESULTS",
+    "Meeting Results",
+    "Race Results",
+    "RACE TIME WINNER JOCKEY TRAINER SP MARGIN TRACK STEWARDS DETAILS"
+  ]
+}

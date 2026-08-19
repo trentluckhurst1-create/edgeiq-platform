@@ -1,0 +1,1723 @@
+{
+  "step": "STEP201 Repository Census Quality Profile",
+  "generated_utc": "2026-07-27T18:04:15.145223+00:00",
+  "census_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\performance-intelligence-discovery\\STEP201_REPOSITORY_CENSUS.csv",
+  "total_assets": 18692,
+  "weak_candidate_assets": 10306,
+  "suspect_path_assets": 14449,
+  "combined_review_candidates": 16330,
+  "duplicate_name_groups": 4186,
+  "duplicate_name_rows": 14099,
+  "signal_strength": [
+    {
+      "value": "WEAK_ONLY",
+      "count": 10233
+    },
+    {
+      "value": "STRONG",
+      "count": 8032
+    },
+    {
+      "value": "MULTI_SIGNAL",
+      "count": 354
+    },
+    {
+      "value": "SINGLE_SIGNAL",
+      "count": 73
+    }
+  ],
+  "asset_types": [
+    {
+      "value": "Source",
+      "count": 5307
+    },
+    {
+      "value": "Builder",
+      "count": 4763
+    },
+    {
+      "value": "Dataset",
+      "count": 4442
+    },
+    {
+      "value": "Audit",
+      "count": 2763
+    },
+    {
+      "value": "Other",
+      "count": 825
+    },
+    {
+      "value": "Documentation",
+      "count": 428
+    },
+    {
+      "value": "Specification",
+      "count": 85
+    },
+    {
+      "value": "Contract",
+      "count": 64
+    },
+    {
+      "value": "Validation",
+      "count": 15
+    }
+  ],
+  "statuses": [
+    {
+      "value": "Active",
+      "count": 10020
+    },
+    {
+      "value": "Unknown",
+      "count": 8216
+    },
+    {
+      "value": "Legacy",
+      "count": 456
+    }
+  ],
+  "top_level_paths": [
+    {
+      "value": "checkpoints",
+      "count": 7256
+    },
+    {
+      "value": "docs",
+      "count": 4301
+    },
+    {
+      "value": "scripts",
+      "count": 2359
+    },
+    {
+      "value": "outputs",
+      "count": 1860
+    },
+    {
+      "value": "public",
+      "count": 1538
+    },
+    {
+      "value": "src",
+      "count": 672
+    },
+    {
+      "value": "data",
+      "count": 336
+    },
+    {
+      "value": "_archive_pre_git_commit",
+      "count": 313
+    },
+    {
+      "value": "contracts",
+      "count": 41
+    },
+    {
+      "value": "config",
+      "count": 10
+    },
+    {
+      "value": "EDGEIQ_CURRENT_STRUCTURE_AUDIT.txt",
+      "count": 1
+    },
+    {
+      "value": "EDGEIQ_RACEBOOK_SPRINT10A_SOURCE_AUDIT.txt",
+      "count": 1
+    },
+    {
+      "value": "EDGEIQ_THREE_DAY_AND_WEATHER_WIRING_AUDIT_20260710_121213.txt",
+      "count": 1
+    },
+    {
+      "value": "build_edgeiq_identity_repository_profiler_v1.py",
+      "count": 1
+    },
+    {
+      "value": "package-lock.json",
+      "count": 1
+    },
+    {
+      "value": "EDGEIQ_FINAL_MEETING_WIRING_SOURCE_20260710_121543.txt",
+      "count": 1
+    }
+  ],
+  "second_level_paths": [
+    {
+      "value": "checkpoints/EDGEIQ_BEFORE_FINAL_LIVE_DATA_POPULATION_20260720_101414",
+      "count": 6629
+    },
+    {
+      "value": "docs/full-product-implementation",
+      "count": 2747
+    },
+    {
+      "value": "public/data",
+      "count": 1534
+    },
+    {
+      "value": "docs/performance-intelligence",
+      "count": 1334
+    },
+    {
+      "value": "outputs/performance-intelligence",
+      "count": 1245
+    },
+    {
+      "value": "outputs/sectionals",
+      "count": 615
+    },
+    {
+      "value": "src/edgeiq-os",
+      "count": 372
+    },
+    {
+      "value": "_archive_pre_git_commit/src_checkpoints",
+      "count": 313
+    },
+    {
+      "value": "data/weather",
+      "count": 239
+    },
+    {
+      "value": "src/components",
+      "count": 170
+    },
+    {
+      "value": "docs/beta-specifications",
+      "count": 64
+    },
+    {
+      "value": "data/weather-source-audit",
+      "count": 58
+    },
+    {
+      "value": "checkpoints/edgeiq_current_app_data_recovery_lock_v1_20260715_203606",
+      "count": 56
+    },
+    {
+      "value": "checkpoints/edgeiq_current_app_data_recovery_lock_v1_20260715_204853",
+      "count": 56
+    },
+    {
+      "value": "checkpoints/edgeiq_current_app_data_recovery_lock_v1_20260715_210154",
+      "count": 56
+    },
+    {
+      "value": "checkpoints/edgeiq_current_app_data_recovery_lock_v1_20260715_210656",
+      "count": 56
+    },
+    {
+      "value": "docs/product-specification",
+      "count": 49
+    },
+    {
+      "value": "docs/operations-readiness",
+      "count": 48
+    },
+    {
+      "value": "checkpoints/edgeiq_engineering_specification_library_v1_20260712T072317Z",
+      "count": 48
+    },
+    {
+      "value": "scripts/performance-intelligence",
+      "count": 43
+    },
+    {
+      "value": "contracts/performance-intelligence",
+      "count": 41
+    },
+    {
+      "value": "data/market",
+      "count": 36
+    },
+    {
+      "value": "checkpoints/edgeiq_beta_readiness_lock_20260715_151703",
+      "count": 30
+    },
+    {
+      "value": "checkpoints/edgeiq_beta_readiness_lock_20260715_145728",
+      "count": 27
+    },
+    {
+      "value": "checkpoints/edgeiq_meeting_tabs_beta_lock_v1_20260715_124142",
+      "count": 22
+    },
+    {
+      "value": "checkpoints/edgeiq_final_beta_consolidation_v1_20260713_225351",
+      "count": 18
+    },
+    {
+      "value": "checkpoints/edgeiq_final_beta_consolidation_v1_20260713_225713",
+      "count": 18
+    },
+    {
+      "value": "checkpoints/edgeiq_final_beta_consolidation_v1_20260714_024028",
+      "count": 18
+    },
+    {
+      "value": "src/terminal",
+      "count": 18
+    },
+    {
+      "value": "src/services",
+      "count": 17
+    },
+    {
+      "value": "checkpoints/edgeiq_light_repair_v1_20260712T013207Z",
+      "count": 16
+    },
+    {
+      "value": "docs/weather-intelligence",
+      "count": 16
+    },
+    {
+      "value": "checkpoints/edgeiq_beta_readiness_preflight_20260715_134036",
+      "count": 14
+    },
+    {
+      "value": "checkpoints/edgeiq_beta_intelligence_completion_v1_20260712_054719",
+      "count": 13
+    },
+    {
+      "value": "checkpoints/EDGEIQ_BEFORE_FORM_GUIDE_FINAL_LOCKED_REBUILD_20260720_144952",
+      "count": 13
+    },
+    {
+      "value": "checkpoints/edgeiq_ui_polish_lock_v1_20260714_074520",
+      "count": 12
+    },
+    {
+      "value": "checkpoints/edgeiq_light_design_epi_map_v1_20260711T224718Z",
+      "count": 11
+    },
+    {
+      "value": "docs/engineering",
+      "count": 9
+    },
+    {
+      "value": "checkpoints/edgeiq_live_on_track_weather_ingestion_v1_20260714_063044",
+      "count": 9
+    },
+    {
+      "value": "config/performance-intelligence",
+      "count": 9
+    },
+    {
+      "value": "checkpoints/edgeiq_meeting_detail_engineering_build_v1_20260713_044406",
+      "count": 7
+    },
+    {
+      "value": "docs/market-intelligence",
+      "count": 7
+    },
+    {
+      "value": "checkpoints/edgeiq_form_guide_engineering_build_v1_20260713_033414",
+      "count": 7
+    },
+    {
+      "value": "checkpoints/edgeiq_meetings_engineering_build_v1_20260713_031134",
+      "count": 7
+    },
+    {
+      "value": "checkpoints/edgeiq_scratchings_engineering_build_v1_20260713_164018",
+      "count": 6
+    },
+    {
+      "value": "checkpoints/edgeiq_post_weather_v12_preservation_20260714_080717",
+      "count": 6
+    },
+    {
+      "value": "src/utils",
+      "count": 6
+    },
+    {
+      "value": "checkpoints/edgeiq_results_engineering_build_v1_20260713_220456",
+      "count": 5
+    },
+    {
+      "value": "docs/product-maturity",
+      "count": 5
+    },
+    {
+      "value": "src/config",
+      "count": 5
+    },
+    {
+      "value": "checkpoints/edgeiq_current_speed_projection_v1_20260711_203312",
+      "count": 4
+    },
+    {
+      "value": "docs/product-unification",
+      "count": 4
+    },
+    {
+      "value": "src/screens",
+      "count": 4
+    },
+    {
+      "value": "src/types",
+      "count": 4
+    },
+    {
+      "value": "checkpoints/edgeiq_gear_changes_governed_data_completion_v1_20260714_052022",
+      "count": 3
+    },
+    {
+      "value": "checkpoints/edgeiq_form_guide_v2_1_20260710_175833",
+      "count": 3
+    },
+    {
+      "value": "checkpoints/edgeiq_meeting_races_final_polish_v2_20260715_111407",
+      "count": 3
+    },
+    {
+      "value": "checkpoints/edgeiq_meeting_races_final_polish_v2_20260715_111721",
+      "count": 3
+    },
+    {
+      "value": "checkpoints/edgeiq_beta_readiness_before_feed_refresh_20260715_150213",
+      "count": 3
+    },
+    {
+      "value": "data/weather-source-live",
+      "count": 3
+    },
+    {
+      "value": "checkpoints/edgeiq_meeting_workspace_v1_20260712T040037Z",
+      "count": 3
+    },
+    {
+      "value": "checkpoints/edgeiq_market_engineering_build_v1_20260714_000707",
+      "count": 3
+    },
+    {
+      "value": "checkpoints/edgeiq_recent_workspace_regression_fixes_v1_20260715_113229",
+      "count": 3
+    },
+    {
+      "value": "src/tabs",
+      "count": 3
+    },
+    {
+      "value": "checkpoints/edgeiq_weather_source_candidate_audit_v1_20260714_060125",
+      "count": 2
+    },
+    {
+      "value": "public/performance-intelligence",
+      "count": 2
+    },
+    {
+      "value": "checkpoints/edgeiq_three_day_window_refresh_20260714_130145",
+      "count": 2
+    },
+    {
+      "value": "checkpoints/edgeiq_epi_workspace_engineering_build_v1_20260714_023010",
+      "count": 2
+    },
+    {
+      "value": "src/data",
+      "count": 2
+    },
+    {
+      "value": "public/assets",
+      "count": 2
+    },
+    {
+      "value": "checkpoints/edgeiq_gear_changes_engineering_build_v1_20260713_185749",
+      "count": 2
+    },
+    {
+      "value": "checkpoints/edgeiq_weather_engineering_build_v1_20260713_210047",
+      "count": 2
+    },
+    {
+      "value": "checkpoints/edgeiq_scratchings_final_user_cleanup_v1_20260715_043951",
+      "count": 2
+    },
+    {
+      "value": "checkpoints/edgeiq_track_weather_user_cleanup_v1_20260715_061119",
+      "count": 2
+    },
+    {
+      "value": "checkpoints/edgeiq_meetings_pipeline_trace_v1_20260714_130635",
+      "count": 2
+    },
+    {
+      "value": "checkpoints/edgeiq_meetings_post_recovery_cleanup_20260714_131653",
+      "count": 2
+    },
+    {
+      "value": "src/lib",
+      "count": 2
+    },
+    {
+      "value": "scripts/audit_edgeiq_campaign_frontend_join_v1.py",
+      "count": 1
+    },
+    {
+      "value": "scripts/audit_edgeiq_connection_render_state_v1.py",
+      "count": 1
+    },
+    {
+      "value": "scripts/audit_edgeiq_dna_frontend_join_v1.py",
+      "count": 1
+    },
+    {
+      "value": "scripts/audit_edgeiq_field_size_corruption_chain_v1.py",
+      "count": 1
+    },
+    {
+      "value": "scripts/audit_edgeiq_market_vs_v7_tab_benchmark_v1.py",
+      "count": 1
+    },
+    {
+      "value": "scripts/audit_edgeiq_pricing_replay_v3_2_evaluation.py",
+      "count": 1
+    },
+    {
+      "value": "scripts/audit_edgeiq_race_status_safety_v1.py",
+      "count": 1
+    },
+    {
+      "value": "scripts/audit_edgeiq_saddlecloth_order_v1.py",
+      "count": 1
+    },
+    {
+      "value": "scripts/audit_racingcom_rendered_speed_data_meeting_types_v1.py",
+      "count": 1
+    },
+    {
+      "value": "scripts/audit_edgeiq_current_product_data_completion_v1.py",
+      "count": 1
+    },
+    {
+      "value": "docs/builder_integrity_audit_v1.txt",
+      "count": 1
+    },
+    {
+      "value": "docs/meeting_universe_pipeline_audit_v1.txt",
+      "count": 1
+    },
+    {
+      "value": "scripts/audit_edgeiq_full_product_population_v1.py",
+      "count": 1
+    },
+    {
+      "value": "docs/current_runner_ingestion_chain_audit_v1.txt",
+      "count": 1
+    },
+    {
+      "value": "scripts/audit_edgeiq_current_identity_matching_v1.py",
+      "count": 1
+    },
+    {
+      "value": "scripts/audit_edgeiq_current_product_data_completion_v1_light.py",
+      "count": 1
+    },
+    {
+      "value": "scripts/audit_edgeiq_current_intelligence_v1_1.py",
+      "count": 1
+    },
+    {
+      "value": "scripts/audit_edgeiq_form_guide_v3_4_engine_wiring.py",
+      "count": 1
+    },
+    {
+      "value": "scripts/audit_edgeiq_current_speed_projection_v1.py",
+      "count": 1
+    },
+    {
+      "value": "scripts/audit_edgeiq_current_speed_projection_v1_CHECKPOINT_BEFORE_BETA_COMPLETION_20260712_064326.py",
+      "count": 1
+    },
+    {
+      "value": "scripts/audit_edgeiq_current_intelligence_pipeline_v1.py",
+      "count": 1
+    },
+    {
+      "value": "scripts/audit_edgeiq_current_intelligence_pipeline_v1_CHECKPOINT_BEFORE_LATE_SPEED_AUDIT_SOURCE_20260711_163041.py",
+      "count": 1
+    },
+    {
+      "value": "scripts/audit_edgeiq_horse_performance_rating_row_funnel_v1.py",
+      "count": 1
+    }
+  ],
+  "extensions": [
+    {
+      "value": ".py",
+      "count": 8119
+    },
+    {
+      "value": ".tsx",
+      "count": 2413
+    },
+    {
+      "value": ".json",
+      "count": 2233
+    },
+    {
+      "value": ".csv",
+      "count": 2207
+    },
+    {
+      "value": ".txt",
+      "count": 1295
+    },
+    {
+      "value": ".js",
+      "count": 980
+    },
+    {
+      "value": ".md",
+      "count": 640
+    },
+    {
+      "value": ".ts",
+      "count": 638
+    },
+    {
+      "value": ".ps1",
+      "count": 159
+    },
+    {
+      "value": ".jsx",
+      "count": 6
+    },
+    {
+      "value": ".sqlite",
+      "count": 2
+    }
+  ],
+  "keywords": [
+    {
+      "value": "pace",
+      "count": 7411
+    },
+    {
+      "value": "rating",
+      "count": 7005
+    },
+    {
+      "value": "rated",
+      "count": 6198
+    },
+    {
+      "value": "sectional",
+      "count": 5096
+    },
+    {
+      "value": "performance-intelligence",
+      "count": 3325
+    },
+    {
+      "value": "epi",
+      "count": 2881
+    },
+    {
+      "value": "tempo",
+      "count": 2773
+    },
+    {
+      "value": "ratings",
+      "count": 2536
+    },
+    {
+      "value": "warehouse",
+      "count": 2087
+    },
+    {
+      "value": "identity",
+      "count": 1929
+    },
+    {
+      "value": "benchmark",
+      "count": 1715
+    },
+    {
+      "value": "race shape",
+      "count": 1448
+    },
+    {
+      "value": "suitability",
+      "count": 1424
+    },
+    {
+      "value": "early_speed",
+      "count": 1421
+    },
+    {
+      "value": "race_shape",
+      "count": 1327
+    },
+    {
+      "value": "normalised",
+      "count": 1214
+    },
+    {
+      "value": "form guide",
+      "count": 1111
+    },
+    {
+      "value": "form_guide",
+      "count": 1026
+    },
+    {
+      "value": "late_speed",
+      "count": 924
+    },
+    {
+      "value": "normalized",
+      "count": 910
+    },
+    {
+      "value": "performance_intelligence",
+      "count": 858
+    },
+    {
+      "value": "momentum",
+      "count": 855
+    },
+    {
+      "value": "early speed",
+      "count": 713
+    },
+    {
+      "value": "performance intelligence",
+      "count": 705
+    },
+    {
+      "value": "lineage",
+      "count": 685
+    },
+    {
+      "value": "speed_rating",
+      "count": 673
+    },
+    {
+      "value": "race-shape",
+      "count": 640
+    },
+    {
+      "value": "late speed",
+      "count": 568
+    },
+    {
+      "value": "recent form",
+      "count": 494
+    },
+    {
+      "value": "form momentum",
+      "count": 476
+    },
+    {
+      "value": "normalisation",
+      "count": 448
+    },
+    {
+      "value": "historical performance",
+      "count": 367
+    },
+    {
+      "value": "form_momentum",
+      "count": 304
+    },
+    {
+      "value": "performance_fact",
+      "count": 298
+    },
+    {
+      "value": "standard_time",
+      "count": 262
+    },
+    {
+      "value": "performance fact",
+      "count": 228
+    },
+    {
+      "value": "provenance",
+      "count": 225
+    },
+    {
+      "value": "performance index",
+      "count": 220
+    },
+    {
+      "value": "edgeiq performance index",
+      "count": 202
+    },
+    {
+      "value": "standard-time",
+      "count": 189
+    },
+    {
+      "value": "runner identity",
+      "count": 157
+    },
+    {
+      "value": "canonical horse",
+      "count": 138
+    },
+    {
+      "value": "source evidence",
+      "count": 126
+    },
+    {
+      "value": "distance suitability",
+      "count": 126
+    },
+    {
+      "value": "benchmark_time",
+      "count": 124
+    },
+    {
+      "value": "lengths_v_standard",
+      "count": 99
+    },
+    {
+      "value": "standard time",
+      "count": 96
+    },
+    {
+      "value": "lvs",
+      "count": 94
+    },
+    {
+      "value": "benchmark time",
+      "count": 83
+    },
+    {
+      "value": "late-speed",
+      "count": 81
+    },
+    {
+      "value": "horse code",
+      "count": 50
+    },
+    {
+      "value": "early-speed",
+      "count": 48
+    },
+    {
+      "value": "lengths vs standard",
+      "count": 47
+    },
+    {
+      "value": "lengths_vs_standard",
+      "count": 35
+    },
+    {
+      "value": "lengths v standard",
+      "count": 33
+    },
+    {
+      "value": "normalization",
+      "count": 28
+    },
+    {
+      "value": "speed_metric",
+      "count": 15
+    },
+    {
+      "value": "speed rating",
+      "count": 13
+    },
+    {
+      "value": "speed metric",
+      "count": 8
+    },
+    {
+      "value": "track suitability",
+      "count": 5
+    },
+    {
+      "value": "going suitability",
+      "count": 3
+    },
+    {
+      "value": "fact table",
+      "count": 1
+    },
+    {
+      "value": "fact_table",
+      "count": 1
+    }
+  ],
+  "keyword_combinations": [
+    {
+      "value": "pace",
+      "count": 1640
+    },
+    {
+      "value": "rated",
+      "count": 1218
+    },
+    {
+      "value": "performance-intelligence",
+      "count": 971
+    },
+    {
+      "value": "rating",
+      "count": 823
+    },
+    {
+      "value": "sectional",
+      "count": 743
+    },
+    {
+      "value": "warehouse",
+      "count": 407
+    },
+    {
+      "value": "rating; ratings",
+      "count": 373
+    },
+    {
+      "value": "rated; rating",
+      "count": 330
+    },
+    {
+      "value": "pace; rated",
+      "count": 319
+    },
+    {
+      "value": "rated; rating; ratings; sectional",
+      "count": 278
+    },
+    {
+      "value": "rating; sectional",
+      "count": 201
+    },
+    {
+      "value": "tempo",
+      "count": 195
+    },
+    {
+      "value": "rated; rating; ratings",
+      "count": 190
+    },
+    {
+      "value": "pace; sectional",
+      "count": 175
+    },
+    {
+      "value": "normalised",
+      "count": 162
+    },
+    {
+      "value": "pace; performance-intelligence",
+      "count": 145
+    },
+    {
+      "value": "race_shape",
+      "count": 130
+    },
+    {
+      "value": "epi; pace",
+      "count": 127
+    },
+    {
+      "value": "pace; performance fact; race shape; rated; rating; sectional; tempo",
+      "count": 112
+    },
+    {
+      "value": "pace; rated; rating",
+      "count": 109
+    },
+    {
+      "value": "performance-intelligence; warehouse",
+      "count": 106
+    },
+    {
+      "value": "form_guide",
+      "count": 103
+    },
+    {
+      "value": "identity; performance-intelligence",
+      "count": 101
+    },
+    {
+      "value": "early_speed; normalized; pace; race shape; race-shape; race_shape; rated; rating; ratings; sectional; speed_rating; suitability; tempo",
+      "count": 98
+    },
+    {
+      "value": "pace; rating; sectional",
+      "count": 81
+    },
+    {
+      "value": "benchmark",
+      "count": 80
+    },
+    {
+      "value": "pace; rating; tempo",
+      "count": 76
+    },
+    {
+      "value": "pace; rating",
+      "count": 74
+    },
+    {
+      "value": "rating; tempo",
+      "count": 72
+    },
+    {
+      "value": "normalized",
+      "count": 71
+    },
+    {
+      "value": "pace; warehouse",
+      "count": 70
+    },
+    {
+      "value": "epi",
+      "count": 69
+    },
+    {
+      "value": "sectional; warehouse",
+      "count": 66
+    },
+    {
+      "value": "identity",
+      "count": 65
+    },
+    {
+      "value": "pace; rated; rating; ratings",
+      "count": 65
+    },
+    {
+      "value": "pace; tempo",
+      "count": 62
+    },
+    {
+      "value": "benchmark; rating; sectional",
+      "count": 62
+    },
+    {
+      "value": "momentum; normalized; pace; rated; rating; ratings; sectional; tempo",
+      "count": 60
+    },
+    {
+      "value": "form guide; pace; sectional",
+      "count": 59
+    },
+    {
+      "value": "early_speed; late_speed; sectional; warehouse",
+      "count": 56
+    },
+    {
+      "value": "pace; race-shape; tempo",
+      "count": 55
+    },
+    {
+      "value": "early_speed; rating; speed_rating",
+      "count": 54
+    },
+    {
+      "value": "rating; warehouse",
+      "count": 53
+    },
+    {
+      "value": "normalised; rated",
+      "count": 52
+    },
+    {
+      "value": "pace; rating; ratings",
+      "count": 51
+    },
+    {
+      "value": "benchmark; rating",
+      "count": 50
+    },
+    {
+      "value": "benchmark; form guide; historical performance; pace; rating; sectional; suitability; tempo",
+      "count": 48
+    },
+    {
+      "value": "pace; sectional; tempo",
+      "count": 47
+    },
+    {
+      "value": "pace; rated; sectional",
+      "count": 46
+    },
+    {
+      "value": "normalised; rated; rating",
+      "count": 46
+    },
+    {
+      "value": "performance-intelligence; performance_intelligence",
+      "count": 46
+    },
+    {
+      "value": "form_guide; rated",
+      "count": 44
+    },
+    {
+      "value": "identity; sectional",
+      "count": 44
+    },
+    {
+      "value": "distance suitability; early_speed; normalised; normalized; pace; performance intelligence; performance_intelligence; race shape; race-shape; race_shape; rated; rating; ratings; recent form; sectional; speed_rating; suitability; tempo",
+      "count": 44
+    },
+    {
+      "value": "epi; performance-intelligence",
+      "count": 43
+    },
+    {
+      "value": "lineage",
+      "count": 43
+    },
+    {
+      "value": "rated; tempo",
+      "count": 41
+    },
+    {
+      "value": "rated; sectional",
+      "count": 41
+    },
+    {
+      "value": "pace; race shape",
+      "count": 40
+    },
+    {
+      "value": "benchmark; epi; form guide; historical performance; pace; rating; sectional; suitability; tempo",
+      "count": 40
+    },
+    {
+      "value": "epi; form guide; pace; rating; sectional",
+      "count": 39
+    },
+    {
+      "value": "epi; form guide; pace",
+      "count": 38
+    },
+    {
+      "value": "epi; form guide; pace; rating",
+      "count": 36
+    },
+    {
+      "value": "normalised; rating",
+      "count": 34
+    },
+    {
+      "value": "performance-intelligence; rating",
+      "count": 34
+    },
+    {
+      "value": "performance-intelligence; standard-time",
+      "count": 34
+    },
+    {
+      "value": "identity; performance-intelligence; warehouse",
+      "count": 33
+    },
+    {
+      "value": "epi; pace; performance-intelligence",
+      "count": 33
+    },
+    {
+      "value": "form_guide; pace; rated",
+      "count": 32
+    },
+    {
+      "value": "pace; rated; rating; ratings; sectional",
+      "count": 32
+    },
+    {
+      "value": "pace; performance fact; race shape; rated; rating; sectional; tempo; warehouse",
+      "count": 32
+    },
+    {
+      "value": "form_guide; pace",
+      "count": 31
+    },
+    {
+      "value": "performance-intelligence; sectional",
+      "count": 31
+    },
+    {
+      "value": "benchmark; epi; rating; sectional",
+      "count": 31
+    },
+    {
+      "value": "epi; pace; rated",
+      "count": 30
+    },
+    {
+      "value": "benchmark; pace; rated; rating; ratings",
+      "count": 30
+    },
+    {
+      "value": "suitability",
+      "count": 30
+    },
+    {
+      "value": "benchmark; epi; form guide; pace; rated; rating; sectional; suitability; tempo",
+      "count": 30
+    },
+    {
+      "value": "benchmark; epi; pace; rated; rating; sectional; suitability; tempo",
+      "count": 29
+    },
+    {
+      "value": "normalized; rated",
+      "count": 28
+    },
+    {
+      "value": "form_momentum; momentum; race_shape; rated; suitability",
+      "count": 28
+    },
+    {
+      "value": "form guide; pace; race shape; sectional",
+      "count": 28
+    },
+    {
+      "value": "pace; rated; tempo",
+      "count": 28
+    },
+    {
+      "value": "rated; rating; ratings; warehouse",
+      "count": 28
+    },
+    {
+      "value": "pace; race_shape",
+      "count": 28
+    },
+    {
+      "value": "rating; ratings; tempo",
+      "count": 28
+    },
+    {
+      "value": "epi; normalized; pace; performance-intelligence; provenance; rated; tempo",
+      "count": 28
+    },
+    {
+      "value": "epi; form guide; form_guide; pace; rated",
+      "count": 27
+    },
+    {
+      "value": "performance-intelligence; rated",
+      "count": 26
+    },
+    {
+      "value": "historical performance; rating",
+      "count": 26
+    },
+    {
+      "value": "epi; sectional",
+      "count": 26
+    },
+    {
+      "value": "benchmark; rated",
+      "count": 25
+    },
+    {
+      "value": "epi; form guide; form_guide; pace",
+      "count": 25
+    },
+    {
+      "value": "identity; rated",
+      "count": 25
+    },
+    {
+      "value": "early_speed; pace; rated",
+      "count": 24
+    },
+    {
+      "value": "identity; lineage; sectional",
+      "count": 24
+    },
+    {
+      "value": "race shape",
+      "count": 24
+    },
+    {
+      "value": "race_shape; sectional",
+      "count": 24
+    },
+    {
+      "value": "rating; ratings; warehouse",
+      "count": 24
+    },
+    {
+      "value": "late_speed; sectional",
+      "count": 24
+    }
+  ],
+  "domain_combinations": [
+    {
+      "value": "Ratings",
+      "count": 2934
+    },
+    {
+      "value": "Pace",
+      "count": 1897
+    },
+    {
+      "value": "Performance Intelligence",
+      "count": 1050
+    },
+    {
+      "value": "Pace; Ratings",
+      "count": 903
+    },
+    {
+      "value": "Speed",
+      "count": 743
+    },
+    {
+      "value": "Ratings; Speed",
+      "count": 562
+    },
+    {
+      "value": "Warehouse",
+      "count": 407
+    },
+    {
+      "value": "Benchmark; Ratings",
+      "count": 386
+    },
+    {
+      "value": "Benchmark",
+      "count": 355
+    },
+    {
+      "value": "Pace; Ratings; Speed",
+      "count": 242
+    },
+    {
+      "value": "Pace; Speed",
+      "count": 238
+    },
+    {
+      "value": "Pace; Race Shape",
+      "count": 215
+    },
+    {
+      "value": "Pace; Race Shape; Ratings",
+      "count": 203
+    },
+    {
+      "value": "Race Shape",
+      "count": 166
+    },
+    {
+      "value": "Pace; Performance Intelligence",
+      "count": 152
+    },
+    {
+      "value": "EPI; Pace",
+      "count": 145
+    },
+    {
+      "value": "Ratings; Warehouse",
+      "count": 135
+    },
+    {
+      "value": "EPI; Form; Pace; Ratings",
+      "count": 128
+    },
+    {
+      "value": "Performance Intelligence; Warehouse",
+      "count": 123
+    },
+    {
+      "value": "Benchmark; Early Speed; Pace; Race Shape; Ratings; Speed; Suitability",
+      "count": 119
+    },
+    {
+      "value": "Pace; Performance Intelligence; Race Shape; Ratings; Speed",
+      "count": 119
+    },
+    {
+      "value": "Form",
+      "count": 118
+    },
+    {
+      "value": "Performance Intelligence; Ratings",
+      "count": 112
+    },
+    {
+      "value": "Identity; Performance Intelligence",
+      "count": 103
+    },
+    {
+      "value": "Benchmark; EPI; Form; Pace; Ratings; Speed; Suitability",
+      "count": 100
+    },
+    {
+      "value": "Form; Ratings",
+      "count": 98
+    },
+    {
+      "value": "Benchmark; Pace; Ratings",
+      "count": 97
+    },
+    {
+      "value": "EPI; Pace; Ratings",
+      "count": 84
+    },
+    {
+      "value": "Early Speed; Ratings; Speed",
+      "count": 82
+    },
+    {
+      "value": "Pace; Race Shape; Speed",
+      "count": 81
+    },
+    {
+      "value": "Benchmark; Ratings; Speed",
+      "count": 74
+    },
+    {
+      "value": "EPI; Form; Pace",
+      "count": 74
+    },
+    {
+      "value": "Pace; Warehouse",
+      "count": 74
+    },
+    {
+      "value": "EPI",
+      "count": 73
+    },
+    {
+      "value": "Speed; Warehouse",
+      "count": 66
+    },
+    {
+      "value": "Identity",
+      "count": 65
+    },
+    {
+      "value": "Identity; Ratings",
+      "count": 63
+    },
+    {
+      "value": "Form; Pace; Speed",
+      "count": 61
+    },
+    {
+      "value": "Benchmark; Form Momentum; Pace; Ratings; Speed",
+      "count": 60
+    },
+    {
+      "value": "Form; Pace; Ratings",
+      "count": 57
+    },
+    {
+      "value": "Early Speed; Late Speed; Speed; Warehouse",
+      "count": 56
+    },
+    {
+      "value": "Performance Intelligence; Standard Time",
+      "count": 56
+    },
+    {
+      "value": "Early Speed; Pace; Ratings; Speed",
+      "count": 55
+    },
+    {
+      "value": "Form; Pace",
+      "count": 55
+    },
+    {
+      "value": "EPI; Pace; Performance Intelligence; Ratings",
+      "count": 53
+    },
+    {
+      "value": "Race Shape; Ratings",
+      "count": 52
+    },
+    {
+      "value": "Early Speed; Pace; Race Shape",
+      "count": 50
+    },
+    {
+      "value": "Benchmark; Form; Pace; Ratings; Speed; Suitability",
+      "count": 48
+    },
+    {
+      "value": "EPI; Form; Pace; Ratings; Speed",
+      "count": 47
+    },
+    {
+      "value": "Performance Intelligence; Ratings; Warehouse",
+      "count": 46
+    },
+    {
+      "value": "Benchmark; Early Speed; Form; Pace; Performance Intelligence; Race Shape; Ratings; Speed; Suitability",
+      "count": 46
+    },
+    {
+      "value": "Benchmark; Performance Intelligence",
+      "count": 44
+    },
+    {
+      "value": "EPI; Performance Intelligence",
+      "count": 44
+    },
+    {
+      "value": "Identity; Speed",
+      "count": 44
+    },
+    {
+      "value": "Benchmark; EPI; Ratings; Speed",
+      "count": 43
+    },
+    {
+      "value": "Early Speed; Pace; Race Shape; Ratings; Speed",
+      "count": 43
+    },
+    {
+      "value": "Lineage",
+      "count": 43
+    },
+    {
+      "value": "Pace; Race Shape; Ratings; Speed",
+      "count": 42
+    },
+    {
+      "value": "Benchmark; Pace",
+      "count": 41
+    },
+    {
+      "value": "EPI; Ratings",
+      "count": 40
+    },
+    {
+      "value": "Early Speed; Pace; Ratings",
+      "count": 38
+    },
+    {
+      "value": "Identity; Performance Intelligence; Warehouse",
+      "count": 38
+    },
+    {
+      "value": "EPI; Pace; Performance Intelligence",
+      "count": 38
+    },
+    {
+      "value": "Early Speed; Pace",
+      "count": 36
+    },
+    {
+      "value": "Early Speed; Late Speed; Pace; Ratings; Speed",
+      "count": 36
+    },
+    {
+      "value": "Benchmark; Warehouse",
+      "count": 35
+    },
+    {
+      "value": "EPI; Identity; Pace; Ratings",
+      "count": 34
+    },
+    {
+      "value": "Benchmark; EPI; Early Speed; Form; Identity; Late Speed; Pace; Performance Intelligence; Race Shape; Ratings; Speed; Suitability",
+      "count": 33
+    },
+    {
+      "value": "Lineage; Ratings",
+      "count": 33
+    },
+    {
+      "value": "Pace; Performance Intelligence; Ratings",
+      "count": 33
+    },
+    {
+      "value": "Form; Pace; Race Shape; Speed",
+      "count": 32
+    },
+    {
+      "value": "Identity; Lineage; Speed",
+      "count": 32
+    },
+    {
+      "value": "Identity; Performance Intelligence; Ratings",
+      "count": 32
+    },
+    {
+      "value": "Lineage; Pace; Ratings; Speed",
+      "count": 32
+    },
+    {
+      "value": "Pace; Performance Intelligence; Race Shape; Ratings; Speed; Warehouse",
+      "count": 32
+    },
+    {
+      "value": "Benchmark; Speed",
+      "count": 31
+    },
+    {
+      "value": "Performance Intelligence; Speed",
+      "count": 31
+    },
+    {
+      "value": "EPI; Form",
+      "count": 30
+    },
+    {
+      "value": "Suitability",
+      "count": 30
+    },
+    {
+      "value": "Benchmark; EPI; Pace; Performance Intelligence; Standard Time",
+      "count": 30
+    },
+    {
+      "value": "Identity; Pace; Ratings",
+      "count": 29
+    },
+    {
+      "value": "Benchmark; EPI; Pace; Ratings; Speed; Suitability",
+      "count": 29
+    },
+    {
+      "value": "EPI; Early Speed; Form Momentum; Late Speed; Ratings; Suitability",
+      "count": 28
+    },
+    {
+      "value": "Form Momentum; Race Shape; Ratings; Suitability",
+      "count": 28
+    },
+    {
+      "value": "Race Shape; Ratings; Speed",
+      "count": 28
+    },
+    {
+      "value": "Benchmark; EPI; Lineage; Pace; Performance Intelligence; Ratings",
+      "count": 28
+    },
+    {
+      "value": "EPI; Form; Ratings",
+      "count": 27
+    },
+    {
+      "value": "Benchmark; Performance Intelligence; Warehouse",
+      "count": 27
+    },
+    {
+      "value": "Benchmark; Identity; Performance Intelligence; Ratings; Speed; Warehouse",
+      "count": 26
+    },
+    {
+      "value": "Early Speed; Late Speed; Pace; Race Shape; Ratings; Speed",
+      "count": 26
+    },
+    {
+      "value": "Form Momentum",
+      "count": 26
+    },
+    {
+      "value": "Identity; Pace",
+      "count": 26
+    },
+    {
+      "value": "Race Shape; Speed",
+      "count": 26
+    },
+    {
+      "value": "Pace; Ratings; Suitability",
+      "count": 26
+    },
+    {
+      "value": "EPI; Speed",
+      "count": 26
+    },
+    {
+      "value": "Benchmark; Performance Intelligence; Ratings; Warehouse",
+      "count": 25
+    },
+    {
+      "value": "Benchmark; Ratings; Warehouse",
+      "count": 24
+    },
+    {
+      "value": "EPI; Lengths v Standard; Pace; Ratings",
+      "count": 24
+    },
+    {
+      "value": "Early Speed; Ratings",
+      "count": 24
+    },
+    {
+      "value": "Late Speed; Speed",
+      "count": 24
+    }
+  ],
+  "suspect_path_tokens": [
+    {
+      "value": "checkpoint",
+      "count": 10715
+    },
+    {
+      "value": "public/data",
+      "count": 3105
+    },
+    {
+      "value": "output",
+      "count": 1886
+    },
+    {
+      "value": "outputs",
+      "count": 1864
+    },
+    {
+      "value": "archive",
+      "count": 395
+    },
+    {
+      "value": "candidate",
+      "count": 299
+    },
+    {
+      "value": "temp",
+      "count": 214
+    },
+    {
+      "value": "coverage",
+      "count": 212
+    },
+    {
+      "value": "history",
+      "count": 179
+    },
+    {
+      "value": "snapshot",
+      "count": 119
+    },
+    {
+      "value": "legacy",
+      "count": 53
+    },
+    {
+      "value": "backup",
+      "count": 53
+    },
+    {
+      "value": "fixture",
+      "count": 51
+    },
+    {
+      "value": "tmp",
+      "count": 20
+    },
+    {
+      "value": "logs",
+      "count": 16
+    },
+    {
+      "value": "snapshots",
+      "count": 12
+    },
+    {
+      "value": "backups",
+      "count": 6
+    }
+  ]
+}

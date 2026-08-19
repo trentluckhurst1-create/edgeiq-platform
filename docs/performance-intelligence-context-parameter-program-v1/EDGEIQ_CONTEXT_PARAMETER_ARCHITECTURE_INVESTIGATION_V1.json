@@ -1,0 +1,13 @@
+{
+  "downstream_formula": "context_adjusted_performance_value = historical_rating_value + total_context_adjustment",
+  "empty_registry_cause": "No governed empirical method or threshold authority.",
+  "formula_meaning_defined": false,
+  "minimum_evidence_authority_defined": false,
+  "parameter_target": "context_adjusted_performance_value",
+  "parameter_unit": "HPR-NORM-A normalised rating units",
+  "selection_hierarchy": "EXACT_ONLY_NO_FALLBACK",
+  "status": "BLOCKED_CONTEXT_PARAMETER_METHODOLOGY_AUTHORITY",
+  "target_defined": true,
+  "temporal_control_defined_for_parameters": false,
+  "validation_method_defined": false
+}

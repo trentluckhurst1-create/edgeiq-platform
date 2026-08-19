@@ -1,0 +1,12 @@
+{
+  "rows": [
+    {
+      "checked_at": "2026-07-29T02:10:53Z",
+      "finding": "NO_POTENTIAL_SECRET_VALUES_DETECTED",
+      "operator_action": "none",
+      "path": "",
+      "redacted_context": ""
+    }
+  ],
+  "status": "PASS"
+}

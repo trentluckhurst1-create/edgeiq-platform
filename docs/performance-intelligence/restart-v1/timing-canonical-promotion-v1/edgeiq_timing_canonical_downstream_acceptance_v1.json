@@ -1,0 +1,92 @@
+{
+  "canonical_promotion": "PASS",
+  "counts": {
+    "epi": 0,
+    "horse_aggregates": 0,
+    "horse_observations": 0,
+    "horse_ratings": 0,
+    "lengths_versus_standard": 52414,
+    "lengths_versus_standard_rejections": 2564,
+    "performance_base": 52414,
+    "performance_normalisation": 0,
+    "performance_normalisation_rejections": 52414,
+    "performance_rating_base": 0,
+    "projected_performance": 0,
+    "race_entry_context": 0,
+    "race_entry_context_adjusted": 0,
+    "race_entry_snapshots": 0,
+    "race_time_deltas": 54978,
+    "standard_times": 695,
+    "timing_warehouse": 70308
+  },
+  "current_victoria_coverage": {
+    "epi_coverage": 0,
+    "historical_runners": 0,
+    "horse_ratings": 0,
+    "meetings": 1,
+    "missing_coverage": "NORMALISATION_BLOCKED_BY_HPR_NORM_A_V1_CUTOFF_NO_POST_2026_07_20_PERFORMANCE_BASE_ROWS",
+    "performance_metrics": 52414,
+    "races": 7,
+    "runners": 108,
+    "runtime_coverage": 0,
+    "snapshots": 0
+  },
+  "generated_at_utc": "2026-07-28T22:42:49Z",
+  "performance_base_partition": {
+    "bad_dates": 0,
+    "before_2026_07_20": 52414,
+    "cutoff": "2026-07-20",
+    "hpr_norm_a_v1_satisfied_rows": 0,
+    "legitimate_normalisation_action": "NO_POST_CUTOFF_ROWS_AVAILABLE",
+    "max_date": "2026-06-21",
+    "min_date": "2000-08-02",
+    "normalisation_rejection_reasons": {
+      "NORMALISATION_PARAMETER_NOT_EFFECTIVE_FOR_PERFORMANCE_DATE": 52414
+    },
+    "on_or_after_2026_07_20": 0
+  },
+  "three_race_reconciliation": [
+    {
+      "action": "EXCLUDED_UNTIL_SUPPORTED_TIME_UNIT_TRANSFORMATION_EXISTS",
+      "canonical_race_id": "EIQ_RACE_477B30F765AAC875",
+      "cause": "PRIOR_AUDIT_COUNTED_NONBLANK_RAW_OFFICIAL_RACE_TIME_BUT_RECOVERY_REQUIRES_NUMERIC_POSITIVE_SECONDS",
+      "distance_metres": "5500",
+      "official_race_time": "42274.0",
+      "official_race_time_seconds": "",
+      "race_class": "Steeple",
+      "race_date": "2023-05-04",
+      "race_number": "7.0",
+      "source_record_key": "2023-05-04|WARRNAMBOOL|5329042.0|7.0|13748404|STERN IDOL",
+      "time_unit": "UNSUPPORTED_TIME_UNIT",
+      "track": "WARRNAMBOOL"
+    },
+    {
+      "action": "EXCLUDED_UNTIL_SUPPORTED_TIME_UNIT_TRANSFORMATION_EXISTS",
+      "canonical_race_id": "EIQ_RACE_B5B4A24EC160FD5B",
+      "cause": "PRIOR_AUDIT_COUNTED_NONBLANK_RAW_OFFICIAL_RACE_TIME_BUT_RECOVERY_REQUIRES_NUMERIC_POSITIVE_SECONDS",
+      "distance_metres": "5500",
+      "official_race_time": "43605.0",
+      "official_race_time_seconds": "",
+      "race_class": "Steeple",
+      "race_date": "2007-05-03",
+      "race_number": "7.0",
+      "source_record_key": "2007-05-03|WARRNAMBOOL|838672.0|7.0|5532217|CLEARVIEW BAY",
+      "time_unit": "UNSUPPORTED_TIME_UNIT",
+      "track": "WARRNAMBOOL"
+    },
+    {
+      "action": "EXCLUDED_UNTIL_SUPPORTED_TIME_UNIT_TRANSFORMATION_EXISTS",
+      "canonical_race_id": "EIQ_RACE_C407130DC4B7DC56",
+      "cause": "PRIOR_AUDIT_COUNTED_NONBLANK_RAW_OFFICIAL_RACE_TIME_BUT_RECOVERY_REQUIRES_NUMERIC_POSITIVE_SECONDS",
+      "distance_metres": "1000",
+      "official_race_time": "100.0",
+      "official_race_time_seconds": "",
+      "race_class": "Trial",
+      "race_date": "2024-10-14",
+      "race_number": "5.0",
+      "source_record_key": "2024-10-14|BET365 SEYMOUR|5405029.0|5.0|14660401|ROSEY OF THE TOSEY",
+      "time_unit": "UNSUPPORTED_TIME_UNIT",
+      "track": "BET365 SEYMOUR"
+    }
+  ]
+}

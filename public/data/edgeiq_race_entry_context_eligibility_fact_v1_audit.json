@@ -1,0 +1,132 @@
+{
+  "audit_name": "edgeiq_race_entry_context_eligibility_fact_v1",
+  "audit_version": "1.1.0_current_context_rows_allowed",
+  "audited_at_utc": "2026-07-30T00:04:06Z",
+  "checks": {
+    "contract_fields_exact": {
+      "detail": {
+        "actual": [
+          "race_entry_context_eligibility_id",
+          "race_entry_performance_context_id",
+          "race_entry_horse_performance_snapshot_id",
+          "race_entry_id",
+          "race_id",
+          "race_date",
+          "runner_id",
+          "canonical_horse_id",
+          "canonical_horse_name",
+          "historical_rating_eligibility",
+          "distance_context_eligibility",
+          "class_context_eligibility",
+          "track_context_eligibility",
+          "track_configuration_eligibility",
+          "track_condition_eligibility",
+          "surface_context_eligibility",
+          "rail_context_eligibility",
+          "barrier_context_eligibility",
+          "allocated_weight_eligibility",
+          "field_size_eligibility",
+          "complete_context_eligibility",
+          "primary_context_eligibility_reason_code",
+          "race_entry_context_eligibility_status",
+          "source_context_evidence_sha256",
+          "race_entry_context_eligibility_evidence_sha256",
+          "source_context_builder_version",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ],
+        "expected": [
+          "race_entry_context_eligibility_id",
+          "race_entry_performance_context_id",
+          "race_entry_horse_performance_snapshot_id",
+          "race_entry_id",
+          "race_id",
+          "race_date",
+          "runner_id",
+          "canonical_horse_id",
+          "canonical_horse_name",
+          "historical_rating_eligibility",
+          "distance_context_eligibility",
+          "class_context_eligibility",
+          "track_context_eligibility",
+          "track_configuration_eligibility",
+          "track_condition_eligibility",
+          "surface_context_eligibility",
+          "rail_context_eligibility",
+          "barrier_context_eligibility",
+          "allocated_weight_eligibility",
+          "field_size_eligibility",
+          "complete_context_eligibility",
+          "primary_context_eligibility_reason_code",
+          "race_entry_context_eligibility_status",
+          "source_context_evidence_sha256",
+          "race_entry_context_eligibility_evidence_sha256",
+          "source_context_builder_version",
+          "builder_version",
+          "contract_version",
+          "built_at_utc"
+        ]
+      },
+      "status": "PASS"
+    },
+    "current_population_expected": {
+      "detail": {
+        "complete_context_eligible_rows": 5,
+        "complete_context_ineligible_rows": 0,
+        "eligibility_rows": 5,
+        "source_context_rows": 5
+      },
+      "status": "PASS"
+    },
+    "deterministic_eligibility_identity": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "dimension_decisions_governed": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "eligibility_governance": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "eligibility_ids_unique": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "eligibility_population_exact": {
+      "detail": {
+        "eligibility_rows": 5,
+        "missing_eligibility_rows": [],
+        "source_rows": 5,
+        "unexpected_eligibility_rows": []
+      },
+      "status": "PASS"
+    },
+    "no_forbidden_fields": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "one_eligibility_row_per_context": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "required_files_exist": {
+      "detail": [],
+      "status": "PASS"
+    },
+    "source_context_lineage": {
+      "detail": [],
+      "status": "PASS"
+    }
+  },
+  "counts": {
+    "complete_context_eligible_rows": 5,
+    "complete_context_ineligible_rows": 0,
+    "race_entry_context_eligibility_rows": 5,
+    "race_entry_performance_context_rows": 5
+  },
+  "failed_checks": [],
+  "status": "PASS"
+}

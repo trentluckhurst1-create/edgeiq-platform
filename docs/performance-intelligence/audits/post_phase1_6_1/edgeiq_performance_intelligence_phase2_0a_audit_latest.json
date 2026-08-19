@@ -1,0 +1,28 @@
+{
+  "checks": [
+    {
+      "check": "SIGN_CONVENTION_LOCKED",
+      "observed": "race time - benchmark; negative=faster",
+      "passed": true
+    },
+    {
+      "check": "RACE_DEVIATION_REPRODUCIBLE",
+      "observed": 60349,
+      "passed": true
+    },
+    {
+      "check": "BENCHMARK_SELECTION_REQUIRED",
+      "observed": 60349,
+      "passed": true
+    }
+  ],
+  "generated_timestamp": "2026-07-16T08:32:22Z",
+  "marker": "EDGEIQ_PERFORMANCE_INTELLIGENCE_PHASE2_0A_RACE_DEVIATION_FINAL_PASS",
+  "phase": "phase2_0a",
+  "race_deviation_blocked_rows": 0,
+  "race_deviation_complete_rows": 60349,
+  "race_deviation_rows": 60349,
+  "snapshot_id": "eiq_race_deviations_v1_f3f00e58a59a04be40a8c612",
+  "snapshot_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\performance-intelligence\\warehouse\\phase2_0a\\eiq_race_deviations_v1_f3f00e58a59a04be40a8c612",
+  "status": "PASS"
+}

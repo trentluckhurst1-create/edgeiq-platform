@@ -1,0 +1,23 @@
+{
+  "workspace": "10_OVERVIEW",
+  "label": "OVERVIEW",
+  "captureErrors": [],
+  "mounted": [
+    {
+      "component": "OverviewWorkspace",
+      "key": "OVERVIEW",
+      "tag": "SECTION",
+      "className": "eiq-race-workspace eiq-race-workspace--overview"
+    }
+  ],
+  "mountedComponent": "OverviewWorkspace",
+  "mountedKey": "OVERVIEW",
+  "selectedMeeting": "2026-07-17|WANGARATTA",
+  "selectedRace": null,
+  "activeSection": "overview",
+  "viewLevel": "race",
+  "runnerCount": 12,
+  "dataAvailability": "PARTIAL_OR_PENDING",
+  "bodySample": "EDGEiQ\nRACE INTELLIGENCE\nHOME\nMEETINGS\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nEPI\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nRESULTS\nLAB\nCOMPARE\nREVIEW\nSETTINGS\nEDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM\nInformation is not Intelligence. Evidence leads. Precision decides.\nSUN, 19 JULY 2026\n06:49 pm\nAEDT\nMEETINGS\nWANGARATTA\nRACE 1\nOVERVIEW\nRace 1\nCurrent Race\nBack to Races\nLOCATION\nWangaratta\nDATE\n2026-07-17\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nEPI\nRESULTS\nREVIEW\n\nOVERVIEW\n\nWangaratta R1\nRace shell, runner board and next-action structure are available while specialist reads are pending.\nOVERVIEW\nPending\nFIELD\n12\nMAP\nPending\nTempo Profile\nPending\nRace-shape rows are not matched yet.\nEPI Top 3\nPending\nEPI rows are not matched yet.\nRUNNER BOARD\nDeclared runners remain visible for race navigation\nNO\tRUNNER\tCURRENT EPI\tTREND\n1\tLIMBERING\tPending\tPending\n2\tHUGHIE\tPending\tPending\n3\tDETERMINATO\tPending\tPending\n4\tKING TAGALOA\tPending\tPending\n5\tOBON\tPending\tPending\n6\tREEL DEADLY\tPending\tPending\n7\tRUSSIAN FIREBIRD\tPending\tPending\n8\tSKY DEEL\tPending\tPending\n9\tEXPANDING POWER\tPending\tPending\n10\tCAPITAL STORM\tPending\tPending\n11\tFONTALICIOUS\tPending\tPending\n12\tMERCHANTESSA\tPending\tPending\nEDGEiQ Racing Intelligence Operating System\nBuild: 1.0.0\nData as at: 06:49 pm AEDT",
+  "renderedPath": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-live-runtime/10_OVERVIEW_LIVE_RENDERED.png"
+}

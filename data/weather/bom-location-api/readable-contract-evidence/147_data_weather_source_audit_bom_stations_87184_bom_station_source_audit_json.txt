@@ -1,0 +1,35 @@
+﻿EDGEIQ BOM LOCATION API CONTRACT EVIDENCE
+
+Repository file:
+data\weather-source-audit\bom-stations\87184\bom_station_source_audit.json
+
+Matched text:
+api.test2.bom.gov.au
+
+Nearby URLs:
+https://api.test2.bom.gov.au/apikey/v1/forecasts|https://api.test2.bom.gov.au/apikey/v1/locations|https://api.test2.bom.gov.au/apikey/v1/mapping|https://api.test2.bom.gov.au/apikey/v1/observations|https://api.test2.bom.gov.au/apikey/v1/products|https://api.test2.bom.gov.au/apikey/v1/warnings|https://csat-dev.nonprod.service.bom.gov.au|https://fastapi-forecast.apps.ocp.mgmt.bae.bom.gov.au/apikey/v1/forecasts|https://fastapi-location.apps.ocp.mgmt.bae.bom.gov.au/apikey/v1/locations|https://fastapi-observation.apps.ocp.mgmt.bae.bom.gov.au/apikey/v1/observations|https://fastapi-product.apps.ocp.mgmt.bae.bom.gov.au/apikey/v1/products|https://fastapi-warning.apps.ocp.mgmt.bae.bom.gov.au/apikey/v1/warnings|https://stage-15-20-search.clients.funnelback.com|https://www.bom.gov.au/themes/custom/bom_theme/bom-react/dist/main.bundle.js?b2f352443ff3f4ef77eb034538d7f6df0cf84e0ac2d486c4b50d7d3188addd83
+
+Request evidence:
+
+
+Context:
+m-react/dist/main.bundle.js?b2f352443ff3f4ef77eb034538d7f6df0cf84e0ac2d486c4b50d7d3188addd83",
+      "keyword": "observations",
+      "context": "ributeTypeMap}constructor(){}}t.Model3hourlyAtmSurfAirWeather=r},217:function(e,t){\"use strict\";Object.defineProperty(t,\"__esModule\",{value:!0}),t.trimToBaseApiPath=function(e){for(const t of r)e.endsWith(t)&&(e=e.slice(0,e.length-t.length));return e};const r=[\"/mapping\",\"/locations\",\"/forecasts\",\"/observations\",\"/warnings\",\"/products\"]},283:function(e,t){\"use strict\";Object.defineProperty(t,\"__esModule\",{value:!0}),t.ErrorSource=void 0;class r{static discriminator=void 0;static mapping=void 0;static attributeTypeMap=[{name:\"parameter\",baseName:\"parameter\",type:\"string\",format:\"\"},{name:\"pointer\",baseName:\"pointer\",type:\"string\",format:\"\"}];static getAttributeTypeMap(){return r.attributeTypeMap}constructor(){}}t.ErrorSource=r},403:function(e,t,r){\"use strict\";Object.defineProperty(t,\"__esModule\",{value:!0}),t.usePlaceAutocompleteQuery=function(e,t){const r={coordinate:\"\",limit:\"5\",websiteSort:!0,...e},a=[\"location-places-autocomplete\",r];return(0,i.useQueryTyped)(a,()=>n.fetchPlaceAuto"
+    },
+    {
+      "document": "022_main.bundle.js",
+      "url": "https://www.bom.gov.au/themes/custom/bom_theme/bom-react/dist/main.bundle.js?b2f352443ff3f4ef77eb034538d7f6df0cf84e0ac2d486c4b50d7d3188addd83",
+      "keyword": "observations",
+      "context": "elopmentEnv)()&&!1,i={locations:a?\"https://api.test2.bom.gov.au/apikey/v1/locations\":\"https://fastapi-location.apps.ocp.mgmt.bae.bom.gov.au/apikey/v1/locations\",forecasts:a?\"https://api.test2.bom.gov.au/apikey/v1/forecasts\":\"https://fastapi-forecast.apps.ocp.mgmt.bae.bom.gov.au/apikey/v1/forecasts\",observations:a?\"https://api.test2.bom.gov.au/apikey/v1/observations\":\"https://fastapi-observation.apps.ocp.mgmt.bae.bom.gov.au/apikey/v1/observations\",warnings:a?\"https://api.test2.bom.gov.au/apikey/v1/warnings\":\"https://fastapi-warning.apps.ocp.mgmt.bae.bom.gov.au/apikey/v1/warnings\",products:a?\"https://api.test2.bom.gov.au/apikey/v1/products\":\"https://fastapi-product.apps.ocp.mgmt.bae.bom.gov.au/apikey/v1/products\",mapping:\"https://api.test2.bom.gov.au/apikey/v1/mapping\",content:\"/api/v1\",csat:\"https://csat-dev.nonprod.service.bom.gov.au\"},o=(t.FUNNELBACK_URL=\"https://stage-15-20-search.clients.funnelback.com\",(0,n.isDevelopmentEnv)()?\"themes/custom/bom_theme/bom-react/dist/data/drupal\":\"/"
+    },
+    {
+      "document": "022_main.bundle.js",
+      "url": "https://www.bom.gov.au/themes/custom/bom_theme/bom-react/dist/main.bundle.js?b2f352443ff3f4ef77eb034538d7f6df0cf84e0ac2d486c4b50d7d3188addd83",
+      "keyword": "observations",
+      "context": "m.gov.au/apikey/v1/locations\":\"https://fastapi-location.apps.ocp.mgmt.bae.bom.gov.au/apikey/v1/locations\",forecasts:a?\"https://api.test2.bom.gov.au/apikey/v1/forecasts\":\"https://fastapi-forecast.apps.ocp.mgmt.bae.bom.gov.au/apikey/v1/forecasts\",observations:a?\"https://api.test2.bom.gov.au/apikey/v1/observations\":\"https://fastapi-observation.apps.ocp.mgmt.bae.bom.gov.au/apikey/v1/observations\",warnings:a?\"https://api.test2.bom.gov.au/apikey/v1/warnings\":\"https://fastapi-warning.apps.ocp.mgmt.bae.bom.gov.au/apikey/v1/warnings\",products:a?\"https://api.test2.bom.gov.au/apikey/v1/products\":\"https://fastapi-product.apps.ocp.mgmt.bae.bom.gov.au/apikey/v1/products\",mapping:\"https://api.test2.bom.gov.au/apikey/v1/mapping\",content:\"/api/v1\",csat:\"https://csat-dev.nonprod.service.bom.gov.au\"},o=(t.FUNNELBACK_URL=\"https://stage-15-20-search.clients.funnelback.com\",(0,n.isDevelopmentEnv)()?\"themes/custom/bom_theme/bom-react/dist/data/drupal\":\"/config/towns_places\"),s=void 0!==window.drupalSettings?"
+    },
+    {
+      "document": "022_main.bundle.js",
+      "url": "https://www.bom.gov.au/themes/custom/bom_theme/bom-react/dist/main.bundle.js?b2f352443ff3f4ef77eb034538d7f6df0cf84e0ac2d486c4b50d7d3188addd83",
+      "keyword": "observa

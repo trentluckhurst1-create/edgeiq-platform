@@ -1,0 +1,14 @@
+{
+  "audit_name": "EDGEiQ Performance Intelligence Phase 1.5B.5 Time Distance Normalisation",
+  "generated_utc": "2026-07-16T00:01:20.248917+00:00",
+  "production_data_modified": false,
+  "source_rows": 879784,
+  "distinct_races": 71025,
+  "distance_valid_races": 71025,
+  "distance_invalid_races": 0,
+  "time_converted_races": 60370,
+  "time_missing_races": 10655,
+  "benchmark_eligible_races": 60370,
+  "benchmark_blocked_races": 10655,
+  "decision": "READY_FOR_PERFORMANCE_FACT_MATERIALISATION"
+}

@@ -1,0 +1,23 @@
+{
+  "workspace": "14_WEATHER",
+  "label": "WEATHER",
+  "captureErrors": [],
+  "mounted": [
+    {
+      "component": "MeetingWeatherWorkspace",
+      "key": "WEATHER",
+      "tag": "SECTION",
+      "className": "eiq-meeting-workspace eiq-meeting-v1"
+    }
+  ],
+  "mountedComponent": "MeetingWeatherWorkspace",
+  "mountedKey": "WEATHER",
+  "selectedMeeting": "2026-07-17|WANGARATTA",
+  "selectedRace": null,
+  "activeSection": "meetings",
+  "viewLevel": "meeting",
+  "runnerCount": 0,
+  "dataAvailability": "PARTIAL_OR_PENDING",
+  "bodySample": "EDGEiQ\nRACE INTELLIGENCE\nHOME\nMEETINGS\nRACE\nFIELD\nFORM GUIDE\nPERFORMANCE\nEPI\nMAP\nMARKET\nOVERVIEW\nINSIGHTS\nRESULTS\nLAB\nCOMPARE\nREVIEW\nSETTINGS\nEDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM\nInformation is not Intelligence. Evidence leads. Precision decides.\nSUN, 19 JULY 2026\n06:50 pm\nAEDT\nMEETING DETAIL\nWangaratta\n\nWangaratta | Friday 17 July 2026\n\nBack to Meetings\nSTATE\nNot supplied\nRACES\n0\nRUNNERS\nNot supplied\nSCRATCHINGS\n0\nFIRST\nUnavailable\nLAST\nUnavailable\nSTATUS\nFIELDS PENDING\nOFFICIAL UPDATE\nUnavailable\nTRACK\nTrack rating unavailable\nRAIL\nNot supplied\nWEATHER\nWeather unavailable\nWIND\nWeather unavailable\nTEMP\nWeather unavailable\nRAIN\nNot supplied\nIRRIGATION\nNot supplied\nRACES\nSCRATCHINGS\nGEAR CHANGES\nTRACK\nWEATHER\nRESULTS\nWEATHER\nMeeting weather and race-day conditions\n\nWangaratta\n\nSTATE\nUnavailable\nAUTHORITY\nUnavailable\nOBSERVED\n2026-07-11T03:57:50.984795+00:00\nOfficial weather data is not currently available for this meeting.\nCURRENT OBSERVATIONS\nCURRENT CONDITION\nUnavailable\nTRACK CONDITION\nUnavailable\nTEMPERATURE\nUnavailable\nWIND\nUnavailable\nGUSTS\nUnavailable\nHUMIDITY\nUnavailable\nRAIN TODAY\nUnavailable\nRAIN 24H\nUnavailable\nRAIN 7D\nUnavailable\nRACE-DAY WEATHER CONTEXT\nTRACK IMPACT\nUnavailable\nWIND IMPACT\nUnavailable\nRAIN TIMING\nUnavailable\nOVERALL OUTLOOK\nUnavailable\nEDGEiQ Racing Intelligence Operating System\nBuild: 1.0.0\nData as at: 06:50 pm AEDT",
+  "renderedPath": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\full-product-implementation\\screenshots\\final-live-runtime/14_WEATHER_LIVE_RENDERED.png"
+}

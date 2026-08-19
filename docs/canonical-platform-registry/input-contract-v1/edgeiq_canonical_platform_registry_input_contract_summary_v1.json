@@ -1,0 +1,75 @@
+{
+  "evidence_families_available": 6,
+  "evidence_families_expected": 6,
+  "evidence_families_missing": 0,
+  "evidence_rows": 201,
+  "family_summary": {
+    "CANONICAL_BUILDER_REGISTRY": {
+      "csv_files": 18,
+      "files_found": 31,
+      "json_files": 9,
+      "markdown_files": 4,
+      "readable_files": 31,
+      "status": "AVAILABLE"
+    },
+    "CANONICAL_DEPENDENCY_GRAPH": {
+      "csv_files": 76,
+      "files_found": 109,
+      "json_files": 19,
+      "markdown_files": 10,
+      "readable_files": 109,
+      "status": "AVAILABLE"
+    },
+    "CANONICAL_PARSE_FAILURE_AUDITOR": {
+      "csv_files": 6,
+      "files_found": 17,
+      "json_files": 7,
+      "markdown_files": 4,
+      "readable_files": 17,
+      "status": "AVAILABLE"
+    },
+    "CANONICAL_SCOPE_REFINER": {
+      "csv_files": 9,
+      "files_found": 19,
+      "json_files": 5,
+      "markdown_files": 5,
+      "readable_files": 19,
+      "status": "AVAILABLE"
+    },
+    "PLATFORM_GOVERNANCE_DASHBOARD": {
+      "csv_files": 2,
+      "files_found": 6,
+      "json_files": 3,
+      "markdown_files": 1,
+      "readable_files": 6,
+      "status": "AVAILABLE"
+    },
+    "PRODUCT_FEED_REGISTRY": {
+      "csv_files": 10,
+      "files_found": 19,
+      "json_files": 6,
+      "markdown_files": 3,
+      "readable_files": 19,
+      "status": "AVAILABLE"
+    }
+  },
+  "missing_families": [],
+  "outputs": {
+    "csv": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\canonical-platform-registry\\input-contract-v1\\edgeiq_canonical_platform_registry_input_evidence_v1.csv",
+    "json": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\canonical-platform-registry\\input-contract-v1\\edgeiq_canonical_platform_registry_input_evidence_v1.json",
+    "report": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\canonical-platform-registry\\input-contract-v1\\EDGEIQ_CANONICAL_PLATFORM_REGISTRY_INPUT_CONTRACT_V1.md",
+    "summary": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\docs\\canonical-platform-registry\\input-contract-v1\\edgeiq_canonical_platform_registry_input_contract_summary_v1.json"
+  },
+  "program_id": "EDGEIQ_CANONICAL_PLATFORM_REGISTRY_INPUT_CONTRACT_V1",
+  "program_version": "1.0.0",
+  "repository_root": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM",
+  "required_baseline_commits": [
+    "b551089",
+    "805042e",
+    "1e6f2ab",
+    "7b069c4",
+    "d7171c6",
+    "1946062"
+  ],
+  "verdict": "PASS"
+}

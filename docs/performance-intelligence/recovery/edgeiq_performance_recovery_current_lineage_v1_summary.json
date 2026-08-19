@@ -1,0 +1,82 @@
+{
+  "generated_at": "2026-07-26T03:37:24Z",
+  "status": "READY_WITH_GOVERNED_COVERAGE_LIMITATIONS",
+  "stages": {
+    "warehouse": {
+      "rows": 879784,
+      "corrected_seconds_rows": 712856,
+      "invalid_time_rows": 166928,
+      "implausible_seconds_before_rows": 0
+    },
+    "standard_times": {
+      "candidate_timed_races": 71025,
+      "eligible_timed_races": 57231,
+      "distinct_benchmark_groups": 3534,
+      "groups_above_threshold": 586,
+      "groups_below_threshold": 2948,
+      "standard_time_rows": 586,
+      "rejected": {
+        "INVALID_TIME": 10658,
+        "UNKNOWN_CONDITION": 2935,
+        "INVALID_DISTANCE": 201
+      }
+    },
+    "lengths_epi_eri": {
+      "runner_lengths_v_standard_rows": 533387,
+      "race_lengths_v_standard_rows": 51769,
+      "epi_rows": 533387,
+      "eri_rows": 51769,
+      "unmatched_benchmark_rows": 232783,
+      "invalid_calculation_rows": 113614
+    },
+    "current_epi": {
+      "current_runners": 246,
+      "current_runners_requiring_epi": 186,
+      "current_epi_rows": 189,
+      "matched_historical_runs": 525
+    },
+    "fair_price": {
+      "rows": 246,
+      "races": 17,
+      "priced_rows": 166,
+      "unpriced_rows": 80,
+      "probability_sum_bad_races": 0,
+      "feature_flag": "ON",
+      "live_wired": "YES",
+      "production_changed": "NO",
+      "market_used_as_feature": "NO"
+    },
+    "form_enriched_rebuild": {
+      "script": "scripts/build_edgeiq_form_guide_enriched_v2.py",
+      "status": "PASS",
+      "returncode": 0,
+      "stdout_tail": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_form_guide_enriched_v2.json\nEDGEiQ Form Guide V3.4 coverage summary\nGenerated: 2026-07-26T03:39:35.135053+00:00\nRunners: 246\nWeather races: 0/40 -> 0/18\nWeather runner rows: 0/246 -> 0/246\nEPI: 0/246 -> 189/246\nHistorical EPI: 0/1348 -> 0/1348\nHistorical Rating: 0/1348 -> 52/1348\nEDGEiQ Price: 0/246 -> 166/246\nEarly Speed: 0/246 -> 120/246\nHistorical Early Speed: 0/1348 -> 1001/1348\nSuitability: 0/246 -> 169/246\nRace Shape: 0/246 -> 107/246\nLate Speed: 0/246 -> 122/246\nForm Momentum: 0/246 -> 172/246\nPreparation Profile: 0/246 -> 216/246\nSectional 800-600: 0/1348 -> 207/1348\nSectional 600-400: 0/1348 -> 207/1348\nSectional 400-200: 0/1348 -> 0/1348\nSectional 200-F: 0/1348 -> 207/1348\nBenchmark Evidence: 0/1348 -> 1004/1348\nCareer Profile: 216/246 -> 216/246\nRecent Form: 213/246 -> 213/246\n\nCurrent-date gaps are not backfilled from prior-date model outputs.\n\n",
+      "stderr_tail": ""
+    },
+    "market_terminal_rebuild": {
+      "script": "scripts/build_edgeiq_market_terminal_feed_v1.py",
+      "status": "PASS",
+      "returncode": 0,
+      "stdout_tail": "EDGEIQ_MARKET_TERMINAL_FEED_V1 rows=246 races=17 matched_current_market=246\n",
+      "stderr_tail": ""
+    },
+    "daily_refresh_patch": {
+      "status": "ALREADY_PATCHED"
+    }
+  },
+  "audit": {
+    "status": "PASS",
+    "current_form_rows": 246,
+    "form_epi_rows": 189,
+    "form_edgeiq_price_rows": 166,
+    "market_terminal_rows": 246,
+    "market_terminal_epi_rows": 172,
+    "market_terminal_edgeiq_price_rows": 166,
+    "market_terminal_edge_rows": 166,
+    "current_epi_json_rows": 246,
+    "current_epi_available_rows": 189,
+    "current_eri_available_rows": 189,
+    "fair_price_rows": 246,
+    "fair_price_available_rows": 166
+  }
+}
