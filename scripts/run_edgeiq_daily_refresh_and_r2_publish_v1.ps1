@@ -1,3 +1,7 @@
+param(
+    [switch]$PublishExistingToday
+)
+
 $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version Latest
 
@@ -26,12 +30,19 @@ Write-Host 'EDGEiQ GOVERNED DAILY REFRESH + R2 PUBLICATION'
 Write-Host '======================================================================'
 Write-Host "EXPECTED_MELBOURNE_DATE=$ExpectedDate"
 Write-Host "ROOT=$Root"
+Write-Host "MODE=$(if ($PublishExistingToday) { 'PUBLISH_EXISTING_TODAY' } else { 'FULL_DAILY_REFRESH' })"
 
-& $Python.Source $DailyScript
-$RefreshExit = $LASTEXITCODE
-Write-Host "DAILY_REFRESH_EXIT=$RefreshExit"
-if ($RefreshExit -ne 0) {
-    throw "DAILY_REFRESH_FAILED=$RefreshExit"
+if (-not $PublishExistingToday) {
+    & $Python.Source $DailyScript
+    $RefreshExit = $LASTEXITCODE
+    Write-Host "DAILY_REFRESH_EXIT=$RefreshExit"
+    if ($RefreshExit -ne 0) {
+        throw "DAILY_REFRESH_FAILED=$RefreshExit"
+    }
+}
+else {
+    Write-Host 'DAILY_REFRESH_SKIPPED=YES'
+    Write-Host 'RECOVERY_RULE=EXISTING_AUDIT_MUST_MATCH_TODAY_AND_PASS'
 }
 
 if (-not (Test-Path -LiteralPath $AuditPath)) {
@@ -63,6 +74,7 @@ $Sentinel = [ordered]@{
     races_built = $Audit.races_built
     runners_built = $Audit.runners_built
     source = 'run_edgeiq_daily_refresh_and_r2_publish_v1.ps1'
+    publication_mode = $(if ($PublishExistingToday) { 'existing_today_recovery' } else { 'full_daily_refresh' })
 }
 
 $Sentinel | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath $SentinelPath -Encoding UTF8
@@ -104,5 +116,6 @@ Write-Host 'DATE_GATE=PASS'
 Write-Host 'DAILY_AUDIT=PASS'
 Write-Host 'R2_RUNTIME_PUBLISH=PASS'
 Write-Host 'FRESHNESS_SENTINEL=PASS'
+Write-Host "PUBLICATION_MODE=$(if ($PublishExistingToday) { 'EXISTING_TODAY_RECOVERY' } else { 'FULL_DAILY_REFRESH' })"
 Write-Host 'MODEL_MATH_CHANGED=NO'
 Write-Host '======================================================================'
