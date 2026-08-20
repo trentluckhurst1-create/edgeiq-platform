@@ -3,6 +3,8 @@ import { edgeiqDataPath } from "./edgeiqDataOrigin";
 export const EDGEIQ_REFRESH_MS = 15000;
 
 export const EDGEIQ_LIVE_FILES = {
+  threeDayWindow: edgeiqDataPath("/data/edgeiq_three_day_window_v1.json"),
+  threeDayProductCatalog: edgeiqDataPath("/data/edgeiq_three_day_product_catalog_v1.json"),
   liveRunnerBoard: edgeiqDataPath("/data/edgeiq_live_runner_board_v1.csv"),
   trainerJockeyFactors: edgeiqDataPath("/data/edgeiq_live_trainer_jockey_factor_feed_v3.csv"),
   terminalFeed: edgeiqDataPath("/data/edgeiq_vic_live_terminal_feed_v1.csv"),

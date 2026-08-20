@@ -1,3 +1,4 @@
+import { edgeiqDataPath } from "../../../config/edgeiqDataOrigin";
 import {
   loadThreeDayCatalog,
   type ThreeDayCatalog,
@@ -93,7 +94,7 @@ export type MeetingsWorkspaceViewModel = {
   days: MeetingsDayViewModel[];
 };
 
-const WINDOW_URL = "/data/edgeiq_three_day_window_v1.json";
+const WINDOW_URL = edgeiqDataPath("/data/edgeiq_three_day_window_v1.json");
 
 let cachedWindow: ThreeDayWindow | null = null;
 let pendingWindow: Promise<ThreeDayWindow> | null = null;

@@ -1,3 +1,4 @@
+import { edgeiqDataPath } from "../../../config/edgeiqDataOrigin";
 import { loadJsonFeed } from "../../services/feed-loader/ProductFeedCache";
 import { normaliseCatalogTrackNames } from "../../design-system/presentation";
 
@@ -50,7 +51,7 @@ export type ThreeDayCatalog = {
   meetings: ThreeDayMeeting[];
 };
 
-const URL = "/data/edgeiq_three_day_product_catalog_v1.json";
+const URL = edgeiqDataPath("/data/edgeiq_three_day_product_catalog_v1.json");
 const MAX_CATALOG_BYTES = 15_000_000;
 
 export async function loadThreeDayCatalog(
