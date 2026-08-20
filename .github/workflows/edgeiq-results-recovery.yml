@@ -1,0 +1,139 @@
+﻿name: EDGEiQ Results Recovery
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Validate recovery manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          node - <<'NODE'
+          const fs = require("fs");
+
+          const file =
+            "scripts/recovery/edgeiq_manifest_RECOVERY_20260625_20260819.json";
+
+          const rows = JSON.parse(fs.readFileSync(file, "utf8"));
+
+          if (!Array.isArray(rows) || rows.length !== 69) {
+            throw new Error(`Unexpected recovery meeting count: ${rows.length}`);
+          }
+
+          const dates = rows.map(r => r.meeting_date).sort();
+
+          if (dates[0] !== "2026-06-25") {
+            throw new Error(`Unexpected min date: ${dates[0]}`);
+          }
+
+          if (dates[dates.length - 1] !== "2026-08-19") {
+            throw new Error(`Unexpected max date: ${dates[dates.length - 1]}`);
+          }
+
+          const leakage = rows.filter(r =>
+            /trial|jumpout/i.test(`${r.track} ${r.meeting_url}`)
+          );
+
+          if (leakage.length) {
+            throw new Error(`Trial/jumpout leakage: ${leakage.length}`);
+          }
+
+          console.log(`RECOVERY_MANIFEST_MEETINGS=${rows.length}`);
+          console.log(`RECOVERY_DATE_MIN=${dates[0]}`);
+          console.log(`RECOVERY_DATE_MAX=${dates[dates.length - 1]}`);
+          console.log("RECOVERY_MANIFEST_VALID=YES");
+          NODE
+
+      - name: Harvest historical Racing.com results
+        run: node scripts/recovery/edgeiq_graphql_result_recovery_v1.cjs
+
+      - name: Validate recovered horses
+        if: always()
+        shell: bash
+        run: |
+          if [ ! -f recovery-output/edgeiq_graphql_recovery_20260625_20260819_results_v1.csv ]; then
+            echo "RECOVERY_RESULTS_FILE_MISSING"
+            exit 0
+          fi
+
+          python - <<'PY'
+          import csv
+          from pathlib import Path
+
+          path = Path(
+              "recovery-output/"
+              "edgeiq_graphql_recovery_20260625_20260819_results_v1.csv"
+          )
+
+          targets = {
+              "BOUCHEREIGN",
+              "HEMI TWO BARRELL",
+              "MISSION TAICHI",
+          }
+
+          hits = {name: [] for name in targets}
+          rows = 0
+
+          with path.open("r", encoding="utf-8-sig", newline="") as fh:
+              reader = csv.DictReader(fh)
+
+              for row in reader:
+                  rows += 1
+                  horse = str(row.get("horse") or "").strip().upper()
+
+                  if horse in hits:
+                      hits[horse].append({
+                          "race_date": row.get("race_date"),
+                          "track": row.get("track"),
+                          "race_no": row.get("race_no"),
+                          "finish": row.get("finish"),
+                          "margin": row.get("margin"),
+                          "horse_code": row.get("horse_code"),
+                      })
+
+          print(f"RECOVERY_ROWS={rows}")
+
+          for horse in sorted(targets):
+              print(f"{horse}_ROWS={len(hits[horse])}")
+
+              for row in hits[horse]:
+                  print(
+                      f"HIT={horse}|{row['race_date']}|"
+                      f"{row['track']}|R{row['race_no']}|"
+                      f"FIN={row['finish']}|MARGIN={row['margin']}|"
+                      f"HORSE_CODE={row['horse_code']}"
+                  )
+          PY
+
+      - name: Upload recovery artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: edgeiq-results-recovery-20260625-20260819
+          path: recovery-output/
+          if-no-files-found: error
+          retention-days: 14
