@@ -162,6 +162,14 @@ function writeCsv(file, rows, fields) {
           `url=${url.slice(0,700)}`
         );
 
+        if (operation === "GetMeetingByVenueDateTrial") {
+          console.log(
+            `[MEETING_LOOKUP_BODY] ` +
+            `${meetItem.meeting_date}|${meetItem.track}|` +
+            `${body.slice(0,1500)}`
+          );
+        }
+
         captures.push({
           operation,
           status: response.status(),
