@@ -1,0 +1,155 @@
+﻿name: EDGEiQ Results Recovery Retry 6
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  retry:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Validate six-meeting retry manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          node - <<'NODE'
+          const fs = require("fs");
+
+          const file =
+            "scripts/recovery/edgeiq_manifest_RECOVERY_RETRY_6_V1.json";
+
+          const rows = JSON.parse(fs.readFileSync(file, "utf8"));
+
+          const expected = [
+            ["2026-07-03", "MOE"],
+            ["2026-07-03", "WARRACKNABEAL"],
+            ["2026-07-04", "SPORTSBET-WANGARATTA"],
+            ["2026-07-12", "SPORTSBET-BALLARAT"],
+            ["2026-07-20", "SPORTSBET-PAKENHAM SYNTHETIC"],
+            ["2026-08-09", "BET365 ECHUCA"],
+          ];
+
+          if (!Array.isArray(rows) || rows.length !== 6) {
+            throw new Error(`Expected 6 retry meetings, got ${rows.length}`);
+          }
+
+          for (const [date, track] of expected) {
+            const found = rows.some(
+              r => r.meeting_date === date && r.track === track
+            );
+
+            if (!found) {
+              throw new Error(`Missing retry meeting: ${date}|${track}`);
+            }
+          }
+
+          const leakage = rows.filter(r =>
+            /trial|jumpout/i.test(`${r.track} ${r.meeting_url}`)
+          );
+
+          if (leakage.length !== 0) {
+            throw new Error(`Trial/jumpout leakage=${leakage.length}`);
+          }
+
+          console.log("RETRY_MANIFEST_MEETINGS=6");
+          console.log("RETRY_MANIFEST_VALID=YES");
+          NODE
+
+      - name: Retry six failed Racing.com meetings
+        run: node scripts/recovery/edgeiq_graphql_result_recovery_retry_6_v1.cjs
+
+      - name: Audit retry outputs
+        if: always()
+        shell: bash
+        run: |
+          python - <<'PY'
+          import csv
+          from pathlib import Path
+
+          root = Path("recovery-output")
+
+          results = root / "edgeiq_graphql_recovery_retry_6_v1_results.csv"
+          audit = root / "edgeiq_graphql_recovery_retry_6_v1_audit.csv"
+          summary = root / "edgeiq_graphql_recovery_retry_6_v1_summary.csv"
+
+          print(f"RESULTS_EXISTS={results.exists()}")
+          print(f"AUDIT_EXISTS={audit.exists()}")
+          print(f"SUMMARY_EXISTS={summary.exists()}")
+
+          if not audit.exists():
+              print("RETRY_AUDIT_STATUS=MISSING")
+              raise SystemExit(0)
+
+          with audit.open("r", encoding="utf-8-sig", newline="") as fh:
+              rows = list(csv.DictReader(fh))
+
+          ok = [r for r in rows if r.get("status") == "OK"]
+          failed = [r for r in rows if r.get("status") != "OK"]
+
+          print(f"RETRY_AUDITED_MEETINGS={len(rows)}")
+          print(f"RETRY_OK_MEETINGS={len(ok)}")
+          print(f"RETRY_FAILED_MEETINGS={len(failed)}")
+
+          for r in failed:
+              print(
+                  "RETRY_FAILURE="
+                  f"{r.get('meeting_date')}|"
+                  f"{r.get('track')}|"
+                  f"{r.get('status')}|"
+                  f"{r.get('note')}"
+              )
+
+          if results.exists():
+              with results.open(
+                  "r",
+                  encoding="utf-8-sig",
+                  newline=""
+              ) as fh:
+                  result_rows = list(csv.DictReader(fh))
+
+              race_keys = {
+                  (
+                      r.get("race_date"),
+                      r.get("track"),
+                      r.get("race_no"),
+                  )
+                  for r in result_rows
+              }
+
+              print(f"RETRY_RUNNER_ROWS={len(result_rows)}")
+              print(f"RETRY_UNIQUE_RACES={len(race_keys)}")
+
+          if len(rows) == 6 and len(failed) == 0:
+              print("RETRY_GOVERNANCE_STATUS=PASS")
+          else:
+              print("RETRY_GOVERNANCE_STATUS=PARTIAL")
+          PY
+
+      - name: Upload retry artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: edgeiq-results-recovery-retry-6-v1
+          path: recovery-output/
+          if-no-files-found: error
+          retention-days: 14
