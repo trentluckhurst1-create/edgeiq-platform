@@ -38,7 +38,45 @@ function esc(v){ return `"${String(v ?? "").replace(/"/g,'""')}"`; }
 function clean(v){ return v === null || v === undefined ? "" : String(v).trim(); }
 function money(v){ const n = Number(clean(v).replace("$","").replace(",","")); return Number.isFinite(n) ? n : ""; }
 function margin(v){ const n = Number(clean(v).replace("L","")); return Number.isFinite(n) ? n : ""; }
-function opName(url){ const mm=url.match(/query=query%20([^%(]+)/); return mm ? decodeURIComponent(mm[1]) : ""; }
+function opName(url) {
+  try {
+    const parsed = new URL(url);
+
+    // Preferred modern GraphQL request form.
+    const explicit = parsed.searchParams.get("operationName");
+
+    if (explicit) {
+      return explicit.trim();
+    }
+
+    // Fall back to the GraphQL query parameter itself.
+    const query = parsed.searchParams.get("query") || "";
+
+    const queryMatch = query.match(
+      /\b(?:query|mutation)\s+([A-Za-z0-9_]+)/
+    );
+
+    if (queryMatch) {
+      return queryMatch[1];
+    }
+
+    // Last-resort inspection of the decoded full URL.
+    const decoded = decodeURIComponent(url);
+
+    const decodedMatch = decoded.match(
+      /\b(?:query|mutation)\s+([A-Za-z0-9_]+)/
+    );
+
+    if (decodedMatch) {
+      return decodedMatch[1];
+    }
+
+  } catch {
+    // Diagnostic caller will record unresolved operation.
+  }
+
+  return "";
+}
 
 function writeCsv(file, rows, fields) {
   const lines = [fields.map(esc).join(",")];
@@ -114,9 +152,20 @@ function writeCsv(file, rows, fields) {
           return;
         }
 
+        const operation = opName(url);
+
+        console.log(
+          `[GRAPHQL_RESPONSE] ` +
+          `attempt=${attempt} ` +
+          `status=${response.status()} ` +
+          `operation=${operation || "<UNRESOLVED>"} ` +
+          `url=${url.slice(0,700)}`
+        );
+
         captures.push({
-          operation: opName(url),
+          operation,
           status: response.status(),
+          url,
           body
         });
       });
