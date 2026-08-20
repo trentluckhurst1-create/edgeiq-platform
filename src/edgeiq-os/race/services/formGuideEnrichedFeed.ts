@@ -1,3 +1,4 @@
+import { edgeiqDataPath } from "../../../config/edgeiqDataOrigin";
 import type { ThreeDayRace } from "./threeDayCatalog";
 
 export type EnrichedSourceValue<T = number | string> = {
@@ -150,7 +151,7 @@ export type EnrichedFormGuideFeed = {
   races: EnrichedFormGuideRace[];
 };
 
-const URL = "/data/edgeiq_form_guide_enriched_v2.json";
+const URL = edgeiqDataPath("/data/edgeiq_form_guide_enriched_v2.json");
 
 let cachedFeed: EnrichedFormGuideFeed | null = null;
 let pendingFeed: Promise<EnrichedFormGuideFeed> | null = null;

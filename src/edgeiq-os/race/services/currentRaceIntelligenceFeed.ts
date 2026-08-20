@@ -1,3 +1,4 @@
+import { edgeiqDataPath } from "../../../config/edgeiqDataOrigin";
 export type CurrentRaceIntelligenceRunner = {
   runnerId?: string | number | null;
   runnerNumber?: string | number | null;
@@ -56,7 +57,7 @@ type CurrentRaceIntelligencePayload = {
   races?: CurrentRaceIntelligenceRace[];
 };
 
-const URL = "/data/edgeiq_current_race_intelligence_v1.json";
+const URL = edgeiqDataPath("/data/edgeiq_current_race_intelligence_v1.json");
 const MAX_RACES = 1000;
 let cachedPayload: CurrentRaceIntelligencePayload | null = null;
 let pendingPayload: Promise<CurrentRaceIntelligencePayload> | null = null;
