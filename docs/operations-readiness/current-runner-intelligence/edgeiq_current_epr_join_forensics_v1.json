@@ -1,0 +1,18 @@
+{
+  "counts": {
+    "LEGITIMATE_GOVERNED_EXCLUSION": 11,
+    "POPULATED_GOVERNED_EPR": 67
+  },
+  "current_date": "2026-08-22",
+  "generated_utc": "2026-08-21T23:37:29+00:00",
+  "include_scratched": false,
+  "join_failures": 0,
+  "rows": 78,
+  "schema_version": "edgeiq_current_epr_join_forensics_v1",
+  "source_artifacts": {
+    "form_guide": "public/data/edgeiq_form_guide_enriched_v2.json",
+    "race_fields": "public/data/race_fields.csv",
+    "row_audit": "public/data/edgeiq_current_runner_intelligence_audit_v1.csv"
+  },
+  "verdict": "PASS"
+}

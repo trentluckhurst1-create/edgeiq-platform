@@ -26,15 +26,51 @@ try:
     payload = json.loads(JSON_PATH.read_text(encoding="utf-8"))
     runners = payload.get("runners", [])
     add("json_exists", "PASS", str(JSON_PATH))
-    add("schema", "PASS" if payload.get("schemaVersion") == "EDGEIQ_EPI_CURRENT_RATING_V1" else "FAIL", str(payload.get("schemaVersion")))
-    active = [r for r in runners if r.get("status") == "CURRENT"]
-    missing = [r for r in runners if r.get("status") == "MISSING"]
-    zero_defaults = [r for r in active if r.get("value") in (0, "0", 0.0)]
+    schema = str(payload.get("schemaVersion", "")).strip()
+    add("schema", "PASS" if schema.lower() == "edgeiq_epi_current_rating_v1" else "FAIL", schema)
+    active_statuses = {"CURRENT", "EPI_AVAILABLE"}
+    missing_statuses = {
+        "MISSING",
+        "INSUFFICIENT_PERFORMANCE_HISTORY",
+        "NO_PRIOR_FORM_HISTORY",
+    }
+    active = [
+        r for r in runners
+        if str(r.get("status", "")).strip().upper() in active_statuses
+        and r.get("value") not in (None, "")
+    ]
+    missing = [
+        r for r in runners
+        if str(r.get("status", "")).strip().upper() in missing_statuses
+    ]
+    sourced_zero_values = [
+        r for r in active
+        if r.get("value") in (0, "0", 0.0)
+        and str(r.get("source", "")).strip()
+    ]
+    zero_defaults = [
+        r for r in active
+        if r.get("value") in (0, "0", 0.0)
+        and not str(r.get("source", "")).strip()
+    ]
+    missing_defaults = [
+        r for r in missing
+        if r.get("value") not in (None, "")
+    ]
     required = ["value", "display", "version", "source", "status", "rankInRace", "activeFieldSize", "fieldHigh", "fieldAverage", "differenceFromFieldAverage", "recentChange", "trend"]
     missing_fields = [field for field in required if any(field not in r for r in runners)]
     add("runner_rows", "PASS" if runners else "FAIL", str(len(runners)))
     add("active_epi_values", "PASS" if active else "FAIL", str(len(active)))
-    add("missing_without_default", "PASS" if not zero_defaults else "FAIL", f"zero_defaults={len(zero_defaults)} missing={len(missing)}")
+    add(
+        "missing_without_default",
+        "PASS" if not zero_defaults and not missing_defaults else "FAIL",
+        (
+            f"zero_without_source={len(zero_defaults)} "
+            f"sourced_zero_values={len(sourced_zero_values)} "
+            f"missing_numeric_defaults={len(missing_defaults)} "
+            f"missing={len(missing)}"
+        ),
+    )
     add("typed_epi_fields", "PASS" if not missing_fields else "FAIL", ",".join(missing_fields))
 except Exception as exc:
     add("json_load", "FAIL", repr(exc))
