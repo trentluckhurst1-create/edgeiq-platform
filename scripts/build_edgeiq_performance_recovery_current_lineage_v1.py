@@ -9,7 +9,7 @@ ROOT=Path(__file__).resolve().parents[1]; DATA=ROOT/'public'/'data'; DOCS=ROOT/'
 REC=DOCS/'recovery'; WHD=DOCS/'warehouse'; STD=DOCS/'standard-times'; LVS=DOCS/'lengths-v-standard'; EPI=DOCS/'epi'; OPS=ROOT/'docs'/'operations-readiness'/'betting'
 WAREHOUSE=WHD/'edgeiq_performance_fact_warehouse_v1.csv'; STANDARD=STD/'edgeiq_standard_time_fact_v1.csv'; STDA=STD/'edgeiq_standard_time_group_audit_v1.csv'
 RACE_LVS=LVS/'edgeiq_race_lengths_v_standard_fact_v1.csv'; RUNNER_LVS=LVS/'edgeiq_runner_lengths_v_standard_fact_v1.csv'; EPI_FACT=EPI/'edgeiq_epi_performance_fact_v1.csv'; ERI_FACT=EPI/'edgeiq_epi_race_strength_fact_v1.csv'
-FORM_JSON=DATA/'edgeiq_form_guide_enriched_v2.json'; FORM_CSV=DATA/'edgeiq_form_guide_enriched_v2.csv'; RACE_FIELDS=DATA/'race_fields.csv'; CURRENT_EPI_JSON=DATA/'edgeiq_epi_current_rating_v1.json'; FAIR=DATA/'edgeiq_fair_price_v7_2.csv'; MARKET_TERMINAL=DATA/'edgeiq_market_terminal_feed_v1.csv'
+FORM_JSON=DATA/'edgeiq_form_guide_enriched_v2.json'; FORM_CSV=DATA/'edgeiq_form_guide_enriched_v2.csv'; RACE_FIELDS=DATA/'race_fields.csv'; CURRENT_EPI_JSON=DATA/'edgeiq_epi_current_rating_v1.json'; FAIR=DATA/'edgeiq_fair_price_v7_2.csv'; MARKET_TERMINAL=DATA/'edgeiq_market_terminal_feed_v1.csv'; EPI_VNEXT=DATA/'edgeiq_historical_epi_vnext_master_v1.csv'
 TS=datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace('+00:00','Z'); MIN_OBS=20; TEMP=6.0
 ALIASES={'PICKLEBETPARKWERRIBEE':'WERRIBEE','WERRIBEE':'WERRIBEE','SPORTSBETPAKENHAMSYNTHETIC':'PAKENHAMSYNTHETIC','SOUTHSIDEPAKENHAMSYNTHETIC':'PAKENHAMSYNTHETIC','PAKENHAMSYNTHETIC':'PAKENHAMSYNTHETIC','SOUTHSIDEPAKENHAM':'PAKENHAM','TYNONG':'PAKENHAM','PAKENHAM':'PAKENHAM','TYNONGSYNTHETIC':'PAKENHAMSYNTHETIC','SOUTHSIDECRANBOURNE':'CRANBOURNE','CRANBOURNE':'CRANBOURNE','SPORTSBETSANDOWNLAKESIDE':'SANDOWNLAKESIDE','SANDOWNLAKESIDE':'SANDOWNLAKESIDE','SPORTSBETSANDOWNHILLSIDE':'SANDOWNHILLSIDE','SANDOWNHILLSIDE':'SANDOWNHILLSIDE','LADBROKESGEELONG':'GEELONG','GEELONG':'GEELONG','SPORTSBETBALLARAT':'BALLARAT','BALLARAT':'BALLARAT','SPORTSBETBALLARATSYNTHETIC':'BALLARATSYNTHETIC','BALLARATSYNTHETIC':'BALLARATSYNTHETIC','BET365PARKKYNETON':'KYNETON','BET365ECHUCA':'ECHUCA','BET365SEYMOUR':'SEYMOUR','BET365TERANG':'TERANG','BET365COLAC':'COLAC'}
 def mkdirs():
@@ -40,6 +40,9 @@ def it(v):
     x=num(v)
     if x is not None: return str(int(x)) if float(x).is_integer() else str(x)
     m=re.search(r'\d+',t(v)); return m.group(0) if m else ''
+def trial_like(*values):
+    s=' '.join(t(v).upper() for v in values)
+    return any(x in s for x in ['TRIAL','JUMPOUT','JUMP OUT','J/OUT','J/O'])
 def cond(v):
     s=t(v).upper()
     if 'HEAVY' in s: return 'HEAVY'
@@ -155,6 +158,18 @@ def hist_indices():
     eri={r.get('canonical_race_id',''):r.get('eri_value','') for r in read_csv(ERI_FACT)}
     return exact,loose,epi,eri
 
+def vnext_indices():
+    by=defaultdict(list)
+    if not EPI_VNEXT.exists(): return by
+    with EPI_VNEXT.open('r',encoding='utf-8-sig',errors='replace',newline='') as f:
+        for r in csv.DictReader(f):
+            hk=hn(r.get('horse_key') or r.get('horse')); d=dt(r.get('race_date')); ev=num(r.get('epi'))
+            if not hk or not d or ev is None: continue
+            if trial_like(r.get('class_name'),r.get('race_name'),r.get('track')): continue
+            by[hk].append({'pid':t(r.get('run_id')) or t(r.get('race_id')),'date':d,'epi':ev,'eri':num(r.get('eri')),'method':'EPI_VNEXT_HORSE_KEY_OFFICIAL_PRIOR'})
+    for rows in by.values(): rows.sort(key=lambda x:x['date'],reverse=True)
+    return by
+
 def form_runners():
     if not FORM_JSON.exists(): return []
     p=json.loads(FORM_JSON.read_text(encoding='utf-8')); out=[]
@@ -166,7 +181,7 @@ def form_runners():
 def active(r): return str(r.get('scratched','')).strip().lower() not in {'true','scr','scratched','lscr'}
 
 def current_epi():
-    exact,loose,epi,eri=hist_indices(); runners=form_runners(); recs=[]; probe=[]; requiring=matched=matched_runs=0
+    exact,loose,epi,eri=hist_indices(); vnext=vnext_indices(); runners=form_runners(); recs=[]; probe=[]; requiring=matched=matched_runs=0
     for r in runners:
         ff=[x for x in (r.get('fullForm') or []) if isinstance(x,dict)]; horse=t(r.get('runnerName')); hk=hn(horse); rdace=dt(r.get('raceDate')); meet=t(r.get('meeting')); rn=it(r.get('raceNumber'))
         if active(r) and ff: requiring+=1
@@ -174,12 +189,24 @@ def current_epi():
         for run in ff:
             d=dt(run.get('date'))
             if not d or (rdace and d>=rdace): continue
+            if trial_like(run.get('class'),run.get('track'),run.get('historicalRunStatus'),run.get('note')): continue
             tr=ct(run.get('track')); dist=it(run.get('distance')); rrn=it(run.get('raceNumber')); pids=[]; method=''
             if hk and d and tr and dist and rrn: pids=exact.get((hk,d,tr,rrn,dist),[]); method='HORSE_DATE_TRACK_RACE_DISTANCE'
             if not pids and hk and d and tr and dist: pids=loose.get((hk,d,tr,dist),[]); method='HORSE_DATE_TRACK_DISTANCE'
             if len(pids)==1 and pids[0] in epi and t(epi[pids[0]].get('epi_value')):
                 er=eri.get(t(epi[pids[0]].get('canonical_race_id'))); ms.append({'pid':pids[0],'date':d,'epi':float(epi[pids[0]]['epi_value']),'eri':float(er) if t(er) else None,'method':method})
             elif len(pids)>1: reason='AMBIGUOUS_CANONICAL_PERFORMANCE_MATCH'
+            he=run.get('historicalEpi') if isinstance(run.get('historicalEpi'),dict) else {}
+            hv=num(he.get('value')) if he else None
+            if hv is None: hv=num(run.get('performanceRating'))
+            if hv is not None and not any(x['date']==d and abs(float(x['epi'])-float(hv))<0.0001 for x in ms):
+                er=num(run.get('raceRating')) or num(run.get('eri'))
+                ms.append({'pid':t(run.get('canonicalRunKey')) or t(run.get('canonicalRaceId')) or f'FULLFORM|{hk}|{d}|{tr}|R{rrn}','date':d,'epi':float(hv),'eri':er,'method':'FULLFORM_GOVERNED_HISTORICAL_EPI'})
+        if hk:
+            for vx in vnext.get(hk,[]):
+                if rdace and vx['date']>=rdace: continue
+                if not any(x['date']==vx['date'] and abs(float(x['epi'])-float(vx['epi']))<0.0001 for x in ms):
+                    ms.append(vx)
         if ms:
             ms.sort(key=lambda x:x['date'],reverse=True); matched+=1; matched_runs+=len(ms); last=ms[0]; last10=ms[:10]; avg=sum(x['epi'] for x in last10)/len(last10); peak=max(x['epi'] for x in last10); cv=last['epi']; ce=last.get('eri'); trend='STABLE'
             if len(last10)>=2:
