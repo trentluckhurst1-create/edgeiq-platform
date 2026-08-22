@@ -5,6 +5,10 @@ on:
   schedule:
     - cron: '17 * * * *'
 
+concurrency:
+  group: edgeiq-runtime-freshness
+  cancel-in-progress: false
+
 jobs:
   freshness:
     runs-on: ubuntu-latest
@@ -13,49 +17,24 @@ jobs:
       contents: read
     env:
       EDGEIQ_DATA_ORIGIN: ${{ vars.EDGEIQ_DATA_ORIGIN }}
+      EDGEIQ_PRODUCTION_HOST: ${{ vars.EDGEIQ_PRODUCTION_HOST }}
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Validate configured data origin
         shell: bash
         run: |
           set -euo pipefail
           test -n "$EDGEIQ_DATA_ORIGIN" || { echo 'Missing EDGEIQ_DATA_ORIGIN repository variable'; exit 1; }
+          EDGEIQ_PRODUCTION_HOST="${EDGEIQ_PRODUCTION_HOST:-https://edgeiq-platform.pages.dev}"
+          echo "EDGEIQ_PRODUCTION_HOST=$EDGEIQ_PRODUCTION_HOST" >> "$GITHUB_ENV"
 
-      - name: Verify R2 operating date is current in Melbourne
-        shell: python
+      - name: Verify production runtime freshness
+        shell: bash
         run: |
-          import json
-          import os
-          import sys
-          import urllib.request
-          from datetime import datetime
-          from zoneinfo import ZoneInfo
-
-          origin = os.environ['EDGEIQ_DATA_ORIGIN'].rstrip('/')
-          url = f'{origin}/data/edgeiq_runtime_freshness_v1.json'
-
-          try:
-              with urllib.request.urlopen(url, timeout=30) as response:
-                  payload = json.load(response)
-          except Exception as exc:
-              print(f'R2_FRESHNESS_FETCH=FAIL|{exc}')
-              raise SystemExit(1)
-
-          expected = datetime.now(ZoneInfo('Australia/Melbourne')).date().isoformat()
-          actual = str(payload.get('operating_date') or '')
-          audit_status = str(payload.get('audit_status') or '')
-
-          print(f'EXPECTED_MELBOURNE_DATE={expected}')
-          print(f'R2_OPERATING_DATE={actual}')
-          print(f'R2_AUDIT_STATUS={audit_status}')
-          print(f'R2_PUBLISHED_AT_UTC={payload.get("published_at_utc", "")}')
-
-          if actual != expected:
-              print('EDGEIQ_RUNTIME_DATE_GATE=FAIL')
-              raise SystemExit(1)
-
-          if audit_status != 'PASS':
-              print('EDGEIQ_RUNTIME_AUDIT_GATE=FAIL')
-              raise SystemExit(1)
-
-          print('EDGEIQ_RUNTIME_FRESHNESS=PASS')
+          set -euo pipefail
+          python scripts/audit_edgeiq_runtime_freshness_v1.py \
+            --data-origin "$EDGEIQ_DATA_ORIGIN" \
+            --production-host "$EDGEIQ_PRODUCTION_HOST"
