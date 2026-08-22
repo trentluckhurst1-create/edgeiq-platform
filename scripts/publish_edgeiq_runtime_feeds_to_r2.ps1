@@ -45,6 +45,19 @@ try {
         }
     }
 
+    $RequiredCurrentRaceFeeds = @(
+        'edgeiq_epi_current_rating_v1.json',
+        'edgeiq_epi_current_rating_v1.csv',
+        'edgeiq_fair_price_epr_v1.csv',
+        'edgeiq_form_guide_enriched_v2.json',
+        'edgeiq_form_guide_enriched_v2.csv',
+        'edgeiq_market_terminal_feed_v1.csv'
+    )
+
+    foreach ($Name in $RequiredCurrentRaceFeeds) {
+        [void]$Names.Add($Name)
+    }
+
     $FeedNames = @($Names | Sort-Object)
     Write-Host "RUNTIME_FEEDS_DISCOVERED=$($FeedNames.Count)"
 
