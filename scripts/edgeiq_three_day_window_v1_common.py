@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 from dataclasses import asdict, dataclass
 from datetime import date, datetime, timedelta
 from zoneinfo import ZoneInfo
@@ -12,6 +13,8 @@ DAY_KEYS = (
     "TOMORROW",
     "DAY_PLUS_2",
 )
+
+ENV_DATE_OVERRIDE = "EDGEIQ_PIPELINE_DATE"
 
 
 @dataclass(frozen=True)
@@ -42,11 +45,43 @@ def melbourne_now() -> datetime:
     return datetime.now(TIMEZONE)
 
 
+def get_operational_today(
+    *,
+    now: datetime | None = None,
+    override_date: date | None = None,
+) -> tuple[date, str]:
+    if override_date is not None:
+        return override_date, "EXPLICIT_OVERRIDE"
+
+    env_value = os.environ.get(ENV_DATE_OVERRIDE)
+    env_override = parse_override_date(env_value)
+
+    if env_override is not None:
+        return env_override, f"ENV_OVERRIDE_{ENV_DATE_OVERRIDE}"
+
+    runtime_now = now or melbourne_now()
+
+    if runtime_now.tzinfo is None:
+        runtime_now = runtime_now.replace(tzinfo=TIMEZONE)
+    else:
+        runtime_now = runtime_now.astimezone(TIMEZONE)
+
+    return runtime_now.date(), "AUSTRALIA_MELBOURNE_CLOCK"
+
+
+def build_operational_dates(today: date) -> tuple[date, date, date]:
+    return (
+        today,
+        today + timedelta(days=1),
+        today + timedelta(days=2),
+    )
+
+
 def resolve_as_of_date(as_of_date: date | None = None) -> tuple[date, str]:
     if as_of_date is not None:
-        return as_of_date, "TEST_OVERRIDE"
+        return get_operational_today(override_date=as_of_date)
 
-    return melbourne_now().date(), "AUSTRALIA_MELBOURNE_CLOCK"
+    return get_operational_today()
 
 
 def build_three_day_window(
@@ -54,8 +89,7 @@ def build_three_day_window(
 ) -> EdgeiqThreeDayWindow:
     today, date_source = resolve_as_of_date(as_of_date)
 
-    tomorrow = today + timedelta(days=1)
-    day_plus_2 = today + timedelta(days=2)
+    today, tomorrow, day_plus_2 = build_operational_dates(today)
 
     generated_at = melbourne_now().isoformat(timespec="seconds")
 
