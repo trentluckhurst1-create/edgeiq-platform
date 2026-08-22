@@ -6,6 +6,9 @@ export type EnrichedSourceValue<T = number | string> = {
   source: string | null;
   version: string | null;
   asAt?: string | null;
+  status?: string | null;
+  missingReason?: string | null;
+  publicReasons?: string[] | null;
 };
 
 export type EnrichedRecordSummary = {

@@ -1,4 +1,19 @@
 import { edgeiqDataPath } from "../../../config/edgeiqDataOrigin";
+type GovernedCurrentValue<T = string | number> = {
+  value?: T | null;
+  source?: string | null;
+  version?: string | null;
+  asAt?: string | null;
+  status?: string | null;
+  missingReason?: string | null;
+  joinMethod?: string | null;
+  evidenceRuns?: string | number | null;
+  evidenceCoverage?: string | number | null;
+  sourceVersion?: string | null;
+  band?: string | null;
+  publicReasons?: string[] | null;
+};
+
 export type CurrentRaceIntelligenceRunner = {
   runnerId?: string | number | null;
   runnerNumber?: string | number | null;
@@ -16,11 +31,11 @@ export type CurrentRaceIntelligenceRunner = {
     fieldAverage?: string | number | null;
     differenceFromFieldAverage?: string | number | null;
   } | null;
-  earlySpeed?: { value?: string | number | null } | null;
-  lateSpeed?: { value?: string | number | null } | null;
-  suitability?: { value?: string | number | null; band?: string | null; publicReasons?: string[] | null } | null;
-  formMomentum?: { value?: string | number | null; band?: string | null; publicReasons?: string[] | null } | null;
-  raceShape?: { value?: string | number | null } | null;
+  earlySpeed?: GovernedCurrentValue<number> | null;
+  lateSpeed?: GovernedCurrentValue<number> | null;
+  suitability?: GovernedCurrentValue<number> | null;
+  formMomentum?: GovernedCurrentValue<number> | null;
+  raceShape?: GovernedCurrentValue<string | number> | null;
   projectedMapZone?: string | null;
   publicReasons?: Record<string, string[] | null | undefined> | null;
 };

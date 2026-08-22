@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "build:verify-data": "python scripts/ensure_edgeiq_current_data_rollover_v1.py --check-only",
+    "test:race": "node scripts/test_edgeiq_race_tab_view_model_v1.mjs",
     "refresh:data": "python scripts/ensure_edgeiq_current_data_rollover_v1.py",
     "lint": "eslint .",
     "preview": "vite preview"

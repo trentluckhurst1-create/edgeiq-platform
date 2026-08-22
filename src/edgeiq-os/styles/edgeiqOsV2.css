@@ -38421,10 +38421,10 @@ html, body, #root {
 .edgeiq-os .eiq-race-v1__table-wrap { width: 100% !important; overflow-x: auto !important; margin-top: 10px !important; }
 .edgeiq-os .eiq-race-v1__table { min-width: 1238px !important; table-layout: fixed !important; }
 .edgeiq-os .eiq-race-v1__table .col-no { width: 48px !important; } .edgeiq-os .eiq-race-v1__table .col-silk { width: 54px !important; } .edgeiq-os .eiq-race-v1__table .col-runner { width: auto !important; min-width: 190px !important; } .edgeiq-os .eiq-race-v1__table .col-bar { width: 54px !important; } .edgeiq-os .eiq-race-v1__table .col-wgt { width: 70px !important; } .edgeiq-os .eiq-race-v1__table .col-jockey { width: 150px !important; } .edgeiq-os .eiq-race-v1__table .col-trainer { width: 170px !important; } .edgeiq-os .eiq-race-v1__table .col-epi { width: 74px !important; } .edgeiq-os .eiq-race-v1__table .col-speed { width: 96px !important; } .edgeiq-os .eiq-race-v1__table .col-edgeiq { width: 104px !important; } .edgeiq-os .eiq-race-v1__table .col-market { width: 86px !important; } .edgeiq-os .eiq-race-v1__table .col-status { width: 104px !important; }
-.edgeiq-os .eiq-race-v1__table thead th { height: 42px !important; text-align: center !important; font-size: 13px !important; font-weight: 700 !important; }
-.edgeiq-os .eiq-race-v1__table tbody td { height: 44px !important; text-align: center !important; font-size: 13px !important; font-weight: 500 !important; }
+.edgeiq-os .eiq-race-v1__table thead th { height: 42px !important; text-align: center !important; font-size: 11px !important; font-weight: 800 !important; }
+.edgeiq-os .eiq-race-v1__table tbody td { height: 44px !important; text-align: center !important; font-size: 12px !important; font-weight: 500 !important; }
 .edgeiq-os .eiq-race-v1__table th.is-left, .edgeiq-os .eiq-race-v1__table td.is-left { text-align: left !important; }
-.edgeiq-os .eiq-race-v1__table td strong { color: var(--eiq-product-text) !important; font-size: 14px !important; font-weight: 700 !important; }
+.edgeiq-os .eiq-race-v1__table td strong { color: var(--eiq-product-text) !important; font-size: 12px !important; font-weight: 650 !important; }
 .edgeiq-os .eiq-race-v1__silk { width: 32px !important; height: 32px !important; display: inline-block !important; object-fit: contain !important; vertical-align: middle !important; }
 .edgeiq-os .eiq-race-v1__silk.is-empty { border: 1px solid var(--eiq-product-border) !important; border-radius: 999px !important; background: #f8fafc !important; }
 .edgeiq-os .eiq-race-v1__table tr.is-scratched { opacity: 0.56 !important; }
@@ -38572,7 +38572,7 @@ html, body, #root {
   padding: 3px 8px !important;
   border: 1px solid #d5e3f3 !important;
   border-radius: 999px !important;
-  background: linear-gradient(90deg, #d9ebff 0%, #eef5ff 52%, #f8fafc 100%) !important;
+  background: #f8fafc !important;
   overflow: hidden !important;
 }
 .eiq-approved-shell .eiq-race-v1__speed-zone > div::after {
@@ -38665,8 +38665,17 @@ html, body, #root {
   width: 118px !important;
 }
 .eiq-approved-shell .eiq-race-v1__table thead th {
-  font-size: 12px !important;
+  font-size: 11px !important;
   line-height: 14px !important;
+  font-weight: 800 !important;
+}
+.eiq-approved-shell .eiq-race-v1__table tbody td {
+  font-size: 12px !important;
+  font-weight: 500 !important;
+}
+.eiq-approved-shell .eiq-race-v1__table td strong {
+  font-size: 12px !important;
+  font-weight: 650 !important;
 }
 
 /* EDGEIQ FIELD WORKSPACE V1 */

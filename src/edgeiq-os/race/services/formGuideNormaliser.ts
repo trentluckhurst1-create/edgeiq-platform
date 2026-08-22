@@ -100,6 +100,7 @@ export type FormGuideRunnerDisplay = {
   raceDayPattern: FormGuideProfileLine[];
   lastStart: FormGuideLastStart | null;
   insights: FormGuideInsightGroup[];
+  governedStatements: string[];
   recentRuns: FormGuideRecentRun[];
 };
 
@@ -257,6 +258,14 @@ function textFrom(source: unknown, keys: string[]): string {
   const nested = firstValue(source, keys);
   if (nested === source) return "";
   return safeText(nested);
+}
+
+function publicReasonsFrom(source: unknown): string[] {
+  const parsed = parseMaybeStructured(source);
+  if (!isRecord(parsed)) return [];
+  const reasons = parsed.publicReasons;
+  if (!Array.isArray(reasons)) return [];
+  return reasons.map((reason) => safeText(reason)).filter(Boolean);
 }
 
 function normaliseRunnerName(value: unknown): string {
@@ -600,6 +609,11 @@ export function normaliseFormGuideRace(
         profileLine("Other Jockeys", enriched?.jockeyProfile?.otherJockeys ?? null),
       ];
       const recentRuns = recentRunsFromEnriched(enriched);
+      const governedStatements = [
+        ...publicReasonsFrom(enriched?.raceShape),
+        ...publicReasonsFrom(enriched?.suitability),
+        ...publicReasonsFrom(enriched?.formMomentum),
+      ];
 
       const display: FormGuideRunnerDisplay = {
         id: safeText(enriched?.runnerId) || `race-${raceNumber || "race"}-runner-${no || index + 1}`,
@@ -646,6 +660,7 @@ export function normaliseFormGuideRace(
         raceDayPattern: profileRows(enriched?.preparationProfile?.length ? enriched.preparationProfile : enriched?.raceDayPattern),
         lastStart: lastStartFromRun(enriched?.lastStart, daysSinceLastRun),
         insights: [],
+        governedStatements,
         recentRuns,
       };
       display.insights = buildInsights(display);
