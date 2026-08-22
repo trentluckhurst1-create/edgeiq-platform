@@ -109,6 +109,7 @@ assert.ok(!model.topEpr.some((row) => row.runner === "Missing EPR"), "missing go
 assert.equal(model.speedMap[0]?.zone, "GOVERNED SPEED", "governed evidence replaces speed-map placeholder");
 assert.equal(model.speedMap[0]?.runners[0]?.runner, "Speedy", "speed preview orders existing governed speed evidence");
 assert.equal(model.cards.find((card) => card.label === "TEMPO")?.value, "Insufficient Evidence", "genuine missing tempo remains a missing state");
+assert.equal(model.unavailable[0], "Governed tempo field not supplied", "tempo missing state names the absent tempo field, not map evidence");
 assert.equal(model.cards.find((card) => card.label === "EPF")?.value, "Insufficient Evidence", "genuine missing EPF remains a missing state");
 assert.ok(model.whatMatters.length <= 3, "What Matters does not manufacture more than three statements");
 assert.ok(model.whatMatters.some((item) => item.includes("Alpha:")), "governed runner evidence can populate What Matters");
@@ -120,13 +121,16 @@ const rawOnly = buildRaceIntelligenceViewModel({
 });
 assert.equal(rawOnly.runnerBoard[0]?.epr, "", "no historical EPI fallback into current EPR");
 
-assert.equal(raceWorkspaceViewModelTestExports.compactMissing(""), "—", "missing-value formatting uses a consistent dash");
+assert.equal(raceWorkspaceViewModelTestExports.compactMissing(""), "-", "missing-value formatting uses a consistent dash");
 assert.ok(source.includes("topEprFromBoard"), "EPR Top 3 uses governed board values, not stale feed summaries");
+assert.ok(!source.includes("Awaiting Map Evidence"), "Race view model does not conflate missing tempo with missing map evidence");
 
 const componentSource = await readFile(path.join(repoRoot, "src", "edgeiq-os", "race", "components", "RaceIntelligenceWorkspace.tsx"), "utf8");
 assert.ok(componentSource.includes("EPR TOP 3"), "Race heading is EPR TOP 3");
+assert.ok(componentSource.includes("RUNNER BOARD EPR"), "Runner Board heading is EPR-labelled");
 assert.ok(componentSource.includes("<th>EPR</th>"), "Runner Board column is EPR");
 assert.ok(!componentSource.includes("Awaiting EPI"), "Race current-rating empty state does not say EPI");
+assert.ok(!componentSource.includes("Awaiting Speed Evidence"), "Race speed preview does not blank governed partial evidence with stale speed placeholder");
 
 const formGuideFeedSource = await readFile(path.join(repoRoot, "src", "edgeiq-os", "race", "services", "formGuideEnrichedFeed.ts"), "utf8");
 const currentRaceFeedSource = await readFile(path.join(repoRoot, "src", "edgeiq-os", "race", "services", "currentRaceIntelligenceFeed.ts"), "utf8");
@@ -135,4 +139,4 @@ assert.ok(formGuideFeedSource.includes("selectedRaceKey"), "form-guide Race matc
 assert.ok(currentRaceFeedSource.includes("edgeiqDataPath(\"/data/edgeiq_current_race_intelligence_v1.json\")"), "current Race intelligence request uses authoritative runtime data path");
 
 console.log("EDGEIQ_RACE_TAB_VIEW_MODEL_TESTS=PASS");
-console.log("ASSERTIONS=18");
+console.log("ASSERTIONS=22");

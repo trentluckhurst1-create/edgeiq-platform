@@ -61,7 +61,7 @@ function numberText(value: unknown, decimals = 1): string {
 }
 
 function compactMissing(value: string): string {
-  return clean(value) || "—";
+  return clean(value) || "-";
 }
 
 function normaliseRunner(value: unknown): string {
@@ -164,7 +164,7 @@ function speedMapFromRace(race: CurrentRaceIntelligenceRace | null, formGuide: F
     const name = clean(runner.runnerName);
     if (name) grouped.get(lane)?.push({ no: clean(runner.runnerNumber), runner: name, earlySpeed: numberText(runner.earlySpeed?.value, 0) });
   });
-  const raceMap = lanes.map((zone) => ({ zone, runners: grouped.get(zone) ?? [] })).filter((item) => item.runners.length || item.zone !== "UNRESOLVED");
+  const raceMap = lanes.map((zone) => ({ zone, runners: grouped.get(zone) ?? [] })).filter((item) => item.runners.length);
   if (raceMap.some((zone) => zone.runners.length)) return raceMap;
 
   const runners = (formGuide?.runners ?? [])
@@ -204,6 +204,9 @@ function runnerReasonStatements(race: CurrentRaceIntelligenceRace | null, formGu
   (race?.runners ?? []).forEach((runner) => {
     if (runner.scratched) return;
     const name = clean(runner.runnerName);
+    Object.values(runner.publicReasons ?? {}).forEach((reasons) => {
+      (reasons ?? []).forEach((reason) => push(name, reason));
+    });
     (runner.raceShape?.publicReasons ?? []).forEach((reason) => push(name, reason));
     (runner.suitability?.publicReasons ?? []).forEach((reason) => push(name, reason));
     (runner.formMomentum?.publicReasons ?? []).forEach((reason) => push(name, reason));
@@ -243,17 +246,17 @@ export function buildRaceIntelligenceViewModel(params: {
   const speedEvidenceCount = speedMap.reduce((total, zone) => total + zone.runners.length, 0);
   const hiddenAngles = statements[1] || "Insufficient Evidence";
   const determinant = statements[0] || topEpr[0]?.runner || "Insufficient Evidence";
-  if (!tempo) unavailable.push("Awaiting Map Evidence");
+  if (!tempo) unavailable.push("Governed tempo field not supplied");
   if (!epf) unavailable.push("Insufficient EPF Evidence");
   if (!statements.length) unavailable.push("Insufficient Governed Statements");
   return {
     cards: [
       { label: "TEMPO", value: tempo || "Insufficient Evidence", detail: mapCoverage || speedEvidenceCount ? `${mapCoverage || speedEvidenceCount} runners with governed speed/map evidence` : "Governed tempo not supplied" },
       { label: "EPF", value: epf || "Insufficient Evidence", detail: "Governed EPF not supplied" },
-      { label: "KEY DETERMINANTS", value: determinant, detail: statements.length ? "Governed race intelligence" : topEpr[0] ? "Top governed EPR" : "No determinant supplied" },
-      { label: "HIDDEN ANGLES", value: hiddenAngles, detail: statements[1] ? "Governed supporting statement" : "No hidden angle supplied" },
+      { label: "KEY DETERMINANTS", value: determinant, detail: statements.length ? "Governed race intelligence" : topEpr[0] ? "Top governed EPR" : "Governed determinant not supplied" },
+      { label: "HIDDEN ANGLES", value: hiddenAngles, detail: statements[1] ? "Governed supporting statement" : "Governed hidden-angle statement not supplied" },
     ],
-    whatMatters: statements.length ? statements : unavailable.slice(0, 3),
+    whatMatters: statements,
     speedMap,
     topEpr,
     runnerBoard: board,
