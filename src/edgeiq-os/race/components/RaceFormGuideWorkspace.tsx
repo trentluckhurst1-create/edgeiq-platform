@@ -723,7 +723,7 @@ export function RaceFormGuideWorkspace({ raceBook, field, meetingRaces, selected
     loadFormGuideEnrichedFeed()
       .then((feed) => {
         if (cancelled) return;
-        setEnrichedRace(findEnrichedFormGuideRace(feed, raceBook, meetingRaces));
+        setEnrichedRace(findEnrichedFormGuideRace(feed, raceBook, meetingRaces, selectedRaceKey));
       })
       .catch((error) => {
         console.warn("Form Guide enrichment unavailable", error);

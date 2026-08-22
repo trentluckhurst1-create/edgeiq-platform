@@ -81,7 +81,7 @@ export function RaceWorkspace({
     let cancelled = false;
     loadFormGuideEnrichedFeed()
       .then((feed) => {
-        if (!cancelled) setEnrichedRace(findEnrichedFormGuideRace(feed, raceBook, meetingRaces));
+        if (!cancelled) setEnrichedRace(findEnrichedFormGuideRace(feed, raceBook, meetingRaces, selectedRaceKey));
       })
       .catch(() => {
         if (!cancelled) setEnrichedRace(null);

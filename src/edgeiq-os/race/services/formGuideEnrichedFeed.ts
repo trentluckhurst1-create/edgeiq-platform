@@ -180,6 +180,36 @@ function raceKeyFromParts(date: unknown, meeting: unknown, raceNumber: unknown):
   ].join("|");
 }
 
+function raceKeyCandidatesFromParts(date: unknown, meeting: unknown, raceNumber: unknown): string[] {
+  const normalizedDate = String(date ?? "").trim();
+  const normalizedMeeting = normaliseTrack(meeting);
+  const normalizedRaceNumber = normaliseRaceNumber(raceNumber);
+  if (!normalizedDate || !normalizedMeeting || !normalizedRaceNumber) return [];
+
+  const candidates = new Set<string>([
+    `${normalizedDate}|${normalizedMeeting}|${normalizedRaceNumber}`,
+    `${normalizedDate}|${normalizedMeeting}|R${normalizedRaceNumber}`,
+  ]);
+
+  const venueAliases = [
+    normalizedMeeting.replace(/(HILLSIDE|LAKESIDE)$/g, ""),
+  ].filter(Boolean);
+  venueAliases.forEach((venue) => {
+    candidates.add(`${normalizedDate}|${venue}|${normalizedRaceNumber}`);
+    candidates.add(`${normalizedDate}|${venue}|R${normalizedRaceNumber}`);
+  });
+
+  return [...candidates];
+}
+
+function raceKeyCandidatesFromKey(value: unknown): string[] {
+  const text = String(value ?? "").trim().toUpperCase();
+  if (!text) return [];
+  const parts = text.replace(/_/g, "|").split("|");
+  if (parts.length < 3) return [text];
+  return raceKeyCandidatesFromParts(parts[0], parts[1], parts[2]);
+}
+
 export async function loadFormGuideEnrichedFeed(force = false): Promise<EnrichedFormGuideFeed> {
   if (!force && cachedFeed) return cachedFeed;
   if (pendingFeed) return pendingFeed;
@@ -209,19 +239,35 @@ export function findEnrichedFormGuideRace(
   feed: EnrichedFormGuideFeed | null,
   raceBook: any,
   meetingRaces: ThreeDayRace[] = [],
+  selectedRaceKey?: string | null,
 ): EnrichedFormGuideRace | null {
   if (!feed) return null;
 
   const official = raceBook?.official ?? {};
-  const activeRace = meetingRaces.find((race) => String(race.raceKey) === String(official.raceKey));
+  const explicitRaceKeys = [
+    selectedRaceKey,
+    official.raceKey,
+  ].flatMap(raceKeyCandidatesFromKey);
+  const activeRaceByKey = meetingRaces.find((race) => {
+    const candidates = raceKeyCandidatesFromKey(race.raceKey);
+    return candidates.some((candidate) => explicitRaceKeys.includes(candidate));
+  });
+  const activeRace =
+    activeRaceByKey ??
+    meetingRaces.find((race) => normaliseRaceNumber(race.raceNumber) === normaliseRaceNumber(official.raceNumber));
   const meeting = official.meeting ?? activeRace?.source?.meeting ?? activeRace?.source?.venue ?? activeRace?.source?.track;
   const date = official.date ?? official.meetingDate ?? activeRace?.source?.date;
   const raceNumber = official.raceNumber ?? activeRace?.raceNumber;
-  const lookupKey = raceKeyFromParts(date, meeting, raceNumber);
+  const lookupKeys = [
+    ...explicitRaceKeys,
+    ...raceKeyCandidatesFromKey(activeRace?.raceKey),
+    ...raceKeyCandidatesFromParts(date, meeting, raceNumber),
+    raceKeyFromParts(date, meeting, raceNumber),
+  ].filter(Boolean);
 
   return (
-    feed.races.find((race) => race.raceKey === lookupKey) ??
-    feed.races.find((race) => raceKeyFromParts(race.raceDate, race.meeting, race.raceNumber) === lookupKey) ??
+    feed.races.find((race) => lookupKeys.includes(String(race.raceKey).toUpperCase())) ??
+    feed.races.find((race) => raceKeyCandidatesFromParts(race.raceDate, race.meeting, race.raceNumber).some((key) => lookupKeys.includes(key))) ??
     null
   );
 }

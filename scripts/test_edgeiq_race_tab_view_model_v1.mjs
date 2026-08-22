@@ -105,6 +105,7 @@ assert.equal(model.runnerBoard.find((row) => row.runner === "Alpha")?.earlySpeed
 assert.deepEqual(model.topEpr.map((row) => row.runner), ["Alpha", "Bravo", "Speedy"], "EPR Top 3 excludes scratched and sorts by governed EPR");
 assert.deepEqual(model.topEpr.map((row) => row.no), ["2", "3", "5"], "EPR Top 3 tie handling is deterministic by runner number");
 assert.ok(!model.topEpr.some((row) => row.runner === "Scratch High"), "scratched runner is excluded from EPR Top 3");
+assert.ok(!model.topEpr.some((row) => row.runner === "Missing EPR"), "missing governed EPR is excluded from EPR Top 3");
 assert.equal(model.speedMap[0]?.zone, "GOVERNED SPEED", "governed evidence replaces speed-map placeholder");
 assert.equal(model.speedMap[0]?.runners[0]?.runner, "Speedy", "speed preview orders existing governed speed evidence");
 assert.equal(model.cards.find((card) => card.label === "TEMPO")?.value, "Insufficient Evidence", "genuine missing tempo remains a missing state");
@@ -130,7 +131,8 @@ assert.ok(!componentSource.includes("Awaiting EPI"), "Race current-rating empty 
 const formGuideFeedSource = await readFile(path.join(repoRoot, "src", "edgeiq-os", "race", "services", "formGuideEnrichedFeed.ts"), "utf8");
 const currentRaceFeedSource = await readFile(path.join(repoRoot, "src", "edgeiq-os", "race", "services", "currentRaceIntelligenceFeed.ts"), "utf8");
 assert.ok(formGuideFeedSource.includes("edgeiqDataPath(\"/data/edgeiq_form_guide_enriched_v2.json\")"), "form-guide Race data request uses authoritative runtime data path");
+assert.ok(formGuideFeedSource.includes("selectedRaceKey"), "form-guide Race matching accepts explicit selected race key");
 assert.ok(currentRaceFeedSource.includes("edgeiqDataPath(\"/data/edgeiq_current_race_intelligence_v1.json\")"), "current Race intelligence request uses authoritative runtime data path");
 
 console.log("EDGEIQ_RACE_TAB_VIEW_MODEL_TESTS=PASS");
-console.log("ASSERTIONS=16");
+console.log("ASSERTIONS=18");

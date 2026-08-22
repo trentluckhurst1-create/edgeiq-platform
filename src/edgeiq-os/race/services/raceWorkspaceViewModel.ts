@@ -139,6 +139,7 @@ function buildBoard(field: any[], formGuide: FormGuideRaceDisplay | null | undef
 function topEprFromBoard(board: RaceRunnerBoardRow[]): RaceIntelligenceViewModel["topEpr"] {
   return board
     .filter((row) => !row.scratched)
+    .filter((row) => clean(row.epr))
     .map((row) => ({ row, value: Number(row.epr.replace(/[$,]/g, "")) }))
     .filter((item) => Number.isFinite(item.value))
     .sort((a, b) => {
