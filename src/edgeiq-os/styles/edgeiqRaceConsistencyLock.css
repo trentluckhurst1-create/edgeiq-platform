@@ -1,0 +1,95 @@
+/* EDGEiQ RACE CONSISTENCY LOCK — inherits approved Dashboard tokens only. */
+.eiq-race-workspace,
+.eiq-race-workspace *{box-sizing:border-box}
+
+.eiq-race-workspace{background:var(--eiq-lock-bg)!important;color:var(--eiq-lock-text)!important}
+.eiq-race-locked__header h1,
+.eiq-race-command-header strong,
+.eiq-race-v1__summary-card>strong,
+.eiq-race-v1__decision strong,
+.eiq-race-v1__matters h2,
+.eiq-race-v1__speed h2,
+.eiq-race-v1__epi h2,
+.eiq-race-v1__board h2,
+.eiq-field-v1__header>div>strong,
+.eiq-field-runner-button strong,
+.eiq-form-command__header>div>strong,
+.eiq-form-command__snapshot strong,
+.eiq-form-command__table td strong{color:var(--eiq-lock-text)!important}
+
+.eiq-race-locked__header p,
+.eiq-race-command-header span,
+.eiq-race-command-header dt,
+.eiq-race-v1__selector>span,
+.eiq-race-v1__summary-card>span,
+.eiq-race-v1__summary-card>p,
+.eiq-race-v1__decision span,
+.eiq-race-v1__matters header span,
+.eiq-race-v1__speed header span,
+.eiq-race-v1__epi header span,
+.eiq-race-v1__board header span,
+.eiq-field-v1__header>div>span,
+.eiq-field-v1__header p,
+.eiq-field-v1__counts span,
+.eiq-field-runner-button small,
+.eiq-form-command__header>div>span,
+.eiq-form-command__header p,
+.eiq-form-command__header aside span,
+.eiq-form-command__snapshot span,
+.eiq-form-command__snapshot small,
+.eiq-form-command__table td small{color:var(--eiq-lock-muted)!important}
+
+.eiq-race-locked__back,
+.eiq-race-command-header,
+.eiq-context-tabs,
+.eiq-race-v1__selector,
+.eiq-race-v1__summary,
+.eiq-race-v1__decision,
+.eiq-race-v1__matters,
+.eiq-race-v1__speed,
+.eiq-race-v1__epi,
+.eiq-race-v1__board,
+.eiq-field-v1__header,
+.eiq-field-table-wrap-v1,
+.eiq-form-command__header,
+.eiq-form-command__snapshot,
+.eiq-form-command__table-wrap{border-color:var(--eiq-lock-border)!important;background:var(--eiq-lock-surface)!important;border-radius:5px!important;box-shadow:none!important}
+
+.eiq-race-command-header dl>div,
+.eiq-race-v1__speed-zone,
+.eiq-field-v1__counts>div,
+.eiq-form-command__header aside{border-color:var(--eiq-lock-border-soft)!important}
+
+.eiq-context-tabs button.is-active,
+.eiq-race-v1__selector button.is-active{background:var(--eiq-lock-blue)!important;border-color:var(--eiq-lock-blue)!important;color:#fff!important}
+.eiq-race-locked__back,
+.eiq-race-command-header>header b,
+.eiq-race-v1__speed-zone b,
+.eiq-race-v1__epi-row>b,
+.eiq-form-command__table button{color:var(--eiq-lock-blue)!important}
+
+.eiq-race-v1__table th,
+.eiq-field-table-v1 th,
+.eiq-form-command__table th,
+.eiq-field-recent-panel th{background:#f2f6fb!important;color:#50617d!important;font-size:8px!important;font-weight:850!important;letter-spacing:.04em!important;text-transform:uppercase!important}
+.eiq-race-v1__table td,
+.eiq-field-table-v1 td,
+.eiq-form-command__table td{border-bottom-color:var(--eiq-lock-border-soft)!important;color:#304563!important;font-size:10px!important}
+
+.eiq-race-v1__status,
+.eiq-field-status-pill{background:#e6f8ef!important;color:#078a4d!important}
+.eiq-race-v1__table tr.is-scratched .eiq-race-v1__status,
+.eiq-field-runner-row.is-scratched .eiq-field-status-pill{background:#fdecec!important;color:var(--eiq-lock-red)!important}
+
+.eiq-race-v1__table tbody tr:not(.is-scratched):hover td,
+.eiq-field-runner-row:hover td,
+.eiq-field-runner-row.is-expanded td,
+.eiq-form-command__table tbody tr:not(.is-scratched):hover td{background:#f7fbff!important}
+
+.eiq-form-command__table button{border:0!important;background:transparent!important;font-size:9px!important;font-weight:800!important;cursor:pointer!important}
+.eiq-form-command__table button:disabled{color:#9aa8bc!important;cursor:default!important}
+
+@media(max-width:760px){
+  .eiq-race-workspace{padding:14px!important}
+  .eiq-race-locked__header{flex-direction:column!important}
+}
