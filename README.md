@@ -1,93 +1,64 @@
-# React + TypeScript + Vite
+# EDGEiQ Racing Intelligence Platform
 
-## EDGEiQ Cloud Data Sync
+EDGEiQ is the Professional Racing Intelligence Operating System frontend.
 
-The Render worker updates live CSV outputs inside its own container. Vercel only sees files that are committed back to the git repo, so cloud syncing is opt-in and allowlisted.
+## Production deployment
 
-Set these Render environment variables only for the background worker:
+EDGEiQ is deployed exclusively through GitHub Pages from the `main` branch.
+
+Production URL:
 
 ```text
-EDGEIQ_ENABLE_GIT_SYNC=true
-GIT_AUTHOR_NAME=EDGEiQ Bot
-GIT_AUTHOR_EMAIL=edgeiq-bot@example.com
+https://trentluckhurst1-create.github.io/edgeiq-platform/
 ```
 
-The sync script is intentionally narrow. It only stages selected lightweight files under `dashboard/racing-dashboard/public/data/`, commits with `Update EDGEiQ live data [skip ci]`, and pushes to `origin main`. It skips large outputs, logs, market tape history, and anything outside the allowlist.
+Deployment workflow:
 
-Local mode defaults to no git sync. To inspect what would sync without committing:
+```text
+.github/workflows/edgeiq-github-pages.yml
+```
+
+A push to `main` that changes the frontend, public assets, package manifests, TypeScript configuration, Vite configuration, or the Pages workflow triggers a production build and GitHub Pages deployment.
+
+The production build uses the repository path base:
+
+```text
+/edgeiq-platform/
+```
+
+Static runtime data intended for the frontend should live under `public/data/` so it is included in the GitHub Pages artifact and served from the same GitHub Pages deployment.
+
+No Vercel, Render, Cloudflare Pages, or Cloudflare R2 deployment is part of the production hosting path.
+
+## Local development
+
+PowerShell:
 
 ```powershell
-python ..\..\sync_public_data_to_git.py --dry-run
+npm ci
+npm run dev
 ```
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Optional Clerk authentication can be configured with:
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```text
+VITE_CLERK_PUBLISHABLE_KEY=
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Development auth bypass remains development-only:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```text
+VITE_DISABLE_AUTH=false
 ```
+
+## Production verification
+
+The GitHub Pages workflow performs:
+
+```text
+npm ci
+npm exec -- tsc -b
+npm exec -- vite build -- --base=/edgeiq-platform/
+```
+
+The resulting `dist` directory is uploaded as the `github-pages` artifact and deployed with `actions/deploy-pages`.
