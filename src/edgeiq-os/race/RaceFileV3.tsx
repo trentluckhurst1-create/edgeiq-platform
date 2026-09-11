@@ -7,6 +7,7 @@ import { FormWorkspace } from "./components/FormWorkspace";
 import { MeetingsWorkspace } from "./components/MeetingsWorkspace";
 import { PerformanceWorkspace } from "./components/PerformanceWorkspace";
 import { RaceWorkspace } from "./components/RaceWorkspace";
+import { SpeedMapWorkspace } from "./components/SpeedMapWorkspace";
 import { WorkspaceShell } from "./components/WorkspaceShell";
 import type { ThreeDayMeeting } from "./services/threeDayCatalog";
 import type { MeetingsDayKey } from "./services/meetingsFeed";
@@ -61,6 +62,8 @@ export function RaceFileV3() {
         <PerformanceWorkspace meeting={selectedMeeting} selectedRaceKey={selectedRaceKey} onRaceChange={setSelectedRaceKey} />
       ) : activeSection === "epi" ? (
         <EpiRatingsWorkspace meeting={selectedMeeting} selectedRaceKey={selectedRaceKey} onRaceChange={setSelectedRaceKey} />
+      ) : activeSection === "map" ? (
+        <SpeedMapWorkspace meeting={selectedMeeting} selectedRaceKey={selectedRaceKey} onRaceChange={setSelectedRaceKey} />
       ) : null}
     </WorkspaceShell>
   );
