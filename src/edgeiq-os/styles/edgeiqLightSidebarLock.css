@@ -79,3 +79,45 @@ html body #root .eiq-approved-shell .eiq-app-nav__footer strong {
 html body #root .eiq-approved-shell .eiq-app-nav__footer small {
   color: #72829d !important;
 }
+
+/* RaceWorkspace owns the live race-tab selection. Keep the persistent sidebar highlight
+   visually tied to that tab even when the user changes tabs from the horizontal tab row. */
+html body #root .eiq-approved-shell:has(.eiq-race-workspace) .eiq-app-nav button.is-active {
+  background: transparent !important;
+  color: #334866 !important;
+  box-shadow: none !important;
+}
+html body #root .eiq-approved-shell:has(.eiq-race-workspace) .eiq-app-nav button.is-active .eiq-app-nav__icon,
+html body #root .eiq-approved-shell:has(.eiq-race-workspace) .eiq-app-nav button.is-active span {
+  color: #60718f !important;
+}
+
+html body #root .eiq-approved-shell:has(.eiq-race-workspace[data-edgeiq-workspace-key="RACE"]) .eiq-app-nav button[data-section="race"],
+html body #root .eiq-approved-shell:has(.eiq-race-workspace[data-edgeiq-workspace-key="FIELD"]) .eiq-app-nav button[data-section="field"],
+html body #root .eiq-approved-shell:has(.eiq-race-workspace[data-edgeiq-workspace-key="FORM GUIDE"]) .eiq-app-nav button[data-section="formGuide"],
+html body #root .eiq-approved-shell:has(.eiq-race-workspace[data-edgeiq-workspace-key="PERFORMANCE"]) .eiq-app-nav button[data-section="performance"],
+html body #root .eiq-approved-shell:has(.eiq-race-workspace[data-edgeiq-workspace-key="EPI"]) .eiq-app-nav button[data-section="epi"],
+html body #root .eiq-approved-shell:has(.eiq-race-workspace[data-edgeiq-workspace-key="MAP"]) .eiq-app-nav button[data-section="map"],
+html body #root .eiq-approved-shell:has(.eiq-race-workspace[data-edgeiq-workspace-key="MARKET"]) .eiq-app-nav button[data-section="market"],
+html body #root .eiq-approved-shell:has(.eiq-race-workspace[data-edgeiq-workspace-key="OVERVIEW"]) .eiq-app-nav button[data-section="overview"],
+html body #root .eiq-approved-shell:has(.eiq-race-workspace[data-edgeiq-workspace-key="INSIGHTS"]) .eiq-app-nav button[data-section="insights"],
+html body #root .eiq-approved-shell:has(.eiq-race-workspace[data-edgeiq-workspace-key="RESULTS"]) .eiq-app-nav button[data-section="results"],
+html body #root .eiq-approved-shell:has(.eiq-race-workspace[data-edgeiq-workspace-key="REVIEW"]) .eiq-app-nav button[data-section="review"] {
+  background: #eaf2ff !important;
+  color: #1769e8 !important;
+  box-shadow: inset 2px 0 0 #1769e8 !important;
+}
+
+html body #root .eiq-approved-shell:has(.eiq-race-workspace[data-edgeiq-workspace-key="RACE"]) .eiq-app-nav button[data-section="race"] .eiq-app-nav__icon,
+html body #root .eiq-approved-shell:has(.eiq-race-workspace[data-edgeiq-workspace-key="FIELD"]) .eiq-app-nav button[data-section="field"] .eiq-app-nav__icon,
+html body #root .eiq-approved-shell:has(.eiq-race-workspace[data-edgeiq-workspace-key="FORM GUIDE"]) .eiq-app-nav button[data-section="formGuide"] .eiq-app-nav__icon,
+html body #root .eiq-approved-shell:has(.eiq-race-workspace[data-edgeiq-workspace-key="PERFORMANCE"]) .eiq-app-nav button[data-section="performance"] .eiq-app-nav__icon,
+html body #root .eiq-approved-shell:has(.eiq-race-workspace[data-edgeiq-workspace-key="EPI"]) .eiq-app-nav button[data-section="epi"] .eiq-app-nav__icon,
+html body #root .eiq-approved-shell:has(.eiq-race-workspace[data-edgeiq-workspace-key="MAP"]) .eiq-app-nav button[data-section="map"] .eiq-app-nav__icon,
+html body #root .eiq-approved-shell:has(.eiq-race-workspace[data-edgeiq-workspace-key="MARKET"]) .eiq-app-nav button[data-section="market"] .eiq-app-nav__icon,
+html body #root .eiq-approved-shell:has(.eiq-race-workspace[data-edgeiq-workspace-key="OVERVIEW"]) .eiq-app-nav button[data-section="overview"] .eiq-app-nav__icon,
+html body #root .eiq-approved-shell:has(.eiq-race-workspace[data-edgeiq-workspace-key="INSIGHTS"]) .eiq-app-nav button[data-section="insights"] .eiq-app-nav__icon,
+html body #root .eiq-approved-shell:has(.eiq-race-workspace[data-edgeiq-workspace-key="RESULTS"]) .eiq-app-nav button[data-section="results"] .eiq-app-nav__icon,
+html body #root .eiq-approved-shell:has(.eiq-race-workspace[data-edgeiq-workspace-key="REVIEW"]) .eiq-app-nav button[data-section="review"] .eiq-app-nav__icon {
+  color: #1769e8 !important;
+}
