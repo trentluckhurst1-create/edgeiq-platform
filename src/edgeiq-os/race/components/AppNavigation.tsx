@@ -1,15 +1,60 @@
-import { CalendarDays, Home } from "lucide-react";
+import {
+  ArrowUpDown,
+  BadgeDollarSign,
+  CalendarDays,
+  ClipboardCheck,
+  ClipboardList,
+  Crosshair,
+  FileText,
+  FlaskConical,
+  Home,
+  Lightbulb,
+  LineChart,
+  Map,
+  Settings,
+  SlidersHorizontal,
+  Trophy,
+  Users,
+} from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
-export type GlobalSection = "home" | "meetings";
+export type GlobalSection =
+  | "home" | "meetings" | "race" | "field" | "formGuide" | "performance" | "epi" | "map"
+  | "market" | "overview" | "insights" | "results" | "lab" | "compare" | "review" | "settings";
 
 type AppNavigationProps = {
   activeSection: GlobalSection;
   onSectionChange: (section: GlobalSection) => void;
 };
 
-const items = [
-  { key: "home" as const, label: "Dashboard", Icon: Home },
-  { key: "meetings" as const, label: "Meetings", Icon: CalendarDays },
+type NavItem = { key: GlobalSection; label: string; Icon: LucideIcon };
+type NavGroup = { label: string; items: NavItem[] };
+
+const navGroups: NavGroup[] = [
+  { label: "RACE DAY", items: [
+    { key: "home", label: "Dashboard", Icon: Home },
+    { key: "meetings", label: "Meetings", Icon: CalendarDays },
+    { key: "race", label: "Race", Icon: Crosshair },
+    { key: "field", label: "Field", Icon: Users },
+    { key: "formGuide", label: "Form", Icon: ClipboardList },
+  ]},
+  { label: "INTELLIGENCE", items: [
+    { key: "performance", label: "Performance", Icon: SlidersHorizontal },
+    { key: "epi", label: "EPI Ratings", Icon: LineChart },
+    { key: "map", label: "Speed Map", Icon: Map },
+    { key: "market", label: "Market", Icon: BadgeDollarSign },
+    { key: "overview", label: "Overview", Icon: ClipboardCheck },
+    { key: "insights", label: "Insights", Icon: Lightbulb },
+  ]},
+  { label: "POST RACE", items: [
+    { key: "results", label: "Results", Icon: Trophy },
+    { key: "review", label: "Review", Icon: FileText },
+  ]},
+  { label: "TOOLS", items: [
+    { key: "lab", label: "Research Lab", Icon: FlaskConical },
+    { key: "compare", label: "Compare", Icon: ArrowUpDown },
+    { key: "settings", label: "Settings", Icon: Settings },
+  ]},
 ];
 
 export function AppNavigation({ activeSection, onSectionChange }: AppNavigationProps) {
@@ -20,17 +65,19 @@ export function AppNavigation({ activeSection, onSectionChange }: AppNavigationP
         <div><strong>EDGE<span>iQ</span></strong><em>RACING INTELLIGENCE</em></div>
       </div>
       <nav className="eiq-app-nav__groups">
-        <section className="eiq-app-nav__group" aria-label="RACE DAY">
-          <p>RACE DAY</p>
-          <div>
-            {items.map(({ key, label, Icon }) => (
-              <button key={key} type="button" data-edgeiq-section={key} className={activeSection === key ? "is-active" : ""} onClick={() => onSectionChange(key)}>
-                <span className="eiq-app-nav__icon" aria-hidden="true"><Icon size={16} strokeWidth={1.8} /></span>
-                <strong>{label}</strong>
-              </button>
-            ))}
-          </div>
-        </section>
+        {navGroups.map((group) => (
+          <section className="eiq-app-nav__group" key={group.label} aria-label={group.label}>
+            <p>{group.label}</p>
+            <div>
+              {group.items.map(({ key, label, Icon }) => (
+                <button key={key} type="button" data-edgeiq-section={key} className={activeSection === key ? "is-active" : ""} onClick={() => onSectionChange(key)}>
+                  <span className="eiq-app-nav__icon" aria-hidden="true"><Icon size={16} strokeWidth={1.8} /></span>
+                  <strong>{label}</strong>
+                </button>
+              ))}
+            </div>
+          </section>
+        ))}
       </nav>
       <footer className="eiq-app-nav__footer"><div><span className="eiq-app-nav__live-dot" aria-hidden="true" /><strong>System online</strong></div><small>Production workspace</small></footer>
     </aside>
