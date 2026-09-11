@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { loadThreeDayCatalog, type ThreeDayMeeting, type ThreeDayRace } from "../services/threeDayCatalog";
+import type { ThreeDayMeeting, ThreeDayRace } from "../services/threeDayCatalog";
 import {
   canonicalRailDisplay,
   canonicalTrackDisplayName,
@@ -8,6 +8,7 @@ import {
   cleanProductText,
 } from "../../design-system/presentation";
 import {
+  loadMeetingDetail,
   loadMeetingsWorkspaceViewModel,
   type MeetingSummaryViewModel,
   type MeetingsDayKey,
@@ -135,11 +136,7 @@ export function MeetingsWorkspace({
     setDetailLoading(true);
     setLoadError("");
     try {
-      const catalog = await loadThreeDayCatalog();
-      const fullMeeting = catalog.meetings.find((candidate) => candidate.meetingKey === meeting.meetingKey && candidate.date === meeting.rawMeeting.date)
-        ?? catalog.meetings.find((candidate) => candidate.meetingKey === meeting.meetingKey);
-      if (!fullMeeting) throw new Error(`Full meeting data unavailable for ${meeting.meeting}`);
-      return fullMeeting;
+      return await loadMeetingDetail(meeting.rawMeeting.date, meeting.meetingKey);
     } finally {
       setDetailLoading(false);
     }
