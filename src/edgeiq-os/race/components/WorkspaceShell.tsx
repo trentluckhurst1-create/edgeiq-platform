@@ -35,15 +35,17 @@ export function WorkspaceShell({
   meta,
   children,
 }: WorkspaceShellProps) {
+  const isDashboard = activeSection === "home";
+
   return (
-    <section className="eiq-approved-shell" data-edgeiq-approved-ui="v2">
+    <section className={`eiq-approved-shell${isDashboard ? " is-dashboard" : ""}`} data-edgeiq-approved-ui="v2">
       <AppNavigation activeSection={activeSection} onSectionChange={onSectionChange} />
 
       <div className="eiq-approved-shell__frame">
         <header className="eiq-approved-topbar">
           <div className="eiq-approved-topbar__identity">
             <span className="eiq-approved-topbar__product">EDGEiQ / RACING</span>
-            <strong>{title}</strong>
+            {!isDashboard ? <strong>{title}</strong> : null}
           </div>
           <div className="eiq-approved-topbar__ops" aria-label="Operational context">
             <span className="eiq-approved-topbar__status"><i aria-hidden="true" /> LIVE</span>
@@ -53,20 +55,22 @@ export function WorkspaceShell({
         </header>
 
         <main className="eiq-approved-shell__content">
-          <header className="eiq-workspace-masthead">
-            <div className="eiq-workspace-masthead__copy">
-              <span className="eiq-workspace-masthead__eyebrow">{eyebrow}</span>
-              <div className="eiq-workspace-masthead__title-row">
-                <h1>{title}</h1>
-                <span className="eiq-workspace-masthead__mode">PRO WORKSPACE</span>
+          {!isDashboard ? (
+            <header className="eiq-workspace-masthead">
+              <div className="eiq-workspace-masthead__copy">
+                <span className="eiq-workspace-masthead__eyebrow">{eyebrow}</span>
+                <div className="eiq-workspace-masthead__title-row">
+                  <h1>{title}</h1>
+                  <span className="eiq-workspace-masthead__mode">PRO WORKSPACE</span>
+                </div>
+                {meta ? <p>{meta}</p> : null}
               </div>
-              {meta ? <p>{meta}</p> : null}
-            </div>
-            <div className="eiq-workspace-masthead__status" aria-label="EDGEiQ system status">
-              <span>DATA STATUS</span>
-              <strong><i className="eiq-system-dot" aria-hidden="true" /> CURRENT</strong>
-            </div>
-          </header>
+              <div className="eiq-workspace-masthead__status" aria-label="EDGEiQ system status">
+                <span>DATA STATUS</span>
+                <strong><i className="eiq-system-dot" aria-hidden="true" /> CURRENT</strong>
+              </div>
+            </header>
+          ) : null}
           <div className="eiq-workspace-stage">{children}</div>
         </main>
 
