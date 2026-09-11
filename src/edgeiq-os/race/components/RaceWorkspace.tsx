@@ -57,6 +57,20 @@ const tabLabel: Record<RaceTab, string> = {
   REVIEW: "Review",
 };
 
+const tabSubtitle: Record<RaceTab, string> = {
+  RACE: "Race-day command view. Conditions, shape, ratings and runner intelligence.",
+  FIELD: "Official declarations. Barriers, weights, riders, trainers, gear and status.",
+  "FORM GUIDE": "Current form, ratings, suitability, trajectory and fair-price context.",
+  PERFORMANCE: "Historical performance evidence and repeatable ratings across recent starts.",
+  MAP: "Expected settling positions, pressure and tactical race-shape context.",
+  MARKET: "EDGEiQ fair prices, observed market, edge and movement.",
+  OVERVIEW: "One-screen synthesis of the race environment and decision context.",
+  INSIGHTS: "Governed preparation, intent, conditions and campaign signals.",
+  EPI: "EDGEiQ Performance Index ranking, trend and evidence.",
+  RESULTS: "Official finishing order, margins, starting prices and result context.",
+  REVIEW: "Post-race audit of expectations, map, price and lessons.",
+};
+
 const mounted: Record<RaceTab, string> = {
   RACE: "RaceIntelligenceWorkspace",
   FIELD: "FieldWorkspace",
@@ -128,7 +142,6 @@ export function RaceWorkspace({
   const time = first(official.time, official.localTime);
   const prize = first(official.prizeMoney, official.totalPrizeMoney);
   const title = canonicalRaceTitleDisplay(healthy(official.raceName) || healthy(official.name));
-  const raceIdentity = [meetingName, raceNumber ? `Race ${raceNumber}` : "", title].filter(Boolean).join(" · ");
   const meta = [
     ["DATE", date], ["TIME", time], ["DISTANCE", distance], ["CLASS", raceClass],
     ["TRACK", track], ["RAIL", rail], ["WEATHER", weather], ["PRIZEMONEY", prize],
@@ -143,7 +156,7 @@ export function RaceWorkspace({
       <header className="eiq-race-locked__header">
         <div>
           <h1>{tabLabel[tab]}</h1>
-          <p>{raceIdentity || `${tabLabel[tab]} analysis workspace`}</p>
+          <p>{tabSubtitle[tab]}</p>
         </div>
         <button type="button" className="eiq-race-locked__back" onClick={onBackToMeeting}>Back to Meeting</button>
       </header>
