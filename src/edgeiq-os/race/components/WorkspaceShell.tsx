@@ -16,7 +16,13 @@ function formatHeaderTime() {
 }
 
 export function WorkspaceShell({ activeSection, onSectionChange, children }: WorkspaceShellProps) {
-  const activeWorkspace = activeSection === "home" || activeSection === "meetings" || activeSection === "race";
+  const activeWorkspace = activeSection === "home" || activeSection === "meetings" || activeSection === "race" || activeSection === "field";
+
+  const workspaceTrail = activeSection === "race"
+    ? "Dashboard · Meetings · Race"
+    : activeSection === "field"
+      ? "Dashboard · Meetings · Field"
+      : "Dashboard · Meetings";
 
   return (
     <section className={`eiq-approved-shell is-${activeSection}${activeSection === "home" ? " is-dashboard" : activeSection === "meetings" ? " is-meetings" : ""}`} data-edgeiq-approved-ui="dashboard-meetings-baseline" data-edgeiq-active-section={activeSection}>
@@ -34,7 +40,7 @@ export function WorkspaceShell({ activeSection, onSectionChange, children }: Wor
           <main className="eiq-approved-shell__content">
             <div className="eiq-workspace-stage">{children}</div>
           </main>
-          <footer className="eiq-approved-shell__footer"><span>EDGEiQ Racing Intelligence</span><span>Dashboard · Meetings{activeSection === "race" ? " · Race" : ""}</span><span>{formatHeaderTime()} AEDT</span></footer>
+          <footer className="eiq-approved-shell__footer"><span>EDGEiQ Racing Intelligence</span><span>{workspaceTrail}</span><span>{formatHeaderTime()} AEDT</span></footer>
         </div>
       ) : (
         <div className="eiq-approved-shell__frame" aria-label="Empty workspace" />
