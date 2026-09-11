@@ -9,6 +9,7 @@ import "./terminal/layout/racing-terminal-overrides.css";
 import "./styles/edgeiqDesignSystem.css";
 import "./edgeiq-os/design-system/edgeiqDesignSystem.css";
 import "./edgeiq-os/approved-ui/edgeiqApprovedUiRebuildV1.css";
+import "./edgeiq-os/styles/edgeiqSoftwareSystem.css";
 
 const env = (import.meta as ImportMeta & { env: Record<string, string | undefined> }).env;
 const publishableKey = env.VITE_CLERK_PUBLISHABLE_KEY;
@@ -38,4 +39,3 @@ ReactDOM.createRoot(root).render(
     )}
   </React.StrictMode>,
 );
-
