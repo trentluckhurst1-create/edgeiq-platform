@@ -10,6 +10,7 @@ export type FieldWorkspaceRow = {
   weight: string;
   jockey: string;
   trainer: string;
+  gear: string;
   edgeiq: string;
   market: string;
   status: string;
@@ -94,6 +95,14 @@ export function buildFieldWorkspaceRows(params: {
       "weightKg",
       "wt",
     ])));
+    const gear = clean(firstValue(runner, [
+      "official.gearChanges",
+      "official.gear",
+      "gearChanges",
+      "gear_changes",
+      "gear",
+      "equipment",
+    ]));
 
     return {
       key: `${no}-${runnerName || formRunner?.horse || index}`,
@@ -105,6 +114,7 @@ export function buildFieldWorkspaceRows(params: {
       weight: weightValue,
       jockey: formRunner?.jockey || clean(firstValue(runner, ["official.jockey", "jockey", "jockeyName", "jockey_name"])),
       trainer: formRunner?.trainer || clean(firstValue(runner, ["official.trainer", "trainer", "trainerName", "trainer_name"])),
+      gear,
       edgeiq: isScratched ? "" : edgeiq,
       market: isScratched ? "Scratched" : rawMarket,
       status,
