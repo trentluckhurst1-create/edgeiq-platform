@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { type ReactNode, useEffect, useMemo, useState } from "react";
 import { CompareWorkspace } from "../../compare/CompareWorkspace";
 import { FormGuideWorkspace, type SectionalProfile } from "./FormGuideWorkspace";
 import { MapWorkspace } from "./MapWorkspace";
@@ -6,6 +6,7 @@ import { ResultsWorkspace } from "./ResultsWorkspace";
 import { RunnerProfileSummary } from "./RunnerProfileSummary";
 import { RunnerSummary } from "./RunnerSummary";
 import { RunnerTabs, type RunnerWorkspaceMode } from "./RunnerTabs";
+import { loadRunnerDetail } from "../services/runnerDetailFeed";
 
 type SectionalStandard = "sameClass" | "open" | "trackDistance" | "todayProjection";
 
@@ -60,18 +61,53 @@ export function RunnerProfileWorkspace({
   renderHistoricalRunCard,
   onBackToRace,
 }: RunnerProfileWorkspaceProps) {
+  const [hydratedRunner, setHydratedRunner] = useState<any>(runner);
+  const [runnerLoading, setRunnerLoading] = useState(false);
+  const [runnerLoadError, setRunnerLoadError] = useState("");
+  const detailPath = String(runner?.source?.runnerDetailPath ?? "").trim();
+
+  useEffect(() => {
+    let active = true;
+    setHydratedRunner(runner);
+    setRunnerLoadError("");
+    if (!detailPath) return () => { active = false; };
+    setRunnerLoading(true);
+    loadRunnerDetail(detailPath)
+      .then((fullRunner) => {
+        if (active) setHydratedRunner(fullRunner);
+      })
+      .catch((error) => {
+        if (active) setRunnerLoadError(error instanceof Error ? error.message : "Runner detail unavailable");
+      })
+      .finally(() => {
+        if (active) setRunnerLoading(false);
+      });
+    return () => { active = false; };
+  }, [detailPath, runner]);
+
+  const activeRunner = hydratedRunner ?? runner;
+  const activeRuns = useMemo(() => {
+    if (!activeRunner) return displayedRuns;
+    if (mode === "results") return activeRunner.evidenceRuns ?? activeRunner.historicalRuns ?? displayedRuns;
+    return activeRunner.historicalRuns ?? displayedRuns;
+  }, [activeRunner, displayedRuns, mode]);
+  const activeBestRun = activeRuns?.[0] ?? bestRun;
+  const activeField = useMemo(() => field.map((item) => item === runner ? activeRunner : item), [activeRunner, field, runner]);
+
   return (
     <section className="eiq-form-workbench eiq-runner-workspace-v13">
       <div className="eiq-workspace-breadcrumb">
         <button type="button" onClick={onBackToRace}>FORM GUIDE</button>
         <span>/</span>
         <strong>PROFILE</strong>
+        {runnerLoading ? <span>LOADING FORM…</span> : null}
+        {runnerLoadError ? <span role="alert">{runnerLoadError}</span> : null}
       </div>
 
       <RunnerProfileSummary
-        runner={runner}
+        runner={activeRunner}
         currentRace={raceBook?.official}
-        bestRun={bestRun}
+        bestRun={activeBestRun}
         clean={clean}
         weight={weight}
         market={market}
@@ -88,7 +124,7 @@ export function RunnerProfileWorkspace({
 
       {mode === "profile" ? (
         <FormGuideWorkspace
-          runs={displayedRuns}
+          runs={activeRuns}
           sectionalStandard={sectionalStandard}
           clean={clean}
           weight={weight}
@@ -99,27 +135,27 @@ export function RunnerProfileWorkspace({
         />
       ) : mode === "results" ? (
         <ResultsWorkspace
-          run={bestRun}
-          runner={runner}
+          run={activeBestRun}
+          runner={activeRunner}
           raceKey={raceBook?.official?.raceKey}
           raceBook={raceBook}
           clean={clean}
           weight={weight}
           market={market}
-          esiOverall={bestRun ? renderSectionalDelta(sectionalProfile(bestRun, sectionalStandard).edgeiq) : undefined}
+          esiOverall={activeBestRun ? renderSectionalDelta(sectionalProfile(activeBestRun, sectionalStandard).edgeiq) : undefined}
           onBackToForm={() => setMode("profile")}
           onCompareSelectedRun={() => setMode("compare")}
           onEvidence={() => setMode("results")}
         />
       ) : mode === "compare" ? (
-        <CompareWorkspace raceKey={raceBook?.official?.raceKey} runner={runner} />
+        <CompareWorkspace raceKey={raceBook?.official?.raceKey} runner={activeRunner} />
       ) : mode === "dna" ? (
         <RunnerPendingWorkspace title="DNA" body="What type of horse is this?" />
       ) : mode === "map" ? (
         <MapWorkspace
           raceBook={raceBook}
-          field={field}
-          selectedRunner={runner}
+          field={activeField}
+          selectedRunner={activeRunner}
           clean={clean}
           market={market}
           mode="runner"
