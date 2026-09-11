@@ -8,6 +8,7 @@ on:
     paths:
       - 'src/**'
       - 'public/**'
+      - 'index.html'
       - 'package.json'
       - 'package-lock.json'
       - 'vite.config.ts'
@@ -49,7 +50,7 @@ jobs:
       - name: Vite production build
         env:
           VITE_CLERK_PUBLISHABLE_KEY: ${{ secrets.VITE_CLERK_PUBLISHABLE_KEY }}
-        run: npm exec -- vite build -- --base=/edgeiq-platform/
+        run: npm exec -- vite build
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
