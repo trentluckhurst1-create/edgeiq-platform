@@ -20,7 +20,7 @@ export function RaceFileV3() {
     <WorkspaceShell activeSection={activeSection} onSectionChange={setActiveSection}>
       {activeSection === "home" ? (
         <EdgeiqOsHome onOpenMeetings={() => setActiveSection("meetings")} />
-      ) : (
+      ) : activeSection === "meetings" ? (
         <MeetingsWorkspace
           selectedDayKey={selectedDayKey}
           selectedMeetingKey={selectedMeeting?.meetingKey ?? null}
@@ -30,7 +30,7 @@ export function RaceFileV3() {
           onOpenMeeting={(meeting) => setSelectedMeeting(meeting)}
           onOpenRace={(meeting) => setSelectedMeeting(meeting)}
         />
-      )}
+      ) : null}
     </WorkspaceShell>
   );
 }
