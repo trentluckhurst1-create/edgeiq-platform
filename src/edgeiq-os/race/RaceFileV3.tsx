@@ -2,6 +2,7 @@ import { useState } from "react";
 import { EdgeiqOsHome } from "../home/EdgeiqOsHome";
 import { type GlobalSection } from "./components/AppNavigation";
 import { FieldWorkspace } from "./components/FieldWorkspace";
+import { FormWorkspace } from "./components/FormWorkspace";
 import { MeetingsWorkspace } from "./components/MeetingsWorkspace";
 import { RaceWorkspace } from "./components/RaceWorkspace";
 import { WorkspaceShell } from "./components/WorkspaceShell";
@@ -57,6 +58,12 @@ export function RaceFileV3() {
         />
       ) : activeSection === "field" ? (
         <FieldWorkspace
+          meeting={selectedMeeting}
+          selectedRaceKey={selectedRaceKey}
+          onRaceChange={setSelectedRaceKey}
+        />
+      ) : activeSection === "form" ? (
+        <FormWorkspace
           meeting={selectedMeeting}
           selectedRaceKey={selectedRaceKey}
           onRaceChange={setSelectedRaceKey}
