@@ -46,9 +46,9 @@ const navItems: Array<{ key: GlobalSection; label: string; Icon: LucideIcon }> =
   { key: "meetings", label: "MEETINGS", Icon: CalendarDays },
   { key: "race", label: "RACE", Icon: Crosshair },
   { key: "field", label: "FIELD", Icon: Users },
-  { key: "formGuide", label: "FORM GUIDE", Icon: ClipboardList },
+  { key: "formGuide", label: "FORM", Icon: ClipboardList },
   { key: "performance", label: "PERFORMANCE", Icon: SlidersHorizontal },
-  { key: "epi", label: "EPI", Icon: LineChart },
+  { key: "epi", label: "EPI RATINGS", Icon: LineChart },
   { key: "map", label: "MAP", Icon: Map },
   { key: "market", label: "MARKET", Icon: BadgeDollarSign },
   { key: "overview", label: "OVERVIEW", Icon: ClipboardCheck },
@@ -62,10 +62,10 @@ const navItems: Array<{ key: GlobalSection; label: string; Icon: LucideIcon }> =
 
 export function AppNavigation({ activeSection, onSectionChange }: AppNavigationProps) {
   return (
-    <aside className="eiq-app-nav" aria-label="EDGEIQ global navigation">
+    <aside className="eiq-app-nav" aria-label="EDGEiQ Racing navigation">
       <div className="eiq-app-nav__brand">
         <strong>EDGE<span>iQ</span></strong>
-        <em>Race Intelligence</em>
+        <em>FORM · RATINGS · PRICING</em>
       </div>
 
       <nav>
