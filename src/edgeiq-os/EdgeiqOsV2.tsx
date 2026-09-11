@@ -5,6 +5,7 @@ import "./styles/edgeiqRaceLocked.css";
 import "./styles/edgeiqRaceConsistencyLock.css";
 import "./styles/edgeiqRaceConsistencyPatch.css";
 import "./styles/edgeiqLightSidebarLock.css";
+import "./styles/edgeiqAllRaceTabsLocked.css";
 import { EdgeiqOsShell } from "./shell/EdgeiqOsShell";
 
 export function EdgeiqOsV2() {
