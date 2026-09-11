@@ -32,6 +32,25 @@ def runner_scratched(runner: dict[str, Any]) -> bool:
     return any(str(value).strip().lower() in {"true", "scr", "scratched", "lscr", "late scratching"} for value in values)
 
 
+def slim_runner(runner: dict[str, Any]) -> dict[str, Any]:
+    official = runner.get("official") if isinstance(runner.get("official"), dict) else {}
+    source = runner.get("source") if isinstance(runner.get("source"), dict) else {}
+    scratched = runner_scratched(runner)
+    market_loaded = bool(official.get("market") or source.get("market"))
+    return {
+        "official": {
+            "no": official.get("no", official.get("number")),
+            "number": official.get("number", official.get("no")),
+            "runner": official.get("runner"),
+            "scratched": scratched,
+            "market": "SUMMARY_AVAILABLE" if market_loaded else None,
+        },
+        "source": {"scratched": scratched, "lightweightSummary": True},
+        "historicalRuns": [],
+        "evidenceRuns": [],
+    }
+
+
 def slim_race(race: dict[str, Any]) -> dict[str, Any]:
     runners = race.get("runners", []) if isinstance(race.get("runners"), list) else []
     source = dict(race.get("source") or {}) if isinstance(race.get("source"), dict) else {}
@@ -42,7 +61,11 @@ def slim_race(race: dict[str, Any]) -> dict[str, Any]:
         for runner in runners if isinstance(runner, dict)
     )
     source["race_detail_shard"] = True
-    return {**race, "runners": [], "source": source}
+    return {
+        **race,
+        "runners": [slim_runner(runner) for runner in runners if isinstance(runner, dict)],
+        "source": source,
+    }
 
 
 def main() -> int:
