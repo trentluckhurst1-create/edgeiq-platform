@@ -55,7 +55,7 @@ export function RaceFileV3() {
         <RaceWorkspace meeting={selectedMeeting} selectedRaceKey={selectedRaceKey} onRaceChange={setSelectedRaceKey} onBackToMeetings={() => setActiveSection("meetings")} />
       ) : activeSection === "field" ? (
         <FieldWorkspace meeting={selectedMeeting} selectedRaceKey={selectedRaceKey} onRaceChange={setSelectedRaceKey} />
-      ) : activeSection === "form" ? (
+      ) : activeSection === "formGuide" ? (
         <FormWorkspace meeting={selectedMeeting} selectedRaceKey={selectedRaceKey} onRaceChange={setSelectedRaceKey} />
       ) : activeSection === "performance" ? (
         <PerformanceWorkspace meeting={selectedMeeting} selectedRaceKey={selectedRaceKey} onRaceChange={setSelectedRaceKey} />
