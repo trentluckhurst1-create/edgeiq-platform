@@ -69,7 +69,7 @@ jobs:
           TZ: Australia/Melbourne
         run: python scripts/build_edgeiq_meeting_detail_shards_v1.py
 
-      - name: Build on-demand race detail shards
+      - name: Build on-demand race and runner detail shards
         env:
           TZ: Australia/Melbourne
         run: python scripts/build_edgeiq_race_detail_shards_v1.py
@@ -103,6 +103,7 @@ jobs:
           test -s dist/data/edgeiq_meetings_summary_feed_v1.json
           test -s dist/data/meetings/index.json
           test -s dist/data/races/index.json
+          test -s dist/data/runners/index.json
           test -s dist/data/edgeiq_vic_three_day_race_list_v1.csv
           test ! -e dist/data/edgeiq_three_day_product_catalog_v1.json
           python - <<'PY'
@@ -115,16 +116,16 @@ jobs:
           meeting_records = meeting_index.get('meetings', [])
           race_index = json.loads(Path('dist/data/races/index.json').read_text(encoding='utf-8'))
           race_records = race_index.get('races', [])
+          runner_index = json.loads(Path('dist/data/runners/index.json').read_text(encoding='utf-8'))
+          runner_records = runner_index.get('runners', [])
           assert meeting_records, 'No meeting detail shards generated'
           assert race_records, 'No race detail shards generated'
-          for item in meeting_records:
-              relative = str(item.get('path', '')).lstrip('/')
-              shard = Path('dist') / relative
-              assert shard.exists() and shard.stat().st_size > 0, f'Missing meeting shard: {shard}'
-          for item in race_records:
-              relative = str(item.get('path', '')).lstrip('/')
-              shard = Path('dist') / relative
-              assert shard.exists() and shard.stat().st_size > 0, f'Missing race shard: {shard}'
+          assert runner_records, 'No runner detail shards generated'
+          for label, records in [('meeting', meeting_records), ('race', race_records), ('runner', runner_records)]:
+              for item in records:
+                  relative = str(item.get('path', '')).lstrip('/')
+                  shard = Path('dist') / relative
+                  assert shard.exists() and shard.stat().st_size > 0, f'Missing {label} shard: {shard}'
           print('PAGES_DATA_TODAY=' + str(window.get('today', '')))
           print('PAGES_DATA_TOMORROW=' + str(window.get('tomorrow', '')))
           print('PAGES_DATA_DAY_PLUS_2=' + str(window.get('dayPlus2', '')))
@@ -132,6 +133,7 @@ jobs:
           print('MEETINGS_SUMMARY_DAYS=' + str(len(summary.get('days', []))))
           print('MEETING_DETAIL_SHARDS=' + str(len(meeting_records)))
           print('RACE_DETAIL_SHARDS=' + str(len(race_records)))
+          print('RUNNER_DETAIL_SHARDS=' + str(len(runner_records)))
           print('MONOLITHIC_RUNTIME_CATALOG=REMOVED')
           PY
 
