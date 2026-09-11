@@ -16,7 +16,7 @@ function formatHeaderTime() {
 }
 
 export function WorkspaceShell({ activeSection, onSectionChange, children }: WorkspaceShellProps) {
-  const activeWorkspace = ["home", "meetings", "race", "field", "formGuide", "performance", "epi"].includes(activeSection);
+  const activeWorkspace = ["home", "meetings", "race", "field", "formGuide", "performance", "epi", "map"].includes(activeSection);
 
   const workspaceTrail = activeSection === "race"
     ? "Dashboard · Meetings · Race"
@@ -28,7 +28,9 @@ export function WorkspaceShell({ activeSection, onSectionChange, children }: Wor
           ? "Dashboard · Meetings · Performance"
           : activeSection === "epi"
             ? "Dashboard · Meetings · EPI Ratings"
-            : "Dashboard · Meetings";
+            : activeSection === "map"
+              ? "Dashboard · Meetings · Speed Map"
+              : "Dashboard · Meetings";
 
   return (
     <section className={`eiq-approved-shell is-${activeSection}${activeSection === "home" ? " is-dashboard" : activeSection === "meetings" ? " is-meetings" : ""}`} data-edgeiq-approved-ui="dashboard-meetings-baseline" data-edgeiq-active-section={activeSection}>
