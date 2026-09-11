@@ -1,3 +1,5 @@
+import { edgeiqDataPath } from "../../../config/edgeiqDataOrigin";
+
 export type EdgeiqDailyPipelineStatus = {
   status?: "READY" | "WARN" | "FAIL";
   generated_at?: string;
@@ -8,7 +10,7 @@ export type EdgeiqDailyPipelineStatus = {
   last_successful_status?: EdgeiqDailyPipelineStatus | null;
 };
 
-const STATUS_URL = "/data/edgeiq_daily_pipeline_status_v1.json";
+const STATUS_URL = edgeiqDataPath("/data/edgeiq_daily_pipeline_status_v1.json");
 let cachedStatus: EdgeiqDailyPipelineStatus | null = null;
 
 export async function loadEdgeiqDailyPipelineStatus(force = false): Promise<EdgeiqDailyPipelineStatus | null> {
