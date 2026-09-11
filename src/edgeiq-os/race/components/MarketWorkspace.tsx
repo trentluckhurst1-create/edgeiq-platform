@@ -1,224 +1,82 @@
 import { useEffect, useMemo, useState } from "react";
-import type { ThreeDayRace, ThreeDayRunner } from "../services/threeDayCatalog";
-import { marketDisplayStatus } from "../../design-system/presentation";
-import {
-  buildMarketViewModel,
-  loadMarketTerminalFeed,
-  type BETA010Row,
-  type BETA010ViewModel,
-} from "../services/marketFeed";
-
-type RaceBook = Record<string, unknown>;
-type RaceFieldRunner = ThreeDayRunner & Record<string, unknown>;
+import type { ThreeDayMeeting, ThreeDayRace, ThreeDayRunner } from "../services/threeDayCatalog";
+import { loadRunnerDetail } from "../services/runnerDetailFeed";
+import { canonicalTrackDisplayName, cleanProductText } from "../../design-system/presentation";
 
 type MarketWorkspaceProps = {
-  raceBook: RaceBook;
-  field?: RaceFieldRunner[];
-  meetingKey?: string | null;
+  meeting: ThreeDayMeeting | null;
+  selectedRaceKey: string | null;
+  onRaceChange: (raceKey: string) => void;
 };
 
-function readValue(record: unknown, path: string[]): unknown {
-  let current = record;
-  for (const key of path) {
-    if (current && typeof current === "object" && key in current) {
-      current = (current as Record<string, unknown>)[key];
-    } else {
-      return undefined;
-    }
-  }
-  return current;
+type MarketRow = { runner: ThreeDayRunner; market: string; fair: string; edge: string };
+
+function display(value: unknown, fallback = "-"): string { return cleanProductText(value, fallback); }
+function officialNumber(runner: ThreeDayRunner): string { return display(runner.official.no ?? runner.official.number); }
+function runnerName(runner: ThreeDayRunner): string { return display(runner.official.runner, "Unnamed runner"); }
+function raceTitle(race: ThreeDayRace): string { return display(race.raceName, `Race ${race.raceNumber}`); }
+function detailPath(runner: ThreeDayRunner): string { const value = runner.source?.runnerDetailPath; return typeof value === "string" ? value : ""; }
+function price(value: unknown): string { const text = String(value ?? "").trim(); if (!text) return "-"; const numeric = Number(text.replace(/^\$/,"")); return Number.isFinite(numeric) ? `$${numeric.toFixed(2)}` : text; }
+function first(record: Record<string, unknown>, keys: string[]): unknown { for (const key of keys) { const value = record[key]; if (value !== null && value !== undefined && String(value).trim() !== "") return value; } return null; }
+
+const FAIR_KEYS = ["fair", "fair_price", "fairPrice", "edgeiq_price", "edgeiqPrice", "model_price", "modelPrice"];
+const EDGE_KEYS = ["edge", "edge_pct", "edgePct", "edge_percent", "edgePercent", "market_edge", "marketEdge"];
+
+function marketRow(runner: ThreeDayRunner): MarketRow {
+  const source = runner.source ?? {};
+  const marketValue = runner.official.market ?? first(source, ["market", "price", "current_price", "currentPrice"]);
+  const fairValue = first(source, FAIR_KEYS);
+  const edgeValue = first(source, EDGE_KEYS);
+  return { runner, market: price(marketValue), fair: price(fairValue), edge: edgeValue === null ? "-" : display(edgeValue) };
 }
 
-function text(value: unknown): string {
-  if (value === null || value === undefined) return "";
-  const output = String(value).trim();
-  return output === "-" ? "" : output;
-}
+export function MarketWorkspace({ meeting, selectedRaceKey, onRaceChange }: MarketWorkspaceProps) {
+  const selectedRace = useMemo(() => {
+    if (!meeting?.races.length) return null;
+    return meeting.races.find((race) => race.raceKey === selectedRaceKey) ?? meeting.races[0];
+  }, [meeting, selectedRaceKey]);
 
-function fieldFromRaceBook(raceBook: RaceBook): RaceFieldRunner[] {
-  const value = readValue(raceBook, ["field"]);
-  if (!Array.isArray(value)) return [];
-  return value.filter((entry): entry is RaceFieldRunner => Boolean(entry) && typeof entry === "object");
-}
-
-function officialRace(raceBook: RaceBook, field: RaceFieldRunner[]): ThreeDayRace {
-  const official = (raceBook.official ?? {}) as Record<string, unknown>;
-  const source = (raceBook.source ?? {}) as Record<string, unknown>;
-  return {
-    raceKey: text(official.raceKey) || text(source.raceKey) || `${text(official.meeting)}|R${text(official.raceNumber)}`,
-    raceNumber: Number(text(official.raceNumber) || text(source.raceNumber) || 0),
-    raceName: text(official.raceName) || text(source.raceName) || `Race ${text(official.raceNumber)}`,
-    distance: text(official.distance) || null,
-    raceClass: text(official.raceClass) || null,
-    raceTime: text(official.raceTime) || null,
-    trackCondition: text(official.trackCondition) || text(official.condition) || null,
-    rail: text(official.rail) || null,
-    runners: field,
-    source,
-  };
-}
-
-function value(rowValue: string | null): string {
-  return rowValue && rowValue.trim() ? rowValue : "";
-}
-
-function price(rowValue: string | null): string {
-  const raw = value(rowValue);
-  if (!raw) return "";
-  const parsed = Number(raw);
-  return Number.isFinite(parsed) ? `$${parsed.toFixed(parsed < 10 ? 2 : 0)}` : raw;
-}
-
-function moveClass(row: BETA010Row): string {
-  const parsed = Number(value(row.move).replace(/[%+]/g, ""));
-  if (!Number.isFinite(parsed) || parsed === 0) return "is-neutral";
-  return parsed < 0 ? "is-positive" : "is-negative";
-}
-function flucText(row: BETA010Row): string {
-  const raw = value(row.move);
-  if (!row.marketIsLive || !raw) return "Movement not published";
-  const parsed = Number(raw.replace(/[%+]/g, ""));
-  if (!Number.isFinite(parsed) || parsed === 0) return "Movement not published";
-  return `${parsed > 0 ? "+" : ""}${parsed.toFixed(1)}%`;
-}
-function marketDisclosureLabel(row: BETA010Row): string {
-  if (row.marketIsLive) return "Market Available";
-  if (row.marketAvailabilityStatus === "MARKET_SNAPSHOT") return "Market Available";
-  if (row.marketFreshnessStatus === "MARKET_STALE") return "Market Closed";
-  return "Awaiting Feed";
-}
-function statusLabel(row: BETA010Row): string {
-  return marketDisplayStatus(row.status, Boolean(row.market || row.edgeiq_price), row.rowStatus === "scratched");
-}
-
-function edgeClass(row: BETA010Row): string {
-  const raw = value(row.edge);
-  if (!raw) return "is-neutral";
-  return raw.startsWith("+") ? "is-positive" : raw.startsWith("-") ? "is-negative" : "is-neutral";
-}
-
-function MarketReadPanel({ viewModel }: { viewModel: BETA010ViewModel }) {
-  const pricedCount = viewModel.rows.filter((row) => row.market || row.edgeiq_price).length;
-  const pendingCount = Math.max(0, viewModel.rows.length - pricedCount);
-
-  return (
-    <aside className="eiq-market-v1-side">
-      <section className="eiq-market-v1-panel">
-        <div className="eiq-market-v1-panel__title"><span>Market Read</span></div>
-        <dl className="eiq-market-v1-facts">
-          <div><dt>Runners</dt><dd>{viewModel.rows.length}</dd></div>
-          <div><dt>Priced</dt><dd>{pricedCount}</dd></div>
-          <div><dt>Pending</dt><dd>{pendingCount}</dd></div>
-        </dl>
-      </section>
-      <section className="eiq-market-v1-panel">
-        <div className="eiq-market-v1-panel__title"><span>Market Note</span></div>
-        <p className="eiq-market-v1-copy">
-          Market prices use the governed observation feed. Movement appears only where timestamp-safe fluctuation evidence is published.
-        </p>
-      </section>
-    </aside>
-  );
-}
-
-function MarketTable({ rows }: { rows: BETA010Row[] }) {
-  return (
-    <section className="eiq-market-v1-panel eiq-market-v1-table-panel">
-      <div className="eiq-market-v1-panel__title">
-        <span>Market Board</span>
-        <small>NO / RUNNER / EDGEIQ / MARKET / FAIR / EDGE / FLUCTUATION / STATUS</small>
-      </div>
-      <div className="eiq-market-v1-table-scroll">
-        <table className="eiq-market-v1-table">
-          <thead>
-            <tr>
-              <th>NO</th>
-              <th>RUNNER</th>
-              <th>EDGEIQ</th>
-              <th>MARKET</th>
-              <th>FAIR</th>
-              <th>EDGE</th>
-              <th>FLUCTUATION</th>
-              <th>STATUS</th>
-            </tr>
-          </thead>
-          <tbody>
-            {rows.map((row) => (
-              <tr key={`${value(row.no)}-${value(row.horse)}`} className={row.rowStatus === "scratched" ? "is-scratched" : ""}>
-                <td>{value(row.no)}</td>
-                <td><strong>{value(row.horse) || "Runner"}</strong></td>
-                <td>{value(row.epi) || "-"}</td>
-                <td>{price(row.market)}</td>
-                <td>{price(row.edgeiq_price)}</td>
-                <td><b className={edgeClass(row)}>{value(row.edge) || "-"}</b></td>
-                <td><b className={moveClass(row)}>{flucText(row)}</b></td>
-                <td>{statusLabel(row)}<br /><small>{marketDisclosureLabel(row)}</small></td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </section>
-  );
-}
-
-export function MarketWorkspace(props: MarketWorkspaceProps) {
-  const field = props.field ?? fieldFromRaceBook(props.raceBook);
-  const race = useMemo(() => officialRace(props.raceBook, field), [props.raceBook, field]);
-  const [rows, setRows] = useState<Awaited<ReturnType<typeof loadMarketTerminalFeed>>>([]);
-  const [error, setError] = useState<string | null>(null);
+  const [rows, setRows] = useState<MarketRow[]>([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    let cancelled = false;
-    loadMarketTerminalFeed()
-      .then((feedRows) => {
-        if (!cancelled) {
-          setRows(feedRows);
-          setError(null);
-        }
-      })
-      .catch((loadError) => {
-        if (!cancelled) {
-          setRows([]);
-          setError(loadError instanceof Error ? loadError.message : "Market feed failed");
-        }
+    let active = true;
+    if (!selectedRace) { setRows([]); return () => { active = false; }; }
+    setLoading(true);
+    Promise.all(selectedRace.runners.map(async (runner) => {
+      const path = detailPath(runner);
+      let fullRunner = runner;
+      if (path) {
+        try { fullRunner = await loadRunnerDetail(path); } catch { fullRunner = runner; }
+      }
+      return marketRow(fullRunner);
+    })).then((next) => {
+      if (!active) return;
+      next.sort((a,b) => {
+        const pa = Number(a.market.replace("$",""));
+        const pb = Number(b.market.replace("$",""));
+        if (Number.isFinite(pa) && Number.isFinite(pb)) return pa - pb;
+        if (Number.isFinite(pa)) return -1;
+        if (Number.isFinite(pb)) return 1;
+        return Number(officialNumber(a.runner)) - Number(officialNumber(b.runner));
       });
-    return () => {
-      cancelled = true;
-    };
-  }, []);
+      setRows(next);
+      setLoading(false);
+    });
+    return () => { active = false; };
+  }, [selectedRace]);
 
-  const viewModel = useMemo(() => buildMarketViewModel(race, rows, props.meetingKey ?? null), [race, rows, props.meetingKey]);
-
-  if (error) {
-    return <section className="eiq-market-v1"><div className="eiq-market-v1-empty">{error}</div></section>;
-  }
-
-  if (!viewModel.rows.length) {
-    return (
-      <section className="eiq-market-v1">
-        <div className="eiq-market-v1-empty">Governed market rows are not published for this race.</div>
-      </section>
-    );
-  }
+  if (!meeting || !selectedRace) return null;
+  const shownRows = rows.length ? rows : selectedRace.runners.map(marketRow);
 
   return (
-    <section className="eiq-market-v1">
-      <div className="eiq-market-v1-hero">
-        <div>
-          <p>MARKET</p>
-          <h3>Market and EDGEiQ price context</h3>
-          <span>Market snapshots, EDGEiQ assessed price and governed context for every runner.</span>
-        </div>
-        <dl>
-          <div><dt>Runners</dt><dd>{viewModel.rows.length}</dd></div>
-          <div><dt>Market State</dt><dd>{viewModel.rows.some((row) => row.market || row.edgeiq_price) ? "Market Available" : "Awaiting Feed"}</dd></div>
-        </dl>
-      </div>
-      <div className="eiq-market-v1-grid">
-        <MarketTable rows={viewModel.rows} />
-        <MarketReadPanel viewModel={viewModel} />
-      </div>
+    <section className="eiq-market-clean-v1" aria-label="Market workspace" data-edgeiq-workspace-key="MARKET">
+      <header className="eiq-market-clean-v1__header"><div><p>{canonicalTrackDisplayName(meeting.meeting)} · {display(meeting.date, "")}</p><h1>Market</h1></div><strong>{selectedRace.runners.length} runners</strong></header>
+      <nav className="eiq-market-clean-v1__race-tabs" aria-label="Meeting races">{meeting.races.map((race) => <button key={race.raceKey} type="button" className={race.raceKey === selectedRace.raceKey ? "is-active" : ""} onClick={() => onRaceChange(race.raceKey)}><strong>R{race.raceNumber}</strong><span>{display(race.raceTime)}</span></button>)}</nav>
+      <section className="eiq-market-clean-v1__card">
+        <header><div><h2>{raceTitle(selectedRace)}</h2><p>{display(selectedRace.distance)} · {display(selectedRace.raceClass)}</p></div><strong>{loading ? "Loading…" : `${shownRows.filter((row) => row.market !== "-").length} priced`}</strong></header>
+        <div className="eiq-market-clean-v1__table-wrap"><table><thead><tr><th>No.</th><th>Runner</th><th>Barrier</th><th>Jockey</th><th>Weight</th><th>Market</th><th>Fair</th><th>Edge</th></tr></thead><tbody>{shownRows.map((row,index) => <tr key={`${officialNumber(row.runner)}-${runnerName(row.runner)}-${index}`}><td>{officialNumber(row.runner)}</td><td><strong>{runnerName(row.runner)}</strong><small>{display(row.runner.official.trainer)}</small></td><td>{display(row.runner.official.barrier)}</td><td>{display(row.runner.official.jockey)}</td><td>{display(row.runner.official.weight)}</td><td><b className="eiq-market-clean-v1__market">{row.market}</b></td><td><b className="eiq-market-clean-v1__fair">{row.fair}</b></td><td><b>{row.edge}</b></td></tr>)}</tbody></table></div>
+      </section>
     </section>
   );
 }
