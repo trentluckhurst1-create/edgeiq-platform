@@ -253,7 +253,7 @@ export function buildRaceIntelligenceViewModel(params: {
     cards: [
       { label: "TEMPO", value: tempo || "Insufficient Evidence", detail: mapCoverage || speedEvidenceCount ? `${mapCoverage || speedEvidenceCount} runners with governed speed/map evidence` : "Governed tempo not supplied" },
       { label: "EPF", value: epf || "Insufficient Evidence", detail: "Governed EPF not supplied" },
-      { label: "KEY DETERMINANTS", value: determinant, detail: statements.length ? "Governed race intelligence" : topEpr[0] ? "Top governed EPR" : "Governed determinant not supplied" },
+      { label: "KEY DETERMINANTS", value: determinant, detail: statements.length ? "Governed race intelligence" : topEpr[0] ? "Top governed EPI" : "Governed determinant not supplied" },
       { label: "HIDDEN ANGLES", value: hiddenAngles, detail: statements[1] ? "Governed supporting statement" : "Governed hidden-angle statement not supplied" },
     ],
     whatMatters: statements,
@@ -262,7 +262,7 @@ export function buildRaceIntelligenceViewModel(params: {
     runnerBoard: board,
     marketSnapshot: [
       { label: "Favourite", value: board.find((row) => row.market)?.runner || "Awaiting Market" },
-      { label: "Best EPR", value: topEpr[0]?.runner || "Insufficient Evidence" },
+      { label: "Best EPI", value: topEpr[0]?.runner || "Insufficient Evidence" },
       { label: "Market", value: board.some((row) => row.market) ? "Market Available" : "Awaiting Market" },
     ],
     unavailable,
