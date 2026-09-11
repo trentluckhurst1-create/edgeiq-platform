@@ -94,10 +94,7 @@ export function RaceWorkspace({
 
       <section className="eiq-race-v1__board">
         <header>
-          <div>
-            <h2>Runner Board</h2>
-            <p>Declared runners and currently supplied race information.</p>
-          </div>
+          <h2>Runner Board</h2>
           <strong>{runners.length} runners</strong>
         </header>
 
