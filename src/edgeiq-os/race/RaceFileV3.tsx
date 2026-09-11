@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { EdgeiqOsHome } from "../home/EdgeiqOsHome";
 import { type GlobalSection } from "./components/AppNavigation";
+import { EpiRatingsWorkspace } from "./components/EpiRatingsWorkspace";
 import { FieldWorkspace } from "./components/FieldWorkspace";
 import { FormWorkspace } from "./components/FormWorkspace";
 import { MeetingsWorkspace } from "./components/MeetingsWorkspace";
@@ -58,6 +59,8 @@ export function RaceFileV3() {
         <FormWorkspace meeting={selectedMeeting} selectedRaceKey={selectedRaceKey} onRaceChange={setSelectedRaceKey} />
       ) : activeSection === "performance" ? (
         <PerformanceWorkspace meeting={selectedMeeting} selectedRaceKey={selectedRaceKey} onRaceChange={setSelectedRaceKey} />
+      ) : activeSection === "epi" ? (
+        <EpiRatingsWorkspace meeting={selectedMeeting} selectedRaceKey={selectedRaceKey} onRaceChange={setSelectedRaceKey} />
       ) : null}
     </WorkspaceShell>
   );
