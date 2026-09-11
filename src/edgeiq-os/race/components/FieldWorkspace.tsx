@@ -72,150 +72,156 @@ export function FieldWorkspace({ field, formGuide, weight, market, onOpenRunner 
         <div><span>GEAR / CHANGES</span><strong>{gearCount}</strong></div>
       </section>
 
-      <div className="eiq-table-wrap eiq-field-table-wrap-v1">
-        <table className="eiq-field-table-v1">
-          <colgroup>
-            <col className="eiq-field-col-no" />
-            <col className="eiq-field-col-silk" />
-            <col className="eiq-field-col-runner" />
-            <col className="eiq-field-col-bar" />
-            <col className="eiq-field-col-wgt" />
-            <col className="eiq-field-col-jockey" />
-            <col className="eiq-field-col-trainer" />
-            <col className="eiq-field-col-gear" />
-            <col className="eiq-field-col-status" />
-            <col className="eiq-field-col-action" />
-          </colgroup>
-          <thead>
-            <tr>
-              <th>NO</th>
-              <th>SILK</th>
-              <th className="is-left">RUNNER</th>
-              <th>BAR</th>
-              <th>WGT</th>
-              <th className="is-left">JOCKEY</th>
-              <th className="is-left">TRAINER</th>
-              <th className="is-left">GEAR / CHANGES</th>
-              <th>STATUS</th>
-              <th>PROFILE</th>
-            </tr>
-          </thead>
-          <tbody>
-            {rows.length ? rows.map((runner) => {
-              const expanded = expandedKey === runner.key;
-              const flags = runColumnFlags(runner.recentRuns);
-              return (
-                <Fragment key={runner.key}>
-                  <tr
-                    className={`eiq-field-runner-row ${rowStatusClass(runner.status)} ${expanded ? "is-expanded" : ""}`}
-                    tabIndex={0}
-                    role="button"
-                    aria-expanded={expanded}
-                    aria-label={`${runner.runner || "Runner"} last five starts`}
-                    onClick={() => toggleRunner(runner.key)}
-                    onKeyDown={(event) => handleRunnerKeyDown(event, runner.key)}
-                  >
-                    <td className="eiq-field-cell-no">{display(runner.no)}</td>
-                    <td>
-                      {runner.silkUrl && runner.silkUrl.startsWith("http") ? (
-                        <img className="eiq-field-table-v1__silk" src={runner.silkUrl} alt="" loading="lazy" />
-                      ) : (
-                        <span className="eiq-field-table-v1__silk eiq-race-intel-silk--empty" aria-hidden="true" />
-                      )}
-                    </td>
-                    <td className="is-left">
-                      <button
-                        type="button"
-                        className="eiq-field-runner-button"
-                        onClick={(event) => {
-                          event.stopPropagation();
-                          toggleRunner(runner.key);
-                        }}
-                        aria-expanded={expanded}
-                      >
-                        <strong>{display(runner.runner)}</strong>
-                        <small>{expanded ? "Hide last five" : "Show last five"}</small>
-                      </button>
-                    </td>
-                    <td>{display(runner.barrier)}</td>
-                    <td>{display(runner.weight)}</td>
-                    <td className="is-left">{display(runner.jockey)}</td>
-                    <td className="is-left">{display(runner.trainer)}</td>
-                    <td className="is-left">{display(runner.gear, "No change supplied")}</td>
-                    <td><span className="eiq-field-status-pill">{display(runner.status)}</span></td>
-                    <td>
-                      <button
-                        type="button"
-                        className="eiq-approved-button"
-                        disabled={runner.isScratched}
-                        onClick={(event) => {
-                          event.stopPropagation();
-                          onOpenRunner(runner.sourceIndex);
-                        }}
-                      >
-                        {runner.isScratched ? "Scratched" : "Open"}
-                      </button>
-                    </td>
-                  </tr>
-                  {expanded ? (
-                    <tr className="eiq-field-expanded-row">
-                      <td colSpan={10}>
-                        <div className="eiq-field-recent-panel">
-                          <header>
-                            <div><span>LAST FIVE STARTS</span><strong>{display(runner.runner)}</strong></div>
-                            {!runner.isScratched ? <button type="button" className="eiq-approved-button" onClick={() => onOpenRunner(runner.sourceIndex)}>Open Full Runner Profile</button> : null}
-                          </header>
-                          {runner.recentRuns.length ? (
-                            <table>
-                              <thead>
-                                <tr>
-                                  <th>DATE</th>
-                                  <th>TRACK</th>
-                                  <th>DIST</th>
-                                  <th>CLASS</th>
-                                  <th>POS</th>
-                                  <th>MARGIN</th>
-                                  <th>JOCKEY</th>
-                                  <th>WGT</th>
-                                  <th>SP</th>
-                                  {flags.epi ? <th>EPI</th> : null}
-                                  {flags.eri ? <th>ERI</th> : null}
-                                </tr>
-                              </thead>
-                              <tbody>
-                                {runner.recentRuns.slice(0, 5).map((run, index) => (
-                                  <tr key={`${runner.key}-run-${index}`}>
-                                    <td>{display(run.date)}</td>
-                                    <td>{display(run.track)}</td>
-                                    <td>{display(run.distance)}</td>
-                                    <td>{display(run.raceClass)}</td>
-                                    <td>{display(run.position)}</td>
-                                    <td>{display(run.margin)}</td>
-                                    <td>{display(run.jockey)}</td>
-                                    <td>{display(run.weight)}</td>
-                                    <td>{display(run.sp)}</td>
-                                    {flags.epi ? <td>{display(run.epi)}</td> : null}
-                                    {flags.eri ? <td>{display(run.eri)}</td> : null}
-                                  </tr>
-                                ))}
-                              </tbody>
-                            </table>
-                          ) : (
-                            <div className="eiq-field-recent-empty">NO PREVIOUS STARTS PUBLISHED</div>
-                          )}
-                        </div>
+      <div className="eiq-field-table-wrap-v1">
+        <header className="eiq-race-data-panel__header">
+          <strong>Declared Runners</strong>
+          <span>{activeCount} active · {scratchedCount} scratched</span>
+        </header>
+        <div className="eiq-race-data-panel__scroll">
+          <table className="eiq-field-table-v1">
+            <colgroup>
+              <col className="eiq-field-col-no" />
+              <col className="eiq-field-col-silk" />
+              <col className="eiq-field-col-runner" />
+              <col className="eiq-field-col-bar" />
+              <col className="eiq-field-col-wgt" />
+              <col className="eiq-field-col-jockey" />
+              <col className="eiq-field-col-trainer" />
+              <col className="eiq-field-col-gear" />
+              <col className="eiq-field-col-status" />
+              <col className="eiq-field-col-action" />
+            </colgroup>
+            <thead>
+              <tr>
+                <th>NO</th>
+                <th>SILK</th>
+                <th className="is-left">RUNNER</th>
+                <th>BAR</th>
+                <th>WGT</th>
+                <th className="is-left">JOCKEY</th>
+                <th className="is-left">TRAINER</th>
+                <th className="is-left">GEAR / CHANGES</th>
+                <th>STATUS</th>
+                <th>PROFILE</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.length ? rows.map((runner) => {
+                const expanded = expandedKey === runner.key;
+                const flags = runColumnFlags(runner.recentRuns);
+                return (
+                  <Fragment key={runner.key}>
+                    <tr
+                      className={`eiq-field-runner-row ${rowStatusClass(runner.status)} ${expanded ? "is-expanded" : ""}`}
+                      tabIndex={0}
+                      role="button"
+                      aria-expanded={expanded}
+                      aria-label={`${runner.runner || "Runner"} last five starts`}
+                      onClick={() => toggleRunner(runner.key)}
+                      onKeyDown={(event) => handleRunnerKeyDown(event, runner.key)}
+                    >
+                      <td className="eiq-field-cell-no">{display(runner.no)}</td>
+                      <td>
+                        {runner.silkUrl && runner.silkUrl.startsWith("http") ? (
+                          <img className="eiq-field-table-v1__silk" src={runner.silkUrl} alt="" loading="lazy" />
+                        ) : (
+                          <span className="eiq-field-table-v1__silk eiq-race-intel-silk--empty" aria-hidden="true" />
+                        )}
+                      </td>
+                      <td className="is-left">
+                        <button
+                          type="button"
+                          className="eiq-field-runner-button"
+                          onClick={(event) => {
+                            event.stopPropagation();
+                            toggleRunner(runner.key);
+                          }}
+                          aria-expanded={expanded}
+                        >
+                          <strong>{display(runner.runner)}</strong>
+                          <small>{expanded ? "Hide last five" : "Show last five"}</small>
+                        </button>
+                      </td>
+                      <td>{display(runner.barrier)}</td>
+                      <td>{display(runner.weight)}</td>
+                      <td className="is-left">{display(runner.jockey)}</td>
+                      <td className="is-left">{display(runner.trainer)}</td>
+                      <td className="is-left">{display(runner.gear, "No change supplied")}</td>
+                      <td><span className="eiq-field-status-pill">{display(runner.status)}</span></td>
+                      <td>
+                        <button
+                          type="button"
+                          className="eiq-approved-button"
+                          disabled={runner.isScratched}
+                          onClick={(event) => {
+                            event.stopPropagation();
+                            onOpenRunner(runner.sourceIndex);
+                          }}
+                        >
+                          {runner.isScratched ? "Scratched" : "Open"}
+                        </button>
                       </td>
                     </tr>
-                  ) : null}
-                </Fragment>
-              );
-            }) : (
-              <tr className="eiq-field-empty-row">
-                <td colSpan={10}>No official runners are published for this race.</td>
-              </tr>
-            )}
-          </tbody>
-        </table>
+                    {expanded ? (
+                      <tr className="eiq-field-expanded-row">
+                        <td colSpan={10}>
+                          <div className="eiq-field-recent-panel">
+                            <header>
+                              <div><span>LAST FIVE STARTS</span><strong>{display(runner.runner)}</strong></div>
+                              {!runner.isScratched ? <button type="button" className="eiq-approved-button" onClick={() => onOpenRunner(runner.sourceIndex)}>Open Full Runner Profile</button> : null}
+                            </header>
+                            {runner.recentRuns.length ? (
+                              <table>
+                                <thead>
+                                  <tr>
+                                    <th>DATE</th>
+                                    <th>TRACK</th>
+                                    <th>DIST</th>
+                                    <th>CLASS</th>
+                                    <th>POS</th>
+                                    <th>MARGIN</th>
+                                    <th>JOCKEY</th>
+                                    <th>WGT</th>
+                                    <th>SP</th>
+                                    {flags.epi ? <th>EPI</th> : null}
+                                    {flags.eri ? <th>ERI</th> : null}
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  {runner.recentRuns.slice(0, 5).map((run, index) => (
+                                    <tr key={`${runner.key}-run-${index}`}>
+                                      <td>{display(run.date)}</td>
+                                      <td>{display(run.track)}</td>
+                                      <td>{display(run.distance)}</td>
+                                      <td>{display(run.raceClass)}</td>
+                                      <td>{display(run.position)}</td>
+                                      <td>{display(run.margin)}</td>
+                                      <td>{display(run.jockey)}</td>
+                                      <td>{display(run.weight)}</td>
+                                      <td>{display(run.sp)}</td>
+                                      {flags.epi ? <td>{display(run.epi)}</td> : null}
+                                      {flags.eri ? <td>{display(run.eri)}</td> : null}
+                                    </tr>
+                                  ))}
+                                </tbody>
+                              </table>
+                            ) : (
+                              <div className="eiq-field-recent-empty">No previous starts published</div>
+                            )}
+                          </div>
+                        </td>
+                      </tr>
+                    ) : null}
+                  </Fragment>
+                );
+              }) : (
+                <tr className="eiq-field-empty-row">
+                  <td colSpan={10}>No official runners are published for this race.</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
     </section>
   );
