@@ -64,6 +64,11 @@ jobs:
           TZ: Australia/Melbourne
         run: python scripts/build_edgeiq_meetings_summary_feed_v1.py
 
+      - name: Build on-demand meeting detail shards
+        env:
+          TZ: Australia/Melbourne
+        run: python scripts/build_edgeiq_meeting_detail_shards_v1.py
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
@@ -89,6 +94,7 @@ jobs:
           test -s dist/data/edgeiq_three_day_window_v1.json
           test -s dist/data/edgeiq_three_day_product_catalog_v1.json
           test -s dist/data/edgeiq_meetings_summary_feed_v1.json
+          test -s dist/data/meetings/index.json
           test -s dist/data/edgeiq_vic_three_day_race_list_v1.csv
           python - <<'PY'
           import json
@@ -96,11 +102,13 @@ jobs:
           window = json.loads(Path('dist/data/edgeiq_three_day_window_v1.json').read_text(encoding='utf-8'))
           summary_path = Path('dist/data/edgeiq_meetings_summary_feed_v1.json')
           summary = json.loads(summary_path.read_text(encoding='utf-8'))
+          detail_index = json.loads(Path('dist/data/meetings/index.json').read_text(encoding='utf-8'))
           print('PAGES_DATA_TODAY=' + str(window.get('today', '')))
           print('PAGES_DATA_TOMORROW=' + str(window.get('tomorrow', '')))
           print('PAGES_DATA_DAY_PLUS_2=' + str(window.get('dayPlus2', '')))
           print('MEETINGS_SUMMARY_BYTES=' + str(summary_path.stat().st_size))
           print('MEETINGS_SUMMARY_DAYS=' + str(len(summary.get('days', []))))
+          print('MEETING_DETAIL_SHARDS=' + str(len(detail_index.get('meetings', []))))
           PY
 
       - name: Upload Pages artifact
