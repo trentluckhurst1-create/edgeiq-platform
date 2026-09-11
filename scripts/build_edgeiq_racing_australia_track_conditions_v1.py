@@ -57,6 +57,16 @@ ALIASES = {
     "BELMONT PARK": "BELMONT",
 }
 
+# Racing Australia can leave the main Track Condition table cell at the morning
+# rating while publishing a later official change in the Comment cell, for example:
+# "Track Upgraded to (Good 4) @ 1:53 PM after Race 3".  Only promote an explicit
+# official-condition phrase; never infer a rating from unrelated prose.
+TRACK_UPDATE_RE = re.compile(
+    r"(?:\btrack\s+)?(?:upgraded|downgraded|rated|changed|amended)\s+"
+    r"(?:to|as)?\s*\(?\s*((?:Firm|Good|Soft|Heavy|Synthetic)\s*\d+)\s*\)?",
+    flags=re.IGNORECASE,
+)
+
 
 def clean(value: Any) -> str:
     if value is None:
@@ -82,6 +92,27 @@ def canonical_track(value: Any) -> str:
             break
     raw = ALIASES.get(raw, raw)
     return raw.replace(" ", "_")
+
+
+def canonical_condition(value: str) -> str:
+    match = re.fullmatch(
+        r"\s*(Firm|Good|Soft|Heavy|Synthetic)\s*(\d+)\s*",
+        clean(value),
+        flags=re.IGNORECASE,
+    )
+    if not match:
+        return clean(value)
+    return f"{match.group(1).title()} {match.group(2)}"
+
+
+def latest_explicit_track_update(comment: str) -> tuple[str, str]:
+    matches = list(TRACK_UPDATE_RE.finditer(clean(comment)))
+    if not matches:
+        return "", ""
+    match = matches[-1]
+    condition = canonical_condition(match.group(1))
+    evidence = clean(match.group(0))
+    return condition, evidence
 
 
 class TrackConditionTableParser(HTMLParser):
@@ -181,6 +212,7 @@ def fetch_state(state: str, url: str, reference: date) -> tuple[list[dict[str, A
     parser = TrackConditionTableParser()
     parser.feed(html)
     records: list[dict[str, Any]] = []
+    condition_updates = 0
 
     for cells in parser.rows:
         if len(cells) < 10:
@@ -189,19 +221,30 @@ def fetch_state(state: str, url: str, reference: date) -> tuple[list[dict[str, A
         race_date, meeting_name = parse_meeting_cell(meeting_cell, reference)
         if not race_date or not meeting_name:
             continue
+
+        reported_condition = canonical_condition(usable(cells[2].get("text")))
+        comment = usable(cells[8].get("text"))
+        updated_condition, update_evidence = latest_explicit_track_update(comment)
+        effective_condition = updated_condition or reported_condition
+        if updated_condition and updated_condition != reported_condition:
+            condition_updates += 1
+
         record = {
             "state": state,
             "race_date": race_date,
             "meeting_display": meeting_name,
             "canonical_track_identity": canonical_track(meeting_name),
             "track_type": usable(cells[1].get("text")),
-            "track_condition": usable(cells[2].get("text")),
+            "track_condition": effective_condition,
+            "track_condition_reported": reported_condition,
+            "track_condition_update_source": "Racing Australia comment" if updated_condition else "",
+            "track_condition_update_evidence": update_evidence,
             "penetrometer": usable(cells[3].get("text")),
             "weather_forecast": usable(cells[4].get("text")),
             "rail": usable(cells[5].get("text")),
             "irrigation": usable(cells[6].get("text")),
             "rainfall": usable(cells[7].get("text")),
-            "comment": usable(cells[8].get("text")),
+            "comment": comment,
             "additional_information": usable(cells[9].get("text")),
             "meeting_details_href": clean(cells[0].get("href")),
             "source_url": url,
@@ -215,6 +258,7 @@ def fetch_state(state: str, url: str, reference: date) -> tuple[list[dict[str, A
         "http_status": status,
         "html_bytes": len(html.encode("utf-8")),
         "table_rows_parsed": len(records),
+        "track_condition_comment_updates": condition_updates,
     }
 
 
@@ -249,6 +293,7 @@ def main() -> int:
     print(f"RECORDS={len(records)}")
     print(f"VIC_RECORDS={sum(1 for row in records if row.get('state') == 'VIC')}")
     print(f"WA_RECORDS={sum(1 for row in records if row.get('state') == 'WA')}")
+    print(f"TRACK_CONDITION_COMMENT_UPDATES={sum(int(row.get('track_condition') != row.get('track_condition_reported')) for row in records)}")
     print(f"FAILURES={len(failures)}")
     return 0 if records else 1
 
