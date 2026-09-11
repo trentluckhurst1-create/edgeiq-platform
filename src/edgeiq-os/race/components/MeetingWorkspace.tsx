@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import type { ThreeDayMeeting, ThreeDayRace } from "../services/threeDayCatalog";
+import { loadRaceDetail } from "../services/raceDetailFeed";
 import {
   MEETING_DETAIL_TAB_ORDER,
   buildMeetingConditionStripForRace,
@@ -14,7 +15,6 @@ import { MeetingResultsWorkspace } from "./MeetingResultsWorkspace";
 import { MeetingScratchingsWorkspace } from "./MeetingScratchingsWorkspace";
 import { MeetingTrackWorkspace } from "./MeetingTrackWorkspace";
 import { MeetingWeatherWorkspace } from "./MeetingWeatherWorkspace";
-import { canonicalTrackDisplayName } from "../../design-system/presentation";
 
 type MeetingWorkspaceProps = {
   raceBook: any;
@@ -74,7 +74,6 @@ function formatMeetingConditionLabel(label: string): string {
     "RAIN 24H": "RAIN",
     "IRRIGATION 24H": "IRRIGATION",
   };
-
   return displayLabels[label.trim().toUpperCase()] ?? label;
 }
 
@@ -87,99 +86,45 @@ function trackConditionClass(value: string): string {
   return "";
 }
 
-function MeetingConditionStrip({
-  meeting,
-  selected,
-}: {
-  meeting: ThreeDayMeeting;
-  selected: MeetingDetailSelectedRace | null;
-}) {
+function MeetingConditionStrip({ meeting, selected }: { meeting: ThreeDayMeeting; selected: MeetingDetailSelectedRace | null }) {
   const conditionStrip = buildMeetingConditionStripForRace(meeting, selected?.row.race ?? null);
   return (
     <section className="eiq-meeting-v1-condition-strip" aria-label="Meeting condition strip">
-      {conditionStrip
-        .filter((item) => item.label.trim().toUpperCase() !== "OFFICIAL UPDATE")
-        .map((item) => {
-          const isTrack = item.label.trim().toUpperCase() === "TRACK";
-          return (
-            <div
-              key={item.label}
-              className={[
-                item.tone ? `is-${item.tone}` : "",
-                isTrack ? trackConditionClass(item.value) : "",
-              ].filter(Boolean).join(" ")}
-            >
-              <span>{formatMeetingConditionLabel(item.label)}</span>
-              <strong>{item.value}</strong>
-            </div>
-          );
-        })}
+      {conditionStrip.filter((item) => item.label.trim().toUpperCase() !== "OFFICIAL UPDATE").map((item) => {
+        const isTrack = item.label.trim().toUpperCase() === "TRACK";
+        return (
+          <div key={item.label} className={[item.tone ? `is-${item.tone}` : "", isTrack ? trackConditionClass(item.value) : ""].filter(Boolean).join(" ")}>
+            <span>{formatMeetingConditionLabel(item.label)}</span>
+            <strong>{item.value}</strong>
+          </div>
+        );
+      })}
     </section>
   );
 }
 
-function RacesTable({
-  model,
-  selectedRaceKey,
-  onSelectRace,
-  onOpenRace,
-}: {
+function RacesTable({ model, selectedRaceKey, onSelectRace, onOpenRace, loadingRaceKey }: {
   model: ReturnType<typeof buildMeetingDetailViewModel>;
   selectedRaceKey: string;
   onSelectRace: (raceKey: string) => void;
   onOpenRace: (race: ThreeDayRace, index: number) => void;
+  loadingRaceKey: string;
 }) {
   return (
     <section className="eiq-meeting-v1-panel">
-      <header>
-        <div>
-          <span>RACES</span>
-          <strong>Meeting race list</strong>
-        </div>
-      </header>
+      <header><div><span>RACES</span><strong>Meeting race list</strong></div></header>
       <div className="eiq-meeting-v1-table-scroll">
         <table className="eiq-meeting-v1-table">
-          <thead>
-            <tr>
-              <th>RACE</th>
-              <th>TIME</th>
-              <th className="is-left">RACE NAME</th>
-              <th>DIST</th>
-              <th>CLASS</th>
-              <th>FIELD</th>
-              <th>SCR</th>
-              <th>STATUS</th>
-            </tr>
-          </thead>
+          <thead><tr><th>RACE</th><th>TIME</th><th className="is-left">RACE NAME</th><th>DIST</th><th>CLASS</th><th>FIELD</th><th>SCR</th><th>STATUS</th></tr></thead>
           <tbody>
             {model.races.map((row) => (
-              <tr
-                key={row.raceKey}
-                className={selectedRaceKey === row.raceKey ? "is-selected" : ""}
-                role="button"
-                tabIndex={0}
-                aria-label={`Open ${row.raceLabel} ${row.raceName}`}
-                onClick={() => {
-                  onSelectRace(row.raceKey);
-                  onOpenRace(row.race, row.raceIndex);
-                }}
-                onKeyDown={(event) => {
-                  if (event.key === "Enter" || event.key === " ") {
-                    event.preventDefault();
-                    onSelectRace(row.raceKey);
-                    onOpenRace(row.race, row.raceIndex);
-                  }
-                }}
-              >
-                <td>{row.raceLabel.replace(/^R/i, "")}</td>
+              <tr key={row.raceKey} className={selectedRaceKey === row.raceKey ? "is-selected" : ""} role="button" tabIndex={0} aria-label={`Open ${row.raceLabel} ${row.raceName}`}
+                onClick={() => { onSelectRace(row.raceKey); onOpenRace(row.race, row.raceIndex); }}
+                onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); onSelectRace(row.raceKey); onOpenRace(row.race, row.raceIndex); } }}>
+                <td>{loadingRaceKey === row.raceKey ? "…" : row.raceLabel.replace(/^R/i, "")}</td>
                 <td>{row.time}</td>
-                <td className="is-left">
-                  <strong>{row.raceName}</strong>
-                </td>
-                <td>{row.distance}</td>
-                <td>{row.raceClass}</td>
-                <td>{row.fieldSize}</td>
-                <td>{row.scratchings}</td>
+                <td className="is-left"><strong>{row.raceName}</strong></td>
+                <td>{row.distance}</td><td>{row.raceClass}</td><td>{row.fieldSize}</td><td>{row.scratchings}</td>
                 <td className={row.statusTone ? `is-${row.statusTone}` : ""}>{row.status}</td>
               </tr>
             ))}
@@ -190,107 +135,68 @@ function RacesTable({
   );
 }
 
-function SelectedRacePanel({
-  selected,
-}: {
-  selected: MeetingDetailSelectedRace | null;
-}) {
-  if (!selected) {
-    return (
-      <section className="eiq-meeting-v1-panel eiq-meeting-v1-selected-race">
-        <header>
-          <div>
-            <span>SELECTED RACE</span>
-            <strong>No race selected</strong>
-          </div>
-        </header>
-      </section>
-    );
-  }
-
+function SelectedRacePanel({ selected }: { selected: MeetingDetailSelectedRace | null }) {
+  if (!selected) return <section className="eiq-meeting-v1-panel eiq-meeting-v1-selected-race"><header><div><span>SELECTED RACE</span><strong>No race selected</strong></div></header></section>;
   return (
     <section className="eiq-meeting-v1-panel eiq-meeting-v1-selected-race">
-      <header>
-        <div>
-          <span>SELECTED RACE</span>
-          <strong>{selected.row.raceLabel} - {selected.row.raceName}</strong>
-        </div>
-        <p>{selected.row.secondary || "Race details not supplied"}</p>
-      </header>
+      <header><div><span>SELECTED RACE</span><strong>{selected.row.raceLabel} - {selected.row.raceName}</strong></div><p>{selected.row.secondary || "Race details not supplied"}</p></header>
       <DetailGrid details={selected.details} />
     </section>
   );
 }
 
-function RacesTab({
-  model,
-  selected,
-  selectedRaceKey,
-  setSelectedRaceKey,
-  onOpenRace,
-}: {
+function RacesTab({ model, selected, selectedRaceKey, setSelectedRaceKey, onOpenRace, loadingRaceKey }: {
   model: ReturnType<typeof buildMeetingDetailViewModel>;
   selected: MeetingDetailSelectedRace | null;
   selectedRaceKey: string;
   setSelectedRaceKey: (raceKey: string) => void;
   onOpenRace: (race: ThreeDayRace, index: number) => void;
+  loadingRaceKey: string;
 }) {
   return (
     <div className="eiq-meeting-v1-main-stack">
-      <RacesTable
-        model={model}
-        selectedRaceKey={selectedRaceKey}
-        onSelectRace={setSelectedRaceKey}
-        onOpenRace={onOpenRace}
-      />
+      <RacesTable model={model} selectedRaceKey={selectedRaceKey} onSelectRace={setSelectedRaceKey} onOpenRace={onOpenRace} loadingRaceKey={loadingRaceKey} />
       <SelectedRacePanel selected={selected} />
     </div>
   );
 }
 
-export function MeetingWorkspace({
-  raceBook,
-  meeting,
-  clean,
-  onBackToMeetings,
-  onOpenRace,
-}: MeetingWorkspaceProps) {
+export function MeetingWorkspace({ raceBook, meeting, clean, onBackToMeetings, onOpenRace }: MeetingWorkspaceProps) {
   void raceBook;
   void clean;
 
   const model = useMemo(() => buildMeetingDetailViewModel(meeting), [meeting]);
   const [tab, setTab] = useState<MeetingDetailTab>("RACES");
   const [selectedRaceKey, setSelectedRaceKey] = useState(model.races[0]?.raceKey ?? "");
+  const [loadingRaceKey, setLoadingRaceKey] = useState("");
+  const [raceLoadError, setRaceLoadError] = useState("");
 
-  const selected = useMemo(
-    () =>
-      buildMeetingDetailSelectedRace(
-        model,
-        meeting,
-        selectedRaceKey,
-      ),
-    [model, meeting, selectedRaceKey],
-  );
+  const selected = useMemo(() => buildMeetingDetailSelectedRace(model, meeting, selectedRaceKey), [model, meeting, selectedRaceKey]);
 
   useEffect(() => {
-    if (!model.races.some((race) => race.raceKey === selectedRaceKey)) {
-      setSelectedRaceKey(model.races[0]?.raceKey ?? "");
-    }
+    if (!model.races.some((race) => race.raceKey === selectedRaceKey)) setSelectedRaceKey(model.races[0]?.raceKey ?? "");
   }, [model, selectedRaceKey]);
+
+  async function openRaceOnDemand(race: ThreeDayRace, index: number) {
+    setLoadingRaceKey(race.raceKey);
+    setRaceLoadError("");
+    try {
+      const fullRace = await loadRaceDetail(meeting.date, meeting.meetingKey, race.raceKey);
+      onOpenRace(fullRace, index);
+    } catch (error) {
+      setRaceLoadError(error instanceof Error ? error.message : "Race detail unavailable");
+    } finally {
+      setLoadingRaceKey("");
+    }
+  }
 
   const activePending = MEETING_DETAIL_TAB_ORDER.find((item) => item.key === tab && item.key !== "RACES");
 
   return (
     <section className="eiq-meeting-workspace eiq-meeting-v1" data-edgeiq-workspace-key={tab} data-edgeiq-mounted-component={meetingMountedComponentByTab[tab]}>
       <header className="eiq-meeting-v1-hero">
-        <div>
-          <span>MEETING DETAIL</span>
-          <h2>{model.meetingName}</h2>
-          <p>{model.venueLine}</p>
-        </div>
-        <button type="button" onClick={onBackToMeetings}>
-          Back to Meetings
-        </button>
+        <div><span>MEETING DETAIL</span><h2>{model.meetingName}</h2><p>{model.venueLine}</p>{raceLoadError ? <p role="alert">{raceLoadError}</p> : null}</div>
+        <button type="button" onClick={onBackToMeetings}>Back to Meetings</button>
       </header>
 
       <SummaryStrip items={model.summary} />
@@ -298,29 +204,14 @@ export function MeetingWorkspace({
 
       <nav className="eiq-context-tabs eiq-meeting-v1-tabs" aria-label="Meeting workspace navigation" role="tablist">
         {MEETING_DETAIL_TAB_ORDER.map((item) => (
-          <button
-            key={item.key}
-            type="button"
-            role="tab"
-            aria-selected={tab === item.key}
-            className={tab === item.key ? "is-active" : ""}
-            onClick={() => setTab(item.key)}
-          >
-            {item.label}
-          </button>
+          <button key={item.key} type="button" role="tab" aria-selected={tab === item.key} className={tab === item.key ? "is-active" : ""} onClick={() => setTab(item.key)}>{item.label}</button>
         ))}
       </nav>
 
       <div className="eiq-meeting-v1-layout">
         <main>
           {tab === "RACES" ? (
-            <RacesTab
-              model={model}
-              selected={selected}
-              selectedRaceKey={selectedRaceKey}
-              setSelectedRaceKey={setSelectedRaceKey}
-              onOpenRace={onOpenRace}
-            />
+            <RacesTab model={model} selected={selected} selectedRaceKey={selectedRaceKey} setSelectedRaceKey={setSelectedRaceKey} onOpenRace={(race, index) => void openRaceOnDemand(race, index)} loadingRaceKey={loadingRaceKey} />
           ) : tab === "SCRATCHINGS" ? (
             <MeetingScratchingsWorkspace meeting={meeting} />
           ) : tab === "GEAR_CHANGES" ? (
