@@ -50,6 +50,7 @@ jobs:
       - name: Vite production build
         env:
           VITE_CLERK_PUBLISHABLE_KEY: ${{ secrets.VITE_CLERK_PUBLISHABLE_KEY }}
+          VITE_EDGEIQ_DATA_ORIGIN: ${{ vars.EDGEIQ_DATA_ORIGIN }}
         run: npm exec -- vite build
 
       - name: Upload Pages artifact
