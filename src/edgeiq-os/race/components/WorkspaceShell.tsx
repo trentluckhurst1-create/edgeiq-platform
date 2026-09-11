@@ -35,17 +35,17 @@ export function WorkspaceShell({
   meta,
   children,
 }: WorkspaceShellProps) {
-  const isDashboard = activeSection === "home";
+  const ownsPageHeader = activeSection === "home" || activeSection === "meetings";
 
   return (
-    <section className={`eiq-approved-shell${isDashboard ? " is-dashboard" : ""}`} data-edgeiq-approved-ui="v2">
+    <section className={`eiq-approved-shell${activeSection === "home" ? " is-dashboard" : ""}${activeSection === "meetings" ? " is-meetings" : ""}`} data-edgeiq-approved-ui="v2">
       <AppNavigation activeSection={activeSection} onSectionChange={onSectionChange} />
 
       <div className="eiq-approved-shell__frame">
         <header className="eiq-approved-topbar">
           <div className="eiq-approved-topbar__identity">
             <span className="eiq-approved-topbar__product">EDGEiQ / RACING</span>
-            {!isDashboard ? <strong>{title}</strong> : null}
+            {!ownsPageHeader ? <strong>{title}</strong> : null}
           </div>
           <div className="eiq-approved-topbar__ops" aria-label="Operational context">
             <span className="eiq-approved-topbar__status"><i aria-hidden="true" /> LIVE</span>
@@ -55,7 +55,7 @@ export function WorkspaceShell({
         </header>
 
         <main className="eiq-approved-shell__content">
-          {!isDashboard ? (
+          {!ownsPageHeader ? (
             <header className="eiq-workspace-masthead">
               <div className="eiq-workspace-masthead__copy">
                 <span className="eiq-workspace-masthead__eyebrow">{eyebrow}</span>
