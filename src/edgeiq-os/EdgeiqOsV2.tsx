@@ -7,6 +7,7 @@ import "./styles/edgeiqFormV1.css";
 import "./styles/edgeiqPerformanceV1.css";
 import "./styles/edgeiqEpiRatingsV1.css";
 import "./styles/edgeiqSpeedMapV1.css";
+import "./styles/edgeiqMarketCleanV1.css";
 import "./styles/edgeiqLightSidebarLock.css";
 import { EdgeiqOsShell } from "./shell/EdgeiqOsShell";
 
