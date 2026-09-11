@@ -41,46 +41,84 @@ type AppNavigationProps = {
   onSectionChange: (section: GlobalSection) => void;
 };
 
-const navItems: Array<{ key: GlobalSection; label: string; Icon: LucideIcon }> = [
-  { key: "home", label: "HOME", Icon: Home },
-  { key: "meetings", label: "MEETINGS", Icon: CalendarDays },
-  { key: "race", label: "RACE", Icon: Crosshair },
-  { key: "field", label: "FIELD", Icon: Users },
-  { key: "formGuide", label: "FORM", Icon: ClipboardList },
-  { key: "performance", label: "PERFORMANCE", Icon: SlidersHorizontal },
-  { key: "epi", label: "EPI RATINGS", Icon: LineChart },
-  { key: "map", label: "MAP", Icon: Map },
-  { key: "market", label: "MARKET", Icon: BadgeDollarSign },
-  { key: "overview", label: "OVERVIEW", Icon: ClipboardCheck },
-  { key: "insights", label: "INSIGHTS", Icon: Lightbulb },
-  { key: "results", label: "RESULTS", Icon: Trophy },
-  { key: "lab", label: "LAB", Icon: FlaskConical },
-  { key: "compare", label: "COMPARE", Icon: ArrowUpDown },
-  { key: "review", label: "REVIEW", Icon: FileText },
-  { key: "settings", label: "SETTINGS", Icon: Settings },
+type NavItem = { key: GlobalSection; label: string; Icon: LucideIcon };
+type NavGroup = { label: string; items: NavItem[] };
+
+const navGroups: NavGroup[] = [
+  {
+    label: "RACE DAY",
+    items: [
+      { key: "home", label: "Dashboard", Icon: Home },
+      { key: "meetings", label: "Meetings", Icon: CalendarDays },
+      { key: "race", label: "Race", Icon: Crosshair },
+      { key: "field", label: "Field", Icon: Users },
+      { key: "formGuide", label: "Form", Icon: ClipboardList },
+    ],
+  },
+  {
+    label: "INTELLIGENCE",
+    items: [
+      { key: "performance", label: "Performance", Icon: SlidersHorizontal },
+      { key: "epi", label: "EPI Ratings", Icon: LineChart },
+      { key: "map", label: "Speed Map", Icon: Map },
+      { key: "market", label: "Market", Icon: BadgeDollarSign },
+      { key: "overview", label: "Overview", Icon: ClipboardCheck },
+      { key: "insights", label: "Insights", Icon: Lightbulb },
+    ],
+  },
+  {
+    label: "POST RACE",
+    items: [
+      { key: "results", label: "Results", Icon: Trophy },
+      { key: "review", label: "Review", Icon: FileText },
+    ],
+  },
+  {
+    label: "TOOLS",
+    items: [
+      { key: "lab", label: "Research Lab", Icon: FlaskConical },
+      { key: "compare", label: "Compare", Icon: ArrowUpDown },
+      { key: "settings", label: "Settings", Icon: Settings },
+    ],
+  },
 ];
 
 export function AppNavigation({ activeSection, onSectionChange }: AppNavigationProps) {
   return (
     <aside className="eiq-app-nav" aria-label="EDGEiQ Racing navigation">
       <div className="eiq-app-nav__brand">
-        <strong>EDGE<span>iQ</span></strong>
-        <em>FORM · RATINGS · PRICING</em>
+        <div className="eiq-app-nav__mark" aria-hidden="true">E</div>
+        <div>
+          <strong>EDGE<span>iQ</span></strong>
+          <em>RACING INTELLIGENCE</em>
+        </div>
       </div>
 
-      <nav>
-        {navItems.map(({ Icon, ...item }) => (
-          <button
-            key={item.key}
-            type="button"
-            className={activeSection === item.key ? "is-active" : ""}
-            onClick={() => onSectionChange(item.key)}
-          >
-            <span aria-hidden="true"><Icon size={19} strokeWidth={1.9} /></span>
-            <strong>{item.label}</strong>
-          </button>
+      <nav className="eiq-app-nav__groups">
+        {navGroups.map((group) => (
+          <section className="eiq-app-nav__group" key={group.label} aria-label={group.label}>
+            <p>{group.label}</p>
+            <div>
+              {group.items.map(({ Icon, ...item }) => (
+                <button
+                  key={item.key}
+                  type="button"
+                  className={activeSection === item.key ? "is-active" : ""}
+                  onClick={() => onSectionChange(item.key)}
+                >
+                  <span className="eiq-app-nav__icon" aria-hidden="true"><Icon size={16} strokeWidth={1.8} /></span>
+                  <strong>{item.label}</strong>
+                </button>
+              ))}
+            </div>
+          </section>
         ))}
       </nav>
+
+      <footer className="eiq-app-nav__footer">
+        <div><span className="eiq-app-nav__live-dot" aria-hidden="true" /><strong>System online</strong></div>
+        <small>Production workspace</small>
+      </footer>
     </aside>
   );
 }
