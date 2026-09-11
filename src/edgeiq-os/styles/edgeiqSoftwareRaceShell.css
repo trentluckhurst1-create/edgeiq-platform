@@ -1,0 +1,170 @@
+/* Race workspace shell normalisation */
+.eiq-approved-racefile-header {
+  margin-bottom: 12px !important;
+  overflow: hidden;
+  border: 1px solid var(--eiq-ui-border) !important;
+  border-radius: var(--eiq-ui-radius) !important;
+  background: #ffffff !important;
+  box-shadow: var(--eiq-ui-shadow) !important;
+}
+
+.eiq-approved-racefile-header__crumb {
+  min-height: 30px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 0 14px !important;
+  border-bottom: 1px solid var(--eiq-ui-border) !important;
+  background: #f8fafc !important;
+  color: var(--eiq-ui-faint) !important;
+  font-size: 8px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.eiq-approved-racefile-header__crumb button {
+  border: 0 !important;
+  background: transparent !important;
+  color: var(--eiq-ui-blue) !important;
+  padding: 0 !important;
+  font-size: inherit !important;
+  font-weight: 850 !important;
+  cursor: pointer;
+}
+
+.eiq-approved-racefile-header__crumb strong {
+  color: var(--eiq-ui-heading) !important;
+}
+
+.eiq-approved-racefile-header__title {
+  min-height: 62px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 20px !important;
+  padding: 10px 14px !important;
+  background: #ffffff !important;
+}
+
+.eiq-approved-racefile-header__title h1 {
+  display: flex !important;
+  align-items: baseline !important;
+  flex-wrap: wrap;
+  gap: 8px !important;
+  margin: 0 !important;
+  font-size: 17px !important;
+  color: var(--eiq-ui-heading) !important;
+}
+
+.eiq-approved-racefile-header__title h1 > span {
+  color: var(--eiq-ui-blue) !important;
+  font-size: 11px !important;
+  font-weight: 850 !important;
+  text-transform: uppercase;
+}
+
+.eiq-approved-racefile-header__title h1 > strong {
+  color: var(--eiq-ui-heading) !important;
+  font-size: 17px !important;
+  font-weight: 850 !important;
+}
+
+.eiq-approved-racefile-header__title h1 > em {
+  color: var(--eiq-ui-muted) !important;
+  font-size: 10px !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+}
+
+.eiq-approved-button {
+  min-height: 32px !important;
+  padding: 0 11px !important;
+  border: 1px solid var(--eiq-ui-border-strong) !important;
+  border-radius: var(--eiq-ui-radius-sm) !important;
+  background: #ffffff !important;
+  color: var(--eiq-ui-heading) !important;
+  font-size: 10px !important;
+  font-weight: 800 !important;
+  cursor: pointer;
+}
+
+.eiq-approved-button:hover {
+  border-color: #b7c8dc !important;
+  background: #f8fafc !important;
+}
+
+.eiq-approved-racefile-header__meta {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+  gap: 0 !important;
+  margin: 0 !important;
+  border-top: 1px solid var(--eiq-ui-border) !important;
+  background: #fbfcfe !important;
+}
+
+.eiq-approved-racefile-header__meta > div {
+  min-height: 46px;
+  padding: 8px 12px !important;
+  border-right: 1px solid var(--eiq-ui-border) !important;
+}
+
+.eiq-approved-racefile-header__meta dt {
+  color: var(--eiq-ui-faint) !important;
+  font-size: 8px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.07em;
+}
+
+.eiq-approved-racefile-header__meta dd {
+  margin: 3px 0 0 !important;
+  color: var(--eiq-ui-heading) !important;
+  font-size: 10px !important;
+  font-weight: 750 !important;
+}
+
+.eiq-context-tabs {
+  min-height: 40px !important;
+  display: flex !important;
+  align-items: stretch !important;
+  gap: 0 !important;
+  margin: 0 0 12px !important;
+  padding: 0 8px !important;
+  overflow-x: auto;
+  border: 1px solid var(--eiq-ui-border) !important;
+  border-radius: var(--eiq-ui-radius) !important;
+  background: #ffffff !important;
+  box-shadow: var(--eiq-ui-shadow) !important;
+}
+
+.eiq-context-tabs button {
+  min-height: 39px !important;
+  padding: 0 11px !important;
+  border: 0 !important;
+  border-bottom: 2px solid transparent !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: var(--eiq-ui-muted) !important;
+  font-size: 9px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.035em !important;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.eiq-context-tabs button:hover {
+  color: var(--eiq-ui-heading) !important;
+  background: #f8fafc !important;
+}
+
+.eiq-context-tabs button.is-active {
+  border-bottom-color: var(--eiq-ui-blue) !important;
+  color: var(--eiq-ui-blue) !important;
+  background: #f8fbff !important;
+}
+
+@media (max-width: 900px) {
+  .eiq-approved-racefile-header__meta {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
