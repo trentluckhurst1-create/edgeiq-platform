@@ -36,9 +36,14 @@ export function WorkspaceShell({
   children,
 }: WorkspaceShellProps) {
   const ownsPageHeader = activeSection === "home" || activeSection === "meetings";
+  const sectionClass = ` is-${activeSection}`;
 
   return (
-    <section className={`eiq-approved-shell${activeSection === "home" ? " is-dashboard" : ""}${activeSection === "meetings" ? " is-meetings" : ""}`} data-edgeiq-approved-ui="v2">
+    <section
+      className={`eiq-approved-shell${sectionClass}${activeSection === "home" ? " is-dashboard" : ""}${activeSection === "meetings" ? " is-meetings" : ""}`}
+      data-edgeiq-approved-ui="v2"
+      data-edgeiq-active-section={activeSection}
+    >
       <AppNavigation activeSection={activeSection} onSectionChange={onSectionChange} />
 
       <div className="eiq-approved-shell__frame">
