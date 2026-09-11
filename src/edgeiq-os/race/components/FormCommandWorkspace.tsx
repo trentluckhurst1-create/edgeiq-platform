@@ -12,7 +12,9 @@ function value(value: unknown, fallback = "-"): string {
 }
 
 function numeric(value: unknown): number | null {
-  const parsed = Number(String(value ?? "").replace(/[$,%+,]/g, "").trim());
+  const text = String(value ?? "").replace(/[$,%+,]/g, "").trim();
+  if (!text) return null;
+  const parsed = Number(text);
   return Number.isFinite(parsed) ? parsed : null;
 }
 
@@ -81,7 +83,7 @@ export function FormCommandWorkspace({ formGuide, onOpenRunner }: Props) {
       </header>
 
       <section className="eiq-form-command__snapshot" aria-label="Form snapshot">
-        <article><span>TOP EPI</span><strong>{topEpi ? `${topEpi.no}. ${topEpi.horse}` : "-"}</strong><small>{topEpi?.epi ? `EPI ${topEpi.epi}` : "Insufficient evidence"}</small></article>
+        <article><span>TOP EPI</span><strong>{topEpi ? `${topEpi.no}. ${topEpi.horse}` : "-"}</strong><small>{topEpi && numeric(topEpi.epi) !== null ? `EPI ${topEpi.epi}` : "Insufficient evidence"}</small></article>
         <article><span>RISING FORM</span><strong>{rising}</strong><small>Runners with positive governed momentum</small></article>
         <article><span>STRONG SUITABILITY</span><strong>{strongFit}</strong><small>Suitability score 70+</small></article>
         <article><span>FAIR PRICES</span><strong>{priced}/{active.length || 0}</strong><small>Active runners with EDGEiQ price</small></article>
