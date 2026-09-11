@@ -1,0 +1,81 @@
+/* EDGEiQ LIGHT SIDEBAR HARD LOCK — APPROVED 2026-09-11
+   This file exists solely to prevent legacy dark navigation CSS from reappearing.
+   Keep loaded last. */
+
+html body #root .eiq-approved-shell > .eiq-app-nav,
+html body #root .eiq-approved-shell .eiq-app-nav {
+  background: #ffffff !important;
+  color: #10213f !important;
+  border-right: 1px solid #dce5f0 !important;
+  box-shadow: none !important;
+}
+
+html body #root .eiq-approved-shell .eiq-app-nav__brand {
+  background: #ffffff !important;
+  border-bottom: 1px solid #dce5f0 !important;
+}
+
+html body #root .eiq-approved-shell .eiq-app-nav__brand strong {
+  color: #10213f !important;
+}
+
+html body #root .eiq-approved-shell .eiq-app-nav__brand strong span {
+  color: #1769e8 !important;
+}
+
+html body #root .eiq-approved-shell .eiq-app-nav__brand em {
+  color: #72829d !important;
+}
+
+html body #root .eiq-approved-shell .eiq-app-nav__groups,
+html body #root .eiq-approved-shell .eiq-app-nav__group,
+html body #root .eiq-approved-shell .eiq-app-nav__group > div,
+html body #root .eiq-approved-shell .eiq-app-nav nav {
+  background: #ffffff !important;
+}
+
+html body #root .eiq-approved-shell .eiq-app-nav__group > p {
+  color: #72829d !important;
+}
+
+html body #root .eiq-approved-shell .eiq-app-nav button {
+  background: transparent !important;
+  color: #334866 !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+html body #root .eiq-approved-shell .eiq-app-nav button:hover {
+  background: #f4f7fb !important;
+  color: #10213f !important;
+}
+
+html body #root .eiq-approved-shell .eiq-app-nav button.is-active {
+  background: #eaf2ff !important;
+  color: #1769e8 !important;
+  box-shadow: inset 2px 0 0 #1769e8 !important;
+}
+
+html body #root .eiq-approved-shell .eiq-app-nav__icon,
+html body #root .eiq-approved-shell .eiq-app-nav button span {
+  color: #60718f !important;
+}
+
+html body #root .eiq-approved-shell .eiq-app-nav button.is-active .eiq-app-nav__icon,
+html body #root .eiq-approved-shell .eiq-app-nav button.is-active span {
+  color: #1769e8 !important;
+}
+
+html body #root .eiq-approved-shell .eiq-app-nav__footer {
+  background: #ffffff !important;
+  color: #40516d !important;
+  border-top: 1px solid #dce5f0 !important;
+}
+
+html body #root .eiq-approved-shell .eiq-app-nav__footer strong {
+  color: #40516d !important;
+}
+
+html body #root .eiq-approved-shell .eiq-app-nav__footer small {
+  color: #72829d !important;
+}
