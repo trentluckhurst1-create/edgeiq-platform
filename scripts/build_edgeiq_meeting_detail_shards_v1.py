@@ -29,19 +29,35 @@ def runner_scratched(runner: dict[str, Any]) -> bool:
     official = runner.get("official") if isinstance(runner.get("official"), dict) else {}
     source = runner.get("source") if isinstance(runner.get("source"), dict) else {}
     values = [
-        official.get("scratched"),
-        source.get("scratched"),
-        source.get("is_scratched"),
-        official.get("status"),
-        source.get("status"),
-        source.get("runner_status"),
+        official.get("scratched"), source.get("scratched"), source.get("is_scratched"),
+        official.get("status"), source.get("status"), source.get("runner_status"),
     ]
     return any(
         str(value).strip().lower() in {"true", "scr", "scratched", "lscr", "late scratching"}
         or "scratch" in str(value).strip().lower()
-        for value in values
-        if value is not None
+        for value in values if value is not None
     )
+
+
+def lightweight_runner(runner: dict[str, Any]) -> dict[str, Any]:
+    official = runner.get("official") if isinstance(runner.get("official"), dict) else {}
+    source = runner.get("source") if isinstance(runner.get("source"), dict) else {}
+    keep_official = {
+        key: official.get(key)
+        for key in ("no", "number", "runner", "barrier", "jockey", "trainer", "weight", "market", "status", "scratched", "gear")
+        if key in official
+    }
+    keep_source = {
+        key: source.get(key)
+        for key in ("scratched", "is_scratched", "status", "runner_status", "gear", "gear_changes", "market")
+        if key in source
+    }
+    return {
+        "official": keep_official,
+        "source": keep_source,
+        "historicalRuns": [],
+        "evidenceRuns": [],
+    }
 
 
 def lightweight_race(race: dict[str, Any]) -> dict[str, Any]:
@@ -50,12 +66,8 @@ def lightweight_race(race: dict[str, Any]) -> dict[str, Any]:
     source["_edgeiq_field_size"] = len(runners)
     source["_edgeiq_scratchings"] = sum(1 for runner in runners if isinstance(runner, dict) and runner_scratched(runner))
     source["_edgeiq_has_market"] = any(
-        bool(
-            text((runner.get("official") or {}).get("market"))
-            or text((runner.get("source") or {}).get("market"))
-        )
-        for runner in runners
-        if isinstance(runner, dict)
+        bool(text((runner.get("official") or {}).get("market")) or text((runner.get("source") or {}).get("market")))
+        for runner in runners if isinstance(runner, dict)
     )
     source["_edgeiq_race_detail_on_demand"] = True
     return {
@@ -67,7 +79,7 @@ def lightweight_race(race: dict[str, Any]) -> dict[str, Any]:
         "raceTime": race.get("raceTime"),
         "trackCondition": race.get("trackCondition"),
         "rail": race.get("rail"),
-        "runners": [],
+        "runners": [lightweight_runner(runner) for runner in runners if isinstance(runner, dict)],
         "source": source,
     }
 
@@ -117,17 +129,15 @@ def main() -> int:
         path.write_text(json.dumps(detail, separators=(",", ":"), ensure_ascii=False) + "\n", encoding="utf-8")
         size = path.stat().st_size
         total_bytes += size
-        records.append(
-            {
-                "date": date_value,
-                "meetingKey": meeting_key,
-                "meeting": meeting.get("meeting"),
-                "path": f"/data/meetings/{filename}",
-                "bytes": size,
-                "races": len(meeting_payload.get("races", [])),
-                "raceDetailMode": "ON_DEMAND",
-            }
-        )
+        records.append({
+            "date": date_value,
+            "meetingKey": meeting_key,
+            "meeting": meeting.get("meeting"),
+            "path": f"/data/meetings/{filename}",
+            "bytes": size,
+            "races": len(meeting_payload.get("races", [])),
+            "raceDetailMode": "ON_DEMAND",
+        })
 
     index = {
         "schemaVersion": "edgeiq_meeting_detail_index_v2_lightweight",
