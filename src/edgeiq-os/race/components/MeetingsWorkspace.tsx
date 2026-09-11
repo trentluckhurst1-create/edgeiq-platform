@@ -14,6 +14,7 @@ import {
   type MeetingsDayKey,
   type MeetingsWorkspaceViewModel,
 } from "../services/meetingsFeed";
+import { loadRaceDetail } from "../services/raceDetailFeed";
 
 type MeetingsWorkspaceProps = {
   selectedDayKey: MeetingsDayKey;
@@ -132,7 +133,7 @@ export function MeetingsWorkspace({
     if (selectedMeeting && selectedMeeting.meetingKey !== selectedMeetingKey) onSelectMeeting(selectedMeeting.rawMeeting);
   }, [onSelectMeeting, selectedMeeting, selectedMeetingKey]);
 
-  async function resolveFullMeeting(meeting: MeetingSummaryViewModel): Promise<ThreeDayMeeting> {
+  async function resolveMeeting(meeting: MeetingSummaryViewModel): Promise<ThreeDayMeeting> {
     setDetailLoading(true);
     setLoadError("");
     try {
@@ -144,23 +145,33 @@ export function MeetingsWorkspace({
 
   async function openMeeting(meeting: MeetingSummaryViewModel) {
     try {
-      const fullMeeting = await resolveFullMeeting(meeting);
-      onSelectMeeting(fullMeeting);
-      onOpenMeeting(fullMeeting);
+      const meetingDetail = await resolveMeeting(meeting);
+      onSelectMeeting(meetingDetail);
+      onOpenMeeting(meetingDetail);
     } catch (error) {
       setLoadError(error instanceof Error ? error.message : "Meeting detail unavailable");
     }
   }
 
   async function openRace(meeting: MeetingSummaryViewModel, raceKey: string, index: number) {
+    setDetailLoading(true);
+    setLoadError("");
     try {
-      const fullMeeting = await resolveFullMeeting(meeting);
-      const fullRace = fullMeeting.races.find((race) => race.raceKey === raceKey) ?? fullMeeting.races[index];
-      if (!fullRace) throw new Error(`Full race data unavailable for ${meeting.meeting}`);
-      onSelectMeeting(fullMeeting);
-      onOpenRace(fullMeeting, fullRace, Math.max(0, fullMeeting.races.indexOf(fullRace)));
+      const [meetingDetail, raceDetail] = await Promise.all([
+        loadMeetingDetail(meeting.rawMeeting.date, meeting.meetingKey),
+        loadRaceDetail(meeting.rawMeeting.date, meeting.meetingKey, raceKey),
+      ]);
+      const raceIndex = Math.max(0, meetingDetail.races.findIndex((race) => race.raceKey === raceKey));
+      const mergedMeeting: ThreeDayMeeting = {
+        ...meetingDetail,
+        races: meetingDetail.races.map((race) => race.raceKey === raceKey ? raceDetail : race),
+      };
+      onSelectMeeting(mergedMeeting);
+      onOpenRace(mergedMeeting, raceDetail, raceIndex >= 0 ? raceIndex : index);
     } catch (error) {
       setLoadError(error instanceof Error ? error.message : "Race detail unavailable");
+    } finally {
+      setDetailLoading(false);
     }
   }
 
