@@ -91,30 +91,36 @@ export function FormCommandWorkspace({ formGuide, onOpenRunner }: Props) {
       </section>
 
       <div className="eiq-form-command__table-wrap">
-        <table className="eiq-form-command__table">
-          <thead><tr><th>NO</th><th className="is-left">HORSE</th><th>LAST 5</th><th>EPI</th><th>ERI</th><th>EARLY</th><th>LATE</th><th>SUITABILITY</th><th>TRAJECTORY</th><th className="is-left">TODAY FIT</th><th>FAIR</th><th>MARKET</th><th>EDGE</th><th /></tr></thead>
-          <tbody>
-            {runners.map((runner) => (
-              <tr key={runner.id} className={runner.scratched ? "is-scratched" : ""}>
-                <td>{value(runner.no)}</td>
-                <td className="is-left"><strong>{value(runner.horse)}</strong><small>{value(runner.trainer)} · {value(runner.jockey)}</small></td>
-                <td>{runner.lastFive.length ? runner.lastFive.slice(0, 5).join("-") : "-"}</td>
-                <td><strong>{runner.scratched ? "-" : value(runner.epi)}</strong></td>
-                <td>{runner.scratched ? "-" : value(runner.rating)}</td>
-                <td>{runner.scratched ? "-" : value(runner.earlySpeed)}</td>
-                <td>{runner.scratched ? "-" : value(runner.late)}</td>
-                <td><strong>{runner.scratched ? "-" : value(runner.suitabilityScore)}</strong><small>{runner.scratched ? "" : value(runner.suitabilityLabel, "")}</small></td>
-                <td><span className={`eiq-form-command__momentum is-${runner.formMomentumDirection || "flat"}`}>{runner.scratched ? "-" : momentumLabel(runner)}</span></td>
-                <td className="is-left"><span>{runner.scratched ? "Scratched" : bestFit(runner)}</span><small>{runner.scratched ? "" : lastRunText(runner)}</small></td>
-                <td>{runner.scratched ? "-" : value(runner.edgeiqPrice)}</td>
-                <td>{runner.scratched ? "Scratched" : value(runner.marketPrice)}</td>
-                <td><strong>{runner.scratched ? "-" : priceDelta(runner)}</strong></td>
-                <td><button type="button" disabled={runner.scratched} onClick={() => onOpenRunner(runner.sourceIndex)}>Open</button></td>
-              </tr>
-            ))}
-            {!runners.length ? <tr><td colSpan={14}>Form data is not published for this race.</td></tr> : null}
-          </tbody>
-        </table>
+        <header className="eiq-race-data-panel__header">
+          <strong>Runner Comparison</strong>
+          <span>{active.length} active runners</span>
+        </header>
+        <div className="eiq-race-data-panel__scroll">
+          <table className="eiq-form-command__table">
+            <thead><tr><th>NO</th><th className="is-left">HORSE</th><th>LAST 5</th><th>EPI</th><th>ERI</th><th>EARLY</th><th>LATE</th><th>SUITABILITY</th><th>TRAJECTORY</th><th className="is-left">TODAY FIT</th><th>FAIR</th><th>MARKET</th><th>EDGE</th><th /></tr></thead>
+            <tbody>
+              {runners.map((runner) => (
+                <tr key={runner.id} className={runner.scratched ? "is-scratched" : ""}>
+                  <td>{value(runner.no)}</td>
+                  <td className="is-left"><strong>{value(runner.horse)}</strong><small>{value(runner.trainer)} · {value(runner.jockey)}</small></td>
+                  <td>{runner.lastFive.length ? runner.lastFive.slice(0, 5).join("-") : "-"}</td>
+                  <td><strong>{runner.scratched ? "-" : value(runner.epi)}</strong></td>
+                  <td>{runner.scratched ? "-" : value(runner.rating)}</td>
+                  <td>{runner.scratched ? "-" : value(runner.earlySpeed)}</td>
+                  <td>{runner.scratched ? "-" : value(runner.late)}</td>
+                  <td><strong>{runner.scratched ? "-" : value(runner.suitabilityScore)}</strong><small>{runner.scratched ? "" : value(runner.suitabilityLabel, "")}</small></td>
+                  <td><span className={`eiq-form-command__momentum is-${runner.formMomentumDirection || "flat"}`}>{runner.scratched ? "-" : momentumLabel(runner)}</span></td>
+                  <td className="is-left"><span>{runner.scratched ? "Scratched" : bestFit(runner)}</span><small>{runner.scratched ? "" : lastRunText(runner)}</small></td>
+                  <td>{runner.scratched ? "-" : value(runner.edgeiqPrice)}</td>
+                  <td>{runner.scratched ? "Scratched" : value(runner.marketPrice)}</td>
+                  <td><strong>{runner.scratched ? "-" : priceDelta(runner)}</strong></td>
+                  <td><button type="button" disabled={runner.scratched} onClick={() => onOpenRunner(runner.sourceIndex)}>Open</button></td>
+                </tr>
+              ))}
+              {!runners.length ? <tr><td colSpan={14}>Form data is not published for this race.</td></tr> : null}
+            </tbody>
+          </table>
+        </div>
       </div>
     </section>
   );
