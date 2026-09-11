@@ -33,11 +33,13 @@ function rowStatusClass(status: string): string {
   return status.toLowerCase().includes("scratch") ? "is-scratched" : "";
 }
 
-export function FieldWorkspace({ field, formGuide, weight, market }: FieldWorkspaceProps) {
+export function FieldWorkspace({ field, formGuide, weight, market, onOpenRunner }: FieldWorkspaceProps) {
   const [expandedKey, setExpandedKey] = useState<string | null>(null);
   const rows = useMemo(() => buildFieldWorkspaceRows({ field, formGuide, weight, market }), [field, formGuide, weight, market]);
   const scratchedCount = rows.filter((runner) => runner.isScratched).length;
   const activeCount = Math.max(0, rows.length - scratchedCount);
+  const gearCount = rows.filter((runner) => hasValue(runner.gear)).length;
+  const barrierKnown = rows.filter((runner) => hasValue(runner.barrier)).length;
 
   const toggleRunner = (key: string) => {
     setExpandedKey((current) => (current === key ? null : key));
@@ -54,14 +56,21 @@ export function FieldWorkspace({ field, formGuide, weight, market }: FieldWorksp
       <header className="eiq-field-v1__header">
         <div>
           <span>FIELD</span>
-          <strong>Official declared runners</strong>
-          <p>Click a runner to review their latest available starts.</p>
+          <strong>Official declarations</strong>
+          <p>Barrier, weight, rider, trainer, status and declared gear. Expand a row for the last five starts or open the runner profile for deeper analysis.</p>
         </div>
         <aside className="eiq-field-v1__counts" aria-label="Field counts">
-          <strong>{rows.length} RUNNERS</strong>
+          <strong>{rows.length} DECLARED</strong>
           <span>{activeCount} ACTIVE | {scratchedCount} SCRATCHED</span>
         </aside>
       </header>
+
+      <section className="eiq-field-v1__summary" aria-label="Declaration summary">
+        <div><span>ACTIVE</span><strong>{activeCount}</strong></div>
+        <div><span>SCRATCHED</span><strong>{scratchedCount}</strong></div>
+        <div><span>BARRIERS PUBLISHED</span><strong>{barrierKnown}/{rows.length}</strong></div>
+        <div><span>GEAR / CHANGES</span><strong>{gearCount}</strong></div>
+      </section>
 
       <div className="eiq-table-wrap eiq-field-table-wrap-v1">
         <table className="eiq-field-table-v1">
@@ -73,9 +82,9 @@ export function FieldWorkspace({ field, formGuide, weight, market }: FieldWorksp
             <col className="eiq-field-col-wgt" />
             <col className="eiq-field-col-jockey" />
             <col className="eiq-field-col-trainer" />
-            <col className="eiq-field-col-epi" />
-            <col className="eiq-field-col-market" />
+            <col className="eiq-field-col-gear" />
             <col className="eiq-field-col-status" />
+            <col className="eiq-field-col-action" />
           </colgroup>
           <thead>
             <tr>
@@ -86,9 +95,9 @@ export function FieldWorkspace({ field, formGuide, weight, market }: FieldWorksp
               <th>WGT</th>
               <th className="is-left">JOCKEY</th>
               <th className="is-left">TRAINER</th>
-              <th>EPI</th>
-              <th>MARKET</th>
+              <th className="is-left">GEAR / CHANGES</th>
               <th>STATUS</th>
+              <th>PROFILE</th>
             </tr>
           </thead>
           <tbody>
@@ -125,24 +134,36 @@ export function FieldWorkspace({ field, formGuide, weight, market }: FieldWorksp
                         aria-expanded={expanded}
                       >
                         <strong>{display(runner.runner)}</strong>
-                        <small>{expanded ? "Hide recent starts" : "View recent starts"}</small>
+                        <small>{expanded ? "Hide last five" : "Show last five"}</small>
                       </button>
                     </td>
                     <td>{display(runner.barrier)}</td>
                     <td>{display(runner.weight)}</td>
                     <td className="is-left">{display(runner.jockey)}</td>
                     <td className="is-left">{display(runner.trainer)}</td>
-                    <td>{runner.isScratched ? "-" : display(runner.edgeiq)}</td>
-                    <td>{display(runner.market, runner.isScratched ? "Scratched" : "-")}</td>
+                    <td className="is-left">{display(runner.gear, "No change supplied")}</td>
                     <td><span className="eiq-field-status-pill">{display(runner.status)}</span></td>
+                    <td>
+                      <button
+                        type="button"
+                        className="eiq-approved-button"
+                        disabled={runner.isScratched}
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          onOpenRunner(runner.sourceIndex);
+                        }}
+                      >
+                        {runner.isScratched ? "Scratched" : "Open"}
+                      </button>
+                    </td>
                   </tr>
                   {expanded ? (
                     <tr className="eiq-field-expanded-row">
                       <td colSpan={10}>
                         <div className="eiq-field-recent-panel">
                           <header>
-                            <span>LAST FIVE STARTS</span>
-                            <strong>{display(runner.runner)}</strong>
+                            <div><span>LAST FIVE STARTS</span><strong>{display(runner.runner)}</strong></div>
+                            {!runner.isScratched ? <button type="button" className="eiq-approved-button" onClick={() => onOpenRunner(runner.sourceIndex)}>Open Full Runner Profile</button> : null}
                           </header>
                           {runner.recentRuns.length ? (
                             <table>
@@ -180,7 +201,7 @@ export function FieldWorkspace({ field, formGuide, weight, market }: FieldWorksp
                               </tbody>
                             </table>
                           ) : (
-                            <div className="eiq-field-recent-empty">NO PREVIOUS STARTS</div>
+                            <div className="eiq-field-recent-empty">NO PREVIOUS STARTS PUBLISHED</div>
                           )}
                         </div>
                       </td>
