@@ -5,6 +5,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+import build_edgeiq_racing_australia_track_conditions_v1 as racing_australia_builder
+
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "public" / "data"
 CATALOG = DATA / "edgeiq_three_day_product_catalog_v1.json"
@@ -109,6 +111,13 @@ def main() -> int:
         print("EDGEIQ_MEETINGS_CATALOG_METADATA_ENRICHMENT_V1 FAIL catalog_missing")
         return 1
 
+    # Refresh the governed Racing Australia source in the same stage so Meetings
+    # can never silently rely on a stale conditions file.
+    ra_refresh_status = racing_australia_builder.main()
+    if ra_refresh_status != 0:
+        print("EDGEIQ_MEETINGS_CATALOG_METADATA_ENRICHMENT_V1 FAIL racing_australia_refresh")
+        return 1
+
     payload = json.loads(CATALOG.read_text(encoding="utf-8"))
     racing_australia = racing_australia_index()
     weather = weather_index()
@@ -162,7 +171,6 @@ def main() -> int:
                     source["weather_provenance"] = "RACING_AUSTRALIA_TRACK_CONDITIONS"
                     weather_enriched_ra += 1
 
-                # Preserve useful governed inspection context for future TRACK/WEATHER tabs.
                 for target, source_field in (
                     ("track_type", "track_type"),
                     ("penetrometer", "penetrometer"),
