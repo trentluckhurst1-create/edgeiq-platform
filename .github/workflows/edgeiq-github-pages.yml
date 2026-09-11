@@ -89,13 +89,16 @@ jobs:
           VITE_CLERK_PUBLISHABLE_KEY: ${{ secrets.VITE_CLERK_PUBLISHABLE_KEY }}
         run: npm exec -- vite build
 
-      - name: Verify current data is in Pages artifact
+      - name: Remove monolithic runtime catalog
+        run: rm -f dist/data/edgeiq_three_day_product_catalog_v1.json
+
+      - name: Verify lightweight Pages data
         run: |
           test -s dist/data/edgeiq_three_day_window_v1.json
-          test -s dist/data/edgeiq_three_day_product_catalog_v1.json
           test -s dist/data/edgeiq_meetings_summary_feed_v1.json
           test -s dist/data/meetings/index.json
           test -s dist/data/edgeiq_vic_three_day_race_list_v1.csv
+          test ! -e dist/data/edgeiq_three_day_product_catalog_v1.json
           python - <<'PY'
           import json
           from pathlib import Path
@@ -103,12 +106,19 @@ jobs:
           summary_path = Path('dist/data/edgeiq_meetings_summary_feed_v1.json')
           summary = json.loads(summary_path.read_text(encoding='utf-8'))
           detail_index = json.loads(Path('dist/data/meetings/index.json').read_text(encoding='utf-8'))
+          detail_records = detail_index.get('meetings', [])
+          assert detail_records, 'No meeting detail shards generated'
+          for item in detail_records:
+              relative = str(item.get('path', '')).lstrip('/')
+              shard = Path('dist') / relative
+              assert shard.exists() and shard.stat().st_size > 0, f'Missing meeting shard: {shard}'
           print('PAGES_DATA_TODAY=' + str(window.get('today', '')))
           print('PAGES_DATA_TOMORROW=' + str(window.get('tomorrow', '')))
           print('PAGES_DATA_DAY_PLUS_2=' + str(window.get('dayPlus2', '')))
           print('MEETINGS_SUMMARY_BYTES=' + str(summary_path.stat().st_size))
           print('MEETINGS_SUMMARY_DAYS=' + str(len(summary.get('days', []))))
-          print('MEETING_DETAIL_SHARDS=' + str(len(detail_index.get('meetings', []))))
+          print('MEETING_DETAIL_SHARDS=' + str(len(detail_records)))
+          print('MONOLITHIC_RUNTIME_CATALOG=REMOVED')
           PY
 
       - name: Upload Pages artifact
