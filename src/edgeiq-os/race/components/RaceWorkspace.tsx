@@ -43,6 +43,20 @@ type RaceWorkspaceProps = {
 const tabs = ["RACE", "FIELD", "FORM GUIDE", "PERFORMANCE", "MAP", "MARKET", "OVERVIEW", "INSIGHTS", "EPI", "RESULTS", "REVIEW"] as const;
 export type RaceTab = (typeof tabs)[number];
 
+const tabLabel: Record<RaceTab, string> = {
+  RACE: "Race",
+  FIELD: "Field",
+  "FORM GUIDE": "Form",
+  PERFORMANCE: "Performance",
+  MAP: "Map",
+  MARKET: "Market",
+  OVERVIEW: "Overview",
+  INSIGHTS: "Insights",
+  EPI: "EPI",
+  RESULTS: "Results",
+  REVIEW: "Review",
+};
+
 const mounted: Record<RaceTab, string> = {
   RACE: "RaceIntelligenceWorkspace",
   FIELD: "FieldWorkspace",
@@ -128,10 +142,10 @@ export function RaceWorkspace({
     >
       <header className="eiq-race-locked__header">
         <div>
-          <h1>Race</h1>
-          <p>{raceIdentity || "Race analysis workspace"}</p>
+          <h1>{tabLabel[tab]}</h1>
+          <p>{raceIdentity || `${tabLabel[tab]} analysis workspace`}</p>
         </div>
-        <button type="button" className="eiq-race-locked__back" onClick={onBackToMeeting}>← Back to Meeting</button>
+        <button type="button" className="eiq-race-locked__back" onClick={onBackToMeeting}>Back to Meeting</button>
       </header>
 
       <section className="eiq-race-command-header" aria-label="Race context">
@@ -152,7 +166,7 @@ export function RaceWorkspace({
       <nav className="eiq-context-tabs" aria-label="Race analysis tabs">
         {tabs.map((item) => (
           <button key={item} type="button" className={tab === item ? "is-active" : ""} onClick={() => setTab(item)}>
-            {item === "FORM GUIDE" ? "FORM" : item}
+            {tabLabel[item]}
           </button>
         ))}
       </nav>
