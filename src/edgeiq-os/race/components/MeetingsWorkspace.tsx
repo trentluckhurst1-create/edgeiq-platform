@@ -24,100 +24,64 @@ type MeetingsWorkspaceProps = {
   onOpenRace: (meeting: ThreeDayMeeting, race: ThreeDayRace, index: number) => void;
 };
 
-type MeetingStatusFilter = "Current" | "Completed" | "Abandoned" | "Postponed";
+type ClubIdentity = { code: string; name: string };
 
-const STATUS_FILTERS: MeetingStatusFilter[] = ["Current", "Completed", "Abandoned", "Postponed"];
+const CLUBS: Array<[RegExp, ClubIdentity]> = [
+  [/flemington/i, { code: "VRC", name: "Victoria Racing Club" }],
+  [/randwick|rosehill/i, { code: "ATC", name: "Australian Turf Club" }],
+  [/eagle farm|doomben/i, { code: "BRC", name: "Brisbane Racing Club" }],
+  [/morphettville/i, { code: "SAJC", name: "South Australian Jockey Club" }],
+  [/ascot|belmont/i, { code: "PR", name: "Perth Racing" }],
+  [/caulfield|sandown/i, { code: "MRC", name: "Melbourne Racing Club" }],
+  [/moonee valley/i, { code: "MVRC", name: "Moonee Valley Racing Club" }],
+  [/sha tin|happy valley/i, { code: "HKJC", name: "Hong Kong Jockey Club" }],
+];
 
-function display(value: unknown, fallback = "Not Supplied"): string {
+function display(value: unknown, fallback = "-") {
   return cleanProductText(value, fallback);
 }
 
-function displayTrack(value: unknown, fallback = "Not Supplied"): string {
-  return canonicalTrackDisplayName(value) || fallback;
+function clubIdentity(meeting: unknown): ClubIdentity {
+  const text = display(meeting, "Race Club");
+  return CLUBS.find(([pattern]) => pattern.test(text))?.[1] ?? {
+    code: text.split(/\s+/).map((part) => part[0]).join("").slice(0, 4).toUpperCase() || "RC",
+    name: `${text} Racing Club`,
+  };
 }
 
-function shortDate(value: string): string {
+function shortDate(value: string) {
   const [year, month, day] = value.split("-").map(Number);
   if (!year || !month || !day) return value;
-  return new Intl.DateTimeFormat("en-AU", { weekday: "short", day: "numeric", month: "short" }).format(
-    new Date(Date.UTC(year, month - 1, day)),
-  );
+  return new Intl.DateTimeFormat("en-AU", { weekday: "short", day: "numeric", month: "short", timeZone: "Australia/Melbourne" }).format(new Date(Date.UTC(year, month - 1, day)));
 }
 
-function trackRatingClass(value: unknown): string {
-  const text = String(value ?? "").toLowerCase();
-  if (text.includes("firm")) return "is-firm";
-  if (text.includes("good")) return "is-good";
-  if (text.includes("soft")) return "is-soft";
-  if (text.includes("heavy")) return "is-heavy";
-  if (text.includes("synthetic")) return "is-synthetic";
-  return "is-awaiting";
+function tabTitle(index: number, date: string) {
+  if (index === 0) return "Today";
+  if (index === 1) return "Tomorrow";
+  const [year, month, day] = date.split("-").map(Number);
+  if (!year || !month || !day) return "Day 3";
+  return new Intl.DateTimeFormat("en-AU", { weekday: "long", timeZone: "Australia/Melbourne" }).format(new Date(Date.UTC(year, month - 1, day)));
 }
 
-function meetingStatusFilter(value: unknown): MeetingStatusFilter {
-  const text = String(value ?? "").toLowerCase();
-  if (text.includes("abandon")) return "Abandoned";
-  if (text.includes("postpon")) return "Postponed";
-  if (text.includes("result") || text.includes("complete") || text.includes("finalised")) return "Completed";
-  return "Current";
+function weatherIcon(value: unknown) {
+  const text = display(value, "").toLowerCase();
+  if (/rain|shower|storm/.test(text)) return "☂";
+  if (/cloud|overcast/.test(text)) return "☁";
+  return "☀";
 }
 
-function parseRaceTime(value: unknown, selectedDate: string): Date | null {
-  const text = cleanProductText(value, "");
-  if (!text || text === "Not Supplied") return null;
-  const direct = new Date(text);
-  if (!Number.isNaN(direct.getTime())) return direct;
-  const match = text.match(/(\d{1,2})(?::(\d{2}))?\s*(am|pm)?/i);
-  if (!match) return null;
-  let hour = Number(match[1]);
-  const minute = Number(match[2] ?? "0");
-  const suffix = match[3]?.toLowerCase();
-  if (suffix === "pm" && hour < 12) hour += 12;
-  if (suffix === "am" && hour === 12) hour = 0;
-  const [year, month, day] = selectedDate.split("-").map(Number);
-  if (!year || !month || !day) return null;
-  return new Date(year, month - 1, day, hour, minute);
+function meetingStatus(meeting: MeetingSummaryViewModel) {
+  const text = display(meeting.status, "").toLowerCase();
+  if (/abandon/.test(text)) return "ABANDONED";
+  if (/postpon/.test(text)) return "POSTPONED";
+  if (/result|complete/.test(text)) return "COMPLETE";
+  return "LIVE";
 }
 
-function formatHourLabel(date: Date): string {
-  return new Intl.DateTimeFormat("en-AU", {
-    hour: "numeric",
-    hour12: true,
-    timeZone: "Australia/Melbourne",
-  })
-    .format(date)
-    .replace(/\s/g, "")
-    .toUpperCase();
-}
-
-function timelineHours(meetings: MeetingSummaryViewModel[], selectedDate: string): Date[] {
-  const times = meetings
-    .flatMap((meeting) => meeting.raceSummaries.map((race) => parseRaceTime(race.time, selectedDate)))
-    .filter((time): time is Date => Boolean(time));
-  if (!times.length) return [];
-  const startHour = Math.max(0, Math.min(...times.map((time) => time.getHours())) - 1);
-  const endHour = Math.min(23, Math.max(...times.map((time) => time.getHours())) + 1);
-  const [year, month, day] = selectedDate.split("-").map(Number);
-  const hours: Date[] = [];
-  for (let hour = startHour; hour <= endHour; hour += 1) {
-    hours.push(new Date(year, month - 1, day, hour, 0));
-  }
-  return hours;
-}
-
-function racePositionPct(time: Date, hours: Date[]): number {
-  if (hours.length < 2) return 0;
-  const start = hours[0].getTime();
-  const end = hours[hours.length - 1].getTime();
-  if (end <= start) return 0;
-  return Math.min(96, Math.max(2, ((time.getTime() - start) / (end - start)) * 100));
-}
-
-function raceChipClass(status: unknown, selected = false): string {
-  const filter = meetingStatusFilter(status);
-  const classes = ["eiq-meetings-v1-race-chip", `is-${filter.toLowerCase()}`];
-  if (selected) classes.push("is-selected");
-  return classes.join(" ");
+function keyRaceRows(meetings: MeetingSummaryViewModel[]) {
+  return meetings.flatMap((meeting) => meeting.raceSummaries.map((race) => ({ meeting, race })))
+    .filter(({ race }) => /G1|G2|G3|LISTED|LR/i.test(`${race.raceClass} ${race.name}`))
+    .slice(0, 5);
 }
 
 export function MeetingsWorkspace({
@@ -128,311 +92,118 @@ export function MeetingsWorkspace({
   onOpenMeeting,
   onOpenRace,
 }: MeetingsWorkspaceProps) {
-  const [viewModel, setViewModel] = useState<MeetingsWorkspaceViewModel | null>(null);
-  const [status, setStatus] = useState<"LOADING" | "READY" | "ERROR">("LOADING");
-  const [searchText, setSearchText] = useState("");
-  const [statusFilter, setStatusFilter] = useState<MeetingStatusFilter>("Current");
-  const [selectedRaceKey, setSelectedRaceKey] = useState<string | null>(null);
+  const [model, setModel] = useState<MeetingsWorkspaceViewModel | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState("");
+  const [stateFilter, setStateFilter] = useState("All");
 
   useEffect(() => {
     let active = true;
-    setStatus("LOADING");
     loadMeetingsWorkspaceViewModel()
-      .then((nextViewModel) => {
-        if (!active) return;
-        setViewModel(nextViewModel);
-        setStatus("READY");
-      })
-      .catch(() => {
-        if (!active) return;
-        setStatus("ERROR");
-      });
-
-    return () => {
-      active = false;
-    };
+      .then((next) => { if (active) { setModel(next); setLoading(false); } })
+      .catch(() => { if (active) { setModel(null); setLoading(false); } });
+    return () => { active = false; };
   }, []);
 
-  const activeDay = useMemo(() => {
-    return viewModel?.days.find((day) => day.key === selectedDayKey) ?? viewModel?.days[0] ?? null;
-  }, [selectedDayKey, viewModel]);
-
-  const selectedMeeting = useMemo(() => {
-    if (!activeDay) return null;
-    return activeDay.meetings.find((meeting) => meeting.meetingKey === selectedMeetingKey) ?? activeDay.meetings[0] ?? null;
-  }, [activeDay, selectedMeetingKey]);
+  const activeDay = model?.days.find((day) => day.key === selectedDayKey) ?? model?.days[0] ?? null;
+  const states = useMemo(() => Array.from(new Set((activeDay?.meetings ?? []).map((meeting) => display(meeting.state, "")).filter(Boolean))).sort(), [activeDay]);
+  const meetings = useMemo(() => {
+    const q = search.trim().toLowerCase();
+    return (activeDay?.meetings ?? []).filter((meeting) => {
+      const name = canonicalTrackDisplayName(meeting.meeting).toLowerCase();
+      return (!q || name.includes(q)) && (stateFilter === "All" || display(meeting.state) === stateFilter);
+    });
+  }, [activeDay, search, stateFilter]);
+  const selectedMeeting = meetings.find((meeting) => meeting.meetingKey === selectedMeetingKey) ?? meetings[0] ?? null;
 
   useEffect(() => {
-    if (status !== "READY" || !activeDay) return;
-    if (selectedMeeting) {
-      if (selectedMeeting.meetingKey !== selectedMeetingKey) {
-        onSelectMeeting(selectedMeeting.rawMeeting);
-      }
-      return;
-    }
-    if (selectedMeetingKey) onSelectMeeting(null);
-  }, [activeDay, onSelectMeeting, selectedMeeting, selectedMeetingKey, status]);
+    if (selectedMeeting && selectedMeeting.meetingKey !== selectedMeetingKey) onSelectMeeting(selectedMeeting.rawMeeting);
+  }, [onSelectMeeting, selectedMeeting, selectedMeetingKey]);
 
-  const availableStatusFilters = useMemo(() => {
-    if (!activeDay) return [];
-    return STATUS_FILTERS.filter((filter) => activeDay.meetings.some((meeting) => meetingStatusFilter(meeting.status) === filter));
-  }, [activeDay]);
+  const club = clubIdentity(selectedMeeting?.meeting);
+  const keyRaces = keyRaceRows(meetings);
+  const changes = meetings.flatMap((meeting) => meeting.scratchings > 0 ? [{ meeting, count: meeting.scratchings }] : []).slice(0, 5);
 
-  const effectiveStatusFilter = availableStatusFilters.includes(statusFilter) ? statusFilter : availableStatusFilters[0] ?? statusFilter;
-
-  const filteredMeetings = useMemo(() => {
-    if (!activeDay) return [];
-    const search = searchText.trim().toLowerCase();
-    return activeDay.meetings.filter((meeting) => {
-      const matchesSearch = !search || displayTrack(meeting.meeting).toLowerCase().includes(search);
-      const matchesStatus = meetingStatusFilter(meeting.status) === effectiveStatusFilter;
-      return matchesSearch && matchesStatus;
-    });
-  }, [activeDay, effectiveStatusFilter, searchText]);
-
-  const timelineMeetings = filteredMeetings.slice(0, 5);
-  const hours = useMemo(() => timelineHours(timelineMeetings, activeDay?.date ?? ""), [activeDay?.date, timelineMeetings]);
-
-  if (status === "LOADING") {
-    return (
-      <section className="eiq-meetings-v1">
-        <section className="eiq-meetings-v1-empty">Loading the three-day race programme.</section>
-      </section>
-    );
-  }
-
-  if (status === "ERROR" || !viewModel || !activeDay) {
-    return (
-      <section className="eiq-meetings-v1">
-        <section className="eiq-meetings-v1-empty">No meetings published for this date.</section>
-      </section>
-    );
-  }
-
-  const startRow = filteredMeetings.length ? 1 : 0;
-  const endRow = filteredMeetings.length;
+  if (loading) return <section className="eiq-meetings-locked"><div className="eiq-meetings-locked__empty">Loading meetings…</div></section>;
 
   return (
-    <section className="eiq-meetings-v1" aria-label="Meetings" data-edgeiq-workspace-key="MEETINGS" data-edgeiq-mounted-component="MeetingsWorkspace">
-      <header className="eiq-meetings-v1-header">
+    <section className="eiq-meetings-locked" aria-label="Meetings" data-edgeiq-workspace-key="MEETINGS">
+      <header className="eiq-meetings-locked__header">
         <div>
-          <h1>MEETINGS</h1>
-          <p>Three day racing outlook. Select a meeting to view races and details.</p>
+          <h1>Meetings</h1>
+          <p>Select a meeting to view races, club details and key information.</p>
         </div>
-        <fieldset className="eiq-meetings-v1-date-range" aria-label="Date range">
-          <legend>DATE RANGE</legend>
-          <div>
-            {viewModel.days.map((day) => (
-              <button
-                key={day.key}
-                type="button"
-                className={day.key === activeDay.key ? "is-active" : ""}
-                aria-pressed={day.key === activeDay.key}
-                onClick={() => onDayChange(day.key)}
-              >
-                <strong>{day.label}</strong>
-                <small>{shortDate(day.date)}</small>
-              </button>
-            ))}
-          </div>
-        </fieldset>
+        <button className="eiq-meetings-locked__refresh" type="button" onClick={() => window.location.reload()}>↻ Refresh Meetings</button>
       </header>
 
-      <section className="eiq-meetings-v1-card" aria-label={`Meetings for ${activeDay.displayDate}`}>
-        <header className="eiq-meetings-v1-card-header">
-          <strong>MEETINGS ({activeDay.displayDate.toUpperCase()})</strong>
-          <div className="eiq-meetings-v1-actions">
-            <label>
-              <span>Search meetings</span>
-              <input
-                aria-label="Search meetings"
-                placeholder="Search meetings"
-                value={searchText}
-                onChange={(event) => setSearchText(event.target.value)}
-              />
-            </label>
-            <button className="eiq-meetings-v1-button is-secondary" type="button">Filters</button>
-            <button
-              className="eiq-meetings-v1-button is-primary"
-              type="button"
-              disabled={!selectedMeeting}
-              onClick={() => selectedMeeting && onOpenMeeting(selectedMeeting.rawMeeting)}
-            >
-              Open Meeting
-            </button>
-          </div>
-        </header>
-        {filteredMeetings.length ? (
-          <div className="eiq-meetings-v1-table-wrap">
-            <table className="eiq-meetings-v1-table">
-              <colgroup>
-                <col style={{ width: "64px" }} />
-                <col style={{ width: "150px" }} />
-                <col style={{ width: "64px" }} />
-                <col style={{ width: "130px" }} />
-                <col style={{ width: "130px" }} />
-                <col style={{ width: "150px" }} />
-                <col style={{ width: "72px" }} />
-                <col style={{ width: "92px" }} />
-                <col style={{ width: "104px" }} />
-              </colgroup>
-              <thead>
-                <tr>
-                  <th scope="col">SELECT</th>
-                  <th scope="col" className="is-left">MEETING</th>
-                  <th scope="col">STATE</th>
-                  <th scope="col">RAIL</th>
-                  <th scope="col">TRACK</th>
-                  <th scope="col">WEATHER</th>
-                  <th scope="col">RACES</th>
-                  <th scope="col">DECLARED</th>
-                  <th scope="col">SCRATCHINGS</th>
-                </tr>
-              </thead>
+      <div className="eiq-meetings-locked__days" aria-label="Meeting days">
+        {(model?.days ?? []).slice(0, 3).map((day, index) => (
+          <button key={day.key} type="button" className={day.key === activeDay?.key ? "is-active" : ""} onClick={() => onDayChange(day.key)}>
+            <strong>{tabTitle(index, day.date)}</strong><span>{shortDate(day.date)}</span>
+          </button>
+        ))}
+      </div>
+
+      <section className="eiq-meetings-locked__filters">
+        <label>State<select value={stateFilter} onChange={(event) => setStateFilter(event.target.value)}><option>All</option>{states.map((state) => <option key={state}>{state}</option>)}</select></label>
+        <label>Country<select><option>All</option><option>Australia</option><option>Hong Kong</option></select></label>
+        <label>Track Type<select><option>All</option><option>Turf</option></select></label>
+        <label>Track<select><option>All</option></select></label>
+        <label>Rail Position<select><option>All</option></select></label>
+        <label>Weather<select><option>All</option></select></label>
+        <label className="is-search">Search meetings<input value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Search meetings…" /></label>
+        <button type="button" onClick={() => { setSearch(""); setStateFilter("All"); }}>Clear Filters</button>
+      </section>
+
+      <div className="eiq-meetings-locked__main-grid">
+        <section className="eiq-meetings-panel eiq-meetings-panel--list">
+          <header><strong>{tabTitle(activeDay ? model?.days.findIndex((day) => day.key === activeDay.key) ?? 0 : 0, activeDay?.date ?? "")} Meetings ({meetings.length})</strong></header>
+          <div className="eiq-meetings-locked__table-wrap">
+            <table className="eiq-meetings-locked__table">
+              <thead><tr><th>Meeting</th><th>State</th><th>Track</th><th>Rail</th><th>Weather</th><th>Races</th><th>First</th><th>Last</th><th>Status</th><th /></tr></thead>
               <tbody>
-                {filteredMeetings.map((meeting) => {
-                  const isSelected = meeting.meetingKey === selectedMeeting?.meetingKey;
-                  const trackRating = canonicalTrackRatingDisplay(meeting.track);
-                  return (
-                    <tr
-                      key={meeting.meetingKey}
-                      className={isSelected ? "is-selected" : ""}
-                      aria-selected={isSelected}
-                      tabIndex={0}
-                      onClick={() => onSelectMeeting(meeting.rawMeeting)}
-                      onKeyDown={(event) => {
-                        if (event.key === "Enter" || event.key === " ") {
-                          event.preventDefault();
-                          onSelectMeeting(meeting.rawMeeting);
-                        }
-                      }}
-                    >
-                      <td>
-                        <button
-                          className="eiq-meetings-v1-select"
-                          type="button"
-                          aria-pressed={isSelected}
-                          onClick={(event) => {
-                            event.stopPropagation();
-                            onSelectMeeting(meeting.rawMeeting);
-                          }}
-                        >
-                          {isSelected ? "Selected" : "Select"}
-                        </button>
-                      </td>
-                      <td className="is-left">
-                        <button
-                          className="eiq-meetings-v1-meeting-name"
-                          type="button"
-                          onClick={(event) => {
-                            event.stopPropagation();
-                            onSelectMeeting(meeting.rawMeeting);
-                          }}
-                        >
-                          {displayTrack(meeting.meeting)}
-                        </button>
-                      </td>
-                      <td>{display(meeting.state, "VIC")}</td>
-                      <td>{canonicalRailDisplay(meeting.rail)}</td>
-                      <td><span className={`eiq-meetings-v1-track-badge ${trackRatingClass(trackRating)}`}>{trackRating}</span></td>
-                      <td><span className="eiq-meetings-v1-weather-badge">{canonicalWeatherDisplay(meeting.weather)}</span></td>
-                      <td>{meeting.races}</td>
-                      <td>{meeting.declared}</td>
-                      <td>{meeting.scratchings}</td>
-                    </tr>
-                  );
+                {meetings.map((meeting) => {
+                  const identity = clubIdentity(meeting.meeting);
+                  const selected = meeting.meetingKey === selectedMeeting?.meetingKey;
+                  return <tr key={meeting.meetingKey} className={selected ? "is-selected" : ""} onClick={() => onSelectMeeting(meeting.rawMeeting)}>
+                    <td><span className="eiq-club-mark"><b>{identity.code}</b><small>{identity.name}</small></span><strong>{canonicalTrackDisplayName(meeting.meeting)}</strong></td>
+                    <td>{display(meeting.state)}</td><td>{canonicalTrackRatingDisplay(meeting.track)}</td><td>{canonicalRailDisplay(meeting.rail)}</td>
+                    <td><span className="eiq-weather-cell">{weatherIcon(meeting.weather)} {display(meeting.temp, canonicalWeatherDisplay(meeting.weather))}</span></td>
+                    <td>{meeting.races}</td><td>{display(meeting.first)}</td><td>{display(meeting.last)}</td><td><span className="eiq-meeting-status">{meetingStatus(meeting)}</span></td>
+                    <td><button type="button" onClick={(event) => { event.stopPropagation(); onOpenMeeting(meeting.rawMeeting); }}>›</button></td>
+                  </tr>;
                 })}
+                {!meetings.length ? <tr><td colSpan={10} className="eiq-meetings-locked__empty">No meetings published for this date.</td></tr> : null}
               </tbody>
             </table>
           </div>
-        ) : (
-          <div className="eiq-meetings-v1-empty">No meetings published for this date.</div>
-        )}
-        <footer className="eiq-meetings-v1-footer">
-          <span>Showing {startRow} to {endRow} of {filteredMeetings.length} meetings</span>
-          <nav aria-label="Meeting status filters">
-            {STATUS_FILTERS.map((filter) => (
-              <button
-                key={filter}
-                type="button"
-                className={filter === effectiveStatusFilter ? "is-active" : ""}
-                aria-pressed={filter === effectiveStatusFilter}
-                onClick={() => setStatusFilter(filter)}
-              >
-                {filter}
-              </button>
-            ))}
-          </nav>
-        </footer>
-      </section>
+        </section>
 
-      <section className="eiq-meetings-v1-card eiq-meetings-v1-timeline" aria-label="Race start times">
-        <header className="eiq-meetings-v1-card-header">
-          <strong>RACE START TIMES</strong>
-          <span>ALL MEETINGS</span>
-        </header>
-        {timelineMeetings.length && hours.length ? (
-          <div className="eiq-meetings-v1-time-grid">
-            <div className="eiq-meetings-v1-time-head" style={{ gridTemplateColumns: `120px repeat(${hours.length}, minmax(72px, 1fr))` }}>
-              <span />
-              {hours.map((hour) => <span key={hour.toISOString()}>{formatHourLabel(hour)}</span>)}
-            </div>
-            {timelineMeetings.map((meeting) => (
-              <div className="eiq-meetings-v1-time-row" key={meeting.meetingKey}>
-                <strong>{displayTrack(meeting.meeting)} ({meeting.races})</strong>
-                <div>
-                  {meeting.raceSummaries.map((race, index) => {
-                    const parsed = parseRaceTime(race.time, activeDay.date);
-                    if (!parsed) return null;
-                    return (
-                      <button
-                        key={race.raceKey}
-                        type="button"
-                        className={raceChipClass(race.status, race.raceKey === selectedRaceKey)}
-                        style={{ left: `${racePositionPct(parsed, hours)}%` }}
-                        aria-label={`Race ${race.raceNumber}`}
-                        onClick={() => {
-                          setSelectedRaceKey(race.raceKey);
-                          onOpenRace(meeting.rawMeeting, race.rawRace, index);
-                        }}
-                      >
-                        R{race.raceNumber}
-                      </button>
-                    );
-                  })}
-                </div>
+        <div className="eiq-meetings-locked__side-stack">
+          <section className="eiq-meetings-panel eiq-meetings-panel--overview">
+            <header><strong>Meeting Overview</strong>{selectedMeeting ? <button type="button" onClick={() => onOpenMeeting(selectedMeeting.rawMeeting)}>View Meeting</button> : null}</header>
+            {selectedMeeting ? <>
+              <div className="eiq-meeting-overview__hero">
+                <div className="eiq-club-logo-large"><b>{club.code}</b><span>{club.name}</span></div>
+                <div><h2>{canonicalTrackDisplayName(selectedMeeting.meeting)}</h2><p>{display(selectedMeeting.state)} &nbsp; | &nbsp; {canonicalTrackRatingDisplay(selectedMeeting.track)} &nbsp; | &nbsp; {canonicalRailDisplay(selectedMeeting.rail)}</p></div>
               </div>
-            ))}
-          </div>
-        ) : timelineMeetings.length ? (
-          <div className="eiq-meetings-v1-unscheduled">
-            <p>Race start times not published.</p>
-            {timelineMeetings.map((meeting) => (
-              <article key={meeting.meetingKey}>
-                <strong>{displayTrack(meeting.meeting)} ({meeting.races})</strong>
-                <div>
-                  {meeting.raceSummaries.map((race, index) => (
-                    <button
-                      key={race.raceKey}
-                      type="button"
-                      className={raceChipClass(race.status, race.raceKey === selectedRaceKey)}
-                      aria-label={`Race ${race.raceNumber}`}
-                      onClick={() => {
-                        setSelectedRaceKey(race.raceKey);
-                        onOpenRace(meeting.rawMeeting, race.rawRace, index);
-                      }}
-                    >
-                      R{race.raceNumber}
-                    </button>
-                  ))}
-                </div>
-              </article>
-            ))}
-          </div>
-        ) : (
-          <div className="eiq-meetings-v1-empty">No meetings published for this date.</div>
-        )}
-      </section>
+              <div className="eiq-meeting-overview__weather"><span>{weatherIcon(selectedMeeting.weather)}</span><strong>{display(selectedMeeting.temp, canonicalWeatherDisplay(selectedMeeting.weather))}</strong><small>{canonicalWeatherDisplay(selectedMeeting.weather)}</small><b>Wind</b><em>{display(selectedMeeting.wind)}</em></div>
+              <dl><div><dt>Races</dt><dd>{selectedMeeting.races}</dd></div><div><dt>First Race</dt><dd>{display(selectedMeeting.first)}</dd></div><div><dt>Last Race</dt><dd>{display(selectedMeeting.last)}</dd></div></dl>
+            </> : <div className="eiq-meetings-locked__empty">Select a meeting.</div>}
+          </section>
+
+          <section className="eiq-meetings-panel eiq-meetings-panel--times">
+            <header><strong>Race Times{selectedMeeting ? ` — ${canonicalTrackDisplayName(selectedMeeting.meeting)}` : ""}</strong></header>
+            <div>{selectedMeeting?.raceSummaries.map((race, index) => <button key={race.raceKey} type="button" onClick={() => onOpenRace(selectedMeeting.rawMeeting, race.rawRace, index)}><b>R{race.raceNumber}</b><span>{display(race.time)}</span></button>)}</div>
+          </section>
+        </div>
+      </div>
+
+      <div className="eiq-meetings-locked__bottom-grid">
+        <section className="eiq-meetings-panel"><header><strong>Scratchings & Changes</strong></header><div className="eiq-meetings-list">{changes.length ? changes.map(({ meeting, count }) => <div key={meeting.meetingKey}><i className="is-red" /><span>{canonicalTrackDisplayName(meeting.meeting)}</span><b>{count} scratching{count === 1 ? "" : "s"}</b></div>) : <p>No reported scratchings in this window.</p>}</div></section>
+        <section className="eiq-meetings-panel"><header><strong>Key Races</strong></header><div className="eiq-meetings-list">{keyRaces.length ? keyRaces.map(({ meeting, race }) => <button key={race.raceKey} type="button" onClick={() => onOpenRace(meeting.rawMeeting, race.rawRace, Math.max(0, race.raceNumber - 1))}><span>{display(race.time)}</span><strong>{canonicalTrackDisplayName(meeting.meeting)} R{race.raceNumber}</strong><b>{display(race.name, race.raceClass)}</b></button>) : <p>No black-type races identified in this window.</p>}</div></section>
+        <section className="eiq-meetings-panel"><header><strong>Quick Actions</strong></header><div className="eiq-meetings-actions"><button type="button" onClick={() => model?.days[1] && onDayChange(model.days[1].key)}>View Tomorrow's Meetings</button><button type="button">Today's Races (All)</button><button type="button">Market Movers</button><button type="button">Scratchings (All)</button><button type="button">Weather</button><button type="button">Track Information</button></div></section>
+      </div>
     </section>
   );
 }
