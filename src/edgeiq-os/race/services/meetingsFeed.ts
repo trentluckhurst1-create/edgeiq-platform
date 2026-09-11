@@ -93,11 +93,21 @@ type SummaryFeed = {
   generatedAt: string;
   days: SummaryDay[];
 };
+type MeetingDetailFeed = {
+  schemaVersion: string;
+  generatedAt: string;
+  date: string;
+  meetingKey: string;
+  meeting: ThreeDayMeeting;
+};
 
 const SUMMARY_URL = edgeiqDataPath("/data/edgeiq_meetings_summary_feed_v1.json");
 const MAX_SUMMARY_BYTES = 1_000_000;
+const MAX_MEETING_DETAIL_BYTES = 8_000_000;
 let cachedViewModel: MeetingsWorkspaceViewModel | null = null;
 let pendingViewModel: Promise<MeetingsWorkspaceViewModel> | null = null;
+const meetingDetailCache = new Map<string, ThreeDayMeeting>();
+const meetingDetailPending = new Map<string, Promise<ThreeDayMeeting>>();
 
 function formatWindowDate(value: string): string {
   const [year, month, day] = value.split("-").map(Number);
@@ -198,6 +208,36 @@ async function fetchSummary(force: boolean): Promise<SummaryFeed> {
   const payload = JSON.parse(text) as SummaryFeed;
   if (!Array.isArray(payload.days)) throw new Error("Meetings summary is invalid");
   return payload;
+}
+
+function detailSlug(value: string): string {
+  return value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "meeting";
+}
+
+export async function loadMeetingDetail(date: string, meetingKey: string, force = false): Promise<ThreeDayMeeting> {
+  const cacheKey = `${date}|${meetingKey}`;
+  if (!force && meetingDetailCache.has(cacheKey)) return meetingDetailCache.get(cacheKey)!;
+  if (meetingDetailPending.has(cacheKey)) return meetingDetailPending.get(cacheKey)!;
+
+  const url = edgeiqDataPath(`/data/meetings/${date}_${detailSlug(meetingKey)}.json`);
+  const pending = fetch(`${url}?updated=${encodeURIComponent(String(Date.now()))}`, {
+    cache: force ? "reload" : "no-store",
+  })
+    .then(async (response) => {
+      if (!response.ok) throw new Error(`Meeting detail failed with ${response.status}`);
+      const text = await response.text();
+      if (text.length > MAX_MEETING_DETAIL_BYTES) throw new Error(`Meeting detail exceeds ${MAX_MEETING_DETAIL_BYTES} bytes`);
+      const payload = JSON.parse(text) as MeetingDetailFeed;
+      if (!payload.meeting || payload.meeting.meetingKey !== meetingKey) throw new Error("Meeting detail is invalid");
+      meetingDetailCache.set(cacheKey, payload.meeting);
+      return payload.meeting;
+    })
+    .finally(() => {
+      meetingDetailPending.delete(cacheKey);
+    });
+
+  meetingDetailPending.set(cacheKey, pending);
+  return pending;
 }
 
 export async function loadMeetingsWorkspaceViewModel(force = false): Promise<MeetingsWorkspaceViewModel> {
