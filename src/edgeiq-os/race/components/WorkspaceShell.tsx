@@ -16,13 +16,15 @@ function formatHeaderTime() {
 }
 
 export function WorkspaceShell({ activeSection, onSectionChange, children }: WorkspaceShellProps) {
-  const activeWorkspace = activeSection === "home" || activeSection === "meetings" || activeSection === "race" || activeSection === "field";
+  const activeWorkspace = activeSection === "home" || activeSection === "meetings" || activeSection === "race" || activeSection === "field" || activeSection === "form";
 
   const workspaceTrail = activeSection === "race"
     ? "Dashboard · Meetings · Race"
     : activeSection === "field"
       ? "Dashboard · Meetings · Field"
-      : "Dashboard · Meetings";
+      : activeSection === "form"
+        ? "Dashboard · Meetings · Form"
+        : "Dashboard · Meetings";
 
   return (
     <section className={`eiq-approved-shell is-${activeSection}${activeSection === "home" ? " is-dashboard" : activeSection === "meetings" ? " is-meetings" : ""}`} data-edgeiq-approved-ui="dashboard-meetings-baseline" data-edgeiq-active-section={activeSection}>
