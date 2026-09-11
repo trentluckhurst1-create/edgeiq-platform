@@ -78,7 +78,7 @@ export function FormCommandWorkspace({ formGuide, onOpenRunner }: Props) {
         <div>
           <span>FORM</span>
           <strong>Professional runner analysis</strong>
-          <p>Compare current ratings, trajectory, suitability and price. Open a runner for the full historical dossier.</p>
+          <p>Compare ratings, trajectory, suitability and price across the field.</p>
         </div>
         <aside><strong>{active.length}</strong><span>ACTIVE RUNNERS</span></aside>
       </header>
