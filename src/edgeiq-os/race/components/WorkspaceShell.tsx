@@ -30,6 +30,9 @@ function formatHeaderTime() {
 export function WorkspaceShell({
   activeSection,
   onSectionChange,
+  eyebrow,
+  title,
+  meta,
   children,
 }: WorkspaceShellProps) {
   return (
@@ -39,8 +42,8 @@ export function WorkspaceShell({
       <div className="eiq-approved-shell__frame">
         <header className="eiq-approved-topbar">
           <div className="eiq-approved-topbar__identity">
-            <strong>EDGEiQ RACING — PROFESSIONAL FORM, RATINGS & PRICING</strong>
-            <span>Form leads to ratings. Ratings shape the price. The market tests the view.</span>
+            <strong>EDGEiQ RACING</strong>
+            <span>Professional Form · Ratings · Maps · Pricing</span>
           </div>
           <div className="eiq-approved-topbar__ops" aria-label="Operational context">
             <span>{formatHeaderDate()}</span>
@@ -49,12 +52,25 @@ export function WorkspaceShell({
           </div>
         </header>
 
-        <main className="eiq-approved-shell__content">{children}</main>
+        <main className="eiq-approved-shell__content">
+          <header className="eiq-workspace-masthead">
+            <div>
+              <span className="eiq-workspace-masthead__eyebrow">{eyebrow}</span>
+              <h1>{title}</h1>
+              {meta ? <p>{meta}</p> : null}
+            </div>
+            <div className="eiq-workspace-masthead__status" aria-label="EDGEiQ system status">
+              <span className="eiq-system-dot" aria-hidden="true" />
+              <strong>LIVE WORKSPACE</strong>
+            </div>
+          </header>
+          <div className="eiq-workspace-stage">{children}</div>
+        </main>
 
         <footer className="eiq-approved-shell__footer">
-          <span>EDGEiQ Racing | Form · Ratings · Map · Market</span>
-          <span>Build: 1.0.0</span>
-          <span>Data as at: {formatHeaderTime()} AEDT</span>
+          <span>EDGEiQ Racing Intelligence</span>
+          <span>Form · Ratings · Map · Market</span>
+          <span>Data as at {formatHeaderTime()} AEDT</span>
         </footer>
       </div>
     </section>
