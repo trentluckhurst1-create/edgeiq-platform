@@ -27,9 +27,10 @@ function priceDelta(runner: FormGuideRunnerDisplay): string {
 }
 
 function momentumLabel(runner: FormGuideRunnerDisplay): string {
-  if (runner.formMomentumDirection === "up") return "RISING";
-  if (runner.formMomentumDirection === "down") return "EASING";
-  return value(runner.formMomentum, "STABLE").toUpperCase();
+  if (runner.formMomentumDirection === "up") return "Rising";
+  if (runner.formMomentumDirection === "down") return "Easing";
+  const text = value(runner.formMomentum, "Stable").toLowerCase();
+  return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
 function lastRunText(runner: FormGuideRunnerDisplay): string {
@@ -108,7 +109,7 @@ export function FormCommandWorkspace({ formGuide, onOpenRunner }: Props) {
                 <td>{runner.scratched ? "-" : value(runner.edgeiqPrice)}</td>
                 <td>{runner.scratched ? "Scratched" : value(runner.marketPrice)}</td>
                 <td><strong>{runner.scratched ? "-" : priceDelta(runner)}</strong></td>
-                <td><button type="button" disabled={runner.scratched} onClick={() => onOpenRunner(runner.sourceIndex)}>OPEN</button></td>
+                <td><button type="button" disabled={runner.scratched} onClick={() => onOpenRunner(runner.sourceIndex)}>Open</button></td>
               </tr>
             ))}
             {!runners.length ? <tr><td colSpan={14}>Form data is not published for this race.</td></tr> : null}
