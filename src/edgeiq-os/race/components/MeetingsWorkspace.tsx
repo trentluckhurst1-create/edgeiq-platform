@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import type { ThreeDayMeeting, ThreeDayRace } from "../services/threeDayCatalog";
+import { loadThreeDayCatalog, type ThreeDayMeeting, type ThreeDayRace } from "../services/threeDayCatalog";
 import {
   canonicalRailDisplay,
   canonicalTrackDisplayName,
@@ -103,14 +103,16 @@ export function MeetingsWorkspace({
 }: MeetingsWorkspaceProps) {
   const [model, setModel] = useState<MeetingsWorkspaceViewModel | null>(null);
   const [loading, setLoading] = useState(true);
+  const [detailLoading, setDetailLoading] = useState(false);
+  const [loadError, setLoadError] = useState("");
   const [search, setSearch] = useState("");
   const [stateFilter, setStateFilter] = useState("All");
 
   useEffect(() => {
     let active = true;
     loadMeetingsWorkspaceViewModel()
-      .then((next) => { if (active) { setModel(next); setLoading(false); } })
-      .catch(() => { if (active) { setModel(null); setLoading(false); } });
+      .then((next) => { if (active) { setModel(next); setLoading(false); setLoadError(""); } })
+      .catch((error) => { if (active) { setModel(null); setLoading(false); setLoadError(error instanceof Error ? error.message : "Meetings feed unavailable"); } });
     return () => { active = false; };
   }, []);
 
@@ -129,6 +131,42 @@ export function MeetingsWorkspace({
     if (selectedMeeting && selectedMeeting.meetingKey !== selectedMeetingKey) onSelectMeeting(selectedMeeting.rawMeeting);
   }, [onSelectMeeting, selectedMeeting, selectedMeetingKey]);
 
+  async function resolveFullMeeting(meeting: MeetingSummaryViewModel): Promise<ThreeDayMeeting> {
+    setDetailLoading(true);
+    setLoadError("");
+    try {
+      const catalog = await loadThreeDayCatalog();
+      const fullMeeting = catalog.meetings.find((candidate) => candidate.meetingKey === meeting.meetingKey && candidate.date === meeting.rawMeeting.date)
+        ?? catalog.meetings.find((candidate) => candidate.meetingKey === meeting.meetingKey);
+      if (!fullMeeting) throw new Error(`Full meeting data unavailable for ${meeting.meeting}`);
+      return fullMeeting;
+    } finally {
+      setDetailLoading(false);
+    }
+  }
+
+  async function openMeeting(meeting: MeetingSummaryViewModel) {
+    try {
+      const fullMeeting = await resolveFullMeeting(meeting);
+      onSelectMeeting(fullMeeting);
+      onOpenMeeting(fullMeeting);
+    } catch (error) {
+      setLoadError(error instanceof Error ? error.message : "Meeting detail unavailable");
+    }
+  }
+
+  async function openRace(meeting: MeetingSummaryViewModel, raceKey: string, index: number) {
+    try {
+      const fullMeeting = await resolveFullMeeting(meeting);
+      const fullRace = fullMeeting.races.find((race) => race.raceKey === raceKey) ?? fullMeeting.races[index];
+      if (!fullRace) throw new Error(`Full race data unavailable for ${meeting.meeting}`);
+      onSelectMeeting(fullMeeting);
+      onOpenRace(fullMeeting, fullRace, Math.max(0, fullMeeting.races.indexOf(fullRace)));
+    } catch (error) {
+      setLoadError(error instanceof Error ? error.message : "Race detail unavailable");
+    }
+  }
+
   const club = clubIdentity(selectedMeeting?.meeting);
   const keyRaces = keyRaceRows(meetings);
   const changes = meetings.flatMap((meeting) => meeting.scratchings > 0 ? [{ meeting, count: meeting.scratchings }] : []).slice(0, 5);
@@ -141,6 +179,7 @@ export function MeetingsWorkspace({
         <div>
           <h1>Meetings</h1>
           <p>Select a meeting to view races, club details and key information.</p>
+          {loadError ? <p role="alert">{loadError}</p> : null}
         </div>
         <button className="eiq-meetings-locked__refresh" type="button" onClick={() => window.location.reload()}>↻ Refresh Meetings</button>
       </header>
@@ -179,7 +218,7 @@ export function MeetingsWorkspace({
                     <td>{display(meeting.state)}</td><td>{canonicalTrackRatingDisplay(meeting.track)}</td><td>{canonicalRailDisplay(meeting.rail)}</td>
                     <td><span className="eiq-weather-cell">{weatherIcon(meeting.weather)} {weatherText(meeting)}</span></td>
                     <td>{meeting.races}</td><td>{display(meeting.first)}</td><td>{display(meeting.last)}</td><td><span className="eiq-meeting-status">{meetingStatus(meeting)}</span></td>
-                    <td><button type="button" onClick={(event) => { event.stopPropagation(); onOpenMeeting(meeting.rawMeeting); }}>›</button></td>
+                    <td><button type="button" disabled={detailLoading} onClick={(event) => { event.stopPropagation(); void openMeeting(meeting); }}>{detailLoading ? "…" : "›"}</button></td>
                   </tr>;
                 })}
                 {!meetings.length ? <tr><td colSpan={10} className="eiq-meetings-locked__empty">No meetings published for this date.</td></tr> : null}
@@ -190,7 +229,7 @@ export function MeetingsWorkspace({
 
         <div className="eiq-meetings-locked__side-stack">
           <section className="eiq-meetings-panel eiq-meetings-panel--overview">
-            <header><strong>Meeting Overview</strong>{selectedMeeting ? <button type="button" onClick={() => onOpenMeeting(selectedMeeting.rawMeeting)}>View Meeting</button> : null}</header>
+            <header><strong>Meeting Overview</strong>{selectedMeeting ? <button type="button" disabled={detailLoading} onClick={() => void openMeeting(selectedMeeting)}>View Meeting</button> : null}</header>
             {selectedMeeting ? <>
               <div className="eiq-meeting-overview__hero">
                 <div className="eiq-club-logo-large"><b>{club.code}</b><span>{club.name}</span></div>
@@ -203,14 +242,14 @@ export function MeetingsWorkspace({
 
           <section className="eiq-meetings-panel eiq-meetings-panel--times">
             <header><strong>Race Times{selectedMeeting ? ` — ${canonicalTrackDisplayName(selectedMeeting.meeting)}` : ""}</strong></header>
-            <div>{selectedMeeting?.raceSummaries.map((race, index) => <button key={race.raceKey} type="button" onClick={() => onOpenRace(selectedMeeting.rawMeeting, race.rawRace, index)}><b>R{race.raceNumber}</b><span>{display(race.time)}</span></button>)}</div>
+            <div>{selectedMeeting?.raceSummaries.map((race, index) => <button key={race.raceKey} type="button" disabled={detailLoading} onClick={() => void openRace(selectedMeeting, race.raceKey, index)}><b>R{race.raceNumber}</b><span>{display(race.time)}</span></button>)}</div>
           </section>
         </div>
       </div>
 
       <div className="eiq-meetings-locked__bottom-grid">
         <section className="eiq-meetings-panel"><header><strong>Scratchings & Changes</strong></header><div className="eiq-meetings-list">{changes.length ? changes.map(({ meeting, count }) => <div key={meeting.meetingKey}><i className="is-red" /><span>{canonicalTrackDisplayName(meeting.meeting)}</span><b>{count} scratching{count === 1 ? "" : "s"}</b></div>) : <p>No reported scratchings in this window.</p>}</div></section>
-        <section className="eiq-meetings-panel"><header><strong>Key Races</strong></header><div className="eiq-meetings-list">{keyRaces.length ? keyRaces.map(({ meeting, race }) => <button key={race.raceKey} type="button" onClick={() => onOpenRace(meeting.rawMeeting, race.rawRace, Math.max(0, race.raceNumber - 1))}><span>{display(race.time)}</span><strong>{canonicalTrackDisplayName(meeting.meeting)} R{race.raceNumber}</strong><b>{display(race.name, race.raceClass)}</b></button>) : <p>No black-type races identified in this window.</p>}</div></section>
+        <section className="eiq-meetings-panel"><header><strong>Key Races</strong></header><div className="eiq-meetings-list">{keyRaces.length ? keyRaces.map(({ meeting, race }) => <button key={race.raceKey} type="button" disabled={detailLoading} onClick={() => void openRace(meeting, race.raceKey, Math.max(0, race.raceNumber - 1))}><span>{display(race.time)}</span><strong>{canonicalTrackDisplayName(meeting.meeting)} R{race.raceNumber}</strong><b>{display(race.name, race.raceClass)}</b></button>) : <p>No black-type races identified in this window.</p>}</div></section>
         <section className="eiq-meetings-panel"><header><strong>Quick Actions</strong></header><div className="eiq-meetings-actions"><button type="button" onClick={() => model?.days[1] && onDayChange(model.days[1].key)}>View Tomorrow's Meetings</button><button type="button">Today's Races (All)</button><button type="button">Market Movers</button><button type="button">Scratchings (All)</button><button type="button">Weather</button><button type="button">Track Information</button></div></section>
       </div>
     </section>
