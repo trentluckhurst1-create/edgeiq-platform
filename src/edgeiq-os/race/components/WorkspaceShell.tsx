@@ -39,8 +39,8 @@ export function WorkspaceShell({
       <div className="eiq-approved-shell__frame">
         <header className="eiq-approved-topbar">
           <div className="eiq-approved-topbar__identity">
-            <strong>EDGEiQ PROFESSIONAL RACING INTELLIGENCE OPERATING SYSTEM</strong>
-            <span>Information is not Intelligence. Evidence leads. Precision decides.</span>
+            <strong>EDGEiQ RACING — PROFESSIONAL FORM, RATINGS & PRICING</strong>
+            <span>Form leads to ratings. Ratings shape the price. The market tests the view.</span>
           </div>
           <div className="eiq-approved-topbar__ops" aria-label="Operational context">
             <span>{formatHeaderDate()}</span>
@@ -52,7 +52,7 @@ export function WorkspaceShell({
         <main className="eiq-approved-shell__content">{children}</main>
 
         <footer className="eiq-approved-shell__footer">
-          <span>EDGEiQ Racing Intelligence Operating System</span>
+          <span>EDGEiQ Racing | Form · Ratings · Map · Market</span>
           <span>Build: 1.0.0</span>
           <span>Data as at: {formatHeaderTime()} AEDT</span>
         </footer>
