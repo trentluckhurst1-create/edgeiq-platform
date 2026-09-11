@@ -1,0 +1,90 @@
+/* EDGEiQ UNIVERSAL SUBTAB CONTRACT — load absolutely last.
+   Covers nested runner workspaces, meeting-detail modules, expanded historical runs,
+   results dialogs and any residual legacy module chrome. Dashboard + Meetings palette is canonical. */
+
+/* ===== Expanded historical run detail ===== */
+.eiq-run-detail-v17{
+  margin:8px 0!important;padding:14px!important;border:1px solid var(--eiq-lock-border)!important;
+  border-radius:5px!important;background:#fff!important;color:var(--eiq-lock-text)!important;
+  box-shadow:0 1px 2px rgba(31,54,88,.025)!important
+}
+.eiq-run-detail-v17__header{display:flex!important;align-items:flex-start!important;justify-content:space-between!important;gap:14px!important;margin:0 0 12px!important;padding:0 0 10px!important;border-bottom:1px solid var(--eiq-lock-border-soft)!important;background:transparent!important}
+.eiq-run-detail-v17__header span,.eiq-run-detail-v17__grid article>span{color:var(--eiq-lock-muted)!important;font-size:8px!important;font-weight:800!important;letter-spacing:.035em!important;text-transform:uppercase!important}
+.eiq-run-detail-v17__header strong{display:block!important;margin-top:4px!important;color:var(--eiq-lock-text)!important;font-size:13px!important;font-weight:750!important}
+.eiq-run-detail-v17__header p,.eiq-run-detail-v17__result em{color:var(--eiq-lock-muted)!important;font-size:9px!important}
+.eiq-run-detail-v17__result{padding:8px 10px!important;border:1px solid var(--eiq-lock-border-soft)!important;border-radius:4px!important;background:#f8fafd!important;text-align:right!important}
+.eiq-run-detail-v17__result b{color:var(--eiq-lock-text)!important;font-size:14px!important}
+.eiq-run-detail-v17__grid{display:grid!important;grid-template-columns:1fr 1fr 1fr!important;gap:12px!important}
+.eiq-run-detail-v17__grid article{padding:12px!important;border:1px solid var(--eiq-lock-border-soft)!important;border-radius:4px!important;background:#fff!important;box-shadow:none!important}
+.eiq-run-detail-v17__grid dl>div{display:flex!important;justify-content:space-between!important;gap:10px!important;padding:6px 0!important;border-bottom:1px solid var(--eiq-lock-border-soft)!important}
+.eiq-run-detail-v17__grid dl>div:last-child{border-bottom:0!important}
+.eiq-run-detail-v17__grid dt{color:var(--eiq-lock-muted)!important;font-size:9px!important}.eiq-run-detail-v17__grid dd{margin:0!important;color:#304563!important;font-size:9px!important;font-weight:650!important}
+.eiq-run-detail-v17__metrics{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important;margin-top:8px!important}
+.eiq-run-detail-v17__metrics>div{padding:8px!important;border:1px solid var(--eiq-lock-border-soft)!important;border-radius:4px!important;background:#f8fafd!important}
+.eiq-run-detail-v17__metrics small{font-size:8px!important;color:var(--eiq-lock-muted)!important}.eiq-run-detail-v17__metrics strong{display:block!important;margin-top:3px!important;color:var(--eiq-lock-text)!important;font-size:12px!important}
+.eiq-run-detail-v17__actions{display:flex!important;gap:7px!important;margin-top:12px!important;padding-top:10px!important;border-top:1px solid var(--eiq-lock-border-soft)!important}
+.eiq-run-detail-v17__actions button{padding:7px 10px!important;border:1px solid var(--eiq-lock-border)!important;border-radius:4px!important;background:#fff!important;color:var(--eiq-lock-blue)!important;font-size:9px!important;font-weight:750!important}
+.eiq-run-detail-v17__compare{margin-top:12px!important;padding-top:12px!important;border-top:1px solid var(--eiq-lock-border-soft)!important}
+
+/* ===== Runner nested tabs and pending modes ===== */
+.eiq-runner-tabs{width:100%!important}
+.eiq-runner-tabs button{flex:1 1 0!important;text-align:center!important}
+.eiq-runner-pending>span{display:block!important;color:var(--eiq-lock-muted)!important;font-size:8px!important;font-weight:800!important;text-transform:uppercase!important}
+.eiq-runner-pending>strong{display:block!important;margin-top:4px!important;color:var(--eiq-lock-text)!important;font-size:13px!important}
+.eiq-runner-pending>p{margin:5px 0 0!important;font-size:10px!important;color:var(--eiq-lock-muted)!important}
+
+/* ===== Compare when mounted inside runner or Tools ===== */
+.eiq-compare-final{color:var(--eiq-lock-text)!important}
+.eiq-compare-final__header>div>span,.eiq-compare-final-card>span,.eiq-compare-final-table>header>span{color:var(--eiq-lock-muted)!important;font-size:8px!important;font-weight:800!important;text-transform:uppercase!important;letter-spacing:.035em!important}
+.eiq-compare-final__header>div>strong,.eiq-compare-final-card>strong,.eiq-compare-final-table>header>strong{color:var(--eiq-lock-text)!important;font-size:13px!important;font-weight:750!important}
+.eiq-compare-final__controls,.eiq-compare-final__panels,.eiq-compare-final-table{margin-bottom:12px!important}
+
+/* ===== Research Lab ===== */
+.eiq-lab-final-hero>div>span{color:var(--eiq-lock-muted)!important;font-size:8px!important;font-weight:800!important;text-transform:uppercase!important}
+.eiq-lab-final-hero h3{margin:4px 0 0!important;color:var(--eiq-lock-text)!important;font-size:16px!important;font-weight:750!important}
+.eiq-lab-panel>header{display:flex!important;align-items:center!important;justify-content:space-between!important;min-height:28px!important;margin-bottom:10px!important}
+.eiq-lab-panel>header span{color:var(--eiq-lock-text)!important;font-size:13px!important;font-weight:750!important;text-transform:none!important}
+
+/* ===== Settings ===== */
+.eiq-settings-final__header>div>span{color:var(--eiq-lock-muted)!important;font-size:8px!important;font-weight:800!important;text-transform:uppercase!important}
+.eiq-settings-final__header>div>strong{display:block!important;margin-top:4px!important;color:var(--eiq-lock-text)!important;font-size:16px!important}
+.eiq-settings-final__header p{font-size:10px!important;color:var(--eiq-lock-muted)!important}
+.eiq-settings-final-card>span{display:block!important;margin-bottom:10px!important;color:var(--eiq-lock-text)!important;font-size:13px!important;font-weight:750!important;text-transform:none!important}
+
+/* ===== Meeting nested workspaces ===== */
+.eiq-scratchings-v1,.eiq-gear-v1,.eiq-track-v1,.eiq-weather-v1,.eiq-results-v1{color:var(--eiq-lock-text)!important}
+.eiq-scratchings-v1-header>div:first-child>span,.eiq-gear-v1-header>div:first-child>span,.eiq-track-v1-header>div>span,.eiq-weather-v1-header>div>span{color:var(--eiq-lock-muted)!important;font-size:8px!important;font-weight:800!important;letter-spacing:.035em!important;text-transform:uppercase!important}
+.eiq-scratchings-v1-header p,.eiq-track-v1-header p,.eiq-weather-v1-header p{color:var(--eiq-lock-muted)!important;font-size:10px!important}
+.eiq-track-v1-field-grid,.eiq-weather-v1-summary-grid,.eiq-weather-v1-impact-grid,.eiq-weather-v1-status-strip{display:grid!important;gap:0!important;border:1px solid var(--eiq-lock-border-soft)!important;border-radius:4px!important;overflow:hidden!important;background:#fff!important}
+.eiq-track-v1-field-grid>div,.eiq-weather-v1-summary-grid>div,.eiq-weather-v1-impact-grid>div,.eiq-weather-v1-status-strip>div{padding:9px 10px!important;border-right:1px solid var(--eiq-lock-border-soft)!important;background:#fff!important}
+.eiq-track-v1-field-grid dt,.eiq-weather-v1-summary-grid dt,.eiq-weather-v1-impact-grid dt,.eiq-weather-v1-status-strip dt{font-size:8px!important;color:var(--eiq-lock-muted)!important;font-weight:800!important;text-transform:uppercase!important}
+.eiq-track-v1-field-grid dd,.eiq-weather-v1-summary-grid dd,.eiq-weather-v1-impact-grid dd,.eiq-weather-v1-status-strip dd{margin:3px 0 0!important;font-size:10px!important;font-weight:700!important;color:var(--eiq-lock-text)!important}
+
+/* ===== Results modal — was a remaining separate visual system ===== */
+.eiq-results-v2-modal-backdrop{background:rgba(16,33,63,.18)!important;backdrop-filter:none!important}
+.eiq-results-v2-modal{border:1px solid var(--eiq-lock-border)!important;border-radius:5px!important;background:#fff!important;color:var(--eiq-lock-text)!important;box-shadow:0 12px 36px rgba(16,33,63,.16)!important}
+.eiq-results-v2-modal-header{padding:14px!important;border-bottom:1px solid var(--eiq-lock-border)!important;background:#fff!important;color:var(--eiq-lock-text)!important}
+.eiq-results-v2-modal-header span{color:var(--eiq-lock-muted)!important;font-size:8px!important;font-weight:800!important;text-transform:uppercase!important}
+.eiq-results-v2-modal-header h2{margin:4px 0 0!important;color:var(--eiq-lock-text)!important;font-size:18px!important}.eiq-results-v2-modal-header p{color:var(--eiq-lock-muted)!important;font-size:9px!important}
+.eiq-results-v2-modal-close-icon{border:1px solid var(--eiq-lock-border)!important;border-radius:4px!important;background:#fff!important;color:var(--eiq-lock-blue)!important}
+.eiq-results-v2-modal-body{padding:14px!important;background:var(--eiq-lock-bg)!important}.eiq-results-v2-modal-body>*:not(:last-child){margin-bottom:12px!important}
+.eiq-results-v2-modal-footer{padding:10px 14px!important;border-top:1px solid var(--eiq-lock-border)!important;background:#fff!important}
+
+/* ===== Race Map: unique content surface, common chrome ===== */
+.eiq-map-v3__track{border:1px solid var(--eiq-lock-border-soft)!important;border-radius:4px!important;background:#f8fafd!important;box-shadow:none!important}
+.eiq-map-v3__runner{border:1px solid var(--eiq-lock-border)!important;border-radius:4px!important;background:#fff!important;color:var(--eiq-lock-text)!important;box-shadow:none!important}
+.eiq-map-v3__runner.is-selected{border-color:var(--eiq-lock-blue)!important;background:var(--eiq-lock-blue-soft)!important;color:var(--eiq-lock-blue)!important}
+
+/* ===== Performance module selector uses same segmented panel language ===== */
+.eiq-performance-approved-modules,.eiq-performance-approved-toolbar{border:1px solid var(--eiq-lock-border)!important;border-radius:5px!important;background:#fff!important;box-shadow:0 1px 2px rgba(31,54,88,.025)!important}
+.eiq-performance-approved-modules button{background:#fff!important;color:#50617d!important;border-right:1px solid var(--eiq-lock-border-soft)!important}
+.eiq-performance-approved-modules button.is-active{background:var(--eiq-lock-blue-soft)!important;color:var(--eiq-lock-blue)!important}
+.eiq-performance-approved-toolbar button{background:#fff!important;color:#50617d!important;border:1px solid var(--eiq-lock-border)!important}
+.eiq-performance-approved-toolbar button.is-active{background:var(--eiq-lock-blue-soft)!important;color:var(--eiq-lock-blue)!important;border-color:#9dbdf0!important}
+
+/* ===== Guarantee all nested tables use approved table density, even modal tables ===== */
+:is(.eiq-run-detail-v17,.eiq-results-v2-modal,.eiq-meeting-workspace,.eiq-form-workbench,.eiq-lab-final,.eiq-compare-final,.eiq-settings-final) table{width:100%!important;border-collapse:collapse!important;background:#fff!important;color:#304563!important;font-size:10px!important}
+:is(.eiq-run-detail-v17,.eiq-results-v2-modal,.eiq-meeting-workspace,.eiq-form-workbench,.eiq-lab-final,.eiq-compare-final,.eiq-settings-final) thead th{padding:9px 8px!important;background:#f2f6fb!important;color:#50617d!important;font-size:8px!important;font-weight:800!important;letter-spacing:.035em!important;text-transform:uppercase!important}
+:is(.eiq-run-detail-v17,.eiq-results-v2-modal,.eiq-meeting-workspace,.eiq-form-workbench,.eiq-lab-final,.eiq-compare-final,.eiq-settings-final) tbody td{padding:9px 8px!important;border-bottom:1px solid var(--eiq-lock-border-soft)!important;background:#fff!important;color:#304563!important;font-size:10px!important}
+
+@media(max-width:1000px){.eiq-run-detail-v17__grid{grid-template-columns:1fr!important}}
