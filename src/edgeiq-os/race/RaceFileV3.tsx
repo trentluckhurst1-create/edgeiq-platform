@@ -4,6 +4,7 @@ import { type GlobalSection } from "./components/AppNavigation";
 import { FieldWorkspace } from "./components/FieldWorkspace";
 import { FormWorkspace } from "./components/FormWorkspace";
 import { MeetingsWorkspace } from "./components/MeetingsWorkspace";
+import { PerformanceWorkspace } from "./components/PerformanceWorkspace";
 import { RaceWorkspace } from "./components/RaceWorkspace";
 import { WorkspaceShell } from "./components/WorkspaceShell";
 import type { ThreeDayMeeting } from "./services/threeDayCatalog";
@@ -50,24 +51,13 @@ export function RaceFileV3() {
           }}
         />
       ) : activeSection === "race" ? (
-        <RaceWorkspace
-          meeting={selectedMeeting}
-          selectedRaceKey={selectedRaceKey}
-          onRaceChange={setSelectedRaceKey}
-          onBackToMeetings={() => setActiveSection("meetings")}
-        />
+        <RaceWorkspace meeting={selectedMeeting} selectedRaceKey={selectedRaceKey} onRaceChange={setSelectedRaceKey} onBackToMeetings={() => setActiveSection("meetings")} />
       ) : activeSection === "field" ? (
-        <FieldWorkspace
-          meeting={selectedMeeting}
-          selectedRaceKey={selectedRaceKey}
-          onRaceChange={setSelectedRaceKey}
-        />
+        <FieldWorkspace meeting={selectedMeeting} selectedRaceKey={selectedRaceKey} onRaceChange={setSelectedRaceKey} />
       ) : activeSection === "form" ? (
-        <FormWorkspace
-          meeting={selectedMeeting}
-          selectedRaceKey={selectedRaceKey}
-          onRaceChange={setSelectedRaceKey}
-        />
+        <FormWorkspace meeting={selectedMeeting} selectedRaceKey={selectedRaceKey} onRaceChange={setSelectedRaceKey} />
+      ) : activeSection === "performance" ? (
+        <PerformanceWorkspace meeting={selectedMeeting} selectedRaceKey={selectedRaceKey} onRaceChange={setSelectedRaceKey} />
       ) : null}
     </WorkspaceShell>
   );
