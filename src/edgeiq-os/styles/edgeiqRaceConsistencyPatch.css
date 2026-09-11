@@ -33,6 +33,14 @@
 .eiq-form-command__snapshot,
 .eiq-form-command__table-wrap{box-shadow:0 1px 2px rgba(31,54,88,.025)!important}
 
+/* Shared table-panel header copied from the approved Dashboard/Meetings panel rhythm. */
+.eiq-field-table-wrap-v1,
+.eiq-form-command__table-wrap{overflow:hidden!important}
+.eiq-race-data-panel__header{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:42px;padding:0 14px;border-bottom:1px solid var(--eiq-lock-border-soft);background:var(--eiq-lock-surface)}
+.eiq-race-data-panel__header strong{font-size:13px;font-weight:750;color:var(--eiq-lock-text)}
+.eiq-race-data-panel__header span{font-size:9px;color:var(--eiq-lock-muted)}
+.eiq-race-data-panel__scroll{overflow:auto}
+
 /* Race context now reads as a normal application panel, matching Dashboard / Meetings. */
 .eiq-race-command-header>header{min-height:28px!important;margin-bottom:10px!important}
 .eiq-race-command-header>header strong{font-size:13px!important;font-weight:750!important;letter-spacing:0!important}
@@ -50,7 +58,6 @@
 .eiq-race-v1__board h2{font-size:13px!important;font-weight:750!important;letter-spacing:0!important;text-transform:none!important}
 .eiq-race-v1__selector>span{font-size:13px!important;font-weight:750!important;letter-spacing:0!important;text-transform:none!important;color:var(--eiq-lock-text)!important}
 
-/* Same segmented information-card proportions everywhere. */
 .eiq-race-v1__summary-card,
 .eiq-field-v1__summary>div,
 .eiq-form-command__snapshot article{min-height:76px!important}
@@ -76,6 +83,11 @@
 .eiq-race-v1__table tbody tr:not(.is-scratched):hover td,
 .eiq-field-table-v1 tbody tr:not(.is-scratched):hover td,
 .eiq-form-command__table tbody tr:not(.is-scratched):hover td{background:#f7fbff!important}
+
+.eiq-field-table-v1__silk,
+.eiq-race-v1__silk{display:block;width:26px!important;height:26px!important;object-fit:contain}
+.eiq-field-table-v1__silk.eiq-race-intel-silk--empty,
+.eiq-race-v1__silk.is-empty{border:1px solid var(--eiq-lock-border-soft);border-radius:4px;background:#f8fafd}
 
 .eiq-field-table-v1 .eiq-approved-button,
 .eiq-field-recent-panel .eiq-approved-button,
@@ -116,4 +128,5 @@
   .eiq-race-command-header dl{grid-template-columns:1fr 1fr!important}
   .eiq-context-tabs button{padding:0 11px!important}
   .eiq-race-v1__speed-grid{grid-template-columns:1fr!important}
+  .eiq-race-data-panel__header{align-items:flex-start;flex-direction:column;padding:10px 14px}
 }
