@@ -3,6 +3,7 @@ import "./styles/edgeiqDashboardLocked.css";
 import "./styles/edgeiqMeetingsLocked.css";
 import "./styles/edgeiqRaceV1.css";
 import "./styles/edgeiqFieldV1.css";
+import "./styles/edgeiqFormV1.css";
 import "./styles/edgeiqLightSidebarLock.css";
 import { EdgeiqOsShell } from "./shell/EdgeiqOsShell";
 
