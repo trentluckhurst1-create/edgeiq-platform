@@ -1,22 +1,9 @@
-import "./components/shell/edgeiqOsShell.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { ClerkProvider } from "@clerk/clerk-react";
 import App from "./App";
 import ProtectedApp from "./ProtectedApp";
 import "./index.css";
-import "./terminal/layout/racing-terminal-overrides.css";
-import "./styles/edgeiqDesignSystem.css";
-import "./edgeiq-os/design-system/edgeiqDesignSystem.css";
-import "./edgeiq-os/approved-ui/edgeiqApprovedUiRebuildV1.css";
-import "./edgeiq-os/styles/edgeiqSoftwareSystem.css";
-import "./edgeiq-os/styles/edgeiqSoftwareModules.css";
-import "./edgeiq-os/styles/edgeiqSoftwareRaceShell.css";
-import "./edgeiq-os/styles/edgeiqSoftwareSecondary.css";
-import "./edgeiq-os/styles/edgeiqSoftwareV2.css";
-import "./edgeiq-os/styles/edgeiqWorkspaceV3.css";
-import "./edgeiq-os/styles/edgeiqDashboardLocked.css";
-import "./edgeiq-os/styles/edgeiqLightSidebarLock.css";
 
 const env = (import.meta as ImportMeta & { env: Record<string, string | undefined> }).env;
 const publishableKey = env.VITE_CLERK_PUBLISHABLE_KEY;
