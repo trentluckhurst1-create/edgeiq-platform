@@ -70,6 +70,15 @@ function weatherIcon(value: unknown) {
   return "☀";
 }
 
+function weatherText(meeting: MeetingSummaryViewModel) {
+  return canonicalWeatherDisplay(meeting.weather);
+}
+
+function temperatureText(meeting: MeetingSummaryViewModel) {
+  const value = display(meeting.temp, "");
+  return value && value.toLowerCase() !== "not supplied" ? value : "";
+}
+
 function meetingStatus(meeting: MeetingSummaryViewModel) {
   const text = display(meeting.status, "").toLowerCase();
   if (/abandon/.test(text)) return "ABANDONED";
@@ -168,7 +177,7 @@ export function MeetingsWorkspace({
                   return <tr key={meeting.meetingKey} className={selected ? "is-selected" : ""} onClick={() => onSelectMeeting(meeting.rawMeeting)}>
                     <td><span className="eiq-club-mark"><b>{identity.code}</b><small>{identity.name}</small></span><strong>{canonicalTrackDisplayName(meeting.meeting)}</strong></td>
                     <td>{display(meeting.state)}</td><td>{canonicalTrackRatingDisplay(meeting.track)}</td><td>{canonicalRailDisplay(meeting.rail)}</td>
-                    <td><span className="eiq-weather-cell">{weatherIcon(meeting.weather)} {display(meeting.temp, canonicalWeatherDisplay(meeting.weather))}</span></td>
+                    <td><span className="eiq-weather-cell">{weatherIcon(meeting.weather)} {weatherText(meeting)}</span></td>
                     <td>{meeting.races}</td><td>{display(meeting.first)}</td><td>{display(meeting.last)}</td><td><span className="eiq-meeting-status">{meetingStatus(meeting)}</span></td>
                     <td><button type="button" onClick={(event) => { event.stopPropagation(); onOpenMeeting(meeting.rawMeeting); }}>›</button></td>
                   </tr>;
@@ -187,7 +196,7 @@ export function MeetingsWorkspace({
                 <div className="eiq-club-logo-large"><b>{club.code}</b><span>{club.name}</span></div>
                 <div><h2>{canonicalTrackDisplayName(selectedMeeting.meeting)}</h2><p>{display(selectedMeeting.state)} &nbsp; | &nbsp; {canonicalTrackRatingDisplay(selectedMeeting.track)} &nbsp; | &nbsp; {canonicalRailDisplay(selectedMeeting.rail)}</p></div>
               </div>
-              <div className="eiq-meeting-overview__weather"><span>{weatherIcon(selectedMeeting.weather)}</span><strong>{display(selectedMeeting.temp, canonicalWeatherDisplay(selectedMeeting.weather))}</strong><small>{canonicalWeatherDisplay(selectedMeeting.weather)}</small><b>Wind</b><em>{display(selectedMeeting.wind)}</em></div>
+              <div className="eiq-meeting-overview__weather"><span>{weatherIcon(selectedMeeting.weather)}</span><strong>{weatherText(selectedMeeting)}</strong><small>{temperatureText(selectedMeeting) ? `Temperature ${temperatureText(selectedMeeting)}` : "Forecast — Racing Australia"}</small><b>Wind</b><em>{display(selectedMeeting.wind)}</em></div>
               <dl><div><dt>Races</dt><dd>{selectedMeeting.races}</dd></div><div><dt>First Race</dt><dd>{display(selectedMeeting.first)}</dd></div><div><dt>Last Race</dt><dd>{display(selectedMeeting.last)}</dd></div></dl>
             </> : <div className="eiq-meetings-locked__empty">Select a meeting.</div>}
           </section>
