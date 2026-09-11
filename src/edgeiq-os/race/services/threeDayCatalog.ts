@@ -52,7 +52,10 @@ export type ThreeDayCatalog = {
 };
 
 const URL = edgeiqDataPath("/data/edgeiq_three_day_product_catalog_v1.json");
-const MAX_CATALOG_BYTES = 15_000_000;
+// The governed three-day catalogue now carries richer Racing Australia meeting
+// metadata and runner evidence. Keep a defensive ceiling, but allow normal
+// current production growth without rejecting a valid catalogue at runtime.
+const MAX_CATALOG_BYTES = 25_000_000;
 
 export async function loadThreeDayCatalog(
   force = false,
