@@ -103,6 +103,7 @@ export function AppNavigation({ activeSection, onSectionChange }: AppNavigationP
                 <button
                   key={item.key}
                   type="button"
+                  data-section={item.key}
                   className={activeSection === item.key ? "is-active" : ""}
                   onClick={() => onSectionChange(item.key)}
                 >
