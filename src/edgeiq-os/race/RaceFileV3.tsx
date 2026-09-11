@@ -2,6 +2,7 @@ import { useState } from "react";
 import { EdgeiqOsHome } from "../home/EdgeiqOsHome";
 import { type GlobalSection } from "./components/AppNavigation";
 import { MeetingsWorkspace } from "./components/MeetingsWorkspace";
+import { RaceWorkspace } from "./components/RaceWorkspace";
 import { WorkspaceShell } from "./components/WorkspaceShell";
 import type { ThreeDayMeeting } from "./services/threeDayCatalog";
 import type { MeetingsDayKey } from "./services/meetingsFeed";
@@ -15,6 +16,18 @@ export function RaceFileV3() {
   const [activeSection, setActiveSection] = useState<GlobalSection>("home");
   const [selectedDayKey, setSelectedDayKey] = useState<MeetingsDayKey>("TODAY");
   const [selectedMeeting, setSelectedMeeting] = useState<ThreeDayMeeting | null>(null);
+  const [selectedRaceKey, setSelectedRaceKey] = useState<string | null>(null);
+
+  function selectMeeting(meeting: ThreeDayMeeting | null) {
+    setSelectedMeeting(meeting);
+    if (!meeting) {
+      setSelectedRaceKey(null);
+      return;
+    }
+    if (!selectedRaceKey || !meeting.races.some((race) => race.raceKey === selectedRaceKey)) {
+      setSelectedRaceKey(meeting.races[0]?.raceKey ?? null);
+    }
+  }
 
   return (
     <WorkspaceShell activeSection={activeSection} onSectionChange={setActiveSection}>
@@ -26,9 +39,20 @@ export function RaceFileV3() {
           selectedMeetingKey={selectedMeeting?.meetingKey ?? null}
           clean={clean}
           onDayChange={setSelectedDayKey}
-          onSelectMeeting={setSelectedMeeting}
-          onOpenMeeting={(meeting) => setSelectedMeeting(meeting)}
-          onOpenRace={(meeting) => setSelectedMeeting(meeting)}
+          onSelectMeeting={selectMeeting}
+          onOpenMeeting={selectMeeting}
+          onOpenRace={(meeting, race) => {
+            setSelectedMeeting(meeting);
+            setSelectedRaceKey(race.raceKey);
+            setActiveSection("race");
+          }}
+        />
+      ) : activeSection === "race" ? (
+        <RaceWorkspace
+          meeting={selectedMeeting}
+          selectedRaceKey={selectedRaceKey}
+          onRaceChange={setSelectedRaceKey}
+          onBackToMeetings={() => setActiveSection("meetings")}
         />
       ) : null}
     </WorkspaceShell>
