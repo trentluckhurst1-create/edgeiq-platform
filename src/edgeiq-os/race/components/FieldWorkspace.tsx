@@ -57,11 +57,11 @@ export function FieldWorkspace({ field, formGuide, weight, market, onOpenRunner 
         <div>
           <span>FIELD</span>
           <strong>Official declarations</strong>
-          <p>Barrier, weight, rider, trainer, status and declared gear. Expand a row for the last five starts or open the runner profile for deeper analysis.</p>
+          <p>Official barriers, weights, riders, trainers, gear and runner status.</p>
         </div>
         <aside className="eiq-field-v1__counts" aria-label="Field counts">
-          <strong>{rows.length} DECLARED</strong>
-          <span>{activeCount} ACTIVE | {scratchedCount} SCRATCHED</span>
+          <strong>{rows.length}</strong>
+          <span>DECLARED · {activeCount} ACTIVE · {scratchedCount} SCRATCHED</span>
         </aside>
       </header>
 
