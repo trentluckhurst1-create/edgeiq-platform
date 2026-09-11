@@ -15,6 +15,7 @@ import "./edgeiq-os/styles/edgeiqSoftwareRaceShell.css";
 import "./edgeiq-os/styles/edgeiqSoftwareSecondary.css";
 import "./edgeiq-os/styles/edgeiqSoftwareV2.css";
 import "./edgeiq-os/styles/edgeiqWorkspaceV3.css";
+import "./edgeiq-os/styles/edgeiqDashboardLocked.css";
 
 const env = (import.meta as ImportMeta & { env: Record<string, string | undefined> }).env;
 const publishableKey = env.VITE_CLERK_PUBLISHABLE_KEY;
