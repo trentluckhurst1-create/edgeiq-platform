@@ -4,6 +4,7 @@ import { type GlobalSection } from "./components/AppNavigation";
 import { EpiRatingsWorkspace } from "./components/EpiRatingsWorkspace";
 import { FieldWorkspace } from "./components/FieldWorkspace";
 import { FormWorkspace } from "./components/FormWorkspace";
+import { MarketWorkspace } from "./components/MarketWorkspace";
 import { MeetingsWorkspace } from "./components/MeetingsWorkspace";
 import { PerformanceWorkspace } from "./components/PerformanceWorkspace";
 import { RaceWorkspace } from "./components/RaceWorkspace";
@@ -64,6 +65,8 @@ export function RaceFileV3() {
         <EpiRatingsWorkspace meeting={selectedMeeting} selectedRaceKey={selectedRaceKey} onRaceChange={setSelectedRaceKey} />
       ) : activeSection === "map" ? (
         <SpeedMapWorkspace meeting={selectedMeeting} selectedRaceKey={selectedRaceKey} onRaceChange={setSelectedRaceKey} />
+      ) : activeSection === "market" ? (
+        <MarketWorkspace meeting={selectedMeeting} selectedRaceKey={selectedRaceKey} onRaceChange={setSelectedRaceKey} />
       ) : null}
     </WorkspaceShell>
   );
