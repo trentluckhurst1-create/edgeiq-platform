@@ -16,8 +16,10 @@ function formatHeaderTime() {
 }
 
 export function WorkspaceShell({ activeSection, onSectionChange, children }: WorkspaceShellProps) {
+  const retainedWorkspace = activeSection === "home" || activeSection === "meetings";
+
   return (
-    <section className={`eiq-approved-shell is-${activeSection}${activeSection === "home" ? " is-dashboard" : " is-meetings"}`} data-edgeiq-approved-ui="dashboard-meetings-baseline" data-edgeiq-active-section={activeSection}>
+    <section className={`eiq-approved-shell is-${activeSection}${activeSection === "home" ? " is-dashboard" : activeSection === "meetings" ? " is-meetings" : ""}`} data-edgeiq-approved-ui="dashboard-meetings-baseline" data-edgeiq-active-section={activeSection}>
       <AppNavigation activeSection={activeSection} onSectionChange={onSectionChange} />
       <div className="eiq-approved-shell__frame">
         <header className="eiq-approved-topbar">
@@ -28,7 +30,9 @@ export function WorkspaceShell({ activeSection, onSectionChange, children }: Wor
             <span>{formatHeaderTime()} AEDT</span>
           </div>
         </header>
-        <main className="eiq-approved-shell__content"><div className="eiq-workspace-stage">{children}</div></main>
+        <main className="eiq-approved-shell__content">
+          <div className="eiq-workspace-stage">{retainedWorkspace ? children : null}</div>
+        </main>
         <footer className="eiq-approved-shell__footer"><span>EDGEiQ Racing Intelligence</span><span>Dashboard · Meetings</span><span>{formatHeaderTime()} AEDT</span></footer>
       </div>
     </section>
