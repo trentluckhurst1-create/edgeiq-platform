@@ -18,10 +18,10 @@
   .eiq-epi-v1-panel,.eiq-epi-v1-summary,.eiq-epi-v1-empty,
   .eiq-market-v1-panel,.eiq-market-v1-hero,.eiq-market-v1-empty,
   .eiq-insights-v1-panel,.eiq-insights-v1-card,.eiq-insights-v1-hero,.eiq-insights-v1-empty,
-  .eiq-overview-v3-card,.eiq-overview-v3-panel,.eiq-overview-v3-hero,.eiq-overview-v3-empty,
+  .eiq-overview-v1-panel,.eiq-overview-v1-card,.eiq-overview-v1-hero,.eiq-overview-v1-empty,
   .eiq-map-v3__stats article,.eiq-map-v3__canvas,.eiq-map-v3__side section,.eiq-map-v3__table,
-  .eiq-results-v1-panel,.eiq-results-v1-hero,.eiq-results-v1-empty,
-  .eiq-review-v1-panel,.eiq-review-v1-hero,.eiq-review-v1-empty
+  .eiq-results-live-workspace__header,.eiq-results-live-workspace__summary,.eiq-results-live-panel,
+  .eiq-review-final__header,.eiq-review-final__meta,.eiq-review-final-panel
 ){
   border:1px solid var(--eiq-lock-border,#dce5f0)!important;
   border-radius:5px!important;
@@ -30,51 +30,58 @@
 }
 
 /* Remove legacy dark/gradient/oversized hero treatments. */
-.eiq-tab-workarea :is(.eiq-market-v1-hero,.eiq-insights-v1-hero,.eiq-overview-v3-hero,.eiq-results-v1-hero,.eiq-review-v1-hero){
-  margin:0 0 12px!important;
-  padding:14px!important;
-  color:var(--eiq-lock-text,#10213f)!important;
-  background:#fff!important;
-  min-height:0!important;
+.eiq-tab-workarea :is(.eiq-market-v1-hero,.eiq-insights-v1-hero,.eiq-overview-v1-hero){
+  margin:0 0 12px!important;padding:14px!important;color:var(--eiq-lock-text,#10213f)!important;background:#fff!important;min-height:0!important
 }
-.eiq-tab-workarea :is(.eiq-market-v1-hero,.eiq-insights-v1-hero,.eiq-overview-v3-hero,.eiq-results-v1-hero,.eiq-review-v1-hero) p{
+.eiq-tab-workarea :is(.eiq-market-v1-hero,.eiq-insights-v1-hero,.eiq-overview-v1-hero) p{
   margin:0 0 4px!important;color:var(--eiq-lock-muted,#60718f)!important;font-size:8px!important;font-weight:850!important;letter-spacing:.04em!important;text-transform:uppercase!important
 }
-.eiq-tab-workarea :is(.eiq-market-v1-hero,.eiq-insights-v1-hero,.eiq-overview-v3-hero,.eiq-results-v1-hero,.eiq-review-v1-hero) h3{
+.eiq-tab-workarea :is(.eiq-market-v1-hero,.eiq-insights-v1-hero,.eiq-overview-v1-hero) h3{
   margin:0!important;color:var(--eiq-lock-text,#10213f)!important;font-size:13px!important;font-weight:750!important;letter-spacing:0!important
 }
-.eiq-tab-workarea :is(.eiq-market-v1-hero,.eiq-insights-v1-hero,.eiq-overview-v3-hero,.eiq-results-v1-hero,.eiq-review-v1-hero)>div>span{
+.eiq-tab-workarea :is(.eiq-market-v1-hero,.eiq-insights-v1-hero,.eiq-overview-v1-hero)>div>span{
   display:block!important;margin-top:5px!important;color:var(--eiq-lock-muted,#60718f)!important;font-size:10px!important;line-height:1.45!important
 }
 
 /* Common vertical rhythm. */
-.eiq-tab-workarea :is(.eiq-epi-v1,.eiq-performance-v2,.eiq-market-v1,.eiq-insights-v1,.eiq-overview-v3,.eiq-map-v3){display:block!important}
-.eiq-tab-workarea :is(.eiq-epi-v1,.eiq-performance-v2,.eiq-market-v1,.eiq-insights-v1,.eiq-overview-v3,.eiq-map-v3)>*{margin-bottom:12px!important}
-.eiq-tab-workarea :is(.eiq-epi-v1,.eiq-performance-v2,.eiq-market-v1,.eiq-insights-v1,.eiq-overview-v3,.eiq-map-v3)>*:last-child{margin-bottom:0!important}
+.eiq-tab-workarea :is(.eiq-epi-v1,.eiq-performance-v2,.eiq-market-v1,.eiq-insights-v1,.eiq-overview-v1,.eiq-map-v3,.eiq-results-live-workspace,.eiq-review-final){display:block!important}
+.eiq-tab-workarea :is(.eiq-epi-v1,.eiq-performance-v2,.eiq-market-v1,.eiq-insights-v1,.eiq-overview-v1,.eiq-map-v3,.eiq-results-live-workspace,.eiq-review-final)>*{margin-bottom:12px!important}
+.eiq-tab-workarea :is(.eiq-epi-v1,.eiq-performance-v2,.eiq-market-v1,.eiq-insights-v1,.eiq-overview-v1,.eiq-map-v3,.eiq-results-live-workspace,.eiq-review-final)>*:last-child{margin-bottom:0!important}
 
 /* Shared summary strips/cards. */
-.eiq-tab-workarea :is(.eiq-epi-v1-summary,.eiq-overview-v3-summary,.eiq-insights-v1-cards,.eiq-map-v3__stats){
+.eiq-tab-workarea :is(.eiq-epi-v1-summary,.eiq-overview-v3-summary,.eiq-insights-v1-cards,.eiq-map-v3__stats,.eiq-results-live-workspace__summary,.eiq-review-final__meta){
   display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:0!important;margin:0 0 12px!important;overflow:hidden!important
 }
 .eiq-tab-workarea :is(.eiq-overview-v3-summary,.eiq-insights-v1-cards,.eiq-map-v3__stats){border:1px solid var(--eiq-lock-border,#dce5f0)!important;border-radius:5px!important;background:#fff!important;box-shadow:0 1px 2px rgba(31,54,88,.025)!important}
-.eiq-tab-workarea :is(.eiq-overview-v3-card,.eiq-insights-v1-card,.eiq-map-v3__stats article){
-  min-height:76px!important;margin:0!important;padding:12px 14px!important;border:0!important;border-right:1px solid var(--eiq-lock-border-soft,#e8eef6)!important;border-radius:0!important;box-shadow:none!important
+.eiq-tab-workarea :is(.eiq-overview-v3-card,.eiq-overview-v1-card,.eiq-insights-v1-card,.eiq-map-v3__stats article,.eiq-results-live-workspace__summary>div,.eiq-review-final__meta>div){
+  min-height:76px!important;margin:0!important;padding:12px 14px!important;border:0!important;border-right:1px solid var(--eiq-lock-border-soft,#e8eef6)!important;border-radius:0!important;box-shadow:none!important;background:#fff!important
 }
-.eiq-tab-workarea :is(.eiq-overview-v3-card,.eiq-insights-v1-card,.eiq-map-v3__stats article):last-child{border-right:0!important}
-.eiq-tab-workarea :is(.eiq-overview-v3-card,.eiq-insights-v1-card,.eiq-map-v3__stats article)>span{display:block!important;color:var(--eiq-lock-muted,#60718f)!important;font-size:8px!important;font-weight:850!important;letter-spacing:.035em!important;text-transform:uppercase!important}
-.eiq-tab-workarea :is(.eiq-overview-v3-card,.eiq-insights-v1-card,.eiq-map-v3__stats article)>strong{display:block!important;margin-top:4px!important;color:var(--eiq-lock-text,#10213f)!important;font-size:14px!important;font-weight:800!important;line-height:1.2!important}
-.eiq-tab-workarea :is(.eiq-overview-v3-card,.eiq-insights-v1-card)>p,
-.eiq-tab-workarea :is(.eiq-overview-v3-card,.eiq-insights-v1-card)>small{margin:4px 0 0!important;color:var(--eiq-lock-muted,#60718f)!important;font-size:8px!important;line-height:1.4!important}
+.eiq-tab-workarea :is(.eiq-overview-v3-card,.eiq-overview-v1-card,.eiq-insights-v1-card,.eiq-map-v3__stats article,.eiq-results-live-workspace__summary>div,.eiq-review-final__meta>div):last-child{border-right:0!important}
+.eiq-tab-workarea :is(.eiq-overview-v3-card,.eiq-overview-v1-card,.eiq-insights-v1-card,.eiq-map-v3__stats article,.eiq-results-live-workspace__summary>div,.eiq-review-final__meta>div)>span{display:block!important;color:var(--eiq-lock-muted,#60718f)!important;font-size:8px!important;font-weight:850!important;letter-spacing:.035em!important;text-transform:uppercase!important}
+.eiq-tab-workarea :is(.eiq-overview-v3-card,.eiq-overview-v1-card,.eiq-insights-v1-card,.eiq-map-v3__stats article,.eiq-results-live-workspace__summary>div,.eiq-review-final__meta>div)>strong{display:block!important;margin-top:4px!important;color:var(--eiq-lock-text,#10213f)!important;font-size:14px!important;font-weight:800!important;line-height:1.2!important}
+.eiq-tab-workarea :is(.eiq-overview-v3-card,.eiq-overview-v1-card,.eiq-insights-v1-card)>p,
+.eiq-tab-workarea :is(.eiq-overview-v3-card,.eiq-overview-v1-card,.eiq-insights-v1-card)>small{margin:4px 0 0!important;color:var(--eiq-lock-muted,#60718f)!important;font-size:8px!important;line-height:1.4!important}
 
 /* Common panel headings. */
-.eiq-tab-workarea :is(.eiq-epi-v1-panel__title,.eiq-market-v1-panel__title,.eiq-insights-v1-panel__title,.eiq-overview-v3-panel__title,.eiq-map-v3__table>header){
+.eiq-tab-workarea :is(.eiq-epi-v1-panel__title,.eiq-market-v1-panel__title,.eiq-insights-v1-panel__title,.eiq-overview-v1-panel__title,.eiq-map-v3__table>header,.eiq-results-live-panel>header,.eiq-review-final-panel>header){
   display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;min-height:28px!important;margin:0 0 10px!important;padding:0!important;border:0!important;background:transparent!important
 }
-.eiq-tab-workarea :is(.eiq-epi-v1-panel__title,.eiq-market-v1-panel__title,.eiq-insights-v1-panel__title,.eiq-overview-v3-panel__title,.eiq-map-v3__table>header)>span,
-.eiq-tab-workarea .eiq-map-v3__table>header>strong{color:var(--eiq-lock-text,#10213f)!important;font-size:13px!important;font-weight:750!important;letter-spacing:0!important;text-transform:none!important}
-.eiq-tab-workarea :is(.eiq-epi-v1-panel__title,.eiq-market-v1-panel__title,.eiq-insights-v1-panel__title,.eiq-overview-v3-panel__title,.eiq-map-v3__table>header) small,
-.eiq-tab-workarea .eiq-map-v3__table>header>span{color:var(--eiq-lock-muted,#60718f)!important;font-size:9px!important;font-weight:500!important;letter-spacing:0!important;text-transform:none!important}
-.eiq-tab-workarea :is(.eiq-epi-v1-panel,.eiq-market-v1-panel,.eiq-insights-v1-panel,.eiq-overview-v3-panel,.eiq-map-v3__table){padding:14px!important}
+.eiq-tab-workarea :is(.eiq-epi-v1-panel__title,.eiq-market-v1-panel__title,.eiq-insights-v1-panel__title,.eiq-overview-v1-panel__title)>span,
+.eiq-tab-workarea .eiq-map-v3__table>header>strong,
+.eiq-tab-workarea :is(.eiq-results-live-panel>header,.eiq-review-final-panel>header)>span{color:var(--eiq-lock-text,#10213f)!important;font-size:13px!important;font-weight:750!important;letter-spacing:0!important;text-transform:none!important}
+.eiq-tab-workarea :is(.eiq-epi-v1-panel__title,.eiq-market-v1-panel__title,.eiq-insights-v1-panel__title,.eiq-overview-v1-panel__title) small,
+.eiq-tab-workarea .eiq-map-v3__table>header>span,
+.eiq-tab-workarea :is(.eiq-results-live-panel>header,.eiq-review-final-panel>header)>strong{color:var(--eiq-lock-muted,#60718f)!important;font-size:9px!important;font-weight:500!important;letter-spacing:0!important;text-transform:none!important}
+.eiq-tab-workarea :is(.eiq-epi-v1-panel,.eiq-market-v1-panel,.eiq-insights-v1-panel,.eiq-overview-v1-panel,.eiq-map-v3__table,.eiq-results-live-panel,.eiq-review-final-panel){padding:14px!important}
+
+/* Results and Review headers mirror FIELD's compact introductory card, not a second page title. */
+.eiq-results-live-workspace__header,.eiq-review-final__header{display:flex!important;align-items:flex-start!important;justify-content:space-between!important;gap:16px!important;padding:14px!important;margin-bottom:12px!important}
+.eiq-results-live-workspace__header>div>span,.eiq-review-final__header>div>span{display:none!important}
+.eiq-results-live-workspace__header>div>strong,.eiq-review-final__header>div>strong{display:block!important;margin:0!important;color:var(--eiq-lock-text,#10213f)!important;font-size:13px!important;font-weight:750!important}
+.eiq-results-live-workspace__header p,.eiq-review-final__header p{margin:5px 0 0!important;color:var(--eiq-lock-muted,#60718f)!important;font-size:10px!important;line-height:1.45!important}
+.eiq-results-live-workspace__header>aside,.eiq-review-final__header>aside{min-width:120px!important;padding:9px!important;border:1px solid var(--eiq-lock-border-soft,#e8eef6)!important;border-radius:4px!important;background:#f8fafd!important;text-align:center!important}
+.eiq-results-live-workspace__header>aside span,.eiq-review-final__header>aside span{display:block!important;color:var(--eiq-lock-muted,#60718f)!important;font-size:8px!important;text-transform:uppercase!important}
+.eiq-results-live-workspace__header>aside strong,.eiq-review-final__header>aside strong{display:block!important;margin-top:3px!important;color:var(--eiq-lock-text,#10213f)!important;font-size:11px!important}
 
 /* Tables everywhere use the Field table specification. */
 .eiq-tab-workarea table{width:100%!important;border-collapse:collapse!important;background:#fff!important;color:#304563!important;font-size:10px!important}
@@ -86,9 +93,7 @@
 
 /* Neutral approved controls, with blue reserved for active state. */
 .eiq-tab-workarea button:not(.eiq-race-v1__selector button):not(.eiq-epi-v1-tile):not(.eiq-map-v3__runner){border-radius:4px!important;box-shadow:none!important}
-.eiq-tab-workarea :is(.eiq-performance-approved-modules,.eiq-performance-approved-toolbar){
-  margin:0 0 12px!important;padding:14px!important;border:1px solid var(--eiq-lock-border,#dce5f0)!important;border-radius:5px!important;background:#fff!important;box-shadow:0 1px 2px rgba(31,54,88,.025)!important
-}
+.eiq-tab-workarea :is(.eiq-performance-approved-modules,.eiq-performance-approved-toolbar){margin:0 0 12px!important;padding:14px!important;border:1px solid var(--eiq-lock-border,#dce5f0)!important;border-radius:5px!important;background:#fff!important;box-shadow:0 1px 2px rgba(31,54,88,.025)!important}
 .eiq-tab-workarea .eiq-performance-approved-modules{display:grid!important;grid-template-columns:repeat(6,minmax(0,1fr))!important;gap:0!important;padding:0!important;overflow:hidden!important}
 .eiq-tab-workarea .eiq-performance-approved-modules button{min-height:62px!important;padding:10px 12px!important;border:0!important;border-right:1px solid var(--eiq-lock-border-soft,#e8eef6)!important;background:#fff!important;color:#50617d!important;text-align:left!important}
 .eiq-tab-workarea .eiq-performance-approved-modules button:last-child{border-right:0!important}
@@ -103,22 +108,12 @@
 .eiq-tab-workarea .eiq-map-v3__side header{margin-bottom:8px!important;color:var(--eiq-lock-text,#10213f)!important;font-size:13px!important;font-weight:750!important}
 
 /* Error/loading/empty states are panels, never dashed raw-feed boxes. */
-.eiq-tab-workarea :is(.eiq-epi-v1-empty,.eiq-market-v1-empty,.eiq-insights-v1-empty,.eiq-overview-v3-empty,.eiq-module-empty){
-  min-height:72px!important;margin:0!important;padding:24px!important;border:1px solid var(--eiq-lock-border,#dce5f0)!important;border-radius:5px!important;background:#fff!important;color:var(--eiq-lock-muted,#60718f)!important;box-shadow:0 1px 2px rgba(31,54,88,.025)!important;text-align:center!important;font-size:10px!important;display:flex!important;align-items:center!important;justify-content:center!important
-}
+.eiq-tab-workarea :is(.eiq-epi-v1-empty,.eiq-market-v1-empty,.eiq-insights-v1-empty,.eiq-overview-v1-empty,.eiq-module-empty){min-height:72px!important;margin:0!important;padding:24px!important;border:1px solid var(--eiq-lock-border,#dce5f0)!important;border-radius:5px!important;background:#fff!important;color:var(--eiq-lock-muted,#60718f)!important;box-shadow:0 1px 2px rgba(31,54,88,.025)!important;text-align:center!important;font-size:10px!important;display:flex!important;align-items:center!important;justify-content:center!important}
 
 /* Keep all grids restrained and Field-like. */
-.eiq-tab-workarea :is(.eiq-epi-v1-grid,.eiq-market-v1-grid,.eiq-insights-v1-grid){gap:12px!important}
-.eiq-tab-workarea :is(.eiq-epi-v1-copy,.eiq-market-v1-copy,.eiq-insights-v1-copy){color:var(--eiq-lock-muted,#60718f)!important;font-size:10px!important;line-height:1.5!important}
+.eiq-tab-workarea :is(.eiq-epi-v1-grid,.eiq-market-v1-grid,.eiq-insights-v1-grid,.eiq-results-live-workspace__grid,.eiq-review-final__grid){gap:12px!important}
+.eiq-tab-workarea :is(.eiq-epi-v1-copy,.eiq-market-v1-copy,.eiq-insights-v1-copy,.eiq-overview-v1-copy){color:var(--eiq-lock-muted,#60718f)!important;font-size:10px!important;line-height:1.5!important}
 
-@media(max-width:1200px){
-  .eiq-tab-workarea .eiq-performance-approved-modules{grid-template-columns:repeat(3,1fr)!important}
-  .eiq-tab-workarea .eiq-map-v3__layout{grid-template-columns:1fr!important}
-}
-@media(max-width:900px){
-  .eiq-tab-workarea :is(.eiq-overview-v3-summary,.eiq-insights-v1-cards,.eiq-map-v3__stats){grid-template-columns:1fr 1fr!important}
-}
-@media(max-width:760px){
-  .eiq-tab-workarea .eiq-performance-approved-modules{grid-template-columns:1fr 1fr!important}
-  .eiq-tab-workarea :is(.eiq-overview-v3-summary,.eiq-insights-v1-cards,.eiq-map-v3__stats){grid-template-columns:1fr!important}
-}
+@media(max-width:1200px){.eiq-tab-workarea .eiq-performance-approved-modules{grid-template-columns:repeat(3,1fr)!important}.eiq-tab-workarea .eiq-map-v3__layout{grid-template-columns:1fr!important}}
+@media(max-width:900px){.eiq-tab-workarea :is(.eiq-overview-v3-summary,.eiq-insights-v1-cards,.eiq-map-v3__stats,.eiq-results-live-workspace__summary,.eiq-review-final__meta){grid-template-columns:1fr 1fr!important}}
+@media(max-width:760px){.eiq-tab-workarea .eiq-performance-approved-modules{grid-template-columns:1fr 1fr!important}.eiq-tab-workarea :is(.eiq-overview-v3-summary,.eiq-insights-v1-cards,.eiq-map-v3__stats,.eiq-results-live-workspace__summary,.eiq-review-final__meta){grid-template-columns:1fr!important}.eiq-results-live-workspace__header,.eiq-review-final__header{flex-direction:column!important}.eiq-results-live-workspace__header>aside,.eiq-review-final__header>aside{width:100%!important;box-sizing:border-box!important}}
