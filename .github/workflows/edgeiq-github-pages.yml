@@ -39,8 +39,6 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
-        with:
-          enablement: true
 
       - name: Install dependencies
         run: npm ci
@@ -50,7 +48,6 @@ jobs:
 
       - name: Vite production build
         env:
-          VITE_EDGEIQ_DATA_ORIGIN: ${{ vars.EDGEIQ_DATA_ORIGIN }}
           VITE_CLERK_PUBLISHABLE_KEY: ${{ secrets.VITE_CLERK_PUBLISHABLE_KEY }}
         run: npm exec -- vite build -- --base=/edgeiq-platform/
 
