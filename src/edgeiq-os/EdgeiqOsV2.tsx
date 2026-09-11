@@ -8,6 +8,7 @@ import "./styles/edgeiqLightSidebarLock.css";
 import "./styles/edgeiqAllRaceTabsLocked.css";
 import "./styles/edgeiqRaceFieldFormFinal.css";
 import "./styles/edgeiqUniversalWorkspaceFinal.css";
+import "./styles/edgeiqUniversalSubtabsFinal.css";
 import { EdgeiqOsShell } from "./shell/EdgeiqOsShell";
 
 export function EdgeiqOsV2() {
