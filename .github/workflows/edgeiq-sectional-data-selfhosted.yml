@@ -1,0 +1,49 @@
+name: EDGEIQ Sectional Data Self-Hosted
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/edgeiq_sectional_pipeline_manifest.txt'
+      - 'scripts/run_edgeiq_sectional_foundation_selfhosted.ps1'
+      - 'scripts/audit_edgeiq_sectional_*.py'
+      - 'scripts/build_edgeiq_sectional_*.py'
+
+jobs:
+  sectional-foundation:
+    runs-on: [self-hosted, Windows, X64]
+    timeout-minutes: 180
+    steps:
+      - name: Checkout control files
+        uses: actions/checkout@v4
+
+      - name: Run EDGEIQ sectional pipeline against local OneDrive data
+        shell: pwsh
+        run: |
+          & "$env:GITHUB_WORKSPACE\scripts\run_edgeiq_sectional_foundation_selfhosted.ps1" `
+            -ProjectRoot 'C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM'
+
+      - name: Collect compact audit outputs
+        if: always()
+        shell: pwsh
+        run: |
+          $src = 'C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data'
+          $dst = Join-Path $env:GITHUB_WORKSPACE 'sectional-audit-artifact'
+          New-Item -ItemType Directory -Force -Path $dst | Out-Null
+          Get-ChildItem $src -File | Where-Object {
+            $_.Name -like 'edgeiq_sectional_*summary*.csv' -or
+            $_.Name -like 'edgeiq_sectional_*fields*.csv' -or
+            $_.Name -like 'edgeiq_sectional_*sources*.csv'
+          } | Sort-Object LastWriteTime -Descending | Select-Object -First 60 | ForEach-Object {
+            Copy-Item $_.FullName -Destination $dst -Force
+          }
+
+      - name: Upload compact audit artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: edgeiq-sectional-audit
+          path: sectional-audit-artifact
+          if-no-files-found: warn
+          retention-days: 14
