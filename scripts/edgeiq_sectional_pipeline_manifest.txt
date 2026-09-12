@@ -1,0 +1,5 @@
+# EDGEIQ sectional self-hosted pipeline manifest
+# One repo-relative Python script per line, executed in order on the local EDGEIQ working copy.
+# Edit this file in GitHub to change the pipeline without changing the workflow.
+scripts/build_edgeiq_sectional_warehouse_v14.py
+scripts/audit_edgeiq_sectional_certified_lineage_v15.py
