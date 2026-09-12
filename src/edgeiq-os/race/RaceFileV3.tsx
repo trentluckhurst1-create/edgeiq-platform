@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { EdgeiqOsHome } from "../home/EdgeiqOsHome";
 import { type GlobalSection } from "./components/AppNavigation";
+import { CompareWorkspace } from "./components/CompareWorkspace";
 import { EpiRatingsWorkspace } from "./components/EpiRatingsWorkspace";
 import { FieldWorkspace } from "./components/FieldWorkspace";
 import { FormWorkspace } from "./components/FormWorkspace";
@@ -10,7 +11,6 @@ import { OverviewWorkspace } from "./components/OverviewWorkspace";
 import { PerformanceWorkspace } from "./components/PerformanceWorkspace";
 import { RaceWorkspace } from "./components/RaceWorkspace";
 import {
-  CompareWorkspace,
   InsightsWorkspace,
   ResearchLabWorkspace,
   ResultsWorkspace,
@@ -23,7 +23,7 @@ import { loadRaceDetail } from "./services/raceDetailFeed";
 import type { ThreeDayMeeting } from "./services/threeDayCatalog";
 import type { MeetingsDayKey } from "./services/meetingsFeed";
 
-const RACE_SCOPED_SECTIONS: GlobalSection[] = ["race", "field", "formGuide", "performance", "epi", "map", "market", "overview", "insights", "results", "review"];
+const RACE_SCOPED_SECTIONS: GlobalSection[] = ["race", "field", "formGuide", "performance", "epi", "map", "market", "overview", "insights", "results", "review", "compare"];
 
 function clean(value: unknown): string {
   const text = String(value ?? "").trim();
@@ -119,7 +119,7 @@ export function RaceFileV3() {
       ) : activeSection === "lab" ? (
         <ResearchLabWorkspace />
       ) : activeSection === "compare" ? (
-        <CompareWorkspace />
+        <CompareWorkspace {...raceProps} />
       ) : activeSection === "settings" ? (
         <SettingsWorkspace />
       ) : null}
