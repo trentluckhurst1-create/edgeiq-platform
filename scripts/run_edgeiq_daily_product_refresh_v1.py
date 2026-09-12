@@ -30,15 +30,14 @@ CRITICAL = [
     "edgeiq_vic_live_terminal_feed_v1.csv",
 ]
 
-# Build the current meeting/race catalogue first, then refresh governed condition
-# and weather products and enrich the catalogue before any heavier downstream
-# intelligence stages can stop the run. This keeps Meetings metadata current even
-# when a later optional product stage fails.
+# Build the current live Racing.com meeting/race list before the meeting calendar
+# and universe. The calendar consumes that live list as the authoritative current
+# three-day supplement, with historical backfill only as fallback.
 STAGES = [
     "scripts/build_edgeiq_three_day_window_v1.py",
-    "scripts/build_edgeiq_vic_three_day_meeting_universe.py",
-    "scripts/build_edgeiq_vic_three_day_meeting_calendar_v1.py",
     "scripts/build_edgeiq_racingcom_three_day_race_list_v1.py",
+    "scripts/build_edgeiq_vic_three_day_meeting_calendar_v1.py",
+    "scripts/build_edgeiq_vic_three_day_meeting_universe.py",
     "scripts/build_edgeiq_three_day_product_catalog_v1.py",
     "scripts/build_edgeiq_on_track_weather_governed_v1_2.py",
     "scripts/build_edgeiq_victorian_track_weather_v1.py",
@@ -223,7 +222,7 @@ def main() -> int:
         "active_runners": active_runners,
         "total_current_scratchings": total_current_scratchings,
         "new_scratchings_this_run": None,
-        "scratching_changes_this_run": None,
+        "scratchings_changes_this_run": None,
         "reinstated_runners_this_run": None,
         "scratchings_metric_deprecated": total_current_scratchings,
         "track_status": "PARTIAL",
