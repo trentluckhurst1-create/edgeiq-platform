@@ -6,6 +6,7 @@ import { FieldWorkspace } from "./components/FieldWorkspace";
 import { FormWorkspace } from "./components/FormWorkspace";
 import { MarketWorkspace } from "./components/MarketWorkspace";
 import { MeetingsWorkspace } from "./components/MeetingsWorkspace";
+import { OverviewWorkspace } from "./components/OverviewWorkspace";
 import { PerformanceWorkspace } from "./components/PerformanceWorkspace";
 import { RaceWorkspace } from "./components/RaceWorkspace";
 import { SpeedMapWorkspace } from "./components/SpeedMapWorkspace";
@@ -67,6 +68,8 @@ export function RaceFileV3() {
         <SpeedMapWorkspace meeting={selectedMeeting} selectedRaceKey={selectedRaceKey} onRaceChange={setSelectedRaceKey} />
       ) : activeSection === "market" ? (
         <MarketWorkspace meeting={selectedMeeting} selectedRaceKey={selectedRaceKey} onRaceChange={setSelectedRaceKey} />
+      ) : activeSection === "overview" ? (
+        <OverviewWorkspace meeting={selectedMeeting} selectedRaceKey={selectedRaceKey} onRaceChange={setSelectedRaceKey} />
       ) : null}
     </WorkspaceShell>
   );
