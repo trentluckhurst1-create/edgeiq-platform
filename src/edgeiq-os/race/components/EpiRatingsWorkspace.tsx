@@ -16,6 +16,7 @@ function officialNumber(runner: ThreeDayRunner): string { return display(runner.
 function runnerName(runner: ThreeDayRunner): string { return display(runner.official.runner, "Unnamed runner"); }
 function raceTitle(race: ThreeDayRace): string { return display(race.raceName, `Race ${race.raceNumber}`); }
 function detailPath(runner: ThreeDayRunner): string { const value = runner.source?.runnerDetailPath; return typeof value === "string" ? value : ""; }
+function scalar(value: unknown): unknown { return value && typeof value === "object" && !Array.isArray(value) ? (value as Record<string, unknown>).value : value; }
 
 function sourceRecords(runner: ThreeDayRunner): Record<string, unknown>[] {
   const records: Record<string, unknown>[] = [];
@@ -30,7 +31,7 @@ const EPI_KEYS = ["epi", "EPI", "epi_rating", "epiRating", "edgeiq_epi", "edgeiq
 function epiValue(runner: ThreeDayRunner): { value: number | null; text: string } {
   for (const record of sourceRecords(runner)) {
     for (const key of EPI_KEYS) {
-      const raw = record[key];
+      const raw = scalar(record[key]);
       if (raw === null || raw === undefined || String(raw).trim() === "") continue;
       const numeric = Number(raw);
       if (Number.isFinite(numeric)) return { value: numeric, text: numeric.toFixed(2) };
@@ -86,11 +87,9 @@ export function EpiRatingsWorkspace({ meeting, selectedRaceKey, onRaceChange }: 
         <div><p>{canonicalTrackDisplayName(meeting.meeting)} · {display(meeting.date, "")}</p><h1>EPI Ratings</h1></div>
         <strong>{selectedRace.runners.length} runners</strong>
       </header>
-
       <nav className="eiq-epi-v1__race-tabs" aria-label="Meeting races">
         {meeting.races.map((race) => <button key={race.raceKey} type="button" className={race.raceKey === selectedRace.raceKey ? "is-active" : ""} onClick={() => onRaceChange(race.raceKey)}><strong>R{race.raceNumber}</strong><span>{display(race.raceTime)}</span></button>)}
       </nav>
-
       <section className="eiq-epi-v1__card">
         <header><div><h2>{raceTitle(selectedRace)}</h2><p>{display(selectedRace.distance)} · {display(selectedRace.raceClass)}</p></div><strong>{loading ? "Loading…" : `${rows.filter((row) => row.epiText !== "-").length} rated`}</strong></header>
         <div className="eiq-epi-v1__table-wrap">

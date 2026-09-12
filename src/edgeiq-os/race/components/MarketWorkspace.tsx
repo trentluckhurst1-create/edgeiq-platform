@@ -16,15 +16,17 @@ function officialNumber(runner: ThreeDayRunner): string { return display(runner.
 function runnerName(runner: ThreeDayRunner): string { return display(runner.official.runner, "Unnamed runner"); }
 function raceTitle(race: ThreeDayRace): string { return display(race.raceName, `Race ${race.raceNumber}`); }
 function detailPath(runner: ThreeDayRunner): string { const value = runner.source?.runnerDetailPath; return typeof value === "string" ? value : ""; }
-function price(value: unknown): string { const text = String(value ?? "").trim(); if (!text) return "-"; const numeric = Number(text.replace(/^\$/,"")); return Number.isFinite(numeric) ? `$${numeric.toFixed(2)}` : text; }
-function first(record: Record<string, unknown>, keys: string[]): unknown { for (const key of keys) { const value = record[key]; if (value !== null && value !== undefined && String(value).trim() !== "") return value; } return null; }
+function scalar(value: unknown): unknown { return value && typeof value === "object" && !Array.isArray(value) ? (value as Record<string, unknown>).value : value; }
+function price(value: unknown): string { const raw = scalar(value); const text = String(raw ?? "").trim(); if (!text) return "-"; const numeric = Number(text.replace(/^\$/,"")); return Number.isFinite(numeric) ? `$${numeric.toFixed(2)}` : text; }
+function first(record: Record<string, unknown>, keys: string[]): unknown { for (const key of keys) { const value = scalar(record[key]); if (value !== null && value !== undefined && String(value).trim() !== "") return value; } return null; }
 
-const FAIR_KEYS = ["fair", "fair_price", "fairPrice", "edgeiq_price", "edgeiqPrice", "model_price", "modelPrice"];
+const FAIR_KEYS = ["edgeiqPriceCurrent", "edgeiqPrice", "edgeiq_price", "fair", "fair_price", "fairPrice", "model_price", "modelPrice"];
 const EDGE_KEYS = ["edge", "edge_pct", "edgePct", "edge_percent", "edgePercent", "market_edge", "marketEdge"];
+const MARKET_KEYS = ["market", "marketPrice", "price", "current_price", "currentPrice"];
 
 function marketRow(runner: ThreeDayRunner): MarketRow {
   const source = runner.source ?? {};
-  const marketValue = runner.official.market ?? first(source, ["market", "price", "current_price", "currentPrice"]);
+  const marketValue = first(source, MARKET_KEYS) ?? runner.official.market;
   const fairValue = first(source, FAIR_KEYS);
   const edgeValue = first(source, EDGE_KEYS);
   return { runner, market: price(marketValue), fair: price(fairValue), edge: edgeValue === null ? "-" : display(edgeValue) };

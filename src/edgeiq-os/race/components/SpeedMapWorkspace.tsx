@@ -17,13 +17,14 @@ function officialNumber(runner: ThreeDayRunner): string { return display(runner.
 function runnerName(runner: ThreeDayRunner): string { return display(runner.official.runner, "Unnamed runner"); }
 function raceTitle(race: ThreeDayRace): string { return display(race.raceName, `Race ${race.raceNumber}`); }
 function detailPath(runner: ThreeDayRunner): string { const value = runner.source?.runnerDetailPath; return typeof value === "string" ? value : ""; }
+function scalar(value: unknown): unknown { return value && typeof value === "object" && !Array.isArray(value) ? (value as Record<string, unknown>).value : value; }
 
-const POSITION_KEYS = ["map_position", "mapPosition", "pace_position", "pacePosition", "settling_position", "settlingPosition", "settling", "run_style", "runStyle"];
+const POSITION_KEYS = ["projectedZone", "projected_zone", "map_position", "mapPosition", "pace_position", "pacePosition", "settling_position", "settlingPosition", "settling", "run_style", "runStyle"];
 
 function explicitPosition(runner: ThreeDayRunner): string {
   const source = runner.source ?? {};
   for (const key of POSITION_KEYS) {
-    const value = String(source[key] ?? "").trim();
+    const value = String(scalar(source[key]) ?? "").trim();
     if (value) return value;
   }
   return "";
