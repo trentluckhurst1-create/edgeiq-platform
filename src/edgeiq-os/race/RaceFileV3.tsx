@@ -10,9 +10,9 @@ import { MeetingsWorkspace } from "./components/MeetingsWorkspace";
 import { OverviewWorkspace } from "./components/OverviewWorkspace";
 import { PerformanceWorkspace } from "./components/PerformanceWorkspace";
 import { RaceWorkspace } from "./components/RaceWorkspace";
+import { ResearchLabWorkspace } from "./components/ResearchLabWorkspace";
 import {
   InsightsWorkspace,
-  ResearchLabWorkspace,
   ResultsWorkspace,
   ReviewWorkspace,
   SettingsWorkspace,
