@@ -2,19 +2,16 @@ from __future__ import annotations
 
 import csv
 import re
-from datetime import date, datetime, timedelta, timezone
+from datetime import date, datetime, timedelta
 from pathlib import Path
-from zoneinfo import ZoneInfo
 
-from edgeiq_three_day_window_v1_common import (
-    TIMEZONE,
-    build_three_day_window,
-)
+from edgeiq_three_day_window_v1_common import TIMEZONE
 
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "public" / "data"
-SOURCE = DATA / "edgeiq_racingcom_historical_calendar_backfill_v1.csv"
+HISTORICAL_SOURCE = DATA / "edgeiq_racingcom_historical_calendar_backfill_v1.csv"
+LIVE_RACE_LIST_SOURCE = DATA / "edgeiq_vic_three_day_race_list_v1.csv"
 CALENDAR_OUT = DATA / "edgeiq_vic_three_day_meeting_calendar_v1.csv"
 
 FIELDS = [
@@ -27,55 +24,16 @@ FIELDS = [
 LOCAL_TZ = TIMEZONE
 
 VIC_TRACKS = {
-    "ARARAT",
-    "AVOCA",
-    "BAIRNSDALE",
-    "BALLARAT",
-    "BALLARAT SYNTHETIC",
-    "BALNARRING",
-    "BENDIGO",
-    "BENALLA",
-    "BET365 STAWELL",
-    "CAULFIELD",
-    "CAULFIELD HEATH",
-    "CASTERTON",
-    "COLAC",
-    "CRANBOURNE",
-    "DONALD",
-    "DUNKELD",
-    "ECHUCA",
-    "FLEMINGTON",
-    "GEELONG",
-    "HAMILTON",
-    "HANGING ROCK",
-    "HORSHAM",
-    "KILMORE",
-    "KYNETON",
-    "MILDURA",
-    "MOE",
-    "MOONEE VALLEY",
-    "MORNINGTON",
-    "MORTLAKE",
-    "MURTOA",
-    "PAKENHAM",
-    "PAKENHAM SYNTHETIC",
-    "PENSHURST",
-    "SALE",
-    "SANDOWN",
-    "SEYMOUR",
-    "ST ARNAUD",
-    "STAWELL",
-    "SWAN HILL",
-    "TERANG",
-    "THE VALLEY",
-    "TOWONG",
-    "TRARALGON",
-    "WANGARATTA",
-    "WARRACKNABEAL",
-    "WARRNAMBOOL",
-    "WERRIBEE",
-    "WODONGA",
-    "YARRA VALLEY",
+    "ARARAT", "AVOCA", "BAIRNSDALE", "BALLARAT", "BALLARAT SYNTHETIC",
+    "BALNARRING", "BENDIGO", "BENALLA", "BET365 STAWELL", "CAULFIELD",
+    "CAULFIELD HEATH", "CASTERTON", "COLAC", "CRANBOURNE", "DONALD",
+    "DUNKELD", "ECHUCA", "FLEMINGTON", "GEELONG", "HAMILTON",
+    "HANGING ROCK", "HORSHAM", "KILMORE", "KYNETON", "MILDURA", "MOE",
+    "MOONEE VALLEY", "MORNINGTON", "MORTLAKE", "MURTOA", "PAKENHAM",
+    "PAKENHAM SYNTHETIC", "PENSHURST", "SALE", "SANDOWN", "SEYMOUR",
+    "ST ARNAUD", "STAWELL", "SWAN HILL", "TERANG", "THE VALLEY", "TOWONG",
+    "TRARALGON", "WANGARATTA", "WARRACKNABEAL", "WARRNAMBOOL", "WERRIBEE",
+    "WODONGA", "YARRA VALLEY",
 }
 
 TRACK_ALIASES = {
@@ -206,18 +164,25 @@ def is_usable_meeting(row: dict[str, str]) -> bool:
     return True
 
 
+def source_rows() -> list[dict[str, str]]:
+    # The live Racing.com race list is authoritative for the current three-day
+    # window. Historical backfill remains a fallback/supplement only.
+    live = read_csv(LIVE_RACE_LIST_SOURCE)
+    historical = read_csv(HISTORICAL_SOURCE)
+    return live + historical
+
+
 def build_calendar_rows(today: date | None = None) -> list[dict[str, object]]:
     local_today = today or now_local().date()
     max_date = local_today + timedelta(days=2)
-    rows = read_csv(SOURCE)
     deduped: dict[tuple[str, str], dict[str, object]] = {}
 
-    for row in rows:
-        race_date = parse_date(row.get("meeting_date") or row.get("race_date") or row.get("date"))
+    for row in source_rows():
+        race_date = parse_date(row.get("race_date") or row.get("meeting_date") or row.get("date"))
         if race_date is None or race_date < local_today or race_date > max_date:
             continue
 
-        track = normalise_track(row.get("track"))
+        track = normalise_track(row.get("normalised_track") or row.get("track") or row.get("meeting"))
         if not track or not is_victorian_meeting(row, track) or not is_usable_meeting(row):
             continue
 
@@ -257,6 +222,8 @@ def main() -> None:
     print(f"today={sum(1 for row in rows if row['day_bucket'] == 'TODAY')}")
     print(f"tomorrow={sum(1 for row in rows if row['day_bucket'] == 'TOMORROW')}")
     print(f"day_plus_2={sum(1 for row in rows if row['day_bucket'] == 'DAY+2')}")
+    print(f"live_source_rows={len(read_csv(LIVE_RACE_LIST_SOURCE))}")
+    print(f"historical_source_rows={len(read_csv(HISTORICAL_SOURCE))}")
     print(f"wrote={CALENDAR_OUT}")
 
 
