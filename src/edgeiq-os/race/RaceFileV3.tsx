@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { EdgeiqOsHome } from "../home/EdgeiqOsHome";
 import { type GlobalSection } from "./components/AppNavigation";
 import { EpiRatingsWorkspace } from "./components/EpiRatingsWorkspace";
@@ -19,8 +19,11 @@ import {
 } from "./components/RemainingWorkspaces";
 import { SpeedMapWorkspace } from "./components/SpeedMapWorkspace";
 import { WorkspaceShell } from "./components/WorkspaceShell";
+import { loadRaceDetail } from "./services/raceDetailFeed";
 import type { ThreeDayMeeting } from "./services/threeDayCatalog";
 import type { MeetingsDayKey } from "./services/meetingsFeed";
+
+const RACE_SCOPED_SECTIONS: GlobalSection[] = ["race", "field", "formGuide", "performance", "epi", "map", "market", "overview", "insights", "results", "review"];
 
 function clean(value: unknown): string {
   const text = String(value ?? "").trim();
@@ -32,6 +35,7 @@ export function RaceFileV3() {
   const [selectedDayKey, setSelectedDayKey] = useState<MeetingsDayKey>("TODAY");
   const [selectedMeeting, setSelectedMeeting] = useState<ThreeDayMeeting | null>(null);
   const [selectedRaceKey, setSelectedRaceKey] = useState<string | null>(null);
+  const hydrationRef = useRef("");
 
   function selectMeeting(meeting: ThreeDayMeeting | null) {
     setSelectedMeeting(meeting);
@@ -43,6 +47,32 @@ export function RaceFileV3() {
       setSelectedRaceKey(meeting.races[0]?.raceKey ?? null);
     }
   }
+
+  useEffect(() => {
+    if (!selectedMeeting || !selectedRaceKey || !RACE_SCOPED_SECTIONS.includes(activeSection)) return;
+    const currentRace = selectedMeeting.races.find((race) => race.raceKey === selectedRaceKey);
+    if (!currentRace || currentRace.runners.length > 0) return;
+
+    const hydrationKey = `${selectedMeeting.date}|${selectedMeeting.meetingKey}|${selectedRaceKey}`;
+    if (hydrationRef.current === hydrationKey) return;
+    hydrationRef.current = hydrationKey;
+
+    let active = true;
+    loadRaceDetail(selectedMeeting.date, selectedMeeting.meetingKey, selectedRaceKey)
+      .then((raceDetail) => {
+        if (!active) return;
+        setSelectedMeeting((current) => {
+          if (!current || current.meetingKey !== selectedMeeting.meetingKey) return current;
+          return { ...current, races: current.races.map((race) => race.raceKey === raceDetail.raceKey ? raceDetail : race) };
+        });
+      })
+      .catch(() => undefined)
+      .finally(() => {
+        if (hydrationRef.current === hydrationKey) hydrationRef.current = "";
+      });
+
+    return () => { active = false; };
+  }, [activeSection, selectedMeeting, selectedRaceKey]);
 
   const raceProps = { meeting: selectedMeeting, selectedRaceKey, onRaceChange: setSelectedRaceKey };
 
