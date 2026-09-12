@@ -15,8 +15,8 @@ import {
   InsightsWorkspace,
   ResultsWorkspace,
   ReviewWorkspace,
-  SettingsWorkspace,
 } from "./components/RemainingWorkspaces";
+import { SettingsWorkspace } from "./components/SettingsWorkspace";
 import { SpeedMapWorkspace } from "./components/SpeedMapWorkspace";
 import { WorkspaceShell } from "./components/WorkspaceShell";
 import { loadRaceDetail } from "./services/raceDetailFeed";
