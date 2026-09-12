@@ -9,6 +9,14 @@ import { MeetingsWorkspace } from "./components/MeetingsWorkspace";
 import { OverviewWorkspace } from "./components/OverviewWorkspace";
 import { PerformanceWorkspace } from "./components/PerformanceWorkspace";
 import { RaceWorkspace } from "./components/RaceWorkspace";
+import {
+  CompareWorkspace,
+  InsightsWorkspace,
+  ResearchLabWorkspace,
+  ResultsWorkspace,
+  ReviewWorkspace,
+  SettingsWorkspace,
+} from "./components/RemainingWorkspaces";
 import { SpeedMapWorkspace } from "./components/SpeedMapWorkspace";
 import { WorkspaceShell } from "./components/WorkspaceShell";
 import type { ThreeDayMeeting } from "./services/threeDayCatalog";
@@ -36,6 +44,8 @@ export function RaceFileV3() {
     }
   }
 
+  const raceProps = { meeting: selectedMeeting, selectedRaceKey, onRaceChange: setSelectedRaceKey };
+
   return (
     <WorkspaceShell activeSection={activeSection} onSectionChange={setActiveSection}>
       {activeSection === "home" ? (
@@ -55,21 +65,33 @@ export function RaceFileV3() {
           }}
         />
       ) : activeSection === "race" ? (
-        <RaceWorkspace meeting={selectedMeeting} selectedRaceKey={selectedRaceKey} onRaceChange={setSelectedRaceKey} onBackToMeetings={() => setActiveSection("meetings")} />
+        <RaceWorkspace {...raceProps} onBackToMeetings={() => setActiveSection("meetings")} />
       ) : activeSection === "field" ? (
-        <FieldWorkspace meeting={selectedMeeting} selectedRaceKey={selectedRaceKey} onRaceChange={setSelectedRaceKey} />
+        <FieldWorkspace {...raceProps} />
       ) : activeSection === "formGuide" ? (
-        <FormWorkspace meeting={selectedMeeting} selectedRaceKey={selectedRaceKey} onRaceChange={setSelectedRaceKey} />
+        <FormWorkspace {...raceProps} />
       ) : activeSection === "performance" ? (
-        <PerformanceWorkspace meeting={selectedMeeting} selectedRaceKey={selectedRaceKey} onRaceChange={setSelectedRaceKey} />
+        <PerformanceWorkspace {...raceProps} />
       ) : activeSection === "epi" ? (
-        <EpiRatingsWorkspace meeting={selectedMeeting} selectedRaceKey={selectedRaceKey} onRaceChange={setSelectedRaceKey} />
+        <EpiRatingsWorkspace {...raceProps} />
       ) : activeSection === "map" ? (
-        <SpeedMapWorkspace meeting={selectedMeeting} selectedRaceKey={selectedRaceKey} onRaceChange={setSelectedRaceKey} />
+        <SpeedMapWorkspace {...raceProps} />
       ) : activeSection === "market" ? (
-        <MarketWorkspace meeting={selectedMeeting} selectedRaceKey={selectedRaceKey} onRaceChange={setSelectedRaceKey} />
+        <MarketWorkspace {...raceProps} />
       ) : activeSection === "overview" ? (
-        <OverviewWorkspace meeting={selectedMeeting} selectedRaceKey={selectedRaceKey} onRaceChange={setSelectedRaceKey} />
+        <OverviewWorkspace {...raceProps} />
+      ) : activeSection === "insights" ? (
+        <InsightsWorkspace {...raceProps} />
+      ) : activeSection === "results" ? (
+        <ResultsWorkspace {...raceProps} />
+      ) : activeSection === "review" ? (
+        <ReviewWorkspace {...raceProps} />
+      ) : activeSection === "lab" ? (
+        <ResearchLabWorkspace />
+      ) : activeSection === "compare" ? (
+        <CompareWorkspace />
+      ) : activeSection === "settings" ? (
+        <SettingsWorkspace />
       ) : null}
     </WorkspaceShell>
   );

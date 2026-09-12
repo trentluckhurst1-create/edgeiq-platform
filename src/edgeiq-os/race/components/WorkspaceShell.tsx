@@ -15,26 +15,27 @@ function formatHeaderTime() {
   return new Intl.DateTimeFormat("en-AU", { hour: "2-digit", minute: "2-digit", hour12: false }).format(new Date());
 }
 
-export function WorkspaceShell({ activeSection, onSectionChange, children }: WorkspaceShellProps) {
-  const activeWorkspace = ["home", "meetings", "race", "field", "formGuide", "performance", "epi", "map", "market", "overview"].includes(activeSection);
+const workspaceLabels: Partial<Record<GlobalSection, string>> = {
+  race: "Race",
+  field: "Field",
+  formGuide: "Form",
+  performance: "Performance",
+  epi: "EPI Ratings",
+  map: "Speed Map",
+  market: "Market",
+  overview: "Overview",
+  insights: "Insights",
+  results: "Results",
+  review: "Review",
+  lab: "Research Lab",
+  compare: "Compare",
+  settings: "Settings",
+};
 
-  const workspaceTrail = activeSection === "race"
-    ? "Dashboard · Meetings · Race"
-    : activeSection === "field"
-      ? "Dashboard · Meetings · Field"
-      : activeSection === "formGuide"
-        ? "Dashboard · Meetings · Form"
-        : activeSection === "performance"
-          ? "Dashboard · Meetings · Performance"
-          : activeSection === "epi"
-            ? "Dashboard · Meetings · EPI Ratings"
-            : activeSection === "map"
-              ? "Dashboard · Meetings · Speed Map"
-              : activeSection === "market"
-                ? "Dashboard · Meetings · Market"
-                : activeSection === "overview"
-                  ? "Dashboard · Meetings · Overview"
-                  : "Dashboard · Meetings";
+export function WorkspaceShell({ activeSection, onSectionChange, children }: WorkspaceShellProps) {
+  const activeWorkspace = activeSection !== undefined;
+  const label = workspaceLabels[activeSection];
+  const workspaceTrail = label ? `Dashboard · Meetings · ${label}` : "Dashboard · Meetings";
 
   return (
     <section className={`eiq-approved-shell is-${activeSection}${activeSection === "home" ? " is-dashboard" : activeSection === "meetings" ? " is-meetings" : ""}`} data-edgeiq-approved-ui="dashboard-meetings-baseline" data-edgeiq-active-section={activeSection}>
