@@ -20,24 +20,29 @@ OUT_AUDIT = DATA / "edgeiq_live_runner_board_sectionals_v31_audit.csv"
 OUT_SUMMARY = DATA / "edgeiq_live_runner_board_sectionals_v31_summary.csv"
 OUT_MANIFEST = DATA / "edgeiq_live_runner_board_sectionals_v31_manifest.json"
 
-SECTIONAL_FIELDS = [
+NUMERIC_SECTIONAL_FIELDS = [
     "sectional_history_runs",
+    "sectional_weapon_score",
+    "sectional_late_power_score",
+    "sectional_early_speed_score",
+    "sectional_consistency_score",
+    "sectional_trajectory_score",
+    "sectional_trajectory_delta",
+]
+
+TEXT_SECTIONAL_FIELDS = [
     "sectional_history_status",
     "sectional_history_quality",
-    "sectional_weapon_score",
     "sectional_weapon_band",
-    "sectional_late_power_score",
     "sectional_late_power_band",
-    "sectional_early_speed_score",
     "sectional_early_speed_band",
-    "sectional_consistency_score",
     "sectional_consistency_band",
-    "sectional_trajectory_score",
     "sectional_trajectory_band",
-    "sectional_trajectory_delta",
     "sectional_feature_source",
     "sectional_feature_version",
 ]
+
+SECTIONAL_FIELDS = NUMERIC_SECTIONAL_FIELDS + TEXT_SECTIONAL_FIELDS
 
 PROTECTED_COLUMNS = [
     "race_date", "day_bucket", "track", "race_no", "race_key", "meeting_key", "runner_key",
@@ -102,11 +107,15 @@ def main() -> None:
             f"Unsafe V30.1 profile mapping: invalid_live_rows={invalid_live_rows} duplicate_profile_live_rows={duplicate_profile_live_rows}"
         )
 
-    # Initialize sidecar fields. Existing live-board columns are never overwritten.
+    # Initialize sidecar fields with explicit dtypes so pandas 3.x / Python 3.14
+    # never tries to place text labels into float64 columns.
     for c in SECTIONAL_FIELDS:
         if c in live.columns:
             raise RuntimeError(f"Refusing to overwrite existing live-board column: {c}")
-        live[c] = np.nan
+    for c in NUMERIC_SECTIONAL_FIELDS:
+        live[c] = pd.Series(np.nan, index=live.index, dtype="float64")
+    for c in TEXT_SECTIONAL_FIELDS:
+        live[c] = pd.Series(pd.NA, index=live.index, dtype="string")
 
     audit_rows: list[dict[str, object]] = []
     for _, p in prof.iterrows():
@@ -121,7 +130,7 @@ def main() -> None:
         any_score = any(not pd.isna(x) for x in [weapon, late, early, consistency, trajectory])
 
         vals = {
-            "sectional_history_runs": runs,
+            "sectional_history_runs": float(runs),
             "sectional_history_status": "HAS_HISTORY" if runs > 0 else "NO_HISTORY",
             "sectional_history_quality": quality(runs, any_score),
             "sectional_weapon_score": weapon,
@@ -161,7 +170,6 @@ def main() -> None:
 
     audit = pd.DataFrame(audit_rows).sort_values("live_row", kind="mergesort")
 
-    # Hard safety audits: sidecar build must not mutate the original board.
     output_rows = len(live)
     row_count_delta = output_rows - input_rows
     protected_changed_columns: list[str] = []
@@ -194,7 +202,6 @@ def main() -> None:
         s = pd.to_numeric(live[c], errors="coerce")
         score_range_errors += int(((s < 0) | (s > 100)).fillna(False).sum())
 
-    # Leakage assurance inherits V30.1's explicit strict cutoff audit.
     strict_prior_leakage = int(m30.get("live_date_leakage", 0))
 
     ready = (
