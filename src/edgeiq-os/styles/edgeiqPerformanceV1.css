@@ -14,6 +14,17 @@
 .eiq-performance-v1__card>header{padding:15px 16px;border-bottom:1px solid #e3eaf3}
 .eiq-performance-v1__card h2{margin:0;font-size:16px;font-weight:750}
 .eiq-performance-v1__card header p{margin:4px 0 0;color:#72829d;font-size:9px}
+.eiq-performance-v1__relative{padding:13px 16px 14px;border-bottom:1px solid #dce5f0;background:#f7faff}
+.eiq-performance-v1__relative>header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:9px}
+.eiq-performance-v1__relative>header div{display:flex;align-items:center;gap:8px}
+.eiq-performance-v1__relative>header span{color:#1769e8;font-size:9px;font-weight:900;letter-spacing:.07em}
+.eiq-performance-v1__relative>header strong{padding:3px 6px;border:1px solid #d7e4f8;border-radius:3px;background:#fff;color:#516783;font-size:7px;font-weight:850;letter-spacing:.05em}
+.eiq-performance-v1__relative>header p{margin:0;color:#8795aa;font-size:8px;font-weight:650}
+.eiq-performance-v1__relative>div{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.eiq-performance-v1__relative article{min-width:0;padding:10px 11px;border:1px solid #dfe7f2;border-radius:4px;background:#fff}
+.eiq-performance-v1__relative article span{display:block;color:#7a8aa2;font-size:7px;font-weight:900;letter-spacing:.08em}
+.eiq-performance-v1__relative article strong{display:block;margin-top:5px;overflow:hidden;text-overflow:ellipsis;color:#10213f;font-size:10px;font-weight:800;white-space:nowrap}
+.eiq-performance-v1__relative article small{display:block;margin-top:4px;overflow:hidden;text-overflow:ellipsis;color:#8795aa;font-size:7px;font-weight:650;white-space:nowrap}
 .eiq-performance-v1__comparison{padding:13px 16px 14px;border-bottom:1px solid #dce5f0;background:#fff}
 .eiq-performance-v1__comparison>header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:9px}
 .eiq-performance-v1__comparison>header div{display:flex;align-items:center;gap:8px}
@@ -73,7 +84,8 @@
 .eiq-performance-v1__message{margin:0;padding:22px 16px;color:#72829d;font-size:9px}
 @media(max-width:900px){
   .eiq-performance-v1{padding:16px}
-  .eiq-performance-v1__comparison>header{align-items:flex-start;flex-direction:column}
+  .eiq-performance-v1__relative>header,.eiq-performance-v1__comparison>header{align-items:flex-start;flex-direction:column}
+  .eiq-performance-v1__relative>div{grid-template-columns:repeat(2,minmax(0,1fr))}
   .eiq-performance-v1__layout{grid-template-columns:1fr}
   .eiq-performance-v1__runners{display:flex;overflow-x:auto;border-right:0;border-bottom:1px solid #e3eaf3}
   .eiq-performance-v1__runners button{min-width:150px}
