@@ -7,33 +7,24 @@ from pathlib import Path
 
 from edgeiq_three_day_window_v1_common import TIMEZONE
 
-
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "public" / "data"
 HISTORICAL_SOURCE = DATA / "edgeiq_racingcom_historical_calendar_backfill_v1.csv"
 LIVE_RACE_LIST_SOURCE = DATA / "edgeiq_vic_three_day_race_list_v1.csv"
 CALENDAR_OUT = DATA / "edgeiq_vic_three_day_meeting_calendar_v1.csv"
-
-FIELDS = [
-    "race_date",
-    "track",
-    "meeting_type",
-    "day_bucket",
-]
-
+FIELDS = ["race_date", "track", "meeting_type", "day_bucket"]
 LOCAL_TZ = TIMEZONE
 
 VIC_TRACKS = {
     "ARARAT", "AVOCA", "BAIRNSDALE", "BALLARAT", "BALLARAT SYNTHETIC",
-    "BALNARRING", "BENDIGO", "BENALLA", "BET365 STAWELL", "CAULFIELD",
-    "CAULFIELD HEATH", "CASTERTON", "COLAC", "CRANBOURNE", "DONALD",
-    "DUNKELD", "ECHUCA", "FLEMINGTON", "GEELONG", "HAMILTON",
-    "HANGING ROCK", "HORSHAM", "KILMORE", "KYNETON", "MILDURA", "MOE",
-    "MOONEE VALLEY", "MORNINGTON", "MORTLAKE", "MURTOA", "PAKENHAM",
-    "PAKENHAM SYNTHETIC", "PENSHURST", "SALE", "SANDOWN", "SEYMOUR",
-    "ST ARNAUD", "STAWELL", "SWAN HILL", "TERANG", "THE VALLEY", "TOWONG",
-    "TRARALGON", "WANGARATTA", "WARRACKNABEAL", "WARRNAMBOOL", "WERRIBEE",
-    "WODONGA", "YARRA VALLEY",
+    "BALNARRING", "BENDIGO", "BENALLA", "CAULFIELD", "CAULFIELD HEATH",
+    "CASTERTON", "COLAC", "CRANBOURNE", "DONALD", "DUNKELD", "ECHUCA",
+    "FLEMINGTON", "GEELONG", "HAMILTON", "HANGING ROCK", "HORSHAM", "KILMORE",
+    "KYNETON", "MILDURA", "MOE", "MOONEE VALLEY", "MORNINGTON", "MORTLAKE",
+    "MURTOA", "PAKENHAM", "PAKENHAM SYNTHETIC", "PENSHURST", "SALE", "SANDOWN",
+    "SEYMOUR", "ST ARNAUD", "STAWELL", "SWAN HILL", "TERANG", "THE VALLEY",
+    "TOWONG", "TRARALGON", "WANGARATTA", "WARRACKNABEAL", "WARRNAMBOOL",
+    "WERRIBEE", "WODONGA", "YARRA VALLEY",
 }
 
 TRACK_ALIASES = {
@@ -45,6 +36,8 @@ TRACK_ALIASES = {
     "BALLARAT SYNTHETIC": "BALLARAT SYNTHETIC",
     "SOUTHSIDE PAKENHAM SYNTHETIC": "PAKENHAM SYNTHETIC",
     "PAKENHAM SYNTHETIC": "PAKENHAM SYNTHETIC",
+    "PICKLEBET PARK WODONGA": "WODONGA",
+    "PARK WODONGA": "WODONGA",
 }
 
 MEETING_TYPE_MAP = {
@@ -111,30 +104,22 @@ def normalise_track(value: object) -> str:
     text = re.sub(r"\s+", " ", text).strip()
     if text in TRACK_ALIASES:
         return TRACK_ALIASES[text]
+    if "WODONGA" in text:
+        return "WODONGA"
     if "BALLARAT" in text and ("SYN" in text or "SYNTHETIC" in text):
         return "BALLARAT SYNTHETIC"
     if "PAKENHAM" in text and ("SYN" in text or "SYNTHETIC" in text):
         return "PAKENHAM SYNTHETIC"
-    text = re.sub(r"\b(SPORTSBET|BET365|LADBROKES|TAB|RACING\.COM|RACING|SOUTHSIDE)\b", " ", text)
+    text = re.sub(r"\b(SPORTSBET|BET365|LADBROKES|PICKLEBET|TAB|RACING\.COM|RACING|SOUTHSIDE|PARK)\b", " ", text)
     text = re.sub(r"[^A-Z0-9]+", " ", text)
     text = re.sub(r"\s+", " ", text).strip()
     return TRACK_ALIASES.get(text, text)
 
 
-def meeting_key_value(race_date: object, track: object) -> str:
-    return f"{clean(race_date)}_{normalise_track(track)}"
-
-
 def day_bucket_for_date(race_date: date, today: date | None = None) -> str:
     local_today = today or now_local().date()
     delta = (race_date - local_today).days
-    if delta == 0:
-        return "TODAY"
-    if delta == 1:
-        return "TOMORROW"
-    if delta == 2:
-        return "DAY+2"
-    return "OUTSIDE_WINDOW"
+    return {0: "TODAY", 1: "TOMORROW", 2: "DAY+2"}.get(delta, "OUTSIDE_WINDOW")
 
 
 def meeting_type_value(row: dict[str, str]) -> str:
@@ -142,16 +127,11 @@ def meeting_type_value(row: dict[str, str]) -> str:
     if not raw:
         return "UNKNOWN"
     compact = re.sub(r"[^A-Z0-9]", "", raw)
-    if compact in MEETING_TYPE_MAP:
-        return MEETING_TYPE_MAP[compact]
-    return raw.replace("_", " ").strip()
+    return MEETING_TYPE_MAP.get(compact, raw.replace("_", " ").strip())
 
 
 def is_victorian_meeting(row: dict[str, str], track: str) -> bool:
-    state = clean(row.get("state")).upper()
-    if state == "VIC":
-        return True
-    return track in VIC_TRACKS
+    return clean(row.get("state")).upper() == "VIC" or track in VIC_TRACKS
 
 
 def is_usable_meeting(row: dict[str, str]) -> bool:
@@ -165,11 +145,7 @@ def is_usable_meeting(row: dict[str, str]) -> bool:
 
 
 def source_rows() -> list[dict[str, str]]:
-    # The live Racing.com race list is authoritative for the current three-day
-    # window. Historical backfill remains a fallback/supplement only.
-    live = read_csv(LIVE_RACE_LIST_SOURCE)
-    historical = read_csv(HISTORICAL_SOURCE)
-    return live + historical
+    return read_csv(LIVE_RACE_LIST_SOURCE) + read_csv(HISTORICAL_SOURCE)
 
 
 def build_calendar_rows(today: date | None = None) -> list[dict[str, object]]:
@@ -181,40 +157,29 @@ def build_calendar_rows(today: date | None = None) -> list[dict[str, object]]:
         race_date = parse_date(row.get("race_date") or row.get("meeting_date") or row.get("date"))
         if race_date is None or race_date < local_today or race_date > max_date:
             continue
-
         track = normalise_track(row.get("normalised_track") or row.get("track") or row.get("meeting"))
         if not track or not is_victorian_meeting(row, track) or not is_usable_meeting(row):
             continue
 
         key = (race_date.isoformat(), track)
-        current = deduped.get(key)
         candidate = {
             "race_date": race_date.isoformat(),
             "track": track,
             "meeting_type": meeting_type_value(row),
             "day_bucket": day_bucket_for_date(race_date, local_today),
         }
-        if current is None:
-            deduped[key] = candidate
-            continue
-        if current["meeting_type"] == "UNKNOWN" and candidate["meeting_type"] != "UNKNOWN":
+        current = deduped.get(key)
+        if current is None or (current["meeting_type"] == "UNKNOWN" and candidate["meeting_type"] != "UNKNOWN"):
             deduped[key] = candidate
 
     output = list(deduped.values())
-    output.sort(
-        key=lambda row: (
-            {"TODAY": 0, "TOMORROW": 1, "DAY+2": 2}.get(str(row["day_bucket"]), 9),
-            str(row["race_date"]),
-            str(row["track"]),
-        )
-    )
+    output.sort(key=lambda row: ({"TODAY": 0, "TOMORROW": 1, "DAY+2": 2}.get(str(row["day_bucket"]), 9), str(row["race_date"]), str(row["track"])))
     return output
 
 
 def main() -> None:
     rows = build_calendar_rows()
     write_calendar_output(rows)
-
     print("=" * 90)
     print("EDGEIQ VIC THREE DAY MEETING CALENDAR V1")
     print("=" * 90)
