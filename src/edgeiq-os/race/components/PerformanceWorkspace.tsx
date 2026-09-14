@@ -14,12 +14,19 @@ type PerformanceIntel = {
   historyCount: number;
   ratedCount: number;
   latestRating: string;
+  latestRatingValue: number | null;
   peakRating: string;
   ratingTrend: string;
+  ratingTrendTone: "up" | "down" | "stable" | "limited";
   recentForm: string;
   recency: string;
   distanceEvidence: string;
   ratingCoverage: string;
+};
+type ComparisonRunner = {
+  index: number;
+  runner: ThreeDayRunner;
+  intel: PerformanceIntel;
 };
 
 function display(value: unknown, fallback = "-"): string { return cleanProductText(value, fallback); }
@@ -61,13 +68,14 @@ function performanceIntel(runner: ThreeDayRunner | null, race: ThreeDayRace, mee
   const peakRatingValue = ratings.length ? Math.max(...ratings) : null;
 
   let ratingTrend = "LIMITED DATA";
+  let ratingTrendTone: PerformanceIntel["ratingTrendTone"] = "limited";
   if (ratings.length >= 2) {
     const prior = ratings.slice(1);
     const priorAverage = prior.reduce((sum, value) => sum + value, 0) / prior.length;
     const delta = latestRatingValue! - priorAverage;
-    if (delta >= 2) ratingTrend = `UP +${delta.toFixed(1)}`;
-    else if (delta <= -2) ratingTrend = `DOWN ${delta.toFixed(1)}`;
-    else ratingTrend = `STABLE ${delta >= 0 ? "+" : ""}${delta.toFixed(1)}`;
+    if (delta >= 2) { ratingTrend = `UP +${delta.toFixed(1)}`; ratingTrendTone = "up"; }
+    else if (delta <= -2) { ratingTrend = `DOWN ${delta.toFixed(1)}`; ratingTrendTone = "down"; }
+    else { ratingTrend = `STABLE ${delta >= 0 ? "+" : ""}${delta.toFixed(1)}`; ratingTrendTone = "stable"; }
   }
 
   const form = rows
@@ -97,8 +105,10 @@ function performanceIntel(runner: ThreeDayRunner | null, race: ThreeDayRace, mee
     historyCount: rows.length,
     ratedCount: ratings.length,
     latestRating: latestRatingValue === null ? "LIMITED DATA" : latestRatingValue.toFixed(1),
+    latestRatingValue,
     peakRating: peakRatingValue === null ? "LIMITED DATA" : peakRatingValue.toFixed(1),
     ratingTrend,
+    ratingTrendTone,
     recentForm: form || "LIMITED DATA",
     recency,
     distanceEvidence,
@@ -114,6 +124,8 @@ export function PerformanceWorkspace({ meeting, selectedRaceKey, onRaceChange }:
 
   const [selectedRunnerIndex, setSelectedRunnerIndex] = useState(0);
   const [detail, setDetail] = useState<RunnerLoad>({ runner: null, loading: false, error: "" });
+  const [comparisonDetails, setComparisonDetails] = useState<Record<number, ThreeDayRunner>>({});
+  const [comparisonLoading, setComparisonLoading] = useState(false);
 
   useEffect(() => { setSelectedRunnerIndex(0); }, [selectedRace?.raceKey]);
 
@@ -137,11 +149,49 @@ export function PerformanceWorkspace({ meeting, selectedRaceKey, onRaceChange }:
     return () => { active = false; };
   }, [selectedRunner]);
 
+  useEffect(() => {
+    let active = true;
+    if (!selectedRace) {
+      setComparisonDetails({});
+      setComparisonLoading(false);
+      return () => { active = false; };
+    }
+    setComparisonDetails({});
+    setComparisonLoading(true);
+    const jobs = selectedRace.runners.map(async (runner, index) => {
+      const path = detailPath(runner);
+      if (!path) return [index, runner] as const;
+      try {
+        return [index, await loadRunnerDetail(path)] as const;
+      } catch {
+        return [index, runner] as const;
+      }
+    });
+    Promise.all(jobs).then((entries) => {
+      if (!active) return;
+      setComparisonDetails(Object.fromEntries(entries));
+      setComparisonLoading(false);
+    });
+    return () => { active = false; };
+  }, [selectedRace]);
+
   if (!meeting || !selectedRace) return null;
   const resolvedRunner = detail.runner ?? selectedRunner;
   const runs = recentRuns(resolvedRunner);
   const summary = sectionalSummary(resolvedRunner);
   const intel = performanceIntel(resolvedRunner, selectedRace, display(meeting.date, ""));
+  const comparisonRows: ComparisonRunner[] = selectedRace.runners
+    .map((runner, index) => {
+      const resolved = comparisonDetails[index] ?? runner;
+      return { index, runner: resolved, intel: performanceIntel(resolved, selectedRace, display(meeting.date, "")) };
+    })
+    .sort((a, b) => {
+      if (a.intel.latestRatingValue !== null && b.intel.latestRatingValue !== null) return b.intel.latestRatingValue - a.intel.latestRatingValue;
+      if (a.intel.latestRatingValue !== null) return -1;
+      if (b.intel.latestRatingValue !== null) return 1;
+      if (a.intel.historyCount !== b.intel.historyCount) return b.intel.historyCount - a.intel.historyCount;
+      return a.index - b.index;
+    });
 
   return (
     <section className="eiq-performance-v1" aria-label="Performance workspace" data-edgeiq-workspace-key="PERFORMANCE">
@@ -156,6 +206,13 @@ export function PerformanceWorkspace({ meeting, selectedRaceKey, onRaceChange }:
 
       <section className="eiq-performance-v1__card">
         <header><div><h2>{raceTitle(selectedRace)}</h2><p>{display(selectedRace.distance)} · {display(selectedRace.raceClass)}</p></div></header>
+        <section className="eiq-performance-v1__comparison" aria-label="Field performance comparison">
+          <header><div><span>FIELD COMPARISON</span><strong>STRICT-PRIOR</strong></div><p>{comparisonLoading ? "Loading runner evidence…" : "Rated runners ordered by latest rating · unrated runners retained"}</p></header>
+          <div className="eiq-performance-v1__comparison-table">
+            <div className="eiq-performance-v1__comparison-head"><span>#</span><span>Runner</span><span>Latest</span><span>Peak</span><span>Trajectory</span><span>Recent form</span><span>Recency</span><span>Distance</span><span>Evidence</span></div>
+            {comparisonRows.map(({ index, runner, intel }) => <button key={`${officialNumber(runner)}-${runnerName(runner)}-${index}`} type="button" className={`eiq-performance-v1__comparison-row${index === selectedRunnerIndex ? " is-active" : ""}`} onClick={() => setSelectedRunnerIndex(index)}><span>{officialNumber(runner)}</span><strong>{runnerName(runner)}</strong><span>{intel.latestRating}</span><span>{intel.peakRating}</span><span className={`is-${intel.ratingTrendTone}`}>{intel.ratingTrend}</span><span>{intel.recentForm}</span><span>{intel.recency}</span><span>{intel.distanceEvidence}</span><span>{intel.ratingCoverage}</span></button>)}
+          </div>
+        </section>
         <div className="eiq-performance-v1__layout">
           <aside className="eiq-performance-v1__runners">
             {selectedRace.runners.map((runner, index) => <button key={`${officialNumber(runner)}-${runnerName(runner)}-${index}`} type="button" className={index === selectedRunnerIndex ? "is-active" : ""} onClick={() => setSelectedRunnerIndex(index)}><span>{officialNumber(runner)}</span><strong>{runnerName(runner)}</strong></button>)}
