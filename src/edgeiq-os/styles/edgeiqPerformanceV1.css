@@ -29,6 +29,17 @@
 .eiq-performance-v1__runner-head dl div{min-width:80px}
 .eiq-performance-v1__runner-head dt{color:#72829d;font-size:7px;font-weight:850;text-transform:uppercase;letter-spacing:.08em}
 .eiq-performance-v1__runner-head dd{margin:4px 0 0;color:#10213f;font-size:10px;font-weight:700}
+.eiq-performance-v1__intelligence{padding:14px 16px 16px;border-bottom:1px solid #dfe7f2;background:#f7faff}
+.eiq-performance-v1__intelligence header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
+.eiq-performance-v1__intelligence header div{display:flex;align-items:center;gap:9px}
+.eiq-performance-v1__intelligence header span{color:#1769e8;font-size:9px;font-weight:900;letter-spacing:.06em}
+.eiq-performance-v1__intelligence header strong{padding:3px 6px;border:1px solid #d7e4f8;border-radius:3px;background:#fff;color:#516783;font-size:7px;font-weight:850;letter-spacing:.04em}
+.eiq-performance-v1__intelligence header p{margin:0;color:#8795aa;font-size:8px;font-weight:700}
+.eiq-performance-v1__intelligence>div{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.eiq-performance-v1__intelligence article{min-width:0;padding:10px 11px;border:1px solid #dfe7f2;border-radius:4px;background:#fff}
+.eiq-performance-v1__intelligence article span{display:block;color:#7a8aa2;font-size:7px;font-weight:900;letter-spacing:.08em}
+.eiq-performance-v1__intelligence article strong{display:block;margin-top:5px;overflow:hidden;text-overflow:ellipsis;color:#10213f;font-size:13px;font-weight:800;white-space:nowrap}
+.eiq-performance-v1__intelligence article small{display:block;margin-top:4px;overflow:hidden;text-overflow:ellipsis;color:#8795aa;font-size:7px;font-weight:650;white-space:nowrap}
 .eiq-performance-v1__sectionals{padding:12px 16px;border-bottom:1px solid #e3eaf3;background:#fbfcff}
 .eiq-performance-v1__sectionals header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
 .eiq-performance-v1__sectionals header span{color:#1769e8;font-size:9px;font-weight:850;letter-spacing:.05em}
@@ -49,5 +60,7 @@
   .eiq-performance-v1__runners button{min-width:150px}
   .eiq-performance-v1__runner-head{align-items:flex-start;flex-direction:column}
   .eiq-performance-v1__runner-head dl{flex-wrap:wrap}
+  .eiq-performance-v1__intelligence>div{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .eiq-performance-v1__intelligence header{align-items:flex-start;flex-direction:column}
   .eiq-performance-v1__sectionals>div{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
