@@ -58,7 +58,12 @@ jobs:
           refresh_code=$?
           set -e
           echo "DAILY_REFRESH_EXIT_CODE=${refresh_code}"
-          echo "Legacy performance-recovery coverage may return non-zero; freshness is gated from actual published data below."
+          echo "Legacy recovery stages may return non-zero; fresh Racing.com data is promoted and gated below."
+
+      - name: Promote fresh today catalog from Racing.com race list
+        env:
+          TZ: Australia/Melbourne
+        run: python scripts/repair_edgeiq_today_catalog_from_race_list_v1.py
 
       - name: Gate fresh today meeting fields
         env:
@@ -100,7 +105,7 @@ jobs:
           print('TODAY_RACE_LIST_ROWS=' + str(len(race_list_today)))
           PY
 
-      - name: Rebuild current terminal feeds after legacy recovery stage
+      - name: Rebuild current terminal feeds after today catalog repair
         env:
           TZ: Australia/Melbourne
         run: |
