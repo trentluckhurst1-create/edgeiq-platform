@@ -71,6 +71,7 @@ jobs:
           from pathlib import Path
           from zoneinfo import ZoneInfo
 
+          csv.field_size_limit(1024 * 1024 * 128)
           data = Path('public/data')
           today = datetime.now(ZoneInfo('Australia/Melbourne')).date().isoformat()
           window_path = data / 'edgeiq_three_day_window_v1.json'
@@ -127,6 +128,7 @@ jobs:
           from pathlib import Path
           from zoneinfo import ZoneInfo
 
+          csv.field_size_limit(1024 * 1024 * 128)
           data = Path('public/data')
           today = datetime.now(ZoneInfo('Australia/Melbourne')).date().isoformat()
           catalog_path = data / 'edgeiq_three_day_product_catalog_v1.json'
@@ -214,6 +216,7 @@ jobs:
           from pathlib import Path
           from zoneinfo import ZoneInfo
 
+          csv.field_size_limit(1024 * 1024 * 128)
           window = json.loads(Path('dist/data/edgeiq_three_day_window_v1.json').read_text(encoding='utf-8'))
           summary_path = Path('dist/data/edgeiq_meetings_summary_feed_v1.json')
           summary = json.loads(summary_path.read_text(encoding='utf-8'))
