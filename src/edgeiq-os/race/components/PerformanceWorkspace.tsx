@@ -22,16 +22,24 @@ type PerformanceIntel = {
   ratingTrendDeltaValue: number | null;
   recentForm: string;
   recency: string;
+  recencyDays: number | null;
   distanceEvidence: string;
   distanceRunCount: number;
   distanceBestFinish: number | null;
   ratingCoverage: string;
 };
-type ComparisonRunner = {
-  index: number;
-  runner: ThreeDayRunner;
-  intel: PerformanceIntel;
-};
+type ComparisonRunner = { index: number; runner: ThreeDayRunner; intel: PerformanceIntel };
+type ComparisonFilter = "all" | "improvers" | "distance" | "fullyRated" | "limited";
+type ComparisonSort = "latest" | "peak" | "trajectory" | "recency" | "distance" | "evidence" | "runner";
+type SortDirection = "asc" | "desc";
+
+const FILTERS: { key: ComparisonFilter; label: string }[] = [
+  { key: "all", label: "All" },
+  { key: "improvers", label: "Improvers" },
+  { key: "distance", label: "Distance Proven" },
+  { key: "fullyRated", label: "Fully Rated" },
+  { key: "limited", label: "Limited Data" },
+];
 
 function display(value: unknown, fallback = "-"): string { return cleanProductText(value, fallback); }
 function officialNumber(runner: ThreeDayRunner): string { return display(runner.official.no ?? runner.official.number); }
@@ -84,18 +92,16 @@ function performanceIntel(runner: ThreeDayRunner | null, race: ThreeDayRace, mee
     else { ratingTrend = `STABLE ${delta >= 0 ? "+" : ""}${delta.toFixed(1)}`; ratingTrendTone = "stable"; }
   }
 
-  const form = rows
-    .map((record) => first(record, ["finish", "position", "placing", "place"], ""))
-    .filter(Boolean)
-    .join("-");
+  const form = rows.map((record) => first(record, ["finish", "position", "placing", "place"], "")).filter(Boolean).join("-");
 
   let recency = "LIMITED DATA";
+  let recencyDays: number | null = null;
   const latestDateRaw = rows.length ? first(rows[0], ["date", "race_date", "meeting_date", "raceDate"], "") : "";
   const currentDate = Date.parse(meetingDate);
   const latestDate = Date.parse(latestDateRaw);
   if (Number.isFinite(currentDate) && Number.isFinite(latestDate) && currentDate > latestDate) {
-    const days = Math.round((currentDate - latestDate) / 86400000);
-    recency = `${days}D`;
+    recencyDays = Math.round((currentDate - latestDate) / 86400000);
+    recency = `${recencyDays}D`;
   }
 
   const targetDistance = distanceMetres(race.distance);
@@ -103,9 +109,7 @@ function performanceIntel(runner: ThreeDayRunner | null, race: ThreeDayRace, mee
   const distanceFinishes = distanceRows.map(finishPosition).filter((value): value is number => value !== null);
   const distanceBestFinish = distanceFinishes.length ? Math.min(...distanceFinishes) : null;
   let distanceEvidence = "NO MATCHING RUNS";
-  if (distanceRows.length) {
-    distanceEvidence = distanceBestFinish === null ? `${distanceRows.length} RUN${distanceRows.length === 1 ? "" : "S"}` : `${distanceRows.length} RUN${distanceRows.length === 1 ? "" : "S"} · BEST ${distanceBestFinish}`;
-  }
+  if (distanceRows.length) distanceEvidence = distanceBestFinish === null ? `${distanceRows.length} RUN${distanceRows.length === 1 ? "" : "S"}` : `${distanceRows.length} RUN${distanceRows.length === 1 ? "" : "S"} · BEST ${distanceBestFinish}`;
 
   return {
     historyCount: rows.length,
@@ -119,6 +123,7 @@ function performanceIntel(runner: ThreeDayRunner | null, race: ThreeDayRace, mee
     ratingTrendDeltaValue,
     recentForm: form || "LIMITED DATA",
     recency,
+    recencyDays,
     distanceEvidence,
     distanceRunCount: distanceRows.length,
     distanceBestFinish,
@@ -131,6 +136,39 @@ function comparisonName(row: ComparisonRunner | null): string {
   return `#${officialNumber(row.runner)} ${runnerName(row.runner)}`;
 }
 
+function isLimited(row: ComparisonRunner): boolean { return row.intel.historyCount < 2 || row.intel.ratedCount < 1; }
+function isFullyRated(row: ComparisonRunner): boolean { return row.intel.historyCount >= 2 && row.intel.ratedCount === row.intel.historyCount; }
+function filterComparison(row: ComparisonRunner, filter: ComparisonFilter): boolean {
+  if (filter === "improvers") return (row.intel.ratingTrendDeltaValue ?? 0) > 0;
+  if (filter === "distance") return row.intel.distanceRunCount > 0;
+  if (filter === "fullyRated") return isFullyRated(row);
+  if (filter === "limited") return isLimited(row);
+  return true;
+}
+
+function sortValue(row: ComparisonRunner, sort: ComparisonSort): number | string | null {
+  if (sort === "latest") return row.intel.latestRatingValue;
+  if (sort === "peak") return row.intel.peakRatingValue;
+  if (sort === "trajectory") return row.intel.ratingTrendDeltaValue;
+  if (sort === "recency") return row.intel.recencyDays;
+  if (sort === "distance") return row.intel.distanceRunCount;
+  if (sort === "evidence") return row.intel.historyCount ? row.intel.ratedCount / row.intel.historyCount : null;
+  return runnerName(row.runner).toUpperCase();
+}
+
+function compareRows(a: ComparisonRunner, b: ComparisonRunner, sort: ComparisonSort, direction: SortDirection): number {
+  const av = sortValue(a, sort);
+  const bv = sortValue(b, sort);
+  if (av === null && bv === null) return a.index - b.index;
+  if (av === null) return 1;
+  if (bv === null) return -1;
+  let result = 0;
+  if (typeof av === "string" && typeof bv === "string") result = av.localeCompare(bv);
+  else result = Number(av) - Number(bv);
+  if (sort === "recency") result *= -1;
+  return direction === "asc" ? result : -result;
+}
+
 export function PerformanceWorkspace({ meeting, selectedRaceKey, onRaceChange }: PerformanceWorkspaceProps) {
   const selectedRace = useMemo(() => {
     if (!meeting?.races.length) return null;
@@ -141,8 +179,16 @@ export function PerformanceWorkspace({ meeting, selectedRaceKey, onRaceChange }:
   const [detail, setDetail] = useState<RunnerLoad>({ runner: null, loading: false, error: "" });
   const [comparisonDetails, setComparisonDetails] = useState<Record<number, ThreeDayRunner>>({});
   const [comparisonLoading, setComparisonLoading] = useState(false);
+  const [comparisonFilter, setComparisonFilter] = useState<ComparisonFilter>("all");
+  const [comparisonSort, setComparisonSort] = useState<ComparisonSort>("latest");
+  const [sortDirection, setSortDirection] = useState<SortDirection>("desc");
 
-  useEffect(() => { setSelectedRunnerIndex(0); }, [selectedRace?.raceKey]);
+  useEffect(() => {
+    setSelectedRunnerIndex(0);
+    setComparisonFilter("all");
+    setComparisonSort("latest");
+    setSortDirection("desc");
+  }, [selectedRace?.raceKey]);
 
   const selectedRunner = selectedRace?.runners[selectedRunnerIndex] ?? null;
 
@@ -176,11 +222,8 @@ export function PerformanceWorkspace({ meeting, selectedRaceKey, onRaceChange }:
     const jobs = selectedRace.runners.map(async (runner, index) => {
       const path = detailPath(runner);
       if (!path) return [index, runner] as const;
-      try {
-        return [index, await loadRunnerDetail(path)] as const;
-      } catch {
-        return [index, runner] as const;
-      }
+      try { return [index, await loadRunnerDetail(path)] as const; }
+      catch { return [index, runner] as const; }
     });
     Promise.all(jobs).then((entries) => {
       if (!active) return;
@@ -195,36 +238,33 @@ export function PerformanceWorkspace({ meeting, selectedRaceKey, onRaceChange }:
   const runs = recentRuns(resolvedRunner);
   const summary = sectionalSummary(resolvedRunner);
   const intel = performanceIntel(resolvedRunner, selectedRace, display(meeting.date, ""));
-  const comparisonRows: ComparisonRunner[] = selectedRace.runners
-    .map((runner, index) => {
-      const resolved = comparisonDetails[index] ?? runner;
-      return { index, runner: resolved, intel: performanceIntel(resolved, selectedRace, display(meeting.date, "")) };
-    })
-    .sort((a, b) => {
-      if (a.intel.latestRatingValue !== null && b.intel.latestRatingValue !== null) return b.intel.latestRatingValue - a.intel.latestRatingValue;
-      if (a.intel.latestRatingValue !== null) return -1;
-      if (b.intel.latestRatingValue !== null) return 1;
-      if (a.intel.historyCount !== b.intel.historyCount) return b.intel.historyCount - a.intel.historyCount;
-      return a.index - b.index;
-    });
+  const allComparisonRows: ComparisonRunner[] = selectedRace.runners.map((runner, index) => {
+    const resolved = comparisonDetails[index] ?? runner;
+    return { index, runner: resolved, intel: performanceIntel(resolved, selectedRace, display(meeting.date, "")) };
+  });
+  const comparisonRows = allComparisonRows.filter((row) => filterComparison(row, comparisonFilter)).sort((a, b) => compareRows(a, b, comparisonSort, sortDirection));
 
-  const latestLeader = comparisonRows.find((row) => row.intel.latestRatingValue !== null) ?? null;
-  const peakLeader = [...comparisonRows]
-    .filter((row) => row.intel.peakRatingValue !== null)
-    .sort((a, b) => (b.intel.peakRatingValue ?? -Infinity) - (a.intel.peakRatingValue ?? -Infinity))[0] ?? null;
-  const biggestImprover = [...comparisonRows]
-    .filter((row) => row.intel.ratingTrendDeltaValue !== null && row.intel.ratingTrendDeltaValue > 0)
-    .sort((a, b) => (b.intel.ratingTrendDeltaValue ?? -Infinity) - (a.intel.ratingTrendDeltaValue ?? -Infinity))[0] ?? null;
-  const distanceLeader = [...comparisonRows]
-    .filter((row) => row.intel.distanceRunCount > 0)
-    .sort((a, b) => {
-      if (a.intel.distanceRunCount !== b.intel.distanceRunCount) return b.intel.distanceRunCount - a.intel.distanceRunCount;
-      const aBest = a.intel.distanceBestFinish ?? Infinity;
-      const bBest = b.intel.distanceBestFinish ?? Infinity;
-      if (aBest !== bBest) return aBest - bBest;
-      return (b.intel.latestRatingValue ?? -Infinity) - (a.intel.latestRatingValue ?? -Infinity);
-    })[0] ?? null;
-  const weakEvidenceCount = comparisonRows.filter((row) => row.intel.historyCount < 2 || row.intel.ratedCount < 1).length;
+  const ratedByLatest = [...allComparisonRows].filter((row) => row.intel.latestRatingValue !== null).sort((a, b) => (b.intel.latestRatingValue ?? -Infinity) - (a.intel.latestRatingValue ?? -Infinity));
+  const latestLeader = ratedByLatest[0] ?? null;
+  const peakLeader = [...allComparisonRows].filter((row) => row.intel.peakRatingValue !== null).sort((a, b) => (b.intel.peakRatingValue ?? -Infinity) - (a.intel.peakRatingValue ?? -Infinity))[0] ?? null;
+  const biggestImprover = [...allComparisonRows].filter((row) => row.intel.ratingTrendDeltaValue !== null && row.intel.ratingTrendDeltaValue > 0).sort((a, b) => (b.intel.ratingTrendDeltaValue ?? -Infinity) - (a.intel.ratingTrendDeltaValue ?? -Infinity))[0] ?? null;
+  const distanceLeader = [...allComparisonRows].filter((row) => row.intel.distanceRunCount > 0).sort((a, b) => {
+    if (a.intel.distanceRunCount !== b.intel.distanceRunCount) return b.intel.distanceRunCount - a.intel.distanceRunCount;
+    const aBest = a.intel.distanceBestFinish ?? Infinity;
+    const bBest = b.intel.distanceBestFinish ?? Infinity;
+    if (aBest !== bBest) return aBest - bBest;
+    return (b.intel.latestRatingValue ?? -Infinity) - (a.intel.latestRatingValue ?? -Infinity);
+  })[0] ?? null;
+  const weakEvidenceCount = allComparisonRows.filter(isLimited).length;
+
+  function chooseSort(next: ComparisonSort) {
+    if (comparisonSort === next) setSortDirection((current) => current === "desc" ? "asc" : "desc");
+    else {
+      setComparisonSort(next);
+      setSortDirection(next === "runner" || next === "recency" ? "asc" : "desc");
+    }
+  }
+  function sortMark(key: ComparisonSort): string { return comparisonSort === key ? (sortDirection === "desc" ? " ↓" : " ↑") : ""; }
 
   return (
     <section className="eiq-performance-v1" aria-label="Performance workspace" data-edgeiq-workspace-key="PERFORMANCE">
@@ -249,13 +289,30 @@ export function PerformanceWorkspace({ meeting, selectedRaceKey, onRaceChange }:
             <article><span>WEAK EVIDENCE</span><strong>{weakEvidenceCount} RUNNER{weakEvidenceCount === 1 ? "" : "S"}</strong><small>&lt;2 prior runs or no rated run</small></article>
           </div>
         </section>
+
         <section className="eiq-performance-v1__comparison" aria-label="Field performance comparison">
-          <header><div><span>FIELD COMPARISON</span><strong>STRICT-PRIOR</strong></div><p>{comparisonLoading ? "Loading runner evidence…" : "Rated runners ordered by latest rating · unrated runners retained"}</p></header>
+          <header><div><span>FIELD COMPARISON</span><strong>STRICT-PRIOR</strong></div><p>{comparisonLoading ? "Loading runner evidence…" : `${comparisonRows.length}/${allComparisonRows.length} runners shown`}</p></header>
+          <div className="eiq-performance-v1__comparison-controls" aria-label="Performance comparison filters">
+            <div>{FILTERS.map((filter) => <button key={filter.key} type="button" className={comparisonFilter === filter.key ? "is-active" : ""} onClick={() => setComparisonFilter(filter.key)}>{filter.label}</button>)}</div>
+            <span>Click a column heading to sort</span>
+          </div>
           <div className="eiq-performance-v1__comparison-table">
-            <div className="eiq-performance-v1__comparison-head"><span>#</span><span>Runner</span><span>Latest</span><span>Peak</span><span>Trajectory</span><span>Recent form</span><span>Recency</span><span>Distance</span><span>Evidence</span></div>
+            <div className="eiq-performance-v1__comparison-head">
+              <span>#</span>
+              <button type="button" onClick={() => chooseSort("runner")}>Runner{sortMark("runner")}</button>
+              <button type="button" onClick={() => chooseSort("latest")}>Latest{sortMark("latest")}</button>
+              <button type="button" onClick={() => chooseSort("peak")}>Peak{sortMark("peak")}</button>
+              <button type="button" onClick={() => chooseSort("trajectory")}>Trajectory{sortMark("trajectory")}</button>
+              <span>Recent form</span>
+              <button type="button" onClick={() => chooseSort("recency")}>Recency{sortMark("recency")}</button>
+              <button type="button" onClick={() => chooseSort("distance")}>Distance{sortMark("distance")}</button>
+              <button type="button" onClick={() => chooseSort("evidence")}>Evidence{sortMark("evidence")}</button>
+            </div>
             {comparisonRows.map(({ index, runner, intel }) => <button key={`${officialNumber(runner)}-${runnerName(runner)}-${index}`} type="button" className={`eiq-performance-v1__comparison-row${index === selectedRunnerIndex ? " is-active" : ""}`} onClick={() => setSelectedRunnerIndex(index)}><span>{officialNumber(runner)}</span><strong>{runnerName(runner)}</strong><span>{intel.latestRating}</span><span>{intel.peakRating}</span><span className={`is-${intel.ratingTrendTone}`}>{intel.ratingTrend}</span><span>{intel.recentForm}</span><span>{intel.recency}</span><span>{intel.distanceEvidence}</span><span>{intel.ratingCoverage}</span></button>)}
+            {!comparisonRows.length && !comparisonLoading ? <p className="eiq-performance-v1__comparison-empty">No runners match this evidence filter.</p> : null}
           </div>
         </section>
+
         <div className="eiq-performance-v1__layout">
           <aside className="eiq-performance-v1__runners">
             {selectedRace.runners.map((runner, index) => <button key={`${officialNumber(runner)}-${runnerName(runner)}-${index}`} type="button" className={index === selectedRunnerIndex ? "is-active" : ""} onClick={() => setSelectedRunnerIndex(index)}><span>{officialNumber(runner)}</span><strong>{runnerName(runner)}</strong></button>)}
