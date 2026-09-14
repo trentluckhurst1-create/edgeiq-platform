@@ -59,6 +59,50 @@ jobs:
           TZ: Australia/Melbourne
         run: python scripts/ensure_edgeiq_current_data_rollover_v1.py --check-only
 
+      - name: Build current-runner governed performance history
+        env:
+          TZ: Australia/Melbourne
+        run: python scripts/build_edgeiq_current_runner_performance_history_v1.py
+
+      - name: Gate today form and performance coverage
+        env:
+          TZ: Australia/Melbourne
+        run: |
+          python - <<'PY'
+          import csv
+          import json
+          from datetime import datetime
+          from pathlib import Path
+          from zoneinfo import ZoneInfo
+
+          data = Path('public/data')
+          today = datetime.now(ZoneInfo('Australia/Melbourne')).date().isoformat()
+          catalog_path = data / 'edgeiq_three_day_product_catalog_v1.json'
+          history_path = data / 'edgeiq_current_runner_performance_history_v1.csv'
+          assert catalog_path.exists() and catalog_path.stat().st_size > 0, 'Current product catalog missing'
+          catalog = json.loads(catalog_path.read_text(encoding='utf-8'))
+          meetings = [m for m in catalog.get('meetings', []) if isinstance(m, dict) and str(m.get('date', ''))[:10] == today]
+          races = [r for m in meetings for r in m.get('races', []) if isinstance(r, dict)]
+          runners = [runner for r in races for runner in r.get('runners', []) if isinstance(runner, dict)]
+          assert meetings, f'No meeting published for operational today {today}'
+          assert races, f'No races published for operational today {today}'
+          assert runners, f'No runners published for operational today {today}'
+          assert history_path.exists() and history_path.stat().st_size > 0, 'Current-runner performance history missing'
+          with history_path.open('r', encoding='utf-8-sig', newline='') as handle:
+              history = list(csv.DictReader(handle))
+          today_history = [row for row in history if str(row.get('current_race_date', ''))[:10] == today]
+          assert today_history, f'No current-runner history rows for {today}'
+          rated = [row for row in today_history if str(row.get('performance_rating', '')).strip()]
+          horses = {str(row.get('current_horse', '')).strip().upper() for row in today_history if str(row.get('current_horse', '')).strip()}
+          print(f'TODAY={today}')
+          print(f'TODAY_MEETINGS={len(meetings)}')
+          print(f'TODAY_RACES={len(races)}')
+          print(f'TODAY_RUNNERS={len(runners)}')
+          print(f'TODAY_HISTORY_ROWS={len(today_history)}')
+          print(f'TODAY_RUNNERS_WITH_HISTORY={len(horses)}')
+          print(f'TODAY_RATED_HISTORY_ROWS={len(rated)}')
+          PY
+
       - name: Build lightweight Meetings summary
         env:
           TZ: Australia/Melbourne
@@ -105,10 +149,15 @@ jobs:
           test -s dist/data/races/index.json
           test -s dist/data/runners/index.json
           test -s dist/data/edgeiq_vic_three_day_race_list_v1.csv
+          test -s dist/data/edgeiq_current_runner_performance_history_v1.csv
           test ! -e dist/data/edgeiq_three_day_product_catalog_v1.json
           python - <<'PY'
+          import csv
           import json
+          from datetime import datetime
           from pathlib import Path
+          from zoneinfo import ZoneInfo
+
           window = json.loads(Path('dist/data/edgeiq_three_day_window_v1.json').read_text(encoding='utf-8'))
           summary_path = Path('dist/data/edgeiq_meetings_summary_feed_v1.json')
           summary = json.loads(summary_path.read_text(encoding='utf-8'))
@@ -118,9 +167,15 @@ jobs:
           race_records = race_index.get('races', [])
           runner_index = json.loads(Path('dist/data/runners/index.json').read_text(encoding='utf-8'))
           runner_records = runner_index.get('runners', [])
+          history_path = Path('dist/data/edgeiq_current_runner_performance_history_v1.csv')
+          today = datetime.now(ZoneInfo('Australia/Melbourne')).date().isoformat()
+          with history_path.open('r', encoding='utf-8-sig', newline='') as handle:
+              history = list(csv.DictReader(handle))
+          today_history = [row for row in history if str(row.get('current_race_date', ''))[:10] == today]
           assert meeting_records, 'No meeting detail shards generated'
           assert race_records, 'No race detail shards generated'
           assert runner_records, 'No runner detail shards generated'
+          assert today_history, f'No deployed performance history for {today}'
           for label, records in [('meeting', meeting_records), ('race', race_records), ('runner', runner_records)]:
               for item in records:
                   relative = str(item.get('path', '')).lstrip('/')
@@ -134,6 +189,7 @@ jobs:
           print('MEETING_DETAIL_SHARDS=' + str(len(meeting_records)))
           print('RACE_DETAIL_SHARDS=' + str(len(race_records)))
           print('RUNNER_DETAIL_SHARDS=' + str(len(runner_records)))
+          print('TODAY_PERFORMANCE_HISTORY_ROWS=' + str(len(today_history)))
           print('MONOLITHIC_RUNTIME_CATALOG=REMOVED')
           PY
 
