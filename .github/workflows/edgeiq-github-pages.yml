@@ -105,11 +105,24 @@ jobs:
           print('TODAY_RACE_LIST_ROWS=' + str(len(race_list_today)))
           PY
 
-      - name: Rebuild current terminal feeds after today catalog repair
+      - name: Rebuild current Wodonga form intelligence chain
         env:
           TZ: Australia/Melbourne
         run: |
+          python scripts/build_edgeiq_current_race_fields_from_product_catalog_v1.py
+          python scripts/build_edgeiq_form_guide_current_base_v1.py
+          python scripts/build_edgeiq_current_early_speed_v1.py
+          python scripts/build_edgeiq_current_late_speed_v1.py
+          python scripts/build_edgeiq_current_suitability_v1.py
+          python scripts/build_edgeiq_current_form_momentum_v1.py
+          python scripts/build_edgeiq_current_race_shape_v2.py
+          python scripts/build_edgeiq_current_map_v1.py
           python scripts/build_edgeiq_form_guide_enriched_v2.py
+
+      - name: Rebuild current terminal feeds after today form repair
+        env:
+          TZ: Australia/Melbourne
+        run: |
           python scripts/build_edgeiq_map_terminal_feed_v1.py
           python scripts/build_edgeiq_market_terminal_feed_v1.py
           python scripts/build_edgeiq_overview_terminal_feed_v1.py
@@ -137,8 +150,12 @@ jobs:
           data = Path('public/data')
           today = datetime.now(ZoneInfo('Australia/Melbourne')).date().isoformat()
           catalog_path = data / 'edgeiq_three_day_product_catalog_v1.json'
+          form_base_path = data / 'edgeiq_form_guide_enriched_v1.json'
+          form_v2_path = data / 'edgeiq_form_guide_enriched_v2.json'
           history_path = data / 'edgeiq_current_runner_performance_history_v1.csv'
           assert catalog_path.exists() and catalog_path.stat().st_size > 0, 'Current product catalog missing'
+          assert form_base_path.exists() and form_base_path.stat().st_size > 0, 'Current form base missing'
+          assert form_v2_path.exists() and form_v2_path.stat().st_size > 0, 'Current enriched form missing'
           catalog = json.loads(catalog_path.read_text(encoding='utf-8'))
           meetings = [m for m in catalog.get('meetings', []) if isinstance(m, dict) and str(m.get('date', ''))[:10] == today]
           races = [r for m in meetings for r in m.get('races', []) if isinstance(r, dict)]
@@ -146,6 +163,16 @@ jobs:
           assert meetings, f'No meeting published for operational today {today}'
           assert races, f'No races published for operational today {today}'
           assert runners, f'No runners published for operational today {today}'
+          base = json.loads(form_base_path.read_text(encoding='utf-8'))
+          enriched = json.loads(form_v2_path.read_text(encoding='utf-8'))
+          base_races = [r for r in base.get('races', []) if isinstance(r, dict) and str(r.get('raceDate', ''))[:10] == today]
+          base_runners = [runner for r in base_races for runner in r.get('runners', []) if isinstance(runner, dict)]
+          enriched_races = [r for r in enriched.get('races', []) if isinstance(r, dict) and str(r.get('raceDate', ''))[:10] == today]
+          enriched_runners = [runner for r in enriched_races for runner in r.get('runners', []) if isinstance(runner, dict)]
+          assert base_runners, f'No current form-base runners for {today}'
+          assert enriched_runners, f'No current enriched-form runners for {today}'
+          assert len(base_runners) >= len(runners), f'Form base coverage incomplete: {len(base_runners)} < {len(runners)}'
+          assert len(enriched_runners) >= len(runners), f'Enriched form coverage incomplete: {len(enriched_runners)} < {len(runners)}'
           assert history_path.exists() and history_path.stat().st_size > 0, 'Current-runner performance history missing'
           with history_path.open('r', encoding='utf-8-sig', newline='') as handle:
               history = list(csv.DictReader(handle))
@@ -158,6 +185,8 @@ jobs:
           print(f'TODAY_MEETINGS={len(meetings)}')
           print(f'TODAY_RACES={len(races)}')
           print(f'TODAY_RUNNERS={len(runners)}')
+          print(f'TODAY_FORM_BASE_RUNNERS={len(base_runners)}')
+          print(f'TODAY_ENRICHED_FORM_RUNNERS={len(enriched_runners)}')
           print(f'TODAY_HISTORY_ROWS={len(today_history)}')
           print(f'TODAY_RUNNERS_WITH_HISTORY={len(horses)}')
           print(f'TODAY_RATED_HISTORY_ROWS={len(rated)}')
