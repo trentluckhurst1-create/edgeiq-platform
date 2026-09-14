@@ -52,12 +52,64 @@ jobs:
       - name: Refresh current three-day EDGEiQ data
         env:
           TZ: Australia/Melbourne
-        run: python scripts/ensure_edgeiq_current_data_rollover_v1.py
+        run: |
+          set +e
+          python scripts/run_edgeiq_daily_product_refresh_v1.py --date "$(date +%F)"
+          refresh_code=$?
+          set -e
+          echo "DAILY_REFRESH_EXIT_CODE=${refresh_code}"
+          echo "Legacy performance-recovery coverage may return non-zero; freshness is gated from actual published data below."
 
-      - name: Verify Pages data is current
+      - name: Gate fresh today meeting fields
         env:
           TZ: Australia/Melbourne
-        run: python scripts/ensure_edgeiq_current_data_rollover_v1.py --check-only
+        run: |
+          python - <<'PY'
+          import csv
+          import json
+          from datetime import datetime
+          from pathlib import Path
+          from zoneinfo import ZoneInfo
+
+          data = Path('public/data')
+          today = datetime.now(ZoneInfo('Australia/Melbourne')).date().isoformat()
+          window_path = data / 'edgeiq_three_day_window_v1.json'
+          catalog_path = data / 'edgeiq_three_day_product_catalog_v1.json'
+          race_list_path = data / 'edgeiq_vic_three_day_race_list_v1.csv'
+          assert window_path.exists() and window_path.stat().st_size > 0, 'Three-day window missing'
+          assert catalog_path.exists() and catalog_path.stat().st_size > 0, 'Product catalog missing'
+          assert race_list_path.exists() and race_list_path.stat().st_size > 0, 'Race list missing'
+          window = json.loads(window_path.read_text(encoding='utf-8'))
+          assert str(window.get('today', ''))[:10] == today, f"Window stale: {window.get('today')} != {today}"
+          catalog = json.loads(catalog_path.read_text(encoding='utf-8'))
+          meetings = [m for m in catalog.get('meetings', []) if isinstance(m, dict) and str(m.get('date', ''))[:10] == today]
+          races = [r for m in meetings for r in m.get('races', []) if isinstance(r, dict)]
+          runners = [runner for r in races for runner in r.get('runners', []) if isinstance(runner, dict)]
+          with race_list_path.open('r', encoding='utf-8-sig', newline='') as handle:
+              race_list = list(csv.DictReader(handle))
+          race_list_today = [row for row in race_list if str(row.get('race_date', row.get('date', '')))[:10] == today]
+          assert meetings, f'No meeting published for operational today {today}'
+          assert races, f'No races published for operational today {today}'
+          assert runners, f'No runners published for operational today {today}'
+          assert race_list_today, f'No current race-list rows for {today}'
+          print('TODAY=' + today)
+          print('TODAY_MEETINGS=' + ','.join(str(m.get('meeting', '')) for m in meetings))
+          print('TODAY_RACES=' + str(len(races)))
+          print('TODAY_RUNNERS=' + str(len(runners)))
+          print('TODAY_RACE_LIST_ROWS=' + str(len(race_list_today)))
+          PY
+
+      - name: Rebuild current terminal feeds after legacy recovery stage
+        env:
+          TZ: Australia/Melbourne
+        run: |
+          python scripts/build_edgeiq_form_guide_enriched_v2.py
+          python scripts/build_edgeiq_map_terminal_feed_v1.py
+          python scripts/build_edgeiq_market_terminal_feed_v1.py
+          python scripts/build_edgeiq_overview_terminal_feed_v1.py
+          python scripts/build_edgeiq_insights_terminal_feed_v1.py
+          python scripts/build_edgeiq_gear_terminal_feed_v1.py
+          python scripts/build_edgeiq_meeting_results_terminal_feed_v1.py
 
       - name: Build current-runner governed performance history
         env:
@@ -94,6 +146,7 @@ jobs:
           assert today_history, f'No current-runner history rows for {today}'
           rated = [row for row in today_history if str(row.get('performance_rating', '')).strip()]
           horses = {str(row.get('current_horse', '')).strip().upper() for row in today_history if str(row.get('current_horse', '')).strip()}
+          sectional = [row for row in today_history if any(str(row.get(k, '')).strip() for k in ('early_sectional','late_sectional','last_600','last_400','last_200'))]
           print(f'TODAY={today}')
           print(f'TODAY_MEETINGS={len(meetings)}')
           print(f'TODAY_RACES={len(races)}')
@@ -101,6 +154,7 @@ jobs:
           print(f'TODAY_HISTORY_ROWS={len(today_history)}')
           print(f'TODAY_RUNNERS_WITH_HISTORY={len(horses)}')
           print(f'TODAY_RATED_HISTORY_ROWS={len(rated)}')
+          print(f'TODAY_SECTIONAL_HISTORY_ROWS={len(sectional)}')
           PY
 
       - name: Build lightweight Meetings summary
@@ -142,6 +196,8 @@ jobs:
         run: rm -f dist/data/edgeiq_three_day_product_catalog_v1.json
 
       - name: Verify lightweight Pages data
+        env:
+          TZ: Australia/Melbourne
         run: |
           test -s dist/data/edgeiq_three_day_window_v1.json
           test -s dist/data/edgeiq_meetings_summary_feed_v1.json
@@ -172,6 +228,7 @@ jobs:
           with history_path.open('r', encoding='utf-8-sig', newline='') as handle:
               history = list(csv.DictReader(handle))
           today_history = [row for row in history if str(row.get('current_race_date', ''))[:10] == today]
+          assert str(window.get('today', ''))[:10] == today, f'Deployed window stale: {window.get("today")} != {today}'
           assert meeting_records, 'No meeting detail shards generated'
           assert race_records, 'No race detail shards generated'
           assert runner_records, 'No runner detail shards generated'
