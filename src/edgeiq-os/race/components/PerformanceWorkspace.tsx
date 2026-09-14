@@ -16,11 +16,15 @@ type PerformanceIntel = {
   latestRating: string;
   latestRatingValue: number | null;
   peakRating: string;
+  peakRatingValue: number | null;
   ratingTrend: string;
   ratingTrendTone: "up" | "down" | "stable" | "limited";
+  ratingTrendDeltaValue: number | null;
   recentForm: string;
   recency: string;
   distanceEvidence: string;
+  distanceRunCount: number;
+  distanceBestFinish: number | null;
   ratingCoverage: string;
 };
 type ComparisonRunner = {
@@ -69,10 +73,12 @@ function performanceIntel(runner: ThreeDayRunner | null, race: ThreeDayRace, mee
 
   let ratingTrend = "LIMITED DATA";
   let ratingTrendTone: PerformanceIntel["ratingTrendTone"] = "limited";
+  let ratingTrendDeltaValue: number | null = null;
   if (ratings.length >= 2) {
     const prior = ratings.slice(1);
     const priorAverage = prior.reduce((sum, value) => sum + value, 0) / prior.length;
     const delta = latestRatingValue! - priorAverage;
+    ratingTrendDeltaValue = delta;
     if (delta >= 2) { ratingTrend = `UP +${delta.toFixed(1)}`; ratingTrendTone = "up"; }
     else if (delta <= -2) { ratingTrend = `DOWN ${delta.toFixed(1)}`; ratingTrendTone = "down"; }
     else { ratingTrend = `STABLE ${delta >= 0 ? "+" : ""}${delta.toFixed(1)}`; ratingTrendTone = "stable"; }
@@ -95,10 +101,10 @@ function performanceIntel(runner: ThreeDayRunner | null, race: ThreeDayRace, mee
   const targetDistance = distanceMetres(race.distance);
   const distanceRows = targetDistance === null ? [] : rows.filter((record) => distanceMetres(first(record, ["distance", "dist", "race_distance"], "")) === targetDistance);
   const distanceFinishes = distanceRows.map(finishPosition).filter((value): value is number => value !== null);
+  const distanceBestFinish = distanceFinishes.length ? Math.min(...distanceFinishes) : null;
   let distanceEvidence = "NO MATCHING RUNS";
   if (distanceRows.length) {
-    const best = distanceFinishes.length ? Math.min(...distanceFinishes) : null;
-    distanceEvidence = best === null ? `${distanceRows.length} RUN${distanceRows.length === 1 ? "" : "S"}` : `${distanceRows.length} RUN${distanceRows.length === 1 ? "" : "S"} · BEST ${best}`;
+    distanceEvidence = distanceBestFinish === null ? `${distanceRows.length} RUN${distanceRows.length === 1 ? "" : "S"}` : `${distanceRows.length} RUN${distanceRows.length === 1 ? "" : "S"} · BEST ${distanceBestFinish}`;
   }
 
   return {
@@ -107,13 +113,22 @@ function performanceIntel(runner: ThreeDayRunner | null, race: ThreeDayRace, mee
     latestRating: latestRatingValue === null ? "LIMITED DATA" : latestRatingValue.toFixed(1),
     latestRatingValue,
     peakRating: peakRatingValue === null ? "LIMITED DATA" : peakRatingValue.toFixed(1),
+    peakRatingValue,
     ratingTrend,
     ratingTrendTone,
+    ratingTrendDeltaValue,
     recentForm: form || "LIMITED DATA",
     recency,
     distanceEvidence,
+    distanceRunCount: distanceRows.length,
+    distanceBestFinish,
     ratingCoverage: rows.length ? `${ratings.length}/${rows.length} RATED` : "NO HISTORY",
   };
+}
+
+function comparisonName(row: ComparisonRunner | null): string {
+  if (!row) return "NO EVIDENCE";
+  return `#${officialNumber(row.runner)} ${runnerName(row.runner)}`;
 }
 
 export function PerformanceWorkspace({ meeting, selectedRaceKey, onRaceChange }: PerformanceWorkspaceProps) {
@@ -193,6 +208,24 @@ export function PerformanceWorkspace({ meeting, selectedRaceKey, onRaceChange }:
       return a.index - b.index;
     });
 
+  const latestLeader = comparisonRows.find((row) => row.intel.latestRatingValue !== null) ?? null;
+  const peakLeader = [...comparisonRows]
+    .filter((row) => row.intel.peakRatingValue !== null)
+    .sort((a, b) => (b.intel.peakRatingValue ?? -Infinity) - (a.intel.peakRatingValue ?? -Infinity))[0] ?? null;
+  const biggestImprover = [...comparisonRows]
+    .filter((row) => row.intel.ratingTrendDeltaValue !== null && row.intel.ratingTrendDeltaValue > 0)
+    .sort((a, b) => (b.intel.ratingTrendDeltaValue ?? -Infinity) - (a.intel.ratingTrendDeltaValue ?? -Infinity))[0] ?? null;
+  const distanceLeader = [...comparisonRows]
+    .filter((row) => row.intel.distanceRunCount > 0)
+    .sort((a, b) => {
+      if (a.intel.distanceRunCount !== b.intel.distanceRunCount) return b.intel.distanceRunCount - a.intel.distanceRunCount;
+      const aBest = a.intel.distanceBestFinish ?? Infinity;
+      const bBest = b.intel.distanceBestFinish ?? Infinity;
+      if (aBest !== bBest) return aBest - bBest;
+      return (b.intel.latestRatingValue ?? -Infinity) - (a.intel.latestRatingValue ?? -Infinity);
+    })[0] ?? null;
+  const weakEvidenceCount = comparisonRows.filter((row) => row.intel.historyCount < 2 || row.intel.ratedCount < 1).length;
+
   return (
     <section className="eiq-performance-v1" aria-label="Performance workspace" data-edgeiq-workspace-key="PERFORMANCE">
       <header className="eiq-performance-v1__header">
@@ -206,6 +239,16 @@ export function PerformanceWorkspace({ meeting, selectedRaceKey, onRaceChange }:
 
       <section className="eiq-performance-v1__card">
         <header><div><h2>{raceTitle(selectedRace)}</h2><p>{display(selectedRace.distance)} · {display(selectedRace.raceClass)}</p></div></header>
+        <section className="eiq-performance-v1__relative" aria-label="Race relative performance intelligence">
+          <header><div><span>RACE-RELATIVE INTELLIGENCE</span><strong>TRACEABLE EVIDENCE</strong></div><p>No composite score · no pricing impact</p></header>
+          <div>
+            <article><span>TOP CURRENT RATING</span><strong>{comparisonName(latestLeader)}</strong><small>{latestLeader ? latestLeader.intel.latestRating : "NO RATED EVIDENCE"}</small></article>
+            <article><span>STRONGEST PEAK</span><strong>{comparisonName(peakLeader)}</strong><small>{peakLeader ? peakLeader.intel.peakRating : "NO RATED EVIDENCE"}</small></article>
+            <article><span>BIGGEST IMPROVER</span><strong>{comparisonName(biggestImprover)}</strong><small>{biggestImprover ? biggestImprover.intel.ratingTrend : "NO POSITIVE TREND"}</small></article>
+            <article><span>DISTANCE SIGNAL</span><strong>{comparisonName(distanceLeader)}</strong><small>{distanceLeader ? distanceLeader.intel.distanceEvidence : "NO EXACT-DISTANCE RUNS"}</small></article>
+            <article><span>WEAK EVIDENCE</span><strong>{weakEvidenceCount} RUNNER{weakEvidenceCount === 1 ? "" : "S"}</strong><small>&lt;2 prior runs or no rated run</small></article>
+          </div>
+        </section>
         <section className="eiq-performance-v1__comparison" aria-label="Field performance comparison">
           <header><div><span>FIELD COMPARISON</span><strong>STRICT-PRIOR</strong></div><p>{comparisonLoading ? "Loading runner evidence…" : "Rated runners ordered by latest rating · unrated runners retained"}</p></header>
           <div className="eiq-performance-v1__comparison-table">
