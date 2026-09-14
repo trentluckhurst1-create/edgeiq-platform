@@ -1,15 +1,11 @@
 built_at,record_type,race_date,track,day_bucket,meeting_type,meeting_status,dashboard_ready,field_rows,field_races,priced_rows,value,message
-2026-07-26T13:33:21+10:00,SUMMARY,,,,,,,,,,1151,rows_older_than_calendar_window_removed
-2026-07-26T13:33:21+10:00,SUMMARY,,,,,,,,,,0,rows_outside_three_day_calendar_removed
-2026-07-26T13:33:21+10:00,SUMMARY,,,,,,,,,,0,undated_field_rows_removed
-2026-07-26T13:33:21+10:00,SUMMARY,,,,,,,,,,154,rows_not_present_in_calendar_removed
-2026-07-26T13:33:21+10:00,MEETING,2026-07-26,SALE,TODAY,COUNTRY,FIELDS_READY,YES,108,8,80,108,calendar_meeting_discovered_and_field_rows_loaded
-2026-07-26T13:33:21+10:00,MEETING,2026-07-26,WODONGA,TODAY,COUNTRY,FIELDS_UNAVAILABLE,NO,0,0,0,0,calendar_meeting_discovered_but_no_current_field_source_rows
-2026-07-26T13:33:21+10:00,MEETING,2026-07-27,BALLARAT SYNTHETIC,TOMORROW,COUNTRY,FIELDS_PENDING,NO,0,0,0,0,calendar_meeting_discovered_waiting_for_future_field_rows
-2026-07-26T13:33:21+10:00,MEETING,2026-07-28,SWAN HILL,DAY+2,COUNTRY,FIELDS_PENDING,NO,0,0,0,0,calendar_meeting_discovered_waiting_for_future_field_rows
-2026-07-26T13:33:21+10:00,SUMMARY,,,,,,,,,,4,calendar_meetings_total
-2026-07-26T13:33:21+10:00,SUMMARY,,,,,FIELDS_READY,YES,,,,1,calendar_meetings_fields_ready
-2026-07-26T13:33:21+10:00,SUMMARY,,,,,FIELDS_PENDING,NO,,,,2,calendar_meetings_fields_pending
-2026-07-26T13:33:21+10:00,SUMMARY,,,,,FIELDS_UNAVAILABLE,NO,,,,1,calendar_meetings_fields_unavailable
-2026-07-26T13:33:21+10:00,SUMMARY,,,,,,,,,,108,runner_rows_written_to_universe
-2026-07-26T13:33:21+10:00,SUMMARY,,,,,,,,,,80,runner_rows_with_market_price
+2026-09-14T14:01:55+10:00,SUMMARY,,,,,,,,,,0,rows_older_than_calendar_window_removed
+2026-09-14T14:01:55+10:00,SUMMARY,,,,,,,,,,0,rows_outside_three_day_calendar_removed
+2026-09-14T14:01:55+10:00,SUMMARY,,,,,,,,,,0,undated_field_rows_removed
+2026-09-14T14:01:55+10:00,SUMMARY,,,,,,,,,,0,rows_not_present_in_calendar_removed
+2026-09-14T14:01:55+10:00,SUMMARY,,,,,,,,,,0,calendar_meetings_total
+2026-09-14T14:01:55+10:00,SUMMARY,,,,,FIELDS_READY,YES,,,,0,calendar_meetings_fields_ready
+2026-09-14T14:01:55+10:00,SUMMARY,,,,,FIELDS_PENDING,NO,,,,0,calendar_meetings_fields_pending
+2026-09-14T14:01:55+10:00,SUMMARY,,,,,FIELDS_UNAVAILABLE,NO,,,,0,calendar_meetings_fields_unavailable
+2026-09-14T14:01:55+10:00,SUMMARY,,,,,,,,,,0,runner_rows_written_to_universe
+2026-09-14T14:01:55+10:00,SUMMARY,,,,,,,,,,0,runner_rows_with_market_price

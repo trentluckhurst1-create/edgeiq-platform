@@ -13,6 +13,7 @@ CATALOG = DATA / "edgeiq_three_day_product_catalog_v1.json"
 ENRICHED_FORM = DATA / "edgeiq_form_guide_enriched_v2.json"
 CURRENT_MAP = DATA / "edgeiq_current_map_v1.json"
 MARKET_FEED = DATA / "edgeiq_market_terminal_feed_v1.csv"
+PERFORMANCE_HISTORY = DATA / "edgeiq_current_runner_performance_history_v1.csv"
 RACE_DIR = DATA / "races"
 RUNNER_DIR = DATA / "runners"
 RACE_INDEX = RACE_DIR / "index.json"
@@ -108,6 +109,81 @@ def build_market_index() -> dict[tuple[str, str, str, str], dict[str, str]]:
         if all(key):
             out[key] = row
     return out
+
+
+def current_identity(date_value: Any, meeting: Any, race_number: Any, runner_name: Any) -> tuple[str, str, str, str]:
+    return (text(date_value)[:10], norm_track(meeting), race_no(race_number), norm_runner(runner_name))
+
+
+def build_performance_history_index() -> dict[tuple[str, str, str, str], list[dict[str, Any]]]:
+    out: dict[tuple[str, str, str, str], list[dict[str, Any]]] = {}
+    for row in read_csv(PERFORMANCE_HISTORY):
+        key = current_identity(
+            row.get("current_race_date"),
+            row.get("current_track"),
+            row.get("current_race_no"),
+            row.get("current_horse"),
+        )
+        if not all(key):
+            continue
+        history_row = {
+            "date": text(row.get("historical_race_date")),
+            "track": text(row.get("historical_track")),
+            "raceNo": text(row.get("historical_race_no")),
+            "horse": text(row.get("historical_horse")),
+            "distance": text(row.get("distance")),
+            "class": text(row.get("race_class")),
+            "going": text(row.get("going")),
+            "finish": text(row.get("finish")),
+            "margin": text(row.get("margin")),
+            "fieldSize": text(row.get("field_size")),
+            "jockey": text(row.get("jockey")),
+            "trainer": text(row.get("trainer")),
+            "sp": text(row.get("sp")),
+            "rating": text(row.get("performance_rating")),
+            "epi": text(row.get("epi")),
+            "early_speed": text(row.get("early_sectional")),
+            "late_speed": text(row.get("late_sectional")),
+            "last_600": text(row.get("last_600")),
+            "last_400": text(row.get("last_400")),
+            "last_200": text(row.get("last_200")),
+            "historySource": text(row.get("history_source")),
+            "ratingSource": text(row.get("rating_source")),
+            "sectionalSource": text(row.get("sectional_source")),
+            "identityCertification": text(row.get("identity_certification")),
+            "strictPriorCertified": text(row.get("strict_prior_certified")),
+        }
+        out.setdefault(key, []).append(history_row)
+
+    for rows in out.values():
+        rows.sort(key=lambda item: text(item.get("date")), reverse=True)
+    return out
+
+
+def performance_sectional_summary(rows: list[dict[str, Any]]) -> dict[str, Any]:
+    sectional_rows = [
+        row
+        for row in rows
+        if any(text(row.get(key)) for key in ("early_speed", "late_speed", "last_600", "last_400", "last_200"))
+    ]
+    count = len(sectional_rows)
+    if count == 0:
+        label = "NO SECTIONAL HISTORY"
+    elif count == 1:
+        label = "LIMITED HISTORY · 1 PRIOR RUN"
+    else:
+        label = f"{count} PRIOR RUNS"
+    supported = count >= 2
+    return {
+        "label": label,
+        "sectionalRunCount": count,
+        "support": "LIMITED DATA" if not supported else "SUPPORTED",
+        "sectionalWeapon": "" if not supported else "AVAILABLE",
+        "latePower": "" if not supported else "AVAILABLE",
+        "earlySpeed": "" if not supported else "AVAILABLE",
+        "consistency": "" if count < 3 else "AVAILABLE",
+        "trajectory": "" if count < 3 else "AVAILABLE",
+    }
 
 
 def scalar(value: Any) -> Any:
@@ -209,6 +285,7 @@ def main() -> int:
     enriched_index = build_enriched_index()
     map_index = build_map_index()
     market_index = build_market_index()
+    performance_history_index = build_performance_history_index()
 
     for directory in (RACE_DIR, RUNNER_DIR):
         if directory.exists():
@@ -251,6 +328,21 @@ def main() -> int:
                 map_matches += 1 if map_row else 0
                 market_matches += 1 if market_row else 0
                 full_runner = enrich_runner(runner, enriched, map_row, market_row)
+                history_rows = performance_history_index.get(
+                    current_identity(date_value, meeting_name, race_number, runner_name),
+                    [],
+                )
+                if history_rows:
+                    full_runner["historicalRuns"] = history_rows
+                    full_runner["evidenceRuns"] = history_rows
+                    full_runner.setdefault("source", {})
+                    full_runner["source"]["performanceHistoryPath"] = "/data/edgeiq_current_runner_performance_history_v1.csv"
+                    full_runner["source"]["performanceHistoryRows"] = len(history_rows)
+                    full_runner["source"]["performanceHistorySource"] = "edgeiq_current_runner_performance_history_v1"
+                    full_runner["source"]["performanceSectionalSummary"] = performance_sectional_summary(history_rows)
+                else:
+                    full_runner.setdefault("source", {})
+                    full_runner["source"]["performanceSectionalSummary"] = performance_sectional_summary([])
 
                 runner_filename = f"{date_value}_{slug(meeting_key)}_{slug(race_key)}_{runner_index + 1:02d}.json"
                 runner_path = RUNNER_DIR / runner_filename

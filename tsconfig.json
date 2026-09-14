@@ -18,6 +18,7 @@
     "noImplicitReturns": false
   },
   "include": [
+    "src/vite-env.d.ts",
     "src/main.tsx",
     "src/App.tsx",
     "src/components/SpeedMapTab.tsx"

@@ -1,12 +1,11 @@
 EDGEIQ THREE-DAY PRODUCT CATALOGUE V1
 =============================================
 
-Generated: 2026-07-26T13:35:29.381154
-Dates: 2026-07-26, 2026-07-27, 2026-07-28
-Meetings: 3
-Races: 18
-Runners: 246
+Generated: 2026-09-14T14:01:55.672230
+Dates: 2026-09-13, 2026-09-14, 2026-09-15
+Meetings: 2
+Races: 16
+Runners: 204
 
-2026-07-26 | Sale | 8 races | 108 runners
-2026-07-27 | Ballarat | 10 races | 138 runners
-2026-07-28 | Swan Hill | 0 races | 0 runners
+2026-09-13 | Sale | 8 races | 101 runners
+2026-09-14 | Hamilton | 8 races | 103 runners

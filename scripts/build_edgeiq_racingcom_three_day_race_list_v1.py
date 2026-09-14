@@ -7,6 +7,8 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from urllib.request import Request, urlopen
 
+from edgeiq_three_day_window_v1_common import build_three_day_window
+
 csv.field_size_limit(1024 * 1024 * 64)
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -17,6 +19,14 @@ SUMMARY = DATA / "edgeiq_vic_three_day_race_list_v1_summary.csv"
 RAW = DATA / "edgeiq_racingcom_three_day_raw_meetings_v1.json"
 
 CALENDAR_URL = "https://www.racing.com/services/appv2/GetMeetsByMonth/{year}/{month}"
+
+THREE_DAY_WINDOW = build_three_day_window()
+TARGET_DATES = [
+    datetime.fromisoformat(THREE_DAY_WINDOW.today).date(),
+    datetime.fromisoformat(THREE_DAY_WINDOW.tomorrow).date(),
+    datetime.fromisoformat(THREE_DAY_WINDOW.dayPlus2).date(),
+]
+TARGET_DATE_SET = {item.isoformat() for item in TARGET_DATES}
 
 FIELDS = [
     "race_date","day_bucket","track","normalised_track","meeting_key",
@@ -51,12 +61,11 @@ def norm_track(v):
     return s
 
 def day_bucket(d):
-    today = datetime.now().date()
     try:
         dd = datetime.fromisoformat(d[:10]).date()
     except Exception:
         return ""
-    delta = (dd - today).days
+    delta = (dd - TARGET_DATES[0]).days
     if delta == 0:
         return "TODAY"
     if delta == 1:
@@ -75,10 +84,8 @@ def fetch_json(url):
         return json.loads(r.read().decode("utf-8", errors="replace"))
 
 def month_targets():
-    today = datetime.now().date()
-    days = [today, today + timedelta(days=1), today + timedelta(days=2)]
     keys = []
-    for d in days:
+    for d in TARGET_DATES:
         key = (d.year, d.month)
         if key not in keys:
             keys.append(key)

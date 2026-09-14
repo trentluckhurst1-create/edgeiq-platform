@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "edgeiq_performance_workspace_v2_audit",
+  "generatedAt": "2026-09-14T18:54:46",
+  "currentRunnerAudit": "public/data/edgeiq_current_runner_performance_history_v1_audit.json",
+  "currentRunnerHistory": "public/data/edgeiq_current_runner_performance_history_v1.csv",
+  "governedMeetings": [
+    {
+      "date": "2026-09-13",
+      "meetingKey": "2026-09-13|SALE",
+      "track": "Sale",
+      "races": 8,
+      "runners": 101
+    },
+    {
+      "date": "2026-09-14",
+      "meetingKey": "2026-09-14|HAMILTON",
+      "track": "Hamilton",
+      "races": 8,
+      "runners": 103
+    }
+  ],
+  "raceCount": 16,
+  "currentRunners": 204,
+  "historyRows": 785,
+  "runnersWith1PlusHistory": 141,
+  "runnersWith3PlusHistory": 87,
+  "runnersWith5PlusHistory": 59,
+  "strictSectionalEvidence": {
+    "source": "public/data/edgeiq_sectional_governed_v29.csv",
+    "rowsWithAnySectional": 0,
+    "rowsWithEarlySectional": 0,
+    "rowsWithLateSectional": 0,
+    "state": "NO SECTIONAL HISTORY",
+    "support": "LIMITED DATA",
+    "quarantineUsed": false
+  },
+  "staleDataGuards": {
+    "kilmorePresentInCurrentUniverse": false,
+    "staleKilmoreRestored": false
+  },
+  "uiAcceptance": {
+    "saleR5": "PASS",
+    "magicDrumHistoryRowsVisible": 5,
+    "hamiltonR5": "PASS",
+    "sidePieceHistoryRowsVisible": 1,
+    "staleDetailWarningAbsent": true,
+    "noSectionalHistoryStateVisible": true
+  },
+  "verification": {
+    "historyBuilder": "PASS",
+    "raceDetailShardBuilder": "PASS",
+    "npmBuild": "PASS",
+    "obsoleteRaceTestReleaseBlocker": false,
+    "obsoleteRaceTestNote": "npm run test:race targets the removed RaceIntelligenceWorkspace.tsx architecture and was not used as a release blocker."
+  }
+}

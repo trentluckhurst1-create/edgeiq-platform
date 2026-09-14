@@ -3,28 +3,25 @@ EDGEIQ THREE-DAY CATALOGUE AUDIT
 
 Raw race-like nodes found: 0
 Raw nested runners found: 0
-Final meetings: 3
-Final races: 18
-Final runners: 246
+Final meetings: 2
+Final races: 16
+Final runners: 204
 
-2026-07-26 | Sale | provider=SALE | races=8
-  R1 | Ladbrokes Sale Cup 25th October – Book Now Maiden Plate | 2200m | time=None | runners=8
-  R2 | Thankyou Members & Sponsors for Season 2025/26 Maiden Plate | 1400m | time=None | runners=19
-  R3 | Viatek Maiden Plate | 1000m | time=None | runners=14
-  R4 | Ladbrokes Place Extra to 10th Maiden Plate | 1100m | time=None | runners=20
-  R5 | Carlton Draught BM70 Handicap | 1200m | time=None | runners=9
-  R6 | Elliman Property BM62 Handicap | 1000m | time=None | runners=11
-  R7 | Ladbrokes Odds Surge BM66 Handicap | 1600m | time=None | runners=10
-  R8 | Gippsland Funeral Services BM62 Handicap | 1400m | time=None | runners=17
-2026-07-27 | Ballarat | provider=BALLARAT | races=10
-  R1 | Ciaron Maher Racing Maiden Plate | 1000m | time=None | runners=14
-  R2 | Tooheys Form-Crete Maiden Plate | 1200m | time=None | runners=18
-  R3 | AAC Temp Fencing Maiden Plate | 1500m | time=None | runners=18
-  R4 | Erikev Firewood Maiden Plate | 2200m | time=None | runners=11
-  R5 | Smith and Sons Ballarat BM56 Handicap | 2200m | time=None | runners=13
-  R6 | The Red Lion BM56 Handicap | 1000m | time=None | runners=14
-  R7 | Manhari BM56 Handicap | 1200m | time=None | runners=17
-  R8 | Hygain Edge BM56 Handicap | 1200m | time=None | runners=0
-  R9 | Sportsbet Race Previews BM56 Handicap | 1500m | time=None | runners=17
-  R10 | Hygain Edge BM56 Handicap | 1500m | time=None | runners=16
-2026-07-28 | Swan Hill | provider=SWAN HILL | races=0
+2026-09-13 | Sale | provider=SALE | races=8
+  R1 | Carlton Draught Maiden Plate | 1615m | time=None | runners=13
+  R2 | STC Foundation supporting Break a Sweat for Cystic Fibrosis 3YO Mdn Plte | 1415m | time=None | runners=12
+  R3 | Remembering Mary Olive Hargreaves 4YO+ Maiden Plate | 1415m | time=None | runners=15
+  R4 | SANLAM Private Wealth Maiden Plate | 1206m | time=None | runners=17
+  R5 | No. 1 Car Wash BM62 Handicap | 1206m | time=None | runners=11
+  R6 | Johnson Plumbing & Gas BM62 Handicap | 1006m | time=None | runners=9
+  R7 | Elliman Property BM62 Handicap | 1732m | time=None | runners=11
+  R8 | Ladbrokes Odds Surge BM62 Handicap | 1415m | time=None | runners=13
+2026-09-14 | Hamilton | provider=HAMILTON | races=8
+  R1 | bet365 Bet Boost Maiden Plate | 1200m | time=None | runners=10
+  R2 | Creek Electrical Maiden Plate | 1100m | time=None | runners=13
+  R3 | Star Printing Maiden Plate | 1400m | time=None | runners=14
+  R4 | Walkers Earthworks Maiden Plate | 1600m | time=None | runners=16
+  R5 | Maxi Tankers BM56 Handicap | 1600m | time=None | runners=11
+  R6 | Finchetts Plumbing BM56 Handicap | 2200m | time=None | runners=11
+  R7 | Fitzgerald Concrete BM56 Handicap | 1100m | time=None | runners=14
+  R8 | The Cally Hamilton BM56 Handicap | 1400m | time=None | runners=14

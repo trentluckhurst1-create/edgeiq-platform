@@ -1,25 +1,25 @@
 {
   "schemaVersion": "edgeiq_three_day_window_v1",
   "timezone": "Australia/Melbourne",
-  "generatedAt": "2026-07-26T13:33:20+10:00",
-  "dateSource": "AUSTRALIA_MELBOURNE_CLOCK",
-  "today": "2026-07-26",
-  "tomorrow": "2026-07-27",
-  "dayPlus2": "2026-07-28",
+  "generatedAt": "2026-09-14T14:01:54+10:00",
+  "dateSource": "ENV_OVERRIDE_EDGEIQ_PIPELINE_DATE",
+  "today": "2026-09-13",
+  "tomorrow": "2026-09-14",
+  "dayPlus2": "2026-09-15",
   "dates": [
     {
       "key": "TODAY",
-      "date": "2026-07-26",
+      "date": "2026-09-13",
       "dayOffset": 0
     },
     {
       "key": "TOMORROW",
-      "date": "2026-07-27",
+      "date": "2026-09-14",
       "dayOffset": 1
     },
     {
       "key": "DAY_PLUS_2",
-      "date": "2026-07-28",
+      "date": "2026-09-15",
       "dayOffset": 2
     }
   ]
