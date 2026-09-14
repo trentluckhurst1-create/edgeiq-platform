@@ -130,10 +130,17 @@ jobs:
           python scripts/build_edgeiq_gear_terminal_feed_v1.py
           python scripts/build_edgeiq_meeting_results_terminal_feed_v1.py
 
-      - name: Build current-runner governed performance history
+      - name: Capture full current horse profile form and run ratings
         env:
           TZ: Australia/Melbourne
-        run: python scripts/build_edgeiq_current_runner_performance_history_v1.py
+        run: python scripts/build_edgeiq_current_runner_profile_history_v1.py
+
+      - name: Build and merge current-runner governed performance history
+        env:
+          TZ: Australia/Melbourne
+        run: |
+          python scripts/build_edgeiq_current_runner_performance_history_v1.py
+          python scripts/merge_edgeiq_current_runner_profile_history_v1.py
 
       - name: Gate today form and performance coverage
         env:
@@ -142,6 +149,7 @@ jobs:
           python - <<'PY'
           import csv
           import json
+          from collections import Counter
           from datetime import datetime
           from pathlib import Path
           from zoneinfo import ZoneInfo
@@ -152,10 +160,12 @@ jobs:
           catalog_path = data / 'edgeiq_three_day_product_catalog_v1.json'
           form_base_path = data / 'edgeiq_form_guide_enriched_v1.json'
           form_v2_path = data / 'edgeiq_form_guide_enriched_v2.json'
+          profile_path = data / 'edgeiq_current_runner_profile_history_v1.csv'
           history_path = data / 'edgeiq_current_runner_performance_history_v1.csv'
           assert catalog_path.exists() and catalog_path.stat().st_size > 0, 'Current product catalog missing'
           assert form_base_path.exists() and form_base_path.stat().st_size > 0, 'Current form base missing'
           assert form_v2_path.exists() and form_v2_path.stat().st_size > 0, 'Current enriched form missing'
+          assert profile_path.exists() and profile_path.stat().st_size > 0, 'Current horse profile history missing'
           catalog = json.loads(catalog_path.read_text(encoding='utf-8'))
           meetings = [m for m in catalog.get('meetings', []) if isinstance(m, dict) and str(m.get('date', ''))[:10] == today]
           races = [r for m in meetings for r in m.get('races', []) if isinstance(r, dict)]
@@ -181,6 +191,10 @@ jobs:
           rated = [row for row in today_history if str(row.get('performance_rating', '')).strip()]
           horses = {str(row.get('current_horse', '')).strip().upper() for row in today_history if str(row.get('current_horse', '')).strip()}
           sectional = [row for row in today_history if any(str(row.get(k, '')).strip() for k in ('early_sectional','late_sectional','last_600','last_400','last_200'))]
+          counts = Counter(str(row.get('current_runner_key', '')).strip() for row in today_history if str(row.get('current_runner_key', '')).strip())
+          rated_horses = {str(row.get('current_horse', '')).strip().upper() for row in rated if str(row.get('current_horse', '')).strip()}
+          assert rated, 'Full profile form captured but no historical run ratings were recovered'
+          assert any(value >= 3 for value in counts.values()), 'No current runner has three or more strict-prior form rows'
           print(f'TODAY={today}')
           print(f'TODAY_MEETINGS={len(meetings)}')
           print(f'TODAY_RACES={len(races)}')
@@ -189,7 +203,10 @@ jobs:
           print(f'TODAY_ENRICHED_FORM_RUNNERS={len(enriched_runners)}')
           print(f'TODAY_HISTORY_ROWS={len(today_history)}')
           print(f'TODAY_RUNNERS_WITH_HISTORY={len(horses)}')
+          print(f'TODAY_RUNNERS_WITH_3_PLUS_HISTORY={sum(1 for value in counts.values() if value >= 3)}')
+          print(f'TODAY_RUNNERS_WITH_5_PLUS_HISTORY={sum(1 for value in counts.values() if value >= 5)}')
           print(f'TODAY_RATED_HISTORY_ROWS={len(rated)}')
+          print(f'TODAY_RUNNERS_WITH_RATED_HISTORY={len(rated_horses)}')
           print(f'TODAY_SECTIONAL_HISTORY_ROWS={len(sectional)}')
           PY
 
@@ -241,6 +258,7 @@ jobs:
           test -s dist/data/races/index.json
           test -s dist/data/runners/index.json
           test -s dist/data/edgeiq_vic_three_day_race_list_v1.csv
+          test -s dist/data/edgeiq_current_runner_profile_history_v1.csv
           test -s dist/data/edgeiq_current_runner_performance_history_v1.csv
           test ! -e dist/data/edgeiq_three_day_product_catalog_v1.json
           python - <<'PY'
@@ -265,11 +283,13 @@ jobs:
           with history_path.open('r', encoding='utf-8-sig', newline='') as handle:
               history = list(csv.DictReader(handle))
           today_history = [row for row in history if str(row.get('current_race_date', ''))[:10] == today]
+          rated_history = [row for row in today_history if str(row.get('performance_rating', '')).strip()]
           assert str(window.get('today', ''))[:10] == today, f'Deployed window stale: {window.get("today")} != {today}'
           assert meeting_records, 'No meeting detail shards generated'
           assert race_records, 'No race detail shards generated'
           assert runner_records, 'No runner detail shards generated'
           assert today_history, f'No deployed performance history for {today}'
+          assert rated_history, f'No deployed historical run ratings for {today}'
           for label, records in [('meeting', meeting_records), ('race', race_records), ('runner', runner_records)]:
               for item in records:
                   relative = str(item.get('path', '')).lstrip('/')
@@ -284,6 +304,7 @@ jobs:
           print('RACE_DETAIL_SHARDS=' + str(len(race_records)))
           print('RUNNER_DETAIL_SHARDS=' + str(len(runner_records)))
           print('TODAY_PERFORMANCE_HISTORY_ROWS=' + str(len(today_history)))
+          print('TODAY_RATED_HISTORY_ROWS=' + str(len(rated_history)))
           print('MONOLITHIC_RUNTIME_CATALOG=REMOVED')
           PY
 
