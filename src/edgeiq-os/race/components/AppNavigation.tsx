@@ -6,8 +6,7 @@ import type { LucideIcon } from "lucide-react";
 
 export type GlobalSection =
   | "home" | "meetings" | "race" | "field" | "formGuide" | "performance" | "epi" | "map"
-  | "market" | "results" | "track" | "weather" | "overview" | "insights"
-  | "lab" | "compare" | "review" | "settings";
+  | "market" | "results" | "track" | "weather" | "overview" | "insights";
 
 type AppNavigationProps = { activeSection: GlobalSection; onSectionChange: (section: GlobalSection) => void; };
 type NavItem = { key: GlobalSection; label: string; Icon: LucideIcon };
@@ -36,11 +35,6 @@ const navGroups: NavGroup[] = [
   ]},
 ];
 
-/**
- * CANONICAL EDGEiQ BRAND — LOCKED.
- * This approved artwork is the sole logo renderer for the application.
- * Never redraw, type-recreate, restyle, recolour, or substitute the logo in a workspace.
- */
 export function EdgeiqBrand() {
   return (
     <div className="eiq-app-nav__brand" data-edgeiq-canonical-brand="true">
