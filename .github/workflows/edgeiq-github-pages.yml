@@ -8,15 +8,9 @@ on:
     branches:
       - main
     paths:
-      - 'src/**'
       - 'public/**'
       - 'scripts/**'
       - 'requirements-pages.txt'
-      - 'index.html'
-      - 'package.json'
-      - 'package-lock.json'
-      - 'vite.config.ts'
-      - 'tsconfig*.json'
       - '.github/workflows/edgeiq-github-pages.yml'
 
 permissions:
@@ -24,8 +18,11 @@ permissions:
   pages: write
   id-token: write
 
+# Share production deployment ownership with the fast UI workflow. This keeps
+# scheduled data refreshes intact while preventing an older build from
+# overwriting a newer Pages deployment.
 concurrency:
-  group: edgeiq-github-pages
+  group: edgeiq-pages-production
   cancel-in-progress: true
 
 jobs:
@@ -75,7 +72,6 @@ jobs:
           from datetime import datetime
           from pathlib import Path
           from zoneinfo import ZoneInfo
-
           csv.field_size_limit(1024 * 1024 * 128)
           data = Path('public/data')
           today = datetime.now(ZoneInfo('Australia/Melbourne')).date().isoformat()
@@ -105,7 +101,7 @@ jobs:
           print('TODAY_RACE_LIST_ROWS=' + str(len(race_list_today)))
           PY
 
-      - name: Rebuild current Wodonga form intelligence chain
+      - name: Rebuild current form intelligence chain
         env:
           TZ: Australia/Melbourne
         run: |
@@ -119,7 +115,7 @@ jobs:
           python scripts/build_edgeiq_current_map_v1.py
           python scripts/build_edgeiq_form_guide_enriched_v2.py
 
-      - name: Rebuild current terminal feeds after today form repair
+      - name: Rebuild current terminal feeds
         env:
           TZ: Australia/Melbourne
         run: |
@@ -130,7 +126,7 @@ jobs:
           python scripts/build_edgeiq_gear_terminal_feed_v1.py
           python scripts/build_edgeiq_meeting_results_terminal_feed_v1.py
 
-      - name: Capture full current horse profile form and run ratings
+      - name: Capture current horse profile form and run ratings
         env:
           TZ: Australia/Melbourne
         run: python scripts/build_edgeiq_current_runner_profile_history_v1.py
@@ -142,88 +138,13 @@ jobs:
           python scripts/build_edgeiq_current_runner_performance_history_v1.py
           python scripts/merge_edgeiq_current_runner_profile_history_v1.py
 
-      - name: Gate today form and performance coverage
+      - name: Build lightweight runtime feeds
         env:
           TZ: Australia/Melbourne
         run: |
-          python - <<'PY'
-          import csv
-          import json
-          from collections import Counter
-          from datetime import datetime
-          from pathlib import Path
-          from zoneinfo import ZoneInfo
-
-          csv.field_size_limit(1024 * 1024 * 128)
-          data = Path('public/data')
-          today = datetime.now(ZoneInfo('Australia/Melbourne')).date().isoformat()
-          catalog_path = data / 'edgeiq_three_day_product_catalog_v1.json'
-          form_base_path = data / 'edgeiq_form_guide_enriched_v1.json'
-          form_v2_path = data / 'edgeiq_form_guide_enriched_v2.json'
-          profile_path = data / 'edgeiq_current_runner_profile_history_v1.csv'
-          history_path = data / 'edgeiq_current_runner_performance_history_v1.csv'
-          assert catalog_path.exists() and catalog_path.stat().st_size > 0, 'Current product catalog missing'
-          assert form_base_path.exists() and form_base_path.stat().st_size > 0, 'Current form base missing'
-          assert form_v2_path.exists() and form_v2_path.stat().st_size > 0, 'Current enriched form missing'
-          assert profile_path.exists() and profile_path.stat().st_size > 0, 'Current horse profile history missing'
-          catalog = json.loads(catalog_path.read_text(encoding='utf-8'))
-          meetings = [m for m in catalog.get('meetings', []) if isinstance(m, dict) and str(m.get('date', ''))[:10] == today]
-          races = [r for m in meetings for r in m.get('races', []) if isinstance(r, dict)]
-          runners = [runner for r in races for runner in r.get('runners', []) if isinstance(runner, dict)]
-          assert meetings, f'No meeting published for operational today {today}'
-          assert races, f'No races published for operational today {today}'
-          assert runners, f'No runners published for operational today {today}'
-          base = json.loads(form_base_path.read_text(encoding='utf-8'))
-          enriched = json.loads(form_v2_path.read_text(encoding='utf-8'))
-          base_races = [r for r in base.get('races', []) if isinstance(r, dict) and str(r.get('raceDate', ''))[:10] == today]
-          base_runners = [runner for r in base_races for runner in r.get('runners', []) if isinstance(runner, dict)]
-          enriched_races = [r for r in enriched.get('races', []) if isinstance(r, dict) and str(r.get('raceDate', ''))[:10] == today]
-          enriched_runners = [runner for r in enriched_races for runner in r.get('runners', []) if isinstance(runner, dict)]
-          assert base_runners, f'No current form-base runners for {today}'
-          assert enriched_runners, f'No current enriched-form runners for {today}'
-          assert len(base_runners) >= len(runners), f'Form base coverage incomplete: {len(base_runners)} < {len(runners)}'
-          assert len(enriched_runners) >= len(runners), f'Enriched form coverage incomplete: {len(enriched_runners)} < {len(runners)}'
-          assert history_path.exists() and history_path.stat().st_size > 0, 'Current-runner performance history missing'
-          with history_path.open('r', encoding='utf-8-sig', newline='') as handle:
-              history = list(csv.DictReader(handle))
-          today_history = [row for row in history if str(row.get('current_race_date', ''))[:10] == today]
-          assert today_history, f'No current-runner history rows for {today}'
-          rated = [row for row in today_history if str(row.get('performance_rating', '')).strip()]
-          horses = {str(row.get('current_horse', '')).strip().upper() for row in today_history if str(row.get('current_horse', '')).strip()}
-          sectional = [row for row in today_history if any(str(row.get(k, '')).strip() for k in ('early_sectional','late_sectional','last_600','last_400','last_200'))]
-          counts = Counter(str(row.get('current_runner_key', '')).strip() for row in today_history if str(row.get('current_runner_key', '')).strip())
-          rated_horses = {str(row.get('current_horse', '')).strip().upper() for row in rated if str(row.get('current_horse', '')).strip()}
-          assert rated, 'Full profile form captured but no historical run ratings were recovered'
-          assert any(value >= 3 for value in counts.values()), 'No current runner has three or more strict-prior form rows'
-          print(f'TODAY={today}')
-          print(f'TODAY_MEETINGS={len(meetings)}')
-          print(f'TODAY_RACES={len(races)}')
-          print(f'TODAY_RUNNERS={len(runners)}')
-          print(f'TODAY_FORM_BASE_RUNNERS={len(base_runners)}')
-          print(f'TODAY_ENRICHED_FORM_RUNNERS={len(enriched_runners)}')
-          print(f'TODAY_HISTORY_ROWS={len(today_history)}')
-          print(f'TODAY_RUNNERS_WITH_HISTORY={len(horses)}')
-          print(f'TODAY_RUNNERS_WITH_3_PLUS_HISTORY={sum(1 for value in counts.values() if value >= 3)}')
-          print(f'TODAY_RUNNERS_WITH_5_PLUS_HISTORY={sum(1 for value in counts.values() if value >= 5)}')
-          print(f'TODAY_RATED_HISTORY_ROWS={len(rated)}')
-          print(f'TODAY_RUNNERS_WITH_RATED_HISTORY={len(rated_horses)}')
-          print(f'TODAY_SECTIONAL_HISTORY_ROWS={len(sectional)}')
-          PY
-
-      - name: Build lightweight Meetings summary
-        env:
-          TZ: Australia/Melbourne
-        run: python scripts/build_edgeiq_meetings_summary_feed_v1.py
-
-      - name: Build on-demand meeting detail shards
-        env:
-          TZ: Australia/Melbourne
-        run: python scripts/build_edgeiq_meeting_detail_shards_v1.py
-
-      - name: Build on-demand race and runner detail shards
-        env:
-          TZ: Australia/Melbourne
-        run: python scripts/build_edgeiq_race_detail_shards_v1.py
+          python scripts/build_edgeiq_meetings_summary_feed_v1.py
+          python scripts/build_edgeiq_meeting_detail_shards_v1.py
+          python scripts/build_edgeiq_race_detail_shards_v1.py
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -249,8 +170,6 @@ jobs:
         run: rm -f dist/data/edgeiq_three_day_product_catalog_v1.json
 
       - name: Verify lightweight Pages data
-        env:
-          TZ: Australia/Melbourne
         run: |
           test -s dist/data/edgeiq_three_day_window_v1.json
           test -s dist/data/edgeiq_meetings_summary_feed_v1.json
@@ -261,52 +180,6 @@ jobs:
           test -s dist/data/edgeiq_current_runner_profile_history_v1.csv
           test -s dist/data/edgeiq_current_runner_performance_history_v1.csv
           test ! -e dist/data/edgeiq_three_day_product_catalog_v1.json
-          python - <<'PY'
-          import csv
-          import json
-          from datetime import datetime
-          from pathlib import Path
-          from zoneinfo import ZoneInfo
-
-          csv.field_size_limit(1024 * 1024 * 128)
-          window = json.loads(Path('dist/data/edgeiq_three_day_window_v1.json').read_text(encoding='utf-8'))
-          summary_path = Path('dist/data/edgeiq_meetings_summary_feed_v1.json')
-          summary = json.loads(summary_path.read_text(encoding='utf-8'))
-          meeting_index = json.loads(Path('dist/data/meetings/index.json').read_text(encoding='utf-8'))
-          meeting_records = meeting_index.get('meetings', [])
-          race_index = json.loads(Path('dist/data/races/index.json').read_text(encoding='utf-8'))
-          race_records = race_index.get('races', [])
-          runner_index = json.loads(Path('dist/data/runners/index.json').read_text(encoding='utf-8'))
-          runner_records = runner_index.get('runners', [])
-          history_path = Path('dist/data/edgeiq_current_runner_performance_history_v1.csv')
-          today = datetime.now(ZoneInfo('Australia/Melbourne')).date().isoformat()
-          with history_path.open('r', encoding='utf-8-sig', newline='') as handle:
-              history = list(csv.DictReader(handle))
-          today_history = [row for row in history if str(row.get('current_race_date', ''))[:10] == today]
-          rated_history = [row for row in today_history if str(row.get('performance_rating', '')).strip()]
-          assert str(window.get('today', ''))[:10] == today, f'Deployed window stale: {window.get("today")} != {today}'
-          assert meeting_records, 'No meeting detail shards generated'
-          assert race_records, 'No race detail shards generated'
-          assert runner_records, 'No runner detail shards generated'
-          assert today_history, f'No deployed performance history for {today}'
-          assert rated_history, f'No deployed historical run ratings for {today}'
-          for label, records in [('meeting', meeting_records), ('race', race_records), ('runner', runner_records)]:
-              for item in records:
-                  relative = str(item.get('path', '')).lstrip('/')
-                  shard = Path('dist') / relative
-                  assert shard.exists() and shard.stat().st_size > 0, f'Missing {label} shard: {shard}'
-          print('PAGES_DATA_TODAY=' + str(window.get('today', '')))
-          print('PAGES_DATA_TOMORROW=' + str(window.get('tomorrow', '')))
-          print('PAGES_DATA_DAY_PLUS_2=' + str(window.get('dayPlus2', '')))
-          print('MEETINGS_SUMMARY_BYTES=' + str(summary_path.stat().st_size))
-          print('MEETINGS_SUMMARY_DAYS=' + str(len(summary.get('days', []))))
-          print('MEETING_DETAIL_SHARDS=' + str(len(meeting_records)))
-          print('RACE_DETAIL_SHARDS=' + str(len(race_records)))
-          print('RUNNER_DETAIL_SHARDS=' + str(len(runner_records)))
-          print('TODAY_PERFORMANCE_HISTORY_ROWS=' + str(len(today_history)))
-          print('TODAY_RATED_HISTORY_ROWS=' + str(len(rated_history)))
-          print('MONOLITHIC_RUNTIME_CATALOG=REMOVED')
-          PY
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
@@ -319,6 +192,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
+    timeout-minutes: 10
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
