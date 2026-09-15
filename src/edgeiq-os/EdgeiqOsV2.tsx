@@ -12,7 +12,6 @@ import "./styles/edgeiqOverviewV1.css";
 import "./styles/edgeiqRemainingWorkspacesV1.css";
 import "./styles/edgeiqLightSidebarLock.css";
 import "../styles/edgeiqInstitutionalLightV1.css";
-import "../styles/edgeiqBrandLockV1.css";
 import { EdgeiqOsShell } from "./shell/EdgeiqOsShell";
 
 export function EdgeiqOsV2() {
