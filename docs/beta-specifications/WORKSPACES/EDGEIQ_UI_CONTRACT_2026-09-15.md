@@ -136,19 +136,91 @@ The UI must label the metric clearly as an EDGEiQ standard comparison so it cann
 
 Stewards information may be shown where its use is permitted and sourced correctly. EDGEiQ analytical notes must be independently derived and evidence-backed.
 
-## 7. MARKET — CURRENT LOCKED DIRECTION
+## 7. MARKET — LOCKED
 
-Market remains under active design, but the following decisions are already locked:
-- Professional analytical market workspace; not a bookmaker/trading interface.
-- Compare current market price with canonical EDGEiQ Price and governed edge/value classification.
-- No Back/Lay ladder, exchange order book or trading UI.
-- Each runner MUST have its OWN inline price-fluctuation board/sparkline directly in that runner's row rather than relying only on one large generic fluctuation chart.
-- Runner fluctuation display should show the actual captured price path and useful low/high context.
-- No smoothing or invented interpolation. Only captured governed price observations.
-- The table remains dense and scan-friendly.
-- Supporting Market Summary / Market Movers / Market Notes may be used when evidence-backed and useful.
+Market is the approved professional pre-race market-intelligence workspace. It is analytical software, not a bookmaker, exchange or trading interface.
 
-The detailed Market contract remains open for further user refinement; these locked rules must survive later revisions.
+### Approved layout
+- Common EDGEiQ meeting/race shell and race selector.
+- Market sub-navigation may include: Market, Price Fluctuations, Implied Probability, Market vs EDGE, Runner Comparison.
+- Hero component is the full-width `Market Prices & Fluctuations` runner table.
+- Supporting panels below may include Market Summary, Price Distribution and concise Market Notes when supported by governed evidence.
+- Dense, aligned, scan-friendly presentation consistent with the global design system.
+
+### Runner table — locked information architecture
+Each runner row must expose, where governed data exists:
+1. Runner number / saddlecloth.
+2. Horse.
+3. Official SP where applicable as a historical/post-race reference; SP must NOT be mislabelled as the live/current pre-race market.
+4. Current Win price.
+5. Current Place price where a governed source supplies it.
+6. An INDIVIDUAL inline Price Fluctuation board/sparkline for that runner.
+7. Captured-period Low.
+8. Captured-period High.
+9. Implied Win probability.
+10. Implied Place probability where a valid place price exists.
+11. Governed EDGE metric.
+12. Value/overlay classification.
+
+### Per-runner fluctuation board — mandatory
+The fluctuation board is not one generic chart for the race. EVERY runner has its own compact board directly in its row.
+
+It must:
+- Plot the runner's actual captured price observations chronologically.
+- Show enough visual resolution to identify firming, drifting and stable movement.
+- Display or expose useful opening/current/low/high context when captured.
+- Use the same time window across runners when comparing the race.
+- Use captured governed observations only.
+- Never smooth, interpolate or fabricate missing observations.
+- Never imply continuous price coverage where only sparse snapshots exist.
+- Preserve historical captured observations as immutable market history.
+- Show a professional unavailable/insufficient-history state if no valid fluctuation history exists.
+
+A larger Price Fluctuations view may exist as a secondary analytical tab, but it does NOT replace the mandatory per-runner boards.
+
+### Market price semantics
+- The live/pre-race column must be labelled `Current Price`, `Market`, or another accurate source-specific label — NOT `SP`.
+- `SP` means official Starting Price and is only displayed when it genuinely exists.
+- Source/feed and last-updated timestamp must be explicit where practical.
+- Do not claim a `consolidated Australian market` unless the canonical builder genuinely consolidates multiple authorised sources.
+- No fabricated live prices, price histories or bookmaker data.
+
+### Derived metrics
+Derived values belong to governed builders/services, not ad-hoc React calculations.
+
+Where supplied by the canonical builder:
+- Raw market implied win probability = `1 / decimal current win price`.
+- EDGEiQ implied probability = `1 / canonical EDGEiQ decimal price`.
+- Any displayed EDGE/value percentage must use one documented convention consistently across EDGEiQ; probability edge and price overlay must not be silently mixed.
+- Market overround may be displayed only when a complete enough governed market exists and is calculated from the applicable runner prices.
+- Low/high values refer only to the captured governed observation window, never an invented 24-hour range.
+
+### Market summary / notes
+Useful evidence-backed summary items may include:
+- Current market favourite.
+- Market overround.
+- Largest captured firmer.
+- Largest captured drifter.
+- Largest governed EDGEiQ overlay/value divergence.
+- Last update/feed health.
+
+Low-value summary statistics must not be included merely to fill cards. Market Notes must be factual, concise and generated from governed evidence; no generic or invented commentary.
+
+### Explicitly excluded
+- Back/Lay ladders.
+- Exchange order books.
+- Matched-volume/trading-terminal UI.
+- Bookmaker logos or casino styling.
+- `Bet Now` or wagering calls-to-action.
+- Invented price movements.
+- Smoothed/interpolated fluctuation histories.
+- Fabricated market commentary.
+- Tote/dividend presentation imported from Results.
+
+### Mockup-data rule
+All prices, runners, percentages, fluctuation paths, market notes and summary figures appearing in design mockups are ILLUSTRATIVE ONLY and must never be copied into production unless independently present in governed canonical data.
+
+This Market specification is now LOCKED. Any future change requires an explicit contract revision.
 
 ## 8. FORM GOING RULE — GLOBAL CROSS-WORKSPACE LOCK
 
@@ -171,4 +243,6 @@ Historical individual-run tables may show the actual going for that historical r
 
 Locked in GitHub: 2026-09-15
 
-Affected workspaces: INSIGHTS, OVERVIEW, WEATHER, TRACK, RESULTS, MARKET (partial/current direction), FORM cross-workspace Going rule, GLOBAL DESIGN SYSTEM.
+Affected workspaces: INSIGHTS, OVERVIEW, WEATHER, TRACK, RESULTS, MARKET, FORM cross-workspace Going rule, GLOBAL DESIGN SYSTEM.
+
+Next workspace in bottom-up approval sequence: SPEED MAP.
