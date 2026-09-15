@@ -5,310 +5,104 @@
 This document records the user-approved EDGEiQ product/UI decisions made during the 15 September 2026 workspace redesign. It is an implementation authority for the affected workspaces and supplements the existing SPEC files. Where an older workspace specification conflicts with an explicit rule below, THIS CONTRACT TAKES PRECEDENCE until the underlying SPEC is revised.
 
 ## 1. GLOBAL PRODUCT DESIGN CONTRACT
-
 EDGEiQ is professional racing intelligence software, not a tipping site, bookmaker interface or gimmicky racing website.
-
-Locked presentation:
-- Light/white application shell.
-- White left sidebar.
-- EDGEiQ logo at top; active navigation uses restrained EDGEiQ blue.
-- Crisp modern sans-serif typography; strong navy headings; muted secondary text.
-- White cards/panels with thin cool-grey borders, restrained shadows and small radius.
-- Dense, aligned, scan-friendly tables.
-- EDGEiQ blue is the primary accent. Green/red/orange are used only where semantically meaningful.
-- All race-day tabs use the same shared shell, spacing, header hierarchy, meeting header, race selector and footer treatment.
-- No decorative clutter, glossy cards, gimmicks, oversized hero treatments or unnecessary explanatory copy.
-- Production values must come from canonical/current-card data, validated historical data or governed EDGEiQ-derived metrics. Never fabricate values to fill a UI.
-- `—`/Unavailable is a last resort when governed evidence genuinely does not exist.
+Locked presentation: light/white application shell; white left sidebar; restrained EDGEiQ blue active navigation; crisp modern sans-serif typography; strong navy headings; muted secondary text; white panels with thin cool-grey borders, restrained shadows and small radius; dense scan-friendly tables; consistent shared race-day shell. No decorative clutter, glossy cards, gimmicks, oversized hero treatments or unnecessary explanatory copy. Production values must come from canonical/current-card data, validated historical data or governed EDGEiQ-derived metrics. Never fabricate values. `—`/Unavailable is a last resort.
 
 ### Track-condition display
-Official labels are uppercase:
-FAST 1; GOOD 2; GOOD 3; GOOD 4; SOFT 5; SOFT 6; SOFT 7; HEAVY 8; HEAVY 9; HEAVY 10.
-
-Where an actual condition badge/tile is appropriate:
-- FAST = blue / white text
-- GOOD = green / white text
-- SOFT = red / white text
-- HEAVY = black / white text
-
-Colour is supplementary; text remains explicit.
+Official labels: FAST 1; GOOD 2; GOOD 3; GOOD 4; SOFT 5; SOFT 6; SOFT 7; HEAVY 8; HEAVY 9; HEAVY 10. Actual condition tiles: FAST blue/white; GOOD green/white; SOFT red/white; HEAVY black/white. Colour is supplementary; text remains explicit.
 
 ## 2. INSIGHTS — LOCKED
-
-The approved Insights workspace uses the common shell and contains:
-- Tabs: Key Insights, Value, Risks, Angles, Summary.
-- Top intelligence cards: Top Value, Key Risk, Angle, Watch Runner.
-- Ranked Key Insights panel.
-- Value Runners table.
-- Risks to Consider table.
-- Notable Angles.
-- Race Summary.
-- Model/evidence confidence and data-quality coverage panel.
-
-Every displayed insight must be evidence-backed and traceable. No fabricated prices, confidence values, risks, angles or commentary. No gimmicky presentation.
+Tabs: Key Insights, Value, Risks, Angles, Summary. Top intelligence cards: Top Value, Key Risk, Angle, Watch Runner. Ranked Key Insights, Value Runners, Risks, Notable Angles, Race Summary and evidence/model-confidence coverage. Every insight must be evidence-backed and traceable.
 
 ## 3. OVERVIEW — LOCKED
-
-Approved Overview structure:
-- Subtabs: Overview, Key Runners, Pace & Tempo, Speed Map, Class & Ratings, Trainer/Jockey, Market, Weather & Track, Race Info.
-- Top cards: Race Summary, Top Value, Key Stat, Watch, Risk.
-- Race Shape panel showing expected positional groups.
-- Tempo Analysis.
-- Track & Weather summary with compact track profile.
-- Key Determinants.
-- Class Comparison.
-- Market vs Model comparison.
-
-The workspace is an executive race briefing; deeper detail belongs in specialist workspaces. All intelligence is builder/evidence driven.
+Subtabs: Overview, Key Runners, Pace & Tempo, Speed Map, Class & Ratings, Trainer/Jockey, Market, Weather & Track, Race Info. Top cards: Race Summary, Top Value, Key Stat, Watch, Risk. Race Shape, Tempo Analysis, Track & Weather, Key Determinants, Class Comparison and Market vs Model. Executive race briefing only; specialist depth belongs in specialist workspaces.
 
 ## 4. WEATHER — LOCKED
-
-Approved Weather workspace may display, where governed data exists:
-- Current Conditions: temperature, condition, feels-like, humidity, rainfall 24h, pressure, wind, cloud cover, last update.
-- Track Conditions: track rating, rail, irrigation, rainfall 7d, penetrometer, going stick where available.
-- Governed forecast information for Today/Tomorrow/Day+2 with useful time slots, chance of rain, wind and humidity where a licensed/approved source supplies it.
-- Track/weather history where governed historical weather data exists.
-- Weather Impact Analysis.
-- Wind Analysis.
-- Temperature Analysis.
-- Historical Weather.
-
-No synthetic forecast, invented weather value or fabricated historical statistic. If unavailable, show a professional unavailable state. Actual track-condition badges follow the global colour contract.
+May display governed current conditions, track conditions, Today/Tomorrow/Day+2 forecast, track/weather history, Weather Impact Analysis, Wind Analysis, Temperature Analysis and Historical Weather. No synthetic forecast, invented weather value or fabricated historical statistic.
 
 ## 5. TRACK — LOCKED
-
-The Track workspace must contain only useful, actionable track context. It is deliberately stripped of low-value statistical clutter.
-
-Approved core panels:
-- Track Profile: track name, location, direction/type, circumference, home straight, surface, current track rating, current rail, irrigation, penetrometer/going-stick where available, last update.
-- Clean Track Map: course shape, direction, winning post/home straight and useful distance/start markers where accurate.
-- Track Characteristics: concise evidence-backed permanent/operational characteristics only.
-- Current Conditions.
-- Recent Track History.
-- Track Notes: concise, evidence-backed operational notes only.
-
-### Recent Track History — locked columns
-`DATE | RAIL | GOING | RACES`
-
-There is NO duplicate Track column.
-
-### Explicitly removed from Track
-- Sectional Analysis
-- Track Records
-- Rail Position Performance
-- Going Performance
-- Distance Performance
-- Other generic historical performance tables that do not provide valuable current-race intelligence
-
-These removed components must not be reintroduced merely because data exists.
+Core: Track Profile, clean Track Map, concise evidence-backed Track Characteristics, Current Conditions, Recent Track History, Track Notes. Recent Track History columns are exactly `DATE | RAIL | GOING | RACES`. Explicitly removed: Sectional Analysis, Track Records, Rail Position Performance, Going Performance, Distance Performance and generic low-value historical performance tables.
 
 ## 6. RESULTS — LOCKED
-
-Results is a professional post-race evidence workspace, not a media/replay page.
-
-### Official results table
-Use official finishing order and relevant runner information. Market price display is:
-- SP ONLY.
-- NO Tote column.
-- NO Tote dividends.
-- NO Win/Place/Quinella/Exacta/Trifecta/First 4 dividend panel.
-
-### Media rights rule
-Do not host, copy or embed race replay video, replay thumbnails, last-600/400/200 video, photo-finish images or other copyrighted race media unless EDGEiQ has explicit appropriate rights/authorisation.
-
-An ordinary outbound link to an authorised provider may be considered only where permitted. No scraping/rehosting of video.
-
-### Sectional / standard-time intelligence
-EDGEiQ must NOT reproduce source raw sectional times in the product where reproduction rights are unavailable.
-
-Permitted source speed/sectional information may feed a governed EDGEiQ calculation where lawful/contractually permitted. The displayed product is EDGEiQ's OWN derived standard-time comparison expressed in LENGTHS, not copied raw seconds.
-
-Standards should be appropriately normalised for relevant context such as track, distance, going and class rather than using a crude universal benchmark.
-
-### Locked sign convention
-- `-2.5L` means 2.5 lengths SLOWER than EDGEiQ standard.
-- `+2.5L` means 2.5 lengths FASTER than EDGEiQ standard.
-- `0.0L` means on standard.
-
-This sign convention supersedes any older SPEC wording that states the opposite.
-
-The UI must label the metric clearly as an EDGEiQ standard comparison so it cannot be confused with an official raw time.
-
-Stewards information may be shown where its use is permitted and sourced correctly. EDGEiQ analytical notes must be independently derived and evidence-backed.
+Official results use SP ONLY: no Tote column/dividends or exotic dividend panel. Do not host/copy/embed copyrighted replay/media without rights. Raw source sectional times must not be reproduced where rights are unavailable. Permitted sectional inputs may feed EDGEiQ's own governed standard-time comparison expressed in LENGTHS. Locked sign: `-2.5L` slower; `+2.5L` faster; `0.0L` on standard. Stewards information only where permitted and sourced correctly.
 
 ## 7. MARKET — LOCKED
-
-Market is the approved professional pre-race market-intelligence workspace. It is analytical software, not a bookmaker, exchange or trading interface.
-
-### Approved layout
-- Common EDGEiQ meeting/race shell and race selector.
-- Market sub-navigation may include: Market, Price Fluctuations, Implied Probability, Market vs EDGE, Runner Comparison.
-- Hero component is the full-width `Market Prices & Fluctuations` runner table.
-- Supporting panels below may include Market Summary, Price Distribution and concise Market Notes when supported by governed evidence.
-- Dense, aligned, scan-friendly presentation consistent with the global design system.
-
-### Runner table — locked information architecture
-Each runner row must expose, where governed data exists:
-1. Runner number / saddlecloth.
-2. Horse.
-3. Official SP where applicable as a historical/post-race reference; SP must NOT be mislabelled as the live/current pre-race market.
-4. Current Win price.
-5. Current Place price where a governed source supplies it.
-6. An INDIVIDUAL inline Price Fluctuation board/sparkline for that runner.
-7. Captured-period Low.
-8. Captured-period High.
-9. Implied Win probability.
-10. Implied Place probability where a valid place price exists.
-11. Governed EDGE metric.
-12. Value/overlay classification.
-
-### Per-runner fluctuation board — mandatory
-The fluctuation board is not one generic chart for the race. EVERY runner has its own compact board directly in its row.
-
-It must:
-- Plot the runner's actual captured price observations chronologically.
-- Show enough visual resolution to identify firming, drifting and stable movement.
-- Display or expose useful opening/current/low/high context when captured.
-- Use the same time window across runners when comparing the race.
-- Use captured governed observations only.
-- Never smooth, interpolate or fabricate missing observations.
-- Never imply continuous price coverage where only sparse snapshots exist.
-- Preserve historical captured observations as immutable market history.
-- Show a professional unavailable/insufficient-history state if no valid fluctuation history exists.
-
-A larger Price Fluctuations view may exist as a secondary analytical tab, but it does NOT replace the mandatory per-runner boards.
-
-### Market price semantics
-- The live/pre-race column must be labelled `Current Price`, `Market`, or another accurate source-specific label — NOT `SP`.
-- `SP` means official Starting Price and is only displayed when it genuinely exists.
-- Source/feed and last-updated timestamp must be explicit where practical.
-- Do not claim a `consolidated Australian market` unless the canonical builder genuinely consolidates multiple authorised sources.
-- No fabricated live prices, price histories or bookmaker data.
-
-### Derived metrics
-Derived values belong to governed builders/services, not ad-hoc React calculations.
-
-Where supplied by the canonical builder:
-- Raw market implied win probability = `1 / decimal current win price`.
-- EDGEiQ implied probability = `1 / canonical EDGEiQ decimal price`.
-- Any displayed EDGE/value percentage must use one documented convention consistently across EDGEiQ; probability edge and price overlay must not be silently mixed.
-- Market overround may be displayed only when a complete enough governed market exists and is calculated from the applicable runner prices.
-- Low/high values refer only to the captured governed observation window, never an invented 24-hour range.
-
-### Market summary / notes
-Useful evidence-backed summary items may include:
-- Current market favourite.
-- Market overround.
-- Largest captured firmer.
-- Largest captured drifter.
-- Largest governed EDGEiQ overlay/value divergence.
-- Last update/feed health.
-
-Low-value summary statistics must not be included merely to fill cards. Market Notes must be factual, concise and generated from governed evidence; no generic or invented commentary.
-
-### Explicitly excluded
-- Back/Lay ladders.
-- Exchange order books.
-- Matched-volume/trading-terminal UI.
-- Bookmaker logos or casino styling.
-- `Bet Now` or wagering calls-to-action.
-- Invented price movements.
-- Smoothed/interpolated fluctuation histories.
-- Fabricated market commentary.
-- Tote/dividend presentation imported from Results.
-
-### Mockup-data rule
-All prices, runners, percentages, fluctuation paths, market notes and summary figures appearing in design mockups are ILLUSTRATIVE ONLY and must never be copied into production unless independently present in governed canonical data.
-
-This Market specification is now LOCKED. Any future change requires an explicit contract revision.
+Professional pre-race market intelligence, not bookmaker/trading UI. Hero is Market Prices & Fluctuations. Each runner row must expose governed current price information and an INDIVIDUAL inline price-fluctuation board/sparkline. Every runner's board plots actual captured observations only, with useful opening/current/low/high context where available; no smoothing/interpolation/fabrication. Live pre-race price must not be labelled SP. Derived implied probability/EDGE/overround belong to governed builders and use documented conventions. No Back/Lay ladders, exchange order books, bookmaker/casino styling, Bet Now CTAs, invented movements or fabricated commentary.
 
 ## 8. SPEED MAP — LOCKED
+Early-race positioning workspace for approximately the first 200m only. Victorian presentation runs RIGHT TO LEFT. Barriers/start are on the RIGHT; every horse faces LEFT; each runner starts from its ACTUAL barrier lane; a thin path line runs from barrier to mapped early position. Higher governed Early Speed Score = farther LEFT from barriers. Vertical placement preserves barrier/lane relationship. All horses use the same navy treatment with horse-name tiles; no arbitrary colours. No slow/moderate/fast zones, leader/on-pace/midfield/backmarker zones, finish marker or full-race prediction. Supporting table may show runner, horse, barrier, Early Speed Score and governed early position/rank. Geometry must be canonical-data/model driven.
 
-Speed Map is an EARLY-RACE positioning workspace. It visualises the expected first approximately 200 metres from each runner's actual barrier using the governed EDGEiQ Early Speed Score. It does NOT predict the horses' positions through the whole race or at the finish.
+## 9. EPI RATINGS — LOCKED
 
-### Core visual — locked
-- The hero component is the `Early Speed Map (Barrier to 200m)`.
-- Victorian presentation runs RIGHT TO LEFT, reflecting the anti-clockwise racing orientation selected for this product view.
-- The barriers/start are on the RIGHT side of the map.
-- Every horse graphic faces LEFT.
-- Each runner begins from its ACTUAL barrier lane on the right.
-- A thin lane/path line runs from that runner's barrier/start point leftwards to the horse's mapped early position.
-- The horse's horizontal position is governed by its Early Speed Score: higher early-speed value = farther LEFT from the barriers; lower value = remains closer to the RIGHT/start side.
-- Vertical positioning preserves the runner's barrier/lane relationship so the viewer can immediately understand where each runner came from and how far it is expected to advance early.
-- The map is about the opening approximately 200m only; it is not a full-race map.
+EPI Ratings is the dedicated EDGEiQ Performance Index workspace. It is a dense comparative ratings screen designed to rank the current field and expose the governed components behind each runner's EPI assessment without bookmaker-style presentation or unnecessary explanatory clutter.
 
-### Runner rendering — locked
-- All horses use the SAME restrained EDGEiQ/navy horse treatment.
-- Do NOT use arbitrary horse colours or coloured saddlecloth-number circles to distinguish runners.
-- Runner identity is shown by the HORSE NAME in a compact white tile beside the horse.
-- Barrier numbers/lanes are structural start information only; they are not decorative colour identifiers.
-- Scratched runners must not occupy active lanes; barrier/lane presentation must correctly reflect governed scratching handling.
+### Approved shell and navigation
+- Uses the common EDGEiQ meeting/race shell and race selector.
+- `EPI Ratings` is active in the white sidebar.
+- Approved EPI sub-navigation may include: `EPI Ratings | Key Determinants | Form & EPI Trend | Class & Conditions | Runner Comparison`.
+- The principal view is the full-field EPI Ratings table.
 
-### Visual language — deliberately self-explanatory
-Do NOT add categorical zones or headings such as:
-- Slower Early Speed
-- Moderate
-- Faster Early Speed
-- Leader / On Pace / Midfield / Backmarker regions
-
-Do NOT add a finish marker or imply predicted finishing order.
-Do NOT place an unnecessary `200m` finish-style marker on the map.
-A restrained right-to-left direction cue may be used, but the map itself should communicate the concept primarily through barrier origins, lane/path lines and horse positions.
-
-### Early Speed Score
-- Early Speed is represented by a governed numerical EDGEiQ score/value.
-- The score determines relative horizontal travel/position in the first approximately 200m.
-- The exact scoring formula, scale and transformations belong to the governed model/builder and must not be invented in React.
-- The visual must preserve meaningful relative differences between runner scores rather than assigning generic style buckets.
-- No fabricated scores or manually positioned horses in production.
-
-### Supporting Early Speed Data table
-Below the map, show a dense supporting table where governed data exists. Approved information includes:
+### EPI Ratings table — approved information architecture
+Where governed values exist, each runner row may expose:
 - Runner number.
 - Horse.
 - Barrier.
-- Early Speed Score, including a restrained visual bar if useful.
-- Governed estimated early position/rank for the opening approximately 200m where the model produces it.
+- EPI Rating as a prominent numeric value with a restrained comparative bar.
+- EPI Rank.
+- Delta versus the relevant governed field/race average (`Δ vs Avg`) where the comparison basis is explicitly defined.
+- Last-five EPI trend as a compact sparkline where valid historical EPI observations exist.
+- Track suitability/component score.
+- Distance suitability/component score.
+- Going suitability/component score.
+- Class component/assessment.
+- Overall/current composite assessment where this is a distinct governed output rather than a duplicate invented value.
 
-The table supports the visual; it must not overwhelm it with generic explanatory prose.
+The table must be sortable/scan-friendly in implementation and keep the EPI Rating/rank visually dominant over supporting components.
+
+### Trend display
+- Last-five trend uses actual governed historical EPI observations only.
+- Never manufacture missing historical points or interpolate a smooth trend.
+- If fewer valid observations exist, show only those observations or an appropriate insufficient-history state.
+- Trend direction/shape is analytical evidence, not decorative animation.
+
+### Component and determinant presentation
+Supporting panels may include `EPI Insights` and `EPI Component Weights`/determinants where these values genuinely exist in the governed EPI methodology.
+- Component weights shown in the product MUST come from the canonical EPI model/configuration.
+- Never copy the illustrative percentages from a design mockup into production.
+- Never invent a component merely to complete a visual.
+- If EPI architecture changes, the UI must consume the governed current architecture rather than preserving stale hard-coded weights.
+
+### EPI Insights
+Concise evidence-backed insights may identify meaningful field-leading ratings, component strengths/weaknesses, trend changes or suitability differences. No fabricated horse commentary, improvement claims or confidence language.
+
+### Methodology / About EPI
+A restrained methodology panel may explain what EPI represents at product level, but it must not expose false formulas or claim inputs/weights that are not present in the governed EPI model. Detailed implementation/model logic remains owned by the governed builder/model documentation, not React copy.
+
+### Semantic colour
+- EDGEiQ blue is the default rating/bar colour.
+- Green/red may be used sparingly for genuinely positive/negative deltas such as above/below a defined field average.
+- Do not turn the table into a heatmap or traffic-light tipping interface.
 
 ### Explicitly excluded
-- Full-race positional prediction to the finish.
-- Finish-line marker.
-- Predicted finishing order.
-- Arbitrary runner colours.
-- Coloured runner-number bubbles as identity treatment.
-- Slower/Moderate/Faster background categories.
-- Leader/On Pace/Midfield/Backmarker zoning on the core map.
-- Fabricated horse paths or scores.
-- Manual React positioning disconnected from governed Early Speed data.
+- Fabricated EPI ratings or ranks.
+- Hard-coded component weights derived from the mockup.
+- Synthetic last-five trends.
+- Generic labels such as `strong`, `weak`, `improving` unless supported by governed thresholds/evidence.
+- Betting calls-to-action or bookmaker styling.
+- Duplicative metrics that do not add analytical value.
 
 ### Mockup-data rule
-All horse names, barriers, scores and positions shown in design mockups are ILLUSTRATIVE ONLY. Production map geometry must be built from the canonical field/barrier data plus governed EDGEiQ Early Speed output.
+ALL runner names, ratings, ranks, deltas, trend paths, component scores, weights and insight text in the approved visual mockup are ILLUSTRATIVE ONLY. Production must use canonical field data and governed EDGEiQ EPI outputs.
 
-This Speed Map specification is now LOCKED. Any future change requires an explicit contract revision.
+This EPI Ratings specification is now LOCKED. Any future change requires an explicit contract revision.
 
-## 9. FORM GOING RULE — GLOBAL CROSS-WORKSPACE LOCK
+## 10. FORM GOING RULE — GLOBAL CROSS-WORKSPACE LOCK
+Default Form `Going` column shows the runner's record on TODAY'S GOING as plain text, e.g. `8:1-2-4`, not a coloured badge and not today's condition repeated. Historical individual-run tables may show the actual historical going with the global condition colours.
 
-For the default runner Form table, the `Going` column does NOT show a coloured condition badge and does NOT merely repeat today's track condition.
-
-It shows the runner's record on TODAY'S GOING as plain text, e.g. `8:1-2-4` = starts:wins-seconds-thirds.
-
-Historical individual-run tables may show the actual going for that historical run using the uppercase condition label and global condition colours.
-
-## 10. GOVERNANCE
-
-- React is presentation/navigation, not the owner of racing intelligence calculations.
-- Governed builders/services own derived metrics.
-- No invented production data.
-- Any illustrative values used in design mockups are NOT production data and must never be copied into the live product.
-- When implementation conflicts with this document, implementation must be corrected or this contract explicitly revised.
-- Future user-approved workspace decisions should be appended/revised in GitHub, not merely retained in chat.
+## 11. GOVERNANCE
+React is presentation/navigation, not the owner of racing intelligence calculations. Governed builders/services own derived metrics. No invented production data. Illustrative mockup values must never be copied into live data. When implementation conflicts with this contract, implementation must be corrected or the contract explicitly revised. Future approved workspace decisions are written into GitHub.
 
 ## LOCK RECORD
-
 Locked in GitHub: 2026-09-15
-
-Affected workspaces: INSIGHTS, OVERVIEW, WEATHER, TRACK, RESULTS, MARKET, SPEED MAP, FORM cross-workspace Going rule, GLOBAL DESIGN SYSTEM.
-
-Next workspace in bottom-up approval sequence: EPI RATINGS.
+Affected workspaces: INSIGHTS, OVERVIEW, WEATHER, TRACK, RESULTS, MARKET, SPEED MAP, EPI RATINGS, FORM cross-workspace Going rule, GLOBAL DESIGN SYSTEM.
+Next workspace in bottom-up approval sequence: PERFORMANCE.
