@@ -2,11 +2,21 @@
 
 ## STATUS: LOCKED
 
-This document records the user-approved EDGEiQ product/UI decisions made during the 15 September 2026 workspace redesign. It is an implementation authority for the affected workspaces and supplements the existing SPEC files. Where an older workspace specification conflicts with an explicit rule below, THIS CONTRACT TAKES PRECEDENCE until the underlying SPEC is revised.
+This document records the user-approved EDGEiQ product/UI decisions made during the 15 September 2026 workspace redesign. Where an older workspace specification conflicts with an explicit rule below, THIS CONTRACT TAKES PRECEDENCE until the underlying SPEC is revised.
 
-## 1. GLOBAL PRODUCT DESIGN CONTRACT
+## 1. GLOBAL PRODUCT DESIGN CONTRACT — LOCKED
 EDGEiQ is professional racing intelligence software, not a tipping site, bookmaker interface or gimmicky racing website.
+
 Locked presentation: light/white application shell; white left sidebar; restrained EDGEiQ blue active navigation; crisp modern sans-serif typography; strong navy headings; muted secondary text; white panels with thin cool-grey borders, restrained shadows and small radius; dense scan-friendly tables; consistent shared race-day shell. No decorative clutter, glossy cards, gimmicks, oversized hero treatments or unnecessary explanatory copy. Production values must come from canonical/current-card data, validated historical data or governed EDGEiQ-derived metrics. Never fabricate values. `—`/Unavailable is a last resort.
+
+### CANONICAL EDGEiQ LOGO / BRAND MARK — GLOBAL HARD LOCK
+- EVERY tab and workspace MUST use the SAME original/first EDGEiQ logo approved at the beginning of this new light-theme redesign.
+- The logo must NOT gradually change, regenerate, morph, restyle, redraw or use a different wordmark from tab to tab.
+- The same canonical logo asset/component must be reused globally from the shared shell; individual workspace components must not create their own logo treatment.
+- Future mockups must preserve the first approved logo design rather than allowing image-generation drift.
+- Implementation must reference one canonical logo source/asset so all screens are visually identical.
+- This is a GLOBAL invariant applying to Home, Meetings, Race, Field, Form, Performance, EPI Ratings, Speed Map, Market, Results, Track, Weather, Overview, Insights and Settings.
+- A workspace is non-compliant if its EDGEiQ logo differs from the canonical first redesign logo in lettering, proportions, icon geometry, tagline treatment, spacing or colour.
 
 ### Track-condition display
 Official labels: FAST 1; GOOD 2; GOOD 3; GOOD 4; SOFT 5; SOFT 6; SOFT 7; HEAVY 8; HEAVY 9; HEAVY 10. Actual condition tiles: FAST blue/white; GOOD green/white; SOFT red/white; HEAVY black/white. Colour is supplementary; text remains explicit.
@@ -33,76 +43,85 @@ Professional pre-race market intelligence, not bookmaker/trading UI. Hero is Mar
 Early-race positioning workspace for approximately the first 200m only. Victorian presentation runs RIGHT TO LEFT. Barriers/start are on the RIGHT; every horse faces LEFT; each runner starts from its ACTUAL barrier lane; a thin path line runs from barrier to mapped early position. Higher governed Early Speed Score = farther LEFT from barriers. Vertical placement preserves barrier/lane relationship. All horses use the same navy treatment with horse-name tiles; no arbitrary colours. No slow/moderate/fast zones, leader/on-pace/midfield/backmarker zones, finish marker or full-race prediction. Supporting table may show runner, horse, barrier, Early Speed Score and governed early position/rank. Geometry must be canonical-data/model driven.
 
 ## 9. EPI RATINGS — LOCKED
+EPI Ratings is the dedicated EDGEiQ Performance Index workspace. The principal view is the full-field EPI Ratings table. Where governed values exist rows may expose runner, horse, barrier, prominent EPI Rating, rank, defined delta versus field/race average, actual historical EPI trend, track/distance/going/class components and distinct governed composite assessment. Last-five trends use actual observations only; no interpolation. Component weights must come from canonical EPI configuration and never from mockup values. Insights must be evidence-backed. No fabricated ratings, ranks, trends, weights or generic threshold labels.
 
-EPI Ratings is the dedicated EDGEiQ Performance Index workspace. It is a dense comparative ratings screen designed to rank the current field and expose the governed components behind each runner's EPI assessment without bookmaker-style presentation or unnecessary explanatory clutter.
+## 10. PERFORMANCE — LOCKED
 
-### Approved shell and navigation
-- Uses the common EDGEiQ meeting/race shell and race selector.
-- `EPI Ratings` is active in the white sidebar.
-- Approved EPI sub-navigation may include: `EPI Ratings | Key Determinants | Form & EPI Trend | Class & Conditions | Runner Comparison`.
-- The principal view is the full-field EPI Ratings table.
+Performance is the approved historical runner-performance workspace. It provides a compact current-field comparison centred on each runner's most recent runs, with deeper contextual performance summaries below.
 
-### EPI Ratings table — approved information architecture
-Where governed values exist, each runner row may expose:
+### Approved layout
+- Uses the global shared shell and canonical EDGEiQ logo.
+- `Performance` active in the white sidebar.
+- Main hero table: `Runner Performance – Last 5 Runs`.
+- Controls may filter the governed run window and track/context where useful.
+- Supporting panels may include Performance Insights, Distance Performance, Track Performance and Going Performance when supported by canonical history.
+
+### Main Runner Performance table
+Where governed data exists, rows may include:
 - Runner number.
 - Horse.
 - Barrier.
-- EPI Rating as a prominent numeric value with a restrained comparative bar.
-- EPI Rank.
-- Delta versus the relevant governed field/race average (`Δ vs Avg`) where the comparison basis is explicitly defined.
-- Last-five EPI trend as a compact sparkline where valid historical EPI observations exist.
-- Track suitability/component score.
-- Distance suitability/component score.
-- Going suitability/component score.
-- Class component/assessment.
-- Overall/current composite assessment where this is a distinct governed output rather than a duplicate invented value.
+- Last 5 Runs, most recent first.
+- Days since last run.
+- Distance/range context.
+- Track/Going.
+- Class.
+- EPI.
+- R58 or other governed rating only where it remains an approved canonical metric.
+- WFA/performance figure where governed.
+- Compact finish-position/history trend where useful.
+- Margin.
+- SP where historical official SP exists.
+- EDGEiQ price or other governed current assessment where appropriate and clearly labelled.
 
-The table must be sortable/scan-friendly in implementation and keep the EPI Rating/rank visually dominant over supporting components.
+No illustrative value from the mockup may be copied into production.
 
-### Trend display
-- Last-five trend uses actual governed historical EPI observations only.
-- Never manufacture missing historical points or interpolate a smooth trend.
-- If fewer valid observations exist, show only those observations or an appropriate insufficient-history state.
-- Trend direction/shape is analytical evidence, not decorative animation.
+### LAST 5 RUNS FINISH-TILE COLOUR CONTRACT — GLOBAL HARD RULE
+For EVERY finish number displayed in the `Last 5 Runs` sequence:
+- `1` = GOLD tile.
+- `2` = SILVER tile.
+- `3` = BRONZE tile.
+- `4` and every other finishing number = WHITE tile with BLUE number/text.
 
-### Component and determinant presentation
-Supporting panels may include `EPI Insights` and `EPI Component Weights`/determinants where these values genuinely exist in the governed EPI methodology.
-- Component weights shown in the product MUST come from the canonical EPI model/configuration.
-- Never copy the illustrative percentages from a design mockup into production.
-- Never invent a component merely to complete a visual.
-- If EPI architecture changes, the UI must consume the governed current architecture rather than preserving stale hard-coded weights.
+This applies to EVERY occurrence of 1st, 2nd and 3rd in every runner's last-five sequence. There are no exceptions based on runner, recency, track, race or table position.
 
-### EPI Insights
-Concise evidence-backed insights may identify meaningful field-leading ratings, component strengths/weaknesses, trend changes or suitability differences. No fabricated horse commentary, improvement claims or confidence language.
+The styling represents finishing position only:
+- Gold always means FIRST.
+- Silver always means SECOND.
+- Bronze always means THIRD.
+- No other finishing position receives medal colouring.
+- Do not use arbitrary green, grey or blue fills for 1/2/3.
+- Non-medal results remain white with blue numbers for a clean, consistent scan pattern.
 
-### Methodology / About EPI
-A restrained methodology panel may explain what EPI represents at product level, but it must not expose false formulas or claim inputs/weights that are not present in the governed EPI model. Detailed implementation/model logic remains owned by the governed builder/model documentation, not React copy.
+### Performance Insights
+Only evidence-backed insights derived from canonical historical data may be shown. Do not fabricate statements such as consistency, improvement, distance credentials or competitive ability merely to fill the panel.
 
-### Semantic colour
-- EDGEiQ blue is the default rating/bar colour.
-- Green/red may be used sparingly for genuinely positive/negative deltas such as above/below a defined field average.
-- Do not turn the table into a heatmap or traffic-light tipping interface.
+### Distance / Track / Going Performance
+Compact supporting tables may show relevant governed starts/runs, wins, placings and win/place percentages for the current runners. These panels must use correctly matched historical contexts and must not infer missing records.
+
+### Trend / sparkline rule
+Any compact performance trend uses actual governed historical observations only. No invented points, smoothing or interpolation.
 
 ### Explicitly excluded
-- Fabricated EPI ratings or ranks.
-- Hard-coded component weights derived from the mockup.
-- Synthetic last-five trends.
-- Generic labels such as `strong`, `weak`, `improving` unless supported by governed thresholds/evidence.
-- Betting calls-to-action or bookmaker styling.
-- Duplicative metrics that do not add analytical value.
+- Fabricated last-five results.
+- Incorrect medal colours.
+- Synthetic performance insights.
+- Duplicative low-value statistics merely to fill space.
+- Bookmaker/casino presentation.
+- Workspace-specific EDGEiQ logo variants.
 
 ### Mockup-data rule
-ALL runner names, ratings, ranks, deltas, trend paths, component scores, weights and insight text in the approved visual mockup are ILLUSTRATIVE ONLY. Production must use canonical field data and governed EDGEiQ EPI outputs.
+ALL runner names, barriers, last-five sequences, days, ratings, margins, SPs, prices, trends, insights and supporting performance statistics in design mockups are ILLUSTRATIVE ONLY. Production consumes canonical field/history/model data.
 
-This EPI Ratings specification is now LOCKED. Any future change requires an explicit contract revision.
+This Performance specification is now LOCKED. Any future change requires an explicit contract revision.
 
-## 10. FORM GOING RULE — GLOBAL CROSS-WORKSPACE LOCK
+## 11. FORM GOING RULE — GLOBAL CROSS-WORKSPACE LOCK
 Default Form `Going` column shows the runner's record on TODAY'S GOING as plain text, e.g. `8:1-2-4`, not a coloured badge and not today's condition repeated. Historical individual-run tables may show the actual historical going with the global condition colours.
 
-## 11. GOVERNANCE
+## 12. GOVERNANCE
 React is presentation/navigation, not the owner of racing intelligence calculations. Governed builders/services own derived metrics. No invented production data. Illustrative mockup values must never be copied into live data. When implementation conflicts with this contract, implementation must be corrected or the contract explicitly revised. Future approved workspace decisions are written into GitHub.
 
 ## LOCK RECORD
 Locked in GitHub: 2026-09-15
-Affected workspaces: INSIGHTS, OVERVIEW, WEATHER, TRACK, RESULTS, MARKET, SPEED MAP, EPI RATINGS, FORM cross-workspace Going rule, GLOBAL DESIGN SYSTEM.
-Next workspace in bottom-up approval sequence: PERFORMANCE.
+Affected workspaces: INSIGHTS, OVERVIEW, WEATHER, TRACK, RESULTS, MARKET, SPEED MAP, EPI RATINGS, PERFORMANCE, FORM cross-workspace Going rule, GLOBAL DESIGN SYSTEM, CANONICAL EDGEiQ LOGO.
+Next workspace in bottom-up approval sequence: FORM.
