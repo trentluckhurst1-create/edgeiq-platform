@@ -1,0 +1,10 @@
+import { edgeiqDataPath } from "../../../config/edgeiqDataOrigin";
+
+export type RacecourseWeatherRow={meetingKey?:string;meeting?:string;date?:string;location?:{name?:string;latitude?:number;longitude?:number;timezone?:string};current?:{temperature_2m?:number;apparent_temperature?:number;precipitation?:number;rain?:number;weather_code?:number;cloud_cover?:number;wind_speed_10m?:number;wind_direction_10m?:number};daily?:{time?:string[];weather_code?:number[];temperature_2m_max?:number[];temperature_2m_min?:number[];precipitation_sum?:number[];precipitation_probability_max?:number[];wind_speed_10m_max?:number[]};fetchedAt?:string};
+type Feed={rows?:RacecourseWeatherRow[]};
+const URL=edgeiqDataPath("/data/edgeiq_racecourse_weather_feed_v1.json");
+let cache:RacecourseWeatherRow[]|null=null;
+export async function loadRacecourseWeatherFeed(force=false){if(cache&&!force)return cache;const response=await fetch(`${URL}?updated=${Date.now()}`,{cache:"no-store"});if(!response.ok)throw new Error(`Weather feed failed with ${response.status}`);const payload=await response.json() as Feed;cache=Array.isArray(payload.rows)?payload.rows:[];return cache}
+export function meetingWeather(rows:RacecourseWeatherRow[],meetingKey:string,date?:string){return rows.find(r=>r.meetingKey===meetingKey&&(!date||r.date===date))??rows.find(r=>r.meetingKey===meetingKey)??null}
+const WEATHER:Record<number,string>={0:"Fine",1:"Mainly Fine",2:"Partly Cloudy",3:"Overcast",45:"Fog",48:"Fog",51:"Light Drizzle",53:"Drizzle",55:"Heavy Drizzle",61:"Light Rain",63:"Rain",65:"Heavy Rain",80:"Showers",81:"Showers",82:"Heavy Showers",95:"Thunderstorm",96:"Thunderstorm",99:"Thunderstorm"};
+export function weatherDescription(row:RacecourseWeatherRow|null){if(!row)return "Awaiting Weather Feed";const code=row.current?.weather_code;const label=typeof code==="number"?(WEATHER[code]??"Conditions Available"):"Conditions Available";const temp=row.current?.temperature_2m;return typeof temp==="number"?`${label} · ${Math.round(temp)}°C`:label}
