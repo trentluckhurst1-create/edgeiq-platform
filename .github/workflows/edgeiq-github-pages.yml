@@ -106,6 +106,7 @@ jobs:
           python scripts/build_edgeiq_racecourse_weather_feed_v1.py
           python scripts/build_edgeiq_meeting_detail_shards_v1.py
           python scripts/build_edgeiq_race_detail_shards_v1.py
+          python scripts/enrich_edgeiq_runtime_meeting_data_v1.py
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -125,6 +126,15 @@ jobs:
           test -s dist/data/edgeiq_racecourse_weather_feed_v1.json
           test -s dist/data/meetings/index.json
           test -s dist/data/races/index.json
+          python - <<'PY'
+          import json
+          d=json.load(open('dist/data/edgeiq_meetings_summary_feed_v1.json',encoding='utf-8'))
+          today=d['days'][0]['meetings'][0]
+          assert today['first'] not in ('','Not supplied',None), today
+          assert today['rail'] not in ('','Not supplied',None), today
+          assert any(ch.isdigit() for ch in str(today['track'])) or str(today['track']).lower()=='synthetic', today
+          print('RUNTIME_MEETING_DATA_OK', today['meeting'], today['first'], today['rail'], today['track'])
+          PY
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
