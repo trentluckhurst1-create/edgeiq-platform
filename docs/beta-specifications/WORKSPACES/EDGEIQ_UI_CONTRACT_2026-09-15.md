@@ -45,80 +45,116 @@ Historical runner-performance workspace. Last-five finish tiles globally: `1` GO
 ## 11. FORM — INCREMENTAL LOCK
 Form is a runner-centric professional deep form guide rendered in EDGEiQ's approved light-theme language. It is distinct from Performance.
 
-### Form workspace shell — LOCKED
-- Global shared race-day shell and exact canonical EDGEiQ logo.
-- White sidebar with `Form` active.
-- Compact declared-runner selector/table at left.
-- Selected runner opens detailed form workspace at right.
-- Clean deliberate grid, consistent gutters, row heights and padding.
-
-### Runner header — LOCKED
-May show canonical runner number, silk, horse name, age/sex/pedigree where available, trainer, jockey and current weight.
-
 ### Form runner sub-tabs — LOCKED ORDER
 `Last 5 Runs | Full Form | Race Comments | Trainer/Jockey | Ratings | Map`
-
 `Predictor` is REMOVED.
 
 ### LAST 5 RUNS — LOCKED
 Key Statistics may show Total Starts, Record/Career, Prize Money, Track, Distance, Track/Distance, Last Start, Win % and Place %. Best Career, Average SP and Tempo Map are removed.
-
 Going Record uses FAST blue, GOOD green, SOFT red, HEAVY black, SYNTHETIC white/black.
-
-Historical table semantic columns exactly:
+Historical table columns exactly:
 `Date | Track | Race | Dist | Class | Going | Barrier | Wt | Jockey | Pos | Margin | SP | EPI | ERR | Race Notes`
-
-`EPI` = individual performance figure the horse ran in that historical race.
-`ERR` = EDGEiQ Race Rating, the governed overall strength/standard rating of the race itself. ERR is race-level and therefore identical for all runners from the same race; EPI is runner-level.
-
-Supporting panels may include evidence-backed Form Analysis, Track/Going Record and Ratings Explained.
+`EPI` = individual performance figure the horse ran. `ERR` = EDGEiQ Race Rating, the governed overall strength/standard rating of that race.
 
 ### FULL FORM — LOCKED
-The Full Form sub-tab extends the approved Last 5 Runs presentation to the selected horse's complete available canonical race history. It is intentionally the same visual language and core information architecture as Last 5 Runs rather than a separate gimmicky design.
+Full Form extends the same professional presentation to every valid historical start available for the selected horse, newest to oldest by default. It uses the same exact semantic columns as Last 5 Runs and does not introduce unrelated analytics. No fabricated history, comments, prices, EPI or ERR.
 
-#### Full Form purpose
-- Show every valid historical start available for the selected runner, newest to oldest by default.
-- Preserve the same runner header, key-statistics context, going-record treatment and runner-level navigation so switching between Last 5 Runs and Full Form feels continuous.
-- Full Form differs from Last 5 Runs primarily by historical depth, not by introducing unrelated analytics.
+## 12. RACE / FIELD INFORMATION ARCHITECTURE — LOCKED
 
-#### Full Form history table — exact semantic columns
-`Date | Track | Race | Dist | Class | Going | Barrier | Wt | Jockey | Pos | Margin | SP | EPI | ERR | Race Notes`
+### Standalone Field tab is REMOVED
+`Field` is no longer a top-level EDGEiQ sidebar workspace. Maintaining separate `Race` and `Field` destinations creates unnecessary overlap and forces the user to decide between two screens that answer closely related questions.
 
-These semantics are identical to Last 5 Runs:
-- `EPI` = horse-specific individual performance figure for that run.
-- `ERR` = EDGEiQ Race Rating for the race itself.
-- Historical Going uses the locked actual-condition colour system.
-- Historical SP is official SP only where available.
-- Race Notes must be sourced or governed EDGEiQ analysis; never fabricated.
+The declared field is now absorbed into the `Race` workspace.
 
-#### Full Form behaviour
-- The table must support a long career history without making the workspace visually chaotic; compact rows, sticky/clear headings and practical scrolling/pagination/expansion are permitted implementation choices.
-- The complete history must remain scan-friendly and chronological.
-- Missing history is not manufactured to create a full-looking table.
-- The screen may retain the approved evidence-backed supporting panels from Last 5 Runs where useful, but they must not crowd out the full-history table.
+### Product hierarchy
+The principal race-day sidebar flow is:
+`Home | Meetings | Race | Form | Performance | EPI Ratings | Speed Map | Market | Results | Track | Weather | Overview | Insights`
+with `Settings` retained separately at the bottom of the shell.
 
-#### Explicit Full Form exclusions
-- No additional duplicate rating column beyond governed EPI and ERR merely to fill space.
-- No Predictor.
-- No fabricated historical starts, comments, prices, EPI or ERR.
-- No unrelated Performance dashboard widgets.
-- No workspace-specific logo treatment.
+There must be NO standalone `Field` item in the sidebar after this contract is implemented.
 
-The `Full Form` sub-tab is now LOCKED.
+### Race workspace purpose
+Race is the authoritative launchpad for the selected race. It answers:
+- What race is this?
+- What are its conditions?
+- Who is running?
+- What are the essential current-field facts needed before moving into specialist analysis?
 
-### Form design exclusions — GLOBAL WITHIN FORM
-No Predictor tab. No Tempo Map in Last 5 Runs. No Best Career row. No Average SP row. No fabricated comments/ratings/statistics. No duplicate Performance workspace masquerading as Form.
+Race must NOT attempt to reproduce the depth of Form, Performance, EPI Ratings, Speed Map or Market. Those remain specialist workspaces.
 
-### Mockup-data rule
-ALL horse names, silks, records, statistics, dates, race details, SPs, EPI/ERR values, going records, analysis and notes visible in Form design mockups are ILLUSTRATIVE ONLY. Production consumes canonical field/history/model data.
+### Field becomes the default Race view
+The selected race opens with its declared field as the principal/default Race view. `Field` may be used as an internal Race sub-tab/view label, but never as a separate sidebar workspace.
 
-## 12. FORM GOING RULE — GLOBAL CROSS-WORKSPACE LOCK
+The default field/runner board may expose, where canonical data exists:
+- Runner number.
+- Silk.
+- Horse.
+- Barrier.
+- Trainer.
+- Jockey.
+- Weight.
+- Age/Sex where useful.
+- Last 5 Runs using the globally locked finish-tile convention.
+- Current relevant record/context such as track, distance or today's going where useful and not duplicative.
+- Scratching status.
+
+Rows may expand for concise essential runner context, but Race must not become a second Form guide.
+
+### Race-level information
+Race owns race-level metadata such as:
+- Race number and official race name.
+- Scheduled start time.
+- Distance.
+- Class/grade.
+- Weight conditions.
+- Prize money where canonical.
+- Track and rail.
+- Current official going.
+- Field/runner count.
+- Scratchings.
+- Other canonical race conditions that materially describe the event.
+
+### Internal Race navigation
+The exact final internal labels remain subject to the Race mockup, but the approved architecture is a small number of race-level views rather than another large navigation system. Preferred direction:
+`Field | Race Details | Key Factors`
+
+`Field` is the default view.
+
+`Race Details` contains the complete canonical conditions/metadata that do not belong in every runner row.
+
+`Key Factors` is permitted only for concise, evidence-backed race-level determinants that do not duplicate Overview/Insights. If it cannot add distinct value, it should be omitted rather than filled with generic commentary.
+
+### Specialist-boundary rule — HARD LOCK
+Race is a launchpad, not a duplicate analytics dashboard.
+- Individual horse historical depth -> `Form`.
+- Historical comparative performance -> `Performance`.
+- EPI model/rating analysis -> `EPI Ratings`.
+- Opening-position projection -> `Speed Map`.
+- Price/market movement -> `Market`.
+- Completed race outcomes -> `Results`.
+
+Do not repeat entire specialist tables inside Race.
+
+### Data and interaction rules
+- Declared runners and race conditions must come from canonical current-card data.
+- Scratchings must be visually unambiguous and governed by the current canonical card state.
+- No fabricated runner, barrier, jockey, weight, condition or race metadata.
+- Clicking a horse may provide a clear route into its Form workspace while preserving selected meeting/race/runner context.
+- Specialist navigation should preserve the currently selected meeting and race.
+
+### Sidebar migration rule
+Existing implementation references to the old standalone Field route/tab must be migrated deliberately. Removing the sidebar item must not break runner selection, race selection or deep links. Where legacy Field navigation is retained temporarily for compatibility, it should resolve/redirect to the Race workspace's Field view rather than expose a second competing product screen.
+
+This Race/Field consolidation is now LOCKED. Any future reintroduction of a standalone Field sidebar workspace requires an explicit contract revision.
+
+## 13. FORM GOING RULE — GLOBAL CROSS-WORKSPACE LOCK
 Default collapsed/current-field Form `Going` context, where used, shows the runner's record on TODAY'S GOING as plain text such as `8:1-2-4`, not a coloured badge merely repeating today's condition. Historical individual-run tables show actual historical going using the global condition colours.
 
-## 13. GOVERNANCE
+## 14. GOVERNANCE
 React is presentation/navigation, not the owner of racing intelligence calculations. Governed builders/services own derived metrics. No invented production data. Illustrative mockup values must never be copied into live data. When implementation conflicts with this contract, implementation must be corrected or the contract explicitly revised.
 
 ## LOCK RECORD
 Locked in GitHub: 2026-09-15
-Affected workspaces: INSIGHTS, OVERVIEW, WEATHER, TRACK, RESULTS, MARKET, SPEED MAP, EPI RATINGS, PERFORMANCE, FORM-LAST-5-RUNS, FORM-FULL-FORM, FORM cross-workspace Going rule, GLOBAL DESIGN SYSTEM, CANONICAL EDGEiQ LOGO.
-Next workspace review: FIELD / RACE information-architecture consolidation.
+Affected workspaces: INSIGHTS, OVERVIEW, WEATHER, TRACK, RESULTS, MARKET, SPEED MAP, EPI RATINGS, PERFORMANCE, FORM-LAST-5-RUNS, FORM-FULL-FORM, RACE/FIELD-CONSOLIDATION, FORM cross-workspace Going rule, GLOBAL DESIGN SYSTEM, CANONICAL EDGEiQ LOGO.
+Standalone FIELD sidebar tab: REMOVED.
+Next workspace design: RACE (combined Race + Field launchpad).
