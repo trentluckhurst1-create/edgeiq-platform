@@ -61,26 +61,68 @@ def full_track(condition: str, rating: str) -> str | None:
     return c or r
 
 
-def fetch_rail(meeting: str, race_date: str) -> str | None:
-    slug = meeting_slug(meeting)
-    url = f"https://www.racingandsports.com.au/form-guide/thoroughbred/australia/{slug}/{race_date}"
+def fetch_text(url: str) -> str | None:
     try:
-        req = Request(url, headers={"User-Agent": "Mozilla/5.0 (EDGEiQ Racing Intelligence)"})
+        req = Request(url, headers={
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/153 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+            "Accept-Language": "en-AU,en;q=0.9",
+        })
         raw = urlopen(req, timeout=20).read().decode("utf-8", errors="replace")
         text = html.unescape(re.sub(r"<[^>]+>", " ", raw))
-        text = re.sub(r"\s+", " ", text)
-        patterns = (
-            r"Rail:\s*Rail:\s*(.+?)(?:Track Details|Trainer Statistics|Weather|$)",
-            r"Rail:\s*(True Entire Circuit\.?|True\.?|Out\s+\d+(?:\.\d+)?m[^.]*\.?|\+?\d+(?:\.\d+)?m[^.]*\.?)",
-        )
-        for pattern in patterns:
-            match = re.search(pattern, text, re.I)
-            if match:
-                value = clean(match.group(1)).strip(" .")
-                if value and len(value) <= 80:
-                    return value
+        return re.sub(r"\s+", " ", text)
     except Exception as exc:
-        print(f"RAIL_LOOKUP_WARN meeting={meeting!r} date={race_date} error={exc}")
+        print(f"RAIL_SOURCE_WARN url={url!r} error={exc}")
+        return None
+
+
+def normalise_rail(value: str) -> str | None:
+    value = clean(value).strip(" .,:;-")
+    if not value or len(value) > 100:
+        return None
+    if re.fullmatch(r"(?:\+?0E|0m|True|True Entire Circuit)", value, re.I):
+        return "True Entire Circuit"
+    m = re.fullmatch(r"\+?(\d+(?:\.\d+)?)E", value, re.I)
+    if m:
+        return f"Out {m.group(1)}m Entire Circuit"
+    return value
+
+
+def rail_from_text(text: str | None, meeting: str | None = None) -> str | None:
+    if not text:
+        return None
+    patterns = (
+        r"Rail(?: position)?\s*[:\-]\s*(True Entire Circuit|True|Out\s+\d+(?:\.\d+)?m(?:\s+Entire Circuit)?|\+?\d+(?:\.\d+)?E)\b",
+        r"Rail\s+(?:is\s+)?(?:in\s+)?(?:the\s+)?(True Entire Circuit|True|Out\s+\d+(?:\.\d+)?m(?:\s+Entire Circuit)?|\+?\d+(?:\.\d+)?E)\b",
+    )
+    for pattern in patterns:
+        match = re.search(pattern, text, re.I)
+        if match:
+            return normalise_rail(match.group(1))
+    if meeting:
+        token = re.escape(clean(meeting))
+        match = re.search(token + r"\s+\|\s*(\+?\d+(?:\.\d+)?E|True Entire Circuit|True)\s+\|", text, re.I)
+        if match:
+            return normalise_rail(match.group(1))
+    return None
+
+
+def fetch_rail(meeting: str, race_date: str) -> str | None:
+    slug = meeting_slug(meeting)
+    # The King Zone exposes a compact public meeting header with the rail and track.
+    # It is attempted first because the former Racing & Sports HTML endpoint blocks CI with HTTP 403.
+    sources = (
+        f"https://theking.zone/racing/{race_date}/{slug}",
+        "https://www.pureform.com.au/meetings.php",
+        f"https://www.racingandsports.com.au/form-guide/thoroughbred/australia/{slug}/{race_date}",
+    )
+    for url in sources:
+        text = fetch_text(url)
+        rail = rail_from_text(text, meeting if "pureform.com.au" in url else None)
+        if rail:
+            print(f"RAIL_LOOKUP_OK meeting={meeting!r} date={race_date} rail={rail!r} source={url}")
+            return rail
+    print(f"RAIL_LOOKUP_MISS meeting={meeting!r} date={race_date}")
     return None
 
 
