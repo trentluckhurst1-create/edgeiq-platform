@@ -7,13 +7,16 @@ This document records the user-approved EDGEiQ product/UI decisions made during 
 ## 1. GLOBAL PRODUCT DESIGN CONTRACT — LOCKED
 EDGEiQ is professional racing intelligence software, not a tipping site, bookmaker interface or gimmicky racing website.
 
-Locked presentation: light/white application shell; white left sidebar; restrained EDGEiQ blue active navigation; crisp modern sans-serif typography; strong navy headings; muted secondary text; white panels with thin cool-grey borders, restrained shadows and small radius; dense scan-friendly tables; consistent shared race-day shell. No decorative clutter, glossy cards, gimmicks, oversized hero treatments or unnecessary explanatory copy. Production values must come from canonical/current-card data, validated historical data or governed EDGEiQ-derived metrics. Never fabricate values. `—`/Unavailable is a last resort.
+Locked presentation: light/white application shell; WHITE left sidebar; restrained EDGEiQ blue active navigation; crisp modern sans-serif typography; strong navy headings; muted secondary text; white panels with thin cool-grey borders, restrained shadows and small radius; dense scan-friendly tables; consistent shared race-day shell. No decorative clutter, glossy cards, gimmicks, oversized hero treatments or unnecessary explanatory copy. Production values must come from canonical/current-card data, validated historical data or governed EDGEiQ-derived metrics. Never fabricate values. `—`/Unavailable is a last resort.
 
 ### CANONICAL EDGEiQ LOGO / BRAND MARK — GLOBAL HARD LOCK
 EVERY tab and workspace MUST use the SAME original/first EDGEiQ logo approved at the beginning of this new light-theme redesign. The logo must not drift, regenerate, morph, restyle or be redrawn per workspace. One canonical shared-shell asset/component is authoritative across the product.
 
 ### Track-condition display
 Official labels: FAST 1; GOOD 2; GOOD 3; GOOD 4; SOFT 5; SOFT 6; SOFT 7; HEAVY 8; HEAVY 9; HEAVY 10. Actual condition tiles: FAST blue/white; GOOD green/white; SOFT red/white; HEAVY black/white. SYNTHETIC uses a white tile with black text and restrained border.
+
+### LAST 5 RUNS FINISH-TILE RULE — GLOBAL HARD LOCK
+Every Last 5 Runs sequence throughout EDGEiQ uses: `1` GOLD; `2` SILVER; `3` BRONZE; every other finishing number WHITE with BLUE number/text. This applies to every occurrence on every applicable workspace, including Race.
 
 ## 2. INSIGHTS — LOCKED
 Tabs: Key Insights, Value, Risks, Angles, Summary. Evidence-backed racing intelligence only.
@@ -40,121 +43,109 @@ Opening approximately 200m only. Victorian orientation RIGHT TO LEFT. Barriers o
 Dedicated governed EDGEiQ Performance Index comparison workspace. No fabricated EPI ratings, ranks, trends or weights.
 
 ## 10. PERFORMANCE — LOCKED
-Historical runner-performance workspace. Last-five finish tiles globally: `1` GOLD; `2` SILVER; `3` BRONZE; every other finish WHITE with BLUE number/text.
+Historical runner-performance workspace. Global Last 5 Runs finish-tile rule applies.
 
 ## 11. FORM — INCREMENTAL LOCK
 Form is a runner-centric professional deep form guide rendered in EDGEiQ's approved light-theme language. It is distinct from Performance.
 
-### Form runner sub-tabs — LOCKED ORDER
-`Last 5 Runs | Full Form | Race Comments | Trainer/Jockey | Ratings | Map`
-`Predictor` is REMOVED.
-
-### LAST 5 RUNS — LOCKED
-Key Statistics may show Total Starts, Record/Career, Prize Money, Track, Distance, Track/Distance, Last Start, Win % and Place %. Best Career, Average SP and Tempo Map are removed.
-Going Record uses FAST blue, GOOD green, SOFT red, HEAVY black, SYNTHETIC white/black.
-Historical table columns exactly:
-`Date | Track | Race | Dist | Class | Going | Barrier | Wt | Jockey | Pos | Margin | SP | EPI | ERR | Race Notes`
-`EPI` = individual performance figure the horse ran. `ERR` = EDGEiQ Race Rating, the governed overall strength/standard rating of that race.
-
-### FULL FORM — LOCKED
-Full Form extends the same professional presentation to every valid historical start available for the selected horse, newest to oldest by default. It uses the same exact semantic columns as Last 5 Runs and does not introduce unrelated analytics. No fabricated history, comments, prices, EPI or ERR.
+Form runner sub-tabs: `Last 5 Runs | Full Form | Race Comments | Trainer/Jockey | Ratings | Map`. Predictor is removed. Last 5 Runs and Full Form are locked. Historical semantic columns: `Date | Track | Race | Dist | Class | Going | Barrier | Wt | Jockey | Pos | Margin | SP | EPI | ERR | Race Notes`. EPI is horse-run specific; ERR is the EDGEiQ Race Rating for the race itself.
 
 ## 12. RACE / FIELD INFORMATION ARCHITECTURE — LOCKED
+Standalone `Field` is removed from the sidebar and absorbed into Race. Principal sidebar flow:
+`Home | Meetings | Race | Form | Performance | EPI Ratings | Speed Map | Market | Results | Track | Weather | Overview | Insights`, with Settings at the bottom.
 
-### Standalone Field tab is REMOVED
-`Field` is no longer a top-level EDGEiQ sidebar workspace. Maintaining separate `Race` and `Field` destinations creates unnecessary overlap and forces the user to decide between two screens that answer closely related questions.
+## 13. RACE WORKSPACE — APPROVED AND LOCKED
+Race is the authoritative launchpad for the selected race. The approved visual mockup uses the global light-theme shell and MUST retain the WHITE sidebar. A dark/navy sidebar is explicitly non-compliant.
 
-The declared field is now absorbed into the `Race` workspace.
-
-### Product hierarchy
-The principal race-day sidebar flow is:
-`Home | Meetings | Race | Form | Performance | EPI Ratings | Speed Map | Market | Results | Track | Weather | Overview | Insights`
-with `Settings` retained separately at the bottom of the shell.
-
-There must be NO standalone `Field` item in the sidebar after this contract is implemented.
-
-### Race workspace purpose
-Race is the authoritative launchpad for the selected race. It answers:
-- What race is this?
-- What are its conditions?
-- Who is running?
-- What are the essential current-field facts needed before moving into specialist analysis?
-
-Race must NOT attempt to reproduce the depth of Form, Performance, EPI Ratings, Speed Map or Market. Those remain specialist workspaces.
-
-### Field becomes the default Race view
-The selected race opens with its declared field as the principal/default Race view. `Field` may be used as an internal Race sub-tab/view label, but never as a separate sidebar workspace.
-
-The default field/runner board may expose, where canonical data exists:
-- Runner number.
-- Silk.
-- Horse.
-- Barrier.
-- Trainer.
-- Jockey.
-- Weight.
-- Age/Sex where useful.
-- Last 5 Runs using the globally locked finish-tile convention.
-- Current relevant record/context such as track, distance or today's going where useful and not duplicative.
-- Scratching status.
-
-Rows may expand for concise essential runner context, but Race must not become a second Form guide.
-
-### Race-level information
-Race owns race-level metadata such as:
-- Race number and official race name.
-- Scheduled start time.
-- Distance.
-- Class/grade.
-- Weight conditions.
-- Prize money where canonical.
-- Track and rail.
-- Current official going.
-- Field/runner count.
-- Scratchings.
-- Other canonical race conditions that materially describe the event.
+### Shared meeting/race header
+Race preserves the approved shared shell with:
+- Canonical EDGEiQ logo.
+- Search/navigation header.
+- Selected meeting and date.
+- Live/status context where genuine.
+- Meeting heading and compact weather/track/rail context where governed.
+- Horizontal R1–Rn selector with selected race highlighted in EDGEiQ blue.
+- Race header containing official race number/name, distance, class/grade, weight conditions, rail, prize money, runner count, official going/weather and scheduled start time where canonical.
 
 ### Internal Race navigation
-The exact final internal labels remain subject to the Race mockup, but the approved architecture is a small number of race-level views rather than another large navigation system. Preferred direction:
-`Field | Race Details | Key Factors`
+Approved direction:
+`Field | Race Details | Key Determinants`
 
-`Field` is the default view.
+`Field` is the DEFAULT internal Race view. It is not restored to the sidebar.
 
-`Race Details` contains the complete canonical conditions/metadata that do not belong in every runner row.
+### Field runner board — APPROVED
+The principal Race view is a dense professional current-field table. Approved semantic direction, where canonical/governed values exist:
+`# | Silks | Horse | Barrier | Trainer | Jockey | Weight | Age | Sex | Last 5 Runs | Going | ERR | EPI | EDGEiQ Price | Market | Edge`
+plus a restrained row action/chevron for deeper runner navigation.
 
-`Key Factors` is permitted only for concise, evidence-backed race-level determinants that do not duplicate Overview/Insights. If it cannot add distinct value, it should be omitted rather than filled with generic commentary.
+Implementation may adjust widths/responsive grouping without changing the information semantics.
+
+### Last 5 Runs presentation — HARD RULE
+Within the Race field table, EVERY occurrence of:
+- `1` is GOLD.
+- `2` is SILVER.
+- `3` is BRONZE.
+- all other finishing numbers are WHITE with BLUE text.
+No exceptions. This is the same global rule used elsewhere in EDGEiQ.
+
+### Going in Race field table
+The Race view should show useful current-going context for the runner rather than fabricate data. If the column represents the actual current official track condition, it must be labelled/structured so that meaning is clear. If it represents the runner's record on today's going, use the governed record representation rather than merely repeating today's condition. Final implementation must avoid semantic ambiguity.
+
+### ERR / EPI
+- `EPI` remains the governed horse-specific performance/model figure.
+- `ERR` remains EDGEiQ Race Rating and must retain its defined race-strength semantics.
+- Do not generate these figures in React or populate illustrative mockup numbers.
+
+### EDGEiQ Price / Market / Edge
+These columns may appear where genuine current model and market data exist. Market values must be timestamped/sourced through the governed market pipeline. Edge must use the documented EDGEiQ convention; no mockup percentage may enter production.
+
+### Supporting Race panels
+The approved Race mockup uses restrained supporting panels below the field table:
+- `Race Summary` — factual concise canonical race description only.
+- `Market vs EDGEiQ Price` — only where governed current market/model data exists; no fabricated favourite/value callouts.
+- `Quick Links` — useful navigation into specialist workspaces such as Form, Speed Map, Market and Track.
+
+These panels must remain secondary to the field table and must not turn Race into a duplicate Overview/Insights dashboard.
+
+### Race Details
+Owns complete canonical race conditions/metadata that do not need to be repeated in every runner row.
+
+### Key Determinants
+Permitted only for concise evidence-backed race-level determinants. It must not duplicate Overview/Insights or be filled with generic generated commentary. If no governed determinants exist, show a truthful unavailable/empty state or omit the content.
 
 ### Specialist-boundary rule — HARD LOCK
-Race is a launchpad, not a duplicate analytics dashboard.
-- Individual horse historical depth -> `Form`.
-- Historical comparative performance -> `Performance`.
-- EPI model/rating analysis -> `EPI Ratings`.
-- Opening-position projection -> `Speed Map`.
-- Price/market movement -> `Market`.
-- Completed race outcomes -> `Results`.
+- Individual historical horse depth -> Form.
+- Historical comparative performance -> Performance.
+- EPI model/rating analysis -> EPI Ratings.
+- Opening-position projection -> Speed Map.
+- Price/fluctuation depth -> Market.
+- Completed outcomes -> Results.
+Race does not duplicate those specialist workspaces.
 
-Do not repeat entire specialist tables inside Race.
+### Race data integrity
+All horse names, silks, barriers, connections, weights, ages/sex, last-five runs, going context, ERR, EPI, EDGEiQ prices, market prices, edges, summaries and determinants shown in design mockups are ILLUSTRATIVE ONLY. Production uses canonical/governed sources. No mockup value may be copied into live data.
 
-### Data and interaction rules
-- Declared runners and race conditions must come from canonical current-card data.
-- Scratchings must be visually unambiguous and governed by the current canonical card state.
-- No fabricated runner, barrier, jockey, weight, condition or race metadata.
-- Clicking a horse may provide a clear route into its Form workspace while preserving selected meeting/race/runner context.
-- Specialist navigation should preserve the currently selected meeting and race.
+### Race visual lock
+- Sidebar = WHITE.
+- Canonical first-design EDGEiQ logo only.
+- Active Race navigation uses restrained blue highlight.
+- White/light canvas and panels.
+- Dense blue/navy typography and thin cool-grey borders.
+- No dark sidebar.
+- No bookmaker/casino treatment.
+- No unnecessary explanatory copy.
 
-### Sidebar migration rule
-Existing implementation references to the old standalone Field route/tab must be migrated deliberately. Removing the sidebar item must not break runner selection, race selection or deep links. Where legacy Field navigation is retained temporarily for compatibility, it should resolve/redirect to the Race workspace's Field view rather than expose a second competing product screen.
+This combined Race/Field workspace is now APPROVED AND LOCKED. Any structural redesign requires explicit contract revision.
 
-This Race/Field consolidation is now LOCKED. Any future reintroduction of a standalone Field sidebar workspace requires an explicit contract revision.
+## 14. FORM GOING RULE — GLOBAL CROSS-WORKSPACE LOCK
+Default collapsed/current-field Form Going context, where used, shows the runner's record on TODAY'S GOING as plain text such as `8:1-2-4`, not a coloured badge merely repeating today's condition. Historical individual-run tables show actual historical going using the global condition colours.
 
-## 13. FORM GOING RULE — GLOBAL CROSS-WORKSPACE LOCK
-Default collapsed/current-field Form `Going` context, where used, shows the runner's record on TODAY'S GOING as plain text such as `8:1-2-4`, not a coloured badge merely repeating today's condition. Historical individual-run tables show actual historical going using the global condition colours.
-
-## 14. GOVERNANCE
+## 15. GOVERNANCE
 React is presentation/navigation, not the owner of racing intelligence calculations. Governed builders/services own derived metrics. No invented production data. Illustrative mockup values must never be copied into live data. When implementation conflicts with this contract, implementation must be corrected or the contract explicitly revised.
 
 ## LOCK RECORD
 Locked in GitHub: 2026-09-15
-Affected workspaces: INSIGHTS, OVERVIEW, WEATHER, TRACK, RESULTS, MARKET, SPEED MAP, EPI RATINGS, PERFORMANCE, FORM-LAST-5-RUNS, FORM-FULL-FORM, RACE/FIELD-CONSOLIDATION, FORM cross-workspace Going rule, GLOBAL DESIGN SYSTEM, CANONICAL EDGEiQ LOGO.
+Affected workspaces: INSIGHTS, OVERVIEW, WEATHER, TRACK, RESULTS, MARKET, SPEED MAP, EPI RATINGS, PERFORMANCE, FORM-LAST-5-RUNS, FORM-FULL-FORM, RACE/FIELD-CONSOLIDATION, RACE-WORKSPACE, FORM cross-workspace Going rule, GLOBAL DESIGN SYSTEM, CANONICAL EDGEiQ LOGO.
 Standalone FIELD sidebar tab: REMOVED.
-Next workspace design: RACE (combined Race + Field launchpad).
+RACE workspace: APPROVED AND LOCKED.
+Next workspace design: MEETINGS.
