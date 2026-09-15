@@ -222,7 +222,73 @@ All prices, runners, percentages, fluctuation paths, market notes and summary fi
 
 This Market specification is now LOCKED. Any future change requires an explicit contract revision.
 
-## 8. FORM GOING RULE — GLOBAL CROSS-WORKSPACE LOCK
+## 8. SPEED MAP — LOCKED
+
+Speed Map is an EARLY-RACE positioning workspace. It visualises the expected first approximately 200 metres from each runner's actual barrier using the governed EDGEiQ Early Speed Score. It does NOT predict the horses' positions through the whole race or at the finish.
+
+### Core visual — locked
+- The hero component is the `Early Speed Map (Barrier to 200m)`.
+- Victorian presentation runs RIGHT TO LEFT, reflecting the anti-clockwise racing orientation selected for this product view.
+- The barriers/start are on the RIGHT side of the map.
+- Every horse graphic faces LEFT.
+- Each runner begins from its ACTUAL barrier lane on the right.
+- A thin lane/path line runs from that runner's barrier/start point leftwards to the horse's mapped early position.
+- The horse's horizontal position is governed by its Early Speed Score: higher early-speed value = farther LEFT from the barriers; lower value = remains closer to the RIGHT/start side.
+- Vertical positioning preserves the runner's barrier/lane relationship so the viewer can immediately understand where each runner came from and how far it is expected to advance early.
+- The map is about the opening approximately 200m only; it is not a full-race map.
+
+### Runner rendering — locked
+- All horses use the SAME restrained EDGEiQ/navy horse treatment.
+- Do NOT use arbitrary horse colours or coloured saddlecloth-number circles to distinguish runners.
+- Runner identity is shown by the HORSE NAME in a compact white tile beside the horse.
+- Barrier numbers/lanes are structural start information only; they are not decorative colour identifiers.
+- Scratched runners must not occupy active lanes; barrier/lane presentation must correctly reflect governed scratching handling.
+
+### Visual language — deliberately self-explanatory
+Do NOT add categorical zones or headings such as:
+- Slower Early Speed
+- Moderate
+- Faster Early Speed
+- Leader / On Pace / Midfield / Backmarker regions
+
+Do NOT add a finish marker or imply predicted finishing order.
+Do NOT place an unnecessary `200m` finish-style marker on the map.
+A restrained right-to-left direction cue may be used, but the map itself should communicate the concept primarily through barrier origins, lane/path lines and horse positions.
+
+### Early Speed Score
+- Early Speed is represented by a governed numerical EDGEiQ score/value.
+- The score determines relative horizontal travel/position in the first approximately 200m.
+- The exact scoring formula, scale and transformations belong to the governed model/builder and must not be invented in React.
+- The visual must preserve meaningful relative differences between runner scores rather than assigning generic style buckets.
+- No fabricated scores or manually positioned horses in production.
+
+### Supporting Early Speed Data table
+Below the map, show a dense supporting table where governed data exists. Approved information includes:
+- Runner number.
+- Horse.
+- Barrier.
+- Early Speed Score, including a restrained visual bar if useful.
+- Governed estimated early position/rank for the opening approximately 200m where the model produces it.
+
+The table supports the visual; it must not overwhelm it with generic explanatory prose.
+
+### Explicitly excluded
+- Full-race positional prediction to the finish.
+- Finish-line marker.
+- Predicted finishing order.
+- Arbitrary runner colours.
+- Coloured runner-number bubbles as identity treatment.
+- Slower/Moderate/Faster background categories.
+- Leader/On Pace/Midfield/Backmarker zoning on the core map.
+- Fabricated horse paths or scores.
+- Manual React positioning disconnected from governed Early Speed data.
+
+### Mockup-data rule
+All horse names, barriers, scores and positions shown in design mockups are ILLUSTRATIVE ONLY. Production map geometry must be built from the canonical field/barrier data plus governed EDGEiQ Early Speed output.
+
+This Speed Map specification is now LOCKED. Any future change requires an explicit contract revision.
+
+## 9. FORM GOING RULE — GLOBAL CROSS-WORKSPACE LOCK
 
 For the default runner Form table, the `Going` column does NOT show a coloured condition badge and does NOT merely repeat today's track condition.
 
@@ -230,7 +296,7 @@ It shows the runner's record on TODAY'S GOING as plain text, e.g. `8:1-2-4` = st
 
 Historical individual-run tables may show the actual going for that historical run using the uppercase condition label and global condition colours.
 
-## 9. GOVERNANCE
+## 10. GOVERNANCE
 
 - React is presentation/navigation, not the owner of racing intelligence calculations.
 - Governed builders/services own derived metrics.
@@ -243,6 +309,6 @@ Historical individual-run tables may show the actual going for that historical r
 
 Locked in GitHub: 2026-09-15
 
-Affected workspaces: INSIGHTS, OVERVIEW, WEATHER, TRACK, RESULTS, MARKET, FORM cross-workspace Going rule, GLOBAL DESIGN SYSTEM.
+Affected workspaces: INSIGHTS, OVERVIEW, WEATHER, TRACK, RESULTS, MARKET, SPEED MAP, FORM cross-workspace Going rule, GLOBAL DESIGN SYSTEM.
 
-Next workspace in bottom-up approval sequence: SPEED MAP.
+Next workspace in bottom-up approval sequence: EPI RATINGS.
