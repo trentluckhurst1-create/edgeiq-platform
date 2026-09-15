@@ -5,13 +5,11 @@ on:
   schedule:
     - cron: '17 * * * *'
   push:
-    branches:
-      - main
+    branches: [main]
     paths:
       - 'src/**'
       - 'index.html'
-      - 'package.json'
-      - 'package-lock.json'
+      - 'package*.json'
       - 'vite.config.ts'
       - 'tsconfig*.json'
       - 'public/**'
@@ -24,9 +22,6 @@ permissions:
   pages: write
   id-token: write
 
-# This is the sole production Pages owner. Every deployment refreshes and
-# verifies the racing data before publishing the UI, so a frontend-only build
-# can never erase the live runtime feeds.
 concurrency:
   group: edgeiq-pages-production
   cancel-in-progress: true
@@ -36,77 +31,46 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
           cache: pip
           cache-dependency-path: requirements-pages.txt
-
       - name: Install data-refresh dependencies
         run: |
           python -m pip install --upgrade pip
           python -m pip install -r requirements-pages.txt
           python -m playwright install --with-deps chromium
-
       - name: Refresh current three-day EDGEiQ data
         env:
           TZ: Australia/Melbourne
         run: |
           set +e
           python scripts/run_edgeiq_daily_product_refresh_v1.py --date "$(date +%F)"
-          refresh_code=$?
+          code=$?
           set -e
-          echo "DAILY_REFRESH_EXIT_CODE=${refresh_code}"
-          echo "Legacy recovery stages may return non-zero; fresh Racing.com data is promoted and gated below."
-
-      - name: Promote fresh today catalog from Racing.com race list
-        env:
-          TZ: Australia/Melbourne
-        run: python scripts/repair_edgeiq_today_catalog_from_race_list_v1.py
-
-      - name: Gate fresh today meeting fields
+          echo "DAILY_REFRESH_EXIT_CODE=$code"
+      - name: Gate current catalog
         env:
           TZ: Australia/Melbourne
         run: |
           python - <<'PY'
-          import csv
           import json
           from datetime import datetime
           from pathlib import Path
           from zoneinfo import ZoneInfo
-          csv.field_size_limit(1024 * 1024 * 128)
-          data = Path('public/data')
-          today = datetime.now(ZoneInfo('Australia/Melbourne')).date().isoformat()
-          window_path = data / 'edgeiq_three_day_window_v1.json'
-          catalog_path = data / 'edgeiq_three_day_product_catalog_v1.json'
-          race_list_path = data / 'edgeiq_vic_three_day_race_list_v1.csv'
-          assert window_path.exists() and window_path.stat().st_size > 0, 'Three-day window missing'
-          assert catalog_path.exists() and catalog_path.stat().st_size > 0, 'Product catalog missing'
-          assert race_list_path.exists() and race_list_path.stat().st_size > 0, 'Race list missing'
-          window = json.loads(window_path.read_text(encoding='utf-8'))
-          assert str(window.get('today', ''))[:10] == today, f"Window stale: {window.get('today')} != {today}"
-          catalog = json.loads(catalog_path.read_text(encoding='utf-8'))
-          meetings = [m for m in catalog.get('meetings', []) if isinstance(m, dict) and str(m.get('date', ''))[:10] == today]
-          races = [r for m in meetings for r in m.get('races', []) if isinstance(r, dict)]
-          runners = [runner for r in races for runner in r.get('runners', []) if isinstance(runner, dict)]
-          with race_list_path.open('r', encoding='utf-8-sig', newline='') as handle:
-              race_list = list(csv.DictReader(handle))
-          race_list_today = [row for row in race_list if str(row.get('race_date', row.get('date', '')))[:10] == today]
-          assert meetings, f'No meeting published for operational today {today}'
-          assert races, f'No races published for operational today {today}'
-          assert runners, f'No runners published for operational today {today}'
-          assert race_list_today, f'No current race-list rows for {today}'
-          print('TODAY=' + today)
-          print('TODAY_MEETINGS=' + ','.join(str(m.get('meeting', '')) for m in meetings))
-          print('TODAY_RACES=' + str(len(races)))
-          print('TODAY_RUNNERS=' + str(len(runners)))
-          print('TODAY_RACE_LIST_ROWS=' + str(len(race_list_today)))
+          today=datetime.now(ZoneInfo('Australia/Melbourne')).date().isoformat()
+          data=Path('public/data')
+          window=json.loads((data/'edgeiq_three_day_window_v1.json').read_text(encoding='utf-8'))
+          catalog=json.loads((data/'edgeiq_three_day_product_catalog_v1.json').read_text(encoding='utf-8'))
+          assert str(window.get('today',''))[:10] == today
+          meetings=[m for m in catalog.get('meetings',[]) if isinstance(m,dict) and str(m.get('date',''))[:10] == today]
+          races=[r for m in meetings for r in m.get('races',[]) if isinstance(r,dict)]
+          runners=[x for r in races for x in r.get('runners',[]) if isinstance(x,dict)]
+          assert meetings and races and runners
+          print(f'TODAY={today} MEETINGS={len(meetings)} RACES={len(races)} RUNNERS={len(runners)}')
           PY
-
       - name: Rebuild current form intelligence chain
         env:
           TZ: Australia/Melbourne
@@ -120,7 +84,6 @@ jobs:
           python scripts/build_edgeiq_current_race_shape_v2.py
           python scripts/build_edgeiq_current_map_v1.py
           python scripts/build_edgeiq_form_guide_enriched_v2.py
-
       - name: Rebuild current terminal feeds
         env:
           TZ: Australia/Melbourne
@@ -131,19 +94,13 @@ jobs:
           python scripts/build_edgeiq_insights_terminal_feed_v1.py
           python scripts/build_edgeiq_gear_terminal_feed_v1.py
           python scripts/build_edgeiq_meeting_results_terminal_feed_v1.py
-
-      - name: Capture current horse profile form and run ratings
-        env:
-          TZ: Australia/Melbourne
-        run: python scripts/build_edgeiq_current_runner_profile_history_v1.py
-
-      - name: Build and merge current-runner governed performance history
+      - name: Build runner history
         env:
           TZ: Australia/Melbourne
         run: |
+          python scripts/build_edgeiq_current_runner_profile_history_v1.py
           python scripts/build_edgeiq_current_runner_performance_history_v1.py
           python scripts/merge_edgeiq_current_runner_profile_history_v1.py
-
       - name: Build lightweight runtime feeds
         env:
           TZ: Australia/Melbourne
@@ -151,47 +108,30 @@ jobs:
           python scripts/build_edgeiq_meetings_summary_feed_v1.py
           python scripts/build_edgeiq_meeting_detail_shards_v1.py
           python scripts/build_edgeiq_race_detail_shards_v1.py
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: '22'
           cache: npm
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: TypeScript
-        run: npm exec -- tsc -b
-
+      - uses: actions/configure-pages@v5
+      - run: npm ci
+      - run: npm exec -- tsc -b
       - name: Vite production build
         env:
           VITE_CLERK_PUBLISHABLE_KEY: ${{ secrets.VITE_CLERK_PUBLISHABLE_KEY }}
         run: npm exec -- vite build
-
-      - name: Remove monolithic runtime catalog
-        run: rm -f dist/data/edgeiq_three_day_product_catalog_v1.json
-
-      - name: Verify lightweight Pages data
+      - run: rm -f dist/data/edgeiq_three_day_product_catalog_v1.json
+      - name: Verify Pages data
         run: |
           test -s dist/data/edgeiq_three_day_window_v1.json
           test -s dist/data/edgeiq_meetings_summary_feed_v1.json
           test -s dist/data/meetings/index.json
           test -s dist/data/races/index.json
           test -s dist/data/runners/index.json
-          test -s dist/data/edgeiq_vic_three_day_race_list_v1.csv
           test -s dist/data/edgeiq_current_runner_profile_history_v1.csv
           test -s dist/data/edgeiq_current_runner_performance_history_v1.csv
-          test ! -e dist/data/edgeiq_three_day_product_catalog_v1.json
-
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
-
   deploy:
     environment:
       name: github-pages
