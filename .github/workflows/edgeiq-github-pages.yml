@@ -103,6 +103,7 @@ jobs:
           TZ: Australia/Melbourne
         run: |
           python scripts/build_edgeiq_meetings_summary_feed_v1.py
+          python scripts/build_edgeiq_racecourse_weather_feed_v1.py
           python scripts/build_edgeiq_meeting_detail_shards_v1.py
           python scripts/build_edgeiq_race_detail_shards_v1.py
       - uses: actions/setup-node@v4
@@ -121,6 +122,7 @@ jobs:
         run: |
           test -s dist/data/edgeiq_three_day_window_v1.json
           test -s dist/data/edgeiq_meetings_summary_feed_v1.json
+          test -s dist/data/edgeiq_racecourse_weather_feed_v1.json
           test -s dist/data/meetings/index.json
           test -s dist/data/races/index.json
       - uses: actions/upload-pages-artifact@v3
