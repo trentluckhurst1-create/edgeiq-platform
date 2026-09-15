@@ -51,6 +51,10 @@ jobs:
           code=$?
           set -e
           echo "DAILY_REFRESH_EXIT_CODE=$code"
+      - name: Recover current Racing.com catalog
+        env:
+          TZ: Australia/Melbourne
+        run: python scripts/rebuild_edgeiq_racingcom_current_catalog_v1.py
       - name: Gate current catalog
         env:
           TZ: Australia/Melbourne
