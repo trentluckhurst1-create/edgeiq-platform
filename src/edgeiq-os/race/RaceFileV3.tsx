@@ -23,11 +23,25 @@ import { loadRaceDetail } from "./services/raceDetailFeed";
 import type { ThreeDayMeeting } from "./services/threeDayCatalog";
 import type { MeetingsDayKey } from "./services/meetingsFeed";
 
-const RACE_SCOPED_SECTIONS: GlobalSection[] = ["race", "field", "formGuide", "performance", "epi", "map", "market", "overview", "insights", "results", "review", "compare"];
+const RACE_SCOPED_SECTIONS: GlobalSection[] = ["race", "field", "formGuide", "performance", "epi", "map", "market", "results", "track", "weather", "overview", "insights", "review", "compare"];
 
 function clean(value: unknown): string {
   const text = String(value ?? "").trim();
   return text || "-";
+}
+
+function ContextWorkspacePlaceholder({ title, message }: { title: string; message: string }) {
+  return (
+    <section className="eiq-workspace eiq-context-workspace" aria-label={`${title} workspace`}>
+      <header className="eiq-workspace__header">
+        <div>
+          <p className="eiq-workspace__eyebrow">EDGEiQ RACING INTELLIGENCE</p>
+          <h1>{title}</h1>
+          <p>{message}</p>
+        </div>
+      </header>
+    </section>
+  );
 }
 
 export function RaceFileV3() {
@@ -108,12 +122,16 @@ export function RaceFileV3() {
         <SpeedMapWorkspace {...raceProps} />
       ) : activeSection === "market" ? (
         <MarketWorkspace {...raceProps} />
+      ) : activeSection === "results" ? (
+        <ResultsWorkspace {...raceProps} />
+      ) : activeSection === "track" ? (
+        <ContextWorkspacePlaceholder title="Track" message="Track workspace implementation is being migrated to the locked EDGEiQ Track contract. No synthetic track data is shown." />
+      ) : activeSection === "weather" ? (
+        <ContextWorkspacePlaceholder title="Weather" message="Weather workspace implementation is being migrated to the locked EDGEiQ Weather contract. No synthetic weather data is shown." />
       ) : activeSection === "overview" ? (
         <OverviewWorkspace {...raceProps} />
       ) : activeSection === "insights" ? (
         <InsightsWorkspace {...raceProps} />
-      ) : activeSection === "results" ? (
-        <ResultsWorkspace {...raceProps} />
       ) : activeSection === "review" ? (
         <ReviewWorkspace {...raceProps} />
       ) : activeSection === "lab" ? (
