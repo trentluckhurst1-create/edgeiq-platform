@@ -98,13 +98,6 @@ jobs:
           python scripts/build_edgeiq_insights_terminal_feed_v1.py
           python scripts/build_edgeiq_gear_terminal_feed_v1.py
           python scripts/build_edgeiq_meeting_results_terminal_feed_v1.py
-      - name: Build runner history
-        env:
-          TZ: Australia/Melbourne
-        run: |
-          python scripts/build_edgeiq_current_runner_profile_history_v1.py
-          python scripts/build_edgeiq_current_runner_performance_history_v1.py
-          python scripts/merge_edgeiq_current_runner_profile_history_v1.py
       - name: Build lightweight runtime feeds
         env:
           TZ: Australia/Melbourne
@@ -130,9 +123,6 @@ jobs:
           test -s dist/data/edgeiq_meetings_summary_feed_v1.json
           test -s dist/data/meetings/index.json
           test -s dist/data/races/index.json
-          test -s dist/data/runners/index.json
-          test -s dist/data/edgeiq_current_runner_profile_history_v1.csv
-          test -s dist/data/edgeiq_current_runner_performance_history_v1.csv
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
