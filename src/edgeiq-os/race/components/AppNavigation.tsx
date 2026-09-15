@@ -1,6 +1,6 @@
 import {
   BadgeDollarSign, CalendarDays, CloudSun, Crosshair, Gauge, Home, Lightbulb, LineChart,
-  Map, MapPinned, Settings, SlidersHorizontal, Trophy, ClipboardList,
+  Map, MapPinned, SlidersHorizontal, Trophy, ClipboardList, Users,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -15,19 +15,25 @@ type NavGroup = { label: string; items: NavItem[] };
 
 const navGroups: NavGroup[] = [
   { label: "RACE DAY", items: [
-    { key: "home", label: "Home", Icon: Home }, { key: "meetings", label: "Meetings", Icon: CalendarDays },
-    { key: "race", label: "Race", Icon: Crosshair }, { key: "formGuide", label: "Form", Icon: ClipboardList },
+    { key: "home", label: "Dashboard", Icon: Home },
+    { key: "meetings", label: "Meetings", Icon: CalendarDays },
+    { key: "race", label: "Race", Icon: Crosshair },
+    { key: "field", label: "Field", Icon: Users },
   ]},
   { label: "INTELLIGENCE", items: [
-    { key: "performance", label: "Performance", Icon: SlidersHorizontal }, { key: "epi", label: "EPI Ratings", Icon: LineChart },
-    { key: "map", label: "Speed Map", Icon: Map }, { key: "market", label: "Market", Icon: BadgeDollarSign },
+    { key: "performance", label: "Performance", Icon: SlidersHorizontal },
+    { key: "formGuide", label: "Form", Icon: ClipboardList },
+    { key: "map", label: "Map", Icon: Map },
+    { key: "epi", label: "Nexus", Icon: LineChart },
+    { key: "market", label: "Market", Icon: BadgeDollarSign },
   ]},
   { label: "RACE CONTEXT", items: [
-    { key: "results", label: "Results", Icon: Trophy }, { key: "track", label: "Track", Icon: MapPinned },
-    { key: "weather", label: "Weather", Icon: CloudSun }, { key: "overview", label: "Overview", Icon: Gauge },
+    { key: "results", label: "Results", Icon: Trophy },
+    { key: "track", label: "Track", Icon: MapPinned },
+    { key: "weather", label: "Weather", Icon: CloudSun },
+    { key: "overview", label: "Overview", Icon: Gauge },
     { key: "insights", label: "Insights", Icon: Lightbulb },
   ]},
-  { label: "", items: [{ key: "settings", label: "Settings", Icon: Settings }] },
 ];
 
 /**
@@ -46,8 +52,8 @@ export function EdgeiqBrand() {
 export function AppNavigation({ activeSection, onSectionChange }: AppNavigationProps) {
   return <aside className="eiq-app-nav" aria-label="EDGEiQ Racing navigation">
     <EdgeiqBrand />
-    <nav className="eiq-app-nav__groups">{navGroups.map((group, groupIndex) => <section className="eiq-app-nav__group" key={`${group.label || "settings"}-${groupIndex}`} aria-label={group.label || "Settings"}>
-      {group.label ? <p>{group.label}</p> : null}<div>{group.items.map(({ key, label, Icon }) => <button key={key} type="button" data-edgeiq-section={key} className={activeSection === key ? "is-active" : ""} onClick={() => onSectionChange(key)}><span className="eiq-app-nav__icon" aria-hidden="true"><Icon size={16} strokeWidth={1.8} /></span><strong>{label}</strong></button>)}</div>
+    <nav className="eiq-app-nav__groups">{navGroups.map((group, groupIndex) => <section className="eiq-app-nav__group" key={`${group.label}-${groupIndex}`} aria-label={group.label}>
+      <p>{group.label}</p><div>{group.items.map(({ key, label, Icon }) => <button key={key} type="button" data-edgeiq-section={key} className={activeSection === key ? "is-active" : ""} onClick={() => onSectionChange(key)}><span className="eiq-app-nav__icon" aria-hidden="true"><Icon size={16} strokeWidth={1.8} /></span><strong>{label}</strong></button>)}</div>
     </section>)}</nav>
     <footer className="eiq-app-nav__footer"><div><span className="eiq-app-nav__live-dot" aria-hidden="true" /><strong>System online</strong></div><small>Production workspace</small></footer>
   </aside>;
