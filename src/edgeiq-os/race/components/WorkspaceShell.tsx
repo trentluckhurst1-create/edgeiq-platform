@@ -16,48 +16,43 @@ function formatHeaderTime() {
 }
 
 const workspaceLabels: Partial<Record<GlobalSection, string>> = {
+  home: "Home",
+  meetings: "Meetings",
   race: "Race",
-  field: "Field",
   formGuide: "Form",
   performance: "Performance",
   epi: "EPI Ratings",
   map: "Speed Map",
   market: "Market",
+  results: "Results",
+  track: "Track",
+  weather: "Weather",
   overview: "Overview",
   insights: "Insights",
-  results: "Results",
-  review: "Review",
-  lab: "Research Lab",
-  compare: "Compare",
   settings: "Settings",
 };
 
 export function WorkspaceShell({ activeSection, onSectionChange, children }: WorkspaceShellProps) {
-  const activeWorkspace = activeSection !== undefined;
-  const label = workspaceLabels[activeSection];
-  const workspaceTrail = label ? `Dashboard · Meetings · ${label}` : "Dashboard · Meetings";
+  const label = workspaceLabels[activeSection] ?? "EDGEiQ";
+  const workspaceTrail = activeSection === "home" ? "Home" : activeSection === "meetings" ? "Home · Meetings" : `Home · Meetings · ${label}`;
 
   return (
-    <section className={`eiq-approved-shell is-${activeSection}${activeSection === "home" ? " is-dashboard" : activeSection === "meetings" ? " is-meetings" : ""}`} data-edgeiq-approved-ui="dashboard-meetings-baseline" data-edgeiq-active-section={activeSection}>
+    <section className={`eiq-approved-shell is-${activeSection}${activeSection === "home" ? " is-dashboard" : activeSection === "meetings" ? " is-meetings" : ""}`} data-edgeiq-approved-ui="locked-2026-09-15" data-edgeiq-active-section={activeSection}>
       <AppNavigation activeSection={activeSection} onSectionChange={onSectionChange} />
-      {activeWorkspace ? (
-        <div className="eiq-approved-shell__frame">
-          <header className="eiq-approved-topbar">
-            <div className="eiq-approved-topbar__identity"><span className="eiq-approved-topbar__product">EDGEiQ / RACING</span></div>
-            <div className="eiq-approved-topbar__ops" aria-label="Operational context">
-              <span className="eiq-approved-topbar__status"><i aria-hidden="true" /> LIVE</span>
-              <span>{formatHeaderDate()}</span>
-              <span>{formatHeaderTime()} AEDT</span>
-            </div>
-          </header>
-          <main className="eiq-approved-shell__content">
-            <div className="eiq-workspace-stage">{children}</div>
-          </main>
-          <footer className="eiq-approved-shell__footer"><span>EDGEiQ Racing Intelligence</span><span>{workspaceTrail}</span><span>{formatHeaderTime()} AEDT</span></footer>
-        </div>
-      ) : (
-        <div className="eiq-approved-shell__frame" aria-label="Empty workspace" />
-      )}
+      <div className="eiq-approved-shell__frame">
+        <header className="eiq-approved-topbar">
+          <div className="eiq-approved-topbar__identity"><span className="eiq-approved-topbar__product">EDGEiQ / RACING</span></div>
+          <div className="eiq-approved-topbar__ops" aria-label="Operational context">
+            <span className="eiq-approved-topbar__status"><i aria-hidden="true" /> LIVE</span>
+            <span>{formatHeaderDate()}</span>
+            <span>{formatHeaderTime()} AEDT</span>
+          </div>
+        </header>
+        <main className="eiq-approved-shell__content">
+          <div className="eiq-workspace-stage">{children}</div>
+        </main>
+        <footer className="eiq-approved-shell__footer"><span>EDGEiQ Racing Intelligence</span><span>{workspaceTrail}</span><span>{formatHeaderTime()} AEDT</span></footer>
+      </div>
     </section>
   );
 }
