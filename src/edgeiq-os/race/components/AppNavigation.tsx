@@ -1,11 +1,11 @@
 import {
   BadgeDollarSign, CalendarDays, CloudSun, Crosshair, Gauge, Home, Lightbulb, LineChart,
-  Map, MapPinned, SlidersHorizontal, Trophy, ClipboardList, Users,
+  Map, MapPinned, SlidersHorizontal, Trophy, ClipboardList,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 export type GlobalSection =
-  | "home" | "meetings" | "race" | "field" | "formGuide" | "performance" | "epi" | "map"
+  | "home" | "meetings" | "race" | "formGuide" | "performance" | "epi" | "map"
   | "market" | "results" | "track" | "weather" | "overview" | "insights";
 
 type AppNavigationProps = { activeSection: GlobalSection; onSectionChange: (section: GlobalSection) => void; };
@@ -17,7 +17,6 @@ const navGroups: NavGroup[] = [
     { key: "home", label: "Dashboard", Icon: Home },
     { key: "meetings", label: "Meetings", Icon: CalendarDays },
     { key: "race", label: "Race", Icon: Crosshair },
-    { key: "field", label: "Field", Icon: Users },
   ]},
   { label: "INTELLIGENCE", items: [
     { key: "performance", label: "Performance", Icon: SlidersHorizontal },
