@@ -8,6 +8,12 @@ on:
     branches:
       - main
     paths:
+      - 'src/**'
+      - 'index.html'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'vite.config.ts'
+      - 'tsconfig*.json'
       - 'public/**'
       - 'scripts/**'
       - 'requirements-pages.txt'
@@ -18,9 +24,9 @@ permissions:
   pages: write
   id-token: write
 
-# Share production deployment ownership with the fast UI workflow. This keeps
-# scheduled data refreshes intact while preventing an older build from
-# overwriting a newer Pages deployment.
+# This is the sole production Pages owner. Every deployment refreshes and
+# verifies the racing data before publishing the UI, so a frontend-only build
+# can never erase the live runtime feeds.
 concurrency:
   group: edgeiq-pages-production
   cancel-in-progress: true
