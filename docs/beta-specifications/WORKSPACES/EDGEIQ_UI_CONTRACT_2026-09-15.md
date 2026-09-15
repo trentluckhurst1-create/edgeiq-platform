@@ -10,152 +10,115 @@ EDGEiQ is professional racing intelligence software, not a tipping site, bookmak
 Locked presentation: light/white application shell; white left sidebar; restrained EDGEiQ blue active navigation; crisp modern sans-serif typography; strong navy headings; muted secondary text; white panels with thin cool-grey borders, restrained shadows and small radius; dense scan-friendly tables; consistent shared race-day shell. No decorative clutter, glossy cards, gimmicks, oversized hero treatments or unnecessary explanatory copy. Production values must come from canonical/current-card data, validated historical data or governed EDGEiQ-derived metrics. Never fabricate values. `—`/Unavailable is a last resort.
 
 ### CANONICAL EDGEiQ LOGO / BRAND MARK — GLOBAL HARD LOCK
-- EVERY tab and workspace MUST use the SAME original/first EDGEiQ logo approved at the beginning of this new light-theme redesign.
-- The logo must NOT gradually change, regenerate, morph, restyle, redraw or use a different wordmark from tab to tab.
-- The same canonical logo asset/component must be reused globally from the shared shell; individual workspace components must not create their own logo treatment.
-- Future mockups must preserve the first approved logo design rather than allowing image-generation drift.
-- Implementation must reference one canonical logo source/asset so all screens are visually identical.
-- This is a GLOBAL invariant applying to Home, Meetings, Race, Field, Form, Performance, EPI Ratings, Speed Map, Market, Results, Track, Weather, Overview, Insights and Settings.
-- A workspace is non-compliant if its EDGEiQ logo differs from the canonical first redesign logo in lettering, proportions, icon geometry, tagline treatment, spacing or colour.
+EVERY tab and workspace MUST use the SAME original/first EDGEiQ logo approved at the beginning of this new light-theme redesign. The logo must not drift, regenerate, morph, restyle or be redrawn per workspace. One canonical shared-shell asset/component is authoritative across the product.
 
 ### Track-condition display
-Official labels: FAST 1; GOOD 2; GOOD 3; GOOD 4; SOFT 5; SOFT 6; SOFT 7; HEAVY 8; HEAVY 9; HEAVY 10. Actual condition tiles: FAST blue/white; GOOD green/white; SOFT red/white; HEAVY black/white. SYNTHETIC uses a white tile with black text and a restrained border. Colour is supplementary; text remains explicit.
+Official labels: FAST 1; GOOD 2; GOOD 3; GOOD 4; SOFT 5; SOFT 6; SOFT 7; HEAVY 8; HEAVY 9; HEAVY 10. Actual condition tiles: FAST blue/white; GOOD green/white; SOFT red/white; HEAVY black/white. SYNTHETIC uses a white tile with black text and restrained border.
 
 ## 2. INSIGHTS — LOCKED
-Tabs: Key Insights, Value, Risks, Angles, Summary. Top intelligence cards: Top Value, Key Risk, Angle, Watch Runner. Ranked Key Insights, Value Runners, Risks, Notable Angles, Race Summary and evidence/model-confidence coverage. Every insight must be evidence-backed and traceable.
+Tabs: Key Insights, Value, Risks, Angles, Summary. Evidence-backed racing intelligence only.
 
 ## 3. OVERVIEW — LOCKED
-Subtabs: Overview, Key Runners, Pace & Tempo, Speed Map, Class & Ratings, Trainer/Jockey, Market, Weather & Track, Race Info. Top cards: Race Summary, Top Value, Key Stat, Watch, Risk. Race Shape, Tempo Analysis, Track & Weather, Key Determinants, Class Comparison and Market vs Model. Executive race briefing only; specialist depth belongs in specialist workspaces.
+Executive race briefing with Key Runners, Pace & Tempo, Speed Map, Class & Ratings, Trainer/Jockey, Market, Weather & Track and Race Info context.
 
 ## 4. WEATHER — LOCKED
-May display governed current conditions, track conditions, Today/Tomorrow/Day+2 forecast, track/weather history, Weather Impact Analysis, Wind Analysis, Temperature Analysis and Historical Weather. No synthetic forecast, invented weather value or fabricated historical statistic.
+Governed current conditions, track conditions, forecasts and relevant weather analysis only. No fabricated weather/history.
 
 ## 5. TRACK — LOCKED
-Core: Track Profile, clean Track Map, concise evidence-backed Track Characteristics, Current Conditions, Recent Track History, Track Notes. Recent Track History columns are exactly `DATE | RAIL | GOING | RACES`. Explicitly removed: Sectional Analysis, Track Records, Rail Position Performance, Going Performance, Distance Performance and generic low-value historical performance tables.
+Core: Track Profile, Track Map, evidence-backed Track Characteristics, Current Conditions, Recent Track History and Track Notes. Recent Track History columns exactly `DATE | RAIL | GOING | RACES`.
 
 ## 6. RESULTS — LOCKED
-Official results use SP ONLY: no Tote column/dividends or exotic dividend panel. Do not host/copy/embed copyrighted replay/media without rights. Raw source sectional times must not be reproduced where rights are unavailable. Permitted sectional inputs may feed EDGEiQ's own governed standard-time comparison expressed in LENGTHS. Locked sign: `-2.5L` slower; `+2.5L` faster; `0.0L` on standard. Stewards information only where permitted and sourced correctly.
+Official results use SP ONLY; no Tote/dividends. No unlicensed hosted/copied replay/media. Governed EDGEiQ standard comparisons may be expressed in lengths. `-` slower than standard; `+` faster than standard.
 
 ## 7. MARKET — LOCKED
-Professional pre-race market intelligence, not bookmaker/trading UI. Hero is Market Prices & Fluctuations. Each runner row must expose governed current price information and an INDIVIDUAL inline price-fluctuation board/sparkline. Every runner's board plots actual captured observations only, with useful opening/current/low/high context where available; no smoothing/interpolation/fabrication. Live pre-race price must not be labelled SP. Derived implied probability/EDGE/overround belong to governed builders and use documented conventions. No Back/Lay ladders, exchange order books, bookmaker/casino styling, Bet Now CTAs, invented movements or fabricated commentary.
+Professional pre-race market intelligence. Each runner has an individual actual-observation fluctuation board/sparkline. No invented price movements, exchange ladders, casino styling or Bet Now treatment.
 
 ## 8. SPEED MAP — LOCKED
-Early-race positioning workspace for approximately the first 200m only. Victorian presentation runs RIGHT TO LEFT. Barriers/start are on the RIGHT; every horse faces LEFT; each runner starts from its ACTUAL barrier lane; a thin path line runs from barrier to mapped early position. Higher governed Early Speed Score = farther LEFT from barriers. Vertical placement preserves barrier/lane relationship. All horses use the same navy treatment with horse-name tiles; no arbitrary colours. No slow/moderate/fast zones, leader/on-pace/midfield/backmarker zones, finish marker or full-race prediction. Supporting table may show runner, horse, barrier, Early Speed Score and governed early position/rank. Geometry must be canonical-data/model driven.
+Opening approximately 200m only. Victorian orientation RIGHT TO LEFT. Barriers on right, horses face left, actual barrier lanes and governed Early Speed Score determine mapped early positions. No finish prediction or slow/moderate/fast zones.
 
 ## 9. EPI RATINGS — LOCKED
-EPI Ratings is the dedicated EDGEiQ Performance Index workspace. The principal view is the full-field EPI Ratings table. Where governed values exist rows may expose runner, horse, barrier, prominent EPI Rating, rank, defined delta versus field/race average, actual historical EPI trend, track/distance/going/class components and distinct governed composite assessment. Last-five trends use actual observations only; no interpolation. Component weights must come from canonical EPI configuration and never from mockup values. Insights must be evidence-backed. No fabricated ratings, ranks, trends, weights or generic threshold labels.
+Dedicated governed EDGEiQ Performance Index comparison workspace. No fabricated EPI ratings, ranks, trends or weights.
 
 ## 10. PERFORMANCE — LOCKED
-Performance is the approved historical runner-performance workspace. It provides a compact current-field comparison centred on each runner's most recent runs, with deeper contextual performance summaries below.
-
-### LAST 5 RUNS FINISH-TILE COLOUR CONTRACT — GLOBAL HARD RULE
-For EVERY finish number displayed in a Last 5 Runs sequence: `1` = GOLD; `2` = SILVER; `3` = BRONZE; every other finishing number = WHITE with BLUE number/text. There are no exceptions.
-
-Performance uses canonical historical/model data only; no fabricated results, insights or trends.
+Historical runner-performance workspace. Last-five finish tiles globally: `1` GOLD; `2` SILVER; `3` BRONZE; every other finish WHITE with BLUE number/text.
 
 ## 11. FORM — INCREMENTAL LOCK
-Form is a runner-centric deep form workspace inspired by the information density/usefulness of a professional form guide, but rendered entirely in EDGEiQ's own approved light-theme visual language. It is NOT the Performance workspace.
+Form is a runner-centric professional deep form guide rendered in EDGEiQ's approved light-theme language. It is distinct from Performance.
 
 ### Form workspace shell — LOCKED
-- Uses the global shared EDGEiQ race-day shell.
-- Uses the exact canonical first-design EDGEiQ logo/brand asset. No logo drift or workspace-specific redraw.
+- Global shared race-day shell and exact canonical EDGEiQ logo.
 - White sidebar with `Form` active.
-- Left side contains the compact declared-runner selector/table with runner number/silk, horse, barrier, trainer and weight where governed.
-- Selecting a runner opens that horse's detailed Form workspace in the main/right panel.
-- Layout spacing must be clean, aligned and deliberately gridded: consistent card gutters, row heights, internal padding and baseline alignment. Avoid irregular empty areas or panels that appear scattered.
+- Compact declared-runner selector/table at left.
+- Selected runner opens detailed form workspace at right.
+- Clean deliberate grid, consistent gutters, row heights and padding.
 
 ### Runner header — LOCKED
-The selected-runner header may show canonical runner number, silk, horse name, age/sex/pedigree where available, trainer, jockey and current weight. All values must be canonical; no mockup values may enter production.
+May show canonical runner number, silk, horse name, age/sex/pedigree where available, trainer, jockey and current weight.
 
 ### Form runner sub-tabs — LOCKED ORDER
-The runner-level navigation is exactly:
 `Last 5 Runs | Full Form | Race Comments | Trainer/Jockey | Ratings | Map`
 
-`Predictor` is REMOVED and must not appear anywhere in the Form workspace.
-
-Each sub-tab is designed and approved separately. The currently approved sub-tab is `Last 5 Runs`. `Full Form` is next.
+`Predictor` is REMOVED.
 
 ### LAST 5 RUNS — LOCKED
-This sub-tab combines the selected horse's concise current profile with its five most recent valid historical starts.
+Key Statistics may show Total Starts, Record/Career, Prize Money, Track, Distance, Track/Distance, Last Start, Win % and Place %. Best Career, Average SP and Tempo Map are removed.
 
-#### Key Statistics
-May show, where governed:
-- Total Starts.
-- Record / Career.
-- Prize Money.
-- Track record.
-- Distance record.
-- Track/Distance record.
-- Last Start result/margin.
-- Win %.
-- Place %.
+Going Record uses FAST blue, GOOD green, SOFT red, HEAVY black, SYNTHETIC white/black.
 
-Explicitly REMOVED from this panel:
-- Best Career.
-- Average SP.
-- Tempo Map.
-
-Run Style (Last 5) may be retained only where it is a governed evidence-based output and adds useful context; it is not a substitute for the dedicated Map workspace.
-
-#### Going Record
-The selected horse's historical record by going may be shown using the locked going colours:
-- FAST = blue tile / white text.
-- GOOD = green tile / white text.
-- SOFT = red tile / white text.
-- HEAVY = black tile / white text.
-- SYNTHETIC = white tile / black text with restrained border.
-
-Going records must come from matched canonical historical starts.
-
-#### Historical Last 5 Runs table — exact semantic columns
-The table is:
+Historical table semantic columns exactly:
 `Date | Track | Race | Dist | Class | Going | Barrier | Wt | Jockey | Pos | Margin | SP | EPI | ERR | Race Notes`
 
-Column semantics must not be mangled or substituted in implementation.
+`EPI` = individual performance figure the horse ran in that historical race.
+`ERR` = EDGEiQ Race Rating, the governed overall strength/standard rating of the race itself. ERR is race-level and therefore identical for all runners from the same race; EPI is runner-level.
 
-- `EPI` = the individual performance figure the HORSE ran in that specific historical race.
-- `ERR` = `EDGEiQ Race Rating`, the governed overall standard/strength rating assigned to THAT RACE.
-- ERR represents the assessed strength/standard of the race using the eventual governed EDGEiQ methodology, considering validated factors such as race time/standard, field quality/strength, race shape/pace, conditions and other approved evidence.
-- ERR is race-level, therefore the same historical race has the same ERR for all runners from that race.
-- EPI is runner-level and varies by horse/performance.
-- The exact EPI/ERR formulae are owned by governed builders/model methodology, never invented in React.
-- Historical SP is official SP only where genuinely available.
-- Race Notes are sourced or independently governed EDGEiQ notes only; no fabricated prose.
+Supporting panels may include evidence-backed Form Analysis, Track/Going Record and Ratings Explained.
 
-#### Historical going display
-The historical `Going` cell shows the ACTUAL condition for that run and uses the locked FAST/GOOD/SOFT/HEAVY/SYNTHETIC treatment above.
+### FULL FORM — LOCKED
+The Full Form sub-tab extends the approved Last 5 Runs presentation to the selected horse's complete available canonical race history. It is intentionally the same visual language and core information architecture as Last 5 Runs rather than a separate gimmicky design.
 
-#### Supporting panels
-The approved Last 5 Runs view may include:
-- `Form Analysis` — concise evidence-backed analysis only.
-- `Track / Going Record` — compact starts/wins/places/win% summary from matched historical data.
-- `Ratings Explained` — restrained definitions of EPI and ERR.
+#### Full Form purpose
+- Show every valid historical start available for the selected runner, newest to oldest by default.
+- Preserve the same runner header, key-statistics context, going-record treatment and runner-level navigation so switching between Last 5 Runs and Full Form feels continuous.
+- Full Form differs from Last 5 Runs primarily by historical depth, not by introducing unrelated analytics.
 
-Ratings explanation:
-- **EPI (EDGEiQ Performance Index):** individual performance figure achieved by the horse in that run.
-- **ERR (EDGEiQ Race Rating):** overall EDGEiQ assessment of the strength/standard of the race itself; same race-level value for all runners from that race.
+#### Full Form history table — exact semantic columns
+`Date | Track | Race | Dist | Class | Going | Barrier | Wt | Jockey | Pos | Margin | SP | EPI | ERR | Race Notes`
 
-### Form design exclusions — LOCKED
-- No Predictor tab.
-- No Tempo Map in Last 5 Runs.
-- No Best Career row.
-- No Average SP row.
-- No duplicate Performance-workspace layout masquerading as Form.
-- No fabricated race comments, EPI, ERR, records, run style, SP or statistics.
-- No workspace-specific EDGEiQ logo variant.
+These semantics are identical to Last 5 Runs:
+- `EPI` = horse-specific individual performance figure for that run.
+- `ERR` = EDGEiQ Race Rating for the race itself.
+- Historical Going uses the locked actual-condition colour system.
+- Historical SP is official SP only where available.
+- Race Notes must be sourced or governed EDGEiQ analysis; never fabricated.
+
+#### Full Form behaviour
+- The table must support a long career history without making the workspace visually chaotic; compact rows, sticky/clear headings and practical scrolling/pagination/expansion are permitted implementation choices.
+- The complete history must remain scan-friendly and chronological.
+- Missing history is not manufactured to create a full-looking table.
+- The screen may retain the approved evidence-backed supporting panels from Last 5 Runs where useful, but they must not crowd out the full-history table.
+
+#### Explicit Full Form exclusions
+- No additional duplicate rating column beyond governed EPI and ERR merely to fill space.
+- No Predictor.
+- No fabricated historical starts, comments, prices, EPI or ERR.
+- No unrelated Performance dashboard widgets.
+- No workspace-specific logo treatment.
+
+The `Full Form` sub-tab is now LOCKED.
+
+### Form design exclusions — GLOBAL WITHIN FORM
+No Predictor tab. No Tempo Map in Last 5 Runs. No Best Career row. No Average SP row. No fabricated comments/ratings/statistics. No duplicate Performance workspace masquerading as Form.
 
 ### Mockup-data rule
 ALL horse names, silks, records, statistics, dates, race details, SPs, EPI/ERR values, going records, analysis and notes visible in Form design mockups are ILLUSTRATIVE ONLY. Production consumes canonical field/history/model data.
 
-The `Last 5 Runs` Form sub-tab is now LOCKED. The overall Form workspace remains incrementally open until its remaining approved sub-tabs are designed and locked.
-
 ## 12. FORM GOING RULE — GLOBAL CROSS-WORKSPACE LOCK
-Default collapsed/current-field Form `Going` context, where used, shows the runner's record on TODAY'S GOING as plain text such as `8:1-2-4`, not a coloured badge merely repeating today's condition. Historical individual-run tables show the actual historical going with the global condition colours.
+Default collapsed/current-field Form `Going` context, where used, shows the runner's record on TODAY'S GOING as plain text such as `8:1-2-4`, not a coloured badge merely repeating today's condition. Historical individual-run tables show actual historical going using the global condition colours.
 
 ## 13. GOVERNANCE
-React is presentation/navigation, not the owner of racing intelligence calculations. Governed builders/services own derived metrics. No invented production data. Illustrative mockup values must never be copied into live data. When implementation conflicts with this contract, implementation must be corrected or the contract explicitly revised. Future approved workspace decisions are written into GitHub.
+React is presentation/navigation, not the owner of racing intelligence calculations. Governed builders/services own derived metrics. No invented production data. Illustrative mockup values must never be copied into live data. When implementation conflicts with this contract, implementation must be corrected or the contract explicitly revised.
 
 ## LOCK RECORD
 Locked in GitHub: 2026-09-15
-Affected workspaces: INSIGHTS, OVERVIEW, WEATHER, TRACK, RESULTS, MARKET, SPEED MAP, EPI RATINGS, PERFORMANCE, FORM-LAST-5-RUNS, FORM cross-workspace Going rule, GLOBAL DESIGN SYSTEM, CANONICAL EDGEiQ LOGO.
-Next Form sub-tab: FULL FORM.
+Affected workspaces: INSIGHTS, OVERVIEW, WEATHER, TRACK, RESULTS, MARKET, SPEED MAP, EPI RATINGS, PERFORMANCE, FORM-LAST-5-RUNS, FORM-FULL-FORM, FORM cross-workspace Going rule, GLOBAL DESIGN SYSTEM, CANONICAL EDGEiQ LOGO.
+Next workspace review: FIELD / RACE information-architecture consolidation.
