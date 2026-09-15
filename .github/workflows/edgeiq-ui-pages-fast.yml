@@ -19,8 +19,10 @@ permissions:
   pages: write
   id-token: write
 
+# All workflows that can publish GitHub Pages share this group so an older
+# data-refresh build can never overwrite a newer UI deployment.
 concurrency:
-  group: edgeiq-ui-pages-fast
+  group: edgeiq-pages-production
   cancel-in-progress: true
 
 jobs:
