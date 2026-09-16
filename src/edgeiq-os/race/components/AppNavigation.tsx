@@ -37,7 +37,7 @@ const navGroups: NavGroup[] = [
 export function EdgeiqBrand() {
   return (
     <div className="eiq-app-nav__brand" data-edgeiq-canonical-brand="true">
-      <img src={`${import.meta.env.BASE_URL}assets/edgeiq-logo.webp`} alt="EDGEiQ Racing Intelligence" draggable={false} />
+      <img src={`${import.meta.env.BASE_URL}assets/edgeiq-logo-dark.svg`} alt="EDGEiQ Racing Intelligence" draggable={false} />
     </div>
   );
 }
