@@ -5,7 +5,7 @@ import json
 from pathlib import Path
 
 
-ROOT = Path(r"C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM")
+ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "public" / "data"
 DOCS = ROOT / "docs" / "performance-intelligence" / "lengths-v-standard"
 MAP_OUT = DOCS / "edgeiq_epi_dependency_map_v1.csv"
@@ -25,6 +25,7 @@ def read_csv(path: Path) -> list[dict[str, str]]:
 
 
 def write_csv(path: Path, rows: list[dict[str, object]], fields: list[str]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=fields)
         writer.writeheader()
@@ -33,6 +34,7 @@ def write_csv(path: Path, rows: list[dict[str, object]], fields: list[str]) -> N
 
 
 def main() -> int:
+    DOCS.mkdir(parents=True, exist_ok=True)
     lvs = read_csv(DATA / "edgeiq_results_lengths_v_standard_v2.csv")
     canonical = read_csv(DATA / "edgeiq_lengths_versus_standard_fact_v1.csv")
     sectional = read_csv(DATA / "edgeiq_runner_sectional_performance_v2.csv")
