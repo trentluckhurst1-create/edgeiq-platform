@@ -7,7 +7,7 @@ from decimal import Decimal
 from pathlib import Path
 
 
-ROOT = Path(r"C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM")
+ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "public" / "data"
 DOCS = ROOT / "docs" / "performance-intelligence" / "lengths-v-standard"
 LVS = DATA / "edgeiq_results_lengths_v_standard_v2.csv"
@@ -36,6 +36,7 @@ def read_csv(path: Path) -> list[dict[str, str]]:
 
 
 def write_csv(path: Path, rows: list[dict[str, object]], fields: list[str]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=fields)
         writer.writeheader()
@@ -65,6 +66,8 @@ def avg(values: list[Decimal]) -> str:
 
 
 def main() -> int:
+    DATA.mkdir(parents=True, exist_ok=True)
+    DOCS.mkdir(parents=True, exist_ok=True)
     elapsed = [row for row in read_csv(ELAPSED) if clean(row.get("eligibility_status")) == "ELIGIBLE"]
     eligible_counts = defaultdict(int)
     for row in elapsed:
