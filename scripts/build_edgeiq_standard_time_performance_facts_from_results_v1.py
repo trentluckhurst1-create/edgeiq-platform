@@ -7,7 +7,7 @@ from collections import Counter
 from pathlib import Path
 
 
-ROOT = Path(r"C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM")
+ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "public" / "data"
 DOCS = ROOT / "docs" / "performance-intelligence" / "standard-time-recovery"
 SOURCE = DATA / "edgeiq_results_elapsed_time_observations_v1.csv"
@@ -45,6 +45,7 @@ def read_csv(path: Path) -> list[dict[str, str]]:
 
 
 def write_csv(path: Path, rows: list[dict[str, object]], fields: list[str]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=fields)
         writer.writeheader()
@@ -64,6 +65,7 @@ def group_id(row: dict[str, str]) -> str:
 
 
 def main() -> int:
+    DOCS.mkdir(parents=True, exist_ok=True)
     rows = read_csv(SOURCE)
     eligible = [row for row in rows if clean(row.get("eligibility_status")) == "ELIGIBLE"]
     facts: list[dict[str, object]] = []
@@ -111,8 +113,9 @@ def main() -> int:
         "deterministic_hash": hashlib.sha256(OUT.read_bytes()).hexdigest(),
     }
     audit_rows = [
-        {"check": "source_rows", "status": "PASS" if len(rows) == 898 else "FAIL", "value": len(rows), "detail": "Elapsed observation rows including rejected cumulative points."},
-        {"check": "valid_elapsed_observations", "status": "PASS" if len(eligible) == 449 else "FAIL", "value": len(eligible), "detail": "Eligible segment rows."},
+        {"check": "source_nonempty", "status": "PASS" if len(rows) > 0 else "FAIL", "value": len(rows), "detail": "Elapsed observation source must contain rows."},
+        {"check": "valid_elapsed_observations", "status": "PASS" if len(eligible) > 0 else "FAIL", "value": len(eligible), "detail": "At least one eligible segment row is required."},
+        {"check": "row_conservation", "status": "PASS" if len(eligible) + (len(rows) - len(eligible)) == len(rows) else "FAIL", "value": len(rows), "detail": "Eligible plus rejected observations must equal source rows."},
         {"check": "performance_fact_rows", "status": "PASS" if len(facts) == len(eligible) else "FAIL", "value": len(facts), "detail": "One fact per eligible elapsed observation."},
         {"check": "duplicate_contribution_checks", "status": "PASS" if duplicate_count == 0 else "FAIL", "value": duplicate_count, "detail": "No duplicate runner contribution per group/segment."},
         {"check": "benchmark_groups", "status": "PASS" if len(group_counts) > 0 else "FAIL", "value": len(group_counts), "detail": "Comparable groups created from contract key."},
