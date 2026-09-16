@@ -10,9 +10,6 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 
-# Resolve the checked-out repository on every platform. The previous hard-coded
-# Windows workstation path made the GitHub Pages current-intelligence job run
-# scripts against a path that cannot exist on ubuntu-latest.
 ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs" / "performance-intelligence" / "lengths-v-standard"
 MANIFEST_JSON = DOCS / "edgeiq_performance_intelligence_production_v2_manifest.json"
@@ -50,9 +47,35 @@ def write_csv(path: Path, rows: list[dict[str, object]]) -> None:
             writer.writerow({field: clean(row.get(field, "")) for field in fields})
 
 
-def run_stage(script: str) -> tuple[str, int, str]:
-    proc = subprocess.run([sys.executable, "-u", str(ROOT / script)], cwd=str(ROOT), text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=240)
-    return ("PASS" if proc.returncode == 0 else "FAIL"), proc.returncode, proc.stdout[-2500:]
+def run_stage(stage: str, script: str) -> tuple[str, int, str]:
+    command = [sys.executable, "-u", str(ROOT / script)]
+    print(f"::group::EDGEiQ performance stage: {stage}", flush=True)
+    print(f"script={script}", flush=True)
+    try:
+        proc = subprocess.run(
+            command,
+            cwd=str(ROOT),
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            timeout=240,
+        )
+        output = proc.stdout or ""
+        if output:
+            print(output, end="" if output.endswith("\n") else "\n", flush=True)
+        status = "PASS" if proc.returncode == 0 else "FAIL"
+        print(f"stage_status={status} return_code={proc.returncode}", flush=True)
+        print("::endgroup::", flush=True)
+        return status, proc.returncode, output[-10000:]
+    except subprocess.TimeoutExpired as exc:
+        output = exc.stdout or ""
+        if isinstance(output, bytes):
+            output = output.decode("utf-8", errors="replace")
+        if output:
+            print(output, end="" if output.endswith("\n") else "\n", flush=True)
+        print("stage_status=FAIL return_code=124 reason=TIMEOUT_240_SECONDS", flush=True)
+        print("::endgroup::", flush=True)
+        return "FAIL", 124, (output + "\nTIMEOUT_240_SECONDS")[-10000:]
 
 
 def main() -> int:
@@ -64,13 +87,13 @@ def main() -> int:
         if stopped:
             rows.append({"stage": stage, "script": script, "requirement": requirement, "status": "SKIPPED", "return_code": "", "detail": "Skipped after failed required stage."})
             continue
-        status, code, detail = run_stage(script)
+        status, code, detail = run_stage(stage, script)
         rows.append({"stage": stage, "script": script, "requirement": requirement, "status": status, "return_code": code, "detail": detail.replace("\r", " ").replace("\n", " ")})
         if status != "PASS":
             stopped = True
     candidate = ROOT / "public" / "data" / "edgeiq_results_lengths_v_standard_v2_CANDIDATE.csv"
     first_hash = hashlib.sha256(candidate.read_bytes()).hexdigest() if candidate.exists() else ""
-    status, code, detail = run_stage("scripts/build_edgeiq_results_lengths_v_standard_v2.py") if not stopped else ("SKIPPED", 0, "")
+    status, code, detail = run_stage("deterministic_rerun_lengths_v2", "scripts/build_edgeiq_results_lengths_v_standard_v2.py") if not stopped else ("SKIPPED", 0, "")
     rows.append({"stage": "deterministic_rerun_lengths_v2", "script": "scripts/build_edgeiq_results_lengths_v_standard_v2.py", "requirement": "VALIDATION", "status": status, "return_code": code, "detail": detail.replace("\r", " ").replace("\n", " ")})
     second_hash = hashlib.sha256(candidate.read_bytes()).hexdigest() if candidate.exists() else ""
     rows.append({"stage": "candidate_hash_comparison", "script": "", "requirement": "VALIDATION", "status": "PASS" if first_hash and first_hash == second_hash else "FAIL", "return_code": "", "detail": f"first={first_hash}; second={second_hash}"})
