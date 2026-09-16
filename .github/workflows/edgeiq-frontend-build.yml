@@ -63,6 +63,16 @@ jobs:
           cp -a /tmp/edgeiq-pages/data dist/data
           echo "RUNTIME_DATA_SEEDED_FROM_RUN=$run_id"
 
+      - name: Rebuild current Race intelligence
+        if: github.event_name != 'pull_request'
+        env:
+          EDGEIQ_DATA_DIR: dist/data
+        run: |
+          set -euo pipefail
+          python scripts/build_edgeiq_current_race_intelligence_feed_v3.py
+          test -s dist/data/edgeiq_race_intelligence_feed_v2.csv
+          head -2 dist/data/edgeiq_race_intelligence_feed_v2.csv
+
       - name: Configure Pages
         if: github.event_name != 'pull_request'
         uses: actions/configure-pages@v5
