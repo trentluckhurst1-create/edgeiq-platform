@@ -37,18 +37,26 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r requirements-pages.txt
           python -m playwright install --with-deps chromium
-      - name: Refresh current three-day EDGEiQ data
-        run: python scripts/build_edgeiq_three_day_current_data_v1.py
-      - name: Recover current Racing.com catalog
-        run: python scripts/build_edgeiq_racingcom_three_day_raw_meetings_v1.py
-      - name: Gate current catalog
-        run: python scripts/gate_edgeiq_three_day_product_catalog_v1.py
-      - name: Rebuild current form intelligence chain
-        run: python scripts/build_edgeiq_current_form_intelligence_v1.py
-      - name: Rebuild current terminal feeds
-        run: python scripts/build_edgeiq_terminal_feeds_v1.py
-      - name: Build lightweight runtime feeds
-        run: python scripts/build_edgeiq_lightweight_runtime_feeds_v1.py
+      - name: Refresh current Racing.com race and runner data
+        run: python scripts/build_edgeiq_racingcom_three_day_race_list_v1.py
+      - name: Build current three-day catalogue
+        run: python scripts/build_edgeiq_three_day_product_catalog_v1.py
+      - name: Gate current catalogue
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('public/data/edgeiq_three_day_product_catalog_v1.json')
+          if not p.exists(): raise SystemExit('catalogue missing')
+          d=json.loads(p.read_text(encoding='utf-8-sig'))
+          meetings=d.get('meetings') or []
+          races=sum(len(m.get('races') or []) for m in meetings)
+          runners=sum(len(r.get('runners') or []) for m in meetings for r in (m.get('races') or []))
+          if not meetings or not races or not runners: raise SystemExit(f'incomplete catalogue meetings={len(meetings)} races={races} runners={runners}')
+          print(f'catalogue PASS meetings={len(meetings)} races={races} runners={runners}')
+          PY
+      - name: Build lazy meeting runtime feeds
+        run: python scripts/build_edgeiq_lazy_meeting_feeds_v1.py
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -62,7 +70,10 @@ jobs:
         run: npm exec -- vite build
       - run: rm -f dist/data/edgeiq_three_day_product_catalog_v1.json
       - name: Verify Pages data
-        run: test -s dist/data/edgeiq_meetings_summary_feed_v1.json
+        run: |
+          test -s dist/data/edgeiq_meetings_summary_feed_v1.json
+          test -d dist/data/meetings
+          test "$(find dist/data/meetings -name '*.json' -type f | wc -l)" -gt 0
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
