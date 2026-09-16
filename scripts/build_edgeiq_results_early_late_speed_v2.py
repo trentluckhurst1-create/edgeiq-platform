@@ -5,7 +5,7 @@ import json
 from pathlib import Path
 
 
-ROOT = Path(r"C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM")
+ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "public" / "data"
 DOCS = ROOT / "docs" / "performance-intelligence" / "lengths-v-standard"
 SECTIONAL = DATA / "edgeiq_runner_sectional_performance_v2.csv"
@@ -29,6 +29,7 @@ def read_csv(path: Path) -> list[dict[str, str]]:
 
 
 def write_csv(path: Path, rows: list[dict[str, object]]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=FIELDS)
         writer.writeheader()
@@ -57,6 +58,8 @@ def build(rows: list[dict[str, str]], phase: str, field: str) -> list[dict[str, 
 
 
 def main() -> int:
+    DATA.mkdir(parents=True, exist_ok=True)
+    DOCS.mkdir(parents=True, exist_ok=True)
     sectional = read_csv(SECTIONAL)
     early = build(sectional, "EARLY", "early_lengths_vs_standard")
     late = build(sectional, "LATE", "late_lengths_vs_standard")
