@@ -10,7 +10,10 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 
-ROOT = Path(r"C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM")
+# Resolve the checked-out repository on every platform. The previous hard-coded
+# Windows workstation path made the GitHub Pages current-intelligence job run
+# scripts against a path that cannot exist on ubuntu-latest.
+ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs" / "performance-intelligence" / "lengths-v-standard"
 MANIFEST_JSON = DOCS / "edgeiq_performance_intelligence_production_v2_manifest.json"
 MANIFEST_CSV = DOCS / "edgeiq_performance_intelligence_production_v2_manifest.csv"
@@ -53,6 +56,7 @@ def run_stage(script: str) -> tuple[str, int, str]:
 
 
 def main() -> int:
+    DOCS.mkdir(parents=True, exist_ok=True)
     network_mode = os.environ.get("EDGEIQ_NETWORK_MODE", "OFFLINE").upper()
     rows: list[dict[str, object]] = []
     stopped = False
