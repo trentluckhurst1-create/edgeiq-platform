@@ -10,8 +10,6 @@ import "./styles/edgeiqSpeedMapV1.css";
 import "./styles/edgeiqMarketCleanV1.css";
 import "./styles/edgeiqOverviewV1.css";
 import "./styles/edgeiqRemainingWorkspacesV1.css";
-import "./styles/edgeiqLightSidebarLock.css";
-import "../styles/edgeiqInstitutionalLightV1.css";
 import "../styles/edgeiqProfessionalDarkV1.css";
 import "../styles/edgeiqBrandDarkV1.css";
 import { EdgeiqOsShell } from "./shell/EdgeiqOsShell";
