@@ -6,8 +6,7 @@ import statistics
 from collections import Counter, defaultdict
 from pathlib import Path
 
-
-ROOT = Path(r"C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM")
+ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "public" / "data"
 DOCS = ROOT / "docs" / "performance-intelligence" / "standard-time-recovery"
 SOURCE = DATA / "edgeiq_standard_time_performance_facts_from_results_v1.csv"
@@ -18,117 +17,62 @@ REPORT = DOCS / "edgeiq_results_standard_time_eligibility_report_v1.md"
 SUMMARY = DOCS / "edgeiq_results_standard_time_eligibility_summary_v1.json"
 MIN_SAMPLE = 20
 
-
 def clean(value: object) -> str:
     return "" if value is None else str(value).strip()
-
 
 def read_csv(path: Path) -> list[dict[str, str]]:
     with path.open("r", encoding="utf-8-sig", newline="") as handle:
         return list(csv.DictReader(handle))
 
-
 def write_csv(path: Path, rows: list[dict[str, object]], fields: list[str]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=fields)
         writer.writeheader()
         for row in rows:
             writer.writerow({field: clean(row.get(field, "")) for field in fields})
 
-
 def bucket(count: int) -> str:
-    if count >= 20:
-        return "20_PLUS"
-    if count >= 10:
-        return "10_19"
-    if count >= 5:
-        return "5_9"
-    return "1_4"
-
+    if count >= MIN_SAMPLE: return "MEETS_MINIMUM"
+    if count >= max(1, MIN_SAMPLE // 2): return "HALF_TO_MINIMUM"
+    if count >= max(1, MIN_SAMPLE // 4): return "QUARTER_TO_HALF"
+    return "BELOW_QUARTER"
 
 def main() -> int:
+    DOCS.mkdir(parents=True, exist_ok=True)
     rows = read_csv(SOURCE)
     groups: dict[str, list[dict[str, str]]] = defaultdict(list)
     for row in rows:
         if clean(row.get("eligibility_status")) == "ELIGIBLE":
-            groups[clean(row.get("benchmark_group_id"))].append(row)
+            gid = clean(row.get("benchmark_group_id"))
+            if gid: groups[gid].append(row)
 
-    distribution: list[dict[str, object]] = []
-    eligible_rows: list[dict[str, object]] = []
+    distribution=[]; eligible_rows=[]
     for group_id, group_rows in sorted(groups.items()):
-        sample_count = len(group_rows)
-        first = group_rows[0]
-        source_races = len({clean(row.get("canonical_race_id")) for row in group_rows})
-        source_runners = len({(clean(row.get("canonical_race_id")), clean(row.get("canonical_runner_id"))) for row in group_rows})
-        status = "STANDARD_TIME_ELIGIBLE" if sample_count >= MIN_SAMPLE else "BELOW_MINIMUM_SAMPLE"
-        distribution.append({
-            "benchmark_group_id": group_id,
-            "track": clean(first.get("track")),
-            "race_distance_metres": clean(first.get("race_distance_metres")),
-            "segment_start_metres": clean(first.get("segment_start_metres")),
-            "segment_end_metres": clean(first.get("segment_end_metres")),
-            "segment_distance_metres": clean(first.get("segment_distance_metres")),
-            "observation_count": sample_count,
-            "source_race_count": source_races,
-            "source_runner_count": source_runners,
-            "minimum_sample": MIN_SAMPLE,
-            "deficit_to_minimum": max(0, MIN_SAMPLE - sample_count),
-            "group_bucket": bucket(sample_count),
-            "standard_time_eligibility_status": status,
-        })
-        if status == "STANDARD_TIME_ELIGIBLE":
-            for row in group_rows:
-                eligible_rows.append({**row, "standard_time_eligibility_status": status})
+        sample_count=len(group_rows); first=group_rows[0]
+        source_races=len({clean(r.get("canonical_race_id")) for r in group_rows})
+        source_runners=len({(clean(r.get("canonical_race_id")),clean(r.get("canonical_runner_id"))) for r in group_rows})
+        status="STANDARD_TIME_ELIGIBLE" if sample_count >= MIN_SAMPLE else "BELOW_MINIMUM_SAMPLE"
+        distribution.append({"benchmark_group_id":group_id,"track":clean(first.get("track")),"race_distance_metres":clean(first.get("race_distance_metres")),"segment_start_metres":clean(first.get("segment_start_metres")),"segment_end_metres":clean(first.get("segment_end_metres")),"segment_distance_metres":clean(first.get("segment_distance_metres")),"observation_count":sample_count,"source_race_count":source_races,"source_runner_count":source_runners,"minimum_sample":MIN_SAMPLE,"deficit_to_minimum":max(0,MIN_SAMPLE-sample_count),"group_bucket":bucket(sample_count),"standard_time_eligibility_status":status})
+        if status == "STANDARD_TIME_ELIGIBLE": eligible_rows.extend({**r,"standard_time_eligibility_status":status} for r in group_rows)
 
-    counts = [len(group_rows) for group_rows in groups.values()]
-    bucket_counts = Counter(bucket(count) for count in counts)
-    meeting_min = sum(1 for count in counts if count >= MIN_SAMPLE)
-    total_deficit = sum(max(0, MIN_SAMPLE - count) for count in counts)
-    summary = {
-        "total_detailed_observations": len(rows),
-        "eligible_observations": len(rows),
-        "ineligible_observations": 0,
-        "benchmark_groups": len(groups),
-        "groups_1_4": bucket_counts.get("1_4", 0),
-        "groups_5_9": bucket_counts.get("5_9", 0),
-        "groups_10_19": bucket_counts.get("10_19", 0),
-        "groups_20_or_more": meeting_min,
-        "largest_group_size": max(counts) if counts else 0,
-        "median_group_size": statistics.median(counts) if counts else 0,
-        "total_deficit": total_deficit,
-        "minimum_sample": MIN_SAMPLE,
-        "previous_reduced_performance_fact_rows": 39,
-        "previous_reduced_benchmark_eligible_rows": 24,
-        "previous_reduced_groups_meeting_minimum": 0,
-    }
-    write_csv(DIST, distribution, [
-        "benchmark_group_id", "track", "race_distance_metres", "segment_start_metres",
-        "segment_end_metres", "segment_distance_metres", "observation_count",
-        "source_race_count", "source_runner_count", "minimum_sample",
-        "deficit_to_minimum", "group_bucket", "standard_time_eligibility_status",
-    ])
-    write_csv(ELIGIBLE_OUT, eligible_rows, list(rows[0].keys()) + ["standard_time_eligibility_status"] if rows else [])
-    audit_rows = [
-        {"check": "total_detailed_observations", "status": "PASS" if len(rows) == 449 else "FAIL", "value": len(rows), "detail": "Results-based fact rows."},
-        {"check": "minimum_sample_preserved", "status": "PASS" if MIN_SAMPLE == 20 else "FAIL", "value": MIN_SAMPLE, "detail": "Governed threshold unchanged."},
-        {"check": "groups_meeting_minimum", "status": "PASS" if meeting_min > 0 else "WARN", "value": meeting_min, "detail": "Comparable groups reaching threshold 20."},
-        {"check": "old_path_comparison", "status": "PASS" if meeting_min > summary["previous_reduced_groups_meeting_minimum"] else "WARN", "value": f"{meeting_min} vs 0", "detail": "New segment path compared with reduced runner path."},
+    counts=[len(v) for v in groups.values()]; meeting_min=sum(c >= MIN_SAMPLE for c in counts)
+    source_eligible=sum(clean(r.get("eligibility_status")) == "ELIGIBLE" for r in rows)
+    summary={"total_detailed_observations":len(rows),"source_eligible_observations":source_eligible,"source_ineligible_observations":len(rows)-source_eligible,"benchmark_groups":len(groups),"groups_meeting_minimum":meeting_min,"groups_below_minimum":len(groups)-meeting_min,"largest_group_size":max(counts) if counts else 0,"median_group_size":statistics.median(counts) if counts else 0,"total_deficit":sum(max(0,MIN_SAMPLE-c) for c in counts),"minimum_sample":MIN_SAMPLE,"bucket_counts":dict(Counter(bucket(c) for c in counts)),"standard_time_eligible_output_rows":len(eligible_rows)}
+    write_csv(DIST,distribution,["benchmark_group_id","track","race_distance_metres","segment_start_metres","segment_end_metres","segment_distance_metres","observation_count","source_race_count","source_runner_count","minimum_sample","deficit_to_minimum","group_bucket","standard_time_eligibility_status"])
+    fields=list(rows[0].keys())+["standard_time_eligibility_status"] if rows else ["standard_time_eligibility_status"]
+    write_csv(ELIGIBLE_OUT,eligible_rows,fields)
+    audit_rows=[
+        {"check":"source_nonempty","status":"PASS" if rows else "FAIL","value":len(rows),"detail":"Current performance fact source must contain observations."},
+        {"check":"source_eligible_nonempty","status":"PASS" if source_eligible else "FAIL","value":source_eligible,"detail":"At least one structurally eligible current observation is required."},
+        {"check":"benchmark_groups_present","status":"PASS" if groups else "FAIL","value":len(groups),"detail":"Current observations must form benchmark groups."},
+        {"check":"groups_meeting_minimum","status":"PASS" if meeting_min else "WARN","value":meeting_min,"detail":f"Current groups reaching governed minimum sample {MIN_SAMPLE}."},
+        {"check":"eligible_output_consistent","status":"PASS" if all(clean(r.get("standard_time_eligibility_status")) == "STANDARD_TIME_ELIGIBLE" for r in eligible_rows) else "FAIL","value":len(eligible_rows),"detail":"Output contains only groups satisfying the governed sample rule."}
     ]
-    write_csv(AUDIT, audit_rows, ["check", "status", "value", "detail"])
-    SUMMARY.write_text(json.dumps(summary, indent=2, ensure_ascii=True) + "\n", encoding="utf-8")
-    REPORT.write_text(
-        "# Results Standard Time Eligibility V1\n\n"
-        f"Total detailed observations: `{summary['total_detailed_observations']}`\n\n"
-        f"Benchmark groups: `{summary['benchmark_groups']}`\n\n"
-        f"Groups meeting minimum 20: `{summary['groups_20_or_more']}`\n\n"
-        f"Groups below minimum: `{summary['benchmark_groups'] - summary['groups_20_or_more']}`\n\n"
-        "Counts changed because the reduced runner path used runner aggregate compatibility rows, "
-        "while this path uses semantically valid Racing.com split-segment observations.\n",
-        encoding="utf-8",
-    )
-    print(json.dumps(summary, indent=2))
-    return 0 if all(row["status"] in {"PASS", "WARN"} for row in audit_rows) else 1
+    write_csv(AUDIT,audit_rows,["check","status","value","detail"])
+    SUMMARY.write_text(json.dumps(summary,indent=2,ensure_ascii=True)+"\n",encoding="utf-8")
+    REPORT.write_text("# Results Standard Time Eligibility V1\n\n"+f"Current detailed observations: `{len(rows)}`\n\n"+f"Current benchmark groups: `{len(groups)}`\n\n"+f"Groups meeting governed minimum {MIN_SAMPLE}: `{meeting_min}`\n",encoding="utf-8")
+    print(json.dumps(summary,indent=2))
+    return 0 if all(r["status"] in {"PASS","WARN"} for r in audit_rows) else 1
 
-
-if __name__ == "__main__":
-    raise SystemExit(main())
+if __name__ == "__main__": raise SystemExit(main())
