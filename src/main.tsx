@@ -1,15 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { ClerkProvider } from "@clerk/clerk-react";
 import App from "./App";
-import ProtectedApp from "./ProtectedApp";
 import "./index.css";
 
-const env = (import.meta as ImportMeta & { env: Record<string, string | undefined> }).env;
-const publishableKey = env.VITE_CLERK_PUBLISHABLE_KEY;
-const isDev = Boolean((import.meta as ImportMeta & { env: { DEV?: boolean } }).env.DEV);
-const disableDevAuth = isDev && env.VITE_DISABLE_AUTH === "true";
-if (!publishableKey) console.warn("Clerk disabled: missing VITE_CLERK_PUBLISHABLE_KEY");
+// EDGEiQ Pages is a private/operator deployment. Do not allow an asynchronous
+// auth provider to replace a successfully mounted application with an empty
+// auth surface after first paint. Access control for a truly private deployment
+// must live at the hosting/repository boundary, not as a client-side blanking
+// transition.
 const root = document.getElementById("root");
 if (!root) throw new Error("Missing #root mount point");
-ReactDOM.createRoot(root).render(<React.StrictMode>{disableDevAuth ? <App /> : publishableKey ? <ClerkProvider publishableKey={publishableKey}><ProtectedApp /></ClerkProvider> : <App />}</React.StrictMode>);
+
+ReactDOM.createRoot(root).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+);
