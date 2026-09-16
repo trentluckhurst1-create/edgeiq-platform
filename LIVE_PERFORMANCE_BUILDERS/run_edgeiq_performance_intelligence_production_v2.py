@@ -16,6 +16,10 @@ MANIFEST_JSON = DOCS / "edgeiq_performance_intelligence_production_v2_manifest.j
 MANIFEST_CSV = DOCS / "edgeiq_performance_intelligence_production_v2_manifest.csv"
 REPORT = DOCS / "edgeiq_performance_intelligence_production_v2_report.md"
 
+# This bootstrap owns the Results-derived V2 dependency chain only. Canonical
+# race-time-delta/LVS/performance-base/projected-performance outputs are owned by
+# run_edgeiq_victoria_performance_intelligence_refresh_v1.py, which runs next in
+# the Pages workflow after timing recovery and canonical promotion.
 STAGES = [
     ("elapsed_time_observations", "scripts/build_edgeiq_results_elapsed_time_observations_v1.py", "REQUIRED"),
     ("standard_time_facts", "scripts/build_edgeiq_standard_time_performance_facts_from_results_v1.py", "REQUIRED"),
@@ -28,9 +32,6 @@ STAGES = [
     ("lengths_v_standard_v2_audit", "scripts/audit_edgeiq_results_lengths_v_standard_v2.py", "REQUIRED"),
     ("runner_sectional_v2", "scripts/build_edgeiq_runner_sectional_performance_v2.py", "REQUIRED"),
     ("early_late_speed_v2", "scripts/build_edgeiq_results_early_late_speed_v2.py", "REQUIRED"),
-    ("canonical_lvs_fact", "scripts/build_edgeiq_lengths_versus_standard_fact_from_results_v2.py", "REQUIRED"),
-    ("performance_intelligence_base", "scripts/build_edgeiq_performance_intelligence_base_fact_v1.py", "REQUIRED"),
-    ("epi_dependency", "scripts/audit_edgeiq_epi_performance_dependency_v1.py", "REQUIRED"),
 ]
 
 
@@ -52,14 +53,7 @@ def run_stage(stage: str, script: str) -> tuple[str, int, str]:
     print(f"::group::EDGEiQ performance stage: {stage}", flush=True)
     print(f"script={script}", flush=True)
     try:
-        proc = subprocess.run(
-            command,
-            cwd=str(ROOT),
-            text=True,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT,
-            timeout=240,
-        )
+        proc = subprocess.run(command, cwd=str(ROOT), text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=240)
         output = proc.stdout or ""
         if output:
             print(output, end="" if output.endswith("\n") else "\n", flush=True)
@@ -103,13 +97,14 @@ def main() -> int:
         "network_mode": network_mode,
         "decision": decision,
         "stages": rows,
+        "canonical_chain_owner": "LIVE_PERFORMANCE_BUILDERS/run_edgeiq_victoria_performance_intelligence_refresh_v1.py",
         "candidate_paths_active": "NO",
-        "production_outputs_overwritten": "PERFORMANCE_INTELLIGENCE_ONLY",
+        "production_outputs_overwritten": "RESULTS_DERIVED_PERFORMANCE_DEPENDENCIES_ONLY",
         "deterministic_hash_match": "YES" if first_hash and first_hash == second_hash else "NO",
     }
     MANIFEST_JSON.write_text(json.dumps(payload, indent=2, ensure_ascii=True) + "\n", encoding="utf-8")
     write_csv(MANIFEST_CSV, rows)
-    REPORT.write_text("# Performance Intelligence Production V2 Orchestration\n\n" + f"Decision: `{decision}`\n\n" + "The retired Turf-only synthetic blocker is removed. Australian Synthetic V2 conversion, LVS, sectional, early/late, and canonical performance-base stages are included.\n", encoding="utf-8")
+    REPORT.write_text("# Performance Intelligence Production V2 Orchestration\n\n" + f"Decision: `{decision}`\n\n" + "This bootstrap builds and validates the Results-derived V2 chain through sectional and early/late speed. Canonical race-time-delta, LVS, performance-base and projected-performance stages are governed by the Victoria refresh that follows it in the Pages workflow.\n", encoding="utf-8")
     print(json.dumps({"decision": decision, "stages": len(rows)}, indent=2))
     return 0 if decision.endswith("_PASS") else 1
 
