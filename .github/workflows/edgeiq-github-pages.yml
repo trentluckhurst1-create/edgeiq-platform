@@ -53,8 +53,8 @@ jobs:
         run: python scripts/build_edgeiq_current_race_entry_fact_v1.py
       - name: Build performance bootstrap dependencies
         run: python LIVE_PERFORMANCE_BUILDERS/run_edgeiq_performance_bootstrap_v3.py
-      - name: Build governed current ERR and projected performance
-        run: python LIVE_PERFORMANCE_BUILDERS/run_edgeiq_victoria_performance_intelligence_refresh_v1.py
+      - name: Build current race intelligence feed
+        run: python scripts/build_edgeiq_current_race_intelligence_feed_v2.py
       - name: Gate current catalogue and intelligence
         run: |
           python - <<'PY'
