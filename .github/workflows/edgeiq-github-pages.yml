@@ -7,8 +7,14 @@ on:
   push:
     branches: [main]
     paths:
+      - 'src/**'
       - 'public/**'
       - 'scripts/**'
+      - 'LIVE_PERFORMANCE_BUILDERS/**'
+      - 'vite.config.ts'
+      - 'index.html'
+      - 'package.json'
+      - 'package-lock.json'
       - 'requirements-pages.txt'
       - '.github/workflows/edgeiq-github-pages.yml'
 
@@ -69,8 +75,13 @@ jobs:
           VITE_CLERK_PUBLISHABLE_KEY: ${{ secrets.VITE_CLERK_PUBLISHABLE_KEY }}
         run: npm exec -- vite build
       - run: rm -f dist/data/edgeiq_three_day_product_catalog_v1.json
-      - name: Verify Pages data
+      - name: Verify Pages application and data
         run: |
+          test -s dist/index.html
+          test -s dist/assets/edgeiq-app.js
+          test -s dist/assets/edgeiq-app.css
+          grep -q '/edgeiq-platform/assets/edgeiq-app.js' dist/index.html
+          grep -q '/edgeiq-platform/assets/edgeiq-app.css' dist/index.html
           test -s dist/data/edgeiq_meetings_summary_feed_v1.json
           test -d dist/data/meetings
           test "$(find dist/data/meetings -name '*.json' -type f | wc -l)" -gt 0
