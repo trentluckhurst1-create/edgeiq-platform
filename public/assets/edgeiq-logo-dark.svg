@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 150" role="img" aria-labelledby="title desc">
+  <title id="title">EDGEiQ Racing Intelligence</title>
+  <desc id="desc">Blue and white EDGEiQ identity for dark interfaces</desc>
+  <g fill="none" fill-rule="evenodd">
+    <g transform="translate(8 22)">
+      <path fill="#F4F8FF" d="M0 14 25 0h76L88 20H34l-10 6h58L69 46H12L0 39z"/>
+      <path fill="#DDEBFF" d="m9 47 25-14h54L75 53H42l-10 6h37L56 79H20L8 72z"/>
+      <path fill="#3182F6" d="m18 80 24-14h32L61 86H49l-10 6h16l-13 20H29L17 105z"/>
+    </g>
+    <text x="122" y="84" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="72" font-weight="850" letter-spacing="-3"><tspan fill="#F4F8FF">EDGE</tspan><tspan fill="#3182F6">iQ</tspan></text>
+    <text x="126" y="119" fill="#DDEBFF" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="16" font-weight="750" letter-spacing="7">RACING INTELLIGENCE</text>
+  </g>
+</svg>
