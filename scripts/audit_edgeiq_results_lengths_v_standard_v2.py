@@ -43,6 +43,7 @@ def main() -> int:
     converted = [row for row in rows if clean(row.get("audit_status")) == "CALCULATED"]
     blocked = [row for row in rows if clean(row.get("audit_status")) != "CALCULATED"]
     synth = [row for row in converted if clean(row.get("canonical_surface_group")) == "AUSTRALIAN_SYNTHETIC"]
+    unresolved_surface = [row for row in converted if not clean(row.get("canonical_surface_group"))]
     checks: list[dict[str, object]] = []
     keys: set[tuple[str, str, str]] = set()
     duplicate_count = 0
@@ -67,10 +68,10 @@ def main() -> int:
             arithmetic_failures += 1
     checks.append({"check": "candidate_exists", "status": "PASS" if rows else "FAIL", "value": len(rows)})
     checks.append({"check": "all_matched_rows_converted", "status": "PASS" if rows and len(blocked) == 0 else "FAIL", "value": len(converted)})
-    checks.append({"check": "current_synthetic_resolves", "status": "PASS" if synth and len(synth) == len(converted) else "FAIL", "value": len(synth)})
-    checks.append({"check": "method_version", "status": "PASS" if all(clean(row.get("conversion_version")) == "EDGEIQ_SURFACE_AWARE_LENGTHS_PER_SECOND_V2" for row in converted) else "FAIL", "value": "EDGEIQ_SURFACE_AWARE_LENGTHS_PER_SECOND_V2"})
+    checks.append({"check": "surface_resolution", "status": "PASS" if converted and not unresolved_surface else "FAIL", "value": len(unresolved_surface)})
+    checks.append({"check": "method_version", "status": "PASS" if converted and all(clean(row.get("conversion_version")) == "EDGEIQ_SURFACE_AWARE_LENGTHS_PER_SECOND_V2" for row in converted) else "FAIL", "value": "EDGEIQ_SURFACE_AWARE_LENGTHS_PER_SECOND_V2"})
     checks.append({"check": "synthetic_lps_6", "status": "PASS" if all(clean(row.get("lengths_per_second")) in {"6.000000000", "6.0"} for row in synth) else "FAIL", "value": len(synth)})
-    checks.append({"check": "seconds_per_length", "status": "PASS" if all(clean(row.get("seconds_per_length")) == "0.166666667" for row in synth) else "FAIL", "value": "1/6"})
+    checks.append({"check": "synthetic_seconds_per_length", "status": "PASS" if all(clean(row.get("seconds_per_length")) == "0.166666667" for row in synth) else "FAIL", "value": len(synth)})
     checks.append({"check": "no_nan_or_infinite", "status": "PASS" if nonfinite_failures == 0 else "FAIL", "value": nonfinite_failures})
     checks.append({"check": "no_duplicate_observation_keys", "status": "PASS" if duplicate_count == 0 else "FAIL", "value": duplicate_count})
     checks.append({"check": "arithmetic_integrity", "status": "PASS" if arithmetic_failures == 0 else "FAIL", "value": arithmetic_failures})
