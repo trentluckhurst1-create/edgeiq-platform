@@ -63,6 +63,15 @@ jobs:
           cp -a /tmp/edgeiq-pages/data dist/data
           echo "RUNTIME_DATA_SEEDED_FROM_RUN=$run_id"
 
+      - name: Restore current catalogue from deployed meeting feeds
+        if: github.event_name != 'pull_request'
+        env:
+          EDGEIQ_DATA_DIR: dist/data
+        run: |
+          set -euo pipefail
+          python scripts/rebuild_edgeiq_catalogue_from_lazy_feeds_v1.py
+          test -s dist/data/edgeiq_three_day_product_catalog_v1.json
+
       - name: Rebuild current Race intelligence
         if: github.event_name != 'pull_request'
         env:
