@@ -10,18 +10,14 @@ from urllib.request import Request, urlopen
 from edgeiq_three_day_window_v1_common import build_three_day_window
 
 csv.field_size_limit(1024 * 1024 * 128)
-
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "public" / "data"
-
 OUT = DATA / "edgeiq_vic_three_day_race_list_v1.csv"
 SUMMARY = DATA / "edgeiq_vic_three_day_race_list_v1_summary.csv"
 RAW = DATA / "edgeiq_racingcom_three_day_raw_meetings_v1.json"
 CALENDAR_URL = "https://www.racing.com/services/appv2/GetMeetsByMonth/{year}/{month}"
-
 THREE_DAY_WINDOW = build_three_day_window()
 TARGET_DATES = [datetime.fromisoformat(THREE_DAY_WINDOW.today).date(), datetime.fromisoformat(THREE_DAY_WINDOW.tomorrow).date(), datetime.fromisoformat(THREE_DAY_WINDOW.dayPlus2).date()]
-
 FIELDS = ["race_date","day_bucket","track","normalised_track","meeting_key","meet_code","track_code","meet_status","full_status","state","url_segment","form_url","race_id","race_no","race_name","race_class","distance","race_time_utc","race_status","track_condition","track_rating","rail_position","weather","weather_wind_direction","weather_wind_speed","weather_rain","weather_min","weather_max","rainfall","form_entries_json","source","built_at"]
 
 def clean(value): return "" if value is None else str(value).strip()
@@ -53,15 +49,10 @@ def fetch_json(url):
         with sync_playwright() as playwright:
             browser=playwright.chromium.launch(headless=True)
             context=browser.new_context(user_agent="Mozilla/5.0",extra_http_headers={"Accept":"application/json,text/html,*/*","Referer":"https://www.racing.com/calendar"})
-            page=context.new_page()
-            response=page.goto(url,wait_until="domcontentloaded",timeout=45000)
+            page=context.new_page(); response=page.goto(url,wait_until="domcontentloaded",timeout=45000)
             if response is None or not response.ok:
-                status=response.status if response is not None else "NO_RESPONSE"
-                browser.close()
-                raise RuntimeError(f"RACING_COM_CALENDAR_HTTP_{status}: {url}") from urllib_error
-            payload=response.json()
-            browser.close()
-            return payload
+                status=response.status if response is not None else "NO_RESPONSE"; browser.close(); raise RuntimeError(f"RACING_COM_CALENDAR_HTTP_{status}: {url}") from urllib_error
+            payload=response.json(); browser.close(); return payload
 
 def month_targets():
     keys=[]
@@ -165,8 +156,10 @@ def main():
     meetings=extract_calendar_meetings(); rows=fetch_races_browser(meetings)
     rows.sort(key=lambda row:({"TODAY":0,"TOMORROW":1,"DAY+2":2}.get(row.get("day_bucket",""),9),row.get("race_date",""),row.get("normalised_track",""),int(row.get("race_no") or 999)))
     write_csv(OUT,rows,FIELDS)
-    summary=[{"metric":"status","value":"EDGEIQ_VIC_THREE_DAY_RACE_LIST_V1_BUILT"},{"metric":"meetings","value":len(meetings)},{"metric":"races","value":len(rows)},{"metric":"meetings_with_races","value":len(set(row["meeting_key"] for row in rows))},{"metric":"today_meetings_with_races","value":len(set(row["meeting_key"] for row in rows if row.get("day_bucket")=="TODAY"))},{"metric":"today_races","value":sum(1 for row in rows if row.get("day_bucket")=="TODAY")},{"metric":"output","value":str(OUT)},{"metric":"built_at","value":datetime.now(timezone.utc).isoformat(timespec="seconds")}]
+    today_meeting_keys={row["meeting_key"] for row in rows if row.get("day_bucket")=="TODAY"}
+    summary=[{"metric":"status","value":"EDGEIQ_VIC_THREE_DAY_RACE_LIST_V1_BUILT"},{"metric":"meetings","value":len(meetings)},{"metric":"races","value":len(rows)},{"metric":"meetings_with_races","value":len({row["meeting_key"] for row in rows})},{"metric":"today_meetings_with_races","value":len(today_meeting_keys)},{"metric":"today_races","value":sum(1 for row in rows if row.get("day_bucket")=="TODAY")},{"metric":"output","value":str(OUT)},{"metric":"built_at","value":datetime.now(timezone.utc).isoformat(timespec="seconds")}]
     write_csv(SUMMARY,summary,["metric","value"])
-    print("[EDGEIQ_VIC_THREE_DAY_RACE_LIST_V1] COMPLETE"); print("meetings=",len(meetings)); print("races=",len(rows)); print("meetings_with_races=",len(set(row["meeting_key"] for row in rows))); print("today_meetings_with_races=",len(set(row["meeting_key"] for row in rows if row.get("day_bucket")=="TODAY")); print("today_races=",sum(1 for row in rows if row.get("day_bucket")=="TODAY")); print("out=",OUT); print("summary=",SUMMARY)
+    print("[EDGEIQ_VIC_THREE_DAY_RACE_LIST_V1] COMPLETE")
+    print("meetings=",len(meetings)); print("races=",len(rows)); print("meetings_with_races=",len({row["meeting_key"] for row in rows})); print("today_meetings_with_races=",len(today_meeting_keys)); print("today_races=",sum(1 for row in rows if row.get("day_bucket")=="TODAY")); print("out=",OUT); print("summary=",SUMMARY)
 
 if __name__=="__main__":main()
