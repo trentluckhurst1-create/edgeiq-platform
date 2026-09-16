@@ -8,7 +8,7 @@ type Props={meeting:ThreeDayMeeting|null;selectedRaceKey:string|null;onRaceChang
 type RaceView="runners"|"details"|"determinants";
 const display=(v:unknown,fallback="-")=>cleanProductText(v,fallback);
 const money=(v:unknown)=>{const n=Number(String(v??"").replace(/^\$/,""));return Number.isFinite(n)&&n>0?`$${n.toFixed(2)}`:"-"};
-const numeric=(v:unknown)=>{const n=Number(String(v??"").replace(/[$,%+]/g,""));return Number.isFinite(n)?n:null};
+const numeric=(v:unknown)=>{if(v===undefined||v===null||String(v).trim()==="")return null;const n=Number(String(v).replace(/[$,%+]/g,""));return Number.isFinite(n)?n:null};
 const nonEmpty=(v:unknown)=>v!==undefined&&v!==null&&String(v).trim()!=="";
 function deepFirst(value:any,keys:string[],depth=0):any{if(value==null||depth>5)return null;if(Array.isArray(value)){for(const item of value){const found=deepFirst(item,keys,depth+1);if(nonEmpty(found))return found}return null}if(typeof value!=="object")return null;for(const key of keys){if(nonEmpty(value[key]))return value[key]}for(const child of Object.values(value)){if(child&&typeof child==="object"){const found=deepFirst(child,keys,depth+1);if(nonEmpty(found))return found}}return null}
 const runnerValue=(runner:any,...keys:string[])=>deepFirst(runner,keys);
