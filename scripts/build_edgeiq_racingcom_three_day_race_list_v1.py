@@ -3,6 +3,7 @@ from __future__ import annotations
 import csv
 import json
 import re
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.request import Request, urlopen
@@ -39,20 +40,53 @@ def day_bucket(value):
     except Exception:return ""
     return {0:"TODAY",1:"TOMORROW",2:"DAY+2"}.get((race_date-TARGET_DATES[0]).days,"")
 
-def fetch_json(url):
-    request=Request(url,headers={"User-Agent":"Mozilla/5.0","Accept":"application/json,text/html,*/*","Referer":"https://www.racing.com/calendar"})
+def _decode_json_text(text, url, source):
+    text=(text or "").lstrip("\ufeff").strip()
+    if not text:
+        raise RuntimeError(f"RACING_COM_EMPTY_RESPONSE source={source} url={url}")
     try:
-        with urlopen(request,timeout=30) as response:return json.loads(response.read().decode("utf-8",errors="replace"))
-    except Exception as urllib_error:
-        try: from playwright.sync_api import sync_playwright
-        except Exception: raise urllib_error
-        with sync_playwright() as playwright:
-            browser=playwright.chromium.launch(headless=True)
-            context=browser.new_context(user_agent="Mozilla/5.0",extra_http_headers={"Accept":"application/json,text/html,*/*","Referer":"https://www.racing.com/calendar"})
-            page=context.new_page(); response=page.goto(url,wait_until="domcontentloaded",timeout=45000)
-            if response is None or not response.ok:
-                status=response.status if response is not None else "NO_RESPONSE"; browser.close(); raise RuntimeError(f"RACING_COM_CALENDAR_HTTP_{status}: {url}") from urllib_error
-            payload=response.json(); browser.close(); return payload
+        payload=json.loads(text)
+    except json.JSONDecodeError as exc:
+        preview=re.sub(r"\s+"," ",text[:240])
+        raise RuntimeError(f"RACING_COM_NON_JSON_RESPONSE source={source} url={url} preview={preview!r}") from exc
+    if not isinstance(payload,dict):
+        raise RuntimeError(f"RACING_COM_UNEXPECTED_JSON source={source} url={url} type={type(payload).__name__}")
+    return payload
+
+def fetch_json(url):
+    headers={"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/153.0.0.0 Safari/537.36","Accept":"application/json,text/plain,*/*","Referer":"https://www.racing.com/calendar","Origin":"https://www.racing.com"}
+    urllib_error=None
+    for attempt in range(3):
+        try:
+            request=Request(url,headers=headers)
+            with urlopen(request,timeout=30) as response:
+                return _decode_json_text(response.read().decode("utf-8",errors="replace"),url,f"urllib_attempt_{attempt+1}")
+        except Exception as exc:
+            urllib_error=exc
+            if attempt<2: time.sleep(2*(attempt+1))
+    try: from playwright.sync_api import sync_playwright
+    except Exception: raise urllib_error
+    last_error=urllib_error
+    with sync_playwright() as playwright:
+        browser=playwright.chromium.launch(headless=True)
+        context=browser.new_context(user_agent=headers["User-Agent"],extra_http_headers={"Accept":headers["Accept"],"Referer":headers["Referer"]})
+        page=context.new_page()
+        try:
+            # Establish first-party cookies/session before requesting the service endpoint.
+            try: page.goto("https://www.racing.com/calendar",wait_until="domcontentloaded",timeout=45000); page.wait_for_timeout(1500)
+            except Exception: pass
+            for attempt in range(3):
+                try:
+                    response=context.request.get(url,headers={"Accept":headers["Accept"],"Referer":headers["Referer"]},timeout=45000)
+                    if not response.ok:
+                        raise RuntimeError(f"RACING_COM_CALENDAR_HTTP_{response.status}: {url}")
+                    return _decode_json_text(response.text(),url,f"playwright_request_attempt_{attempt+1}")
+                except Exception as exc:
+                    last_error=exc
+                    if attempt<2: page.wait_for_timeout(2000*(attempt+1))
+        finally:
+            context.close(); browser.close()
+    raise RuntimeError(f"RACING_COM_CALENDAR_FETCH_FAILED: {url}: {last_error}") from last_error
 
 def month_targets():
     keys=[]
