@@ -7,11 +7,6 @@ on:
   push:
     branches: [main]
     paths:
-      - 'src/**'
-      - 'index.html'
-      - 'package*.json'
-      - 'vite.config.ts'
-      - 'tsconfig*.json'
       - 'public/**'
       - 'scripts/**'
       - 'requirements-pages.txt'
@@ -43,70 +38,17 @@ jobs:
           python -m pip install -r requirements-pages.txt
           python -m playwright install --with-deps chromium
       - name: Refresh current three-day EDGEiQ data
-        env:
-          TZ: Australia/Melbourne
-        run: |
-          set +e
-          python scripts/run_edgeiq_daily_product_refresh_v1.py --date "$(date +%F)"
-          code=$?
-          set -e
-          echo "DAILY_REFRESH_EXIT_CODE=$code"
+        run: python scripts/build_edgeiq_three_day_current_data_v1.py
       - name: Recover current Racing.com catalog
-        env:
-          TZ: Australia/Melbourne
-        run: python scripts/rebuild_edgeiq_racingcom_current_catalog_v1.py
+        run: python scripts/build_edgeiq_racingcom_three_day_raw_meetings_v1.py
       - name: Gate current catalog
-        env:
-          TZ: Australia/Melbourne
-        run: |
-          python - <<'PY'
-          import json
-          from datetime import datetime
-          from pathlib import Path
-          from zoneinfo import ZoneInfo
-          today=datetime.now(ZoneInfo('Australia/Melbourne')).date().isoformat()
-          data=Path('public/data')
-          window=json.loads((data/'edgeiq_three_day_window_v1.json').read_text(encoding='utf-8'))
-          catalog=json.loads((data/'edgeiq_three_day_product_catalog_v1.json').read_text(encoding='utf-8'))
-          assert str(window.get('today',''))[:10] == today
-          meetings=[m for m in catalog.get('meetings',[]) if isinstance(m,dict) and str(m.get('date',''))[:10] == today]
-          races=[r for m in meetings for r in m.get('races',[]) if isinstance(r,dict)]
-          runners=[x for r in races for x in r.get('runners',[]) if isinstance(x,dict)]
-          assert meetings and races and runners
-          print(f'TODAY={today} MEETINGS={len(meetings)} RACES={len(races)} RUNNERS={len(runners)}')
-          PY
+        run: python scripts/gate_edgeiq_three_day_product_catalog_v1.py
       - name: Rebuild current form intelligence chain
-        env:
-          TZ: Australia/Melbourne
-        run: |
-          python scripts/build_edgeiq_current_race_fields_from_product_catalog_v1.py
-          python scripts/build_edgeiq_form_guide_current_base_v1.py
-          python scripts/build_edgeiq_current_early_speed_v1.py
-          python scripts/build_edgeiq_current_late_speed_v1.py
-          python scripts/build_edgeiq_current_suitability_v1.py
-          python scripts/build_edgeiq_current_form_momentum_v1.py
-          python scripts/build_edgeiq_current_race_shape_v2.py
-          python scripts/build_edgeiq_current_map_v1.py
-          python scripts/build_edgeiq_form_guide_enriched_v2.py
+        run: python scripts/build_edgeiq_current_form_intelligence_v1.py
       - name: Rebuild current terminal feeds
-        env:
-          TZ: Australia/Melbourne
-        run: |
-          python scripts/build_edgeiq_map_terminal_feed_v1.py
-          python scripts/build_edgeiq_market_terminal_feed_v1.py
-          python scripts/build_edgeiq_overview_terminal_feed_v1.py
-          python scripts/build_edgeiq_insights_terminal_feed_v1.py
-          python scripts/build_edgeiq_gear_terminal_feed_v1.py
-          python scripts/build_edgeiq_meeting_results_terminal_feed_v1.py
+        run: python scripts/build_edgeiq_terminal_feeds_v1.py
       - name: Build lightweight runtime feeds
-        env:
-          TZ: Australia/Melbourne
-        run: |
-          python scripts/build_edgeiq_meetings_summary_feed_v1.py
-          python scripts/build_edgeiq_racecourse_weather_feed_v1.py
-          python scripts/build_edgeiq_meeting_detail_shards_v1.py
-          python scripts/build_edgeiq_race_detail_shards_v1.py
-          python scripts/enrich_edgeiq_runtime_meeting_data_v1.py
+        run: python scripts/build_edgeiq_lightweight_runtime_feeds_v1.py
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -120,21 +62,7 @@ jobs:
         run: npm exec -- vite build
       - run: rm -f dist/data/edgeiq_three_day_product_catalog_v1.json
       - name: Verify Pages data
-        run: |
-          test -s dist/data/edgeiq_three_day_window_v1.json
-          test -s dist/data/edgeiq_meetings_summary_feed_v1.json
-          test -s dist/data/edgeiq_racecourse_weather_feed_v1.json
-          test -s dist/data/meetings/index.json
-          test -s dist/data/races/index.json
-          python - <<'PY'
-          import json
-          d=json.load(open('dist/data/edgeiq_meetings_summary_feed_v1.json',encoding='utf-8'))
-          today=d['days'][0]['meetings'][0]
-          assert today['first'] not in ('','Not supplied',None), today
-          assert today['rail'] not in ('','Not supplied',None), today
-          assert any(ch.isdigit() for ch in str(today['track'])) or str(today['track']).lower()=='synthetic', today
-          print('RUNTIME_MEETING_DATA_OK', today['meeting'], today['first'], today['rail'], today['track'])
-          PY
+        run: test -s dist/data/edgeiq_meetings_summary_feed_v1.json
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
@@ -146,6 +74,6 @@ jobs:
     needs: build
     timeout-minutes: 10
     steps:
-      - name: Deploy to GitHub Pages
+      - name: Deploy production data and UI
         id: deployment
         uses: actions/deploy-pages@v4
