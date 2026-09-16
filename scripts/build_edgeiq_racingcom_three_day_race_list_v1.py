@@ -45,7 +45,23 @@ def day_bucket(value):
 
 def fetch_json(url):
     request=Request(url,headers={"User-Agent":"Mozilla/5.0","Accept":"application/json,text/html,*/*","Referer":"https://www.racing.com/calendar"})
-    with urlopen(request,timeout=30) as response:return json.loads(response.read().decode("utf-8",errors="replace"))
+    try:
+        with urlopen(request,timeout=30) as response:return json.loads(response.read().decode("utf-8",errors="replace"))
+    except Exception as urllib_error:
+        try: from playwright.sync_api import sync_playwright
+        except Exception: raise urllib_error
+        with sync_playwright() as playwright:
+            browser=playwright.chromium.launch(headless=True)
+            context=browser.new_context(user_agent="Mozilla/5.0",extra_http_headers={"Accept":"application/json,text/html,*/*","Referer":"https://www.racing.com/calendar"})
+            page=context.new_page()
+            response=page.goto(url,wait_until="domcontentloaded",timeout=45000)
+            if response is None or not response.ok:
+                status=response.status if response is not None else "NO_RESPONSE"
+                browser.close()
+                raise RuntimeError(f"RACING_COM_CALENDAR_HTTP_{status}: {url}") from urllib_error
+            payload=response.json()
+            browser.close()
+            return payload
 
 def month_targets():
     keys=[]
@@ -85,8 +101,6 @@ def fetch_races_browser(meetings):
     def merge_race(base_race,detailed_race):
         if not isinstance(detailed_race,dict):return base_race
         merged=dict(base_race)
-        # Preserve every field from getRaceForm. Runner completeness depends on nested
-        # horse/form/odds fields that are not present in the lightweight race list.
         for key,value in detailed_race.items():
             if value not in (None,"",[]):merged[key]=value
         venue=detailed_race.get("venue")
