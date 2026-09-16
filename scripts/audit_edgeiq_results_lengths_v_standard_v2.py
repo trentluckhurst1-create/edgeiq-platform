@@ -9,7 +9,7 @@ from pathlib import Path
 from statistics import median
 
 
-ROOT = Path(r"C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM")
+ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "public" / "data"
 DOCS = ROOT / "docs" / "performance-intelligence" / "lengths-v-standard"
 CANDIDATE = DATA / "edgeiq_results_lengths_v_standard_v2_CANDIDATE.csv"
@@ -74,7 +74,8 @@ def main() -> int:
     checks.append({"check": "no_nan_or_infinite", "status": "PASS" if nonfinite_failures == 0 else "FAIL", "value": nonfinite_failures})
     checks.append({"check": "no_duplicate_observation_keys", "status": "PASS" if duplicate_count == 0 else "FAIL", "value": duplicate_count})
     checks.append({"check": "arithmetic_integrity", "status": "PASS" if arithmetic_failures == 0 else "FAIL", "value": arithmetic_failures})
-    AUDIT.parent.mkdir(parents=True, exist_ok=True)
+    DOCS.mkdir(parents=True, exist_ok=True)
+    DATA.mkdir(parents=True, exist_ok=True)
     with AUDIT.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=["check", "status", "value"])
         writer.writeheader()
