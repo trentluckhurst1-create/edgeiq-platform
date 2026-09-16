@@ -5,10 +5,12 @@ on:
   push:
     branches: [main]
     paths:
+      - 'scripts/build_edgeiq_racingcom_three_day_race_list_v1.py'
+      - 'scripts/build_edgeiq_three_day_product_catalog_v1.py'
       - 'scripts/build_edgeiq_current_race_entry_fact_v1.py'
       - 'scripts/enrich_edgeiq_catalogue_last5_v1.py'
-      - 'LIVE_PERFORMANCE_BUILDERS/run_edgeiq_performance_intelligence_production_v2.py'
-      - 'LIVE_PERFORMANCE_BUILDERS/run_edgeiq_victoria_performance_intelligence_refresh_v1.py'
+      - 'scripts/build_edgeiq_lazy_meeting_feeds_v1.py'
+      - 'LIVE_PERFORMANCE_BUILDERS/**'
       - '.github/workflows/edgeiq-current-intelligence-pages.yml'
 
 permissions:
