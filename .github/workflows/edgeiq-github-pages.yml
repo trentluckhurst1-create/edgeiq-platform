@@ -1,4 +1,4 @@
-name: EDGEiQ GitHub Pages
+name: EDGEiQ Frontend Validation
 
 on:
   workflow_dispatch:
@@ -7,15 +7,13 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: edgeiq-pages-production
+  group: edgeiq-frontend-validation
   cancel-in-progress: true
 
 jobs:
-  build:
+  validate:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -24,31 +22,18 @@ jobs:
         with:
           node-version: '22'
           cache: npm
-      - uses: actions/configure-pages@v5
       - run: npm ci
       - run: npm exec -- tsc -b
       - name: Vite production build
         env:
           VITE_CLERK_PUBLISHABLE_KEY: ${{ secrets.VITE_CLERK_PUBLISHABLE_KEY }}
         run: npm exec -- vite build
-      - name: Verify Pages UI
+      - name: Verify frontend build
         run: |
           test -s dist/index.html
           test "$(find dist/assets -maxdepth 1 -name 'edgeiq-app-*.js' -type f | wc -l)" -gt 0
           test "$(find dist/assets -maxdepth 1 -name 'edgeiq-*.css' -type f | wc -l)" -gt 0
-          grep -Eq '/edgeiq-platform/assets/edgeiq-app-[A-Za-z0-9_-]+\.js' dist/index.html
-          grep -Eq '/edgeiq-platform/assets/edgeiq-[A-Za-z0-9_-]+\.css' dist/index.html
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    timeout-minutes: 10
-    steps:
-      - name: Deploy production UI
-        id: deployment
-        uses: actions/deploy-pages@v4
+
+# Production GitHub Pages deployment is intentionally owned by
+# edgeiq-current-intelligence-pages.yml so a UI-only build can never
+# overwrite the live current meeting/race data feeds with an empty dist/data.
