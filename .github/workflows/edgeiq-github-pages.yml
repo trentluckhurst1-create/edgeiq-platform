@@ -6,17 +6,6 @@ on:
     - cron: '17 * * * *'
   push:
     branches: [main]
-    paths:
-      - 'src/**'
-      - 'public/**'
-      - 'scripts/**'
-      - 'LIVE_PERFORMANCE_BUILDERS/**'
-      - 'vite.config.ts'
-      - 'index.html'
-      - 'package.json'
-      - 'package-lock.json'
-      - 'requirements-pages.txt'
-      - '.github/workflows/edgeiq-github-pages.yml'
 
 permissions:
   contents: read
