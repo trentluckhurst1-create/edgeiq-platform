@@ -10,12 +10,12 @@ export default defineConfig({
     rollupOptions: {
       output: isGitHubActions
         ? {
-            entryFileNames: "assets/edgeiq-app.js",
-            chunkFileNames: "assets/edgeiq-[name].js",
-            assetFileNames: (assetInfo) =>
-              assetInfo.names?.some((name) => name.endsWith(".css"))
-                ? "assets/edgeiq-app.css"
-                : "assets/[name]-[hash][extname]",
+            // Production assets MUST be content hashed. Fixed edgeiq-app.js/css names
+            // allowed browsers/CDNs to keep serving an older EDGEiQ UI after a successful
+            // Pages deployment.
+            entryFileNames: "assets/edgeiq-app-[hash].js",
+            chunkFileNames: "assets/edgeiq-[name]-[hash].js",
+            assetFileNames: "assets/edgeiq-[name]-[hash][extname]",
           }
         : undefined,
     },
