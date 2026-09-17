@@ -7,6 +7,11 @@ on:
   push:
     branches: [main]
     paths:
+      - 'src/**'
+      - 'public/assets/**'
+      - 'public/*.css'
+      - 'index.html'
+      - 'vite.config.*'
       - 'scripts/build_edgeiq_racingcom_three_day_race_list_v1.py'
       - 'scripts/build_edgeiq_three_day_product_catalog_v1.py'
       - 'scripts/enrich_edgeiq_catalogue_last5_v1.py'
