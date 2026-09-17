@@ -2,6 +2,8 @@ name: EDGEiQ Current Intelligence Pages
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '17 * * * *'
   push:
     branches: [main]
     paths:
@@ -35,6 +37,7 @@ jobs:
           python -m pip install -r requirements-pages.txt
           python -m playwright install --with-deps chromium
       - name: Refresh current Racing.com race and runner data
+        timeout-minutes: 12
         run: python scripts/build_edgeiq_racingcom_three_day_race_list_v1.py
       - name: Build current three-day catalogue
         run: python scripts/build_edgeiq_three_day_product_catalog_v1.py
@@ -60,8 +63,24 @@ jobs:
           print(f'INTELLIGENCE current_rows={len(current)} dates={sorted(dates)}')
           if not current: raise SystemExit('no current intelligence rows')
           PY
-      - name: Build lazy meeting runtime feeds
+      - name: Build dashboard and lazy meeting runtime feeds
         run: python scripts/build_edgeiq_lazy_meeting_feeds_v1.py
+      - name: Gate dashboard feeds
+        run: |
+          test -s public/data/edgeiq_meetings_summary_feed_v1.json
+          test -d public/data/meetings
+          test "$(find public/data/meetings -name '*.json' -type f | wc -l)" -gt 0
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          feed=json.loads(Path('public/data/edgeiq_meetings_summary_feed_v1.json').read_text(encoding='utf-8-sig'))
+          days=feed.get('days',[])
+          if len(days) < 3: raise SystemExit('dashboard summary has fewer than three days')
+          meetings=sum(len(d.get('meetings',[])) for d in days)
+          races=sum(int((d.get('totals') or {}).get('races',0) or 0) for d in days)
+          print(f'DASHBOARD days={len(days)} meetings={meetings} races={races}')
+          if meetings <= 0 or races <= 0: raise SystemExit('dashboard summary is empty')
+          PY
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -74,7 +93,7 @@ jobs:
           VITE_CLERK_PUBLISHABLE_KEY: ${{ secrets.VITE_CLERK_PUBLISHABLE_KEY }}
         run: npm exec -- vite build
       - run: rm -f dist/data/edgeiq_three_day_product_catalog_v1.json
-      - name: Verify Pages data
+      - name: Verify Pages dashboard data
         run: |
           test -s dist/data/edgeiq_meetings_summary_feed_v1.json
           test -s dist/data/edgeiq_race_intelligence_feed_v2.csv
