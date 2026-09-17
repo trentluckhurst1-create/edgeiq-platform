@@ -1,0 +1,18 @@
+/* EDGEiQ APPROVED MASTER — 17 SEP 2026
+   Final visual reference: wordmark only + cinematic blue thoroughbred/jockey hero. */
+.eiq-app-nav__brand{display:flex!important;align-items:center!important;justify-content:flex-start!important;padding:0 14px!important}
+.eiq-app-nav__brand img{display:none!important}
+.eiq-app-nav__brand::after{content:"EDGEiQ";display:block;font:900 30px/1 Arial,Helvetica,sans-serif;letter-spacing:-1.8px;color:#f5f8fc;text-shadow:0 1px 12px rgba(0,0,0,.35)}
+.eiq-app-nav__brand::before{content:"";display:none!important}
+.eiq-app-nav__brand::after{background:linear-gradient(90deg,#f7f9fc 0 62%,#1677ff 62% 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* The approved hero artwork already contains the exact EDGEiQ wordmark, Racing Intelligence,
+   tagline, horse/jockey composition and DATA / FORM / CONTEXT / EDGE treatment. Do not layer
+   the old dashboard branding over it. */
+.eiq-home-hero{min-height:239px!important;height:239px!important;padding:0!important;background:#071827!important;border:1px solid #244461!important;overflow:hidden!important}
+.eiq-home-hero__brand{display:none!important}
+.eiq-home-hero__racing{position:absolute!important;inset:0!important;display:block!important;opacity:1!important;background:none!important;padding:0!important;overflow:hidden!important}
+.eiq-home-racing-art{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;max-width:none!important;object-fit:cover!important;object-position:center center!important;opacity:1!important;filter:none!important;transform:none!important}
+.eiq-home-racing-copy{display:none!important}
+
+@media(max-width:900px){.eiq-home-hero{height:190px!important;min-height:190px!important}.eiq-home-hero__racing{opacity:1!important}.eiq-home-racing-art{width:100%!important;height:100%!important;object-fit:cover!important}.eiq-app-nav__brand::after{font-size:25px!important}}
