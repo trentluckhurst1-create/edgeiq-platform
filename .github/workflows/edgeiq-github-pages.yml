@@ -34,10 +34,10 @@ jobs:
       - name: Verify Pages UI
         run: |
           test -s dist/index.html
-          test -s dist/assets/edgeiq-app.js
-          test -s dist/assets/edgeiq-app.css
-          grep -q '/edgeiq-platform/assets/edgeiq-app.js' dist/index.html
-          grep -q '/edgeiq-platform/assets/edgeiq-app.css' dist/index.html
+          test "$(find dist/assets -maxdepth 1 -name 'edgeiq-app-*.js' -type f | wc -l)" -gt 0
+          test "$(find dist/assets -maxdepth 1 -name 'edgeiq-*.css' -type f | wc -l)" -gt 0
+          grep -Eq '/edgeiq-platform/assets/edgeiq-app-[A-Za-z0-9_-]+\.js' dist/index.html
+          grep -Eq '/edgeiq-platform/assets/edgeiq-[A-Za-z0-9_-]+\.css' dist/index.html
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
