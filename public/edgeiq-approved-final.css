@@ -1,18 +1,16 @@
-/* EDGEiQ APPROVED MASTER — 17 SEP 2026
-   Final visual reference: wordmark only + cinematic blue thoroughbred/jockey hero. */
-.eiq-app-nav__brand{display:flex!important;align-items:center!important;justify-content:flex-start!important;padding:0 14px!important}
-.eiq-app-nav__brand img{display:none!important}
-.eiq-app-nav__brand::after{content:"EDGEiQ";display:block;font:900 30px/1 Arial,Helvetica,sans-serif;letter-spacing:-1.8px;color:#f5f8fc;text-shadow:0 1px 12px rgba(0,0,0,.35)}
-.eiq-app-nav__brand::before{content:"";display:none!important}
-.eiq-app-nav__brand::after{background:linear-gradient(90deg,#f7f9fc 0 62%,#1677ff 62% 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+/* EDGEiQ APPROVED MASTER — 17 SEP 2026 */
+.eiq-app-nav__brand{display:flex!important;align-items:center!important;justify-content:flex-start!important;padding:0 14px!important;height:70px!important;font:900 28px/1 Arial,Helvetica,sans-serif!important;letter-spacing:-1.7px!important;color:#f7f9fc!important;text-shadow:0 1px 12px rgba(0,0,0,.35)!important}
+.eiq-app-nav__brand span{color:#1677ff!important}
+.eiq-app-nav__brand::before,.eiq-app-nav__brand::after,.eiq-app-nav__brand img{display:none!important;content:none!important}
 
-/* The approved hero artwork already contains the exact EDGEiQ wordmark, Racing Intelligence,
-   tagline, horse/jockey composition and DATA / FORM / CONTEXT / EDGE treatment. Do not layer
-   the old dashboard branding over it. */
-.eiq-home-hero{min-height:239px!important;height:239px!important;padding:0!important;background:#071827!important;border:1px solid #244461!important;overflow:hidden!important}
-.eiq-home-hero__brand{display:none!important}
-.eiq-home-hero__racing{position:absolute!important;inset:0!important;display:block!important;opacity:1!important;background:none!important;padding:0!important;overflow:hidden!important}
+.eiq-home-hero{position:relative!important;min-height:239px!important;height:239px!important;padding:0!important;background:#071827!important;border:1px solid #244461!important;overflow:hidden!important}
+.eiq-home-hero__brand{position:absolute!important;z-index:3!important;left:0!important;top:0!important;bottom:0!important;width:48%!important;display:flex!important;flex-direction:column!important;justify-content:center!important;align-items:flex-start!important;padding:0 0 0 32px!important;background:linear-gradient(90deg,#0c1725 0%,#0c1725 72%,rgba(12,23,37,.88) 86%,rgba(12,23,37,0) 100%)!important}
+.eiq-home-hero__brand>span{font-size:18px!important;font-weight:800!important;color:#2f73d9!important;margin-bottom:12px!important}
+.eiq-home-wordmark{font:900 46px/.95 Arial,Helvetica,sans-serif!important;letter-spacing:-3px!important;color:#f7f9fc!important}
+.eiq-home-wordmark span{color:#1677ff!important}
+.eiq-home-hero__brand>p{margin:16px 0 0!important;font-size:13px!important;color:#4d79ba!important}
+.eiq-home-hero__racing{position:absolute!important;z-index:1!important;inset:0 0 0 38%!important;display:block!important;opacity:1!important;padding:0!important;overflow:hidden!important;background:#0a192a!important}
 .eiq-home-racing-art{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;max-width:none!important;object-fit:cover!important;object-position:center center!important;opacity:1!important;filter:none!important;transform:none!important}
 .eiq-home-racing-copy{display:none!important}
 
-@media(max-width:900px){.eiq-home-hero{height:190px!important;min-height:190px!important}.eiq-home-hero__racing{opacity:1!important}.eiq-home-racing-art{width:100%!important;height:100%!important;object-fit:cover!important}.eiq-app-nav__brand::after{font-size:25px!important}}
+@media(max-width:900px){.eiq-home-hero{height:190px!important;min-height:190px!important}.eiq-home-hero__brand{width:56%!important;padding-left:22px!important}.eiq-home-wordmark{font-size:36px!important}.eiq-home-hero__racing{inset:0 0 0 35%!important}.eiq-app-nav__brand{font-size:25px!important}}
