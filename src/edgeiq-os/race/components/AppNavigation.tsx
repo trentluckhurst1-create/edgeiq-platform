@@ -35,11 +35,7 @@ const navGroups: NavGroup[] = [
 ];
 
 export function EdgeiqBrand() {
-  return (
-    <div className="eiq-app-nav__brand" data-edgeiq-canonical-brand="true">
-      <img src={`${import.meta.env.BASE_URL}assets/edgeiq-logo-dark.svg`} alt="EDGEiQ Racing Intelligence" draggable={false} />
-    </div>
-  );
+  return <div className="eiq-app-nav__brand eiq-wordmark" data-edgeiq-canonical-brand="true" aria-label="EDGEiQ">EDGE<span>iQ</span></div>;
 }
 
 export function AppNavigation({ activeSection, onSectionChange }: AppNavigationProps) {
