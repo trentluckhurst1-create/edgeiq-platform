@@ -2,8 +2,6 @@ name: EDGEiQ GitHub Pages
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '17 * * * *'
   push:
     branches: [main]
 
@@ -19,54 +17,9 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-          cache: pip
-          cache-dependency-path: requirements-pages.txt
-      - name: Install data-refresh dependencies
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install -r requirements-pages.txt
-          python -m playwright install --with-deps chromium
-      - name: Refresh current Racing.com race and runner data
-        run: python scripts/build_edgeiq_racingcom_three_day_race_list_v1.py
-      - name: Build current three-day catalogue
-        run: python scripts/build_edgeiq_three_day_product_catalog_v1.py
-      - name: Populate current last-five form
-        run: python scripts/enrich_edgeiq_catalogue_last5_v1.py
-      - name: Build current race-entry facts
-        run: python scripts/build_edgeiq_current_race_entry_fact_v1.py
-      - name: Build performance bootstrap dependencies
-        run: python LIVE_PERFORMANCE_BUILDERS/run_edgeiq_performance_bootstrap_v3.py
-      - name: Build current race intelligence feed
-        run: python scripts/build_edgeiq_current_race_intelligence_feed_v2.py
-      - name: Gate current catalogue and intelligence
-        run: |
-          python - <<'PY'
-          import csv,json
-          from pathlib import Path
-          p=Path('public/data/edgeiq_three_day_product_catalog_v1.json')
-          if not p.exists(): raise SystemExit('catalogue missing')
-          d=json.loads(p.read_text(encoding='utf-8-sig'))
-          meetings=d.get('meetings') or []
-          races=sum(len(m.get('races') or []) for m in meetings)
-          runners=sum(len(r.get('runners') or []) for m in meetings for r in (m.get('races') or []))
-          if not meetings or not races or not runners: raise SystemExit(f'incomplete catalogue meetings={len(meetings)} races={races} runners={runners}')
-          dates={str(m.get('date',''))[:10] for m in meetings}
-          intel=Path('public/data/edgeiq_race_intelligence_feed_v2.csv')
-          if not intel.exists(): raise SystemExit('intelligence feed missing')
-          rows=list(csv.DictReader(intel.open(encoding='utf-8-sig')))
-          current=[r for r in rows if r.get('race_date') in dates]
-          print(f'catalogue PASS meetings={len(meetings)} races={races} runners={runners}')
-          print(f'intelligence current_rows={len(current)} dates={sorted(dates)}')
-          if not current: raise SystemExit('no current intelligence rows')
-          PY
-      - name: Build lazy meeting runtime feeds
-        run: python scripts/build_edgeiq_lazy_meeting_feeds_v1.py
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -78,18 +31,13 @@ jobs:
         env:
           VITE_CLERK_PUBLISHABLE_KEY: ${{ secrets.VITE_CLERK_PUBLISHABLE_KEY }}
         run: npm exec -- vite build
-      - run: rm -f dist/data/edgeiq_three_day_product_catalog_v1.json
-      - name: Verify Pages application and data
+      - name: Verify Pages UI
         run: |
           test -s dist/index.html
           test -s dist/assets/edgeiq-app.js
           test -s dist/assets/edgeiq-app.css
           grep -q '/edgeiq-platform/assets/edgeiq-app.js' dist/index.html
           grep -q '/edgeiq-platform/assets/edgeiq-app.css' dist/index.html
-          test -s dist/data/edgeiq_meetings_summary_feed_v1.json
-          test -s dist/data/edgeiq_race_intelligence_feed_v2.csv
-          test -d dist/data/meetings
-          test "$(find dist/data/meetings -name '*.json' -type f | wc -l)" -gt 0
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
@@ -101,6 +49,6 @@ jobs:
     needs: build
     timeout-minutes: 10
     steps:
-      - name: Deploy production data and UI
+      - name: Deploy production UI
         id: deployment
         uses: actions/deploy-pages@v4
