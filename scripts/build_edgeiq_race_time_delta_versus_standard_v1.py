@@ -256,7 +256,7 @@ def main() -> None:
         group_by_observation[observation_id] = group_id
 
     standard_by_group: dict[str, dict[str, str]] = {}
-    standard_by_track_distance: dict[tuple[str, str], dict[str, str]] = {}
+    standard_by_track_distance: dict[tuple[str, str], list[dict[str, str]]] = {}
     for row in standard_rows:
         group_id = text(row["benchmark_group_id"])
 
@@ -274,12 +274,7 @@ def main() -> None:
             text(row["track_name"]).upper(),
             text(row["official_distance_metres"]),
         )
-        if track_distance_key in standard_by_track_distance:
-            fail(
-                "Duplicate Standard Time track-distance key: "
-                f"{track_distance_key}"
-            )
-        standard_by_track_distance[track_distance_key] = row
+        standard_by_track_distance.setdefault(track_distance_key, []).append(row)
 
     built_at_utc = (
         datetime.now(timezone.utc)
@@ -315,12 +310,23 @@ def main() -> None:
 
         standard = standard_by_group.get(group_id)
         if standard is None:
-            standard = standard_by_track_distance.get(
+            candidates = standard_by_track_distance.get(
                 (
                     text(observation["track_name"]).upper(),
                     text(observation["official_distance_metres"]),
-                )
+                ),
+                [],
             )
+            observation_condition = text(observation.get("track_condition")).upper()
+            condition_matches = [
+                candidate
+                for candidate in candidates
+                if text(candidate.get("track_condition_group")).upper() == observation_condition
+            ]
+            if len(condition_matches) == 1:
+                standard = condition_matches[0]
+            elif len(candidates) == 1:
+                standard = candidates[0]
 
         if standard is None:
             continue
