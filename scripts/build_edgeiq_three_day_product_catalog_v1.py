@@ -139,6 +139,8 @@ RACE_TIME_KEYS = (
     "advertised_start",
     "jumpTime",
     "jump_time",
+    "race_time_utc",
+    "time",
 )
 
 DISTANCE_KEYS = (
