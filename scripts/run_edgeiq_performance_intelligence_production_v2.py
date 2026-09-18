@@ -10,7 +10,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 
-ROOT = Path(r"C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM")
+ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs" / "performance-intelligence" / "lengths-v-standard"
 MANIFEST_JSON = DOCS / "edgeiq_performance_intelligence_production_v2_manifest.json"
 MANIFEST_CSV = DOCS / "edgeiq_performance_intelligence_production_v2_manifest.csv"
