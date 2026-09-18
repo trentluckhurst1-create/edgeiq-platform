@@ -141,3 +141,15 @@ export function canonicalRaceTitleDisplay(value: unknown): string {
   }
   return text.replace(/\s*[\u2013\u2014-]\s*$/g, "").replace(/\s{2,}/g, " ").trim();
 }
+
+
+export function localRaceTimeDisplay(value: unknown, fallback = "-"): string {
+  const text = cleanProductText(value, "");
+  if (!text) return fallback;
+  const date = new Date(text);
+  if (Number.isNaN(date.getTime())) return text;
+  return new Intl.DateTimeFormat(undefined, {
+    hour: "numeric",
+    minute: "2-digit",
+  }).format(date);
+}
