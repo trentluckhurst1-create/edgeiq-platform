@@ -34,6 +34,19 @@ jobs:
     timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
+      - name: Materialize dashboard hero JPEG
+        run: |
+          curl -L --fail --retry 3 --silent --show-error \
+            "https://commons.wikimedia.org/wiki/Special:Redirect/file/LusterKingsPlate2026.jpg" \
+            -o public/assets/edgeiq-dashboard-hero.jpg
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path("public/assets/edgeiq-dashboard-hero.jpg")
+          b=p.read_bytes()
+          assert len(b) > 8000, f"hero too small: {len(b)}"
+          assert b[:3] == b"\xff\xd8\xff", "hero is not JPEG"
+          print(f"OK wrote {p} ({len(b)} bytes)")
+          PY
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
@@ -82,6 +95,17 @@ jobs:
         env:
           VITE_CLERK_PUBLISHABLE_KEY: ${{ secrets.VITE_CLERK_PUBLISHABLE_KEY }}
         run: npm exec -- vite build
+      - name: Verify dashboard hero JPEG
+        run: |
+          test -s dist/assets/edgeiq-dashboard-hero.jpg
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path("dist/assets/edgeiq-dashboard-hero.jpg")
+          b=p.read_bytes()
+          assert len(b) > 8000, f"hero too small: {len(b)}"
+          assert b[:3] == b"\xff\xd8\xff", "hero is not JPEG"
+          print(f"EDGEIQ_HERO_PASS bytes={len(b)} path={p}")
+          PY
       - run: rm -f dist/data/edgeiq_three_day_product_catalog_v1.json
       - name: Verify Pages dashboard data
         run: |
