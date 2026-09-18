@@ -128,8 +128,15 @@ def _extract_page_meeting_metadata(page):
     meta={}
     # Racing.com labels vary slightly; capture the displayed official values.
     patterns={
-        "rail_position":[r"(?im)\\bRail(?: Position)?\\s*[:\\-]?\\s*([^\\n|]+)"],
-        "track_rating":[r"(?im)\\bTrack(?: Condition| Rating)?\\s*[:\\-]?\\s*((?:Firm|Good|Soft|Heavy)\\s*\\d+|Synthetic)\\b"],
+        # Racing.com currently renders the label and value on separate lines:
+        # "Track Rail\\nTrue Entire Circuit". Keep alternatives for older markup.
+        "rail_position":[
+            r"(?im)\\bTrack\\s+Rail\\s*[:\\-]?\\s*\\n?\\s*([^\\n|]+)",
+            r"(?im)\\bRail(?: Position)?\\s*[:\\-]?\\s*\\n?\\s*([^\\n|]+)",
+        ],
+        "track_rating":[
+            r"(?im)\\b((?:Firm|Good|Soft|Heavy)\\s*\\d+|Synthetic)\\b",
+        ],
     }
     for key, pats in patterns.items():
         for pat in pats:
