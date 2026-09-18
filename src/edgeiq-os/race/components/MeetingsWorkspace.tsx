@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import type { ThreeDayMeeting, ThreeDayRace } from "../services/threeDayCatalog";
-import { canonicalRailDisplay, canonicalTrackDisplayName, canonicalTrackRatingDisplay, cleanProductText } from "../../design-system/presentation";
+import { canonicalRailDisplay, canonicalTrackDisplayName, canonicalTrackRatingDisplay, cleanProductText, localRaceTimeDisplay } from "../../design-system/presentation";
 import { loadMeetingDetail, loadMeetingsWorkspaceViewModel, type MeetingSummaryViewModel, type MeetingsDayKey, type MeetingsWorkspaceViewModel } from "../services/meetingsFeed";
 import { loadRaceDetail } from "../services/raceDetailFeed";
 import { loadRacecourseWeatherFeed, meetingWeather, weatherDescription, type RacecourseWeatherRow } from "../services/racecourseWeatherFeed";
