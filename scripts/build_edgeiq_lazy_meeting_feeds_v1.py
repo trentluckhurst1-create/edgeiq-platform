@@ -74,7 +74,11 @@ def main() -> None:
             scratches = int(source_value(meeting_source,"scratchings","scratchingCount") or 0)
             row={"meetingKey":meeting_key,"meeting":meeting_name,"venue":meeting_name,"providerMeetingKey":text(meeting.get("providerMeetingKey"),""),"date":date_value,"state":state,"track":text(official.get("track_condition")) if official else text(meeting.get("trackCondition")),"rail":text(official.get("rail")) if official else text(meeting.get("rail")),"weather":text(source_value(meeting_source,"weather"),"Awaiting Weather Feed"),"wind":text(source_value(meeting_source,"wind")),"temp":text(source_value(meeting_source,"temp","temperature")),"rain24h":text(source_value(meeting_source,"rain24h")),"irrigation24h":text(source_value(meeting_source,"irrigation24h")),"officialUpdate":text(source_value(meeting_source,"officialUpdate")),"races":len(race_summaries),"declared":declared,"scratchings":scratches,"first":race_summaries[0]["time"] if race_summaries else "Not supplied","last":race_summaries[-1]["time"] if race_summaries else "Not supplied","status":"READY","raceSummaries":race_summaries}
             day_meetings.append(row)
-            detail={"schemaVersion":"edgeiq_meeting_detail_feed_v1","generatedAt":generated_at,"date":date_value,"meetingKey":meeting_key,"meeting":meeting}
+            detail_meeting = dict(meeting)
+            detail_meeting["trackCondition"] = row["track"]
+            detail_meeting["rail"] = row["rail"]
+            detail_meeting["races"] = [dict(r, trackCondition=(r.get("trackCondition") or row["track"]), rail=(r.get("rail") or row["rail"])) for r in (meeting.get("races") or [])]
+            detail={"schemaVersion":"edgeiq_meeting_detail_feed_v1","generatedAt":generated_at,"date":date_value,"meetingKey":meeting_key,"meeting":detail_meeting}
             (MEETINGS_DIR/f"{date_value}_{slug(meeting_key)}.json").write_text(json.dumps(detail,ensure_ascii=False,separators=(",",":")),encoding="utf-8")
         tracks=[str(m.get("track","")).lower() for m in day_meetings]
         totals={"meetings":len(day_meetings),"races":sum(m["races"] for m in day_meetings),"declared":sum(m["declared"] for m in day_meetings),"scratchings":sum(m["scratchings"] for m in day_meetings),"heavyTracks":sum("heavy" in t for t in tracks),"softTracks":sum("soft" in t for t in tracks),"goodTracks":sum("good" in t for t in tracks),"weatherAlerts":0}
@@ -92,5 +96,7 @@ def main() -> None:
         missing_rail=[m["meeting"] for m in today["meetings"] if m.get("rail") in ("Not supplied","—","")]
         if missing_track: raise SystemExit(f"Meetings feed missing full track rating: {missing_track}")
         if missing_rail: raise SystemExit(f"Meetings feed missing rail: {missing_rail}")
+        missing_time=[m["meeting"] for m in today["meetings"] if m.get("first") in ("Not supplied","—","",None)]
+        if missing_time: raise SystemExit(f"Meetings feed missing first race time: {missing_time}")
 
 if __name__ == "__main__": main()
