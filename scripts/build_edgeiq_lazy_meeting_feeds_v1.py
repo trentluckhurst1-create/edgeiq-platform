@@ -73,5 +73,11 @@ def main() -> None:
     total_meetings=sum(d["totals"]["meetings"] for d in days); total_races=sum(d["totals"]["races"] for d in days); total_runners=sum(d["totals"]["declared"] for d in days)
     print(f"[EDGEIQ] dashboard feeds PASS days={len(days)} meetings={total_meetings} races={total_races} runners={total_runners}")
     if len(days)<3 or total_meetings<=0 or total_races<=0 or total_runners<=0: raise SystemExit("Dashboard feed failed population gate")
+    today = next((d for d in days if d["key"]=="TODAY"), None)
+    if today:
+        missing_track=[m["meeting"] for m in today["meetings"] if m.get("track") in ("Not supplied","—","")]
+        missing_rail=[m["meeting"] for m in today["meetings"] if m.get("rail") in ("Not supplied","—","")]
+        if missing_track: raise SystemExit(f"Meetings feed missing full track rating: {missing_track}")
+        if missing_rail: raise SystemExit(f"Meetings feed missing rail: {missing_rail}")
 
 if __name__ == "__main__": main()
