@@ -621,8 +621,15 @@ def main() -> None:
 
         selected_rating = eligible_ratings[-1]
 
+        # Horse identity is governed by canonical_horse_id. Names are a
+        # secondary consistency check only, so compare a deterministic
+        # presentation-normalised form while preserving source spelling/case.
+        normalise_horse_name = lambda value: " ".join(
+            text(value).split()
+        ).upper()
+
         source_names = {
-            text(
+            normalise_horse_name(
                 rating["canonical_horse_name"]
             )
             for rating in eligible_ratings
@@ -637,7 +644,7 @@ def main() -> None:
             iter(source_names)
         )
 
-        if source_name != canonical_horse_name:
+        if source_name != normalise_horse_name(canonical_horse_name):
             fail(
                 f"{race_entry_id}: race-entry and rating "
                 "canonical names disagree."
