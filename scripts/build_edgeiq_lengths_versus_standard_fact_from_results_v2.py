@@ -19,7 +19,7 @@ DATA = ROOT / "public" / "data"
 DOCS = ROOT / "docs" / "performance-intelligence" / "restart-v1"
 
 DELTA = DATA / "edgeiq_race_time_delta_versus_standard_fact_v1.csv"
-WAREHOUSE = DATA / "edgeiq_historical_results_warehouse_v2_graphql.csv"
+WAREHOUSE = DATA / "edgeiq_historical_results_warehouse_v2_graphql.csv"\nRACE_SPEED = DATA / "edgeiq_racingcom_canonical_race_speed_fact_v2_1.csv"
 PARAMETER = DATA / "edgeiq_length_conversion_parameter_fact_v2.csv"
 OUT = DATA / "edgeiq_lengths_versus_standard_fact_v1.csv"
 REJECTED = DATA / "edgeiq_lengths_versus_standard_fact_v1_rejections.csv"
@@ -156,7 +156,7 @@ def param_lookup(rows: list[dict[str, str]]) -> dict[tuple[str, str], dict[str, 
 
 def main() -> int:
     delta_rows = read_csv(DELTA)
-    wh = warehouse_index(read_csv(WAREHOUSE))
+    warehouse_rows = read_csv(WAREHOUSE)\n    if not warehouse_rows:\n        warehouse_rows = read_csv(RACE_SPEED)\n    wh = warehouse_index(warehouse_rows)
     params = param_lookup(read_csv(PARAMETER))
     built_at = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
     output: list[dict[str, object]] = []
