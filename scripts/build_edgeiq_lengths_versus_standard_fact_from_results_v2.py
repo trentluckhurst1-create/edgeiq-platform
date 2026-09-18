@@ -22,6 +22,7 @@ DELTA = DATA / "edgeiq_race_time_delta_versus_standard_fact_v1.csv"
 WAREHOUSE = DATA / "edgeiq_historical_results_warehouse_v2_graphql.csv"
 RACE_SPEED = DATA / "edgeiq_racingcom_canonical_race_speed_fact_v2_1.csv"
 PARAMETER = DATA / "edgeiq_length_conversion_parameter_fact_v2.csv"
+STANDARD_TIME = DATA / "edgeiq_standard_time_fact_v1.csv"
 OUT = DATA / "edgeiq_lengths_versus_standard_fact_v1.csv"
 REJECTED = DATA / "edgeiq_lengths_versus_standard_fact_v1_rejections.csv"
 SUMMARY = DATA / "edgeiq_lengths_versus_standard_fact_v1_summary.json"
@@ -143,6 +144,10 @@ def condition_for(rows: list[dict[str, str]]) -> str:
     return ""
 
 
+def standard_time_index(rows: list[dict[str, str]]) -> dict[str, dict[str, str]]:
+    return {clean(row.get("standard_time_id")): row for row in rows if clean(row.get("standard_time_id"))}
+
+
 def interpretation(value: Decimal) -> str:
     if value > 0:
         return "FASTER_THAN_STANDARD"
@@ -162,6 +167,7 @@ def main() -> int:
         warehouse_rows = read_csv(RACE_SPEED)
     wh = warehouse_index(warehouse_rows)
     params = param_lookup(read_csv(PARAMETER))
+    standards = standard_time_index(read_csv(STANDARD_TIME))
     built_at = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
     output: list[dict[str, object]] = []
     rejected: list[dict[str, object]] = []
@@ -169,10 +175,11 @@ def main() -> int:
         rn = race_no_from_key(delta.get("race_key", ""))
         key = (clean(delta.get("race_date")), norm(delta.get("track_name")), rn, clean(delta.get("official_distance_metres")))
         matches = wh.get(key, [])
-        surface = surface_for(clean(delta.get("track_name")), matches)
-        condition = condition_for(matches)
+        standard = standards.get(clean(delta.get("standard_time_id")), {})
+        surface = clean(standard.get("surface")) or surface_for(clean(delta.get("track_name")), matches)
+        condition = clean(standard.get("track_condition")) or condition_for(matches)
         resolved = resolve_length_conversion(surface, condition)
-        if not matches:
+        if not matches and not (surface and condition):
             rejected.append({
                 "race_time_delta_id": clean(delta.get("race_time_delta_id")),
                 "race_key": clean(delta.get("race_key")),
