@@ -180,6 +180,16 @@ def fetch_races_browser(meetings):
                 try:
                     page.goto(meeting["form_url"],wait_until="domcontentloaded",timeout=45000); page.wait_for_timeout(8000)
                     meeting.update(_extract_page_meeting_metadata(page))
+                    # The public form page can lazy-render race-day metadata after
+                    # initial load. Search the complete rendered text and HTML as a
+                    # second pass and accept the exact official displayed strings.
+                    blob=(page.locator("body").inner_text(timeout=10000)+"\\n"+page.content())
+                    if not meeting.get("track_rating"):
+                        m=re.search(r"(?i)\\b((?:Firm|Good|Soft|Heavy)\\s*[1-10]|Synthetic)\\b",blob)
+                        if m: meeting["track_rating"]=clean(m.group(1))
+                    if not meeting.get("rail_position"):
+                        m=re.search(r"(?is)(?:Track\\s*Rail|Rail(?:\\s*Position)?)\\s*(?:</?[^>]+>|[:\\-\\s])*([^<\\n|]{2,100})",blob)
+                        if m: meeting["rail_position"]=clean(re.sub(r"\\s+"," ",m.group(1)))
                 except Exception:pass
                 page.close()
             races=race_list_payloads[-1] if race_list_payloads else []
