@@ -1277,6 +1277,23 @@ for meeting in meeting_rows:
         key=lambda race: race["raceNumber"]
     )
 
+    # Promote the richest official race-day metadata to meeting level.
+    # Racing.com commonly supplies rail/rating on race nodes rather than the
+    # calendar meeting object, so leaving the meeting value untouched loses it.
+    race_ratings = [
+        clean_text(first((race.get("source") or {}), ("trackRating","track_rating")))
+        for race in meeting["races"]
+    ]
+    race_conditions = [
+        clean_text(race.get("trackCondition"))
+        for race in meeting["races"]
+    ]
+    race_rails = [
+        clean_text(race.get("rail")) or clean_text(first((race.get("source") or {}), ("railPosition","rail_position","rail")))
+        for race in meeting["races"]
+    ]
+    meeting["trackCondition"] = next((x for x in race_ratings if x), None) or next((x for x in race_conditions if x), None) or meeting.get("trackCondition")
+    meeting["rail"] = next((x for x in race_rails if x), None) or meeting.get("rail")
     meeting["raceCount"] = len(meeting["races"])
 
 meeting_rows = [
