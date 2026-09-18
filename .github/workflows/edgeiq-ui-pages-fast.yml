@@ -84,7 +84,7 @@ jobs:
       - name: Rebuild governed historical performance chain
         run: |
           python scripts/build_edgeiq_race_time_delta_versus_standard_v1.py
-          python scripts/build_edgeiq_lengths_versus_standard_v1.py
+          python scripts/build_edgeiq_lengths_versus_standard_fact_from_results_v2.py
           python scripts/build_edgeiq_performance_intelligence_base_fact_v1.py
           python scripts/build_edgeiq_performance_normalisation_parameter_fact_v1.py
           python scripts/build_edgeiq_performance_normalisation_fact_v1.py
