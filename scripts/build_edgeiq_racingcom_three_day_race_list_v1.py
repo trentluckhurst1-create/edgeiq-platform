@@ -115,7 +115,7 @@ def extract_calendar_meetings():
     return list(wanted.values())
 
 def gql_url_for_race_list(meet_code):
-    query="""query getRaceNumberList_CD($meetCode: ID!) { getNoCacheRacesForMeet(meetCode: $meetCode) { id raceNumber raceStatus distance time name nameForm trackCondition trackRating rdcClass isTrial isJumpOut trackCode formRaceEntries { horseName } meet { venue meetUrl meetUrlSegment } } }"""
+    query="""query getRaceNumberList_CD($meetCode: ID!) { getNoCacheRacesForMeet(meetCode: $meetCode) { id raceNumber raceStatus distance time name nameForm trackCondition trackRating railPosition rdcClass isTrial isJumpOut trackCode formRaceEntries { horseName } meet { venue meetUrl meetUrlSegment } } }"""
     import urllib.parse
     return "https://graphql.rmdprod.racing.com/?"+urllib.parse.urlencode({"query":query,"variables":json.dumps({"meetCode":str(meet_code)})})
 
@@ -177,7 +177,7 @@ def fetch_races_browser(meetings):
                 race_no_value=clean(race.get("raceNumber"))
                 if not race_no_value:continue
                 detailed=race_form_payloads.get(clean(race.get("id"))) or race_form_payloads.get(race_no_value); merged=merge_race(race,detailed); entries=merged.get("formRaceEntries") or []
-                rows.append({**meeting,"race_id":clean(merged.get("id")),"race_no":race_no_value,"race_name":clean(merged.get("name")),"race_class":clean(merged.get("rdcClass") or merged.get("class") or merged.get("nameForm")),"distance":clean(merged.get("distance")),"race_time_utc":clean(merged.get("time")),"race_status":clean(merged.get("raceStatus") or merged.get("status")),"track_condition":clean(merged.get("trackCondition") or merged.get("condition")),"track_rating":clean(merged.get("trackRating")),"rail_position":"","weather":"","weather_wind_direction":"","weather_wind_speed":"","weather_rain":"","weather_min":"","weather_max":"","rainfall":"","form_entries_json":json.dumps(entries,ensure_ascii=False),"source":"RACING_COM_GETMEETSBYMONTH_PLUS_GETRACEFORM_COMPLETE","built_at":built_at})
+                rows.append({**meeting,"race_id":clean(merged.get("id")),"race_no":race_no_value,"race_name":clean(merged.get("name")),"race_class":clean(merged.get("rdcClass") or merged.get("class") or merged.get("nameForm")),"distance":clean(merged.get("distance")),"race_time_utc":clean(merged.get("time")),"race_status":clean(merged.get("raceStatus") or merged.get("status")),"track_condition":clean(merged.get("trackCondition") or merged.get("condition")),"track_rating":clean(merged.get("trackRating")),"rail_position":clean(merged.get("railPosition") or merged.get("rail") or merged.get("rail_position")),"weather":"","weather_wind_direction":"","weather_wind_speed":"","weather_rain":"","weather_min":"","weather_max":"","rainfall":"","form_entries_json":json.dumps(entries,ensure_ascii=False),"source":"RACING_COM_GETMEETSBYMONTH_PLUS_GETRACEFORM_COMPLETE","built_at":built_at})
         context.close(); browser.close()
     return rows
 
