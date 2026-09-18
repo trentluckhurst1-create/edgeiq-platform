@@ -17,6 +17,7 @@ on:
       - 'scripts/build_edgeiq_current_race_entry_fact_v1.py'
       - 'scripts/build_edgeiq_lazy_meeting_feeds_v1.py'
       - 'scripts/build_edgeiq_racecourse_weather_feed_v1.py'
+      - 'scripts/build_edgeiq_racing_australia_track_conditions_v1.py'
       - '.github/workflows/edgeiq-ui-pages-fast.yml'
 
 permissions:
@@ -60,6 +61,8 @@ jobs:
       - name: Refresh current Racing.com race and runner data
         timeout-minutes: 12
         run: python scripts/build_edgeiq_racingcom_three_day_race_list_v1.py
+      - name: Build official Racing Australia meeting metadata
+        run: python scripts/build_edgeiq_racing_australia_track_conditions_v1.py
       - name: Build current three-day catalogue
         run: python scripts/build_edgeiq_three_day_product_catalog_v1.py
       - name: Populate current last-five form
@@ -86,6 +89,7 @@ jobs:
       - name: Gate dashboard feeds
         run: |
           test -s public/data/edgeiq_meetings_summary_feed_v1.json
+          test -s public/data/edgeiq_racing_australia_track_conditions_v1.json
           test -d public/data/meetings
           test -s public/data/edgeiq_racecourse_weather_feed_v1.json
           test "$(find public/data/meetings -name '*.json' -type f | wc -l)" -gt 0
@@ -126,6 +130,7 @@ jobs:
         run: |
           test -s dist/index.html
           test -s dist/data/edgeiq_meetings_summary_feed_v1.json
+          test -s dist/data/edgeiq_racing_australia_track_conditions_v1.json
           test -d dist/data/meetings
           test -s dist/data/edgeiq_racecourse_weather_feed_v1.json
           test "$(find dist/data/meetings -name '*.json' -type f | wc -l)" -gt 0
