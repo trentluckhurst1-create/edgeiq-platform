@@ -157,7 +157,10 @@ def param_lookup(rows: list[dict[str, str]]) -> dict[tuple[str, str], dict[str, 
 
 def main() -> int:
     delta_rows = read_csv(DELTA)
-    warehouse_rows = read_csv(WAREHOUSE)\n    if not warehouse_rows:\n        warehouse_rows = read_csv(RACE_SPEED)\n    wh = warehouse_index(warehouse_rows)
+    warehouse_rows = read_csv(WAREHOUSE)
+    if not warehouse_rows:
+        warehouse_rows = read_csv(RACE_SPEED)
+    wh = warehouse_index(warehouse_rows)
     params = param_lookup(read_csv(PARAMETER))
     built_at = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
     output: list[dict[str, object]] = []
