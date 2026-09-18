@@ -8,6 +8,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "public" / "data"
 CATALOG = DATA / "edgeiq_three_day_product_catalog_v1.json"
+RA_TRACK = DATA / "edgeiq_racing_australia_track_conditions_v1.json"
 SUMMARY = DATA / "edgeiq_meetings_summary_feed_v1.json"
 MEETINGS_DIR = DATA / "meetings"
 
@@ -34,10 +35,21 @@ def source_value(source, *keys):
     return None
 
 
+def canonical_track(value) -> str:
+    raw = text(value, "").upper()
+    for prefix in ("LADBROKES ","SPORTSBET-","SPORTSBET ","BET365 ","BETDELUXE ","PICKLEBET PARK "):
+        if raw.startswith(prefix):
+            raw = raw[len(prefix):]
+            break
+    aliases = {"CAULFIELD HEATH":"CAULFIELD","SANDOWN HILLSIDE":"SANDOWN","SANDOWN LAKESIDE":"SANDOWN","LADBROKES PARK":"SANDOWN","BALLARAT SYNTHETIC":"BALLARAT","SPORTSBET-BALLARAT SYNTHETIC":"BALLARAT","BELMONT PARK":"BELMONT"}
+    return aliases.get(raw, raw).replace(" ", "_")
+
 def main() -> None:
     if not CATALOG.exists(): raise SystemExit(f"Missing catalogue: {CATALOG}")
     catalog = json.loads(CATALOG.read_text(encoding="utf-8-sig"))
     meetings = catalog.get("meetings") or []
+    ra_payload = json.loads(RA_TRACK.read_text(encoding="utf-8-sig")) if RA_TRACK.exists() else {"records":[]}
+    ra_index = {(text(r.get("race_date"),""), canonical_track(r.get("meeting_display"))): r for r in ra_payload.get("records",[])}
     generated_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
     day_labels = catalog.get("dayLabels") or {}
     dates = catalog.get("dates") or []
@@ -50,6 +62,7 @@ def main() -> None:
             meeting_key = text(meeting.get("meetingKey"), "")
             meeting_name = text(meeting.get("meeting"), "")
             meeting_source = meeting.get("source") or {}
+            official = ra_index.get((date_value, canonical_track(meeting_name)), {})
             race_summaries = []
             declared = 0
             for race in meeting.get("races") or []:
@@ -59,7 +72,7 @@ def main() -> None:
                 race_summaries.append({"raceKey":text(race.get("raceKey"),""),"raceNumber":int(race.get("raceNumber") or 0),"time":text(race.get("raceTime")),"distance":text(race.get("distance")),"name":text(race.get("raceName")),"raceClass":text(race.get("raceClass")),"restriction":text(source_value(race_source,"restriction")),"fieldSize":len(runners),"status":text(source_value(race_source,"raceStatus","race_status","status"))})
             state = text(source_value(meeting_source,"State","state"),"VIC")
             scratches = int(source_value(meeting_source,"scratchings","scratchingCount") or 0)
-            row={"meetingKey":meeting_key,"meeting":meeting_name,"venue":meeting_name,"providerMeetingKey":text(meeting.get("providerMeetingKey"),""),"date":date_value,"state":state,"track":text(meeting.get("trackCondition")),"rail":text(meeting.get("rail")),"weather":text(source_value(meeting_source,"weather"),"Awaiting Weather Feed"),"wind":text(source_value(meeting_source,"wind")),"temp":text(source_value(meeting_source,"temp","temperature")),"rain24h":text(source_value(meeting_source,"rain24h")),"irrigation24h":text(source_value(meeting_source,"irrigation24h")),"officialUpdate":text(source_value(meeting_source,"officialUpdate")),"races":len(race_summaries),"declared":declared,"scratchings":scratches,"first":race_summaries[0]["time"] if race_summaries else "Not supplied","last":race_summaries[-1]["time"] if race_summaries else "Not supplied","status":"READY","raceSummaries":race_summaries}
+            row={"meetingKey":meeting_key,"meeting":meeting_name,"venue":meeting_name,"providerMeetingKey":text(meeting.get("providerMeetingKey"),""),"date":date_value,"state":state,"track":text(official.get("track_condition")) if official else text(meeting.get("trackCondition")),"rail":text(official.get("rail")) if official else text(meeting.get("rail")),"weather":text(source_value(meeting_source,"weather"),"Awaiting Weather Feed"),"wind":text(source_value(meeting_source,"wind")),"temp":text(source_value(meeting_source,"temp","temperature")),"rain24h":text(source_value(meeting_source,"rain24h")),"irrigation24h":text(source_value(meeting_source,"irrigation24h")),"officialUpdate":text(source_value(meeting_source,"officialUpdate")),"races":len(race_summaries),"declared":declared,"scratchings":scratches,"first":race_summaries[0]["time"] if race_summaries else "Not supplied","last":race_summaries[-1]["time"] if race_summaries else "Not supplied","status":"READY","raceSummaries":race_summaries}
             day_meetings.append(row)
             detail={"schemaVersion":"edgeiq_meeting_detail_feed_v1","generatedAt":generated_at,"date":date_value,"meetingKey":meeting_key,"meeting":meeting}
             (MEETINGS_DIR/f"{date_value}_{slug(meeting_key)}.json").write_text(json.dumps(detail,ensure_ascii=False,separators=(",",":")),encoding="utf-8")
