@@ -979,14 +979,9 @@ def ensure_meeting(
             "providerMeetingKey": key,
             "date": meeting_date,
             "trackCondition": clean_text(
-                first(
-                    source,
-                    (
-                        "trackCondition",
-                        "track_condition",
-                        "condition",
-                    ),
-                )
+                first(source, ("trackRating","track_rating"))
+            ) or clean_text(
+                first(source, ("trackCondition","track_condition","condition"))
             ),
             "rail": clean_text(
                 first(
