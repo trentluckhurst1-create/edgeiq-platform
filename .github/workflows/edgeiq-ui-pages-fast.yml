@@ -16,6 +16,7 @@ on:
       - 'scripts/enrich_edgeiq_catalogue_last5_v1.py'
       - 'scripts/build_edgeiq_current_race_entry_fact_v1.py'
       - 'scripts/build_edgeiq_lazy_meeting_feeds_v1.py'
+      - 'scripts/build_edgeiq_racecourse_weather_feed_v1.py'
       - '.github/workflows/edgeiq-ui-pages-fast.yml'
 
 permissions:
