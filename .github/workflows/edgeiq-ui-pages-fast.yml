@@ -68,6 +68,19 @@ jobs:
         run: python scripts/build_edgeiq_current_race_entry_fact_v1.py
       - name: Build dashboard meeting feeds
         run: python scripts/build_edgeiq_lazy_meeting_feeds_v1.py
+      - name: Verify populated meeting metadata
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("public/data/edgeiq_meetings_summary_feed_v1.json")
+          d=json.loads(p.read_text(encoding="utf-8"))
+          today=next(x for x in d["days"] if x["key"]=="TODAY")
+          for m in today["meetings"]:
+              print("MEETING_METADATA",m["meeting"],"RAIL=",m["rail"],"TRACK=",m["track"])
+              assert m["rail"] not in ("","—","Not supplied"), m
+              assert m["track"] not in ("","—","Not supplied"), m
+          PY
       - name: Build racecourse weather feed
         run: python scripts/build_edgeiq_racecourse_weather_feed_v1.py
       - name: Gate dashboard feeds
