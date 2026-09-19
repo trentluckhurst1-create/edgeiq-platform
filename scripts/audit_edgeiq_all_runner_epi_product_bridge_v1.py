@@ -7,8 +7,16 @@ DATA=ROOT/"public"/"data"; WORK=ROOT/"work"/"all-runner-epi-restore-v1"
 EPI=WORK/"edgeiq_epi_performance_fact_v1.csv"
 WH=ROOT/"docs"/"performance-intelligence"/"warehouse"/"edgeiq_performance_fact_warehouse_v1.csv"
 FORM_CANDIDATES=[
+    # Runtime authority is /data/edgeiq_form_guide_enriched_v2.json.
+    # In source builds that normally means public/data; the repository's
+    # production-source publication intentionally excludes large generated
+    # assets, while a locally built/deployed tree can retain the same runtime
+    # artifact under dist/data.  Audit either location read-only; never rebuild
+    # an old feed merely to satisfy this bridge audit.
     DATA/"edgeiq_form_guide_enriched_v2.json",
+    ROOT/"dist"/"data"/"edgeiq_form_guide_enriched_v2.json",
     DATA/"edgeiq_form_guide_enriched_v1.json",
+    ROOT/"dist"/"data"/"edgeiq_form_guide_enriched_v1.json",
 ]
 FORM=next((p for p in FORM_CANDIDATES if p.exists()),FORM_CANDIDATES[0])
 OUT=WORK/"edgeiq_all_runner_epi_product_bridge_v1_audit.json"
@@ -55,7 +63,9 @@ def main():
                     if len(vals)==1:c["same_epi_duplicates"]+=1
                     else:c["conflicting_epi"]+=1
                     if len(examples)<50:examples.append({"key":k,"hits":hits[:10]})
-    result={"status":"PASS_READ_ONLY","warehouse_rows":wh,"certified_epi_rows":len(epi),"warehouse_epi_rows_indexed":eligible,"form_source":str(FORM.relative_to(ROOT)),"form_runs":c["form_runs"],"unique_match":c["unique_match"],"same_epi_duplicates":c["same_epi_duplicates"],"conflicting_epi":c["conflicting_epi"],"no_match":c["no_match"],"examples":examples,"production_changed":False}
+    result={"status":"PASS_READ_ONLY","warehouse_rows":wh,"certified_epi_rows":len(epi),"warehouse_epi_rows_indexed":eligible,"form_source":str(FORM.relative_to(ROOT)),
+        "form_source_runtime_contract":"/data/edgeiq_form_guide_enriched_v2.json" if FORM.name=="edgeiq_form_guide_enriched_v2.json" else "/data/edgeiq_form_guide_enriched_v1.json",
+        "form_source_location":"PUBLIC_DATA" if DATA in FORM.parents else "DIST_DATA","form_runs":c["form_runs"],"unique_match":c["unique_match"],"same_epi_duplicates":c["same_epi_duplicates"],"conflicting_epi":c["conflicting_epi"],"no_match":c["no_match"],"examples":examples,"production_changed":False}
     OUT.write_text(json.dumps(result,indent=2)+"\n",encoding="utf-8")
     print(json.dumps(result,indent=2))
     print("EDGEIQ_ALL_RUNNER_EPI_PRODUCT_BRIDGE_AUDIT_V1_PASS")
