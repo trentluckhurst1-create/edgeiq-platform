@@ -101,7 +101,11 @@ def main():
     if len(sr)!=EXPECTED["standard_rows"]:raise SystemExit(f"FAIL_CLOSED_REBUILT_STANDARD_ROWS={len(sr)}")
     for r in sr:
         k=(t(r.get("canonical_track_id")),it(r.get("distance_metres")),cond(r.get("track_condition_group")),t(r.get("jurisdiction")) or "VIC",t(r.get("surface")) or "TURF_OR_UNKNOWN")
-        if k in standards:raise SystemExit("FAIL_CLOSED_DUPLICATE_STANDARD_KEY")
+        prev=standards.get(k)
+        if prev is not None:
+            same=(t(prev.get("standard_time_id"))==t(r.get("standard_time_id")) and t(prev.get("standard_time_seconds"))==t(r.get("standard_time_seconds")) and t(prev.get("observation_count"))==t(r.get("observation_count")))
+            if not same:raise SystemExit(f"FAIL_CLOSED_CONFLICTING_STANDARD_KEY={k}")
+            continue
         standards[k]=r
 
     rf="canonical_race_id standard_time_id official_race_time_seconds standard_time_seconds time_difference_seconds race_lengths_v_standard benchmark_observation_count calculation_status".split()
