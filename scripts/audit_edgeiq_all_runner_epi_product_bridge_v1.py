@@ -179,7 +179,7 @@ def main():
     # Enrich exact-run exclusions with the original certified rejection reason.
     # Re-read only the small set of exact excluded PIDs so the classification uses the
     # original benchmark/calculation gates rather than heuristics.
-    reject_pids={x["canonical_performance_id"] for x in exact_rejections}
+    reject_pids={x["canonical_performance_id"] for x in exact_rejections if x["canonical_performance_id"]}
     if reject_pids:
         with WH.open(encoding="utf-8-sig",errors="replace",newline="") as f:
             for r in csv.DictReader(f):
@@ -208,6 +208,11 @@ def main():
                         x["benchmark_key"]="|".join(key)
                         x["finish_margin"]=margin
                         break
+
+    # Reconcile every exact-run miss at the Form Guide run level.
+    classified_exact=sum(1 for x in exact_rejections if x.get("rejection_reason"))
+    unclassified_exact=[x for x in exact_rejections if not x.get("rejection_reason")]
+    c["EXACT_RUN_UNCLASSIFIED_ROW"]=len(unclassified_exact)
 
     DETAIL.parent.mkdir(parents=True,exist_ok=True)
     fields=["reason","runner","run_index","form_date","form_track","form_track_key","form_distance","candidate_count","candidate_sample"]
@@ -244,6 +249,11 @@ def main():
             "UNMATCHED_BENCHMARK":c["EXACT_RUN_UNMATCHED_BENCHMARK"],
             "INVALID_CALCULATION":c["EXACT_RUN_INVALID_CALCULATION"],
             "UNEXPLAINED_CHECK_REQUIRED":c["EXACT_RUN_UNEXPLAINED_CHECK_REQUIRED"],
+            "UNCLASSIFIED_EXACT_ROWS":c["EXACT_RUN_UNCLASSIFIED_ROW"],
+            "CLASSIFIED_EXACT_ROWS":classified_exact,
+            "EXACT_REJECTION_DETAIL_ROWS":len(exact_rejections),
+            "RUN_PRESENT_WAREHOUSE_NOT_CERTIFIED_EPI":c["RUN_PRESENT_WAREHOUSE_NOT_CERTIFIED_EPI"],
+            "RECONCILES": classified_exact + c["EXACT_RUN_UNCLASSIFIED_ROW"] == len(exact_rejections),
         },
         "unmatched_detail":str(DETAIL.relative_to(ROOT)),
         "exact_run_rejection_detail":str(REJECT_DETAIL.relative_to(ROOT)),
