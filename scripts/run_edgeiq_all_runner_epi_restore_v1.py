@@ -142,8 +142,14 @@ def main():
             ev=max(0,min(100,50+runner_lvs*2.5)); ep=dict(base); ep.update({"epi_value":fmt(ev),"epi_band":band(ev),"epi_methodology":"LENGTHS_V_STANDARD_SCALED_V1_CENTISECONDS_REPAIRED","raw_lengths_v_standard":fmt(runner_lvs),"weight_carried_kg":fmt(num(row.get("weight_carried")),3),"reference_weight_kg":"","weight_delta_kg":"","weight_adjustment_lengths":"","weight_adjusted_lengths_v_standard":"","race_strength_adjustment":"","circumstance_adjustment":"","epi_performance_rating":fmt(ev),"weight_adjustment_status":"INSUFFICIENT_EMPIRICAL_EVIDENCE","weight_adjustment_methodology":"FAIL_CLOSED_NO_EMPIRICALLY_DERIVED_COEFFICIENT","weight_adjustment_coefficient_provenance":"NONE"})
             ew.writerow(ep); counts["runner_rows"]+=1; counts["epi_rows"]+=1
 
+    counts["standard_rows"]=len(sr)
     got={k:counts[k] for k in EXPECTED}
     failures={k:{"expected":v,"actual":got[k]} for k,v in EXPECTED.items() if got[k]!=v}
+    if failures:
+        print("CARDINALITY_DIFFERENCES")
+        for k in EXPECTED:
+            if got[k]!=EXPECTED[k]:
+                print(f"{k}: expected={EXPECTED[k]} actual={got[k]} delta={got[k]-EXPECTED[k]}")
     audit={"generated_at":datetime.now(timezone.utc).isoformat(),"status":"PASS" if not failures else "FAIL","mode":"SIDE_BY_SIDE_READ_SOURCE_ONLY_NO_PRODUCTION_PROMOTION","source":str(WH.relative_to(ROOT)),"standard_source":str(standard_source.relative_to(ROOT)),"expected":EXPECTED,"actual":got,"failures":failures,"outputs":{"runner_lvs":{"path":str(RUNNER.relative_to(ROOT)),"sha256":sha(RUNNER)},"epi":{"path":str(EPI.relative_to(ROOT)),"sha256":sha(EPI)},"race_lvs":{"path":str(RACE.relative_to(ROOT)),"sha256":sha(RACE)},"eri":{"path":str(ERI.relative_to(ROOT)),"sha256":sha(ERI)}},"production_changed":False,"hpr_chain_changed":False}
     AUDIT.write_text(json.dumps(audit,indent=2)+"\n",encoding="utf-8")
     print(json.dumps(audit,indent=2))
