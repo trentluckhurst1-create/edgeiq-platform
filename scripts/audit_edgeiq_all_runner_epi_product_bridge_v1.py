@@ -16,6 +16,7 @@ FORM_CANDIDATES=[
 FORM=next((p for p in FORM_CANDIDATES if p.exists()),FORM_CANDIDATES[0])
 OUT=WORK/"edgeiq_all_runner_epi_product_bridge_v1_audit.json"
 DETAIL=WORK/"edgeiq_all_runner_epi_product_bridge_v1_unmatched_detail.csv"
+REJECT_DETAIL=WORK/"edgeiq_all_runner_epi_product_bridge_v1_exact_run_rejection_detail.csv"
 
 ALIASES={"FLEMINGTON":"FLEM","CAULFIELD":"CAUL","CAULFIELDHEATH":"CAUH","SANDOWN":"SANL","SPORTSBETSANDOWNLAKESIDE":"SANL","SANDOWNLAKESIDE":"SANL","SPORTSBETSANDOWNHILLSIDE":"SANH","SANDOWNHILLSIDE":"SANH","PAKENHAM":"PAKM","SOUTHSIDEPAKENHAM":"PAKM","PAKENHAMSYNTHETIC":"PAKS","SPORTSBETPAKENHAMSYNTHETIC":"PAKS","CRANBOURNE":"CRAN","SOUTHSIDECRANBOURNE":"CRAN","GEELONG":"GEEL","LADBROKESGEELONG":"GEEL","BALLARAT":"BRAT","SPORTSBETBALLARAT":"BRAT","BALLARATSYNTHETIC":"BALS","SPORTSBETBALLARATSYNTHETIC":"BALS","WARRNAMBOOL":"WNBL","WERRIBEE":"WERR","PICKLEBETPARKWERRIBEE":"WERR","MORNINGTON":"MORN","WANGARATTA":"WANG","SPORTSBETWANGARATTA":"WANG","KYNETON":"KYNE","BET365PARKKYNETON":"KYNE","ECHUCA":"ECHA","BET365ECHUCA":"ECHA","SEYMOUR":"SEYM","BET365SEYMOUR":"SEYM","HORSHAM":"HSHM","TERANG":"TER","BET365TERANG":"TER","COLAC":"CLAC","BET365COLAC":"CLAC","DONALD":"DON","TATURA":"TAT","ARARAT":"ARAT","BENDIGO":"BDGO","SALE":"SALE","MOE":"MOE","BENALLA":"BEN","HAMILTON":"HAM","SWANHILL":"SWAN","MILDURA":"MILD","STAWELL":"STAW","CASTERTON":"CAST"}
 
@@ -80,8 +81,29 @@ def main():
             if dt: by_hd[(h,dt)].append(rec)
             by_h[h].append(rec)
 
+    # Reconstruct the exact historical EPI eligibility decision for warehouse rows
+    # without writing any production artifacts. This mirrors the certified July logic:
+    # first require a governed benchmark key, then require time/margin/race/performance IDs.
+    std_rows=[]
+    std_candidates=[
+        ROOT/"docs"/"performance-intelligence"/"standard-times"/"edgeiq_standard_time_fact_v1.csv",
+        WORK/"edgeiq_standard_time_fact_v1.csv",
+    ]
+    std_path=next((p for p in std_candidates if p.exists()),None)
+    std_keys=set()
+    if std_path:
+        with std_path.open(encoding="utf-8-sig",errors="replace",newline="") as f:
+            for r in csv.DictReader(f):
+                std_keys.add((
+                    clean(r.get("canonical_track_id")),
+                    dist(r.get("distance_metres")),
+                    norm(r.get("track_condition_group")),
+                    clean(r.get("jurisdiction")) or "VIC",
+                    clean(r.get("surface")) or "TURF_OR_UNKNOWN",
+                ))
+
     payload=json.loads(FORM.read_text(encoding="utf-8",errors="replace"))
-    c=Counter(); unmatched=[]; conflicts=[]
+    c=Counter(); unmatched=[]; conflicts=[]; exact_rejections=[]
     for race in payload.get("races",[]) or []:
         for runner in race.get("runners",[]) or []:
             h=horse(runner.get("runnerName"))
@@ -112,6 +134,20 @@ def main():
                         if same_run:
                             reason="RUN_PRESENT_WAREHOUSE_NOT_CERTIFIED_EPI"
                             cand=[]
+                            for x in same_run:
+                                # x tuple currently carries governance/time metadata only.
+                                exact_rejections.append({
+                                    "runner":clean(runner.get("runnerName")),
+                                    "form_date":dt,
+                                    "form_track":clean(run.get("track")),
+                                    "form_distance":d,
+                                    "canonical_performance_id":x[0],
+                                    "warehouse_track":x[4],
+                                    "warehouse_distance":x[5],
+                                    "time_status":x[6],
+                                    "official_race_time_seconds":x[7],
+                                    "canonical_race_id":x[8],
+                                })
                         elif whcand:
                             reason="HORSE_PRESENT_WAREHOUSE_OTHER_RUNS_ONLY"
                             cand=[]
@@ -140,10 +176,46 @@ def main():
                         c["conflicting_epi"]+=1
                         conflicts.append({"key":k,"hits":hits[:10]})
 
+    # Enrich exact-run exclusions with the original certified rejection reason.
+    # Re-read only the small set of exact excluded PIDs so the classification uses the
+    # original benchmark/calculation gates rather than heuristics.
+    reject_pids={x["canonical_performance_id"] for x in exact_rejections}
+    if reject_pids:
+        with WH.open(encoding="utf-8-sig",errors="replace",newline="") as f:
+            for r in csv.DictReader(f):
+                pid=clean(r.get("canonical_performance_id"))
+                if pid not in reject_pids: continue
+                tr_id=clean(r.get("canonical_track_id"))
+                d=dist(r.get("distance_metres"))
+                cond=norm(r.get("track_condition_group") or r.get("track_condition"))
+                # Match the historical cond/surface semantics used by the producer.
+                cond_group="HEAVY" if "HEAVY" in cond else ("SOFT" if ("SOFT" in cond or "SLOW" in cond) else ("GOOD" if ("GOOD" in cond or "FIRM" in cond or "FAST" in cond) else ("SYNTHETIC" if ("SYN" in cond or "POLY" in cond or "TAPETA" in cond) else "UNKNOWN")))
+                sf="SYNTHETIC" if re.search("SYNTH|POLY|TAPETA",(clean(r.get("track"))+" "+clean(r.get("track_condition"))).upper()) else "TURF_OR_UNKNOWN"
+                key=(tr_id,d,cond_group,clean(r.get("jurisdiction")) or "VIC",sf)
+                sec=clean(r.get("official_race_time_seconds"))
+                margin=clean(r.get("finish_margin"))
+                rid=clean(r.get("canonical_race_id"))
+                if key not in std_keys:
+                    rejection="UNMATCHED_BENCHMARK"
+                elif not sec or not margin or not rid or not pid:
+                    rejection="INVALID_CALCULATION"
+                else:
+                    rejection="UNEXPLAINED_CHECK_REQUIRED"
+                c["EXACT_RUN_"+rejection]+=1
+                for x in exact_rejections:
+                    if x["canonical_performance_id"]==pid:
+                        x["rejection_reason"]=rejection
+                        x["benchmark_key"]="|".join(key)
+                        x["finish_margin"]=margin
+                        break
+
     DETAIL.parent.mkdir(parents=True,exist_ok=True)
     fields=["reason","runner","run_index","form_date","form_track","form_track_key","form_distance","candidate_count","candidate_sample"]
     with DETAIL.open("w",encoding="utf-8-sig",newline="") as f:
         w=csv.DictWriter(f,fieldnames=fields); w.writeheader(); w.writerows(unmatched)
+    reject_fields=["runner","form_date","form_track","form_distance","canonical_performance_id","canonical_race_id","warehouse_track","warehouse_distance","time_status","official_race_time_seconds","finish_margin","benchmark_key","rejection_reason"]
+    with REJECT_DETAIL.open("w",encoding="utf-8-sig",newline="") as f:
+        w=csv.DictWriter(f,fieldnames=reject_fields,extrasaction="ignore"); w.writeheader(); w.writerows(exact_rejections)
 
     result={
         "status":"PASS_READ_ONLY",
@@ -168,7 +240,13 @@ def main():
             "HORSE_PRESENT_WAREHOUSE_OTHER_RUNS_ONLY":c["HORSE_PRESENT_WAREHOUSE_OTHER_RUNS_ONLY"],
             "HORSE_NOT_PRESENT_WAREHOUSE":c["HORSE_NOT_PRESENT_WAREHOUSE"],
         },
+        "exact_run_rejection_classification":{
+            "UNMATCHED_BENCHMARK":c["EXACT_RUN_UNMATCHED_BENCHMARK"],
+            "INVALID_CALCULATION":c["EXACT_RUN_INVALID_CALCULATION"],
+            "UNEXPLAINED_CHECK_REQUIRED":c["EXACT_RUN_UNEXPLAINED_CHECK_REQUIRED"],
+        },
         "unmatched_detail":str(DETAIL.relative_to(ROOT)),
+        "exact_run_rejection_detail":str(REJECT_DETAIL.relative_to(ROOT)),
         "conflict_examples":conflicts[:25],
         "production_changed":False,
     }
