@@ -100,7 +100,7 @@ def main():
         standard_source=REBUILT_STD
     if len(sr)!=EXPECTED["standard_rows"]:raise SystemExit(f"FAIL_CLOSED_REBUILT_STANDARD_ROWS={len(sr)}")
     for r in sr:
-        k=(t(r.get("canonical_track_id")),it(r.get("distance_metres")),cond(r.get("track_condition_group")),t(r.get("jurisdiction")) or "VIC",t(r.get("surface")) or "TURF_OR_UNKNOWN")
+        k=(t(r.get("canonical_track_id")),t(r.get("track_display_name")),it(r.get("distance_metres")),cond(r.get("track_condition_group")),t(r.get("jurisdiction")) or "VIC",t(r.get("surface")) or "TURF_OR_UNKNOWN")
         prev=standards.get(k)
         if prev is not None:
             same=(t(prev.get("standard_time_seconds"))==t(r.get("standard_time_seconds")) and t(prev.get("observation_count"))==t(r.get("observation_count")))
@@ -124,7 +124,7 @@ def main():
             counts["warehouse_rows"]+=1
             pid=t(row.get("canonical_performance_id")); rid=t(row.get("canonical_race_id"))
             sf=surf(row.get("track"),row.get("track_condition"))
-            key=(t(row.get("canonical_track_id")),it(row.get("distance_metres")),cond(row.get("track_condition_group") or row.get("track_condition")),t(row.get("jurisdiction")) or "VIC",sf)
+            key=(t(row.get("canonical_track_id")),t(row.get("track")),it(row.get("distance_metres")),cond(row.get("track_condition_group") or row.get("track_condition")),t(row.get("jurisdiction")) or "VIC",sf)
             st=standards.get(key)
             if not st:counts["unmatched_benchmark"]+=1;continue
             sec=num(row.get("official_race_time_seconds")); margin=num(row.get("finish_margin")); std=num(st.get("standard_time_seconds"))
