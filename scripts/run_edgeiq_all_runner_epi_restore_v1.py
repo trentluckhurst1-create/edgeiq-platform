@@ -103,8 +103,12 @@ def main():
         k=(t(r.get("canonical_track_id")),it(r.get("distance_metres")),cond(r.get("track_condition_group")),t(r.get("jurisdiction")) or "VIC",t(r.get("surface")) or "TURF_OR_UNKNOWN")
         prev=standards.get(k)
         if prev is not None:
-            same=(t(prev.get("standard_time_id"))==t(r.get("standard_time_id")) and t(prev.get("standard_time_seconds"))==t(r.get("standard_time_seconds")) and t(prev.get("observation_count"))==t(r.get("observation_count")))
-            if not same:raise SystemExit(f"FAIL_CLOSED_CONFLICTING_STANDARD_KEY={k}")
+            same=(t(prev.get("standard_time_seconds"))==t(r.get("standard_time_seconds")) and t(prev.get("observation_count"))==t(r.get("observation_count")))
+            if not same:
+                print("CONFLICTING_STANDARD_KEY",k)
+                print("PREV",json.dumps(prev,sort_keys=True))
+                print("NEW",json.dumps(r,sort_keys=True))
+                raise SystemExit(f"FAIL_CLOSED_CONFLICTING_STANDARD_KEY={k}")
             continue
         standards[k]=r
 
