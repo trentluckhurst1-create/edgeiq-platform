@@ -58,16 +58,19 @@ def main():
     by_htd=defaultdict(list)
     by_hd=defaultdict(list)
     by_h=defaultdict(list)
+    wh_all_h=defaultdict(list)
     wh=eligible=0
     with WH.open(encoding="utf-8-sig",errors="replace",newline="") as f:
         for r in csv.DictReader(f):
             wh+=1
             pid=clean(r.get("canonical_performance_id"))
-            if pid not in epi: continue
-            eligible+=1
             sk=clean(r.get("source_record_key")).split("|")
             h=horse(sk[-1] if sk else "")
             dt=date(r.get("race_date")); tr=track(r.get("track")); d=dist(r.get("distance_metres"))
+            if h:
+                wh_all_h[h].append((pid,dt,tr,d,clean(r.get("track")),clean(r.get("distance_metres")),clean(r.get("time_governance_status") or r.get("time_status") or r.get("time_unit")),clean(r.get("official_race_time_seconds")),clean(r.get("race_id") or r.get("canonical_race_id"))))
+            if pid not in epi: continue
+            eligible+=1
             if not h: continue
             rec=(pid,epi[pid],dt,tr,d,clean(r.get("track")),clean(r.get("distance_metres")))
             if dt and tr and d: idx[(h,dt,tr,d)].append(rec)
@@ -104,8 +107,17 @@ def main():
                         reason="HORSE_PRESENT_OTHER_RUNS"
                         cand=by_h[h]
                     else:
-                        reason="HORSE_NOT_PRESENT_CERTIFIED_EPI"
-                        cand=[]
+                        whcand=wh_all_h.get(h,[])
+                        same_run=[x for x in whcand if x[1]==dt and x[2]==tr and x[3]==d]
+                        if same_run:
+                            reason="RUN_PRESENT_WAREHOUSE_NOT_CERTIFIED_EPI"
+                            cand=[]
+                        elif whcand:
+                            reason="HORSE_PRESENT_WAREHOUSE_OTHER_RUNS_ONLY"
+                            cand=[]
+                        else:
+                            reason="HORSE_NOT_PRESENT_WAREHOUSE"
+                            cand=[]
                     c[reason]+=1
                     unmatched.append({
                         "reason":reason,
@@ -152,7 +164,9 @@ def main():
             "DATE_ONLY":c["DATE_ONLY"],
             "TRACK_AND_OR_DISTANCE":c["TRACK_AND_OR_DISTANCE"],
             "HORSE_PRESENT_OTHER_RUNS":c["HORSE_PRESENT_OTHER_RUNS"],
-            "HORSE_NOT_PRESENT_CERTIFIED_EPI":c["HORSE_NOT_PRESENT_CERTIFIED_EPI"],
+            "RUN_PRESENT_WAREHOUSE_NOT_CERTIFIED_EPI":c["RUN_PRESENT_WAREHOUSE_NOT_CERTIFIED_EPI"],
+            "HORSE_PRESENT_WAREHOUSE_OTHER_RUNS_ONLY":c["HORSE_PRESENT_WAREHOUSE_OTHER_RUNS_ONLY"],
+            "HORSE_NOT_PRESENT_WAREHOUSE":c["HORSE_NOT_PRESENT_WAREHOUSE"],
         },
         "unmatched_detail":str(DETAIL.relative_to(ROOT)),
         "conflict_examples":conflicts[:25],
