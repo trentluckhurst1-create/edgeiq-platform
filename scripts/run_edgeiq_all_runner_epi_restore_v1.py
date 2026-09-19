@@ -11,8 +11,8 @@ STD_CANDIDATES=[
     ROOT/"public/data/edgeiq_standard_time_fact_v1.csv",
 ]
 STD=next((p for p in STD_CANDIDATES if p.exists()),STD_CANDIDATES[0])
-REBUILT_STD=OUT/"edgeiq_standard_time_fact_v1_july26_rebuilt.csv"
 OUT=ROOT/"work/all-runner-epi-restore-v1"
+REBUILT_STD=OUT/"edgeiq_standard_time_fact_v1_july26_rebuilt.csv"
 RUNNER=OUT/"edgeiq_runner_lengths_v_standard_fact_v1.csv"
 EPI=OUT/"edgeiq_epi_performance_fact_v1.csv"
 RACE=OUT/"edgeiq_race_lengths_v_standard_fact_v1.csv"
