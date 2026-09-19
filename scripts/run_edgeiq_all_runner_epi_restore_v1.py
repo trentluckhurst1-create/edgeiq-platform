@@ -6,7 +6,11 @@ from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
 WH=ROOT/"docs/performance-intelligence/warehouse/edgeiq_performance_fact_warehouse_v1.csv"
-STD=ROOT/"docs/performance-intelligence/standard-times/edgeiq_standard_time_fact_v1.csv"
+STD_CANDIDATES=[
+    ROOT/"docs/performance-intelligence/standard-times/edgeiq_standard_time_fact_v1.csv",
+    ROOT/"public/data/edgeiq_standard_time_fact_v1.csv",
+]
+STD=next((p for p in STD_CANDIDATES if p.exists()),STD_CANDIDATES[0])
 OUT=ROOT/"work/all-runner-epi-restore-v1"
 RUNNER=OUT/"edgeiq_runner_lengths_v_standard_fact_v1.csv"
 EPI=OUT/"edgeiq_epi_performance_fact_v1.csv"
@@ -49,7 +53,10 @@ def sha(p):
     return h.hexdigest()
 
 def main():
-    if not WH.exists() or not STD.exists():raise SystemExit("FAIL_CLOSED_MISSING_INPUT")
+    if not WH.exists():
+        raise SystemExit("FAIL_CLOSED_MISSING_WAREHOUSE")
+    if not STD.exists():
+        raise SystemExit("FAIL_CLOSED_MISSING_STANDARD_TIME")
     OUT.mkdir(parents=True,exist_ok=True)
     standards={}
     with STD.open("r",encoding="utf-8-sig",newline="") as f:
