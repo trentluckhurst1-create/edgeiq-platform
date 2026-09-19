@@ -60,6 +60,7 @@ def main():
     by_hd=defaultdict(list)
     by_h=defaultdict(list)
     wh_all_h=defaultdict(list)
+    wh_exact=defaultdict(list)
     wh=eligible=0
     with WH.open(encoding="utf-8-sig",errors="replace",newline="") as f:
         for r in csv.DictReader(f):
@@ -69,7 +70,9 @@ def main():
             h=horse(sk[-1] if sk else "")
             dt=date(r.get("race_date")); tr=track(r.get("track")); d=dist(r.get("distance_metres"))
             if h:
-                wh_all_h[h].append((pid,dt,tr,d,clean(r.get("track")),clean(r.get("distance_metres")),clean(r.get("time_governance_status") or r.get("time_status") or r.get("time_unit")),clean(r.get("official_race_time_seconds")),clean(r.get("race_id") or r.get("canonical_race_id"))))
+                compact=(pid,dt,tr,d,clean(r.get("track")),clean(r.get("distance_metres")),clean(r.get("time_governance_status") or r.get("time_status") or r.get("time_unit")),clean(r.get("official_race_time_seconds")),clean(r.get("race_id") or r.get("canonical_race_id")))
+                wh_all_h[h].append(compact)
+                if dt and tr and d: wh_exact[(h,dt,tr,d)].append(dict(r))
             if pid not in epi: continue
             eligible+=1
             if not h: continue
@@ -134,9 +137,8 @@ def main():
                         if same_run:
                             reason="RUN_PRESENT_WAREHOUSE_NOT_CERTIFIED_EPI"
                             cand=[]
-                            for x in same_run:
-                                # x tuple currently carries governance/time metadata only.
-                                exact_rejections.append({
+                            x=same_run[0]
+                            exact_rejections.append({
                                     "runner":clean(runner.get("runnerName")),
                                     "form_date":dt,
                                     "form_track":clean(run.get("track")),
@@ -147,6 +149,8 @@ def main():
                                     "time_status":x[6],
                                     "official_race_time_seconds":x[7],
                                     "canonical_race_id":x[8],
+                                    "physical_candidate_count":len(wh_exact.get((h,dt,tr,d),[])),
+                                    "_physical_rows":wh_exact.get((h,dt,tr,d),[]),
                                 })
                         elif whcand:
                             reason="HORSE_PRESENT_WAREHOUSE_OTHER_RUNS_ONLY"
@@ -176,38 +180,29 @@ def main():
                         c["conflicting_epi"]+=1
                         conflicts.append({"key":k,"hits":hits[:10]})
 
-    # Enrich exact-run exclusions with the original certified rejection reason.
-    # Re-read only the small set of exact excluded PIDs so the classification uses the
-    # original benchmark/calculation gates rather than heuristics.
-    reject_pids={x["canonical_performance_id"] for x in exact_rejections if x["canonical_performance_id"]}
-    if reject_pids:
-        with WH.open(encoding="utf-8-sig",errors="replace",newline="") as f:
-            for r in csv.DictReader(f):
-                pid=clean(r.get("canonical_performance_id"))
-                if pid not in reject_pids: continue
-                tr_id=clean(r.get("canonical_track_id"))
-                d=dist(r.get("distance_metres"))
-                cond=norm(r.get("track_condition_group") or r.get("track_condition"))
-                # Match the historical cond/surface semantics used by the producer.
-                cond_group="HEAVY" if "HEAVY" in cond else ("SOFT" if ("SOFT" in cond or "SLOW" in cond) else ("GOOD" if ("GOOD" in cond or "FIRM" in cond or "FAST" in cond) else ("SYNTHETIC" if ("SYN" in cond or "POLY" in cond or "TAPETA" in cond) else "UNKNOWN")))
-                sf="SYNTHETIC" if re.search("SYNTH|POLY|TAPETA",(clean(r.get("track"))+" "+clean(r.get("track_condition"))).upper()) else "TURF_OR_UNKNOWN"
-                key=(tr_id,d,cond_group,clean(r.get("jurisdiction")) or "VIC",sf)
-                sec=clean(r.get("official_race_time_seconds"))
-                margin=clean(r.get("finish_margin"))
-                rid=clean(r.get("canonical_race_id"))
-                if key not in std_keys:
-                    rejection="UNMATCHED_BENCHMARK"
-                elif not sec or not margin or not rid or not pid:
-                    rejection="INVALID_CALCULATION"
-                else:
-                    rejection="UNEXPLAINED_CHECK_REQUIRED"
-                c["EXACT_RUN_"+rejection]+=1
-                for x in exact_rejections:
-                    if x["canonical_performance_id"]==pid:
-                        x["rejection_reason"]=rejection
-                        x["benchmark_key"]="|".join(key)
-                        x["finish_margin"]=margin
-                        break
+    # Classify every exact Form Guide run against every physical warehouse candidate.
+    for x in exact_rejections:
+        rows=x.pop("_physical_rows",[]) or []
+        reasons=[]; benchmark_keys=[]; margins=[]; pids=[]
+        for r in rows:
+            pid=clean(r.get("canonical_performance_id"))
+            tr_id=clean(r.get("canonical_track_id")); d=dist(r.get("distance_metres"))
+            raw_cond=norm(r.get("track_condition_group") or r.get("track_condition"))
+            cond_group="HEAVY" if "HEAVY" in raw_cond else ("SOFT" if ("SOFT" in raw_cond or "SLOW" in raw_cond) else ("GOOD" if ("GOOD" in raw_cond or "FIRM" in raw_cond or "FAST" in raw_cond) else ("SYNTHETIC" if ("SYN" in raw_cond or "POLY" in raw_cond or "TAPETA" in raw_cond) else "UNKNOWN")))
+            sf="SYNTHETIC" if re.search("SYNTH|POLY|TAPETA",(clean(r.get("track"))+" "+clean(r.get("track_condition"))).upper()) else "TURF_OR_UNKNOWN"
+            key=(tr_id,d,cond_group,clean(r.get("jurisdiction")) or "VIC",sf)
+            sec=clean(r.get("official_race_time_seconds")); margin=clean(r.get("finish_margin")); rid=clean(r.get("canonical_race_id"))
+            benchmark_keys.append("|".join(key)); margins.append(margin); pids.append(pid)
+            if key not in std_keys: reasons.append("UNMATCHED_BENCHMARK")
+            elif not sec or not margin or not rid or not pid: reasons.append("INVALID_CALCULATION")
+            elif pid not in epi: reasons.append("UNEXPLAINED_CHECK_REQUIRED")
+            else: reasons.append("CERTIFIED_EPI_CANDIDATE_PRESENT_KEY_MISMATCH")
+        unique=sorted(set(reasons))
+        final="NO_PHYSICAL_ROWS_RETAINED" if not rows else (unique[0] if len(unique)==1 else "MULTIPLE_PHYSICAL_CANDIDATE_REASONS")
+        x["rejection_reason"]=final; x["candidate_reasons"]=" | ".join(unique)
+        x["benchmark_key"]=" | ".join(sorted(set(benchmark_keys))); x["finish_margin"]=" | ".join(sorted(set(margins)))
+        x["candidate_performance_ids"]=" | ".join(sorted(set(pids)))
+        c["EXACT_RUN_"+final]+=1
 
     # Reconcile every exact-run miss at the Form Guide run level.
     classified_exact=sum(1 for x in exact_rejections if x.get("rejection_reason"))
@@ -218,7 +213,7 @@ def main():
     fields=["reason","runner","run_index","form_date","form_track","form_track_key","form_distance","candidate_count","candidate_sample"]
     with DETAIL.open("w",encoding="utf-8-sig",newline="") as f:
         w=csv.DictWriter(f,fieldnames=fields); w.writeheader(); w.writerows(unmatched)
-    reject_fields=["runner","form_date","form_track","form_distance","canonical_performance_id","canonical_race_id","warehouse_track","warehouse_distance","time_status","official_race_time_seconds","finish_margin","benchmark_key","rejection_reason"]
+    reject_fields=["runner","form_date","form_track","form_distance","canonical_performance_id","canonical_race_id","warehouse_track","warehouse_distance","time_status","official_race_time_seconds","finish_margin","benchmark_key","physical_candidate_count","candidate_performance_ids","candidate_reasons","rejection_reason"]
     with REJECT_DETAIL.open("w",encoding="utf-8-sig",newline="") as f:
         w=csv.DictWriter(f,fieldnames=reject_fields,extrasaction="ignore"); w.writeheader(); w.writerows(exact_rejections)
 
@@ -249,6 +244,9 @@ def main():
             "UNMATCHED_BENCHMARK":c["EXACT_RUN_UNMATCHED_BENCHMARK"],
             "INVALID_CALCULATION":c["EXACT_RUN_INVALID_CALCULATION"],
             "UNEXPLAINED_CHECK_REQUIRED":c["EXACT_RUN_UNEXPLAINED_CHECK_REQUIRED"],
+            "CERTIFIED_EPI_CANDIDATE_PRESENT_KEY_MISMATCH":c["EXACT_RUN_CERTIFIED_EPI_CANDIDATE_PRESENT_KEY_MISMATCH"],
+            "MULTIPLE_PHYSICAL_CANDIDATE_REASONS":c["EXACT_RUN_MULTIPLE_PHYSICAL_CANDIDATE_REASONS"],
+            "NO_PHYSICAL_ROWS_RETAINED":c["EXACT_RUN_NO_PHYSICAL_ROWS_RETAINED"],
             "UNCLASSIFIED_EXACT_ROWS":c["EXACT_RUN_UNCLASSIFIED_ROW"],
             "CLASSIFIED_EXACT_ROWS":classified_exact,
             "EXACT_REJECTION_DETAIL_ROWS":len(exact_rejections),
