@@ -11,6 +11,7 @@ STD_CANDIDATES=[
     ROOT/"public/data/edgeiq_standard_time_fact_v1.csv",
 ]
 STD=next((p for p in STD_CANDIDATES if p.exists()),STD_CANDIDATES[0])
+REBUILT_STD=OUT/"edgeiq_standard_time_fact_v1_july26_rebuilt.csv"
 OUT=ROOT/"work/all-runner-epi-restore-v1"
 RUNNER=OUT/"edgeiq_runner_lengths_v_standard_fact_v1.csv"
 EPI=OUT/"edgeiq_epi_performance_fact_v1.csv"
@@ -55,13 +56,49 @@ def sha(p):
 def main():
     if not WH.exists():
         raise SystemExit("FAIL_CLOSED_MISSING_WAREHOUSE")
-    if not STD.exists():
-        raise SystemExit("FAIL_CLOSED_MISSING_STANDARD_TIME")
     OUT.mkdir(parents=True,exist_ok=True)
+
+    def rebuild_july26_standards():
+        import statistics
+        groups={}
+        seen=set()
+        with WH.open("r",encoding="utf-8-sig",errors="replace",newline="") as f:
+            for row in csv.DictReader(f):
+                rid=t(row.get("canonical_race_id"))
+                if not rid or rid in seen: continue
+                seen.add(rid)
+                sec=num(row.get("official_race_time_seconds"))
+                dist=it(row.get("distance_metres"))
+                tr=t(row.get("canonical_track_id"))
+                cg=cond(row.get("track_condition_group") or row.get("track_condition"))
+                sf=surf(row.get("track"),row.get("track_condition"))
+                juris=t(row.get("jurisdiction")) or "VIC"
+                if sec is None or not 35<=sec<=420: continue
+                if not dist or not (800<=int(float(dist))<=3600): continue
+                if not tr or cg=="UNKNOWN": continue
+                k=(tr,t(row.get("track")),t(row.get("track_layout")),dist,cg,juris,sf)
+                groups.setdefault(k,[]).append(sec)
+        rows=[]
+        for key,times in sorted(groups.items(),key=lambda kv:(kv[0][1],int(kv[0][3]),kv[0][4])):
+            if len(times)<20: continue
+            bkey="|".join([key[0],key[3],key[4],key[5],key[6]])
+            sid="EIQ_ST_"+hashlib.sha256(bkey.encode()).hexdigest()[:16].upper()
+            rows.append({"standard_time_id":sid,"canonical_track_id":key[0],"track_display_name":key[1],"track_layout":key[2],"distance_metres":key[3],"track_condition_group":key[4],"race_class_group":"ALL_GOVERNED_CLASSES","jurisdiction":key[5],"surface":key[6],"benchmark_group_key":bkey,"observation_count":len(times),"standard_time_seconds":fmt(statistics.median(times)),"dispersion_measure":"","minimum_time_seconds":fmt(min(times)),"maximum_time_seconds":fmt(max(times)),"effective_start_date":"","effective_end_date":"","methodology_version":"MEDIAN_RACE_TIME_TRACK_DISTANCE_CONDITION_MIN20_CENTISECONDS_V2","build_timestamp":"REBUILT_SIDE_BY_SIDE"})
+        fields="standard_time_id canonical_track_id track_display_name track_layout distance_metres track_condition_group race_class_group jurisdiction surface benchmark_group_key observation_count standard_time_seconds dispersion_measure minimum_time_seconds maximum_time_seconds effective_start_date effective_end_date methodology_version build_timestamp".split()
+        with REBUILT_STD.open("w",encoding="utf-8",newline="") as o:
+            w=csv.DictWriter(o,fieldnames=fields); w.writeheader(); w.writerows(rows)
+        return rows
+
     standards={}
-    with STD.open("r",encoding="utf-8-sig",newline="") as f:
-        sr=list(csv.DictReader(f))
-    if len(sr)!=EXPECTED["standard_rows"]:raise SystemExit(f"FAIL_CLOSED_STANDARD_ROWS={len(sr)}")
+    sr=[]
+    if STD.exists():
+        with STD.open("r",encoding="utf-8-sig",newline="") as f:
+            sr=list(csv.DictReader(f))
+    standard_source=STD
+    if len(sr)!=EXPECTED["standard_rows"]:
+        sr=rebuild_july26_standards()
+        standard_source=REBUILT_STD
+    if len(sr)!=EXPECTED["standard_rows"]:raise SystemExit(f"FAIL_CLOSED_REBUILT_STANDARD_ROWS={len(sr)}")
     for r in sr:
         k=(t(r.get("canonical_track_id")),it(r.get("distance_metres")),cond(r.get("track_condition_group")),t(r.get("jurisdiction")) or "VIC",t(r.get("surface")) or "TURF_OR_UNKNOWN")
         if k in standards:raise SystemExit("FAIL_CLOSED_DUPLICATE_STANDARD_KEY")
@@ -99,7 +136,7 @@ def main():
 
     got={k:counts[k] for k in EXPECTED}
     failures={k:{"expected":v,"actual":got[k]} for k,v in EXPECTED.items() if got[k]!=v}
-    audit={"generated_at":datetime.now(timezone.utc).isoformat(),"status":"PASS" if not failures else "FAIL","mode":"SIDE_BY_SIDE_READ_SOURCE_ONLY_NO_PRODUCTION_PROMOTION","source":str(WH.relative_to(ROOT)),"standard_source":str(STD.relative_to(ROOT)),"expected":EXPECTED,"actual":got,"failures":failures,"outputs":{"runner_lvs":{"path":str(RUNNER.relative_to(ROOT)),"sha256":sha(RUNNER)},"epi":{"path":str(EPI.relative_to(ROOT)),"sha256":sha(EPI)},"race_lvs":{"path":str(RACE.relative_to(ROOT)),"sha256":sha(RACE)},"eri":{"path":str(ERI.relative_to(ROOT)),"sha256":sha(ERI)}},"production_changed":False,"hpr_chain_changed":False}
+    audit={"generated_at":datetime.now(timezone.utc).isoformat(),"status":"PASS" if not failures else "FAIL","mode":"SIDE_BY_SIDE_READ_SOURCE_ONLY_NO_PRODUCTION_PROMOTION","source":str(WH.relative_to(ROOT)),"standard_source":str(standard_source.relative_to(ROOT)),"expected":EXPECTED,"actual":got,"failures":failures,"outputs":{"runner_lvs":{"path":str(RUNNER.relative_to(ROOT)),"sha256":sha(RUNNER)},"epi":{"path":str(EPI.relative_to(ROOT)),"sha256":sha(EPI)},"race_lvs":{"path":str(RACE.relative_to(ROOT)),"sha256":sha(RACE)},"eri":{"path":str(ERI.relative_to(ROOT)),"sha256":sha(ERI)}},"production_changed":False,"hpr_chain_changed":False}
     AUDIT.write_text(json.dumps(audit,indent=2)+"\n",encoding="utf-8")
     print(json.dumps(audit,indent=2))
     if failures:raise SystemExit(2)
