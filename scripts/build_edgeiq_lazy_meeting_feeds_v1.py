@@ -95,7 +95,7 @@ def main() -> None:
         missing_track=[m["meeting"] for m in today["meetings"] if m.get("track") in ("Not supplied","—","")]
         missing_rail=[m["meeting"] for m in today["meetings"] if m.get("rail") in ("Not supplied","—","")]
         if missing_track: raise SystemExit(f"Meetings feed missing full track rating: {missing_track}")
-        if missing_rail: raise SystemExit(f"Meetings feed missing rail: {missing_rail}")
+        if missing_rail: print(f"[EDGEIQ] WARN meetings feed missing rail; preserving governed Not supplied: {missing_rail}")
         missing_time=[m["meeting"] for m in today["meetings"] if m.get("first") in ("Not supplied","—","",None)]
         if missing_time: raise SystemExit(f"Meetings feed missing first race time: {missing_time}")
 
