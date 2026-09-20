@@ -11,12 +11,9 @@ on:
 
 permissions:
   contents: read
-  actions: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: edgeiq-frontend-pages
+  group: edgeiq-frontend-build
   cancel-in-progress: true
 
 jobs:
