@@ -82,18 +82,9 @@ jobs:
       - name: Build current race-entry facts
         run: python scripts/build_edgeiq_current_race_entry_fact_v1.py
 
-      - name: Rebuild governed historical performance chain
-        run: |
-          python scripts/build_edgeiq_race_time_delta_versus_standard_v1.py
-          python scripts/build_edgeiq_lengths_versus_standard_fact_from_results_v2.py
-          python scripts/build_edgeiq_performance_intelligence_base_fact_v1.py
-          python scripts/build_edgeiq_performance_normalisation_parameter_fact_v1.py
-          python scripts/build_edgeiq_performance_normalisation_fact_v1.py
-          python scripts/build_edgeiq_performance_rating_base_fact_v1.py
-          python scripts/build_edgeiq_horse_performance_observation_fact_v1.py
-          python scripts/build_edgeiq_horse_performance_aggregate_fact_v1.py
-          python scripts/build_edgeiq_horse_performance_rating_fact_v1.py
-          python scripts/build_edgeiq_live_horse_performance_rating_match_v1.py
+      # Historical performance intelligence is a certified recovery lineage and is
+      # intentionally not rebuilt from the current-window 39-row observation contract.
+      # Production consumes the governed historical artifacts already committed/published.
       - name: Build dashboard meeting feeds
         run: python scripts/build_edgeiq_lazy_meeting_feeds_v1.py
       - name: Verify populated meeting metadata
