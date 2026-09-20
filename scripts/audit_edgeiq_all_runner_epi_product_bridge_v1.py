@@ -91,6 +91,7 @@ def main():
     std_candidates=[
         ROOT/"docs"/"performance-intelligence"/"standard-times"/"edgeiq_standard_time_fact_v1.csv",
         WORK/"edgeiq_standard_time_fact_v1.csv",
+        WORK/"edgeiq_standard_time_fact_v1_july26_rebuilt.csv",
     ]
     std_path=next((p for p in std_candidates if p.exists()),None)
     std_keys=set()

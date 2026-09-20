@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "backup": "work\\all-runner-epi-product-bridge-v1\\production-backups\\edgeiq_form_guide_enriched_v2.backup_before_all_runner_epi_bridge.20260920T001805Z.json",
+  "form_runs": 2044,
+  "historical_epi_populated": 1042,
+  "historical_epi_governed_blank": 1002,
+  "trace_ok": 1042,
+  "unrelated_value_change_count": 0,
+  "unrelated_value_change_examples": [],
+  "ambiguous_promoted": 0,
+  "conflicting_promoted": 0,
+  "warehouse_rows": 879784,
+  "certified_epi_rows": 533387,
+  "hpr_rows": 52309,
+  "certified_epi_sha256": "ef4fad0f0a1b10d78cc72cfb62e2cf097aa5f70119aed99c563b9afb31980f41",
+  "warehouse_sha256": "bcdcef1c7cb9144feae5783ca2fa83b1dc2b8dc07a42ac31c31fd7bd12b53107",
+  "hpr_sha256": "858c185d0b93a1fad948933b98f7d57256fb3cde5e61d22f4a0497e781344d85",
+  "validation_production_unchanged_pre_promotion": true,
+  "target_sha256": "e9fea1cde68be40207490f05a6d996891d9c9b3257205906f297ace8acbaa3bf"
+}
