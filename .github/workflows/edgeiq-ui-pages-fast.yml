@@ -15,6 +15,7 @@ on:
       - 'scripts/build_edgeiq_three_day_product_catalog_v1.py'
       - 'scripts/enrich_edgeiq_catalogue_last5_v1.py'
       - 'scripts/build_edgeiq_current_race_entry_fact_v1.py'
+      - 'scripts/build_edgeiq_current_race_intelligence_feed_v3.py'
       - 'scripts/build_edgeiq_race_time_delta_versus_standard_v1.py'
       - 'scripts/build_edgeiq_historical_results_warehouse_v2_graphql.py'
       - 'scripts/build_edgeiq_lengths_versus_standard_fact_from_results_v2.py'
@@ -81,6 +82,10 @@ jobs:
         run: python scripts/enrich_edgeiq_catalogue_last5_v1.py
       - name: Build current race-entry facts
         run: python scripts/build_edgeiq_current_race_entry_fact_v1.py
+      - name: Build current race intelligence feed
+        run: |
+          python scripts/build_edgeiq_current_race_intelligence_feed_v3.py
+          test -s public/data/edgeiq_race_intelligence_feed_v2.csv
 
       # Historical performance intelligence is a certified recovery lineage and is
       # intentionally not rebuilt from the current-window 39-row observation contract.
