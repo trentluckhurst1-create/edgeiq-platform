@@ -9,6 +9,8 @@ CATALOG=DATA/'edgeiq_three_day_product_catalog_v1.json'
 RATINGS=DATA/'edgeiq_horse_performance_rating_fact_v1.csv'
 RATINGS_CANDIDATE=DATA/'edgeiq_horse_performance_rating_fact_v1_CANDIDATE.csv'
 OLD_EPI=DATA/'edgeiq_race_entry_epi_v2.csv'
+IDENTITY_BRIDGE=DATA/'edgeiq_current_historical_horse_identity_bridge_v2.csv'
+RA_RCOM_BRIDGE=DATA/'edgeiq_ra_to_rcom_horse_identity_bridge_v1.csv'
 OUT=DATA/'edgeiq_race_intelligence_feed_v2.csv'
 
 def clean(v): return '' if v is None else str(v).strip()
@@ -45,6 +47,10 @@ def main():
             rating_rows=governed
             rating_source='GOVERNED_RECOVERY_CANDIDATE'
     epi_rows=rows(OLD_EPI)
+    identity_rows=rows(IDENTITY_BRIDGE)
+    bridge_by_current={clean(r.get('current_canonical_runner_id')):r for r in identity_rows if clean(r.get('identity_resolution_status')).startswith('IDENTITY_RESOLVED') and clean(r.get('historical_canonical_horse_id'))}
+    ra_rcom_rows=rows(RA_RCOM_BRIDGE)
+    bridge_by_rcom={clean(r.get('rcom_horse_id')):r for r in ra_rcom_rows if clean(r.get('match_status')).startswith('RESOLVED') and clean(r.get('rcom_horse_id'))}
     ratings={}
     for r in rating_rows:
         hid=clean(r.get('canonical_horse_id'))
@@ -62,14 +68,22 @@ def main():
                 name=clean(source.get('horseName') or official.get('runner') or deep(node,['horseName','runnerName','name']))
                 horse_code=clean(source.get('horseCode') or deep(source,['horseCode','horseId','horse_id']))
                 runner_id=clean(deep(node,['canonical_runner_id','canonicalRunnerId'])) or (f'RCOM_HORSE_{horse_code}' if horse_code else '')
-                candidates=[r for r in ratings.get(runner_id,[]) if prior(r.get('rating_as_of_date'),date)]
+                historical_id=runner_id
+                bridge=bridge_by_current.get(runner_id)
+                if bridge: historical_id=clean(bridge.get('historical_canonical_horse_id')) or historical_id
+                # A resolved RA/Racing.com bridge is supporting lineage only; ratings are keyed by the
+                # historical Racing.com canonical ID, never by name-only inference.
+                if historical_id.startswith('RA_HORSE_'):
+                    linked=next((r for r in ra_rcom_rows if clean(r.get('ra_horse_id'))==historical_id and clean(r.get('match_status')).startswith('RESOLVED')),None)
+                    if linked: historical_id=clean(linked.get('rcom_horse_id')) or historical_id
+                candidates=[r for r in ratings.get(historical_id,[]) if prior(r.get('rating_as_of_date'),date)]
                 rr=candidates[-1] if candidates else None
                 er=epi.get((race_id,runner_id)) if race_id and runner_id else None
                 hist=clean(rr.get('horse_performance_rating_value')) if rr else ''
                 hist_status=clean(rr.get('horse_performance_rating_status')) if rr else 'SNAPSHOT_UNAVAILABLE'
                 epi_value=clean(er.get('epi_value')) if er else ''; epi_rank=clean(er.get('epi_rank')) if er else ''
                 epi_status=clean(er.get('epi_status')) if er else 'EPI_UNAVAILABLE'
-                out.append({'race_intelligence_feed_id':f'LIVE|{date}|{norm(track)}|R{rn}|{runner_id or norm(name)}','canonical_race_id':race_id,'canonical_runner_id':runner_id,'canonical_horse_name':name,'race_date':date,'canonical_track':track,'race_number':rn,'barrier':clean(source.get('barrierNumber') or official.get('barrier')),'weight_kg':clean(source.get('weight') or official.get('weight')),'jockey_name':clean(source.get('jockeyName') or official.get('jockey')),'trainer_name':clean(source.get('trainerName') or official.get('trainer')),'entry_participation_status':'SCRATCHED' if source.get('scratched') else 'ACTIVE_ENTRY','historical_rating_value':hist,'suitability_composite_delta':'','projected_performance_value':'','epi_value':epi_value,'epi_rank':epi_rank,'historical_rating_status':hist_status,'suitability_status':'SUITABILITY_UNAVAILABLE','projected_performance_status':'PROJECTED_PERFORMANCE_UNAVAILABLE','epi_status':epi_status,'race_intelligence_status':'AVAILABLE_PARTIAL' if hist or epi_value else 'RACE_INTELLIGENCE_UNAVAILABLE','race_intelligence_reason_code':'CURRENT_DAY_PRIOR_ONLY','source_race_context_evidence_sha256':'','source_projected_performance_evidence_sha256':'','source_epi_evidence_sha256':'','race_intelligence_builder_version':'EDGEIQ_CURRENT_RACE_INTELLIGENCE_V3','race_intelligence_method_version':'STRICT_PRIOR_CURRENT_RUNNER_JOIN_V1','race_intelligence_evidence_sha256':''})
+                out.append({'race_intelligence_feed_id':f'LIVE|{date}|{norm(track)}|R{rn}|{runner_id or norm(name)}','canonical_race_id':race_id,'canonical_runner_id':runner_id,'canonical_horse_name':name,'race_date':date,'canonical_track':track,'race_number':rn,'barrier':clean(source.get('barrierNumber') or official.get('barrier')),'weight_kg':clean(source.get('weight') or official.get('weight')),'jockey_name':clean(source.get('jockeyName') or official.get('jockey')),'trainer_name':clean(source.get('trainerName') or official.get('trainer')),'entry_participation_status':'SCRATCHED' if source.get('scratched') else 'ACTIVE_ENTRY','historical_rating_value':hist,'suitability_composite_delta':'','projected_performance_value':'','epi_value':epi_value,'epi_rank':epi_rank,'historical_rating_status':hist_status,'suitability_status':'SUITABILITY_UNAVAILABLE','projected_performance_status':'PROJECTED_PERFORMANCE_UNAVAILABLE','epi_status':epi_status,'race_intelligence_status':'AVAILABLE_PARTIAL' if hist or epi_value else 'RACE_INTELLIGENCE_UNAVAILABLE','race_intelligence_reason_code':'CURRENT_DAY_PRIOR_ONLY','source_race_context_evidence_sha256':'','source_projected_performance_evidence_sha256':'','source_epi_evidence_sha256':'','race_intelligence_builder_version':'EDGEIQ_CURRENT_RACE_INTELLIGENCE_V3','race_intelligence_method_version':'STRICT_PRIOR_GOVERNED_IDENTITY_BRIDGE_V2','race_intelligence_evidence_sha256':''})
     fields=['race_intelligence_feed_id','canonical_race_id','canonical_runner_id','canonical_horse_name','race_date','canonical_track','race_number','barrier','weight_kg','jockey_name','trainer_name','entry_participation_status','historical_rating_value','suitability_composite_delta','projected_performance_value','epi_value','epi_rank','historical_rating_status','suitability_status','projected_performance_status','epi_status','race_intelligence_status','race_intelligence_reason_code','source_race_context_evidence_sha256','source_projected_performance_evidence_sha256','source_epi_evidence_sha256','race_intelligence_builder_version','race_intelligence_method_version','race_intelligence_evidence_sha256']
     with OUT.open('w',encoding='utf-8',newline='') as f:
         w=csv.DictWriter(f,fieldnames=fields);w.writeheader();w.writerows(out)
