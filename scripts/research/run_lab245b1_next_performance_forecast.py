@@ -50,11 +50,21 @@ def main():
     res=pd.DataFrame(rows); pred=pd.concat(pp,ignore_index=True)
     res.to_csv(OUTDIR/"LAB245B1_NEXT_PERFORMANCE_RESULTS.csv",index=False)
     pred.to_csv(OUTDIR/"LAB245B1_OOF_PREDICTIONS.csv",index=False)
+    # Architecture/model choice is development-only (2022-23). 2024 is a single fixed confirmation.
+    dev=pred[pred["_year"].isin([2022,2023])]
+    dev_rows=[]
+    for name,g in dev.groupby("model",sort=False):
+        base=d[d["_year"].isin([2022,2023])][["_race","_horse","_year","target_lvs"]]
+        z=base.merge(g[["_race","_horse","_year","pred_lvs"]],on=["_race","_horse","_year"],how="inner")
+        dev_rows.append({"model":name,**score(z.rename(columns={"pred_lvs":"pred"}),z["pred"].to_numpy(float))})
+    devres=pd.DataFrame(dev_rows)
+    bs_dev=devres[devres["model"].isin(BASELINES)].sort_values(["mae","rmse"]).iloc[0]
+    bm_dev=devres[devres["model"].isin(["RIDGE","HGB"])].sort_values(["mae","rmse"]).iloc[0]
     v=res[res["year"]==2024]
-    bs=v[v["model"].isin(BASELINES)].sort_values(["mae","rmse"]).iloc[0]
-    bm=v[v["model"].isin(["RIDGE","HGB"])].sort_values(["mae","rmse"]).iloc[0]
-    survive=bool(bm["mae"]<bs["mae"] and bm["rmse"]<bs["rmse"] and bm["race_spearman_mean"]>bs["race_spearman_mean"])
-    audit={"status":"SURVIVE_TO_LAB245B2" if survive else "REJECT_ML_PERFORMANCE_ENGINE","rows":int(len(d)),"races":int(d["_race"].nunique()),"feature_count":len(feats),"best_2024_simple":bs.to_dict(),"best_2024_ml":bm.to_dict(),"holdout_2025_2026_opened":False,"market_used":False}
+    bs=v[v["model"]==bs_dev["model"]].iloc[0]
+    bm=v[v["model"]==bm_dev["model"]].iloc[0]
+    survive=bool(bm_dev["mae"]<bs_dev["mae"] and bm_dev["rmse"]<bs_dev["rmse"] and bm_dev["race_spearman_mean"]>bs_dev["race_spearman_mean"] and bm["mae"]<bs["mae"] and bm["rmse"]<bs["rmse"] and bm["race_spearman_mean"]>bs["race_spearman_mean"])
+    audit={"status":"SURVIVE_TO_LAB245B2" if survive else "REJECT_ML_PERFORMANCE_ENGINE","rows":int(len(d)),"races":int(d["_race"].nunique()),"feature_count":len(feats),"dev_selected_simple":bs_dev.to_dict(),"dev_selected_ml":bm_dev.to_dict(),"validation_2024_simple":bs.to_dict(),"validation_2024_ml":bm.to_dict(),"holdout_2025_2026_opened":False,"market_used":False}
     (OUTDIR/"LAB245B1_AUDIT.json").write_text(json.dumps(audit,indent=2,default=str),encoding="utf-8")
     print(res.to_string(index=False)); print(json.dumps(audit,indent=2,default=str))
 if __name__=="__main__": main()
