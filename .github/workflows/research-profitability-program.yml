@@ -52,7 +52,7 @@ jobs:
       - name: Build and run LAB245B1 next-performance forecast
         if: env.LAB == '245b1'
         run: |
-          python scripts/research/build_lab245b_compact_performance_bridge.py
+          python scripts/research/build_lab245b_warehouse_runner_lvs.py\n          python scripts/research/build_lab245b_compact_performance_bridge.py
           python scripts/research/run_lab245b1_next_performance_forecast.py
       - name: Run governed research bootstrap
         if: env.LAB == 'bootstrap'
