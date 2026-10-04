@@ -39,7 +39,12 @@ jobs:
         shell: bash
         run: |
           LAB="${{ github.event.inputs.lab }}"
-          if [ -z "$LAB" ]; then LAB="245a"; fi
+          if [ -z "$LAB" ]; then
+            case "${{ github.event.head_commit.message }}" in
+              *LAB245B*|*lab245b*) LAB="245b1" ;;
+              *) LAB="245a" ;;
+            esac
+          fi
           echo "LAB=$LAB" >> "$GITHUB_ENV"
       - name: Run LAB245A bridge audit
         if: env.LAB == '245a'
