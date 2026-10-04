@@ -33,9 +33,20 @@ def main():
  r=r[r["_valid_time"]].copy()
  timed_races=len(r)
  key=["track","distance_metres","surface","condition"]
- stats=r.dropna(subset=["track","distance_metres","condition","official_race_time_seconds"]).groupby(key,dropna=False)["official_race_time_seconds"].agg(["median","count"]).reset_index()
- stats=stats[stats["count"]>=MIN_SAMPLE].rename(columns={"median":"standard_time_seconds","count":"benchmark_n"})
- r=r.merge(stats,on=key,how="inner",validate="many_to_one")
+ # Strict PIT benchmark: each race uses only PRIOR races in its benchmark group.
+ r=r.dropna(subset=["track","distance_metres","condition","official_race_time_seconds","race_date"]).sort_values(["race_date","canonical_race_id"],kind="stable")
+ std=[]; counts=[]
+ history={}
+ for _,row in r.iterrows():
+  k=(row["track"],row["distance_metres"],row["surface"],row["condition"])
+  vals=history.get(k,[])
+  counts.append(len(vals))
+  std.append(float(np.median(vals)) if len(vals)>=MIN_SAMPLE else np.nan)
+  vals=vals+[float(row["official_race_time_seconds"])]
+  history[k]=vals
+ r["benchmark_n"]=counts
+ r["standard_time_seconds"]=std
+ r=r[r["standard_time_seconds"].notna()].copy()
  p=pd.read_csv(LCP,usecols=["surface_group","track_condition_group","seconds_per_length"])
  p=p.rename(columns={"surface_group":"surface","track_condition_group":"condition"})
  r=r.merge(p,on=["surface","condition"],how="inner",validate="many_to_one")
@@ -52,6 +63,7 @@ def main():
  print(f"RUNNER_ROWS={len(out):,}")
  print(f"KNOWN_RECOVERY_TIMED_RACES=70,308 DELTA_RACES=54,978 LVS_RACES=52,414")
  if abs(timed_races-70308)>10:raise RuntimeError("Timed-race recovery count materially disagrees with certified audit.")
- if abs(lvs_races-52414)>100:raise RuntimeError("LVS race count materially disagrees with certified audit; do not promote.")
+ # PIT counts are expected to be lower than the all-history recovery audit because the first 20 races per group are unavailable.
+ if lvs_races<=0 or lvs_races>=timed_races:raise RuntimeError("Invalid PIT LVS recovery funnel.")
  print(f"OUT={OUT}")
 if __name__=="__main__":main()
