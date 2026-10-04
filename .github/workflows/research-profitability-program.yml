@@ -16,6 +16,7 @@ on:
         type: choice
         options:
           - "245a"
+          - "245b1"
           - "bootstrap"
 
 permissions:
@@ -43,6 +44,11 @@ jobs:
       - name: Run LAB245A bridge audit
         if: env.LAB == '245a'
         run: python scripts/research/run_lab245a_performance_outcome_bridge_audit.py
+      - name: Build and run LAB245B1 next-performance forecast
+        if: env.LAB == '245b1'
+        run: |
+          python scripts/research/build_lab245b_compact_performance_bridge.py
+          python scripts/research/run_lab245b1_next_performance_forecast.py
       - name: Run governed research bootstrap
         if: env.LAB == 'bootstrap'
         run: python scripts/research/profitability_program_bootstrap.py
