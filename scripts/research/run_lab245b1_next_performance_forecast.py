@@ -11,104 +11,78 @@ from sklearn.preprocessing import StandardScaler
 
 ROOT=Path(__file__).resolve().parents[2]
 INP=ROOT/"outputs/research/profitability_program/lab245b/LAB245B_COMPACT_PERFORMANCE_BRIDGE.csv"
-OUTDIR=ROOT/"outputs/research/profitability_program/lab245b"
+OUTDIR=INP.parent
 RESULTS=OUTDIR/"LAB245B1_NEXT_PERFORMANCE_RESULTS.csv"
 PRED=OUTDIR/"LAB245B1_OOF_PREDICTIONS.csv"
 AUDIT=OUTDIR/"LAB245B1_AUDIT.json"
 
-RAW_FEATURES=[
-"h231_hist_perf_runs","h231_epi_last1","h231_epi_last3_mean","h231_epi_last5_mean",
-"h231_epi_last5_median","h231_epi_last5_worst","h231_epi_last10_median",
-"h231_epi_last10_best","h231_epi_last10_worst","h231_epi_last10_std",
-"h231_epi_peak_prior","h231_epi_last1_minus_peak","h231_epi_last1_minus_last5_median",
-"h231_epi_last5_slope","h231_margin_last5_mean","h231_margin_last5_worst",
-"h231_margin_last5_std","h231_finishpos_last5_mean","h231_days_since_last_perf",
-"h231_days_since_peak","h231_peak_age_runs","h231_dist200_count","h231_dist200_mean",
-"h231_dist200_best","h231_dist200_best_minus_peak","h231_same_class_count",
-"h231_same_class_mean","h231_same_class_best","h231_same_condition_count",
-"h231_same_condition_mean","h231_near_peak_share_last10",
-"h231_recent_above_last10_median_share"
-]
+FEATURES=[
+"h179_epi_career_mean","h179_epi_recent_mean3","h179_epi_recent_mean5","h179_epi_career_median",
+"h179_epi_q75","h179_epi_peak","h179_recent_peak5","h179_best_recent_performance",
+"h179_history_runs","h179_recent_obs_90d","h179_recent_obs_180d","h179_age_peak_days",
+"h179_runs_since_peak","h179_days_since_meaningful_epi","h179_epi_std_career","h179_epi_std_last5",
+"h179_margin_std_last5","h179_pos_mean_last5","h179_peak_minus_recent5","h179_peak_minus_median",
+"h179_career_minus_recent5","h179_recent5_minus_peak","h179_peak_age_x_gap","h179_days_since_last_run",
+"h179_recency_decay_60","h179_recency_decay_120","h179_recency_weighted_ability",
+"h179_reliability_weight","h179_recent_reliability_weight","h179_shrunk_career_ability",
+"h179_shrunk_recent_ability","h179_volatility_penalty","h179_current_ability_state",
+"h179_distance_relevant_epi","h179_distance_relevant_peak","h179_distance_relevant_observations",
+"h179_distance_relevant_reliability","h179_distance_shrunk_ability","h179_distance_minus_recent",
+"h179_distance_minus_career","h179_peak_minus_distance"]
 
-def metrics(d,p):
-    ok=np.isfinite(d["target_lvs"].to_numpy(float)) & np.isfinite(p)
-    y=d.loc[ok,"target_lvs"].to_numpy(float); q=np.asarray(p)[ok]
-    tmp=d.loc[ok,["_race","target_lvs"]].copy(); tmp["pred"]=q
-    corrs=[]
-    for _,g in tmp.groupby("_race",sort=False):
-        if len(g)>=3 and g["target_lvs"].nunique()>1 and g["pred"].nunique()>1:
-            corrs.append(g["target_lvs"].corr(g["pred"],method="spearman"))
-    return {
-      "rows":len(y),"races":tmp["_race"].nunique(),
-      "mae":mean_absolute_error(y,q),
-      "rmse":math.sqrt(mean_squared_error(y,q)),
-      "race_spearman_mean":float(np.nanmean(corrs)) if corrs else np.nan
-    }
+def score(d,p):
+    y=d.target_lvs.to_numpy(float); p=np.asarray(p,float)
+    ok=np.isfinite(y)&np.isfinite(p); y=y[ok]; p=p[ok]
+    t=d.loc[ok,["_race","target_lvs"]].copy(); t["pred"]=p
+    rho=[]
+    for _,g in t.groupby("_race",sort=False):
+        if len(g)>=3 and g.target_lvs.nunique()>1 and g.pred.nunique()>1:
+            rho.append(g.target_lvs.corr(g.pred,method="spearman"))
+    return dict(rows=len(y),races=t._race.nunique(),mae=mean_absolute_error(y,p),
+      rmse=math.sqrt(mean_squared_error(y,p)),
+      race_spearman_mean=float(np.nanmean(rho)) if rho else np.nan)
 
 def main():
     if not INP.exists(): raise FileNotFoundError(INP)
     d=pd.read_csv(INP,low_memory=False)
-    if not d["_year"].between(2021,2024).all(): raise RuntimeError("Sealed-year breach.")
-    d=d[d["target_lvs"].notna()].copy()
-    d=d[pd.to_numeric(d["h231_hist_perf_runs"],errors="coerce").fillna(0)>=3].copy()
-    features=[c for c in RAW_FEATURES if c in d.columns]
-    if len(features)<20: raise RuntimeError(f"Too few governed features: {len(features)}")
-    for c in features+["target_lvs"]:
-        d[c]=pd.to_numeric(d[c],errors="coerce")
+    if not d._year.between(2021,2024).all(): raise RuntimeError("Sealed-year breach.")
+    d=d[d.target_lvs.notna()].copy()
+    d=d[pd.to_numeric(d.h179_history_runs,errors="coerce").fillna(0)>=3].copy()
+    feats=[c for c in FEATURES if c in d]
+    if len(feats)<35: raise RuntimeError(f"Too few LAB179 features: {len(feats)}")
+    for c in feats+["target_lvs"]: d[c]=pd.to_numeric(d[c],errors="coerce")
 
-    simple={
-      "HIST_EPI_LAST1":"h231_epi_last1",
-      "HIST_EPI_LAST3":"h231_epi_last3_mean",
-      "HIST_EPI_LAST5":"h231_epi_last5_mean",
-      "HIST_EPI_MEDIAN10":"h231_epi_last10_median",
-    }
-    # EPI is a linear transform of LVS; simple EPI baselines are compared by fitting
-    # a dev-only affine mapping to target LVS, never using validation outcomes.
-    rows=[]; preds=[]
-    for test_year in [2022,2023,2024]:
-        train=d[d["_year"]<test_year].copy(); test=d[d["_year"]==test_year].copy()
-        if train.empty or test.empty: continue
+    simple={"CAREER":"h179_epi_career_mean","LAST3":"h179_epi_recent_mean3",
+            "LAST5":"h179_epi_recent_mean5","RECENCY":"h179_recency_weighted_ability",
+            "DISTANCE":"h179_distance_shrunk_ability"}
+    rows=[]; predrows=[]
+    for year in [2022,2023,2024]:
+        tr=d[d._year<year]; te=d[d._year==year]
+        if tr.empty or te.empty: continue
         for name,col in simple.items():
-            z=train[[col,"target_lvs"]].dropna()
+            z=tr[[col,"target_lvs"]].dropna()
             if len(z)<100: continue
-            slope,intercept=np.polyfit(z[col],z["target_lvs"],1)
-            p=test[col].to_numpy(float)*slope+intercept
-            m=metrics(test,p); rows.append({"year":test_year,"model":name,**m})
-            x=test[["_race","_horse","_year","target_lvs"]].copy(); x["model"]=name; x["pred_lvs"]=p; preds.append(x)
-
+            a,b=np.polyfit(z[col],z.target_lvs,1)
+            p=te[col].to_numpy(float)*a+b
+            rows.append({"year":year,"model":"HIST_"+name,**score(te,p)})
+            q=te[["_race","_horse","_year","target_lvs"]].copy(); q["model"]="HIST_"+name;q["pred_lvs"]=p;predrows.append(q)
         models={
           "RIDGE":make_pipeline(SimpleImputer(strategy="median"),StandardScaler(),Ridge(alpha=10.0)),
-          "HGB":HistGradientBoostingRegressor(max_iter=250,learning_rate=.04,max_leaf_nodes=15,l2_regularization=5.0,random_state=245),
-        }
-        for name,model in models.items():
-            model.fit(train[features],train["target_lvs"])
-            p=model.predict(test[features])
-            m=metrics(test,p); rows.append({"year":test_year,"model":name,**m})
-            x=test[["_race","_horse","_year","target_lvs"]].copy(); x["model"]=name; x["pred_lvs"]=p; preds.append(x)
+          "HGB":HistGradientBoostingRegressor(max_iter=250,learning_rate=.04,max_leaf_nodes=15,l2_regularization=5,random_state=245)}
+        for name,m in models.items():
+            m.fit(tr[feats],tr.target_lvs); p=m.predict(te[feats])
+            rows.append({"year":year,"model":name,**score(te,p)})
+            q=te[["_race","_horse","_year","target_lvs"]].copy();q["model"]=name;q["pred_lvs"]=p;predrows.append(q)
 
-    res=pd.DataFrame(rows)
-    pp=pd.concat(preds,ignore_index=True)
-    res.to_csv(RESULTS,index=False); pp.to_csv(PRED,index=False)
-
-    v=res[res.year==2024].copy()
-    simple_v=v[v.model.str.startswith("HIST_")]
-    ml_v=v[v.model.isin(["RIDGE","HGB"])]
-    best_simple=simple_v.sort_values(["mae","rmse"],ascending=True).iloc[0]
-    best_ml=ml_v.sort_values(["mae","rmse"],ascending=True).iloc[0]
-    survive=bool(
-      best_ml.mae < best_simple.mae and
-      best_ml.rmse < best_simple.rmse and
-      best_ml.race_spearman_mean > best_simple.race_spearman_mean
-    )
-    audit={
-      "status":"SURVIVE_TO_LAB245B2" if survive else "REJECT_ML_PERFORMANCE_ENGINE",
-      "rows":int(len(d)),"races":int(d["_race"].nunique()),"features":features,
-      "best_2024_simple":best_simple.to_dict(),"best_2024_ml":best_ml.to_dict(),
-      "holdout_2025_2026_opened":False,"market_used":False
-    }
+    res=pd.DataFrame(rows); pred=pd.concat(predrows,ignore_index=True)
+    res.to_csv(RESULTS,index=False); pred.to_csv(PRED,index=False)
+    v=res[res.year==2024]; bs=v[v.model.str.startswith("HIST_")].sort_values(["mae","rmse"]).iloc[0]
+    bm=v[v.model.isin(["RIDGE","HGB"])].sort_values(["mae","rmse"]).iloc[0]
+    survive=bool(bm.mae<bs.mae and bm.rmse<bs.rmse and bm.race_spearman_mean>bs.race_spearman_mean)
+    audit={"status":"SURVIVE_TO_LAB245B2" if survive else "REJECT_ML_PERFORMANCE_ENGINE",
+      "rows":int(len(d)),"races":int(d._race.nunique()),"feature_count":len(feats),
+      "best_2024_simple":bs.to_dict(),"best_2024_ml":bm.to_dict(),
+      "holdout_2025_2026_opened":False,"market_used":False}
     AUDIT.write_text(json.dumps(audit,indent=2,default=str),encoding="utf-8")
-    print(res.to_string(index=False))
-    print(json.dumps(audit,indent=2,default=str))
-
-if __name__=="__main__":
-    main()
+    print(res.to_string(index=False));print(json.dumps(audit,indent=2,default=str))
+if __name__=="__main__":main()
