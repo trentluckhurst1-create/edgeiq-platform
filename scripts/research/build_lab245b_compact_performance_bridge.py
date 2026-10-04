@@ -3,12 +3,12 @@ import pandas as pd
 import numpy as np
 
 ROOT=Path(__file__).resolve().parents[2]
-LAB026=ROOT/"outputs/research/model_lab_026/edgeiq_certified_flat_walk_forward_epi_026.csv"
+LAB026=ROOT/"outputs/research/profitability_program/lab245b/LAB245B_WAREHOUSE_RUNNER_LVS.csv"
 OUTDIR=ROOT/"outputs/research/profitability_program/lab245b"
 OUT=OUTDIR/"LAB245B_COMPACT_PERFORMANCE_BRIDGE.csv"
 
 NEED=["canonical_race_id","canonical_horse_id","race_date","distance_metres",
-"finish_position","finish_margin","runner_lengths_v_standard_026","epi_value_026"]
+"finish_position","finish_margin","runner_lvs"]
 
 def num(x): return pd.to_numeric(x,errors="coerce")
 
@@ -19,7 +19,7 @@ def main():
     d["canonical_race_id"]=d["canonical_race_id"].astype("string").str.strip()
     d["canonical_horse_id"]=d["canonical_horse_id"].astype("string").str.strip()
     d["race_date"]=pd.to_datetime(d["race_date"],errors="coerce")
-    for c in ["distance_metres","finish_position","finish_margin","runner_lengths_v_standard_026","epi_value_026"]:
+    for c in ["distance_metres","finish_position","finish_margin","runner_lvs"]:
         d[c]=num(d[c])
     d=d.dropna(subset=["canonical_race_id","canonical_horse_id","race_date"])
     d=d.sort_values(["canonical_horse_id","race_date","canonical_race_id"],kind="stable")
@@ -33,7 +33,7 @@ def main():
                 year=int(dt.year)
                 if 2021<=year<=2024:
                     rec={"_race":r.canonical_race_id,"_horse":horse,"_year":year,
-                         "race_date":dt.date().isoformat(),"target_lvs":r.runner_lengths_v_standard_026,
+                         "race_date":dt.date().isoformat(),"target_lvs":r.runner_lvs,
                          "current_distance":r.distance_metres,"hist_runs":len(prior)}
                     if len(prior):
                         e=prior["epi"].dropna(); l=prior["lvs"].dropna(); m=prior["margin"].dropna(); p=prior["pos"].dropna()
@@ -60,7 +60,7 @@ def main():
             # Only after every runner on this date has been scored may this date enter history.
             for _,r in day.iterrows():
                 history.append({"date":dt,"distance":r.distance_metres,"pos":r.finish_position,
-                  "margin":r.finish_margin,"lvs":r.runner_lengths_v_standard_026,"epi":r.epi_value_026})
+                  "margin":r.finish_margin,"lvs":r.runner_lengths_v_standard_026,"epi":r.runner_lvs})
     out=pd.DataFrame(rows)
     if not out["_year"].between(2021,2024).all(): raise RuntimeError("Sealed-year breach.")
     if out.duplicated(["_race","_horse"]).any(): raise RuntimeError("Duplicate race/horse keys.")
