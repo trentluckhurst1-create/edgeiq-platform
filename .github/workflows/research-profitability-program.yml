@@ -1,0 +1,38 @@
+name: EDGEiQ Research Profitability Program
+
+on:
+  push:
+    branches:
+      - research/profitability-program-20261004
+    paths:
+      - "scripts/research/**"
+      - "outputs/research/model_price_diagnostics/lab229/**"
+      - "outputs/research/model_price_diagnostics/lab230/**"
+      - "outputs/research/model_price_diagnostics/lab231/**"
+      - "outputs/research/model_price_diagnostics/lab232/**"
+      - ".github/workflows/research-profitability-program.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  research-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/profitability-program-20261004
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Run governed research bootstrap
+        run: python scripts/research/profitability_program_bootstrap.py
+      - name: Upload audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: edgeiq-profitability-bootstrap
+          path: outputs/research/profitability_program/bootstrap
+          if-no-files-found: warn
