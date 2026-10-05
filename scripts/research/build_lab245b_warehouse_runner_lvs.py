@@ -57,13 +57,13 @@ def main():
  use_group=grp.notna() & ~grp.str.upper().isin(["","UNKNOWN","NAN","NONE","<NA>"])
  d["condition"]=grp.where(use_group,raw).map(cond)
  d.loc[d["condition"].astype("string").str.upper().isin(["","UNKNOWN","NAN","NONE","<NA>"]),"condition"]=pd.NA
- d["track_key"]=d["canonical_track_id"].fillna("").astype(str).str.strip()
+ d["track_key"]=d["canonical_track_id"].fillna("").astype(str).str.strip()\n d.loc[d["track_key"].eq(""),"track_key"]=pd.NA
  d["track_display_key"]=d["track"].fillna("").astype(str).str.strip().str.upper()
  d["layout_key"]=d["track_layout"].fillna("").astype(str).str.strip().str.upper()
  d["jurisdiction_key"]=d["jurisdiction"].fillna("").astype(str).str.strip().str.upper()
  txt=(d["track"].fillna("")+" "+d["track_layout"].fillna("")+" "+d["track_condition"].fillna("")+" "+d["track_condition_group"].fillna("")).str.upper()
  d["surface"]=np.where(txt.str.contains("SYNTHETIC|POLY|TAPETA|FIBRE|FIBER",regex=True),"AUSTRALIAN_SYNTHETIC","TURF")
- d["_valid_time"]=d["official_race_time_seconds"].gt(0)
+ d["_valid_time"]=d["official_race_time_seconds"].between(35,420,inclusive="both")\n d["_valid_distance"]=d["distance_metres"].between(800,3600,inclusive="both")\n d["_eligible_benchmark"]=d["_valid_time"] & d["_valid_distance"] & d["track_key"].notna() & d["condition"].notna()
  rc=d.groupby("canonical_race_id",sort=False).agg(track_n=("track_key","nunique"),date_n=("race_date","nunique"),distance_n=("distance_metres","nunique"),condition_n=("condition","nunique"),time_n=("official_race_time_seconds","nunique"))
  bad=rc[(rc.track_n>1)|(rc.date_n>1)|(rc.distance_n>1)|(rc.condition_n>1)|(rc.time_n>1)]
  if len(bad): raise RuntimeError(f"Canonical race attribute conflicts: {len(bad)} races")
