@@ -30,7 +30,7 @@ def main():
   a["status"]="FAIL"; a["checks"]["disk_space"]={"status":"FAIL","required_free_bytes":2_000_000_000,"actual_free_bytes":int(usage.free)}
  else: a["checks"]["disk_space"]={"status":"PASS","required_free_bytes":2_000_000_000,"actual_free_bytes":int(usage.free)}
  for name,p,size,digest,need in [
-  ("warehouse",WAREHOUSE,WH_SIZE,WH_SHA,{"canonical_race_id","canonical_horse_id","canonical_track_id","race_date","distance_metres","track_condition","finish_position","finish_margin","official_race_time","official_race_time_seconds","time_unit"}),
+  ("warehouse",WAREHOUSE,WH_SIZE,WH_SHA,{"canonical_race_id","canonical_horse_id","canonical_track_id","race_date","jurisdiction","track","track_layout","distance_metres","track_condition","track_condition_group","finish_position","finish_margin","official_race_time","official_race_time_seconds","time_unit"}),
   ("length_conversion",LCP,None,None,{"surface_group","track_condition_group","seconds_per_length"}),
  ]:
   x={"path":str(p),"exists":p.exists()}
