@@ -64,6 +64,7 @@ jobs:
         if: env.LAB == '245b1' || env.LAB == '245b-l27'
         run: |
           python -m py_compile scripts/research/run_lab245b_preflight.py
+          python -m py_compile scripts/research/run_lab245b_preholdout_chain.py
           python -m py_compile scripts/research/build_lab245b_warehouse_runner_lvs.py
           python -m py_compile scripts/research/run_lab245b_target_parity_audit.py
           python -m py_compile scripts/research/build_lab245b_compact_performance_bridge.py
