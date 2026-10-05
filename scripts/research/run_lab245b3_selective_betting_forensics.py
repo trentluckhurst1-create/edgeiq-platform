@@ -54,7 +54,10 @@ def metrics(x):
  sd_pnl=float(pnl.std(ddof=1)) if bets>1 else np.nan
  se_pnl=sd_pnl/np.sqrt(bets) if bets>1 and np.isfinite(sd_pnl) and sd_pnl>0 else np.nan
  profit_z=mean_pnl/se_pnl if np.isfinite(se_pnl) and se_pnl>0 else np.nan
- race_count=int(x["_race"].nunique()) if bets else 0\n max_bets_per_race=int(x.groupby("_race").size().max()) if bets else 0\n multi_bet_race_pct=100.0*float((x.groupby("_race").size()>1).mean()) if bets else np.nan\n return {"bets":bets,"races_bet":race_count,"bets_per_race":bets/race_count if race_count else np.nan,"max_bets_per_race":max_bets_per_race,"multi_bet_race_pct":multi_bet_race_pct,"wins":wins,"strike_pct":100*wins/bets if bets else np.nan,
+ race_count=int(x["_race"].nunique()) if bets else 0
+ max_bets_per_race=int(x.groupby("_race").size().max()) if bets else 0
+ multi_bet_race_pct=100.0*float((x.groupby("_race").size()>1).mean()) if bets else np.nan
+ return {"bets":bets,"races_bet":race_count,"bets_per_race":bets/race_count if race_count else np.nan,"max_bets_per_race":max_bets_per_race,"multi_bet_race_pct":multi_bet_race_pct,"wins":wins,"strike_pct":100*wins/bets if bets else np.nan,
          "profit":float(pnl.sum()),"pot_pct":100*float(pnl.sum())/bets if bets else np.nan,
          "mean_profit_per_bet":mean_pnl,"profit_se_per_bet":se_pnl,"profit_z":profit_z,"race_cluster_profit_z":race_cluster_profit_z,
          "max_drawdown_units":float(-dd.min()) if bets else np.nan,"longest_losing_run":int(longest),
@@ -127,7 +130,8 @@ def main():
     "selection":"2022 only; >=50 bets, POT>=2%, race-clustered profit_z>=0.5; choose highest POT shrunk toward zero by n/(n+200), then freeze policy",
     "development_confirmation":"fixed policy 2023 requires >=50 bets and POT>=1%; pooled 2022-23 requires >=150 bets, POT>=2%, race-clustered profit_z>=1.0, and no single SP band >80% of positive gross profit",
     "development_odds_band_profit":band_profit if selected else {},"development_max_positive_profit_band_share":max_positive_share if selected else None,
-    "validation":"same fixed policy 2024 requires >=100 bets, POT>=1%, race-clustered profit_z>=0.5, and max drawdown <= max(25 units, 25% of bets)",\n    "exposure_diagnostics":"reports races_bet, bets_per_race, max_bets_per_race and multi_bet_race_pct; multiple bets in one race remain correlated exposure and are not treated as independent evidence",
+    "validation":"same fixed policy 2024 requires >=100 bets, POT>=1%, race-clustered profit_z>=0.5, and max drawdown <= max(25 units, 25% of bets)",
+    "exposure_diagnostics":"reports races_bet, bets_per_race, max_bets_per_race and multi_bet_race_pct; multiple bets in one race remain correlated exposure and are not treated as independent evidence",
     "sp_source":str(sp_path),"final_sp_probability_races_total":total_prob_races,"final_sp_complete_field_races":market_covered_races,"final_sp_race_coverage_pct":market_coverage_pct,"final_sp_role":"HISTORICAL_POLICY_SELECTION_AND_FORENSICS_ONLY",
     "deployability_limitation":"Final SP is not a deployable offered price. Any surviving policy requires validation on actual pre-race offered odds.",
     "holdout_2025_2026_opened":False,"market_used_in_probability_model":False}
