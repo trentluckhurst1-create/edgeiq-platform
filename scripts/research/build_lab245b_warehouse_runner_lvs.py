@@ -15,7 +15,7 @@ PREFLIGHT=OUT.parent/"LAB245B_PREFLIGHT.json"
 BENCHMARK_CHECKPOINT=OUT.parent/"LAB245B_STRICT_PIT_RACE_BENCHMARK_CHECKPOINT.csv"
 BENCHMARK_CHECKPOINT_META=OUT.parent/"LAB245B_STRICT_PIT_RACE_BENCHMARK_CHECKPOINT.json"
 # V8 freezes original V1 0.17 sec/length while making the benchmark strict date-PIT.
-CONTRACT_VERSION="LAB245B_STRICT_PIT_LVS_V8_V1_LENGTH_CONVERSION_TRACK_DISTANCE_CONDITION_MIN20"
+CONTRACT_VERSION="LAB245B_STRICT_PIT_LVS_V9_GOVERNED_TIME_PRECEDENCE_V1_LENGTH_CONVERSION_TRACK_DISTANCE_CONDITION_MIN20"
 MIN_SAMPLE=20
 V1_SECONDS_PER_LENGTH=0.17
 V1_LENGTH_CONVERSION_CONTRACT="edgeiq_lengths_v_standard_methodology_v1.json:GOVERNED_CONSTANT_FROM_EXISTING_LENGTH_CONVERSION_CONTEXT_V1"
@@ -77,29 +77,26 @@ def main():
  d["_valid_time"]=d["official_race_time_seconds"].notna() & d["official_race_time_seconds"].gt(0) & ~unit.isin(["unknown","invalid"])
  d["_valid_distance"]=d["distance_metres"].notna() & d["distance_metres"].gt(0)
  d["_eligible_benchmark"]=d["_valid_time"] & d["_valid_distance"] & d["track_key"].notna() & d["condition"].notna()
- rc=d.groupby("canonical_race_id",sort=False).agg(track_n=("track_key","nunique"),date_n=("race_date","nunique"),distance_n=("distance_metres","nunique"),condition_n=("condition","nunique"),field_size_n=("field_size","nunique"),time_n=("official_race_time_seconds","nunique"))
- bad=rc[(rc.track_n>1)|(rc.date_n>1)|(rc.distance_n>1)|(rc.condition_n>1)|(rc.field_size_n>1)|(rc.time_n>1)]
- if len(bad):
-  conflict_cols=["track_key","race_date","distance_metres","condition","field_size","official_race_time_seconds","time_unit"]
-  bad_ids=set(bad.index.astype(str))
-  diag=d[d["canonical_race_id"].astype(str).isin(bad_ids)][["canonical_race_id","canonical_horse_id"]+conflict_cols].copy()
-  diag=diag.sort_values(["canonical_race_id","canonical_horse_id"],kind="stable")
-  diag_path=OUT.parent/"LAB245B_CANONICAL_RACE_ATTRIBUTE_CONFLICTS.csv"
-  diag.to_csv(diag_path,index=False)
-  summary=[]
-  for rid,g in diag.groupby("canonical_race_id",sort=False):
-   item={"canonical_race_id":str(rid),"rows":int(len(g))}
-   for col in conflict_cols:
-    vals=g[col].dropna().astype(str).drop_duplicates().tolist()
-    if len(vals)>1: item[col]=vals
-   summary.append(item)
-  summary_path=OUT.parent/"LAB245B_CANONICAL_RACE_ATTRIBUTE_CONFLICTS.json"
-  summary_path.write_text(json.dumps(summary,indent=2,default=str),encoding="utf-8")
-  print(f"CANONICAL_RACE_ATTRIBUTE_CONFLICT_DIAGNOSTIC={diag_path}")
-  print(json.dumps(summary,indent=2,default=str))
-  raise RuntimeError(f"Canonical race attribute conflicts: {len(bad)} races; diagnostic written")
+ rc_identity=d.groupby("canonical_race_id",sort=False).agg(track_n=("track_key","nunique"),date_n=("race_date","nunique"),distance_n=("distance_metres","nunique"),condition_n=("condition","nunique"),field_size_n=("field_size","nunique"))
+ bad_identity=rc_identity[(rc_identity.track_n>1)|(rc_identity.date_n>1)|(rc_identity.distance_n>1)|(rc_identity.condition_n>1)|(rc_identity.field_size_n>1)]
+ if len(bad_identity): raise RuntimeError(f"Canonical race identity attribute conflicts: {len(bad_identity)} races")
+ governed=d["time_unit"].astype("string").str.strip().str.upper().eq("CENTISECONDS_TO_SECONDS_V1") & d["official_race_time_seconds"].notna() & d["official_race_time_seconds"].gt(0)
+ governed_time_n=d.loc[governed].groupby("canonical_race_id")["official_race_time_seconds"].nunique()
+ bad_governed=governed_time_n[governed_time_n>1]
+ if len(bad_governed): raise RuntimeError(f"Governed race time conflicts remain after precedence: {len(bad_governed)} races")
+ d["_governed_time"]=governed
+ d["_race_has_governed_time"]=d.groupby("canonical_race_id")["_governed_time"].transform("any")
+ d["_benchmark_time_candidate"]=d["_governed_time"] | (~d["_race_has_governed_time"] & d["_valid_time"])
+ time_n=d.loc[d["_benchmark_time_candidate"]].groupby("canonical_race_id")["official_race_time_seconds"].nunique()
+ bad_fallback=time_n[time_n>1]
+ if len(bad_fallback): raise RuntimeError(f"Fallback race time conflicts without governed authority: {len(bad_fallback)} races")
+ resolved_races=int((d.groupby("canonical_race_id")["official_race_time_seconds"].nunique()>1).sum())
+ print(f"GOVERNED_TIME_PRECEDENCE=PASS MULTI_TIME_RACES_RESOLVED={resolved_races:,} POLICY=CENTISECONDS_TO_SECONDS_V1_OVER_UNSUPPORTED_TIME_UNIT")
+ rc=rc_identity
  print(f"CANONICAL_RACE_ATTRIBUTE_INVARIANT=PASS RACES={len(rc):,}")
  d["_winner"]=d["finish_position"].eq(1)
+ d["_valid_time"]=d["_valid_time"] & d["_benchmark_time_candidate"]
+ d["_eligible_benchmark"]=d["_valid_time"] & d["_valid_distance"] & d["track_key"].notna() & d["condition"].notna()
  d["_race_pick_priority"]=np.select([d["_winner"] & d["_valid_time"],d["_valid_time"],d["_winner"]],[3,2,1],default=0)
  r=d.sort_values(["canonical_race_id","_race_pick_priority"],ascending=[True,False],kind="stable").drop_duplicates("canonical_race_id")
  timed_races=int(r["_valid_time"].sum())
