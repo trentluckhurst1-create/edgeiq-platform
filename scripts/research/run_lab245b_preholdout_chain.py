@@ -113,10 +113,15 @@ def main():
         return
 
     a2p=OUT/"LAB245B2_AUDIT.json"
+    a2=None
     if a2p.exists():
-        a2=audit("LAB245B2_AUDIT.json")
-        print(f"RESUME_CHECKPOINT=B2 AUDIT_STATUS={a2.get('status')}")
-    else:
+        old=audit("LAB245B2_AUDIT.json")
+        if old.get("b1_oof_predictions_sha256")==a1.get("oof_predictions_sha256"):
+            a2=old
+            print(f"RESUME_CHECKPOINT=B2_VALID_LINEAGE AUDIT_STATUS={a2.get('status')}")
+        else:
+            print("RESUME_CHECKPOINT=B2_STALE_LINEAGE; RERUN=YES")
+    if a2 is None:
         run("scripts/research/run_lab245b2_probability_challenger.py")
         a2=audit("LAB245B2_AUDIT.json")
     if a2.get("status")!="SURVIVE_TO_LAB245B3":
@@ -124,10 +129,15 @@ def main():
         return
 
     a3p=OUT/"LAB245B3_AUDIT.json"
+    a3=None
     if a3p.exists():
-        a3=audit("LAB245B3_AUDIT.json")
-        print(f"RESUME_CHECKPOINT=B3 AUDIT_STATUS={a3.get('status')}")
-    else:
+        old=audit("LAB245B3_AUDIT.json")
+        if old.get("b2_oof_probabilities_sha256")==a2.get("oof_probabilities_sha256"):
+            a3=old
+            print(f"RESUME_CHECKPOINT=B3_VALID_LINEAGE AUDIT_STATUS={a3.get('status')}")
+        else:
+            print("RESUME_CHECKPOINT=B3_STALE_LINEAGE; RERUN=YES")
+    if a3 is None:
         run("scripts/research/run_lab245b3_selective_betting_forensics.py")
         a3=audit("LAB245B3_AUDIT.json")
     print(f"CHAIN_STOP=PREHOLDOUT_COMPLETE B3_STATUS={a3.get('status')}")
