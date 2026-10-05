@@ -79,7 +79,14 @@ def main():
     a1p=OUT/"LAB245B1_AUDIT.json"
     if a1p.exists():
         a1=audit("LAB245B1_AUDIT.json")
-        print(f"RESUME_CHECKPOINT=B1 AUDIT_STATUS={a1.get('status')}")
+        tm=audit("LAB245B_WAREHOUSE_RUNNER_LVS.manifest.json")
+        stale=not (a1.get("target_contract_version")==EXPECTED_TARGET_CONTRACT and a1.get("target_output_sha256")==tm.get("output_sha256"))
+        if stale:
+            print("RESUME_CHECKPOINT=B1_STALE_LINEAGE; RERUN=YES")
+            run("scripts/research/run_lab245b1_next_performance_forecast.py")
+            a1=audit("LAB245B1_AUDIT.json")
+        else:
+            print(f"RESUME_CHECKPOINT=B1_VALID_LINEAGE AUDIT_STATUS={a1.get('status')}")
     else:
         run("scripts/research/run_lab245b1_next_performance_forecast.py")
         a1=audit("LAB245B1_AUDIT.json")
