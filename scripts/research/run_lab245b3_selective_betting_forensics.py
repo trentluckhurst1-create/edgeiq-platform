@@ -56,7 +56,7 @@ def metrics(x):
  return {"bets":bets,"wins":wins,"strike_pct":100*wins/bets if bets else np.nan,
          "profit":float(pnl.sum()),"pot_pct":100*float(pnl.sum())/bets if bets else np.nan,
          "mean_profit_per_bet":mean_pnl,"profit_se_per_bet":se_pnl,"profit_z":profit_z,
-         "max_drawdown_units":float(dd.min()) if bets else np.nan,"longest_losing_run":int(longest),
+         "max_drawdown_units":float(-dd.min()) if bets else np.nan,"longest_losing_run":int(longest),
          "mean_sp":float(x["_sp"].mean()) if bets else np.nan,
          "mean_edge_ratio":float(x["edge_ratio"].mean()) if bets else np.nan}
 
