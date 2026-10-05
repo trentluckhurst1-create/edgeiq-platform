@@ -1,6 +1,7 @@
 from pathlib import Path
 import os
 import hashlib
+import json
 from bisect import insort
 import pandas as pd
 import numpy as np
@@ -9,7 +10,9 @@ ROOT=Path(__file__).resolve().parents[2]
 DATA_ROOT=Path(os.environ.get("EDGEIQ_DATA_ROOT",str(ROOT))).resolve()
 WAREHOUSE=DATA_ROOT/"docs/performance-intelligence/warehouse/edgeiq_performance_fact_warehouse_v1.csv"
 LCP=DATA_ROOT/"public/data/edgeiq_length_conversion_parameter_fact_v2.csv"
-OUT=ROOT/"outputs/research/profitability_program/lab245b/LAB245B_WAREHOUSE_RUNNER_LVS.csv"\nMANIFEST=OUT.with_suffix(".manifest.json")\nCONTRACT_VERSION="LAB245B_STRICT_PIT_LVS_V3_TRACK_DISTANCE_CONDITION_MIN20_VALID_FINISH"
+OUT=ROOT/"outputs/research/profitability_program/lab245b/LAB245B_WAREHOUSE_RUNNER_LVS.csv"
+MANIFEST=OUT.with_suffix(".manifest.json")
+CONTRACT_VERSION="LAB245B_STRICT_PIT_LVS_V3_TRACK_DISTANCE_CONDITION_MIN20_VALID_FINISH"
 MIN_SAMPLE=20
 EXPECTED_WAREHOUSE_SIZE=416143437
 EXPECTED_WAREHOUSE_SHA256="bcdcef1c7cb9144feae5783ca2fa83b1dc2b8dc07a42ac31c31fd7bd12b53107"
@@ -49,7 +52,11 @@ def main():
   unit_err=(d.loc[cs,"official_race_time"]/100.0-d.loc[cs,"official_race_time_seconds"]).abs().max()
   if unit_err>0.001: raise RuntimeError(f"Centiseconds conversion invariant failed max_abs_error={unit_err}")
   print(f"CENTISECONDS_UNIT_CHECK=PASS ROWS={int(cs.sum()):,} MAX_ABS_ERROR={unit_err:.9f}")
- grp=d["track_condition_group"].astype("string").str.strip()\n raw=d["track_condition"].astype("string").str.strip()\n use_group=grp.notna() & ~grp.str.upper().isin(["","UNKNOWN","NAN","NONE","<NA>"])\n d["condition"]=grp.where(use_group,raw).map(cond)\n d.loc[d["condition"].astype("string").str.upper().isin(["","UNKNOWN","NAN","NONE","<NA>"]),"condition"]=pd.NA
+ grp=d["track_condition_group"].astype("string").str.strip()
+ raw=d["track_condition"].astype("string").str.strip()
+ use_group=grp.notna() & ~grp.str.upper().isin(["","UNKNOWN","NAN","NONE","<NA>"])
+ d["condition"]=grp.where(use_group,raw).map(cond)
+ d.loc[d["condition"].astype("string").str.upper().isin(["","UNKNOWN","NAN","NONE","<NA>"]),"condition"]=pd.NA
  d["track_key"]=d["canonical_track_id"].fillna("").astype(str).str.strip()
  d["track_display_key"]=d["track"].fillna("").astype(str).str.strip().str.upper()
  d["layout_key"]=d["track_layout"].fillna("").astype(str).str.strip().str.upper()
@@ -110,7 +117,9 @@ def main():
  out["runner_lvs"]=out["race_lvs"]-out["finish_margin"]
  out["runner_time_equivalent_seconds"]=out["official_race_time_seconds"]+out["finish_margin"]*out["seconds_per_length"]
  keep=["canonical_race_id","canonical_horse_id","race_date","distance_metres","finish_position","finish_margin","runner_time_equivalent_seconds","runner_lvs","race_lvs","standard_time_seconds","seconds_per_length","benchmark_n"]
- out[keep].to_csv(OUT,index=False)\n manifest={"contract_version":CONTRACT_VERSION,"warehouse_sha256":digest,"warehouse_bytes":WAREHOUSE.stat().st_size,"pit_policy":"STRICT_DATE_LT_TARGET_DATE","benchmark_grouping":"canonical_track_id+distance_metres+condition","minimum_prior_races":MIN_SAMPLE,"runner_formula":"race_lvs-finish_margin","valid_runner_rule":"finish_position>0 and finite nonnegative finish_margin","rows":int(len(out)),"races":int(out["canonical_race_id"].nunique())}\n MANIFEST.write_text(json.dumps(manifest,indent=2),encoding="utf-8")
+ out[keep].to_csv(OUT,index=False)
+ manifest={"contract_version":CONTRACT_VERSION,"warehouse_sha256":digest,"warehouse_bytes":WAREHOUSE.stat().st_size,"pit_policy":"STRICT_DATE_LT_TARGET_DATE","benchmark_grouping":"canonical_track_id+distance_metres+condition","minimum_prior_races":MIN_SAMPLE,"runner_formula":"race_lvs-finish_margin","valid_runner_rule":"finish_position>0 and finite nonnegative finish_margin","rows":int(len(out)),"races":int(out["canonical_race_id"].nunique())}
+ MANIFEST.write_text(json.dumps(manifest,indent=2),encoding="utf-8")
  lvs_races=r["canonical_race_id"].nunique()
  print(f"SOURCE_ROWS={len(d):,}")
  print(f"TIMED_RACES={timed_races:,}")
@@ -120,10 +129,12 @@ def main():
  print("RUNNER_LVS_POLICY=ORIGINAL_PRODUCER_ALGEBRA_WITH_GOVERNED_SURFACE_CONDITION_LENGTH_CONVERSION")
  print("RUNNER_TIME_EQUIVALENT_POLICY=ORIGINAL_PRODUCER_RACE_TIME_PLUS_MARGIN_X_SECONDS_PER_LENGTH")
  print("BENCHMARK_GROUPING=GOVERNED_CONTRACT_TRACK_ID_DISTANCE_CONDITION_MIN20_MEDIAN")
- print("BENCHMARK_CONTRACT=edgeiq_standard_time_grouping_contract_v1 APPROVED=track+distance+condition MIN_OBS=20")\n print("BENCHMARK_POLICY=LAB245B_STRICT_DATE_PIT_NOT_OLD_ALL_HISTORY_PRODUCTION_STANDARD")
+ print("BENCHMARK_CONTRACT=edgeiq_standard_time_grouping_contract_v1 APPROVED=track+distance+condition MIN_OBS=20")
+ print("BENCHMARK_POLICY=LAB245B_STRICT_DATE_PIT_NOT_OLD_ALL_HISTORY_PRODUCTION_STANDARD")
  print("BENCHMARK_OUTLIER_POLICY=NONE")
  print("KNOWN_RECOVERY_TIMED_RACES=70,308 DELTA_RACES=54,978 LVS_RACES=52,414")
  if abs(timed_races-70308)>10:raise RuntimeError("Timed-race recovery count materially disagrees with certified audit.")
  if lvs_races<=0 or lvs_races>=timed_races:raise RuntimeError("Invalid PIT LVS recovery funnel.")
- print(f"OUT={OUT}")\n print(f"MANIFEST={MANIFEST}")
+ print(f"OUT={OUT}")
+ print(f"MANIFEST={MANIFEST}")
 if __name__=="__main__":main()
