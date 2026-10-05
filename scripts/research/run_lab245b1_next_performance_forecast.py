@@ -54,10 +54,9 @@ def main():
     dev=pred[pred["_year"].isin([2022,2023])]
     dev_rows=[]
     for name,g in dev.groupby("model",sort=False):
-        base=d[d["_year"].isin([2022,2023])][["_race","_horse","_year","target_lvs"]]
-        z=base.merge(g[["_race","_horse","_year","pred_lvs"]],on=["_race","_horse","_year"],how="inner")
-        dev_rows.append({"model":name,**score(z.rename(columns={"pred_lvs":"pred"}),z["pred"].to_numpy(float))})
+        dev_rows.append({"model":name,**score(g,g["pred_lvs"].to_numpy(float))})
     devres=pd.DataFrame(dev_rows)
+    devres.to_csv(OUTDIR/"LAB245B1_DEVELOPMENT_SELECTION.csv",index=False)
     bs_dev=devres[devres["model"].isin(BASELINES)].sort_values(["mae","rmse"]).iloc[0]
     bm_dev=devres[devres["model"].isin(["RIDGE","HGB"])].sort_values(["mae","rmse"]).iloc[0]
     v=res[res["year"]==2024]
