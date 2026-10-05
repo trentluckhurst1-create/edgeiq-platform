@@ -48,20 +48,22 @@ def main():
     print("HOLDOUT_POLICY=2025_2026_CANNOT_BE_OPENED_BY_THIS_LAUNCHER")
     run("scripts/research/run_lab245b_preflight.py")
 
-    # Primary path: immutable historical runner-LVS authority. The warehouse is
-    # used only to enrich canonical performance IDs with race_date/distance.
-    if AUTHORITY.exists():
-        print("TARGET_SOURCE=VERIFIED_RUNNER_LVS_AUTHORITY")
-        print("WAREHOUSE_ROLE=IDENTITY_ENRICHMENT_ONLY")
-        run("scripts/research/build_lab245b_compact_performance_bridge.py")
+    # Forecasting target must be strict date-PIT. The historical 533,387-row
+    # runner-LVS authority is formula/parity evidence only because its legacy
+    # standard-time benchmark construction used all-history observations.
+    print("TARGET_SOURCE=STRICT_PIT_WAREHOUSE_RECONSTRUCTION")
+    if target_checkpoint_valid():
+        print("RESUME_CHECKPOINT=LAB245B_STRICT_PIT_TARGET_VALID; SKIP_REBUILD=YES")
     else:
-        print("TARGET_SOURCE=STRICT_PIT_WAREHOUSE_RECONSTRUCTION_FALLBACK")
-        if target_checkpoint_valid():
-            print("RESUME_CHECKPOINT=LAB245B_STRICT_PIT_TARGET_VALID; SKIP_REBUILD=YES")
-        else:
-            run("scripts/research/build_lab245b_warehouse_runner_lvs.py")
+        run("scripts/research/build_lab245b_warehouse_runner_lvs.py")
+    if AUTHORITY.exists():
+        if not authority_valid():
+            raise RuntimeError("Runner-LVS parity authority exists but fails immutable size/SHA verification.")
+        print("PARITY_AUTHORITY=VERIFIED_IMMUTABLE; FORECAST_TARGET_USE=NO")
         run("scripts/research/run_lab245b_target_parity_audit.py")
-        run("scripts/research/build_lab245b_compact_performance_bridge.py")
+    else:
+        print("PARITY_AUTHORITY=ABSENT; PARITY_AUDIT=SKIPPED")
+    run("scripts/research/build_lab245b_compact_performance_bridge.py")
 
     run("scripts/research/run_lab245b1_next_performance_forecast.py")
     a1=audit("LAB245B1_AUDIT.json")
