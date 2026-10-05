@@ -14,6 +14,7 @@ INP=ROOT/"outputs/research/profitability_program/lab245b/LAB245B_COMPACT_PERFORM
 OUTDIR=INP.parent
 FEATURES=["hist_runs","current_distance","lvs_last1","lvs_mean3","lvs_mean5","lvs_median5","lvs_std5","lvs_peak","lvs_worst5","margin_mean5","margin_worst5","margin_std5","finishpos_mean5","days_since_last","dist200_runs","dist200_lvs_mean","dist200_lvs_best"]
 BASELINES={"LVS_LAST1":"lvs_last1","LVS_MEAN3":"lvs_mean3","LVS_MEAN5":"lvs_mean5","LVS_MEDIAN5":"lvs_median5","DIST200_LVS":"dist200_lvs_mean"}
+SELECTABLE_BASELINES={"LVS_LAST1","LVS_MEAN3","LVS_MEAN5","LVS_MEDIAN5"}
 
 def score(d,p):
     y=d["target_lvs"].to_numpy(float); p=np.asarray(p,float)
@@ -31,6 +32,10 @@ def main():
     if not d["_year"].between(2021,2024).all(): raise RuntimeError("Sealed-year breach.")
     d=d[d["target_lvs"].notna()].copy()
     d=d[pd.to_numeric(d["hist_runs"],errors="coerce").fillna(0)>=3].copy()
+    # Common evaluation universe for simple-vs-ML selection: require a finite recency LVS history.
+    # DIST200 remains diagnostic because its availability is conditional on distance-near history.
+    d=d[np.isfinite(pd.to_numeric(d["lvs_mean3"],errors="coerce"))].copy()
+    coverage={str(int(y)):{"rows":int(len(g)),"races":int(g["_race"].nunique())} for y,g in d.groupby("_year",sort=True)}
     feats=[x for x in FEATURES if x in d.columns]
     if len(feats)!=len(FEATURES): raise RuntimeError(f"Missing governed features: {sorted(set(FEATURES)-set(feats))}")
     for x in feats+["target_lvs"]: d[x]=pd.to_numeric(d[x],errors="coerce")
@@ -57,13 +62,13 @@ def main():
         dev_rows.append({"model":name,**score(g,g["pred_lvs"].to_numpy(float))})
     devres=pd.DataFrame(dev_rows)
     devres.to_csv(OUTDIR/"LAB245B1_DEVELOPMENT_SELECTION.csv",index=False)
-    bs_dev=devres[devres["model"].isin(BASELINES)].sort_values(["mae","rmse"]).iloc[0]
+    bs_dev=devres[devres["model"].isin(SELECTABLE_BASELINES)].sort_values(["mae","rmse"]).iloc[0]
     bm_dev=devres[devres["model"].isin(["RIDGE","HGB"])].sort_values(["mae","rmse"]).iloc[0]
     v=res[res["year"]==2024]
     bs=v[v["model"]==bs_dev["model"]].iloc[0]
     bm=v[v["model"]==bm_dev["model"]].iloc[0]
     survive=bool(bm_dev["mae"]<bs_dev["mae"] and bm_dev["rmse"]<bs_dev["rmse"] and bm_dev["race_spearman_mean"]>bs_dev["race_spearman_mean"] and bm["mae"]<bs["mae"] and bm["rmse"]<bs["rmse"] and bm["race_spearman_mean"]>bs["race_spearman_mean"])
-    audit={"status":"SURVIVE_TO_LAB245B2" if survive else "REJECT_ML_PERFORMANCE_ENGINE","rows":int(len(d)),"races":int(d["_race"].nunique()),"feature_count":len(feats),"development_selection_rule":"EQUAL_RANK_MAE_RMSE_RACE_SPEARMAN_2022_2023_ONLY","dev_selected_simple":bs_dev.to_dict(),"dev_selected_ml":bm_dev.to_dict(),"validation_2024_simple":bs.to_dict(),"validation_2024_ml":bm.to_dict(),"holdout_2025_2026_opened":False,"market_used":False,"coverage_by_year":coverage}
+    audit={"status":"SURVIVE_TO_LAB245B2" if survive else "REJECT_ML_PERFORMANCE_ENGINE","rows":int(len(d)),"races":int(d["_race"].nunique()),"feature_count":len(feats),"development_selection_rule":"COMMON_COVERAGE_RECENCY_BASELINE_VS_ML_MAE_RMSE_RACE_SPEARMAN_2022_2023_ONLY","dev_selected_simple":bs_dev.to_dict(),"dev_selected_ml":bm_dev.to_dict(),"validation_2024_simple":bs.to_dict(),"validation_2024_ml":bm.to_dict(),"holdout_2025_2026_opened":False,"market_used":False,"coverage_by_year":coverage}
     (OUTDIR/"LAB245B1_AUDIT.json").write_text(json.dumps(audit,indent=2,default=str),encoding="utf-8")
     print(res.to_string(index=False)); print(json.dumps(audit,indent=2,default=str))
 if __name__=="__main__": main()
