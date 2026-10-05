@@ -58,16 +58,16 @@ Data governance:
 - Frozen warehouse authority: 879,784 rows; 416,143,437 bytes; SHA-256 bcdcef1c7cb9144feae5783ca2fa83b1dc2b8dc07a42ac31c31fd7bd12b53107.
 - Historical 533,387-row runner-LVS authority is parity/reference evidence only because its production standard times used all-history observations.
 - Forecasting labels are reconstructed with standards using races strictly before the target race date.
-- Standard-time governed downstream key: canonical track ID + distance + condition + jurisdiction; median; minimum 20 prior races; no trimming/winsorisation/outlier removal.
+- Standard-time governed key: canonical track ID + distance + condition; median; minimum 20 prior races; no trimming/winsorisation/outlier removal. This matches edgeiq_standard_time_grouping_contract_v1; jurisdiction is not part of the benchmark key.
 - Runner LVS algebra: race LVS minus finish margin. Positive is faster/better than standard. The historical producer used a flat 0.17 seconds/length; LAB245B intentionally uses the later governed surface/condition conversion authority.
 - Centisecond conversion is fail-closed against official_race_time / 100.
 - Governed surface/condition seconds-per-length parameters are frozen and checked before target construction.
 
 Stage gates:
-1. LAB245B1: predict next-race runner LVS. Architecture/model selection uses 2022-23 OOF only; 2024 is fixed confirmation.
-2. LAB245B2: convert the selected performance forecast to race probabilities. Temperature is selected on 2022-23 only and fixed for 2024.
+1. LAB245B1: predict next-race runner LVS. Architecture/model selection uses 2022-23 OOF only; the challenger must beat the selected simple baseline separately in 2022 and 2023, pooled development, and fixed 2024 on MAE, RMSE and within-race Spearman.
+2. LAB245B2: convert the selected performance forecast to race probabilities. Temperature is selected on 2022-23 only and fixed for 2024; ML probabilities must beat the simple baseline separately in 2022 and 2023, pooled development, and fixed 2024 on winner log loss and runner Brier.
 3. LAB245B3: final-SP betting forensics only. 2022 selects a policy; the same policy must confirm in 2023 and validate in 2024 with minimum volume.
-4. LAB245B4: 2025-26 remains sealed unless LAB245B3 survives. On opening, architecture, hyperparameters, temperature and betting policy are frozen; no holdout reselection is allowed.
+4. LAB245B4: 2025-26 remains sealed unless LAB245B3 survives. Opening requires an explicit manual holdout dispatch; normal workflow/local-chain execution cannot invoke B4. On opening, architecture, hyperparameters, temperature and betting policy are frozen; no holdout reselection is allowed.
 
 Final-SP limitation:
 - LAB245B3/4 final-SP economics are historical forensic tests.
