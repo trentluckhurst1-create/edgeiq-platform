@@ -58,10 +58,10 @@ Data governance:
 - Frozen warehouse authority: 879,784 rows; 416,143,437 bytes; SHA-256 bcdcef1c7cb9144feae5783ca2fa83b1dc2b8dc07a42ac31c31fd7bd12b53107.
 - Historical 533,387-row runner-LVS authority is parity/reference evidence only because its production standard times used all-history observations.
 - Forecasting labels are reconstructed with standards using races strictly before the target race date.
-- Standard-time governed key: canonical track ID + distance + condition; median; minimum 20 prior races; no trimming/winsorisation/outlier removal. This matches edgeiq_standard_time_grouping_contract_v1; jurisdiction is not part of the benchmark key.
-- Runner LVS algebra: race LVS minus finish margin. Positive is faster/better than standard. The historical producer used a flat 0.17 seconds/length; LAB245B intentionally uses the later governed surface/condition conversion authority.
+- Standard-time implementation key recovered from the original producer: canonical track ID + distance + condition + jurisdiction; median; minimum 20 prior races; no trimming/winsorisation/outlier removal. The grouping contract described track + distance + condition, while the actual producer index also keyed jurisdiction; LAB245B follows the executable producer contract and applies strict date-PIT history.
+- Runner LVS algebra: race LVS minus finish margin. Positive is faster/better than standard. The historical producer used a governed flat 0.17 seconds/length; LAB245B1 baseline reproduces that 0.17 conversion so the only intentional target change is strict date-PIT benchmark construction. Condition-dependent conversion is reserved for a separately named challenger.
 - Centisecond conversion is fail-closed against official_race_time / 100.
-- Governed surface/condition seconds-per-length parameters are frozen and checked before target construction.
+- Baseline seconds-per-length is frozen at the recovered producer value 0.17. Any surface/condition conversion experiment must be separately named and may not silently replace the baseline.
 
 Stage gates:
 1. LAB245B1: predict next-race runner LVS. Architecture/model selection uses 2022-23 OOF only; the challenger must beat the selected simple baseline separately in 2022 and 2023, pooled development, and fixed 2024 on MAE, RMSE and within-race Spearman.
