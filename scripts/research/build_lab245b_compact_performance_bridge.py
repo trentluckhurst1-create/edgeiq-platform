@@ -13,7 +13,7 @@ AUTHORITY_SHA256="b08bb7a334ddba2f6a76942452dd964cd59db05001dc5710ff19aa7fc6e129
 PARITY_AUTHORITY_ONLY=True  # LOCKED: historical 533,387-row authority used all-history benchmark construction. It is formula/parity evidence only; forecasting target must be strict date-PIT.
 OUTDIR=ROOT/"outputs/research/profitability_program/lab245b"
 OUT=OUTDIR/"LAB245B_COMPACT_PERFORMANCE_BRIDGE.csv"
-NEED=["canonical_race_id","canonical_horse_id","race_date","distance_metres","finish_position","finish_margin","runner_lvs"]
+NEED=["canonical_race_id","canonical_horse_id","race_date","distance_metres","finish_position","finish_margin","runner_lvs","target_field_size"]
 
 def load_source():
  import hashlib
@@ -73,7 +73,7 @@ def load_source():
  if not FALLBACK.exists(): raise FileNotFoundError(f"Neither authority nor fallback exists: {AUTHORITY} | {FALLBACK}")
  print("SOURCE=STRICT_PIT_WAREHOUSE_RECONSTRUCTION")
  if AUTHORITY.exists(): print("PARITY_AUTHORITY_PRESENT_BUT_NOT_USED_AS_TARGET=YES")
- return pd.read_csv(FALLBACK,usecols=NEED,low_memory=False)
+ d=pd.read_csv(FALLBACK,usecols=[x for x in NEED if x!="target_field_size"],low_memory=False)\n # Strict-PIT target covers only benchmark-eligible runners; recover declared field size from immutable warehouse.\n warehouse=DATA_ROOT/"docs/performance-intelligence/warehouse/edgeiq_performance_fact_warehouse_v1.csv"\n if not warehouse.exists(): raise FileNotFoundError("Warehouse required for full target field-size governance.")\n counts={}\n for ch in pd.read_csv(warehouse,usecols=["canonical_race_id","canonical_horse_id"],dtype="string",chunksize=200000,low_memory=False):\n  ch["canonical_race_id"]=ch["canonical_race_id"].str.strip(); ch["canonical_horse_id"]=ch["canonical_horse_id"].str.strip()\n  for rid,n in ch.dropna().drop_duplicates(["canonical_race_id","canonical_horse_id"]).groupby("canonical_race_id")["canonical_horse_id"].nunique().items(): counts[str(rid)]=counts.get(str(rid),0)+int(n)\n d["target_field_size"]=d["canonical_race_id"].astype("string").str.strip().map(counts)\n return d[NEED]
 
 def stats(a,n):
  x=np.asarray(a[-n:],dtype=float)
@@ -106,7 +106,7 @@ def main():
     year=int(dt.year)
     if 2021<=year<=2024:
      rec={"_race":r.canonical_race_id,"_horse":horse,"_year":year,"race_date":dt.date().isoformat(),
-          "target_lvs":r.runner_lvs,"target_finish_position":r.finish_position,"target_field_size":field_sizes.get(r.canonical_race_id,np.nan),"current_distance":r.distance_metres,"hist_runs":len(hist),
+          "target_lvs":r.runner_lvs,"target_finish_position":r.finish_position,"target_field_size":r.target_field_size,"current_distance":r.distance_metres,"hist_runs":len(hist),
           "lvs_last1":lvs[-1] if lvs else np.nan,"lvs_mean3":l3[0],"lvs_mean5":l5[0],
           "lvs_median5":l5[1],"lvs_std5":l5[2],"lvs_peak":max(lvs) if lvs else np.nan,
           "lvs_worst5":min(lvs[-5:]) if lvs else np.nan,
