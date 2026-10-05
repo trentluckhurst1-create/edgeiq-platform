@@ -65,7 +65,7 @@ def main():
  print("SEALED_2025_2026_LOADED=NO")
  baselines={"LVS_LAST1":"epi_last1","LVS_MEAN3":"epi_last3_mean","LVS_MEAN5":"epi_last5_mean",
             "LVS_CAREER":"epi_career_mean"}
- rows=[]; oof={}
+ rows=[]; oof={}; pred_rows=[]
  for year in [2022,2023,2024]:
   tr=d[d._year<year]; te=d[d._year==year]
   if tr.empty or te.empty: continue
@@ -110,7 +110,7 @@ def main():
           and confirm.loc[best_ml.model,"mae"]<confirm.loc[best_base.model,"mae"]
           and confirm.loc[best_ml.model,"rmse"]<confirm.loc[best_base.model,"rmse"]
           and confirm.loc[best_ml.model,"race_spearman"]>confirm.loc[best_base.model,"race_spearman"])
- OUTDIR.mkdir(parents=True,exist_ok=True); res.to_csv(OUT,index=False)
+ OUTDIR.mkdir(parents=True,exist_ok=True); res.to_csv(OUT,index=False)\n pd.concat(pred_rows,ignore_index=True).to_csv(OUTDIR/"LAB245B_L27_OOF_PREDICTIONS.csv",index=False)
  summary={"status":"SURVIVES_TO_B2" if survive else "REJECT_B1","source":"MODEL_LAB_027_CERTIFIED_PRE_RACE",
  "target":"LAB026_EPI_INVERTED_TO_LVS","target_formula":"(target_epi_026-50)/2.5",
  "same_day_history":"PROHIBITED_BY_LAB027_GOVERNANCE","future_history":"PROHIBITED_BY_LAB027_GOVERNANCE",
