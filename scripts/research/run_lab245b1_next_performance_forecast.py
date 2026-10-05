@@ -51,7 +51,7 @@ def main():
         for name,m in models.items():
             m.fit(tr[feats],tr["target_lvs"]); p=m.predict(te[feats])
             rows.append({"year":year,"model":name,**score(te,p)})
-            q=te[["_race","_horse","_year","target_lvs"]].copy(); q["model"]=name; q["pred_lvs"]=p; pp.append(q)
+            q=te[["_race","_horse","_year","target_lvs","target_finish_position"]].copy(); q["model"]=name; q["pred_lvs"]=p; pp.append(q)
     res=pd.DataFrame(rows); pred=pd.concat(pp,ignore_index=True)
     res.to_csv(OUTDIR/"LAB245B1_NEXT_PERFORMANCE_RESULTS.csv",index=False)
     pred.to_csv(OUTDIR/"LAB245B1_OOF_PREDICTIONS.csv",index=False)
@@ -68,7 +68,7 @@ def main():
     bs=v[v["model"]==bs_dev["model"]].iloc[0]
     bm=v[v["model"]==bm_dev["model"]].iloc[0]
     survive=bool(bm_dev["mae"]<bs_dev["mae"] and bm_dev["rmse"]<bs_dev["rmse"] and bm_dev["race_spearman_mean"]>bs_dev["race_spearman_mean"] and bm["mae"]<bs["mae"] and bm["rmse"]<bs["rmse"] and bm["race_spearman_mean"]>bs["race_spearman_mean"])
-    audit={"status":"SURVIVE_TO_LAB245B2" if survive else "REJECT_ML_PERFORMANCE_ENGINE","rows":int(len(d)),"races":int(d["_race"].nunique()),"feature_count":len(feats),"development_selection_rule":"COMMON_COVERAGE_RECENCY_BASELINE_VS_ML_MAE_RMSE_RACE_SPEARMAN_2022_2023_ONLY","dev_selected_simple":bs_dev.to_dict(),"dev_selected_ml":bm_dev.to_dict(),"validation_2024_simple":bs.to_dict(),"validation_2024_ml":bm.to_dict(),"holdout_2025_2026_opened":False,"market_used":False,"coverage_by_year":coverage}
+    audit={"status":"SURVIVE_TO_LAB245B2" if survive else "REJECT_ML_PERFORMANCE_ENGINE","rows":int(len(d)),"races":int(d["_race"].nunique()),"feature_count":len(feats),"development_selection_rule":"COMMON_COVERAGE_2022_2023_SELECT_LOWEST_MAE_THEN_RMSE; SURVIVAL_REQUIRES_MAE_RMSE_AND_RACE_SPEARMAN","dev_selected_simple":bs_dev.to_dict(),"dev_selected_ml":bm_dev.to_dict(),"validation_2024_simple":bs.to_dict(),"validation_2024_ml":bm.to_dict(),"holdout_2025_2026_opened":False,"market_used":False,"coverage_by_year":coverage}
     (OUTDIR/"LAB245B1_AUDIT.json").write_text(json.dumps(audit,indent=2,default=str),encoding="utf-8")
     print(res.to_string(index=False)); print(json.dumps(audit,indent=2,default=str))
 if __name__=="__main__": main()
