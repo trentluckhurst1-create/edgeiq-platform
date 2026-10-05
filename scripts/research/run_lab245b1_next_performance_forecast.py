@@ -40,7 +40,7 @@ def main():
     if not INP.exists(): raise FileNotFoundError(INP)
     if not TARGET_MANIFEST.exists(): raise FileNotFoundError(TARGET_MANIFEST)
     target_manifest=json.loads(TARGET_MANIFEST.read_text(encoding="utf-8"))
-    if target_manifest.get("contract_version")!="LAB245B_STRICT_PIT_LVS_V8_V1_LENGTH_CONVERSION_TRACK_DISTANCE_CONDITION_MIN20": raise RuntimeError("LAB245B1 target manifest contract mismatch")
+    if target_manifest.get("contract_version")!="LAB245B_STRICT_PIT_LVS_V12_QUARANTINE_LINEAGE_COMPLETE_V1_LENGTH_CONVERSION_TRACK_DISTANCE_CONDITION_MIN20": raise RuntimeError("LAB245B1 target manifest contract mismatch")
     d=pd.read_csv(INP,low_memory=False)
     required={"_race","_horse","_year","race_date","target_lvs","target_finish_position","target_field_size","represented_field_size","hist_runs",*FEATURES}
     missing=sorted(required-set(d.columns))
