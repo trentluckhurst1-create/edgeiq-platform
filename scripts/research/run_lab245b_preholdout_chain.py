@@ -13,8 +13,7 @@ AUTHORITY=ROOT/"docs/performance-intelligence/lengths-v-standard/edgeiq_runner_l
 WAREHOUSE=ROOT/"docs/performance-intelligence/warehouse/edgeiq_performance_fact_warehouse_v1.csv"
 
 def run(script):
-    print(f"
-=== RUN {script} ===",flush=True)
+    print(f"\\n=== RUN {script} ===",flush=True)
     env=os.environ.copy()
     subprocess.run([PY,str(ROOT/script)],cwd=ROOT,env=env,check=True)
 
