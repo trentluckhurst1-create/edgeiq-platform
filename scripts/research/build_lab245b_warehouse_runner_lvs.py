@@ -73,7 +73,7 @@ def main():
  timed_races=int(r["_valid_time"].sum())
  eligible_timed_races=int(r["_eligible_benchmark"].sum())
  r=r[r["_eligible_benchmark"]].copy()
- print(f"BENCHMARK_ELIGIBILITY=ORIGINAL_PRODUCER_DISTANCE_GT0_TIME_GT0_VALID_TIME_UNIT_TRACK_PRESENT_GOVERNED_CONDITION ELIGIBLE_RACES={eligible_timed_races:,}")
+ print(f"BENCHMARK_ELIGIBILITY=ORIGINAL_PRODUCER_DISTANCE_800_3600_TIME_35_420_VALID_TIME_UNIT_TRACK_PRESENT_GOVERNED_CONDITION ELIGIBLE_RACES={eligible_timed_races:,}")
 
  # Strict date-PIT benchmark. All races on date D are scored from dates < D only.
  r=r.dropna(subset=["track_key","distance_metres","condition","official_race_time_seconds","race_date"]).sort_values(["race_date","canonical_race_id"],kind="stable")
