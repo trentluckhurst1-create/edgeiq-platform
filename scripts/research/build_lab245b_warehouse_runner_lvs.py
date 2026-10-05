@@ -120,7 +120,8 @@ def main():
   expmed=(grpobj["official_race_time_seconds"].expanding().median()
           .reset_index(level=gcols,drop=True)
           .sort_index())
-  r["_expanding_median_including_current"]=expmed\n  r["_prior_median_row"]=r.groupby(gcols,sort=False,dropna=False)["_expanding_median_including_current"].shift(1)
+  r["_expanding_median_including_current"]=expmed
+  r["_prior_median_row"]=r.groupby(gcols,sort=False,dropna=False)["_expanding_median_including_current"].shift(1)
   datekeys=gcols+["race_date"]
   r["benchmark_n"]=r.groupby(datekeys,sort=False,dropna=False)["_prior_n_row"].transform("first")
   r["standard_time_seconds"]=r.groupby(datekeys,sort=False,dropna=False)["_prior_median_row"].transform("first")
