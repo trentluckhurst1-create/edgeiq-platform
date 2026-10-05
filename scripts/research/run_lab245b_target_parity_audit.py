@@ -11,7 +11,7 @@ AUTH=DATA_ROOT/"docs/performance-intelligence/lengths-v-standard/edgeiq_runner_l
 PIT=ROOT/"outputs/research/profitability_program/lab245b/LAB245B_WAREHOUSE_RUNNER_LVS.csv"
 OUT=ROOT/"outputs/research/profitability_program/lab245b/LAB245B_TARGET_PARITY_AUDIT.json"
 EXPECTED_SIZE=80343742
-EXPECTED_SHA="b08bb7a334ddba2f6a76942452dd964cd59db05001dc5710ff19aa7fc6e12926"
+EXPECTED_SHA="b08bb7a334ddba2f6a76942452dd964cd59db05001dc5710ff19aa7fc6e12926"\nPARITY_THRESHOLD=0.0  # sign/unit/formula guard only; numerical equality is not expected because strict-PIT standards differ
 
 def sha256(p):
  h=hashlib.sha256()
@@ -47,13 +47,13 @@ def main():
   delta=v["runner_lvs"]-v["authority_lvs"]
   # Formula/sign/unit guardrail only. We do NOT require numerical equality because standards differ by PIT policy.
   if len(v)==0: raise RuntimeError("No exact parity overlap")
-  if corr is None or not np.isfinite(corr) or corr<=0:
+  if corr is None or not np.isfinite(corr) or corr<=PARITY_THRESHOLD:
    raise RuntimeError(f"Parity sign/unit failure correlation={corr}")
   report.update({"authority_present":True,"authority_size":size,"authority_sha256":digest,
                  "pit_rows":int(len(p)),"authority_rows":int(len(a)),"exact_overlap_rows":int(len(m)),
                  "numeric_overlap_rows":int(len(v)),"lvs_correlation":corr,
                  "mean_pit_minus_authority_lvs":float(delta.mean()),"mae_lvs":float(delta.abs().mean()),
-                 "parity_threshold_correlation":parity_threshold,"parity_status":"PASS_SIGN_UNIT_FORMULA"})
+                 "parity_threshold_correlation":PARITY_THRESHOLD,"parity_status":"PASS_SIGN_UNIT_FORMULA"})
  OUT.write_text(json.dumps(report,indent=2),encoding="utf-8")
  print(json.dumps(report,indent=2))
  print(f"OUT={OUT}")
