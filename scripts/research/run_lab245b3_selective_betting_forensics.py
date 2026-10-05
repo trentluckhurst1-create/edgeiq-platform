@@ -49,8 +49,13 @@ def metrics(x):
  for w in x["winner"].astype(int).tolist():
   losing=0 if w else losing+1
   longest=max(longest,losing)
+ mean_pnl=float(pnl.mean()) if bets else np.nan
+ sd_pnl=float(pnl.std(ddof=1)) if bets>1 else np.nan
+ se_pnl=sd_pnl/np.sqrt(bets) if bets>1 and np.isfinite(sd_pnl) and sd_pnl>0 else np.nan
+ profit_z=mean_pnl/se_pnl if np.isfinite(se_pnl) and se_pnl>0 else np.nan
  return {"bets":bets,"wins":wins,"strike_pct":100*wins/bets if bets else np.nan,
          "profit":float(pnl.sum()),"pot_pct":100*float(pnl.sum())/bets if bets else np.nan,
+         "mean_profit_per_bet":mean_pnl,"profit_se_per_bet":se_pnl,"profit_z":profit_z,
          "max_drawdown_units":float(dd.min()) if bets else np.nan,"longest_losing_run":int(longest),
          "mean_sp":float(x["_sp"].mean()) if bets else np.nan,
          "mean_edge_ratio":float(x["edge_ratio"].mean()) if bets else np.nan}
