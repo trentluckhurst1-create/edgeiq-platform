@@ -116,12 +116,13 @@ def main():
    status="REJECT_2023_POLICY_CONFIRMATION"
   else:
    v=r[(r.period=="VALIDATION_2024")&(r.policy==selected)].iloc[0]
-   status="SURVIVE_TO_FORENSIC_HOLDOUT" if v.bets>=100 and v.pot_pct>0 else "REJECT_2024_POLICY_CONFIRMATION"
+   dd_limit=max(25.0,0.25*float(v.bets))
+   status="SURVIVE_TO_FORENSIC_HOLDOUT" if v.bets>=100 and v.pot_pct>0 and v.max_drawdown_units<=dd_limit else "REJECT_2024_POLICY_CONFIRMATION"
  a={"status":status,"selected_policy":selected,"policy_family_size":len(POLICIES),"policy_contract":"LAB245B_B3_SELECTIVE_BETTING_PREDECLARED.json edge thresholds 0.05/0.10/0.15/0.20",
     "selection":"2022 only; >=50 bets and positive POT; choose highest POT shrunk toward zero by n/(n+200), then freeze policy",
     "development_confirmation":"fixed policy 2023 requires >=50 bets and positive POT; pooled 2022-23 requires >=150 bets, positive POT, and no single SP band >80% of positive gross profit",
     "development_odds_band_profit":band_profit if selected else {},"development_max_positive_profit_band_share":max_positive_share if selected else None,
-    "validation":"same fixed policy 2024 requires >=100 bets and positive POT",
+    "validation":"same fixed policy 2024 requires >=100 bets, positive POT, and max drawdown <= max(25 units, 25% of bets)",
     "sp_source":str(sp_path),"final_sp_role":"HISTORICAL_POLICY_SELECTION_AND_FORENSICS_ONLY",
     "deployability_limitation":"Final SP is not a deployable offered price. Any surviving policy requires validation on actual pre-race offered odds.",
     "holdout_2025_2026_opened":False,"market_used_in_probability_model":False}
