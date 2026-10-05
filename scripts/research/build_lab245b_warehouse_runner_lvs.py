@@ -9,7 +9,6 @@ import numpy as np
 ROOT=Path(__file__).resolve().parents[2]
 DATA_ROOT=Path(os.environ.get("EDGEIQ_DATA_ROOT",str(ROOT))).resolve()
 WAREHOUSE=DATA_ROOT/"docs/performance-intelligence/warehouse/edgeiq_performance_fact_warehouse_v1.csv"
-LCP=DATA_ROOT/"public/data/edgeiq_length_conversion_parameter_fact_v2.csv"
 OUT=ROOT/"outputs/research/profitability_program/lab245b/LAB245B_WAREHOUSE_RUNNER_LVS.csv"
 MANIFEST=OUT.with_suffix(".manifest.json")
 CONTRACT_VERSION="LAB245B_STRICT_PIT_LVS_V4_ORIGINAL_017_TRACK_DISTANCE_CONDITION_JURISDICTION_MIN20"
