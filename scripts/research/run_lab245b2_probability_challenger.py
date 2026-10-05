@@ -19,7 +19,7 @@ def probs(g,temp):
  return e/e.sum()
 
 def evaluate(d,temp):
- rows=[]; ll=[]; br=[]
+ rows=[]; ll=[]; sqerr=[]
  for race,g in d.groupby("_race",sort=False):
   if len(g)<2: continue
   p=probs(g,temp)
@@ -28,13 +28,13 @@ def evaluate(d,temp):
   s=float(p.sum())
   if abs(s-1.0)>1e-10: raise RuntimeError(f"Probability mass failure race={race} sum={s}")
   win=float(p[y==1][0]); ll.append(-math.log(max(win,1e-15)))
-  br.append(float(np.mean((p-y)**2)))
+  sqerr.extend(((p-y)**2).tolist())
   for (_,r),pi,yi in zip(g.iterrows(),p,y):
    rows.append({"_race":race,"_horse":r["_horse"],"_year":int(r["_year"]),"model":r["model"],
                 "pred_lvs":r["pred_lvs"],"target_finish_position":r["target_finish_position"],
                 "p_model":float(pi),"winner":int(yi),"temperature":temp})
  return {"races":len(ll),"runner_rows":len(rows),"log_loss":float(np.mean(ll)) if ll else np.nan,
-         "brier_runner":float(np.mean(br)) if br else np.nan},pd.DataFrame(rows)
+         "brier_runner":float(np.mean(sqerr)) if sqerr else np.nan},pd.DataFrame(rows)
 
 def tune(d):
  cand=[]
