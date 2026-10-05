@@ -90,7 +90,7 @@ def main():
  res.to_csv(OUT,index=False)
  pd.concat(tune_parts,ignore_index=True).to_csv(DIR/"LAB245B2_TEMPERATURE_GRID.csv",index=False)
  pd.concat(prob_parts,ignore_index=True).to_csv(DIR/"LAB245B2_OOF_PROBABILITIES.csv",index=False)
- audit={"status":"SURVIVE_TO_LAB245B3" if survive else "REJECT_PROBABILITY_CHALLENGER",
+ audit={"contract_version":"LAB245B2_FULL_FIELD_SOFTMAX_V1","status":"SURVIVE_TO_LAB245B3" if survive else "REJECT_PROBABILITY_CHALLENGER",
         "selected_simple":simple,"selected_ml":ml,"temperature_selection":"DEV_2022_2023_ONLY",
         "fixed_temperatures":fixed,"survival_rule":"ML beats simple on race-winner log loss and runner Brier in DEV and fixed 2024",
         "probability_mass":"EXACT_WITHIN_1E-10","probability_field_universe":"FULL_TARGET_FIELD_ONLY_AMONG_B1_ELIGIBLE_RACES","minimum_volume_gate":"DEV>=200 common-eligible races; 2024>=100 common-eligible races","volume_gate_pass":volume_ok,"development_yearly_stability_required":True,"development_yearly_deltas":yearly_deltas,"holdout_2025_2026_opened":False,"market_used":False}
