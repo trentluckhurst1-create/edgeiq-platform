@@ -151,10 +151,15 @@ jobs:
         if: ${{ github.event.inputs.lab == '245d5' || (github.event_name == 'push' && contains(github.event.head_commit.message, 'LAB245D5')) }}
         shell: powershell
         run: |
-          $Bridge = Join-Path $env:GITHUB_WORKSPACE "outputs\\research\\profitability_program\\lab245b\\LAB245B_COMPACT_PERFORMANCE_BRIDGE.csv"
-          if (-not (Test-Path $Bridge)) { throw "LAB245B compact bridge missing from retained self-hosted workspace: $Bridge" }
-          python -m py_compile scripts/research/run_lab245d5_race_relative_hgb.py
-          python scripts/research/run_lab245d5_race_relative_hgb.py
+          $ResearchRoot = "C:\\EDGEIQ_PROFITABILITY_RESEARCH"
+          $Bridge = Join-Path $ResearchRoot "outputs\\research\\profitability_program\\lab245b\\LAB245B_COMPACT_PERFORMANCE_BRIDGE.csv"
+          if (-not (Test-Path $Bridge)) { throw "LAB245B compact bridge missing: $Bridge" }
+          $SourceScript = Join-Path $env:GITHUB_WORKSPACE "scripts\\research\\run_lab245d5_race_relative_hgb.py"
+          $LocalScript = Join-Path $ResearchRoot "scripts\\research\\run_lab245d5_race_relative_hgb.py"
+          Copy-Item $SourceScript $LocalScript -Force
+          python -m py_compile $LocalScript
+          Push-Location $ResearchRoot
+          try { python $LocalScript } finally { Pop-Location }
           if ($LASTEXITCODE -ne 0) { throw "LAB245D5 failed" }
       - name: Run governed research bootstrap
         if: env.LAB == 'bootstrap'
