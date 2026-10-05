@@ -108,25 +108,25 @@ def main():
   r["race_date"]=pd.to_datetime(r["race_date"],errors="coerce")
   print(f"RESUME_CHECKPOINT=STRICT_PIT_RACE_BENCHMARK ROWS={len(r):,}")
  else:
-  history={}
-  scored=[]
-  for race_date,day in r.groupby("race_date",sort=True):
-   day=day.copy()
-   keys=list(zip(day["track_key"],day["distance_metres"],day["condition"]))
-   times=day["official_race_time_seconds"].to_numpy(float)
-   counts=[]; std=[]
-   for k in keys:
-    vals=history.get(k,[])
-    counts.append(len(vals))
-    std.append(_median_sorted(vals) if len(vals)>=MIN_SAMPLE else np.nan)
-   day["benchmark_n"]=counts
-   day["standard_time_seconds"]=std
-   scored.append(day)
-   # Add the whole date only after every race on the date has been scored.
-   for k,t in zip(keys,times):
-    insort(history.setdefault(k,[]),float(t))
-  r=pd.concat(scored,ignore_index=True)
+  # Vectorised strict-date PIT benchmark. Within each benchmark group, the first
+  # race on a date sees only earlier dates; that value is then broadcast to every
+  # race in the same group/date so same-day races can never leak into one another.
+  gcols=["track_key","distance_metres","condition"]
+  r=r.sort_values(gcols+["race_date","canonical_race_id"],kind="stable").reset_index(drop=True)
+  grpobj=r.groupby(gcols,sort=False,dropna=False)
+  r["_prior_n_row"]=grpobj.cumcount()
+  # expanding().median() includes current row, so shift one position within each
+  # group. We then freeze the first row's prior-only value for the whole date.
+  expmed=(grpobj["official_race_time_seconds"].expanding().median()
+          .reset_index(level=gcols,drop=True)
+          .sort_index())
+  r["_prior_median_row"]=expmed.groupby([r[c] for c in gcols],sort=False,dropna=False).shift(1)
+  datekeys=gcols+["race_date"]
+  r["benchmark_n"]=r.groupby(datekeys,sort=False,dropna=False)["_prior_n_row"].transform("first")
+  r["standard_time_seconds"]=r.groupby(datekeys,sort=False,dropna=False)["_prior_median_row"].transform("first")
+  r.loc[r["benchmark_n"]<MIN_SAMPLE,"standard_time_seconds"]=np.nan
   r=r[r["standard_time_seconds"].notna()].copy()
+  r=r.drop(columns=["_prior_n_row","_prior_median_row"])
   checkpoint_cols=["canonical_race_id","race_date","official_race_time_seconds","standard_time_seconds","benchmark_n"]
   r[checkpoint_cols].to_csv(BENCHMARK_CHECKPOINT,index=False)
   ch=hashlib.sha256()
