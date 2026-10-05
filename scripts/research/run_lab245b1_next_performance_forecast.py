@@ -36,7 +36,7 @@ def main():
     target_manifest=json.loads(TARGET_MANIFEST.read_text(encoding="utf-8"))
     if target_manifest.get("contract_version")!="LAB245B_STRICT_PIT_LVS_V8_V1_LENGTH_CONVERSION_TRACK_DISTANCE_CONDITION_MIN20": raise RuntimeError("LAB245B1 target manifest contract mismatch")
     d=pd.read_csv(INP,low_memory=False)
-    required={"_race","_horse","_year","race_date","target_lvs","target_finish_position","target_field_size","hist_runs",*FEATURES}
+    required={"_race","_horse","_year","race_date","target_lvs","target_finish_position","target_field_size","represented_field_size","represented_field_size","hist_runs",*FEATURES}
     missing=sorted(required-set(d.columns))
     if missing: raise RuntimeError(f"LAB245B1 input contract missing columns: {missing}")
     if not d["_year"].between(2021,2024).all(): raise RuntimeError("Sealed-year breach.")
@@ -47,7 +47,7 @@ def main():
     # Common evaluation universe for simple-vs-ML selection: require a finite recency LVS history.
     # DIST200 remains diagnostic because its availability is conditional on distance-near history.
     d=d[np.isfinite(pd.to_numeric(d["lvs_mean3"],errors="coerce"))].copy()
-    full_field_sizes=raw.groupby("_race")["_horse"].nunique().to_dict()
+    full_field_sizes=raw.groupby("_race")["represented_field_size"].first().astype(int).to_dict()
     coverage={str(int(y)):{"rows":int(len(g)),"races":int(g["_race"].nunique())} for y,g in d.groupby("_year",sort=True)}
     history_depth={}
     for y,g in raw.groupby("_year",sort=True):
