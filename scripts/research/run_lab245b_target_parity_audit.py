@@ -1,11 +1,13 @@
 from pathlib import Path
+import os
 import hashlib
 import json
 import numpy as np
 import pandas as pd
 
 ROOT=Path(__file__).resolve().parents[2]
-AUTH=ROOT/"docs/performance-intelligence/lengths-v-standard/edgeiq_runner_lengths_v_standard_fact_v1.csv"
+DATA_ROOT=Path(os.environ.get("EDGEIQ_DATA_ROOT",str(ROOT))).resolve()
+AUTH=DATA_ROOT/"docs/performance-intelligence/lengths-v-standard/edgeiq_runner_lengths_v_standard_fact_v1.csv"
 PIT=ROOT/"outputs/research/profitability_program/lab245b/LAB245B_WAREHOUSE_RUNNER_LVS.csv"
 OUT=ROOT/"outputs/research/profitability_program/lab245b/LAB245B_TARGET_PARITY_AUDIT.json"
 EXPECTED_SIZE=80343742
