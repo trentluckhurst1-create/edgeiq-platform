@@ -87,4 +87,4 @@ def main():
  print(f"TARGET_COVERAGE={out.target_lvs.notna().mean():.6f} YEARS={sorted(out._year.unique())}")
  print("PIT_POLICY=HORSE_HISTORY_DATE_LT_TARGET_DATE")
  print(f"OUT={OUT}")
-if __name__=="__main__": main()
+if __name__=="__main__": main()SOURCE=ROOT/"outputs/research/profitability_program/lab245b/LAB245B_WAREHOUSE_RUNNER_LVS.csv"
