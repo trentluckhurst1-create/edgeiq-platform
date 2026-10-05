@@ -38,6 +38,7 @@ def main():
  d["race_date"]=pd.to_datetime(d["race_date"],errors="coerce")
  for c in ["distance_metres","finish_position","finish_margin","field_size","runner_lvs"]: d[c]=pd.to_numeric(d[c],errors="coerce")
  d=d.dropna(subset=["canonical_race_id","canonical_horse_id","race_date"])
+ represented=d.groupby("canonical_race_id")["canonical_horse_id"].nunique().to_dict()
  d=d.sort_values(["canonical_horse_id","race_date","canonical_race_id"],kind="stable")
  rows=[]
  for horse,g in d.groupby("canonical_horse_id",sort=False):
@@ -54,7 +55,7 @@ def main():
     year=int(dt.year)
     if 2021<=year<=2024:
      rec={"_race":r.canonical_race_id,"_horse":horse,"_year":year,"race_date":dt.date().isoformat(),
-          "target_lvs":r.runner_lvs,"target_finish_position":r.finish_position,"target_field_size":r.field_size,"current_distance":r.distance_metres,"hist_runs":len(hist),
+          "target_lvs":r.runner_lvs,"target_finish_position":r.finish_position,"target_field_size":r.field_size,"represented_field_size":represented.get(r.canonical_race_id),"current_distance":r.distance_metres,"hist_runs":len(hist),
           "lvs_last1":lvs[-1] if lvs else np.nan,"lvs_mean3":l3[0],"lvs_mean5":l5[0],
           "lvs_median5":l5[1],"lvs_std5":l5[2],"lvs_peak":max(lvs) if lvs else np.nan,
           "lvs_worst5":min(lvs[-5:]) if lvs else np.nan,
