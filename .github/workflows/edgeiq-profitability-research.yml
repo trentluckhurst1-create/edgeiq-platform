@@ -1,0 +1,75 @@
+name: EDGEiQ Profitability Research
+
+on:
+  workflow_dispatch:
+    inputs:
+      experiment:
+        description: "Research script filename under scripts/research"
+        required: true
+        default: "run_lab245d5_race_relative_hgb.py"
+        type: string
+
+concurrency:
+  group: edgeiq-profitability-research
+  cancel-in-progress: false
+
+jobs:
+  research:
+    runs-on: [self-hosted, Windows, X64, edgeiq-research]
+    timeout-minutes: 180
+    defaults:
+      run:
+        shell: powershell
+    steps:
+      - name: Checkout exact research branch
+        uses: actions/checkout@v4
+        with:
+          ref: research/profitability-program-20261004
+          clean: false
+
+      - name: Validate experiment path
+        run: |
+          $Name = "${{ inputs.experiment }}"
+          if ($Name -notmatch '^run_lab[0-9A-Za-z_\-]+\.py$') { throw "Invalid experiment filename: $Name" }
+          $Script = Join-Path $env:GITHUB_WORKSPACE "scripts\research\$Name"
+          if (-not (Test-Path $Script)) { throw "Experiment not found: $Script" }
+          "EDGEIQ_EXPERIMENT=$Script" | Out-File -FilePath $env:GITHUB_ENV -Append
+
+      - name: Validate local research data
+        run: |
+          $Bridge = Join-Path $env:GITHUB_WORKSPACE "outputs\research\profitability_program\lab245b\LAB245B_COMPACT_PERFORMANCE_BRIDGE.csv"
+          if (-not (Test-Path $Bridge)) {
+            throw "Local compact performance bridge is unavailable at $Bridge. Runner workspace must retain generated research outputs."
+          }
+          Write-Host "BRIDGE_OK=$Bridge"
+
+      - name: Compile experiment
+        run: |
+          python -m py_compile "$env:EDGEIQ_EXPERIMENT"
+          if ($LASTEXITCODE -ne 0) { throw "Experiment syntax failure." }
+
+      - name: Run experiment
+        run: |
+          python "$env:EDGEIQ_EXPERIMENT"
+          if ($LASTEXITCODE -ne 0) { throw "Experiment failed." }
+
+      - name: Stage research result artifact
+        if: always()
+        run: |
+          $Src = Join-Path $env:GITHUB_WORKSPACE "outputs\research\profitability_program\lab245b"
+          $Dst = Join-Path $env:RUNNER_TEMP "edgeiq-research-results"
+          New-Item -ItemType Directory -Force -Path $Dst | Out-Null
+          if (Test-Path $Src) {
+            Get-ChildItem $Src -File |
+              Where-Object { $_.Name -match '^LAB245(D|C)[0-9A-Za-z_\-]*\.(csv|json)$' } |
+              Copy-Item -Destination $Dst -Force
+          }
+
+      - name: Upload research results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: edgeiq-research-${{ github.run_id }}
+          path: ${{ runner.temp }}\edgeiq-research-results
+          if-no-files-found: warn
+          retention-days: 30
