@@ -79,7 +79,25 @@ def main():
  d["_eligible_benchmark"]=d["_valid_time"] & d["_valid_distance"] & d["track_key"].notna() & d["condition"].notna()
  rc=d.groupby("canonical_race_id",sort=False).agg(track_n=("track_key","nunique"),date_n=("race_date","nunique"),distance_n=("distance_metres","nunique"),condition_n=("condition","nunique"),field_size_n=("field_size","nunique"),time_n=("official_race_time_seconds","nunique"))
  bad=rc[(rc.track_n>1)|(rc.date_n>1)|(rc.distance_n>1)|(rc.condition_n>1)|(rc.field_size_n>1)|(rc.time_n>1)]
- if len(bad): raise RuntimeError(f"Canonical race attribute conflicts: {len(bad)} races")
+ if len(bad):
+  conflict_cols=["track_key","race_date","distance_metres","condition","field_size","official_race_time_seconds","time_unit"]
+  bad_ids=set(bad.index.astype(str))
+  diag=d[d["canonical_race_id"].astype(str).isin(bad_ids)][["canonical_race_id","canonical_horse_id"]+conflict_cols].copy()
+  diag=diag.sort_values(["canonical_race_id","canonical_horse_id"],kind="stable")
+  diag_path=OUT/"LAB245B_CANONICAL_RACE_ATTRIBUTE_CONFLICTS.csv"
+  diag.to_csv(diag_path,index=False)
+  summary=[]
+  for rid,g in diag.groupby("canonical_race_id",sort=False):
+   item={"canonical_race_id":str(rid),"rows":int(len(g))}
+   for col in conflict_cols:
+    vals=g[col].dropna().astype(str).drop_duplicates().tolist()
+    if len(vals)>1: item[col]=vals
+   summary.append(item)
+  summary_path=OUT/"LAB245B_CANONICAL_RACE_ATTRIBUTE_CONFLICTS.json"
+  summary_path.write_text(json.dumps(summary,indent=2,default=str),encoding="utf-8")
+  print(f"CANONICAL_RACE_ATTRIBUTE_CONFLICT_DIAGNOSTIC={diag_path}")
+  print(json.dumps(summary,indent=2,default=str))
+  raise RuntimeError(f"Canonical race attribute conflicts: {len(bad)} races; diagnostic written")
  print(f"CANONICAL_RACE_ATTRIBUTE_INVARIANT=PASS RACES={len(rc):,}")
  d["_winner"]=d["finish_position"].eq(1)
  d["_race_pick_priority"]=np.select([d["_winner"] & d["_valid_time"],d["_valid_time"],d["_winner"]],[3,2,1],default=0)
