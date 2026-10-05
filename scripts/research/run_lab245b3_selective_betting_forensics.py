@@ -17,7 +17,13 @@ OUT=DIR/"LAB245B3_FINAL_SP_POLICY_RESULTS.csv"
 AUD=DIR/"LAB245B3_AUDIT.json"
 
 # Small predeclared policy family; no post-2023 tuning.
-POLICIES=[\n ("EDGE_105",1.05,0.00,999.0),\n ("EDGE_110",1.10,0.00,999.0),\n ("EDGE_115",1.15,0.00,999.0),\n ("EDGE_120",1.20,0.00,999.0),\n]\n
+POLICIES=[
+ ("EDGE_105",1.05,0.00,999.0),
+ ("EDGE_110",1.10,0.00,999.0),
+ ("EDGE_115",1.15,0.00,999.0),
+ ("EDGE_120",1.20,0.00,999.0),
+]
+
 def load_sp():
  for p in SP_CANDIDATES:
   if p.exists():
