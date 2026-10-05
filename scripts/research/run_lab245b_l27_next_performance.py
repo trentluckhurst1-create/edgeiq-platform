@@ -3,7 +3,6 @@ import json
 import numpy as np
 import pandas as pd
 from scipy.stats import spearmanr
-from sklearn.compose import TransformedTargetRegressor
 from sklearn.ensemble import HistGradientBoostingRegressor
 from sklearn.impute import SimpleImputer
 from sklearn.linear_model import Ridge
@@ -47,7 +46,7 @@ def main():
  d=pd.read_csv(SRC,usecols=use,low_memory=False)
  d["race_date"]=pd.to_datetime(d.race_date,errors="coerce")
  d["_year"]=d.race_date.dt.year
- d=d[d._year.between(2021,2024)].copy()
+ if d["_year"].dropna().max()>2026: raise RuntimeError("unexpected future year")\n d=d[d._year.between(2021,2024)].copy()\n if d["_year"].gt(2024).any(): raise RuntimeError("sealed-year breach")
  if d.duplicated(["canonical_race_id","horse_id"]).any(): raise RuntimeError("duplicate race/horse keys")
  for c in ["target_epi_026"]+FEATURES: d[c]=pd.to_numeric(d[c],errors="coerce")
  d["target_lvs"]=epi_level_to_lvs(d["target_epi_026"])
@@ -56,7 +55,7 @@ def main():
   if c.endswith("_trend") or c=="epi_career_stdev": d[c]=epi_delta_to_lvs(d[c])
   else: d[c]=epi_level_to_lvs(d[c])
  d=d[d.target_lvs.notna()].copy()
- if d.empty: raise RuntimeError("no labelled rows")
+ if d.empty: raise RuntimeError("no labelled rows")\n print("LABELLED_BY_YEAR="+json.dumps({int(y):int(n) for y,n in d.groupby("_year").size().items()}))\n print("RACES_BY_YEAR="+json.dumps({int(y):int(n) for y,n in d.groupby("_year").canonical_race_id.nunique().items()}))\n print("SEALED_2025_2026_LOADED=NO")
  baselines={"LVS_LAST1":"epi_last1","LVS_MEAN3":"epi_last3_mean","LVS_MEAN5":"epi_last5_mean",
             "LVS_CAREER":"epi_career_mean"}
  rows=[]; oof={}
