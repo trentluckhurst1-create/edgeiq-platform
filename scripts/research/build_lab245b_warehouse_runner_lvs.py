@@ -85,6 +85,12 @@ def main():
  r=r[r["standard_time_seconds"].notna()].copy()
 
  p=pd.read_csv(LCP,usecols=["surface_group","track_condition_group","seconds_per_length"])
+ p["seconds_per_length"]=pd.to_numeric(p["seconds_per_length"],errors="coerce")
+ expected={("AUSTRALIAN_SYNTHETIC","STANDARD_SYNTHETIC"):1/6,("TURF","FIRM"):1/6,("TURF","GOOD"):1/6,("TURF","SOFT"):0.2,("TURF","HEAVY"):0.2}
+ actual={(str(x.surface_group).upper(),str(x.track_condition_group).upper()):float(x.seconds_per_length) for _,x in p.iterrows() if pd.notna(x.seconds_per_length)}
+ for k,v in expected.items():
+  if k not in actual or abs(actual[k]-v)>1e-6: raise RuntimeError(f"Length conversion authority drift {k}: {actual.get(k)} expected {v}")
+ print("LENGTH_CONVERSION_AUTHORITY=PASS")
  p=p.rename(columns={"surface_group":"surface","track_condition_group":"condition"})
  r=r.merge(p,on=["surface","condition"],how="inner",validate="many_to_one")
  r["race_lvs"]=-(r["official_race_time_seconds"]-r["standard_time_seconds"])/r["seconds_per_length"]
