@@ -100,7 +100,7 @@ def main():
  r=pd.DataFrame(rows); r.to_csv(OUT,index=False)
  y22=r[r.period=="YEAR_2022"].copy(); y23=r[r.period=="YEAR_2023"].set_index("policy"); pooled=r[r.period=="DEV_2022_2023"].set_index("policy")
  # Temporal policy ladder: select once on 2022, then freeze for 2023 and 2024.
- eligible22=y22[(y22.bets>=50)&(y22.pot_pct>0)].copy()
+ eligible22=y22[(y22.bets>=50)&(y22.pot_pct>=2.0)&(y22.profit_z>=0.5)].copy()
  if eligible22.empty:
   status="REJECT_NO_2022_SELECTION_POLICY"; selected=None
  else:
@@ -117,17 +117,17 @@ def main():
   positive_parts=[max(0.0,float(v)) for v in band_profit.values()]; positive_total=sum(positive_parts)
   max_positive_share=(max(positive_parts)/positive_total) if positive_total>0 else 1.0
   odds_band_ok=max_positive_share<=0.80
-  if not (c23.bets>=50 and c23.pot_pct>0 and cp.bets>=150 and cp.pot_pct>0 and odds_band_ok):
+  if not (c23.bets>=50 and c23.pot_pct>=1.0 and cp.bets>=150 and cp.pot_pct>=2.0 and cp.profit_z>=1.0 and odds_band_ok):
    status="REJECT_2023_POLICY_CONFIRMATION"
   else:
    v=r[(r.period=="VALIDATION_2024")&(r.policy==selected)].iloc[0]
    dd_limit=max(25.0,0.25*float(v.bets))
-   status="SURVIVE_TO_FORENSIC_HOLDOUT" if v.bets>=100 and v.pot_pct>0 and v.max_drawdown_units<=dd_limit else "REJECT_2024_POLICY_CONFIRMATION"
+   status="SURVIVE_TO_FORENSIC_HOLDOUT" if v.bets>=100 and v.pot_pct>=1.0 and v.profit_z>=0.5 and v.max_drawdown_units<=dd_limit else "REJECT_2024_POLICY_CONFIRMATION"
  a={"status":status,"selected_policy":selected,"policy_family_size":len(POLICIES),"policy_contract":"LAB245B_B3_SELECTIVE_BETTING_PREDECLARED.json edge thresholds 0.05/0.10/0.15/0.20",
-    "selection":"2022 only; >=50 bets and positive POT; choose highest POT shrunk toward zero by n/(n+200), then freeze policy",
-    "development_confirmation":"fixed policy 2023 requires >=50 bets and positive POT; pooled 2022-23 requires >=150 bets, positive POT, and no single SP band >80% of positive gross profit",
+    "selection":"2022 only; >=50 bets, POT>=2%, profit_z>=0.5; choose highest POT shrunk toward zero by n/(n+200), then freeze policy",
+    "development_confirmation":"fixed policy 2023 requires >=50 bets and POT>=1%; pooled 2022-23 requires >=150 bets, POT>=2%, profit_z>=1.0, and no single SP band >80% of positive gross profit",
     "development_odds_band_profit":band_profit if selected else {},"development_max_positive_profit_band_share":max_positive_share if selected else None,
-    "validation":"same fixed policy 2024 requires >=100 bets, positive POT, and max drawdown <= max(25 units, 25% of bets)",
+    "validation":"same fixed policy 2024 requires >=100 bets, POT>=1%, profit_z>=0.5, and max drawdown <= max(25 units, 25% of bets)",
     "sp_source":str(sp_path),"final_sp_probability_races_total":total_prob_races,"final_sp_complete_field_races":market_covered_races,"final_sp_race_coverage_pct":market_coverage_pct,"final_sp_role":"HISTORICAL_POLICY_SELECTION_AND_FORENSICS_ONLY",
     "deployability_limitation":"Final SP is not a deployable offered price. Any surviving policy requires validation on actual pre-race offered odds.",
     "holdout_2025_2026_opened":False,"market_used_in_probability_model":False}
