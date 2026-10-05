@@ -53,11 +53,20 @@ def audit(name):
         raise FileNotFoundError(p)
     return json.loads(p.read_text(encoding="utf-8"))
 
+def write_status(stage,status,detail=None):
+    p=OUT/"LAB245B_CHAIN_STATUS.json"
+    payload={"stage":stage,"status":status,"holdout_2025_2026_opened":False}
+    if detail is not None: payload["detail"]=detail
+    p.write_text(json.dumps(payload,indent=2),encoding="utf-8")
+
 def main():
+    OUT.mkdir(parents=True,exist_ok=True)
+    write_status("PREFLIGHT","STARTED")
     print("LAB245B PREHOLDOUT GOVERNED CHAIN")
     print(f"EDGEIQ_DATA_ROOT={os.environ.get('EDGEIQ_DATA_ROOT',str(ROOT))}")
     print("HOLDOUT_POLICY=2025_2026_CANNOT_BE_OPENED_BY_THIS_LAUNCHER")
     run("scripts/research/run_lab245b_preflight.py")
+    write_status("PREFLIGHT","PASS")
 
     # Forecasting target must be strict date-PIT. The historical 533,387-row
     # runner-LVS authority is formula/parity evidence only because its legacy
@@ -89,6 +98,7 @@ def main():
                 compact_ok=(cm.get("output_sha256")==ch.hexdigest() and cm.get("output_bytes")==compact.stat().st_size)
         except Exception:
             compact_ok=False
+    write_status("TARGET_AND_PARITY","PASS")
     if compact_ok:
         print("RESUME_CHECKPOINT=LAB245B_COMPACT_PIT_HISTORY_VALID; SKIP_REBUILD=YES")
     else:
@@ -108,6 +118,7 @@ def main():
     else:
         run("scripts/research/run_lab245b1_next_performance_forecast.py")
         a1=audit("LAB245B1_AUDIT.json")
+    write_status("B1",a1.get("status"))
     if a1.get("status")!="SURVIVE_TO_LAB245B2":
         print(f"CHAIN_STOP=B1 SCIENTIFIC_STATUS={a1.get('status')}")
         return
@@ -124,6 +135,7 @@ def main():
     if a2 is None:
         run("scripts/research/run_lab245b2_probability_challenger.py")
         a2=audit("LAB245B2_AUDIT.json")
+    write_status("B2",a2.get("status"))
     if a2.get("status")!="SURVIVE_TO_LAB245B3":
         print(f"CHAIN_STOP=B2 SCIENTIFIC_STATUS={a2.get('status')}")
         return
@@ -140,6 +152,7 @@ def main():
     if a3 is None:
         run("scripts/research/run_lab245b3_selective_betting_forensics.py")
         a3=audit("LAB245B3_AUDIT.json")
+    write_status("B3_PREHOLDOUT_COMPLETE",a3.get("status"))
     print(f"CHAIN_STOP=PREHOLDOUT_COMPLETE B3_STATUS={a3.get('status')}")
     print("2025_2026_HOLDOUT_REMAINS_SEALED=YES")
 
