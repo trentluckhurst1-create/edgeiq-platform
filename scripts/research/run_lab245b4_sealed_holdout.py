@@ -106,7 +106,7 @@ def main():
   losing=0 if w else losing+1; longest=max(longest,losing)
  total={"bets":int(len(bets)),"wins":int(bets.winner.sum()),"profit":float(bets.pnl.sum()),"pot_pct":100*float(bets.pnl.sum())/len(bets) if len(bets) else np.nan,"max_drawdown_units":float(-dd.min()) if len(dd) else np.nan,"longest_losing_run":int(longest),"mean_sp":float(bets["_sp"].mean()) if len(bets) else np.nan,"mean_edge_ratio":float(bets["edge_ratio"].mean()) if len(bets) else np.nan}
  holdout_pass=bool(total["bets"]>=200 and total["pot_pct"]>=1.0 and all(v["bets"]>=50 and v["pot_pct"]>0 for v in econ.values()))\n out={"status":"HOLDOUT_SURVIVES" if holdout_pass else "HOLDOUT_REJECTS","model":model,"temperature":temp,"policy":a3["selected_policy"],"performance_by_year":perf,"betting_by_year":econ,"betting_total":total,"sp_source":sp_path,
- "purity_limitation":"Final SP is historical forensic pricing, not deployable offered odds.","holdout_survival_rule":"Frozen preholdout policy; total >=200 bets and POT>=1%; each represented holdout year >=50 bets and positive POT; no reselection.", "reselection_after_holdout":False}
+ "probability_field_universe":"FROZEN_B2_COMMON_ELIGIBLE_RUNNER_ARCHITECTURE_NOT_DEPLOYABLE_FULL_FIELD","purity_limitation":"Final SP is historical forensic pricing, not deployable offered odds.","holdout_survival_rule":"Frozen preholdout policy; total >=200 bets and POT>=1%; each represented holdout year >=50 bets and positive POT; no reselection.", "reselection_after_holdout":False}
  OUT.write_text(json.dumps(out,indent=2,default=str)); print(json.dumps(out,indent=2,default=str))
 
 if __name__=="__main__": main()
