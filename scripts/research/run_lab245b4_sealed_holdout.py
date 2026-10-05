@@ -53,7 +53,10 @@ def load_sp():
  for p in SP_CANDIDATES:
   if p.exists() and {"_race","_horse","_sp"}.issubset(pd.read_csv(p,nrows=0).columns):
    s=pd.read_csv(p,usecols=["_race","_horse","_sp"],low_memory=False); s["_sp"]=pd.to_numeric(s["_sp"],errors="coerce")
-   return s.dropna().drop_duplicates(["_race","_horse"]),str(p)
+   s["_race"]=s["_race"].astype("string").str.strip(); s["_horse"]=s["_horse"].astype("string").str.strip(); s=s.dropna(subset=["_race","_horse","_sp"])
+   if s.duplicated(["_race","_horse"]).any(): raise RuntimeError(f"Duplicate SP keys in {p}")
+   if s["_sp"].le(1).any(): raise RuntimeError(f"Invalid SP values in {p}")
+   return s,str(p)
  raise FileNotFoundError("Final-SP evaluation source missing")
 
 def main():
