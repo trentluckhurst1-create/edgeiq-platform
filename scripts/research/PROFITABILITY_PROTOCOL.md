@@ -5,7 +5,7 @@ Goal: test whether pre-race EDGEiQ edges can be filtered into a repeatably profi
 Rules:
 - STRICT281 remains the frozen scientific reference.
 - Production is not modified.
-- Final SP and result are evaluation labels only.
+- Final SP and result are evaluation labels only.\n- Final-SP POT is a historical forensic screen, not evidence that the same price was obtainable pre-race.\n- A deployable profitability claim requires timestamped pre-race offered odds with nonnegative minutes-before-jump and identity-certified runner joins.\n- Current timestamp-safe offered-odds evidence is sparse and must be reported separately from the long historical final-SP universe.
 - Final SP is not a gate feature.
 - Weight features are not attributed or interpreted.
 - Canonical race and horse IDs remain strings.
@@ -43,3 +43,4 @@ A candidate is not promoted unless thresholds are fixed before pseudo-holdout ev
 PRODUCTION_MODIFIED=NO
 MARKET_AS_FEATURE=NO
 FINAL_SP_EVALUATION_ONLY=YES
+\nDEPLOYABLE_POT_REQUIRES_PRE_RACE_OFFERED_ODDS=YES\nFINAL_SP_POT_IS_FORENSIC_ONLY=YES\n
