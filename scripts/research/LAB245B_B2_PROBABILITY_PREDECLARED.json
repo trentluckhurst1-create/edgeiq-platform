@@ -1,0 +1,31 @@
+{
+  "lab": "LAB245B_B2_PROBABILITY",
+  "status": "PREDECLARED_NOT_RUN",
+  "entry_gate": "Run only if a B1 next-performance architecture survives pooled 2022-2023 development and fixed 2024 confirmation.",
+  "input": "OOF/fixed-confirmation predicted runner LVS from the surviving B1 architecture",
+  "outcome": "race winner",
+  "candidate_probability_maps": [
+    {
+      "name": "CENTERED_SOFTMAX_SINGLE_BETA",
+      "formula": "p_i = exp(beta*(pred_lvs_i-race_mean_pred_lvs))/sum_j exp(beta*(pred_lvs_j-race_mean_pred_lvs))"
+    },
+    {
+      "name": "EXPERIENCE_INTERACTION_CENTERED",
+      "formula": "same centered softmax with beta selected separately for predeclared prior-start experience bands",
+      "precedent": "MODEL_LAB_052"
+    }
+  ],
+  "selection_period": [2022, 2023],
+  "confirmation_period": 2024,
+  "sealed": [2025, 2026],
+  "selection_metric": "race-winner log loss",
+  "secondary_metrics": ["runner_brier","multiclass_brier","top1_accuracy","mean_winner_probability"],
+  "requirements": [
+    "probabilities sum to 1 within every race",
+    "no final SP or market variable in probability fitting",
+    "no same-day or future history",
+    "beta grid fixed before 2024 confirmation"
+  ],
+  "market": "NO",
+  "weight": "NO"
+}
