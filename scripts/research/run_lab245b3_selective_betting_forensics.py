@@ -90,14 +90,23 @@ def main():
   eligible22["selection_score"]=eligible22["pot_pct"]*(eligible22["bets"]/(eligible22["bets"]+200.0))
   selected=str(eligible22.sort_values(["selection_score","bets"],ascending=[False,False]).iloc[0].policy)
   c23=y23.loc[selected]; cp=pooled.loc[selected]
-  if not (c23.bets>=50 and c23.pot_pct>0 and cp.bets>=150 and cp.pot_pct>0):
+  # Stability-only odds-band concentration check on pooled development for the already-frozen policy.
+  pe,ppm,psm=next((e,pm,sm) for n,e,pm,sm in POLICIES if n==selected)
+  devbets=apply(d[d["_year"].isin([2022,2023])],pe,ppm,psm).copy()
+  devbets["pnl"]=devbets["winner"]*devbets["_sp"]-1.0
+  devbets["sp_band"]=pd.cut(devbets["_sp"],bins=[1.0,3.0,6.0,12.0,np.inf],right=False,labels=["1_3","3_6","6_12","12_PLUS"])
+  band_profit=devbets.groupby("sp_band",observed=True)["pnl"].sum().to_dict()
+  positive_parts=[max(0.0,float(v)) for v in band_profit.values()]; positive_total=sum(positive_parts)
+  max_positive_share=(max(positive_parts)/positive_total) if positive_total>0 else 1.0
+  odds_band_ok=max_positive_share<=0.80
+  if not (c23.bets>=50 and c23.pot_pct>0 and cp.bets>=150 and cp.pot_pct>0 and odds_band_ok):
    status="REJECT_2023_POLICY_CONFIRMATION"
   else:
    v=r[(r.period=="VALIDATION_2024")&(r.policy==selected)].iloc[0]
    status="SURVIVE_TO_FORENSIC_HOLDOUT" if v.bets>=100 and v.pot_pct>0 else "REJECT_2024_POLICY_CONFIRMATION"
  a={"status":status,"selected_policy":selected,"policy_family_size":len(POLICIES),"policy_contract":"LAB245B_B3_SELECTIVE_BETTING_PREDECLARED.json edge thresholds 0.05/0.10/0.15/0.20",
     "selection":"2022 only; >=50 bets and positive POT; choose highest POT shrunk toward zero by n/(n+200), then freeze policy",
-    "development_confirmation":"fixed policy 2023 requires >=50 bets and positive POT; pooled 2022-23 requires >=150 bets and positive POT",
+    "development_confirmation":"fixed policy 2023 requires >=50 bets and positive POT; pooled 2022-23 requires >=150 bets, positive POT, and no single SP band >80% of positive gross profit",\n    "development_odds_band_profit":band_profit if selected else {},"development_max_positive_profit_band_share":max_positive_share if selected else None,
     "validation":"same fixed policy 2024 requires >=100 bets and positive POT",
     "sp_source":str(sp_path),"final_sp_role":"HISTORICAL_POLICY_SELECTION_AND_FORENSICS_ONLY",
     "deployability_limitation":"Final SP is not a deployable offered price. Any surviving policy requires validation on actual pre-race offered odds.",
