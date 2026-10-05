@@ -54,6 +54,11 @@ def metrics(x):
  sd_pnl=float(pnl.std(ddof=1)) if bets>1 else np.nan
  se_pnl=sd_pnl/np.sqrt(bets) if bets>1 and np.isfinite(sd_pnl) and sd_pnl>0 else np.nan
  profit_z=mean_pnl/se_pnl if np.isfinite(se_pnl) and se_pnl>0 else np.nan
+ race_pnl=pd.DataFrame({"_race":x["_race"].to_numpy(),"pnl":pnl.to_numpy(float)}).groupby("_race",sort=False)["pnl"].sum()
+ race_mean=float(race_pnl.mean()) if len(race_pnl) else np.nan
+ race_sd=float(race_pnl.std(ddof=1)) if len(race_pnl)>1 else np.nan
+ race_se=race_sd/np.sqrt(len(race_pnl)) if len(race_pnl)>1 and np.isfinite(race_sd) and race_sd>0 else np.nan
+ race_cluster_profit_z=race_mean/race_se if np.isfinite(race_se) and race_se>0 else np.nan
  race_count=int(x["_race"].nunique()) if bets else 0
  max_bets_per_race=int(x.groupby("_race").size().max()) if bets else 0
  multi_bet_race_pct=100.0*float((x.groupby("_race").size()>1).mean()) if bets else np.nan
