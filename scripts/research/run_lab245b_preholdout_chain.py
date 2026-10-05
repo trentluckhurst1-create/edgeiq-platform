@@ -76,20 +76,35 @@ def main():
         print("PARITY_AUTHORITY=ABSENT; PARITY_AUDIT=SKIPPED")
     run("scripts/research/build_lab245b_compact_performance_bridge.py")
 
-    run("scripts/research/run_lab245b1_next_performance_forecast.py")
-    a1=audit("LAB245B1_AUDIT.json")
+    a1p=OUT/"LAB245B1_AUDIT.json"
+    if a1p.exists():
+        a1=audit("LAB245B1_AUDIT.json")
+        print(f"RESUME_CHECKPOINT=B1 AUDIT_STATUS={a1.get('status')}")
+    else:
+        run("scripts/research/run_lab245b1_next_performance_forecast.py")
+        a1=audit("LAB245B1_AUDIT.json")
     if a1.get("status")!="SURVIVE_TO_LAB245B2":
         print(f"CHAIN_STOP=B1 SCIENTIFIC_STATUS={a1.get('status')}")
         return
 
-    run("scripts/research/run_lab245b2_probability_challenger.py")
-    a2=audit("LAB245B2_AUDIT.json")
+    a2p=OUT/"LAB245B2_AUDIT.json"
+    if a2p.exists():
+        a2=audit("LAB245B2_AUDIT.json")
+        print(f"RESUME_CHECKPOINT=B2 AUDIT_STATUS={a2.get('status')}")
+    else:
+        run("scripts/research/run_lab245b2_probability_challenger.py")
+        a2=audit("LAB245B2_AUDIT.json")
     if a2.get("status")!="SURVIVE_TO_LAB245B3":
         print(f"CHAIN_STOP=B2 SCIENTIFIC_STATUS={a2.get('status')}")
         return
 
-    run("scripts/research/run_lab245b3_selective_betting_forensics.py")
-    a3=audit("LAB245B3_AUDIT.json")
+    a3p=OUT/"LAB245B3_AUDIT.json"
+    if a3p.exists():
+        a3=audit("LAB245B3_AUDIT.json")
+        print(f"RESUME_CHECKPOINT=B3 AUDIT_STATUS={a3.get('status')}")
+    else:
+        run("scripts/research/run_lab245b3_selective_betting_forensics.py")
+        a3=audit("LAB245B3_AUDIT.json")
     print(f"CHAIN_STOP=PREHOLDOUT_COMPLETE B3_STATUS={a3.get('status')}")
     print("2025_2026_HOLDOUT_REMAINS_SEALED=YES")
 
