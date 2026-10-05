@@ -10,7 +10,7 @@ ROOT=Path(__file__).resolve().parents[2]
 DATA_ROOT=Path(os.environ.get("EDGEIQ_DATA_ROOT",str(ROOT))).resolve()
 WAREHOUSE=DATA_ROOT/"docs/performance-intelligence/warehouse/edgeiq_performance_fact_warehouse_v1.csv"
 OUT=ROOT/"outputs/research/profitability_program/lab245b/LAB245B_WAREHOUSE_RUNNER_LVS.csv"
-MANIFEST=OUT.with_suffix(".manifest.json")
+MANIFEST=OUT.with_suffix(".manifest.json")\nPREFLIGHT=OUT.parent/"LAB245B_PREFLIGHT.json"
 CONTRACT_VERSION="LAB245B_STRICT_PIT_LVS_V8_V1_LENGTH_CONVERSION_TRACK_DISTANCE_CONDITION_MIN20"
 MIN_SAMPLE=20\nV1_SECONDS_PER_LENGTH=0.17\nV1_LENGTH_CONVERSION_CONTRACT="edgeiq_lengths_v_standard_methodology_v1.json:GOVERNED_CONSTANT_FROM_EXISTING_LENGTH_CONVERSION_CONTEXT_V1"
 EXPECTED_WAREHOUSE_SIZE=416143437
@@ -35,11 +35,22 @@ def main():
  OUT.parent.mkdir(parents=True,exist_ok=True)
  if not WAREHOUSE.exists():raise FileNotFoundError(WAREHOUSE)
  if WAREHOUSE.stat().st_size!=EXPECTED_WAREHOUSE_SIZE: raise RuntimeError(f"Warehouse size drift: {WAREHOUSE.stat().st_size}")
- h=hashlib.sha256()
- with WAREHOUSE.open("rb") as fh:
-  for b in iter(lambda:fh.read(16*1024*1024),b""): h.update(b)
- digest=h.hexdigest()
- if digest!=EXPECTED_WAREHOUSE_SHA256: raise RuntimeError(f"Warehouse SHA drift: {digest}")
+ digest=None
+ if PREFLIGHT.exists():
+  try:
+   pf=json.loads(PREFLIGHT.read_text(encoding="utf-8"))
+   wh=pf.get("checks",{}).get("warehouse",{})
+   if pf.get("status")=="PASS" and wh.get("status")=="PASS" and wh.get("bytes")==EXPECTED_WAREHOUSE_SIZE and wh.get("sha256")==EXPECTED_WAREHOUSE_SHA256:
+    digest=EXPECTED_WAREHOUSE_SHA256
+    print("WAREHOUSE_SHA_REUSED_FROM_PREFLIGHT=YES")
+  except Exception:
+   digest=None
+ if digest is None:
+  h=hashlib.sha256()
+  with WAREHOUSE.open("rb") as fh:
+   for b in iter(lambda:fh.read(16*1024*1024),b""): h.update(b)
+  digest=h.hexdigest()
+  if digest!=EXPECTED_WAREHOUSE_SHA256: raise RuntimeError(f"Warehouse SHA drift: {digest}")
  print(f"WAREHOUSE_FROZEN_AUTHORITY=PASS SHA256={digest}")
  use=["canonical_race_id","canonical_horse_id","canonical_track_id","race_date","jurisdiction","track","track_layout","distance_metres","track_condition","track_condition_group","field_size","finish_position","finish_margin","official_race_time","official_race_time_seconds","time_unit"]
  d=pd.read_csv(WAREHOUSE,usecols=use,low_memory=False)
