@@ -17,14 +17,7 @@ OUT=DIR/"LAB245B3_FINAL_SP_POLICY_RESULTS.csv"
 AUD=DIR/"LAB245B3_AUDIT.json"
 
 # Small predeclared policy family; no post-2023 tuning.
-POLICIES=[
- ("EDGE_105",1.05,0.00,999.0),("EDGE_110",1.10,0.00,999.0),("EDGE_120",1.20,0.00,999.0),
- ("EDGE_130",1.30,0.00,999.0),("EDGE_150",1.50,0.00,999.0),("EDGE_200",2.00,0.00,999.0),
- ("EDGE110_P05_SP50",1.10,0.05,50.0),("EDGE120_P05_SP50",1.20,0.05,50.0),
- ("EDGE130_P05_SP50",1.30,0.05,50.0),("EDGE120_P10_SP20",1.20,0.10,20.0),
- ("EDGE130_P10_SP20",1.30,0.10,20.0),("EDGE150_P10_SP20",1.50,0.10,20.0),
-]
-
+POLICIES=[\n ("EDGE_105",1.05,0.00,999.0),\n ("EDGE_110",1.10,0.00,999.0),\n ("EDGE_115",1.15,0.00,999.0),\n ("EDGE_120",1.20,0.00,999.0),\n]\n
 def load_sp():
  for p in SP_CANDIDATES:
   if p.exists():
@@ -89,7 +82,7 @@ def main():
   else:
    v=r[(r.period=="VALIDATION_2024")&(r.policy==selected)].iloc[0]
    status="SURVIVE_TO_FORENSIC_HOLDOUT" if v.bets>=100 and v.pot_pct>0 else "REJECT_2024_POLICY_CONFIRMATION"
- a={"status":status,"selected_policy":selected,"policy_family_size":len(POLICIES),
+ a={"status":status,"selected_policy":selected,"policy_family_size":len(POLICIES),"policy_contract":"LAB245B_B3_SELECTIVE_BETTING_PREDECLARED.json edge thresholds 0.05/0.10/0.15/0.20",
     "selection":"2022 only; >=50 bets and positive POT; choose highest POT shrunk toward zero by n/(n+200), then freeze policy",
     "development_confirmation":"fixed policy 2023 requires >=50 bets and positive POT; pooled 2022-23 requires >=150 bets and positive POT",
     "validation":"same fixed policy 2024 requires >=100 bets and positive POT",
