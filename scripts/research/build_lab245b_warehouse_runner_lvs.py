@@ -11,7 +11,7 @@ DATA_ROOT=Path(os.environ.get("EDGEIQ_DATA_ROOT",str(ROOT))).resolve()
 WAREHOUSE=DATA_ROOT/"docs/performance-intelligence/warehouse/edgeiq_performance_fact_warehouse_v1.csv"
 OUT=ROOT/"outputs/research/profitability_program/lab245b/LAB245B_WAREHOUSE_RUNNER_LVS.csv"
 MANIFEST=OUT.with_suffix(".manifest.json")
-CONTRACT_VERSION="LAB245B_STRICT_PIT_LVS_V6_GOVERNED_TRACK_DISTANCE_CONDITION_JURISDICTION_MIN20"
+CONTRACT_VERSION="LAB245B_STRICT_PIT_LVS_V7_GOVERNED_TRACK_DISTANCE_CONDITION_MIN20"
 MIN_SAMPLE=20
 EXPECTED_WAREHOUSE_SIZE=416143437
 EXPECTED_WAREHOUSE_SHA256="bcdcef1c7cb9144feae5783ca2fa83b1dc2b8dc07a42ac31c31fd7bd12b53107"
@@ -81,7 +81,7 @@ def main():
  scored=[]
  for race_date,day in r.groupby("race_date",sort=True):
   day=day.copy()
-  keys=list(zip(day["track_key"],day["distance_metres"],day["condition"],day["jurisdiction_key"]))
+  keys=list(zip(day["track_key"],day["distance_metres"],day["condition"]))
   times=day["official_race_time_seconds"].to_numpy(float)
   counts=[]; std=[]
   for k in keys:
@@ -121,7 +121,7 @@ def main():
  with OUT.open("rb") as fh:
   for b in iter(lambda:fh.read(16*1024*1024),b""): oh.update(b)
  output_sha=oh.hexdigest()
- manifest={"contract_version":CONTRACT_VERSION,"warehouse_sha256":digest,"warehouse_bytes":WAREHOUSE.stat().st_size,"pit_policy":"STRICT_DATE_LT_TARGET_DATE","benchmark_grouping":"canonical_track_id+distance_metres+condition+jurisdiction","minimum_prior_races":MIN_SAMPLE,"runner_formula":"race_lvs-finish_margin","seconds_per_length":0.17,"valid_runner_rule":"finish_position>0 and finite nonnegative finish_margin","output_sha256":output_sha,"output_bytes":OUT.stat().st_size,"rows_all_represented_runners":int(len(out)),"rows_valid_lvs_target":int(out["runner_lvs"].notna().sum()),"races":int(out["canonical_race_id"].nunique())}
+ manifest={"contract_version":CONTRACT_VERSION,"warehouse_sha256":digest,"warehouse_bytes":WAREHOUSE.stat().st_size,"pit_policy":"STRICT_DATE_LT_TARGET_DATE","benchmark_grouping":"canonical_track_id+distance_metres+condition","minimum_prior_races":MIN_SAMPLE,"runner_formula":"race_lvs-finish_margin","seconds_per_length":0.17,"valid_runner_rule":"finish_position>0 and finite nonnegative finish_margin","output_sha256":output_sha,"output_bytes":OUT.stat().st_size,"rows_all_represented_runners":int(len(out)),"rows_valid_lvs_target":int(out["runner_lvs"].notna().sum()),"races":int(out["canonical_race_id"].nunique())}
  MANIFEST.write_text(json.dumps(manifest,indent=2),encoding="utf-8")
  lvs_races=r["canonical_race_id"].nunique()
  print(f"SOURCE_ROWS={len(d):,}")
@@ -132,7 +132,7 @@ def main():
  print("PIT_POLICY=STRICT_DATE_LT_TARGET_DATE")
  print("RUNNER_LVS_POLICY=ORIGINAL_PRODUCER_ALGEBRA_WITH_ORIGINAL_GOVERNED_CONSTANT_0.17")
  print("RUNNER_TIME_EQUIVALENT_POLICY=ORIGINAL_PRODUCER_RACE_TIME_PLUS_MARGIN_X_SECONDS_PER_LENGTH")
- print("BENCHMARK_GROUPING=GOVERNED_IMPLEMENTATION_TRACK_ID_DISTANCE_CONDITION_JURISDICTION_MIN20_MEDIAN")
+ print("BENCHMARK_GROUPING=RECOVERED_PRODUCTION_CONTRACT_TRACK_ID_DISTANCE_CONDITION_MIN20_MEDIAN")
  print("BENCHMARK_CONTRACT=edgeiq_standard_time_grouping_contract_v1 APPROVED=track+distance+condition MIN_OBS=20")
  print("BENCHMARK_POLICY=LAB245B_STRICT_DATE_PIT_NOT_OLD_ALL_HISTORY_PRODUCTION_STANDARD")
  print("BENCHMARK_OUTLIER_POLICY=NONE")
