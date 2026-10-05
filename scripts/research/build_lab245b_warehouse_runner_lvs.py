@@ -57,6 +57,10 @@ def main():
  txt=(d["track"].fillna("")+" "+d["track_layout"].fillna("")+" "+d["track_condition"].fillna("")+" "+d["track_condition_group"].fillna("")).str.upper()
  d["surface"]=np.where(txt.str.contains("SYNTHETIC|POLY|TAPETA|FIBRE|FIBER",regex=True),"AUSTRALIAN_SYNTHETIC","TURF")
  d["_valid_time"]=d["official_race_time_seconds"].gt(0)
+ rc=d.groupby("canonical_race_id",sort=False).agg(track_n=("track_key","nunique"),date_n=("race_date","nunique"),distance_n=("distance_metres","nunique"),condition_n=("condition","nunique"),time_n=("official_race_time_seconds","nunique"))
+ bad=rc[(rc.track_n>1)|(rc.date_n>1)|(rc.distance_n>1)|(rc.condition_n>1)|(rc.time_n>1)]
+ if len(bad): raise RuntimeError(f"Canonical race attribute conflicts: {len(bad)} races")
+ print(f"CANONICAL_RACE_ATTRIBUTE_INVARIANT=PASS RACES={len(rc):,}")
  d["_winner"]=d["finish_position"].eq(1)
  r=d.sort_values(["canonical_race_id","_winner","_valid_time"],ascending=[True,False,False],kind="stable").drop_duplicates("canonical_race_id")
  r=r[r["_valid_time"]].copy()
