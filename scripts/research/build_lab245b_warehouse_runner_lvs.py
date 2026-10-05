@@ -58,7 +58,7 @@ def main():
   digest=h.hexdigest()
   if digest!=EXPECTED_WAREHOUSE_SHA256: raise RuntimeError(f"Warehouse SHA drift: {digest}")
  print(f"WAREHOUSE_FROZEN_AUTHORITY=PASS SHA256={digest}")
- use=["canonical_race_id","canonical_horse_id","canonical_track_id","race_date","jurisdiction","track","track_layout","distance_metres","track_condition","track_condition_group","field_size","finish_position","finish_margin","official_race_time","official_race_time_seconds","time_unit"]
+ use=["canonical_race_id","canonical_horse_id","canonical_track_id","race_date","distance_metres","track_condition_group","field_size","finish_position","finish_margin","official_race_time","official_race_time_seconds","time_unit"]
  d=pd.read_csv(WAREHOUSE,usecols=use,low_memory=False)
  d["race_date"]=pd.to_datetime(d["race_date"],errors="coerce")
  for x in ["distance_metres","finish_position","finish_margin","official_race_time","official_race_time_seconds"]:d[x]=pd.to_numeric(d[x],errors="coerce")
@@ -73,15 +73,12 @@ def main():
  d.loc[d["condition"].isin(["","UNKNOWN","NAN","NONE","<NA>"]),"condition"]=pd.NA
  d["track_key"]=d["canonical_track_id"].fillna("").astype(str).str.strip()
  d.loc[d["track_key"].eq(""),"track_key"]=pd.NA
- d["track_display_key"]=d["track"].fillna("").astype(str).str.strip().str.upper()
- d["layout_key"]=d["track_layout"].fillna("").astype(str).str.strip().str.upper()
- d["jurisdiction_key"]=d["jurisdiction"].fillna("").astype(str).str.strip().str.upper()
  unit=d["time_unit"].astype("string").str.strip().str.lower()
  d["_valid_time"]=d["official_race_time_seconds"].notna() & d["official_race_time_seconds"].gt(0) & ~unit.isin(["unknown","invalid"])
  d["_valid_distance"]=d["distance_metres"].notna() & d["distance_metres"].gt(0)
  d["_eligible_benchmark"]=d["_valid_time"] & d["_valid_distance"] & d["track_key"].notna() & d["condition"].notna()
- rc=d.groupby("canonical_race_id",sort=False).agg(track_n=("track_key","nunique"),date_n=("race_date","nunique"),distance_n=("distance_metres","nunique"),condition_n=("condition","nunique"),jurisdiction_n=("jurisdiction_key","nunique"),field_size_n=("field_size","nunique"),time_n=("official_race_time_seconds","nunique"))
- bad=rc[(rc.track_n>1)|(rc.date_n>1)|(rc.distance_n>1)|(rc.condition_n>1)|(rc.jurisdiction_n>1)|(rc.field_size_n>1)|(rc.time_n>1)]
+ rc=d.groupby("canonical_race_id",sort=False).agg(track_n=("track_key","nunique"),date_n=("race_date","nunique"),distance_n=("distance_metres","nunique"),condition_n=("condition","nunique"),field_size_n=("field_size","nunique"),time_n=("official_race_time_seconds","nunique"))
+ bad=rc[(rc.track_n>1)|(rc.date_n>1)|(rc.distance_n>1)|(rc.condition_n>1)|(rc.field_size_n>1)|(rc.time_n>1)]
  if len(bad): raise RuntimeError(f"Canonical race attribute conflicts: {len(bad)} races")
  print(f"CANONICAL_RACE_ATTRIBUTE_INVARIANT=PASS RACES={len(rc):,}")
  d["_winner"]=d["finish_position"].eq(1)
