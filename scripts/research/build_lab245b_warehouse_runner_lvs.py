@@ -71,7 +71,8 @@ def main():
  if len(bad): raise RuntimeError(f"Canonical race attribute conflicts: {len(bad)} races")
  print(f"CANONICAL_RACE_ATTRIBUTE_INVARIANT=PASS RACES={len(rc):,}")
  d["_winner"]=d["finish_position"].eq(1)
- d["_race_pick_priority"]=np.select([d["_winner"] & d["_valid_time"],d["_valid_time"],d["_winner"]],[3,2,1],default=0)\n r=d.sort_values(["canonical_race_id","_race_pick_priority"],ascending=[True,False],kind="stable").drop_duplicates("canonical_race_id")
+ d["_race_pick_priority"]=np.select([d["_winner"] & d["_valid_time"],d["_valid_time"],d["_winner"]],[3,2,1],default=0)
+ r=d.sort_values(["canonical_race_id","_race_pick_priority"],ascending=[True,False],kind="stable").drop_duplicates("canonical_race_id")
  timed_races=int(r["_valid_time"].sum())
  eligible_timed_races=int(r["_eligible_benchmark"].sum())
  r=r[r["_eligible_benchmark"]].copy()
@@ -99,7 +100,10 @@ def main():
  r=pd.concat(scored,ignore_index=True)
  r=r[r["standard_time_seconds"].notna()].copy()
 
- sec_per_len=0.17\n r["seconds_per_length"]=sec_per_len\n print("LENGTH_CONVERSION=ORIGINAL_PRODUCER_GOVERNED_CONSTANT_0.17")\n r["race_lvs"]=-(r["official_race_time_seconds"]-r["standard_time_seconds"])/r["seconds_per_length"]
+ sec_per_len=0.17
+ r["seconds_per_length"]=sec_per_len
+ print("LENGTH_CONVERSION=ORIGINAL_PRODUCER_GOVERNED_CONSTANT_0.17")
+ r["race_lvs"]=-(r["official_race_time_seconds"]-r["standard_time_seconds"])/r["seconds_per_length"]
  race_lvs=r[["canonical_race_id","race_lvs","standard_time_seconds","seconds_per_length","benchmark_n"]]
  out=d.merge(race_lvs,on="canonical_race_id",how="inner",validate="many_to_one")
  # Runner target is defined only for a valid finishing outcome; benchmark race history remains race-level.
