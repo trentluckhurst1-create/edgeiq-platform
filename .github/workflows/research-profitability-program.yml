@@ -35,7 +35,7 @@ jobs:
         with:
           python-version: "3.11"
       - name: Install research dependencies
-        run: python -m pip install --disable-pip-version-check pandas numpy scikit-learn
+        run: python -m pip install --disable-pip-version-check pandas numpy scipy scikit-learn
       - name: Select research lab
         shell: bash
         run: |
