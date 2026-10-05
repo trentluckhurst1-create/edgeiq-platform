@@ -18,7 +18,7 @@ def main():
  dup=int(s.duplicated(["_race","_horse"],keep=False).sum())
  # identical duplicate SP rows are safe to collapse; conflicting prices are not.
  g=s.groupby(["_race","_horse"],sort=False)._sp.agg(["size","nunique"]).reset_index()
- conflict=int((g.nunique>1).sum()); duplicate_keys=int((g["size"]>1).sum())
+ conflict=int((g["nunique"]>1).sum()); duplicate_keys=int((g["size"]>1).sum())
  if conflict: raise RuntimeError(f"LAB146 conflicting SP identity keys={conflict}")
  s=s.drop_duplicates(["_race","_horse"],keep="first")
  p=pd.read_csv(P,low_memory=False); p["_race"]=p._race.astype("string").str.strip(); p["_horse"]=p._horse.astype("string").str.strip()
