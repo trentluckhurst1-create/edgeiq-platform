@@ -100,7 +100,12 @@ def main():
  best_base=devdf[devdf.model.isin(baselines)].iloc[0]
  best_ml=devdf[devdf.model.isin(["RIDGE","HGB"])].iloc[0]
  res=pd.DataFrame(rows); confirm=res[res.year==2024].set_index("model")
- survive=(best_ml.mae<best_base.mae and best_ml.rmse<best_base.rmse and best_ml.race_spearman>best_base.race_spearman
+ yearly_ok=True; yearly_deltas={}
+ for yy in [2022,2023]:
+  yyres=res[res.year==yy].set_index("model"); sy=yyres.loc[best_base.model]; my=yyres.loc[best_ml.model]
+  yearly_deltas[str(yy)]={"mae_gain":float(sy.mae-my.mae),"rmse_gain":float(sy.rmse-my.rmse),"spearman_gain":float(my.race_spearman-sy.race_spearman)}
+  yearly_ok=yearly_ok and my.mae<sy.mae and my.rmse<sy.rmse and my.race_spearman>sy.race_spearman
+ survive=(yearly_ok and best_ml.mae<best_base.mae and best_ml.rmse<best_base.rmse and best_ml.race_spearman>best_base.race_spearman
           and best_ml.model in confirm.index and best_base.model in confirm.index
           and confirm.loc[best_ml.model,"mae"]<confirm.loc[best_base.model,"mae"]
           and confirm.loc[best_ml.model,"rmse"]<confirm.loc[best_base.model,"rmse"]
@@ -110,7 +115,7 @@ def main():
  "target":"LAB026_EPI_INVERTED_TO_LVS","target_formula":"(target_epi_026-50)/2.5",
  "same_day_history":"PROHIBITED_BY_LAB027_GOVERNANCE","future_history":"PROHIBITED_BY_LAB027_GOVERNANCE",
  "market_features":"EXCLUDED","development_years":[2022,2023],"confirmation_year":2024,"sealed_years":[2025,2026],
- "best_baseline":best_base.to_dict(),"best_ml":best_ml.to_dict()}
+ "best_baseline":best_base.to_dict(),"best_ml":best_ml.to_dict(),"development_yearly_stability_required":True,"development_yearly_deltas":yearly_deltas}
  SUMMARY.write_text(json.dumps(summary,indent=2,default=float),encoding="utf-8")
  print(json.dumps(summary,indent=2,default=float)); print(f"OUT={OUT}")
 if __name__=="__main__": main()
