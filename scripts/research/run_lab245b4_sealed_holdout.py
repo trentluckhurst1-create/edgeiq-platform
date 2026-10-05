@@ -18,10 +18,7 @@ TRAIN=DIR/"LAB245B_COMPACT_PERFORMANCE_BRIDGE.csv"
 B1=DIR/"LAB245B1_AUDIT.json"; B2=DIR/"LAB245B2_AUDIT.json"; B3=DIR/"LAB245B3_AUDIT.json"
 OUT=DIR/"LAB245B4_HOLDOUT_RESULTS.json"
 FEATURES=["hist_runs","current_distance","lvs_last1","lvs_mean3","lvs_mean5","lvs_median5","lvs_std5","lvs_peak","lvs_worst5","margin_mean5","margin_worst5","margin_std5","finishpos_mean5","days_since_last","dist200_runs","dist200_lvs_mean","dist200_lvs_best"]
-POLICIES={
-"EDGE_105":(1.05,0,999),"EDGE_110":(1.10,0,999),"EDGE_120":(1.20,0,999),"EDGE_130":(1.30,0,999),"EDGE_150":(1.50,0,999),"EDGE_200":(2.0,0,999),
-"EDGE110_P05_SP50":(1.10,.05,50),"EDGE120_P05_SP50":(1.20,.05,50),"EDGE130_P05_SP50":(1.30,.05,50),
-"EDGE120_P10_SP20":(1.20,.10,20),"EDGE130_P10_SP20":(1.30,.10,20),"EDGE150_P10_SP20":(1.50,.10,20)}
+POLICIES={"EDGE_105":(1.05,0,999),"EDGE_110":(1.10,0,999),"EDGE_115":(1.15,0,999),"EDGE_120":(1.20,0,999)}
 SP_CANDIDATES=[DATA_ROOT/"outputs/research/profitability_program/compact/EDGEIQ_PROFITABILITY_COMPACT_RUNNERS.csv",DATA_ROOT/"outputs/research/model_price_diagnostics/lab166c/LAB166E_CORRECTED_PIT_PREDICTIONS.csv"]
 
 def stats(a,n):
