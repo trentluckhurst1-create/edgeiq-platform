@@ -33,6 +33,7 @@ on:
           - "245d15"
           - "245d16"
           - "245d16b"
+          - "245d17"
 
 permissions:
   contents: read
@@ -323,6 +324,18 @@ jobs:
           Push-Location $ResearchRoot
           try { python $LocalScript } finally { Pop-Location }
           if ($LASTEXITCODE -ne 0) { throw "LAB245D16B failed" }
+      - name: Run LAB245D17 governed full-universe rich history
+        if: ${{ github.event.inputs.lab == '245d17' || (github.event_name == 'push' && contains(github.event.head_commit.message, 'LAB245D17')) }}
+        shell: powershell
+        run: |
+          $ResearchRoot = "C:\EDGEIQ_PROFITABILITY_RESEARCH"
+          $SourceScript = Join-Path $env:GITHUB_WORKSPACE "scripts\research\run_lab245d17_governed_rich_history.py"
+          $LocalScript = Join-Path $ResearchRoot "scripts\research\run_lab245d17_governed_rich_history.py"
+          Copy-Item $SourceScript $LocalScript -Force
+          python -m py_compile $LocalScript
+          Push-Location $ResearchRoot
+          try { python $LocalScript } finally { Pop-Location }
+          if ($LASTEXITCODE -ne 0) { throw "LAB245D17 failed" }
       - name: Run governed research bootstrap
         if: env.LAB == 'bootstrap'
         run: python scripts/research/profitability_program_bootstrap.py
