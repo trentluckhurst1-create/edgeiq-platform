@@ -28,6 +28,7 @@ on:
           - "245d10"
           - "245d11"
           - "245d12"
+          - "245d13"
 
 permissions:
   contents: read
@@ -258,6 +259,18 @@ jobs:
           Push-Location $ResearchRoot
           try { python $LocalScript } finally { Pop-Location }
           if ($LASTEXITCODE -ne 0) { throw "LAB245D12 failed" }
+      - name: Run LAB245D13 apples-to-apples rich versus compact
+        if: ${{ github.event.inputs.lab == '245d13' || (github.event_name == 'push' && contains(github.event.head_commit.message, 'LAB245D13')) }}
+        shell: powershell
+        run: |
+          $ResearchRoot = "C:\EDGEIQ_PROFITABILITY_RESEARCH"
+          $SourceScript = Join-Path $env:GITHUB_WORKSPACE "scripts\research\run_lab245d13_apples_to_apples.py"
+          $LocalScript = Join-Path $ResearchRoot "scripts\research\run_lab245d13_apples_to_apples.py"
+          Copy-Item $SourceScript $LocalScript -Force
+          python -m py_compile $LocalScript
+          Push-Location $ResearchRoot
+          try { python $LocalScript } finally { Pop-Location }
+          if ($LASTEXITCODE -ne 0) { throw "LAB245D13 failed" }
       - name: Run governed research bootstrap
         if: env.LAB == 'bootstrap'
         run: python scripts/research/profitability_program_bootstrap.py
