@@ -38,7 +38,15 @@ def main():
     # Common evaluation universe for simple-vs-ML selection: require a finite recency LVS history.
     # DIST200 remains diagnostic because its availability is conditional on distance-near history.
     d=d[np.isfinite(pd.to_numeric(d["lvs_mean3"],errors="coerce"))].copy()
-    coverage={str(int(y)):{"rows":int(len(g)),"races":int(g["_race"].nunique())} for y,g in d.groupby("_year",sort=True)}\n    raw["hist_runs"]=pd.to_numeric(raw["hist_runs"],errors="coerce").fillna(0)\n    history_depth={}\n    for y,g in raw.groupby("_year",sort=True):\n        yy=str(int(y)); total_races=int(g["_race"].nunique())\n        eligible=g[(g["target_lvs"].notna())&(g["hist_runs"]>=3)]\n        fs=g.groupby("_race")["_horse"].nunique(); es=eligible.groupby("_race")["_horse"].nunique()\n        complete=int(sum(int(es.get(r,0))==int(n) for r,n in fs.items()))\n        history_depth[yy]={"all_rows":int(len(g)),"zero_prior_rows":int((g["hist_runs"]==0).sum()),"one_two_prior_rows":int(g["hist_runs"].between(1,2).sum()),"three_plus_prior_rows":int((g["hist_runs"]>=3).sum()),"all_races":total_races,"three_plus_complete_target_races":complete,"three_plus_complete_race_pct":100.0*complete/total_races if total_races else 0.0}
+    coverage={str(int(y)):{"rows":int(len(g)),"races":int(g["_race"].nunique())} for y,g in d.groupby("_year",sort=True)}
+    raw["hist_runs"]=pd.to_numeric(raw["hist_runs"],errors="coerce").fillna(0)
+    history_depth={}
+    for y,g in raw.groupby("_year",sort=True):
+        yy=str(int(y)); total_races=int(g["_race"].nunique())
+        eligible=g[(g["target_lvs"].notna())&(g["hist_runs"]>=3)]
+        fs=g.groupby("_race")["_horse"].nunique(); es=eligible.groupby("_race")["_horse"].nunique()
+        complete=int(sum(int(es.get(r,0))==int(n) for r,n in fs.items()))
+        history_depth[yy]={"all_rows":int(len(g)),"zero_prior_rows":int((g["hist_runs"]==0).sum()),"one_two_prior_rows":int(g["hist_runs"].between(1,2).sum()),"three_plus_prior_rows":int((g["hist_runs"]>=3).sum()),"all_races":total_races,"three_plus_complete_target_races":complete,"three_plus_complete_race_pct":100.0*complete/total_races if total_races else 0.0}
     feats=[x for x in FEATURES if x in d.columns]
     if len(feats)!=len(FEATURES): raise RuntimeError(f"Missing governed features: {sorted(set(FEATURES)-set(feats))}")
     for x in feats+["target_lvs"]: d[x]=pd.to_numeric(d[x],errors="coerce")
