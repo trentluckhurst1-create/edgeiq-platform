@@ -29,7 +29,7 @@ def score(d,p):
 def main():
     if not INP.exists(): raise FileNotFoundError(INP)
     d=pd.read_csv(INP,low_memory=False)
-    required={"_race","_horse","_year","race_date","target_lvs","target_finish_position","hist_runs",*FEATURES}
+    required={"_race","_horse","_year","race_date","target_lvs","target_finish_position","target_field_size","hist_runs",*FEATURES}
     missing=sorted(required-set(d.columns))
     if missing: raise RuntimeError(f"LAB245B1 input contract missing columns: {missing}")
     if not d["_year"].between(2021,2024).all(): raise RuntimeError("Sealed-year breach.")
@@ -51,12 +51,12 @@ def main():
         for name,col in BASELINES.items():
             p=te[col].to_numpy(float)
             rows.append({"year":year,"model":name,**score(te,p)})
-            q=te[["_race","_horse","_year","race_date","target_lvs","target_finish_position"]].copy(); q["model"]=name; q["pred_lvs"]=p; pp.append(q)
+            q=te[["_race","_horse","_year","race_date","target_lvs","target_finish_position","target_field_size"]].copy(); q["model"]=name; q["pred_lvs"]=p; pp.append(q)
         models={"RIDGE":make_pipeline(SimpleImputer(strategy="median"),StandardScaler(),Ridge(alpha=10.0)),"HGB":HistGradientBoostingRegressor(max_iter=250,learning_rate=.04,max_leaf_nodes=15,l2_regularization=5,random_state=245)}
         for name,m in models.items():
             m.fit(tr[feats],tr["target_lvs"]); p=m.predict(te[feats])
             rows.append({"year":year,"model":name,**score(te,p)})
-            q=te[["_race","_horse","_year","target_lvs","target_finish_position"]].copy(); q["model"]=name; q["pred_lvs"]=p; pp.append(q)
+            q=te[["_race","_horse","_year","race_date","target_lvs","target_finish_position","target_field_size"]].copy(); q["model"]=name; q["pred_lvs"]=p; pp.append(q)
     res=pd.DataFrame(rows); pred=pd.concat(pp,ignore_index=True)
     res.to_csv(OUTDIR/"LAB245B1_NEXT_PERFORMANCE_RESULTS.csv",index=False)
     pred.to_csv(OUTDIR/"LAB245B1_OOF_PREDICTIONS.csv",index=False)
