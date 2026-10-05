@@ -87,7 +87,7 @@ def main():
  for c in ["canonical_race_id","canonical_horse_id"]: d[c]=d[c].astype("string").str.strip()
  d["race_date"]=pd.to_datetime(d["race_date"],errors="coerce")
  for c in ["distance_metres","finish_position","finish_margin","runner_lvs"]: d[c]=pd.to_numeric(d[c],errors="coerce")
- d=d.dropna(subset=["canonical_race_id","canonical_horse_id","race_date"]).sort_values(["canonical_horse_id","race_date","canonical_race_id"],kind="stable")
+ d=d.dropna(subset=["canonical_race_id","canonical_horse_id","race_date"])\n d["target_field_size"]=d.groupby("canonical_race_id")["canonical_horse_id"].transform("nunique")\n d=d.sort_values(["canonical_horse_id","race_date","canonical_race_id"],kind="stable")
  field_sizes=d.groupby("canonical_race_id")["canonical_horse_id"].nunique().to_dict()
  rows=[]
  for horse,g in d.groupby("canonical_horse_id",sort=False):
