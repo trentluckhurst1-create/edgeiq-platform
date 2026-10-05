@@ -58,7 +58,7 @@ Data governance:
 - Frozen warehouse authority: 879,784 rows; 416,143,437 bytes; SHA-256 bcdcef1c7cb9144feae5783ca2fa83b1dc2b8dc07a42ac31c31fd7bd12b53107.
 - Historical 533,387-row runner-LVS authority is parity/reference evidence only because its production standard times used all-history observations.
 - Forecasting labels are reconstructed with standards using races strictly before the target race date.
-- Standard-time governed downstream key: canonical track ID + distance + condition + jurisdiction; median; minimum 20 prior races.
+- Standard-time governed downstream key: canonical track ID + distance + condition + jurisdiction; median; minimum 20 prior races; no trimming/winsorisation/outlier removal.
 - Runner LVS algebra: race LVS minus finish margin. Positive is faster/better than standard. The historical producer used a flat 0.17 seconds/length; LAB245B intentionally uses the later governed surface/condition conversion authority.
 - Centisecond conversion is fail-closed against official_race_time / 100.
 - Governed surface/condition seconds-per-length parameters are frozen and checked before target construction.
