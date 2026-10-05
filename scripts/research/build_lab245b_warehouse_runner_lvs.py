@@ -15,7 +15,7 @@ PREFLIGHT=OUT.parent/"LAB245B_PREFLIGHT.json"
 BENCHMARK_CHECKPOINT=OUT.parent/"LAB245B_STRICT_PIT_RACE_BENCHMARK_CHECKPOINT.csv"
 BENCHMARK_CHECKPOINT_META=OUT.parent/"LAB245B_STRICT_PIT_RACE_BENCHMARK_CHECKPOINT.json"
 # V8 freezes original V1 0.17 sec/length while making the benchmark strict date-PIT.
-CONTRACT_VERSION="LAB245B_STRICT_PIT_LVS_V9_GOVERNED_TIME_PRECEDENCE_V1_LENGTH_CONVERSION_TRACK_DISTANCE_CONDITION_MIN20"
+CONTRACT_VERSION="LAB245B_STRICT_PIT_LVS_V10_RECOVERY_RACE_SELECTION_PARITY_V1_LENGTH_CONVERSION_TRACK_DISTANCE_CONDITION_MIN20"
 MIN_SAMPLE=20
 V1_SECONDS_PER_LENGTH=0.17
 V1_LENGTH_CONVERSION_CONTRACT="edgeiq_lengths_v_standard_methodology_v1.json:GOVERNED_CONSTANT_FROM_EXISTING_LENGTH_CONVERSION_CONTEXT_V1"
@@ -80,25 +80,19 @@ def main():
  rc_identity=d.groupby("canonical_race_id",sort=False).agg(track_n=("track_key","nunique"),date_n=("race_date","nunique"),distance_n=("distance_metres","nunique"),condition_n=("condition","nunique"),field_size_n=("field_size","nunique"))
  bad_identity=rc_identity[(rc_identity.track_n>1)|(rc_identity.date_n>1)|(rc_identity.distance_n>1)|(rc_identity.condition_n>1)|(rc_identity.field_size_n>1)]
  if len(bad_identity): raise RuntimeError(f"Canonical race identity attribute conflicts: {len(bad_identity)} races")
- governed=d["time_unit"].astype("string").str.strip().str.upper().eq("CENTISECONDS_TO_SECONDS_V1") & d["official_race_time_seconds"].notna() & d["official_race_time_seconds"].gt(0)
- governed_time_n=d.loc[governed].groupby("canonical_race_id")["official_race_time_seconds"].nunique()
- bad_governed=governed_time_n[governed_time_n>1]
- if len(bad_governed): raise RuntimeError(f"Governed race time conflicts remain after precedence: {len(bad_governed)} races")
- d["_governed_time"]=governed
- d["_race_has_governed_time"]=d.groupby("canonical_race_id")["_governed_time"].transform("any")
- d["_benchmark_time_candidate"]=d["_governed_time"] | (~d["_race_has_governed_time"] & d["_valid_time"])
- time_n=d.loc[d["_benchmark_time_candidate"]].groupby("canonical_race_id")["official_race_time_seconds"].nunique()
- bad_fallback=time_n[time_n>1]
- if len(bad_fallback): raise RuntimeError(f"Fallback race time conflicts without governed authority: {len(bad_fallback)} races")
- resolved_races=int((d.groupby("canonical_race_id")["official_race_time_seconds"].nunique()>1).sum())
- print(f"GOVERNED_TIME_PRECEDENCE=PASS MULTI_TIME_RACES_RESOLVED={resolved_races:,} POLICY=CENTISECONDS_TO_SECONDS_V1_OVER_UNSUPPORTED_TIME_UNIT")
- rc=rc_identity
- print(f"CANONICAL_RACE_ATTRIBUTE_INVARIANT=PASS RACES={len(rc):,}")
+ print(f"CANONICAL_RACE_IDENTITY_INVARIANT=PASS RACES={len(rc_identity):,}")
+ # Parity with accepted timing-warehouse recovery V1: select one race observation,
+ # preferring a winner with valid time, then any valid timed row, then a winner.
  d["_winner"]=d["finish_position"].eq(1)
- d["_valid_time"]=d["_valid_time"] & d["_benchmark_time_candidate"]
- d["_eligible_benchmark"]=d["_valid_time"] & d["_valid_distance"] & d["track_key"].notna() & d["condition"].notna()
  d["_race_pick_priority"]=np.select([d["_winner"] & d["_valid_time"],d["_valid_time"],d["_winner"]],[3,2,1],default=0)
+ multi_time=d.loc[d["_valid_time"]].groupby("canonical_race_id")["official_race_time_seconds"].nunique()
+ multi_time_races=int((multi_time>1).sum())
+ winner_time_n=d.loc[d["_winner"] & d["_valid_time"]].groupby("canonical_race_id")["official_race_time_seconds"].nunique()
+ ambiguous_winner_races=int((winner_time_n>1).sum())
+ if ambiguous_winner_races:
+  raise RuntimeError(f"Multiple distinct valid winner times within canonical race: {ambiguous_winner_races} races")
  r=d.sort_values(["canonical_race_id","_race_pick_priority"],ascending=[True,False],kind="stable").drop_duplicates("canonical_race_id")
+ print(f"RECOVERY_RACE_SELECTION_PARITY=PASS MULTI_TIME_RACES={multi_time_races:,} AMBIGUOUS_WINNER_TIME_RACES={ambiguous_winner_races:,} POLICY=WINNER_VALID_TIME_THEN_VALID_TIME_THEN_WINNER")
  timed_races=int(r["_valid_time"].sum())
  eligible_timed_races=int(r["_eligible_benchmark"].sum())
  r=r[r["_eligible_benchmark"]].copy()
