@@ -53,7 +53,7 @@ def main():
                  "pit_rows":int(len(p)),"authority_rows":int(len(a)),"exact_overlap_rows":int(len(m)),
                  "numeric_overlap_rows":int(len(v)),"lvs_correlation":corr,
                  "mean_pit_minus_authority_lvs":float(delta.mean()),"mae_lvs":float(delta.abs().mean()),
-                 "parity_threshold_correlation":0.90,"parity_status":"PASS_SIGN_UNIT_FORMULA"})
+                 "parity_threshold_correlation":parity_threshold,"parity_status":"PASS_SIGN_UNIT_FORMULA"})
  OUT.write_text(json.dumps(report,indent=2),encoding="utf-8")
  print(json.dumps(report,indent=2))
  print(f"OUT={OUT}")
