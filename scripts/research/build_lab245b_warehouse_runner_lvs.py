@@ -117,7 +117,11 @@ def main():
  # Baseline parity: original governed producer constant 0.17. Condition-dependent conversion is reserved for a separately named challenger.
  keep=["canonical_race_id","canonical_horse_id","race_date","distance_metres","finish_position","finish_margin","runner_time_equivalent_seconds","runner_lvs","race_lvs","standard_time_seconds","seconds_per_length","benchmark_n"]
  out[keep].to_csv(OUT,index=False)
- manifest={"contract_version":CONTRACT_VERSION,"warehouse_sha256":digest,"warehouse_bytes":WAREHOUSE.stat().st_size,"pit_policy":"STRICT_DATE_LT_TARGET_DATE","benchmark_grouping":"canonical_track_id+distance_metres+condition","minimum_prior_races":MIN_SAMPLE,"runner_formula":"race_lvs-finish_margin","seconds_per_length":0.17,"valid_runner_rule":"finish_position>0 and finite nonnegative finish_margin","rows_all_represented_runners":int(len(out)),"rows_valid_lvs_target":int(out["runner_lvs"].notna().sum()),"races":int(out["canonical_race_id"].nunique())}
+ oh=hashlib.sha256()
+ with OUT.open("rb") as fh:
+  for b in iter(lambda:fh.read(16*1024*1024),b""): oh.update(b)
+ output_sha=oh.hexdigest()
+ manifest={"contract_version":CONTRACT_VERSION,"warehouse_sha256":digest,"warehouse_bytes":WAREHOUSE.stat().st_size,"pit_policy":"STRICT_DATE_LT_TARGET_DATE","benchmark_grouping":"canonical_track_id+distance_metres+condition","minimum_prior_races":MIN_SAMPLE,"runner_formula":"race_lvs-finish_margin","seconds_per_length":0.17,"valid_runner_rule":"finish_position>0 and finite nonnegative finish_margin","output_sha256":output_sha,"output_bytes":OUT.stat().st_size,"rows_all_represented_runners":int(len(out)),"rows_valid_lvs_target":int(out["runner_lvs"].notna().sum()),"races":int(out["canonical_race_id"].nunique())}
  MANIFEST.write_text(json.dumps(manifest,indent=2),encoding="utf-8")
  lvs_races=r["canonical_race_id"].nunique()
  print(f"SOURCE_ROWS={len(d):,}")
