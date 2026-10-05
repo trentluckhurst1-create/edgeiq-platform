@@ -51,7 +51,7 @@ def main():
    dates=[x["date"] for x in hist]
    l3=stats(lvs,3); l5=stats(lvs,5)
    m5=stats(margins,5); p5=stats(poss,5)
-   for _,r in day.iterrows():
+   for r in day.itertuples(index=False):
     year=int(dt.year)
     if 2021<=year<=2024:
      rec={"_race":r.canonical_race_id,"_horse":horse,"_year":year,"race_date":dt.date().isoformat(),
@@ -68,7 +68,7 @@ def main():
                   "dist200_lvs_best":max(nl) if nl else np.nan})
      rows.append(rec)
    # Same-date exclusion: update only after all rows on date are scored.
-   for _,r in day.iterrows():
+   for r in day.itertuples(index=False):
     hist.append({"date":dt,"distance":float(r.distance_metres) if pd.notna(r.distance_metres) else np.nan,
                  "pos":float(r.finish_position) if pd.notna(r.finish_position) else np.nan,
                  "margin":float(r.finish_margin) if pd.notna(r.finish_margin) else np.nan,
