@@ -72,18 +72,23 @@ def main():
    x=apply(d[d["_year"].isin(years)],e,pm,sm)
    rows.append({"policy":name,"edge_min":e,"p_min":pm,"sp_max":sm,"period":period,**metrics(x)})
  r=pd.DataFrame(rows); r.to_csv(OUT,index=False)
- dev=r[r.period=="DEV_2022_2023"].copy()
- y22=r[r.period=="YEAR_2022"].set_index("policy"); y23=r[r.period=="YEAR_2023"].set_index("policy")
- eligible=dev[(dev.bets>=200)&(dev.pot_pct>0)&dev.policy.map(lambda x:y22.loc[x,"bets"]>=50 and y23.loc[x,"bets"]>=50 and y22.loc[x,"pot_pct"]>0 and y23.loc[x,"pot_pct"]>0)]
- if eligible.empty:
-  status="REJECT_NO_STABLE_DEV_POLICY"; selected=None
+ y22=r[r.period=="YEAR_2022"].copy(); y23=r[r.period=="YEAR_2023"].set_index("policy"); pooled=r[r.period=="DEV_2022_2023"].set_index("policy")
+ # Temporal policy ladder: select once on 2022, then freeze for 2023 and 2024.
+ eligible22=y22[(y22.bets>=50)&(y22.pot_pct>0)]
+ if eligible22.empty:
+  status="REJECT_NO_2022_SELECTION_POLICY"; selected=None
  else:
-  selected=str(eligible.sort_values(["pot_pct","bets"],ascending=[False,False]).iloc[0].policy)
-  v=r[(r.period=="VALIDATION_2024")&(r.policy==selected)].iloc[0]
-  status="SURVIVE_TO_FORENSIC_HOLDOUT" if v.bets>=100 and v.pot_pct>0 else "REJECT_2024_POLICY_CONFIRMATION"
+  selected=str(eligible22.sort_values(["pot_pct","bets"],ascending=[False,False]).iloc[0].policy)
+  c23=y23.loc[selected]; cp=pooled.loc[selected]
+  if not (c23.bets>=50 and c23.pot_pct>0 and cp.bets>=150 and cp.pot_pct>0):
+   status="REJECT_2023_POLICY_CONFIRMATION"
+  else:
+   v=r[(r.period=="VALIDATION_2024")&(r.policy==selected)].iloc[0]
+   status="SURVIVE_TO_FORENSIC_HOLDOUT" if v.bets>=100 and v.pot_pct>0 else "REJECT_2024_POLICY_CONFIRMATION"
  a={"status":status,"selected_policy":selected,"policy_family_size":len(POLICIES),
-    "selection":"2022-23 only; >=200 bets; positive POT in pooled dev and each of 2022/2023; >=50 bets each year; choose highest pooled POT",
-    "validation":"fixed policy 2024 requires >=100 bets and positive POT",
+    "selection":"2022 only; >=50 bets and positive POT; choose highest POT then freeze policy",
+    "development_confirmation":"fixed policy 2023 requires >=50 bets and positive POT; pooled 2022-23 requires >=150 bets and positive POT",
+    "validation":"same fixed policy 2024 requires >=100 bets and positive POT",
     "sp_source":str(sp_path),"final_sp_role":"HISTORICAL_POLICY_SELECTION_AND_FORENSICS_ONLY",
     "deployability_limitation":"Final SP is not a deployable offered price. Any surviving policy requires validation on actual pre-race offered odds.",
     "holdout_2025_2026_opened":False,"market_used_in_probability_model":False}
