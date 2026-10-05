@@ -96,7 +96,7 @@ def main():
  r["race_lvs"]=-(r["official_race_time_seconds"]-r["standard_time_seconds"])/r["seconds_per_length"]
  race_lvs=r[["canonical_race_id","race_lvs","standard_time_seconds","seconds_per_length","benchmark_n"]]
  out=d.merge(race_lvs,on="canonical_race_id",how="inner",validate="many_to_one")
- # Formula parity recovered from original producer: runner LVS = race LVS - finish margin.
+ # Algebra recovered from original producer: runner LVS = race LVS - finish margin.\n # LAB245B intentionally uses the later governed surface/condition seconds-per-length table, not the legacy flat 0.17.
  out["runner_lvs"]=out["race_lvs"]-out["finish_margin"]
  out["runner_time_equivalent_seconds"]=out["official_race_time_seconds"]+out["finish_margin"]*out["seconds_per_length"]
  keep=["canonical_race_id","canonical_horse_id","race_date","distance_metres","finish_position","finish_margin","runner_time_equivalent_seconds","runner_lvs","race_lvs","standard_time_seconds","seconds_per_length","benchmark_n"]
@@ -107,7 +107,7 @@ def main():
  print(f"LVS_RACES={lvs_races:,}")
  print(f"RUNNER_ROWS={len(out):,}")
  print("PIT_POLICY=STRICT_DATE_LT_TARGET_DATE")
- print("RUNNER_LVS_POLICY=ORIGINAL_PRODUCER_FORMULA_RACE_LVS_MINUS_FINISH_MARGIN")
+ print("RUNNER_LVS_POLICY=ORIGINAL_PRODUCER_ALGEBRA_WITH_GOVERNED_SURFACE_CONDITION_LENGTH_CONVERSION")
  print("RUNNER_TIME_EQUIVALENT_POLICY=ORIGINAL_PRODUCER_RACE_TIME_PLUS_MARGIN_X_SECONDS_PER_LENGTH")
  print("BENCHMARK_GROUPING=GOVERNED_DOWNSTREAM_CONTRACT_TRACK_ID_DISTANCE_CONDITION_JURISDICTION_MIN20_MEDIAN")
  print("BENCHMARK_POLICY=LAB245B_STRICT_DATE_PIT_NOT_OLD_ALL_HISTORY_PRODUCTION_STANDARD")
