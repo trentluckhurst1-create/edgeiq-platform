@@ -42,19 +42,22 @@
   "anti_overfit_rules": [
     "No exhaustive regime mining.",
     "No threshold may be selected using 2023, 2024, or sealed years; 2022 selects once.",
-    "2022 selection requires at least 50 bets and positive POT.",
-    "Frozen policy must have at least 50 bets and positive POT in 2023; pooled 2022-23 requires at least 150 bets and positive POT.",
+    "2022 selection requires at least 50 bets, POT >= 2%, and race-clustered profit z >= 0.5.",
+    "Frozen policy in 2023 requires at least 50 bets and POT >= 1%; pooled 2022-23 requires at least 150 bets, POT >= 2%, and race-clustered profit z >= 1.0.",
     "Positive pooled development profit must not be supplied more than 80% by one SP band.",
-    "Frozen-policy 2024 confirmation requires at least 100 bets, positive POT, and max drawdown <= max(25 units, 25% of 2024 bets).",
+    "Frozen-policy 2024 confirmation requires at least 100 bets, POT >= 1%, race-clustered profit z >= 0.5, and max drawdown <= max(25 units, 25% of 2024 bets).",
     "Final-SP results are labelled FORENSIC_ONLY.",
     "Deployment claim requires separate timestamp-safe offered-odds evidence."
   ],
   "primary_metrics": [
     "bets",
+    "races_bet",
     "wins",
     "strike_rate",
     "profit",
     "POT",
+    "profit_z",
+    "race_cluster_profit_z",
     "max_drawdown",
     "longest_losing_run"
   ],
