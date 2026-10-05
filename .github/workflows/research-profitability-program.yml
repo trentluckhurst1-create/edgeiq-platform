@@ -31,6 +31,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: research/profitability-program-20261004
+          fetch-depth: 2
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
@@ -48,7 +49,7 @@ jobs:
               LAB="245b1"
             else
               case "${{ github.event.head_commit.message }}" in
-                *LAB245B-L27*|*lab245b-l27*|*LAB245B_L27*|*lab245b_l27*) LAB="245b-l27" ;;
+                *LAB245B-L27*|*lab245b-l27*|*LAB245B_L27*|*lab245b_l27*|*"LAB245B L27"*|*"lab245b l27"*) LAB="245b-l27" ;;
                 *LAB245B*|*lab245b*) LAB="245b1" ;;
                 *) LAB="245a" ;;
               esac
