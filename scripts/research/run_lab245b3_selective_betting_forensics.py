@@ -1,15 +1,17 @@
 from pathlib import Path
+import os
 import json
 import numpy as np
 import pandas as pd
 
 ROOT=Path(__file__).resolve().parents[2]
+DATA_ROOT=Path(os.environ.get("EDGEIQ_DATA_ROOT",str(ROOT))).resolve()
 DIR=ROOT/"outputs/research/profitability_program/lab245b"
 B2=DIR/"LAB245B2_AUDIT.json"
 PROB=DIR/"LAB245B2_OOF_PROBABILITIES.csv"
 SP_CANDIDATES=[
- ROOT/"outputs/research/profitability_program/compact/EDGEIQ_PROFITABILITY_COMPACT_RUNNERS.csv",
- ROOT/"outputs/research/model_price_diagnostics/lab166c/LAB166E_CORRECTED_PIT_PREDICTIONS.csv",
+ DATA_ROOT/"outputs/research/profitability_program/compact/EDGEIQ_PROFITABILITY_COMPACT_RUNNERS.csv",
+ DATA_ROOT/"outputs/research/model_price_diagnostics/lab166c/LAB166E_CORRECTED_PIT_PREDICTIONS.csv",
 ]
 OUT=DIR/"LAB245B3_FINAL_SP_POLICY_RESULTS.csv"
 AUD=DIR/"LAB245B3_AUDIT.json"
