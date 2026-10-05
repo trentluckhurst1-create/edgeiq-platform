@@ -71,7 +71,13 @@ def main():
  mdev=res[(res.period=="DEV_2022_2023")&(res.model==ml)].iloc[0]
  sval=res[(res.period=="VALIDATION_2024")&(res.model==simple)].iloc[0]
  mval=res[(res.period=="VALIDATION_2024")&(res.model==ml)].iloc[0]
- survive=bool(mdev.log_loss<sdev.log_loss and mdev.brier_runner<sdev.brier_runner and
+ yearly_ok=True; yearly_deltas={}
+ for yy in [2022,2023]:
+  sy=selected[(selected["model"]==simple)&(selected["_year"]==yy)]; my=selected[(selected["model"]==ml)&(selected["_year"]==yy)]
+  sm,_=evaluate(sy,fixed[simple]); mm,_=evaluate(my,fixed[ml])
+  yearly_deltas[str(yy)]={"log_loss_gain":float(sm["log_loss"]-mm["log_loss"]),"brier_gain":float(sm["brier_runner"]-mm["brier_runner"])}
+  yearly_ok=yearly_ok and mm["log_loss"]<sm["log_loss"] and mm["brier_runner"]<sm["brier_runner"]
+ survive=bool(yearly_ok and mdev.log_loss<sdev.log_loss and mdev.brier_runner<sdev.brier_runner and
               mval.log_loss<sval.log_loss and mval.brier_runner<sval.brier_runner)
  res.to_csv(OUT,index=False)
  pd.concat(tune_parts,ignore_index=True).to_csv(DIR/"LAB245B2_TEMPERATURE_GRID.csv",index=False)
@@ -79,7 +85,7 @@ def main():
  audit={"status":"SURVIVE_TO_LAB245B3" if survive else "REJECT_PROBABILITY_CHALLENGER",
         "selected_simple":simple,"selected_ml":ml,"temperature_selection":"DEV_2022_2023_ONLY",
         "fixed_temperatures":fixed,"survival_rule":"ML beats simple on race-winner log loss and runner Brier in DEV and fixed 2024",
-        "probability_mass":"EXACT_WITHIN_1E-10","holdout_2025_2026_opened":False,"market_used":False}
+        "probability_mass":"EXACT_WITHIN_1E-10","development_yearly_stability_required":True,"development_yearly_deltas":yearly_deltas,"holdout_2025_2026_opened":False,"market_used":False}
  AUD.write_text(json.dumps(audit,indent=2),encoding="utf-8")
  print(res.to_string(index=False)); print(json.dumps(audit,indent=2))
 
