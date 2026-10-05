@@ -62,6 +62,7 @@ jobs:
           python scripts/research/run_lab245b1_next_performance_forecast.py
           python scripts/research/run_lab245b2_probability_challenger.py
           python scripts/research/run_lab245b3_selective_betting_forensics.py
+          python scripts/research/run_lab245b4_sealed_holdout.py
       - name: Run LAB245B certified LAB027 next-performance challenger
         if: env.LAB == '245b-l27'
         run: python scripts/research/run_lab245b_l27_next_performance.py
