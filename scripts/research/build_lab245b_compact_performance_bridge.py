@@ -13,7 +13,7 @@ OUTDIR=ROOT/"outputs/research/profitability_program/lab245b"
 OUT=OUTDIR/"LAB245B_COMPACT_PERFORMANCE_BRIDGE.csv"
 SOURCE_MANIFEST=SOURCE.with_suffix(".manifest.json")
 OUT_MANIFEST=OUT.with_suffix(".manifest.json")
-EXPECTED_CONTRACT="LAB245B_STRICT_PIT_LVS_V8_V1_LENGTH_CONVERSION_TRACK_DISTANCE_CONDITION_MIN20"
+EXPECTED_CONTRACT="LAB245B_STRICT_PIT_LVS_V12_QUARANTINE_LINEAGE_COMPLETE_V1_LENGTH_CONVERSION_TRACK_DISTANCE_CONDITION_MIN20"
 NEED=["canonical_race_id","canonical_horse_id","race_date","distance_metres","finish_position","finish_margin","runner_lvs","field_size"]
 
 def stats(a,n):
