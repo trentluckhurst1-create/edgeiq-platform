@@ -68,8 +68,18 @@ jobs:
           python -m py_compile scripts/research/run_lab245b2_probability_challenger.py
           python -m py_compile scripts/research/run_lab245b3_selective_betting_forensics.py
           python -m py_compile scripts/research/run_lab245b4_sealed_holdout.py
-      - name: Build and run LAB245B1 next-performance forecast
+      - name: Check LAB245B data authority
         if: env.LAB == '245b1'
+        shell: bash
+        run: |
+          if [ -f docs/performance-intelligence/warehouse/edgeiq_performance_fact_warehouse_v1.csv ] && [ -f public/data/edgeiq_length_conversion_parameter_fact_v2.csv ]; then
+            echo "LAB245B_DATA_AVAILABLE=true" >> "$GITHUB_ENV"
+          else
+            echo "LAB245B_DATA_AVAILABLE=false" >> "$GITHUB_ENV"
+            echo "Full execution deferred: ignored local data authority is not present on this GitHub runner."
+          fi
+      - name: Build and run LAB245B1 next-performance forecast
+        if: env.LAB == '245b1' && env.LAB245B_DATA_AVAILABLE == 'true'
         run: |
           # Historical runner-LVS authority is parity evidence only because its benchmark was all-history.
           # Forecasting labels must be reconstructed with strict date-PIT standards.
