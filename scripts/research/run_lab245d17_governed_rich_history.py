@@ -26,7 +26,7 @@ d=d.dropna(subset=["canonical_race_id","canonical_horse_id","race_date"]).sort_v
 targets=set(zip(b["_race"],b["_horse"]))
 extra={}
 for horse,g in d.groupby("canonical_horse_id",sort=False):
-    horse=str(horse); vals=[]; dated=[]; dist_hist=[]
+    horse=str(horse); vals=[]; dated=[]
     for dt,day in g.groupby("race_date",sort=True):
         lv=np.asarray([v for _,v in vals],float)
         last5=lv[-5:]; last10=lv[-10:]
@@ -53,7 +53,7 @@ for horse,g in d.groupby("canonical_horse_id",sort=False):
                 "rich_slope5":slope,
                 "rich_days_since_peak":(dt-dated[peak_i]).days if peak_i>=0 else np.nan,
                 "rich_peak_age_runs":len(lv)-1-peak_i if peak_i>=0 else np.nan,
-                "rich_dist200_best_minus_peak":float(max(near)-peak) if near and np.isfinite(peak) else np.nan,
+                "rich_dist200_best_minus_peak":float(pd.to_numeric(rich_base,errors="coerce")-peak) if False else np.nan,
                 "rich_near_peak_share_last10":float(np.mean(last10>=peak-1.0)) if len(last10) and np.isfinite(peak) else np.nan,
                 "rich_recent_above_last10_median_share":float(np.mean(recent>=med10)) if len(recent) and np.isfinite(med10) else np.nan,
             }
@@ -65,7 +65,7 @@ for horse,g in d.groupby("canonical_horse_id",sort=False):
 e=pd.DataFrame.from_dict(extra,orient="index")
 e.index=pd.MultiIndex.from_tuples(e.index,names=["_race","_horse"])
 e=e.reset_index()
-x=b.merge(e,on=["_race","_horse"],how="left",validate="one_to_one")
+x=b.merge(e,on=["_race","_horse"],how="left",validate="one_to_one")\n# Reuse the governed PIT distance-window authority already present in the compact bridge.\nx["rich_dist200_best_minus_peak"]=pd.to_numeric(x["dist200_lvs_best"],errors="coerce")-pd.to_numeric(x["lvs_peak"],errors="coerce")
 rich=[c for c in x.columns if c.startswith("rich_")]
 rankable=[c for c in base+rich if c!="current_distance"]
 for c in rankable:
@@ -101,7 +101,7 @@ for yr in [2022,2023,2024]:
 o=pd.DataFrame(res,columns=["year","model","features","races","top1","top2","top3","mrr","race_log_loss"])
 dev=o[o.year.isin([2022,2023])].groupby("model").mean(numeric_only=True).drop(columns=["year","features","races"]).sort_values("top1",ascending=False)
 print(o.to_string(index=False)); print("\nDEV\n"+dev.to_string())
-audit={"contract":"LAB245D17A_OPTIMIZED_RICH_HISTORY_V1","rows":len(x),"races":int(x._race.nunique()),"extra_features":rich,"pit_policy":"DATE_LT_TARGET_DATE_SAME_DATE_FROZEN","selection_years":[2022,2023],"2024_role":"OBSERVED_DIAGNOSTIC_ONLY","2025_2026_opened":False,"market_used":False,"dev":dev.reset_index().to_dict("records")}
+audit={"contract":"LAB245D17B_OPTIMIZED_NO_DISTANCE_RESCAN_V1","rows":len(x),"races":int(x._race.nunique()),"extra_features":rich,"pit_policy":"DATE_LT_TARGET_DATE_SAME_DATE_FROZEN","selection_years":[2022,2023],"2024_role":"OBSERVED_DIAGNOSTIC_ONLY","2025_2026_opened":False,"market_used":False,"dev":dev.reset_index().to_dict("records")}
 o.to_csv(O/"LAB245D17A_OPTIMIZED_RICH_HISTORY.csv",index=False)
 (O/"LAB245D17A_OPTIMIZED_RICH_HISTORY.json").write_text(json.dumps(audit,indent=2))
 print(json.dumps(audit,indent=2))
