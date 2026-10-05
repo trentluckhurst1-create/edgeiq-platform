@@ -63,7 +63,7 @@ def main():
     bs=v[v["model"]==bs_dev["model"]].iloc[0]
     bm=v[v["model"]==bm_dev["model"]].iloc[0]
     survive=bool(bm_dev["mae"]<bs_dev["mae"] and bm_dev["rmse"]<bs_dev["rmse"] and bm_dev["race_spearman_mean"]>bs_dev["race_spearman_mean"] and bm["mae"]<bs["mae"] and bm["rmse"]<bs["rmse"] and bm["race_spearman_mean"]>bs["race_spearman_mean"])
-    audit={"status":"SURVIVE_TO_LAB245B2" if survive else "REJECT_ML_PERFORMANCE_ENGINE","rows":int(len(d)),"races":int(d["_race"].nunique()),"feature_count":len(feats),"development_selection_rule":"EQUAL_RANK_MAE_RMSE_RACE_SPEARMAN_2022_2023_ONLY","dev_selected_simple":bs_dev.to_dict(),"dev_selected_ml":bm_dev.to_dict(),"validation_2024_simple":bs.to_dict(),"validation_2024_ml":bm.to_dict(),"holdout_2025_2026_opened":False,"market_used":False}
+    audit={"status":"SURVIVE_TO_LAB245B2" if survive else "REJECT_ML_PERFORMANCE_ENGINE","rows":int(len(d)),"races":int(d["_race"].nunique()),"feature_count":len(feats),"development_selection_rule":"EQUAL_RANK_MAE_RMSE_RACE_SPEARMAN_2022_2023_ONLY","dev_selected_simple":bs_dev.to_dict(),"dev_selected_ml":bm_dev.to_dict(),"validation_2024_simple":bs.to_dict(),"validation_2024_ml":bm.to_dict(),"holdout_2025_2026_opened":False,"market_used":False,"coverage_by_year":coverage}
     (OUTDIR/"LAB245B1_AUDIT.json").write_text(json.dumps(audit,indent=2,default=str),encoding="utf-8")
     print(res.to_string(index=False)); print(json.dumps(audit,indent=2,default=str))
 if __name__=="__main__": main()
