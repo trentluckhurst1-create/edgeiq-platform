@@ -3,7 +3,7 @@ param(
   [string]$DataRoot = "C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM"
 )
 $ErrorActionPreference = "Stop"
-Set-Location $ResearchRoot
+$researchResolved = [System.IO.Path]::GetFullPath($ResearchRoot).TrimEnd([char]92)\n$dataResolved = [System.IO.Path]::GetFullPath($DataRoot).TrimEnd([char]92)\nif ($researchResolved -ieq $dataResolved) { throw "Refusing to run: research worktree and production data root are identical." }\nif ($researchResolved -notlike "*EDGEIQ_PROFITABILITY_RESEARCH*") { throw "Refusing to run outside isolated EDGEIQ_PROFITABILITY_RESEARCH worktree: $researchResolved" }\nSet-Location $ResearchRoot
 $env:EDGEIQ_DATA_ROOT = $DataRoot
 Write-Host "EDGEiQ LAB245B PREHOLDOUT"
 Write-Host "ResearchRoot=$ResearchRoot"
