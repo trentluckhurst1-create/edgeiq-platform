@@ -10,9 +10,13 @@ ROOT=Path(__file__).resolve().parents[2]
 DATA_ROOT=Path(os.environ.get("EDGEIQ_DATA_ROOT",str(ROOT))).resolve()
 WAREHOUSE=DATA_ROOT/"docs/performance-intelligence/warehouse/edgeiq_performance_fact_warehouse_v1.csv"
 OUT=ROOT/"outputs/research/profitability_program/lab245b/LAB245B_WAREHOUSE_RUNNER_LVS.csv"
-MANIFEST=OUT.with_suffix(".manifest.json")\nPREFLIGHT=OUT.parent/"LAB245B_PREFLIGHT.json"
-# V8 freezes original V1 0.17 sec/length while making the benchmark strict date-PIT.\nCONTRACT_VERSION="LAB245B_STRICT_PIT_LVS_V8_V1_LENGTH_CONVERSION_TRACK_DISTANCE_CONDITION_MIN20"
-MIN_SAMPLE=20\nV1_SECONDS_PER_LENGTH=0.17\nV1_LENGTH_CONVERSION_CONTRACT="edgeiq_lengths_v_standard_methodology_v1.json:GOVERNED_CONSTANT_FROM_EXISTING_LENGTH_CONVERSION_CONTEXT_V1"
+MANIFEST=OUT.with_suffix(".manifest.json")
+PREFLIGHT=OUT.parent/"LAB245B_PREFLIGHT.json"
+# V8 freezes original V1 0.17 sec/length while making the benchmark strict date-PIT.
+CONTRACT_VERSION="LAB245B_STRICT_PIT_LVS_V8_V1_LENGTH_CONVERSION_TRACK_DISTANCE_CONDITION_MIN20"
+MIN_SAMPLE=20
+V1_SECONDS_PER_LENGTH=0.17
+V1_LENGTH_CONVERSION_CONTRACT="edgeiq_lengths_v_standard_methodology_v1.json:GOVERNED_CONSTANT_FROM_EXISTING_LENGTH_CONVERSION_CONTEXT_V1"
 EXPECTED_WAREHOUSE_SIZE=416143437
 EXPECTED_WAREHOUSE_SHA256="bcdcef1c7cb9144feae5783ca2fa83b1dc2b8dc07a42ac31c31fd7bd12b53107"
 
