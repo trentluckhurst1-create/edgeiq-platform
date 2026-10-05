@@ -6,7 +6,6 @@ ROOT=Path(__file__).resolve().parents[2]
 DATA_ROOT=Path(os.environ.get("EDGEIQ_DATA_ROOT",str(ROOT))).resolve()
 OUT=ROOT/"outputs/research/profitability_program/lab245b/LAB245B_PREFLIGHT.json"
 WAREHOUSE=DATA_ROOT/"docs/performance-intelligence/warehouse/edgeiq_performance_fact_warehouse_v1.csv"
-LCP=DATA_ROOT/"public/data/edgeiq_length_conversion_parameter_fact_v2.csv"
 AUTH=DATA_ROOT/"docs/performance-intelligence/lengths-v-standard/edgeiq_runner_lengths_v_standard_fact_v1.csv"
 WH_SIZE=416143437
 WH_SHA="bcdcef1c7cb9144feae5783ca2fa83b1dc2b8dc07a42ac31c31fd7bd12b53107"
@@ -31,7 +30,6 @@ def main():
  else: a["checks"]["disk_space"]={"status":"PASS","required_free_bytes":2_000_000_000,"actual_free_bytes":int(usage.free)}
  for name,p,size,digest,need in [
   ("warehouse",WAREHOUSE,WH_SIZE,WH_SHA,{"canonical_race_id","canonical_horse_id","canonical_track_id","race_date","jurisdiction","track","track_layout","distance_metres","track_condition","track_condition_group","finish_position","finish_margin","official_race_time","official_race_time_seconds","time_unit"}),
-  ("length_conversion",LCP,None,None,{"surface_group","track_condition_group","seconds_per_length"}),
  ]:
   x={"path":str(p),"exists":p.exists()}
   if not p.exists(): x["status"]="FAIL_MISSING"; a["status"]="FAIL"
