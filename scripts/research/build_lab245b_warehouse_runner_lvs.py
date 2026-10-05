@@ -86,7 +86,7 @@ def main():
   day=day.copy()
   std=[]; counts=[]
   for _,row in day.iterrows():
-   k=(row["track_key"],row["distance_metres"],row["condition"])
+   k=(row["track_key"],row["distance_metres"],row["condition"],row["jurisdiction_key"])
    vals=history.get(k,[])
    counts.append(len(vals))
    std.append(_median_sorted(vals) if len(vals)>=MIN_SAMPLE else np.nan)
@@ -95,7 +95,7 @@ def main():
   scored.append(day)
   # Add the whole date only after every race on the date has been scored.
   for _,row in day.iterrows():
-   k=(row["track_key"],row["distance_metres"],row["condition"])
+   k=(row["track_key"],row["distance_metres"],row["condition"],row["jurisdiction_key"])
    insort(history.setdefault(k,[]),float(row["official_race_time_seconds"]))
  r=pd.concat(scored,ignore_index=True)
  r=r[r["standard_time_seconds"].notna()].copy()
@@ -126,7 +126,7 @@ def main():
  # LAB245B intentionally uses the later governed surface/condition seconds-per-length table, not the legacy flat 0.17.
  keep=["canonical_race_id","canonical_horse_id","race_date","distance_metres","finish_position","finish_margin","runner_time_equivalent_seconds","runner_lvs","race_lvs","standard_time_seconds","seconds_per_length","benchmark_n"]
  out[keep].to_csv(OUT,index=False)
- manifest={"contract_version":CONTRACT_VERSION,"warehouse_sha256":digest,"warehouse_bytes":WAREHOUSE.stat().st_size,"pit_policy":"STRICT_DATE_LT_TARGET_DATE","benchmark_grouping":"canonical_track_id+distance_metres+condition","minimum_prior_races":MIN_SAMPLE,"runner_formula":"race_lvs-finish_margin","valid_runner_rule":"finish_position>0 and finite nonnegative finish_margin","rows_all_represented_runners":int(len(out)),"rows_valid_lvs_target":int(out["runner_lvs"].notna().sum()),"races":int(out["canonical_race_id"].nunique())}
+ manifest={"contract_version":CONTRACT_VERSION,"warehouse_sha256":digest,"warehouse_bytes":WAREHOUSE.stat().st_size,"pit_policy":"STRICT_DATE_LT_TARGET_DATE","benchmark_grouping":"canonical_track_id+distance_metres+condition+jurisdiction","minimum_prior_races":MIN_SAMPLE,"runner_formula":"race_lvs-finish_margin","valid_runner_rule":"finish_position>0 and finite nonnegative finish_margin","rows_all_represented_runners":int(len(out)),"rows_valid_lvs_target":int(out["runner_lvs"].notna().sum()),"races":int(out["canonical_race_id"].nunique())}
  MANIFEST.write_text(json.dumps(manifest,indent=2),encoding="utf-8")
  lvs_races=r["canonical_race_id"].nunique()
  print(f"SOURCE_ROWS={len(d):,}")
@@ -137,8 +137,8 @@ def main():
  print("PIT_POLICY=STRICT_DATE_LT_TARGET_DATE")
  print("RUNNER_LVS_POLICY=ORIGINAL_PRODUCER_ALGEBRA_WITH_GOVERNED_SURFACE_CONDITION_LENGTH_CONVERSION")
  print("RUNNER_TIME_EQUIVALENT_POLICY=ORIGINAL_PRODUCER_RACE_TIME_PLUS_MARGIN_X_SECONDS_PER_LENGTH")
- print("BENCHMARK_GROUPING=GOVERNED_CONTRACT_TRACK_ID_DISTANCE_CONDITION_MIN20_MEDIAN")
- print("BENCHMARK_CONTRACT=edgeiq_standard_time_grouping_contract_v1 APPROVED=track+distance+condition MIN_OBS=20")
+ print("BENCHMARK_GROUPING=GOVERNED_IMPLEMENTATION_TRACK_ID_DISTANCE_CONDITION_JURISDICTION_MIN20_MEDIAN")
+ print("BENCHMARK_CONTRACT=edgeiq_standard_time_grouping_contract_v1 APPROVED=track+distance+condition; ORIGINAL_IMPLEMENTATION_KEY_ALSO_INCLUDES_JURISDICTION; MIN_OBS=20")
  print("BENCHMARK_POLICY=LAB245B_STRICT_DATE_PIT_NOT_OLD_ALL_HISTORY_PRODUCTION_STANDARD")
  print("BENCHMARK_OUTLIER_POLICY=NONE")
  print("KNOWN_RECOVERY_TIMED_RACES=70,308 DELTA_RACES=54,978 LVS_RACES=52,414")
