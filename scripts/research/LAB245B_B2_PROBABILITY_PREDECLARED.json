@@ -15,11 +15,22 @@
       "precedent": "MODEL_LAB_052"
     }
   ],
-  "selection_period": [2022, 2023],
+  "selection_period": [
+    2022,
+    2023
+  ],
   "confirmation_period": 2024,
-  "sealed": [2025, 2026],
+  "sealed": [
+    2025,
+    2026
+  ],
   "selection_metric": "race-winner log loss",
-  "secondary_metrics": ["runner_brier","multiclass_brier","top1_accuracy","mean_winner_probability"],
+  "secondary_metrics": [
+    "runner_brier",
+    "multiclass_brier",
+    "top1_accuracy",
+    "mean_winner_probability"
+  ],
   "requirements": [
     "probabilities sum to 1 within every race",
     "no final SP or market variable in probability fitting",
@@ -27,5 +38,15 @@
     "beta grid fixed before 2024 confirmation"
   ],
   "market": "NO",
-  "weight": "NO"
+  "weight": "NO",
+  "external_reference_only": {
+    "source": "MODEL_LAB_052",
+    "architecture": "EXPERIENCE_INTERACTION_CENTERED",
+    "probability_architecture_sha256": "d394409c9f2c84e7b5587025b960fde08b5787bff71ac6b861227484869deb1e",
+    "training_comparison_runner_brier": {
+      "uniform": 0.08933870820661124,
+      "softmax_t": 0.0878469137525006
+    },
+    "note": "Reference only; not used to tune the new 2022-2023 beta grid."
+  }
 }
