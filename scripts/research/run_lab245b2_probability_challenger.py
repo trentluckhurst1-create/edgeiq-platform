@@ -45,7 +45,13 @@ def tune(d):
 
 def main():
  if not B1.exists() or not PRED.exists(): raise FileNotFoundError("LAB245B1 outputs missing")
- b1=json.loads(B1.read_text(encoding="utf-8"))\n ph=hashlib.sha256()\n with PRED.open("rb") as fh:\n  for b in iter(lambda:fh.read(8*1024*1024),b""): ph.update(b)\n pred_sha=ph.hexdigest()\n if pred_sha!=b1.get("oof_predictions_sha256") or PRED.stat().st_size!=b1.get("oof_predictions_bytes"):\n  raise RuntimeError("LAB245B2 stale/mismatched B1 prediction lineage")
+ b1=json.loads(B1.read_text(encoding="utf-8"))
+ ph=hashlib.sha256()
+ with PRED.open("rb") as fh:
+  for b in iter(lambda:fh.read(8*1024*1024),b""): ph.update(b)
+ pred_sha=ph.hexdigest()
+ if pred_sha!=b1.get("oof_predictions_sha256") or PRED.stat().st_size!=b1.get("oof_predictions_bytes"):
+  raise RuntimeError("LAB245B2 stale/mismatched B1 prediction lineage")
  if b1.get("status")!="SURVIVE_TO_LAB245B2":
   audit={"status":"SKIPPED_B1_REJECTED","b1_status":b1.get("status"),"holdout_2025_2026_opened":False,"market_used":False,"b1_oof_predictions_sha256":pred_sha}
   AUD.write_text(json.dumps(audit,indent=2),encoding="utf-8"); print(json.dumps(audit,indent=2)); return
@@ -89,11 +95,16 @@ def main():
               mval.log_loss<sval.log_loss and mval.brier_runner<sval.brier_runner)
  res.to_csv(OUT,index=False)
  pd.concat(tune_parts,ignore_index=True).to_csv(DIR/"LAB245B2_TEMPERATURE_GRID.csv",index=False)
- pd.concat(prob_parts,ignore_index=True).to_csv(DIR/"LAB245B2_OOF_PROBABILITIES.csv",index=False)
+ prob_path=DIR/"LAB245B2_OOF_PROBABILITIES.csv"
+ pd.concat(prob_parts,ignore_index=True).to_csv(prob_path,index=False)
+ qh=hashlib.sha256()
+ with prob_path.open("rb") as fh:
+  for b in iter(lambda:fh.read(8*1024*1024),b""): qh.update(b)
+ prob_sha=qh.hexdigest()
  audit={"contract_version":"LAB245B2_FULL_FIELD_SOFTMAX_V1","status":"SURVIVE_TO_LAB245B3" if survive else "REJECT_PROBABILITY_CHALLENGER",
         "selected_simple":simple,"selected_ml":ml,"temperature_selection":"DEV_2022_2023_ONLY",
         "fixed_temperatures":fixed,"survival_rule":"ML beats simple on race-winner log loss and runner Brier in DEV and fixed 2024",
-        "probability_mass":"EXACT_WITHIN_1E-10","probability_field_universe":"FULL_TARGET_FIELD_ONLY_AMONG_B1_ELIGIBLE_RACES","minimum_volume_gate":"DEV>=200 common-eligible races; 2024>=100 common-eligible races","volume_gate_pass":volume_ok,"development_yearly_stability_required":True,"development_yearly_deltas":yearly_deltas,"holdout_2025_2026_opened":False,"market_used":False}
+        "probability_mass":"EXACT_WITHIN_1E-10","probability_field_universe":"FULL_TARGET_FIELD_ONLY_AMONG_B1_ELIGIBLE_RACES","minimum_volume_gate":"DEV>=200 common-eligible races; 2024>=100 common-eligible races","volume_gate_pass":volume_ok,"development_yearly_stability_required":True,"development_yearly_deltas":yearly_deltas,"holdout_2025_2026_opened":False,"market_used":False,"b1_oof_predictions_sha256":pred_sha,"oof_probabilities_sha256":prob_sha,"oof_probabilities_bytes":prob_path.stat().st_size}
  AUD.write_text(json.dumps(audit,indent=2),encoding="utf-8")
  print(res.to_string(index=False)); print(json.dumps(audit,indent=2))
 
