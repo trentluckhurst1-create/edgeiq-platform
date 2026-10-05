@@ -11,7 +11,7 @@ from sklearn.preprocessing import StandardScaler
 
 ROOT=Path(__file__).resolve().parents[2]
 INP=ROOT/"outputs/research/profitability_program/lab245b/LAB245B_COMPACT_PERFORMANCE_BRIDGE.csv"
-OUTDIR=INP.parent
+OUTDIR=INP.parent\nTARGET_MANIFEST=OUTDIR/"LAB245B_WAREHOUSE_RUNNER_LVS.manifest.json"
 FEATURES=["hist_runs","current_distance","lvs_last1","lvs_mean3","lvs_mean5","lvs_median5","lvs_std5","lvs_peak","lvs_worst5","margin_mean5","margin_worst5","margin_std5","finishpos_mean5","days_since_last","dist200_runs","dist200_lvs_mean","dist200_lvs_best"]
 BASELINES={"LVS_LAST1":"lvs_last1","LVS_MEAN3":"lvs_mean3","LVS_MEAN5":"lvs_mean5","LVS_MEDIAN5":"lvs_median5","DIST200_LVS":"dist200_lvs_mean"}
 SELECTABLE_BASELINES={"LVS_LAST1","LVS_MEAN3","LVS_MEAN5","LVS_MEDIAN5"}
@@ -27,7 +27,7 @@ def score(d,p):
     return {"rows":len(y),"races":t["_race"].nunique(),"mae":mean_absolute_error(y,p),"rmse":math.sqrt(mean_squared_error(y,p)),"race_spearman_mean":float(np.nanmean(rho)) if rho else np.nan}
 
 def main():
-    if not INP.exists(): raise FileNotFoundError(INP)
+    if not INP.exists(): raise FileNotFoundError(INP)\n    if not TARGET_MANIFEST.exists(): raise FileNotFoundError(TARGET_MANIFEST)\n    target_manifest=json.loads(TARGET_MANIFEST.read_text(encoding="utf-8"))\n    if target_manifest.get("contract_version")!="LAB245B_STRICT_PIT_LVS_V8_V1_LENGTH_CONVERSION_TRACK_DISTANCE_CONDITION_MIN20": raise RuntimeError("LAB245B1 target manifest contract mismatch")
     d=pd.read_csv(INP,low_memory=False)
     required={"_race","_horse","_year","race_date","target_lvs","target_finish_position","target_field_size","hist_runs",*FEATURES}
     missing=sorted(required-set(d.columns))
@@ -88,7 +88,7 @@ def main():
         yearly_deltas[str(yy)]={"mae_gain":float(sy.mae-my.mae),"rmse_gain":float(sy.rmse-my.rmse),"spearman_gain":float(my.race_spearman_mean-sy.race_spearman_mean)}
         yearly_ok=yearly_ok and my.mae<sy.mae and my.rmse<sy.rmse and my.race_spearman_mean>sy.race_spearman_mean
     survive=bool(yearly_ok and bm_dev["mae"]<bs_dev["mae"] and bm_dev["rmse"]<bs_dev["rmse"] and bm_dev["race_spearman_mean"]>bs_dev["race_spearman_mean"] and bm["mae"]<bs["mae"] and bm["rmse"]<bs["rmse"] and bm["race_spearman_mean"]>bs["race_spearman_mean"])
-    audit={"contract_version":"LAB245B1_ACTUAL_LVS_FORECAST_V1","status":"SURVIVE_TO_LAB245B2" if survive else "REJECT_ML_PERFORMANCE_ENGINE","rows":int(len(d)),"races":int(d["_race"].nunique()),"feature_count":len(feats),"development_selection_rule":"COMMON_COVERAGE_2022_2023_SELECT_LOWEST_MAE_THEN_RMSE; SURVIVAL_REQUIRES_MAE_RMSE_AND_RACE_SPEARMAN","dev_selected_simple":bs_dev.to_dict(),"dev_selected_ml":bm_dev.to_dict(),"validation_2024_simple":bs.to_dict(),"validation_2024_ml":bm.to_dict(),"holdout_2025_2026_opened":False,"market_used":False,"coverage_by_year":coverage,"history_depth_and_full_field_coverage":history_depth,"development_yearly_stability_required":True,"development_yearly_deltas":yearly_deltas}
+    audit={"contract_version":"LAB245B1_ACTUAL_LVS_FORECAST_V1","status":"SURVIVE_TO_LAB245B2" if survive else "REJECT_ML_PERFORMANCE_ENGINE","rows":int(len(d)),"races":int(d["_race"].nunique()),"feature_count":len(feats),"development_selection_rule":"COMMON_COVERAGE_2022_2023_SELECT_LOWEST_MAE_THEN_RMSE; SURVIVAL_REQUIRES_MAE_RMSE_AND_RACE_SPEARMAN","dev_selected_simple":bs_dev.to_dict(),"dev_selected_ml":bm_dev.to_dict(),"validation_2024_simple":bs.to_dict(),"validation_2024_ml":bm.to_dict(),"holdout_2025_2026_opened":False,"market_used":False,"target_contract_version":target_manifest.get("contract_version"),"target_output_sha256":target_manifest.get("output_sha256"),"coverage_by_year":coverage,"history_depth_and_full_field_coverage":history_depth,"development_yearly_stability_required":True,"development_yearly_deltas":yearly_deltas}
     (OUTDIR/"LAB245B1_AUDIT.json").write_text(json.dumps(audit,indent=2,default=str),encoding="utf-8")
     print(res.to_string(index=False)); print(json.dumps(audit,indent=2,default=str))
 if __name__=="__main__": main()
