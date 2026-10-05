@@ -51,20 +51,17 @@ def main():
   unit_err=(d.loc[cs,"official_race_time"]/100.0-d.loc[cs,"official_race_time_seconds"]).abs().max()
   if unit_err>0.001: raise RuntimeError(f"Centiseconds conversion invariant failed max_abs_error={unit_err}")
   print(f"CENTISECONDS_UNIT_CHECK=PASS ROWS={int(cs.sum()):,} MAX_ABS_ERROR={unit_err:.9f}")
- grp=d["track_condition_group"].astype("string").str.strip()
- raw=d["track_condition"].astype("string").str.strip()
- use_group=grp.notna() & ~grp.str.upper().isin(["","UNKNOWN","NAN","NONE","<NA>"])
- d["condition"]=grp.where(use_group,raw).map(cond)
- d.loc[d["condition"].astype("string").str.upper().isin(["","UNKNOWN","NAN","NONE","<NA>"]),"condition"]=pd.NA
+ grp=d["track_condition_group"].astype("string").str.strip().str.upper()
+ d["condition"]=grp
+ d.loc[d["condition"].isin(["","UNKNOWN","NAN","NONE","<NA>"]),"condition"]=pd.NA
  d["track_key"]=d["canonical_track_id"].fillna("").astype(str).str.strip()
  d.loc[d["track_key"].eq(""),"track_key"]=pd.NA
  d["track_display_key"]=d["track"].fillna("").astype(str).str.strip().str.upper()
  d["layout_key"]=d["track_layout"].fillna("").astype(str).str.strip().str.upper()
  d["jurisdiction_key"]=d["jurisdiction"].fillna("").astype(str).str.strip().str.upper()
- txt=(d["track"].fillna("")+" "+d["track_layout"].fillna("")+" "+d["track_condition"].fillna("")+" "+d["track_condition_group"].fillna("")).str.upper()
- d["surface"]=np.where(txt.str.contains("SYNTHETIC|POLY|TAPETA|FIBRE|FIBER",regex=True),"AUSTRALIAN_SYNTHETIC","TURF")
- d["_valid_time"]=d["official_race_time_seconds"].between(35,420,inclusive="both")
- d["_valid_distance"]=d["distance_metres"].between(800,3600,inclusive="both")
+ unit=d["time_unit"].astype("string").str.strip().str.lower()
+ d["_valid_time"]=d["official_race_time_seconds"].notna() & d["official_race_time_seconds"].gt(0) & ~unit.isin(["unknown","invalid"])
+ d["_valid_distance"]=d["distance_metres"].notna() & d["distance_metres"].gt(0)
  d["_eligible_benchmark"]=d["_valid_time"] & d["_valid_distance"] & d["track_key"].notna() & d["condition"].notna()
  rc=d.groupby("canonical_race_id",sort=False).agg(track_n=("track_key","nunique"),date_n=("race_date","nunique"),distance_n=("distance_metres","nunique"),condition_n=("condition","nunique"),jurisdiction_n=("jurisdiction_key","nunique"),time_n=("official_race_time_seconds","nunique"))
  bad=rc[(rc.track_n>1)|(rc.date_n>1)|(rc.distance_n>1)|(rc.condition_n>1)|(rc.jurisdiction_n>1)|(rc.time_n>1)]
@@ -76,7 +73,7 @@ def main():
  timed_races=int(r["_valid_time"].sum())
  eligible_timed_races=int(r["_eligible_benchmark"].sum())
  r=r[r["_eligible_benchmark"]].copy()
- print(f"BENCHMARK_ELIGIBILITY=TIME_35_420_DISTANCE_800_3600_TRACK_PRESENT_CONDITION_KNOWN ELIGIBLE_RACES={eligible_timed_races:,}")
+ print(f"BENCHMARK_ELIGIBILITY=ORIGINAL_PRODUCER_DISTANCE_GT0_TIME_GT0_VALID_TIME_UNIT_TRACK_PRESENT_GOVERNED_CONDITION ELIGIBLE_RACES={eligible_timed_races:,}")
 
  # Strict date-PIT benchmark. All races on date D are scored from dates < D only.
  r=r.dropna(subset=["track_key","distance_metres","condition","official_race_time_seconds","race_date"]).sort_values(["race_date","canonical_race_id"],kind="stable")
