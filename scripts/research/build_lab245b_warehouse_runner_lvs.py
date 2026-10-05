@@ -79,7 +79,7 @@ def main():
   scored.append(day)
   # Add the whole date only after every race on the date has been scored.
   for _,row in day.iterrows():
-   k=(row["track_key"],row["distance_metres"],row["condition"],row["jurisdiction_key"])
+   k=(row["track_key"],row["distance_metres"],row["condition"])
    insort(history.setdefault(k,[]),float(row["official_race_time_seconds"]))
  r=pd.concat(scored,ignore_index=True)
  r=r[r["standard_time_seconds"].notna()].copy()
