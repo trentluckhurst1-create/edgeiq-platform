@@ -4,26 +4,60 @@
   "entry_gate": "Run only after B2 probability architecture survives 2024 fixed confirmation.",
   "historical_price_forensics": "final_sp",
   "deployable_price_requirement": "timestamped pre-race offered odds; final_sp cannot establish deployable POT",
-  "development": [2022, 2023],
+  "development": [
+    2022,
+    2023
+  ],
   "confirmation": 2024,
-  "sealed": [2025, 2026],
-  "candidate_edge_thresholds": [0.05, 0.10, 0.15, 0.20],
+  "sealed": [
+    2025,
+    2026
+  ],
+  "candidate_edge_thresholds": [
+    0.05,
+    0.1,
+    0.15,
+    0.2
+  ],
   "edge_definition": "p_model * decimal_price - 1",
-  "price_bands_for_stability_only": [[1.0,3.0],[3.0,6.0],[6.0,12.0],[12.0,1000.0]],
-  "reliability_candidates": {
-    "minimum_prior_starts": [1,3,5],
-    "maximum_predictive_uncertainty": "development quantiles fixed before confirmation",
-    "minimum_model_probability": [0.05,0.08,0.10]
-  },
+  "price_bands_for_stability_only": [
+    [
+      1,
+      3
+    ],
+    [
+      3,
+      6
+    ],
+    [
+      6,
+      12
+    ],
+    [
+      12,
+      1000
+    ]
+  ],
+  "reliability_candidates": "NONE_IN_BASELINE_B3; any reliability-gated policy is a separately named future challenger",
   "anti_overfit_rules": [
     "No exhaustive regime mining.",
-    "No threshold may be selected using 2024 or sealed years.",
-    "Candidate must have at least 100 development bets.",
-    "Positive development POT must not be supplied by one year or one odds band.",
-    "Confirmation requires positive 2024 POT and non-catastrophic drawdown.",
+    "No threshold may be selected using 2023, 2024, or sealed years; 2022 selects once.",
+    "2022 selection requires at least 50 bets and positive POT.",
+    "Frozen policy must have at least 50 bets and positive POT in 2023; pooled 2022-23 requires at least 150 bets and positive POT.",
+    "Positive pooled development profit must not be supplied more than 80% by one SP band.",
+    "Frozen-policy 2024 confirmation requires at least 100 bets, positive POT, and max drawdown <= max(25 units, 25% of 2024 bets).",
     "Final-SP results are labelled FORENSIC_ONLY.",
     "Deployment claim requires separate timestamp-safe offered-odds evidence."
   ],
-  "primary_metrics": ["bets","wins","strike_rate","profit","POT","max_drawdown","longest_losing_run"],
-  "market_as_model_feature": "NO"
+  "primary_metrics": [
+    "bets",
+    "wins",
+    "strike_rate",
+    "profit",
+    "POT",
+    "max_drawdown",
+    "longest_losing_run"
+  ],
+  "market_as_model_feature": "NO",
+  "confirmation_drawdown_rule": "max_drawdown_units <= max(25, 0.25 * validation_bets)"
 }
