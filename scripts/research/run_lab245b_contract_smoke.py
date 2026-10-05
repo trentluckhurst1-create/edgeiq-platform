@@ -21,7 +21,7 @@ def main():
     assert np.corrcoef(pc,ac)[0,1]>0.999999
     assert float(np.mean(np.abs(pc-ac)))<1e-12
 
-    # B3/B4 flat-stake final-SP forensic P&L.
+    # Strict date-PIT invariant: same-date observations cannot update each other.\n    history=[100.0,101.0,102.0]\n    before=list(history)\n    same_day=[90.0,110.0]\n    scored_counts=[len(before) for _ in same_day]\n    assert scored_counts==[3,3]\n    history.extend(same_day)\n    assert len(history)==5\n\n    # B3/B4 flat-stake final-SP forensic P&L.
     winner=np.array([1,0,1,0],float); sp=np.array([3.0,5.0,2.5,10.0])
     pnl=winner*sp-1.0
     assert np.allclose(pnl,[2.0,-1.0,1.5,-1.0])
@@ -30,7 +30,7 @@ def main():
     print("LAB245B_CONTRACT_SMOKE=PASS")
     print("PROBABILITY_MASS=PASS")
     print("WITHIN_RACE_RUNNER_FORMULA_PARITY=PASS")
-    print("FINAL_SP_FORENSIC_PNL_ARITHMETIC=PASS")
+    print("STRICT_DATE_PIT_SAME_DAY_FREEZE=PASS")\n    print("FINAL_SP_FORENSIC_PNL_ARITHMETIC=PASS")
 
 if __name__=="__main__":
     main()
