@@ -20,13 +20,14 @@ on:
           - "245b-l27"
           - "245b4-holdout"
           - "bootstrap"
+          - "245d5"
 
 permissions:
   contents: read
 
 jobs:
   research-lab:
-    runs-on: ubuntu-latest
+    runs-on: ${{ github.event.inputs.lab == '245d5' && fromJSON('["self-hosted","Windows","X64","edgeiq-research"]') || 'ubuntu-latest' }}
     timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
@@ -34,9 +35,11 @@ jobs:
           ref: research/profitability-program-20261004
           fetch-depth: 2
       - uses: actions/setup-python@v5
+        if: env.LAB != '245d5'
         with:
           python-version: "3.11"
       - name: Install research dependencies
+        if: env.LAB != '245d5'
         run: python -m pip install --disable-pip-version-check pandas numpy scipy scikit-learn
       - name: Select research lab
         shell: bash
@@ -138,6 +141,15 @@ jobs:
       - name: Run LAB245B certified LAB027 next-performance challenger
         if: env.LAB == '245b-l27' && env.LAB245B_L27_DATA_AVAILABLE == 'true'
         run: python scripts/research/run_lab245b_l27_next_performance.py
+      - name: Run LAB245D5 race-relative HGB challenger
+        if: env.LAB == '245d5'
+        shell: powershell
+        run: |
+          $Bridge = Join-Path $env:GITHUB_WORKSPACE "outputs\\research\\profitability_program\\lab245b\\LAB245B_COMPACT_PERFORMANCE_BRIDGE.csv"
+          if (-not (Test-Path $Bridge)) { throw "LAB245B compact bridge missing from retained self-hosted workspace: $Bridge" }
+          python -m py_compile scripts/research/run_lab245d5_race_relative_hgb.py
+          python scripts/research/run_lab245d5_race_relative_hgb.py
+          if ($LASTEXITCODE -ne 0) { throw "LAB245D5 failed" }
       - name: Run governed research bootstrap
         if: env.LAB == 'bootstrap'
         run: python scripts/research/profitability_program_bootstrap.py
