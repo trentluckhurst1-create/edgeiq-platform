@@ -1,5 +1,7 @@
 from pathlib import Path
 import os
+import json
+import hashlib
 from collections import defaultdict
 import pandas as pd
 import numpy as np
@@ -9,7 +11,8 @@ DATA_ROOT=Path(os.environ.get("EDGEIQ_DATA_ROOT",str(ROOT))).resolve()
 SOURCE=ROOT/"outputs/research/profitability_program/lab245b/LAB245B_WAREHOUSE_RUNNER_LVS.csv"
 OUTDIR=ROOT/"outputs/research/profitability_program/lab245b"
 OUT=OUTDIR/"LAB245B_COMPACT_PERFORMANCE_BRIDGE.csv"
-MANIFEST=SOURCE.with_suffix(".manifest.json")
+SOURCE_MANIFEST=SOURCE.with_suffix(".manifest.json")
+OUT_MANIFEST=OUT.with_suffix(".manifest.json")
 EXPECTED_CONTRACT="LAB245B_STRICT_PIT_LVS_V8_V1_LENGTH_CONVERSION_TRACK_DISTANCE_CONDITION_MIN20"
 NEED=["canonical_race_id","canonical_horse_id","race_date","distance_metres","finish_position","finish_margin","runner_lvs","field_size"]
 
@@ -22,6 +25,14 @@ def stats(a,n):
 def main():
  OUTDIR.mkdir(parents=True,exist_ok=True)
  if not SOURCE.exists(): raise FileNotFoundError(SOURCE)
+ if not SOURCE_MANIFEST.exists(): raise FileNotFoundError(SOURCE_MANIFEST)
+ sm=json.loads(SOURCE_MANIFEST.read_text(encoding="utf-8"))
+ if sm.get("contract_version")!=EXPECTED_CONTRACT or sm.get("pit_policy")!="STRICT_DATE_LT_TARGET_DATE": raise RuntimeError("LAB245B compact bridge source lineage mismatch")
+ h=hashlib.sha256()
+ with SOURCE.open("rb") as fh:
+  for b in iter(lambda:fh.read(16*1024*1024),b""): h.update(b)
+ source_sha=h.hexdigest()
+ if source_sha!=sm.get("output_sha256"): raise RuntimeError("LAB245B compact bridge source hash mismatch")
  d=pd.read_csv(SOURCE,usecols=NEED,low_memory=False)
  for c in ["canonical_race_id","canonical_horse_id"]: d[c]=d[c].astype("string").str.strip()
  d["race_date"]=pd.to_datetime(d["race_date"],errors="coerce")
@@ -67,6 +78,10 @@ def main():
  forbidden=[c for c in out if c.lower() in {"_sp","sp","final_sp","odds","p_model","market_probability"}]
  if forbidden: raise RuntimeError(f"Forbidden market columns: {forbidden}")
  out.to_csv(OUT,index=False)
+ oh=hashlib.sha256()
+ with OUT.open("rb") as fh:
+  for b in iter(lambda:fh.read(8*1024*1024),b""): oh.update(b)
+ OUT_MANIFEST.write_text(json.dumps({"contract_version":"LAB245B_COMPACT_PIT_HISTORY_V1","source_contract_version":EXPECTED_CONTRACT,"source_sha256":source_sha,"pit_policy":"HORSE_HISTORY_DATE_LT_TARGET_DATE","rows":int(len(out)),"races":int(out["_race"].nunique()),"output_sha256":oh.hexdigest(),"output_bytes":OUT.stat().st_size},indent=2),encoding="utf-8")
  print(f"ROWS={len(out):,} RACES={out._race.nunique():,} OBS_TARGET={out.target_lvs.notna().sum():,}")
  print(f"TARGET_COVERAGE={out.target_lvs.notna().mean():.6f} YEARS={sorted(out._year.unique())}")
  print("PIT_POLICY=HORSE_HISTORY_DATE_LT_TARGET_DATE")
