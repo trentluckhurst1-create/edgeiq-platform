@@ -6,14 +6,32 @@ import sys
 
 ROOT=Path(__file__).resolve().parents[2]
 OUT=ROOT/"outputs/research/profitability_program/lab245b"
-PY=sys.executable\nEXPECTED_WAREHOUSE_SHA="bcdcef1c7cb9144feae5783ca2fa83b1dc2b8dc07a42ac31c31fd7bd12b53107"\nEXPECTED_TARGET_CONTRACT="LAB245B_STRICT_PIT_LVS_V4_ORIGINAL_017_TRACK_DISTANCE_CONDITION_JURISDICTION_MIN20"
+PY=sys.executable
+EXPECTED_WAREHOUSE_SHA="bcdcef1c7cb9144feae5783ca2fa83b1dc2b8dc07a42ac31c31fd7bd12b53107"
+EXPECTED_TARGET_CONTRACT="LAB245B_STRICT_PIT_LVS_V4_ORIGINAL_017_TRACK_DISTANCE_CONDITION_JURISDICTION_MIN20"
 
 def run(script):
     print(f"\n=== RUN {script} ===",flush=True)
     env=os.environ.copy()
     subprocess.run([PY,str(ROOT/script)],cwd=ROOT,env=env,check=True)
 
-def target_checkpoint_valid():\n    p=OUT/"LAB245B_WAREHOUSE_RUNNER_LVS.csv"; m=OUT/"LAB245B_WAREHOUSE_RUNNER_LVS.manifest.json"\n    if not p.exists() or not m.exists(): return False\n    try: x=json.loads(m.read_text(encoding="utf-8"))\n    except Exception: return False\n    return x.get("warehouse_sha256")==EXPECTED_WAREHOUSE_SHA and x.get("contract_version")==EXPECTED_TARGET_CONTRACT and x.get("pit_policy")=="STRICT_DATE_LT_TARGET_DATE" and p.stat().st_size>0\n\ndef audit(name):
+def target_checkpoint_valid():
+    p=OUT/"LAB245B_WAREHOUSE_RUNNER_LVS.csv"
+    m=OUT/"LAB245B_WAREHOUSE_RUNNER_LVS.manifest.json"
+    if not p.exists() or not m.exists():
+        return False
+    try:
+        x=json.loads(m.read_text(encoding="utf-8"))
+    except Exception:
+        return False
+    return (
+        x.get("warehouse_sha256")==EXPECTED_WAREHOUSE_SHA
+        and x.get("contract_version")==EXPECTED_TARGET_CONTRACT
+        and x.get("pit_policy")=="STRICT_DATE_LT_TARGET_DATE"
+        and p.stat().st_size>0
+    )
+
+def audit(name):
     p=OUT/name
     if not p.exists():
         raise FileNotFoundError(p)
@@ -24,7 +42,10 @@ def main():
     print(f"EDGEIQ_DATA_ROOT={os.environ.get('EDGEIQ_DATA_ROOT',str(ROOT))}")
     print("HOLDOUT_POLICY=2025_2026_CANNOT_BE_OPENED_BY_THIS_LAUNCHER")
     run("scripts/research/run_lab245b_preflight.py")
-    if target_checkpoint_valid():\n        print("RESUME_CHECKPOINT=LAB245B_STRICT_PIT_TARGET_VALID; SKIP_REBUILD=YES")\n    else:\n        run("scripts/research/build_lab245b_warehouse_runner_lvs.py")
+    if target_checkpoint_valid():
+        print("RESUME_CHECKPOINT=LAB245B_STRICT_PIT_TARGET_VALID; SKIP_REBUILD=YES")
+    else:
+        run("scripts/research/build_lab245b_warehouse_runner_lvs.py")
     run("scripts/research/run_lab245b_target_parity_audit.py")
     run("scripts/research/build_lab245b_compact_performance_bridge.py")
     run("scripts/research/run_lab245b1_next_performance_forecast.py")
