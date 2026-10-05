@@ -92,7 +92,10 @@ def main():
   econ[str(int(y))]={"bets":int(len(g)),"wins":int(g.winner.sum()),"profit":float(g.pnl.sum()),"pot_pct":100*float(g.pnl.sum())/len(g) if len(g) else np.nan}
  bets=bets.sort_values(["race_date","_race","_horse"],kind="stable")
  eq=bets["pnl"].cumsum().to_numpy(float); peak=np.maximum.accumulate(np.r_[0.0,eq])[1:] if len(eq) else np.array([]); dd=eq-peak if len(eq) else np.array([])
- total={"bets":int(len(bets)),"wins":int(bets.winner.sum()),"profit":float(bets.pnl.sum()),"pot_pct":100*float(bets.pnl.sum())/len(bets) if len(bets) else np.nan,"max_drawdown_units":float(dd.min()) if len(dd) else np.nan,"mean_sp":float(bets["_sp"].mean()) if len(bets) else np.nan,"mean_edge_ratio":float(bets["edge_ratio"].mean()) if len(bets) else np.nan}
+ losing=0; longest=0
+ for w in bets["winner"].astype(int).tolist():
+  losing=0 if w else losing+1; longest=max(longest,losing)
+ total={"bets":int(len(bets)),"wins":int(bets.winner.sum()),"profit":float(bets.pnl.sum()),"pot_pct":100*float(bets.pnl.sum())/len(bets) if len(bets) else np.nan,"max_drawdown_units":float(dd.min()) if len(dd) else np.nan,"longest_losing_run":int(longest),"mean_sp":float(bets["_sp"].mean()) if len(bets) else np.nan,"mean_edge_ratio":float(bets["edge_ratio"].mean()) if len(bets) else np.nan}
  out={"status":"FORENSIC_HOLDOUT_OPENED","model":model,"temperature":temp,"policy":a3["selected_policy"],"performance_by_year":perf,"betting_by_year":econ,"betting_total":total,"sp_source":sp_path,
  "purity_limitation":"Final SP is historical forensic pricing, not deployable offered odds.","reselection_after_holdout":False}
  OUT.write_text(json.dumps(out,indent=2,default=str)); print(json.dumps(out,indent=2,default=str))
