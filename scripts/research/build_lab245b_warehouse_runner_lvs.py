@@ -63,6 +63,7 @@ def main():
  out=d.merge(race_lvs,on="canonical_race_id",how="inner",validate="many_to_one")
  # Declared LAB245B reconstruction: race LVS and finish margin are both in lengths.
  out["runner_lvs"]=out["race_lvs"]-out["finish_margin"]
+ out["runner_time_equivalent_seconds"]=out["official_race_time_seconds"]+out["finish_margin"]*out["seconds_per_length"]
  keep=["canonical_race_id","canonical_horse_id","race_date","distance_metres","finish_position","finish_margin","runner_time_equivalent_seconds","runner_lvs","race_lvs","standard_time_seconds","seconds_per_length","benchmark_n"]
  out[keep].to_csv(OUT,index=False)
  lvs_races=r["canonical_race_id"].nunique()
@@ -71,7 +72,10 @@ def main():
  print(f"LVS_RACES={lvs_races:,}")
  print(f"RUNNER_ROWS={len(out):,}")
  print("PIT_POLICY=STRICT_DATE_LT_TARGET_DATE")
- print("RUNNER_LVS_POLICY=ORIGINAL_PRODUCER_FORMULA_RACE_LVS_MINUS_FINISH_MARGIN")\n print("RUNNER_TIME_EQUIVALENT_POLICY=ORIGINAL_PRODUCER_RACE_TIME_PLUS_MARGIN_X_SECONDS_PER_LENGTH")\n print("BENCHMARK_GROUPING=RECOVERED_PRODUCTION_CONTRACT_CANONICAL_TRACK_ID_DISTANCE_CONDITION_MIN20_MEDIAN")\n print("BENCHMARK_POLICY=LAB245B_STRICT_DATE_PIT_NOT_OLD_ALL_HISTORY_PRODUCTION_STANDARD")
+ print("RUNNER_LVS_POLICY=ORIGINAL_PRODUCER_FORMULA_RACE_LVS_MINUS_FINISH_MARGIN")
+ print("RUNNER_TIME_EQUIVALENT_POLICY=ORIGINAL_PRODUCER_RACE_TIME_PLUS_MARGIN_X_SECONDS_PER_LENGTH")
+ print("BENCHMARK_GROUPING=RECOVERED_PRODUCTION_CONTRACT_CANONICAL_TRACK_ID_DISTANCE_CONDITION_MIN20_MEDIAN")
+ print("BENCHMARK_POLICY=LAB245B_STRICT_DATE_PIT_NOT_OLD_ALL_HISTORY_PRODUCTION_STANDARD")
  print("KNOWN_RECOVERY_TIMED_RACES=70,308 DELTA_RACES=54,978 LVS_RACES=52,414")
  if abs(timed_races-70308)>10:raise RuntimeError("Timed-race recovery count materially disagrees with certified audit.")
  if lvs_races<=0 or lvs_races>=timed_races:raise RuntimeError("Invalid PIT LVS recovery funnel.")
