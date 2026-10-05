@@ -25,7 +25,7 @@ def load_source():
    for b in iter(lambda:fh.read(8*1024*1024),b""): h.update(b)
   digest=h.hexdigest()
   if digest!=AUTHORITY_SHA256: raise RuntimeError(f"Runner-LVS authority SHA drift: {digest}")
-  a=pd.read_csv(AUTHORITY,usecols=["canonical_performance_id","canonical_race_id","canonical_horse_id","finish_position","finish_margin_lengths","runner_lengths_v_standard"],low_memory=False)
+  a=pd.read_csv(AUTHORITY,usecols=["canonical_performance_id","canonical_race_id","canonical_horse_id","finish_position","finish_margin_lengths","runner_lengths_v_standard"],dtype={"canonical_performance_id":"string","canonical_race_id":"string","canonical_horse_id":"string"},low_memory=False)\n  for k in ["canonical_performance_id","canonical_race_id","canonical_horse_id"]: a[k]=a[k].str.strip()\n  if a["canonical_performance_id"].isna().any() or a["canonical_performance_id"].duplicated().any(): raise RuntimeError("Runner-LVS authority performance IDs are missing or non-unique.")
   # Authority lacks date/distance. Prefer compact one-row-per-race recovered timing identity map.
   timing=DATA_ROOT/"public/data/edgeiq_recovered_timing_warehouse_v1.csv"
   warehouse=DATA_ROOT/"docs/performance-intelligence/warehouse/edgeiq_performance_fact_warehouse_v1.csv"
