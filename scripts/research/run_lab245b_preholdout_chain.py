@@ -10,7 +10,9 @@ DATA_ROOT=Path(os.environ.get("EDGEIQ_DATA_ROOT",str(ROOT))).resolve()
 OUT=ROOT/"outputs/research/profitability_program/lab245b"
 PY=sys.executable
 EXPECTED_WAREHOUSE_SHA="bcdcef1c7cb9144feae5783ca2fa83b1dc2b8dc07a42ac31c31fd7bd12b53107"
-EXPECTED_TARGET_CONTRACT="LAB245B_STRICT_PIT_LVS_V5_GOVERNED_TRACK_DISTANCE_CONDITION_MIN20"\nEXPECTED_AUTHORITY_SHA="b08bb7a334ddba2f6a76942452dd964cd59db05001dc5710ff19aa7fc6e12926"\nEXPECTED_AUTHORITY_BYTES=80343742
+EXPECTED_TARGET_CONTRACT="LAB245B_STRICT_PIT_LVS_V5_GOVERNED_TRACK_DISTANCE_CONDITION_MIN20"
+EXPECTED_AUTHORITY_SHA="b08bb7a334ddba2f6a76942452dd964cd59db05001dc5710ff19aa7fc6e12926"
+EXPECTED_AUTHORITY_BYTES=80343742
 AUTHORITY=DATA_ROOT/"docs/performance-intelligence/lengths-v-standard/edgeiq_runner_lengths_v_standard_fact_v1.csv"
 WAREHOUSE=DATA_ROOT/"docs/performance-intelligence/warehouse/edgeiq_performance_fact_warehouse_v1.csv"
 
@@ -19,7 +21,15 @@ def run(script):
     env=os.environ.copy()
     subprocess.run([PY,str(ROOT/script)],cwd=ROOT,env=env,check=True)
 
-def authority_valid():\n    if not AUTHORITY.exists() or AUTHORITY.stat().st_size!=EXPECTED_AUTHORITY_BYTES:\n        return False\n    h=hashlib.sha256()\n    with AUTHORITY.open("rb") as fh:\n        for b in iter(lambda:fh.read(16*1024*1024),b""): h.update(b)\n    return h.hexdigest()==EXPECTED_AUTHORITY_SHA\n\ndef target_checkpoint_valid():
+def authority_valid():
+    if not AUTHORITY.exists() or AUTHORITY.stat().st_size!=EXPECTED_AUTHORITY_BYTES:
+        return False
+    h=hashlib.sha256()
+    with AUTHORITY.open("rb") as fh:
+        for b in iter(lambda:fh.read(16*1024*1024),b""): h.update(b)
+    return h.hexdigest()==EXPECTED_AUTHORITY_SHA
+
+def target_checkpoint_valid():
     p=OUT/"LAB245B_WAREHOUSE_RUNNER_LVS.csv"
     m=OUT/"LAB245B_WAREHOUSE_RUNNER_LVS.manifest.json"
     if not p.exists() or not m.exists():
