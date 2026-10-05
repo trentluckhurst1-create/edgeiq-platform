@@ -59,7 +59,7 @@ Data governance:
 - Historical 533,387-row runner-LVS authority is parity/reference evidence only because its production standard times used all-history observations.
 - Forecasting labels are reconstructed with standards using races strictly before the target race date.
 - Standard-time governed downstream key: canonical track ID + distance + condition + jurisdiction; median; minimum 20 prior races.
-- Runner LVS formula: race LVS minus finish margin. Positive is faster/better than standard.
+- Runner LVS algebra: race LVS minus finish margin. Positive is faster/better than standard. The historical producer used a flat 0.17 seconds/length; LAB245B intentionally uses the later governed surface/condition conversion authority.
 - Centisecond conversion is fail-closed against official_race_time / 100.
 - Governed surface/condition seconds-per-length parameters are frozen and checked before target construction.
 
