@@ -30,5 +30,14 @@ Write-Host "HOLDOUT_2025_2026=SEALED"
 python scripts/research/run_lab245b_preholdout_chain.py
 if ($LASTEXITCODE -ne 0) { throw "LAB245B preholdout chain failed with exit code $LASTEXITCODE" }
 
+$L27 = Join-Path $ProductionRoot "outputs\research\model_lab_027\certified_pre_race_feature_matrix_027.csv"
+if (Test-Path -LiteralPath $L27) {
+    Write-Host "LAB245B_L27_PARALLEL_CHALLENGER=RUN"
+    python scripts/research/run_lab245b_l27_next_performance.py
+    if ($LASTEXITCODE -ne 0) { throw "LAB245B L27 challenger failed with exit code $LASTEXITCODE" }
+} else {
+    Write-Host "LAB245B_L27_PARALLEL_CHALLENGER=SKIPPED_SOURCE_MISSING"
+}
+
 Write-Host "LAB245B_PREHOLDOUT_CHAIN_COMPLETE"
 Write-Host "HOLDOUT_2025_2026_REMAINS_SEALED=YES"
