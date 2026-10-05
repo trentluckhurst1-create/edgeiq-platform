@@ -96,7 +96,8 @@ def main():
  r["race_lvs"]=-(r["official_race_time_seconds"]-r["standard_time_seconds"])/r["seconds_per_length"]
  race_lvs=r[["canonical_race_id","race_lvs","standard_time_seconds","seconds_per_length","benchmark_n"]]
  out=d.merge(race_lvs,on="canonical_race_id",how="inner",validate="many_to_one")
- # Algebra recovered from original producer: runner LVS = race LVS - finish margin.\n # LAB245B intentionally uses the later governed surface/condition seconds-per-length table, not the legacy flat 0.17.
+ # Algebra recovered from original producer: runner LVS = race LVS - finish margin.
+ # LAB245B intentionally uses the later governed surface/condition seconds-per-length table, not the legacy flat 0.17.
  out["runner_lvs"]=out["race_lvs"]-out["finish_margin"]
  out["runner_time_equivalent_seconds"]=out["official_race_time_seconds"]+out["finish_margin"]*out["seconds_per_length"]
  keep=["canonical_race_id","canonical_horse_id","race_date","distance_metres","finish_position","finish_margin","runner_time_equivalent_seconds","runner_lvs","race_lvs","standard_time_seconds","seconds_per_length","benchmark_n"]
