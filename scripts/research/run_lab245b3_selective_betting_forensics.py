@@ -138,7 +138,7 @@ def main():
    v=r[(r.period=="VALIDATION_2024")&(r.policy==selected)].iloc[0]
    dd_limit=max(25.0,0.25*float(v.bets))
    status="SURVIVE_TO_FORENSIC_HOLDOUT" if v.bets>=100 and v.pot_pct>=1.0 and v.race_cluster_profit_z>=0.5 and v.max_drawdown_units<=dd_limit else "REJECT_2024_POLICY_CONFIRMATION"
- a={"contract_version":"LAB245B3_PREDECLARED_FINAL_SP_FORENSICS_V1","status":status,"selected_policy":selected,"policy_family_size":len(POLICIES),"policy_contract":"LAB245B_B3_SELECTIVE_BETTING_PREDECLARED.json edge thresholds 0.05/0.10/0.15/0.20",
+ a={"contract_version":"LAB245B3_PREDECLARED_FINAL_SP_FORENSICS_V1","status":status,"selected_policy":selected,"policy_family_size":len(POLICIES),"multiple_testing_note":"Four predeclared nested edge thresholds are screened on 2022; surviving economics remain exploratory forensic evidence, not a deployment claim.","policy_contract":"LAB245B_B3_SELECTIVE_BETTING_PREDECLARED.json edge thresholds 0.05/0.10/0.15/0.20",
     "selection":"2022 only; >=50 bets, POT>=2%, race-clustered profit_z>=0.5; choose highest POT shrunk toward zero by n/(n+200), then freeze policy",
     "development_confirmation":"fixed policy 2023 requires >=50 bets and POT>=1%; pooled 2022-23 requires >=150 bets, POT>=2%, race-clustered profit_z>=1.0, and no single SP band >80% of positive gross profit",
     "development_odds_band_profit":band_profit if selected else {},"development_max_positive_profit_band_share":max_positive_share if selected else None,
