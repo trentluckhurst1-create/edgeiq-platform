@@ -28,7 +28,13 @@ def score(d,p,full_field_sizes=None):
             if expected is None or len(g)!=int(expected): continue
         if len(g)>=3 and g["target_lvs"].nunique()>1 and g["pred"].nunique()>1:
             rho.append(g["target_lvs"].corr(g["pred"],method="spearman")); rank_races+=1
-    # Diagnostic only: remove each race common shift to isolate relative runner separation.\n    centered=t.copy()\n    centered["y_c"]=centered["target_lvs"]-centered.groupby("_race")["target_lvs"].transform("mean")\n    centered["p_c"]=centered["pred"]-centered.groupby("_race")["pred"].transform("mean")\n    cmae=mean_absolute_error(centered["y_c"],centered["p_c"]) if len(centered) else np.nan\n    crmse=math.sqrt(mean_squared_error(centered["y_c"],centered["p_c"])) if len(centered) else np.nan\n    return {"rows":len(y),"races":t["_race"].nunique(),"mae":mean_absolute_error(y,p),"rmse":math.sqrt(mean_squared_error(y,p)),"race_centered_mae_diagnostic":cmae,"race_centered_rmse_diagnostic":crmse,"ranking_full_field_races":rank_races,"race_spearman_mean":float(np.nanmean(rho)) if rho else np.nan}
+    # Diagnostic only: remove each race common shift to isolate relative runner separation.
+    centered=t.copy()
+    centered["y_c"]=centered["target_lvs"]-centered.groupby("_race")["target_lvs"].transform("mean")
+    centered["p_c"]=centered["pred"]-centered.groupby("_race")["pred"].transform("mean")
+    cmae=mean_absolute_error(centered["y_c"],centered["p_c"]) if len(centered) else np.nan
+    crmse=math.sqrt(mean_squared_error(centered["y_c"],centered["p_c"])) if len(centered) else np.nan
+    return {"rows":len(y),"races":t["_race"].nunique(),"mae":mean_absolute_error(y,p),"rmse":math.sqrt(mean_squared_error(y,p)),"race_centered_mae_diagnostic":cmae,"race_centered_rmse_diagnostic":crmse,"ranking_full_field_races":rank_races,"race_spearman_mean":float(np.nanmean(rho)) if rho else np.nan}
 
 def main():
     if not INP.exists(): raise FileNotFoundError(INP)
