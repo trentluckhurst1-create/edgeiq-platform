@@ -17,6 +17,7 @@ on:
         options:
           - "245a"
           - "245b1"
+          - "245b-l27"
           - "bootstrap"
 
 permissions:
@@ -41,6 +42,7 @@ jobs:
           LAB="${{ github.event.inputs.lab }}"
           if [ -z "$LAB" ]; then
             case "${{ github.event.head_commit.message }}" in
+              *LAB245B-L27*|*lab245b-l27*|*LAB245B_L27*|*lab245b_l27*) LAB="245b-l27" ;;
               *LAB245B*|*lab245b*) LAB="245b1" ;;
               *) LAB="245a" ;;
             esac
@@ -55,6 +57,9 @@ jobs:
           python scripts/research/build_lab245b_warehouse_runner_lvs.py
           python scripts/research/build_lab245b_compact_performance_bridge.py
           python scripts/research/run_lab245b1_next_performance_forecast.py
+      - name: Run LAB245B certified LAB027 next-performance challenger
+        if: env.LAB == '245b-l27'
+        run: python scripts/research/run_lab245b_l27_next_performance.py
       - name: Run governed research bootstrap
         if: env.LAB == 'bootstrap'
         run: python scripts/research/profitability_program_bootstrap.py
