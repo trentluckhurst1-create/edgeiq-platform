@@ -1,10 +1,12 @@
 from pathlib import Path
+import os
 from collections import defaultdict
 import pandas as pd
 import numpy as np
 
 ROOT=Path(__file__).resolve().parents[2]
-AUTHORITY=ROOT/"docs/performance-intelligence/lengths-v-standard/edgeiq_runner_lengths_v_standard_fact_v1.csv"
+DATA_ROOT=Path(os.environ.get("EDGEIQ_DATA_ROOT",str(ROOT))).resolve()
+AUTHORITY=DATA_ROOT/"docs/performance-intelligence/lengths-v-standard/edgeiq_runner_lengths_v_standard_fact_v1.csv"
 FALLBACK=ROOT/"outputs/research/profitability_program/lab245b/LAB245B_WAREHOUSE_RUNNER_LVS.csv"
 AUTHORITY_SIZE=80343742
 AUTHORITY_SHA256="b08bb7a334ddba2f6a76942452dd964cd59db05001dc5710ff19aa7fc6e12926"
@@ -25,7 +27,7 @@ def load_source():
   if digest!=AUTHORITY_SHA256: raise RuntimeError(f"Runner-LVS authority SHA drift: {digest}")
   a=pd.read_csv(AUTHORITY,usecols=["canonical_performance_id","canonical_race_id","canonical_horse_id","finish_position","finish_margin_lengths","runner_lengths_v_standard"],low_memory=False)
   # Authority lacks date/distance; enrich identity-exact from warehouse only when available.
-  warehouse=ROOT/"docs/performance-intelligence/warehouse/edgeiq_performance_fact_warehouse_v1.csv"
+  warehouse=DATA_ROOT/"docs/performance-intelligence/warehouse/edgeiq_performance_fact_warehouse_v1.csv"
   if not warehouse.exists(): raise FileNotFoundError("Verified runner-LVS authority found, but warehouse identity enrichment (race_date/distance) is unavailable.")
   # Date and distance are race-level attributes. Build a compact exact race map in chunks instead of loading the 416MB warehouse.
   race_parts=[]
