@@ -21,13 +21,14 @@ on:
           - "245b4-holdout"
           - "bootstrap"
           - "245d5"
+          - "245d6"
 
 permissions:
   contents: read
 
 jobs:
   research-lab:
-    runs-on: ${{ (github.event.inputs.lab == '245d5' || (github.event_name == 'push' && contains(github.event.head_commit.message, 'LAB245D5'))) && fromJSON('["self-hosted","Windows","X64","edgeiq-research"]') || 'ubuntu-latest' }}
+    runs-on: ${{ (startsWith(github.event.inputs.lab, '245d') || (github.event_name == 'push' && contains(github.event.head_commit.message, 'LAB245D'))) && fromJSON('["self-hosted","Windows","X64","edgeiq-research"]') || 'ubuntu-latest' }}
     timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
@@ -35,14 +36,14 @@ jobs:
           ref: research/profitability-program-20261004
           fetch-depth: 2
       - uses: actions/setup-python@v5
-        if: ${{ !(github.event_name == 'push' && contains(github.event.head_commit.message, 'LAB245D5')) && github.event.inputs.lab != '245d5' }}
+        if: ${{ !(github.event_name == 'push' && contains(github.event.head_commit.message, 'LAB245D')) && github.event.inputs.lab != '245d5' }}
         with:
           python-version: "3.11"
       - name: Install research dependencies
-        if: ${{ !(github.event_name == 'push' && contains(github.event.head_commit.message, 'LAB245D5')) && github.event.inputs.lab != '245d5' }}
+        if: ${{ !(github.event_name == 'push' && contains(github.event.head_commit.message, 'LAB245D')) && github.event.inputs.lab != '245d5' }}
         run: python -m pip install --disable-pip-version-check pandas numpy scipy scikit-learn
       - name: Select research lab
-        if: ${{ !(github.event_name == 'push' && contains(github.event.head_commit.message, 'LAB245D5')) && github.event.inputs.lab != '245d5' }}
+        if: ${{ !(github.event_name == 'push' && contains(github.event.head_commit.message, 'LAB245D')) && github.event.inputs.lab != '245d5' }}
         shell: bash
         run: |
           LAB="${{ github.event.inputs.lab }}"
@@ -148,7 +149,7 @@ jobs:
         if: env.LAB == '245b-l27' && env.LAB245B_L27_DATA_AVAILABLE == 'true'
         run: python scripts/research/run_lab245b_l27_next_performance.py
       - name: Run LAB245D5 race-relative HGB challenger
-        if: ${{ github.event.inputs.lab == '245d5' || (github.event_name == 'push' && contains(github.event.head_commit.message, 'LAB245D5')) }}
+        if: ${{ startsWith(github.event.inputs.lab, '245d') || (github.event_name == 'push' && contains(github.event.head_commit.message, 'LAB245D')) }}
         shell: powershell
         run: |
           $ResearchRoot = "C:\\EDGEIQ_PROFITABILITY_RESEARCH"
@@ -161,6 +162,20 @@ jobs:
           Push-Location $ResearchRoot
           try { python $LocalScript } finally { Pop-Location }
           if ($LASTEXITCODE -ne 0) { throw "LAB245D5 failed" }
+      - name: Run LAB245D6 HGB feature ablation tournament
+        if: ${{ github.event.inputs.lab == '245d6' || (github.event_name == 'push' && contains(github.event.head_commit.message, 'LAB245D6')) }}
+        shell: powershell
+        run: |
+          $ResearchRoot = "C:\EDGEIQ_PROFITABILITY_RESEARCH"
+          $Bridge = Join-Path $ResearchRoot "outputs\research\profitability_program\lab245b\LAB245B_COMPACT_PERFORMANCE_BRIDGE.csv"
+          if (-not (Test-Path $Bridge)) { throw "LAB245B compact bridge missing: $Bridge" }
+          $SourceScript = Join-Path $env:GITHUB_WORKSPACE "scripts\research\run_lab245d6_hgb_feature_ablation.py"
+          $LocalScript = Join-Path $ResearchRoot "scripts\research\run_lab245d6_hgb_feature_ablation.py"
+          Copy-Item $SourceScript $LocalScript -Force
+          python -m py_compile $LocalScript
+          Push-Location $ResearchRoot
+          try { python $LocalScript } finally { Pop-Location }
+          if ($LASTEXITCODE -ne 0) { throw "LAB245D6 failed" }
       - name: Run governed research bootstrap
         if: env.LAB == 'bootstrap'
         run: python scripts/research/profitability_program_bootstrap.py
