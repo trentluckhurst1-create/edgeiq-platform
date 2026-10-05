@@ -27,7 +27,7 @@ permissions:
 
 jobs:
   research-lab:
-    runs-on: ${{ github.event.inputs.lab == '245d5' && fromJSON('["self-hosted","Windows","X64","edgeiq-research"]') || 'ubuntu-latest' }}
+    runs-on: ${{ (github.event.inputs.lab == '245d5' || (github.event_name == 'push' && contains(github.event.head_commit.message, 'LAB245D5'))) && fromJSON('["self-hosted","Windows","X64","edgeiq-research"]') || 'ubuntu-latest' }}
     timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
@@ -46,8 +46,13 @@ jobs:
         run: |
           LAB="${{ github.event.inputs.lab }}"
           if [ -z "$LAB" ]; then
+            if echo "${{ github.event.head_commit.message }}" | grep -Eiq 'LAB245D5|lab245d5'; then
+              LAB="245d5"
+            fi
             CHANGED="$(git diff --name-only HEAD^ HEAD 2>/dev/null || true)"
-            if echo "$CHANGED" | grep -Eiq '^scripts/research/.*lab245b.*l27'; then
+            if [ -n "$LAB" ]; then
+              :
+            elif echo "$CHANGED" | grep -Eiq '^scripts/research/.*lab245b.*l27'; then
               LAB="245b-l27"
             elif echo "$CHANGED" | grep -Eiq '^scripts/research/.*lab245b'; then
               LAB="245b1"
