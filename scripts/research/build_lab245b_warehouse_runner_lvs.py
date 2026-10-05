@@ -1,5 +1,6 @@
 from pathlib import Path
 import os
+import hashlib
 from bisect import insort
 import pandas as pd
 import numpy as np
@@ -10,6 +11,8 @@ WAREHOUSE=DATA_ROOT/"docs/performance-intelligence/warehouse/edgeiq_performance_
 LCP=DATA_ROOT/"public/data/edgeiq_length_conversion_parameter_fact_v2.csv"
 OUT=ROOT/"outputs/research/profitability_program/lab245b/LAB245B_WAREHOUSE_RUNNER_LVS.csv"
 MIN_SAMPLE=20
+EXPECTED_WAREHOUSE_SIZE=416143437
+EXPECTED_WAREHOUSE_SHA256="bcdcef1c7cb9144feae5783ca2fa83b1dc2b8dc07a42ac31c31fd7bd12b53107"
 
 def cond(x):
  s=str(x or "").upper()
@@ -29,6 +32,13 @@ def _median_sorted(vals):
 def main():
  OUT.parent.mkdir(parents=True,exist_ok=True)
  if not WAREHOUSE.exists():raise FileNotFoundError(WAREHOUSE)
+ if WAREHOUSE.stat().st_size!=EXPECTED_WAREHOUSE_SIZE: raise RuntimeError(f"Warehouse size drift: {WAREHOUSE.stat().st_size}")
+ h=hashlib.sha256()
+ with WAREHOUSE.open("rb") as fh:
+  for b in iter(lambda:fh.read(16*1024*1024),b""): h.update(b)
+ digest=h.hexdigest()
+ if digest!=EXPECTED_WAREHOUSE_SHA256: raise RuntimeError(f"Warehouse SHA drift: {digest}")
+ print(f"WAREHOUSE_FROZEN_AUTHORITY=PASS SHA256={digest}")
  use=["canonical_race_id","canonical_horse_id","canonical_track_id","race_date","jurisdiction","track","track_layout","distance_metres","track_condition","track_condition_group","finish_position","finish_margin","official_race_time","official_race_time_seconds","time_unit"]
  d=pd.read_csv(WAREHOUSE,usecols=use,low_memory=False)
  d["race_date"]=pd.to_datetime(d["race_date"],errors="coerce")
