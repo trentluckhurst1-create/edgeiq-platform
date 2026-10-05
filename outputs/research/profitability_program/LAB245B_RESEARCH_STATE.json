@@ -1,0 +1,36 @@
+{
+  "program": "EDGEIQ_PROFITABILITY_PROGRAM",
+  "lab": "LAB245B",
+  "state": "READY_FOR_LOCAL_PREHOLDOUT_EXECUTION",
+  "branch": "research/profitability-program-20261004",
+  "research_worktree": "C:\\EDGEIQ_PROFITABILITY_RESEARCH",
+  "production_data_root": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM",
+  "production_write_policy": "READ_ONLY_DATA_AUTHORITY",
+  "target_contract": "LAB245B_STRICT_PIT_LVS_V8_V1_LENGTH_CONVERSION_TRACK_DISTANCE_CONDITION_MIN20",
+  "target_source": "performance warehouse strict-date-PIT reconstruction",
+  "legacy_runner_lvs_role": "IMMUTABLE_PARITY_ONLY_NOT_FORECAST_TARGET",
+  "legacy_runner_lvs_sha256": "b08bb7a334ddba2f6a76942452dd964cd59db05001dc5710ff19aa7fc6e12926",
+  "warehouse_sha256": "bcdcef1c7cb9144feae5783ca2fa83b1dc2b8dc07a42ac31c31fd7bd12b53107",
+  "benchmark": {
+    "grouping": ["canonical_track_id", "distance_metres", "condition"],
+    "statistic": "median",
+    "minimum_prior_races": 20,
+    "temporal_policy": "STRICT_DATE_LT_TARGET_DATE",
+    "same_date_policy": "FROZEN_BEFORE_DATE"
+  },
+  "runner_lvs_formula": "race_lvs - finish_margin",
+  "seconds_per_length": 0.17,
+  "b1": "NOT_YET_EXECUTED",
+  "b2": "GATED_ON_B1",
+  "b3": "GATED_ON_B2",
+  "holdout_2025_2026": "SEALED",
+  "local_launcher": "scripts\\research\\run_lab245b_local_preholdout.ps1",
+  "resume_policy": "CHECKPOINTED_TARGET_AND_CHAIN_LINEAGE",
+  "latest_governance_notes": [
+    "B1 selection uses 2022-2023 only and fixed 2024 confirmation.",
+    "Race-centered B1 errors are diagnostic only and cannot rescue a failed gate.",
+    "B3 final SP is historical forensic policy evidence only, not deployable offered odds.",
+    "Weight is not a LAB245B feature.",
+    "Market/SP/odds are not B1/B2 model features."
+  ]
+}
