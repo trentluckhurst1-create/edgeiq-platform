@@ -27,10 +27,16 @@ def _median_sorted(vals):
 def main():
  OUT.parent.mkdir(parents=True,exist_ok=True)
  if not WAREHOUSE.exists():raise FileNotFoundError(WAREHOUSE)
- use=["canonical_race_id","canonical_horse_id","canonical_track_id","race_date","track","track_layout","distance_metres","track_condition","track_condition_group","finish_position","finish_margin","official_race_time_seconds"]
+ use=["canonical_race_id","canonical_horse_id","canonical_track_id","race_date","track","track_layout","distance_metres","track_condition","track_condition_group","finish_position","finish_margin","official_race_time","official_race_time_seconds","time_unit"]
  d=pd.read_csv(WAREHOUSE,usecols=use,low_memory=False)
  d["race_date"]=pd.to_datetime(d["race_date"],errors="coerce")
- for x in ["distance_metres","finish_position","finish_margin","official_race_time_seconds"]:d[x]=pd.to_numeric(d[x],errors="coerce")
+ for x in ["distance_metres","finish_position","finish_margin","official_race_time","official_race_time_seconds"]:d[x]=pd.to_numeric(d[x],errors="coerce")
+ # Fail closed against the known historical centiseconds /1000 regression.
+ cs=d["time_unit"].astype("string").str.upper().eq("CENTISECONDS_TO_SECONDS_V1") & d["official_race_time"].notna() & d["official_race_time_seconds"].notna()
+ if cs.any():
+  unit_err=(d.loc[cs,"official_race_time"]/100.0-d.loc[cs,"official_race_time_seconds"]).abs().max()
+  if unit_err>0.001: raise RuntimeError(f"Centiseconds conversion invariant failed max_abs_error={unit_err}")
+  print(f"CENTISECONDS_UNIT_CHECK=PASS ROWS={int(cs.sum()):,} MAX_ABS_ERROR={unit_err:.9f}")
  d["condition"]=d["track_condition_group"].fillna(d["track_condition"]).map(cond)
  d["track_key"]=d["canonical_track_id"].fillna("").astype(str).str.strip()
  txt=(d["track"].fillna("")+" "+d["track_layout"].fillna("")+" "+d["track_condition"].fillna("")+" "+d["track_condition_group"].fillna("")).str.upper()
