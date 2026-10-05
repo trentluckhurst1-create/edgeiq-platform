@@ -26,7 +26,7 @@ def main():
  rows=[]; preds=[]
  # Strict expanding chronology. 2022 model fits 2021 OOF if present; otherwise 2022 is diagnostic baseline only.
  years=sorted(int(y) for y in x._year.dropna().unique())
- for yr in [2022,2023,2024]:
+ for yr in [2023,2024]:
   te=x[x._year.eq(yr)].copy(); tr=x[x._year.lt(yr)].copy()
   if tr.y.nunique()<2 or len(tr)<100:
    print(f"{yr}: insufficient earlier OOF rows for governed recalibration; baseline only"); continue
@@ -38,7 +38,7 @@ def main():
   rows.append({"year":yr,"baseline_log_loss":a["log_loss"],"recal_log_loss":b["log_loss"],"log_loss_gain":a["log_loss"]-b["log_loss"],"baseline_brier":a["brier"],"recal_brier":b["brier"],"brier_gain":a["brier"]-b["brier"],"races":b["races"]})
   preds.append(te[["_race","_horse","_year","hist_runs","rank","field_size","y","p_model","p_recal"]])
  out=pd.concat(preds,ignore_index=True) if preds else pd.DataFrame(); out.to_csv(OUT,index=False)
- audit={"contract":"LAB245C5_DEPTH_RANK_RECALIBRATION_V1","features":FEATURES,"chronology":"FIT_ONLY_YEARS_LT_SCORE_YEAR","selection":"NO_THRESHOLD_MINING; architecture diagnostic","2024_role":"OBSERVED_DIAGNOSTIC_NOT_PRISTINE_FOR_NEW_ARCHITECTURE","2025_2026_opened":False,"results":rows}
+ audit={"contract":"LAB245C5_DEPTH_RANK_RECALIBRATION_V1","features":FEATURES,"chronology":"FIT_2022_SCORE_2023; FIT_2022_2023_SCORE_2024","selection":"NO_THRESHOLD_MINING; architecture diagnostic","2024_role":"OBSERVED_DIAGNOSTIC_NOT_PRISTINE_FOR_NEW_ARCHITECTURE","2025_2026_opened":False,"results":rows}
  AUD.write_text(json.dumps(audit,indent=2)); print(json.dumps(audit,indent=2))
  print("\nYEAR RESULTS"); print(pd.DataFrame(rows).to_string(index=False))
 if __name__=="__main__":main()
