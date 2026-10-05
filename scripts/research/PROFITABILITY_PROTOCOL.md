@@ -5,7 +5,10 @@ Goal: test whether pre-race EDGEiQ edges can be filtered into a repeatably profi
 Rules:
 - STRICT281 remains the frozen scientific reference.
 - Production is not modified.
-- Final SP and result are evaluation labels only.\n- Final-SP POT is a historical forensic screen, not evidence that the same price was obtainable pre-race.\n- A deployable profitability claim requires timestamped pre-race offered odds with nonnegative minutes-before-jump and identity-certified runner joins.\n- Current timestamp-safe offered-odds evidence is sparse and must be reported separately from the long historical final-SP universe.
+- Final SP and result are evaluation labels only.
+- Final-SP POT is a historical forensic screen, not evidence that the same price was obtainable pre-race.
+- A deployable profitability claim requires timestamped pre-race offered odds with nonnegative minutes-before-jump and identity-certified runner joins.
+- Current timestamp-safe offered-odds evidence is sparse and must be reported separately from the long historical final-SP universe.
 - Final SP is not a gate feature.
 - Weight features are not attributed or interpreted.
 - Canonical race and horse IDs remain strings.
@@ -43,4 +46,33 @@ A candidate is not promoted unless thresholds are fixed before pseudo-holdout ev
 PRODUCTION_MODIFIED=NO
 MARKET_AS_FEATURE=NO
 FINAL_SP_EVALUATION_ONLY=YES
-\nDEPLOYABLE_POT_REQUIRES_PRE_RACE_OFFERED_ODDS=YES\nFINAL_SP_POT_IS_FORENSIC_ONLY=YES\n
+
+DEPLOYABLE_POT_REQUIRES_PRE_RACE_OFFERED_ODDS=YES
+FINAL_SP_POT_IS_FORENSIC_ONLY=YES
+
+## LAB245B next-performance chain
+
+Purpose: test whether forecasting actual next-race runner performance creates a more reliable probability architecture than direct winner fitting.
+
+Data governance:
+- Frozen warehouse authority: 879,784 rows; 416,143,437 bytes; SHA-256 bcdcef1c7cb9144feae5783ca2fa83b1dc2b8dc07a42ac31c31fd7bd12b53107.
+- Historical 533,387-row runner-LVS authority is parity/reference evidence only because its production standard times used all-history observations.
+- Forecasting labels are reconstructed with standards using races strictly before the target race date.
+- Standard-time governed downstream key: canonical track ID + distance + condition + jurisdiction; median; minimum 20 prior races.
+- Runner LVS formula: race LVS minus finish margin. Positive is faster/better than standard.
+- Centisecond conversion is fail-closed against official_race_time / 100.
+- Governed surface/condition seconds-per-length parameters are frozen and checked before target construction.
+
+Stage gates:
+1. LAB245B1: predict next-race runner LVS. Architecture/model selection uses 2022-23 OOF only; 2024 is fixed confirmation.
+2. LAB245B2: convert the selected performance forecast to race probabilities. Temperature is selected on 2022-23 only and fixed for 2024.
+3. LAB245B3: final-SP betting forensics only. 2022 selects a policy; the same policy must confirm in 2023 and validate in 2024 with minimum volume.
+4. LAB245B4: 2025-26 remains sealed unless LAB245B3 survives. On opening, architecture, hyperparameters, temperature and betting policy are frozen; no holdout reselection is allowed.
+
+Final-SP limitation:
+- LAB245B3/4 final-SP economics are historical forensic tests.
+- They are not deployable betting claims.
+- Any surviving policy must later be tested against actual timestamped pre-race offered odds.
+
+LAB245B_HOLDOUT_RESELECTION=NO
+LAB245B_HISTORICAL_LVS_AUTHORITY_AS_TARGET=NO
