@@ -17,15 +17,18 @@ FEATURES=["hist_runs","current_distance","lvs_last1","lvs_mean3","lvs_mean5","lv
 BASELINES={"LVS_LAST1":"lvs_last1","LVS_MEAN3":"lvs_mean3","LVS_MEAN5":"lvs_mean5","LVS_MEDIAN5":"lvs_median5","DIST200_LVS":"dist200_lvs_mean"}
 SELECTABLE_BASELINES={"LVS_LAST1","LVS_MEAN3","LVS_MEAN5","LVS_MEDIAN5"}
 
-def score(d,p):
+def score(d,p,full_field_sizes=None):
     y=d["target_lvs"].to_numpy(float); p=np.asarray(p,float)
     ok=np.isfinite(y)&np.isfinite(p); y=y[ok]; p=p[ok]
     t=d.loc[ok,["_race","target_lvs"]].copy(); t["pred"]=p
-    rho=[]
-    for _,g in t.groupby("_race",sort=False):
+    rho=[]; rank_races=0
+    for race,g in t.groupby("_race",sort=False):
+        if full_field_sizes is not None:
+            expected=full_field_sizes.get(race)
+            if expected is None or len(g)!=int(expected): continue
         if len(g)>=3 and g["target_lvs"].nunique()>1 and g["pred"].nunique()>1:
-            rho.append(g["target_lvs"].corr(g["pred"],method="spearman"))
-    return {"rows":len(y),"races":t["_race"].nunique(),"mae":mean_absolute_error(y,p),"rmse":math.sqrt(mean_squared_error(y,p)),"race_spearman_mean":float(np.nanmean(rho)) if rho else np.nan}
+            rho.append(g["target_lvs"].corr(g["pred"],method="spearman")); rank_races+=1
+    return {"rows":len(y),"races":t["_race"].nunique(),"mae":mean_absolute_error(y,p),"rmse":math.sqrt(mean_squared_error(y,p)),"ranking_full_field_races":rank_races,"race_spearman_mean":float(np.nanmean(rho)) if rho else np.nan}
 
 def main():
     if not INP.exists(): raise FileNotFoundError(INP)
@@ -44,6 +47,7 @@ def main():
     # Common evaluation universe for simple-vs-ML selection: require a finite recency LVS history.
     # DIST200 remains diagnostic because its availability is conditional on distance-near history.
     d=d[np.isfinite(pd.to_numeric(d["lvs_mean3"],errors="coerce"))].copy()
+    full_field_sizes=raw.groupby("_race")["_horse"].nunique().to_dict()
     coverage={str(int(y)):{"rows":int(len(g)),"races":int(g["_race"].nunique())} for y,g in d.groupby("_year",sort=True)}
     history_depth={}
     for y,g in raw.groupby("_year",sort=True):
@@ -63,7 +67,7 @@ def main():
         if tr.empty or te.empty: continue
         for name,col in BASELINES.items():
             p=te[col].to_numpy(float)
-            rows.append({"year":year,"model":name,**score(te,p)})
+            rows.append({"year":year,"model":name,**score(te,p,full_field_sizes)})
             q=te[["_race","_horse","_year","race_date","target_lvs","target_finish_position","target_field_size"]].copy(); q["model"]=name; q["pred_lvs"]=p; pp.append(q)
         models={"RIDGE":make_pipeline(SimpleImputer(strategy="median"),StandardScaler(),Ridge(alpha=10.0)),"HGB":HistGradientBoostingRegressor(max_iter=250,learning_rate=.04,max_leaf_nodes=15,l2_regularization=5,random_state=245)}
         for name,m in models.items():
@@ -77,7 +81,7 @@ def main():
     dev=pred[pred["_year"].isin([2022,2023])]
     dev_rows=[]
     for name,g in dev.groupby("model",sort=False):
-        dev_rows.append({"model":name,**score(g,g["pred_lvs"].to_numpy(float))})
+        dev_rows.append({"model":name,**score(g,g["pred_lvs"].to_numpy(float),full_field_sizes)})
     devres=pd.DataFrame(dev_rows)
     devres.to_csv(OUTDIR/"LAB245B1_DEVELOPMENT_SELECTION.csv",index=False)
     bs_dev=devres[devres["model"].isin(SELECTABLE_BASELINES)].sort_values(["mae","rmse"]).iloc[0]
