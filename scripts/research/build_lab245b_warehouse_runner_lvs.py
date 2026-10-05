@@ -126,13 +126,13 @@ def main():
  # LAB245B intentionally uses the later governed surface/condition seconds-per-length table, not the legacy flat 0.17.
  keep=["canonical_race_id","canonical_horse_id","race_date","distance_metres","finish_position","finish_margin","runner_time_equivalent_seconds","runner_lvs","race_lvs","standard_time_seconds","seconds_per_length","benchmark_n"]
  out[keep].to_csv(OUT,index=False)
- manifest={"contract_version":CONTRACT_VERSION,"warehouse_sha256":digest,"warehouse_bytes":WAREHOUSE.stat().st_size,"pit_policy":"STRICT_DATE_LT_TARGET_DATE","benchmark_grouping":"canonical_track_id+distance_metres+condition","minimum_prior_races":MIN_SAMPLE,"runner_formula":"race_lvs-finish_margin","valid_runner_rule":"finish_position>0 and finite nonnegative finish_margin","rows":int(len(out)),"races":int(out["canonical_race_id"].nunique())}
+ manifest={"contract_version":CONTRACT_VERSION,"warehouse_sha256":digest,"warehouse_bytes":WAREHOUSE.stat().st_size,"pit_policy":"STRICT_DATE_LT_TARGET_DATE","benchmark_grouping":"canonical_track_id+distance_metres+condition","minimum_prior_races":MIN_SAMPLE,"runner_formula":"race_lvs-finish_margin","valid_runner_rule":"finish_position>0 and finite nonnegative finish_margin","rows_all_represented_runners":int(len(out)),"rows_valid_lvs_target":int(out["runner_lvs"].notna().sum()),"races":int(out["canonical_race_id"].nunique())}
  MANIFEST.write_text(json.dumps(manifest,indent=2),encoding="utf-8")
  lvs_races=r["canonical_race_id"].nunique()
  print(f"SOURCE_ROWS={len(d):,}")
  print(f"TIMED_RACES={timed_races:,}")
  print(f"LVS_RACES={lvs_races:,}")
- print(f"RUNNER_ROWS={len(out):,}")
+ print(f"RUNNER_ROWS_ALL={len(out):,}")\n print(f"RUNNER_ROWS_VALID_LVS={int(out['runner_lvs'].notna().sum()):,}")
  print("PIT_POLICY=STRICT_DATE_LT_TARGET_DATE")
  print("RUNNER_LVS_POLICY=ORIGINAL_PRODUCER_ALGEBRA_WITH_GOVERNED_SURFACE_CONDITION_LENGTH_CONVERSION")
  print("RUNNER_TIME_EQUIVALENT_POLICY=ORIGINAL_PRODUCER_RACE_TIME_PLUS_MARGIN_X_SECONDS_PER_LENGTH")
