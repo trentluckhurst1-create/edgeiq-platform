@@ -81,11 +81,16 @@ def main():
  ml=str(b2["selected_ml"]); p=p[p.model==ml].copy()
  if not p["_year"].between(2022,2024).all(): raise RuntimeError("Sealed-year breach")
  p["race_date"]=pd.to_datetime(p["race_date"],errors="coerce")
- sp,sp_path=load_sp(); d=p.merge(sp,on=["_race","_horse"],how="inner",validate="one_to_one")
- if len(d)!=len(p):
-  race_ids=set(sp["_race"].dropna().astype(str)); horse_ids=set(sp["_horse"].dropna().astype(str))
-  race_overlap=int(p["_race"].astype(str).isin(race_ids).sum()); horse_overlap=int(p["_horse"].astype(str).isin(horse_ids).sum())
-  raise RuntimeError(f"Final-SP exact identity coverage incomplete joined={len(d)}/{len(p)} race_id_rows_overlapping={race_overlap} horse_id_rows_overlapping={horse_overlap}; fuzzy matching prohibited")
+ sp,sp_path=load_sp()
+ d=p.merge(sp,on=["_race","_horse"],how="left",validate="one_to_one")
+ total_prob_races=int(d["_race"].nunique())
+ race_cov=d.groupby("_race").agg(rows=("_horse","size"),sp_rows=("_sp",lambda s:int(s.notna().sum())))
+ covered=set(race_cov.index[race_cov["rows"].eq(race_cov["sp_rows"])])
+ d=d[d["_race"].isin(covered)].copy()
+ if d.empty: raise RuntimeError("No complete-field exact-identity final-SP races; fuzzy matching prohibited")
+ market_covered_races=int(d["_race"].nunique())
+ market_coverage_pct=100.0*market_covered_races/total_prob_races if total_prob_races else 0.0
+ print(f"FINAL_SP_UNIVERSE=EXACT_IDENTITY_COMPLETE_FIELD_INTERSECTION RACES={market_covered_races:,}/{total_prob_races:,} COVERAGE_PCT={market_coverage_pct:.3f}")
  d["edge_ratio"]=d["p_model"]*d["_sp"]
  rows=[]
  for name,e,pm,sm in POLICIES:
@@ -123,7 +128,7 @@ def main():
     "development_confirmation":"fixed policy 2023 requires >=50 bets and positive POT; pooled 2022-23 requires >=150 bets, positive POT, and no single SP band >80% of positive gross profit",
     "development_odds_band_profit":band_profit if selected else {},"development_max_positive_profit_band_share":max_positive_share if selected else None,
     "validation":"same fixed policy 2024 requires >=100 bets, positive POT, and max drawdown <= max(25 units, 25% of bets)",
-    "sp_source":str(sp_path),"final_sp_role":"HISTORICAL_POLICY_SELECTION_AND_FORENSICS_ONLY",
+    "sp_source":str(sp_path),"final_sp_probability_races_total":total_prob_races,"final_sp_complete_field_races":market_covered_races,"final_sp_race_coverage_pct":market_coverage_pct,"final_sp_role":"HISTORICAL_POLICY_SELECTION_AND_FORENSICS_ONLY",
     "deployability_limitation":"Final SP is not a deployable offered price. Any surviving policy requires validation on actual pre-race offered odds.",
     "holdout_2025_2026_opened":False,"market_used_in_probability_model":False}
  AUD.write_text(json.dumps(a,indent=2),encoding="utf-8")
