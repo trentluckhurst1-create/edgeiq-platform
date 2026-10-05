@@ -76,3 +76,14 @@ Final-SP limitation:
 
 LAB245B_HOLDOUT_RESELECTION=NO
 LAB245B_HISTORICAL_LVS_AUTHORITY_AS_TARGET=NO
+
+### LAB245B rejection routing
+
+- If LAB245B1 fails predictive survival, reject the mature-runner performance architecture as tested; do not rescue it by threshold mining or opening 2025-26.
+- If LAB245B1 predictive metrics survive but complete-field coverage is inadequate, the next named challenger is LOW_HISTORY_FULL_FIELD_RECOVERY: explicitly model first starters and 1-2 prior-run horses using pre-race-only evidence, then repeat B1/B2 gates. Do not renormalise probabilities over partial fields.
+- If LAB245B2 fails, reject the probability mapping/architecture before any betting-policy search.
+- If LAB245B3 fails, do not open 2025-26; return to probability/reliability architecture rather than mine more final-SP thresholds.
+- Feature-family mining after a rejection requires a separately named experiment and development-only selection.
+
+LAB245B_PARTIAL_FIELD_SOFTMAX=PROHIBITED
+LAB245B_LOW_HISTORY_RECOVERY_IF_COVERAGE_BLOCKS=YES
