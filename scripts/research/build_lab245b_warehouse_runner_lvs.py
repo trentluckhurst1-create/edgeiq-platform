@@ -96,6 +96,11 @@ def main():
  r["race_lvs"]=-(r["official_race_time_seconds"]-r["standard_time_seconds"])/r["seconds_per_length"]
  race_lvs=r[["canonical_race_id","race_lvs","standard_time_seconds","seconds_per_length","benchmark_n"]]
  out=d.merge(race_lvs,on="canonical_race_id",how="inner",validate="many_to_one")
+ # Runner target is defined only for a valid finishing outcome; benchmark race history remains race-level.
+ valid_runner=out["finish_position"].gt(0) & out["finish_margin"].notna() & out["finish_margin"].ge(0)
+ invalid_runner_rows=int((~valid_runner).sum())
+ out=out[valid_runner].copy()
+ print(f"RUNNER_TARGET_VALIDITY=FINISH_POSITION_GT0_AND_FINITE_NONNEGATIVE_MARGIN INVALID_EXCLUDED={invalid_runner_rows:,}")
  # Algebra recovered from original producer: runner LVS = race LVS - finish margin.
  # LAB245B intentionally uses the later governed surface/condition seconds-per-length table, not the legacy flat 0.17.
  out["runner_lvs"]=out["race_lvs"]-out["finish_margin"]
