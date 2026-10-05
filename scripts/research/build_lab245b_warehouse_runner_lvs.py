@@ -1,11 +1,13 @@
 from pathlib import Path
+import os
 from bisect import insort
 import pandas as pd
 import numpy as np
 
 ROOT=Path(__file__).resolve().parents[2]
-WAREHOUSE=ROOT/"docs/performance-intelligence/warehouse/edgeiq_performance_fact_warehouse_v1.csv"
-LCP=ROOT/"public/data/edgeiq_length_conversion_parameter_fact_v2.csv"
+DATA_ROOT=Path(os.environ.get("EDGEIQ_DATA_ROOT",str(ROOT))).resolve()
+WAREHOUSE=DATA_ROOT/"docs/performance-intelligence/warehouse/edgeiq_performance_fact_warehouse_v1.csv"
+LCP=DATA_ROOT/"public/data/edgeiq_length_conversion_parameter_fact_v2.csv"
 OUT=ROOT/"outputs/research/profitability_program/lab245b/LAB245B_WAREHOUSE_RUNNER_LVS.csv"
 MIN_SAMPLE=20
 
