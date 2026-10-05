@@ -12,7 +12,7 @@ from sklearn.preprocessing import StandardScaler
 ROOT=Path(__file__).resolve().parents[2]
 INP=ROOT/"outputs/research/profitability_program/lab245b/LAB245B_COMPACT_PERFORMANCE_BRIDGE.csv"
 OUTDIR=INP.parent
-FEATURES=["hist_runs","current_distance","epi_last1","epi_mean3","epi_mean5","epi_median5","epi_peak","epi_worst5","epi_std5","lvs_last1","lvs_mean3","lvs_mean5","lvs_median5","lvs_best","lvs_worst5","lvs_std5","margin_mean5","margin_worst5","margin_std5","finishpos_mean5","days_since_last","dist200_runs","dist200_lvs_mean","dist200_lvs_best","dist200_epi_mean","dist200_epi_best"]
+FEATURES=["hist_runs","current_distance","lvs_last1","lvs_mean3","lvs_mean5","lvs_median5","lvs_std5","lvs_peak","lvs_worst5","margin_mean5","margin_worst5","margin_std5","finishpos_mean5","days_since_last","dist200_runs","dist200_lvs_mean","dist200_lvs_best"]
 BASELINES={"LVS_LAST1":"lvs_last1","LVS_MEAN3":"lvs_mean3","LVS_MEAN5":"lvs_mean5","LVS_MEDIAN5":"lvs_median5","DIST200_LVS":"dist200_lvs_mean"}
 
 def score(d,p):
@@ -32,7 +32,7 @@ def main():
     d=d[d["target_lvs"].notna()].copy()
     d=d[pd.to_numeric(d["hist_runs"],errors="coerce").fillna(0)>=3].copy()
     feats=[x for x in FEATURES if x in d.columns]
-    if len(feats)<20: raise RuntimeError("Insufficient governed features")
+    if len(feats)!=len(FEATURES): raise RuntimeError(f"Missing governed features: {sorted(set(FEATURES)-set(feats))}")
     for x in feats+["target_lvs"]: d[x]=pd.to_numeric(d[x],errors="coerce")
     rows=[]; pp=[]
     for year in [2022,2023,2024]:
