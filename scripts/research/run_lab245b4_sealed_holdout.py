@@ -71,6 +71,9 @@ def main():
  eligible_counts=ho.groupby("_race")["_horse"].transform("nunique")
  ho=ho[eligible_counts.eq(pd.to_numeric(ho["target_field_size"],errors="coerce"))].copy()
  if ho.empty: raise RuntimeError("No complete-field holdout races after experience gate")
+ winner_counts=ho.assign(_winner=pd.to_numeric(ho["target_finish_position"],errors="coerce").eq(1)).groupby("_race")["_winner"].sum()
+ bad_winners=winner_counts[winner_counts.ne(1)]
+ if len(bad_winners): raise RuntimeError(f"Holdout winner-integrity failure races={len(bad_winners)}")
  for c in FEATURES+["target_lvs"]: tr[c]=pd.to_numeric(tr[c],errors="coerce"); ho[c]=pd.to_numeric(ho[c],errors="coerce")
  model=str(a1["dev_selected_ml"]["model"])
  if model=="RIDGE": m=make_pipeline(SimpleImputer(strategy="median"),StandardScaler(),Ridge(alpha=10.0))
