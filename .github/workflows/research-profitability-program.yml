@@ -77,11 +77,11 @@ jobs:
         if: env.LAB == '245b1'
         shell: bash
         run: |
-          if [ -f docs/performance-intelligence/warehouse/edgeiq_performance_fact_warehouse_v1.csv ] && [ -f docs/performance-intelligence/lengths-v-standard/edgeiq_runner_lengths_v_standard_fact_v1.csv ]; then
+          if [ -f docs/performance-intelligence/warehouse/edgeiq_performance_fact_warehouse_v1.csv ]; then
             echo "LAB245B_DATA_AVAILABLE=true" >> "$GITHUB_ENV"
           else
             echo "LAB245B_DATA_AVAILABLE=false" >> "$GITHUB_ENV"
-            echo "Full execution deferred: ignored local data authority is not present on this GitHub runner."
+            echo "Full execution deferred: frozen performance warehouse is not present on this GitHub runner."
           fi
       - name: Build and run LAB245B1 next-performance forecast
         if: env.LAB == '245b1' && env.LAB245B_DATA_AVAILABLE == 'true'
