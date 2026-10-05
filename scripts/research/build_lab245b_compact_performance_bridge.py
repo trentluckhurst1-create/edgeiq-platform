@@ -26,21 +26,45 @@ def load_source():
   digest=h.hexdigest()
   if digest!=AUTHORITY_SHA256: raise RuntimeError(f"Runner-LVS authority SHA drift: {digest}")
   a=pd.read_csv(AUTHORITY,usecols=["canonical_performance_id","canonical_race_id","canonical_horse_id","finish_position","finish_margin_lengths","runner_lengths_v_standard"],low_memory=False)
-  # Authority lacks date/distance; enrich identity-exact from warehouse only when available.
+  # Authority lacks date/distance. Prefer compact one-row-per-race recovered timing identity map.
+  timing=DATA_ROOT/"public/data/edgeiq_recovered_timing_warehouse_v1.csv"
   warehouse=DATA_ROOT/"docs/performance-intelligence/warehouse/edgeiq_performance_fact_warehouse_v1.csv"
-  if not warehouse.exists(): raise FileNotFoundError("Verified runner-LVS authority found, but warehouse identity enrichment (race_date/distance) is unavailable.")
-  # Date and distance are race-level attributes. Build a compact exact race map in chunks instead of loading the 416MB warehouse.
-  race_parts=[]
-  for ch in pd.read_csv(warehouse,usecols=["canonical_race_id","race_date","distance_metres"],chunksize=200000,low_memory=False):
-   ch["canonical_race_id"]=ch["canonical_race_id"].astype("string").str.strip()
-   race_parts.append(ch.drop_duplicates(["canonical_race_id"]))
-  w=pd.concat(race_parts,ignore_index=True).drop_duplicates(["canonical_race_id"])
-  # Governance: one canonical race cannot carry conflicting date/distance values.
-  chk=pd.concat(race_parts,ignore_index=True).groupby("canonical_race_id",dropna=False).agg(race_date_n=("race_date","nunique"),distance_n=("distance_metres","nunique"))
-  bad=chk[(chk.race_date_n>1)|(chk.distance_n>1)]
-  if len(bad): raise RuntimeError(f"Conflicting race-level identity attributes: {len(bad)} races")
-  d=a.merge(w,on="canonical_race_id",how="left",validate="many_to_one")
-  if d["race_date"].isna().any(): raise RuntimeError(f"Authority rows missing race-date enrichment: {int(d.race_date.isna().sum())}")
+  if timing.exists():
+   w=pd.read_csv(timing,usecols=["canonical_race_id","race_date","distance_metres"],low_memory=False)
+   w["canonical_race_id"]=w["canonical_race_id"].astype("string").str.strip()
+   # Governance: race identity must be unique and internally consistent.
+   chk=w.groupby("canonical_race_id",dropna=False).agg(race_date_n=("race_date","nunique"),distance_n=("distance_metres","nunique"))
+   bad=chk[(chk.race_date_n>1)|(chk.distance_n>1)]
+   if len(bad): raise RuntimeError(f"Conflicting recovered-timing race attributes: {len(bad)} races")
+   w=w.drop_duplicates(["canonical_race_id"])
+   d=a.merge(w,on="canonical_race_id",how="left",validate="many_to_one")
+   cov=(d["race_date"].notna() & d["distance_metres"].notna()).mean()
+   print(f"IDENTITY_ENRICHMENT=RECOVERED_TIMING_RACE_MAP RACES={len(w):,} COVERAGE={cov:.6f}")
+   if cov<0.999:
+    if not warehouse.exists(): raise RuntimeError(f"Recovered timing enrichment coverage too low: {cov:.6f}")
+    # Fill only misses from the large warehouse; do not replace validated compact-map rows.
+    need=set(d.loc[d["race_date"].isna()|d["distance_metres"].isna(),"canonical_race_id"].dropna().astype(str))
+    fills=[]
+    for ch in pd.read_csv(warehouse,usecols=["canonical_race_id","race_date","distance_metres"],chunksize=200000,low_memory=False):
+     ch["canonical_race_id"]=ch["canonical_race_id"].astype("string").str.strip()
+     x=ch[ch["canonical_race_id"].isin(need)].drop_duplicates(["canonical_race_id"])
+     if len(x): fills.append(x)
+    if fills:
+     fill=pd.concat(fills,ignore_index=True).drop_duplicates(["canonical_race_id"]).set_index("canonical_race_id")
+     miss=d["race_date"].isna()|d["distance_metres"].isna()
+     d.loc[miss,"race_date"]=d.loc[miss,"canonical_race_id"].map(fill["race_date"])
+     d.loc[miss,"distance_metres"]=d.loc[miss,"canonical_race_id"].map(fill["distance_metres"])
+     print(f"IDENTITY_ENRICHMENT_FALLBACK=WAREHOUSE_MISSES RACES={len(fill):,}")
+  else:
+   if not warehouse.exists(): raise FileNotFoundError("Authority enrichment requires recovered timing map or warehouse.")
+   race_parts=[]
+   for ch in pd.read_csv(warehouse,usecols=["canonical_race_id","race_date","distance_metres"],chunksize=200000,low_memory=False):
+    ch["canonical_race_id"]=ch["canonical_race_id"].astype("string").str.strip()
+    race_parts.append(ch.drop_duplicates(["canonical_race_id"]))
+   w=pd.concat(race_parts,ignore_index=True).drop_duplicates(["canonical_race_id"])
+   d=a.merge(w,on="canonical_race_id",how="left",validate="many_to_one")
+   print("IDENTITY_ENRICHMENT=WAREHOUSE_RACE_MAP")
+  if d["race_date"].isna().any() or d["distance_metres"].isna().any(): raise RuntimeError(f"Authority rows missing race enrichment: date={int(d.race_date.isna().sum())} distance={int(d.distance_metres.isna().sum())}")
   d=d.rename(columns={"finish_margin_lengths":"finish_margin","runner_lengths_v_standard":"runner_lvs"})
   print(f"SOURCE=VERIFIED_RUNNER_LVS_AUTHORITY SIZE={size} SHA256={digest}")
   return d[NEED]
