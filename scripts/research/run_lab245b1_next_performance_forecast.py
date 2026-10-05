@@ -36,7 +36,7 @@ def main():
     target_manifest=json.loads(TARGET_MANIFEST.read_text(encoding="utf-8"))
     if target_manifest.get("contract_version")!="LAB245B_STRICT_PIT_LVS_V8_V1_LENGTH_CONVERSION_TRACK_DISTANCE_CONDITION_MIN20": raise RuntimeError("LAB245B1 target manifest contract mismatch")
     d=pd.read_csv(INP,low_memory=False)
-    required={"_race","_horse","_year","race_date","target_lvs","target_finish_position","target_field_size","represented_field_size","represented_field_size","hist_runs",*FEATURES}
+    required={"_race","_horse","_year","race_date","target_lvs","target_finish_position","target_field_size","represented_field_size","hist_runs",*FEATURES}
     missing=sorted(required-set(d.columns))
     if missing: raise RuntimeError(f"LAB245B1 input contract missing columns: {missing}")
     if not d["_year"].between(2021,2024).all(): raise RuntimeError("Sealed-year breach.")
@@ -68,15 +68,20 @@ def main():
         for name,col in BASELINES.items():
             p=te[col].to_numpy(float)
             rows.append({"year":year,"model":name,**score(te,p,full_field_sizes)})
-            q=te[["_race","_horse","_year","race_date","target_lvs","target_finish_position","target_field_size"]].copy(); q["model"]=name; q["pred_lvs"]=p; pp.append(q)
+            q=te[["_race","_horse","_year","race_date","target_lvs","target_finish_position","target_field_size","represented_field_size"]].copy(); q["model"]=name; q["pred_lvs"]=p; pp.append(q)
         models={"RIDGE":make_pipeline(SimpleImputer(strategy="median"),StandardScaler(),Ridge(alpha=10.0)),"HGB":HistGradientBoostingRegressor(max_iter=250,learning_rate=.04,max_leaf_nodes=15,l2_regularization=5,random_state=245)}
         for name,m in models.items():
             m.fit(tr[feats],tr["target_lvs"]); p=m.predict(te[feats])
             rows.append({"year":year,"model":name,**score(te,p,full_field_sizes)})
-            q=te[["_race","_horse","_year","race_date","target_lvs","target_finish_position","target_field_size"]].copy(); q["model"]=name; q["pred_lvs"]=p; pp.append(q)
+            q=te[["_race","_horse","_year","race_date","target_lvs","target_finish_position","target_field_size","represented_field_size"]].copy(); q["model"]=name; q["pred_lvs"]=p; pp.append(q)
     res=pd.DataFrame(rows); pred=pd.concat(pp,ignore_index=True)
     res.to_csv(OUTDIR/"LAB245B1_NEXT_PERFORMANCE_RESULTS.csv",index=False)
-    pred_path=OUTDIR/"LAB245B1_OOF_PREDICTIONS.csv"\n    pred.to_csv(pred_path,index=False)\n    ph=hashlib.sha256()\n    with pred_path.open("rb") as fh:\n        for b in iter(lambda:fh.read(8*1024*1024),b""): ph.update(b)\n    pred_sha=ph.hexdigest()
+    pred_path=OUTDIR/"LAB245B1_OOF_PREDICTIONS.csv"
+    pred.to_csv(pred_path,index=False)
+    ph=hashlib.sha256()
+    with pred_path.open("rb") as fh:
+        for b in iter(lambda:fh.read(8*1024*1024),b""): ph.update(b)
+    pred_sha=ph.hexdigest()
     # Architecture/model choice is development-only (2022-23). 2024 is a single fixed confirmation.
     dev=pred[pred["_year"].isin([2022,2023])]
     dev_rows=[]
