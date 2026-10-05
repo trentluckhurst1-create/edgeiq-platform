@@ -63,6 +63,8 @@ jobs:
       - name: Compile LAB245B governed chain
         if: env.LAB == '245b1' || env.LAB == '245b-l27'
         run: |
+          python -m py_compile scripts/research/run_lab245b_contract_smoke.py
+          python scripts/research/run_lab245b_contract_smoke.py
           python -m py_compile scripts/research/run_lab245b_preflight.py
           python -m py_compile scripts/research/run_lab245b_preholdout_chain.py
           python -m py_compile scripts/research/build_lab245b_warehouse_runner_lvs.py
