@@ -55,8 +55,7 @@ def stats(a,n):
 
 def main():
  OUTDIR.mkdir(parents=True,exist_ok=True)
- if not SOURCE.exists(): raise FileNotFoundError(SOURCE)
- d=pd.read_csv(SOURCE,usecols=NEED,low_memory=False)
+ d=load_source()
  for c in ["canonical_race_id","canonical_horse_id"]: d[c]=d[c].astype("string").str.strip()
  d["race_date"]=pd.to_datetime(d["race_date"],errors="coerce")
  for c in ["distance_metres","finish_position","finish_margin","runner_lvs"]: d[c]=pd.to_numeric(d[c],errors="coerce")
