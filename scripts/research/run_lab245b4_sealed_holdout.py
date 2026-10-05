@@ -31,6 +31,7 @@ def build_holdout():
  d["race_date"]=pd.to_datetime(d.race_date,errors="coerce")
  for c in ["distance_metres","finish_position","finish_margin","runner_lvs"]: d[c]=pd.to_numeric(d[c],errors="coerce")
  d=d.dropna(subset=["canonical_race_id","canonical_horse_id","race_date"]).sort_values(["canonical_horse_id","race_date","canonical_race_id"],kind="stable")
+ field_sizes=d[d["runner_lvs"].notna()].groupby("canonical_race_id")["canonical_horse_id"].nunique().to_dict()
  rows=[]
  for horse,g in d.groupby("canonical_horse_id",sort=False):
   hist=[]
@@ -39,7 +40,7 @@ def build_holdout():
    l3=stats(lvs,3); l5=stats(lvs,5); m5=stats(mar,5); p5=stats(pos,5)
    for _,r in day.iterrows():
     if dt.year in [2025,2026]:
-     rec={"_race":r.canonical_race_id,"_horse":horse,"_year":int(dt.year),"race_date":dt,"target_lvs":r.runner_lvs,"target_finish_position":r.finish_position,"current_distance":r.distance_metres,"hist_runs":len(hist),
+     rec={"_race":r.canonical_race_id,"_horse":horse,"_year":int(dt.year),"race_date":dt,"target_lvs":r.runner_lvs,"target_finish_position":r.finish_position,"target_field_size":field_sizes.get(r.canonical_race_id,np.nan),"current_distance":r.distance_metres,"hist_runs":len(hist),
      "lvs_last1":lvs[-1] if lvs else np.nan,"lvs_mean3":l3[0],"lvs_mean5":l5[0],"lvs_median5":l5[1],"lvs_std5":l5[2],"lvs_peak":max(lvs) if lvs else np.nan,"lvs_worst5":min(lvs[-5:]) if lvs else np.nan,
      "margin_mean5":m5[0],"margin_std5":m5[2],"margin_worst5":max(mar[-5:]) if mar else np.nan,"finishpos_mean5":p5[0],"days_since_last":(dt-max(dates)).days if dates else np.nan}
      near=[x for x in hist if np.isfinite(x["distance"]) and pd.notna(r.distance_metres) and abs(x["distance"]-r.distance_metres)<=200]; nl=[x["lvs"] for x in near if np.isfinite(x["lvs"])]
