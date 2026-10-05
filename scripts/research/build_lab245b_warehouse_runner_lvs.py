@@ -115,12 +115,15 @@ def main():
  # Runner target is defined only for a valid finishing outcome; benchmark race history remains race-level.
  valid_runner=out["finish_position"].gt(0) & out["finish_margin"].notna() & out["finish_margin"].ge(0)
  invalid_runner_rows=int((~valid_runner).sum())
- out=out[valid_runner].copy()
- print(f"RUNNER_TARGET_VALIDITY=FINISH_POSITION_GT0_AND_FINITE_NONNEGATIVE_MARGIN INVALID_EXCLUDED={invalid_runner_rows:,}")
+ # Preserve every runner in an eligible benchmark race so downstream probability completeness
+ # is measured against the actual represented field. Invalid finishing outcomes receive no LVS target.
+ out["runner_lvs"]=np.nan
+ out["runner_time_equivalent_seconds"]=np.nan
+ out.loc[valid_runner,"runner_lvs"]=out.loc[valid_runner,"race_lvs"]-out.loc[valid_runner,"finish_margin"]
+ out.loc[valid_runner,"runner_time_equivalent_seconds"]=out.loc[valid_runner,"official_race_time_seconds"]+out.loc[valid_runner,"finish_margin"]*out.loc[valid_runner,"seconds_per_length"]
+ print(f"RUNNER_TARGET_VALIDITY=FINISH_POSITION_GT0_AND_FINITE_NONNEGATIVE_MARGIN INVALID_TARGET_NULL={invalid_runner_rows:,} ALL_RUNNERS_PRESERVED=YES")
  # Algebra recovered from original producer: runner LVS = race LVS - finish margin.
  # LAB245B intentionally uses the later governed surface/condition seconds-per-length table, not the legacy flat 0.17.
- out["runner_lvs"]=out["race_lvs"]-out["finish_margin"]
- out["runner_time_equivalent_seconds"]=out["official_race_time_seconds"]+out["finish_margin"]*out["seconds_per_length"]
  keep=["canonical_race_id","canonical_horse_id","race_date","distance_metres","finish_position","finish_margin","runner_time_equivalent_seconds","runner_lvs","race_lvs","standard_time_seconds","seconds_per_length","benchmark_n"]
  out[keep].to_csv(OUT,index=False)
  manifest={"contract_version":CONTRACT_VERSION,"warehouse_sha256":digest,"warehouse_bytes":WAREHOUSE.stat().st_size,"pit_policy":"STRICT_DATE_LT_TARGET_DATE","benchmark_grouping":"canonical_track_id+distance_metres+condition","minimum_prior_races":MIN_SAMPLE,"runner_formula":"race_lvs-finish_margin","valid_runner_rule":"finish_position>0 and finite nonnegative finish_margin","rows":int(len(out)),"races":int(out["canonical_race_id"].nunique())}
