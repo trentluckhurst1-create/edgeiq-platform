@@ -1,4 +1,5 @@
 from pathlib import Path
+import os
 import json, math
 import numpy as np
 import pandas as pd
@@ -10,6 +11,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 
 ROOT=Path(__file__).resolve().parents[2]
+DATA_ROOT=Path(os.environ.get("EDGEIQ_DATA_ROOT",str(ROOT))).resolve()
 DIR=ROOT/"outputs/research/profitability_program/lab245b"
 PIT=DIR/"LAB245B_WAREHOUSE_RUNNER_LVS.csv"
 TRAIN=DIR/"LAB245B_COMPACT_PERFORMANCE_BRIDGE.csv"
@@ -20,7 +22,7 @@ POLICIES={
 "EDGE_105":(1.05,0,999),"EDGE_110":(1.10,0,999),"EDGE_120":(1.20,0,999),"EDGE_130":(1.30,0,999),"EDGE_150":(1.50,0,999),"EDGE_200":(2.0,0,999),
 "EDGE110_P05_SP50":(1.10,.05,50),"EDGE120_P05_SP50":(1.20,.05,50),"EDGE130_P05_SP50":(1.30,.05,50),
 "EDGE120_P10_SP20":(1.20,.10,20),"EDGE130_P10_SP20":(1.30,.10,20),"EDGE150_P10_SP20":(1.50,.10,20)}
-SP_CANDIDATES=[ROOT/"outputs/research/profitability_program/compact/EDGEIQ_PROFITABILITY_COMPACT_RUNNERS.csv",ROOT/"outputs/research/model_price_diagnostics/lab166c/LAB166E_CORRECTED_PIT_PREDICTIONS.csv"]
+SP_CANDIDATES=[DATA_ROOT/"outputs/research/profitability_program/compact/EDGEIQ_PROFITABILITY_COMPACT_RUNNERS.csv",DATA_ROOT/"outputs/research/model_price_diagnostics/lab166c/LAB166E_CORRECTED_PIT_PREDICTIONS.csv"]
 
 def stats(a,n):
  x=np.asarray(a[-n:],float); x=x[np.isfinite(x)]
