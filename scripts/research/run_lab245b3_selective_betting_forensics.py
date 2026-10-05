@@ -76,11 +76,13 @@ def main():
  r=pd.DataFrame(rows); r.to_csv(OUT,index=False)
  y22=r[r.period=="YEAR_2022"].copy(); y23=r[r.period=="YEAR_2023"].set_index("policy"); pooled=r[r.period=="DEV_2022_2023"].set_index("policy")
  # Temporal policy ladder: select once on 2022, then freeze for 2023 and 2024.
- eligible22=y22[(y22.bets>=50)&(y22.pot_pct>0)]
+ eligible22=y22[(y22.bets>=50)&(y22.pot_pct>0)].copy()
  if eligible22.empty:
   status="REJECT_NO_2022_SELECTION_POLICY"; selected=None
  else:
-  selected=str(eligible22.sort_values(["pot_pct","bets"],ascending=[False,False]).iloc[0].policy)
+  # Conservative 2022-only score; no 2023/2024 information enters policy selection.
+  eligible22["selection_score"]=eligible22["pot_pct"]*(eligible22["bets"]/(eligible22["bets"]+200.0))
+  selected=str(eligible22.sort_values(["selection_score","bets"],ascending=[False,False]).iloc[0].policy)
   c23=y23.loc[selected]; cp=pooled.loc[selected]
   if not (c23.bets>=50 and c23.pot_pct>0 and cp.bets>=150 and cp.pot_pct>0):
    status="REJECT_2023_POLICY_CONFIRMATION"
@@ -88,7 +90,7 @@ def main():
    v=r[(r.period=="VALIDATION_2024")&(r.policy==selected)].iloc[0]
    status="SURVIVE_TO_FORENSIC_HOLDOUT" if v.bets>=100 and v.pot_pct>0 else "REJECT_2024_POLICY_CONFIRMATION"
  a={"status":status,"selected_policy":selected,"policy_family_size":len(POLICIES),
-    "selection":"2022 only; >=50 bets and positive POT; choose highest POT then freeze policy",
+    "selection":"2022 only; >=50 bets and positive POT; choose highest POT shrunk toward zero by n/(n+200), then freeze policy",
     "development_confirmation":"fixed policy 2023 requires >=50 bets and positive POT; pooled 2022-23 requires >=150 bets and positive POT",
     "validation":"same fixed policy 2024 requires >=100 bets and positive POT",
     "sp_source":str(sp_path),"final_sp_role":"HISTORICAL_POLICY_SELECTION_AND_FORENSICS_ONLY",
