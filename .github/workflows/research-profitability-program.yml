@@ -68,6 +68,7 @@ jobs:
           python -m py_compile scripts/research/run_lab245b2_probability_challenger.py
           python -m py_compile scripts/research/run_lab245b3_selective_betting_forensics.py
           python -m py_compile scripts/research/run_lab245b4_sealed_holdout.py
+          python -m py_compile scripts/research/run_lab245b_l27_next_performance.py
       - name: Check LAB245B data authority
         if: env.LAB == '245b1'
         shell: bash
