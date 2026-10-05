@@ -1,4 +1,5 @@
 from pathlib import Path
+from bisect import insort
 import pandas as pd
 import numpy as np
 
@@ -17,7 +18,14 @@ def cond(x):
  if any(z in s for z in ["SYNTH","POLY","TAPETA"]):return "STANDARD_SYNTHETIC"
  return s
 
+def _median_sorted(vals):
+ n=len(vals)
+ if not n:return np.nan
+ m=n//2
+ return float(vals[m]) if n%2 else float((vals[m-1]+vals[m])/2.0)
+
 def main():
+ OUT.parent.mkdir(parents=True,exist_ok=True)
  if not WAREHOUSE.exists():raise FileNotFoundError(WAREHOUSE)
  use=["canonical_race_id","canonical_horse_id","canonical_track_id","race_date","track","track_layout","distance_metres","track_condition","track_condition_group","finish_position","finish_margin","official_race_time_seconds"]
  d=pd.read_csv(WAREHOUSE,usecols=use,low_memory=False)
@@ -44,14 +52,14 @@ def main():
    k=(row["track_key"],row["distance_metres"],row["condition"])
    vals=history.get(k,[])
    counts.append(len(vals))
-   std.append(float(np.median(vals)) if len(vals)>=MIN_SAMPLE else np.nan)
+   std.append(_median_sorted(vals) if len(vals)>=MIN_SAMPLE else np.nan)
   day["benchmark_n"]=counts
   day["standard_time_seconds"]=std
   scored.append(day)
   # Add the whole date only after every race on the date has been scored.
   for _,row in day.iterrows():
    k=(row["track_key"],row["distance_metres"],row["condition"])
-   history.setdefault(k,[]).append(float(row["official_race_time_seconds"]))
+   insort(history.setdefault(k,[]),float(row["official_race_time_seconds"]))
  r=pd.concat(scored,ignore_index=True)
  r=r[r["standard_time_seconds"].notna()].copy()
 
@@ -61,7 +69,7 @@ def main():
  r["race_lvs"]=-(r["official_race_time_seconds"]-r["standard_time_seconds"])/r["seconds_per_length"]
  race_lvs=r[["canonical_race_id","race_lvs","standard_time_seconds","seconds_per_length","benchmark_n"]]
  out=d.merge(race_lvs,on="canonical_race_id",how="inner",validate="many_to_one")
- # Declared LAB245B reconstruction: race LVS and finish margin are both in lengths.
+ # Formula parity recovered from original producer: runner LVS = race LVS - finish margin.
  out["runner_lvs"]=out["race_lvs"]-out["finish_margin"]
  out["runner_time_equivalent_seconds"]=out["official_race_time_seconds"]+out["finish_margin"]*out["seconds_per_length"]
  keep=["canonical_race_id","canonical_horse_id","race_date","distance_metres","finish_position","finish_margin","runner_time_equivalent_seconds","runner_lvs","race_lvs","standard_time_seconds","seconds_per_length","benchmark_n"]
