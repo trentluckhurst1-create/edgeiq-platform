@@ -64,8 +64,12 @@ def main():
  a1=json.loads(B1.read_text()); a2=json.loads(B2.read_text()); a3=json.loads(B3.read_text())
  if a3.get("status")!="SURVIVE_TO_FORENSIC_HOLDOUT":
   x={"status":"HOLDOUT_REMAINS_SEALED","b3_status":a3.get("status")}; OUT.write_text(json.dumps(x,indent=2)); print(json.dumps(x,indent=2)); return
- tr=pd.read_csv(TRAIN,low_memory=False); tr=tr[(tr.target_lvs.notna())&(tr.hist_runs>=3)&np.isfinite(pd.to_numeric(tr.lvs_mean3,errors="coerce"))].copy()
- ho=build_holdout(); ho=ho[(ho.target_lvs.notna())&(ho.hist_runs>=3)&np.isfinite(pd.to_numeric(ho.lvs_mean3,errors="coerce"))].copy()
+ tr=pd.read_csv(TRAIN,low_memory=False)
+ if not pd.to_numeric(tr["_year"],errors="coerce").between(2021,2024).all(): raise RuntimeError("Final refit contamination: training bridge contains sealed years")
+ tr=tr[(tr.target_lvs.notna())&(tr.hist_runs>=3)&np.isfinite(pd.to_numeric(tr.lvs_mean3,errors="coerce"))].copy()
+ ho=build_holdout()
+ if len(ho) and not pd.to_numeric(ho["_year"],errors="coerce").isin([2025,2026]).all(): raise RuntimeError("Holdout construction contains non-holdout years")
+ ho=ho[(ho.target_lvs.notna())&(ho.hist_runs>=3)&np.isfinite(pd.to_numeric(ho.lvs_mean3,errors="coerce"))].copy()
  for c in FEATURES+["target_lvs"]: tr[c]=pd.to_numeric(tr[c],errors="coerce"); ho[c]=pd.to_numeric(ho[c],errors="coerce")
  model=str(a1["dev_selected_ml"]["model"])
  if model=="RIDGE": m=make_pipeline(SimpleImputer(strategy="median"),StandardScaler(),Ridge(alpha=10.0))
