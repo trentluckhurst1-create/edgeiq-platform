@@ -19,12 +19,12 @@ def cond(x):
 
 def main():
  if not WAREHOUSE.exists():raise FileNotFoundError(WAREHOUSE)
- use=["canonical_race_id","canonical_horse_id","race_date","track","track_layout","distance_metres","track_condition","track_condition_group","finish_position","finish_margin","official_race_time_seconds"]
+ use=["canonical_race_id","canonical_horse_id","canonical_track_id","race_date","track","track_layout","distance_metres","track_condition","track_condition_group","finish_position","finish_margin","official_race_time_seconds"]
  d=pd.read_csv(WAREHOUSE,usecols=use,low_memory=False)
  d["race_date"]=pd.to_datetime(d["race_date"],errors="coerce")
  for x in ["distance_metres","finish_position","finish_margin","official_race_time_seconds"]:d[x]=pd.to_numeric(d[x],errors="coerce")
  d["condition"]=d["track_condition_group"].fillna(d["track_condition"]).map(cond)
- d["track_key"]=d["track"].fillna("").astype(str).str.strip().str.upper()
+ d["track_key"]=d["canonical_track_id"].fillna("").astype(str).str.strip()
  txt=(d["track"].fillna("")+" "+d["track_layout"].fillna("")+" "+d["track_condition"].fillna("")+" "+d["track_condition_group"].fillna("")).str.upper()
  d["surface"]=np.where(txt.str.contains("SYNTHETIC|POLY|TAPETA|FIBRE|FIBER",regex=True),"AUSTRALIAN_SYNTHETIC","TURF")
  d["_valid_time"]=d["official_race_time_seconds"].gt(0)
@@ -41,7 +41,7 @@ def main():
   day=day.copy()
   std=[]; counts=[]
   for _,row in day.iterrows():
-   k=(row["track_key"],row["distance_metres"],row["surface"],row["condition"])
+   k=(row["track_key"],row["distance_metres"],row["condition"])
    vals=history.get(k,[])
    counts.append(len(vals))
    std.append(float(np.median(vals)) if len(vals)>=MIN_SAMPLE else np.nan)
@@ -50,7 +50,7 @@ def main():
   scored.append(day)
   # Add the whole date only after every race on the date has been scored.
   for _,row in day.iterrows():
-   k=(row["track_key"],row["distance_metres"],row["surface"],row["condition"])
+   k=(row["track_key"],row["distance_metres"],row["condition"])
    history.setdefault(k,[]).append(float(row["official_race_time_seconds"]))
  r=pd.concat(scored,ignore_index=True)
  r=r[r["standard_time_seconds"].notna()].copy()
@@ -71,7 +71,7 @@ def main():
  print(f"LVS_RACES={lvs_races:,}")
  print(f"RUNNER_ROWS={len(out):,}")
  print("PIT_POLICY=STRICT_DATE_LT_TARGET_DATE")
- print("RUNNER_LVS_POLICY=ORIGINAL_PRODUCER_FORMULA_RACE_LVS_MINUS_FINISH_MARGIN")\n print("RUNNER_TIME_EQUIVALENT_POLICY=ORIGINAL_PRODUCER_RACE_TIME_PLUS_MARGIN_X_SECONDS_PER_LENGTH")\n print("BENCHMARK_POLICY=LAB245B_STRICT_DATE_PIT_NOT_OLD_ALL_HISTORY_PRODUCTION_STANDARD")
+ print("RUNNER_LVS_POLICY=ORIGINAL_PRODUCER_FORMULA_RACE_LVS_MINUS_FINISH_MARGIN")\n print("RUNNER_TIME_EQUIVALENT_POLICY=ORIGINAL_PRODUCER_RACE_TIME_PLUS_MARGIN_X_SECONDS_PER_LENGTH")\n print("BENCHMARK_GROUPING=RECOVERED_PRODUCTION_CONTRACT_CANONICAL_TRACK_ID_DISTANCE_CONDITION_MIN20_MEDIAN")\n print("BENCHMARK_POLICY=LAB245B_STRICT_DATE_PIT_NOT_OLD_ALL_HISTORY_PRODUCTION_STANDARD")
  print("KNOWN_RECOVERY_TIMED_RACES=70,308 DELTA_RACES=54,978 LVS_RACES=52,414")
  if abs(timed_races-70308)>10:raise RuntimeError("Timed-race recovery count materially disagrees with certified audit.")
  if lvs_races<=0 or lvs_races>=timed_races:raise RuntimeError("Invalid PIT LVS recovery funnel.")
