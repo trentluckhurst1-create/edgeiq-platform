@@ -81,9 +81,10 @@ def main():
  scored=[]
  for race_date,day in r.groupby("race_date",sort=True):
   day=day.copy()
-  std=[]; counts=[]
-  for _,row in day.iterrows():
-   k=(row["track_key"],row["distance_metres"],row["condition"],row["jurisdiction_key"])
+  keys=list(zip(day["track_key"],day["distance_metres"],day["condition"],day["jurisdiction_key"]))
+  times=day["official_race_time_seconds"].to_numpy(float)
+  counts=[]; std=[]
+  for k in keys:
    vals=history.get(k,[])
    counts.append(len(vals))
    std.append(_median_sorted(vals) if len(vals)>=MIN_SAMPLE else np.nan)
@@ -91,9 +92,8 @@ def main():
   day["standard_time_seconds"]=std
   scored.append(day)
   # Add the whole date only after every race on the date has been scored.
-  for _,row in day.iterrows():
-   k=(row["track_key"],row["distance_metres"],row["condition"],row["jurisdiction_key"])
-   insort(history.setdefault(k,[]),float(row["official_race_time_seconds"]))
+  for k,t in zip(keys,times):
+   insort(history.setdefault(k,[]),float(t))
  r=pd.concat(scored,ignore_index=True)
  r=r[r["standard_time_seconds"].notna()].copy()
 
