@@ -50,7 +50,10 @@ def main():
   audit={"status":"SKIPPED_B1_REJECTED","b1_status":b1.get("status"),"holdout_2025_2026_opened":False,"market_used":False}
   AUD.write_text(json.dumps(audit,indent=2),encoding="utf-8"); print(json.dumps(audit,indent=2)); return
  d=pd.read_csv(PRED,low_memory=False)
- if not d["_year"].between(2022,2024).all(): raise RuntimeError("Sealed-year breach")
+ d["_year"]=pd.to_numeric(d["_year"],errors="coerce")
+ d["target_finish_position"]=pd.to_numeric(d["target_finish_position"],errors="coerce")
+ d["pred_lvs"]=pd.to_numeric(d["pred_lvs"],errors="coerce")
+ if d["_year"].isna().any() or not d["_year"].between(2022,2024).all(): raise RuntimeError("Sealed-year breach")
  simple=str(b1["dev_selected_simple"]["model"]); ml=str(b1["dev_selected_ml"]["model"])
  selected=d[d["model"].isin([simple,ml])].copy()
  results=[]; prob_parts=[]; tune_parts=[]
