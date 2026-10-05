@@ -84,7 +84,7 @@ def main():
   bad_ids=set(bad.index.astype(str))
   diag=d[d["canonical_race_id"].astype(str).isin(bad_ids)][["canonical_race_id","canonical_horse_id"]+conflict_cols].copy()
   diag=diag.sort_values(["canonical_race_id","canonical_horse_id"],kind="stable")
-  diag_path=OUT/"LAB245B_CANONICAL_RACE_ATTRIBUTE_CONFLICTS.csv"
+  diag_path=OUT.parent/"LAB245B_CANONICAL_RACE_ATTRIBUTE_CONFLICTS.csv"
   diag.to_csv(diag_path,index=False)
   summary=[]
   for rid,g in diag.groupby("canonical_race_id",sort=False):
@@ -93,7 +93,7 @@ def main():
     vals=g[col].dropna().astype(str).drop_duplicates().tolist()
     if len(vals)>1: item[col]=vals
    summary.append(item)
-  summary_path=OUT/"LAB245B_CANONICAL_RACE_ATTRIBUTE_CONFLICTS.json"
+  summary_path=OUT.parent/"LAB245B_CANONICAL_RACE_ATTRIBUTE_CONFLICTS.json"
   summary_path.write_text(json.dumps(summary,indent=2,default=str),encoding="utf-8")
   print(f"CANONICAL_RACE_ATTRIBUTE_CONFLICT_DIAGNOSTIC={diag_path}")
   print(json.dumps(summary,indent=2,default=str))
