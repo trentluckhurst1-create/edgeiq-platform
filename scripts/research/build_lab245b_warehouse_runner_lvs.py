@@ -73,8 +73,10 @@ def main():
  print(f"CANONICAL_RACE_ATTRIBUTE_INVARIANT=PASS RACES={len(rc):,}")
  d["_winner"]=d["finish_position"].eq(1)
  r=d.sort_values(["canonical_race_id","_winner","_valid_time"],ascending=[True,False,False],kind="stable").drop_duplicates("canonical_race_id")
- r=r[r["_valid_time"]].copy()
- timed_races=len(r)
+ timed_races=int(r["_valid_time"].sum())
+ eligible_timed_races=int(r["_eligible_benchmark"].sum())
+ r=r[r["_eligible_benchmark"]].copy()
+ print(f"BENCHMARK_ELIGIBILITY=TIME_35_420_DISTANCE_800_3600_TRACK_PRESENT_CONDITION_KNOWN ELIGIBLE_RACES={eligible_timed_races:,}")
 
  # Strict date-PIT benchmark. All races on date D are scored from dates < D only.
  r=r.dropna(subset=["track_key","distance_metres","condition","official_race_time_seconds","race_date"]).sort_values(["race_date","canonical_race_id"],kind="stable")
