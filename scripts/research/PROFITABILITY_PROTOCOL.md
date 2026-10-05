@@ -65,7 +65,7 @@ Data governance:
 
 Stage gates:
 1. LAB245B1: predict next-race runner LVS. Architecture/model selection uses 2022-23 OOF only; the challenger must beat the selected simple baseline separately in 2022 and 2023, pooled development, and fixed 2024 on MAE, RMSE and within-race Spearman.
-2. LAB245B2: convert the selected performance forecast to race probabilities. Temperature is selected on 2022-23 only and fixed for 2024; ML probabilities must beat the simple baseline separately in 2022 and 2023, pooled development, and fixed 2024 on winner log loss and runner Brier.
+2. LAB245B2: convert the selected performance forecast to race probabilities. Probability evaluation is restricted to races where B1-eligible runners cover the complete valid-target field; subset-field softmax is prohibited. Temperature is selected on 2022-23 only and fixed for 2024; ML probabilities must beat the simple baseline separately in 2022 and 2023, pooled development, and fixed 2024 on winner log loss and runner Brier, with at least 200 complete-field development races and 100 complete-field 2024 races.
 3. LAB245B3: final-SP betting forensics only. 2022 selects a policy; the same policy must confirm in 2023 and validate in 2024 with minimum volume.
 4. LAB245B4: 2025-26 remains sealed unless LAB245B3 survives. Opening requires an explicit manual holdout dispatch; normal workflow/local-chain execution cannot invoke B4. On opening, architecture, hyperparameters, temperature and betting policy are frozen; no holdout reselection is allowed.
 
