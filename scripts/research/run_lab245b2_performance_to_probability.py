@@ -1,4 +1,4 @@
-from pathlib import Path
+# DEPRECATED: Do not execute. Superseded by run_lab245b2_probability_challenger.py, which enforces simple-vs-ML temporal survival gates.\n# Retained only for research lineage.\nfrom pathlib import Path
 import json, math
 import numpy as np
 import pandas as pd
