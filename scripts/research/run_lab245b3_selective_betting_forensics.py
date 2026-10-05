@@ -59,7 +59,10 @@ def main():
  if not p["_year"].between(2022,2024).all(): raise RuntimeError("Sealed-year breach")
  p["race_date"]=pd.to_datetime(p["race_date"],errors="coerce")
  sp,sp_path=load_sp(); d=p.merge(sp,on=["_race","_horse"],how="inner",validate="one_to_one")
- if len(d)!=len(p): raise RuntimeError(f"Final-SP coverage incomplete {len(d)}/{len(p)}")
+ if len(d)!=len(p):
+  race_ids=set(sp["_race"].dropna().astype(str)); horse_ids=set(sp["_horse"].dropna().astype(str))
+  race_overlap=int(p["_race"].astype(str).isin(race_ids).sum()); horse_overlap=int(p["_horse"].astype(str).isin(horse_ids).sum())
+  raise RuntimeError(f"Final-SP exact identity coverage incomplete joined={len(d)}/{len(p)} race_id_rows_overlapping={race_overlap} horse_id_rows_overlapping={horse_overlap}; fuzzy matching prohibited")
  d["edge_ratio"]=d["p_model"]*d["_sp"]
  rows=[]
  for name,e,pm,sm in POLICIES:
