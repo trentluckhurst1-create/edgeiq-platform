@@ -72,7 +72,7 @@ def main():
         models={"RIDGE":make_pipeline(SimpleImputer(strategy="median"),StandardScaler(),Ridge(alpha=10.0)),"HGB":HistGradientBoostingRegressor(max_iter=250,learning_rate=.04,max_leaf_nodes=15,l2_regularization=5,random_state=245)}
         for name,m in models.items():
             m.fit(tr[feats],tr["target_lvs"]); p=m.predict(te[feats])
-            rows.append({"year":year,"model":name,**score(te,p)})
+            rows.append({"year":year,"model":name,**score(te,p,full_field_sizes)})
             q=te[["_race","_horse","_year","race_date","target_lvs","target_finish_position","target_field_size"]].copy(); q["model"]=name; q["pred_lvs"]=p; pp.append(q)
     res=pd.DataFrame(rows); pred=pd.concat(pp,ignore_index=True)
     res.to_csv(OUTDIR/"LAB245B1_NEXT_PERFORMANCE_RESULTS.csv",index=False)
