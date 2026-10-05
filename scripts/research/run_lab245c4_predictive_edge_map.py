@@ -8,8 +8,17 @@ def metrics(g):
  return pd.Series({"runners":len(g),"races":g._race.nunique(),"expected_wins":p.sum(),"actual_wins":y.sum(),"win_ratio":y.sum()/p.sum() if p.sum()>0 else np.nan,"brier":np.mean((p-y)**2),"mean_p":p.mean()})
 def main():
  p=pd.read_csv(P,low_memory=False)
- b=pd.read_csv(B,usecols=["_race","_horse","hist_runs"],low_memory=False)
- x=p.merge(b,on=["_race","_horse"],how="left",validate="one_to_one")
+ if "hist_runs" in p.columns:
+  x=p.copy()
+  b=pd.read_csv(B,usecols=["_race","_horse","hist_runs"],low_memory=False).rename(columns={"hist_runs":"hist_runs_bridge"})
+  x=x.merge(b,on=["_race","_horse"],how="left",validate="one_to_one")
+  both=x["hist_runs"].notna() & x["hist_runs_bridge"].notna()
+  if both.any() and not np.allclose(x.loc[both,"hist_runs"],x.loc[both,"hist_runs_bridge"]):
+   raise RuntimeError("hist_runs lineage mismatch between probability OOF and compact bridge")
+  x=x.drop(columns=["hist_runs_bridge"])
+ else:
+  b=pd.read_csv(B,usecols=["_race","_horse","hist_runs"],low_memory=False)
+  x=p.merge(b,on=["_race","_horse"],how="left",validate="one_to_one")
  x["field_size"]=x.groupby("_race")["_horse"].transform("size")
  x["model_rank"]=x.groupby("_race")["p_model"].rank(method="first",ascending=False).astype(int)
  x["hist_bucket"]=pd.cut(x.hist_runs,[-1,0,1,2,4,9,10**9],labels=["0","1","2","3-4","5-9","10+"])
