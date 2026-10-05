@@ -1,5 +1,5 @@
 from pathlib import Path
-import os, json, hashlib
+import os, json, hashlib, shutil, sys
 import pandas as pd
 
 ROOT=Path(__file__).resolve().parents[2]
@@ -24,7 +24,7 @@ def cols(p):
 
 def main():
  OUT.parent.mkdir(parents=True,exist_ok=True)
- a={"data_root":str(DATA_ROOT),"checks":{},"status":"PASS"}
+ usage=shutil.disk_usage(ROOT)\n a={"data_root":str(DATA_ROOT),"python":sys.version.split()[0],"research_root":str(ROOT),"free_disk_bytes":int(usage.free),"checks":{},"status":"PASS"}\n if usage.free < 2_000_000_000:\n  a["status"]="FAIL"; a["checks"]["disk_space"]={"status":"FAIL","required_free_bytes":2_000_000_000,"actual_free_bytes":int(usage.free)}\n else: a["checks"]["disk_space"]={"status":"PASS","required_free_bytes":2_000_000_000,"actual_free_bytes":int(usage.free)}
  for name,p,size,digest,need in [
   ("warehouse",WAREHOUSE,WH_SIZE,WH_SHA,{"canonical_race_id","canonical_horse_id","canonical_track_id","race_date","distance_metres","track_condition","finish_position","finish_margin","official_race_time","official_race_time_seconds","time_unit"}),
   ("length_conversion",LCP,None,None,{"surface_group","track_condition_group","seconds_per_length"}),
