@@ -45,9 +45,13 @@ def metrics(x):
  pnl=x["winner"]*x["_sp"]-1.0
  equity=pnl.cumsum(); peak=np.maximum.accumulate(np.r_[0.0,equity.to_numpy(float)])[1:]
  dd=equity.to_numpy(float)-peak
+ losing=0; longest=0
+ for w in x["winner"].astype(int).tolist():
+  losing=0 if w else losing+1
+  longest=max(longest,losing)
  return {"bets":bets,"wins":wins,"strike_pct":100*wins/bets if bets else np.nan,
          "profit":float(pnl.sum()),"pot_pct":100*float(pnl.sum())/bets if bets else np.nan,
-         "max_drawdown_units":float(dd.min()) if bets else np.nan,
+         "max_drawdown_units":float(dd.min()) if bets else np.nan,"longest_losing_run":int(longest),
          "mean_sp":float(x["_sp"].mean()) if bets else np.nan,
          "mean_edge_ratio":float(x["edge_ratio"].mean()) if bets else np.nan}
 
