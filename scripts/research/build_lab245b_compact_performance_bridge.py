@@ -6,9 +6,10 @@ import numpy as np
 
 ROOT=Path(__file__).resolve().parents[2]
 DATA_ROOT=Path(os.environ.get("EDGEIQ_DATA_ROOT",str(ROOT))).resolve()
-SOURCE=ROOT/"outputs/research/profitability_program/lab245b/LAB245B_WAREHOUSE_RUNNER_LVS.csv"\nOUTDIR=ROOT/"outputs/research/profitability_program/lab245b"
+SOURCE=ROOT/"outputs/research/profitability_program/lab245b/LAB245B_WAREHOUSE_RUNNER_LVS.csv"
+OUTDIR=ROOT/"outputs/research/profitability_program/lab245b"
 OUT=OUTDIR/"LAB245B_COMPACT_PERFORMANCE_BRIDGE.csv"
-NEED=["canonical_race_id","canonical_horse_id","race_date","distance_metres","finish_position","finish_margin","runner_lvs","target_field_size"]
+NEED=["canonical_race_id","canonical_horse_id","race_date","distance_metres","finish_position","finish_margin","runner_lvs","field_size"]
 
 def stats(a,n):
  x=np.asarray(a[-n:],dtype=float)
@@ -18,7 +19,8 @@ def stats(a,n):
 
 def main():
  OUTDIR.mkdir(parents=True,exist_ok=True)
- if not SOURCE.exists(): raise FileNotFoundError(SOURCE)\n d=pd.read_csv(SOURCE,usecols=NEED,low_memory=False)
+ if not SOURCE.exists(): raise FileNotFoundError(SOURCE)
+ d=pd.read_csv(SOURCE,usecols=NEED,low_memory=False)
  for c in ["canonical_race_id","canonical_horse_id"]: d[c]=d[c].astype("string").str.strip()
  d["race_date"]=pd.to_datetime(d["race_date"],errors="coerce")
  for c in ["distance_metres","finish_position","finish_margin","field_size","runner_lvs"]: d[c]=pd.to_numeric(d[c],errors="coerce")
@@ -39,7 +41,7 @@ def main():
     year=int(dt.year)
     if 2021<=year<=2024:
      rec={"_race":r.canonical_race_id,"_horse":horse,"_year":year,"race_date":dt.date().isoformat(),
-          "target_lvs":r.runner_lvs,"target_finish_position":r.finish_position,"target_field_size":r.target_field_size,"current_distance":r.distance_metres,"hist_runs":len(hist),
+          "target_lvs":r.runner_lvs,"target_finish_position":r.finish_position,"target_field_size":r.field_size,"current_distance":r.distance_metres,"hist_runs":len(hist),
           "lvs_last1":lvs[-1] if lvs else np.nan,"lvs_mean3":l3[0],"lvs_mean5":l5[0],
           "lvs_median5":l5[1],"lvs_std5":l5[2],"lvs_peak":max(lvs) if lvs else np.nan,
           "lvs_worst5":min(lvs[-5:]) if lvs else np.nan,
