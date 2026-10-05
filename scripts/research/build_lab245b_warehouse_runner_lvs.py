@@ -60,7 +60,7 @@ def main():
   day=day.copy()
   std=[]; counts=[]
   for _,row in day.iterrows():
-   k=(row["track_key"],row["track_display_key"],row["layout_key"],row["distance_metres"],row["condition"],row["jurisdiction_key"])
+   k=(row["track_key"],row["distance_metres"],row["condition"],row["jurisdiction_key"])
    vals=history.get(k,[])
    counts.append(len(vals))
    std.append(_median_sorted(vals) if len(vals)>=MIN_SAMPLE else np.nan)
@@ -69,7 +69,7 @@ def main():
   scored.append(day)
   # Add the whole date only after every race on the date has been scored.
   for _,row in day.iterrows():
-   k=(row["track_key"],row["track_display_key"],row["layout_key"],row["distance_metres"],row["condition"],row["jurisdiction_key"])
+   k=(row["track_key"],row["distance_metres"],row["condition"],row["jurisdiction_key"])
    insort(history.setdefault(k,[]),float(row["official_race_time_seconds"]))
  r=pd.concat(scored,ignore_index=True)
  r=r[r["standard_time_seconds"].notna()].copy()
@@ -93,7 +93,7 @@ def main():
  print("PIT_POLICY=STRICT_DATE_LT_TARGET_DATE")
  print("RUNNER_LVS_POLICY=ORIGINAL_PRODUCER_FORMULA_RACE_LVS_MINUS_FINISH_MARGIN")
  print("RUNNER_TIME_EQUIVALENT_POLICY=ORIGINAL_PRODUCER_RACE_TIME_PLUS_MARGIN_X_SECONDS_PER_LENGTH")
- print("BENCHMARK_GROUPING=RECOVERED_EXECUTABLE_CONTRACT_TRACK_ID_DISPLAY_LAYOUT_DISTANCE_CONDITION_JURISDICTION_MIN20_MEDIAN")
+ print("BENCHMARK_GROUPING=GOVERNED_DOWNSTREAM_CONTRACT_TRACK_ID_DISTANCE_CONDITION_JURISDICTION_MIN20_MEDIAN")
  print("BENCHMARK_POLICY=LAB245B_STRICT_DATE_PIT_NOT_OLD_ALL_HISTORY_PRODUCTION_STANDARD")
  print("KNOWN_RECOVERY_TIMED_RACES=70,308 DELTA_RACES=54,978 LVS_RACES=52,414")
  if abs(timed_races-70308)>10:raise RuntimeError("Timed-race recovery count materially disagrees with certified audit.")
