@@ -16,7 +16,8 @@ Test whether strict point-in-time historical runner performance (Lengths v Stand
   - runner LVS = race LVS - finish margin
   - runner time equivalent = race time + finish margin * seconds per length
 - Benchmark chronology: target date D uses races strictly before D.
-- Minimum prior benchmark races: 20.\n- Original implementation identity scope preserved as canonical track + distance + condition + jurisdiction (approved conceptual contract: track + distance + condition).
+- Minimum prior benchmark races: 20.
+- Original implementation identity scope preserved as canonical track + distance + condition + jurisdiction (approved conceptual contract: track + distance + condition).
 - Governed timing eligibility: race time 35-420 seconds; distance 800-3600m; canonical track present; known condition.
 - Same-date horse history is excluded from predictors.
 - Invalid finishing outcomes remain represented in the race field but receive null LVS targets.
@@ -63,7 +64,10 @@ The correct execution environment is the local EDGEiQ data authority (or a futur
 - `9709114` aligned preflight schema to builder.
 - `2dae3b4` applied governed benchmark eligibility.
 - `919742d`, `3454fde`, `c48cb92` preserved full race fields across target/B2/B4 completeness logic.
-- `569a0b4` added profit uncertainty diagnostics.\n- `e3c8f2e` matched strict-PIT benchmark identity scope to original jurisdiction-aware producer key.\n- `71617c9` made the frozen runner-LVS parity authority mandatory for preholdout execution.\n- `854dfde` aligned the workflow data gate with the mandatory parity authority.
+- `569a0b4` added profit uncertainty diagnostics.
+- `e3c8f2e` matched strict-PIT benchmark identity scope to original jurisdiction-aware producer key.
+- `71617c9` made the frozen runner-LVS parity authority mandatory for preholdout execution.
+- `854dfde` aligned the workflow data gate with the mandatory parity authority.
 
 ## Next executable result required
 Run the preholdout chain against the local ignored data authority. Do not open LAB245B4 unless B1, B2 and B3 survive their frozen gates.
