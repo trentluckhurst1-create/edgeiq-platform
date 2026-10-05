@@ -1,6 +1,7 @@
 from pathlib import Path
 import json
 import os
+import hashlib
 import subprocess
 import sys
 
@@ -26,12 +27,14 @@ def target_checkpoint_valid():
         x=json.loads(m.read_text(encoding="utf-8"))
     except Exception:
         return False
-    return (
-        x.get("warehouse_sha256")==EXPECTED_WAREHOUSE_SHA
-        and x.get("contract_version")==EXPECTED_TARGET_CONTRACT
-        and x.get("pit_policy")=="STRICT_DATE_LT_TARGET_DATE"
-        and p.stat().st_size>0
-    )
+    if not (x.get("warehouse_sha256")==EXPECTED_WAREHOUSE_SHA and x.get("contract_version")==EXPECTED_TARGET_CONTRACT and x.get("pit_policy")=="STRICT_DATE_LT_TARGET_DATE"):
+        return False
+    if x.get("output_bytes")!=p.stat().st_size or not x.get("output_sha256"):
+        return False
+    h=hashlib.sha256()
+    with p.open("rb") as fh:
+        for b in iter(lambda:fh.read(16*1024*1024),b""): h.update(b)
+    return h.hexdigest()==x.get("output_sha256")
 
 def audit(name):
     p=OUT/name
