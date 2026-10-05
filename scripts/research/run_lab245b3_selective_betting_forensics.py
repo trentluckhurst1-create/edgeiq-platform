@@ -1,6 +1,7 @@
 from pathlib import Path
 import os
 import json
+import hashlib
 import numpy as np
 import pandas as pd
 
@@ -82,6 +83,12 @@ def main():
  if contract.get("development")!=[2022,2023] or contract.get("confirmation")!=2024 or contract.get("sealed")!=[2025,2026]: raise RuntimeError("LAB245B3 temporal contract drift")
  if contract.get("market_as_model_feature")!="NO": raise RuntimeError("LAB245B3 market-feature contract drift")
  b2=json.loads(B2.read_text(encoding="utf-8"))
+ qh=hashlib.sha256()
+ with PROB.open("rb") as fh:
+  for b in iter(lambda:fh.read(8*1024*1024),b""): qh.update(b)
+ prob_sha=qh.hexdigest()
+ if prob_sha!=b2.get("oof_probabilities_sha256") or PROB.stat().st_size!=b2.get("oof_probabilities_bytes"):
+  raise RuntimeError("LAB245B3 stale/mismatched B2 probability lineage")
  if b2.get("status")!="SURVIVE_TO_LAB245B3":
   a={"status":"SKIPPED_B2_REJECTED","b2_status":b2.get("status"),"holdout_2025_2026_opened":False}
   AUD.write_text(json.dumps(a,indent=2),encoding="utf-8"); print(json.dumps(a,indent=2)); return
@@ -139,7 +146,7 @@ def main():
     "exposure_diagnostics":"reports races_bet, bets_per_race, max_bets_per_race and multi_bet_race_pct; multiple bets in one race remain correlated exposure and are not treated as independent evidence",
     "sp_source":str(sp_path),"final_sp_probability_races_total":total_prob_races,"final_sp_complete_field_races":market_covered_races,"final_sp_race_coverage_pct":market_coverage_pct,"final_sp_role":"HISTORICAL_POLICY_SELECTION_AND_FORENSICS_ONLY",
     "deployability_limitation":"Final SP is not a deployable offered price. Any surviving policy requires validation on actual pre-race offered odds.",
-    "holdout_2025_2026_opened":False,"market_used_in_probability_model":False}
+    "holdout_2025_2026_opened":False,"market_used_in_probability_model":False,"b2_oof_probabilities_sha256":prob_sha}
  AUD.write_text(json.dumps(a,indent=2),encoding="utf-8")
  print(r.to_string(index=False)); print(json.dumps(a,indent=2))
 
