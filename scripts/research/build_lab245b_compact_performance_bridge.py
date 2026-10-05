@@ -21,7 +21,7 @@ def main():
  if not SOURCE.exists(): raise FileNotFoundError(SOURCE)\n d=pd.read_csv(SOURCE,usecols=NEED,low_memory=False)
  for c in ["canonical_race_id","canonical_horse_id"]: d[c]=d[c].astype("string").str.strip()
  d["race_date"]=pd.to_datetime(d["race_date"],errors="coerce")
- for c in ["distance_metres","finish_position","finish_margin","runner_lvs"]: d[c]=pd.to_numeric(d[c],errors="coerce")
+ for c in ["distance_metres","finish_position","finish_margin","field_size","runner_lvs"]: d[c]=pd.to_numeric(d[c],errors="coerce")
  d=d.dropna(subset=["canonical_race_id","canonical_horse_id","race_date"])
  d=d.sort_values(["canonical_horse_id","race_date","canonical_race_id"],kind="stable")
  rows=[]
