@@ -71,9 +71,12 @@ jobs:
       - name: Compile LAB245B launcher
         if: env.LAB == '245b1' || env.LAB == '245b-l27'
         run: python -m py_compile scripts/research/run_lab245b_preholdout_chain.py
-      - name: Compile LAB245B target builder
+      - name: Compile and verify LAB245B target builder
         if: env.LAB == '245b1' || env.LAB == '245b-l27'
-        run: python -m py_compile scripts/research/build_lab245b_warehouse_runner_lvs.py
+        run: |
+          python -m py_compile scripts/research/build_lab245b_warehouse_runner_lvs.py
+          python -m py_compile scripts/research/run_lab245b_vector_pit_equivalence_smoke.py
+          python scripts/research/run_lab245b_vector_pit_equivalence_smoke.py
       - name: Compile LAB245B parity audit
         if: env.LAB == '245b1' || env.LAB == '245b-l27'
         run: python -m py_compile scripts/research/run_lab245b_target_parity_audit.py
