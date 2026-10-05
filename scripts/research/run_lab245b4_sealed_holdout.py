@@ -31,7 +31,7 @@ def build_holdout():
  d["race_date"]=pd.to_datetime(d.race_date,errors="coerce")
  for c in ["distance_metres","finish_position","finish_margin","runner_lvs"]: d[c]=pd.to_numeric(d[c],errors="coerce")
  d=d.dropna(subset=["canonical_race_id","canonical_horse_id","race_date"]).sort_values(["canonical_horse_id","race_date","canonical_race_id"],kind="stable")
- field_sizes=d[d["runner_lvs"].notna()].groupby("canonical_race_id")["canonical_horse_id"].nunique().to_dict()
+ field_sizes=d.groupby("canonical_race_id")["canonical_horse_id"].nunique().to_dict()
  rows=[]
  for horse,g in d.groupby("canonical_horse_id",sort=False):
   hist=[]
