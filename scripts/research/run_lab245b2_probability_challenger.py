@@ -31,7 +31,7 @@ def evaluate(d,temp):
   sqerr.extend(((p-y)**2).tolist())
   for (_,r),pi,yi in zip(g.iterrows(),p,y):
    rows.append({"_race":race,"_horse":r["_horse"],"_year":int(r["_year"]),"model":r["model"],
-                "pred_lvs":r["pred_lvs"],"target_finish_position":r["target_finish_position"],
+                "race_date":r["race_date"],"pred_lvs":r["pred_lvs"],"target_finish_position":r["target_finish_position"],
                 "p_model":float(pi),"winner":int(yi),"temperature":temp})
  return {"races":len(ll),"runner_rows":len(rows),"log_loss":float(np.mean(ll)) if ll else np.nan,
          "brier_runner":float(np.mean(sqerr)) if sqerr else np.nan},pd.DataFrame(rows)
