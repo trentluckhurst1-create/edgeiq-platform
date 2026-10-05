@@ -30,5 +30,14 @@ foreach ($s in $Scripts) {
   python $s
   if ($LASTEXITCODE -ne 0) { throw "LAB245B failed at $s with exit code $LASTEXITCODE" }
 }
+$L27 = Join-Path $env:EDGEIQ_DATA_ROOT "outputs\research\model_lab_027\certified_pre_race_feature_matrix_027.csv"
+if (Test-Path $L27) {
+  Write-Host ("=" * 100)
+  Write-Host "RUN=scripts/research/run_lab245b_l27_next_performance.py"
+  python "scripts/research/run_lab245b_l27_next_performance.py"
+  if ($LASTEXITCODE -ne 0) { throw "LAB245B L27 challenger failed with exit code $LASTEXITCODE" }
+} else {
+  Write-Host "LAB245B_L27=SKIPPED_SOURCE_ABSENT"
+}
 Write-Host ("=" * 100)
 Write-Host "LAB245B_CHAIN_COMPLETE"
