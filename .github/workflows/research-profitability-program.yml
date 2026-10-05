@@ -31,6 +31,7 @@ on:
           - "245d13"
           - "245d14"
           - "245d15"
+          - "245d16"
 
 permissions:
   contents: read
@@ -297,6 +298,18 @@ jobs:
           Push-Location $ResearchRoot
           try { python $LocalScript } finally { Pop-Location }
           if ($LASTEXITCODE -ne 0) { throw "LAB245D15 failed" }
+      - name: Run LAB245D16 LAB231 lineage trace
+        if: ${{ github.event.inputs.lab == '245d16' || (github.event_name == 'push' && contains(github.event.head_commit.message, 'LAB245D16')) }}
+        shell: powershell
+        run: |
+          $ResearchRoot = "C:\EDGEIQ_PROFITABILITY_RESEARCH"
+          $SourceScript = Join-Path $env:GITHUB_WORKSPACE "scripts\research\run_lab245d16_lab231_lineage.py"
+          $LocalScript = Join-Path $ResearchRoot "scripts\research\run_lab245d16_lab231_lineage.py"
+          Copy-Item $SourceScript $LocalScript -Force
+          python -m py_compile $LocalScript
+          Push-Location $ResearchRoot
+          try { python $LocalScript } finally { Pop-Location }
+          if ($LASTEXITCODE -ne 0) { throw "LAB245D16 failed" }
       - name: Run governed research bootstrap
         if: env.LAB == 'bootstrap'
         run: python scripts/research/profitability_program_bootstrap.py
