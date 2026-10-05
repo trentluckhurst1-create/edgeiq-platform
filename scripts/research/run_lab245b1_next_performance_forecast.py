@@ -39,6 +39,8 @@ def main():
     feats=[x for x in FEATURES if x in d.columns]
     if len(feats)!=len(FEATURES): raise RuntimeError(f"Missing governed features: {sorted(set(FEATURES)-set(feats))}")
     for x in feats+["target_lvs"]: d[x]=pd.to_numeric(d[x],errors="coerce")
+    d=d[np.isfinite(d["target_lvs"])].copy()
+    if d.empty: raise RuntimeError("No finite governed performance targets after coercion.")
     rows=[]; pp=[]
     for year in [2022,2023,2024]:
         tr=d[d["_year"]<year]; te=d[d["_year"]==year]
