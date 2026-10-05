@@ -11,7 +11,8 @@ AUTH=DATA_ROOT/"docs/performance-intelligence/lengths-v-standard/edgeiq_runner_l
 PIT=ROOT/"outputs/research/profitability_program/lab245b/LAB245B_WAREHOUSE_RUNNER_LVS.csv"
 OUT=ROOT/"outputs/research/profitability_program/lab245b/LAB245B_TARGET_PARITY_AUDIT.json"
 EXPECTED_SIZE=80343742
-EXPECTED_SHA="b08bb7a334ddba2f6a76942452dd964cd59db05001dc5710ff19aa7fc6e12926"\nPARITY_THRESHOLD=0.0  # sign/unit/formula guard only; numerical equality is not expected because strict-PIT standards differ
+EXPECTED_SHA="b08bb7a334ddba2f6a76942452dd964cd59db05001dc5710ff19aa7fc6e12926"
+PARITY_THRESHOLD=0.0  # sign/unit/formula guard only; numerical equality is not expected because strict-PIT standards differ
 
 def sha256(p):
  h=hashlib.sha256()
