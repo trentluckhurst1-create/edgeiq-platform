@@ -60,7 +60,7 @@ jobs:
       - name: Run LAB245A bridge audit
         if: env.LAB == '245a'
         run: python scripts/research/run_lab245a_performance_outcome_bridge_audit.py
-      - name: Compile LAB245B governed chain
+      - name: Compile LAB245B governance and target
         if: env.LAB == '245b1' || env.LAB == '245b-l27'
         run: |
           python -m py_compile scripts/research/run_lab245b_contract_smoke.py
@@ -69,10 +69,19 @@ jobs:
           python -m py_compile scripts/research/run_lab245b_preholdout_chain.py
           python -m py_compile scripts/research/build_lab245b_warehouse_runner_lvs.py
           python -m py_compile scripts/research/run_lab245b_target_parity_audit.py
+      - name: Compile LAB245B bridge and B1
+        if: env.LAB == '245b1' || env.LAB == '245b-l27'
+        run: |
           python -m py_compile scripts/research/build_lab245b_compact_performance_bridge.py
           python -m py_compile scripts/research/run_lab245b1_next_performance_forecast.py
+      - name: Compile LAB245B B2 and B3
+        if: env.LAB == '245b1' || env.LAB == '245b-l27'
+        run: |
           python -m py_compile scripts/research/run_lab245b2_probability_challenger.py
           python -m py_compile scripts/research/run_lab245b3_selective_betting_forensics.py
+      - name: Compile LAB245B holdout and L27
+        if: env.LAB == '245b1' || env.LAB == '245b-l27'
+        run: |
           python -m py_compile scripts/research/run_lab245b4_sealed_holdout.py
           python -m py_compile scripts/research/run_lab245b_l27_next_performance.py
       - name: Check LAB245B data authority
