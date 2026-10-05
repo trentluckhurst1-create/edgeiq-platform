@@ -1,5 +1,5 @@
 from pathlib import Path
-import json, math
+import json, math, hashlib
 import numpy as np
 import pandas as pd
 from sklearn.ensemble import HistGradientBoostingRegressor
@@ -76,7 +76,7 @@ def main():
             q=te[["_race","_horse","_year","race_date","target_lvs","target_finish_position","target_field_size"]].copy(); q["model"]=name; q["pred_lvs"]=p; pp.append(q)
     res=pd.DataFrame(rows); pred=pd.concat(pp,ignore_index=True)
     res.to_csv(OUTDIR/"LAB245B1_NEXT_PERFORMANCE_RESULTS.csv",index=False)
-    pred.to_csv(OUTDIR/"LAB245B1_OOF_PREDICTIONS.csv",index=False)
+    pred_path=OUTDIR/"LAB245B1_OOF_PREDICTIONS.csv"\n    pred.to_csv(pred_path,index=False)\n    ph=hashlib.sha256()\n    with pred_path.open("rb") as fh:\n        for b in iter(lambda:fh.read(8*1024*1024),b""): ph.update(b)\n    pred_sha=ph.hexdigest()
     # Architecture/model choice is development-only (2022-23). 2024 is a single fixed confirmation.
     dev=pred[pred["_year"].isin([2022,2023])]
     dev_rows=[]
@@ -96,7 +96,7 @@ def main():
         yearly_deltas[str(yy)]={"mae_gain":float(sy.mae-my.mae),"rmse_gain":float(sy.rmse-my.rmse),"spearman_gain":float(my.race_spearman_mean-sy.race_spearman_mean)}
         yearly_ok=yearly_ok and my.mae<sy.mae and my.rmse<sy.rmse and my.race_spearman_mean>sy.race_spearman_mean
     survive=bool(yearly_ok and bm_dev["mae"]<bs_dev["mae"] and bm_dev["rmse"]<bs_dev["rmse"] and bm_dev["race_spearman_mean"]>bs_dev["race_spearman_mean"] and bm["mae"]<bs["mae"] and bm["rmse"]<bs["rmse"] and bm["race_spearman_mean"]>bs["race_spearman_mean"])
-    audit={"contract_version":"LAB245B1_ACTUAL_LVS_FORECAST_V1","status":"SURVIVE_TO_LAB245B2" if survive else "REJECT_ML_PERFORMANCE_ENGINE","rows":int(len(d)),"races":int(d["_race"].nunique()),"feature_count":len(feats),"development_selection_rule":"COMMON_RUNNER_COVERAGE_2022_2023_SELECT_LOWEST_MAE_THEN_RMSE; RANKING_GATE_USES_FULL_REPRESENTED_FIELDS_ONLY; SURVIVAL_REQUIRES_FULL_FIELD_RACE_SPEARMAN_MAE_RMSE_IMPROVEMENT_EACH_DEV_YEAR_AND_2024","dev_selected_simple":bs_dev.to_dict(),"dev_selected_ml":bm_dev.to_dict(),"validation_2024_simple":bs.to_dict(),"validation_2024_ml":bm.to_dict(),"holdout_2025_2026_opened":False,"market_used":False,"target_contract_version":target_manifest.get("contract_version"),"target_output_sha256":target_manifest.get("output_sha256"),"coverage_by_year":coverage,"history_depth_and_full_field_coverage":history_depth,"development_yearly_stability_required":True,"development_yearly_deltas":yearly_deltas}
+    audit={"contract_version":"LAB245B1_ACTUAL_LVS_FORECAST_V1","status":"SURVIVE_TO_LAB245B2" if survive else "REJECT_ML_PERFORMANCE_ENGINE","rows":int(len(d)),"races":int(d["_race"].nunique()),"feature_count":len(feats),"development_selection_rule":"COMMON_RUNNER_COVERAGE_2022_2023_SELECT_LOWEST_MAE_THEN_RMSE; RANKING_GATE_USES_FULL_REPRESENTED_FIELDS_ONLY; SURVIVAL_REQUIRES_FULL_FIELD_RACE_SPEARMAN_MAE_RMSE_IMPROVEMENT_EACH_DEV_YEAR_AND_2024","dev_selected_simple":bs_dev.to_dict(),"dev_selected_ml":bm_dev.to_dict(),"validation_2024_simple":bs.to_dict(),"validation_2024_ml":bm.to_dict(),"holdout_2025_2026_opened":False,"market_used":False,"target_contract_version":target_manifest.get("contract_version"),"target_output_sha256":target_manifest.get("output_sha256"),"coverage_by_year":coverage,"history_depth_and_full_field_coverage":history_depth,"development_yearly_stability_required":True,"development_yearly_deltas":yearly_deltas,"oof_predictions_sha256":pred_sha,"oof_predictions_bytes":pred_path.stat().st_size}
     (OUTDIR/"LAB245B1_AUDIT.json").write_text(json.dumps(audit,indent=2,default=str),encoding="utf-8")
     print(res.to_string(index=False)); print(json.dumps(audit,indent=2,default=str))
 if __name__=="__main__": main()
