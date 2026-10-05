@@ -4,10 +4,48 @@ import pandas as pd
 import numpy as np
 
 ROOT=Path(__file__).resolve().parents[2]
-AUTHORITY=ROOT/"docs/performance-intelligence/lengths-v-standard/edgeiq_runner_lengths_v_standard_fact_v1.csv"\nFALLBACK=ROOT/"outputs/research/profitability_program/lab245b/LAB245B_WAREHOUSE_RUNNER_LVS.csv"\nAUTHORITY_SIZE=80343742\nAUTHORITY_SHA256="b08bb7a334ddba2f6a76942452dd964cd59db05001dc5710ff19aa7fc6e12926"\nPARITY_AUTHORITY_ONLY=True
+AUTHORITY=ROOT/"docs/performance-intelligence/lengths-v-standard/edgeiq_runner_lengths_v_standard_fact_v1.csv"
+FALLBACK=ROOT/"outputs/research/profitability_program/lab245b/LAB245B_WAREHOUSE_RUNNER_LVS.csv"
+AUTHORITY_SIZE=80343742
+AUTHORITY_SHA256="b08bb7a334ddba2f6a76942452dd964cd59db05001dc5710ff19aa7fc6e12926"
+PARITY_AUTHORITY_ONLY=True  # Historical authority is parity evidence only; never forecasting target.
 OUTDIR=ROOT/"outputs/research/profitability_program/lab245b"
 OUT=OUTDIR/"LAB245B_COMPACT_PERFORMANCE_BRIDGE.csv"
-NEED=["canonical_race_id","canonical_horse_id","race_date","distance_metres","finish_position","finish_margin","runner_lvs"]\n\ndef load_source():\n import hashlib\n if AUTHORITY.exists() and not PARITY_AUTHORITY_ONLY:\n  size=AUTHORITY.stat().st_size\n  if size!=AUTHORITY_SIZE: raise RuntimeError(f"Runner-LVS authority size drift: {size} != {AUTHORITY_SIZE}")\n  h=hashlib.sha256()\n  with AUTHORITY.open("rb") as fh:\n   for b in iter(lambda:fh.read(8*1024*1024),b""): h.update(b)\n  digest=h.hexdigest()\n  if digest!=AUTHORITY_SHA256: raise RuntimeError(f"Runner-LVS authority SHA drift: {digest}")\n  a=pd.read_csv(AUTHORITY,usecols=["canonical_performance_id","canonical_race_id","canonical_horse_id","finish_position","finish_margin_lengths","runner_lengths_v_standard"],low_memory=False)\n  # Authority lacks date/distance; enrich identity-exact from warehouse only when available.\n  warehouse=ROOT/"docs/performance-intelligence/warehouse/edgeiq_performance_fact_warehouse_v1.csv"\n  if not warehouse.exists(): raise FileNotFoundError("Verified runner-LVS authority found, but warehouse identity enrichment (race_date/distance) is unavailable.")\n  # Date and distance are race-level attributes. Build a compact exact race map in chunks instead of loading the 416MB warehouse.\n  race_parts=[]\n  for ch in pd.read_csv(warehouse,usecols=["canonical_race_id","race_date","distance_metres"],chunksize=200000,low_memory=False):\n   ch["canonical_race_id"]=ch["canonical_race_id"].astype("string").str.strip()\n   race_parts.append(ch.drop_duplicates(["canonical_race_id"]))\n  w=pd.concat(race_parts,ignore_index=True).drop_duplicates(["canonical_race_id"])\n  # Governance: one canonical race cannot carry conflicting date/distance values.\n  chk=pd.concat(race_parts,ignore_index=True).groupby("canonical_race_id",dropna=False).agg(race_date_n=("race_date","nunique"),distance_n=("distance_metres","nunique"))\n  bad=chk[(chk.race_date_n>1)|(chk.distance_n>1)]\n  if len(bad): raise RuntimeError(f"Conflicting race-level identity attributes: {len(bad)} races")\n  d=a.merge(w,on="canonical_race_id",how="left",validate="many_to_one")\n  if d["race_date"].isna().any(): raise RuntimeError(f"Authority rows missing race-date enrichment: {int(d.race_date.isna().sum())}")\n  d=d.rename(columns={"finish_margin_lengths":"finish_margin","runner_lengths_v_standard":"runner_lvs"})\n  print(f"SOURCE=VERIFIED_RUNNER_LVS_AUTHORITY SIZE={size} SHA256={digest}")\n  return d[NEED]\n if not FALLBACK.exists(): raise FileNotFoundError(f"Neither authority nor fallback exists: {AUTHORITY} | {FALLBACK}")\n print("SOURCE=STRICT_PIT_WAREHOUSE_RECONSTRUCTION")\n if AUTHORITY.exists(): print("PARITY_AUTHORITY_PRESENT_BUT_NOT_USED_AS_TARGET=YES")\n return pd.read_csv(FALLBACK,usecols=NEED,low_memory=False)
+NEED=["canonical_race_id","canonical_horse_id","race_date","distance_metres","finish_position","finish_margin","runner_lvs"]
+
+def load_source():
+ import hashlib
+ if AUTHORITY.exists() and not PARITY_AUTHORITY_ONLY:
+  size=AUTHORITY.stat().st_size
+  if size!=AUTHORITY_SIZE: raise RuntimeError(f"Runner-LVS authority size drift: {size} != {AUTHORITY_SIZE}")
+  h=hashlib.sha256()
+  with AUTHORITY.open("rb") as fh:
+   for b in iter(lambda:fh.read(8*1024*1024),b""): h.update(b)
+  digest=h.hexdigest()
+  if digest!=AUTHORITY_SHA256: raise RuntimeError(f"Runner-LVS authority SHA drift: {digest}")
+  a=pd.read_csv(AUTHORITY,usecols=["canonical_performance_id","canonical_race_id","canonical_horse_id","finish_position","finish_margin_lengths","runner_lengths_v_standard"],low_memory=False)
+  # Authority lacks date/distance; enrich identity-exact from warehouse only when available.
+  warehouse=ROOT/"docs/performance-intelligence/warehouse/edgeiq_performance_fact_warehouse_v1.csv"
+  if not warehouse.exists(): raise FileNotFoundError("Verified runner-LVS authority found, but warehouse identity enrichment (race_date/distance) is unavailable.")
+  # Date and distance are race-level attributes. Build a compact exact race map in chunks instead of loading the 416MB warehouse.
+  race_parts=[]
+  for ch in pd.read_csv(warehouse,usecols=["canonical_race_id","race_date","distance_metres"],chunksize=200000,low_memory=False):
+   ch["canonical_race_id"]=ch["canonical_race_id"].astype("string").str.strip()
+   race_parts.append(ch.drop_duplicates(["canonical_race_id"]))
+  w=pd.concat(race_parts,ignore_index=True).drop_duplicates(["canonical_race_id"])
+  # Governance: one canonical race cannot carry conflicting date/distance values.
+  chk=pd.concat(race_parts,ignore_index=True).groupby("canonical_race_id",dropna=False).agg(race_date_n=("race_date","nunique"),distance_n=("distance_metres","nunique"))
+  bad=chk[(chk.race_date_n>1)|(chk.distance_n>1)]
+  if len(bad): raise RuntimeError(f"Conflicting race-level identity attributes: {len(bad)} races")
+  d=a.merge(w,on="canonical_race_id",how="left",validate="many_to_one")
+  if d["race_date"].isna().any(): raise RuntimeError(f"Authority rows missing race-date enrichment: {int(d.race_date.isna().sum())}")
+  d=d.rename(columns={"finish_margin_lengths":"finish_margin","runner_lengths_v_standard":"runner_lvs"})
+  print(f"SOURCE=VERIFIED_RUNNER_LVS_AUTHORITY SIZE={size} SHA256={digest}")
+  return d[NEED]
+ if not FALLBACK.exists(): raise FileNotFoundError(f"Neither authority nor fallback exists: {AUTHORITY} | {FALLBACK}")
+ print("SOURCE=STRICT_PIT_WAREHOUSE_RECONSTRUCTION")
+ if AUTHORITY.exists(): print("PARITY_AUTHORITY_PRESENT_BUT_NOT_USED_AS_TARGET=YES")
+ return pd.read_csv(FALLBACK,usecols=NEED,low_memory=False)
 
 def stats(a,n):
  x=np.asarray(a[-n:],dtype=float)
