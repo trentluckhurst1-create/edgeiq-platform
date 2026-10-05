@@ -15,7 +15,7 @@ PREFLIGHT=OUT.parent/"LAB245B_PREFLIGHT.json"
 BENCHMARK_CHECKPOINT=OUT.parent/"LAB245B_STRICT_PIT_RACE_BENCHMARK_CHECKPOINT.csv"
 BENCHMARK_CHECKPOINT_META=OUT.parent/"LAB245B_STRICT_PIT_RACE_BENCHMARK_CHECKPOINT.json"
 # V8 freezes original V1 0.17 sec/length while making the benchmark strict date-PIT.
-CONTRACT_VERSION="LAB245B_STRICT_PIT_LVS_V10_RECOVERY_RACE_SELECTION_PARITY_V1_LENGTH_CONVERSION_TRACK_DISTANCE_CONDITION_MIN20"
+CONTRACT_VERSION="LAB245B_STRICT_PIT_LVS_V11_QUARANTINE_AMBIGUOUS_WINNER_TIME_V1_LENGTH_CONVERSION_TRACK_DISTANCE_CONDITION_MIN20"
 MIN_SAMPLE=20
 V1_SECONDS_PER_LENGTH=0.17
 V1_LENGTH_CONVERSION_CONTRACT="edgeiq_lengths_v_standard_methodology_v1.json:GOVERNED_CONSTANT_FROM_EXISTING_LENGTH_CONVERSION_CONTEXT_V1"
@@ -88,11 +88,19 @@ def main():
  multi_time=d.loc[d["_valid_time"]].groupby("canonical_race_id")["official_race_time_seconds"].nunique()
  multi_time_races=int((multi_time>1).sum())
  winner_time_n=d.loc[d["_winner"] & d["_valid_time"]].groupby("canonical_race_id")["official_race_time_seconds"].nunique()
- ambiguous_winner_races=int((winner_time_n>1).sum())
+ ambiguous_ids=set(winner_time_n[winner_time_n>1].index.astype(str))
+ ambiguous_winner_races=len(ambiguous_ids)
  if ambiguous_winner_races:
-  raise RuntimeError(f"Multiple distinct valid winner times within canonical race: {ambiguous_winner_races} races")
- r=d.sort_values(["canonical_race_id","_race_pick_priority"],ascending=[True,False],kind="stable").drop_duplicates("canonical_race_id")
- print(f"RECOVERY_RACE_SELECTION_PARITY=PASS MULTI_TIME_RACES={multi_time_races:,} AMBIGUOUS_WINNER_TIME_RACES={ambiguous_winner_races:,} POLICY=WINNER_VALID_TIME_THEN_VALID_TIME_THEN_WINNER")
+  lineage_cols=["canonical_race_id","canonical_performance_id","canonical_horse_id","race_date","canonical_track_id","distance_metres","track_condition_group","finish_position","official_race_time","official_race_time_seconds","time_unit","source_dataset","source_record_key","duplicate_status"]
+  q=d[d["canonical_race_id"].astype(str).isin(ambiguous_ids)][lineage_cols].copy()
+  q=q.sort_values(["canonical_race_id","finish_position","canonical_horse_id"],kind="stable")
+  qpath=OUT.parent/"LAB245B_AMBIGUOUS_WINNER_TIME_QUARANTINE.csv"
+  q.to_csv(qpath,index=False)
+  print(f"AMBIGUOUS_WINNER_TIME_QUARANTINE={qpath} RACES={ambiguous_winner_races:,} ROWS={len(q):,}")
+ d["_timing_quarantined"]=d["canonical_race_id"].astype(str).isin(ambiguous_ids)
+ selection=d[~d["_timing_quarantined"]].copy()
+ r=selection.sort_values(["canonical_race_id","_race_pick_priority"],ascending=[True,False],kind="stable").drop_duplicates("canonical_race_id")
+ print(f"RECOVERY_RACE_SELECTION_PARITY=PASS MULTI_TIME_RACES={multi_time_races:,} QUARANTINED_AMBIGUOUS_WINNER_TIME_RACES={ambiguous_winner_races:,} POLICY=WINNER_VALID_TIME_THEN_VALID_TIME_THEN_WINNER")
  timed_races=int(r["_valid_time"].sum())
  eligible_timed_races=int(r["_eligible_benchmark"].sum())
  r=r[r["_eligible_benchmark"]].copy()
