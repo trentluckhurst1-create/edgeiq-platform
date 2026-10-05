@@ -97,6 +97,11 @@ def main():
   try:
    cm=json.loads(BENCHMARK_CHECKPOINT_META.read_text(encoding="utf-8"))
    checkpoint_ok=(cm.get("contract_version")==CONTRACT_VERSION and cm.get("warehouse_sha256")==digest and cm.get("pit_policy")=="STRICT_DATE_LT_TARGET_DATE")
+   if checkpoint_ok:
+    ch=hashlib.sha256()
+    with BENCHMARK_CHECKPOINT.open("rb") as fh:
+     for b in iter(lambda:fh.read(8*1024*1024),b""): ch.update(b)
+    checkpoint_ok=(cm.get("checkpoint_sha256")==ch.hexdigest() and cm.get("checkpoint_bytes")==BENCHMARK_CHECKPOINT.stat().st_size)
   except Exception:
    checkpoint_ok=False
  if checkpoint_ok:
@@ -125,7 +130,10 @@ def main():
   r=r[r["standard_time_seconds"].notna()].copy()
   checkpoint_cols=["canonical_race_id","race_date","official_race_time_seconds","standard_time_seconds","benchmark_n"]
   r[checkpoint_cols].to_csv(BENCHMARK_CHECKPOINT,index=False)
-  BENCHMARK_CHECKPOINT_META.write_text(json.dumps({"contract_version":CONTRACT_VERSION,"warehouse_sha256":digest,"pit_policy":"STRICT_DATE_LT_TARGET_DATE","rows":int(len(r))},indent=2),encoding="utf-8")
+  ch=hashlib.sha256()
+  with BENCHMARK_CHECKPOINT.open("rb") as fh:
+   for b in iter(lambda:fh.read(8*1024*1024),b""): ch.update(b)
+  BENCHMARK_CHECKPOINT_META.write_text(json.dumps({"contract_version":CONTRACT_VERSION,"warehouse_sha256":digest,"pit_policy":"STRICT_DATE_LT_TARGET_DATE","rows":int(len(r)),"checkpoint_sha256":ch.hexdigest(),"checkpoint_bytes":BENCHMARK_CHECKPOINT.stat().st_size},indent=2),encoding="utf-8")
   print(f"CHECKPOINT_WRITTEN=STRICT_PIT_RACE_BENCHMARK ROWS={len(r):,}")
 
  sec_per_len=V1_SECONDS_PER_LENGTH
