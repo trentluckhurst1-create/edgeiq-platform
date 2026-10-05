@@ -30,6 +30,7 @@ on:
           - "245d12"
           - "245d13"
           - "245d14"
+          - "245d15"
 
 permissions:
   contents: read
@@ -284,6 +285,18 @@ jobs:
           Push-Location $ResearchRoot
           try { python $LocalScript } finally { Pop-Location }
           if ($LASTEXITCODE -ne 0) { throw "LAB245D14 failed" }
+      - name: Run LAB245D15 full-universe recent trajectory challenger
+        if: ${{ github.event.inputs.lab == '245d15' || (github.event_name == 'push' && contains(github.event.head_commit.message, 'LAB245D15')) }}
+        shell: powershell
+        run: |
+          $ResearchRoot = "C:\EDGEIQ_PROFITABILITY_RESEARCH"
+          $SourceScript = Join-Path $env:GITHUB_WORKSPACE "scripts\research\run_lab245d15_full_universe_recent.py"
+          $LocalScript = Join-Path $ResearchRoot "scripts\research\run_lab245d15_full_universe_recent.py"
+          Copy-Item $SourceScript $LocalScript -Force
+          python -m py_compile $LocalScript
+          Push-Location $ResearchRoot
+          try { python $LocalScript } finally { Pop-Location }
+          if ($LASTEXITCODE -ne 0) { throw "LAB245D15 failed" }
       - name: Run governed research bootstrap
         if: env.LAB == 'bootstrap'
         run: python scripts/research/profitability_program_bootstrap.py
