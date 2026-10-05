@@ -49,13 +49,19 @@ def main():
      else: x["status"]="PASS"
     else: x["status"]="PASS"
   a["checks"][name]=x
- x={"path":str(AUTH),"exists":AUTH.exists(),"role":"PARITY_ONLY_NOT_FORECAST_TARGET"}
- if AUTH.exists():
+ x={"path":str(AUTH),"exists":AUTH.exists(),"role":"REQUIRED_PARITY_ONLY_NOT_FORECAST_TARGET"}
+ if not AUTH.exists():
+  x["status"]="FAIL_MISSING"; a["status"]="FAIL"
+ else:
   x["bytes"]=AUTH.stat().st_size
-  x["status"]="PASS" if x["bytes"]==AUTH_SIZE else "WARN_SIZE_DRIFT"
-  if x["bytes"]==AUTH_SIZE:
+  if x["bytes"]!=AUTH_SIZE:
+   x["status"]="FAIL_SIZE"; a["status"]="FAIL"
+  else:
    x["sha256"]=sha256(AUTH)
-   if x["sha256"]!=AUTH_SHA: x["status"]="WARN_SHA_DRIFT"
+   if x["sha256"]!=AUTH_SHA:
+    x["status"]="FAIL_SHA"; a["status"]="FAIL"
+   else:
+    x["status"]="PASS"
  a["checks"]["historical_runner_lvs_authority"]=x
  OUT.write_text(json.dumps(a,indent=2),encoding="utf-8")
  print(json.dumps(a,indent=2))
