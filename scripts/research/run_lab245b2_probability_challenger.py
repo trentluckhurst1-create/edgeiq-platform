@@ -1,5 +1,5 @@
 from pathlib import Path
-import json, math
+import json, math, hashlib
 import numpy as np
 import pandas as pd
 
@@ -45,9 +45,9 @@ def tune(d):
 
 def main():
  if not B1.exists() or not PRED.exists(): raise FileNotFoundError("LAB245B1 outputs missing")
- b1=json.loads(B1.read_text(encoding="utf-8"))
+ b1=json.loads(B1.read_text(encoding="utf-8"))\n ph=hashlib.sha256()\n with PRED.open("rb") as fh:\n  for b in iter(lambda:fh.read(8*1024*1024),b""): ph.update(b)\n pred_sha=ph.hexdigest()\n if pred_sha!=b1.get("oof_predictions_sha256") or PRED.stat().st_size!=b1.get("oof_predictions_bytes"):\n  raise RuntimeError("LAB245B2 stale/mismatched B1 prediction lineage")
  if b1.get("status")!="SURVIVE_TO_LAB245B2":
-  audit={"status":"SKIPPED_B1_REJECTED","b1_status":b1.get("status"),"holdout_2025_2026_opened":False,"market_used":False}
+  audit={"status":"SKIPPED_B1_REJECTED","b1_status":b1.get("status"),"holdout_2025_2026_opened":False,"market_used":False,"b1_oof_predictions_sha256":pred_sha}
   AUD.write_text(json.dumps(audit,indent=2),encoding="utf-8"); print(json.dumps(audit,indent=2)); return
  d=pd.read_csv(PRED,low_memory=False)
  if "target_field_size" not in d.columns: raise RuntimeError("LAB245B2 requires full target field size for probability completeness")
