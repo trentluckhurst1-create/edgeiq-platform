@@ -72,6 +72,7 @@ def main():
   for name,col in baselines.items():
    p=te[col].fillna(tr[col].median()).to_numpy(float)
    rows.append({"year":year,"model":name,**metrics(te,p)})
+   q=te[["canonical_race_id","horse_id","_year","race_date","target_lvs"]].copy(); q["model"]=name; q["pred_lvs"]=p; pred_rows.append(q)
   models={
    "RIDGE":make_pipeline(SimpleImputer(strategy="median"),StandardScaler(),Ridge(alpha=10.0)),
    "HGB":make_pipeline(SimpleImputer(strategy="median"),HistGradientBoostingRegressor(max_iter=250,learning_rate=.04,max_leaf_nodes=15,l2_regularization=5,random_state=245))
@@ -79,6 +80,7 @@ def main():
   for name,m in models.items():
    m.fit(tr[FEATURES],tr.target_lvs); p=m.predict(te[FEATURES])
    rows.append({"year":year,"model":name,**metrics(te,p)})
+   q=te[["canonical_race_id","horse_id","_year","race_date","target_lvs"]].copy(); q["model"]=name; q["pred_lvs"]=p; pred_rows.append(q)
    if year in [2022,2023]: oof.setdefault(name,[]).append((te.copy(),p))
  # pooled development selection: 2022-23 only.
  dev=[]
