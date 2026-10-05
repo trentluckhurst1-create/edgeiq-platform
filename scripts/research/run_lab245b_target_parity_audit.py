@@ -12,7 +12,9 @@ PIT=ROOT/"outputs/research/profitability_program/lab245b/LAB245B_WAREHOUSE_RUNNE
 OUT=ROOT/"outputs/research/profitability_program/lab245b/LAB245B_TARGET_PARITY_AUDIT.json"
 EXPECTED_SIZE=80343742
 EXPECTED_SHA="b08bb7a334ddba2f6a76942452dd964cd59db05001dc5710ff19aa7fc6e12926"
-PARITY_THRESHOLD=0.0  # sign/unit/formula guard only; numerical equality is not expected because strict-PIT standards differ
+PARITY_THRESHOLD=0.0  # level correlation diagnostic only; strict-PIT standards differ
+CENTERED_CORR_MIN=0.999
+CENTERED_MAE_MAX=0.02
 
 def sha256(p):
  h=hashlib.sha256()
@@ -46,15 +48,24 @@ def main():
   v=m.dropna(subset=["runner_lvs","authority_lvs"]).copy()
   corr=float(v["runner_lvs"].corr(v["authority_lvs"])) if len(v)>1 else None
   delta=v["runner_lvs"]-v["authority_lvs"]
-  # Formula/sign/unit guardrail only. We do NOT require numerical equality because standards differ by PIT policy.
+  # Race demeaning removes benchmark-level shifts, isolating the runner formula.
+  v["pit_centered"]=v["runner_lvs"]-v.groupby("canonical_race_id")["runner_lvs"].transform("mean")
+  v["authority_centered"]=v["authority_lvs"]-v.groupby("canonical_race_id")["authority_lvs"].transform("mean")
+  centered_corr=float(v["pit_centered"].corr(v["authority_centered"])) if len(v)>1 else None
+  centered_mae=float((v["pit_centered"]-v["authority_centered"]).abs().mean())
+  # Formula/sign/unit guardrail only. We do NOT require numerical level equality because standards differ by PIT policy.
   if len(v)==0: raise RuntimeError("No exact parity overlap")
   if corr is None or not np.isfinite(corr) or corr<=PARITY_THRESHOLD:
-   raise RuntimeError(f"Parity sign/unit failure correlation={corr}")
+   raise RuntimeError(f"Parity sign/unit failure level_correlation={corr}")
+  if centered_corr is None or not np.isfinite(centered_corr) or centered_corr<CENTERED_CORR_MIN or centered_mae>CENTERED_MAE_MAX:
+   raise RuntimeError(f"Runner-formula parity failure centered_corr={centered_corr} centered_mae={centered_mae}")
   report.update({"authority_present":True,"authority_size":size,"authority_sha256":digest,
                  "pit_rows":int(len(p)),"authority_rows":int(len(a)),"exact_overlap_rows":int(len(m)),
                  "numeric_overlap_rows":int(len(v)),"lvs_correlation":corr,
                  "mean_pit_minus_authority_lvs":float(delta.mean()),"mae_lvs":float(delta.abs().mean()),
-                 "parity_threshold_correlation":PARITY_THRESHOLD,"parity_status":"PASS_SIGN_UNIT_FORMULA"})
+                 "parity_threshold_correlation":PARITY_THRESHOLD,"within_race_centered_correlation":centered_corr,
+                 "within_race_centered_mae":centered_mae,"centered_corr_min":CENTERED_CORR_MIN,"centered_mae_max":CENTERED_MAE_MAX,
+                 "parity_status":"PASS_SIGN_UNIT_FORMULA"})
  OUT.write_text(json.dumps(report,indent=2),encoding="utf-8")
  print(json.dumps(report,indent=2))
  print(f"OUT={OUT}")
