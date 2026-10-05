@@ -59,7 +59,7 @@ jobs:
         if: env.LAB == '245a'
         run: python scripts/research/run_lab245a_performance_outcome_bridge_audit.py
       - name: Compile LAB245B governed chain
-        if: env.LAB == '245b1'
+        if: env.LAB == '245b1' || env.LAB == '245b-l27'
         run: |
           python -m py_compile scripts/research/build_lab245b_warehouse_runner_lvs.py
           python -m py_compile scripts/research/run_lab245b_target_parity_audit.py
@@ -91,8 +91,18 @@ jobs:
           python scripts/research/run_lab245b2_probability_challenger.py
           python scripts/research/run_lab245b3_selective_betting_forensics.py
           python scripts/research/run_lab245b4_sealed_holdout.py
-      - name: Run LAB245B certified LAB027 next-performance challenger
+      - name: Check LAB245B L27 data authority
         if: env.LAB == '245b-l27'
+        shell: bash
+        run: |
+          if [ -f outputs/research/model_lab_027/certified_pre_race_feature_matrix_027.csv ]; then
+            echo "LAB245B_L27_DATA_AVAILABLE=true" >> "$GITHUB_ENV"
+          else
+            echo "LAB245B_L27_DATA_AVAILABLE=false" >> "$GITHUB_ENV"
+            echo "L27 full execution deferred: ignored certified feature matrix is not present on this GitHub runner."
+          fi
+      - name: Run LAB245B certified LAB027 next-performance challenger
+        if: env.LAB == '245b-l27' && env.LAB245B_L27_DATA_AVAILABLE == 'true'
         run: python scripts/research/run_lab245b_l27_next_performance.py
       - name: Run governed research bootstrap
         if: env.LAB == 'bootstrap'
