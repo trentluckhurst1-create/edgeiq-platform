@@ -25,7 +25,7 @@ def score(df):
     # Only races with exactly one observed winner and >=2 scored runners are valid.
     valid=[]
     for rid,g in x.groupby("_race",sort=False):
-        y=(g["target_lvs"]==g["target_lvs"].max()).astype(int)
+        y=(pd.to_numeric(g["target_finish_position"],errors="coerce")==1).astype(int)
         if len(g)>=2 and y.sum()==1:
             gg=g.copy(); gg["y"]=y; valid.append(gg)
     if not valid:return {"races":0,"rows":0,"winner_log_loss":np.nan,"brier_runner":np.nan}
