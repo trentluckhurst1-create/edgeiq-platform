@@ -14,7 +14,8 @@ SP_CANDIDATES=[
  DATA_ROOT/"outputs/research/model_price_diagnostics/lab166c/LAB166E_CORRECTED_PIT_PREDICTIONS.csv",
 ]
 OUT=DIR/"LAB245B3_FINAL_SP_POLICY_RESULTS.csv"
-AUD=DIR/"LAB245B3_AUDIT.json"\nCONTRACT=ROOT/"scripts/research/LAB245B_B3_SELECTIVE_BETTING_PREDECLARED.json"
+AUD=DIR/"LAB245B3_AUDIT.json"
+CONTRACT=ROOT/"scripts/research/LAB245B_B3_SELECTIVE_BETTING_PREDECLARED.json"
 
 # Small predeclared policy family; no post-2023 tuning.
 POLICIES=[
@@ -65,6 +66,13 @@ def apply(d,edge,pmin,spmax):
 
 def main():
  if not B2.exists() or not PROB.exists(): raise FileNotFoundError("LAB245B2 outputs missing")
+ if not CONTRACT.exists(): raise FileNotFoundError(CONTRACT)
+ contract=json.loads(CONTRACT.read_text(encoding="utf-8"))
+ expected_deltas=[round(e-1.0,10) for _,e,_,_ in POLICIES]
+ declared_deltas=[round(float(x),10) for x in contract.get("candidate_edge_thresholds",[])]
+ if declared_deltas!=expected_deltas: raise RuntimeError(f"LAB245B3 policy contract drift: declared edge deltas={declared_deltas} expected={expected_deltas}")
+ if contract.get("development")!=[2022,2023] or contract.get("confirmation")!=2024 or contract.get("sealed")!=[2025,2026]: raise RuntimeError("LAB245B3 temporal contract drift")
+ if contract.get("market_as_model_feature")!="NO": raise RuntimeError("LAB245B3 market-feature contract drift")
  b2=json.loads(B2.read_text(encoding="utf-8"))
  if b2.get("status")!="SURVIVE_TO_LAB245B3":
   a={"status":"SKIPPED_B2_REJECTED","b2_status":b2.get("status"),"holdout_2025_2026_opened":False}
