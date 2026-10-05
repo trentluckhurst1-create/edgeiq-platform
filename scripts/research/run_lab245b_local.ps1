@@ -1,43 +1,41 @@
 param(
-    [string]$DataRoot = "C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM"
+  [string]$ResearchRoot = "C:\EDGEIQ_PROFITABILITY_RESEARCH",
+  [string]$DataRoot = "C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM"
 )
 $ErrorActionPreference = "Stop"
-$ResearchRoot = (Resolve-Path (Join-Path $PSScriptRoot "..\..")).Path
-$env:EDGEIQ_DATA_ROOT = (Resolve-Path $DataRoot).Path
+Set-StrictMode -Version Latest
 
-$Warehouse = Join-Path $env:EDGEIQ_DATA_ROOT "docs\performance-intelligence\warehouse\edgeiq_performance_fact_warehouse_v1.csv"
-$Lcp = Join-Path $env:EDGEIQ_DATA_ROOT "public\data\edgeiq_length_conversion_parameter_fact_v2.csv"
-if (-not (Test-Path $Warehouse)) { throw "Missing warehouse: $Warehouse" }
-if (-not (Test-Path $Lcp)) { throw "Missing length conversion authority: $Lcp" }
+$Warehouse = Join-Path $DataRoot "docs\performance-intelligence\warehouse\edgeiq_performance_fact_warehouse_v1.csv"
+$Authority = Join-Path $DataRoot "docs\performance-intelligence\lengths-v-standard\edgeiq_runner_lengths_v_standard_fact_v1.csv"
+$Launcher = Join-Path $ResearchRoot "scripts\research\run_lab245b_preholdout_chain.py"
+$LogDir = Join-Path $ResearchRoot "outputs\research\profitability_program\lab245b"
+$Log = Join-Path $LogDir ("LAB245B_LOCAL_RUN_" + (Get-Date -Format "yyyyMMdd_HHmmss") + ".log")
 
-Write-Host "LAB245B_RESEARCH_ROOT=$ResearchRoot"
-Write-Host "LAB245B_DATA_ROOT=$env:EDGEIQ_DATA_ROOT"
-Write-Host "PRODUCTION_WRITE_POLICY=READ_ONLY_INPUTS"
+if (-not (Test-Path $ResearchRoot)) { throw "Research worktree missing: $ResearchRoot" }
+if (-not (Test-Path $Warehouse)) { throw "Immutable warehouse missing: $Warehouse" }
+if (-not (Test-Path $Launcher)) { throw "LAB245B launcher missing: $Launcher" }
+New-Item -ItemType Directory -Force -Path $LogDir | Out-Null
 
+$env:EDGEIQ_DATA_ROOT = $DataRoot
 Set-Location $ResearchRoot
-$Scripts = @(
-  "scripts/research/run_lab245b_preflight.py",
-  "scripts/research/build_lab245b_warehouse_runner_lvs.py",
-  "scripts/research/run_lab245b_target_parity_audit.py",
-  "scripts/research/build_lab245b_compact_performance_bridge.py",
-  "scripts/research/run_lab245b1_next_performance_forecast.py",
-  "scripts/research/run_lab245b2_probability_challenger.py",
-  "scripts/research/run_lab245b3_selective_betting_forensics.py"
-)
-foreach ($s in $Scripts) {
-  Write-Host ("=" * 100)
-  Write-Host "RUN=$s"
-  python $s
-  if ($LASTEXITCODE -ne 0) { throw "LAB245B failed at $s with exit code $LASTEXITCODE" }
+
+Write-Host "LAB245B LOCAL GOVERNED EXECUTION"
+Write-Host "RESEARCH_ROOT=$ResearchRoot"
+Write-Host "DATA_ROOT=$DataRoot"
+Write-Host "WAREHOUSE_READ_ONLY_SOURCE=$Warehouse"
+Write-Host "PARITY_AUTHORITY_PRESENT=$([bool](Test-Path $Authority))"
+Write-Host "OUTPUT_ROOT=$LogDir"
+Write-Host "HOLDOUT_2025_2026=SEALED"
+
+Start-Transcript -Path $Log -Force
+try {
+  python -m py_compile $Launcher
+  if ($LASTEXITCODE -ne 0) { throw "Launcher compile failed." }
+  python $Launcher
+  if ($LASTEXITCODE -ne 0) { throw "LAB245B governed chain failed with exit code $LASTEXITCODE." }
 }
-$L27 = Join-Path $env:EDGEIQ_DATA_ROOT "outputs\research\model_lab_027\certified_pre_race_feature_matrix_027.csv"
-if (Test-Path $L27) {
-  Write-Host ("=" * 100)
-  Write-Host "RUN=scripts/research/run_lab245b_l27_next_performance.py"
-  python "scripts/research/run_lab245b_l27_next_performance.py"
-  if ($LASTEXITCODE -ne 0) { throw "LAB245B L27 challenger failed with exit code $LASTEXITCODE" }
-} else {
-  Write-Host "LAB245B_L27=SKIPPED_SOURCE_ABSENT"
+finally {
+  Stop-Transcript
 }
-Write-Host ("=" * 100)
-Write-Host "LAB245B_CHAIN_COMPLETE_PREHOLDOUT"\nWrite-Host "LAB245B4_HOLDOUT=SEALED_REQUIRES_EXPLICIT_MANUAL_RUN"
+Write-Host "LAB245B_RUN_COMPLETE"
+Write-Host "LOG=$Log"
