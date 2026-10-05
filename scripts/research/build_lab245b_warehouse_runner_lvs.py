@@ -15,7 +15,7 @@ PREFLIGHT=OUT.parent/"LAB245B_PREFLIGHT.json"
 BENCHMARK_CHECKPOINT=OUT.parent/"LAB245B_STRICT_PIT_RACE_BENCHMARK_CHECKPOINT.csv"
 BENCHMARK_CHECKPOINT_META=OUT.parent/"LAB245B_STRICT_PIT_RACE_BENCHMARK_CHECKPOINT.json"
 # V8 freezes original V1 0.17 sec/length while making the benchmark strict date-PIT.
-CONTRACT_VERSION="LAB245B_STRICT_PIT_LVS_V11_QUARANTINE_AMBIGUOUS_WINNER_TIME_V1_LENGTH_CONVERSION_TRACK_DISTANCE_CONDITION_MIN20"
+CONTRACT_VERSION="LAB245B_STRICT_PIT_LVS_V12_QUARANTINE_LINEAGE_COMPLETE_V1_LENGTH_CONVERSION_TRACK_DISTANCE_CONDITION_MIN20"
 MIN_SAMPLE=20
 V1_SECONDS_PER_LENGTH=0.17
 V1_LENGTH_CONVERSION_CONTRACT="edgeiq_lengths_v_standard_methodology_v1.json:GOVERNED_CONSTANT_FROM_EXISTING_LENGTH_CONVERSION_CONTEXT_V1"
@@ -58,8 +58,8 @@ def main():
   digest=h.hexdigest()
   if digest!=EXPECTED_WAREHOUSE_SHA256: raise RuntimeError(f"Warehouse SHA drift: {digest}")
  print(f"WAREHOUSE_FROZEN_AUTHORITY=PASS SHA256={digest}")
- use=["canonical_race_id","canonical_horse_id","canonical_track_id","race_date","distance_metres","track_condition_group","field_size","finish_position","finish_margin","official_race_time","official_race_time_seconds","time_unit"]
- d=pd.read_csv(WAREHOUSE,usecols=use,low_memory=False)
+ use=["canonical_performance_id","canonical_race_id","canonical_horse_id","canonical_track_id","race_date","distance_metres","track_condition_group","field_size","finish_position","finish_margin","official_race_time","official_race_time_seconds","time_unit","source_dataset","source_record_key","duplicate_status"]
+ header=set(pd.read_csv(WAREHOUSE,nrows=0).columns)\n missing_use=[x for x in use if x not in header]\n if missing_use: raise RuntimeError(f"LAB245B required warehouse columns missing: {missing_use}")\n d=pd.read_csv(WAREHOUSE,usecols=use,low_memory=False)
  d["race_date"]=pd.to_datetime(d["race_date"],errors="coerce")
  for x in ["distance_metres","finish_position","finish_margin","official_race_time","official_race_time_seconds"]:d[x]=pd.to_numeric(d[x],errors="coerce")
  # Fail closed against the known historical centiseconds /1000 regression.
