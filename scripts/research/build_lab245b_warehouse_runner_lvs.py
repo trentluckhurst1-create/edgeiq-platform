@@ -39,7 +39,7 @@ def main():
  digest=h.hexdigest()
  if digest!=EXPECTED_WAREHOUSE_SHA256: raise RuntimeError(f"Warehouse SHA drift: {digest}")
  print(f"WAREHOUSE_FROZEN_AUTHORITY=PASS SHA256={digest}")
- use=["canonical_race_id","canonical_horse_id","canonical_track_id","race_date","track","track_layout","distance_metres","track_condition","track_condition_group","finish_position","finish_margin","official_race_time","official_race_time_seconds","time_unit"]
+ use=["canonical_race_id","canonical_horse_id","canonical_track_id","race_date","jurisdiction","track","track_layout","distance_metres","track_condition","track_condition_group","finish_position","finish_margin","official_race_time","official_race_time_seconds","time_unit"]
  d=pd.read_csv(WAREHOUSE,usecols=use,low_memory=False)
  d["race_date"]=pd.to_datetime(d["race_date"],errors="coerce")
  for x in ["distance_metres","finish_position","finish_margin","official_race_time","official_race_time_seconds"]:d[x]=pd.to_numeric(d[x],errors="coerce")
