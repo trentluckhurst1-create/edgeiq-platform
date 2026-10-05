@@ -47,7 +47,7 @@ def main():
      else: x["status"]="PASS"
     else: x["status"]="PASS"
   a["checks"][name]=x
- x={"path":str(AUTH),"exists":AUTH.exists(),"role":"REQUIRED_PARITY_ONLY_NOT_FORECAST_TARGET"}
+ x={"path":str(AUTH),"exists":AUTH.exists(),"role":"OPTIONAL_PARITY_ONLY_NOT_FORECAST_TARGET"}
  if not AUTH.exists():
   x["status"]="FAIL_MISSING"; a["status"]="FAIL"
  else:
