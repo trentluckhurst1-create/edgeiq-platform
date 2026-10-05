@@ -23,6 +23,7 @@ on:
           - "245d5"
           - "245d6"
           - "245d7"
+          - "245d8"
 
 permissions:
   contents: read
@@ -191,6 +192,20 @@ jobs:
           Push-Location $ResearchRoot
           try { python $LocalScript } finally { Pop-Location }
           if ($LASTEXITCODE -ne 0) { throw "LAB245D7 failed" }
+      - name: Run LAB245D8 race-structure specialist models
+        if: ${{ github.event.inputs.lab == '245d8' || (github.event_name == 'push' && contains(github.event.head_commit.message, 'LAB245D8')) }}
+        shell: powershell
+        run: |
+          $ResearchRoot = "C:\EDGEIQ_PROFITABILITY_RESEARCH"
+          $Bridge = Join-Path $ResearchRoot "outputs\research\profitability_program\lab245b\LAB245B_COMPACT_PERFORMANCE_BRIDGE.csv"
+          if (-not (Test-Path $Bridge)) { throw "LAB245B compact bridge missing: $Bridge" }
+          $SourceScript = Join-Path $env:GITHUB_WORKSPACE "scripts\research\run_lab245d8_race_specialists.py"
+          $LocalScript = Join-Path $ResearchRoot "scripts\research\run_lab245d8_race_specialists.py"
+          Copy-Item $SourceScript $LocalScript -Force
+          python -m py_compile $LocalScript
+          Push-Location $ResearchRoot
+          try { python $LocalScript } finally { Pop-Location }
+          if ($LASTEXITCODE -ne 0) { throw "LAB245D8 failed" }
       - name: Run governed research bootstrap
         if: env.LAB == 'bootstrap'
         run: python scripts/research/profitability_program_bootstrap.py
