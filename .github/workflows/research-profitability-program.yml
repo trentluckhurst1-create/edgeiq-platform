@@ -86,15 +86,7 @@ jobs:
       - name: Build and run LAB245B1 next-performance forecast
         if: env.LAB == '245b1' && env.LAB245B_DATA_AVAILABLE == 'true'
         run: |
-          python scripts/research/run_lab245b_preflight.py
-          # Historical runner-LVS authority is parity evidence only because its benchmark was all-history.
-          # Forecasting labels must be reconstructed with strict date-PIT standards.
-          python scripts/research/build_lab245b_warehouse_runner_lvs.py
-          python scripts/research/run_lab245b_target_parity_audit.py
-          python scripts/research/build_lab245b_compact_performance_bridge.py
-          python scripts/research/run_lab245b1_next_performance_forecast.py
-          python scripts/research/run_lab245b2_probability_challenger.py
-          python scripts/research/run_lab245b3_selective_betting_forensics.py
+          python scripts/research/run_lab245b_preholdout_chain.py
           echo "2025-2026 HOLDOUT REMAINS SEALED: LAB245B4 requires explicit manual dispatch."
       - name: Check explicit LAB245B4 holdout prerequisites
         if: env.LAB == '245b4-holdout'
