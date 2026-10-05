@@ -6,12 +6,13 @@ import subprocess
 import sys
 
 ROOT=Path(__file__).resolve().parents[2]
+DATA_ROOT=Path(os.environ.get("EDGEIQ_DATA_ROOT",str(ROOT))).resolve()
 OUT=ROOT/"outputs/research/profitability_program/lab245b"
 PY=sys.executable
 EXPECTED_WAREHOUSE_SHA="bcdcef1c7cb9144feae5783ca2fa83b1dc2b8dc07a42ac31c31fd7bd12b53107"
 EXPECTED_TARGET_CONTRACT="LAB245B_STRICT_PIT_LVS_V5_GOVERNED_TRACK_DISTANCE_CONDITION_MIN20"\nEXPECTED_AUTHORITY_SHA="b08bb7a334ddba2f6a76942452dd964cd59db05001dc5710ff19aa7fc6e12926"\nEXPECTED_AUTHORITY_BYTES=80343742
-AUTHORITY=ROOT/"docs/performance-intelligence/lengths-v-standard/edgeiq_runner_lengths_v_standard_fact_v1.csv"
-WAREHOUSE=ROOT/"docs/performance-intelligence/warehouse/edgeiq_performance_fact_warehouse_v1.csv"
+AUTHORITY=DATA_ROOT/"docs/performance-intelligence/lengths-v-standard/edgeiq_runner_lengths_v_standard_fact_v1.csv"
+WAREHOUSE=DATA_ROOT/"docs/performance-intelligence/warehouse/edgeiq_performance_fact_warehouse_v1.csv"
 
 def run(script):
     print(f"\\n=== RUN {script} ===",flush=True)
