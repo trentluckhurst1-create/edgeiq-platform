@@ -1,0 +1,48 @@
+{
+  "program": "LAB245B_ACTUAL_PERFORMANCE_PROFITABILITY",
+  "status": "PREHOLDOUT_CODE_READY_AWAITING_LOCAL_PHYSICAL_DATA_EXECUTION",
+  "primary_target": {
+    "source": "edgeiq_performance_fact_warehouse_v1.csv",
+    "source_bytes": 416143437,
+    "source_sha256": "bcdcef1c7cb9144feae5783ca2fa83b1dc2b8dc07a42ac31c31fd7bd12b53107",
+    "benchmark": "strict date-PIT median; canonical_track_id + distance_metres + condition; minimum 20 prior races",
+    "runner_formula": "race_lvs - finish_margin",
+    "seconds_per_length": 0.17
+  },
+  "parity_authority": {
+    "path": "docs/performance-intelligence/lengths-v-standard/edgeiq_runner_lengths_v_standard_fact_v1.csv",
+    "rows": 533387,
+    "bytes": 80343742,
+    "sha256": "b08bb7a334ddba2f6a76942452dd964cd59db05001dc5710ff19aa7fc6e12926",
+    "role": "PARITY_ONLY_NOT_FORECAST_TARGET",
+    "reason": "historical authority used all-history benchmark construction"
+  },
+  "temporal_governance": {
+    "development": [
+      2021,
+      2022,
+      2023
+    ],
+    "architecture_selection_oof": [
+      2022,
+      2023
+    ],
+    "confirmation": [
+      2024
+    ],
+    "sealed": [
+      2025,
+      2026
+    ],
+    "same_date_history": "EXCLUDED"
+  },
+  "gates": {
+    "B1": "ML must beat selected simple baseline on MAE, RMSE and within-race Spearman in each of 2022 and 2023, pooled development, and fixed 2024",
+    "B2": "ML probabilities must beat simple architecture on winner log loss and runner Brier in 2022 and 2023, pooled development, and fixed 2024; complete fields only",
+    "B3": "Final-SP forensic only; 2022 selects one of EDGE_105/110/115/120; frozen 2023 and 2024 confirmation; volume, odds-band concentration and drawdown gates",
+    "B4": "2025-2026 remains sealed unless B3 status SURVIVE_TO_FORENSIC_HOLDOUT"
+  },
+  "market_policy": "No market features in B1/B2. Final SP allowed only in B3/B4 historical forensics; deployability requires timestamp-safe pre-race offered odds.",
+  "fallback": "LAB027 certified pre-race features predicting LAB026 target LVS; 2025-2026 sealed",
+  "ci": "Python 3.11 compile + data-free contract smoke; hosted runner intentionally skips physical-data execution"
+}
