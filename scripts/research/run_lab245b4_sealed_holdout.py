@@ -13,7 +13,7 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error
 ROOT=Path(__file__).resolve().parents[2]
 DATA_ROOT=Path(os.environ.get("EDGEIQ_DATA_ROOT",str(ROOT))).resolve()
 DIR=ROOT/"outputs/research/profitability_program/lab245b"
-PIT=DIR/"LAB245B_WAREHOUSE_RUNNER_LVS.csv"
+PIT=DIR/"LAB245B_WAREHOUSE_RUNNER_LVS.csv"\nAUTHORITY=ROOT/"docs/performance-intelligence/lengths-v-standard/edgeiq_runner_lengths_v_standard_fact_v1.csv"\nWAREHOUSE=ROOT/"docs/performance-intelligence/warehouse/edgeiq_performance_fact_warehouse_v1.csv"
 TRAIN=DIR/"LAB245B_COMPACT_PERFORMANCE_BRIDGE.csv"
 B1=DIR/"LAB245B1_AUDIT.json"; B2=DIR/"LAB245B2_AUDIT.json"; B3=DIR/"LAB245B3_AUDIT.json"
 OUT=DIR/"LAB245B4_HOLDOUT_RESULTS.json"
