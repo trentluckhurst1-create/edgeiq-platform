@@ -18,6 +18,7 @@ on:
           - "245a"
           - "245b1"
           - "245b-l27"
+          - "245b4-holdout"
           - "bootstrap"
 
 permissions:
@@ -91,6 +92,11 @@ jobs:
           python scripts/research/run_lab245b1_next_performance_forecast.py
           python scripts/research/run_lab245b2_probability_challenger.py
           python scripts/research/run_lab245b3_selective_betting_forensics.py
+          echo "2025-2026 HOLDOUT REMAINS SEALED: LAB245B4 requires explicit manual dispatch."
+      - name: Explicitly open LAB245B4 sealed forensic holdout
+        if: env.LAB == '245b4-holdout'
+        run: |
+          python -m py_compile scripts/research/run_lab245b4_sealed_holdout.py
           python scripts/research/run_lab245b4_sealed_holdout.py
       - name: Check LAB245B L27 data authority
         if: env.LAB == '245b-l27'
