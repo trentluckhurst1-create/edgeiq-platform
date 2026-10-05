@@ -11,7 +11,7 @@ DATA_ROOT=Path(os.environ.get("EDGEIQ_DATA_ROOT",str(ROOT))).resolve()
 WAREHOUSE=DATA_ROOT/"docs/performance-intelligence/warehouse/edgeiq_performance_fact_warehouse_v1.csv"
 OUT=ROOT/"outputs/research/profitability_program/lab245b/LAB245B_WAREHOUSE_RUNNER_LVS.csv"
 MANIFEST=OUT.with_suffix(".manifest.json")
-PREFLIGHT=OUT.parent/"LAB245B_PREFLIGHT.json"
+PREFLIGHT=OUT.parent/"LAB245B_PREFLIGHT.json"\nBENCHMARK_CHECKPOINT=OUT.parent/"LAB245B_STRICT_PIT_RACE_BENCHMARK_CHECKPOINT.csv"\nBENCHMARK_CHECKPOINT_META=OUT.parent/"LAB245B_STRICT_PIT_RACE_BENCHMARK_CHECKPOINT.json"
 # V8 freezes original V1 0.17 sec/length while making the benchmark strict date-PIT.
 CONTRACT_VERSION="LAB245B_STRICT_PIT_LVS_V8_V1_LENGTH_CONVERSION_TRACK_DISTANCE_CONDITION_MIN20"
 MIN_SAMPLE=20
@@ -92,25 +92,41 @@ def main():
 
  # Strict date-PIT benchmark. All races on date D are scored from dates < D only.
  r=r.dropna(subset=["track_key","distance_metres","condition","official_race_time_seconds","race_date"]).sort_values(["race_date","canonical_race_id"],kind="stable")
- history={}
- scored=[]
- for race_date,day in r.groupby("race_date",sort=True):
-  day=day.copy()
-  keys=list(zip(day["track_key"],day["distance_metres"],day["condition"]))
-  times=day["official_race_time_seconds"].to_numpy(float)
-  counts=[]; std=[]
-  for k in keys:
-   vals=history.get(k,[])
-   counts.append(len(vals))
-   std.append(_median_sorted(vals) if len(vals)>=MIN_SAMPLE else np.nan)
-  day["benchmark_n"]=counts
-  day["standard_time_seconds"]=std
-  scored.append(day)
-  # Add the whole date only after every race on the date has been scored.
-  for k,t in zip(keys,times):
-   insort(history.setdefault(k,[]),float(t))
- r=pd.concat(scored,ignore_index=True)
- r=r[r["standard_time_seconds"].notna()].copy()
+ checkpoint_ok=False
+ if BENCHMARK_CHECKPOINT.exists() and BENCHMARK_CHECKPOINT_META.exists():
+  try:
+   cm=json.loads(BENCHMARK_CHECKPOINT_META.read_text(encoding="utf-8"))
+   checkpoint_ok=(cm.get("contract_version")==CONTRACT_VERSION and cm.get("warehouse_sha256")==digest and cm.get("pit_policy")=="STRICT_DATE_LT_TARGET_DATE")
+  except Exception:
+   checkpoint_ok=False
+ if checkpoint_ok:
+  r=pd.read_csv(BENCHMARK_CHECKPOINT,low_memory=False)
+  r["race_date"]=pd.to_datetime(r["race_date"],errors="coerce")
+  print(f"RESUME_CHECKPOINT=STRICT_PIT_RACE_BENCHMARK ROWS={len(r):,}")
+ else:
+  history={}
+  scored=[]
+  for race_date,day in r.groupby("race_date",sort=True):
+   day=day.copy()
+   keys=list(zip(day["track_key"],day["distance_metres"],day["condition"]))
+   times=day["official_race_time_seconds"].to_numpy(float)
+   counts=[]; std=[]
+   for k in keys:
+    vals=history.get(k,[])
+    counts.append(len(vals))
+    std.append(_median_sorted(vals) if len(vals)>=MIN_SAMPLE else np.nan)
+   day["benchmark_n"]=counts
+   day["standard_time_seconds"]=std
+   scored.append(day)
+   # Add the whole date only after every race on the date has been scored.
+   for k,t in zip(keys,times):
+    insort(history.setdefault(k,[]),float(t))
+  r=pd.concat(scored,ignore_index=True)
+  r=r[r["standard_time_seconds"].notna()].copy()
+  checkpoint_cols=["canonical_race_id","race_date","official_race_time_seconds","standard_time_seconds","benchmark_n"]
+  r[checkpoint_cols].to_csv(BENCHMARK_CHECKPOINT,index=False)
+  BENCHMARK_CHECKPOINT_META.write_text(json.dumps({"contract_version":CONTRACT_VERSION,"warehouse_sha256":digest,"pit_policy":"STRICT_DATE_LT_TARGET_DATE","rows":int(len(r))},indent=2),encoding="utf-8")
+  print(f"CHECKPOINT_WRITTEN=STRICT_PIT_RACE_BENCHMARK ROWS={len(r):,}")
 
  sec_per_len=V1_SECONDS_PER_LENGTH
  r["seconds_per_length"]=sec_per_len
