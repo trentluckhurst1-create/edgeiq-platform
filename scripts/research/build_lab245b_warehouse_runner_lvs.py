@@ -9,7 +9,7 @@ ROOT=Path(__file__).resolve().parents[2]
 DATA_ROOT=Path(os.environ.get("EDGEIQ_DATA_ROOT",str(ROOT))).resolve()
 WAREHOUSE=DATA_ROOT/"docs/performance-intelligence/warehouse/edgeiq_performance_fact_warehouse_v1.csv"
 LCP=DATA_ROOT/"public/data/edgeiq_length_conversion_parameter_fact_v2.csv"
-OUT=ROOT/"outputs/research/profitability_program/lab245b/LAB245B_WAREHOUSE_RUNNER_LVS.csv"
+OUT=ROOT/"outputs/research/profitability_program/lab245b/LAB245B_WAREHOUSE_RUNNER_LVS.csv"\nMANIFEST=OUT.with_suffix(".manifest.json")\nCONTRACT_VERSION="LAB245B_STRICT_PIT_LVS_V3_TRACK_DISTANCE_CONDITION_MIN20_VALID_FINISH"
 MIN_SAMPLE=20
 EXPECTED_WAREHOUSE_SIZE=416143437
 EXPECTED_WAREHOUSE_SHA256="bcdcef1c7cb9144feae5783ca2fa83b1dc2b8dc07a42ac31c31fd7bd12b53107"
@@ -106,7 +106,7 @@ def main():
  out["runner_lvs"]=out["race_lvs"]-out["finish_margin"]
  out["runner_time_equivalent_seconds"]=out["official_race_time_seconds"]+out["finish_margin"]*out["seconds_per_length"]
  keep=["canonical_race_id","canonical_horse_id","race_date","distance_metres","finish_position","finish_margin","runner_time_equivalent_seconds","runner_lvs","race_lvs","standard_time_seconds","seconds_per_length","benchmark_n"]
- out[keep].to_csv(OUT,index=False)
+ out[keep].to_csv(OUT,index=False)\n manifest={"contract_version":CONTRACT_VERSION,"warehouse_sha256":digest,"warehouse_bytes":WAREHOUSE.stat().st_size,"pit_policy":"STRICT_DATE_LT_TARGET_DATE","benchmark_grouping":"canonical_track_id+distance_metres+condition","minimum_prior_races":MIN_SAMPLE,"runner_formula":"race_lvs-finish_margin","valid_runner_rule":"finish_position>0 and finite nonnegative finish_margin","rows":int(len(out)),"races":int(out["canonical_race_id"].nunique())}\n MANIFEST.write_text(json.dumps(manifest,indent=2),encoding="utf-8")
  lvs_races=r["canonical_race_id"].nunique()
  print(f"SOURCE_ROWS={len(d):,}")
  print(f"TIMED_RACES={timed_races:,}")
@@ -121,5 +121,5 @@ def main():
  print("KNOWN_RECOVERY_TIMED_RACES=70,308 DELTA_RACES=54,978 LVS_RACES=52,414")
  if abs(timed_races-70308)>10:raise RuntimeError("Timed-race recovery count materially disagrees with certified audit.")
  if lvs_races<=0 or lvs_races>=timed_races:raise RuntimeError("Invalid PIT LVS recovery funnel.")
- print(f"OUT={OUT}")
+ print(f"OUT={OUT}")\n print(f"MANIFEST={MANIFEST}")
 if __name__=="__main__":main()
