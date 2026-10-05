@@ -49,7 +49,7 @@ def main():
   a["checks"][name]=x
  x={"path":str(AUTH),"exists":AUTH.exists(),"role":"OPTIONAL_PARITY_ONLY_NOT_FORECAST_TARGET"}
  if not AUTH.exists():
-  x["status"]="FAIL_MISSING"; a["status"]="FAIL"
+  x["status"]="OPTIONAL_ABSENT_PARITY_AUDIT_SKIPPED"
  else:
   x["bytes"]=AUTH.stat().st_size
   if x["bytes"]!=AUTH_SIZE:
