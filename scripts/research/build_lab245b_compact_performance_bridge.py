@@ -6,74 +6,9 @@ import numpy as np
 
 ROOT=Path(__file__).resolve().parents[2]
 DATA_ROOT=Path(os.environ.get("EDGEIQ_DATA_ROOT",str(ROOT))).resolve()
-AUTHORITY=DATA_ROOT/"docs/performance-intelligence/lengths-v-standard/edgeiq_runner_lengths_v_standard_fact_v1.csv"
-FALLBACK=ROOT/"outputs/research/profitability_program/lab245b/LAB245B_WAREHOUSE_RUNNER_LVS.csv"
-AUTHORITY_SIZE=80343742
-AUTHORITY_SHA256="b08bb7a334ddba2f6a76942452dd964cd59db05001dc5710ff19aa7fc6e12926"
-PARITY_AUTHORITY_ONLY=True  # LOCKED: historical 533,387-row authority used all-history benchmark construction. It is formula/parity evidence only; forecasting target must be strict date-PIT.
-OUTDIR=ROOT/"outputs/research/profitability_program/lab245b"
+SOURCE=ROOT/"outputs/research/profitability_program/lab245b/LAB245B_WAREHOUSE_RUNNER_LVS.csv"\nOUTDIR=ROOT/"outputs/research/profitability_program/lab245b"
 OUT=OUTDIR/"LAB245B_COMPACT_PERFORMANCE_BRIDGE.csv"
 NEED=["canonical_race_id","canonical_horse_id","race_date","distance_metres","finish_position","finish_margin","runner_lvs","target_field_size"]
-
-def load_source():
- import hashlib
- if AUTHORITY.exists() and not PARITY_AUTHORITY_ONLY:
-  size=AUTHORITY.stat().st_size
-  if size!=AUTHORITY_SIZE: raise RuntimeError(f"Runner-LVS authority size drift: {size} != {AUTHORITY_SIZE}")
-  h=hashlib.sha256()
-  with AUTHORITY.open("rb") as fh:
-   for b in iter(lambda:fh.read(8*1024*1024),b""): h.update(b)
-  digest=h.hexdigest()
-  if digest!=AUTHORITY_SHA256: raise RuntimeError(f"Runner-LVS authority SHA drift: {digest}")
-  a=pd.read_csv(AUTHORITY,usecols=["canonical_performance_id","canonical_race_id","canonical_horse_id","finish_position","finish_margin_lengths","runner_lengths_v_standard"],dtype={"canonical_performance_id":"string","canonical_race_id":"string","canonical_horse_id":"string"},low_memory=False)
-  for k in ["canonical_performance_id","canonical_race_id","canonical_horse_id"]: a[k]=a[k].str.strip()
-  if a["canonical_performance_id"].isna().any() or a["canonical_performance_id"].duplicated().any(): raise RuntimeError("Runner-LVS authority performance IDs are missing or non-unique.")
-  # Authority lacks date/distance. Prefer compact one-row-per-race recovered timing identity map.
-  timing=DATA_ROOT/"public/data/edgeiq_recovered_timing_warehouse_v1.csv"
-  warehouse=DATA_ROOT/"docs/performance-intelligence/warehouse/edgeiq_performance_fact_warehouse_v1.csv"
-  if timing.exists():
-   w=pd.read_csv(timing,usecols=["canonical_race_id","race_date","distance_metres"],low_memory=False)
-   w["canonical_race_id"]=w["canonical_race_id"].astype("string").str.strip()
-   # Governance: race identity must be unique and internally consistent.
-   chk=w.groupby("canonical_race_id",dropna=False).agg(race_date_n=("race_date","nunique"),distance_n=("distance_metres","nunique"))
-   bad=chk[(chk.race_date_n>1)|(chk.distance_n>1)]
-   if len(bad): raise RuntimeError(f"Conflicting recovered-timing race attributes: {len(bad)} races")
-   w=w.drop_duplicates(["canonical_race_id"])
-   d=a.merge(w,on="canonical_race_id",how="left",validate="many_to_one")
-   cov=(d["race_date"].notna() & d["distance_metres"].notna()).mean()
-   print(f"IDENTITY_ENRICHMENT=RECOVERED_TIMING_RACE_MAP RACES={len(w):,} COVERAGE={cov:.6f}")
-   if cov<0.999:
-    if not warehouse.exists(): raise RuntimeError(f"Recovered timing enrichment coverage too low: {cov:.6f}")
-    # Fill only misses from the large warehouse; do not replace validated compact-map rows.
-    need=set(d.loc[d["race_date"].isna()|d["distance_metres"].isna(),"canonical_race_id"].dropna().astype(str))
-    fills=[]
-    for ch in pd.read_csv(warehouse,usecols=["canonical_race_id","race_date","distance_metres"],chunksize=200000,low_memory=False):
-     ch["canonical_race_id"]=ch["canonical_race_id"].astype("string").str.strip()
-     x=ch[ch["canonical_race_id"].isin(need)].drop_duplicates(["canonical_race_id"])
-     if len(x): fills.append(x)
-    if fills:
-     fill=pd.concat(fills,ignore_index=True).drop_duplicates(["canonical_race_id"]).set_index("canonical_race_id")
-     miss=d["race_date"].isna()|d["distance_metres"].isna()
-     d.loc[miss,"race_date"]=d.loc[miss,"canonical_race_id"].map(fill["race_date"])
-     d.loc[miss,"distance_metres"]=d.loc[miss,"canonical_race_id"].map(fill["distance_metres"])
-     print(f"IDENTITY_ENRICHMENT_FALLBACK=WAREHOUSE_MISSES RACES={len(fill):,}")
-  else:
-   if not warehouse.exists(): raise FileNotFoundError("Authority enrichment requires recovered timing map or warehouse.")
-   race_parts=[]
-   for ch in pd.read_csv(warehouse,usecols=["canonical_race_id","race_date","distance_metres"],chunksize=200000,low_memory=False):
-    ch["canonical_race_id"]=ch["canonical_race_id"].astype("string").str.strip()
-    race_parts.append(ch.drop_duplicates(["canonical_race_id"]))
-   w=pd.concat(race_parts,ignore_index=True).drop_duplicates(["canonical_race_id"])
-   d=a.merge(w,on="canonical_race_id",how="left",validate="many_to_one")
-   print("IDENTITY_ENRICHMENT=WAREHOUSE_RACE_MAP")
-  if d["race_date"].isna().any() or d["distance_metres"].isna().any(): raise RuntimeError(f"Authority rows missing race enrichment: date={int(d.race_date.isna().sum())} distance={int(d.distance_metres.isna().sum())}")
-  d=d.rename(columns={"finish_margin_lengths":"finish_margin","runner_lengths_v_standard":"runner_lvs"})
-  print(f"SOURCE=VERIFIED_RUNNER_LVS_AUTHORITY SIZE={size} SHA256={digest}")
-  return d[NEED]
- if not FALLBACK.exists(): raise FileNotFoundError(f"Neither authority nor fallback exists: {AUTHORITY} | {FALLBACK}")
- print("SOURCE=STRICT_PIT_WAREHOUSE_RECONSTRUCTION")
- if AUTHORITY.exists(): print("PARITY_AUTHORITY_PRESENT_BUT_NOT_USED_AS_TARGET=YES")
- d=pd.read_csv(FALLBACK,usecols=[x for x in NEED if x!="target_field_size"],low_memory=False)\n # Strict-PIT target covers only benchmark-eligible runners; recover declared field size from immutable warehouse.\n warehouse=DATA_ROOT/"docs/performance-intelligence/warehouse/edgeiq_performance_fact_warehouse_v1.csv"\n if not warehouse.exists(): raise FileNotFoundError("Warehouse required for full target field-size governance.")\n field_parts=[]\n for ch in pd.read_csv(warehouse,usecols=["canonical_race_id","field_size"],dtype={"canonical_race_id":"string"},chunksize=200000,low_memory=False):\n  ch["canonical_race_id"]=ch["canonical_race_id"].str.strip(); ch["field_size"]=pd.to_numeric(ch["field_size"],errors="coerce")\n  field_parts.append(ch.dropna().drop_duplicates(["canonical_race_id","field_size"]))\n fs=pd.concat(field_parts,ignore_index=True)\n conflict=fs.groupby("canonical_race_id")["field_size"].nunique()\n if (conflict>1).any(): raise RuntimeError(f"Conflicting warehouse field_size for {int((conflict>1).sum())} races")\n fs=fs.drop_duplicates("canonical_race_id").set_index("canonical_race_id")["field_size"]\n d["target_field_size"]=d["canonical_race_id"].astype("string").str.strip().map(fs)\n return d[NEED]
 
 def stats(a,n):
  x=np.asarray(a[-n:],dtype=float)
@@ -83,7 +18,7 @@ def stats(a,n):
 
 def main():
  OUTDIR.mkdir(parents=True,exist_ok=True)
- d=load_source()
+ if not SOURCE.exists(): raise FileNotFoundError(SOURCE)\n d=pd.read_csv(SOURCE,usecols=NEED,low_memory=False)
  for c in ["canonical_race_id","canonical_horse_id"]: d[c]=d[c].astype("string").str.strip()
  d["race_date"]=pd.to_datetime(d["race_date"],errors="coerce")
  for c in ["distance_metres","finish_position","finish_margin","runner_lvs"]: d[c]=pd.to_numeric(d[c],errors="coerce")
