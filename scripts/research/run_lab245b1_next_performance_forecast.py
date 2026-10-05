@@ -33,13 +33,14 @@ def main():
     missing=sorted(required-set(d.columns))
     if missing: raise RuntimeError(f"LAB245B1 input contract missing columns: {missing}")
     if not d["_year"].between(2021,2024).all(): raise RuntimeError("Sealed-year breach.")
+    raw=d.copy()
+    raw["hist_runs"]=pd.to_numeric(raw["hist_runs"],errors="coerce").fillna(0)
     d=d[d["target_lvs"].notna()].copy()
     d=d[pd.to_numeric(d["hist_runs"],errors="coerce").fillna(0)>=3].copy()
     # Common evaluation universe for simple-vs-ML selection: require a finite recency LVS history.
     # DIST200 remains diagnostic because its availability is conditional on distance-near history.
     d=d[np.isfinite(pd.to_numeric(d["lvs_mean3"],errors="coerce"))].copy()
     coverage={str(int(y)):{"rows":int(len(g)),"races":int(g["_race"].nunique())} for y,g in d.groupby("_year",sort=True)}
-    raw["hist_runs"]=pd.to_numeric(raw["hist_runs"],errors="coerce").fillna(0)
     history_depth={}
     for y,g in raw.groupby("_year",sort=True):
         yy=str(int(y)); total_races=int(g["_race"].nunique())
