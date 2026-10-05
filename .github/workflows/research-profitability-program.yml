@@ -63,6 +63,7 @@ jobs:
       - name: Compile LAB245B governed chain
         if: env.LAB == '245b1' || env.LAB == '245b-l27'
         run: |
+          python -m py_compile scripts/research/run_lab245b_preflight.py
           python -m py_compile scripts/research/build_lab245b_warehouse_runner_lvs.py
           python -m py_compile scripts/research/run_lab245b_target_parity_audit.py
           python -m py_compile scripts/research/build_lab245b_compact_performance_bridge.py
@@ -84,6 +85,7 @@ jobs:
       - name: Build and run LAB245B1 next-performance forecast
         if: env.LAB == '245b1' && env.LAB245B_DATA_AVAILABLE == 'true'
         run: |
+          python scripts/research/run_lab245b_preflight.py
           # Historical runner-LVS authority is parity evidence only because its benchmark was all-history.
           # Forecasting labels must be reconstructed with strict date-PIT standards.
           python scripts/research/build_lab245b_warehouse_runner_lvs.py
