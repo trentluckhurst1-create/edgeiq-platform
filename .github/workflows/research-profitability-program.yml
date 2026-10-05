@@ -42,6 +42,7 @@ jobs:
         if: ${{ !(github.event_name == 'push' && contains(github.event.head_commit.message, 'LAB245D5')) && github.event.inputs.lab != '245d5' }}
         run: python -m pip install --disable-pip-version-check pandas numpy scipy scikit-learn
       - name: Select research lab
+        if: ${{ !(github.event_name == 'push' && contains(github.event.head_commit.message, 'LAB245D5')) && github.event.inputs.lab != '245d5' }}
         shell: bash
         run: |
           LAB="${{ github.event.inputs.lab }}"
