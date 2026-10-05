@@ -29,7 +29,7 @@ def _median_sorted(vals):
 def main():
  OUT.parent.mkdir(parents=True,exist_ok=True)
  if not WAREHOUSE.exists():raise FileNotFoundError(WAREHOUSE)
- use=["canonical_race_id","canonical_horse_id","canonical_track_id","race_date","track","track_layout","distance_metres","track_condition","track_condition_group","finish_position","finish_margin","official_race_time","official_race_time_seconds","time_unit"]
+ use=["canonical_race_id","canonical_horse_id","canonical_track_id","race_date","jurisdiction","track","track_layout","distance_metres","track_condition","track_condition_group","finish_position","finish_margin","official_race_time","official_race_time_seconds","time_unit"]
  d=pd.read_csv(WAREHOUSE,usecols=use,low_memory=False)
  d["race_date"]=pd.to_datetime(d["race_date"],errors="coerce")
  for x in ["distance_metres","finish_position","finish_margin","official_race_time","official_race_time_seconds"]:d[x]=pd.to_numeric(d[x],errors="coerce")
@@ -40,7 +40,7 @@ def main():
   if unit_err>0.001: raise RuntimeError(f"Centiseconds conversion invariant failed max_abs_error={unit_err}")
   print(f"CENTISECONDS_UNIT_CHECK=PASS ROWS={int(cs.sum()):,} MAX_ABS_ERROR={unit_err:.9f}")
  d["condition"]=d["track_condition_group"].fillna(d["track_condition"]).map(cond)
- d["track_key"]=d["canonical_track_id"].fillna("").astype(str).str.strip()
+ d["track_key"]=d["canonical_track_id"].fillna("").astype(str).str.strip()\n d["track_display_key"]=d["track"].fillna("").astype(str).str.strip().str.upper()\n d["layout_key"]=d["track_layout"].fillna("").astype(str).str.strip().str.upper()\n d["jurisdiction_key"]=d["jurisdiction"].fillna("").astype(str).str.strip().str.upper()
  txt=(d["track"].fillna("")+" "+d["track_layout"].fillna("")+" "+d["track_condition"].fillna("")+" "+d["track_condition_group"].fillna("")).str.upper()
  d["surface"]=np.where(txt.str.contains("SYNTHETIC|POLY|TAPETA|FIBRE|FIBER",regex=True),"AUSTRALIAN_SYNTHETIC","TURF")
  d["_valid_time"]=d["official_race_time_seconds"].gt(0)
@@ -57,7 +57,7 @@ def main():
   day=day.copy()
   std=[]; counts=[]
   for _,row in day.iterrows():
-   k=(row["track_key"],row["distance_metres"],row["condition"])
+   k=(row["track_key"],row["track_display_key"],row["layout_key"],row["distance_metres"],row["condition"],row["jurisdiction_key"])
    vals=history.get(k,[])
    counts.append(len(vals))
    std.append(_median_sorted(vals) if len(vals)>=MIN_SAMPLE else np.nan)
@@ -66,7 +66,7 @@ def main():
   scored.append(day)
   # Add the whole date only after every race on the date has been scored.
   for _,row in day.iterrows():
-   k=(row["track_key"],row["distance_metres"],row["condition"])
+   k=(row["track_key"],row["track_display_key"],row["layout_key"],row["distance_metres"],row["condition"],row["jurisdiction_key"])
    insort(history.setdefault(k,[]),float(row["official_race_time_seconds"]))
  r=pd.concat(scored,ignore_index=True)
  r=r[r["standard_time_seconds"].notna()].copy()
@@ -90,7 +90,7 @@ def main():
  print("PIT_POLICY=STRICT_DATE_LT_TARGET_DATE")
  print("RUNNER_LVS_POLICY=ORIGINAL_PRODUCER_FORMULA_RACE_LVS_MINUS_FINISH_MARGIN")
  print("RUNNER_TIME_EQUIVALENT_POLICY=ORIGINAL_PRODUCER_RACE_TIME_PLUS_MARGIN_X_SECONDS_PER_LENGTH")
- print("BENCHMARK_GROUPING=RECOVERED_PRODUCTION_CONTRACT_CANONICAL_TRACK_ID_DISTANCE_CONDITION_MIN20_MEDIAN")
+ print("BENCHMARK_GROUPING=RECOVERED_EXECUTABLE_CONTRACT_TRACK_ID_DISPLAY_LAYOUT_DISTANCE_CONDITION_JURISDICTION_MIN20_MEDIAN")
  print("BENCHMARK_POLICY=LAB245B_STRICT_DATE_PIT_NOT_OLD_ALL_HISTORY_PRODUCTION_STANDARD")
  print("KNOWN_RECOVERY_TIMED_RACES=70,308 DELTA_RACES=54,978 LVS_RACES=52,414")
  if abs(timed_races-70308)>10:raise RuntimeError("Timed-race recovery count materially disagrees with certified audit.")
