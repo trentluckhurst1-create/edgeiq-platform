@@ -51,6 +51,16 @@ jobs:
       - name: Run LAB245A bridge audit
         if: env.LAB == '245a'
         run: python scripts/research/run_lab245a_performance_outcome_bridge_audit.py
+      - name: Compile LAB245B governed chain
+        if: env.LAB == '245b1'
+        run: |
+          python -m py_compile scripts/research/build_lab245b_warehouse_runner_lvs.py
+          python -m py_compile scripts/research/run_lab245b_target_parity_audit.py
+          python -m py_compile scripts/research/build_lab245b_compact_performance_bridge.py
+          python -m py_compile scripts/research/run_lab245b1_next_performance_forecast.py
+          python -m py_compile scripts/research/run_lab245b2_probability_challenger.py
+          python -m py_compile scripts/research/run_lab245b3_selective_betting_forensics.py
+          python -m py_compile scripts/research/run_lab245b4_sealed_holdout.py
       - name: Build and run LAB245B1 next-performance forecast
         if: env.LAB == '245b1'
         run: |
