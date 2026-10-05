@@ -8,7 +8,9 @@ ROOT=Path(__file__).resolve().parents[2]
 DATA_ROOT=Path(os.environ.get("EDGEIQ_DATA_ROOT",str(ROOT))).resolve()
 SOURCE=ROOT/"outputs/research/profitability_program/lab245b/LAB245B_WAREHOUSE_RUNNER_LVS.csv"
 OUTDIR=ROOT/"outputs/research/profitability_program/lab245b"
-OUT=OUTDIR/"LAB245B_COMPACT_PERFORMANCE_BRIDGE.csv"\nMANIFEST=SOURCE.with_suffix(".manifest.json")\nEXPECTED_CONTRACT="LAB245B_STRICT_PIT_LVS_V8_V1_LENGTH_CONVERSION_TRACK_DISTANCE_CONDITION_MIN20"
+OUT=OUTDIR/"LAB245B_COMPACT_PERFORMANCE_BRIDGE.csv"
+MANIFEST=SOURCE.with_suffix(".manifest.json")
+EXPECTED_CONTRACT="LAB245B_STRICT_PIT_LVS_V8_V1_LENGTH_CONVERSION_TRACK_DISTANCE_CONDITION_MIN20"
 NEED=["canonical_race_id","canonical_horse_id","race_date","distance_metres","finish_position","finish_margin","runner_lvs","field_size"]
 
 def stats(a,n):
