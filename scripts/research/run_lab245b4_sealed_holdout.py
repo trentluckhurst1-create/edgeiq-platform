@@ -30,6 +30,7 @@ def stats(a,n):
 
 def build_holdout():
  d=pd.read_csv(PIT,usecols=["canonical_race_id","canonical_horse_id","race_date","distance_metres","finish_position","finish_margin","runner_lvs"],low_memory=False)
+ d["canonical_race_id"]=d["canonical_race_id"].astype("string").str.strip(); d["canonical_horse_id"]=d["canonical_horse_id"].astype("string").str.strip()
  d["race_date"]=pd.to_datetime(d.race_date,errors="coerce")
  for c in ["distance_metres","finish_position","finish_margin","runner_lvs"]: d[c]=pd.to_numeric(d[c],errors="coerce")
  d=d.dropna(subset=["canonical_race_id","canonical_horse_id","race_date"]).sort_values(["canonical_horse_id","race_date","canonical_race_id"],kind="stable")
