@@ -29,6 +29,9 @@ def score(d,p):
 def main():
     if not INP.exists(): raise FileNotFoundError(INP)
     d=pd.read_csv(INP,low_memory=False)
+    required={"_race","_horse","_year","race_date","target_lvs","target_finish_position","hist_runs",*FEATURES}
+    missing=sorted(required-set(d.columns))
+    if missing: raise RuntimeError(f"LAB245B1 input contract missing columns: {missing}")
     if not d["_year"].between(2021,2024).all(): raise RuntimeError("Sealed-year breach.")
     d=d[d["target_lvs"].notna()].copy()
     d=d[pd.to_numeric(d["hist_runs"],errors="coerce").fillna(0)>=3].copy()
