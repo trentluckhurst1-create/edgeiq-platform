@@ -1,3 +1,5 @@
+from pathlib import Path
+import ast
 import math
 import numpy as np
 
@@ -8,7 +10,16 @@ def softmax(x,temp):
     return e/e.sum()
 
 def main():
-    # Static compact -> B1 interface invariant, checked before any large data read.\n    root=Path(__file__).resolve().parents[2]\n    compact=(root/"scripts/research/build_lab245b_compact_performance_bridge.py").read_text(encoding="utf-8")\n    b1=(root/"scripts/research/run_lab245b1_next_performance_forecast.py").read_text(encoding="utf-8")\n    for col in ["target_lvs","target_finish_position","target_field_size","represented_field_size","hist_runs","current_distance"]:\n        assert col in compact, f"compact producer missing {col}"\n        assert col in b1, f"B1 consumer missing {col}"\n    ast.parse(compact); ast.parse(b1)\n\n    # B2 probability invariant.
+    # Static compact -> B1 interface invariant, checked before any large data read.
+    root=Path(__file__).resolve().parents[2]
+    compact=(root/"scripts/research/build_lab245b_compact_performance_bridge.py").read_text(encoding="utf-8")
+    b1=(root/"scripts/research/run_lab245b1_next_performance_forecast.py").read_text(encoding="utf-8")
+    for col in ["target_lvs","target_finish_position","target_field_size","represented_field_size","hist_runs","current_distance"]:
+        assert col in compact, f"compact producer missing {col}"
+        assert col in b1, f"B1 consumer missing {col}"
+    ast.parse(compact); ast.parse(b1)
+
+    # B2 probability invariant.
     p=softmax([2.0,1.0,-1.0],2.0)
     assert abs(float(p.sum())-1.0)<1e-12
     assert np.all(p>0)
@@ -44,7 +55,8 @@ def main():
     assert abs(float(pnl.sum())-1.5)<1e-12
 
     print("LAB245B_CONTRACT_SMOKE=PASS")
-    print("COMPACT_B1_INTERFACE=PASS")\n    print("PROBABILITY_MASS=PASS")
+    print("COMPACT_B1_INTERFACE=PASS")
+    print("PROBABILITY_MASS=PASS")
     print("WITHIN_RACE_RUNNER_FORMULA_PARITY=PASS")
     print("STRICT_DATE_PIT_SAME_DAY_FREEZE=PASS")
     print("V1_LENGTH_CONVERSION_0_17=PASS")
