@@ -41,7 +41,7 @@ def main():
         for name,col in BASELINES.items():
             p=te[col].to_numpy(float)
             rows.append({"year":year,"model":name,**score(te,p)})
-            q=te[["_race","_horse","_year","target_lvs"]].copy(); q["model"]=name; q["pred_lvs"]=p; pp.append(q)
+            q=te[["_race","_horse","_year","target_lvs","target_finish_position"]].copy(); q["model"]=name; q["pred_lvs"]=p; pp.append(q)
         models={"RIDGE":make_pipeline(SimpleImputer(strategy="median"),StandardScaler(),Ridge(alpha=10.0)),"HGB":HistGradientBoostingRegressor(max_iter=250,learning_rate=.04,max_leaf_nodes=15,l2_regularization=5,random_state=245)}
         for name,m in models.items():
             m.fit(tr[feats],tr["target_lvs"]); p=m.predict(te[feats])
