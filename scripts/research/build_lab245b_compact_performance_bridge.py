@@ -25,7 +25,9 @@ def load_source():
    for b in iter(lambda:fh.read(8*1024*1024),b""): h.update(b)
   digest=h.hexdigest()
   if digest!=AUTHORITY_SHA256: raise RuntimeError(f"Runner-LVS authority SHA drift: {digest}")
-  a=pd.read_csv(AUTHORITY,usecols=["canonical_performance_id","canonical_race_id","canonical_horse_id","finish_position","finish_margin_lengths","runner_lengths_v_standard"],dtype={"canonical_performance_id":"string","canonical_race_id":"string","canonical_horse_id":"string"},low_memory=False)\n  for k in ["canonical_performance_id","canonical_race_id","canonical_horse_id"]: a[k]=a[k].str.strip()\n  if a["canonical_performance_id"].isna().any() or a["canonical_performance_id"].duplicated().any(): raise RuntimeError("Runner-LVS authority performance IDs are missing or non-unique.")
+  a=pd.read_csv(AUTHORITY,usecols=["canonical_performance_id","canonical_race_id","canonical_horse_id","finish_position","finish_margin_lengths","runner_lengths_v_standard"],dtype={"canonical_performance_id":"string","canonical_race_id":"string","canonical_horse_id":"string"},low_memory=False)
+  for k in ["canonical_performance_id","canonical_race_id","canonical_horse_id"]: a[k]=a[k].str.strip()
+  if a["canonical_performance_id"].isna().any() or a["canonical_performance_id"].duplicated().any(): raise RuntimeError("Runner-LVS authority performance IDs are missing or non-unique.")
   # Authority lacks date/distance. Prefer compact one-row-per-race recovered timing identity map.
   timing=DATA_ROOT/"public/data/edgeiq_recovered_timing_warehouse_v1.csv"
   warehouse=DATA_ROOT/"docs/performance-intelligence/warehouse/edgeiq_performance_fact_warehouse_v1.csv"
@@ -85,7 +87,7 @@ def main():
  for c in ["canonical_race_id","canonical_horse_id"]: d[c]=d[c].astype("string").str.strip()
  d["race_date"]=pd.to_datetime(d["race_date"],errors="coerce")
  for c in ["distance_metres","finish_position","finish_margin","runner_lvs"]: d[c]=pd.to_numeric(d[c],errors="coerce")
- d=d.dropna(subset=["canonical_race_id","canonical_horse_id","race_date"]).sort_values(["canonical_horse_id","race_date","canonical_race_id"],kind="stable")\n field_size=d.groupby("canonical_race_id")["canonical_horse_id"].transform("nunique")
+ d=d.dropna(subset=["canonical_race_id","canonical_horse_id","race_date"]).sort_values(["canonical_horse_id","race_date","canonical_race_id"],kind="stable")
  field_sizes=d.groupby("canonical_race_id")["canonical_horse_id"].nunique().to_dict()
  rows=[]
  for horse,g in d.groupby("canonical_horse_id",sort=False):
