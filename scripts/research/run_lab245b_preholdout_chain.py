@@ -74,7 +74,25 @@ def main():
         run("scripts/research/run_lab245b_target_parity_audit.py")
     else:
         print("PARITY_AUTHORITY=ABSENT; PARITY_AUDIT=SKIPPED")
-    run("scripts/research/build_lab245b_compact_performance_bridge.py")
+    compact=OUT/"LAB245B_COMPACT_PERFORMANCE_BRIDGE.csv"
+    compact_meta=OUT/"LAB245B_COMPACT_PERFORMANCE_BRIDGE.manifest.json"
+    compact_ok=False
+    if compact.exists() and compact_meta.exists():
+        try:
+            cm=json.loads(compact_meta.read_text(encoding="utf-8"))
+            tm=json.loads((OUT/"LAB245B_WAREHOUSE_RUNNER_LVS.manifest.json").read_text(encoding="utf-8"))
+            compact_ok=(cm.get("source_contract_version")==EXPECTED_TARGET_CONTRACT and cm.get("source_sha256")==tm.get("output_sha256") and cm.get("pit_policy")=="HORSE_HISTORY_DATE_LT_TARGET_DATE")
+            if compact_ok:
+                ch=hashlib.sha256()
+                with compact.open("rb") as fh:
+                    for b in iter(lambda:fh.read(8*1024*1024),b""): ch.update(b)
+                compact_ok=(cm.get("output_sha256")==ch.hexdigest() and cm.get("output_bytes")==compact.stat().st_size)
+        except Exception:
+            compact_ok=False
+    if compact_ok:
+        print("RESUME_CHECKPOINT=LAB245B_COMPACT_PIT_HISTORY_VALID; SKIP_REBUILD=YES")
+    else:
+        run("scripts/research/build_lab245b_compact_performance_bridge.py")
 
     a1p=OUT/"LAB245B1_AUDIT.json"
     if a1p.exists():
