@@ -66,12 +66,12 @@ def main():
  d["_valid_time"]=d["official_race_time_seconds"].between(35,420,inclusive="both")
  d["_valid_distance"]=d["distance_metres"].between(800,3600,inclusive="both")
  d["_eligible_benchmark"]=d["_valid_time"] & d["_valid_distance"] & d["track_key"].notna() & d["condition"].notna()
- rc=d.groupby("canonical_race_id",sort=False).agg(track_n=("track_key","nunique"),date_n=("race_date","nunique"),distance_n=("distance_metres","nunique"),condition_n=("condition","nunique"),time_n=("official_race_time_seconds","nunique"))
- bad=rc[(rc.track_n>1)|(rc.date_n>1)|(rc.distance_n>1)|(rc.condition_n>1)|(rc.time_n>1)]
+ rc=d.groupby("canonical_race_id",sort=False).agg(track_n=("track_key","nunique"),date_n=("race_date","nunique"),distance_n=("distance_metres","nunique"),condition_n=("condition","nunique"),jurisdiction_n=("jurisdiction_key","nunique"),time_n=("official_race_time_seconds","nunique"))
+ bad=rc[(rc.track_n>1)|(rc.date_n>1)|(rc.distance_n>1)|(rc.condition_n>1)|(rc.jurisdiction_n>1)|(rc.time_n>1)]
  if len(bad): raise RuntimeError(f"Canonical race attribute conflicts: {len(bad)} races")
  print(f"CANONICAL_RACE_ATTRIBUTE_INVARIANT=PASS RACES={len(rc):,}")
  d["_winner"]=d["finish_position"].eq(1)
- r=d.sort_values(["canonical_race_id","_winner","_valid_time"],ascending=[True,False,False],kind="stable").drop_duplicates("canonical_race_id")
+ d["_race_pick_priority"]=np.select([d["_winner"] & d["_valid_time"],d["_valid_time"],d["_winner"]],[3,2,1],default=0)\n r=d.sort_values(["canonical_race_id","_race_pick_priority"],ascending=[True,False],kind="stable").drop_duplicates("canonical_race_id")
  timed_races=int(r["_valid_time"].sum())
  eligible_timed_races=int(r["_eligible_benchmark"].sum())
  r=r[r["_eligible_benchmark"]].copy()
