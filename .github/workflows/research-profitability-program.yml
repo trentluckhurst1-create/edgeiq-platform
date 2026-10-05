@@ -26,6 +26,7 @@ on:
           - "245d8"
           - "245d9"
           - "245d10"
+          - "245d11"
 
 permissions:
   contents: read
@@ -232,6 +233,18 @@ jobs:
           Push-Location $ResearchRoot
           try { python $LocalScript } finally { Pop-Location }
           if ($LASTEXITCODE -ne 0) { throw "LAB245D10 failed" }
+      - name: Run LAB245D11 rich LAB231 HGB challenger
+        if: ${{ github.event.inputs.lab == '245d11' || (github.event_name == 'push' && contains(github.event.head_commit.message, 'LAB245D11')) }}
+        shell: powershell
+        run: |
+          $ResearchRoot = "C:\EDGEIQ_PROFITABILITY_RESEARCH"
+          $SourceScript = Join-Path $env:GITHUB_WORKSPACE "scripts\research\run_lab245d11_lab231_rich_hgb.py"
+          $LocalScript = Join-Path $ResearchRoot "scripts\research\run_lab245d11_lab231_rich_hgb.py"
+          Copy-Item $SourceScript $LocalScript -Force
+          python -m py_compile $LocalScript
+          Push-Location $ResearchRoot
+          try { python $LocalScript } finally { Pop-Location }
+          if ($LASTEXITCODE -ne 0) { throw "LAB245D11 failed" }
       - name: Run governed research bootstrap
         if: env.LAB == 'bootstrap'
         run: python scripts/research/profitability_program_bootstrap.py
