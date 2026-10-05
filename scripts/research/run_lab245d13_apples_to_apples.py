@@ -13,7 +13,6 @@ def mk(seed):return make_pipeline(SimpleImputer(strategy="median",add_indicator=
 def met(z):
  a=[]
  for _,g in z.groupby("_race",sort=False):
-  if len(g)!=int((X[X._race==g.name]).shape[0]):pass
   w=np.flatnonzero(g.y.to_numpy()==1)
   if len(w)!=1:continue
   s=g.s.to_numpy(float);p=np.clip(s,1e-12,None);p/=p.sum();rk=int(pd.Series(s).rank(ascending=False,method="first").iloc[w[0]])
