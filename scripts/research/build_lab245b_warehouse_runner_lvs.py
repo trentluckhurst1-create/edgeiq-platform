@@ -49,7 +49,7 @@ def main():
   unit_err=(d.loc[cs,"official_race_time"]/100.0-d.loc[cs,"official_race_time_seconds"]).abs().max()
   if unit_err>0.001: raise RuntimeError(f"Centiseconds conversion invariant failed max_abs_error={unit_err}")
   print(f"CENTISECONDS_UNIT_CHECK=PASS ROWS={int(cs.sum()):,} MAX_ABS_ERROR={unit_err:.9f}")
- d["condition"]=d["track_condition_group"].fillna(d["track_condition"]).map(cond)
+ grp=d["track_condition_group"].astype("string").str.strip()\n raw=d["track_condition"].astype("string").str.strip()\n use_group=grp.notna() & ~grp.str.upper().isin(["","UNKNOWN","NAN","NONE","<NA>"])\n d["condition"]=grp.where(use_group,raw).map(cond)\n d.loc[d["condition"].astype("string").str.upper().isin(["","UNKNOWN","NAN","NONE","<NA>"]),"condition"]=pd.NA
  d["track_key"]=d["canonical_track_id"].fillna("").astype(str).str.strip()
  d["track_display_key"]=d["track"].fillna("").astype(str).str.strip().str.upper()
  d["layout_key"]=d["track_layout"].fillna("").astype(str).str.strip().str.upper()
