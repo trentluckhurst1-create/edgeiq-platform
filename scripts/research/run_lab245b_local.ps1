@@ -16,13 +16,13 @@ Write-Host "PRODUCTION_WRITE_POLICY=READ_ONLY_INPUTS"
 
 Set-Location $ResearchRoot
 $Scripts = @(
+  "scripts/research/run_lab245b_preflight.py",
   "scripts/research/build_lab245b_warehouse_runner_lvs.py",
   "scripts/research/run_lab245b_target_parity_audit.py",
   "scripts/research/build_lab245b_compact_performance_bridge.py",
   "scripts/research/run_lab245b1_next_performance_forecast.py",
   "scripts/research/run_lab245b2_probability_challenger.py",
-  "scripts/research/run_lab245b3_selective_betting_forensics.py",
-  "scripts/research/run_lab245b4_sealed_holdout.py"
+  "scripts/research/run_lab245b3_selective_betting_forensics.py"
 )
 foreach ($s in $Scripts) {
   Write-Host ("=" * 100)
@@ -40,4 +40,4 @@ if (Test-Path $L27) {
   Write-Host "LAB245B_L27=SKIPPED_SOURCE_ABSENT"
 }
 Write-Host ("=" * 100)
-Write-Host "LAB245B_CHAIN_COMPLETE"
+Write-Host "LAB245B_CHAIN_COMPLETE_PREHOLDOUT"\nWrite-Host "LAB245B4_HOLDOUT=SEALED_REQUIRES_EXPLICIT_MANUAL_RUN"
