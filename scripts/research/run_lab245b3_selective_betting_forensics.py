@@ -14,7 +14,7 @@ SP_CANDIDATES=[
  DATA_ROOT/"outputs/research/model_price_diagnostics/lab166c/LAB166E_CORRECTED_PIT_PREDICTIONS.csv",
 ]
 OUT=DIR/"LAB245B3_FINAL_SP_POLICY_RESULTS.csv"
-AUD=DIR/"LAB245B3_AUDIT.json"
+AUD=DIR/"LAB245B3_AUDIT.json"\nCONTRACT=ROOT/"scripts/research/LAB245B_B3_SELECTIVE_BETTING_PREDECLARED.json"
 
 # Small predeclared policy family; no post-2023 tuning.
 POLICIES=[
