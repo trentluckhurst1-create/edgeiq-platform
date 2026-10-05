@@ -93,7 +93,7 @@ def main():
  audit={"status":"SURVIVE_TO_LAB245B3" if survive else "REJECT_PROBABILITY_CHALLENGER",
         "selected_simple":simple,"selected_ml":ml,"temperature_selection":"DEV_2022_2023_ONLY",
         "fixed_temperatures":fixed,"survival_rule":"ML beats simple on race-winner log loss and runner Brier in DEV and fixed 2024",
-        "probability_mass":"EXACT_WITHIN_1E-10","probability_field_universe":"FULL_VALID_TARGET_FIELD_ONLY","minimum_volume_gate":"DEV>=200 complete-field races; 2024>=100 complete-field races","volume_gate_pass":volume_ok,"development_yearly_stability_required":True,"development_yearly_deltas":yearly_deltas,"holdout_2025_2026_opened":False,"market_used":False}
+        "probability_mass":"EXACT_WITHIN_1E-10","probability_field_universe":"COMMON_FINITE_B1_ELIGIBLE_RUNNERS_ONLY_NOT_DEPLOYABLE_FULL_FIELD","minimum_volume_gate":"DEV>=200 common-eligible races; 2024>=100 common-eligible races","volume_gate_pass":volume_ok,"development_yearly_stability_required":True,"development_yearly_deltas":yearly_deltas,"holdout_2025_2026_opened":False,"market_used":False}
  AUD.write_text(json.dumps(audit,indent=2),encoding="utf-8")
  print(res.to_string(index=False)); print(json.dumps(audit,indent=2))
 
