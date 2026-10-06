@@ -336,6 +336,18 @@ jobs:
           Push-Location $ResearchRoot
           try { python $LocalScript } finally { Pop-Location }
           if ($LASTEXITCODE -ne 0) { throw "LAB245D17 failed" }
+      - name: Run D55 weight repair
+        if: ${{ github.event_name == 'push' && contains(github.event.head_commit.message, 'D55_WEIGHT') }}
+        shell: powershell
+        run: |
+          $ResearchRoot = "C:\EDGEIQ_PROFITABILITY_RESEARCH"
+          $SourceScript = Join-Path $env:GITHUB_WORKSPACE "scripts\research\run_d55_weight_repair.py"
+          $LocalScript = Join-Path $ResearchRoot "scripts\research\run_d55_weight_repair.py"
+          Copy-Item $SourceScript $LocalScript -Force
+          python -m py_compile $LocalScript
+          Push-Location $ResearchRoot
+          try { python $LocalScript } finally { Pop-Location }
+          if ($LASTEXITCODE -ne 0) { throw "D55 weight failed" }
       - name: Run D54 class weight challenger
         if: ${{ github.event_name == 'push' && contains(github.event.head_commit.message, 'D54_CLASS_WEIGHT') }}
         shell: powershell
