@@ -1,5 +1,5 @@
 from pathlib import Path
-# D44C4 dispatch
+# D44D LEAN MECHANISM AUDIT
 import pandas as pd,numpy as np
 from sklearn.impute import SimpleImputer
 from sklearn.pipeline import make_pipeline
@@ -66,39 +66,13 @@ def attach_combo(df,h,keys,prefix,current_cols):
  q=pd.concat(parts).set_index("_i").sort_index()
  for z in cols:df[z]=q[z]
  return df
-b=attach_combo(b,h,["canonical_jockey_id","canonical_trainer_id"],"jt_combo",["current_jockey_id","current_trainer_id"])
-b=attach_combo(b,h,["canonical_horse_id","canonical_jockey_id"],"horse_jockey",["current_horse_id","current_jockey_id"])
-b=attach_combo(b,h,["canonical_horse_id","canonical_trainer_id"],"horse_trainer",["current_horse_id","current_trainer_id"])
-# PL002 preparation/recency port: strict prior-date horse history only.
-prep=["runs_last_30d","runs_last_60d","runs_last_90d","prep_run_number_90d","first_up_90d","second_up_90d","third_up_90d","distance_change_from_last","abs_distance_change_from_last","last_finish_position","last_won","last_top3"]
-for x in prep:b[x]=np.nan
-hh=h[["canonical_horse_id","date","distance_metres","finish_position"]].dropna(subset=["canonical_horse_id","date"]).copy()
-hh["canonical_horse_id"]=hh.canonical_horse_id.astype(str);hh["distance_metres"]=pd.to_numeric(hh.distance_metres,errors="coerce");hh["finish_position"]=pd.to_numeric(hh.finish_position,errors="coerce")
-targets=b[["_horse","date","current_distance"]].copy();targets["_horse"]=targets._horse.astype(str)
-for horse,idx in targets.groupby("_horse",sort=False).groups.items():
- hist=hh[hh.canonical_horse_id.eq(horse)].sort_values("date")
- if hist.empty:continue
- dates=hist.date.to_numpy(dtype="datetime64[ns]");dists=hist.distance_metres.to_numpy(float);fin=hist.finish_position.to_numpy(float)
- for i in idx:
-  td=np.datetime64(targets.at[i,"date"]);pos=np.searchsorted(dates,td,side="left")
-  if pos<=0:continue
-  gaps=(td-dates[:pos]).astype("timedelta64[D]").astype(float)
-  n30=float(np.sum(gaps<=30));n60=float(np.sum(gaps<=60));n90=float(np.sum(gaps<=90))
-  b.at[i,"runs_last_30d"]=n30;b.at[i,"runs_last_60d"]=n60;b.at[i,"runs_last_90d"]=n90;b.at[i,"prep_run_number_90d"]=1+n90
-  b.at[i,"first_up_90d"]=float(gaps[-1]>90);b.at[i,"second_up_90d"]=float(gaps[-1]<=90 and n90==1);b.at[i,"third_up_90d"]=float(gaps[-1]<=90 and n90==2)
-  dc=pd.to_numeric(targets.at[i,"current_distance"],errors="coerce")-dists[pos-1];b.at[i,"distance_change_from_last"]=dc;b.at[i,"abs_distance_change_from_last"]=abs(dc)
-  lf=fin[pos-1];b.at[i,"last_finish_position"]=lf;b.at[i,"last_won"]=float(lf==1);b.at[i,"last_top3"]=float(lf<=3)
-prep_rank=[]
-for x in ["days_since_last","prep_run_number_90d","distance_change_from_last"]:
- y=x+"_prep_race_rank_pct";b[y]=b.groupby("_race")[x].rank(pct=True,method="average");prep_rank.append(y)
+# D44D lean path: D43 relationship and PL002 prep rebuilds intentionally skipped.
 rates=["jockey_prior_starts","jockey_prior_win_rate","jockey_prior_top3_rate","trainer_prior_starts","trainer_prior_win_rate","trainer_prior_top3_rate"]
 ranks=[]
 for x in rates:
  y=x+"_race_rank_pct";b[y]=b.groupby("_race")[x].rank(pct=True,method="average");ranks.append(y)
 bar=["barrier_position_pct"]
 conn=base+bar+rates
-prep_counts=["runs_last_30d","runs_last_60d","runs_last_90d","prep_run_number_90d","first_up_90d","second_up_90d","third_up_90d"]
-prep_last=["distance_change_from_last","abs_distance_change_from_last","last_finish_position","last_won","last_top3"]
 # D44 strict-PIT track-distance-barrier mechanism.
 h["distance_band_200"]=(pd.to_numeric(h["distance_metres"],errors="coerce")/200).round()*200
 hb=pd.to_numeric(h["barrier"],errors="coerce");hf=pd.to_numeric(h["field_size"],errors="coerce")
