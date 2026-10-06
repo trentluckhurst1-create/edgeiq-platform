@@ -37,7 +37,11 @@ for x in cols:b[x]=out[x]
 b["y"]=(pd.to_numeric(b.target_finish_position,errors="coerce")==1).astype(int);b["field_size"]=b.groupby("_race")["_horse"].transform("size")
 for x in BASE:b[x]=pd.to_numeric(b[x],errors="coerce");b[x+"_relmed"]=b[x]-b[x].groupby(b._race).transform("median")
 base=BASE+[x+"_relmed" for x in BASE]+["field_size"]
-blocks={"BASE17":base,"CLASS":base+["epi_same_class_count","epi_same_class_mean","epi_same_class_best"],"CONDITION":base+["epi_same_cond_count","epi_same_cond_mean"],"FORM_DISTANCE":base+["epi_last10_median","epi_peak","epi_last1_minus_peak","epi_near_peak10","epi_dist200_mean","epi_dist200_best"],"COMBINED":base+cols}
+classraw=["epi_same_class_count","epi_same_class_mean","epi_same_class_best"]
+for x in classraw:
+ b[x+"_rankpct"]=b.groupby("_race")[x].rank(pct=True,method="average")
+ b[x+"_relmed"]=b[x]-b[x].groupby(b._race).transform("median")
+blocks={"BASE17":base,"CLASS_RAW":base+classraw,"CLASS_RANK":base+[x+"_rankpct" for x in classraw],"CLASS_REL":base+[x+"_relmed" for x in classraw],"CLASS_ALL":base+classraw+[x+"_rankpct" for x in classraw]+[x+"_relmed" for x in classraw]}
 def met(z):
  rr=[]
  for _,g in z.groupby("_race",sort=False):
@@ -45,7 +49,7 @@ def met(z):
   if len(w)!=1:continue
   rank=int(g.raw.rank(method="first",ascending=False).iloc[w[0]]);q=np.clip(g.raw.to_numpy(float),1e-12,None);q=q/q.sum();p=q[w[0]];rr.append((rank,-math.log(max(p,1e-12))))
  a=np.array(rr);return len(a),np.mean(a[:,0]<=1),np.mean(a[:,0]<=2),np.mean(a[:,0]<=3),np.mean(1/a[:,0]),np.mean(a[:,1])
-print("FEATURE_ROWS",len(b),"RACES",b._race.nunique())
+print("D26_CLASS_SIGNAL_REPRESENTATION"); print("FEATURE_ROWS",len(b),"RACES",b._race.nunique())
 for yr in [2022,2023,2024]:
  tr=b[b._year<yr];te=b[b._year==yr]
  for name,fs in blocks.items():
