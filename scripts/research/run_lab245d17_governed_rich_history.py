@@ -1,5 +1,5 @@
 from pathlib import Path
-# D44F HISTORICAL COMPONENT PREFLIGHT
+# D44G RECONSTRUCT FIELD SIZE + KEY GATE
 import pandas as pd,numpy as np
 from sklearn.impute import SimpleImputer
 from sklearn.pipeline import make_pipeline
@@ -20,7 +20,7 @@ c=pd.read_csv(CTX,usecols=cc).rename(columns={"canonical_race_id":"_race","canon
 b=b.merge(c,on=["_race","_horse"],how="left")
 # certified historical connection outcomes
 use=["race_date","canonical_horse_id","canonical_jockey_id","canonical_trainer_id","canonical_track_id","distance_metres","barrier","field_size","finish_position","epi_status_026"]
-h=pd.read_csv(PERF,usecols=use);h=h[h.epi_status_026.eq("CALCULATED")].copy();h["date"]=pd.to_datetime(h.race_date);fp=pd.to_numeric(h.finish_position,errors="coerce");h=h[fp.notna()].copy();h["win"]=(fp[h.index]==1).astype(int);h["top3"]=(fp[h.index]<=3).astype(int)
+h=pd.read_csv(PERF,usecols=use);h=h[h.epi_status_026.eq("CALCULATED")].copy();h["date"]=pd.to_datetime(h.race_date);fp=pd.to_numeric(h.finish_position,errors="coerce");h=h[fp.notna()].copy();h["win"]=(fp[h.index]==1).astype(int);h["top3"]=(fp[h.index]<=3).astype(int);h["field_size"]=h.groupby(["race_date","canonical_track_id","distance_metres"])["canonical_horse_id"].transform("size")
 def attach(df,h,key,prefix,current):
  hh=h[[key,"date","win","top3"]].dropna(subset=[key,"date"]).copy();hh[key]=hh[key].astype(str)
  d=hh.groupby([key,"date"]).agg(starts=("win","size"),wins=("win","sum"),top3=("top3","sum")).reset_index().sort_values([key,"date"])
@@ -86,12 +86,18 @@ race_track=h[["date","canonical_track_id"]].copy()
 # map race via separate PERF race metadata
 rm=pd.read_csv(PERF,usecols=["canonical_race_id","canonical_track_id"]).drop_duplicates("canonical_race_id").rename(columns={"canonical_race_id":"_race","canonical_track_id":"current_track_id"})
 b=b.merge(rm,on="_race",how="left")
-print("D44F_HISTORICAL_COMPONENT_PREFLIGHT")
-for x in ["canonical_track_id","distance_metres","distance_band_200","barrier","field_size","hist_barrier_pct","barrier_zone"]:
- v=h[x]
- print(x,"NONNULL",int(v.notna().sum()),"COVERAGE",float(v.notna().mean()),"NUNIQUE",int(v.nunique(dropna=True)))
-print("BARRIER_SAMPLE",h[["barrier","field_size","hist_barrier_pct","barrier_zone"]].head(10).to_dict("records"))
-print("D44F_PREFLIGHT_COMPLETE")
+def nk(v):
+ return v.astype("string").str.strip().str.replace(r"\.0$","",regex=True)
+hk_db=set(zip(nk(h["distance_band_200"]),nk(h["barrier_zone"])))
+bk_db=set(zip(nk(b["distance_band_200"]),nk(b["barrier_zone"])))
+hk_tb=set(zip(nk(h["canonical_track_id"]),nk(h["barrier_zone"])))
+bk_tb=set(zip(nk(b["current_track_id"]),nk(b["barrier_zone"])))
+hk_tdb=set(zip(nk(h["canonical_track_id"]),nk(h["distance_band_200"]),nk(h["barrier_zone"])))
+bk_tdb=set(zip(nk(b["current_track_id"]),nk(b["distance_band_200"]),nk(b["barrier_zone"])))
+print("D44G_RECONSTRUCTED_FIELD_SIZE_GATE")
+for name,hs,bs in [("DB",hk_db,bk_db),("TB",hk_tb,bk_tb),("TDB",hk_tdb,bk_tdb)]:
+ hs={x for x in hs if all(v not in ("<NA>","nan") for v in x)};bs={x for x in bs if all(v not in ("<NA>","nan") for v in x)};inter=hs&bs;print(name,"HIST",len(hs),"TARGET",len(bs),"INTERSECTION",len(inter),"COVERAGE",len(inter)/len(bs) if bs else 0)
+print("HIST_FIELD_SIZE_COVERAGE",float(h["field_size"].notna().mean()),"HIST_ZONE_COVERAGE",float(h["barrier_zone"].notna().mean()))
 raise SystemExit(0)
 b=attach_combo(b,h,["canonical_track_id","distance_band_200","barrier_zone"],"tdb_mech",["current_track_id","distance_band_200","barrier_zone"])
 b=attach_combo(b,h,["canonical_track_id","barrier_zone"],"tb_mech",["current_track_id","barrier_zone"])
