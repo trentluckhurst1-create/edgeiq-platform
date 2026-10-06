@@ -51,3 +51,16 @@ h["date"]=pd.to_datetime(h["race_date_model"],errors="coerce")
 for yy in [2021,2022,2023,2024]:
  z=h[h["date"].dt.year.eq(yy)]; print("D59_YEAR",yy,"ROWS",len(z),"RACES",z["_race"].nunique(),"VALID_SP",pd.to_numeric(z["starting_price_decimal"],errors="coerce").gt(1).sum())
 print("D59_COMPLETE")
+
+# D60 direct full LAB146 exact-ID market audit
+hh=h[["_race","_horse","starting_price_decimal"]].copy(); hh["_race"]=hh["_race"].astype(str); hh["_horse"]=hh["_horse"].astype(str); hh["_sp_full"]=pd.to_numeric(hh["starting_price_decimal"],errors="coerce")
+hh=hh[hh["_sp_full"].gt(1)].drop_duplicates(["_race","_horse"],keep=False)
+xx=d.copy(); xx["_race"]=xx["_race"].astype(str); xx["_horse"]=xx["_horse"].astype(str); xx=xx.merge(hh[["_race","_horse","_sp_full"]],on=["_race","_horse"],how="left",validate="one_to_one")
+print("D60_FULL_JOIN","ROWS",int(xx["_sp_full"].notna().sum()),"RACES",xx.loc[xx["_sp_full"].notna(),"_race"].nunique(),"COVERAGE",float(xx["_sp_full"].notna().mean()))
+for yr in [2022,2023]:
+ tr=xx.year_eval<yr; te=xx.year_eval.eq(yr)&xx["_sp_full"].notna()
+ mm=make_pipeline(SimpleImputer(strategy="median"),HistGradientBoostingClassifier(max_iter=200,learning_rate=.05,max_leaf_nodes=5,l2_regularization=1,random_state=42)); mm.fit(xx.loc[tr,F],xx.loc[tr,"y"])
+ q=xx.loc[te,["_race","_horse","y","_sp_full","target_field_size"]].copy(); q["s"]=mm.decision_function(xx.loc[te,F]); q["p"]=q.groupby("_race").s.transform(lambda z:np.exp(z-z.max())/np.exp(z-z.max()).sum()); q["rawq"]=1/q["_sp_full"]; q["q"]=q.rawq/q.groupby("_race").rawq.transform("sum"); q["resid"]=q.p-q.q; q["profit"]=np.where(q.y.eq(1),q["_sp_full"]-1,-1.0); q["odds_band"]=pd.cut(q["_sp_full"],[1,2,4,8,16,np.inf],right=False,labels=["1-2","2-4","4-8","8-16","16+"])
+ w=q[q.y.eq(1)]; print("D60_YEAR",yr,"RUNNERS",len(q),"RACES",q._race.nunique(),"WINNERS",len(w),"MARKET_LL",float(-np.log(w.q.clip(1e-12,1)).mean()),"MODEL_LL",float(-np.log(w.p.clip(1e-12,1)).mean()),"ABS_RESID",float(q.resid.abs().mean()))
+ for band,g in q.groupby("odds_band",observed=True): print("D60_ODDS",yr,str(band),"N",len(g),"WINS",int(g.y.sum()),"RESID",float(g.resid.mean()),"SP_POT",float(g.profit.sum()/len(g)))
+print("D60_FULL_MARKET_AUDIT_COMPLETE FINAL_SP_FORENSIC_ONLY")
