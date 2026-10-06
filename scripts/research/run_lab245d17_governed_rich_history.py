@@ -52,17 +52,18 @@ def met(z):
   if len(w)!=1:continue
   rank=int(g.raw.rank(method="first",ascending=False).iloc[w[0]]);q=np.clip(g.raw.to_numpy(float),1e-12,None);q=q/q.sum();p=q[w[0]];rr.append((rank,-math.log(max(p,1e-12))))
  a=np.array(rr);return len(a),np.mean(a[:,0]<=1),np.mean(a[:,0]<=2),np.mean(a[:,0]<=3),np.mean(1/a[:,0]),np.mean(a[:,1])
-print("D27_CLASS_RANK_MODEL_FAMILY"); print("FEATURE_ROWS",len(b),"RACES",b._race.nunique())
+print("D28_HGB_ARCHITECTURE_SWEEP"); print("FEATURE_ROWS",len(b),"RACES",b._race.nunique())
 fs=base+[x+"_rankpct" for x in classraw]
-def models():
- return {
- "HGB":make_pipeline(SimpleImputer(strategy="median",add_indicator=True),HistGradientBoostingClassifier(max_iter=350,learning_rate=.035,max_leaf_nodes=15,min_samples_leaf=30,l2_regularization=10,random_state=24582)),
- "LOGIT_C03":make_pipeline(SimpleImputer(strategy="median",add_indicator=True),StandardScaler(),LogisticRegression(C=.3,max_iter=5000,class_weight="balanced",solver="lbfgs")),
- "LOGIT_C1":make_pipeline(SimpleImputer(strategy="median",add_indicator=True),StandardScaler(),LogisticRegression(C=1,max_iter=5000,class_weight="balanced",solver="lbfgs")),
- "ET":make_pipeline(SimpleImputer(strategy="median",add_indicator=True),ExtraTreesClassifier(n_estimators=500,min_samples_leaf=8,max_features=.85,class_weight="balanced",n_jobs=-1,random_state=24583))
- }
+cfgs=[
+("HGB_A",350,.035,15,30,10),
+("HGB_B",450,.025,15,30,15),
+("HGB_C",350,.035,9,40,15),
+("HGB_D",400,.030,21,40,20),
+("HGB_E",300,.040,9,60,20),
+("HGB_F",500,.020,15,60,25)]
 for yr in [2022,2023,2024]:
  tr=b[b._year<yr];te=b[b._year==yr]
- for name,m in models().items():
+ for name,it,lr,leaves,leafn,l2 in cfgs:
+  m=make_pipeline(SimpleImputer(strategy="median",add_indicator=True),HistGradientBoostingClassifier(max_iter=it,learning_rate=lr,max_leaf_nodes=leaves,min_samples_leaf=leafn,l2_regularization=l2,random_state=24582))
   m.fit(tr[fs],tr.y);z=te[["_race","y"]].copy();z["raw"]=m.predict_proba(te[fs])[:,1]
   n,t1,t2,t3,mrr,ll=met(z);print("RESULT",yr,name,n,f"{t1:.6f}",f"{t2:.6f}",f"{t3:.6f}",f"{mrr:.6f}",f"{ll:.6f}")
