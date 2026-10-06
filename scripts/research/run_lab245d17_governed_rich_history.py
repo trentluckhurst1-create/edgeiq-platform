@@ -1,8 +1,11 @@
-from pathlib import Path\n# D27B execution trigger; frozen experiment unchanged
+from pathlib import Path
+# D27B execution trigger; frozen experiment unchanged
 import pandas as pd,numpy as np,math
 from sklearn.impute import SimpleImputer
 from sklearn.pipeline import make_pipeline
-from sklearn.ensemble import HistGradientBoostingClassifier,ExtraTreesClassifier\nfrom sklearn.linear_model import LogisticRegression\nfrom sklearn.preprocessing import StandardScaler
+from sklearn.ensemble import HistGradientBoostingClassifier,ExtraTreesClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.preprocessing import StandardScaler
 ROOT=Path(r"C:\EDGEIQ_PROFITABILITY_RESEARCH"); PROD=Path(r"C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM")
 B=ROOT/"outputs/research/profitability_program/lab245b/LAB245B_COMPACT_PERFORMANCE_BRIDGE.csv"
 C=PROD/"outputs/research/model_lab_031/certified_current_race_context_031.csv"
