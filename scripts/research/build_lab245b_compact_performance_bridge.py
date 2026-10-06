@@ -72,6 +72,7 @@ def main():
     hist.append({"date":dt,"distance":float(r.distance_metres) if pd.notna(r.distance_metres) else np.nan,
                  "pos":float(r.finish_position) if pd.notna(r.finish_position) else np.nan,
                  "margin":float(r.finish_margin) if pd.notna(r.finish_margin) else np.nan,
+                 "field_size":float(r.field_size) if pd.notna(r.field_size) else np.nan,
                  "lvs":float(r.runner_lvs) if pd.notna(r.runner_lvs) else np.nan})
  out=pd.DataFrame(rows)
  if not out["_year"].between(2021,2024).all(): raise RuntimeError("Sealed-year breach.")
