@@ -38,3 +38,16 @@ for yr in [2022,2023]:
  for band,g in q.groupby("field_band",observed=True):
   print("FIELD",yr,str(band),"N",len(g),"MEAN_P_MINUS_Q",float(g.resid.mean()),"ALL_RUNNER_SP_POT",float(g.profit.sum()/len(g)))
 print("D58_FORENSIC_SP_COMPLETE NOTE_FINAL_SP_NOT_EXECUTABLE")
+
+# D59 deterministic LAB146 namespace audit
+H=Path(r"C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\outputs\\research\\model_price_diagnostics\\forward_validation\\LAB146_COMPLETE_HISTORICAL_E264_MATRIX.csv")
+h=pd.read_csv(H,usecols=["_race","_horse","race_date_model","starting_price_decimal"])
+a=d[["_race","_horse"]].copy(); a["_race"]=a["_race"].astype(str); a["_horse"]=a["_horse"].astype(str)
+b=h[["_race","_horse"]].copy(); b["_race"]=b["_race"].astype(str); b["_horse"]=b["_horse"].astype(str)
+j=a.merge(b.drop_duplicates(),on=["_race","_horse"],how="inner")
+print("D59_LAB146_ROWS",len(h),"RACES",h["_race"].nunique())
+print("D59_EXACT_NAMESPACE_ROWS",len(j),"RACES",j["_race"].nunique())
+h["date"]=pd.to_datetime(h["race_date_model"],errors="coerce")
+for yy in [2021,2022,2023,2024]:
+ z=h[h["date"].dt.year.eq(yy)]; print("D59_YEAR",yy,"ROWS",len(z),"RACES",z["_race"].nunique(),"VALID_SP",pd.to_numeric(z["starting_price_decimal"],errors="coerce").gt(1).sum())
+print("D59_COMPLETE")
