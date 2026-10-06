@@ -16,7 +16,7 @@ meta={"_race","_horse","race_date","date","y","target_finish_position","current_
 num=[c for c in d.columns if c not in meta and pd.api.types.is_numeric_dtype(d[c])]
 context={c for c in num if c.startswith(("tb_mech_","db_mech_","tdb_mech_"))}|{"distance_band_200"}
 base=[c for c in num if c not in context]
-print("D63_CONTRACT PREP_RECENCY_ONLY BASE",len(base),"PLUS",len(base)+len(prep))
+print("D63_CONTRACT PREP_RECENCY_ONLY_NAMESPACE_FIXED BASE",len(base),"PLUS",len(base)+len(prep))
 print("D63_COVERAGE",{c:float(z[c].notna().mean()) for c in prep})
 for yr in [2022,2023,2024]:
  tr=z.year_eval<yr;te=z.year_eval.eq(yr)
