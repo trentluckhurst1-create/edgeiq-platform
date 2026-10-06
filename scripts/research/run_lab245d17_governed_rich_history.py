@@ -61,16 +61,15 @@ racectx=["current_barrier","derived_field_size","barrier_position_pct","current_
 conn=["jockey_changed_from_last_start","prior_same_jockey_starts","trainer_changed_from_last_start","prior_same_trainer_starts"]
 cr=[x+"_rankpct" for x in classraw]
 blocks={"BASE17":base,"RACE_CONTEXT":base+racectx,"CONNECTION":base+conn,"CLASS_RANK":base+cr,"CLASS_RANK_RACE":base+cr+racectx,"CLASS_RANK_CONNECTION":base+cr+conn,"ALL_NONWEIGHT":base+cr+racectx+conn}
-print("D30_CONTEXT_CAUSAL_ABLATION");print("FEATURE_ROWS",len(b),"RACES",b._race.nunique())
-groups={
-"BARRIER":["current_barrier","barrier_position_pct","derived_field_size"],
-"DIST_CHANGE":["current_distance_metres","distance_change_metres","abs_distance_change_metres","prior_exact_distance_starts_031"],
-"CLASS_DEPTH":["prior_same_class_starts"],
-"CONNECTION":["jockey_changed_from_last_start","prior_same_jockey_starts","trainer_changed_from_last_start","prior_same_trainer_starts"]}
-tests={"BASE17":base}
-for k,v in groups.items():tests[k]=base+v
-tests["BARRIER_DIST"]=base+groups["BARRIER"]+groups["DIST_CHANGE"]
-tests["RACE_CONTEXT"]=base+groups["BARRIER"]+groups["DIST_CHANGE"]+groups["CLASS_DEPTH"]
+print("D31_BARRIER_SIGNAL_DECOMPOSITION");print("FEATURE_ROWS",len(b),"RACES",b._race.nunique())
+tests={
+"BASE17":base,
+"BARRIER_ONLY":base+["current_barrier"],
+"FIELD_SIZE_ONLY":base+["derived_field_size"],
+"BARRIER_PCT_ONLY":base+["barrier_position_pct"],
+"BARRIER_FIELD":base+["current_barrier","derived_field_size"],
+"BARRIER_PCT_FIELD":base+["barrier_position_pct","derived_field_size"],
+"BARRIER_FULL":base+["current_barrier","barrier_position_pct","derived_field_size"]}
 for yr in [2022,2023,2024]:
  tr=b[b._year<yr];te=b[b._year==yr]
  for name,fs in tests.items():
