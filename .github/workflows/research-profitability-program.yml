@@ -345,6 +345,8 @@ jobs:
           Copy-Item (Join-Path $env:GITHUB_WORKSPACE "scripts\research\run_d61_margin_shape.py") (Join-Path $ResearchRoot "scripts\research\run_d61_margin_shape.py") -Force
           Push-Location $ResearchRoot
           try {
+            python -m py_compile scripts\research\build_lab245b_compact_performance_bridge.py scripts\research\run_d61_margin_shape.py
+            if ($LASTEXITCODE -ne 0) { throw "D61 compile gate failed" }
             python scripts\research\build_lab245b_compact_performance_bridge.py
             if ($LASTEXITCODE -ne 0) { throw "D61 bridge rebuild failed" }
             python scripts\research\run_d61_margin_shape.py
