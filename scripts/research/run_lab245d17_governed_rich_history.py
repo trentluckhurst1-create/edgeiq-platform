@@ -18,7 +18,7 @@ cc=["canonical_race_id","canonical_horse_id","current_barrier","barrier_position
 c=pd.read_csv(CTX,usecols=cc).rename(columns={"canonical_race_id":"_race","canonical_horse_id":"_horse"}).drop_duplicates(["_race","_horse"])
 b=b.merge(c,on=["_race","_horse"],how="left")
 # certified historical connection outcomes
-use=["race_date","canonical_horse_id","canonical_jockey_id","canonical_trainer_id","canonical_track_id","distance_metres","finish_position","epi_status_026"]
+use=["race_date","canonical_horse_id","canonical_jockey_id","canonical_trainer_id","canonical_track_id","distance_metres","barrier","field_size","finish_position","epi_status_026"]
 h=pd.read_csv(PERF,usecols=use);h=h[h.epi_status_026.eq("CALCULATED")].copy();h["date"]=pd.to_datetime(h.race_date);fp=pd.to_numeric(h.finish_position,errors="coerce");h=h[fp.notna()].copy();h["win"]=(fp[h.index]==1).astype(int);h["top3"]=(fp[h.index]<=3).astype(int)
 def attach(df,h,key,prefix,current):
  hh=h[[key,"date","win","top3"]].dropna(subset=[key,"date"]).copy();hh[key]=hh[key].astype(str)
@@ -96,14 +96,30 @@ bar=["barrier_position_pct"]
 conn=base+bar+rates
 prep_counts=["runs_last_30d","runs_last_60d","runs_last_90d","prep_run_number_90d","first_up_90d","second_up_90d","third_up_90d"]
 prep_last=["distance_change_from_last","abs_distance_change_from_last","last_finish_position","last_won","last_top3"]
-rel_jt=["jt_combo_prior_starts","jt_combo_prior_win_rate","jt_combo_prior_top3_rate"]
-rel_hj=["horse_jockey_prior_starts","horse_jockey_prior_win_rate","horse_jockey_prior_top3_rate"]
-rel_ht=["horse_trainer_prior_starts","horse_trainer_prior_win_rate","horse_trainer_prior_top3_rate"]
-champ=conn+prep_last
-tests={"PBC_PREP_LAST":champ,"PLUS_JT_COMBO":champ+rel_jt,"PLUS_HORSE_JOCKEY":champ+rel_hj,"PLUS_HORSE_TRAINER":champ+rel_ht,"PLUS_ALL_RELATIONSHIPS":champ+rel_jt+rel_hj+rel_ht}
+# D44 strict-PIT track-distance-barrier mechanism.
+h["distance_band_200"]=(pd.to_numeric(h["distance_metres"],errors="coerce")/200).round()*200
+hb=pd.to_numeric(h["barrier"],errors="coerce");hf=pd.to_numeric(h["field_size"],errors="coerce")
+h["hist_barrier_pct"]=(hb-1)/(hf-1);h.loc[hf<=1,"hist_barrier_pct"]=np.nan
+h["barrier_zone"]=pd.cut(h["hist_barrier_pct"],[-np.inf,1/3,2/3,np.inf],labels=["INNER","MID","OUTER"]).astype(str)
+b["distance_band_200"]=(pd.to_numeric(b["current_distance"],errors="coerce")/200).round()*200
+bp=pd.to_numeric(b["barrier_position_pct"],errors="coerce")
+b["barrier_zone"]=pd.cut(bp,[-np.inf,1/3,2/3,np.inf],labels=["INNER","MID","OUTER"]).astype(str)
+# target track id from PERF026 race identity, joined without results.
+race_track=h[["date","canonical_track_id"]].copy()
+# map race via separate PERF race metadata
+rm=pd.read_csv(PERF,usecols=["canonical_race_id","canonical_track_id"]).drop_duplicates("canonical_race_id").rename(columns={"canonical_race_id":"_race","canonical_track_id":"current_track_id"})
+b=b.merge(rm,on="_race",how="left")
+b=attach_combo(b,h,["canonical_track_id","distance_band_200","barrier_zone"],"tdb_mech",["current_track_id","distance_band_200","barrier_zone"])
+b=attach_combo(b,h,["canonical_track_id","barrier_zone"],"tb_mech",["current_track_id","barrier_zone"])
+b=attach_combo(b,h,["distance_band_200","barrier_zone"],"db_mech",["distance_band_200","barrier_zone"])
+tdb=["tdb_mech_prior_starts","tdb_mech_prior_win_rate","tdb_mech_prior_top3_rate"]
+tb=["tb_mech_prior_starts","tb_mech_prior_win_rate","tb_mech_prior_top3_rate"]
+db=["db_mech_prior_starts","db_mech_prior_win_rate","db_mech_prior_top3_rate"]
+champ=base+bar+rates
+tests={"PBC_BASE":champ,"PLUS_TRACK_BARRIER":champ+tb,"PLUS_DIST_BARRIER":champ+db,"PLUS_TRACK_DIST_BARRIER":champ+tdb,"PLUS_ALL_BARRIER_MECH":champ+tb+db+tdb}
 def met(z):
  z=z.copy();z["p"]=z.groupby("_race").raw.transform(lambda x:x/x.sum());z["rk"]=z.groupby("_race").raw.rank(ascending=False,method="first");w=z[z.y==1];return len(w),(w.rk==1).mean(),(w.rk<=2).mean(),(w.rk<=3).mean(),(1/w.rk).mean(),-np.log(w.p.clip(1e-12)).mean()
-print("D43_FULL_UNIVERSE_RELATIONSHIP_SEARCH");print("ROWS",len(b),"RACES",b._race.nunique(),"JOCKEY_RATE_COVERAGE",b.jockey_prior_win_rate.notna().mean(),"TRAINER_RATE_COVERAGE",b.trainer_prior_win_rate.notna().mean(),"PREP_COVERAGE",b.runs_last_90d.notna().mean())
+print("D44_FULL_UNIVERSE_TRACK_DISTANCE_BARRIER_MECHANISM");print("ROWS",len(b),"RACES",b._race.nunique(),"JOCKEY_RATE_COVERAGE",b.jockey_prior_win_rate.notna().mean(),"TRAINER_RATE_COVERAGE",b.trainer_prior_win_rate.notna().mean(),"PREP_COVERAGE",b.runs_last_90d.notna().mean())
 for yr in [2022,2023,2024]:
  tr=b[b._year<yr];te=b[b._year==yr]
  for name,fs in tests.items():
