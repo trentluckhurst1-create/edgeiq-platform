@@ -1,5 +1,5 @@
 from pathlib import Path
-# D44E FAST KEY PREFLIGHT
+# D44F HISTORICAL COMPONENT PREFLIGHT
 import pandas as pd,numpy as np
 from sklearn.impute import SimpleImputer
 from sklearn.pipeline import make_pipeline
@@ -86,20 +86,12 @@ race_track=h[["date","canonical_track_id"]].copy()
 # map race via separate PERF race metadata
 rm=pd.read_csv(PERF,usecols=["canonical_race_id","canonical_track_id"]).drop_duplicates("canonical_race_id").rename(columns={"canonical_race_id":"_race","canonical_track_id":"current_track_id"})
 b=b.merge(rm,on="_race",how="left")
-def normkey(v):
- return v.astype("string").str.strip().str.replace(r"\.0$","",regex=True)
-for x in ["canonical_track_id","distance_band_200","barrier_zone"]:
- h[x+"_nk"]=normkey(h[x])
-for x in ["current_track_id","distance_band_200","barrier_zone"]:
- b[x+"_nk"]=normkey(b[x])
-checks=[("DB",["distance_band_200_nk","barrier_zone_nk"],["distance_band_200_nk","barrier_zone_nk"]),("TB",["canonical_track_id_nk","barrier_zone_nk"],["current_track_id_nk","barrier_zone_nk"]),("TDB",["canonical_track_id_nk","distance_band_200_nk","barrier_zone_nk"],["current_track_id_nk","distance_band_200_nk","barrier_zone_nk"])]
-print("D44E_KEY_INTERSECTION_PREFLIGHT")
-for name,hk,bk in checks:
- hs=set(map(tuple,h[hk].dropna().drop_duplicates().to_numpy()))
- bs=set(map(tuple,b[bk].dropna().drop_duplicates().to_numpy()))
- inter=hs & bs
- print(name,"HIST_KEYS",len(hs),"TARGET_KEYS",len(bs),"INTERSECTION",len(inter),"TARGET_KEY_COVERAGE",len(inter)/len(bs) if bs else 0.0)
-print("D44E_PREFLIGHT_COMPLETE")
+print("D44F_HISTORICAL_COMPONENT_PREFLIGHT")
+for x in ["canonical_track_id","distance_metres","distance_band_200","barrier","field_size","hist_barrier_pct","barrier_zone"]:
+ v=h[x]
+ print(x,"NONNULL",int(v.notna().sum()),"COVERAGE",float(v.notna().mean()),"NUNIQUE",int(v.nunique(dropna=True)))
+print("BARRIER_SAMPLE",h[["barrier","field_size","hist_barrier_pct","barrier_zone"]].head(10).to_dict("records"))
+print("D44F_PREFLIGHT_COMPLETE")
 raise SystemExit(0)
 b=attach_combo(b,h,["canonical_track_id","distance_band_200","barrier_zone"],"tdb_mech",["current_track_id","distance_band_200","barrier_zone"])
 b=attach_combo(b,h,["canonical_track_id","barrier_zone"],"tb_mech",["current_track_id","barrier_zone"])
