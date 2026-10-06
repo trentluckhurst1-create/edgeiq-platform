@@ -18,7 +18,7 @@ cc=["canonical_race_id","canonical_horse_id","current_barrier","barrier_position
 c=pd.read_csv(CTX,usecols=cc).rename(columns={"canonical_race_id":"_race","canonical_horse_id":"_horse"}).drop_duplicates(["_race","_horse"])
 b=b.merge(c,on=["_race","_horse"],how="left")
 # certified historical connection outcomes
-use=["race_date","canonical_horse_id","canonical_jockey_id","canonical_trainer_id","distance_metres","finish_position","epi_status_026"]
+use=["race_date","canonical_horse_id","canonical_jockey_id","canonical_trainer_id","canonical_track_id","distance_metres","finish_position","epi_status_026"]
 h=pd.read_csv(PERF,usecols=use);h=h[h.epi_status_026.eq("CALCULATED")].copy();h["date"]=pd.to_datetime(h.race_date);fp=pd.to_numeric(h.finish_position,errors="coerce");h=h[fp.notna()].copy();h["win"]=(fp[h.index]==1).astype(int);h["top3"]=(fp[h.index]<=3).astype(int)
 def attach(df,h,key,prefix,current):
  hh=h[[key,"date","win","top3"]].dropna(subset=[key,"date"]).copy();hh[key]=hh[key].astype(str)
@@ -38,6 +38,34 @@ def attach(df,h,key,prefix,current):
  for z in q.columns:df[z]=q[z]
  return df
 b=attach(b,h,"canonical_jockey_id","jockey","current_jockey_id");b=attach(b,h,"canonical_trainer_id","trainer","current_trainer_id")
+# D43 strict-PIT relationship histories. Current horse is bridge identity; current J/T from LAB031.
+b["current_horse_id"]=b["_horse"]
+def attach_combo(df,h,keys,prefix,current_cols):
+ hh=h[keys+["date","win","top3"]].dropna(subset=keys+["date"]).copy()
+ for k in keys:hh[k]=hh[k].astype(str)
+ d=hh.groupby(keys+["date"]).agg(starts=("win","size"),wins=("win","sum"),top3=("top3","sum")).reset_index().sort_values(keys+["date"])
+ for z in ["starts","wins","top3"]:d[z]=d.groupby(keys)[z].cumsum()
+ cols=[prefix+"_prior_starts",prefix+"_prior_win_rate",prefix+"_prior_top3_rate"]
+ d[cols[0]]=d.starts;d[cols[1]]=(d.wins+1)/(d.starts+10);d[cols[2]]=(d.top3+3)/(d.starts+10)
+ left=df.reset_index().rename(columns={"index":"_i"})
+ for src,k in zip(current_cols,keys):left[k]=left[src].astype(str)
+ parts=[]
+ for kval,g in left.groupby(keys,sort=False):
+  kval=kval if isinstance(kval,tuple) else (kval,)
+  mask=np.ones(len(d),dtype=bool)
+  for k,v in zip(keys,kval):mask &= d[k].eq(v).to_numpy()
+  r=d.loc[mask]
+  if r.empty:
+   q=g[["_i"]].copy()
+   for z in cols:q[z]=np.nan
+  else:q=pd.merge_asof(g.sort_values("date"),r[["date"]+cols].sort_values("date"),on="date",direction="backward",allow_exact_matches=False)[["_i"]+cols]
+  parts.append(q)
+ q=pd.concat(parts).set_index("_i").sort_index()
+ for z in cols:df[z]=q[z]
+ return df
+b=attach_combo(b,h,["canonical_jockey_id","canonical_trainer_id"],"jt_combo",["current_jockey_id","current_trainer_id"])
+b=attach_combo(b,h,["canonical_horse_id","canonical_jockey_id"],"horse_jockey",["current_horse_id","current_jockey_id"])
+b=attach_combo(b,h,["canonical_horse_id","canonical_trainer_id"],"horse_trainer",["current_horse_id","current_trainer_id"])
 # PL002 preparation/recency port: strict prior-date horse history only.
 prep=["runs_last_30d","runs_last_60d","runs_last_90d","prep_run_number_90d","first_up_90d","second_up_90d","third_up_90d","distance_change_from_last","abs_distance_change_from_last","last_finish_position","last_won","last_top3"]
 for x in prep:b[x]=np.nan
@@ -68,10 +96,14 @@ bar=["barrier_position_pct"]
 conn=base+bar+rates
 prep_counts=["runs_last_30d","runs_last_60d","runs_last_90d","prep_run_number_90d","first_up_90d","second_up_90d","third_up_90d"]
 prep_last=["distance_change_from_last","abs_distance_change_from_last","last_finish_position","last_won","last_top3"]
-tests={"PBC_BASE":conn,"PBC_PREP_COUNTS":conn+prep_counts,"PBC_PREP_LAST":conn+prep_last,"PBC_PREP_RANKS":conn+prep_rank,"PBC_PREP_ALL":conn+prep_counts+prep_last+prep_rank}
+rel_jt=["jt_combo_prior_starts","jt_combo_prior_win_rate","jt_combo_prior_top3_rate"]
+rel_hj=["horse_jockey_prior_starts","horse_jockey_prior_win_rate","horse_jockey_prior_top3_rate"]
+rel_ht=["horse_trainer_prior_starts","horse_trainer_prior_win_rate","horse_trainer_prior_top3_rate"]
+champ=conn+prep_last
+tests={"PBC_PREP_LAST":champ,"PLUS_JT_COMBO":champ+rel_jt,"PLUS_HORSE_JOCKEY":champ+rel_hj,"PLUS_HORSE_TRAINER":champ+rel_ht,"PLUS_ALL_RELATIONSHIPS":champ+rel_jt+rel_hj+rel_ht}
 def met(z):
  z=z.copy();z["p"]=z.groupby("_race").raw.transform(lambda x:x/x.sum());z["rk"]=z.groupby("_race").raw.rank(ascending=False,method="first");w=z[z.y==1];return len(w),(w.rk==1).mean(),(w.rk<=2).mean(),(w.rk<=3).mean(),(1/w.rk).mean(),-np.log(w.p.clip(1e-12)).mean()
-print("D42_FULL_UNIVERSE_PL002_PREP_ABLATION");print("ROWS",len(b),"RACES",b._race.nunique(),"JOCKEY_RATE_COVERAGE",b.jockey_prior_win_rate.notna().mean(),"TRAINER_RATE_COVERAGE",b.trainer_prior_win_rate.notna().mean(),"PREP_COVERAGE",b.runs_last_90d.notna().mean())
+print("D43_FULL_UNIVERSE_RELATIONSHIP_SEARCH");print("ROWS",len(b),"RACES",b._race.nunique(),"JOCKEY_RATE_COVERAGE",b.jockey_prior_win_rate.notna().mean(),"TRAINER_RATE_COVERAGE",b.trainer_prior_win_rate.notna().mean(),"PREP_COVERAGE",b.runs_last_90d.notna().mean())
 for yr in [2022,2023,2024]:
  tr=b[b._year<yr];te=b[b._year==yr]
  for name,fs in tests.items():
