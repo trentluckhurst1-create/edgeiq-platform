@@ -28,3 +28,4 @@ for yr in [2022,2023,2024]:
   q["rank"]=q.groupby("_race").s.rank(ascending=False,method="first");w=q[q.y.eq(1)]
   print("D63_RESULT",yr,name,"RACES",len(w),"TOP1",float((w["rank"]==1).mean()),"TOP2",float((w["rank"]<=2).mean()),"TOP3",float((w["rank"]<=3).mean()),"MRR",float((1/w["rank"]).mean()),"LL",float(-np.log(w.p.clip(1e-12,1)).mean()))
 print("D63_COMPLETE")
+print("D63_CONTRACT_VERSION PREP_RECENCY_V1")
