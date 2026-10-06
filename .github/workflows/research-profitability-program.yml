@@ -337,7 +337,7 @@ jobs:
           try { python $LocalScript } finally { Pop-Location }
           if ($LASTEXITCODE -ne 0) { throw "LAB245D17 failed" }
       - name: Run D58 forensic SP residual
-        if: ${{ github.event_name == 'push' && contains(github.event.head_commit.message, 'D58_SP') }}
+        if: ${{ github.event_name == 'push' && (contains(github.event.head_commit.message, 'D58_SP') || contains(github.event.head_commit.message, 'D59_OVERLAP')) }}
         shell: powershell
         run: |
           $ResearchRoot = "C:\EDGEIQ_PROFITABILITY_RESEARCH"
