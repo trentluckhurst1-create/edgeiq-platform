@@ -117,9 +117,15 @@ tb=["tb_mech_prior_starts","tb_mech_prior_win_rate","tb_mech_prior_top3_rate"]
 db=["db_mech_prior_starts","db_mech_prior_win_rate","db_mech_prior_top3_rate"]
 champ=base+bar+rates
 tests={"PBC_BASE":champ,"PLUS_TRACK_BARRIER":champ+tb,"PLUS_DIST_BARRIER":champ+db,"PLUS_TRACK_DIST_BARRIER":champ+tdb,"PLUS_ALL_BARRIER_MECH":champ+tb+db+tdb}
+mech_cols=tb+db+tdb
+print("D44B_MECHANISM_FEATURE_AUDIT")
+for c in mech_cols:
+    v=pd.to_numeric(b[c],errors="coerce")
+    print("FEATURE",c,"COVERAGE",float(v.notna().mean()),"NUNIQUE",int(v.nunique(dropna=True)),"STD",float(v.std(skipna=True)) if v.notna().any() else np.nan,"MIN",float(v.min(skipna=True)) if v.notna().any() else np.nan,"MAX",float(v.max(skipna=True)) if v.notna().any() else np.nan)
+print("TRACK_COVERAGE",float(b["current_track_id"].notna().mean()),"TRACK_NUNIQUE",int(b["current_track_id"].nunique(dropna=True)),"DISTBAND_NUNIQUE",int(b["distance_band_200"].nunique(dropna=True)),"ZONE_COUNTS",b["barrier_zone"].value_counts(dropna=False).to_dict())
 def met(z):
  z=z.copy();z["p"]=z.groupby("_race").raw.transform(lambda x:x/x.sum());z["rk"]=z.groupby("_race").raw.rank(ascending=False,method="first");w=z[z.y==1];return len(w),(w.rk==1).mean(),(w.rk<=2).mean(),(w.rk<=3).mean(),(1/w.rk).mean(),-np.log(w.p.clip(1e-12)).mean()
-print("D44_FULL_UNIVERSE_TRACK_DISTANCE_BARRIER_MECHANISM");print("ROWS",len(b),"RACES",b._race.nunique(),"JOCKEY_RATE_COVERAGE",b.jockey_prior_win_rate.notna().mean(),"TRAINER_RATE_COVERAGE",b.trainer_prior_win_rate.notna().mean(),"PREP_COVERAGE",b.runs_last_90d.notna().mean())
+print("D44B_FULL_UNIVERSE_TRACK_DISTANCE_BARRIER_MECHANISM_AUDIT");print("ROWS",len(b),"RACES",b._race.nunique(),"JOCKEY_RATE_COVERAGE",b.jockey_prior_win_rate.notna().mean(),"TRAINER_RATE_COVERAGE",b.trainer_prior_win_rate.notna().mean(),"PREP_COVERAGE",b.runs_last_90d.notna().mean())
 for yr in [2022,2023,2024]:
  tr=b[b._year<yr];te=b[b._year==yr]
  for name,fs in tests.items():
