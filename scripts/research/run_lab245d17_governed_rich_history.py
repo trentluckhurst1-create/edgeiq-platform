@@ -49,7 +49,9 @@ def attach_combo(df,h,keys,prefix,current_cols):
  cols=[prefix+"_prior_starts",prefix+"_prior_win_rate",prefix+"_prior_top3_rate"]
  d[cols[0]]=d.starts;d[cols[1]]=(d.wins+1)/(d.starts+10);d[cols[2]]=(d.top3+3)/(d.starts+10)
  left=df.reset_index().rename(columns={"index":"_i"})
- for src,k in zip(current_cols,keys):\n  left[k]=left[src].astype(str)\n  d[k]=d[k].astype(str)
+ for src,k in zip(current_cols,keys):
+  left[k]=left[src].astype(str)
+  d[k]=d[k].astype(str)
  parts=[]
  for kval,g in left.groupby(keys,sort=False):
   kval=kval if isinstance(kval,tuple) else (kval,)
