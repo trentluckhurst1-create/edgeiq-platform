@@ -123,11 +123,6 @@ for c in mech_cols:
     v=pd.to_numeric(b[c],errors="coerce")
     print("FEATURE",c,"COVERAGE",float(v.notna().mean()),"NUNIQUE",int(v.nunique(dropna=True)),"STD",float(v.std(skipna=True)) if v.notna().any() else np.nan,"MIN",float(v.min(skipna=True)) if v.notna().any() else np.nan,"MAX",float(v.max(skipna=True)) if v.notna().any() else np.nan)
 print("TRACK_COVERAGE",float(b["current_track_id"].notna().mean()),"TRACK_NUNIQUE",int(b["current_track_id"].nunique(dropna=True)),"DISTBAND_NUNIQUE",int(b["distance_band_200"].nunique(dropna=True)),"ZONE_COUNTS",b["barrier_zone"].value_counts(dropna=False).to_dict())
-def met(z):
- z=z.copy();z["p"]=z.groupby("_race").raw.transform(lambda x:x/x.sum());z["rk"]=z.groupby("_race").raw.rank(ascending=False,method="first");w=z[z.y==1];return len(w),(w.rk==1).mean(),(w.rk<=2).mean(),(w.rk<=3).mean(),(1/w.rk).mean(),-np.log(w.p.clip(1e-12)).mean()
-print("D44B_FULL_UNIVERSE_TRACK_DISTANCE_BARRIER_MECHANISM_AUDIT");print("ROWS",len(b),"RACES",b._race.nunique(),"JOCKEY_RATE_COVERAGE",b.jockey_prior_win_rate.notna().mean(),"TRAINER_RATE_COVERAGE",b.trainer_prior_win_rate.notna().mean(),"PREP_COVERAGE",b.runs_last_90d.notna().mean())
-for yr in [2022,2023,2024]:
- tr=b[b._year<yr];te=b[b._year==yr]
- for name,fs in tests.items():
-  m=make_pipeline(SimpleImputer(strategy="median",add_indicator=True),HistGradientBoostingClassifier(max_iter=350,learning_rate=.035,max_leaf_nodes=15,min_samples_leaf=30,l2_regularization=10,random_state=24582));m.fit(tr[fs],tr.y);z=te[["_race","y"]].copy();z["raw"]=m.predict_proba(te[fs])[:,1]
-  print("RESULT",yr,name,*[f"{v:.6f}" if isinstance(v,float) else v for v in met(z)])
+
+print("D44B_LIGHTWEIGHT_AUDIT_COMPLETE")
+raise SystemExit(0)
