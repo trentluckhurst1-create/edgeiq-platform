@@ -61,10 +61,19 @@ racectx=["current_barrier","derived_field_size","barrier_position_pct","current_
 conn=["jockey_changed_from_last_start","prior_same_jockey_starts","trainer_changed_from_last_start","prior_same_trainer_starts"]
 cr=[x+"_rankpct" for x in classraw]
 blocks={"BASE17":base,"RACE_CONTEXT":base+racectx,"CONNECTION":base+conn,"CLASS_RANK":base+cr,"CLASS_RANK_RACE":base+cr+racectx,"CLASS_RANK_CONNECTION":base+cr+conn,"ALL_NONWEIGHT":base+cr+racectx+conn}
-print("D29_LAB031_CONTEXT_BLOCK_TOURNAMENT");print("FEATURE_ROWS",len(b),"RACES",b._race.nunique())
+print("D30_CONTEXT_CAUSAL_ABLATION");print("FEATURE_ROWS",len(b),"RACES",b._race.nunique())
+groups={
+"BARRIER":["current_barrier","barrier_position_pct","derived_field_size"],
+"DIST_CHANGE":["current_distance_metres","distance_change_metres","abs_distance_change_metres","prior_exact_distance_starts_031"],
+"CLASS_DEPTH":["prior_same_class_starts"],
+"CONNECTION":["jockey_changed_from_last_start","prior_same_jockey_starts","trainer_changed_from_last_start","prior_same_trainer_starts"]}
+tests={"BASE17":base}
+for k,v in groups.items():tests[k]=base+v
+tests["BARRIER_DIST"]=base+groups["BARRIER"]+groups["DIST_CHANGE"]
+tests["RACE_CONTEXT"]=base+groups["BARRIER"]+groups["DIST_CHANGE"]+groups["CLASS_DEPTH"]
 for yr in [2022,2023,2024]:
  tr=b[b._year<yr];te=b[b._year==yr]
- for name,fs in blocks.items():
+ for name,fs in tests.items():
   m=make_pipeline(SimpleImputer(strategy="median",add_indicator=True),HistGradientBoostingClassifier(max_iter=350,learning_rate=.035,max_leaf_nodes=15,min_samples_leaf=30,l2_regularization=10,random_state=24582))
   m.fit(tr[fs],tr.y);z=te[["_race","y"]].copy();z["raw"]=m.predict_proba(te[fs])[:,1]
   n,t1,t2,t3,mrr,ll=met(z);print("RESULT",yr,name,n,f"{t1:.6f}",f"{t2:.6f}",f"{t3:.6f}",f"{mrr:.6f}",f"{ll:.6f}")
