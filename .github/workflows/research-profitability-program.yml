@@ -336,6 +336,19 @@ jobs:
           Push-Location $ResearchRoot
           try { python $LocalScript } finally { Pop-Location }
           if ($LASTEXITCODE -ne 0) { throw "LAB245D17 failed" }
+      - name: Run D62 nonlinear race softmax objective
+        if: ${{ github.event_name == 'push' && contains(github.event.head_commit.message, 'D62_SOFTMAX') }}
+        shell: powershell
+        run: |
+          $ResearchRoot = "C:\EDGEIQ_PROFITABILITY_RESEARCH"
+          Copy-Item (Join-Path $env:GITHUB_WORKSPACE "scripts\research\run_d62_race_softmax_objective.py") (Join-Path $ResearchRoot "scripts\research\run_d62_race_softmax_objective.py") -Force
+          Push-Location $ResearchRoot
+          try {
+            python -m py_compile scripts\research\run_d62_race_softmax_objective.py
+            if ($LASTEXITCODE -ne 0) { throw "D62 compile failed" }
+            python scripts\research\run_d62_race_softmax_objective.py
+          } finally { Pop-Location }
+          if ($LASTEXITCODE -ne 0) { throw "D62 failed" }
       - name: Run D61 margin shape challenger
         if: ${{ github.event_name == 'push' && contains(github.event.head_commit.message, 'D61_MARGIN') }}
         shell: powershell
