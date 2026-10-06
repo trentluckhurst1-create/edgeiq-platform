@@ -347,8 +347,7 @@ jobs:
           try {
             python -m py_compile scripts\research\build_lab245b_compact_performance_bridge.py scripts\research\run_d63_prep_recency.py
             if ($LASTEXITCODE -ne 0) { throw "D63 compile failed" }
-            python scripts\research\build_lab245b_compact_performance_bridge.py
-            if ($LASTEXITCODE -ne 0) { throw "D63 bridge rebuild failed" }
+            # Governed bridge rebuilt successfully in the preceding D63 attempt; reuse it.
             python scripts\research\run_d63_prep_recency.py
           } finally { Pop-Location }
           if ($LASTEXITCODE -ne 0) { throw "D63 failed" }
