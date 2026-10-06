@@ -6,8 +6,8 @@ from sklearn.ensemble import HistGradientBoostingClassifier
 D=Path(r"C:\EDGEIQ_PROFITABILITY_RESEARCH\outputs\research\profitability_program\d45\D45_FROZEN_PIT_FEATURE_MATRIX.csv")
 B=Path(r"C:\EDGEIQ_PROFITABILITY_RESEARCH\outputs\research\profitability_program\lab245b\LAB245B_COMPACT_PERFORMANCE_BRIDGE.csv")
 d=pd.read_csv(D);b=pd.read_csv(B)
-prep=["days_since_last","last_distance","last_finish","last_won","last_top3"]
-z=d.merge(b[["_race","_horse"]+prep],on=["_race","_horse"],how="left",validate="one_to_one")
+bridge_prep=["last_distance","last_finish","last_won","last_top3"]
+z=d.merge(b[["_race","_horse"]+bridge_prep],on=["_race","_horse"],how="left",validate="one_to_one")
 z["distance_change"]=z["current_distance"]-z["last_distance"]
 z["abs_distance_change"]=z["distance_change"].abs()
 prep=["days_since_last","distance_change","abs_distance_change","last_finish","last_won","last_top3"]
