@@ -1,5 +1,5 @@
 from pathlib import Path
-# D44G RECONSTRUCT FIELD SIZE + KEY GATE
+# D44G2 RECONSTRUCT FIELD SIZE + KEY GATE
 import pandas as pd,numpy as np
 from sklearn.impute import SimpleImputer
 from sklearn.pipeline import make_pipeline
@@ -96,7 +96,7 @@ hk_tdb=set(zip(nk(h["canonical_track_id"]),nk(h["distance_band_200"]),nk(h["barr
 bk_tdb=set(zip(nk(b["current_track_id"]),nk(b["distance_band_200"]),nk(b["barrier_zone"])))
 print("D44G_RECONSTRUCTED_FIELD_SIZE_GATE")
 for name,hs,bs in [("DB",hk_db,bk_db),("TB",hk_tb,bk_tb),("TDB",hk_tdb,bk_tdb)]:
- hs={x for x in hs if all(v not in ("<NA>","nan") for v in x)};bs={x for x in bs if all(v not in ("<NA>","nan") for v in x)};inter=hs&bs;print(name,"HIST",len(hs),"TARGET",len(bs),"INTERSECTION",len(inter),"COVERAGE",len(inter)/len(bs) if bs else 0)
+ hs={x for x in hs if not any(pd.isna(v) for v in x)};bs={x for x in bs if not any(pd.isna(v) for v in x)};inter=hs&bs;print(name,"HIST",len(hs),"TARGET",len(bs),"INTERSECTION",len(inter),"COVERAGE",len(inter)/len(bs) if bs else 0)
 print("HIST_FIELD_SIZE_COVERAGE",float(h["field_size"].notna().mean()),"HIST_ZONE_COVERAGE",float(h["barrier_zone"].notna().mean()))
 raise SystemExit(0)
 b=attach_combo(b,h,["canonical_track_id","distance_band_200","barrier_zone"],"tdb_mech",["current_track_id","distance_band_200","barrier_zone"])
