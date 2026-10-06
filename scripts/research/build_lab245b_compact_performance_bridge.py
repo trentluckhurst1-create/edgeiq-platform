@@ -60,7 +60,7 @@ def main():
           "lvs_median5":l5[1],"lvs_std5":l5[2],"lvs_peak":max(lvs) if lvs else np.nan,
           "lvs_worst5":min(lvs[-5:]) if lvs else np.nan,
           "margin_mean5":m5[0],"margin_std5":m5[2],"margin_worst5":max(margins[-5:]) if margins else np.nan,
-          "margin_last1":margins[-1] if len(margins)>=1 else np.nan,"margin_last2":margins[-2] if len(margins)>=2 else np.nan,
+          "margin_last1":margins[-1] if len(margins)>=1 else np.nan,"margin_last2":margins[-2] if len(margins)>=2 else np.nan,\n          "last_distance":hist[-1]["distance"] if hist else np.nan,"last_finish":hist[-1]["pos"] if hist else np.nan,\n          "last_won":float(hist[-1]["pos"]==1) if hist and np.isfinite(hist[-1]["pos"]) else np.nan,\n          "last_top3":float(hist[-1]["pos"]<=3) if hist and np.isfinite(hist[-1]["pos"]) else np.nan,
           "margin_change_l1_l2":(margins[-1]-margins[-2]) if len(margins)>=2 else np.nan,
           "margin_per_runner_last1":(hist[-1]["margin"]/max(hist[-1]["field_size"]-1,1)) if hist and np.isfinite(hist[-1]["margin"]) and np.isfinite(hist[-1]["field_size"]) else np.nan,
           "margin_per_runner_last2":(hist[-2]["margin"]/max(hist[-2]["field_size"]-1,1)) if len(hist)>=2 and np.isfinite(hist[-2]["margin"]) and np.isfinite(hist[-2]["field_size"]) else np.nan,
