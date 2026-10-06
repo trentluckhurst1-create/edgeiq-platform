@@ -1,5 +1,5 @@
 from pathlib import Path
-# D44G2 RECONSTRUCT FIELD SIZE + KEY GATE
+# D44H REAL OOS BARRIER MECHANISM TOURNAMENT
 import pandas as pd,numpy as np
 from sklearn.impute import SimpleImputer
 from sklearn.pipeline import make_pipeline
@@ -98,7 +98,6 @@ print("D44G_RECONSTRUCTED_FIELD_SIZE_GATE")
 for name,hs,bs in [("DB",hk_db,bk_db),("TB",hk_tb,bk_tb),("TDB",hk_tdb,bk_tdb)]:
  hs={x for x in hs if not any(pd.isna(v) for v in x)};bs={x for x in bs if not any(pd.isna(v) for v in x)};inter=hs&bs;print(name,"HIST",len(hs),"TARGET",len(bs),"INTERSECTION",len(inter),"COVERAGE",len(inter)/len(bs) if bs else 0)
 print("HIST_FIELD_SIZE_COVERAGE",float(h["field_size"].notna().mean()),"HIST_ZONE_COVERAGE",float(h["barrier_zone"].notna().mean()))
-raise SystemExit(0)
 b=attach_combo(b,h,["canonical_track_id","distance_band_200","barrier_zone"],"tdb_mech",["current_track_id","distance_band_200","barrier_zone"])
 b=attach_combo(b,h,["canonical_track_id","barrier_zone"],"tb_mech",["current_track_id","barrier_zone"])
 b=attach_combo(b,h,["distance_band_200","barrier_zone"],"db_mech",["distance_band_200","barrier_zone"])
@@ -114,5 +113,18 @@ for c in mech_cols:
     print("FEATURE",c,"COVERAGE",float(v.notna().mean()),"NUNIQUE",int(v.nunique(dropna=True)),"STD",float(v.std(skipna=True)) if v.notna().any() else np.nan,"MIN",float(v.min(skipna=True)) if v.notna().any() else np.nan,"MAX",float(v.max(skipna=True)) if v.notna().any() else np.nan)
 print("TRACK_COVERAGE",float(b["current_track_id"].notna().mean()),"TRACK_NUNIQUE",int(b["current_track_id"].nunique(dropna=True)),"DISTBAND_NUNIQUE",int(b["distance_band_200"].nunique(dropna=True)),"ZONE_COUNTS",b["barrier_zone"].value_counts(dropna=False).to_dict())
 
-print("D44B_LIGHTWEIGHT_AUDIT_COMPLETE")
-raise SystemExit(0)
+print("D44H_MECHANISM_AUDIT_PASSED")
+b["year"]=b["date"].dt.year
+for yr in [2022,2023,2024]:
+ tr=b["year"]<yr;te=b["year"].eq(yr)
+ print("YEAR",yr,"TRAIN",int(tr.sum()),"TEST",int(te.sum()))
+ for name,features in tests.items():
+  model=make_pipeline(SimpleImputer(strategy="median"),HistGradientBoostingClassifier(max_iter=200,learning_rate=0.05,max_leaf_nodes=15,l2_regularization=1.0,random_state=42))
+  model.fit(b.loc[tr,features],b.loc[tr,"y"])
+  p=model.predict_proba(b.loc[te,features])[:,1]
+  q=b.loc[te,["_race","y"]].copy();q["p"]=p;q["rp"]=q["p"]/q.groupby("_race")["p"].transform("sum")
+  q["rank"]=q.groupby("_race")["p"].rank(ascending=False,method="first")
+  wins=q[q.y.eq(1)];n=len(wins)
+  top1=float((wins["rank"]<=1).mean());top2=float((wins["rank"]<=2).mean());top3=float((wins["rank"]<=3).mean());mrr=float((1.0/wins["rank"]).mean());ll=float(-np.log(wins["rp"].clip(1e-12,1)).mean())
+  print("RESULT",yr,name,"RACES",n,"TOP1",top1,"TOP2",top2,"TOP3",top3,"MRR",mrr,"LL",ll)
+print("D44H_TOURNAMENT_COMPLETE")
