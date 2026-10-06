@@ -336,6 +336,18 @@ jobs:
           Push-Location $ResearchRoot
           try { python $LocalScript } finally { Pop-Location }
           if ($LASTEXITCODE -ne 0) { throw "LAB245D17 failed" }
+      - name: Build D45 frozen PIT feature matrix
+        if: ${{ github.event_name == 'push' && contains(github.event.head_commit.message, 'D45_MATRIX') }}
+        shell: powershell
+        run: |
+          $ResearchRoot = "C:\EDGEIQ_PROFITABILITY_RESEARCH"
+          $SourceScript = Join-Path $env:GITHUB_WORKSPACE "scripts\research\build_d45_frozen_pit_feature_matrix.py"
+          $LocalScript = Join-Path $ResearchRoot "scripts\research\build_d45_frozen_pit_feature_matrix.py"
+          Copy-Item $SourceScript $LocalScript -Force
+          python -m py_compile $LocalScript
+          Push-Location $ResearchRoot
+          try { python $LocalScript } finally { Pop-Location }
+          if ($LASTEXITCODE -ne 0) { throw "D45 matrix build failed" }
       - name: Run governed research bootstrap
         if: env.LAB == 'bootstrap'
         run: python scripts/research/profitability_program_bootstrap.py
