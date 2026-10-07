@@ -342,8 +342,10 @@ jobs:
         run: |
           $ResearchRoot = "C:\EDGEIQ_PROFITABILITY_RESEARCH"
           $SourceScript = Join-Path $env:GITHUB_WORKSPACE "scripts\research\run_d74_score_discrimination_audit.py"
-          $LocalScript = Join-Path $ResearchRoot "scripts\research\run_d74_score_discrimination_audit.py"
-          Copy-Item $SourceScript $LocalScript -Force
+          $LocalResearchDir = Join-Path $ResearchRoot "scripts\research"
+          New-Item -ItemType Directory -Force -Path $LocalResearchDir | Out-Null
+          Copy-Item (Join-Path $env:GITHUB_WORKSPACE "scripts\research\*") $LocalResearchDir -Recurse -Force
+          $LocalScript = Join-Path $LocalResearchDir "run_d74_score_discrimination_audit.py"
           python -m py_compile $LocalScript
           if ($LASTEXITCODE -ne 0) { throw "D74 compile failed" }
           Push-Location $ResearchRoot
