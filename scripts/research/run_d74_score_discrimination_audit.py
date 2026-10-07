@@ -1,17 +1,18 @@
 from pathlib import Path
-import pandas as pd,re
-ROOT=Path(r"C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM");DATA=ROOT/"public"/"data"
-print("D86_CONTRACT AGE_SEX_DEVELOPMENT_SOURCE_HUNT NO_MODEL")
-names=["age","horse_age","runner_age","age_years","sex","gender","horse_sex","runner_sex","sex_code","foal_date","date_of_birth","dob"]
-hits=[]
-for p in DATA.glob("*.csv"):
- try:
-  h=pd.read_csv(p,nrows=0);low={c.lower():c for c in h.columns};found=[low[n] for n in names if n in low]
-  if not found: continue
-  d=pd.read_csv(p,nrows=300000,low_memory=False);datecol=next((c for c in d.columns if c.lower() in ["race_date","meeting_date","date","run_date"]),None);horse=next((c for c in d.columns if c.lower() in ["horse","horse_name","runner","runner_name","canonical_horse_name"]),None)
-  dt=pd.to_datetime(d[datecol],errors="coerce") if datecol else pd.Series(pd.NaT,index=d.index)
-  rec={"file":p.name,"rows_sample":len(d),"fields":found,"datecol":datecol,"horse":horse,"min":str(dt.min()),"max":str(dt.max()),"y2021":int(dt.dt.year.eq(2021).sum()),"y2022":int(dt.dt.year.eq(2022).sum())}
-  for c in found:rec[c+"_cov"]=float(d[c].notna().mean())
-  hits.append(rec);print("D86_HIT",rec)
- except Exception as e: pass
-print("D86_TOTAL",len(hits));print("D86_COMPLETE")
+import pandas as pd
+D=Path(r"C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data")
+print("D87_CONTRACT HISTORICAL_PACE_REPLAY_SOURCE_GATE NO_MODEL")
+for fn in ["edgeiq_historical_replay_v1.csv","edgeiq_racingcom_results_warehouse_v1.csv","edgeiq_historical_pace_advantage_replay_v1.csv"]:
+ p=D/fn
+ print("D87_FILE",fn,"EXISTS",p.exists())
+ if not p.exists():continue
+ h=pd.read_csv(p,nrows=0);print("D87_COLS",fn,list(h.columns))
+ date=next((c for c in ["meeting_date","race_date","date"] if c in h.columns),None)
+ use=[date] if date else []
+ for c in ["inRun","in_run","tactical_style_pre_race_v1","style_starts_before_v1","pace_advantage_score_v1","pace_pressure_score_v1"]: 
+  if c in h.columns:use.append(c)
+ x=pd.read_csv(p,usecols=use,low_memory=False);dt=pd.to_datetime(x[date],errors="coerce") if date else pd.Series(pd.NaT,index=x.index)
+ print("D87_RANGE",fn,str(dt.min()),str(dt.max()),"ROWS",len(x))
+ for y in [2020,2021,2022,2023,2024]:print("D87_YEAR",fn,y,int(dt.dt.year.eq(y).sum()))
+ for c in use[1:]:print("D87_COVERAGE",fn,c,float(x[c].notna().mean()),"N",int(x[c].notna().sum()))
+print("D87_COMPLETE")
