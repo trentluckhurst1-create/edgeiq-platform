@@ -7,3 +7,5 @@ for y in [2020,2021,2022,2023,2024]:
  q=h[h.date.dt.year.eq(y)];bad=~q.valid_finish
  print("D102_YEAR",y,"ROWS",len(q),"INVALID_FINISH",int(bad.sum()),"RATE",float(bad.mean()),"BAD_MARGIN_NONNULL",int(q.loc[bad,"margin"].notna().sum()),"BAD_MARGIN_Q",q.loc[bad,"margin"].quantile([0,.5,.9,.99,1]).to_dict(),"BAD_EPI_NONNULL",int(q.loc[bad,"epi"].notna().sum()),"BAD_EPI_Q",q.loc[bad,"epi"].quantile([0,.5,.9,.99,1]).to_dict())
 print("D102_COMPLETE")
+
+# D102 fresh dispatch marker 20261008A
