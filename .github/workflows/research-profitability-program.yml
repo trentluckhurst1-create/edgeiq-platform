@@ -336,6 +336,19 @@ jobs:
           Push-Location $ResearchRoot
           try { python $LocalScript } finally { Pop-Location }
           if ($LASTEXITCODE -ne 0) { throw "LAB245D17 failed" }
+      - name: Run D74 PREP48 score discrimination audit
+        if: ${{ github.event_name == 'push' && contains(github.event.head_commit.message, 'D74_DISCRIMINATION') }}
+        shell: powershell
+        run: |
+          $ResearchRoot = "C:\EDGEIQ_PROFITABILITY_RESEARCH"
+          $SourceScript = Join-Path $env:GITHUB_WORKSPACE "scripts\research\run_d74_score_discrimination_audit.py"
+          $LocalScript = Join-Path $ResearchRoot "scripts\research\run_d74_score_discrimination_audit.py"
+          Copy-Item $SourceScript $LocalScript -Force
+          python -m py_compile $LocalScript
+          if ($LASTEXITCODE -ne 0) { throw "D74 compile failed" }
+          Push-Location $ResearchRoot
+          try { python $LocalScript } finally { Pop-Location }
+          if ($LASTEXITCODE -ne 0) { throw "D74 failed" }
       - name: Run D73 PERF026 timing schema inventory
         if: ${{ github.event_name == 'push' && contains(github.event.head_commit.message, 'D73_TIMING') }}
         shell: powershell
