@@ -1,12 +1,11 @@
 from pathlib import Path
 import pandas as pd
-P=Path(r"C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\public\data\edgeiq_historical_replay_settled_v1.csv")
-print("D83_CONTRACT SETTLED_REPLAY_COMPONENT_INVENTORY NO_MODEL")
-d=pd.read_csv(P,low_memory=False);dt=pd.to_datetime(d["meeting_date"],errors="coerce")
-print("D83_ROWS",len(d),"DATES",str(dt.min()),str(dt.max()),"COLS",list(d.columns))
-for c in ["projected_rating_v5_2","sectional_strength_rating","strength_adjusted_rating_v6","confidence_adjusted_rating_v6","trainer_score","jockey_score","connection_score","runner_score"]:
- if c not in d.columns: continue
- v=pd.to_numeric(d[c],errors="coerce");print("D83_FIELD",c,"COV",float(v.notna().mean()),"N",int(v.notna().sum()),"NU",int(v.nunique(dropna=True)))
- for y in [2021,2022,2023,2024]:
-  m=dt.dt.year.eq(y);print("D83_YEAR",c,y,"ROWS",int(m.sum()),"NONNULL",int(v[m].notna().sum()))
-print("D83_COMPLETE")
+R=Path(r"C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM");P=R/"outputs"/"research"/"model_lab_026"/"edgeiq_certified_flat_walk_forward_epi_026.csv"
+print("D84_CONTRACT CONTEXTUAL_CONNECTION_SOURCE_GATE NO_MODEL")
+cols=list(pd.read_csv(P,nrows=0).columns);print("D84_COLUMNS",[c for c in cols if any(k in c.lower() for k in ["jockey","trainer","track","distance","condition","class","barrier","finish"])])
+need=["race_date","canonical_jockey_id","canonical_trainer_id","canonical_track_id","distance_metres","barrier","finish_position"]
+opt=[c for c in ["track_condition_group","race_class","race_class_group","class_group","race_classification"] if c in cols]
+d=pd.read_csv(P,usecols=need+opt,low_memory=False);dt=pd.to_datetime(d.race_date,errors="coerce")
+for c in need[1:]+opt: print("D84_COVERAGE",c,float(d[c].notna().mean()))
+for y in [2020,2021,2022,2023,2024]: print("D84_YEAR",y,"ROWS",int(dt.dt.year.eq(y).sum()))
+print("D84_COMPLETE")
