@@ -1,15 +1,10 @@
 from pathlib import Path
 import pandas as pd,numpy as np
-D=Path(r"C:\EDGEIQ_PROFITABILITY_RESEARCH\outputs\research\profitability_program\d45\D45_FROZEN_PIT_FEATURE_MATRIX.csv");B=Path(r"C:\EDGEIQ_PROFITABILITY_RESEARCH\outputs\research\profitability_program\lab245b\LAB245B_COMPACT_PERFORMANCE_BRIDGE.csv")
-d=pd.read_csv(D);b=pd.read_csv(B);z=d.merge(b[["_race","_horse","last_distance","last_finish","last_won","last_top3"]],on=["_race","_horse"],how="left");z["distance_change"]=z.current_distance-z.last_distance;z["abs_distance_change"]=z.distance_change.abs();z["yr"]=pd.to_datetime(z.race_date).dt.year
-meta={"_race","_horse","race_date","y","target_finish_position","current_track_id","barrier_zone","year","yr"};num=[c for c in d.columns if c not in meta and pd.api.types.is_numeric_dtype(d[c])];ctx={c for c in num if c.startswith(("tb_mech_","db_mech_","tdb_mech_"))}|{"distance_band_200"};F=list(dict.fromkeys([c for c in num if c not in ctx]+["days_since_last","distance_change","abs_distance_change","last_finish","last_won","last_top3"]))
-print("D96_CONTRACT PREP47_TEMPORAL_REGIME_DIAGNOSTIC NO_MODEL_SELECTION NO_MARKET")
-for y in [2021,2022,2023,2024]:
- q=z[z.yr.eq(y)];fs=q.groupby("_race").size();print("D96_YEAR",y,"RUNNERS",len(q),"RACES",q._race.nunique(),"FIELD_MED",float(fs.median()),"FIELD_MEAN",float(fs.mean()),"WIN_RATE",float(q.y.mean()))
-for c in F:
- vals=[]
- for y in [2021,2022,2023,2024]:
-  q=z[z.yr.eq(y)];v=pd.to_numeric(q[c],errors="coerce");w=pd.to_numeric(q.loc[q.y.eq(1),c],errors="coerce");vals.append((y,float(v.notna().mean()),float(v.median()) if v.notna().any() else np.nan,float(w.median()) if w.notna().any() else np.nan))
- if max(a[1] for a in vals)-min(a[1] for a in vals)>.05 or np.nanmax([a[2] for a in vals])-np.nanmin([a[2] for a in vals])>0:
-  print("D96_FEATURE",c,vals)
-print("D96_COMPLETE")
+P=Path(r"C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\outputs\research\model_lab_026\edgeiq_certified_flat_walk_forward_epi_026.csv")
+print("D97_CONTRACT FINISH_POSITION_SEMANTIC_AUDIT NO_MODEL")
+d=pd.read_csv(P,usecols=["race_date","finish_position","field_size","canonical_race_id"],low_memory=False);d["date"]=pd.to_datetime(d.race_date);d["fp"]=pd.to_numeric(d.finish_position,errors="coerce");d["fs"]=pd.to_numeric(d.field_size,errors="coerce")
+for y in [2020,2021,2022,2023,2024]:
+ q=d[d.date.dt.year.eq(y)];v=q.fp.dropna();bad=q.fp>q.fs
+ print("D97_YEAR",y,"ROWS",len(q),"FP_COV",float(q.fp.notna().mean()),"FP_Q",v.quantile([0,.25,.5,.75,.9,.99,1]).to_dict(),"FIELD_MED",float(q.fs.median()),"FP_GT_FIELD",int(bad.sum()),"RATE",float(bad.mean()))
+ print("D97_TOP_FP",q.fp.value_counts().head(20).to_dict())
+print("D97_COMPLETE")
