@@ -40,7 +40,7 @@ permissions:
 
 jobs:
   research-lab:
-    runs-on: ${{ (startsWith(github.event.inputs.lab, '245d') || (github.event_name == 'push' && contains(github.event.head_commit.message, 'LAB245D'))) && fromJSON('["self-hosted","Windows","X64","edgeiq-research"]') || 'ubuntu-latest' }}
+    runs-on: ${{ (startsWith(github.event.inputs.lab, '245d') || (github.event_name == 'push' && contains(github.event.head_commit.message, 'LAB245D'))) && fromJSON('["self-hosted","Windows","X64"]') || 'ubuntu-latest' }}
     timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
