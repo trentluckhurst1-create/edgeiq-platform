@@ -4,15 +4,10 @@ import numpy as np
 
 R=Path(r"C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM")
 U=Path(r"C:\EDGEIQ_PROFITABILITY_RESEARCH\outputs\research\model_v2\stage004\V2_CERTIFIED_SINGLE_WINNER_UNIVERSE.csv")
-candidates=[
- R/"data"/"edgeiq_historical_performance_rating_v1.csv",
- R/"outputs"/"research"/"performance-intelligence"/"edgeiq_historical_performance_rating_v1.csv",
- R/"docs"/"performance-intelligence"/"horse-performance-rating"/"edgeiq_historical_performance_rating_v1.csv",
-]
+src=R/"public"/"data"/"edgeiq_historical_performance_rating_v1.csv"
 print("V2_STAGE027_CONTRACT HISTORICAL_PERFORMANCE_RATING_PIT_CERT NO_MODEL NO_MARKET NO_FUZZY 2025_2026_SEALED")
-src=next((p for p in candidates if p.exists()),None)
-print("V2_STAGE027_SOURCE",src if src else "NOT_FOUND")
-if src is None: raise SystemExit("Historical performance rating authority not found in certified candidate paths")
+print("V2_STAGE027_SOURCE",src,"EXISTS",src.exists())
+if not src.exists(): raise SystemExit("Builder-defined historical performance rating authority missing")
 a=pd.read_csv(src,low_memory=False)
 u=pd.read_csv(U,low_memory=False)
 print("V2_STAGE027_AUTH_ROWS",len(a))
