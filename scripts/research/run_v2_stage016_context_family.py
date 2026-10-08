@@ -16,8 +16,7 @@ x["context_authority_missing"]=x["current_weight_kg"].isna().astype(float)
 x["weight_change_missing"]=x["weight_change_kg"].isna().astype(float)
 x["distance_change_missing"]=x["distance_change_metres"].isna().astype(float)
 family=add+["context_authority_missing","weight_change_missing","distance_change_missing"]
-features=features+family
-print("V2_STAGE016_CONTRACT STAGE011_PLUS_EXACT_CONTEXT_FAMILY NO_SEARCH NO_MARKET FIXED_HGB 2025_2026_SEALED")
+features=features+family\ndef sm(v):\n v=np.asarray(v,float);e=np.exp(v-np.max(v));return e/e.sum()\nprint("V2_STAGE016_CONTRACT STAGE011_PLUS_EXACT_CONTEXT_FAMILY NO_SEARCH NO_MARKET FIXED_HGB 2025_2026_SEALED")
 print("V2_STAGE016_FEATURES","|".join(family))
 for yr in [2022,2023,2024]:
  tr=x[x.year<yr];te=x[x.year==yr].copy()
