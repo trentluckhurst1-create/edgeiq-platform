@@ -36,3 +36,17 @@ If the gate fails, next family should be spell and trip change if those are not 
 3. Do not run an architecture comparison now. HGB stays fixed through family discovery.
 4. Do not read Stage 011 vs D99 as near-parity success. Gaps versus D99 are about 0.025 LL in 2022, 0.002 in 2023, and 0.018 in 2024. V2 has not matched the benchmark yet.
 5. Agree with not promoting Stage 012 or 013, and with not reopening relative-transform slices. Stage 012’s 2024 LL of 2.0796 beats D99, but the 2023 regression is enough to reject the bundle under the current rule.
+
+
+## Stage 016 / Stage 017 independent review
+
+VERDICT: Keep Stage011 as conservative champion; Stage016 retained challenger. Park Stage017 at family level; do not kill or slice it.
+
+Key controls adopted:
+- Stage016 LL gains are consistent but small and not established confirmation.
+- 2022-2024 remain development evidence, not fresh OOS confirmation.
+- Stage017C is conditional covered-subpopulation evidence only; 34/84/122 races are too small for promotion or rejection.
+- Do not test LAB089 going/gear next.
+- Before further Stage016 use, certify LAB031 change/count features exclude target-race and same-date information.
+- Highest-value next step is a written dense-feature gap inventory against D99/non-market PIT inputs, followed by one predeclared dense-family test on Stage011.
+- 2025-2026 remain sealed.
