@@ -4,3 +4,4 @@ exec((Path(__file__).parent/'run_v2_stage023_learner_bakeoff.py').read_text(enco
 # Stage023 disk-staging recovery rerun
 
 # Stage023 native-worktree infrastructure rerun
+# Stage023 direct-native execution rerun
