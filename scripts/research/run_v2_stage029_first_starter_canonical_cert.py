@@ -13,7 +13,7 @@ print("V2_STAGE029_ROWS",len(a))
 for c in ["identity_method_075f2","_chronology_status","resolved_id_in_lab026","canonical_horse_id_075f2"]:
  if c in a.columns:print("V2_STAGE029_VALUE_COUNTS",c,a[c].astype(str).value_counts(dropna=False).head(20).to_dict())
 # exact target date + resolved canonical horse
-right=a.rename(columns={"canonical_horse_id_075f2":"canonical_horse_id"})
+right=a[["race_date","canonical_horse_id_075f2","trainer_prior_first_starters","trainer_prior_first_starter_wins","trainer_prior_first_starter_places","jockey_prior_first_starters","jockey_prior_first_starter_wins","jockey_prior_first_starter_places","combo_prior_first_starters","combo_prior_first_starter_wins","combo_prior_first_starter_places","_chronology_status","identity_method_075f2"]].copy().rename(columns={"canonical_horse_id_075f2":"canonical_horse_id"})
 keys=["race_date","canonical_horse_id"]
 print("V2_STAGE029_DUP_KEYS",int(right.duplicated(keys).sum()))
 m=u.merge(right[keys+["trainer_prior_first_starters","trainer_prior_first_starter_wins","trainer_prior_first_starter_places","jockey_prior_first_starters","jockey_prior_first_starter_wins","jockey_prior_first_starter_places","combo_prior_first_starters","combo_prior_first_starter_wins","combo_prior_first_starter_places","_chronology_status","identity_method_075f2"]].drop_duplicates(keys),on=keys,how="left",indicator=True)
