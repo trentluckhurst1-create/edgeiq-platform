@@ -1,3 +1,3 @@
 from pathlib import Path
-exec((Path(__file__).parent/'run_v2_stage019_shrunk_connections.py').read_text(encoding='utf-8'))
-# V2 Stage019 dispatch
+exec((Path(__file__).parent/'run_v2_stage018a_dense_authority_inventory.py').read_text(encoding='utf-8'))
+# V2 Stage018A dispatch
