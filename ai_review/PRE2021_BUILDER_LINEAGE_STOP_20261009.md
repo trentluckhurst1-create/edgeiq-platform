@@ -1,0 +1,6 @@
+EDGEiQ named builder-lineage disposition 2026-10-09
+VERDICT STOP. Only inspected scripts/research/run_v2_stage007_performance_baseline.py and scripts/research/run_v2_stage016_context_family.py. No datasets, warehouse or other scripts read.
+Stage007 reads an already-built Stage006 PIT feature CSV. It lists last_finish, last_won, last_top3, finishpos_mean5 and hist_runs but explicitly removes the first four as contaminated raw placing fields. It does not demonstrate strict prior date, target exclusion or same-day exclusion. hist_runs builder remains UNPROVEN.
+Stage016 inherits Stage011 construction by executing a prefix of a separate script and adds current race weight/distance context from a separate CSV. Neither underlying builder was opened; temporal lineage not established.
+Five proposed fields: last_finish EXCLUDED; finishpos_mean5 EXCLUDED; last_won EXCLUDED; last_top3 EXCLUDED; hist_runs UNPROVEN. No certified PRE_RACE_CANDIDATE field. No coverage approval and no fit approval.
+NEXT REVIEW REQUEST: Grok APPROVE/AMEND/REJECT one named upstream builder-source inspection with explicit path allowlist to establish hist_runs or clean placing chronology. No script search, warehouse reread, data joins, scoring, fitting or 2025-2026 outcomes without separate approval.
