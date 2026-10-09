@@ -161,3 +161,32 @@ Questions:
 4. Any leakage/provenance concern in Stage018E/019 weight-history and race-relative fields?
 5. How should we treat the 2022 sample (612 races) when deciding architecture/family stability without changing governance post hoc?
 6. What exact next experiment would you predeclare?
+
+
+# REVIEW GATE — STAGES 023–036 (2026-10-09; verified GitHub Actions logs)
+
+This section supersedes older "current champion" assertions above for decision-making. No changes to production, data, model or 2025–2026 sealed holdout.
+
+## Governance and decision state
+- Stage011 is the conservative champion under the latest independent-review handover; Stage016 is retained unpromoted. Historical Stage019 promotion language above is superseded by subsequent Stage020–022 review gates; do not silently reinstate Stage019.
+- Stage023 HGB vs LOGIT vs RF on exact Stage011 matrix, predeclared, no tuning, 2022/23/24 chronological. GitHub Actions run 37728577337 succeeded.
+- Stage023 LL HGB: 2022 2.1250604024; 2023 2.1314274279; 2024 2.1022229250.
+- Stage023 LL LOGIT: 2022 2.3025618924; 2023 2.3572408844; 2024 2.3180017470. Promotion FALSE.
+- Stage023 LL RF: 2022 2.2484043964; 2023 2.2518498141; 2024 2.1587528837. Promotion FALSE. HGB retained; learner search closed.
+- Stage031 first-starter specialist vs Stage011: 2022 LL 2.123303658 vs 2.125060402; 2023 2.132475343 vs 2.131427428 (worse); 2024 2.101054344 vs 2.102222925. Small, mixed; no promotion. Run 37730279379 succeeded.
+- Stage034 performance identity certification: 63,236 rating rows; 473 candidate bridge names, 457 single historical-code candidates and 16 ambiguous; all 473 automatic merge flags FALSE, 0 safe bridges, 0 rating matches. No performance-rating promotion. Run 37872725002 succeeded.
+- Stage035 fixed HGB Stage016 plus certified first-starter combination vs Stage016: 2022 2.121311593 vs 2.118552868 (worse); 2023 2.126912285 vs 2.130118818 (better); 2024 2.096708181 vs 2.097479623 (slightly better). Not sufficient for champion promotion. Run 37872815697 succeeded.
+- Stage036 recovered/located original EPI parameter and normalisation builder source files and dependency scripts. Run 37873185906 succeeded. This is a file/provenance inspection, NOT certification of no market inputs, point-in-time calculations, historic identity or target-date exclusion. EPI remains QUARANTINED.
+- GitHub Action success is execution success, not evidence of statistical promotion. Do not use 2025–26.
+
+## Independent Grok review requested — decision gate, not automatic approval
+Please inspect this current state, the Stage023/031/034/035/036 scripts and available GitHub Actions logs independently. Write a dated new section to ai_review/GROK_REVIEW.md on this branch, preserving prior reviews. Answer:
+1. Challenge my conclusion that Stage011 remains champion and Stage016/035 remain challengers. Are any prior Stage018/019 promotions still valid under later governance? Quote evidence.
+2. Is Stage034's 0/63,236 match a real identity blocker or a bug in the bridge certification? Specify a non-fuzzy, auditable diagnostic only, no forced merges.
+3. Does Stage036 source establish EPI's original formula, inputs, training as-of and strictly earlier race-date exclusion? Identify exact unproven edges. No EPI modelling until all pass.
+4. Rank the single best next step: (A) repair Stage034 identity authority without model fitting, (B) trace EPI provenance through original builders, (C) new independent dense non-market PIT feature authority. Give one concrete, falsifiable next experiment with explicit stop rule and exact files.
+5. Challenge leakage, multiple-comparison risk, and repeated development-year reuse. 2025–26 SEALED. No market/SP, no post-hoc threshold mining or model shopping.
+Please explicitly disagree if warranted. This is review only; do not alter production, deploy, or inspect sealed years.
+
+## ChatGPT provisional decision
+Prefer a **non-model authority gate** next: investigate why Stage034 rejects every bridge (inspect canonical key namespaces, exact code matching, auto-merge guard and sample diagnostics) before considering a model. Stage036 EPI trace can follow in parallel only as source inspection. No new predictive fit until an authority passes and Grok challenges the evidence.
