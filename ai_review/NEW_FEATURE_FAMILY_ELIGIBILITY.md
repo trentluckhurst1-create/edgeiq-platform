@@ -29,3 +29,12 @@ Source: `python scripts/research/run_v2_stage017b_lab089_identity.py`, user-prov
 - Race/date overlap: **3,105/7,185 (43.22%)**.
 
 **Decision: REJECT LAB089 going family as an eligible new feature authority in the present V2 certified universe.** Do not fit, relabel unmatched records, or use fuzzy identity matching. These figures measure exact-match coverage, not within-matched-row feature non-null coverage or PIT validity; those checks are unnecessary after this gate fails.
+
+
+## PL001 / PL002 track-condition identity gate — FAIL (user-run 2026-10-09)
+
+Source: user-provided console output of `audit_v2_parallel_track_condition_identity.py`.
+
+Both PL001 and PL002 contain 37,228 rows and zero duplicate exact race/horse keys. Against 91,434 V2 runners, **both** have exactly 30,253 matches (33.0873%) and 30,253 non-null track conditions (33.0873%). Yearly coverage: 2021 8,279/22,578 (36.6684%); 2022 2,199/7,459 (29.4812%); 2023 8,400/30,163 (27.8487%); 2024 11,375/31,234 (36.4186%). PIT provenance unverified. **REJECT both sources for the >=90% new-feature gate.** Same aggregate matches do not alone prove identical matched runner sets; no union certification has been performed. No fitting authorised.
+
+PL002's jockey/trainer, prep and running-style columns may motivate investigation of *independent higher-coverage authorities*, but these columns are not themselves certified as novel or eligible.
