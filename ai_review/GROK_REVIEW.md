@@ -101,3 +101,24 @@ STOP feature work if either scored artifact absent, any year's intersection <95%
 
 ## PROVENANCE
 Full independent Grok review supplied by user in conversation on 2026-10-09. Grok could not push; Stage043 log body was not independently reread by Grok.
+
+
+# Grok Independent Review — Stage044 STOP and scoring protocol (2026-10-09)
+
+## VERDICT
+Stage044's stop is correct. Run 37879258536 was execution success only. Thirteen research and 98 production name-matched score files are other experiments' artifacts. run_v2_stage011_clean_placing.py and run_d99_full_clean_placing_features.py print annual log loss and do not persist runner-level probabilities, so published figures cannot be joined or reproduced. Not a parity pass, not a refutation of D99, not evidence of a missing feature. Do not re-fit to manufacture missing files; that is a new look at 2022–2024. Next step: one prospective scoring protocol, not a model or open-ended infrastructure program.
+
+## PROTOCOL CONTRACT
+Name ai_review/SCORING_ARTIFACT_PROTOCOL.md. No code in this step, no production write, no market/SP, no 2025–2026 outcomes, no EPI.
+
+Future comparable scored artifact: exactly one row per runner; required fields _race, _horse, race_date, year, y (single winner), p (within-race softmax probability), model_id, git_sha, random_state, train_year_lt, feature_names_sha256, input_file_sha256, n_train_rows, n_test_rows. Forbidden: SP, odds, market rank, EPI, sealed-year outcomes. Sealed rows may be counted as excluded in log only.
+
+Two artifacts comparable only if both exist, race-key intersection >=95% of each test year, and both input hashes recorded; otherwise NOT_COMPARABLE. No substitution of neighboring experiment scores.
+
+First implementation test, only when separately authorised: synthetic three-runner writer dry-run, no model fit; fail if within-race sum(p) differs from 1 by more than 1e-12, any forbidden column appears, or hash fields blank.
+
+## STOP
+Do not implement writer in this step. Do not reopen Stage011, Stage016, rating family, identity mint, or EPI. Stage011 remains champion only as last predeclared model, not reproducible runner-level score. D99 gap uninterpreted.
+
+## PROVENANCE
+User-supplied Grok independent review dated 2026-10-09, referring to commit a92c4a1c. Grok could not push.
