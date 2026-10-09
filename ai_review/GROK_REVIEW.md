@@ -50,3 +50,18 @@ Key controls adopted:
 - Before further Stage016 use, certify LAB031 change/count features exclude target-race and same-date information.
 - Highest-value next step is a written dense-feature gap inventory against D99/non-market PIT inputs, followed by one predeclared dense-family test on Stage011.
 - 2025-2026 remain sealed.
+
+
+# Grok Independent Review — Stages 023–036 gate (2026-10-09)
+
+VERDICT: Stage011 conservative champion; Stage016 retained historical challenger, Stage035 not promoted. Stage018C/019 not reinstated. Stage023 LOGIT/RF fail. No predictive fit until identity authority is certified.
+
+CRITICAL CORRECTION: Stage034 zero-match is a guard short-circuit, not an identity result. The script filters the prototype bridge to automatic_merge_allowed TRUE with canonical_horse_id, but all 473 flags are false. The reported 457 single-code and 16 ambiguous counts are classifications on the prototype, not actual matches to the 63,236 performance-rating rows. Do not treat zero as an identity failure.
+
+Stage036 only searches keywords in EPI builders; does not establish formula, as-of training, market independence, earlier-date exclusion or canonical identity. EPI remains quarantined.
+
+NEXT STEP (Stage037, no model): exact normalized-name and (name,race_date) join of public/data/edgeiq_historical_performance_rating_v1.csv against public/data/edgeiq_official_runs_master_v1.csv; prototype bridge is negative control, LAB245B_COMPACT_PERFORMANCE_BRIDGE.csv existence check. Restrict reported rates to rating rows year <=2024. Count excluded sealed rows only. Report row counts, exact name hit, exact name/date hit, matched-name canonical-ID collision fraction. Normalizer uppercase, strip non-alphanumerics, exact equality only. PASS >=90% exact name/date and zero collisions; STOP <50% or any collisions; otherwise INDETERMINATE. No fuzzy match, no forced merge, no feature fit. If STOP, read Stage036 original builder formulas at source level, not another grep.
+
+Additional risk: Stage031 first_starter_flag is derived from trainer_prior_first_starters.notna(), hence is a coverage indicator rather than genuine debutant status; Stage031/035 cannot be interpreted as tests of first-starter skill. Repeated reuse of 2022–24 creates multiplicity; 2025–26 remain sealed. No market/SP, no threshold mining, no learner search.
+
+Independent review was provided by user as Grok's response. Grok could not access Actions logs directly; numeric run results were taken from CURRENT_STATE. ChatGPT independently fetched and verified Stage023, 031, 034, 035, 036 logs. Full Grok text is in the user's pasted review, dated 2026-10-09.
