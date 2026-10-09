@@ -65,3 +65,20 @@ NEXT STEP (Stage037, no model): exact normalized-name and (name,race_date) join 
 Additional risk: Stage031 first_starter_flag is derived from trainer_prior_first_starters.notna(), hence is a coverage indicator rather than genuine debutant status; Stage031/035 cannot be interpreted as tests of first-starter skill. Repeated reuse of 2022–24 creates multiplicity; 2025–26 remain sealed. No market/SP, no threshold mining, no learner search.
 
 Independent review was provided by user as Grok's response. Grok could not access Actions logs directly; numeric run results were taken from CURRENT_STATE. ChatGPT independently fetched and verified Stage023, 031, 034, 035, 036 logs. Full Grok text is in the user's pasted review, dated 2026-10-09.
+
+
+# Grok Independent Review — Stages 037–042 gate (2026-10-09)
+
+Independent review provided by user. Grok read scripts Stage037–042 but could not read Actions log bodies or push to branch. Its conclusions are independent recommendations, not independently verified run logs.
+
+## VERDICT
+Park historical performance rating as V2 feature family; do not fit. Stage037B/038 certify rating-to-official-master name/date joins only, not V2 warehouse identities. Stage039 formula replay uses rating-file finish_position and margin_x, not official master finish/margin, so does not independently verify official outcome inputs. Stage040 only proves strict-prior shift within rating population. Stage041 shows V2 warehouse has _horse hash but no horse name; Stage042 finds no certified mapping and canonical master/alias absent.
+
+## NEXT EXPERIMENT: Stage043 source-level horse mint audit (no model)
+Locate the first script/artifact assigning EIQ_HORSE_ identifiers and print exact mint expression. Recompute only if it is a pure function of an on-runner field of edgeiq_official_runs_master_v1.csv. Exact string join only, pre-2025 only. Report warehouse runner exact-match rate, horse-key collisions, strict-prior rating coverage. PASS if >=80% exact match, zero collisions, >=50% prior rating coverage. STOP if mint absent/impure, match <50%, any collision, prior coverage <20%. Otherwise INDETERMINATE, park. No fuzzy join, name inference, bridge repair, model fit, SP/market, 2025–26 outcomes, or EPI activation.
+
+## STRATEGIC JUDGMENT
+Historical rating is a redundant nonlinear encoding of finish position, beaten margin and field size; Stage011 already has prior finish and margin. Even if identity passes, do not fit without a separate predeclared ablation and coverage rationale. One bounded mint audit is justified because it may unblock other official-master families, not because this rating is promising. Stage011 champion unchanged.
+
+## REVIEW HANDOFF NOTE
+Full Grok review text was pasted by user in conversation on 2026-10-09; this repository section preserves its decision, objections, quantitative gates and experiment contract. Grok could not push directly.
