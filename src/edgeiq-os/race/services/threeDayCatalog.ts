@@ -11,6 +11,7 @@ export type ThreeDayRunner = {
     trainer?: string | null;
     weight?: string | null;
     market?: unknown;
+    lastFive?: string | string[] | null;
   };
   source?: Record<string, unknown>;
   historicalRuns?: unknown[];
