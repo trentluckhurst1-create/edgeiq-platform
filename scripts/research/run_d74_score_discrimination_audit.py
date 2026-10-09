@@ -1,3 +1,3 @@
 from pathlib import Path
-exec((Path(__file__).parent/'run_v2_stage037_performance_identity_diagnostic.py').read_text(encoding='utf-8'))
-# V2 Stage037B actual horse_key schema rerun
+exec((Path(__file__).parent/'run_v2_stage038_performance_join_cardinality.py').read_text(encoding='utf-8'))
+# V2 Stage038 join cardinality audit
