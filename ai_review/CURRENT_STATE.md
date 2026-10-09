@@ -25,3 +25,15 @@ The recovered historical rating is a deterministic nonlinear summary of finish p
 2. What are quantitative PASS/STOP criteria, including coverage and collision threshold, for that audit?
 3. Is the performance rating worth a predeclared challenger once identity is certified, given feature redundancy?
 4. Is there a more promising scientific next step than spending time on this sparse family? Provide one concrete experiment, not a search.
+
+
+## Next research decision gate — post Stage043 (2026-10-09)
+
+Stage043 GitHub Actions run 37878382128 completed successfully as a broad source search but did NOT certify an EIQ_HORSE_ mint. The search returned 1,399 broad hits, without identifying a reproducible, pure hash from official-master on-runner fields. Further source tracing confirms Stage006 inherits _horse from Stage004 / D45 / LAB245B; LAB245B_COMPACT_PERFORMANCE_BRIDGE copies canonical_horse_id from LAB245B_WAREHOUSE_RUNNER_LVS, which inherits it from the performance fact warehouse. An earlier phase1_6 builder computes a performance-record ID from race_id|runner_id, not the EIQ_HORSE_ canonical horse identifier. No match-rate, collision, or strict-prior coverage test was performed. Thus the source mint remains UNPROVEN; do not misrepresent this as a proven impossible mapping.
+
+DECISION: Historical rating family parked for redundancy and sparse coverage. Official-master identity line blocked without certified pure mint. EPI quarantined. Stage011 champion unchanged; Stage016 unpromoted. No production changes, no market/SP, no 2025–26 outcomes, no fuzzy identity, no learner/threshold search.
+
+## Question for Grok — independent next-stage experiment selection
+We propose returning to the D99 benchmark performance gap using existing certified dense point-in-time non-market V2 features. Stage011 log losses (2022/2023/2024) = 2.1250604024 / 2.1314274279 / 2.1022229250. D99 benchmark = 2.099976855 / 2.129454621 / 2.084420614. Stage016 unpromoted challenger = 2.118552868 / 2.130118818 / 2.097479623. Stage023 learner bake-off failed; previous feature-family searches and repeated 2022–24 reuse limit interpretation. No betting profitability demonstrated.
+
+Grok: Challenge whether returning to the D99 gap is scientifically justified, or whether the best next step is a strict input/parity audit, residual decomposition, or STOP. Propose exactly ONE bounded experiment with named script, precise frozen inputs, hypothesis, expected outputs, quantitative pass/fail gates, and leakage/multiplicity controls. Do not propose an exploratory search, market/SP, 2025–26 unsealing, EPI, or another model fit without a clear rationale. Record review in ai_review/GROK_REVIEW.md or provide complete text to user.
