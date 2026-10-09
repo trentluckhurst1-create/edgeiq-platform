@@ -47,3 +47,17 @@ A future writer dry-run may use **one synthetic three-runner race only** and **m
 ## Stop and change control
 
 **STOP after committing this contract.** Do not implement the writer, re-fit Stage011 or D99, reopen Stage016, rating, identity mint or EPI, examine 2025–2026 outcomes, add market/SP inputs, or begin another feature search. Any subsequent work requires a separately reviewed and explicitly authorised change.
+
+
+## Amendment — evidence class segregation (Grok review, 2026-10-09)
+
+This amendment is **schema/governance only** and does not authorise creating scored files, fitting a model, or evaluating outcomes.
+
+- Add required non-null `evidence_class` to every future scored artifact.
+- Any artifact evaluating 2022, 2023 or 2024 must have `evidence_class=REUSED_DEVELOPMENT` on every such row, because those years were previously used for model selection. Such rows are not independent confirmation.
+- The confirmation comparability gate returns `NOT_COMPARABLE` if **either** artifact contains any `REUSED_DEVELOPMENT` row. No filtering or relabelling to bypass this restriction.
+- The existing >=95% exact-race intersection and all other confirmation conditions remain unchanged. An otherwise compliant development file cannot qualify as confirmation.
+- No other evidence class is automatically entitled to confirmation: a genuinely unexposed evaluation window, >=1,000 strictly earlier certified training races, frozen Stage011 manifest/learner, independent approval, and compliant provenance are all still required.
+- 2025–2026 outcomes remain sealed. No training, refit, scoring run, market-price join, or profitability calculation is authorised.
+
+Source: user-supplied Grok independent review of historical development reopening at commit `1d7dfbcf`.
