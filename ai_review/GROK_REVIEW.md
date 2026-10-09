@@ -82,3 +82,22 @@ Historical rating is a redundant nonlinear encoding of finish position, beaten m
 
 ## REVIEW HANDOFF NOTE
 Full Grok review text was pasted by user in conversation on 2026-10-09; this repository section preserves its decision, objections, quantitative gates and experiment contract. Grok could not push directly.
+
+
+# Grok Independent Review — post-Stage043 direction (2026-10-09)
+
+## VERDICT
+Do not fit another feature to close D99. Stage011 champion, Stage016 unpromoted, rating parked, EPI quarantined, official-master line blocked. Stage043's 1,399 broad hits did not certify EIQ_HORSE_ mint; this does not prove mapping impossible. The single next experiment is row-aligned score parity, no model.
+
+## CHALLENGE
+D99 is a benchmark, not a V2 feature specification. Published Stage011 minus D99 LL gaps are approximately 0.0251 (2022), 0.0020 (2023), 0.0178 (2024). Stage016 narrows them but remains unpromoted. Stage020a compared column names on 5,000 D45 rows, not race-aligned scores. Differences may reflect race universe, winner definition, normalisation, market/SP, EPI, or leakage. Residual decomposition before row alignment is invalid; Stage023 learner search closed.
+
+## NEXT EXPERIMENT
+Script: scripts/research/run_v2_stage044_d99_score_parity_audit.py. Frozen inputs: original Stage011 scored output, original D99 scored output, certified V2 single-winner universe (2022/2023/2024: 612/2396/2402 races), D45_FROZEN_PIT_FEATURE_MATRIX.csv for feature names only. Exact race key, years <=2024, sealed rows excluded count only. Do not read SP/market/odds/EPI values. No fuzzy joins, fit, or threshold mining.
+
+Report yearly exact race intersections; Stage011 and D99 log losses recomputed on identical races; differences from published figures; classify D99-only columns as MARKET_OR_SP, EPI_OR_DERIVED, ALREADY_IN_STAGE011, LEGAL_DENSE_ABSENT, and report legal dense nonnull coverage on intersection.
+
+STOP feature work if either scored artifact absent, any year's intersection <95% of certified V2 races, or recomputed D99 LL differs from published by >0.005. PARITY PASS if intersection >=95% in every year and both scores reproduce published within 0.001. Even after pass, no fit. Later challenger only if LEGAL_DENSE_ABSENT feature coverage >=90%; if none, STOP. One audit, no exploratory fallback.
+
+## PROVENANCE
+Full independent Grok review supplied by user in conversation on 2026-10-09. Grok could not push; Stage043 log body was not independently reread by Grok.
