@@ -19,9 +19,9 @@ def parse_date(s):
 r = pd.read_csv(RATING, low_memory=False, usecols=["horse", "race_date"])
 mhead = pd.read_csv(MASTER, nrows=0)
 print("V2_STAGE037_MASTER_COLUMNS", "|".join(mhead.columns))
-if "canonical_horse_id" not in mhead.columns or "horse" not in mhead.columns or "race_date" not in mhead.columns:
+if "horse_key" not in mhead.columns or "horse" not in mhead.columns or "race_date" not in mhead.columns:
     raise SystemExit("V2_STAGE037_STOP MASTER_SCHEMA_MISMATCH")
-m = pd.read_csv(MASTER, low_memory=False, usecols=["canonical_horse_id", "horse", "race_date"])
+m = pd.read_csv(MASTER, low_memory=False, usecols=["horse_key", "horse", "race_date"])
 r["_date"] = parse_date(r["race_date"])
 m["_date"] = parse_date(m["race_date"])
 excluded = int((r["_date"].dt.year > 2024).sum())
@@ -32,13 +32,13 @@ r["_name"] = normalise(r["horse"])
 m["_name"] = normalise(m["horse"])
 r = r[r["_name"].ne("") & r["_date"].notna()].copy()
 m = m[m["_name"].ne("") & m["_date"].notna()].copy()
-m["canonical_horse_id"] = m["canonical_horse_id"].fillna("").astype(str).str.strip()
-m = m[m["canonical_horse_id"].ne("")].copy()
+m["horse_key"] = m["horse_key"].fillna("").astype(str).str.strip()
+m = m[m["horse_key"].ne("")].copy()
 name_keys = set(m["_name"].unique())
 date_keys = set(zip(m["_name"], m["_date"]))
 name_hits = int(r["_name"].isin(name_keys).sum())
 pair_hits = int(sum(pair in date_keys for pair in zip(r["_name"], r["_date"])))
-ids = m.groupby("_name")["canonical_horse_id"].nunique()
+ids = m.groupby("_name")["horse_key"].nunique()
 matched_names = set(r.loc[r["_name"].isin(name_keys), "_name"])
 colliding = sorted(name for name in matched_names if ids.get(name, 0) > 1)
 name_hit_rate = name_hits / len(r) if len(r) else 0
@@ -57,7 +57,7 @@ if not len(r):
 elif colliding or pair_hit_rate < 0.50:
     decision = "STOP"
 elif pair_hit_rate >= 0.90 and not colliding:
-    decision = "PASS_AUTHORITY_ONLY"
+    decision = "PASS_EXACT_HORSE_KEY_CANDIDATE_NOT_CANONICAL"
 else:
     decision = "INDETERMINATE"
 print("V2_STAGE037_DECISION", decision)
