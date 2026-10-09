@@ -1,3 +1,3 @@
 from pathlib import Path
-exec((Path(__file__).parent/'run_v2_stage041_rating_warehouse_coverage.py').read_text(encoding='utf-8'))
-# V2 Stage041 pre-2025 warehouse coverage
+exec((Path(__file__).parent/'run_v2_stage042_identity_authority_inventory.py').read_text(encoding='utf-8'))
+# V2 Stage042 identity authority schema inventory
