@@ -140,3 +140,28 @@ Stop after machine-readable report. Do not retain artifact, refit Stage011/D99, 
 
 ## PROVENANCE
 Full user-supplied Grok independent review on 2026-10-09; Grok could not push.
+
+
+# Grok Independent Review — post-Stage045 research stop (2026-10-09)
+
+Reviewed ai_review/CURRENT_STATE.md at ddb41e05. Stage045 run 37880357264 passed 18/18 synthetic writer tests, with model_fit=false and no real data. Stage044 remains STOP_PENDING_ORIGINAL_SCORED_ARTIFACTS_NO_REFIT. No implementation is authorised.
+
+## VERDICT: A
+
+Stop probability-model research until there is evaluation evidence that has not already been used to choose features, plus a prospective design frozen before any fit. Do not run another audit to keep the programme moving. Do not fit.
+
+Stage011 remains the last predeclared champion, not a reproducible runner-level score. Stage016 stays unpromoted. The rating family, EPI, and the official-master identity line stay closed. The published D99 gap is not evidence of a missing feature.
+
+## Evidence
+
+The certified non-market path inside the V2 warehouse has already been used. Stage007 to Stage011 established the champion. Stage016's log-loss gains were small and its Top1 results mixed, so it was not promoted. Stage023 rejected logit and random forest. Sparse timing, form-line, and LAB089 were parked. The historical rating is a post-race function of finish, margin, and field size on 1,168 horses, and it does not join _horse. Stage043 did not certify a pure mint. EPI remains unproven. Stage044 found that neither Stage011 nor D99 persisted runner-level probabilities, so the annual figures cannot be joined.
+
+Those same 612 / 2,396 / 2,402 races have been reused for every promotion and rejection. A further 2024 log-loss difference of 0.001 would not be interpretable. Stage045 only proves that a synthetic validator can fail closed. It does not make the historical scores comparable, and it does not show betting profitability. Lower log loss is not a demonstrated edge against a price.
+
+## Falsification
+
+Reopen only if all three exist before any metric is computed: a predeclared hypothesis and feature list, an evaluation window not used for this family selection, and scored artifacts under the frozen protocol. A certified exact _horse mint can reopen the identity line, not a model fit by itself. The D99 gap, a Stage045 pass, or a new transform of Stage011 fields does not falsify this stop.
+
+## NEXT ACTION
+
+Record the stop. Do not dispatch a run, write a scoring script, refit Stage011 or D99, or unseal 2025–2026.
