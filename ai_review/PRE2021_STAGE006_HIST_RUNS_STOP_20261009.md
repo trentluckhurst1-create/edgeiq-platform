@@ -1,0 +1,7 @@
+EDGEiQ — Stage006 upstream builder inspection, 2026-10-09
+VERDICT: STOP per Grok named-script gate.
+Only inspected scripts/research/run_v2_stage006_feature_warehouse.py on research/profitability-program-20261004 (blob fdfe34296cd61ec628602c5d5dc8cdde14e6cb4d).
+Stage006 reads LAB245B_COMPACT_PERFORMANCE_BRIDGE.csv into perf, selects all perf columns except _race, _horse and explicitly dropped fields, and merges them into the Stage004 single-winner universe. It does not explicitly assign hist_runs. It also merges strict-prior timing and dynamic form-line files, but their construction is not shown and those files were not inspected.
+No evidence in the authorised script demonstrates hist_runs uses starts strictly earlier than the target race_date, excludes same-day starts and the target race, or excludes target-race outcomes. Thus hist_runs remains UNPROVEN; no pre-race feature passes. Do not open LAB245B input or search other builders under this gate.
+Historical provisional population remains 50,209 flat single-winner races, not an approved model population. No coverage count, warehouse reread, fit, score, join or 2025–2026 access authorised.
+Next decision, if requested: separately authorise one explicitly named LAB245B upstream builder source file for read-only provenance review. Its exact path must be approved first; no unrestricted script search.
