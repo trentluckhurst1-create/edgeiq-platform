@@ -190,3 +190,16 @@ Training can start only under the conditions already stated: one window with no 
 ## Provenance
 
 User-provided Grok review, 2026-10-09. The supplied text ended mid-sentence after “exact, collisi”; the final sentence above summarises previously stated price-provenance requirements rather than purporting to reproduce missing text verbatim.
+
+
+# Grok Independent Review — development-only lane (2026-10-09)
+
+**VERDICT: REJECT. No training authorised.** User supplied this independent review. Stage011 remains the last predeclared champion; 2022–2024 are reused development data; 2025–2026 remain sealed.
+
+Stage011 log loss already recorded: 2022 2.1250604024, 2023 2.1314274279, 2024 2.1022229250. Refit of same features/learner/years is not a new experiment and cannot recreate original Stage044 provenance or demonstrate achievable betting profit. Stage016 unpromoted; rating, EPI and identity mint remain closed.
+
+**One of two prerequisites before a new fit:**
+1. Genuinely unexposed evaluation window with >=1,000 strictly earlier certified races, under separately authorised unsealing if 2025–2026; **or**
+2. A named, genuinely untested feature manifest, excluding Stage011/016, rating and EPI, with certified point-in-time availability, >=90% coverage, exactly one predeclared development fit, `evidence_class=REUSED_DEVELOPMENT`, and no promotion regardless of log loss.
+
+Profitability additionally requires a named timestamped pre-off price source with exact collision-free runner identity; SP/BSP are diagnostics only. No run is authorised by this review.
