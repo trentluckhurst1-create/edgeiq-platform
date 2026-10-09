@@ -122,3 +122,21 @@ Do not implement writer in this step. Do not reopen Stage011, Stage016, rating f
 
 ## PROVENANCE
 User-supplied Grok independent review dated 2026-10-09, referring to commit a92c4a1c. Grok could not push.
+
+
+# Grok Independent Review — Stage045 synthetic writer gate (2026-10-09)
+
+Reviewed ai_review/CURRENT_STATE.md at cfdcc627 against frozen ai_review/SCORING_ARTIFACT_PROTOCOL.md (basis commit 305bbf47). No implementation authorised by review.
+
+## VERDICT: AMEND
+One dry-run only after corrections. No real racing data, model fit, market/SP/EPI values, 2025–2026 outcomes, or production write. A pass does not make Stage011/D99 comparable or authorise a scoring run. Original negative cases insufficient: finite p in [0,1], year <=2024, nonblank SHA-256 digests, populated required fields, full forbidden-column set. n_train_rows must not be invented for no-model fixture.
+
+## BOUNDED CONTRACT
+Future script scripts/research/run_v2_stage045_synthetic_score_writer.py. Compliant fixture: one race, three synthetic runners, race_date 2020-01-01, year 2020, y=[1,0,0], p=[0.5,0.3,0.2]. Sentinels model_id=NO_MODEL_SYNTHETIC, git_sha=SYNTHETIC, random_state=NA, train_year_lt=2020, n_train_rows=0, n_test_rows=3; two distinct 64-character hex digests. Write only under temporary directory; assert three rows and one _race.
+
+Each negative must fail closed with independent reason: (1) sum(p) >1e-12 deviation, use 1+2e-12; (2) forbidden set sp, odds, market_rank, epi; test sp and epi separately; (3) either hash blank OR not 64 hex; (4) duplicate (_race,_horse); (5) zero winners AND two winners separately; (6) p outside [0,1] AND nonfinite p separately; (7) year>=2025; (8) required field missing OR null.
+
+Stop after machine-readable report. Do not retain artifact, refit Stage011/D99, or reopen Stage016, rating, identity mint, EPI.
+
+## PROVENANCE
+Full user-supplied Grok independent review on 2026-10-09; Grok could not push.
