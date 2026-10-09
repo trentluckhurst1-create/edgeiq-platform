@@ -165,3 +165,28 @@ Reopen only if all three exist before any metric is computed: a predeclared hypo
 ## NEXT ACTION
 
 Record the stop. Do not dispatch a run, write a scoring script, refit Stage011 or D99, or unseal 2025–2026.
+
+
+# Grok Independent Review — development reopen `1d7dfbcf` (2026-10-09)
+
+Reviewed `ai_review/HISTORICAL_DEVELOPMENT_REOPEN_REQUEST.md` and `ai_review/HISTORICAL_HOLDOUT_NO_OUTCOME_INVENTORY.md` at `1d7dfbcf`. Verdict A remains in force.
+
+## VERDICT: AMEND
+
+No training is authorised. The no-outcome inventory is a fail: 2021 has no earlier certified races, 2022–2024 were used for selection, and 2025–2026 stay sealed. Calling those years “development diagnostics” is an accurate label. It does not create an evaluation window or justify another fit.
+
+A Stage011 refit would be a new look at the same races, not recovery of the missing Stage044 scores and not evidence of a better betting model. No hypothesis beyond “freeze Stage011” is named, so the proposed run is not yet a single experiment. A price audit is also premature: no timestamped pre-off source has been named, and SP or BSP still cannot prove a bet could have been struck.
+
+## Protocol amendment, before any development file exists
+
+Add `evidence_class`. Any 2022–2024 output must be `REUSED_DEVELOPMENT`. The confirmation rule returns `NOT_COMPARABLE` if either artifact has that class. Do not change the frozen confirmation thresholds to make a development file look eligible.
+
+## First permitted run
+
+None. Do not dispatch a fit, a refit, or a price join.
+
+Training can start only under the conditions already stated: one window with no prior metric exposure, at least 1,000 strictly earlier certified races, the Stage011 manifest and fixed HGB seed frozen first, protocol-compliant runner-level scores, and one predeclared log-loss gate. A miss ends the fit. Profitability stays blocked until an exact, collision-free join to timestamped pre-off prices is established.
+
+## Provenance
+
+User-provided Grok review, 2026-10-09. The supplied text ended mid-sentence after “exact, collisi”; the final sentence above summarises previously stated price-provenance requirements rather than purporting to reproduce missing text verbatim.
