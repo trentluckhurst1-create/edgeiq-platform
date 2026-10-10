@@ -27,6 +27,8 @@ Minimum approval required before execution:
 2. Explicit approval to create new scripts and output artifacts under the paths named below.
 3. Explicit approval that this does not override the sealed-year or price-source stop.
 
+Currently authorised work is limited to completing this plan and PR review. Fitting, scoring, scored-artifact creation from real runner data, and any new metric computation require the approval statement in Section 12.
+
 ## 2. Current Evidence To Reuse
 
 ### Stage011 frozen comparison baseline
@@ -100,6 +102,22 @@ Source script:
 
 Stage023 already compared HGB, L2 logistic regression, and random forest on the Stage011 matrix. It is prior reused-development evidence and will be cited as prior work, not treated as fresh confirmation.
 
+### Dense-feature prior evidence
+
+Audited files inspected for this plan:
+
+- `outputs/research/profitability_program/lab238c/LAB238C_AUDIT.json`
+- `outputs/research/profitability_program/lab239/LAB239_AUDIT.json`
+- `outputs/research/profitability_program/lab239/LAB239_FROZEN_ARCHITECTURE.json`
+
+Observed audit state:
+
+- `LAB238C_LAB239_CERTIFIED_MANIFEST.csv` records 138 governed manifest fields across 12 information families.
+- `LAB239_AUDIT.json` records 53,804 rows, 5,508 races, `market_used_for_selection=false`, `final_sp_used_for_selection=false`, and `final_decision=NO_INCREMENTAL_INFORMATION_SIGNAL`.
+- `LAB239_FROZEN_ARCHITECTURE.json` records `architecture=NO_CHALLENGER` and an empty frozen field list.
+
+Consequence for this bake-off: no all-138 dense feature search is authorised. A dense candidate can run only if the inventory proves an already frozen, nonempty, point-in-time, non-market feature list exists before fitting. The current inspected LAB239 frozen architecture is expected to be recorded as `NOT_RUN_NO_FROZEN_FIELDS`.
+
 ## 3. Initial Feature/Data Inventory To Produce
 
 The first approved script will create a compact inventory without market/price columns and without 2025-2026 data. Source admission is part of the inventory gate and happens before any row-level load:
@@ -109,6 +127,7 @@ The first approved script will create a compact inventory without market/price c
 3. Require prior certified proof that the physical file or partition contains only 2021-2024 rows, or use an already separated 2021-2024 artifact named by the existing governance files.
 4. Do not use row-level chunk filtering to discard sealed years from a mixed-year file, because that would read sealed rows before exclusion.
 5. Block any source that cannot be proven sealed-year-free before row-level access.
+6. Treat model-output, target, placing, and outcome columns as non-feature columns. They may be used only for the Stage011 universe labels where already governed, never as predictors.
 
 Output:
 
@@ -128,7 +147,7 @@ Inventory inputs:
 Inventory fields:
 
 - Source path
-- Row count and race count by year, using years <= 2024 only
+- Row count and race count by year, using only admitted sealed-year-free artifacts or existing governance proofs
 - Exact runner identity fields
 - Candidate feature columns
 - Non-null coverage by year
@@ -140,12 +159,40 @@ Inventory fields:
 Explicit exclusions:
 
 - Any column whose name indicates market, SP, BSP, odds, price, bet, stake, return, market rank, or EPI.
+- Any predictor column whose name indicates model output, prediction, probability from another model, target, outcome, finish position, placing result, result margin, or post-race observation unless it is explicitly reconstructed as strict-prior history in the existing Stage011/Stage016 contracts.
 - Any source requiring fuzzy identity or unproven EIQ_HORSE mint reconstruction.
 - Any source that would require reading, counting, materializing, or logging 2025-2026 rows for any purpose.
 
 ## 4. Pre-Registered Model Candidates
 
-The bake-off will be bounded to these candidates. No one-variable searches or threshold mining.
+The bake-off is fixed to the matrices and learners below. No one-variable searches, adaptive feature additions, threshold mining, or repeated loops are authorised.
+
+Feature matrices:
+
+- `F0_STAGE011_35`: exactly the 35 Stage011 features listed in Section 2.
+- `F1_STAGE016_44`: `F0_STAGE011_35` plus the nine predeclared Stage016 context features from `run_v2_stage016_context_family.py`.
+- `F2_FROZEN_DENSE`: only an already frozen, nonempty, certified non-market feature list from existing governance. Current inspected LAB239 frozen architecture is `NO_CHALLENGER`; if unchanged, this matrix is not run.
+
+Learners:
+
+- `L_HGB`: Stage011 fixed `HistGradientBoostingClassifier(max_iter=200, learning_rate=0.05, max_leaf_nodes=5, l2_regularization=1, random_state=42)`.
+- `L_LOGIT`: fixed L2 logistic regression with train-only median imputation, train-only standardization, and race softmax of `decision_function`.
+- `L_RF`: fixed Stage023 random forest, `RandomForestClassifier(n_estimators=500, min_samples_leaf=20, max_features="sqrt", random_state=42, n_jobs=-1)`, with train-only median imputation.
+
+Fixed candidate budget:
+
+| Candidate | Matrix | Learner / Construction | Status |
+|---|---|---|---|
+| A | `F0_STAGE011_35` | Existing Stage011 HGB baseline | Always included |
+| B | `F1_STAGE016_44` | `L_HGB` | Included if 100% Stage011 universe can be scored |
+| C | `F0_STAGE011_35` | `L_LOGIT` | Included |
+| D | `F0_STAGE011_35` | `L_RF` | Included |
+| E | `F1_STAGE016_44` | `L_LOGIT` | Included if 100% Stage011 universe can be scored |
+| F | `F1_STAGE016_44` | `L_RF` | Included if 100% Stage011 universe can be scored |
+| G | `F1_STAGE016_44` | Fixed equal-weight ensemble of B, E, and F | Included only if B/E/F all pass |
+| H | `F2_FROZEN_DENSE` | `L_HGB` only | Run only if inventory finds a nonempty frozen dense feature list |
+
+No LightGBM/XGBoost installation or optional package probing is included in this PR. That keeps the comparison reproducible on the current sklearn-based pipeline.
 
 ### Candidate A — Stage011 reproduced baseline
 
@@ -155,20 +202,20 @@ Use existing Stage011 runner probabilities as the comparison baseline. If a rebu
 
 Stage011 features plus the predeclared exact context family from `run_v2_stage016_context_family.py`, same HGB settings as Stage011.
 
-### Candidate C — Certified dense non-market HGB
+### Candidate H - Frozen dense non-market HGB
 
-Only if the inventory confirms an existing dense manifest is legal and point-in-time:
+Only if the inventory finds an existing frozen, nonempty, legal, point-in-time dense feature list:
 
-- Base matrix: Stage011 feature set.
-- Add only `CERTIFIED` fields from `LAB238C_LAB239_CERTIFIED_MANIFEST.csv` / `LAB239_PIT_FEATURE_MATRIX.csv`.
-- HGB settings fixed to Stage011 settings unless the manifest already records a stricter fixed setting.
+- Matrix: `F2_FROZEN_DENSE`.
+- HGB settings fixed to Stage011 settings.
+- No all-field dense search.
 - No features are added after seeing metrics.
 
-If the dense manifest fails inventory, Candidate C is marked `NOT_RUN_BLOCKED_BY_INVENTORY`.
+If the only available frozen dense architecture remains LAB239 `NO_CHALLENGER`, Candidate H is recorded as `NOT_RUN_NO_FROZEN_FIELDS`.
 
-### Candidate D — Regularized race-normalized GLM/logit
+### Candidate C / E - Regularized race-normalized GLM/logit
 
-Feature set: exactly the certified Stage011 35-feature manifest listed in Section 2, on the exact Stage011 race universe and winner labels. Candidate D is frozen before results are observed and is a learner contrast against Stage011 only, not an adaptive reuse of the strongest A-C matrix.
+Feature set: exactly `F0_STAGE011_35` for Candidate C and exactly `F1_STAGE016_44` for Candidate E. Both are frozen before results are observed.
 
 Model:
 
@@ -180,16 +227,22 @@ Model:
 
 This is included for calibration/ranking contrast, not hyperparameter search.
 
-### Candidate E — Simple fixed ensemble
+### Candidate G - Simple fixed ensemble
 
-Only if Stage011 HGB and Candidate D logit are both valid on the exact Stage011 race universe:
+Only if Candidates B, E, and F are all valid on the exact Stage011 race universe:
 
-- Fixed arithmetic ensemble of Stage011 HGB and Candidate D logit probabilities, `0.5 * p_hgb + 0.5 * p_logit`, followed by exact within-race renormalization.
-- No weight tuning.
+- Fixed arithmetic ensemble of Stage016 HGB, Stage016 logit, and Stage016 RF probabilities, `(p_hgb + p_logit + p_rf) / 3`, followed by exact within-race renormalization.
+- No ensemble weight tuning.
 
-### Optional installed-family probe
+### Candidate D / F - Random forest contrast
 
-LightGBM/XGBoost may be included only if already installed in the environment and only with one fixed conservative parameter set recorded in the script. If absent, record `NOT_INSTALLED` and do not install packages during the bake-off.
+Feature set: exactly `F0_STAGE011_35` for Candidate D and exactly `F1_STAGE016_44` for Candidate F.
+
+Model:
+
+- Median imputation fitted on training rows only.
+- `RandomForestClassifier(n_estimators=500, min_samples_leaf=20, max_features="sqrt", random_state=42, n_jobs=-1)`.
+- Convert binary `predict_proba(X)[:, 1]` to runner log odds with clipping at `[1e-12, 1 - 1e-12]`, then race softmax within each race.
 
 ## 5. Chronological Evaluation
 
@@ -228,6 +281,7 @@ Secondary:
 - Winner rank and winner assigned probability.
 - Race-cluster bootstrap confidence intervals for delta race LL vs Stage011, using fixed seed `42`, 10,000 race-level resamples, and year-stratified sampling over the exact Stage011 primary race universe.
 - Cohort breakdowns: year, field size band, history depth, first-starter/no-history flag, probability band, and feature-missingness strata.
+- Candidate budget completion table showing `RUN`, `NOT_RUN_*`, or `FAIL_CLOSED_*` for A-H.
 
 Forbidden diagnostics:
 
@@ -248,7 +302,9 @@ A challenger can be named the best defensible candidate only if all gates pass:
 6. Secondary safety: Top1 does not fall by more than 1 percentage point weighted over 2022-2024.
 7. Artifacts: runner-level scored outputs satisfy `ai_review/SCORING_ARTIFACT_PROTOCOL.md` plus the `evidence_class=REUSED_DEVELOPMENT` amendment.
 
-If no challenger passes, retain Stage011.
+If no challenger passes, retain Stage011. If multiple challengers pass, name the passing model with the lowest weighted 2022-2024 race LL as the best research challenger, while preserving the reused-development caveat.
+
+Major feature-family ablation is authorised only after one challenger passes all promotion gates. The ablation budget is then exactly two comparisons: winning learner on `F0_STAGE011_35` and winning learner on `F1_STAGE016_44`. No one-variable ablation is authorised.
 
 ## 8. Output Artifacts After Approval
 
@@ -283,8 +339,8 @@ From `C:\EDGEIQ_PROFITABILITY_RESEARCH` on branch `codex/issue-5-winning-model-p
 git status --short --branch
 python -m py_compile scripts\research\run_codex_issue5_feature_inventory_20261010.py
 python -m py_compile scripts\research\run_codex_issue5_bounded_bakeoff_20261010.py
-python scripts\research\run_codex_issue5_feature_inventory_20261010.py --max-year 2024 --out outputs\research\codex_issue5_winning_model
-python scripts\research\run_codex_issue5_bounded_bakeoff_20261010.py --max-year 2024 --evidence-class REUSED_DEVELOPMENT --out outputs\research\codex_issue5_winning_model
+python scripts\research\run_codex_issue5_feature_inventory_20261010.py --max-year 2024 --stage011-report outputs\research\model_v2\stage011_reproduction\STAGE011_REPRODUCTION_REPORT.json --stage004-universe outputs\research\model_v2\stage004\V2_CERTIFIED_SINGLE_WINNER_UNIVERSE.csv --stage006-warehouse outputs\research\model_v2\stage006\V2_STAGE006_PIT_FEATURE_WAREHOUSE.csv --d45-matrix outputs\research\profitability_program\d45\D45_FROZEN_PIT_FEATURE_MATRIX.csv --lab238c-manifest outputs\research\profitability_program\lab238c\LAB238C_LAB239_CERTIFIED_MANIFEST.csv --lab239-audit outputs\research\profitability_program\lab239\LAB239_AUDIT.json --lab239-architecture outputs\research\profitability_program\lab239\LAB239_FROZEN_ARCHITECTURE.json --out outputs\research\codex_issue5_winning_model
+python scripts\research\run_codex_issue5_bounded_bakeoff_20261010.py --max-year 2024 --evidence-class REUSED_DEVELOPMENT --candidate-budget A,B,C,D,E,F,G,H --stage011-report outputs\research\model_v2\stage011_reproduction\STAGE011_REPRODUCTION_REPORT.json --stage011-scores-dir outputs\research\model_v2\stage011_reproduction --stage004-universe outputs\research\model_v2\stage004\V2_CERTIFIED_SINGLE_WINNER_UNIVERSE.csv --stage006-warehouse outputs\research\model_v2\stage006\V2_STAGE006_PIT_FEATURE_WAREHOUSE.csv --d45-matrix outputs\research\profitability_program\d45\D45_FROZEN_PIT_FEATURE_MATRIX.csv --lab031-context C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\outputs\research\model_lab_031\certified_current_race_context_031.csv --perf026 C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\outputs\research\model_lab_026\edgeiq_certified_flat_walk_forward_epi_026.csv --out outputs\research\codex_issue5_winning_model
 $required = @(
   "outputs\research\codex_issue5_winning_model\CODEX_FEATURE_INVENTORY_20261010.csv",
   "outputs\research\codex_issue5_winning_model\CODEX_BAKEOFF_YEAR_METRICS_20261010.csv",
@@ -322,8 +378,8 @@ After approval and execution:
 
 Stop without fitting if:
 
-- Inventory finds no legal candidate beyond Stage011/Stage016.
-- Candidate C cannot be proven non-market and PIT-safe.
+- Inventory finds no legal scored comparison beyond the Stage011 baseline.
+- Any A-H candidate cannot be evaluated on exactly 100% of the Stage011 primary universe, except Candidate H when recorded as `NOT_RUN_NO_FROZEN_FIELDS` or `NOT_RUN_BLOCKED_BY_INVENTORY`.
 - Required Stage011 universe files are missing.
 - Any script detects forbidden columns in candidate matrices.
 - Any 2025-2026 row would be read, counted, materialized, or logged for any purpose.
@@ -335,3 +391,13 @@ Stop after results if:
 - No challenger passes the promotion rule.
 - Results depend on a single year or an uncovered race subset.
 - Bootstrap/cohort diagnostics show the apparent gain is not robust enough for a defensible challenger designation.
+
+## 12. Approval Needed To Begin Fitting
+
+The exact approval needed is:
+
+```text
+I approve executing the Issue #5 bounded bake-off exactly as specified in ai_review/CODEX_WINNING_MODEL_PLAN_20261010.md on reused-development years 2022-2024, with 2025-2026 sealed, no market/SP/BSP/odds access, no profitability testing, no production changes, and no experiments beyond candidates A-H.
+```
+
+Without that approval, the next valid action is PR review only. With that approval, the implementer may create the two named scripts, run the exact command sequence in Section 9, save only the named artifacts, and report the strongest defensible research challenger or retain Stage011.
