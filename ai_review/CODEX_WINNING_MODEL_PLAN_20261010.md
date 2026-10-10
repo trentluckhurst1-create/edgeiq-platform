@@ -106,9 +106,9 @@ The first approved script will create a compact inventory without market/price c
 
 1. Read candidate file headers only first.
 2. Reject any path, filename, or column name containing forbidden market/price/SP/BSP/odds/betting fields.
-3. Require a filterable year/date field or prior certified proof that the file contains only 2021-2024 rows.
-4. Read only projected key/date/feature columns, with a `year <= 2024` filter applied during chunked admission before concatenation.
-5. Block any source that cannot be filtered without materializing, counting, or logging 2025-2026 rows.
+3. Require prior certified proof that the physical file or partition contains only 2021-2024 rows, or use an already separated 2021-2024 artifact named by the existing governance files.
+4. Do not use row-level chunk filtering to discard sealed years from a mixed-year file, because that would read sealed rows before exclusion.
+5. Block any source that cannot be proven sealed-year-free before row-level access.
 
 Output:
 
@@ -122,7 +122,7 @@ Inventory inputs:
 - `outputs/research/profitability_program/d45/D45_FROZEN_PIT_FEATURE_MATRIX.csv` after source-admission gates pass
 - `outputs/research/model_v2/stage011_reproduction/STAGE011_REPRODUCTION_REPORT.json`
 - `outputs/research/profitability_program/lab238c/LAB238C_LAB239_CERTIFIED_MANIFEST.csv` only after header/path source-admission gates pass
-- `outputs/research/profitability_program/lab239/LAB239_PIT_FEATURE_MATRIX.csv` only after header/path source-admission gates pass and rows can be admitted with `year <= 2024` without materializing sealed years
+- `outputs/research/profitability_program/lab239/LAB239_PIT_FEATURE_MATRIX.csv` only after header/path source-admission gates pass and existing governance proves the file or selected partition is sealed-year-free before row-level access
 - Existing ai-review governance files named in this plan
 
 Inventory fields:
@@ -201,12 +201,12 @@ Use the Stage011/Stage016 chronological protocol:
 
 Eligibility:
 
-- Same certified single-winner race universe as Stage011 wherever possible.
+- Same certified single-winner race universe as Stage011 for the primary promotion comparison.
 - Primary comparisons must preserve the exact Stage011 `_race`, runner identity, winner labels, and race set. No challenger may alter winner labels, scratch handling, race eligibility, or the primary comparison universe.
 - If a challenger has lower coverage, evaluate both:
   - full Stage011 universe with missing indicators/imputation if PIT-safe;
   - exact common-race intersection for secondary diagnostic comparison only.
-- A lower-coverage common-race result cannot promote a challenger unless the primary Stage011-universe gate also passes.
+- A lower-coverage common-race result cannot promote a challenger. It can only diagnose why the challenger is not eligible for the primary promotion comparison.
 - Any race must have exactly one winner and probability mass sum within `1e-12`.
 
 Evidence label:
@@ -241,7 +241,7 @@ Because all evidence is reused development, promotion means **research challenge
 A challenger can be named the best defensible candidate only if all gates pass:
 
 1. Governance: no market/SP/odds/EPI/sealed-year access; exact identity; no post-race target leakage.
-2. Coverage: primary scored comparison covers at least 95% of Stage011 races per evaluation year. Common-race intersections are diagnostic only and cannot satisfy this promotion gate.
+2. Coverage: primary scored comparison covers exactly 100% of Stage011 races, runners, and winner labels per evaluation year. Common-race intersections are diagnostic only and cannot satisfy this promotion gate.
 3. Primary metric: lower race LL than Stage011 in at least two of three years.
 4. Stability: no year has LL worse than Stage011 by more than `0.005`.
 5. Materiality: define `delta_ll = Stage011 race LL - challenger race LL` on the exact Stage011 primary race universe. Weighted 2022-2024 `delta_ll` must be at least `0.005`, and the year-stratified race-cluster bootstrap 95% CI lower bound for `delta_ll` must be greater than `0.000`.
