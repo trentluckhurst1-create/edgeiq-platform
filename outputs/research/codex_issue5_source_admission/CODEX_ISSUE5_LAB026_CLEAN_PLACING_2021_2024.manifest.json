@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "purpose": "CODEX_ISSUE5_SEALED_YEAR_FREE_SOURCE_PARTITION",
+  "source_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\outputs\\research\\model_lab_026\\edgeiq_certified_flat_walk_forward_epi_026.csv",
+  "source_sha256": "97d2fbca0ed1a613df2fb6a826b50ec2a8a68c3c456b136afafd8a964c55f132",
+  "output_path": "outputs\\research\\codex_issue5_source_admission\\CODEX_ISSUE5_LAB026_CLEAN_PLACING_2021_2024.csv",
+  "output_sha256": "efa216c87854c001560e672452a7f2a180f8477dc0ec96fc24f0e409d8fb251e",
+  "output_bytes": 10378282,
+  "output_rows": 149242,
+  "output_unique_race_count": 11794,
+  "output_unique_horse_count": 19947,
+  "min_race_date": "2021-01-01",
+  "max_race_date": "2024-12-31",
+  "year_counts": {
+    "2021": 33908,
+    "2022": 8948,
+    "2023": 52312,
+    "2024": 54074
+  },
+  "assert_no_rows_after_2024_12_31": true,
+  "columns": [
+    "canonical_race_id",
+    "canonical_horse_id",
+    "race_date",
+    "finish_position"
+  ],
+  "required_columns": [
+    "canonical_race_id",
+    "canonical_horse_id",
+    "race_date",
+    "finish_position"
+  ],
+  "forbidden_column_scan": {
+    "forbidden_terms": [
+      "sp",
+      "bsp",
+      "starting_price",
+      "odds",
+      "price",
+      "market",
+      "bet",
+      "stake",
+      "return"
+    ],
+    "flagged_columns": [],
+    "status": "PASS"
+  },
+  "lineage": "Partitioned by authorised upstream source repair for Issue #5; model fitting/scoring not performed by this export."
+}

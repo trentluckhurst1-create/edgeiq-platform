@@ -1,0 +1,61 @@
+{
+  "status": "PASS",
+  "purpose": "CODEX_ISSUE5_SEALED_YEAR_FREE_SOURCE_PARTITION",
+  "source_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\outputs\\research\\model_lab_031\\certified_current_race_context_031.csv",
+  "source_sha256": "55dc4c669d697f5673ed270cdde18187a1628ba72ba017059c1e694b47d67ce6",
+  "output_path": "outputs\\research\\codex_issue5_source_admission\\CODEX_ISSUE5_LAB031_CONTEXT_2021_2024.csv",
+  "output_sha256": "3af6bd924b510267ae1b45a252b2aa6d9ea9b65d67084eac9e515cbdaf383c09",
+  "output_bytes": 13303913,
+  "output_rows": 109946,
+  "output_unique_race_count": 8569,
+  "output_unique_horse_count": 19040,
+  "min_race_date": "2021-01-01",
+  "max_race_date": "2024-12-31",
+  "year_counts": {
+    "2021": 29329,
+    "2022": 8438,
+    "2023": 37050,
+    "2024": 35129
+  },
+  "assert_no_rows_after_2024_12_31": true,
+  "columns": [
+    "canonical_performance_id",
+    "canonical_race_id",
+    "canonical_horse_id",
+    "race_date",
+    "current_weight_kg",
+    "weight_change_kg",
+    "distance_change_metres",
+    "abs_distance_change_metres",
+    "prior_same_class_starts",
+    "prior_exact_distance_starts_031"
+  ],
+  "required_columns": [
+    "canonical_performance_id",
+    "canonical_race_id",
+    "canonical_horse_id",
+    "race_date",
+    "current_weight_kg",
+    "weight_change_kg",
+    "distance_change_metres",
+    "abs_distance_change_metres",
+    "prior_same_class_starts",
+    "prior_exact_distance_starts_031"
+  ],
+  "forbidden_column_scan": {
+    "forbidden_terms": [
+      "sp",
+      "bsp",
+      "starting_price",
+      "odds",
+      "price",
+      "market",
+      "bet",
+      "stake",
+      "return"
+    ],
+    "flagged_columns": [],
+    "status": "PASS"
+  },
+  "lineage": "Partitioned by authorised upstream source repair for Issue #5; model fitting/scoring not performed by this export."
+}

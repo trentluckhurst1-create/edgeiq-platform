@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "model_fitting": "NO",
+  "model_scoring": "NO",
+  "market_access": "NO",
+  "source_repair_scope": "ONE_TIME_UPSTREAM_PARTITION_EXPORT",
+  "partitions": {
+    "lab026_clean_placing": "outputs\\research\\codex_issue5_source_admission\\CODEX_ISSUE5_LAB026_CLEAN_PLACING_2021_2024.manifest.json",
+    "lab031_context": "outputs\\research\\codex_issue5_source_admission\\CODEX_ISSUE5_LAB031_CONTEXT_2021_2024.manifest.json"
+  }
+}
