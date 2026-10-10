@@ -47,7 +47,9 @@ def parse_args():
     p.add_argument("--stage006-warehouse", required=True)
     p.add_argument("--d45-matrix", required=True)
     p.add_argument("--lab031-context", required=True)
+    p.add_argument("--lab031-context-manifest", required=True)
     p.add_argument("--perf026", required=True)
+    p.add_argument("--perf026-manifest", required=True)
     p.add_argument("--out", required=True)
     return p.parse_args()
 
@@ -90,21 +92,72 @@ def forbid_market_columns(columns):
         raise RuntimeError(f"STOP_FORBIDDEN_MARKET_COLUMNS: {bad[:20]}")
 
 
+def validate_partition_manifest(manifest_path, data_path, required_columns, label):
+    manifest_path = Path(manifest_path)
+    data_path = Path(data_path)
+    if not manifest_path.is_file():
+        raise FileNotFoundError(manifest_path)
+    if not data_path.is_file():
+        raise FileNotFoundError(data_path)
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    if manifest.get("status") != "PASS":
+        raise RuntimeError(f"STOP_{label}_MANIFEST_NOT_PASS")
+    if manifest.get("purpose") != "CODEX_ISSUE5_SEALED_YEAR_FREE_SOURCE_PARTITION":
+        raise RuntimeError(f"STOP_{label}_MANIFEST_WRONG_PURPOSE")
+    if Path(manifest.get("output_path", "")).resolve() != data_path.resolve():
+        raise RuntimeError(f"STOP_{label}_MANIFEST_OUTPUT_PATH_MISMATCH")
+    if manifest.get("output_sha256") != sha256_file(data_path):
+        raise RuntimeError(f"STOP_{label}_MANIFEST_SHA_MISMATCH")
+    if manifest.get("min_race_date", "") < "2021-01-01" or manifest.get("max_race_date", "") > "2024-12-31":
+        raise RuntimeError(f"STOP_{label}_MANIFEST_DATE_BOUNDS")
+    if not manifest.get("assert_no_rows_after_2024_12_31"):
+        raise RuntimeError(f"STOP_{label}_MANIFEST_SEALED_ASSERTION")
+    if set(manifest.get("year_counts", {})) - {"2021", "2022", "2023", "2024"}:
+        raise RuntimeError(f"STOP_{label}_MANIFEST_FORBIDDEN_YEAR_COUNTS")
+    columns = list(manifest.get("columns", []))
+    missing = [c for c in required_columns if c not in columns]
+    if missing:
+        raise RuntimeError(f"STOP_{label}_MANIFEST_REQUIRED_COLUMNS_MISSING: {missing}")
+    if manifest.get("forbidden_column_scan", {}).get("status") != "PASS":
+        raise RuntimeError(f"STOP_{label}_MANIFEST_FORBIDDEN_COLUMNS")
+    return manifest
+
+
 def build_matrix(args, stage011_features):
     stage006 = Path(args.stage006_warehouse)
     d45 = Path(args.d45_matrix)
     perf026 = Path(args.perf026)
     context = Path(args.lab031_context)
-    for path in (stage006, d45, perf026):
+    for path in (stage006, d45, perf026, context):
         if not path.is_file():
             raise FileNotFoundError(path)
+    perf_manifest = validate_partition_manifest(
+        args.perf026_manifest,
+        perf026,
+        ["canonical_horse_id", "race_date", "finish_position"],
+        "PERF026",
+    )
+    context_manifest = validate_partition_manifest(
+        args.lab031_context_manifest,
+        context,
+        [
+            "canonical_race_id",
+            "canonical_horse_id",
+            "race_date",
+            "current_weight_kg",
+            "weight_change_kg",
+            "distance_change_metres",
+            "abs_distance_change_metres",
+            "prior_same_class_starts",
+            "prior_exact_distance_starts_031",
+        ],
+        "LAB031",
+    )
 
     w_cols = list(pd.read_csv(stage006, nrows=0).columns)
     d_cols = list(pd.read_csv(d45, nrows=0).columns)
     forbid_market_columns(w_cols)
     forbid_market_columns(d_cols)
-    if not context.is_file():
-        raise FileNotFoundError(context)
     c_cols = list(pd.read_csv(context, nrows=0).columns)
     forbid_market_columns(c_cols)
 
@@ -123,16 +176,15 @@ def build_matrix(args, stage011_features):
     x = x.merge(d.drop_duplicates(["_race", "_horse"]), on=["_race", "_horse"], how="left", validate="one_to_one")
 
     need = {"canonical_horse_id", "race_date", "finish_position"}
-    parts = []
-    for z in pd.read_csv(perf026, usecols=lambda c: c in need, chunksize=500000):
-        z["race_date"] = pd.to_datetime(z["race_date"], errors="coerce")
-        z["finish_position"] = pd.to_numeric(z["finish_position"], errors="coerce")
-        z = z[z["finish_position"].between(1, 99)].dropna(subset=["canonical_horse_id", "race_date"])
-        z = z[z["race_date"].dt.year <= args.max_year]
-        parts.append(z)
-    if not parts:
+    h = pd.read_csv(perf026, usecols=lambda c: c in need)
+    h["race_date"] = pd.to_datetime(h["race_date"], errors="coerce")
+    if not h["race_date"].dt.year.between(2021, args.max_year).all():
+        raise RuntimeError("STOP_PERF026_PARTITION_OUT_OF_SCOPE_YEAR")
+    h["finish_position"] = pd.to_numeric(h["finish_position"], errors="coerce")
+    h = h[h["finish_position"].between(1, 99)].dropna(subset=["canonical_horse_id", "race_date"])
+    if h.empty:
         raise RuntimeError("STOP_NO_CLEAN_PLACING_HISTORY")
-    h = pd.concat(parts, ignore_index=True).sort_values(["canonical_horse_id", "race_date"])
+    h = h.sort_values(["canonical_horse_id", "race_date"])
     h = (
         h.groupby(["canonical_horse_id", "race_date"], as_index=False)
         .agg(finish_position=("finish_position", lambda s: s.iloc[0] if s.nunique() == 1 else np.nan))
@@ -153,12 +205,30 @@ def build_matrix(args, stage011_features):
     clean.columns = ["clean_finish_mean5", "clean_last_finish", "clean_last_won", "clean_last_top3", "clean_finish_hist_n"]
     x = pd.concat([x.reset_index(drop=True), clean.reset_index(drop=True)], axis=1)
 
-    # The approved plan forbids row-level filtering of mixed sealed-year files.
-    # LAB031 context is therefore header-audited only here; Stage016-family candidates
-    # are marked fail-closed unless a sealed-year-free context partition is supplied
-    # in a later, separately approved plan.
-    x.attrs["context_status"] = "BLOCKED_MIXED_SEALED_YEAR_SOURCE"
-    x.attrs["context_reason"] = "LAB031 context authority is not a sealed-year-free admitted artifact for this run"
+    add = [
+        "current_weight_kg",
+        "weight_change_kg",
+        "distance_change_metres",
+        "abs_distance_change_metres",
+        "prior_same_class_starts",
+        "prior_exact_distance_starts_031",
+    ]
+    c = pd.read_csv(context, usecols=["canonical_race_id", "canonical_horse_id", "race_date"] + add)
+    c["race_date"] = pd.to_datetime(c["race_date"], errors="coerce")
+    if not c["race_date"].dt.year.between(2021, args.max_year).all():
+        raise RuntimeError("STOP_LAB031_PARTITION_OUT_OF_SCOPE_YEAR")
+    c = c.rename(columns={"canonical_race_id": "_race", "canonical_horse_id": "_horse"})
+    c = c[["_race", "_horse", "race_date"] + add].drop_duplicates(["_race", "_horse", "race_date"])
+    x = x.merge(c, on=["_race", "_horse", "race_date"], how="left", validate="one_to_one")
+    x["context_authority_missing"] = x["current_weight_kg"].isna().astype(float)
+    x["weight_change_missing"] = x["weight_change_kg"].isna().astype(float)
+    x["distance_change_missing"] = x["distance_change_metres"].isna().astype(float)
+    if not x["year"].between(2021, args.max_year).all():
+        raise RuntimeError("STOP_FINAL_MATRIX_OUT_OF_SCOPE_YEAR")
+    x.attrs["context_status"] = "PASS"
+    x.attrs["context_reason"] = "LAB031 context partition manifest admitted"
+    x.attrs["perf026_partition_manifest"] = perf_manifest
+    x.attrs["lab031_partition_manifest"] = context_manifest
 
     for col in stage011_features:
         if col not in x.columns:
@@ -403,8 +473,10 @@ def main():
         {
             "stage006": sha256_file(args.stage006_warehouse),
             "d45": sha256_file(args.d45_matrix),
-            "context": x.attrs.get("context_status", "UNKNOWN"),
+            "context": sha256_file(args.lab031_context),
+            "context_manifest": sha256_file(args.lab031_context_manifest),
             "perf026": sha256_file(args.perf026),
+            "perf026_manifest": sha256_file(args.perf026_manifest),
         }
     )
 
@@ -548,7 +620,11 @@ def main():
         "market_access": False,
         "profitability_tested": False,
         "sealed_2025_2026_access_in_successful_scoring": False,
-        "sealed_year_note": "Final successful scoring admitted no 2025-2026 rows. LAB031 context was header-audited only in the successful run and Stage016-family candidates were fail-closed because the context authority is not a sealed-year-free admitted artifact.",
+        "sealed_year_note": "Scoring requires manifest-admitted 2021-2024-only LAB026 and LAB031 partitions. Unpartitioned mixed-year LAB026/LAB031 authorities fail closed.",
+        "source_admission": {
+            "perf026_partition_manifest": x.attrs.get("perf026_partition_manifest", {}),
+            "lab031_partition_manifest": x.attrs.get("lab031_partition_manifest", {}),
+        },
         "candidate_budget": candidates,
         "stage011_reference": stage011,
         "source_hash": source_hash,
@@ -566,7 +642,7 @@ def main():
         "",
         "## Governance",
         "",
-        "- Final successful scoring admitted no 2025-2026 rows. LAB031 context was header-audited only in the successful run and Stage016-family candidates were fail-closed because the context authority is not a sealed-year-free admitted artifact.",
+        "- Scoring required manifest-admitted 2021-2024-only LAB026 and LAB031 partitions. Unpartitioned mixed-year LAB026/LAB031 authorities fail closed.",
         "- No market, SP, BSP, odds, profitability, threshold, staking, or return data were used.",
         "- All scored candidates were required to match 100% of the Stage011 primary race/runner universe.",
         "",

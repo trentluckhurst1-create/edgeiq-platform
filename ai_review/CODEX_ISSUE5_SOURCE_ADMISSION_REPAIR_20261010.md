@@ -1,19 +1,19 @@
 # CODEX Issue #5 Source Admission Repair
 
-Status: **BLOCKED**
+Status: **READY FOR BAKE-OFF AUTHORISATION**
 
-Scope: Source-admission repair after commit `6c279d6a`. This audit used existing plans, scripts, metadata, inventories, summaries, manifests, filenames, sizes, and lineage documents only. It did not fit or score models, did not access market/SP/BSP/price archives, did not read mixed-year source data rows, and did not claim the invalid Issue #5 results are valid.
+Scope: Source-admission repair after commit `6c279d6a`, followed by the authorised one-time upstream source-partition export. No model fitting or scoring was performed. No market/SP/BSP/price archive work was performed. The previous Issue #5 fit results remain invalid and quarantined.
 
 ## Decision
 
-The original A-H bake-off is **not ready to run**.
+The original A-H bake-off is now **ready for separate execution authorisation**, using only the newly partitioned and manifest-admitted source artifacts.
 
-Two required source families are still not available as independently certified 2021-2024-only artifacts:
+The previous blocker was that two required source families were not available as independently certified 2021-2024-only artifacts:
 
 1. Stage011 strict-prior clean placing history, currently rebuilt from LAB026 `edgeiq_certified_flat_walk_forward_epi_026.csv`.
 2. Stage016 current-race context, currently sourced from LAB031/LAB032 context authorities.
 
-Because at least one required source is missing, source search stops here and the compliant next step is an upstream export proposal, not another model comparison.
+That blocker has been repaired by the authorised export. The bake-off runner has also been updated to fail closed unless these partition manifests match the supplied data files.
 
 ## Evidence Reviewed
 
@@ -34,6 +34,14 @@ Reviewed metadata and lineage:
 - `C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\outputs\research\model_lab_032\MODEL_LAB_032_SUMMARY.json`
 
 File-inventory search found no pre-existing artifact named or documented as a sealed/free 2021-2024 partition for LAB026 clean placing history or LAB031/LAB032 Stage016 context. The only 2021-2024 files found in the broader inventory were `PL001_ENRICHED_LOCAL_UNIVERSE_2021_2024.csv` and `PL002_ENRICHED_LOCAL_UNIVERSE_2021_2024.csv`; existing inventory metadata shows market/SP-derived columns in those files, and they are not approved Stage016 lineage.
+
+The authorised export then created the required source partitions under:
+
+- `outputs/research/codex_issue5_source_admission/CODEX_ISSUE5_LAB026_CLEAN_PLACING_2021_2024.csv`
+- `outputs/research/codex_issue5_source_admission/CODEX_ISSUE5_LAB026_CLEAN_PLACING_2021_2024.manifest.json`
+- `outputs/research/codex_issue5_source_admission/CODEX_ISSUE5_LAB031_CONTEXT_2021_2024.csv`
+- `outputs/research/codex_issue5_source_admission/CODEX_ISSUE5_LAB031_CONTEXT_2021_2024.manifest.json`
+- `outputs/research/codex_issue5_source_admission/CODEX_ISSUE5_SOURCE_PARTITION_AUDIT_20261010.json`
 
 ## Source Family Findings
 
@@ -61,9 +69,19 @@ However, existing year coverage metadata includes 2025 and 2026:
 - 2025: `runner_rows=48765`, `calculated=31465`
 - 2026: `runner_rows=24144`, `calculated=13222`
 
-Therefore the existing LAB026 authority is certified for chronology and no-market usage, but it is **not** certified as sealed-year-free for this Issue #5 research runner. No separate 2021-2024-only LAB026 clean placing partition was found.
+Therefore the existing LAB026 authority is certified for chronology and no-market usage, but it is **not** certified as sealed-year-free for this Issue #5 research runner. No pre-existing separate 2021-2024-only LAB026 clean placing partition was found.
 
-Stage011 cannot be reconstructed entirely from already admissible sources because the clean placing history source is mixed-year and no admitted partition exists.
+The authorised export created a sealed-year-free partition:
+
+- rows: `149242`
+- unique races: `11794`
+- unique horses: `19947`
+- date bounds: `2021-01-01` to `2024-12-31`
+- year counts: `2021=33908`, `2022=8948`, `2023=52312`, `2024=54074`
+- output SHA256: `efa216c87854c001560e672452a7f2a180f8477dc0ec96fc24f0e409d8fb251e`
+- forbidden-column scan: `PASS`
+
+Stage011 clean placing reconstruction can now use the partitioned artifact without opening the mixed-year LAB026 authority in the Issue #5 runner.
 
 ### Stage016 LAB031/LAB032 Context
 
@@ -98,46 +116,54 @@ Existing LAB032 summary records:
 - `rows`: `631102`
 - governance: `field_size_source=FULL_CANONICAL_WAREHOUSE_RACE_MEMBERSHIP`, `model_fitting=NO`, `production_changed=NO`
 
-Because LAB031/LAB032 are built on the LAB026 calculated universe and no 2021-2024-only context partition was found, Stage016 cannot be reconstructed entirely from already admissible sources.
+Because LAB031/LAB032 are built on the LAB026 calculated universe, no pre-existing 2021-2024-only context partition was admissible.
+
+The authorised export created a sealed-year-free LAB031 partition:
+
+- rows: `109946`
+- unique races: `8569`
+- unique horses: `19040`
+- date bounds: `2021-01-01` to `2024-12-31`
+- year counts: `2021=29329`, `2022=8438`, `2023=37050`, `2024=35129`
+- output SHA256: `3af6bd924b510267ae1b45a252b2aa6d9ea9b65d67084eac9e515cbdaf383c09`
+- forbidden-column scan: `PASS`
+
+Stage016 can now use the partitioned LAB031 artifact without opening the mixed-year LAB031 authority in the Issue #5 runner.
 
 ## Exact Blockers Preventing A-H Execution
 
-- Candidate A requires Stage011 reconstruction for common scored-artifact parity. That reconstruction requires clean placing features from LAB026.
-- Candidates C and D also require the same Stage011 35-feature matrix for logistic and random forest comparisons.
-- Candidates B, E, F, and G additionally require Stage016 LAB031/LAB032 context features.
-- The existing LAB026, LAB031, and LAB032 authorities are mixed-year sources under the Issue #5 sealed-year rule.
-- The approved plan forbids reading mixed-year rows and filtering out 2025-2026 afterward.
-- No independent 2021-2024-only LAB026 clean placing partition was found.
-- No independent 2021-2024-only LAB031/LAB032 context partition was found.
+- Previous blocker: Candidate A/C/D reconstruction required clean placing features from mixed-year LAB026.
+- Previous blocker: Candidates B/E/F/G additionally required Stage016 LAB031 context from a mixed-year authority.
+- Repair: both source families now have 2021-2024-only partitions with manifests, date bounds, row counts, checksums, and forbidden-column scans.
+- Enforcement: `scripts/research/run_codex_issue5_bounded_bakeoff_20261010.py` now requires `--perf026-manifest` and `--lab031-context-manifest`; it validates purpose, output path, SHA256, date bounds, year-count keys, required columns, and forbidden-column scan before row-level access.
 
-## Upstream Export Proposal
+## Upstream Export Completion
 
 ### Source Must Be Partitioned
 
-An authorised upstream process should partition these sources:
+The authorised upstream process partitioned these sources:
 
 1. LAB026 clean placing authority:
    - Input: `C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\outputs\research\model_lab_026\edgeiq_certified_flat_walk_forward_epi_026.csv`
-   - Required output: a 2021-2024-only artifact containing at minimum `canonical_horse_id`, `race_date`, and `finish_position`.
+   - Output: `outputs/research/codex_issue5_source_admission/CODEX_ISSUE5_LAB026_CLEAN_PLACING_2021_2024.csv`
 
 2. LAB031 Stage016 context authority:
    - Input: `C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\outputs\research\model_lab_031\certified_current_race_context_031.csv`
-   - Required output: a 2021-2024-only artifact containing the exact LAB031 identity/date fields plus the nine Stage016 context fields.
+   - Output: `outputs/research/codex_issue5_source_admission/CODEX_ISSUE5_LAB031_CONTEXT_2021_2024.csv`
 
-Optionally, if the research owner decides LAB032 should supersede LAB031 for corrected context geometry, that is a separate governance choice. The current Issue #5 A-H plan should not silently substitute LAB032 for LAB031.
+LAB032 was not substituted for LAB031. The current Issue #5 A-H plan remains unchanged.
 
 ### How The Export Should Be Produced
 
-The export must be run outside the Issue #5 research runner by a separately authorised process that is allowed to read the mixed-year authorities. It should write new artifacts containing only rows with:
+The export was run by:
 
-- `race_date >= 2021-01-01`
-- `race_date <= 2024-12-31`
+- `scripts/research/run_codex_issue5_source_partition_export_20261010.py`
 
-The Issue #5 research runner must receive only the partitioned outputs and their manifests. It must not open or inspect the original mixed-year LAB026/LAB031/LAB032 rows.
+The Issue #5 research runner must now receive only the partitioned outputs and their manifests. It must not open or inspect the original mixed-year LAB026/LAB031/LAB032 rows.
 
 ### Required Verification Artifacts
 
-Each exported partition must be accompanied by a manifest containing:
+Each exported partition is accompanied by a manifest containing:
 
 - Source path.
 - Source SHA256.
@@ -155,7 +181,7 @@ Each exported partition must be accompanied by a manifest containing:
 - Forbidden-column scan result for market/SP/BSP/odds/price/bet/stake/return columns.
 - Lineage statement linking the partition to the LAB026/LAB031 source summary and governance.
 
-The Issue #5 runner should fail closed unless:
+The Issue #5 runner now fails closed unless:
 
 - the output SHA256 matches the manifest;
 - date bounds are within 2021-2024;
@@ -163,20 +189,20 @@ The Issue #5 runner should fail closed unless:
 - forbidden columns are absent;
 - the Stage011 primary universe has 100% race/runner coverage after joins.
 
-### Governance Approval Required
+### Governance Status
 
-Required approval text:
+The one-time upstream source-partition export has been performed. Separate approval is still required before model fitting/scoring.
 
-```text
-I approve a one-time upstream source-partition export for Issue #5 from LAB026 and LAB031 mixed-year authorities into sealed-year-free 2021-2024-only artifacts, with the export process allowed to read the mixed-year inputs, the Issue #5 research runner forbidden from reading those mixed-year inputs, no market/SP/BSP/odds access, no model fitting/scoring during export, and manifest verification by row counts, date bounds, checksums, column lists, and lineage.
-```
+No model run has been authorised or performed in this repair step.
 
 ## Shortest Compliant Path
 
-1. Obtain the upstream export approval above.
-2. Produce the LAB026 and LAB031 2021-2024 partitions plus manifests outside the Issue #5 research runner.
-3. Amend `run_codex_issue5_bounded_bakeoff_20261010.py` to accept only manifest-admitted partition paths and to fail closed on any unpartitioned LAB026/LAB031/LAB032 input.
-4. Re-run source admission only.
-5. If source admission passes, request separate approval to execute the original A-H bake-off. Do not redesign A-H.
+1. Request separate approval to execute the original A-H bake-off using only the admitted partitions and manifests.
+2. Run the bake-off command with:
+   - `--perf026 outputs\research\codex_issue5_source_admission\CODEX_ISSUE5_LAB026_CLEAN_PLACING_2021_2024.csv`
+   - `--perf026-manifest outputs\research\codex_issue5_source_admission\CODEX_ISSUE5_LAB026_CLEAN_PLACING_2021_2024.manifest.json`
+   - `--lab031-context outputs\research\codex_issue5_source_admission\CODEX_ISSUE5_LAB031_CONTEXT_2021_2024.csv`
+   - `--lab031-context-manifest outputs\research\codex_issue5_source_admission\CODEX_ISSUE5_LAB031_CONTEXT_2021_2024.manifest.json`
+3. Do not redesign A-H.
 
-Final state: **BLOCKED**, not ready to run.
+Final state: **READY FOR BAKE-OFF AUTHORISATION**, not yet run.
