@@ -14,7 +14,7 @@ Hard boundaries:
 
 - Use only 2021-2024 historical non-market racing data already present in `C:\EDGEIQ_PROFITABILITY_RESEARCH`.
 - Treat all 2022-2024 metrics as `REUSED_DEVELOPMENT`, not independent validation.
-- Keep 2025-2026 sealed: no reads, counts, feature access, outcomes, scoring, or evaluation.
+- Keep 2025-2026 sealed at source admission: no reads, row loads, counts, feature access, outcomes, scoring, evaluation, or excluded-count metadata from sealed years.
 - Do not search for, read, join, or evaluate SP/BSP/odds/market/price files.
 - Do not simulate bets, returns, thresholds, staking, or profitability.
 - Do not reopen closed LAB245B identity hunting, EPI, rating, fuzzy identity, or price-source routes.
@@ -102,7 +102,13 @@ Stage023 already compared HGB, L2 logistic regression, and random forest on the 
 
 ## 3. Initial Feature/Data Inventory To Produce
 
-The first approved script will create a compact inventory without market/price columns and without 2025-2026 data:
+The first approved script will create a compact inventory without market/price columns and without 2025-2026 data. Source admission is part of the inventory gate and happens before any row-level load:
+
+1. Read candidate file headers only first.
+2. Reject any path, filename, or column name containing forbidden market/price/SP/BSP/odds/betting fields.
+3. Require a filterable year/date field or prior certified proof that the file contains only 2021-2024 rows.
+4. Read only projected key/date/feature columns, with a `year <= 2024` filter applied during chunked admission before concatenation.
+5. Block any source that cannot be filtered without materializing, counting, or logging 2025-2026 rows.
 
 Output:
 
@@ -111,12 +117,12 @@ Output:
 
 Inventory inputs:
 
-- `outputs/research/model_v2/stage004/V2_CERTIFIED_SINGLE_WINNER_UNIVERSE.csv`
-- `outputs/research/model_v2/stage006/V2_STAGE006_PIT_FEATURE_WAREHOUSE.csv`
-- `outputs/research/profitability_program/d45/D45_FROZEN_PIT_FEATURE_MATRIX.csv`
+- `outputs/research/model_v2/stage004/V2_CERTIFIED_SINGLE_WINNER_UNIVERSE.csv` after source-admission gates pass
+- `outputs/research/model_v2/stage006/V2_STAGE006_PIT_FEATURE_WAREHOUSE.csv` after source-admission gates pass
+- `outputs/research/profitability_program/d45/D45_FROZEN_PIT_FEATURE_MATRIX.csv` after source-admission gates pass
 - `outputs/research/model_v2/stage011_reproduction/STAGE011_REPRODUCTION_REPORT.json`
-- `outputs/research/profitability_program/lab238c/LAB238C_LAB239_CERTIFIED_MANIFEST.csv` if present and non-market
-- `outputs/research/profitability_program/lab239/LAB239_PIT_FEATURE_MATRIX.csv` if present and non-market
+- `outputs/research/profitability_program/lab238c/LAB238C_LAB239_CERTIFIED_MANIFEST.csv` only after header/path source-admission gates pass
+- `outputs/research/profitability_program/lab239/LAB239_PIT_FEATURE_MATRIX.csv` only after header/path source-admission gates pass and rows can be admitted with `year <= 2024` without materializing sealed years
 - Existing ai-review governance files named in this plan
 
 Inventory fields:
@@ -135,7 +141,7 @@ Explicit exclusions:
 
 - Any column whose name indicates market, SP, BSP, odds, price, bet, stake, return, market rank, or EPI.
 - Any source requiring fuzzy identity or unproven EIQ_HORSE mint reconstruction.
-- Any source with 2025-2026 rows except an excluded-count-only log.
+- Any source that would require reading, counting, materializing, or logging 2025-2026 rows for any purpose.
 
 ## 4. Pre-Registered Model Candidates
 
@@ -162,22 +168,23 @@ If the dense manifest fails inventory, Candidate C is marked `NOT_RUN_BLOCKED_BY
 
 ### Candidate D — Regularized race-normalized GLM/logit
 
-Feature set: same as the strongest legal matrix among A-C **before** model fitting.
+Feature set: exactly the certified Stage011 35-feature manifest listed in Section 2, on the exact Stage011 race universe and winner labels. Candidate D is frozen before results are observed and is a learner contrast against Stage011 only, not an adaptive reuse of the strongest A-C matrix.
 
 Model:
 
 - Median imputation fitted on training rows only.
 - Standardization fitted on training rows only.
 - `LogisticRegression(C=1.0, penalty="l2", solver="lbfgs", max_iter=2000, random_state=42)`.
-- Convert runner logit scores to within-race normalized probabilities by softmax.
+- Convert raw `LogisticRegression.decision_function(X)` runner scores to within-race probabilities by race softmax: for each race, `exp(score - max_score_in_race) / sum(exp(score - max_score_in_race))`.
+- Do not apply race softmax to binary `predict_proba` outputs.
 
 This is included for calibration/ranking contrast, not hyperparameter search.
 
 ### Candidate E — Simple fixed ensemble
 
-Only if at least two fitted candidates are valid:
+Only if Stage011 HGB and Candidate D logit are both valid on the exact Stage011 race universe:
 
-- Fixed arithmetic ensemble of HGB and logit probabilities, `0.5 * p_hgb + 0.5 * p_logit`, followed by exact within-race renormalization.
+- Fixed arithmetic ensemble of Stage011 HGB and Candidate D logit probabilities, `0.5 * p_hgb + 0.5 * p_logit`, followed by exact within-race renormalization.
 - No weight tuning.
 
 ### Optional installed-family probe
@@ -195,9 +202,11 @@ Use the Stage011/Stage016 chronological protocol:
 Eligibility:
 
 - Same certified single-winner race universe as Stage011 wherever possible.
+- Primary comparisons must preserve the exact Stage011 `_race`, runner identity, winner labels, and race set. No challenger may alter winner labels, scratch handling, race eligibility, or the primary comparison universe.
 - If a challenger has lower coverage, evaluate both:
   - full Stage011 universe with missing indicators/imputation if PIT-safe;
-  - exact common-race intersection for apples-to-apples comparison.
+  - exact common-race intersection for secondary diagnostic comparison only.
+- A lower-coverage common-race result cannot promote a challenger unless the primary Stage011-universe gate also passes.
 - Any race must have exactly one winner and probability mass sum within `1e-12`.
 
 Evidence label:
@@ -217,7 +226,7 @@ Secondary:
 - Runner Brier score.
 - Calibration bins by model probability.
 - Winner rank and winner assigned probability.
-- Race-cluster bootstrap confidence intervals for delta race LL vs Stage011.
+- Race-cluster bootstrap confidence intervals for delta race LL vs Stage011, using fixed seed `42`, 10,000 race-level resamples, and year-stratified sampling over the exact Stage011 primary race universe.
 - Cohort breakdowns: year, field size band, history depth, first-starter/no-history flag, probability band, and feature-missingness strata.
 
 Forbidden diagnostics:
@@ -232,10 +241,10 @@ Because all evidence is reused development, promotion means **research challenge
 A challenger can be named the best defensible candidate only if all gates pass:
 
 1. Governance: no market/SP/odds/EPI/sealed-year access; exact identity; no post-race target leakage.
-2. Coverage: at least 95% of Stage011 races per evaluation year, or a clearly labelled common-race result with no hidden filtering.
+2. Coverage: primary scored comparison covers at least 95% of Stage011 races per evaluation year. Common-race intersections are diagnostic only and cannot satisfy this promotion gate.
 3. Primary metric: lower race LL than Stage011 in at least two of three years.
 4. Stability: no year has LL worse than Stage011 by more than `0.005`.
-5. Materiality: weighted 2022-2024 LL improvement at least `0.005`, and race-cluster bootstrap 95% CI for delta LL does not strongly contradict the improvement.
+5. Materiality: define `delta_ll = Stage011 race LL - challenger race LL` on the exact Stage011 primary race universe. Weighted 2022-2024 `delta_ll` must be at least `0.005`, and the year-stratified race-cluster bootstrap 95% CI lower bound for `delta_ll` must be greater than `0.000`.
 6. Secondary safety: Top1 does not fall by more than 1 percentage point weighted over 2022-2024.
 7. Artifacts: runner-level scored outputs satisfy `ai_review/SCORING_ARTIFACT_PROTOCOL.md` plus the `evidence_class=REUSED_DEVELOPMENT` amendment.
 
@@ -276,19 +285,15 @@ python -m py_compile scripts\research\run_codex_issue5_feature_inventory_2026101
 python -m py_compile scripts\research\run_codex_issue5_bounded_bakeoff_20261010.py
 python scripts\research\run_codex_issue5_feature_inventory_20261010.py --max-year 2024 --out outputs\research\codex_issue5_winning_model
 python scripts\research\run_codex_issue5_bounded_bakeoff_20261010.py --max-year 2024 --evidence-class REUSED_DEVELOPMENT --out outputs\research\codex_issue5_winning_model
-python - <<'PY'
-from pathlib import Path
-required = [
-    "outputs/research/codex_issue5_winning_model/CODEX_FEATURE_INVENTORY_20261010.csv",
-    "outputs/research/codex_issue5_winning_model/CODEX_BAKEOFF_YEAR_METRICS_20261010.csv",
-    "outputs/research/codex_issue5_winning_model/CODEX_BAKEOFF_AUDIT_20261010.json",
-    "ai_review/CODEX_WINNING_MODEL_RESULTS.md",
-]
-missing = [p for p in required if not Path(p).exists()]
-if missing:
-    raise SystemExit("missing required artifacts: " + repr(missing))
-print("CODEX_ISSUE5_ARTIFACT_GATE=PASS")
-PY
+$required = @(
+  "outputs\research\codex_issue5_winning_model\CODEX_FEATURE_INVENTORY_20261010.csv",
+  "outputs\research\codex_issue5_winning_model\CODEX_BAKEOFF_YEAR_METRICS_20261010.csv",
+  "outputs\research\codex_issue5_winning_model\CODEX_BAKEOFF_AUDIT_20261010.json",
+  "ai_review\CODEX_WINNING_MODEL_RESULTS.md"
+)
+$missing = @($required | Where-Object { -not (Test-Path -LiteralPath $_) })
+if ($missing.Count -gt 0) { throw ("missing required artifacts: " + ($missing -join ", ")) }
+Write-Output "CODEX_ISSUE5_ARTIFACT_GATE=PASS"
 git status --short --branch
 ```
 
@@ -321,7 +326,7 @@ Stop without fitting if:
 - Candidate C cannot be proven non-market and PIT-safe.
 - Required Stage011 universe files are missing.
 - Any script detects forbidden columns in candidate matrices.
-- Any 2025-2026 row would be read other than excluded-count-only metadata.
+- Any 2025-2026 row would be read, counted, materialized, or logged for any purpose.
 - Any race has zero or multiple winners after eligibility filtering.
 - Probability normalization fails `1e-12`.
 
@@ -330,4 +335,3 @@ Stop after results if:
 - No challenger passes the promotion rule.
 - Results depend on a single year or an uncovered race subset.
 - Bootstrap/cohort diagnostics show the apparent gain is not robust enough for a defensible challenger designation.
-
