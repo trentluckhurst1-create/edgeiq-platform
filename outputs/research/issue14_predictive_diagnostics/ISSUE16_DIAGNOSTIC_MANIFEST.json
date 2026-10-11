@@ -1,0 +1,32 @@
+{
+  "status": "PASS_READ_ONLY_DIAGNOSTICS_COMPLETE",
+  "generated_utc": "2026-10-11T04:31:07.850108+00:00",
+  "model_fitting": "NO",
+  "model_scoring": "NO_NEW_MODEL_SCORING_USED_EXISTING_PREDICTIONS",
+  "market_access": "NO",
+  "sealed_2025_2026_access": "NO",
+  "inputs": {
+    "predictions": "outputs\\research\\issue14_final_experiment_gate\\ISSUE14_FROZEN_HGB_OOS_PREDICTIONS.csv",
+    "predictions_sha256": "c4fa265eaee0c2caf58f51ae6e7fb5ed014611070e7cdd6f4905f845b5fd14dd",
+    "pit_matrix": "outputs\\research\\issue10_pre2022_partition\\ISSUE10_PRE2022_PIT_FEATURE_MATRIX.csv",
+    "pit_matrix_sha256": "34add48ff515cd53237c8d83238ea69cc5a9d108ee0f39dadd3bc594e17ba3c1",
+    "runner_partition": "outputs\\research\\issue10_pre2022_partition\\ISSUE10_PRE2022_RUNNER_PARTITION.csv",
+    "runner_partition_sha256": "07f52642028934be058a91899534e0192960da18628f0e7996ca2bf6dfcd75b2",
+    "issue14_results": "outputs\\research\\issue14_final_experiment_gate\\ISSUE14_FROZEN_HGB_RESULTS.json",
+    "issue14_results_sha256": "6cfd6db066184f480eca71c505aca109298d5c817cd2b928478c3654272ffdc0"
+  },
+  "rows": 55200,
+  "races": 5346,
+  "issue14_status": "PASS_ONE_FROZEN_EXPERIMENT_COMPLETE",
+  "outputs": [
+    "ISSUE16_CALIBRATION_BY_PROB_BAND.csv",
+    "ISSUE16_COHORT_PERFORMANCE.csv",
+    "ISSUE16_MISSING_FIELD_AFFECTED_RACES.csv",
+    "ISSUE16_MISSING_FIELD_INTEGRITY.csv",
+    "ISSUE16_MISSING_FIELD_PROVENANCE.csv",
+    "ISSUE16_RACE_BLOCK_BOOTSTRAP.csv",
+    "ISSUE16_RANKING_DIAGNOSTICS.csv",
+    "ISSUE16_YEAR_SUMMARY.csv"
+  ],
+  "next_pre_registered_hypothesis": "Audit and potentially replace the raw missing-field handling for 2019 missing barrier/weight/jockey rows with explicit source-provenance cohort flags only if Grok approves; do not tune model parameters or use market data."
+}
