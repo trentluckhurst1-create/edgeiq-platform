@@ -1,0 +1,217 @@
+{
+  "status": "PASS_REVIEW_READY_NOT_MODEL_AUTHORISED",
+  "generated_utc": "2026-10-11T03:36:21.163900+00:00",
+  "model_fitting": "NO",
+  "model_scoring": "NO",
+  "market_access": "NO",
+  "sealed_2025_2026_file_access": "NO",
+  "source_method": "Monthly GraphQL files selected by filename year <= 2021; consolidated mixed-year warehouse not scanned.",
+  "source_dir": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data",
+  "cutoff_date": "2022-01-01",
+  "source_files_selected": 257,
+  "source_files_read": 220,
+  "source_files_skipped_empty_like": 37,
+  "headers_seen": 1,
+  "source_rows_read": 678857,
+  "invalid_date_rows": 0,
+  "post_cutoff_rows_in_selected_files": 0,
+  "runner_partition_rows": 678857,
+  "eligible_pit_rows": 550720,
+  "races_total": 54831,
+  "eligible_races": 52828,
+  "race_exclusion_counts": {
+    "NOT_EXACTLY_ONE_WINNER": 509,
+    "NOT_FLAT_PROVISIONAL": 1500,
+    "NO_STARTERS": 1
+  },
+  "year_counts": [
+    {
+      "year": 2000,
+      "source_rows": 15088,
+      "races": 1396,
+      "eligible_races": 1339,
+      "eligible_starters": 14538,
+      "missing_or_sparse_flag": false
+    },
+    {
+      "year": 2001,
+      "source_rows": 34374,
+      "races": 3159,
+      "eligible_races": 3023,
+      "eligible_starters": 33100,
+      "missing_or_sparse_flag": false
+    },
+    {
+      "year": 2002,
+      "source_rows": 38065,
+      "races": 3378,
+      "eligible_races": 3240,
+      "eligible_starters": 35249,
+      "missing_or_sparse_flag": false
+    },
+    {
+      "year": 2003,
+      "source_rows": 36995,
+      "races": 2912,
+      "eligible_races": 2798,
+      "eligible_starters": 30484,
+      "missing_or_sparse_flag": false
+    },
+    {
+      "year": 2004,
+      "source_rows": 32700,
+      "races": 2685,
+      "eligible_races": 2574,
+      "eligible_starters": 26938,
+      "missing_or_sparse_flag": false
+    },
+    {
+      "year": 2005,
+      "source_rows": 43376,
+      "races": 3560,
+      "eligible_races": 3417,
+      "eligible_starters": 35705,
+      "missing_or_sparse_flag": false
+    },
+    {
+      "year": 2006,
+      "source_rows": 39570,
+      "races": 3215,
+      "eligible_races": 3081,
+      "eligible_starters": 32390,
+      "missing_or_sparse_flag": false
+    },
+    {
+      "year": 2007,
+      "source_rows": 44221,
+      "races": 3476,
+      "eligible_races": 3306,
+      "eligible_starters": 35006,
+      "missing_or_sparse_flag": false
+    },
+    {
+      "year": 2008,
+      "source_rows": 42136,
+      "races": 3346,
+      "eligible_races": 3205,
+      "eligible_starters": 33396,
+      "missing_or_sparse_flag": false
+    },
+    {
+      "year": 2009,
+      "source_rows": 30070,
+      "races": 2371,
+      "eligible_races": 2299,
+      "eligible_starters": 23886,
+      "missing_or_sparse_flag": false
+    },
+    {
+      "year": 2010,
+      "source_rows": 27721,
+      "races": 2183,
+      "eligible_races": 2117,
+      "eligible_starters": 21606,
+      "missing_or_sparse_flag": false
+    },
+    {
+      "year": 2012,
+      "source_rows": 39398,
+      "races": 3135,
+      "eligible_races": 3059,
+      "eligible_starters": 31135,
+      "missing_or_sparse_flag": false
+    },
+    {
+      "year": 2013,
+      "source_rows": 41278,
+      "races": 3279,
+      "eligible_races": 3206,
+      "eligible_starters": 32425,
+      "missing_or_sparse_flag": false
+    },
+    {
+      "year": 2014,
+      "source_rows": 36589,
+      "races": 2959,
+      "eligible_races": 2884,
+      "eligible_starters": 29163,
+      "missing_or_sparse_flag": false
+    },
+    {
+      "year": 2015,
+      "source_rows": 26324,
+      "races": 2053,
+      "eligible_races": 1991,
+      "eligible_starters": 20781,
+      "missing_or_sparse_flag": false
+    },
+    {
+      "year": 2016,
+      "source_rows": 4842,
+      "races": 399,
+      "eligible_races": 398,
+      "eligible_starters": 3927,
+      "missing_or_sparse_flag": true
+    },
+    {
+      "year": 2018,
+      "source_rows": 38441,
+      "races": 3033,
+      "eligible_races": 2926,
+      "eligible_starters": 29820,
+      "missing_or_sparse_flag": false
+    },
+    {
+      "year": 2019,
+      "source_rows": 34485,
+      "races": 2701,
+      "eligible_races": 2590,
+      "eligible_starters": 26652,
+      "missing_or_sparse_flag": false
+    },
+    {
+      "year": 2020,
+      "source_rows": 38691,
+      "races": 2869,
+      "eligible_races": 2756,
+      "eligible_starters": 28548,
+      "missing_or_sparse_flag": false
+    },
+    {
+      "year": 2021,
+      "source_rows": 34493,
+      "races": 2722,
+      "eligible_races": 2619,
+      "eligible_starters": 25971,
+      "missing_or_sparse_flag": false
+    }
+  ],
+  "missing_year_flags": {
+    "2011": "all monthly files empty-like",
+    "2017": "all monthly files empty-like",
+    "2016": "only January/February non-empty in source inventory"
+  },
+  "identity_status": {
+    "runner_identity": "PASS_INTERNAL_SOURCE_RACE_ID_RUNNER_ID_UNIQUENESS_FOR_ELIGIBLE_RACES",
+    "horse_identity": "SOURCE_HORSE_CODE_ELSE_NORMALISED_NAME; CANONICAL_EDGEIQ_HORSE_ID_NOT_PROVEN",
+    "trainer_identity": "SOURCE_TRAINER_CODE_ELSE_NORMALISED_NAME; MISSING_ID_DISTINGUISHED",
+    "jockey_identity": "SOURCE_JOCKEY_CODE_ELSE_NORMALISED_NAME; MISSING_ID_DISTINGUISHED"
+  },
+  "pit_status": "STRICT_RACE_DATE_LT_TARGET_DATE_ENTITY_AGGREGATES_BUILT",
+  "permissible_use_status": "REQUIRES_GROK_AND_OWNER_REVIEW_BEFORE_MODEL_USE",
+  "large_outputs_not_for_commit": [
+    "ISSUE10_PRE2022_RUNNER_PARTITION.csv",
+    "ISSUE10_PRE2022_PIT_FEATURE_MATRIX.csv"
+  ],
+  "outputs": {
+    "runner_partition": "outputs\\research\\issue10_pre2022_partition\\ISSUE10_PRE2022_RUNNER_PARTITION.csv",
+    "pit_feature_matrix": "outputs\\research\\issue10_pre2022_partition\\ISSUE10_PRE2022_PIT_FEATURE_MATRIX.csv",
+    "race_audit": "outputs\\research\\issue10_pre2022_partition\\ISSUE10_RACE_AUDIT.csv",
+    "year_counts": "outputs\\research\\issue10_pre2022_partition\\ISSUE10_YEAR_COUNTS.csv",
+    "row_quarantine": "outputs\\research\\issue10_pre2022_partition\\ISSUE10_ROW_QUARANTINE.csv"
+  },
+  "runner_partition_sha256": "07f52642028934be058a91899534e0192960da18628f0e7996ca2bf6dfcd75b2",
+  "pit_feature_matrix_sha256": "34add48ff515cd53237c8d83238ea69cc5a9d108ee0f39dadd3bc594e17ba3c1",
+  "race_audit_sha256": "c98213067e7b65ca679ff8e23b6028ba02fb3d1d65cbfd645288222d473d55f9",
+  "year_counts_sha256": "f22fb83f9a065fdbdbf388dca62ec9515ade9142a93ff10122acb491b43e0ffe"
+}
