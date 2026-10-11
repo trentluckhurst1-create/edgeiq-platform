@@ -1,12 +1,10 @@
 {
-  "status": "STOP",
-  "generated_utc": "2026-10-11T04:13:46.999666+00:00",
+  "status": "PASS_READY_FOR_AUTHORISED_EXECUTION",
+  "generated_utc": "2026-10-11T04:17:27.207230+00:00",
   "model_fitting": "NO",
   "model_scoring": "NO",
   "execute_requested": false,
-  "preflight_reasons": [
-    "ATTESTATION_NO_ATTESTATION_PATH_SUPPLIED"
-  ],
+  "preflight_reasons": [],
   "pit_matrix": {
     "status": "PASS",
     "reasons": [],
@@ -43,13 +41,21 @@
     "reused_2021_rows": 25971
   },
   "research_use_attestation": {
-    "approved": false,
-    "path": "",
-    "reasons": [
-      "NO_ATTESTATION_PATH_SUPPLIED"
-    ],
-    "sha256": "",
-    "redacted_fields_present": []
+    "approved": true,
+    "path": "outputs/research/issue14_final_experiment_gate/ISSUE14_RESEARCH_USE_ATTESTATION.json",
+    "reasons": [],
+    "sha256": "6bf0080e8e83ae431abc27dfd85c1083a68d6edb00bf51350317a54dced14e81",
+    "redacted_fields_present": [
+      "approval_date",
+      "approval_evidence_reference",
+      "approval_evidence_sha256",
+      "authorising_rights_holder_or_owner_role",
+      "basis_or_terms",
+      "decision",
+      "permitted_purpose",
+      "restrictions",
+      "source_scope"
+    ]
   },
   "protocol": {
     "status": "FROZEN_RUN_READY_FAIL_CLOSED",
