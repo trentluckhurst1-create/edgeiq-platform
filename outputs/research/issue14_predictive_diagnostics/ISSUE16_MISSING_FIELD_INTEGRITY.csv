@@ -1,0 +1,4 @@
+year,missing_group,rows,races_affected,winner_rows,winner_races,mean_p,max_rows_in_one_race,races_all_runners_missing
+2019,barrier_missing,313,8,0,0,0.018637833376312505,62,0
+2019,weight_missing,324,8,0,0,0.018901725248569104,63,0
+2019,jockey_id_missing,313,8,0,0,0.018637833376312505,62,0
