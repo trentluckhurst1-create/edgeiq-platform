@@ -1,0 +1,74 @@
+{
+  "status": "PASS_CONDITIONS_MEASURED_PROTOCOL_FROZEN_REVIEW_REQUIRED",
+  "generated_utc": "2026-10-11T03:45:22.802418+00:00",
+  "model_fitting": "NO",
+  "model_scoring": "NO",
+  "market_access": "NO",
+  "sealed_2025_2026_access": "NO",
+  "issue10_manifest_status": "PASS_REVIEW_READY_NOT_MODEL_AUTHORISED",
+  "pit_rows": 550720,
+  "identity_method_counts": {
+    "CODE": 678857
+  },
+  "identity_method_shares": {
+    "CODE": 1.0
+  },
+  "collision_summary": [
+    {
+      "collision_type": "normalised_horse_name_maps_to_multiple_codes",
+      "groups": 632,
+      "max_codes_in_group": 3
+    },
+    {
+      "collision_type": "horse_code_maps_to_multiple_normalised_names",
+      "groups": 0,
+      "max_names_in_group": 0
+    },
+    {
+      "collision_type": "constructed_horse_key_maps_to_multiple_normalised_names",
+      "groups": 0,
+      "max_names_in_group": 0
+    },
+    {
+      "collision_type": "explicit_row_quarantine_records",
+      "groups": 0,
+      "max_names_in_group": ""
+    }
+  ],
+  "row_quarantine_count": 0,
+  "missing_years": [
+    2011,
+    2017
+  ],
+  "sparse_years": [
+    2016
+  ],
+  "protocol_status": "DESIGN_ONLY_NO_FIT_NO_SCORE",
+  "training_years": [
+    2000,
+    2001,
+    2002,
+    2003,
+    2004,
+    2005,
+    2006,
+    2007,
+    2008,
+    2009,
+    2010,
+    2012,
+    2013,
+    2014,
+    2015,
+    2018
+  ],
+  "evaluation_years": [
+    2019,
+    2020
+  ],
+  "remaining_hard_blockers": [
+    "Independent Grok review required before fitting/scoring.",
+    "Source rights/permissible-use status still requires owner/Grok acceptance.",
+    "This remains a standalone historical source-key model; joining to Stage011 remains forbidden without canonical crosswalk certification."
+  ]
+}

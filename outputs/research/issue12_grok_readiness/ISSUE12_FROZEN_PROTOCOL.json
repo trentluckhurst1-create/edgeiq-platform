@@ -1,0 +1,98 @@
+{
+  "status": "DESIGN_ONLY_NO_FIT_NO_SCORE",
+  "training_years": [
+    2000,
+    2001,
+    2002,
+    2003,
+    2004,
+    2005,
+    2006,
+    2007,
+    2008,
+    2009,
+    2010,
+    2012,
+    2013,
+    2014,
+    2015,
+    2018
+  ],
+  "history_only_sparse_years": [
+    2016
+  ],
+  "excluded_missing_years": [
+    2011,
+    2017
+  ],
+  "evaluation_years": [
+    2019,
+    2020
+  ],
+  "excluded_from_independent_evaluation": [
+    2021
+  ],
+  "learner": {
+    "family": "HistGradientBoostingClassifier",
+    "fixed_parameters": {
+      "loss": "log_loss",
+      "learning_rate": 0.05,
+      "max_leaf_nodes": 5,
+      "l2_regularization": 1.0,
+      "max_iter": 200,
+      "random_state": 42
+    },
+    "reason": "Use the established Stage011-style HGB family without tuning."
+  },
+  "features": [
+    "field_size",
+    "barrier",
+    "barrier_position_pct",
+    "distance_metres",
+    "weight",
+    "horse_prior_starts",
+    "horse_prior_wins",
+    "horse_prior_top3",
+    "horse_prior_win_rate",
+    "horse_prior_top3_rate",
+    "horse_prior_finish_mean",
+    "horse_days_since_last_run",
+    "horse_no_prior_history",
+    "trainer_id_missing",
+    "trainer_prior_starts",
+    "trainer_prior_wins",
+    "trainer_prior_top3",
+    "trainer_prior_win_rate",
+    "trainer_prior_top3_rate",
+    "trainer_no_prior_history",
+    "jockey_id_missing",
+    "jockey_prior_starts",
+    "jockey_prior_wins",
+    "jockey_prior_top3",
+    "jockey_prior_win_rate",
+    "jockey_prior_top3_rate",
+    "jockey_no_prior_history"
+  ],
+  "missing_value_treatment": "Use HGB native missing-value handling; preserve explicit missing identity flags. Do not impute market or outcome values.",
+  "probability_normalization": "Convert raw model scores to softmax probabilities within each race; every race must sum to 1 within 1e-12.",
+  "metrics": [
+    "race_log_loss",
+    "runner_brier",
+    "top1",
+    "top3",
+    "MRR",
+    "winner_rank",
+    "calibration_10_bins",
+    "coverage_by_identity_and_field_cohorts"
+  ],
+  "baseline": "Uniform within-race probability plus optional Stage011-era comparison only as non-independent context; no Stage011 promotion path.",
+  "gates": [
+    "No market/SP/BSP/odds columns.",
+    "No 2025-2026 access.",
+    "No refit after observing 2019 or 2020 metrics.",
+    "Report 2019 and 2020 separately.",
+    "Report all identity and missingness cohorts.",
+    "Stop if probability mass by race fails.",
+    "Stop if any evaluation race lacks exactly one winner."
+  ]
+}
