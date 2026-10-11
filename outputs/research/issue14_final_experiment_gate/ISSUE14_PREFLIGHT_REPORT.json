@@ -1,0 +1,157 @@
+{
+  "status": "STOP",
+  "generated_utc": "2026-10-11T04:13:46.999666+00:00",
+  "model_fitting": "NO",
+  "model_scoring": "NO",
+  "execute_requested": false,
+  "preflight_reasons": [
+    "ATTESTATION_NO_ATTESTATION_PATH_SUPPLIED"
+  ],
+  "pit_matrix": {
+    "status": "PASS",
+    "reasons": [],
+    "path": "outputs\\research\\issue10_pre2022_partition\\ISSUE10_PRE2022_PIT_FEATURE_MATRIX.csv",
+    "sha256": "34add48ff515cd53237c8d83238ea69cc5a9d108ee0f39dadd3bc594e17ba3c1",
+    "rows": 550720,
+    "races": 52828,
+    "year_rows": {
+      "2000": 14538,
+      "2001": 33100,
+      "2002": 35249,
+      "2003": 30484,
+      "2004": 26938,
+      "2005": 35705,
+      "2006": 32390,
+      "2007": 35006,
+      "2008": 33396,
+      "2009": 23886,
+      "2010": 21606,
+      "2012": 31135,
+      "2013": 32425,
+      "2014": 29163,
+      "2015": 20781,
+      "2016": 3927,
+      "2018": 29820,
+      "2019": 26652,
+      "2020": 28548,
+      "2021": 25971
+    },
+    "train_rows": 465622,
+    "history_only_rows": 3927,
+    "eval_2019_rows": 26652,
+    "eval_2020_rows": 28548,
+    "reused_2021_rows": 25971
+  },
+  "research_use_attestation": {
+    "approved": false,
+    "path": "",
+    "reasons": [
+      "NO_ATTESTATION_PATH_SUPPLIED"
+    ],
+    "sha256": "",
+    "redacted_fields_present": []
+  },
+  "protocol": {
+    "status": "FROZEN_RUN_READY_FAIL_CLOSED",
+    "training_years": [
+      2000,
+      2001,
+      2002,
+      2003,
+      2004,
+      2005,
+      2006,
+      2007,
+      2008,
+      2009,
+      2010,
+      2012,
+      2013,
+      2014,
+      2015,
+      2018
+    ],
+    "history_only_years": [
+      2016
+    ],
+    "evaluation_years": [
+      2019,
+      2020
+    ],
+    "excluded_years": [
+      2011,
+      2017
+    ],
+    "reused_not_independent_years": [
+      2021
+    ],
+    "model": {
+      "family": "HistGradientBoostingClassifier",
+      "params": {
+        "loss": "log_loss",
+        "learning_rate": 0.05,
+        "max_leaf_nodes": 5,
+        "l2_regularization": 1.0,
+        "max_iter": 200,
+        "random_state": 42
+      }
+    },
+    "features": [
+      "field_size",
+      "barrier",
+      "barrier_position_pct",
+      "distance_metres",
+      "weight",
+      "horse_prior_starts",
+      "horse_prior_wins",
+      "horse_prior_top3",
+      "horse_prior_win_rate",
+      "horse_prior_top3_rate",
+      "horse_prior_finish_mean",
+      "horse_days_since_last_run",
+      "horse_no_prior_history",
+      "trainer_id_missing",
+      "trainer_prior_starts",
+      "trainer_prior_wins",
+      "trainer_prior_top3",
+      "trainer_prior_win_rate",
+      "trainer_prior_top3_rate",
+      "trainer_no_prior_history",
+      "jockey_id_missing",
+      "jockey_prior_starts",
+      "jockey_prior_wins",
+      "jockey_prior_top3",
+      "jockey_prior_win_rate",
+      "jockey_prior_top3_rate",
+      "jockey_no_prior_history"
+    ],
+    "probability_formula": {
+      "source": "HistGradientBoostingClassifier.decision_function(X_i)",
+      "formula": "p_i = exp(z_i - max_r(z)) / sum_j exp(z_j - max_r(z)) within each race r",
+      "mass_tolerance": 1e-12,
+      "forbidden": "Never normalize predict_proba directly."
+    },
+    "metrics": [
+      "race_log_loss",
+      "runner_brier",
+      "top1",
+      "top3",
+      "MRR",
+      "winner_rank",
+      "calibration_10_bins",
+      "coverage_by_identity_and_field_cohorts"
+    ],
+    "baselines": [
+      "uniform_within_race"
+    ],
+    "missing_value_treatment": "Use HGB native missing handling; preserve explicit missing identity flags.",
+    "stop_rules": [
+      "No attestation approval: STOP before fit/score.",
+      "Any market/SP/BSP/odds/price column: STOP.",
+      "Any 2025-2026 source access: STOP.",
+      "Any evaluation race without exactly one winner: STOP.",
+      "Any race probability mass error > 1e-12: STOP.",
+      "No refit after observing 2019/2020 metrics."
+    ]
+  }
+}
