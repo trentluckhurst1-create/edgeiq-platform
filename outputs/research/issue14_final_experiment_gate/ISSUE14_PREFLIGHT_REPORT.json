@@ -1,0 +1,229 @@
+{
+  "status": "PASS_ONE_FROZEN_EXPERIMENT_COMPLETE",
+  "generated_utc": "2026-10-11T04:23:24.714737+00:00",
+  "model_fitting": "YES",
+  "model_scoring": "YES",
+  "execute_requested": true,
+  "preflight_reasons": [],
+  "pit_matrix": {
+    "status": "PASS",
+    "reasons": [],
+    "path": "outputs\\research\\issue10_pre2022_partition\\ISSUE10_PRE2022_PIT_FEATURE_MATRIX.csv",
+    "sha256": "34add48ff515cd53237c8d83238ea69cc5a9d108ee0f39dadd3bc594e17ba3c1",
+    "rows": 550720,
+    "races": 52828,
+    "year_rows": {
+      "2000": 14538,
+      "2001": 33100,
+      "2002": 35249,
+      "2003": 30484,
+      "2004": 26938,
+      "2005": 35705,
+      "2006": 32390,
+      "2007": 35006,
+      "2008": 33396,
+      "2009": 23886,
+      "2010": 21606,
+      "2012": 31135,
+      "2013": 32425,
+      "2014": 29163,
+      "2015": 20781,
+      "2016": 3927,
+      "2018": 29820,
+      "2019": 26652,
+      "2020": 28548,
+      "2021": 25971
+    },
+    "train_rows": 465622,
+    "history_only_rows": 3927,
+    "eval_2019_rows": 26652,
+    "eval_2020_rows": 28548,
+    "reused_2021_rows": 25971
+  },
+  "research_use_attestation": {
+    "approved": true,
+    "path": "outputs/research/issue14_final_experiment_gate/ISSUE14_RESEARCH_USE_ATTESTATION.json",
+    "reasons": [],
+    "sha256": "6bf0080e8e83ae431abc27dfd85c1083a68d6edb00bf51350317a54dced14e81",
+    "redacted_fields_present": [
+      "approval_date",
+      "approval_evidence_reference",
+      "approval_evidence_sha256",
+      "authorising_rights_holder_or_owner_role",
+      "basis_or_terms",
+      "decision",
+      "permitted_purpose",
+      "restrictions",
+      "source_scope"
+    ]
+  },
+  "execution_approval": {
+    "approved": true,
+    "path": "outputs/research/issue14_final_experiment_gate/ISSUE14_EXECUTION_APPROVAL.json",
+    "reasons": [],
+    "sha256": "e8a8d5fef9ed34c4277d69a77c5be43ac73e3d24ef5b6b80ca91cc2dd948d883",
+    "redacted_fields_present": [
+      "approval_date",
+      "approval_reference",
+      "constraints",
+      "decision",
+      "scope"
+    ]
+  },
+  "protocol": {
+    "status": "FROZEN_RUN_READY_FAIL_CLOSED",
+    "training_years": [
+      2000,
+      2001,
+      2002,
+      2003,
+      2004,
+      2005,
+      2006,
+      2007,
+      2008,
+      2009,
+      2010,
+      2012,
+      2013,
+      2014,
+      2015,
+      2018
+    ],
+    "history_only_years": [
+      2016
+    ],
+    "evaluation_years": [
+      2019,
+      2020
+    ],
+    "excluded_years": [
+      2011,
+      2017
+    ],
+    "reused_not_independent_years": [
+      2021
+    ],
+    "model": {
+      "family": "HistGradientBoostingClassifier",
+      "params": {
+        "loss": "log_loss",
+        "learning_rate": 0.05,
+        "max_leaf_nodes": 5,
+        "l2_regularization": 1.0,
+        "max_iter": 200,
+        "random_state": 42
+      }
+    },
+    "features": [
+      "field_size",
+      "barrier",
+      "barrier_position_pct",
+      "distance_metres",
+      "weight",
+      "horse_prior_starts",
+      "horse_prior_wins",
+      "horse_prior_top3",
+      "horse_prior_win_rate",
+      "horse_prior_top3_rate",
+      "horse_prior_finish_mean",
+      "horse_days_since_last_run",
+      "horse_no_prior_history",
+      "trainer_id_missing",
+      "trainer_prior_starts",
+      "trainer_prior_wins",
+      "trainer_prior_top3",
+      "trainer_prior_win_rate",
+      "trainer_prior_top3_rate",
+      "trainer_no_prior_history",
+      "jockey_id_missing",
+      "jockey_prior_starts",
+      "jockey_prior_wins",
+      "jockey_prior_top3",
+      "jockey_prior_win_rate",
+      "jockey_prior_top3_rate",
+      "jockey_no_prior_history"
+    ],
+    "probability_formula": {
+      "source": "HistGradientBoostingClassifier.decision_function(X_i)",
+      "formula": "p_i = exp(z_i - max_r(z)) / sum_j exp(z_j - max_r(z)) within each race r",
+      "mass_tolerance": 1e-12,
+      "forbidden": "Never normalize predict_proba directly."
+    },
+    "metrics": [
+      "race_log_loss",
+      "runner_brier",
+      "top1",
+      "top3",
+      "MRR",
+      "winner_rank",
+      "calibration_10_bins",
+      "coverage_by_identity_and_field_cohorts"
+    ],
+    "baselines": [
+      "uniform_within_race"
+    ],
+    "missing_value_treatment": "Use HGB native missing handling; preserve explicit missing identity flags.",
+    "stop_rules": [
+      "No attestation approval: STOP before fit/score.",
+      "Any market/SP/BSP/odds/price column: STOP.",
+      "Any 2025-2026 source access: STOP.",
+      "Any evaluation race without exactly one winner: STOP.",
+      "Any race probability mass error > 1e-12: STOP.",
+      "No refit after observing 2019/2020 metrics."
+    ]
+  },
+  "execution_result": {
+    "status": "PASS_ONE_FROZEN_EXPERIMENT_COMPLETE",
+    "model_fits": 1,
+    "model_family": "HistGradientBoostingClassifier",
+    "model_params": {
+      "loss": "log_loss",
+      "learning_rate": 0.05,
+      "max_leaf_nodes": 5,
+      "l2_regularization": 1.0,
+      "max_iter": 200,
+      "random_state": 42
+    },
+    "train_rows": 465622,
+    "train_races": 44465,
+    "evaluation_years": [
+      2019,
+      2020
+    ],
+    "year_metrics": [
+      {
+        "year": 2019,
+        "runners": 26652,
+        "races": 2590,
+        "race_log_loss": 2.130150777806972,
+        "runner_brier": 0.08377699670170673,
+        "top1": 0.21158301158301157,
+        "top3": 0.518918918918919,
+        "mrr": 0.4273693273866085,
+        "mean_winner_rank": 4.028185328185328,
+        "mean_winner_probability": 0.13131739940775602,
+        "uniform_race_log_loss": 2.294134050670593,
+        "uniform_runner_brier": 0.08703032445742474,
+        "max_probability_mass_error": 2.220446049250313e-16
+      },
+      {
+        "year": 2020,
+        "runners": 28548,
+        "races": 2756,
+        "race_log_loss": 2.165098517502743,
+        "runner_brier": 0.08374916333161955,
+        "top1": 0.2028301886792453,
+        "top3": 0.47895500725689405,
+        "mrr": 0.41073289698739307,
+        "mean_winner_rank": 4.246734397677794,
+        "mean_winner_probability": 0.12693285365666393,
+        "uniform_race_log_loss": 2.3128285357596075,
+        "uniform_runner_brier": 0.08670959959183373,
+        "max_probability_mass_error": 2.220446049250313e-16
+      }
+    ],
+    "feature_manifest_sha256": "619b413dff4b545b0aa7b4778896342bf9ee5cb66c7bcd0b0cdae47ce0d2fa5c",
+    "prediction_sha256": "c4fa265eaee0c2caf58f51ae6e7fb5ed014611070e7cdd6f4905f845b5fd14dd"
+  }
+}

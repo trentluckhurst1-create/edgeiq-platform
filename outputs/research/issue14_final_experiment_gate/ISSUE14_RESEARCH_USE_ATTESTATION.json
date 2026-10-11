@@ -1,0 +1,16 @@
+{
+  "decision": "APPROVED",
+  "authorising_rights_holder_or_owner_role": "Trent Luckhurst, EDGEiQ project owner / user-declared authority for personal non-commercial research use",
+  "basis_or_terms": "User-declared authority for personal, non-commercial EDGEiQ racing research and model development; no independent third-party licensing verification claimed.",
+  "source_scope": "pre-2022 historical GraphQL racing results data",
+  "approval_date": "2026-10-11",
+  "permitted_purpose": "personal non-commercial historical racing research and model development",
+  "approval_evidence_reference": "ai_review/CODEX_ISSUE14_RESEARCH_USE_DECLARATION_20261011.md",
+  "approval_evidence_sha256": "05b7e7d69b76eba73f32daeab14705e9c6f915b55b42ad0194da81a598ac3f7a",
+  "restrictions": [
+    "No redistribution of source data.",
+    "No resale or commercial deployment under this approval.",
+    "No production promotion under this approval.",
+    "No claim of independently verified third-party licensing terms."
+  ]
+}

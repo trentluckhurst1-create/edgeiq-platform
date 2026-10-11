@@ -1,0 +1,53 @@
+{
+  "status": "PASS_ONE_FROZEN_EXPERIMENT_COMPLETE",
+  "model_fits": 1,
+  "model_family": "HistGradientBoostingClassifier",
+  "model_params": {
+    "loss": "log_loss",
+    "learning_rate": 0.05,
+    "max_leaf_nodes": 5,
+    "l2_regularization": 1.0,
+    "max_iter": 200,
+    "random_state": 42
+  },
+  "train_rows": 465622,
+  "train_races": 44465,
+  "evaluation_years": [
+    2019,
+    2020
+  ],
+  "year_metrics": [
+    {
+      "year": 2019,
+      "runners": 26652,
+      "races": 2590,
+      "race_log_loss": 2.130150777806972,
+      "runner_brier": 0.08377699670170673,
+      "top1": 0.21158301158301157,
+      "top3": 0.518918918918919,
+      "mrr": 0.4273693273866085,
+      "mean_winner_rank": 4.028185328185328,
+      "mean_winner_probability": 0.13131739940775602,
+      "uniform_race_log_loss": 2.294134050670593,
+      "uniform_runner_brier": 0.08703032445742474,
+      "max_probability_mass_error": 2.220446049250313e-16
+    },
+    {
+      "year": 2020,
+      "runners": 28548,
+      "races": 2756,
+      "race_log_loss": 2.165098517502743,
+      "runner_brier": 0.08374916333161955,
+      "top1": 0.2028301886792453,
+      "top3": 0.47895500725689405,
+      "mrr": 0.41073289698739307,
+      "mean_winner_rank": 4.246734397677794,
+      "mean_winner_probability": 0.12693285365666393,
+      "uniform_race_log_loss": 2.3128285357596075,
+      "uniform_runner_brier": 0.08670959959183373,
+      "max_probability_mass_error": 2.220446049250313e-16
+    }
+  ],
+  "feature_manifest_sha256": "619b413dff4b545b0aa7b4778896342bf9ee5cb66c7bcd0b0cdae47ce0d2fa5c",
+  "prediction_sha256": "c4fa265eaee0c2caf58f51ae6e7fb5ed014611070e7cdd6f4905f845b5fd14dd"
+}
