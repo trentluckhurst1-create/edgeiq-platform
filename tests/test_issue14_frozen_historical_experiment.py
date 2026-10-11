@@ -9,6 +9,7 @@ from scripts.research.run_issue14_frozen_historical_experiment import (
     assert_probability_mass,
     stable_logit_softmax_by_race,
     validate_attestation,
+    validate_execution_approval,
 )
 
 
@@ -69,6 +70,31 @@ class Issue14FrozenExperimentTests(unittest.TestCase):
                 encoding="utf-8",
             )
             approved, reasons, _ = validate_attestation(path)
+        self.assertTrue(approved)
+        self.assertEqual(reasons, [])
+
+    def test_execution_approval_requires_single_frozen_scope(self):
+        with tempfile.TemporaryDirectory() as td:
+            path = Path(td) / "execution.json"
+            path.write_text(
+                json.dumps(
+                    {
+                        "decision": "APPROVED_ONE_FROZEN_EXPERIMENT",
+                        "approval_date": date.today().isoformat(),
+                        "approval_reference": "https://github.example/pr#comment",
+                        "scope": "single frozen experiment evaluating 2019 and 2020 separately",
+                        "constraints": [
+                            "no tuning",
+                            "no market/SP/BSP data",
+                            "no 2025-2026 access",
+                            "no Stage011 changes",
+                            "no production changes",
+                        ],
+                    }
+                ),
+                encoding="utf-8",
+            )
+            approved, reasons, _ = validate_execution_approval(path)
         self.assertTrue(approved)
         self.assertEqual(reasons, [])
 

@@ -1,0 +1,15 @@
+{
+  "decision": "APPROVED_ONE_FROZEN_EXPERIMENT",
+  "approval_date": "2026-10-11",
+  "approval_reference": "https://github.com/trentluckhurst1-create/edgeiq-platform/pull/15#issuecomment-6105376655",
+  "scope": "single frozen historical HGB experiment evaluating 2019 and 2020 separately",
+  "constraints": [
+    "no tuning",
+    "no repeated fits after viewing results",
+    "no market/SP/BSP data",
+    "no 2025-2026 access",
+    "no Stage011 changes",
+    "no production changes",
+    "no model promotion"
+  ]
+}
