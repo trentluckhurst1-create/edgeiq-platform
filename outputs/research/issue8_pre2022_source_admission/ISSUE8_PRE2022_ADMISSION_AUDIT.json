@@ -1,0 +1,238 @@
+{
+  "status": "BLOCKED",
+  "ready_to_run": false,
+  "model_fitting": "NO",
+  "model_scoring": "NO",
+  "market_access": "NO",
+  "sealed_year_access": "NO",
+  "stage011_modified": "NO",
+  "pre2021_summary": {
+    "pre2021_rows_inspected": 644364,
+    "provisional_flat_races": 50671,
+    "eligible_single_winner_unique_key_races": 50209,
+    "eligible_flat_rate": 0.99088236,
+    "missing_years": [
+      "2011",
+      "2017"
+    ],
+    "sparse_years": {
+      "2016": "399 provisional all-runner flat races in prior Gate 2 disposition"
+    },
+    "hist_runs_source_code_status": "PASS_FOR_HIST_RUNS_ONLY_SUBJECT_TO_UPSTREAM_INPUT_INTEGRITY",
+    "identity_status": "IMPORTED_UNPROVEN",
+    "builder_status": "STOP_NO_CERTIFIED_PRE_RACE_CANDIDATE_BUILDER"
+  },
+  "evidence_docs": [
+    {
+      "path": "ai_review/PRE2021_COLUMN_LINEAGE_DISPOSITION_20261009.md",
+      "exists": true,
+      "sha256": "3388860b607f1f791bf613127fae26a77ec8f0b09e0a9f6751f7489a9bd04d95"
+    },
+    {
+      "path": "ai_review/PRE2021_LAB245B_HIST_RUNS_LINEAGE_PASS_20261009.md",
+      "exists": true,
+      "sha256": "0c2906ed03a0a5e70d8c607acb3638786e4d260ff9a531a15e97cbd623b50bb6"
+    },
+    {
+      "path": "ai_review/PRE2021_LAB245B_IDENTITY_IMPORTED_UNPROVEN_20261009.md",
+      "exists": true,
+      "sha256": "6ff402c16c81e1cc4175f245bd9adaa252112707cb5b16f601869ccda737805d"
+    },
+    {
+      "path": "ai_review/PRE2021_PHASE16_PERFORMANCE_FACT_IDENTITY_STOP_20261009.md",
+      "exists": true,
+      "sha256": "3ac72708675b8007d92b4b2803302329fb1decc2d1630bbbfed7836ee53ee50b"
+    },
+    {
+      "path": "ai_review/PRE2021_STAGE006_HIST_RUNS_STOP_20261009.md",
+      "exists": true,
+      "sha256": "3a8ec88162a8a66aff3bc45402ffa5a26e537f9b502ad9ab20604249bc395e5f"
+    },
+    {
+      "path": "ai_review/PRE2021_BUILDER_LINEAGE_STOP_20261009.md",
+      "exists": true,
+      "sha256": "cfcbf9ea0f047fd28cc2923d5bb3ffb91d95823b8279b426cce454e71366e913"
+    }
+  ],
+  "source_assessments": [
+    {
+      "source_id": "CODEX_ISSUE5_LAB026_CLEAN_PLACING_2021_2024.manifest",
+      "path": "outputs/research/codex_issue5_source_admission/CODEX_ISSUE5_LAB026_CLEAN_PLACING_2021_2024.manifest.json",
+      "exists": true,
+      "role": "ADMITTED_EXAMPLE_NOT_PRE2022",
+      "rows": "149242",
+      "races": "11794",
+      "date_min": "2021-01-01",
+      "date_max": "2024-12-31",
+      "status": "PASS",
+      "admissible_for_issue8_fit": "NO",
+      "blocker": "Already partitioned to 2021-2024; useful precedent but not pre-2022 expansion evidence.",
+      "sha256": "f2d221655286ba7341a0d771f95f9742ca64b9481f26da6ed393bd0e79586aa7"
+    },
+    {
+      "source_id": "CODEX_ISSUE5_LAB031_CONTEXT_2021_2024.manifest",
+      "path": "outputs/research/codex_issue5_source_admission/CODEX_ISSUE5_LAB031_CONTEXT_2021_2024.manifest.json",
+      "exists": true,
+      "role": "ADMITTED_EXAMPLE_NOT_PRE2022",
+      "rows": "109946",
+      "races": "8569",
+      "date_min": "2021-01-01",
+      "date_max": "2024-12-31",
+      "status": "PASS",
+      "admissible_for_issue8_fit": "NO",
+      "blocker": "Already partitioned to 2021-2024; useful precedent but not pre-2022 expansion evidence.",
+      "sha256": "62f7f8b6d5be2483537872a2170b47356eb524ffef4d01a2d60d45c2dda17b5d"
+    },
+    {
+      "source_id": "LAB245B_COMPACT_PERFORMANCE_BRIDGE.manifest",
+      "path": "outputs/research/profitability_program/lab245b/LAB245B_COMPACT_PERFORMANCE_BRIDGE.manifest.json",
+      "exists": true,
+      "role": "PIT_HISTORY_2021_2024_ONLY",
+      "rows": "91651",
+      "races": "7200",
+      "date_min": "",
+      "date_max": "",
+      "status": "UNKNOWN",
+      "admissible_for_issue8_fit": "NO",
+      "blocker": "Strict-date hist_runs lineage precedent only; manifest rows/races are 2021-2024, not pre-2022 all-runner expansion.",
+      "sha256": "17b9115b7876b8e161f3b6cb6b6cd53b5ef099165efa374faccd25c8b19597e0"
+    },
+    {
+      "source_id": "LAB245B_WAREHOUSE_RUNNER_LVS.manifest",
+      "path": "outputs/research/profitability_program/lab245b/LAB245B_WAREHOUSE_RUNNER_LVS.manifest.json",
+      "exists": true,
+      "role": "UPSTREAM_IDENTITY_UNCERTIFIED",
+      "rows": "",
+      "races": "39830",
+      "date_min": "",
+      "date_max": "",
+      "status": "UNKNOWN",
+      "admissible_for_issue8_fit": "NO",
+      "blocker": "Canonical identity equivalence for upstream warehouse remains imported/unproven in prior audits.",
+      "sha256": "c6e68283b21ca57ebcbea30b80db4568b783b7818ef156995fb23884abcd77f9"
+    },
+    {
+      "source_id": "CODEX_ISSUE5_LAB026_CLEAN_PLACING_2021_2024",
+      "path": "outputs/research/codex_issue5_source_admission/CODEX_ISSUE5_LAB026_CLEAN_PLACING_2021_2024.csv",
+      "exists": true,
+      "role": "ADMITTED_EXAMPLE_NOT_PRE2022",
+      "rows": "HEADER_NOT_ROW_SCANNED",
+      "races": "HEADER_NOT_ROW_SCANNED",
+      "date_min": "",
+      "date_max": "",
+      "status": "INSPECTED_BY_NAME_ONLY",
+      "admissible_for_issue8_fit": "NO",
+      "blocker": "Already partitioned to 2021-2024; useful precedent but not pre-2022 expansion evidence.",
+      "sha256": "efa216c87854c001560e672452a7f2a180f8477dc0ec96fc24f0e409d8fb251e"
+    },
+    {
+      "source_id": "CODEX_ISSUE5_LAB031_CONTEXT_2021_2024",
+      "path": "outputs/research/codex_issue5_source_admission/CODEX_ISSUE5_LAB031_CONTEXT_2021_2024.csv",
+      "exists": true,
+      "role": "ADMITTED_EXAMPLE_NOT_PRE2022",
+      "rows": "HEADER_NOT_ROW_SCANNED",
+      "races": "HEADER_NOT_ROW_SCANNED",
+      "date_min": "",
+      "date_max": "",
+      "status": "INSPECTED_BY_NAME_ONLY",
+      "admissible_for_issue8_fit": "NO",
+      "blocker": "Already partitioned to 2021-2024; useful precedent but not pre-2022 expansion evidence.",
+      "sha256": "3af6bd924b510267ae1b45a252b2aa6d9ea9b65d67084eac9e515cbdaf383c09"
+    },
+    {
+      "source_id": "LAB245B_COMPACT_PERFORMANCE_BRIDGE",
+      "path": "outputs/research/profitability_program/lab245b/LAB245B_COMPACT_PERFORMANCE_BRIDGE.csv",
+      "exists": true,
+      "role": "PIT_HISTORY_2021_2024_ONLY",
+      "rows": "HEADER_NOT_ROW_SCANNED",
+      "races": "HEADER_NOT_ROW_SCANNED",
+      "date_min": "",
+      "date_max": "",
+      "status": "INSPECTED_BY_NAME_ONLY",
+      "admissible_for_issue8_fit": "NO",
+      "blocker": "Strict-date construction precedent exists for hist_runs only; this output does not cover pre-2022 all-runner history.",
+      "sha256": "46e66045b837d007026a14ed557737d2efc73df895c4caf4f037563137b43cfe"
+    },
+    {
+      "source_id": "LAB245B_WAREHOUSE_RUNNER_LVS",
+      "path": "outputs/research/profitability_program/lab245b/LAB245B_WAREHOUSE_RUNNER_LVS.csv",
+      "exists": true,
+      "role": "UPSTREAM_IDENTITY_UNCERTIFIED",
+      "rows": "HEADER_NOT_ROW_SCANNED",
+      "races": "HEADER_NOT_ROW_SCANNED",
+      "date_min": "",
+      "date_max": "",
+      "status": "INSPECTED_BY_NAME_ONLY",
+      "admissible_for_issue8_fit": "NO",
+      "blocker": "Prior audits found canonical race/horse identity imported, not proven equivalent to historical race_id/runner_id.",
+      "sha256": "169652f38b830a4d2337975d65d9cead16fe306373ac4802bc57b7b33793a8fb"
+    },
+    {
+      "source_id": "D45_FROZEN_PIT_FEATURE_MATRIX",
+      "path": "outputs/research/profitability_program/d45/D45_FROZEN_PIT_FEATURE_MATRIX.csv",
+      "exists": true,
+      "role": "D45_STAGE011_CONTEXT",
+      "rows": "HEADER_NOT_ROW_SCANNED",
+      "races": "HEADER_NOT_ROW_SCANNED",
+      "date_min": "",
+      "date_max": "",
+      "status": "INSPECTED_BY_NAME_ONLY",
+      "admissible_for_issue8_fit": "NO",
+      "blocker": "D45 supports Stage011-era context; no pre-2022 all-runner PIT admission found.",
+      "sha256": "c9fbaf2d934831e725227a8b89082c7c15fdab42a96787d57ce993b8c08bd587"
+    },
+    {
+      "source_id": "V2_STAGE006_PIT_FEATURE_WAREHOUSE",
+      "path": "outputs/research/model_v2/stage006/V2_STAGE006_PIT_FEATURE_WAREHOUSE.csv",
+      "exists": true,
+      "role": "STAGE006_2021_2024_ONLY",
+      "rows": "HEADER_NOT_ROW_SCANNED",
+      "races": "HEADER_NOT_ROW_SCANNED",
+      "date_min": "",
+      "date_max": "",
+      "status": "INSPECTED_BY_NAME_ONLY",
+      "admissible_for_issue8_fit": "NO",
+      "blocker": "Stage006 warehouse is part of Stage011-era 2021-2024 development, not certified pre-2022 expansion.",
+      "sha256": "de79260d99d8238ee87bab1b669483cf2c8acdbee22cc51f006b2118fcf32366"
+    }
+  ],
+  "blockers": [
+    {
+      "blocker_id": "NO_CERTIFIED_PRE2022_ALL_RUNNER_PIT_MATRIX",
+      "severity": "STOP",
+      "evidence": "Prior Gate 2 found outcome inventory but stopped for NO_CERTIFIED_PRE_RACE_CANDIDATE_BUILDER.",
+      "minimum_resolution": "Produce a sealed-free pre-2022 all-runner PIT matrix with complete fields, winner labels, date bounds, checksums and lineage."
+    },
+    {
+      "blocker_id": "CANONICAL_IDENTITY_IMPORTED_UNPROVEN",
+      "severity": "STOP",
+      "evidence": "LAB245B upstream imports canonical_race_id/canonical_horse_id; equivalence to historical race_id/runner_id remains unproven.",
+      "minimum_resolution": "Certify a one-to-one race/runner identity bridge with zero collisions and explicit duplicate/scratch handling."
+    },
+    {
+      "blocker_id": "FIRST_STARTER_ARTIFACTS_NOT_ALL_RUNNER",
+      "severity": "STOP",
+      "evidence": "LAB075/LAB076 evidence is first-starter-specialist inventory, not full-field all-runner model rows.",
+      "minimum_resolution": "Do not use first-starter universes as the base population; use only complete all-runner race fields."
+    },
+    {
+      "blocker_id": "MISSING_OR_SPARSE_YEARS",
+      "severity": "STOP",
+      "evidence": "Prior disposition reports missing 2011 and 2017, with 2016 sparse in provisional all-runner inventory.",
+      "minimum_resolution": "Document admissible year coverage and define fixed train/eval windows that exclude or explicitly handle gaps before scoring."
+    },
+    {
+      "blocker_id": "NO_CERTIFIED_PRE2022_JOCKEY_TRAINER_PIT_COVERAGE",
+      "severity": "STOP",
+      "evidence": "No admitted pre-2022 all-runner jockey/trainer PIT coverage artifact was found in named manifests or prior docs.",
+      "minimum_resolution": "Build and audit strict-prior jockey/trainer history by canonical identity before any model comparison."
+    },
+    {
+      "blocker_id": "LICENSING_PROVENANCE_NOT_CERTIFIED_FOR_MODEL_USE",
+      "severity": "STOP",
+      "evidence": "Reviewed pre-2021 docs do not provide a model-admission licensing/provenance pass for the historical warehouse.",
+      "minimum_resolution": "Attach source provenance, allowed-use status and immutable lineage manifest to the partition export."
+    }
+  ],
+  "decision": "No certified pre-2022 all-runner PIT feature matrix exists in the admitted evidence; do not fit or score Issue #8 models."
+}
