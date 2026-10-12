@@ -1,0 +1,60 @@
+{
+  "status": "SCORED_RESEARCH_ONLY",
+  "target": {
+    "date": "2026-10-14",
+    "venue": "CAULFIELD"
+  },
+  "scoring_timestamp": "2026-10-12T18:22:09.879430+00:00",
+  "current_field": {
+    "declared_rows": 104,
+    "active_rows": 102,
+    "scratched_rows": 2,
+    "races": 8
+  },
+  "source_artifacts": {
+    "field_identities": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\outputs\\research\\live_acquisition_v1\\october_graphql_field_identities.csv",
+    "browser_form": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\outputs\\research\\live_acquisition_v1\\caulfield_browser_form.csv",
+    "lvs_warehouse": "C:\\EDGEIQ_PROFITABILITY_RESEARCH\\outputs\\research\\profitability_program\\lab245b\\LAB245B_WAREHOUSE_RUNNER_LVS.csv",
+    "lvs_warehouse_sha256": "169652f38b830a4d2337975d65d9cead16fe306373ac4802bc57b7b33793a8fb",
+    "benchmark_checkpoint": "C:\\EDGEIQ_PROFITABILITY_RESEARCH\\outputs\\research\\profitability_program\\lab245b\\LAB245B_STRICT_PIT_RACE_BENCHMARK_CHECKPOINT.csv",
+    "benchmark_checkpoint_sha256": "3ede390ea9c386d87f419ba4bfcac5f8a1a0a16fd4af4db7260c758d3bd6959c",
+    "model": "C:\\EDGEIQ_PROFITABILITY_RESEARCH\\outputs\\research\\model_v2\\stage011_research_2024_fit\\STAGE011_RESEARCH_FIT_2024.joblib",
+    "model_sha256": "f06c050e9febcd5b2588d29f90065b0a482872ab4be8c2cdb87ac22803ab9b91",
+    "manifest": "C:\\EDGEIQ_PROFITABILITY_RESEARCH\\outputs\\research\\model_v2\\stage011_research_2024_fit\\STAGE011_RESEARCH_FIT_2024_MANIFEST.json"
+  },
+  "browser_capture": {
+    "status": "NOT_REQUESTED"
+  },
+  "target_metadata_rows": 16,
+  "timing_payload_races": 20,
+  "certified_lvs_history_rows_for_target_horses": 880,
+  "provisional_recent_lvs_rows": 2,
+  "browser_form_rows": 1433,
+  "feature_matrix": {
+    "rows": 102,
+    "races": 8,
+    "feature_count": 35,
+    "feature_manifest_sha256": "f35dd342d570b35831043c75cf756f7cac4e28ebdd564988393db3383c82454f",
+    "features_with_any_missing": 27,
+    "features_all_missing": [],
+    "min_active_runners_per_race": 7,
+    "max_active_runners_per_race": 16
+  },
+  "market_data_used": false,
+  "production_modified": false,
+  "frozen_artifacts_modified": false,
+  "provisional_notes": [
+    "Jockey/trainer priors are reconstructed from the available Caulfield browser-form slice, not a full certified all-runner prior warehouse.",
+    "Recent post-2026-06-21 LVS is included only when elapsed raceTime is captured; distance-only benchmark fallback is marked provisional and not certified LAB245B."
+  ],
+  "scoring": {
+    "status": "STAGE011_SCORING_PASS",
+    "races": 8,
+    "runners": 102,
+    "feature_manifest_sha256": "f35dd342d570b35831043c75cf756f7cac4e28ebdd564988393db3383c82454f",
+    "model_sha256": "f06c050e9febcd5b2588d29f90065b0a482872ab4be8c2cdb87ac22803ab9b91",
+    "probability_mass_max_abs_error": 1.1102230246251565e-16,
+    "output": "outputs\\research\\issue21_caulfield_stage011_pipeline\\LAB21_CAULFIELD_STAGE011_PROBABILITIES.csv",
+    "prospective_publication_attested": false
+  }
+}
