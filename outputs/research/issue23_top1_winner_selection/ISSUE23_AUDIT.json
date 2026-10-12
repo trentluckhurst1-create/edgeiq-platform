@@ -1,0 +1,76 @@
+{
+  "status": "PASS",
+  "issue": 23,
+  "objective": "race-level Top-1 winner selection",
+  "evidence_class": "REUSED_DEVELOPMENT",
+  "years": [
+    2022,
+    2023,
+    2024
+  ],
+  "sealed_2025_2026_accessed": false,
+  "market_sp_bsp_price_columns_used": false,
+  "production_modified": false,
+  "frozen_artifacts_modified": false,
+  "source_files": {
+    "bakeoff_dir": "C:\\EDGEIQ_PROFITABILITY_RESEARCH\\outputs\\research\\codex_issue5_winning_model",
+    "stage006": "C:\\EDGEIQ_PROFITABILITY_RESEARCH\\outputs\\research\\model_v2\\stage006\\V2_STAGE006_PIT_FEATURE_WAREHOUSE.csv",
+    "stage006_sha256": "de79260d99d8238ee87bab1b669483cf2c8acdbee22cc51f006b2118fcf32366",
+    "score_files_sha256": {
+      "2022": "5c1a4702906fdb2f2791419ff5d53ee75c0b6ca4acdf029d9bdb1e503384b53a",
+      "2023": "0b6f32ce63b4b027fa7493a3dc79cb1e97fd42ccca4892bd04186e1a128ea6f1",
+      "2024": "e6a91114f5c232633dc39ea6b89f3c4ae5636b98ca42d781e05ef003a458735f"
+    }
+  },
+  "score_validation": {
+    "CODEX_ISSUE5_A": {
+      "rows": 68856,
+      "races": 5410,
+      "max_probability_mass_error": 1.5543122344752192e-15,
+      "single_winner_races": true
+    },
+    "CODEX_ISSUE5_B": {
+      "rows": 68856,
+      "races": 5410,
+      "max_probability_mass_error": 1.3322676295501878e-15,
+      "single_winner_races": true
+    },
+    "CODEX_ISSUE5_C": {
+      "rows": 68856,
+      "races": 5410,
+      "max_probability_mass_error": 1.4432899320127035e-15,
+      "single_winner_races": true
+    },
+    "CODEX_ISSUE5_D": {
+      "rows": 68856,
+      "races": 5410,
+      "max_probability_mass_error": 1.3322676295501878e-15,
+      "single_winner_races": true
+    },
+    "CODEX_ISSUE5_E": {
+      "rows": 68856,
+      "races": 5410,
+      "max_probability_mass_error": 1.3322676295501878e-15,
+      "single_winner_races": true
+    },
+    "CODEX_ISSUE5_F": {
+      "rows": 68856,
+      "races": 5410,
+      "max_probability_mass_error": 1.4432899320127035e-15,
+      "single_winner_races": true
+    },
+    "CODEX_ISSUE5_G": {
+      "rows": 68856,
+      "races": 5410,
+      "max_probability_mass_error": 1.3322676295501878e-15,
+      "single_winner_races": true
+    }
+  },
+  "router_policy": {
+    "development_year": 2022,
+    "selection_rule": "Stage016 only when slice has >=50 races, Top1 gain >=0.03, and LL no worse than +0.03; otherwise Stage011",
+    "stage016_slices_selected": 1,
+    "total_slices": 27
+  },
+  "verdict": "NO_GO_RETAIN_STAGE011"
+}
