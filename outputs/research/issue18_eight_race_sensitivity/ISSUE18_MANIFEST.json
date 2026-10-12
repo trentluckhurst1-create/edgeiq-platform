@@ -1,0 +1,77 @@
+{
+  "status": "PASS_READ_ONLY_SENSITIVITY_SOURCE_AUDIT_COMPLETE",
+  "generated_utc": "2026-10-11T04:38:09.599189+00:00",
+  "model_fitting": "NO",
+  "model_scoring": "NO_NEW_MODEL_SCORING_USED_EXISTING_PREDICTIONS",
+  "market_access": "NO",
+  "sealed_2025_2026_access": "NO",
+  "affected_races": [
+    "5187719",
+    "5187720",
+    "5187721",
+    "5187722",
+    "5187723",
+    "5187724",
+    "5187725",
+    "5187726"
+  ],
+  "inputs": {
+    "predictions": "outputs\\research\\issue14_final_experiment_gate\\ISSUE14_FROZEN_HGB_OOS_PREDICTIONS.csv",
+    "predictions_sha256": "c4fa265eaee0c2caf58f51ae6e7fb5ed014611070e7cdd6f4905f845b5fd14dd",
+    "pit_matrix": "outputs\\research\\issue10_pre2022_partition\\ISSUE10_PRE2022_PIT_FEATURE_MATRIX.csv",
+    "pit_matrix_sha256": "34add48ff515cd53237c8d83238ea69cc5a9d108ee0f39dadd3bc594e17ba3c1",
+    "may_2019_source": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\public\\data\\edgeiq_graphql_may_2019_results_v1.csv",
+    "may_2019_source_sha256": "02e9a78a3740770a4c1841c38d131926e66875759650020e114a00b17229c096"
+  },
+  "sensitivity": [
+    {
+      "scope": "full_2019",
+      "excluded_races": 0,
+      "race_count": 2590,
+      "ll_gain_vs_uniform": 0.1639832728636205,
+      "ci_low_2_5": 0.14916024996058463,
+      "ci_high_97_5": 0.17846632383630567,
+      "interval_excludes_zero": true,
+      "bootstrap_reps": 2000,
+      "seed": 1601
+    },
+    {
+      "scope": "exclude_5187719_5187726",
+      "excluded_races": 8,
+      "race_count": 2582,
+      "ll_gain_vs_uniform": 0.1636630950286314,
+      "ci_low_2_5": 0.149794828966903,
+      "ci_high_97_5": 0.17815650954687656,
+      "interval_excludes_zero": true,
+      "bootstrap_reps": 2000,
+      "seed": 1601
+    }
+  ],
+  "source_summary": [
+    {
+      "group": "affected_8_races",
+      "rows": 410,
+      "races": 8,
+      "winners": 8,
+      "missing_jockey": 313,
+      "missing_jockey_code": 313,
+      "missing_barrier": 313,
+      "missing_live_barrier": 410,
+      "missing_weight": 324,
+      "scratched_true_rows": 0
+    },
+    {
+      "group": "other_may_2019_races",
+      "rows": 3474,
+      "races": 265,
+      "winners": 256,
+      "missing_jockey": 88,
+      "missing_jockey_code": 52,
+      "missing_barrier": 311,
+      "missing_live_barrier": 2602,
+      "missing_weight": 0,
+      "scratched_true_rows": 711
+    }
+  ],
+  "conclusion": "2019 LL gain remains positive and CI excludes zero after excluding the eight affected races."
+}

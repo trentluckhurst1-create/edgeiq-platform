@@ -1,0 +1,9 @@
+race_id,source_rows,pit_rows,source_missing_jockey,source_missing_jockey_code,source_missing_barrier,source_missing_live_barrier,source_missing_weight,pit_jockey_id_missing_rows,pit_barrier_missing_rows,pit_weight_missing_rows,source_winners,pit_winners,unmatched_rows
+5187719,39,39,27,27,27,39,29,27,27,29,1,1,0
+5187720,66,66,54,54,54,66,54,54,54,54,1,1,0
+5187721,63,63,52,52,52,63,54,52,52,54,1,1,0
+5187722,27,27,14,14,14,27,16,14,14,16,1,1,0
+5187723,51,51,40,40,40,51,42,40,40,42,1,1,0
+5187724,75,75,62,62,62,75,63,62,62,63,1,1,0
+5187725,43,43,30,30,30,43,31,30,30,31,1,1,0
+5187726,46,46,34,34,34,46,35,34,34,35,1,1,0
