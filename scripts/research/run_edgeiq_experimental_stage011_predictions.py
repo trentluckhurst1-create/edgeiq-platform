@@ -66,7 +66,7 @@ def main():
  f=pd.DataFrame(records)
  # Do not infer current distance, scratches, field-size denominator, LVS or connection rates.
  X=f[FEATURES].apply(pd.to_numeric,errors="coerce")
- if not X.notna().any().any():raise RuntimeError("STOP no observed features")
+ if X.notna().sum(axis=1).lt(len(FEATURES)).any():\n  counts=X.notna().sum(axis=1).value_counts().sort_index().to_dict()\n  raise RuntimeError(f"STOP INCOMPLETE_STAGE011_FEATURES: required={len(FEATURES)} populated_counts={counts}; scoring disabled")
  champ=joblib.load(modelpath)
  scores=np.asarray(champ.decision_function(X),dtype=float)
  if len(scores)!=len(f) or not np.isfinite(scores).all():raise RuntimeError("STOP scorer cannot handle incomplete features")
