@@ -52,6 +52,14 @@ def main():
     result.update(margin_mean5=float(t.mean()),margin_std5=float(np.std(t,ddof=0)),
       margin_worst5=float(t.max()),margin_last1=float(m[-1]))
     if len(m)>1:result.update(margin_last2=float(m[-2]),margin_change_l1_l2=float(m[-1]-m[-2]))
+   # Margin-per-runner is a candidate: validate its exact denominator against Stage006.
+   valid=h.copy()
+   valid["margin_num"]=pd.to_numeric(valid.finish_margin,errors="coerce")
+   valid["field_num"]=pd.to_numeric(valid.field_size,errors="coerce")
+   valid=valid[valid.margin_num.notna()&valid.field_num.gt(0)]
+   if len(valid):
+    result["margin_per_runner_last1"]=float(valid.iloc[-1].margin_num/valid.iloc[-1].field_num)
+    if len(valid)>1:result["margin_per_runner_last2"]=float(valid.iloc[-2].margin_num/valid.iloc[-2].field_num)
    dist=pd.to_numeric(h.distance_metres,errors="coerce").dropna()
    if len(dist):result["last_distance"]=float(dist.iloc[-1])
    result["days_since_last"]=int((cutoff-h.dt.max()).days)
@@ -70,7 +78,8 @@ def main():
  print("LINKED_RUNNERS",len(l),"CANDIDATE_ROWS",len(out))
  print("HISTORY_ROWS_AVAILABLE",int(out.history_rows.gt(0).sum()))
  print("WAREHOUSE_LATEST",str(w.dt.max().date()) if len(w) else "NONE")
- for c in out.columns[7:-1]:print("FEATURE",c,"POPULATED",int(out[c].notna().sum()))
+ for c in ["margin_per_runner_last1","margin_per_runner_last2","margin_mean5","clean_finish_mean5"]:
+  print("FEATURE",c,"POPULATED",int(out[c].notna().sum()))
  print("OUTPUT",target)
  print("STOP FOR SCORING: margin, clean finish and denominator semantics require original-builder parity; recent timing incomplete")
 if __name__=="__main__":main()
