@@ -4,12 +4,21 @@ Not certified or actionable. Uses frozen champion, never odds/outcomes from targ
 Missing feature families remain NaN and use the artifact's native preprocessing.
 """
 from pathlib import Path
-import argparse,hashlib,json
+import argparse,hashlib,json,re
 import joblib,numpy as np,pandas as pd
 from run_issue23_dual_live_scorer_v2 import FEATURES,sha
 LIVE=Path(r"C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\outputs\research\live_acquisition_v1")
 ART=Path(r"C:\EDGEIQ_PROFITABILITY_RESEARCH\outputs\research\model_v2\issue23_prospective_artifacts")
 def num(s):return pd.to_numeric(s,errors="coerce")
+def unit_num(s,unit):
+ """Parse only explicit numeric lengths/metres; never silently strip other text."""
+ pattern=rf"^\\s*([+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+))\\s*{re.escape(unit)}\\s*$"
+ extracted=s.astype("string").str.extract(pattern,flags=re.IGNORECASE,expand=False)
+ invalid=s.notna() & s.astype("string").str.strip().ne("") & extracted.isna()
+ if invalid.any():
+  examples=s[invalid].value_counts().head(8).to_dict()
+  raise RuntimeError(f"STOP unsupported {unit} values: {examples}")
+ return pd.to_numeric(extracted,errors="coerce")
 def main():
  p=argparse.ArgumentParser()
  p.add_argument("--date",default="2026-10-14")
@@ -28,9 +37,9 @@ def main():
  h["prior_date"]=pd.to_datetime(h.race_date,errors="coerce")
  target=pd.Timestamp(a.date)
  h=h[h.prior_date.lt(target)].copy()
- h["margin_num"]=num(h.margin)
+ h["margin_num"]=unit_num(h.margin,"L")
  h["finish_num"]=num(h.finish)
- h["distance_num"]=num(h.distance)
+ h["distance_num"]=unit_num(h.distance,"m")
  h["field_num"]=num(h.field_size)
  h=h.sort_values(["horse_code","prior_date","race_code"],ascending=[True,False,False],kind="stable")
  by={str(k):v for k,v in h.groupby("horse_code",sort=False)}
