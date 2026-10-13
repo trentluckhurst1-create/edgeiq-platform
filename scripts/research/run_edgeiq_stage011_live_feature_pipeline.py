@@ -461,6 +461,14 @@ def count_matching_prior_records(form_hist: pd.DataFrame, warehouse_hist: pd.Dat
     return matches
 
 
+def live_source_eiq_horse_id(horse_code: object) -> str:
+    """Acquisition convention: SHA256 of numeric Racing.com horse code with .0 suffix."""
+    code = str(horse_code).strip()
+    if not re.fullmatch(r"\\d+", code):
+        return ""
+    return "EIQ_HORSE_" + hashlib.sha256((code + ".0").encode("utf-8")).hexdigest()[:16].upper()
+
+
 def build_identity_bridge(field: pd.DataFrame, form: pd.DataFrame, warehouse: pd.DataFrame, target_date: str) -> pd.DataFrame:
     rows = []
     histories = {k: g.copy() for k, g in warehouse.groupby("canonical_horse_id", sort=False)}
@@ -470,11 +478,20 @@ def build_identity_bridge(field: pd.DataFrame, form: pd.DataFrame, warehouse: pd
         rform = form[form["horse_code"].astype("string").eq(horse_code)].copy()
         whist = histories.get(canonical, pd.DataFrame(columns=warehouse.columns))
         matched = count_matching_prior_records(rform, whist)
+        # Multiple observations from the same historical race cannot certify identity.
+        distinct_races = int(whist["canonical_race_id"].dropna().nunique()) if len(whist) else 0
+        expected_canonical = live_source_eiq_horse_id(horse_code)
         status = "NOT_CERTIFIED"
         if not canonical or canonical.lower() in {"nan", "<na>", "none"}:
             status = "NO_EIQ_CANONICAL_ID"
+        elif not expected_canonical or canonical != expected_canonical:
+            status = "EIQ_ID_PROVENANCE_MISMATCH"
         elif whist.empty:
             status = "NO_STRICT_PRIOR_LAB245B_HISTORY"
+        elif distinct_races < 2:
+            status = "INSUFFICIENT_DISTINCT_HISTORICAL_RACES"
+        elif whist["canonical_race_id"].duplicated().any():
+            status = "DUPLICATE_HISTORICAL_RACE_ID"
         elif matched >= 2:
             status = "CERTIFIED_EXACT_ID_MULTI_PRIOR_MATCH"
         elif matched == 1:
@@ -493,6 +510,8 @@ def build_identity_bridge(field: pd.DataFrame, form: pd.DataFrame, warehouse: pd
                 "rcom_prior_records": int(len(rform)),
                 "lab245b_prior_records": int(len(whist)),
                 "matched_prior_records": int(matched),
+                "distinct_historical_races": distinct_races,
+                "expected_source_derived_eiq_id": expected_canonical,
                 "latest_lab245b_date": str(pd.to_datetime(whist["dt"]).max().date()) if len(whist) else "",
                 "identity_bridge_status": status,
                 **feats,
