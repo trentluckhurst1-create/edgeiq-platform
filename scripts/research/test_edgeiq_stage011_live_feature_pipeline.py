@@ -27,6 +27,9 @@ DEFAULT_PATHS = Paths(
         r"C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\outputs\research\live_acquisition_v1\public_race_snapshot_20261012T051330Z.json"
     ),
     lab245b_candidates=Path(r"C:\EDGEIQ_ISSUE23\outputs\research\ISSUE23_LIVE_HISTORY_FEATURE_CANDIDATES_V3.csv"),
+    lab245b_warehouse=Path(
+        r"C:\EDGEIQ_PROFITABILITY_RESEARCH\outputs\research\profitability_program\lab245b\LAB245B_WAREHOUSE_RUNNER_LVS.csv"
+    ),
     output_dir=Path("outputs/research/stage011_live_completion"),
 )
 
@@ -43,6 +46,7 @@ def synthetic_paths(root: Path) -> Paths:
     form = root / "form.csv"
     snapshot = root / "snapshot.json"
     candidates = root / "candidates.csv"
+    warehouse = root / "warehouse.csv"
     write_csv(
         field,
         [
@@ -53,6 +57,7 @@ def synthetic_paths(root: Path) -> Paths:
                 "race_id": "R1",
                 "horse_name": "Alpha",
                 "horse_code": "H1",
+                "eiq_horse_id": "EIQ_H1",
                 "race_entry_id": "E1",
                 "barrier": "2",
                 "scratched": "false",
@@ -66,6 +71,7 @@ def synthetic_paths(root: Path) -> Paths:
                 "race_id": "R1",
                 "horse_name": "Beta",
                 "horse_code": "H2",
+                "eiq_horse_id": "EIQ_H2",
                 "race_entry_id": "E2",
                 "barrier": "1",
                 "scratched": "false",
@@ -142,37 +148,72 @@ def synthetic_paths(root: Path) -> Paths:
             }
         ],
     )
-    return Paths(field, form, snapshot, candidates, root / "out")
+    write_csv(
+        warehouse,
+        [
+            {
+                "canonical_race_id": "WR1",
+                "canonical_horse_id": "EIQ_H1",
+                "race_date": "2026-09-01",
+                "distance_metres": "1400",
+                "field_size": "6",
+                "finish_position": "2",
+                "finish_margin": "2.0",
+                "runner_lvs": "1.0",
+            },
+            {
+                "canonical_race_id": "WR2",
+                "canonical_horse_id": "EIQ_H1",
+                "race_date": "2026-10-01",
+                "distance_metres": "1600",
+                "field_size": "8",
+                "finish_position": "1",
+                "finish_margin": "3.0",
+                "runner_lvs": "3.0",
+            },
+        ],
+    )
+    return Paths(field, form, snapshot, candidates, warehouse, root / "out")
 
 
 def test_synthetic_strict_prior_and_stage011_formulas() -> None:
     with tempfile.TemporaryDirectory() as td:
         paths = synthetic_paths(Path(td))
-        matrix, coverage, feature_status, audit = build_matrix(paths, "2026-10-14", "Caulfield", expected_rows=2)
+        matrix, coverage, feature_status, identity_bridge, audit = build_matrix(
+            paths, "2026-10-14", "Caulfield", expected_rows=2
+        )
         row = matrix[matrix["runner_id"].eq("E1")].iloc[0]
         assert row["hist_runs"] == 2.0
-        assert row["margin_last1"] == 0.0
+        assert row["margin_last1"] == 3.0
         assert row["margin_last2"] == 2.0
-        assert row["margin_per_runner_last1"] == 0.0
+        assert abs(row["margin_per_runner_last1"] - (3.0 / 7.0)) < 1e-12
         assert row["margin_per_runner_last2"] == 0.4
-        assert row["margin_change_l1_l2"] == -2.0
+        assert row["margin_change_l1_l2"] == 1.0
         assert row["days_since_last"] == 13.0
         assert row["clean_last_won"] == 1.0
         assert row["clean_last_top3"] == 1.0
         assert row["barrier_position_pct"] == 1.0
         assert row["dist200_runs"] == 2.0
-        assert row["historical_identity_status"] == "HISTORICAL_LVS_CANDIDATE_UNCERTIFIED"
+        assert row["historical_identity_status"] == "LAB245B_IDENTITY_BRIDGE_CERTIFIED"
+        assert row["identity_bridge_matched_prior_records"] == 2
+        assert row["lvs_last1"] == 3.0
+        assert row["lvs_mean3"] == 2.0
         assert audit["declared_runners"] == 2
+        assert audit["lab245b_identity_bridge_certified"] == 1
+        assert identity_bridge["identity_bridge_status"].tolist() == [
+            "CERTIFIED_EXACT_ID_MULTI_PRIOR_MATCH",
+            "NO_STRICT_PRIOR_LAB245B_HISTORY",
+        ]
         assert set(coverage["family"]) == {"CURRENT_CONTEXT", "RCOM_NATIVE_HISTORY", "LVS_TIMING", "PERSONNEL_PARTIAL"}
         assert not feature_status.empty
 
 
-def test_load_form_sets_prior_winner_margin_to_zero() -> None:
+def test_load_form_preserves_prior_winner_margin_source_convention() -> None:
     with tempfile.TemporaryDirectory() as td:
         paths = synthetic_paths(Path(td))
         form = load_form(paths.form, "2026-10-14")
         winner = form[form["finish_num"].eq(1)].iloc[0]
-        assert winner["margin_len"] == 0.0
+        assert winner["margin_len"] == 3.0
         assert not form["race_date"].eq("2026-10-14").any()
 
 
@@ -191,7 +232,9 @@ def test_duplicate_live_runner_fails_closed() -> None:
 
 
 def test_caulfield_live_contract_is_fail_closed_without_market_or_outcomes() -> None:
-    matrix, coverage, feature_status, audit = build_matrix(DEFAULT_PATHS, "2026-10-14", "Caulfield", expected_rows=104)
+    matrix, coverage, feature_status, identity_bridge, audit = build_matrix(
+        DEFAULT_PATHS, "2026-10-14", "Caulfield", expected_rows=104
+    )
     assert len(matrix) == 104
     assert matrix["race_id"].nunique() == 8
     assert not matrix.duplicated(["race_id", "runner_id"]).any()
@@ -202,15 +245,20 @@ def test_caulfield_live_contract_is_fail_closed_without_market_or_outcomes() -> 
     assert set(["sp", "bsp", "winner", "y"]).isdisjoint({c.lower() for c in matrix.columns})
     assert coverage["total_cells"].sum() == 104 * 35
     assert len(feature_status) == 104 * 35
+    assert len(identity_bridge) == 104
+    assert audit["lab245b_identity_bridge_certified"] >= 0
 
 
 def test_write_outputs_includes_long_status_and_empty_score_input() -> None:
     with tempfile.TemporaryDirectory() as td:
         paths = synthetic_paths(Path(td))
-        matrix, coverage, feature_status, audit = build_matrix(paths, "2026-10-14", "Caulfield", expected_rows=2)
-        outputs = write_outputs(matrix, coverage, feature_status, audit, paths.output_dir)
+        matrix, coverage, feature_status, identity_bridge, audit = build_matrix(
+            paths, "2026-10-14", "Caulfield", expected_rows=2
+        )
+        outputs = write_outputs(matrix, coverage, feature_status, identity_bridge, audit, paths.output_dir)
         assert outputs["matrix"].is_file()
         assert outputs["feature_status"].is_file()
+        assert outputs["identity_bridge"].is_file()
         score = pd.read_csv(outputs["score_input"])
         assert list(score.columns) == ["race_id", "runner_id", "scratch_status", "scoring_timestamp", "scheduled_start_time"] + FEATURES
         assert score.empty
@@ -218,7 +266,7 @@ def test_write_outputs_includes_long_status_and_empty_score_input() -> None:
 
 def main() -> None:
     test_synthetic_strict_prior_and_stage011_formulas()
-    test_load_form_sets_prior_winner_margin_to_zero()
+    test_load_form_preserves_prior_winner_margin_source_convention()
     test_duplicate_live_runner_fails_closed()
     test_caulfield_live_contract_is_fail_closed_without_market_or_outcomes()
     test_write_outputs_includes_long_status_and_empty_score_input()

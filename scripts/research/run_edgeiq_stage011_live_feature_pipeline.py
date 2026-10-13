@@ -104,6 +104,35 @@ PERSONNEL_FEATURES = {
     "trainer_prior_top3_rate",
 }
 
+LAB245B_HISTORY_FEATURES = {
+    "hist_runs",
+    "lvs_last1",
+    "lvs_mean3",
+    "lvs_mean5",
+    "lvs_median5",
+    "lvs_std5",
+    "lvs_peak",
+    "lvs_worst5",
+    "margin_mean5",
+    "margin_std5",
+    "margin_worst5",
+    "margin_last1",
+    "margin_last2",
+    "last_distance",
+    "margin_change_l1_l2",
+    "margin_per_runner_last1",
+    "margin_per_runner_last2",
+    "days_since_last",
+    "dist200_runs",
+    "dist200_lvs_mean",
+    "dist200_lvs_best",
+    "clean_finish_mean5",
+    "clean_last_finish",
+    "clean_last_won",
+    "clean_last_top3",
+    "clean_finish_hist_n",
+}
+
 FORBIDDEN_LOWER = {
     "y",
     "winner",
@@ -124,6 +153,7 @@ class Paths:
     form: Path
     public_snapshot: Path
     lab245b_candidates: Path
+    lab245b_warehouse: Path
     output_dir: Path
 
 
@@ -182,6 +212,7 @@ def load_field(path: Path, target_date: str, venue: str) -> pd.DataFrame:
         "race_id",
         "horse_name",
         "horse_code",
+        "eiq_horse_id",
         "race_entry_id",
         "barrier",
         "scratched",
@@ -227,7 +258,6 @@ def load_form(path: Path, target_date: str) -> pd.DataFrame:
     d["field_size_num"] = pd.to_numeric(d["field_size"], errors="coerce")
     d["finish_num"] = pd.to_numeric(d["finish"], errors="coerce")
     d["margin_len"] = d["margin"].map(parse_margin)
-    d.loc[d["finish_num"].eq(1), "margin_len"] = 0.0
     d["race_code_sort"] = pd.to_numeric(d["race_code"], errors="coerce")
     return d.sort_values(["horse_code", "race_date_dt", "race_code_sort"], kind="stable").reset_index(drop=True)
 
@@ -288,6 +318,39 @@ def load_lab245b_candidates(path: Path) -> pd.DataFrame:
     return d[keep].drop_duplicates(keep).copy()
 
 
+def load_lab245b_warehouse(path: Path, target_date: str, canonical_ids: set[str]) -> pd.DataFrame:
+    need = [
+        "canonical_race_id",
+        "canonical_horse_id",
+        "race_date",
+        "distance_metres",
+        "field_size",
+        "finish_position",
+        "finish_margin",
+        "runner_lvs",
+    ]
+    if not path.is_file() or not canonical_ids:
+        return pd.DataFrame(columns=need + ["dt"])
+    rows = []
+    target = pd.Timestamp(target_date)
+    wanted = {str(x).strip() for x in canonical_ids if str(x).strip()}
+    for chunk in pd.read_csv(path, usecols=need, dtype="string", chunksize=250000):
+        chunk["canonical_horse_id"] = chunk["canonical_horse_id"].astype("string").str.strip()
+        chunk = chunk[chunk["canonical_horse_id"].isin(wanted)].copy()
+        if chunk.empty:
+            continue
+        chunk["dt"] = pd.to_datetime(chunk["race_date"], errors="coerce")
+        chunk = chunk[chunk["dt"].notna() & chunk["dt"].lt(target)].copy()
+        if not chunk.empty:
+            rows.append(chunk)
+    if not rows:
+        return pd.DataFrame(columns=need + ["dt"])
+    d = pd.concat(rows, ignore_index=True)
+    for col in ["distance_metres", "field_size", "finish_position", "finish_margin", "runner_lvs"]:
+        d[col] = pd.to_numeric(d[col], errors="coerce")
+    return d.sort_values(["canonical_horse_id", "dt", "canonical_race_id"], kind="stable").reset_index(drop=True)
+
+
 def personnel_prior(form: pd.DataFrame, code: object, code_col: str, target_date: str) -> tuple[float, float, float]:
     if pd.isna(code):
         return math.nan, math.nan, math.nan
@@ -303,6 +366,139 @@ def personnel_prior(form: pd.DataFrame, code: object, code_col: str, target_date
     wins = int((g["finish_num"] == 1).sum())
     top3 = int((g["finish_num"] <= 3).sum())
     return float(starts), float((wins + 1) / (starts + 10)), float((top3 + 3) / (starts + 10))
+
+
+def original_history_stats(values: list[float], n: int) -> tuple[float, float, float]:
+    arr = np.asarray(values[-n:], dtype=float)
+    if len(arr) == 0:
+        return math.nan, math.nan, math.nan
+    return float(np.mean(arr)), float(np.median(arr)), float(np.std(arr))
+
+
+def finite_scalar(value: object) -> bool:
+    return pd.notna(value) and bool(np.isfinite(float(value)))
+
+
+def lab245b_features_from_history(hist: pd.DataFrame, target_date: str, current_distance: float) -> dict:
+    hist = hist.sort_values(["dt", "canonical_race_id"], kind="stable").copy()
+    rec = {feature: math.nan for feature in LAB245B_HISTORY_FEATURES}
+    if hist.empty:
+        return rec
+    lvs = [float(x) for x in hist["runner_lvs"] if np.isfinite(x)]
+    margins = [float(x) for x in hist["finish_margin"] if np.isfinite(x)]
+    poss = [float(x) for x in hist["finish_position"] if np.isfinite(x)]
+    dates = pd.to_datetime(hist["dt"], errors="coerce").dropna()
+    l3 = original_history_stats(lvs, 3)
+    l5 = original_history_stats(lvs, 5)
+    m5 = original_history_stats(margins, 5)
+    p5 = original_history_stats(poss, 5)
+    rec["hist_runs"] = float(len(hist))
+    rec["lvs_last1"] = lvs[-1] if lvs else math.nan
+    rec["lvs_mean3"] = l3[0]
+    rec["lvs_mean5"] = l5[0]
+    rec["lvs_median5"] = l5[1]
+    rec["lvs_std5"] = l5[2]
+    rec["lvs_peak"] = max(lvs) if lvs else math.nan
+    rec["lvs_worst5"] = min(lvs[-5:]) if lvs else math.nan
+    rec["margin_mean5"] = m5[0]
+    rec["margin_std5"] = m5[2]
+    rec["margin_worst5"] = max(margins[-5:]) if margins else math.nan
+    rec["margin_last1"] = margins[-1] if len(margins) >= 1 else math.nan
+    rec["margin_last2"] = margins[-2] if len(margins) >= 2 else math.nan
+    if len(margins) >= 2:
+        rec["margin_change_l1_l2"] = margins[-1] - margins[-2]
+    rec["last_distance"] = float(hist.iloc[-1]["distance_metres"]) if pd.notna(hist.iloc[-1]["distance_metres"]) else math.nan
+    if len(hist) >= 1 and finite_scalar(hist.iloc[-1]["finish_margin"]) and finite_scalar(hist.iloc[-1]["field_size"]):
+        rec["margin_per_runner_last1"] = float(hist.iloc[-1]["finish_margin"] / max(hist.iloc[-1]["field_size"] - 1.0, 1.0))
+    if len(hist) >= 2 and finite_scalar(hist.iloc[-2]["finish_margin"]) and finite_scalar(hist.iloc[-2]["field_size"]):
+        rec["margin_per_runner_last2"] = float(hist.iloc[-2]["finish_margin"] / max(hist.iloc[-2]["field_size"] - 1.0, 1.0))
+    if len(dates):
+        rec["days_since_last"] = float((pd.Timestamp(target_date) - dates.max()).days)
+    if np.isfinite(current_distance):
+        near = hist[np.abs(pd.to_numeric(hist["distance_metres"], errors="coerce") - current_distance) <= 200]
+        nl = [float(x) for x in near["runner_lvs"] if np.isfinite(x)]
+        rec["dist200_runs"] = float(len(near))
+        rec["dist200_lvs_mean"] = float(np.mean(nl)) if nl else math.nan
+        rec["dist200_lvs_best"] = max(nl) if nl else math.nan
+    rec["clean_finish_mean5"] = p5[0]
+    rec["clean_last_finish"] = poss[-1] if poss else math.nan
+    rec["clean_last_won"] = float(poss[-1] == 1) if poss else math.nan
+    rec["clean_last_top3"] = float(poss[-1] <= 3) if poss else math.nan
+    rec["clean_finish_hist_n"] = float(min(len(poss), 5)) if poss else math.nan
+    return rec
+
+
+def count_matching_prior_records(form_hist: pd.DataFrame, warehouse_hist: pd.DataFrame) -> int:
+    if form_hist.empty or warehouse_hist.empty:
+        return 0
+    wh = warehouse_hist.copy()
+    wh["date_key"] = pd.to_datetime(wh["dt"], errors="coerce").dt.date.astype("string")
+    wh["distance_key"] = pd.to_numeric(wh["distance_metres"], errors="coerce").round().astype("Int64").astype("string")
+    wh["finish_key"] = pd.to_numeric(wh["finish_position"], errors="coerce").round().astype("Int64").astype("string")
+    wh["margin_key"] = pd.to_numeric(wh["finish_margin"], errors="coerce")
+    used = set()
+    matches = 0
+    for r in form_hist.itertuples(index=False):
+        if pd.isna(r.race_date_dt) or pd.isna(r.distance_m) or pd.isna(r.finish_num):
+            continue
+        mask = (
+            wh["date_key"].eq(r.race_date_dt.date().isoformat())
+            & wh["distance_key"].eq(str(int(round(float(r.distance_m)))))
+            & wh["finish_key"].eq(str(int(round(float(r.finish_num)))))
+        )
+        cand = wh[mask].copy()
+        if cand.empty:
+            continue
+        if pd.notna(r.margin_len):
+            cand = cand[(cand["margin_key"] - float(r.margin_len)).abs().le(0.25)]
+            if cand.empty:
+                continue
+        for idx in cand.index:
+            if idx not in used:
+                used.add(idx)
+                matches += 1
+                break
+    return matches
+
+
+def build_identity_bridge(field: pd.DataFrame, form: pd.DataFrame, warehouse: pd.DataFrame, target_date: str) -> pd.DataFrame:
+    rows = []
+    histories = {k: g.copy() for k, g in warehouse.groupby("canonical_horse_id", sort=False)}
+    for row in field.itertuples(index=False):
+        canonical = str(getattr(row, "eiq_horse_id", "") or "").strip()
+        horse_code = str(row.horse_code)
+        rform = form[form["horse_code"].astype("string").eq(horse_code)].copy()
+        whist = histories.get(canonical, pd.DataFrame(columns=warehouse.columns))
+        matched = count_matching_prior_records(rform, whist)
+        status = "NOT_CERTIFIED"
+        if not canonical or canonical.lower() in {"nan", "<na>", "none"}:
+            status = "NO_EIQ_CANONICAL_ID"
+        elif whist.empty:
+            status = "NO_STRICT_PRIOR_LAB245B_HISTORY"
+        elif matched >= 2:
+            status = "CERTIFIED_EXACT_ID_MULTI_PRIOR_MATCH"
+        elif matched == 1:
+            status = "ONE_PRIOR_MATCH_INSUFFICIENT"
+        else:
+            status = "NO_PRIOR_FORM_MATCH"
+        current_distance = float(getattr(row, "current_distance")) if pd.notna(getattr(row, "current_distance")) else math.nan
+        feats = lab245b_features_from_history(whist, target_date, current_distance) if status == "CERTIFIED_EXACT_ID_MULTI_PRIOR_MATCH" else {}
+        rows.append(
+            {
+                "race_id": row.race_id,
+                "runner_id": row.race_entry_id,
+                "horse_code": row.horse_code,
+                "horse_name": row.horse_name,
+                "canonical_horse_id": canonical,
+                "rcom_prior_records": int(len(rform)),
+                "lab245b_prior_records": int(len(whist)),
+                "matched_prior_records": int(matched),
+                "latest_lab245b_date": str(pd.to_datetime(whist["dt"]).max().date()) if len(whist) else "",
+                "identity_bridge_status": status,
+                **feats,
+            }
+        )
+    return pd.DataFrame(rows)
 
 
 def build_runner_features(row: pd.Series, form: pd.DataFrame, active_field_sizes: dict, target_date: str) -> dict:
@@ -368,7 +564,9 @@ def build_runner_features(row: pd.Series, form: pd.DataFrame, active_field_sizes
     return rec
 
 
-def feature_reason(feature: str, value: object, has_form: bool) -> tuple[str, str]:
+def feature_reason(feature: str, value: object, has_form: bool, source: str = "") -> tuple[str, str]:
+    if source == "LAB245B_CERTIFIED_EXACT_ID_MULTI_PRIOR_MATCH" and pd.notna(value):
+        return "POPULATED_CERTIFIED_LAB245B_BRIDGE", "CERTIFIED_EXACT_ID_MULTI_PRIOR_MATCH"
     if feature in LVS_FEATURES:
         return "MISSING", "NO_CERTIFIED_LIVE_LVS_TIMING_IDENTITY"
     if feature in PERSONNEL_FEATURES:
@@ -384,7 +582,7 @@ def feature_reason(feature: str, value: object, has_form: bool) -> tuple[str, st
 
 def build_matrix(
     paths: Paths, target_date: str, venue: str, expected_rows: int | None = 104
-) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, dict]:
+) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame, dict]:
     field = load_field(paths.field, target_date, venue)
     if expected_rows is not None and len(field) != expected_rows:
         raise RuntimeError(f"Expected {expected_rows} declared runners, found {len(field)}")
@@ -397,6 +595,10 @@ def build_matrix(
         on="race_no",
         how="left",
     )
+    canonical_ids = set(field["eiq_horse_id"].dropna().astype(str).str.strip())
+    warehouse = load_lab245b_warehouse(paths.lab245b_warehouse, target_date, canonical_ids)
+    identity_bridge = build_identity_bridge(field, form, warehouse, target_date)
+    bridge_features = identity_bridge.set_index(["race_id", "runner_id"]).to_dict("index")
     active_field_sizes = field[~field["is_scratched"]].groupby("race_id")["race_entry_id"].nunique().to_dict()
     candidate_keys = {
         (str(r.race_date), str(r.race_no), str(r.horse_name).strip().upper())
@@ -412,6 +614,16 @@ def build_matrix(
         horse_name = str(row["horse_name"])
         hist = form[form["horse_code"].astype("string").eq(str(row["horse_code"]))]
         features = build_runner_features(row, form, active_field_sizes, target_date)
+        feature_sources = {feature: "RCOM_NATIVE_STRICT_PRIOR_FORM_OR_FIELD" for feature in RCOM_NATIVE_CERTIFIED_FEATURES}
+        feature_sources.update({feature: "RCOM_NATIVE_PARTIAL_PERSONNEL_HISTORY" for feature in PERSONNEL_FEATURES})
+        feature_sources.update({feature: "" for feature in LVS_FEATURES})
+        bridge_key = (row["race_id"], row["race_entry_id"])
+        bridge_row = bridge_features.get(bridge_key, {})
+        if bridge_row.get("identity_bridge_status") == "CERTIFIED_EXACT_ID_MULTI_PRIOR_MATCH":
+            for feature in LAB245B_HISTORY_FEATURES:
+                if feature in bridge_row and pd.notna(bridge_row[feature]):
+                    features[feature] = bridge_row[feature]
+                    feature_sources[feature] = "LAB245B_CERTIFIED_EXACT_ID_MULTI_PRIOR_MATCH"
         candidate_key = (target_date, race_no, horse_name.strip().upper())
         has_candidate = candidate_key in candidate_keys
         has_form = len(hist) > 0
@@ -420,7 +632,7 @@ def build_matrix(
         certified_populated = 0
         uncertified_populated = 0
         for feature in FEATURES:
-            status, reason = feature_reason(feature, features[feature], has_form)
+            status, reason = feature_reason(feature, features[feature], has_form, feature_sources.get(feature, ""))
             feature_status_rows.append(
                 {
                     "race_id": row["race_id"],
@@ -430,11 +642,12 @@ def build_matrix(
                     "value_populated": bool(pd.notna(features[feature])),
                     "feature_status": status,
                     "reason_code": reason,
+                    "feature_source": feature_sources.get(feature, ""),
                 }
             )
             if pd.notna(features[feature]):
                 populated += 1
-                if status == "POPULATED_CERTIFIED_RCOM_NATIVE":
+                if status in {"POPULATED_CERTIFIED_RCOM_NATIVE", "POPULATED_CERTIFIED_LAB245B_BRIDGE"}:
                     certified_populated += 1
                 elif status == "POPULATED_UNCERTIFIED":
                     uncertified_populated += 1
@@ -446,6 +659,8 @@ def build_matrix(
             history_status = "RACINGCOM_NATIVE_FORM_AVAILABLE"
         else:
             history_status = "FIRST_STARTER_OR_INSUFFICIENT_HISTORY"
+        if bridge_row.get("identity_bridge_status") == "CERTIFIED_EXACT_ID_MULTI_PRIOR_MATCH":
+            history_status = "LAB245B_IDENTITY_BRIDGE_CERTIFIED"
         complete_values = populated == len(FEATURES)
         certified_complete = certified_populated == len(FEATURES)
         eligible = bool(complete_values and certified_complete and not row["is_scratched"])
@@ -465,6 +680,10 @@ def build_matrix(
                 "scheduled_local_time_text": row.get("scheduled_local_time_text"),
                 "scheduled_start_time_utc": row.get("scheduled_start_time_utc"),
                 "rcom_form_runs": int(len(hist)),
+                "canonical_horse_id": row.get("eiq_horse_id"),
+                "identity_bridge_status": bridge_row.get("identity_bridge_status", "NOT_EVALUATED"),
+                "identity_bridge_matched_prior_records": bridge_row.get("matched_prior_records", 0),
+                "lab245b_prior_records": bridge_row.get("lab245b_prior_records", 0),
                 "historical_identity_status": history_status,
                 "feature_status": "ELIGIBLE_FOR_SCORING" if eligible else "INCOMPLETE_OR_UNCERTIFIED_DO_NOT_SCORE",
                 "eligible_for_stage011_scoring": eligible,
@@ -525,10 +744,19 @@ def build_matrix(
         "races": int(matrix["race_id"].nunique()),
         "eligible_for_stage011_scoring": int(matrix["eligible_for_stage011_scoring"].sum()),
         "rcom_native_form_available": int(matrix["rcom_form_runs"].gt(0).sum()),
+        "lab245b_identity_bridge_status_counts": identity_bridge["identity_bridge_status"].value_counts().to_dict(),
+        "lab245b_identity_bridge_certified": int(identity_bridge["identity_bridge_status"].eq("CERTIFIED_EXACT_ID_MULTI_PRIOR_MATCH").sum()),
         "historical_identity_status_counts": matrix["historical_identity_status"].value_counts().to_dict(),
         "feature_status_counts": matrix["feature_status"].value_counts().to_dict(),
         "feature_manifest": FEATURES,
         "feature_manifest_sha256": hashlib.sha256(json.dumps(FEATURES, separators=(",", ":")).encode()).hexdigest(),
+        "stage011_semantics": {
+            "margin_winner_handling": "PRESERVE_SOURCE_FINISH_MARGIN_NO_WINNER_ZEROING",
+            "lab245b_history_aggregate_policy": "FINITE_VALUES_THEN_LAST_N_FOR_LVS_MARGIN_FINISH_AGGREGATES",
+            "margin_per_runner_policy": "MOST_RECENT_RAW_PRIOR_STARTS_REQUIRE_MARGIN_AND_FIELD_SIZE",
+            "personnel_prior_policy": "(wins+1)/(starts+10) and (top3+3)/(starts+10) per D45 source; live values remain partial_uncertified",
+            "identity_bridge_certification": "exact EIQ horse id plus at least two matching strict-prior Racing.com/LAB245B records on date/distance/finish/margin",
+        },
         "sources": {
             "field": str(paths.field),
             "field_sha256": file_sha256(paths.field),
@@ -538,34 +766,43 @@ def build_matrix(
             "public_snapshot_sha256": file_sha256(paths.public_snapshot) if paths.public_snapshot.is_file() else None,
             "lab245b_candidates": str(paths.lab245b_candidates),
             "lab245b_candidates_sha256": file_sha256(paths.lab245b_candidates) if paths.lab245b_candidates.is_file() else None,
+            "lab245b_warehouse": str(paths.lab245b_warehouse),
+            "lab245b_warehouse_sha256": file_sha256(paths.lab245b_warehouse) if paths.lab245b_warehouse.is_file() else None,
         },
         "no_market_features": True,
         "no_current_race_outcomes": True,
         "no_stage011_retraining": True,
         "model_ready_for_prospective_scoring": bool(matrix["eligible_for_stage011_scoring"].sum() > 0),
         "primary_blockers": [
-            "No certified live LVS timing identity for Racing.com numeric horses to LAB245B timing namespace.",
+            "Only runners with exact EIQ identity plus at least two matching strict-prior Racing.com/LAB245B records are certified for LAB245B timing features.",
             "Personnel prior statistics from Caulfield browser form are partial to the 98 captured horses, not the full historical jockey/trainer universe.",
             "Historical LAB245B candidate links are preserved as candidate evidence only and are not promoted to certified identity.",
         ],
     }
-    return matrix, coverage, feature_status, audit
+    return matrix, coverage, feature_status, identity_bridge, audit
 
 
 def write_outputs(
-    matrix: pd.DataFrame, coverage: pd.DataFrame, feature_status: pd.DataFrame, audit: dict, output_dir: Path
+    matrix: pd.DataFrame,
+    coverage: pd.DataFrame,
+    feature_status: pd.DataFrame,
+    identity_bridge: pd.DataFrame,
+    audit: dict,
+    output_dir: Path,
 ) -> dict[str, Path]:
     output_dir.mkdir(parents=True, exist_ok=True)
     paths = {
         "matrix": output_dir / "EDGEIQ_STAGE011_LIVE_FEATURE_MATRIX.csv",
         "coverage": output_dir / "EDGEIQ_STAGE011_LIVE_FEATURE_COVERAGE_BY_FAMILY.csv",
         "feature_status": output_dir / "EDGEIQ_STAGE011_LIVE_FEATURE_STATUS_LONG.csv",
+        "identity_bridge": output_dir / "EDGEIQ_STAGE011_LIVE_IDENTITY_BRIDGE_AUDIT.csv",
         "audit": output_dir / "EDGEIQ_STAGE011_LIVE_FEATURE_AUDIT.json",
         "score_input": output_dir / "EDGEIQ_STAGE011_LIVE_SCORE_ELIGIBLE_INPUT.csv",
     }
     matrix.to_csv(paths["matrix"], index=False)
     coverage.to_csv(paths["coverage"], index=False)
     feature_status.to_csv(paths["feature_status"], index=False)
+    identity_bridge.to_csv(paths["identity_bridge"], index=False)
     paths["audit"].write_text(json.dumps(audit, indent=2), encoding="utf-8")
     eligible_cols = ["race_id", "runner_id", "scratch_status", "scoring_timestamp", "scheduled_start_time"] + FEATURES
     eligible = matrix[matrix["eligible_for_stage011_scoring"]].copy()
@@ -606,18 +843,26 @@ def main() -> None:
         default=Path(r"C:\EDGEIQ_ISSUE23\outputs\research\ISSUE23_LIVE_HISTORY_FEATURE_CANDIDATES_V3.csv"),
     )
     parser.add_argument(
+        "--lab245b-warehouse",
+        type=Path,
+        default=Path(r"C:\EDGEIQ_PROFITABILITY_RESEARCH\outputs\research\profitability_program\lab245b\LAB245B_WAREHOUSE_RUNNER_LVS.csv"),
+    )
+    parser.add_argument(
         "--output-dir",
         type=Path,
         default=Path("outputs/research/stage011_live_completion"),
     )
     args = parser.parse_args()
-    paths = Paths(args.field, args.form, args.public_snapshot, args.lab245b_candidates, args.output_dir)
-    matrix, coverage, feature_status, audit = build_matrix(paths, args.target_date, args.venue, args.expected_runners)
-    outputs = write_outputs(matrix, coverage, feature_status, audit, args.output_dir)
+    paths = Paths(args.field, args.form, args.public_snapshot, args.lab245b_candidates, args.lab245b_warehouse, args.output_dir)
+    matrix, coverage, feature_status, identity_bridge, audit = build_matrix(
+        paths, args.target_date, args.venue, args.expected_runners
+    )
+    outputs = write_outputs(matrix, coverage, feature_status, identity_bridge, audit, args.output_dir)
     print("EDGEIQ_STAGE011_LIVE_FEATURE_PIPELINE")
     print("RUNNERS", len(matrix), "RACES", matrix["race_id"].nunique())
     print("ELIGIBLE_FOR_STAGE011_SCORING", int(matrix["eligible_for_stage011_scoring"].sum()))
     print("IDENTITY_STATUS", matrix["historical_identity_status"].value_counts().to_dict())
+    print("LAB245B_IDENTITY_BRIDGE", identity_bridge["identity_bridge_status"].value_counts().to_dict())
     print("COVERAGE_BY_FAMILY", coverage.to_dict("records"))
     for key, value in outputs.items():
         print(key.upper(), value)
