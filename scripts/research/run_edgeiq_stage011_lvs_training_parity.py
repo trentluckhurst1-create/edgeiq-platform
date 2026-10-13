@@ -14,9 +14,9 @@ def main():
  p=argparse.ArgumentParser()
  p.add_argument("--pit",default=r"C:\EDGEIQ_PROFITABILITY_RESEARCH\outputs\research\model_v2\stage006\V2_STAGE006_PIT_FEATURE_WAREHOUSE.csv")
  p.add_argument("--runs",default=r"C:\EDGEIQ_PROFITABILITY_RESEARCH\outputs\research\profitability_program\lab245b\LAB245B_WAREHOUSE_RUNNER_LVS.csv")
- p.add_argument("--max-rows",type=int,default=150)
+ p.add_argument("--max-rows",type=int,default=0)
  a=p.parse_args()
- if a.max_rows<1:raise RuntimeError("STOP invalid sample size")
+ if a.max_rows<0:raise RuntimeError("STOP invalid sample size")
  h=pd.read_csv(a.pit,dtype="string")
  w=pd.read_csv(a.runs,dtype="string",usecols=["canonical_race_id","canonical_horse_id","race_date","runner_lvs"])
  print("PIT_ROWS",len(h),"PIT_COLUMNS",h.columns.tolist())
@@ -41,11 +41,16 @@ def main():
  w=w[w.dt.lt(pd.Timestamp("2025-01-01"))&w.v.notna()].copy()
  if w.duplicated(["canonical_race_id","canonical_horse_id"]).any():raise RuntimeError("STOP duplicate historical race/horse")
  w=w.sort_values(["canonical_horse_id","dt","canonical_race_id"])
- sample=h.dropna(subset=["_horse","dt"]).head(a.max_rows)
+ sample=h.dropna(subset=["_horse","dt"])
+ if a.max_rows: sample=sample.head(a.max_rows)
+ # Cache each horse history once; avoid scanning the 500k-row warehouse for every PIT row.
+ histories={horse:g[["dt","v"]].sort_values("dt",kind="stable") for horse,g in w.groupby("canonical_horse_id",sort=False)}
  errors={f:[] for f in FEATURES}
  n=0
  for _,r in sample.iterrows():
-  prior=w[w.canonical_horse_id.eq(r["_horse"])&w.dt.lt(r["dt"])]
+  hist=histories.get(r["_horse"])
+  if hist is None:continue
+  prior=hist[hist.dt.lt(r["dt"])]
   if prior.empty:continue
   v=prior.v.to_numpy(dtype=float)
   last=v[-5:]
