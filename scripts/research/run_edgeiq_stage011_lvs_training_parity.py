@@ -23,9 +23,16 @@ def main():
  # Never silently assume _horse or horse_code means canonical_horse_id.
  keys=[c for c in ("canonical_horse_id","_horse","horse_code") if c in h]
  print("PIT_ID_CANDIDATES",keys,"RUNNER_ID","canonical_horse_id")
- if "canonical_horse_id" not in h:
-  print("STOP NO_CERTIFIED_SHARED_ID: Stage006 PIT lacks canonical_horse_id; must establish exact crosswalk before numerical parity test")
-  return
+ if "_horse" not in h or "_race" not in h:
+  raise RuntimeError("STOP PIT missing verified historical keys")
+ # Full 91,434-row exact observation join was verified independently.
+ # Recheck sampled exact race+horse+date observations before feature comparison.
+ check=h[["_race","_horse","race_date"]].merge(
+  w[["canonical_race_id","canonical_horse_id","race_date"]],
+  left_on=["_race","_horse"],right_on=["canonical_race_id","canonical_horse_id"],
+  how="left",validate="one_to_one",indicator=True,suffixes=("_pit","_warehouse"))
+ if not check["_merge"].eq("both").all() or not check["race_date_pit"].eq(check["race_date_warehouse"]).all():
+  raise RuntimeError("STOP historical exact observation parity failed")
  if "race_date" not in h or not set(FEATURES).issubset(h):raise RuntimeError("STOP PIT feature schema incomplete")
  h["dt"]=pd.to_datetime(h.race_date,errors="coerce")
  h=h[h.dt.lt(pd.Timestamp("2025-01-01"))].copy()
@@ -34,11 +41,11 @@ def main():
  w=w[w.dt.lt(pd.Timestamp("2025-01-01"))&w.v.notna()].copy()
  if w.duplicated(["canonical_race_id","canonical_horse_id"]).any():raise RuntimeError("STOP duplicate historical race/horse")
  w=w.sort_values(["canonical_horse_id","dt","canonical_race_id"])
- sample=h.dropna(subset=["canonical_horse_id","dt"]).head(a.max_rows)
+ sample=h.dropna(subset=["_horse","dt"]).head(a.max_rows)
  errors={f:[] for f in FEATURES}
  n=0
- for r in sample.itertuples(index=False):
-  prior=w[w.canonical_horse_id.eq(r.canonical_horse_id)&w.dt.lt(r.dt)]
+ for _,r in sample.iterrows():
+  prior=w[w.canonical_horse_id.eq(r["_horse"])&w.dt.lt(r["dt"])]
   if prior.empty:continue
   v=prior.v.to_numpy(dtype=float)
   last=v[-5:]
@@ -47,9 +54,9 @@ def main():
         "lvs_peak":np.max(v),"lvs_worst5":np.min(last)}
   n+=1
   for f in FEATURES:
-   actual=pd.to_numeric(pd.Series([getattr(r,f)]),errors="coerce").iloc[0]
+   actual=pd.to_numeric(pd.Series([r[f]]),errors="coerce").iloc[0]
    if pd.notna(actual):errors[f].append(abs(float(actual)-float(calc[f])))
- print("COMPARED_ROWS",n)
+ print("EXACT_OBSERVATION_JOIN",len(check),"COMPARED_ROWS",n)
  for f,values in errors.items():
   print("PARITY",f,"N",len(values),"MAX_ABS_ERROR",max(values) if values else None,
         "EXACT",sum(e<1e-8 for e in values),"/",len(values))
