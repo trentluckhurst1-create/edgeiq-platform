@@ -12,7 +12,7 @@ ART=Path(r"C:\EDGEIQ_PROFITABILITY_RESEARCH\outputs\research\model_v2\issue23_pr
 def num(s):return pd.to_numeric(s,errors="coerce")
 def unit_num(s,unit):
  """Parse only explicit numeric lengths/metres; never silently strip other text."""
- pattern=rf"^\\s*([+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+))\\s*{re.escape(unit)}\\s*$"
+ pattern=rf"^\s*([+-]?(?:\d+(?:\.\d*)?|\.\d+))\s*{re.escape(unit)}\s*$"
  extracted=s.astype("string").str.extract(pattern,flags=re.IGNORECASE,expand=False)
  invalid=s.notna() & s.astype("string").str.strip().ne("") & extracted.isna()
  if invalid.any():
@@ -20,6 +20,8 @@ def unit_num(s,unit):
   raise RuntimeError(f"STOP unsupported {unit} values: {examples}")
  return pd.to_numeric(extracted,errors="coerce")
 def main():
+ if unit_num(pd.Series(["0.75L","1.25L","1L"]),"L").tolist()!=[0.75,1.25,1.0]:raise RuntimeError("STOP margin parser self-test")
+ if unit_num(pd.Series(["1400m","1600m"]),"m").tolist()!=[1400,1600]:raise RuntimeError("STOP distance parser self-test")
  p=argparse.ArgumentParser()
  p.add_argument("--date",default="2026-10-14")
  p.add_argument("--venue",default="Caulfield")
