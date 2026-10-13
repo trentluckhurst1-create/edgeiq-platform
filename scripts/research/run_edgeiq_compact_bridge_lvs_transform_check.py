@@ -19,6 +19,7 @@ def main():
  d["v"]=pd.to_numeric(d.target_lvs,errors="coerce")
  d=d.sort_values(["_horse","dt","_race"],kind="stable")
  errs={k:[] for k in required[4:]}
+ mature={k:[] for k in required[4:]}
  rows=0
  ambiguous=0
  for horse,g in d.groupby("_horse",sort=False):
@@ -36,12 +37,17 @@ def main():
     rows+=1
     for k,pred in calc.items():
      actual=pd.to_numeric(pd.Series([r[k]]),errors="coerce").iloc[0]
-     if pd.notna(actual):errs[k].append(abs(float(actual)-float(pred)))
+     if pd.notna(actual):
+      error=abs(float(actual)-float(pred))
+      errs[k].append(error)
+      if len(history)>=5:mature[k].append(error)
    if pd.notna(r["v"]):history.append((r["dt"],float(r["v"])))
  print("ROWS_COMPARED",rows,"SAME_DATE_AMBIGUITIES",ambiguous)
  for k,e in errs.items():
   print(k,"N",len(e),"EXACT",sum(x<1e-8 for x in e),"MAX_ABS",max(e) if e else None,
         "MATCH_RATE",round(sum(x<1e-8 for x in e)/len(e),6) if e else None)
+ for k,e in mature.items():
+  print("MATURE_HISTORY",k,"N",len(e),"EXACT",sum(x<1e-8 for x in e),"MATCH_RATE",round(sum(x<1e-8 for x in e)/len(e),6) if e else None)
  print("CAUTION: compact bridge contains a selected subset of historical runs; gaps may prevent exact reconstruction")
  print("NO_MODEL_SCORING_OR_PROMOTION")
 if __name__=="__main__":main()
