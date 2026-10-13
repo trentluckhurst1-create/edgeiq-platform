@@ -43,16 +43,20 @@ def main():
  w=w.sort_values(["canonical_horse_id","dt","canonical_race_id"])
  sample=h.dropna(subset=["_horse","dt"])
  if a.max_rows: sample=sample.head(a.max_rows)
- # Cache each horse history once; avoid scanning the 500k-row warehouse for every PIT row.
- histories={horse:g[["dt","v"]].sort_values("dt",kind="stable") for horse,g in w.groupby("canonical_horse_id",sort=False)}
+ # Limit grouping to the horses in the target population.
+ target_horses=set(sample["_horse"].dropna())
+ w=w[w.canonical_horse_id.isin(target_horses)]
+ histories={horse:(g["dt"].to_numpy(),g["v"].to_numpy(dtype=float)) for horse,g in w.groupby("canonical_horse_id",sort=False)}
  errors={f:[] for f in FEATURES}
  n=0
  for _,r in sample.iterrows():
   hist=histories.get(r["_horse"])
   if hist is None:continue
-  prior=hist[hist.dt.lt(r["dt"])]
-  if prior.empty:continue
-  v=prior.v.to_numpy(dtype=float)
+  dates,values=hist
+  # Strictly prior dates; searchsorted excludes same-day observations.
+  cutoff=np.searchsorted(dates,r["dt"].to_datetime64(),side="left")
+  if cutoff==0:continue
+  v=values[:cutoff]
   last=v[-5:]
   calc={"lvs_last1":v[-1],"lvs_mean3":np.mean(v[-3:]),"lvs_mean5":np.mean(last),
         "lvs_median5":np.median(last),"lvs_std5":np.std(last,ddof=0),
@@ -67,5 +71,6 @@ def main():
         "EXACT",sum(e<1e-8 for e in values),"/",len(values))
  if n==0:print("STOP NO_COMPARABLE_ROWS")
  elif any(v and max(v)>1e-8 for v in errors.values()):print("STOP FEATURE_DEFINITION_MISMATCH; do not promote candidates")
- else:print("SAMPLED_PARITY_ONLY; full lineage and missingness still require certification")
+ else:print("FULL_PIT_LVS_PARITY_PASS" if a.max_rows==0 else "SAMPLED_LVS_PARITY_PASS")
+ print("CAUTION: source completeness, missingness and all 35 features require independent certification")
 if __name__=="__main__":main()
