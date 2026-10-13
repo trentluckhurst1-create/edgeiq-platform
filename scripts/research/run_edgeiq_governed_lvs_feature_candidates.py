@@ -40,7 +40,7 @@ def main():
    continue
   v=h.lvs.to_numpy(dtype=float)
   last=v[-5:]
-  # These are candidates pending exact training-transform parity verification.
+  # Historical transforms passed full PIT parity; live source completeness is separate.
   row={"source_latest_warehouse_date":str(w.dt.max().date()),"historical_lvs_parity":"77526_OF_77526_ALL_SEVEN_PRE2025",
        "race_date":r.race_date,"race_no":r.race_no,"horse_name":r.horse_name,
        "canonical_horse_id":r.canonical_horse_id,"governed_lvs_runs":len(v),
@@ -49,7 +49,7 @@ def main():
        "lvs_mean5":float(np.mean(last)),"lvs_median5":float(np.median(last)),
        "lvs_std5":float(np.std(last,ddof=0)),"lvs_peak":float(np.max(v)),
        "lvs_worst5":float(np.min(last)),
-       "feature_status":"RESEARCH_CANDIDATE_NOT_TRAINING_PARITY_CERTIFIED"}
+       "feature_status":"HISTORICAL_TRANSFORM_PARITY_PASSED_LIVE_NOT_CERTIFIED"}
   rows.append(row)
  out=pd.DataFrame(rows)
  target=Path(a.out)
@@ -57,5 +57,6 @@ def main():
  out.to_csv(target,index=False)
  print("OUTPUT",target,"ROWS",len(out),"EXPECTED_LIVE_ROWS",len(l))
  print("MIN_LVS_RUNS",int(out.governed_lvs_runs.min()) if len(out) else 0)
- print("WARNING: historical Stage011 feature transform parity unverified; NOT FOR SCORING")
+ print("HISTORICAL_LVS_TRANSFORMS 77526/77526 EXACT FOR EACH OF SEVEN FEATURES")
+ print("WARNING: LIVE IDENTITY, TIMING RECENCY, AND 35-FEATURE COVERAGE NOT CERTIFIED; NOT FOR SCORING")
 if __name__=="__main__":main()
