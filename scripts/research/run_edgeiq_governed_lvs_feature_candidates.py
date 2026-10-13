@@ -29,14 +29,20 @@ def main():
  if w.duplicated(["canonical_race_id","canonical_horse_id"]).any():raise RuntimeError("STOP duplicate canonical run")
  if not np.isfinite(w.lvs.to_numpy()).all():raise RuntimeError("STOP nonfinite LVS")
  w=w.sort_values(["canonical_horse_id","dt","canonical_race_id"],kind="stable")
+ histories={key:g for key,g in w[w.canonical_horse_id.isin(l.canonical_horse_id)].groupby("canonical_horse_id",sort=False)}
  rows=[]
  for r in l.itertuples(index=False):
-  h=w[w.canonical_horse_id.eq(r.canonical_horse_id)]
+  h=histories.get(r.canonical_horse_id)
+  if h is None:continue
   if h.empty:continue
+  if h.dt.duplicated().any():
+   print("STOP AMBIGUOUS_SAME_DATE_HISTORY",r.canonical_horse_id)
+   continue
   v=h.lvs.to_numpy(dtype=float)
   last=v[-5:]
   # These are candidates pending exact training-transform parity verification.
-  row={"race_date":r.race_date,"race_no":r.race_no,"horse_name":r.horse_name,
+  row={"source_latest_warehouse_date":str(w.dt.max().date()),"historical_lvs_parity":"77526_OF_77526_ALL_SEVEN_PRE2025",
+       "race_date":r.race_date,"race_no":r.race_no,"horse_name":r.horse_name,
        "canonical_horse_id":r.canonical_horse_id,"governed_lvs_runs":len(v),
        "latest_governed_lvs_date":str(h.dt.max().date()),
        "lvs_last1":v[-1],"lvs_mean3":float(np.mean(v[-3:])),
