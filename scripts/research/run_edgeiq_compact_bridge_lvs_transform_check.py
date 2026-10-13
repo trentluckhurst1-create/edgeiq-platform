@@ -24,7 +24,7 @@ def main():
  for horse,g in d.groupby("_horse",sort=False):
   history=[]
   for _,r in g.iterrows():
-   if history and history[-1][0]==r.dt:
+   if history and history[-1][0]==r["dt"]:
     ambiguous+=1
     history=[]
    if history:
@@ -37,7 +37,7 @@ def main():
     for k,pred in calc.items():
      actual=pd.to_numeric(pd.Series([r[k]]),errors="coerce").iloc[0]
      if pd.notna(actual):errs[k].append(abs(float(actual)-float(pred)))
-   if pd.notna(r.v):history.append((r.dt,float(r.v)))
+   if pd.notna(r["v"]):history.append((r["dt"],float(r["v"])))
  print("ROWS_COMPARED",rows,"SAME_DATE_AMBIGUITIES",ambiguous)
  for k,e in errs.items():
   print(k,"N",len(e),"EXACT",sum(x<1e-8 for x in e),"MAX_ABS",max(e) if e else None,
