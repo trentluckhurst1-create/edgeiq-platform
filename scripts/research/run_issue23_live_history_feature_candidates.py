@@ -77,6 +77,10 @@ def main():
  out.to_csv(target,index=False)
  print("LINKED_RUNNERS",len(l),"CANDIDATE_ROWS",len(out))
  print("HISTORY_ROWS_AVAILABLE",int(out.history_rows.gt(0).sum()))
+ print("FIELD_SIZE_SOURCE_NON_NULL",int(w.field_size.notna().sum()))
+ print("FIELD_SIZE_SOURCE_NUMERIC_POSITIVE",int(pd.to_numeric(w.field_size,errors="coerce").gt(0).sum()))
+ print("MARGIN_SOURCE_NUMERIC",int(pd.to_numeric(w.finish_margin,errors="coerce").notna().sum()))
+ print("MARGIN_AND_FIELD_SIZE_USABLE",int((pd.to_numeric(w.field_size,errors="coerce").gt(0)&pd.to_numeric(w.finish_margin,errors="coerce").notna()).sum()))
  print("WAREHOUSE_LATEST",str(w.dt.max().date()) if len(w) else "NONE")
  for c in ["margin_per_runner_last1","margin_per_runner_last2","margin_mean5","clean_finish_mean5"]:
   print("FEATURE",c,"POPULATED",int(out[c].notna().sum()))
