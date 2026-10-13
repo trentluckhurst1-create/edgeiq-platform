@@ -169,27 +169,29 @@ def classify(args: argparse.Namespace) -> tuple[pd.DataFrame, dict]:
     lay_quote_type = d["lay_quote_type"].fillna("").str.upper().str.strip()
     market_source = d["market_source"].fillna("").str.upper().str.strip()
 
-    quote_invalid = (
+    back_quote_invalid = (
         d["back_odds"].isna()
-        | d["lay_odds"].isna()
         | d["back_available"].isna()
-        | d["lay_available"].isna()
         | d["back_odds"].le(1)
-        | d["lay_odds"].le(1)
         | d["back_available"].lt(0)
-        | d["lay_available"].lt(0)
         | ~back_quote_type.isin(BACK_QUOTE_TYPES)
+    ).fillna(True)
+    lay_quote_invalid = (
+        d["lay_odds"].isna()
+        | d["lay_available"].isna()
+        | d["lay_odds"].le(1)
+        | d["lay_available"].lt(0)
         | ~lay_quote_type.isin(LAY_QUOTE_TYPES)
     ).fillna(True)
 
     is_exchange = market_source.isin(EXCHANGE_SOURCES)
-    crossed_exchange = (is_exchange & d["back_odds"].ge(d["lay_odds"])).fillna(False)
+    crossed_exchange = (is_exchange & ~back_quote_invalid & ~lay_quote_invalid & d["back_odds"].ge(d["lay_odds"])).fillna(False)
     lay_source_invalid = (~is_exchange).fillna(True)
     back_source_invalid = (~(is_exchange | back_quote_type.eq("BOOKMAKER_FIXED_WIN"))).fillna(True)
 
     lay_liability_at_policy_stake = args.min_depth * (d["lay_odds"] - 1)
     back_market_ok = (
-        ~quote_invalid
+        ~back_quote_invalid
         & ~source_invalid
         & ~timestamp_invalid
         & ~crossed_exchange
@@ -197,7 +199,7 @@ def classify(args: argparse.Namespace) -> tuple[pd.DataFrame, dict]:
         & d["back_available"].ge(args.min_depth)
     ).fillna(False)
     lay_market_ok = (
-        ~quote_invalid
+        ~lay_quote_invalid
         & ~source_invalid
         & ~timestamp_invalid
         & ~crossed_exchange
@@ -258,12 +260,12 @@ def classify(args: argparse.Namespace) -> tuple[pd.DataFrame, dict]:
             common.append("TIMESTAMP_FAIL")
         if source_invalid.iloc[i]:
             common.append("SOURCE_PROVIDER_FAIL")
-        if quote_invalid.iloc[i]:
-            common.append("QUOTE_INVALID")
         if crossed_exchange.iloc[i]:
             common.append("CROSSED_EXCHANGE_QUOTE")
 
         b_reasons = list(common)
+        if back_quote_invalid.iloc[i]:
+            b_reasons.append("BACK_QUOTE_INVALID")
         if back_source_invalid.iloc[i]:
             b_reasons.append("BACK_SOURCE_UNSUPPORTED")
         if not pd.isna(d["back_available"].iloc[i]) and d["back_available"].iloc[i] < args.min_depth:
@@ -276,6 +278,8 @@ def classify(args: argparse.Namespace) -> tuple[pd.DataFrame, dict]:
             back_status.append("NO_VALUE")
 
         l_reasons = list(common)
+        if lay_quote_invalid.iloc[i]:
+            l_reasons.append("LAY_QUOTE_INVALID")
         if lay_source_invalid.iloc[i]:
             l_reasons.append("LAY_REQUIRES_BETFAIR_EXCHANGE")
         if not pd.isna(d["lay_available"].iloc[i]) and d["lay_available"].iloc[i] < args.min_depth:

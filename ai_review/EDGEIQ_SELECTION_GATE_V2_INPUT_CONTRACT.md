@@ -74,7 +74,54 @@ Rules:
 - LAY qualification requires `market_source = BETFAIR_EXCHANGE`
 - bookmaker fixed-win quotes can support BACK qualification only
 - exchange quotes fail closed when crossed, meaning `back_odds >= lay_odds`
-- missing source/provider, missing odds, nonpositive odds, invalid available amounts, or uncertified quotes fail closed
+- missing source/provider, missing odds, nonpositive odds, invalid available amounts, or uncertified quotes fail closed for the affected side
+- partial quote snapshots are allowed only when the missing side remains fail-closed; for example, a certified bookmaker fixed-win BACK quote may qualify the BACK side while the LAY side fails with `LAY_QUOTE_INVALID` and `LAY_REQUIRES_BETFAIR_EXCHANGE`
+
+## Readiness Adapter Inputs
+
+The research readiness command `scripts/research/run_edgeiq_selection_gate_v2_readiness.py` builds this contract from two upstream files. It does not score a model, place bets, read outcomes, or claim profitability.
+
+Required Stage011 scorer-output fields:
+
+- `race_id`
+- `runner_id`
+- `scoring_timestamp`
+- `scheduled_start_time`
+- `stage011_probability`
+- `champion_model_sha256`
+
+The adapter also requires the frozen research model artifact manifest. It verifies the Stage011 model digest, computes a feature-manifest digest from the recorded feature list, checks race probability mass, and emits blockers instead of certifying rows when provenance is incomplete.
+
+Required raw quote-snapshot fields:
+
+- `race_id`
+- `runner_id`
+- `quote_snapshot_id`
+- `quote_timestamp`
+- `scheduled_start_time`
+- `market_source`
+- `provider`
+- `quote_side`
+- `quote_type`
+- `odds`
+- `available_amount`
+- `commission_rate`
+- `market_status`
+- `in_play`
+- `suspended`
+
+Supported raw quote sides:
+
+- `BACK`
+- `LAY`
+
+Supported raw quote types:
+
+- `BETFAIR_BACK`
+- `BOOKMAKER_FIXED_WIN`
+- `BETFAIR_LAY`
+
+Quote snapshots are not certified when markets are suspended, in-play, closed, stale relative to the race start, duplicated at the same side grain, missing provider/source, or mismatched between quote side and quote type. SP/BSP substitutions are not supported.
 
 ## Outputs
 
