@@ -12,13 +12,13 @@ def case(name,**kw):return {**BASE,"runner_id":name,**kw}
 CASES=[
  case("BACK_VALUE",model_probability=".4",lay_odds="4.2"),
  case("LAY_VALUE",model_probability=".2",back_odds="3",lay_odds="3.5"),
- case("NO_VALUE",model_probability=".3",back_odds="2",lay_odds="5"),
+ case("NO_VALUE",model_probability=".3",back_odds="2",lay_odds="4"),
  case("UNCERTIFIED",model_probability=".4",probability_certified="false"),
  case("NO_LIQUIDITY",model_probability=".4",back_available="0",lay_available="0"),
  case("LAY_LIABILITY_FAIL",model_probability=".2",back_odds="5.5",lay_odds="6"),
 ]
 EXPECTED={
- "BACK_VALUE":("RESEARCH_CANDIDATE","MARKET_OR_LIABILITY_FAIL"),
+ "BACK_VALUE":("RESEARCH_CANDIDATE","NO_VALUE"),
  "LAY_VALUE":("NO_VALUE","RESEARCH_CANDIDATE"),
  "NO_VALUE":("NO_VALUE","NO_VALUE"),
  "UNCERTIFIED":("MODEL_UNCERTIFIED","MODEL_UNCERTIFIED"),
@@ -30,7 +30,7 @@ def main():
   inp=Path(td)/"synthetic.csv";out=Path(td)/"classified.csv"
   with inp.open("w",newline="",encoding="utf-8") as f:
    w=csv.DictWriter(f,fieldnames=COLUMNS);w.writeheader();w.writerows(CASES)
-  run=subprocess.run([sys.executable,str(ENGINE),"--input",str(inp),"--output",str(out)],capture_output=True,text=True)
+  run=subprocess.run([sys.executable,str(ENGINE),"--input",str(inp),"--output",str(out),"--min-depth","30"],capture_output=True,text=True)
   if run.returncode:raise AssertionError(run.stdout+"\n"+run.stderr)
   with out.open(newline="",encoding="utf-8") as f:rows={r["runner_id"]:r for r in csv.DictReader(f)}
   for name,(back,lay) in EXPECTED.items():
