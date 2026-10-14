@@ -1,0 +1,24 @@
+{
+  "contract_version": "EDGEIQ_SELECTION_GATE_V2_INPUT_CONTRACT_2026-10-13",
+  "research_only": true,
+  "input": "outputs\\research\\selection_gate_v2\\EDGEIQ_SELECTION_GATE_V2_SYNTHETIC_INPUT.csv",
+  "input_sha256": "bc9d061469b8d1b8183d35d37a40a3757c3f0c1d64bb020bf8a904a0bcd0854f",
+  "rows": 3,
+  "min_edge": 0.03,
+  "min_depth": 30.0,
+  "max_lay_liability": 100.0,
+  "max_quote_age_seconds": 60.0,
+  "back_status_counts": {
+    "RESEARCH_CANDIDATE": 1,
+    "NO_VALUE": 1,
+    "FAIL_CLOSED": 1
+  },
+  "lay_status_counts": {
+    "NO_VALUE": 1,
+    "RESEARCH_CANDIDATE": 1,
+    "FAIL_CLOSED": 1
+  },
+  "market_as_model_feature": false,
+  "execution_authorized": false,
+  "profitability_claim": false
+}
