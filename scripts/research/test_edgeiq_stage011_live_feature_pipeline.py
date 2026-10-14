@@ -13,7 +13,15 @@ from pathlib import Path
 
 import pandas as pd
 
-from run_edgeiq_stage011_live_feature_pipeline import FEATURES, Paths, build_matrix, load_form, write_outputs
+from run_edgeiq_stage011_live_feature_pipeline import (
+    FEATURES,
+    Paths,
+    build_matrix,
+    load_form,
+    rcom_current_id,
+    resolve_source,
+    write_outputs,
+)
 
 
 DEFAULT_PATHS = Paths(
@@ -29,6 +37,9 @@ DEFAULT_PATHS = Paths(
     lab245b_candidates=Path(r"C:\EDGEIQ_ISSUE23\outputs\research\ISSUE23_LIVE_HISTORY_FEATURE_CANDIDATES_V3.csv"),
     lab245b_warehouse=Path(
         r"C:\EDGEIQ_PROFITABILITY_RESEARCH\outputs\research\profitability_program\lab245b\LAB245B_WAREHOUSE_RUNNER_LVS.csv"
+    ),
+    perf026=Path(
+        r"C:\Users\trent\OneDrive\Documents\EDGEIQ_PLATFORM\outputs\research\model_lab_026\edgeiq_certified_flat_walk_forward_epi_026.csv"
     ),
     output_dir=Path("outputs/research/stage011_live_completion"),
 )
@@ -47,6 +58,7 @@ def synthetic_paths(root: Path) -> Paths:
     snapshot = root / "snapshot.json"
     candidates = root / "candidates.csv"
     warehouse = root / "warehouse.csv"
+    perf026 = root / "perf026.csv"
     write_csv(
         field,
         [
@@ -57,7 +69,7 @@ def synthetic_paths(root: Path) -> Paths:
                 "race_id": "R1",
                 "horse_name": "Alpha",
                 "horse_code": "H1",
-                "eiq_horse_id": "EIQ_H1",
+                "eiq_horse_id": rcom_current_id("HORSE", "H1"),
                 "race_entry_id": "E1",
                 "barrier": "2",
                 "scratched": "false",
@@ -71,7 +83,7 @@ def synthetic_paths(root: Path) -> Paths:
                 "race_id": "R1",
                 "horse_name": "Beta",
                 "horse_code": "H2",
-                "eiq_horse_id": "EIQ_H2",
+                "eiq_horse_id": rcom_current_id("HORSE", "H2"),
                 "race_entry_id": "E2",
                 "barrier": "1",
                 "scratched": "false",
@@ -153,7 +165,7 @@ def synthetic_paths(root: Path) -> Paths:
         [
             {
                 "canonical_race_id": "WR1",
-                "canonical_horse_id": "EIQ_H1",
+                "canonical_horse_id": rcom_current_id("HORSE", "H1"),
                 "race_date": "2026-09-01",
                 "distance_metres": "1400",
                 "field_size": "6",
@@ -163,7 +175,7 @@ def synthetic_paths(root: Path) -> Paths:
             },
             {
                 "canonical_race_id": "WR2",
-                "canonical_horse_id": "EIQ_H1",
+                "canonical_horse_id": rcom_current_id("HORSE", "H1"),
                 "race_date": "2026-10-01",
                 "distance_metres": "1600",
                 "field_size": "8",
@@ -173,7 +185,39 @@ def synthetic_paths(root: Path) -> Paths:
             },
         ],
     )
-    return Paths(field, form, snapshot, candidates, warehouse, root / "out")
+    write_csv(
+        perf026,
+        [
+            {
+                "canonical_race_id": "P1",
+                "canonical_horse_id": rcom_current_id("HORSE", "H1"),
+                "canonical_jockey_id": rcom_current_id("JOCKEY", "J1"),
+                "canonical_trainer_id": rcom_current_id("TRAINER", "T1"),
+                "race_date": "2026-08-01",
+                "finish_position": "1",
+                "epi_status_026": "CALCULATED",
+            },
+            {
+                "canonical_race_id": "P2",
+                "canonical_horse_id": rcom_current_id("HORSE", "H9"),
+                "canonical_jockey_id": rcom_current_id("JOCKEY", "J1"),
+                "canonical_trainer_id": rcom_current_id("TRAINER", "T1"),
+                "race_date": "2026-09-01",
+                "finish_position": "3",
+                "epi_status_026": "CALCULATED",
+            },
+            {
+                "canonical_race_id": "P3",
+                "canonical_horse_id": rcom_current_id("HORSE", "H8"),
+                "canonical_jockey_id": rcom_current_id("JOCKEY", "J1"),
+                "canonical_trainer_id": rcom_current_id("TRAINER", "T1"),
+                "race_date": "2026-10-14",
+                "finish_position": "1",
+                "epi_status_026": "CALCULATED",
+            },
+        ],
+    )
+    return Paths(field, form, snapshot, candidates, warehouse, perf026, root / "out")
 
 
 def test_synthetic_strict_prior_and_stage011_formulas() -> None:
@@ -198,13 +242,17 @@ def test_synthetic_strict_prior_and_stage011_formulas() -> None:
         assert row["identity_bridge_matched_prior_records"] == 2
         assert row["lvs_last1"] == 3.0
         assert row["lvs_mean3"] == 2.0
+        assert row["jockey_prior_starts"] == 2.0
+        assert abs(row["jockey_prior_win_rate"] - (2.0 / 12.0)) < 1e-12
+        assert abs(row["jockey_prior_top3_rate"] - (5.0 / 12.0)) < 1e-12
+        assert row["jockey_prior_status"] == "D45_FULL_HISTORY_PRIOR"
         assert audit["declared_runners"] == 2
         assert audit["lab245b_identity_bridge_certified"] == 1
         assert identity_bridge["identity_bridge_status"].tolist() == [
             "CERTIFIED_EXACT_ID_MULTI_PRIOR_MATCH",
             "NO_STRICT_PRIOR_LAB245B_HISTORY",
         ]
-        assert set(coverage["family"]) == {"CURRENT_CONTEXT", "RCOM_NATIVE_HISTORY", "LVS_TIMING", "PERSONNEL_PARTIAL"}
+        assert set(coverage["family"]) == {"CURRENT_CONTEXT", "RCOM_NATIVE_HISTORY", "LVS_TIMING", "PERSONNEL_FULL_HISTORY"}
         assert not feature_status.empty
 
 
@@ -239,7 +287,7 @@ def test_caulfield_live_contract_is_fail_closed_without_market_or_outcomes() -> 
     assert matrix["race_id"].nunique() == 8
     assert not matrix.duplicated(["race_id", "runner_id"]).any()
     assert FEATURES == list(matrix[FEATURES].columns)
-    assert int(matrix["eligible_for_stage011_scoring"].sum()) == 0
+    assert int(matrix["eligible_for_stage011_scoring"].sum()) == 78
     assert audit["no_market_features"] is True
     assert audit["no_current_race_outcomes"] is True
     assert set(["sp", "bsp", "winner", "y"]).isdisjoint({c.lower() for c in matrix.columns})
@@ -249,7 +297,7 @@ def test_caulfield_live_contract_is_fail_closed_without_market_or_outcomes() -> 
     assert audit["lab245b_identity_bridge_certified"] >= 0
 
 
-def test_write_outputs_includes_long_status_and_empty_score_input() -> None:
+def test_write_outputs_includes_long_status_blockers_and_score_input() -> None:
     with tempfile.TemporaryDirectory() as td:
         paths = synthetic_paths(Path(td))
         matrix, coverage, feature_status, identity_bridge, audit = build_matrix(
@@ -259,17 +307,54 @@ def test_write_outputs_includes_long_status_and_empty_score_input() -> None:
         assert outputs["matrix"].is_file()
         assert outputs["feature_status"].is_file()
         assert outputs["identity_bridge"].is_file()
+        assert outputs["blockers"].is_file()
         score = pd.read_csv(outputs["score_input"])
         assert list(score.columns) == ["race_id", "runner_id", "scratch_status", "scoring_timestamp", "scheduled_start_time"] + FEATURES
-        assert score.empty
+        assert len(score) == 1
+        assert score.iloc[0]["runner_id"] == "E1"
+
+
+def test_false_live_identity_hash_downgrades_bridge() -> None:
+    with tempfile.TemporaryDirectory() as td:
+        paths = synthetic_paths(Path(td))
+        field = pd.read_csv(paths.field, dtype="string")
+        field.loc[field["race_entry_id"].eq("E1"), "eiq_horse_id"] = "EIQ_HORSE_WRONG"
+        field.to_csv(paths.field, index=False)
+        matrix, _, _, identity_bridge, _ = build_matrix(paths, "2026-10-14", "Caulfield", expected_rows=2)
+        alpha = identity_bridge[identity_bridge["runner_id"].eq("E1")].iloc[0]
+        assert alpha["identity_bridge_status"] == "FIELD_EIQ_PROVENANCE_FAIL"
+        assert not bool(matrix[matrix["runner_id"].eq("E1")]["eligible_for_stage011_scoring"].iloc[0])
+
+
+def test_duplicate_prior_race_records_downgrade_bridge() -> None:
+    with tempfile.TemporaryDirectory() as td:
+        paths = synthetic_paths(Path(td))
+        warehouse = pd.read_csv(paths.lab245b_warehouse, dtype="string")
+        warehouse = pd.concat([warehouse, warehouse.iloc[[0]]], ignore_index=True)
+        warehouse.to_csv(paths.lab245b_warehouse, index=False)
+        _, _, _, identity_bridge, _ = build_matrix(paths, "2026-10-14", "Caulfield", expected_rows=2)
+        alpha = identity_bridge[identity_bridge["runner_id"].eq("E1")].iloc[0]
+        assert alpha["identity_bridge_status"] == "DUPLICATE_PRIOR_RACE_RECORDS"
+
+
+def test_missing_optional_source_resolves_fail_closed_without_crash() -> None:
+    with tempfile.TemporaryDirectory() as td:
+        root = Path(td)
+        missing = root / "missing_candidates.csv"
+        resolution = resolve_source("lab245b_candidates", missing, [root], required=False)
+        assert resolution.status == "MISSING_OPTIONAL_SOURCE"
+        assert not resolution.resolved_path
 
 
 def main() -> None:
     test_synthetic_strict_prior_and_stage011_formulas()
     test_load_form_preserves_prior_winner_margin_source_convention()
     test_duplicate_live_runner_fails_closed()
+    test_false_live_identity_hash_downgrades_bridge()
+    test_duplicate_prior_race_records_downgrade_bridge()
+    test_missing_optional_source_resolves_fail_closed_without_crash()
     test_caulfield_live_contract_is_fail_closed_without_market_or_outcomes()
-    test_write_outputs_includes_long_status_and_empty_score_input()
+    test_write_outputs_includes_long_status_blockers_and_score_input()
     print("EDGEIQ_STAGE011_LIVE_FEATURE_PIPELINE_TESTS: PASS")
     print("NO_OUTCOMES; NO_MARKET; NO_MODEL_FIT; NO_STAGE011_SCORING")
 
