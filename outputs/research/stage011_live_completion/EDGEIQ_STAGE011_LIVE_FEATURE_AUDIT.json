@@ -1,0 +1,179 @@
+{
+  "status": "PASS",
+  "target_date": "2026-10-14",
+  "venue": "Caulfield",
+  "declared_runners": 104,
+  "races": 8,
+  "eligible_for_stage011_scoring": 79,
+  "rcom_native_form_available": 98,
+  "lab245b_identity_bridge_status_counts": {
+    "CERTIFIED_EXACT_ID_MULTI_PRIOR_MATCH": 81,
+    "NO_STRICT_PRIOR_LAB245B_HISTORY": 18,
+    "ONE_PRIOR_MATCH_INSUFFICIENT": 5
+  },
+  "lab245b_identity_bridge_certified": 81,
+  "historical_identity_status_counts": {
+    "LAB245B_IDENTITY_BRIDGE_CERTIFIED": 81,
+    "RACINGCOM_NATIVE_FORM_AVAILABLE": 17,
+    "FIRST_STARTER_OR_INSUFFICIENT_HISTORY": 6
+  },
+  "feature_status_counts": {
+    "ELIGIBLE_FOR_SCORING": 79,
+    "INCOMPLETE_OR_UNCERTIFIED_DO_NOT_SCORE": 25
+  },
+  "feature_certification_status_counts": {
+    "POPULATED_CERTIFIED_LAB245B_BRIDGE": 2069,
+    "POPULATED_CERTIFIED_RCOM_NATIVE": 627,
+    "POPULATED_CERTIFIED_PERSONNEL": 603,
+    "MISSING": 306,
+    "CERTIFIED_MISSING_ALLOWED": 35
+  },
+  "jockey_prior_status_counts": {
+    "D45_FULL_HISTORY_PRIOR": 100,
+    "D45_FULL_HISTORY_NO_PRIOR": 4
+  },
+  "trainer_prior_status_counts": {
+    "D45_FULL_HISTORY_PRIOR": 101,
+    "D45_FULL_HISTORY_NO_PRIOR": 3
+  },
+  "timing_status_counts": {
+    "DIRECT_LVS_AVAILABLE": 81,
+    "NO_CERTIFIED_IDENTITY": 23
+  },
+  "distance_timing_status_counts": {
+    "DISTANCE_NEAR_LVS_AVAILABLE": 74,
+    "NO_CERTIFIED_IDENTITY": 23,
+    "NO_DISTANCE_NEAR_LVS_HISTORY": 7
+  },
+  "feature_manifest": [
+    "current_distance",
+    "hist_runs",
+    "lvs_last1",
+    "lvs_mean3",
+    "lvs_mean5",
+    "lvs_median5",
+    "lvs_std5",
+    "lvs_peak",
+    "lvs_worst5",
+    "margin_mean5",
+    "margin_std5",
+    "margin_worst5",
+    "margin_last1",
+    "margin_last2",
+    "last_distance",
+    "margin_change_l1_l2",
+    "margin_per_runner_last1",
+    "margin_per_runner_last2",
+    "days_since_last",
+    "dist200_runs",
+    "dist200_lvs_mean",
+    "dist200_lvs_best",
+    "represented_field_size",
+    "barrier_position_pct",
+    "jockey_prior_starts",
+    "jockey_prior_win_rate",
+    "jockey_prior_top3_rate",
+    "trainer_prior_starts",
+    "trainer_prior_win_rate",
+    "trainer_prior_top3_rate",
+    "clean_finish_mean5",
+    "clean_last_finish",
+    "clean_last_won",
+    "clean_last_top3",
+    "clean_finish_hist_n"
+  ],
+  "feature_manifest_sha256": "f35dd342d570b35831043c75cf756f7cac4e28ebdd564988393db3383c82454f",
+  "stage011_semantics": {
+    "margin_winner_handling": "PRESERVE_SOURCE_FINISH_MARGIN_NO_WINNER_ZEROING",
+    "lab245b_history_aggregate_policy": "FINITE_VALUES_THEN_LAST_N_FOR_LVS_MARGIN_FINISH_AGGREGATES",
+    "margin_per_runner_policy": "MOST_RECENT_RAW_PRIOR_STARTS_REQUIRE_MARGIN_AND_FIELD_SIZE",
+    "personnel_prior_policy": "(wins+1)/(starts+10) and (top3+3)/(starts+10) from strict-prior PERF026 records, matching the frozen D45 source/formula contract",
+    "identity_bridge_certification": "exact EIQ horse id plus at least two matching strict-prior Racing.com/LAB245B records on date/distance/finish/margin"
+  },
+  "sources": {
+    "field": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\outputs\\research\\live_acquisition_v1\\october_graphql_field_identities.csv",
+    "field_sha256": "7f0332cd3cf98e3c753a8951e276daa84d0c652ac1c1f57b498bfde4e19026e4",
+    "form": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\outputs\\research\\live_acquisition_v1\\caulfield_browser_form.csv",
+    "form_sha256": "042e0a36600fa1bac179b41973a0a074e53929a92e023f90610f23d12f7167bf",
+    "public_snapshot": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\outputs\\research\\live_acquisition_v1\\public_race_snapshot_20261012T051330Z.json",
+    "public_snapshot_sha256": "579afa96ef24e3dae641177ca4c13a01980bbe82d7a2e96b426eab0eed061aad",
+    "lab245b_candidates": "C:\\EDGEIQ_ISSUE23\\outputs\\research\\ISSUE23_LIVE_HISTORY_FEATURE_CANDIDATES_V3.csv",
+    "lab245b_candidates_sha256": null,
+    "lab245b_warehouse": "C:\\EDGEIQ_PROFITABILITY_RESEARCH\\outputs\\research\\profitability_program\\lab245b\\LAB245B_WAREHOUSE_RUNNER_LVS.csv",
+    "lab245b_warehouse_sha256": "169652f38b830a4d2337975d65d9cead16fe306373ac4802bc57b7b33793a8fb",
+    "perf026": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\outputs\\research\\model_lab_026\\edgeiq_certified_flat_walk_forward_epi_026.csv",
+    "perf026_sha256": "97d2fbca0ed1a613df2fb6a826b50ec2a8a68c3c456b136afafd8a964c55f132"
+  },
+  "no_market_features": true,
+  "no_current_race_outcomes": true,
+  "no_stage011_retraining": true,
+  "model_ready_for_prospective_scoring": true,
+  "primary_blockers": [
+    "Only runners with exact EIQ identity plus at least two matching strict-prior Racing.com/LAB245B records are certified for LAB245B timing features.",
+    "Seven certified identities have no distance-near LVS history; these are retained as certified missing values rather than fabricated timing substitutes.",
+    "One active certified identity remains blocked by an uncertified missing margin_per_runner_last1 value."
+  ],
+  "source_resolution_status": "PASS",
+  "source_resolution": [
+    {
+      "name": "field",
+      "requested_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\outputs\\research\\live_acquisition_v1\\october_graphql_field_identities.csv",
+      "resolved_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\outputs\\research\\live_acquisition_v1\\october_graphql_field_identities.csv",
+      "status": "PASS",
+      "required": true,
+      "sha256": "7f0332cd3cf98e3c753a8951e276daa84d0c652ac1c1f57b498bfde4e19026e4",
+      "expected_sha256": null,
+      "alternatives": []
+    },
+    {
+      "name": "form",
+      "requested_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\outputs\\research\\live_acquisition_v1\\caulfield_browser_form.csv",
+      "resolved_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\outputs\\research\\live_acquisition_v1\\caulfield_browser_form.csv",
+      "status": "PASS",
+      "required": true,
+      "sha256": "042e0a36600fa1bac179b41973a0a074e53929a92e023f90610f23d12f7167bf",
+      "expected_sha256": null,
+      "alternatives": []
+    },
+    {
+      "name": "public_snapshot",
+      "requested_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\outputs\\research\\live_acquisition_v1\\public_race_snapshot_20261012T051330Z.json",
+      "resolved_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\outputs\\research\\live_acquisition_v1\\public_race_snapshot_20261012T051330Z.json",
+      "status": "PASS",
+      "required": true,
+      "sha256": "579afa96ef24e3dae641177ca4c13a01980bbe82d7a2e96b426eab0eed061aad",
+      "expected_sha256": null,
+      "alternatives": []
+    },
+    {
+      "name": "lab245b_candidates",
+      "requested_path": "C:\\EDGEIQ_ISSUE23\\outputs\\research\\ISSUE23_LIVE_HISTORY_FEATURE_CANDIDATES_V3.csv",
+      "resolved_path": "",
+      "status": "MISSING_OPTIONAL_SOURCE",
+      "required": false,
+      "sha256": null,
+      "expected_sha256": null,
+      "alternatives": []
+    },
+    {
+      "name": "lab245b_warehouse",
+      "requested_path": "C:\\EDGEIQ_PROFITABILITY_RESEARCH\\outputs\\research\\profitability_program\\lab245b\\LAB245B_WAREHOUSE_RUNNER_LVS.csv",
+      "resolved_path": "C:\\EDGEIQ_PROFITABILITY_RESEARCH\\outputs\\research\\profitability_program\\lab245b\\LAB245B_WAREHOUSE_RUNNER_LVS.csv",
+      "status": "PASS",
+      "required": true,
+      "sha256": "169652f38b830a4d2337975d65d9cead16fe306373ac4802bc57b7b33793a8fb",
+      "expected_sha256": "169652f38b830a4d2337975d65d9cead16fe306373ac4802bc57b7b33793a8fb",
+      "alternatives": []
+    },
+    {
+      "name": "perf026",
+      "requested_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\outputs\\research\\model_lab_026\\edgeiq_certified_flat_walk_forward_epi_026.csv",
+      "resolved_path": "C:\\Users\\trent\\OneDrive\\Documents\\EDGEIQ_PLATFORM\\outputs\\research\\model_lab_026\\edgeiq_certified_flat_walk_forward_epi_026.csv",
+      "status": "PASS",
+      "required": true,
+      "sha256": "97d2fbca0ed1a613df2fb6a826b50ec2a8a68c3c456b136afafd8a964c55f132",
+      "expected_sha256": null,
+      "alternatives": []
+    }
+  ]
+}
