@@ -4,7 +4,7 @@
   "venue": "Caulfield",
   "declared_runners": 104,
   "races": 8,
-  "eligible_for_stage011_scoring": 78,
+  "eligible_for_stage011_scoring": 79,
   "rcom_native_form_available": 98,
   "lab245b_identity_bridge_status_counts": {
     "CERTIFIED_EXACT_ID_MULTI_PRIOR_MATCH": 81,
@@ -18,14 +18,14 @@
     "FIRST_STARTER_OR_INSUFFICIENT_HISTORY": 6
   },
   "feature_status_counts": {
-    "ELIGIBLE_FOR_SCORING": 78,
-    "INCOMPLETE_OR_UNCERTIFIED_DO_NOT_SCORE": 26
+    "ELIGIBLE_FOR_SCORING": 79,
+    "INCOMPLETE_OR_UNCERTIFIED_DO_NOT_SCORE": 25
   },
   "feature_certification_status_counts": {
-    "POPULATED_CERTIFIED_LAB245B_BRIDGE": 1930,
-    "POPULATED_CERTIFIED_RCOM_NATIVE": 765,
+    "POPULATED_CERTIFIED_LAB245B_BRIDGE": 2069,
+    "POPULATED_CERTIFIED_RCOM_NATIVE": 627,
     "POPULATED_CERTIFIED_PERSONNEL": 603,
-    "MISSING": 307,
+    "MISSING": 306,
     "CERTIFIED_MISSING_ALLOWED": 35
   },
   "jockey_prior_status_counts": {

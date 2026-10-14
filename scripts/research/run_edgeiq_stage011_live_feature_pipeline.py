@@ -700,6 +700,63 @@ def match_prior_records(form_hist: pd.DataFrame, warehouse_hist: pd.DataFrame) -
     return matched, ambiguous_candidates
 
 
+def prior_fact_key(date_value: object, distance: object, finish: object, margin: object) -> tuple[str, str, str, str] | None:
+    dt = pd.to_datetime(date_value, errors="coerce")
+    if pd.isna(dt) or pd.isna(distance) or pd.isna(finish) or pd.isna(margin):
+        return None
+    return (
+        dt.date().isoformat(),
+        str(int(round(float(distance)))),
+        str(int(round(float(finish)))),
+        f"{round(float(margin), 2):.2f}",
+    )
+
+
+def enrich_missing_field_size_from_form(warehouse_hist: pd.DataFrame, form_hist: pd.DataFrame) -> tuple[pd.DataFrame, list[dict]]:
+    if warehouse_hist.empty or form_hist.empty:
+        return warehouse_hist.copy(), []
+    d = warehouse_hist.copy()
+    form_rows: dict[tuple[str, str, str, str], list[dict]] = {}
+    for r in form_hist.itertuples(index=False):
+        key = prior_fact_key(r.race_date_dt, r.distance_m, r.finish_num, r.margin_len)
+        if key is None or pd.isna(r.field_size_num):
+            continue
+        form_rows.setdefault(key, []).append(
+            {
+                "field_size": float(r.field_size_num),
+                "form_race_code": str(getattr(r, "race_code", "")),
+                "form_race_date": key[0],
+            }
+        )
+    recovered = []
+    for idx, r in d.iterrows():
+        if pd.notna(r.get("field_size")):
+            continue
+        key = prior_fact_key(r.get("dt"), r.get("distance_metres"), r.get("finish_position"), r.get("finish_margin"))
+        if key is None or key not in form_rows:
+            continue
+        values = form_rows[key]
+        sizes = {v["field_size"] for v in values}
+        race_codes = {v["form_race_code"] for v in values}
+        if len(sizes) != 1 or len(race_codes) != 1:
+            continue
+        field_size = next(iter(sizes))
+        d.at[idx, "field_size"] = field_size
+        recovered.append(
+            {
+                "canonical_race_id": str(r.get("canonical_race_id")),
+                "race_date": key[0],
+                "distance_metres": key[1],
+                "finish_position": key[2],
+                "finish_margin": key[3],
+                "field_size": field_size,
+                "source": "RCOM_STRICT_PRIOR_FORM_EXACT_FACT_MATCH",
+                "form_race_code": next(iter(race_codes)),
+            }
+        )
+    return d, recovered
+
+
 def count_matching_prior_records(form_hist: pd.DataFrame, warehouse_hist: pd.DataFrame) -> int:
     matched, _ = match_prior_records(form_hist, warehouse_hist)
     return len(matched)
@@ -751,7 +808,8 @@ def build_identity_bridge(
         expected_eiq = rcom_current_id("HORSE", horse_code)
         eiq_source_status = "SOURCE_GRAPHQL_HORSE_CODE_HASH_MATCH" if expected_eiq == canonical else "SOURCE_GRAPHQL_HORSE_CODE_HASH_MISMATCH"
         rform = form[form["horse_code"].astype("string").eq(horse_code)].copy()
-        whist = histories.get(canonical, pd.DataFrame(columns=warehouse.columns))
+        whist_raw = histories.get(canonical, pd.DataFrame(columns=warehouse.columns))
+        whist, field_size_recovered = enrich_missing_field_size_from_form(whist_raw, rform)
         matches, ambiguous_candidates = match_prior_records(rform, whist)
         competing_count, competing_max_races, competing_ids = competing_identity_matches(rform, all_history, canonical)
         matched = len(matches)
@@ -780,6 +838,14 @@ def build_identity_bridge(
             status = "NO_PRIOR_FORM_MATCH"
         current_distance = float(getattr(row, "current_distance")) if pd.notna(getattr(row, "current_distance")) else math.nan
         feats = lab245b_features_from_history(whist, target_date, current_distance) if status == "CERTIFIED_EXACT_ID_MULTI_PRIOR_MATCH" else {}
+        latest_recovery = ""
+        if status == "CERTIFIED_EXACT_ID_MULTI_PRIOR_MATCH" and field_size_recovered and len(whist):
+            latest = whist.sort_values(["dt", "canonical_race_id"], kind="stable").iloc[-1]
+            latest_id = str(latest.get("canonical_race_id"))
+            for item in field_size_recovered:
+                if item["canonical_race_id"] == latest_id:
+                    latest_recovery = json.dumps(item, separators=(",", ":"))
+                    break
         if status != "CERTIFIED_EXACT_ID_MULTI_PRIOR_MATCH":
             timing_status = "NO_CERTIFIED_IDENTITY"
             dist_timing_status = "NO_CERTIFIED_IDENTITY"
@@ -809,6 +875,8 @@ def build_identity_bridge(
                 "competing_identity_max_distinct_races": int(competing_max_races),
                 "competing_identity_ids": competing_ids,
                 "duplicate_prior_race_records": int(duplicate_prior_races),
+                "field_size_recovered_from_form_records": int(len(field_size_recovered)),
+                "latest_prior_field_size_recovery": latest_recovery,
                 "matched_prior_race_ids": "|".join(x["canonical_race_id"] for x in matches),
                 "latest_lab245b_date": str(pd.to_datetime(whist["dt"]).max().date()) if len(whist) else "",
                 "identity_bridge_status": status,
@@ -1199,6 +1267,8 @@ def build_runner_certification_report(
                 "lab245b_prior_records": row.lab245b_prior_records,
                 "timing_status": bridge.get("timing_status", ""),
                 "distance_timing_status": bridge.get("distance_timing_status", ""),
+                "field_size_recovered_from_form_records": bridge.get("field_size_recovered_from_form_records", 0),
+                "latest_prior_field_size_recovery": bridge.get("latest_prior_field_size_recovery", ""),
                 "jockey_prior_status": row.jockey_prior_status,
                 "trainer_prior_status": row.trainer_prior_status,
                 "populated_feature_count": row.populated_feature_count,

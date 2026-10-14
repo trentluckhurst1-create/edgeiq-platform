@@ -287,7 +287,7 @@ def test_caulfield_live_contract_is_fail_closed_without_market_or_outcomes() -> 
     assert matrix["race_id"].nunique() == 8
     assert not matrix.duplicated(["race_id", "runner_id"]).any()
     assert FEATURES == list(matrix[FEATURES].columns)
-    assert int(matrix["eligible_for_stage011_scoring"].sum()) == 78
+    assert int(matrix["eligible_for_stage011_scoring"].sum()) == 79
     assert audit["no_market_features"] is True
     assert audit["no_current_race_outcomes"] is True
     assert set(["sp", "bsp", "winner", "y"]).isdisjoint({c.lower() for c in matrix.columns})
@@ -344,6 +344,20 @@ def test_duplicate_prior_race_records_downgrade_bridge() -> None:
         assert alpha["identity_bridge_status"] == "DUPLICATE_PRIOR_RACE_RECORDS"
 
 
+def test_missing_lab245b_field_size_recovers_from_exact_prior_form_fact() -> None:
+    with tempfile.TemporaryDirectory() as td:
+        paths = synthetic_paths(Path(td))
+        warehouse = pd.read_csv(paths.lab245b_warehouse, dtype="string")
+        warehouse.loc[warehouse["canonical_race_id"].eq("WR2"), "field_size"] = ""
+        warehouse.to_csv(paths.lab245b_warehouse, index=False)
+        matrix, _, _, identity_bridge, _ = build_matrix(paths, "2026-10-14", "Caulfield", expected_rows=2)
+        alpha = matrix[matrix["runner_id"].eq("E1")].iloc[0]
+        bridge_alpha = identity_bridge[identity_bridge["runner_id"].eq("E1")].iloc[0]
+        assert abs(alpha["margin_per_runner_last1"] - (3.0 / 7.0)) < 1e-12
+        assert bridge_alpha["field_size_recovered_from_form_records"] == 1
+        assert "RCOM_STRICT_PRIOR_FORM_EXACT_FACT_MATCH" in bridge_alpha["latest_prior_field_size_recovery"]
+
+
 def test_missing_optional_source_resolves_fail_closed_without_crash() -> None:
     with tempfile.TemporaryDirectory() as td:
         root = Path(td)
@@ -359,6 +373,7 @@ def main() -> None:
     test_duplicate_live_runner_fails_closed()
     test_false_live_identity_hash_downgrades_bridge()
     test_duplicate_prior_race_records_downgrade_bridge()
+    test_missing_lab245b_field_size_recovers_from_exact_prior_form_fact()
     test_missing_optional_source_resolves_fail_closed_without_crash()
     test_caulfield_live_contract_is_fail_closed_without_market_or_outcomes()
     test_write_outputs_includes_long_status_blockers_and_score_input()
